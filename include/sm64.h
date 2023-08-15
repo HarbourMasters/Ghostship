@@ -13,6 +13,10 @@
 #include "mario_geo_switch_case_ids.h"
 #include "surface_terrains.h"
 #include "macros.h"
+#include <PR/gu.h>
+#include <PR/ucode.h>
+#include <libultra/os.h>
+#include <math.h>
 
 // Crash handler enhancement
 #ifdef CRASH_SCREEN_INCLUDED
@@ -23,21 +27,12 @@
 
 // Pointer casting is technically UB, and avoiding it gets rid of endian issues
 // as well as a nice side effect.
-#ifdef AVOID_UB
 #define GET_HIGH_U16_OF_32(var) ((u16)((var) >> 16))
 #define GET_HIGH_S16_OF_32(var) ((s16)((var) >> 16))
 #define GET_LOW_U16_OF_32(var) ((u16)((var) & 0xFFFF))
 #define GET_LOW_S16_OF_32(var) ((s16)((var) & 0xFFFF))
 #define SET_HIGH_U16_OF_32(var, x) ((var) = ((var) & 0xFFFF) | ((x) << 16))
 #define SET_HIGH_S16_OF_32(var, x) ((var) = ((var) & 0xFFFF) | ((x) << 16))
-#else
-#define GET_HIGH_U16_OF_32(var) (((u16 *)&(var))[0])
-#define GET_HIGH_S16_OF_32(var) (((s16 *)&(var))[0])
-#define GET_LOW_U16_OF_32(var) (((u16 *)&(var))[1])
-#define GET_LOW_S16_OF_32(var) (((s16 *)&(var))[1])
-#define SET_HIGH_U16_OF_32(var, x) ((((u16 *)&(var))[0]) = (x))
-#define SET_HIGH_S16_OF_32(var, x) ((((s16 *)&(var))[0]) = (x))
-#endif
 
 // Layers
 #define LAYER_FORCE             0
@@ -417,6 +412,40 @@
 #define ACT_HOLDING_BOWSER             0x00000391 // (0x191 | ACT_FLAG_STATIONARY)
 #define ACT_RELEASING_BOWSER           0x00000392 // (0x192 | ACT_FLAG_STATIONARY)
 
+/* Buttons */
+
+#define CONT_A      0x8000
+#define CONT_B      0x4000
+#define CONT_G	    0x2000
+#define CONT_START  0x1000
+#define CONT_UP     0x0800
+#define CONT_DOWN   0x0400
+#define CONT_LEFT   0x0200
+#define CONT_RIGHT  0x0100
+#define CONT_L      0x0020
+#define CONT_R      0x0010
+#define CONT_E      0x0008
+#define CONT_D      0x0004
+#define CONT_C      0x0002
+#define CONT_F      0x0001
+
+/* Nintendo's official button names */
+
+#define A_BUTTON	CONT_A
+#define B_BUTTON	CONT_B
+#define L_TRIG		CONT_L
+#define R_TRIG		CONT_R
+#define Z_TRIG		CONT_G
+#define START_BUTTON	CONT_START
+#define U_JPAD		CONT_UP
+#define L_JPAD		CONT_LEFT
+#define R_JPAD		CONT_RIGHT
+#define D_JPAD		CONT_DOWN
+#define U_CBUTTONS	CONT_E
+#define L_CBUTTONS	CONT_C
+#define R_CBUTTONS	CONT_F
+#define D_CBUTTONS	CONT_D
+
 /*
  this input mask is unused by the controller,
  but END_DEMO is used internally to signal
@@ -431,5 +460,42 @@
                        U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS   )
 
 #define C_BUTTONS     (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS   )
+
+extern void osInvalDCache(void *, size_t);
+extern void osInvalICache(void *, size_t);
+extern void osWritebackDCache(void *, size_t);
+extern void osWritebackDCacheAll(void);
+extern s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
+extern void osCreatePiManager(OSPri pri, OSMesgQueue *cmdQ, OSMesg *cmdBuf, s32 cmdMsgCnt);
+extern OSMesgQueue *osPiGetCmdQueue(void);
+extern s32 osPiWriteIo(uintptr_t devAddr, u32 data);
+extern s32 osPiReadIo(uintptr_t devAddr, u32 *data);
+extern s32 osPiRawStartDma(s32 dir, u32 cart_addr, void *dram_addr, size_t size);
+extern s32 osEPiRawStartDma(OSPiHandle *piHandle, s32 dir, u32 cart_addr, void *dram_addr, size_t size);
+extern u32 osViGetStatus(void);
+extern u32 osViGetCurrentMode(void);
+extern u32 osViGetCurrentLine(void);
+extern u32 osViGetCurrentField(void);
+extern void *osViGetCurrentFramebuffer(void);
+extern void *osViGetNextFramebuffer(void);
+extern void osViSetXScale(f32);
+extern void osViSetYScale(f32);
+extern void osViSetSpecialFeatures(u32);
+extern void osViSetMode(OSViMode *);
+extern void osViSetEvent(OSMesgQueue *, OSMesg, u32);
+extern void osViSwapBuffer(void *);
+extern void osViBlack(u8);
+extern void osViFade(u8, u16);
+extern void osViRepeatLine(u8);
+extern void osCreateViManager(OSPri);
+extern u32 osVirtualToPhysical(void *);
+extern void * osPhysicalToVirtual(u32);
+extern void osMapTLB(int32_t a, uint32_t b, void* c, uint32_t d, uint32_t e, uint32_t f);
+#ifndef TRUE
+#define TRUE 1
+#endif
+#ifndef FALSE
+#define FALSE 0
+#endif
 
 #endif // SM64_H

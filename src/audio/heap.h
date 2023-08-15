@@ -1,7 +1,7 @@
 #ifndef AUDIO_HEAP_H
 #define AUDIO_HEAP_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "internal.h"
 

@@ -1,7 +1,7 @@
 #ifndef LEVEL_UPDATE_H
 #define LEVEL_UPDATE_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 

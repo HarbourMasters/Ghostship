@@ -1,7 +1,7 @@
 #ifndef GD_SKIN_H
 #define GD_SKIN_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "gd_types.h"
 

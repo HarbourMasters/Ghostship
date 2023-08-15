@@ -1,5 +1,5 @@
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 #include "dialog_ids.h"
 #include "level_misc_macros.h"

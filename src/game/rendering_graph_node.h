@@ -1,7 +1,7 @@
 #ifndef RENDERING_GRAPH_NODE_H
 #define RENDERING_GRAPH_NODE_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "engine/graph_node.h"
 

@@ -1,6 +1,7 @@
 #ifndef _LIBAUDIO_INTERNAL_H_
 #define _LIBAUDIO_INTERNAL_H_
-#include <ultra64.h>
+#include <libultraship.h>
+#include <PR/libaudio.h>
 #define AL_BANK_VERSION 0x4231 /* 'B1' */
 
 typedef u8 ALPan;

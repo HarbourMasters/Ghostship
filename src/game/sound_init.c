@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 
 #include "area.h"
 #include "audio/external.h"
@@ -340,7 +340,7 @@ void thread4_sound(UNUSED void *arg) {
     vec3f_copy(unused80339DC0, gVec3fZero);
 
     osCreateMesgQueue(&sSoundMesgQueue, sSoundMesgBuf, ARRAY_COUNT(sSoundMesgBuf));
-    set_vblank_handler(1, &sSoundVblankHandler, &sSoundMesgQueue, (OSMesg) 512);
+    set_vblank_handler(1, &sSoundVblankHandler, &sSoundMesgQueue, OS_MESG_32(512));
 
     while (TRUE) {
         OSMesg msg;
@@ -349,7 +349,7 @@ void thread4_sound(UNUSED void *arg) {
         if (gResetTimer < 25) {
             struct SPTask *spTask;
             profiler_log_thread4_time();
-            spTask = create_next_audio_frame_task(); 
+            spTask = create_next_audio_frame_task();
             if (spTask != NULL) {
                 dispatch_audio_sptask(spTask);
             }

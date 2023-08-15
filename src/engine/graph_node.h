@@ -1,8 +1,8 @@
 #ifndef GRAPH_NODE_H
 #define GRAPH_NODE_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 #include "types.h"
 #include "game/memory.h"

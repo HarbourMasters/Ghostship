@@ -1,7 +1,7 @@
 #ifndef MACRO_SPECIAL_OBJECTS_H
 #define MACRO_SPECIAL_OBJECTS_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 

@@ -59,12 +59,8 @@ static void camera_lakitu_intro_act_spawn_cloud(void) {
  * Circle down to mario, show the dialog, then fly away.
  */
 static void camera_lakitu_intro_act_show_dialog(void) {
-    s16 targetMovePitch;
-    s16 targetMoveYaw;
-#ifdef AVOID_UB
-    targetMovePitch = 0;
-    targetMoveYaw = 0;
-#endif
+    s16 targetMovePitch = 0;
+    s16 targetMoveYaw = 0;
 
     cur_obj_play_sound_1(SOUND_AIR_LAKITU_FLY);
 
@@ -116,7 +112,7 @@ static void camera_lakitu_intro_act_show_dialog(void) {
                     }
                 }
             }
-        } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP, 
+        } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
             DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_034)) {
             o->oCameraLakituFinishedDialog = TRUE;
         }

@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "sm64.h"
 #include "geo_commands.h"
 
@@ -37,4 +37,3 @@ const GeoLayout ending_geo_000050[] = {
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
-

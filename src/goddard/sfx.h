@@ -1,7 +1,7 @@
 #ifndef GD_SFX_H
 #define GD_SFX_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 // Sfx for Mario Head Screen
 enum GdSfx {

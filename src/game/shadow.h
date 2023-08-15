@@ -1,8 +1,8 @@
 #ifndef SHADOW_H
 #define SHADOW_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 /**
  * Shadow types. Shadows are circles, squares, or hardcoded rectangles, and

@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "sm64.h"
 #include "heap.h"
 #include "load.h"
@@ -12,6 +12,7 @@
 #include "game/camera.h"
 #include "seq_ids.h"
 #include "dialog_ids.h"
+#include <lib/src/osAi.h>
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
 #define EU_FLOAT(x) x##f
@@ -706,107 +707,7 @@ void func_eu_802e9bec(s32 player, s32 channel, s32 arg2) {
  * Called from threads: thread4_sound
  */
 struct SPTask *create_next_audio_frame_task(void) {
-    u32 samplesRemainingInAI;
-    s32 writtenCmds;
-    s32 index;
-    OSTask_t *task;
-    s32 oldDmaCount;
-    s32 flags;
-
-    gAudioFrameCount++;
-    if (gAudioLoadLock != AUDIO_LOCK_NOT_LOADING) {
-        stubbed_printf("DAC:Lost 1 Frame.\n");
-        return NULL;
-    }
-
-    gAudioTaskIndex ^= 1;
-    gCurrAiBufferIndex++;
-    gCurrAiBufferIndex %= NUMAIBUFFERS;
-    index = (gCurrAiBufferIndex - 2 + NUMAIBUFFERS) % NUMAIBUFFERS;
-    samplesRemainingInAI = osAiGetLength() / 4;
-
-    // Audio is triple buffered; the audio interface reads from two buffers
-    // while the third is being written by the RSP. More precisely, the
-    // lifecycle is:
-    // - this function computes an audio command list
-    // - wait for vblank
-    // - the command list is sent to the RSP (we could have sent it to the
-    //   RSP before the vblank, but that gives the RSP less time to finish)
-    // - wait for vblank
-    // - the RSP is now expected to be finished, and we can send its output
-    //   on to the AI
-    // Here we thus send to the AI the sound that was generated two frames ago.
-    if (gAiBufferLengths[index] != 0) {
-        osAiSetNextBuffer(gAiBuffers[index], gAiBufferLengths[index] * 4);
-    }
-
-    oldDmaCount = gCurrAudioFrameDmaCount;
-    // There has to be some sort of no-op if here, but it's not exactly clear
-    // how it should look... It's also very unclear why gCurrAudioFrameDmaQueue
-    // isn't read from here, despite gCurrAudioFrameDmaCount being reset.
-    if (oldDmaCount > AUDIO_FRAME_DMA_QUEUE_SIZE) {
-        stubbed_printf("DMA: Request queue over.( %d )\n", oldDmaCount);
-    }
-    gCurrAudioFrameDmaCount = 0;
-
-    gAudioTask = &gAudioTasks[gAudioTaskIndex];
-    gAudioCmd = gAudioCmdBuffers[gAudioTaskIndex];
-
-    index = gCurrAiBufferIndex;
-    gCurrAiBuffer = gAiBuffers[index];
-    gAiBufferLengths[index] =
-        ((gSamplesPerFrameTarget - samplesRemainingInAI + EXTRA_BUFFERED_AI_SAMPLES_TARGET) & ~0xf)
-        + SAMPLES_TO_OVERPRODUCE;
-    if (gAiBufferLengths[index] < gMinAiBufferLength) {
-        gAiBufferLengths[index] = gMinAiBufferLength;
-    }
-    if (gAiBufferLengths[index] > gSamplesPerFrameTarget + SAMPLES_TO_OVERPRODUCE) {
-        gAiBufferLengths[index] = gSamplesPerFrameTarget + SAMPLES_TO_OVERPRODUCE;
-    }
-
-    if (sGameLoopTicked != 0) {
-        update_game_sound();
-        sGameLoopTicked = 0;
-    }
-
-    // For the function to match we have to preserve some arbitrary variable
-    // across this function call.
-    flags = 0;
-    gAudioCmd = synthesis_execute(gAudioCmd, &writtenCmds, gCurrAiBuffer, gAiBufferLengths[index]);
-    gAudioRandom = ((gAudioRandom + gAudioFrameCount) * gAudioFrameCount);
-
-    index = gAudioTaskIndex;
-    gAudioTask->msgqueue = NULL;
-    gAudioTask->msg = NULL;
-
-    task = &gAudioTask->task.t;
-    task->type = M_AUDTASK;
-    task->flags = flags;
-    task->ucode_boot = rspF3DBootStart;
-    task->ucode_boot_size = (u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart;
-    task->ucode = rspAspMainStart;
-    task->ucode_size = 0x800; // (this size is ignored)
-    task->ucode_data = rspAspMainDataStart;
-    task->ucode_data_size = (rspAspMainDataEnd - rspAspMainDataStart) * sizeof(u64);
-    task->dram_stack = NULL;
-    task->dram_stack_size = 0;
-    task->output_buff = NULL;
-    task->output_buff_size = NULL;
-    task->data_ptr = gAudioCmdBuffers[index];
-    task->data_size = writtenCmds * sizeof(u64);
-
-// The audio task never yields, so having a yield buffer is pointless.
-// This wastefulness was fixed in US.
-#ifdef VERSION_JP
-    task->yield_data_ptr = (u64 *) gAudioSPTaskYieldBuffer;
-    task->yield_data_size = OS_YIELD_AUDIO_SIZE;
-#else
-    task->yield_data_ptr = NULL;
-    task->yield_data_size = 0;
-#endif
-
-    decrease_sample_dma_ttls();
-    return gAudioTask;
+    return NULL;
 }
 #endif
 

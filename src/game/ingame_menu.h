@@ -1,7 +1,7 @@
 #ifndef INGAME_MENU_H
 #define INGAME_MENU_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #define ASCII_TO_DIALOG(asc)                                       \
     (((asc) >= '0' && (asc) <= '9') ? ((asc) - '0') :              \

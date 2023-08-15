@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #ifdef NO_SEGMENTED_MEMORY
 #include <string.h>
 #endif

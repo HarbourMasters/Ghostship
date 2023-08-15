@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "gfx_output_buffer.h"
 
 #ifdef VERSION_EU

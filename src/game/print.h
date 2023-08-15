@@ -1,7 +1,7 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #define TEXRECT_MIN_X 10
 #define TEXRECT_MAX_X 300

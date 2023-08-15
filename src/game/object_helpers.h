@@ -1,7 +1,7 @@
 #ifndef OBJECT_HELPERS_H
 #define OBJECT_HELPERS_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "macros.h"
 #include "types.h"
@@ -65,13 +65,8 @@ struct SpawnParticlesInfo {
 
 Gfx *geo_update_projectile_pos_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUSED void *context);
-#ifdef AVOID_UB
 Gfx *geo_switch_anim_state(s32 callContext, struct GraphNode *node, UNUSED void *context);
 Gfx *geo_switch_area(s32 callContext, struct GraphNode *node, UNUSED void *context);
-#else
-Gfx *geo_switch_anim_state(s32 callContext, struct GraphNode *node);
-Gfx *geo_switch_area(s32 callContext, struct GraphNode *node);
-#endif
 void obj_update_pos_from_parent_transformation(Mat4 a0, struct Object *a1);
 void obj_apply_scale_to_matrix(struct Object *obj, Mat4 dst, Mat4 src);
 void create_transformation_from_matrices(Mat4 a0, Mat4 a1, Mat4 a2);

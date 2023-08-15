@@ -1,11 +1,13 @@
 #ifndef BUFFERS_H
 #define BUFFERS_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "game/save_file.h"
 #include "game/game_init.h"
 #include "config.h"
+
+#define SP_DRAM_STACK_SIZE8 0x400
 
 extern u8 gDecompressionHeap[];
 

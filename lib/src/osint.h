@@ -26,14 +26,7 @@ extern void __osTimerInterrupt(void);
 extern u32 __osProbeTLB(void *);
 extern int     __osSpDeviceBusy(void);
 
-#ifdef AVOID_UB
 extern OSThread_ListHead D_80334890_fix;
-#else
-extern OSThread *__osRunningThread;
-extern OSThread *D_8033489C;
-extern OSThread *__osFaultedThread;
-extern OSThread *D_80334898;
-#endif
 
 extern OSTimer *__osTimerList;
 extern OSTimer __osBaseTimer;

@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 
 #include "config.h"
 #include "zbuffer.h"

@@ -1,7 +1,7 @@
 #ifndef MARIO_ACTIONS_AUTOMATIC_H
 #define MARIO_ACTIONS_AUTOMATIC_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 

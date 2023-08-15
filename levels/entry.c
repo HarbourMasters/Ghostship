@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "sm64.h"
 #include "segment_symbols.h"
 #include "level_commands.h"

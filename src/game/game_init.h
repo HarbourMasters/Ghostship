@@ -1,10 +1,7 @@
 #ifndef GAME_INIT_H
 #define GAME_INIT_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
-#include <PR/os_cont.h>
-#include <PR/os_message.h>
+#include <libultraship.h>
 
 #include "types.h"
 #include "memory.h"

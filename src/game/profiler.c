@@ -1,6 +1,5 @@
-#include <PR/ultratypes.h>
-#include <PR/os_time.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 #include "sm64.h"
 #include "profiler.h"

@@ -1,7 +1,7 @@
 #ifndef ZBUFFER_H
 #define ZBUFFER_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "config.h"
 #include "macros.h"

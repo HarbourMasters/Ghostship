@@ -51,6 +51,9 @@ build/*
 *.map
 .assets-local.txt
 
+build-cmake/*
+cmake-build-*/*
+
 # Assets. Generally ignored, but ones with "custom" in the name are fine.
 /levels/**/*.png
 /actors/**/*.png

@@ -1,8 +1,8 @@
 #ifndef GEO_MISC_H
 #define GEO_MISC_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 enum FlyingCarpetState {
     FLYING_CARPET_IDLE = 0,
@@ -34,7 +34,7 @@ extern Gfx *geo_exec_cake_end_screen(s32 callContext, struct GraphNode *node, UN
     gDPSetTile((dl), (format), G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, \
                G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD);                                                      \
     gDPLoadSync((dl));                                                                                       \
-    gDPLoadBlock((dl), G_TX_LOADTILE, 0, 0, (width) * (height) - 1, CALC_DXT((width), G_IM_SIZ_16b_BYTES))   \
+    gDPLoadBlock((dl), G_TX_LOADTILE, 0, 0, (width) * (height) - 1, CALC_DXT((width), G_IM_SIZ_16b_BYTES));  \
 }
 
 #endif // GEO_MISC_H

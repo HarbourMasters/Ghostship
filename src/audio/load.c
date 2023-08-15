@@ -1,7 +1,7 @@
 #ifndef VERSION_SH
-#include <ultra64.h>
-#include <PR/os.h>
+#include <libultraship.h>
 
+#include "sm64.h"
 #include "data.h"
 #include "external.h"
 #include "heap.h"

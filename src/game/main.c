@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include <stdio.h>
 
 #include "sm64.h"
@@ -89,10 +89,8 @@ void unknown_main_func(void) {
     // uninitialized
     OSTime time;
     u32 b;
-#ifdef AVOID_UB
     time = 0;
     b = 0;
-#endif
 
     osSetTime(time);
     osMapTLB(0, b, NULL, 0, 0, 0);
@@ -364,7 +362,7 @@ void thread3_main(UNUSED void *arg) {
     }
 }
 
-void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *queue, OSMesg *msg) {
+void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *queue, OSMesg msg) {
     handler->queue = queue;
     handler->msg = msg;
 

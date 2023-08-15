@@ -1,5 +1,6 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
+#include "sm64.h"
 #include "dynlist_macros.h"
 #include "dynlists.h"
 #include "animdata.h"
@@ -1089,7 +1090,7 @@ struct DynList dynlist_mario_master[] = {
             AttachTo(0x0, DYNOBJ_MARIO_MAIN_ANIMATOR),
             SetNodeGroup(DYNOBJ_RIGHT_EYELID_ANIMDATA_GROUP),
             LinkWith(DYNOBJ_RIGHT_EYELID_JOINT_1),
-    
+
         // whole head animator?
         MakeDynObj(D_DATA_GRP, DYNOBJ_MARIO_HEAD_ANIMDATA_GROUP),
             LinkWithPtr(&anim_mario_intro),

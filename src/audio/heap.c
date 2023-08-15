@@ -1,11 +1,13 @@
-#include <ultra64.h>
+#include <libultraship.h>
 
+#include "sm64.h"
 #include "heap.h"
 #include "data.h"
 #include "load.h"
 #include "synthesis.h"
 #include "seqplayer.h"
 #include "effects.h"
+#include <lib/src/osAi.h>
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
@@ -1466,11 +1468,7 @@ void *unk_pool1_alloc(s32 poolIndex, s32 arg1, u32 size) {
     gUnkPool1.entries[pos].id = arg1;
     gUnkPool1.entries[pos].size = size;
 
-#ifdef AVOID_UB
-    //! @bug UB: missing return. "ret" is in v0 at this point, but doing an
-    //  explicit return uses an additional register.
     return ret;
-#endif
 }
 
 u8 *func_sh_802f1d40(u32 size, s32 bank, u8 *arg2, s8 medium) {

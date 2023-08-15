@@ -1,4 +1,4 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "sm64.h"
 #include "geo_misc.h"

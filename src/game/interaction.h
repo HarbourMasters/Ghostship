@@ -1,7 +1,7 @@
 #ifndef INTERACTION_H
 #define INTERACTION_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 

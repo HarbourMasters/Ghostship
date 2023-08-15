@@ -1,5 +1,5 @@
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 #include "audio/external.h"
 #include "behavior_data.h"
@@ -40,14 +40,7 @@
 static s16 sSoundTextX;
 #endif
 
-//! @Bug (UB Array Access) For EU, more buttons were added than the array was extended.
-//! This causes no currently known issues on console (as the other variables are not changed
-//! while this is used) but can cause issues with other compilers.
-#if defined(VERSION_EU) && !defined(AVOID_UB)
-#define NUM_BUTTONS (MENU_BUTTON_OPTION_MAX - 1)
-#else
 #define NUM_BUTTONS MENU_BUTTON_OPTION_MAX
-#endif
 
 // Amount of main menu buttons defined in the code called by spawn_object_rel_with_rot.
 // See file_select.h for the names in MenuButtonTypes.
@@ -2903,10 +2896,7 @@ s32 lvl_init_menu_values_and_cursor_pos(UNUSED s32 arg, UNUSED s32 unused) {
         }
     }
 #endif
-    //! no return value
-#ifdef AVOID_UB
     return 0;
-#endif
 }
 
 /**

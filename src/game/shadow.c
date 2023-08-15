@@ -1,5 +1,5 @@
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 #include <math.h>
 
 #include "engine/math_util.h"
@@ -185,11 +185,8 @@ f32 get_water_level_below_shadow(struct Shadow *s) {
         gShadowAboveWaterOrLava = TRUE;
         return waterLevel;
     }
-    //! @bug Missing return statement. This compiles to return `waterLevel`
-    //! incidentally.
-#ifdef AVOID_UB
+
     return waterLevel;
-#endif
 }
 
 /**

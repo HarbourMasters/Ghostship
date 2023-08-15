@@ -1,7 +1,7 @@
 #ifndef TITLE_SCREEN_H
 #define TITLE_SCREEN_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "macros.h"
 

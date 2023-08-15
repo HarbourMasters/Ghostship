@@ -1,7 +1,7 @@
 #ifndef GD_SHAPE_HELPER_H
 #define GD_SHAPE_HELPER_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "gd_types.h"
 

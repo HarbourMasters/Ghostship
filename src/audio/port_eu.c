@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "internal.h"
 #include "load.h"
 #include "data.h"

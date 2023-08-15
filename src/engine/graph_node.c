@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "sm64.h"
 
 #include "game/level_update.h"

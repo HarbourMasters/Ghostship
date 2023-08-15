@@ -23,18 +23,4 @@
  * the incorrectly compiled calls.
 */
 
-#ifndef AVOID_UB
-
-#define GD_USE_BAD_DECLARATIONS
-
-/* shape_helper.h */
-extern struct ObjFace *make_face_with_colour();
-/* should be: make_face_with_colour(f32, f32, f32) */
-
-/* old_menu.h */
-extern struct ObjLabel *make_label();
-/* should be: make_label(struct ObjValPtr *, char *, s32, f32, f32, f32) */
-
-#endif /* !AVOID_UB */
-
 #endif // GD_BAD_DECLARATIONS_H

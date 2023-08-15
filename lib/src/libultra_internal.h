@@ -1,6 +1,8 @@
 #ifndef _LIBULTRA_INTERNAL_H_
 #define _LIBULTRA_INTERNAL_H_
-#include <ultra64.h>
+#include <libultraship.h>
+#include <PR/gu.h>
+#include <math.h>
 
 /*
  * This define is needed because the original definitions in __osDequeueThread.c are declared
@@ -8,7 +10,6 @@
  * assuming a unified structure. To fix this, we declare the full type here and then alias the
  * symbol names to the correct members in AVOID_UB.
  */
-#ifdef AVOID_UB
 typedef struct OSThread_ListHead_s
 {
     /*0x00*/ struct OSThread_s *next;
@@ -33,32 +34,6 @@ extern u32 D_80365E00[16];
 
 // alias the last array element correctly
 #define D_80365E3C D_80365E00[15]
-#else
-// Original OSThread_ListHead definitions
-extern OSThread *D_80334890;
-extern u32 D_80334894;
-extern OSThread *D_80334898;
-extern OSThread *D_8033489C;
-extern OSThread *D_803348A0;
-
-// Original EEPROM definitions
-extern u32 D_80365E00[15];
-extern u32 D_80365E3C;
-#endif
-
-typedef struct {
-    u32 initialized; // probably something like initialized?
-    OSThread *mgrThread;
-    OSMesgQueue *cmdQueue;
-    OSMesgQueue *eventQueue;
-    OSMesgQueue *accessQueue;
-    s32 (*dma_func)(s32, u32, void *, size_t);
-#if defined(VERSION_EU) || defined(VERSION_SH)
-    s32 (*edma_func)(OSPiHandle*, s32, u32, void *, size_t);
-#else
-    u64 force_align;
-#endif
-} OSMgrArgs;
 
 s32 __osDisableInt(void);
 void __osRestoreInt(s32);

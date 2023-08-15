@@ -1,8 +1,8 @@
 #ifndef INTRO_GEO_H
 #define INTRO_GEO_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 #include "types.h"
 #include "engine/graph_node.h"

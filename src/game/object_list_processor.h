@@ -1,7 +1,7 @@
 #ifndef OBJECT_LIST_PROCESSOR_H
 #define OBJECT_LIST_PROCESSOR_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "area.h"
 #include "macros.h"

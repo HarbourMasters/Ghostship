@@ -1,7 +1,7 @@
 #ifndef OBJ_BEHAVIORS_2_H
 #define OBJ_BEHAVIORS_2_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 

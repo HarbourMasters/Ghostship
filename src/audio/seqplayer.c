@@ -1,5 +1,6 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
+#include "sm64.h"
 #include "data.h"
 #include "effects.h"
 #include "external.h"
@@ -2292,10 +2293,6 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
         if (osRecvMesg(&seqPlayer->seqDmaMesgQueue, NULL, 0) == -1) {
             return;
         }
-#ifndef AVOID_UB
-        if (temp) {
-        }
-#endif
 #else
         if (seqPlayer->seqDmaMesg == NULL) {
             return;
@@ -2345,10 +2342,6 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
 
     state = &seqPlayer->scriptState;
     if (seqPlayer->delay > 1) {
-#ifndef AVOID_UB
-        if (temp) {
-        }
-#endif
         seqPlayer->delay--;
     } else {
 #if defined(VERSION_EU) || defined(VERSION_SH)
@@ -2800,15 +2793,7 @@ void init_sequence_players(void) {
 
     for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
 #endif
-        // @bug Size of wrong array. Zeroes out second half of gSequenceChannels[0],
-        // all of gSequenceChannels[1..31], and part of gSequenceLayers[0].
-        // However, this is only called at startup, so it's harmless.
-#ifdef AVOID_UB
-#define LAYERS_SIZE LAYERS_MAX
-#else
-#define LAYERS_SIZE ARRAY_COUNT(gSequenceLayers)
-#endif
-        for (j = 0; j < LAYERS_SIZE; j++) {
+        for (j = 0; j < LAYERS_MAX; j++) {
             gSequenceChannels[i].layers[j] = NULL;
         }
     }
@@ -2841,4 +2826,3 @@ void init_sequence_players(void) {
         init_sequence_player(i);
     }
 }
-

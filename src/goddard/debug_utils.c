@@ -1,4 +1,4 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 #include <stdarg.h>
 
 #include "debug_utils.h"
@@ -153,9 +153,7 @@ void remove_all_memtrackers(void) {
         sMemTrackers[i].total = 0.0f;
     }
 
-#ifdef AVOID_UB
     sNumActiveMemTrackers = 0;
-#endif
 }
 
 /**
@@ -488,11 +486,7 @@ void fatal_printf(const char *fmt, ...) {
                         gd_printf("%s", va_arg(vl, char *));
                         break;
                     case 'c':
-#ifdef AVOID_UB
                         gd_printf("%c", (char)va_arg(vl, int));
-#else
-                        gd_printf("%c", va_arg(vl, char));
-#endif
                         break;
                     case 'x':
                         gd_printf("%x", va_arg(vl, s32));
