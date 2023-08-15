@@ -797,9 +797,6 @@ static void pass2(void) {
             uint32_t faddr = insn.operands[1].imm;
             li_function_pointers.insert(faddr);
             functions[faddr].referenced_by_function_pointer = true;
-#if INSPECT_FUNCTION_POINTERS
-            fprintf(stderr, "li function pointer: 0x%x at 0x%x\n", faddr, addr);
-#endif
         }
     }
     for (auto it = functions.begin(); it != functions.end(); ++it) {
@@ -2288,9 +2285,6 @@ static void inspect_data_function_pointers(vector<pair<uint32_t, uint32_t>>& ret
             continue;
         }
         if (addr >= text_vaddr && addr < text_vaddr + text_section_len && addr % 4 == 0) {
-#if INSPECT_FUNCTION_POINTERS
-            fprintf(stderr, "assuming function pointer 0x%x at 0x%x\n", addr, section_vaddr + i);
-#endif
             ret.push_back(make_pair(section_vaddr + i, addr));
             label_addresses.insert(addr);
             functions[addr].referenced_by_function_pointer = true;

@@ -23,15 +23,9 @@
 #define MAX_GD_DLS 1000
 #define OS_MESG_SI_COMPLETE 0x33333333
 
-#ifndef NO_SEGMENTED_MEMORY
-#define GD_VIRTUAL_TO_PHYSICAL(addr) ((uintptr_t)(addr) &0x0FFFFFFF)
-#define GD_LOWER_24(addr) ((uintptr_t)(addr) &0x00FFFFFF)
-#define GD_LOWER_29(addr) (((uintptr_t)(addr)) & 0x1FFFFFFF)
-#else
 #define GD_VIRTUAL_TO_PHYSICAL(addr) (addr)
 #define GD_LOWER_24(addr) ((uintptr_t)(addr))
 #define GD_LOWER_29(addr) (((uintptr_t)(addr)))
-#endif
 
 #define MTX_INTPART_PACK(w1, w2) (((w1) &0xFFFF0000) | (((w2) >> 16) & 0xFFFF))
 #define MTX_FRACPART_PACK(w1, w2) ((((w1) << 16) & 0xFFFF0000) | ((w2) &0xFFFF))
@@ -3708,102 +3702,9 @@ void stub_renderer_18(UNUSED u32 a0) {
 void stub_renderer_19(UNUSED u32 a0) {
 }
 
-#ifndef NO_SEGMENTED_MEMORY
-/**
- * Copies `size` bytes of data from ROM address `romAddr` to RAM address `vAddr`.
- */
-static void gd_block_dma(u32 romAddr, void *vAddr, s32 size) {
-    s32 blockSize;
-
-    do {
-        if ((blockSize = size) > 0x1000) {
-            blockSize = 0x1000;
-        }
-
-        osPiStartDma(&sGdDMAReqMesg, OS_MESG_PRI_NORMAL, OS_READ, romAddr, vAddr, blockSize, &sGdDMAQueue);
-        osRecvMesg(&sGdDMAQueue, &sGdDMACompleteMsg, OS_MESG_BLOCK);
-        romAddr += blockSize;
-        vAddr = (void *) ((uintptr_t) vAddr + blockSize);
-        size -= 0x1000;
-    } while (size > 0);
-}
-
-/**
- * Loads the specified DynList from ROM and processes it.
- */
-struct GdObj *load_dynlist(struct DynList *dynlist) {
-    u32 segSize;
-    u8 *allocSegSpace;
-    void *allocPtr;
-    uintptr_t dynlistSegStart;
-    uintptr_t dynlistSegEnd;
-    s32 i;
-    s32 tlbEntries;
-    struct GdObj *loadedList;
-
-    i = -1;
-
-    // Make sure the dynlist exists
-    while (sDynLists[++i].list != NULL) {
-        if (sDynLists[i].list == dynlist) {
-            break;
-        }
-    }
-    if (sDynLists[i].list == NULL) {
-        fatal_printf("load_dynlist() ptr not found in any banks");
-    }
-
-    switch (sDynLists[i].flag) {
-        case STD_LIST_BANK:
-            dynlistSegStart = (uintptr_t) _gd_dynlistsSegmentRomStart;
-            dynlistSegEnd = (uintptr_t) _gd_dynlistsSegmentRomEnd;
-            break;
-        default:
-            fatal_printf("load_dynlist() unkown bank");
-    }
-
-#define PAGE_SIZE 65536  // size of a 64K TLB page
-
-    segSize = dynlistSegEnd - dynlistSegStart;
-    allocSegSpace = gd_malloc_temp(segSize + PAGE_SIZE);
-
-    if ((allocPtr = (void *) allocSegSpace) == NULL) {
-        fatal_printf("Not enough DRAM for DATA segment \n");
-    }
-
-    allocSegSpace = (u8 *) (((uintptr_t) allocSegSpace + PAGE_SIZE) & 0xFFFF0000);
-
-    // Copy the dynlist data from ROM
-    gd_block_dma(dynlistSegStart, (void *) allocSegSpace, segSize);
-
-    tlbEntries = (segSize / PAGE_SIZE) / 2 + 1;
-    if (tlbEntries >= 31) {
-        fatal_printf("load_dynlist() too many TLBs");
-    }
-
-    // Map virtual address 0x04000000 to `allocSegSpace`
-    for (i = 0; i < tlbEntries; i++) {
-        osMapTLB(i, 0,
-            (void *) (uintptr_t) (0x04000000 + (i * 2 * PAGE_SIZE)),  // virtual address to map
-            GD_LOWER_24(((uintptr_t) allocSegSpace) + (i * 2 * PAGE_SIZE) + 0),  // even page address
-            GD_LOWER_24(((uintptr_t) allocSegSpace) + (i * 2 * PAGE_SIZE) + PAGE_SIZE),  // odd page address
-            -1);
-    }
-
-#undef PAGE_SIZE
-
-    // process the dynlist
-    loadedList = proc_dynlist(dynlist);
-
-    gd_free(allocPtr);
-
-    return loadedList;
-}
-#else
 struct GdObj *load_dynlist(struct DynList *dynlist) {
     return proc_dynlist(dynlist);
 }
-#endif
 
 /**
  * Unused (not called)

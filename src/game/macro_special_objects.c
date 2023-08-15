@@ -324,7 +324,6 @@ void spawn_special_objects(s16 areaIndex, s16 **specialObjList) {
     }
 }
 
-#ifdef NO_SEGMENTED_MEMORY
 u32 get_special_objects_size(s16 *data) {
     s16 *startPos = data;
     s32 numOfSpecialObjects;
@@ -368,4 +367,3 @@ u32 get_special_objects_size(s16 *data) {
 
     return data - startPos;
 }
-#endif

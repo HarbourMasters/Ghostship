@@ -172,9 +172,7 @@ static char ctype[] = { 0,
 
 #define REDIRECT_USR_LIB
 
-#ifdef REDIRECT_USR_LIB
 static char bin_dir[PATH_MAX + 1];
-#endif
 static int g_file_max = 3;
 
 #if defined(__CYGWIN__) || defined(__APPLE__)
@@ -236,7 +234,6 @@ static void free_all_file_bufs(uint8_t *mem) {
 }
 
 static void find_bin_dir(void) {
-#ifdef REDIRECT_USR_LIB
     // gets the current executable's path
     char path[PATH_MAX + 1] = {0};
 #ifdef __CYGWIN__
@@ -257,7 +254,6 @@ static void find_bin_dir(void) {
 #endif
 
     strcpy(bin_dir, dirname(path));
-#endif
 }
 
 int main(int argc, char *argv[]) {
@@ -1205,7 +1201,6 @@ static uint32_t init_file(uint8_t *mem, int fd, int i, const char *path, const c
     }
     if (fd == -1) {
 
-#ifdef REDIRECT_USR_LIB
         char fixed_path[PATH_MAX + 1];
         if (!strcmp(path, "/usr/lib/err.english.cc") && bin_dir[0] != '\0') {
             int n = snprintf(fixed_path, sizeof(fixed_path), "%s/err.english.cc", bin_dir);
@@ -1213,7 +1208,6 @@ static uint32_t init_file(uint8_t *mem, int fd, int i, const char *path, const c
                 path = fixed_path;
             }
         }
-#endif
         fd = open(path, flags, 0666);
         if (fd < 0) {
             MEM_U32(ERRNO_ADDR) = errno;
@@ -2438,7 +2432,6 @@ int wrapper_execvp(uint8_t *mem, uint32_t file_addr, uint32_t argv_addr) {
     }
     argv[argc] = NULL;
 
-#ifdef REDIRECT_USR_LIB
     if (!strncmp(file, "/usr/lib/", 9) && bin_dir[0] != '\0') {
         char fixed_path[PATH_MAX + 1];
 #ifdef __CYGWIN__
@@ -2454,9 +2447,6 @@ int wrapper_execvp(uint8_t *mem, uint32_t file_addr, uint32_t argv_addr) {
     } else {
         execvp(file, argv);
     }
-#else
-    execvp(file, argv);
-#endif
 
     MEM_U32(ERRNO_ADDR) = errno;
     for (uint32_t i = 0; i < argc; i++) {

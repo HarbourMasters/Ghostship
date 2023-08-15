@@ -20,10 +20,6 @@
 #define PORTAMENTO_MODE_5 5
 
 #define COPT 0
-#if COPT
-#define M64_READ_U8(state, dst) \
-    dst = m64_read_u8(state);
-#else
 #define M64_READ_U8(state, dst) \
 {                               \
     u8 * _ptr_pc;               \
@@ -33,13 +29,8 @@
     _pc = *_ptr_pc;             \
     dst = _pc;                  \
 }
-#endif
 
 
-#if COPT
-#define M64_READ_S16(state, dst) \
-    dst = m64_read_s16(state);
-#else
 #define M64_READ_S16(state, dst)    \
 {                                   \
     s16 _ret;                       \
@@ -49,11 +40,6 @@
     ((*state).pc)++;                \
     dst = _ret;                     \
 }
-#endif
-#if COPT
-#define M64_READ_COMPRESSED_U16(state, dst) \
-    dst = m64_read_compressed_u16(state);
-#else
 #define M64_READ_COMPRESSED_U16(state, dst) \
 {                                           \
     u16 ret = *(state->pc++);               \
@@ -63,12 +49,7 @@
     }                                       \
     dst = ret;                              \
 }
-#endif
 
-#if COPT
-#define GET_INSTRUMENT(seqChannel, instId, _instOut, _adsr, dst, l) \
-    dst = get_instrument(seqChannel, instId, _instOut, _adsr);
-#else
 #define GET_INSTRUMENT(seqChannel, instId, _instOut, _adsr, dst, l) \
 { \
 struct AdsrSettings *adsr = _adsr; \
@@ -112,7 +93,6 @@ struct Instrument **instOut = _instOut;\
     *instOut = NULL; \
     ret ## l: ; \
 }
-#endif
 
 void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     struct SequencePlayer *seqPlayer;   // sp5C, t4

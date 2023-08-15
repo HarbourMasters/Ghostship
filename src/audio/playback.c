@@ -271,12 +271,6 @@ struct Drum *get_drum(s32 bankId, s32 drumId) {
         return NULL;
     }
 
-#ifndef NO_SEGMENTED_MEMORY
-    if ((uintptr_t) gCtlEntries[bankId].drums < 0x80000000U) {
-        stubbed_printf("Percussion Pointer Error\n");
-        return NULL;
-    }
-#endif
 
     drum = gCtlEntries[bankId].drums[drumId];
     if (drum == NULL) {
@@ -393,11 +387,6 @@ void process_notes(void) {
 #if defined(VERSION_EU) || defined(VERSION_SH)
         playbackState = (struct NotePlaybackState *) &note->priority;
         if (note->parentLayer != NO_LAYER) {
-#ifndef NO_SEGMENTED_MEMORY
-            if ((uintptr_t) playbackState->parentLayer < 0x7fffffffU) {
-                continue;
-            }
-#endif
 #ifdef VERSION_SH
             if (note != playbackState->parentLayer->note && playbackState->unkSH34 == 0) {
                 playbackState->adsr.action |= ADSR_ACTION_RELEASE;
@@ -680,11 +669,6 @@ struct Drum *get_drum(s32 bankId, s32 drumId) {
         return NULL;
     }
 
-#ifndef NO_SEGMENTED_MEMORY
-    if ((uintptr_t) gCtlEntries[bankId].drums < 0x80000000U) {
-        return NULL;
-    }
-#endif
 
     drum = gCtlEntries[bankId].drums[drumId];
     if (drum == NULL) {
