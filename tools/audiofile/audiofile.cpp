@@ -14114,7 +14114,6 @@ int afGetVirtualChannels (AFfilehandle file, int trackid)
 #define	SEG_MASK	(0x70)		/* Segment field mask. */
 
 /* see libst.h */
-#ifdef	SUPERCEDED
 
 static const short seg_end[8] = {0xFF, 0x1FF, 0x3FF, 0x7FF,
 			    0xFFF, 0x1FFF, 0x3FFF, 0x7FFF};
@@ -14298,7 +14297,6 @@ int _af_ulaw2linear (unsigned char u_val)
 	return ((u_val & SIGN_BIT) ? (BIAS - t) : (t - BIAS));
 }
 
-#endif
 
 // file: openclose.cpp
 /*
@@ -14326,9 +14324,7 @@ int _af_ulaw2linear (unsigned char u_val)
 #include <assert.h>
 #include <string.h>
 
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
 
 #include <audiofile.h>
 
