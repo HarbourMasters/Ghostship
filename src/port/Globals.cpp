@@ -14,7 +14,6 @@ GameEngine::GameEngine(){
     this->context->GetWindow()->SetMaximumFrameLatency(1);
 }
 
-extern "C" {
 void GameEngine_Create(void){
     GameEngine::Instance = new GameEngine();
 }
@@ -30,6 +29,4 @@ void GameEngine_RunCommands(Gfx* Commands) {
 
 void GameEngine_ProcessFrame(void (*run_one_game_iter)(void)) {
     GameEngine::Instance->context->GetWindow()->MainLoop(run_one_game_iter);
-}
-
 }

@@ -68,5 +68,6 @@ void end_master_display_list(void);
 void render_init(void);
 void select_gfx_pool(void);
 void display_and_vsync(void);
+void thread5_iteration(void);
 
 #endif // GAME_INIT_H

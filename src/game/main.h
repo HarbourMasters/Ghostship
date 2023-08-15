@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <libultraship.h>
 #include "config.h"
 
 struct RumbleData {
