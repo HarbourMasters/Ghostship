@@ -1,7 +1,7 @@
 #ifndef GEO_LAYOUT_H
 #define GEO_LAYOUT_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "game/memory.h"
 #include "macros.h"

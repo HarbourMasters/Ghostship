@@ -1,7 +1,7 @@
 #ifndef LEVEL_SCRIPT_H
 #define LEVEL_SCRIPT_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 struct LevelCommand;
 

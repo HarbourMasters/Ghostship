@@ -1,8 +1,8 @@
 #ifndef SKYBOX_H
 #define SKYBOX_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 Gfx *create_skybox_facing_camera(s8 player, s8 background, f32 fov,
                                  f32 posX, f32 posY, f32 posZ,

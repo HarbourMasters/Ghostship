@@ -1,7 +1,7 @@
 #ifndef BEHAVIOR_SCRIPT_H
 #define BEHAVIOR_SCRIPT_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #define BHV_PROC_CONTINUE 0
 #define BHV_PROC_BREAK    1

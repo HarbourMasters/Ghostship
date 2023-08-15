@@ -1,7 +1,7 @@
 #ifndef DEBUG_LEVEL_SELECT_H
 #define DEBUG_LEVEL_SELECT_H
 
-#include <PR/gbi.h>
+#include <libultra/gbi.h>
 
 extern const Gfx debug_level_select_dl_07000858[];
 extern const Gfx debug_level_select_dl_07001100[];

@@ -1,8 +1,8 @@
 #ifndef SEGMENT7_H
 #define SEGMENT7_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 // from main menu segment 7
 extern u8 dl_menu_idle_hand[];

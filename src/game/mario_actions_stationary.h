@@ -1,7 +1,7 @@
 #ifndef MARIO_ACTIONS_STATIONARY
 #define MARIO_ACTIONS_STATIONARY
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 

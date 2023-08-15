@@ -1,7 +1,7 @@
 #ifndef AUDIO_SEQPLAYER_H
 #define AUDIO_SEQPLAYER_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "internal.h"
 #include "playback.h"

@@ -1,7 +1,7 @@
 //! Copt inlining for US/JP. Here be dragons
 // This version is basically identical to EU
 
-#include <ultra64.h>
+#include <libultraship.h>
 #include <macros.h>
 
 #include "audio/heap.h"

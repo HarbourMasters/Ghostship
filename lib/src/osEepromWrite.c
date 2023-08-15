@@ -1,14 +1,9 @@
 #include "libultra_internal.h"
 #include "osContInternal.h"
 
-#ifndef AVOID_UB
-ALIGNED8 u32 D_80365E00[15];
-u32 D_80365E3C;
-#else
 // Certain code accesses the 16th element (D_80365E3C) in this array, making a seperate
 // definition UB when gcc rearranges those.
 ALIGNED8 u32 D_80365E00[16];
-#endif
 extern u8 _osLastSentSiCmd;
 
 typedef struct {
@@ -108,9 +103,7 @@ s32 __osPackEepWriteData(u8 address, u8 *buffer) {
     *(unkStruct2 *) sp14 = sp8;
     sp14 += 0xc;
     *sp14 = 254;
-#ifdef AVOID_UB
     return 0;
-#endif
 }
 
 s32 __osEepStatus(OSMesgQueue *a0, unkStruct *a1) {

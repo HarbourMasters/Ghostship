@@ -1,6 +1,7 @@
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
+#include "sm64.h"
 #include "config.h"
 #include "game_init.h"
 #include "memory.h"

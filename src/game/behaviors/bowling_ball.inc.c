@@ -79,10 +79,7 @@ void bowling_ball_set_waypoints(void) {
 
 void bhv_bowling_ball_roll_loop(void) {
     s16 collisionFlags;
-    s32 followStatus;
-#ifdef AVOID_UB
-    followStatus = 0;
-#endif
+    s32 followStatus = 0;
 
     bowling_ball_set_waypoints();
     collisionFlags = object_step();
@@ -113,10 +110,7 @@ void bhv_bowling_ball_roll_loop(void) {
 }
 
 void bhv_bowling_ball_initialize_loop(void) {
-    s32 followStatus;
-#ifdef AVOID_UB
-    followStatus = 0;
-#endif
+    s32 followStatus = 0;
 
     bowling_ball_set_waypoints();
 

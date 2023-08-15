@@ -1,5 +1,6 @@
-#include <ultra64.h>
+#include <libultraship.h>
 
+#include "sm64.h"
 #include "heap.h"
 #include "data.h"
 #include "load.h"

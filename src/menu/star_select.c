@@ -1,4 +1,4 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "audio/external.h"
 #include "behavior_data.h"
@@ -354,13 +354,8 @@ void print_act_selector_strings(void) {
 
 /**
  * Geo function that Print act selector strings.
- *!@bug: This geo function is missing the third param. Harmless in practice due to o32 convention.
  */
-#ifdef AVOID_UB
 Gfx *geo_act_selector_strings(s16 callContext, UNUSED struct GraphNode *node, UNUSED void *context) {
-#else
-Gfx *geo_act_selector_strings(s16 callContext, UNUSED struct GraphNode *node) {
-#endif
     if (callContext == GEO_CONTEXT_RENDER) {
         print_act_selector_strings();
     }
@@ -386,10 +381,7 @@ s32 lvl_init_act_selector_values_and_stars(UNUSED s32 arg, UNUSED s32 unused) {
         sObtainedStars--;
     }
 
-    //! no return value
-#ifdef AVOID_UB
     return 0;
-#endif
 }
 
 /**

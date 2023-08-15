@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "sm64.h"
 #include "behavior_data.h"
 #include "model_ids.h"

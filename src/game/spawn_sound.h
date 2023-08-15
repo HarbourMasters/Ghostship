@@ -1,7 +1,7 @@
 #ifndef SPAWN_SOUND_H
 #define SPAWN_SOUND_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 struct SoundState {
     s16 playSound; // if this is 1, the info below will

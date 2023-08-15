@@ -1,5 +1,6 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
+#include "sm64.h"
 #include "audio/external.h"
 #include "engine/geo_layout.h"
 #include "engine/graph_node.h"

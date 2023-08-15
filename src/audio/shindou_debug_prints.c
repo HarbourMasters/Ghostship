@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 
 #ifdef VERSION_SH
 // synthesis.c

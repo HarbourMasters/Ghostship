@@ -1,7 +1,7 @@
 #ifndef GD_OLD_MENU_H
 #define GD_OLD_MENU_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "gd_types.h"
 #include "macros.h"

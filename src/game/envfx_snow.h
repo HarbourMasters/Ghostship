@@ -1,7 +1,7 @@
 #ifndef ENVFX_SNOW_H
 #define ENVFX_SNOW_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 #include "types.h"
 
 #define ENVFX_MODE_NONE     0  // no effects

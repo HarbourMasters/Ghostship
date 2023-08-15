@@ -1,9 +1,8 @@
 #ifndef GD_RENDERER_H
 #define GD_RENDERER_H
 
-#include <PR/ultratypes.h>
-#include <PR/os_cont.h>
-
+#include <libultraship.h>
+#include "sm64.h"
 #include "gd_types.h"
 #include "macros.h"
 

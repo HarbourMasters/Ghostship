@@ -1,7 +1,7 @@
 #ifndef AREA_H
 #define AREA_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 #include "camera.h"

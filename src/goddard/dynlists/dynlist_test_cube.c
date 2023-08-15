@@ -1,5 +1,5 @@
 // early unused test dynlist
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "dynlist_macros.h"
 #include "dynlists.h"

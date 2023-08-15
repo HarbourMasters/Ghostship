@@ -1,8 +1,8 @@
 #ifndef TEXTURES_H
 #define TEXTURES_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 // cave
 extern const u8 cave_09000000[];

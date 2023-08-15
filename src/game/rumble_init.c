@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "macros.h"
 
 #include "buffers/buffers.h"

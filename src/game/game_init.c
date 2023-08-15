@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 
 #include "sm64.h"
 #include "gfx_dimensions.h"
@@ -248,7 +248,7 @@ void create_gfx_task_structure(void) {
     s32 entries = gDisplayListHead - gGfxPool->buffer;
 
     gGfxSPTask->msgqueue = &gGfxVblankQueue;
-    gGfxSPTask->msg = (OSMesg) 2;
+    gGfxSPTask->msg = OS_MESG_32(2);
     gGfxSPTask->task.t.type = M_GFXTASK;
     gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart);
@@ -653,7 +653,7 @@ void thread5_game_loop(UNUSED void *arg) {
 #endif
     save_file_load_all();
 
-    set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) 1);
+    set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, OS_MESG_32(1));
 
     // Point address to the entry point into the level script data.
     addr = segmented_to_virtual(level_script_entry);

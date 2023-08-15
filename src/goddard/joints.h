@@ -1,7 +1,7 @@
 #ifndef GD_JOINTS_H
 #define GD_JOINTS_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "gd_types.h"
 

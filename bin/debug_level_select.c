@@ -1,4 +1,4 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include "sm64.h"
 
 #include "make_const_nonconst.h"
@@ -2182,4 +2182,3 @@ const Gfx debug_level_select_dl_070063B0[] = {
     gsSP1Triangle( 6,  7,  8, 0x0),
     gsSPEndDisplayList(),
 };
-

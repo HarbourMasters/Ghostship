@@ -4,7 +4,7 @@
 // This file contains various data types used in Super Mario 64 that don't yet
 // have an appropriate header.
 
-#include <ultra64.h>
+#include <libultraship.h>
 #include "macros.h"
 #include "config.h"
 
@@ -13,12 +13,7 @@
 // actually return a value. This causes undefined behavior, which we'd rather
 // avoid on modern GCC. This only impacts -O2 and can matter for both the function
 // itself and functions that call it.
-#ifdef AVOID_UB
-    #define BAD_RETURN(cmd) void
-#else
-    #define BAD_RETURN(cmd) cmd
-#endif
-
+#define BAD_RETURN(cmd) void
 
 struct Controller {
   /*0x00*/ s16 rawStickX;       //

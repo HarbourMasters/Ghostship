@@ -1,7 +1,7 @@
 #ifndef OBJ_BEHAVIORS_H
 #define OBJ_BEHAVIORS_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "engine/surface_collision.h"
 #include "macros.h"

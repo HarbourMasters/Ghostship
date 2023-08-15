@@ -1,5 +1,5 @@
 #ifdef VERSION_SH
-#include <ultra64.h>
+#include <libultraship.h>
 
 #include "synthesis.h"
 #include "heap.h"

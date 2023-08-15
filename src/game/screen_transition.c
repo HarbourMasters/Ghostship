@@ -1,5 +1,5 @@
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 #include "area.h"
 #include "camera.h"
@@ -239,9 +239,7 @@ s32 render_screen_transition(s8 fadeTimer, s8 transType, u8 transTime, struct Wa
             return render_textured_transition(fadeTimer, transTime, transData, TEX_TRANS_BOWSER, TRANS_TYPE_MIRROR);
             break;
     }
-#ifdef AVOID_UB
     return 0;
-#endif
 }
 
 Gfx *render_cannon_circle_base(void) {

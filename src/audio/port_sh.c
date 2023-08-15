@@ -1,7 +1,7 @@
 #ifdef VERSION_SH
 // TODO: merge this with port_eu.c?
 
-#include <ultra64.h>
+#include <libultraship.h>
 
 #include "data.h"
 #include "heap.h"

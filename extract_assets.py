@@ -142,8 +142,7 @@ def main():
             print("Failed to open " + fname + "! " + str(e))
             sys.exit(1)
         sha1 = hashlib.sha1(roms[lang]).hexdigest()
-        with open("sm64." + lang + ".sha1", "r") as f:
-            expected_sha1 = f.read().split()[0]
+        expected_sha1 = "9bef1128717f958171a4afac3ed78ee2bb4e86ce"
         if sha1 != expected_sha1:
             print(
                 fname

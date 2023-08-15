@@ -1,7 +1,7 @@
 #ifndef MARIO_ACTIONS_MOVING
 #define MARIO_ACTIONS_MOVING
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 

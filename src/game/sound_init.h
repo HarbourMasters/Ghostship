@@ -1,7 +1,7 @@
 #ifndef SOUND_INIT_H
 #define SOUND_INIT_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "macros.h"
 

@@ -1,7 +1,7 @@
 #ifndef MATH_UTIL_H
 #define MATH_UTIL_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 
@@ -18,11 +18,7 @@
  * Thus, for non-IDO compilers we use the standard-compliant version.
  */
 extern f32 gSineTable[];
-#ifdef AVOID_UB
 #define gCosineTable (gSineTable + 0x400)
-#else
-extern f32 gCosineTable[];
-#endif
 
 #define sins(x) gSineTable[(u16) (x) >> 4]
 #define coss(x) gCosineTable[(u16) (x) >> 4]

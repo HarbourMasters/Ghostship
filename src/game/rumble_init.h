@@ -1,7 +1,7 @@
 #ifndef RUMBLE_INIT_H
 #define RUMBLE_INIT_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "config.h"
 

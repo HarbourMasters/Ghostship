@@ -1,7 +1,7 @@
 #ifndef AUDIO_PLAYBACK_H
 #define AUDIO_PLAYBACK_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "internal.h"
 

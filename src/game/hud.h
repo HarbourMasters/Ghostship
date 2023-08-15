@@ -1,8 +1,8 @@
 #ifndef HUD_H
 #define HUD_H
 
-#include <PR/ultratypes.h>
-#include <PR/gbi.h>
+#include <libultra/types.h>
+#include <libultra/gbi.h>
 
 enum PowerMeterAnimation {
     POWER_METER_HIDDEN,

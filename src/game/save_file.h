@@ -1,7 +1,7 @@
 #ifndef SAVE_FILE_H
 #define SAVE_FILE_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "types.h"
 #include "area.h"

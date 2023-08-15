@@ -108,10 +108,7 @@ void bhv_mips_act_wait_for_nearby_mario(void) {
  */
 void bhv_mips_act_follow_path(void) {
     s16 collisionFlags = 0;
-    s32 followStatus;
-#ifdef AVOID_UB
-    followStatus = 0;
-#endif
+    s32 followStatus = 0;
 
     // Retrieve current waypoint.
     struct Waypoint **pathBase = segmented_to_virtual(&inside_castle_seg7_trajectory_mips);

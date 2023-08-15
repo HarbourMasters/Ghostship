@@ -1,4 +1,4 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #include "prevent_bss_reordering.h"
 #include "area.h"

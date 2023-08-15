@@ -1,3 +1,3 @@
-#include <ultra64.h>
+#include <libultraship.h>
 
 u64 gAudioGlobalsStartMarker;

@@ -1,7 +1,7 @@
 #ifndef GFX_OUTPUT_BUFFER_H
 #define GFX_OUTPUT_BUFFER_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 
 #ifdef VERSION_EU
 extern u64 gGfxSPTaskOutputBuffer[0x2fc0];
