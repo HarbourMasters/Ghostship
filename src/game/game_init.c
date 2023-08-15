@@ -245,27 +245,27 @@ void make_viewport_clip_rect(Vp *viewport) {
  * If you plan on using gSPLoadUcode, make sure to add OS_TASK_LOADABLE to the flags member.
  */
 void create_gfx_task_structure(void) {
-    s32 entries = gDisplayListHead - gGfxPool->buffer;
+    // s32 entries = gDisplayListHead - gGfxPool->buffer;
 
-    gGfxSPTask->msgqueue = &gGfxVblankQueue;
-    gGfxSPTask->msg = OS_MESG_32(2);
-    gGfxSPTask->task.t.type = M_GFXTASK;
-    gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
-    gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart);
-    gGfxSPTask->task.t.flags = 0;
-    gGfxSPTask->task.t.ucode = rspF3DStart;
-    gGfxSPTask->task.t.ucode_data = rspF3DDataStart;
-    gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE; // (this size is ignored)
-    gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
-    gGfxSPTask->task.t.dram_stack = (u64 *) gGfxSPTaskStack;
-    gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
-    gGfxSPTask->task.t.output_buff = gGfxSPTaskOutputBuffer;
-    gGfxSPTask->task.t.output_buff_size =
-        (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    gGfxSPTask->task.t.data_ptr = (u64 *) &gGfxPool->buffer;
-    gGfxSPTask->task.t.data_size = entries * sizeof(Gfx);
-    gGfxSPTask->task.t.yield_data_ptr = (u64 *) gGfxSPTaskYieldBuffer;
-    gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
+    // gGfxSPTask->msgqueue = &gGfxVblankQueue;
+    // gGfxSPTask->msg = OS_MESG_32(2);
+    // gGfxSPTask->task.t.type = M_GFXTASK;
+    // gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
+    // gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart);
+    // gGfxSPTask->task.t.flags = 0;
+    // gGfxSPTask->task.t.ucode = rspF3DStart;
+    // gGfxSPTask->task.t.ucode_data = rspF3DDataStart;
+    // gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE; // (this size is ignored)
+    // gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
+    // gGfxSPTask->task.t.dram_stack = (u64 *) gGfxSPTaskStack;
+    // gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
+    // gGfxSPTask->task.t.output_buff = gGfxSPTaskOutputBuffer;
+    // gGfxSPTask->task.t.output_buff_size =
+    //     (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
+    // gGfxSPTask->task.t.data_ptr = (u64 *) &gGfxPool->buffer;
+    // gGfxSPTask->task.t.data_size = entries * sizeof(Gfx);
+    // gGfxSPTask->task.t.yield_data_ptr = (u64 *) gGfxSPTaskYieldBuffer;
+    // gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
 }
 
 /**
@@ -640,8 +640,10 @@ void setup_game_memory(void) {
 /**
  * Main game loop thread. Runs forever as long as the game continues.
  */
-void thread5_game_loop(UNUSED void *arg) {
-    struct LevelCommand *addr;
+
+struct LevelCommand *addr;
+
+void thread5_game_loop() {
 
     setup_game_memory();
 #if ENABLE_RUMBLE
@@ -661,12 +663,13 @@ void thread5_game_loop(UNUSED void *arg) {
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
     set_sound_mode(save_file_get_sound_mode());
     render_init();
+}
 
-    while (TRUE) {
-        // If the reset timer is active, run the process to reset the game.
+void thread5_iteration(void){
+    // If the reset timer is active, run the process to reset the game.
         if (gResetTimer != 0) {
             draw_reset_bars();
-            continue;
+            return;
         }
         profiler_log_thread5_time(THREAD5_START);
 
@@ -692,5 +695,4 @@ void thread5_game_loop(UNUSED void *arg) {
             // amount of free space remaining.
             print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
         }
-    }
 }
