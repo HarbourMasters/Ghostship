@@ -488,7 +488,7 @@ extern void osViBlack(u8);
 extern void osViFade(u8, u16);
 extern void osViRepeatLine(u8);
 extern void osCreateViManager(OSPri);
-extern u32 osVirtualToPhysical(void *);
+extern uintptr_t osVirtualToPhysical(void *addr);
 extern void * osPhysicalToVirtual(u32);
 extern void osMapTLB(int32_t a, uint32_t b, void* c, uint32_t d, uint32_t e, uint32_t f);
 #ifndef TRUE

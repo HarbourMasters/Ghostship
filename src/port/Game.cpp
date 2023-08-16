@@ -20,7 +20,7 @@ u32 gNumVblanks = 0;
 s8 gNmiResetBarsTimer = 0;
 u64 osClockRate = 62500000;
 
-s8 sAudioEnabled = TRUE;
+s8 sAudioEnabled = FALSE;
 s8 gShowProfiler = FALSE;
 s8 gShowDebugText = FALSE;
 s8 gDebugLevelSelect = FALSE;
@@ -36,10 +36,8 @@ void set_vblank_handler(s32 index, VblankHandler *handler, OSMesgQueue *queue, O
 void dispatch_audio_sptask(SPTask *spTask) {}
 
 void alloc_pool(void) {
-    void *start = (void *) SEG_POOL_START;
-    void *end = (void *) SEG_POOL_END;
-
-    main_pool_init(start, end);
+    static u64 pool[0x165000 * sizeof(void *)];
+    main_pool_init(pool, pool + sizeof(pool) / sizeof(pool[0]));
     gEffectsMemoryPool = mem_pool_init(0x4000, MEMORY_POOL_LEFT);
 }
 
@@ -55,15 +53,17 @@ void push_frame(void) {
     GameEngine_StartFrame();
     thread5_iteration();
 
-    int samples_left = AudioPlayerBuffered();
-    u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
+    if(sAudioEnabled) {
+        int samples_left = AudioPlayerBuffered();
+        u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
-    s16 audio_buffer[SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 2];
-    for (int i = 0; i < AUDIO_FRAMES_PER_UPDATE; i++) {
-        create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
+        s16 audio_buffer[SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 2];
+        for (int i = 0; i < AUDIO_FRAMES_PER_UPDATE; i++) {
+            create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
+        }
+
+        AudioPlayerPlayFrame((u8 *) audio_buffer, 2 * num_audio_samples * 4);
     }
-
-    AudioPlayerPlayFrame((u8*)audio_buffer, 2 * num_audio_samples * 4);
 }
 
 int main(){

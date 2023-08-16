@@ -302,10 +302,10 @@ struct SequencePlayer {
     /*0x08C, 0x090*/ u8 *shortNoteDurationTable;
     /*0x090, 0x094*/ struct NotePool notePool;
     /*0x0D0, 0x0D4*/ OSMesgQueue seqDmaMesgQueue;
-    /*0x0E8, 0x0EC*/ OSMesg* seqDmaMesg;
+    /*0x0E8, 0x0EC*/ OSMesg seqDmaMesg;
     /*0x0EC, 0x0F0*/ OSIoMesg seqDmaIoMesg;
     /*0x100, 0x108*/ OSMesgQueue bankDmaMesgQueue;
-    /*0x118, 0x120*/ OSMesg* bankDmaMesg;
+    /*0x118, 0x120*/ OSMesg bankDmaMesg;
     /*0x11C, 0x124*/ OSIoMesg bankDmaIoMesg;
     /*0x130, 0x13C*/ u8 *bankDmaCurrMemAddr;
 #if defined(VERSION_JP) || defined(VERSION_US)
@@ -616,9 +616,6 @@ struct Note {
     // when needed... This breaks alignment on non-N64 platforms, which we hack
     // around by skipping the padding in that case.
     // TODO: use macros or something instead.
-#ifdef TARGET_N64
-    u8 pad0[12];
-#endif
 
     /*0x04, 0x30, 0x30*/ u8 priority;
     /*      0x31, 0x31*/ u8 waveId;

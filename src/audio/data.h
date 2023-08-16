@@ -16,7 +16,7 @@
 #if defined(VERSION_EU) || defined(VERSION_SH)
 extern struct AudioSessionSettingsEU gAudioSessionPresets[];
 #else
-extern struct AudioSessionSettings gAudioSessionPresets[18];
+extern struct AudioSessionSettings gAudioSessionPresets[];
 #endif
 extern u16 D_80332388[128]; // unused
 

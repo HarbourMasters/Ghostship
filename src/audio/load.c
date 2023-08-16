@@ -7,6 +7,8 @@
 #include "heap.h"
 #include "load.h"
 #include "seqplayer.h"
+#include <string.h>
+#include <stdlib.h>
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
@@ -106,15 +108,16 @@ extern u8 gBankSetsData[];  // bank_sets.s
 
 ALSeqFile *get_audio_file_header(s32 arg0);
 
+#include <stdio.h>
 /**
  * Performs an immediate DMA copy
  */
 void audio_dma_copy_immediate(uintptr_t devAddr, void *vAddr, size_t nbytes) {
-    eu_stubbed_printf_3("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
+    printf("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
     osInvalDCache(vAddr, nbytes);
     osPiStartDma(&gAudioDmaIoMesg, OS_MESG_PRI_HIGH, OS_READ, devAddr, vAddr, nbytes,
                  &gAudioDmaMesgQueue);
-    osRecvMesg(&gAudioDmaMesgQueue, NULL, OS_MESG_BLOCK);
+    osRecvMesg(&gAudioDmaMesgQueue, NULL, OS_MESG_NOBLOCK);
     eu_stubbed_printf_0("Romcopyend\n");
 }
 
@@ -658,7 +661,7 @@ struct AudioBank *bank_load_async(s32 bankId, s32 arg1, struct SequencePlayer *s
     mesgQueue = &seqPlayer->bankDmaMesgQueue;
     osCreateMesgQueue(mesgQueue, &seqPlayer->bankDmaMesg, 1);
 #if defined(VERSION_JP) || defined(VERSION_US)
-    seqPlayer->bankDmaMesg = NULL;
+    seqPlayer->bankDmaMesg = OS_MESG_PTR(NULL);
 #endif
     seqPlayer->bankDmaInProgress = TRUE;
     audio_dma_partial_copy_async(&seqPlayer->bankDmaCurrDevAddr, &seqPlayer->bankDmaCurrMemAddr,
@@ -712,7 +715,7 @@ void *sequence_dma_async(s32 seqId, s32 arg1, struct SequencePlayer *seqPlayer) 
         mesgQueue = &seqPlayer->seqDmaMesgQueue;
         osCreateMesgQueue(mesgQueue, &seqPlayer->seqDmaMesg, 1);
 #if defined(VERSION_JP) || defined(VERSION_US)
-        seqPlayer->seqDmaMesg = NULL;
+        seqPlayer->seqDmaMesg = OS_MESG_PTR(NULL);
 #endif
         seqPlayer->seqDmaInProgress = TRUE;
         audio_dma_copy_async((uintptr_t)(seqData + 0x40), (u8 *) ptr + 0x40, seqLength - 0x40, mesgQueue,
@@ -941,30 +944,12 @@ void audio_init() {
         ((u64 *) gAudioHeap)[i] = 0;
     }
 
-#ifdef TARGET_N64
-    // It seems boot.s doesn't clear the .bss area for audio, so do it here.
-    i = 0;
-    lim3 = ((uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) &gAudioGlobalsStartMarker) / 8;
-    ptr64 = &gAudioGlobalsStartMarker - 1;
-    for (k = lim3; k >= 0; k--) {
-        i++;
-        ptr64[i] = 0;
-    }
-#endif
 
 #else
     for (i = 0; i < gAudioHeapSize / 8; i++) {
         ((u64 *) gAudioHeap)[i] = 0;
     }
 
-#ifdef TARGET_N64
-    // It seems boot.s doesn't clear the .bss area for audio, so do it here.
-    lim3 = ((uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) &gAudioGlobalsStartMarker) / 8;
-    ptr64 = &gAudioGlobalsStartMarker;
-    for (k = lim3; k >= 0; k--) {
-        *ptr64++ = 0;
-    }
-#endif
 
     D_EU_802298D0 = 20.03042f;
     gRefreshRate = 50;
@@ -973,14 +958,6 @@ void audio_init() {
     }
 #endif
 
-#ifdef TARGET_N64
-    eu_stubbed_printf_3(
-        "Clear Workarea %x -%x size %x \n",
-        (uintptr_t) &gAudioGlobalsStartMarker,
-        (uintptr_t) &gAudioGlobalsEndMarker,
-        (uintptr_t) &gAudioGlobalsEndMarker - (uintptr_t) &gAudioGlobalsStartMarker
-    );
-#endif
 
     eu_stubbed_printf_1("AudioHeap is %x\n", gAudioHeapSize);
 
@@ -1016,7 +993,9 @@ void audio_init() {
     gAudioResetStatus = 1;
     audio_shut_down_and_reset_step();
 #else
+    printf("Crashes Here?\n");
     audio_reset_session(&gAudioSessionPresets[0]);
+    printf("Nope\n");
 #endif
 
     // Not sure about these prints
@@ -1035,9 +1014,11 @@ void audio_init() {
 #else
     size = ALIGN16(gSequenceCount * sizeof(ALSeqData) + 4);
 #endif
+    printf("Crashes Here?\n");
     gSeqFileHeader = soundAlloc(&gAudioInitPool, size);
     audio_dma_copy_immediate((uintptr_t) data, gSeqFileHeader, size);
     alSeqFileNew(gSeqFileHeader, data);
+    printf("Nope\n");
 
     // Load header for CTL (instrument metadata)
     gAlCtlHeader = (ALSeqFile *) buf;
@@ -1060,9 +1041,10 @@ void audio_init() {
     alSeqFileNew(gAlTbl, gSoundDataRaw);
 
     // Load bank sets for each sequence
+    printf("Crashes Here on bank sets?\n");
     gAlBankSets = soundAlloc(&gAudioInitPool, 0x100);
     audio_dma_copy_immediate((uintptr_t) gBankSetsData, gAlBankSets, 0x100);
-
+    printf("Nope\n");
     init_sequence_players();
     gAudioLoadLock = AUDIO_LOCK_NOT_LOADING;
     // Should probably contain the sizes of the data banks, but those aren't

@@ -49,7 +49,7 @@ struct AudioSessionSettingsEU gAudioSessionPresets[] = {
 // - memory used for temporary sequences
 // - memory used for temporary banks
 #if defined(VERSION_JP) || defined(VERSION_US)
-struct AudioSessionSettings gAudioSessionPresets[18] = {
+struct AudioSessionSettings gAudioSessionPresets[] = {
 #ifdef VERSION_JP
     { 32000, 16, 1, 0x0800, 0x2FFF, 0x7FFF, 0x3900, 0x6000, 0x4400, 0x2A00 },
     { 32000, 16, 1, 0x0A00, 0x47FF, 0x7FFF, 0x3900, 0x6000, 0x4400, 0x2A00 },

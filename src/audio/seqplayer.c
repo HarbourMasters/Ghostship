@@ -2265,7 +2265,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
                                          &seqPlayer->bankDmaIoMesg);
         }
 #else
-        if (seqPlayer->bankDmaMesg == NULL) {
+        if (!OS_MESG_VALID(seqPlayer->bankDmaMesg)) {
             return;
         }
         if (seqPlayer->bankDmaRemaining == 0) {
@@ -2279,7 +2279,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
             gBankLoadStatus[seqPlayer->loadingBankId] = SOUND_LOAD_STATUS_COMPLETE;
         } else {
             osCreateMesgQueue(&seqPlayer->bankDmaMesgQueue, &seqPlayer->bankDmaMesg, 1);
-            seqPlayer->bankDmaMesg = NULL;
+            seqPlayer->bankDmaMesg = OS_MESG_PTR(NULL);
             audio_dma_partial_copy_async(&seqPlayer->bankDmaCurrDevAddr, &seqPlayer->bankDmaCurrMemAddr,
                                          &seqPlayer->bankDmaRemaining, &seqPlayer->bankDmaMesgQueue,
                                          &seqPlayer->bankDmaIoMesg);
@@ -2294,7 +2294,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
             return;
         }
 #else
-        if (seqPlayer->seqDmaMesg == NULL) {
+        if (!OS_MESG_VALID(seqPlayer->seqDmaMesg)) {
             return;
         }
 #endif
