@@ -32,3 +32,16 @@ void GameEngine_RunCommands(Gfx* Commands) {
 void GameEngine_ProcessFrame(void (*run_one_game_iter)(void)) {
     GameEngine::Instance->context->GetWindow()->MainLoop(run_one_game_iter);
 }
+
+extern "C" uint32_t GameEngine_GetSampleRate(void) {
+    auto audio = LUS::Context::GetInstance()->GetAudio()->GetAudioPlayer();
+    if (audio == nullptr) {
+        return 0;
+    }
+
+    if (!audio->IsInitialized()) {
+        return 0;
+    }
+
+    return audio->GetSampleRate();
+}

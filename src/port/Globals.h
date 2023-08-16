@@ -1,10 +1,11 @@
 #pragma once
 
+#ifdef __cplusplus
 #include <vector>
 #include <Context.h>
 
 class GameEngine {
-public:
+  public:
     static GameEngine* Instance;
 
     std::shared_ptr<LUS::Context> context;
@@ -18,3 +19,6 @@ void GameEngine_Create(void);
 void GameEngine_StartFrame(void);
 void GameEngine_RunCommands(Gfx* Commands);
 void GameEngine_ProcessFrame(void (*run_one_game_iter)(void));
+#else
+uint32_t GameEngine_GetSampleRate(void);
+#endif
