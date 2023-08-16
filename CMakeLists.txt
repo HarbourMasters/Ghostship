@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
 # Set the project version and language
-project(sm64-tmp VERSION 0.1.0 LANGUAGES C CXX ASM)
+project(Ghostship VERSION 0.1.0 LANGUAGES C CXX ASM)
 
 if(APPLE)
   enable_language(OBJCXX)

@@ -10,7 +10,7 @@ GameEngine* GameEngine::Instance;
 GameEngine::GameEngine(){
     std::cout << "GameEngine::GameEngine" << std::endl;
     std::string main = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
-    this->context = LUS::Context::CreateInstance("Super Mario 64", "sm64", "sm64.json", {main}, {}, 3);
+    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", {main}, {}, 3);
     this->context->GetWindow()->SetTargetFps(30);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
 }
