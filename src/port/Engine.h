@@ -4,6 +4,11 @@
 #include <vector>
 #include <Context.h>
 
+#define SAMPLES_HIGH 752
+#define SAMPLES_LOW 720
+#define AUDIO_FRAMES_PER_UPDATE 2
+#define NUM_AUDIO_CHANNELS 2
+
 class GameEngine {
   public:
     static GameEngine* Instance;
@@ -12,13 +17,11 @@ class GameEngine {
 
     GameEngine();
     ~GameEngine();
-    void run();
+    static void Create(void);
+    void StartFrame(void);
+    void RunCommands(Gfx* Commands);
+    void ProcessFrame(void (*run_one_game_iter)(void));
 };
-
-void GameEngine_Create(void);
-void GameEngine_StartFrame(void);
-void GameEngine_RunCommands(Gfx* Commands);
-void GameEngine_ProcessFrame(void (*run_one_game_iter)(void));
 #else
 uint32_t GameEngine_GetSampleRate(void);
 #endif
