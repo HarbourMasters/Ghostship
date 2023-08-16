@@ -54,7 +54,7 @@ build/*
 build-cmake/*
 cmake-build-*/*
 .idea/*
-sm64.json
+ghostship.cfg.json
 imgui.ini
 .DS_Store
 logs/

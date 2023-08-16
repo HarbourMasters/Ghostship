@@ -7,7 +7,7 @@
 #include "synthesis.h"
 #include "seqplayer.h"
 #include "effects.h"
-#include "port/Globals.h"
+#include "port/Engine.h"
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
