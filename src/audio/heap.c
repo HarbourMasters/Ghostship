@@ -7,7 +7,7 @@
 #include "synthesis.h"
 #include "seqplayer.h"
 #include "effects.h"
-#include <lib/src/osAi.h>
+#include "port/Globals.h"
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
@@ -1161,8 +1161,7 @@ void audio_reset_session(void) {
         remainingDmas = gCurrAudioFrameDmaCount;
         while (remainingDmas > 0) {
             for (i = 0; i < gCurrAudioFrameDmaCount; i++) {
-                if (osRecvMesg(&gCurrAudioFrameDmaQueue, NULL, OS_MESG_NOBLOCK) == 0)
-                    remainingDmas--;
+                remainingDmas--;
             }
         }
         gCurrAudioFrameDmaCount = 0;
@@ -1219,7 +1218,7 @@ void audio_reset_session(void) {
 #endif
 #else
     reverbWindowSize = preset->reverbWindowSize;
-    gAiFrequency = osAiSetFrequency(preset->frequency);
+    gAiFrequency = GameEngine_GetSampleRate();
     gMaxSimultaneousNotes = preset->maxSimultaneousNotes;
     gSamplesPerFrameTarget = ALIGN16(gAiFrequency / 60);
     gReverbDownsampleRate = preset->reverbDownsampleRate;

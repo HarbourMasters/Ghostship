@@ -113,7 +113,7 @@ ALSeqFile *get_audio_file_header(s32 arg0);
  * Performs an immediate DMA copy
  */
 void audio_dma_copy_immediate(uintptr_t devAddr, void *vAddr, size_t nbytes) {
-    printf("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
+    eu_stubbed_printf_3("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
     osInvalDCache(vAddr, nbytes);
     osPiStartDma(&gAudioDmaIoMesg, OS_MESG_PRI_HIGH, OS_READ, devAddr, vAddr, nbytes,
                  &gAudioDmaMesgQueue);
@@ -939,10 +939,7 @@ void audio_init() {
         gUnused80226E98[i] = 0;
     }
 
-    lim2 = gAudioHeapSize;
-    for (i = 0; i <= lim2 / 8 - 1; i++) {
-        ((u64 *) gAudioHeap)[i] = 0;
-    }
+    memset(gAudioHeap, 0, gAudioHeapSize);
 
 
 #else
@@ -993,9 +990,7 @@ void audio_init() {
     gAudioResetStatus = 1;
     audio_shut_down_and_reset_step();
 #else
-    printf("Crashes Here?\n");
     audio_reset_session(&gAudioSessionPresets[0]);
-    printf("Nope\n");
 #endif
 
     // Not sure about these prints
@@ -1014,11 +1009,9 @@ void audio_init() {
 #else
     size = ALIGN16(gSequenceCount * sizeof(ALSeqData) + 4);
 #endif
-    printf("Crashes Here?\n");
     gSeqFileHeader = soundAlloc(&gAudioInitPool, size);
     audio_dma_copy_immediate((uintptr_t) data, gSeqFileHeader, size);
     alSeqFileNew(gSeqFileHeader, data);
-    printf("Nope\n");
 
     // Load header for CTL (instrument metadata)
     gAlCtlHeader = (ALSeqFile *) buf;
@@ -1041,10 +1034,8 @@ void audio_init() {
     alSeqFileNew(gAlTbl, gSoundDataRaw);
 
     // Load bank sets for each sequence
-    printf("Crashes Here on bank sets?\n");
-    gAlBankSets = soundAlloc(&gAudioInitPool, 0x100);
-    audio_dma_copy_immediate((uintptr_t) gBankSetsData, gAlBankSets, 0x100);
-    printf("Nope\n");
+    gAlBankSets = soundAlloc(&gAudioInitPool, 0xA0);
+    audio_dma_copy_immediate((uintptr_t) gBankSetsData, gAlBankSets, 0xA0);
     init_sequence_players();
     gAudioLoadLock = AUDIO_LOCK_NOT_LOADING;
     // Should probably contain the sizes of the data banks, but those aren't
