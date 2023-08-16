@@ -2369,7 +2369,6 @@ void start_view_dl(struct ObjView *view) {
         uly = lry - 1.0f;
     }
 
-    gDPSetScissor(next_gfx(), G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     gSPClearGeometryMode(next_gfx(), 0xFFFFFFFF);
     gSPSetGeometryMode(next_gfx(), G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH | G_SHADE);
     if (view->flags & VIEW_ALLOC_ZBUF) {

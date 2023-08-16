@@ -1,4 +1,5 @@
 #include "Globals.h"
+#include "ImguiUI.h"
 
 #include <iostream>
 #include <Fast3D/gfx_pc.h>
@@ -16,6 +17,7 @@ GameEngine::GameEngine(){
 
 void GameEngine_Create(void){
     GameEngine::Instance = new GameEngine();
+    GameUI::SetupGuiElements();
 }
 
 void GameEngine_StartFrame(void){
