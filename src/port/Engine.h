@@ -18,9 +18,9 @@ class GameEngine {
     GameEngine();
     ~GameEngine();
     static void Create(void);
-    void StartFrame(void);
-    void RunCommands(Gfx* Commands);
-    void ProcessFrame(void (*run_one_game_iter)(void));
+    void StartFrame(void) const;
+    static void RunCommands(Gfx* Commands);
+    void ProcessFrame(void (*run_one_game_iter)(void)) const;
 };
 #else
 uint32_t GameEngine_GetSampleRate(void);

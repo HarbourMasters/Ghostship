@@ -11,7 +11,7 @@ extern "C" {
 
 bool sAudioEnabled = true;
 
-void alloc_pool(void) {
+void alloc_pool() {
     static u64 pool[1024 * 1024 * 4];
     main_pool_init(pool, pool + sizeof(pool) / sizeof(pool[0]));
     gEffectsMemoryPool = mem_pool_init(0x4000, MEMORY_POOL_LEFT);
@@ -19,10 +19,10 @@ void alloc_pool(void) {
 
 extern "C"
 void exec_display_list(SPTask *spTask) {
-    GameEngine::Instance->RunCommands((Gfx*) spTask->task.t.data_ptr);
+    GameEngine::RunCommands((Gfx*) spTask->task.t.data_ptr);
 }
 
-void push_frame(void) {
+void push_frame() {
     GameEngine::Instance->StartFrame();
     thread5_iteration();
 
