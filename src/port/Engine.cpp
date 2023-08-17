@@ -8,18 +8,19 @@
 GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine(){
-    std::string main = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
-    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", {main}, {}, 3);
+    std::string main = LUS::Context::GetPathRelativeToAppBundle("smcube.otr");
+    std::string assets = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
+    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", { main, assets }, {}, 3);
     this->context->GetWindow()->SetTargetFps(30);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
 }
 
-void GameEngine::Create(void){
+void GameEngine::Create(){
     GameEngine::Instance = new GameEngine();
     GameUI::SetupGuiElements();
 }
 
-void GameEngine::StartFrame(void){
+void GameEngine::StartFrame() const{
     this->context->GetWindow()->StartFrame();
 }
 
@@ -28,7 +29,7 @@ void GameEngine::RunCommands(Gfx* Commands) {
     gfx_end_frame();
 }
 
-void GameEngine::ProcessFrame(void (*run_one_game_iter)(void)) {
+void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
     this->context->GetWindow()->MainLoop(run_one_game_iter);
 }
 
