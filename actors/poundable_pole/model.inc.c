@@ -7,14 +7,10 @@ static const Lights1 poundable_pole_seg6_lights_06001038 = gdSPDefLights1(
 );
 
 // 0x06001050
-ALIGNED8 static const Texture poundable_pole_seg6_texture_06001050[] = {
-#include "actors/poundable_pole/poundable_pole_top.rgba16.inc.c"
-};
+ALIGNED8 static const Texture poundable_pole_seg6_texture_06001050[] = "__OTR__actors/poundable_pole/poundable_pole_top";
 
 // 0x06001850
-ALIGNED8 static const Texture poundable_pole_seg6_texture_06001850[] = {
-#include "actors/poundable_pole/poundable_pole_side.rgba16.inc.c"
-};
+ALIGNED8 static const Texture poundable_pole_seg6_texture_06001850[] = "__OTR__actors/poundable_pole/poundable_pole_side";
 
 // 0x06002050
 static const Vtx poundable_pole_seg6_vertex_06002050[] = {

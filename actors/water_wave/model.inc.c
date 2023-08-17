@@ -9,24 +9,16 @@ static const Vtx water_wave_seg4_vertex_04025318[] = {
 };
 
 // 0x04025358
-ALIGNED8 static const Texture water_wave_seg4_texture_04025358[] = {
-#include "actors/water_wave/water_wave_0.ia16.inc.c"
-};
+ALIGNED8 static const Texture water_wave_seg4_texture_04025358[] = "__OTR__actors/water_wave/water_wave_0";
 
 // 0x04025B58
-ALIGNED8 static const Texture water_wave_seg4_texture_04025B58[] = {
-#include "actors/water_wave/water_wave_1.ia16.inc.c"
-};
+ALIGNED8 static const Texture water_wave_seg4_texture_04025B58[] = "__OTR__actors/water_wave/water_wave_1";
 
 // 0x04026358
-ALIGNED8 static const Texture water_wave_seg4_texture_04026358[] = {
-#include "actors/water_wave/water_wave_2.ia16.inc.c"
-};
+ALIGNED8 static const Texture water_wave_seg4_texture_04026358[] = "__OTR__actors/water_wave/water_wave_2";
 
 // 0x04026B58
-ALIGNED8 static const Texture water_wave_seg4_texture_04026B58[] = {
-#include "actors/water_wave/water_wave_3.ia16.inc.c"
-};
+ALIGNED8 static const Texture water_wave_seg4_texture_04026B58[] = "__OTR__actors/water_wave/water_wave_3";
 
 // 0x04027358 - 0x040273A0
 const Gfx water_wave_seg4_dl_04027358[] = {

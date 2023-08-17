@@ -1,24 +1,16 @@
 // Snufit
 
 // 0x060070E0
-ALIGNED8 static const Texture snufit_seg6_texture_060070E0[] = {
-#include "actors/snufit/snufit_body.rgba16.inc.c"
-};
+ALIGNED8 static const Texture snufit_seg6_texture_060070E0[] = "__OTR__actors/snufit/snufit_body";
 
 // 0x060078E0
-ALIGNED8 static const Texture snufit_seg6_texture_060078E0[] = {
-#include "actors/snufit/snufit_eye.rgba16.inc.c"
-};
+ALIGNED8 static const Texture snufit_seg6_texture_060078E0[] = "__OTR__actors/snufit/snufit_eye";
 
 // 0x060080E0
-ALIGNED8 static const Texture snufit_seg6_texture_060080E0[] = {
-#include "actors/snufit/snufit_mask_strap.rgba16.inc.c"
-};
+ALIGNED8 static const Texture snufit_seg6_texture_060080E0[] = "__OTR__actors/snufit/snufit_mask_strap";
 
 // 0x060084E0
-ALIGNED8 static const Texture snufit_seg6_texture_060084E0[] = {
-#include "actors/snufit/snufit_mouth.rgba16.inc.c"
-};
+ALIGNED8 static const Texture snufit_seg6_texture_060084E0[] = "__OTR__actors/snufit/snufit_mouth";
 
 // 0x06008CE0
 static const Lights1 snufit_seg6_lights_06008CE0 = gdSPDefLights1(

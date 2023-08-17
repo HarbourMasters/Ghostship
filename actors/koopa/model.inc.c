@@ -55,44 +55,28 @@ static const Lights1 koopa_seg6_lights_06002630 = gdSPDefLights1(
 //     the rest of its body. This is evident because once the mistake is corrected
 //     it turns back to being white like the other polygons.
 // 0x06002648
-ALIGNED8 static const Texture koopa_seg6_texture_06002648[] = {
-#include "actors/koopa/koopa_shell_front.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06002648[] = "__OTR__actors/koopa/koopa_shell_front";
 
 // 0x06002E48
-ALIGNED8 static const Texture koopa_seg6_texture_06002E48[] = {
-#include "actors/koopa/koopa_shell_back.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06002E48[] = "__OTR__actors/koopa/koopa_shell_back";
 
 // 0x06003648
-ALIGNED8 static const Texture koopa_seg6_texture_06003648[] = {
-#include "actors/koopa/koopa_shoe.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06003648[] = "__OTR__actors/koopa/koopa_shoe";
 
 // 0x06003E48
-ALIGNED8 static const Texture koopa_seg6_texture_06003E48[] = {
-#include "actors/koopa/koopa_shell_front_top.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06003E48[] = "__OTR__actors/koopa/koopa_shell_front_top";
 
 // 0x06004648
-ALIGNED8 static const Texture koopa_seg6_texture_06004648[] = {
-#include "actors/koopa/koopa_eyes_open.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06004648[] = "__OTR__actors/koopa/koopa_eyes_open";
 
 // 0x06004E48
-ALIGNED8 static const Texture koopa_seg6_texture_06004E48[] = {
-#include "actors/koopa/koopa_eyes_closed.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06004E48[] = "__OTR__actors/koopa/koopa_eyes_closed";
 
 // 0x06005648
-ALIGNED8 static const Texture koopa_seg6_texture_06005648[] = {
-#include "actors/koopa/koopa_eye_border.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06005648[] = "__OTR__actors/koopa/koopa_eye_border";
 
 // 0x06005E48
-ALIGNED8 static const Texture koopa_seg6_texture_06005E48[] = {
-#include "actors/koopa/koopa_nostrils.rgba16.inc.c"
-};
+ALIGNED8 static const Texture koopa_seg6_texture_06005E48[] = "__OTR__actors/koopa/koopa_nostrils";
 
 // 0x06006E48
 static const Lights1 koopa_seg6_lights_06006E48 = gdSPDefLights1(

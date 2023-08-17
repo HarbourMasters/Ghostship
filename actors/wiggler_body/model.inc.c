@@ -1,39 +1,25 @@
 // Wiggler Body
 
 // 0x05005A30
-ALIGNED8 static const Texture wiggler_seg5_texture_05005A30[] = {
-#include "actors/wiggler/wiggler_segment_left_side.rgba16.inc.c"
-};
+ALIGNED8 static const Texture wiggler_seg5_texture_05005A30[] = "__OTR__actors/wiggler/wiggler_segment_left_side";
 
 // 0x05006A30
-ALIGNED8 static const Texture wiggler_seg5_texture_05006A30[] = {
-#include "actors/wiggler/wiggler_segment_right_side.rgba16.inc.c"
-};
+ALIGNED8 static const Texture wiggler_seg5_texture_05006A30[] = "__OTR__actors/wiggler/wiggler_segment_right_side";
 
 // 0x05007A30
-ALIGNED8 static const Texture wiggler_seg5_texture_05007A30[] = {
-#include "actors/wiggler/wiggler_eye.rgba16.inc.c"
-};
+ALIGNED8 static const Texture wiggler_seg5_texture_05007A30[] = "__OTR__actors/wiggler/wiggler_eye";
 
 // 0x05008230
-ALIGNED8 static const Texture wiggler_seg5_texture_05008230[] = {
-#include "actors/wiggler/wiggler_flower.rgba16.inc.c"
-};
+ALIGNED8 static const Texture wiggler_seg5_texture_05008230[] = "__OTR__actors/wiggler/wiggler_flower";
 
 // 0x05008A30
-ALIGNED8 static const Texture wiggler_seg5_texture_05008A30[] = {
-#include "actors/wiggler/wiggler_frown.rgba16.inc.c"
-};
+ALIGNED8 static const Texture wiggler_seg5_texture_05008A30[] = "__OTR__actors/wiggler/wiggler_frown";
 
 // 0x05009230
-ALIGNED8 static const Texture wiggler_seg5_texture_05009230[] = {
-#include "actors/wiggler/wiggler_nose_left_side.rgba16.inc.c"
-};
+ALIGNED8 static const Texture wiggler_seg5_texture_05009230[] = "__OTR__actors/wiggler/wiggler_nose_left_side";
 
 // 0x0500A230
-ALIGNED8 static const Texture wiggler_seg5_texture_0500A230[] = {
-#include "actors/wiggler/wiggler_nose_right_side.rgba16.inc.c"
-};
+ALIGNED8 static const Texture wiggler_seg5_texture_0500A230[] = "__OTR__actors/wiggler/wiggler_nose_right_side";
 
 // 0x0500B230
 static const Lights1 wiggler_seg5_lights_0500B230 = gdSPDefLights1(

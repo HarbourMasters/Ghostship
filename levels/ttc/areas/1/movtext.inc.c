@@ -5,9 +5,7 @@ static const Lights1 ttc_lights_surface_treadmill = gdSPDefLights1(
 );
 
 // 0x07015F90 - 0x07016790
-ALIGNED8 const Texture ttc_yellow_triangle[] = {
-#include "levels/ttc/2.rgba16.inc.c"
-};
+ALIGNED8 const Texture ttc_yellow_triangle[] = "__OTR__levels/ttc/2";
 
 // 0x07016790 - 0x07016808
 const Gfx ttc_dl_surface_treadmill_begin[] = {

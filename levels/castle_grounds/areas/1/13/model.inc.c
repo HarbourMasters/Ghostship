@@ -1,6 +1,4 @@
-ALIGNED8 static const Texture castle_grounds_seg7_us_texture_0700EAE8[] = {
-#include "levels/castle_grounds/5.ia8.inc.c"
-};
+ALIGNED8 static const Texture castle_grounds_seg7_us_texture_0700EAE8[] = "__OTR__levels/castle_grounds/5";
 
 // 0x0700F2E8
 const Gfx castle_grounds_seg7_us_dl_0700F2E8[] = {
