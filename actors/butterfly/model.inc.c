@@ -11,9 +11,7 @@ static const Vtx butterfly_seg3_vertex_03004348[] = {
 };
 
 // 0x030043A8
-ALIGNED8 static const Texture butterfly_seg3_texture_030043A8[] = {
-#include "actors/butterfly/butterfly_wing.rgba16.inc.c"
-};
+ALIGNED8 static const Texture butterfly_seg3_texture_030043A8[] = "__OTR__actors/butterfly/butterfly_wing";
 
 // 0x030053A8
 static const Vtx butterfly_seg3_vertex_030053A8[] = {

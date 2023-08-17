@@ -4,19 +4,13 @@
 UNUSED static const u64 flyguy_unused_1 = 0;
 
 // 0x0800E088
-ALIGNED8 static const Texture flyguy_seg8_texture_0800E088[] = {
-#include "actors/flyguy/flyguy_cloth_wrinkle.rgba16.inc.c"
-};
+ALIGNED8 static const Texture flyguy_seg8_texture_0800E088[] = "__OTR__actors/flyguy/flyguy_cloth_wrinkle";
 
 // 0x0800F088
-ALIGNED8 static const Texture flyguy_seg8_texture_0800F088[] = {
-#include "actors/flyguy/flyguy_face.rgba16.inc.c"
-};
+ALIGNED8 static const Texture flyguy_seg8_texture_0800F088[] = "__OTR__actors/flyguy/flyguy_face";
 
 // 0x0800F888
-ALIGNED8 static const Texture flyguy_seg8_texture_0800F888[] = {
-#include "actors/flyguy/flyguy_propeller.ia16.inc.c"
-};
+ALIGNED8 static const Texture flyguy_seg8_texture_0800F888[] = "__OTR__actors/flyguy/flyguy_propeller";
 
 // Unreferenced light group
 UNUSED static const Lights1 flyguy_lights_unused1 = gdSPDefLights1(

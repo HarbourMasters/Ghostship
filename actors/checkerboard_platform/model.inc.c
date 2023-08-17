@@ -7,14 +7,10 @@ static const Lights1 checkerboard_platform_seg8_lights_0800C828 = gdSPDefLights1
 );
 
 // 0x0800C840
-ALIGNED8 static const Texture checkerboard_platform_seg8_texture_0800C840[] = {
-#include "actors/checkerboard_platform/checkerboard_platform_side.rgba16.inc.c"
-};
+ALIGNED8 static const Texture checkerboard_platform_seg8_texture_0800C840[] = "__OTR__actors/checkerboard_platform/checkerboard_platform_side";
 
 // 0x0800CC40
-ALIGNED8 static const Texture checkerboard_platform_seg8_texture_0800CC40[] = {
-#include "actors/checkerboard_platform/checkerboard_platform.rgba16.inc.c"
-};
+ALIGNED8 static const Texture checkerboard_platform_seg8_texture_0800CC40[] = "__OTR__actors/checkerboard_platform/checkerboard_platform";
 
 // 0x0800D440
 static const Vtx checkerboard_platform_seg8_vertex_0800D440[] = {

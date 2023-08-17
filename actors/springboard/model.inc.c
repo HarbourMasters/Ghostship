@@ -7,14 +7,10 @@ static const Lights1 springboard_seg5_lights_05000000 = gdSPDefLights1(
 );
 
 // 0x05000018
-ALIGNED8 static const Texture springboard_seg5_texture_05000018[] = {
-#include "actors/springboard/springboard_top_unused.rgba16.inc.c"
-};
+ALIGNED8 static const Texture springboard_seg5_texture_05000018[] = "__OTR__actors/springboard/springboard_top_unused";
 
 // 0x05000818
-ALIGNED8 static const Texture springboard_seg5_texture_05000818[] = {
-#include "actors/springboard/springboard_base_unused.rgba16.inc.c"
-};
+ALIGNED8 static const Texture springboard_seg5_texture_05000818[] = "__OTR__actors/springboard/springboard_base_unused";
 
 // 0x05001018
 static const Vtx springboard_seg5_vertex_05001018[] = {

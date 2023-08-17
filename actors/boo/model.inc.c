@@ -7,14 +7,10 @@ static const Lights1 boo_seg5_lights_05009B28 = gdSPDefLights1(
 );
 
 // 0x05009B40
-ALIGNED8 static const Texture boo_seg5_texture_05009B40[] = {
-#include "actors/boo/boo_eyes.rgba16.inc.c"
-};
+ALIGNED8 static const Texture boo_seg5_texture_05009B40[] = "__OTR__actors/boo/boo_eyes";
 
 // 0x0500AB40
-ALIGNED8 static const Texture boo_seg5_texture_0500AB40[] = {
-#include "actors/boo/boo_mouth.rgba16.inc.c"
-};
+ALIGNED8 static const Texture boo_seg5_texture_0500AB40[] = "__OTR__actors/boo/boo_mouth";
 
 // 0x0500B340
 static const Vtx boo_seg5_vertex_0500B340[] = {

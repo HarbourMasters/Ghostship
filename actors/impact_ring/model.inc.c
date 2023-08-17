@@ -17,14 +17,10 @@ static const Vtx impact_ring_seg6_vertex_0601CA10[] = {
 };
 
 // 0x0601CA50
-ALIGNED8 static const Texture impact_ring_seg6_texture_0601CA50[] = {
-#include "actors/impact_ring/impact_ring_left_side.ia16.inc.c"
-};
+ALIGNED8 static const Texture impact_ring_seg6_texture_0601CA50[] = "__OTR__actors/impact_ring/impact_ring_left_side";
 
 // 0x0601DA50
-ALIGNED8 static const Texture impact_ring_seg6_texture_0601DA50[] = {
-#include "actors/impact_ring/impact_ring_right_side.ia16.inc.c"
-};
+ALIGNED8 static const Texture impact_ring_seg6_texture_0601DA50[] = "__OTR__actors/impact_ring/impact_ring_right_side";
 
 // 0x0601EA50 - 0x0601EA88
 const Gfx impact_ring_seg6_dl_0601EA50[] = {
