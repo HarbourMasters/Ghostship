@@ -33,7 +33,7 @@ void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
     this->context->GetWindow()->MainLoop(run_one_game_iter);
 }
 
-extern "C" uint32_t GameEngine_GetSampleRate(void) {
+extern "C" uint32_t GameEngine_GetSampleRate() {
     auto audio = LUS::Context::GetInstance()->GetAudio()->GetAudioPlayer();
     if (audio == nullptr) {
         return 0;
@@ -44,4 +44,8 @@ extern "C" uint32_t GameEngine_GetSampleRate(void) {
     }
 
     return audio->GetSampleRate();
+}
+
+extern "C" float GameEngine_GetAspectRatio() {
+    return gfx_current_dimensions.aspect_ratio;
 }

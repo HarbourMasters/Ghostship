@@ -4,7 +4,7 @@
 #include <vector>
 #include <Context.h>
 
-#define SAMPLES_HIGH 752
+#define SAMPLES_HIGH 762
 #define SAMPLES_LOW 720
 #define AUDIO_FRAMES_PER_UPDATE 2
 #define NUM_AUDIO_CHANNELS 2
@@ -23,5 +23,6 @@ class GameEngine {
     void ProcessFrame(void (*run_one_game_iter)(void)) const;
 };
 #else
-uint32_t GameEngine_GetSampleRate(void);
+uint32_t GameEngine_GetSampleRate();
+float GameEngine_GetAspectRatio();
 #endif

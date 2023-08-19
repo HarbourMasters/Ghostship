@@ -15,6 +15,7 @@
 #include "seq_ids.h"
 #include "sm64.h"
 #include "title_screen.h"
+#include "demo_table.h"
 
 /**
  * @file title_screen.c
@@ -40,6 +41,12 @@ static s16 sPlayMarioGameOver = TRUE;
 
 #define PRESS_START_DEMO_TIMER 800
 
+static const char* gDemoInputs[8] = {
+    gDemoBitdw, gDemoWf,    gDemoCcm,
+    gDemoBbh,   gDemoJrb,   gDemoHmc,
+    gDemoPss,   gDemoUnused
+};
+
 /**
  * Run the demo timer on the PRESS START screen after a number of frames.
  * This function returns the level ID from the first byte of a demo file.
@@ -55,19 +62,20 @@ s32 run_level_id_or_demo(s32 level) {
             if ((++sDemoCountdown) == PRESS_START_DEMO_TIMER) {
 
                 // start the Mario demo animation for the demo list.
-                load_patchable_table(&gDemoInputsBuf, gDemoInputListID);
+                void* data = ResourceGetDataByName(gDemoInputs[gDemoInputListID]);
 
                 // if the next demo sequence ID is the count limit, reset it back to
                 // the first sequence.
-                if (++gDemoInputListID == gDemoInputsBuf.dmaTable->count) {
+                // TODO: Remove this to check for gDemoInput size instead
+                if (++gDemoInputListID == sizeof(gDemoInputs) / sizeof(gDemoInputs[0]) - 1) {
                     gDemoInputListID = 0;
                 }
 
                 // add 1 (+4) to the pointer to skip the first 4 bytes
                 // Use the first 4 bytes to store level ID,
                 // then use the rest of the values for inputs
-                gCurrDemoInput = ((struct DemoInput *) gDemoInputsBuf.bufTarget) + 1;
-                level = (s8)((struct DemoInput *) gDemoInputsBuf.bufTarget)->timer;
+                gCurrDemoInput = ((struct DemoInput *) data) + 1;
+                level = (s8)((struct DemoInput *) data)->timer;
                 gCurrSaveFileNum = 1;
                 gCurrActNum = 1;
             }

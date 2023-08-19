@@ -1,6 +1,5 @@
 #include <libultraship.h>
 
-#include "sm64.h"
 #include <Fast3D/gfx_pc.h>
 #include "Engine.h"
 
@@ -9,7 +8,7 @@ extern "C" {
 #include "game/game_init.h"
 }
 
-bool sAudioEnabled = true;
+bool sAudioEnabled = false;
 
 void alloc_pool() {
     static u64 pool[1024 * 1024 * 4];
@@ -45,6 +44,6 @@ int main(){
     audio_init();
     sound_init();
 
-    thread5_game_loop(NULL);
+    thread5_game_loop(nullptr);
     GameEngine::Instance->ProcessFrame(push_frame);
 }

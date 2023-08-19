@@ -50,9 +50,7 @@ uintptr_t gPhysicalZBuffer;
 
 // Mario Anims and Demo allocation
 void *gMarioAnimsMemAlloc;
-void *gDemoInputsMemAlloc;
 struct DmaHandlerList gMarioAnimsBuf;
-struct DmaHandlerList gDemoInputsBuf;
 
 // fillers
 UNUSED static u8 sfillerGameInit[0x90];
@@ -188,10 +186,8 @@ void clear_viewport(Vp *viewport, s32 color) {
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
     s16 vpLry = (viewport->vp.vtrans[1] + viewport->vp.vscale[1]) / 4 - 2;
 
-#ifdef WIDESCREEN
     vpUlx = GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(vpUlx);
     vpLrx = GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(SCREEN_WIDTH - vpLrx);
-#endif
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -622,10 +618,6 @@ void setup_game_memory(void) {
     gMarioAnimsMemAlloc = main_pool_alloc(0x4000, MEMORY_POOL_LEFT);
     set_segment_base_addr(17, (void *) gMarioAnimsMemAlloc);
     setup_dma_table_list(&gMarioAnimsBuf, gMarioAnims, gMarioAnimsMemAlloc);
-    // Setup Demo Inputs List
-    gDemoInputsMemAlloc = main_pool_alloc(0x800, MEMORY_POOL_LEFT);
-    set_segment_base_addr(24, (void *) gDemoInputsMemAlloc);
-    setup_dma_table_list(&gDemoInputsBuf, gDemoInputs, gDemoInputsMemAlloc);
     // Setup Level Script Entry
     load_segment(0x10, _entrySegmentRomStart, _entrySegmentRomEnd, MEMORY_POOL_LEFT);
     // Setup Segment 2 (Fonts, Text, etc)
