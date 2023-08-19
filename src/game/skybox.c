@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <stdlib.h>
 #include "area.h"
 #include "engine/math_util.h"
 #include "geo_misc.h"
@@ -238,8 +239,6 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
             // Calculate the x and y coordinates within the skybox image
             int32_t x = skyboxCol * CHUNK_WIDTH;
             int32_t y = skyboxRow * CHUNK_HEIGHT;
-
-            printf("Skybox tile: %d, %d\n", x, y);
 
             if(x >= 256){
                 y -= CHUNK_HEIGHT;
