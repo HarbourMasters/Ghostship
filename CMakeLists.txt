@@ -188,13 +188,6 @@ add_custom_command(
 list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/assets/mario_anim_data.c)
 
 add_custom_command(
-    OUTPUT  assets/demo_data.c
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/demo_data_converter.py ${CMAKE_CURRENT_SOURCE_DIR}/assets/demo_data.json -D VERSION_US > ${CMAKE_CURRENT_BINARY_DIR}/assets/demo_data.c
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/assets/demo_data.c)
-
-add_custom_command(
     OUTPUT  include/text_strings.h
     COMMAND $<TARGET_FILE:textconv> charmap.txt ${CMAKE_CURRENT_SOURCE_DIR}/include/text_strings.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/text_strings.h
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}

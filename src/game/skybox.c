@@ -1,5 +1,4 @@
-#include <libultra/types.h>
-
+#include <libultraship.h>
 #include "area.h"
 #include "engine/math_util.h"
 #include "geo_misc.h"
@@ -9,7 +8,7 @@
 #include "save_file.h"
 #include "segment2.h"
 #include "sm64.h"
-
+#include "skybox_table.h"
 
 /**
  * @file skybox.c
@@ -60,30 +59,9 @@ struct Skybox {
 
 struct Skybox sSkyBoxInfo[2];
 
-typedef const u8 *const SkyboxTexture[80];
-
-extern SkyboxTexture bbh_skybox_ptrlist;
-extern SkyboxTexture bidw_skybox_ptrlist;
-extern SkyboxTexture bitfs_skybox_ptrlist;
-extern SkyboxTexture bits_skybox_ptrlist;
-extern SkyboxTexture ccm_skybox_ptrlist;
-extern SkyboxTexture cloud_floor_skybox_ptrlist;
-extern SkyboxTexture clouds_skybox_ptrlist;
-extern SkyboxTexture ssl_skybox_ptrlist;
-extern SkyboxTexture water_skybox_ptrlist;
-extern SkyboxTexture wdw_skybox_ptrlist;
-
-SkyboxTexture *sSkyboxTextures[10] = {
-    &water_skybox_ptrlist,
-    &bitfs_skybox_ptrlist,
-    &wdw_skybox_ptrlist,
-    &cloud_floor_skybox_ptrlist,
-    &ccm_skybox_ptrlist,
-    &ssl_skybox_ptrlist,
-    &bbh_skybox_ptrlist,
-    &bidw_skybox_ptrlist,
-    &clouds_skybox_ptrlist,
-    &bits_skybox_ptrlist,
+static const char* gSkyboxTextures[] = {
+    gSkyboxWater, gSkyboxBitfs, gSkyboxWdw, gSkyboxCloudFloor, gSkyboxCcm,
+    gSkyboxSsl, gSkyboxBbh, gSkyboxBitdw, gSkyboxClouds, gSkyboxBits
 };
 
 /**
@@ -122,7 +100,11 @@ u8 sSkyboxColors[][3] = {
 /**
  * The vertical length of the skybox tilemap in tiles.
  */
-#define SKYBOX_ROWS (8)
+
+#define NUM_CHUNKS_PER_ROW 8 // Number of chunks per row in the grid
+#define CHUNK_WIDTH 32       // Width of each texture chunk in pixels
+#define CHUNK_HEIGHT 32      // Height of each texture chunk in pixels
+#define BYTES_PER_PIXEL 2    // Assuming 2 bytes per pixel
 
 
 /**
@@ -212,6 +194,30 @@ Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
     return verts;
 }
 
+void* CalculateDataOffset(void* data, int x, int y) {
+    // Calculate the chunk index based on x and y coordinates
+    int chunkX = x / CHUNK_WIDTH;
+    int chunkY = y / CHUNK_HEIGHT;
+
+    // Calculate the offset within the chunk for the remaining x and y coordinates
+    int xOffset = x % CHUNK_WIDTH;
+    int yOffset = y % CHUNK_HEIGHT;
+
+    // Calculate the offset for the chunk within the data bin
+    int chunkOffset = chunkY * NUM_CHUNKS_PER_ROW + chunkX;
+
+    // Calculate the offset within the chunk's data
+    int chunkDataOffset = (yOffset * CHUNK_WIDTH + xOffset) * BYTES_PER_PIXEL;
+
+    // Calculate the total offset in bytes within the data bin
+    int totalOffset = chunkOffset * (CHUNK_WIDTH * CHUNK_HEIGHT * BYTES_PER_PIXEL) + chunkDataOffset;
+
+    // Calculate the pointer to the correct location within the data bin
+    void* textureData = (void*)((uint8_t*)data + totalOffset);
+
+    return textureData;
+}
+
 /**
  * Draws a 3x3 grid of 32x32 sections of the original skybox image.
  * The row and column are converted into an index into the skybox's tile list, which is then drawn in
@@ -224,8 +230,27 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
     for (row = 0; row < 3; row++) {
         for (col = 0; col < 3; col++) {
             s32 tileIndex = sSkyBoxInfo[player].upperLeftTile + row * SKYBOX_COLS + col;
-            const u8 *const texture =
-                (*(SkyboxTexture *) segmented_to_virtual(sSkyboxTextures[background]))[tileIndex];
+
+            // Calculate the column and row of the tile in the whole skybox image
+            int32_t skyboxCol = tileIndex % SKYBOX_COLS;
+            int32_t skyboxRow = tileIndex / SKYBOX_COLS;
+
+            // Calculate the x and y coordinates within the skybox image
+            int32_t x = skyboxCol * CHUNK_WIDTH;
+            int32_t y = skyboxRow * CHUNK_HEIGHT;
+
+            printf("Skybox tile: %d, %d\n", x, y);
+
+            if(x >= 256){
+                y -= CHUNK_HEIGHT;
+            }
+
+            void* data = ResourceGetDataByName(gSkyboxTextures[background]);
+
+            uint8_t* texture = malloc(2048);
+
+            // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
+            memcpy(texture, CalculateDataOffset(data, x, y), 2048);
             Vtx *vertices = make_skybox_rect(tileIndex, colorIndex);
 
             gLoadBlockTexture((*dlist)++, 32, 32, G_IM_FMT_RGBA, texture);
@@ -242,7 +267,6 @@ void *create_skybox_ortho_matrix(s8 player) {
     f32 top = sSkyBoxInfo[player].scaledY;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
 
-#ifdef WIDESCREEN
     f32 half_width = (4.0f / 3.0f) / GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_WIDTH / 2;
     f32 center = (sSkyBoxInfo[player].scaledX + SCREEN_WIDTH / 2);
     if (half_width < SCREEN_WIDTH / 2) {
@@ -250,7 +274,6 @@ void *create_skybox_ortho_matrix(s8 player) {
         left = center - half_width;
         right = center + half_width;
     }
-#endif
 
     if (mtx != NULL) {
         guOrtho(mtx, left, right, bottom, top, 0.0f, 3.0f, 1.0f);

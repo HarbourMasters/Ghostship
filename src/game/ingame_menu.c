@@ -1802,25 +1802,13 @@ void render_dialog_entries(void) {
     gDPSetScissor(
         gDisplayListHead++, G_SC_NON_INTERLACE,
         // Horizontal scissoring isn't really required and can potentially mess up widescreen enhancements.
-#ifdef WIDESCREEN
         0,
-#else
-        ensure_nonnegative(dialog->leftOffset),
-#endif
         ensure_nonnegative(DIAG_VAL2 - dialog->width),
 #ifdef VERSION_EU
-#ifdef WIDESCREEN
         SCREEN_WIDTH,
-#else
-        ensure_nonnegative(dialog->leftOffset + (DIAG_VAL3 / gDialogBoxScale)),
-#endif
         ensure_nonnegative((240 - dialog->width) + (dialog->linesPerBox * 80 / DIAG_VAL4 / gDialogBoxScale))
 #else
-#ifdef WIDESCREEN
         SCREEN_WIDTH,
-#else
-        ensure_nonnegative(dialog->leftOffset + DIAG_VAL3),
-#endif
         ensure_nonnegative((240 - dialog->width) + (dialog->linesPerBox * 80 / DIAG_VAL4))
 #endif
     );
@@ -2132,12 +2120,8 @@ void shade_screen(void) {
 
     // This is a bit weird. It reuses the dialog text box (width 130, height -80),
     // so scale to at least fit the screen.
-#ifdef WIDESCREEN
     create_dl_scale_matrix(MENU_MTX_NOPUSH,
                            GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_HEIGHT / 130.0f, 3.0f, 1.0f);
-#else
-    create_dl_scale_matrix(MENU_MTX_NOPUSH, 2.6f, 3.4f, 1.0f);
-#endif
 
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 110);
     gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box);
