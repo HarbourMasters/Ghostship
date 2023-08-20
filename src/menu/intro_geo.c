@@ -10,6 +10,7 @@
 #include "buffers/framebuffers.h"
 #include "game/game_init.h"
 #include "audio/external.h"
+#include "gfx_dimensions.h"
 
 // frame counts for the zoom in, hold, and zoom out of title model
 #define INTRO_STEPS_ZOOM_IN 20
@@ -141,19 +142,8 @@ static Gfx *intro_backdrop_one_image(s32 index, s8 *backgroundTable) {
     static const Gfx *introBackgroundDlRows[] = { title_screen_bg_dl_0A000130, title_screen_bg_dl_0A000148,
                                                   title_screen_bg_dl_0A000160, title_screen_bg_dl_0A000178 };
 
-    // intro screen background texture X offsets
-    static float xCoords[] = {
-        0, 80, 160, 240,
-        0, 80, 160, 240,
-        0, 80, 160, 240,
-    };
-
-    // intro screen background texture Y offsets
-    static float yCoords[] = {
-        160, 160, 160, 160,
-        80,  80,  80,  80,
-        0,   0,   0,   0,
-    };
+    s32 num_tiles_h = (s32)(GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_HEIGHT + 80 ) / 80;
+    float xOffset = ((float) SCREEN_WIDTH / 2) - ( GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_HEIGHT / 2);
 
     // table that points to either the "Super Mario 64" or "Game Over" tables
     static const u8 *const *textureTables[] = { mario_title_texture_table, game_over_texture_table };
@@ -161,10 +151,11 @@ static Gfx *intro_backdrop_one_image(s32 index, s8 *backgroundTable) {
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
     Gfx *displayList = alloc_display_list(36 * sizeof(*displayList));
     Gfx *displayListIter = displayList;
-    const u8 *const *vIntroBgTable = segmented_to_virtual(textureTables[backgroundTable[index]]);
+    // TODO: Fix this for gameover screen
+    const u8 *const *vIntroBgTable = segmented_to_virtual(textureTables[backgroundTable[0]]);
     s32 i;
 
-    guTranslate(mtx, xCoords[index], yCoords[index], 0.0f);
+    guTranslate(mtx, ((index % num_tiles_h) * 80) + xOffset, (index/num_tiles_h) * 80, 0.0f);
     gSPMatrix(displayListIter++, mtx, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_PUSH);
     gSPDisplayList(displayListIter++, &title_screen_bg_dl_0A000118);
     for (i = 0; i < 4; ++i) {
@@ -198,13 +189,15 @@ Gfx *geo_intro_regular_backdrop(s32 state, struct GraphNode *node, UNUSED void *
     Gfx *dlIter = NULL;
     s32 i;
 
+    s32 num_tiles_h = (s32)((GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_HEIGHT + 80 ) / 80) * 3;
+
     if (state == 1) {  // draw
-        dl = alloc_display_list(16 * sizeof(*dl));
+        dl = alloc_display_list((num_tiles_h + 4) * sizeof(*dl));
         dlIter = dl;
         graphNode->node.flags = (graphNode->node.flags & 0xFF) | (LAYER_OPAQUE << 8);
         gSPDisplayList(dlIter++, &dl_proj_mtx_fullscreen);
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000100);
-        for (i = 0; i < 12; ++i) {
+        for (i = 0; i < num_tiles_h; ++i) {
             gSPDisplayList(dlIter++, intro_backdrop_one_image(i, backgroundTable));
         }
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000190);

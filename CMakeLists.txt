@@ -146,20 +146,6 @@ list(FILTER ALL_FILES EXCLUDE REGEX "bin/eu/.*.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/game/main.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
 
-file(GLOB_RECURSE SKYBOXES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "textures/skyboxes/*.png")
-foreach(skybox ${SKYBOXES})
-  get_filename_component(OUTPUT_FILE_WLE ${skybox} NAME_WLE)
-  get_filename_component(OUTPUT_DIR ${skybox} DIRECTORY)
-  set(OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/bin/${OUTPUT_FILE_WLE}_skybox.c)
-  add_custom_command(
-    OUTPUT ${OUTPUT_FILE}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin
-    VERBATIM COMMAND $<TARGET_FILE:skyconv> --type sky --split ${CMAKE_CURRENT_SOURCE_DIR}/${skybox} ${CMAKE_CURRENT_BINARY_DIR}/bin
-    DEPENDS skyconv
-  )
-  list(APPEND ALL_FILES ${OUTPUT_FILE})
-endforeach(skybox)
-
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.tmp
     COMMAND  ${CPP} -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/levels/level_headers.h.in > ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.tmp
@@ -296,7 +282,6 @@ file(GLOB_RECURSE ORGFILES2 RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "levels/*.png")
 file(GLOB_RECURSE ORGFILES3 RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "textures/*.png")
 list (APPEND ORGFILES ${ORGFILES2})
 list (APPEND ORGFILES ${ORGFILES3})
-list(REMOVE_ITEM ORGFILES "levels/ending/cake.png")
 list(FILTER ORGFILES EXCLUDE REGEX "textures/ipl3_raw/.*.png")
 list(FILTER ORGFILES EXCLUDE REGEX "textures/skyboxes/.*.png")
 foreach(orgfile ${ORGFILES})
@@ -313,14 +298,6 @@ foreach(orgfile ${ORGFILES})
   )
   list(APPEND INC_C_FILES ${OUTPUT_FILE})
 endforeach(orgfile)
-
-add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/levels/ending/cake.inc.c
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/levels/ending
-    COMMAND $<TARGET_FILE:skyconv> --type cake --split ${CMAKE_CURRENT_SOURCE_DIR}/levels/ending/cake.png ${CMAKE_CURRENT_BINARY_DIR}/levels/ending
-    DEPENDS skyconv
-  )
-  list(APPEND INC_C_FILES ${CMAKE_CURRENT_BINARY_DIR}/levels/ending/cake.inc.c)
 
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
