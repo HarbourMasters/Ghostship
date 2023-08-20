@@ -1,6 +1,7 @@
 #ifndef GEO_MISC_H
 #define GEO_MISC_H
 
+#include "align_asset_macro.h"
 #include <libultra/types.h>
 #include <libultra/gbi.h>
 
@@ -11,6 +12,9 @@ enum FlyingCarpetState {
 };
 
 extern s8 gFlyingCarpetState;
+
+#define dgCakeImage "__OTR__levels/ending/cake"
+static const ALIGN_ASSET(2) char gCakeImage[] = dgCakeImage;
 
 #ifndef GBI_FLOATS
 extern void make_vertex(

@@ -1,4 +1,5 @@
 #include <libultra/types.h>
+#include <stdlib.h>
 
 #include "sm64.h"
 #include "geo_misc.h"
@@ -190,6 +191,8 @@ Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUS
     return displayList;
 }
 
+static char** gCakeSlices;
+
 /**
  * Create a display list for the end screen with Peach's delicious cake.
  */
@@ -198,8 +201,12 @@ Gfx *geo_exec_cake_end_screen(s32 callContext, struct GraphNode *node, UNUSED f3
     Gfx *displayList = NULL;
     Gfx *displayListHead = NULL;
 
+    if(gCakeSlices == NULL){
+        gCakeSlices = malloc((12 * 4) * sizeof(char*));
+    }
+
     if (callContext == GEO_CONTEXT_RENDER) {
-        displayList = alloc_display_list(3 * sizeof(*displayList));
+        displayList = alloc_display_list(64 * sizeof(*displayList));
         displayListHead = displayList;
 
         generatedNode->fnNode.node.flags = (generatedNode->fnNode.node.flags & 0xFF) | 0x100;
@@ -221,7 +228,33 @@ Gfx *geo_exec_cake_end_screen(s32 callContext, struct GraphNode *node, UNUSED f3
                 break;
         }
 #else
-        gSPDisplayList(displayListHead++, dl_cake_end_screen);
+        Gfx* cake = alloc_display_list(512 * sizeof(*cake));
+        Gfx *cakeHead = cake;
+        gDPPipeSync(cakeHead++);
+        gDPSetCombineMode(cakeHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+        gDPSetRenderMode(cakeHead++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+        gSPTexture(cakeHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+
+        void* data = ResourceGetDataByName(gCakeImage);
+        s32 size = 80 * 20 * 2;
+        for (int i = 0; i < 4 * 12; i++) {
+            if (!gCakeSlices[i]) {
+                gCakeSlices[i] = malloc(size);
+                memcpy(gCakeSlices[i], data + i * 3200, size);
+            }
+            gDPLoadTextureBlock(cakeHead++, gCakeSlices[i], G_IM_FMT_RGBA, G_IM_SIZ_16b, 80, 20, 0, G_TX_CLAMP, G_TX_CLAMP, 7, 6, G_TX_NOLOD, G_TX_NOLOD);
+            gSPVertex(cakeHead++, cake_end_vertex_positions[i], 4, 0);
+            gSP2Triangles(cakeHead++, 0, 1, 2, 0x0, 0, 2, 3, 0x0);
+        }
+
+        gDPPipeSync(cakeHead++);
+        gSPTexture(cakeHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF);
+        gSPSetGeometryMode(cakeHead++, G_LIGHTING);
+        gDPSetCombineMode(cakeHead++, G_CC_SHADE, G_CC_SHADE);
+        gDPSetRenderMode(cakeHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+        gSPEndDisplayList(cakeHead++);
+
+        gSPDisplayList(displayListHead++, cake);
 #endif
         gSPEndDisplayList(displayListHead);
     }
