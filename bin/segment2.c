@@ -1573,41 +1573,23 @@ ALIGNED8 static const Texture texture_shadow_quarter_circle[] = "__OTR__textures
 
 ALIGNED8 static const Texture texture_shadow_quarter_square[] = "__OTR__textures/segment2/shadow_quarter_square";
 
-const Texture texture_transition_star_half[] = {
-#include "textures/segment2/segment2.0F458.ia8.inc.c"
-};
+const Texture texture_transition_star_half[] = "__OTR__textures/segment2/segment2.0F458";
 
-const Texture texture_transition_circle_half[] = {
-#include "textures/segment2/segment2.0FC58.ia8.inc.c"
-};
+const Texture texture_transition_circle_half[] = "__OTR__textures/segment2/segment2.0FC58";
 
-const Texture texture_transition_mario[] = {
-#include "textures/segment2/segment2.10458.ia8.inc.c"
-};
+const Texture texture_transition_mario[] = "__OTR__textures/segment2/segment2.10458";
 
-const Texture texture_transition_bowser_half[] = {
-#include "textures/segment2/segment2.11458.ia8.inc.c"
-};
+const Texture texture_transition_bowser_half[] = "__OTR__textures/segment2/segment2.11458";
 
-const Texture texture_waterbox_water[] = {
-#include "textures/segment2/segment2.11C58.rgba16.inc.c"
-};
+const Texture texture_waterbox_water[] = "__OTR__textures/segment2/segment2.11C58";
 
-const Texture texture_waterbox_jrb_water[] = {
-#include "textures/segment2/segment2.12458.rgba16.inc.c"
-};
+const Texture texture_waterbox_jrb_water[] = "__OTR__textures/segment2/segment2.12458";
 
-const Texture texture_waterbox_unknown_water[] = {
-#include "textures/segment2/segment2.12C58.rgba16.inc.c"
-};
+const Texture texture_waterbox_unknown_water[] = "__OTR__textures/segment2/segment2.12C58";
 
-const Texture texture_waterbox_mist[] = {
-#include "textures/segment2/segment2.13458.ia16.inc.c"
-};
+const Texture texture_waterbox_mist[] = "__OTR__textures/segment2/segment2.13458";
 
-const Texture texture_waterbox_lava[] = {
-#include "textures/segment2/segment2.13C58.rgba16.inc.c"
-};
+const Texture texture_waterbox_lava[] = "__OTR__textures/segment2/segment2.13C58";
 
 // Unreferenced light group
 UNUSED static const Lights1 segment2_lights_unused = gdSPDefLights1(

@@ -9,7 +9,7 @@ from pathlib import Path
 # ALIGNED8 static const Texture chain_ball_seg6_texture_06020AE8[]
 prefixes = [
     "ALIGNED8 static const u8", "static const u8", "ALIGNED8 static u8", "ALIGNED8 u8", "ALIGNED8 const u8", "u8",
-    "ALIGNED8 static const Texture", "static const Texture", "ALIGNED8 static Texture", "ALIGNED8 Texture", "ALIGNED8 const Texture", "Texture",
+    "ALIGNED8 static const Texture", "static const Texture", "ALIGNED8 static Texture", "ALIGNED8 Texture", "ALIGNED8 const Texture", "const Texture", "Texture",
 ]
 
 def parse_model(file, lines, overwrite):
