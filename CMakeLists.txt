@@ -154,6 +154,22 @@ list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
 #==============================================================================#
 
 add_custom_command(
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/text/us
+  COMMAND ${CPP} -I${CMAKE_CURRENT_SOURCE_DIR}/text/us ${CMAKE_CURRENT_SOURCE_DIR}/text/define_text.inc.c > ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
+)
+
+add_custom_command(
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c
+  COMMAND $<TARGET_FILE:textconv> ${CMAKE_CURRENT_SOURCE_DIR}/charmap.txt  ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c
+  VERBATIM
+  DEPENDS textconv
+  DEPENDS  ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
+)
+
+list(APPEND INC_C_FILES ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c)
+
+add_custom_command(
     OUTPUT  include/text_strings.h
     COMMAND $<TARGET_FILE:textconv> charmap.txt ${CMAKE_CURRENT_SOURCE_DIR}/include/text_strings.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/text_strings.h
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
