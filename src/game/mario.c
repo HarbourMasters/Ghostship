@@ -1,4 +1,5 @@
-#include <libultra/types.h>
+#include <libultraship.h>
+#include <stdio.h>
 
 #include "sm64.h"
 #include "area.h"
@@ -32,6 +33,7 @@
 #include "save_file.h"
 #include "sound_init.h"
 #include "rumble_init.h"
+#include "animation_table.h"
 
 u32 unused80339F10;
 u8 unused80339F1C[20];
@@ -63,12 +65,11 @@ s32 is_anim_past_end(struct MarioState *m) {
  */
 s16 set_mario_animation(struct MarioState *m, s32 targetAnimID) {
     struct Object *o = m->marioObj;
-    struct Animation *targetAnim = m->animList->bufTarget;
 
-    if (load_patchable_table(m->animList, targetAnimID)) {
-        targetAnim->values = (void *) VIRTUAL_TO_PHYSICAL((u8 *) targetAnim + (uintptr_t) targetAnim->values);
-        targetAnim->index = (void *) VIRTUAL_TO_PHYSICAL((u8 *) targetAnim + (uintptr_t) targetAnim->index);
-    }
+    char gAnimationData[sizeof(gAnimationRoot) / sizeof(gAnimationRoot[0]) + 1];
+    sprintf(gAnimationData, gAnimationRoot, targetAnimID);
+
+    struct Animation *targetAnim = ResourceGetDataByName(gAnimationData);
 
     if (o->header.gfx.animInfo.animID != targetAnimID) {
         o->header.gfx.animInfo.animID = targetAnimID;
@@ -96,12 +97,10 @@ s16 set_mario_animation(struct MarioState *m, s32 targetAnimID) {
  */
 s16 set_mario_anim_with_accel(struct MarioState *m, s32 targetAnimID, s32 accel) {
     struct Object *o = m->marioObj;
-    struct Animation *targetAnim = m->animList->bufTarget;
+    char gAnimationData[sizeof(gAnimationRoot) / sizeof(gAnimationRoot[0]) + 1];
+    sprintf(gAnimationData, gAnimationRoot, targetAnimID);
 
-    if (load_patchable_table(m->animList, targetAnimID)) {
-        targetAnim->values = (void *) VIRTUAL_TO_PHYSICAL((u8 *) targetAnim + (uintptr_t) targetAnim->values);
-        targetAnim->index = (void *) VIRTUAL_TO_PHYSICAL((u8 *) targetAnim + (uintptr_t) targetAnim->index);
-    }
+    struct Animation *targetAnim = ResourceGetDataByName(gAnimationData);
 
     if (o->header.gfx.animInfo.animID != targetAnimID) {
         o->header.gfx.animInfo.animID = targetAnimID;
@@ -1876,7 +1875,6 @@ void init_mario_from_save_file(void) {
     gMarioState->statusForCamera = &gPlayerCameraState[0];
     gMarioState->marioBodyState = &gBodyStates[0];
     gMarioState->controller = &gControllers[0];
-    gMarioState->animList = &gMarioAnimsBuf;
 
     gMarioState->numCoins = 0;
     gMarioState->numStars =

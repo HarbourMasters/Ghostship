@@ -29,7 +29,7 @@ void push_frame() {
         int samples_left = AudioPlayerBuffered();
         u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
-        s16 audio_buffer[SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 2];
+        s16 audio_buffer[SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 3];
         for (int i = 0; i < AUDIO_FRAMES_PER_UPDATE; i++) {
             create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
         }
