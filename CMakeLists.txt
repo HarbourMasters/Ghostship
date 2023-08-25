@@ -135,6 +135,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/*.h"
     "src/port/*.c"
     "src/port/*.cpp"
+    "src/port/importer/*.cpp"
+    "src/port/importer/types/*.cpp"
     "text/*.c"
     "textures/*.h"
     "textures/*.c"
@@ -146,32 +148,10 @@ list(FILTER ALL_FILES EXCLUDE REGEX "bin/eu/.*.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/game/main.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
 
-add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.tmp
-    COMMAND  ${CPP} -I${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/levels/level_headers.h.in > ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.tmp
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
-add_custom_command(
-    OUTPUT include/level_headers.h
-    COMMAND ${Python3_EXECUTABLE} tools/wrapinclude.py ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.tmp > ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.h
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.tmp
-)
-
-list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/include/level_headers.h)
-
 
 #==============================================================================#
 # Generated Source Code Files                                                  #
 #==============================================================================#
-
-add_custom_command(
-    OUTPUT  assets/mario_anim_data.c
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/mario_anims_converter.py > ${CMAKE_CURRENT_BINARY_DIR}/assets/mario_anim_data.c
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/assets/mario_anim_data.c)
 
 add_custom_command(
     OUTPUT  include/text_strings.h
@@ -269,51 +249,6 @@ if(APPLE)
   find_package(SDL2)
   target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2)
 endif()
-
-#==============================================================================#
-# Texture Generation                                                           #
-#==============================================================================#
-
-set (TEXTURE_ENCODING u8)
-set(INC_C_FILES "")
-
-file(GLOB_RECURSE ORGFILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "actors/*.png")
-file(GLOB_RECURSE ORGFILES2 RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "levels/*.png")
-file(GLOB_RECURSE ORGFILES3 RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "textures/*.png")
-list (APPEND ORGFILES ${ORGFILES2})
-list (APPEND ORGFILES ${ORGFILES3})
-list(FILTER ORGFILES EXCLUDE REGEX "textures/ipl3_raw/.*.png")
-list(FILTER ORGFILES EXCLUDE REGEX "textures/skyboxes/.*.png")
-foreach(orgfile ${ORGFILES})
-  get_filename_component(OUTPUT_FILE_WLE ${orgfile} NAME_WLE)
-  get_filename_component(OUTPUT_DIR ${orgfile} DIRECTORY)
-  set(OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.inc.c)
-  string(REPLACE "." ";" FORMAT ${OUTPUT_FILE_WLE})
-  list(POP_BACK FORMAT FORMAT2)
-  add_custom_command(
-    OUTPUT ${OUTPUT_FILE}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_DIR}
-    VERBATIM COMMAND $<TARGET_FILE:n64graphics> -s ${TEXTURE_ENCODING} -i ${OUTPUT_FILE} -g ${CMAKE_CURRENT_SOURCE_DIR}/${orgfile} -f ${FORMAT2}
-    DEPENDS n64graphics
-  )
-  list(APPEND INC_C_FILES ${OUTPUT_FILE})
-endforeach(orgfile)
-
-  add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/text/us
-    COMMAND ${CPP} -I${CMAKE_CURRENT_SOURCE_DIR}/text/us ${CMAKE_CURRENT_SOURCE_DIR}/text/define_text.inc.c > ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
-  )
-
-  add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c
-    COMMAND $<TARGET_FILE:textconv> ${CMAKE_CURRENT_SOURCE_DIR}/charmap.txt  ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c
-    VERBATIM
-    DEPENDS textconv
-    DEPENDS  ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
-  )
-
-  list(APPEND INC_C_FILES ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c)
 
 #==============================================================================#
 # Sound File Generation                                                        #

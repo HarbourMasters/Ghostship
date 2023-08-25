@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "ImguiUI.h"
+#include "port/importer/AnimationFactory.h"
 
 #include <iostream>
 #include <Fast3D/gfx_pc.h>
@@ -13,6 +14,7 @@ GameEngine::GameEngine(){
     this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", { main, assets }, {}, 3);
     this->context->GetWindow()->SetTargetFps(30);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Anim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
 }
 
 void GameEngine::Create(){
