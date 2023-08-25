@@ -153,6 +153,8 @@ list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
 # Generated Source Code Files                                                  #
 #==============================================================================#
 
+set(INC_C_FILES "")
+
 add_custom_command(
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/text/us
