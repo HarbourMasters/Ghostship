@@ -34,11 +34,7 @@ set(VCPKG_TARGET_TRIPLET x64-mingw-static)
 endif()
 
 vcpkg_bootstrap()
-if(MSVC)
-vcpkg_install_packages(zlib bzip2 libpng getopt dirent libusb pthread)
-else()
-vcpkg_install_packages(fontconfig)
-endif()
+vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libpng getopt dirent libusb pthread glew glfw3)
 endif()
 
 if (MSVC)
@@ -56,10 +52,17 @@ add_subdirectory(tools)
 # Find Python 3 for the custom target
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
+set(TOOLS_PATH "")
+
+if(WIN32)
+  set(TOOLS_PATH ${CMAKE_BINARY_DIR}/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>)
+  message(STATUS "TOOLS_PATH: ${TOOLS_PATH}")
+endif()
+
 # Add a custom target to extract assets
 add_custom_target(
     ExtractAssets
-    COMMAND ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py ${VERSION}
+    COMMAND ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py ${VERSION} ${TOOLS_PATH}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Running asset extraction..."
     DEPENDS Tools

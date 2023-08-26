@@ -17,6 +17,11 @@
 
 #define ELF_ST_TYPE(x) (((unsigned int) x) & 0xf)
 
+#ifdef _MSC_VER
+#define __builtin_bswap16 _byteswap_ushort
+#define __builtin_bswap32 _byteswap_ulong
+#endif
+
 typedef uint32_t Elf32_Addr;
 typedef uint32_t Elf32_Off;
 
@@ -145,7 +150,7 @@ uint16_t u16be(uint16_t val) {
     return __builtin_bswap16(val);
 #else
     return val;
-#endif    
+#endif
 }
 
 static bool elf_get_section_range(uint8_t *file, const char *searched_name, uint32_t *address, uint32_t *offset, uint32_t *size, uint32_t *section_index) {
