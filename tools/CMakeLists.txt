@@ -14,19 +14,6 @@ else()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-set(n64graphics_SOURCES n64graphics.c utils.c)
-add_executable(n64graphics ${n64graphics_SOURCES})
-target_compile_definitions(n64graphics PUBLIC N64GRAPHICS_STANDALONE)
-if(UNIX)
-target_link_libraries(n64graphics PUBLIC m)
-endif()
-
-set(n64graphics_ci_SOURCES n64graphics_ci_dir/n64graphics_ci.c n64graphics_ci_dir/exoquant/exoquant.c n64graphics_ci_dir/utils.c)
-add_executable(n64graphics_ci ${n64graphics_ci_SOURCES})
-if(UNIX)
-target_link_libraries(n64graphics_ci PUBLIC m)
-endif()
-
 set(mio0_SOURCES libmio0.c)
 add_executable(mio0 ${mio0_SOURCES})
 target_compile_definitions(mio0 PUBLIC MIO0_STANDALONE)
@@ -55,7 +42,7 @@ add_library(audiofile STATIC ${AUDIOFILE_FILES})
 set_target_properties(audiofile PROPERTIES CXX_STANDARD 11)
 
 #tabledesign: $(LIBAUDIOFILE)
-set(tabledesign_SOURCES  sdk-tools/tabledesign/codebook.c sdk-tools/tabledesign/estimate.c sdk-tools/tabledesign/print.c sdk-tools/tabledesign/tabledesign.c)
+set(tabledesign_SOURCES  sdk-tools/tabledesign/codebook.c sdk-tools/tabledesign/estimate.c sdk-tools/tabledesign/print.c sdk-tools/tabledesign/getopt.c sdk-tools/tabledesign/tabledesign.c)
 #tabledesign_CFLAGS  := -Iaudiofile -Wno-uninitialized
 #tabledesign_LDFLAGS := -Laudiofile -laudiofile -lstdc++
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/audiofile)
@@ -77,17 +64,9 @@ target_include_directories(vadpcm_enc PRIVATE ${GETOPT_INCLUDE_DIR})
 set(extract_data_for_mio_SOURCES extract_data_for_mio.c)
 add_executable(extract_data_for_mio ${extract_data_for_mio_SOURCES})
 
-set(skyconv_SOURCES skyconv.c n64graphics.c utils.c)
-add_executable(skyconv ${skyconv_SOURCES})
-if(UNIX)
-target_link_libraries(skyconv PUBLIC m)
-endif()
-
 # tools required for extract_assets.py
 add_custom_target(Tools
     DEPENDS
         aifc_decode
         mio0
-        n64graphics
-        skyconv
         )

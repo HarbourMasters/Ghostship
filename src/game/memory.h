@@ -2,8 +2,12 @@
 #define MEMORY_H
 
 #include <libultra/types.h>
-#include <strings.h>
 #include "types.h"
+#ifdef _WIN32
+#include <string.h>
+#else
+#include <strings.h>
+#endif
 
 #define MEMORY_POOL_LEFT  0
 #define MEMORY_POOL_RIGHT 1

@@ -235,12 +235,12 @@ Gfx *geo_exec_cake_end_screen(s32 callContext, struct GraphNode *node, UNUSED f3
         gDPSetRenderMode(cakeHead++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
         gSPTexture(cakeHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 
-        void* data = ResourceGetDataByName(gCakeImage);
+        uintptr_t data = (uintptr_t) ResourceGetDataByName(gCakeImage);
         s32 size = 80 * 20 * 2;
         for (int i = 0; i < 4 * 12; i++) {
             if (!gCakeSlices[i]) {
                 gCakeSlices[i] = malloc(size);
-                memcpy(gCakeSlices[i], data + i * 3200, size);
+                memcpy(gCakeSlices[i], (const void *) (data + i * 3200), size);
             }
             gDPLoadTextureBlock(cakeHead++, gCakeSlices[i], G_IM_FMT_RGBA, G_IM_SIZ_16b, 80, 20, 0, G_TX_CLAMP, G_TX_CLAMP, 7, 6, G_TX_NOLOD, G_TX_NOLOD);
             gSPVertex(cakeHead++, cake_end_vertex_positions[i], 4, 0);

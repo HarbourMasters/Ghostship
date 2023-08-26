@@ -44,6 +44,7 @@ int main(){
     audio_init();
     sound_init();
 
-    thread5_game_loop(nullptr);
+    thread5_game_loop();
     GameEngine::Instance->ProcessFrame(push_frame);
+    return 0;
 }

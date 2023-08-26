@@ -14,11 +14,18 @@ typedef int s32;
 typedef unsigned char u8;
 typedef unsigned int u32;
 
-#define BSWAP16(x) x = __builtin_bswap16(x)
-#define BSWAP32(x) x = __builtin_bswap32(x)
-
+#ifdef _MSC_VER
+#define __builtin_bswap16 _byteswap_ushort
+#define __builtin_bswap32 _byteswap_ulong
+#define NORETURN
+#define UNUSED
+#else
 #define NORETURN __attribute__((noreturn))
 #define UNUSED __attribute__((unused))
+#endif
+
+#define BSWAP16(x) x = __builtin_bswap16(x)
+#define BSWAP32(x) x = __builtin_bswap32(x)
 
 typedef struct
 {

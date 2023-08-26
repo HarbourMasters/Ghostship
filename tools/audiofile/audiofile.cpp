@@ -2217,6 +2217,16 @@ private:
 
 #include <sys/types.h>
 
+#ifdef _WIN32
+#include <stdint.h>
+typedef size_t ssize_t;
+#endif
+
+#ifdef _MSC_VER
+#define __builtin_bswap16 _byteswap_ushort
+#define __builtin_bswap32 _byteswap_ulong
+#endif
+
 typedef struct _AFvirtualfile AFvirtualfile;
 
 class File : public Shared<File>
@@ -2241,8 +2251,8 @@ public:
 
 	virtual ~File();
 	virtual int close() = 0;
-	virtual ssize_t read(void *data, size_t nbytes) = 0;
-	virtual ssize_t write(const void *data, size_t nbytes) = 0;
+	virtual long long int read(void *data, size_t nbytes) = 0;
+	virtual long long int write(const void *data, size_t nbytes) = 0;
 	virtual off_t length() = 0;
 	virtual off_t seek(off_t offset, SeekOrigin origin) = 0;
 	virtual off_t tell() = 0;
@@ -8199,7 +8209,11 @@ Buffer::~Buffer()
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#ifdef _WIN32
+#include "unistd.h"
+#else
 #include <unistd.h>
+#endif
 #include <stdio.h>
 
 class FilePOSIX : public File
@@ -14324,7 +14338,11 @@ int _af_ulaw2linear (unsigned char u_val)
 #include <assert.h>
 #include <string.h>
 
+#ifdef _WIN32
+#include "unistd.h"
+#else
 #include <unistd.h>
+#endif
 
 #include <audiofile.h>
 

@@ -92,6 +92,10 @@
 #define eu_stubbed_printf_3(msg, a, b, c)
 #endif
 
+#ifdef _WIN32
+typedef size_t ssize_t;
+#endif
+
 struct NotePool;
 
 struct AudioListItem {
