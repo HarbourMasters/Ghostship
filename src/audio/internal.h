@@ -93,7 +93,8 @@
 #endif
 
 #ifdef _WIN32
-typedef size_t ssize_t;
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
 #endif
 
 struct NotePool;

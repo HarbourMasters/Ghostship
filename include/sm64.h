@@ -18,6 +18,11 @@
 #include <libultra/os.h>
 #include <math.h>
 
+#ifdef _WIN32
+#define bzero(b,len) (memset((b), '\0', (len)), (void) 0)
+#define bcopy(b1, b2, len) (memmove((b2), (b1), (len)), (void) 0)
+#endif
+
 // Crash handler enhancement
 #ifdef CRASH_SCREEN_INCLUDED
 #define DEBUG_ASSERT(exp) do { if (!(exp)) _n64_assert(__FILE__, __LINE__, #exp, 1); } while (0)
