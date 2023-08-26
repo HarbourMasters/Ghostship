@@ -522,7 +522,8 @@ def write_aiff(entry, filename):
         write_aifc(entry, temp)
         temp.flush()
         temp.close()
-        aifc_decode = os.path.join(os.path.dirname(__file__), "aifc_decode")
+        aifc_decode = os.path.join("./cmake-msvc-dbg/tools/Debug", "aifc_decode.exe")
+        print(aifc_decode)
         subprocess.run([aifc_decode, temp.name, filename], check=True)
     finally:
         temp.close()
@@ -683,6 +684,7 @@ def main():
                     if dir not in created_dirs:
                         os.makedirs(dir, exist_ok=True)
                         created_dirs.add(dir)
+                    os.makedirs(dir, exist_ok=True)
                     write_aiff(entry, filename)
         return
 

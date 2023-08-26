@@ -437,12 +437,6 @@ ALIGNED8 static Texture gd_texture_sparkle_3[] = "__OTR__textures/intro_raw/spar
 
 ALIGNED8 static Texture gd_texture_sparkle_4[] = "__OTR__textures/intro_raw/sparkle_4";
 
-//! No reference to this texture. Two DL's uses the same previous texture
-//  instead of using this texture.
-UNUSED ALIGNED8 static Texture gd_texture_sparkle_5[] = {
-#include "textures/intro_raw/sparkle_5.rgba16.inc.c"
-};
-
 static Vtx_t gd_vertex_sparkle[] = {
     {{   -32,      0,      0}, 0, {      0,   1984}, {  0x00, 0x00, 0x7F, 0x00}},
     {{    32,      0,      0}, 0, {   1984,   1984}, {  0x00, 0x00, 0x7F, 0x00}},

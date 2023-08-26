@@ -1804,13 +1804,8 @@ void render_dialog_entries(void) {
         // Horizontal scissoring isn't really required and can potentially mess up widescreen enhancements.
         0,
         ensure_nonnegative(DIAG_VAL2 - dialog->width),
-#ifdef VERSION_EU
-        SCREEN_WIDTH,
-        ensure_nonnegative((240 - dialog->width) + (dialog->linesPerBox * 80 / DIAG_VAL4 / gDialogBoxScale))
-#else
         SCREEN_WIDTH,
         ensure_nonnegative((240 - dialog->width) + (dialog->linesPerBox * 80 / DIAG_VAL4))
-#endif
     );
 
 #ifdef VERSION_JP

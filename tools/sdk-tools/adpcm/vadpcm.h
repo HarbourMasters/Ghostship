@@ -14,6 +14,11 @@ typedef unsigned long long u64;
 typedef float f32;
 typedef double f64;
 
+#ifdef _MSC_VER
+#define __builtin_bswap16 _byteswap_ushort
+#define __builtin_bswap32 _byteswap_ulong
+#endif
+
 #ifdef __sgi
 #  define BSWAP16(x)
 #  define BSWAP32(x)
