@@ -4,9 +4,9 @@
 #include <libultra/types.h>
 #include "types.h"
 #ifdef _WIN32
-#include <string.h>
-#else
 #include <strings.h>
+#else
+#include <string.h>
 #endif
 
 #define MEMORY_POOL_LEFT  0

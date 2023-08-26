@@ -2251,8 +2251,8 @@ public:
 
 	virtual ~File();
 	virtual int close() = 0;
-	virtual long long int read(void *data, size_t nbytes) = 0;
-	virtual long long int write(const void *data, size_t nbytes) = 0;
+	virtual ssize_t read(void *data, size_t nbytes) = 0;
+	virtual ssize_t write(const void *data, size_t nbytes) = 0;
 	virtual off_t length() = 0;
 	virtual off_t seek(off_t offset, SeekOrigin origin) = 0;
 	virtual off_t tell() = 0;
