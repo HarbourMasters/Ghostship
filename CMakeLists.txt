@@ -261,6 +261,72 @@ include_directories(
   ${GLEW_INCLUDE_DIRS}
 )
 
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+	if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
+		target_compile_definitions(${PROJECT_NAME} PRIVATE
+			"$<$<CONFIG:Debug>:"
+				"_DEBUG;"
+				"_CRT_SECURE_NO_WARNINGS;"
+				"ENABLE_DX11;"
+			">"
+			"$<$<CONFIG:Release>:"
+				"NDEBUG"
+			">"
+			"INCLUDE_GAME_PRINTF;"
+			"UNICODE;"
+			"_UNICODE"
+			STORMLIB_NO_AUTO_LINK
+			"_CRT_SECURE_NO_WARNINGS;"
+		)
+	elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
+		target_compile_definitions(${PROJECT_NAME} PRIVATE
+			"$<$<CONFIG:Debug>:"
+				"NOINCLUDE_GAME_PRINTF;"
+				"_DEBUG;"
+				"_CRT_SECURE_NO_WARNINGS;"
+				"ENABLE_OPENGL"
+			">"
+			"$<$<CONFIG:Release>:"
+				"NDEBUG;"
+			">"
+			"INCLUDE_GAME_PRINTF;"
+			"WIN32;"
+			"UNICODE;"
+			"_UNICODE"
+			STORMLIB_NO_AUTO_LINK
+		)
+	endif()
+elseif (CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+	target_compile_definitions(${PROJECT_NAME} PRIVATE
+		"$<$<CONFIG:Debug>:"
+			"_DEBUG"
+		">"
+		"$<$<CONFIG:Release>:"
+			"NDEBUG"
+		">"
+        "SPDLOG_ACTIVE_LEVEL=3;"
+		"SPDLOG_NO_THREAD_ID;"
+        "SPDLOG_NO_TLS;"
+		"STBI_NO_THREAD_LOCALS;"
+	)
+elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
+	target_compile_definitions(${PROJECT_NAME} PRIVATE
+		"$<$<CONFIG:Debug>:"
+			"_DEBUG"
+		">"
+		"$<$<CONFIG:Release>:"
+			"NDEBUG"
+		">"
+        "$<$<BOOL:${BUILD_CROWD_CONTROL}>:ENABLE_CROWD_CONTROL>"
+		"SPDLOG_ACTIVE_LEVEL=0;"
+		"_CONSOLE;"
+		"_CRT_SECURE_NO_WARNINGS;"
+		"ENABLE_OPENGL;"
+		"UNICODE;"
+		"_UNICODE"
+	)
+endif()
+
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 
 add_dependencies(${PROJECT_NAME} libultraship)
@@ -269,6 +335,183 @@ target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
 if(APPLE)
   find_package(SDL2)
   target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2)
+endif()
+
+################################################################################
+# Compile and link options
+################################################################################
+if(MSVC)
+  if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
+      target_compile_options(${PROJECT_NAME} PRIVATE
+          $<$<CONFIG:Debug>:
+              /w;
+              /Od
+          >
+          $<$<CONFIG:Release>:
+              /Oi;
+              /Gy;
+              /W3
+          >
+          /sdl-;
+          /permissive-;
+          /MP;
+          ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
+          ${DEFAULT_CXX_EXCEPTION_HANDLING}
+      )
+      target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Debug>:/ZI;>)
+  elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
+      target_compile_options(${PROJECT_NAME} PRIVATE
+          $<$<CONFIG:Debug>:
+              /RTCs
+          >
+          $<$<CONFIG:Release>:
+              /O2;
+              /Oi;
+              /Gy
+          >
+          /permissive-;
+          /MP;
+          /sdl-;
+          /w;
+          ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
+          ${DEFAULT_CXX_EXCEPTION_HANDLING}
+      )
+  endif()
+  if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
+      target_link_options(${PROJECT_NAME} PRIVATE
+          $<$<CONFIG:Debug>:
+              /INCREMENTAL
+          >
+          $<$<CONFIG:Release>:
+              /OPT:REF;
+              /OPT:ICF;
+              /INCREMENTAL:NO;
+              /FORCE:MULTIPLE
+          >
+          /MANIFEST:NO;
+          /DEBUG;
+          /SUBSYSTEM:WINDOWS
+      )
+  elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
+      target_link_options(${PROJECT_NAME} PRIVATE
+          $<$<CONFIG:Debug>:
+              /STACK:8777216
+          >
+          $<$<CONFIG:Release>:
+              /OPT:REF;
+              /OPT:ICF;
+              /INCREMENTAL:NO;
+              /FORCE:MULTIPLE
+          >
+          /MANIFEST:NO;
+          /DEBUG;
+          /SUBSYSTEM:WINDOWS
+      )
+  endif()
+endif()
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
+  if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+      target_compile_options(${PROJECT_NAME} PRIVATE
+          -Wall -Wextra -Wno-error
+          -Wno-return-type
+          -Wno-unused-parameter
+          -Wno-unused-function
+          -Wno-unused-variable
+          -Wno-missing-field-initializers
+          -Wno-parentheses
+          -Wno-narrowing
+          -Wno-missing-braces
+          $<$<COMPILE_LANGUAGE:C>:
+              -Werror-implicit-function-declaration
+              -Wno-incompatible-pointer-types
+          >
+          $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
+          $<$<COMPILE_LANGUAGE:CXX>:
+              -Wno-c++11-narrowing
+              -Wno-deprecated-enum-enum-conversion
+          >
+          -pthread
+      )
+
+      target_link_options(${PROJECT_NAME} PRIVATE
+          -pthread
+      )
+  elseif (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+      target_compile_options(${PROJECT_NAME} PRIVATE
+          -Wall -Wextra -Wno-error
+          -Wno-return-type
+          -Wno-unused-parameter
+          -Wno-unused-function
+          -Wno-unused-variable
+          -Wno-missing-field-initializers
+          -Wno-parentheses
+          -Wno-narrowing
+          -Wno-missing-braces
+          $<$<COMPILE_LANGUAGE:C>:
+              -Werror-implicit-function-declaration
+              -Wno-incompatible-pointer-types
+          >
+          $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
+          $<$<COMPILE_LANGUAGE:CXX>:
+              -Wno-c++11-narrowing
+              -Wno-deprecated-enum-enum-conversion
+          >
+          -pthread
+      )
+
+      target_link_options(${PROJECT_NAME} PRIVATE
+          -pthread
+      )
+  elseif (CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+      target_compile_options(${PROJECT_NAME} PRIVATE
+          -O2
+
+          # disable some warnings to not clutter output
+          -Wno-multichar
+          -Wno-return-type
+          -Wno-narrowing
+          -Wno-switch-outside-range
+          $<$<COMPILE_LANGUAGE:C>:
+              -Werror-implicit-function-declaration
+              -Wno-incompatible-pointer-types
+              -Wno-discarded-array-qualifiers
+              -Wno-discarded-qualifiers
+              -Wno-int-conversion
+              -Wno-builtin-declaration-mismatch
+              -Wno-switch-unreachable
+              -Wno-stringop-overflow
+          >
+      )
+  else()
+      if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+  set(CPU_OPTION -msse2 -mfpmath=sse)
+      endif()
+
+      target_compile_options(${PROJECT_NAME} PRIVATE
+          -Wall -Wextra -Wno-error
+          -Wno-unused-parameter
+          -Wno-unused-function
+          -Wno-unused-variable
+          -Wno-missing-field-initializers
+          -Wno-parentheses
+          -Wno-narrowing
+          -Wno-missing-braces
+          $<$<COMPILE_LANGUAGE:C>:
+              -Werror-implicit-function-declaration
+              -Wno-incompatible-pointer-types
+          >
+          $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
+          $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-enum-enum-conversion>
+          -pthread
+    ${CPU_OPTION}
+      )
+
+      target_link_options(${PROJECT_NAME} PRIVATE
+          -pthread
+          -Wl,-export-dynamic
+      )
+  endif()
 endif()
 
 #==============================================================================#

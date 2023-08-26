@@ -624,9 +624,9 @@ void setup_game_memory(void) {
  * Main game loop thread. Runs forever as long as the game continues.
  */
 
-struct LevelCommand *addr;
+static struct LevelCommand *addr;
 
-void thread5_game_loop() {
+void thread5_game_loop(void) {
 
     setup_game_memory();
 #if ENABLE_RUMBLE

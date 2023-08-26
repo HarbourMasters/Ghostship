@@ -8,7 +8,7 @@ extern "C" {
 #include "game/game_init.h"
 }
 
-bool sAudioEnabled = false;
+bool sAudioEnabled = true;
 
 void alloc_pool() {
     static u64 pool[1024 * 1024 * 4];
@@ -38,7 +38,11 @@ void push_frame() {
     }
 }
 
+#ifdef _WIN32
+int SDL_main(int argc, char **argv) {
+#else
 int main(){
+#endif
     GameEngine::Create();
     alloc_pool();
     audio_init();
