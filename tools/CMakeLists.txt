@@ -50,6 +50,9 @@ set(tabledesign_SOURCES  sdk-tools/tabledesign/codebook.c sdk-tools/tabledesign/
 #tabledesign_CFLAGS  := -Iaudiofile -Wno-uninitialized
 #tabledesign_LDFLAGS := -Laudiofile -laudiofile -lstdc++
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/audiofile)
+if (MSVC)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/audiofile/include-windows)
+endif()
 add_executable(tabledesign ${tabledesign_SOURCES})
 target_link_libraries(tabledesign PUBLIC audiofile)
 
