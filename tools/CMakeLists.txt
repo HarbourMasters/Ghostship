@@ -14,6 +14,10 @@ else()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
+if (MSVC)
+set(INSTALL_DIR .)
+endif()
+
 set(mio0_SOURCES libmio0.c)
 add_executable(mio0 ${mio0_SOURCES})
 target_compile_definitions(mio0 PUBLIC MIO0_STANDALONE)

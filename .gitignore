@@ -51,7 +51,9 @@ build/*
 *.map
 .assets-local.txt
 
+build/
 build-cmake/*
+cmake-msvc-*/*
 cmake-build-*/*
 .idea/*
 ghostship.cfg.json

@@ -76,6 +76,12 @@ def main():
         clean_assets(local_asset_file)
         sys.exit(0)
 
+    prefix = ""
+    if len(sys.argv) > 2:
+        prefix = sys.argv[2]
+        print("Prefixing assets with", prefix)
+        exit(1)
+
     all_langs = ["jp", "us", "eu", "sh"]
     if not langs or not all(a in all_langs for a in langs):
         langs_str = " ".join("[" + lang + "]" for lang in all_langs)
@@ -153,10 +159,11 @@ def main():
             )
             sys.exit(1)
 
-    # Make sure tools exist
-    subprocess.check_call(
-        ["make", "-s", "-C", "tools/", "n64graphics", "skyconv", "mio0", "aifc_decode"]
-    )
+    if os.name != 'nt':
+        # Make sure tools exist
+        subprocess.check_call(
+            ["make", "-s", "-C", "tools/", "mio0", "aifc_decode"]
+        )
 
     # Go through the assets in roughly alphabetical order (but assets in the same
     # mio0 file still go together).
@@ -169,9 +176,10 @@ def main():
         if mio0 == "@sound":
             rom = roms[lang]
             args = [
-                "python3",
+                sys.executable,
                 "tools/disassemble_sound.py",
                 "baserom." + lang + ".z64",
+                prefix
             ]
             def append_args(key):
                 size, locs = asset_map["@sound " + key + " " + lang]
@@ -194,7 +202,7 @@ def main():
         if mio0 is not None:
             image = subprocess.run(
                 [
-                    "./tools/mio0",
+                    f"{prefix}{'mio0.exe' if os.name == 'nt' else 'tools/mio0'}",
                     "-d",
                     "-o",
                     str(mio0),
@@ -211,51 +219,7 @@ def main():
             print("extracting", asset)
             input = image[pos : pos + size]
             os.makedirs(os.path.dirname(asset), exist_ok=True)
-            if asset.endswith(".png"):
-                png_file = tempfile.NamedTemporaryFile(prefix="asset", delete=False)
-                try:
-                    png_file.write(input)
-                    png_file.flush()
-                    png_file.close()
-                    if asset.startswith("textures/skyboxes/") or asset.startswith("levels/ending/cake"):
-                        if asset.startswith("textures/skyboxes/"):
-                            imagetype = "sky"
-                        else:
-                            imagetype =  "cake" + ("-eu" if "eu" in asset else "")
-                        subprocess.run(
-                            [
-                                "./tools/skyconv",
-                                "--type",
-                                imagetype,
-                                "--combine",
-                                png_file.name,
-                                asset,
-                            ],
-                            check=True,
-                        )
-                    else:
-                        w, h = meta
-                        fmt = asset.split(".")[-2]
-                        subprocess.run(
-                            [
-                                "./tools/n64graphics",
-                                "-e",
-                                png_file.name,
-                                "-g",
-                                asset,
-                                "-f",
-                                fmt,
-                                "-w",
-                                str(w),
-                                "-h",
-                                str(h),
-                            ],
-                            check=True,
-                        )
-                finally:
-                    png_file.close()
-                    os.remove(png_file.name)
-            else:
+            if not asset.endswith(".png"):
                 with open(asset, "wb") as f:
                     f.write(input)
 
