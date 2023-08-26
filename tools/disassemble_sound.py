@@ -516,14 +516,13 @@ def write_aifc(entry, out):
     writer.finish()
 
 
-def write_aiff(prefix, entry, filename):
+def write_aiff(entry, filename):
     temp = tempfile.NamedTemporaryFile(suffix=".aifc", delete=False)
     try:
         write_aifc(entry, temp)
         temp.flush()
         temp.close()
-        aifc_decode = os.path.join(prefix, "aifc_decode.exe" if os.name == "nt" else "aifc_decode")
-        print(aifc_decode)
+        aifc_decode = os.path.join(os.path.dirname(__file__), 'aifc_decode.exe' if os.name == 'nt' else 'aifc_decode')
         subprocess.run([aifc_decode, temp.name, filename], check=True)
     finally:
         temp.close()
@@ -601,7 +600,7 @@ def main():
         else:
             args.append(a)
 
-    expected_num_args = 6 + (0 if only_samples else 2)
+    expected_num_args = 5 + (0 if only_samples else 2)
     if (
         need_help
         or len(args) != expected_num_args
@@ -618,14 +617,13 @@ def main():
         sys.exit(0 if need_help else 1)
 
     rom_file = open(args[0], "rb")
-    prefix = args[1]
 
     def read_at(offset, size):
         rom_file.seek(int(offset))
         return rom_file.read(int(size))
 
-    ctl_data = read_at(args[2], args[3])
-    tbl_data = read_at(args[4], args[5])
+    ctl_data = read_at(args[1], args[2])
+    tbl_data = read_at(args[3], args[4])
 
     ctl_header_data = None
     tbl_header_data = None
@@ -634,8 +632,8 @@ def main():
         tbl_header_data = read_at(shindou_headers[2], shindou_headers[3])
 
     if not only_samples:
-        samples_out_dir = args[6]
-        banks_out_dir = args[7]
+        samples_out_dir = args[5]
+        banks_out_dir = args[6]
 
     banks = []
 
@@ -685,8 +683,7 @@ def main():
                     if dir not in created_dirs:
                         os.makedirs(dir, exist_ok=True)
                         created_dirs.add(dir)
-                    os.makedirs(dir, exist_ok=True)
-                    write_aiff(prefix, entry, filename)
+                    write_aiff(entry, filename)
         return
 
     # Generate aiff files
@@ -714,7 +711,7 @@ def main():
                 # (The last chunk follows a more complex garbage pattern)
                 assert all(x == 0 for x in garbage)
             filename = os.path.join(dir, entry.name + ".aiff")
-            write_aiff(prefix, entry, filename)
+            write_aiff(entry, filename)
 
     # Generate sound bank .json files
     os.makedirs(banks_out_dir, exist_ok=True)

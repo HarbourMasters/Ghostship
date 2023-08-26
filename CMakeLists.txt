@@ -52,17 +52,10 @@ add_subdirectory(tools)
 # Find Python 3 for the custom target
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
-set(TOOLS_PATH "")
-
-if(WIN32)
-  set(TOOLS_PATH ${CMAKE_BINARY_DIR}/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>)
-  message(STATUS "TOOLS_PATH: ${TOOLS_PATH}")
-endif()
-
 # Add a custom target to extract assets
 add_custom_target(
     ExtractAssets
-    COMMAND ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py ${VERSION} ${TOOLS_PATH}
+    COMMAND ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py ${VERSION}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Running asset extraction..."
     DEPENDS Tools

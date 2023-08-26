@@ -76,12 +76,6 @@ def main():
         clean_assets(local_asset_file)
         sys.exit(0)
 
-    prefix = ""
-    if len(sys.argv) > 2:
-        prefix = sys.argv[2]
-        print("Prefixing assets with", prefix)
-        exit(1)
-
     all_langs = ["jp", "us", "eu", "sh"]
     if not langs or not all(a in all_langs for a in langs):
         langs_str = " ".join("[" + lang + "]" for lang in all_langs)
@@ -179,7 +173,6 @@ def main():
                 sys.executable,
                 "tools/disassemble_sound.py",
                 "baserom." + lang + ".z64",
-                prefix
             ]
             def append_args(key):
                 size, locs = asset_map["@sound " + key + " " + lang]
@@ -202,7 +195,7 @@ def main():
         if mio0 is not None:
             image = subprocess.run(
                 [
-                    f"{prefix}{'mio0.exe' if os.name == 'nt' else 'tools/mio0'}",
+                    'tools/mio0.exe' if os.name == 'nt' else 'tools/mio0',
                     "-d",
                     "-o",
                     str(mio0),
