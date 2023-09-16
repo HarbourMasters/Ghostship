@@ -7,6 +7,7 @@
 #include "audio/internal.h"
 #include "banks_table.h"
 #include "sequences_table.h"
+#include "ZAPDUtils/Utils/StringHelper.h"
 
 #include <iostream>
 #include <Fast3D/gfx_pc.h>
@@ -15,9 +16,26 @@
 GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine(){
-    std::string main = LUS::Context::GetPathRelativeToAppBundle("smcube.otr");
-    std::string assets = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
-    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", { main, assets }, {}, 3);
+    std::vector<std::string> OTRFiles;
+    std::string cubePath = LUS::Context::GetPathRelativeToAppDirectory("smcube.otr");
+    if (std::filesystem::exists(cubePath)) {
+        OTRFiles.push_back(cubePath);
+    }
+    std::string sohOtrPath = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
+    if (std::filesystem::exists(sohOtrPath)) {
+        OTRFiles.push_back(sohOtrPath);
+    }
+    std::string patchesPath = LUS::Context::GetPathRelativeToAppDirectory("mods");
+    if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
+        if (std::filesystem::is_directory(patchesPath)) {
+            for (const auto& p : std::filesystem::recursive_directory_iterator(patchesPath)) {
+                if (StringHelper::IEquals(p.path().extension().string(), ".otr")) {
+                    OTRFiles.push_back(p.path().generic_string());
+                }
+            }
+        }
+    }
+    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, {}, 3);
     this->context->GetWindow()->SetTargetFps(30);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Anim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
