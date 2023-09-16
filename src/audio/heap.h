@@ -3,6 +3,7 @@
 
 #include <libultra/types.h>
 
+#include "port/Engine.h"
 #include "internal.h"
 
 #define SOUND_LOAD_STATUS_NOT_LOADED     0
@@ -12,8 +13,8 @@
 #define SOUND_LOAD_STATUS_4              4
 #define SOUND_LOAD_STATUS_5              5
 
-#define IS_BANK_LOAD_COMPLETE(bankId) (gBankLoadStatus[bankId] >= SOUND_LOAD_STATUS_COMPLETE)
-#define IS_SEQ_LOAD_COMPLETE(seqId) (gSeqLoadStatus[seqId] >= SOUND_LOAD_STATUS_COMPLETE)
+#define IS_BANK_LOAD_COMPLETE(bankId) GameEngine_IsBankLoaded(bankId)
+#define IS_SEQ_LOAD_COMPLETE(seqId) GameEngine_IsSequenceLoaded(seqId)
 
 struct SoundAllocPool {
     u8 *start;
@@ -91,15 +92,11 @@ extern struct SoundAllocPool gAudioInitPool;
 extern struct SoundAllocPool gNotesAndBuffersPool;
 extern struct SoundAllocPool gPersistentCommonPool;
 extern struct SoundAllocPool gTemporaryCommonPool;
-extern struct SoundMultiPool gSeqLoadedPool;
-extern struct SoundMultiPool gBankLoadedPool;
 #ifdef VERSION_SH
 extern struct Unk1Pool gUnkPool1;
 extern struct UnkPool gUnkPool2;
 extern struct UnkPool gUnkPool3;
 #endif
-extern u8 gBankLoadStatus[64];
-extern u8 gSeqLoadStatus[256];
 extern volatile u8 gAudioResetStatus;
 extern u8 gAudioResetPresetIdToLoad;
 

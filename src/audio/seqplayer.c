@@ -315,7 +315,7 @@ void sequence_player_disable(struct SequencePlayer *seqPlayer) {
         && gSeqLoadStatus[seqPlayer->seqId] != 5
 #endif
     ) {
-        gSeqLoadStatus[seqPlayer->seqId] = SOUND_LOAD_STATUS_DISCARDABLE;
+        GameEngine_UnloadSequence(seqPlayer->seqId);
     }
 
     if (IS_BANK_LOAD_COMPLETE(seqPlayer->defaultBank[0])
@@ -326,26 +326,9 @@ void sequence_player_disable(struct SequencePlayer *seqPlayer) {
 #ifdef VERSION_SH
         gBankLoadStatus[seqPlayer->defaultBank[0]] = 4;
 #else
-        gBankLoadStatus[seqPlayer->defaultBank[0]] = SOUND_LOAD_STATUS_DISCARDABLE;
+        GameEngine_UnloadBank(seqPlayer->defaultBank[0]);
 #endif
     }
-
-    // (Note that if this is called from alloc_bank_or_seq, the side will get swapped
-    // later in that function. Thus, we signal that we want to load into the slot
-    // of the bank that we no longer need.)
-#if defined(VERSION_EU) || defined(VERSION_SH)
-    if (seqPlayer->defaultBank[0] == gBankLoadedPool.temporary.entries[0].id) {
-        gBankLoadedPool.temporary.nextSide = 1;
-    } else if (seqPlayer->defaultBank[0] == gBankLoadedPool.temporary.entries[1].id) {
-        gBankLoadedPool.temporary.nextSide = 0;
-    }
-#else
-    if (gBankLoadedPool.temporary.entries[0].id == seqPlayer->defaultBank[0]) {
-        gBankLoadedPool.temporary.nextSide = 1;
-    } else if (gBankLoadedPool.temporary.entries[1].id == seqPlayer->defaultBank[0]) {
-        gBankLoadedPool.temporary.nextSide = 0;
-    }
-#endif
 }
 
 /**
@@ -1401,10 +1384,13 @@ s32 seq_channel_layer_process_script_part3(struct SequenceChannelLayer *layer, s
 #endif
 
 u8 get_instrument(struct SequenceChannel *seqChannel, u8 instId, struct Instrument **instOut, struct AdsrSettings *adsr) {
-    struct Instrument *inst;
-#if defined(VERSION_EU) || defined(VERSION_SH)
-    inst = get_instrument_inner(seqChannel->bankId, instId);
-    if (inst == NULL) {
+    struct CtlEntry *bank = GameEngine_LoadBank(seqChannel->bankId);
+    if(instId >= bank->numInstruments) {
+        *instOut = NULL;
+        return 0;
+    }
+    struct Instrument* inst = bank->instruments[instId];
+    if(inst == NULL) {
         *instOut = NULL;
         return 0;
     }
@@ -1413,47 +1399,6 @@ u8 get_instrument(struct SequenceChannel *seqChannel, u8 instId, struct Instrume
     *instOut = inst;
     instId++;
     return instId;
-#else
-    UNUSED u32 pad;
-
-    if (instId >= gCtlEntries[seqChannel->bankId].numInstruments) {
-        instId = gCtlEntries[seqChannel->bankId].numInstruments;
-        if (instId == 0) {
-            return 0;
-        }
-        instId--;
-    }
-
-    inst = gCtlEntries[seqChannel->bankId].instruments[instId];
-    if (inst == NULL) {
-        struct SequenceChannel seqChannelCpy = *seqChannel;
-
-        while (instId != 0xff) {
-            inst = gCtlEntries[seqChannelCpy.bankId].instruments[instId];
-            if (inst != NULL) {
-                break;
-            }
-            instId--;
-        }
-    }
-
-    if (((uintptr_t) gBankLoadedPool.persistent.pool.start <= (uintptr_t) inst
-         && (uintptr_t) inst <= (uintptr_t)(gBankLoadedPool.persistent.pool.start
-                    + gBankLoadedPool.persistent.pool.size))
-        || ((uintptr_t) gBankLoadedPool.temporary.pool.start <= (uintptr_t) inst
-            && (uintptr_t) inst <= (uintptr_t)(gBankLoadedPool.temporary.pool.start
-                                   + gBankLoadedPool.temporary.pool.size))) {
-        adsr->envelope = inst->envelope;
-        adsr->releaseRate = inst->releaseRate;
-        *instOut = inst;
-        instId++;
-        return instId;
-    }
-
-    gAudioErrorFlags = instId + 0x20000;
-    *instOut = NULL;
-    return 0;
-#endif
 }
 
 void set_instrument(struct SequenceChannel *seqChannel, u8 instId) {
@@ -1844,7 +1789,7 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
 #ifdef VERSION_SH
                         if (get_bank_or_seq(1, 2, cmd) != NULL)
 #else
-                        if (get_bank_or_seq(&gBankLoadedPool, 2, cmd) != NULL)
+                        if(IS_BANK_LOAD_COMPLETE(cmd))
 #endif
                         {
                             seqChannel->bankId = cmd;
@@ -2225,9 +2170,6 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
 
 void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
     u8 cmd;
-#ifdef VERSION_SH
-    UNUSED u32 pad;
-#endif
     u8 loBits;
     u8 temp;
     s32 value;
@@ -2235,96 +2177,20 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
     u16 u16v;
     u8 *seqData;
     struct M64ScriptState *state;
-#if defined(VERSION_EU) || defined(VERSION_SH)
-    s32 temp32;
-#endif
 
     if (seqPlayer->enabled == FALSE) {
         return;
     }
 
-#ifndef VERSION_SH
-    if (seqPlayer->bankDmaInProgress == TRUE) {
-#ifdef VERSION_EU
-        if (osRecvMesg(&seqPlayer->bankDmaMesgQueue, NULL, 0) == -1) {
-            return;
-        }
-        if (seqPlayer->bankDmaRemaining == 0) {
-            seqPlayer->bankDmaInProgress = FALSE;
-            patch_audio_bank(
-                (struct AudioBank *) (gCtlEntries[seqPlayer->loadingBankId].instruments - 1),
-                gAlTbl->seqArray[seqPlayer->loadingBankId].offset,
-                gCtlEntries[seqPlayer->loadingBankId].numInstruments,
-                gCtlEntries[seqPlayer->loadingBankId].numDrums);
-            gCtlEntries[seqPlayer->loadingBankId].drums =
-                ((struct AudioBank *) (gCtlEntries[seqPlayer->loadingBankId].instruments - 1))->drums;
-            gBankLoadStatus[seqPlayer->loadingBankId] = SOUND_LOAD_STATUS_COMPLETE;
-        } else {
-            audio_dma_partial_copy_async(&seqPlayer->bankDmaCurrDevAddr, &seqPlayer->bankDmaCurrMemAddr,
-                                         &seqPlayer->bankDmaRemaining, &seqPlayer->bankDmaMesgQueue,
-                                         &seqPlayer->bankDmaIoMesg);
-        }
-#else
-        if (!OS_MESG_VALID(seqPlayer->bankDmaMesg)) {
-            return;
-        }
-        if (seqPlayer->bankDmaRemaining == 0) {
-            seqPlayer->bankDmaInProgress = FALSE;
-            patch_audio_bank(seqPlayer->loadingBank, gAlTbl->seqArray[seqPlayer->loadingBankId].offset,
-                             seqPlayer->loadingBankNumInstruments, seqPlayer->loadingBankNumDrums);
-            gCtlEntries[seqPlayer->loadingBankId].numInstruments = seqPlayer->loadingBankNumInstruments;
-            gCtlEntries[seqPlayer->loadingBankId].numDrums = seqPlayer->loadingBankNumDrums;
-            gCtlEntries[seqPlayer->loadingBankId].instruments = seqPlayer->loadingBank->instruments;
-            gCtlEntries[seqPlayer->loadingBankId].drums = seqPlayer->loadingBank->drums;
-            gBankLoadStatus[seqPlayer->loadingBankId] = SOUND_LOAD_STATUS_COMPLETE;
-        } else {
-            osCreateMesgQueue(&seqPlayer->bankDmaMesgQueue, &seqPlayer->bankDmaMesg, 1);
-            seqPlayer->bankDmaMesg = OS_MESG_PTR(NULL);
-            audio_dma_partial_copy_async(&seqPlayer->bankDmaCurrDevAddr, &seqPlayer->bankDmaCurrMemAddr,
-                                         &seqPlayer->bankDmaRemaining, &seqPlayer->bankDmaMesgQueue,
-                                         &seqPlayer->bankDmaIoMesg);
-        }
-#endif
-        return;
-    }
-
-    if (seqPlayer->seqDmaInProgress == TRUE) {
-#ifdef VERSION_EU
-        if (osRecvMesg(&seqPlayer->seqDmaMesgQueue, NULL, 0) == -1) {
-            return;
-        }
-#else
-        if (!OS_MESG_VALID(seqPlayer->seqDmaMesg)) {
-            return;
-        }
-#endif
-        seqPlayer->seqDmaInProgress = FALSE;
-        gSeqLoadStatus[seqPlayer->seqId] = SOUND_LOAD_STATUS_COMPLETE;
-    }
-#endif
-
     // If discarded, bail out.
-    if (IS_SEQ_LOAD_COMPLETE(seqPlayer->seqId) == FALSE
-        || (
-#ifdef VERSION_SH
-        seqPlayer->defaultBank[0] != 0xff &&
-#endif
-        IS_BANK_LOAD_COMPLETE(seqPlayer->defaultBank[0]) == FALSE)) {
+    if (IS_SEQ_LOAD_COMPLETE(seqPlayer->seqId) == FALSE || IS_BANK_LOAD_COMPLETE(seqPlayer->defaultBank[0]) == FALSE ){
         eu_stubbed_printf_1("Disappear Sequence or Bank %d\n", seqPlayer->seqId);
         sequence_player_disable(seqPlayer);
         return;
     }
 
-    // Remove possible SOUND_LOAD_STATUS_DISCARDABLE marks.
-#ifdef VERSION_SH
-    if (gSeqLoadStatus[seqPlayer->seqId] != 5)
-#endif
-        gSeqLoadStatus[seqPlayer->seqId] = SOUND_LOAD_STATUS_COMPLETE;
-
-#ifdef VERSION_SH
-    if (gBankLoadStatus[seqPlayer->defaultBank[0]] != 5)
-#endif
-        gBankLoadStatus[seqPlayer->defaultBank[0]] = SOUND_LOAD_STATUS_COMPLETE;
+    GameEngine_LoadSequence(seqPlayer->seqId);
+    GameEngine_LoadBank(seqPlayer->defaultBank[0]);
 
     if (seqPlayer->muted && (seqPlayer->muteBehavior & MUTE_BEHAVIOR_STOP_SCRIPT) != 0) {
         return;
@@ -2354,11 +2220,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
                     sequence_player_disable(seqPlayer);
                     break;
                 }
-#if defined(VERSION_EU) || defined(VERSION_SH)
                 state->pc = state->stack[--state->depth];
-#else
-                state->depth--, state->pc = state->stack[state->depth];
-#endif
             }
 
             if (cmd == 0xfd) { // seq_delay
@@ -2378,27 +2240,13 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
 
                     case 0xfc: // seq_call
                         u16v = m64_read_s16(state);
-                        if (0 && state->depth >= 4) {
-                            eu_stubbed_printf_0("Macro Level Over Error!\n");
-                        }
-#if defined(VERSION_EU) || defined(VERSION_SH)
                         state->stack[state->depth++] = state->pc;
-#else
-                        state->depth++, state->stack[state->depth - 1] = state->pc;
-#endif
                         state->pc = seqPlayer->seqData + u16v;
                         break;
 
                     case 0xf8: // seq_loop; loop start, N iterations (or 256 if N = 0)
-                        if (0 && state->depth >= 4) {
-                            eu_stubbed_printf_0("Macro Level Over Error!\n");
-                        }
                         state->remLoopIters[state->depth] = m64_read_u8(state);
-#if defined(VERSION_EU) || defined(VERSION_SH)
                         state->stack[state->depth++] = state->pc;
-#else
-                        state->depth++, state->stack[state->depth - 1] = state->pc;
-#endif
                         break;
 
                     case 0xf7: // seq_loopend
@@ -2725,18 +2573,11 @@ void process_sequences(UNUSED s32 iterationsRemaining) {
     s32 i;
     for (i = 0; i < SEQUENCE_PLAYERS; i++) {
         if (gSequencePlayers[i].enabled == TRUE) {
-#if defined(VERSION_EU) || defined(VERSION_SH)
             sequence_player_process_sequence(&gSequencePlayers[i]);
             sequence_player_process_sound(&gSequencePlayers[i]);
-#else
-            sequence_player_process_sequence(gSequencePlayers + i);
-            sequence_player_process_sound(gSequencePlayers + i);
-#endif
         }
     }
-#if defined(VERSION_JP) || defined(VERSION_US)
     reclaim_notes();
-#endif
     process_notes();
 }
 
@@ -2788,11 +2629,6 @@ void init_sequence_players(void) {
     for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
         gSequenceChannels[i].seqPlayer = NULL;
         gSequenceChannels[i].enabled = FALSE;
-#if defined(VERSION_JP) || defined(VERSION_US)
-    }
-
-    for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
-#endif
         for (j = 0; j < LAYERS_MAX; j++) {
             gSequenceChannels[i].layers[j] = NULL;
         }

@@ -30,12 +30,8 @@ extern struct NotePool gNoteFreeLists;
 
 extern OSMesgQueue gCurrAudioFrameDmaQueue;
 extern u32 gSampleDmaNumListItems;
-extern ALSeqFile *gAlCtlHeader;
-extern ALSeqFile *gAlTbl;
-extern ALSeqFile *gSeqFileHeader;
 extern u8 *gAlBankSets;
 
-extern struct CtlEntry *gCtlEntries;
 #if defined(VERSION_EU) || defined(VERSION_SH)
 extern struct AudioBufferParametersEU gAudioBufferParameters;
 #endif

@@ -88,7 +88,6 @@ def align(val, al):
 
 name_tbl = {}
 
-
 def gen_name(prefix, name_table=[]):
     if prefix not in name_tbl:
         name_tbl[prefix] = 0
@@ -305,6 +304,7 @@ def parse_ctl(parsed_header, data, sample_bank, index, is_shindou):
     # Put drums somewhere in the middle of the instruments to make sample
     # addresses come in increasing order. (This logic isn't totally right,
     # but it works for our purposes.)
+
     all_insts = []
     need_drums = len(drums) > 0
     for inst in insts:
@@ -522,8 +522,10 @@ def write_aiff(entry, filename):
         write_aifc(entry, temp)
         temp.flush()
         temp.close()
+        open(filename + ".aifc", "wb").write(open(temp.name, "rb").read())
         aifc_decode = os.path.join(os.path.dirname(__file__), 'aifc_decode.exe' if os.name == 'nt' else 'aifc_decode')
         subprocess.run([aifc_decode, temp.name, filename], check=True)
+        # Write aifc file too
     finally:
         temp.close()
         os.remove(temp.name)
@@ -642,12 +644,12 @@ def main():
         tbl_entries = parse_sh_header(tbl_header_data, TYPE_TBL)
 
         sample_banks = parse_tbl(tbl_data, tbl_entries)[1]
-
         for index, (offset, length, sh_meta) in enumerate(ctl_entries):
             sample_bank = sample_banks[sh_meta[0]]
             entry = ctl_data[offset : offset + length]
             header = (sh_meta[1], sh_meta[2], "0000-00-00")
-            banks.append(parse_ctl(header, entry, sample_bank, index, True))
+            bank = parse_ctl(header, entry, sample_bank, index, True)
+            banks.append(bank)
     else:
         ctl_entries = parse_seqfile(ctl_data, TYPE_CTL)
         tbl_entries = parse_seqfile(tbl_data, TYPE_TBL)
@@ -655,14 +657,32 @@ def main():
 
         tbls, sample_banks, sample_bank_map = parse_tbl(tbl_data, tbl_entries)
 
+        print(f"Table entries {len(tbl_entries)}")
+        print(f"Control entries {len(ctl_entries)}")
+        print(f"TBLs {len(tbls)}")
+        print(f"Map {len(sample_bank_map)}")
+
+        print("================================")
         for index, (offset, length), sample_bank_name in zip(
             range(len(ctl_entries)), ctl_entries, tbls
         ):
             sample_bank = sample_bank_map[sample_bank_name]
             entry = ctl_data[offset : offset + length]
             header = parse_ctl_header(entry[:16])
-            banks.append(parse_ctl(header, entry[16:], sample_bank, index, False))
+            bank = parse_ctl(header, entry[16:], sample_bank, index, False)
+            banks.append(bank)
+            print(f"Bank {bank.name}")
+            print(f"Instruments {len(bank.insts)}")
+            print(f"Drums {len(bank.drums)}")
+            print(f"Samples {len(bank.samples)}")
+            print(f"Envelopes {len(bank.envelopes)}")
+            print(f"All Instruments {len(bank.all_insts)}")
+            print(f"Inst Offsets {len(bank.inst_list)}")
+            print(f"Sample bank {bank.sample_bank.name}")
+            print(f"Sample bank {bank.sample_bank.offset}")
+            print("================================")
 
+    print("Extracting...")
     # Special mode used for asset extraction: generate aifc files, with paths
     # given by command line arguments
     if only_samples:
@@ -670,6 +690,7 @@ def main():
         created_dirs = set()
         for arg in only_samples_list:
             filename, index = arg.rsplit(":", 1)
+            print(filename, index)
             index_to_filename[int(index)] = filename
         index = -1
         for sample_bank in sample_banks:
@@ -677,7 +698,9 @@ def main():
             for offset in offsets:
                 entry = sample_bank.entries[offset]
                 index += 1
+                print(index, entry.name)
                 if index in index_to_filename:
+                    print(index, index_to_filename[index])
                     filename = index_to_filename[index]
                     dir = os.path.dirname(filename)
                     if dir not in created_dirs:

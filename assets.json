@@ -1086,6 +1086,7 @@
 "sound/sequences/sh/20_cutscene_ending.m64": [1887,{"sh":[7981824]}],
 "sound/sequences/sh/21_menu_file_select.m64": [786,{"sh":[7983712]}],
 "sound/sequences/sh/22_cutscene_lakitu.m64": [317,{"sh":[7984512]}],
+"sound/sequences/us/00_sound_player.m64": [13456,{"us":[8063360]}],
 "sound/sequences/us/01_cutscene_collect_star.m64": [619,{"us":[8076816]}],
 "sound/sequences/us/02_menu_title_screen.m64": [8254,{"us":[8077440]}],
 "sound/sequences/us/03_level_grass.m64": [5122,{"us":[8085696]}],

@@ -36,9 +36,6 @@ u8 sAudioHeapPad[0x20]; // probably two unused pools
 struct SoundAllocPool gSeqAndBankPool;
 struct SoundAllocPool gPersistentCommonPool;
 struct SoundAllocPool gTemporaryCommonPool;
-
-struct SoundMultiPool gSeqLoadedPool;
-struct SoundMultiPool gBankLoadedPool;
 struct SoundMultiPool gUnusedLoadedPool;
 
 #ifdef VERSION_SH
@@ -55,8 +52,6 @@ struct PoolSplit sTemporaryCommonPoolSplit;
 #ifdef VERSION_SH
 u8 gUnkLoadStatus[0x40];
 #endif
-u8 gBankLoadStatus[0x40];
-u8 gSeqLoadStatus[0x100];
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
 volatile u8 gAudioResetStatus;
@@ -187,14 +182,6 @@ void reset_bank_and_seq_load_status(void) {
         if (gSeqLoadStatus[i] != SOUND_LOAD_STATUS_5) {
             gSeqLoadStatus[i] = SOUND_LOAD_STATUS_NOT_LOADED;
         }
-    }
-#else
-    for (i = 0; i < 64; i++) {
-        gBankLoadStatus[i] = SOUND_LOAD_STATUS_NOT_LOADED;
-    }
-
-    for (i = 0; i < 256; i++) {
-        gSeqLoadStatus[i] = SOUND_LOAD_STATUS_NOT_LOADED;
     }
 #endif
 }
@@ -361,23 +348,15 @@ void seq_and_bank_pool_init(struct PoolSplit2 *a) {
 
 void persistent_pools_init(struct PoolSplit *a) {
     gPersistentCommonPool.cur = gPersistentCommonPool.start;
-    sound_alloc_pool_init(&gSeqLoadedPool.persistent.pool, SOUND_ALLOC_FUNC(&gPersistentCommonPool, a->wantSeq), a->wantSeq);
-    sound_alloc_pool_init(&gBankLoadedPool.persistent.pool, SOUND_ALLOC_FUNC(&gPersistentCommonPool, a->wantBank), a->wantBank);
     sound_alloc_pool_init(&gUnusedLoadedPool.persistent.pool, SOUND_ALLOC_FUNC(&gPersistentCommonPool, a->wantUnused),
                   a->wantUnused);
-    persistent_pool_clear(&gSeqLoadedPool.persistent);
-    persistent_pool_clear(&gBankLoadedPool.persistent);
     persistent_pool_clear(&gUnusedLoadedPool.persistent);
 }
 
 void temporary_pools_init(struct PoolSplit *a) {
     gTemporaryCommonPool.cur = gTemporaryCommonPool.start;
-    sound_alloc_pool_init(&gSeqLoadedPool.temporary.pool, SOUND_ALLOC_FUNC(&gTemporaryCommonPool, a->wantSeq), a->wantSeq);
-    sound_alloc_pool_init(&gBankLoadedPool.temporary.pool, SOUND_ALLOC_FUNC(&gTemporaryCommonPool, a->wantBank), a->wantBank);
     sound_alloc_pool_init(&gUnusedLoadedPool.temporary.pool, SOUND_ALLOC_FUNC(&gTemporaryCommonPool, a->wantUnused),
                   a->wantUnused);
-    temporary_pool_clear(&gSeqLoadedPool.temporary);
-    temporary_pool_clear(&gBankLoadedPool.temporary);
     temporary_pool_clear(&gUnusedLoadedPool.temporary);
 }
 #undef SOUND_ALLOC_FUNC
@@ -444,15 +423,6 @@ void *alloc_bank_or_seq(struct SoundMultiPool *arg0, s32 arg1, s32 size, s32 arg
 
     if (arg3 == 0) {
         tp = &arg0->temporary;
-#ifndef VERSION_SH
-        if (arg0 == &gSeqLoadedPool) {
-            table = gSeqLoadStatus;
-            isSound = FALSE;
-        } else if (arg0 == &gBankLoadedPool) {
-            table = gBankLoadStatus;
-            isSound = TRUE;
-        }
-#endif
 
 #ifdef VERSION_SH
         if (tp->entries[0].id == (s8)nullID) {
