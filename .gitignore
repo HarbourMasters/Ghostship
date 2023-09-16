@@ -52,6 +52,7 @@ build/*
 .assets-local.txt
 
 build/
+build*/
 build-cmake/*
 cmake-msvc-*/*
 cmake-build-*/*

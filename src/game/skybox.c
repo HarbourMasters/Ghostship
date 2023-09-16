@@ -251,8 +251,8 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
             uint8_t* texture = gSkyboxTiles[tileIndex];
 
             if(texture == NULL){
-                texture = malloc(2048);
-                gSkyboxTiles[tileIndex] = texture;
+                gSkyboxTiles[tileIndex] = malloc(2048);
+                texture = gSkyboxTiles[tileIndex];
             }
 
             // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
@@ -303,6 +303,9 @@ Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
         Mtx *ortho = create_skybox_ortho_matrix(player);
         if(gSkyboxTiles == NULL){
             gSkyboxTiles = malloc(80 * sizeof(uint8_t*));
+            for (size_t idx = 0; idx < 80; idx++) {
+                gSkyboxTiles[idx] = NULL;
+            }
             gLastSkybox = background;
         } else if(gLastSkybox != background ){
             for(size_t i = 0; i < 80; i++){
