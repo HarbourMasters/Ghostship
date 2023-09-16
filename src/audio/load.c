@@ -398,7 +398,7 @@ out2:
 #endif
 }
 
-struct AudioBankSample* load_sequence_immediate(s32 seqId, s32 arg1) {
+uint8_t* load_sequence_immediate(s32 seqId, s32 arg1) {
     return GameEngine_LoadSequence(seqId);
 }
 
@@ -428,7 +428,7 @@ void preload_sequence(u32 seqId, u8 preloadMask) {
     }
 
     if (preloadMask & PRELOAD_SEQUENCE) {
-        struct AudioBankSample* sequenceData = load_sequence_immediate(seqId, 2);
+        uint8_t* sequenceData = load_sequence_immediate(seqId, 2);
         if (sequenceData == NULL) {
             gAudioLoadLock = AUDIO_LOCK_NOT_LOADING;
             return;
@@ -467,7 +467,7 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     eu_stubbed_printf_2("Seq %d:Default Load Id is %d\n", seqId, seqPlayer->defaultBank[0]);
     eu_stubbed_printf_0("Seq Loading Start\n");
 
-    struct AudioBankSample* sequenceData = load_sequence_immediate(seqId, 2);
+    uint8_t* sequenceData = load_sequence_immediate(seqId, 2);
     if (sequenceData == NULL) {
         return;
     }

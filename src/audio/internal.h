@@ -234,6 +234,12 @@ struct CtlEntry {
     struct Drum **drums;
 }; // size = 0xC
 
+struct AudioSequenceData {
+    u32 bankCount;
+    u8* banks;
+    u8* data;
+};
+
 struct M64ScriptState {
     u8 *pc;
     u8 *stack[4];

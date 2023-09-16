@@ -21,7 +21,7 @@ GameEngine::GameEngine(){
     this->context->GetWindow()->SetMaximumFrameLatency(1);
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Anim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Audio, "Audio", std::make_shared<CubeOS::AudioSampleFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
 }
 
 void GameEngine::Create(){
@@ -85,7 +85,7 @@ extern "C" void GameEngine_UnloadBank(uint8_t bankId) {
     }
 }
 
-extern "C" AudioBankSample* GameEngine_LoadSequence(uint8_t seqId) {
+extern "C" uint8_t* GameEngine_LoadSequence(uint8_t seqId) {
     auto engine = GameEngine::Instance;
     if(seqId > (sizeof(gSequenceTable) / sizeof(gSequenceTable[0]))){
         return nullptr;
@@ -93,7 +93,7 @@ extern "C" AudioBankSample* GameEngine_LoadSequence(uint8_t seqId) {
     if(engine->samples.contains(seqId)){
         return engine->samples[seqId];
     }
-    auto sample = static_cast<AudioBankSample *>(ResourceGetDataByName(gSequenceTable[seqId]));
+    auto sample = static_cast<uint8_t *>(ResourceGetDataByName(gSequenceTable[seqId]));
     engine->samples[seqId] = sample;
     return sample;
 }
