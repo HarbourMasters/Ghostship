@@ -479,10 +479,6 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-unsigned char gBankTempData[] = {
-#include "sound/bank_sets.inc.c"
-};
-
 // (void) must be omitted from parameters to fix stack with -framepointer
 void audio_init() {
     s32 i, j;
