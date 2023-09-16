@@ -3,6 +3,7 @@
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/AudioSampleFactory.h"
+#include "port/importer/AudioSequenceFactory.h"
 #include "audio/internal.h"
 #include "banks_table.h"
 #include "sequences_table.h"
@@ -22,6 +23,7 @@ GameEngine::GameEngine(){
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Anim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
 }
 
 void GameEngine::Create(){
@@ -85,28 +87,28 @@ extern "C" void GameEngine_UnloadBank(uint8_t bankId) {
     }
 }
 
-extern "C" uint8_t* GameEngine_LoadSequence(uint8_t seqId) {
+extern "C" AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId) {
     auto engine = GameEngine::Instance;
     if(seqId > (sizeof(gSequenceTable) / sizeof(gSequenceTable[0]))){
         return nullptr;
     }
-    if(engine->samples.contains(seqId)){
-        return engine->samples[seqId];
+    if(engine->sequences.contains(seqId)){
+        return engine->sequences[seqId];
     }
-    auto sample = static_cast<uint8_t *>(ResourceGetDataByName(gSequenceTable[seqId]));
-    engine->samples[seqId] = sample;
-    return sample;
+    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(gSequenceTable[seqId]));
+    engine->sequences[seqId] = sequences;
+    return sequences;
 }
 
 extern "C" uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId) {
     auto engine = GameEngine::Instance;
     GameEngine_LoadSequence(seqId);
-    return engine->samples.contains(seqId);
+    return engine->sequences.contains(seqId);
 }
 
 extern "C" void GameEngine_UnloadSequence(uint8_t seqId) {
     auto engine = GameEngine::Instance;
-    if(engine->samples.contains(seqId)){
-        engine->samples.erase(seqId);
+    if(engine->sequences.contains(seqId)){
+        engine->sequences.erase(seqId);
     }
 }

@@ -60,7 +60,6 @@ u8 sSampleDmaReuseQueueHead2; // sh: 0x803505E3
 
 // bss correct up to here
 
-u8 *gAlBankSets;
 u16 gSequenceCount;
 
 #if defined(VERSION_EU)
@@ -399,16 +398,15 @@ out2:
 }
 
 uint8_t* load_sequence_immediate(s32 seqId, s32 arg1) {
-    return GameEngine_LoadSequence(seqId);
+    return GameEngine_LoadSequence(seqId)->data;
 }
 
 struct CtlEntry* load_banks_immediate(s32 seqId, u8 *outDefaultBank) {
     u32 bankId;
-    u16 offset = ((u16 *) gAlBankSets)[seqId];
+    struct AudioSequenceData *seqData = ResourceGetDataByName(gSequenceTable[seqId]);
     struct CtlEntry *output;
-    for (u8 i = gAlBankSets[offset++]; i != 0; i--) {
-        bankId = gAlBankSets[offset++];
-        output = GameEngine_LoadBank(bankId);
+    for(size_t i = 0; i < seqData->bankCount; i++) {
+        output = GameEngine_LoadBank(bankId = seqData->banks[i]);
     }
     *outDefaultBank = bankId;
     return output;
@@ -555,8 +553,6 @@ void audio_init() {
 
     // Load headers for sounds and sequences
     gSequenceCount = sizeof(gSequenceTable) / sizeof(gSequenceTable[0]);
-    gAlBankSets = soundAlloc(&gAudioInitPool, 0xA0);
-    audio_dma_copy_immediate((uintptr_t) gBankTempData, gAlBankSets, 0xA0);
     init_sequence_players();
     gAudioLoadLock = AUDIO_LOCK_NOT_LOADING;
     // Should probably contain the sizes of the data banks, but those aren't

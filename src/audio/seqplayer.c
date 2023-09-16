@@ -954,6 +954,8 @@ u8 audioString107[] = "Error: Your assignchannel is stolen.\n";
 #else
 // US/JP version with macros to simulate inlining by copt. Edit if you dare.
 #include "copt/seq_channel_layer_process_script_copt.inc.c"
+#include "sequences_table.h"
+
 #endif
 
 #ifdef VERSION_SH
@@ -1782,9 +1784,8 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
                         loBits = *(sp38 + gAlBankSets);
                         cmd = gAlBankSets[(s32)sp38 + loBits - cmd];
 #else
-                        sp5A = ((u16 *) gAlBankSets)[seqPlayer->seqId];
-                        loBits = *(sp5A + gAlBankSets);
-                        cmd = gAlBankSets[sp5A + loBits - cmd];
+                        struct AudioSequenceData *sequence = ResourceGetDataByName(gSequenceTable[seqPlayer->seqId]);
+                        cmd = sequence->banks[cmd];
 #endif
 #ifdef VERSION_SH
                         if (get_bank_or_seq(1, 2, cmd) != NULL)
