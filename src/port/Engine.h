@@ -18,7 +18,7 @@ class GameEngine {
 
     std::shared_ptr<LUS::Context> context;
     std::unordered_map<uint8_t, CtlEntry*> banks;
-    std::unordered_map<uint8_t, AudioBankSample*> samples;
+    std::unordered_map<uint8_t, uint8_t*> samples;
 
     GameEngine();
     static void Create();
