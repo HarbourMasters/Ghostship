@@ -11,6 +11,7 @@
 
 struct CtlEntry;
 struct AudioBankSample;
+struct AudioSequenceData;
 
 class GameEngine {
   public:
@@ -18,7 +19,7 @@ class GameEngine {
 
     std::shared_ptr<LUS::Context> context;
     std::unordered_map<uint8_t, CtlEntry*> banks;
-    std::unordered_map<uint8_t, uint8_t*> samples;
+    std::unordered_map<uint8_t, AudioSequenceData*> sequences;
 
     GameEngine();
     static void Create();
@@ -32,7 +33,7 @@ float GameEngine_GetAspectRatio();
 struct CtlEntry* GameEngine_LoadBank(uint8_t bankId);
 uint8_t GameEngine_IsBankLoaded(uint8_t bankId);
 void GameEngine_UnloadBank(uint8_t bankId);
-struct AudioBankSample* GameEngine_LoadSequence(uint8_t seqId);
+struct AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId);
 uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId);
 void GameEngine_UnloadSequence(uint8_t seqId);
 #endif
