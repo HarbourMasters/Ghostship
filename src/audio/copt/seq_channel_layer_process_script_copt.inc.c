@@ -19,81 +19,6 @@
 #define PORTAMENTO_MODE_4 4
 #define PORTAMENTO_MODE_5 5
 
-#define COPT 0
-#define M64_READ_U8(state, dst) \
-{                               \
-    u8 * _ptr_pc;               \
-    u8  _pc;                    \
-    _ptr_pc = (*state).pc;      \
-    ((*state).pc)++;            \
-    _pc = *_ptr_pc;             \
-    dst = _pc;                  \
-}
-
-
-#define M64_READ_S16(state, dst)    \
-{                                   \
-    s16 _ret;                       \
-    _ret = *(*state).pc << 8;       \
-    ((*state).pc)++;                \
-    _ret = *(*state).pc | _ret;     \
-    ((*state).pc)++;                \
-    dst = _ret;                     \
-}
-#define M64_READ_COMPRESSED_U16(state, dst) \
-{                                           \
-    u16 ret = *(state->pc++);               \
-    if (ret & 0x80) {                       \
-        ret = (ret << 8) & 0x7f00;          \
-        ret = *(state->pc++) | ret;         \
-    }                                       \
-    dst = ret;                              \
-}
-
-#define GET_INSTRUMENT(seqChannel, instId, _instOut, _adsr, dst, l) \
-{ \
-struct AdsrSettings *adsr = _adsr; \
-struct Instrument **instOut = _instOut;\
-    u8 _instId = instId; \
-    struct Instrument *inst; \
-    UNUSED u32 pad; \
-        /* copt inlines instId here  */ \
-    if (instId >= gCtlEntries[(*seqChannel).bankId].numInstruments) { \
-        _instId = gCtlEntries[(*seqChannel).bankId].numInstruments; \
-        if (_instId == 0) { \
-            dst = 0; \
-            goto ret ## l; \
-        } \
-        _instId--; \
-    } \
-    inst = gCtlEntries[(*seqChannel).bankId].instruments[_instId]; \
-    if (inst == NULL) { \
-        while (_instId != 0xff) { \
-            inst = gCtlEntries[(*seqChannel).bankId].instruments[_instId]; \
-            if (inst != NULL) { \
-                goto gi ## l; \
-            } \
-            _instId--; \
-        } \
-        gi ## l:; \
-    } \
-    if (((uintptr_t) gBankLoadedPool.persistent.pool.start <= (uintptr_t) inst \
-         && (uintptr_t) inst <= (uintptr_t)(gBankLoadedPool.persistent.pool.start \
-                                          + gBankLoadedPool.persistent.pool.size)) \
-        || ((uintptr_t) gBankLoadedPool.temporary.pool.start <= (uintptr_t) inst \
-            && (uintptr_t) inst <= (uintptr_t)(gBankLoadedPool.temporary.pool.start \
-                                             + gBankLoadedPool.temporary.pool.size))) { \
-        (*adsr).envelope = (*inst).envelope; \
-        (*adsr).releaseRate = (*inst).releaseRate; \
-        *instOut = inst; \
-        _instId++; \
-        goto ret ## l; \
-    } \
-    gAudioErrorFlags = _instId + 0x20000; \
-    *instOut = NULL; \
-    ret ## l: ; \
-}
-
 void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     struct SequencePlayer *seqPlayer;   // sp5C, t4
     struct SequenceChannel *seqChannel; // sp58, t5
@@ -150,7 +75,8 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     seqPlayer = (*seqChannel).seqPlayer;
     for (;;) {
         state = &layer->scriptState;
-        //M64_READ_U8(state, cmd);
+//        M64_READ_U8(state, cmd);
+//        cmd = m64_read_u8(state);
         {
             u8 *_ptr_pc;
             _ptr_pc = (*state).pc++;
@@ -173,13 +99,13 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 break;
 
             case 0xfc: // layer_call
-                M64_READ_S16(state, sp3A);
+                sp3A = m64_read_s16(state);
                 state->depth++, state->stack[state->depth - 1] = state->pc;
                 state->pc = seqPlayer->seqData + sp3A;
                 break;
 
             case 0xf8: // layer_loop; loop start, N iterations (or 256 if N = 0)
-                M64_READ_U8(state, state->remLoopIters[state->depth]);
+                state->remLoopIters[state->depth] = m64_read_u8(state);
                 state->depth++, state->stack[state->depth - 1] = state->pc;
                 break;
 
@@ -192,7 +118,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 break;
 
             case 0xfb: // layer_jump
-                M64_READ_S16(state, sp3A);
+                sp3A = m64_read_s16(state);
                 state->pc = seqPlayer->seqData + sp3A;
                 break;
 
@@ -233,21 +159,21 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 break;
 
             case 0xc3: // layer_setshortnotedefaultplaypercentage
-                M64_READ_COMPRESSED_U16(state, sp3A);
+                sp3A = m64_read_compressed_u16(state);
                 layer->shortNoteDefaultPlayPercentage = sp3A;
                 break;
 
             case 0xc6: // layer_setinstr
-                M64_READ_U8(state, cmdSemitone);
+                cmdSemitone = m64_read_u8(state);
 
                 if (cmdSemitone < 127) {
-                    GET_INSTRUMENT(seqChannel, cmdSemitone, &(*layer).instrument, &(*layer).adsr, cmdSemitone, 1);
+                    get_instrument(seqChannel, cmdSemitone, &(*layer).instrument, &(*layer).adsr);
                 }
                 break;
 
             case 0xc7: // layer_portamento
-                M64_READ_U8(state, (*layer).portamento.mode);
-                M64_READ_U8(state, cmdSemitone);
+                (*layer).portamento.mode = m64_read_u8(state);
+                cmdSemitone = m64_read_u8(state);
 
                 cmdSemitone = cmdSemitone + (*seqChannel).transposition;
                 cmdSemitone += (*layer).transposition;
@@ -264,7 +190,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                     break;
                 }
 
-                M64_READ_COMPRESSED_U16(state, sp3A);
+                sp3A = m64_read_compressed_u16(state);
                 layer->portamentoTime = sp3A;
                 break;
 
@@ -286,7 +212,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     }
 
     if (cmd == 0xc0) { // layer_delay
-        M64_READ_COMPRESSED_U16(state, layer->delay);
+        layer->delay = m64_read_compressed_u16(state);
         layer->stopSomething = TRUE;
     } else {
         layer->stopSomething = FALSE;
@@ -294,14 +220,14 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
         if (seqChannel->largeNotes == TRUE) {
             switch (cmd & 0xc0) {
                 case 0x00: // layer_note0 (play percentage, velocity, duration)
-                    M64_READ_COMPRESSED_U16(state, sp3A);
+                    sp3A = m64_read_compressed_u16(state);
                     vel = *((*state).pc++);
                     layer->noteDuration = *((*state).pc++);
                     layer->playPercentage = sp3A;
                     goto l1090;
 
                 case 0x40: // layer_note1 (play percentage, velocity)
-                    M64_READ_COMPRESSED_U16(state, sp3A);
+                    sp3A = m64_read_compressed_u16(state);
                     vel = *((*state).pc++);
                     layer->noteDuration = 0;
                     layer->playPercentage = sp3A;
@@ -319,7 +245,7 @@ l1090:
         } else {
             switch (cmd & 0xc0) {
                 case 0x00: // play note, type 0 (play percentage)
-                    M64_READ_COMPRESSED_U16(state, sp3A);
+                    sp3A = m64_read_compressed_u16(state);
                     layer->playPercentage = sp3A;
                     goto l1138;
 
@@ -346,8 +272,9 @@ l1138:
         } else {
             if (seqChannel->instOrWave == 0) { // drum
                 cmdSemitone += (*seqChannel).transposition + (*layer).transposition;
-                if (cmdSemitone >= gCtlEntries[seqChannel->bankId].numDrums) {
-                    cmdSemitone = gCtlEntries[seqChannel->bankId].numDrums;
+                struct CtlEntry* bank = GameEngine_LoadBank(seqChannel->bankId);
+                if (cmdSemitone >= bank->numDrums) {
+                    cmdSemitone = bank->numDrums;
                     if (cmdSemitone == 0) {
                         // this goto looks a bit like a function return...
                         layer->stopSomething = TRUE;
@@ -357,7 +284,7 @@ l1138:
                     cmdSemitone--;
                 }
 
-                drum = gCtlEntries[seqChannel->bankId].drums[cmdSemitone];
+                drum = bank->drums[cmdSemitone];
                 if (drum == NULL) {
                     layer->stopSomething = TRUE;
                 } else {
@@ -380,8 +307,6 @@ l1138:
                     }
 
                     if (layer->portamento.mode != 0) {
-                        //! copt needs a ternary:
-                        //usedSemitone = (layer->portamentoTargetNote < cmdSemitone) ? cmdSemitone : layer->portamentoTargetNote;
                         if (layer->portamentoTargetNote < cmdSemitone) {
                             usedSemitone = cmdSemitone;
                         } else {

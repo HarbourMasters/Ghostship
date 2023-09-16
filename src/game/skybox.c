@@ -59,6 +59,8 @@ struct Skybox {
 };
 
 struct Skybox sSkyBoxInfo[2];
+static uint8_t** gSkyboxTiles;
+static s8 gLastSkybox;
 
 static const char* gSkyboxTextures[] = {
     gSkyboxWater, gSkyboxBitfs, gSkyboxWdw, gSkyboxCloudFloor, gSkyboxCcm,
@@ -246,7 +248,12 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
 
             void* data = ResourceGetDataByName(gSkyboxTextures[background]);
 
-            uint8_t* texture = malloc(2048);
+            uint8_t* texture = gSkyboxTiles[tileIndex];
+
+            if(texture == NULL){
+                texture = malloc(2048);
+                gSkyboxTiles[tileIndex] = texture;
+            }
 
             // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
             memcpy(texture, CalculateDataOffset(data, x, y), 2048);
@@ -286,7 +293,7 @@ void *create_skybox_ortho_matrix(s8 player) {
  * Creates the skybox's display list, then draws the 3x3 grid of tiles.
  */
 Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
-    s32 dlCommandCount = 5 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
+    s32 dlCommandCount = 10 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
     void *skybox = alloc_display_list(dlCommandCount * sizeof(Gfx));
     Gfx *dlist = skybox;
 
@@ -294,6 +301,15 @@ Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
         return NULL;
     } else {
         Mtx *ortho = create_skybox_ortho_matrix(player);
+        if(gSkyboxTiles == NULL){
+            gSkyboxTiles = malloc(80 * sizeof(uint8_t*));
+            gLastSkybox = background;
+        } else if(gLastSkybox != background ){
+            for(size_t i = 0; i < 80; i++){
+                gSPInvalidateTexCache(dlist++, (uintptr_t) gSkyboxTiles[i]);
+            }
+            gLastSkybox = background;
+        }
 
         gSPDisplayList(dlist++, dl_skybox_begin);
         gSPMatrix(dlist++, VIRTUAL_TO_PHYSICAL(ortho), G_MTX_PROJECTION | G_MTX_MUL | G_MTX_NOPUSH);
@@ -302,6 +318,7 @@ Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
         gSPDisplayList(dlist++, dl_skybox_end);
         gSPEndDisplayList(dlist);
     }
+
     return skybox;
 }
 

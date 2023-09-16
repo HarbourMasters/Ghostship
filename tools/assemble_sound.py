@@ -678,7 +678,6 @@ def serialize_tbl(sample_bank, ser, is_shindou):
     else:
         ser.align_garbage(16)
 
-
 def serialize_seqfile(
     out_filename,
     out_header_filename,
@@ -994,6 +993,7 @@ def main():
         for f in sorted(os.listdir(dir)):
             fname = os.path.join(dir, f)
             if not f.endswith(".aifc"):
+                print("warning: ignoring non-AIFC file " + fname)
                 continue
             try:
                 with open(fname, "rb") as inf:

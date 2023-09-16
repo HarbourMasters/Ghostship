@@ -15,8 +15,8 @@ set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
 set(CMAKE_C_STANDARD 11 CACHE STRING "The C standard to use")
 add_compile_options($<$<CXX_COMPILER_ID:MSVC>:/MP>)
 add_compile_options($<$<CXX_COMPILER_ID:MSVC>:/MT>)
-# add_compile_options(-fsanitize=address)
-# add_link_options(-fsanitize=address)
+#add_compile_options(-fsanitize=address)
+#add_link_options(-fsanitize=address)
 
 # Add a custom module path to locate additional CMake modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
@@ -506,99 +506,6 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
       )
   endif()
 endif()
-
-#==============================================================================#
-# Sound File Generation                                                        #
-#==============================================================================#
-
-execute_process(
-    OUTPUT_VARIABLE endian_and_bitwidth
-    COMMAND ${Python3_EXECUTABLE}  ${CMAKE_CURRENT_SOURCE_DIR}/tools/determine-endian-bitwidth.py
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
-string(REPLACE " " ";" endian_and_bitwidth ${endian_and_bitwidth})
-
-set (TABLE_FILES "")
-file(GLOB_RECURSE AIFF_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CONFIGURE_DEPENDS "*.aiff")
-foreach(aifffile ${AIFF_FILES})
-  get_filename_component(OUTPUT_FILE_WLE ${aifffile} NAME_WLE)
-  get_filename_component(OUTPUT_DIR ${aifffile} DIRECTORY)
-  set(OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.table)
-  list(APPEND TABLE_FILES ${OUTPUT_FILE})
-  add_custom_command(
-    OUTPUT ${OUTPUT_FILE}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_DIR}
-    VERBATIM COMMAND ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" $<TARGET_FILE:aiff_extract_cookbook> ${CMAKE_CURRENT_SOURCE_DIR}/${aifffile} > ${OUTPUT_FILE}
-    DEPENDS aiff_extract_cookbook
-    DEPENDS ${aifffile}
-  )
-endforeach(aifffile)
-
-set(AIFC_FILES "")
-foreach(aifffile ${AIFF_FILES})
-  get_filename_component(OUTPUT_FILE_WLE ${aifffile} NAME_WLE)
-  get_filename_component(OUTPUT_DIR ${aifffile} DIRECTORY)
-  set(OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.aifc)
-  list(APPEND AIFC_FILES ${OUTPUT_FILE})
-  add_custom_command(
-    OUTPUT ${OUTPUT_FILE}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_DIR}
-    VERBATIM COMMAND $<TARGET_FILE:vadpcm_enc> -c ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.table ${CMAKE_CURRENT_SOURCE_DIR}/${aifffile}  ${OUTPUT_FILE}
-    DEPENDS vadpcm_enc
-    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.table ${CMAKE_CURRENT_SOURCE_DIR}/${aifffile}
-  )
-endforeach(aifffile)
-
-add_custom_command(
-    OUTPUT sound/sound_data.ctl.inc.c sound/sound_data.tbl.inc.c
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/assemble_sound.py ${CMAKE_CURRENT_BINARY_DIR}/sound/samples/ ${CMAKE_CURRENT_SOURCE_DIR}/sound/sound_banks  ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.ctl ${CMAKE_CURRENT_BINARY_DIR}/sound/ctl_header ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.tbl ${CMAKE_CURRENT_BINARY_DIR}/sound/tbl_header -DVERSION_US ${endian_and_bitwidth}
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/conv2hex.py ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.ctl > ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.ctl.inc.c
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/conv2hex.py ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.tbl > ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.tbl.inc.c
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS ${TABLE_FILES}
-    DEPENDS ${AIFC_FILES}
-)
-list(APPEND INC_C_FILES ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.ctl.inc.c ${CMAKE_CURRENT_BINARY_DIR}/sound/sound_data.tbl.inc.c)
-
-file(GLOB_RECURSE SEQUENCES_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "sound/*.m64")
-
-file(GLOB_RECURSE SEQUENCES_S_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "sound/*.s")
-foreach(sequence_s ${SEQUENCES_S_FILES})
-  get_filename_component(OUTPUT_FILE_WLE ${sequence_s} NAME_WLE)
-  get_filename_component(OUTPUT_DIR ${sequence_s} DIRECTORY)
-  set(OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.m64)
-
-  if(APPLE)
-    set(COPY_COMMAND i686-w64-mingw32-objcopy)
-  else()
-    set(COPY_COMMAND objcopy)
-  endif()
-
-  if(APPLE)
-    set(AS_COMMAND i686-w64-mingw32-as)
-  else()
-    set(AS_COMMAND as)
-  endif()
-
-  add_custom_command(
-    OUTPUT ${OUTPUT_FILE}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_DIR}
-    COMMAND  ${CPP} ${CMAKE_CURRENT_SOURCE_DIR}/${sequence_s} -I${CMAKE_CURRENT_SOURCE_DIR}/include -DVERSION_US | ${AS_COMMAND} -o ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.o
-    VERBATIM COMMAND ${COPY_COMMAND} -j .rodata ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_DIR}/${OUTPUT_FILE_WLE}.o -O binary ${OUTPUT_FILE}
-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${sequence_s}
-  )
-  list(APPEND SEQUENCES_FILES ${OUTPUT_FILE})
-endforeach(sequence_s)
-
-add_custom_command(
-    OUTPUT sound/sequences.bin.inc.c sound/bank_sets.inc.c
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/assemble_sound.py --sequences ${CMAKE_CURRENT_BINARY_DIR}/sound/sequences.bin ${CMAKE_CURRENT_BINARY_DIR}/sound/sequences_header ${CMAKE_CURRENT_BINARY_DIR}/sound/bank_sets ${CMAKE_CURRENT_SOURCE_DIR}/sound/sound_banks ${CMAKE_CURRENT_SOURCE_DIR}/sound/sequences.json ${SEQUENCES_FILES} -DVERSION_US ${endian_and_bitwidth}
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/conv2hex.py ${CMAKE_CURRENT_BINARY_DIR}/sound/sequences.bin > ${CMAKE_CURRENT_BINARY_DIR}/sound/sequences.bin.inc.c
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/conv2hex.py ${CMAKE_CURRENT_BINARY_DIR}/sound/bank_sets > ${CMAKE_CURRENT_BINARY_DIR}/sound/bank_sets.inc.c
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS ${SEQUENCES_FILES}
-)
-list(APPEND INC_C_FILES ${CMAKE_CURRENT_BINARY_DIR}/sound/sequences.bin.inc.c ${CMAKE_CURRENT_BINARY_DIR}/sound/bank_sets.inc.c)
 
 add_custom_target(
   ConvertIncCFiles

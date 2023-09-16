@@ -21,3 +21,4 @@ Note that RECT commands must be enhanced to support negative coordinates with th
 #define GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(v) ((int)ceilf(GFX_DIMENSIONS_FROM_RIGHT_EDGE(v)))
 // If screen is taller than it is wide, radius should be equal to SCREEN_HEIGHT since we scale horizontally
 #define GFX_DIMENSIONS_FULL_RADIUS (SCREEN_HEIGHT * (GFX_DIMENSIONS_ASPECT_RATIO > 1 ? GFX_DIMENSIONS_ASPECT_RATIO : 1))
+#define GFX_FULL_WIDTH GFX_DIMENSIONS_FROM_RIGHT_EDGE(0)
