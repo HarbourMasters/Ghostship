@@ -444,7 +444,7 @@ void aADPCMdecImpl(uint8_t flags, ADPCM_STATE state) {
 }
 
 void aResampleImpl(uint8_t flags, uint16_t pitch, RESAMPLE_STATE state) {
-    int16_t tmp[16];
+    int16_t tmp[32];
     int16_t *in_initial = BUF_S16(rspa.in);
     int16_t *in = in_initial;
     int16_t *out = BUF_S16(rspa.out);

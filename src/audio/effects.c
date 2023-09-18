@@ -63,7 +63,7 @@ static void sequence_channel_process_sound(struct SequenceChannel *seqChannel) {
     f32 panFromChannel;
     s32 i;
 
-    channelVolume = seqChannel->volume * seqChannel->volumeScale * seqChannel->seqPlayer->fadeVolume;
+    channelVolume = (seqChannel->volume * (seqChannel->volumeScale * seqChannel->seqPlayer->fadeVolume)) * seqChannel->seqPlayer->gameVolume;
     if (seqChannel->seqPlayer->muted && (seqChannel->muteBehavior & MUTE_BEHAVIOR_SOFTEN) != 0) {
         channelVolume *= seqChannel->seqPlayer->muteVolumeScale;
     }
@@ -73,7 +73,7 @@ static void sequence_channel_process_sound(struct SequenceChannel *seqChannel) {
 
     for (i = 0; i < 4; i++) {
         struct SequenceChannelLayer *layer = seqChannel->layers[i];
-        if (layer != NULL && layer->enabled && layer->note != NULL) {
+        if (layer != NULL && layer->enabled && layer->note != NULL || (layer != NULL && seqChannel->seqPlayer->recalculateVolume)) {
             layer->noteFreqScale = layer->freqScale * seqChannel->freqScale;
             layer->noteVelocity = layer->velocitySquare * channelVolume;
             layer->notePan = (layer->pan * panLayerWeight) + panFromChannel;

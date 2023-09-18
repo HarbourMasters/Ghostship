@@ -60,6 +60,7 @@ void play_race_fanfare(void);
 void play_toads_jingle(void);
 void sound_reset(u8 presetId);
 void audio_set_sound_mode(u8 arg0);
+void audio_set_player_volume(u8 player, f32 volume);
 void create_next_audio_buffer(s16 *samples, u32 num_samples);
 void audio_init(void); // in load.c
 

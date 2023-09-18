@@ -259,9 +259,7 @@ struct SequencePlayer {
     /*0x000, 0x000*/ u8 muted : 1;
     /*0x000, 0x000*/ u8 seqDmaInProgress : 1;
     /*0x000, 0x000*/ u8 bankDmaInProgress : 1;
-#if defined(VERSION_EU) || defined(VERSION_SH)
     /*       0x000*/ u8 recalculateVolume : 1;
-#endif
 #ifdef VERSION_SH
     /*              0x000*/ u8 unkSh: 1;
 #endif
@@ -324,6 +322,7 @@ struct SequencePlayer {
 #endif
     /*0x138, 0x140*/ uintptr_t bankDmaCurrDevAddr;
     /*0x13C, 0x144*/ ssize_t bankDmaRemaining;
+    f32 gameVolume;
 }; // size = 0x140, 0x148 on EU, 0x14C on SH
 
 struct AdsrSettings {

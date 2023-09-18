@@ -551,6 +551,11 @@ void audio_init() {
     gSequenceCount = sizeof(gSequenceTable) / sizeof(gSequenceTable[0]);
     init_sequence_players();
     gAudioLoadLock = AUDIO_LOCK_NOT_LOADING;
+
+    audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f));
+    audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f));
+    audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f));
+
     // Should probably contain the sizes of the data banks, but those aren't
     // easily accessible from here.
     eu_stubbed_printf_0("---------- Init Completed. ------------\n");
