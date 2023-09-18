@@ -2575,6 +2575,11 @@ void audio_set_sound_mode(u8 soundMode) {
     gSoundMode = soundMode;
 }
 
+void audio_set_player_volume(u8 player, f32 volume) {
+    gSequencePlayers[player].gameVolume = volume;
+    gSequencePlayers[player].recalculateVolume = TRUE;
+}
+
 #if defined(VERSION_JP) || defined(VERSION_US)
 void unused_80321460(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
 }

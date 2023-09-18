@@ -26,6 +26,13 @@ class GameEngine {
     void StartFrame() const;
     static void RunCommands(Gfx* Commands);
     void ProcessFrame(void (*run_one_game_iter)()) const;
+    static void HandleAudioThread();
+    static void StartAudioFrame();
+    static void EndAudioFrame();
+    static void AudioInit();
+    static void AudioExit();
+
+    void Destroy();
 };
 #else
 uint32_t GameEngine_GetSampleRate();

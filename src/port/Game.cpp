@@ -8,8 +8,6 @@ extern "C" {
 #include "game/game_init.h"
 }
 
-bool sAudioEnabled = true;
-
 void alloc_pool() {
     static u64 pool[1024 * 1024 * 4];
     main_pool_init(pool, pool + sizeof(pool) / sizeof(pool[0]));
@@ -22,20 +20,10 @@ void exec_display_list(SPTask *spTask) {
 }
 
 void push_frame() {
+    GameEngine::StartAudioFrame();
     GameEngine::Instance->StartFrame();
     thread5_iteration();
-
-    if(sAudioEnabled) {
-        int samples_left = AudioPlayerBuffered();
-        u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
-
-        s16 audio_buffer[SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 3];
-        for (int i = 0; i < AUDIO_FRAMES_PER_UPDATE; i++) {
-            create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
-        }
-
-        AudioPlayerPlayFrame((u8 *) audio_buffer, 2 * num_audio_samples * 4);
-    }
+    GameEngine::EndAudioFrame();
 }
 
 #ifdef _WIN32
@@ -47,8 +35,8 @@ int main(){
     alloc_pool();
     audio_init();
     sound_init();
-
     thread5_game_loop();
     GameEngine::Instance->ProcessFrame(push_frame);
+    GameEngine::Instance->Destroy();
     return 0;
 }
