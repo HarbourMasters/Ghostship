@@ -43,4 +43,5 @@ void GameEngine_UnloadBank(uint8_t bankId);
 struct AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId);
 uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId);
 void GameEngine_UnloadSequence(uint8_t seqId);
+uint32_t GameEngine_GetGameVersion();
 #endif

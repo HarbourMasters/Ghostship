@@ -1371,11 +1371,7 @@ void bhv_menu_button_manager_init(void) {
     sTextBaseAlpha = 0;
 }
 
-#ifdef VERSION_JP
-    #define SAVE_FILE_SOUND SOUND_MENU_STAR_SOUND
-#else
-    #define SAVE_FILE_SOUND SOUND_MENU_STAR_SOUND_OKEY_DOKEY
-#endif
+#define SAVE_FILE_SOUND ( ROM_JP ? SOUND_MENU_STAR_SOUND : SOUND_MENU_STAR_SOUND_OKEY_DOKEY)
 
 /**
  * In the main menu, check if a button was clicked to play it's button growing state.
@@ -1480,8 +1476,6 @@ void check_main_menu_clicked_buttons(void) {
     }
 #endif
 }
-
-#undef SAVE_FILE_SOUND
 
 /**
  * Menu Buttons Menu Manager Loop Action
@@ -2687,16 +2681,10 @@ void print_score_file_star_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
 void print_save_file_scores(s8 fileIndex) {
 #ifndef VERSION_EU
     unsigned char textMario[] = { TEXT_MARIO };
-#ifdef VERSION_JP
     unsigned char textFileLetter[] = { TEXT_ZERO };
     void **levelNameTable = segmented_to_virtual(seg2_course_name_table);
-#endif
     unsigned char textHiScore[] = { TEXT_HI_SCORE };
     unsigned char textMyScore[] = { TEXT_MY_SCORE };
-#if defined(VERSION_US) || defined(VERSION_SH)
-    unsigned char textFileLetter[] = { TEXT_ZERO };
-    void **levelNameTable = segmented_to_virtual(seg2_course_name_table);
-#endif
 #else
     unsigned char textFileLetter[] = { TEXT_ZERO };
     void **levelNameTable;

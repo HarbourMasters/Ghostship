@@ -17,6 +17,10 @@
 #include <PR/ucode.h>
 #include <libultra/os.h>
 #include <math.h>
+#include "port/Engine.h"
+
+#define GAME_VERSION GameEngine_GetGameVersion()
+#define ROM_JP (GAME_VERSION == 0xE3DAA4E)
 
 #ifdef _WIN32
 #define bzero(b,len) (memset((b), '\0', (len)), (void) 0)
