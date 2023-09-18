@@ -1595,11 +1595,7 @@ s32 common_ground_knockback_action(struct MarioState *m, s32 animation, s32 arg2
     if (arg4 > 0) {
         play_sound_if_no_flag(m, SOUND_MARIO_ATTACKED, MARIO_MARIO_SOUND_PLAYED);
     } else {
-#ifdef VERSION_JP
-        play_sound_if_no_flag(m, SOUND_MARIO_OOOF, MARIO_MARIO_SOUND_PLAYED);
-#else
-        play_sound_if_no_flag(m, SOUND_MARIO_OOOF2, MARIO_MARIO_SOUND_PLAYED);
-#endif
+        play_sound_if_no_flag(m, ROM_JP ? SOUND_MARIO_OOOF : SOUND_MARIO_OOOF2, MARIO_MARIO_SOUND_PLAYED);
     }
 
     if (m->forwardVel > 32.0f) {
@@ -1645,11 +1641,9 @@ s32 act_hard_backward_ground_kb(struct MarioState *m) {
         set_mario_action(m, ACT_DEATH_ON_BACK, 0);
     }
 
-#ifndef VERSION_JP
-    if (animFrame == 54 && m->prevAction == ACT_SPECIAL_DEATH_EXIT) {
+    if (!ROM_JP && animFrame == 54 && m->prevAction == ACT_SPECIAL_DEATH_EXIT) {
         play_sound(SOUND_MARIO_MAMA_MIA, m->marioObj->header.gfx.cameraToObject);
     }
-#endif
 
     if (animFrame == 69) {
         play_mario_landing_sound_once(m, SOUND_ACTION_TERRAIN_LANDING);

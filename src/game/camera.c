@@ -4941,9 +4941,8 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
     if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
-#ifndef VERSION_JP
+            if(ROM_JP) return;
             play_camera_buzz_if_cdown();
-#endif
         } else {
             gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_down();
@@ -4995,9 +4994,8 @@ void handle_c_button_movement(struct Camera *c) {
             if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
                 gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
-#ifndef VERSION_JP
+                if(ROM_JP) return;
                 play_camera_buzz_if_cdown();
-#endif
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
@@ -9515,11 +9513,11 @@ BAD_RETURN(s32) peach_letter_text(UNUSED struct Camera *c) {
     create_dialog_box(DIALOG_020);
 }
 
-#ifndef VERSION_JP
 BAD_RETURN(s32) play_sound_peach_reading_letter(UNUSED struct Camera *c) {
-    play_sound(SOUND_PEACH_DEAR_MARIO, gGlobalSoundSource);
+    if(!ROM_JP){
+        play_sound(SOUND_PEACH_DEAR_MARIO, gGlobalSoundSource);
+    }
 }
-#endif
 
 /**
  * Move the camera from peach reading the letter all the way to Mario's warp pipe. Follow the
@@ -9585,11 +9583,10 @@ BAD_RETURN(s32) intro_pipe_exit_text(UNUSED struct Camera *c) {
     create_dialog_box(DIALOG_033);
 }
 
-#ifndef VERSION_JP
 BAD_RETURN(s32) play_sound_intro_turn_on_hud(UNUSED struct Camera *c) {
+    if(ROM_JP) return;
     play_sound_rbutton_changed();
 }
-#endif
 
 /**
  * Fly to the pipe. Near the end, the camera jumps to Lakitu's position and the hud turns on.
@@ -9654,9 +9651,10 @@ BAD_RETURN(s32) cutscene_intro_peach_letter(struct Camera *c) {
 #endif
     cutscene_event(cutscene_intro_peach_start_to_pipe_spline, c, 0, 0);
     cutscene_event(peach_letter_text, c, 65, 65);
-#ifndef VERSION_JP
-    cutscene_event(play_sound_peach_reading_letter, c, 83, 83);
-#endif
+
+    if(!ROM_JP){
+        cutscene_event(play_sound_peach_reading_letter, c, 83, 83);
+    }
 
     if ((gCutsceneTimer > 120) && (get_dialog_id() == DIALOG_NONE)) {
         // Start the next scene

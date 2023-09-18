@@ -24,10 +24,10 @@ GameEngine::GameEngine(){
     if (std::filesystem::exists(cubePath)) {
         OTRFiles.push_back(cubePath);
     }
-    std::string sohOtrPath = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
-    if (std::filesystem::exists(sohOtrPath)) {
-        OTRFiles.push_back(sohOtrPath);
-    }
+   std::string sohOtrPath = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
+   if (std::filesystem::exists(sohOtrPath)) {
+       OTRFiles.push_back(sohOtrPath);
+   }
     std::string patchesPath = LUS::Context::GetPathRelativeToAppDirectory("mods");
     if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
         if (std::filesystem::is_directory(patchesPath)) {
@@ -46,6 +46,7 @@ GameEngine::GameEngine(){
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
     GameEngine::AudioInit();
+    uint32_t version = LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
 }
 
 void GameEngine::Create(){
@@ -209,4 +210,8 @@ extern "C" void GameEngine_UnloadSequence(uint8_t seqId) {
     if(engine->sequences.contains(seqId)){
         engine->sequences.erase(seqId);
     }
+}
+
+extern "C" uint32_t GameEngine_GetGameVersion() {
+    return LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
 }

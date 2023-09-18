@@ -398,11 +398,7 @@ s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused
 #else
         if ((gPlayer3Controller->buttonPressed & (A_BUTTON | START_BUTTON | B_BUTTON | Z_TRIG))) {
 #endif
-#ifdef VERSION_JP
-            play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
-#else
-            play_sound(SOUND_MENU_STAR_SOUND_LETS_A_GO, gGlobalSoundSource);
-#endif
+            play_sound(ROM_JP ? SOUND_MENU_STAR_SOUND : SOUND_MENU_STAR_SOUND_LETS_A_GO, gGlobalSoundSource);
 #if ENABLE_RUMBLE
             queue_rumble_data(60, 70);
             func_sh_8024C89C(1);

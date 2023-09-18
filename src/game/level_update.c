@@ -455,13 +455,11 @@ void init_mario_after_warp(void) {
             play_sound(SOUND_MENU_MARIO_CASTLE_WARP, gGlobalSoundSource);
         }
 
-#ifndef VERSION_JP
-        if (sWarpDest.levelNum == LEVEL_CASTLE_GROUNDS && sWarpDest.areaIdx == 1
+        if (!ROM_JP && sWarpDest.levelNum == LEVEL_CASTLE_GROUNDS && sWarpDest.areaIdx == 1
             && (sWarpDest.nodeId == 7 || sWarpDest.nodeId == 10 || sWarpDest.nodeId == 20
                 || sWarpDest.nodeId == 30)) {
             play_sound(SOUND_MENU_MARIO_CASTLE_WARP, gGlobalSoundSource);
         }
-#endif
     }
 }
 
@@ -761,9 +759,9 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 sDelayedWarpTimer = 30;
                 sSourceWarpNodeId = WARP_NODE_F2;
                 play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x1E, 0xFF, 0xFF, 0xFF);
-#ifndef VERSION_JP
-                play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
-#endif
+                if(!ROM_JP){
+                    play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
+                }
                 break;
 
             case WARP_OP_UNKNOWN_02: // bbh enter
