@@ -66,20 +66,11 @@ ALIGNED8 static const Texture inside_castle_seg7_texture_0700E800[] = "__OTR__le
 // 0x0700F800 - 0x07010800
 ALIGNED8 static const Texture inside_castle_seg7_texture_0700F800[] = "__OTR__levels/castle_inside/22";
 
-#ifdef VERSION_JP
 // 0x07010800 - 0x07011800
 ALIGNED8 static const Texture inside_castle_seg7_texture_07010800[] = "__OTR__levels/castle_inside/23";
 
 // 0x07011800 - 0x0701200
 ALIGNED8 static const Texture inside_castle_seg7_texture_07011800[] = "__OTR__levels/castle_inside/24";
-
-#else
-// 0x07010800 - 0x07011800
-ALIGNED8 static const Texture inside_castle_seg7_texture_07010800[] = "__OTR__levels/castle_inside/23_us";
-
-// 0x07011800 - 0x0701200
-ALIGNED8 static const Texture inside_castle_seg7_texture_07011800[] = "__OTR__levels/castle_inside/24_us";
-#endif
 
 // 0x07012800 - 0x07013800
 ALIGNED8 static const Texture inside_castle_seg7_texture_07012800[] = "__OTR__levels/castle_inside/25";

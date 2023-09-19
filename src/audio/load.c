@@ -200,11 +200,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
 
     if (arg2 != 0 || *dmaIndexRef >= sSampleDmaListSize1) {
         for (i = sSampleDmaListSize1; i < gSampleDmaNumListItems; i++) {
-#if defined(VERSION_EU)
             dma = &sSampleDmas[i];
-#else
-            dma = sSampleDmas + i;
-#endif
             bufferPos = devAddr - dma->source;
             if (0 <= bufferPos && (size_t) bufferPos <= dma->bufSize - size) {
                 // We already have a DMA request for this memory range.
@@ -221,11 +217,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
                 }
                 dma->ttl = 60;
                 *dmaIndexRef = (u8) i;
-#if defined(VERSION_EU)
                 return &dma->buffer[(devAddr - dma->source)];
-#else
-                return (devAddr - dma->source) + dma->buffer;
-#endif
             }
         }
 
@@ -297,7 +289,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
     osPiStartDma(&gCurrAudioFrameDmaIoMesgBufs[gCurrAudioFrameDmaCount - 1], OS_MESG_PRI_NORMAL,
                  OS_READ, dmaDevAddr, dma->buffer, transfer, &gCurrAudioFrameDmaQueue);
     *dmaIndexRef = dmaIndex;
-    return dma->buffer + (devAddr - dmaDevAddr);
+    return (devAddr - dmaDevAddr) + dma->buffer;
 #endif
 }
 
@@ -313,7 +305,7 @@ void init_sample_dma_buffers(UNUSED s32 arg0) {
 #if defined(VERSION_EU)
     sDmaBufSize = 0x400;
 #else
-    sDmaBufSize = 144 * 9;
+    sDmaBufSize = 0x800;
 #endif
 
 #if defined(VERSION_EU)
