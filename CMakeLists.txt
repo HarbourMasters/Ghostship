@@ -13,8 +13,6 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment ve
 # Set the C++ standard and enable the MSVC parallel build option
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
 set(CMAKE_C_STANDARD 11 CACHE STRING "The C standard to use")
-add_compile_options($<$<CXX_COMPILER_ID:MSVC>:/MP>)
-add_compile_options($<$<CXX_COMPILER_ID:MSVC>:/MT>)
 #add_compile_options(-fsanitize=address)
 #add_link_options(-fsanitize=address)
 
@@ -338,12 +336,14 @@ if(MSVC)
       target_compile_options(${PROJECT_NAME} PRIVATE
           $<$<CONFIG:Debug>:
               /w;
-              /Od
+              /Od;
+              /MTd
           >
           $<$<CONFIG:Release>:
               /Oi;
               /Gy;
-              /W3
+              /W3;
+              /MT
           >
           /sdl-;
           /permissive-;
