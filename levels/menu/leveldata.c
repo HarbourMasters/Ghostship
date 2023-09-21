@@ -928,176 +928,176 @@ ALIGNED8 static const Texture texture_menu_font_char_jp_exclamation[] = "__OTR__
 #else
 
 // 0x0700AC40
-ALIGNED8 static const Texture texture_menu_font_char_0[] = "__OTR__levels/menu/main_menu_seg7_us.0AC40";
+ALIGNED8 static const Texture texture_menu_font_char_0[] = "__OTR__levels/menu/main_menu_seg7.0AC40";
 
 // 0x0700AC80
-ALIGNED8 static const Texture texture_menu_font_char_1[] = "__OTR__levels/menu/main_menu_seg7_us.0AC80";
+ALIGNED8 static const Texture texture_menu_font_char_1[] = "__OTR__levels/menu/main_menu_seg7.0AC80";
 
 // 0x0700ACC0
-ALIGNED8 static const Texture texture_menu_font_char_2[] = "__OTR__levels/menu/main_menu_seg7_us.0ACC0";
+ALIGNED8 static const Texture texture_menu_font_char_2[] = "__OTR__levels/menu/main_menu_seg7.0ACC0";
 
 // 0x0700AD00
-ALIGNED8 static const Texture texture_menu_font_char_3[] = "__OTR__levels/menu/main_menu_seg7_us.0AD00";
+ALIGNED8 static const Texture texture_menu_font_char_3[] = "__OTR__levels/menu/main_menu_seg7.0AD00";
 
 // 0x0700AD40
-ALIGNED8 static const Texture texture_menu_font_char_4[] = "__OTR__levels/menu/main_menu_seg7_us.0AD40";
+ALIGNED8 static const Texture texture_menu_font_char_4[] = "__OTR__levels/menu/main_menu_seg7.0AD40";
 
 // 0x0700AD80
-ALIGNED8 static const Texture texture_menu_font_char_5[] = "__OTR__levels/menu/main_menu_seg7_us.0AD80";
+ALIGNED8 static const Texture texture_menu_font_char_5[] = "__OTR__levels/menu/main_menu_seg7.0AD80";
 
 // 0x0700ADC0
-ALIGNED8 static const Texture texture_menu_font_char_6[] = "__OTR__levels/menu/main_menu_seg7_us.0ADC0";
+ALIGNED8 static const Texture texture_menu_font_char_6[] = "__OTR__levels/menu/main_menu_seg7.0ADC0";
 
 // 0x0700AE00
-ALIGNED8 static const Texture texture_menu_font_char_7[] = "__OTR__levels/menu/main_menu_seg7_us.0AE00";
+ALIGNED8 static const Texture texture_menu_font_char_7[] = "__OTR__levels/menu/main_menu_seg7.0AE00";
 
 // 0x0700AE40
-ALIGNED8 static const Texture texture_menu_font_char_8[] = "__OTR__levels/menu/main_menu_seg7_us.0AE40";
+ALIGNED8 static const Texture texture_menu_font_char_8[] = "__OTR__levels/menu/main_menu_seg7.0AE40";
 
 // 0x0700AE80
-ALIGNED8 static const Texture texture_menu_font_char_9[] = "__OTR__levels/menu/main_menu_seg7_us.0AE80";
+ALIGNED8 static const Texture texture_menu_font_char_9[] = "__OTR__levels/menu/main_menu_seg7.0AE80";
 
 // 0x0700AEC0
-ALIGNED8 static const Texture texture_menu_font_char_A[] = "__OTR__levels/menu/main_menu_seg7_us.0AEC0";
+ALIGNED8 static const Texture texture_menu_font_char_A[] = "__OTR__levels/menu/main_menu_seg7.0AEC0";
 
 // 0x0700AF00
-ALIGNED8 static const Texture texture_menu_font_char_B[] = "__OTR__levels/menu/main_menu_seg7_us.0AF00";
+ALIGNED8 static const Texture texture_menu_font_char_B[] = "__OTR__levels/menu/main_menu_seg7.0AF00";
 
 // 0x0700AF40
-ALIGNED8 static const Texture texture_menu_font_char_C[] = "__OTR__levels/menu/main_menu_seg7_us.0AF40";
+ALIGNED8 static const Texture texture_menu_font_char_C[] = "__OTR__levels/menu/main_menu_seg7.0AF40";
 
 #ifdef VERSION_EU
 // 0x0700AF80
-ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7_eu.0AF80";
+ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7.0AF80";
 
 #else
 
 // 0x0700AF80
-ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7_us.0AF80";
+ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7.0AF80";
 #endif
 
 // 0x0700AFC0
-ALIGNED8 static const Texture texture_menu_font_char_E[] = "__OTR__levels/menu/main_menu_seg7_us.0AFC0";
+ALIGNED8 static const Texture texture_menu_font_char_E[] = "__OTR__levels/menu/main_menu_seg7.0AFC0";
 
 // 0x0700B000
-ALIGNED8 static const Texture texture_menu_font_char_F[] = "__OTR__levels/menu/main_menu_seg7_us.0B000";
+ALIGNED8 static const Texture texture_menu_font_char_F[] = "__OTR__levels/menu/main_menu_seg7.0B000";
 
 // 0x0700B040
-ALIGNED8 static const Texture texture_menu_font_char_G[] = "__OTR__levels/menu/main_menu_seg7_us.0B040";
+ALIGNED8 static const Texture texture_menu_font_char_G[] = "__OTR__levels/menu/main_menu_seg7.0B040";
 
 // 0x0700B080
-ALIGNED8 static const Texture texture_menu_font_char_H[] = "__OTR__levels/menu/main_menu_seg7_us.0B080";
+ALIGNED8 static const Texture texture_menu_font_char_H[] = "__OTR__levels/menu/main_menu_seg7.0B080";
 
 // 0x0700B0C0
-ALIGNED8 static const Texture texture_menu_font_char_I[] = "__OTR__levels/menu/main_menu_seg7_us.0B0C0";
+ALIGNED8 static const Texture texture_menu_font_char_I[] = "__OTR__levels/menu/main_menu_seg7.0B0C0";
 
 // 0x0700B100
-ALIGNED8 static const Texture texture_menu_font_char_J[] = "__OTR__levels/menu/main_menu_seg7_us.0B100";
+ALIGNED8 static const Texture texture_menu_font_char_J[] = "__OTR__levels/menu/main_menu_seg7.0B100";
 
 // 0x0700B140
-ALIGNED8 static const Texture texture_menu_font_char_K[] = "__OTR__levels/menu/main_menu_seg7_us.0B140";
+ALIGNED8 static const Texture texture_menu_font_char_K[] = "__OTR__levels/menu/main_menu_seg7.0B140";
 
 // 0x0700B180
-ALIGNED8 static const Texture texture_menu_font_char_L[] = "__OTR__levels/menu/main_menu_seg7_us.0B180";
+ALIGNED8 static const Texture texture_menu_font_char_L[] = "__OTR__levels/menu/main_menu_seg7.0B180";
 
 // 0x0700B1C0
-ALIGNED8 static const Texture texture_menu_font_char_M[] = "__OTR__levels/menu/main_menu_seg7_us.0B1C0";
+ALIGNED8 static const Texture texture_menu_font_char_M[] = "__OTR__levels/menu/main_menu_seg7.0B1C0";
 
 // 0x0700B200
-ALIGNED8 static const Texture texture_menu_font_char_N[] = "__OTR__levels/menu/main_menu_seg7_us.0B200";
+ALIGNED8 static const Texture texture_menu_font_char_N[] = "__OTR__levels/menu/main_menu_seg7.0B200";
 
 // 0x0700B240
-ALIGNED8 static const Texture texture_menu_font_char_O[] = "__OTR__levels/menu/main_menu_seg7_us.0B240";
+ALIGNED8 static const Texture texture_menu_font_char_O[] = "__OTR__levels/menu/main_menu_seg7.0B240";
 
 // 0x0700B280
-ALIGNED8 static const Texture texture_menu_font_char_P[] = "__OTR__levels/menu/main_menu_seg7_us.0B280";
+ALIGNED8 static const Texture texture_menu_font_char_P[] = "__OTR__levels/menu/main_menu_seg7.0B280";
 
 // 0x0700B2C0
-ALIGNED8 static const Texture texture_menu_font_char_Q[] = "__OTR__levels/menu/main_menu_seg7_us.0B2C0";
+ALIGNED8 static const Texture texture_menu_font_char_Q[] = "__OTR__levels/menu/main_menu_seg7.0B2C0";
 
 // 0x0700B300
-ALIGNED8 static const Texture texture_menu_font_char_R[] = "__OTR__levels/menu/main_menu_seg7_us.0B300";
+ALIGNED8 static const Texture texture_menu_font_char_R[] = "__OTR__levels/menu/main_menu_seg7.0B300";
 
 // 0x0700B340
-ALIGNED8 static const Texture texture_menu_font_char_S[] = "__OTR__levels/menu/main_menu_seg7_us.0B340";
+ALIGNED8 static const Texture texture_menu_font_char_S[] = "__OTR__levels/menu/main_menu_seg7.0B340";
 
 // 0x0700B380
-ALIGNED8 static const Texture texture_menu_font_char_T[] = "__OTR__levels/menu/main_menu_seg7_us.0B380";
+ALIGNED8 static const Texture texture_menu_font_char_T[] = "__OTR__levels/menu/main_menu_seg7.0B380";
 
 // 0x0700B3C0
-ALIGNED8 static const Texture texture_menu_font_char_U[] = "__OTR__levels/menu/main_menu_seg7_us.0B3C0";
+ALIGNED8 static const Texture texture_menu_font_char_U[] = "__OTR__levels/menu/main_menu_seg7.0B3C0";
 
 // 0x0700B400
-ALIGNED8 static const Texture texture_menu_font_char_V[] = "__OTR__levels/menu/main_menu_seg7_us.0B400";
+ALIGNED8 static const Texture texture_menu_font_char_V[] = "__OTR__levels/menu/main_menu_seg7.0B400";
 
 // 0x0700B440
-ALIGNED8 static const Texture texture_menu_font_char_W[] = "__OTR__levels/menu/main_menu_seg7_us.0B440";
+ALIGNED8 static const Texture texture_menu_font_char_W[] = "__OTR__levels/menu/main_menu_seg7.0B440";
 
 // 0x0700B480
-ALIGNED8 static const Texture texture_menu_font_char_X[] = "__OTR__levels/menu/main_menu_seg7_us.0B480";
+ALIGNED8 static const Texture texture_menu_font_char_X[] = "__OTR__levels/menu/main_menu_seg7.0B480";
 
 // 0x0700B4C0
-ALIGNED8 static const Texture texture_menu_font_char_Y[] = "__OTR__levels/menu/main_menu_seg7_us.0B4C0";
+ALIGNED8 static const Texture texture_menu_font_char_Y[] = "__OTR__levels/menu/main_menu_seg7.0B4C0";
 
 // 0x0700B500
-ALIGNED8 static const Texture texture_menu_font_char_Z[] = "__OTR__levels/menu/main_menu_seg7_us.0B500";
+ALIGNED8 static const Texture texture_menu_font_char_Z[] = "__OTR__levels/menu/main_menu_seg7.0B500";
 
 // 0x0700B540
-ALIGNED8 static const Texture texture_menu_font_char_coin[] = "__OTR__levels/menu/main_menu_seg7_us.0B540";
+ALIGNED8 static const Texture texture_menu_font_char_coin[] = "__OTR__levels/menu/main_menu_seg7.0B540";
 
 // 0x0700B580
-ALIGNED8 static const Texture texture_menu_font_char_multiply[] = "__OTR__levels/menu/main_menu_seg7_us.0B580";
+ALIGNED8 static const Texture texture_menu_font_char_multiply[] = "__OTR__levels/menu/main_menu_seg7.0B580";
 
 // 0x0700B5C0
-ALIGNED8 static const Texture texture_menu_font_char_star_filled[] = "__OTR__levels/menu/main_menu_seg7_us.0B5C0";
+ALIGNED8 static const Texture texture_menu_font_char_star_filled[] = "__OTR__levels/menu/main_menu_seg7.0B5C0";
 
 // 0x0700B600
-ALIGNED8 static const Texture texture_menu_font_char_dash[] = "__OTR__levels/menu/main_menu_seg7_us.0B600";
+ALIGNED8 static const Texture texture_menu_font_char_dash[] = "__OTR__levels/menu/main_menu_seg7.0B600";
 
 #ifdef VERSION_EU
 // 0x0700B640
-ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7_eu.0B640";
+ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7.0B640";
 
 // 0x0700B680
-ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7_eu.0B680";
+ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7.0B680";
 
 #else
 
 // 0x0700B640
-ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7_us.0B640";
+ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7.0B640";
 
 // 0x0700B680
-ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7_us.0B680";
+ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7.0B680";
 #endif
 
 // 0x0700B6C0
-ALIGNED8 static const Texture texture_menu_font_char_exclamation[] = "__OTR__levels/menu/main_menu_seg7_us.0B6C0";
+ALIGNED8 static const Texture texture_menu_font_char_exclamation[] = "__OTR__levels/menu/main_menu_seg7.0B6C0";
 
 // 0x0700B700
-ALIGNED8 static const Texture texture_menu_font_char_question[] = "__OTR__levels/menu/main_menu_seg7_us.0B700";
+ALIGNED8 static const Texture texture_menu_font_char_question[] = "__OTR__levels/menu/main_menu_seg7.0B700";
 
 // 0x0700B740
-ALIGNED8 static const Texture texture_menu_font_char_mface1[] = "__OTR__levels/menu/main_menu_seg7_us.0B740";
+ALIGNED8 static const Texture texture_menu_font_char_mface1[] = "__OTR__levels/menu/main_menu_seg7.0B740";
 
 // 0x0700B780
-ALIGNED8 static const Texture texture_menu_font_char_mface2[] = "__OTR__levels/menu/main_menu_seg7_us.0B780";
+ALIGNED8 static const Texture texture_menu_font_char_mface2[] = "__OTR__levels/menu/main_menu_seg7.0B780";
 
 // 0x0700B7C0
-ALIGNED8 static const Texture texture_menu_font_char_period[] = "__OTR__levels/menu/main_menu_seg7_us.0B7C0";
+ALIGNED8 static const Texture texture_menu_font_char_period[] = "__OTR__levels/menu/main_menu_seg7.0B7C0";
 
 // 0x0700B800
-ALIGNED8 static const Texture texture_menu_font_char_ampersand[] = "__OTR__levels/menu/main_menu_seg7_us.0B800";
+ALIGNED8 static const Texture texture_menu_font_char_ampersand[] = "__OTR__levels/menu/main_menu_seg7.0B800";
 #endif
 
 #ifdef VERSION_EU
 // 0x0700B840
-ALIGNED8 static const Texture texture_menu_font_char_umlaut[] = "__OTR__levels/menu/main_menu_seg7_eu.0B840";
+ALIGNED8 static const Texture texture_menu_font_char_umlaut[] = "__OTR__levels/menu/main_menu_seg7.0B840";
 
 // 0x0700B880
-ALIGNED8 static const Texture texture_menu_font_char_cedilla_mayus[] = "__OTR__levels/menu/main_menu_seg7_eu.0B880";
+ALIGNED8 static const Texture texture_menu_font_char_cedilla_mayus[] = "__OTR__levels/menu/main_menu_seg7.0B880";
 
 // 0x0700B8C0
-ALIGNED8 static const Texture texture_menu_font_char_colon[] = "__OTR__levels/menu/main_menu_seg7_eu.0B8C0";
+ALIGNED8 static const Texture texture_menu_font_char_colon[] = "__OTR__levels/menu/main_menu_seg7.0B8C0";
 #endif
 
 // Menu small font print table
@@ -1274,16 +1274,16 @@ UNUSED static const u64 menu_unused_1 = 0;
 #ifdef VERSION_EU
 
 // 0x0700BDA0 - 0x0700CDA0
-ALIGNED8 static const Texture texture_menu_course_upper[] = "__OTR__levels/menu/main_menu_seg7_eu.0BDA0";
+ALIGNED8 static const Texture texture_menu_course_upper[] = "__OTR__levels/menu/main_menu_seg7.0BDA0";
 
 // 0x0700CDA0 - 0x0700DDA0
-ALIGNED8 static const Texture texture_menu_niveau_upper[] = "__OTR__levels/menu/main_menu_seg7_eu.0CDA0";
+ALIGNED8 static const Texture texture_menu_niveau_upper[] = "__OTR__levels/menu/main_menu_seg7.0CDA0";
 
 // 0x0700DDA0 - 0x0700EDA0
-ALIGNED8 static const Texture texture_menu_kurs_upper[] = "__OTR__levels/menu/main_menu_seg7_eu.0DDA0";
+ALIGNED8 static const Texture texture_menu_kurs_upper[] = "__OTR__levels/menu/main_menu_seg7.0DDA0";
 
 // 0x0700EDA0 - 0x0700FDA0
-ALIGNED8 static const Texture texture_menu_course_lower[] = "__OTR__levels/menu/main_menu_seg7_eu.0EDA0";
+ALIGNED8 static const Texture texture_menu_course_lower[] = "__OTR__levels/menu/main_menu_seg7.0EDA0";
 
 #else
 
