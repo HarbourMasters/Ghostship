@@ -7,7 +7,6 @@
 #include "make_const_nonconst.h"
 
 #ifdef VERSION_EU
-#include "levels/ending/cake_eu.inc.c"
 
 // 0x07023000 - 0x07023FFF
 ALIGNED8 static const Texture cake_end_texture_eu_35[] = "__OTR__levels/ending/eu_023000";
