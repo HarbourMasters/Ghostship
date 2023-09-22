@@ -8,6 +8,7 @@
 #define SAMPLES_LOW 528
 #define AUDIO_FRAMES_PER_UPDATE 2
 #define NUM_AUDIO_CHANNELS 2
+#define SAMPLES_PER_FRAME (SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 3)
 
 struct CtlEntry;
 struct AudioBankSample;
@@ -37,6 +38,7 @@ class GameEngine {
 #else
 
 uint32_t GameEngine_GetSampleRate();
+uint32_t GameEngine_GetSamplesPerFrame();
 float GameEngine_GetAspectRatio();
 struct CtlEntry* GameEngine_LoadBank(uint8_t bankId);
 uint8_t GameEngine_IsBankLoaded(uint8_t bankId);
