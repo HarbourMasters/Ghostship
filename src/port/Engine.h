@@ -35,6 +35,7 @@ class GameEngine {
     void Destroy();
 };
 #else
+
 uint32_t GameEngine_GetSampleRate();
 float GameEngine_GetAspectRatio();
 struct CtlEntry* GameEngine_LoadBank(uint8_t bankId);
@@ -44,4 +45,7 @@ struct AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId);
 uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId);
 void GameEngine_UnloadSequence(uint8_t seqId);
 uint32_t GameEngine_GetGameVersion();
+uint8_t* GameEngine_LoadActName(uint32_t actId);
+uint8_t* GameEngine_LoadLevelName(uint32_t levelId);
+struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 #endif

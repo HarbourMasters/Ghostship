@@ -1,4 +1,5 @@
 #include <libultra/types.h>
+#include <stdio.h>
 
 #include "audio/external.h"
 #include "behavior_data.h"
@@ -268,10 +269,6 @@ void print_act_selector_strings(void) {
     u8 **levelNameTbl;
     u8 *currLevelName;
     u8 **actNameTbl;
-#else
-    u8 **levelNameTbl = segmented_to_virtual(seg2_course_name_table);
-    u8 *currLevelName = segmented_to_virtual(levelNameTbl[COURSE_NUM_TO_INDEX(gCurrCourseNum)]);
-    u8 **actNameTbl = segmented_to_virtual(seg2_act_name_table);
 #endif
     u8 *selectedActName;
     s16 lvlNameX;
@@ -280,6 +277,8 @@ void print_act_selector_strings(void) {
 #ifdef VERSION_EU
     s16 language = eu_get_language();
 #endif
+
+    uint8_t* currLevelName = GameEngine_LoadLevelName(COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
     create_dl_ortho_matrix();
 
@@ -333,8 +332,7 @@ void print_act_selector_strings(void) {
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255);
     // Print the name of the selected act.
     if (sVisibleStars != 0) {
-        selectedActName = segmented_to_virtual(actNameTbl[COURSE_NUM_TO_INDEX(gCurrCourseNum) * 6 + sSelectedActIndex]);
-
+        selectedActName = GameEngine_LoadActName(COURSE_NUM_TO_INDEX(gCurrCourseNum) * 6 + sSelectedActIndex);
         actNameX = get_str_x_pos_from_center(ACT_NAME_X, selectedActName, 8.0f);
         print_menu_generic_string(actNameX, 81, selectedActName);
     }
