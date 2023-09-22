@@ -605,9 +605,9 @@ void process_notes(void) {
             scale = note->adsrVolScale;
             frequency *= note->vibratoFreqScale * note->portamentoFreqScale;
             cap = 3.99992f;
-            if (gAiFrequency != 32006) {
-                frequency *= US_FLOAT(32000.0) / (f32) gAiFrequency;
-            }
+            // if (gAiFrequency != 32006) {
+            //     frequency *= US_FLOAT(32000.0) / (f32) gAiFrequency;
+            // }
             frequency = (frequency < cap ? frequency : cap);
             scale *= 4.3498e-5f; // ~1 / 23000
             velocity = velocity * scale * scale;
