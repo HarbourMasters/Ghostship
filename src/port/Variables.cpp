@@ -15,7 +15,7 @@ u64 osClockRate = 62500000;
 
 s8 gShowProfiler = FALSE;
 s8 gShowDebugText = FALSE;
-s8 gDebugLevelSelect = TRUE;
+s8 gDebugLevelSelect = FALSE;
 
 OSIoMesg gDmaIoMesg;
 OSMesg gMainReceivedMesg;

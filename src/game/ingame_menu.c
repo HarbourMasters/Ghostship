@@ -1631,7 +1631,6 @@ void render_dialog_entries(void) {
 #ifdef VERSION_EU
     s8 lowerBound;
 #endif
-    void **dialogTable;
     struct DialogEntry *dialog;
 #if defined(VERSION_US) || defined(VERSION_SH)
     s8 lowerBound;
@@ -1650,10 +1649,8 @@ void render_dialog_entries(void) {
             dialogTable = segmented_to_virtual(dialog_table_eu_de);
             break;
     }
-#else
-    dialogTable = segmented_to_virtual(seg2_dialog_table);
 #endif
-    dialog = segmented_to_virtual(dialogTable[gDialogID]);
+    dialog = GameEngine_LoadDialog(gDialogID);
 
     // if the dialog entry is invalid, set the ID to DIALOG_NONE.
     if (segmented_to_virtual(NULL) == dialog) {
@@ -1938,7 +1935,6 @@ void do_cutscene_handler(void) {
 
 // "Dear Mario" message handler
 void print_peach_letter_message(void) {
-    void **dialogTable;
     struct DialogEntry *dialog;
     u8 *str;
 
@@ -1955,10 +1951,8 @@ void print_peach_letter_message(void) {
             dialogTable = segmented_to_virtual(dialog_table_eu_de);
             break;
     }
-#else
-    dialogTable = segmented_to_virtual(seg2_dialog_table);
 #endif
-    dialog = segmented_to_virtual(dialogTable[gDialogID]);
+    dialog = GameEngine_LoadDialog(gDialogID);
     str = segmented_to_virtual(dialog->str);
 
     create_dl_translation_matrix(MENU_MTX_PUSH, 97.0f, 118.0f, 0);
@@ -2143,17 +2137,10 @@ void render_pause_my_score_coins(void) {
     u8 textUnfilledStar[] = { TEXT_UNFILLED_STAR };
 
     u8 strCourseNum[4];
-    void **courseNameTbl;
     u8 *courseName;
-    void **actNameTbl;
     u8 *actName;
     u8 courseIndex;
     u8 starFlags;
-
-#ifndef VERSION_EU
-    courseNameTbl = segmented_to_virtual(seg2_course_name_table);
-    actNameTbl = segmented_to_virtual(seg2_act_name_table);
-#endif
 
     courseIndex = COURSE_NUM_TO_INDEX(gCurrCourseNum);
     starFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
@@ -2193,7 +2180,7 @@ void render_pause_my_score_coins(void) {
         print_generic_string(MYSCORE_X, 121, LANGUAGE_ARRAY(textMyScore));
     }
 
-    courseName = segmented_to_virtual(courseNameTbl[courseIndex]);
+    courseName = GameEngine_LoadLevelName(courseIndex);
     u8 isJP = ROM_JP;
 
     if (courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) {
@@ -2201,7 +2188,7 @@ void render_pause_my_score_coins(void) {
         int_to_str(gCurrCourseNum, strCourseNum);
         print_generic_string(CRS_NUM_X1, 157, strCourseNum);
 
-        actName = segmented_to_virtual(actNameTbl[COURSE_NUM_TO_INDEX(gCurrCourseNum) * 6 + gDialogCourseActNum - 1]);
+        actName = GameEngine_LoadActName(COURSE_NUM_TO_INDEX(gCurrCourseNum) * 6 + gDialogCourseActNum - 1);
 
         if (starFlags & (1 << (gDialogCourseActNum - 1))) {
             print_generic_string(TXT_STAR_X, 140, textStar);
@@ -2420,8 +2407,6 @@ void render_pause_castle_course_stars(s16 x, s16 y, s16 fileIndex, s16 courseInd
 void render_pause_castle_main_strings(s16 x, s16 y) {
 #ifdef VERSION_EU
     void **courseNameTbl;
-#else
-    void **courseNameTbl = segmented_to_virtual(seg2_course_name_table);
 #endif
 
 #ifdef VERSION_EU
@@ -2483,7 +2468,7 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     if (gDialogLineNum <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) { // Main courses
-        courseName = segmented_to_virtual(courseNameTbl[gDialogLineNum]);
+        courseName = GameEngine_LoadLevelName(gDialogLineNum);
         render_pause_castle_course_stars(x, y, gCurrSaveFileNum - 1, gDialogLineNum);
         print_generic_string(x + 34, y - 5, textCoin);
 #ifdef VERSION_EU
@@ -2496,7 +2481,7 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
 #endif
     } else { // Castle secret stars
         u8 textStarX[] = { TEXT_STAR_X };
-        courseName = segmented_to_virtual(courseNameTbl[COURSE_MAX]);
+        courseName = GameEngine_LoadLevelName(COURSE_MAX);
         print_generic_string(x + 40, y + 13, textStarX);
         int_to_str(save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_BONUS_STAGES - 1, COURSE_MAX - 1), strVal);
         print_generic_string(x + 60, y + 13, strVal);
@@ -2720,8 +2705,6 @@ void render_course_complete_lvl_info_and_hud_str(void) {
     u8 textClear[] = { TEXT_CLEAR };
 #endif
 
-    void **actNameTbl;
-    void **courseNameTbl;
     u8 *name;
 
     u8 strCourseNum[4];
@@ -2742,9 +2725,6 @@ void render_course_complete_lvl_info_and_hud_str(void) {
             courseNameTbl = segmented_to_virtual(course_name_table_eu_de);
             break;
     }
-#else
-    actNameTbl = segmented_to_virtual(seg2_act_name_table);
-    courseNameTbl = segmented_to_virtual(seg2_course_name_table);
 #endif
 
     if (gLastCompletedCourseNum <= COURSE_STAGES_MAX) { // Main courses
@@ -2752,9 +2732,9 @@ void render_course_complete_lvl_info_and_hud_str(void) {
         play_star_fanfare_and_flash_hud(1, 1 << (gLastCompletedStarNum - 1));
 
         if (gLastCompletedStarNum == 7) {
-            name = segmented_to_virtual(actNameTbl[COURSE_STAGES_MAX * 6 + 1]);
+            name = GameEngine_LoadActName(COURSE_STAGES_MAX * 6 + 1);
         } else {
-            name = segmented_to_virtual(actNameTbl[COURSE_NUM_TO_INDEX(gLastCompletedCourseNum) * 6 + gLastCompletedStarNum - 1]);
+            name = GameEngine_LoadActName(COURSE_NUM_TO_INDEX(gLastCompletedCourseNum) * 6 + gLastCompletedStarNum - 1);
         }
 
         // Print course number
@@ -2772,7 +2752,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
 
         gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
     } else if (gLastCompletedCourseNum == COURSE_BITDW || gLastCompletedCourseNum == COURSE_BITFS) { // Bowser courses
-        name = segmented_to_virtual(courseNameTbl[COURSE_NUM_TO_INDEX(gLastCompletedCourseNum)]);
+        name = GameEngine_LoadLevelName(COURSE_NUM_TO_INDEX(gLastCompletedCourseNum));
 
         // Print course name and clear text
         gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
@@ -2800,7 +2780,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
 
         return;
     } else { // Castle secret stars
-        name = segmented_to_virtual(actNameTbl[COURSE_STAGES_MAX * 6]);
+        name = GameEngine_LoadActName(COURSE_STAGES_MAX * 6);
 
         print_hud_course_complete_coins(118, 103);
         play_star_fanfare_and_flash_hud(1, 1 << (gLastCompletedStarNum - 1));

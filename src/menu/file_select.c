@@ -2682,7 +2682,6 @@ void print_save_file_scores(s8 fileIndex) {
 #ifndef VERSION_EU
     unsigned char textMario[] = { TEXT_MARIO };
     unsigned char textFileLetter[] = { TEXT_ZERO };
-    void **levelNameTable = segmented_to_virtual(seg2_course_name_table);
     unsigned char textHiScore[] = { TEXT_HI_SCORE };
     unsigned char textMyScore[] = { TEXT_MY_SCORE };
 #else
@@ -2720,7 +2719,7 @@ void print_save_file_scores(s8 fileIndex) {
 //! Huge print list, for loops exist for a reason!
 #define PRINT_COURSE_SCORES(courseIndex, pad) \
     print_menu_generic_string(LEVEL_NAME_X + (pad * LEVEL_NUM_PAD), 23 + 12 * courseIndex, \
-                              segmented_to_virtual(levelNameTable[courseIndex - 1])); \
+                              GameEngine_LoadLevelName(courseIndex - 1)); \
     print_score_file_star_score(fileIndex, courseIndex - 1, STAR_SCORE_X, 23 + 12 * courseIndex); \
     print_score_file_course_coin_score(fileIndex, courseIndex - 1, 213, 23 + 12 * courseIndex);
 
@@ -2744,7 +2743,7 @@ void print_save_file_scores(s8 fileIndex) {
 
     // Print castle secret stars text
     print_menu_generic_string(LEVEL_NAME_X + SECRET_STARS_PAD, 23 + 12 * 16,
-                              segmented_to_virtual(levelNameTable[25]));
+                              GameEngine_LoadLevelName(25));
     // Print castle secret stars score
     print_score_file_castle_secret_stars(fileIndex, STAR_SCORE_X, 23 + 12 * 16);
 

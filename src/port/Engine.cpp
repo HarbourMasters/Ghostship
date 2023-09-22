@@ -4,16 +4,19 @@
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/AudioSampleFactory.h"
 #include "port/importer/AudioSequenceFactory.h"
-#include "audio/internal.h"
 #include "banks_table.h"
 #include "sequences_table.h"
 #include "audio/GameAudio.h"
 #include "ZAPDUtils/Utils/StringHelper.h"
+#include "texts_table.h"
+#include "port/importer/DialogFactory.h"
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
 
 extern "C" {
 #include "audio/external.h"
+#include "audio/internal.h"
+#include "game/ingame_menu.h"
 }
 
 GameEngine* GameEngine::Instance;
@@ -41,10 +44,11 @@ GameEngine::GameEngine(){
     this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, {}, 3);
     this->context->GetWindow()->SetTargetFps(30);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Anim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
     GameEngine::AudioInit();
     uint32_t version = LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
 }
@@ -214,4 +218,17 @@ extern "C" void GameEngine_UnloadSequence(uint8_t seqId) {
 
 extern "C" uint32_t GameEngine_GetGameVersion() {
     return LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
+}
+
+extern "C" uint8_t* GameEngine_LoadActName(uint32_t actId){
+    return (uint8_t*) ResourceGetDataByName(StringHelper::Sprintf(gActRoot, actId).c_str());
+}
+
+extern "C" uint8_t* GameEngine_LoadLevelName(uint32_t courseId){
+    return (uint8_t*) ResourceGetDataByName(StringHelper::Sprintf(gCourseRoot, courseId).c_str());
+}
+
+extern "C" DialogEntry* GameEngine_LoadDialog(uint32_t dialogId){
+    auto dialog = (DialogEntry*) ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str());
+    return dialog;
 }
