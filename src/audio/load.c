@@ -65,8 +65,6 @@ u16 gSequenceCount;
 #if defined(VERSION_EU)
 u32 padEuBss1;
 struct AudioBufferParametersEU gAudioBufferParameters;
-#elif defined(VERSION_US) || defined(VERSION_JP)
-s32 gAiFrequency;
 #endif
 
 u32 sDmaBufSize;
