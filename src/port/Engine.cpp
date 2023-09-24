@@ -41,7 +41,7 @@ GameEngine::GameEngine(){
             }
         }
     }
-    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, {}, 3);
+    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, { 0xFF2B5A63 }, 3);
     this->context->GetWindow()->SetTargetFps(30);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
@@ -50,7 +50,6 @@ GameEngine::GameEngine(){
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
     GameEngine::AudioInit();
-    uint32_t version = LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
 }
 
 void GameEngine::Create(){
