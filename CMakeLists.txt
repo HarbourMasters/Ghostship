@@ -47,28 +47,6 @@ set(VERSION us)
 # Add the tools subdirectory to the build
 add_subdirectory(tools)
 
-# Find Python 3 for the custom target
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
-
-# Add a custom target to extract assets
-add_custom_target(
-    ExtractAssets
-    COMMAND ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py ${VERSION}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMENT "Running asset extraction..."
-    DEPENDS Tools
-)
-
-# Add a custom target to extract assets
-add_custom_target(
-    CleanAssets
-    COMMAND  ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py --clean
-    COMMAND  ${CMAKE_COMMAND} -E remove ${CMAKE_CURRENT_SOURCE_DIR}/.assets-local.txt
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMENT "Running asset extraction..."
-    DEPENDS Tools
-)
-
 # Add compile definitions for the target
 add_compile_definitions(
     VERSION_US=1
