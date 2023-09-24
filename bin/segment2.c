@@ -941,8 +941,8 @@ const Texture *const main_hud_lut[] = {
 };
 
 // Main small font print table 0x02008338-0x02008737
-const Texture *const main_font_lut_eu[] = {
 #ifdef VERSION_EU // EU Font Table
+const Texture *const main_font_lut_eu[] = {
     texture_font_char_eu_0, texture_font_char_eu_1, texture_font_char_eu_2, texture_font_char_eu_3,
     texture_font_char_eu_4, texture_font_char_eu_5, texture_font_char_eu_6, texture_font_char_eu_7,
     texture_font_char_eu_8, texture_font_char_eu_9, texture_font_char_eu_A, texture_font_char_eu_B,
@@ -1009,8 +1009,8 @@ const Texture *const main_font_lut_eu[] = {
     texture_font_char_eu_interpunct,
     texture_font_char_eu_star_hollow,
     0x0, 0x0,
-#endif
 };
+#endif
 
 const Texture *const main_font_lut_us[] = {
     // US Font Table
