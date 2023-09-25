@@ -89,6 +89,8 @@ Requires Xcode (or xcode-tools) && `ninja, cmake` (can be installed via homebrew
 
 _Note: If you're using Visual Studio Code, the [cpack plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) makes it very easy to just press run and debug._
 
+### Building Ghostship
+
 ```bash
 # Clone the repo
 git clone https://github.com/HarbourMasters/Ghostship.git
