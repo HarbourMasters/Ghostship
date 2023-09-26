@@ -62,13 +62,32 @@ void GameEngine::Destroy(){
     this->context = nullptr;
 }
 
+bool ShouldClearTextureCacheAtEndOfFrame = false;
+
 void GameEngine::StartFrame() const{
+    using LUS::KbScancode;
+    int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
+    this->context->GetWindow()->SetLastScancode(-1);
+
+    switch (dwScancode) {
+        case KbScancode::LUS_KB_TAB: {
+            // Toggle HD Assets
+            CVarSetInteger("gAltAssets", !CVarGetInteger("gAltAssets", 0));
+            ShouldClearTextureCacheAtEndOfFrame = true;
+            break;
+        }
+    }
     this->context->GetWindow()->StartFrame();
 }
 
 void GameEngine::RunCommands(Gfx* Commands) {
     gfx_run(Commands, {});
     gfx_end_frame();
+
+    if (ShouldClearTextureCacheAtEndOfFrame) {
+        gfx_texture_cache_clear();
+        ShouldClearTextureCacheAtEndOfFrame = false;
+    }
 }
 
 void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
