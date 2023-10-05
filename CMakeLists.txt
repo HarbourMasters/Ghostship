@@ -44,9 +44,6 @@ endif()
 # Set game compilation version
 set(VERSION us)
 
-# Add the tools subdirectory to the build
-add_subdirectory(tools)
-
 # Add compile definitions for the target
 add_compile_definitions(
     VERSION_US=1

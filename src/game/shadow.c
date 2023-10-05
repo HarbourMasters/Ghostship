@@ -206,7 +206,7 @@ s8 init_shadow(struct Shadow *s, f32 xPos, f32 yPos, f32 zPos, s16 shadowScale, 
     s->parentY = yPos;
     s->parentZ = zPos;
 
-    s->floorHeight = find_floor_height_and_data(s->parentX, s->parentY, s->parentZ, &floorGeometry);
+    s->floorHeight = find_floor_height_and_data(s->parentX, s->parentY, s->parentZ, &floorGeometry) + 0.4f;
 
     if (gEnvironmentRegions != NULL) {
         waterLevel = get_water_level_below_shadow(s);
@@ -384,7 +384,7 @@ void calculate_vertex_xyz(s8 index, struct Shadow s, f32 *xPosVtx, f32 *yPosVtx,
                 // Clamp this vertex's y-position to that of the floor directly
                 // below it, which may differ from the floor below the center
                 // vertex.
-                *yPosVtx = find_floor_height_and_data(*xPosVtx, s.parentY, *zPosVtx, &dummy);
+                *yPosVtx = find_floor_height_and_data(*xPosVtx, s.parentY, *zPosVtx, &dummy) + 0.4f;
                 break;
             case SHADOW_WITH_4_VERTS:
                 // Do not clamp. Instead, extrapolate the y-position of this
@@ -700,7 +700,7 @@ Gfx *create_shadow_circle_assuming_flat_ground(f32 xPos, f32 yPos, f32 zPos, s16
     Gfx *displayList;
     struct FloorGeometry *dummy; // only for calling find_floor_height_and_data
     f32 distBelowFloor;
-    f32 floorHeight = find_floor_height_and_data(xPos, yPos, zPos, &dummy);
+    f32 floorHeight = find_floor_height_and_data(xPos, yPos, zPos, &dummy) + 0.4f;
     f32 radius = shadowScale / 2;
 
     if (floorHeight < FLOOR_LOWER_LIMIT_SHADOW) {
@@ -760,7 +760,7 @@ Gfx *create_shadow_rectangle(f32 halfWidth, f32 halfLength, f32 relY, u8 solidit
 s32 get_shadow_height_solidity(f32 xPos, f32 yPos, f32 zPos, f32 *shadowHeight, u8 *solidity) {
     struct FloorGeometry *dummy;
     f32 waterLevel;
-    *shadowHeight = find_floor_height_and_data(xPos, yPos, zPos, &dummy);
+    *shadowHeight = find_floor_height_and_data(xPos, yPos, zPos, &dummy) + 0.4f;
 
     if (*shadowHeight < FLOOR_LOWER_LIMIT_SHADOW) {
         return 1;
