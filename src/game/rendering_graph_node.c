@@ -277,6 +277,10 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
     s16 distanceFromCam = -GET_HIGH_S16_OF_32(mtx->m[1][3]); // z-component of the translation column
 #endif
 
+    if(CVarGetInteger("gDisableLOD", 0) == 1) {
+        node->minDistance = 0;
+    }
+
     if (node->minDistance <= distanceFromCam && distanceFromCam < node->maxDistance) {
         if (node->node.children != 0) {
             geo_process_node_and_siblings(node->node.children);
