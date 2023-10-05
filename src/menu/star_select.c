@@ -27,6 +27,12 @@
  * strings, act values, and star selector model rendering if a star is collected or not.
  */
 
+// The number of stars in a level (excluding the 100 coin star)
+#define LEVEL_STARS_MAX 6
+
+// The index for the 100 coin star
+#define COIN_STAR_INDEX 6
+
 // Star Selector count models printed in the act selector menu.
 static struct Object *sStarSelectorModels[8];
 
@@ -89,12 +95,12 @@ void bhv_act_selector_star_type_loop(void) {
  * Renders the 100 coin star with an special star selector type.
  */
 void render_100_coin_star(u8 stars) {
-    if (stars & (1 << 6)) {
+    if (stars & (1 << COIN_STAR_INDEX)) {
         // If the 100 coin star has been collected, create a new star selector next to the coin score.
-        sStarSelectorModels[6] = spawn_object_abs_with_rot(gCurrentObject, 0, MODEL_STAR,
+        sStarSelectorModels[COIN_STAR_INDEX] = spawn_object_abs_with_rot(gCurrentObject, 0, MODEL_STAR,
                                                         bhvActSelectorStarType, 370, 24, -300, 0, 0, 0);
-        sStarSelectorModels[6]->oStarSelectorSize = 0.8;
-        sStarSelectorModels[6]->oStarSelectorType = STAR_SELECTOR_100_COINS;
+        sStarSelectorModels[COIN_STAR_INDEX]->oStarSelectorSize = 0.8;
+        sStarSelectorModels[COIN_STAR_INDEX]->oStarSelectorType = STAR_SELECTOR_100_COINS;
     }
 }
 
@@ -127,7 +133,7 @@ void bhv_act_selector_init(void) {
     }
 
     // If the stars have been collected in order so far, show the next star.
-    if (sVisibleStars == sObtainedStars && sVisibleStars != 6) {
+    if (sVisibleStars == sObtainedStars && sVisibleStars != LEVEL_STARS_MAX) {
         selectorModelIDs[sVisibleStars] = MODEL_TRANSPARENT_STAR;
         sInitSelectedActNum = sVisibleStars + 1;
         sSelectableStarIndex = sVisibleStars;
@@ -135,7 +141,7 @@ void bhv_act_selector_init(void) {
     }
 
     // If all stars have been collected, set the default selection to the last star.
-    if (sObtainedStars == 6) {
+    if (sObtainedStars == LEVEL_STARS_MAX) {
         sInitSelectedActNum = sVisibleStars;
     }
 
@@ -168,7 +174,7 @@ void bhv_act_selector_loop(void) {
     u8 starIndexCounter;
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
-    if (sObtainedStars != 6) {
+    if (sObtainedStars != LEVEL_STARS_MAX) {
         // Sometimes, stars are not selectable even if they appear on the screen.
         // This code filters selectable and non-selectable stars.
         sSelectedActIndex = 0;
@@ -331,7 +337,7 @@ void print_act_selector_strings(void) {
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255);
     // Print the name of the selected act.
     if (sVisibleStars != 0) {
-        selectedActName = GameEngine_LoadActName(COURSE_NUM_TO_INDEX(gCurrCourseNum) * 6 + sSelectedActIndex);
+        selectedActName = GameEngine_LoadActName(COURSE_NUM_TO_INDEX(gCurrCourseNum) * LEVEL_STARS_MAX + sSelectedActIndex);
         actNameX = get_str_x_pos_from_center(ACT_NAME_X, selectedActName, 8.0f);
         print_menu_generic_string(actNameX, 81, selectedActName);
     }
@@ -374,7 +380,7 @@ s32 lvl_init_act_selector_values_and_stars(UNUSED s32 arg, UNUSED s32 unused) {
         save_file_get_course_star_count(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
     // Don't count 100 coin star
-    if (stars & (1 << 6)) {
+    if (stars & (1 << COIN_STAR_INDEX)) {
         sObtainedStars--;
     }
 
