@@ -10,8 +10,11 @@
 #include "ZAPDUtils/Utils/StringHelper.h"
 #include "texts_table.h"
 #include "port/importer/DialogFactory.h"
+#include "port/importer/DictionaryFactory.h"
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
+
+#include <utility>
 
 extern "C" {
 #include "audio/external.h"
@@ -49,6 +52,7 @@ GameEngine::GameEngine(){
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Dictionary, "Dictionary", std::make_shared<CubeOS::DictionaryFactory>());
     GameEngine::AudioInit();
 }
 
@@ -163,6 +167,11 @@ void GameEngine::AudioExit() {
     audio.thread.join();
 }
 
+void GameEngine::LoadDictionary() {
+    this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>> *>(ResourceGetDataByName("__OTR__texts/strings/global"));
+    int bp = 0;
+}
+
 extern "C" uint32_t GameEngine_GetSampleRate() {
     auto player = LUS::Context::GetInstance()->GetAudio()->GetAudioPlayer();
     if (player == nullptr) {
@@ -253,4 +262,17 @@ extern "C" uint8_t* GameEngine_LoadLevelName(uint32_t courseId){
 extern "C" DialogEntry* GameEngine_LoadDialog(uint32_t dialogId){
     auto dialog = (DialogEntry*) ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str());
     return dialog;
+}
+
+extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
+    auto engine = GameEngine::Instance;
+    auto dictionary = engine->dictionary;
+
+    if (dictionary == nullptr) {
+        engine->LoadDictionary();
+    }
+
+    assert(engine->dictionary != nullptr);
+    assert(engine->dictionary->contains(key));
+    return engine->dictionary->at(key).data();
 }

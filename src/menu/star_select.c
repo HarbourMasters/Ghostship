@@ -19,7 +19,6 @@
 #include "game/rumble_init.h"
 #include "sm64.h"
 #include "star_select.h"
-#include "text_strings.h"
 
 /**
  * @file star_select.c
@@ -261,9 +260,9 @@ void print_act_selector_strings(void) {
 #ifdef VERSION_EU
     unsigned char myScore[][10] = { {TEXT_MYSCORE}, {TEXT_MY_SCORE_FR}, {TEXT_MY_SCORE_DE} };
 #else
-    unsigned char myScore[] = { TEXT_MYSCORE };
+    unsigned char* myScore = GameEngine_LoadTranslation("TEXT_MYSCORE");
 #endif
-    unsigned char starNumbers[] = { TEXT_ZERO };
+    unsigned char* starNumbers = GameEngine_LoadTranslation("TEXT_ZERO");
 
 #ifdef VERSION_EU
     u8 **levelNameTbl;

@@ -21,6 +21,7 @@ class GameEngine {
     std::shared_ptr<LUS::Context> context;
     std::unordered_map<uint8_t, CtlEntry*> banks;
     std::unordered_map<uint8_t, AudioSequenceData*> sequences;
+    std::unordered_map<std::string, std::vector<uint8_t>>* dictionary;
 
     GameEngine();
     static void Create();
@@ -32,6 +33,7 @@ class GameEngine {
     static void EndAudioFrame();
     static void AudioInit();
     static void AudioExit();
+    void LoadDictionary();
 
     void Destroy();
 };
@@ -50,4 +52,5 @@ uint32_t GameEngine_GetGameVersion();
 uint8_t* GameEngine_LoadActName(uint32_t actId);
 uint8_t* GameEngine_LoadLevelName(uint32_t levelId);
 struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
+uint8_t* GameEngine_LoadTranslation(const char* key);
 #endif

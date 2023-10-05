@@ -5,9 +5,6 @@
 #include "surface_terrains.h"
 #include "types.h"
 
-#ifdef VERSION_EU
-#include "text_strings.h"
-#endif
 #include "make_const_nonconst.h"
 
 // 0x07000000 - 0x07000018

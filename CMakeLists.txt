@@ -120,27 +120,6 @@ list(FILTER ALL_FILES EXCLUDE REGEX "bin/eu/.*.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/game/main.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
 
-
-#==============================================================================#
-# Generated Source Code Files                                                  #
-#==============================================================================#
-
-add_custom_command(
-    OUTPUT  include/text_strings.h
-    COMMAND $<TARGET_FILE:textconv> charmap.txt ${CMAKE_CURRENT_SOURCE_DIR}/include/text_strings.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/text_strings.h
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS textconv
-)
-list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/include/text_strings.h)
-
-add_custom_command(
-    OUTPUT  include/text_menu_strings.h
-    COMMAND $<TARGET_FILE:textconv> charmap_menu.txt ${CMAKE_CURRENT_SOURCE_DIR}/include/text_menu_strings.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/text_menu_strings.h
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS textconv
-)
-list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/include/text_menu_strings.h)
-
 add_executable(${PROJECT_NAME} ${ALL_FILES} ${GENERATED_SOURCES})
 
 ################################################################################

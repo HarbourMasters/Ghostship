@@ -20,7 +20,6 @@
 #include "game/spawn_object.h"
 #include "game/rumble_init.h"
 #include "sm64.h"
-#include "text_strings.h"
 
 #include "eu_translation.h"
 #ifdef VERSION_EU
@@ -118,165 +117,165 @@ static s8 sScoreFileCoinScoreMode = 0;
 static s8 sOpenLangSettings = FALSE;
 #endif
 
-#ifndef VERSION_EU
-static unsigned char textReturn[] = { TEXT_RETURN };
-#else
-static unsigned char textReturn[][8] = {{ TEXT_RETURN }, { TEXT_RETURN_FR }, { TEXT_RETURN_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textViewScore[] = { TEXT_CHECK_SCORE };
-#else
-static unsigned char textViewScore[][12] = {{ TEXT_CHECK_SCORE }, {TEXT_CHECK_SCORE_FR}, {TEXT_CHECK_SCORE_DE}};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textCopyFileButton[] = { TEXT_COPY_FILE_BUTTON };
-#else
-static unsigned char textCopyFileButton[][15] = {{ TEXT_COPY_FILE }, { TEXT_COPY_FILE_FR }, { TEXT_COPY_FILE_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textEraseFileButton[] = { TEXT_ERASE_FILE_BUTTON };
-#else
-static unsigned char textEraseFileButton[][16] = { {TEXT_ERASE_FILE}, {TEXT_ERASE_FILE_FR}, {TEXT_ERASE_FILE_DE} };
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textSoundModes[][8] = { { TEXT_STEREO }, { TEXT_MONO }, { TEXT_HEADSET } };
-#endif
-
-static unsigned char textMarioA[] = { TEXT_FILE_MARIO_A };
-static unsigned char textMarioB[] = { TEXT_FILE_MARIO_B };
-static unsigned char textMarioC[] = { TEXT_FILE_MARIO_C };
-static unsigned char textMarioD[] = { TEXT_FILE_MARIO_D };
-
-#ifndef VERSION_EU
-static unsigned char textNew[] = { TEXT_NEW };
+//#ifndef VERSION_EU
+//static unsigned char textReturn[] = { TEXT_RETURN };
+//#else
+//static unsigned char textReturn[][8] = {{ TEXT_RETURN }, { TEXT_RETURN_FR }, { TEXT_RETURN_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textViewScore[] = { TEXT_CHECK_SCORE };
+//#else
+//static unsigned char textViewScore[][12] = {{ TEXT_CHECK_SCORE }, {TEXT_CHECK_SCORE_FR}, {TEXT_CHECK_SCORE_DE}};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textCopyFileButton[] = { TEXT_COPY_FILE_BUTTON };
+//#else
+//static unsigned char textCopyFileButton[][15] = {{ TEXT_COPY_FILE }, { TEXT_COPY_FILE_FR }, { TEXT_COPY_FILE_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textEraseFileButton[] = { TEXT_ERASE_FILE_BUTTON };
+//#else
+//static unsigned char textEraseFileButton[][16] = { {TEXT_ERASE_FILE}, {TEXT_ERASE_FILE_FR}, {TEXT_ERASE_FILE_DE} };
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textSoundModes[][8] = { { TEXT_STEREO }, { TEXT_MONO }, { TEXT_HEADSET } };
+//#endif
+//
+//static unsigned char textMarioA[] = { TEXT_FILE_MARIO_A };
+//static unsigned char textMarioB[] = { TEXT_FILE_MARIO_B };
+//static unsigned char textMarioC[] = { TEXT_FILE_MARIO_C };
+//static unsigned char textMarioD[] = { TEXT_FILE_MARIO_D };
+//
+//#ifndef VERSION_EU
+//static unsigned char textNew[] = { TEXT_NEW };
 static unsigned char starIcon[] = { GLYPH_STAR, GLYPH_SPACE };
 static unsigned char xIcon[] = { GLYPH_MULTIPLY, GLYPH_SPACE };
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textSelectFile[] = { TEXT_SELECT_FILE };
-#else
-static unsigned char textSelectFile[][17] = {{ TEXT_SELECT_FILE }, { TEXT_SELECT_FILE_FR }, { TEXT_SELECT_FILE_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textScore[] = { TEXT_SCORE };
-#else
-static unsigned char textScore[][9] = {{ TEXT_SCORE }, { TEXT_SCORE_FR }, { TEXT_SCORE_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textCopy[] = { TEXT_COPY };
-#else
-static unsigned char textCopy[][9] = {{ TEXT_COPY }, { TEXT_COPY_FR }, { TEXT_COPY_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textErase[] = { TEXT_ERASE };
-#else
-static unsigned char textErase[][8] = {{ TEXT_ERASE }, { TEXT_ERASE_FR }, { TEXT_ERASE_DE }};
-#endif
-
-#ifdef VERSION_EU
-static unsigned char textOption[][9] = {{ TEXT_OPTION }, { TEXT_OPTION_FR }, { TEXT_OPTION_DE } };
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textCheckFile[] = { TEXT_CHECK_FILE };
-#else
-static unsigned char textCheckFile[][18] = {{ TEXT_CHECK_FILE }, { TEXT_CHECK_FILE_FR }, { TEXT_CHECK_FILE_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textNoSavedDataExists[] = { TEXT_NO_SAVED_DATA_EXISTS };
-#else
-static unsigned char textNoSavedDataExists[][30] = {{ TEXT_NO_SAVED_DATA_EXISTS }, { TEXT_NO_SAVED_DATA_EXISTS_FR }, { TEXT_NO_SAVED_DATA_EXISTS_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textCopyFile[] = { TEXT_COPY_FILE };
-#else
-static unsigned char textCopyFile[][16] = {{ TEXT_COPY_FILE_BUTTON }, { TEXT_COPY_FILE_BUTTON_FR }, { TEXT_COPY_FILE_BUTTON_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textCopyItToWhere[] = { TEXT_COPY_IT_TO_WHERE };
-#else
-static unsigned char textCopyItToWhere[][18] = {{ TEXT_COPY_IT_TO_WHERE }, { TEXT_COPY_IT_TO_WHERE_FR }, { TEXT_COPY_IT_TO_WHERE_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textNoSavedDataExistsCopy[] = { TEXT_NO_SAVED_DATA_EXISTS };
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textCopyCompleted[] = { TEXT_COPYING_COMPLETED };
-#else
-static unsigned char textCopyCompleted[][18] = {{ TEXT_COPYING_COMPLETED }, { TEXT_COPYING_COMPLETED_FR }, { TEXT_COPYING_COMPLETED_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textSavedDataExists[] = { TEXT_SAVED_DATA_EXISTS };
-#else
-static unsigned char textSavedDataExists[][20] = {{ TEXT_SAVED_DATA_EXISTS }, { TEXT_SAVED_DATA_EXISTS_FR }, { TEXT_SAVED_DATA_EXISTS_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textNoFileToCopyFrom[] = { TEXT_NO_FILE_TO_COPY_FROM };
-#else
-static unsigned char textNoFileToCopyFrom[][21] = {{ TEXT_NO_FILE_TO_COPY_FROM }, { TEXT_NO_FILE_TO_COPY_FROM_FR }, { TEXT_NO_FILE_TO_COPY_FROM_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textYes[] = { TEXT_YES };
-#else
-static unsigned char textYes[][4] = {{ TEXT_YES }, { TEXT_YES_FR }, { TEXT_YES_DE }};
-#endif
-
-#ifndef VERSION_EU
-static unsigned char textNo[] = { TEXT_NO };
-#else
-static unsigned char textNo[][5] = {{ TEXT_NO }, { TEXT_NO_FR }, { TEXT_NO_DE }};
-#endif
-
-#ifdef VERSION_EU
-// In EU, Erase File and Sound Select strings are outside it's print string function
-static unsigned char textEraseFile[][17] = {
-    { TEXT_ERASE_FILE_BUTTON }, { TEXT_ERASE_FILE_BUTTON_FR }, { TEXT_ERASE_FILE_BUTTON_DE }
-};
-static unsigned char textSure[][8] = {{ TEXT_SURE }, { TEXT_SURE_FR }, { TEXT_SURE_DE }};
-static unsigned char textMarioAJustErased[][20] = {
-    { TEXT_FILE_MARIO_A_JUST_ERASED }, { TEXT_FILE_MARIO_A_JUST_ERASED_FR }, { TEXT_FILE_MARIO_A_JUST_ERASED_DE }
-};
-
-static unsigned char textSoundSelect[][13] = {
-    { TEXT_SOUND_SELECT }, { TEXT_SOUND_SELECT_FR }, { TEXT_SOUND_SELECT_DE }
-};
-
-static unsigned char textLanguageSelect[][17] = {
-    { TEXT_LANGUAGE_SELECT }, { TEXT_LANGUAGE_SELECT_FR }, { TEXT_LANGUAGE_SELECT_DE }
-};
-
-static unsigned char textSoundModes[][10] = {
-    { TEXT_STEREO }, { TEXT_MONO }, { TEXT_HEADSET },
-    { TEXT_STEREO_FR }, { TEXT_MONO_FR }, { TEXT_HEADSET_FR },
-    { TEXT_STEREO_DE }, { TEXT_MONO_DE }, { TEXT_HEADSET_DE }
-};
-
-static unsigned char textLanguage[][9] = {{ TEXT_ENGLISH }, { TEXT_FRENCH }, { TEXT_GERMAN }};
-
-static unsigned char textMario[] = { TEXT_MARIO };
-static unsigned char textHiScore[][15] = {{ TEXT_HI_SCORE }, { TEXT_HI_SCORE_FR }, { TEXT_HI_SCORE_DE }};
-static unsigned char textMyScore[][10] = {{ TEXT_MY_SCORE }, { TEXT_MY_SCORE_FR }, { TEXT_MY_SCORE_DE }};
-
-static unsigned char textNew[][5] = {{ TEXT_NEW }, { TEXT_NEW_FR }, { TEXT_NEW_DE }};
-static unsigned char starIcon[] = { GLYPH_STAR, GLYPH_SPACE };
-static unsigned char xIcon[] = { GLYPH_MULTIPLY, GLYPH_SPACE };
-#endif
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textSelectFile[] = { TEXT_SELECT_FILE };
+//#else
+//static unsigned char textSelectFile[][17] = {{ TEXT_SELECT_FILE }, { TEXT_SELECT_FILE_FR }, { TEXT_SELECT_FILE_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textScore[] = { TEXT_SCORE };
+//#else
+//static unsigned char textScore[][9] = {{ TEXT_SCORE }, { TEXT_SCORE_FR }, { TEXT_SCORE_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textCopy[] = { TEXT_COPY };
+//#else
+//static unsigned char textCopy[][9] = {{ TEXT_COPY }, { TEXT_COPY_FR }, { TEXT_COPY_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textErase[] = { TEXT_ERASE };
+//#else
+//static unsigned char textErase[][8] = {{ TEXT_ERASE }, { TEXT_ERASE_FR }, { TEXT_ERASE_DE }};
+//#endif
+//
+//#ifdef VERSION_EU
+//static unsigned char textOption[][9] = {{ TEXT_OPTION }, { TEXT_OPTION_FR }, { TEXT_OPTION_DE } };
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textCheckFile[] = { TEXT_CHECK_FILE };
+//#else
+//static unsigned char textCheckFile[][18] = {{ TEXT_CHECK_FILE }, { TEXT_CHECK_FILE_FR }, { TEXT_CHECK_FILE_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textNoSavedDataExists[] = { TEXT_NO_SAVED_DATA_EXISTS };
+//#else
+//static unsigned char textNoSavedDataExists[][30] = {{ TEXT_NO_SAVED_DATA_EXISTS }, { TEXT_NO_SAVED_DATA_EXISTS_FR }, { TEXT_NO_SAVED_DATA_EXISTS_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textCopyFile[] = { TEXT_COPY_FILE };
+//#else
+//static unsigned char textCopyFile[][16] = {{ TEXT_COPY_FILE_BUTTON }, { TEXT_COPY_FILE_BUTTON_FR }, { TEXT_COPY_FILE_BUTTON_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textCopyItToWhere[] = { TEXT_COPY_IT_TO_WHERE };
+//#else
+//static unsigned char textCopyItToWhere[][18] = {{ TEXT_COPY_IT_TO_WHERE }, { TEXT_COPY_IT_TO_WHERE_FR }, { TEXT_COPY_IT_TO_WHERE_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textNoSavedDataExistsCopy[] = { TEXT_NO_SAVED_DATA_EXISTS };
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textCopyCompleted[] = { TEXT_COPYING_COMPLETED };
+//#else
+//static unsigned char textCopyCompleted[][18] = {{ TEXT_COPYING_COMPLETED }, { TEXT_COPYING_COMPLETED_FR }, { TEXT_COPYING_COMPLETED_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textSavedDataExists[] = { TEXT_SAVED_DATA_EXISTS };
+//#else
+//static unsigned char textSavedDataExists[][20] = {{ TEXT_SAVED_DATA_EXISTS }, { TEXT_SAVED_DATA_EXISTS_FR }, { TEXT_SAVED_DATA_EXISTS_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textNoFileToCopyFrom[] = { TEXT_NO_FILE_TO_COPY_FROM };
+//#else
+//static unsigned char textNoFileToCopyFrom[][21] = {{ TEXT_NO_FILE_TO_COPY_FROM }, { TEXT_NO_FILE_TO_COPY_FROM_FR }, { TEXT_NO_FILE_TO_COPY_FROM_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textYes[] = { TEXT_YES };
+//#else
+//static unsigned char textYes[][4] = {{ TEXT_YES }, { TEXT_YES_FR }, { TEXT_YES_DE }};
+//#endif
+//
+//#ifndef VERSION_EU
+//static unsigned char textNo[] = { TEXT_NO };
+//#else
+//static unsigned char textNo[][5] = {{ TEXT_NO }, { TEXT_NO_FR }, { TEXT_NO_DE }};
+//#endif
+//
+//#ifdef VERSION_EU
+//// In EU, Erase File and Sound Select strings are outside it's print string function
+//static unsigned char textEraseFile[][17] = {
+//    { TEXT_ERASE_FILE_BUTTON }, { TEXT_ERASE_FILE_BUTTON_FR }, { TEXT_ERASE_FILE_BUTTON_DE }
+//};
+//static unsigned char textSure[][8] = {{ TEXT_SURE }, { TEXT_SURE_FR }, { TEXT_SURE_DE }};
+//static unsigned char textMarioAJustErased[][20] = {
+//    { TEXT_FILE_MARIO_A_JUST_ERASED }, { TEXT_FILE_MARIO_A_JUST_ERASED_FR }, { TEXT_FILE_MARIO_A_JUST_ERASED_DE }
+//};
+//
+//static unsigned char textSoundSelect[][13] = {
+//    { TEXT_SOUND_SELECT }, { TEXT_SOUND_SELECT_FR }, { TEXT_SOUND_SELECT_DE }
+//};
+//
+//static unsigned char textLanguageSelect[][17] = {
+//    { TEXT_LANGUAGE_SELECT }, { TEXT_LANGUAGE_SELECT_FR }, { TEXT_LANGUAGE_SELECT_DE }
+//};
+//
+//static unsigned char textSoundModes[][10] = {
+//    { TEXT_STEREO }, { TEXT_MONO }, { TEXT_HEADSET },
+//    { TEXT_STEREO_FR }, { TEXT_MONO_FR }, { TEXT_HEADSET_FR },
+//    { TEXT_STEREO_DE }, { TEXT_MONO_DE }, { TEXT_HEADSET_DE }
+//};
+//
+//static unsigned char textLanguage[][9] = {{ TEXT_ENGLISH }, { TEXT_FRENCH }, { TEXT_GERMAN }};
+//
+//static unsigned char textMario[] = { TEXT_MARIO };
+//static unsigned char textHiScore[][15] = {{ TEXT_HI_SCORE }, { TEXT_HI_SCORE_FR }, { TEXT_HI_SCORE_DE }};
+//static unsigned char textMyScore[][10] = {{ TEXT_MY_SCORE }, { TEXT_MY_SCORE_FR }, { TEXT_MY_SCORE_DE }};
+//
+//static unsigned char textNew[][5] = {{ TEXT_NEW }, { TEXT_NEW_FR }, { TEXT_NEW_DE }};
+//static unsigned char starIcon[] = { GLYPH_STAR, GLYPH_SPACE };
+//static unsigned char xIcon[] = { GLYPH_MULTIPLY, GLYPH_SPACE };
+//#endif
 
 /**
  * Yellow Background Menu Initial Action
@@ -1764,7 +1763,7 @@ void print_save_file_star_count(s8 fileIndex, s16 x, s16 y) {
         print_hud_lut_string(HUD_LUT_GLOBAL, x + offset + 16, y, starCountText);
     } else {
         // Print "new" text
-        print_hud_lut_string(HUD_LUT_GLOBAL, x, y, LANGUAGE_ARRAY(textNew));
+        print_hud_lut_string(HUD_LUT_GLOBAL, x, y, GameEngine_LoadTranslation("TEXT_NEW"));
     }
 }
 
@@ -1815,7 +1814,7 @@ void print_main_menu_strings(void) {
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
 #ifndef VERSION_EU
-    print_hud_lut_string(HUD_LUT_DIFF, SELECT_FILE_X, 35, textSelectFile);
+    print_hud_lut_string(HUD_LUT_DIFF, SELECT_FILE_X, 35, GameEngine_LoadTranslation("TEXT_SELECT_FILE"));
 #endif
     // Print file star counts
     print_save_file_star_count(SAVE_FILE_A, SAVEFILE_X1, 78);
@@ -1827,10 +1826,15 @@ void print_main_menu_strings(void) {
     // Print menu names
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_generic_string(SCORE_X, 39, textScore);
-    print_generic_string(COPY_X, 39, textCopy);
-    print_generic_string(ERASE_X, 39, textErase);
+    print_generic_string(SCORE_X, 39, GameEngine_LoadTranslation("TEXT_SCORE"));
+    print_generic_string(COPY_X, 39, GameEngine_LoadTranslation("TEXT_COPY"));
+    print_generic_string(ERASE_X, 39, GameEngine_LoadTranslation("TEXT_ERASE"));
 #ifndef VERSION_JP
+    unsigned char* textSoundModes[] = {
+        GameEngine_LoadTranslation("TEXT_STEREO"),
+        GameEngine_LoadTranslation("TEXT_MONO"),
+        GameEngine_LoadTranslation("TEXT_HEADSET")
+    };
     sSoundTextX = get_str_x_pos_from_center(254, textSoundModes[sSoundMode], 10.0f);
 #endif
     print_generic_string(SOUNDMODE_X1, 39, textSoundModes[sSoundMode]);
@@ -1839,10 +1843,10 @@ void print_main_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(MARIOTEXT_X1, 65, textMarioA);
-    print_menu_generic_string(MARIOTEXT_X2, 65, textMarioB);
-    print_menu_generic_string(MARIOTEXT_X1, 105, textMarioC);
-    print_menu_generic_string(MARIOTEXT_X2, 105, textMarioD);
+    print_menu_generic_string(MARIOTEXT_X1, 65, GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"));
+    print_menu_generic_string(MARIOTEXT_X2, 65, GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"));
+    print_menu_generic_string(MARIOTEXT_X1, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"));
+    print_menu_generic_string(MARIOTEXT_X2, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_D"));
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 }
 
@@ -1901,15 +1905,15 @@ void score_menu_display_message(s8 messageID) {
     switch (messageID) {
         case SCORE_MSG_CHECK_FILE:
 #ifdef VERSION_EU
-            checkFileX = get_str_x_pos_from_center_scale(160, LANGUAGE_ARRAY(textCheckFile), 12.0f);
+            checkFileX = get_str_x_pos_from_center_scale(160, GameEngine_LoadTranslation(textCheckFile), 12.0f);
 #endif
-            print_hud_lut_string_fade(HUD_LUT_DIFF, CHECK_FILE_X, 35, LANGUAGE_ARRAY(textCheckFile));
+            print_hud_lut_string_fade(HUD_LUT_DIFF, CHECK_FILE_X, 35, GameEngine_LoadTranslation("TEXT_CHECK_FILE"));
             break;
         case SCORE_MSG_NOSAVE_DATA:
 #ifdef VERSION_EU
-            noSaveDataX = get_str_x_pos_from_center(160, LANGUAGE_ARRAY(textNoSavedDataExists), 10.0f);
+            noSaveDataX = get_str_x_pos_from_center(160, GameEngine_LoadTranslation(textNoSavedDataExists), 10.0f);
 #endif
-            print_generic_string_fade(NOSAVE_DATA_X1, 190, LANGUAGE_ARRAY(textNoSavedDataExists));
+            print_generic_string_fade(NOSAVE_DATA_X1, 190, GameEngine_LoadTranslation("TEXT_NO_SAVED_DATA_EXISTS"));
             break;
     }
 }
@@ -1973,15 +1977,15 @@ void print_score_menu_strings(void) {
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(69, textReturn[sLanguageMode], 10.0f);
 #endif
-    print_generic_string(RETURN_X, 35, LANGUAGE_ARRAY(textReturn));
+    print_generic_string(RETURN_X, 35, GameEngine_LoadTranslation("TEXT_RETURN"));
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(159, textCopyFileButton[sLanguageMode], 10.0f);
 #endif
-    print_generic_string(COPYFILE_X1, 35, LANGUAGE_ARRAY(textCopyFileButton));
+    print_generic_string(COPYFILE_X1, 35, GameEngine_LoadTranslation("TEXT_COPY_FILE_BUTTON"));
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(249, textEraseFileButton[sLanguageMode], 10.0f);
 #endif
-    print_generic_string(ERASEFILE_X1, 35, LANGUAGE_ARRAY(textEraseFileButton));
+    print_generic_string(ERASEFILE_X1, 35, GameEngine_LoadTranslation("TEXT_ERASE_FILE_BUTTON"));
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 
 #ifdef VERSION_EU
@@ -1990,10 +1994,10 @@ void print_score_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(89, 62, textMarioA);
-    print_menu_generic_string(211, 62, textMarioB);
-    print_menu_generic_string(89, 105, textMarioC);
-    print_menu_generic_string(211, 105, textMarioD);
+    print_menu_generic_string(89, 62, GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"));
+    print_menu_generic_string(211, 62, GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"));
+    print_menu_generic_string(89, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"));
+    print_menu_generic_string(211, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_D"));
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 #endif
 }
@@ -2035,39 +2039,39 @@ void copy_menu_display_message(s8 messageID) {
 #ifdef VERSION_EU
                 centeredX = get_str_x_pos_from_center(160, textNoFileToCopyFrom[sLanguageMode], 10.0f);
 #endif
-                print_generic_string_fade(NOFILE_COPY_X, 190, LANGUAGE_ARRAY(textNoFileToCopyFrom));
+                print_generic_string_fade(NOFILE_COPY_X, 190, GameEngine_LoadTranslation("TEXT_NO_FILE_TO_COPY_FROM"));
             } else {
 #ifdef VERSION_EU
                 centeredX = get_str_x_pos_from_center_scale(160, textCopyFile[sLanguageMode], 12.0f);
 #endif
-                print_hud_lut_string_fade(HUD_LUT_DIFF, COPY_FILE_X, 35, LANGUAGE_ARRAY(textCopyFile));
+                print_hud_lut_string_fade(HUD_LUT_DIFF, COPY_FILE_X, 35, GameEngine_LoadTranslation("TEXT_COPY_FILE"));
             }
             break;
         case COPY_MSG_COPY_WHERE:
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center(160, textCopyItToWhere[sLanguageMode], 10.0f);
 #endif
-            print_generic_string_fade(COPYIT_WHERE_X, 190, LANGUAGE_ARRAY(textCopyItToWhere));
+            print_generic_string_fade(COPYIT_WHERE_X, 190, GameEngine_LoadTranslation("TEXT_COPY_IT_TO_WHERE"));
             break;
         case COPY_MSG_NOSAVE_EXISTS:
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center(160, textNoSavedDataExists[sLanguageMode], 10.0f);
             print_generic_string_fade(NOSAVE_DATA_X2, 190, textNoSavedDataExists[sLanguageMode]);
 #else
-            print_generic_string_fade(NOSAVE_DATA_X2, 190, textNoSavedDataExistsCopy);
+            print_generic_string_fade(NOSAVE_DATA_X2, 190, GameEngine_LoadTranslation("TEXT_NO_SAVED_DATA_EXISTS"));
 #endif
             break;
         case COPY_MSG_COPY_COMPLETE:
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center(160, textCopyCompleted[sLanguageMode], 10.0f);
 #endif
-            print_generic_string_fade(COPYCOMPLETE_X, 190, LANGUAGE_ARRAY(textCopyCompleted));
+            print_generic_string_fade(COPYCOMPLETE_X, 190, GameEngine_LoadTranslation("TEXT_COPY_COMPLETED"));
             break;
         case COPY_MSG_SAVE_EXISTS:
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center(160, textSavedDataExists[sLanguageMode], 10.0f);
 #endif
-            print_generic_string_fade(SAVE_EXISTS_X1, 190, LANGUAGE_ARRAY(textSavedDataExists));
+            print_generic_string_fade(SAVE_EXISTS_X1, 190, GameEngine_LoadTranslation("TEXT_SAVED_DATA_EXISTS"));
             break;
     }
 }
@@ -2159,15 +2163,15 @@ void print_copy_menu_strings(void) {
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(69, textReturn[sLanguageMode], 10.0f);
 #endif
-    print_generic_string(RETURN_X, 35, LANGUAGE_ARRAY(textReturn));
+    print_generic_string(RETURN_X, 35, GameEngine_LoadTranslation("TEXT_RETURN"));
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(159, textViewScore[sLanguageMode], 10.0f);
 #endif
-    print_generic_string(VIEWSCORE_X1, 35, LANGUAGE_ARRAY(textViewScore));
+    print_generic_string(VIEWSCORE_X1, 35, GameEngine_LoadTranslation("TEXT_CHECK_SCORE"));
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(249, textEraseFileButton[sLanguageMode], 10.0f);
 #endif
-    print_generic_string(ERASEFILE_X2, 35, LANGUAGE_ARRAY(textEraseFileButton));
+    print_generic_string(ERASEFILE_X2, 35, GameEngine_LoadTranslation("TEXT_ERASE_FILE_BUTTON"));
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 #ifdef VERSION_EU
     print_main_menu_strings();
@@ -2175,10 +2179,10 @@ void print_copy_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(89, 62, textMarioA);
-    print_menu_generic_string(211, 62, textMarioB);
-    print_menu_generic_string(89, 105, textMarioC);
-    print_menu_generic_string(211, 105, textMarioD);
+    print_menu_generic_string(89, 62, GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"));
+    print_menu_generic_string(211, 62, GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"));
+    print_menu_generic_string(89, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"));
+    print_menu_generic_string(211, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_D"));
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 #endif
 }
@@ -2269,9 +2273,9 @@ void print_erase_menu_prompt(s16 x, s16 y) {
     // Print "YES NO" strings
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, sYesNoColor[0], sYesNoColor[0], sYesNoColor[0], sTextBaseAlpha);
-    print_generic_string(x + 56, y, LANGUAGE_ARRAY(textYes));
+    print_generic_string(x + 56, y, GameEngine_LoadTranslation("TEXT_YES"));
     gDPSetEnvColor(gDisplayListHead++, sYesNoColor[1], sYesNoColor[1], sYesNoColor[1], sTextBaseAlpha);
-    print_generic_string(x + 98, y, LANGUAGE_ARRAY(textNo));
+    print_generic_string(x + 98, y, GameEngine_LoadTranslation("TEXT_NO"));
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 }
 
@@ -2312,42 +2316,39 @@ void erase_menu_display_message(s8 messageID) {
 #endif
 
 #ifndef VERSION_EU
-    unsigned char textEraseFile[] = { TEXT_ERASE_FILE };
-    unsigned char textSure[] = { TEXT_SURE };
-    unsigned char textNoSavedDataExists[] = { TEXT_NO_SAVED_DATA_EXISTS };
-    unsigned char textMarioAJustErased[] = { TEXT_FILE_MARIO_A_JUST_ERASED };
-    unsigned char textSavedDataExists[] = { TEXT_SAVED_DATA_EXISTS };
-#endif
 
+#endif
+    uint8_t* erasedText;
     switch (messageID) {
         case ERASE_MSG_MAIN_TEXT:
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center_scale(160, textEraseFile[sLanguageMode], 12.0f);
 #endif
-            print_hud_lut_string_fade(HUD_LUT_DIFF, ERASE_FILE_X, 35, LANGUAGE_ARRAY(textEraseFile));
+            print_hud_lut_string_fade(HUD_LUT_DIFF, ERASE_FILE_X, 35, GameEngine_LoadTranslation("TEXT_ERASE_FILE"));
             break;
         case ERASE_MSG_PROMPT:
-            print_generic_string_fade(90, 190, LANGUAGE_ARRAY(textSure));
+            print_generic_string_fade(90, 190, GameEngine_LoadTranslation("TEXT_SURE"));
             print_erase_menu_prompt(90, 190); // YES NO, has functions for it too
             break;
         case ERASE_MSG_NOSAVE_EXISTS:
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center(160, textNoSavedDataExists[sLanguageMode], 10.0f);
 #endif
-            print_generic_string_fade(NOSAVE_DATA_X3, 190, LANGUAGE_ARRAY(textNoSavedDataExists));
+            print_generic_string_fade(NOSAVE_DATA_X3, 190, GameEngine_LoadTranslation("TEXT_NO_SAVED_DATA_EXISTS"));
             break;
         case ERASE_MSG_MARIO_ERASED:
-            LANGUAGE_ARRAY(textMarioAJustErased)[MARIO_ERASED_VAR] = sSelectedFileIndex + 10;
+            erasedText = GameEngine_LoadTranslation("TEXT_FILE_MARIO_A_JUST_ERASED");
+            erasedText[MARIO_ERASED_VAR] = sSelectedFileIndex + 10;
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center(160, textMarioAJustErased[sLanguageMode], 10.0f);
 #endif
-            print_generic_string_fade(MARIO_ERASED_X, 190, LANGUAGE_ARRAY(textMarioAJustErased));
+            print_generic_string_fade(MARIO_ERASED_X, 190, erasedText);
             break;
         case ERASE_MSG_SAVE_EXISTS: // unused
 #ifdef VERSION_EU
             centeredX = get_str_x_pos_from_center(160, textSavedDataExists[sLanguageMode], 10.0f);
 #endif
-            print_generic_string_fade(SAVE_EXISTS_X2, 190, LANGUAGE_ARRAY(textSavedDataExists));
+            print_generic_string_fade(SAVE_EXISTS_X2, 190, GameEngine_LoadTranslation("TEXT_SAVED_DATA_EXISTS"));
             break;
     }
 }
@@ -2439,9 +2440,9 @@ void print_erase_menu_strings(void) {
     centeredX = get_str_x_pos_from_center(249, textCopyFileButton[sLanguageMode], 10.0f);
     print_generic_string(centeredX, 35, textCopyFileButton[sLanguageMode]);
 #else
-    print_generic_string(RETURN_X, 35, textReturn);
-    print_generic_string(VIEWSCORE_X2, 35, textViewScore);
-    print_generic_string(COPYFILE_X2, 35, textCopyFileButton);
+    print_generic_string(RETURN_X, 35, GameEngine_LoadTranslation("TEXT_RETURN"));
+    print_generic_string(VIEWSCORE_X2, 35, GameEngine_LoadTranslation("TEXT_CHECK_SCORE"));
+    print_generic_string(COPYFILE_X2, 35, GameEngine_LoadTranslation("TEXT_COPY_FILE_BUTTON"));
 #endif
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 
@@ -2451,10 +2452,10 @@ void print_erase_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(89, 62, textMarioA);
-    print_menu_generic_string(211, 62, textMarioB);
-    print_menu_generic_string(89, 105, textMarioC);
-    print_menu_generic_string(211, 105, textMarioD);
+    print_menu_generic_string(89, 62, GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"));
+    print_menu_generic_string(211, 62, GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"));
+    print_menu_generic_string(89, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"));
+    print_menu_generic_string(211, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_D"));
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 #endif
 }
@@ -2479,10 +2480,6 @@ void print_sound_mode_menu_strings(void) {
     s32 textX;
 #endif
 
-#ifndef VERSION_EU
-    unsigned char textSoundSelect[] = { TEXT_SOUND_SELECT };
-#endif
-
     // Print "SOUND SELECT" text
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
@@ -2491,7 +2488,7 @@ void print_sound_mode_menu_strings(void) {
     print_hud_lut_string(HUD_LUT_DIFF, 47, 32, textSoundSelect[sLanguageMode]);
     print_hud_lut_string(HUD_LUT_DIFF, 47, 101, textLanguageSelect[sLanguageMode]);
 #else
-    print_hud_lut_string(HUD_LUT_DIFF, SOUND_HUD_X, 35, textSoundSelect);
+    print_hud_lut_string(HUD_LUT_DIFF, SOUND_HUD_X, 35, GameEngine_LoadTranslation("TEXT_SOUND_SELECT"));
 #endif
 
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
@@ -2523,6 +2520,11 @@ void print_sound_mode_menu_strings(void) {
             72, textLanguage[mode]);
     }
 #else
+    unsigned char* textSoundModes[] = {
+        GameEngine_LoadTranslation("TEXT_STEREO"),
+        GameEngine_LoadTranslation("TEXT_MONO"),
+        GameEngine_LoadTranslation("TEXT_HEADSET")
+    };
     // Print sound mode names
     for (mode = 0; mode < 3; mode++) {
         if (mode == sSoundMode) {
@@ -2548,15 +2550,13 @@ void print_sound_mode_menu_strings(void) {
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 }
 
-unsigned char textStarX[] = { TEXT_STAR_X };
-
 /**
  * Prints castle secret stars collected in a score menu save file.
  */
 void print_score_file_castle_secret_stars(s8 fileIndex, s16 x, s16 y) {
     unsigned char secretStarsText[20];
     // Print "[star] x"
-    print_menu_generic_string(x, y, textStarX);
+    print_menu_generic_string(x, y, GameEngine_LoadTranslation("TEXT_STAR_X"));
     // Print number of castle secret stars
     int_to_str(save_file_get_total_star_count(fileIndex, COURSE_BONUS_STAGES - 1, COURSE_MAX - 1),
                secretStarsText);
@@ -2583,16 +2583,17 @@ void print_score_file_castle_secret_stars(s8 fileIndex, s16 x, s16 y) {
 void print_score_file_course_coin_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
     unsigned char coinScoreText[20];
     u8 stars = save_file_get_star_flags(fileIndex, courseIndex);
-    unsigned char textCoinX[] = { TEXT_COIN_X };
-    unsigned char textStar[] = { TEXT_STAR };
+    unsigned char* textCoinX = GameEngine_LoadTranslation("TEXT_COIN_X");
+    unsigned char* textStar = GameEngine_LoadTranslation("TEXT_STAR");
 #if defined(VERSION_JP) || defined(VERSION_SH)
     #define LENGTH 5
 #else
     #define LENGTH 8
 #endif
-    unsigned char fileNames[][LENGTH] = {
-        { TEXT_4DASHES }, // huh?
-        { TEXT_SCORE_MARIO_A }, { TEXT_SCORE_MARIO_B }, { TEXT_SCORE_MARIO_C }, { TEXT_SCORE_MARIO_D },
+    unsigned char* fileNames[] = {
+        GameEngine_LoadTranslation("TEXT_4DASHES"),
+        GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"), GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"),
+        GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"), GameEngine_LoadTranslation("TEXT_FILE_MARIO_D")
     };
 #undef LENGTH
     // MYSCORE
@@ -2680,10 +2681,10 @@ void print_score_file_star_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
  */
 void print_save_file_scores(s8 fileIndex) {
 #ifndef VERSION_EU
-    unsigned char textMario[] = { TEXT_MARIO };
-    unsigned char textFileLetter[] = { TEXT_ZERO };
-    unsigned char textHiScore[] = { TEXT_HI_SCORE };
-    unsigned char textMyScore[] = { TEXT_MY_SCORE };
+    unsigned char* textMario = GameEngine_LoadTranslation("TEXT_MARIO");
+    unsigned char* textFileLetter = GameEngine_LoadTranslation("TEXT_ZERO");
+    unsigned char* textHiScore = GameEngine_LoadTranslation("TEXT_HI_SCORE");
+    unsigned char* textMyScore = GameEngine_LoadTranslation("TEXT_MY_SCORE");
 #else
     unsigned char textFileLetter[] = { TEXT_ZERO };
     void **levelNameTable;
@@ -2749,9 +2750,9 @@ void print_save_file_scores(s8 fileIndex) {
 
     // Print current coin score mode
     if (sScoreFileCoinScoreMode == 0) {
-        print_menu_generic_string(MYSCORE_X, 24, LANGUAGE_ARRAY(textMyScore));
+        print_menu_generic_string(MYSCORE_X, 24, GameEngine_LoadTranslation(textMyScore));
     } else {
-        print_menu_generic_string(HISCORE_X, 24, LANGUAGE_ARRAY(textHiScore));
+        print_menu_generic_string(HISCORE_X, 24, GameEngine_LoadTranslation(textHiScore));
     }
 
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
