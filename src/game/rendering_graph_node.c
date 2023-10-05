@@ -278,7 +278,7 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
 #endif
 
     if(CVarGetInteger("gDisableLOD", 0) == 1) {
-        node->minDistance = 0;
+        distanceFromCam = 0;
     }
 
     if (node->minDistance <= distanceFromCam && distanceFromCam < node->maxDistance) {
