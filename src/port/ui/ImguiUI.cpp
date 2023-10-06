@@ -303,6 +303,15 @@ void DrawEnhancementsMenu() {
     }
 }
 
+void DrawCheatsMenu() {
+    if (ImGui::BeginMenu("Cheats")) {
+        UIWidgets::PaddedEnhancementCheckbox("Infinite Health", "gInfiniteHealth", true, false);
+        UIWidgets::PaddedEnhancementCheckbox("Infinite Lives", "gInfiniteLives", true, false);
+
+        ImGui::EndMenu();
+    }
+}
+
 void GameMenuBar::DrawElement() {
     if(ImGui::BeginMenuBar()){
         DrawMenuBarIcon();
@@ -320,6 +329,10 @@ void GameMenuBar::DrawElement() {
         ImGui::SetCursorPosY(0.0f);
 
         DrawEnhancementsMenu();
+
+        ImGui::SetCursorPosY(0.0f);
+
+        DrawCheatsMenu();
 
         ImGui::PopStyleVar(1);
         ImGui::EndMenuBar();
