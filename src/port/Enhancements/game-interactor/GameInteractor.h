@@ -1,3 +1,6 @@
+#ifndef GameInteractor_h
+#define GameInteractor_h
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,9 +41,9 @@ public:
     DEFINE_HOOK(OnHealthChange, void(int16_t health));
 
     // Helpers
-    static bool IsSaveLoaded();
     static bool IsGameplayPaused();
 
+    // Game Actions
     class RawAction {
 
     };
@@ -48,3 +51,5 @@ public:
 };
 
 #endif // __cplusplus
+
+#endif // GameInteractor_h
