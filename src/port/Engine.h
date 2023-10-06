@@ -3,6 +3,7 @@
 #ifdef __cplusplus
 #include <vector>
 #include <Context.h>
+#include <Fast3D/gfx_pc.h>
 
 #define SAMPLES_HIGH 544
 #define SAMPLES_LOW 528
