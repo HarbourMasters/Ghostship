@@ -1,5 +1,6 @@
 #include "ImguiUI.h"
 #include "UIWidgets.h"
+#include "ResolutionEditor.h"
 
 #include <spdlog/spdlog.h>
 #include <ImGui/imgui.h>
@@ -16,6 +17,7 @@ std::shared_ptr<GameMenuBar> mGameMenuBar;
 std::shared_ptr<LUS::GuiWindow> mConsoleWindow;
 std::shared_ptr<LUS::GuiWindow> mStatsWindow;
 std::shared_ptr<LUS::GuiWindow> mInputEditorWindow;
+std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
 void SetupGuiElements() {
     auto gui = LUS::Context::GetInstance()->GetWindow()->GetGui();
@@ -37,12 +39,26 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input editor window");
         return;
     }
+
+    mAdvancedResolutionSettingsWindow = std::make_shared<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow>("gAdvancedResolutionEditorEnabled", "Advanced Resolution Settings");
+    gui->AddGuiWindow(mAdvancedResolutionSettingsWindow);
 }
 
 void Destroy() {
+    mAdvancedResolutionSettingsWindow = nullptr;
     mConsoleWindow = nullptr;
     mStatsWindow = nullptr;
     mInputEditorWindow = nullptr;
+}
+
+std::string GetWindowButtonText(const char* text, bool menuOpen) {
+    char buttonText[100] = "";
+    if (menuOpen) {
+        strcat(buttonText, ICON_FA_CHEVRON_RIGHT " ");
+    }
+    strcat(buttonText, text);
+    if (!menuOpen) { strcat(buttonText, "  "); }
+    return buttonText;
 }
 }
 
@@ -131,11 +147,21 @@ void DrawSettingsMenu(){
 
     ImGui::SetCursorPosY(0.0f);
     if (ImGui::BeginMenu("Graphics")) {
-//#ifndef __APPLE__
-        UIWidgets::EnhancementSliderFloat("Internal Resolution: %d %%", "##IMul", "gInternalResolution", 0.5f, 2.0f, "", 1.0f, true);
+        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12.0f, 6.0f));
+        ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 0.0f));
+        ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f);
+        ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.22f, 0.38f, 0.56f, 1.0f));
+        UIWidgets::Spacer(0);
+        if (GameUI::mAdvancedResolutionSettingsWindow) {
+            if (ImGui::Button(GameUI::GetWindowButtonText("Advanced Resolution", CVarGetInteger("gAdvancedResolutionEditorEnabled", 0)).c_str(), ImVec2(-1.0f, 0.0f))) {
+                GameUI::mAdvancedResolutionSettingsWindow->ToggleVisibility();
+            }
+        }
+        ImGui::PopStyleColor(1);
+        ImGui::PopStyleVar(3);
+
         UIWidgets::Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but effective form of anti-aliasing");
         LUS::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
-//#endif
 #ifndef __WIIU__
         UIWidgets::PaddedEnhancementSliderInt("MSAA: %d", "##IMSAA", "gMSAAValue", 1, 8, "", 1, true, true, false);
         UIWidgets::Tooltip("Activates multi-sample anti-aliasing when above 1x up to 8x for 8 samples for every pixel");
