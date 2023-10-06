@@ -29,6 +29,8 @@
 #include "course_table.h"
 #include "rumble_init.h"
 
+#include "port/Enhancements/game-interactor/GameInteractor_Hooks.h"
+
 #define PLAY_MODE_NORMAL 0
 #define PLAY_MODE_PAUSED 2
 #define PLAY_MODE_CHANGE_AREA 3
@@ -1152,6 +1154,9 @@ s32 update_level(void) {
         reset_volume();
         enable_background_sound();
     }
+
+    // Updates only when in game, i.e. past the save select screen
+    GameInteractor_ExecuteOnGameFrameUpdate();
 
     return changeLevel;
 }
