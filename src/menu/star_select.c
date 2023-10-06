@@ -58,6 +58,10 @@ static s8 sSelectableStarIndex = 0;
 // Act Selector menu timer that keeps counting until you choose an act.
 static s32 sActSelectorMenuTimer = 0;
 
+// Helper check for the previous star selection enhancment state
+// This is used to tell if the star selection enhancment has just changed
+static bool sStarSelectState = false;
+
 /**
  * Act Selector Star Type Loop Action
  * Defines a select type for a star in the act selector.
@@ -115,8 +119,14 @@ void bhv_act_selector_init(void) {
     s32 selectorModelIDs[10];
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
+    if (CVarGetInteger("gSelectAllStars", 0)) {
+        sStarSelectState = false;
+    } else {
+        sStarSelectState = true;
+    }
+
     sVisibleStars = 0;
-    while (i != sObtainedStars) {
+    while (i != sObtainedStars || (CVarGetInteger("gSelectAllStars", 0) && sVisibleStars != LEVEL_STARS_MAX)) {
         if (stars & (1 << sVisibleStars)) { // Star has been collected
             selectorModelIDs[sVisibleStars] = MODEL_STAR;
             i++;
@@ -174,7 +184,23 @@ void bhv_act_selector_loop(void) {
     u8 starIndexCounter;
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
-    if (sObtainedStars != LEVEL_STARS_MAX) {
+    if (!sStarSelectState && !CVarGetInteger("gSelectAllStars", 0)) {
+        // If the option is toggled after stars have been drawn, then we want to set the star index to a valid index
+        starIndexCounter = 0;
+        for (i = 0; i <= sSelectableStarIndex; i++) {
+            // Can the star be selected (is it either already completed or the first non-completed mission)
+            if ((stars & (1 << i)) || i + 1 == sInitSelectedActNum) {
+                starIndexCounter++;
+            }
+        }
+        sSelectableStarIndex = starIndexCounter - 1;
+        sStarSelectState = true;
+    } else if (sStarSelectState && CVarGetInteger("gSelectAllStars", 0)) {
+        sSelectableStarIndex = sSelectedActIndex;
+        sStarSelectState = false;
+    }
+
+    if (sObtainedStars != LEVEL_STARS_MAX && !CVarGetInteger("gSelectAllStars", 0)) {
         // Sometimes, stars are not selectable even if they appear on the screen.
         // This code filters selectable and non-selectable stars.
         sSelectedActIndex = 0;
@@ -406,7 +432,7 @@ s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused
             queue_rumble_data(60, 70);
             func_sh_8024C89C(1);
 #endif
-            if (sInitSelectedActNum >= sSelectedActIndex + 1) {
+            if (sInitSelectedActNum >= sSelectedActIndex + 1 || CVarGetInteger("gSelectAllStars", 0)) {
                 sLoadedActNum = sSelectedActIndex + 1;
             } else {
                 sLoadedActNum = sInitSelectedActNum;
