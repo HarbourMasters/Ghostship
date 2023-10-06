@@ -270,9 +270,6 @@ void DrawEnhancementsMenu() {
         if (ImGui::BeginMenu("Gameplay")) {
             UIWidgets::PaddedEnhancementCheckbox("No Level of Detail (LOD)", "gDisableLOD", true, false);
             UIWidgets::Tooltip("Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance");
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("Quality of Life")) {
             UIWidgets::PaddedEnhancementCheckbox("Select any star from menu", "gSelectAllStars", true, false);
             UIWidgets::Tooltip("Let's you select any star from the menu regardless of the courses completion status.");
             ImGui::EndMenu();
