@@ -305,6 +305,44 @@ void DrawEnhancementsMenu() {
     }
 }
 
+void DrawDebugMenu() {
+    if (ImGui::BeginMenu("Developer")) {
+
+        UIWidgets::PaddedEnhancementCheckbox("Enable level selector", "gEnableDebugMode", true, false);
+        UIWidgets::Tooltip("Enable the level selector in the main menu");
+        UIWidgets::Spacer(0);
+        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12.0f, 6.0f));
+        ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0));
+        ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f);
+        ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.22f, 0.38f, 0.56f, 1.0f));
+        if (GameUI::mStatsWindow) {
+            if (ImGui::Button(
+                    GameUI::GetWindowButtonText("Stats", CVarGetInteger("gStatsEnabled", 0)).c_str(),
+                    ImVec2(-1.0f, 0.0f))) {
+                GameUI::mStatsWindow->ToggleVisibility();
+            }
+            UIWidgets::Tooltip("Shows the stats window, with your FPS and frametimes, and the OS "
+                               "you're playing on");
+        }
+        if (GameUI::mConsoleWindow) {
+            if (ImGui::Button(
+                    GameUI::GetWindowButtonText("Console", CVarGetInteger("gConsoleEnabled", 0))
+                        .c_str(),
+                    ImVec2(-1.0f, 0.0f))) {
+                GameUI::mConsoleWindow->ToggleVisibility();
+            }
+            UIWidgets::Tooltip("Enables the console window, allowing you to input commands, type "
+                               "help for some examples");
+        }
+
+        ImGui::PopStyleVar(3);
+        ImGui::PopStyleColor(1);
+
+        ImGui::EndMenu();
+    }
+}
+
+
 void GameMenuBar::DrawElement() {
     if(ImGui::BeginMenuBar()){
         DrawMenuBarIcon();
@@ -322,6 +360,9 @@ void GameMenuBar::DrawElement() {
         ImGui::SetCursorPosY(0.0f);
 
         DrawEnhancementsMenu();
+
+        ImGui::SetCursorPosY(0.0f);
+        DrawDebugMenu();
 
         ImGui::PopStyleVar(1);
         ImGui::EndMenuBar();
