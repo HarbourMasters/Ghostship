@@ -269,7 +269,7 @@ void DrawGameMenu() {
     if (ImGui::BeginMenu("Ghostship")) {
         if (ImGui::MenuItem("Reset",
 #ifdef __APPLE__
-                            "Command-R"
+                "Command-R"
 #else
                 "Ctrl+R"
 #endif
@@ -296,6 +296,8 @@ void DrawEnhancementsMenu() {
         if (ImGui::BeginMenu("Gameplay")) {
             UIWidgets::PaddedEnhancementCheckbox("No Level of Detail (LOD)", "gDisableLOD", true, false);
             UIWidgets::Tooltip("Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance");
+            UIWidgets::PaddedEnhancementCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene", true, false);
+            UIWidgets::Tooltip("Avoid playing the peach cutscene when starting a new game");
             ImGui::EndMenu();
         }
 

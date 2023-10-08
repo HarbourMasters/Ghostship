@@ -30,9 +30,9 @@ GameEngine::GameEngine(){
     if (std::filesystem::exists(cubePath)) {
         OTRFiles.push_back(cubePath);
     }
-   std::string sohOtrPath = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
-   if (std::filesystem::exists(sohOtrPath)) {
-       OTRFiles.push_back(sohOtrPath);
+   std::string sm64OtrPath = LUS::Context::GetPathRelativeToAppBundle("sm64.otr");
+   if (std::filesystem::exists(sm64OtrPath)) {
+       OTRFiles.push_back(sm64OtrPath);
    }
     std::string patchesPath = LUS::Context::GetPathRelativeToAppDirectory("mods");
     if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
@@ -63,7 +63,6 @@ void GameEngine::Create(){
 
 void GameEngine::Destroy(){
     GameEngine::AudioExit();
-    this->context = nullptr;
 }
 
 bool ShouldClearTextureCacheAtEndOfFrame = false;
