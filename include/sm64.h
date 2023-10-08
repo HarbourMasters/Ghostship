@@ -500,6 +500,18 @@ extern void osCreateViManager(OSPri);
 extern uintptr_t osVirtualToPhysical(void *addr);
 extern void * osPhysicalToVirtual(u32);
 extern void osMapTLB(int32_t a, uint32_t b, void* c, uint32_t d, uint32_t e, uint32_t f);
+
+// Interpolation
+
+extern void mtx_patch_interpolated(void);
+extern void patch_screen_transition_interpolated(void);
+extern void patch_title_screen_scales(void);
+extern void patch_interpolated_dialog(void);
+extern void patch_interpolated_hud(void);
+extern void patch_interpolated_paintings(void);
+extern void patch_interpolated_bubble_particles(void);
+extern void patch_interpolated_snow_particles(void);
+
 #ifndef TRUE
 #define TRUE 1
 #endif

@@ -45,7 +45,7 @@ GameEngine::GameEngine(){
         }
     }
     this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, { 0xFF2B5A63 }, 3);
-    this->context->GetWindow()->SetTargetFps(30);
+    this->context->GetWindow()->SetTargetFps(60);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
@@ -96,6 +96,18 @@ void GameEngine::RunCommands(Gfx* Commands) {
 
 void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
     this->context->GetWindow()->MainLoop(run_one_game_iter);
+}
+
+uint32_t GameEngine::GetInterpolationFPS() {
+    if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+        return CVarGetInteger("gInterpolationFPS", 30);
+    }
+
+    if (CVarGetInteger("gMatchRefreshRate", 0)) {
+        return LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+    }
+
+    return std::min<uint32_t>(LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(), CVarGetInteger("gInterpolationFPS", 30));
 }
 
 // Audio
@@ -169,6 +181,10 @@ void GameEngine::AudioExit() {
 
 void GameEngine::LoadDictionary() {
     this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>> *>(ResourceGetDataByName("__OTR__texts/strings/global"));
+}
+
+extern "C" uint32_t GameEngine_GetInterpolatedFPS() {
+    return GameEngine::GetInterpolationFPS();
 }
 
 extern "C" uint32_t GameEngine_GetSampleRate() {

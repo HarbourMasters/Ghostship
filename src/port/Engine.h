@@ -29,6 +29,7 @@ class GameEngine {
     void StartFrame() const;
     static void RunCommands(Gfx* Commands);
     void ProcessFrame(void (*run_one_game_iter)()) const;
+    static uint32_t GetInterpolationFPS();
     static void HandleAudioThread();
     static void StartAudioFrame();
     static void EndAudioFrame();
@@ -40,6 +41,7 @@ class GameEngine {
 };
 #else
 
+uint32_t GameEngine_GetInterpolatedFPS();
 uint32_t GameEngine_GetSampleRate();
 uint32_t GameEngine_GetSamplesPerFrame();
 float GameEngine_GetAspectRatio();
