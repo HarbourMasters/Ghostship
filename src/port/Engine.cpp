@@ -54,6 +54,7 @@ GameEngine::GameEngine(){
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Dictionary, "Dictionary", std::make_shared<CubeOS::DictionaryFactory>());
     GameEngine::AudioInit();
+    this->LoadDictionary();
 }
 
 void GameEngine::Create(){
@@ -168,7 +169,6 @@ void GameEngine::AudioExit() {
 
 void GameEngine::LoadDictionary() {
     this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>> *>(ResourceGetDataByName("__OTR__texts/strings/global"));
-    int bp = 0;
 }
 
 extern "C" uint32_t GameEngine_GetSampleRate() {
@@ -267,11 +267,8 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
     auto engine = GameEngine::Instance;
     auto dictionary = engine->dictionary;
 
-    if (dictionary == nullptr) {
-        engine->LoadDictionary();
-    }
-
     assert(engine->dictionary != nullptr);
     assert(engine->dictionary->contains(key));
+
     return engine->dictionary->at(key).data();
 }
