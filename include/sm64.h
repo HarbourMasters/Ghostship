@@ -503,6 +503,9 @@ extern void osMapTLB(int32_t a, uint32_t b, void* c, uint32_t d, uint32_t e, uin
 
 // Interpolation
 
+extern void *vec3s_copy(Vec3s dest, Vec3s src);
+extern void interpolate_vectors(Vec3f res, Vec3f a, Vec3f b);
+extern void interpolate_vectors_s16(Vec3s res, Vec3s a, Vec3s b);
 extern void mtx_patch_interpolated(void);
 extern void patch_screen_transition_interpolated(void);
 extern void patch_title_screen_scales(void);
