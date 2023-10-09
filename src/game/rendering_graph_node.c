@@ -42,6 +42,8 @@ Mtx *gMatStackFixed[32];
 Mat4 gMatStackInterpolated[32];
 Mtx *gMatStackInterpolatedFixed[32];
 
+extern float gInterpolationStep;
+
 /**
  * Animation nodes have state in global variables, so this struct captures
  * the animation state so a 'context switch' can be made when rendering the
@@ -379,31 +381,69 @@ static void geo_process_switch(struct GraphNodeSwitchCase *node) {
     }
 }
 
+float lerp(f32 o, f32 n) {
+    return (1 - gInterpolationStep) * o + gInterpolationStep * n;
+}
+
+s16 lerp_s(s16 o, s16 n) {
+    if (o == n)
+        return n;
+    int diff = o - n;
+    float w = 1 - gInterpolationStep;
+    if (-0x8000 <= diff && diff <= 0x8000) {
+        return (s16)(w * o + gInterpolationStep * n);
+    } else {
+        if (o < n) {
+            o += 0x10000;
+        } else {
+            n += 0x10000;
+        }
+        diff = o - n;
+        return (s16)(w * o + gInterpolationStep * n);
+    }
+}
+
 void interpolate_vectors(Vec3f res, Vec3f a, Vec3f b) {
-    res[0] = (a[0] + b[0]) / 2.0f;
-    res[1] = (a[1] + b[1]) / 2.0f;
-    res[2] = (a[2] + b[2]) / 2.0f;
+    res[0] = lerp(a[0], b[0]);
+    res[1] = lerp(a[1], b[1]);
+    res[2] = lerp(a[2], b[2]);
 }
 
 void interpolate_vectors_s16(Vec3s res, Vec3s a, Vec3s b) {
-    res[0] = (a[0] + b[0]) / 2;
-    res[1] = (a[1] + b[1]) / 2;
-    res[2] = (a[2] + b[2]) / 2;
+    res[0] = lerp_s(a[0], b[0]);
+    res[1] = lerp_s(a[1], b[1]);
+    res[2] = lerp_s(a[2], b[2]);
 }
 
-static s16 interpolate_angle(s16 a, s16 b) {
-    s32 absDiff = b - a;
-    if (absDiff < 0) {
-        absDiff = -absDiff;
-    }
-    if (absDiff >= 0x4000 && absDiff <= 0xC000) {
-        return b;
-    }
-    if (absDiff <= 0x8000) {
-        return (a + b) / 2;
+static s16 interpolate_angle(s16 os, s16 ns) {
+    if (os == ns)
+        return ns;
+    int o = (u16)os;
+    int n = (u16)ns;
+    u16 res;
+    int diff = o - n;
+    float w = 1 - gInterpolationStep;
+    if (-0x8000 <= diff && diff <= 0x8000) {
+        if (diff < -0x4000 || diff > 0x4000) {
+            return ns;
+        }
+        res = (u16)(w * o + gInterpolationStep * n);
     } else {
-        return (a + b) / 2 + 0x8000;
+        if (o < n) {
+            o += 0x10000;
+        } else {
+            n += 0x10000;
+        }
+        diff = o - n;
+        if (diff < -0x4000 || diff > 0x4000) {
+            return ns;
+        }
+        res = (u16)(w * o + gInterpolationStep * n);
     }
+    if (os / 327 == ns / 327 && (s16)res / 327 != os / 327) {
+        int bp = 0;
+    }
+    return res;
 }
 
 static void interpolate_angles(Vec3s res, Vec3s a, Vec3s b) {
@@ -1067,7 +1107,7 @@ static void interpolate_matrix(Mat4 result, Mat4 a, Mat4 b) {
     s32 i, j;
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 4; j++) {
-            result[i][j] = (a[i][j] + b[i][j]) / 2.0f;
+            result[i][j] = (1 - gInterpolationStep) * a[i][j] + gInterpolationStep * b[i][j];
         }
     }
 }

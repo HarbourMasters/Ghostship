@@ -12,6 +12,7 @@
 #include "game/game_init.h"
 #include "audio/external.h"
 #include "gfx_dimensions.h"
+#include "game/rendering_graph_node.h"
 
 // frame counts for the zoom in, hold, and zoom out of title model
 #define INTRO_STEPS_ZOOM_IN 20
