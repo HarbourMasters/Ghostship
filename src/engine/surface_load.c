@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 
 #include "sm64.h"
+#include "engine/math_util.h"
 #include "game/ingame_menu.h"
 #include "graph_node.h"
 #include "behavior_script.h"
