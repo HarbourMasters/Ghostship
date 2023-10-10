@@ -8,7 +8,6 @@
 #include "load.h"
 #include "seqplayer.h"
 #include "sound/sound_data.h"
-#include "sequences_table.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -393,7 +392,7 @@ uint8_t* load_sequence_immediate(s32 seqId, s32 arg1) {
 
 struct CtlEntry* load_banks_immediate(s32 seqId, u8 *outDefaultBank) {
     u32 bankId;
-    struct AudioSequenceData *seqData = ResourceGetDataByName(gSequenceTable[seqId]);
+    struct AudioSequenceData *seqData = GameEngine_LoadSequence(seqId);
     struct CtlEntry *output;
     for(size_t i = 0; i < seqData->bankCount; i++) {
         output = GameEngine_LoadBank(bankId = seqData->banks[i]);
@@ -538,7 +537,7 @@ void audio_init() {
 #endif
 
     // Load headers for sounds and sequences
-    gSequenceCount = sizeof(gSequenceTable) / sizeof(gSequenceTable[0]);
+    gSequenceCount = GameEngine_GetSequenceCount();
     init_sequence_players();
     gAudioLoadLock = AUDIO_LOCK_NOT_LOADING;
 

@@ -8,6 +8,7 @@
 #include <ImGui/imgui_internal.h>
 #include <libultraship/libultraship.h>
 #include <Fast3D/gfx_pc.h>
+#include "port/Engine.h"
 extern "C" {
 #include "audio/external.h"
 }
@@ -169,6 +170,111 @@ void DrawSettingsMenu(){
 #endif
         UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
 
+        { // FPS Slider
+            const int minFps = 30;
+            static int maxFps;
+            if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+                maxFps = 360;
+            } else {
+                maxFps = LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+            }
+            int currentFps = fmax(fmin(GameEngine::GetInterpolationFPS(), maxFps), minFps);
+        #ifdef __WIIU__
+            UIWidgets::Spacer(0);
+            // only support divisors of 60 on the Wii U
+            if (currentFps > 60) {
+                currentFps = 60;
+            } else {
+                currentFps = 60 / (60 / currentFps);
+            }
+
+            int fpsSlider = 1;
+            if (currentFps == 30) {
+                ImGui::Text("FPS: Original (30)");
+            } else {
+                ImGui::Text("FPS: %d", currentFps);
+                if (currentFps == 30) {
+                    fpsSlider = 2;
+                } else { // currentFps == 60
+                    fpsSlider = 3;
+                }
+            }
+            if (CVarGetInteger("gMatchRefreshRate", 0)) {
+                UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
+            }
+
+            if (ImGui::Button(" - ##WiiUFPS")) {
+                fpsSlider--;
+            }
+            ImGui::SameLine();
+            ImGui::SetCursorPosX(ImGui::GetCursorPosX() - 7.0f);
+
+            UIWidgets::Spacer(0);
+
+            ImGui::PushItemWidth(std::min((ImGui::GetContentRegionAvail().x - 60.0f), 260.0f));
+            ImGui::SliderInt("##WiiUFPSSlider", &fpsSlider, 1, 3, "", ImGuiSliderFlags_AlwaysClamp);
+            ImGui::PopItemWidth();
+
+            ImGui::SameLine();
+            ImGui::SetCursorPosX(ImGui::GetCursorPosX() - 7.0f);
+            if (ImGui::Button(" + ##WiiUFPS")) {
+                fpsSlider++;
+            }
+
+            if (CVarGetInteger("gMatchRefreshRate", 0)) {
+                UIWidgets::ReEnableComponent("");
+            }
+            if (fpsSlider > 3) {
+                fpsSlider = 3;
+            } else if (fpsSlider < 1) {
+                fpsSlider = 1;
+            }
+
+            if (fpsSlider == 1) {
+                currentFps = 20;
+            } else if (fpsSlider == 2) {
+                currentFps = 30;
+            } else if (fpsSlider == 3) {
+                currentFps = 60;
+            }
+            CVarSetInteger("gInterpolationFPS", currentFps);
+            LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        #else
+            bool matchingRefreshRate =
+                CVarGetInteger("gMatchRefreshRate", 0) && LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() != LUS::WindowBackend::DX11;
+            UIWidgets::PaddedEnhancementSliderInt(
+                (currentFps == 20) ? "FPS: Original (20)" : "FPS: %d",
+                "##FPSInterpolation", "gInterpolationFPS", minFps, maxFps, "", 20, true, true, false, matchingRefreshRate);
+        #endif
+            if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+                UIWidgets::Tooltip(
+                    "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
+                    "visual and does not impact game logic, execution of glitches etc.\n\n"
+                    "A higher target FPS than your monitor's refresh rate will waste resources, and might give a worse result."
+                );
+            } else {
+                UIWidgets::Tooltip(
+                    "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
+                    "visual and does not impact game logic, execution of glitches etc."
+                );
+            }
+        } // END FPS Slider
+
+        if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+            UIWidgets::Spacer(0);
+            if (ImGui::Button("Match Refresh Rate")) {
+                int hz = LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+                if (hz >= 30 && hz <= 360) {
+                    CVarSetInteger("gInterpolationFPS", hz);
+                    LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                }
+            }
+        } else {
+            UIWidgets::PaddedEnhancementCheckbox("Match Refresh Rate", "gMatchRefreshRate", true, false);
+        }
+
+        UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
+
         if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
             UIWidgets::PaddedEnhancementSliderInt(CVarGetInteger("gExtraLatencyThreshold", 80) == 0 ? "Jitter fix: Off" : "Jitter fix: >= %d FPS",
                                                   "##ExtraLatencyThreshold", "gExtraLatencyThreshold", 0, 360, "", 80, true, true, false);
@@ -269,7 +375,7 @@ void DrawGameMenu() {
     if (ImGui::BeginMenu("Ghostship")) {
         if (ImGui::MenuItem("Reset",
 #ifdef __APPLE__
-                            "Command-R"
+                "Command-R"
 #else
                 "Ctrl+R"
 #endif
@@ -296,6 +402,8 @@ void DrawEnhancementsMenu() {
         if (ImGui::BeginMenu("Gameplay")) {
             UIWidgets::PaddedEnhancementCheckbox("No Level of Detail (LOD)", "gDisableLOD", true, false);
             UIWidgets::Tooltip("Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance");
+            UIWidgets::PaddedEnhancementCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene", true, false);
+            UIWidgets::Tooltip("Avoid playing the peach cutscene when starting a new game");
             ImGui::EndMenu();
         }
 
@@ -307,6 +415,44 @@ void DrawCheatsMenu() {
     if (ImGui::BeginMenu("Cheats")) {
         UIWidgets::PaddedEnhancementCheckbox("Infinite Health", "gInfiniteHealth", true, false);
         UIWidgets::PaddedEnhancementCheckbox("Infinite Lives", "gInfiniteLives", true, false);
+
+
+        ImGui::EndMenu();
+    }
+}
+
+void DrawDebugMenu() {
+    if (ImGui::BeginMenu("Developer")) {
+
+        UIWidgets::PaddedEnhancementCheckbox("Enable level selector", "gEnableDebugMode", true, false);
+        UIWidgets::Tooltip("Enable the level selector in the main menu");
+        UIWidgets::Spacer(0);
+        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12.0f, 6.0f));
+        ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0));
+        ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f);
+        ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.22f, 0.38f, 0.56f, 1.0f));
+        if (GameUI::mStatsWindow) {
+            if (ImGui::Button(
+                    GameUI::GetWindowButtonText("Stats", CVarGetInteger("gStatsEnabled", 0)).c_str(),
+                    ImVec2(-1.0f, 0.0f))) {
+                GameUI::mStatsWindow->ToggleVisibility();
+            }
+            UIWidgets::Tooltip("Shows the stats window, with your FPS and frametimes, and the OS "
+                               "you're playing on");
+        }
+        if (GameUI::mConsoleWindow) {
+            if (ImGui::Button(
+                    GameUI::GetWindowButtonText("Console", CVarGetInteger("gConsoleEnabled", 0))
+                        .c_str(),
+                    ImVec2(-1.0f, 0.0f))) {
+                GameUI::mConsoleWindow->ToggleVisibility();
+            }
+            UIWidgets::Tooltip("Enables the console window, allowing you to input commands, type "
+                               "help for some examples");
+        }
+
+        ImGui::PopStyleVar(3);
+        ImGui::PopStyleColor(1);
 
         ImGui::EndMenu();
     }
@@ -333,6 +479,10 @@ void GameMenuBar::DrawElement() {
         ImGui::SetCursorPosY(0.0f);
 
         DrawCheatsMenu();
+
+        ImGui::SetCursorPosY(0.0f);
+        
+        DrawDebugMenu();
 
         ImGui::PopStyleVar(1);
         ImGui::EndMenuBar();
