@@ -35,6 +35,8 @@
 #include "rumble_init.h"
 #include "animation_table.h"
 
+#include "port/Enhancements/game-interactor/GameInteractor_Hooks.h"
+
 u32 unused80339F10;
 u8 unused80339F1C[20];
 
@@ -1455,6 +1457,7 @@ void update_mario_health(struct MarioState *m) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
                 if (!(m->flags & MARIO_METAL_CAP) && !gDebugLevelSelect) {
                     m->health -= 4;
+                    GameInteractor_ExecuteOnHealthChange(m->health);
                 }
             } else {
                 if ((m->action & ACT_FLAG_SWIMMING) && !(m->action & ACT_FLAG_INTANGIBLE)) {
@@ -1465,8 +1468,10 @@ void update_mario_health(struct MarioState *m) {
                     // If using the debug level select, do not lose any HP to water.
                     if ((m->pos[1] >= (m->waterLevel - 140)) && !terrainIsSnow) {
                         m->health += 0x1A;
+                        GameInteractor_ExecuteOnHealthChange(m->health);
                     } else if (!gDebugLevelSelect) {
                         m->health -= (terrainIsSnow ? 3 : 1);
+                        GameInteractor_ExecuteOnHealthChange(m->health);
                     }
                 }
             }
@@ -1475,10 +1480,12 @@ void update_mario_health(struct MarioState *m) {
         if (m->healCounter > 0) {
             m->health += 0x40;
             m->healCounter--;
+            GameInteractor_ExecuteOnHealthChange(m->health);
         }
         if (m->hurtCounter > 0) {
             m->health -= 0x40;
             m->hurtCounter--;
+            GameInteractor_ExecuteOnHealthChange(m->health);
         }
 
         if (m->health > 0x880) {
