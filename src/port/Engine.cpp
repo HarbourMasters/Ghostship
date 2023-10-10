@@ -4,8 +4,6 @@
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/AudioSampleFactory.h"
 #include "port/importer/AudioSequenceFactory.h"
-#include "banks_table.h"
-#include "sequences_table.h"
 #include "audio/GameAudio.h"
 #include "ZAPDUtils/Utils/StringHelper.h"
 #include "texts_table.h"
@@ -53,13 +51,13 @@ GameEngine::GameEngine(){
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Dictionary, "Dictionary", std::make_shared<CubeOS::DictionaryFactory>());
-    GameEngine::AudioInit();
-    this->LoadDictionary();
 }
 
 void GameEngine::Create(){
-    GameEngine::Instance = new GameEngine();
+    auto instance = GameEngine::Instance = new GameEngine();
     GameUI::SetupGuiElements();
+    instance->AudioInit();
+    instance->LoadDictionary();
 }
 
 void GameEngine::Destroy(){
@@ -160,7 +158,23 @@ void GameEngine::EndAudioFrame(){
 }
 
 void GameEngine::AudioInit() {
-    LUS::Context::GetInstance()->GetResourceManager()->LoadDirectory("sound");
+    auto resourceMgr = LUS::Context::GetInstance()->GetResourceManager();
+    resourceMgr->LoadDirectory("sound");
+    auto banksFiles = resourceMgr->GetArchive()->ListFiles("sound/banks/*");
+
+    for(auto& bank : *banksFiles){
+        auto path = "__OTR__" + bank;
+        auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(path.c_str()));
+        this->bankMapTable[bank] = ctl->bankId;
+    }
+
+    auto sequencesFiles = resourceMgr->GetArchive()->ListFiles("sound/sequences/*");
+
+    for(auto& sequence : *sequencesFiles){
+        auto path = "__OTR__" + sequence;
+        auto seq = static_cast<AudioSequenceData *>(ResourceGetDataByName(path.c_str()));
+        this->sequencesMapTable[seq->id] = path;
+    }
 
     if (!audio.running) {
         audio.running = true;
@@ -181,6 +195,14 @@ void GameEngine::AudioExit() {
 
 void GameEngine::LoadDictionary() {
     this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>> *>(ResourceGetDataByName("__OTR__texts/strings/global"));
+}
+
+uint8_t GameEngine::GetBankIdByName(const std::string& name) {
+    auto engine = GameEngine::Instance;
+    if(engine->bankMapTable.contains(name)){
+        return engine->bankMapTable[name];
+    }
+    return 0;
 }
 
 extern "C" uint32_t GameEngine_GetInterpolatedFPS() {
@@ -212,15 +234,20 @@ extern "C" float GameEngine_GetAspectRatio() {
 
 extern "C" CtlEntry* GameEngine_LoadBank(uint8_t bankId) {
     auto engine = GameEngine::Instance;
-    if(bankId > (sizeof(gBankTable) / sizeof(gBankTable[0])) - 1){
+    if(bankId >= engine->bankMapTable.size()){
         return nullptr;
     }
     if(engine->banks.contains(bankId)){
         return engine->banks[bankId];
     }
-    auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(gBankTable[bankId]));
-    engine->banks[bankId] = ctl;
-    return ctl;
+    for(auto& bank : engine->bankMapTable){
+        if(bank.second == bankId){
+            auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(("__OTR__" + bank.first).c_str()));
+            engine->banks[bankId] = ctl;
+            return ctl;
+        }
+    }
+    return nullptr;
 }
 
 extern "C" uint8_t GameEngine_IsBankLoaded(uint8_t bankId) {
@@ -238,15 +265,22 @@ extern "C" void GameEngine_UnloadBank(uint8_t bankId) {
 
 extern "C" AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId) {
     auto engine = GameEngine::Instance;
-    if(seqId > (sizeof(gSequenceTable) / sizeof(gSequenceTable[0])) - 1){
+    if(!engine->sequencesMapTable.contains(seqId)){
         return nullptr;
     }
+
     if(engine->sequences.contains(seqId)){
         return engine->sequences[seqId];
     }
-    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(gSequenceTable[seqId]));
+
+    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(engine->sequencesMapTable[seqId].c_str()));
     engine->sequences[seqId] = sequences;
     return sequences;
+}
+
+extern "C" uint32_t GameEngine_GetSequenceCount(){
+    auto engine = GameEngine::Instance;
+    return engine->sequencesMapTable.size();
 }
 
 extern "C" uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId) {

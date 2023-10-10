@@ -954,7 +954,6 @@ u8 audioString107[] = "Error: Your assignchannel is stolen.\n";
 #else
 // US/JP version with macros to simulate inlining by copt. Edit if you dare.
 #include "copt/seq_channel_layer_process_script_copt.inc.c"
-#include "sequences_table.h"
 
 #endif
 
@@ -1784,7 +1783,7 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
                         loBits = *(sp38 + gAlBankSets);
                         cmd = gAlBankSets[(s32)sp38 + loBits - cmd];
 #else
-                        struct AudioSequenceData *sequence = ResourceGetDataByName(gSequenceTable[seqPlayer->seqId]);
+                        struct AudioSequenceData *sequence = GameEngine_LoadSequence(seqPlayer->seqId);
                         cmd = sequence->banks[cmd];
 #endif
 #ifdef VERSION_SH
