@@ -25,7 +25,7 @@ struct EnvFxParticle {
     s32 angleAndDist[2]; // for whirpools, [0] = angle from center, [1] = distance from center
     s32 unusedBubbleVar; // set to zero for bubbles when respawning, never used elsewhere
     s32 bubbleY; // for Bubbles, yPos is always set to this
-    u8 filler[24];
+    u32 spawnTimestamp;
 };
 
 extern s8 gEnvFxMode;

@@ -526,7 +526,6 @@ const Texture *const menu_hud_lut[] = {
     texture_menu_hud_char_katakana_sa,       texture_menu_hud_char_katakana_u,         texture_menu_hud_char_katakana_n, texture_menu_hud_char_kana_dakuten_do,
 };
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
 UNUSED static const u64 menu_unused_0 = 0;
 
 // 0x0700AC48
@@ -922,8 +921,6 @@ ALIGNED8 static const Texture texture_menu_font_char_jp_multiply[] = "__OTR__lev
 // 0x0700CCC8
 ALIGNED8 static const Texture texture_menu_font_char_jp_exclamation[] = "__OTR__levels/menu/main_menu_seg7.0CCC8";
 
-#else
-
 // 0x0700AC40
 ALIGNED8 static const Texture texture_menu_font_char_0[] = "__OTR__levels/menu/main_menu_seg7.0AC40";
 
@@ -1084,7 +1081,6 @@ ALIGNED8 static const Texture texture_menu_font_char_period[] = "__OTR__levels/m
 
 // 0x0700B800
 ALIGNED8 static const Texture texture_menu_font_char_ampersand[] = "__OTR__levels/menu/main_menu_seg7.0B800";
-#endif
 
 #ifdef VERSION_EU
 // 0x0700B840
@@ -1099,73 +1095,7 @@ ALIGNED8 static const Texture texture_menu_font_char_colon[] = "__OTR__levels/me
 
 // Menu small font print table
 // 0x0700CD08
-const Texture *const menu_font_lut[] = {
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    texture_menu_font_char_jp_0, texture_menu_font_char_jp_1, texture_menu_font_char_jp_2, texture_menu_font_char_jp_3,
-    texture_menu_font_char_jp_4, texture_menu_font_char_jp_5, texture_menu_font_char_jp_6, texture_menu_font_char_jp_7,
-    texture_menu_font_char_jp_8, texture_menu_font_char_jp_9, texture_menu_font_char_jp_A, texture_menu_font_char_jp_B,
-    texture_menu_font_char_jp_C, texture_menu_font_char_jp_D,                   0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-    texture_menu_font_char_jp_hiragana_a, texture_menu_font_char_jp_hiragana_i, texture_menu_font_char_jp_hiragana_u, texture_menu_font_char_jp_hiragana_c,
-    texture_menu_font_char_jp_hiragana_o, texture_menu_font_char_jp_hiragana_ka, texture_menu_font_char_jp_hiragana_ki, texture_menu_font_char_jp_hiragana_ku,
-    texture_menu_font_char_jp_hiragana_ke, texture_menu_font_char_jp_hiragana_ko, texture_menu_font_char_jp_hiragana_sa, texture_menu_font_char_jp_hiragana_shi,
-    texture_menu_font_char_jp_hiragana_su, texture_menu_font_char_jp_hiragana_se, texture_menu_font_char_jp_hiragana_so, texture_menu_font_char_jp_hiragana_ta,
-    texture_menu_font_char_jp_hiragana_chi, texture_menu_font_char_jp_hiragana_tsu, texture_menu_font_char_jp_hiragana_te, texture_menu_font_char_jp_hiragana_to,
-    texture_menu_font_char_jp_hiragana_na, texture_menu_font_char_jp_hiragana_ni, texture_menu_font_char_jp_hiragana_nu, texture_menu_font_char_jp_hiragana_ne,
-    texture_menu_font_char_jp_hiragana_no, texture_menu_font_char_jp_hiragana_ha, texture_menu_font_char_jp_hiragana_hi, texture_menu_font_char_jp_hiragana_hu,
-    texture_menu_font_char_jp_hiragana_he, texture_menu_font_char_jp_hiragana_ho, texture_menu_font_char_jp_hiragana_ma, texture_menu_font_char_jp_hiragana_mi,
-    texture_menu_font_char_jp_hiragana_mu, texture_menu_font_char_jp_hiragana_me, texture_menu_font_char_jp_hiragana_mo, texture_menu_font_char_jp_hiragana_ya,
-    texture_menu_font_char_jp_hiragana_yu, texture_menu_font_char_jp_hiragana_yo, texture_menu_font_char_jp_hiragana_ra, texture_menu_font_char_jp_hiragana_ri,
-    texture_menu_font_char_jp_hiragana_ru, texture_menu_font_char_jp_hiragana_re, texture_menu_font_char_jp_hiragana_ro, texture_menu_font_char_jp_hiragana_wa,
-    texture_menu_font_char_jp_hiragana_wo, texture_menu_font_char_jp_hiragana_n, 0x0,                                0x0,
-    texture_menu_font_char_jp_katakana_a, texture_menu_font_char_jp_katakana_i, texture_menu_font_char_jp_katakana_u, texture_menu_font_char_jp_katakana_e,
-    texture_menu_font_char_jp_katakana_o, texture_menu_font_char_jp_katakana_ka, texture_menu_font_char_jp_katakana_ki, texture_menu_font_char_jp_katakana_ku,
-    texture_menu_font_char_jp_katakana_ke, texture_menu_font_char_jp_katakana_ko, texture_menu_font_char_jp_katakana_sa, texture_menu_font_char_jp_katakana_shi,
-    texture_menu_font_char_jp_katakana_su, texture_menu_font_char_jp_katakana_se, texture_menu_font_char_jp_katakana_so, texture_menu_font_char_jp_katakana_ta,
-    texture_menu_font_char_jp_katakana_chi, texture_menu_font_char_jp_katakana_tsu, texture_menu_font_char_jp_katakana_te, texture_menu_font_char_jp_katakana_to,
-    texture_menu_font_char_jp_katakana_na, texture_menu_font_char_jp_katakana_ni, texture_menu_font_char_jp_katakana_nu, texture_menu_font_char_jp_katakana_ne,
-    texture_menu_font_char_jp_katakana_no, texture_menu_font_char_jp_katakana_ha, texture_menu_font_char_jp_katakana_hi, texture_menu_font_char_jp_katakana_hu,
-    texture_menu_font_char_jp_katakana_he, texture_menu_font_char_jp_katakana_ho, texture_menu_font_char_jp_katakana_ma, texture_menu_font_char_jp_katakana_mi,
-    texture_menu_font_char_jp_katakana_mu, texture_menu_font_char_jp_katakana_me, texture_menu_font_char_jp_katakana_mo, texture_menu_font_char_jp_katakana_ya,
-    texture_menu_font_char_jp_katakana_yu, texture_menu_font_char_jp_katakana_yo, texture_menu_font_char_jp_katakana_ra, texture_menu_font_char_jp_katakana_ri,
-    texture_menu_font_char_jp_katakana_ru, texture_menu_font_char_jp_katakana_re, texture_menu_font_char_jp_katakana_ro, texture_menu_font_char_jp_katakana_wa,
-    texture_menu_font_char_jp_katakana_wo, texture_menu_font_char_jp_katakana_n,                                   0x0, texture_menu_font_char_jp_long_vowel,
-    texture_menu_font_char_jp_hiragana_small_e, texture_menu_font_char_jp_hiragana_small_tsu, texture_menu_font_char_jp_hiragana_small_ka, texture_menu_font_char_jp_hiragana_small_yu,
-    texture_menu_font_char_jp_hiragana_small_yo, texture_menu_font_char_jp_hiragana_small_a, texture_menu_font_char_jp_hiragana_small_i, texture_menu_font_char_jp_hiragana_small_u,
-    texture_menu_font_char_jp_hiragana_small_o,          0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    texture_menu_font_char_jp_katakana_small_e, texture_menu_font_char_jp_katakana_small_tsu, texture_menu_font_char_jp_katakana_small_ka, texture_menu_font_char_jp_katakana_small_yu,
-    texture_menu_font_char_jp_katakana_small_yo, texture_menu_font_char_jp_katakana_small_a, texture_menu_font_char_jp_katakana_small_i, texture_menu_font_char_jp_katakana_small_u,
-    texture_menu_font_char_jp_katakana_small_o, 0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    texture_menu_font_char_jp_dakuten, texture_menu_font_char_jp_handakuten, texture_menu_font_char_jp_exclamation, 0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      texture_menu_font_char_jp_coin, texture_menu_font_char_jp_star_filled, texture_menu_font_char_jp_multiply,
-    0x0,                      0x0,                      0x0,                      0x0,
-#else
+const Texture *const menu_font_lut_us[] = {
     texture_menu_font_char_0, texture_menu_font_char_1, texture_menu_font_char_2, texture_menu_font_char_3,
     texture_menu_font_char_4, texture_menu_font_char_5, texture_menu_font_char_6, texture_menu_font_char_7,
     texture_menu_font_char_8, texture_menu_font_char_9, texture_menu_font_char_A, texture_menu_font_char_B,
@@ -1236,7 +1166,73 @@ const Texture *const menu_font_lut[] = {
     texture_menu_font_char_question,       0x0,       0x0,       0x0,
           0x0, texture_menu_font_char_coin, texture_menu_font_char_star_filled, texture_menu_font_char_multiply,
           0x0,       0x0,       0x0,       0x0,
-#endif
+};
+
+const Texture *const menu_font_lut_jp[] = {
+    texture_menu_font_char_jp_0, texture_menu_font_char_jp_1, texture_menu_font_char_jp_2, texture_menu_font_char_jp_3,
+    texture_menu_font_char_jp_4, texture_menu_font_char_jp_5, texture_menu_font_char_jp_6, texture_menu_font_char_jp_7,
+    texture_menu_font_char_jp_8, texture_menu_font_char_jp_9, texture_menu_font_char_jp_A, texture_menu_font_char_jp_B,
+    texture_menu_font_char_jp_C, texture_menu_font_char_jp_D,                   0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+    texture_menu_font_char_jp_hiragana_a, texture_menu_font_char_jp_hiragana_i, texture_menu_font_char_jp_hiragana_u, texture_menu_font_char_jp_hiragana_c,
+    texture_menu_font_char_jp_hiragana_o, texture_menu_font_char_jp_hiragana_ka, texture_menu_font_char_jp_hiragana_ki, texture_menu_font_char_jp_hiragana_ku,
+    texture_menu_font_char_jp_hiragana_ke, texture_menu_font_char_jp_hiragana_ko, texture_menu_font_char_jp_hiragana_sa, texture_menu_font_char_jp_hiragana_shi,
+    texture_menu_font_char_jp_hiragana_su, texture_menu_font_char_jp_hiragana_se, texture_menu_font_char_jp_hiragana_so, texture_menu_font_char_jp_hiragana_ta,
+    texture_menu_font_char_jp_hiragana_chi, texture_menu_font_char_jp_hiragana_tsu, texture_menu_font_char_jp_hiragana_te, texture_menu_font_char_jp_hiragana_to,
+    texture_menu_font_char_jp_hiragana_na, texture_menu_font_char_jp_hiragana_ni, texture_menu_font_char_jp_hiragana_nu, texture_menu_font_char_jp_hiragana_ne,
+    texture_menu_font_char_jp_hiragana_no, texture_menu_font_char_jp_hiragana_ha, texture_menu_font_char_jp_hiragana_hi, texture_menu_font_char_jp_hiragana_hu,
+    texture_menu_font_char_jp_hiragana_he, texture_menu_font_char_jp_hiragana_ho, texture_menu_font_char_jp_hiragana_ma, texture_menu_font_char_jp_hiragana_mi,
+    texture_menu_font_char_jp_hiragana_mu, texture_menu_font_char_jp_hiragana_me, texture_menu_font_char_jp_hiragana_mo, texture_menu_font_char_jp_hiragana_ya,
+    texture_menu_font_char_jp_hiragana_yu, texture_menu_font_char_jp_hiragana_yo, texture_menu_font_char_jp_hiragana_ra, texture_menu_font_char_jp_hiragana_ri,
+    texture_menu_font_char_jp_hiragana_ru, texture_menu_font_char_jp_hiragana_re, texture_menu_font_char_jp_hiragana_ro, texture_menu_font_char_jp_hiragana_wa,
+    texture_menu_font_char_jp_hiragana_wo, texture_menu_font_char_jp_hiragana_n, 0x0,                                0x0,
+    texture_menu_font_char_jp_katakana_a, texture_menu_font_char_jp_katakana_i, texture_menu_font_char_jp_katakana_u, texture_menu_font_char_jp_katakana_e,
+    texture_menu_font_char_jp_katakana_o, texture_menu_font_char_jp_katakana_ka, texture_menu_font_char_jp_katakana_ki, texture_menu_font_char_jp_katakana_ku,
+    texture_menu_font_char_jp_katakana_ke, texture_menu_font_char_jp_katakana_ko, texture_menu_font_char_jp_katakana_sa, texture_menu_font_char_jp_katakana_shi,
+    texture_menu_font_char_jp_katakana_su, texture_menu_font_char_jp_katakana_se, texture_menu_font_char_jp_katakana_so, texture_menu_font_char_jp_katakana_ta,
+    texture_menu_font_char_jp_katakana_chi, texture_menu_font_char_jp_katakana_tsu, texture_menu_font_char_jp_katakana_te, texture_menu_font_char_jp_katakana_to,
+    texture_menu_font_char_jp_katakana_na, texture_menu_font_char_jp_katakana_ni, texture_menu_font_char_jp_katakana_nu, texture_menu_font_char_jp_katakana_ne,
+    texture_menu_font_char_jp_katakana_no, texture_menu_font_char_jp_katakana_ha, texture_menu_font_char_jp_katakana_hi, texture_menu_font_char_jp_katakana_hu,
+    texture_menu_font_char_jp_katakana_he, texture_menu_font_char_jp_katakana_ho, texture_menu_font_char_jp_katakana_ma, texture_menu_font_char_jp_katakana_mi,
+    texture_menu_font_char_jp_katakana_mu, texture_menu_font_char_jp_katakana_me, texture_menu_font_char_jp_katakana_mo, texture_menu_font_char_jp_katakana_ya,
+    texture_menu_font_char_jp_katakana_yu, texture_menu_font_char_jp_katakana_yo, texture_menu_font_char_jp_katakana_ra, texture_menu_font_char_jp_katakana_ri,
+    texture_menu_font_char_jp_katakana_ru, texture_menu_font_char_jp_katakana_re, texture_menu_font_char_jp_katakana_ro, texture_menu_font_char_jp_katakana_wa,
+    texture_menu_font_char_jp_katakana_wo, texture_menu_font_char_jp_katakana_n,                                   0x0, texture_menu_font_char_jp_long_vowel,
+    texture_menu_font_char_jp_hiragana_small_e, texture_menu_font_char_jp_hiragana_small_tsu, texture_menu_font_char_jp_hiragana_small_ka, texture_menu_font_char_jp_hiragana_small_yu,
+    texture_menu_font_char_jp_hiragana_small_yo, texture_menu_font_char_jp_hiragana_small_a, texture_menu_font_char_jp_hiragana_small_i, texture_menu_font_char_jp_hiragana_small_u,
+    texture_menu_font_char_jp_hiragana_small_o,          0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    texture_menu_font_char_jp_katakana_small_e, texture_menu_font_char_jp_katakana_small_tsu, texture_menu_font_char_jp_katakana_small_ka, texture_menu_font_char_jp_katakana_small_yu,
+    texture_menu_font_char_jp_katakana_small_yo, texture_menu_font_char_jp_katakana_small_a, texture_menu_font_char_jp_katakana_small_i, texture_menu_font_char_jp_katakana_small_u,
+    texture_menu_font_char_jp_katakana_small_o, 0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    texture_menu_font_char_jp_dakuten, texture_menu_font_char_jp_handakuten, texture_menu_font_char_jp_exclamation, 0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      texture_menu_font_char_jp_coin, texture_menu_font_char_jp_star_filled, texture_menu_font_char_jp_multiply,
+    0x0,                      0x0,                      0x0,                      0x0,
 };
 
 // 0x0700D108 - 0x0700D160

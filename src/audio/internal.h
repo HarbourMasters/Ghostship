@@ -222,7 +222,7 @@ struct AudioBank {
 
 struct CtlEntry {
 #ifndef VERSION_SH
-    u8 unused;
+    u8 bankId;
 #endif
     u8 numInstruments;
     u8 numDrums;
@@ -238,6 +238,7 @@ struct AudioSequenceData {
     u32 bankCount;
     u8* banks;
     u8* data;
+    u8 id;
 };
 
 struct M64ScriptState {
