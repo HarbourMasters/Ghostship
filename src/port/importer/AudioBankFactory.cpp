@@ -30,11 +30,11 @@ void CubeOS::AudioBankFactoryV0::ParseFileBinary(std::shared_ptr<LUS::BinaryRead
 
     ResourceVersionFactory::ParseFileBinary(reader, bank);
 
+    uint8_t bankId = reader->ReadUInt32();
     uint32_t instrumentCount = reader->ReadUInt32();
 
     for(size_t i = 0; i < instrumentCount; i++){
         auto* instrument = new Instrument();
-//        memset(instrument, 0, sizeof(Instrument));
         bool valid = reader->ReadUByte();
         if(!valid){
             bank->instruments.push_back(nullptr);
@@ -104,7 +104,7 @@ void CubeOS::AudioBankFactoryV0::ParseFileBinary(std::shared_ptr<LUS::BinaryRead
         bank->drums.push_back(drum);
     }
 
-    bank->mData.unused = 1;
+    bank->mData.bankId = bankId;
     bank->mData.numInstruments = instrumentCount;
     bank->mData.numDrums = drumCount;
     bank->mData.instruments = bank->instruments.data();

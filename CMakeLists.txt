@@ -48,6 +48,7 @@ set(VERSION us)
 add_compile_definitions(
     VERSION_US=1
     F3DEX_GBI_2=1
+	GBI_FLOATS=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
     CIMGUI_DEFINE_ENUMS_AND_STRUCTS
@@ -104,6 +105,10 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/*.h"
     "src/port/*.c"
     "src/port/*.cpp"
+    "src/port/Enhancements/*.h"
+    "src/port/Enhancements/*.cpp"
+    "src/port/Enhancements/game-interactor/*.h"
+    "src/port/Enhancements/game-interactor/*.cpp"
     "src/port/importer/*.cpp"
     "src/port/importer/types/*.cpp"
     "text/*.c"
