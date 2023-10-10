@@ -34,7 +34,7 @@ struct Drum {
 };
 
 struct CtlEntry {
-    uint8_t unused;
+    uint8_t bankId;
     uint8_t numInstruments;
     uint8_t numDrums;
     struct Instrument **instruments;

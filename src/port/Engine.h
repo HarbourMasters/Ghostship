@@ -22,10 +22,13 @@ class GameEngine {
     std::shared_ptr<LUS::Context> context;
     std::unordered_map<uint8_t, CtlEntry*> banks;
     std::unordered_map<uint8_t, AudioSequenceData*> sequences;
+    std::unordered_map<std::string, uint8_t> bankMapTable;
+    std::unordered_map<uint8_t, std::string> sequencesMapTable;
     std::unordered_map<std::string, std::vector<uint8_t>>* dictionary;
 
     GameEngine();
     static void Create();
+    void AudioInit();
     void StartFrame() const;
     static void RunCommands(Gfx* Commands);
     void ProcessFrame(void (*run_one_game_iter)()) const;
@@ -33,14 +36,13 @@ class GameEngine {
     static void HandleAudioThread();
     static void StartAudioFrame();
     static void EndAudioFrame();
-    static void AudioInit();
     static void AudioExit();
+    static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();
 
     void Destroy();
 };
 #else
-
 uint32_t GameEngine_GetInterpolatedFPS();
 uint32_t GameEngine_GetSampleRate();
 uint32_t GameEngine_GetSamplesPerFrame();
@@ -49,6 +51,7 @@ struct CtlEntry* GameEngine_LoadBank(uint8_t bankId);
 uint8_t GameEngine_IsBankLoaded(uint8_t bankId);
 void GameEngine_UnloadBank(uint8_t bankId);
 struct AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId);
+uint32_t GameEngine_GetSequenceCount();
 uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId);
 void GameEngine_UnloadSequence(uint8_t seqId);
 uint32_t GameEngine_GetGameVersion();
