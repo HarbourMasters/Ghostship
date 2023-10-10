@@ -252,6 +252,7 @@ static u8 *alloc_ia8_text_from_i1(u16 *in, s16 width, s16 height) {
     u8 *out;
     s16 outPos = 0;
 
+    in = ResourceGetDataByName(in);
     out = (u8 *) alloc_display_list((u32) width * (u32) height);
 
     if (out == NULL) {
@@ -277,21 +278,16 @@ static u8 *alloc_ia8_text_from_i1(u16 *in, s16 width, s16 height) {
 }
 
 void render_generic_char(u8 c) {
-    void **fontLUT = segmented_to_virtual(main_font_lut_us);
+    void **fontLUT = segmented_to_virtual(ROM_JP ? main_font_lut_jp : main_font_lut_us);
     void *packedTexture = segmented_to_virtual(fontLUT[c]);
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    void *unpackedTexture = alloc_ia8_text_from_i1(packedTexture, 8, 16);
-#endif
 
-#ifndef VERSION_EU
+    if(packedTexture == NULL) {
+        return;
+    }
+
     gDPPipeSync(gDisplayListHead++);
-#endif
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, VIRTUAL_TO_PHYSICAL(unpackedTexture));
-#else
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
-#endif
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings_us);
+    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, ROM_JP ? alloc_ia8_text_from_i1(packedTexture, 8, 16) : packedTexture);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_tex_settings_jp : dl_ia_text_tex_settings_us);
 #ifdef VERSION_EU
     gSPTextureRectangleFlip(gDisplayListHead++, gDialogX << 2, (gDialogY - 16) << 2,
                             (gDialogX + 8) << 2, gDialogY << 2, G_TX_RENDERTILE, 8 << 6, 4 << 6, 1 << 10, 1 << 10);
@@ -584,57 +580,67 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
     if (hudLUT == HUD_LUT_JPMENU) {
         xStride = 16;
     } else { // HUD_LUT_GLOBAL
-#ifdef VERSION_JP
-        xStride = 14;
-#else
-        xStride = 12; //? Shindou uses this.
-#endif
+        xStride = ROM_JP ? 14 : 12;
     }
 
     while (str[strPos] != GLOBAR_CHAR_TERMINATOR) {
-#ifndef VERSION_JP
-        switch (str[strPos]) {
-#ifdef VERSION_EU
-            case GLOBAL_CHAR_SPACE:
-                curX += xStride / 2;
-                break;
-            case HUD_CHAR_A_UMLAUT:
-                print_hud_char_umlaut(curX, curY, ASCII_TO_DIALOG('A'));
-                curX += xStride;
-                break;
-            case HUD_CHAR_O_UMLAUT:
-                print_hud_char_umlaut(curX, curY, ASCII_TO_DIALOG('O'));
-                curX += xStride;
-                break;
-            case HUD_CHAR_U_UMLAUT:
-                print_hud_char_umlaut(curX, curY, ASCII_TO_DIALOG('U'));
-                curX += xStride;
-                break;
-#else
-            case GLOBAL_CHAR_SPACE:
-                curX += 8;
-                break;
-#endif
-            default:
-#endif
-                gDPPipeSync(gDisplayListHead++);
+        if(!ROM_JP){
+            switch (str[strPos]) {
+    #ifdef VERSION_EU
+                case GLOBAL_CHAR_SPACE:
+                    curX += xStride / 2;
+                    break;
+                case HUD_CHAR_A_UMLAUT:
+                    print_hud_char_umlaut(curX, curY, ASCII_TO_DIALOG('A'));
+                    curX += xStride;
+                    break;
+                case HUD_CHAR_O_UMLAUT:
+                    print_hud_char_umlaut(curX, curY, ASCII_TO_DIALOG('O'));
+                    curX += xStride;
+                    break;
+                case HUD_CHAR_U_UMLAUT:
+                    print_hud_char_umlaut(curX, curY, ASCII_TO_DIALOG('U'));
+                    curX += xStride;
+                    break;
+    #else
+                case GLOBAL_CHAR_SPACE:
+                    curX += 8;
+                    break;
+    #endif
+                default:
+                    gDPPipeSync(gDisplayListHead++);
 
-                if (hudLUT == HUD_LUT_JPMENU) {
-                    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT1[str[strPos]]);
-                }
+                    if (hudLUT == HUD_LUT_JPMENU) {
+                        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT1[str[strPos]]);
+                    }
 
-                if (hudLUT == HUD_LUT_GLOBAL) {
-                    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT2[str[strPos]]);
-                }
+                    if (hudLUT == HUD_LUT_GLOBAL) {
+                        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT2[str[strPos]]);
+                    }
 
-                gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
-                gSPTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 16) << 2,
-                                    (curY + 16) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
+                    gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
+                    gSPTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 16) << 2,
+                                        (curY + 16) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
-                curX += xStride;
-#ifndef VERSION_JP
+                    curX += xStride;
+            }
+        } else {
+            gDPPipeSync(gDisplayListHead++);
+
+            if (hudLUT == HUD_LUT_JPMENU) {
+                gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT1[str[strPos]]);
+            }
+
+            if (hudLUT == HUD_LUT_GLOBAL) {
+                gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT2[str[strPos]]);
+            }
+
+            gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
+            gSPTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 16) << 2,
+                                (curY + 16) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
+
+            curX += xStride;
         }
-#endif
         strPos++;
     }
     gSPDisableFiltering(gDisplayListHead++, FALSE);
@@ -661,7 +667,7 @@ void print_menu_generic_string(s16 x, s16 y, const u8 *str) {
     s32 strPos = 0;
     u32 curX = x;
     u32 curY = y;
-    void **fontLUT = segmented_to_virtual(menu_font_lut);
+    void **fontLUT = segmented_to_virtual(ROM_JP ? menu_font_lut_jp : menu_font_lut_us);
     gSPDisableFiltering(gDisplayListHead++, TRUE);
 
     while (str[strPos] != DIALOG_CHAR_TERMINATOR) {

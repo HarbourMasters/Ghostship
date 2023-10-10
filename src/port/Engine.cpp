@@ -42,7 +42,7 @@ GameEngine::GameEngine(){
             }
         }
     }
-    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, { 0xFF2B5A63 }, 3);
+    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, { 0xFF2B5A63, 0xE3DAA4E }, 3);
     this->context->GetWindow()->SetTargetFps(60);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
