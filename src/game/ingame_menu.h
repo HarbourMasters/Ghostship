@@ -21,11 +21,7 @@
 #define HUD_LUT_GLOBAL 2
 
 // For file select JP HUD difference
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define HUD_LUT_DIFF HUD_LUT_JPMENU
-#else
-#define HUD_LUT_DIFF HUD_LUT_GLOBAL
-#endif
+#define HUD_LUT_DIFF (ROM_JP ? HUD_LUT_JPMENU : HUD_LUT_GLOBAL)
 
 enum MenuMode {
     MENU_MODE_NONE = -1,

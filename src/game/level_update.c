@@ -29,6 +29,8 @@
 #include "course_table.h"
 #include "rumble_init.h"
 
+#include "port/Enhancements/game-interactor/GameInteractor_Hooks.h"
+
 #define PLAY_MODE_NORMAL 0
 #define PLAY_MODE_PAUSED 2
 #define PLAY_MODE_CHANGE_AREA 3
@@ -1153,6 +1155,9 @@ s32 update_level(void) {
         enable_background_sound();
     }
 
+    // Updates only when in game, i.e. past the save select screen
+    GameInteractor_ExecuteOnGameFrameUpdate();
+
     return changeLevel;
 }
 
@@ -1194,7 +1199,7 @@ s32 init_level(void) {
                 if (gMarioState->action != ACT_UNINITIALIZED) {
                     if (save_file_exists(gCurrSaveFileNum - 1)) {
                         set_mario_action(gMarioState, ACT_IDLE, 0);
-                    } else {
+                    } else if (CVarGetInteger("gDisablePeachCutscene", 0) == 0){
                         set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
                         val4 = TRUE;
                     }
@@ -1263,7 +1268,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 #endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
-    gNeverEnteredCastle = !save_file_exists(gCurrSaveFileNum - 1);
+    gNeverEnteredCastle = !save_file_exists(gCurrSaveFileNum - 1) || CVarGetInteger("gDisablePeachCutscene", 0) == 0;
 
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;

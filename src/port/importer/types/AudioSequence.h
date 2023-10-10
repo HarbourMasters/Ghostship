@@ -7,6 +7,7 @@ struct AudioSequenceData {
     uint32_t bankCount;
     uint8_t* banks;
     uint8_t* data;
+    uint8_t id;
 };
 
 namespace CubeOS {
