@@ -9,6 +9,8 @@
 #include "texts_table.h"
 #include "port/importer/DialogFactory.h"
 #include "port/importer/DictionaryFactory.h"
+#include "port/Enhancements/game-interactor/GameInteractor.h"
+#include "port/Enhancements/mods.h"
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
 
@@ -21,6 +23,7 @@ extern "C" {
 }
 
 GameEngine* GameEngine::Instance;
+GameInteractor* GameInteractor::Instance;
 
 GameEngine::GameEngine(){
     std::vector<std::string> OTRFiles;
@@ -55,6 +58,8 @@ GameEngine::GameEngine(){
 
 void GameEngine::Create(){
     auto instance = GameEngine::Instance = new GameEngine();
+    GameInteractor::Instance = new GameInteractor();
+    InitMods();
     GameUI::SetupGuiElements();
     instance->AudioInit();
     instance->LoadDictionary();
