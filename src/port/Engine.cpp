@@ -4,13 +4,13 @@
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/AudioSampleFactory.h"
 #include "port/importer/AudioSequenceFactory.h"
-#include "banks_table.h"
-#include "sequences_table.h"
 #include "audio/GameAudio.h"
 #include "ZAPDUtils/Utils/StringHelper.h"
 #include "texts_table.h"
 #include "port/importer/DialogFactory.h"
 #include "port/importer/DictionaryFactory.h"
+#include "port/Enhancements/game-interactor/GameInteractor.h"
+#include "port/Enhancements/mods.h"
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
 
@@ -23,6 +23,7 @@ extern "C" {
 }
 
 GameEngine* GameEngine::Instance;
+GameInteractor* GameInteractor::Instance;
 
 GameEngine::GameEngine(){
     std::vector<std::string> OTRFiles;
@@ -30,9 +31,9 @@ GameEngine::GameEngine(){
     if (std::filesystem::exists(cubePath)) {
         OTRFiles.push_back(cubePath);
     }
-   std::string sohOtrPath = LUS::Context::GetPathRelativeToAppBundle("soh.otr");
-   if (std::filesystem::exists(sohOtrPath)) {
-       OTRFiles.push_back(sohOtrPath);
+   std::string sm64OtrPath = LUS::Context::GetPathRelativeToAppBundle("sm64.otr");
+   if (std::filesystem::exists(sm64OtrPath)) {
+       OTRFiles.push_back(sm64OtrPath);
    }
     std::string patchesPath = LUS::Context::GetPathRelativeToAppDirectory("mods");
     if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
@@ -44,8 +45,8 @@ GameEngine::GameEngine(){
             }
         }
     }
-    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, { 0xFF2B5A63 }, 3);
-    this->context->GetWindow()->SetTargetFps(30);
+    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, { 0xFF2B5A63, 0xE3DAA4E }, 3);
+    this->context->GetWindow()->SetTargetFps(60);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
@@ -53,17 +54,19 @@ GameEngine::GameEngine(){
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
     this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Dictionary, "Dictionary", std::make_shared<CubeOS::DictionaryFactory>());
-    GameEngine::AudioInit();
 }
 
 void GameEngine::Create(){
-    GameEngine::Instance = new GameEngine();
+    auto instance = GameEngine::Instance = new GameEngine();
+    GameInteractor::Instance = new GameInteractor();
+    InitMods();
     GameUI::SetupGuiElements();
+    instance->AudioInit();
+    instance->LoadDictionary();
 }
 
 void GameEngine::Destroy(){
     GameEngine::AudioExit();
-    this->context = nullptr;
 }
 
 bool ShouldClearTextureCacheAtEndOfFrame = false;
@@ -96,6 +99,18 @@ void GameEngine::RunCommands(Gfx* Commands) {
 
 void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
     this->context->GetWindow()->MainLoop(run_one_game_iter);
+}
+
+uint32_t GameEngine::GetInterpolationFPS() {
+    if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+        return CVarGetInteger("gInterpolationFPS", 30);
+    }
+
+    if (CVarGetInteger("gMatchRefreshRate", 0)) {
+        return LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+    }
+
+    return std::min<uint32_t>(LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(), CVarGetInteger("gInterpolationFPS", 30));
 }
 
 // Audio
@@ -148,7 +163,23 @@ void GameEngine::EndAudioFrame(){
 }
 
 void GameEngine::AudioInit() {
-    LUS::Context::GetInstance()->GetResourceManager()->LoadDirectory("sound");
+    auto resourceMgr = LUS::Context::GetInstance()->GetResourceManager();
+    resourceMgr->LoadDirectory("sound");
+    auto banksFiles = resourceMgr->GetArchive()->ListFiles("sound/banks/*");
+
+    for(auto& bank : *banksFiles){
+        auto path = "__OTR__" + bank;
+        auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(path.c_str()));
+        this->bankMapTable[bank] = ctl->bankId;
+    }
+
+    auto sequencesFiles = resourceMgr->GetArchive()->ListFiles("sound/sequences/*");
+
+    for(auto& sequence : *sequencesFiles){
+        auto path = "__OTR__" + sequence;
+        auto seq = static_cast<AudioSequenceData *>(ResourceGetDataByName(path.c_str()));
+        this->sequencesMapTable[seq->id] = path;
+    }
 
     if (!audio.running) {
         audio.running = true;
@@ -169,7 +200,18 @@ void GameEngine::AudioExit() {
 
 void GameEngine::LoadDictionary() {
     this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>> *>(ResourceGetDataByName("__OTR__texts/strings/global"));
-    int bp = 0;
+}
+
+uint8_t GameEngine::GetBankIdByName(const std::string& name) {
+    auto engine = GameEngine::Instance;
+    if(engine->bankMapTable.contains(name)){
+        return engine->bankMapTable[name];
+    }
+    return 0;
+}
+
+extern "C" uint32_t GameEngine_GetInterpolatedFPS() {
+    return GameEngine::GetInterpolationFPS();
 }
 
 extern "C" uint32_t GameEngine_GetSampleRate() {
@@ -197,15 +239,20 @@ extern "C" float GameEngine_GetAspectRatio() {
 
 extern "C" CtlEntry* GameEngine_LoadBank(uint8_t bankId) {
     auto engine = GameEngine::Instance;
-    if(bankId > (sizeof(gBankTable) / sizeof(gBankTable[0])) - 1){
+    if(bankId >= engine->bankMapTable.size()){
         return nullptr;
     }
     if(engine->banks.contains(bankId)){
         return engine->banks[bankId];
     }
-    auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(gBankTable[bankId]));
-    engine->banks[bankId] = ctl;
-    return ctl;
+    for(auto& bank : engine->bankMapTable){
+        if(bank.second == bankId){
+            auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(("__OTR__" + bank.first).c_str()));
+            engine->banks[bankId] = ctl;
+            return ctl;
+        }
+    }
+    return nullptr;
 }
 
 extern "C" uint8_t GameEngine_IsBankLoaded(uint8_t bankId) {
@@ -223,15 +270,22 @@ extern "C" void GameEngine_UnloadBank(uint8_t bankId) {
 
 extern "C" AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId) {
     auto engine = GameEngine::Instance;
-    if(seqId > (sizeof(gSequenceTable) / sizeof(gSequenceTable[0])) - 1){
+    if(!engine->sequencesMapTable.contains(seqId)){
         return nullptr;
     }
+
     if(engine->sequences.contains(seqId)){
         return engine->sequences[seqId];
     }
-    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(gSequenceTable[seqId]));
+
+    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(engine->sequencesMapTable[seqId].c_str()));
     engine->sequences[seqId] = sequences;
     return sequences;
+}
+
+extern "C" uint32_t GameEngine_GetSequenceCount(){
+    auto engine = GameEngine::Instance;
+    return engine->sequencesMapTable.size();
 }
 
 extern "C" uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId) {
@@ -268,11 +322,8 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
     auto engine = GameEngine::Instance;
     auto dictionary = engine->dictionary;
 
-    if (dictionary == nullptr) {
-        engine->LoadDictionary();
-    }
-
     assert(engine->dictionary != nullptr);
     assert(engine->dictionary->contains(key));
+
     return engine->dictionary->at(key).data();
 }
