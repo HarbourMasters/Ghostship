@@ -402,6 +402,8 @@ void DrawEnhancementsMenu() {
         if (ImGui::BeginMenu("Gameplay")) {
             UIWidgets::PaddedEnhancementCheckbox("No Level of Detail (LOD)", "gDisableLOD", true, false);
             UIWidgets::Tooltip("Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance");
+            UIWidgets::PaddedEnhancementCheckbox("Collecting Stars Will Not Exit Level", "gStarNoExit", true, false);
+            UIWidgets::Tooltip("Stars act like the 100 coin star and will not take you out of the level");
             UIWidgets::PaddedEnhancementCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene", true, false);
             UIWidgets::Tooltip("Avoid playing the peach cutscene when starting a new game");
             ImGui::EndMenu();
