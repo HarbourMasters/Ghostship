@@ -418,12 +418,27 @@ void DrawCheatsMenu() {
     }
 }
 
+const char* debugInfoPages[6] = {
+        "Object",
+        "Check Surface",
+        "Map",
+        "Stage",
+        "Effect",
+        "Enemy",
+};
+
 void DrawDebugMenu() {
     if (UIWidgets::BeginMenu("Developer")) {
         UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
             .tooltip = "Various debug features, including a level selector from the main menu"
         });
 
+        UIWidgets::CVarCheckbox("Draw DebugInfo", "gDeveloper.DrawDebugInfo");
+        if (CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) {
+            UIWidgets::CVarCombobox("DebugInfo mode", "gDeveloper.DebugInfoPage", debugInfoPages, {
+                .defaultIndex = 0,
+            });
+        }
         UIWidgets::Spacer(0);
 
         UIWidgets::WindowButton("Stats", "gStatsEnabled", GameUI::mStatsWindow, {
