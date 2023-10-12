@@ -5,6 +5,7 @@
 #include <span>
 #include <stdint.h>
 #include <ImGui/imgui.h>
+#include <libultraship/libultraship.h>
 
 namespace UIWidgets {
 
@@ -87,4 +88,105 @@ namespace UIWidgets {
     void DrawFlagArray32(const std::string& name, uint32_t& flags);
     void DrawFlagArray16(const std::string& name, uint16_t& flags);
     void DrawFlagArray8(const std::string& name, uint8_t& flags);
+
+    // V2
+    namespace Colors {
+        const ImVec4 White = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        const ImVec4 Gray = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        const ImVec4 DarkGray = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+        const ImVec4 Indigo = ImVec4(0.24f, 0.31f, 0.71f, 1.0f);
+        const ImVec4 Red = ImVec4(0.5f, 0.0f, 0.0f, 1.0f);
+        const ImVec4 DarkRed = ImVec4(0.3f, 0.0f, 0.0f, 1.0f);
+        const ImVec4 LightGreen = ImVec4(0.0f, 0.7f, 0.0f, 1.0f);
+        const ImVec4 Green = ImVec4(0.0f, 0.5f, 0.0f, 1.0f);
+        const ImVec4 DarkGreen = ImVec4(0.0f, 0.3f, 0.0f, 1.0f);
+        const ImVec4 Yellow = ImVec4(1.0f, 0.627f, 0.0f, 1.0f);
+    };
+
+    namespace Sizes {
+        const ImVec2 Inline = ImVec2(0.0f, 0.0f);
+        const ImVec2 Fill = ImVec2(-1.0f, 0.0f);
+    }
+
+    enum LabelPosition {
+        Near,
+        Far,
+        Above,
+        None,
+        Within,
+    };
+
+    enum ComponentAlignment {
+        Left,
+        Right,
+    };
+
+    void PushStyleMenu(const ImVec4& color = Colors::Indigo);
+    void PopStyleMenu();
+    bool BeginMenu(const char* label, const ImVec4& color = Colors::Indigo);
+
+    void PushStyleMenuItem(const ImVec4& color = Colors::Indigo);
+    void PopStyleMenuItem();
+    bool MenuItem(const char* label, const char* shortcut = NULL, const ImVec4& color = Colors::Indigo);
+
+    struct ButtonOptions {
+        const ImVec4 color = Colors::Gray;
+        const ImVec2 size = Sizes::Fill;
+        const char* tooltip = "";
+        bool disabled = false;
+        const char* disabledTooltip = "";
+    };
+
+    void PushStyleButton(const ImVec4& color = Colors::Gray);
+    void PopStyleButton();
+    bool Button(const char* label, const ButtonOptions& options = {});
+    bool WindowButton(const char* label, const char* cvarName, std::shared_ptr<LUS::GuiWindow> windowPtr, const ButtonOptions& options = {});
+
+    struct CheckboxOptions {
+        const ImVec4 color = Colors::Indigo;
+        const char* tooltip = "";
+        bool disabled = false;
+        const char* disabledTooltip = "";
+        bool defaultValue = false; // Only applicable to CVarCheckbox
+        ComponentAlignment alignment = ComponentAlignment::Left;
+        LabelPosition labelPosition = LabelPosition::Near;
+    };
+
+    void PushStyleCheckbox(const ImVec4& color = Colors::Indigo);
+    void PopStyleCheckbox();
+    bool Checkbox(const char* label, bool* v, const CheckboxOptions& options = {});
+    bool CVarCheckbox(const char* label, const char* cvarName, const CheckboxOptions& options = {});
+
+    struct ComboboxOptions {
+        const ImVec4 color = Colors::Indigo;
+        const char* tooltip = "";
+        bool disabled = false;
+        const char* disabledTooltip = "";
+        uint32_t defaultIndex = 0; // Only applicable to CVarCombobox
+        ComponentAlignment alignment = ComponentAlignment::Left;
+        LabelPosition labelPosition = LabelPosition::Above;
+        ImGuiComboFlags flags = 0;
+    };
+
+    void PushStyleCombobox(const ImVec4& color = Colors::Indigo);
+    void PopStyleCombobox();
+    bool Combobox(const char* label, std::span<const char*, std::dynamic_extent> comboArray, const ComboboxOptions& options = {});
+    bool CVarCombobox(const char* label, const char* cvarName, std::span<const char*, std::dynamic_extent> comboArray, const ComboboxOptions& options = {});
+
+    struct SliderOptions {
+        const ImVec4 color = Colors::Green;
+        const char* tooltip = "";
+        bool disabled = false;
+        const char* disabledTooltip = "";
+        bool showButtons = true;
+        ImGuiSliderFlags flags = 0;
+        const char* format = "%d";
+        ComponentAlignment alignment = ComponentAlignment::Left;
+        LabelPosition labelPosition = LabelPosition::Above;
+    };
+
+    void PushStyleSlider(const ImVec4& color = Colors::Indigo);
+    void PopStyleSlider();
+    bool CVarSliderInt(const char* label, const char* cvarName, int32_t min, int32_t max, const int32_t defaultValue, const SliderOptions& options = {});
+    bool CVarSliderFloat(const char* label, const char* cvarName, float min, float max, const float defaultValue, const SliderOptions& options = {});
 }
