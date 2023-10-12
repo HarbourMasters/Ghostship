@@ -80,14 +80,26 @@ static const char* filters[3] = {
 void DrawSettingsMenu(){
     if(UIWidgets::BeginMenu("Settings")){
         if (UIWidgets::BeginMenu("Audio")) {
-            UIWidgets::PaddedEnhancementSliderFloat("Master Volume: %d %%", "##Master_Vol", "gGameMasterVolume", 0.0f, 1.0f, "", 1.0f, true, true, false, true);
-            if (UIWidgets::PaddedEnhancementSliderFloat("Main Music Volume: %d %%", "##Main_Music_Vol", "gMainMusicVolume", 0.0f, 1.0f, "", 1.0f, true, true, false, true)) {
+            UIWidgets::CVarSliderFloat("Master Volume", "gGameMasterVolume", 0.0f, 1.0f, 1.0f, {
+                .isPercentage = true,
+                .format = "%.0f%%",
+            });
+            if (UIWidgets::CVarSliderFloat("Main Music Volume", "gMainMusicVolume", 0.0f, 1.0f, 1.0f, {
+                .isPercentage = true,
+                .format = "%.0f%%",
+            })) {
                 audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f));
             }
-            if (UIWidgets::PaddedEnhancementSliderFloat("Sound Effects Volume: %d %%", "##Sound_Effect_Vol", "gSFXMusicVolume", 0.0f, 1.0f, "", 1.0f, true, true, false, true)) {
+            if (UIWidgets::CVarSliderFloat("Sound Effects Volume", "gSFXMusicVolume", 0.0f, 1.0f, 1.0f, {
+                .isPercentage = true,
+                .format = "%.0f%%",
+            })) {
                 audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f));
             }
-            if (UIWidgets::PaddedEnhancementSliderFloat("Environment Volume: %d %%", "##Environment_Vol", "gEnvironmentVolume", 0.0f, 1.0f, "", 1.0f, true, true, false, true)) {
+            if (UIWidgets::CVarSliderFloat("Environment Volume", "gEnvironmentVolume", 0.0f, 1.0f, 1.0f, {
+                .isPercentage = true,
+                .format = "%.0f%%",
+            })) {
                 audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f));
             }
 
@@ -134,8 +146,12 @@ void DrawSettingsMenu(){
             UIWidgets::CVarCheckbox("Show Inputs", "gInputEnabled", {
                 .tooltip = "Shows currently pressed inputs on the bottom right of the screen"
             });
-            UIWidgets::PaddedEnhancementSliderFloat("Input Scale: %.1f", "##Input", "gInputScale", 1.0f, 3.0f, "", 1.0f, false, true, true, false);
-            UIWidgets::Tooltip("Sets the on screen size of the displayed inputs from the Show Inputs setting");
+            if (CVarGetInteger("gInputEnabled", 0)) {
+                UIWidgets::CVarSliderFloat("Input Scale", "gInputScale", 1.0f, 3.0f, 1.0f, {
+                    .format = "%.1fx",
+                    .tooltip = "Sets the on screen size of the displayed inputs from the Show Inputs setting"
+                });
+            }
 
             ImGui::EndMenu();
         }
