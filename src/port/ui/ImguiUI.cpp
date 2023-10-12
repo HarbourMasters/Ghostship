@@ -433,6 +433,10 @@ void DrawDebugMenu() {
             .tooltip = "Various debug features, including a level selector from the main menu"
         });
 
+        UIWidgets::CVarCheckbox("Better Level Select", "gDeveloper.BetterLevelSelect", {
+            .tooltip = "Tweaks to the level select screen, like naming and allowing C-buttons to be used"
+        });
+
         UIWidgets::CVarCheckbox("Draw DebugInfo", "gDeveloper.DrawDebugInfo");
         if (CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) {
             UIWidgets::CVarCombobox("DebugInfo mode", "gDeveloper.DebugInfoPage", debugInfoPages, {
