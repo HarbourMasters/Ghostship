@@ -10,7 +10,7 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <ImGui/imgui_internal.h>
 #include <libultraship/libultraship.h>
-
+#include "Utils/StringHelper.h"
 #include <libultraship/libultra/types.h>
 
 namespace UIWidgets {
@@ -318,7 +318,7 @@ namespace UIWidgets {
             changed = true;
         }
         ImGui::PopItemWidth();
-        
+
         if (PlusMinusButton) {
             std::string PlusBTNName = " + ##" + std::string(cvarName);
             ImGui::SameLine();
@@ -390,7 +390,7 @@ namespace UIWidgets {
             changed = true;
         }
         ImGui::PopItemWidth();
-        
+
         if (PlusMinusButton) {
             std::string PlusBTNName = " + ##" + std::string(cvarName);
             ImGui::SameLine();
@@ -474,7 +474,7 @@ namespace UIWidgets {
         }
         ImGui::SameLine();
         ImGui::Text("%s", text);
-        
+
         return ret;
     }
 
@@ -709,7 +709,8 @@ namespace UIWidgets {
         ImGui::PushID(label);
         bool dirty = false;
         float startX = ImGui::GetCursorPosX();
-        const char* invisibleLabel = ("##" + std::string(label)).c_str();
+        auto format = StringHelper::Sprintf("##%s", label);
+        const char* invisibleLabel = format.c_str();
         ImGui::BeginDisabled(options.disabled);
         PushStyleCheckbox(options.color);
         if (options.alignment == ComponentAlignment::Right) {
