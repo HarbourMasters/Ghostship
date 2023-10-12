@@ -33,6 +33,47 @@ static char sLevelSelectStageNames[64][16] = {
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
 
+static char sBetterLevelSelectStageNames[38][31] = {
+    "",
+    "",
+    "",
+    "Big Boos Haunt",
+    "Cool Cool Mountain",
+    "Inside Peachs Castle",
+    "Hazy Maze Cave",
+    "Shifting Sand Land",
+    "Bobomb Battlefield",
+    "Snowmans Land",
+    "Wet Dry World",
+    "Jolly Roger Bay",
+    "Tiny Huge Island",
+    "Tick Tock Clock",
+    "Rainbow Ride",
+    "Outside the Castle",
+    "Bowser in the Dark World",
+    "Vanish Cap Under the Moat",
+    "Bowser in the Fire Sea",
+    "The Secret Aquarium",
+    "Bowser in the Sky",
+    "Lethal Lava Land",
+    "Dire Dire Docks",
+    "Whomps Fortress",
+    "The End",
+    "Castle Courtyard",
+    "Secret Slide",
+    "Cavern of the Metal Cap",
+    "Tower of the Wing Cap",
+    "Bowser in the Dark World Boss",
+    "Wing Mario Over the Rainbow",
+    "",
+    "Bowser in the Fire Sea Boss",
+    "Bowser in the Sky Boss",
+    "",
+    "Tall Tall Mountain",
+    "",
+    "",
+};
+
 static u16 sDemoCountdown = 0;
 static s16 sPlayMarioGreeting = TRUE;
 static s16 sPlayMarioGameOver = TRUE;
@@ -95,6 +136,7 @@ s32 run_level_id_or_demo(s32 level) {
  */
 s16 intro_level_select(void) {
     s32 stageChanged = FALSE;
+    s8 direction = 1;
 
     // perform the ID updates per each button press.
     // runs into a loop so after a button is pressed
@@ -104,17 +146,20 @@ s16 intro_level_select(void) {
     }
     if (gPlayer1Controller->buttonPressed & B_BUTTON) {
         --gCurrLevelNum, stageChanged = TRUE;
+        direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & U_JPAD) {
+    if (gPlayer1Controller->buttonPressed & U_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & U_CBUTTONS)) {
         --gCurrLevelNum, stageChanged = TRUE;
+        direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & D_JPAD) {
+    if (gPlayer1Controller->buttonPressed & D_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & D_CBUTTONS)) {
         ++gCurrLevelNum, stageChanged = TRUE;
     }
-    if (gPlayer1Controller->buttonPressed & L_JPAD) {
+    if (gPlayer1Controller->buttonPressed & L_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & L_CBUTTONS)) {
         gCurrLevelNum -= 10, stageChanged = TRUE;
+        direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & R_JPAD) {
+    if (gPlayer1Controller->buttonPressed & R_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & R_CBUTTONS)) {
         gCurrLevelNum += 10, stageChanged = TRUE;
     }
 
@@ -131,14 +176,32 @@ s16 intro_level_select(void) {
         gCurrLevelNum = LEVEL_MAX; // exceeded min. set to max.
     }
 
+    // This block will ensure that the level select menu skips over the levels that are not in the game.
+    if (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && (stageChanged || gCurrLevelNum == 1)) {
+        while (sBetterLevelSelectStageNames[gCurrLevelNum - 1][0] == '\0') {
+            gCurrLevelNum += direction;
+            if (gCurrLevelNum > LEVEL_MAX) {
+                gCurrLevelNum = LEVEL_MIN; // exceeded max. set to min.
+            }
+            if (gCurrLevelNum < LEVEL_MIN) {
+                gCurrLevelNum = LEVEL_MAX; // exceeded min. set to max.
+            }
+        }
+    }
+
     // Use file 4 and last act as a test
     gCurrSaveFileNum = 4;
     gCurrActNum = 6;
 
     print_text_centered(160, 80, "SELECT STAGE");
     print_text_centered(160, 30, "PRESS START BUTTON");
-    print_text_fmt_int(40, 60, "%2d", gCurrLevelNum);
-    print_text(80, 60, sLevelSelectStageNames[gCurrLevelNum - 1]); // print stage name
+    if (CVarGetInteger("gDeveloper.BetterLevelSelect", 0)) {
+        print_text_fmt_int(240, 80, "%2d", gCurrLevelNum);
+        print_text_centered(160, 60, sBetterLevelSelectStageNames[gCurrLevelNum - 1]);
+    } else {
+        print_text_fmt_int(40, 60, "%2d", gCurrLevelNum);
+        print_text(80, 60, sLevelSelectStageNames[gCurrLevelNum - 1]); // print stage name
+    }
 
 #define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON | L_CBUTTONS | R_CBUTTONS)
 
