@@ -62,6 +62,10 @@ s32 run_level_id_or_demo(s32 level) {
                 // start the Mario demo animation for the demo list.
                 void* data = ResourceGetDataByName(gDemoInputs[gDemoInputListID]);
 
+                if(data == NULL) {
+                    return 0;
+                }
+
                 // if the next demo sequence ID is the count limit, reset it back to
                 // the first sequence.
                 // TODO: Remove this to check for gDemoInput size instead

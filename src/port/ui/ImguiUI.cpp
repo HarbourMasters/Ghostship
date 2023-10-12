@@ -232,9 +232,9 @@ void DrawSettingsMenu(){
         #else
             bool matchingRefreshRate =
                 CVarGetInteger("gMatchRefreshRate", 0) && LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() != LUS::WindowBackend::DX11;
-            UIWidgets::PaddedEnhancementSliderInt(
-                (currentFps == 20) ? "FPS: Original (20)" : "FPS: %d",
-                "##FPSInterpolation", "gInterpolationFPS", minFps, maxFps, "", 20, true, true, false, matchingRefreshRate);
+            UIWidgets::CVarSliderInt((currentFps == 20) ? "FPS: Original (20)" : "FPS: %d", "gInterpolationFPS", minFps, maxFps, 1, {
+                .disabled = matchingRefreshRate
+            });
         #endif
             if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
                 UIWidgets::Tooltip(
@@ -471,7 +471,7 @@ void GameMenuBar::DrawElement() {
         DrawCheatsMenu();
 
         ImGui::SetCursorPosY(0.0f);
-        
+
         DrawDebugMenu();
 
         ImGui::EndMenuBar();
