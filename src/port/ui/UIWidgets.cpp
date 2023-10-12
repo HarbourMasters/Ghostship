@@ -889,30 +889,29 @@ namespace UIWidgets {
         ImGui::PopStyleColor(6);
     }
 
-    bool CVarSliderInt(const char* label, const char* cvarName, int32_t min, int32_t max, const int32_t defaultValue, const SliderOptions& options){
+    bool SliderInt(const char* label, int32_t* value, int32_t min, int32_t max, const IntSliderOptions& options) {
         bool dirty = false;
         std::string invisibleLabelStr = "##" + std::string(label);
         const char* invisibleLabel = invisibleLabelStr.c_str();
-        int32_t value = CVarGetInteger(cvarName, defaultValue);
         ImGui::PushID(label);
         ImGui::BeginGroup();
         ImGui::BeginDisabled(options.disabled);
         PushStyleSlider(options.color);
         if (options.alignment == ComponentAlignment::Left) {
             if (options.labelPosition == LabelPosition::Above) {
-                ImGui::Text(label, value);
+                ImGui::Text(label, *value);
             }
         } else if (options.alignment == ComponentAlignment::Right) {
             if (options.labelPosition == LabelPosition::Above) {
                 ImGui::NewLine();
                 ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(label).x);
-                ImGui::Text(label, value);
+                ImGui::Text(label, *value);
             }
         }
         if (options.showButtons) {
-            if (Button("-", { .size = Sizes::Inline, .color = options.color }) && value > min) {
-                value--;
-                CVarSetInteger(cvarName, value);
+            if (Button("-", { .size = Sizes::Inline, .color = options.color }) && *value > min) {
+                *value -= options.step;
+                if (*value < min) *value = min;
                 LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
                 dirty = true;
             }
@@ -921,17 +920,16 @@ namespace UIWidgets {
         } else {
             ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
         }
-        if (ImGui::SliderScalar(invisibleLabel, ImGuiDataType_S32, &value, &min, &max, options.format, options.flags)) {
-            CVarSetInteger(cvarName, value);
+        if (ImGui::SliderScalar(invisibleLabel, ImGuiDataType_S32, value, &min, &max, options.format, options.flags)) {
             LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
             dirty = true;
         }
         if (options.showButtons) {
             ImGui::SameLine(0, 3.0f);
             ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
-            if (Button("+", { .size = Sizes::Inline, .color = options.color }) && value < max) {
-                value++;
-                CVarSetInteger(cvarName, value);
+            if (Button("+", { .size = Sizes::Inline, .color = options.color }) && *value < max) {
+                *value += options.step;
+                if (*value > max) *value = max;
                 LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
                 dirty = true;
             }
@@ -945,6 +943,89 @@ namespace UIWidgets {
             ImGui::SetTooltip("%s", WrappedText(options.tooltip));
         }
         ImGui::PopID();
+        return dirty;
+    }
+
+    bool CVarSliderInt(const char* label, const char* cvarName, int32_t min, int32_t max, const int32_t defaultValue, const IntSliderOptions& options) {
+        bool dirty = false;
+        int32_t value = CVarGetInteger(cvarName, defaultValue);
+        if (SliderInt(label, &value, min, max, options)) {
+            CVarSetInteger(cvarName, value);
+            LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            dirty = true;
+        }
+        return dirty;
+    }
+
+    bool SliderFloat(const char* label, float* value, float min, float max, const FloatSliderOptions& options) {
+        bool dirty = false;
+        std::string invisibleLabelStr = "##" + std::string(label);
+        const char* invisibleLabel = invisibleLabelStr.c_str();
+        float valueToDisplay = options.isPercentage ? *value * 100.0f : *value;
+        float maxToDisplay = options.isPercentage ? max * 100.0f : max;
+        float minToDisplay = options.isPercentage ? min * 100.0f : min;
+        ImGui::PushID(label);
+        ImGui::BeginGroup();
+        ImGui::BeginDisabled(options.disabled);
+        PushStyleSlider(options.color);
+        if (options.alignment == ComponentAlignment::Left) {
+            if (options.labelPosition == LabelPosition::Above) {
+                ImGui::Text(label, valueToDisplay);
+            }
+        } else if (options.alignment == ComponentAlignment::Right) {
+            if (options.labelPosition == LabelPosition::Above) {
+                ImGui::NewLine();
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(label).x);
+                ImGui::Text(label, valueToDisplay);
+            }
+        }
+        if (options.showButtons) {
+            if (Button("-", { .size = Sizes::Inline, .color = options.color }) && *value > min) {
+                *value -= options.step;
+                if (*value < min) *value = min;
+                LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                dirty = true;
+            }
+            ImGui::SameLine(0, 3.0f);
+            ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - (ImGui::CalcTextSize("+").x + 20.0f + 3.0f));
+        } else {
+            ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
+        }
+        if (ImGui::SliderScalar(invisibleLabel, ImGuiDataType_Float, &valueToDisplay, &minToDisplay, &maxToDisplay, options.format, options.flags)) {
+            *value = options.isPercentage ? valueToDisplay / 100.0f : valueToDisplay;
+            LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            dirty = true;
+        }
+        if (options.showButtons) {
+            ImGui::SameLine(0, 3.0f);
+            ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
+            if (Button("+", { .size = Sizes::Inline, .color = options.color }) && *value < max) {
+                *value += options.step;
+                if (*value > max) *value = max;
+                LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                dirty = true;
+            }
+        }
+        PopStyleSlider();
+        ImGui::EndDisabled();
+        ImGui::EndGroup();
+        if (options.disabled && ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled) && strcmp(options.disabledTooltip, "") != 0) {
+            ImGui::SetTooltip("%s", WrappedText(options.disabledTooltip));
+        } else if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled) && strcmp(options.tooltip, "") != 0) {
+            ImGui::SetTooltip("%s", WrappedText(options.tooltip));
+        }
+        ImGui::PopID();
+        return dirty;
+    }
+
+    bool CVarSliderFloat(const char* label, const char* cvarName, float min, float max, const float defaultValue, const FloatSliderOptions& options) {
+        bool dirty = false;
+        float value = CVarGetFloat(cvarName, defaultValue);
+        if (SliderFloat(label, &value, min, max, options)) {
+            CVarSetFloat(cvarName, value);
+            LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            dirty = true;
+        }
         return dirty;
     }
 }
