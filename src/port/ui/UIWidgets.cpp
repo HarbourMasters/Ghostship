@@ -10,7 +10,6 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <ImGui/imgui_internal.h>
 #include <libultraship/libultraship.h>
-#include "Utils/StringHelper.h"
 #include <libultraship/libultra/types.h>
 
 namespace UIWidgets {
@@ -709,8 +708,8 @@ namespace UIWidgets {
         ImGui::PushID(label);
         bool dirty = false;
         float startX = ImGui::GetCursorPosX();
-        auto format = StringHelper::Sprintf("##%s", label);
-        const char* invisibleLabel = format.c_str();
+        std::string invisibleLabelStr = "##" + std::string(label);
+        const char* invisibleLabel = invisibleLabelStr.c_str();
         ImGui::BeginDisabled(options.disabled);
         PushStyleCheckbox(options.color);
         if (options.alignment == ComponentAlignment::Right) {
@@ -792,7 +791,8 @@ namespace UIWidgets {
     bool Combobox(const char* label, uint8_t* value, std::span<const char*, std::dynamic_extent> comboArray, const ComboboxOptions& options) {
         bool dirty = false;
         float startX = ImGui::GetCursorPosX();
-        const char* invisibleLabel = ("##" + std::string(label)).c_str();
+        std::string invisibleLabelStr = "##" + std::string(label);
+        const char* invisibleLabel = invisibleLabelStr.c_str();
         ImGui::PushID(label);
         ImGui::BeginGroup();
         ImGui::BeginDisabled(options.disabled);
@@ -891,7 +891,8 @@ namespace UIWidgets {
 
     bool CVarSliderInt(const char* label, const char* cvarName, int32_t min, int32_t max, const int32_t defaultValue, const SliderOptions& options){
         bool dirty = false;
-        const char* invisibleLabel = ("##" + std::string(label)).c_str();
+        std::string invisibleLabelStr = "##" + std::string(label);
+        const char* invisibleLabel = invisibleLabelStr.c_str();
         int32_t value = CVarGetInteger(cvarName, defaultValue);
         ImGui::PushID(label);
         ImGui::BeginGroup();
