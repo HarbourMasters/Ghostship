@@ -170,23 +170,40 @@ namespace UIWidgets {
 
     void PushStyleCombobox(const ImVec4& color = Colors::Indigo);
     void PopStyleCombobox();
-    bool Combobox(const char* label, std::span<const char*, std::dynamic_extent> comboArray, const ComboboxOptions& options = {});
+    bool Combobox(const char* label, uint8_t* value, std::span<const char*, std::dynamic_extent> comboArray, const ComboboxOptions& options = {});
     bool CVarCombobox(const char* label, const char* cvarName, std::span<const char*, std::dynamic_extent> comboArray, const ComboboxOptions& options = {});
 
-    struct SliderOptions {
-        const ImVec4 color = Colors::Green;
+    struct IntSliderOptions {
+        const ImVec4 color = Colors::Gray;
         const char* tooltip = "";
         bool disabled = false;
         const char* disabledTooltip = "";
         bool showButtons = true;
         ImGuiSliderFlags flags = 0;
         const char* format = "%d";
+        const uint32_t step = 1;
+        ComponentAlignment alignment = ComponentAlignment::Left;
+        LabelPosition labelPosition = LabelPosition::Above;
+    };
+
+    struct FloatSliderOptions {
+        const ImVec4 color = Colors::Gray;
+        const char* tooltip = "";
+        bool disabled = false;
+        const char* disabledTooltip = "";
+        bool showButtons = true;
+        ImGuiSliderFlags flags = 0;
+        const char* format = "%f";
+        const float step = 0.01f;
+        bool isPercentage = false; // Multiplies visual value by 100
         ComponentAlignment alignment = ComponentAlignment::Left;
         LabelPosition labelPosition = LabelPosition::Above;
     };
 
     void PushStyleSlider(const ImVec4& color = Colors::Indigo);
     void PopStyleSlider();
-    bool CVarSliderInt(const char* label, const char* cvarName, int32_t min, int32_t max, const int32_t defaultValue, const SliderOptions& options = {});
-    bool CVarSliderFloat(const char* label, const char* cvarName, float min, float max, const float defaultValue, const SliderOptions& options = {});
+    bool SliderInt(const char* label, int32_t* value, int32_t min, int32_t max, const IntSliderOptions& options = {});
+    bool CVarSliderInt(const char* label, const char* cvarName, int32_t min, int32_t max, const int32_t defaultValue, const IntSliderOptions& options = {});
+    bool SliderFloat(const char* label, float* value, float min, float max, const FloatSliderOptions& options = {});
+    bool CVarSliderFloat(const char* label, const char* cvarName, float min, float max, const float defaultValue, const FloatSliderOptions& options = {});
 }
