@@ -447,3 +447,59 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
       )
   endif()
 endif()
+
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    find_package(ImageMagick COMPONENTS convert)
+    if (ImageMagick_FOUND)
+        execute_process (
+            COMMAND ${ImageMagick_convert_EXECUTABLE} cmake/macosx/ghostshipIcon.png -resize 512x512 ${CMAKE_BINARY_DIR}/ghostshipIcon.png
+            OUTPUT_VARIABLE outVar
+        )
+    endif()
+endif()
+
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+configure_file( cmake/macosx/Info.plist.in ${CMAKE_BINARY_DIR}/macosx/Info.plist @ONLY)
+configure_file( cmake/macosx/ghostship-macos.sh ${CMAKE_BINARY_DIR}/macosx/ghostship-macos.sh @ONLY)
+
+add_custom_target(CreateOSXIcons
+    COMMAND mkdir -p ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset
+    COMMAND sips -z 16 16     cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_16x16.png
+    COMMAND sips -z 32 32     cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_16x16@2x.png
+    COMMAND sips -z 32 32     cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_32x32.png
+    COMMAND sips -z 64 64     cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_32x32@2x.png
+    COMMAND sips -z 128 128   cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_128x128.png
+    COMMAND sips -z 256 256   cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_128x128@2x.png
+    COMMAND sips -z 256 256   cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_256x256.png
+    COMMAND sips -z 512 512   cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_256x256@2x.png
+    COMMAND sips -z 512 512   cmake/macosx/ghostshipIcon.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_512x512.png
+    COMMAND cp                cmake/macosx/ghostshipIcon.png ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_512x512@2x.png
+    COMMAND iconutil -c icns -o ${CMAKE_BINARY_DIR}/macosx/ghostship.icns ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Creating OSX icons ..."
+    )
+add_dependencies(${PROJECT_NAME} CreateOSXIcons)
+
+install(TARGETS ${PROJECT_NAME} DESTINATION .)
+
+install(CODE "
+    include(BundleUtilities)
+    fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}\" \"\" \"\")
+")
+
+endif()
+
+if(CMAKE_SYSTEM_NAME MATCHES "Windows|NintendoSwitch|CafeOS")
+install(FILES ${CMAKE_SOURCE_DIR}/README.md DESTINATION . RENAME readme.txt )
+endif()
+
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    set(CPACK_GENERATOR "External")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Windows|NintendoSwitch|CafeOS")
+    set(CPACK_GENERATOR "ZIP")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(CPACK_GENERATOR "Bundle")
+endif()
+
+set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_SOURCE_DIR}/CMake/Packaging-2.cmake)
+include(CMake/Packaging.cmake)

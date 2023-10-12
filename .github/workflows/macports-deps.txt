@@ -1,0 +1,1 @@
+libsdl2 +universal +universal libpng +universal glew +universal
