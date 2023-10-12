@@ -23,6 +23,11 @@ std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mA
 void SetupGuiElements() {
     auto gui = LUS::Context::GetInstance()->GetWindow()->GetGui();
 
+    auto& style = ImGui::GetStyle();
+    style.FramePadding = ImVec2(4.0f, 6.0f);
+    style.ItemSpacing = ImVec2(8.0f, 6.0f);
+    style.Colors[ImGuiCol_MenuBarBg] = UIWidgets::Colors::DarkGray;
+
     mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
     gui->SetMenuBar(mGameMenuBar);
     mStatsWindow = gui->GetGuiWindow("Stats");
@@ -73,8 +78,8 @@ static const char* filters[3] = {
 };
 
 void DrawSettingsMenu(){
-    if(ImGui::BeginMenu("Settings")){
-        if (ImGui::BeginMenu("Audio")) {
+    if(UIWidgets::BeginMenu("Settings")){
+        if (UIWidgets::BeginMenu("Audio")) {
             UIWidgets::PaddedEnhancementSliderFloat("Master Volume: %d %%", "##Master_Vol", "gGameMasterVolume", 0.0f, 1.0f, "", 1.0f, true, true, false, true);
             if (UIWidgets::PaddedEnhancementSliderFloat("Main Music Volume: %d %%", "##Main_Music_Vol", "gMainMusicVolume", 0.0f, 1.0f, "", 1.0f, true, true, false, true)) {
                 audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f));
@@ -116,25 +121,19 @@ void DrawSettingsMenu(){
 
         UIWidgets::Spacer(0);
 
-        if (ImGui::BeginMenu("Controller")) {
-            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2 (12.0f, 6.0f));
-            ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 0.0f));
-            ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f);
-            ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.22f, 0.38f, 0.56f, 1.0f));
-            if (GameUI::mInputEditorWindow) {
-                if (ImGui::Button("Controller Mapping", ImVec2 (-1.0f, 0.0f))) {
-                    GameUI::mInputEditorWindow->ToggleVisibility();
-                }
-            }
-            UIWidgets::PaddedSeparator();
-            ImGui::PopStyleColor(1);
-            ImGui::PopStyleVar(3);
+        if (UIWidgets::BeginMenu("Controller")) {
+            UIWidgets::WindowButton("Controller Mapping", "gInputEditorWindow", GameUI::mInputEditorWindow);
+
+            UIWidgets::Spacer(0);
+
 #ifndef __SWITCH__
-            UIWidgets::EnhancementCheckbox("Menubar Controller Navigation", "gControlNav");
-            UIWidgets::Tooltip("Allows controller navigation of the SOH menu bar (Settings, Enhancements,...)\nCAUTION: This will disable game inputs while the menubar is visible.\n\nD-pad to move between items, A to select, and X to grab focus on the menu bar");
+            UIWidgets::CVarCheckbox("Menubar Controller Navigation", "gControlNav", {
+                .tooltip = "Allows controller navigation of the SOH menu bar (Settings, Enhancements,...)\nCAUTION: This will disable game inputs while the menubar is visible.\n\nD-pad to move between items, A to select, and X to grab focus on the menu bar"
+            });
 #endif
-            UIWidgets::PaddedEnhancementCheckbox("Show Inputs", "gInputEnabled", true, false);
-            UIWidgets::Tooltip("Shows currently pressed inputs on the bottom right of the screen");
+            UIWidgets::CVarCheckbox("Show Inputs", "gInputEnabled", {
+                .tooltip = "Shows currently pressed inputs on the bottom right of the screen"
+            });
             UIWidgets::PaddedEnhancementSliderFloat("Input Scale: %.1f", "##Input", "gInputScale", 1.0f, 3.0f, "", 1.0f, false, true, true, false);
             UIWidgets::Tooltip("Sets the on screen size of the displayed inputs from the Show Inputs setting");
 
@@ -144,31 +143,22 @@ void DrawSettingsMenu(){
         ImGui::EndMenu();
     }
 
-    UIWidgets::Spacer(0);
-
     ImGui::SetCursorPosY(0.0f);
-    if (ImGui::BeginMenu("Graphics")) {
-        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12.0f, 6.0f));
-        ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 0.0f));
-        ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f);
-        ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.22f, 0.38f, 0.56f, 1.0f));
-        UIWidgets::Spacer(0);
-        if (GameUI::mAdvancedResolutionSettingsWindow) {
-            if (ImGui::Button(GameUI::GetWindowButtonText("Advanced Resolution", CVarGetInteger("gAdvancedResolutionEditorEnabled", 0)).c_str(), ImVec2(-1.0f, 0.0f))) {
-                GameUI::mAdvancedResolutionSettingsWindow->ToggleVisibility();
-            }
-        }
-        ImGui::PopStyleColor(1);
-        ImGui::PopStyleVar(3);
+    if (UIWidgets::BeginMenu("Graphics")) {
+        UIWidgets::WindowButton("Resolution Editor", "gAdvancedResolutionEditorEnabled", GameUI::mAdvancedResolutionSettingsWindow);
 
-        UIWidgets::Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but effective form of anti-aliasing");
-        LUS::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
+        UIWidgets::Spacer(0);
+
+        // Previously was running every frame, and nothing was setting it? Maybe a bad copy/paste?
+        // LUS::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
+        // UIWidgets::Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but effective form of anti-aliasing");
 #ifndef __WIIU__
-        UIWidgets::PaddedEnhancementSliderInt("MSAA: %d", "##IMSAA", "gMSAAValue", 1, 8, "", 1, true, true, false);
-        UIWidgets::Tooltip("Activates multi-sample anti-aliasing when above 1x up to 8x for 8 samples for every pixel");
-        LUS::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger("gMSAAValue", 1));
+        if (UIWidgets::CVarSliderInt("MSAA: %d", "gMSAAValue", 1, 8, 1, {
+            .tooltip = "Activates multi-sample anti-aliasing when above 1x up to 8x for 8 samples for every pixel"
+        })) {
+            LUS::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger("gMSAAValue", 1));
+        }
 #endif
-        UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
 
         { // FPS Slider
             const int minFps = 30;
@@ -361,8 +351,8 @@ void DrawMenuBarIcon() {
         ImVec2 iconSize = ImVec2(16.0f * 2, 16.0f * 2);
         float posScale = 2.0f;
 #else
-        ImVec2 iconSize = ImVec2(16.0f, 16.0f);
-        float posScale = 1.0f;
+        ImVec2 iconSize = ImVec2(20.0f, 20.0f);
+        float posScale = 1.5f;
 #endif
         ImGui::SetCursorPos(ImVec2(5, 2.5f) * posScale);
         ImGui::Image(LUS::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon"), iconSize);
@@ -372,8 +362,8 @@ void DrawMenuBarIcon() {
 }
 
 void DrawGameMenu() {
-    if (ImGui::BeginMenu("Ghostship")) {
-        if (ImGui::MenuItem("Reset",
+    if (UIWidgets::BeginMenu("Ghostship")) {
+        if (UIWidgets::MenuItem("Reset",
 #ifdef __APPLE__
                 "Command-R"
 #else
@@ -384,11 +374,11 @@ void DrawGameMenu() {
         }
 #if !defined(__SWITCH__) && !defined(__WIIU__)
 
-        if (ImGui::MenuItem("Toggle Fullscreen", "F9")) {
+        if (UIWidgets::MenuItem("Toggle Fullscreen", "F9")) {
             LUS::Context::GetInstance()->GetWindow()->ToggleFullscreen();
         }
 
-        if (ImGui::MenuItem("Quit")) {
+        if (UIWidgets::MenuItem("Quit")) {
             LUS::Context::GetInstance()->GetWindow()->Close();
         }
 #endif
@@ -397,17 +387,21 @@ void DrawGameMenu() {
 }
 
 void DrawEnhancementsMenu() {
-    if (ImGui::BeginMenu("Enhancements")) {
+    if (UIWidgets::BeginMenu("Enhancements")) {
 
-        if (ImGui::BeginMenu("Gameplay")) {
-            UIWidgets::PaddedEnhancementCheckbox("No Level of Detail (LOD)", "gDisableLOD", true, false);
-            UIWidgets::Tooltip("Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance");
-            UIWidgets::PaddedEnhancementCheckbox("Select any star from menu", "gSelectAllStars", true, false);
-            UIWidgets::Tooltip("Let's you select any star from the menu regardless of the courses completion status.");
-            UIWidgets::PaddedEnhancementCheckbox("Collecting Stars Will Not Exit Level", "gStarNoExit", true, false);
-            UIWidgets::Tooltip("Stars act like the 100 coin star and will not take you out of the level");
-            UIWidgets::PaddedEnhancementCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene", true, false);
-            UIWidgets::Tooltip("Avoid playing the peach cutscene when starting a new game");
+        if (UIWidgets::BeginMenu("Gameplay")) {
+            UIWidgets::CVarCheckbox("No Level of Detail (LOD)", "gDisableLOD", {
+                .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance"
+            });
+            UIWidgets::CVarCheckbox("Select any star from menu", "gSelectAllStars", {
+                .tooltip = "Let's you select any star from the menu regardless of the courses completion status."
+            });
+            UIWidgets::CVarCheckbox("Collecting Stars Will Not Exit Level", "gStarNoExit", {
+                .tooltip = "Stars act like the 100 coin star and will not take you out of the level"
+            });
+            UIWidgets::CVarCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene", {
+                .tooltip = "Avoid playing the peach cutscene when starting a new game"
+            });
             ImGui::EndMenu();
         }
 
@@ -416,47 +410,28 @@ void DrawEnhancementsMenu() {
 }
 
 void DrawCheatsMenu() {
-    if (ImGui::BeginMenu("Cheats")) {
-        UIWidgets::PaddedEnhancementCheckbox("Infinite Health", "gInfiniteHealth", true, false);
-        UIWidgets::PaddedEnhancementCheckbox("Infinite Lives", "gInfiniteLives", true, false);
-
+    if (UIWidgets::BeginMenu("Cheats")) {
+        UIWidgets::CVarCheckbox("Infinite Health", "gInfiniteHealth");
+        UIWidgets::CVarCheckbox("Infinite Lives", "gInfiniteLives");
 
         ImGui::EndMenu();
     }
 }
 
 void DrawDebugMenu() {
-    if (ImGui::BeginMenu("Developer")) {
+    if (UIWidgets::BeginMenu("Developer")) {
+        UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
+            .tooltip = "Various debug features, including a level selector from the main menu"
+        });
 
-        UIWidgets::PaddedEnhancementCheckbox("Enable level selector", "gEnableDebugMode", true, false);
-        UIWidgets::Tooltip("Enable the level selector in the main menu");
         UIWidgets::Spacer(0);
-        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12.0f, 6.0f));
-        ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0));
-        ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f);
-        ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.22f, 0.38f, 0.56f, 1.0f));
-        if (GameUI::mStatsWindow) {
-            if (ImGui::Button(
-                    GameUI::GetWindowButtonText("Stats", CVarGetInteger("gStatsEnabled", 0)).c_str(),
-                    ImVec2(-1.0f, 0.0f))) {
-                GameUI::mStatsWindow->ToggleVisibility();
-            }
-            UIWidgets::Tooltip("Shows the stats window, with your FPS and frametimes, and the OS "
-                               "you're playing on");
-        }
-        if (GameUI::mConsoleWindow) {
-            if (ImGui::Button(
-                    GameUI::GetWindowButtonText("Console", CVarGetInteger("gConsoleEnabled", 0))
-                        .c_str(),
-                    ImVec2(-1.0f, 0.0f))) {
-                GameUI::mConsoleWindow->ToggleVisibility();
-            }
-            UIWidgets::Tooltip("Enables the console window, allowing you to input commands, type "
-                               "help for some examples");
-        }
 
-        ImGui::PopStyleVar(3);
-        ImGui::PopStyleColor(1);
+        UIWidgets::WindowButton("Stats", "gStatsEnabled", GameUI::mStatsWindow, {
+            .tooltip = "Shows the stats window, with your FPS and frametimes, and the OS you're playing on"
+        });
+        UIWidgets::WindowButton("Console", "gConsoleEnabled", GameUI::mConsoleWindow, {
+            .tooltip = "Enables the console window, allowing you to input commands, type help for some examples"
+        });
 
         ImGui::EndMenu();
     }
@@ -465,10 +440,6 @@ void DrawDebugMenu() {
 void GameMenuBar::DrawElement() {
     if(ImGui::BeginMenuBar()){
         DrawMenuBarIcon();
-
-        static ImVec2 sWindowPadding(8.0f, 8.0f);
-
-        ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, sWindowPadding);
 
         DrawGameMenu();
 
@@ -488,7 +459,6 @@ void GameMenuBar::DrawElement() {
         
         DrawDebugMenu();
 
-        ImGui::PopStyleVar(1);
         ImGui::EndMenuBar();
     }
 }
