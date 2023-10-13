@@ -1715,7 +1715,7 @@ void print_hud_lut_string_fade(s8 hudLUT, s16 x, s16 y, const unsigned char *tex
  * Prints a generic white string with text fade properties.
  */
 void print_generic_string_fade(s16 x, s16 y, const unsigned char *text) {
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha - sTextFadeAlpha);
     print_generic_string(x, y, text);
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
@@ -1824,7 +1824,7 @@ void print_main_menu_strings(void) {
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 #ifndef VERSION_EU
     // Print menu names
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
     print_generic_string(SCORE_X, 39, GameEngine_LoadTranslation("TEXT_SCORE"));
     print_generic_string(COPY_X, 39, GameEngine_LoadTranslation("TEXT_COPY"));
@@ -1867,7 +1867,7 @@ void print_main_lang_strings(void) {
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 
     // Print menu names
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
     centeredX = get_str_x_pos_from_center(76, textScore[sLanguageMode], 10.0f);
     print_generic_string(centeredX, 39, textScore[sLanguageMode]);
@@ -1972,7 +1972,7 @@ void print_score_menu_strings(void) {
 #endif
 
     // Print menu names
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(69, textReturn[sLanguageMode], 10.0f);
@@ -2158,7 +2158,7 @@ void print_copy_menu_strings(void) {
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 #endif
     // Print menu names
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
 #ifdef VERSION_EU
     centeredX = get_str_x_pos_from_center(69, textReturn[sLanguageMode], 10.0f);
@@ -2271,7 +2271,7 @@ void print_erase_menu_prompt(s16 x, s16 y) {
     }
 
     // Print "YES NO" strings
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
     gDPSetEnvColor(gDisplayListHead++, sYesNoColor[0], sYesNoColor[0], sYesNoColor[0], sTextBaseAlpha);
     print_generic_string(x + 56, y, GameEngine_LoadTranslation("TEXT_YES"));
     gDPSetEnvColor(gDisplayListHead++, sYesNoColor[1], sYesNoColor[1], sYesNoColor[1], sTextBaseAlpha);
@@ -2429,7 +2429,7 @@ void print_erase_menu_strings(void) {
 #endif
 
     // Print menu names
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
 
 #ifdef VERSION_EU
@@ -2493,7 +2493,7 @@ void print_sound_mode_menu_strings(void) {
 
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 
-    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
 
 #ifdef VERSION_EU // In EU their X position get increased each string
     // Print sound mode names
@@ -2750,9 +2750,9 @@ void print_save_file_scores(s8 fileIndex) {
 
     // Print current coin score mode
     if (sScoreFileCoinScoreMode == 0) {
-        print_menu_generic_string(MYSCORE_X, 24, GameEngine_LoadTranslation(textMyScore));
+        print_menu_generic_string(MYSCORE_X, 24, textMyScore);
     } else {
-        print_menu_generic_string(HISCORE_X, 24, GameEngine_LoadTranslation(textHiScore));
+        print_menu_generic_string(HISCORE_X, 24, textHiScore);
     }
 
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);

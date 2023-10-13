@@ -6,7 +6,8 @@
 
 extern Gfx dl_rgba16_text_begin[];
 extern Gfx dl_rgba16_text_end[];
-extern Gfx dl_ia_text_begin[];
+extern Gfx dl_ia_text_begin_us[];
+extern Gfx dl_ia_text_begin_jp[];
 extern Gfx dl_ia_text_end[];
 extern u8 texture_transition_star_half[];
 extern u8 texture_transition_circle_half[];

@@ -252,7 +252,7 @@ s32 render_textured_transition(s8 fadeTimer, s8 transTime, struct WarpTransition
         load_tex_transition_vertex(verts, fadeTimer, transData, centerTransX, centerTransY, texTransRadius, transTexType);
         load_tex_transition_vertex(vertsInterpolated, fadeTimer, transData, centerTransX, centerTransY, texTransRadiusInterpolated, transTexType);
         sScreenTransitionVertices = verts;
-        gSPDisplayList(gDisplayListHead++, dl_proj_mtx_fullscreen)
+        gSPDisplayList(gDisplayListHead++, dl_proj_mtx_fullscreen);
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
         sScreenTransitionVerticesPos[0] = gDisplayListHead;
