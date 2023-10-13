@@ -275,11 +275,7 @@ void render_hud_power_meter(void) {
     sPowerMeterVisibleTimer++;
 }
 
-#ifdef VERSION_JP
-#define HUD_TOP_Y 210
-#else
 #define HUD_TOP_Y 209
-#endif
 
 /**
  * Renders the amount of lives Mario has.
@@ -299,11 +295,7 @@ void render_hud_coins(void) {
     print_text_fmt_int(198, HUD_TOP_Y, "%d", gHudDisplay.coins);
 }
 
-#ifdef VERSION_JP
-#define HUD_STARS_X 73
-#else
-#define HUD_STARS_X 78
-#endif
+#define HUD_STARS_X ROM_JP ? 73 : 78
 
 /**
  * Renders the amount of stars collected.

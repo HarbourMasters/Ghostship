@@ -819,9 +819,9 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
         }
 
         play_sound(SOUND_MENU_STAR_SOUND, m->marioObj->header.gfx.cameraToObject);
-#ifndef VERSION_JP
-        update_mario_sound_and_camera(m);
-#endif
+        if(!ROM_JP){
+            update_mario_sound_and_camera(m);
+        }
 
         if (grandStar) {
             return set_mario_action(m, ACT_JUMBO_STAR_CUTSCENE, 0);
@@ -1687,17 +1687,8 @@ u32 mario_can_talk(struct MarioState *m, u32 arg) {
     return FALSE;
 }
 
-#ifdef VERSION_JP
-#define READ_MASK (INPUT_B_PRESSED)
-#else
 #define READ_MASK (INPUT_B_PRESSED | INPUT_A_PRESSED)
-#endif
-
-#ifdef VERSION_JP
-#define SIGN_RANGE 0x38E3
-#else
 #define SIGN_RANGE 0x4000
-#endif
 
 u32 check_read_sign(struct MarioState *m, struct Object *o) {
     if ((m->input & READ_MASK) && mario_can_talk(m, 0) && object_facing_mario(m, o, SIGN_RANGE)) {

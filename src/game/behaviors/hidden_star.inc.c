@@ -42,12 +42,12 @@ void bhv_hidden_star_trigger_loop(void) {
                 spawn_orange_number(hiddenStar->oHiddenStarTriggerCounter, 0, 0, 0);
             }
 
-#ifdef VERSION_JP
-            play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
-#else
-            play_sound(SOUND_MENU_COLLECT_SECRET
+            if(ROM_JP){
+                play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
+            } else {
+                play_sound(SOUND_MENU_COLLECT_SECRET
                        + (((u8) hiddenStar->oHiddenStarTriggerCounter - 1) << 16), gGlobalSoundSource);
-#endif
+            }
         }
 
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;

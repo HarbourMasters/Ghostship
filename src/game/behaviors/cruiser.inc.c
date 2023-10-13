@@ -13,10 +13,8 @@ void bhv_rr_cruiser_wing_loop(void) {
         o->oFaceAngleYaw = o->oRRCruiserWingUnkF4 - sins(o->oTimer * 0x400) * 8192.0f;
         o->oFaceAnglePitch = o->oRRCruiserWingUnkF8 + coss(o->oTimer * 0x400) * 2048.0f;
     }
-#ifndef VERSION_JP
-    if (o->oTimer == 64) {
+    if (!ROM_JP && o->oTimer == 64) {
         cur_obj_play_sound_2(SOUND_GENERAL_BOAT_ROCK);
         o->oTimer = 0;
     }
-#endif
 }

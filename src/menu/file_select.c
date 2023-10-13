@@ -1767,26 +1767,12 @@ void print_save_file_star_count(s8 fileIndex, s16 x, s16 y) {
     }
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define SELECT_FILE_X 96
-    #define SCORE_X 50
-    #define COPY_X 115
-    #define ERASE_X 180
-#ifdef VERSION_JP
-    #define SOUNDMODE_X1 235
-#else
-    #define SOUNDMODE_X1 sSoundTextX
-#endif
-    #define SAVEFILE_X1 92
-    #define SAVEFILE_X2 209
-    #define MARIOTEXT_X1 92
-    #define MARIOTEXT_X2 207
-#elif defined(VERSION_US)
-    #define SELECT_FILE_X 93
-    #define SCORE_X 52
-    #define COPY_X 117
-    #define ERASE_X 177
-    #define SOUNDMODE_X1 sSoundTextX
+#if defined(VERSION_US)
+    #define SELECT_FILE_X ROM_JP ? 96 : 93
+    #define SCORE_X ROM_JP ? 50 : 52
+    #define COPY_X ROM_JP ? 115 : 117
+    #define ERASE_X ROM_JP ? 180 : 177
+    #define SOUNDMODE_X1 ROM_JP ? 235 : sSoundTextX
     #define SAVEFILE_X1 92
     #define SAVEFILE_X2 209
     #define MARIOTEXT_X1 92
@@ -1829,14 +1815,12 @@ void print_main_menu_strings(void) {
     print_generic_string(SCORE_X, 39, GameEngine_LoadTranslation("TEXT_SCORE"));
     print_generic_string(COPY_X, 39, GameEngine_LoadTranslation("TEXT_COPY"));
     print_generic_string(ERASE_X, 39, GameEngine_LoadTranslation("TEXT_ERASE"));
-#ifndef VERSION_JP
     unsigned char* textSoundModes[] = {
         GameEngine_LoadTranslation("TEXT_STEREO"),
         GameEngine_LoadTranslation("TEXT_MONO"),
         GameEngine_LoadTranslation("TEXT_HEADSET")
     };
     sSoundTextX = get_str_x_pos_from_center(254, textSoundModes[sSoundMode], 10.0f);
-#endif
     print_generic_string(SOUNDMODE_X1, 39, textSoundModes[sSoundMode]);
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 #endif
@@ -1883,12 +1867,9 @@ void print_main_lang_strings(void) {
 }
 #endif
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define CHECK_FILE_X 90
-    #define NOSAVE_DATA_X1 90
-#elif defined(VERSION_US)
-    #define CHECK_FILE_X 95
-    #define NOSAVE_DATA_X1 99
+#if defined(VERSION_US)
+    #define CHECK_FILE_X ROM_JP ? 90 : 95
+    #define NOSAVE_DATA_X1 ROM_JP ? 90 : 99
 #elif defined(VERSION_EU)
     #define CHECK_FILE_X checkFileX
     #define NOSAVE_DATA_X1 noSaveDataX
@@ -1918,14 +1899,10 @@ void score_menu_display_message(s8 messageID) {
     }
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define RETURN_X     45
-    #define COPYFILE_X1  128
-    #define ERASEFILE_X1 228
-#elif defined(VERSION_US)
+#if defined(VERSION_US)
     #define RETURN_X     44
-    #define COPYFILE_X1  135
-    #define ERASEFILE_X1 231
+    #define COPYFILE_X1  ROM_JP ? 128 : 135
+    #define ERASEFILE_X1 ROM_JP ? 228 : 231
 #elif defined(VERSION_EU)
     #define RETURN_X     centeredX
     #define COPYFILE_X1  centeredX
@@ -2002,20 +1979,13 @@ void print_score_menu_strings(void) {
 #endif
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define NOFILE_COPY_X  90
-    #define COPY_FILE_X    90
-    #define COPYIT_WHERE_X 90
-    #define NOSAVE_DATA_X2 90
-    #define COPYCOMPLETE_X 90
-    #define SAVE_EXISTS_X1 90
-#elif defined(VERSION_US)
-    #define NOFILE_COPY_X  119
-    #define COPY_FILE_X    104
-    #define COPYIT_WHERE_X 109
-    #define NOSAVE_DATA_X2 101
-    #define COPYCOMPLETE_X 110
-    #define SAVE_EXISTS_X1 110
+#if defined(VERSION_US)
+    #define NOFILE_COPY_X  ROM_JP ? 90 : 119
+    #define COPY_FILE_X    ROM_JP ? 90 : 104
+    #define COPYIT_WHERE_X ROM_JP ? 90 : 109
+    #define NOSAVE_DATA_X2 ROM_JP ? 90 : 101
+    #define COPYCOMPLETE_X ROM_JP ? 90 : 110
+    #define SAVE_EXISTS_X1 ROM_JP ? 90 : 110
 #elif defined(VERSION_EU)
     #define NOFILE_COPY_X  centeredX
     #define COPY_FILE_X    centeredX
@@ -2121,12 +2091,9 @@ void copy_menu_update_message(void) {
     }
 }
 
-#if defined(VERSION_JP)
-    #define VIEWSCORE_X1 133
-    #define ERASEFILE_X2 220
-#elif defined(VERSION_US)
-    #define VIEWSCORE_X1 128
-    #define ERASEFILE_X2 230
+#if defined(VERSION_US)
+    #define VIEWSCORE_X1 ROM_JP ? 133 : 128
+    #define ERASEFILE_X2 ROM_JP ? 220 : 230
 #elif defined(VERSION_EU)
     #define VIEWSCORE_X1 centeredX
     #define ERASEFILE_X2 centeredX
@@ -2187,22 +2154,12 @@ void print_copy_menu_strings(void) {
 #endif
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#ifdef VERSION_JP
-    #define CURSOR_X 160.0f
-#else
-    #define CURSOR_X (x + 70)
-#endif
-    #define MENU_ERASE_YES_MIN_X 145
-    #define MENU_ERASE_YES_MAX_X 164
-#else
-    #define CURSOR_X (x + 70)
-    #define MENU_ERASE_YES_MIN_X 140
-    #define MENU_ERASE_YES_MAX_X 169
-#endif
-
+#define CURSOR_X ROM_JP ? 160.0f : (x + 70)
+#define MENU_ERASE_YES_MIN_X ROM_JP ? 145 : 140
+#define MENU_ERASE_YES_MAX_X ROM_JP ? 164 : 169
 #define MENU_ERASE_YES_NO_MIN_Y 191
 #define MENU_ERASE_YES_NO_MAX_Y 210
+
 #ifdef VERSION_SH
     #define MENU_ERASE_NO_MIN_X 194
     #define MENU_ERASE_NO_MAX_X 213
@@ -2283,22 +2240,12 @@ void print_erase_menu_prompt(s16 x, s16 y) {
 //   US and EU   ---    JP
 // M a r i o   A --- マ リ オ Ａ
 // 0 1 2 3 4 5 6 --- 0 1 2 3
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#ifdef VERSION_JP
-    #define ERASE_FILE_X     96
-#else
-    #define ERASE_FILE_X     111
-#endif
-    #define NOSAVE_DATA_X3   90
-    #define MARIO_ERASED_VAR 3
-    #define MARIO_ERASED_X   90
-    #define SAVE_EXISTS_X2   90
-#elif defined(VERSION_US)
-    #define ERASE_FILE_X     98
-    #define NOSAVE_DATA_X3   100
-    #define MARIO_ERASED_VAR 6
-    #define MARIO_ERASED_X   100
-    #define SAVE_EXISTS_X2   100
+#if defined(VERSION_US)
+    #define ERASE_FILE_X     ROM_JP ? 96 : 98
+    #define NOSAVE_DATA_X3   ROM_JP ? 90 : 100
+    #define MARIO_ERASED_VAR ROM_JP ? 3 : 6
+    #define MARIO_ERASED_X   ROM_JP ? 90 : 100
+    #define SAVE_EXISTS_X2   ROM_JP ? 90 : 100
 #elif defined(VERSION_EU)
     #define ERASE_FILE_X     centeredX
     #define NOSAVE_DATA_X3   centeredX
@@ -2395,13 +2342,8 @@ void erase_menu_update_message(void) {
     }
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define VIEWSCORE_X2 133
-    #define COPYFILE_X2 223
-#else
-    #define VIEWSCORE_X2 127
-    #define COPYFILE_X2 233
-#endif
+#define VIEWSCORE_X2 ROM_JP ? 133 : 127
+#define COPYFILE_X2 ROM_JP ? 223 : 233
 
 /**
  * Prints erase menu strings that shows on the red background menu screen.
@@ -2460,10 +2402,8 @@ void print_erase_menu_strings(void) {
 #endif
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define SOUND_HUD_X 96
-#elif defined(VERSION_US)
-    #define SOUND_HUD_X 88
+#if defined(VERSION_US)
+    #define SOUND_HUD_X ROM_JP ? 96 : 88
 #endif
 
 /**
@@ -2532,13 +2472,9 @@ void print_sound_mode_menu_strings(void) {
         } else {
             gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, sTextBaseAlpha);
         }
-        #ifndef VERSION_JP
-            // Mode names are centered correctly on US and Shindou
-            textX = get_str_x_pos_from_center(mode * 74 + 87, textSoundModes[mode], 10.0f);
-            print_generic_string(textX, 87, textSoundModes[mode]);
-        #else
-            print_generic_string(mode * 74 + 67, 87, textSoundModes[mode]);
-        #endif
+        // Mode names are centered correctly on US and Shindou
+        textX = get_str_x_pos_from_center(mode * 74 + 87, textSoundModes[mode], 10.0f);
+        print_generic_string(textX, 87, textSoundModes[mode]);
     }
 #endif
 
@@ -2567,15 +2503,9 @@ void print_score_file_castle_secret_stars(s8 fileIndex, s16 x, s16 y) {
 #endif
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define HISCORE_COIN_ICON_X  0
-    #define HISCORE_COIN_TEXT_X  16
-    #define HISCORE_COIN_NAMES_X 45
-#else
-    #define HISCORE_COIN_ICON_X  18
-    #define HISCORE_COIN_TEXT_X  34
-    #define HISCORE_COIN_NAMES_X 60
-#endif
+#define HISCORE_COIN_ICON_X  ROM_JP ? 0 : 18
+#define HISCORE_COIN_TEXT_X  ROM_JP ? 16 : 34
+#define HISCORE_COIN_NAMES_X ROM_JP ? 45 : 60
 
 /**
  * Prints course coins collected in a score menu save file.
@@ -2585,17 +2515,11 @@ void print_score_file_course_coin_score(s8 fileIndex, s16 courseIndex, s16 x, s1
     u8 stars = save_file_get_star_flags(fileIndex, courseIndex);
     unsigned char* textCoinX = GameEngine_LoadTranslation("TEXT_COIN_X");
     unsigned char* textStar = GameEngine_LoadTranslation("TEXT_STAR");
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define LENGTH 5
-#else
-    #define LENGTH 8
-#endif
     unsigned char* fileNames[] = {
         GameEngine_LoadTranslation("TEXT_4DASHES"),
         GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"), GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"),
         GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"), GameEngine_LoadTranslation("TEXT_FILE_MARIO_D")
     };
-#undef LENGTH
     // MYSCORE
     if (sScoreFileCoinScoreMode == 0) {
         // Print "[coin] x"
@@ -2642,33 +2566,19 @@ void print_score_file_star_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
     print_menu_generic_string(x, y, starScoreText);
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define MARIO_X 28
-    #define FILE_LETTER_X 86
-#ifdef VERSION_JP
-    #define LEVEL_NUM_PAD 0
-    #define SECRET_STARS_PAD 0
-#else
-    #define LEVEL_NUM_PAD 5
-    #define SECRET_STARS_PAD 10
-#endif
+#if defined(VERSION_US)
+    #define MARIO_X ROM_JP ? 28 : 25
+    #define FILE_LETTER_X ROM_JP ? 86 : 95
+    #define LEVEL_NUM_PAD ROM_JP ? 0 : 3
+    #define SECRET_STARS_PAD ROM_JP ? 0 : 6
     #define LEVEL_NAME_X 23
-    #define STAR_SCORE_X 152
-    #define MYSCORE_X 237
-    #define HISCORE_X 237
-#else
-    #define MARIO_X 25
-    #define FILE_LETTER_X 95
-    #define LEVEL_NUM_PAD 3
-    #define SECRET_STARS_PAD 6
-    #define LEVEL_NAME_X 23
-    #define STAR_SCORE_X 171
+    #define STAR_SCORE_X ROM_JP ? 152 : 171
 #ifdef VERSION_EU
     #define MYSCORE_X get_str_x_pos_from_center(257, textMyScore[sLanguageMode], 10.0f)
     #define HISCORE_X get_str_x_pos_from_center(257, textHiScore[sLanguageMode], 10.0f)
 #else
-    #define MYSCORE_X 238
-    #define HISCORE_X 231
+    #define MYSCORE_X ROM_JP ? 237 : 238
+    #define HISCORE_X ROM_JP ? 237 : 231
 #endif
 #endif
 
@@ -2752,7 +2662,7 @@ void print_save_file_scores(s8 fileIndex) {
     if (sScoreFileCoinScoreMode == 0) {
         print_menu_generic_string(MYSCORE_X, 24, textMyScore);
     } else {
-        print_menu_generic_string(HISCORE_X, 24, textHiScore);
+        print_menu_generic_string(HISCORE_X, 24, GameEngine_LoadTranslation(textHiScore));
     }
 
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);

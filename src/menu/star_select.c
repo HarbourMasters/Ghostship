@@ -279,11 +279,7 @@ void print_course_number(void) {
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 }
 
-#ifdef VERSION_JP
-#define ACT_NAME_X 158
-#else
-#define ACT_NAME_X 163
-#endif
+#define ACT_NAME_X ROM_JP ? 163 : 158
 
 /**
  * Print act selector strings, some with special checks.

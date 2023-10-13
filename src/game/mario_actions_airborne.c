@@ -826,9 +826,9 @@ s32 act_water_jump(struct MarioState *m) {
             break;
 
         case AIR_STEP_GRABBED_LEDGE:
-#ifndef VERSION_JP
-            set_mario_animation(m, MARIO_ANIM_IDLE_ON_LEDGE);
-#endif
+            if(!ROM_JP){
+                set_mario_animation(m, MARIO_ANIM_IDLE_ON_LEDGE);
+            }
             set_mario_action(m, ACT_LEDGE_GRAB, 0);
             set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
             break;
@@ -1095,15 +1095,15 @@ u32 common_air_knockback_step(struct MarioState *m, u32 landAction, u32 hardFall
             }
 #endif
             if (!check_fall_damage_or_get_stuck(m, hardFallAction)) {
-#ifndef VERSION_JP
-                if (m->action == ACT_THROWN_FORWARD || m->action == ACT_THROWN_BACKWARD) {
-                    set_mario_action(m, landAction, m->hurtCounter);
+                if(!ROM_JP){
+                    if (m->action == ACT_THROWN_FORWARD || m->action == ACT_THROWN_BACKWARD) {
+                        set_mario_action(m, landAction, m->hurtCounter);
+                    } else {
+                        set_mario_action(m, landAction, m->actionArg);
+                    }
                 } else {
                     set_mario_action(m, landAction, m->actionArg);
                 }
-#else
-                set_mario_action(m, landAction, m->actionArg);
-#endif
             }
             break;
 
@@ -1852,26 +1852,26 @@ s32 act_riding_hoot(struct MarioState *m) {
 }
 
 s32 act_flying_triple_jump(struct MarioState *m) {
-#ifndef VERSION_JP
-    if (m->input & (INPUT_B_PRESSED | INPUT_Z_PRESSED)) {
-        if (m->area->camera->mode == CAMERA_MODE_BEHIND_MARIO) {
-            set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
+    if(!ROM_JP){
+        if (m->input & (INPUT_B_PRESSED | INPUT_Z_PRESSED)) {
+            if (m->area->camera->mode == CAMERA_MODE_BEHIND_MARIO) {
+                set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
+            }
+            if (m->input & INPUT_B_PRESSED) {
+                return set_mario_action(m, ACT_DIVE, 0);
+            } else {
+                return set_mario_action(m, ACT_GROUND_POUND, 0);
+            }
         }
+    } else {
         if (m->input & INPUT_B_PRESSED) {
             return set_mario_action(m, ACT_DIVE, 0);
-        } else {
+        }
+
+        if (m->input & INPUT_Z_PRESSED) {
             return set_mario_action(m, ACT_GROUND_POUND, 0);
         }
     }
-#else
-    if (m->input & INPUT_B_PRESSED) {
-        return set_mario_action(m, ACT_DIVE, 0);
-    }
-
-    if (m->input & INPUT_Z_PRESSED) {
-        return set_mario_action(m, ACT_GROUND_POUND, 0);
-    }
-#endif
 
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, SOUND_MARIO_YAHOO);
     if (m->actionState == 0) {
