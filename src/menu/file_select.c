@@ -1370,7 +1370,7 @@ void bhv_menu_button_manager_init(void) {
     sTextBaseAlpha = 0;
 }
 
-#define SAVE_FILE_SOUND ( ROM_JP ? SOUND_MENU_STAR_SOUND : SOUND_MENU_STAR_SOUND_OKEY_DOKEY)
+#define SAVE_FILE_SOUND (ROM_JP ? SOUND_MENU_STAR_SOUND : SOUND_MENU_STAR_SOUND_OKEY_DOKEY)
 
 /**
  * In the main menu, check if a button was clicked to play it's button growing state.
@@ -1768,11 +1768,11 @@ void print_save_file_star_count(s8 fileIndex, s16 x, s16 y) {
 }
 
 #if defined(VERSION_US)
-    #define SELECT_FILE_X ROM_JP ? 96 : 93
-    #define SCORE_X ROM_JP ? 50 : 52
-    #define COPY_X ROM_JP ? 115 : 117
-    #define ERASE_X ROM_JP ? 180 : 177
-    #define SOUNDMODE_X1 ROM_JP ? 235 : sSoundTextX
+    #define SELECT_FILE_X (ROM_JP ? 96 : 93)
+    #define SCORE_X (ROM_JP ? 50 : 52)
+    #define COPY_X (ROM_JP ? 115 : 117)
+    #define ERASE_X (ROM_JP ? 180 : 177)
+    #define SOUNDMODE_X1 (ROM_JP ? 235 : sSoundTextX)
     #define SAVEFILE_X1 92
     #define SAVEFILE_X2 209
     #define MARIOTEXT_X1 92
@@ -1868,8 +1868,8 @@ void print_main_lang_strings(void) {
 #endif
 
 #if defined(VERSION_US)
-    #define CHECK_FILE_X ROM_JP ? 90 : 95
-    #define NOSAVE_DATA_X1 ROM_JP ? 90 : 99
+    #define CHECK_FILE_X (ROM_JP ? 90 : 95)
+    #define NOSAVE_DATA_X1 (ROM_JP ? 90 : 99)
 #elif defined(VERSION_EU)
     #define CHECK_FILE_X checkFileX
     #define NOSAVE_DATA_X1 noSaveDataX
@@ -1901,8 +1901,8 @@ void score_menu_display_message(s8 messageID) {
 
 #if defined(VERSION_US)
     #define RETURN_X     44
-    #define COPYFILE_X1  ROM_JP ? 128 : 135
-    #define ERASEFILE_X1 ROM_JP ? 228 : 231
+    #define COPYFILE_X1  (ROM_JP ? 128 : 135)
+    #define ERASEFILE_X1 (ROM_JP ? 228 : 231)
 #elif defined(VERSION_EU)
     #define RETURN_X     centeredX
     #define COPYFILE_X1  centeredX
@@ -1980,12 +1980,12 @@ void print_score_menu_strings(void) {
 }
 
 #if defined(VERSION_US)
-    #define NOFILE_COPY_X  ROM_JP ? 90 : 119
-    #define COPY_FILE_X    ROM_JP ? 90 : 104
-    #define COPYIT_WHERE_X ROM_JP ? 90 : 109
-    #define NOSAVE_DATA_X2 ROM_JP ? 90 : 101
-    #define COPYCOMPLETE_X ROM_JP ? 90 : 110
-    #define SAVE_EXISTS_X1 ROM_JP ? 90 : 110
+    #define NOFILE_COPY_X  (ROM_JP ? 90 : 119)
+    #define COPY_FILE_X    (ROM_JP ? 90 : 104)
+    #define COPYIT_WHERE_X (ROM_JP ? 90 : 109)
+    #define NOSAVE_DATA_X2 (ROM_JP ? 90 : 101)
+    #define COPYCOMPLETE_X (ROM_JP ? 90 : 110)
+    #define SAVE_EXISTS_X1 (ROM_JP ? 90 : 110)
 #elif defined(VERSION_EU)
     #define NOFILE_COPY_X  centeredX
     #define COPY_FILE_X    centeredX
@@ -2092,8 +2092,8 @@ void copy_menu_update_message(void) {
 }
 
 #if defined(VERSION_US)
-    #define VIEWSCORE_X1 ROM_JP ? 133 : 128
-    #define ERASEFILE_X2 ROM_JP ? 220 : 230
+    #define VIEWSCORE_X1 (ROM_JP ? 133 : 128)
+    #define ERASEFILE_X2 (ROM_JP ? 220 : 230)
 #elif defined(VERSION_EU)
     #define VIEWSCORE_X1 centeredX
     #define ERASEFILE_X2 centeredX
@@ -2154,9 +2154,9 @@ void print_copy_menu_strings(void) {
 #endif
 }
 
-#define CURSOR_X ROM_JP ? 160.0f : (x + 70)
-#define MENU_ERASE_YES_MIN_X ROM_JP ? 145 : 140
-#define MENU_ERASE_YES_MAX_X ROM_JP ? 164 : 169
+#define CURSOR_X (ROM_JP ? 160.0f : (x + 70))
+#define MENU_ERASE_YES_MIN_X (ROM_JP ? 145 : 140)
+#define MENU_ERASE_YES_MAX_X (ROM_JP ? 164 : 169)
 #define MENU_ERASE_YES_NO_MIN_Y 191
 #define MENU_ERASE_YES_NO_MAX_Y 210
 
@@ -2241,11 +2241,11 @@ void print_erase_menu_prompt(s16 x, s16 y) {
 // M a r i o   A --- マ リ オ Ａ
 // 0 1 2 3 4 5 6 --- 0 1 2 3
 #if defined(VERSION_US)
-    #define ERASE_FILE_X     ROM_JP ? 96 : 98
-    #define NOSAVE_DATA_X3   ROM_JP ? 90 : 100
-    #define MARIO_ERASED_VAR ROM_JP ? 3 : 6
-    #define MARIO_ERASED_X   ROM_JP ? 90 : 100
-    #define SAVE_EXISTS_X2   ROM_JP ? 90 : 100
+    #define ERASE_FILE_X     (ROM_JP ? 96 : 98)
+    #define NOSAVE_DATA_X3   (ROM_JP ? 90 : 100)
+    #define MARIO_ERASED_VAR (ROM_JP ? 3 : 6)
+    #define MARIO_ERASED_X   (ROM_JP ? 90 : 100)
+    #define SAVE_EXISTS_X2   (ROM_JP ? 90 : 100)
 #elif defined(VERSION_EU)
     #define ERASE_FILE_X     centeredX
     #define NOSAVE_DATA_X3   centeredX
@@ -2342,8 +2342,8 @@ void erase_menu_update_message(void) {
     }
 }
 
-#define VIEWSCORE_X2 ROM_JP ? 133 : 127
-#define COPYFILE_X2 ROM_JP ? 223 : 233
+#define VIEWSCORE_X2 (ROM_JP ? 133 : 127)
+#define COPYFILE_X2 (ROM_JP ? 223 : 233)
 
 /**
  * Prints erase menu strings that shows on the red background menu screen.
@@ -2403,7 +2403,7 @@ void print_erase_menu_strings(void) {
 }
 
 #if defined(VERSION_US)
-    #define SOUND_HUD_X ROM_JP ? 96 : 88
+    #define SOUND_HUD_X (ROM_JP ? 96 : 88)
 #endif
 
 /**
@@ -2503,9 +2503,9 @@ void print_score_file_castle_secret_stars(s8 fileIndex, s16 x, s16 y) {
 #endif
 }
 
-#define HISCORE_COIN_ICON_X  ROM_JP ? 0 : 18
-#define HISCORE_COIN_TEXT_X  ROM_JP ? 16 : 34
-#define HISCORE_COIN_NAMES_X ROM_JP ? 45 : 60
+#define HISCORE_COIN_ICON_X  (ROM_JP ? 0 : 18)
+#define HISCORE_COIN_TEXT_X  (ROM_JP ? 16 : 34)
+#define HISCORE_COIN_NAMES_X (ROM_JP ? 45 : 60)
 
 /**
  * Prints course coins collected in a score menu save file.
@@ -2531,9 +2531,7 @@ void print_score_file_course_coin_score(s8 fileIndex, s16 courseIndex, s16 x, s1
         if (stars & (1 << 6)) {
             print_menu_generic_string(x + 70, y, textStar);
         }
-    }
-    // HISCORE
-    else {
+    }  else { // HISCORE
         // Print "[coin] x"
         print_menu_generic_string(x + HISCORE_COIN_ICON_X, y, textCoinX);
         // Print coin highscore
@@ -2567,18 +2565,18 @@ void print_score_file_star_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
 }
 
 #if defined(VERSION_US)
-    #define MARIO_X ROM_JP ? 28 : 25
-    #define FILE_LETTER_X ROM_JP ? 86 : 95
-    #define LEVEL_NUM_PAD ROM_JP ? 0 : 3
-    #define SECRET_STARS_PAD ROM_JP ? 0 : 6
+    #define MARIO_X (ROM_JP ? 28 : 25)
+    #define FILE_LETTER_X (ROM_JP ? 86 : 95)
+    #define LEVEL_NUM_PAD (ROM_JP ? 0 : 3)
+    #define SECRET_STARS_PAD (ROM_JP ? 0 : 6)
     #define LEVEL_NAME_X 23
-    #define STAR_SCORE_X ROM_JP ? 152 : 171
+    #define STAR_SCORE_X (ROM_JP ? 152 : 171)
 #ifdef VERSION_EU
     #define MYSCORE_X get_str_x_pos_from_center(257, textMyScore[sLanguageMode], 10.0f)
     #define HISCORE_X get_str_x_pos_from_center(257, textHiScore[sLanguageMode], 10.0f)
 #else
-    #define MYSCORE_X ROM_JP ? 237 : 238
-    #define HISCORE_X ROM_JP ? 237 : 231
+    #define MYSCORE_X (ROM_JP ? 237 : 238)
+    #define HISCORE_X (ROM_JP ? 237 : 231)
 #endif
 #endif
 
@@ -2654,7 +2652,7 @@ void print_save_file_scores(s8 fileIndex) {
 
     // Print castle secret stars text
     print_menu_generic_string(LEVEL_NAME_X + SECRET_STARS_PAD, 23 + 12 * 16,
-                              GameEngine_LoadLevelName(25));
+                                GameEngine_LoadLevelName(25));
     // Print castle secret stars score
     print_score_file_castle_secret_stars(fileIndex, STAR_SCORE_X, 23 + 12 * 16);
 
@@ -2662,7 +2660,7 @@ void print_save_file_scores(s8 fileIndex) {
     if (sScoreFileCoinScoreMode == 0) {
         print_menu_generic_string(MYSCORE_X, 24, textMyScore);
     } else {
-        print_menu_generic_string(HISCORE_X, 24, GameEngine_LoadTranslation(textHiScore));
+        print_menu_generic_string(HISCORE_X, 24, textHiScore);
     }
 
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
