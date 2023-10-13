@@ -111,9 +111,7 @@ void print_displaying_credits_entry(void) {
     char *titleStr;
     s16 numLines;
     s16 strY;
-#ifndef VERSION_JP
     s16 lineHeight;
-#endif
 
     if (sDispCreditsEntry != NULL) {
         currStrPtr = (char **) sDispCreditsEntry->unk0C;
@@ -121,47 +119,41 @@ void print_displaying_credits_entry(void) {
         numLines = *titleStr++ - '0';
 
         strY = (sDispCreditsEntry->unk02 & 0x20 ? 28 : 172) + (numLines == 1) * 16;
-#ifndef VERSION_JP
-        lineHeight = 16;
-#endif
+        if(!ROM_JP){
+            lineHeight = 16;
+        }
 
         dl_rgba16_begin_cutscene_msg_fade();
         print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY, titleStr);
 
-#ifndef VERSION_JP
-        switch (numLines) {
-            case 4:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 24, *currStrPtr++);
-                numLines = 2;
-                lineHeight = 24;
-                break;
-            case 5:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
-                numLines = 3;
-                break;
-#ifdef VERSION_EU
-            case 6:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
-                numLines = 3;
-                break;
-            case 7:
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
-                print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
-                numLines = 3;
-                break;
-#endif
+        if(!ROM_JP){
+            switch (numLines) {
+                case 4:
+                    print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 24, *currStrPtr++);
+                    numLines = 2;
+                    lineHeight = 24;
+                    break;
+                case 5:
+                    print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
+                    numLines = 3;
+                    break;
+        #ifdef VERSION_EU
+                case 6:
+                    print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
+                    numLines = 3;
+                    break;
+                case 7:
+                    print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 16, *currStrPtr++);
+                    print_credits_str_ascii(CREDIT_TEXT_X_LEFT, strY + 32, *currStrPtr++);
+                    numLines = 3;
+                    break;
+        #endif
+            }
         }
-#endif
 
         while (numLines-- > 0) {
             print_credits_str_ascii(CREDIT_TEXT_X_RIGHT - get_credits_str_width(*currStrPtr), strY, *currStrPtr);
-
-#ifdef VERSION_JP
-            strY += 16;
-#else
-            strY += lineHeight;
-#endif
-
+            strY += ROM_JP ? 16 : lineHeight;
             currStrPtr++;
         }
 
@@ -2401,9 +2393,9 @@ static void end_peach_cutscene_star_dance(struct MarioState *m) {
             break;
 
         case 140:
-#ifndef VERSION_JP
-            seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
-#endif
+            if(!ROM_JP){
+                seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
+            }
             play_cutscene_music(SEQUENCE_ARGS(15, SEQ_EVENT_CUTSCENE_CREDITS));
             break;
 

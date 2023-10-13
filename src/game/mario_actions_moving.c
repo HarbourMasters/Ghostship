@@ -1384,13 +1384,9 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
 
         case GROUND_STEP_HIT_WALL:
             if (!mario_floor_is_slippery(m)) {
-#ifdef VERSION_JP
-                m->particleFlags |= PARTICLE_VERTICAL_STAR;
-#else
-                if (m->forwardVel > 16.0f) {
+                if (ROM_JP || m->forwardVel > 16.0f) {
                     m->particleFlags |= PARTICLE_VERTICAL_STAR;
                 }
-#endif
                 slide_bonk(m, ACT_GROUND_BONK, endAction);
             } else if (m->wall != NULL) {
                 s16 wallAngle = atan2s(m->wall->normal.z, m->wall->normal.x);
