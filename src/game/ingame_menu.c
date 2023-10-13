@@ -920,15 +920,9 @@ void reset_dialog_render_state(void) {
     gDialogResponse = DIALOG_RESPONSE_NONE;
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define X_VAL1 -5.0f
-#define Y_VAL1 2.0
-#define Y_VAL2 4
-#else
-#define X_VAL1 -7.0f
-#define Y_VAL1 5.0
-#define Y_VAL2 5.0f
-#endif
+#define X_VAL1 (ROM_JP ? -5.0f : -7.0f)
+#define Y_VAL1 (ROM_JP ? 2.0 : 5.0)
+#define Y_VAL2 (ROM_JP ? 4 : 5.0f)
 
 void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
     UNUSED u8 filler[4];
@@ -1020,13 +1014,8 @@ void render_generic_dialog_char_at_pos(struct DialogEntry *dialog, s16 x, s16 y,
 }
 #endif
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define X_VAL3 5.0f
-#define Y_VAL3 20
-#else
-#define X_VAL3 0.0f
-#define Y_VAL3 16
-#endif
+#define X_VAL3 (ROM_JP ? 5.0f : 0.0f)
+#define Y_VAL3 (ROM_JP ? 20 : 16)
 
 #ifdef VERSION_EU
 void handle_dialog_scroll_page_state(s8 lineNum, s8 totalLines, s8 *pageState, s8 *xMatrix)
@@ -1343,17 +1332,10 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
     gLastDialogLineNum = lineNum;
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define X_VAL4_1 50
-#define X_VAL4_2 25
-#define Y_VAL4_1 1
-#define Y_VAL4_2 20
-#else
-#define X_VAL4_1 56
-#define X_VAL4_2 47
-#define Y_VAL4_1 2
-#define Y_VAL4_2 16
-#endif
+#define X_VAL4_1 (ROM_JP ? 50 : 56)
+#define X_VAL4_2 (ROM_JP ? 25 : 47)
+#define Y_VAL4_1 (ROM_JP ? 1 : 2)
+#define Y_VAL4_2 (ROM_JP ? 20 : 16)
 
 void render_dialog_triangle_choice(void) {
     if (gDialogBoxState == DIALOG_STATE_VERTICAL) {
@@ -1371,15 +1353,10 @@ void render_dialog_triangle_choice(void) {
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define X_VAL5 123.0f
-#define Y_VAL5_1 -20
-#define Y_VAL5_2 2
-#define X_Y_VAL6 0.8f
-#elif defined(VERSION_US)
-#define X_VAL5 118.0f
-#define Y_VAL5_1 -16
-#define Y_VAL5_2 5
+#if defined(VERSION_US)
+#define X_VAL5 (ROM_JP ? 123.0f : 118.0f)
+#define Y_VAL5_1 (ROM_JP ? -20 : -16)
+#define Y_VAL5_2 (ROM_JP ? 2 : 5)
 #define X_Y_VAL6 0.8f
 #elif defined(VERSION_EU)
 #define X_VAL5 122.0f
@@ -1531,21 +1508,10 @@ s16 gCutsceneMsgTimer = 0;
 s8 gDialogCameraAngleIndex = CAM_SELECTION_MARIO;
 s8 gDialogCourseActNum = 1;
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define DIAG_VAL1 20
+#define DIAG_VAL1 (ROM_JP ? 20 : 16)
 #define DIAG_VAL2 240
-#define DIAG_VAL3 130
-#define DIAG_VAL4 4
-#else
-#define DIAG_VAL1 16
-#ifdef VERSION_US
-#define DIAG_VAL2 240
-#else
-#define DIAG_VAL2 238
-#endif
-#define DIAG_VAL3 132
-#define DIAG_VAL4 5
-#endif
+#define DIAG_VAL3 (ROM_JP ? 130 : 132)
+#define DIAG_VAL4 (ROM_JP ? 4 : 5)
 
 void render_dialog_entries(void) {
 #ifdef VERSION_EU
@@ -1841,19 +1807,10 @@ void do_cutscene_handler(void) {
     gCutsceneMsgTimer++;
 }
 
-#ifdef VERSION_JP
-#define PEACH_MESSAGE_TIMER 170
-#else
-#define PEACH_MESSAGE_TIMER 250
-#endif
+#define PEACH_MESSAGE_TIMER (ROM_JP ? 170 : 250)
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define STR_X 53
-#define STR_Y 136
-#else
-#define STR_X 38
-#define STR_Y 142
-#endif
+#define STR_X (ROM_JP ? 53 : 38)
+#define STR_Y (ROM_JP ? 136 : 142)
 
 // "Dear Mario" message handler
 void print_peach_letter_message(void) {
@@ -2022,21 +1979,19 @@ u8 gTextCourse[][7] = {
 #define textCourse gTextCourse
 #endif
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define CRS_NUM_X1 93
-#elif defined(VERSION_US)
-#define CRS_NUM_X1 100
+#if defined(VERSION_US)
+#define CRS_NUM_X1 (ROM_JP ? 93 : 100)
 #elif defined(VERSION_EU)
 #define CRS_NUM_X1 get_string_width(GameEngine_LoadTranslation(textCourse)) + 51
 #endif
 
 #ifdef VERSION_EU
 #define TXT_COURSE_X      48
-    #define TXT_STAR_X        89
-    #define ACT_NAME_X        107
-    #define LVL_NAME_X        108
-    #define SECRET_LVL_NAME_X get_str_x_pos_from_center(159, &courseName[3], 10.0f)
-    #define MYSCORE_X         48
+#define TXT_STAR_X        89
+#define ACT_NAME_X        107
+#define LVL_NAME_X        108
+#define SECRET_LVL_NAME_X get_str_x_pos_from_center(159, &courseName[3], 10.0f)
+#define MYSCORE_X         48
 #else
 #define TXT_COURSE_X      63
 #define TXT_STAR_X        98
@@ -2126,15 +2081,9 @@ void render_pause_my_score_coins(void) {
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define TXT1_X 4
-#define TXT2_X 116
-#define Y_VAL7 0
-#else
-#define TXT1_X 3
-#define TXT2_X 119
-#define Y_VAL7 2
-#endif
+#define TXT1_X (ROM_JP ? 4 : 3)
+#define TXT2_X (ROM_JP ? 116 : 119)
+#define Y_VAL7 (ROM_JP ? 0 : 2)
 
 void render_pause_camera_options(s16 x, s16 y, s8 *index, s16 xIndex) {
     handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 2);
@@ -2163,13 +2112,8 @@ void render_pause_camera_options(s16 x, s16 y, s8 *index, s16 xIndex) {
     }
 }
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define X_VAL8 0
-#define Y_VAL8 4
-#else
-#define X_VAL8 4
-#define Y_VAL8 2
-#endif
+#define X_VAL8 (ROM_JP ? 0 : 4)
+#define Y_VAL8 (ROM_JP ? 4 : 2)
 
 void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
 
@@ -2464,14 +2408,10 @@ s16 render_pause_courses_and_castle(void) {
     return MENU_OPT_NONE;
 }
 
-#if defined(VERSION_JP)
-#define TXT_HISCORE_X 112
-#define TXT_HISCORE_Y 48
-#define TXT_CONGRATS_X 60
-#elif defined(VERSION_US)
-#define TXT_HISCORE_X 109
-#define TXT_HISCORE_Y 36
-#define TXT_CONGRATS_X 70
+#if defined(VERSION_US)
+#define TXT_HISCORE_X (ROM_JP ? 112 : 109)
+#define TXT_HISCORE_Y (ROM_JP ? 48 : 36)
+#define TXT_CONGRATS_X (ROM_JP ? 60 : 70)
 #elif defined(VERSION_EU)
 #define TXT_HISCORE_X get_str_x_pos_from_center_scale(160, GameEngine_LoadTranslation(textHiScore), 12.0f)
     #define TXT_HISCORE_Y 36
@@ -2549,23 +2489,16 @@ void play_star_fanfare_and_flash_hud(s32 arg, u8 starNum) {
 
 #ifdef VERSION_EU
 #define TXT_NAME_X1 centerX
-    #define TXT_NAME_X2 centerX - 1
+#define TXT_NAME_X2 centerX - 1
 #else
 #define TXT_NAME_X1 71
 #define TXT_NAME_X2 TXT_NAME_X1 - 2
 #endif
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#define CRS_NUM_X2 95
+#define CRS_NUM_X2 (ROM_JP ? 95 : 104)
 #define CRS_NUM_X3 CRS_NUM_X2 - 2
-#define TXT_CLEAR_X1 205
+#define TXT_CLEAR_X1 (ROM_JP ? 205 : get_string_width(name) + 81)
 #define TXT_CLEAR_X2 TXT_CLEAR_X1 - 2
-#else
-#define CRS_NUM_X2 104
-#define CRS_NUM_X3 CRS_NUM_X2 - 2
-#define TXT_CLEAR_X1 get_string_width(name) + 81
-#define TXT_CLEAR_X2 TXT_CLEAR_X1 - 2
-#endif
 
 void render_course_complete_lvl_info_and_hud_str(void) {
     u8 *name;
