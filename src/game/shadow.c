@@ -466,7 +466,8 @@ void add_shadow_to_display_list(Gfx *displayListHead, Vtx *verts, s8 shadowVerte
             gSPDisplayList(displayListHead++, dl_shadow_circle);
             break;
         case SHADOW_SHAPE_SQUARE:
-            gSPDisplayList(displayListHead++, dl_shadow_square) break;
+            gSPDisplayList(displayListHead++, dl_shadow_square);
+            break;
     }
     switch (shadowVertexType) {
         case SHADOW_WITH_9_VERTS:

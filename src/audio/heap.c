@@ -1189,7 +1189,7 @@ void audio_reset_session(void) {
 #else
     reverbWindowSize = preset->reverbWindowSize;
     gMaxSimultaneousNotes = preset->maxSimultaneousNotes;
-    gSamplesPerFrameTarget = GameEngine_GetSampleRate() / 60;
+    gSamplesPerFrameTarget = ALIGN16(GameEngine_GetSampleRate() / 60);
     gReverbDownsampleRate = preset->reverbDownsampleRate;
 
     switch (gReverbDownsampleRate) {
