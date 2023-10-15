@@ -48,7 +48,7 @@ To develop using Visual Studio you only need to use cmake to generate the soluti
 ### Running the executable
 
 1. Copy over the smcube.otr you have generated into the directory containing your executable, e.g. `.\build\x64\Debug`
-2. From the GitHub, download the soh.otr and place that in the same directory as you smcube.otr
+2. Download the latest `sm64.otr` from the pins in the discord channel and place that in the same directory as you smcube.otr
 3. Now you can run the executable directly or from Visual Studio
 
 ## Linux
@@ -78,7 +78,7 @@ cmake --build build-cmake --target clean
 ### Running the executable
 
 1. Copy over the smcube.otr you have generated into the root directory if the repository
-2. From the GitHub, download the soh.otr and place that in the build directory, e.g. `./build-cmake`
+2. Download the latest `sm64.otr` from the pins in the discord channel and place that in the build directory, e.g. `./build-cmake`
 3. Now you can run the executable directly or from Visual Studio Code
 
 ## macOS
@@ -108,5 +108,5 @@ cmake --build build-cmake --target clean
 ### Running the executable
 
 1. Copy over the smcube.otr you have generated into the root directory if the repository
-2. From the GitHub, download the soh.otr and place that in the build directory, e.g. `./build-cmake`
+2. Download the latest `sm64.otr` from the pins in the discord channel and place that in the build directory, e.g. `./build-cmake`
 3. Now you can run the executable directly or from Visual Studio Code
