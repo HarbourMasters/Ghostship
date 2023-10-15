@@ -909,7 +909,7 @@ namespace UIWidgets {
             }
         }
         if (options.showButtons) {
-            if (Button("-", { .size = Sizes::Inline, .color = options.color }) && *value > min) {
+            if (Button("-", { .color = options.color, .size = Sizes::Inline }) && *value > min) {
                 *value -= options.step;
                 if (*value < min) *value = min;
                 LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
@@ -927,7 +927,7 @@ namespace UIWidgets {
         if (options.showButtons) {
             ImGui::SameLine(0, 3.0f);
             ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
-            if (Button("+", { .size = Sizes::Inline, .color = options.color }) && *value < max) {
+            if (Button("+", { .color = options.color, .size = Sizes::Inline }) && *value < max) {
                 *value += options.step;
                 if (*value > max) *value = max;
                 LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
@@ -980,7 +980,7 @@ namespace UIWidgets {
             }
         }
         if (options.showButtons) {
-            if (Button("-", { .size = Sizes::Inline, .color = options.color }) && *value > min) {
+            if (Button("-", { .color = options.color, .size = Sizes::Inline }) && *value > min) {
                 *value -= options.step;
                 if (*value < min) *value = min;
                 LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
@@ -999,7 +999,7 @@ namespace UIWidgets {
         if (options.showButtons) {
             ImGui::SameLine(0, 3.0f);
             ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
-            if (Button("+", { .size = Sizes::Inline, .color = options.color }) && *value < max) {
+            if (Button("+", { .color = options.color, .size = Sizes::Inline }) && *value < max) {
                 *value += options.step;
                 if (*value > max) *value = max;
                 LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
