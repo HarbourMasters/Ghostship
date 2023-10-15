@@ -22,14 +22,9 @@ include(FindFontconfig)
 
 if (WIN32)
 include(cmake/automate-vcpkg.cmake)
-
-if(MSVC)
+# TODO: Try to build on mingw even if its just garbage
 set(VCPKG_TRIPLET x64-windows-static)
 set(VCPKG_TARGET_TRIPLET x64-windows-static)
-else()
-set(VCPKG_TRIPLET x64-mingw-static)
-set(VCPKG_TARGET_TRIPLET x64-mingw-static)
-endif()
 
 vcpkg_bootstrap()
 vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libpng getopt dirent libusb pthread glew glfw3)
@@ -49,6 +44,7 @@ add_compile_definitions(
     VERSION_US=1
     F3DEX_GBI_2=1
 	GBI_FLOATS=1
+    ENABLE_RUMBLE=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
     CIMGUI_DEFINE_ENUMS_AND_STRUCTS
