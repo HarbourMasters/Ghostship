@@ -429,6 +429,7 @@ void DrawCheatsMenu() {
     if (UIWidgets::BeginMenu("Cheats")) {
         UIWidgets::CVarCheckbox("Infinite Health", "gInfiniteHealth");
         UIWidgets::CVarCheckbox("Infinite Lives", "gInfiniteLives");
+        UIWidgets::CVarCheckbox("Infinite Cap Timer", "gInfiniteCapTimer");
 
         ImGui::EndMenu();
     }
