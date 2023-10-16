@@ -6362,8 +6362,8 @@ struct CameraTrigger sCamBBH[] = {
 };
 
 #define _ NULL
-#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, cameratable) cameratable,
-#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, cameratable) cameratable,
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, cameratable, _9) cameratable,
+#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, cameratable, _11) cameratable,
 
 /*
  * This table has an extra 2 levels after the last unknown_38 stub level. What I think
@@ -10777,9 +10777,9 @@ struct Cutscene sCutsceneReadMessage[] = {
 
 #define DANCE_ENTRY(c) { DROT(c, 0), DROT(c, 1), DROT(c, 2), DROT(c, 3) },
 
-#define DEFINE_COURSE(_0, cutscenes) DANCE_ENTRY(cutscenes)
+#define DEFINE_COURSE(_0, cutscenes, _2) DANCE_ENTRY(cutscenes)
 #define DEFINE_COURSES_END()
-#define DEFINE_BONUS_COURSE(_0, cutscenes) DANCE_ENTRY(cutscenes)
+#define DEFINE_BONUS_COURSE(_0, cutscenes, _2) DANCE_ENTRY(cutscenes)
 
 /**
  * Each hex digit is an index into sDanceCutsceneTable.
