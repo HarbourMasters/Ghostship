@@ -26,7 +26,7 @@ void RegisterCheatsHooks() {
         }
 
         if (CVarGetInteger("gInfiniteCapTimer", 0) && (gMarioState->flags & MARIO_CAP_ON_HEAD) && (gMarioState->flags & MARIO_SPECIAL_CAPS)) {
-            gMarioState->capTimer = 1200;
+            gMarioState->capTimer = 64;
         }
     });
 }
