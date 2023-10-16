@@ -15,17 +15,17 @@ void bhv_mips_init(void) {
     if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 15
         && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_1))) {
         o->oBehParams2ndByte = 0;
-#ifndef VERSION_JP
-        o->oMipsForwardVelocity = 40.0f;
-#endif
+        if(!ROM_JP){
+            o->oMipsForwardVelocity = 40.0f;
+        }
     }
     // If the player has >= 50 stars and hasn't collected second MIPS star...
     else if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 50
              && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_2))) {
         o->oBehParams2ndByte = 1;
-#ifndef VERSION_JP
-        o->oMipsForwardVelocity = 45.0f;
-#endif
+        if(!ROM_JP){
+            o->oMipsForwardVelocity = 45.0f;
+        }
     } else {
         // No MIPS stars are available, hide MIPS.
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
@@ -33,11 +33,7 @@ void bhv_mips_init(void) {
 
     o->oInteractionSubtype = INT_SUBTYPE_HOLDABLE_NPC;
 
-#ifndef VERSION_JP
-    o->oGravity = 15.0f;
-#else
-    o->oGravity = 2.5f;
-#endif
+    o->oGravity = !ROM_JP ? 15.0f : 2.5f;
     o->oFriction = 0.89f;
     o->oBuoyancy = 1.2f;
 
@@ -119,11 +115,7 @@ void bhv_mips_act_follow_path(void) {
     followStatus = cur_obj_follow_path(followStatus);
 
     // Update velocity and angle and do movement.
-#ifndef VERSION_JP
-    o->oForwardVel = o->oMipsForwardVelocity;
-#else
-    o->oForwardVel = 45.0f;
-#endif
+    o->oForwardVel = !ROM_JP ? o->oMipsForwardVelocity : 45.0f;
     o->oMoveAngleYaw = o->oPathedTargetYaw;
     collisionFlags = object_step();
 

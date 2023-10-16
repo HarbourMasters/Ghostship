@@ -8,7 +8,6 @@
 #include "load.h"
 #include "seqplayer.h"
 #include "sound/sound_data.h"
-#include "sequences_table.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -65,8 +64,6 @@ u16 gSequenceCount;
 #if defined(VERSION_EU)
 u32 padEuBss1;
 struct AudioBufferParametersEU gAudioBufferParameters;
-#elif defined(VERSION_US) || defined(VERSION_JP)
-s32 gAiFrequency;
 #endif
 
 u32 sDmaBufSize;
@@ -200,11 +197,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
 
     if (arg2 != 0 || *dmaIndexRef >= sSampleDmaListSize1) {
         for (i = sSampleDmaListSize1; i < gSampleDmaNumListItems; i++) {
-#if defined(VERSION_EU)
             dma = &sSampleDmas[i];
-#else
-            dma = sSampleDmas + i;
-#endif
             bufferPos = devAddr - dma->source;
             if (0 <= bufferPos && (size_t) bufferPos <= dma->bufSize - size) {
                 // We already have a DMA request for this memory range.
@@ -221,11 +214,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
                 }
                 dma->ttl = 60;
                 *dmaIndexRef = (u8) i;
-#if defined(VERSION_EU)
                 return &dma->buffer[(devAddr - dma->source)];
-#else
-                return (devAddr - dma->source) + dma->buffer;
-#endif
             }
         }
 
@@ -297,7 +286,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
     osPiStartDma(&gCurrAudioFrameDmaIoMesgBufs[gCurrAudioFrameDmaCount - 1], OS_MESG_PRI_NORMAL,
                  OS_READ, dmaDevAddr, dma->buffer, transfer, &gCurrAudioFrameDmaQueue);
     *dmaIndexRef = dmaIndex;
-    return dma->buffer + (devAddr - dmaDevAddr);
+    return (devAddr - dmaDevAddr) + dma->buffer;
 #endif
 }
 
@@ -313,7 +302,7 @@ void init_sample_dma_buffers(UNUSED s32 arg0) {
 #if defined(VERSION_EU)
     sDmaBufSize = 0x400;
 #else
-    sDmaBufSize = 144 * 9;
+    sDmaBufSize = 0x800;
 #endif
 
 #if defined(VERSION_EU)
@@ -403,7 +392,7 @@ uint8_t* load_sequence_immediate(s32 seqId, s32 arg1) {
 
 struct CtlEntry* load_banks_immediate(s32 seqId, u8 *outDefaultBank) {
     u32 bankId;
-    struct AudioSequenceData *seqData = ResourceGetDataByName(gSequenceTable[seqId]);
+    struct AudioSequenceData *seqData = GameEngine_LoadSequence(seqId);
     struct CtlEntry *output;
     for(size_t i = 0; i < seqData->bankCount; i++) {
         output = GameEngine_LoadBank(bankId = seqData->banks[i]);
@@ -544,11 +533,12 @@ void audio_init() {
     gAudioResetStatus = 1;
     audio_shut_down_and_reset_step();
 #else
-    audio_reset_session(&gAudioSessionPresets[0]);
+    struct AudioSessionSettings* settings = ROM_JP ? &gAudioSessionPresetsJP[0] : &gAudioSessionPresetsUS[0];
+    audio_reset_session(settings);
 #endif
 
     // Load headers for sounds and sequences
-    gSequenceCount = sizeof(gSequenceTable) / sizeof(gSequenceTable[0]);
+    gSequenceCount = GameEngine_GetSequenceCount();
     init_sequence_players();
     gAudioLoadLock = AUDIO_LOCK_NOT_LOADING;
 

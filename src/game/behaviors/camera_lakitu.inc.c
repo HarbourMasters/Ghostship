@@ -96,12 +96,10 @@ static void camera_lakitu_intro_act_show_dialog(void) {
 
                 approach_f32_ptr(&o->oCameraLakituCircleRadius, 200.0f, 50.0f);
                 if (o->oDistanceToMario < 1000.0f) {
-#ifndef VERSION_JP
-                    if (!o->oCameraLakituUnk104) {
+                    if (!ROM_JP && !o->oCameraLakituUnk104) {
                         play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(15, SEQ_EVENT_CUTSCENE_LAKITU), 0);
                         o->oCameraLakituUnk104 = TRUE;
                     }
-#endif
                     // Once within 1000 units, slow down
                     approach_f32_ptr(&o->oCameraLakituSpeed, 20.0f, 1.0f);
                     if (o->oDistanceToMario < 500.0f

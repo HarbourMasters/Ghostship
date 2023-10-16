@@ -331,19 +331,15 @@ void bowser_bitdw_actions(void) {
         o->oBowserIsReacting = FALSE;
         // Set starting Bowser level actions, randomly he can also start
         // dancing after the introduction
-#ifndef VERSION_JP
-        if (gCurrDemoInput == NULL) { // demo check because entry exits post JP
-#endif
+        if (ROM_JP || gCurrDemoInput == NULL) { // demo check because entry exits post JP
             if (rand < 0.1) {
                 o->oAction = BOWSER_ACT_DANCE; // 10% chance
             } else {
                 o->oAction = BOWSER_ACT_WALK_TO_MARIO; // common
             }
-#ifndef VERSION_JP
         } else {
             o->oAction = BOWSER_ACT_WALK_TO_MARIO;
         }
-#endif
     }
 }
 

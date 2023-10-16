@@ -94,29 +94,29 @@ Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUS
 
             objectGraphNode->oAnimState = 1;
 
-#ifdef VERSION_JP
-            if (currentGraphNode->parameter == 10) {
-                if (gDebugInfo[DEBUG_PAGE_ENEMYINFO][3]) {
-                    gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
+            if(ROM_JP){
+                if (currentGraphNode->parameter == 10) {
+                    if (gDebugInfo[DEBUG_PAGE_ENEMYINFO][3]) {
+                        gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
+                    }
+                } else {
+                    if (objectGraphNode->activeFlags & ACTIVE_FLAG_DITHERED_ALPHA) {
+                        gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
+                    }
                 }
-            } else {
-                if (objectGraphNode->activeFlags & ACTIVE_FLAG_DITHERED_ALPHA) {
-                    gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
+            } else { // gDebugInfo accesses were removed in all non-JP versions.
+                if (objectOpacity == 0 && segmented_to_virtual(bhvBowser) == objectGraphNode->behavior) {
+                    objectGraphNode->oAnimState = 2;
+                }
+                // the debug info check was removed in US. so we need to
+                // perform the only necessary check instead of the debuginfo
+                // one.
+                if (currentGraphNode->parameter != 10) {
+                    if (objectGraphNode->activeFlags & ACTIVE_FLAG_DITHERED_ALPHA) {
+                        gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
+                    }
                 }
             }
-#else // gDebugInfo accesses were removed in all non-JP versions.
-            if (objectOpacity == 0 && segmented_to_virtual(bhvBowser) == objectGraphNode->behavior) {
-                objectGraphNode->oAnimState = 2;
-            }
-            // the debug info check was removed in US. so we need to
-            // perform the only necessary check instead of the debuginfo
-            // one.
-            if (currentGraphNode->parameter != 10) {
-                if (objectGraphNode->activeFlags & ACTIVE_FLAG_DITHERED_ALPHA) {
-                    gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
-                }
-            }
-#endif
         }
 
         gDPSetEnvColor(dlHead++, 255, 255, 255, objectOpacity);
@@ -1536,6 +1536,7 @@ void cur_obj_set_pos_to_home(void) {
     o->oPosX = o->oHomeX;
     o->oPosY = o->oHomeY;
     o->oPosZ = o->oHomeZ;
+    o->header.gfx.skipInterpolationTimestamp = gGlobalTimer;
 }
 
 void cur_obj_set_pos_to_home_and_stop(void) {
@@ -1725,13 +1726,10 @@ static void cur_obj_update_floor(void) {
     if (floor != NULL) {
         if (floor->type == SURFACE_BURNING) {
             o->oMoveFlags |= OBJ_MOVE_ABOVE_LAVA;
-        }
-#ifndef VERSION_JP
-        else if (floor->type == SURFACE_DEATH_PLANE) {
+        } else if (!ROM_JP && floor->type == SURFACE_DEATH_PLANE) {
             //! This misses SURFACE_VERTICAL_WIND (and maybe SURFACE_WARP)
             o->oMoveFlags |= OBJ_MOVE_ABOVE_DEATH_BARRIER;
         }
-#endif
 
         o->oFloorType = floor->type;
         o->oFloorRoom = floor->room;
@@ -1742,11 +1740,11 @@ static void cur_obj_update_floor(void) {
 }
 
 static void cur_obj_update_floor_and_resolve_wall_collisions(s16 steepSlopeDegrees) {
-#ifdef VERSION_JP
-    o->oMoveFlags &= ~OBJ_MOVE_ABOVE_LAVA;
-#else
-    o->oMoveFlags &= ~(OBJ_MOVE_ABOVE_LAVA | OBJ_MOVE_ABOVE_DEATH_BARRIER);
-#endif
+    if(ROM_JP){
+        o->oMoveFlags &= ~OBJ_MOVE_ABOVE_LAVA;
+    } else {
+        o->oMoveFlags &= ~(OBJ_MOVE_ABOVE_LAVA | OBJ_MOVE_ABOVE_DEATH_BARRIER);
+    }
 
     if (o->activeFlags & (ACTIVE_FLAG_FAR_AWAY | ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         cur_obj_update_floor();
@@ -2897,11 +2895,9 @@ void cur_obj_spawn_loot_blue_coin(void) {
     }
 }
 
-#ifndef VERSION_JP
 void cur_obj_spawn_star_at_y_offset(f32 targetX, f32 targetY, f32 targetZ, f32 offsetY) {
     f32 objectPosY = o->oPosY;
     o->oPosY += offsetY + gDebugInfo[DEBUG_PAGE_ENEMYINFO][0];
     spawn_default_star(targetX, targetY, targetZ);
     o->oPosY = objectPosY;
 }
-#endif

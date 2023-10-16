@@ -8,7 +8,8 @@
 extern u8 dl_menu_idle_hand[];
 extern u8 dl_menu_grabbing_hand[];
 extern u8 menu_hud_lut[];
-extern u8 menu_font_lut[];
+extern u8 menu_font_lut_us[];
+extern u8 menu_font_lut_jp[];
 extern u8 dl_menu_ia8_text_begin[];
 extern u8 dl_menu_ia8_text_end[];
 extern u8 dl_menu_rgba16_wood_course[];

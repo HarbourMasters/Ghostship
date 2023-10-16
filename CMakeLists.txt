@@ -22,6 +22,8 @@ include(FindFontconfig)
 
 if (WIN32)
 include(cmake/automate-vcpkg.cmake)
+# Forced to use MSVC
+set(MSVC ON)
 
 if(MSVC)
 set(VCPKG_TRIPLET x64-windows-static)
@@ -44,35 +46,12 @@ endif()
 # Set game compilation version
 set(VERSION us)
 
-# Add the tools subdirectory to the build
-add_subdirectory(tools)
-
-# Find Python 3 for the custom target
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
-
-# Add a custom target to extract assets
-add_custom_target(
-    ExtractAssets
-    COMMAND ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py ${VERSION}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMENT "Running asset extraction..."
-    DEPENDS Tools
-)
-
-# Add a custom target to extract assets
-add_custom_target(
-    CleanAssets
-    COMMAND  ${CMAKE_COMMAND} -E env "TOOLS_PATH=$<TARGET_FILE_DIR:mio0>" ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/extract_assets.py --clean
-    COMMAND  ${CMAKE_COMMAND} -E remove ${CMAKE_CURRENT_SOURCE_DIR}/.assets-local.txt
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMENT "Running asset extraction..."
-    DEPENDS Tools
-)
-
 # Add compile definitions for the target
 add_compile_definitions(
     VERSION_US=1
     F3DEX_GBI_2=1
+	GBI_FLOATS=1
+    ENABLE_RUMBLE=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
     CIMGUI_DEFINE_ENUMS_AND_STRUCTS
@@ -129,6 +108,10 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/*.h"
     "src/port/*.c"
     "src/port/*.cpp"
+    "src/port/Enhancements/*.h"
+    "src/port/Enhancements/*.cpp"
+    "src/port/Enhancements/game-interactor/*.h"
+    "src/port/Enhancements/game-interactor/*.cpp"
     "src/port/importer/*.cpp"
     "src/port/importer/types/*.cpp"
     "text/*.c"
@@ -141,45 +124,6 @@ list(FILTER ALL_FILES EXCLUDE REGEX ".*.inc.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "bin/eu/.*.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/game/main.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
-
-
-#==============================================================================#
-# Generated Source Code Files                                                  #
-#==============================================================================#
-
-set(INC_C_FILES "")
-
-add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/text/us
-  COMMAND ${CPP} -I${CMAKE_CURRENT_SOURCE_DIR}/text/us ${CMAKE_CURRENT_SOURCE_DIR}/text/define_text.inc.c > ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
-)
-
-add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c
-  COMMAND $<TARGET_FILE:textconv> ${CMAKE_CURRENT_SOURCE_DIR}/charmap.txt  ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c
-  VERBATIM
-  DEPENDS textconv
-  DEPENDS  ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text-tmp
-)
-
-list(APPEND INC_C_FILES ${CMAKE_CURRENT_BINARY_DIR}/text/us/define_text.inc.c)
-
-add_custom_command(
-    OUTPUT  include/text_strings.h
-    COMMAND $<TARGET_FILE:textconv> charmap.txt ${CMAKE_CURRENT_SOURCE_DIR}/include/text_strings.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/text_strings.h
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS textconv
-)
-list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/include/text_strings.h)
-
-add_custom_command(
-    OUTPUT  include/text_menu_strings.h
-    COMMAND $<TARGET_FILE:textconv> charmap_menu.txt ${CMAKE_CURRENT_SOURCE_DIR}/include/text_menu_strings.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/text_menu_strings.h
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DEPENDS textconv
-)
-list(APPEND ALL_FILES ${CMAKE_CURRENT_BINARY_DIR}/include/text_menu_strings.h)
 
 add_executable(${PROJECT_NAME} ${ALL_FILES} ${GENERATED_SOURCES})
 
@@ -345,7 +289,6 @@ if(MSVC)
               /W3;
               /MT
           >
-          /sdl-;
           /permissive-;
           /MP;
           ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
@@ -355,16 +298,16 @@ if(MSVC)
   elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
       target_compile_options(${PROJECT_NAME} PRIVATE
           $<$<CONFIG:Debug>:
-              /RTCs
+              /MTd
           >
           $<$<CONFIG:Release>:
               /O2;
               /Oi;
-              /Gy
+              /Gy;
+              /MT
           >
           /permissive-;
           /MP;
-          /sdl-;
           /w;
           ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
           ${DEFAULT_CXX_EXCEPTION_HANDLING}
@@ -401,6 +344,14 @@ if(MSVC)
           /SUBSYSTEM:WINDOWS
       )
   endif()
+
+  # Remove /RTC from msvc flags
+  foreach (fentry
+    CMAKE_C_FLAGS
+    CMAKE_CXX_FLAGS
+  )
+    string (REGEX REPLACE "/RTC(su|[1su])" "" ${fentry} "${${fentry}}")
+  endforeach(fentry)
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
@@ -506,10 +457,3 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
       )
   endif()
 endif()
-
-add_custom_target(
-  ConvertIncCFiles
-  DEPENDS ${INC_C_FILES}
-)
-
-add_dependencies(${PROJECT_NAME} ConvertIncCFiles)
