@@ -298,7 +298,6 @@ if(MSVC)
   elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
       target_compile_options(${PROJECT_NAME} PRIVATE
           $<$<CONFIG:Debug>:
-              /RTCs;
               /MTd
           >
           $<$<CONFIG:Release>:
@@ -345,6 +344,14 @@ if(MSVC)
           /SUBSYSTEM:WINDOWS
       )
   endif()
+
+  # Remove /RTC from msvc flags
+  foreach (fentry
+    CMAKE_C_FLAGS
+    CMAKE_CXX_FLAGS
+  )
+    string (REGEX REPLACE "/RTC(su|[1su])" "" ${fentry} "${${fentry}}")
+  endforeach(fentry)
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
