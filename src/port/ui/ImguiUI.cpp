@@ -1,6 +1,7 @@
 #include "ImguiUI.h"
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
+#include "SaveEditor.h"
 
 #include <spdlog/spdlog.h>
 #include <ImGui/imgui.h>
@@ -18,6 +19,7 @@ std::shared_ptr<GameMenuBar> mGameMenuBar;
 std::shared_ptr<LUS::GuiWindow> mConsoleWindow;
 std::shared_ptr<LUS::GuiWindow> mStatsWindow;
 std::shared_ptr<LUS::GuiWindow> mInputEditorWindow;
+std::shared_ptr<SaveEditorWindow> mSaveEditorWindow;
 std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
 void SetupGuiElements() {
@@ -48,10 +50,13 @@ void SetupGuiElements() {
 
     mAdvancedResolutionSettingsWindow = std::make_shared<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow>("gAdvancedResolutionEditorEnabled", "Advanced Resolution Settings");
     gui->AddGuiWindow(mAdvancedResolutionSettingsWindow);
+    mSaveEditorWindow = std::make_shared<SaveEditorWindow>("gSaveEditorEnabled", "Save Editor");
+    gui->AddGuiWindow(mSaveEditorWindow);
 }
 
 void Destroy() {
     mAdvancedResolutionSettingsWindow = nullptr;
+    mSaveEditorWindow = nullptr;
     mConsoleWindow = nullptr;
     mStatsWindow = nullptr;
     mInputEditorWindow = nullptr;
@@ -461,6 +466,7 @@ void DrawDebugMenu() {
         }
         UIWidgets::Spacer(0);
 
+        UIWidgets::WindowButton("Save Editor", "gSaveEditorEnabled", GameUI::mSaveEditorWindow);
         UIWidgets::WindowButton("Stats", "gStatsEnabled", GameUI::mStatsWindow, {
             .tooltip = "Shows the stats window, with your FPS and frametimes, and the OS you're playing on"
         });
