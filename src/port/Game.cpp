@@ -7,9 +7,8 @@ extern "C" {
 #include "audio/external.h"
 #include "game/game_init.h"
 #include "sm64.h"
-}
-
 float gInterpolationStep = 0.0f;
+}
 
 void alloc_pool() {
     static u64 pool[1024 * 1024 * 4];
