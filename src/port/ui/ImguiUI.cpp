@@ -81,24 +81,24 @@ void DrawSettingsMenu(){
     if(UIWidgets::BeginMenu("Settings")){
         if (UIWidgets::BeginMenu("Audio")) {
             UIWidgets::CVarSliderFloat("Master Volume", "gGameMasterVolume", 0.0f, 1.0f, 1.0f, {
-                .isPercentage = true,
                 .format = "%.0f%%",
+                .isPercentage = true,
             });
             if (UIWidgets::CVarSliderFloat("Main Music Volume", "gMainMusicVolume", 0.0f, 1.0f, 1.0f, {
-                .isPercentage = true,
                 .format = "%.0f%%",
+                .isPercentage = true,
             })) {
                 audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f));
             }
             if (UIWidgets::CVarSliderFloat("Sound Effects Volume", "gSFXMusicVolume", 0.0f, 1.0f, 1.0f, {
-                .isPercentage = true,
                 .format = "%.0f%%",
+                .isPercentage = true,
             })) {
                 audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f));
             }
             if (UIWidgets::CVarSliderFloat("Environment Volume", "gEnvironmentVolume", 0.0f, 1.0f, 1.0f, {
-                .isPercentage = true,
                 .format = "%.0f%%",
+                .isPercentage = true,
             })) {
                 audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f));
             }
@@ -148,8 +148,8 @@ void DrawSettingsMenu(){
             });
             if (CVarGetInteger("gInputEnabled", 0)) {
                 UIWidgets::CVarSliderFloat("Input Scale", "gInputScale", 1.0f, 3.0f, 1.0f, {
+                    .tooltip = "Sets the on screen size of the displayed inputs from the Show Inputs setting",
                     .format = "%.1fx",
-                    .tooltip = "Sets the on screen size of the displayed inputs from the Show Inputs setting"
                 });
             }
 
