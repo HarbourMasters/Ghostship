@@ -4,13 +4,13 @@
 // Start of the 3 cap courses in a row.
 #define COURSE_CAP_COURSES COURSE_COTMC
 
-#define DEFINE_COURSE(courseenum, _1) courseenum,
+#define DEFINE_COURSE(courseenum, _1, _2) courseenum,
 #define DEFINE_COURSES_END() \
     COURSE_BONUS_STAGES, \
     COURSE_STAGES_MAX = COURSE_BONUS_STAGES - 1, \
     COURSE_STAGES_COUNT = COURSE_STAGES_MAX,
 
-#define DEFINE_BONUS_COURSE(courseenum, _1) courseenum,
+#define DEFINE_BONUS_COURSE(courseenum, _1, _2) courseenum,
 
 enum CourseNum {
     #include "levels/course_defines.h"
