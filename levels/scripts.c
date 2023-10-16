@@ -36,8 +36,8 @@
 
 #include "level_table.h"
 
-#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
-#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) + 3
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9)
+#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11) + 3
 static const LevelScript script_exec_level_table[2
     #include "levels/level_defines.h"
 ];
@@ -50,8 +50,8 @@ static const LevelScript goto_mario_head_regular[4];
 static const LevelScript goto_mario_head_dizzy[4];
 static const LevelScript script_L5[4];
 
-#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
-#define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10) static const LevelScript script_exec_ ## folder [4 + 1];
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9)
+#define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10, _11) static const LevelScript script_exec_ ## folder [4 + 1];
 
 #include "level_defines.h"
 
@@ -148,9 +148,9 @@ static const LevelScript script_L5[] = {
 
 // Include the level jumptable.
 
-#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9)
 
-#define DEFINE_LEVEL(_0, levelenum, _2, folder, _4, _5, _6, _7, _8, _9, _10) JUMP_IF(OP_EQ, levelenum, script_exec_ ## folder),
+#define DEFINE_LEVEL(_0, levelenum, _2, folder, _4, _5, _6, _7, _8, _9, _10, _11) JUMP_IF(OP_EQ, levelenum, script_exec_ ## folder),
 
 static const LevelScript script_exec_level_table[] = {
     GET_OR_SET(/*op*/ OP_GET, /*var*/ VAR_CURR_LEVEL_NUM),
@@ -159,7 +159,7 @@ static const LevelScript script_exec_level_table[] = {
 };
 #undef DEFINE_LEVEL
 
-#define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10) \
+#define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10, _11) \
 static const LevelScript script_exec_ ## folder [] = { \
     EXECUTE(0x0E, _ ## folder ## SegmentRomStart, _ ## folder ## SegmentRomEnd, level_ ## folder ## _entry), \
     RETURN(), \
