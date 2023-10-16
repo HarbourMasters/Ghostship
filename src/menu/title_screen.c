@@ -24,8 +24,8 @@
  * and a level select used for testing purposes.
  */
 
-#define STUB_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8) textname,
-#define DEFINE_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) textname,
+#define STUB_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9) textname,
+#define DEFINE_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11) textname,
 
 static char sLevelSelectStageNames[64][16] = {
     #include "levels/level_defines.h"
@@ -33,46 +33,14 @@ static char sLevelSelectStageNames[64][16] = {
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
 
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, textname) textname,
+#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, textname) textname,
+
 static char sBetterLevelSelectStageNames[38][31] = {
-    "",
-    "",
-    "",
-    "Big Boos Haunt",
-    "Cool Cool Mountain",
-    "Inside Peachs Castle",
-    "Hazy Maze Cave",
-    "Shifting Sand Land",
-    "Bobomb Battlefield",
-    "Snowmans Land",
-    "Wet Dry World",
-    "Jolly Roger Bay",
-    "Tiny Huge Island",
-    "Tick Tock Clock",
-    "Rainbow Ride",
-    "Outside the Castle",
-    "Bowser in the Dark World",
-    "Vanish Cap Under the Moat",
-    "Bowser in the Fire Sea",
-    "The Secret Aquarium",
-    "Bowser in the Sky",
-    "Lethal Lava Land",
-    "Dire Dire Docks",
-    "Whomps Fortress",
-    "The End",
-    "Castle Courtyard",
-    "Secret Slide",
-    "Cavern of the Metal Cap",
-    "Tower of the Wing Cap",
-    "Bowser in the Dark World Boss",
-    "Wing Mario Over the Rainbow",
-    "",
-    "Bowser in the Fire Sea Boss",
-    "Bowser in the Sky Boss",
-    "",
-    "Tall Tall Mountain",
-    "",
-    "",
+    #include "levels/level_defines.h"
 };
+#undef STUB_LEVEL
+#undef DEFINE_LEVEL
 
 static u16 sDemoCountdown = 0;
 static s16 sPlayMarioGreeting = TRUE;
