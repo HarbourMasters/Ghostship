@@ -5,9 +5,6 @@
 #include "surface_terrains.h"
 #include "types.h"
 
-#ifdef VERSION_EU
-#include "text_strings.h"
-#endif
 #include "make_const_nonconst.h"
 
 // 0x07000000 - 0x07000018
@@ -529,7 +526,6 @@ const Texture *const menu_hud_lut[] = {
     texture_menu_hud_char_katakana_sa,       texture_menu_hud_char_katakana_u,         texture_menu_hud_char_katakana_n, texture_menu_hud_char_kana_dakuten_do,
 };
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
 UNUSED static const u64 menu_unused_0 = 0;
 
 // 0x0700AC48
@@ -925,250 +921,181 @@ ALIGNED8 static const Texture texture_menu_font_char_jp_multiply[] = "__OTR__lev
 // 0x0700CCC8
 ALIGNED8 static const Texture texture_menu_font_char_jp_exclamation[] = "__OTR__levels/menu/main_menu_seg7.0CCC8";
 
-#else
-
 // 0x0700AC40
-ALIGNED8 static const Texture texture_menu_font_char_0[] = "__OTR__levels/menu/main_menu_seg7_us.0AC40";
+ALIGNED8 static const Texture texture_menu_font_char_0[] = "__OTR__levels/menu/main_menu_seg7.0AC40";
 
 // 0x0700AC80
-ALIGNED8 static const Texture texture_menu_font_char_1[] = "__OTR__levels/menu/main_menu_seg7_us.0AC80";
+ALIGNED8 static const Texture texture_menu_font_char_1[] = "__OTR__levels/menu/main_menu_seg7.0AC80";
 
 // 0x0700ACC0
-ALIGNED8 static const Texture texture_menu_font_char_2[] = "__OTR__levels/menu/main_menu_seg7_us.0ACC0";
+ALIGNED8 static const Texture texture_menu_font_char_2[] = "__OTR__levels/menu/main_menu_seg7.0ACC0";
 
 // 0x0700AD00
-ALIGNED8 static const Texture texture_menu_font_char_3[] = "__OTR__levels/menu/main_menu_seg7_us.0AD00";
+ALIGNED8 static const Texture texture_menu_font_char_3[] = "__OTR__levels/menu/main_menu_seg7.0AD00";
 
 // 0x0700AD40
-ALIGNED8 static const Texture texture_menu_font_char_4[] = "__OTR__levels/menu/main_menu_seg7_us.0AD40";
+ALIGNED8 static const Texture texture_menu_font_char_4[] = "__OTR__levels/menu/main_menu_seg7.0AD40";
 
 // 0x0700AD80
-ALIGNED8 static const Texture texture_menu_font_char_5[] = "__OTR__levels/menu/main_menu_seg7_us.0AD80";
+ALIGNED8 static const Texture texture_menu_font_char_5[] = "__OTR__levels/menu/main_menu_seg7.0AD80";
 
 // 0x0700ADC0
-ALIGNED8 static const Texture texture_menu_font_char_6[] = "__OTR__levels/menu/main_menu_seg7_us.0ADC0";
+ALIGNED8 static const Texture texture_menu_font_char_6[] = "__OTR__levels/menu/main_menu_seg7.0ADC0";
 
 // 0x0700AE00
-ALIGNED8 static const Texture texture_menu_font_char_7[] = "__OTR__levels/menu/main_menu_seg7_us.0AE00";
+ALIGNED8 static const Texture texture_menu_font_char_7[] = "__OTR__levels/menu/main_menu_seg7.0AE00";
 
 // 0x0700AE40
-ALIGNED8 static const Texture texture_menu_font_char_8[] = "__OTR__levels/menu/main_menu_seg7_us.0AE40";
+ALIGNED8 static const Texture texture_menu_font_char_8[] = "__OTR__levels/menu/main_menu_seg7.0AE40";
 
 // 0x0700AE80
-ALIGNED8 static const Texture texture_menu_font_char_9[] = "__OTR__levels/menu/main_menu_seg7_us.0AE80";
+ALIGNED8 static const Texture texture_menu_font_char_9[] = "__OTR__levels/menu/main_menu_seg7.0AE80";
 
 // 0x0700AEC0
-ALIGNED8 static const Texture texture_menu_font_char_A[] = "__OTR__levels/menu/main_menu_seg7_us.0AEC0";
+ALIGNED8 static const Texture texture_menu_font_char_A[] = "__OTR__levels/menu/main_menu_seg7.0AEC0";
 
 // 0x0700AF00
-ALIGNED8 static const Texture texture_menu_font_char_B[] = "__OTR__levels/menu/main_menu_seg7_us.0AF00";
+ALIGNED8 static const Texture texture_menu_font_char_B[] = "__OTR__levels/menu/main_menu_seg7.0AF00";
 
 // 0x0700AF40
-ALIGNED8 static const Texture texture_menu_font_char_C[] = "__OTR__levels/menu/main_menu_seg7_us.0AF40";
+ALIGNED8 static const Texture texture_menu_font_char_C[] = "__OTR__levels/menu/main_menu_seg7.0AF40";
 
 #ifdef VERSION_EU
 // 0x0700AF80
-ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7_eu.0AF80";
+ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7.0AF80";
 
 #else
 
 // 0x0700AF80
-ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7_us.0AF80";
+ALIGNED8 static const Texture texture_menu_font_char_D[] = "__OTR__levels/menu/main_menu_seg7.0AF80";
 #endif
 
 // 0x0700AFC0
-ALIGNED8 static const Texture texture_menu_font_char_E[] = "__OTR__levels/menu/main_menu_seg7_us.0AFC0";
+ALIGNED8 static const Texture texture_menu_font_char_E[] = "__OTR__levels/menu/main_menu_seg7.0AFC0";
 
 // 0x0700B000
-ALIGNED8 static const Texture texture_menu_font_char_F[] = "__OTR__levels/menu/main_menu_seg7_us.0B000";
+ALIGNED8 static const Texture texture_menu_font_char_F[] = "__OTR__levels/menu/main_menu_seg7.0B000";
 
 // 0x0700B040
-ALIGNED8 static const Texture texture_menu_font_char_G[] = "__OTR__levels/menu/main_menu_seg7_us.0B040";
+ALIGNED8 static const Texture texture_menu_font_char_G[] = "__OTR__levels/menu/main_menu_seg7.0B040";
 
 // 0x0700B080
-ALIGNED8 static const Texture texture_menu_font_char_H[] = "__OTR__levels/menu/main_menu_seg7_us.0B080";
+ALIGNED8 static const Texture texture_menu_font_char_H[] = "__OTR__levels/menu/main_menu_seg7.0B080";
 
 // 0x0700B0C0
-ALIGNED8 static const Texture texture_menu_font_char_I[] = "__OTR__levels/menu/main_menu_seg7_us.0B0C0";
+ALIGNED8 static const Texture texture_menu_font_char_I[] = "__OTR__levels/menu/main_menu_seg7.0B0C0";
 
 // 0x0700B100
-ALIGNED8 static const Texture texture_menu_font_char_J[] = "__OTR__levels/menu/main_menu_seg7_us.0B100";
+ALIGNED8 static const Texture texture_menu_font_char_J[] = "__OTR__levels/menu/main_menu_seg7.0B100";
 
 // 0x0700B140
-ALIGNED8 static const Texture texture_menu_font_char_K[] = "__OTR__levels/menu/main_menu_seg7_us.0B140";
+ALIGNED8 static const Texture texture_menu_font_char_K[] = "__OTR__levels/menu/main_menu_seg7.0B140";
 
 // 0x0700B180
-ALIGNED8 static const Texture texture_menu_font_char_L[] = "__OTR__levels/menu/main_menu_seg7_us.0B180";
+ALIGNED8 static const Texture texture_menu_font_char_L[] = "__OTR__levels/menu/main_menu_seg7.0B180";
 
 // 0x0700B1C0
-ALIGNED8 static const Texture texture_menu_font_char_M[] = "__OTR__levels/menu/main_menu_seg7_us.0B1C0";
+ALIGNED8 static const Texture texture_menu_font_char_M[] = "__OTR__levels/menu/main_menu_seg7.0B1C0";
 
 // 0x0700B200
-ALIGNED8 static const Texture texture_menu_font_char_N[] = "__OTR__levels/menu/main_menu_seg7_us.0B200";
+ALIGNED8 static const Texture texture_menu_font_char_N[] = "__OTR__levels/menu/main_menu_seg7.0B200";
 
 // 0x0700B240
-ALIGNED8 static const Texture texture_menu_font_char_O[] = "__OTR__levels/menu/main_menu_seg7_us.0B240";
+ALIGNED8 static const Texture texture_menu_font_char_O[] = "__OTR__levels/menu/main_menu_seg7.0B240";
 
 // 0x0700B280
-ALIGNED8 static const Texture texture_menu_font_char_P[] = "__OTR__levels/menu/main_menu_seg7_us.0B280";
+ALIGNED8 static const Texture texture_menu_font_char_P[] = "__OTR__levels/menu/main_menu_seg7.0B280";
 
 // 0x0700B2C0
-ALIGNED8 static const Texture texture_menu_font_char_Q[] = "__OTR__levels/menu/main_menu_seg7_us.0B2C0";
+ALIGNED8 static const Texture texture_menu_font_char_Q[] = "__OTR__levels/menu/main_menu_seg7.0B2C0";
 
 // 0x0700B300
-ALIGNED8 static const Texture texture_menu_font_char_R[] = "__OTR__levels/menu/main_menu_seg7_us.0B300";
+ALIGNED8 static const Texture texture_menu_font_char_R[] = "__OTR__levels/menu/main_menu_seg7.0B300";
 
 // 0x0700B340
-ALIGNED8 static const Texture texture_menu_font_char_S[] = "__OTR__levels/menu/main_menu_seg7_us.0B340";
+ALIGNED8 static const Texture texture_menu_font_char_S[] = "__OTR__levels/menu/main_menu_seg7.0B340";
 
 // 0x0700B380
-ALIGNED8 static const Texture texture_menu_font_char_T[] = "__OTR__levels/menu/main_menu_seg7_us.0B380";
+ALIGNED8 static const Texture texture_menu_font_char_T[] = "__OTR__levels/menu/main_menu_seg7.0B380";
 
 // 0x0700B3C0
-ALIGNED8 static const Texture texture_menu_font_char_U[] = "__OTR__levels/menu/main_menu_seg7_us.0B3C0";
+ALIGNED8 static const Texture texture_menu_font_char_U[] = "__OTR__levels/menu/main_menu_seg7.0B3C0";
 
 // 0x0700B400
-ALIGNED8 static const Texture texture_menu_font_char_V[] = "__OTR__levels/menu/main_menu_seg7_us.0B400";
+ALIGNED8 static const Texture texture_menu_font_char_V[] = "__OTR__levels/menu/main_menu_seg7.0B400";
 
 // 0x0700B440
-ALIGNED8 static const Texture texture_menu_font_char_W[] = "__OTR__levels/menu/main_menu_seg7_us.0B440";
+ALIGNED8 static const Texture texture_menu_font_char_W[] = "__OTR__levels/menu/main_menu_seg7.0B440";
 
 // 0x0700B480
-ALIGNED8 static const Texture texture_menu_font_char_X[] = "__OTR__levels/menu/main_menu_seg7_us.0B480";
+ALIGNED8 static const Texture texture_menu_font_char_X[] = "__OTR__levels/menu/main_menu_seg7.0B480";
 
 // 0x0700B4C0
-ALIGNED8 static const Texture texture_menu_font_char_Y[] = "__OTR__levels/menu/main_menu_seg7_us.0B4C0";
+ALIGNED8 static const Texture texture_menu_font_char_Y[] = "__OTR__levels/menu/main_menu_seg7.0B4C0";
 
 // 0x0700B500
-ALIGNED8 static const Texture texture_menu_font_char_Z[] = "__OTR__levels/menu/main_menu_seg7_us.0B500";
+ALIGNED8 static const Texture texture_menu_font_char_Z[] = "__OTR__levels/menu/main_menu_seg7.0B500";
 
 // 0x0700B540
-ALIGNED8 static const Texture texture_menu_font_char_coin[] = "__OTR__levels/menu/main_menu_seg7_us.0B540";
+ALIGNED8 static const Texture texture_menu_font_char_coin[] = "__OTR__levels/menu/main_menu_seg7.0B540";
 
 // 0x0700B580
-ALIGNED8 static const Texture texture_menu_font_char_multiply[] = "__OTR__levels/menu/main_menu_seg7_us.0B580";
+ALIGNED8 static const Texture texture_menu_font_char_multiply[] = "__OTR__levels/menu/main_menu_seg7.0B580";
 
 // 0x0700B5C0
-ALIGNED8 static const Texture texture_menu_font_char_star_filled[] = "__OTR__levels/menu/main_menu_seg7_us.0B5C0";
+ALIGNED8 static const Texture texture_menu_font_char_star_filled[] = "__OTR__levels/menu/main_menu_seg7.0B5C0";
 
 // 0x0700B600
-ALIGNED8 static const Texture texture_menu_font_char_dash[] = "__OTR__levels/menu/main_menu_seg7_us.0B600";
+ALIGNED8 static const Texture texture_menu_font_char_dash[] = "__OTR__levels/menu/main_menu_seg7.0B600";
 
 #ifdef VERSION_EU
 // 0x0700B640
-ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7_eu.0B640";
+ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7.0B640";
 
 // 0x0700B680
-ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7_eu.0B680";
+ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7.0B680";
 
 #else
 
 // 0x0700B640
-ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7_us.0B640";
+ALIGNED8 static const Texture texture_menu_font_char_comma[] = "__OTR__levels/menu/main_menu_seg7.0B640";
 
 // 0x0700B680
-ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7_us.0B680";
+ALIGNED8 static const Texture texture_menu_font_char_apostrophe[] = "__OTR__levels/menu/main_menu_seg7.0B680";
 #endif
 
 // 0x0700B6C0
-ALIGNED8 static const Texture texture_menu_font_char_exclamation[] = "__OTR__levels/menu/main_menu_seg7_us.0B6C0";
+ALIGNED8 static const Texture texture_menu_font_char_exclamation[] = "__OTR__levels/menu/main_menu_seg7.0B6C0";
 
 // 0x0700B700
-ALIGNED8 static const Texture texture_menu_font_char_question[] = "__OTR__levels/menu/main_menu_seg7_us.0B700";
+ALIGNED8 static const Texture texture_menu_font_char_question[] = "__OTR__levels/menu/main_menu_seg7.0B700";
 
 // 0x0700B740
-ALIGNED8 static const Texture texture_menu_font_char_mface1[] = "__OTR__levels/menu/main_menu_seg7_us.0B740";
+ALIGNED8 static const Texture texture_menu_font_char_mface1[] = "__OTR__levels/menu/main_menu_seg7.0B740";
 
 // 0x0700B780
-ALIGNED8 static const Texture texture_menu_font_char_mface2[] = "__OTR__levels/menu/main_menu_seg7_us.0B780";
+ALIGNED8 static const Texture texture_menu_font_char_mface2[] = "__OTR__levels/menu/main_menu_seg7.0B780";
 
 // 0x0700B7C0
-ALIGNED8 static const Texture texture_menu_font_char_period[] = "__OTR__levels/menu/main_menu_seg7_us.0B7C0";
+ALIGNED8 static const Texture texture_menu_font_char_period[] = "__OTR__levels/menu/main_menu_seg7.0B7C0";
 
 // 0x0700B800
-ALIGNED8 static const Texture texture_menu_font_char_ampersand[] = "__OTR__levels/menu/main_menu_seg7_us.0B800";
-#endif
+ALIGNED8 static const Texture texture_menu_font_char_ampersand[] = "__OTR__levels/menu/main_menu_seg7.0B800";
 
 #ifdef VERSION_EU
 // 0x0700B840
-ALIGNED8 static const Texture texture_menu_font_char_umlaut[] = "__OTR__levels/menu/main_menu_seg7_eu.0B840";
+ALIGNED8 static const Texture texture_menu_font_char_umlaut[] = "__OTR__levels/menu/main_menu_seg7.0B840";
 
 // 0x0700B880
-ALIGNED8 static const Texture texture_menu_font_char_cedilla_mayus[] = "__OTR__levels/menu/main_menu_seg7_eu.0B880";
+ALIGNED8 static const Texture texture_menu_font_char_cedilla_mayus[] = "__OTR__levels/menu/main_menu_seg7.0B880";
 
 // 0x0700B8C0
-ALIGNED8 static const Texture texture_menu_font_char_colon[] = "__OTR__levels/menu/main_menu_seg7_eu.0B8C0";
+ALIGNED8 static const Texture texture_menu_font_char_colon[] = "__OTR__levels/menu/main_menu_seg7.0B8C0";
 #endif
 
 // Menu small font print table
 // 0x0700CD08
-const Texture *const menu_font_lut[] = {
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    texture_menu_font_char_jp_0, texture_menu_font_char_jp_1, texture_menu_font_char_jp_2, texture_menu_font_char_jp_3,
-    texture_menu_font_char_jp_4, texture_menu_font_char_jp_5, texture_menu_font_char_jp_6, texture_menu_font_char_jp_7,
-    texture_menu_font_char_jp_8, texture_menu_font_char_jp_9, texture_menu_font_char_jp_A, texture_menu_font_char_jp_B,
-    texture_menu_font_char_jp_C, texture_menu_font_char_jp_D,                   0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-                              0x0,                      0x0,                      0x0,                      0x0,
-    texture_menu_font_char_jp_hiragana_a, texture_menu_font_char_jp_hiragana_i, texture_menu_font_char_jp_hiragana_u, texture_menu_font_char_jp_hiragana_c,
-    texture_menu_font_char_jp_hiragana_o, texture_menu_font_char_jp_hiragana_ka, texture_menu_font_char_jp_hiragana_ki, texture_menu_font_char_jp_hiragana_ku,
-    texture_menu_font_char_jp_hiragana_ke, texture_menu_font_char_jp_hiragana_ko, texture_menu_font_char_jp_hiragana_sa, texture_menu_font_char_jp_hiragana_shi,
-    texture_menu_font_char_jp_hiragana_su, texture_menu_font_char_jp_hiragana_se, texture_menu_font_char_jp_hiragana_so, texture_menu_font_char_jp_hiragana_ta,
-    texture_menu_font_char_jp_hiragana_chi, texture_menu_font_char_jp_hiragana_tsu, texture_menu_font_char_jp_hiragana_te, texture_menu_font_char_jp_hiragana_to,
-    texture_menu_font_char_jp_hiragana_na, texture_menu_font_char_jp_hiragana_ni, texture_menu_font_char_jp_hiragana_nu, texture_menu_font_char_jp_hiragana_ne,
-    texture_menu_font_char_jp_hiragana_no, texture_menu_font_char_jp_hiragana_ha, texture_menu_font_char_jp_hiragana_hi, texture_menu_font_char_jp_hiragana_hu,
-    texture_menu_font_char_jp_hiragana_he, texture_menu_font_char_jp_hiragana_ho, texture_menu_font_char_jp_hiragana_ma, texture_menu_font_char_jp_hiragana_mi,
-    texture_menu_font_char_jp_hiragana_mu, texture_menu_font_char_jp_hiragana_me, texture_menu_font_char_jp_hiragana_mo, texture_menu_font_char_jp_hiragana_ya,
-    texture_menu_font_char_jp_hiragana_yu, texture_menu_font_char_jp_hiragana_yo, texture_menu_font_char_jp_hiragana_ra, texture_menu_font_char_jp_hiragana_ri,
-    texture_menu_font_char_jp_hiragana_ru, texture_menu_font_char_jp_hiragana_re, texture_menu_font_char_jp_hiragana_ro, texture_menu_font_char_jp_hiragana_wa,
-    texture_menu_font_char_jp_hiragana_wo, texture_menu_font_char_jp_hiragana_n, 0x0,                                0x0,
-    texture_menu_font_char_jp_katakana_a, texture_menu_font_char_jp_katakana_i, texture_menu_font_char_jp_katakana_u, texture_menu_font_char_jp_katakana_e,
-    texture_menu_font_char_jp_katakana_o, texture_menu_font_char_jp_katakana_ka, texture_menu_font_char_jp_katakana_ki, texture_menu_font_char_jp_katakana_ku,
-    texture_menu_font_char_jp_katakana_ke, texture_menu_font_char_jp_katakana_ko, texture_menu_font_char_jp_katakana_sa, texture_menu_font_char_jp_katakana_shi,
-    texture_menu_font_char_jp_katakana_su, texture_menu_font_char_jp_katakana_se, texture_menu_font_char_jp_katakana_so, texture_menu_font_char_jp_katakana_ta,
-    texture_menu_font_char_jp_katakana_chi, texture_menu_font_char_jp_katakana_tsu, texture_menu_font_char_jp_katakana_te, texture_menu_font_char_jp_katakana_to,
-    texture_menu_font_char_jp_katakana_na, texture_menu_font_char_jp_katakana_ni, texture_menu_font_char_jp_katakana_nu, texture_menu_font_char_jp_katakana_ne,
-    texture_menu_font_char_jp_katakana_no, texture_menu_font_char_jp_katakana_ha, texture_menu_font_char_jp_katakana_hi, texture_menu_font_char_jp_katakana_hu,
-    texture_menu_font_char_jp_katakana_he, texture_menu_font_char_jp_katakana_ho, texture_menu_font_char_jp_katakana_ma, texture_menu_font_char_jp_katakana_mi,
-    texture_menu_font_char_jp_katakana_mu, texture_menu_font_char_jp_katakana_me, texture_menu_font_char_jp_katakana_mo, texture_menu_font_char_jp_katakana_ya,
-    texture_menu_font_char_jp_katakana_yu, texture_menu_font_char_jp_katakana_yo, texture_menu_font_char_jp_katakana_ra, texture_menu_font_char_jp_katakana_ri,
-    texture_menu_font_char_jp_katakana_ru, texture_menu_font_char_jp_katakana_re, texture_menu_font_char_jp_katakana_ro, texture_menu_font_char_jp_katakana_wa,
-    texture_menu_font_char_jp_katakana_wo, texture_menu_font_char_jp_katakana_n,                                   0x0, texture_menu_font_char_jp_long_vowel,
-    texture_menu_font_char_jp_hiragana_small_e, texture_menu_font_char_jp_hiragana_small_tsu, texture_menu_font_char_jp_hiragana_small_ka, texture_menu_font_char_jp_hiragana_small_yu,
-    texture_menu_font_char_jp_hiragana_small_yo, texture_menu_font_char_jp_hiragana_small_a, texture_menu_font_char_jp_hiragana_small_i, texture_menu_font_char_jp_hiragana_small_u,
-    texture_menu_font_char_jp_hiragana_small_o,          0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    texture_menu_font_char_jp_katakana_small_e, texture_menu_font_char_jp_katakana_small_tsu, texture_menu_font_char_jp_katakana_small_ka, texture_menu_font_char_jp_katakana_small_yu,
-    texture_menu_font_char_jp_katakana_small_yo, texture_menu_font_char_jp_katakana_small_a, texture_menu_font_char_jp_katakana_small_i, texture_menu_font_char_jp_katakana_small_u,
-    texture_menu_font_char_jp_katakana_small_o, 0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    texture_menu_font_char_jp_dakuten, texture_menu_font_char_jp_handakuten, texture_menu_font_char_jp_exclamation, 0x0,
-    0x0,                      0x0,                      0x0,                      0x0,
-    0x0,                      texture_menu_font_char_jp_coin, texture_menu_font_char_jp_star_filled, texture_menu_font_char_jp_multiply,
-    0x0,                      0x0,                      0x0,                      0x0,
-#else
+const Texture *const menu_font_lut_us[] = {
     texture_menu_font_char_0, texture_menu_font_char_1, texture_menu_font_char_2, texture_menu_font_char_3,
     texture_menu_font_char_4, texture_menu_font_char_5, texture_menu_font_char_6, texture_menu_font_char_7,
     texture_menu_font_char_8, texture_menu_font_char_9, texture_menu_font_char_A, texture_menu_font_char_B,
@@ -1239,7 +1166,73 @@ const Texture *const menu_font_lut[] = {
     texture_menu_font_char_question,       0x0,       0x0,       0x0,
           0x0, texture_menu_font_char_coin, texture_menu_font_char_star_filled, texture_menu_font_char_multiply,
           0x0,       0x0,       0x0,       0x0,
-#endif
+};
+
+const Texture *const menu_font_lut_jp[] = {
+    texture_menu_font_char_jp_0, texture_menu_font_char_jp_1, texture_menu_font_char_jp_2, texture_menu_font_char_jp_3,
+    texture_menu_font_char_jp_4, texture_menu_font_char_jp_5, texture_menu_font_char_jp_6, texture_menu_font_char_jp_7,
+    texture_menu_font_char_jp_8, texture_menu_font_char_jp_9, texture_menu_font_char_jp_A, texture_menu_font_char_jp_B,
+    texture_menu_font_char_jp_C, texture_menu_font_char_jp_D,                   0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+                              0x0,                      0x0,                      0x0,                      0x0,
+    texture_menu_font_char_jp_hiragana_a, texture_menu_font_char_jp_hiragana_i, texture_menu_font_char_jp_hiragana_u, texture_menu_font_char_jp_hiragana_c,
+    texture_menu_font_char_jp_hiragana_o, texture_menu_font_char_jp_hiragana_ka, texture_menu_font_char_jp_hiragana_ki, texture_menu_font_char_jp_hiragana_ku,
+    texture_menu_font_char_jp_hiragana_ke, texture_menu_font_char_jp_hiragana_ko, texture_menu_font_char_jp_hiragana_sa, texture_menu_font_char_jp_hiragana_shi,
+    texture_menu_font_char_jp_hiragana_su, texture_menu_font_char_jp_hiragana_se, texture_menu_font_char_jp_hiragana_so, texture_menu_font_char_jp_hiragana_ta,
+    texture_menu_font_char_jp_hiragana_chi, texture_menu_font_char_jp_hiragana_tsu, texture_menu_font_char_jp_hiragana_te, texture_menu_font_char_jp_hiragana_to,
+    texture_menu_font_char_jp_hiragana_na, texture_menu_font_char_jp_hiragana_ni, texture_menu_font_char_jp_hiragana_nu, texture_menu_font_char_jp_hiragana_ne,
+    texture_menu_font_char_jp_hiragana_no, texture_menu_font_char_jp_hiragana_ha, texture_menu_font_char_jp_hiragana_hi, texture_menu_font_char_jp_hiragana_hu,
+    texture_menu_font_char_jp_hiragana_he, texture_menu_font_char_jp_hiragana_ho, texture_menu_font_char_jp_hiragana_ma, texture_menu_font_char_jp_hiragana_mi,
+    texture_menu_font_char_jp_hiragana_mu, texture_menu_font_char_jp_hiragana_me, texture_menu_font_char_jp_hiragana_mo, texture_menu_font_char_jp_hiragana_ya,
+    texture_menu_font_char_jp_hiragana_yu, texture_menu_font_char_jp_hiragana_yo, texture_menu_font_char_jp_hiragana_ra, texture_menu_font_char_jp_hiragana_ri,
+    texture_menu_font_char_jp_hiragana_ru, texture_menu_font_char_jp_hiragana_re, texture_menu_font_char_jp_hiragana_ro, texture_menu_font_char_jp_hiragana_wa,
+    texture_menu_font_char_jp_hiragana_wo, texture_menu_font_char_jp_hiragana_n, 0x0,                                0x0,
+    texture_menu_font_char_jp_katakana_a, texture_menu_font_char_jp_katakana_i, texture_menu_font_char_jp_katakana_u, texture_menu_font_char_jp_katakana_e,
+    texture_menu_font_char_jp_katakana_o, texture_menu_font_char_jp_katakana_ka, texture_menu_font_char_jp_katakana_ki, texture_menu_font_char_jp_katakana_ku,
+    texture_menu_font_char_jp_katakana_ke, texture_menu_font_char_jp_katakana_ko, texture_menu_font_char_jp_katakana_sa, texture_menu_font_char_jp_katakana_shi,
+    texture_menu_font_char_jp_katakana_su, texture_menu_font_char_jp_katakana_se, texture_menu_font_char_jp_katakana_so, texture_menu_font_char_jp_katakana_ta,
+    texture_menu_font_char_jp_katakana_chi, texture_menu_font_char_jp_katakana_tsu, texture_menu_font_char_jp_katakana_te, texture_menu_font_char_jp_katakana_to,
+    texture_menu_font_char_jp_katakana_na, texture_menu_font_char_jp_katakana_ni, texture_menu_font_char_jp_katakana_nu, texture_menu_font_char_jp_katakana_ne,
+    texture_menu_font_char_jp_katakana_no, texture_menu_font_char_jp_katakana_ha, texture_menu_font_char_jp_katakana_hi, texture_menu_font_char_jp_katakana_hu,
+    texture_menu_font_char_jp_katakana_he, texture_menu_font_char_jp_katakana_ho, texture_menu_font_char_jp_katakana_ma, texture_menu_font_char_jp_katakana_mi,
+    texture_menu_font_char_jp_katakana_mu, texture_menu_font_char_jp_katakana_me, texture_menu_font_char_jp_katakana_mo, texture_menu_font_char_jp_katakana_ya,
+    texture_menu_font_char_jp_katakana_yu, texture_menu_font_char_jp_katakana_yo, texture_menu_font_char_jp_katakana_ra, texture_menu_font_char_jp_katakana_ri,
+    texture_menu_font_char_jp_katakana_ru, texture_menu_font_char_jp_katakana_re, texture_menu_font_char_jp_katakana_ro, texture_menu_font_char_jp_katakana_wa,
+    texture_menu_font_char_jp_katakana_wo, texture_menu_font_char_jp_katakana_n,                                   0x0, texture_menu_font_char_jp_long_vowel,
+    texture_menu_font_char_jp_hiragana_small_e, texture_menu_font_char_jp_hiragana_small_tsu, texture_menu_font_char_jp_hiragana_small_ka, texture_menu_font_char_jp_hiragana_small_yu,
+    texture_menu_font_char_jp_hiragana_small_yo, texture_menu_font_char_jp_hiragana_small_a, texture_menu_font_char_jp_hiragana_small_i, texture_menu_font_char_jp_hiragana_small_u,
+    texture_menu_font_char_jp_hiragana_small_o,          0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    texture_menu_font_char_jp_katakana_small_e, texture_menu_font_char_jp_katakana_small_tsu, texture_menu_font_char_jp_katakana_small_ka, texture_menu_font_char_jp_katakana_small_yu,
+    texture_menu_font_char_jp_katakana_small_yo, texture_menu_font_char_jp_katakana_small_a, texture_menu_font_char_jp_katakana_small_i, texture_menu_font_char_jp_katakana_small_u,
+    texture_menu_font_char_jp_katakana_small_o, 0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    texture_menu_font_char_jp_dakuten, texture_menu_font_char_jp_handakuten, texture_menu_font_char_jp_exclamation, 0x0,
+    0x0,                      0x0,                      0x0,                      0x0,
+    0x0,                      texture_menu_font_char_jp_coin, texture_menu_font_char_jp_star_filled, texture_menu_font_char_jp_multiply,
+    0x0,                      0x0,                      0x0,                      0x0,
 };
 
 // 0x0700D108 - 0x0700D160
@@ -1274,16 +1267,16 @@ UNUSED static const u64 menu_unused_1 = 0;
 #ifdef VERSION_EU
 
 // 0x0700BDA0 - 0x0700CDA0
-ALIGNED8 static const Texture texture_menu_course_upper[] = "__OTR__levels/menu/main_menu_seg7_eu.0BDA0";
+ALIGNED8 static const Texture texture_menu_course_upper[] = "__OTR__levels/menu/main_menu_seg7.0BDA0";
 
 // 0x0700CDA0 - 0x0700DDA0
-ALIGNED8 static const Texture texture_menu_niveau_upper[] = "__OTR__levels/menu/main_menu_seg7_eu.0CDA0";
+ALIGNED8 static const Texture texture_menu_niveau_upper[] = "__OTR__levels/menu/main_menu_seg7.0CDA0";
 
 // 0x0700DDA0 - 0x0700EDA0
-ALIGNED8 static const Texture texture_menu_kurs_upper[] = "__OTR__levels/menu/main_menu_seg7_eu.0DDA0";
+ALIGNED8 static const Texture texture_menu_kurs_upper[] = "__OTR__levels/menu/main_menu_seg7.0DDA0";
 
 // 0x0700EDA0 - 0x0700FDA0
-ALIGNED8 static const Texture texture_menu_course_lower[] = "__OTR__levels/menu/main_menu_seg7_eu.0EDA0";
+ALIGNED8 static const Texture texture_menu_course_lower[] = "__OTR__levels/menu/main_menu_seg7.0EDA0";
 
 #else
 

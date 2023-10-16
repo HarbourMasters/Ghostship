@@ -105,25 +105,17 @@ void bhv_coin_loop(void) {
     }
 
     if (o->oMoveFlags & OBJ_MOVE_LANDED) {
-#ifndef VERSION_JP
-        if (o->oMoveFlags & (OBJ_MOVE_ABOVE_DEATH_BARRIER | OBJ_MOVE_ABOVE_LAVA))
-#else
-        if (o->oMoveFlags & OBJ_MOVE_ABOVE_LAVA)
-#endif
-        {
+        if (o->oMoveFlags & (ROM_JP ? OBJ_MOVE_ABOVE_LAVA : (OBJ_MOVE_ABOVE_DEATH_BARRIER | OBJ_MOVE_ABOVE_LAVA))) {
             obj_mark_for_deletion(o);
         }
     }
 
     if (o->oMoveFlags & OBJ_MOVE_BOUNCE) {
-#ifndef VERSION_JP
-        if (o->oCoinUnk1B0 < 5) {
+        if (!ROM_JP && o->oCoinUnk1B0 < 5) {
             cur_obj_play_sound_2(SOUND_GENERAL_COIN_DROP);
         }
         o->oCoinUnk1B0++;
-#else
         cur_obj_play_sound_2(SOUND_GENERAL_COIN_DROP);
-#endif
     }
 
     if (cur_obj_wait_then_blink(400, 20)) {

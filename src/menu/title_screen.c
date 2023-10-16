@@ -24,8 +24,8 @@
  * and a level select used for testing purposes.
  */
 
-#define STUB_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8) textname,
-#define DEFINE_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) textname,
+#define STUB_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9) textname,
+#define DEFINE_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11) textname,
 
 static char sLevelSelectStageNames[64][16] = {
     #include "levels/level_defines.h"
@@ -33,11 +33,18 @@ static char sLevelSelectStageNames[64][16] = {
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
 
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, textname) textname,
+#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, textname) textname,
+
+static char sBetterLevelSelectStageNames[38][31] = {
+    #include "levels/level_defines.h"
+};
+#undef STUB_LEVEL
+#undef DEFINE_LEVEL
+
 static u16 sDemoCountdown = 0;
-#ifndef VERSION_JP
 static s16 sPlayMarioGreeting = TRUE;
 static s16 sPlayMarioGameOver = TRUE;
-#endif
 
 #define PRESS_START_DEMO_TIMER 800
 
@@ -63,6 +70,10 @@ s32 run_level_id_or_demo(s32 level) {
 
                 // start the Mario demo animation for the demo list.
                 void* data = ResourceGetDataByName(gDemoInputs[gDemoInputListID]);
+
+                if(data == NULL) {
+                    return 0;
+                }
 
                 // if the next demo sequence ID is the count limit, reset it back to
                 // the first sequence.
@@ -93,6 +104,7 @@ s32 run_level_id_or_demo(s32 level) {
  */
 s16 intro_level_select(void) {
     s32 stageChanged = FALSE;
+    s8 direction = 1;
 
     // perform the ID updates per each button press.
     // runs into a loop so after a button is pressed
@@ -102,17 +114,20 @@ s16 intro_level_select(void) {
     }
     if (gPlayer1Controller->buttonPressed & B_BUTTON) {
         --gCurrLevelNum, stageChanged = TRUE;
+        direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & U_JPAD) {
+    if (gPlayer1Controller->buttonPressed & U_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & U_CBUTTONS)) {
         --gCurrLevelNum, stageChanged = TRUE;
+        direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & D_JPAD) {
+    if (gPlayer1Controller->buttonPressed & D_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & D_CBUTTONS)) {
         ++gCurrLevelNum, stageChanged = TRUE;
     }
-    if (gPlayer1Controller->buttonPressed & L_JPAD) {
+    if (gPlayer1Controller->buttonPressed & L_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & L_CBUTTONS)) {
         gCurrLevelNum -= 10, stageChanged = TRUE;
+        direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & R_JPAD) {
+    if (gPlayer1Controller->buttonPressed & R_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & R_CBUTTONS)) {
         gCurrLevelNum += 10, stageChanged = TRUE;
     }
 
@@ -129,14 +144,32 @@ s16 intro_level_select(void) {
         gCurrLevelNum = LEVEL_MAX; // exceeded min. set to max.
     }
 
+    // This block will ensure that the level select menu skips over the levels that are not in the game.
+    if (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && (stageChanged || gCurrLevelNum == 1)) {
+        while (sBetterLevelSelectStageNames[gCurrLevelNum - 1][0] == '\0') {
+            gCurrLevelNum += direction;
+            if (gCurrLevelNum > LEVEL_MAX) {
+                gCurrLevelNum = LEVEL_MIN; // exceeded max. set to min.
+            }
+            if (gCurrLevelNum < LEVEL_MIN) {
+                gCurrLevelNum = LEVEL_MAX; // exceeded min. set to max.
+            }
+        }
+    }
+
     // Use file 4 and last act as a test
     gCurrSaveFileNum = 4;
     gCurrActNum = 6;
 
     print_text_centered(160, 80, "SELECT STAGE");
     print_text_centered(160, 30, "PRESS START BUTTON");
-    print_text_fmt_int(40, 60, "%2d", gCurrLevelNum);
-    print_text(80, 60, sLevelSelectStageNames[gCurrLevelNum - 1]); // print stage name
+    if (CVarGetInteger("gDeveloper.BetterLevelSelect", 0)) {
+        print_text_fmt_int(240, 80, "%2d", gCurrLevelNum);
+        print_text_centered(160, 60, sBetterLevelSelectStageNames[gCurrLevelNum - 1]);
+    } else {
+        print_text_fmt_int(40, 60, "%2d", gCurrLevelNum);
+        print_text(80, 60, sLevelSelectStageNames[gCurrLevelNum - 1]); // print stage name
+    }
 
 #define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON | L_CBUTTONS | R_CBUTTONS)
 
@@ -145,7 +178,7 @@ s16 intro_level_select(void) {
         // ... the level select quit combo is being pressed, which uses START. If this
         // is the case, quit the menu instead.
         if (gPlayer1Controller->buttonDown == QUIT_LEVEL_SELECT_COMBO) {
-            gDebugLevelSelect = FALSE;
+            // CVarSetInteger("gEnableDebugMode", 0);
             return -1;
         }
         play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
@@ -160,12 +193,11 @@ s16 intro_level_select(void) {
 s32 intro_regular(void) {
     s32 level = LEVEL_NONE;
 
-#ifndef VERSION_JP
     // When the game stars, gGlobalTimer is less than 129 frames,
     // so Mario greets the player. After that, he will always say
     // "press start to play" when it goes back to the title screen
     // (using SAVE AND QUIT)
-    if (sPlayMarioGreeting == TRUE) {
+    if (!ROM_JP && sPlayMarioGreeting == TRUE) {
         if (gGlobalTimer < 129) {
             play_sound(SOUND_MARIO_HELLO, gGlobalSoundSource);
         } else {
@@ -173,7 +205,7 @@ s32 intro_regular(void) {
         }
         sPlayMarioGreeting = FALSE;
     }
-#endif
+
     print_intro_text();
 
     if (gPlayer1Controller->buttonPressed & START_BUTTON) {
@@ -186,9 +218,7 @@ s32 intro_regular(void) {
         // defined in level_intro_mario_head_regular JUMP_IF commands
         // 100 is File Select - 101 is Level Select
         level = 100 + gDebugLevelSelect;
-#ifndef VERSION_JP
         sPlayMarioGreeting = TRUE;
-#endif
     }
     return run_level_id_or_demo(level);
 }
@@ -199,12 +229,10 @@ s32 intro_regular(void) {
 s32 intro_game_over(void) {
     s32 level = LEVEL_NONE;
 
-#ifndef VERSION_JP
-    if (sPlayMarioGameOver == TRUE) {
+    if (!ROM_JP && sPlayMarioGameOver == TRUE) {
         play_sound(SOUND_MARIO_GAME_OVER, gGlobalSoundSource);
         sPlayMarioGameOver = FALSE;
     }
-#endif
 
     print_intro_text();
 
@@ -216,9 +244,7 @@ s32 intro_game_over(void) {
 #endif
         // same criteria as intro_regular
         level = 100 + gDebugLevelSelect;
-#ifndef VERSION_JP
         sPlayMarioGameOver = TRUE;
-#endif
     }
     return run_level_id_or_demo(level);
 }

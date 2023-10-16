@@ -158,7 +158,7 @@ static s32 sPickBufPosition;                         // @ 801BE784
 static s16 *sPickBuf;                                // @ 801BE788
 static LookAt D_801BE790[2];
 static LookAt D_801BE7D0[3];
-#if defined(VERSION_JP) || defined(VERSION_US)
+#if defined(VERSION_US)
 static OSMesgQueue D_801BE830; // controller msg queue
 static OSMesg D_801BE848[10];
 UNUSED static u32 unref_801be870[16];

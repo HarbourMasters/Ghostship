@@ -186,11 +186,9 @@ void bhv_intro_lakitu_loop(void) {
                 obj_mark_for_deletion(o->oIntroLakituCloud);
             }
 
-#ifndef VERSION_JP
-            if (o->oTimer == 14) {
+            if (!ROM_JP && o->oTimer == 14) {
                 cur_obj_play_sound_2(SOUND_ACTION_INTRO_UNK45F);
             }
-#endif
             break;
 
         case 100:

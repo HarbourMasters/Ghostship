@@ -4,11 +4,10 @@
 #include <libultra/types.h>
 #include <libultra/gbi.h>
 
-extern u8 seg2_course_name_table[];
-extern u8 seg2_act_name_table[];
 extern Gfx dl_rgba16_text_begin[];
 extern Gfx dl_rgba16_text_end[];
-extern Gfx dl_ia_text_begin[];
+extern Gfx dl_ia_text_begin_us[];
+extern Gfx dl_ia_text_begin_jp[];
 extern Gfx dl_ia_text_end[];
 extern u8 texture_transition_star_half[];
 extern u8 texture_transition_circle_half[];
@@ -45,14 +44,16 @@ extern u8* main_hud_lut[58];
 extern Gfx dl_hud_img_load_tex_block[];
 extern Gfx dl_hud_img_begin[];
 extern Gfx dl_hud_img_end[];
-extern void *main_font_lut[];
-extern Gfx dl_ia_text_tex_settings[];
+extern void *main_font_lut_eu[];
+extern void *main_font_lut_us[];
+extern void *main_font_lut_jp[];
+extern Gfx dl_ia_text_tex_settings_us[];
+extern Gfx dl_ia_text_tex_settings_jp[];
 extern Gfx dl_rgba16_load_tex_block[];
 extern void *main_credits_font_lut[];
 extern u8* main_hud_camera_lut[6];
 extern Gfx dl_draw_text_bg_box[];
 extern Gfx dl_draw_triangle[];
-extern void *seg2_dialog_table[];
 extern Gfx dl_billboard_num_0[];
 extern Gfx dl_billboard_num_1[];
 extern Gfx dl_billboard_num_2[];

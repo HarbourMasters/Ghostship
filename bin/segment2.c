@@ -48,9 +48,7 @@ ALIGNED8 static const Texture texture_hud_char_H[] = "__OTR__textures/segment2/s
 
 ALIGNED8 static const Texture texture_hud_char_I[] = "__OTR__textures/segment2/segment2.02400";
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_hud_char_J[] = "__OTR__textures/segment2/segment2.02600";
-#endif
 
 ALIGNED8 static const Texture texture_hud_char_K[] = "__OTR__textures/segment2/segment2.02800";
 
@@ -64,9 +62,7 @@ ALIGNED8 static const Texture texture_hud_char_O[] = "__OTR__textures/segment2/s
 
 ALIGNED8 static const Texture texture_hud_char_P[] = "__OTR__textures/segment2/segment2.03200";
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_hud_char_Q[] = "__OTR__textures/segment2/segment2.03400";
-#endif
 
 ALIGNED8 static const Texture texture_hud_char_R[] = "__OTR__textures/segment2/segment2.03600";
 
@@ -76,21 +72,15 @@ ALIGNED8 static const Texture texture_hud_char_T[] = "__OTR__textures/segment2/s
 
 ALIGNED8 static const Texture texture_hud_char_U[] = "__OTR__textures/segment2/segment2.03C00";
 
-#if defined(VERSION_JP) || defined(VERSION_EU) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_hud_char_V[] = "__OTR__textures/segment2/segment2.03E00";
-#endif
 
 ALIGNED8 static const Texture texture_hud_char_W[] = "__OTR__textures/segment2/segment2.04000";
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_hud_char_X[] = "__OTR__textures/segment2/segment2.04200";
-#endif
 
 ALIGNED8 static const Texture texture_hud_char_Y[] = "__OTR__textures/segment2/segment2.04400";
 
-#if defined(VERSION_JP) || defined(VERSION_EU) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_hud_char_Z[] = "__OTR__textures/segment2/segment2.04600";
-#endif
 
 ALIGNED8 static const Texture texture_hud_char_apostrophe[] = "__OTR__textures/segment2/segment2.04800";
 
@@ -100,17 +90,15 @@ ALIGNED8 static const Texture texture_hud_char_double_quote[] = "__OTR__textures
 ALIGNED8 static const Texture texture_hud_char_umlaut[] = "__OTR__textures/segment2/segment2.umlaut"// EU ¨;
 #endif
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
-ALIGNED8 static const Texture texture_hud_char_exclamation[] = "__OTR__textures/segment2/segment2.04C00"// JP !;
+ALIGNED8 static const Texture texture_hud_char_exclamation[] = "__OTR__textures/segment2/segment2.04C00";
 
-ALIGNED8 static const Texture texture_hud_char_double_exclamation[] = "__OTR__textures/segment2/segment2.04E00"// JP !!;
+ALIGNED8 static const Texture texture_hud_char_double_exclamation[] = "__OTR__textures/segment2/segment2.04E00";
 
-ALIGNED8 static const Texture texture_hud_char_question[] = "__OTR__textures/segment2/segment2.05000"// JP ?;
+ALIGNED8 static const Texture texture_hud_char_question[] = "__OTR__textures/segment2/segment2.05000";
 
-ALIGNED8 static const Texture texture_hud_char_ampersand[] = "__OTR__textures/segment2/segment2.05200"// JP &;
+ALIGNED8 static const Texture texture_hud_char_ampersand[] = "__OTR__textures/segment2/segment2.05200";
 
-ALIGNED8 static const Texture texture_hud_char_percent[] = "__OTR__textures/segment2/segment2.05400"// JP %;
-#endif
+ALIGNED8 static const Texture texture_hud_char_percent[] = "__OTR__textures/segment2/segment2.05400";
 
 ALIGNED8 static const Texture texture_hud_char_multiply[] = "__OTR__textures/segment2/segment2.05600";
 
@@ -120,13 +108,9 @@ ALIGNED8 static const Texture texture_hud_char_mario_head[] = "__OTR__textures/s
 
 ALIGNED8 static const Texture texture_hud_char_star[] = "__OTR__textures/segment2/segment2.05C00";
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_hud_char_decimal_point[] = "__OTR__textures/segment2/segment2.05E00";
-#endif
 
-#if defined(VERSION_JP) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_hud_char_beta_key[] = "__OTR__textures/segment2/segment2.06000";
-#endif
 
 ALIGNED8 static const Texture texture_credits_char_3[] = "__OTR__textures/segment2/segment2.06200";
 
@@ -189,7 +173,6 @@ ALIGNED8 static const Texture texture_credits_char_Z[] = "__OTR__textures/segmen
 ALIGNED8 static const Texture texture_credits_char_period[] = "__OTR__textures/segment2/segment2.07080";
 
 // JP Small Font
-#if defined(VERSION_JP) || defined(VERSION_SH)
 ALIGNED8 static const Texture texture_font_char_jp_0[] = "__OTR__textures/segment2/segment2.07100";
 
 ALIGNED8 static const Texture texture_font_char_jp_1[] = "__OTR__textures/segment2/segment2.07110";
@@ -521,7 +504,7 @@ ALIGNED8 static const Texture texture_font_char_jp_wave_dash[] = "__OTR__texture
 ALIGNED8 static const Texture texture_font_char_jp_ellipsis[] = "__OTR__textures/segment2/segment2.07B40";
 
 // EU Small Font
-#elif defined(VERSION_EU)
+#if defined(VERSION_EU)
 
 ALIGNED8 static const Texture texture_font_char_eu_0[] = "__OTR__textures/segment2/font_graphics.05F00";
 
@@ -724,7 +707,8 @@ ALIGNED8 static const Texture texture_font_char_eu_Cedilla[] = "__OTR__textures/
 ALIGNED8 static const Texture texture_font_char_eu_eszeet[] = "__OTR__textures/segment2/font_graphics.06530";
 
 // US Small Font
-#else
+#endif
+
 ALIGNED8 static const Texture texture_font_char_us_0[] = "__OTR__textures/segment2/font_graphics.05900";
 
 ALIGNED8 static const Texture texture_font_char_us_1[] = "__OTR__textures/segment2/font_graphics.05940";
@@ -908,7 +892,6 @@ ALIGNED8 static const Texture texture_font_char_us_button_C_down[] = "__OTR__tex
 ALIGNED8 static const Texture texture_font_char_us_button_C_left[] = "__OTR__textures/segment2/font_graphics.06F80";
 
 ALIGNED8 static const Texture texture_font_char_us_button_C_right[] = "__OTR__textures/segment2/font_graphics.06FC0";
-#endif
 
 ALIGNED8 static const Texture texture_hud_char_camera[] = "__OTR__textures/segment2/segment2.07B50";
 
@@ -938,22 +921,6 @@ const Texture *const main_hud_lut[] = {
                   0x0,               0x0, texture_hud_char_multiply, texture_hud_char_coin,
     texture_hud_char_mario_head, texture_hud_char_star,               0x0,               0x0,
     texture_hud_char_apostrophe, texture_hud_char_double_quote, texture_hud_char_umlaut,
-#elif defined(VERSION_US)
-    texture_hud_char_0, texture_hud_char_1, texture_hud_char_2, texture_hud_char_3,
-    texture_hud_char_4, texture_hud_char_5, texture_hud_char_6, texture_hud_char_7,
-    texture_hud_char_8, texture_hud_char_9, texture_hud_char_A, texture_hud_char_B,
-    texture_hud_char_C, texture_hud_char_D, texture_hud_char_E, texture_hud_char_F,
-    texture_hud_char_G, texture_hud_char_H, texture_hud_char_I,               0x0,
-    texture_hud_char_K, texture_hud_char_L, texture_hud_char_M, texture_hud_char_N,
-    texture_hud_char_O, texture_hud_char_P,               0x0, texture_hud_char_R,
-    texture_hud_char_S, texture_hud_char_T, texture_hud_char_U,               0x0,
-    texture_hud_char_W,               0x0, texture_hud_char_Y,               0x0,
-                  0x0,               0x0,               0x0,               0x0,
-                  0x0,               0x0,               0x0,               0x0,
-                  0x0,               0x0,               0x0,               0x0,
-                  0x0,               0x0, texture_hud_char_multiply, texture_hud_char_coin,
-    texture_hud_char_mario_head, texture_hud_char_star,               0x0,               0x0,
-    texture_hud_char_apostrophe, texture_hud_char_double_quote,
 #else
     texture_hud_char_0, texture_hud_char_1, texture_hud_char_2, texture_hud_char_3,
     texture_hud_char_4, texture_hud_char_5, texture_hud_char_6, texture_hud_char_7,
@@ -974,8 +941,8 @@ const Texture *const main_hud_lut[] = {
 };
 
 // Main small font print table 0x02008338-0x02008737
-const Texture *const main_font_lut[] = {
 #ifdef VERSION_EU // EU Font Table
+const Texture *const main_font_lut_eu[] = {
     texture_font_char_eu_0, texture_font_char_eu_1, texture_font_char_eu_2, texture_font_char_eu_3,
     texture_font_char_eu_4, texture_font_char_eu_5, texture_font_char_eu_6, texture_font_char_eu_7,
     texture_font_char_eu_8, texture_font_char_eu_9, texture_font_char_eu_A, texture_font_char_eu_B,
@@ -1042,7 +1009,11 @@ const Texture *const main_font_lut[] = {
     texture_font_char_eu_interpunct,
     texture_font_char_eu_star_hollow,
     0x0, 0x0,
-#elif defined(VERSION_US) // US Font Table
+};
+#endif
+
+const Texture *const main_font_lut_us[] = {
+    // US Font Table
     texture_font_char_us_0, texture_font_char_us_1, texture_font_char_us_2, texture_font_char_us_3,
     texture_font_char_us_4, texture_font_char_us_5, texture_font_char_us_6, texture_font_char_us_7,
     texture_font_char_us_8, texture_font_char_us_9, texture_font_char_us_A, texture_font_char_us_B,
@@ -1107,7 +1078,9 @@ const Texture *const main_font_lut[] = {
     texture_font_char_us_question, texture_font_char_us_double_quote_open, texture_font_char_us_double_quote_close, texture_font_char_us_tilde,
                   0x0, texture_font_char_us_coin, texture_font_char_us_star_filled, texture_font_char_us_multiply,
     texture_font_char_us_interpunct, texture_font_char_us_star_hollow,               0x0,               0x0,
-#elif defined(VERSION_JP) || defined(VERSION_SH)
+};
+
+const Texture *const main_font_lut_jp[] = {
     texture_font_char_jp_0, texture_font_char_jp_1, texture_font_char_jp_2, texture_font_char_jp_3,
     texture_font_char_jp_4, texture_font_char_jp_5, texture_font_char_jp_6, texture_font_char_jp_7,
     texture_font_char_jp_8, texture_font_char_jp_9, texture_font_char_jp_A, texture_font_char_jp_B,
@@ -1172,7 +1145,6 @@ const Texture *const main_font_lut[] = {
     texture_font_char_jp_question, texture_font_char_jp_double_quotation_open, texture_font_char_jp_double_quotation_close, texture_font_char_jp_wave_dash,
     texture_font_char_jp_ellipsis, texture_font_char_jp_coin, texture_font_char_jp_star_filled, texture_font_char_jp_multiply,
     texture_font_char_jp_interpunct, texture_font_char_jp_star_hollow,                   0x0,                   0x0,
-#endif
 };
 
 // credits font LUT 0x02008738-0x020087CB
@@ -1194,15 +1166,6 @@ const Texture *const main_hud_camera_lut[] = {
     texture_hud_char_camera, texture_hud_char_mario_head, texture_hud_char_lakitu, texture_hud_char_no_camera,
     texture_hud_char_arrow_up, texture_hud_char_arrow_down,
 };
-
-// If you change the language here, the following Makefile rule also needs to
-// change, to generate the right version of define_text.inc.c:
-// $(BUILD_DIR)/bin/segment2.o: $(BUILD_DIR)/text/$(VERSION)/define_text.inc.c
-#if defined(VERSION_JP) || defined(VERSION_SH)
-#include "text/jp/define_text.inc.c"
-#elif defined(VERSION_US)
-#include "text/us/define_text.inc.c"
-#endif
 
 UNUSED static const u64 segment2_unused_0 = 0;
 
@@ -1304,18 +1267,18 @@ const Gfx dl_draw_text_bg_box[] = {
 
 #ifndef VERSION_EU
 // 0x0200EE28 - 0x0200EE68
-static const Vtx vertex_ia8_char[] = {
-#if defined(VERSION_JP) || defined(VERSION_SH)
+static const Vtx vertex_ia8_char_jp[] = {
     {{{     0,      0,      0}, 0, {     0,   1024}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     8,      0,      0}, 0, {   512,   1024}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     8,     16,      0}, 0, {   512,      0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     0,     16,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
-#else
+};
+
+static const Vtx vertex_ia8_char_us[] = {
     {{{     0,      0,      0}, 0, {     0,    256}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     8,      0,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     8,     16,      0}, 0, {   480,      0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     0,     16,      0}, 0, {   480,    256}, {0xff, 0xff, 0xff, 0xff}}},
-#endif
 };
 // !EU
 #endif
@@ -1354,8 +1317,9 @@ const Gfx dl_ia_text_end[] = {
 };
 
 #elif defined(VERSION_US)
-const Gfx dl_ia_text_begin[] = {
+const Gfx dl_ia_text_begin_us[] = {
     gsDPPipeSync(),
+    gsSPDisableFiltering(1),
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),
     gsDPSetEnvColor(255, 255, 255, 255),
@@ -1365,13 +1329,36 @@ const Gfx dl_ia_text_begin[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_ia_text_tex_settings[] = {
+const Gfx dl_ia_text_begin_jp[] = {
+    gsDPPipeSync(),
+    gsSPDisableFiltering(1),
+    gsSPClearGeometryMode(G_LIGHTING),
+    gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),
+    gsDPSetEnvColor(255, 255, 255, 255),
+    gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+    gsDPSetTextureFilter(G_TF_POINT),
+    gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+    gsSPEndDisplayList(),
+};
+
+const Gfx dl_ia_text_tex_settings_us[] = {
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 3, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 4, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, ((16 * 8 + G_IM_SIZ_4b_INCR) >> G_IM_SIZ_4b_SHIFT) - 1, CALC_DXT(16, G_IM_SIZ_4b_BYTES)),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_4b, 1, 0, G_TX_RENDERTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 3, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 4, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (16 - 1) << G_TEXTURE_IMAGE_FRAC, (8 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPVertex(vertex_ia8_char, 4, 0),
+    gsSPVertex(vertex_ia8_char_us, 4, 0),
+    gsSP2Triangles( 0,  1,  2, 0x0, 0,  2,  3, 0x0),
+    gsSPEndDisplayList(),
+};
+
+const Gfx dl_ia_text_tex_settings_jp[] = {
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_8b, 0, 0, G_TX_LOADTILE, 0, G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_CLAMP, 3, G_TX_NOLOD),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 8 * 16 - 1, CALC_DXT(8, G_IM_SIZ_8b_BYTES)),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_8b, 1, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_CLAMP, 3, G_TX_NOLOD),
+    gsDPSetTileSize(0, 0, 0, (8 - 1) << G_TEXTURE_IMAGE_FRAC, (16 - 1) << G_TEXTURE_IMAGE_FRAC),
+    gsSPVertex(vertex_ia8_char_jp, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0, 0,  2,  3, 0x0),
     gsSPEndDisplayList(),
 };
@@ -1396,7 +1383,7 @@ const Gfx dl_ia_text_tex_settings[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 8 * 16 - 1, CALC_DXT(8, G_IM_SIZ_8b_BYTES)),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_8b, 1, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_CLAMP, 3, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (8 - 1) << G_TEXTURE_IMAGE_FRAC, (16 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPVertex(vertex_ia8_char, 4, 0),
+    gsSPVertex(vertex_ia8_char_us, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0, 0,  2,  3, 0x0),
     gsSPEndDisplayList(),
 };
@@ -1412,6 +1399,7 @@ const Gfx dl_ia_text_end[] = {
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
     gsDPSetTextureFilter(G_TF_BILERP),
+    gsSPDisableFiltering(0),
     gsSPEndDisplayList(),
 };
 #endif

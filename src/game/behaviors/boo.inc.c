@@ -267,13 +267,9 @@ static s32 boo_update_during_death(void) {
             if (o->oBooParentBigBoo != NULL) {
                 struct Object *parentBigBoo = o->oBooParentBigBoo;
 
-#ifndef VERSION_JP
-                if (!cur_obj_has_behavior(bhvBoo)) {
-#endif
+                if (ROM_JP || !cur_obj_has_behavior(bhvBoo)) {
                     parentBigBoo->oBigBooNumMinionBoosKilled++;
-#ifndef VERSION_JP
                 }
-#endif
             }
 
             return TRUE;
@@ -499,12 +495,9 @@ static void big_boo_act_0(void) {
 
     o->oBooParentBigBoo = NULL;
 
-    if (boo_should_be_active()
-#ifndef VERSION_JP
-        && o->oBigBooNumMinionBoosKilled >= gDebugInfo[DEBUG_PAGE_ENEMYINFO][0] + 5
-#else
-        && o->oBigBooNumMinionBoosKilled >= 5
-#endif
+    if (boo_should_be_active() &&
+        (ROM_JP ? o->oBigBooNumMinionBoosKilled >= 5 :
+        o->oBigBooNumMinionBoosKilled >= gDebugInfo[DEBUG_PAGE_ENEMYINFO][0] + 5)
     ) {
         o->oAction = 1;
 
@@ -625,9 +618,9 @@ static void big_boo_act_3(void) {
 }
 
 static void big_boo_act_4(void) {
-#ifndef VERSION_JP
-    boo_stop();
-#endif
+    if(!ROM_JP){
+        boo_stop();
+    }
 
     if (o->oBehParams2ndByte == 0) {
         obj_set_pos(o, 973, 0, 626);
@@ -765,11 +758,11 @@ void bhv_merry_go_round_boo_manager_loop(void) {
 
                     o->oAction = 2;
 
-#ifndef VERSION_JP
-                    play_puzzle_jingle();
-#else
-                    play_sound(SOUND_GENERAL2_RIGHT_ANSWER, gGlobalSoundSource);
-#endif
+                    if(ROM_JP){
+                        play_sound(SOUND_GENERAL2_RIGHT_ANSWER, gGlobalSoundSource);
+                    } else {
+                        play_puzzle_jingle();
+                    }
                 }
             }
 

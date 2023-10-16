@@ -29,6 +29,8 @@
 #include "course_table.h"
 #include "rumble_init.h"
 
+#include "port/Enhancements/game-interactor/GameInteractor_Hooks.h"
+
 #define PLAY_MODE_NORMAL 0
 #define PLAY_MODE_PAUSED 2
 #define PLAY_MODE_CHANGE_AREA 3
@@ -455,13 +457,11 @@ void init_mario_after_warp(void) {
             play_sound(SOUND_MENU_MARIO_CASTLE_WARP, gGlobalSoundSource);
         }
 
-#ifndef VERSION_JP
-        if (sWarpDest.levelNum == LEVEL_CASTLE_GROUNDS && sWarpDest.areaIdx == 1
+        if (!ROM_JP && sWarpDest.levelNum == LEVEL_CASTLE_GROUNDS && sWarpDest.areaIdx == 1
             && (sWarpDest.nodeId == 7 || sWarpDest.nodeId == 10 || sWarpDest.nodeId == 20
                 || sWarpDest.nodeId == 30)) {
             play_sound(SOUND_MENU_MARIO_CASTLE_WARP, gGlobalSoundSource);
         }
-#endif
     }
 }
 
@@ -761,9 +761,9 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 sDelayedWarpTimer = 30;
                 sSourceWarpNodeId = WARP_NODE_F2;
                 play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x1E, 0xFF, 0xFF, 0xFF);
-#ifndef VERSION_JP
-                play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
-#endif
+                if(!ROM_JP){
+                    play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
+                }
                 break;
 
             case WARP_OP_UNKNOWN_02: // bbh enter
@@ -1155,6 +1155,9 @@ s32 update_level(void) {
         enable_background_sound();
     }
 
+    // Updates only when in game, i.e. past the save select screen
+    GameInteractor_ExecuteOnGameFrameUpdate();
+
     return changeLevel;
 }
 
@@ -1196,7 +1199,7 @@ s32 init_level(void) {
                 if (gMarioState->action != ACT_UNINITIALIZED) {
                     if (save_file_exists(gCurrSaveFileNum - 1)) {
                         set_mario_action(gMarioState, ACT_IDLE, 0);
-                    } else {
+                    } else if (CVarGetInteger("gDisablePeachCutscene", 0) == 0){
                         set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
                         val4 = TRUE;
                     }
@@ -1265,7 +1268,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 #endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
-    gNeverEnteredCastle = !save_file_exists(gCurrSaveFileNum - 1);
+    gNeverEnteredCastle = !save_file_exists(gCurrSaveFileNum - 1) || CVarGetInteger("gDisablePeachCutscene", 0) == 0;
 
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;

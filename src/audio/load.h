@@ -34,7 +34,6 @@ extern u32 gSampleDmaNumListItems;
 #if defined(VERSION_EU) || defined(VERSION_SH)
 extern struct AudioBufferParametersEU gAudioBufferParameters;
 #endif
-extern s32 gAiFrequency;
 #ifdef VERSION_SH
 extern s16 gCurrAiBufferLength;
 extern s32 D_SH_8034F68C;

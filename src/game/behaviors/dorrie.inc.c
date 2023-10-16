@@ -61,30 +61,29 @@ void dorrie_act_lower_head(void) {
     if (cur_obj_init_anim_check_frame(2, 35)) {
         cur_obj_reverse_animation();
 
-#ifdef VERSION_JP
-        if (o->oTimer > 150) {
-            dorrie_begin_head_raise(FALSE);
-        } else if (gMarioObject->platform == o) {
-            if (o->oDorrieForwardDistToMario > 830.0f 
-                && set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
-                dorrie_begin_head_raise(TRUE);
-            } else if (o->oDorrieForwardDistToMario > 320.0f) {
-                o->oTimer = 0;
+        if(ROM_JP){
+            if (o->oTimer > 150) {
+                dorrie_begin_head_raise(FALSE);
+            } else if (gMarioObject->platform == o) {
+                if (o->oDorrieForwardDistToMario > 830.0f
+                    && set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
+                    dorrie_begin_head_raise(TRUE);
+                } else if (o->oDorrieForwardDistToMario > 320.0f) {
+                    o->oTimer = 0;
+                }
+            }
+        } else {
+            if (gMarioObject->platform == o) {
+                if (o->oDorrieOffsetY == -17.0f && o->oDorrieForwardDistToMario > 780.0f
+                    && set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
+                    dorrie_begin_head_raise(TRUE);
+                } else if (o->oDorrieForwardDistToMario > 320.0f) {
+                    o->oTimer = 0;
+                }
+            } else if (o->oTimer > 150) {
+                dorrie_begin_head_raise(FALSE);
             }
         }
-#else
-        if (gMarioObject->platform == o) {
-            if (o->oDorrieOffsetY == -17.0f && o->oDorrieForwardDistToMario > 780.0f
-                && set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
-                dorrie_begin_head_raise(TRUE);
-            } else if (o->oDorrieForwardDistToMario > 320.0f) {
-                o->oTimer = 0;
-            }
-        } else if (o->oTimer > 150) {
-            dorrie_begin_head_raise(FALSE);
-        }
-#endif
-
     } else {
         o->oDorrieNeckAngle += 0x115;
     }
