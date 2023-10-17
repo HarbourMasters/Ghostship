@@ -25,7 +25,7 @@ void RegisterCheatsHooks() {
             gMarioState->numLives = 100;
         }
 
-        if (CVarGetInteger("gInfiniteCapTimer", 0) && (gMarioState->flags & MARIO_CAP_ON_HEAD) && (gMarioState->flags & MARIO_SPECIAL_CAPS)) {
+        if (CVarGetInteger("gInfiniteCapTimer", 0) && (gMarioState->flags & MARIO_SPECIAL_CAPS)) {
             gMarioState->capTimer = 64;
         }
     });
