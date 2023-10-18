@@ -434,6 +434,9 @@ void DrawCheatsMenu() {
     if (UIWidgets::BeginMenu("Cheats")) {
         UIWidgets::CVarCheckbox("Infinite Health", "gInfiniteHealth");
         UIWidgets::CVarCheckbox("Infinite Lives", "gInfiniteLives");
+        UIWidgets::CVarCheckbox("Flight Velocity Boost", "gFlightVelocityBoost", {
+            .tooltip = "Hold 'A' button to increase velocity while flying"
+        });
 
         ImGui::EndMenu();
     }

@@ -3,7 +3,11 @@
 #include "game-interactor/GameInteractor.h"
 
 #include "game/level_update.h"
+#include "sm64.h"
+extern "C" {
+#include "game/mario.h"
 extern MarioState* gMarioState;
+}
 
 #define MARIO_HEALTH_MAX 0x880
 
@@ -28,7 +32,18 @@ void RegisterInfiniteLives() {
     });
 }
 
+void RegisterFlightVelocityBoost() {
+    GameInteractor::Instance->RegisterGameHook<GameInteractor::OnGameFrameUpdate>([]() {
+        if (!gMarioState) return;
+
+        if (CVarGetInteger("gFlightVelocityBoost", 0) && gMarioState->input & INPUT_A_DOWN) {
+            mario_set_forward_vel(gMarioState, gMarioState->forwardVel + 1.0f);
+        }
+    });
+}
+
 void InitMods() {
     RegisterInfiniteHealth();
     RegisterInfiniteLives();
+    RegisterFlightVelocityBoost();
 }
