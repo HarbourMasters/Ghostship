@@ -45,6 +45,7 @@ endif()
 
 # Set game compilation version
 set(VERSION us)
+set(USE_NETWORKING ON)
 
 # Add compile definitions for the target
 add_compile_definitions(
@@ -267,9 +268,14 @@ add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
 target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
 
-if(APPLE)
-  find_package(SDL2)
-  target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2)
+if(USE_NETWORKING)
+    if(MSVC)
+        vcpkg_install_packages(sdl2-net)
+    endif()
+    find_package(SDL2_net REQUIRED)
+    include_directories(${SDL2_NET_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
 endif()
 
 ################################################################################
