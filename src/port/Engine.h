@@ -59,4 +59,5 @@ uint8_t* GameEngine_LoadActName(uint32_t actId);
 uint8_t* GameEngine_LoadLevelName(uint32_t levelId);
 struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 uint8_t* GameEngine_LoadTranslation(const char* key);
+int GameEngine_OTRSigCheck(char* imgData);
 #endif

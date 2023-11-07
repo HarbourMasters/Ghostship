@@ -13,6 +13,7 @@
 #include "port/Enhancements/mods.h"
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
+#include <SDL2/SDL_net.h>
 
 #include <utility>
 
@@ -326,4 +327,18 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
     assert(engine->dictionary->contains(key));
 
     return engine->dictionary->at(key).data();
+}
+
+extern "C" int GameEngine_OTRSigCheck(const char* data) {
+	auto i = (uintptr_t)(data);
+    if ((i & 1) == 1)
+        return 0;
+
+    if (i != 0) {
+        if (data[0] == '_' && data[1] == '_' && data[2] == 'O' && data[3] == 'T' && data[4] == 'R' &&
+            data[5] == '_' && data[6] == '_')
+            return 1;
+    }
+
+    return 0;
 }
