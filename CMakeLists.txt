@@ -50,9 +50,9 @@ set(USE_NETWORKING ON)
 # Add compile definitions for the target
 add_compile_definitions(
     VERSION_US=1
-    F3DEX_GBI_2=1
-	GBI_FLOATS=1
     ENABLE_RUMBLE=1
+    F3D_OLD=1
+    GBI_FLOATS=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
     CIMGUI_DEFINE_ENUMS_AND_STRUCTS

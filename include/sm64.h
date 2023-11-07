@@ -515,6 +515,14 @@ extern void patch_interpolated_paintings(void);
 extern void patch_interpolated_bubble_particles(void);
 extern void patch_interpolated_snow_particles(void);
 
+// LUS
+
+void gSPSegmentLoadRes(void* value, int segNum, uintptr_t target);
+void gSPDisplayList(Gfx* pkt, Gfx* dl);
+void gSPDisplayListOffset(Gfx* pkt, Gfx* dl, int offset);
+void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
+void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr);
+
 #ifndef TRUE
 #define TRUE 1
 #endif
