@@ -197,7 +197,7 @@ Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
     return verts;
 }
 
-void* CalculateDataOffset(void* data, int x, int y) {
+void* CalculateDataOffset(void* data, int x, int y, size_t blobSize) {
     // Calculate the chunk index based on x and y coordinates
     int chunkX = x / CHUNK_WIDTH;
     int chunkY = y / CHUNK_HEIGHT;
@@ -213,7 +213,11 @@ void* CalculateDataOffset(void* data, int x, int y) {
     int chunkDataOffset = (yOffset * CHUNK_WIDTH + xOffset) * BYTES_PER_PIXEL;
 
     // Calculate the total offset in bytes within the data bin
-    int totalOffset = chunkOffset * (CHUNK_WIDTH * CHUNK_HEIGHT * BYTES_PER_PIXEL) + chunkDataOffset;
+    uint32_t totalOffset = (chunkOffset * (CHUNK_WIDTH * CHUNK_HEIGHT * BYTES_PER_PIXEL) + chunkDataOffset);
+
+    if(totalOffset + 2048 > blobSize) {
+        totalOffset = 0;
+    }
 
     // Calculate the pointer to the correct location within the data bin
     void* textureData = (void*)((uint8_t*)data + totalOffset);
@@ -247,6 +251,7 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
             }
 
             void* data = ResourceGetDataByName(gSkyboxTextures[background]);
+            size_t blobSize = ResourceGetSizeByName(gSkyboxTextures[background]);
 
             uint8_t* texture = gSkyboxTiles[tileIndex];
 
@@ -256,7 +261,7 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
             }
 
             // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
-            memcpy(texture, CalculateDataOffset(data, x, y), 2048);
+            memcpy(texture, CalculateDataOffset(data, x, y, blobSize), 2048);
             Vtx *vertices = make_skybox_rect(tileIndex, colorIndex);
 
             gLoadBlockTexture((*dlist)++, 32, 32, G_IM_FMT_RGBA, texture);
