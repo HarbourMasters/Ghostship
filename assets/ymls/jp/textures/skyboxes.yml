@@ -1,0 +1,50 @@
+bbh:
+  type: BLOB
+  size: 84288
+  offset: 0x2F9750
+  mio0: 0x0
+bidw:
+  type: BLOB
+  size: 131392
+  offset: 0x300270
+  mio0: 0x0
+bitfs:
+  type: BLOB
+  size: 102720
+  offset: 0x2CE5E0
+  mio0: 0x0
+bits:
+  type: BLOB
+  size: 131392
+  offset: 0x30B460
+  mio0: 0x0
+ccm:
+  type: BLOB
+  size: 131392
+  offset: 0x2B74B0
+  mio0: 0x0
+cloud_floor:
+  type: BLOB
+  size: 131392
+  offset: 0x2E5E20
+  mio0: 0x0
+clouds:
+  type: BLOB
+  size: 84288
+  offset: 0x2C5970
+  mio0: 0x0
+ssl:
+  type: BLOB
+  size: 131392
+  offset: 0x2EFA80
+  mio0: 0x0
+water:
+  type: BLOB
+  size: 131392
+  offset: 0x2AAC50
+  mio0: 0x0
+wdw:
+  type: BLOB
+  size: 131392
+  offset: 0x2D4A90
+  mio0: 0x0

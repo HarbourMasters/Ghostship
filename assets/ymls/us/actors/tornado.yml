@@ -1,0 +1,9 @@
+tornado:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x12848
+  mio0: 0x13B910
+  format: IA16
+  symbol: tornado_seg5_texture_05013128

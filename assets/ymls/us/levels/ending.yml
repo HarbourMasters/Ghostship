@@ -1,0 +1,5 @@
+cake:
+  type: BLOB
+  size: 153600
+  offset: 0x49E710
+  mio0: 0x0

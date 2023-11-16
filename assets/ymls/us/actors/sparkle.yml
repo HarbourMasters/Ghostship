@@ -1,0 +1,54 @@
+sparkle_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x27490
+  mio0: 0x114750
+  format: RGBA16
+  symbol: sparkles_seg4_texture_04027490
+sparkle_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x27C90
+  mio0: 0x114750
+  format: RGBA16
+  symbol: sparkles_seg4_texture_04027C90
+sparkle_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x28490
+  mio0: 0x114750
+  format: RGBA16
+  symbol: sparkles_seg4_texture_04028490
+sparkle_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x28C90
+  mio0: 0x114750
+  format: RGBA16
+  symbol: sparkles_seg4_texture_04028C90
+sparkle_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x29490
+  mio0: 0x114750
+  format: RGBA16
+  symbol: sparkles_seg4_texture_04029490
+sparkle_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x29C90
+  mio0: 0x114750
+  format: RGBA16
+  symbol: sparkles_seg4_texture_04029C90

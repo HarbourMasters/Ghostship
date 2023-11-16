@@ -1,0 +1,45 @@
+bookend_cover:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1060
+  mio0: 0x166C60
+  format: RGBA16
+  symbol: bookend_seg5_texture_05001060
+bookend_mouth:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x860
+  mio0: 0x166C60
+  format: RGBA16
+  symbol: bookend_seg5_texture_05000860
+bookend_pages:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0xC60
+  mio0: 0x166C60
+  format: RGBA16
+  symbol: bookend_seg5_texture_05000C60
+bookend_spine:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x60
+  mio0: 0x166C60
+  format: RGBA16
+  symbol: bookend_seg5_texture_05000060
+bookend_tooth:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x460
+  mio0: 0x166C60
+  format: RGBA16
+  symbol: bookend_seg5_texture_05000460

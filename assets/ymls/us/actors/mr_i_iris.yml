@@ -1,0 +1,36 @@
+mr_i_iris_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3970
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: mr_i_iris_seg6_texture_06003970
+mr_i_iris_mostly_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3170
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: mr_i_iris_seg6_texture_06003170
+mr_i_iris_mostly_open:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2970
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: mr_i_iris_seg6_texture_06002970
+mr_i_iris_open:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2170
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: mr_i_iris_seg6_texture_06002170

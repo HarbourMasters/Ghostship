@@ -1,0 +1,153 @@
+ttc_textures.00000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09000000
+ttc_textures.00800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09000800
+ttc_textures.01000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09001000
+ttc_textures.01800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09001800
+ttc_textures.02000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09002000
+ttc_textures.02800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09002800
+ttc_textures.03000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09003000
+ttc_textures.03800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09003800
+ttc_textures.04000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x4000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09004000
+ttc_textures.05000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09005000
+ttc_textures.05800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09005800
+ttc_textures.06000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09006000
+ttc_textures.06800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09006800
+ttc_textures.07000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09007000
+ttc_textures.07800:
+  type: TEXTURE
+  size: 2048
+  width: 16
+  height: 64
+  offset: 0x7800
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09007800
+ttc_textures.08000:
+  type: TEXTURE
+  size: 1024
+  width: 64
+  height: 8
+  offset: 0x8000
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09008000
+ttc_textures.08400:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8400
+  mio0: 0x34E760
+  format: RGBA16
+  symbol: machine_09008400

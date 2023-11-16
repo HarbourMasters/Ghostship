@@ -1,0 +1,21 @@
+00:
+  type: SAMPLE
+  id: 111
+sfx_01:
+  type: SAMPLE
+  id: 112
+sfx_02:
+  type: SAMPLE
+  id: 113
+sfx_03:
+  type: SAMPLE
+  id: 114
+04_camera_buzz:
+  type: SAMPLE
+  id: 115
+05_camera_shutter:
+  type: SAMPLE
+  id: 116
+sfx_06:
+  type: SAMPLE
+  id: 117

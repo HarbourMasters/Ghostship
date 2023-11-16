@@ -1,0 +1,27 @@
+bitfs_0:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x0
+  mio0: 0x4614D0
+  format: RGBA16
+  symbol: bitfs_seg7_texture_07000000
+bitfs_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x4614D0
+  format: RGBA16
+  symbol: bitfs_seg7_texture_07001000
+bitfs_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x4614D0
+  format: RGBA16
+  symbol: bitfs_seg7_texture_07001800

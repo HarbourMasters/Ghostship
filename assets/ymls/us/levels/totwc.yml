@@ -1,0 +1,36 @@
+totwc_0:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x0
+  mio0: 0x4BEC30
+  format: RGBA16
+  symbol: totwc_seg7_texture_07000000
+totwc_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x4BEC30
+  format: RGBA16
+  symbol: totwc_seg7_texture_07001000
+totwc_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x4BEC30
+  format: RGBA16
+  symbol: totwc_seg7_texture_07001800
+totwc_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x4BEC30
+  format: IA16
+  symbol: totwc_seg7_texture_07002000

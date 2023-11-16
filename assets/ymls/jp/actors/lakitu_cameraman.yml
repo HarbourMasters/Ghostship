@@ -1,0 +1,54 @@
+lakitu_camera_lens:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x3800
+  mio0: 0x1D6660
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06003800
+lakitu_cameraman_cloud_face_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xECE0
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06000000
+lakitu_cameraman_eyes_closed:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x104E0
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06001800
+lakitu_cameraman_eyes_open:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xF4E0
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06000800
+lakitu_cameraman_frown:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11CE0
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06003000
+lakitu_cameraman_shell:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x114E0
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06002800

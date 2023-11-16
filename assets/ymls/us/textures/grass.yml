@@ -1,0 +1,216 @@
+wf_textures.00000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09000000
+wf_textures.00800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09000800
+wf_textures.01000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09001000
+wf_textures.01800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09001800
+wf_textures.02000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09002000
+wf_textures.02800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09002800
+wf_textures.03000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09003000
+wf_textures.03800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09003800
+wf_textures.04000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09004000
+wf_textures.04800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09004800
+wf_textures.05000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09005000
+wf_textures.05800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09005800
+wf_textures.06000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5000
+  mio0: 0x33D710
+  format: RGBA16
+  symbol: grass_09006000
+wf_textures.06800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09006800
+wf_textures.07000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09007000
+wf_textures.07800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09007800
+wf_textures.08000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09008000
+wf_textures.08800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09008800
+wf_textures.09000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09009000
+wf_textures.09800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_09009800
+wf_textures.0A000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA000
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_0900A000
+wf_textures.0A800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA800
+  mio0: 0x357350
+  format: RGBA16
+  symbol: grass_0900A800
+wf_textures.0B000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB000
+  mio0: 0x32D070
+  format: IA16
+  symbol: grass_0900B000
+wf_textures.0B800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB800
+  mio0: 0x357350
+  format: IA16
+  symbol: grass_0900B800

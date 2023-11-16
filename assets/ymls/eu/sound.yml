@@ -1,0 +1,1000 @@
+header:
+  type: AUDIO:HEADER
+  ctl:
+    offset: 5626032
+    size: 97856
+  tbl:
+    offset: 5723888
+    size: 2216704
+banks/00_bank:
+  type: BANK
+  id: 0
+banks/01_bank:
+  type: BANK
+  id: 1
+banks/02_bank:
+  type: BANK
+  id: 2
+banks/03_bank:
+  type: BANK
+  id: 3
+banks/04_bank:
+  type: BANK
+  id: 4
+banks/05_bank:
+  type: BANK
+  id: 5
+banks/06_bank:
+  type: BANK
+  id: 6
+banks/07_bank:
+  type: BANK
+  id: 7
+banks/08_bank:
+  type: BANK
+  id: 8
+banks/09_bank:
+  type: BANK
+  id: 9
+banks/0A_bank:
+  type: BANK
+  id: 10
+banks/0B_bank:
+  type: BANK
+  id: 11
+banks/0C_bank:
+  type: BANK
+  id: 12
+banks/0D_bank:
+  type: BANK
+  id: 13
+banks/0E_bank:
+  type: BANK
+  id: 14
+banks/0F_bank:
+  type: BANK
+  id: 15
+banks/10_bank:
+  type: BANK
+  id: 16
+banks/11_bank:
+  type: BANK
+  id: 17
+banks/12_bank:
+  type: BANK
+  id: 18
+banks/13_bank:
+  type: BANK
+  id: 19
+banks/14_bank:
+  type: BANK
+  id: 20
+banks/15_bank:
+  type: BANK
+  id: 21
+banks/16_bank:
+  type: BANK
+  id: 22
+banks/17_bank:
+  type: BANK
+  id: 23
+banks/18_bank:
+  type: BANK
+  id: 24
+banks/19_bank:
+  type: BANK
+  id: 25
+banks/1A_bank:
+  type: BANK
+  id: 26
+banks/1B_bank:
+  type: BANK
+  id: 27
+banks/1C_bank:
+  type: BANK
+  id: 28
+banks/1D_bank:
+  type: BANK
+  id: 29
+banks/1E_bank:
+  type: BANK
+  id: 30
+banks/1F_bank:
+  type: BANK
+  id: 31
+banks/20_bank:
+  type: BANK
+  id: 32
+banks/21_bank:
+  type: BANK
+  id: 33
+banks/22_bank:
+  type: BANK
+  id: 34
+banks/23_bank:
+  type: BANK
+  id: 35
+banks/24_bank:
+  type: BANK
+  id: 36
+banks/25_bank:
+  type: BANK
+  id: 37
+samples/bowser_organ/00_organ_1:
+  type: SAMPLE
+  id: 216
+samples/bowser_organ/01_organ_1_lq:
+  type: SAMPLE
+  id: 217
+samples/bowser_organ/02_boys_choir:
+  type: SAMPLE
+  id: 218
+samples/course_start/00_la:
+  type: SAMPLE
+  id: 215
+samples/instruments/00:
+  type: SAMPLE
+  id: 141
+samples/instruments/01_banjo_1:
+  type: SAMPLE
+  id: 142
+samples/instruments/02:
+  type: SAMPLE
+  id: 143
+samples/instruments/03_human_whistle:
+  type: SAMPLE
+  id: 144
+samples/instruments/04_bright_piano:
+  type: SAMPLE
+  id: 145
+samples/instruments/05_acoustic_bass:
+  type: SAMPLE
+  id: 146
+samples/instruments/06_kick_drum_1:
+  type: SAMPLE
+  id: 147
+samples/instruments/07_rimshot:
+  type: SAMPLE
+  id: 148
+samples/instruments/08:
+  type: SAMPLE
+  id: 149
+samples/instruments/09:
+  type: SAMPLE
+  id: 150
+samples/instruments/0A_tambourine:
+  type: SAMPLE
+  id: 151
+samples/instruments/0B:
+  type: SAMPLE
+  id: 152
+samples/instruments/0C_conga_stick:
+  type: SAMPLE
+  id: 153
+samples/instruments/0D_clave:
+  type: SAMPLE
+  id: 154
+samples/instruments/0E_hihat_closed:
+  type: SAMPLE
+  id: 155
+samples/instruments/0F_hihat_open:
+  type: SAMPLE
+  id: 156
+samples/instruments/10_cymbal_bell:
+  type: SAMPLE
+  id: 157
+samples/instruments/11_splash_cymbal:
+  type: SAMPLE
+  id: 158
+samples/instruments/12_snare_drum_1:
+  type: SAMPLE
+  id: 159
+samples/instruments/13_snare_drum_2:
+  type: SAMPLE
+  id: 160
+samples/instruments/14_strings_5:
+  type: SAMPLE
+  id: 161
+samples/instruments/15_strings_4:
+  type: SAMPLE
+  id: 162
+samples/instruments/16_french_horns:
+  type: SAMPLE
+  id: 163
+samples/instruments/17_trumpet:
+  type: SAMPLE
+  id: 164
+samples/instruments/18_timpani:
+  type: SAMPLE
+  id: 165
+samples/instruments/19_brass:
+  type: SAMPLE
+  id: 166
+samples/instruments/1A_slap_bass:
+  type: SAMPLE
+  id: 167
+samples/instruments/1B_organ_2:
+  type: SAMPLE
+  id: 168
+samples/instruments/1C:
+  type: SAMPLE
+  id: 169
+samples/instruments/1D:
+  type: SAMPLE
+  id: 170
+samples/instruments/1E_closed_triangle:
+  type: SAMPLE
+  id: 171
+samples/instruments/1F_open_triangle:
+  type: SAMPLE
+  id: 172
+samples/instruments/20_cabasa:
+  type: SAMPLE
+  id: 173
+samples/instruments/21_sine_bass:
+  type: SAMPLE
+  id: 174
+samples/instruments/22_boys_choir:
+  type: SAMPLE
+  id: 175
+samples/instruments/23_strings_1:
+  type: SAMPLE
+  id: 176
+samples/instruments/24_strings_2:
+  type: SAMPLE
+  id: 177
+samples/instruments/25_strings_3:
+  type: SAMPLE
+  id: 178
+samples/instruments/26_crystal_rhodes:
+  type: SAMPLE
+  id: 179
+samples/instruments/27_harpsichord:
+  type: SAMPLE
+  id: 180
+samples/instruments/28_sitar_1:
+  type: SAMPLE
+  id: 181
+samples/instruments/29_orchestra_hit:
+  type: SAMPLE
+  id: 182
+samples/instruments/2A:
+  type: SAMPLE
+  id: 183
+samples/instruments/2B:
+  type: SAMPLE
+  id: 184
+samples/instruments/2C:
+  type: SAMPLE
+  id: 185
+samples/instruments/2D_trombone:
+  type: SAMPLE
+  id: 186
+samples/instruments/2E_accordion:
+  type: SAMPLE
+  id: 187
+samples/instruments/2F_sleigh_bells:
+  type: SAMPLE
+  id: 188
+samples/instruments/30_rarefaction-lahna:
+  type: SAMPLE
+  id: 189
+samples/instruments/31_rarefaction-convolution:
+  type: SAMPLE
+  id: 190
+samples/instruments/32_metal_rimshot:
+  type: SAMPLE
+  id: 191
+samples/instruments/33_kick_drum_2:
+  type: SAMPLE
+  id: 192
+samples/instruments/34_alto_flute:
+  type: SAMPLE
+  id: 193
+samples/instruments/35_gospel_organ:
+  type: SAMPLE
+  id: 194
+samples/instruments/36_sawtooth_synth:
+  type: SAMPLE
+  id: 195
+samples/instruments/37_square_synth:
+  type: SAMPLE
+  id: 196
+samples/instruments/38_electric_kick_drum:
+  type: SAMPLE
+  id: 197
+samples/instruments/39_sitar_2:
+  type: SAMPLE
+  id: 198
+samples/instruments/3A_music_box:
+  type: SAMPLE
+  id: 199
+samples/instruments/3B_banjo_2:
+  type: SAMPLE
+  id: 200
+samples/instruments/3C_acoustic_guitar:
+  type: SAMPLE
+  id: 201
+samples/instruments/3D:
+  type: SAMPLE
+  id: 202
+samples/instruments/3E_monk_choir:
+  type: SAMPLE
+  id: 203
+samples/instruments/3F:
+  type: SAMPLE
+  id: 204
+samples/instruments/40_bell:
+  type: SAMPLE
+  id: 205
+samples/instruments/41_pan_flute:
+  type: SAMPLE
+  id: 206
+samples/instruments/42_vibraphone:
+  type: SAMPLE
+  id: 207
+samples/instruments/43_harmonica:
+  type: SAMPLE
+  id: 208
+samples/instruments/44_grand_piano:
+  type: SAMPLE
+  id: 209
+samples/instruments/45_french_horns_lq:
+  type: SAMPLE
+  id: 210
+samples/instruments/46_pizzicato_strings_1:
+  type: SAMPLE
+  id: 211
+samples/instruments/47_pizzicato_strings_2:
+  type: SAMPLE
+  id: 212
+samples/instruments/48_steel_drum:
+  type: SAMPLE
+  id: 213
+samples/piranha_music_box/00_music_box:
+  type: SAMPLE
+  id: 214
+samples/sfx_1/00_twirl:
+  type: SAMPLE
+  id: 0
+samples/sfx_1/01_brushing:
+  type: SAMPLE
+  id: 1
+samples/sfx_1/02_hand_touch:
+  type: SAMPLE
+  id: 2
+samples/sfx_1/03_yoshi:
+  type: SAMPLE
+  id: 3
+samples/sfx_1/04_plop:
+  type: SAMPLE
+  id: 4
+samples/sfx_1/05_heavy_landing:
+  type: SAMPLE
+  id: 5
+samples/sfx_4/00:
+  type: SAMPLE
+  id: 17
+samples/sfx_4/01:
+  type: SAMPLE
+  id: 18
+samples/sfx_4/02:
+  type: SAMPLE
+  id: 19
+samples/sfx_4/03:
+  type: SAMPLE
+  id: 20
+samples/sfx_4/04:
+  type: SAMPLE
+  id: 21
+samples/sfx_4/05:
+  type: SAMPLE
+  id: 22
+samples/sfx_4/06:
+  type: SAMPLE
+  id: 23
+samples/sfx_4/07:
+  type: SAMPLE
+  id: 24
+samples/sfx_4/08:
+  type: SAMPLE
+  id: 25
+samples/sfx_4/09:
+  type: SAMPLE
+  id: 26
+samples/sfx_5/00:
+  type: SAMPLE
+  id: 27
+samples/sfx_5/01:
+  type: SAMPLE
+  id: 28
+samples/sfx_5/02:
+  type: SAMPLE
+  id: 29
+samples/sfx_5/03:
+  type: SAMPLE
+  id: 30
+samples/sfx_5/04:
+  type: SAMPLE
+  id: 31
+samples/sfx_5/05:
+  type: SAMPLE
+  id: 32
+samples/sfx_5/06:
+  type: SAMPLE
+  id: 33
+samples/sfx_5/07:
+  type: SAMPLE
+  id: 34
+samples/sfx_5/08:
+  type: SAMPLE
+  id: 35
+samples/sfx_5/09:
+  type: SAMPLE
+  id: 36
+samples/sfx_5/0A:
+  type: SAMPLE
+  id: 37
+samples/sfx_5/0B:
+  type: SAMPLE
+  id: 38
+samples/sfx_5/0C:
+  type: SAMPLE
+  id: 39
+samples/sfx_5/0D:
+  type: SAMPLE
+  id: 40
+samples/sfx_5/0E:
+  type: SAMPLE
+  id: 41
+samples/sfx_5/0F:
+  type: SAMPLE
+  id: 42
+samples/sfx_5/10:
+  type: SAMPLE
+  id: 43
+samples/sfx_5/11:
+  type: SAMPLE
+  id: 44
+samples/sfx_5/12:
+  type: SAMPLE
+  id: 45
+samples/sfx_5/13:
+  type: SAMPLE
+  id: 46
+samples/sfx_5/14:
+  type: SAMPLE
+  id: 47
+samples/sfx_5/15:
+  type: SAMPLE
+  id: 48
+samples/sfx_5/16:
+  type: SAMPLE
+  id: 49
+samples/sfx_5/17:
+  type: SAMPLE
+  id: 50
+samples/sfx_5/18:
+  type: SAMPLE
+  id: 51
+samples/sfx_5/19:
+  type: SAMPLE
+  id: 52
+samples/sfx_5/1A:
+  type: SAMPLE
+  id: 53
+samples/sfx_5/1B:
+  type: SAMPLE
+  id: 54
+samples/sfx_5/1C:
+  type: SAMPLE
+  id: 55
+samples/sfx_6/00:
+  type: SAMPLE
+  id: 56
+samples/sfx_6/01:
+  type: SAMPLE
+  id: 57
+samples/sfx_6/02:
+  type: SAMPLE
+  id: 58
+samples/sfx_6/03:
+  type: SAMPLE
+  id: 59
+samples/sfx_6/04:
+  type: SAMPLE
+  id: 60
+samples/sfx_6/05:
+  type: SAMPLE
+  id: 61
+samples/sfx_6/06:
+  type: SAMPLE
+  id: 62
+samples/sfx_6/07:
+  type: SAMPLE
+  id: 63
+samples/sfx_6/08:
+  type: SAMPLE
+  id: 64
+samples/sfx_6/09:
+  type: SAMPLE
+  id: 65
+samples/sfx_6/0A:
+  type: SAMPLE
+  id: 66
+samples/sfx_6/0B:
+  type: SAMPLE
+  id: 67
+samples/sfx_6/0C:
+  type: SAMPLE
+  id: 68
+samples/sfx_6/0D:
+  type: SAMPLE
+  id: 69
+samples/sfx_7/00:
+  type: SAMPLE
+  id: 70
+samples/sfx_7/01:
+  type: SAMPLE
+  id: 71
+samples/sfx_7/02:
+  type: SAMPLE
+  id: 72
+samples/sfx_7/03:
+  type: SAMPLE
+  id: 73
+samples/sfx_7/04:
+  type: SAMPLE
+  id: 74
+samples/sfx_7/05:
+  type: SAMPLE
+  id: 75
+samples/sfx_7/06:
+  type: SAMPLE
+  id: 76
+samples/sfx_7/07:
+  type: SAMPLE
+  id: 77
+samples/sfx_7/08:
+  type: SAMPLE
+  id: 78
+samples/sfx_7/09:
+  type: SAMPLE
+  id: 79
+samples/sfx_7/0A:
+  type: SAMPLE
+  id: 80
+samples/sfx_7/0B:
+  type: SAMPLE
+  id: 81
+samples/sfx_7/0C:
+  type: SAMPLE
+  id: 82
+samples/sfx_7/0D_chain_chomp_bark:
+  type: SAMPLE
+  id: 83
+samples/sfx_9/00:
+  type: SAMPLE
+  id: 111
+samples/sfx_9/01:
+  type: SAMPLE
+  id: 112
+samples/sfx_9/02:
+  type: SAMPLE
+  id: 113
+samples/sfx_9/03:
+  type: SAMPLE
+  id: 114
+samples/sfx_9/04_camera_buzz:
+  type: SAMPLE
+  id: 115
+samples/sfx_9/05_camera_shutter:
+  type: SAMPLE
+  id: 116
+samples/sfx_9/06:
+  type: SAMPLE
+  id: 117
+samples/sfx_mario/00_mario_jump_hoo:
+  type: SAMPLE
+  id: 84
+samples/sfx_mario/01_mario_jump_wah:
+  type: SAMPLE
+  id: 85
+samples/sfx_mario/02_mario_yah:
+  type: SAMPLE
+  id: 86
+samples/sfx_mario/03_mario_haha:
+  type: SAMPLE
+  id: 87
+samples/sfx_mario/04_mario_yahoo:
+  type: SAMPLE
+  id: 88
+samples/sfx_mario/05_mario_uh:
+  type: SAMPLE
+  id: 89
+samples/sfx_mario/06_mario_hrmm:
+  type: SAMPLE
+  id: 90
+samples/sfx_mario/07_mario_wah2:
+  type: SAMPLE
+  id: 91
+samples/sfx_mario/08_mario_whoa:
+  type: SAMPLE
+  id: 92
+samples/sfx_mario/09_mario_eeuh:
+  type: SAMPLE
+  id: 93
+samples/sfx_mario/0A_mario_attacked:
+  type: SAMPLE
+  id: 94
+samples/sfx_mario/0B_mario_ooof:
+  type: SAMPLE
+  id: 95
+samples/sfx_mario/0C_mario_here_we_go:
+  type: SAMPLE
+  id: 96
+samples/sfx_mario/0D_mario_yawning:
+  type: SAMPLE
+  id: 97
+samples/sfx_mario/0E_mario_snoring1:
+  type: SAMPLE
+  id: 98
+samples/sfx_mario/0F_mario_snoring2:
+  type: SAMPLE
+  id: 99
+samples/sfx_mario/10_mario_doh:
+  type: SAMPLE
+  id: 100
+samples/sfx_mario/11_mario_game_over:
+  type: SAMPLE
+  id: 101
+samples/sfx_mario/12_mario_hello:
+  type: SAMPLE
+  id: 102
+samples/sfx_mario/13_mario_press_start_to_play:
+  type: SAMPLE
+  id: 103
+samples/sfx_mario/14_mario_twirl_bounce:
+  type: SAMPLE
+  id: 104
+samples/sfx_mario/15_mario_snoring3:
+  type: SAMPLE
+  id: 105
+samples/sfx_mario/16_mario_so_longa_bowser:
+  type: SAMPLE
+  id: 106
+samples/sfx_mario/17_mario_ima_tired:
+  type: SAMPLE
+  id: 107
+samples/sfx_mario/18_mario_waha:
+  type: SAMPLE
+  id: 108
+samples/sfx_mario/19_mario_yippee:
+  type: SAMPLE
+  id: 109
+samples/sfx_mario/1A_mario_lets_a_go:
+  type: SAMPLE
+  id: 110
+samples/sfx_mario_peach/00_mario_waaaooow:
+  type: SAMPLE
+  id: 118
+samples/sfx_mario_peach/01_mario_hoohoo:
+  type: SAMPLE
+  id: 119
+samples/sfx_mario_peach/02_mario_panting:
+  type: SAMPLE
+  id: 120
+samples/sfx_mario_peach/03_mario_dying:
+  type: SAMPLE
+  id: 121
+samples/sfx_mario_peach/04_mario_on_fire:
+  type: SAMPLE
+  id: 122
+samples/sfx_mario_peach/05_mario_uh2:
+  type: SAMPLE
+  id: 123
+samples/sfx_mario_peach/06_mario_coughing:
+  type: SAMPLE
+  id: 124
+samples/sfx_mario_peach/07_mario_its_a_me_mario:
+  type: SAMPLE
+  id: 125
+samples/sfx_mario_peach/08_mario_punch_yah:
+  type: SAMPLE
+  id: 126
+samples/sfx_mario_peach/09_mario_punch_hoo:
+  type: SAMPLE
+  id: 127
+samples/sfx_mario_peach/0A_mario_mama_mia:
+  type: SAMPLE
+  id: 128
+samples/sfx_mario_peach/0B_mario_okey_dokey:
+  type: SAMPLE
+  id: 129
+samples/sfx_mario_peach/0C_mario_drowning:
+  type: SAMPLE
+  id: 130
+samples/sfx_mario_peach/0D_mario_thank_you_playing_my_game:
+  type: SAMPLE
+  id: 131
+samples/sfx_mario_peach/0E_peach_dear_mario:
+  type: SAMPLE
+  id: 132
+samples/sfx_mario_peach/0F_peach_mario:
+  type: SAMPLE
+  id: 133
+samples/sfx_mario_peach/10_peach_power_of_the_stars:
+  type: SAMPLE
+  id: 134
+samples/sfx_mario_peach/11_peach_thanks_to_you:
+  type: SAMPLE
+  id: 135
+samples/sfx_mario_peach/12_peach_thank_you_mario:
+  type: SAMPLE
+  id: 136
+samples/sfx_mario_peach/13_peach_something_special:
+  type: SAMPLE
+  id: 137
+samples/sfx_mario_peach/14_peach_bake_a_cake:
+  type: SAMPLE
+  id: 138
+samples/sfx_mario_peach/15_peach_for_mario:
+  type: SAMPLE
+  id: 139
+samples/sfx_mario_peach/16_peach_mario2:
+  type: SAMPLE
+  id: 140
+samples/sfx_terrain/00_step_default:
+  type: SAMPLE
+  id: 6
+samples/sfx_terrain/01_step_grass:
+  type: SAMPLE
+  id: 7
+samples/sfx_terrain/02_step_stone:
+  type: SAMPLE
+  id: 8
+samples/sfx_terrain/03_step_spooky:
+  type: SAMPLE
+  id: 9
+samples/sfx_terrain/04_step_snow:
+  type: SAMPLE
+  id: 10
+samples/sfx_terrain/05_step_ice:
+  type: SAMPLE
+  id: 11
+samples/sfx_terrain/06_step_metal:
+  type: SAMPLE
+  id: 12
+samples/sfx_terrain/07_step_sand:
+  type: SAMPLE
+  id: 13
+samples/sfx_water/00_plunge:
+  type: SAMPLE
+  id: 14
+samples/sfx_water/01_splash:
+  type: SAMPLE
+  id: 15
+samples/sfx_water/02_swim:
+  type: SAMPLE
+  id: 16
+sequences/00_sound_player:
+  type: SEQUENCE
+  offset: 7940880
+  size: 13500
+  banks:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+sequences/01_cutscene_collect_star:
+  type: SEQUENCE
+  offset: 7954384
+  size: 626
+  banks:
+    - 34
+sequences/02_menu_title_screen:
+  type: SEQUENCE
+  offset: 7955024
+  size: 8282
+  banks:
+    - 17
+sequences/03_level_grass:
+  type: SEQUENCE
+  offset: 7963312
+  size: 5131
+  banks:
+    - 34
+sequences/04_level_inside_castle:
+  type: SEQUENCE
+  offset: 7968448
+  size: 2505
+  banks:
+    - 14
+sequences/05_level_water:
+  type: SEQUENCE
+  offset: 7970960
+  size: 4788
+  banks:
+    - 19
+sequences/06_level_hot:
+  type: SEQUENCE
+  offset: 7975760
+  size: 2455
+  banks:
+    - 15
+sequences/07_level_boss_koopa:
+  type: SEQUENCE
+  offset: 7978224
+  size: 3424
+  banks:
+    - 18
+sequences/08_level_snow:
+  type: SEQUENCE
+  offset: 7981648
+  size: 8150
+  banks:
+    - 11
+sequences/09_level_slide:
+  type: SEQUENCE
+  offset: 7989808
+  size: 7445
+  banks:
+    - 13
+sequences/0A_level_spooky:
+  type: SEQUENCE
+  offset: 7997264
+  size: 5681
+  banks:
+    - 33
+    - 16
+sequences/0B_event_piranha_plant:
+  type: SEQUENCE
+  offset: 8002960
+  size: 1400
+  banks:
+    - 20
+sequences/0C_level_underground:
+  type: SEQUENCE
+  offset: 8004368
+  size: 4899
+  banks:
+    - 21
+sequences/0D_menu_star_select:
+  type: SEQUENCE
+  offset: 8009280
+  size: 138
+  banks:
+    - 22
+sequences/0E_event_powerup:
+  type: SEQUENCE
+  offset: 8009424
+  size: 3137
+  banks:
+    - 23
+sequences/0F_event_metal_cap:
+  type: SEQUENCE
+  offset: 8012576
+  size: 2779
+  banks:
+    - 24
+sequences/10_event_koopa_message:
+  type: SEQUENCE
+  offset: 8015360
+  size: 558
+  banks:
+    - 18
+sequences/11_level_koopa_road:
+  type: SEQUENCE
+  offset: 8015920
+  size: 4753
+  banks:
+    - 25
+sequences/12_event_high_score:
+  type: SEQUENCE
+  offset: 8020688
+  size: 275
+  banks:
+    - 31
+sequences/13_event_merry_go_round:
+  type: SEQUENCE
+  offset: 8020976
+  size: 1660
+  banks:
+    - 33
+sequences/14_event_race:
+  type: SEQUENCE
+  offset: 8022640
+  size: 200
+  banks:
+    - 26
+sequences/15_cutscene_star_spawn:
+  type: SEQUENCE
+  offset: 8022848
+  size: 649
+  banks:
+    - 14
+sequences/16_event_boss:
+  type: SEQUENCE
+  offset: 8023504
+  size: 3444
+  banks:
+    - 27
+sequences/17_cutscene_collect_key:
+  type: SEQUENCE
+  offset: 8026960
+  size: 677
+  banks:
+    - 26
+sequences/18_event_endless_stairs:
+  type: SEQUENCE
+  offset: 8027648
+  size: 1783
+  banks:
+    - 28
+sequences/19_level_boss_koopa_final:
+  type: SEQUENCE
+  offset: 8029440
+  size: 3521
+  banks:
+    - 29
+sequences/1A_cutscene_credits:
+  type: SEQUENCE
+  offset: 8032976
+  size: 14328
+  banks:
+    - 37
+sequences/1B_event_solve_puzzle:
+  type: SEQUENCE
+  offset: 8047312
+  size: 219
+  banks:
+    - 20
+sequences/1C_event_toad_message:
+  type: SEQUENCE
+  offset: 8047536
+  size: 211
+  banks:
+    - 32
+sequences/1D_event_peach_message:
+  type: SEQUENCE
+  offset: 8047760
+  size: 436
+  banks:
+    - 30
+sequences/1E_cutscene_intro:
+  type: SEQUENCE
+  offset: 8048208
+  size: 1770
+  banks:
+    - 27
+sequences/1F_cutscene_victory:
+  type: SEQUENCE
+  offset: 8049984
+  size: 2066
+  banks:
+    - 26
+sequences/20_cutscene_ending:
+  type: SEQUENCE
+  offset: 8052064
+  size: 1887
+  banks:
+    - 35
+sequences/21_menu_file_select:
+  type: SEQUENCE
+  offset: 8053952
+  size: 786
+  banks:
+    - 36
+sequences/22_cutscene_lakitu:
+  type: SEQUENCE
+  offset: 8054752
+  size: 317
+  banks:
+    - 27

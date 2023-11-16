@@ -1,0 +1,153 @@
+hmc_textures.00000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x0
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09000000
+hmc_textures.01000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09001000
+hmc_textures.01800:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09001800
+hmc_textures.02800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09002800
+hmc_textures.03000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09003000
+hmc_textures.03800:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x3800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09003800
+hmc_textures.04800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x4800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09004800
+hmc_textures.05800:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x5800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09005800
+hmc_textures.06800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09006800
+hmc_textures.07000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7000
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09007000
+hmc_textures.07800:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x7800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09007800
+hmc_textures.08800:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x8800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09008800
+hmc_textures.09800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_09009800
+hmc_textures.0A000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA000
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_0900A000
+hmc_textures.0A800:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xA800
+  mio0: 0x345FF0
+  format: RGBA16
+  symbol: cave_0900A800
+hmc_textures.0B800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB800
+  mio0: 0x345FF0
+  format: IA16
+  symbol: cave_0900B800
+hmc_textures.0C000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA800
+  mio0: 0x3253E0
+  format: IA16
+  symbol: cave_0900C000

@@ -1,0 +1,36 @@
+bub_eye_border:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1408
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: bub_seg6_texture_0600E2A8
+bub_eyes:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x408
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: bub_seg6_texture_0600F2A8
+bub_fins:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1C08
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: bub_seg6_texture_0600EAA8
+bub_scales:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2408
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: bub_seg6_texture_060102A8

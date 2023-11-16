@@ -1,0 +1,384 @@
+act_00:
+  type: SM64:TEXT
+  offset: 0xE4C0
+  mio0: 0x1076D0
+act_01:
+  type: SM64:TEXT
+  offset: 0xE4D0
+  mio0: 0x1076D0
+act_02:
+  type: SM64:TEXT
+  offset: 0xE4E0
+  mio0: 0x1076D0
+act_03:
+  type: SM64:TEXT
+  offset: 0xE4F0
+  mio0: 0x1076D0
+act_04:
+  type: SM64:TEXT
+  offset: 0xE4FC
+  mio0: 0x1076D0
+act_05:
+  type: SM64:TEXT
+  offset: 0xE50C
+  mio0: 0x1076D0
+act_06:
+  type: SM64:TEXT
+  offset: 0xE51C
+  mio0: 0x1076D0
+act_07:
+  type: SM64:TEXT
+  offset: 0xE52C
+  mio0: 0x1076D0
+act_08:
+  type: SM64:TEXT
+  offset: 0xE53C
+  mio0: 0x1076D0
+act_09:
+  type: SM64:TEXT
+  offset: 0xE54C
+  mio0: 0x1076D0
+act_0A:
+  type: SM64:TEXT
+  offset: 0xE55C
+  mio0: 0x1076D0
+act_0B:
+  type: SM64:TEXT
+  offset: 0xE568
+  mio0: 0x1076D0
+act_0C:
+  type: SM64:TEXT
+  offset: 0xE578
+  mio0: 0x1076D0
+act_0D:
+  type: SM64:TEXT
+  offset: 0xE588
+  mio0: 0x1076D0
+act_0E:
+  type: SM64:TEXT
+  offset: 0xE598
+  mio0: 0x1076D0
+act_0F:
+  type: SM64:TEXT
+  offset: 0xE5A8
+  mio0: 0x1076D0
+act_10:
+  type: SM64:TEXT
+  offset: 0xE5B8
+  mio0: 0x1076D0
+act_11:
+  type: SM64:TEXT
+  offset: 0xE5C8
+  mio0: 0x1076D0
+act_12:
+  type: SM64:TEXT
+  offset: 0xE5D8
+  mio0: 0x1076D0
+act_13:
+  type: SM64:TEXT
+  offset: 0xE5E8
+  mio0: 0x1076D0
+act_14:
+  type: SM64:TEXT
+  offset: 0xE5F8
+  mio0: 0x1076D0
+act_15:
+  type: SM64:TEXT
+  offset: 0xE60C
+  mio0: 0x1076D0
+act_16:
+  type: SM64:TEXT
+  offset: 0xE61C
+  mio0: 0x1076D0
+act_17:
+  type: SM64:TEXT
+  offset: 0xE62C
+  mio0: 0x1076D0
+act_18:
+  type: SM64:TEXT
+  offset: 0xE640
+  mio0: 0x1076D0
+act_19:
+  type: SM64:TEXT
+  offset: 0xE650
+  mio0: 0x1076D0
+act_1A:
+  type: SM64:TEXT
+  offset: 0xE660
+  mio0: 0x1076D0
+act_1B:
+  type: SM64:TEXT
+  offset: 0xE670
+  mio0: 0x1076D0
+act_1C:
+  type: SM64:TEXT
+  offset: 0xE680
+  mio0: 0x1076D0
+act_1D:
+  type: SM64:TEXT
+  offset: 0xE690
+  mio0: 0x1076D0
+act_1E:
+  type: SM64:TEXT
+  offset: 0xE6A0
+  mio0: 0x1076D0
+act_1F:
+  type: SM64:TEXT
+  offset: 0xE6B0
+  mio0: 0x1076D0
+act_20:
+  type: SM64:TEXT
+  offset: 0xE6C0
+  mio0: 0x1076D0
+act_21:
+  type: SM64:TEXT
+  offset: 0xE6CC
+  mio0: 0x1076D0
+act_22:
+  type: SM64:TEXT
+  offset: 0xE6D8
+  mio0: 0x1076D0
+act_23:
+  type: SM64:TEXT
+  offset: 0xE6EC
+  mio0: 0x1076D0
+act_24:
+  type: SM64:TEXT
+  offset: 0xE6FC
+  mio0: 0x1076D0
+act_25:
+  type: SM64:TEXT
+  offset: 0xE70C
+  mio0: 0x1076D0
+act_26:
+  type: SM64:TEXT
+  offset: 0xE71C
+  mio0: 0x1076D0
+act_27:
+  type: SM64:TEXT
+  offset: 0xE72C
+  mio0: 0x1076D0
+act_28:
+  type: SM64:TEXT
+  offset: 0xE738
+  mio0: 0x1076D0
+act_29:
+  type: SM64:TEXT
+  offset: 0xE748
+  mio0: 0x1076D0
+act_2A:
+  type: SM64:TEXT
+  offset: 0xE758
+  mio0: 0x1076D0
+act_2B:
+  type: SM64:TEXT
+  offset: 0xE76C
+  mio0: 0x1076D0
+act_2C:
+  type: SM64:TEXT
+  offset: 0xE780
+  mio0: 0x1076D0
+act_2D:
+  type: SM64:TEXT
+  offset: 0xE794
+  mio0: 0x1076D0
+act_2E:
+  type: SM64:TEXT
+  offset: 0xE7A4
+  mio0: 0x1076D0
+act_2F:
+  type: SM64:TEXT
+  offset: 0xE7B4
+  mio0: 0x1076D0
+act_30:
+  type: SM64:TEXT
+  offset: 0xE7C8
+  mio0: 0x1076D0
+act_31:
+  type: SM64:TEXT
+  offset: 0xE7D8
+  mio0: 0x1076D0
+act_32:
+  type: SM64:TEXT
+  offset: 0xE7E8
+  mio0: 0x1076D0
+act_33:
+  type: SM64:TEXT
+  offset: 0xE7F8
+  mio0: 0x1076D0
+act_34:
+  type: SM64:TEXT
+  offset: 0xE808
+  mio0: 0x1076D0
+act_35:
+  type: SM64:TEXT
+  offset: 0xE814
+  mio0: 0x1076D0
+act_36:
+  type: SM64:TEXT
+  offset: 0xE824
+  mio0: 0x1076D0
+act_37:
+  type: SM64:TEXT
+  offset: 0xE834
+  mio0: 0x1076D0
+act_38:
+  type: SM64:TEXT
+  offset: 0xE844
+  mio0: 0x1076D0
+act_39:
+  type: SM64:TEXT
+  offset: 0xE850
+  mio0: 0x1076D0
+act_3A:
+  type: SM64:TEXT
+  offset: 0xE860
+  mio0: 0x1076D0
+act_3B:
+  type: SM64:TEXT
+  offset: 0xE870
+  mio0: 0x1076D0
+act_3C:
+  type: SM64:TEXT
+  offset: 0xE87C
+  mio0: 0x1076D0
+act_3D:
+  type: SM64:TEXT
+  offset: 0xE88C
+  mio0: 0x1076D0
+act_3E:
+  type: SM64:TEXT
+  offset: 0xE89C
+  mio0: 0x1076D0
+act_3F:
+  type: SM64:TEXT
+  offset: 0xE8AC
+  mio0: 0x1076D0
+act_40:
+  type: SM64:TEXT
+  offset: 0xE8C0
+  mio0: 0x1076D0
+act_41:
+  type: SM64:TEXT
+  offset: 0xE8D0
+  mio0: 0x1076D0
+act_42:
+  type: SM64:TEXT
+  offset: 0xE8E0
+  mio0: 0x1076D0
+act_43:
+  type: SM64:TEXT
+  offset: 0xE8F0
+  mio0: 0x1076D0
+act_44:
+  type: SM64:TEXT
+  offset: 0xE904
+  mio0: 0x1076D0
+act_45:
+  type: SM64:TEXT
+  offset: 0xE914
+  mio0: 0x1076D0
+act_46:
+  type: SM64:TEXT
+  offset: 0xE924
+  mio0: 0x1076D0
+act_47:
+  type: SM64:TEXT
+  offset: 0xE934
+  mio0: 0x1076D0
+act_48:
+  type: SM64:TEXT
+  offset: 0xE944
+  mio0: 0x1076D0
+act_49:
+  type: SM64:TEXT
+  offset: 0xE954
+  mio0: 0x1076D0
+act_4A:
+  type: SM64:TEXT
+  offset: 0xE964
+  mio0: 0x1076D0
+act_4B:
+  type: SM64:TEXT
+  offset: 0xE974
+  mio0: 0x1076D0
+act_4C:
+  type: SM64:TEXT
+  offset: 0xE984
+  mio0: 0x1076D0
+act_4D:
+  type: SM64:TEXT
+  offset: 0xE994
+  mio0: 0x1076D0
+act_4E:
+  type: SM64:TEXT
+  offset: 0xE9A0
+  mio0: 0x1076D0
+act_4F:
+  type: SM64:TEXT
+  offset: 0xE9B0
+  mio0: 0x1076D0
+act_50:
+  type: SM64:TEXT
+  offset: 0xE9B8
+  mio0: 0x1076D0
+act_51:
+  type: SM64:TEXT
+  offset: 0xE9C8
+  mio0: 0x1076D0
+act_52:
+  type: SM64:TEXT
+  offset: 0xE9DC
+  mio0: 0x1076D0
+act_53:
+  type: SM64:TEXT
+  offset: 0xE9EC
+  mio0: 0x1076D0
+act_54:
+  type: SM64:TEXT
+  offset: 0xE9F8
+  mio0: 0x1076D0
+act_55:
+  type: SM64:TEXT
+  offset: 0xEA04
+  mio0: 0x1076D0
+act_56:
+  type: SM64:TEXT
+  offset: 0xEA10
+  mio0: 0x1076D0
+act_57:
+  type: SM64:TEXT
+  offset: 0xEA20
+  mio0: 0x1076D0
+act_58:
+  type: SM64:TEXT
+  offset: 0xEA34
+  mio0: 0x1076D0
+act_59:
+  type: SM64:TEXT
+  offset: 0xEA44
+  mio0: 0x1076D0
+act_5A:
+  type: SM64:TEXT
+  offset: 0xEA54
+  mio0: 0x1076D0
+act_5B:
+  type: SM64:TEXT
+  offset: 0xEA60
+  mio0: 0x1076D0
+act_5C:
+  type: SM64:TEXT
+  offset: 0xEA70
+  mio0: 0x1076D0
+act_5D:
+  type: SM64:TEXT
+  offset: 0xEA80
+  mio0: 0x1076D0
+act_5E:
+  type: SM64:TEXT
+  offset: 0xEA94
+  mio0: 0x1076D0
+act_5F:
+  type: SM64:TEXT
+  offset: 0xEAA8
+  mio0: 0x1076D0

@@ -1,0 +1,45 @@
+lakitu_enemy_cloud_face_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xECE0
+  mio0: 0x180BB0
+  format: RGBA16
+  symbol: lakitu_enemy_seg5_texture_0500ECE0
+lakitu_enemy_eyes_closed:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x104E0
+  mio0: 0x180BB0
+  format: RGBA16
+  symbol: lakitu_enemy_seg5_texture_050104E0
+lakitu_enemy_eyes_open:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xF4E0
+  mio0: 0x180BB0
+  format: RGBA16
+  symbol: lakitu_enemy_seg5_texture_0500F4E0
+lakitu_enemy_frown:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11CE0
+  mio0: 0x180BB0
+  format: RGBA16
+  symbol: lakitu_enemy_seg5_texture_05011CE0
+lakitu_enemy_shell:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x114E0
+  mio0: 0x180BB0
+  format: RGBA16
+  symbol: lakitu_enemy_seg5_texture_050114E0

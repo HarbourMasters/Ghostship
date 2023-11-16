@@ -1,0 +1,9 @@
+mist:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x80
+  mio0: 0x1FF740
+  format: IA16
+  symbol: mist_seg3_texture_03000080

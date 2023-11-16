@@ -1,0 +1,801 @@
+main_menu_seg7.00018:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x18
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_stone
+main_menu_seg7.00818:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x818
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_dark_stone
+main_menu_seg7.01018:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1018
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_mario_save
+main_menu_seg7.02018:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2018
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_mario_new
+main_menu_seg7.03468:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3468
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_erase
+main_menu_seg7.03C68:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3C68
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_copy
+main_menu_seg7.04468:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4468
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_file
+main_menu_seg7.04C68:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4C68
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_score
+main_menu_seg7.05468:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5468
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_sound
+main_menu_seg7.06328:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6328
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_idle_hand
+main_menu_seg7.06B28:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6B28
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_grabbing_hand
+main_menu_seg7.073D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x73D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_hu
+main_menu_seg7.075D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x75D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_small_a
+main_menu_seg7.077D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x77D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_i
+main_menu_seg7.079D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x79D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_ru
+main_menu_seg7.07BD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x7BD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_se
+main_menu_seg7.07DD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x7DD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_re
+main_menu_seg7.07FD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x7FD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_ku
+main_menu_seg7.081D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x81D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_to
+main_menu_seg7.083D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x83D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_hiragana_wo
+main_menu_seg7.085D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x85D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_ko
+main_menu_seg7.087D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x87D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_kana_handakuten_pi
+main_menu_seg7.089D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x89D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_choonpu
+main_menu_seg7.08BD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x8BD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_hiragana_su
+main_menu_seg7.08DD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x8DD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_hiragana_ru
+main_menu_seg7.08FD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x8FD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_hiragana_ke
+main_menu_seg7.091D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x91D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_ma
+main_menu_seg7.093D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x93D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_ri
+main_menu_seg7.095D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x95D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_o
+main_menu_seg7.097D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x97D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_su
+main_menu_seg7.099D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x99D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_a
+main_menu_seg7.09BD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x9BD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_hiragana_mi
+main_menu_seg7.09DD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x9DD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_hira_dakuten_do
+main_menu_seg7.09FD0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x9FD0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_hiragana_no
+main_menu_seg7.0A1D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xA1D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_question
+main_menu_seg7.0A3D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xA3D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_sa
+main_menu_seg7.0A5D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xA5D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_u
+main_menu_seg7.0A7D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xA7D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_katakana_n
+main_menu_seg7.0A9D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xA9D0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_hud_char_kana_dakuten_do
+main_menu_seg7.0D1A8:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xBCE0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_course_upper
+main_menu_seg7.0E1A8:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xCCE0
+  mio0: 0x2A65B0
+  format: RGBA16
+  symbol: texture_menu_course_lower
+main_menu_seg7.0AC40:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAC40
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_0
+main_menu_seg7.0AC80:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAC80
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_1
+main_menu_seg7.0ACC0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xACC0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_2
+main_menu_seg7.0AD00:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAD00
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_3
+main_menu_seg7.0AD40:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAD40
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_4
+main_menu_seg7.0AD80:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAD80
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_5
+main_menu_seg7.0ADC0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xADC0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_6
+main_menu_seg7.0AE00:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAE00
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_7
+main_menu_seg7.0AE40:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAE40
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_8
+main_menu_seg7.0AE80:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAE80
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_9
+main_menu_seg7.0AEC0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAEC0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_A
+main_menu_seg7.0AF00:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAF00
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_B
+main_menu_seg7.0AF40:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAF40
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_C
+main_menu_seg7.0AF80:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAF80
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_D
+main_menu_seg7.0AFC0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xAFC0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_E
+main_menu_seg7.0B000:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB000
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_F
+main_menu_seg7.0B040:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB040
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_G
+main_menu_seg7.0B080:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB080
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_H
+main_menu_seg7.0B0C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB0C0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_I
+main_menu_seg7.0B100:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB100
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_J
+main_menu_seg7.0B140:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB140
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_K
+main_menu_seg7.0B180:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB180
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_L
+main_menu_seg7.0B1C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB1C0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_M
+main_menu_seg7.0B200:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB200
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_N
+main_menu_seg7.0B240:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB240
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_O
+main_menu_seg7.0B280:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB280
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_P
+main_menu_seg7.0B2C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB2C0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_Q
+main_menu_seg7.0B300:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB300
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_R
+main_menu_seg7.0B340:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB340
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_S
+main_menu_seg7.0B380:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB380
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_T
+main_menu_seg7.0B3C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB3C0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_U
+main_menu_seg7.0B400:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB400
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_V
+main_menu_seg7.0B440:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB440
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_W
+main_menu_seg7.0B480:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB480
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_X
+main_menu_seg7.0B4C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB4C0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_Y
+main_menu_seg7.0B500:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB500
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_Z
+main_menu_seg7.0B540:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB540
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_coin
+main_menu_seg7.0B580:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB580
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_multiply
+main_menu_seg7.0B5C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB5C0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_star_filled
+main_menu_seg7.0B600:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB600
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_dash
+main_menu_seg7.0B640:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB640
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_comma
+main_menu_seg7.0B680:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB680
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_apostrophe
+main_menu_seg7.0B6C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB6C0
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_exclamation
+main_menu_seg7.0B700:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB700
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_question
+main_menu_seg7.0B740:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB740
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_mface1
+main_menu_seg7.0B780:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB780
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_mface2
+main_menu_seg7.0B7C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB638
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_period
+main_menu_seg7.0B800:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB800
+  mio0: 0x2A65B0
+  format: IA8
+  symbol: texture_menu_font_char_ampersand

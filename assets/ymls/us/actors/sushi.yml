@@ -1,0 +1,27 @@
+sushi_eye:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x96D0
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: sushi_seg5_texture_050096D0
+sushi_snout:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8ED0
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: sushi_seg5_texture_05008ED0
+sushi_tooth:
+  type: TEXTURE
+  size: 128
+  width: 8
+  height: 8
+  offset: 0x9AD0
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: sushi_seg5_texture_05009AD0

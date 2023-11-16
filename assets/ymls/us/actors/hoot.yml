@@ -1,0 +1,27 @@
+hoot_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA20
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: hoot_seg5_texture_05000A20
+hoot_wing:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1E50
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: hoot_seg5_texture_05001E50
+hoot_wing_tip:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2650
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: hoot_seg5_texture_05002650

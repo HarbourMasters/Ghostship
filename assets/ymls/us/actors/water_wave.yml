@@ -1,0 +1,36 @@
+water_wave_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25358
+  mio0: 0x114750
+  format: IA16
+  symbol: water_wave_seg4_texture_04025358
+water_wave_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25B58
+  mio0: 0x114750
+  format: IA16
+  symbol: water_wave_seg4_texture_04025B58
+water_wave_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x26358
+  mio0: 0x114750
+  format: IA16
+  symbol: water_wave_seg4_texture_04026358
+water_wave_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x26B58
+  mio0: 0x114750
+  format: IA16
+  symbol: water_wave_seg4_texture_04026B58

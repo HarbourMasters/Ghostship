@@ -1,0 +1,81 @@
+0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x4CF8B0
+  format: IA16
+  symbol: ttm_seg7_texture_07000000
+levels_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x4CF8B0
+  format: RGBA16
+  symbol: ttm_seg7_texture_07000800
+levels_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x4CF8B0
+  format: RGBA16
+  symbol: ttm_seg7_texture_07001000
+levels_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x4CF8B0
+  format: RGBA16
+  symbol: ttm_seg7_texture_07001800
+levels_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x4CF8B0
+  format: RGBA16
+  symbol: ttm_seg7_texture_07002000
+levels_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  mio0: 0x4CF8B0
+  format: RGBA16
+  symbol: ttm_seg7_texture_07002800
+levels_6:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x3000
+  mio0: 0x4CF8B0
+  format: RGBA16
+  symbol: ttm_seg7_texture_07003000
+levels_7:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x4000
+  mio0: 0x4CF8B0
+  format: RGBA16
+  symbol: ttm_seg7_texture_07004000
+levels_8:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA800
+  mio0: 0x34FF00
+  format: RGBA16
+  symbol: ttm_seg7_texture_0702AD30

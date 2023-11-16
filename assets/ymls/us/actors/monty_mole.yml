@@ -1,0 +1,45 @@
+monty_mole_cheek:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x970
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05000970
+monty_mole_claw:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2970
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05002970
+monty_mole_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1170
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05001170
+monty_mole_nose:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1970
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05001970
+monty_mole_tooth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2170
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05002170

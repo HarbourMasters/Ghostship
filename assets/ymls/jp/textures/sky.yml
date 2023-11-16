@@ -1,0 +1,135 @@
+metal_hole:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: texture_metal_hole
+rr_textures.00000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09000000
+rr_textures.00800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09000800
+rr_textures.01000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09001000
+rr_textures.01800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09001800
+rr_textures.02000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2000
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09002000
+rr_textures.03000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09003000
+rr_textures.03800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x3800
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09003800
+rr_textures.04800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4800
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09004800
+rr_textures.05000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5000
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09005000
+rr_textures.05800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09005800
+rr_textures.06000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09006000
+rr_textures.07000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7000
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09007000
+rr_textures.07800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7800
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09007800
+rr_textures.08000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8000
+  mio0: 0x33BCB0
+  format: RGBA16
+  symbol: sky_09008000

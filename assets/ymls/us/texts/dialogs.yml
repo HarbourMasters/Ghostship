@@ -1,0 +1,680 @@
+dialog_00:
+  type: SM64:DIALOG
+  offset: 0xFFC8
+  mio0: 0x108A40
+dialog_01:
+  type: SM64:DIALOG
+  offset: 0xFFD8
+  mio0: 0x108A40
+dialog_02:
+  type: SM64:DIALOG
+  offset: 0xFFE8
+  mio0: 0x108A40
+dialog_03:
+  type: SM64:DIALOG
+  offset: 0xFFF8
+  mio0: 0x108A40
+dialog_04:
+  type: SM64:DIALOG
+  offset: 0x10008
+  mio0: 0x108A40
+dialog_05:
+  type: SM64:DIALOG
+  offset: 0x10018
+  mio0: 0x108A40
+dialog_06:
+  type: SM64:DIALOG
+  offset: 0x10028
+  mio0: 0x108A40
+dialog_07:
+  type: SM64:DIALOG
+  offset: 0x10038
+  mio0: 0x108A40
+dialog_08:
+  type: SM64:DIALOG
+  offset: 0x10048
+  mio0: 0x108A40
+dialog_09:
+  type: SM64:DIALOG
+  offset: 0x10058
+  mio0: 0x108A40
+dialog_0A:
+  type: SM64:DIALOG
+  offset: 0x10068
+  mio0: 0x108A40
+dialog_0B:
+  type: SM64:DIALOG
+  offset: 0x10078
+  mio0: 0x108A40
+dialog_0C:
+  type: SM64:DIALOG
+  offset: 0x10088
+  mio0: 0x108A40
+dialog_0D:
+  type: SM64:DIALOG
+  offset: 0x10098
+  mio0: 0x108A40
+dialog_0E:
+  type: SM64:DIALOG
+  offset: 0x100A8
+  mio0: 0x108A40
+dialog_0F:
+  type: SM64:DIALOG
+  offset: 0x100B8
+  mio0: 0x108A40
+dialog_10:
+  type: SM64:DIALOG
+  offset: 0x100C8
+  mio0: 0x108A40
+dialog_11:
+  type: SM64:DIALOG
+  offset: 0x100D8
+  mio0: 0x108A40
+dialog_12:
+  type: SM64:DIALOG
+  offset: 0x100E8
+  mio0: 0x108A40
+dialog_13:
+  type: SM64:DIALOG
+  offset: 0x100F8
+  mio0: 0x108A40
+dialog_14:
+  type: SM64:DIALOG
+  offset: 0x10108
+  mio0: 0x108A40
+dialog_15:
+  type: SM64:DIALOG
+  offset: 0x10118
+  mio0: 0x108A40
+dialog_16:
+  type: SM64:DIALOG
+  offset: 0x10128
+  mio0: 0x108A40
+dialog_17:
+  type: SM64:DIALOG
+  offset: 0x10138
+  mio0: 0x108A40
+dialog_18:
+  type: SM64:DIALOG
+  offset: 0x10148
+  mio0: 0x108A40
+dialog_19:
+  type: SM64:DIALOG
+  offset: 0x10158
+  mio0: 0x108A40
+dialog_1A:
+  type: SM64:DIALOG
+  offset: 0x10168
+  mio0: 0x108A40
+dialog_1B:
+  type: SM64:DIALOG
+  offset: 0x10178
+  mio0: 0x108A40
+dialog_1C:
+  type: SM64:DIALOG
+  offset: 0x10188
+  mio0: 0x108A40
+dialog_1D:
+  type: SM64:DIALOG
+  offset: 0x10198
+  mio0: 0x108A40
+dialog_1E:
+  type: SM64:DIALOG
+  offset: 0x101A8
+  mio0: 0x108A40
+dialog_1F:
+  type: SM64:DIALOG
+  offset: 0x101B8
+  mio0: 0x108A40
+dialog_20:
+  type: SM64:DIALOG
+  offset: 0x101C8
+  mio0: 0x108A40
+dialog_21:
+  type: SM64:DIALOG
+  offset: 0x101D8
+  mio0: 0x108A40
+dialog_22:
+  type: SM64:DIALOG
+  offset: 0x101E8
+  mio0: 0x108A40
+dialog_23:
+  type: SM64:DIALOG
+  offset: 0x101F8
+  mio0: 0x108A40
+dialog_24:
+  type: SM64:DIALOG
+  offset: 0x10208
+  mio0: 0x108A40
+dialog_25:
+  type: SM64:DIALOG
+  offset: 0x10218
+  mio0: 0x108A40
+dialog_26:
+  type: SM64:DIALOG
+  offset: 0x10228
+  mio0: 0x108A40
+dialog_27:
+  type: SM64:DIALOG
+  offset: 0x10238
+  mio0: 0x108A40
+dialog_28:
+  type: SM64:DIALOG
+  offset: 0x10248
+  mio0: 0x108A40
+dialog_29:
+  type: SM64:DIALOG
+  offset: 0x10258
+  mio0: 0x108A40
+dialog_2A:
+  type: SM64:DIALOG
+  offset: 0x10268
+  mio0: 0x108A40
+dialog_2B:
+  type: SM64:DIALOG
+  offset: 0x10278
+  mio0: 0x108A40
+dialog_2C:
+  type: SM64:DIALOG
+  offset: 0x10288
+  mio0: 0x108A40
+dialog_2D:
+  type: SM64:DIALOG
+  offset: 0x10298
+  mio0: 0x108A40
+dialog_2E:
+  type: SM64:DIALOG
+  offset: 0x102A8
+  mio0: 0x108A40
+dialog_2F:
+  type: SM64:DIALOG
+  offset: 0x102B8
+  mio0: 0x108A40
+dialog_30:
+  type: SM64:DIALOG
+  offset: 0x102C8
+  mio0: 0x108A40
+dialog_31:
+  type: SM64:DIALOG
+  offset: 0x102D8
+  mio0: 0x108A40
+dialog_32:
+  type: SM64:DIALOG
+  offset: 0x102E8
+  mio0: 0x108A40
+dialog_33:
+  type: SM64:DIALOG
+  offset: 0x102F8
+  mio0: 0x108A40
+dialog_34:
+  type: SM64:DIALOG
+  offset: 0x10308
+  mio0: 0x108A40
+dialog_35:
+  type: SM64:DIALOG
+  offset: 0x10318
+  mio0: 0x108A40
+dialog_36:
+  type: SM64:DIALOG
+  offset: 0x10328
+  mio0: 0x108A40
+dialog_37:
+  type: SM64:DIALOG
+  offset: 0x10338
+  mio0: 0x108A40
+dialog_38:
+  type: SM64:DIALOG
+  offset: 0x10348
+  mio0: 0x108A40
+dialog_39:
+  type: SM64:DIALOG
+  offset: 0x10358
+  mio0: 0x108A40
+dialog_3A:
+  type: SM64:DIALOG
+  offset: 0x10368
+  mio0: 0x108A40
+dialog_3B:
+  type: SM64:DIALOG
+  offset: 0x10378
+  mio0: 0x108A40
+dialog_3C:
+  type: SM64:DIALOG
+  offset: 0x10388
+  mio0: 0x108A40
+dialog_3D:
+  type: SM64:DIALOG
+  offset: 0x10398
+  mio0: 0x108A40
+dialog_3E:
+  type: SM64:DIALOG
+  offset: 0x103A8
+  mio0: 0x108A40
+dialog_3F:
+  type: SM64:DIALOG
+  offset: 0x103B8
+  mio0: 0x108A40
+dialog_40:
+  type: SM64:DIALOG
+  offset: 0x103C8
+  mio0: 0x108A40
+dialog_41:
+  type: SM64:DIALOG
+  offset: 0x103D8
+  mio0: 0x108A40
+dialog_42:
+  type: SM64:DIALOG
+  offset: 0x103E8
+  mio0: 0x108A40
+dialog_43:
+  type: SM64:DIALOG
+  offset: 0x103F8
+  mio0: 0x108A40
+dialog_44:
+  type: SM64:DIALOG
+  offset: 0x10408
+  mio0: 0x108A40
+dialog_45:
+  type: SM64:DIALOG
+  offset: 0x10418
+  mio0: 0x108A40
+dialog_46:
+  type: SM64:DIALOG
+  offset: 0x10428
+  mio0: 0x108A40
+dialog_47:
+  type: SM64:DIALOG
+  offset: 0x10438
+  mio0: 0x108A40
+dialog_48:
+  type: SM64:DIALOG
+  offset: 0x10448
+  mio0: 0x108A40
+dialog_49:
+  type: SM64:DIALOG
+  offset: 0x10458
+  mio0: 0x108A40
+dialog_4A:
+  type: SM64:DIALOG
+  offset: 0x10468
+  mio0: 0x108A40
+dialog_4B:
+  type: SM64:DIALOG
+  offset: 0x10478
+  mio0: 0x108A40
+dialog_4C:
+  type: SM64:DIALOG
+  offset: 0x10488
+  mio0: 0x108A40
+dialog_4D:
+  type: SM64:DIALOG
+  offset: 0x10498
+  mio0: 0x108A40
+dialog_4E:
+  type: SM64:DIALOG
+  offset: 0x104A8
+  mio0: 0x108A40
+dialog_4F:
+  type: SM64:DIALOG
+  offset: 0x104B8
+  mio0: 0x108A40
+dialog_50:
+  type: SM64:DIALOG
+  offset: 0x104C8
+  mio0: 0x108A40
+dialog_51:
+  type: SM64:DIALOG
+  offset: 0x104D8
+  mio0: 0x108A40
+dialog_52:
+  type: SM64:DIALOG
+  offset: 0x104E8
+  mio0: 0x108A40
+dialog_53:
+  type: SM64:DIALOG
+  offset: 0x104F8
+  mio0: 0x108A40
+dialog_54:
+  type: SM64:DIALOG
+  offset: 0x10508
+  mio0: 0x108A40
+dialog_55:
+  type: SM64:DIALOG
+  offset: 0x10518
+  mio0: 0x108A40
+dialog_56:
+  type: SM64:DIALOG
+  offset: 0x10528
+  mio0: 0x108A40
+dialog_57:
+  type: SM64:DIALOG
+  offset: 0x10538
+  mio0: 0x108A40
+dialog_58:
+  type: SM64:DIALOG
+  offset: 0x10548
+  mio0: 0x108A40
+dialog_59:
+  type: SM64:DIALOG
+  offset: 0x10558
+  mio0: 0x108A40
+dialog_5A:
+  type: SM64:DIALOG
+  offset: 0x10568
+  mio0: 0x108A40
+dialog_5B:
+  type: SM64:DIALOG
+  offset: 0x10578
+  mio0: 0x108A40
+dialog_5C:
+  type: SM64:DIALOG
+  offset: 0x10588
+  mio0: 0x108A40
+dialog_5D:
+  type: SM64:DIALOG
+  offset: 0x10598
+  mio0: 0x108A40
+dialog_5E:
+  type: SM64:DIALOG
+  offset: 0x105A8
+  mio0: 0x108A40
+dialog_5F:
+  type: SM64:DIALOG
+  offset: 0x105B8
+  mio0: 0x108A40
+dialog_60:
+  type: SM64:DIALOG
+  offset: 0x105C8
+  mio0: 0x108A40
+dialog_61:
+  type: SM64:DIALOG
+  offset: 0x105D8
+  mio0: 0x108A40
+dialog_62:
+  type: SM64:DIALOG
+  offset: 0x105E8
+  mio0: 0x108A40
+dialog_63:
+  type: SM64:DIALOG
+  offset: 0x105F8
+  mio0: 0x108A40
+dialog_64:
+  type: SM64:DIALOG
+  offset: 0x10608
+  mio0: 0x108A40
+dialog_65:
+  type: SM64:DIALOG
+  offset: 0x10618
+  mio0: 0x108A40
+dialog_66:
+  type: SM64:DIALOG
+  offset: 0x10628
+  mio0: 0x108A40
+dialog_67:
+  type: SM64:DIALOG
+  offset: 0x10638
+  mio0: 0x108A40
+dialog_68:
+  type: SM64:DIALOG
+  offset: 0x10648
+  mio0: 0x108A40
+dialog_69:
+  type: SM64:DIALOG
+  offset: 0x10658
+  mio0: 0x108A40
+dialog_6A:
+  type: SM64:DIALOG
+  offset: 0x10668
+  mio0: 0x108A40
+dialog_6B:
+  type: SM64:DIALOG
+  offset: 0x10678
+  mio0: 0x108A40
+dialog_6C:
+  type: SM64:DIALOG
+  offset: 0x10688
+  mio0: 0x108A40
+dialog_6D:
+  type: SM64:DIALOG
+  offset: 0x10698
+  mio0: 0x108A40
+dialog_6E:
+  type: SM64:DIALOG
+  offset: 0x106A8
+  mio0: 0x108A40
+dialog_6F:
+  type: SM64:DIALOG
+  offset: 0x106B8
+  mio0: 0x108A40
+dialog_70:
+  type: SM64:DIALOG
+  offset: 0x106C8
+  mio0: 0x108A40
+dialog_71:
+  type: SM64:DIALOG
+  offset: 0x106D8
+  mio0: 0x108A40
+dialog_72:
+  type: SM64:DIALOG
+  offset: 0x106E8
+  mio0: 0x108A40
+dialog_73:
+  type: SM64:DIALOG
+  offset: 0x106F8
+  mio0: 0x108A40
+dialog_74:
+  type: SM64:DIALOG
+  offset: 0x10708
+  mio0: 0x108A40
+dialog_75:
+  type: SM64:DIALOG
+  offset: 0x10718
+  mio0: 0x108A40
+dialog_76:
+  type: SM64:DIALOG
+  offset: 0x10728
+  mio0: 0x108A40
+dialog_77:
+  type: SM64:DIALOG
+  offset: 0x10738
+  mio0: 0x108A40
+dialog_78:
+  type: SM64:DIALOG
+  offset: 0x10748
+  mio0: 0x108A40
+dialog_79:
+  type: SM64:DIALOG
+  offset: 0x10758
+  mio0: 0x108A40
+dialog_7A:
+  type: SM64:DIALOG
+  offset: 0x10768
+  mio0: 0x108A40
+dialog_7B:
+  type: SM64:DIALOG
+  offset: 0x10778
+  mio0: 0x108A40
+dialog_7C:
+  type: SM64:DIALOG
+  offset: 0x10788
+  mio0: 0x108A40
+dialog_7D:
+  type: SM64:DIALOG
+  offset: 0x10798
+  mio0: 0x108A40
+dialog_7E:
+  type: SM64:DIALOG
+  offset: 0x107A8
+  mio0: 0x108A40
+dialog_7F:
+  type: SM64:DIALOG
+  offset: 0x107B8
+  mio0: 0x108A40
+dialog_80:
+  type: SM64:DIALOG
+  offset: 0x107C8
+  mio0: 0x108A40
+dialog_81:
+  type: SM64:DIALOG
+  offset: 0x107D8
+  mio0: 0x108A40
+dialog_82:
+  type: SM64:DIALOG
+  offset: 0x107E8
+  mio0: 0x108A40
+dialog_83:
+  type: SM64:DIALOG
+  offset: 0x107F8
+  mio0: 0x108A40
+dialog_84:
+  type: SM64:DIALOG
+  offset: 0x10808
+  mio0: 0x108A40
+dialog_85:
+  type: SM64:DIALOG
+  offset: 0x10818
+  mio0: 0x108A40
+dialog_86:
+  type: SM64:DIALOG
+  offset: 0x10828
+  mio0: 0x108A40
+dialog_87:
+  type: SM64:DIALOG
+  offset: 0x10838
+  mio0: 0x108A40
+dialog_88:
+  type: SM64:DIALOG
+  offset: 0x10848
+  mio0: 0x108A40
+dialog_89:
+  type: SM64:DIALOG
+  offset: 0x10858
+  mio0: 0x108A40
+dialog_8A:
+  type: SM64:DIALOG
+  offset: 0x10868
+  mio0: 0x108A40
+dialog_8B:
+  type: SM64:DIALOG
+  offset: 0x10878
+  mio0: 0x108A40
+dialog_8C:
+  type: SM64:DIALOG
+  offset: 0x10888
+  mio0: 0x108A40
+dialog_8D:
+  type: SM64:DIALOG
+  offset: 0x10898
+  mio0: 0x108A40
+dialog_8E:
+  type: SM64:DIALOG
+  offset: 0x108A8
+  mio0: 0x108A40
+dialog_8F:
+  type: SM64:DIALOG
+  offset: 0x108B8
+  mio0: 0x108A40
+dialog_90:
+  type: SM64:DIALOG
+  offset: 0x108C8
+  mio0: 0x108A40
+dialog_91:
+  type: SM64:DIALOG
+  offset: 0x108D8
+  mio0: 0x108A40
+dialog_92:
+  type: SM64:DIALOG
+  offset: 0x108E8
+  mio0: 0x108A40
+dialog_93:
+  type: SM64:DIALOG
+  offset: 0x108F8
+  mio0: 0x108A40
+dialog_94:
+  type: SM64:DIALOG
+  offset: 0x10908
+  mio0: 0x108A40
+dialog_95:
+  type: SM64:DIALOG
+  offset: 0x10918
+  mio0: 0x108A40
+dialog_96:
+  type: SM64:DIALOG
+  offset: 0x10928
+  mio0: 0x108A40
+dialog_97:
+  type: SM64:DIALOG
+  offset: 0x10938
+  mio0: 0x108A40
+dialog_98:
+  type: SM64:DIALOG
+  offset: 0x10948
+  mio0: 0x108A40
+dialog_99:
+  type: SM64:DIALOG
+  offset: 0x10958
+  mio0: 0x108A40
+dialog_9A:
+  type: SM64:DIALOG
+  offset: 0x10968
+  mio0: 0x108A40
+dialog_9B:
+  type: SM64:DIALOG
+  offset: 0x10978
+  mio0: 0x108A40
+dialog_9C:
+  type: SM64:DIALOG
+  offset: 0x10988
+  mio0: 0x108A40
+dialog_9D:
+  type: SM64:DIALOG
+  offset: 0x10998
+  mio0: 0x108A40
+dialog_9E:
+  type: SM64:DIALOG
+  offset: 0x109A8
+  mio0: 0x108A40
+dialog_9F:
+  type: SM64:DIALOG
+  offset: 0x109B8
+  mio0: 0x108A40
+dialog_A0:
+  type: SM64:DIALOG
+  offset: 0x109C8
+  mio0: 0x108A40
+dialog_A1:
+  type: SM64:DIALOG
+  offset: 0x109D8
+  mio0: 0x108A40
+dialog_A2:
+  type: SM64:DIALOG
+  offset: 0x109E8
+  mio0: 0x108A40
+dialog_A3:
+  type: SM64:DIALOG
+  offset: 0x109F8
+  mio0: 0x108A40
+dialog_A4:
+  type: SM64:DIALOG
+  offset: 0x10A08
+  mio0: 0x108A40
+dialog_A5:
+  type: SM64:DIALOG
+  offset: 0x10A18
+  mio0: 0x108A40
+dialog_A6:
+  type: SM64:DIALOG
+  offset: 0x10A28
+  mio0: 0x108A40
+dialog_A7:
+  type: SM64:DIALOG
+  offset: 0x10A38
+  mio0: 0x108A40
+dialog_A8:
+  type: SM64:DIALOG
+  offset: 0x10A48
+  mio0: 0x108A40
+dialog_A9:
+  type: SM64:DIALOG
+  offset: 0x10A58
+  mio0: 0x108A40

@@ -1,0 +1,9 @@
+fwoosh_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x15808
+  mio0: 0x1521D0
+  format: IA16
+  symbol: fwoosh_seg5_texture_05015808

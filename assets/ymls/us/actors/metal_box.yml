@@ -1,0 +1,9 @@
+metal_box_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x23998
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: metal_box_seg8_texture_08023998

@@ -1,0 +1,72 @@
+yoshi_egg_0_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x57B8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_050057B8
+yoshi_egg_1_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5FB8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_05005FB8
+yoshi_egg_2_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x67B8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_050067B8
+yoshi_egg_3_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6FB8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_05006FB8
+yoshi_egg_4_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x77B8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_050077B8
+yoshi_egg_5_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7FB8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_05007FB8
+yoshi_egg_6_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x87B8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_050087B8
+yoshi_egg_7_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8FB8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: yoshi_egg_seg5_texture_05008FB8

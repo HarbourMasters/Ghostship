@@ -1,0 +1,9 @@
+monty_mole_hole:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x40
+  mio0: 0x1505D0
+  format: IA16
+  symbol: monty_mole_hole_seg5_texture_05000040

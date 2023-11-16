@@ -1,0 +1,36 @@
+amp_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1B18
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: dAmpBodyTexture
+amp_electricity:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0xF18
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: dAmpElectricityTexture
+amp_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1318
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: dAmpEyesTexture
+amp_mouth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2318
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: dAmpMouthTexture

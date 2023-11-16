@@ -1,0 +1,27 @@
+dorrie_eye:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x9BA0
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: dorrie_seg6_texture_06009BA0
+dorrie_skin:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9DA0
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: dorrie_seg6_texture_06009DA0
+dorrie_tongue:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x223D0
+  mio0: 0x1C4230
+  format: RGBA16
+  symbol: dorrie_seg6_texture_0600ADA0

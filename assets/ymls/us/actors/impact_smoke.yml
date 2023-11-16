@@ -1,0 +1,36 @@
+impact_smoke_0:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x5AB78
+  mio0: 0x188440
+  format: IA16
+  symbol: impact_smoke_seg6_texture_0605AA28
+impact_smoke_1:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x5CB78
+  mio0: 0x188440
+  format: IA16
+  symbol: impact_smoke_seg6_texture_0605CA28
+impact_smoke_2:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x5EB78
+  mio0: 0x188440
+  format: IA16
+  symbol: impact_smoke_seg6_texture_0605EA28
+impact_smoke_3:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x60B78
+  mio0: 0x188440
+  format: IA16
+  symbol: impact_smoke_seg6_texture_06060A28

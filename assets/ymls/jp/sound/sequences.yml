@@ -1,0 +1,249 @@
+sound_player:
+  type: SEQUENCE
+  id: 0
+  offset: 0x7460A0
+  size: 12800
+  banks:
+    - sound/banks/00
+    - sound/banks/01_terrain
+    - sound/banks/02_water
+    - sound/banks/bnk_03
+    - sound/banks/bnk_04
+    - sound/banks/bnk_05
+    - sound/banks/bnk_06
+    - sound/banks/bnk_07
+    - sound/banks/08_mario
+    - sound/banks/bnk_09
+    - sound/banks/0A_mario_peach
+cutscene_collect_star:
+  type: SEQUENCE
+  id: 1
+  offset: 0x7492A0
+  size: 633
+  banks:
+    - sound/banks/bnk_22
+menu_title_screen:
+  type: SEQUENCE
+  id: 2
+  offset: 0x749520
+  size: 8276
+  banks:
+    - sound/banks/bnk_11
+level_grass:
+  type: SEQUENCE
+  id: 3
+  offset: 0x74B580
+  size: 5134
+  banks:
+    - sound/banks/bnk_22
+level_inside_castle:
+  type: SEQUENCE
+  id: 4
+  offset: 0x74C990
+  size: 2504
+  banks:
+    - sound/banks/bnk_0E
+level_water:
+  type: SEQUENCE
+  id: 5
+  offset: 0x74D360
+  size: 4816
+  banks:
+    - sound/banks/bnk_13
+level_hot:
+  type: SEQUENCE
+  id: 6
+  offset: 0x74E630
+  size: 2459
+  banks:
+    - sound/banks/bnk_0F
+level_boss_koopa:
+  type: SEQUENCE
+  id: 7
+  offset: 0x74EFD0
+  size: 3430
+  banks:
+    - sound/banks/bnk_12
+level_snow:
+  type: SEQUENCE
+  id: 8
+  offset: 0x74FD40
+  size: 8157
+  banks:
+    - sound/banks/bnk_0B
+level_slide:
+  type: SEQUENCE
+  id: 9
+  offset: 0x751D20
+  size: 7452
+  banks:
+    - sound/banks/bnk_0D
+level_spooky:
+  type: SEQUENCE
+  id: 10
+  offset: 0x753A40
+  size: 5686
+  banks:
+    - sound/banks/bnk_21
+    - sound/banks/bnk_10
+event_piranha_plant:
+  type: SEQUENCE
+  id: 11
+  offset: 0x755080
+  size: 1405
+  banks:
+    - sound/banks/14_piranha_music_box
+level_underground:
+  type: SEQUENCE
+  id: 12
+  offset: 0x755600
+  size: 4905
+  banks:
+    - sound/banks/bnk_15
+menu_star_select:
+  type: SEQUENCE
+  id: 13
+  offset: 0x756930
+  size: 138
+  banks:
+    - sound/banks/16_course_start
+event_powerup:
+  type: SEQUENCE
+  id: 14
+  offset: 0x7569C0
+  size: 3143
+  banks:
+    - sound/banks/bnk_17
+event_metal_cap:
+  type: SEQUENCE
+  id: 15
+  offset: 0x757610
+  size: 2786
+  banks:
+    - sound/banks/bnk_18
+event_koopa_message:
+  type: SEQUENCE
+  id: 16
+  offset: 0x758100
+  size: 564
+  banks:
+    - sound/banks/bnk_12
+level_koopa_road:
+  type: SEQUENCE
+  id: 17
+  offset: 0x758340
+  size: 4763
+  banks:
+    - sound/banks/bnk_19
+event_high_score:
+  type: SEQUENCE
+  id: 18
+  offset: 0x7595E0
+  size: 279
+  banks:
+    - sound/banks/bnk_1F
+event_merry_go_round:
+  type: SEQUENCE
+  id: 19
+  offset: 0x759700
+  size: 1663
+  banks:
+    - sound/banks/bnk_21
+event_race:
+  type: SEQUENCE
+  id: 20
+  offset: 0x759D80
+  size: 203
+  banks:
+    - sound/banks/bnk_1A
+cutscene_star_spawn:
+  type: SEQUENCE
+  id: 21
+  offset: 0x759E50
+  size: 654
+  banks:
+    - sound/banks/bnk_0E
+event_boss:
+  type: SEQUENCE
+  id: 22
+  offset: 0x75A0E0
+  size: 3451
+  banks:
+    - sound/banks/bnk_1B
+cutscene_collect_key:
+  type: SEQUENCE
+  id: 23
+  offset: 0x75AE60
+  size: 683
+  banks:
+    - sound/banks/bnk_1A
+event_endless_stairs:
+  type: SEQUENCE
+  id: 24
+  offset: 0x75B110
+  size: 1789
+  banks:
+    - sound/banks/1C_endless_stairs
+level_boss_koopa_final:
+  type: SEQUENCE
+  id: 25
+  offset: 0x75B810
+  size: 3527
+  banks:
+    - sound/banks/1D_bowser_organ
+cutscene_credits:
+  type: SEQUENCE
+  id: 26
+  offset: 0x75C5E0
+  size: 14341
+  banks:
+    - sound/banks/bnk_25
+event_solve_puzzle:
+  type: SEQUENCE
+  id: 27
+  offset: 0x75FDF0
+  size: 222
+  banks:
+    - sound/banks/14_piranha_music_box
+event_toad_message:
+  type: SEQUENCE
+  id: 28
+  offset: 0x75FED0
+  size: 214
+  banks:
+    - sound/banks/bnk_20
+event_peach_message:
+  type: SEQUENCE
+  id: 29
+  offset: 0x75FFB0
+  size: 440
+  banks:
+    - sound/banks/bnk_1E
+cutscene_intro:
+  type: SEQUENCE
+  id: 30
+  offset: 0x760170
+  size: 1774
+  banks:
+    - sound/banks/bnk_1B
+cutscene_victory:
+  type: SEQUENCE
+  id: 31
+  offset: 0x760860
+  size: 2074
+  banks:
+    - sound/banks/bnk_1A
+cutscene_ending:
+  type: SEQUENCE
+  id: 32
+  offset: 0x761080
+  size: 1892
+  banks:
+    - sound/banks/bnk_23
+menu_file_select:
+  type: SEQUENCE
+  id: 33
+  offset: 0x7617F0
+  size: 789
+  banks:
+    - sound/banks/bnk_24

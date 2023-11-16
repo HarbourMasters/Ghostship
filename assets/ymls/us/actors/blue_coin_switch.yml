@@ -1,0 +1,18 @@
+blue_coin_switch_side:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x18
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: blue_coin_switch_seg8_texture_08000018
+blue_coin_switch_top:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x418
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: blue_coin_switch_seg8_texture_08000418

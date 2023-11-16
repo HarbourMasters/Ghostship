@@ -1,0 +1,9 @@
+koopa_flag_banner:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x48
+  mio0: 0x1C4230
+  format: RGBA16
+  symbol: koopa_flag_seg6_texture_06000048

@@ -1,0 +1,18 @@
+moneybag_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x49B0
+  mio0: 0x1E51F0
+  format: RGBA16
+  symbol: moneybag_seg6_texture_060049B0
+moneybag_mouth:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x39B0
+  mio0: 0x1E51F0
+  format: RGBA16
+  symbol: moneybag_seg6_texture_060039B0

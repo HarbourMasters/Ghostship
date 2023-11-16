@@ -1,0 +1,9 @@
+cannon_base:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x49B8
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: cannon_base_seg8_texture_080049B8

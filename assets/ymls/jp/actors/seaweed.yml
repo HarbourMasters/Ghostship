@@ -1,0 +1,36 @@
+seaweed_base:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9610
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: seaweed_seg6_texture_06009610
+seaweed_lower_center:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8E10
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: seaweed_seg6_texture_06008E10
+seaweed_tip:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7E10
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: seaweed_seg6_texture_06007E10
+seaweed_upper_center:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8610
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: seaweed_seg6_texture_06008610

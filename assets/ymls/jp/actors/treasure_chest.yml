@@ -1,0 +1,36 @@
+treasure_chest_front:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x157A8
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: treasure_chest_seg6_texture_060157A8
+treasure_chest_lock:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x13FA8
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: treasure_chest_seg6_texture_06013FA8
+treasure_chest_lock_top:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x14FA8
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: treasure_chest_seg6_texture_06014FA8
+treasure_chest_side:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x147A8
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: treasure_chest_seg6_texture_060147A8

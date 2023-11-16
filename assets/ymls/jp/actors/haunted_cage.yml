@@ -1,0 +1,54 @@
+bbh_cage_bars:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xDA88
+  mio0: 0x165060
+  format: RGBA16
+  symbol: haunted_cage_seg5_texture_0500DA88
+bbh_cage_double_ornament:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xCA88
+  mio0: 0x165060
+  format: RGBA16
+  symbol: haunted_cage_seg5_texture_0500CA88
+bbh_cage_floor:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xC288
+  mio0: 0x165060
+  format: RGBA16
+  symbol: haunted_cage_seg5_texture_0500C288
+bbh_cage_garbage:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xE288
+  mio0: 0x165060
+  format: RGBA16
+  symbol: haunted_cage_seg5_texture_0500E288
+bbh_cage_ornament:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0xD288
+  mio0: 0x165060
+  format: RGBA16
+  symbol: haunted_cage_seg5_texture_0500D288
+bbh_cage_wooden_base:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0xD688
+  mio0: 0x165060
+  format: RGBA16
+  symbol: haunted_cage_seg5_texture_0500D688

@@ -1,0 +1,9 @@
+water_ring:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x12380
+  mio0: 0x1B8010
+  format: RGBA16
+  symbol: water_ring_seg6_texture_06012380

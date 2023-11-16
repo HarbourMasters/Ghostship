@@ -1,0 +1,117 @@
+0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07000000
+levels_1:
+  type: TEXTURE
+  size: 256
+  width: 32
+  height: 4
+  offset: 0x800
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07000800
+levels_10:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4300
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07004300
+levels_11:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4B00
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07004B00
+levels_12:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11958
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07011958
+levels_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x900
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07000900
+levels_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1100
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07001100
+levels_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1900
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07001900
+levels_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xBC70
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002100
+levels_6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB470
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002900
+levels_7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3100
+  mio0: 0x381EF0
+  format: RGBA16
+  symbol: ccm_seg7_texture_07003100
+levels_8:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x3900
+  mio0: 0x381EF0
+  format: IA16
+  symbol: ccm_seg7_texture_07003900
+levels_9:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3B00
+  mio0: 0x381EF0
+  format: IA16
+  symbol: ccm_seg7_texture_07003B00

@@ -1,0 +1,42 @@
+00:
+  type: SAMPLE
+  id: 70
+sfx_01:
+  type: SAMPLE
+  id: 71
+sfx_02:
+  type: SAMPLE
+  id: 72
+sfx_03:
+  type: SAMPLE
+  id: 73
+sfx_04:
+  type: SAMPLE
+  id: 74
+sfx_05:
+  type: SAMPLE
+  id: 75
+sfx_06:
+  type: SAMPLE
+  id: 76
+sfx_07:
+  type: SAMPLE
+  id: 77
+sfx_08:
+  type: SAMPLE
+  id: 78
+sfx_09:
+  type: SAMPLE
+  id: 79
+sfx_0A:
+  type: SAMPLE
+  id: 80
+sfx_0B:
+  type: SAMPLE
+  id: 81
+sfx_0C:
+  type: SAMPLE
+  id: 82
+0D_chain_chomp_bark:
+  type: SAMPLE
+  id: 83

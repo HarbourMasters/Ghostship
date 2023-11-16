@@ -1,0 +1,54 @@
+bob-omb_buddy_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x78
+  mio0: 0x134D20
+  format: RGBA16
+  symbol: bobomb_seg8_texture_0801FA60
+bob-omb_buddy_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1078
+  mio0: 0x134D20
+  format: RGBA16
+  symbol: bobomb_seg8_texture_08020A60
+bob-omb_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4878
+  mio0: 0x134D20
+  format: RGBA16
+  symbol: bobomb_seg8_texture_08021A60
+bob-omb_eyes_blink:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5078
+  mio0: 0x134D20
+  format: RGBA16
+  symbol: bobomb_seg8_texture_08022260
+bob-omb_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1DA60
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: bobomb_seg8_texture_0801DA60
+bob-omb_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1EA60
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: bobomb_seg8_texture_0801EA60

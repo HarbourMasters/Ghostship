@@ -1,0 +1,9 @@
+blue_fish:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1B5E0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: blue_fish_seg3_texture_0301B5E0

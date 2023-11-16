@@ -1,0 +1,36 @@
+swoop_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4270
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: swoop_seg6_texture_06004270
+swoop_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4A70
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: swoop_seg6_texture_06004A70
+swoop_nose:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5270
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: swoop_seg6_texture_06005270
+swoop_wing:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5A70
+  mio0: 0x1E7EE0
+  format: RGBA16
+  symbol: swoop_seg6_texture_06005A70

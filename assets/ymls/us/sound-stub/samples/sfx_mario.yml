@@ -1,0 +1,81 @@
+00_mario_jump_hoo:
+  type: SAMPLE
+  id: 84
+01_mario_jump_wah:
+  type: SAMPLE
+  id: 85
+02_mario_yah:
+  type: SAMPLE
+  id: 86
+03_mario_haha:
+  type: SAMPLE
+  id: 87
+04_mario_yahoo:
+  type: SAMPLE
+  id: 88
+05_mario_uh:
+  type: SAMPLE
+  id: 89
+06_mario_hrmm:
+  type: SAMPLE
+  id: 90
+07_mario_wah2:
+  type: SAMPLE
+  id: 91
+08_mario_whoa:
+  type: SAMPLE
+  id: 92
+09_mario_eeuh:
+  type: SAMPLE
+  id: 93
+0A_mario_attacked:
+  type: SAMPLE
+  id: 94
+0B_mario_ooof:
+  type: SAMPLE
+  id: 95
+0C_mario_here_we_go:
+  type: SAMPLE
+  id: 96
+0D_mario_yawning:
+  type: SAMPLE
+  id: 97
+0E_mario_snoring1:
+  type: SAMPLE
+  id: 98
+0F_mario_snoring2:
+  type: SAMPLE
+  id: 99
+10_mario_doh:
+  type: SAMPLE
+  id: 100
+11_mario_game_over:
+  type: SAMPLE
+  id: 101
+12_mario_hello:
+  type: SAMPLE
+  id: 102
+13_mario_press_start_to_play:
+  type: SAMPLE
+  id: 103
+14_mario_twirl_bounce:
+  type: SAMPLE
+  id: 104
+15_mario_snoring3:
+  type: SAMPLE
+  id: 105
+16_mario_so_longa_bowser:
+  type: SAMPLE
+  id: 106
+17_mario_ima_tired:
+  type: SAMPLE
+  id: 107
+18_mario_waha:
+  type: SAMPLE
+  id: 108
+19_mario_yippee:
+  type: SAMPLE
+  id: 109
+1A_mario_lets_a_go:
+  type: SAMPLE
+  id: 110

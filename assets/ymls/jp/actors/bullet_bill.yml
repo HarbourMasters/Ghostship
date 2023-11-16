@@ -1,0 +1,18 @@
+bullet_bill_eye:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xBAA8
+  mio0: 0x128BE0
+  format: RGBA16
+  symbol: bullet_bill_seg5_texture_0500BAA8
+bullet_bill_mouth:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xCAA8
+  mio0: 0x128BE0
+  format: RGBA16
+  symbol: bullet_bill_seg5_texture_0500CAA8

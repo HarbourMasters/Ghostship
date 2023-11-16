@@ -1,0 +1,126 @@
+bowser_flame_0:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x0
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06000000
+bowser_flame_1:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x2000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06002000
+bowser_flame_10:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x14000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06014000
+bowser_flame_11:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x16000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06016000
+bowser_flame_12:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x18000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06018000
+bowser_flame_13:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x1A000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_0601A000
+bowser_flame_2:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x4000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06004000
+bowser_flame_3:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x6000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06006000
+bowser_flame_4:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x8000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06008000
+bowser_flame_5:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0xA000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_0600A000
+bowser_flame_6:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0xC000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_0600C000
+bowser_flame_7:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0xE000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_0600E000
+bowser_flame_8:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x10000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06010000
+bowser_flame_9:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x12000
+  mio0: 0x186810
+  format: RGBA16
+  symbol: flame_seg6_texture_06012000

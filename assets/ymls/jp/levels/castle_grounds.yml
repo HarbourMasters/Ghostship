@@ -1,0 +1,45 @@
+0:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x0
+  mio0: 0x448C80
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_07000000
+levels_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1000
+  mio0: 0x448C80
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_07001000
+levels_2:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2000
+  mio0: 0x448C80
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_07002000
+levels_3:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xC9E8
+  mio0: 0x448C80
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_0700C9E8
+levels_4:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xD9E8
+  mio0: 0x448C80
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_0700D9E8

@@ -1,0 +1,90 @@
+power_meter_five_segments:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x26BE0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_five_segments
+power_meter_four_segments:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x273E0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_four_segments
+power_meter_full:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x253E0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_full
+power_meter_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x233E0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_left_side
+power_meter_one_segment:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x28BE0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_one_segments
+power_meter_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x243E0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_right_side
+power_meter_seven_segments:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25BE0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_seven_segments
+power_meter_six_segments:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x263E0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_six_segments
+power_meter_three_segments:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x27BE0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_three_segments
+power_meter_two_segments:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x283E0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: texture_power_meter_two_segments

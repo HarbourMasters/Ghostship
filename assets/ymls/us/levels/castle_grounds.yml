@@ -1,0 +1,54 @@
+castle_grounds_0:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x0
+  mio0: 0x44ABC0
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_07000000
+castle_grounds_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1000
+  mio0: 0x44ABC0
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_07001000
+castle_grounds_2:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2000
+  mio0: 0x44ABC0
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_07002000
+castle_grounds_3:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xC9E8
+  mio0: 0x44ABC0
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_0700C9E8
+castle_grounds_4:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xD9E8
+  mio0: 0x44ABC0
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_0700D9E8
+castle_grounds_5:
+  type: TEXTURE
+  size: 2048
+  width: 64
+  height: 32
+  offset: 0xEAE8
+  mio0: 0x44ABC0
+  format: IA8
+  symbol: castle_grounds_seg7_us_texture_0700EAE8

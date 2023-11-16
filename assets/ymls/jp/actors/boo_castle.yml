@@ -1,0 +1,18 @@
+bbh_boo_eyes:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x9B40
+  mio0: 0x165060
+  format: RGBA16
+  symbol: boo_castle_seg6_texture_06015670
+bbh_boo_mouth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xAB40
+  mio0: 0x165060
+  format: RGBA16
+  symbol: boo_castle_seg6_texture_06016670

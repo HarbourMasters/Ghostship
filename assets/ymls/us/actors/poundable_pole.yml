@@ -1,0 +1,18 @@
+poundable_pole_side:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1850
+  mio0: 0x1C4230
+  format: RGBA16
+  symbol: poundable_pole_seg6_texture_06001850
+poundable_pole_top:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1050
+  mio0: 0x1C4230
+  format: RGBA16
+  symbol: poundable_pole_seg6_texture_06001050

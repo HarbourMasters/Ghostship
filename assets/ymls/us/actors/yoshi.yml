@@ -1,0 +1,27 @@
+yoshi_eye:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x1C588
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: yoshi_seg5_texture_0501C4A0
+yoshi_eye_blink:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x1C788
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: yoshi_seg5_texture_0501C6A0
+yoshi_nostril:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x1C988
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: yoshi_seg5_texture_0501C8A0

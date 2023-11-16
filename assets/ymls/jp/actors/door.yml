@@ -1,0 +1,126 @@
+bbh_door:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x10510
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_03010510
+bbh_door_overlay:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11510
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_03011510
+door_lock:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x13510
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_03013510
+hmc_mural_door:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xED10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_0300ED10
+hmc_mural_door_overlay:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xFD10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_0300FD10
+metal_door:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xD510
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_0300D510
+metal_door_overlay:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xE510
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_0300E510
+one_star_door_sign:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12510
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_03012510
+polished_wooden_door:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9D10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_03009D10
+polished_wooden_door_overlay:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xAD10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_0300AD10
+rough_wooden_door:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xBD10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_0300BD10
+rough_wooden_door_overlay:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xCD10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_0300CD10
+three_star_door_sign:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12D10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_03012D10
+zero_star_door_sign:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11D10
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: door_seg3_texture_03011D10

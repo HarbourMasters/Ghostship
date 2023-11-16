@@ -1,0 +1,36 @@
+spindrift_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6D0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: spindrift_seg5_texture_050006D0
+spindrift_head:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1ED0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: spindrift_seg5_texture_05001ED0
+spindrift_leaf:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x16D0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: spindrift_seg5_texture_050016D0
+spindrift_petal:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xED0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: spindrift_seg5_texture_05000ED0

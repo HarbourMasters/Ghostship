@@ -1,0 +1,9 @@
+butterfly_wing:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x43A8
+  mio0: 0x201410
+  format: RGBA16
+  symbol: butterfly_seg3_texture_030043A8

@@ -1,0 +1,72 @@
+koopa_eye_border:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5648
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06005648
+koopa_eyes_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4E48
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06004E48
+koopa_eyes_open:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4648
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06004648
+koopa_nostrils:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x5E48
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06005E48
+koopa_shell_back:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2E48
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06002E48
+koopa_shell_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2648
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06002648
+koopa_shell_front_top:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3E48
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06003E48
+koopa_shoe:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3648
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: koopa_seg6_texture_06003648

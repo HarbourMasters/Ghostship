@@ -1,0 +1,18 @@
+boo_eyes:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x9B40
+  mio0: 0x166C60
+  format: RGBA16
+  symbol: boo_seg5_texture_05009B40
+boo_mouth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xAB40
+  mio0: 0x166C60
+  format: RGBA16
+  symbol: boo_seg5_texture_0500AB40

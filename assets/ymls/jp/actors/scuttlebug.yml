@@ -1,0 +1,45 @@
+scuttlebug_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x10108
+  mio0: 0x1E6210
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06010108
+scuttlebug_iris:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12908
+  mio0: 0x1E6210
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06012908
+scuttlebug_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x10908
+  mio0: 0x1E6210
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06010908
+scuttlebug_leg:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x13108
+  mio0: 0x1E6210
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06013108
+scuttlebug_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x11908
+  mio0: 0x1E6210
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06011908

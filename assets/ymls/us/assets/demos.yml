@@ -1,0 +1,32 @@
+bbh:
+  type: BLOB
+  size: 988
+  offset: 0x579C60
+bitdw:
+  type: BLOB
+  size: 1412
+  offset: 0x57B19C
+ccm:
+  type: BLOB
+  size: 1320
+  offset: 0x57A03C
+hmc:
+  type: BLOB
+  size: 980
+  offset: 0x57A564
+jrb:
+  type: BLOB
+  size: 620
+  offset: 0x57A938
+pss:
+  type: BLOB
+  size: 748
+  offset: 0x57AE44
+unused:
+  type: BLOB
+  size: 108
+  offset: 0x57B130
+wf:
+  type: BLOB
+  size: 672
+  offset: 0x57ABA4

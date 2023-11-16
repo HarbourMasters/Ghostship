@@ -1,0 +1,8 @@
+header:
+  type: AUDIO:HEADER
+  ctl:
+    offset: 5738816
+    size: 94400
+  tbl:
+    offset: 5833216
+    size: 1793408

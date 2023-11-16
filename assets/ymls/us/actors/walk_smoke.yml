@@ -1,0 +1,63 @@
+walk_smoke_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1DEA0
+  mio0: 0x114750
+  format: IA16
+  symbol: smoke_seg4_texture_0401DEA0
+walk_smoke_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1E6A0
+  mio0: 0x114750
+  format: IA16
+  symbol: smoke_seg4_texture_0401E6A0
+walk_smoke_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1EEA0
+  mio0: 0x114750
+  format: IA16
+  symbol: smoke_seg4_texture_0401EEA0
+walk_smoke_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1F6A0
+  mio0: 0x114750
+  format: IA16
+  symbol: smoke_seg4_texture_0401F6A0
+walk_smoke_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1FEA0
+  mio0: 0x114750
+  format: IA16
+  symbol: smoke_seg4_texture_0401FEA0
+walk_smoke_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x206A0
+  mio0: 0x114750
+  format: IA16
+  symbol: smoke_seg4_texture_040206A0
+walk_smoke_6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x20EA0
+  mio0: 0x114750
+  format: IA16
+  symbol: smoke_seg4_texture_04020EA0

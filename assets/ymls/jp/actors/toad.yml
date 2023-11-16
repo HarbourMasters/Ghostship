@@ -1,0 +1,18 @@
+toad_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5920
+  mio0: 0x1D6660
+  format: RGBA16
+  symbol: toad_seg6_texture_06005920
+toad_head:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6120
+  mio0: 0x1D6660
+  format: RGBA16
+  symbol: toad_seg6_texture_06006120

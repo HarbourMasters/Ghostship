@@ -1,0 +1,18 @@
+star_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7A30
+  mio0: 0x180BB0
+  format: RGBA16
+  symbol: star_seg3_texture_0302AEF0
+star_surface:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2A6F0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: star_seg3_texture_0302A6F0

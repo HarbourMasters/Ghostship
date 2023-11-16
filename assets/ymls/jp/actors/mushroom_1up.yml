@@ -1,0 +1,9 @@
+1-up_mushroom:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x29628
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: mushroom_1up_seg3_texture_03029628
