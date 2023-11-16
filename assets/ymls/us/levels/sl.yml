@@ -1,0 +1,45 @@
+sl_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x405FB0
+  format: RGBA16
+  symbol: sl_seg7_texture_07000000
+sl_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x405FB0
+  format: RGBA16
+  symbol: sl_seg7_texture_07000800
+sl_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x405FB0
+  format: RGBA16
+  symbol: sl_seg7_texture_07001000
+sl_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x405FB0
+  format: RGBA16
+  symbol: sl_seg7_texture_07001800
+sl_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x405FB0
+  format: RGBA16
+  symbol: sl_seg7_texture_07002000

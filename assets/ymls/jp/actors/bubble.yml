@@ -1,0 +1,18 @@
+bubble:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1CD60
+  mio0: 0x112B50
+  format: RGBA16
+  symbol: bubble_seg4_texture_0401CD60
+mr_i_bubble:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1D560
+  mio0: 0x112B50
+  format: RGBA16
+  symbol: bubble_seg4_texture_0401D560

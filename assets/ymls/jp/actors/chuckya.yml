@@ -1,0 +1,36 @@
+chuckya_body_arm_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x7F78
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: chuckya_seg8_texture_08007F78
+chuckya_body_arm_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x8F78
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: chuckya_seg8_texture_08008F78
+chuckya_eyes:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x6778
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: chuckya_seg8_texture_08006778
+chuckya_hand_antenna:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7778
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: chuckya_seg8_texture_08007778

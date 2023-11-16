@@ -1,0 +1,9 @@
+0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x4CBB70
+  format: RGBA16
+  symbol: bowser_2_seg7_texture_07000000

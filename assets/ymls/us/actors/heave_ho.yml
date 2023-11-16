@@ -1,0 +1,54 @@
+heave-ho_arm_ornament:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x109C8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: heave_ho_seg5_texture_050109C8
+heave-ho_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xE9C8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: heave_ho_seg5_texture_0500E9C8
+heave-ho_logo:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xF9C8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: heave_ho_seg5_texture_0500F9C8
+heave-ho_platform:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xF1C8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: heave_ho_seg5_texture_0500F1C8
+heave-ho_roller:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x111C8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: heave_ho_seg5_texture_050111C8
+heave-ho_turnkey:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x113C8
+  mio0: 0x12A7E0
+  format: RGBA16
+  symbol: heave_ho_seg5_texture_050113C8

@@ -1,0 +1,369 @@
+levels_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07000800
+levels_10:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7000
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07007000
+levels_11:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07007800
+levels_12:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8000
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07008000
+levels_13:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07008800
+levels_14:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9000
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07009000
+levels_15:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07009800
+levels_16:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA000
+  mio0: 0x3948D0
+  format: IA16
+  symbol: inside_castle_seg7_texture_0700A000
+levels_17:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xA800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0700A800
+levels_18:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xB800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0700B800
+levels_19:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xC800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0700C800
+levels_2:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xB800
+  mio0: 0x3253E0
+  format: IA16
+  symbol: inside_castle_seg7_texture_07001000
+levels_20:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xD800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0700D800
+levels_21:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xE800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0700E800
+levels_22:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xF800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0700F800
+levels_23:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x10800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07010800
+levels_24:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x11800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07011800
+levels_25:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x12800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07012800
+levels_26:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x13800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07013800
+levels_27:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x14800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07014800
+levels_28:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x15800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07015800
+levels_29:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x16800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07016800
+levels_3:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2000
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07002000
+levels_30:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x17000
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07017000
+levels_31:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x17800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07017800
+levels_32:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x18800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07018800
+levels_33:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x19800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07019800
+levels_34:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1A800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0701A800
+levels_35:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1B800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0701B800
+levels_36:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1C800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0701C800
+levels_37:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1D800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0701D800
+levels_38:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1E800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0701E800
+levels_39:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1F800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_0701F800
+levels_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07003000
+levels_40:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x20800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07020800
+levels_5:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x3800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07003800
+levels_6:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x4800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07004800
+levels_7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07005800
+levels_8:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07006000
+levels_9:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  mio0: 0x3948D0
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07006800
+castle_light:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB800
+  mio0: 0x345FF0
+  format: IA16
+  symbol: texture_castle_light

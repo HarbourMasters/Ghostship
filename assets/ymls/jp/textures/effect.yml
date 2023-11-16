@@ -1,0 +1,135 @@
+bubble.06048:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6048
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B006048
+flower.00008:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B000008
+flower.00808:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x808
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B000808
+flower.01008:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1008
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B001008
+flower.01808:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1808
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B001808
+lava_bubble.02020:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2020
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B002020
+lava_bubble.02820:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2820
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B002820
+lava_bubble.03020:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3020
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B003020
+lava_bubble.03820:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3820
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B003820
+lava_bubble.04020:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4020
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B004020
+lava_bubble.04820:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4820
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B004820
+lava_bubble.05020:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5020
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B005020
+lava_bubble.05820:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5820
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B005820
+tiny_bubble.0684C:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x684C
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B00684C
+tiny_bubble.06AD8:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x6AD8
+  mio0: 0x36DAD0
+  format: RGBA16
+  symbol: effect_0B006AD8

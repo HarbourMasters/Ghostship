@@ -1,0 +1,108 @@
+0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_07000000
+levels_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x3E5710
+  format: IA16
+  symbol: ssl_seg7_texture_07000800
+levels_10:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xD7A8
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_0700D7A8
+levels_11:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xE7A8
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_0700E7A8
+levels_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_pyramid_sand
+levels_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_07001800
+levels_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_07002000
+levels_5:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2800
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_07002800
+levels_6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_07003800
+levels_7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8000
+  mio0: 0x32B610
+  format: RGBA16
+  symbol: ssl_quicksand
+levels_8:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xBFA8
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_0700BFA8
+levels_9:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xC7A8
+  mio0: 0x3E5710
+  format: RGBA16
+  symbol: ssl_seg7_texture_0700C7A8

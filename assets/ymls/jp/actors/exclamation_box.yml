@@ -1,0 +1,72 @@
+exclamation_box_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x17628
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08017628
+exclamation_box_side:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x17E28
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08017E28
+metal_cap_box_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x14628
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08014628
+metal_cap_box_side:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x14E28
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08014E28
+vanish_cap_box_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12E28
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08012E28
+vanish_cap_box_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x13628
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08013628
+wing_cap_box_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x15E28
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08015E28
+wing_cap_box_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x16628
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_seg8_texture_08016628

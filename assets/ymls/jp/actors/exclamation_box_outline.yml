@@ -1,0 +1,18 @@
+exclamation_box_outline:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25168
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_outline_seg8_texture_08025168
+exclamation_point:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x25A80
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: exclamation_box_outline_seg8_texture_08025A80

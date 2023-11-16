@@ -1,0 +1,45 @@
+sparkle_animation_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x32A88
+  mio0: 0x114750
+  format: IA16
+  symbol: sparkles_animation_seg4_texture_04032A88
+sparkle_animation_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x33288
+  mio0: 0x114750
+  format: IA16
+  symbol: sparkles_animation_seg4_texture_04033288
+sparkle_animation_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x33A88
+  mio0: 0x114750
+  format: IA16
+  symbol: sparkles_animation_seg4_texture_04033A88
+sparkle_animation_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x34288
+  mio0: 0x114750
+  format: IA16
+  symbol: sparkles_animation_seg4_texture_04034288
+sparkle_animation_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x34A88
+  mio0: 0x114750
+  format: IA16
+  symbol: sparkles_animation_seg4_texture_04034A88

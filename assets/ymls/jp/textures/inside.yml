@@ -1,0 +1,153 @@
+inside_castle_textures.00000:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x0
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09000000
+inside_castle_textures.01000:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09001000
+inside_castle_textures.02000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09002000
+inside_castle_textures.03000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09003000
+inside_castle_textures.03800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09003800
+inside_castle_textures.04000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09004000
+inside_castle_textures.04800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x34CD00
+  format: RGBA16
+  symbol: inside_09004800
+inside_castle_textures.05000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09005000
+inside_castle_textures.05800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09005800
+inside_castle_textures.06000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x6000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09006000
+inside_castle_textures.07000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x7000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09007000
+inside_castle_textures.08000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09008000
+inside_castle_textures.08800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8800
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09008800
+inside_castle_textures.09000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_09009000
+inside_castle_textures.0A000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xA000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_0900A000
+inside_castle_textures.0B000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB000
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_0900B000
+inside_castle_textures.0B800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xB800
+  mio0: 0x363F20
+  format: RGBA16
+  symbol: inside_0900B800

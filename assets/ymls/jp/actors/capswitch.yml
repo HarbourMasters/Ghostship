@@ -1,0 +1,18 @@
+cap_switch_base:
+  type: TEXTURE
+  size: 128
+  width: 16
+  height: 4
+  offset: 0x2C48
+  mio0: 0x163E50
+  format: RGBA16
+  symbol: capswitch_seg5_texture_05002C48
+cap_switch_head:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1C48
+  mio0: 0x163E50
+  format: IA16
+  symbol: capswitch_seg5_texture_05001C48

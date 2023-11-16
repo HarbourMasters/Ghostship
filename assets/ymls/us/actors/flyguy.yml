@@ -1,0 +1,27 @@
+flyguy_cloth_wrinkle:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xE088
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: flyguy_seg8_texture_0800E088
+flyguy_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xF088
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: flyguy_seg8_texture_0800F088
+flyguy_propeller:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xF888
+  mio0: 0x1F2200
+  format: IA16
+  symbol: flyguy_seg8_texture_0800F888

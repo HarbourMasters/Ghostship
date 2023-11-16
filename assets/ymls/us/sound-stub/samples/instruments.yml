@@ -1,0 +1,219 @@
+00:
+  type: SAMPLE
+  id: 141
+01_banjo_1:
+  type: SAMPLE
+  id: 142
+sfx_02:
+  type: SAMPLE
+  id: 143
+03_human_whistle:
+  type: SAMPLE
+  id: 144
+04_bright_piano:
+  type: SAMPLE
+  id: 145
+05_acoustic_bass:
+  type: SAMPLE
+  id: 146
+06_kick_drum_1:
+  type: SAMPLE
+  id: 147
+07_rimshot:
+  type: SAMPLE
+  id: 148
+sfx_08:
+  type: SAMPLE
+  id: 149
+sfx_09:
+  type: SAMPLE
+  id: 150
+0A_tambourine:
+  type: SAMPLE
+  id: 151
+sfx_0B:
+  type: SAMPLE
+  id: 152
+0C_conga_stick:
+  type: SAMPLE
+  id: 153
+0D_clave:
+  type: SAMPLE
+  id: 154
+0E_hihat_closed:
+  type: SAMPLE
+  id: 155
+0F_hihat_open:
+  type: SAMPLE
+  id: 156
+10_cymbal_bell:
+  type: SAMPLE
+  id: 157
+11_splash_cymbal:
+  type: SAMPLE
+  id: 158
+12_snare_drum_1:
+  type: SAMPLE
+  id: 159
+13_snare_drum_2:
+  type: SAMPLE
+  id: 160
+14_strings_5:
+  type: SAMPLE
+  id: 161
+15_strings_4:
+  type: SAMPLE
+  id: 162
+16_french_horns:
+  type: SAMPLE
+  id: 163
+17_trumpet:
+  type: SAMPLE
+  id: 164
+18_timpani:
+  type: SAMPLE
+  id: 165
+19_brass:
+  type: SAMPLE
+  id: 166
+1A_slap_bass:
+  type: SAMPLE
+  id: 167
+1B_organ_2:
+  type: SAMPLE
+  id: 168
+sfx_1C:
+  type: SAMPLE
+  id: 169
+sfx_1D:
+  type: SAMPLE
+  id: 170
+1E_closed_triangle:
+  type: SAMPLE
+  id: 171
+1F_open_triangle:
+  type: SAMPLE
+  id: 172
+20_cabasa:
+  type: SAMPLE
+  id: 173
+21_sine_bass:
+  type: SAMPLE
+  id: 174
+22_boys_choir:
+  type: SAMPLE
+  id: 175
+23_strings_1:
+  type: SAMPLE
+  id: 176
+24_strings_2:
+  type: SAMPLE
+  id: 177
+25_strings_3:
+  type: SAMPLE
+  id: 178
+26_crystal_rhodes:
+  type: SAMPLE
+  id: 179
+27_harpsichord:
+  type: SAMPLE
+  id: 180
+28_sitar_1:
+  type: SAMPLE
+  id: 181
+29_orchestra_hit:
+  type: SAMPLE
+  id: 182
+sfx_2A:
+  type: SAMPLE
+  id: 183
+sfx_2B:
+  type: SAMPLE
+  id: 184
+sfx_2C:
+  type: SAMPLE
+  id: 185
+2D_trombone:
+  type: SAMPLE
+  id: 186
+2E_accordion:
+  type: SAMPLE
+  id: 187
+2F_sleigh_bells:
+  type: SAMPLE
+  id: 188
+30_rarefaction-lahna:
+  type: SAMPLE
+  id: 189
+31_rarefaction-convolution:
+  type: SAMPLE
+  id: 190
+32_metal_rimshot:
+  type: SAMPLE
+  id: 191
+33_kick_drum_2:
+  type: SAMPLE
+  id: 192
+34_alto_flute:
+  type: SAMPLE
+  id: 193
+35_gospel_organ:
+  type: SAMPLE
+  id: 194
+36_sawtooth_synth:
+  type: SAMPLE
+  id: 195
+37_square_synth:
+  type: SAMPLE
+  id: 196
+38_electric_kick_drum:
+  type: SAMPLE
+  id: 197
+39_sitar_2:
+  type: SAMPLE
+  id: 198
+3A_music_box:
+  type: SAMPLE
+  id: 199
+3B_banjo_2:
+  type: SAMPLE
+  id: 200
+3C_acoustic_guitar:
+  type: SAMPLE
+  id: 201
+sfx_3D:
+  type: SAMPLE
+  id: 202
+3E_monk_choir:
+  type: SAMPLE
+  id: 203
+sfx_3F:
+  type: SAMPLE
+  id: 204
+40_bell:
+  type: SAMPLE
+  id: 205
+41_pan_flute:
+  type: SAMPLE
+  id: 206
+42_vibraphone:
+  type: SAMPLE
+  id: 207
+43_harmonica:
+  type: SAMPLE
+  id: 208
+44_grand_piano:
+  type: SAMPLE
+  id: 209
+45_french_horns_lq:
+  type: SAMPLE
+  id: 210
+46_pizzicato_strings_1:
+  type: SAMPLE
+  id: 211
+47_pizzicato_strings_2:
+  type: SAMPLE
+  id: 212
+48_steel_drum:
+  type: SAMPLE
+  id: 213

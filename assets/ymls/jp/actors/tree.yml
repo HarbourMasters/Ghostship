@@ -1,0 +1,45 @@
+palm_tree:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x32218
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: tree_seg3_texture_03032218
+pine_tree:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2FF60
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: tree_seg3_texture_0302FF60
+snowy_pine_tree:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x31048
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: tree_seg3_texture_03031048
+tree_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2DE28
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: tree_seg3_texture_0302DE28
+tree_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2EE28
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: tree_seg3_texture_0302EE28

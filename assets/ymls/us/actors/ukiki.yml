@@ -1,0 +1,36 @@
+ukiki_butt:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9BC0
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: ukiki_seg5_texture_05009BC0
+ukiki_face:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x7BC0
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: ukiki_seg5_texture_05007BC0
+ukiki_face_blink:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x8BC0
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: ukiki_seg5_texture_05008BC0
+ukiki_fur:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA3C0
+  mio0: 0x1521D0
+  format: RGBA16
+  symbol: ukiki_seg5_texture_0500A3C0

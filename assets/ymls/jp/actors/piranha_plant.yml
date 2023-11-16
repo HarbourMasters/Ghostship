@@ -1,0 +1,54 @@
+piranha_plant_bottom_lip:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x133F8
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060133F8
+piranha_plant_leaf:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x143F8
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060143F8
+piranha_plant_skin:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x123F8
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060123F8
+piranha_plant_stem:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12BF8
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_06012BF8
+piranha_plant_tongue:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x24438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060113F8
+piranha_plant_tooth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x13BF8
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_06013BF8

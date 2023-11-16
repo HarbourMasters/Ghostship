@@ -1,0 +1,162 @@
+ccm_textures.00000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09000000
+ccm_textures.00800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09000800
+ccm_textures.01000:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09001000
+ccm_textures.02000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09002000
+ccm_textures.02800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09002800
+ccm_textures.03000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09003000
+ccm_textures.03800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09003800
+ccm_textures.04000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09004000
+ccm_textures.04800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4800
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09004800
+ccm_textures.05000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09005000
+ccm_textures.05800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09005800
+ccm_textures.06000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09006000
+ccm_textures.06800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09006800
+ccm_textures.07000:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x7000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09007000
+ccm_textures.08000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8000
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09008000
+ccm_textures.08800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8800
+  mio0: 0x341140
+  format: RGBA16
+  symbol: snow_09008800
+ccm_textures.09000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9000
+  mio0: 0x341140
+  format: IA16
+  symbol: snow_09009000
+ccm_textures.09800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9800
+  mio0: 0x341140
+  format: IA16
+  symbol: snow_09009800

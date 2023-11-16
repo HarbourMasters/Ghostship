@@ -1,0 +1,48 @@
+00_mario_jump_hoo:
+  type: SAMPLE
+  id: 83
+01_mario_jump_wah:
+  type: SAMPLE
+  id: 84
+02_mario_yah:
+  type: SAMPLE
+  id: 85
+03_mario_haha:
+  type: SAMPLE
+  id: 86
+04_mario_yahoo:
+  type: SAMPLE
+  id: 87
+05_mario_uh:
+  type: SAMPLE
+  id: 88
+06_mario_hrmm:
+  type: SAMPLE
+  id: 89
+07_mario_wah2:
+  type: SAMPLE
+  id: 90
+08_mario_whoa:
+  type: SAMPLE
+  id: 91
+09_mario_eeuh:
+  type: SAMPLE
+  id: 92
+0A_mario_attacked:
+  type: SAMPLE
+  id: 93
+0B_mario_ooof:
+  type: SAMPLE
+  id: 94
+0C_mario_here_we_go:
+  type: SAMPLE
+  id: 95
+0D_mario_yawning:
+  type: SAMPLE
+  id: 96
+0E_mario_snoring1:
+  type: SAMPLE
+  id: 97
+0F_mario_snoring2:
+  type: SAMPLE
+  id: 98

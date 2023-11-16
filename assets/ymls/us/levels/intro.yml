@@ -1,0 +1,46 @@
+intro_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7EA0
+  mio0: 0x26A3A0
+  format: RGBA16
+  symbol: intro_seg7_texture_07007EA0
+intro_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x86A0
+  mio0: 0x26A3A0
+  format: RGBA16
+  symbol: intro_seg7_texture_070086A0
+2_copyright:
+  type: TEXTURE
+  size: 4096
+  width: 128
+  height: 16
+  offset: 0xB4A0
+  mio0: 0x26A3A0
+  format: RGBA16
+  symbol: intro_seg7_texture_0700B4A0
+3_tm:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xC4A0
+  mio0: 0x26A3A0
+  format: RGBA16
+  symbol: intro_seg7_texture_0700C4A0
+intro_seg7_dl_0700B3A0:
+  type: GFX
+  mio0: 0x26A3A0
+  offset: 0xb3a0
+  symbol: intro_seg7_dl_0700B3A0
+intro_seg7_dl_0700C6A0:
+  type: GFX
+  mio0: 0x26A3A0
+  offset: 0xc6a0
+  symbol: intro_seg7_dl_0700C6A0

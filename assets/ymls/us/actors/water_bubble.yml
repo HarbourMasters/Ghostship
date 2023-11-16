@@ -1,0 +1,9 @@
+water_bubble:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xFE80
+  mio0: 0x134D20
+  format: RGBA16
+  symbol: water_bubble_seg5_texture_0500FE80

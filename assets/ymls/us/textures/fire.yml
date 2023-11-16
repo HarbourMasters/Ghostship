@@ -1,0 +1,216 @@
+lll_textures.00000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09000000
+lll_textures.00800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09000800
+lll_textures.01000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09001000
+lll_textures.01800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09001800
+lll_textures.02000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09002000
+lll_textures.02800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09002800
+lll_textures.03000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09003000
+lll_textures.03800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09003800
+lll_textures.04000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09004000
+lll_textures.04800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09004800
+lll_textures.05000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09005000
+lll_textures.05800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09005800
+lll_textures.06000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09006000
+lll_textures.06800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09006800
+lll_textures.07000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09007000
+lll_textures.07800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09007800
+lll_textures.08000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09008000
+lll_textures.08800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09008800
+lll_textures.09000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x16AB8
+  mio0: 0x108A40
+  format: RGBA16
+  symbol: fire_09009000
+lll_textures.09800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_09009800
+lll_textures.0A000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_0900A000
+lll_textures.0A800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_0900A800
+lll_textures.0B000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB000
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_0900B000
+lll_textures.0B800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB800
+  mio0: 0x31E1D0
+  format: RGBA16
+  symbol: fire_0900B800

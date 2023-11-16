@@ -1,0 +1,24 @@
+00_step_default:
+  type: SAMPLE
+  id: 6
+01_step_grass:
+  type: SAMPLE
+  id: 7
+02_step_stone:
+  type: SAMPLE
+  id: 8
+03_step_spooky:
+  type: SAMPLE
+  id: 9
+04_step_snow:
+  type: SAMPLE
+  id: 10
+05_step_ice:
+  type: SAMPLE
+  id: 11
+06_step_metal:
+  type: SAMPLE
+  id: 12
+07_step_sand:
+  type: SAMPLE
+  id: 13

@@ -1,0 +1,261 @@
+bowser_armband:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x23C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06023C38
+bowser_armband_spike:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x22C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06022C38
+bowser_blue_eye_unused:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x26438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06026438
+bowser_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x22438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06022438
+bowser_chest:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06025438
+bowser_claw_edge:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x29C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06029C38
+bowser_claw_horn_angle:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2BC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0602BC38
+bowser_claw_horn_tooth:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2AC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0602AC38
+bowser_eye_center_0:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2FC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0602FC38
+bowser_eye_center_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2FC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06035C38
+bowser_eye_closed_0:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2EC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0602EC38
+bowser_eye_closed_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2EC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06034C38
+bowser_eye_far_left_0:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x31C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06031C38
+bowser_eye_far_left_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x31C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06037C38
+bowser_eye_half_closed_0:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2DC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0602DC38
+bowser_eye_half_closed_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2DC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06033C38
+bowser_eye_left_0:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2CC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0602CC38
+bowser_eye_left_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2CC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06032C38
+bowser_eye_right_0:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x30C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06030C38
+bowser_eye_right_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x30C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06036C38
+bowser_eyebrow:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1FC38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0601FC38
+bowser_hair:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x28C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06028C38
+bowser_mouth_unused:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x27438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06027438
+bowser_muzzle:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x20C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06020C38
+bowser_nostrils:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x21438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06021438
+bowser_shell:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1F438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_0601F438
+bowser_shell_edge:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25C38
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06025C38
+bowser_tongue:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x24438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06024438
+bowser_upper_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x28438
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bowser_seg6_texture_06028438

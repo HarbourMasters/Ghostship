@@ -1,0 +1,135 @@
+jrb_textures.00000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09000000
+jrb_textures.00800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09000800
+jrb_textures.01800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x1800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09001800
+jrb_textures.02800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x2800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09002800
+jrb_textures.03800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x3800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09003800
+jrb_textures.04800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x4800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09004800
+jrb_textures.05800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09005800
+jrb_textures.06000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09006000
+jrb_textures.06800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x6800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09006800
+jrb_textures.07800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x7800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09007800
+jrb_textures.08800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09008800
+jrb_textures.09000:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x9000
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_09009000
+jrb_textures.0A000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA000
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_0900A000
+jrb_textures.0A800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xA800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_0900A800
+jrb_textures.0B800:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xB800
+  mio0: 0x334B30
+  format: RGBA16
+  symbol: water_0900B800

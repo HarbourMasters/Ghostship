@@ -1,0 +1,9 @@
+cannon_lid:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4058
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: cannon_lid_seg8_texture_08004058

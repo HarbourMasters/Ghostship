@@ -1,0 +1,9 @@
+pebble:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1C300
+  mio0: 0x1FF740
+  format: RGBA16
+  symbol: pebble_seg3_texture_0301C300

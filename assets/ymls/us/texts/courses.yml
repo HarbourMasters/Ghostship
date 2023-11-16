@@ -1,0 +1,104 @@
+course_00:
+  type: SM64:TEXT
+  offset: 0x10D14
+  mio0: 0x108A40
+course_01:
+  type: SM64:TEXT
+  offset: 0x10D2C
+  mio0: 0x108A40
+course_02:
+  type: SM64:TEXT
+  offset: 0x10D40
+  mio0: 0x108A40
+course_03:
+  type: SM64:TEXT
+  offset: 0x10D54
+  mio0: 0x108A40
+course_04:
+  type: SM64:TEXT
+  offset: 0x10D6C
+  mio0: 0x108A40
+course_05:
+  type: SM64:TEXT
+  offset: 0x10D80
+  mio0: 0x108A40
+course_06:
+  type: SM64:TEXT
+  offset: 0x10D94
+  mio0: 0x108A40
+course_07:
+  type: SM64:TEXT
+  offset: 0x10DA8
+  mio0: 0x108A40
+course_08:
+  type: SM64:TEXT
+  offset: 0x10DC0
+  mio0: 0x108A40
+course_09:
+  type: SM64:TEXT
+  offset: 0x10DD4
+  mio0: 0x108A40
+course_0A:
+  type: SM64:TEXT
+  offset: 0x10DE8
+  mio0: 0x108A40
+course_0B:
+  type: SM64:TEXT
+  offset: 0x10DFC
+  mio0: 0x108A40
+course_0C:
+  type: SM64:TEXT
+  offset: 0x10E14
+  mio0: 0x108A40
+course_0D:
+  type: SM64:TEXT
+  offset: 0x10E28
+  mio0: 0x108A40
+course_0E:
+  type: SM64:TEXT
+  offset: 0x10E3C
+  mio0: 0x108A40
+course_0F:
+  type: SM64:TEXT
+  offset: 0x10E4C
+  mio0: 0x108A40
+course_10:
+  type: SM64:TEXT
+  offset: 0x10E68
+  mio0: 0x108A40
+course_11:
+  type: SM64:TEXT
+  offset: 0x10E84
+  mio0: 0x108A40
+course_12:
+  type: SM64:TEXT
+  offset: 0x10E9C
+  mio0: 0x108A40
+course_13:
+  type: SM64:TEXT
+  offset: 0x10EBC
+  mio0: 0x108A40
+course_14:
+  type: SM64:TEXT
+  offset: 0x10ED8
+  mio0: 0x108A40
+course_15:
+  type: SM64:TEXT
+  offset: 0x10EF4
+  mio0: 0x108A40
+course_16:
+  type: SM64:TEXT
+  offset: 0x10F14
+  mio0: 0x108A40
+course_17:
+  type: SM64:TEXT
+  offset: 0x10F34
+  mio0: 0x108A40
+course_18:
+  type: SM64:TEXT
+  offset: 0x10F4C
+  mio0: 0x108A40
+course_19:
+  type: SM64:TEXT
+  offset: 0x10F50
+  mio0: 0x108A40

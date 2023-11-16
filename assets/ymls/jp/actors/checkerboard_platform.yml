@@ -1,0 +1,18 @@
+checkerboard_platform:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xCC40
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: checkerboard_platform_seg8_texture_0800CC40
+checkerboard_platform_side:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0xC840
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: checkerboard_platform_seg8_texture_0800C840

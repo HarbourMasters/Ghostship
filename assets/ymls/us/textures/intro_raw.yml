@@ -1,0 +1,199 @@
+hand_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x259588
+  format: RGBA16
+  symbol: gd_texture_hand_closed
+hand_open:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x258D80
+  format: RGBA16
+  symbol: gd_texture_hand_open
+mario_face_shine:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 32
+  offset: 0x265350
+  format: IA8
+  symbol: gd_texture_mario_face_shine
+red_star_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x259D88
+  format: RGBA16
+  symbol: gd_texture_red_star_0
+red_star_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25A588
+  format: RGBA16
+  symbol: gd_texture_red_star_1
+red_star_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25AD88
+  format: RGBA16
+  symbol: gd_texture_red_star_2
+red_star_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25B588
+  format: RGBA16
+  symbol: gd_texture_red_star_3
+red_star_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25BD88
+  format: RGBA16
+  symbol: gd_texture_red_star_4
+red_star_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25C588
+  format: RGBA16
+  symbol: gd_texture_red_star_5
+red_star_6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25CD88
+  format: RGBA16
+  symbol: gd_texture_red_star_6
+red_star_7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25D588
+  format: RGBA16
+  symbol: gd_texture_red_star_7
+sparkle_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x262088
+  format: RGBA16
+  symbol: gd_texture_sparkle_0
+sparkle_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x262888
+  format: RGBA16
+  symbol: gd_texture_sparkle_1
+sparkle_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x263088
+  format: RGBA16
+  symbol: gd_texture_sparkle_2
+sparkle_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x263888
+  format: RGBA16
+  symbol: gd_texture_sparkle_3
+sparkle_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x264088
+  format: RGBA16
+  symbol: gd_texture_sparkle_4
+sparkle_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x264888
+  format: RGBA16
+white_star_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25DD88
+  format: RGBA16
+  symbol: gd_texture_white_star_0
+white_star_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25E588
+  format: RGBA16
+  symbol: gd_texture_white_star_1
+white_star_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25ED88
+  format: RGBA16
+  symbol: gd_texture_white_star_2
+white_star_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25F588
+  format: RGBA16
+  symbol: gd_texture_white_star_3
+white_star_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25FD88
+  format: RGBA16
+  symbol: gd_texture_white_star_4
+white_star_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x260588
+  format: RGBA16
+  symbol: gd_texture_white_star_5
+white_star_6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x260D88
+  format: RGBA16
+  symbol: gd_texture_white_star_6
+white_star_7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x261588
+  format: RGBA16
+  symbol: gd_texture_white_star_7

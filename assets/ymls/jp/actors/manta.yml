@@ -1,0 +1,36 @@
+manta_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2FA0
+  mio0: 0x139D10
+  format: RGBA16
+  symbol: manta_seg5_texture_05002FA0
+manta_fin_corner:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x17A0
+  mio0: 0x139D10
+  format: RGBA16
+  symbol: manta_seg5_texture_050017A0
+manta_fin_edge:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x37A0
+  mio0: 0x139D10
+  format: RGBA16
+  symbol: manta_seg5_texture_050037A0
+manta_gills:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1FA0
+  mio0: 0x139D10
+  format: RGBA16
+  symbol: manta_seg5_texture_05001FA0

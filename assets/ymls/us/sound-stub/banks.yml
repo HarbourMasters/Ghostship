@@ -1,0 +1,114 @@
+00:
+  type: BANK
+  id: 0
+01_terrain:
+  type: BANK
+  id: 1
+02_water:
+  type: BANK
+  id: 2
+bnk_03:
+  type: BANK
+  id: 3
+bnk_04:
+  type: BANK
+  id: 4
+bnk_05:
+  type: BANK
+  id: 5
+bnk_06:
+  type: BANK
+  id: 6
+bnk_07:
+  type: BANK
+  id: 7
+08_mario:
+  type: BANK
+  id: 8
+bnk_09:
+  type: BANK
+  id: 9
+0A_mario_peach:
+  type: BANK
+  id: 10
+bnk_0B:
+  type: BANK
+  id: 11
+bnk_0C:
+  type: BANK
+  id: 12
+bnk_0D:
+  type: BANK
+  id: 13
+bnk_0E:
+  type: BANK
+  id: 14
+bnk_0F:
+  type: BANK
+  id: 15
+bnk_10:
+  type: BANK
+  id: 16
+bnk_11:
+  type: BANK
+  id: 17
+bnk_12:
+  type: BANK
+  id: 18
+bnk_13:
+  type: BANK
+  id: 19
+14_piranha_music_box:
+  type: BANK
+  id: 20
+bnk_15:
+  type: BANK
+  id: 21
+16_course_start:
+  type: BANK
+  id: 22
+bnk_17:
+  type: BANK
+  id: 23
+bnk_18:
+  type: BANK
+  id: 24
+bnk_19:
+  type: BANK
+  id: 25
+bnk_1A:
+  type: BANK
+  id: 26
+bnk_1B:
+  type: BANK
+  id: 27
+1C_endless_stairs:
+  type: BANK
+  id: 28
+1D_bowser_organ:
+  type: BANK
+  id: 29
+bnk_1E:
+  type: BANK
+  id: 30
+bnk_1F:
+  type: BANK
+  id: 31
+bnk_20:
+  type: BANK
+  id: 32
+bnk_21:
+  type: BANK
+  id: 33
+bnk_22:
+  type: BANK
+  id: 34
+bnk_23:
+  type: BANK
+  id: 35
+bnk_24:
+  type: BANK
+  id: 36
+bnk_25:
+  type: BANK
+  id: 37

@@ -1,0 +1,36 @@
+bully_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2468
+  mio0: 0x131060
+  format: RGBA16
+  symbol: bully_seg5_texture_05002468
+bully_horn:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xE0
+  mio0: 0x131060
+  format: RGBA16
+  symbol: bully_seg5_texture_050000E0
+bully_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x468
+  mio0: 0x131060
+  format: RGBA16
+  symbol: bully_seg5_texture_05000468
+bully_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1468
+  mio0: 0x131060
+  format: RGBA16
+  symbol: bully_seg5_texture_05001468

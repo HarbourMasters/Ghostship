@@ -1,0 +1,9 @@
+mips_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xFC70
+  mio0: 0x1D8310
+  format: RGBA16
+  symbol: mips_seg6_texture_0600FB80

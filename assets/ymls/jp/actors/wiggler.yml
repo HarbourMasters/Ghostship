@@ -1,0 +1,63 @@
+wiggler_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7A30
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05007A30
+wiggler_flower:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8230
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05008230
+wiggler_frown:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8A30
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05008A30
+wiggler_nose_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9230
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05009230
+wiggler_nose_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xA230
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: wiggler_seg5_texture_0500A230
+wiggler_segment_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x5A30
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05005A30
+wiggler_segment_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x6A30
+  mio0: 0x17EF80
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05006A30

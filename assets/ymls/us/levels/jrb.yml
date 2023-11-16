@@ -1,0 +1,36 @@
+jrb_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x347A50
+  format: RGBA16
+  symbol: jrb_seg7_texture_07000000
+jrb_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x800
+  mio0: 0x41A760
+  format: RGBA16
+  symbol: jrb_seg7_texture_07000800
+jrb_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x41A760
+  format: RGBA16
+  symbol: jrb_seg7_texture_07001800
+jrb_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x41A760
+  format: RGBA16
+  symbol: jrb_seg7_texture_07002000

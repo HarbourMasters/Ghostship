@@ -1,0 +1,27 @@
+pokey_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12878
+  mio0: 0x145E90
+  format: RGBA16
+  symbol: pokey_seg5_texture_05012878
+pokey_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11750
+  mio0: 0x145E90
+  format: RGBA16
+  symbol: pokey_seg5_texture_05011750
+pokey_face_blink:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11F50
+  mio0: 0x145E90
+  format: RGBA16
+  symbol: pokey_seg5_texture_05011F50

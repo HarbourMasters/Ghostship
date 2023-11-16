@@ -1,0 +1,18 @@
+thwomp_face:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9900
+  mio0: 0x128BE0
+  format: RGBA16
+  symbol: thwomp_seg5_texture_05009900
+thwomp_surface:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA900
+  mio0: 0x128BE0
+  format: RGBA16
+  symbol: thwomp_seg5_texture_0500A900

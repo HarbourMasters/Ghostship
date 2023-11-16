@@ -1,0 +1,18 @@
+impact_ring_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1CA50
+  mio0: 0x186810
+  format: IA16
+  symbol: impact_ring_seg6_texture_0601CA50
+impact_ring_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1DA50
+  mio0: 0x186810
+  format: IA16
+  symbol: impact_ring_seg6_texture_0601DA50

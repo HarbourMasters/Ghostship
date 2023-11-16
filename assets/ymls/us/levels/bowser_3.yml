@@ -1,0 +1,27 @@
+bowser_3_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x4CEC00
+  format: RGBA16
+  symbol: bowser_3_seg7_texture_07000000
+bowser_3_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  mio0: 0x4CEC00
+  format: RGBA16
+  symbol: bowser_3_seg7_texture_07000800
+bowser_3_2:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1000
+  mio0: 0x4CEC00
+  format: RGBA16
+  symbol: bowser_3_seg7_texture_07001000

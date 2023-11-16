@@ -1,0 +1,9 @@
+small_snow_particle:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x32780
+  mio0: 0x114750
+  format: RGBA16
+  symbol: white_particle_small_texture

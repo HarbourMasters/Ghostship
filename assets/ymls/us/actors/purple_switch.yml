@@ -1,0 +1,18 @@
+purple_switch_base:
+  type: TEXTURE
+  size: 128
+  width: 16
+  height: 4
+  offset: 0xC0A8
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: purple_switch_seg8_texture_0800C0A8
+purple_switch_exclamation_point:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0xC128
+  mio0: 0x1F2200
+  format: RGBA16
+  symbol: purple_switch_seg8_texture_0800C128

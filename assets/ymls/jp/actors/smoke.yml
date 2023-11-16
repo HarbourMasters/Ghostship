@@ -1,0 +1,9 @@
+smoke:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x72C0
+  mio0: 0x1505D0
+  format: IA16
+  symbol: smoke_seg5_texture_050072C0

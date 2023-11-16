@@ -1,0 +1,63 @@
+bbh_0:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x0
+  mio0: 0x371C40
+  format: RGBA16
+  symbol: bbh_seg7_texture_07000000
+bbh_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x371C40
+  format: RGBA16
+  symbol: bbh_seg7_texture_07001000
+bbh_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x371C40
+  format: RGBA16
+  symbol: bbh_seg7_texture_07001800
+bbh_3:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2000
+  mio0: 0x371C40
+  format: RGBA16
+  symbol: bbh_seg7_texture_07002000
+bbh_4:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x3000
+  mio0: 0x371C40
+  format: RGBA16
+  symbol: bbh_seg7_texture_07003000
+bbh_5:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x3400
+  mio0: 0x371C40
+  format: RGBA16
+  symbol: bbh_seg7_texture_07003400
+bbh_6:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x4400
+  mio0: 0x371C40
+  format: RGBA16
+  symbol: bbh_seg7_texture_07004400

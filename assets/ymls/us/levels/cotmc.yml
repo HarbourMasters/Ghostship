@@ -1,0 +1,45 @@
+cotmc_0:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x0
+  mio0: 0x4B80D0
+  format: RGBA16
+  symbol: cotmc_seg7_texture_07000000
+cotmc_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  mio0: 0x4B80D0
+  format: RGBA16
+  symbol: cotmc_seg7_texture_07001000
+cotmc_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x4B80D0
+  format: RGBA16
+  symbol: cotmc_seg7_texture_07001800
+cotmc_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  mio0: 0x4B80D0
+  format: RGBA16
+  symbol: cotmc_seg7_texture_07002000
+cotmc_4:
+  type: TEXTURE
+  size: 2048
+  width: 64
+  height: 16
+  offset: 0x2800
+  mio0: 0x4B80D0
+  format: RGBA16
+  symbol: cotmc_seg7_texture_07002800

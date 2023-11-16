@@ -1,0 +1,69 @@
+00_mario_waaaooow:
+  type: SAMPLE
+  id: 118
+01_mario_hoohoo:
+  type: SAMPLE
+  id: 119
+02_mario_panting:
+  type: SAMPLE
+  id: 120
+03_mario_dying:
+  type: SAMPLE
+  id: 121
+04_mario_on_fire:
+  type: SAMPLE
+  id: 122
+05_mario_uh2:
+  type: SAMPLE
+  id: 123
+06_mario_coughing:
+  type: SAMPLE
+  id: 124
+07_mario_its_a_me_mario:
+  type: SAMPLE
+  id: 125
+08_mario_punch_yah:
+  type: SAMPLE
+  id: 126
+09_mario_punch_hoo:
+  type: SAMPLE
+  id: 127
+0A_mario_mama_mia:
+  type: SAMPLE
+  id: 128
+0B_mario_okey_dokey:
+  type: SAMPLE
+  id: 129
+0C_mario_drowning:
+  type: SAMPLE
+  id: 130
+0D_mario_thank_you_playing_my_game:
+  type: SAMPLE
+  id: 131
+0E_peach_dear_mario:
+  type: SAMPLE
+  id: 132
+0F_peach_mario:
+  type: SAMPLE
+  id: 133
+10_peach_power_of_the_stars:
+  type: SAMPLE
+  id: 134
+11_peach_thanks_to_you:
+  type: SAMPLE
+  id: 135
+12_peach_thank_you_mario:
+  type: SAMPLE
+  id: 136
+13_peach_something_special:
+  type: SAMPLE
+  id: 137
+14_peach_bake_a_cake:
+  type: SAMPLE
+  id: 138
+15_peach_for_mario:
+  type: SAMPLE
+  id: 139
+16_peach_mario2:
+  type: SAMPLE
+  id: 140

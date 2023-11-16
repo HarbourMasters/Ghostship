@@ -1,0 +1,27 @@
+levels_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x800
+  mio0: 0x4358D0
+  format: RGBA16
+  symbol: rr_seg7_texture_07000800
+levels_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  mio0: 0x4358D0
+  format: RGBA16
+  symbol: rr_seg7_texture_07001800
+quarter_flying_carpet:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x4358D0
+  format: RGBA16
+  symbol: texture_quarter_flying_carpet

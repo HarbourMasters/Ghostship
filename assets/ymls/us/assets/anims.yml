@@ -1,0 +1,2299 @@
+anim_00:
+  type: SM64:ANIM
+  header:
+    offset: 5162640
+    size: 24
+  values:
+    offset: 5162916
+    size: 2604
+  indices:
+    offset: 5162664
+    size: 252
+anim_01:
+  type: SM64:ANIM
+  header:
+    offset: 5165520
+    size: 24
+  values:
+    offset: 5165820
+    size: 6576
+  indices:
+    offset: 5165568
+    size: 252
+anim_02:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5165820
+    size: 6576
+  indices:
+    offset: 5165568
+    size: 252
+anim_03:
+  type: SM64:ANIM
+  header:
+    offset: 5172396
+    size: 24
+  values:
+    offset: 5172672
+    size: 4372
+  indices:
+    offset: 5172420
+    size: 252
+anim_04:
+  type: SM64:ANIM
+  header:
+    offset: 5177044
+    size: 24
+  values:
+    offset: 5177320
+    size: 2264
+  indices:
+    offset: 5177068
+    size: 252
+anim_05:
+  type: SM64:ANIM
+  header:
+    offset: 5179584
+    size: 24
+  values:
+    offset: 5179860
+    size: 5796
+  indices:
+    offset: 5179608
+    size: 252
+anim_06:
+  type: SM64:ANIM
+  header:
+    offset: 5185656
+    size: 24
+  values:
+    offset: 5185932
+    size: 892
+  indices:
+    offset: 5185680
+    size: 252
+anim_07:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5187124
+    size: 1468
+  indices:
+    offset: 5186872
+    size: 252
+anim_08:
+  type: SM64:ANIM
+  header:
+    offset: 5186848
+    size: 24
+  values:
+    offset: 5187124
+    size: 1468
+  indices:
+    offset: 5186872
+    size: 252
+anim_09:
+  type: SM64:ANIM
+  header:
+    offset: 5188592
+    size: 24
+  values:
+    offset: 5188868
+    size: 3052
+  indices:
+    offset: 5188616
+    size: 252
+anim_0A:
+  type: SM64:ANIM
+  header:
+    offset: 5191920
+    size: 24
+  values:
+    offset: 5192196
+    size: 2544
+  indices:
+    offset: 5191944
+    size: 252
+anim_0B:
+  type: SM64:ANIM
+  header:
+    offset: 5194740
+    size: 24
+  values:
+    offset: 5195040
+    size: 1348
+  indices:
+    offset: 5194788
+    size: 252
+anim_0C:
+  type: SM64:ANIM
+  header:
+    offset: 5194764
+    size: 24
+  values:
+    offset: 5195040
+    size: 1348
+  indices:
+    offset: 5194788
+    size: 252
+anim_0D:
+  type: SM64:ANIM
+  header:
+    offset: 5196388
+    size: 24
+  values:
+    offset: 5196664
+    size: 770
+  indices:
+    offset: 5196412
+    size: 252
+anim_0E:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5197712
+    size: 80
+  indices:
+    offset: 5197460
+    size: 252
+anim_0F:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5198092
+    size: 1502
+  indices:
+    offset: 5197840
+    size: 252
+anim_10:
+  type: SM64:ANIM
+  header:
+    offset: 5197816
+    size: 24
+  values:
+    offset: 5198092
+    size: 1502
+  indices:
+    offset: 5197840
+    size: 252
+anim_11:
+  type: SM64:ANIM
+  header:
+    offset: 5199596
+    size: 24
+  values:
+    offset: 5199872
+    size: 1174
+  indices:
+    offset: 5199620
+    size: 252
+anim_12:
+  type: SM64:ANIM
+  header:
+    offset: 5201048
+    size: 24
+  values:
+    offset: 5201324
+    size: 1318
+  indices:
+    offset: 5201072
+    size: 252
+anim_13:
+  type: SM64:ANIM
+  header:
+    offset: 5202644
+    size: 24
+  values:
+    offset: 5202920
+    size: 1678
+  indices:
+    offset: 5202668
+    size: 252
+anim_14:
+  type: SM64:ANIM
+  header:
+    offset: 5204600
+    size: 24
+  values:
+    offset: 5204876
+    size: 1102
+  indices:
+    offset: 5204624
+    size: 252
+anim_15:
+  type: SM64:ANIM
+  header:
+    offset: 5205980
+    size: 24
+  values:
+    offset: 5206256
+    size: 930
+  indices:
+    offset: 5206004
+    size: 252
+anim_16:
+  type: SM64:ANIM
+  header:
+    offset: 5207188
+    size: 24
+  values:
+    offset: 5207464
+    size: 4452
+  indices:
+    offset: 5207212
+    size: 252
+anim_17:
+  type: SM64:ANIM
+  header:
+    offset: 5211916
+    size: 24
+  values:
+    offset: 5212192
+    size: 2942
+  indices:
+    offset: 5211940
+    size: 252
+anim_18:
+  type: SM64:ANIM
+  header:
+    offset: 5215136
+    size: 24
+  values:
+    offset: 5215412
+    size: 4452
+  indices:
+    offset: 5207212
+    size: 252
+anim_19:
+  type: SM64:ANIM
+  header:
+    offset: 5219864
+    size: 24
+  values:
+    offset: 5220140
+    size: 5354
+  indices:
+    offset: 5219888
+    size: 252
+anim_1A:
+  type: SM64:ANIM
+  header:
+    offset: 5225496
+    size: 24
+  values:
+    offset: 5225772
+    size: 1146
+  indices:
+    offset: 5225520
+    size: 252
+anim_1B:
+  type: SM64:ANIM
+  header:
+    offset: 5226920
+    size: 24
+  values:
+    offset: 5227196
+    size: 2858
+  indices:
+    offset: 5226944
+    size: 252
+anim_1C:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5230332
+    size: 780
+  indices:
+    offset: 5230080
+    size: 252
+anim_1D:
+  type: SM64:ANIM
+  header:
+    offset: 5231112
+    size: 24
+  values:
+    offset: 5231388
+    size: 1380
+  indices:
+    offset: 5231136
+    size: 252
+anim_1E:
+  type: SM64:ANIM
+  header:
+    offset: 5232768
+    size: 24
+  values:
+    offset: 5233044
+    size: 1530
+  indices:
+    offset: 5232792
+    size: 252
+anim_1F:
+  type: SM64:ANIM
+  header:
+    offset: 5234576
+    size: 24
+  values:
+    offset: 5234852
+    size: 846
+  indices:
+    offset: 5234600
+    size: 252
+anim_20:
+  type: SM64:ANIM
+  header:
+    offset: 5235700
+    size: 24
+  values:
+    offset: 5235976
+    size: 7124
+  indices:
+    offset: 5235724
+    size: 252
+anim_21:
+  type: SM64:ANIM
+  header:
+    offset: 5243100
+    size: 24
+  values:
+    offset: 5243376
+    size: 2610
+  indices:
+    offset: 5243124
+    size: 252
+anim_22:
+  type: SM64:ANIM
+  header:
+    offset: 5245988
+    size: 24
+  values:
+    offset: 5246264
+    size: 1750
+  indices:
+    offset: 5246012
+    size: 252
+anim_23:
+  type: SM64:ANIM
+  header:
+    offset: 5248016
+    size: 24
+  values:
+    offset: 5248292
+    size: 8216
+  indices:
+    offset: 5248040
+    size: 252
+anim_24:
+  type: SM64:ANIM
+  header:
+    offset: 5256508
+    size: 24
+  values:
+    offset: 5256784
+    size: 9376
+  indices:
+    offset: 5256532
+    size: 252
+anim_25:
+  type: SM64:ANIM
+  header:
+    offset: 5266160
+    size: 24
+  values:
+    offset: 5266436
+    size: 8018
+  indices:
+    offset: 5266184
+    size: 252
+anim_26:
+  type: SM64:ANIM
+  header:
+    offset: 5274456
+    size: 24
+  values:
+    offset: 5274732
+    size: 7352
+  indices:
+    offset: 5274480
+    size: 252
+anim_27:
+  type: SM64:ANIM
+  header:
+    offset: 5282084
+    size: 24
+  values:
+    offset: 5282360
+    size: 8980
+  indices:
+    offset: 5282108
+    size: 252
+anim_28:
+  type: SM64:ANIM
+  header:
+    offset: 5204600
+    size: 24
+  values:
+    offset: 5291616
+    size: 1010
+  indices:
+    offset: 5291364
+    size: 252
+anim_29:
+  type: SM64:ANIM
+  header:
+    offset: 5292628
+    size: 24
+  values:
+    offset: 5292904
+    size: 582
+  indices:
+    offset: 5292652
+    size: 252
+anim_2A:
+  type: SM64:ANIM
+  header:
+    offset: 5293488
+    size: 24
+  values:
+    offset: 5293764
+    size: 1252
+  indices:
+    offset: 5293512
+    size: 252
+anim_2B:
+  type: SM64:ANIM
+  header:
+    offset: 5293488
+    size: 24
+  values:
+    offset: 5295292
+    size: 1582
+  indices:
+    offset: 5295040
+    size: 252
+anim_2C:
+  type: SM64:ANIM
+  header:
+    offset: 5165520
+    size: 24
+  values:
+    offset: 5297176
+    size: 5620
+  indices:
+    offset: 5296924
+    size: 252
+anim_2D:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5297176
+    size: 5620
+  indices:
+    offset: 5296924
+    size: 252
+anim_2E:
+  type: SM64:ANIM
+  header:
+    offset: 5302796
+    size: 24
+  values:
+    offset: 5303072
+    size: 3028
+  indices:
+    offset: 5302820
+    size: 252
+anim_2F:
+  type: SM64:ANIM
+  header:
+    offset: 5248016
+    size: 24
+  values:
+    offset: 5306376
+    size: 7420
+  indices:
+    offset: 5306124
+    size: 252
+anim_30:
+  type: SM64:ANIM
+  header:
+    offset: 5179584
+    size: 24
+  values:
+    offset: 5314072
+    size: 5428
+  indices:
+    offset: 5313820
+    size: 252
+anim_31:
+  type: SM64:ANIM
+  header:
+    offset: 5319500
+    size: 24
+  values:
+    offset: 5319776
+    size: 10660
+  indices:
+    offset: 5319524
+    size: 252
+anim_32:
+  type: SM64:ANIM
+  header:
+    offset: 5235700
+    size: 24
+  values:
+    offset: 5330712
+    size: 7890
+  indices:
+    offset: 5330460
+    size: 252
+anim_33:
+  type: SM64:ANIM
+  header:
+    offset: 5338604
+    size: 24
+  values:
+    offset: 5338880
+    size: 2840
+  indices:
+    offset: 5338628
+    size: 252
+anim_34:
+  type: SM64:ANIM
+  header:
+    offset: 5199596
+    size: 24
+  values:
+    offset: 5341996
+    size: 1300
+  indices:
+    offset: 5341744
+    size: 252
+anim_35:
+  type: SM64:ANIM
+  header:
+    offset: 5343296
+    size: 24
+  values:
+    offset: 5343572
+    size: 3704
+  indices:
+    offset: 5343320
+    size: 252
+anim_36:
+  type: SM64:ANIM
+  header:
+    offset: 5347276
+    size: 24
+  values:
+    offset: 5347552
+    size: 3700
+  indices:
+    offset: 5347300
+    size: 252
+anim_37:
+  type: SM64:ANIM
+  header:
+    offset: 5248016
+    size: 24
+  values:
+    offset: 5351528
+    size: 6828
+  indices:
+    offset: 5351276
+    size: 252
+anim_38:
+  type: SM64:ANIM
+  header:
+    offset: 5185656
+    size: 24
+  values:
+    offset: 5358632
+    size: 844
+  indices:
+    offset: 5358380
+    size: 252
+anim_39:
+  type: SM64:ANIM
+  header:
+    offset: 5359476
+    size: 24
+  values:
+    offset: 5359752
+    size: 12418
+  indices:
+    offset: 5359500
+    size: 252
+anim_3A:
+  type: SM64:ANIM
+  header:
+    offset: 5372172
+    size: 24
+  values:
+    offset: 5372448
+    size: 374
+  indices:
+    offset: 5372196
+    size: 252
+anim_3B:
+  type: SM64:ANIM
+  header:
+    offset: 5199596
+    size: 24
+  values:
+    offset: 5373100
+    size: 1204
+  indices:
+    offset: 5372848
+    size: 252
+anim_3C:
+  type: SM64:ANIM
+  header:
+    offset: 5374304
+    size: 24
+  values:
+    offset: 5374604
+    size: 774
+  indices:
+    offset: 5374352
+    size: 252
+anim_3D:
+  type: SM64:ANIM
+  header:
+    offset: 5374328
+    size: 24
+  values:
+    offset: 5374604
+    size: 774
+  indices:
+    offset: 5374352
+    size: 252
+anim_3E:
+  type: SM64:ANIM
+  header:
+    offset: 5359476
+    size: 24
+  values:
+    offset: 5375656
+    size: 11490
+  indices:
+    offset: 5375404
+    size: 252
+anim_3F:
+  type: SM64:ANIM
+  header:
+    offset: 5387148
+    size: 24
+  values:
+    offset: 5387424
+    size: 3094
+  indices:
+    offset: 5387172
+    size: 252
+anim_40:
+  type: SM64:ANIM
+  header:
+    offset: 5390520
+    size: 24
+  values:
+    offset: 5390796
+    size: 1094
+  indices:
+    offset: 5390544
+    size: 252
+anim_41:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5392168
+    size: 536
+  indices:
+    offset: 5391916
+    size: 252
+anim_42:
+  type: SM64:ANIM
+  header:
+    offset: 5392704
+    size: 24
+  values:
+    offset: 5392980
+    size: 956
+  indices:
+    offset: 5392728
+    size: 252
+anim_43:
+  type: SM64:ANIM
+  header:
+    offset: 5393936
+    size: 24
+  values:
+    offset: 5394212
+    size: 84
+  indices:
+    offset: 5393960
+    size: 252
+anim_44:
+  type: SM64:ANIM
+  header:
+    offset: 5204600
+    size: 24
+  values:
+    offset: 5394572
+    size: 650
+  indices:
+    offset: 5394320
+    size: 252
+anim_45:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5395524
+    size: 1190
+  indices:
+    offset: 5395272
+    size: 252
+anim_46:
+  type: SM64:ANIM
+  header:
+    offset: 5395248
+    size: 24
+  values:
+    offset: 5395524
+    size: 1190
+  indices:
+    offset: 5395272
+    size: 252
+anim_47:
+  type: SM64:ANIM
+  header:
+    offset: 5374304
+    size: 24
+  values:
+    offset: 5396992
+    size: 838
+  indices:
+    offset: 5396740
+    size: 252
+anim_48:
+  type: SM64:ANIM
+  header:
+    offset: 5397832
+    size: 24
+  values:
+    offset: 5398108
+    size: 5098
+  indices:
+    offset: 5397856
+    size: 252
+anim_49:
+  type: SM64:ANIM
+  header:
+    offset: 5199596
+    size: 24
+  values:
+    offset: 5403484
+    size: 1298
+  indices:
+    offset: 5403232
+    size: 252
+anim_4A:
+  type: SM64:ANIM
+  header:
+    offset: 5404784
+    size: 24
+  values:
+    offset: 5405060
+    size: 616
+  indices:
+    offset: 5404808
+    size: 252
+anim_4B:
+  type: SM64:ANIM
+  header:
+    offset: 5201048
+    size: 24
+  values:
+    offset: 5405952
+    size: 1386
+  indices:
+    offset: 5405700
+    size: 252
+anim_4C:
+  type: SM64:ANIM
+  header:
+    offset: 5407340
+    size: 24
+  values:
+    offset: 5407616
+    size: 670
+  indices:
+    offset: 5407364
+    size: 252
+anim_4D:
+  type: SM64:ANIM
+  header:
+    offset: 5185656
+    size: 24
+  values:
+    offset: 5408588
+    size: 2456
+  indices:
+    offset: 5408336
+    size: 252
+anim_4E:
+  type: SM64:ANIM
+  header:
+    offset: 5408312
+    size: 24
+  values:
+    offset: 5408588
+    size: 2456
+  indices:
+    offset: 5408336
+    size: 252
+anim_4F:
+  type: SM64:ANIM
+  header:
+    offset: 5234576
+    size: 24
+  values:
+    offset: 5411320
+    size: 1578
+  indices:
+    offset: 5411068
+    size: 252
+anim_50:
+  type: SM64:ANIM
+  header:
+    offset: 5372172
+    size: 24
+  values:
+    offset: 5413176
+    size: 420
+  indices:
+    offset: 5412924
+    size: 252
+anim_51:
+  type: SM64:ANIM
+  header:
+    offset: 5413596
+    size: 24
+  values:
+    offset: 5413872
+    size: 1002
+  indices:
+    offset: 5413620
+    size: 252
+anim_52:
+  type: SM64:ANIM
+  header:
+    offset: 5374304
+    size: 24
+  values:
+    offset: 5415152
+    size: 878
+  indices:
+    offset: 5414900
+    size: 252
+anim_53:
+  type: SM64:ANIM
+  header:
+    offset: 5416032
+    size: 24
+  values:
+    offset: 5416308
+    size: 1970
+  indices:
+    offset: 5416056
+    size: 252
+anim_54:
+  type: SM64:ANIM
+  header:
+    offset: 5418280
+    size: 24
+  values:
+    offset: 5418556
+    size: 1314
+  indices:
+    offset: 5418304
+    size: 252
+anim_55:
+  type: SM64:ANIM
+  header:
+    offset: 5419872
+    size: 24
+  values:
+    offset: 5420148
+    size: 11268
+  indices:
+    offset: 5419896
+    size: 252
+anim_56:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5431716
+    size: 1560
+  indices:
+    offset: 5431464
+    size: 252
+anim_57:
+  type: SM64:ANIM
+  header:
+    offset: 5431440
+    size: 24
+  values:
+    offset: 5431716
+    size: 1560
+  indices:
+    offset: 5431464
+    size: 252
+anim_58:
+  type: SM64:ANIM
+  header:
+    offset: 5433276
+    size: 24
+  values:
+    offset: 5433552
+    size: 1082
+  indices:
+    offset: 5433300
+    size: 252
+anim_59:
+  type: SM64:ANIM
+  header:
+    offset: 5434636
+    size: 24
+  values:
+    offset: 5434912
+    size: 3052
+  indices:
+    offset: 5434660
+    size: 252
+anim_5A:
+  type: SM64:ANIM
+  header:
+    offset: 5437964
+    size: 24
+  values:
+    offset: 5438240
+    size: 3278
+  indices:
+    offset: 5437988
+    size: 252
+anim_5B:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5441796
+    size: 720
+  indices:
+    offset: 5441544
+    size: 252
+anim_5C:
+  type: SM64:ANIM
+  header:
+    offset: 5442516
+    size: 24
+  values:
+    offset: 5442792
+    size: 1258
+  indices:
+    offset: 5442540
+    size: 252
+anim_5D:
+  type: SM64:ANIM
+  header:
+    offset: 5390520
+    size: 24
+  values:
+    offset: 5444328
+    size: 1142
+  indices:
+    offset: 5444076
+    size: 252
+anim_5E:
+  type: SM64:ANIM
+  header:
+    offset: 5359476
+    size: 24
+  values:
+    offset: 5445748
+    size: 12110
+  indices:
+    offset: 5445496
+    size: 252
+anim_5F:
+  type: SM64:ANIM
+  header:
+    offset: 5457860
+    size: 24
+  values:
+    offset: 5458136
+    size: 5058
+  indices:
+    offset: 5457884
+    size: 252
+anim_60:
+  type: SM64:ANIM
+  header:
+    offset: 5463196
+    size: 24
+  values:
+    offset: 5463472
+    size: 4020
+  indices:
+    offset: 5463220
+    size: 252
+anim_61:
+  type: SM64:ANIM
+  header:
+    offset: 5467492
+    size: 24
+  values:
+    offset: 5467768
+    size: 12660
+  indices:
+    offset: 5467516
+    size: 252
+anim_62:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5480704
+    size: 742
+  indices:
+    offset: 5480452
+    size: 252
+anim_63:
+  type: SM64:ANIM
+  header:
+    offset: 5481448
+    size: 24
+  values:
+    offset: 5481724
+    size: 1626
+  indices:
+    offset: 5481472
+    size: 252
+anim_64:
+  type: SM64:ANIM
+  header:
+    offset: 5483352
+    size: 24
+  values:
+    offset: 5483628
+    size: 1246
+  indices:
+    offset: 5483376
+    size: 252
+anim_65:
+  type: SM64:ANIM
+  header:
+    offset: 5234576
+    size: 24
+  values:
+    offset: 5485152
+    size: 1700
+  indices:
+    offset: 5484900
+    size: 252
+anim_66:
+  type: SM64:ANIM
+  header:
+    offset: 5486852
+    size: 24
+  values:
+    offset: 5487128
+    size: 1948
+  indices:
+    offset: 5486876
+    size: 252
+anim_67:
+  type: SM64:ANIM
+  header:
+    offset: 5489076
+    size: 24
+  values:
+    offset: 5489352
+    size: 386
+  indices:
+    offset: 5489100
+    size: 252
+anim_68:
+  type: SM64:ANIM
+  header:
+    offset: 5489740
+    size: 24
+  values:
+    offset: 5490016
+    size: 340
+  indices:
+    offset: 5489764
+    size: 252
+anim_69:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5490632
+    size: 764
+  indices:
+    offset: 5490380
+    size: 252
+anim_6A:
+  type: SM64:ANIM
+  header:
+    offset: 5491396
+    size: 24
+  values:
+    offset: 5491672
+    size: 1060
+  indices:
+    offset: 5491420
+    size: 252
+anim_6B:
+  type: SM64:ANIM
+  header:
+    offset: 5374304
+    size: 24
+  values:
+    offset: 5493008
+    size: 940
+  indices:
+    offset: 5492756
+    size: 252
+anim_6C:
+  type: SM64:ANIM
+  header:
+    offset: 5493948
+    size: 24
+  values:
+    offset: 5494224
+    size: 1284
+  indices:
+    offset: 5493972
+    size: 252
+anim_6D:
+  type: SM64:ANIM
+  header:
+    offset: 5201048
+    size: 24
+  values:
+    offset: 5495784
+    size: 1286
+  indices:
+    offset: 5495532
+    size: 252
+anim_6E:
+  type: SM64:ANIM
+  header:
+    offset: 5199596
+    size: 24
+  values:
+    offset: 5497348
+    size: 1136
+  indices:
+    offset: 5497096
+    size: 252
+anim_6F:
+  type: SM64:ANIM
+  header:
+    offset: 5292628
+    size: 24
+  values:
+    offset: 5498784
+    size: 98
+  indices:
+    offset: 5498532
+    size: 252
+anim_70:
+  type: SM64:ANIM
+  header:
+    offset: 5498508
+    size: 24
+  values:
+    offset: 5498784
+    size: 98
+  indices:
+    offset: 5498532
+    size: 252
+anim_71:
+  type: SM64:ANIM
+  header:
+    offset: 5498884
+    size: 24
+  values:
+    offset: 5499160
+    size: 2078
+  indices:
+    offset: 5498908
+    size: 252
+anim_72:
+  type: SM64:ANIM
+  header:
+    offset: 5501240
+    size: 24
+  values:
+    offset: 5501540
+    size: 4342
+  indices:
+    offset: 5501288
+    size: 252
+anim_73:
+  type: SM64:ANIM
+  header:
+    offset: 5501240
+    size: 24
+  values:
+    offset: 5501540
+    size: 4342
+  indices:
+    offset: 5501288
+    size: 252
+anim_74:
+  type: SM64:ANIM
+  header:
+    offset: 5498884
+    size: 24
+  values:
+    offset: 5506160
+    size: 1844
+  indices:
+    offset: 5505908
+    size: 252
+anim_75:
+  type: SM64:ANIM
+  header:
+    offset: 5498884
+    size: 24
+  values:
+    offset: 5508280
+    size: 1892
+  indices:
+    offset: 5508028
+    size: 252
+anim_76:
+  type: SM64:ANIM
+  header:
+    offset: 5248016
+    size: 24
+  values:
+    offset: 5510448
+    size: 4648
+  indices:
+    offset: 5510196
+    size: 252
+anim_77:
+  type: SM64:ANIM
+  header:
+    offset: 5207188
+    size: 24
+  values:
+    offset: 5515372
+    size: 2464
+  indices:
+    offset: 5515120
+    size: 252
+anim_78:
+  type: SM64:ANIM
+  header:
+    offset: 5517836
+    size: 24
+  values:
+    offset: 5518112
+    size: 10454
+  indices:
+    offset: 5517860
+    size: 252
+anim_79:
+  type: SM64:ANIM
+  header:
+    offset: 5528568
+    size: 24
+  values:
+    offset: 5528844
+    size: 3634
+  indices:
+    offset: 5528592
+    size: 252
+anim_7A:
+  type: SM64:ANIM
+  header:
+    offset: 5532480
+    size: 24
+  values:
+    offset: 5532756
+    size: 402
+  indices:
+    offset: 5532504
+    size: 252
+anim_7B:
+  type: SM64:ANIM
+  header:
+    offset: 5418280
+    size: 24
+  values:
+    offset: 5533436
+    size: 2360
+  indices:
+    offset: 5533184
+    size: 252
+anim_7C:
+  type: SM64:ANIM
+  header:
+    offset: 5418280
+    size: 24
+  values:
+    offset: 5536072
+    size: 2300
+  indices:
+    offset: 5535820
+    size: 252
+anim_7D:
+  type: SM64:ANIM
+  header:
+    offset: 5293488
+    size: 24
+  values:
+    offset: 5538648
+    size: 1114
+  indices:
+    offset: 5538396
+    size: 252
+anim_7E:
+  type: SM64:ANIM
+  header:
+    offset: 5179584
+    size: 24
+  values:
+    offset: 5540040
+    size: 4538
+  indices:
+    offset: 5539788
+    size: 252
+anim_7F:
+  type: SM64:ANIM
+  header:
+    offset: 5226920
+    size: 24
+  values:
+    offset: 5544856
+    size: 3622
+  indices:
+    offset: 5544604
+    size: 252
+anim_80:
+  type: SM64:ANIM
+  header:
+    offset: 5226920
+    size: 24
+  values:
+    offset: 5548756
+    size: 4248
+  indices:
+    offset: 5548504
+    size: 252
+anim_81:
+  type: SM64:ANIM
+  header:
+    offset: 5553004
+    size: 24
+  values:
+    offset: 5553280
+    size: 4308
+  indices:
+    offset: 5553028
+    size: 252
+anim_82:
+  type: SM64:ANIM
+  header:
+    offset: 5557588
+    size: 24
+  values:
+    offset: 5557864
+    size: 5770
+  indices:
+    offset: 5557612
+    size: 252
+anim_83:
+  type: SM64:ANIM
+  header:
+    offset: 5563636
+    size: 24
+  values:
+    offset: 5563912
+    size: 4734
+  indices:
+    offset: 5563660
+    size: 252
+anim_84:
+  type: SM64:ANIM
+  header:
+    offset: 5172396
+    size: 24
+  values:
+    offset: 5568924
+    size: 4756
+  indices:
+    offset: 5568672
+    size: 252
+anim_85:
+  type: SM64:ANIM
+  header:
+    offset: 5293488
+    size: 24
+  values:
+    offset: 5573956
+    size: 324
+  indices:
+    offset: 5573704
+    size: 252
+anim_86:
+  type: SM64:ANIM
+  header:
+    offset: 5574280
+    size: 24
+  values:
+    offset: 5574556
+    size: 2902
+  indices:
+    offset: 5574304
+    size: 252
+anim_87:
+  type: SM64:ANIM
+  header:
+    offset: 5338604
+    size: 24
+  values:
+    offset: 5577736
+    size: 1564
+  indices:
+    offset: 5577484
+    size: 252
+anim_88:
+  type: SM64:ANIM
+  header:
+    offset: 5442516
+    size: 24
+  values:
+    offset: 5579600
+    size: 1260
+  indices:
+    offset: 5579348
+    size: 252
+anim_89:
+  type: SM64:ANIM
+  header:
+    offset: 5579324
+    size: 24
+  values:
+    offset: 5579600
+    size: 1260
+  indices:
+    offset: 5579348
+    size: 252
+anim_8A:
+  type: SM64:ANIM
+  header:
+    offset: 5574280
+    size: 24
+  values:
+    offset: 5581136
+    size: 2980
+  indices:
+    offset: 5580884
+    size: 252
+anim_8B:
+  type: SM64:ANIM
+  header:
+    offset: 5434636
+    size: 24
+  values:
+    offset: 5584392
+    size: 2970
+  indices:
+    offset: 5584140
+    size: 252
+anim_8C:
+  type: SM64:ANIM
+  header:
+    offset: 5404784
+    size: 24
+  values:
+    offset: 5587640
+    size: 646
+  indices:
+    offset: 5587388
+    size: 252
+anim_8D:
+  type: SM64:ANIM
+  header:
+    offset: 5413596
+    size: 24
+  values:
+    offset: 5588564
+    size: 1086
+  indices:
+    offset: 5588312
+    size: 252
+anim_8E:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5589952
+    size: 1618
+  indices:
+    offset: 5589700
+    size: 252
+anim_8F:
+  type: SM64:ANIM
+  header:
+    offset: 5186848
+    size: 24
+  values:
+    offset: 5589952
+    size: 1618
+  indices:
+    offset: 5589700
+    size: 252
+anim_90:
+  type: SM64:ANIM
+  header:
+    offset: 5204600
+    size: 24
+  values:
+    offset: 5591848
+    size: 1012
+  indices:
+    offset: 5591596
+    size: 252
+anim_91:
+  type: SM64:ANIM
+  header:
+    offset: 5592860
+    size: 24
+  values:
+    offset: 5593136
+    size: 266
+  indices:
+    offset: 5592884
+    size: 252
+anim_92:
+  type: SM64:ANIM
+  header:
+    offset: 5593404
+    size: 24
+  values:
+    offset: 5593680
+    size: 5600
+  indices:
+    offset: 5593428
+    size: 252
+anim_93:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5599556
+    size: 602
+  indices:
+    offset: 5599304
+    size: 252
+anim_94:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5600436
+    size: 80
+  indices:
+    offset: 5197460
+    size: 252
+anim_95:
+  type: SM64:ANIM
+  header:
+    offset: 5489076
+    size: 24
+  values:
+    offset: 5600792
+    size: 280
+  indices:
+    offset: 5600540
+    size: 252
+anim_96:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5601348
+    size: 680
+  indices:
+    offset: 5601096
+    size: 252
+anim_97:
+  type: SM64:ANIM
+  header:
+    offset: 5372172
+    size: 24
+  values:
+    offset: 5602304
+    size: 416
+  indices:
+    offset: 5602052
+    size: 252
+anim_98:
+  type: SM64:ANIM
+  header:
+    offset: 5179584
+    size: 24
+  values:
+    offset: 5602996
+    size: 2758
+  indices:
+    offset: 5602744
+    size: 252
+anim_99:
+  type: SM64:ANIM
+  header:
+    offset: 5605756
+    size: 24
+  values:
+    offset: 5606032
+    size: 7014
+  indices:
+    offset: 5605780
+    size: 252
+anim_9A:
+  type: SM64:ANIM
+  header:
+    offset: 5404784
+    size: 24
+  values:
+    offset: 5613324
+    size: 644
+  indices:
+    offset: 5613072
+    size: 252
+anim_9B:
+  type: SM64:ANIM
+  header:
+    offset: 5404784
+    size: 24
+  values:
+    offset: 5614244
+    size: 630
+  indices:
+    offset: 5613992
+    size: 252
+anim_9C:
+  type: SM64:ANIM
+  header:
+    offset: 5614876
+    size: 24
+  values:
+    offset: 5615152
+    size: 4884
+  indices:
+    offset: 5614900
+    size: 252
+anim_9D:
+  type: SM64:ANIM
+  header:
+    offset: 5620036
+    size: 24
+  values:
+    offset: 5620312
+    size: 1944
+  indices:
+    offset: 5620060
+    size: 252
+anim_9E:
+  type: SM64:ANIM
+  header:
+    offset: 5553004
+    size: 24
+  values:
+    offset: 5622532
+    size: 4008
+  indices:
+    offset: 5622280
+    size: 252
+anim_9F:
+  type: SM64:ANIM
+  header:
+    offset: 5199596
+    size: 24
+  values:
+    offset: 5626816
+    size: 774
+  indices:
+    offset: 5626564
+    size: 252
+anim_A0:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5627868
+    size: 390
+  indices:
+    offset: 5627616
+    size: 252
+anim_A1:
+  type: SM64:ANIM
+  header:
+    offset: 5628260
+    size: 24
+  values:
+    offset: 5628536
+    size: 920
+  indices:
+    offset: 5628284
+    size: 252
+anim_A2:
+  type: SM64:ANIM
+  header:
+    offset: 5202644
+    size: 24
+  values:
+    offset: 5629732
+    size: 1448
+  indices:
+    offset: 5629480
+    size: 252
+anim_A3:
+  type: SM64:ANIM
+  header:
+    offset: 5418280
+    size: 24
+  values:
+    offset: 5631456
+    size: 2590
+  indices:
+    offset: 5631204
+    size: 252
+anim_A4:
+  type: SM64:ANIM
+  header:
+    offset: 5232768
+    size: 24
+  values:
+    offset: 5634324
+    size: 1650
+  indices:
+    offset: 5634072
+    size: 252
+anim_A5:
+  type: SM64:ANIM
+  header:
+    offset: 5165520
+    size: 24
+  values:
+    offset: 5636252
+    size: 5148
+  indices:
+    offset: 5636000
+    size: 252
+anim_A6:
+  type: SM64:ANIM
+  header:
+    offset: 5641400
+    size: 24
+  values:
+    offset: 5641676
+    size: 4646
+  indices:
+    offset: 5641424
+    size: 252
+anim_A7:
+  type: SM64:ANIM
+  header:
+    offset: 5574280
+    size: 24
+  values:
+    offset: 5646600
+    size: 3060
+  indices:
+    offset: 5646348
+    size: 252
+anim_A8:
+  type: SM64:ANIM
+  header:
+    offset: 5553004
+    size: 24
+  values:
+    offset: 5649936
+    size: 3910
+  indices:
+    offset: 5649684
+    size: 252
+anim_A9:
+  type: SM64:ANIM
+  header:
+    offset: 5442516
+    size: 24
+  values:
+    offset: 5654124
+    size: 1728
+  indices:
+    offset: 5653872
+    size: 252
+anim_AA:
+  type: SM64:ANIM
+  header:
+    offset: 5491396
+    size: 24
+  values:
+    offset: 5656128
+    size: 972
+  indices:
+    offset: 5655876
+    size: 252
+anim_AB:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5657376
+    size: 750
+  indices:
+    offset: 5657124
+    size: 252
+anim_AC:
+  type: SM64:ANIM
+  header:
+    offset: 5658128
+    size: 24
+  values:
+    offset: 5658404
+    size: 1706
+  indices:
+    offset: 5658152
+    size: 252
+anim_AD:
+  type: SM64:ANIM
+  header:
+    offset: 5416032
+    size: 24
+  values:
+    offset: 5660388
+    size: 1860
+  indices:
+    offset: 5660136
+    size: 252
+anim_AE:
+  type: SM64:ANIM
+  header:
+    offset: 5374304
+    size: 24
+  values:
+    offset: 5662524
+    size: 956
+  indices:
+    offset: 5662272
+    size: 252
+anim_AF:
+  type: SM64:ANIM
+  header:
+    offset: 5416032
+    size: 24
+  values:
+    offset: 5663756
+    size: 2160
+  indices:
+    offset: 5663504
+    size: 252
+anim_B0:
+  type: SM64:ANIM
+  header:
+    offset: 5489076
+    size: 24
+  values:
+    offset: 5666192
+    size: 440
+  indices:
+    offset: 5665940
+    size: 252
+anim_B1:
+  type: SM64:ANIM
+  header:
+    offset: 5666632
+    size: 24
+  values:
+    offset: 5666908
+    size: 2418
+  indices:
+    offset: 5666656
+    size: 252
+anim_B2:
+  type: SM64:ANIM
+  header:
+    offset: 5232768
+    size: 24
+  values:
+    offset: 5669604
+    size: 1824
+  indices:
+    offset: 5669352
+    size: 252
+anim_B3:
+  type: SM64:ANIM
+  header:
+    offset: 5671428
+    size: 24
+  values:
+    offset: 5671704
+    size: 6494
+  indices:
+    offset: 5671452
+    size: 252
+anim_B4:
+  type: SM64:ANIM
+  header:
+    offset: 5498884
+    size: 24
+  values:
+    offset: 5678476
+    size: 1846
+  indices:
+    offset: 5678224
+    size: 252
+anim_B5:
+  type: SM64:ANIM
+  header:
+    offset: 5442516
+    size: 24
+  values:
+    offset: 5680624
+    size: 1382
+  indices:
+    offset: 5680372
+    size: 252
+anim_B6:
+  type: SM64:ANIM
+  header:
+    offset: 5680348
+    size: 24
+  values:
+    offset: 5680624
+    size: 1382
+  indices:
+    offset: 5680372
+    size: 252
+anim_B7:
+  type: SM64:ANIM
+  header:
+    offset: 5574280
+    size: 24
+  values:
+    offset: 5682284
+    size: 2980
+  indices:
+    offset: 5682032
+    size: 252
+anim_B8:
+  type: SM64:ANIM
+  header:
+    offset: 5338604
+    size: 24
+  values:
+    offset: 5685540
+    size: 776
+  indices:
+    offset: 5685288
+    size: 252
+anim_B9:
+  type: SM64:ANIM
+  header:
+    offset: 5416032
+    size: 24
+  values:
+    offset: 5686592
+    size: 2068
+  indices:
+    offset: 5686340
+    size: 252
+anim_BA:
+  type: SM64:ANIM
+  header:
+    offset: 5433276
+    size: 24
+  values:
+    offset: 5688936
+    size: 986
+  indices:
+    offset: 5688684
+    size: 252
+anim_BB:
+  type: SM64:ANIM
+  header:
+    offset: 5689924
+    size: 24
+  values:
+    offset: 5690200
+    size: 4132
+  indices:
+    offset: 5689948
+    size: 252
+anim_BC:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5694632
+    size: 1528
+  indices:
+    offset: 5694380
+    size: 252
+anim_BD:
+  type: SM64:ANIM
+  header:
+    offset: 5197816
+    size: 24
+  values:
+    offset: 5694632
+    size: 1528
+  indices:
+    offset: 5694380
+    size: 252
+anim_BE:
+  type: SM64:ANIM
+  header:
+    offset: 5230056
+    size: 24
+  values:
+    offset: 5696436
+    size: 760
+  indices:
+    offset: 5696184
+    size: 252
+anim_BF:
+  type: SM64:ANIM
+  header:
+    offset: 5498884
+    size: 24
+  values:
+    offset: 5697472
+    size: 1936
+  indices:
+    offset: 5697220
+    size: 252
+anim_C0:
+  type: SM64:ANIM
+  header:
+    offset: 5699408
+    size: 24
+  values:
+    offset: 5699684
+    size: 2452
+  indices:
+    offset: 5699432
+    size: 252
+anim_C1:
+  type: SM64:ANIM
+  header:
+    offset: 5191920
+    size: 24
+  values:
+    offset: 5702412
+    size: 2468
+  indices:
+    offset: 5702160
+    size: 252
+anim_C2:
+  type: SM64:ANIM
+  header:
+    offset: 5179584
+    size: 24
+  values:
+    offset: 5705156
+    size: 5422
+  indices:
+    offset: 5704904
+    size: 252
+anim_C3:
+  type: SM64:ANIM
+  header:
+    offset: 5418280
+    size: 24
+  values:
+    offset: 5710856
+    size: 1942
+  indices:
+    offset: 5710604
+    size: 252
+anim_C4:
+  type: SM64:ANIM
+  header:
+    offset: 5418280
+    size: 24
+  values:
+    offset: 5713076
+    size: 1942
+  indices:
+    offset: 5710604
+    size: 252
+anim_C5:
+  type: SM64:ANIM
+  header:
+    offset: 5418280
+    size: 24
+  values:
+    offset: 5715296
+    size: 1942
+  indices:
+    offset: 5710604
+    size: 252
+anim_C6:
+  type: SM64:ANIM
+  header:
+    offset: 5338604
+    size: 24
+  values:
+    offset: 5717516
+    size: 1666
+  indices:
+    offset: 5717264
+    size: 252
+anim_C7:
+  type: SM64:ANIM
+  header:
+    offset: 5338604
+    size: 24
+  values:
+    offset: 5719460
+    size: 2844
+  indices:
+    offset: 5719208
+    size: 252
+anim_C8:
+  type: SM64:ANIM
+  header:
+    offset: 5722304
+    size: 24
+  values:
+    offset: 5722580
+    size: 1648
+  indices:
+    offset: 5722328
+    size: 252
+anim_C9:
+  type: SM64:ANIM
+  header:
+    offset: 5234576
+    size: 24
+  values:
+    offset: 5724504
+    size: 1940
+  indices:
+    offset: 5724252
+    size: 252
+anim_CA:
+  type: SM64:ANIM
+  header:
+    offset: 5726444
+    size: 24
+  values:
+    offset: 5726720
+    size: 1998
+  indices:
+    offset: 5726468
+    size: 252
+anim_CB:
+  type: SM64:ANIM
+  header:
+    offset: 5225496
+    size: 24
+  values:
+    offset: 5729020
+    size: 1382
+  indices:
+    offset: 5728768
+    size: 252
+anim_CC:
+  type: SM64:ANIM
+  header:
+    offset: 5165544
+    size: 24
+  values:
+    offset: 5729020
+    size: 1382
+  indices:
+    offset: 5728768
+    size: 252
+anim_CD:
+  type: SM64:ANIM
+  header:
+    offset: 5730404
+    size: 24
+  values:
+    offset: 5730680
+    size: 5184
+  indices:
+    offset: 5730428
+    size: 252
+anim_CE:
+  type: SM64:ANIM
+  header:
+    offset: 5201048
+    size: 24
+  values:
+    offset: 5736140
+    size: 1460
+  indices:
+    offset: 5735888
+    size: 252
+anim_CF:
+  type: SM64:ANIM
+  header:
+    offset: 5737600
+    size: 24
+  values:
+    offset: 5737876
+    size: 2708
+  indices:
+    offset: 5737624
+    size: 252
+anim_D0:
+  type: SM64:ANIM
+  header:
+    offset: 5413596
+    size: 24
+  values:
+    offset: 5740860
+    size: 730
+  indices:
+    offset: 5740608
+    size: 252

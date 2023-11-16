@@ -1,0 +1,72 @@
+hmc_0:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x0
+  mio0: 0x3D0DC0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07000000
+hmc_1:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1000
+  mio0: 0x3D0DC0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07001000
+hmc_2:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2000
+  mio0: 0x3D0DC0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07002000
+hmc_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  mio0: 0x3D0DC0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07003000
+hmc_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  mio0: 0x3D0DC0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07003800
+hmc_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4000
+  mio0: 0x3D0DC0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07004000
+hmc_6:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x4800
+  mio0: 0x3D0DC0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07004800
+hmc_7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x16800
+  mio0: 0x396340
+  format: RGBA16
+  symbol: hmc_seg7_texture_07024CE0

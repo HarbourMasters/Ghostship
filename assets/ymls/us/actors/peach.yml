@@ -1,0 +1,90 @@
+peach_chest_jewel:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x2C28
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05002C28
+peach_crown_jewel:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x2A28
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05002A28
+peach_dress:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4028
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05004028
+peach_eye_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2228
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05002228
+peach_eye_mostly_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1A28
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05001A28
+peach_eye_mostly_open:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1228
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05001228
+peach_eye_open:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA28
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05000A28
+peach_lips:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3628
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05003628
+peach_lips_scrunched:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2E28
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05002E28
+peach_nostril:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x3E28
+  mio0: 0x16D870
+  format: RGBA16
+  symbol: peach_seg5_texture_05003E28

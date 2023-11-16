@@ -1,0 +1,27 @@
+water_mine_left_side_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x57C10
+  mio0: 0x188440
+  format: RGBA16
+  symbol: water_mine_seg6_texture_0600A4F8
+water_mine_right_side_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x58C10
+  mio0: 0x188440
+  format: RGBA16
+  symbol: water_mine_seg6_texture_0600B4F8
+water_mine_spike_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x59C10
+  mio0: 0x188440
+  format: RGBA16
+  symbol: water_mine_seg6_texture_0600C4F8

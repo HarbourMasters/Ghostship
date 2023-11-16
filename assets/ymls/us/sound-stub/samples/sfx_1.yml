@@ -1,0 +1,18 @@
+00_twirl:
+  type: SAMPLE
+  id: 0
+01_brushing:
+  type: SAMPLE
+  id: 1
+02_hand_touch:
+  type: SAMPLE
+  id: 2
+03_yoshi:
+  type: SAMPLE
+  id: 3
+04_plop:
+  type: SAMPLE
+  id: 4
+05_heavy_landing:
+  type: SAMPLE
+  id: 5

@@ -1,0 +1,36 @@
+whomp_back:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1C360
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: whomp_seg6_texture_0601C360
+whomp_face:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1D360
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: whomp_seg6_texture_0601D360
+whomp_hand:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1E360
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: whomp_seg6_texture_0601E360
+whomp_surface:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1EB60
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: whomp_seg6_texture_0601EB60

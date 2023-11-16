@@ -1,0 +1,54 @@
+mad_piano_body:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x72F0
+  mio0: 0x165060
+  format: RGBA16
+  symbol: mad_piano_seg5_texture_050072F0
+mad_piano_keys:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x7EF0
+  mio0: 0x165060
+  format: RGBA16
+  symbol: mad_piano_seg5_texture_05007EF0
+mad_piano_keys_corner:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x76F0
+  mio0: 0x165060
+  format: RGBA16
+  symbol: mad_piano_seg5_texture_050076F0
+mad_piano_keys_edge:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x82F0
+  mio0: 0x165060
+  format: RGBA16
+  symbol: mad_piano_seg5_texture_050082F0
+mad_piano_mouth:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x7AF0
+  mio0: 0x165060
+  format: RGBA16
+  symbol: mad_piano_seg5_texture_05007AF0
+mad_piano_tooth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6AF0
+  mio0: 0x165060
+  format: RGBA16
+  symbol: mad_piano_seg5_texture_05006AF0

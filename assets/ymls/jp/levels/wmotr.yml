@@ -1,0 +1,45 @@
+0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  mio0: 0x4C22C0
+  format: RGBA16
+  symbol: wmotr_seg7_texture_07000000
+levels_1:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x800
+  mio0: 0x4C22C0
+  format: RGBA16
+  symbol: wmotr_seg7_texture_07000800
+levels_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xC00
+  mio0: 0x4C22C0
+  format: RGBA16
+  symbol: wmotr_seg7_texture_07000C00
+levels_3:
+  type: TEXTURE
+  size: 512
+  width: 32
+  height: 8
+  offset: 0x1400
+  mio0: 0x4C22C0
+  format: RGBA16
+  symbol: wmotr_seg7_texture_07001400
+levels_4:
+  type: TEXTURE
+  size: 512
+  width: 8
+  height: 32
+  offset: 0x1600
+  mio0: 0x4C22C0
+  format: RGBA16
+  symbol: wmotr_seg7_texture_07001600

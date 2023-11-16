@@ -1,0 +1,9 @@
+sand_particle:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x2BAD0
+  mio0: 0x201410
+  format: RGBA16
+  symbol: sand_seg3_texture_0302BAD0

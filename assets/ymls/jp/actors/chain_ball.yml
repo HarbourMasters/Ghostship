@@ -1,0 +1,9 @@
+chain_ball:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x20AE8
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: chain_ball_seg6_texture_06020AE8

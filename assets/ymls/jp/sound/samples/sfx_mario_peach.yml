@@ -1,0 +1,42 @@
+00_mario_waaaooow:
+  type: SAMPLE
+  id: 106
+01_mario_hoohoo:
+  type: SAMPLE
+  id: 107
+02_mario_panting:
+  type: SAMPLE
+  id: 108
+03_mario_dying:
+  type: SAMPLE
+  id: 109
+04_mario_on_fire:
+  type: SAMPLE
+  id: 110
+05_mario_uh2:
+  type: SAMPLE
+  id: 111
+06_mario_coughing:
+  type: SAMPLE
+  id: 112
+07_mario_its_a_me_mario:
+  type: SAMPLE
+  id: 113
+08_mario_punch_yah:
+  type: SAMPLE
+  id: 114
+09_mario_punch_hoo:
+  type: SAMPLE
+  id: 115
+0A_mario_mama_mia:
+  type: SAMPLE
+  id: 116
+0B_mario_okey_dokey:
+  type: SAMPLE
+  id: 117
+0C_mario_drowning:
+  type: SAMPLE
+  id: 118
+0D_mario_thank_you_playing_my_game:
+  type: SAMPLE
+  id: 119

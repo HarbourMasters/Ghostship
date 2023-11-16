@@ -1,0 +1,27 @@
+bomb_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x57AC0
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bomb_seg6_texture_06057AC0
+bomb_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x58AC0
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bomb_seg6_texture_06058AC0
+bomb_spike:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x59AC0
+  mio0: 0x186810
+  format: RGBA16
+  symbol: bomb_seg6_texture_06059AC0

@@ -1,0 +1,72 @@
+flame_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x17320
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_03017320
+flame_1:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x17B20
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_03017B20
+flame_2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x18320
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_03018320
+flame_3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x18B20
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_03018B20
+flame_4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x19320
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_03019320
+flame_5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x19B20
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_03019B20
+flame_6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1A320
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_0301A320
+flame_7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1AB20
+  mio0: 0x1FF740
+  format: IA16
+  symbol: flame_seg3_texture_0301AB20

@@ -1,0 +1,27 @@
+goomba_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x19530
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: goomba_seg8_texture_08019530
+goomba_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x19D30
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: goomba_seg8_texture_08019D30
+goomba_face_blink:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1A530
+  mio0: 0x1F0530
+  format: RGBA16
+  symbol: goomba_seg8_texture_0801A530

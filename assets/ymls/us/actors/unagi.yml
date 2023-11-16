@@ -1,0 +1,54 @@
+unagi_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xAF20
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: unagi_seg5_texture_0500AF20
+unagi_eye:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xB720
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: unagi_seg5_texture_0500B720
+unagi_head_base:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB920
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: unagi_seg5_texture_0500B920
+unagi_mouth:
+  type: TEXTURE
+  size: 128
+  width: 8
+  height: 8
+  offset: 0xC320
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: unagi_seg5_texture_0500C320
+unagi_tail:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xC3A0
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: unagi_seg5_texture_0500C3A0
+unagi_tooth:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xC120
+  mio0: 0x13B910
+  format: RGBA16
+  symbol: unagi_seg5_texture_0500C120

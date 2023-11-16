@@ -1,0 +1,45 @@
+chain_chomp_bright_shine:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x213D0
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: chain_chomp_seg6_texture_060213D0
+chain_chomp_dull_shine:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x21BD0
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: chain_chomp_seg6_texture_06021BD0
+chain_chomp_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x233D0
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: chain_chomp_seg6_texture_060233D0
+chain_chomp_tongue:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x223D0
+  mio0: 0x1C2580
+  format: RGBA16
+  symbol: chain_chomp_seg6_texture_060223D0
+chain_chomp_tooth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6AF0
+  mio0: 0x165060
+  format: RGBA16
+  symbol: chain_chomp_seg6_texture_06022BD0

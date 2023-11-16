@@ -1,0 +1,54 @@
+penguin_beak:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x55E0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: penguin_seg5_texture_050055E0
+penguin_eye_angry:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x45E0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: penguin_seg5_texture_050045E0
+penguin_eye_angry_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4DE0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: penguin_seg5_texture_05004DE0
+penguin_eye_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3DE0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: penguin_seg5_texture_05003DE0
+penguin_eye_half_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x35E0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: penguin_seg5_texture_050035E0
+penguin_eye_open:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2DE0
+  mio0: 0x15EA70
+  format: RGBA16
+  symbol: penguin_seg5_texture_05002DE0
