@@ -12,7 +12,7 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
     if (GameEngine_OTRSigCheck(imgData) == 1) {
         auto resource = LUS::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
         auto res = std::static_pointer_cast<LUS::DisplayList>(resource);
-        dl = (Gfx*)&res->Instructions[0];
+        dl = &res->Instructions[0];
     }
 
     __gSPDisplayList(pkt, dl);
@@ -41,6 +41,5 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
             texAddr = (uintptr_t) res->GetRawPointer();
         }
     }
-// OTRTODO:
-//    __gSPInvalidateTexCache(pkt, texAddr);
+   __gSPInvalidateTexCache(pkt, texAddr);
 }

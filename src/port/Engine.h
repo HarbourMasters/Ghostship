@@ -39,8 +39,9 @@ class GameEngine {
     static void AudioExit();
     static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();
+    uint32_t GetGameVersion();
 
-    void Destroy();
+    static void Destroy();
 };
 #else
 uint32_t GameEngine_GetInterpolatedFPS();

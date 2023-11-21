@@ -26,39 +26,43 @@ extern "C" {
 GameEngine* GameEngine::Instance;
 GameInteractor* GameInteractor::Instance;
 
-GameEngine::GameEngine(){
+GameEngine::GameEngine(): dictionary(nullptr) {
     std::vector<std::string> OTRFiles;
-    std::string cubePath = LUS::Context::GetPathRelativeToAppDirectory("smcube.otr");
-    if (std::filesystem::exists(cubePath)) {
-        OTRFiles.push_back(cubePath);
+    if (const std::string cube_path = LUS::Context::GetPathRelativeToAppDirectory("smcube.otr"); std::filesystem::exists(cube_path)) {
+        OTRFiles.push_back(cube_path);
     }
-   std::string sm64OtrPath = LUS::Context::GetPathRelativeToAppBundle("sm64.otr");
-   if (std::filesystem::exists(sm64OtrPath)) {
-       OTRFiles.push_back(sm64OtrPath);
-   }
-    std::string patchesPath = LUS::Context::GetPathRelativeToAppDirectory("mods");
-    if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
-        if (std::filesystem::is_directory(patchesPath)) {
-            for (const auto& p : std::filesystem::recursive_directory_iterator(patchesPath)) {
+    if (const std::string sm64_otr_path = LUS::Context::GetPathRelativeToAppBundle("sm64.otr"); std::filesystem::exists(sm64_otr_path)) {
+        OTRFiles.push_back(sm64_otr_path);
+    }
+    if (const std::string patches_path = LUS::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
+        if (std::filesystem::is_directory(patches_path)) {
+            for (const auto&p: std::filesystem::recursive_directory_iterator(patches_path)) {
                 if (StringHelper::IEquals(p.path().extension().string(), ".otr")) {
                     OTRFiles.push_back(p.path().generic_string());
                 }
             }
         }
     }
-    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles, { 0xFF2B5A63, 0xE3DAA4E }, 3);
+    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles,
+                                                 {0xFF2B5A63, 0xE3DAA4E}, 3);
     this->context->GetWindow()->SetTargetFps(60);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(LUS::ResourceType::Dictionary, "Dictionary", std::make_shared<CubeOS::DictionaryFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
+        LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
+        LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
+        LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
+        LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
+        LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
+    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
+        LUS::ResourceType::Dictionary, "Dictionary", std::make_shared<CubeOS::DictionaryFactory>());
 }
 
 void GameEngine::Create(){
-    auto instance = GameEngine::Instance = new GameEngine();
+    const auto instance = Instance = new GameEngine();
     GameInteractor::Instance = new GameInteractor();
     InitMods();
     GameUI::SetupGuiElements();
@@ -67,14 +71,14 @@ void GameEngine::Create(){
 }
 
 void GameEngine::Destroy(){
-    GameEngine::AudioExit();
+    AudioExit();
 }
 
 bool ShouldClearTextureCacheAtEndOfFrame = false;
 
 void GameEngine::StartFrame() const{
     using LUS::KbScancode;
-    int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
+    const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
     this->context->GetWindow()->SetLastScancode(-1);
 
     switch (dwScancode) {
@@ -84,6 +88,7 @@ void GameEngine::StartFrame() const{
             ShouldClearTextureCacheAtEndOfFrame = true;
             break;
         }
+        default: break;
     }
     this->context->GetWindow()->StartFrame();
 }
@@ -164,19 +169,16 @@ void GameEngine::EndAudioFrame(){
 }
 
 void GameEngine::AudioInit() {
-    auto resourceMgr = LUS::Context::GetInstance()->GetResourceManager();
+    const auto resourceMgr = LUS::Context::GetInstance()->GetResourceManager();
     resourceMgr->LoadDirectory("sound");
-    auto banksFiles = resourceMgr->GetArchive()->ListFiles("sound/banks/*");
 
-    for(auto& bank : *banksFiles){
+    for(const auto banksFiles = resourceMgr->GetArchive()->ListFiles("sound/banks/*"); auto& bank : *banksFiles){
         auto path = "__OTR__" + bank;
-        auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(path.c_str()));
+        const auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(path.c_str()));
         this->bankMapTable[bank] = ctl->bankId;
     }
 
-    auto sequencesFiles = resourceMgr->GetArchive()->ListFiles("sound/sequences/*");
-
-    for(auto& sequence : *sequencesFiles){
+    for(const auto sequences_files = resourceMgr->GetArchive()->ListFiles("sound/sequences/*"); auto& sequence : *sequences_files){
         auto path = "__OTR__" + sequence;
         auto seq = static_cast<AudioSequenceData *>(ResourceGetDataByName(path.c_str()));
         this->sequencesMapTable[seq->id] = path;
@@ -184,13 +186,13 @@ void GameEngine::AudioInit() {
 
     if (!audio.running) {
         audio.running = true;
-        audio.thread = std::thread(GameEngine::HandleAudioThread);
+        audio.thread = std::thread(HandleAudioThread);
     }
 }
 
 void GameEngine::AudioExit() {
     {
-        std::unique_lock<std::mutex> Lock(audio.mutex);
+        std::unique_lock lock(audio.mutex);
         audio.running = false;
     }
     audio.cv_to_thread.notify_all();
@@ -209,6 +211,10 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
         return engine->bankMapTable[name];
     }
     return 0;
+}
+
+uint32_t GameEngine::GetGameVersion() {
+    return LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
 }
 
 extern "C" uint32_t GameEngine_GetInterpolatedFPS() {
@@ -248,7 +254,7 @@ extern "C" CtlEntry* GameEngine_LoadBank(uint8_t bankId) {
     }
     for(auto& bank : engine->bankMapTable){
         if(bank.second == bankId){
-            auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(("__OTR__" + bank.first).c_str()));
+            const auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(("__OTR__" + bank.first).c_str()));
             engine->banks[bankId] = ctl;
             return ctl;
         }
@@ -290,13 +296,13 @@ extern "C" uint32_t GameEngine_GetSequenceCount(){
 }
 
 extern "C" uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId) {
-    auto engine = GameEngine::Instance;
+    const auto engine = GameEngine::Instance;
     GameEngine_LoadSequence(seqId);
     return engine->sequences.contains(seqId);
 }
 
 extern "C" void GameEngine_UnloadSequence(uint8_t seqId) {
-    auto engine = GameEngine::Instance;
+    const auto engine = GameEngine::Instance;
     if(engine->sequences.contains(seqId)){
         engine->sequences.erase(seqId);
     }
@@ -307,38 +313,28 @@ extern "C" uint32_t GameEngine_GetGameVersion() {
 }
 
 extern "C" uint8_t* GameEngine_LoadActName(uint32_t actId){
-    return (uint8_t*) ResourceGetDataByName(StringHelper::Sprintf(gActRoot, actId).c_str());
+    return static_cast<uint8_t *>(ResourceGetDataByName(StringHelper::Sprintf(gActRoot, actId).c_str()));
 }
 
 extern "C" uint8_t* GameEngine_LoadLevelName(uint32_t courseId){
-    return (uint8_t*) ResourceGetDataByName(StringHelper::Sprintf(gCourseRoot, courseId).c_str());
+    return static_cast<uint8_t *>(ResourceGetDataByName(StringHelper::Sprintf(gCourseRoot, courseId).c_str()));
 }
 
 extern "C" DialogEntry* GameEngine_LoadDialog(uint32_t dialogId){
-    auto dialog = (DialogEntry*) ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str());
+    auto dialog = static_cast<DialogEntry *>(ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str()));
     return dialog;
 }
 
 extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
-    auto engine = GameEngine::Instance;
-    auto dictionary = engine->dictionary;
+    const auto engine = GameEngine::Instance;
+    const auto dictionary = engine->dictionary;
 
-    assert(engine->dictionary != nullptr);
-    assert(engine->dictionary->contains(key));
+    assert(dictionary != nullptr);
+    assert(dictionary->contains(key));
 
-    return engine->dictionary->at(key).data();
+    return dictionary->at(key).data();
 }
 
 extern "C" int GameEngine_OTRSigCheck(const char* data) {
-	auto i = (uintptr_t)(data);
-    if ((i & 1) == 1)
-        return 0;
-
-    if (i != 0) {
-        if (data[0] == '_' && data[1] == '_' && data[2] == 'O' && data[3] == 'T' && data[4] == 'R' &&
-            data[5] == '_' && data[6] == '_')
-            return 1;
-    }
-
-    return 0;
+    return LUS::ResourceManager::OtrSignatureCheck(data);
 }

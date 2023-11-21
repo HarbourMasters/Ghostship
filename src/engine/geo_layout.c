@@ -6,6 +6,7 @@
 #include "game/memory.h"
 #include "graph_node.h"
 #include "port/Engine.h"
+#include "port/game/GeoLayoutParser.h"
 
 typedef void (*GeoLayoutCommandProc)(void);
 
@@ -781,20 +782,20 @@ struct GraphNode *process_geo_layout(struct AllocOnlyPool *pool, void *segptr) {
     gGeoLayoutStackIndex = 2;
     gGeoLayoutReturnIndex = 2; // stack index is often copied here?
 
-    if(GameEngine_OTRSigCheck(segptr) == 1){
-        gGeoLayoutCommand = ResourceGetDataByName(segptr);
-    } else {
-        gGeoLayoutCommand = segmented_to_virtual(segptr);
-    }
-
     gGraphNodePool = pool;
 
     gGeoLayoutStack[0] = 0;
     gGeoLayoutStack[1] = 0;
 
-    while (gGeoLayoutCommand != NULL) {
-        uint8_t cmdId = gGeoLayoutCommand[0x00];
-        GeoLayoutJumpTable[cmdId]();
+    if(GameEngine_OTRSigCheck(segptr) == 1){
+        GeoLayoutExecute(segptr);
+    } else {
+        gGeoLayoutCommand = segmented_to_virtual(segptr);
+
+        while (gGeoLayoutCommand != NULL) {
+            uint8_t cmdId = gGeoLayoutCommand[0x00];
+            GeoLayoutJumpTable[cmdId]();
+        }
     }
 
     return gCurRootGraphNode;
