@@ -62,6 +62,7 @@ ghostship.cfg.json
 imgui.ini
 .DS_Store
 logs/
+debug/
 
 # Assets. Generally ignored, but ones with "custom" in the name are fine.
 /levels/**/*.png
