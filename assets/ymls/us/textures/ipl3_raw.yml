@@ -1,0 +1,350 @@
+ipl3_font_00:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xB70
+  format: IA1
+ipl3_font_01:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xB87
+  format: IA1
+ipl3_font_02:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xB9E
+  format: IA1
+ipl3_font_03:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xBB5
+  format: IA1
+ipl3_font_04:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xBCC
+  format: IA1
+ipl3_font_05:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xBE3
+  format: IA1
+ipl3_font_06:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xBFA
+  format: IA1
+ipl3_font_07:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xC11
+  format: IA1
+ipl3_font_08:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xC28
+  format: IA1
+ipl3_font_09:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xC3F
+  format: IA1
+ipl3_font_10:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xC56
+  format: IA1
+ipl3_font_11:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xC6D
+  format: IA1
+ipl3_font_12:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xC84
+  format: IA1
+ipl3_font_13:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xC9B
+  format: IA1
+ipl3_font_14:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xCB2
+  format: IA1
+ipl3_font_15:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xCC9
+  format: IA1
+ipl3_font_16:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xCE0
+  format: IA1
+ipl3_font_17:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xCF7
+  format: IA1
+ipl3_font_18:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xD0E
+  format: IA1
+ipl3_font_19:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xD25
+  format: IA1
+ipl3_font_20:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xD3C
+  format: IA1
+ipl3_font_21:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xD53
+  format: IA1
+ipl3_font_22:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xD6A
+  format: IA1
+ipl3_font_23:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xD81
+  format: IA1
+ipl3_font_24:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xD98
+  format: IA1
+ipl3_font_25:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xDAF
+  format: IA1
+ipl3_font_26:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xDC6
+  format: IA1
+ipl3_font_27:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xDDD
+  format: IA1
+ipl3_font_28:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xDF4
+  format: IA1
+ipl3_font_29:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xE0B
+  format: IA1
+ipl3_font_30:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xE22
+  format: IA1
+ipl3_font_31:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xE39
+  format: IA1
+ipl3_font_32:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xE50
+  format: IA1
+ipl3_font_33:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xE67
+  format: IA1
+ipl3_font_34:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xE7E
+  format: IA1
+ipl3_font_35:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xE95
+  format: IA1
+ipl3_font_36:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xEAC
+  format: IA1
+ipl3_font_37:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xEC3
+  format: IA1
+ipl3_font_38:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xEDA
+  format: IA1
+ipl3_font_39:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xEF1
+  format: IA1
+ipl3_font_40:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xF08
+  format: IA1
+ipl3_font_41:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xF1F
+  format: IA1
+ipl3_font_42:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xF36
+  format: IA1
+ipl3_font_43:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xF4D
+  format: IA1
+ipl3_font_44:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xF64
+  format: IA1
+ipl3_font_45:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xF7B
+  format: IA1
+ipl3_font_46:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xF92
+  format: IA1
+ipl3_font_47:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xFA9
+  format: IA1
+ipl3_font_48:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xFC0
+  format: IA1
+ipl3_font_49:
+  type: TEXTURE
+  size: 23
+  width: 13
+  height: 14
+  offset: 0xFD7
+  format: IA1

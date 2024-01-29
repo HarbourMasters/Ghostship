@@ -3,8 +3,8 @@ power_meter_five_segments:
   size: 2048
   width: 32
   height: 32
-  offset: 0x26BE0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x26BE0
   format: RGBA16
   symbol: texture_power_meter_five_segments
 power_meter_four_segments:
@@ -12,8 +12,8 @@ power_meter_four_segments:
   size: 2048
   width: 32
   height: 32
-  offset: 0x273E0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x273E0
   format: RGBA16
   symbol: texture_power_meter_four_segments
 power_meter_full:
@@ -21,8 +21,8 @@ power_meter_full:
   size: 2048
   width: 32
   height: 32
-  offset: 0x253E0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x253E0
   format: RGBA16
   symbol: texture_power_meter_full
 power_meter_left_side:
@@ -30,8 +30,8 @@ power_meter_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x233E0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x233E0
   format: RGBA16
   symbol: texture_power_meter_left_side
 power_meter_one_segment:
@@ -39,8 +39,8 @@ power_meter_one_segment:
   size: 2048
   width: 32
   height: 32
-  offset: 0x28BE0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x28BE0
   format: RGBA16
   symbol: texture_power_meter_one_segments
 power_meter_right_side:
@@ -48,8 +48,8 @@ power_meter_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x243E0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x243E0
   format: RGBA16
   symbol: texture_power_meter_right_side
 power_meter_seven_segments:
@@ -57,8 +57,8 @@ power_meter_seven_segments:
   size: 2048
   width: 32
   height: 32
-  offset: 0x25BE0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x25BE0
   format: RGBA16
   symbol: texture_power_meter_seven_segments
 power_meter_six_segments:
@@ -66,8 +66,8 @@ power_meter_six_segments:
   size: 2048
   width: 32
   height: 32
-  offset: 0x263E0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x263E0
   format: RGBA16
   symbol: texture_power_meter_six_segments
 power_meter_three_segments:
@@ -75,8 +75,8 @@ power_meter_three_segments:
   size: 2048
   width: 32
   height: 32
-  offset: 0x27BE0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x27BE0
   format: RGBA16
   symbol: texture_power_meter_three_segments
 power_meter_two_segments:
@@ -84,7 +84,7 @@ power_meter_two_segments:
   size: 2048
   width: 32
   height: 32
-  offset: 0x283E0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x283E0
   format: RGBA16
   symbol: texture_power_meter_two_segments

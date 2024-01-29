@@ -3,7 +3,7 @@ cannon_lid:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4058
-  mio0: 0x1F0530
+  offset: 0x1F0530
+  mio0: 0x4058
   format: RGBA16
   symbol: cannon_lid_seg8_texture_08004058

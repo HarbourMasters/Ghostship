@@ -3,8 +3,8 @@ chain_chomp_bright_shine:
   size: 2048
   width: 32
   height: 32
-  offset: 0x213D0
-  mio0: 0x1C2580
+  offset: 0x1C2580
+  mio0: 0x213D0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_060213D0
 chain_chomp_dull_shine:
@@ -12,8 +12,8 @@ chain_chomp_dull_shine:
   size: 2048
   width: 32
   height: 32
-  offset: 0x21BD0
-  mio0: 0x1C2580
+  offset: 0x1C2580
+  mio0: 0x21BD0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_06021BD0
 chain_chomp_eye:
@@ -21,8 +21,8 @@ chain_chomp_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x233D0
-  mio0: 0x1C2580
+  offset: 0x1C2580
+  mio0: 0x233D0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_060233D0
 chain_chomp_tongue:
@@ -30,8 +30,8 @@ chain_chomp_tongue:
   size: 2048
   width: 32
   height: 32
-  offset: 0x223D0
-  mio0: 0x1C2580
+  offset: 0x1C2580
+  mio0: 0x223D0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_060223D0
 chain_chomp_tooth:
@@ -39,7 +39,7 @@ chain_chomp_tooth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6AF0
-  mio0: 0x165060
+  offset: 0x165060
+  mio0: 0x6AF0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_06022BD0

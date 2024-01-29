@@ -3,8 +3,8 @@ cork_box_surface:
   size: 2048
   width: 32
   height: 32
-  offset: 0x12290
-  mio0: 0x1F0530
+  offset: 0x1F0530
+  mio0: 0x12290
   format: RGBA16
   symbol: breakable_box_seg8_texture_08012290
 crazy_box_surface:
@@ -12,7 +12,7 @@ crazy_box_surface:
   size: 2048
   width: 32
   height: 32
-  offset: 0x11A90
-  mio0: 0x1F0530
+  offset: 0x1F0530
+  mio0: 0x11A90
   format: RGBA16
   symbol: breakable_box_seg8_texture_08011A90

@@ -3,8 +3,8 @@ ukiki_butt:
   size: 2048
   width: 32
   height: 32
-  offset: 0x9BC0
-  mio0: 0x1505D0
+  offset: 0x1505D0
+  mio0: 0x9BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05009BC0
 ukiki_face:
@@ -12,8 +12,8 @@ ukiki_face:
   size: 4096
   width: 64
   height: 32
-  offset: 0x7BC0
-  mio0: 0x1505D0
+  offset: 0x1505D0
+  mio0: 0x7BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05007BC0
 ukiki_face_blink:
@@ -21,8 +21,8 @@ ukiki_face_blink:
   size: 4096
   width: 64
   height: 32
-  offset: 0x8BC0
-  mio0: 0x1505D0
+  offset: 0x1505D0
+  mio0: 0x8BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05008BC0
 ukiki_fur:
@@ -30,7 +30,7 @@ ukiki_fur:
   size: 2048
   width: 32
   height: 32
-  offset: 0xA3C0
-  mio0: 0x1505D0
+  offset: 0x1505D0
+  mio0: 0xA3C0
   format: RGBA16
   symbol: ukiki_seg5_texture_0500A3C0

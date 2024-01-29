@@ -3,8 +3,8 @@ star_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x7A30
-  mio0: 0x180BB0
+  offset: 0x180BB0
+  mio0: 0x7A30
   format: RGBA16
   symbol: star_seg3_texture_0302AEF0
 star_surface:
@@ -12,7 +12,7 @@ star_surface:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2A6F0
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0x2A6F0
   format: RGBA16
   symbol: star_seg3_texture_0302A6F0

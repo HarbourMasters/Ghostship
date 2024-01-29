@@ -3,8 +3,8 @@ bowser_flame_0:
   size: 8192
   width: 64
   height: 64
-  offset: 0x0
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x0
   format: RGBA16
   symbol: flame_seg6_texture_06000000
 bowser_flame_1:
@@ -12,8 +12,8 @@ bowser_flame_1:
   size: 8192
   width: 64
   height: 64
-  offset: 0x2000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x2000
   format: RGBA16
   symbol: flame_seg6_texture_06002000
 bowser_flame_10:
@@ -21,8 +21,8 @@ bowser_flame_10:
   size: 8192
   width: 64
   height: 64
-  offset: 0x14000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x14000
   format: RGBA16
   symbol: flame_seg6_texture_06014000
 bowser_flame_11:
@@ -30,8 +30,8 @@ bowser_flame_11:
   size: 8192
   width: 64
   height: 64
-  offset: 0x16000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x16000
   format: RGBA16
   symbol: flame_seg6_texture_06016000
 bowser_flame_12:
@@ -39,8 +39,8 @@ bowser_flame_12:
   size: 8192
   width: 64
   height: 64
-  offset: 0x18000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x18000
   format: RGBA16
   symbol: flame_seg6_texture_06018000
 bowser_flame_13:
@@ -48,8 +48,8 @@ bowser_flame_13:
   size: 8192
   width: 64
   height: 64
-  offset: 0x1A000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x1A000
   format: RGBA16
   symbol: flame_seg6_texture_0601A000
 bowser_flame_2:
@@ -57,8 +57,8 @@ bowser_flame_2:
   size: 8192
   width: 64
   height: 64
-  offset: 0x4000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x4000
   format: RGBA16
   symbol: flame_seg6_texture_06004000
 bowser_flame_3:
@@ -66,8 +66,8 @@ bowser_flame_3:
   size: 8192
   width: 64
   height: 64
-  offset: 0x6000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x6000
   format: RGBA16
   symbol: flame_seg6_texture_06006000
 bowser_flame_4:
@@ -75,8 +75,8 @@ bowser_flame_4:
   size: 8192
   width: 64
   height: 64
-  offset: 0x8000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x8000
   format: RGBA16
   symbol: flame_seg6_texture_06008000
 bowser_flame_5:
@@ -84,8 +84,8 @@ bowser_flame_5:
   size: 8192
   width: 64
   height: 64
-  offset: 0xA000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0xA000
   format: RGBA16
   symbol: flame_seg6_texture_0600A000
 bowser_flame_6:
@@ -93,8 +93,8 @@ bowser_flame_6:
   size: 8192
   width: 64
   height: 64
-  offset: 0xC000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0xC000
   format: RGBA16
   symbol: flame_seg6_texture_0600C000
 bowser_flame_7:
@@ -102,8 +102,8 @@ bowser_flame_7:
   size: 8192
   width: 64
   height: 64
-  offset: 0xE000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0xE000
   format: RGBA16
   symbol: flame_seg6_texture_0600E000
 bowser_flame_8:
@@ -111,8 +111,8 @@ bowser_flame_8:
   size: 8192
   width: 64
   height: 64
-  offset: 0x10000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x10000
   format: RGBA16
   symbol: flame_seg6_texture_06010000
 bowser_flame_9:
@@ -120,7 +120,7 @@ bowser_flame_9:
   size: 8192
   width: 64
   height: 64
-  offset: 0x12000
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x12000
   format: RGBA16
   symbol: flame_seg6_texture_06012000

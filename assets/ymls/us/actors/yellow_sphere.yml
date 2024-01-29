@@ -3,7 +3,7 @@ yellow_sphere:
   size: 2048
   width: 32
   height: 32
-  offset: 0x40
-  mio0: 0x12A7E0
+  offset: 0x12A7E0
+  mio0: 0x40
   format: RGBA16
   symbol: yellow_sphere_seg6_texture_0601EB88

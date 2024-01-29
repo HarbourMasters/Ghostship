@@ -3,8 +3,8 @@ goomba_body:
   size: 2048
   width: 32
   height: 32
-  offset: 0x19530
-  mio0: 0x1F0530
+  offset: 0x1F0530
+  mio0: 0x19530
   format: RGBA16
   symbol: goomba_seg8_texture_08019530
 goomba_face:
@@ -12,8 +12,8 @@ goomba_face:
   size: 2048
   width: 32
   height: 32
-  offset: 0x19D30
-  mio0: 0x1F0530
+  offset: 0x1F0530
+  mio0: 0x19D30
   format: RGBA16
   symbol: goomba_seg8_texture_08019D30
 goomba_face_blink:
@@ -21,7 +21,7 @@ goomba_face_blink:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1A530
-  mio0: 0x1F0530
+  offset: 0x1F0530
+  mio0: 0x1A530
   format: RGBA16
   symbol: goomba_seg8_texture_0801A530

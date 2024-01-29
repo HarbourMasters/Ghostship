@@ -3,8 +3,8 @@ water_mine_left_side_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0x57AC0
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x57AC0
   format: RGBA16
   symbol: water_mine_seg6_texture_0600A4F8
 water_mine_right_side_unused:
@@ -12,8 +12,8 @@ water_mine_right_side_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0x58AC0
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x58AC0
   format: RGBA16
   symbol: water_mine_seg6_texture_0600B4F8
 water_mine_spike_unused:
@@ -21,7 +21,7 @@ water_mine_spike_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x59AC0
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x59AC0
   format: RGBA16
   symbol: water_mine_seg6_texture_0600C4F8

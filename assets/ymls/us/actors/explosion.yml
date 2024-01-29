@@ -3,8 +3,8 @@ explosion_0:
   size: 2048
   width: 32
   height: 32
-  offset: 0xA08
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0xA08
   format: RGBA16
   symbol: explosion_seg3_texture_03000A08
 explosion_1:
@@ -12,8 +12,8 @@ explosion_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1208
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0x1208
   format: RGBA16
   symbol: explosion_seg3_texture_03001208
 explosion_2:
@@ -21,8 +21,8 @@ explosion_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1A08
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0x1A08
   format: RGBA16
   symbol: explosion_seg3_texture_03001A08
 explosion_3:
@@ -30,8 +30,8 @@ explosion_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2208
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0x2208
   format: RGBA16
   symbol: explosion_seg3_texture_03002208
 explosion_4:
@@ -39,8 +39,8 @@ explosion_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2A08
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0x2A08
   format: RGBA16
   symbol: explosion_seg3_texture_03002A08
 explosion_5:
@@ -48,8 +48,8 @@ explosion_5:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3208
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0x3208
   format: RGBA16
   symbol: explosion_seg3_texture_03003208
 explosion_6:
@@ -57,7 +57,7 @@ explosion_6:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3A08
-  mio0: 0x201410
+  offset: 0x201410
+  mio0: 0x3A08
   format: RGBA16
   symbol: explosion_seg3_texture_03003A08

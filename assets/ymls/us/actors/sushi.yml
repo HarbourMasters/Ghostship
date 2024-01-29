@@ -3,8 +3,8 @@ sushi_eye:
   size: 1024
   width: 32
   height: 16
-  offset: 0x96D0
-  mio0: 0x13B910
+  offset: 0x13B910
+  mio0: 0x96D0
   format: RGBA16
   symbol: sushi_seg5_texture_050096D0
 sushi_snout:
@@ -12,8 +12,8 @@ sushi_snout:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8ED0
-  mio0: 0x13B910
+  offset: 0x13B910
+  mio0: 0x8ED0
   format: RGBA16
   symbol: sushi_seg5_texture_05008ED0
 sushi_tooth:
@@ -21,7 +21,7 @@ sushi_tooth:
   size: 128
   width: 8
   height: 8
-  offset: 0x9AD0
-  mio0: 0x13B910
+  offset: 0x13B910
+  mio0: 0x9AD0
   format: RGBA16
   symbol: sushi_seg5_texture_05009AD0

@@ -3,8 +3,8 @@ bully_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2468
-  mio0: 0x132C60
+  offset: 0x132C60
+  mio0: 0x2468
   format: RGBA16
   symbol: bully_seg5_texture_05002468
 bully_horn:
@@ -12,8 +12,8 @@ bully_horn:
   size: 512
   width: 16
   height: 16
-  offset: 0xE0
-  mio0: 0x132C60
+  offset: 0x132C60
+  mio0: 0xE0
   format: RGBA16
   symbol: bully_seg5_texture_050000E0
 bully_left_side:
@@ -21,8 +21,8 @@ bully_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x468
-  mio0: 0x132C60
+  offset: 0x132C60
+  mio0: 0x468
   format: RGBA16
   symbol: bully_seg5_texture_05000468
 bully_right_side:
@@ -30,7 +30,7 @@ bully_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1468
-  mio0: 0x132C60
+  offset: 0x132C60
+  mio0: 0x1468
   format: RGBA16
   symbol: bully_seg5_texture_05001468

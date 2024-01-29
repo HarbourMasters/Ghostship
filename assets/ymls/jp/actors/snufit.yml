@@ -3,8 +3,8 @@ snufit_body:
   size: 2048
   width: 32
   height: 32
-  offset: 0x70E0
-  mio0: 0x1E6210
+  offset: 0x1E6210
+  mio0: 0x70E0
   format: RGBA16
   symbol: snufit_seg6_texture_060070E0
 snufit_eye:
@@ -12,8 +12,8 @@ snufit_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x78E0
-  mio0: 0x1E6210
+  offset: 0x1E6210
+  mio0: 0x78E0
   format: RGBA16
   symbol: snufit_seg6_texture_060078E0
 snufit_mask_strap:
@@ -21,8 +21,8 @@ snufit_mask_strap:
   size: 1024
   width: 16
   height: 32
-  offset: 0x80E0
-  mio0: 0x1E6210
+  offset: 0x1E6210
+  mio0: 0x80E0
   format: RGBA16
   symbol: snufit_seg6_texture_060080E0
 snufit_mouth:
@@ -30,7 +30,7 @@ snufit_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x84E0
-  mio0: 0x1E6210
+  offset: 0x1E6210
+  mio0: 0x84E0
   format: RGBA16
   symbol: snufit_seg6_texture_060084E0

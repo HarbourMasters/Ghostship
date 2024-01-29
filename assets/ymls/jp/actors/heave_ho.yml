@@ -3,8 +3,8 @@ heave-ho_arm_ornament:
   size: 2048
   width: 32
   height: 32
-  offset: 0x109C8
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0x109C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050109C8
 heave-ho_face:
@@ -12,8 +12,8 @@ heave-ho_face:
   size: 2048
   width: 32
   height: 32
-  offset: 0xE9C8
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0xE9C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_0500E9C8
 heave-ho_logo:
@@ -21,8 +21,8 @@ heave-ho_logo:
   size: 4096
   width: 64
   height: 32
-  offset: 0xF9C8
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0xF9C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_0500F9C8
 heave-ho_platform:
@@ -30,8 +30,8 @@ heave-ho_platform:
   size: 2048
   width: 32
   height: 32
-  offset: 0xF1C8
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0xF1C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_0500F1C8
 heave-ho_roller:
@@ -39,8 +39,8 @@ heave-ho_roller:
   size: 512
   width: 16
   height: 16
-  offset: 0x111C8
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0x111C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050111C8
 heave-ho_turnkey:
@@ -48,7 +48,7 @@ heave-ho_turnkey:
   size: 2048
   width: 32
   height: 32
-  offset: 0x113C8
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0x113C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050113C8

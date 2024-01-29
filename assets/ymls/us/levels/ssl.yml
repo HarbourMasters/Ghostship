@@ -1,108 +1,108 @@
-ssl_0:
+0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x0
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0x0
   format: RGBA16
   symbol: ssl_seg7_texture_07000000
-ssl_1:
+1:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x800
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0x800
   format: IA16
   symbol: ssl_seg7_texture_07000800
-ssl_10:
+10:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0xD7A8
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0xD7A8
   format: RGBA16
   symbol: ssl_seg7_texture_0700D7A8
-ssl_11:
+11:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0xE7A8
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0xE7A8
   format: RGBA16
   symbol: ssl_seg7_texture_0700E7A8
-ssl_2:
+2:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1000
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0x1000
   format: RGBA16
   symbol: ssl_pyramid_sand
-ssl_3:
+3:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1800
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0x1800
   format: RGBA16
   symbol: ssl_seg7_texture_07001800
-ssl_4:
+4:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x2000
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0x2000
   format: RGBA16
   symbol: ssl_seg7_texture_07002000
-ssl_5:
+5:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x2800
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0x2800
   format: RGBA16
   symbol: ssl_seg7_texture_07002800
-ssl_6:
+6:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x3800
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0x3800
   format: RGBA16
   symbol: ssl_seg7_texture_07003800
-ssl_7:
+7:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x8000
-  mio0: 0x32D070
+  offset: 0x32D070
+  mio0: 0x8000
   format: RGBA16
   symbol: ssl_quicksand
-ssl_8:
+8:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0xBFA8
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0xBFA8
   format: RGBA16
   symbol: ssl_seg7_texture_0700BFA8
-ssl_9:
+9:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0xC7A8
-  mio0: 0x3E76B0
+  offset: 0x3E76B0
+  mio0: 0xC7A8
   format: RGBA16
   symbol: ssl_seg7_texture_0700C7A8

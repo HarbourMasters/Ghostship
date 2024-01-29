@@ -3,8 +3,8 @@ bubble:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1CD60
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x1CD60
   format: RGBA16
   symbol: bubble_seg4_texture_0401CD60
 mr_i_bubble:
@@ -12,7 +12,7 @@ mr_i_bubble:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1D560
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x1D560
   format: RGBA16
   symbol: bubble_seg4_texture_0401D560

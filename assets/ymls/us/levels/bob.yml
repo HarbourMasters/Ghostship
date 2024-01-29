@@ -1,45 +1,45 @@
-bob_0:
+0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x0
-  mio0: 0x3FC2B0
+  offset: 0x3FC2B0
+  mio0: 0x0
   format: RGBA16
   symbol: bob_seg7_texture_07000000
-bob_1:
+1:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x800
-  mio0: 0x3FC2B0
+  offset: 0x3FC2B0
+  mio0: 0x800
   format: RGBA16
   symbol: bob_seg7_texture_07000800
-bob_2:
+2:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1000
-  mio0: 0x3FC2B0
+  offset: 0x3FC2B0
+  mio0: 0x1000
   format: RGBA16
   symbol: bob_seg7_texture_07001000
-bob_3:
+3:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1800
-  mio0: 0x3FC2B0
+  offset: 0x3FC2B0
+  mio0: 0x1800
   format: RGBA16
   symbol: bob_seg7_texture_07001800
-bob_4:
+4:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x2000
-  mio0: 0x3FC2B0
+  offset: 0x3FC2B0
+  mio0: 0x2000
   format: RGBA16
   symbol: bob_seg7_texture_07002000

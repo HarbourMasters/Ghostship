@@ -3,8 +3,8 @@ font_graphics.05900:
   size: 64
   width: 16
   height: 8
-  offset: 0x5900
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5900
   format: IA4
   symbol: texture_font_char_us_0
 font_graphics.05940:
@@ -12,8 +12,8 @@ font_graphics.05940:
   size: 64
   width: 16
   height: 8
-  offset: 0x5940
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5940
   format: IA4
   symbol: texture_font_char_us_1
 font_graphics.05980:
@@ -21,8 +21,8 @@ font_graphics.05980:
   size: 64
   width: 16
   height: 8
-  offset: 0x5980
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5980
   format: IA4
   symbol: texture_font_char_us_2
 font_graphics.059C0:
@@ -30,8 +30,8 @@ font_graphics.059C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x59C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x59C0
   format: IA4
   symbol: texture_font_char_us_3
 font_graphics.05A00:
@@ -39,8 +39,8 @@ font_graphics.05A00:
   size: 64
   width: 16
   height: 8
-  offset: 0x5A00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5A00
   format: IA4
   symbol: texture_font_char_us_4
 font_graphics.05A40:
@@ -48,8 +48,8 @@ font_graphics.05A40:
   size: 64
   width: 16
   height: 8
-  offset: 0x5A40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5A40
   format: IA4
   symbol: texture_font_char_us_5
 font_graphics.05A80:
@@ -57,8 +57,8 @@ font_graphics.05A80:
   size: 64
   width: 16
   height: 8
-  offset: 0x5A80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5A80
   format: IA4
   symbol: texture_font_char_us_6
 font_graphics.05AC0:
@@ -66,8 +66,8 @@ font_graphics.05AC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x5AC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5AC0
   format: IA4
   symbol: texture_font_char_us_7
 font_graphics.05B00:
@@ -75,8 +75,8 @@ font_graphics.05B00:
   size: 64
   width: 16
   height: 8
-  offset: 0x5B00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5B00
   format: IA4
   symbol: texture_font_char_us_8
 font_graphics.05B40:
@@ -84,8 +84,8 @@ font_graphics.05B40:
   size: 64
   width: 16
   height: 8
-  offset: 0x5B40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5B40
   format: IA4
   symbol: texture_font_char_us_9
 font_graphics.05B80:
@@ -93,8 +93,8 @@ font_graphics.05B80:
   size: 64
   width: 16
   height: 8
-  offset: 0x5B80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5B80
   format: IA4
   symbol: texture_font_char_us_A
 font_graphics.05BC0:
@@ -102,8 +102,8 @@ font_graphics.05BC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x5BC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5BC0
   format: IA4
   symbol: texture_font_char_us_B
 font_graphics.05C00:
@@ -111,8 +111,8 @@ font_graphics.05C00:
   size: 64
   width: 16
   height: 8
-  offset: 0x5C00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5C00
   format: IA4
   symbol: texture_font_char_us_C
 font_graphics.05C40:
@@ -120,8 +120,8 @@ font_graphics.05C40:
   size: 64
   width: 16
   height: 8
-  offset: 0x5C40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5C40
   format: IA4
   symbol: texture_font_char_us_D
 font_graphics.05C80:
@@ -129,8 +129,8 @@ font_graphics.05C80:
   size: 64
   width: 16
   height: 8
-  offset: 0x5C80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5C80
   format: IA4
   symbol: texture_font_char_us_E
 font_graphics.05CC0:
@@ -138,8 +138,8 @@ font_graphics.05CC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x5CC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5CC0
   format: IA4
   symbol: texture_font_char_us_F
 font_graphics.05D00:
@@ -147,8 +147,8 @@ font_graphics.05D00:
   size: 64
   width: 16
   height: 8
-  offset: 0x5D00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5D00
   format: IA4
   symbol: texture_font_char_us_G
 font_graphics.05D40:
@@ -156,8 +156,8 @@ font_graphics.05D40:
   size: 64
   width: 16
   height: 8
-  offset: 0x5D40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5D40
   format: IA4
   symbol: texture_font_char_us_H
 font_graphics.05D80:
@@ -165,8 +165,8 @@ font_graphics.05D80:
   size: 64
   width: 16
   height: 8
-  offset: 0x5D80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5D80
   format: IA4
   symbol: texture_font_char_us_I
 font_graphics.05DC0:
@@ -174,8 +174,8 @@ font_graphics.05DC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x5DC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5DC0
   format: IA4
   symbol: texture_font_char_us_J
 font_graphics.05E00:
@@ -183,8 +183,8 @@ font_graphics.05E00:
   size: 64
   width: 16
   height: 8
-  offset: 0x5E00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5E00
   format: IA4
   symbol: texture_font_char_us_K
 font_graphics.05E40:
@@ -192,8 +192,8 @@ font_graphics.05E40:
   size: 64
   width: 16
   height: 8
-  offset: 0x5E40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5E40
   format: IA4
   symbol: texture_font_char_us_L
 font_graphics.05E80:
@@ -201,8 +201,8 @@ font_graphics.05E80:
   size: 64
   width: 16
   height: 8
-  offset: 0x5E80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5E80
   format: IA4
   symbol: texture_font_char_us_M
 font_graphics.05EC0:
@@ -210,8 +210,8 @@ font_graphics.05EC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x5EC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5EC0
   format: IA4
   symbol: texture_font_char_us_N
 font_graphics.05F00:
@@ -219,8 +219,8 @@ font_graphics.05F00:
   size: 64
   width: 16
   height: 8
-  offset: 0x5F00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5F00
   format: IA4
   symbol: texture_font_char_eu_0
 font_graphics.05F40:
@@ -228,8 +228,8 @@ font_graphics.05F40:
   size: 64
   width: 16
   height: 8
-  offset: 0x5F40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5F40
   format: IA4
   symbol: texture_font_char_eu_4
 font_graphics.05F80:
@@ -237,8 +237,8 @@ font_graphics.05F80:
   size: 64
   width: 16
   height: 8
-  offset: 0x5F80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5F80
   format: IA4
   symbol: texture_font_char_eu_8
 font_graphics.05FC0:
@@ -246,8 +246,8 @@ font_graphics.05FC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x5FC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5FC0
   format: IA4
   symbol: texture_font_char_eu_C
 font_graphics.06000:
@@ -255,8 +255,8 @@ font_graphics.06000:
   size: 64
   width: 16
   height: 8
-  offset: 0x6000
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6000
   format: IA4
   symbol: texture_font_char_eu_G
 font_graphics.06040:
@@ -264,8 +264,8 @@ font_graphics.06040:
   size: 64
   width: 16
   height: 8
-  offset: 0x6040
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6040
   format: IA4
   symbol: texture_font_char_eu_K
 font_graphics.06080:
@@ -273,8 +273,8 @@ font_graphics.06080:
   size: 64
   width: 16
   height: 8
-  offset: 0x6080
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6080
   format: IA4
   symbol: texture_font_char_eu_O
 font_graphics.060C0:
@@ -282,8 +282,8 @@ font_graphics.060C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x60C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x60C0
   format: IA4
   symbol: texture_font_char_eu_S
 font_graphics.06100:
@@ -291,8 +291,8 @@ font_graphics.06100:
   size: 64
   width: 16
   height: 8
-  offset: 0x6100
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6100
   format: IA4
   symbol: texture_font_char_eu_W
 font_graphics.06140:
@@ -300,8 +300,8 @@ font_graphics.06140:
   size: 64
   width: 16
   height: 8
-  offset: 0x6140
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6140
   format: IA4
   symbol: texture_font_char_eu_a
 font_graphics.06180:
@@ -309,8 +309,8 @@ font_graphics.06180:
   size: 64
   width: 16
   height: 8
-  offset: 0x6180
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6180
   format: IA4
   symbol: texture_font_char_eu_e
 font_graphics.061C0:
@@ -318,8 +318,8 @@ font_graphics.061C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x61C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x61C0
   format: IA4
   symbol: texture_font_char_eu_i
 font_graphics.06200:
@@ -327,8 +327,8 @@ font_graphics.06200:
   size: 64
   width: 16
   height: 8
-  offset: 0x6200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6200
   format: IA4
   symbol: texture_font_char_eu_m
 font_graphics.06240:
@@ -336,8 +336,8 @@ font_graphics.06240:
   size: 64
   width: 16
   height: 8
-  offset: 0x6240
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6240
   format: IA4
   symbol: texture_font_char_eu_q
 font_graphics.06280:
@@ -345,8 +345,8 @@ font_graphics.06280:
   size: 64
   width: 16
   height: 8
-  offset: 0x6280
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6280
   format: IA4
   symbol: texture_font_char_eu_u
 font_graphics.062C0:
@@ -354,8 +354,8 @@ font_graphics.062C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x62C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x62C0
   format: IA4
   symbol: texture_font_char_eu_y
 font_graphics.06300:
@@ -363,8 +363,8 @@ font_graphics.06300:
   size: 64
   width: 16
   height: 8
-  offset: 0x6300
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6300
   format: IA4
   symbol: texture_font_char_eu_exclamation
 font_graphics.06340:
@@ -372,8 +372,8 @@ font_graphics.06340:
   size: 64
   width: 16
   height: 8
-  offset: 0x6340
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6340
   format: IA4
   symbol: texture_font_char_eu_close_open_parentheses
 font_graphics.06380:
@@ -381,8 +381,8 @@ font_graphics.06380:
   size: 64
   width: 16
   height: 8
-  offset: 0x6380
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6380
   format: IA4
   symbol: texture_font_char_eu_percent
 font_graphics.063C0:
@@ -390,8 +390,8 @@ font_graphics.063C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x63C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x63C0
   format: IA4
   symbol: texture_font_char_eu_question
 font_graphics.06400:
@@ -399,8 +399,8 @@ font_graphics.06400:
   size: 64
   width: 16
   height: 8
-  offset: 0x6400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6400
   format: IA4
   symbol: texture_font_char_eu_double_quote_close
 font_graphics.06410:
@@ -408,8 +408,8 @@ font_graphics.06410:
   size: 16
   width: 16
   height: 8
-  offset: 0x14676
-  mio0: 0x188440
+  offset: 0x188440
+  mio0: 0x14676
   format: IA1
   symbol: texture_font_char_eu_colon
 font_graphics.06420:
@@ -417,8 +417,8 @@ font_graphics.06420:
   size: 16
   width: 16
   height: 8
-  offset: 0x20B5B
-  mio0: 0x1C4230
+  offset: 0x1C4230
+  mio0: 0x20B5B
   format: IA1
   symbol: texture_font_char_EU_slash
 font_graphics.06440:
@@ -426,8 +426,8 @@ font_graphics.06440:
   size: 64
   width: 16
   height: 8
-  offset: 0x6440
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6440
   format: IA4
   symbol: texture_font_char_eu_button_B
 font_graphics.06480:
@@ -435,8 +435,8 @@ font_graphics.06480:
   size: 64
   width: 16
   height: 8
-  offset: 0x6480
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6480
   format: IA4
   symbol: texture_font_char_eu_button_C_up
 font_graphics.064C0:
@@ -444,8 +444,8 @@ font_graphics.064C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x64C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x64C0
   format: IA4
   symbol: texture_font_char_eu_umlaut
 font_graphics.06500:
@@ -453,8 +453,8 @@ font_graphics.06500:
   size: 64
   width: 16
   height: 8
-  offset: 0x6500
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6500
   format: IA4
   symbol: texture_font_char_eu_cedilla
 font_graphics.06540:
@@ -462,8 +462,8 @@ font_graphics.06540:
   size: 64
   width: 16
   height: 8
-  offset: 0x6540
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6540
   format: IA4
   symbol: texture_font_char_us_n
 font_graphics.06580:
@@ -471,8 +471,8 @@ font_graphics.06580:
   size: 64
   width: 16
   height: 8
-  offset: 0x6580
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6580
   format: IA4
   symbol: texture_font_char_us_o
 font_graphics.065C0:
@@ -480,8 +480,8 @@ font_graphics.065C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x65C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x65C0
   format: IA4
   symbol: texture_font_char_us_p
 font_graphics.06600:
@@ -489,8 +489,8 @@ font_graphics.06600:
   size: 64
   width: 16
   height: 8
-  offset: 0x6600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6600
   format: IA4
   symbol: texture_font_char_us_q
 font_graphics.06640:
@@ -498,8 +498,8 @@ font_graphics.06640:
   size: 64
   width: 16
   height: 8
-  offset: 0x6640
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6640
   format: IA4
   symbol: texture_font_char_us_r
 font_graphics.06680:
@@ -507,8 +507,8 @@ font_graphics.06680:
   size: 64
   width: 16
   height: 8
-  offset: 0x6680
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6680
   format: IA4
   symbol: texture_font_char_us_s
 font_graphics.066C0:
@@ -516,8 +516,8 @@ font_graphics.066C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x66C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x66C0
   format: IA4
   symbol: texture_font_char_us_t
 font_graphics.06700:
@@ -525,8 +525,8 @@ font_graphics.06700:
   size: 64
   width: 16
   height: 8
-  offset: 0x6700
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6700
   format: IA4
   symbol: texture_font_char_us_u
 font_graphics.06740:
@@ -534,8 +534,8 @@ font_graphics.06740:
   size: 64
   width: 16
   height: 8
-  offset: 0x6740
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6740
   format: IA4
   symbol: texture_font_char_us_v
 font_graphics.06780:
@@ -543,8 +543,8 @@ font_graphics.06780:
   size: 64
   width: 16
   height: 8
-  offset: 0x6780
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6780
   format: IA4
   symbol: texture_font_char_us_w
 font_graphics.067C0:
@@ -552,8 +552,8 @@ font_graphics.067C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x67C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x67C0
   format: IA4
   symbol: texture_font_char_us_x
 font_graphics.06800:
@@ -561,8 +561,8 @@ font_graphics.06800:
   size: 64
   width: 16
   height: 8
-  offset: 0x6800
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6800
   format: IA4
   symbol: texture_font_char_us_y
 font_graphics.06840:
@@ -570,8 +570,8 @@ font_graphics.06840:
   size: 64
   width: 16
   height: 8
-  offset: 0x6840
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6840
   format: IA4
   symbol: texture_font_char_us_z
 font_graphics.06880:
@@ -579,8 +579,8 @@ font_graphics.06880:
   size: 64
   width: 16
   height: 8
-  offset: 0x6880
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6880
   format: IA4
   symbol: texture_font_char_us_left_right_arrow
 font_graphics.068C0:
@@ -588,8 +588,8 @@ font_graphics.068C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x68C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x68C0
   format: IA4
   symbol: texture_font_char_us_exclamation
 font_graphics.06900:
@@ -597,8 +597,8 @@ font_graphics.06900:
   size: 64
   width: 16
   height: 8
-  offset: 0x6900
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6900
   format: IA4
   symbol: texture_font_char_us_coin
 font_graphics.06940:
@@ -606,8 +606,8 @@ font_graphics.06940:
   size: 64
   width: 16
   height: 8
-  offset: 0x6940
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6940
   format: IA4
   symbol: texture_font_char_us_multiply
 font_graphics.06980:
@@ -615,8 +615,8 @@ font_graphics.06980:
   size: 64
   width: 16
   height: 8
-  offset: 0x6980
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6980
   format: IA4
   symbol: texture_font_char_us_open_parentheses
 font_graphics.069C0:
@@ -624,8 +624,8 @@ font_graphics.069C0:
   size: 64
   width: 16
   height: 8
-  offset: 0x69C0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x69C0
   format: IA4
   symbol: texture_font_char_us_close_open_parentheses
 font_graphics.06A00:
@@ -633,8 +633,8 @@ font_graphics.06A00:
   size: 64
   width: 16
   height: 8
-  offset: 0x6A00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6A00
   format: IA4
   symbol: texture_font_char_us_close_parentheses
 font_graphics.06A40:
@@ -642,8 +642,8 @@ font_graphics.06A40:
   size: 64
   width: 16
   height: 8
-  offset: 0x6A40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6A40
   format: IA4
   symbol: texture_font_char_us_tilde
 font_graphics.06A80:
@@ -651,8 +651,8 @@ font_graphics.06A80:
   size: 64
   width: 16
   height: 8
-  offset: 0x6A80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6A80
   format: IA4
   symbol: texture_font_char_us_period
 font_graphics.06AC0:
@@ -660,8 +660,8 @@ font_graphics.06AC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x6AC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6AC0
   format: IA4
   symbol: texture_font_char_us_percent
 font_graphics.06B00:
@@ -669,8 +669,8 @@ font_graphics.06B00:
   size: 64
   width: 16
   height: 8
-  offset: 0x6B00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6B00
   format: IA4
   symbol: texture_font_char_us_interpunct
 font_graphics.06B40:
@@ -678,8 +678,8 @@ font_graphics.06B40:
   size: 64
   width: 16
   height: 8
-  offset: 0x6B40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6B40
   format: IA4
   symbol: texture_font_char_us_comma
 font_graphics.06B80:
@@ -687,8 +687,8 @@ font_graphics.06B80:
   size: 64
   width: 16
   height: 8
-  offset: 0x6B80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6B80
   format: IA4
   symbol: texture_font_char_us_apostrophe
 font_graphics.06BC0:
@@ -696,8 +696,8 @@ font_graphics.06BC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x6BC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6BC0
   format: IA4
   symbol: texture_font_char_us_question
 font_graphics.06C00:
@@ -705,8 +705,8 @@ font_graphics.06C00:
   size: 64
   width: 16
   height: 8
-  offset: 0x6C00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6C00
   format: IA4
   symbol: texture_font_char_us_star_filled
 font_graphics.06C40:
@@ -714,8 +714,8 @@ font_graphics.06C40:
   size: 64
   width: 16
   height: 8
-  offset: 0x6C40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6C40
   format: IA4
   symbol: texture_font_char_us_star_hollow
 font_graphics.06C80:
@@ -723,8 +723,8 @@ font_graphics.06C80:
   size: 64
   width: 16
   height: 8
-  offset: 0x6C80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6C80
   format: IA4
   symbol: texture_font_char_us_double_quote_open
 font_graphics.06CC0:
@@ -732,8 +732,8 @@ font_graphics.06CC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x6CC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6CC0
   format: IA4
   symbol: texture_font_char_us_double_quote_close
 font_graphics.06D00:
@@ -741,8 +741,8 @@ font_graphics.06D00:
   size: 64
   width: 16
   height: 8
-  offset: 0x6D00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6D00
   format: IA4
   symbol: texture_font_char_us_ellipsis
 font_graphics.06D40:
@@ -750,8 +750,8 @@ font_graphics.06D40:
   size: 64
   width: 16
   height: 8
-  offset: 0x6D40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6D40
   format: IA4
   symbol: texture_font_char_us_slash
 font_graphics.06D80:
@@ -759,8 +759,8 @@ font_graphics.06D80:
   size: 64
   width: 16
   height: 8
-  offset: 0x6D80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6D80
   format: IA4
   symbol: texture_font_char_us_ampersand
 font_graphics.06DC0:
@@ -768,8 +768,8 @@ font_graphics.06DC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x6DC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6DC0
   format: IA4
   symbol: texture_font_char_us_button_A
 font_graphics.06E00:
@@ -777,8 +777,8 @@ font_graphics.06E00:
   size: 64
   width: 16
   height: 8
-  offset: 0x6E00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6E00
   format: IA4
   symbol: texture_font_char_us_button_B
 font_graphics.06E40:
@@ -786,8 +786,8 @@ font_graphics.06E40:
   size: 64
   width: 16
   height: 8
-  offset: 0x6E40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6E40
   format: IA4
   symbol: texture_font_char_us_button_C
 font_graphics.06E80:
@@ -795,8 +795,8 @@ font_graphics.06E80:
   size: 64
   width: 16
   height: 8
-  offset: 0x6E80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6E80
   format: IA4
   symbol: texture_font_char_us_button_Z
 font_graphics.06EC0:
@@ -804,8 +804,8 @@ font_graphics.06EC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x6EC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6EC0
   format: IA4
   symbol: texture_font_char_us_button_R
 font_graphics.06F00:
@@ -813,8 +813,8 @@ font_graphics.06F00:
   size: 64
   width: 16
   height: 8
-  offset: 0x6F00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6F00
   format: IA4
   symbol: texture_font_char_us_button_C_up
 font_graphics.06F40:
@@ -822,8 +822,8 @@ font_graphics.06F40:
   size: 64
   width: 16
   height: 8
-  offset: 0x6F40
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6F40
   format: IA4
   symbol: texture_font_char_us_button_C_down
 font_graphics.06F80:
@@ -831,8 +831,8 @@ font_graphics.06F80:
   size: 64
   width: 16
   height: 8
-  offset: 0x6F80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6F80
   format: IA4
   symbol: texture_font_char_us_button_C_left
 font_graphics.06FC0:
@@ -840,8 +840,8 @@ font_graphics.06FC0:
   size: 64
   width: 16
   height: 8
-  offset: 0x6FC0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x6FC0
   format: IA4
   symbol: texture_font_char_us_button_C_right
 segment2.00000:
@@ -849,8 +849,8 @@ segment2.00000:
   size: 512
   width: 16
   height: 16
-  offset: 0x0
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x0
   format: RGBA16
   symbol: texture_hud_char_0
 segment2.00200:
@@ -858,8 +858,8 @@ segment2.00200:
   size: 512
   width: 16
   height: 16
-  offset: 0x200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x200
   format: RGBA16
   symbol: texture_hud_char_1
 segment2.00400:
@@ -867,8 +867,8 @@ segment2.00400:
   size: 512
   width: 16
   height: 16
-  offset: 0x400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x400
   format: RGBA16
   symbol: texture_hud_char_2
 segment2.00600:
@@ -876,8 +876,8 @@ segment2.00600:
   size: 512
   width: 16
   height: 16
-  offset: 0x600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x600
   format: RGBA16
   symbol: texture_hud_char_3
 segment2.00800:
@@ -885,8 +885,8 @@ segment2.00800:
   size: 512
   width: 16
   height: 16
-  offset: 0x800
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x800
   format: RGBA16
   symbol: texture_hud_char_4
 segment2.00A00:
@@ -894,8 +894,8 @@ segment2.00A00:
   size: 512
   width: 16
   height: 16
-  offset: 0xA00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0xA00
   format: RGBA16
   symbol: texture_hud_char_5
 segment2.00C00:
@@ -903,8 +903,8 @@ segment2.00C00:
   size: 512
   width: 16
   height: 16
-  offset: 0xC00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0xC00
   format: RGBA16
   symbol: texture_hud_char_6
 segment2.00E00:
@@ -912,8 +912,8 @@ segment2.00E00:
   size: 512
   width: 16
   height: 16
-  offset: 0xE00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0xE00
   format: RGBA16
   symbol: texture_hud_char_7
 segment2.01000:
@@ -921,8 +921,8 @@ segment2.01000:
   size: 512
   width: 16
   height: 16
-  offset: 0x1000
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1000
   format: RGBA16
   symbol: texture_hud_char_8
 segment2.01200:
@@ -930,8 +930,8 @@ segment2.01200:
   size: 512
   width: 16
   height: 16
-  offset: 0x1200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1200
   format: RGBA16
   symbol: texture_hud_char_9
 segment2.01400:
@@ -939,8 +939,8 @@ segment2.01400:
   size: 512
   width: 16
   height: 16
-  offset: 0x1400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1400
   format: RGBA16
   symbol: texture_hud_char_A
 segment2.01600:
@@ -948,8 +948,8 @@ segment2.01600:
   size: 512
   width: 16
   height: 16
-  offset: 0x1600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1600
   format: RGBA16
   symbol: texture_hud_char_B
 segment2.01800:
@@ -957,8 +957,8 @@ segment2.01800:
   size: 512
   width: 16
   height: 16
-  offset: 0x1800
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1800
   format: RGBA16
   symbol: texture_hud_char_C
 segment2.01A00:
@@ -966,8 +966,8 @@ segment2.01A00:
   size: 512
   width: 16
   height: 16
-  offset: 0x1A00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1A00
   format: RGBA16
   symbol: texture_hud_char_D
 segment2.01C00:
@@ -975,8 +975,8 @@ segment2.01C00:
   size: 512
   width: 16
   height: 16
-  offset: 0x1C00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1C00
   format: RGBA16
   symbol: texture_hud_char_E
 segment2.01E00:
@@ -984,8 +984,8 @@ segment2.01E00:
   size: 512
   width: 16
   height: 16
-  offset: 0x1E00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x1E00
   format: RGBA16
   symbol: texture_hud_char_F
 segment2.02000:
@@ -993,8 +993,8 @@ segment2.02000:
   size: 512
   width: 16
   height: 16
-  offset: 0x2000
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2000
   format: RGBA16
   symbol: texture_hud_char_G
 segment2.02200:
@@ -1002,8 +1002,8 @@ segment2.02200:
   size: 512
   width: 16
   height: 16
-  offset: 0x2200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2200
   format: RGBA16
   symbol: texture_hud_char_H
 segment2.02400:
@@ -1011,8 +1011,8 @@ segment2.02400:
   size: 512
   width: 16
   height: 16
-  offset: 0x2400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2400
   format: RGBA16
   symbol: texture_hud_char_I
 segment2.02800:
@@ -1020,8 +1020,8 @@ segment2.02800:
   size: 512
   width: 16
   height: 16
-  offset: 0x2600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2600
   format: RGBA16
   symbol: texture_hud_char_K
 segment2.02A00:
@@ -1029,8 +1029,8 @@ segment2.02A00:
   size: 512
   width: 16
   height: 16
-  offset: 0x2800
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2800
   format: RGBA16
   symbol: texture_hud_char_L
 segment2.02C00:
@@ -1038,8 +1038,8 @@ segment2.02C00:
   size: 512
   width: 16
   height: 16
-  offset: 0x2A00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2A00
   format: RGBA16
   symbol: texture_hud_char_M
 segment2.02E00:
@@ -1047,8 +1047,8 @@ segment2.02E00:
   size: 512
   width: 16
   height: 16
-  offset: 0x2C00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2C00
   format: RGBA16
   symbol: texture_hud_char_N
 segment2.03000:
@@ -1056,8 +1056,8 @@ segment2.03000:
   size: 512
   width: 16
   height: 16
-  offset: 0x2E00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x2E00
   format: RGBA16
   symbol: texture_hud_char_O
 segment2.03200:
@@ -1065,8 +1065,8 @@ segment2.03200:
   size: 512
   width: 16
   height: 16
-  offset: 0x3000
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3000
   format: RGBA16
   symbol: texture_hud_char_P
 segment2.03600:
@@ -1074,8 +1074,8 @@ segment2.03600:
   size: 512
   width: 16
   height: 16
-  offset: 0x3200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3200
   format: RGBA16
   symbol: texture_hud_char_R
 segment2.03800:
@@ -1083,8 +1083,8 @@ segment2.03800:
   size: 512
   width: 16
   height: 16
-  offset: 0x3400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3400
   format: RGBA16
   symbol: texture_hud_char_S
 segment2.03A00:
@@ -1092,8 +1092,8 @@ segment2.03A00:
   size: 512
   width: 16
   height: 16
-  offset: 0x3600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3600
   format: RGBA16
   symbol: texture_hud_char_T
 segment2.03C00:
@@ -1101,8 +1101,8 @@ segment2.03C00:
   size: 512
   width: 16
   height: 16
-  offset: 0x3800
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3800
   format: RGBA16
   symbol: texture_hud_char_U
 segment2.04000:
@@ -1110,8 +1110,8 @@ segment2.04000:
   size: 512
   width: 16
   height: 16
-  offset: 0x3A00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3A00
   format: RGBA16
   symbol: texture_hud_char_W
 segment2.04400:
@@ -1119,8 +1119,8 @@ segment2.04400:
   size: 512
   width: 16
   height: 16
-  offset: 0x3C00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3C00
   format: RGBA16
   symbol: texture_hud_char_Y
 segment2.04800:
@@ -1128,8 +1128,8 @@ segment2.04800:
   size: 512
   width: 16
   height: 16
-  offset: 0x3E00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x3E00
   format: RGBA16
   symbol: texture_hud_char_apostrophe
 segment2.04A00:
@@ -1137,8 +1137,8 @@ segment2.04A00:
   size: 512
   width: 16
   height: 16
-  offset: 0x4000
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4000
   format: RGBA16
   symbol: texture_hud_char_double_quote
 segment2.05000:
@@ -1146,8 +1146,8 @@ segment2.05000:
   size: 512
   width: 16
   height: 16
-  offset: 0xA1D0
-  mio0: 0x2A65B0
+  offset: 0x2A65B0
+  mio0: 0xA1D0
   format: RGBA16
   symbol: texture_hud_char_question
 segment2.05600:
@@ -1155,8 +1155,8 @@ segment2.05600:
   size: 512
   width: 16
   height: 16
-  offset: 0x4200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4200
   format: RGBA16
   symbol: texture_hud_char_multiply
 segment2.05800:
@@ -1164,8 +1164,8 @@ segment2.05800:
   size: 512
   width: 16
   height: 16
-  offset: 0x4400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4400
   format: RGBA16
   symbol: texture_hud_char_coin
 segment2.05A00:
@@ -1173,8 +1173,8 @@ segment2.05A00:
   size: 512
   width: 16
   height: 16
-  offset: 0x4600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4600
   format: RGBA16
   symbol: texture_hud_char_mario_head
 segment2.05C00:
@@ -1182,8 +1182,8 @@ segment2.05C00:
   size: 512
   width: 16
   height: 16
-  offset: 0x4800
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4800
   format: RGBA16
   symbol: texture_hud_char_star
 segment2.06200:
@@ -1191,8 +1191,8 @@ segment2.06200:
   size: 128
   width: 8
   height: 8
-  offset: 0x4A00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4A00
   format: RGBA16
   symbol: texture_credits_char_3
 segment2.06280:
@@ -1200,8 +1200,8 @@ segment2.06280:
   size: 128
   width: 8
   height: 8
-  offset: 0x4A80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4A80
   format: RGBA16
   symbol: texture_credits_char_4
 segment2.06300:
@@ -1209,8 +1209,8 @@ segment2.06300:
   size: 128
   width: 8
   height: 8
-  offset: 0x4B00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4B00
   format: RGBA16
   symbol: texture_credits_char_6
 segment2.06380:
@@ -1218,8 +1218,8 @@ segment2.06380:
   size: 128
   width: 8
   height: 8
-  offset: 0x4B80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4B80
   format: RGBA16
   symbol: texture_credits_char_A
 segment2.06400:
@@ -1227,8 +1227,8 @@ segment2.06400:
   size: 128
   width: 8
   height: 8
-  offset: 0x4C00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4C00
   format: RGBA16
   symbol: texture_credits_char_B
 segment2.06480:
@@ -1236,8 +1236,8 @@ segment2.06480:
   size: 128
   width: 8
   height: 8
-  offset: 0x4C80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4C80
   format: RGBA16
   symbol: texture_credits_char_C
 segment2.06500:
@@ -1245,8 +1245,8 @@ segment2.06500:
   size: 128
   width: 8
   height: 8
-  offset: 0x4D00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4D00
   format: RGBA16
   symbol: texture_credits_char_D
 segment2.06580:
@@ -1254,8 +1254,8 @@ segment2.06580:
   size: 128
   width: 8
   height: 8
-  offset: 0x4D80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4D80
   format: RGBA16
   symbol: texture_credits_char_E
 segment2.06600:
@@ -1263,8 +1263,8 @@ segment2.06600:
   size: 128
   width: 8
   height: 8
-  offset: 0x4E00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4E00
   format: RGBA16
   symbol: texture_credits_char_F
 segment2.06680:
@@ -1272,8 +1272,8 @@ segment2.06680:
   size: 128
   width: 8
   height: 8
-  offset: 0x4E80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4E80
   format: RGBA16
   symbol: texture_credits_char_G
 segment2.06700:
@@ -1281,8 +1281,8 @@ segment2.06700:
   size: 128
   width: 8
   height: 8
-  offset: 0x4F00
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4F00
   format: RGBA16
   symbol: texture_credits_char_H
 segment2.06780:
@@ -1290,8 +1290,8 @@ segment2.06780:
   size: 128
   width: 8
   height: 8
-  offset: 0x4F80
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x4F80
   format: RGBA16
   symbol: texture_credits_char_I
 segment2.06800:
@@ -1299,8 +1299,8 @@ segment2.06800:
   size: 128
   width: 8
   height: 8
-  offset: 0x5000
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5000
   format: RGBA16
   symbol: texture_credits_char_J
 segment2.06880:
@@ -1308,8 +1308,8 @@ segment2.06880:
   size: 128
   width: 8
   height: 8
-  offset: 0x5080
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5080
   format: RGBA16
   symbol: texture_credits_char_K
 segment2.06900:
@@ -1317,8 +1317,8 @@ segment2.06900:
   size: 128
   width: 8
   height: 8
-  offset: 0x5100
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5100
   format: RGBA16
   symbol: texture_credits_char_L
 segment2.06980:
@@ -1326,8 +1326,8 @@ segment2.06980:
   size: 128
   width: 8
   height: 8
-  offset: 0x5180
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5180
   format: RGBA16
   symbol: texture_credits_char_M
 segment2.06A00:
@@ -1335,8 +1335,8 @@ segment2.06A00:
   size: 128
   width: 8
   height: 8
-  offset: 0x5200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5200
   format: RGBA16
   symbol: texture_credits_char_N
 segment2.06A80:
@@ -1344,8 +1344,8 @@ segment2.06A80:
   size: 128
   width: 8
   height: 8
-  offset: 0x5280
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5280
   format: RGBA16
   symbol: texture_credits_char_O
 segment2.06B00:
@@ -1353,8 +1353,8 @@ segment2.06B00:
   size: 128
   width: 8
   height: 8
-  offset: 0x5300
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5300
   format: RGBA16
   symbol: texture_credits_char_P
 segment2.06B80:
@@ -1362,8 +1362,8 @@ segment2.06B80:
   size: 128
   width: 8
   height: 8
-  offset: 0x5380
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5380
   format: RGBA16
   symbol: texture_credits_char_Q
 segment2.06C00:
@@ -1371,8 +1371,8 @@ segment2.06C00:
   size: 128
   width: 8
   height: 8
-  offset: 0x5400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5400
   format: RGBA16
   symbol: texture_credits_char_R
 segment2.06C80:
@@ -1380,8 +1380,8 @@ segment2.06C80:
   size: 128
   width: 8
   height: 8
-  offset: 0x5480
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5480
   format: RGBA16
   symbol: texture_credits_char_S
 segment2.06D00:
@@ -1389,8 +1389,8 @@ segment2.06D00:
   size: 128
   width: 8
   height: 8
-  offset: 0x5500
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5500
   format: RGBA16
   symbol: texture_credits_char_T
 segment2.06D80:
@@ -1398,8 +1398,8 @@ segment2.06D80:
   size: 128
   width: 8
   height: 8
-  offset: 0x5580
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5580
   format: RGBA16
   symbol: texture_credits_char_U
 segment2.06E00:
@@ -1407,8 +1407,8 @@ segment2.06E00:
   size: 128
   width: 8
   height: 8
-  offset: 0x5600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5600
   format: RGBA16
   symbol: texture_credits_char_V
 segment2.06E80:
@@ -1416,8 +1416,8 @@ segment2.06E80:
   size: 128
   width: 8
   height: 8
-  offset: 0x5680
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5680
   format: RGBA16
   symbol: texture_credits_char_W
 segment2.06F00:
@@ -1425,8 +1425,8 @@ segment2.06F00:
   size: 128
   width: 8
   height: 8
-  offset: 0x5700
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5700
   format: RGBA16
   symbol: texture_credits_char_X
 segment2.06F80:
@@ -1434,8 +1434,8 @@ segment2.06F80:
   size: 128
   width: 8
   height: 8
-  offset: 0x5780
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5780
   format: RGBA16
   symbol: texture_credits_char_Y
 segment2.07000:
@@ -1443,8 +1443,8 @@ segment2.07000:
   size: 128
   width: 8
   height: 8
-  offset: 0x5800
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5800
   format: RGBA16
   symbol: texture_credits_char_Z
 segment2.07080:
@@ -1452,8 +1452,8 @@ segment2.07080:
   size: 128
   width: 8
   height: 8
-  offset: 0x5880
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5880
   format: RGBA16
   symbol: texture_credits_char_period
 segment2.07340:
@@ -1461,8 +1461,8 @@ segment2.07340:
   size: 16
   width: 8
   height: 16
-  offset: 0x5DF2
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x5DF2
   format: IA1
   symbol: texture_font_char_jp_long_vowel
 segment2.07B50:
@@ -1470,8 +1470,8 @@ segment2.07B50:
   size: 512
   width: 16
   height: 16
-  offset: 0x7000
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x7000
   format: RGBA16
   symbol: texture_hud_char_camera
 segment2.07D50:
@@ -1479,8 +1479,8 @@ segment2.07D50:
   size: 512
   width: 16
   height: 16
-  offset: 0x7200
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x7200
   format: RGBA16
   symbol: texture_hud_char_lakitu
 segment2.07F50:
@@ -1488,8 +1488,8 @@ segment2.07F50:
   size: 512
   width: 16
   height: 16
-  offset: 0x7400
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x7400
   format: RGBA16
   symbol: texture_hud_char_no_camera
 segment2.08150:
@@ -1497,8 +1497,8 @@ segment2.08150:
   size: 128
   width: 8
   height: 8
-  offset: 0x7600
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x7600
   format: RGBA16
   symbol: texture_hud_char_arrow_up
 segment2.081D0:
@@ -1506,8 +1506,8 @@ segment2.081D0:
   size: 128
   width: 8
   height: 8
-  offset: 0x7680
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x7680
   format: RGBA16
   symbol: texture_hud_char_arrow_down
 segment2.0F458:
@@ -1515,8 +1515,8 @@ segment2.0F458:
   size: 2048
   width: 32
   height: 64
-  offset: 0x122B8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x122B8
   format: IA8
   symbol: texture_transition_star_half
 segment2.0FC58:
@@ -1524,8 +1524,8 @@ segment2.0FC58:
   size: 2048
   width: 32
   height: 64
-  offset: 0x12AB8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x12AB8
   format: IA8
   symbol: texture_transition_circle_half
 segment2.10458:
@@ -1533,8 +1533,8 @@ segment2.10458:
   size: 4096
   width: 64
   height: 64
-  offset: 0x132B8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x132B8
   format: IA8
   symbol: texture_transition_mario
 segment2.11458:
@@ -1542,8 +1542,8 @@ segment2.11458:
   size: 2048
   width: 32
   height: 64
-  offset: 0x142B8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x142B8
   format: IA8
   symbol: texture_transition_bowser_half
 segment2.11C58:
@@ -1551,8 +1551,8 @@ segment2.11C58:
   size: 2048
   width: 32
   height: 32
-  offset: 0x14AB8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x14AB8
   format: RGBA16
   symbol: texture_waterbox_water
 segment2.12458:
@@ -1560,8 +1560,8 @@ segment2.12458:
   size: 2048
   width: 32
   height: 32
-  offset: 0x152B8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x152B8
   format: RGBA16
   symbol: texture_waterbox_jrb_water
 segment2.12C58:
@@ -1569,8 +1569,8 @@ segment2.12C58:
   size: 2048
   width: 32
   height: 32
-  offset: 0x15AB8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x15AB8
   format: RGBA16
   symbol: texture_waterbox_unknown_water
 segment2.13458:
@@ -1578,8 +1578,8 @@ segment2.13458:
   size: 2048
   width: 32
   height: 32
-  offset: 0x162B8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x162B8
   format: IA16
   symbol: texture_waterbox_mist
 segment2.13C58:
@@ -1587,8 +1587,8 @@ segment2.13C58:
   size: 2048
   width: 32
   height: 32
-  offset: 0x16AB8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x16AB8
   format: RGBA16
   symbol: texture_waterbox_lava
 segment2.14838:
@@ -1596,8 +1596,8 @@ segment2.14838:
   size: 64
   width: 8
   height: 8
-  offset: 0x17698
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x17698
   format: IA8
   symbol: texture_ia8_up_arrow
 shadow_quarter_circle:
@@ -1605,8 +1605,8 @@ shadow_quarter_circle:
   size: 256
   width: 16
   height: 16
-  offset: 0x120B8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x120B8
   format: IA8
   symbol: texture_shadow_quarter_circle
 shadow_quarter_square:
@@ -1614,7 +1614,7 @@ shadow_quarter_square:
   size: 256
   width: 16
   height: 16
-  offset: 0x121B8
-  mio0: 0x108A40
+  offset: 0x108A40
+  mio0: 0x121B8
   format: IA8
   symbol: texture_shadow_quarter_square

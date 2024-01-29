@@ -3,8 +3,8 @@ stomp_smoke_0:
   size: 2048
   width: 32
   height: 32
-  offset: 0x22148
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x22148
   format: IA16
   symbol: stomp_smoke_seg4_texture_04022148
 stomp_smoke_1:
@@ -12,8 +12,8 @@ stomp_smoke_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x22948
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x22948
   format: IA16
   symbol: stomp_smoke_seg4_texture_04022948
 stomp_smoke_2:
@@ -21,8 +21,8 @@ stomp_smoke_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x23148
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x23148
   format: IA16
   symbol: stomp_smoke_seg4_texture_04023148
 stomp_smoke_3:
@@ -30,8 +30,8 @@ stomp_smoke_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x23948
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x23948
   format: IA16
   symbol: stomp_smoke_seg4_texture_04023948
 stomp_smoke_4:
@@ -39,8 +39,8 @@ stomp_smoke_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x24148
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x24148
   format: IA16
   symbol: stomp_smoke_seg4_texture_04024148
 stomp_smoke_5:
@@ -48,7 +48,7 @@ stomp_smoke_5:
   size: 2048
   width: 32
   height: 32
-  offset: 0x24948
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x24948
   format: IA16
   symbol: stomp_smoke_seg4_texture_04024948

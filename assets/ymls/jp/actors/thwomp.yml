@@ -3,8 +3,8 @@ thwomp_face:
   size: 4096
   width: 32
   height: 64
-  offset: 0x9900
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0x9900
   format: RGBA16
   symbol: thwomp_seg5_texture_05009900
 thwomp_surface:
@@ -12,7 +12,7 @@ thwomp_surface:
   size: 2048
   width: 32
   height: 32
-  offset: 0xA900
-  mio0: 0x128BE0
+  offset: 0x128BE0
+  mio0: 0xA900
   format: RGBA16
   symbol: thwomp_seg5_texture_0500A900

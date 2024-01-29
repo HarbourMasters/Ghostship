@@ -3,8 +3,8 @@ treasure_chest_front:
   size: 4096
   width: 64
   height: 32
-  offset: 0x157A8
-  mio0: 0x1B8010
+  offset: 0x1B8010
+  mio0: 0x157A8
   format: RGBA16
   symbol: treasure_chest_seg6_texture_060157A8
 treasure_chest_lock:
@@ -12,8 +12,8 @@ treasure_chest_lock:
   size: 2048
   width: 32
   height: 32
-  offset: 0x13FA8
-  mio0: 0x1B8010
+  offset: 0x1B8010
+  mio0: 0x13FA8
   format: RGBA16
   symbol: treasure_chest_seg6_texture_06013FA8
 treasure_chest_lock_top:
@@ -21,8 +21,8 @@ treasure_chest_lock_top:
   size: 2048
   width: 32
   height: 32
-  offset: 0x14FA8
-  mio0: 0x1B8010
+  offset: 0x1B8010
+  mio0: 0x14FA8
   format: RGBA16
   symbol: treasure_chest_seg6_texture_06014FA8
 treasure_chest_side:
@@ -30,7 +30,7 @@ treasure_chest_side:
   size: 2048
   width: 32
   height: 32
-  offset: 0x147A8
-  mio0: 0x1B8010
+  offset: 0x1B8010
+  mio0: 0x147A8
   format: RGBA16
   symbol: treasure_chest_seg6_texture_060147A8

@@ -3,8 +3,8 @@ warp_pipe_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x7E40
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x7E40
   format: RGBA16
   symbol: warp_pipe_seg3_texture_03007E40
 warp_pipe_top:
@@ -12,7 +12,7 @@ warp_pipe_top:
   size: 2048
   width: 32
   height: 32
-  offset: 0x9168
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x9168
   format: RGBA16
   symbol: warp_pipe_seg3_texture_03009168

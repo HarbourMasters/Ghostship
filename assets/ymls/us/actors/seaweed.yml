@@ -3,8 +3,8 @@ seaweed_base:
   size: 2048
   width: 32
   height: 32
-  offset: 0x9610
-  mio0: 0x1B9CC0
+  offset: 0x1B9CC0
+  mio0: 0x9610
   format: RGBA16
   symbol: seaweed_seg6_texture_06009610
 seaweed_lower_center:
@@ -12,8 +12,8 @@ seaweed_lower_center:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8E10
-  mio0: 0x1B9CC0
+  offset: 0x1B9CC0
+  mio0: 0x8E10
   format: RGBA16
   symbol: seaweed_seg6_texture_06008E10
 seaweed_tip:
@@ -21,8 +21,8 @@ seaweed_tip:
   size: 2048
   width: 32
   height: 32
-  offset: 0x7E10
-  mio0: 0x1B9CC0
+  offset: 0x1B9CC0
+  mio0: 0x7E10
   format: RGBA16
   symbol: seaweed_seg6_texture_06007E10
 seaweed_upper_center:
@@ -30,7 +30,7 @@ seaweed_upper_center:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8610
-  mio0: 0x1B9CC0
+  offset: 0x1B9CC0
+  mio0: 0x8610
   format: RGBA16
   symbol: seaweed_seg6_texture_06008610
