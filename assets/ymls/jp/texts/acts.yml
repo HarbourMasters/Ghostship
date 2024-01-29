@@ -1,384 +1,384 @@
 act_00:
   type: SM64:TEXT
-  offset: 0xE4C0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE4C0
 act_01:
   type: SM64:TEXT
-  offset: 0xE4D0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE4D0
 act_02:
   type: SM64:TEXT
-  offset: 0xE4E0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE4E0
 act_03:
   type: SM64:TEXT
-  offset: 0xE4F0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE4F0
 act_04:
   type: SM64:TEXT
-  offset: 0xE4FC
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE4FC
 act_05:
   type: SM64:TEXT
-  offset: 0xE50C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE50C
 act_06:
   type: SM64:TEXT
-  offset: 0xE51C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE51C
 act_07:
   type: SM64:TEXT
-  offset: 0xE52C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE52C
 act_08:
   type: SM64:TEXT
-  offset: 0xE53C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE53C
 act_09:
   type: SM64:TEXT
-  offset: 0xE54C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE54C
 act_0A:
   type: SM64:TEXT
-  offset: 0xE55C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE55C
 act_0B:
   type: SM64:TEXT
-  offset: 0xE568
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE568
 act_0C:
   type: SM64:TEXT
-  offset: 0xE578
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE578
 act_0D:
   type: SM64:TEXT
-  offset: 0xE588
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE588
 act_0E:
   type: SM64:TEXT
-  offset: 0xE598
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE598
 act_0F:
   type: SM64:TEXT
-  offset: 0xE5A8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE5A8
 act_10:
   type: SM64:TEXT
-  offset: 0xE5B8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE5B8
 act_11:
   type: SM64:TEXT
-  offset: 0xE5C8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE5C8
 act_12:
   type: SM64:TEXT
-  offset: 0xE5D8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE5D8
 act_13:
   type: SM64:TEXT
-  offset: 0xE5E8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE5E8
 act_14:
   type: SM64:TEXT
-  offset: 0xE5F8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE5F8
 act_15:
   type: SM64:TEXT
-  offset: 0xE60C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE60C
 act_16:
   type: SM64:TEXT
-  offset: 0xE61C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE61C
 act_17:
   type: SM64:TEXT
-  offset: 0xE62C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE62C
 act_18:
   type: SM64:TEXT
-  offset: 0xE640
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE640
 act_19:
   type: SM64:TEXT
-  offset: 0xE650
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE650
 act_1A:
   type: SM64:TEXT
-  offset: 0xE660
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE660
 act_1B:
   type: SM64:TEXT
-  offset: 0xE670
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE670
 act_1C:
   type: SM64:TEXT
-  offset: 0xE680
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE680
 act_1D:
   type: SM64:TEXT
-  offset: 0xE690
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE690
 act_1E:
   type: SM64:TEXT
-  offset: 0xE6A0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE6A0
 act_1F:
   type: SM64:TEXT
-  offset: 0xE6B0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE6B0
 act_20:
   type: SM64:TEXT
-  offset: 0xE6C0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE6C0
 act_21:
   type: SM64:TEXT
-  offset: 0xE6CC
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE6CC
 act_22:
   type: SM64:TEXT
-  offset: 0xE6D8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE6D8
 act_23:
   type: SM64:TEXT
-  offset: 0xE6EC
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE6EC
 act_24:
   type: SM64:TEXT
-  offset: 0xE6FC
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE6FC
 act_25:
   type: SM64:TEXT
-  offset: 0xE70C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE70C
 act_26:
   type: SM64:TEXT
-  offset: 0xE71C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE71C
 act_27:
   type: SM64:TEXT
-  offset: 0xE72C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE72C
 act_28:
   type: SM64:TEXT
-  offset: 0xE738
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE738
 act_29:
   type: SM64:TEXT
-  offset: 0xE748
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE748
 act_2A:
   type: SM64:TEXT
-  offset: 0xE758
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE758
 act_2B:
   type: SM64:TEXT
-  offset: 0xE76C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE76C
 act_2C:
   type: SM64:TEXT
-  offset: 0xE780
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE780
 act_2D:
   type: SM64:TEXT
-  offset: 0xE794
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE794
 act_2E:
   type: SM64:TEXT
-  offset: 0xE7A4
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE7A4
 act_2F:
   type: SM64:TEXT
-  offset: 0xE7B4
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE7B4
 act_30:
   type: SM64:TEXT
-  offset: 0xE7C8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE7C8
 act_31:
   type: SM64:TEXT
-  offset: 0xE7D8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE7D8
 act_32:
   type: SM64:TEXT
-  offset: 0xE7E8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE7E8
 act_33:
   type: SM64:TEXT
-  offset: 0xE7F8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE7F8
 act_34:
   type: SM64:TEXT
-  offset: 0xE808
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE808
 act_35:
   type: SM64:TEXT
-  offset: 0xE814
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE814
 act_36:
   type: SM64:TEXT
-  offset: 0xE824
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE824
 act_37:
   type: SM64:TEXT
-  offset: 0xE834
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE834
 act_38:
   type: SM64:TEXT
-  offset: 0xE844
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE844
 act_39:
   type: SM64:TEXT
-  offset: 0xE850
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE850
 act_3A:
   type: SM64:TEXT
-  offset: 0xE860
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE860
 act_3B:
   type: SM64:TEXT
-  offset: 0xE870
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE870
 act_3C:
   type: SM64:TEXT
-  offset: 0xE87C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE87C
 act_3D:
   type: SM64:TEXT
-  offset: 0xE88C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE88C
 act_3E:
   type: SM64:TEXT
-  offset: 0xE89C
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE89C
 act_3F:
   type: SM64:TEXT
-  offset: 0xE8AC
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE8AC
 act_40:
   type: SM64:TEXT
-  offset: 0xE8C0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE8C0
 act_41:
   type: SM64:TEXT
-  offset: 0xE8D0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE8D0
 act_42:
   type: SM64:TEXT
-  offset: 0xE8E0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE8E0
 act_43:
   type: SM64:TEXT
-  offset: 0xE8F0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE8F0
 act_44:
   type: SM64:TEXT
-  offset: 0xE904
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE904
 act_45:
   type: SM64:TEXT
-  offset: 0xE914
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE914
 act_46:
   type: SM64:TEXT
-  offset: 0xE924
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE924
 act_47:
   type: SM64:TEXT
-  offset: 0xE934
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE934
 act_48:
   type: SM64:TEXT
-  offset: 0xE944
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE944
 act_49:
   type: SM64:TEXT
-  offset: 0xE954
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE954
 act_4A:
   type: SM64:TEXT
-  offset: 0xE964
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE964
 act_4B:
   type: SM64:TEXT
-  offset: 0xE974
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE974
 act_4C:
   type: SM64:TEXT
-  offset: 0xE984
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE984
 act_4D:
   type: SM64:TEXT
-  offset: 0xE994
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE994
 act_4E:
   type: SM64:TEXT
-  offset: 0xE9A0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE9A0
 act_4F:
   type: SM64:TEXT
-  offset: 0xE9B0
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE9B0
 act_50:
   type: SM64:TEXT
-  offset: 0xE9B8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE9B8
 act_51:
   type: SM64:TEXT
-  offset: 0xE9C8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE9C8
 act_52:
   type: SM64:TEXT
-  offset: 0xE9DC
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE9DC
 act_53:
   type: SM64:TEXT
-  offset: 0xE9EC
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE9EC
 act_54:
   type: SM64:TEXT
-  offset: 0xE9F8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xE9F8
 act_55:
   type: SM64:TEXT
-  offset: 0xEA04
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA04
 act_56:
   type: SM64:TEXT
-  offset: 0xEA10
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA10
 act_57:
   type: SM64:TEXT
-  offset: 0xEA20
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA20
 act_58:
   type: SM64:TEXT
-  offset: 0xEA34
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA34
 act_59:
   type: SM64:TEXT
-  offset: 0xEA44
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA44
 act_5A:
   type: SM64:TEXT
-  offset: 0xEA54
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA54
 act_5B:
   type: SM64:TEXT
-  offset: 0xEA60
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA60
 act_5C:
   type: SM64:TEXT
-  offset: 0xEA70
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA70
 act_5D:
   type: SM64:TEXT
-  offset: 0xEA80
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA80
 act_5E:
   type: SM64:TEXT
-  offset: 0xEA94
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEA94
 act_5F:
   type: SM64:TEXT
-  offset: 0xEAA8
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0xEAA8

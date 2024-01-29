@@ -3,7 +3,7 @@ cannon_barrel:
   size: 2048
   width: 32
   height: 32
-  offset: 0x58A8
-  mio0: 0x1F2200
+  offset: 0x1F2200
+  mio0: 0x58A8
   format: RGBA16
   symbol: cannon_barrel_seg8_texture_080058A8

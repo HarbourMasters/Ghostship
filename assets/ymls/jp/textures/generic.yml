@@ -3,8 +3,8 @@ bob_textures.00000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x0
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x0
   format: RGBA16
   symbol: generic_09000000
 bob_textures.00800:
@@ -12,8 +12,8 @@ bob_textures.00800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8D40
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x8D40
   format: RGBA16
   symbol: generic_09000800
 bob_textures.01000:
@@ -21,8 +21,8 @@ bob_textures.01000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x1000
   format: RGBA16
   symbol: generic_09001000
 bob_textures.01800:
@@ -30,8 +30,8 @@ bob_textures.01800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x1800
   format: RGBA16
   symbol: generic_09001800
 bob_textures.02000:
@@ -39,8 +39,8 @@ bob_textures.02000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x2000
   format: RGBA16
   symbol: generic_09002000
 bob_textures.02800:
@@ -48,8 +48,8 @@ bob_textures.02800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x2800
   format: RGBA16
   symbol: generic_09002800
 bob_textures.03000:
@@ -57,8 +57,8 @@ bob_textures.03000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x3000
   format: RGBA16
   symbol: generic_09003000
 bob_textures.03800:
@@ -66,8 +66,8 @@ bob_textures.03800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x3800
   format: RGBA16
   symbol: generic_09003800
 bob_textures.04000:
@@ -75,8 +75,8 @@ bob_textures.04000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x4000
   format: RGBA16
   symbol: generic_09004000
 bob_textures.04800:
@@ -84,8 +84,8 @@ bob_textures.04800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x4800
   format: RGBA16
   symbol: generic_09004800
 bob_textures.05000:
@@ -93,8 +93,8 @@ bob_textures.05000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x5000
   format: RGBA16
   symbol: generic_09005000
 bob_textures.05800:
@@ -102,8 +102,8 @@ bob_textures.05800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x5800
   format: RGBA16
   symbol: generic_09005800
 bob_textures.06000:
@@ -111,8 +111,8 @@ bob_textures.06000:
   size: 4096
   width: 32
   height: 64
-  offset: 0x6000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x6000
   format: RGBA16
   symbol: generic_09006000
 bob_textures.07000:
@@ -120,8 +120,8 @@ bob_textures.07000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x7000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x7000
   format: RGBA16
   symbol: generic_09007000
 bob_textures.07800:
@@ -129,8 +129,8 @@ bob_textures.07800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x7800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x7800
   format: RGBA16
   symbol: generic_09007800
 bob_textures.08000:
@@ -138,8 +138,8 @@ bob_textures.08000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x8000
   format: RGBA16
   symbol: generic_09008000
 bob_textures.08800:
@@ -147,8 +147,8 @@ bob_textures.08800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x8800
   format: RGBA16
   symbol: generic_09008800
 bob_textures.09000:
@@ -156,8 +156,8 @@ bob_textures.09000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x9000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x9000
   format: RGBA16
   symbol: generic_09009000
 bob_textures.09800:
@@ -165,8 +165,8 @@ bob_textures.09800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x9800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0x9800
   format: RGBA16
   symbol: generic_09009800
 bob_textures.0A000:
@@ -174,8 +174,8 @@ bob_textures.0A000:
   size: 2048
   width: 32
   height: 32
-  offset: 0xA000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0xA000
   format: RGBA16
   symbol: generic_0900A000
 bob_textures.0A800:
@@ -183,8 +183,8 @@ bob_textures.0A800:
   size: 2048
   width: 32
   height: 32
-  offset: 0xA800
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0xA800
   format: RGBA16
   symbol: generic_0900A800
 bob_textures.0B000:
@@ -192,7 +192,7 @@ bob_textures.0B000:
   size: 2048
   width: 32
   height: 32
-  offset: 0xB000
-  mio0: 0x32B610
+  offset: 0x32B610
+  mio0: 0xB000
   format: IA16
   symbol: generic_0900B000

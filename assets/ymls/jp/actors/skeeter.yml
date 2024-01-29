@@ -3,8 +3,8 @@ skeeter_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x90
-  mio0: 0x1B8010
+  offset: 0x1B8010
+  mio0: 0x90
   format: RGBA16
   symbol: skeeter_seg6_texture_06000090
 skeeter_iris:
@@ -12,7 +12,7 @@ skeeter_iris:
   size: 256
   width: 16
   height: 8
-  offset: 0x890
-  mio0: 0x1B8010
+  offset: 0x1B8010
+  mio0: 0x890
   format: RGBA16
   symbol: skeeter_seg6_texture_06000890

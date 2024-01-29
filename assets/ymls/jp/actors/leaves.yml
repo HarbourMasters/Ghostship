@@ -3,7 +3,7 @@ leaf:
   size: 512
   width: 16
   height: 16
-  offset: 0x1CBE0
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x1CBE0
   format: RGBA16
   symbol: leaves_seg3_texture_0301CBE0

@@ -3,8 +3,8 @@ bob-omb_buddy_body_unused:
   size: 8192
   width: 64
   height: 64
-  offset: 0x6478
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x6478
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05006478
 bob-omb_buddy_left_side_unused:
@@ -12,8 +12,8 @@ bob-omb_buddy_left_side_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0x78
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x78
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05000078
 bob-omb_buddy_right_side_unused:
@@ -21,8 +21,8 @@ bob-omb_buddy_right_side_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1078
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x1078
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05001078
 king_bob-omb_arm:
@@ -30,8 +30,8 @@ king_bob-omb_arm:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2078
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x2078
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05002078
 king_bob-omb_body_unused:
@@ -39,8 +39,8 @@ king_bob-omb_body_unused:
   size: 8192
   width: 64
   height: 64
-  offset: 0x2878
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x2878
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05002878
 king_bob-omb_crown_rim:
@@ -48,8 +48,8 @@ king_bob-omb_crown_rim:
   size: 1024
   width: 32
   height: 16
-  offset: 0x6078
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x6078
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05006078
 king_bob-omb_eyes:
@@ -57,8 +57,8 @@ king_bob-omb_eyes:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4878
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x4878
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05004878
 king_bob-omb_eyes_blink:
@@ -66,8 +66,8 @@ king_bob-omb_eyes_blink:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5078
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x5078
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05005078
 king_bob-omb_hand:
@@ -75,8 +75,8 @@ king_bob-omb_hand:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5878
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x5878
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05005878
 king_bob-omb_left_side:
@@ -84,8 +84,8 @@ king_bob-omb_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x8478
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x8478
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05008478
 king_bob-omb_right_side:
@@ -93,7 +93,7 @@ king_bob-omb_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x9478
-  mio0: 0x133120
+  offset: 0x133120
+  mio0: 0x9478
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05009478

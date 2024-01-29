@@ -3,8 +3,8 @@ chill_bully_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2468
-  mio0: 0x132C60
+  offset: 0x132C60
+  mio0: 0x2468
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06002060
 chill_bully_left_side:
@@ -12,8 +12,8 @@ chill_bully_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x60
-  mio0: 0x1E51F0
+  offset: 0x1E51F0
+  mio0: 0x60
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06000060
 chill_bully_right_side:
@@ -21,7 +21,7 @@ chill_bully_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1060
-  mio0: 0x1E51F0
+  offset: 0x1E51F0
+  mio0: 0x1060
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06001060

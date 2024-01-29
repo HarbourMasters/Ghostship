@@ -3,8 +3,8 @@ impact_smoke_0:
   size: 8192
   width: 64
   height: 64
-  offset: 0x5AA28
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x5AA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605AA28
 impact_smoke_1:
@@ -12,8 +12,8 @@ impact_smoke_1:
   size: 8192
   width: 64
   height: 64
-  offset: 0x5CA28
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x5CA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605CA28
 impact_smoke_2:
@@ -21,8 +21,8 @@ impact_smoke_2:
   size: 8192
   width: 64
   height: 64
-  offset: 0x5EA28
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x5EA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605EA28
 impact_smoke_3:
@@ -30,7 +30,7 @@ impact_smoke_3:
   size: 8192
   width: 64
   height: 64
-  offset: 0x60A28
-  mio0: 0x186810
+  offset: 0x186810
+  mio0: 0x60A28
   format: IA16
   symbol: impact_smoke_seg6_texture_06060A28

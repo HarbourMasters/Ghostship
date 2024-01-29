@@ -3,8 +3,8 @@ boo_eyes:
   size: 4096
   width: 64
   height: 32
-  offset: 0x9B40
-  mio0: 0x165060
+  offset: 0x165060
+  mio0: 0x9B40
   format: RGBA16
   symbol: boo_seg5_texture_05009B40
 boo_mouth:
@@ -12,7 +12,7 @@ boo_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0xAB40
-  mio0: 0x165060
+  offset: 0x165060
+  mio0: 0xAB40
   format: RGBA16
   symbol: boo_seg5_texture_0500AB40

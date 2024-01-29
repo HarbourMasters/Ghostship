@@ -3,8 +3,8 @@ mario_eyes_center:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x3090
   format: RGBA16
   symbol: mario_texture_eyes_front
 mario_eyes_closed:
@@ -12,8 +12,8 @@ mario_eyes_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x4090
   format: RGBA16
   symbol: mario_texture_eyes_closed
 mario_eyes_closed_unused_0:
@@ -21,8 +21,8 @@ mario_eyes_closed_unused_0:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x4090
   format: RGBA16
   symbol: mario_texture_eyes_closed_unused1
 mario_eyes_closed_unused_1:
@@ -30,8 +30,8 @@ mario_eyes_closed_unused_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x4090
   format: RGBA16
   symbol: mario_texture_eyes_closed_unused2
 mario_eyes_dead:
@@ -39,8 +39,8 @@ mario_eyes_dead:
   size: 2048
   width: 32
   height: 32
-  offset: 0x7890
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x7890
   format: RGBA16
   symbol: mario_texture_eyes_dead
 mario_eyes_down_unused:
@@ -48,8 +48,8 @@ mario_eyes_down_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x7090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x7090
   format: RGBA16
   symbol: mario_texture_eyes_down
 mario_eyes_half_closed:
@@ -57,8 +57,8 @@ mario_eyes_half_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3890
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x3890
   format: RGBA16
   symbol: mario_texture_eyes_half_closed
 mario_eyes_left_unused:
@@ -66,8 +66,8 @@ mario_eyes_left_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5890
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x5890
   format: RGBA16
   symbol: mario_texture_eyes_right
 mario_eyes_right_unused:
@@ -75,8 +75,8 @@ mario_eyes_right_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x6090
   format: RGBA16
   symbol: mario_texture_eyes_left
 mario_eyes_up_unused:
@@ -84,8 +84,8 @@ mario_eyes_up_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6890
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x6890
   format: RGBA16
   symbol: mario_texture_eyes_up
 mario_logo:
@@ -93,8 +93,8 @@ mario_logo:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1890
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x1890
   format: RGBA16
   symbol: mario_texture_m_logo
 mario_metal:
@@ -102,8 +102,8 @@ mario_metal:
   size: 4096
   width: 64
   height: 32
-  offset: 0x90
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x90
   format: RGBA16
   symbol: mario_texture_metal
 mario_metal_wing_tip_unused:
@@ -111,8 +111,8 @@ mario_metal_wing_tip_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0xB090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0xB090
   format: RGBA16
   symbol: mario_texture_metal_wings_half_2
 mario_metal_wing_unused:
@@ -120,8 +120,8 @@ mario_metal_wing_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0xA090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0xA090
   format: RGBA16
   symbol: mario_texture_metal_wings_half_1
 mario_mustache:
@@ -129,8 +129,8 @@ mario_mustache:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2890
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x2890
   format: RGBA16
   symbol: mario_texture_mustache
 mario_overalls_button:
@@ -138,8 +138,8 @@ mario_overalls_button:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x1090
   format: RGBA16
   symbol: mario_texture_yellow_button
 mario_sideburn:
@@ -147,8 +147,8 @@ mario_sideburn:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x2090
   format: RGBA16
   symbol: mario_texture_hair_sideburn
 mario_wing:
@@ -156,8 +156,8 @@ mario_wing:
   size: 4096
   width: 32
   height: 64
-  offset: 0x8090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x8090
   format: RGBA16
   symbol: mario_texture_wings_half_1
 mario_wing_tip:
@@ -165,7 +165,7 @@ mario_wing_tip:
   size: 4096
   width: 32
   height: 64
-  offset: 0x9090
-  mio0: 0x114750
+  offset: 0x114750
+  mio0: 0x9090
   format: RGBA16
   symbol: mario_texture_wings_half_2

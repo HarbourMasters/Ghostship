@@ -3,8 +3,8 @@ main_menu_seg7.00018:
   size: 2048
   width: 32
   height: 32
-  offset: 0x18
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x18
   format: RGBA16
   symbol: texture_menu_stone
 main_menu_seg7.00818:
@@ -12,8 +12,8 @@ main_menu_seg7.00818:
   size: 2048
   width: 32
   height: 32
-  offset: 0x818
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x818
   format: RGBA16
   symbol: texture_menu_dark_stone
 main_menu_seg7.01018:
@@ -21,8 +21,8 @@ main_menu_seg7.01018:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1018
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x1018
   format: RGBA16
   symbol: texture_menu_mario_save
 main_menu_seg7.02018:
@@ -30,8 +30,8 @@ main_menu_seg7.02018:
   size: 4096
   width: 64
   height: 32
-  offset: 0x2018
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x2018
   format: RGBA16
   symbol: texture_menu_mario_new
 main_menu_seg7.03468:
@@ -39,8 +39,8 @@ main_menu_seg7.03468:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3468
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x3468
   format: RGBA16
   symbol: texture_menu_erase
 main_menu_seg7.03C68:
@@ -48,8 +48,8 @@ main_menu_seg7.03C68:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3C68
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x3C68
   format: RGBA16
   symbol: texture_menu_copy
 main_menu_seg7.04468:
@@ -57,8 +57,8 @@ main_menu_seg7.04468:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4468
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x4468
   format: RGBA16
   symbol: texture_menu_file
 main_menu_seg7.04C68:
@@ -66,8 +66,8 @@ main_menu_seg7.04C68:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4C68
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x4C68
   format: RGBA16
   symbol: texture_menu_score
 main_menu_seg7.05468:
@@ -75,8 +75,8 @@ main_menu_seg7.05468:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5468
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x5468
   format: RGBA16
   symbol: texture_menu_sound
 main_menu_seg7.06328:
@@ -84,8 +84,8 @@ main_menu_seg7.06328:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6328
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x6328
   format: RGBA16
   symbol: texture_menu_idle_hand
 main_menu_seg7.06B28:
@@ -93,8 +93,8 @@ main_menu_seg7.06B28:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6B28
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x6B28
   format: RGBA16
   symbol: texture_menu_grabbing_hand
 main_menu_seg7.073D0:
@@ -102,8 +102,8 @@ main_menu_seg7.073D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x73D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x73D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_hu
 main_menu_seg7.075D0:
@@ -111,8 +111,8 @@ main_menu_seg7.075D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x75D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x75D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_small_a
 main_menu_seg7.077D0:
@@ -120,8 +120,8 @@ main_menu_seg7.077D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x77D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x77D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_i
 main_menu_seg7.079D0:
@@ -129,8 +129,8 @@ main_menu_seg7.079D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x79D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x79D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_ru
 main_menu_seg7.07BD0:
@@ -138,8 +138,8 @@ main_menu_seg7.07BD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x7BD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x7BD0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_se
 main_menu_seg7.07DD0:
@@ -147,8 +147,8 @@ main_menu_seg7.07DD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x7DD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x7DD0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_re
 main_menu_seg7.07FD0:
@@ -156,8 +156,8 @@ main_menu_seg7.07FD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x7FD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x7FD0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_ku
 main_menu_seg7.081D0:
@@ -165,8 +165,8 @@ main_menu_seg7.081D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x81D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x81D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_to
 main_menu_seg7.083D0:
@@ -174,8 +174,8 @@ main_menu_seg7.083D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x83D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x83D0
   format: RGBA16
   symbol: texture_menu_hud_char_hiragana_wo
 main_menu_seg7.085D0:
@@ -183,8 +183,8 @@ main_menu_seg7.085D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x85D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x85D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_ko
 main_menu_seg7.087D0:
@@ -192,8 +192,8 @@ main_menu_seg7.087D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x87D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x87D0
   format: RGBA16
   symbol: texture_menu_hud_char_kana_handakuten_pi
 main_menu_seg7.089D0:
@@ -201,8 +201,8 @@ main_menu_seg7.089D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x89D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x89D0
   format: RGBA16
   symbol: texture_menu_hud_char_choonpu
 main_menu_seg7.08BD0:
@@ -210,8 +210,8 @@ main_menu_seg7.08BD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x8BD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x8BD0
   format: RGBA16
   symbol: texture_menu_hud_char_hiragana_su
 main_menu_seg7.08DD0:
@@ -219,8 +219,8 @@ main_menu_seg7.08DD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x8DD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x8DD0
   format: RGBA16
   symbol: texture_menu_hud_char_hiragana_ru
 main_menu_seg7.08FD0:
@@ -228,8 +228,8 @@ main_menu_seg7.08FD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x8FD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x8FD0
   format: RGBA16
   symbol: texture_menu_hud_char_hiragana_ke
 main_menu_seg7.091D0:
@@ -237,8 +237,8 @@ main_menu_seg7.091D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x91D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x91D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_ma
 main_menu_seg7.093D0:
@@ -246,8 +246,8 @@ main_menu_seg7.093D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x93D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x93D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_ri
 main_menu_seg7.095D0:
@@ -255,8 +255,8 @@ main_menu_seg7.095D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x95D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x95D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_o
 main_menu_seg7.097D0:
@@ -264,8 +264,8 @@ main_menu_seg7.097D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x97D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x97D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_su
 main_menu_seg7.099D0:
@@ -273,8 +273,8 @@ main_menu_seg7.099D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x99D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x99D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_a
 main_menu_seg7.09BD0:
@@ -282,8 +282,8 @@ main_menu_seg7.09BD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x9BD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x9BD0
   format: RGBA16
   symbol: texture_menu_hud_char_hiragana_mi
 main_menu_seg7.09DD0:
@@ -291,8 +291,8 @@ main_menu_seg7.09DD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x9DD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x9DD0
   format: RGBA16
   symbol: texture_menu_hud_char_hira_dakuten_do
 main_menu_seg7.09FD0:
@@ -300,8 +300,8 @@ main_menu_seg7.09FD0:
   size: 512
   width: 16
   height: 16
-  offset: 0x9FD0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0x9FD0
   format: RGBA16
   symbol: texture_menu_hud_char_hiragana_no
 main_menu_seg7.0A1D0:
@@ -309,8 +309,8 @@ main_menu_seg7.0A1D0:
   size: 512
   width: 16
   height: 16
-  offset: 0x5000
-  mio0: 0x1076D0
+  offset: 0x1076D0
+  mio0: 0x5000
   format: RGBA16
   symbol: texture_menu_hud_char_question
 main_menu_seg7.0A3D0:
@@ -318,8 +318,8 @@ main_menu_seg7.0A3D0:
   size: 512
   width: 16
   height: 16
-  offset: 0xA3D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xA3D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_sa
 main_menu_seg7.0A5D0:
@@ -327,8 +327,8 @@ main_menu_seg7.0A5D0:
   size: 512
   width: 16
   height: 16
-  offset: 0xA5D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xA5D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_u
 main_menu_seg7.0A7D0:
@@ -336,8 +336,8 @@ main_menu_seg7.0A7D0:
   size: 512
   width: 16
   height: 16
-  offset: 0xA7D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xA7D0
   format: RGBA16
   symbol: texture_menu_hud_char_katakana_n
 main_menu_seg7.0A9D0:
@@ -345,8 +345,8 @@ main_menu_seg7.0A9D0:
   size: 512
   width: 16
   height: 16
-  offset: 0xA9D0
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xA9D0
   format: RGBA16
   symbol: texture_menu_hud_char_kana_dakuten_do
 main_menu_seg7.0AC48:
@@ -354,8 +354,8 @@ main_menu_seg7.0AC48:
   size: 64
   width: 8
   height: 8
-  offset: 0xAC48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAC48
   format: IA8
   symbol: texture_menu_font_char_jp_0
 main_menu_seg7.0AC88:
@@ -363,8 +363,8 @@ main_menu_seg7.0AC88:
   size: 64
   width: 8
   height: 8
-  offset: 0xAC88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAC88
   format: IA8
   symbol: texture_menu_font_char_jp_1
 main_menu_seg7.0ACC8:
@@ -372,8 +372,8 @@ main_menu_seg7.0ACC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xACC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xACC8
   format: IA8
   symbol: texture_menu_font_char_jp_2
 main_menu_seg7.0AD08:
@@ -381,8 +381,8 @@ main_menu_seg7.0AD08:
   size: 64
   width: 8
   height: 8
-  offset: 0xAD08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAD08
   format: IA8
   symbol: texture_menu_font_char_jp_3
 main_menu_seg7.0AD48:
@@ -390,8 +390,8 @@ main_menu_seg7.0AD48:
   size: 64
   width: 8
   height: 8
-  offset: 0xAD48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAD48
   format: IA8
   symbol: texture_menu_font_char_jp_4
 main_menu_seg7.0AD88:
@@ -399,8 +399,8 @@ main_menu_seg7.0AD88:
   size: 64
   width: 8
   height: 8
-  offset: 0xAD88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAD88
   format: IA8
   symbol: texture_menu_font_char_jp_5
 main_menu_seg7.0ADC8:
@@ -408,8 +408,8 @@ main_menu_seg7.0ADC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xADC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xADC8
   format: IA8
   symbol: texture_menu_font_char_jp_6
 main_menu_seg7.0AE08:
@@ -417,8 +417,8 @@ main_menu_seg7.0AE08:
   size: 64
   width: 8
   height: 8
-  offset: 0xAE08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAE08
   format: IA8
   symbol: texture_menu_font_char_jp_7
 main_menu_seg7.0AE48:
@@ -426,8 +426,8 @@ main_menu_seg7.0AE48:
   size: 64
   width: 8
   height: 8
-  offset: 0xAE48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAE48
   format: IA8
   symbol: texture_menu_font_char_jp_8
 main_menu_seg7.0AE88:
@@ -435,8 +435,8 @@ main_menu_seg7.0AE88:
   size: 64
   width: 8
   height: 8
-  offset: 0xAE88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAE88
   format: IA8
   symbol: texture_menu_font_char_jp_9
 main_menu_seg7.0AEC8:
@@ -444,8 +444,8 @@ main_menu_seg7.0AEC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xAEC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAEC8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_a
 main_menu_seg7.0AF08:
@@ -453,8 +453,8 @@ main_menu_seg7.0AF08:
   size: 64
   width: 8
   height: 8
-  offset: 0xAF08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAF08
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_i
 main_menu_seg7.0AF48:
@@ -462,8 +462,8 @@ main_menu_seg7.0AF48:
   size: 64
   width: 8
   height: 8
-  offset: 0xAF48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAF48
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_u
 main_menu_seg7.0AF88:
@@ -471,8 +471,8 @@ main_menu_seg7.0AF88:
   size: 64
   width: 8
   height: 8
-  offset: 0xAF88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAF88
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_c
 main_menu_seg7.0AFC8:
@@ -480,8 +480,8 @@ main_menu_seg7.0AFC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xAFC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xAFC8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_o
 main_menu_seg7.0B008:
@@ -489,8 +489,8 @@ main_menu_seg7.0B008:
   size: 64
   width: 8
   height: 8
-  offset: 0xB008
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB008
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ka
 main_menu_seg7.0B048:
@@ -498,8 +498,8 @@ main_menu_seg7.0B048:
   size: 64
   width: 8
   height: 8
-  offset: 0xB048
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB048
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ki
 main_menu_seg7.0B088:
@@ -507,8 +507,8 @@ main_menu_seg7.0B088:
   size: 64
   width: 8
   height: 8
-  offset: 0xB088
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB088
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ku
 main_menu_seg7.0B0C8:
@@ -516,8 +516,8 @@ main_menu_seg7.0B0C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB0C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB0C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ke
 main_menu_seg7.0B108:
@@ -525,8 +525,8 @@ main_menu_seg7.0B108:
   size: 64
   width: 8
   height: 8
-  offset: 0xB108
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB108
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ko
 main_menu_seg7.0B148:
@@ -534,8 +534,8 @@ main_menu_seg7.0B148:
   size: 64
   width: 8
   height: 8
-  offset: 0xB148
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB148
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_sa
 main_menu_seg7.0B188:
@@ -543,8 +543,8 @@ main_menu_seg7.0B188:
   size: 64
   width: 8
   height: 8
-  offset: 0xB188
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB188
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_shi
 main_menu_seg7.0B1C8:
@@ -552,8 +552,8 @@ main_menu_seg7.0B1C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB1C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB1C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_su
 main_menu_seg7.0B208:
@@ -561,8 +561,8 @@ main_menu_seg7.0B208:
   size: 64
   width: 8
   height: 8
-  offset: 0xB208
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB208
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_se
 main_menu_seg7.0B248:
@@ -570,8 +570,8 @@ main_menu_seg7.0B248:
   size: 64
   width: 8
   height: 8
-  offset: 0xB248
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB248
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_so
 main_menu_seg7.0B288:
@@ -579,8 +579,8 @@ main_menu_seg7.0B288:
   size: 64
   width: 8
   height: 8
-  offset: 0xB288
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB288
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ta
 main_menu_seg7.0B2C8:
@@ -588,8 +588,8 @@ main_menu_seg7.0B2C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB2C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB2C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_chi
 main_menu_seg7.0B308:
@@ -597,8 +597,8 @@ main_menu_seg7.0B308:
   size: 64
   width: 8
   height: 8
-  offset: 0xB308
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB308
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_tsu
 main_menu_seg7.0B348:
@@ -606,8 +606,8 @@ main_menu_seg7.0B348:
   size: 64
   width: 8
   height: 8
-  offset: 0xB348
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB348
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_te
 main_menu_seg7.0B388:
@@ -615,8 +615,8 @@ main_menu_seg7.0B388:
   size: 64
   width: 8
   height: 8
-  offset: 0xB388
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB388
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_to
 main_menu_seg7.0B3C8:
@@ -624,8 +624,8 @@ main_menu_seg7.0B3C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB3C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB3C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_na
 main_menu_seg7.0B408:
@@ -633,8 +633,8 @@ main_menu_seg7.0B408:
   size: 64
   width: 8
   height: 8
-  offset: 0xB408
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB408
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ni
 main_menu_seg7.0B448:
@@ -642,8 +642,8 @@ main_menu_seg7.0B448:
   size: 64
   width: 8
   height: 8
-  offset: 0xB448
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB448
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_nu
 main_menu_seg7.0B488:
@@ -651,8 +651,8 @@ main_menu_seg7.0B488:
   size: 64
   width: 8
   height: 8
-  offset: 0xB488
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB488
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ne
 main_menu_seg7.0B4C8:
@@ -660,8 +660,8 @@ main_menu_seg7.0B4C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB4C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB4C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_no
 main_menu_seg7.0B508:
@@ -669,8 +669,8 @@ main_menu_seg7.0B508:
   size: 64
   width: 8
   height: 8
-  offset: 0xB508
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB508
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ha
 main_menu_seg7.0B548:
@@ -678,8 +678,8 @@ main_menu_seg7.0B548:
   size: 64
   width: 8
   height: 8
-  offset: 0xB548
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB548
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_hi
 main_menu_seg7.0B588:
@@ -687,8 +687,8 @@ main_menu_seg7.0B588:
   size: 64
   width: 8
   height: 8
-  offset: 0xB588
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB588
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_hu
 main_menu_seg7.0B5C8:
@@ -696,8 +696,8 @@ main_menu_seg7.0B5C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB5C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB5C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_he
 main_menu_seg7.0B608:
@@ -705,8 +705,8 @@ main_menu_seg7.0B608:
   size: 64
   width: 8
   height: 8
-  offset: 0xB608
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB608
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ho
 main_menu_seg7.0B648:
@@ -714,8 +714,8 @@ main_menu_seg7.0B648:
   size: 64
   width: 8
   height: 8
-  offset: 0xB648
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB648
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ma
 main_menu_seg7.0B688:
@@ -723,8 +723,8 @@ main_menu_seg7.0B688:
   size: 64
   width: 8
   height: 8
-  offset: 0xB688
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB688
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_mi
 main_menu_seg7.0B6C8:
@@ -732,8 +732,8 @@ main_menu_seg7.0B6C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB6C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB6C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_mu
 main_menu_seg7.0B708:
@@ -741,8 +741,8 @@ main_menu_seg7.0B708:
   size: 64
   width: 8
   height: 8
-  offset: 0xB708
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB708
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_me
 main_menu_seg7.0B748:
@@ -750,8 +750,8 @@ main_menu_seg7.0B748:
   size: 64
   width: 8
   height: 8
-  offset: 0xB748
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB748
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_mo
 main_menu_seg7.0B788:
@@ -759,8 +759,8 @@ main_menu_seg7.0B788:
   size: 64
   width: 8
   height: 8
-  offset: 0xB788
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB788
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ya
 main_menu_seg7.0B7C8:
@@ -768,8 +768,8 @@ main_menu_seg7.0B7C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB7C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB7C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_yu
 main_menu_seg7.0B808:
@@ -777,8 +777,8 @@ main_menu_seg7.0B808:
   size: 64
   width: 8
   height: 8
-  offset: 0xB808
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB808
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_yo
 main_menu_seg7.0B848:
@@ -786,8 +786,8 @@ main_menu_seg7.0B848:
   size: 64
   width: 8
   height: 8
-  offset: 0xB848
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB848
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ra
 main_menu_seg7.0B888:
@@ -795,8 +795,8 @@ main_menu_seg7.0B888:
   size: 64
   width: 8
   height: 8
-  offset: 0xB888
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB888
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ri
 main_menu_seg7.0B8C8:
@@ -804,8 +804,8 @@ main_menu_seg7.0B8C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB8C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB8C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ru
 main_menu_seg7.0B908:
@@ -813,8 +813,8 @@ main_menu_seg7.0B908:
   size: 64
   width: 8
   height: 8
-  offset: 0xB908
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB908
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_re
 main_menu_seg7.0B948:
@@ -822,8 +822,8 @@ main_menu_seg7.0B948:
   size: 64
   width: 8
   height: 8
-  offset: 0xB948
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB948
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_ro
 main_menu_seg7.0B988:
@@ -831,8 +831,8 @@ main_menu_seg7.0B988:
   size: 64
   width: 8
   height: 8
-  offset: 0xB988
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB988
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_wa
 main_menu_seg7.0B9C8:
@@ -840,8 +840,8 @@ main_menu_seg7.0B9C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xB9C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB9C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_wo
 main_menu_seg7.0BA08:
@@ -849,8 +849,8 @@ main_menu_seg7.0BA08:
   size: 64
   width: 8
   height: 8
-  offset: 0xBA08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBA08
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_n
 main_menu_seg7.0BA48:
@@ -858,8 +858,8 @@ main_menu_seg7.0BA48:
   size: 64
   width: 8
   height: 8
-  offset: 0xBA48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBA48
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_a
 main_menu_seg7.0BA88:
@@ -867,8 +867,8 @@ main_menu_seg7.0BA88:
   size: 64
   width: 8
   height: 8
-  offset: 0xBA88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBA88
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_i
 main_menu_seg7.0BAC8:
@@ -876,8 +876,8 @@ main_menu_seg7.0BAC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xBAC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBAC8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_u
 main_menu_seg7.0BB08:
@@ -885,8 +885,8 @@ main_menu_seg7.0BB08:
   size: 64
   width: 8
   height: 8
-  offset: 0xBB08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBB08
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_e
 main_menu_seg7.0BB48:
@@ -894,8 +894,8 @@ main_menu_seg7.0BB48:
   size: 64
   width: 8
   height: 8
-  offset: 0xBB48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBB48
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_o
 main_menu_seg7.0BB88:
@@ -903,8 +903,8 @@ main_menu_seg7.0BB88:
   size: 64
   width: 8
   height: 8
-  offset: 0xBB88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBB88
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_ka
 main_menu_seg7.0BBC8:
@@ -912,8 +912,8 @@ main_menu_seg7.0BBC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xBBC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBBC8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_yu
 main_menu_seg7.0BC08:
@@ -921,8 +921,8 @@ main_menu_seg7.0BC08:
   size: 64
   width: 8
   height: 8
-  offset: 0xBC08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBC08
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_yo
 main_menu_seg7.0BC48:
@@ -930,8 +930,8 @@ main_menu_seg7.0BC48:
   size: 64
   width: 8
   height: 8
-  offset: 0xBC48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBC48
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_small_tsu
 main_menu_seg7.0BC88:
@@ -939,8 +939,8 @@ main_menu_seg7.0BC88:
   size: 64
   width: 8
   height: 8
-  offset: 0xBC88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBC88
   format: IA8
   symbol: texture_menu_font_char_jp_handakuten
 main_menu_seg7.0BCC8:
@@ -948,8 +948,8 @@ main_menu_seg7.0BCC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xBCC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBCC8
   format: IA8
   symbol: texture_menu_font_char_jp_dakuten
 main_menu_seg7.0BD08:
@@ -957,8 +957,8 @@ main_menu_seg7.0BD08:
   size: 64
   width: 8
   height: 8
-  offset: 0xBD08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBD08
   format: IA8
   symbol: texture_menu_font_char_jp_long_vowel
 main_menu_seg7.0BD48:
@@ -966,8 +966,8 @@ main_menu_seg7.0BD48:
   size: 64
   width: 8
   height: 8
-  offset: 0xBD48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBD48
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_a
 main_menu_seg7.0BD88:
@@ -975,8 +975,8 @@ main_menu_seg7.0BD88:
   size: 64
   width: 8
   height: 8
-  offset: 0xBD88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBD88
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_i
 main_menu_seg7.0BDC8:
@@ -984,8 +984,8 @@ main_menu_seg7.0BDC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xBDC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBDC8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_u
 main_menu_seg7.0BE08:
@@ -993,8 +993,8 @@ main_menu_seg7.0BE08:
   size: 64
   width: 8
   height: 8
-  offset: 0xBE08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBE08
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_e
 main_menu_seg7.0BE48:
@@ -1002,8 +1002,8 @@ main_menu_seg7.0BE48:
   size: 64
   width: 8
   height: 8
-  offset: 0xBE48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBE48
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_o
 main_menu_seg7.0BE88:
@@ -1011,8 +1011,8 @@ main_menu_seg7.0BE88:
   size: 64
   width: 8
   height: 8
-  offset: 0xBE88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBE88
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ka
 main_menu_seg7.0BEC8:
@@ -1020,8 +1020,8 @@ main_menu_seg7.0BEC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xBEC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBEC8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ki
 main_menu_seg7.0BF08:
@@ -1029,8 +1029,8 @@ main_menu_seg7.0BF08:
   size: 64
   width: 8
   height: 8
-  offset: 0xBF08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBF08
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ku
 main_menu_seg7.0BF48:
@@ -1038,8 +1038,8 @@ main_menu_seg7.0BF48:
   size: 64
   width: 8
   height: 8
-  offset: 0xBF48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBF48
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ke
 main_menu_seg7.0BF88:
@@ -1047,8 +1047,8 @@ main_menu_seg7.0BF88:
   size: 64
   width: 8
   height: 8
-  offset: 0xBF88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBF88
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ko
 main_menu_seg7.0BFC8:
@@ -1056,8 +1056,8 @@ main_menu_seg7.0BFC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xBFC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xBFC8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_sa
 main_menu_seg7.0C008:
@@ -1065,8 +1065,8 @@ main_menu_seg7.0C008:
   size: 64
   width: 8
   height: 8
-  offset: 0xC008
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC008
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_shi
 main_menu_seg7.0C048:
@@ -1074,8 +1074,8 @@ main_menu_seg7.0C048:
   size: 64
   width: 8
   height: 8
-  offset: 0xC048
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC048
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_su
 main_menu_seg7.0C088:
@@ -1083,8 +1083,8 @@ main_menu_seg7.0C088:
   size: 64
   width: 8
   height: 8
-  offset: 0xC088
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC088
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_se
 main_menu_seg7.0C0C8:
@@ -1092,8 +1092,8 @@ main_menu_seg7.0C0C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC0C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC0C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_so
 main_menu_seg7.0C108:
@@ -1101,8 +1101,8 @@ main_menu_seg7.0C108:
   size: 64
   width: 8
   height: 8
-  offset: 0xC108
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC108
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ta
 main_menu_seg7.0C148:
@@ -1110,8 +1110,8 @@ main_menu_seg7.0C148:
   size: 64
   width: 8
   height: 8
-  offset: 0xC148
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC148
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_chi
 main_menu_seg7.0C188:
@@ -1119,8 +1119,8 @@ main_menu_seg7.0C188:
   size: 64
   width: 8
   height: 8
-  offset: 0xC188
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC188
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_tsu
 main_menu_seg7.0C1C8:
@@ -1128,8 +1128,8 @@ main_menu_seg7.0C1C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC1C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC1C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_te
 main_menu_seg7.0C208:
@@ -1137,8 +1137,8 @@ main_menu_seg7.0C208:
   size: 64
   width: 8
   height: 8
-  offset: 0xC208
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC208
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_to
 main_menu_seg7.0C248:
@@ -1146,8 +1146,8 @@ main_menu_seg7.0C248:
   size: 64
   width: 8
   height: 8
-  offset: 0xC248
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC248
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_na
 main_menu_seg7.0C288:
@@ -1155,8 +1155,8 @@ main_menu_seg7.0C288:
   size: 64
   width: 8
   height: 8
-  offset: 0xC288
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC288
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ni
 main_menu_seg7.0C2C8:
@@ -1164,8 +1164,8 @@ main_menu_seg7.0C2C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC2C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC2C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_nu
 main_menu_seg7.0C308:
@@ -1173,8 +1173,8 @@ main_menu_seg7.0C308:
   size: 64
   width: 8
   height: 8
-  offset: 0xC308
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC308
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ne
 main_menu_seg7.0C348:
@@ -1182,8 +1182,8 @@ main_menu_seg7.0C348:
   size: 64
   width: 8
   height: 8
-  offset: 0xC348
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC348
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_no
 main_menu_seg7.0C388:
@@ -1191,8 +1191,8 @@ main_menu_seg7.0C388:
   size: 64
   width: 8
   height: 8
-  offset: 0xC388
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC388
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ha
 main_menu_seg7.0C3C8:
@@ -1200,8 +1200,8 @@ main_menu_seg7.0C3C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC3C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC3C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_hi
 main_menu_seg7.0C408:
@@ -1209,8 +1209,8 @@ main_menu_seg7.0C408:
   size: 64
   width: 8
   height: 8
-  offset: 0xC408
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC408
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_hu
 main_menu_seg7.0C448:
@@ -1218,8 +1218,8 @@ main_menu_seg7.0C448:
   size: 64
   width: 8
   height: 8
-  offset: 0xB5C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xB5C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_he
 main_menu_seg7.0C488:
@@ -1227,8 +1227,8 @@ main_menu_seg7.0C488:
   size: 64
   width: 8
   height: 8
-  offset: 0xC488
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC488
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ho
 main_menu_seg7.0C4C8:
@@ -1236,8 +1236,8 @@ main_menu_seg7.0C4C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC4C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC4C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ma
 main_menu_seg7.0C508:
@@ -1245,8 +1245,8 @@ main_menu_seg7.0C508:
   size: 64
   width: 8
   height: 8
-  offset: 0xC508
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC508
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_mi
 main_menu_seg7.0C548:
@@ -1254,8 +1254,8 @@ main_menu_seg7.0C548:
   size: 64
   width: 8
   height: 8
-  offset: 0xC548
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC548
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_mu
 main_menu_seg7.0C588:
@@ -1263,8 +1263,8 @@ main_menu_seg7.0C588:
   size: 64
   width: 8
   height: 8
-  offset: 0xC588
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC588
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_me
 main_menu_seg7.0C5C8:
@@ -1272,8 +1272,8 @@ main_menu_seg7.0C5C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC5C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC5C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_mo
 main_menu_seg7.0C608:
@@ -1281,8 +1281,8 @@ main_menu_seg7.0C608:
   size: 64
   width: 8
   height: 8
-  offset: 0xC608
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC608
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ya
 main_menu_seg7.0C648:
@@ -1290,8 +1290,8 @@ main_menu_seg7.0C648:
   size: 64
   width: 8
   height: 8
-  offset: 0xC648
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC648
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_yu
 main_menu_seg7.0C688:
@@ -1299,8 +1299,8 @@ main_menu_seg7.0C688:
   size: 64
   width: 8
   height: 8
-  offset: 0xC688
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC688
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_yo
 main_menu_seg7.0C6C8:
@@ -1308,8 +1308,8 @@ main_menu_seg7.0C6C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC6C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC6C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ra
 main_menu_seg7.0C708:
@@ -1317,8 +1317,8 @@ main_menu_seg7.0C708:
   size: 64
   width: 8
   height: 8
-  offset: 0xC708
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC708
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ri
 main_menu_seg7.0C748:
@@ -1326,8 +1326,8 @@ main_menu_seg7.0C748:
   size: 64
   width: 8
   height: 8
-  offset: 0xC748
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC748
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ru
 main_menu_seg7.0C788:
@@ -1335,8 +1335,8 @@ main_menu_seg7.0C788:
   size: 64
   width: 8
   height: 8
-  offset: 0xC788
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC788
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_re
 main_menu_seg7.0C7C8:
@@ -1344,8 +1344,8 @@ main_menu_seg7.0C7C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC7C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC7C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_ro
 main_menu_seg7.0C808:
@@ -1353,8 +1353,8 @@ main_menu_seg7.0C808:
   size: 64
   width: 8
   height: 8
-  offset: 0xC808
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC808
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_wa
 main_menu_seg7.0C848:
@@ -1362,8 +1362,8 @@ main_menu_seg7.0C848:
   size: 64
   width: 8
   height: 8
-  offset: 0xC848
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC848
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_wo
 main_menu_seg7.0C888:
@@ -1371,8 +1371,8 @@ main_menu_seg7.0C888:
   size: 64
   width: 8
   height: 8
-  offset: 0xC888
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC888
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_n
 main_menu_seg7.0C8C8:
@@ -1380,8 +1380,8 @@ main_menu_seg7.0C8C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC8C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC8C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_a
 main_menu_seg7.0C908:
@@ -1389,8 +1389,8 @@ main_menu_seg7.0C908:
   size: 64
   width: 8
   height: 8
-  offset: 0xC908
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC908
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_i
 main_menu_seg7.0C948:
@@ -1398,8 +1398,8 @@ main_menu_seg7.0C948:
   size: 64
   width: 8
   height: 8
-  offset: 0xC948
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC948
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_u
 main_menu_seg7.0C988:
@@ -1407,8 +1407,8 @@ main_menu_seg7.0C988:
   size: 64
   width: 8
   height: 8
-  offset: 0xC988
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC988
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_e
 main_menu_seg7.0C9C8:
@@ -1416,8 +1416,8 @@ main_menu_seg7.0C9C8:
   size: 64
   width: 8
   height: 8
-  offset: 0xC9C8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xC9C8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_o
 main_menu_seg7.0CA08:
@@ -1425,8 +1425,8 @@ main_menu_seg7.0CA08:
   size: 64
   width: 8
   height: 8
-  offset: 0xCA08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCA08
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_ka
 main_menu_seg7.0CA48:
@@ -1434,8 +1434,8 @@ main_menu_seg7.0CA48:
   size: 64
   width: 8
   height: 8
-  offset: 0xCA48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCA48
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_yu
 main_menu_seg7.0CA88:
@@ -1443,8 +1443,8 @@ main_menu_seg7.0CA88:
   size: 64
   width: 8
   height: 8
-  offset: 0xCA88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCA88
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_yo
 main_menu_seg7.0CAC8:
@@ -1452,8 +1452,8 @@ main_menu_seg7.0CAC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xCAC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCAC8
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_small_tsu
 main_menu_seg7.0CB08:
@@ -1461,8 +1461,8 @@ main_menu_seg7.0CB08:
   size: 64
   width: 8
   height: 8
-  offset: 0xCB08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCB08
   format: IA8
   symbol: texture_menu_font_char_jp_A
 main_menu_seg7.0CB48:
@@ -1470,8 +1470,8 @@ main_menu_seg7.0CB48:
   size: 64
   width: 8
   height: 8
-  offset: 0xCB48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCB48
   format: IA8
   symbol: texture_menu_font_char_jp_B
 main_menu_seg7.0CB88:
@@ -1479,8 +1479,8 @@ main_menu_seg7.0CB88:
   size: 64
   width: 8
   height: 8
-  offset: 0xCB88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCB88
   format: IA8
   symbol: texture_menu_font_char_jp_C
 main_menu_seg7.0CBC8:
@@ -1488,8 +1488,8 @@ main_menu_seg7.0CBC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xCBC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCBC8
   format: IA8
   symbol: texture_menu_font_char_jp_D
 main_menu_seg7.0CC08:
@@ -1497,8 +1497,8 @@ main_menu_seg7.0CC08:
   size: 64
   width: 8
   height: 8
-  offset: 0xCC08
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCC08
   format: IA8
   symbol: texture_menu_font_char_jp_coin
 main_menu_seg7.0CC48:
@@ -1506,8 +1506,8 @@ main_menu_seg7.0CC48:
   size: 64
   width: 8
   height: 8
-  offset: 0xCC48
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCC48
   format: IA8
   symbol: texture_menu_font_char_jp_star_filled
 main_menu_seg7.0CC88:
@@ -1515,8 +1515,8 @@ main_menu_seg7.0CC88:
   size: 64
   width: 8
   height: 8
-  offset: 0xCC88
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCC88
   format: IA8
   symbol: texture_menu_font_char_jp_multiply
 main_menu_seg7.0CCC8:
@@ -1524,8 +1524,8 @@ main_menu_seg7.0CCC8:
   size: 64
   width: 8
   height: 8
-  offset: 0xCCC8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xCCC8
   format: IA8
   symbol: texture_menu_font_char_jp_exclamation
 main_menu_seg7.0D1A8:
@@ -1533,8 +1533,8 @@ main_menu_seg7.0D1A8:
   size: 4096
   width: 64
   height: 32
-  offset: 0xD1A8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xD1A8
   format: RGBA16
   symbol: texture_menu_course_upper
 main_menu_seg7.0E1A8:
@@ -1542,7 +1542,7 @@ main_menu_seg7.0E1A8:
   size: 4096
   width: 64
   height: 32
-  offset: 0xE1A8
-  mio0: 0x2A4730
+  offset: 0x2A4730
+  mio0: 0xE1A8
   format: RGBA16
   symbol: texture_menu_course_lower

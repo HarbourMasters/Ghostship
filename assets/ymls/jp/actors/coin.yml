@@ -3,8 +3,8 @@ coin_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5780
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x5780
   format: IA16
   symbol: coin_seg3_texture_03005780
 coin_side:
@@ -12,8 +12,8 @@ coin_side:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6780
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x6780
   format: IA16
   symbol: coin_seg3_texture_03006780
 coin_tilt_left:
@@ -21,8 +21,8 @@ coin_tilt_left:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6F80
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x6F80
   format: IA16
   symbol: coin_seg3_texture_03006F80
 coin_tilt_right:
@@ -30,7 +30,7 @@ coin_tilt_right:
   size: 2048
   width: 32
   height: 32
-  offset: 0x5F80
-  mio0: 0x1FF740
+  offset: 0x1FF740
+  mio0: 0x5F80
   format: IA16
   symbol: coin_seg3_texture_03005F80

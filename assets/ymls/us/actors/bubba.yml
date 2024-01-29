@@ -3,8 +3,8 @@ bubba_eye_border:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1408
-  mio0: 0x180BB0
+  offset: 0x180BB0
+  mio0: 0x1408
   format: RGBA16
   symbol: bubba_seg5_texture_05001408
 bubba_eyes_unused:
@@ -12,8 +12,8 @@ bubba_eyes_unused:
   size: 4096
   width: 64
   height: 32
-  offset: 0x408
-  mio0: 0x180BB0
+  offset: 0x180BB0
+  mio0: 0x408
   format: RGBA16
   symbol: bubba_seg5_texture_05000408
 bubba_fins:
@@ -21,8 +21,8 @@ bubba_fins:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C08
-  mio0: 0x180BB0
+  offset: 0x180BB0
+  mio0: 0x1C08
   format: RGBA16
   symbol: bubba_seg5_texture_05001C08
 bubba_scales:
@@ -30,8 +30,8 @@ bubba_scales:
   size: 8192
   width: 64
   height: 64
-  offset: 0x2408
-  mio0: 0x180BB0
+  offset: 0x180BB0
+  mio0: 0x2408
   format: RGBA16
   symbol: bubba_seg5_texture_05002408
 bubba_sunglasses:
@@ -39,7 +39,7 @@ bubba_sunglasses:
   size: 1024
   width: 16
   height: 32
-  offset: 0x8
-  mio0: 0x180BB0
+  offset: 0x180BB0
+  mio0: 0x8
   format: RGBA16
   symbol: bubba_seg5_texture_05000008

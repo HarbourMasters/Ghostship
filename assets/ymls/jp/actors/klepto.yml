@@ -3,8 +3,8 @@ klepto_beak:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1008
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x1008
   format: RGBA16
   symbol: klepto_seg5_texture_05001008
 klepto_chest_tuft:
@@ -12,8 +12,8 @@ klepto_chest_tuft:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x8
   format: RGBA16
   symbol: klepto_seg5_texture_05000008
 klepto_eye:
@@ -21,8 +21,8 @@ klepto_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x808
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x808
   format: RGBA16
   symbol: klepto_seg5_texture_05000808
 klepto_wing:
@@ -30,8 +30,8 @@ klepto_wing:
   size: 4096
   width: 64
   height: 32
-  offset: 0x2008
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x2008
   format: RGBA16
   symbol: klepto_seg5_texture_05002008
 klepto_wing_flap:
@@ -39,7 +39,7 @@ klepto_wing_flap:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3008
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x3008
   format: RGBA16
   symbol: klepto_seg5_texture_05003008

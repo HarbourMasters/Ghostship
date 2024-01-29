@@ -3,8 +3,8 @@ mr_blizzard_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0xB470
-  mio0: 0x160670
+  offset: 0x160670
+  mio0: 0xB470
   format: RGBA16
   symbol: snowman_seg5_texture_0500B470
 mr_blizzard_left_side:
@@ -12,8 +12,8 @@ mr_blizzard_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x9470
-  mio0: 0x160670
+  offset: 0x160670
+  mio0: 0x9470
   format: RGBA16
   symbol: snowman_seg5_texture_05009470
 mr_blizzard_mitten:
@@ -21,8 +21,8 @@ mr_blizzard_mitten:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8C70
-  mio0: 0x160670
+  offset: 0x160670
+  mio0: 0x8C70
   format: RGBA16
   symbol: snowman_seg5_texture_05008C70
 mr_blizzard_mouth:
@@ -30,8 +30,8 @@ mr_blizzard_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0xBC70
-  mio0: 0x160670
+  offset: 0x160670
+  mio0: 0xBC70
   format: RGBA16
   symbol: snowman_seg5_texture_0500BC70
 mr_blizzard_right_side:
@@ -39,7 +39,7 @@ mr_blizzard_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0xA470
-  mio0: 0x160670
+  offset: 0x160670
+  mio0: 0xA470
   format: RGBA16
   symbol: snowman_seg5_texture_0500A470

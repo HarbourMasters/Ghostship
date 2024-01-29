@@ -3,7 +3,7 @@ cyan_fish:
   size: 2048
   width: 32
   height: 32
-  offset: 0xD468
-  mio0: 0x1B9CC0
+  offset: 0x1B9CC0
+  mio0: 0xD468
   format: RGBA16
   symbol: cyan_fish_seg6_texture_0600D468

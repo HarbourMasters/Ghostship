@@ -3,8 +3,8 @@ sparkle_0:
   size: 2048
   width: 32
   height: 32
-  offset: 0x27490
-  mio0: 0x112B50
+  offset: 0x112B50
+  mio0: 0x27490
   format: RGBA16
   symbol: sparkles_seg4_texture_04027490
 sparkle_1:
@@ -12,8 +12,8 @@ sparkle_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x27C90
-  mio0: 0x112B50
+  offset: 0x112B50
+  mio0: 0x27C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04027C90
 sparkle_2:
@@ -21,8 +21,8 @@ sparkle_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x28490
-  mio0: 0x112B50
+  offset: 0x112B50
+  mio0: 0x28490
   format: RGBA16
   symbol: sparkles_seg4_texture_04028490
 sparkle_3:
@@ -30,8 +30,8 @@ sparkle_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x28C90
-  mio0: 0x112B50
+  offset: 0x112B50
+  mio0: 0x28C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04028C90
 sparkle_4:
@@ -39,8 +39,8 @@ sparkle_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x29490
-  mio0: 0x112B50
+  offset: 0x112B50
+  mio0: 0x29490
   format: RGBA16
   symbol: sparkles_seg4_texture_04029490
 sparkle_5:
@@ -48,7 +48,7 @@ sparkle_5:
   size: 2048
   width: 32
   height: 32
-  offset: 0x29C90
-  mio0: 0x112B50
+  offset: 0x112B50
+  mio0: 0x29C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04029C90

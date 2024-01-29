@@ -1,36 +1,36 @@
-vcutm_0:
+0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x0
-  mio0: 0x45C600
+  offset: 0x45C600
+  mio0: 0x0
   format: RGBA16
   symbol: vcutm_seg7_texture_07000000
-vcutm_1:
+1:
   type: TEXTURE
   size: 4096
   width: 64
   height: 32
-  offset: 0x800
-  mio0: 0x45C600
+  offset: 0x45C600
+  mio0: 0x800
   format: RGBA16
   symbol: vcutm_seg7_texture_07000800
-vcutm_2:
+2:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x1800
-  mio0: 0x45C600
+  offset: 0x45C600
+  mio0: 0x1800
   format: RGBA16
   symbol: vcutm_seg7_texture_07001800
-vcutm_3:
+3:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x2800
-  mio0: 0x45C600
+  offset: 0x45C600
+  mio0: 0x2800
   format: RGBA16
   symbol: vcutm_seg7_texture_07002800

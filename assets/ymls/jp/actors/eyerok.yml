@@ -3,8 +3,8 @@ eyerok_bricks:
   size: 2048
   width: 32
   height: 32
-  offset: 0x8D40
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x8D40
   format: RGBA16
   symbol: eyerok_seg5_texture_05008D40
 eyerok_eye_closed:
@@ -12,8 +12,8 @@ eyerok_eye_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0xAD40
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0xAD40
   format: RGBA16
   symbol: eyerok_seg5_texture_0500AD40
 eyerok_eye_mostly_closed:
@@ -21,8 +21,8 @@ eyerok_eye_mostly_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0xA540
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0xA540
   format: RGBA16
   symbol: eyerok_seg5_texture_0500A540
 eyerok_eye_mostly_open:
@@ -30,8 +30,8 @@ eyerok_eye_mostly_open:
   size: 2048
   width: 32
   height: 32
-  offset: 0x9D40
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x9D40
   format: RGBA16
   symbol: eyerok_seg5_texture_05009D40
 eyerok_eye_open:
@@ -39,7 +39,7 @@ eyerok_eye_open:
   size: 2048
   width: 32
   height: 32
-  offset: 0x9540
-  mio0: 0x144290
+  offset: 0x144290
+  mio0: 0x9540
   format: RGBA16
   symbol: eyerok_seg5_texture_05009540

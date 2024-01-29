@@ -3,8 +3,8 @@ koopa_shell_back:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2E48
-  mio0: 0x1C4230
+  offset: 0x1C4230
+  mio0: 0x2E48
   format: RGBA16
   symbol: koopa_shell_seg8_texture_08027CA0
 koopa_shell_front:
@@ -12,7 +12,7 @@ koopa_shell_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2648
-  mio0: 0x1C4230
+  offset: 0x1C4230
+  mio0: 0x2648
   format: RGBA16
   symbol: koopa_shell_seg8_texture_080274A0

@@ -3,8 +3,8 @@ moneybag_eyes:
   size: 2048
   width: 32
   height: 32
-  offset: 0x49B0
-  mio0: 0x1E3520
+  offset: 0x1E3520
+  mio0: 0x49B0
   format: RGBA16
   symbol: moneybag_seg6_texture_060049B0
 moneybag_mouth:
@@ -12,7 +12,7 @@ moneybag_mouth:
   size: 4096
   width: 64
   height: 32
-  offset: 0x39B0
-  mio0: 0x1E3520
+  offset: 0x1E3520
+  mio0: 0x39B0
   format: RGBA16
   symbol: moneybag_seg6_texture_060039B0

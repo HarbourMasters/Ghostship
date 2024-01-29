@@ -3,8 +3,8 @@ chair_bottom:
   size: 1024
   width: 32
   height: 16
-  offset: 0x4060
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x4060
   format: RGBA16
   symbol: chair_seg5_texture_05004060
 chair_front:
@@ -12,8 +12,8 @@ chair_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3060
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x3060
   format: RGBA16
   symbol: chair_seg5_texture_05003060
 chair_leg:
@@ -21,8 +21,8 @@ chair_leg:
   size: 2048
   width: 32
   height: 32
-  offset: 0x3860
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x3860
   format: RGBA16
   symbol: chair_seg5_texture_05003860
 chair_surface_unused:
@@ -30,7 +30,7 @@ chair_surface_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4460
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x4460
   format: RGBA16
   symbol: chair_seg5_texture_05004460

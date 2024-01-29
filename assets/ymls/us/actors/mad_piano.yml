@@ -3,8 +3,8 @@ mad_piano_body:
   size: 1024
   width: 16
   height: 32
-  offset: 0x72F0
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x72F0
   format: RGBA16
   symbol: mad_piano_seg5_texture_050072F0
 mad_piano_keys:
@@ -12,8 +12,8 @@ mad_piano_keys:
   size: 1024
   width: 32
   height: 16
-  offset: 0x7EF0
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x7EF0
   format: RGBA16
   symbol: mad_piano_seg5_texture_05007EF0
 mad_piano_keys_corner:
@@ -21,8 +21,8 @@ mad_piano_keys_corner:
   size: 1024
   width: 32
   height: 16
-  offset: 0x76F0
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x76F0
   format: RGBA16
   symbol: mad_piano_seg5_texture_050076F0
 mad_piano_keys_edge:
@@ -30,8 +30,8 @@ mad_piano_keys_edge:
   size: 1024
   width: 32
   height: 16
-  offset: 0x82F0
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x82F0
   format: RGBA16
   symbol: mad_piano_seg5_texture_050082F0
 mad_piano_mouth:
@@ -39,8 +39,8 @@ mad_piano_mouth:
   size: 1024
   width: 16
   height: 32
-  offset: 0x7AF0
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x7AF0
   format: RGBA16
   symbol: mad_piano_seg5_texture_05007AF0
 mad_piano_tooth:
@@ -48,7 +48,7 @@ mad_piano_tooth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x6AF0
-  mio0: 0x166C60
+  offset: 0x166C60
+  mio0: 0x6AF0
   format: RGBA16
   symbol: mad_piano_seg5_texture_05006AF0
