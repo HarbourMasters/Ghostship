@@ -18,9 +18,11 @@
 #include <utility>
 
 extern "C" {
+#include "sm64.h"
 #include "audio/external.h"
 #include "audio/internal.h"
 #include "game/ingame_menu.h"
+float gInterpolationStep = 0.0f;
 }
 
 GameEngine* GameEngine::Instance;
@@ -91,16 +93,6 @@ void GameEngine::StartFrame() const{
         default: break;
     }
     this->context->GetWindow()->StartFrame();
-}
-
-void GameEngine::RunCommands(Gfx* Commands) {
-    gfx_run(Commands, {});
-    gfx_end_frame();
-
-    if (ShouldClearTextureCacheAtEndOfFrame) {
-        gfx_texture_cache_clear();
-        ShouldClearTextureCacheAtEndOfFrame = false;
-    }
 }
 
 void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
@@ -215,6 +207,62 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
 
 uint32_t GameEngine::GetGameVersion() {
     return LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
+}
+
+void GameEngine::RunCommands(Gfx* Commands) {
+    gfx_run(Commands, {});
+    gfx_end_frame();
+
+    if (ShouldClearTextureCacheAtEndOfFrame) {
+        gfx_texture_cache_clear();
+        ShouldClearTextureCacheAtEndOfFrame = false;
+    }
+}
+
+void GameEngine::PatchInterpolations() {
+    mtx_patch_interpolated();
+    patch_screen_transition_interpolated();
+    patch_title_screen_scales();
+    patch_interpolated_dialog();
+    patch_interpolated_hud();
+    patch_interpolated_paintings();
+    patch_interpolated_bubble_particles();
+    patch_interpolated_snow_particles();
+}
+
+void GameEngine::ProcessGfxCommands(Gfx* commands) {
+    int target_fps = GetInterpolationFPS();
+    static int last_fps;
+    static int time;
+    int fps = target_fps;
+    int original_fps = 30;
+
+    if (target_fps == 30 || original_fps > target_fps) {
+        fps = original_fps;
+    }
+
+    if (last_fps != fps) {
+        time = 0;
+    }
+
+    int next_original_frame = fps;
+    while (time + original_fps <= next_original_frame) {
+        time += original_fps;
+        if (time != next_original_frame) {
+            gInterpolationStep = (float)time / next_original_frame;
+        }
+        RunCommands(commands);
+        PatchInterpolations();
+    }
+
+    time -= fps;
+
+    Instance->context->GetWindow()->SetTargetFps(fps);
+
+    int threshold = CVarGetInteger("gExtraLatencyThreshold", 80);
+    Instance->context->GetWindow()->SetMaximumFrameLatency(threshold > 0 && target_fps >= threshold ? 2 : 1);
+
+    last_fps = fps;
 }
 
 extern "C" uint32_t GameEngine_GetInterpolatedFPS() {

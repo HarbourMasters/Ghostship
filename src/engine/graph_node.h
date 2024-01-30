@@ -1,8 +1,10 @@
 #ifndef GRAPH_NODE_H
 #define GRAPH_NODE_H
 
+#ifndef __cplusplus
 #include <libultra/types.h>
 #include <libultra/gbi.h>
+#endif
 
 #include "types.h"
 #include "game/memory.h"
