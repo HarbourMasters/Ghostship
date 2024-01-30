@@ -19,6 +19,7 @@ std::shared_ptr<GameMenuBar> mGameMenuBar;
 std::shared_ptr<LUS::GuiWindow> mConsoleWindow;
 std::shared_ptr<LUS::GuiWindow> mStatsWindow;
 std::shared_ptr<LUS::GuiWindow> mInputEditorWindow;
+std::shared_ptr<LUS::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<SaveEditorWindow> mSaveEditorWindow;
 std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
@@ -46,6 +47,11 @@ void SetupGuiElements() {
     if (mInputEditorWindow == nullptr) {
         SPDLOG_ERROR("Could not find input editor window");
         return;
+    }
+
+    mGfxDebuggerWindow = gui->GetGuiWindow("GfxDebuggerWindow");
+    if (mGfxDebuggerWindow == nullptr) {
+        SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
     mAdvancedResolutionSettingsWindow = std::make_shared<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow>("gAdvancedResolutionEditorEnabled", "Advanced Resolution Settings");
@@ -450,6 +456,10 @@ const char* debugInfoPages[6] = {
 
 void DrawDebugMenu() {
     if (UIWidgets::BeginMenu("Developer")) {
+        UIWidgets::WindowButton("Gfx Debugger", "gGfxDebuggerEnabled", GameUI::mGfxDebuggerWindow, {
+            .tooltip = "Enables the Gfx Debugger window, allowing you to input commands, type help for some examples"
+        });
+
         UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
             .tooltip = "Various debug features, including a level selector from the main menu"
         });

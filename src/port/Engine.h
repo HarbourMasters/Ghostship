@@ -37,6 +37,8 @@ class GameEngine {
     static void StartAudioFrame();
     static void EndAudioFrame();
     static void AudioExit();
+    static void PatchInterpolations();
+    static void ProcessGfxCommands(Gfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();
     uint32_t GetGameVersion();
@@ -44,6 +46,7 @@ class GameEngine {
     static void Destroy();
 };
 #else
+void GameEngine_ProcessGfxCommands(Gfx* commands);
 uint32_t GameEngine_GetInterpolatedFPS();
 uint32_t GameEngine_GetSampleRate();
 uint32_t GameEngine_GetSamplesPerFrame();

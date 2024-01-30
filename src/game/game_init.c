@@ -327,6 +327,7 @@ void render_init(void) {
     init_rcp();
     clear_framebuffer(0);
     end_master_display_list();
+
     exec_display_list(&gGfxPool->spTask);
 
     sRenderingFramebuffer++;
@@ -357,6 +358,9 @@ void display_and_vsync(void) {
     if (gGoddardVblankCallback != NULL) {
         gGoddardVblankCallback();
         gGoddardVblankCallback = NULL;
+    }
+    if(GfxDebuggerIsDebuggingRequested()) {
+        GfxDebuggerDebugDisplayList(gGfxPool->spTask.task.t.data_ptr);
     }
     exec_display_list(&gGfxPool->spTask);
     profiler_log_thread5_time(AFTER_DISPLAY_LISTS);
@@ -647,6 +651,11 @@ void thread5_game_loop(void) {
 }
 
 void thread5_iteration(void){
+    if (GfxDebuggerIsDebugging()) {
+        exec_display_list(&gGfxPool->spTask);
+        return;
+    }
+
     // If the reset timer is active, run the process to reset the game.
     if (gResetTimer != 0) {
         draw_reset_bars();

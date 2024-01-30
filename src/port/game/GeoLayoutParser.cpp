@@ -300,6 +300,7 @@ void process_cmd_node_translation() {
     if (params & 0x80) {
         displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
         drawingLayer = params & 0x0F;
+        SPDLOG_INFO("Current Offset {}", GeoLayoutParser::mReader->GetBaseAddress());
     }
 
     GraphNodeTranslation* graphNode =
@@ -315,7 +316,7 @@ void process_cmd_node_rotation() {
     s16 drawingLayer = 0;
     void *displayList = nullptr;
 
-    ReadVec3s(rotation);
+    ReadVec3sAngle(rotation);
 
     if (params & 0x80) {
         displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
