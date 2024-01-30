@@ -50,9 +50,6 @@ void patch_title_screen_scales(void) {
     }
 }
 
-static const u8 intro_seg7_dl_0700B3A0[] = "__OTR__levels/intro/intro_seg7_dl_0700B3A0";
-static const u8 intro_seg7_dl_0700C6A0[] = "__OTR__levels/intro/intro_seg7_dl_0700C6A0";
-
 /**
  * Geo callback to render the "Super Mario 64" logo on the title screen
  */
@@ -107,7 +104,7 @@ Gfx *geo_intro_super_mario_64_logo(s32 state, struct GraphNode *node, UNUSED voi
         sIntroScalePos = dlIter;
 
         gSPMatrix(dlIter++, scaleMat, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-        gSPDisplayList(dlIter++, intro_seg7_dl_0700B3A0);  // draw model
+        gSPDisplayList(dlIter++, &intro_seg7_dl_0700B3A0);  // draw model
         gSPPopMatrix(dlIter++, G_MTX_MODELVIEW);
         gSPEndDisplayList(dlIter);
 
@@ -141,7 +138,7 @@ Gfx *geo_intro_tm_copyright(s32 state, struct GraphNode *node, UNUSED void *cont
                 gDPSetRenderMode(dlIter++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
                 break;
         }
-        gSPDisplayList(dlIter++, intro_seg7_dl_0700C6A0);  // draw model
+        gSPDisplayList(dlIter++, &intro_seg7_dl_0700C6A0);  // draw model
         gSPEndDisplayList(dlIter);
 
         // Once the "Super Mario 64" logo has just about zoomed fully, fade in the "TM" and copyright text

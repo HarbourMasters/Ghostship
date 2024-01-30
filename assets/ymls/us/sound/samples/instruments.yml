@@ -4,7 +4,7 @@
 01_banjo_1:
   type: SAMPLE
   id: 142
-sfx_02:
+02:
   type: SAMPLE
   id: 143
 03_human_whistle:
@@ -22,16 +22,16 @@ sfx_02:
 07_rimshot:
   type: SAMPLE
   id: 148
-sfx_08:
+08:
   type: SAMPLE
   id: 149
-sfx_09:
+09:
   type: SAMPLE
   id: 150
 0A_tambourine:
   type: SAMPLE
   id: 151
-sfx_0B:
+0B:
   type: SAMPLE
   id: 152
 0C_conga_stick:
@@ -82,10 +82,10 @@ sfx_0B:
 1B_organ_2:
   type: SAMPLE
   id: 168
-sfx_1C:
+1C:
   type: SAMPLE
   id: 169
-sfx_1D:
+1D:
   type: SAMPLE
   id: 170
 1E_closed_triangle:
@@ -124,13 +124,13 @@ sfx_1D:
 29_orchestra_hit:
   type: SAMPLE
   id: 182
-sfx_2A:
+2A:
   type: SAMPLE
   id: 183
-sfx_2B:
+2B:
   type: SAMPLE
   id: 184
-sfx_2C:
+2C:
   type: SAMPLE
   id: 185
 2D_trombone:
@@ -181,13 +181,13 @@ sfx_2C:
 3C_acoustic_guitar:
   type: SAMPLE
   id: 201
-sfx_3D:
+3D:
   type: SAMPLE
   id: 202
 3E_monk_choir:
   type: SAMPLE
   id: 203
-sfx_3F:
+3F:
   type: SAMPLE
   id: 204
 40_bell:

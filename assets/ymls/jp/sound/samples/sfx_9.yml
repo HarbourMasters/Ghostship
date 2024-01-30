@@ -1,13 +1,13 @@
 00:
   type: SAMPLE
   id: 99
-sfx_01:
+01:
   type: SAMPLE
   id: 100
-sfx_02:
+02:
   type: SAMPLE
   id: 101
-sfx_03:
+03:
   type: SAMPLE
   id: 102
 04_camera_buzz:
@@ -16,6 +16,6 @@ sfx_03:
 05_camera_shutter:
   type: SAMPLE
   id: 104
-sfx_06:
+06:
   type: SAMPLE
   id: 105

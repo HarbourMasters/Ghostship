@@ -7,79 +7,79 @@
 02_water:
   type: BANK
   id: 2
-bnk_03:
+03:
   type: BANK
   id: 3
-bnk_04:
+04:
   type: BANK
   id: 4
-bnk_05:
+05:
   type: BANK
   id: 5
-bnk_06:
+06:
   type: BANK
   id: 6
-bnk_07:
+07:
   type: BANK
   id: 7
 08_mario:
   type: BANK
   id: 8
-bnk_09:
+09:
   type: BANK
   id: 9
 0A_mario_peach:
   type: BANK
   id: 10
-bnk_0B:
+0B:
   type: BANK
   id: 11
-bnk_0C:
+0C:
   type: BANK
   id: 12
-bnk_0D:
+0D:
   type: BANK
   id: 13
-bnk_0E:
+0E:
   type: BANK
   id: 14
-bnk_0F:
+0F:
   type: BANK
   id: 15
-bnk_10:
+10:
   type: BANK
   id: 16
-bnk_11:
+11:
   type: BANK
   id: 17
-bnk_12:
+12:
   type: BANK
   id: 18
-bnk_13:
+13:
   type: BANK
   id: 19
 14_piranha_music_box:
   type: BANK
   id: 20
-bnk_15:
+15:
   type: BANK
   id: 21
 16_course_start:
   type: BANK
   id: 22
-bnk_17:
+17:
   type: BANK
   id: 23
-bnk_18:
+18:
   type: BANK
   id: 24
-bnk_19:
+19:
   type: BANK
   id: 25
-bnk_1A:
+1A:
   type: BANK
   id: 26
-bnk_1B:
+1B:
   type: BANK
   id: 27
 1C_endless_stairs:
@@ -88,27 +88,27 @@ bnk_1B:
 1D_bowser_organ:
   type: BANK
   id: 29
-bnk_1E:
+1E:
   type: BANK
   id: 30
-bnk_1F:
+1F:
   type: BANK
   id: 31
-bnk_20:
+20:
   type: BANK
   id: 32
-bnk_21:
+21:
   type: BANK
   id: 33
-bnk_22:
+22:
   type: BANK
   id: 34
-bnk_23:
+23:
   type: BANK
   id: 35
-bnk_24:
+24:
   type: BANK
   id: 36
-bnk_25:
+25:
   type: BANK
   id: 37
