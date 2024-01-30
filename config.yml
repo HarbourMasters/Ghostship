@@ -3,7 +3,7 @@
 
 8a20a5c83d6ceb0f0506cfc9fa20d8f438cafe51:
   name: Super Mario 64 [JP]
-  path: assets/ymls/us
+  path: assets/ymls/jp
   config:
     gbi: F3D
     sort: OFFSET

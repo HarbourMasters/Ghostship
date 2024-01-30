@@ -38,7 +38,7 @@ const GeoLayout intro_geo_0002D0[] = {
       GEO_CLOSE_NODE(),
       GEO_ZBUFFER(0),
       GEO_OPEN_NODE(),
-//         GEO_ASM(0, geo_intro_tm_copyright),
+        GEO_ASM(0, geo_intro_tm_copyright),
       GEO_CLOSE_NODE(),
    GEO_CLOSE_NODE(),
    GEO_END(),
