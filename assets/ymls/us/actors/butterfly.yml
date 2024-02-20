@@ -7,3 +7,12 @@ butterfly_wing:
   mio0: 0x43A8
   format: RGBA16
   symbol: butterfly_seg3_texture_030043A8
+
+:config:
+  segments:
+    seg22: 0x218DA0
+
+butterfly_geo:
+  type: GEO_LAYOUT
+  offset: 0x160000A8
+  symbol: butterfly_geo

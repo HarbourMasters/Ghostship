@@ -43,3 +43,12 @@ monty_mole_tooth:
   mio0: 0x2170
   format: RGBA16
   symbol: monty_mole_seg5_texture_05002170
+
+:config:
+  segments:
+    seg12: 0x1602E0
+
+monty_mole_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000000
+  symbol: monty_mole_geo

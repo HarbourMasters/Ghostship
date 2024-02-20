@@ -34,3 +34,72 @@
   mio0: 0x2000
   format: RGBA16
   symbol: jrb_seg7_texture_07002000
+
+:config:
+  segments:
+    seg14: 0x423B20
+
+jrb_geo_000900:
+  type: GEO_LAYOUT
+  offset: 0x0E000900
+  symbol: jrb_geo_000900
+
+jrb_geo_000918:
+  type: GEO_LAYOUT
+  offset: 0x0E000918
+  symbol: jrb_geo_000918
+
+jrb_geo_000930:
+  type: GEO_LAYOUT
+  offset: 0x0E000930
+  symbol: jrb_geo_000930
+
+jrb_geo_000948:
+  type: GEO_LAYOUT
+  offset: 0x0E000948
+  symbol: jrb_geo_000948
+
+jrb_geo_000960:
+  type: GEO_LAYOUT
+  offset: 0x0E000960
+  symbol: jrb_geo_000960
+
+jrb_geo_000978:
+  type: GEO_LAYOUT
+  offset: 0x0E000978
+  symbol: jrb_geo_000978
+
+jrb_geo_000990:
+  type: GEO_LAYOUT
+  offset: 0x0E000990
+  symbol: jrb_geo_000990
+
+jrb_geo_0009B0:
+  type: GEO_LAYOUT
+  offset: 0x0E0009B0
+  symbol: jrb_geo_0009B0
+
+jrb_geo_0009C8:
+  type: GEO_LAYOUT
+  offset: 0x0E0009C8
+  symbol: jrb_geo_0009C8
+
+jrb_geo_0009E8:
+  type: GEO_LAYOUT
+  offset: 0x0E0009E8
+  symbol: jrb_geo_0009E8
+
+jrb_geo_000A00:
+  type: GEO_LAYOUT
+  offset: 0x0E000A00
+  symbol: jrb_geo_000A00
+
+jrb_geo_000A18:
+  type: GEO_LAYOUT
+  offset: 0x0E000A18
+  symbol: jrb_geo_000A18
+
+jrb_geo_000AFC:
+  type: GEO_LAYOUT
+  offset: 0x0E000AFC
+  symbol: jrb_geo_000AFC

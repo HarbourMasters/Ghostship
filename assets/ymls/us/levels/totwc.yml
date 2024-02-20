@@ -34,3 +34,17 @@
   mio0: 0x2000
   format: IA16
   symbol: totwc_seg7_texture_07002000
+
+:config:
+  segments:
+    seg14: 0x4C2700
+
+totwc_geo_000160:
+  type: GEO_LAYOUT
+  offset: 0x0E000160
+  symbol: totwc_geo_000160
+
+totwc_geo_000188:
+  type: GEO_LAYOUT
+  offset: 0x0E000188
+  symbol: totwc_geo_000188

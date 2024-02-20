@@ -169,3 +169,252 @@ mario_wing_tip:
   mio0: 0x9090
   format: RGBA16
   symbol: mario_texture_wings_half_2
+
+:config:
+  segments:
+    seg23: 0x1279b0
+
+mario_geo_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x170002E0
+  symbol: mario_geo_face_and_wings
+
+mario_geo_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x1700041C
+  symbol: mario_geo_left_hand
+
+mario_geo_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17000494
+  symbol: mario_geo_right_hand
+
+mario_geo_body:
+  type: GEO_LAYOUT
+  offset: 0x1700053C
+  symbol: mario_geo_body
+
+mario_geo_medium_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x170006F8
+  symbol: mario_geo_medium_poly_left_hand
+
+mario_geo_medium_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17000770
+  symbol: mario_geo_medium_poly_right_hand
+
+mario_geo_medium_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17000818
+  symbol: mario_geo_medium_poly_body
+
+mario_geo_low_poly_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x170009D4
+  symbol: mario_geo_low_poly_face_and_wings
+
+mario_geo_low_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x17000B10
+  symbol: mario_geo_low_poly_left_hand
+
+mario_geo_low_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17000B88
+  symbol: mario_geo_low_poly_right_hand
+
+mario_geo_low_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17000C30
+  symbol: mario_geo_low_poly_body
+
+mario_vanish_geo_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x17000DEC
+  symbol: mario_vanish_geo_face_and_wings
+
+mario_vanish_geo_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x17000F28
+  symbol: mario_vanish_geo_left_hand
+
+mario_vanish_geo_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17000FA0
+  symbol: mario_vanish_geo_right_hand
+
+mario_vanish_geo_body:
+  type: GEO_LAYOUT
+  offset: 0x17001048
+  symbol: mario_vanish_geo_body
+
+mario_vanish_geo_medium_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x17001204
+  symbol: mario_vanish_geo_medium_poly_left_hand
+
+mario_vanish_geo_medium_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x1700127C
+  symbol: mario_vanish_geo_medium_poly_right_hand
+
+mario_vanish_geo_medium_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17001324
+  symbol: mario_vanish_geo_medium_poly_body
+
+mario_vanish_geo_low_poly_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x170014E0
+  symbol: mario_vanish_geo_low_poly_face_and_wings
+
+mario_vanish_geo_low_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x1700161C
+  symbol: mario_vanish_geo_low_poly_left_hand
+
+mario_vanish_geo_low_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17001694
+  symbol: mario_vanish_geo_low_poly_right_hand
+
+mario_vanish_geo_low_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x1700173C
+  symbol: mario_vanish_geo_low_poly_body
+
+mario_metal_geo_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x170018F8
+  symbol: mario_metal_geo_face_and_wings
+
+mario_metal_geo_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x170019A4
+  symbol: mario_metal_geo_left_hand
+
+mario_metal_geo_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17001A1C
+  symbol: mario_metal_geo_right_hand
+
+mario_metal_geo_body:
+  type: GEO_LAYOUT
+  offset: 0x17001AC4
+  symbol: mario_metal_geo_body
+
+mario_metal_geo_medium_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x17001C80
+  symbol: mario_metal_geo_medium_poly_left_hand
+
+mario_metal_geo_medium_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17001CF8
+  symbol: mario_metal_geo_medium_poly_right_hand
+
+mario_metal_geo_medium_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17001DA0
+  symbol: mario_metal_geo_medium_poly_body
+
+mario_metal_geo_low_poly_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x17001F5C
+  symbol: mario_metal_geo_low_poly_face_and_wings
+
+mario_metal_geo_low_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x17002008
+  symbol: mario_metal_geo_low_poly_left_hand
+
+mario_metal_geo_low_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17002080
+  symbol: mario_metal_geo_low_poly_right_hand
+
+mario_metal_geo_low_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17002128
+  symbol: mario_metal_geo_low_poly_body
+
+mario_metal_vanish_geo_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x170022E4
+  symbol: mario_metal_vanish_geo_face_and_wings
+
+mario_metal_vanish_geo_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x17002390
+  symbol: mario_metal_vanish_geo_left_hand
+
+mario_metal_vanish_geo_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17002408
+  symbol: mario_metal_vanish_geo_right_hand
+
+mario_metal_vanish_geo_body:
+  type: GEO_LAYOUT
+  offset: 0x170024B0
+  symbol: mario_metal_vanish_geo_body
+
+mario_metal_vanish_geo_medium_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x1700266C
+  symbol: mario_metal_vanish_geo_medium_poly_left_hand
+
+mario_metal_vanish_geo_medium_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x170026E4
+  symbol: mario_metal_vanish_geo_medium_poly_right_hand
+
+mario_metal_vanish_geo_medium_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x1700278C
+  symbol: mario_metal_vanish_geo_medium_poly_body
+
+mario_metal_vanish_geo_low_poly_face_and_wings:
+  type: GEO_LAYOUT
+  offset: 0x17002958
+  symbol: mario_metal_vanish_geo_low_poly_face_and_wings
+
+mario_metal_vanish_geo_low_poly_left_hand:
+  type: GEO_LAYOUT
+  offset: 0x17002A04
+  symbol: mario_metal_vanish_geo_low_poly_left_hand
+
+mario_metal_vanish_geo_low_poly_right_hand:
+  type: GEO_LAYOUT
+  offset: 0x17002A7C
+  symbol: mario_metal_vanish_geo_low_poly_right_hand
+
+mario_metal_vanish_geo_low_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17002B24
+  symbol: mario_metal_vanish_geo_low_poly_body
+
+mario_geo_load_body:
+  type: GEO_LAYOUT
+  offset: 0x17002CE0
+  symbol: mario_geo_load_body
+
+mario_geo_load_medium_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17002D14
+  symbol: mario_geo_load_medium_poly_body
+
+mario_geo_load_low_poly_body:
+  type: GEO_LAYOUT
+  offset: 0x17002D48
+  symbol: mario_geo_load_low_poly_body
+
+mario_geo_render_body:
+  type: GEO_LAYOUT
+  offset: 0x17002D7C
+  symbol: mario_geo_render_body
+
+mario_geo:
+  type: GEO_LAYOUT
+  offset: 0x17002DD4
+  symbol: mario_geo

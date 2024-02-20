@@ -25,3 +25,12 @@ sushi_tooth:
   mio0: 0x9AD0
   format: RGBA16
   symbol: sushi_seg5_texture_05009AD0
+
+:config:
+  segments:
+    seg12: 0x145C10
+
+sushi_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000068
+  symbol: sushi_geo

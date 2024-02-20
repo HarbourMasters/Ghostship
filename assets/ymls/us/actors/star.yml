@@ -16,3 +16,12 @@ star_surface:
   mio0: 0x2A6F0
   format: RGBA16
   symbol: star_seg3_texture_0302A6F0
+
+:config:
+  segments:
+    seg22: 0x218DA0
+
+star_geo:
+  type: GEO_LAYOUT
+  offset: 0x16000EA0
+  symbol: star_geo

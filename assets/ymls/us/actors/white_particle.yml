@@ -7,3 +7,12 @@ snow_particle:
   mio0: 0x2C6A0
   format: RGBA16
   symbol: white_particle_texture
+
+:config:
+  segments:
+    seg22: 0x218DA0
+
+white_particle_geo:
+  type: GEO_LAYOUT
+  offset: 0x16000F98
+  symbol: white_particle_geo

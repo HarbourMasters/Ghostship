@@ -52,3 +52,12 @@ piranha_plant_tooth:
   mio0: 0x13BF8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_06013BF8
+
+:config:
+  segments:
+    seg13: 0x1D7C90
+
+piranha_plant_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D000358
+  symbol: piranha_plant_geo

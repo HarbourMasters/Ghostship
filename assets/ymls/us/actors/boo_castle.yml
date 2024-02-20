@@ -16,3 +16,12 @@ bbh_boo_mouth:
   mio0: 0xAB40
   format: RGBA16
   symbol: boo_castle_seg6_texture_06016670
+
+:config:
+  segments:
+    seg13: 0x1E4BF0
+
+boo_castle_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D0005B0
+  symbol: boo_castle_geo

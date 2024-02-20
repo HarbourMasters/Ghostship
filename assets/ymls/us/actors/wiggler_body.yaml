@@ -1,0 +1,9 @@
+:config:
+  segments:
+    seg5: 0x180BB0
+
+wiggler_body_geo:
+  type: GEO_LAYOUT
+  offset: 0x180BB0
+  mio0: 0xC778
+  symbol: wiggler_body_geo

@@ -43,3 +43,12 @@
   mio0: 0x2800
   format: RGBA16
   symbol: cotmc_seg7_texture_07002800
+
+:config:
+  segments:
+    seg14: 0x4BE9E0
+
+cotmc_geo_0001A0:
+  type: GEO_LAYOUT
+  offset: 0x0E0001A0
+  symbol: cotmc_geo_0001A0

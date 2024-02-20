@@ -43,3 +43,12 @@ lakitu_enemy_shell:
   mio0: 0x114E0
   format: RGBA16
   symbol: lakitu_enemy_seg5_texture_050114E0
+
+:config:
+  segments:
+    seg12: 0x187FA0
+
+enemy_lakitu_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C0001BC
+  symbol: enemy_lakitu_geo

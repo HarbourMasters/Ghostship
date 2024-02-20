@@ -7,3 +7,17 @@ mist:
   mio0: 0x80
   format: IA16
   symbol: mist_seg3_texture_03000080
+
+:config:
+  segments:
+    seg22: 0x218DA0
+
+mist_geo:
+  type: GEO_LAYOUT
+  offset: 0x16000000
+  symbol: mist_geo
+
+white_puff_geo:
+  type: GEO_LAYOUT
+  offset: 0x16000020
+  symbol: white_puff_geo
