@@ -43,3 +43,32 @@
   mio0: 0x3000
   format: RGBA16
   symbol: ddd_seg7_texture_07003000
+
+:config:
+  segments:
+    seg14: 0x495A60
+
+ddd_geo_000450:
+  type: GEO_LAYOUT
+  offset: 0x0E000450
+  symbol: ddd_geo_000450
+
+ddd_geo_000478:
+  type: GEO_LAYOUT
+  offset: 0x0E000478
+  symbol: ddd_geo_000478
+
+ddd_geo_0004A0:
+  type: GEO_LAYOUT
+  offset: 0x0E0004A0
+  symbol: ddd_geo_0004A0
+
+ddd_geo_0004C0:
+  type: GEO_LAYOUT
+  offset: 0x0E0004C0
+  symbol: ddd_geo_0004C0
+
+ddd_geo_000570:
+  type: GEO_LAYOUT
+  offset: 0x0E000570
+  symbol: ddd_geo_000570

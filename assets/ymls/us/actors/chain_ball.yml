@@ -7,3 +7,12 @@ chain_ball:
   mio0: 0x20AE8
   format: RGBA16
   symbol: chain_ball_seg6_texture_06020AE8
+
+:config:
+  segments:
+    seg13: 0x1D7C90
+
+metallic_ball_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D0005D0
+  symbol: metallic_ball_geo

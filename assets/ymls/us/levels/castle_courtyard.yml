@@ -1,0 +1,13 @@
+:config:
+  segments:
+    seg14: 0x4AF670
+
+castle_courtyard_geo_000200:
+  type: GEO_LAYOUT
+  offset: 0x0E000200
+  symbol: castle_courtyard_geo_000200
+
+castle_courtyard_geo_000218:
+  type: GEO_LAYOUT
+  offset: 0x0E000218
+  symbol: castle_courtyard_geo_000218

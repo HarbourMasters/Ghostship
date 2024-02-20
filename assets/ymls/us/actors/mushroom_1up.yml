@@ -7,3 +7,12 @@
   mio0: 0x29628
   format: RGBA16
   symbol: mushroom_1up_seg3_texture_03029628
+
+:config:
+  segments:
+    seg22: 0x218DA0
+
+mushroom_1up_geo:
+  type: GEO_LAYOUT
+  offset: 0x16000E84
+  symbol: mushroom_1up_geo

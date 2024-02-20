@@ -34,3 +34,12 @@ swoop_wing:
   mio0: 0x5A70
   format: RGBA16
   symbol: swoop_seg6_texture_06005A70
+
+:config:
+  segments:
+    seg13: 0x1F1B30
+
+swoop_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D0000DC
+  symbol: swoop_geo

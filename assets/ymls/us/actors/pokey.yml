@@ -25,3 +25,17 @@ pokey_face_blink:
   mio0: 0x11F50
   format: RGBA16
   symbol: pokey_seg5_texture_05011F50
+
+:config:
+  segments:
+    seg12: 0x151B70
+
+pokey_head_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000610
+  symbol: pokey_head_geo
+
+pokey_body_part_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000644
+  symbol: pokey_body_part_geo

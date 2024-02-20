@@ -25,3 +25,12 @@ flyguy_propeller:
   mio0: 0xF888
   format: IA16
   symbol: flyguy_seg8_texture_0800F888
+
+:config:
+  segments:
+    seg15: 0x2008D0
+
+flyguy_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F000518
+  symbol: flyguy_geo

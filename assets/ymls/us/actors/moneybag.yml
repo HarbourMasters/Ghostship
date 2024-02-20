@@ -16,3 +16,22 @@ moneybag_mouth:
   mio0: 0x39B0
   format: RGBA16
   symbol: moneybag_seg6_texture_060039B0
+
+:config:
+  segments:
+    seg13: 0x1E7D90
+
+moneybag_geo_000000:
+  type: GEO_LAYOUT
+  offset: 0x0D000000
+  symbol: moneybag_geo_000000
+
+moneybag_geo_000078:
+  type: GEO_LAYOUT
+  offset: 0x0D000078
+  symbol: moneybag_geo_000078
+
+moneybag_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D0000F0
+  symbol: moneybag_geo

@@ -3,3 +3,12 @@ cake:
   size: 153600
   offset: 0x49E710
   mio0: 0x0
+
+:config:
+  segments:
+    seg14: 0x4AC4B0
+
+ending_geo_000050:
+  type: GEO_LAYOUT
+  offset: 0x0E000050
+  symbol: ending_geo_000050

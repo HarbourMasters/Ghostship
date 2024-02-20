@@ -115,3 +115,57 @@
   mio0: 0x3B00
   format: IA16
   symbol: ccm_seg7_texture_07003B00
+
+:config:
+  segments:
+    seg14: 0x395C90
+
+ccm_geo_0003D0:
+  type: GEO_LAYOUT
+  offset: 0x0E0003E0
+  symbol: ccm_geo_0003D0
+
+ccm_geo_0003F0:
+  type: GEO_LAYOUT
+  offset: 0x0E000400
+  symbol: ccm_geo_0003F0
+
+ccm_geo_00040C:
+  type: GEO_LAYOUT
+  offset: 0x0E00041C
+  symbol: ccm_geo_00040C
+
+ccm_geo_00042C:
+  type: GEO_LAYOUT
+  offset: 0x0E00043C
+  symbol: ccm_geo_00042C
+
+ccm_geo_00045C:
+  type: GEO_LAYOUT
+  offset: 0x0E00046C
+  symbol: ccm_geo_00045C
+
+ccm_geo_000494:
+  type: GEO_LAYOUT
+  offset: 0x0E0004A4
+  symbol: ccm_geo_000494
+
+ccm_geo_0004BC:
+  type: GEO_LAYOUT
+  offset: 0x0E0004CC
+  symbol: ccm_geo_0004BC
+
+ccm_geo_0004E4:
+  type: GEO_LAYOUT
+  offset: 0x0E0004F4
+  symbol: ccm_geo_0004E4
+
+ccm_geo_00051C:
+  type: GEO_LAYOUT
+  offset: 0x0E00052C
+  symbol: ccm_geo_00051C
+
+ccm_geo_0005E8:
+  type: GEO_LAYOUT
+  offset: 0x0E0005F8
+  symbol: ccm_geo_0005E8

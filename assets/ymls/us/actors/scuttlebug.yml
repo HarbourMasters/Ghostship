@@ -43,3 +43,12 @@ scuttlebug_right_side:
   mio0: 0x11908
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06011908
+
+:config:
+  segments:
+    seg13: 0x1F1B30
+
+scuttlebug_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D000394
+  symbol: scuttlebug_geo

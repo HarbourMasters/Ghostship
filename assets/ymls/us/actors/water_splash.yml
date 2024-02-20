@@ -70,3 +70,12 @@ water_splash_7:
   mio0: 0x315C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040315C8
+
+:config:
+  segments:
+    seg23: 0x1279B0
+
+water_splash_geo:
+  type: GEO_LAYOUT
+  offset: 0x17000230
+  symbol: water_splash_geo

@@ -7,3 +7,13 @@ tornado:
   mio0: 0x12848
   format: IA16
   symbol: tornado_seg5_texture_05013128
+
+:config:
+  segments:
+    seg5: 0x145E90
+
+tweester_geo:
+  type: GEO_LAYOUT
+  offset: 0x145E90
+  mio0: 0x4630
+  symbol: tweester_geo

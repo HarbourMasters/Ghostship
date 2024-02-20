@@ -34,3 +34,17 @@ bully_right_side:
   mio0: 0x1468
   format: RGBA16
   symbol: bully_seg5_texture_05001468
+
+:config:
+  segments:
+    seg12: 0x134A70
+
+bully_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000000
+  symbol: bully_geo
+
+bully_boss_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000120
+  symbol: bully_boss_geo

@@ -43,3 +43,12 @@ bubba_sunglasses:
   mio0: 0x8
   format: RGBA16
   symbol: bubba_seg5_texture_05000008
+
+:config:
+  segments:
+    seg12: 0x187FA0
+
+bubba_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000000
+  symbol: bubba_geo

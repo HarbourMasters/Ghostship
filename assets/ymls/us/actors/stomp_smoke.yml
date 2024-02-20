@@ -52,3 +52,17 @@ stomp_smoke_5:
   mio0: 0x24948
   format: IA16
   symbol: stomp_smoke_seg4_texture_04024948
+
+:config:
+  segments:
+    seg23: 0x1279B0
+
+small_water_splash_geo:
+  type: GEO_LAYOUT
+  offset: 0x1700009C
+  symbol: small_water_splash_geo
+
+mario_TODO_geo_0000E0:
+  type: GEO_LAYOUT
+  offset: 0x170000E0
+  symbol: mario_TODO_geo_0000E0

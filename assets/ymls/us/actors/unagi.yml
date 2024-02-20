@@ -52,3 +52,12 @@ unagi_tooth:
   mio0: 0xC120
   format: RGBA16
   symbol: unagi_seg5_texture_0500C120
+
+:config:
+  segments:
+    seg12: 0x145C10
+
+unagi_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C00010C
+  symbol: unagi_geo

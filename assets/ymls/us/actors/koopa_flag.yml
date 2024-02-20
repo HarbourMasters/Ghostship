@@ -7,3 +7,12 @@ koopa_flag_banner:
   mio0: 0x48
   format: RGBA16
   symbol: koopa_flag_seg6_texture_06000048
+
+:config:
+  segments:
+    seg13: 0x1D7C90
+
+koopa_flag_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D000000
+  symbol: koopa_flag_geo

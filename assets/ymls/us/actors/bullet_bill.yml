@@ -16,3 +16,12 @@ bullet_bill_mouth:
   mio0: 0xCAA8
   format: RGBA16
   symbol: bullet_bill_seg5_texture_0500CAA8
+
+:config:
+  segments:
+    seg12: 0x132850
+
+bullet_bill_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000264
+  symbol: bullet_bill_geo

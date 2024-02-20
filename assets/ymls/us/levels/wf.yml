@@ -52,3 +52,162 @@
   mio0: 0x121B8
   format: IA8
   symbol: wf_seg7_texture_07002800
+
+:config:
+  segments:
+    seg14: 0x49DA50
+
+wf_geo_0007E0:
+  type: GEO_LAYOUT
+  offset: 0x0E0007E0
+  symbol: wf_geo_0007E0
+
+wf_geo_000820:
+  type: GEO_LAYOUT
+  offset: 0x0E000820
+  symbol: wf_geo_000820
+
+wf_geo_000860:
+  type: GEO_LAYOUT
+  offset: 0x0E000860
+  symbol: wf_geo_000860
+
+wf_geo_000878:
+  type: GEO_LAYOUT
+  offset: 0x0E000878
+  symbol: wf_geo_000878
+
+wf_geo_000890:
+  type: GEO_LAYOUT
+  offset: 0x0E000890
+  symbol: wf_geo_000890
+
+wf_geo_0008A8:
+  type: GEO_LAYOUT
+  offset: 0x0E0008A8
+  symbol: wf_geo_0008A8
+
+wf_geo_0008E8:
+  type: GEO_LAYOUT
+  offset: 0x0E0008E8
+  symbol: wf_geo_0008E8
+
+wf_geo_000900:
+  type: GEO_LAYOUT
+  offset: 0x0E000900
+  symbol: wf_geo_000900
+
+wf_geo_000940:
+  type: GEO_LAYOUT
+  offset: 0x0E000940
+  symbol: wf_geo_000940
+
+wf_geo_000958:
+  type: GEO_LAYOUT
+  offset: 0x0E000958
+  symbol: wf_geo_000958
+
+wf_geo_0009A0:
+  type: GEO_LAYOUT
+  offset: 0x0E0009A0
+  symbol: wf_geo_0009A0
+
+wf_geo_0009B8:
+  type: GEO_LAYOUT
+  offset: 0x0E0009B8
+  symbol: wf_geo_0009B8
+
+wf_geo_0009D0:
+  type: GEO_LAYOUT
+  offset: 0x0E0009D0
+  symbol: wf_geo_0009D0
+
+wf_geo_0009E8:
+  type: GEO_LAYOUT
+  offset: 0x0E0009E8
+  symbol: wf_geo_0009E8
+
+wf_geo_000A00:
+  type: GEO_LAYOUT
+  offset: 0x0E000A00
+  symbol: wf_geo_000A00
+
+wf_geo_000A40:
+  type: GEO_LAYOUT
+  offset: 0x0E000A40
+  symbol: wf_geo_000A40
+
+wf_geo_000A58:
+  type: GEO_LAYOUT
+  offset: 0x0E000A58
+  symbol: wf_geo_000A58
+
+wf_geo_000A98:
+  type: GEO_LAYOUT
+  offset: 0x0E000A98
+  symbol: wf_geo_000A98
+
+wf_geo_000AB0:
+  type: GEO_LAYOUT
+  offset: 0x0E000AB0
+  symbol: wf_geo_000AB0
+
+wf_geo_000AC8:
+  type: GEO_LAYOUT
+  offset: 0x0E000AC8
+  symbol: wf_geo_000AC8
+
+wf_geo_000AE0:
+  type: GEO_LAYOUT
+  offset: 0x0E000AE0
+  symbol: wf_geo_000AE0
+
+wf_geo_000AF8:
+  type: GEO_LAYOUT
+  offset: 0x0E000AF8
+  symbol: wf_geo_000AF8
+
+wf_geo_000B10:
+  type: GEO_LAYOUT
+  offset: 0x0E000B10
+  symbol: wf_geo_000B10
+
+wf_geo_000B38:
+  type: GEO_LAYOUT
+  offset: 0x0E000B38
+  symbol: wf_geo_000B38
+
+wf_geo_000B60:
+  type: GEO_LAYOUT
+  offset: 0x0E000B60
+  symbol: wf_geo_000B60
+
+wf_geo_000B78:
+  type: GEO_LAYOUT
+  offset: 0x0E000B78
+  symbol: wf_geo_000B78
+
+wf_geo_000B90:
+  type: GEO_LAYOUT
+  offset: 0x0E000B90
+  symbol: wf_geo_000B90
+
+wf_geo_000BA8:
+  type: GEO_LAYOUT
+  offset: 0x0E000BA8
+  symbol: wf_geo_000BA8
+
+wf_geo_000BC8:
+  type: GEO_LAYOUT
+  offset: 0x0E000BC8
+  symbol: wf_geo_000BC8
+
+wf_geo_000BE0:
+  type: GEO_LAYOUT
+  offset: 0x0E000BE0
+  symbol: wf_geo_000BE0
+
+wf_geo_000BF8:
+  type: GEO_LAYOUT
+  offset: 0x0E000BF8
+  symbol: wf_geo_000BF8

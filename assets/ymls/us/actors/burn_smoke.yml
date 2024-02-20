@@ -7,3 +7,12 @@ burn_smoke:
   mio0: 0x21800
   format: IA16
   symbol: burn_smoke_seg4_texture_04021800
+
+:config:
+  segments:
+    seg23: 0x1279B0
+
+burn_smoke_geo:
+  type: GEO_LAYOUT
+  offset: 0x17000084
+  symbol: burn_smoke_geo

@@ -25,3 +25,167 @@
   mio0: 0x2000
   format: RGBA16
   symbol: bits_seg7_texture_07002000
+
+:config:
+  segments:
+    seg14: 0x477D00
+
+bits_geo_000430:
+  type: GEO_LAYOUT
+  offset: 0x0E000430
+  symbol: bits_geo_000430
+
+bits_geo_000448:
+  type: GEO_LAYOUT
+  offset: 0x0E000448
+  symbol: bits_geo_000448
+
+bits_geo_000460:
+  type: GEO_LAYOUT
+  offset: 0x0E000460
+  symbol: bits_geo_000460
+
+bits_geo_000478:
+  type: GEO_LAYOUT
+  offset: 0x0E000478
+  symbol: bits_geo_000478
+
+bits_geo_000490:
+  type: GEO_LAYOUT
+  offset: 0x0E000490
+  symbol: bits_geo_000490
+
+bits_geo_0004A8:
+  type: GEO_LAYOUT
+  offset: 0x0E0004A8
+  symbol: bits_geo_0004A8
+
+bits_geo_0004C0:
+  type: GEO_LAYOUT
+  offset: 0x0E0004C0
+  symbol: bits_geo_0004C0
+
+bits_geo_0004D8:
+  type: GEO_LAYOUT
+  offset: 0x0E0004D8
+  symbol: bits_geo_0004D8
+
+bits_geo_0004F0:
+  type: GEO_LAYOUT
+  offset: 0x0E0004F0
+  symbol: bits_geo_0004F0
+
+bits_geo_000508:
+  type: GEO_LAYOUT
+  offset: 0x0E000508
+  symbol: bits_geo_000508
+
+bits_geo_000520:
+  type: GEO_LAYOUT
+  offset: 0x0E000520
+  symbol: bits_geo_000520
+
+bits_geo_000538:
+  type: GEO_LAYOUT
+  offset: 0x0E000538
+  symbol: bits_geo_000538
+
+bits_geo_000550:
+  type: GEO_LAYOUT
+  offset: 0x0E000550
+  symbol: bits_geo_000550
+
+bits_geo_000568:
+  type: GEO_LAYOUT
+  offset: 0x0E000568
+  symbol: bits_geo_000568
+
+bits_geo_000580:
+  type: GEO_LAYOUT
+  offset: 0x0E000580
+  symbol: bits_geo_000580
+
+bits_geo_000598:
+  type: GEO_LAYOUT
+  offset: 0x0E000598
+  symbol: bits_geo_000598
+
+bits_geo_0005B0:
+  type: GEO_LAYOUT
+  offset: 0x0E0005B0
+  symbol: bits_geo_0005B0
+
+bits_geo_0005C8:
+  type: GEO_LAYOUT
+  offset: 0x0E0005C8
+  symbol: bits_geo_0005C8
+
+bits_geo_0005E0:
+  type: GEO_LAYOUT
+  offset: 0x0E0005E0
+  symbol: bits_geo_0005E0
+
+bits_geo_0005F8:
+  type: GEO_LAYOUT
+  offset: 0x0E0005F8
+  symbol: bits_geo_0005F8
+
+bits_geo_000610:
+  type: GEO_LAYOUT
+  offset: 0x0E000610
+  symbol: bits_geo_000610
+
+bits_geo_000628:
+  type: GEO_LAYOUT
+  offset: 0x0E000628
+  symbol: bits_geo_000628
+
+bits_geo_000640:
+  type: GEO_LAYOUT
+  offset: 0x0E000640
+  symbol: bits_geo_000640
+
+bits_geo_000658:
+  type: GEO_LAYOUT
+  offset: 0x0E000658
+  symbol: bits_geo_000658
+
+bits_geo_000670:
+  type: GEO_LAYOUT
+  offset: 0x0E000670
+  symbol: bits_geo_000670
+
+bits_geo_000688:
+  type: GEO_LAYOUT
+  offset: 0x0E000688
+  symbol: bits_geo_000688
+
+bits_geo_0006A0:
+  type: GEO_LAYOUT
+  offset: 0x0E0006A0
+  symbol: bits_geo_0006A0
+
+bits_geo_0006B8:
+  type: GEO_LAYOUT
+  offset: 0x0E0006B8
+  symbol: bits_geo_0006B8
+
+bits_geo_0006D0:
+  type: GEO_LAYOUT
+  offset: 0x0E0006D0
+  symbol: bits_geo_0006D0
+
+bits_geo_0006E8:
+  type: GEO_LAYOUT
+  offset: 0x0E0006E8
+  symbol: bits_geo_0006E8
+
+bits_geo_000700:
+  type: GEO_LAYOUT
+  offset: 0x0E000700
+  symbol: bits_geo_000700
+
+bits_geo_000718:
+  type: GEO_LAYOUT
+  offset: 0x0E000718
+  symbol: bits_geo_000718

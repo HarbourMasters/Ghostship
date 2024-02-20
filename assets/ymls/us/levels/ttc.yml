@@ -25,3 +25,87 @@
   mio0: 0x15F90
   format: RGBA16
   symbol: ttc_yellow_triangle
+
+:config:
+  segments:
+    seg14: 0x437400
+
+ttc_geo_000240:
+  type: GEO_LAYOUT
+  offset: 0x0E000240
+  symbol: ttc_geo_000240
+
+ttc_geo_000258:
+  type: GEO_LAYOUT
+  offset: 0x0E000258
+  symbol: ttc_geo_000258
+
+ttc_geo_000270:
+  type: GEO_LAYOUT
+  offset: 0x0E000270
+  symbol: ttc_geo_000270
+
+ttc_geo_000288:
+  type: GEO_LAYOUT
+  offset: 0x0E000288
+  symbol: ttc_geo_000288
+
+ttc_geo_0002A8:
+  type: GEO_LAYOUT
+  offset: 0x0E0002A8
+  symbol: ttc_geo_0002A8
+
+ttc_geo_0002C8:
+  type: GEO_LAYOUT
+  offset: 0x0E0002C8
+  symbol: ttc_geo_0002C8
+
+ttc_geo_0002E0:
+  type: GEO_LAYOUT
+  offset: 0x0E0002E0
+  symbol: ttc_geo_0002E0
+
+ttc_geo_0002F8:
+  type: GEO_LAYOUT
+  offset: 0x0E0002F8
+  symbol: ttc_geo_0002F8
+
+ttc_geo_000310:
+  type: GEO_LAYOUT
+  offset: 0x0E000310
+  symbol: ttc_geo_000310
+
+ttc_geo_000328:
+  type: GEO_LAYOUT
+  offset: 0x0E000328
+  symbol: ttc_geo_000328
+
+ttc_geo_000340:
+  type: GEO_LAYOUT
+  offset: 0x0E000340
+  symbol: ttc_geo_000340
+
+ttc_geo_000358:
+  type: GEO_LAYOUT
+  offset: 0x0E000358
+  symbol: ttc_geo_000358
+
+ttc_geo_000370:
+  type: GEO_LAYOUT
+  offset: 0x0E000370
+  symbol: ttc_geo_000370
+
+ttc_geo_000388:
+  type: GEO_LAYOUT
+  offset: 0x0E000388
+  symbol: ttc_geo_000388
+
+ttc_geo_0003A0:
+  type: GEO_LAYOUT
+  offset: 0x0E0003A0
+  symbol: ttc_geo_0003A0
+
+ttc_geo_0003B8:
+  type: GEO_LAYOUT
+  offset: 0x0E0003B8
+  symbol: ttc_geo_0003B8
