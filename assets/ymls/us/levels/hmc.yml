@@ -70,3 +70,137 @@
   mio0: 0x16800
   format: RGBA16
   symbol: hmc_seg7_texture_07024CE0
+
+:config:
+  segments:
+    seg14: 0x3E6A00
+
+hmc_geo_000530:
+  type: GEO_LAYOUT
+  offset: 0x0E000530
+  symbol: hmc_geo_000530
+
+hmc_geo_000548:
+  type: GEO_LAYOUT
+  offset: 0x0E000548
+  symbol: hmc_geo_000548
+
+hmc_geo_000570:
+  type: GEO_LAYOUT
+  offset: 0x0E000570
+  symbol: hmc_geo_000570
+
+hmc_geo_000588:
+  type: GEO_LAYOUT
+  offset: 0x0E000588
+  symbol: hmc_geo_000588
+
+hmc_geo_0005A0:
+  type: GEO_LAYOUT
+  offset: 0x0E0005A0
+  symbol: hmc_geo_0005A0
+
+hmc_geo_0005B8:
+  type: GEO_LAYOUT
+  offset: 0x0E0005B8
+  symbol: hmc_geo_0005B8
+
+hmc_geo_0005D0:
+  type: GEO_LAYOUT
+  offset: 0x0E0005D0
+  symbol: hmc_geo_0005D0
+
+hmc_geo_0005E8:
+  type: GEO_LAYOUT
+  offset: 0x0E0005E8
+  symbol: hmc_geo_0005E8
+
+hmc_geo_000618:
+  type: GEO_LAYOUT
+  offset: 0x0E000618
+  symbol: hmc_geo_000618
+
+hmc_geo_000658:
+  type: GEO_LAYOUT
+  offset: 0x0E000658
+  symbol: hmc_geo_000658
+
+hmc_geo_0006A8:
+  type: GEO_LAYOUT
+  offset: 0x0E0006A8
+  symbol: hmc_geo_0006A8
+
+hmc_geo_0006E0:
+  type: GEO_LAYOUT
+  offset: 0x0E0006E0
+  symbol: hmc_geo_0006E0
+
+hmc_geo_000700:
+  type: GEO_LAYOUT
+  offset: 0x0E000700
+  symbol: hmc_geo_000700
+
+hmc_geo_000748:
+  type: GEO_LAYOUT
+  offset: 0x0E000748
+  symbol: hmc_geo_000748
+
+hmc_geo_000770:
+  type: GEO_LAYOUT
+  offset: 0x0E000770
+  symbol: hmc_geo_000770
+
+hmc_geo_000798:
+  type: GEO_LAYOUT
+  offset: 0x0E000798
+  symbol: hmc_geo_000798
+
+hmc_geo_0007F8:
+  type: GEO_LAYOUT
+  offset: 0x0E0007F8
+  symbol: hmc_geo_0007F8
+
+hmc_geo_000850:
+  type: GEO_LAYOUT
+  offset: 0x0E000850
+  symbol: hmc_geo_000850
+
+hmc_geo_0008D0:
+  type: GEO_LAYOUT
+  offset: 0x0E0008D0
+  symbol: hmc_geo_0008D0
+
+hmc_geo_000938:
+  type: GEO_LAYOUT
+  offset: 0x0E000938
+  symbol: hmc_geo_000938
+
+hmc_geo_000998:
+  type: GEO_LAYOUT
+  offset: 0x0E000998
+  symbol: hmc_geo_000998
+
+hmc_geo_000A18:
+  type: GEO_LAYOUT
+  offset: 0x0E000A18
+  symbol: hmc_geo_000A18
+
+hmc_geo_000A88:
+  type: GEO_LAYOUT
+  offset: 0x0E000A88
+  symbol: hmc_geo_000A88
+
+hmc_geo_000AE8:
+  type: GEO_LAYOUT
+  offset: 0x0E000AE8
+  symbol: hmc_geo_000AE8
+
+hmc_geo_000B48:
+  type: GEO_LAYOUT
+  offset: 0x0E000B48
+  symbol: hmc_geo_000B48
+
+hmc_geo_000B90:
+  type: GEO_LAYOUT
+  offset: 0x0E000B90
+  symbol: hmc_geo_000B90

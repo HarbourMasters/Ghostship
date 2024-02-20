@@ -52,3 +52,17 @@ bob-omb_right_side:
   mio0: 0x1EA60
   format: RGBA16
   symbol: bobomb_seg8_texture_0801EA60
+
+:config:
+  segments:
+    seg15: 0x2008D0
+
+black_bobomb_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F0007B8
+  symbol: black_bobomb_geo
+
+bobomb_buddy_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F0008F4
+  symbol: bobomb_buddy_geo

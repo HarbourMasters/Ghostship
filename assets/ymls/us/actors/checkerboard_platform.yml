@@ -16,3 +16,12 @@ checkerboard_platform_side:
   mio0: 0xC840
   format: RGBA16
   symbol: checkerboard_platform_seg8_texture_0800C840
+
+:config:
+  segments:
+    seg15: 0x2008D0
+
+checkerboard_platform_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F0004E4
+  symbol: checkerboard_platform_geo

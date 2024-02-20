@@ -70,3 +70,12 @@ wing_cap_box_side:
   mio0: 0x16628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08016628
+
+:config:
+  segments:
+    seg15: 0x2008D0
+
+exclamation_box_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F000694
+  symbol: exclamation_box_geo

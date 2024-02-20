@@ -16,3 +16,17 @@ crazy_box_surface:
   mio0: 0x11A90
   format: RGBA16
   symbol: breakable_box_seg8_texture_08011A90
+
+:config:
+  segments:
+    seg15: 0x2008D0
+
+breakable_box_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F0005D0
+  symbol: breakable_box_geo
+
+breakable_box_small_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F000610
+  symbol: breakable_box_small_geo

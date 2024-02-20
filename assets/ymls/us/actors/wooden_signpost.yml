@@ -16,3 +16,12 @@ wooden_signpost_front:
   mio0: 0x2D1C8
   format: RGBA16
   symbol: wooden_signpost_seg3_texture_0302D1C8
+
+:config:
+  segments:
+    seg22: 0x218DA0
+
+wooden_signpost_geo:
+  type: GEO_LAYOUT
+  offset: 0x16000FB4
+  symbol: wooden_signpost_geo

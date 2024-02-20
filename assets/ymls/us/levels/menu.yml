@@ -799,3 +799,67 @@ main_menu_seg7.0B800:
   mio0: 0xB800
   format: IA8
   symbol: texture_menu_font_char_ampersand
+
+:config:
+  segments:
+    seg20: 0x2A6120
+
+geo_menu_mario_save_button:
+  type: GEO_LAYOUT
+  offset: 0x140001D0
+  symbol: geo_menu_mario_save_button
+
+geo_menu_mario_save_button_fade:
+  type: GEO_LAYOUT
+  offset: 0x14000200
+  symbol: geo_menu_mario_save_button_fade
+
+geo_menu_mario_new_button:
+  type: GEO_LAYOUT
+  offset: 0x14000230
+  symbol: geo_menu_mario_new_button
+
+geo_menu_mario_new_button_fade:
+  type: GEO_LAYOUT
+  offset: 0x14000260
+  symbol: geo_menu_mario_new_button_fade
+
+geo_menu_erase_button:
+  type: GEO_LAYOUT
+  offset: 0x14000290
+  symbol: geo_menu_erase_button
+
+geo_menu_copy_button:
+  type: GEO_LAYOUT
+  offset: 0x140002B8
+  symbol: geo_menu_copy_button
+
+geo_menu_file_button:
+  type: GEO_LAYOUT
+  offset: 0x140002E0
+  symbol: geo_menu_file_button
+
+geo_menu_score_button:
+  type: GEO_LAYOUT
+  offset: 0x14000308
+  symbol: geo_menu_score_button
+
+geo_menu_sound_button:
+  type: GEO_LAYOUT
+  offset: 0x14000330
+  symbol: geo_menu_sound_button
+
+geo_menu_generic_button:
+  type: GEO_LAYOUT
+  offset: 0x14000358
+  symbol: geo_menu_generic_button
+
+geo_menu_file_select_strings_and_menu_cursor:
+  type: GEO_LAYOUT
+  offset: 0x14000380
+  symbol: geo_menu_file_select_strings_and_menu_cursor
+
+geo_menu_act_selector_strings:
+  type: GEO_LAYOUT
+  offset: 0x14000408
+  symbol: geo_menu_act_selector_strings

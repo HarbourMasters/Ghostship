@@ -34,3 +34,12 @@ spindrift_petal:
   mio0: 0xED0
   format: RGBA16
   symbol: spindrift_seg5_texture_05000ED0
+
+:config:
+  segments:
+    seg12: 0x1656E0
+
+spindrift_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000000
+  symbol: spindrift_geo

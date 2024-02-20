@@ -1,0 +1,13 @@
+:config:
+  segments:
+    seg15: 0x2008D0
+
+bowling_ball_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F000640
+  symbol: bowling_ball_geo
+
+bowling_ball_track_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F00066C
+  symbol: bowling_ball_track_geo

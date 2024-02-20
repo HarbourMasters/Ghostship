@@ -7,3 +7,17 @@ water_bubble:
   mio0: 0xFE80
   format: RGBA16
   symbol: water_bubble_seg5_texture_0500FE80
+
+:config:
+  segments:
+    seg12: 0x13B5D0
+
+water_bomb_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000308
+  symbol: water_bomb_geo
+
+water_bomb_shadow_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000328
+  symbol: water_bomb_shadow_geo

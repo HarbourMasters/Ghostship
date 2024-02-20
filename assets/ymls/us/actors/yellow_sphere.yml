@@ -7,3 +7,12 @@ yellow_sphere:
   mio0: 0x40
   format: RGBA16
   symbol: yellow_sphere_seg6_texture_0601EB88
+
+:config:
+  segments:
+    seg13: 0x1B9070
+
+bowser_1_yellow_sphere_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D0000B0
+  symbol: bowser_1_yellow_sphere_geo

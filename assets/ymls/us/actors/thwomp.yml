@@ -16,3 +16,12 @@ thwomp_surface:
   mio0: 0xA900
   format: RGBA16
   symbol: thwomp_seg5_texture_0500A900
+
+:config:
+  segments:
+    seg12: 0x132850
+
+thwomp_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000248
+  symbol: thwomp_geo

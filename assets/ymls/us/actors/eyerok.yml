@@ -43,3 +43,22 @@ eyerok_eye_open:
   mio0: 0x9540
   format: RGBA16
   symbol: eyerok_seg5_texture_05009540
+
+:config:
+  segments:
+    seg12: 0x151B70
+
+eyerok_geo_0002AC:
+  type: GEO_LAYOUT
+  offset: 0x0C0002AC
+  symbol: eyerok_geo_0002AC
+
+eyerok_left_hand_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C0005A8
+  symbol: eyerok_left_hand_geo
+
+eyerok_right_hand_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C0005E4
+  symbol: eyerok_right_hand_geo

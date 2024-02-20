@@ -25,3 +25,12 @@ dorrie_tongue:
   mio0: 0x223D0
   format: RGBA16
   symbol: dorrie_seg6_texture_0600ADA0
+
+:config:
+  segments:
+    seg13: 0x1F1B30
+
+dorrie_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D000230
+  symbol: dorrie_geo

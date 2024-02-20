@@ -34,3 +34,12 @@ impact_smoke_3:
   mio0: 0x60B78
   format: IA16
   symbol: impact_smoke_seg6_texture_06060A28
+
+:config:
+  segments:
+    seg13: 0x1B9070
+
+bowser_impact_smoke_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D000BFC
+  symbol: bowser_impact_smoke_geo

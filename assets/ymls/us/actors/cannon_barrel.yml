@@ -7,3 +7,12 @@ cannon_barrel:
   mio0: 0x58A8
   format: RGBA16
   symbol: cannon_barrel_seg8_texture_080058A8
+
+:config:
+  segments:
+    seg15: 0x2008D0
+
+cannon_barrel_geo:
+  type: GEO_LAYOUT
+  offset: 0x0F0001C0
+  symbol: cannon_barrel_geo

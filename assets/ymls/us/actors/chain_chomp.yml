@@ -43,3 +43,12 @@ chain_chomp_tooth:
   mio0: 0x6AF0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_06022BD0
+
+:config:
+  segments:
+    seg13: 0x1D7C90
+
+chain_chomp_geo:
+  type: GEO_LAYOUT
+  offset: 0x0D0005EC
+  symbol: chain_chomp_geo

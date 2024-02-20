@@ -16,3 +16,17 @@ mr_i_bubble:
   mio0: 0x1D560
   format: RGBA16
   symbol: bubble_seg4_texture_0401D560
+
+:config:
+  segments:
+    seg23: 0x1279B0
+
+bubble_geo:
+  type: GEO_LAYOUT
+  offset: 0x17000000
+  symbol: bubble_geo
+
+purple_marble_geo:
+  type: GEO_LAYOUT
+  offset: 0x1700001C
+  symbol: purple_marble_geo

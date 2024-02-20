@@ -16,3 +16,12 @@ clam_shell_mouth:
   mio0: 0x830
   format: RGBA16
   symbol: clam_shell_seg5_texture_05000830
+
+:config:
+  segments:
+    seg12: 0x145C10
+
+clam_shell_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000000
+  symbol: clam_shell_geo

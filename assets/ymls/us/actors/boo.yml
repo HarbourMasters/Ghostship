@@ -16,3 +16,12 @@ boo_mouth:
   mio0: 0xAB40
   format: RGBA16
   symbol: boo_seg5_texture_0500AB40
+
+:config:
+  segments:
+    seg12: 0x16D5C0
+
+boo_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000224
+  symbol: boo_geo

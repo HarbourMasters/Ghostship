@@ -34,3 +34,12 @@ chair_surface_unused:
   mio0: 0x4460
   format: RGBA16
   symbol: chair_seg5_texture_05004460
+
+:config:
+  segments:
+    seg12: 0x16D5C0
+
+haunted_chair_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C0000D8
+  symbol: haunted_chair_geo

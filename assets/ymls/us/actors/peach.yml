@@ -88,3 +88,22 @@ peach_nostril:
   mio0: 0x3E28
   format: RGBA16
   symbol: peach_seg5_texture_05003E28
+
+:config:
+  segments:
+    seg12: 0x180540
+
+peach_geo_000098:
+  type: GEO_LAYOUT
+  offset: 0x0C000098
+  symbol: peach_geo_000098
+
+peach_geo_000254:
+  type: GEO_LAYOUT
+  offset: 0x0C000254
+  symbol: peach_geo_000254
+
+peach_geo:
+  type: GEO_LAYOUT
+  offset: 0x0C000410
+  symbol: peach_geo
