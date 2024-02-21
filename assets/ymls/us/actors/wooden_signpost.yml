@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x201410
+  segments:
+    seg3: 0x201410
+
 wooden_signpost_back:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x2C9C8
+  offset: 0x2C9C8
   format: RGBA16
   symbol: wooden_signpost_seg3_texture_0302C9C8
 wooden_signpost_front:
@@ -12,8 +16,7 @@ wooden_signpost_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x2D1C8
+  offset: 0x2D1C8
   format: RGBA16
   symbol: wooden_signpost_seg3_texture_0302D1C8
 

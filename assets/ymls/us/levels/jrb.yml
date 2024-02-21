@@ -1,19 +1,28 @@
+:config:
+  compressed_offset: 0x347A50
+  segments:
+    seg9: 0x347A50
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x347A50
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: jrb_seg7_texture_07000000
+
+:config:
+  compressed_offset: 0x41A760
+  segments:
+    seg7: 0x41A760
+
 1:
   type: TEXTURE
   size: 4096
   width: 64
   height: 32
-  offset: 0x41A760
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: jrb_seg7_texture_07000800
 2:
@@ -21,8 +30,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x41A760
-  mio0: 0x1800
+  offset: 0x1800
   format: RGBA16
   symbol: jrb_seg7_texture_07001800
 3:
@@ -30,8 +38,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x41A760
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: jrb_seg7_texture_07002000
 

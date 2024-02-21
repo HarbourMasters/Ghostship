@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x341140
+  segments:
+    seg9: 0x341140
+
 ccm_textures.00000:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: snow_09000000
 ccm_textures.00800:
@@ -12,8 +16,7 @@ ccm_textures.00800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: snow_09000800
 ccm_textures.01000:
@@ -21,8 +24,7 @@ ccm_textures.01000:
   size: 4096
   width: 32
   height: 64
-  offset: 0x341140
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: snow_09001000
 ccm_textures.02000:
@@ -30,8 +32,7 @@ ccm_textures.02000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: snow_09002000
 ccm_textures.02800:
@@ -39,8 +40,7 @@ ccm_textures.02800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x2800
+  offset: 0x2800
   format: RGBA16
   symbol: snow_09002800
 ccm_textures.03000:
@@ -48,8 +48,7 @@ ccm_textures.03000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x3000
+  offset: 0x3000
   format: RGBA16
   symbol: snow_09003000
 ccm_textures.03800:
@@ -57,8 +56,7 @@ ccm_textures.03800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x3800
+  offset: 0x3800
   format: RGBA16
   symbol: snow_09003800
 ccm_textures.04000:
@@ -66,8 +64,7 @@ ccm_textures.04000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x4000
+  offset: 0x4000
   format: RGBA16
   symbol: snow_09004000
 ccm_textures.04800:
@@ -75,8 +72,7 @@ ccm_textures.04800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x4800
+  offset: 0x4800
   format: RGBA16
   symbol: snow_09004800
 ccm_textures.05000:
@@ -84,8 +80,7 @@ ccm_textures.05000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x5000
+  offset: 0x5000
   format: RGBA16
   symbol: snow_09005000
 ccm_textures.05800:
@@ -93,8 +88,7 @@ ccm_textures.05800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x5800
+  offset: 0x5800
   format: RGBA16
   symbol: snow_09005800
 ccm_textures.06000:
@@ -102,8 +96,7 @@ ccm_textures.06000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x6000
+  offset: 0x6000
   format: RGBA16
   symbol: snow_09006000
 ccm_textures.06800:
@@ -111,8 +104,7 @@ ccm_textures.06800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x6800
+  offset: 0x6800
   format: RGBA16
   symbol: snow_09006800
 ccm_textures.07000:
@@ -120,8 +112,7 @@ ccm_textures.07000:
   size: 4096
   width: 64
   height: 32
-  offset: 0x341140
-  mio0: 0x7000
+  offset: 0x7000
   format: RGBA16
   symbol: snow_09007000
 ccm_textures.08000:
@@ -129,8 +120,7 @@ ccm_textures.08000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x8000
+  offset: 0x8000
   format: RGBA16
   symbol: snow_09008000
 ccm_textures.08800:
@@ -138,8 +128,7 @@ ccm_textures.08800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x8800
+  offset: 0x8800
   format: RGBA16
   symbol: snow_09008800
 ccm_textures.09000:
@@ -147,8 +136,7 @@ ccm_textures.09000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x9000
+  offset: 0x9000
   format: IA16
   symbol: snow_09009000
 ccm_textures.09800:
@@ -156,7 +144,6 @@ ccm_textures.09800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x341140
-  mio0: 0x9800
+  offset: 0x9800
   format: IA16
   symbol: snow_09009800

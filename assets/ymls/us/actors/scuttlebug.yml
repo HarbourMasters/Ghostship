@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1E7EE0
+  segments:
+    seg6: 0x1E7EE0
+
 scuttlebug_eye:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E7EE0
-  mio0: 0x10108
+  offset: 0x10108
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06010108
 scuttlebug_iris:
@@ -12,8 +16,7 @@ scuttlebug_iris:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E7EE0
-  mio0: 0x12908
+  offset: 0x12908
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06012908
 scuttlebug_left_side:
@@ -21,8 +24,7 @@ scuttlebug_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E7EE0
-  mio0: 0x10908
+  offset: 0x10908
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06010908
 scuttlebug_leg:
@@ -30,8 +32,7 @@ scuttlebug_leg:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E7EE0
-  mio0: 0x13108
+  offset: 0x13108
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06013108
 scuttlebug_right_side:
@@ -39,8 +40,7 @@ scuttlebug_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E7EE0
-  mio0: 0x11908
+  offset: 0x11908
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06011908
 

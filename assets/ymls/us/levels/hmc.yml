@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x3D0DC0
+  segments:
+    seg7: 0x3D0DC0
+
 0:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x3D0DC0
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: hmc_seg7_texture_07000000
 1:
@@ -12,8 +16,7 @@
   size: 4096
   width: 32
   height: 64
-  offset: 0x3D0DC0
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: hmc_seg7_texture_07001000
 2:
@@ -21,8 +24,7 @@
   size: 4096
   width: 32
   height: 64
-  offset: 0x3D0DC0
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: hmc_seg7_texture_07002000
 3:
@@ -30,8 +32,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x3D0DC0
-  mio0: 0x3000
+  offset: 0x3000
   format: RGBA16
   symbol: hmc_seg7_texture_07003000
 4:
@@ -39,8 +40,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x3D0DC0
-  mio0: 0x3800
+  offset: 0x3800
   format: RGBA16
   symbol: hmc_seg7_texture_07003800
 5:
@@ -48,8 +48,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x3D0DC0
-  mio0: 0x4000
+  offset: 0x4000
   format: RGBA16
   symbol: hmc_seg7_texture_07004000
 6:
@@ -57,17 +56,21 @@
   size: 4096
   width: 32
   height: 64
-  offset: 0x3D0DC0
-  mio0: 0x4800
+  offset: 0x4800
   format: RGBA16
   symbol: hmc_seg7_texture_07004800
+
+:config:
+  compressed_offset: 0x396340
+  segments:
+    seg7: 0x396340
+
 7:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x396340
-  mio0: 0x16800
+  offset: 0x16800
   format: RGBA16
   symbol: hmc_seg7_texture_07024CE0
 

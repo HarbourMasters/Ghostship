@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1C4230
+  segments:
+    seg6: 0x1C4230
+
 whomp_back:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x1C4230
-  mio0: 0x1C360
+  offset: 0x1C360
   format: RGBA16
   symbol: whomp_seg6_texture_0601C360
 whomp_face:
@@ -12,8 +16,7 @@ whomp_face:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1C4230
-  mio0: 0x1D360
+  offset: 0x1D360
   format: RGBA16
   symbol: whomp_seg6_texture_0601D360
 whomp_hand:
@@ -21,8 +24,7 @@ whomp_hand:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x1E360
+  offset: 0x1E360
   format: RGBA16
   symbol: whomp_seg6_texture_0601E360
 whomp_surface:
@@ -30,8 +32,7 @@ whomp_surface:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x1EB60
+  offset: 0x1EB60
   format: RGBA16
   symbol: whomp_seg6_texture_0601EB60
 

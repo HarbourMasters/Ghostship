@@ -1,9 +1,13 @@
+:config:
+  compressed_offset: 0x1521D0
+  segments:
+    seg5: 0x1521D0
+
 monty_mole_hole:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1521D0
-  mio0: 0x40
+  offset: 0x40
   format: IA16
   symbol: monty_mole_hole_seg5_texture_05000040

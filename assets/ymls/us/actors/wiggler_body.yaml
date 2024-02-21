@@ -1,9 +1,9 @@
 :config:
+  compressed_offset: 0x180BB0
   segments:
     seg5: 0x180BB0
 
 wiggler_body_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x180BB0
-  mio0: 0xC778
+  offset: 0xC778
   symbol: wiggler_body_geo

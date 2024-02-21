@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1F2200
+  segments:
+    seg8: 0x1F2200
+
 exclamation_box_front:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0x17628
+  offset: 0x17628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08017628
 exclamation_box_side:
@@ -12,8 +16,7 @@ exclamation_box_side:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1F2200
-  mio0: 0x17E28
+  offset: 0x17E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08017E28
 metal_cap_box_front:
@@ -21,8 +24,7 @@ metal_cap_box_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0x14628
+  offset: 0x14628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08014628
 metal_cap_box_side:
@@ -30,8 +32,7 @@ metal_cap_box_side:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1F2200
-  mio0: 0x14E28
+  offset: 0x14E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08014E28
 vanish_cap_box_front:
@@ -39,8 +40,7 @@ vanish_cap_box_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0x12E28
+  offset: 0x12E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08012E28
 vanish_cap_box_side:
@@ -48,8 +48,7 @@ vanish_cap_box_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F2200
-  mio0: 0x13628
+  offset: 0x13628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08013628
 wing_cap_box_front:
@@ -57,8 +56,7 @@ wing_cap_box_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0x15E28
+  offset: 0x15E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08015E28
 wing_cap_box_side:
@@ -66,8 +64,7 @@ wing_cap_box_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F2200
-  mio0: 0x16628
+  offset: 0x16628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08016628
 

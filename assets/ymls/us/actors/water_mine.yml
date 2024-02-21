@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x188440
+  segments:
+    seg6: 0x188440
+
 water_mine_left_side_unused:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x188440
-  mio0: 0x57C10
+  offset: 0x57C10
   format: RGBA16
   symbol: water_mine_seg6_texture_0600A4F8
 water_mine_right_side_unused:
@@ -12,8 +16,7 @@ water_mine_right_side_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0x188440
-  mio0: 0x58C10
+  offset: 0x58C10
   format: RGBA16
   symbol: water_mine_seg6_texture_0600B4F8
 water_mine_spike_unused:
@@ -21,8 +24,7 @@ water_mine_spike_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x188440
-  mio0: 0x59C10
+  offset: 0x59C10
   format: RGBA16
   symbol: water_mine_seg6_texture_0600C4F8
 

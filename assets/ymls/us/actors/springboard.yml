@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x165A50
+  segments:
+    seg5: 0x165A50
+
 springboard_base_unused:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x165A50
-  mio0: 0x818
+  offset: 0x818
   format: RGBA16
   symbol: springboard_seg5_texture_05000818
 springboard_top_unused:
@@ -12,8 +16,7 @@ springboard_top_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165A50
-  mio0: 0x18
+  offset: 0x18
   format: RGBA16
   symbol: springboard_seg5_texture_05000018
 

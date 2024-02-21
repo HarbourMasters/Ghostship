@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1F2200
+  segments:
+    seg8: 0x1F2200
+
 chuckya_body_arm_left_side:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F2200
-  mio0: 0x7F78
+  offset: 0x7F78
   format: RGBA16
   symbol: chuckya_seg8_texture_08007F78
 chuckya_body_arm_right_side:
@@ -12,8 +16,7 @@ chuckya_body_arm_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F2200
-  mio0: 0x8F78
+  offset: 0x8F78
   format: RGBA16
   symbol: chuckya_seg8_texture_08008F78
 chuckya_eyes:
@@ -21,8 +24,7 @@ chuckya_eyes:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F2200
-  mio0: 0x6778
+  offset: 0x6778
   format: RGBA16
   symbol: chuckya_seg8_texture_08006778
 chuckya_hand_antenna:
@@ -30,8 +32,7 @@ chuckya_hand_antenna:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0x7778
+  offset: 0x7778
   format: RGBA16
   symbol: chuckya_seg8_texture_08007778
 

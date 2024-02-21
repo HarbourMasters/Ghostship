@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x114750
+  segments:
+    seg4: 0x114750
+
 burn_smoke:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x114750
-  mio0: 0x21800
+  offset: 0x21800
   format: IA16
   symbol: burn_smoke_seg4_texture_04021800
 

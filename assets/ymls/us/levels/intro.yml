@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x26A3A0
+  segments:
+    seg7: 0x26A3A0
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x26A3A0
-  mio0: 0x7EA0
+  offset: 0x7EA0
   format: RGBA16
   symbol: intro_seg7_texture_07007EA0
 1:
@@ -12,8 +16,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x26A3A0
-  mio0: 0x86A0
+  offset: 0x86A0
   format: RGBA16
   symbol: intro_seg7_texture_070086A0
 2_copyright:
@@ -21,8 +24,7 @@
   size: 4096
   width: 128
   height: 16
-  offset: 0x26A3A0
-  mio0: 0xB4A0
+  offset: 0xB4A0
   format: RGBA16
   symbol: intro_seg7_texture_0700B4A0
 3_tm:
@@ -30,8 +32,7 @@
   size: 512
   width: 16
   height: 16
-  offset: 0x26A3A0
-  mio0: 0xC4A0
+  offset: 0xC4A0
   format: RGBA16
   symbol: intro_seg7_texture_0700C4A0
 

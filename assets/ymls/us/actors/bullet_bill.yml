@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x12A7E0
+  segments:
+    seg5: 0x12A7E0
+
 bullet_bill_eye:
   type: TEXTURE
   size: 4096
   width: 64
   height: 32
-  offset: 0x12A7E0
-  mio0: 0xBAA8
+  offset: 0xBAA8
   format: RGBA16
   symbol: bullet_bill_seg5_texture_0500BAA8
 bullet_bill_mouth:
@@ -12,8 +16,7 @@ bullet_bill_mouth:
   size: 4096
   width: 64
   height: 32
-  offset: 0x12A7E0
-  mio0: 0xCAA8
+  offset: 0xCAA8
   format: RGBA16
   symbol: bullet_bill_seg5_texture_0500CAA8
 
