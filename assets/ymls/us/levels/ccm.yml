@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x383950
+  segments:
+    seg7: 0x383950
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: ccm_seg7_texture_07000000
 1:
@@ -12,8 +16,7 @@
   size: 256
   width: 32
   height: 4
-  offset: 0x383950
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: ccm_seg7_texture_07000800
 10:
@@ -21,8 +24,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x4300
+  offset: 0x4300
   format: RGBA16
   symbol: ccm_seg7_texture_07004300
 11:
@@ -30,8 +32,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x4B00
+  offset: 0x4B00
   format: RGBA16
   symbol: ccm_seg7_texture_07004B00
 12:
@@ -39,8 +40,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x11958
+  offset: 0x11958
   format: RGBA16
   symbol: ccm_seg7_texture_07011958
 2:
@@ -48,8 +48,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x900
+  offset: 0x900
   format: RGBA16
   symbol: ccm_seg7_texture_07000900
 3:
@@ -57,8 +56,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x1100
+  offset: 0x1100
   format: RGBA16
   symbol: ccm_seg7_texture_07001100
 4:
@@ -66,35 +64,16 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x1900
+  offset: 0x1900
   format: RGBA16
   symbol: ccm_seg7_texture_07001900
-5:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x160670
-  mio0: 0xBC70
-  format: RGBA16
-  symbol: ccm_seg7_texture_07002100
-6:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x160670
-  mio0: 0xB470
-  format: RGBA16
-  symbol: ccm_seg7_texture_07002900
+
 7:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x3100
+  offset: 0x3100
   format: RGBA16
   symbol: ccm_seg7_texture_07003100
 8:
@@ -102,8 +81,7 @@
   size: 512
   width: 16
   height: 16
-  offset: 0x383950
-  mio0: 0x3900
+  offset: 0x3900
   format: IA16
   symbol: ccm_seg7_texture_07003900
 9:
@@ -111,10 +89,31 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x383950
-  mio0: 0x3B00
+  offset: 0x3B00
   format: IA16
   symbol: ccm_seg7_texture_07003B00
+
+:config:
+  compressed_offset: 0x160670
+  segments:
+    seg5: 0x160670
+
+5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xBC70
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002100
+6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB470
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002900
 
 :config:
   segments:

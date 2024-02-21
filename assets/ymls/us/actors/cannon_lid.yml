@@ -1,9 +1,13 @@
+:config:
+  compressed_offset: 0x1F2200
+  segments:
+    seg8: 0x1F2200
+
 cannon_lid:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0x4058
+  offset: 0x4058
   format: RGBA16
   symbol: cannon_lid_seg8_texture_08004058

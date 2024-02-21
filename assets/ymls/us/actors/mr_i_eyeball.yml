@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1E7EE0
+  segments:
+    seg6: 0x1E7EE0
+
 mr_i_eyeball_left_side:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E7EE0
-  mio0: 0x80
+  offset: 0x80
   format: RGBA16
   symbol: mr_i_eyeball_seg6_texture_06000080
 mr_i_eyeball_right_side:
@@ -12,8 +16,7 @@ mr_i_eyeball_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E7EE0
-  mio0: 0x1080
+  offset: 0x1080
   format: RGBA16
   symbol: mr_i_eyeball_seg6_texture_06001080
 

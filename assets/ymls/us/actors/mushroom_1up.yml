@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x201410
+  segments:
+    seg3: 0x201410
+
 1-up_mushroom:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x201410
-  mio0: 0x29628
+  offset: 0x29628
   format: RGBA16
   symbol: mushroom_1up_seg3_texture_03029628
 

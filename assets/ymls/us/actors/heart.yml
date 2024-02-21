@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1F2200
+  segments:
+    seg8: 0x1F2200
+
 spinning_heart:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0xD7E0
+  offset: 0xD7E0
   format: RGBA16
   symbol: heart_seg8_texture_0800D7E0
 

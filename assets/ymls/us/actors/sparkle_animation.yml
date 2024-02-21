@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x114750
+  segments:
+    seg4: 0x114750
+
 sparkle_animation_0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x114750
-  mio0: 0x32A88
+  offset: 0x32A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04032A88
 sparkle_animation_1:
@@ -12,8 +16,7 @@ sparkle_animation_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x114750
-  mio0: 0x33288
+  offset: 0x33288
   format: IA16
   symbol: sparkles_animation_seg4_texture_04033288
 sparkle_animation_2:
@@ -21,8 +24,7 @@ sparkle_animation_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x114750
-  mio0: 0x33A88
+  offset: 0x33A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04033A88
 sparkle_animation_3:
@@ -30,8 +32,7 @@ sparkle_animation_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x114750
-  mio0: 0x34288
+  offset: 0x34288
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034288
 sparkle_animation_4:
@@ -39,8 +40,7 @@ sparkle_animation_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x114750
-  mio0: 0x34A88
+  offset: 0x34A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034A88
 

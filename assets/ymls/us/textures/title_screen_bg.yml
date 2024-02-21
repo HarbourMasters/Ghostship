@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x2708C0
+  segments:
+    seg10: 0x2708C0
+
 title_screen_bg.001C0:
   type: TEXTURE
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0x1C0
+  offset: 0x1C0
   format: RGBA16
   symbol: title_texture_0A0001C0
 title_screen_bg.00E40:
@@ -12,8 +16,7 @@ title_screen_bg.00E40:
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0xE40
+  offset: 0xE40
   format: RGBA16
   symbol: title_texture_0A000E40
 title_screen_bg.01AC0:
@@ -21,8 +24,7 @@ title_screen_bg.01AC0:
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0x1AC0
+  offset: 0x1AC0
   format: RGBA16
   symbol: title_texture_0A001AC0
 title_screen_bg.02740:
@@ -30,8 +32,7 @@ title_screen_bg.02740:
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0x2740
+  offset: 0x2740
   format: RGBA16
   symbol: title_texture_0A002740
 title_screen_bg.033C0:
@@ -39,8 +40,7 @@ title_screen_bg.033C0:
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0x33C0
+  offset: 0x33C0
   format: RGBA16
   symbol: title_texture_0A0033C0
 title_screen_bg.04040:
@@ -48,8 +48,7 @@ title_screen_bg.04040:
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0x4040
+  offset: 0x4040
   format: RGBA16
   symbol: title_texture_0A004040
 title_screen_bg.04CC0:
@@ -57,8 +56,7 @@ title_screen_bg.04CC0:
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0x4CC0
+  offset: 0x4CC0
   format: RGBA16
   symbol: title_texture_0A004CC0
 title_screen_bg.05940:
@@ -66,7 +64,6 @@ title_screen_bg.05940:
   size: 3200
   width: 80
   height: 20
-  offset: 0x2708C0
-  mio0: 0x5940
+  offset: 0x5940
   format: RGBA16
   symbol: title_texture_0A005940

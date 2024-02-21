@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x4246D0
+  segments:
+    seg7: 0x4246D0
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x4246D0
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: thi_seg7_texture_07000000
 1:
@@ -12,8 +16,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4246D0
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: thi_seg7_texture_07000800
 

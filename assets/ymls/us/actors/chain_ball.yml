@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1C4230
+  segments:
+    seg6: 0x1C4230
+
 chain_ball:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x20AE8
+  offset: 0x20AE8
   format: RGBA16
   symbol: chain_ball_seg6_texture_06020AE8
 

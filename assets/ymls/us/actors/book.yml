@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x166C60
+  segments:
+    seg5: 0x166C60
+
 book_cover:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x166C60
-  mio0: 0x1060
+  offset: 0x1060
   format: RGBA16
   symbol: book_seg5_texture_05002570
 
