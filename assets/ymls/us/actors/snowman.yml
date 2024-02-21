@@ -49,11 +49,11 @@ mr_blizzard_right_side:
     seg12: 0x1656E0
 
 mr_blizzard_hidden_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C00021C
   symbol: mr_blizzard_hidden_geo
 
 mr_blizzard_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000348
   symbol: mr_blizzard_geo

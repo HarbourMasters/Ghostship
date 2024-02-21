@@ -22,6 +22,6 @@ thwomp_surface:
     seg12: 0x132850
 
 thwomp_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000248
   symbol: thwomp_geo

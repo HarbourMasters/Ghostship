@@ -13,6 +13,6 @@
     seg22: 0x218DA0
 
 mushroom_1up_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000E84
   symbol: mushroom_1up_geo

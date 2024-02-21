@@ -40,6 +40,6 @@ whomp_surface:
     seg13: 0x1D7C90
 
 whomp_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000480
   symbol: whomp_geo

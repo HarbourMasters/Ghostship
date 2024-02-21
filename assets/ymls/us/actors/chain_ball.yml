@@ -13,6 +13,6 @@ chain_ball:
     seg13: 0x1D7C90
 
 metallic_ball_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D0005D0
   symbol: metallic_ball_geo

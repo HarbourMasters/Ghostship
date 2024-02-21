@@ -49,6 +49,6 @@ chain_chomp_tooth:
     seg13: 0x1D7C90
 
 chain_chomp_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D0005EC
   symbol: chain_chomp_geo

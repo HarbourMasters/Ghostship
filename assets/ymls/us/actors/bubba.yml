@@ -49,6 +49,6 @@ bubba_sunglasses:
     seg12: 0x187FA0
 
 bubba_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: bubba_geo

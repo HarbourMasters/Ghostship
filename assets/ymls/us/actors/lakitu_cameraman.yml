@@ -58,6 +58,6 @@ lakitu_cameraman_shell:
     seg13: 0x1E4BF0
 
 lakitu_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000000
   symbol: lakitu_geo

@@ -58,6 +58,6 @@ mad_piano_tooth:
     seg12: 0x16D5C0
 
 mad_piano_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C0001B4
   symbol: mad_piano_geo

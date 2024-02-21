@@ -3,6 +3,6 @@
     seg12: 0x180540
 
 birds_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: birds_geo

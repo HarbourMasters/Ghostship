@@ -58,21 +58,21 @@ mario_cap_wing_tip:
     seg22: 0x218DA0
 
 marios_cap_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000CA4
   symbol: marios_cap_geo
 
 marios_metal_cap_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000CF0
   symbol: marios_metal_cap_geo
 
 marios_wing_cap_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000D3C
   symbol: marios_wing_cap_geo
 
 marios_winged_metal_cap_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000DA8
   symbol: marios_winged_metal_cap_geo

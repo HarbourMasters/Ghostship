@@ -22,6 +22,6 @@ checkerboard_platform_side:
     seg15: 0x2008D0
 
 checkerboard_platform_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F0004E4
   symbol: checkerboard_platform_geo

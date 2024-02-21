@@ -22,6 +22,6 @@ cap_switch_head:
     seg12: 0x166BD0
 
 cap_switch_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000048
   symbol: cap_switch_geo

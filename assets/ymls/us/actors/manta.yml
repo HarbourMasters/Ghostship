@@ -40,7 +40,7 @@ manta_gills:
     seg5: 0x13B910
 
 manta_seg5_geo_05008D14:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x13B910
   mio0: 0x8D14
   symbol: manta_seg5_geo_05008D14

@@ -9,6 +9,6 @@ cake:
     seg14: 0x4AC4B0
 
 ending_geo_000050:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000050
   symbol: ending_geo_000050

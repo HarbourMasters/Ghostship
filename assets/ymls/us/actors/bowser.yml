@@ -265,31 +265,31 @@ bowser_upper_face:
     seg13: 0x1B9070
 
 bowser_geo_0000D8:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D0000D8
   symbol: bowser_geo_0000D8
 
 bowser_geo_000424:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000424
   symbol: bowser_geo_000424
 
 bowser_geo_000770:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000770
   symbol: bowser_geo_000770
 
 bowser_shadow_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000AB8
   symbol: bowser_shadow_geo
 
 bowser_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000AC4
   symbol: bowser_geo
 
 bowser_geo_no_shadow:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000B40
   symbol: bowser_geo_no_shadow

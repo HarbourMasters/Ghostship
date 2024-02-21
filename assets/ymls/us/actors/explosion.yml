@@ -67,6 +67,6 @@ explosion_6:
     seg22: 0x218DA0
 
 explosion_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000040
   symbol: explosion_geo

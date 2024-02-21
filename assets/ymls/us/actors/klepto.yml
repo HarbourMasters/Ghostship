@@ -49,6 +49,6 @@ klepto_wing_flap:
     seg12: 0x151B70
 
 klepto_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: klepto_geo

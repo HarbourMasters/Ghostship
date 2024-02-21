@@ -22,6 +22,6 @@ clam_shell_mouth:
     seg12: 0x145C10
 
 clam_shell_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: clam_shell_geo

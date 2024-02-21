@@ -22,6 +22,6 @@ exclamation_point:
     seg15: 0x2008D0
 
 exclamation_box_outline_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F000A58
   symbol: exclamation_box_outline_geo

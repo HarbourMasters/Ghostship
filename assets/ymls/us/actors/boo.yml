@@ -22,6 +22,6 @@ boo_mouth:
     seg12: 0x16D5C0
 
 boo_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000224
   symbol: boo_geo

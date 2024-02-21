@@ -76,6 +76,6 @@ yoshi_egg_7_unused:
     seg12: 0x132850
 
 yoshi_egg_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C0001E4
   symbol: yoshi_egg_geo

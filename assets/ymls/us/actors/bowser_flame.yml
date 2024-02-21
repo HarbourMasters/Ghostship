@@ -130,6 +130,6 @@ bowser_flame_9:
     seg13: 0x1B9070
 
 bowser_flames_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000000
   symbol: bowser_flames_geo
