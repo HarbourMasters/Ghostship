@@ -40,6 +40,6 @@ seaweed_upper_center:
     seg13: 0x1C3DB0
 
 seaweed_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000284
   symbol: seaweed_geo

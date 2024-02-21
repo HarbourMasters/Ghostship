@@ -22,6 +22,6 @@ impact_ring_right_side:
     seg13: 0x1B9070
 
 invisible_bowser_accessory_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000090
   symbol: invisible_bowser_accessory_geo

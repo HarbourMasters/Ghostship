@@ -103,6 +103,6 @@ king_bob-omb_right_side:
     seg12: 0x13B5D0
 
 king_bobomb_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: king_bobomb_geo

@@ -3,6 +3,6 @@
     seg12: 0x16D5C0
 
 small_key_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000188
   symbol: small_key_geo

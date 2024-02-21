@@ -49,21 +49,21 @@
     seg14: 0x405A60
 
 bob_geo_000440:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000440
   symbol: bob_geo_000440
 
 bob_geo_000458:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000458
   symbol: bob_geo_000458
 
 bob_geo_000470:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000470
   symbol: bob_geo_000470
 
 bob_geo_000488:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000488
   symbol: bob_geo_000488

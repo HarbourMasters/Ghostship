@@ -31,6 +31,6 @@ goomba_face_blink:
     seg15: 0x2008D0
 
 goomba_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F0006E4
   symbol: goomba_geo

@@ -49,26 +49,26 @@
     seg14: 0x40E840
 
 sl_geo_000360:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000360
   symbol: sl_geo_000360
 
 sl_geo_000378:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000378
   symbol: sl_geo_000378
 
 sl_geo_000390:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000390
   symbol: sl_geo_000390
 
 sl_geo_0003A8:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0003A8
   symbol: sl_geo_0003A8
 
 sl_geo_000484:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000484
   symbol: sl_geo_000484

@@ -13,6 +13,6 @@ fwoosh_face:
     seg12: 0x1602E0
 
 fwoosh_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C00036C
   symbol: fwoosh_geo

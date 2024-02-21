@@ -13,6 +13,6 @@ butterfly_wing:
     seg22: 0x218DA0
 
 butterfly_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x160000A8
   symbol: butterfly_geo

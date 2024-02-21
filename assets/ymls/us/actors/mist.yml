@@ -13,11 +13,11 @@ mist:
     seg22: 0x218DA0
 
 mist_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000000
   symbol: mist_geo
 
 white_puff_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000020
   symbol: white_puff_geo

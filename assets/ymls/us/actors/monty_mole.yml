@@ -49,6 +49,6 @@ monty_mole_tooth:
     seg12: 0x1602E0
 
 monty_mole_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: monty_mole_geo

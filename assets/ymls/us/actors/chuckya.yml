@@ -40,6 +40,6 @@ chuckya_hand_antenna:
     seg15: 0x2008D0
 
 chuckya_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F0001D8
   symbol: chuckya_geo

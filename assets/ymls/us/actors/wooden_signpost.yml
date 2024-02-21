@@ -22,6 +22,6 @@ wooden_signpost_front:
     seg22: 0x218DA0
 
 wooden_signpost_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000FB4
   symbol: wooden_signpost_geo

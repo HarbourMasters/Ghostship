@@ -40,6 +40,6 @@ ukiki_fur:
     seg12: 0x1602E0
 
 ukiki_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000110
   symbol: ukiki_geo

@@ -22,6 +22,6 @@ mr_i_eyeball_right_side:
     seg13: 0x1F1B30
 
 mr_i_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000000
   symbol: mr_i_geo

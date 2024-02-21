@@ -13,6 +13,6 @@ burn_smoke:
     seg23: 0x1279B0
 
 burn_smoke_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x17000084
   symbol: burn_smoke_geo

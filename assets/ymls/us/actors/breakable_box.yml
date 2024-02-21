@@ -22,11 +22,11 @@ crazy_box_surface:
     seg15: 0x2008D0
 
 breakable_box_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F0005D0
   symbol: breakable_box_geo
 
 breakable_box_small_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F000610
   symbol: breakable_box_small_geo

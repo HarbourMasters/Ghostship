@@ -58,6 +58,6 @@ bbh_cage_wooden_base:
     seg12: 0x16D5C0
 
 haunted_cage_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000274
   symbol: haunted_cage_geo

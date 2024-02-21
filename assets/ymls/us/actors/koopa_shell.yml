@@ -22,16 +22,16 @@ koopa_shell_front:
     seg15: 0x2008D0
 
 koopa_shell_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F000AB0
   symbol: koopa_shell_geo
 
 koopa_shell2_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F000ADC
   symbol: koopa_shell2_geo
 
 koopa_shell3_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F000B08
   symbol: koopa_shell3_geo

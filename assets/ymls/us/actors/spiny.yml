@@ -3,6 +3,6 @@
     seg12: 0x187FA0
 
 spiny_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000328
   symbol: spiny_geo
