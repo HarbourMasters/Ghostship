@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1E7EE0
+  segments:
+    seg6: 0x1E7EE0
+
 swoop_body:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E7EE0
-  mio0: 0x4270
+  offset: 0x4270
   format: RGBA16
   symbol: swoop_seg6_texture_06004270
 swoop_eye:
@@ -12,8 +16,7 @@ swoop_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E7EE0
-  mio0: 0x4A70
+  offset: 0x4A70
   format: RGBA16
   symbol: swoop_seg6_texture_06004A70
 swoop_nose:
@@ -21,8 +24,7 @@ swoop_nose:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E7EE0
-  mio0: 0x5270
+  offset: 0x5270
   format: RGBA16
   symbol: swoop_seg6_texture_06005270
 swoop_wing:
@@ -30,8 +32,7 @@ swoop_wing:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E7EE0
-  mio0: 0x5A70
+  offset: 0x5A70
   format: RGBA16
   symbol: swoop_seg6_texture_06005A70
 

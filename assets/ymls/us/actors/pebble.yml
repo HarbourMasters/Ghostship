@@ -1,9 +1,13 @@
+:config:
+  compressed_offset: 0x201410
+  segments:
+    seg3: 0x201410
+
 pebble:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x1C300
+  offset: 0x1C300
   format: RGBA16
   symbol: pebble_seg3_texture_0301C300

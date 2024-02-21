@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x12A7E0
+  segments:
+    seg5: 0x12A7E0
+
 hoot_eyes:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x12A7E0
-  mio0: 0xA20
+  offset: 0xA20
   format: RGBA16
   symbol: hoot_seg5_texture_05000A20
 hoot_wing:
@@ -12,8 +16,7 @@ hoot_wing:
   size: 2048
   width: 32
   height: 32
-  offset: 0x12A7E0
-  mio0: 0x1E50
+  offset: 0x1E50
   format: RGBA16
   symbol: hoot_seg5_texture_05001E50
 hoot_wing_tip:
@@ -21,8 +24,7 @@ hoot_wing_tip:
   size: 2048
   width: 32
   height: 32
-  offset: 0x12A7E0
-  mio0: 0x2650
+  offset: 0x2650
   format: RGBA16
   symbol: hoot_seg5_texture_05002650
 

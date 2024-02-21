@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1C4230
+  segments:
+    seg6: 0x1C4230
+
 koopa_eye_border:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x5648
+  offset: 0x5648
   format: RGBA16
   symbol: koopa_seg6_texture_06005648
 koopa_eyes_closed:
@@ -12,8 +16,7 @@ koopa_eyes_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x4E48
+  offset: 0x4E48
   format: RGBA16
   symbol: koopa_seg6_texture_06004E48
 koopa_eyes_open:
@@ -21,8 +24,7 @@ koopa_eyes_open:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x4648
+  offset: 0x4648
   format: RGBA16
   symbol: koopa_seg6_texture_06004648
 koopa_nostrils:
@@ -30,8 +32,7 @@ koopa_nostrils:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1C4230
-  mio0: 0x5E48
+  offset: 0x5E48
   format: RGBA16
   symbol: koopa_seg6_texture_06005E48
 koopa_shell_back:
@@ -39,8 +40,7 @@ koopa_shell_back:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x2E48
+  offset: 0x2E48
   format: RGBA16
   symbol: koopa_seg6_texture_06002E48
 koopa_shell_front:
@@ -48,8 +48,7 @@ koopa_shell_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x2648
+  offset: 0x2648
   format: RGBA16
   symbol: koopa_seg6_texture_06002648
 koopa_shell_front_top:
@@ -57,8 +56,7 @@ koopa_shell_front_top:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x3E48
+  offset: 0x3E48
   format: RGBA16
   symbol: koopa_seg6_texture_06003E48
 koopa_shoe:
@@ -66,8 +64,7 @@ koopa_shoe:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x3648
+  offset: 0x3648
   format: RGBA16
   symbol: koopa_seg6_texture_06003648
 

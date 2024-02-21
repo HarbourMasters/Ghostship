@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x145E90
+  segments:
+    seg5: 0x145E90
+
 pokey_body:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x145E90
-  mio0: 0x12878
+  offset: 0x12878
   format: RGBA16
   symbol: pokey_seg5_texture_05012878
 pokey_face:
@@ -12,8 +16,7 @@ pokey_face:
   size: 2048
   width: 32
   height: 32
-  offset: 0x145E90
-  mio0: 0x11750
+  offset: 0x11750
   format: RGBA16
   symbol: pokey_seg5_texture_05011750
 pokey_face_blink:
@@ -21,8 +24,7 @@ pokey_face_blink:
   size: 2048
   width: 32
   height: 32
-  offset: 0x145E90
-  mio0: 0x11F50
+  offset: 0x11F50
   format: RGBA16
   symbol: pokey_seg5_texture_05011F50
 

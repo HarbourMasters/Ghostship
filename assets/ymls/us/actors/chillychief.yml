@@ -1,19 +1,28 @@
+:config:
+  compressed_offset: 0x132C60
+  segments:
+    seg5: 0x132C60
+
 chill_bully_eye:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x132C60
-  mio0: 0x2468
+  offset: 0x2468
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06002060
+
+:config:
+  compressed_offset: 0x1E51F0
+  segments:
+    seg6: 0x1E51F0
+
 chill_bully_left_side:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E51F0
-  mio0: 0x60
+  offset: 0x60
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06000060
 chill_bully_right_side:
@@ -21,23 +30,16 @@ chill_bully_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E51F0
-  mio0: 0x1060
+  offset: 0x1060
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06001060
 
-:config:
-  segments:
-    seg5: 0x1E51F0
-
 chilly_chief_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x1E51F0
-  mio0: 0x3754
+  offset: 0x3754
   symbol: chilly_chief_geo
 
 chilly_chief_big_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x1E51F0
-  mio0: 0x3874
+  offset: 0x3874
   symbol: chilly_chief_big_geo

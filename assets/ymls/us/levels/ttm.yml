@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x4D1910
+  segments:
+    seg7: 0x4D1910
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x4D1910
-  mio0: 0x0
+  offset: 0x0
   format: IA16
   symbol: ttm_seg7_texture_07000000
 1:
@@ -12,8 +16,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4D1910
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: ttm_seg7_texture_07000800
 2:
@@ -21,8 +24,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4D1910
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: ttm_seg7_texture_07001000
 3:
@@ -30,8 +32,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4D1910
-  mio0: 0x1800
+  offset: 0x1800
   format: RGBA16
   symbol: ttm_seg7_texture_07001800
 4:
@@ -39,8 +40,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4D1910
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: ttm_seg7_texture_07002000
 5:
@@ -48,8 +48,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4D1910
-  mio0: 0x2800
+  offset: 0x2800
   format: RGBA16
   symbol: ttm_seg7_texture_07002800
 6:
@@ -57,8 +56,7 @@
   size: 4096
   width: 64
   height: 32
-  offset: 0x4D1910
-  mio0: 0x3000
+  offset: 0x3000
   format: RGBA16
   symbol: ttm_seg7_texture_07003000
 7:
@@ -66,17 +64,21 @@
   size: 4096
   width: 64
   height: 32
-  offset: 0x4D1910
-  mio0: 0x4000
+  offset: 0x4000
   format: RGBA16
   symbol: ttm_seg7_texture_07004000
+
+:config:
+  compressed_offset: 0x351960
+  segments:
+    seg9: 0x351960
+
 8:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x351960
-  mio0: 0xA800
+  offset: 0xA800
   format: RGBA16
   symbol: ttm_seg7_texture_0702AD30
 

@@ -1,9 +1,13 @@
+:config:
+  compressed_offset: 0x114750
+  segments:
+    seg4: 0x114750
+
 small_snow_particle:
   type: TEXTURE
   size: 512
   width: 16
   height: 16
-  offset: 0x114750
-  mio0: 0x32780
+  offset: 0x32780
   format: RGBA16
   symbol: white_particle_small_texture

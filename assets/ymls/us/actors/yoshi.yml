@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x16D870
+  segments:
+    seg5: 0x16D870
+
 yoshi_eye:
   type: TEXTURE
   size: 512
   width: 16
   height: 16
-  offset: 0x16D870
-  mio0: 0x1C588
+  offset: 0x1C588
   format: RGBA16
   symbol: yoshi_seg5_texture_0501C4A0
 yoshi_eye_blink:
@@ -12,8 +16,7 @@ yoshi_eye_blink:
   size: 512
   width: 16
   height: 16
-  offset: 0x16D870
-  mio0: 0x1C788
+  offset: 0x1C788
   format: RGBA16
   symbol: yoshi_seg5_texture_0501C6A0
 yoshi_nostril:
@@ -21,8 +24,7 @@ yoshi_nostril:
   size: 512
   width: 16
   height: 16
-  offset: 0x16D870
-  mio0: 0x1C988
+  offset: 0x1C988
   format: RGBA16
   symbol: yoshi_seg5_texture_0501C8A0
 

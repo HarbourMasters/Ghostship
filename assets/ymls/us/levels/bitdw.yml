@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x454E00
+  segments:
+    seg7: 0x454E00
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x454E00
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: bitdw_seg7_texture_07000000
 1:
@@ -12,8 +16,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x454E00
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: bitdw_seg7_texture_07000800
 2:
@@ -21,8 +24,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x454E00
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: bitdw_seg7_texture_07001000
 3:
@@ -30,8 +32,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x454E00
-  mio0: 0x1800
+  offset: 0x1800
   format: RGBA16
   symbol: bitdw_seg7_texture_07001800
 

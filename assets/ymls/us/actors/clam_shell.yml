@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x13B910
+  segments:
+    seg5: 0x13B910
+
 clam_shell:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x13B910
-  mio0: 0x30
+  offset: 0x30
   format: RGBA16
   symbol: clam_shell_seg5_texture_05000030
 clam_shell_mouth:
@@ -12,8 +16,7 @@ clam_shell_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x13B910
-  mio0: 0x830
+  offset: 0x830
   format: RGBA16
   symbol: clam_shell_seg5_texture_05000830
 

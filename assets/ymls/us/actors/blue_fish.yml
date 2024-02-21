@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x201410
+  segments:
+    seg3: 0x201410
+
 blue_fish:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x1B5E0
+  offset: 0x1B5E0
   format: RGBA16
   symbol: blue_fish_seg3_texture_0301B5E0
 

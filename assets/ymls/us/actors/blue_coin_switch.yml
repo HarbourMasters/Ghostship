@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1F2200
+  segments:
+    seg8: 0x1F2200
+
 blue_coin_switch_side:
   type: TEXTURE
   size: 1024
   width: 32
   height: 16
-  offset: 0x1F2200
-  mio0: 0x18
+  offset: 0x18
   format: RGBA16
   symbol: blue_coin_switch_seg8_texture_08000018
 blue_coin_switch_top:
@@ -12,8 +16,7 @@ blue_coin_switch_top:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F2200
-  mio0: 0x418
+  offset: 0x418
   format: RGBA16
   symbol: blue_coin_switch_seg8_texture_08000418
 

@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1521D0
+  segments:
+    seg5: 0x1521D0
+
 fwoosh_face:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1521D0
-  mio0: 0x15808
+  offset: 0x15808
   format: IA16
   symbol: fwoosh_seg5_texture_05015808
 

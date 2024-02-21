@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x1C4230
+  segments:
+    seg6: 0x1C4230
+
 piranha_plant_bottom_lip:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x133F8
+  offset: 0x133F8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_060133F8
 piranha_plant_leaf:
@@ -12,8 +16,7 @@ piranha_plant_leaf:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1C4230
-  mio0: 0x143F8
+  offset: 0x143F8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_060143F8
 piranha_plant_skin:
@@ -21,8 +24,7 @@ piranha_plant_skin:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x123F8
+  offset: 0x123F8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_060123F8
 piranha_plant_stem:
@@ -30,28 +32,32 @@ piranha_plant_stem:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x12BF8
+  offset: 0x12BF8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_06012BF8
-piranha_plant_tongue:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x188440
-  mio0: 0x24438
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_060113F8
+
 piranha_plant_tooth:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C4230
-  mio0: 0x13BF8
+  offset: 0x13BF8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_06013BF8
+
+:config:
+  compressed_offset: 0x188440
+  segments:
+    seg6: 0x188440
+
+piranha_plant_tongue:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x24438
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060113F8
 
 :config:
   segments:

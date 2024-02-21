@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x4784A0
+  segments:
+    seg7: 0x4784A0
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: lll_seg7_texture_07000000
 1:
@@ -12,8 +16,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: lll_seg7_texture_07000800
 10:
@@ -21,8 +24,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x5000
+  offset: 0x5000
   format: RGBA16
   symbol: lll_seg7_texture_07005000
 11:
@@ -30,8 +32,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x5800
+  offset: 0x5800
   format: RGBA16
   symbol: lll_seg7_texture_07005800
 12:
@@ -39,8 +40,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x6000
+  offset: 0x6000
   format: RGBA16
   symbol: lll_seg7_texture_07006000
 13:
@@ -48,8 +48,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x6800
+  offset: 0x6800
   format: RGBA16
   symbol: lll_seg7_texture_07006800
 14:
@@ -57,8 +56,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x7000
+  offset: 0x7000
   format: RGBA16
   symbol: lll_seg7_texture_07007000
 15:
@@ -66,8 +64,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x7800
+  offset: 0x7800
   format: RGBA16
   symbol: lll_seg7_texture_07007800
 16:
@@ -75,8 +72,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x8000
+  offset: 0x8000
   format: RGBA16
   symbol: lll_seg7_texture_07008000
 17:
@@ -84,8 +80,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x8800
+  offset: 0x8800
   format: RGBA16
   symbol: lll_seg7_texture_07008800
 18:
@@ -93,8 +88,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x9000
+  offset: 0x9000
   format: RGBA16
   symbol: lll_seg7_texture_07009000
 19:
@@ -102,8 +96,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x9800
+  offset: 0x9800
   format: RGBA16
   symbol: lll_seg7_texture_07009800
 2:
@@ -111,8 +104,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: lll_seg7_texture_07001000
 20:
@@ -120,8 +112,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0xA000
+  offset: 0xA000
   format: RGBA16
   symbol: lll_seg7_texture_0700A000
 21:
@@ -129,8 +120,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0xA800
+  offset: 0xA800
   format: RGBA16
   symbol: lll_seg7_texture_0700A800
 22:
@@ -138,8 +128,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0xB000
+  offset: 0xB000
   format: RGBA16
   symbol: lll_seg7_texture_0700B000
 23:
@@ -147,8 +136,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0xB800
+  offset: 0xB800
   format: RGBA16
   symbol: lll_seg7_texture_0700B800
 24:
@@ -156,8 +144,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0xC000
+  offset: 0xC000
   format: RGBA16
   symbol: lll_seg7_texture_0700C000
 25:
@@ -165,8 +152,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4784A0
-  mio0: 0xC800
+  offset: 0xC800
   format: RGBA16
   symbol: lll_seg7_texture_0700C800
 26:
@@ -174,10 +160,119 @@
   size: 512
   width: 16
   height: 16
-  offset: 0x4784A0
-  mio0: 0xD000
+  offset: 0xD000
   format: RGBA16
   symbol: lll_seg7_texture_0700D000
+
+28:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xD400
+  format: RGBA16
+  symbol: lll_seg7_texture_0700D400
+29:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xDC00
+  format: RGBA16
+  symbol: lll_seg7_texture_0700DC00
+3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  format: RGBA16
+  symbol: lll_seg7_texture_07001800
+30:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xE400
+  format: RGBA16
+  symbol: lll_seg7_texture_0700E400
+31:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xEC00
+  format: RGBA16
+  symbol: lll_seg7_texture_0700EC00
+32:
+  type: TEXTURE
+  size: 2048
+  width: 64
+  height: 16
+  offset: 0xF400
+  format: RGBA16
+  symbol: lll_seg7_texture_0700F400
+4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  format: RGBA16
+  symbol: lll_seg7_texture_07002000
+5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  format: RGBA16
+  symbol: lll_seg7_texture_07002800
+6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  format: RGBA16
+  symbol: lll_seg7_texture_07003000
+
+8:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4000
+  format: RGBA16
+  symbol: lll_seg7_texture_07004000
+9:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4800
+  format: RGBA16
+  symbol: lll_seg7_texture_07004800
+
+:config:
+  compressed_offset: 0x31E1D0
+  segments:
+    seg9: 0x31E1D0
+
+7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  format: RGBA16
+  symbol: lll_seg7_texture_07003800
+
+:config:
+  compressed_offset: 0x383950
+  segments:
+    seg7: 0x383950
+
 27:
   type: TEXTURE
   size: 512
@@ -187,114 +282,6 @@
   mio0: 0x3900
   format: IA16
   symbol: lll_seg7_texture_0700D200
-28:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0xD400
-  format: RGBA16
-  symbol: lll_seg7_texture_0700D400
-29:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0xDC00
-  format: RGBA16
-  symbol: lll_seg7_texture_0700DC00
-3:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0x1800
-  format: RGBA16
-  symbol: lll_seg7_texture_07001800
-30:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0xE400
-  format: RGBA16
-  symbol: lll_seg7_texture_0700E400
-31:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0xEC00
-  format: RGBA16
-  symbol: lll_seg7_texture_0700EC00
-32:
-  type: TEXTURE
-  size: 2048
-  width: 64
-  height: 16
-  offset: 0x4784A0
-  mio0: 0xF400
-  format: RGBA16
-  symbol: lll_seg7_texture_0700F400
-4:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0x2000
-  format: RGBA16
-  symbol: lll_seg7_texture_07002000
-5:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0x2800
-  format: RGBA16
-  symbol: lll_seg7_texture_07002800
-6:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0x3000
-  format: RGBA16
-  symbol: lll_seg7_texture_07003000
-7:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x31E1D0
-  mio0: 0x1800
-  format: RGBA16
-  symbol: lll_seg7_texture_07003800
-8:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0x4000
-  format: RGBA16
-  symbol: lll_seg7_texture_07004000
-9:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4784A0
-  mio0: 0x4800
-  format: RGBA16
-  symbol: lll_seg7_texture_07004800
 
 :config:
   segments:

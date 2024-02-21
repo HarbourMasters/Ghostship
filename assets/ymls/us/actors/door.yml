@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x201410
+  segments:
+    seg3: 0x201410
+
 bbh_door:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x201410
-  mio0: 0x10510
+  offset: 0x10510
   format: RGBA16
   symbol: door_seg3_texture_03010510
 bbh_door_overlay:
@@ -12,8 +16,7 @@ bbh_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x11510
+  offset: 0x11510
   format: RGBA16
   symbol: door_seg3_texture_03011510
 door_lock:
@@ -21,8 +24,7 @@ door_lock:
   size: 1024
   width: 16
   height: 32
-  offset: 0x201410
-  mio0: 0x13510
+  offset: 0x13510
   format: RGBA16
   symbol: door_seg3_texture_03013510
 hmc_mural_door:
@@ -30,8 +32,7 @@ hmc_mural_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x201410
-  mio0: 0xED10
+  offset: 0xED10
   format: RGBA16
   symbol: door_seg3_texture_0300ED10
 hmc_mural_door_overlay:
@@ -39,8 +40,7 @@ hmc_mural_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0xFD10
+  offset: 0xFD10
   format: RGBA16
   symbol: door_seg3_texture_0300FD10
 metal_door:
@@ -48,8 +48,7 @@ metal_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x201410
-  mio0: 0xD510
+  offset: 0xD510
   format: RGBA16
   symbol: door_seg3_texture_0300D510
 metal_door_overlay:
@@ -57,8 +56,7 @@ metal_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0xE510
+  offset: 0xE510
   format: RGBA16
   symbol: door_seg3_texture_0300E510
 one_star_door_sign:
@@ -66,8 +64,7 @@ one_star_door_sign:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x12510
+  offset: 0x12510
   format: RGBA16
   symbol: door_seg3_texture_03012510
 polished_wooden_door:
@@ -75,8 +72,7 @@ polished_wooden_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x201410
-  mio0: 0x9D10
+  offset: 0x9D10
   format: RGBA16
   symbol: door_seg3_texture_03009D10
 polished_wooden_door_overlay:
@@ -84,8 +80,7 @@ polished_wooden_door_overlay:
   size: 4096
   width: 32
   height: 64
-  offset: 0x201410
-  mio0: 0xAD10
+  offset: 0xAD10
   format: RGBA16
   symbol: door_seg3_texture_0300AD10
 rough_wooden_door:
@@ -93,8 +88,7 @@ rough_wooden_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x201410
-  mio0: 0xBD10
+  offset: 0xBD10
   format: RGBA16
   symbol: door_seg3_texture_0300BD10
 rough_wooden_door_overlay:
@@ -102,8 +96,7 @@ rough_wooden_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0xCD10
+  offset: 0xCD10
   format: RGBA16
   symbol: door_seg3_texture_0300CD10
 three_star_door_sign:
@@ -111,8 +104,7 @@ three_star_door_sign:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x12D10
+  offset: 0x12D10
   format: RGBA16
   symbol: door_seg3_texture_03012D10
 zero_star_door_sign:
@@ -120,8 +112,7 @@ zero_star_door_sign:
   size: 2048
   width: 32
   height: 32
-  offset: 0x201410
-  mio0: 0x11D10
+  offset: 0x11D10
   format: RGBA16
   symbol: door_seg3_texture_03011D10
 

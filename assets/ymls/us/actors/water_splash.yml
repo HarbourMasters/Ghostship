@@ -1,10 +1,14 @@
+:config:
+  compressed_offset: 0x114750
+  segments:
+    seg4: 0x114750
+
 water_splash_0:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x2A5C8
+  offset: 0x2A5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402A5C8
 water_splash_1:
@@ -12,8 +16,7 @@ water_splash_1:
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x2B5C8
+  offset: 0x2B5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402B5C8
 water_splash_2:
@@ -21,8 +24,7 @@ water_splash_2:
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x2C5C8
+  offset: 0x2C5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402C5C8
 water_splash_3:
@@ -30,8 +32,7 @@ water_splash_3:
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x2D5C8
+  offset: 0x2D5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402D5C8
 water_splash_4:
@@ -39,8 +40,7 @@ water_splash_4:
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x2E5C8
+  offset: 0x2E5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402E5C8
 water_splash_5:
@@ -48,8 +48,7 @@ water_splash_5:
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x2F5C8
+  offset: 0x2F5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402F5C8
 water_splash_6:
@@ -57,8 +56,7 @@ water_splash_6:
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x305C8
+  offset: 0x305C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040305C8
 water_splash_7:
@@ -66,8 +64,7 @@ water_splash_7:
   size: 4096
   width: 32
   height: 64
-  offset: 0x114750
-  mio0: 0x315C8
+  offset: 0x315C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040315C8
 
