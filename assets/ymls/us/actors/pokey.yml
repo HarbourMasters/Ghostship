@@ -31,11 +31,11 @@ pokey_face_blink:
     seg12: 0x151B70
 
 pokey_head_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000610
   symbol: pokey_head_geo
 
 pokey_body_part_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000644
   symbol: pokey_body_part_geo

@@ -31,13 +31,13 @@ chill_bully_right_side:
     seg5: 0x1E51F0
 
 chilly_chief_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x1E51F0
   mio0: 0x3754
   symbol: chilly_chief_geo
 
 chilly_chief_big_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x1E51F0
   mio0: 0x3874
   symbol: chilly_chief_big_geo

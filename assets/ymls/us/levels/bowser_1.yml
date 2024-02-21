@@ -31,6 +31,6 @@
     seg14: 0x4C41C0
 
 bowser_1_geo_0000D0:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0000D0
   symbol: bowser_1_geo_0000D0

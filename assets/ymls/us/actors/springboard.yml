@@ -22,16 +22,16 @@ springboard_top_unused:
     seg12: 0x166BD0
 
 springboard_top_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: springboard_top_geo
 
 springboard_spring_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000018
   symbol: springboard_spring_geo
 
 springboard_bottom_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000030
   symbol: springboard_bottom_geo

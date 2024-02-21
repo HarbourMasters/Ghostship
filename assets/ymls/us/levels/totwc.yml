@@ -40,11 +40,11 @@
     seg14: 0x4C2700
 
 totwc_geo_000160:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000160
   symbol: totwc_geo_000160
 
 totwc_geo_000188:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000188
   symbol: totwc_geo_000188

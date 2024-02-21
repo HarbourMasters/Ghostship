@@ -58,6 +58,6 @@ piranha_plant_tooth:
     seg13: 0x1D7C90
 
 piranha_plant_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000358
   symbol: piranha_plant_geo

@@ -58,6 +58,6 @@ sparkle_5:
     seg23: 0x1279B0
 
 sparkles_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x170001BC
   symbol: sparkles_geo

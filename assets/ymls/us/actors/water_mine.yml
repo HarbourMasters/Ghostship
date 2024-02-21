@@ -31,6 +31,6 @@ water_mine_spike_unused:
     seg13: 0x1C3DB0
 
 water_mine_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D0002F4
   symbol: water_mine_geo

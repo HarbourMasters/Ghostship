@@ -13,7 +13,7 @@ tornado:
     seg5: 0x145E90
 
 tweester_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x145E90
   mio0: 0x4630
   symbol: tweester_geo

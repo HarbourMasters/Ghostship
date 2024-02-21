@@ -49,6 +49,6 @@
     seg14: 0x4BE9E0
 
 cotmc_geo_0001A0:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0001A0
   symbol: cotmc_geo_0001A0

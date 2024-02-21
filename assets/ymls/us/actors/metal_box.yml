@@ -13,6 +13,6 @@ metal_box_side:
     seg15: 0x2008D0
 
 metal_box_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F000A30
   symbol: metal_box_geo

@@ -49,6 +49,6 @@ lakitu_enemy_shell:
     seg12: 0x187FA0
 
 enemy_lakitu_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C0001BC
   symbol: enemy_lakitu_geo

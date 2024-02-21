@@ -31,6 +31,6 @@ dorrie_tongue:
     seg13: 0x1F1B30
 
 dorrie_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000230
   symbol: dorrie_geo

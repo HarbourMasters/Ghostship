@@ -31,6 +31,6 @@ hoot_wing_tip:
     seg12: 0x132850
 
 hoot_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000018
   symbol: hoot_geo

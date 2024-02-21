@@ -58,6 +58,6 @@ heave-ho_turnkey:
     seg12: 0x132850
 
 heave_ho_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C00028C
   symbol: heave_ho_geo

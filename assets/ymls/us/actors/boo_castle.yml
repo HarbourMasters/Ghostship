@@ -22,6 +22,6 @@ bbh_boo_mouth:
     seg13: 0x1E4BF0
 
 boo_castle_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D0005B0
   symbol: boo_castle_geo

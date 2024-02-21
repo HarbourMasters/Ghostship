@@ -13,6 +13,6 @@ small_yellow_sphere:
     seg12: 0x132850
 
 yellow_sphere_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000000
   symbol: yellow_sphere_geo

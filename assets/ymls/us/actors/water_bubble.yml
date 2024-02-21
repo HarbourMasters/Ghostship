@@ -13,11 +13,11 @@ water_bubble:
     seg12: 0x13B5D0
 
 water_bomb_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000308
   symbol: water_bomb_geo
 
 water_bomb_shadow_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000328
   symbol: water_bomb_shadow_geo

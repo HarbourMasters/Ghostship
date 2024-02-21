@@ -40,6 +40,6 @@ amp_mouth:
     seg15: 0x2008d0
 
 amp_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F000028
   symbol: dAmpGeo

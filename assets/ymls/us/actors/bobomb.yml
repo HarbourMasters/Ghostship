@@ -58,11 +58,11 @@ bob-omb_right_side:
     seg15: 0x2008D0
 
 black_bobomb_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F0007B8
   symbol: black_bobomb_geo
 
 bobomb_buddy_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0F0008F4
   symbol: bobomb_buddy_geo

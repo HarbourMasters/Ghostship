@@ -13,11 +13,11 @@ dirt_particle:
     seg22: 0x218DA0
 
 dirt_animation_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000ED4
   symbol: dirt_animation_geo
 
 cartoon_star_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x16000F24
   symbol: cartoon_star_geo

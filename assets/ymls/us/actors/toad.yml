@@ -22,16 +22,16 @@ toad_head:
     seg13: 0x1E4BF0
 
 toad_geo_000114:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D000114
   symbol: toad_geo_000114
 
 toad_geo_00027C:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D00027C
   symbol: toad_geo_00027C
 
 toad_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0D0003E4
   symbol: toad_geo

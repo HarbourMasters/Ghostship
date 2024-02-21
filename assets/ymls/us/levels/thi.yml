@@ -22,31 +22,31 @@
     seg14: 0x42C6E0
 
 thi_geo_0005B0:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0005B0
   symbol: thi_geo_0005B0
 
 thi_geo_0005C8:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0005C8
   symbol: thi_geo_0005C8
 
 thi_geo_0005F0:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0005F0
   symbol: thi_geo_0005F0
 
 thi_geo_000608:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000608
   symbol: thi_geo_000608
 
 thi_geo_0006D4:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0006D4
   symbol: thi_geo_0006D4
 
 thi_geo_00079C:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E00079C
   symbol: thi_geo_00079C

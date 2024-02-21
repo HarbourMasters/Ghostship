@@ -58,26 +58,26 @@
     seg14: 0x4545E0
 
 castle_grounds_geo_000660:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000660
   symbol: castle_grounds_geo_000660
 
 castle_grounds_geo_0006F4:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E0006F4
   symbol: castle_grounds_geo_0006F4
 
 castle_grounds_geo_00070C:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E00070C
   symbol: castle_grounds_geo_00070C
 
 castle_grounds_geo_000724:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E000724
   symbol: castle_grounds_geo_000724
 
 castle_grounds_geo_00073C:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0E00073C
   symbol: castle_grounds_geo_00073C

@@ -31,6 +31,6 @@ yoshi_nostril:
     seg12: 0x180540
 
 yoshi_geo:
-  type: GEO_LAYOUT
+  type: SM64:GEO_LAYOUT
   offset: 0x0C000468
   symbol: yoshi_geo
