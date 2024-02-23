@@ -35,17 +35,3 @@ water_wave_3:
   offset: 0x26B58
   format: IA16
   symbol: water_wave_seg4_texture_04026B58
-
-:config:
-  segments:
-    seg23: 0x1279B0
-
-idle_water_wave_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x17000124
-  symbol: idle_water_wave_geo
-
-wave_trail_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x17000168
-  symbol: wave_trail_geo

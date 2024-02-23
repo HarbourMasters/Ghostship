@@ -19,12 +19,3 @@ warp_pipe_top:
   offset: 0x9168
   format: RGBA16
   symbol: warp_pipe_seg3_texture_03009168
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-warp_pipe_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000388
-  symbol: warp_pipe_geo

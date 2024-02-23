@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg15: 0x2008D0
+
+cannon_base_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0F0001A8
+  symbol: cannon_base_geo

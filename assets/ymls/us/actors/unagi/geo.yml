@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x145C10
+
+unagi_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C00010C
+  symbol: unagi_geo

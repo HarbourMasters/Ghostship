@@ -1,0 +1,13 @@
+:config:
+  segments:
+    seg23: 0x1279B0
+
+small_water_splash_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x1700009C
+  symbol: small_water_splash_geo
+
+mario_TODO_geo_0000E0:
+  type: SM64:GEO_LAYOUT
+  offset: 0x170000E0
+  symbol: mario_TODO_geo_0000E0

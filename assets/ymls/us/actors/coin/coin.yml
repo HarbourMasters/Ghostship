@@ -35,37 +35,3 @@ coin_tilt_right:
   offset: 0x5F80
   format: IA16
   symbol: coin_seg3_texture_03005F80
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-yellow_coin_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x1600013C
-  symbol: yellow_coin_geo
-
-yellow_coin_no_shadow_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x160001A0
-  symbol: yellow_coin_no_shadow_geo
-
-blue_coin_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000200
-  symbol: blue_coin_geo
-
-blue_coin_no_shadow_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000264
-  symbol: blue_coin_no_shadow_geo
-
-red_coin_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x160002C4
-  symbol: red_coin_geo
-
-red_coin_no_shadow_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000328
-  symbol: red_coin_no_shadow_geo

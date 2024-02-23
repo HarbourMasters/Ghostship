@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg22: 0x218DA0
+
+white_particle_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000F98
+  symbol: white_particle_geo

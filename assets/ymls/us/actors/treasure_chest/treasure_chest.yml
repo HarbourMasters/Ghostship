@@ -35,17 +35,3 @@ treasure_chest_side:
   offset: 0x147A8
   format: RGBA16
   symbol: treasure_chest_seg6_texture_060147A8
-
-:config:
-  segments:
-    seg13: 0x1C3DB0
-
-treasure_chest_base_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000450
-  symbol: treasure_chest_base_geo
-
-treasure_chest_lid_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000468
-  symbol: treasure_chest_lid_geo

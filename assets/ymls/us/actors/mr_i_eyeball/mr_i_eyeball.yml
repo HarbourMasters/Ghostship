@@ -19,12 +19,3 @@ mr_i_eyeball_right_side:
   offset: 0x1080
   format: RGBA16
   symbol: mr_i_eyeball_seg6_texture_06001080
-
-:config:
-  segments:
-    seg13: 0x1F1B30
-
-mr_i_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000000
-  symbol: mr_i_geo

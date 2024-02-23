@@ -11,13 +11,3 @@ tornado:
   offset: 0x12848
   format: IA16
   symbol: tornado_seg5_texture_05013128
-
-:config:
-  compressed_offset: 0x145E90
-  segments:
-    seg5: 0x145E90
-
-tweester_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x4630
-  symbol: tweester_geo

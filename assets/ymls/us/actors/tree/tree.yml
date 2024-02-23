@@ -43,32 +43,3 @@ tree_right_side:
   offset: 0x2EE28
   format: RGBA16
   symbol: tree_seg3_texture_0302EE28
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-bubbly_tree_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000FE8
-  symbol: bubbly_tree_geo
-
-spiky_tree_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16001000
-  symbol: spiky_tree_geo
-
-snow_tree_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16001018
-  symbol: snow_tree_geo
-
-spiky_tree1_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16001030
-  symbol: spiky_tree1_geo
-
-palm_tree_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16001048
-  symbol: palm_tree_geo

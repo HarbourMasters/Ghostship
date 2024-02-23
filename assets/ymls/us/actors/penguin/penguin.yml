@@ -51,12 +51,3 @@ penguin_eye_open:
   offset: 0x2DE0
   format: RGBA16
   symbol: penguin_seg5_texture_05002DE0
-
-:config:
-  segments:
-    seg12: 0x1656E0
-
-penguin_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000104
-  symbol: penguin_geo

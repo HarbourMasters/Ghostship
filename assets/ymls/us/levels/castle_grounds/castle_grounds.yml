@@ -51,32 +51,3 @@
   offset: 0xEAE8
   format: IA8
   symbol: castle_grounds_seg7_us_texture_0700EAE8
-
-:config:
-  segments:
-    seg14: 0x4545E0
-
-castle_grounds_geo_000660:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E000660
-  symbol: castle_grounds_geo_000660
-
-castle_grounds_geo_0006F4:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E0006F4
-  symbol: castle_grounds_geo_0006F4
-
-castle_grounds_geo_00070C:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E00070C
-  symbol: castle_grounds_geo_00070C
-
-castle_grounds_geo_000724:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E000724
-  symbol: castle_grounds_geo_000724
-
-castle_grounds_geo_00073C:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E00073C
-  symbol: castle_grounds_geo_00073C

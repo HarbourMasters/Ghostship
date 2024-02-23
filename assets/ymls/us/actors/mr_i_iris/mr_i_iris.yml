@@ -35,12 +35,3 @@ mr_i_iris_open:
   offset: 0x2170
   format: RGBA16
   symbol: mr_i_iris_seg6_texture_06002170
-
-:config:
-  segments:
-    seg13: 0x1F1B30
-
-mr_i_iris_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D00001C
-  symbol: mr_i_iris_geo

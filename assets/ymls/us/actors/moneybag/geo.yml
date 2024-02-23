@@ -1,0 +1,18 @@
+:config:
+  segments:
+    seg13: 0x1E7D90
+
+moneybag_geo_000000:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000000
+  symbol: moneybag_geo_000000
+
+moneybag_geo_000078:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000078
+  symbol: moneybag_geo_000078
+
+moneybag_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D0000F0
+  symbol: moneybag_geo

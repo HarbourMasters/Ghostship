@@ -35,12 +35,3 @@ ukiki_fur:
   offset: 0xA3C0
   format: RGBA16
   symbol: ukiki_seg5_texture_0500A3C0
-
-:config:
-  segments:
-    seg12: 0x1602E0
-
-ukiki_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000110
-  symbol: ukiki_geo

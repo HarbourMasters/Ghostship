@@ -1,0 +1,13 @@
+:config:
+  segments:
+    seg23: 0x1279B0
+
+bubble_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x17000000
+  symbol: bubble_geo
+
+purple_marble_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x1700001C
+  symbol: purple_marble_geo

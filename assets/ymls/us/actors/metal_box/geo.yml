@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg15: 0x2008D0
+
+metal_box_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0F000A30
+  symbol: metal_box_geo

@@ -1,0 +1,238 @@
+:config:
+  segments:
+    seg14: 0x3CF0D0
+
+castle_geo_000F00:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000F00
+  symbol: castle_geo_000F00
+
+castle_geo_000F18:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000F18
+  symbol: castle_geo_000F18
+
+castle_geo_000F30:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000F30
+  symbol: castle_geo_000F30
+
+castle_geo_000F70:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000F70
+  symbol: castle_geo_000F70
+
+castle_geo_000F88:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000F88
+  symbol: castle_geo_000F88
+
+castle_geo_000FA8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000FA8
+  symbol: castle_geo_000FA8
+
+castle_geo_000FD0:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000FD0
+  symbol: castle_geo_000FD0
+
+castle_geo_001000:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001000
+  symbol: castle_geo_001000
+
+castle_geo_001038:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001038
+  symbol: castle_geo_001038
+
+castle_geo_001088:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001088
+  symbol: castle_geo_001088
+
+castle_geo_0010C8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0010C8
+  symbol: castle_geo_0010C8
+
+castle_geo_001110:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001110
+  symbol: castle_geo_001110
+
+castle_geo_001158:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001158
+  symbol: castle_geo_001158
+
+castle_geo_0011A8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0011A8
+  symbol: castle_geo_0011A8
+
+castle_geo_001200:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001200
+  symbol: castle_geo_001200
+
+castle_geo_001260:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001260
+  symbol: castle_geo_001260
+
+castle_geo_0012C8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0012C8
+  symbol: castle_geo_0012C8
+
+castle_geo_001348:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001348
+  symbol: castle_geo_001348
+
+castle_geo_0013B8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0013B8
+  symbol: castle_geo_0013B8
+
+castle_geo_001400:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001400
+  symbol: castle_geo_001400
+
+castle_geo_001518:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001518
+  symbol: castle_geo_001518
+
+castle_geo_001530:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001530
+  symbol: castle_geo_001530
+
+castle_geo_001548:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001548
+  symbol: castle_geo_001548
+
+castle_geo_001560:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001560
+  symbol: castle_geo_001560
+
+castle_geo_001578:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001578
+  symbol: castle_geo_001578
+
+castle_geo_0015B8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0015B8
+  symbol: castle_geo_0015B8
+
+castle_geo_0015F8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0015F8
+  symbol: castle_geo_0015F8
+
+castle_geo_001628:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001628
+  symbol: castle_geo_001628
+
+castle_geo_001668:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001668
+  symbol: castle_geo_001668
+
+castle_geo_001690:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001690
+  symbol: castle_geo_001690
+
+castle_geo_0016D8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0016D8
+  symbol: castle_geo_0016D8
+
+castle_geo_001740:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001740
+  symbol: castle_geo_001740
+
+castle_geo_001798:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001798
+  symbol: castle_geo_001798
+
+castle_geo_001800:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001800
+  symbol: castle_geo_001800
+
+castle_geo_001858:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001858
+  symbol: castle_geo_001858
+
+castle_geo_001940:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001940
+  symbol: castle_geo_001940
+
+castle_geo_001958:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001958
+  symbol: castle_geo_001958
+
+castle_geo_001980:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001980
+  symbol: castle_geo_001980
+
+castle_geo_0019C8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0019C8
+  symbol: castle_geo_0019C8
+
+castle_geo_0019F8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0019F8
+  symbol: castle_geo_0019F8
+
+castle_geo_001A30:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001A30
+  symbol: castle_geo_001A30
+
+castle_geo_001A58:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001A58
+  symbol: castle_geo_001A58
+
+castle_geo_001AB8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001AB8
+  symbol: castle_geo_001AB8
+
+castle_geo_001AF8:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001AF8
+  symbol: castle_geo_001AF8
+
+castle_geo_001B48:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001B48
+  symbol: castle_geo_001B48
+
+castle_geo_001BB0:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001BB0
+  symbol: castle_geo_001BB0
+
+castle_geo_001C10:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E001C10
+  symbol: castle_geo_001C10

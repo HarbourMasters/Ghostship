@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x187FA0
+
+spiny_ball_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C000290
+  symbol: spiny_ball_geo

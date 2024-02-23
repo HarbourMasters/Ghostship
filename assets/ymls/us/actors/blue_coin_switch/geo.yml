@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg15: 0x2008D0
+
+blue_coin_switch_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0F000000
+  symbol: blue_coin_switch_geo

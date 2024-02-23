@@ -43,12 +43,3 @@ sparkle_animation_4:
   offset: 0x34A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034A88
-
-:config:
-  segments:
-    seg23: 0x1279B0
-
-sparkles_animation_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x17000284
-  symbol: sparkles_animation_geo

@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg22: 0x218DA0
+
+leaves_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000C8C
+  symbol: leaves_geo

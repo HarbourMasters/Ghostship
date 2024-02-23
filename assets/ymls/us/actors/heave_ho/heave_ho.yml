@@ -51,12 +51,3 @@ heave-ho_turnkey:
   offset: 0x113C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050113C8
-
-:config:
-  segments:
-    seg12: 0x132850
-
-heave_ho_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C00028C
-  symbol: heave_ho_geo

@@ -1,0 +1,13 @@
+:config:
+  segments:
+    seg14: 0x4CE9F0
+
+bowser_2_geo_000170:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000170
+  symbol: bowser_2_geo_000170
+
+bowser_2_geo_000188:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E000188
+  symbol: bowser_2_geo_000188

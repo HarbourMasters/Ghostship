@@ -27,12 +27,3 @@
   offset: 0x1000
   format: RGBA16
   symbol: pss_seg7_texture_07001000
-
-:config:
-  segments:
-    seg14: 0x4B7F10
-
-pss_geo_000100:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E000100
-  symbol: pss_geo_000100

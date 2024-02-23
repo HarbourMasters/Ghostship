@@ -35,12 +35,3 @@ seaweed_upper_center:
   offset: 0x8610
   format: RGBA16
   symbol: seaweed_seg6_texture_06008610
-
-:config:
-  segments:
-    seg13: 0x1C3DB0
-
-seaweed_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000284
-  symbol: seaweed_geo

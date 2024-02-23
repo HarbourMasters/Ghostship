@@ -11,12 +11,3 @@ fwoosh_face:
   offset: 0x15808
   format: IA16
   symbol: fwoosh_seg5_texture_05015808
-
-:config:
-  segments:
-    seg12: 0x1602E0
-
-fwoosh_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C00036C
-  symbol: fwoosh_geo

@@ -11,12 +11,3 @@ mips_eyes:
   offset: 0xFC70
   format: RGBA16
   symbol: mips_seg6_texture_0600FB80
-
-:config:
-  segments:
-    seg13: 0x1E4BF0
-
-mips_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000448
-  symbol: mips_geo

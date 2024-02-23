@@ -51,27 +51,3 @@ mario_cap_wing_tip:
   offset: 0x9090
   format: RGBA16
   symbol: mario_cap_seg3_texture_0301F750
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-marios_cap_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000CA4
-  symbol: marios_cap_geo
-
-marios_metal_cap_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000CF0
-  symbol: marios_metal_cap_geo
-
-marios_wing_cap_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000D3C
-  symbol: marios_wing_cap_geo
-
-marios_winged_metal_cap_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000DA8
-  symbol: marios_winged_metal_cap_geo

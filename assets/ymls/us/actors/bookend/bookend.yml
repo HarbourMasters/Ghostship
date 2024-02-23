@@ -43,12 +43,3 @@ bookend_tooth:
   offset: 0x460
   format: RGBA16
   symbol: bookend_seg5_texture_05000460
-
-:config:
-  segments:
-    seg12: 0x16D5C0
-
-bookend_part_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000000
-  symbol: bookend_part_geo

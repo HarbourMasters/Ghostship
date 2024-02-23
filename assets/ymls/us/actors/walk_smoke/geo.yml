@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg23: 0x1279B0
+
+smoke_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x17000038
+  symbol: smoke_geo

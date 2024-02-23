@@ -11,12 +11,3 @@ metal_box_side:
   offset: 0x23998
   format: RGBA16
   symbol: metal_box_seg8_texture_08023998
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-metal_box_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F000A30
-  symbol: metal_box_geo
