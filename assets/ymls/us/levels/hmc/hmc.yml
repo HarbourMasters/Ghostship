@@ -59,17 +59,11 @@
   offset: 0x4800
   format: RGBA16
   symbol: hmc_seg7_texture_07004800
-
-:config:
-  compressed_offset: 0x396340
-  segments:
-    seg7: 0x396340
-
 7:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x16800
+  offset: 0x24CE0
   format: RGBA16
   symbol: hmc_seg7_texture_07024CE0

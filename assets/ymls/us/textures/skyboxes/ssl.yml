@@ -1,0 +1,9 @@
+:config:
+  compressed_offset: 0x2F14E0
+  segments:
+    seg10: 0x2F14E0
+
+ssl:
+  type: BLOB
+  size: 131392
+  offset: 0x0

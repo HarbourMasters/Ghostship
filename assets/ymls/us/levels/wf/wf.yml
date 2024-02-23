@@ -43,17 +43,11 @@
   offset: 0x2000
   format: RGBA16
   symbol: wf_seg7_texture_07002000
-
-:config:
-  compressed_offset: 0x108A40
-  segments:
-    seg2: 0x108A40
-
 5:
   type: TEXTURE
   size: 256
   width: 16
   height: 16
-  offset: 0x121B8
+  offset: 0x2800
   format: IA8
   symbol: wf_seg7_texture_07002800

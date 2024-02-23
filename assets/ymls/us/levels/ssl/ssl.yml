@@ -19,22 +19,6 @@
   offset: 0x800
   format: IA16
   symbol: ssl_seg7_texture_07000800
-10:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0xD7A8
-  format: RGBA16
-  symbol: ssl_seg7_texture_0700D7A8
-11:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0xE7A8
-  format: RGBA16
-  symbol: ssl_seg7_texture_0700E7A8
 2:
   type: TEXTURE
   size: 2048
@@ -75,7 +59,14 @@
   offset: 0x3800
   format: RGBA16
   symbol: ssl_seg7_texture_07003800
-
+7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4018
+  format: RGBA16
+  symbol: ssl_quicksand
 8:
   type: TEXTURE
   size: 2048
@@ -92,17 +83,20 @@
   offset: 0xC7A8
   format: RGBA16
   symbol: ssl_seg7_texture_0700C7A8
-
-:config:
-  compressed_offset: 0x32D070
-  segments:
-    seg9: 0x32D070
-
-7:
+10:
   type: TEXTURE
-  size: 2048
+  size: 4096
   width: 32
-  height: 32
-  offset: 0x8000
+  height: 64
+  offset: 0xD7A8
   format: RGBA16
-  symbol: ssl_quicksand
+  symbol: ssl_seg7_texture_0700D7A8
+11:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xE7A8
+  format: RGBA16
+  symbol: ssl_seg7_texture_0700E7A8
+

@@ -19,6 +19,70 @@
   offset: 0x800
   format: RGBA16
   symbol: lll_seg7_texture_07000800
+2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  format: RGBA16
+  symbol: lll_seg7_texture_07001000
+3:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1800
+  format: RGBA16
+  symbol: lll_seg7_texture_07001800
+4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2000
+  format: RGBA16
+  symbol: lll_seg7_texture_07002000
+5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2800
+  format: RGBA16
+  symbol: lll_seg7_texture_07002800
+6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  format: RGBA16
+  symbol: lll_seg7_texture_07003000
+7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3800
+  format: RGBA16
+  symbol: lll_seg7_texture_07003800
+8:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4000
+  format: RGBA16
+  symbol: lll_seg7_texture_07004000
+9:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4800
+  format: RGBA16
+  symbol: lll_seg7_texture_07004800
 10:
   type: TEXTURE
   size: 2048
@@ -99,14 +163,6 @@
   offset: 0x9800
   format: RGBA16
   symbol: lll_seg7_texture_07009800
-2:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1000
-  format: RGBA16
-  symbol: lll_seg7_texture_07001000
 20:
   type: TEXTURE
   size: 2048
@@ -163,7 +219,14 @@
   offset: 0xD000
   format: RGBA16
   symbol: lll_seg7_texture_0700D000
-
+27:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xD200
+  format: IA16
+  symbol: lll_seg7_texture_0700D200
 28:
   type: TEXTURE
   size: 2048
@@ -180,14 +243,6 @@
   offset: 0xDC00
   format: RGBA16
   symbol: lll_seg7_texture_0700DC00
-3:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1800
-  format: RGBA16
-  symbol: lll_seg7_texture_07001800
 30:
   type: TEXTURE
   size: 2048
@@ -212,73 +267,3 @@
   offset: 0xF400
   format: RGBA16
   symbol: lll_seg7_texture_0700F400
-4:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2000
-  format: RGBA16
-  symbol: lll_seg7_texture_07002000
-5:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2800
-  format: RGBA16
-  symbol: lll_seg7_texture_07002800
-6:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x3000
-  format: RGBA16
-  symbol: lll_seg7_texture_07003000
-
-8:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4000
-  format: RGBA16
-  symbol: lll_seg7_texture_07004000
-9:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4800
-  format: RGBA16
-  symbol: lll_seg7_texture_07004800
-
-:config:
-  compressed_offset: 0x31E1D0
-  segments:
-    seg9: 0x31E1D0
-
-7:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1800
-  format: RGBA16
-  symbol: lll_seg7_texture_07003800
-
-:config:
-  compressed_offset: 0x383950
-  segments:
-    seg7: 0x383950
-
-27:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0x383950
-  mio0: 0x3900
-  format: IA16
-  symbol: lll_seg7_texture_0700D200

@@ -163,17 +163,11 @@ castle_grounds_textures.0B400:
   offset: 0xB400
   format: RGBA16
   symbol: outside_0900B400
-
-:config:
-  compressed_offset: 0x32D070
-  segments:
-    seg9: 0x32D070
-
 castle_grounds_textures.0BC00:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0xB000
+  offset: 0xBC00
   format: IA16
   symbol: outside_0900BC00
