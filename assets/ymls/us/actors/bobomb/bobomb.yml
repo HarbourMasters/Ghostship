@@ -1,42 +1,4 @@
 :config:
-  compressed_offset: 0x134D20
-  segments:
-    seg5: 0x134D20
-
-bob-omb_buddy_left_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x78
-  format: RGBA16
-  symbol: bobomb_seg8_texture_0801FA60
-bob-omb_buddy_right_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x1078
-  format: RGBA16
-  symbol: bobomb_seg8_texture_08020A60
-bob-omb_eyes:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4878
-  format: RGBA16
-  symbol: bobomb_seg8_texture_08021A60
-bob-omb_eyes_blink:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x5078
-  format: RGBA16
-  symbol: bobomb_seg8_texture_08022260
-
-:config:
   compressed_offset: 0x1F2200
   segments:
     seg8: 0x1F2200
@@ -57,3 +19,35 @@ bob-omb_right_side:
   offset: 0x1EA60
   format: RGBA16
   symbol: bobomb_seg8_texture_0801EA60
+bob-omb_buddy_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1FA60
+  format: RGBA16
+  symbol: bobomb_seg8_texture_0801FA60
+bob-omb_buddy_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x20A60
+  format: RGBA16
+  symbol: bobomb_seg8_texture_08020A60
+bob-omb_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x21A60
+  format: RGBA16
+  symbol: bobomb_seg8_texture_08021A60
+bob-omb_eyes_blink:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x22260
+  format: RGBA16
+  symbol: bobomb_seg8_texture_08022260

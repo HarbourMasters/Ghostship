@@ -3,6 +3,14 @@
   segments:
     seg7: 0x396340
 
+castle_light:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  format: IA16
+  symbol: texture_castle_light
 1:
   type: TEXTURE
   size: 2048
@@ -11,6 +19,70 @@
   offset: 0x800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07000800
+2:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1000
+  format: IA16
+  symbol: inside_castle_seg7_texture_07001000
+3:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2000
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07002000
+4:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3000
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07003000
+5:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x3800
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07003800
+6:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x4800
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07004800
+7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5800
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07005800
+8:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07006000
+9:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6800
+  format: RGBA16
+  symbol: inside_castle_seg7_texture_07006800
 10:
   type: TEXTURE
   size: 2048
@@ -172,14 +244,6 @@
   offset: 0x16800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07016800
-3:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x2000
-  format: RGBA16
-  symbol: inside_castle_seg7_texture_07002000
 30:
   type: TEXTURE
   size: 2048
@@ -260,14 +324,6 @@
   offset: 0x1F800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0701F800
-4:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x3000
-  format: RGBA16
-  symbol: inside_castle_seg7_texture_07003000
 40:
   type: TEXTURE
   size: 4096
@@ -276,71 +332,3 @@
   offset: 0x20800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07020800
-5:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x3800
-  format: RGBA16
-  symbol: inside_castle_seg7_texture_07003800
-6:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x4800
-  format: RGBA16
-  symbol: inside_castle_seg7_texture_07004800
-7:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x5800
-  format: RGBA16
-  symbol: inside_castle_seg7_texture_07005800
-8:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x6000
-  format: RGBA16
-  symbol: inside_castle_seg7_texture_07006000
-9:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x6800
-  format: RGBA16
-  symbol: inside_castle_seg7_texture_07006800
-
-:config:
-  compressed_offset: 0x347A50
-  segments:
-    seg9: 0x347A50
-
-castle_light:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xB800
-  format: IA16
-  symbol: texture_castle_light
-
-:config:
-  compressed_offset: 0x326E40
-  segments:
-    seg9: 0x326E40
-
-2:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0xB800
-  format: IA16
-  symbol: inside_castle_seg7_texture_07001000

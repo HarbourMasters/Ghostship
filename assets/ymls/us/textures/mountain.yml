@@ -131,7 +131,14 @@ ttm_textures.09800:
   offset: 0x9800
   format: RGBA16
   symbol: mountain_09009800
-
+ttm_textures.0A000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA000
+  format: RGBA16
+  symbol: mountain_0900A000
 ttm_textures.0A800:
   type: TEXTURE
   size: 2048
@@ -164,17 +171,3 @@ ttm_textures.0C000:
   offset: 0xC000
   format: RGBA16
   symbol: mountain_0900C000
-
-:config:
-  compressed_offset: 0x33D710
-  segments:
-    seg9: 0x33D710
-
-ttm_textures.0A000:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x6000
-  format: RGBA16
-  symbol: mountain_0900A000

@@ -1,18 +1,4 @@
 :config:
-  compressed_offset: 0x132C60
-  segments:
-    seg5: 0x132C60
-
-chill_bully_eye:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2468
-  format: RGBA16
-  symbol: chilly_chief_seg6_texture_06002060
-
-:config:
   compressed_offset: 0x1E51F0
   segments:
     seg6: 0x1E51F0
@@ -33,6 +19,14 @@ chill_bully_right_side:
   offset: 0x1060
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06001060
+chill_bully_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2060
+  format: RGBA16
+  symbol: chilly_chief_seg6_texture_06002060
 
 chilly_chief_geo:
   type: SM64:GEO_LAYOUT

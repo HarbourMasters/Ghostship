@@ -67,17 +67,11 @@
   offset: 0x4000
   format: RGBA16
   symbol: ttm_seg7_texture_07004000
-
-:config:
-  compressed_offset: 0x351960
-  segments:
-    seg9: 0x351960
-
 8:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0xA800
+  offset: 0x2AD30
   format: RGBA16
   symbol: ttm_seg7_texture_0702AD30

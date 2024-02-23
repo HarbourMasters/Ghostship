@@ -147,7 +147,14 @@ lll_textures.08800:
   offset: 0x8800
   format: RGBA16
   symbol: fire_09008800
-
+lll_textures.09000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9000
+  format: RGBA16
+  symbol: fire_09009000
 lll_textures.09800:
   type: TEXTURE
   size: 2048
@@ -188,17 +195,3 @@ lll_textures.0B800:
   offset: 0xB800
   format: RGBA16
   symbol: fire_0900B800
-
-:config:
-  compressed_offset: 0x108A40
-  segments:
-    seg2: 0x108A40
-
-lll_textures.09000:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x16AB8
-  format: RGBA16
-  symbol: fire_09009000

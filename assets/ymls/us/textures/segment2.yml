@@ -363,7 +363,22 @@ font_graphics.06400:
   offset: 0x6400
   format: IA4
   symbol: texture_font_char_eu_double_quote_close
-
+font_graphics.06410:
+  type: TEXTURE
+  size: 16
+  width: 16
+  height: 8
+  offset: 0x6410
+  format: IA1
+  symbol: texture_font_char_eu_colon
+font_graphics.06420:
+  type: TEXTURE
+  size: 16
+  width: 16
+  height: 8
+  offset: 0x6420
+  format: IA1
+  symbol: texture_font_char_EU_slash
 font_graphics.06440:
   type: TEXTURE
   size: 64
@@ -892,6 +907,7 @@ segment2.02400:
   offset: 0x2400
   format: RGBA16
   symbol: texture_hud_char_I
+# texture_hud_char_J does not exist on US versions, offsets from here will be off by 0x200
 segment2.02800:
   type: TEXTURE
   size: 512
@@ -940,6 +956,7 @@ segment2.03200:
   offset: 0x3000
   format: RGBA16
   symbol: texture_hud_char_P
+# texture_hud_char_Q does not exist on US versions, offsets from here will be off by 0x400
 segment2.03600:
   type: TEXTURE
   size: 512
@@ -972,6 +989,7 @@ segment2.03C00:
   offset: 0x3800
   format: RGBA16
   symbol: texture_hud_char_U
+# texture_hud_char_V does not exist on US versions, offsets from here will be off by 0x600
 segment2.04000:
   type: TEXTURE
   size: 512
@@ -980,6 +998,7 @@ segment2.04000:
   offset: 0x3A00
   format: RGBA16
   symbol: texture_hud_char_W
+# texture_hud_char_X does not exist on US versions, offsets from here will be off by 0x800
 segment2.04400:
   type: TEXTURE
   size: 512
@@ -988,6 +1007,7 @@ segment2.04400:
   offset: 0x3C00
   format: RGBA16
   symbol: texture_hud_char_Y
+# texture_hud_char_Z does not exist on US versions, offsets from here will be off by 0xA000
 segment2.04800:
   type: TEXTURE
   size: 512
@@ -1004,7 +1024,7 @@ segment2.04A00:
   offset: 0x4000
   format: RGBA16
   symbol: texture_hud_char_double_quote
-
+# several symbols do not exist on US versions, offsets from here will be off by 0x14000
 segment2.05600:
   type: TEXTURE
   size: 512
@@ -1421,45 +1441,3 @@ shadow_quarter_square:
   offset: 0x121B8
   format: IA8
   symbol: texture_shadow_quarter_square
-
-:config:
-  compressed_offset: 0x188440
-  segments:
-    seg6: 0x188440
-
-font_graphics.06410:
-  type: TEXTURE
-  size: 16
-  width: 16
-  height: 8
-  offset: 0x14676
-  format: IA1
-  symbol: texture_font_char_eu_colon
-
-:config:
-  compressed_offset: 0x1C4230
-  segments:
-    seg6: 0x1C4230
-
-font_graphics.06420:
-  type: TEXTURE
-  size: 16
-  width: 16
-  height: 8
-  offset: 0x20B5B
-  format: IA1
-  symbol: texture_font_char_EU_slash
-
-:config:
-  compressed_offset: 0x2A65B0
-  segments:
-    seg7: 0x2A65B0
-
-segment2.05000:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0xA1D0
-  format: RGBA16
-  symbol: texture_hud_char_question
