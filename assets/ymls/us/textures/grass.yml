@@ -99,7 +99,14 @@ wf_textures.05800:
   offset: 0x5800
   format: RGBA16
   symbol: grass_09005800
-
+wf_textures.06000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6000
+  format: RGBA16
+  symbol: grass_09006000
 wf_textures.06800:
   type: TEXTURE
   size: 2048
@@ -172,35 +179,6 @@ wf_textures.0A800:
   offset: 0xA800
   format: RGBA16
   symbol: grass_0900A800
-
-wf_textures.0B800:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xB800
-  format: IA16
-  symbol: grass_0900B800
-
-:config:
-  compressed_offset: 0x33D710
-  segments:
-    seg9: 0x33D710
-
-wf_textures.06000:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x5000
-  format: RGBA16
-  symbol: grass_09006000
-
-:config:
-  compressed_offset: 0x32D070
-  segments:
-    seg9: 0x32D070
-
 wf_textures.0B000:
   type: TEXTURE
   size: 2048
@@ -209,3 +187,11 @@ wf_textures.0B000:
   offset: 0xB000
   format: IA16
   symbol: grass_0900B000
+wf_textures.0B800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB800
+  format: IA16
+  symbol: grass_0900B800

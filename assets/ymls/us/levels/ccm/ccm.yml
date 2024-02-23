@@ -19,30 +19,6 @@
   offset: 0x800
   format: RGBA16
   symbol: ccm_seg7_texture_07000800
-10:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4300
-  format: RGBA16
-  symbol: ccm_seg7_texture_07004300
-11:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4B00
-  format: RGBA16
-  symbol: ccm_seg7_texture_07004B00
-12:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x11958
-  format: RGBA16
-  symbol: ccm_seg7_texture_07011958
 2:
   type: TEXTURE
   size: 2048
@@ -67,7 +43,22 @@
   offset: 0x1900
   format: RGBA16
   symbol: ccm_seg7_texture_07001900
-
+5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2100
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002100
+6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2900
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002900
 7:
   type: TEXTURE
   size: 2048
@@ -92,25 +83,27 @@
   offset: 0x3B00
   format: IA16
   symbol: ccm_seg7_texture_07003B00
-
-:config:
-  compressed_offset: 0x160670
-  segments:
-    seg5: 0x160670
-
-5:
+10:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0xBC70
+  offset: 0x4300
   format: RGBA16
-  symbol: ccm_seg7_texture_07002100
-6:
+  symbol: ccm_seg7_texture_07004300
+11:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0xB470
+  offset: 0x4B00
   format: RGBA16
-  symbol: ccm_seg7_texture_07002900
+  symbol: ccm_seg7_texture_07004B00
+12:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11958
+  format: RGBA16
+  symbol: ccm_seg7_texture_07011958

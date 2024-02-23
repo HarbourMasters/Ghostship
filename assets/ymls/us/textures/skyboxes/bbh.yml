@@ -1,0 +1,9 @@
+:config:
+  compressed_offset: 0x2FB1B0
+  segments:
+    seg10: 0x2FB1B0
+
+bbh:
+  type: BLOB
+  size: 84288
+  offset: 0x0

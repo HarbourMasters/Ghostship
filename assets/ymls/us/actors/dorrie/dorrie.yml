@@ -19,17 +19,11 @@ dorrie_skin:
   offset: 0x9DA0
   format: RGBA16
   symbol: dorrie_seg6_texture_06009DA0
-
-:config:
-  compressed_offset: 0x1C4230
-  segments:
-    seg6: 0x1C4230
-
 dorrie_tongue:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x223D0
+  offset: 0xADA0
   format: RGBA16
   symbol: dorrie_seg6_texture_0600ADA0
