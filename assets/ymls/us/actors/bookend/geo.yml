@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x16D5C0
+
+bookend_part_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C000000
+  symbol: bookend_part_geo

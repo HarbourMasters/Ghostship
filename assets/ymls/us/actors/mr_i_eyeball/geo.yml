@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg13: 0x1F1B30
+
+mr_i_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000000
+  symbol: mr_i_geo

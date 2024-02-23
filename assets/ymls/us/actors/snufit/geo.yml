@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg13: 0x1F1B30
+
+snufit_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D0001A0
+  symbol: snufit_geo

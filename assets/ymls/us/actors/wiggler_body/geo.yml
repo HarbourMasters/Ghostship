@@ -1,3 +1,5 @@
+# Move into wiggler?
+
 :config:
   compressed_offset: 0x180BB0
   segments:

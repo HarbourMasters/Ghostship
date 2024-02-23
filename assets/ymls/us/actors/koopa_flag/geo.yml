@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg13: 0x1D7C90
+
+koopa_flag_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000000
+  symbol: koopa_flag_geo

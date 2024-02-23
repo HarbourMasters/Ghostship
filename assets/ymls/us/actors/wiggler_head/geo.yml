@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x187FA0
+
+wiggler_head_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C000030
+  symbol: wiggler_head_geo

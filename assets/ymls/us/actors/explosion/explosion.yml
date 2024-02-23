@@ -59,12 +59,3 @@ explosion_6:
   offset: 0x3A08
   format: RGBA16
   symbol: explosion_seg3_texture_03003A08
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-explosion_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000040
-  symbol: explosion_geo

@@ -67,17 +67,3 @@ koopa_shoe:
   offset: 0x3648
   format: RGBA16
   symbol: koopa_seg6_texture_06003648
-
-:config:
-  segments:
-    seg13: 0x1D7C90
-
-koopa_without_shell_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D0000D0
-  symbol: koopa_without_shell_geo
-
-koopa_with_shell_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000214
-  symbol: koopa_with_shell_geo

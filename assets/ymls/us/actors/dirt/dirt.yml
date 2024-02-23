@@ -11,17 +11,3 @@ dirt_particle:
   offset: 0x2BDF8
   format: RGBA16
   symbol: dirt_seg3_texture_0302BDF8
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-dirt_animation_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000ED4
-  symbol: dirt_animation_geo
-
-cartoon_star_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000F24
-  symbol: cartoon_star_geo

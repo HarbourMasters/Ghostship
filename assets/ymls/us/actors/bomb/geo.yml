@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg13: 0x1B9070
+
+bowser_bomb_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000BBC
+  symbol: bowser_bomb_geo

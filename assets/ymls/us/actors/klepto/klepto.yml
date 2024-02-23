@@ -43,12 +43,3 @@ klepto_wing_flap:
   offset: 0x3008
   format: RGBA16
   symbol: klepto_seg5_texture_05003008
-
-:config:
-  segments:
-    seg12: 0x151B70
-
-klepto_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000000
-  symbol: klepto_geo

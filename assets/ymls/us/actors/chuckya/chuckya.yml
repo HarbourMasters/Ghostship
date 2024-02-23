@@ -35,12 +35,3 @@ chuckya_hand_antenna:
   offset: 0x7778
   format: RGBA16
   symbol: chuckya_seg8_texture_08007778
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-chuckya_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F0001D8
-  symbol: chuckya_geo

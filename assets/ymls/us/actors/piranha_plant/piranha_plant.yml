@@ -58,12 +58,3 @@ piranha_plant_tongue:
   offset: 0x24438
   format: RGBA16
   symbol: piranha_plant_seg6_texture_060113F8
-
-:config:
-  segments:
-    seg13: 0x1D7C90
-
-piranha_plant_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000358
-  symbol: piranha_plant_geo

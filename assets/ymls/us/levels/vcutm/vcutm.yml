@@ -35,17 +35,3 @@
   offset: 0x2800
   format: RGBA16
   symbol: vcutm_seg7_texture_07002800
-
-:config:
-  segments:
-    seg14: 0x461220
-
-vcutm_geo_0001F0:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E0001F0
-  symbol: vcutm_geo_0001F0
-
-vcutm_geo_000208:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E000208
-  symbol: vcutm_geo_000208

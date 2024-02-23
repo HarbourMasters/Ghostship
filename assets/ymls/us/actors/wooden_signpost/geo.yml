@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg22: 0x218DA0
+
+wooden_signpost_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000FB4
+  symbol: wooden_signpost_geo

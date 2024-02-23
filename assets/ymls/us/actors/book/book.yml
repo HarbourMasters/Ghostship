@@ -11,12 +11,3 @@ book_cover:
   offset: 0x1060
   format: RGBA16
   symbol: book_seg5_texture_05002570
-
-:config:
-  segments:
-    seg12: 0x16D5C0
-
-bookend_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C0000C0
-  symbol: bookend_geo

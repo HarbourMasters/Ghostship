@@ -59,12 +59,3 @@ walk_smoke_6:
   offset: 0x20EA0
   format: IA16
   symbol: smoke_seg4_texture_04020EA0
-
-:config:
-  segments:
-    seg23: 0x1279B0
-
-smoke_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x17000038
-  symbol: smoke_geo

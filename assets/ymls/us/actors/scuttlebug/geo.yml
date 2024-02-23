@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg13: 0x1F1B30
+
+scuttlebug_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000394
+  symbol: scuttlebug_geo

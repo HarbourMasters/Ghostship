@@ -19,12 +19,3 @@ cap_switch_head:
   offset: 0x1C48
   format: IA16
   symbol: capswitch_seg5_texture_05001C48
-
-:config:
-  segments:
-    seg12: 0x166BD0
-
-cap_switch_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000048
-  symbol: cap_switch_geo

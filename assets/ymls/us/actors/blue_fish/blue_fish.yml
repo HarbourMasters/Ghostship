@@ -11,17 +11,3 @@ blue_fish:
   offset: 0x1B5E0
   format: RGBA16
   symbol: blue_fish_seg3_texture_0301B5E0
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-fish_shadow_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000BEC
-  symbol: fish_shadow_geo
-
-fish_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000C44
-  symbol: fish_geo

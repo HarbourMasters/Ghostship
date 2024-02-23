@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x134A70
+
+blargg_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C000240
+  symbol: blargg_geo

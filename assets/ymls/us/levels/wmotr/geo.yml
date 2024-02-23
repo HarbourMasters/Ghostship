@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg14: 0x4CD930
+
+wmotr_geo_0001F0:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0E0001F0
+  symbol: wmotr_geo_0001F0

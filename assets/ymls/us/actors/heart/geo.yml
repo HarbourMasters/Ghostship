@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg15: 0x2008D0
+
+heart_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0F0004FC
+  symbol: heart_geo

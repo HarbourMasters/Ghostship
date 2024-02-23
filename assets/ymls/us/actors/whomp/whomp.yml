@@ -35,12 +35,3 @@ whomp_surface:
   offset: 0x1EB60
   format: RGBA16
   symbol: whomp_seg6_texture_0601EB60
-
-:config:
-  segments:
-    seg13: 0x1D7C90
-
-whomp_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000480
-  symbol: whomp_geo

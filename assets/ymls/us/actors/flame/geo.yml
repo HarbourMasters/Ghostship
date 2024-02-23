@@ -1,0 +1,18 @@
+:config:
+  segments:
+    seg22: 0x218DA0
+
+red_flame_shadow_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000B10
+  symbol: red_flame_shadow_geo
+
+red_flame_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000B2C
+  symbol: red_flame_geo
+
+blue_flame_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000B8C
+  symbol: blue_flame_geo

@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg15: 0x2008D0
+
+test_platform_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0F000020
+  symbol: test_platform_geo

@@ -51,12 +51,3 @@ sparkle_5:
   offset: 0x29C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04029C90
-
-:config:
-  segments:
-    seg23: 0x1279B0
-
-sparkles_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x170001BC
-  symbol: sparkles_geo

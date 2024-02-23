@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x16D5C0
+
+haunted_cage_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C000274
+  symbol: haunted_cage_geo

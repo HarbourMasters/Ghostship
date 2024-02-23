@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg13: 0x1E4BF0
+
+mips_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000448
+  symbol: mips_geo
