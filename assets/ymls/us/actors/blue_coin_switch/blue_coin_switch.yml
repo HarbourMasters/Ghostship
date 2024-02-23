@@ -19,12 +19,3 @@ blue_coin_switch_top:
   offset: 0x418
   format: RGBA16
   symbol: blue_coin_switch_seg8_texture_08000418
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-blue_coin_switch_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F000000
-  symbol: blue_coin_switch_geo

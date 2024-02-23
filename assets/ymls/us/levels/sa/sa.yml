@@ -1,8 +1,0 @@
-:config:
-  segments:
-    seg14: 0x46C1A0
-
-sa_geo_000170:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0E000170
-  symbol: sa_geo_000170

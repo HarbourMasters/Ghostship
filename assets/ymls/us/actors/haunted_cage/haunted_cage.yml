@@ -51,12 +51,3 @@ bbh_cage_wooden_base:
   offset: 0xD688
   format: RGBA16
   symbol: haunted_cage_seg5_texture_0500D688
-
-:config:
-  segments:
-    seg12: 0x16D5C0
-
-haunted_cage_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000274
-  symbol: haunted_cage_geo

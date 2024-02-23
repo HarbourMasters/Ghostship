@@ -51,12 +51,3 @@ mad_piano_tooth:
   offset: 0x6AF0
   format: RGBA16
   symbol: mad_piano_seg5_texture_05006AF0
-
-:config:
-  segments:
-    seg12: 0x16D5C0
-
-mad_piano_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C0001B4
-  symbol: mad_piano_geo

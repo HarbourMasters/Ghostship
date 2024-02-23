@@ -19,22 +19,3 @@ springboard_top_unused:
   offset: 0x18
   format: RGBA16
   symbol: springboard_seg5_texture_05000018
-
-:config:
-  segments:
-    seg12: 0x166BD0
-
-springboard_top_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000000
-  symbol: springboard_top_geo
-
-springboard_spring_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000018
-  symbol: springboard_spring_geo
-
-springboard_bottom_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000030
-  symbol: springboard_bottom_geo

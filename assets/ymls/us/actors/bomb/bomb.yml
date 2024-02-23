@@ -27,12 +27,3 @@ bomb_spike:
   offset: 0x59C10
   format: RGBA16
   symbol: bomb_seg6_texture_06059AC0
-
-:config:
-  segments:
-    seg13: 0x1B9070
-
-bowser_bomb_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000BBC
-  symbol: bowser_bomb_geo

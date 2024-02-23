@@ -115,12 +115,3 @@ bowser_flame_9:
   offset: 0x12000
   format: RGBA16
   symbol: flame_seg6_texture_06012000
-
-:config:
-  segments:
-    seg13: 0x1B9070
-
-bowser_flames_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000000
-  symbol: bowser_flames_geo

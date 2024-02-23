@@ -1,8 +1,0 @@
-:config:
-  segments:
-    seg22: 0x218DA0
-
-transparent_star_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000F6C
-  symbol: transparent_star_geo

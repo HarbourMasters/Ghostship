@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg13: 0x1B9070
+
+invisible_bowser_accessory_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0D000090
+  symbol: invisible_bowser_accessory_geo

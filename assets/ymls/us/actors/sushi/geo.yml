@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x145C10
+
+sushi_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C000068
+  symbol: sushi_geo

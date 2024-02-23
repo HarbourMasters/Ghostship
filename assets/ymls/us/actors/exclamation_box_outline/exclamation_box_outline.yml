@@ -19,12 +19,3 @@ exclamation_point:
   offset: 0x25A80
   format: RGBA16
   symbol: exclamation_box_outline_seg8_texture_08025A80
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-exclamation_box_outline_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F000A58
-  symbol: exclamation_box_outline_geo

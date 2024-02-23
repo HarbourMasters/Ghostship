@@ -1,0 +1,8 @@
+:config:
+  segments:
+    seg12: 0x132850
+
+heave_ho_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x0C00028C
+  symbol: heave_ho_geo

@@ -27,12 +27,3 @@ goomba_face_blink:
   offset: 0x1A530
   format: RGBA16
   symbol: goomba_seg8_texture_0801A530
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-goomba_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F0006E4
-  symbol: goomba_geo

@@ -11,12 +11,3 @@ leaf:
   offset: 0x1CBE0
   format: RGBA16
   symbol: leaves_seg3_texture_0301CBE0
-
-:config:
-  segments:
-    seg22: 0x218DA0
-
-leaves_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x16000C8C
-  symbol: leaves_geo

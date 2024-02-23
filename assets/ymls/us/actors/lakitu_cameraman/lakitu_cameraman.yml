@@ -57,12 +57,3 @@ lakitu_cameraman_shell:
   offset: 0x114E0
   format: RGBA16
   symbol: lakitu_seg6_texture_06002800
-
-:config:
-  segments:
-    seg13: 0x1E4BF0
-
-lakitu_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D000000
-  symbol: lakitu_geo

@@ -35,12 +35,3 @@ bub_scales:
   offset: 0x2408
   format: RGBA16
   symbol: bub_seg6_texture_060102A8
-
-:config:
-  segments:
-    seg13: 0x1C3DB0
-
-bub_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0D00038C
-  symbol: bub_geo

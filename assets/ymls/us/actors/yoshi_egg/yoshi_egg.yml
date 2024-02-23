@@ -67,12 +67,3 @@ yoshi_egg_7_unused:
   offset: 0x8FB8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_05008FB8
-
-:config:
-  segments:
-    seg12: 0x132850
-
-yoshi_egg_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C0001E4
-  symbol: yoshi_egg_geo

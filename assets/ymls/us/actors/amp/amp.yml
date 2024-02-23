@@ -35,12 +35,3 @@ amp_mouth:
   offset: 0x2318
   format: RGBA16
   symbol: dAmpMouthTexture
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-amp_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F000028
-  symbol: dAmpGeo

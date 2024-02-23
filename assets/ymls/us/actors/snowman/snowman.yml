@@ -43,17 +43,3 @@ mr_blizzard_right_side:
   offset: 0xA470
   format: RGBA16
   symbol: snowman_seg5_texture_0500A470
-
-:config:
-  segments:
-    seg12: 0x1656E0
-
-mr_blizzard_hidden_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C00021C
-  symbol: mr_blizzard_hidden_geo
-
-mr_blizzard_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000348
-  symbol: mr_blizzard_geo

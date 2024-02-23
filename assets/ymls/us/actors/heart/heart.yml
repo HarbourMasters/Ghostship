@@ -11,12 +11,3 @@ spinning_heart:
   offset: 0xD7E0
   format: RGBA16
   symbol: heart_seg8_texture_0800D7E0
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-heart_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F0004FC
-  symbol: heart_geo

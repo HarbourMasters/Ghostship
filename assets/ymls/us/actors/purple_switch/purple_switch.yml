@@ -21,12 +21,3 @@ purple_switch_exclamation_point:
   mio0: 0xC128
   format: RGBA16
   symbol: purple_switch_seg8_texture_0800C128
-
-:config:
-  segments:
-    seg15: 0x2008D0
-
-purple_switch_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0F0004CC
-  symbol: purple_switch_geo

@@ -91,12 +91,3 @@ king_bob-omb_right_side:
   offset: 0x9478
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05009478
-
-:config:
-  segments:
-    seg12: 0x13B5D0
-
-king_bobomb_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0x0C000000
-  symbol: king_bobomb_geo
