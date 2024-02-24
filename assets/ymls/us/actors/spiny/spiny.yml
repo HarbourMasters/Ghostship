@@ -1,0 +1,167 @@
+:config:
+  compressed_offset: 0x180BB0
+  segments:
+    seg5: 0x180BB0
+
+spiny_seg5_lights_050157F8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x157F8
+  symbol: spiny_seg5_lights_050157F8
+
+spiny_seg5_lights_05015810:
+  type: LIGHTS1
+  size: 24
+  offset: 0x15810
+  symbol: spiny_seg5_lights_05015810
+
+spiny_seg5_lights_05015828:
+  type: LIGHTS1
+  size: 24
+  offset: 0x15828
+  symbol: spiny_seg5_lights_05015828
+
+spiny_seg5_lights_05015840:
+  type: LIGHTS1
+  size: 24
+  offset: 0x15840
+  symbol: spiny_seg5_lights_05015840
+
+spiny_seg5_lights_05015858:
+  type: LIGHTS1
+  size: 24
+  offset: 0x15858
+  symbol: spiny_seg5_lights_05015858
+
+spiny_seg5_lights_05015870:
+  type: LIGHTS1
+  size: 24
+  offset: 0x15870
+  symbol: spiny_seg5_lights_05015870
+
+spiny_seg5_vertex_05015888:
+  type: VTX
+  size: 104
+  offset: 0x15888
+  symbol: spiny_seg5_vertex_05015888
+
+spiny_seg5_vertex_05015958:
+  type: VTX
+  size: 48
+  offset: 0x15958
+  symbol: spiny_seg5_vertex_05015958
+
+spiny_seg5_vertex_050159B8:
+  type: VTX
+  size: 104
+  offset: 0x159B8
+  symbol: spiny_seg5_vertex_050159B8
+
+spiny_seg5_vertex_05015A88:
+  type: VTX
+  size: 48
+  offset: 0x15A88
+  symbol: spiny_seg5_vertex_05015A88
+
+spiny_seg5_vertex_05015AE8:
+  type: VTX
+  size: 104
+  offset: 0x15AE8
+  symbol: spiny_seg5_vertex_05015AE8
+
+spiny_seg5_vertex_05015BB8:
+  type: VTX
+  size: 48
+  offset: 0x15BB8
+  symbol: spiny_seg5_vertex_05015BB8
+
+spiny_seg5_vertex_05015C18:
+  type: VTX
+  size: 104
+  offset: 0x15C18
+  symbol: spiny_seg5_vertex_05015C18
+
+spiny_seg5_vertex_05015CE8:
+  type: VTX
+  size: 48
+  offset: 0x15CE8
+  symbol: spiny_seg5_vertex_05015CE8
+
+spiny_seg5_vertex_05015D48:
+  type: VTX
+  size: 128
+  offset: 0x15D48
+  symbol: spiny_seg5_vertex_05015D48
+
+spiny_seg5_vertex_05015E48:
+  type: VTX
+  size: 128
+  offset: 0x15E48
+  symbol: spiny_seg5_vertex_05015E48
+
+spiny_seg5_vertex_05015F48:
+  type: VTX
+  size: 48
+  offset: 0x15F48
+  symbol: spiny_seg5_vertex_05015F48
+
+spiny_seg5_vertex_05015FA8:
+  type: VTX
+  size: 128
+  offset: 0x15FA8
+  symbol: spiny_seg5_vertex_05015FA8
+
+spiny_seg5_vertex_050160A8:
+  type: VTX
+  size: 80
+  offset: 0x160A8
+  symbol: spiny_seg5_vertex_050160A8
+
+spiny_seg5_vertex_05016148:
+  type: VTX
+  size: 120
+  offset: 0x16148
+  symbol: spiny_seg5_vertex_05016148
+
+spiny_seg5_vertex_05016238:
+  type: VTX
+  size: 120
+  offset: 0x16238
+  symbol: spiny_seg5_vertex_05016238
+
+spiny_seg5_vertex_05016328:
+  type: VTX
+  size: 120
+  offset: 0x16328
+  symbol: spiny_seg5_vertex_05016328
+
+spiny_seg5_dl_05016418:
+  type: GFX
+  offset: 0x16418
+  symbol: spiny_seg5_dl_05016418
+
+spiny_seg5_dl_050164E0:
+  type: GFX
+  offset: 0x164E0
+  symbol: spiny_seg5_dl_050164E0
+
+spiny_seg5_dl_050165A8:
+  type: GFX
+  offset: 0x165A8
+  symbol: spiny_seg5_dl_050165A8
+
+spiny_seg5_dl_05016670:
+  type: GFX
+  offset: 0x16670
+  symbol: spiny_seg5_dl_05016670
+
+spiny_seg5_dl_05016738:
+  type: GFX
+  offset: 0x16738
+  symbol: spiny_seg5_dl_05016738
+
+spiny_seg5_dl_05016A48:
+  type: GFX
+  offset: 0x16A48
+  symbol: spiny_seg5_dl_05016A48
+

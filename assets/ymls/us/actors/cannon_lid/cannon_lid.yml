@@ -11,3 +11,25 @@ cannon_lid:
   offset: 0x4058
   format: RGBA16
   symbol: cannon_lid_seg8_texture_08004058
+cannon_lid_seg8_lights_08004040:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4040
+  symbol: cannon_lid_seg8_lights_08004040
+
+cannon_lid_seg8_vertex_08004858:
+  type: VTX
+  size: 32
+  offset: 0x4858
+  symbol: cannon_lid_seg8_vertex_08004858
+
+cannon_lid_seg8_dl_08004898:
+  type: GFX
+  offset: 0x4898
+  symbol: cannon_lid_seg8_dl_08004898
+
+cannon_lid_seg8_dl_080048E0:
+  type: GFX
+  offset: 0x48E0
+  symbol: cannon_lid_seg8_dl_080048E0
+

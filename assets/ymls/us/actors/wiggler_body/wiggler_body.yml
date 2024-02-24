@@ -1,0 +1,152 @@
+:config:
+  compressed_offset: 0x180BB0
+  segments:
+    seg5: 0x180BB0
+
+wiggler_seg5_lights_0500B230:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB230
+  symbol: wiggler_seg5_lights_0500B230
+
+wiggler_seg5_lights_0500B248:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB248
+  symbol: wiggler_seg5_lights_0500B248
+
+wiggler_body_lights_unused:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB248
+  symbol: wiggler_body_lights_unused
+
+wiggler_seg5_vertex_0500B278:
+  type: VTX
+  size: 128
+  offset: 0xB278
+  symbol: wiggler_seg5_vertex_0500B278
+
+wiggler_seg5_vertex_0500B378:
+  type: VTX
+  size: 128
+  offset: 0xB378
+  symbol: wiggler_seg5_vertex_0500B378
+
+wiggler_seg5_vertex_0500B478:
+  type: VTX
+  size: 128
+  offset: 0xB478
+  symbol: wiggler_seg5_vertex_0500B478
+
+wiggler_seg5_vertex_0500B578:
+  type: VTX
+  size: 32
+  offset: 0xB578
+  symbol: wiggler_seg5_vertex_0500B578
+
+wiggler_seg5_vertex_0500B5B8:
+  type: VTX
+  size: 120
+  offset: 0xB5B8
+  symbol: wiggler_seg5_vertex_0500B5B8
+
+wiggler_seg5_vertex_0500B6A8:
+  type: VTX
+  size: 120
+  offset: 0xB6A8
+  symbol: wiggler_seg5_vertex_0500B6A8
+
+wiggler_seg5_vertex_0500B798:
+  type: VTX
+  size: 128
+  offset: 0xB798
+  symbol: wiggler_seg5_vertex_0500B798
+
+wiggler_seg5_vertex_0500B898:
+  type: VTX
+  size: 128
+  offset: 0xB898
+  symbol: wiggler_seg5_vertex_0500B898
+
+wiggler_seg5_vertex_0500B998:
+  type: VTX
+  size: 128
+  offset: 0xB998
+  symbol: wiggler_seg5_vertex_0500B998
+
+wiggler_seg5_vertex_0500BA98:
+  type: VTX
+  size: 32
+  offset: 0xBA98
+  symbol: wiggler_seg5_vertex_0500BA98
+
+wiggler_seg5_vertex_0500BAD8:
+  type: VTX
+  size: 120
+  offset: 0xBAD8
+  symbol: wiggler_seg5_vertex_0500BAD8
+
+wiggler_seg5_vertex_0500BBC8:
+  type: VTX
+  size: 120
+  offset: 0xBBC8
+  symbol: wiggler_seg5_vertex_0500BBC8
+
+wiggler_seg5_dl_0500BCB8:
+  type: GFX
+  offset: 0xBCB8
+  symbol: wiggler_seg5_dl_0500BCB8
+
+wiggler_seg5_dl_0500BE10:
+  type: GFX
+  offset: 0xBE10
+  symbol: wiggler_seg5_dl_0500BE10
+
+wiggler_seg5_dl_0500BE98:
+  type: GFX
+  offset: 0xBE98
+  symbol: wiggler_seg5_dl_0500BE98
+
+wiggler_seg5_dl_0500BF20:
+  type: GFX
+  offset: 0xBF20
+  symbol: wiggler_seg5_dl_0500BF20
+
+wiggler_seg5_dl_0500C078:
+  type: GFX
+  offset: 0xC078
+  symbol: wiggler_seg5_dl_0500C078
+
+wiggler_seg5_dl_0500C100:
+  type: GFX
+  offset: 0xC100
+  symbol: wiggler_seg5_dl_0500C100
+
+wiggler_seg5_vertex_0500C188:
+  type: VTX
+  size: 32
+  offset: 0xC188
+  symbol: wiggler_seg5_vertex_0500C188
+
+wiggler_seg5_vertex_0500C1C8:
+  type: VTX
+  size: 32
+  offset: 0xC1C8
+  symbol: wiggler_seg5_vertex_0500C1C8
+
+wiggler_seg5_dl_0500C208:
+  type: GFX
+  offset: 0xC208
+  symbol: wiggler_seg5_dl_0500C208
+
+wiggler_seg5_dl_0500C240:
+  type: GFX
+  offset: 0xC240
+  symbol: wiggler_seg5_dl_0500C240
+
+wiggler_seg5_dl_0500C278:
+  type: GFX
+  offset: 0xC278
+  symbol: wiggler_seg5_dl_0500C278
+

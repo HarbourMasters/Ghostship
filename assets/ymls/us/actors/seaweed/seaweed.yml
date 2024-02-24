@@ -35,3 +35,73 @@ seaweed_upper_center:
   offset: 0x8610
   format: RGBA16
   symbol: seaweed_seg6_texture_06008610
+seaweed_seg6_lights_06007DF8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7DF8
+  symbol: seaweed_seg6_lights_06007DF8
+
+seaweed_seg6_vertex_06009E10:
+  type: VTX
+  size: 32
+  offset: 0x9E10
+  symbol: seaweed_seg6_vertex_06009E10
+
+seaweed_seg6_dl_06009E50:
+  type: GFX
+  offset: 0x9E50
+  symbol: seaweed_seg6_dl_06009E50
+
+seaweed_seg6_dl_06009E98:
+  type: GFX
+  offset: 0x9E98
+  symbol: seaweed_seg6_dl_06009E98
+
+seaweed_seg6_vertex_06009F08:
+  type: VTX
+  size: 32
+  offset: 0x9F08
+  symbol: seaweed_seg6_vertex_06009F08
+
+seaweed_seg6_dl_06009F48:
+  type: GFX
+  offset: 0x9F48
+  symbol: seaweed_seg6_dl_06009F48
+
+seaweed_seg6_dl_06009F90:
+  type: GFX
+  offset: 0x9F90
+  symbol: seaweed_seg6_dl_06009F90
+
+seaweed_seg6_vertex_0600A000:
+  type: VTX
+  size: 32
+  offset: 0xA000
+  symbol: seaweed_seg6_vertex_0600A000
+
+seaweed_seg6_dl_0600A040:
+  type: GFX
+  offset: 0xA040
+  symbol: seaweed_seg6_dl_0600A040
+
+seaweed_seg6_dl_0600A088:
+  type: GFX
+  offset: 0xA088
+  symbol: seaweed_seg6_dl_0600A088
+
+seaweed_seg6_vertex_0600A0F8:
+  type: VTX
+  size: 32
+  offset: 0xA0F8
+  symbol: seaweed_seg6_vertex_0600A0F8
+
+seaweed_seg6_dl_0600A138:
+  type: GFX
+  offset: 0xA138
+  symbol: seaweed_seg6_dl_0600A138
+
+seaweed_seg6_dl_0600A180:
+  type: GFX
+  offset: 0xA180
+  symbol: seaweed_seg6_dl_0600A180
+

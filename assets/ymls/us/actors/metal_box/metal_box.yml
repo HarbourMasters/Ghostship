@@ -11,3 +11,31 @@ metal_box_side:
   offset: 0x23998
   format: RGBA16
   symbol: metal_box_seg8_texture_08023998
+metal_box_seg8_lights_08023980:
+  type: LIGHTS1
+  size: 24
+  offset: 0x23980
+  symbol: metal_box_seg8_lights_08023980
+
+metal_box_seg8_vertex_08024998:
+  type: VTX
+  size: 128
+  offset: 0x24998
+  symbol: metal_box_seg8_vertex_08024998
+
+metal_box_seg8_vertex_08024A98:
+  type: VTX
+  size: 64
+  offset: 0x24A98
+  symbol: metal_box_seg8_vertex_08024A98
+
+metal_box_seg8_dl_08024B18:
+  type: GFX
+  offset: 0x24B18
+  symbol: metal_box_seg8_dl_08024B18
+
+metal_box_dl:
+  type: GFX
+  offset: 0x24BB8
+  symbol: metal_box_dl
+

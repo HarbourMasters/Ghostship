@@ -27,3 +27,76 @@ water_mine_spike_unused:
   offset: 0x59C10
   format: RGBA16
   symbol: water_mine_seg6_texture_0600C4F8
+water_mine_seg6_lights_0600A4E0:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA4E0
+  symbol: water_mine_seg6_lights_0600A4E0
+
+water_mine_seg6_vertex_0600CCF8:
+  type: VTX
+  size: 32
+  offset: 0xCCF8
+  symbol: water_mine_seg6_vertex_0600CCF8
+
+water_mine_seg6_vertex_0600CD38:
+  type: VTX
+  size: 32
+  offset: 0xCD38
+  symbol: water_mine_seg6_vertex_0600CD38
+
+water_mine_seg6_vertex_0600CD78:
+  type: VTX
+  size: 120
+  offset: 0xCD78
+  symbol: water_mine_seg6_vertex_0600CD78
+
+water_mine_seg6_vertex_0600CE68:
+  type: VTX
+  size: 120
+  offset: 0xCE68
+  symbol: water_mine_seg6_vertex_0600CE68
+
+water_mine_seg6_vertex_0600CF58:
+  type: VTX
+  size: 120
+  offset: 0xCF58
+  symbol: water_mine_seg6_vertex_0600CF58
+
+water_mine_seg6_vertex_0600D048:
+  type: VTX
+  size: 120
+  offset: 0xD048
+  symbol: water_mine_seg6_vertex_0600D048
+
+water_mine_seg6_vertex_0600D138:
+  type: VTX
+  size: 96
+  offset: 0xD138
+  symbol: water_mine_seg6_vertex_0600D138
+
+water_mine_seg6_dl_0600D1F8:
+  type: GFX
+  offset: 0xD1F8
+  symbol: water_mine_seg6_dl_0600D1F8
+
+water_mine_seg6_dl_0600D230:
+  type: GFX
+  offset: 0xD230
+  symbol: water_mine_seg6_dl_0600D230
+
+water_mine_seg6_dl_0600D268:
+  type: GFX
+  offset: 0xD268
+  symbol: water_mine_seg6_dl_0600D268
+
+water_mine_seg6_dl_0600D2E0:
+  type: GFX
+  offset: 0xD2E0
+  symbol: water_mine_seg6_dl_0600D2E0
+
+water_mine_seg6_dl_0600D3F8:
+  type: GFX
+  offset: 0xD3F8
+  symbol: water_mine_seg6_dl_0600D3F8
+

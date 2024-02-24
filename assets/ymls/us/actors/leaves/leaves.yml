@@ -11,3 +11,14 @@ leaf:
   offset: 0x1CBE0
   format: RGBA16
   symbol: leaves_seg3_texture_0301CBE0
+leaves_seg3_vertex_0301CBA0:
+  type: VTX
+  size: 32
+  offset: 0x1CBA0
+  symbol: leaves_seg3_vertex_0301CBA0
+
+leaves_seg3_dl_0301CDE0:
+  type: GFX
+  offset: 0x1CDE0
+  symbol: leaves_seg3_dl_0301CDE0
+

@@ -11,3 +11,29 @@ burn_smoke:
   offset: 0x21800
   format: IA16
   symbol: burn_smoke_seg4_texture_04021800
+burn_smoke_seg4_vertex_040217C0:
+  type: VTX
+  size: 32
+  offset: 0x217C0
+  symbol: burn_smoke_seg4_vertex_040217C0
+
+burn_smoke_seg4_dl_04022000:
+  type: GFX
+  offset: 0x22000
+  symbol: burn_smoke_seg4_dl_04022000
+
+burn_smoke_seg4_dl_04022028:
+  type: GFX
+  offset: 0x22028
+  symbol: burn_smoke_seg4_dl_04022028
+
+burn_smoke_seg4_dl_04022048:
+  type: GFX
+  offset: 0x22048
+  symbol: burn_smoke_seg4_dl_04022048
+
+burn_smoke_seg4_dl_04022070:
+  type: GFX
+  offset: 0x22070
+  symbol: burn_smoke_seg4_dl_04022070
+

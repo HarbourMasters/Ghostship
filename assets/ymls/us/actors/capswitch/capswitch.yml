@@ -19,3 +19,108 @@ cap_switch_head:
   offset: 0x1C48
   format: IA16
   symbol: capswitch_seg5_texture_05001C48
+capswitch_seg5_lights_05001BB8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1BB8
+  symbol: capswitch_seg5_lights_05001BB8
+
+capswitch_seg5_lights_05001BD0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1BD0
+  symbol: capswitch_seg5_lights_05001BD0
+
+capswitch_seg5_lights_05001BE8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1BE8
+  symbol: capswitch_seg5_lights_05001BE8
+
+capswitch_seg5_lights_05001C00:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1C00
+  symbol: capswitch_seg5_lights_05001C00
+
+capswitch_seg5_lights_05001C18:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1C18
+  symbol: capswitch_seg5_lights_05001C18
+
+capswitch_seg5_lights_05001C30:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1C30
+  symbol: capswitch_seg5_lights_05001C30
+
+capswitch_seg5_vertex_05002CC8:
+  type: VTX
+  size: 96
+  offset: 0x2CC8
+  symbol: capswitch_seg5_vertex_05002CC8
+
+capswitch_seg5_dl_05002D88:
+  type: GFX
+  offset: 0x2D88
+  symbol: capswitch_seg5_dl_05002D88
+
+cap_switch_exclamation_seg5_dl_05002E00:
+  type: GFX
+  offset: 0x2E00
+  symbol: cap_switch_exclamation_seg5_dl_05002E00
+
+capswitch_seg5_vertex_05002E60:
+  type: VTX
+  size: 128
+  offset: 0x2E60
+  symbol: capswitch_seg5_vertex_05002E60
+
+capswitch_seg5_vertex_05002F60:
+  type: VTX
+  size: 96
+  offset: 0x2F60
+  symbol: capswitch_seg5_vertex_05002F60
+
+capswitch_seg5_dl_05003020:
+  type: GFX
+  offset: 0x3020
+  symbol: capswitch_seg5_dl_05003020
+
+cap_switch_base_seg5_dl_05003120:
+  type: GFX
+  offset: 0x3120
+  symbol: cap_switch_base_seg5_dl_05003120
+
+capswitch_seg5_vertex_05003180:
+  type: VTX
+  size: 128
+  offset: 0x3120
+  symbol: capswitch_seg5_vertex_05003180
+
+capswitch_seg5_dl_05003280:
+  type: GFX
+  offset: 0x3280
+  symbol: capswitch_seg5_dl_05003280
+
+capswitch_seg5_dl_05003350:
+  type: GFX
+  offset: 0x3350
+  symbol: capswitch_seg5_dl_05003350
+
+capswitch_seg5_dl_05003370:
+  type: GFX
+  offset: 0x3370
+  symbol: capswitch_seg5_dl_05003370
+
+capswitch_seg5_dl_05003390:
+  type: GFX
+  offset: 0x3390
+  symbol: capswitch_seg5_dl_05003390
+
+capswitch_seg5_dl_050033B0:
+  type: GFX
+  offset: 0x33B0
+  symbol: capswitch_seg5_dl_050033B0
+

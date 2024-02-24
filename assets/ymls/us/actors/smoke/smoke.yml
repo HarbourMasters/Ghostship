@@ -11,3 +11,19 @@ smoke:
   offset: 0x72C0
   format: IA16
   symbol: smoke_seg5_texture_050072C0
+smoke_seg5_vertex_05007280:
+  type: VTX
+  size: 32
+  offset: 0x7280
+  symbol: smoke_seg5_vertex_05007280
+
+smoke_seg5_dl_05007AC0:
+  type: GFX
+  offset: 0x7AC0
+  symbol: smoke_seg5_dl_05007AC0
+
+smoke_seg5_dl_05007AF8:
+  type: GFX
+  offset: 0x7AF8
+  symbol: smoke_seg5_dl_05007AF8
+

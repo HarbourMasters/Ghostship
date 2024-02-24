@@ -21,3 +21,36 @@ purple_switch_exclamation_point:
   mio0: 0xC128
   format: RGBA16
   symbol: purple_switch_seg8_texture_0800C128
+purple_switch_seg8_lights_0800C090:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC090
+  symbol: purple_switch_seg8_lights_0800C090
+
+purple_switch_seg8_vertex_0800C528:
+  type: VTX
+  size: 128
+  offset: 0xC528
+  symbol: purple_switch_seg8_vertex_0800C528
+
+purple_switch_seg8_vertex_0800C628:
+  type: VTX
+  size: 32
+  offset: 0xC628
+  symbol: purple_switch_seg8_vertex_0800C628
+
+purple_switch_seg8_dl_0800C668:
+  type: GFX
+  offset: 0xC668
+  symbol: purple_switch_seg8_dl_0800C668
+
+purple_switch_seg8_dl_0800C6E0:
+  type: GFX
+  offset: 0xC6E0
+  symbol: purple_switch_seg8_dl_0800C6E0
+
+purple_switch_seg8_dl_0800C718:
+  type: GFX
+  offset: 0xC718
+  symbol: purple_switch_seg8_dl_0800C718
+

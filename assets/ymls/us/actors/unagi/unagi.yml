@@ -51,3 +51,250 @@ unagi_tooth:
   offset: 0xC120
   format: RGBA16
   symbol: unagi_seg5_texture_0500C120
+unagi_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused1
+
+unagi_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused2
+
+unagi_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused3
+
+unagi_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused4
+
+unagi_lights_unused5:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused5
+
+unagi_lights_unused6:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused6
+
+unagi_lights_unused7:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused7
+
+unagi_lights_unused8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD108
+  symbol: unagi_lights_unused8
+
+unagi_seg5_vertex_0500CBA0:
+  type: VTX
+  size: 56
+  offset: 0xCBA0
+  symbol: unagi_seg5_vertex_0500CBA0
+
+unagi_seg5_vertex_0500CC10:
+  type: VTX
+  size: 104
+  offset: 0xCC10
+  symbol: unagi_seg5_vertex_0500CC10
+
+unagi_seg5_dl_0500CCE0:
+  type: GFX
+  offset: 0xCCE0
+  symbol: unagi_seg5_dl_0500CCE0
+
+unagi_seg5_dl_0500CD30:
+  type: GFX
+  offset: 0xCD30
+  symbol: unagi_seg5_dl_0500CD30
+
+unagi_seg5_dl_0500CDD0:
+  type: GFX
+  offset: 0xCDD0
+  symbol: unagi_seg5_dl_0500CDD0
+
+unagi_seg5_vertex_0500CEA8:
+  type: VTX
+  size: 88
+  offset: 0xCEA8
+  symbol: unagi_seg5_vertex_0500CEA8
+
+unagi_seg5_vertex_0500CF58:
+  type: VTX
+  size: 24
+  offset: 0xCF58
+  symbol: unagi_seg5_vertex_0500CF58
+
+unagi_seg5_dl_0500CF88:
+  type: GFX
+  offset: 0xCF88
+  symbol: unagi_seg5_dl_0500CF88
+
+unagi_seg5_dl_0500D038:
+  type: GFX
+  offset: 0xD038
+  symbol: unagi_seg5_dl_0500D038
+
+unagi_seg5_dl_0500D050:
+  type: GFX
+  offset: 0xD050
+  symbol: unagi_seg5_dl_0500D050
+
+unagi_seg5_vertex_0500D120:
+  type: VTX
+  size: 80
+  offset: 0xD120
+  symbol: unagi_seg5_vertex_0500D120
+
+unagi_seg5_dl_0500D1C0:
+  type: GFX
+  offset: 0xD1C0
+  symbol: unagi_seg5_dl_0500D1C0
+
+unagi_seg5_dl_0500D268:
+  type: GFX
+  offset: 0xD268
+  symbol: unagi_seg5_dl_0500D268
+
+unagi_seg5_vertex_0500D320:
+  type: VTX
+  size: 80
+  offset: 0xD320
+  symbol: unagi_seg5_vertex_0500D320
+
+unagi_seg5_dl_0500D3C0:
+  type: GFX
+  offset: 0xD3C0
+  symbol: unagi_seg5_dl_0500D3C0
+
+unagi_seg5_dl_0500D468:
+  type: GFX
+  offset: 0xD468
+  symbol: unagi_seg5_dl_0500D468
+
+unagi_seg5_vertex_0500D520:
+  type: VTX
+  size: 80
+  offset: 0xD520
+  symbol: unagi_seg5_vertex_0500D520
+
+unagi_seg5_dl_0500D5C0:
+  type: GFX
+  offset: 0xD5C0
+  symbol: unagi_seg5_dl_0500D5C0
+
+unagi_seg5_dl_0500D668:
+  type: GFX
+  offset: 0xD668
+  symbol: unagi_seg5_dl_0500D668
+
+unagi_seg5_vertex_0500D720:
+  type: VTX
+  size: 64
+  offset: 0xD720
+  symbol: unagi_seg5_vertex_0500D720
+
+unagi_seg5_dl_0500D7A0:
+  type: GFX
+  offset: 0xD7A0
+  symbol: unagi_seg5_dl_0500D7A0
+
+unagi_seg5_dl_0500D828:
+  type: GFX
+  offset: 0xD828
+  symbol: unagi_seg5_dl_0500D828
+
+unagi_seg5_vertex_0500D8E0:
+  type: VTX
+  size: 80
+  offset: 0xD8E0
+  symbol: unagi_seg5_vertex_0500D8E0
+
+unagi_seg5_vertex_0500D980:
+  type: VTX
+  size: 120
+  offset: 0xD980
+  symbol: unagi_seg5_vertex_0500D980
+
+unagi_seg5_vertex_0500DA70:
+  type: VTX
+  size: 120
+  offset: 0xDA70
+  symbol: unagi_seg5_vertex_0500DA70
+
+unagi_seg5_dl_0500DB60:
+  type: GFX
+  offset: 0xDB60
+  symbol: unagi_seg5_dl_0500DB60
+
+unagi_seg5_dl_0500DBC0:
+  type: GFX
+  offset: 0xDBC0
+  symbol: unagi_seg5_dl_0500DBC0
+
+unagi_seg5_dl_0500DD08:
+  type: GFX
+  offset: 0xDD08
+  symbol: unagi_seg5_dl_0500DD08
+
+unagi_seg5_vertex_0500DDE0:
+  type: VTX
+  size: 72
+  offset: 0xDDE0
+  symbol: unagi_seg5_vertex_0500DDE0
+
+unagi_seg5_dl_0500DE70:
+  type: GFX
+  offset: 0xDE70
+  symbol: unagi_seg5_dl_0500DE70
+
+unagi_seg5_dl_0500DEB8:
+  type: GFX
+  offset: 0xDEB8
+  symbol: unagi_seg5_dl_0500DEB8
+
+unagi_seg5_vertex_0500DF70:
+  type: VTX
+  size: 96
+  offset: 0xDF70
+  symbol: unagi_seg5_vertex_0500DF70
+
+unagi_seg5_dl_0500E030:
+  type: GFX
+  offset: 0xE030
+  symbol: unagi_seg5_dl_0500E030
+
+unagi_seg5_dl_0500E088:
+  type: GFX
+  offset: 0xE088
+  symbol: unagi_seg5_dl_0500E088
+
+unagi_seg5_vertex_0500E140:
+  type: VTX
+  size: 96
+  offset: 0xE140
+  symbol: unagi_seg5_vertex_0500E140
+
+unagi_seg5_dl_0500E200:
+  type: GFX
+  offset: 0xE200
+  symbol: unagi_seg5_dl_0500E200
+
+unagi_seg5_dl_0500E258:
+  type: GFX
+  offset: 0xE258
+  symbol: unagi_seg5_dl_0500E258
+

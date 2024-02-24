@@ -19,3 +19,36 @@ checkerboard_platform_side:
   offset: 0xC840
   format: RGBA16
   symbol: checkerboard_platform_seg8_texture_0800C840
+checkerboard_platform_seg8_lights_0800C828:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC828
+  symbol: checkerboard_platform_seg8_lights_0800C828
+
+checkerboard_platform_seg8_vertex_0800D440:
+  type: VTX
+  size: 64
+  offset: 0xD440
+  symbol: checkerboard_platform_seg8_vertex_0800D440
+
+checkerboard_platform_seg8_vertex_0800D4C0:
+  type: VTX
+  size: 128
+  offset: 0xD4C0
+  symbol: checkerboard_platform_seg8_vertex_0800D4C0
+
+checkerboard_platform_seg8_dl_0800D5C0:
+  type: GFX
+  offset: 0xD5C0
+  symbol: checkerboard_platform_seg8_dl_0800D5C0
+
+checkerboard_platform_seg8_dl_0800D618:
+  type: GFX
+  offset: 0xD618
+  symbol: checkerboard_platform_seg8_dl_0800D618
+
+checkerboard_platform_seg8_dl_0800D680:
+  type: GFX
+  offset: 0xD680
+  symbol: checkerboard_platform_seg8_dl_0800D680
+

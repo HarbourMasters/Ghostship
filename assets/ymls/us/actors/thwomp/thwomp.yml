@@ -19,3 +19,60 @@ thwomp_surface:
   offset: 0xA900
   format: RGBA16
   symbol: thwomp_seg5_texture_0500A900
+thwomp_seg5_lights_050098E8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x98E8
+  symbol: thwomp_seg5_lights_050098E8
+
+thwomp_seg5_vertex_0500B100:
+  type: VTX
+  size: 120
+  offset: 0xB100
+  symbol: thwomp_seg5_vertex_0500B100
+
+thwomp_seg5_vertex_0500B1F0:
+  type: VTX
+  size: 128
+  offset: 0xB1F0
+  symbol: thwomp_seg5_vertex_0500B1F0
+
+thwomp_seg5_vertex_0500B2F0:
+  type: VTX
+  size: 112
+  offset: 0xB2F0
+  symbol: thwomp_seg5_vertex_0500B2F0
+
+thwomp_seg5_vertex_0500B3D0:
+  type: VTX
+  size: 128
+  offset: 0xB3D0
+  symbol: thwomp_seg5_vertex_0500B3D0
+
+thwomp_seg5_vertex_0500B4D0:
+  type: VTX
+  size: 48
+  offset: 0xB4D0
+  symbol: thwomp_seg5_vertex_0500B4D0
+
+thwomp_seg5_vertex_0500B530:
+  type: VTX
+  size: 32
+  offset: 0xB530
+  symbol: thwomp_seg5_vertex_0500B530
+
+thwomp_seg5_dl_0500B570:
+  type: GFX
+  offset: 0xB570
+  symbol: thwomp_seg5_dl_0500B570
+
+thwomp_seg5_dl_0500B718:
+  type: GFX
+  offset: 0xB718
+  symbol: thwomp_seg5_dl_0500B718
+
+thwomp_seg5_dl_0500B750:
+  type: GFX
+  offset: 0xB750
+  symbol: thwomp_seg5_dl_0500B750
+

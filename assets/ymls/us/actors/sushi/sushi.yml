@@ -27,3 +27,136 @@ sushi_tooth:
   offset: 0x9AD0
   format: RGBA16
   symbol: sushi_seg5_texture_05009AD0
+sushi_unused_1:
+  type: U64
+sushi_seg5_vertex_05009B50:
+  type: VTX
+  size: 120
+  offset: 0x9B50
+  symbol: sushi_seg5_vertex_05009B50
+
+sushi_seg5_vertex_05009C40:
+  type: VTX
+  size: 64
+  offset: 0x9C40
+  symbol: sushi_seg5_vertex_05009C40
+
+sushi_seg5_dl_05009CC0:
+  type: GFX
+  offset: 0x9CC0
+  symbol: sushi_seg5_dl_05009CC0
+
+sushi_seg5_dl_05009DD0:
+  type: GFX
+  offset: 0x9DD0
+  symbol: sushi_seg5_dl_05009DD0
+
+sushi_seg5_vertex_05009E40:
+  type: VTX
+  size: 120
+  offset: 0x9E40
+  symbol: sushi_seg5_vertex_05009E40
+
+sushi_seg5_dl_05009F30:
+  type: GFX
+  offset: 0x9F30
+  symbol: sushi_seg5_dl_05009F30
+
+sushi_seg5_dl_0500A008:
+  type: GFX
+  offset: 0xA008
+  symbol: sushi_seg5_dl_0500A008
+
+sushi_seg5_vertex_0500A078:
+  type: VTX
+  size: 56
+  offset: 0xA078
+  symbol: sushi_seg5_vertex_0500A078
+
+sushi_seg5_dl_0500A0E8:
+  type: GFX
+  offset: 0xA0E8
+  symbol: sushi_seg5_dl_0500A0E8
+
+sushi_seg5_dl_0500A160:
+  type: GFX
+  offset: 0xA160
+  symbol: sushi_seg5_dl_0500A160
+
+sushi_seg5_vertex_0500A1D0:
+  type: VTX
+  size: 120
+  offset: 0xA1D0
+  symbol: sushi_seg5_vertex_0500A1D0
+
+sushi_seg5_vertex_0500A2C0:
+  type: VTX
+  size: 128
+  offset: 0xA2C0
+  symbol: sushi_seg5_vertex_0500A2C0
+
+sushi_seg5_vertex_0500A3C0:
+  type: VTX
+  size: 112
+  offset: 0xA3C0
+  symbol: sushi_seg5_vertex_0500A3C0
+
+sushi_seg5_vertex_0500A4A0:
+  type: VTX
+  size: 80
+  offset: 0xA4A0
+  symbol: sushi_seg5_vertex_0500A4A0
+
+sushi_seg5_vertex_0500A540:
+  type: VTX
+  size: 32
+  offset: 0xA540
+  symbol: sushi_seg5_vertex_0500A540
+
+sushi_seg5_dl_0500A580:
+  type: GFX
+  offset: 0xA580
+  symbol: sushi_seg5_dl_0500A580
+
+sushi_seg5_dl_0500A748:
+  type: GFX
+  offset: 0xA748
+  symbol: sushi_seg5_dl_0500A748
+
+sushi_seg5_dl_0500A768:
+  type: GFX
+  offset: 0xA768
+  symbol: sushi_seg5_dl_0500A768
+
+sushi_seg5_vertex_0500A7E0:
+  type: VTX
+  size: 64
+  offset: 0xA7E0
+  symbol: sushi_seg5_vertex_0500A7E0
+
+sushi_seg5_dl_0500A860:
+  type: GFX
+  offset: 0xA860
+  symbol: sushi_seg5_dl_0500A860
+
+sushi_seg5_dl_0500A8A8:
+  type: GFX
+  offset: 0xA8A8
+  symbol: sushi_seg5_dl_0500A8A8
+
+sushi_seg5_vertex_0500A918:
+  type: VTX
+  size: 32
+  offset: 0xA918
+  symbol: sushi_seg5_vertex_0500A918
+
+sushi_seg5_dl_0500A958:
+  type: GFX
+  offset: 0xA958
+  symbol: sushi_seg5_dl_0500A958
+
+sushi_seg5_dl_0500A990:
+  type: GFX
+  offset: 0xA990
+  symbol: sushi_seg5_dl_0500A990
+

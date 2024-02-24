@@ -1,0 +1,103 @@
+:config:
+  compressed_offset: 0x16D870
+  segments:
+    seg5: 0x16D870
+
+birds_seg5_lights_05000000:
+  type: LIGHTS1
+  size: 24
+  offset: 0x0
+  symbol: birds_seg5_lights_05000000
+
+birds_seg5_lights_05000018:
+  type: LIGHTS1
+  size: 24
+  offset: 0x18
+  symbol: birds_seg5_lights_05000018
+
+birds_seg5_lights_05000030:
+  type: LIGHTS1
+  size: 24
+  offset: 0x30
+  symbol: birds_seg5_lights_05000030
+
+birds_seg5_vertex_05000048:
+  type: VTX
+  size: 72
+  offset: 0x48
+  symbol: birds_seg5_vertex_05000048
+
+birds_seg5_vertex_050000D8:
+  type: VTX
+  size: 24
+  offset: 0xD8
+  symbol: birds_seg5_vertex_050000D8
+
+birds_seg5_vertex_05000108:
+  type: VTX
+  size: 24
+  offset: 0x108
+  symbol: birds_seg5_vertex_05000108
+
+birds_seg5_vertex_05000138:
+  type: VTX
+  size: 24
+  offset: 0x138
+  symbol: birds_seg5_vertex_05000138
+
+birds_seg5_vertex_05000168:
+  type: VTX
+  size: 72
+  offset: 0x168
+  symbol: birds_seg5_vertex_05000168
+
+birds_seg5_vertex_050001F8:
+  type: VTX
+  size: 128
+  offset: 0x1F8
+  symbol: birds_seg5_vertex_050001F8
+
+birds_seg5_vertex_050002F8:
+  type: VTX
+  size: 128
+  offset: 0x2F8
+  symbol: birds_seg5_vertex_050002F8
+
+birds_seg5_vertex_050003F8:
+  type: VTX
+  size: 24
+  offset: 0x3F8
+  symbol: birds_seg5_vertex_050003F8
+
+birds_seg5_vertex_05000428:
+  type: VTX
+  size: 80
+  offset: 0x428
+  symbol: birds_seg5_vertex_05000428
+
+birds_seg5_vertex_050004C8:
+  type: VTX
+  size: 48
+  offset: 0x4C8
+  symbol: birds_seg5_vertex_050004C8
+
+birds_seg5_dl_05000528:
+  type: GFX
+  offset: 0x528
+  symbol: birds_seg5_dl_05000528
+
+birds_seg5_dl_05000598:
+  type: GFX
+  offset: 0x598
+  symbol: birds_seg5_dl_05000598
+
+birds_seg5_dl_05000600:
+  type: GFX
+  offset: 0x600
+  symbol: birds_seg5_dl_05000600
+
+birds_seg5_dl_05000670:
+  type: GFX
+  offset: 0x670
+  symbol: birds_seg5_dl_05000670
+

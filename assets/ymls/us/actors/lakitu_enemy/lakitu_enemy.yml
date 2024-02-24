@@ -43,3 +43,205 @@ lakitu_enemy_shell:
   offset: 0x114E0
   format: RGBA16
   symbol: lakitu_enemy_seg5_texture_050114E0
+lakitu_enemy_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5610
+  symbol: lakitu_enemy_lights_unused1
+
+lakitu_enemy_seg5_lights_0500ECB0:
+  type: LIGHTS1
+  size: 24
+  offset: 0xECB0
+  symbol: lakitu_enemy_seg5_lights_0500ECB0
+
+lakitu_enemy_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0xECB0
+  symbol: lakitu_enemy_lights_unused2
+
+lakitu_enemy_seg5_lights_050124E0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x124E0
+  symbol: lakitu_enemy_seg5_lights_050124E0
+
+lakitu_enemy_seg5_lights_050124F8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x124F8
+  symbol: lakitu_enemy_seg5_lights_050124F8
+
+lakitu_enemy_seg5_vertex_05012510:
+  type: VTX
+  size: 128
+  offset: 0x12510
+  symbol: lakitu_enemy_seg5_vertex_05012510
+
+lakitu_enemy_seg5_vertex_05012610:
+  type: VTX
+  size: 80
+  offset: 0x12610
+  symbol: lakitu_enemy_seg5_vertex_05012610
+
+lakitu_enemy_seg5_vertex_050126B0:
+  type: VTX
+  size: 88
+  offset: 0x126B0
+  symbol: lakitu_enemy_seg5_vertex_050126B0
+
+lakitu_enemy_seg5_dl_05012760:
+  type: GFX
+  offset: 0x12760
+  symbol: lakitu_enemy_seg5_dl_05012760
+
+lakitu_enemy_seg5_dl_05012890:
+  type: GFX
+  offset: 0x12890
+  symbol: lakitu_enemy_seg5_dl_05012890
+
+lakitu_enemy_seg5_dl_05012910:
+  type: GFX
+  offset: 0x12910
+  symbol: lakitu_enemy_seg5_dl_05012910
+
+lakitu_enemy_seg5_lights_05012978:
+  type: LIGHTS1
+  size: 24
+  offset: 0x12978
+  symbol: lakitu_enemy_seg5_lights_05012978
+
+lakitu_enemy_seg5_vertex_05012990:
+  type: VTX
+  size: 128
+  offset: 0x12990
+  symbol: lakitu_enemy_seg5_vertex_05012990
+
+lakitu_enemy_seg5_vertex_05012A90:
+  type: VTX
+  size: 120
+  offset: 0x12A90
+  symbol: lakitu_enemy_seg5_vertex_05012A90
+
+lakitu_enemy_seg5_vertex_05012B80:
+  type: VTX
+  size: 128
+  offset: 0x12B80
+  symbol: lakitu_enemy_seg5_vertex_05012B80
+
+lakitu_enemy_seg5_vertex_05012C80:
+  type: VTX
+  size: 120
+  offset: 0x12C80
+  symbol: lakitu_enemy_seg5_vertex_05012C80
+
+lakitu_enemy_seg5_vertex_05012D70:
+  type: VTX
+  size: 128
+  offset: 0x12D70
+  symbol: lakitu_enemy_seg5_vertex_05012D70
+
+lakitu_enemy_seg5_vertex_05012E70:
+  type: VTX
+  size: 64
+  offset: 0x12E70
+  symbol: lakitu_enemy_seg5_vertex_05012E70
+
+lakitu_enemy_seg5_dl_05012EF0:
+  type: GFX
+  offset: 0x12EF0
+  symbol: lakitu_enemy_seg5_dl_05012EF0
+
+lakitu_enemy_seg5_dl_05013160:
+  type: GFX
+  offset: 0x13160
+  symbol: lakitu_enemy_seg5_dl_05013160
+
+lakitu_enemy_seg5_lights_050131C0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x131C0
+  symbol: lakitu_enemy_seg5_lights_050131C0
+
+lakitu_enemy_seg5_vertex_050131D8:
+  type: VTX
+  size: 96
+  offset: 0x131D8
+  symbol: lakitu_enemy_seg5_vertex_050131D8
+
+lakitu_enemy_seg5_dl_05013298:
+  type: GFX
+  offset: 0x13298
+  symbol: lakitu_enemy_seg5_dl_05013298
+
+lakitu_enemy_seg5_dl_050132D8:
+  type: GFX
+  offset: 0x132D8
+  symbol: lakitu_enemy_seg5_dl_050132D8
+
+lakitu_enemy_seg5_dl_05013320:
+  type: GFX
+  offset: 0x13320
+  symbol: lakitu_enemy_seg5_dl_05013320
+
+lakitu_enemy_seg5_dl_05013350:
+  type: GFX
+  offset: 0x13350
+  symbol: lakitu_enemy_seg5_dl_05013350
+
+lakitu_enemy_seg5_dl_05013378:
+  type: GFX
+  offset: 0x13378
+  symbol: lakitu_enemy_seg5_dl_05013378
+
+lakitu_enemy_seg5_lights_050133A0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x133A0
+  symbol: lakitu_enemy_seg5_lights_050133A0
+
+lakitu_enemy_seg5_vertex_050133B8:
+  type: VTX
+  size: 120
+  offset: 0x133B8
+  symbol: lakitu_enemy_seg5_vertex_050133B8
+
+lakitu_enemy_seg5_dl_050134A8:
+  type: GFX
+  offset: 0x134A8
+  symbol: lakitu_enemy_seg5_dl_050134A8
+
+lakitu_enemy_seg5_lights_05013598:
+  type: LIGHTS1
+  size: 24
+  offset: 0x13598
+  symbol: lakitu_enemy_seg5_lights_05013598
+
+lakitu_enemy_seg5_vertex_050135B0:
+  type: VTX
+  size: 120
+  offset: 0x135B0
+  symbol: lakitu_enemy_seg5_vertex_050135B0
+
+lakitu_enemy_seg5_dl_050136A0:
+  type: GFX
+  offset: 0x136A0
+  symbol: lakitu_enemy_seg5_dl_050136A0
+
+lakitu_enemy_seg5_vertex_05013790:
+  type: VTX
+  size: 104
+  offset: 0x13790
+  symbol: lakitu_enemy_seg5_vertex_05013790
+
+lakitu_enemy_seg5_dl_05013860:
+  type: GFX
+  offset: 0x13860
+  symbol: lakitu_enemy_seg5_dl_05013860
+
+lakitu_enemy_seg5_dl_050138B0:
+  type: GFX
+  offset: 0x138B0
+  symbol: lakitu_enemy_seg5_dl_050138B0
+

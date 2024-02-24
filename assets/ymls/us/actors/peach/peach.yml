@@ -83,3 +83,715 @@ peach_nostril:
   offset: 0x3E28
   format: RGBA16
   symbol: peach_seg5_texture_05003E28
+peach_seg5_lights_050009F8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x9F8
+  symbol: peach_seg5_lights_050009F8
+
+peach_seg5_lights_05000A10:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA10
+  symbol: peach_seg5_lights_05000A10
+
+peach_seg5_vertex_05004828:
+  type: VTX
+  size: 128
+  offset: 0x4828
+  symbol: peach_seg5_vertex_05004828
+
+peach_seg5_vertex_05004928:
+  type: VTX
+  size: 120
+  offset: 0x4928
+  symbol: peach_seg5_vertex_05004928
+
+peach_seg5_vertex_05004A18:
+  type: VTX
+  size: 72
+  offset: 0x4A18
+  symbol: peach_seg5_vertex_05004A18
+
+peach_seg5_vertex_05004AA8:
+  type: VTX
+  size: 24
+  offset: 0x4AA8
+  symbol: peach_seg5_vertex_05004AA8
+
+peach_seg5_vertex_05004AD8:
+  type: VTX
+  size: 128
+  offset: 0x4AD8
+  symbol: peach_seg5_vertex_05004AD8
+
+peach_seg5_vertex_05004BD8:
+  type: VTX
+  size: 120
+  offset: 0x4BD8
+  symbol: peach_seg5_vertex_05004BD8
+
+peach_seg5_vertex_05004CC8:
+  type: VTX
+  size: 120
+  offset: 0x4CC8
+  symbol: peach_seg5_vertex_05004CC8
+
+peach_seg5_vertex_05004DB8:
+  type: VTX
+  size: 64
+  offset: 0x4DB8
+  symbol: peach_seg5_vertex_05004DB8
+
+peach_seg5_vertex_05004E38:
+  type: VTX
+  size: 40
+  offset: 0x4E38
+  symbol: peach_seg5_vertex_05004E38
+
+peach_seg5_vertex_05004E88:
+  type: VTX
+  size: 120
+  offset: 0x4E88
+  symbol: peach_seg5_vertex_05004E88
+
+peach_seg5_vertex_05004F78:
+  type: VTX
+  size: 128
+  offset: 0x4F78
+  symbol: peach_seg5_vertex_05004F78
+
+peach_seg5_vertex_05005078:
+  type: VTX
+  size: 120
+  offset: 0x5078
+  symbol: peach_seg5_vertex_05005078
+
+peach_seg5_vertex_05005168:
+  type: VTX
+  size: 128
+  offset: 0x5168
+  symbol: peach_seg5_vertex_05005168
+
+peach_seg5_vertex_05005268:
+  type: VTX
+  size: 128
+  offset: 0x5268
+  symbol: peach_seg5_vertex_05005268
+
+peach_seg5_vertex_05005368:
+  type: VTX
+  size: 128
+  offset: 0x5368
+  symbol: peach_seg5_vertex_05005368
+
+peach_seg5_vertex_05005468:
+  type: VTX
+  size: 128
+  offset: 0x5468
+  symbol: peach_seg5_vertex_05005468
+
+peach_seg5_vertex_05005568:
+  type: VTX
+  size: 112
+  offset: 0x5568
+  symbol: peach_seg5_vertex_05005568
+
+peach_seg5_dl_05005648:
+  type: GFX
+  offset: 0x5648
+  symbol: peach_seg5_dl_05005648
+
+peach_seg5_dl_05005750:
+  type: GFX
+  offset: 0x5750
+  symbol: peach_seg5_dl_05005750
+
+peach_seg5_dl_05005780:
+  type: GFX
+  offset: 0x5780
+  symbol: peach_seg5_dl_05005780
+
+peach_seg5_dl_050058B8:
+  type: GFX
+  offset: 0x58B8
+  symbol: peach_seg5_dl_050058B8
+
+peach_seg5_dl_050058E0:
+  type: GFX
+  offset: 0x58E0
+  symbol: peach_seg5_dl_050058E0
+
+peach_seg5_dl_05005C48:
+  type: GFX
+  offset: 0x5C48
+  symbol: peach_seg5_dl_05005C48
+
+peach_seg5_dl_05005CB0:
+  type: GFX
+  offset: 0x5CB0
+  symbol: peach_seg5_dl_05005CB0
+
+peach_seg5_dl_05005CE0:
+  type: GFX
+  offset: 0x5CE0
+  symbol: peach_seg5_dl_05005CE0
+
+peach_seg5_dl_05005D38:
+  type: GFX
+  offset: 0x5D38
+  symbol: peach_seg5_dl_05005D38
+
+peach_seg5_dl_05005D90:
+  type: GFX
+  offset: 0x5D90
+  symbol: peach_seg5_dl_05005D90
+
+peach_seg5_dl_05005DE8:
+  type: GFX
+  offset: 0x5DE8
+  symbol: peach_seg5_dl_05005DE8
+
+peach_seg5_dl_05005E40:
+  type: GFX
+  offset: 0x5E40
+  symbol: peach_seg5_dl_05005E40
+
+peach_seg5_dl_05005E98:
+  type: GFX
+  offset: 0x5E98
+  symbol: peach_seg5_dl_05005E98
+
+peach_seg5_dl_05005EF0:
+  type: GFX
+  offset: 0x5EF0
+  symbol: peach_seg5_dl_05005EF0
+
+peach_seg5_dl_05005F48:
+  type: GFX
+  offset: 0x5F48
+  symbol: peach_seg5_dl_05005F48
+
+peach_seg5_lights_05005FA0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5FA0
+  symbol: peach_seg5_lights_05005FA0
+
+peach_seg5_vertex_05005FB8:
+  type: VTX
+  size: 80
+  offset: 0x5FB8
+  symbol: peach_seg5_vertex_05005FB8
+
+peach_seg5_dl_05006058:
+  type: GFX
+  offset: 0x6058
+  symbol: peach_seg5_dl_05006058
+
+peach_seg5_dl_050060E0:
+  type: GFX
+  offset: 0x60E0
+  symbol: peach_seg5_dl_050060E0
+
+peach_seg5_lights_05006138:
+  type: LIGHTS1
+  size: 24
+  offset: 0x6138
+  symbol: peach_seg5_lights_05006138
+
+peach_seg5_lights_05006150:
+  type: LIGHTS1
+  size: 24
+  offset: 0x6150
+  symbol: peach_seg5_lights_05006150
+
+peach_seg5_vertex_05006168:
+  type: VTX
+  size: 64
+  offset: 0x6168
+  symbol: peach_seg5_vertex_05006168
+
+peach_seg5_vertex_050061E8:
+  type: VTX
+  size: 40
+  offset: 0x61E8
+  symbol: peach_seg5_vertex_050061E8
+
+peach_seg5_vertex_05006238:
+  type: VTX
+  size: 112
+  offset: 0x6238
+  symbol: peach_seg5_vertex_05006238
+
+peach_seg5_vertex_05006318:
+  type: VTX
+  size: 120
+  offset: 0x6318
+  symbol: peach_seg5_vertex_05006318
+
+peach_seg5_vertex_05006408:
+  type: VTX
+  size: 112
+  offset: 0x6408
+  symbol: peach_seg5_vertex_05006408
+
+peach_seg5_vertex_050064E8:
+  type: VTX
+  size: 128
+  offset: 0x64E8
+  symbol: peach_seg5_vertex_050064E8
+
+peach_seg5_vertex_050065E8:
+  type: VTX
+  size: 128
+  offset: 0x65E8
+  symbol: peach_seg5_vertex_050065E8
+
+peach_seg5_vertex_050066E8:
+  type: VTX
+  size: 32
+  offset: 0x66E8
+  symbol: peach_seg5_vertex_050066E8
+
+peach_seg5_dl_05006728:
+  type: GFX
+  offset: 0x6728
+  symbol: peach_seg5_dl_05006728
+
+peach_seg5_dl_05006798:
+  type: GFX
+  offset: 0x6798
+  symbol: peach_seg5_dl_05006798
+
+peach_seg5_dl_05006A18:
+  type: GFX
+  offset: 0x6A18
+  symbol: peach_seg5_dl_05006A18
+
+peach_seg5_lights_05006A90:
+  type: LIGHTS1
+  size: 24
+  offset: 0x6A90
+  symbol: peach_seg5_lights_05006A90
+
+peach_seg5_vertex_05006AA8:
+  type: VTX
+  size: 128
+  offset: 0x6AA8
+  symbol: peach_seg5_vertex_05006AA8
+
+peach_seg5_vertex_05006BA8:
+  type: VTX
+  size: 128
+  offset: 0x6BA8
+  symbol: peach_seg5_vertex_05006BA8
+
+peach_seg5_vertex_05006CA8:
+  type: VTX
+  size: 128
+  offset: 0x6CA8
+  symbol: peach_seg5_vertex_05006CA8
+
+peach_seg5_vertex_05006DA8:
+  type: VTX
+  size: 128
+  offset: 0x6DA8
+  symbol: peach_seg5_vertex_05006DA8
+
+peach_seg5_vertex_05006EA8:
+  type: VTX
+  size: 128
+  offset: 0x6EA8
+  symbol: peach_seg5_vertex_05006EA8
+
+peach_seg5_dl_05006FA8:
+  type: GFX
+  offset: 0x6FA8
+  symbol: peach_seg5_dl_05006FA8
+
+peach_seg5_dl_05007230:
+  type: GFX
+  offset: 0x7230
+  symbol: peach_seg5_dl_05007230
+
+peach_seg5_us_dl_05007288:
+  type: GFX
+  offset: 0x7288
+  symbol: peach_seg5_us_dl_05007288
+
+peach_seg5_lights_05007288:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7288
+  symbol: peach_seg5_lights_05007288
+
+peach_seg5_vertex_050072A0:
+  type: VTX
+  size: 112
+  offset: 0x72A0
+  symbol: peach_seg5_vertex_050072A0
+
+peach_seg5_vertex_05007380:
+  type: VTX
+  size: 128
+  offset: 0x7380
+  symbol: peach_seg5_vertex_05007380
+
+peach_seg5_vertex_05007480:
+  type: VTX
+  size: 128
+  offset: 0x7480
+  symbol: peach_seg5_vertex_05007480
+
+peach_seg5_vertex_05007580:
+  type: VTX
+  size: 128
+  offset: 0x7580
+  symbol: peach_seg5_vertex_05007580
+
+peach_seg5_vertex_05007680:
+  type: VTX
+  size: 128
+  offset: 0x7680
+  symbol: peach_seg5_vertex_05007680
+
+peach_seg5_vertex_05007780:
+  type: VTX
+  size: 72
+  offset: 0x7780
+  symbol: peach_seg5_vertex_05007780
+
+peach_seg5_dl_05007810:
+  type: GFX
+  offset: 0x7810
+  symbol: peach_seg5_dl_05007810
+
+peach_seg5_dl_05007AB8:
+  type: GFX
+  offset: 0x7AB8
+  symbol: peach_seg5_dl_05007AB8
+
+peach_seg5_lights_05007AE0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7AE0
+  symbol: peach_seg5_lights_05007AE0
+
+peach_seg5_vertex_05007AF8:
+  type: VTX
+  size: 120
+  offset: 0x7AF8
+  symbol: peach_seg5_vertex_05007AF8
+
+peach_seg5_vertex_05007BE8:
+  type: VTX
+  size: 128
+  offset: 0x7BE8
+  symbol: peach_seg5_vertex_05007BE8
+
+peach_seg5_dl_05007CE8:
+  type: GFX
+  offset: 0x7CE8
+  symbol: peach_seg5_dl_05007CE8
+
+peach_seg5_dl_05007E58:
+  type: GFX
+  offset: 0x7E58
+  symbol: peach_seg5_dl_05007E58
+
+peach_seg5_lights_05007EB0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7EB0
+  symbol: peach_seg5_lights_05007EB0
+
+peach_seg5_vertex_05007EC8:
+  type: VTX
+  size: 120
+  offset: 0x7EC8
+  symbol: peach_seg5_vertex_05007EC8
+
+peach_seg5_vertex_05007FB8:
+  type: VTX
+  size: 128
+  offset: 0x7FB8
+  symbol: peach_seg5_vertex_05007FB8
+
+peach_seg5_dl_050080B8:
+  type: GFX
+  offset: 0x80B8
+  symbol: peach_seg5_dl_050080B8
+
+peach_seg5_dl_05008228:
+  type: GFX
+  offset: 0x8228
+  symbol: peach_seg5_dl_05008228
+
+peach_seg5_lights_05008280:
+  type: LIGHTS1
+  size: 24
+  offset: 0x8280
+  symbol: peach_seg5_lights_05008280
+
+peach_seg5_vertex_05008298:
+  type: VTX
+  size: 96
+  offset: 0x8298
+  symbol: peach_seg5_vertex_05008298
+
+peach_seg5_vertex_05008358:
+  type: VTX
+  size: 104
+  offset: 0x8358
+  symbol: peach_seg5_vertex_05008358
+
+peach_seg5_dl_05008428:
+  type: GFX
+  offset: 0x8428
+  symbol: peach_seg5_dl_05008428
+
+peach_seg5_dl_050084C0:
+  type: GFX
+  offset: 0x84C0
+  symbol: peach_seg5_dl_050084C0
+
+peach_seg5_dl_05008560:
+  type: GFX
+  offset: 0x8560
+  symbol: peach_seg5_dl_05008560
+
+peach_seg5_lights_050085D0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x85D0
+  symbol: peach_seg5_lights_050085D0
+
+peach_seg5_vertex_050085E8:
+  type: VTX
+  size: 112
+  offset: 0x85E8
+  symbol: peach_seg5_vertex_050085E8
+
+peach_seg5_dl_050086C8:
+  type: GFX
+  offset: 0x86C8
+  symbol: peach_seg5_dl_050086C8
+
+peach_seg5_dl_050087A8:
+  type: GFX
+  offset: 0x87A8
+  symbol: peach_seg5_dl_050087A8
+
+peach_seg5_lights_050087D0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x87D0
+  symbol: peach_seg5_lights_050087D0
+
+peach_seg5_vertex_050087E8:
+  type: VTX
+  size: 96
+  offset: 0x87E8
+  symbol: peach_seg5_vertex_050087E8
+
+peach_seg5_vertex_050088A8:
+  type: VTX
+  size: 104
+  offset: 0x88A8
+  symbol: peach_seg5_vertex_050088A8
+
+peach_seg5_dl_05008978:
+  type: GFX
+  offset: 0x8978
+  symbol: peach_seg5_dl_05008978
+
+peach_seg5_dl_05008A10:
+  type: GFX
+  offset: 0x8A10
+  symbol: peach_seg5_dl_05008A10
+
+peach_seg5_dl_05008AB0:
+  type: GFX
+  offset: 0x8AB0
+  symbol: peach_seg5_dl_05008AB0
+
+peach_seg5_lights_05008B20:
+  type: LIGHTS1
+  size: 24
+  offset: 0x8B20
+  symbol: peach_seg5_lights_05008B20
+
+peach_seg5_vertex_05008B38:
+  type: VTX
+  size: 112
+  offset: 0x8B38
+  symbol: peach_seg5_vertex_05008B38
+
+peach_seg5_dl_05008C18:
+  type: GFX
+  offset: 0x8C18
+  symbol: peach_seg5_dl_05008C18
+
+peach_seg5_dl_05008CF8:
+  type: GFX
+  offset: 0x8CF8
+  symbol: peach_seg5_dl_05008CF8
+
+peach_seg5_lights_05008D20:
+  type: LIGHTS1
+  size: 24
+  offset: 0x8D20
+  symbol: peach_seg5_lights_05008D20
+
+peach_seg5_vertex_05008D38:
+  type: VTX
+  size: 128
+  offset: 0x8D38
+  symbol: peach_seg5_vertex_05008D38
+
+peach_seg5_dl_05008E38:
+  type: GFX
+  offset: 0x8E38
+  symbol: peach_seg5_dl_05008E38
+
+peach_seg5_dl_05008F20:
+  type: GFX
+  offset: 0x8F20
+  symbol: peach_seg5_dl_05008F20
+
+peach_seg5_lights_05008F48:
+  type: LIGHTS1
+  size: 24
+  offset: 0x8F48
+  symbol: peach_seg5_lights_05008F48
+
+peach_seg5_vertex_05008F60:
+  type: VTX
+  size: 128
+  offset: 0x8F60
+  symbol: peach_seg5_vertex_05008F60
+
+peach_seg5_dl_05009060:
+  type: GFX
+  offset: 0x9060
+  symbol: peach_seg5_dl_05009060
+
+peach_seg5_dl_05009148:
+  type: GFX
+  offset: 0x9148
+  symbol: peach_seg5_dl_05009148
+
+peach_seg5_lights_05009170:
+  type: LIGHTS1
+  size: 24
+  offset: 0x9170
+  symbol: peach_seg5_lights_05009170
+
+peach_seg5_vertex_05009188:
+  type: VTX
+  size: 128
+  offset: 0x9188
+  symbol: peach_seg5_vertex_05009188
+
+peach_seg5_vertex_05009288:
+  type: VTX
+  size: 128
+  offset: 0x9288
+  symbol: peach_seg5_vertex_05009288
+
+peach_seg5_dl_05009388:
+  type: GFX
+  offset: 0x9388
+  symbol: peach_seg5_dl_05009388
+
+peach_seg5_dl_05009500:
+  type: GFX
+  offset: 0x9500
+  symbol: peach_seg5_dl_05009500
+
+peach_seg5_lights_05009528:
+  type: LIGHTS1
+  size: 24
+  offset: 0x9528
+  symbol: peach_seg5_lights_05009528
+
+peach_seg5_vertex_05009540:
+  type: VTX
+  size: 128
+  offset: 0x9540
+  symbol: peach_seg5_vertex_05009540
+
+peach_seg5_vertex_05009640:
+  type: VTX
+  size: 128
+  offset: 0x9640
+  symbol: peach_seg5_vertex_05009640
+
+peach_seg5_vertex_05009740:
+  type: VTX
+  size: 64
+  offset: 0x9740
+  symbol: peach_seg5_vertex_05009740
+
+peach_seg5_dl_050097C0:
+  type: GFX
+  offset: 0x97C0
+  symbol: peach_seg5_dl_050097C0
+
+peach_seg5_dl_05009940:
+  type: GFX
+  offset: 0x9940
+  symbol: peach_seg5_dl_05009940
+
+peach_seg5_lights_05009968:
+  type: LIGHTS1
+  size: 24
+  offset: 0x9968
+  symbol: peach_seg5_lights_05009968
+
+peach_seg5_vertex_05009980:
+  type: VTX
+  size: 120
+  offset: 0x9980
+  symbol: peach_seg5_vertex_05009980
+
+peach_seg5_vertex_05009A70:
+  type: VTX
+  size: 120
+  offset: 0x9A70
+  symbol: peach_seg5_vertex_05009A70
+
+peach_seg5_vertex_05009B60:
+  type: VTX
+  size: 128
+  offset: 0x9B60
+  symbol: peach_seg5_vertex_05009B60
+
+peach_seg5_vertex_05009C60:
+  type: VTX
+  size: 120
+  offset: 0x9C60
+  symbol: peach_seg5_vertex_05009C60
+
+peach_seg5_vertex_05009D50:
+  type: VTX
+  size: 104
+  offset: 0x9D50
+  symbol: peach_seg5_vertex_05009D50
+
+peach_seg5_dl_05009E20:
+  type: GFX
+  offset: 0x9E20
+  symbol: peach_seg5_dl_05009E20
+
+peach_seg5_dl_0500A0A8:
+  type: GFX
+  offset: 0xA0A8
+  symbol: peach_seg5_dl_0500A0A8
+
+peach_seg5_us_dl_0500A188:
+  type: GFX
+  offset: 0xA188
+  symbol: peach_seg5_us_dl_0500A188
+

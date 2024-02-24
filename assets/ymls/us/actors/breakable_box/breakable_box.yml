@@ -19,3 +19,41 @@ crazy_box_surface:
   offset: 0x11A90
   format: RGBA16
   symbol: breakable_box_seg8_texture_08011A90
+breakable_box_seg8_lights_08011A80:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11A78
+  symbol: breakable_box_seg8_lights_08011A80
+
+breakable_box_seg8_vertex_08012A90:
+  type: VTX
+  size: 120
+  offset: 0x12A90
+  symbol: breakable_box_seg8_vertex_08012A90
+
+breakable_box_seg8_vertex_08012B80:
+  type: VTX
+  size: 88
+  offset: 0x12B80
+  symbol: breakable_box_seg8_vertex_08012B80
+
+breakable_box_seg8_dl_08012C30:
+  type: GFX
+  offset: 0x12C30
+  symbol: breakable_box_seg8_dl_08012C30
+
+breakable_box_seg8_dl_08012CD8:
+  type: GFX
+  offset: 0x12CD8
+  symbol: breakable_box_seg8_dl_08012CD8
+
+breakable_box_seg8_dl_08012D20:
+  type: GFX
+  offset: 0x12D20
+  symbol: breakable_box_seg8_dl_08012D20
+
+breakable_box_seg8_dl_08012D48:
+  type: GFX
+  offset: 0x12D20
+  symbol: breakable_box_seg8_dl_08012D48
+

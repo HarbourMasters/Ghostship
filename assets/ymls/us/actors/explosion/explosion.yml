@@ -59,3 +59,49 @@ explosion_6:
   offset: 0x3A08
   format: RGBA16
   symbol: explosion_seg3_texture_03003A08
+explosion_seg3_vertex_030009C8:
+  type: VTX
+  size: 32
+  offset: 0x9C8
+  symbol: explosion_seg3_vertex_030009C8
+
+explosion_seg3_dl_03004208:
+  type: GFX
+  offset: 0x4208
+  symbol: explosion_seg3_dl_03004208
+
+explosion_seg3_dl_03004298:
+  type: GFX
+  offset: 0x4298
+  symbol: explosion_seg3_dl_03004298
+
+explosion_seg3_dl_030042B0:
+  type: GFX
+  offset: 0x42B0
+  symbol: explosion_seg3_dl_030042B0
+
+explosion_seg3_dl_030042C8:
+  type: GFX
+  offset: 0x42C8
+  symbol: explosion_seg3_dl_030042C8
+
+explosion_seg3_dl_030042E0:
+  type: GFX
+  offset: 0x42E0
+  symbol: explosion_seg3_dl_030042E0
+
+explosion_seg3_dl_030042F8:
+  type: GFX
+  offset: 0x42F8
+  symbol: explosion_seg3_dl_030042F8
+
+explosion_seg3_dl_03004310:
+  type: GFX
+  offset: 0x4310
+  symbol: explosion_seg3_dl_03004310
+
+explosion_seg3_dl_03004328:
+  type: GFX
+  offset: 0x4328
+  symbol: explosion_seg3_dl_03004328
+

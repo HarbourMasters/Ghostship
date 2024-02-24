@@ -19,3 +19,30 @@ impact_ring_right_side:
   offset: 0x1DA50
   format: IA16
   symbol: impact_ring_seg6_texture_0601DA50
+impact_ring_seg6_vertex_0601C9D0:
+  type: VTX
+  size: 32
+  offset: 0x1C9D0
+  symbol: impact_ring_seg6_vertex_0601C9D0
+
+impact_ring_seg6_vertex_0601CA10:
+  type: VTX
+  size: 32
+  offset: 0x1CA10
+  symbol: impact_ring_seg6_vertex_0601CA10
+
+impact_ring_seg6_dl_0601EA50:
+  type: GFX
+  offset: 0x1EA50
+  symbol: impact_ring_seg6_dl_0601EA50
+
+impact_ring_seg6_dl_0601EA88:
+  type: GFX
+  offset: 0x1EA88
+  symbol: impact_ring_seg6_dl_0601EA88
+
+impact_ring_seg6_dl_0601EAC0:
+  type: GFX
+  offset: 0x1EAC0
+  symbol: impact_ring_seg6_dl_0601EAC0
+

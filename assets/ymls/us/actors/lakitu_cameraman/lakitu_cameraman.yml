@@ -52,3 +52,321 @@ lakitu_camera_lens:
   format: RGBA16
   symbol: lakitu_seg6_texture_06003800
 
+lakitu_seg6_lights_06003A00:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3A00
+  symbol: lakitu_seg6_lights_06003A00
+
+lakitu_seg6_lights_06003A18:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3A18
+  symbol: lakitu_seg6_lights_06003A18
+
+lakitu_seg6_vertex_06003A30:
+  type: VTX
+  size: 128
+  offset: 0x3A30
+  symbol: lakitu_seg6_vertex_06003A30
+
+lakitu_seg6_vertex_06003B30:
+  type: VTX
+  size: 80
+  offset: 0x3B30
+  symbol: lakitu_seg6_vertex_06003B30
+
+lakitu_seg6_vertex_06003BD0:
+  type: VTX
+  size: 88
+  offset: 0x3BD0
+  symbol: lakitu_seg6_vertex_06003BD0
+
+lakitu_seg6_dl_06003C80:
+  type: GFX
+  offset: 0x3C80
+  symbol: lakitu_seg6_dl_06003C80
+
+lakitu_seg6_dl_06003DB0:
+  type: GFX
+  offset: 0x3DB0
+  symbol: lakitu_seg6_dl_06003DB0
+
+lakitu_seg6_dl_06003E30:
+  type: GFX
+  offset: 0x3E30
+  symbol: lakitu_seg6_dl_06003E30
+
+lakitu_seg6_lights_06003E98:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3E98
+  symbol: lakitu_seg6_lights_06003E98
+
+lakitu_seg6_vertex_06003EB0:
+  type: VTX
+  size: 128
+  offset: 0x3EB0
+  symbol: lakitu_seg6_vertex_06003EB0
+
+lakitu_seg6_vertex_06003FB0:
+  type: VTX
+  size: 120
+  offset: 0x3FB0
+  symbol: lakitu_seg6_vertex_06003FB0
+
+lakitu_seg6_vertex_060040A0:
+  type: VTX
+  size: 128
+  offset: 0x40A0
+  symbol: lakitu_seg6_vertex_060040A0
+
+lakitu_seg6_vertex_060041A0:
+  type: VTX
+  size: 120
+  offset: 0x41A0
+  symbol: lakitu_seg6_vertex_060041A0
+
+lakitu_seg6_vertex_06004290:
+  type: VTX
+  size: 128
+  offset: 0x4290
+  symbol: lakitu_seg6_vertex_06004290
+
+lakitu_seg6_vertex_06004390:
+  type: VTX
+  size: 64
+  offset: 0x4390
+  symbol: lakitu_seg6_vertex_06004390
+
+lakitu_seg6_dl_06004410:
+  type: GFX
+  offset: 0x4410
+  symbol: lakitu_seg6_dl_06004410
+
+lakitu_seg6_dl_06004680:
+  type: GFX
+  offset: 0x4680
+  symbol: lakitu_seg6_dl_06004680
+
+lakitu_seg6_lights_060046E0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x46E0
+  symbol: lakitu_seg6_lights_060046E0
+
+lakitu_seg6_vertex_060046F8:
+  type: VTX
+  size: 120
+  offset: 0x46F8
+  symbol: lakitu_seg6_vertex_060046F8
+
+lakitu_seg6_dl_060047E8:
+  type: GFX
+  offset: 0x47E8
+  symbol: lakitu_seg6_dl_060047E8
+
+lakitu_seg6_lights_060048D8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x48D8
+  symbol: lakitu_seg6_lights_060048D8
+
+lakitu_seg6_vertex_060048F0:
+  type: VTX
+  size: 120
+  offset: 0x48F0
+  symbol: lakitu_seg6_vertex_060048F0
+
+lakitu_seg6_dl_060049E0:
+  type: GFX
+  offset: 0x49E0
+  symbol: lakitu_seg6_dl_060049E0
+
+lakitu_seg6_lights_06004AD0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4AD0
+  symbol: lakitu_seg6_lights_06004AD0
+
+lakitu_seg6_vertex_06004AE8:
+  type: VTX
+  size: 96
+  offset: 0x4AE8
+  symbol: lakitu_seg6_vertex_06004AE8
+
+lakitu_seg6_dl_06004BA8:
+  type: GFX
+  offset: 0x4BA8
+  symbol: lakitu_seg6_dl_06004BA8
+
+lakitu_seg6_dl_06004BE8:
+  type: GFX
+  offset: 0x4BE8
+  symbol: lakitu_seg6_dl_06004BE8
+
+lakitu_seg6_dl_06004C30:
+  type: GFX
+  offset: 0x4C30
+  symbol: lakitu_seg6_dl_06004C30
+
+lakitu_seg6_dl_06004C60:
+  type: GFX
+  offset: 0x4C60
+  symbol: lakitu_seg6_dl_06004C60
+
+lakitu_seg6_dl_06004C88:
+  type: GFX
+  offset: 0x4C88
+  symbol: lakitu_seg6_dl_06004C88
+
+lakitu_seg6_lights_06004CB0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4CB0
+  symbol: lakitu_seg6_lights_06004CB0
+
+lakitu_seg6_lights_06004CC8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4CC8
+  symbol: lakitu_seg6_lights_06004CC8
+
+lakitu_seg6_lights_06004CE0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4CE0
+  symbol: lakitu_seg6_lights_06004CE0
+
+lakitu_seg6_lights_06004CF8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4CF8
+  symbol: lakitu_seg6_lights_06004CF8
+
+lakitu_seg6_vertex_06004D10:
+  type: VTX
+  size: 32
+  offset: 0x4D10
+  symbol: lakitu_seg6_vertex_06004D10
+
+lakitu_seg6_vertex_06004D50:
+  type: VTX
+  size: 120
+  offset: 0x4D50
+  symbol: lakitu_seg6_vertex_06004D50
+
+lakitu_seg6_vertex_06004E40:
+  type: VTX
+  size: 120
+  offset: 0x4E40
+  symbol: lakitu_seg6_vertex_06004E40
+
+lakitu_seg6_vertex_06004F30:
+  type: VTX
+  size: 48
+  offset: 0x4F30
+  symbol: lakitu_seg6_vertex_06004F30
+
+lakitu_seg6_vertex_06004F90:
+  type: VTX
+  size: 112
+  offset: 0x4F90
+  symbol: lakitu_seg6_vertex_06004F90
+
+lakitu_seg6_vertex_06005070:
+  type: VTX
+  size: 112
+  offset: 0x5070
+  symbol: lakitu_seg6_vertex_06005070
+
+lakitu_seg6_vertex_06005150:
+  type: VTX
+  size: 64
+  offset: 0x5150
+  symbol: lakitu_seg6_vertex_06005150
+
+lakitu_seg6_dl_060051D0:
+  type: GFX
+  offset: 0x51D0
+  symbol: lakitu_seg6_dl_060051D0
+
+lakitu_seg6_dl_06005218:
+  type: GFX
+  offset: 0x5218
+  symbol: lakitu_seg6_dl_06005218
+
+lakitu_seg6_dl_06005360:
+  type: GFX
+  offset: 0x5360
+  symbol: lakitu_seg6_dl_06005360
+
+lakitu_cameraman_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5360
+  symbol: lakitu_cameraman_lights_unused1
+
+lakitu_seg6_lights_060053F0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x53F0
+  symbol: lakitu_seg6_lights_060053F0
+
+lakitu_cameraman_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0x53F0
+  symbol: lakitu_cameraman_lights_unused2
+
+lakitu_cameraman_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0x53F0
+  symbol: lakitu_cameraman_lights_unused3
+
+lakitu_seg6_lights_06005438:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5438
+  symbol: lakitu_seg6_lights_06005438
+
+lakitu_cameraman_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5438
+  symbol: lakitu_cameraman_lights_unused4
+
+lakitu_seg6_vertex_06005468:
+  type: VTX
+  size: 104
+  offset: 0x5468
+  symbol: lakitu_seg6_vertex_06005468
+
+lakitu_seg6_vertex_06005538:
+  type: VTX
+  size: 24
+  offset: 0x5538
+  symbol: lakitu_seg6_vertex_06005538
+
+lakitu_seg6_vertex_06005568:
+  type: VTX
+  size: 24
+  offset: 0x5568
+  symbol: lakitu_seg6_vertex_06005568
+
+lakitu_seg6_dl_06005598:
+  type: GFX
+  offset: 0x5598
+  symbol: lakitu_seg6_dl_06005598
+
+lakitu_seg6_dl_060055E8:
+  type: GFX
+  offset: 0x55E8
+  symbol: lakitu_seg6_dl_060055E8
+
+lakitu_seg6_dl_06005610:
+  type: GFX
+  offset: 0x5610
+  symbol: lakitu_seg6_dl_06005610
+

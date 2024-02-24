@@ -11,3 +11,19 @@
   offset: 0x29628
   format: RGBA16
   symbol: mushroom_1up_seg3_texture_03029628
+mushroom_1up_seg3_vertex_030295E8:
+  type: VTX
+  size: 32
+  offset: 0x295E8
+  symbol: mushroom_1up_seg3_vertex_030295E8
+
+mushroom_1up_seg3_dl_0302A628:
+  type: GFX
+  offset: 0x2A628
+  symbol: mushroom_1up_seg3_dl_0302A628
+
+mushroom_1up_seg3_dl_0302A660:
+  type: GFX
+  offset: 0x2A660
+  symbol: mushroom_1up_seg3_dl_0302A660
+
