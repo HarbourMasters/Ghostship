@@ -19,3 +19,81 @@ clam_shell_mouth:
   offset: 0x830
   format: RGBA16
   symbol: clam_shell_seg5_texture_05000830
+clam_shell_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0xABE8
+  symbol: clam_shell_lights_unused1
+
+clam_shell_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0xABE8
+  symbol: clam_shell_lights_unused2
+
+clam_shell_seg5_lights_05001030:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1030
+  symbol: clam_shell_seg5_lights_05001030
+
+clam_shell_seg5_vertex_05001048:
+  type: VTX
+  size: 88
+  offset: 0x1048
+  symbol: clam_shell_seg5_vertex_05001048
+
+clam_shell_seg5_vertex_050010F8:
+  type: VTX
+  size: 88
+  offset: 0x10F8
+  symbol: clam_shell_seg5_vertex_050010F8
+
+clam_shell_seg5_dl_050011A8:
+  type: GFX
+  offset: 0x11A8
+  symbol: clam_shell_seg5_dl_050011A8
+
+clam_shell_seg5_dl_05001238:
+  type: GFX
+  offset: 0x1238
+  symbol: clam_shell_seg5_dl_05001238
+
+clam_shell_seg5_dl_050012B8:
+  type: GFX
+  offset: 0x12B8
+  symbol: clam_shell_seg5_dl_050012B8
+
+clam_shell_seg5_lights_05001320:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1320
+  symbol: clam_shell_seg5_lights_05001320
+
+clam_shell_seg5_vertex_05001338:
+  type: VTX
+  size: 80
+  offset: 0x1338
+  symbol: clam_shell_seg5_vertex_05001338
+
+clam_shell_seg5_vertex_050013D8:
+  type: VTX
+  size: 80
+  offset: 0x13D8
+  symbol: clam_shell_seg5_vertex_050013D8
+
+clam_shell_seg5_dl_05001478:
+  type: GFX
+  offset: 0x1478
+  symbol: clam_shell_seg5_dl_05001478
+
+clam_shell_seg5_dl_050014F8:
+  type: GFX
+  offset: 0x14F8
+  symbol: clam_shell_seg5_dl_050014F8
+
+clam_shell_seg5_dl_05001568:
+  type: GFX
+  offset: 0x1568
+  symbol: clam_shell_seg5_dl_05001568
+

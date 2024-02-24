@@ -35,3 +35,44 @@ water_wave_3:
   offset: 0x26B58
   format: IA16
   symbol: water_wave_seg4_texture_04026B58
+water_wave_seg4_vertex_04025318:
+  type: VTX
+  size: 32
+  offset: 0x25318
+  symbol: water_wave_seg4_vertex_04025318
+
+water_wave_seg4_dl_04027358:
+  type: GFX
+  offset: 0x27358
+  symbol: water_wave_seg4_dl_04027358
+
+water_wave_seg4_dl_040273A0:
+  type: GFX
+  offset: 0x273A0
+  symbol: water_wave_seg4_dl_040273A0
+
+water_wave_seg4_dl_040273D8:
+  type: GFX
+  offset: 0x273D8
+  symbol: water_wave_seg4_dl_040273D8
+
+water_wave_seg4_dl_040273F0:
+  type: GFX
+  offset: 0x273F0
+  symbol: water_wave_seg4_dl_040273F0
+
+water_wave_seg4_dl_04027408:
+  type: GFX
+  offset: 0x27408
+  symbol: water_wave_seg4_dl_04027408
+
+water_wave_seg4_dl_04027420:
+  type: GFX
+  offset: 0x27420
+  symbol: water_wave_seg4_dl_04027420
+
+water_wave_seg4_dl_04027438:
+  type: GFX
+  offset: 0x27438
+  symbol: water_wave_seg4_dl_04027438
+

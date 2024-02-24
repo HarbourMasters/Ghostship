@@ -83,3 +83,35 @@ power_meter_two_segments:
   offset: 0x283E0
   format: RGBA16
   symbol: texture_power_meter_two_segments
+power_meter_unused_1:
+  type: U64
+  offset: 0x293E0
+  symbol: *const
+
+vertex_power_meter_base:
+  type: VTX
+  size: 64
+  offset: 0x29400
+  symbol: vertex_power_meter_base
+
+dl_power_meter_base:
+  type: GFX
+  offset: 0x29480
+  symbol: dl_power_meter_base
+
+vertex_power_meter_health_segments:
+  type: VTX
+  size: 32
+  offset: 0x29530
+  symbol: vertex_power_meter_health_segments
+
+dl_power_meter_health_segments_begin:
+  type: GFX
+  offset: 0x29570
+  symbol: dl_power_meter_health_segments_begin
+
+dl_power_meter_health_segments_end:
+  type: GFX
+  offset: 0x295A0
+  symbol: dl_power_meter_health_segments_end
+

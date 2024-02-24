@@ -67,3 +67,54 @@ water_splash_7:
   offset: 0x315C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040315C8
+water_splash_seg4_vertex_0402A588:
+  type: VTX
+  size: 32
+  offset: 0x2A588
+  symbol: water_splash_seg4_vertex_0402A588
+
+water_splash_seg4_dl_040325C8:
+  type: GFX
+  offset: 0x325C8
+  symbol: water_splash_seg4_dl_040325C8
+
+water_splash_seg4_dl_04032640:
+  type: GFX
+  offset: 0x32640
+  symbol: water_splash_seg4_dl_04032640
+
+water_splash_seg4_dl_04032658:
+  type: GFX
+  offset: 0x32658
+  symbol: water_splash_seg4_dl_04032658
+
+water_splash_seg4_dl_04032670:
+  type: GFX
+  offset: 0x32670
+  symbol: water_splash_seg4_dl_04032670
+
+water_splash_seg4_dl_04032688:
+  type: GFX
+  offset: 0x32688
+  symbol: water_splash_seg4_dl_04032688
+
+water_splash_seg4_dl_040326A0:
+  type: GFX
+  offset: 0x326A0
+  symbol: water_splash_seg4_dl_040326A0
+
+water_splash_seg4_dl_040326B8:
+  type: GFX
+  offset: 0x326B8
+  symbol: water_splash_seg4_dl_040326B8
+
+water_splash_seg4_dl_040326D0:
+  type: GFX
+  offset: 0x326D0
+  symbol: water_splash_seg4_dl_040326D0
+
+water_splash_seg4_dl_040326E8:
+  type: GFX
+  offset: 0x326E8
+  symbol: water_splash_seg4_dl_040326E8
+

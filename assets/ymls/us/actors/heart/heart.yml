@@ -11,3 +11,14 @@ spinning_heart:
   offset: 0xD7E0
   format: RGBA16
   symbol: heart_seg8_texture_0800D7E0
+heart_seg8_vertex_0800D7A0:
+  type: VTX
+  size: 32
+  offset: 0xD7A0
+  symbol: heart_seg8_vertex_0800D7A0
+
+heart_seg8_dl_0800DFE0:
+  type: GFX
+  offset: 0xDFE0
+  symbol: heart_seg8_dl_0800DFE0
+

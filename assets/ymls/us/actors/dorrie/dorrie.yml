@@ -27,3 +27,361 @@ dorrie_tongue:
   offset: 0xADA0
   format: RGBA16
   symbol: dorrie_seg6_texture_0600ADA0
+dorrie_seg6_lights_0600B5A0:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB5A0
+  symbol: dorrie_seg6_lights_0600B5A0
+
+dorrie_seg6_vertex_0600B5B8:
+  type: VTX
+  size: 48
+  offset: 0xB5B8
+  symbol: dorrie_seg6_vertex_0600B5B8
+
+dorrie_seg6_vertex_0600B618:
+  type: VTX
+  size: 128
+  offset: 0xB618
+  symbol: dorrie_seg6_vertex_0600B618
+
+dorrie_seg6_vertex_0600B718:
+  type: VTX
+  size: 120
+  offset: 0xB718
+  symbol: dorrie_seg6_vertex_0600B718
+
+dorrie_seg6_vertex_0600B808:
+  type: VTX
+  size: 112
+  offset: 0xB808
+  symbol: dorrie_seg6_vertex_0600B808
+
+dorrie_seg6_dl_0600B8E8:
+  type: GFX
+  offset: 0xB8E8
+  symbol: dorrie_seg6_dl_0600B8E8
+
+dorrie_seg6_dl_0600B940:
+  type: GFX
+  offset: 0xB940
+  symbol: dorrie_seg6_dl_0600B940
+
+dorrie_seg6_dl_0600BAF8:
+  type: GFX
+  offset: 0xBAF8
+  symbol: dorrie_seg6_dl_0600BAF8
+
+dorrie_seg6_lights_0600BBC0:
+  type: LIGHTS1
+  size: 24
+  offset: 0xBBC0
+  symbol: dorrie_seg6_lights_0600BBC0
+
+dorrie_seg6_vertex_0600BBD8:
+  type: VTX
+  size: 96
+  offset: 0xBBD8
+  symbol: dorrie_seg6_vertex_0600BBD8
+
+dorrie_seg6_vertex_0600BC98:
+  type: VTX
+  size: 128
+  offset: 0xBC98
+  symbol: dorrie_seg6_vertex_0600BC98
+
+dorrie_seg6_vertex_0600BD98:
+  type: VTX
+  size: 104
+  offset: 0xBD98
+  symbol: dorrie_seg6_vertex_0600BD98
+
+dorrie_seg6_dl_0600BE68:
+  type: GFX
+  offset: 0xBE68
+  symbol: dorrie_seg6_dl_0600BE68
+
+dorrie_seg6_dl_0600BF10:
+  type: GFX
+  offset: 0xBF10
+  symbol: dorrie_seg6_dl_0600BF10
+
+dorrie_seg6_dl_0600C030:
+  type: GFX
+  offset: 0xC030
+  symbol: dorrie_seg6_dl_0600C030
+
+dorrie_seg6_lights_0600C0F8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC0F8
+  symbol: dorrie_seg6_lights_0600C0F8
+
+dorrie_seg6_vertex_0600C110:
+  type: VTX
+  size: 128
+  offset: 0xC110
+  symbol: dorrie_seg6_vertex_0600C110
+
+dorrie_seg6_vertex_0600C210:
+  type: VTX
+  size: 128
+  offset: 0xC210
+  symbol: dorrie_seg6_vertex_0600C210
+
+dorrie_seg6_dl_0600C310:
+  type: GFX
+  offset: 0xC310
+  symbol: dorrie_seg6_dl_0600C310
+
+dorrie_seg6_dl_0600C468:
+  type: GFX
+  offset: 0xC468
+  symbol: dorrie_seg6_dl_0600C468
+
+dorrie_seg6_lights_0600C510:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC510
+  symbol: dorrie_seg6_lights_0600C510
+
+dorrie_seg6_vertex_0600C528:
+  type: VTX
+  size: 128
+  offset: 0xC528
+  symbol: dorrie_seg6_vertex_0600C528
+
+dorrie_seg6_vertex_0600C628:
+  type: VTX
+  size: 128
+  offset: 0xC628
+  symbol: dorrie_seg6_vertex_0600C628
+
+dorrie_seg6_vertex_0600C728:
+  type: VTX
+  size: 24
+  offset: 0xC728
+  symbol: dorrie_seg6_vertex_0600C728
+
+dorrie_seg6_dl_0600C758:
+  type: GFX
+  offset: 0xC758
+  symbol: dorrie_seg6_dl_0600C758
+
+dorrie_seg6_dl_0600C8B8:
+  type: GFX
+  offset: 0xC8B8
+  symbol: dorrie_seg6_dl_0600C8B8
+
+dorrie_seg6_lights_0600C960:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC960
+  symbol: dorrie_seg6_lights_0600C960
+
+dorrie_seg6_vertex_0600C978:
+  type: VTX
+  size: 120
+  offset: 0xC978
+  symbol: dorrie_seg6_vertex_0600C978
+
+dorrie_seg6_vertex_0600CA68:
+  type: VTX
+  size: 120
+  offset: 0xCA68
+  symbol: dorrie_seg6_vertex_0600CA68
+
+dorrie_seg6_vertex_0600CB58:
+  type: VTX
+  size: 128
+  offset: 0xCB58
+  symbol: dorrie_seg6_vertex_0600CB58
+
+dorrie_seg6_vertex_0600CC58:
+  type: VTX
+  size: 128
+  offset: 0xCC58
+  symbol: dorrie_seg6_vertex_0600CC58
+
+dorrie_seg6_vertex_0600CD58:
+  type: VTX
+  size: 72
+  offset: 0xCD58
+  symbol: dorrie_seg6_vertex_0600CD58
+
+dorrie_seg6_dl_0600CDE8:
+  type: GFX
+  offset: 0xCDE8
+  symbol: dorrie_seg6_dl_0600CDE8
+
+dorrie_seg6_dl_0600CFD0:
+  type: GFX
+  offset: 0xCFD0
+  symbol: dorrie_seg6_dl_0600CFD0
+
+dorrie_seg6_lights_0600D078:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD078
+  symbol: dorrie_seg6_lights_0600D078
+
+dorrie_seg6_vertex_0600D090:
+  type: VTX
+  size: 120
+  offset: 0xD090
+  symbol: dorrie_seg6_vertex_0600D090
+
+dorrie_seg6_vertex_0600D180:
+  type: VTX
+  size: 128
+  offset: 0xD180
+  symbol: dorrie_seg6_vertex_0600D180
+
+dorrie_seg6_vertex_0600D280:
+  type: VTX
+  size: 64
+  offset: 0xD280
+  symbol: dorrie_seg6_vertex_0600D280
+
+dorrie_seg6_dl_0600D300:
+  type: GFX
+  offset: 0xD300
+  symbol: dorrie_seg6_dl_0600D300
+
+dorrie_seg6_dl_0600D440:
+  type: GFX
+  offset: 0xD440
+  symbol: dorrie_seg6_dl_0600D440
+
+dorrie_seg6_lights_0600D4E8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD4E8
+  symbol: dorrie_seg6_lights_0600D4E8
+
+dorrie_seg6_vertex_0600D500:
+  type: VTX
+  size: 120
+  offset: 0xD500
+  symbol: dorrie_seg6_vertex_0600D500
+
+dorrie_seg6_vertex_0600D5F0:
+  type: VTX
+  size: 24
+  offset: 0xD5F0
+  symbol: dorrie_seg6_vertex_0600D5F0
+
+dorrie_seg6_dl_0600D620:
+  type: GFX
+  offset: 0xD620
+  symbol: dorrie_seg6_dl_0600D620
+
+dorrie_seg6_dl_0600D6D8:
+  type: GFX
+  offset: 0xD6D8
+  symbol: dorrie_seg6_dl_0600D6D8
+
+dorrie_seg6_lights_0600D780:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD780
+  symbol: dorrie_seg6_lights_0600D780
+
+dorrie_seg6_vertex_0600D798:
+  type: VTX
+  size: 64
+  offset: 0xD798
+  symbol: dorrie_seg6_vertex_0600D798
+
+dorrie_seg6_dl_0600D818:
+  type: GFX
+  offset: 0xD818
+  symbol: dorrie_seg6_dl_0600D818
+
+dorrie_seg6_dl_0600D8B0:
+  type: GFX
+  offset: 0xD8B0
+  symbol: dorrie_seg6_dl_0600D8B0
+
+dorrie_seg6_lights_0600D958:
+  type: LIGHTS1
+  size: 24
+  offset: 0xD958
+  symbol: dorrie_seg6_lights_0600D958
+
+dorrie_seg6_vertex_0600D970:
+  type: VTX
+  size: 64
+  offset: 0xD970
+  symbol: dorrie_seg6_vertex_0600D970
+
+dorrie_seg6_dl_0600D9F0:
+  type: GFX
+  offset: 0xD9F0
+  symbol: dorrie_seg6_dl_0600D9F0
+
+dorrie_seg6_dl_0600DA88:
+  type: GFX
+  offset: 0xDA88
+  symbol: dorrie_seg6_dl_0600DA88
+
+dorrie_seg6_lights_0600DB30:
+  type: LIGHTS1
+  size: 24
+  offset: 0xDB30
+  symbol: dorrie_seg6_lights_0600DB30
+
+dorrie_seg6_vertex_0600DB48:
+  type: VTX
+  size: 64
+  offset: 0xDB48
+  symbol: dorrie_seg6_vertex_0600DB48
+
+dorrie_seg6_dl_0600DBC8:
+  type: GFX
+  offset: 0xDBC8
+  symbol: dorrie_seg6_dl_0600DBC8
+
+dorrie_seg6_dl_0600DC60:
+  type: GFX
+  offset: 0xDC60
+  symbol: dorrie_seg6_dl_0600DC60
+
+dorrie_seg6_lights_0600DD08:
+  type: LIGHTS1
+  size: 24
+  offset: 0xDD08
+  symbol: dorrie_seg6_lights_0600DD08
+
+dorrie_seg6_vertex_0600DD20:
+  type: VTX
+  size: 64
+  offset: 0xDD20
+  symbol: dorrie_seg6_vertex_0600DD20
+
+dorrie_seg6_dl_0600DDA0:
+  type: GFX
+  offset: 0xDDA0
+  symbol: dorrie_seg6_dl_0600DDA0
+
+dorrie_seg6_dl_0600DE38:
+  type: GFX
+  offset: 0xDE38
+  symbol: dorrie_seg6_dl_0600DE38
+
+dorrie_seg6_vertex_0600DEE0:
+  type: VTX
+  size: 64
+  offset: 0xDEE0
+  symbol: dorrie_seg6_vertex_0600DEE0
+
+dorrie_seg6_dl_0600DF60:
+  type: GFX
+  offset: 0xDF60
+  symbol: dorrie_seg6_dl_0600DF60
+
+dorrie_seg6_dl_0600DFA8:
+  type: GFX
+  offset: 0xDFA8
+  symbol: dorrie_seg6_dl_0600DFA8
+

@@ -43,3 +43,165 @@ mr_blizzard_right_side:
   offset: 0xA470
   format: RGBA16
   symbol: snowman_seg5_texture_0500A470
+snowman_unused_1:
+  type: U64
+snowman_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7AF8
+  symbol: snowman_lights_unused1
+
+snowman_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7AF8
+  symbol: snowman_lights_unused2
+
+snowman_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7AF8
+  symbol: snowman_lights_unused3
+
+snowman_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0x7AF8
+  symbol: snowman_lights_unused4
+
+snowman_seg5_lights_0500C470:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC470
+  symbol: snowman_seg5_lights_0500C470
+
+snowman_seg5_vertex_0500C488:
+  type: VTX
+  size: 32
+  offset: 0xC488
+  symbol: snowman_seg5_vertex_0500C488
+
+snowman_seg5_dl_0500C4C8:
+  type: GFX
+  offset: 0xC4C8
+  symbol: snowman_seg5_dl_0500C4C8
+
+snowman_seg5_dl_0500C500:
+  type: GFX
+  offset: 0xC500
+  symbol: snowman_seg5_dl_0500C500
+
+snowman_seg5_vertex_0500C530:
+  type: VTX
+  size: 32
+  offset: 0xC530
+  symbol: snowman_seg5_vertex_0500C530
+
+snowman_seg5_vertex_0500C570:
+  type: VTX
+  size: 32
+  offset: 0xC570
+  symbol: snowman_seg5_vertex_0500C570
+
+snowman_seg5_dl_0500C5B0:
+  type: GFX
+  offset: 0xC5B0
+  symbol: snowman_seg5_dl_0500C5B0
+
+snowman_seg5_dl_0500C5E8:
+  type: GFX
+  offset: 0xC5E8
+  symbol: snowman_seg5_dl_0500C5E8
+
+snowman_seg5_dl_0500C620:
+  type: GFX
+  offset: 0xC620
+  symbol: snowman_seg5_dl_0500C620
+
+snowman_seg5_vertex_0500C698:
+  type: VTX
+  size: 64
+  offset: 0xC698
+  symbol: snowman_seg5_vertex_0500C698
+
+snowman_seg5_dl_0500C718:
+  type: GFX
+  offset: 0xC718
+  symbol: snowman_seg5_dl_0500C718
+
+snowman_seg5_dl_0500C760:
+  type: GFX
+  offset: 0xC760
+  symbol: snowman_seg5_dl_0500C760
+
+snowman_seg5_lights_0500C7D0:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC7D0
+  symbol: snowman_seg5_lights_0500C7D0
+
+snowman_seg5_vertex_0500C7E8:
+  type: VTX
+  size: 128
+  offset: 0xC7E8
+  symbol: snowman_seg5_vertex_0500C7E8
+
+snowman_seg5_vertex_0500C8E8:
+  type: VTX
+  size: 72
+  offset: 0xC8E8
+  symbol: snowman_seg5_vertex_0500C8E8
+
+snowman_seg5_dl_0500C978:
+  type: GFX
+  offset: 0xC978
+  symbol: snowman_seg5_dl_0500C978
+
+snowman_seg5_dl_0500CAA8:
+  type: GFX
+  offset: 0xCAA8
+  symbol: snowman_seg5_dl_0500CAA8
+
+snowman_seg5_vertex_0500CB08:
+  type: VTX
+  size: 32
+  offset: 0xCB08
+  symbol: snowman_seg5_vertex_0500CB08
+
+snowman_seg5_vertex_0500CB48:
+  type: VTX
+  size: 32
+  offset: 0xCB48
+  symbol: snowman_seg5_vertex_0500CB48
+
+snowman_seg5_dl_0500CB88:
+  type: GFX
+  offset: 0xCB88
+  symbol: snowman_seg5_dl_0500CB88
+
+snowman_seg5_dl_0500CBC0:
+  type: GFX
+  offset: 0xCBC0
+  symbol: snowman_seg5_dl_0500CBC0
+
+snowman_seg5_dl_0500CBF8:
+  type: GFX
+  offset: 0xCBF8
+  symbol: snowman_seg5_dl_0500CBF8
+
+snowman_seg5_vertex_0500CC70:
+  type: VTX
+  size: 32
+  offset: 0xCC70
+  symbol: snowman_seg5_vertex_0500CC70
+
+snowman_seg5_dl_0500CCB0:
+  type: GFX
+  offset: 0xCCB0
+  symbol: snowman_seg5_dl_0500CCB0
+
+snowman_seg5_dl_0500CCE8:
+  type: GFX
+  offset: 0xCCE8
+  symbol: snowman_seg5_dl_0500CCE8
+

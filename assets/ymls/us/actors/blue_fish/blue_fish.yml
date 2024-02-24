@@ -11,3 +11,41 @@ blue_fish:
   offset: 0x1B5E0
   format: RGBA16
   symbol: blue_fish_seg3_texture_0301B5E0
+blue_fish_seg3_lights_0301B5C8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1B5C8
+  symbol: blue_fish_seg3_lights_0301B5C8
+
+blue_fish_seg3_vertex_0301BDE0:
+  type: VTX
+  size: 112
+  offset: 0x1BDE0
+  symbol: blue_fish_seg3_vertex_0301BDE0
+
+blue_fish_seg3_dl_0301BEC0:
+  type: GFX
+  offset: 0x1BEC0
+  symbol: blue_fish_seg3_dl_0301BEC0
+
+blue_fish_seg3_dl_0301BFB8:
+  type: GFX
+  offset: 0x1BFB8
+  symbol: blue_fish_seg3_dl_0301BFB8
+
+blue_fish_seg3_vertex_0301C018:
+  type: VTX
+  size: 72
+  offset: 0x1C018
+  symbol: blue_fish_seg3_vertex_0301C018
+
+blue_fish_seg3_dl_0301C0A8:
+  type: GFX
+  offset: 0x1C0A8
+  symbol: blue_fish_seg3_dl_0301C0A8
+
+blue_fish_seg3_dl_0301C150:
+  type: GFX
+  offset: 0x1C150
+  symbol: blue_fish_seg3_dl_0301C150
+

@@ -51,3 +51,44 @@ sparkle_5:
   offset: 0x29C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04029C90
+sparkles_seg4_vertex_04027450:
+  type: VTX
+  size: 32
+  offset: 0x27450
+  symbol: sparkles_seg4_vertex_04027450
+
+sparkles_seg4_dl_0402A490:
+  type: GFX
+  offset: 0x2A490
+  symbol: sparkles_seg4_dl_0402A490
+
+sparkles_seg4_dl_0402A4F8:
+  type: GFX
+  offset: 0x2A4F8
+  symbol: sparkles_seg4_dl_0402A4F8
+
+sparkles_seg4_dl_0402A510:
+  type: GFX
+  offset: 0x2A510
+  symbol: sparkles_seg4_dl_0402A510
+
+sparkles_seg4_dl_0402A528:
+  type: GFX
+  offset: 0x2A528
+  symbol: sparkles_seg4_dl_0402A528
+
+sparkles_seg4_dl_0402A540:
+  type: GFX
+  offset: 0x2A540
+  symbol: sparkles_seg4_dl_0402A540
+
+sparkles_seg4_dl_0402A558:
+  type: GFX
+  offset: 0x2A558
+  symbol: sparkles_seg4_dl_0402A558
+
+sparkles_seg4_dl_0402A570:
+  type: GFX
+  offset: 0x2A570
+  symbol: sparkles_seg4_dl_0402A570
+

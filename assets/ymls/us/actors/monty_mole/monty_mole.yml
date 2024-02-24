@@ -43,3 +43,349 @@ monty_mole_tooth:
   offset: 0x2170
   format: RGBA16
   symbol: monty_mole_seg5_texture_05002170
+monty_mole_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x59F0
+  symbol: monty_mole_lights_unused1
+
+monty_mole_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0x59F0
+  symbol: monty_mole_lights_unused2
+
+monty_mole_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0x59F0
+  symbol: monty_mole_lights_unused3
+
+monty_mole_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0x59F0
+  symbol: monty_mole_lights_unused4
+
+monty_mole_lights_unused5:
+  type: LIGHTS1
+  size: 24
+  offset: 0x59F0
+  symbol: monty_mole_lights_unused5
+
+monty_mole_lights_unused6:
+  type: LIGHTS1
+  size: 24
+  offset: 0x59F0
+  symbol: monty_mole_lights_unused6
+
+monty_mole_seg5_lights_05003170:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3170
+  symbol: monty_mole_seg5_lights_05003170
+
+monty_mole_seg5_vertex_05003188:
+  type: VTX
+  size: 64
+  offset: 0x3188
+  symbol: monty_mole_seg5_vertex_05003188
+
+monty_mole_seg5_dl_05003208:
+  type: GFX
+  offset: 0x3208
+  symbol: monty_mole_seg5_dl_05003208
+
+monty_mole_seg5_dl_050032A0:
+  type: GFX
+  offset: 0x32A0
+  symbol: monty_mole_seg5_dl_050032A0
+
+monty_mole_seg5_lights_05003300:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3300
+  symbol: monty_mole_seg5_lights_05003300
+
+monty_mole_seg5_vertex_05003318:
+  type: VTX
+  size: 80
+  offset: 0x3318
+  symbol: monty_mole_seg5_vertex_05003318
+
+monty_mole_seg5_vertex_050033B8:
+  type: VTX
+  size: 64
+  offset: 0x33B8
+  symbol: monty_mole_seg5_vertex_050033B8
+
+monty_mole_seg5_dl_05003438:
+  type: GFX
+  offset: 0x3438
+  symbol: monty_mole_seg5_dl_05003438
+
+monty_mole_seg5_dl_050034A0:
+  type: GFX
+  offset: 0x34A0
+  symbol: monty_mole_seg5_dl_050034A0
+
+monty_mole_seg5_dl_05003518:
+  type: GFX
+  offset: 0x3518
+  symbol: monty_mole_seg5_dl_05003518
+
+monty_mole_seg5_lights_05003598:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3598
+  symbol: monty_mole_seg5_lights_05003598
+
+monty_mole_seg5_vertex_050035B0:
+  type: VTX
+  size: 96
+  offset: 0x35B0
+  symbol: monty_mole_seg5_vertex_050035B0
+
+monty_mole_seg5_vertex_05003670:
+  type: VTX
+  size: 96
+  offset: 0x3670
+  symbol: monty_mole_seg5_vertex_05003670
+
+monty_mole_seg5_dl_05003730:
+  type: GFX
+  offset: 0x3730
+  symbol: monty_mole_seg5_dl_05003730
+
+monty_mole_seg5_dl_050037A8:
+  type: GFX
+  offset: 0x37A8
+  symbol: monty_mole_seg5_dl_050037A8
+
+monty_mole_seg5_dl_05003820:
+  type: GFX
+  offset: 0x3820
+  symbol: monty_mole_seg5_dl_05003820
+
+monty_mole_seg5_lights_050038A0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x38A0
+  symbol: monty_mole_seg5_lights_050038A0
+
+monty_mole_seg5_vertex_050038B8:
+  type: VTX
+  size: 64
+  offset: 0x38B8
+  symbol: monty_mole_seg5_vertex_050038B8
+
+monty_mole_seg5_dl_05003938:
+  type: GFX
+  offset: 0x3938
+  symbol: monty_mole_seg5_dl_05003938
+
+monty_mole_seg5_dl_050039D0:
+  type: GFX
+  offset: 0x39D0
+  symbol: monty_mole_seg5_dl_050039D0
+
+monty_mole_seg5_lights_05003A30:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3A30
+  symbol: monty_mole_seg5_lights_05003A30
+
+monty_mole_seg5_vertex_05003A48:
+  type: VTX
+  size: 80
+  offset: 0x3A48
+  symbol: monty_mole_seg5_vertex_05003A48
+
+monty_mole_seg5_vertex_05003AE8:
+  type: VTX
+  size: 64
+  offset: 0x3AE8
+  symbol: monty_mole_seg5_vertex_05003AE8
+
+monty_mole_seg5_dl_05003B68:
+  type: GFX
+  offset: 0x3B68
+  symbol: monty_mole_seg5_dl_05003B68
+
+monty_mole_seg5_dl_05003BD0:
+  type: GFX
+  offset: 0x3BD0
+  symbol: monty_mole_seg5_dl_05003BD0
+
+monty_mole_seg5_dl_05003C48:
+  type: GFX
+  offset: 0x3C48
+  symbol: monty_mole_seg5_dl_05003C48
+
+monty_mole_seg5_lights_05003CC8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3CC8
+  symbol: monty_mole_seg5_lights_05003CC8
+
+monty_mole_seg5_vertex_05003CE0:
+  type: VTX
+  size: 96
+  offset: 0x3CE0
+  symbol: monty_mole_seg5_vertex_05003CE0
+
+monty_mole_seg5_vertex_05003DA0:
+  type: VTX
+  size: 96
+  offset: 0x3DA0
+  symbol: monty_mole_seg5_vertex_05003DA0
+
+monty_mole_seg5_dl_05003E60:
+  type: GFX
+  offset: 0x3E60
+  symbol: monty_mole_seg5_dl_05003E60
+
+monty_mole_seg5_dl_05003ED8:
+  type: GFX
+  offset: 0x3ED8
+  symbol: monty_mole_seg5_dl_05003ED8
+
+monty_mole_seg5_dl_05003F50:
+  type: GFX
+  offset: 0x3F50
+  symbol: monty_mole_seg5_dl_05003F50
+
+monty_mole_seg5_lights_05003FD0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3FD0
+  symbol: monty_mole_seg5_lights_05003FD0
+
+monty_mole_seg5_vertex_05003FE8:
+  type: VTX
+  size: 104
+  offset: 0x3FE8
+  symbol: monty_mole_seg5_vertex_05003FE8
+
+monty_mole_seg5_vertex_050040B8:
+  type: VTX
+  size: 128
+  offset: 0x40B8
+  symbol: monty_mole_seg5_vertex_050040B8
+
+monty_mole_seg5_vertex_050041B8:
+  type: VTX
+  size: 128
+  offset: 0x41B8
+  symbol: monty_mole_seg5_vertex_050041B8
+
+monty_mole_seg5_dl_050042B8:
+  type: GFX
+  offset: 0x42B8
+  symbol: monty_mole_seg5_dl_050042B8
+
+monty_mole_seg5_dl_05004368:
+  type: GFX
+  offset: 0x4368
+  symbol: monty_mole_seg5_dl_05004368
+
+monty_mole_seg5_dl_050044B0:
+  type: GFX
+  offset: 0x44B0
+  symbol: monty_mole_seg5_dl_050044B0
+
+monty_mole_seg5_lights_05004518:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4518
+  symbol: monty_mole_seg5_lights_05004518
+
+monty_mole_seg5_vertex_05004530:
+  type: VTX
+  size: 48
+  offset: 0x4530
+  symbol: monty_mole_seg5_vertex_05004530
+
+monty_mole_seg5_vertex_05004590:
+  type: VTX
+  size: 128
+  offset: 0x4590
+  symbol: monty_mole_seg5_vertex_05004590
+
+monty_mole_seg5_vertex_05004690:
+  type: VTX
+  size: 128
+  offset: 0x4690
+  symbol: monty_mole_seg5_vertex_05004690
+
+monty_mole_seg5_vertex_05004790:
+  type: VTX
+  size: 80
+  offset: 0x4790
+  symbol: monty_mole_seg5_vertex_05004790
+
+monty_mole_seg5_vertex_05004830:
+  type: VTX
+  size: 128
+  offset: 0x4830
+  symbol: monty_mole_seg5_vertex_05004830
+
+monty_mole_seg5_vertex_05004930:
+  type: VTX
+  size: 32
+  offset: 0x4930
+  symbol: monty_mole_seg5_vertex_05004930
+
+monty_mole_seg5_vertex_05004970:
+  type: VTX
+  size: 32
+  offset: 0x4970
+  symbol: monty_mole_seg5_vertex_05004970
+
+monty_mole_seg5_dl_050049B0:
+  type: GFX
+  offset: 0x49B0
+  symbol: monty_mole_seg5_dl_050049B0
+
+monty_mole_seg5_dl_05004A10:
+  type: GFX
+  offset: 0x4A10
+  symbol: monty_mole_seg5_dl_05004A10
+
+monty_mole_seg5_dl_05004B50:
+  type: GFX
+  offset: 0x4B50
+  symbol: monty_mole_seg5_dl_05004B50
+
+monty_mole_seg5_dl_05004BE0:
+  type: GFX
+  offset: 0x4BE0
+  symbol: monty_mole_seg5_dl_05004BE0
+
+monty_mole_seg5_dl_05004C00:
+  type: GFX
+  offset: 0x4C00
+  symbol: monty_mole_seg5_dl_05004C00
+
+monty_mole_seg5_lights_05004C90:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4C90
+  symbol: monty_mole_seg5_lights_05004C90
+
+monty_mole_seg5_vertex_05004CA8:
+  type: VTX
+  size: 32
+  offset: 0x4CA8
+  symbol: monty_mole_seg5_vertex_05004CA8
+
+monty_mole_seg5_dl_05004CE8:
+  type: GFX
+  offset: 0x4CE8
+  symbol: monty_mole_seg5_dl_05004CE8
+
+monty_mole_seg5_dl_05004D30:
+  type: GFX
+  offset: 0x4D30
+  symbol: monty_mole_seg5_dl_05004D30
+

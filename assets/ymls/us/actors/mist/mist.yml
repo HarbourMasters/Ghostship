@@ -11,3 +11,25 @@ mist:
   offset: 0x80
   format: IA16
   symbol: mist_seg3_texture_03000080
+mist_seg3_vertex_03000000:
+  type: VTX
+  size: 32
+  offset: 0x0
+  symbol: mist_seg3_vertex_03000000
+
+mist_seg3_vertex_03000040:
+  type: VTX
+  size: 32
+  offset: 0x40
+  symbol: mist_seg3_vertex_03000040
+
+mist_seg3_dl_03000880:
+  type: GFX
+  offset: 0x880
+  symbol: mist_seg3_dl_03000880
+
+mist_seg3_dl_03000920:
+  type: GFX
+  offset: 0x920
+  symbol: mist_seg3_dl_03000920
+

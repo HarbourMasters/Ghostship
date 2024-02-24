@@ -19,3 +19,19 @@ mr_i_bubble:
   offset: 0x1D560
   format: RGBA16
   symbol: bubble_seg4_texture_0401D560
+bubble_seg4_vertex_0401CD20:
+  type: VTX
+  size: 32
+  offset: 0x1CD20
+  symbol: bubble_seg4_vertex_0401CD20
+
+bubble_seg4_dl_0401DD60:
+  type: GFX
+  offset: 0x1DD60
+  symbol: bubble_seg4_dl_0401DD60
+
+bubble_seg4_dl_0401DDE0:
+  type: GFX
+  offset: 0x1DDE0
+  symbol: bubble_seg4_dl_0401DDE0
+

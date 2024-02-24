@@ -59,3 +59,49 @@ walk_smoke_6:
   offset: 0x20EA0
   format: IA16
   symbol: smoke_seg4_texture_04020EA0
+smoke_seg4_vertex_0401DE60:
+  type: VTX
+  size: 32
+  offset: 0x1DE60
+  symbol: smoke_seg4_vertex_0401DE60
+
+smoke_seg4_dl_040216A0:
+  type: GFX
+  offset: 0x216A0
+  symbol: smoke_seg4_dl_040216A0
+
+smoke_seg4_dl_04021718:
+  type: GFX
+  offset: 0x21718
+  symbol: smoke_seg4_dl_04021718
+
+smoke_seg4_dl_04021730:
+  type: GFX
+  offset: 0x21730
+  symbol: smoke_seg4_dl_04021730
+
+smoke_seg4_dl_04021748:
+  type: GFX
+  offset: 0x21748
+  symbol: smoke_seg4_dl_04021748
+
+smoke_seg4_dl_04021760:
+  type: GFX
+  offset: 0x21760
+  symbol: smoke_seg4_dl_04021760
+
+smoke_seg4_dl_04021778:
+  type: GFX
+  offset: 0x21778
+  symbol: smoke_seg4_dl_04021778
+
+smoke_seg4_dl_04021790:
+  type: GFX
+  offset: 0x21790
+  symbol: smoke_seg4_dl_04021790
+
+smoke_seg4_dl_040217A8:
+  type: GFX
+  offset: 0x217A8
+  symbol: smoke_seg4_dl_040217A8
+

@@ -19,3 +19,88 @@ warp_pipe_top:
   offset: 0x9168
   format: RGBA16
   symbol: warp_pipe_seg3_texture_03009168
+warp_pipe_seg3_lights_030079E8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x79E8
+  symbol: warp_pipe_seg3_lights_030079E8
+
+warp_pipe_seg3_vertex_03007A00:
+  type: VTX
+  size: 120
+  offset: 0x7A00
+  symbol: warp_pipe_seg3_vertex_03007A00
+
+warp_pipe_seg3_vertex_03007AF0:
+  type: VTX
+  size: 120
+  offset: 0x7AF0
+  symbol: warp_pipe_seg3_vertex_03007AF0
+
+warp_pipe_seg3_vertex_03007BE0:
+  type: VTX
+  size: 120
+  offset: 0x7BE0
+  symbol: warp_pipe_seg3_vertex_03007BE0
+
+warp_pipe_seg3_vertex_03007CD0:
+  type: VTX
+  size: 120
+  offset: 0x7CD0
+  symbol: warp_pipe_seg3_vertex_03007CD0
+
+warp_pipe_seg3_vertex_03007DC0:
+  type: VTX
+  size: 64
+  offset: 0x7DC0
+  symbol: warp_pipe_seg3_vertex_03007DC0
+
+warp_pipe_seg3_dl_03008E40:
+  type: GFX
+  offset: 0x8E40
+  symbol: warp_pipe_seg3_dl_03008E40
+
+warp_pipe_seg3_dl_03008F98:
+  type: GFX
+  offset: 0x8F98
+  symbol: warp_pipe_seg3_dl_03008F98
+
+warp_pipe_seg3_lights_03008FF8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x8FF8
+  symbol: warp_pipe_seg3_lights_03008FF8
+
+warp_pipe_seg3_lights_03009010:
+  type: LIGHTS1
+  size: 24
+  offset: 0x9010
+  symbol: warp_pipe_seg3_lights_03009010
+
+warp_pipe_seg3_vertex_03009028:
+  type: VTX
+  size: 128
+  offset: 0x9028
+  symbol: warp_pipe_seg3_vertex_03009028
+
+warp_pipe_seg3_vertex_03009128:
+  type: VTX
+  size: 32
+  offset: 0x9128
+  symbol: warp_pipe_seg3_vertex_03009128
+
+warp_pipe_seg3_dl_03009968:
+  type: GFX
+  offset: 0x9968
+  symbol: warp_pipe_seg3_dl_03009968
+
+warp_pipe_seg3_dl_03009A20:
+  type: GFX
+  offset: 0x9A20
+  symbol: warp_pipe_seg3_dl_03009A20
+
+warp_pipe_seg3_dl_03009A50:
+  type: GFX
+  offset: 0x9A50
+  symbol: warp_pipe_seg3_dl_03009A50
+

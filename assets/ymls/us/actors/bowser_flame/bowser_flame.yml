@@ -115,3 +115,99 @@ bowser_flame_9:
   offset: 0x12000
   format: RGBA16
   symbol: flame_seg6_texture_06012000
+flame_seg6_vertex_0601C000:
+  type: VTX
+  size: 64
+  offset: 0x1C000
+  symbol: flame_seg6_vertex_0601C000
+
+flame_seg6_dl_0601C080:
+  type: GFX
+  offset: 0x1C080
+  symbol: flame_seg6_dl_0601C080
+
+flame_seg6_dl_0601C0B0:
+  type: GFX
+  offset: 0x1C0B0
+  symbol: flame_seg6_dl_0601C0B0
+
+flame_seg6_dl_0601C0C8:
+  type: GFX
+  offset: 0x1C0C8
+  symbol: flame_seg6_dl_0601C0C8
+
+flame_seg6_dl_0601C0E0:
+  type: GFX
+  offset: 0x1C0E0
+  symbol: flame_seg6_dl_0601C0E0
+
+flame_seg6_dl_0601C108:
+  type: GFX
+  offset: 0x1C108
+  symbol: flame_seg6_dl_0601C108
+
+flame_seg6_dl_0601C1A8:
+  type: GFX
+  offset: 0x1C1A8
+  symbol: flame_seg6_dl_0601C1A8
+
+flame_seg6_dl_0601C248:
+  type: GFX
+  offset: 0x1C248
+  symbol: flame_seg6_dl_0601C248
+
+flame_seg6_dl_0601C2E8:
+  type: GFX
+  offset: 0x1C2E8
+  symbol: flame_seg6_dl_0601C2E8
+
+flame_seg6_dl_0601C388:
+  type: GFX
+  offset: 0x1C388
+  symbol: flame_seg6_dl_0601C388
+
+flame_seg6_dl_0601C428:
+  type: GFX
+  offset: 0x1C428
+  symbol: flame_seg6_dl_0601C428
+
+flame_seg6_dl_0601C4C8:
+  type: GFX
+  offset: 0x1C4C8
+  symbol: flame_seg6_dl_0601C4C8
+
+flame_seg6_dl_0601C568:
+  type: GFX
+  offset: 0x1C568
+  symbol: flame_seg6_dl_0601C568
+
+flame_seg6_dl_0601C608:
+  type: GFX
+  offset: 0x1C608
+  symbol: flame_seg6_dl_0601C608
+
+flame_seg6_dl_0601C6A8:
+  type: GFX
+  offset: 0x1C6A8
+  symbol: flame_seg6_dl_0601C6A8
+
+flame_seg6_dl_0601C748:
+  type: GFX
+  offset: 0x1C748
+  symbol: flame_seg6_dl_0601C748
+
+flame_seg6_dl_0601C7E8:
+  type: GFX
+  offset: 0x1C7E8
+  symbol: flame_seg6_dl_0601C7E8
+
+flame_seg6_dl_0601C888:
+  type: GFX
+  offset: 0x1C888
+  symbol: flame_seg6_dl_0601C888
+
+flame_seg6_dl_0601C928:
+  type: GFX
+  offset: 0x1C928
+  symbol: flame_seg6_dl_0601C928
+

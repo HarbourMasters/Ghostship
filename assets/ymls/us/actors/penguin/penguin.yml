@@ -51,3 +51,257 @@ penguin_eye_open:
   offset: 0x2DE0
   format: RGBA16
   symbol: penguin_seg5_texture_05002DE0
+penguin_seg5_lights_05002D80:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2D80
+  symbol: penguin_seg5_lights_05002D80
+
+penguin_seg5_lights_05002D98:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2D98
+  symbol: penguin_seg5_lights_05002D98
+
+penguin_seg5_lights_05002DB0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2DB0
+  symbol: penguin_seg5_lights_05002DB0
+
+penguin_seg5_lights_05002DC8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2DC8
+  symbol: penguin_seg5_lights_05002DC8
+
+penguin_seg5_lights_05005DE0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5DE0
+  symbol: penguin_seg5_lights_05005DE0
+
+penguin_seg5_lights_05005DF8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5DF8
+  symbol: penguin_seg5_lights_05005DF8
+
+penguin_seg5_lights_05005E10:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5E10
+  symbol: penguin_seg5_lights_05005E10
+
+penguin_seg5_vertex_05005E28:
+  type: VTX
+  size: 64
+  offset: 0x5E28
+  symbol: penguin_seg5_vertex_05005E28
+
+penguin_seg5_vertex_05005EA8:
+  type: VTX
+  size: 32
+  offset: 0x5EA8
+  symbol: penguin_seg5_vertex_05005EA8
+
+penguin_seg5_vertex_05005EE8:
+  type: VTX
+  size: 128
+  offset: 0x5EE8
+  symbol: penguin_seg5_vertex_05005EE8
+
+penguin_seg5_vertex_05005FE8:
+  type: VTX
+  size: 128
+  offset: 0x5FE8
+  symbol: penguin_seg5_vertex_05005FE8
+
+penguin_seg5_vertex_050060E8:
+  type: VTX
+  size: 56
+  offset: 0x60E8
+  symbol: penguin_seg5_vertex_050060E8
+
+penguin_seg5_vertex_05006158:
+  type: VTX
+  size: 24
+  offset: 0x6158
+  symbol: penguin_seg5_vertex_05006158
+
+penguin_seg5_dl_05006188:
+  type: GFX
+  offset: 0x6188
+  symbol: penguin_seg5_dl_05006188
+
+penguin_seg5_dl_050061C8:
+  type: GFX
+  offset: 0x61C8
+  symbol: penguin_seg5_dl_050061C8
+
+penguin_seg5_dl_050061F8:
+  type: GFX
+  offset: 0x61F8
+  symbol: penguin_seg5_dl_050061F8
+
+penguin_seg5_dl_05006380:
+  type: GFX
+  offset: 0x6380
+  symbol: penguin_seg5_dl_05006380
+
+penguin_seg5_dl_050063C8:
+  type: GFX
+  offset: 0x63C8
+  symbol: penguin_seg5_dl_050063C8
+
+penguin_seg5_dl_05006428:
+  type: GFX
+  offset: 0x6428
+  symbol: penguin_seg5_dl_05006428
+
+penguin_seg5_dl_05006458:
+  type: GFX
+  offset: 0x6458
+  symbol: penguin_seg5_dl_05006458
+
+penguin_seg5_dl_05006488:
+  type: GFX
+  offset: 0x6488
+  symbol: penguin_seg5_dl_05006488
+
+penguin_seg5_dl_050064B8:
+  type: GFX
+  offset: 0x64B8
+  symbol: penguin_seg5_dl_050064B8
+
+penguin_seg5_dl_050064E8:
+  type: GFX
+  offset: 0x64E8
+  symbol: penguin_seg5_dl_050064E8
+
+penguin_seg5_vertex_05006518:
+  type: VTX
+  size: 80
+  offset: 0x6518
+  symbol: penguin_seg5_vertex_05006518
+
+penguin_seg5_vertex_050065B8:
+  type: VTX
+  size: 80
+  offset: 0x65B8
+  symbol: penguin_seg5_vertex_050065B8
+
+penguin_seg5_vertex_05006658:
+  type: VTX
+  size: 120
+  offset: 0x6658
+  symbol: penguin_seg5_vertex_05006658
+
+penguin_seg5_vertex_05006748:
+  type: VTX
+  size: 120
+  offset: 0x6748
+  symbol: penguin_seg5_vertex_05006748
+
+penguin_seg5_vertex_05006838:
+  type: VTX
+  size: 40
+  offset: 0x6838
+  symbol: penguin_seg5_vertex_05006838
+
+penguin_seg5_vertex_05006888:
+  type: VTX
+  size: 128
+  offset: 0x6888
+  symbol: penguin_seg5_vertex_05006888
+
+penguin_seg5_vertex_05006988:
+  type: VTX
+  size: 120
+  offset: 0x6988
+  symbol: penguin_seg5_vertex_05006988
+
+penguin_seg5_vertex_05006A78:
+  type: VTX
+  size: 120
+  offset: 0x6A78
+  symbol: penguin_seg5_vertex_05006A78
+
+penguin_seg5_vertex_05006B68:
+  type: VTX
+  size: 128
+  offset: 0x6B68
+  symbol: penguin_seg5_vertex_05006B68
+
+penguin_seg5_vertex_05006C68:
+  type: VTX
+  size: 128
+  offset: 0x6C68
+  symbol: penguin_seg5_vertex_05006C68
+
+penguin_seg5_vertex_05006D68:
+  type: VTX
+  size: 64
+  offset: 0x6D68
+  symbol: penguin_seg5_vertex_05006D68
+
+penguin_seg5_vertex_05006DE8:
+  type: VTX
+  size: 32
+  offset: 0x6DE8
+  symbol: penguin_seg5_vertex_05006DE8
+
+penguin_seg5_vertex_05006E28:
+  type: VTX
+  size: 120
+  offset: 0x6E28
+  symbol: penguin_seg5_vertex_05006E28
+
+penguin_seg5_vertex_05006F18:
+  type: VTX
+  size: 128
+  offset: 0x6F18
+  symbol: penguin_seg5_vertex_05006F18
+
+penguin_seg5_vertex_05007018:
+  type: VTX
+  size: 72
+  offset: 0x7018
+  symbol: penguin_seg5_vertex_05007018
+
+penguin_seg5_vertex_050070A8:
+  type: VTX
+  size: 120
+  offset: 0x70A8
+  symbol: penguin_seg5_vertex_050070A8
+
+penguin_seg5_dl_05007198:
+  type: GFX
+  offset: 0x7198
+  symbol: penguin_seg5_dl_05007198
+
+penguin_seg5_dl_050071E8:
+  type: GFX
+  offset: 0x71E8
+  symbol: penguin_seg5_dl_050071E8
+
+penguin_seg5_dl_05007238:
+  type: GFX
+  offset: 0x7238
+  symbol: penguin_seg5_dl_05007238
+
+penguin_seg5_dl_050072C8:
+  type: GFX
+  offset: 0x72C8
+  symbol: penguin_seg5_dl_050072C8
+
+penguin_seg5_dl_05007358:
+  type: GFX
+  offset: 0x7358
+  symbol: penguin_seg5_dl_05007358
+
+penguin_seg5_dl_05007540:
+  type: GFX
+  offset: 0x7540
+  symbol: penguin_seg5_dl_05007540
+
