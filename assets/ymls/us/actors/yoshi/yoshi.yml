@@ -27,6 +27,7 @@ yoshi_nostril:
   offset: 0x1C988
   format: RGBA16
   symbol: yoshi_seg5_texture_0501C8A0
+
 yoshi_seg5_lights_0501C458:
   type: LIGHTS1
   size: 24
@@ -179,13 +180,13 @@ yoshi_seg5_lights_0501D9F0:
 yoshi_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x1D9F0
+  offset: 0x1DA08
   symbol: yoshi_lights_unused1
 
 yoshi_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x1D9F0
+  offset: 0x1DA20
   symbol: yoshi_lights_unused2
 
 yoshi_seg5_lights_0501DA38:

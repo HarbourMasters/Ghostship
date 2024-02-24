@@ -155,6 +155,7 @@ mario_wing_tip:
   offset: 0x9090
   format: RGBA16
   symbol: mario_texture_wings_half_2
+
 mario_blue_lights_group:
   type: LIGHTS1
   size: 24
@@ -835,13 +836,13 @@ mario_metal_cap_on_shared_dl:
 mario_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x12120
+  offset: 0x12160
   symbol: mario_lights_unused1
 
 mario_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x12120
+  offset: 0x12178
   symbol: mario_lights_unused2
 
 mario_eyes_cap_off_dl_vertex:

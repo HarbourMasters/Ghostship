@@ -11,6 +11,7 @@ koopa_flag_banner:
   offset: 0x48
   format: RGBA16
   symbol: koopa_flag_seg6_texture_06000048
+
 koopa_flag_seg6_lights_06000000:
   type: LIGHTS1
   size: 24

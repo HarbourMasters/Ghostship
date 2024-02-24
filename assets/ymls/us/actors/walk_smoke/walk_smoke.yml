@@ -59,6 +59,7 @@ walk_smoke_6:
   offset: 0x20EA0
   format: IA16
   symbol: smoke_seg4_texture_04020EA0
+
 smoke_seg4_vertex_0401DE60:
   type: VTX
   size: 32

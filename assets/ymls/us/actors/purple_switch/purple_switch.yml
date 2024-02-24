@@ -21,6 +21,7 @@ purple_switch_exclamation_point:
   mio0: 0xC128
   format: RGBA16
   symbol: purple_switch_seg8_texture_0800C128
+
 purple_switch_seg8_lights_0800C090:
   type: LIGHTS1
   size: 24

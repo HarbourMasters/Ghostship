@@ -18,7 +18,7 @@ wiggler_seg5_lights_0500B248:
 wiggler_body_lights_unused:
   type: LIGHTS1
   size: 24
-  offset: 0xB248
+  offset: 0xB260
   symbol: wiggler_body_lights_unused
 
 wiggler_seg5_vertex_0500B278:

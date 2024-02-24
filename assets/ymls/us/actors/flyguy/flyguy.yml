@@ -27,12 +27,14 @@ flyguy_propeller:
   offset: 0xF888
   format: IA16
   symbol: flyguy_seg8_texture_0800F888
-flyguy_unused_1:
-  type: U64
+
+# flyguy_unused_1:
+#   type: U64
+
 flyguy_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0xF888
+  offset: 0x10088
   symbol: flyguy_lights_unused1
 
 flyguy_seg8_lights_080100A0:
@@ -50,25 +52,25 @@ flyguy_seg8_lights_080100B8:
 flyguy_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x100B8
+  offset: 0x100D0
   symbol: flyguy_lights_unused2
 
 flyguy_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0x100B8
+  offset: 0x100E8
   symbol: flyguy_lights_unused3
 
 flyguy_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0x100B8
+  offset: 0x10100
   symbol: flyguy_lights_unused4
 
 flyguy_lights_unused5:
   type: LIGHTS1
   size: 24
-  offset: 0x100B8
+  offset: 0x10118
   symbol: flyguy_lights_unused5
 
 flyguy_seg8_vertex_08010130:

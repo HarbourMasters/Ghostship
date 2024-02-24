@@ -35,6 +35,7 @@ treasure_chest_side:
   offset: 0x147A8
   format: RGBA16
   symbol: treasure_chest_seg6_texture_060147A8
+
 treasure_chest_seg6_lights_06013F90:
   type: LIGHTS1
   size: 24

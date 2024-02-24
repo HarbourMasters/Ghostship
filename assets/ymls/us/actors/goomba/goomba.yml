@@ -27,16 +27,17 @@ goomba_face_blink:
   offset: 0x1A530
   format: RGBA16
   symbol: goomba_seg8_texture_0801A530
+
 goomba_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x16040
+  offset: 0x194A0
   symbol: goomba_lights_unused1
 
 goomba_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x16040
+  offset: 0x194B8
   symbol: goomba_lights_unused2
 
 goomba_seg8_lights_080194D0:

@@ -19,6 +19,7 @@ koopa_shell_front:
   offset: 0x2648
   format: RGBA16
   symbol: koopa_shell_seg8_texture_080274A0
+
 koopa_shell_seg8_lights_08026388:
   type: LIGHTS1
   size: 24

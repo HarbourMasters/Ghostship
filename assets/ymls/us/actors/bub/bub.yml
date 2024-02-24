@@ -35,6 +35,7 @@ bub_scales:
   offset: 0x2408
   format: RGBA16
   symbol: bub_seg6_texture_060102A8
+
 bub_seg6_lights_0600E280:
   type: LIGHTS1
   size: 24

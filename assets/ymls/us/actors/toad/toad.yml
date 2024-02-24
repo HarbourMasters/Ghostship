@@ -19,6 +19,7 @@ toad_head:
   offset: 0x6120
   format: RGBA16
   symbol: toad_seg6_texture_06006120
+
 toad_seg6_lights_06005908:
   type: LIGHTS1
   size: 24

@@ -27,6 +27,7 @@ bomb_spike:
   offset: 0x59C10
   format: RGBA16
   symbol: bomb_seg6_texture_06059AC0
+
 bomb_seg6_lights_06057AA8:
   type: LIGHTS1
   size: 24

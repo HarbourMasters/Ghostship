@@ -43,40 +43,41 @@ monty_mole_tooth:
   offset: 0x2170
   format: RGBA16
   symbol: monty_mole_seg5_texture_05002170
+
 monty_mole_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x59F0
+  offset: 0x8E0
   symbol: monty_mole_lights_unused1
 
 monty_mole_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x59F0
+  offset: 0x8F8
   symbol: monty_mole_lights_unused2
 
 monty_mole_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0x59F0
+  offset: 0x910
   symbol: monty_mole_lights_unused3
 
 monty_mole_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0x59F0
+  offset: 0x928
   symbol: monty_mole_lights_unused4
 
 monty_mole_lights_unused5:
   type: LIGHTS1
   size: 24
-  offset: 0x59F0
+  offset: 0x940
   symbol: monty_mole_lights_unused5
 
 monty_mole_lights_unused6:
   type: LIGHTS1
   size: 24
-  offset: 0x59F0
+  offset: 0x958
   symbol: monty_mole_lights_unused6
 
 monty_mole_seg5_lights_05003170:

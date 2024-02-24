@@ -11,6 +11,7 @@ smoke:
   offset: 0x72C0
   format: IA16
   symbol: smoke_seg5_texture_050072C0
+
 smoke_seg5_vertex_05007280:
   type: VTX
   size: 32

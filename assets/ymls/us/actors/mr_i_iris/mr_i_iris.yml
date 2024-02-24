@@ -35,6 +35,7 @@ mr_i_iris_open:
   offset: 0x2170
   format: RGBA16
   symbol: mr_i_iris_seg6_texture_06002170
+
 mr_i_iris_seg6_vertex_06002130:
   type: VTX
   size: 32

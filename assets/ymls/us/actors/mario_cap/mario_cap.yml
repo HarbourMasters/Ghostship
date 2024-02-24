@@ -51,6 +51,7 @@ mario_cap_wing_tip:
   offset: 0x9090
   format: RGBA16
   symbol: mario_cap_seg3_texture_0301F750
+
 mario_cap_seg3_lights_0301CF08:
   type: LIGHTS1
   size: 24

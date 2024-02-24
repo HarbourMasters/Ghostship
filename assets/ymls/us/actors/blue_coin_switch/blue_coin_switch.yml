@@ -19,6 +19,7 @@ blue_coin_switch_top:
   offset: 0x418
   format: RGBA16
   symbol: blue_coin_switch_seg8_texture_08000418
+
 blue_coin_switch_seg8_lights_08000000:
   type: LIGHTS1
   size: 24

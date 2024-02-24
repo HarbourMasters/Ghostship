@@ -11,6 +11,7 @@ water_ring:
   offset: 0x12380
   format: RGBA16
   symbol: water_ring_seg6_texture_06012380
+
 water_ring_seg6_lights_06012368:
   type: LIGHTS1
   size: 24

@@ -19,6 +19,7 @@ exclamation_point:
   offset: 0x25A80
   format: RGBA16
   symbol: exclamation_box_outline_seg8_texture_08025A80
+
 exclamation_box_outline_seg8_lights_08024CB8:
   type: LIGHTS1
   size: 24

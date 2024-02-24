@@ -11,6 +11,7 @@ burn_smoke:
   offset: 0x21800
   format: IA16
   symbol: burn_smoke_seg4_texture_04021800
+
 burn_smoke_seg4_vertex_040217C0:
   type: VTX
   size: 32

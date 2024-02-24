@@ -35,16 +35,17 @@ swoop_wing:
   offset: 0x5A70
   format: RGBA16
   symbol: swoop_seg6_texture_06005A70
+
 swoop_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0xA990
+  offset: 0x4240
   symbol: swoop_lights_unused1
 
 swoop_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0xA990
+  offset: 0x4258
   symbol: swoop_lights_unused2
 
 swoop_seg6_lights_06006270:

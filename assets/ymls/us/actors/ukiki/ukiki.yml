@@ -35,16 +35,17 @@ ukiki_fur:
   offset: 0xA3C0
   format: RGBA16
   symbol: ukiki_seg5_texture_0500A3C0
+
 ukiki_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x33258
+  offset: 0x7B70
   symbol: ukiki_lights_unused1
 
 ukiki_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x33258
+  offset: 0x7B88
   symbol: ukiki_lights_unused2
 
 ukiki_seg5_lights_05007BA0:
@@ -53,8 +54,9 @@ ukiki_seg5_lights_05007BA0:
   offset: 0x7BA0
   symbol: ukiki_seg5_lights_05007BA0
 
-ukiki_unused_1:
-  type: U64
+# ukiki_unused_1:
+#   type: U64
+
 ukiki_seg5_lights_0500ABC0:
   type: LIGHTS1
   size: 24

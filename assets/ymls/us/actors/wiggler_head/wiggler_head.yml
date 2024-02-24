@@ -18,13 +18,13 @@ wiggler_seg5_lights_0500C890:
 wiggler_head_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0xC890
+  offset: 0xC8A8
   symbol: wiggler_head_lights_unused1
 
 wiggler_head_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0xC890
+  offset: 0xC8C0
   symbol: wiggler_head_lights_unused2
 
 wiggler_seg5_vertex_0500C8D8:

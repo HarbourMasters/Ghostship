@@ -27,6 +27,7 @@ pokey_face_blink:
   offset: 0x11F50
   format: RGBA16
   symbol: pokey_seg5_texture_05011F50
+
 pokey_seg5_vertex_05011710:
   type: VTX
   size: 32

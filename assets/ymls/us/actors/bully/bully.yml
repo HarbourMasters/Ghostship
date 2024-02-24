@@ -35,6 +35,7 @@ bully_right_side:
   offset: 0x1468
   format: RGBA16
   symbol: bully_seg5_texture_05001468
+
 bully_seg5_vertex_05000000:
   type: VTX
   size: 112
@@ -66,7 +67,7 @@ bully_seg5_lights_05000420:
 bully_lights_unused:
   type: LIGHTS1
   size: 24
-  offset: 0x420
+  offset: 0x438
   symbol: bully_lights_unused
 
 bully_seg5_lights_05000450:

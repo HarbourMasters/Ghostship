@@ -123,7 +123,7 @@ bobomb_seg8_lights_08022E00:
 bobomb_lights_unused:
   type: LIGHTS1
   size: 24
-  offset: 0x22E00
+  offset: 0x22E18
   symbol: bobomb_lights_unused
 
 bobomb_seg8_vertex_08022E30:

@@ -115,6 +115,7 @@ bowser_flame_9:
   offset: 0x12000
   format: RGBA16
   symbol: flame_seg6_texture_06012000
+
 flame_seg6_vertex_0601C000:
   type: VTX
   size: 64
