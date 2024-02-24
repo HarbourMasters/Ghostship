@@ -11,6 +11,7 @@ small_yellow_sphere:
   offset: 0x40
   format: RGBA16
   symbol: yellow_sphere_seg5_texture_05000040
+
 yellow_sphere_seg5_vertex_05000000:
   type: VTX
   size: 32

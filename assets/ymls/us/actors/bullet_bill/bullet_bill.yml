@@ -19,6 +19,7 @@ bullet_bill_mouth:
   offset: 0xCAA8
   format: RGBA16
   symbol: bullet_bill_seg5_texture_0500CAA8
+
 bullet_bill_seg5_lights_0500BA90:
   type: LIGHTS1
   size: 24

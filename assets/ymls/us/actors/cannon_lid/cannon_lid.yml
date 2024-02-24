@@ -11,6 +11,7 @@ cannon_lid:
   offset: 0x4058
   format: RGBA16
   symbol: cannon_lid_seg8_texture_08004058
+
 cannon_lid_seg8_lights_08004040:
   type: LIGHTS1
   size: 24

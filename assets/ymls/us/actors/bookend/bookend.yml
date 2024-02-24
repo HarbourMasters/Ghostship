@@ -43,28 +43,29 @@ bookend_tooth:
   offset: 0x460
   format: RGBA16
   symbol: bookend_seg5_texture_05000460
+
 bookend_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x2FB0
+  offset: 0x1800
   symbol: bookend_lights_unused1
 
 bookend_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x2FB0
+  offset: 0x1818
   symbol: bookend_lights_unused2
 
 bookend_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0x2FB0
+  offset: 0x1830
   symbol: bookend_lights_unused3
 
 bookend_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0x2FB0
+  offset: 0x1848
   symbol: bookend_lights_unused4
 
 bookend_seg5_lights_05001860:

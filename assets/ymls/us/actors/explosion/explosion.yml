@@ -59,6 +59,7 @@ explosion_6:
   offset: 0x3A08
   format: RGBA16
   symbol: explosion_seg3_texture_03003A08
+
 explosion_seg3_vertex_030009C8:
   type: VTX
   size: 32

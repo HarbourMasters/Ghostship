@@ -6,7 +6,7 @@
 blargg_lights_unused:
   type: LIGHTS1
   size: 24
-  offset: 0x670
+  offset: 0x4738
   symbol: blargg_lights_unused
 
 blargg_seg5_lights_05004740:

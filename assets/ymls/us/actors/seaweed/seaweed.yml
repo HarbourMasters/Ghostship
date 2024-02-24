@@ -35,6 +35,7 @@ seaweed_upper_center:
   offset: 0x8610
   format: RGBA16
   symbol: seaweed_seg6_texture_06008610
+
 seaweed_seg6_lights_06007DF8:
   type: LIGHTS1
   size: 24

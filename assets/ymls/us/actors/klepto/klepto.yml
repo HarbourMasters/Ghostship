@@ -43,8 +43,10 @@ klepto_wing_flap:
   offset: 0x3008
   format: RGBA16
   symbol: klepto_seg5_texture_05003008
-klepto_unused_1:
-  type: U64
+
+# klepto_unused_1:
+#   type: U64
+
 klepto_seg5_lights_05003808:
   type: LIGHTS1
   size: 24

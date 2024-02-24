@@ -19,6 +19,7 @@ checkerboard_platform_side:
   offset: 0xC840
   format: RGBA16
   symbol: checkerboard_platform_seg8_texture_0800C840
+
 checkerboard_platform_seg8_lights_0800C828:
   type: LIGHTS1
   size: 24

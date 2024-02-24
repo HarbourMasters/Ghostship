@@ -19,16 +19,17 @@ clam_shell_mouth:
   offset: 0x830
   format: RGBA16
   symbol: clam_shell_seg5_texture_05000830
+
 clam_shell_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0xABE8
+  offset: 0x0
   symbol: clam_shell_lights_unused1
 
 clam_shell_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0xABE8
+  offset: 0x18
   symbol: clam_shell_lights_unused2
 
 clam_shell_seg5_lights_05001030:

@@ -83,10 +83,6 @@ power_meter_two_segments:
   offset: 0x283E0
   format: RGBA16
   symbol: texture_power_meter_two_segments
-power_meter_unused_1:
-  type: U64
-  offset: 0x293E0
-  symbol: *const
 
 vertex_power_meter_base:
   type: VTX

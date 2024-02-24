@@ -19,6 +19,7 @@ mr_i_bubble:
   offset: 0x1D560
   format: RGBA16
   symbol: bubble_seg4_texture_0401D560
+
 bubble_seg4_vertex_0401CD20:
   type: VTX
   size: 32

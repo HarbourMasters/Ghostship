@@ -27,6 +27,7 @@ water_mine_spike_unused:
   offset: 0x59C10
   format: RGBA16
   symbol: water_mine_seg6_texture_0600C4F8
+
 water_mine_seg6_lights_0600A4E0:
   type: LIGHTS1
   size: 24

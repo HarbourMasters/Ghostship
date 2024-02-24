@@ -35,6 +35,7 @@ water_wave_3:
   offset: 0x26B58
   format: IA16
   symbol: water_wave_seg4_texture_04026B58
+
 water_wave_seg4_vertex_04025318:
   type: VTX
   size: 32

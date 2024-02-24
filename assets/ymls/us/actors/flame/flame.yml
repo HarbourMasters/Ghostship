@@ -67,6 +67,7 @@ flame_7:
   offset: 0x1AB20
   format: IA16
   symbol: flame_seg3_texture_0301AB20
+
 flame_seg3_vertex_030172E0:
   type: VTX
   size: 32

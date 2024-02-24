@@ -11,6 +11,7 @@ mips_eyes:
   offset: 0xFC70
   format: RGBA16
   symbol: mips_seg6_texture_0600FB80
+
 mips_seg6_lights_06010380:
   type: LIGHTS1
   size: 24

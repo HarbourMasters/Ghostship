@@ -11,6 +11,7 @@ dirt_particle:
   offset: 0x2BDF8
   format: RGBA16
   symbol: dirt_seg3_texture_0302BDF8
+
 dirt_seg3_lights_0302BD68:
   type: LIGHTS1
   size: 24

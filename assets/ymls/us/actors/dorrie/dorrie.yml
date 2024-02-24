@@ -27,6 +27,7 @@ dorrie_tongue:
   offset: 0xADA0
   format: RGBA16
   symbol: dorrie_seg6_texture_0600ADA0
+
 dorrie_seg6_lights_0600B5A0:
   type: LIGHTS1
   size: 24

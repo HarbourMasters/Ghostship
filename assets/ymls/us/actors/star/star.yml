@@ -19,6 +19,7 @@ star_eye:
   offset: 0x2AEF0
   format: RGBA16
   symbol: star_seg3_texture_0302AEF0
+
 star_seg3_lights_0302A6D8:
   type: LIGHTS1
   size: 24

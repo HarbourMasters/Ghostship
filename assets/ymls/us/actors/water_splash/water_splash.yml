@@ -67,6 +67,7 @@ water_splash_7:
   offset: 0x315C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040315C8
+
 water_splash_seg4_vertex_0402A588:
   type: VTX
   size: 32

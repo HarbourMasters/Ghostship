@@ -27,8 +27,10 @@ sushi_tooth:
   offset: 0x9AD0
   format: RGBA16
   symbol: sushi_seg5_texture_05009AD0
-sushi_unused_1:
-  type: U64
+
+# sushi_unused_1:
+#   type: U64
+
 sushi_seg5_vertex_05009B50:
   type: VTX
   size: 120

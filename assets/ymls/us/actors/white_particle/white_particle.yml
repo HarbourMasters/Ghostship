@@ -11,6 +11,7 @@ snow_particle:
   offset: 0x2C6A0
   format: RGBA16
   symbol: white_particle_texture
+
 white_particle_vertex:
   type: VTX
   size: 32

@@ -67,6 +67,7 @@ yoshi_egg_7_unused:
   offset: 0x8FB8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_05008FB8
+
 yoshi_egg_seg5_vertex_05005778:
   type: VTX
   size: 32

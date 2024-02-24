@@ -19,6 +19,7 @@ thwomp_surface:
   offset: 0xA900
   format: RGBA16
   symbol: thwomp_seg5_texture_0500A900
+
 thwomp_seg5_lights_050098E8:
   type: LIGHTS1
   size: 24

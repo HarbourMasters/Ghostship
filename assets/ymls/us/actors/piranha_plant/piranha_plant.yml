@@ -51,6 +51,7 @@ piranha_plant_leaf:
   offset: 0x143F8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_060143F8
+
 piranha_plant_seg6_lights_060113B0:
   type: LIGHTS1
   size: 24

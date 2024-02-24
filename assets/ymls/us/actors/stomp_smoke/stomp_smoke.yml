@@ -51,6 +51,7 @@ stomp_smoke_5:
   offset: 0x24948
   format: IA16
   symbol: stomp_smoke_seg4_texture_04024948
+
 stomp_smoke_seg4_vertex_040220C8:
   type: VTX
   size: 32

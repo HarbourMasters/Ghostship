@@ -19,6 +19,7 @@ bbh_boo_mouth:
   offset: 0xAB40
   format: RGBA16
   symbol: boo_castle_seg6_texture_06016670
+
 boo_castle_seg6_lights_06015658:
   type: LIGHTS1
   size: 24

@@ -19,6 +19,7 @@ wooden_signpost_front:
   offset: 0x2D1C8
   format: RGBA16
   symbol: wooden_signpost_seg3_texture_0302D1C8
+
 wooden_signpost_seg3_lights_0302C940:
   type: LIGHTS1
   size: 24

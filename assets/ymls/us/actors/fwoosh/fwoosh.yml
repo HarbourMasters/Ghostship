@@ -11,6 +11,7 @@ fwoosh_face:
   offset: 0x15808
   format: IA16
   symbol: fwoosh_seg5_texture_05015808
+
 fwoosh_seg5_vertex_050157C8:
   type: VTX
   size: 32
