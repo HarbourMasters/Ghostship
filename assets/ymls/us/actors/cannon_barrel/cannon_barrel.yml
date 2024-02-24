@@ -11,3 +11,54 @@ cannon_barrel:
   offset: 0x58A8
   format: RGBA16
   symbol: cannon_barrel_seg8_texture_080058A8
+cannon_barrel_seg8_lights_08005878:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5878
+  symbol: cannon_barrel_seg8_lights_08005878
+
+cannon_barrel_seg8_lights_08005890:
+  type: LIGHTS1
+  size: 24
+  offset: 0x5890
+  symbol: cannon_barrel_seg8_lights_08005890
+
+cannon_barrel_seg8_vertex_080060A8:
+  type: VTX
+  size: 128
+  offset: 0x60A8
+  symbol: cannon_barrel_seg8_vertex_080060A8
+
+cannon_barrel_seg8_vertex_080061A8:
+  type: VTX
+  size: 128
+  offset: 0x61A8
+  symbol: cannon_barrel_seg8_vertex_080061A8
+
+cannon_barrel_seg8_vertex_080062A8:
+  type: VTX
+  size: 128
+  offset: 0x62A8
+  symbol: cannon_barrel_seg8_vertex_080062A8
+
+cannon_barrel_seg8_vertex_080063A8:
+  type: VTX
+  size: 48
+  offset: 0x63A8
+  symbol: cannon_barrel_seg8_vertex_080063A8
+
+cannon_barrel_seg8_dl_08006408:
+  type: GFX
+  offset: 0x6408
+  symbol: cannon_barrel_seg8_dl_08006408
+
+cannon_barrel_seg8_dl_080064C0:
+  type: GFX
+  offset: 0x64C0
+  symbol: cannon_barrel_seg8_dl_080064C0
+
+cannon_barrel_seg8_dl_08006660:
+  type: GFX
+  offset: 0x6660
+  symbol: cannon_barrel_seg8_dl_08006660
+

@@ -1,0 +1,163 @@
+:config:
+  compressed_offset: 0x180BB0
+  segments:
+    seg5: 0x180BB0
+
+spiny_egg_seg5_lights_050144F8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x144F8
+  symbol: spiny_egg_seg5_lights_050144F8
+
+spiny_egg_seg5_lights_05014510:
+  type: LIGHTS1
+  size: 24
+  offset: 0x14510
+  symbol: spiny_egg_seg5_lights_05014510
+
+spiny_egg_seg5_vertex_05014528:
+  type: VTX
+  size: 72
+  offset: 0x14528
+  symbol: spiny_egg_seg5_vertex_05014528
+
+spiny_egg_seg5_vertex_050145B8:
+  type: VTX
+  size: 72
+  offset: 0x145B8
+  symbol: spiny_egg_seg5_vertex_050145B8
+
+spiny_egg_seg5_vertex_05014648:
+  type: VTX
+  size: 72
+  offset: 0x14648
+  symbol: spiny_egg_seg5_vertex_05014648
+
+spiny_egg_seg5_vertex_050146D8:
+  type: VTX
+  size: 72
+  offset: 0x146D8
+  symbol: spiny_egg_seg5_vertex_050146D8
+
+spiny_egg_seg5_vertex_05014768:
+  type: VTX
+  size: 72
+  offset: 0x14768
+  symbol: spiny_egg_seg5_vertex_05014768
+
+spiny_egg_seg5_vertex_050147F8:
+  type: VTX
+  size: 72
+  offset: 0x147F8
+  symbol: spiny_egg_seg5_vertex_050147F8
+
+spiny_egg_seg5_vertex_05014888:
+  type: VTX
+  size: 72
+  offset: 0x14888
+  symbol: spiny_egg_seg5_vertex_05014888
+
+spiny_egg_seg5_vertex_05014918:
+  type: VTX
+  size: 72
+  offset: 0x14918
+  symbol: spiny_egg_seg5_vertex_05014918
+
+spiny_egg_seg5_vertex_050149A8:
+  type: VTX
+  size: 128
+  offset: 0x149A8
+  symbol: spiny_egg_seg5_vertex_050149A8
+
+spiny_egg_seg5_vertex_05014AA8:
+  type: VTX
+  size: 128
+  offset: 0x14AA8
+  symbol: spiny_egg_seg5_vertex_05014AA8
+
+spiny_egg_seg5_vertex_05014BA8:
+  type: VTX
+  size: 128
+  offset: 0x14BA8
+  symbol: spiny_egg_seg5_vertex_05014BA8
+
+spiny_egg_seg5_vertex_05014CA8:
+  type: VTX
+  size: 128
+  offset: 0x14CA8
+  symbol: spiny_egg_seg5_vertex_05014CA8
+
+spiny_egg_seg5_vertex_05014DA8:
+  type: VTX
+  size: 128
+  offset: 0x14DA8
+  symbol: spiny_egg_seg5_vertex_05014DA8
+
+spiny_egg_seg5_vertex_05014EA8:
+  type: VTX
+  size: 128
+  offset: 0x14EA8
+  symbol: spiny_egg_seg5_vertex_05014EA8
+
+spiny_egg_seg5_vertex_05014FA8:
+  type: VTX
+  size: 128
+  offset: 0x14FA8
+  symbol: spiny_egg_seg5_vertex_05014FA8
+
+spiny_egg_seg5_vertex_050150A8:
+  type: VTX
+  size: 128
+  offset: 0x150A8
+  symbol: spiny_egg_seg5_vertex_050150A8
+
+spiny_egg_seg5_dl_050151A8:
+  type: GFX
+  offset: 0x151A8
+  symbol: spiny_egg_seg5_dl_050151A8
+
+spiny_egg_seg5_dl_050151E0:
+  type: GFX
+  offset: 0x151E0
+  symbol: spiny_egg_seg5_dl_050151E0
+
+spiny_egg_seg5_dl_05015218:
+  type: GFX
+  offset: 0x15218
+  symbol: spiny_egg_seg5_dl_05015218
+
+spiny_egg_seg5_dl_05015250:
+  type: GFX
+  offset: 0x15250
+  symbol: spiny_egg_seg5_dl_05015250
+
+spiny_egg_seg5_dl_05015288:
+  type: GFX
+  offset: 0x15288
+  symbol: spiny_egg_seg5_dl_05015288
+
+spiny_egg_seg5_dl_050152C0:
+  type: GFX
+  offset: 0x152C0
+  symbol: spiny_egg_seg5_dl_050152C0
+
+spiny_egg_seg5_dl_050152F8:
+  type: GFX
+  offset: 0x152F8
+  symbol: spiny_egg_seg5_dl_050152F8
+
+spiny_egg_seg5_dl_05015330:
+  type: GFX
+  offset: 0x15330
+  symbol: spiny_egg_seg5_dl_05015330
+
+spiny_egg_seg5_dl_05015368:
+  type: GFX
+  offset: 0x15368
+  symbol: spiny_egg_seg5_dl_05015368
+
+spiny_egg_seg5_dl_05015740:
+  type: GFX
+  offset: 0x15740
+  symbol: spiny_egg_seg5_dl_05015740
+

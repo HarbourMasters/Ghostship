@@ -35,3 +35,211 @@ bully_right_side:
   offset: 0x1468
   format: RGBA16
   symbol: bully_seg5_texture_05001468
+bully_seg5_vertex_05000000:
+  type: VTX
+  size: 112
+  offset: 0x0
+  symbol: bully_seg5_vertex_05000000
+
+bully_seg5_dl_050002E0:
+  type: GFX
+  offset: 0x2E0
+  symbol: bully_seg5_dl_050002E0
+
+bully_seg5_dl_05000398:
+  type: GFX
+  offset: 0x398
+  symbol: bully_seg5_dl_05000398
+
+bully_seg5_lights_05000408:
+  type: LIGHTS1
+  size: 24
+  offset: 0x408
+  symbol: bully_seg5_lights_05000408
+
+bully_seg5_lights_05000420:
+  type: LIGHTS1
+  size: 24
+  offset: 0x420
+  symbol: bully_seg5_lights_05000420
+
+bully_lights_unused:
+  type: LIGHTS1
+  size: 24
+  offset: 0x420
+  symbol: bully_lights_unused
+
+bully_seg5_lights_05000450:
+  type: LIGHTS1
+  size: 24
+  offset: 0x450
+  symbol: bully_seg5_lights_05000450
+
+bully_seg5_vertex_05002C68:
+  type: VTX
+  size: 112
+  offset: 0x2C68
+  symbol: bully_seg5_vertex_05002C68
+
+bully_seg5_vertex_05002D48:
+  type: VTX
+  size: 32
+  offset: 0x2D48
+  symbol: bully_seg5_vertex_05002D48
+
+bully_seg5_vertex_05002D88:
+  type: VTX
+  size: 112
+  offset: 0x2D88
+  symbol: bully_seg5_vertex_05002D88
+
+bully_seg5_vertex_05002E68:
+  type: VTX
+  size: 32
+  offset: 0x2E68
+  symbol: bully_seg5_vertex_05002E68
+
+bully_seg5_vertex_05002EA8:
+  type: VTX
+  size: 48
+  offset: 0x2EA8
+  symbol: bully_seg5_vertex_05002EA8
+
+bully_seg5_vertex_05002F08:
+  type: VTX
+  size: 128
+  offset: 0x2F08
+  symbol: bully_seg5_vertex_05002F08
+
+bully_seg5_vertex_05003008:
+  type: VTX
+  size: 128
+  offset: 0x3008
+  symbol: bully_seg5_vertex_05003008
+
+bully_seg5_vertex_05003108:
+  type: VTX
+  size: 128
+  offset: 0x3108
+  symbol: bully_seg5_vertex_05003108
+
+bully_seg5_vertex_05003208:
+  type: VTX
+  size: 128
+  offset: 0x3208
+  symbol: bully_seg5_vertex_05003208
+
+bully_seg5_vertex_05003308:
+  type: VTX
+  size: 128
+  offset: 0x3308
+  symbol: bully_seg5_vertex_05003308
+
+bully_seg5_vertex_05003408:
+  type: VTX
+  size: 128
+  offset: 0x3408
+  symbol: bully_seg5_vertex_05003408
+
+bully_seg5_vertex_05003508:
+  type: VTX
+  size: 128
+  offset: 0x3508
+  symbol: bully_seg5_vertex_05003508
+
+bully_seg5_vertex_05003608:
+  type: VTX
+  size: 128
+  offset: 0x3608
+  symbol: bully_seg5_vertex_05003608
+
+bully_seg5_dl_05003708:
+  type: GFX
+  offset: 0x3708
+  symbol: bully_seg5_dl_05003708
+
+bully_seg5_dl_050037A0:
+  type: GFX
+  offset: 0x37A0
+  symbol: bully_seg5_dl_050037A0
+
+bully_seg5_dl_05003838:
+  type: GFX
+  offset: 0x3838
+  symbol: bully_seg5_dl_05003838
+
+bully_seg5_dl_05003878:
+  type: GFX
+  offset: 0x3878
+  symbol: bully_seg5_dl_05003878
+
+bully_seg5_vertex_05003C50:
+  type: VTX
+  size: 32
+  offset: 0x3C50
+  symbol: bully_seg5_vertex_05003C50
+
+bully_seg5_vertex_05003C90:
+  type: VTX
+  size: 32
+  offset: 0x3C90
+  symbol: bully_seg5_vertex_05003C90
+
+bully_seg5_dl_05003CD0:
+  type: GFX
+  offset: 0x3CD0
+  symbol: bully_seg5_dl_05003CD0
+
+bully_seg5_dl_05003D08:
+  type: GFX
+  offset: 0x3D08
+  symbol: bully_seg5_dl_05003D08
+
+bully_seg5_dl_05003D40:
+  type: GFX
+  offset: 0x3D40
+  symbol: bully_seg5_dl_05003D40
+
+bully_seg5_vertex_05003DB8:
+  type: VTX
+  size: 32
+  offset: 0x3DB8
+  symbol: bully_seg5_vertex_05003DB8
+
+bully_seg5_vertex_05003DF8:
+  type: VTX
+  size: 32
+  offset: 0x3DF8
+  symbol: bully_seg5_vertex_05003DF8
+
+bully_seg5_dl_05003E38:
+  type: GFX
+  offset: 0x3E38
+  symbol: bully_seg5_dl_05003E38
+
+bully_seg5_dl_05003E70:
+  type: GFX
+  offset: 0x3E70
+  symbol: bully_seg5_dl_05003E70
+
+bully_seg5_dl_05003EA8:
+  type: GFX
+  offset: 0x3EA8
+  symbol: bully_seg5_dl_05003EA8
+
+bully_seg5_vertex_05003F20:
+  type: VTX
+  size: 48
+  offset: 0x3F20
+  symbol: bully_seg5_vertex_05003F20
+
+bully_seg5_dl_05003F80:
+  type: GFX
+  offset: 0x3F80
+  symbol: bully_seg5_dl_05003F80
+
+bully_seg5_dl_05003FC8:
+  type: GFX
+  offset: 0x3FC8
+  symbol: bully_seg5_dl_05003FC8
+

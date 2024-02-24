@@ -3,14 +3,6 @@
   segments:
     seg8: 0x1F2200
 
-amp_body:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1B18
-  format: RGBA16
-  symbol: dAmpBodyTexture
 amp_electricity:
   type: TEXTURE
   size: 1024
@@ -27,6 +19,14 @@ amp_eyes:
   offset: 0x1318
   format: RGBA16
   symbol: dAmpEyesTexture
+amp_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1B18
+  format: RGBA16
+  symbol: dAmpBodyTexture
 amp_mouth:
   type: TEXTURE
   size: 2048
@@ -35,3 +35,69 @@ amp_mouth:
   offset: 0x2318
   format: RGBA16
   symbol: dAmpMouthTexture
+
+amp_electricity_vertices:
+  type: VTX
+  size: 80
+  offset: 0x2B18
+  symbol: dAmpElectricityVertices
+
+amp_electricity_sub_dl:
+  type: GFX
+  offset: 0x2B68
+  symbol: dAmpElectricitySubDl
+
+amp_electricity_dl:
+  type: GFX
+  offset: 0x2BA0
+  symbol: dAmpElectricityDl
+
+amp_eye_vertices:
+  type: VTX
+  size: 80
+  offset: 0x2C10
+  symbol: dAmpEyeVertices
+
+amp_eye_sub_dl:
+  type: GFX
+  offset: 0x2C50
+  symbol: dAmpEyeSubDl
+
+amp_eye_dl:
+  type: GFX
+  offset: 0x2C88
+  symbol: dAmpEyeDl
+
+amp_mouth_vertices:
+  type: VTX
+  size: 80
+  offset: 0x2CF8
+  symbol: dAmpMouthVertices
+
+amp_mouth_sub_dl:
+  type: GFX
+  offset: 0x2D38
+  symbol: dAmpMouthSubDl
+
+amp_mouth_dl:
+  type: GFX
+  offset: 0x2D70
+  symbol: dAmpMouthDl
+
+amp_body_vertices:
+  type: VTX
+  size: 80
+  offset: 0x2DE0
+  symbol: dAmpBodyVertices
+
+amp_body_sub_dl:
+  type: GFX
+  offset: 0x2E20
+  symbol: dAmpBodySubDl
+
+amp_body_dl:
+  type: GFX
+  offset: 0x2E58
+  symbol: dAmpBodyDl
+
+# todo: remaining unused amp

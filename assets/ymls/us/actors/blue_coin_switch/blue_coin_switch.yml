@@ -19,3 +19,36 @@ blue_coin_switch_top:
   offset: 0x418
   format: RGBA16
   symbol: blue_coin_switch_seg8_texture_08000418
+blue_coin_switch_seg8_lights_08000000:
+  type: LIGHTS1
+  size: 24
+  offset: 0x0
+  symbol: blue_coin_switch_seg8_lights_08000000
+
+blue_coin_switch_seg8_vertex_08000C18:
+  type: VTX
+  size: 128
+  offset: 0xC18
+  symbol: blue_coin_switch_seg8_vertex_08000C18
+
+blue_coin_switch_seg8_vertex_08000D18:
+  type: VTX
+  size: 32
+  offset: 0xD18
+  symbol: blue_coin_switch_seg8_vertex_08000D18
+
+blue_coin_switch_seg8_dl_08000D58:
+  type: GFX
+  offset: 0xD58
+  symbol: blue_coin_switch_seg8_dl_08000D58
+
+blue_coin_switch_seg8_dl_08000DD0:
+  type: GFX
+  offset: 0xDD0
+  symbol: blue_coin_switch_seg8_dl_08000DD0
+
+blue_coin_switch_seg8_dl_08000E08:
+  type: GFX
+  offset: 0xE08
+  symbol: blue_coin_switch_seg8_dl_08000E08
+

@@ -50,4 +50,130 @@ bob-omb_eyes_blink:
   height: 32
   offset: 0x22260
   format: RGBA16
-  symbol: bobomb_seg8_texture_08022260
+  symbol: bobomb_seg8_texture_08022260bobomb_seg8_vertex_08022A60:
+  type: VTX
+  size: 48
+  offset: 0x22A60
+  symbol: bobomb_seg8_vertex_08022A60
+
+bobomb_seg8_dl_08022AC0:
+  type: GFX
+  offset: 0x22AC0
+  symbol: bobomb_seg8_dl_08022AC0
+
+bobomb_seg8_dl_08022B08:
+  type: GFX
+  offset: 0x22B08
+  symbol: bobomb_seg8_dl_08022B08
+
+bobomb_seg8_dl_08022B58:
+  type: GFX
+  offset: 0x22B58
+  symbol: bobomb_seg8_dl_08022B58
+
+bobomb_seg8_dl_08022B88:
+  type: GFX
+  offset: 0x22B88
+  symbol: bobomb_seg8_dl_08022B88
+
+bobomb_seg8_vertex_08022BB8:
+  type: VTX
+  size: 32
+  offset: 0x22BB8
+  symbol: bobomb_seg8_vertex_08022BB8
+
+bobomb_seg8_vertex_08022BF8:
+  type: VTX
+  size: 32
+  offset: 0x22BF8
+  symbol: bobomb_seg8_vertex_08022BF8
+
+bobomb_seg8_dl_08022C38:
+  type: GFX
+  offset: 0x22C38
+  symbol: bobomb_seg8_dl_08022C38
+
+bobomb_seg8_dl_08022CA0:
+  type: GFX
+  offset: 0x22CA0
+  symbol: bobomb_seg8_dl_08022CA0
+
+bobomb_seg8_dl_08022D08:
+  type: GFX
+  offset: 0x22D08
+  symbol: bobomb_seg8_dl_08022D08
+
+bobomb_seg8_dl_08022D78:
+  type: GFX
+  offset: 0x22D78
+  symbol: bobomb_seg8_dl_08022D78
+
+bobomb_seg8_lights_08022DE8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x22DE8
+  symbol: bobomb_seg8_lights_08022DE8
+
+bobomb_seg8_lights_08022E00:
+  type: LIGHTS1
+  size: 24
+  offset: 0x22E00
+  symbol: bobomb_seg8_lights_08022E00
+
+bobomb_lights_unused:
+  type: LIGHTS1
+  size: 24
+  offset: 0x22E00
+  symbol: bobomb_lights_unused
+
+bobomb_seg8_vertex_08022E30:
+  type: VTX
+  size: 128
+  offset: 0x22E30
+  symbol: bobomb_seg8_vertex_08022E30
+
+bobomb_seg8_vertex_08022F30:
+  type: VTX
+  size: 32
+  offset: 0x22F30
+  symbol: bobomb_seg8_vertex_08022F30
+
+bobomb_seg8_vertex_08022F70:
+  type: VTX
+  size: 128
+  offset: 0x22F70
+  symbol: bobomb_seg8_vertex_08022F70
+
+bobomb_seg8_vertex_08023070:
+  type: VTX
+  size: 32
+  offset: 0x23070
+  symbol: bobomb_seg8_vertex_08023070
+
+bobomb_seg8_vertex_080230B0:
+  type: VTX
+  size: 112
+  offset: 0x230B0
+  symbol: bobomb_seg8_vertex_080230B0
+
+bobomb_seg8_vertex_08023190:
+  type: VTX
+  size: 112
+  offset: 0x23190
+  symbol: bobomb_seg8_vertex_08023190
+
+bobomb_seg8_dl_08023270:
+  type: GFX
+  offset: 0x23270
+  symbol: bobomb_seg8_dl_08023270
+
+bobomb_seg8_dl_08023378:
+  type: GFX
+  offset: 0x23378
+  symbol: bobomb_seg8_dl_08023378
+
+bobomb_seg8_dl_08023480:
+  type: GFX
+  offset: 0x23480
+  symbol: bobomb_seg8_dl_08023480
+

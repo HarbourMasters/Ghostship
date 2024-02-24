@@ -51,3 +51,95 @@ stomp_smoke_5:
   offset: 0x24948
   format: IA16
   symbol: stomp_smoke_seg4_texture_04024948
+stomp_smoke_seg4_vertex_040220C8:
+  type: VTX
+  size: 32
+  offset: 0x220C8
+  symbol: stomp_smoke_seg4_vertex_040220C8
+
+stomp_smoke_seg4_vertex_04022108:
+  type: VTX
+  size: 32
+  offset: 0x22108
+  symbol: stomp_smoke_seg4_vertex_04022108
+
+stomp_smoke_seg4_dl_04025148:
+  type: GFX
+  offset: 0x25148
+  symbol: stomp_smoke_seg4_dl_04025148
+
+stomp_smoke_seg4_dl_04025190:
+  type: GFX
+  offset: 0x25190
+  symbol: stomp_smoke_seg4_dl_04025190
+
+stomp_smoke_seg4_dl_040251C8:
+  type: GFX
+  offset: 0x251C8
+  symbol: stomp_smoke_seg4_dl_040251C8
+
+stomp_smoke_seg4_dl_040251E0:
+  type: GFX
+  offset: 0x251E0
+  symbol: stomp_smoke_seg4_dl_040251E0
+
+stomp_smoke_seg4_dl_040251F8:
+  type: GFX
+  offset: 0x251F8
+  symbol: stomp_smoke_seg4_dl_040251F8
+
+stomp_smoke_seg4_dl_04025210:
+  type: GFX
+  offset: 0x25210
+  symbol: stomp_smoke_seg4_dl_04025210
+
+stomp_smoke_seg4_dl_04025228:
+  type: GFX
+  offset: 0x25228
+  symbol: stomp_smoke_seg4_dl_04025228
+
+stomp_smoke_seg4_dl_04025240:
+  type: GFX
+  offset: 0x25240
+  symbol: stomp_smoke_seg4_dl_04025240
+
+stomp_smoke_seg4_dl_04025258:
+  type: GFX
+  offset: 0x25258
+  symbol: stomp_smoke_seg4_dl_04025258
+
+stomp_smoke_seg4_dl_04025270:
+  type: GFX
+  offset: 0x25270
+  symbol: stomp_smoke_seg4_dl_04025270
+
+stomp_smoke_seg4_dl_04025288:
+  type: GFX
+  offset: 0x25288
+  symbol: stomp_smoke_seg4_dl_04025288
+
+stomp_smoke_seg4_dl_040252A0:
+  type: GFX
+  offset: 0x252A0
+  symbol: stomp_smoke_seg4_dl_040252A0
+
+stomp_smoke_seg4_dl_040252B8:
+  type: GFX
+  offset: 0x252B8
+  symbol: stomp_smoke_seg4_dl_040252B8
+
+stomp_smoke_seg4_dl_040252D0:
+  type: GFX
+  offset: 0x252D0
+  symbol: stomp_smoke_seg4_dl_040252D0
+
+stomp_smoke_seg4_dl_040252E8:
+  type: GFX
+  offset: 0x252E8
+  symbol: stomp_smoke_seg4_dl_040252E8
+
+stomp_smoke_seg4_dl_04025300:
+  type: GFX
+  offset: 0x25300
+  symbol: stomp_smoke_seg4_dl_04025300
+

@@ -35,3 +35,268 @@ chuckya_hand_antenna:
   offset: 0x7778
   format: RGBA16
   symbol: chuckya_seg8_texture_08007778
+chuckya_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3010
+  symbol: chuckya_lights_unused1
+
+chuckya_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3010
+  symbol: chuckya_lights_unused2
+
+chuckya_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3010
+  symbol: chuckya_lights_unused3
+
+chuckya_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3010
+  symbol: chuckya_lights_unused4
+
+chuckya_lights_unused5:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3010
+  symbol: chuckya_lights_unused5
+
+chuckya_lights_unused6:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3010
+  symbol: chuckya_lights_unused6
+
+chuckya_lights_unused7:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3010
+  symbol: chuckya_lights_unused7
+
+chuckya_seg8_vertex_08009F78:
+  type: VTX
+  size: 32
+  offset: 0x9F78
+  symbol: chuckya_seg8_vertex_08009F78
+
+chuckya_seg8_vertex_08009FB8:
+  type: VTX
+  size: 32
+  offset: 0x9FB8
+  symbol: chuckya_seg8_vertex_08009FB8
+
+chuckya_seg8_dl_08009FF8:
+  type: GFX
+  offset: 0x9FF8
+  symbol: chuckya_seg8_dl_08009FF8
+
+chuckya_seg8_dl_0800A030:
+  type: GFX
+  offset: 0xA030
+  symbol: chuckya_seg8_dl_0800A030
+
+chuckya_seg8_dl_0800A068:
+  type: GFX
+  offset: 0xA068
+  symbol: chuckya_seg8_dl_0800A068
+
+chuckya_seg8_vertex_0800A0E0:
+  type: VTX
+  size: 32
+  offset: 0xA0E0
+  symbol: chuckya_seg8_vertex_0800A0E0
+
+chuckya_seg8_vertex_0800A120:
+  type: VTX
+  size: 32
+  offset: 0xA120
+  symbol: chuckya_seg8_vertex_0800A120
+
+chuckya_seg8_dl_0800A160:
+  type: GFX
+  offset: 0xA160
+  symbol: chuckya_seg8_dl_0800A160
+
+chuckya_seg8_dl_0800A198:
+  type: GFX
+  offset: 0xA198
+  symbol: chuckya_seg8_dl_0800A198
+
+chuckya_seg8_dl_0800A1D0:
+  type: GFX
+  offset: 0xA1D0
+  symbol: chuckya_seg8_dl_0800A1D0
+
+chuckya_seg8_vertex_0800A248:
+  type: VTX
+  size: 32
+  offset: 0xA248
+  symbol: chuckya_seg8_vertex_0800A248
+
+chuckya_seg8_vertex_0800A288:
+  type: VTX
+  size: 32
+  offset: 0xA288
+  symbol: chuckya_seg8_vertex_0800A288
+
+chuckya_seg8_dl_0800A2C8:
+  type: GFX
+  offset: 0xA2C8
+  symbol: chuckya_seg8_dl_0800A2C8
+
+chuckya_seg8_dl_0800A300:
+  type: GFX
+  offset: 0xA300
+  symbol: chuckya_seg8_dl_0800A300
+
+chuckya_seg8_dl_0800A338:
+  type: GFX
+  offset: 0xA338
+  symbol: chuckya_seg8_dl_0800A338
+
+chuckya_seg8_vertex_0800A3B0:
+  type: VTX
+  size: 32
+  offset: 0xA3B0
+  symbol: chuckya_seg8_vertex_0800A3B0
+
+chuckya_seg8_dl_0800A3F0:
+  type: GFX
+  offset: 0xA3F0
+  symbol: chuckya_seg8_dl_0800A3F0
+
+chuckya_seg8_dl_0800A428:
+  type: GFX
+  offset: 0xA428
+  symbol: chuckya_seg8_dl_0800A428
+
+chuckya_seg8_vertex_0800A498:
+  type: VTX
+  size: 32
+  offset: 0xA498
+  symbol: chuckya_seg8_vertex_0800A498
+
+chuckya_seg8_dl_0800A4D8:
+  type: GFX
+  offset: 0xA4D8
+  symbol: chuckya_seg8_dl_0800A4D8
+
+chuckya_seg8_dl_0800A510:
+  type: GFX
+  offset: 0xA510
+  symbol: chuckya_seg8_dl_0800A510
+
+chuckya_seg8_vertex_0800A580:
+  type: VTX
+  size: 32
+  offset: 0xA580
+  symbol: chuckya_seg8_vertex_0800A580
+
+chuckya_seg8_dl_0800A5C0:
+  type: GFX
+  offset: 0xA5C0
+  symbol: chuckya_seg8_dl_0800A5C0
+
+chuckya_seg8_dl_0800A5F8:
+  type: GFX
+  offset: 0xA5F8
+  symbol: chuckya_seg8_dl_0800A5F8
+
+chuckya_seg8_lights_0800A668:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA668
+  symbol: chuckya_seg8_lights_0800A668
+
+chuckya_seg8_vertex_0800A680:
+  type: VTX
+  size: 64
+  offset: 0xA680
+  symbol: chuckya_seg8_vertex_0800A680
+
+chuckya_seg8_dl_0800A700:
+  type: GFX
+  offset: 0xA700
+  symbol: chuckya_seg8_dl_0800A700
+
+chuckya_seg8_dl_0800A758:
+  type: GFX
+  offset: 0xA758
+  symbol: chuckya_seg8_dl_0800A758
+
+chuckya_seg8_lights_0800A7C8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA7C8
+  symbol: chuckya_seg8_lights_0800A7C8
+
+chuckya_seg8_vertex_0800A7E0:
+  type: VTX
+  size: 72
+  offset: 0xA7E0
+  symbol: chuckya_seg8_vertex_0800A7E0
+
+chuckya_seg8_dl_0800A870:
+  type: GFX
+  offset: 0xA870
+  symbol: chuckya_seg8_dl_0800A870
+
+chuckya_seg8_dl_0800A8D0:
+  type: GFX
+  offset: 0xA8D0
+  symbol: chuckya_seg8_dl_0800A8D0
+
+chuckya_seg8_lights_0800A8F0:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA8F0
+  symbol: chuckya_seg8_lights_0800A8F0
+
+chuckya_seg8_vertex_0800A908:
+  type: VTX
+  size: 40
+  offset: 0xA908
+  symbol: chuckya_seg8_vertex_0800A908
+
+chuckya_seg8_dl_0800A958:
+  type: GFX
+  offset: 0xA958
+  symbol: chuckya_seg8_dl_0800A958
+
+chuckya_seg8_dl_0800A998:
+  type: GFX
+  offset: 0xA998
+  symbol: chuckya_seg8_dl_0800A998
+
+chuckya_seg8_lights_0800A9B8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA9B8
+  symbol: chuckya_seg8_lights_0800A9B8
+
+chuckya_seg8_vertex_0800A9D0:
+  type: VTX
+  size: 120
+  offset: 0xA9D0
+  symbol: chuckya_seg8_vertex_0800A9D0
+
+chuckya_seg8_vertex_0800AAC0:
+  type: VTX
+  size: 88
+  offset: 0xAAC0
+  symbol: chuckya_seg8_vertex_0800AAC0
+
+chuckya_seg8_dl_0800AB70:
+  type: GFX
+  offset: 0xAB70
+  symbol: chuckya_seg8_dl_0800AB70
+
+chuckya_seg8_dl_0800ABE8:
+  type: GFX
+  offset: 0xABE8
+  symbol: chuckya_seg8_dl_0800ABE8
+

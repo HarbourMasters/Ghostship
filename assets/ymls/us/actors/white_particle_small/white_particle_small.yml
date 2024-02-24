@@ -11,3 +11,35 @@ small_snow_particle:
   offset: 0x32780
   format: RGBA16
   symbol: white_particle_small_texture
+white_particle_small_vertex:
+  type: VTX
+  size: 32
+  offset: 0x32700
+  symbol: white_particle_small_vertex
+
+white_particle_small_unused_vertex:
+  type: VTX
+  size: 32
+  offset: 0x32740
+  symbol: white_particle_small_unused_vertex
+
+white_particle_small_dl_begin:
+  type: GFX
+  offset: 0x32980
+  symbol: white_particle_small_dl_begin
+
+white_particle_small_dl_end:
+  type: GFX
+  offset: 0x329E0
+  symbol: white_particle_small_dl_end
+
+white_particle_small_dl:
+  type: GFX
+  offset: 0x32A18
+  symbol: white_particle_small_dl
+
+white_particle_small_unused_dl:
+  type: GFX
+  offset: 0x32A30
+  symbol: white_particle_small_unused_dl
+

@@ -51,3 +51,278 @@ piranha_plant_leaf:
   offset: 0x143F8
   format: RGBA16
   symbol: piranha_plant_seg6_texture_060143F8
+piranha_plant_seg6_lights_060113B0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x113B0
+  symbol: piranha_plant_seg6_lights_060113B0
+
+piranha_plant_seg6_lights_060113C8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x113C8
+  symbol: piranha_plant_seg6_lights_060113C8
+
+piranha_plant_seg6_lights_060113E0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x113E0
+  symbol: piranha_plant_seg6_lights_060113E0
+
+piranha_plant_seg6_vertex_060153F8:
+  type: VTX
+  size: 32
+  offset: 0x153F8
+  symbol: piranha_plant_seg6_vertex_060153F8
+
+piranha_plant_seg6_dl_06015438:
+  type: GFX
+  offset: 0x15438
+  symbol: piranha_plant_seg6_dl_06015438
+
+piranha_plant_seg6_dl_06015480:
+  type: GFX
+  offset: 0x15480
+  symbol: piranha_plant_seg6_dl_06015480
+
+piranha_plant_seg6_vertex_060154F0:
+  type: VTX
+  size: 32
+  offset: 0x154F0
+  symbol: piranha_plant_seg6_vertex_060154F0
+
+piranha_plant_seg6_dl_06015530:
+  type: GFX
+  offset: 0x15530
+  symbol: piranha_plant_seg6_dl_06015530
+
+piranha_plant_seg6_dl_06015578:
+  type: GFX
+  offset: 0x15578
+  symbol: piranha_plant_seg6_dl_06015578
+
+piranha_plant_seg6_vertex_060155E8:
+  type: VTX
+  size: 112
+  offset: 0x155E8
+  symbol: piranha_plant_seg6_vertex_060155E8
+
+piranha_plant_seg6_vertex_060156C8:
+  type: VTX
+  size: 104
+  offset: 0x156C8
+  symbol: piranha_plant_seg6_vertex_060156C8
+
+piranha_plant_seg6_dl_06015798:
+  type: GFX
+  offset: 0x15798
+  symbol: piranha_plant_seg6_dl_06015798
+
+piranha_plant_seg6_dl_06015850:
+  type: GFX
+  offset: 0x15850
+  symbol: piranha_plant_seg6_dl_06015850
+
+piranha_plant_seg6_vertex_060158B0:
+  type: VTX
+  size: 112
+  offset: 0x158B0
+  symbol: piranha_plant_seg6_vertex_060158B0
+
+piranha_plant_seg6_vertex_06015990:
+  type: VTX
+  size: 120
+  offset: 0x15990
+  symbol: piranha_plant_seg6_vertex_06015990
+
+piranha_plant_seg6_vertex_06015A80:
+  type: VTX
+  size: 96
+  offset: 0x15A80
+  symbol: piranha_plant_seg6_vertex_06015A80
+
+piranha_plant_seg6_vertex_06015B40:
+  type: VTX
+  size: 128
+  offset: 0x15B40
+  symbol: piranha_plant_seg6_vertex_06015B40
+
+piranha_plant_seg6_vertex_06015C40:
+  type: VTX
+  size: 128
+  offset: 0x15C40
+  symbol: piranha_plant_seg6_vertex_06015C40
+
+piranha_plant_seg6_vertex_06015D40:
+  type: VTX
+  size: 64
+  offset: 0x15D40
+  symbol: piranha_plant_seg6_vertex_06015D40
+
+piranha_plant_seg6_vertex_06015DC0:
+  type: VTX
+  size: 64
+  offset: 0x15DC0
+  symbol: piranha_plant_seg6_vertex_06015DC0
+
+piranha_plant_seg6_dl_06015E40:
+  type: GFX
+  offset: 0x15E40
+  symbol: piranha_plant_seg6_dl_06015E40
+
+piranha_plant_seg6_dl_06015EA8:
+  type: GFX
+  offset: 0x15EA8
+  symbol: piranha_plant_seg6_dl_06015EA8
+
+piranha_plant_seg6_dl_06015F68:
+  type: GFX
+  offset: 0x15F68
+  symbol: piranha_plant_seg6_dl_06015F68
+
+piranha_plant_seg6_dl_06016060:
+  type: GFX
+  offset: 0x16060
+  symbol: piranha_plant_seg6_dl_06016060
+
+piranha_plant_seg6_dl_060160B0:
+  type: GFX
+  offset: 0x160B0
+  symbol: piranha_plant_seg6_dl_060160B0
+
+piranha_plant_seg6_dl_06016120:
+  type: GFX
+  offset: 0x16120
+  symbol: piranha_plant_seg6_dl_06016120
+
+piranha_plant_seg6_vertex_06016190:
+  type: VTX
+  size: 112
+  offset: 0x16190
+  symbol: piranha_plant_seg6_vertex_06016190
+
+piranha_plant_seg6_vertex_06016270:
+  type: VTX
+  size: 120
+  offset: 0x16270
+  symbol: piranha_plant_seg6_vertex_06016270
+
+piranha_plant_seg6_vertex_06016360:
+  type: VTX
+  size: 128
+  offset: 0x16360
+  symbol: piranha_plant_seg6_vertex_06016360
+
+piranha_plant_seg6_vertex_06016460:
+  type: VTX
+  size: 24
+  offset: 0x16460
+  symbol: piranha_plant_seg6_vertex_06016460
+
+piranha_plant_seg6_vertex_06016490:
+  type: VTX
+  size: 120
+  offset: 0x16490
+  symbol: piranha_plant_seg6_vertex_06016490
+
+piranha_plant_seg6_vertex_06016580:
+  type: VTX
+  size: 128
+  offset: 0x16580
+  symbol: piranha_plant_seg6_vertex_06016580
+
+piranha_plant_seg6_vertex_06016680:
+  type: VTX
+  size: 48
+  offset: 0x16680
+  symbol: piranha_plant_seg6_vertex_06016680
+
+piranha_plant_seg6_vertex_060166E0:
+  type: VTX
+  size: 56
+  offset: 0x166E0
+  symbol: piranha_plant_seg6_vertex_060166E0
+
+piranha_plant_seg6_dl_06016750:
+  type: GFX
+  offset: 0x16750
+  symbol: piranha_plant_seg6_dl_06016750
+
+piranha_plant_seg6_dl_060167B8:
+  type: GFX
+  offset: 0x167B8
+  symbol: piranha_plant_seg6_dl_060167B8
+
+piranha_plant_seg6_dl_06016890:
+  type: GFX
+  offset: 0x16890
+  symbol: piranha_plant_seg6_dl_06016890
+
+piranha_plant_seg6_dl_06016960:
+  type: GFX
+  offset: 0x16960
+  symbol: piranha_plant_seg6_dl_06016960
+
+piranha_plant_seg6_dl_060169A8:
+  type: GFX
+  offset: 0x169A8
+  symbol: piranha_plant_seg6_dl_060169A8
+
+piranha_plant_seg6_dl_060169E8:
+  type: GFX
+  offset: 0x169E8
+  symbol: piranha_plant_seg6_dl_060169E8
+
+piranha_plant_seg6_dl_06016A78:
+  type: GFX
+  offset: 0x16A78
+  symbol: piranha_plant_seg6_dl_06016A78
+
+piranha_plant_seg6_vertex_06016AE8:
+  type: VTX
+  size: 96
+  offset: 0x16AE8
+  symbol: piranha_plant_seg6_vertex_06016AE8
+
+piranha_plant_seg6_dl_06016BA8:
+  type: GFX
+  offset: 0x16BA8
+  symbol: piranha_plant_seg6_dl_06016BA8
+
+piranha_plant_seg6_dl_06016C10:
+  type: GFX
+  offset: 0x16C10
+  symbol: piranha_plant_seg6_dl_06016C10
+
+piranha_plant_seg6_vertex_06016C70:
+  type: VTX
+  size: 96
+  offset: 0x16C70
+  symbol: piranha_plant_seg6_vertex_06016C70
+
+piranha_plant_seg6_dl_06016D30:
+  type: GFX
+  offset: 0x16D30
+  symbol: piranha_plant_seg6_dl_06016D30
+
+piranha_plant_seg6_dl_06016D98:
+  type: GFX
+  offset: 0x16D98
+  symbol: piranha_plant_seg6_dl_06016D98
+
+piranha_plant_seg6_vertex_06016DF8:
+  type: VTX
+  size: 96
+  offset: 0x16DF8
+  symbol: piranha_plant_seg6_vertex_06016DF8
+
+piranha_plant_seg6_dl_06016EB8:
+  type: GFX
+  offset: 0x16EB8
+  symbol: piranha_plant_seg6_dl_06016EB8
+
+piranha_plant_seg6_dl_06016F20:
+  type: GFX
+  offset: 0x16F20
+  symbol: piranha_plant_seg6_dl_06016F20
+

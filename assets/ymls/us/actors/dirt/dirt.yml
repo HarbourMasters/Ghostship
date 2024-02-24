@@ -11,3 +11,122 @@ dirt_particle:
   offset: 0x2BDF8
   format: RGBA16
   symbol: dirt_seg3_texture_0302BDF8
+dirt_seg3_lights_0302BD68:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2BD68
+  symbol: dirt_seg3_lights_0302BD68
+
+dirt_seg3_lights_0302BD80:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2BD80
+  symbol: dirt_seg3_lights_0302BD80
+
+dirt_seg3_lights_0302BD98:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2BD98
+  symbol: dirt_seg3_lights_0302BD98
+
+dirt_seg3_lights_0302BDB0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2BDB0
+  symbol: dirt_seg3_lights_0302BDB0
+
+dirt_seg3_vertex_0302BDC8:
+  type: VTX
+  size: 24
+  offset: 0x2BDC8
+  symbol: dirt_seg3_vertex_0302BDC8
+
+dirt_seg3_dl_0302BFF8:
+  type: GFX
+  offset: 0x2BFF8
+  symbol: dirt_seg3_dl_0302BFF8
+
+dirt_seg3_dl_0302C028:
+  type: GFX
+  offset: 0x2C028
+  symbol: dirt_seg3_dl_0302C028
+
+dirt_seg3_vertex_0302C098:
+  type: VTX
+  size: 24
+  offset: 0x2C098
+  symbol: dirt_seg3_vertex_0302C098
+
+dirt_seg3_vertex_0302C0C8:
+  type: VTX
+  size: 24
+  offset: 0x2C0C8
+  symbol: dirt_seg3_vertex_0302C0C8
+
+dirt_seg3_vertex_0302C0F8:
+  type: VTX
+  size: 80
+  offset: 0x2C0F8
+  symbol: dirt_seg3_vertex_0302C0F8
+
+dirt_seg3_vertex_0302C198:
+  type: VTX
+  size: 80
+  offset: 0x2C198
+  symbol: dirt_seg3_vertex_0302C198
+
+dirt_seg3_dl_0302C238:
+  type: GFX
+  offset: 0x2C238
+  symbol: dirt_seg3_dl_0302C238
+
+dirt_seg3_dl_0302C298:
+  type: GFX
+  offset: 0x2C298
+  symbol: dirt_seg3_dl_0302C298
+
+dirt_seg3_dl_0302C2B8:
+  type: GFX
+  offset: 0x2C2B8
+  symbol: dirt_seg3_dl_0302C2B8
+
+dirt_seg3_dl_0302C2D8:
+  type: GFX
+  offset: 0x2C2D8
+  symbol: dirt_seg3_dl_0302C2D8
+
+dirt_seg3_dl_0302C2F8:
+  type: GFX
+  offset: 0x2C2F8
+  symbol: dirt_seg3_dl_0302C2F8
+
+dirt_seg3_dl_0302C318:
+  type: GFX
+  offset: 0x2C318
+  symbol: dirt_seg3_dl_0302C318
+
+dirt_seg3_dl_0302C378:
+  type: GFX
+  offset: 0x2C378
+  symbol: dirt_seg3_dl_0302C378
+
+dirt_seg3_dl_0302C3B0:
+  type: GFX
+  offset: 0x2C3B0
+  symbol: dirt_seg3_dl_0302C3B0
+
+dirt_seg3_dl_0302C3E8:
+  type: GFX
+  offset: 0x2C3E8
+  symbol: dirt_seg3_dl_0302C3E8
+
+dirt_seg3_dl_0302C420:
+  type: GFX
+  offset: 0x2C420
+  symbol: dirt_seg3_dl_0302C420
+
+dirt_seg3_dl_0302C458:
+  type: GFX
+  offset: 0x2C458
+  symbol: dirt_seg3_dl_0302C458
+

@@ -43,3 +43,263 @@ eyerok_eye_open:
   offset: 0x9540
   format: RGBA16
   symbol: eyerok_seg5_texture_05009540
+eyerok_lights_unused:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4328
+  symbol: eyerok_lights_unused
+
+eyerok_seg5_lights_0500B540:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB540
+  symbol: eyerok_seg5_lights_0500B540
+
+eyerok_seg5_vertex_0500B558:
+  type: VTX
+  size: 120
+  offset: 0xB558
+  symbol: eyerok_seg5_vertex_0500B558
+
+eyerok_seg5_vertex_0500B648:
+  type: VTX
+  size: 56
+  offset: 0xB648
+  symbol: eyerok_seg5_vertex_0500B648
+
+eyerok_seg5_dl_0500B6B8:
+  type: GFX
+  offset: 0xB6B8
+  symbol: eyerok_seg5_dl_0500B6B8
+
+eyerok_seg5_dl_0500B748:
+  type: GFX
+  offset: 0xB748
+  symbol: eyerok_seg5_dl_0500B748
+
+eyerok_seg5_lights_0500B7B8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB7B8
+  symbol: eyerok_seg5_lights_0500B7B8
+
+eyerok_seg5_vertex_0500B7D0:
+  type: VTX
+  size: 120
+  offset: 0xB7D0
+  symbol: eyerok_seg5_vertex_0500B7D0
+
+eyerok_seg5_vertex_0500B8C0:
+  type: VTX
+  size: 56
+  offset: 0xB8C0
+  symbol: eyerok_seg5_vertex_0500B8C0
+
+eyerok_seg5_dl_0500B930:
+  type: GFX
+  offset: 0xB930
+  symbol: eyerok_seg5_dl_0500B930
+
+eyerok_seg5_dl_0500B9C0:
+  type: GFX
+  offset: 0xB9C0
+  symbol: eyerok_seg5_dl_0500B9C0
+
+eyerok_seg5_lights_0500BA30:
+  type: LIGHTS1
+  size: 24
+  offset: 0xBA30
+  symbol: eyerok_seg5_lights_0500BA30
+
+eyerok_seg5_vertex_0500BA48:
+  type: VTX
+  size: 120
+  offset: 0xBA48
+  symbol: eyerok_seg5_vertex_0500BA48
+
+eyerok_seg5_vertex_0500BB38:
+  type: VTX
+  size: 88
+  offset: 0xBB38
+  symbol: eyerok_seg5_vertex_0500BB38
+
+eyerok_seg5_dl_0500BBE8:
+  type: GFX
+  offset: 0xBBE8
+  symbol: eyerok_seg5_dl_0500BBE8
+
+eyerok_seg5_dl_0500BC88:
+  type: GFX
+  offset: 0xBC88
+  symbol: eyerok_seg5_dl_0500BC88
+
+eyerok_seg5_lights_0500BCF8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xBCF8
+  symbol: eyerok_seg5_lights_0500BCF8
+
+eyerok_seg5_vertex_0500BD10:
+  type: VTX
+  size: 120
+  offset: 0xBD10
+  symbol: eyerok_seg5_vertex_0500BD10
+
+eyerok_seg5_vertex_0500BE00:
+  type: VTX
+  size: 56
+  offset: 0xBE00
+  symbol: eyerok_seg5_vertex_0500BE00
+
+eyerok_seg5_dl_0500BE70:
+  type: GFX
+  offset: 0xBE70
+  symbol: eyerok_seg5_dl_0500BE70
+
+eyerok_seg5_dl_0500BF00:
+  type: GFX
+  offset: 0xBF00
+  symbol: eyerok_seg5_dl_0500BF00
+
+eyerok_seg5_lights_0500BF70:
+  type: LIGHTS1
+  size: 24
+  offset: 0xBF70
+  symbol: eyerok_seg5_lights_0500BF70
+
+eyerok_seg5_vertex_0500BF88:
+  type: VTX
+  size: 128
+  offset: 0xBF88
+  symbol: eyerok_seg5_vertex_0500BF88
+
+eyerok_seg5_dl_0500C088:
+  type: GFX
+  offset: 0xC088
+  symbol: eyerok_seg5_dl_0500C088
+
+eyerok_seg5_dl_0500C100:
+  type: GFX
+  offset: 0xC100
+  symbol: eyerok_seg5_dl_0500C100
+
+eyerok_seg5_lights_0500C170:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC170
+  symbol: eyerok_seg5_lights_0500C170
+
+eyerok_seg5_vertex_0500C188:
+  type: VTX
+  size: 120
+  offset: 0xC188
+  symbol: eyerok_seg5_vertex_0500C188
+
+eyerok_seg5_vertex_0500C278:
+  type: VTX
+  size: 56
+  offset: 0xC278
+  symbol: eyerok_seg5_vertex_0500C278
+
+eyerok_seg5_dl_0500C2E8:
+  type: GFX
+  offset: 0xC2E8
+  symbol: eyerok_seg5_dl_0500C2E8
+
+eyerok_seg5_dl_0500C378:
+  type: GFX
+  offset: 0xC378
+  symbol: eyerok_seg5_dl_0500C378
+
+eyerok_seg5_lights_0500C3E8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC3E8
+  symbol: eyerok_seg5_lights_0500C3E8
+
+eyerok_seg5_vertex_0500C400:
+  type: VTX
+  size: 120
+  offset: 0xC400
+  symbol: eyerok_seg5_vertex_0500C400
+
+eyerok_seg5_vertex_0500C4F0:
+  type: VTX
+  size: 88
+  offset: 0xC4F0
+  symbol: eyerok_seg5_vertex_0500C4F0
+
+eyerok_seg5_dl_0500C5A0:
+  type: GFX
+  offset: 0xC5A0
+  symbol: eyerok_seg5_dl_0500C5A0
+
+eyerok_seg5_dl_0500C640:
+  type: GFX
+  offset: 0xC640
+  symbol: eyerok_seg5_dl_0500C640
+
+eyerok_seg5_lights_0500C6B0:
+  type: LIGHTS1
+  size: 24
+  offset: 0xC6B0
+  symbol: eyerok_seg5_lights_0500C6B0
+
+eyerok_seg5_vertex_0500C6C8:
+  type: VTX
+  size: 120
+  offset: 0xC6C8
+  symbol: eyerok_seg5_vertex_0500C6C8
+
+eyerok_seg5_vertex_0500C7B8:
+  type: VTX
+  size: 88
+  offset: 0xC7B8
+  symbol: eyerok_seg5_vertex_0500C7B8
+
+eyerok_seg5_dl_0500C868:
+  type: GFX
+  offset: 0xC868
+  symbol: eyerok_seg5_dl_0500C868
+
+eyerok_seg5_dl_0500C908:
+  type: GFX
+  offset: 0xC908
+  symbol: eyerok_seg5_dl_0500C908
+
+eyerok_seg5_vertex_0500C978:
+  type: VTX
+  size: 32
+  offset: 0xC978
+  symbol: eyerok_seg5_vertex_0500C978
+
+eyerok_seg5_dl_0500C9B8:
+  type: GFX
+  offset: 0xC9B8
+  symbol: eyerok_seg5_dl_0500C9B8
+
+eyerok_seg5_dl_0500CA50:
+  type: GFX
+  offset: 0xCA50
+  symbol: eyerok_seg5_dl_0500CA50
+
+eyerok_seg5_dl_0500CAE8:
+  type: GFX
+  offset: 0xCAE8
+  symbol: eyerok_seg5_dl_0500CAE8
+
+eyerok_seg5_dl_0500CB80:
+  type: GFX
+  offset: 0xCB80
+  symbol: eyerok_seg5_dl_0500CB80
+
+eyerok_seg5_dl_0500CC18:
+  type: GFX
+  offset: 0xCC18
+  symbol: eyerok_seg5_dl_0500CC18
+
+eyerok_seg5_dl_0500CC30:
+  type: GFX
+  offset: 0xCC30
+  symbol: eyerok_seg5_dl_0500CC30
+

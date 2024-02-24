@@ -11,3 +11,416 @@ mips_eyes:
   offset: 0xFC70
   format: RGBA16
   symbol: mips_seg6_texture_0600FB80
+mips_seg6_lights_06010380:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10380
+  symbol: mips_seg6_lights_06010380
+
+mips_seg6_lights_06010398:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10398
+  symbol: mips_seg6_lights_06010398
+
+mips_seg6_vertex_060103B0:
+  type: VTX
+  size: 128
+  offset: 0x103B0
+  symbol: mips_seg6_vertex_060103B0
+
+mips_seg6_vertex_060104B0:
+  type: VTX
+  size: 104
+  offset: 0x104B0
+  symbol: mips_seg6_vertex_060104B0
+
+mips_seg6_vertex_06010580:
+  type: VTX
+  size: 32
+  offset: 0x10580
+  symbol: mips_seg6_vertex_06010580
+
+mips_seg6_vertex_060105C0:
+  type: VTX
+  size: 32
+  offset: 0x105C0
+  symbol: mips_seg6_vertex_060105C0
+
+mips_seg6_dl_06010600:
+  type: GFX
+  offset: 0x10600
+  symbol: mips_seg6_dl_06010600
+
+mips_seg6_dl_06010748:
+  type: GFX
+  offset: 0x10748
+  symbol: mips_seg6_dl_06010748
+
+mips_seg6_dl_060107B8:
+  type: GFX
+  offset: 0x107B8
+  symbol: mips_seg6_dl_060107B8
+
+mips_seg6_lights_06010820:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10820
+  symbol: mips_seg6_lights_06010820
+
+mips_seg6_vertex_06010838:
+  type: VTX
+  size: 120
+  offset: 0x10838
+  symbol: mips_seg6_vertex_06010838
+
+mips_seg6_vertex_06010928:
+  type: VTX
+  size: 120
+  offset: 0x10928
+  symbol: mips_seg6_vertex_06010928
+
+mips_seg6_vertex_06010A18:
+  type: VTX
+  size: 64
+  offset: 0x10A18
+  symbol: mips_seg6_vertex_06010A18
+
+mips_seg6_dl_06010A98:
+  type: GFX
+  offset: 0x10A98
+  symbol: mips_seg6_dl_06010A98
+
+mips_seg6_dl_06010C40:
+  type: GFX
+  offset: 0x10C40
+  symbol: mips_seg6_dl_06010C40
+
+mips_seg6_lights_06010CA0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10CA0
+  symbol: mips_seg6_lights_06010CA0
+
+mips_seg6_lights_06010CB8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10CB8
+  symbol: mips_seg6_lights_06010CB8
+
+mips_seg6_vertex_06010CD0:
+  type: VTX
+  size: 48
+  offset: 0x10CD0
+  symbol: mips_seg6_vertex_06010CD0
+
+mips_seg6_vertex_06010D30:
+  type: VTX
+  size: 64
+  offset: 0x10D30
+  symbol: mips_seg6_vertex_06010D30
+
+mips_seg6_dl_06010DB0:
+  type: GFX
+  offset: 0x10DB0
+  symbol: mips_seg6_dl_06010DB0
+
+mips_seg6_dl_06010E60:
+  type: GFX
+  offset: 0x10E60
+  symbol: mips_seg6_dl_06010E60
+
+mips_seg6_lights_06010EC0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10EC0
+  symbol: mips_seg6_lights_06010EC0
+
+mips_seg6_lights_06010ED8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10ED8
+  symbol: mips_seg6_lights_06010ED8
+
+mips_seg6_lights_06010EF0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x10EF0
+  symbol: mips_seg6_lights_06010EF0
+
+mips_seg6_vertex_06010F08:
+  type: VTX
+  size: 40
+  offset: 0x10F08
+  symbol: mips_seg6_vertex_06010F08
+
+mips_seg6_vertex_06010F58:
+  type: VTX
+  size: 24
+  offset: 0x10F58
+  symbol: mips_seg6_vertex_06010F58
+
+mips_seg6_vertex_06010F88:
+  type: VTX
+  size: 56
+  offset: 0x10F88
+  symbol: mips_seg6_vertex_06010F88
+
+mips_seg6_dl_06010FF8:
+  type: GFX
+  offset: 0x10FF8
+  symbol: mips_seg6_dl_06010FF8
+
+mips_seg6_dl_060110B0:
+  type: GFX
+  offset: 0x110B0
+  symbol: mips_seg6_dl_060110B0
+
+mips_seg6_lights_06011110:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11110
+  symbol: mips_seg6_lights_06011110
+
+mips_seg6_lights_06011128:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11128
+  symbol: mips_seg6_lights_06011128
+
+mips_seg6_vertex_06011140:
+  type: VTX
+  size: 48
+  offset: 0x11140
+  symbol: mips_seg6_vertex_06011140
+
+mips_seg6_vertex_060111A0:
+  type: VTX
+  size: 80
+  offset: 0x111A0
+  symbol: mips_seg6_vertex_060111A0
+
+mips_seg6_dl_06011240:
+  type: GFX
+  offset: 0x11240
+  symbol: mips_seg6_dl_06011240
+
+mips_seg6_dl_06011310:
+  type: GFX
+  offset: 0x11310
+  symbol: mips_seg6_dl_06011310
+
+mips_seg6_lights_06011370:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11370
+  symbol: mips_seg6_lights_06011370
+
+mips_seg6_lights_06011388:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11388
+  symbol: mips_seg6_lights_06011388
+
+mips_seg6_vertex_060113A0:
+  type: VTX
+  size: 40
+  offset: 0x113A0
+  symbol: mips_seg6_vertex_060113A0
+
+mips_seg6_vertex_060113F0:
+  type: VTX
+  size: 64
+  offset: 0x113F0
+  symbol: mips_seg6_vertex_060113F0
+
+mips_seg6_dl_06011470:
+  type: GFX
+  offset: 0x11470
+  symbol: mips_seg6_dl_06011470
+
+mips_seg6_dl_06011520:
+  type: GFX
+  offset: 0x11520
+  symbol: mips_seg6_dl_06011520
+
+mips_seg6_lights_06011580:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11580
+  symbol: mips_seg6_lights_06011580
+
+mips_seg6_lights_06011598:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11598
+  symbol: mips_seg6_lights_06011598
+
+mips_seg6_vertex_060115B0:
+  type: VTX
+  size: 48
+  offset: 0x115B0
+  symbol: mips_seg6_vertex_060115B0
+
+mips_seg6_vertex_06011610:
+  type: VTX
+  size: 80
+  offset: 0x11610
+  symbol: mips_seg6_vertex_06011610
+
+mips_seg6_dl_060116B0:
+  type: GFX
+  offset: 0x116B0
+  symbol: mips_seg6_dl_060116B0
+
+mips_seg6_dl_06011780:
+  type: GFX
+  offset: 0x11780
+  symbol: mips_seg6_dl_06011780
+
+mips_seg6_lights_060117E0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x117E0
+  symbol: mips_seg6_lights_060117E0
+
+mips_seg6_lights_060117F8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x117F8
+  symbol: mips_seg6_lights_060117F8
+
+mips_seg6_vertex_06011810:
+  type: VTX
+  size: 40
+  offset: 0x11810
+  symbol: mips_seg6_vertex_06011810
+
+mips_seg6_vertex_06011860:
+  type: VTX
+  size: 64
+  offset: 0x11860
+  symbol: mips_seg6_vertex_06011860
+
+mips_seg6_dl_060118E0:
+  type: GFX
+  offset: 0x118E0
+  symbol: mips_seg6_dl_060118E0
+
+mips_seg6_dl_06011990:
+  type: GFX
+  offset: 0x11990
+  symbol: mips_seg6_dl_06011990
+
+mips_seg6_lights_060119F0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x119F0
+  symbol: mips_seg6_lights_060119F0
+
+mips_seg6_lights_06011A08:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11A08
+  symbol: mips_seg6_lights_06011A08
+
+mips_seg6_vertex_06011A20:
+  type: VTX
+  size: 48
+  offset: 0x11A20
+  symbol: mips_seg6_vertex_06011A20
+
+mips_seg6_vertex_06011A80:
+  type: VTX
+  size: 64
+  offset: 0x11A80
+  symbol: mips_seg6_vertex_06011A80
+
+mips_seg6_dl_06011B00:
+  type: GFX
+  offset: 0x11B00
+  symbol: mips_seg6_dl_06011B00
+
+mips_seg6_dl_06011BB0:
+  type: GFX
+  offset: 0x11BB0
+  symbol: mips_seg6_dl_06011BB0
+
+mips_seg6_lights_06011C10:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11C10
+  symbol: mips_seg6_lights_06011C10
+
+mips_seg6_lights_06011C28:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11C28
+  symbol: mips_seg6_lights_06011C28
+
+mips_seg6_vertex_06011C40:
+  type: VTX
+  size: 48
+  offset: 0x11C40
+  symbol: mips_seg6_vertex_06011C40
+
+mips_seg6_vertex_06011CA0:
+  type: VTX
+  size: 56
+  offset: 0x11CA0
+  symbol: mips_seg6_vertex_06011CA0
+
+mips_seg6_dl_06011D10:
+  type: GFX
+  offset: 0x11D10
+  symbol: mips_seg6_dl_06011D10
+
+mips_seg6_dl_06011DB0:
+  type: GFX
+  offset: 0x11DB0
+  symbol: mips_seg6_dl_06011DB0
+
+mips_seg6_lights_06011E10:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11E10
+  symbol: mips_seg6_lights_06011E10
+
+mips_seg6_vertex_06011E28:
+  type: VTX
+  size: 48
+  offset: 0x11E28
+  symbol: mips_seg6_vertex_06011E28
+
+mips_seg6_dl_06011E88:
+  type: GFX
+  offset: 0x11E88
+  symbol: mips_seg6_dl_06011E88
+
+mips_seg6_dl_06011ED8:
+  type: GFX
+  offset: 0x11ED8
+  symbol: mips_seg6_dl_06011ED8
+
+mips_seg6_lights_06011EF8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x11EF8
+  symbol: mips_seg6_lights_06011EF8
+
+mips_seg6_vertex_06011F10:
+  type: VTX
+  size: 48
+  offset: 0x11F10
+  symbol: mips_seg6_vertex_06011F10
+
+mips_seg6_dl_06011F70:
+  type: GFX
+  offset: 0x11F70
+  symbol: mips_seg6_dl_06011F70
+
+mips_seg6_dl_06011FC0:
+  type: GFX
+  offset: 0x11FC0
+  symbol: mips_seg6_dl_06011FC0
+

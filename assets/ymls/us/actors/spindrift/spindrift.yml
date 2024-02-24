@@ -35,3 +35,85 @@ spindrift_petal:
   offset: 0xED0
   format: RGBA16
   symbol: spindrift_seg5_texture_05000ED0
+spindrift_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x35360
+  symbol: spindrift_lights_unused1
+
+spindrift_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0x35360
+  symbol: spindrift_lights_unused2
+
+spindrift_seg5_lights_05000030:
+  type: LIGHTS1
+  size: 24
+  offset: 0x30
+  symbol: spindrift_seg5_lights_05000030
+
+spindrift_seg5_lights_05000048:
+  type: LIGHTS1
+  size: 24
+  offset: 0x48
+  symbol: spindrift_seg5_lights_05000048
+
+spindrift_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0x48
+  symbol: spindrift_lights_unused3
+
+spindrift_seg5_lights_05000078:
+  type: LIGHTS1
+  size: 24
+  offset: 0x78
+  symbol: spindrift_seg5_lights_05000078
+
+spindrift_seg5_lights_05000090:
+  type: LIGHTS1
+  size: 24
+  offset: 0x90
+  symbol: spindrift_seg5_lights_05000090
+
+spindrift_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0x90
+  symbol: spindrift_lights_unused4
+
+spindrift_seg5_vertex_050000C0:
+  type: VTX
+  size: 48
+  offset: 0xC0
+  symbol: spindrift_seg5_vertex_050000C0
+
+spindrift_seg5_vertex_05000120:
+  type: VTX
+  size: 48
+  offset: 0x120
+  symbol: spindrift_seg5_vertex_05000120
+
+spindrift_seg5_vertex_05000180:
+  type: VTX
+  size: 72
+  offset: 0x180
+  symbol: spindrift_seg5_vertex_05000180
+
+spindrift_seg5_vertex_05000210:
+  type: VTX
+  size: 72
+  offset: 0x210
+  symbol: spindrift_seg5_vertex_05000210
+
+spindrift_seg5_dl_050002A0:
+  type: GFX
+  offset: 0x2A0
+  symbol: spindrift_seg5_dl_050002A0
+
+spindrift_seg5_dl_05000328:
+  type: GFX
+  offset: 0x328
+  symbol: spindrift_seg5_dl_05000328
+

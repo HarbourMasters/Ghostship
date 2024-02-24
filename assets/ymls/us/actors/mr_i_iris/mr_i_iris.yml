@@ -35,3 +35,34 @@ mr_i_iris_open:
   offset: 0x2170
   format: RGBA16
   symbol: mr_i_iris_seg6_texture_06002170
+mr_i_iris_seg6_vertex_06002130:
+  type: VTX
+  size: 32
+  offset: 0x2130
+  symbol: mr_i_iris_seg6_vertex_06002130
+
+mr_i_iris_seg6_dl_06004170:
+  type: GFX
+  offset: 0x4170
+  symbol: mr_i_iris_seg6_dl_06004170
+
+mr_i_iris_seg6_dl_060041D8:
+  type: GFX
+  offset: 0x41D8
+  symbol: mr_i_iris_seg6_dl_060041D8
+
+mr_i_iris_seg6_dl_060041F0:
+  type: GFX
+  offset: 0x41F0
+  symbol: mr_i_iris_seg6_dl_060041F0
+
+mr_i_iris_seg6_dl_06004208:
+  type: GFX
+  offset: 0x4208
+  symbol: mr_i_iris_seg6_dl_06004208
+
+mr_i_iris_seg6_dl_06004220:
+  type: GFX
+  offset: 0x4220
+  symbol: mr_i_iris_seg6_dl_06004220
+

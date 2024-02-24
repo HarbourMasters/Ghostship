@@ -91,3 +91,284 @@ king_bob-omb_right_side:
   offset: 0x9478
   format: RGBA16
   symbol: king_bobomb_seg5_texture_05009478
+king_bobomb_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x62D18
+  symbol: king_bobomb_lights_unused1
+
+king_bobomb_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0x62D18
+  symbol: king_bobomb_lights_unused2
+
+king_bobomb_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0x62D18
+  symbol: king_bobomb_lights_unused3
+
+king_bobomb_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0x62D18
+  symbol: king_bobomb_lights_unused4
+
+king_bobomb_lights_unused5:
+  type: LIGHTS1
+  size: 24
+  offset: 0x62D18
+  symbol: king_bobomb_lights_unused5
+
+king_bobomb_seg5_vertex_0500A478:
+  type: VTX
+  size: 32
+  offset: 0xA478
+  symbol: king_bobomb_seg5_vertex_0500A478
+
+king_bobomb_seg5_dl_0500A4B8:
+  type: GFX
+  offset: 0xA4B8
+  symbol: king_bobomb_seg5_dl_0500A4B8
+
+king_bobomb_seg5_dl_0500A4F0:
+  type: GFX
+  offset: 0xA4F0
+  symbol: king_bobomb_seg5_dl_0500A4F0
+
+king_bobomb_seg5_vertex_0500A560:
+  type: VTX
+  size: 32
+  offset: 0xA560
+  symbol: king_bobomb_seg5_vertex_0500A560
+
+king_bobomb_seg5_dl_0500A5A0:
+  type: GFX
+  offset: 0xA5A0
+  symbol: king_bobomb_seg5_dl_0500A5A0
+
+king_bobomb_seg5_dl_0500A5D8:
+  type: GFX
+  offset: 0xA5D8
+  symbol: king_bobomb_seg5_dl_0500A5D8
+
+king_bobomb_seg5_vertex_0500A648:
+  type: VTX
+  size: 32
+  offset: 0xA648
+  symbol: king_bobomb_seg5_vertex_0500A648
+
+king_bobomb_seg5_dl_0500A688:
+  type: GFX
+  offset: 0xA688
+  symbol: king_bobomb_seg5_dl_0500A688
+
+king_bobomb_seg5_dl_0500A6C0:
+  type: GFX
+  offset: 0xA6C0
+  symbol: king_bobomb_seg5_dl_0500A6C0
+
+king_bobomb_seg5_vertex_0500A730:
+  type: VTX
+  size: 32
+  offset: 0xA730
+  symbol: king_bobomb_seg5_vertex_0500A730
+
+king_bobomb_seg5_dl_0500A770:
+  type: GFX
+  offset: 0xA770
+  symbol: king_bobomb_seg5_dl_0500A770
+
+king_bobomb_seg5_dl_0500A7A8:
+  type: GFX
+  offset: 0xA7A8
+  symbol: king_bobomb_seg5_dl_0500A7A8
+
+king_bobomb_seg5_vertex_0500A818:
+  type: VTX
+  size: 32
+  offset: 0xA818
+  symbol: king_bobomb_seg5_vertex_0500A818
+
+king_bobomb_seg5_dl_0500A858:
+  type: GFX
+  offset: 0xA858
+  symbol: king_bobomb_seg5_dl_0500A858
+
+king_bobomb_seg5_dl_0500A890:
+  type: GFX
+  offset: 0xA890
+  symbol: king_bobomb_seg5_dl_0500A890
+
+king_bobomb_seg5_vertex_0500A900:
+  type: VTX
+  size: 32
+  offset: 0xA900
+  symbol: king_bobomb_seg5_vertex_0500A900
+
+king_bobomb_seg5_dl_0500A940:
+  type: GFX
+  offset: 0xA940
+  symbol: king_bobomb_seg5_dl_0500A940
+
+king_bobomb_seg5_dl_0500A978:
+  type: GFX
+  offset: 0xA978
+  symbol: king_bobomb_seg5_dl_0500A978
+
+king_bobomb_seg5_lights_0500A9E8:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA9E8
+  symbol: king_bobomb_seg5_lights_0500A9E8
+
+king_bobomb_seg5_vertex_0500AA00:
+  type: VTX
+  size: 128
+  offset: 0xAA00
+  symbol: king_bobomb_seg5_vertex_0500AA00
+
+king_bobomb_seg5_vertex_0500AB00:
+  type: VTX
+  size: 96
+  offset: 0xAB00
+  symbol: king_bobomb_seg5_vertex_0500AB00
+
+king_bobomb_seg5_dl_0500ABC0:
+  type: GFX
+  offset: 0xABC0
+  symbol: king_bobomb_seg5_dl_0500ABC0
+
+king_bobomb_seg5_dl_0500AD08:
+  type: GFX
+  offset: 0xAD08
+  symbol: king_bobomb_seg5_dl_0500AD08
+
+king_bobomb_seg5_lights_0500AD38:
+  type: LIGHTS1
+  size: 24
+  offset: 0xAD38
+  symbol: king_bobomb_seg5_lights_0500AD38
+
+king_bobomb_seg5_vertex_0500AD50:
+  type: VTX
+  size: 128
+  offset: 0xAD50
+  symbol: king_bobomb_seg5_vertex_0500AD50
+
+king_bobomb_seg5_vertex_0500AE50:
+  type: VTX
+  size: 104
+  offset: 0xAE50
+  symbol: king_bobomb_seg5_vertex_0500AE50
+
+king_bobomb_seg5_dl_0500AF20:
+  type: GFX
+  offset: 0xAF20
+  symbol: king_bobomb_seg5_dl_0500AF20
+
+king_bobomb_seg5_dl_0500B068:
+  type: GFX
+  offset: 0xB068
+  symbol: king_bobomb_seg5_dl_0500B068
+
+king_bobomb_seg5_vertex_0500B098:
+  type: VTX
+  size: 32
+  offset: 0xB098
+  symbol: king_bobomb_seg5_vertex_0500B098
+
+king_bobomb_seg5_vertex_0500B0D8:
+  type: VTX
+  size: 32
+  offset: 0xB0D8
+  symbol: king_bobomb_seg5_vertex_0500B0D8
+
+king_bobomb_seg5_dl_0500B118:
+  type: GFX
+  offset: 0xB118
+  symbol: king_bobomb_seg5_dl_0500B118
+
+king_bobomb_seg5_dl_0500B150:
+  type: GFX
+  offset: 0xB150
+  symbol: king_bobomb_seg5_dl_0500B150
+
+king_bobomb_seg5_dl_0500B188:
+  type: GFX
+  offset: 0xB188
+  symbol: king_bobomb_seg5_dl_0500B188
+
+king_bobomb_seg5_lights_0500B200:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB200
+  symbol: king_bobomb_seg5_lights_0500B200
+
+king_bobomb_seg5_vertex_0500B218:
+  type: VTX
+  size: 48
+  offset: 0xB218
+  symbol: king_bobomb_seg5_vertex_0500B218
+
+king_bobomb_seg5_dl_0500B278:
+  type: GFX
+  offset: 0xB278
+  symbol: king_bobomb_seg5_dl_0500B278
+
+king_bobomb_seg5_dl_0500B2D0:
+  type: GFX
+  offset: 0xB2D0
+  symbol: king_bobomb_seg5_dl_0500B2D0
+
+king_bobomb_seg5_lights_0500B330:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB330
+  symbol: king_bobomb_seg5_lights_0500B330
+
+king_bobomb_seg5_vertex_0500B348:
+  type: VTX
+  size: 64
+  offset: 0xB348
+  symbol: king_bobomb_seg5_vertex_0500B348
+
+king_bobomb_seg5_dl_0500B3C8:
+  type: GFX
+  offset: 0xB3C8
+  symbol: king_bobomb_seg5_dl_0500B3C8
+
+king_bobomb_seg5_dl_0500B418:
+  type: GFX
+  offset: 0xB418
+  symbol: king_bobomb_seg5_dl_0500B418
+
+king_bobomb_seg5_lights_0500B458:
+  type: LIGHTS1
+  size: 24
+  offset: 0xB458
+  symbol: king_bobomb_seg5_lights_0500B458
+
+king_bobomb_seg5_vertex_0500B470:
+  type: VTX
+  size: 128
+  offset: 0xB470
+  symbol: king_bobomb_seg5_vertex_0500B470
+
+king_bobomb_seg5_vertex_0500B570:
+  type: VTX
+  size: 64
+  offset: 0xB570
+  symbol: king_bobomb_seg5_vertex_0500B570
+
+king_bobomb_seg5_dl_0500B5F0:
+  type: GFX
+  offset: 0xB5F0
+  symbol: king_bobomb_seg5_dl_0500B5F0
+
+king_bobomb_seg5_dl_0500B6C0:
+  type: GFX
+  offset: 0xB6C0
+  symbol: king_bobomb_seg5_dl_0500B6C0
+

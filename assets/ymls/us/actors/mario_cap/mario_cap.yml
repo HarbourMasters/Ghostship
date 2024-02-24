@@ -51,3 +51,133 @@ mario_cap_wing_tip:
   offset: 0x9090
   format: RGBA16
   symbol: mario_cap_seg3_texture_0301F750
+mario_cap_seg3_lights_0301CF08:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1CF08
+  symbol: mario_cap_seg3_lights_0301CF08
+
+mario_cap_seg3_lights_0301CF20:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1CF20
+  symbol: mario_cap_seg3_lights_0301CF20
+
+mario_cap_seg3_lights_0301CF38:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1CF38
+  symbol: mario_cap_seg3_lights_0301CF38
+
+mario_cap_seg3_vertex_03022750:
+  type: VTX
+  size: 56
+  offset: 0x22750
+  symbol: mario_cap_seg3_vertex_03022750
+
+mario_cap_seg3_vertex_030227C0:
+  type: VTX
+  size: 128
+  offset: 0x227C0
+  symbol: mario_cap_seg3_vertex_030227C0
+
+mario_cap_seg3_vertex_030228C0:
+  type: VTX
+  size: 120
+  offset: 0x228C0
+  symbol: mario_cap_seg3_vertex_030228C0
+
+mario_cap_seg3_vertex_030229B0:
+  type: VTX
+  size: 120
+  offset: 0x229B0
+  symbol: mario_cap_seg3_vertex_030229B0
+
+mario_cap_seg3_vertex_03022AA0:
+  type: VTX
+  size: 72
+  offset: 0x22AA0
+  symbol: mario_cap_seg3_vertex_03022AA0
+
+mario_cap_seg3_dl_03022B30:
+  type: GFX
+  offset: 0x22B30
+  symbol: mario_cap_seg3_dl_03022B30
+
+mario_cap_seg3_dl_03022B68:
+  type: GFX
+  offset: 0x22B68
+  symbol: mario_cap_seg3_dl_03022B68
+
+mario_cap_seg3_dl_03022CC8:
+  type: GFX
+  offset: 0x22CC8
+  symbol: mario_cap_seg3_dl_03022CC8
+
+mario_cap_seg3_dl_03022D10:
+  type: GFX
+  offset: 0x22D10
+  symbol: mario_cap_seg3_dl_03022D10
+
+mario_cap_seg3_vertex_03022D38:
+  type: VTX
+  size: 96
+  offset: 0x22D38
+  symbol: mario_cap_seg3_vertex_03022D38
+
+mario_cap_seg3_vertex_03022DF8:
+  type: VTX
+  size: 64
+  offset: 0x22DF8
+  symbol: mario_cap_seg3_vertex_03022DF8
+
+mario_cap_seg3_dl_03022E78:
+  type: GFX
+  offset: 0x22E78
+  symbol: mario_cap_seg3_dl_03022E78
+
+mario_cap_seg3_dl_03022EA8:
+  type: GFX
+  offset: 0x22EA8
+  symbol: mario_cap_seg3_dl_03022EA8
+
+mario_cap_seg3_dl_03022ED8:
+  type: GFX
+  offset: 0x22ED8
+  symbol: mario_cap_seg3_dl_03022ED8
+
+mario_cap_seg3_dl_03022F20:
+  type: GFX
+  offset: 0x22F20
+  symbol: mario_cap_seg3_dl_03022F20
+
+mario_cap_seg3_dl_03022F48:
+  type: GFX
+  offset: 0x22F48
+  symbol: mario_cap_seg3_dl_03022F48
+
+mario_cap_seg3_dl_03022FF8:
+  type: GFX
+  offset: 0x22FF8
+  symbol: mario_cap_seg3_dl_03022FF8
+
+mario_cap_seg3_dl_030230B0:
+  type: GFX
+  offset: 0x230B0
+  symbol: mario_cap_seg3_dl_030230B0
+
+mario_cap_seg3_dl_03023108:
+  type: GFX
+  offset: 0x23108
+  symbol: mario_cap_seg3_dl_03023108
+
+mario_cap_seg3_dl_03023160:
+  type: GFX
+  offset: 0x23160
+  symbol: mario_cap_seg3_dl_03023160
+
+mario_cap_seg3_dl_03023298:
+  type: GFX
+  offset: 0x23298
+  symbol: mario_cap_seg3_dl_03023298
+

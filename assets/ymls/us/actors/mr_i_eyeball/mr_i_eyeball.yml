@@ -19,3 +19,14 @@ mr_i_eyeball_right_side:
   offset: 0x1080
   format: RGBA16
   symbol: mr_i_eyeball_seg6_texture_06001080
+mr_i_eyeball_seg6_vertex_06000000:
+  type: VTX
+  size: 64
+  offset: 0x0
+  symbol: mr_i_eyeball_seg6_vertex_06000000
+
+mr_i_eyeball_seg6_dl_06002080:
+  type: GFX
+  offset: 0x2080
+  symbol: mr_i_eyeball_seg6_dl_06002080
+

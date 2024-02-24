@@ -11,3 +11,60 @@ cannon_base:
   offset: 0x49B8
   format: RGBA16
   symbol: cannon_base_seg8_texture_080049B8
+cannon_base_seg8_lights_08004988:
+  type: LIGHTS1
+  size: 24
+  offset: 0x4988
+  symbol: cannon_base_seg8_lights_08004988
+
+cannon_base_seg8_lights_080049A0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x49A0
+  symbol: cannon_base_seg8_lights_080049A0
+
+cannon_base_seg8_vertex_080051B8:
+  type: VTX
+  size: 96
+  offset: 0x51B8
+  symbol: cannon_base_seg8_vertex_080051B8
+
+cannon_base_seg8_vertex_08005278:
+  type: VTX
+  size: 128
+  offset: 0x5278
+  symbol: cannon_base_seg8_vertex_08005278
+
+cannon_base_seg8_vertex_08005378:
+  type: VTX
+  size: 120
+  offset: 0x5378
+  symbol: cannon_base_seg8_vertex_08005378
+
+cannon_base_seg8_vertex_08005468:
+  type: VTX
+  size: 120
+  offset: 0x5468
+  symbol: cannon_base_seg8_vertex_08005468
+
+cannon_base_seg8_vertex_08005558:
+  type: VTX
+  size: 128
+  offset: 0x5558
+  symbol: cannon_base_seg8_vertex_08005558
+
+cannon_base_seg8_dl_08005658:
+  type: GFX
+  offset: 0x5658
+  symbol: cannon_base_seg8_dl_08005658
+
+cannon_base_seg8_dl_080056D0:
+  type: GFX
+  offset: 0x56D0
+  symbol: cannon_base_seg8_dl_080056D0
+
+cannon_base_seg8_dl_080057F8:
+  type: GFX
+  offset: 0x57F8
+  symbol: cannon_base_seg8_dl_080057F8
+

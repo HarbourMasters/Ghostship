@@ -19,3 +19,107 @@ bullet_bill_mouth:
   offset: 0xCAA8
   format: RGBA16
   symbol: bullet_bill_seg5_texture_0500CAA8
+bullet_bill_seg5_lights_0500BA90:
+  type: LIGHTS1
+  size: 24
+  offset: 0xBA90
+  symbol: bullet_bill_seg5_lights_0500BA90
+
+bullet_bill_seg5_vertex_0500DAA8:
+  type: VTX
+  size: 120
+  offset: 0xDAA8
+  symbol: bullet_bill_seg5_vertex_0500DAA8
+
+bullet_bill_seg5_vertex_0500DB98:
+  type: VTX
+  size: 72
+  offset: 0xDB98
+  symbol: bullet_bill_seg5_vertex_0500DB98
+
+bullet_bill_seg5_vertex_0500DC28:
+  type: VTX
+  size: 120
+  offset: 0xDC28
+  symbol: bullet_bill_seg5_vertex_0500DC28
+
+bullet_bill_seg5_vertex_0500DD18:
+  type: VTX
+  size: 120
+  offset: 0xDD18
+  symbol: bullet_bill_seg5_vertex_0500DD18
+
+bullet_bill_seg5_vertex_0500DE08:
+  type: VTX
+  size: 96
+  offset: 0xDE08
+  symbol: bullet_bill_seg5_vertex_0500DE08
+
+bullet_bill_seg5_vertex_0500DEC8:
+  type: VTX
+  size: 120
+  offset: 0xDEC8
+  symbol: bullet_bill_seg5_vertex_0500DEC8
+
+bullet_bill_seg5_vertex_0500DFB8:
+  type: VTX
+  size: 120
+  offset: 0xDFB8
+  symbol: bullet_bill_seg5_vertex_0500DFB8
+
+bullet_bill_seg5_vertex_0500E0A8:
+  type: VTX
+  size: 120
+  offset: 0xE0A8
+  symbol: bullet_bill_seg5_vertex_0500E0A8
+
+bullet_bill_seg5_vertex_0500E198:
+  type: VTX
+  size: 120
+  offset: 0xE198
+  symbol: bullet_bill_seg5_vertex_0500E198
+
+bullet_bill_seg5_vertex_0500E288:
+  type: VTX
+  size: 120
+  offset: 0xE288
+  symbol: bullet_bill_seg5_vertex_0500E288
+
+bullet_bill_seg5_vertex_0500E378:
+  type: VTX
+  size: 120
+  offset: 0xE378
+  symbol: bullet_bill_seg5_vertex_0500E378
+
+bullet_bill_seg5_vertex_0500E468:
+  type: VTX
+  size: 120
+  offset: 0xE468
+  symbol: bullet_bill_seg5_vertex_0500E468
+
+bullet_bill_seg5_vertex_0500E558:
+  type: VTX
+  size: 72
+  offset: 0xE558
+  symbol: bullet_bill_seg5_vertex_0500E558
+
+bullet_bill_seg5_dl_0500E5E8:
+  type: GFX
+  offset: 0xE5E8
+  symbol: bullet_bill_seg5_dl_0500E5E8
+
+bullet_bill_seg5_dl_0500E678:
+  type: GFX
+  offset: 0xE678
+  symbol: bullet_bill_seg5_dl_0500E678
+
+bullet_bill_seg5_dl_0500E730:
+  type: GFX
+  offset: 0xE730
+  symbol: bullet_bill_seg5_dl_0500E730
+
+bullet_bill_seg5_dl_0500E8A8:
+  type: GFX
+  offset: 0xE8A8
+  symbol: bullet_bill_seg5_dl_0500E8A8
+

@@ -27,3 +27,489 @@ hoot_wing_tip:
   offset: 0x2650
   format: RGBA16
   symbol: hoot_seg5_texture_05002650
+hoot_seg5_lights_05000900:
+  type: LIGHTS1
+  size: 24
+  offset: 0x900
+  symbol: hoot_seg5_lights_05000900
+
+hoot_lights_unused1:
+  type: LIGHTS1
+  size: 24
+  offset: 0x900
+  symbol: hoot_lights_unused1
+
+hoot_seg5_lights_05000930:
+  type: LIGHTS1
+  size: 24
+  offset: 0x930
+  symbol: hoot_seg5_lights_05000930
+
+hoot_seg5_lights_05000948:
+  type: LIGHTS1
+  size: 24
+  offset: 0x948
+  symbol: hoot_seg5_lights_05000948
+
+hoot_seg5_lights_05000960:
+  type: LIGHTS1
+  size: 24
+  offset: 0x960
+  symbol: hoot_seg5_lights_05000960
+
+hoot_seg5_lights_05000978:
+  type: LIGHTS1
+  size: 24
+  offset: 0x978
+  symbol: hoot_seg5_lights_05000978
+
+hoot_lights_unused2:
+  type: LIGHTS1
+  size: 24
+  offset: 0x978
+  symbol: hoot_lights_unused2
+
+hoot_lights_unused3:
+  type: LIGHTS1
+  size: 24
+  offset: 0x978
+  symbol: hoot_lights_unused3
+
+hoot_lights_unused4:
+  type: LIGHTS1
+  size: 24
+  offset: 0x978
+  symbol: hoot_lights_unused4
+
+hoot_seg5_lights_050009D8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x9D8
+  symbol: hoot_seg5_lights_050009D8
+
+hoot_seg5_lights_050009F0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x9F0
+  symbol: hoot_seg5_lights_050009F0
+
+hoot_seg5_lights_05000A08:
+  type: LIGHTS1
+  size: 24
+  offset: 0xA08
+  symbol: hoot_seg5_lights_05000A08
+
+hoot_seg5_vertex_05001220:
+  type: VTX
+  size: 120
+  offset: 0x1220
+  symbol: hoot_seg5_vertex_05001220
+
+hoot_seg5_vertex_05001310:
+  type: VTX
+  size: 96
+  offset: 0x1310
+  symbol: hoot_seg5_vertex_05001310
+
+hoot_seg5_vertex_050013D0:
+  type: VTX
+  size: 24
+  offset: 0x13D0
+  symbol: hoot_seg5_vertex_050013D0
+
+hoot_seg5_vertex_05001400:
+  type: VTX
+  size: 120
+  offset: 0x1400
+  symbol: hoot_seg5_vertex_05001400
+
+hoot_seg5_vertex_050014F0:
+  type: VTX
+  size: 120
+  offset: 0x14F0
+  symbol: hoot_seg5_vertex_050014F0
+
+hoot_seg5_vertex_050015E0:
+  type: VTX
+  size: 120
+  offset: 0x15E0
+  symbol: hoot_seg5_vertex_050015E0
+
+hoot_seg5_vertex_050016D0:
+  type: VTX
+  size: 120
+  offset: 0x16D0
+  symbol: hoot_seg5_vertex_050016D0
+
+hoot_seg5_vertex_050017C0:
+  type: VTX
+  size: 120
+  offset: 0x17C0
+  symbol: hoot_seg5_vertex_050017C0
+
+hoot_seg5_vertex_050018B0:
+  type: VTX
+  size: 120
+  offset: 0x18B0
+  symbol: hoot_seg5_vertex_050018B0
+
+hoot_seg5_vertex_050019A0:
+  type: VTX
+  size: 120
+  offset: 0x19A0
+  symbol: hoot_seg5_vertex_050019A0
+
+hoot_seg5_vertex_05001A90:
+  type: VTX
+  size: 120
+  offset: 0x1A90
+  symbol: hoot_seg5_vertex_05001A90
+
+hoot_seg5_dl_05001B80:
+  type: GFX
+  offset: 0x1B80
+  symbol: hoot_seg5_dl_05001B80
+
+hoot_seg5_dl_05001C00:
+  type: GFX
+  offset: 0x1C00
+  symbol: hoot_seg5_dl_05001C00
+
+hoot_seg5_dl_05001DF0:
+  type: GFX
+  offset: 0x1DF0
+  symbol: hoot_seg5_dl_05001DF0
+
+hoot_seg5_lights_05001E38:
+  type: LIGHTS1
+  size: 24
+  offset: 0x1E38
+  symbol: hoot_seg5_lights_05001E38
+
+hoot_seg5_vertex_05002E50:
+  type: VTX
+  size: 48
+  offset: 0x2E50
+  symbol: hoot_seg5_vertex_05002E50
+
+hoot_seg5_dl_05002EB0:
+  type: GFX
+  offset: 0x2EB0
+  symbol: hoot_seg5_dl_05002EB0
+
+hoot_seg5_dl_05002F10:
+  type: GFX
+  offset: 0x2F10
+  symbol: hoot_seg5_dl_05002F10
+
+hoot_seg5_lights_05002F60:
+  type: LIGHTS1
+  size: 24
+  offset: 0x2F60
+  symbol: hoot_seg5_lights_05002F60
+
+hoot_seg5_vertex_05002F78:
+  type: VTX
+  size: 48
+  offset: 0x2F78
+  symbol: hoot_seg5_vertex_05002F78
+
+hoot_seg5_dl_05002FD8:
+  type: GFX
+  offset: 0x2FD8
+  symbol: hoot_seg5_dl_05002FD8
+
+hoot_seg5_dl_05003038:
+  type: GFX
+  offset: 0x3038
+  symbol: hoot_seg5_dl_05003038
+
+hoot_seg5_lights_05003088:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3088
+  symbol: hoot_seg5_lights_05003088
+
+hoot_seg5_vertex_050030A0:
+  type: VTX
+  size: 48
+  offset: 0x30A0
+  symbol: hoot_seg5_vertex_050030A0
+
+hoot_seg5_dl_05003100:
+  type: GFX
+  offset: 0x3100
+  symbol: hoot_seg5_dl_05003100
+
+hoot_seg5_dl_05003160:
+  type: GFX
+  offset: 0x3160
+  symbol: hoot_seg5_dl_05003160
+
+hoot_seg5_lights_050031B0:
+  type: LIGHTS1
+  size: 24
+  offset: 0x31B0
+  symbol: hoot_seg5_lights_050031B0
+
+hoot_seg5_vertex_050031C8:
+  type: VTX
+  size: 48
+  offset: 0x31C8
+  symbol: hoot_seg5_vertex_050031C8
+
+hoot_seg5_dl_05003228:
+  type: GFX
+  offset: 0x3228
+  symbol: hoot_seg5_dl_05003228
+
+hoot_seg5_dl_05003288:
+  type: GFX
+  offset: 0x3288
+  symbol: hoot_seg5_dl_05003288
+
+hoot_seg5_lights_050032D8:
+  type: LIGHTS1
+  size: 24
+  offset: 0x32D8
+  symbol: hoot_seg5_lights_050032D8
+
+hoot_seg5_vertex_050032F0:
+  type: VTX
+  size: 48
+  offset: 0x32F0
+  symbol: hoot_seg5_vertex_050032F0
+
+hoot_seg5_dl_05003350:
+  type: GFX
+  offset: 0x3350
+  symbol: hoot_seg5_dl_05003350
+
+hoot_seg5_dl_050033B0:
+  type: GFX
+  offset: 0x33B0
+  symbol: hoot_seg5_dl_050033B0
+
+hoot_seg5_lights_05003400:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3400
+  symbol: hoot_seg5_lights_05003400
+
+hoot_seg5_vertex_05003418:
+  type: VTX
+  size: 48
+  offset: 0x3418
+  symbol: hoot_seg5_vertex_05003418
+
+hoot_seg5_dl_05003478:
+  type: GFX
+  offset: 0x3478
+  symbol: hoot_seg5_dl_05003478
+
+hoot_seg5_dl_050034D8:
+  type: GFX
+  offset: 0x34D8
+  symbol: hoot_seg5_dl_050034D8
+
+hoot_seg5_lights_05003528:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3528
+  symbol: hoot_seg5_lights_05003528
+
+hoot_seg5_vertex_05003540:
+  type: VTX
+  size: 48
+  offset: 0x3540
+  symbol: hoot_seg5_vertex_05003540
+
+hoot_seg5_dl_050035A0:
+  type: GFX
+  offset: 0x35A0
+  symbol: hoot_seg5_dl_050035A0
+
+hoot_seg5_dl_05003600:
+  type: GFX
+  offset: 0x3600
+  symbol: hoot_seg5_dl_05003600
+
+hoot_seg5_lights_05003650:
+  type: LIGHTS1
+  size: 24
+  offset: 0x3650
+  symbol: hoot_seg5_lights_05003650
+
+hoot_seg5_vertex_05003668:
+  type: VTX
+  size: 48
+  offset: 0x3668
+  symbol: hoot_seg5_vertex_05003668
+
+hoot_seg5_dl_050036C8:
+  type: GFX
+  offset: 0x36C8
+  symbol: hoot_seg5_dl_050036C8
+
+hoot_seg5_dl_05003728:
+  type: GFX
+  offset: 0x3728
+  symbol: hoot_seg5_dl_05003728
+
+hoot_seg5_vertex_05003778:
+  type: VTX
+  size: 120
+  offset: 0x3778
+  symbol: hoot_seg5_vertex_05003778
+
+hoot_seg5_vertex_05003868:
+  type: VTX
+  size: 120
+  offset: 0x3868
+  symbol: hoot_seg5_vertex_05003868
+
+hoot_seg5_vertex_05003958:
+  type: VTX
+  size: 128
+  offset: 0x3958
+  symbol: hoot_seg5_vertex_05003958
+
+hoot_seg5_vertex_05003A58:
+  type: VTX
+  size: 120
+  offset: 0x3A58
+  symbol: hoot_seg5_vertex_05003A58
+
+hoot_seg5_vertex_05003B48:
+  type: VTX
+  size: 48
+  offset: 0x3B48
+  symbol: hoot_seg5_vertex_05003B48
+
+hoot_seg5_vertex_05003BA8:
+  type: VTX
+  size: 120
+  offset: 0x3BA8
+  symbol: hoot_seg5_vertex_05003BA8
+
+hoot_seg5_vertex_05003C98:
+  type: VTX
+  size: 96
+  offset: 0x3C98
+  symbol: hoot_seg5_vertex_05003C98
+
+hoot_seg5_vertex_05003D58:
+  type: VTX
+  size: 128
+  offset: 0x3D58
+  symbol: hoot_seg5_vertex_05003D58
+
+hoot_seg5_vertex_05003E58:
+  type: VTX
+  size: 96
+  offset: 0x3E58
+  symbol: hoot_seg5_vertex_05003E58
+
+hoot_seg5_vertex_05003F18:
+  type: VTX
+  size: 32
+  offset: 0x3F18
+  symbol: hoot_seg5_vertex_05003F18
+
+hoot_seg5_vertex_05003F58:
+  type: VTX
+  size: 120
+  offset: 0x3F58
+  symbol: hoot_seg5_vertex_05003F58
+
+hoot_seg5_vertex_05004048:
+  type: VTX
+  size: 96
+  offset: 0x4048
+  symbol: hoot_seg5_vertex_05004048
+
+hoot_seg5_vertex_05004108:
+  type: VTX
+  size: 120
+  offset: 0x4108
+  symbol: hoot_seg5_vertex_05004108
+
+hoot_seg5_vertex_050041F8:
+  type: VTX
+  size: 112
+  offset: 0x41F8
+  symbol: hoot_seg5_vertex_050041F8
+
+hoot_seg5_vertex_050042D8:
+  type: VTX
+  size: 112
+  offset: 0x42D8
+  symbol: hoot_seg5_vertex_050042D8
+
+hoot_seg5_vertex_050043B8:
+  type: VTX
+  size: 120
+  offset: 0x43B8
+  symbol: hoot_seg5_vertex_050043B8
+
+hoot_seg5_vertex_050044A8:
+  type: VTX
+  size: 80
+  offset: 0x44A8
+  symbol: hoot_seg5_vertex_050044A8
+
+hoot_seg5_vertex_05004548:
+  type: VTX
+  size: 128
+  offset: 0x4548
+  symbol: hoot_seg5_vertex_05004548
+
+hoot_seg5_vertex_05004648:
+  type: VTX
+  size: 96
+  offset: 0x4648
+  symbol: hoot_seg5_vertex_05004648
+
+hoot_seg5_vertex_05004708:
+  type: VTX
+  size: 32
+  offset: 0x4708
+  symbol: hoot_seg5_vertex_05004708
+
+hoot_seg5_vertex_05004748:
+  type: VTX
+  size: 112
+  offset: 0x4748
+  symbol: hoot_seg5_vertex_05004748
+
+hoot_seg5_vertex_05004828:
+  type: VTX
+  size: 128
+  offset: 0x4828
+  symbol: hoot_seg5_vertex_05004828
+
+hoot_seg5_dl_05004928:
+  type: GFX
+  offset: 0x4928
+  symbol: hoot_seg5_dl_05004928
+
+hoot_seg5_dl_05004A98:
+  type: GFX
+  offset: 0x4A98
+  symbol: hoot_seg5_dl_05004A98
+
+hoot_seg5_dl_05004B38:
+  type: GFX
+  offset: 0x4B38
+  symbol: hoot_seg5_dl_05004B38
+
+hoot_seg5_dl_05004CA8:
+  type: GFX
+  offset: 0x4CA8
+  symbol: hoot_seg5_dl_05004CA8
+
+hoot_seg5_dl_05004D48:
+  type: GFX
+  offset: 0x4D48
+  symbol: hoot_seg5_dl_05004D48
+

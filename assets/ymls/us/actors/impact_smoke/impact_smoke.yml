@@ -35,3 +35,57 @@ impact_smoke_3:
   offset: 0x60B78
   format: IA16
   symbol: impact_smoke_seg6_texture_06060A28
+impact_smoke_seg6_texture_0605AA28:
+  type: U8
+impact_smoke_seg6_texture_0605CA28:
+  type: U8
+impact_smoke_seg6_texture_0605EA28:
+  type: U8
+impact_smoke_seg6_texture_06060A28:
+  type: U8
+impact_smoke_seg6_vertex_06062A28:
+  type: VTX
+  size: 64
+  offset: 0x62A28
+  symbol: impact_smoke_seg6_vertex_06062A28
+
+impact_smoke_seg6_dl_06062AA8:
+  type: GFX
+  offset: 0x62AA8
+  symbol: impact_smoke_seg6_dl_06062AA8
+
+impact_smoke_seg6_dl_06062AD8:
+  type: GFX
+  offset: 0x62AD8
+  symbol: impact_smoke_seg6_dl_06062AD8
+
+impact_smoke_seg6_dl_06062AF0:
+  type: GFX
+  offset: 0x62AF0
+  symbol: impact_smoke_seg6_dl_06062AF0
+
+impact_smoke_seg6_dl_06062B08:
+  type: GFX
+  offset: 0x62B08
+  symbol: impact_smoke_seg6_dl_06062B08
+
+impact_smoke_seg6_dl_06062B38:
+  type: GFX
+  offset: 0x62B38
+  symbol: impact_smoke_seg6_dl_06062B38
+
+impact_smoke_seg6_dl_06062BD8:
+  type: GFX
+  offset: 0x62BD8
+  symbol: impact_smoke_seg6_dl_06062BD8
+
+impact_smoke_seg6_dl_06062C78:
+  type: GFX
+  offset: 0x62C78
+  symbol: impact_smoke_seg6_dl_06062C78
+
+impact_smoke_seg6_dl_06062D18:
+  type: GFX
+  offset: 0x62D18
+  symbol: impact_smoke_seg6_dl_06062D18
+
