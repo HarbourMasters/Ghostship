@@ -11,6 +11,7 @@ water_bubble:
   offset: 0xFE80
   format: RGBA16
   symbol: water_bubble_seg5_texture_0500FE80
+
 water_bubble_seg5_lights_0500FE68:
   type: LIGHTS1
   size: 24

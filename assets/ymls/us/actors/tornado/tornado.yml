@@ -11,6 +11,7 @@ tornado:
   offset: 0x12848
   format: IA16
   symbol: tornado_seg5_texture_05013128
+
 tornado_seg5_lights_05014128:
   type: LIGHTS1
   size: 24

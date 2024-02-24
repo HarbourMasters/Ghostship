@@ -35,10 +35,11 @@ chair_surface_unused:
   offset: 0x4460
   format: RGBA16
   symbol: chair_seg5_texture_05004460
+
 chair_lights_unused:
   type: LIGHTS1
   size: 24
-  offset: 0x24FC0
+  offset: 0x3048
   symbol: chair_lights_unused
 
 chair_seg5_lights_05004C60:

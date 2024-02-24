@@ -43,30 +43,32 @@ mr_blizzard_right_side:
   offset: 0xA470
   format: RGBA16
   symbol: snowman_seg5_texture_0500A470
-snowman_unused_1:
-  type: U64
+
+# snowman_unused_1:
+#   type: U64
+
 snowman_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x7AF8
+  offset: 0x8C10
   symbol: snowman_lights_unused1
 
 snowman_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x7AF8
+  offset: 0x8C28
   symbol: snowman_lights_unused2
 
 snowman_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0x7AF8
+  offset: 0x8C40
   symbol: snowman_lights_unused3
 
 snowman_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0x7AF8
+  offset: 0x8C58
   symbol: snowman_lights_unused4
 
 snowman_seg5_lights_0500C470:

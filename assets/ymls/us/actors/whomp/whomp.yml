@@ -35,8 +35,10 @@ whomp_surface:
   offset: 0x1EB60
   format: RGBA16
   symbol: whomp_seg6_texture_0601EB60
-whomp_unused_1:
-  type: U64
+
+# whomp_unused_1:
+#   type: U64
+
 whomp_seg6_lights_0601F360:
   type: LIGHTS1
   size: 24

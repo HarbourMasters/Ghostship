@@ -35,16 +35,17 @@ spindrift_petal:
   offset: 0xED0
   format: RGBA16
   symbol: spindrift_seg5_texture_05000ED0
+
 spindrift_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x35360
+  offset: 0x0
   symbol: spindrift_lights_unused1
 
 spindrift_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x35360
+  offset: 0x18
   symbol: spindrift_lights_unused2
 
 spindrift_seg5_lights_05000030:
@@ -62,7 +63,7 @@ spindrift_seg5_lights_05000048:
 spindrift_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0x48
+  offset: 0x60
   symbol: spindrift_lights_unused3
 
 spindrift_seg5_lights_05000078:
@@ -80,7 +81,7 @@ spindrift_seg5_lights_05000090:
 spindrift_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0x90
+  offset: 0xA8
   symbol: spindrift_lights_unused4
 
 spindrift_seg5_vertex_050000C0:

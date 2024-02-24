@@ -11,12 +11,14 @@ cyan_fish:
   offset: 0xD468
   format: RGBA16
   symbol: cyan_fish_seg6_texture_0600D468
-cyan_fish_unused_1:
-  type: U64
+
+# cyan_fish_unused_1:
+#   type: U64
+
 cyan_fish_seg6_lights_0600DC68:
   type: LIGHTS1
   size: 24
-  offset: 0xD468
+  offset: 0xDC68
   symbol: cyan_fish_seg6_lights_0600DC68
 
 cyan_fish_seg6_vertex_0600DC80:

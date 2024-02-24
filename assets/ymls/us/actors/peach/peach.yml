@@ -83,6 +83,7 @@ peach_nostril:
   offset: 0x3E28
   format: RGBA16
   symbol: peach_seg5_texture_05003E28
+
 peach_seg5_lights_050009F8:
   type: LIGHTS1
   size: 24

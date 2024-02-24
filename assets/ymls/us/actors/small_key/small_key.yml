@@ -3,8 +3,9 @@
   segments:
     seg5: 0x16D5C0
 
-small_key_unused_1:
-  type: U64
+# small_key_unused_1:
+#   type: U64
+
 small_key_seg5_lights_05005798:
   type: LIGHTS1
   size: 24
@@ -29,8 +30,9 @@ small_key_seg5_lights_050057E0:
   offset: 0x57E0
   symbol: small_key_seg5_lights_050057E0
 
-small_key_unused_2:
-  type: U64
+# small_key_unused_2:
+#   type: U64
+
 small_key_seg5_vertex_05005800:
   type: VTX
   size: 120

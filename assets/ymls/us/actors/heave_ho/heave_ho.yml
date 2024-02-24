@@ -51,22 +51,23 @@ heave-ho_turnkey:
   offset: 0x113C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050113C8
+
 heave_ho_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0xDFE0
+  offset: 0xE920
   symbol: heave_ho_lights_unused1
 
 heave_ho_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0xDFE0
+  offset: 0xE938
   symbol: heave_ho_lights_unused2
 
 heave_ho_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0xDFE0
+  offset: 0xE950
   symbol: heave_ho_lights_unused3
 
 heave_ho_seg5_lights_0500E968:
@@ -84,13 +85,13 @@ heave_ho_seg5_lights_0500E980:
 heave_ho_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0xE980
+  offset: 0xE998
   symbol: heave_ho_lights_unused4
 
 heave_ho_lights_unused5:
   type: LIGHTS1
   size: 24
-  offset: 0xE980
+  offset: 0xE9B0
   symbol: heave_ho_lights_unused5
 
 heave_ho_seg5_lights_05011BC8:

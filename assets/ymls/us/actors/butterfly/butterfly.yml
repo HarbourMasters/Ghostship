@@ -11,6 +11,7 @@ butterfly_wing:
   offset: 0x43A8
   format: RGBA16
   symbol: butterfly_seg3_texture_030043A8
+
 butterfly_seg3_vertex_03004348:
   type: VTX
   size: 48

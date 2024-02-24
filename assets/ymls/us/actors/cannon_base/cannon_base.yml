@@ -11,6 +11,7 @@ cannon_base:
   offset: 0x49B8
   format: RGBA16
   symbol: cannon_base_seg8_texture_080049B8
+
 cannon_base_seg8_lights_08004988:
   type: LIGHTS1
   size: 24

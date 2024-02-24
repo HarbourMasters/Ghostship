@@ -27,6 +27,7 @@ hoot_wing_tip:
   offset: 0x2650
   format: RGBA16
   symbol: hoot_seg5_texture_05002650
+
 hoot_seg5_lights_05000900:
   type: LIGHTS1
   size: 24
@@ -36,7 +37,7 @@ hoot_seg5_lights_05000900:
 hoot_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x900
+  offset: 0x918
   symbol: hoot_lights_unused1
 
 hoot_seg5_lights_05000930:
@@ -66,19 +67,19 @@ hoot_seg5_lights_05000978:
 hoot_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x978
+  offset: 0x990
   symbol: hoot_lights_unused2
 
 hoot_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0x978
+  offset: 0x9A8
   symbol: hoot_lights_unused3
 
 hoot_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0x978
+  offset: 0x9C0
   symbol: hoot_lights_unused4
 
 hoot_seg5_lights_050009D8:

@@ -51,52 +51,53 @@ unagi_tooth:
   offset: 0xC120
   format: RGBA16
   symbol: unagi_seg5_texture_0500C120
+
 unagi_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAE60
   symbol: unagi_lights_unused1
 
 unagi_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAE78
   symbol: unagi_lights_unused2
 
 unagi_lights_unused3:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAE90
   symbol: unagi_lights_unused3
 
 unagi_lights_unused4:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAEA8
   symbol: unagi_lights_unused4
 
 unagi_lights_unused5:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAEC0
   symbol: unagi_lights_unused5
 
 unagi_lights_unused6:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAED8
   symbol: unagi_lights_unused6
 
 unagi_lights_unused7:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAEF0
   symbol: unagi_lights_unused7
 
 unagi_lights_unused8:
   type: LIGHTS1
   size: 24
-  offset: 0xD108
+  offset: 0xAF08
   symbol: unagi_lights_unused8
 
 unagi_seg5_vertex_0500CBA0:

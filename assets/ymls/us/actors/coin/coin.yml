@@ -35,6 +35,7 @@ coin_tilt_right:
   offset: 0x5F80
   format: IA16
   symbol: coin_seg3_texture_03005F80
+
 coin_seg3_vertex_030056C0:
   type: VTX
   size: 32

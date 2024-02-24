@@ -67,10 +67,11 @@ koopa_shoe:
   offset: 0x3648
   format: RGBA16
   symbol: koopa_seg6_texture_06003648
+
 koopa_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x5178
+  offset: 0x2588
   symbol: koopa_lights_unused1
 
 koopa_seg6_lights_060025A0:
@@ -94,7 +95,7 @@ koopa_seg6_lights_060025D0:
 koopa_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x25D0
+  offset: 0x25E8
   symbol: koopa_lights_unused2
 
 koopa_seg6_lights_06002600:

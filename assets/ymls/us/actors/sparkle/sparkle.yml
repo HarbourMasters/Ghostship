@@ -51,6 +51,7 @@ sparkle_5:
   offset: 0x29C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04029C90
+
 sparkles_seg4_vertex_04027450:
   type: VTX
   size: 32

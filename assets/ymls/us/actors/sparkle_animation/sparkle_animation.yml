@@ -43,6 +43,7 @@ sparkle_animation_4:
   offset: 0x34A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034A88
+
 sparkles_animation_seg4_vertex_04032A48:
   type: VTX
   size: 32

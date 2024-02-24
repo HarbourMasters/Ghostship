@@ -43,10 +43,11 @@ lakitu_enemy_shell:
   offset: 0x114E0
   format: RGBA16
   symbol: lakitu_enemy_seg5_texture_050114E0
+
 lakitu_enemy_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x5610
+  offset: 0xEC98
   symbol: lakitu_enemy_lights_unused1
 
 lakitu_enemy_seg5_lights_0500ECB0:
@@ -58,7 +59,7 @@ lakitu_enemy_seg5_lights_0500ECB0:
 lakitu_enemy_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0xECB0
+  offset: 0xECC8
   symbol: lakitu_enemy_lights_unused2
 
 lakitu_enemy_seg5_lights_050124E0:

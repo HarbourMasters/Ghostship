@@ -43,8 +43,10 @@ bubba_sunglasses:
   offset: 0x8
   format: RGBA16
   symbol: bubba_seg5_texture_05000008
-bubba_unused_1:
-  type: U64
+
+# bubba_unused_1:
+#   type: U64
+
 bubba_seg5_lights_05004408:
   type: LIGHTS1
   size: 24

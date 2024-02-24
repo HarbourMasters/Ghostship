@@ -19,6 +19,7 @@ springboard_top_unused:
   offset: 0x18
   format: RGBA16
   symbol: springboard_seg5_texture_05000018
+
 springboard_seg5_lights_05000000:
   type: LIGHTS1
   size: 24

@@ -35,6 +35,7 @@ snufit_mouth:
   offset: 0x84E0
   format: RGBA16
   symbol: snufit_seg6_texture_060084E0
+
 snufit_seg6_lights_06008CE0:
   type: LIGHTS1
   size: 24

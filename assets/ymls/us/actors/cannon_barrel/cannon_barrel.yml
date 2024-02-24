@@ -11,6 +11,7 @@ cannon_barrel:
   offset: 0x58A8
   format: RGBA16
   symbol: cannon_barrel_seg8_texture_080058A8
+
 cannon_barrel_seg8_lights_08005878:
   type: LIGHTS1
   size: 24

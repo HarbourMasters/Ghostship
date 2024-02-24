@@ -235,6 +235,7 @@ bowser_upper_face:
   offset: 0x28438
   format: RGBA16
   symbol: bowser_seg6_texture_06028438
+
 bowser_seg6_lights_06038C38:
   type: LIGHTS1
   size: 24
@@ -244,13 +245,13 @@ bowser_seg6_lights_06038C38:
 bowser_lights_unused1:
   type: LIGHTS1
   size: 24
-  offset: 0x38C38
+  offset: 0x38C50
   symbol: bowser_lights_unused1
 
 bowser_lights_unused2:
   type: LIGHTS1
   size: 24
-  offset: 0x38C38
+  offset: 0x38C68
   symbol: bowser_lights_unused2
 
 bowser_seg6_vertex_06038C80:

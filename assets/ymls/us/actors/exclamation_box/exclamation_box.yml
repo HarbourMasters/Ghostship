@@ -67,6 +67,7 @@ wing_cap_box_side:
   offset: 0x16628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08016628
+
 exclamation_box_seg8_lights_08012E10:
   type: LIGHTS1
   size: 24

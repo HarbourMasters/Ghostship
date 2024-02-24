@@ -43,6 +43,7 @@ tree_right_side:
   offset: 0x2EE28
   format: RGBA16
   symbol: tree_seg3_texture_0302EE28
+
 tree_seg3_lights_0302DE10:
   type: LIGHTS1
   size: 24

@@ -28,6 +28,7 @@ chill_bully_eye:
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06002060
 
+# todo: move to geo yml
 chilly_chief_geo:
   type: SM64:GEO_LAYOUT
   offset: 0x3754
@@ -37,6 +38,7 @@ chilly_chief_big_geo:
   type: SM64:GEO_LAYOUT
   offset: 0x3874
   symbol: chilly_chief_big_geo
+
 chilly_chief_seg6_lights_06000000:
   type: LIGHTS1
   size: 24
@@ -58,7 +60,7 @@ chilly_chief_seg6_lights_06000030:
 chillychief_lights_unused:
   type: LIGHTS1
   size: 24
-  offset: 0x30
+  offset: 0x48
   symbol: chillychief_lights_unused
 
 chilly_chief_seg6_vertex_06002860:
