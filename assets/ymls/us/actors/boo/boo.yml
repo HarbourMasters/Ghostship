@@ -22,7 +22,7 @@ boo_mouth:
   symbol: boo_seg5_texture_0500AB40
 
 boo_seg5_lights_05009B28:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9B28
   symbol: boo_seg5_lights_05009B28

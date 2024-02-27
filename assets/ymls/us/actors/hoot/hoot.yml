@@ -30,73 +30,73 @@ hoot_wing_tip:
   symbol: hoot_seg5_texture_05002650
 
 hoot_seg5_lights_05000900:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x900
   symbol: hoot_seg5_lights_05000900
 
 hoot_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x918
   symbol: hoot_lights_unused1
 
 hoot_seg5_lights_05000930:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x930
   symbol: hoot_seg5_lights_05000930
 
 hoot_seg5_lights_05000948:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x948
   symbol: hoot_seg5_lights_05000948
 
 hoot_seg5_lights_05000960:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x960
   symbol: hoot_seg5_lights_05000960
 
 hoot_seg5_lights_05000978:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x978
   symbol: hoot_seg5_lights_05000978
 
 hoot_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x990
   symbol: hoot_lights_unused2
 
 hoot_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9A8
   symbol: hoot_lights_unused3
 
 hoot_lights_unused4:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9C0
   symbol: hoot_lights_unused4
 
 hoot_seg5_lights_050009D8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9D8
   symbol: hoot_seg5_lights_050009D8
 
 hoot_seg5_lights_050009F0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9F0
   symbol: hoot_seg5_lights_050009F0
 
 hoot_seg5_lights_05000A08:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA08
   symbol: hoot_seg5_lights_05000A08
@@ -183,7 +183,7 @@ hoot_seg5_dl_05001DF0:
   symbol: hoot_seg5_dl_05001DF0
 
 hoot_seg5_lights_05001E38:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1E38
   symbol: hoot_seg5_lights_05001E38
@@ -205,7 +205,7 @@ hoot_seg5_dl_05002F10:
   symbol: hoot_seg5_dl_05002F10
 
 hoot_seg5_lights_05002F60:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2F60
   symbol: hoot_seg5_lights_05002F60
@@ -227,7 +227,7 @@ hoot_seg5_dl_05003038:
   symbol: hoot_seg5_dl_05003038
 
 hoot_seg5_lights_05003088:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3088
   symbol: hoot_seg5_lights_05003088
@@ -249,7 +249,7 @@ hoot_seg5_dl_05003160:
   symbol: hoot_seg5_dl_05003160
 
 hoot_seg5_lights_050031B0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x31B0
   symbol: hoot_seg5_lights_050031B0
@@ -271,7 +271,7 @@ hoot_seg5_dl_05003288:
   symbol: hoot_seg5_dl_05003288
 
 hoot_seg5_lights_050032D8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x32D8
   symbol: hoot_seg5_lights_050032D8
@@ -293,7 +293,7 @@ hoot_seg5_dl_050033B0:
   symbol: hoot_seg5_dl_050033B0
 
 hoot_seg5_lights_05003400:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3400
   symbol: hoot_seg5_lights_05003400
@@ -315,7 +315,7 @@ hoot_seg5_dl_050034D8:
   symbol: hoot_seg5_dl_050034D8
 
 hoot_seg5_lights_05003528:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3528
   symbol: hoot_seg5_lights_05003528
@@ -337,7 +337,7 @@ hoot_seg5_dl_05003600:
   symbol: hoot_seg5_dl_05003600
 
 hoot_seg5_lights_05003650:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3650
   symbol: hoot_seg5_lights_05003650

@@ -158,37 +158,37 @@ mario_wing_tip:
   symbol: mario_texture_wings_half_2
 
 mario_blue_lights_group:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x0
   symbol: mario_blue_lights_group
 
 mario_red_lights_group:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x18
   symbol: mario_red_lights_group
 
 mario_white_lights_group:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x30
   symbol: mario_white_lights_group
 
 mario_brown1_lights_group:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x48
   symbol: mario_brown1_lights_group
 
 mario_beige_lights_group:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x60
   symbol: mario_beige_lights_group
 
 mario_brown2_lights_group:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x78
   symbol: mario_brown2_lights_group
@@ -835,13 +835,13 @@ mario_metal_cap_on_shared_dl:
   symbol: mario_metal_cap_on_shared_dl
 
 mario_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12160
   symbol: mario_lights_unused1
 
 mario_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12178
   symbol: mario_lights_unused2

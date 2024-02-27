@@ -5,7 +5,7 @@
     seg3: 0x201410
 
 transparent_star_seg3_lights_0302C488:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2C488
   symbol: transparent_star_seg3_lights_0302C488

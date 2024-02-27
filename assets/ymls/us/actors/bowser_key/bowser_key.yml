@@ -5,7 +5,7 @@
     seg3: 0x201410
 
 bowser_key_lights:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x156E0
   symbol: bowser_key_lights

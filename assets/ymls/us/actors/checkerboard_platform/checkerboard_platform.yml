@@ -22,7 +22,7 @@ checkerboard_platform_side:
   symbol: checkerboard_platform_seg8_texture_0800C840
 
 checkerboard_platform_seg8_lights_0800C828:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC828
   symbol: checkerboard_platform_seg8_lights_0800C828

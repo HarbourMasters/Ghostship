@@ -38,7 +38,7 @@ treasure_chest_side:
   symbol: treasure_chest_seg6_texture_060147A8
 
 treasure_chest_seg6_lights_06013F90:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x13F90
   symbol: treasure_chest_seg6_lights_06013F90

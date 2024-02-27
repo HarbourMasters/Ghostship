@@ -14,13 +14,13 @@ cannon_base:
   symbol: cannon_base_seg8_texture_080049B8
 
 cannon_base_seg8_lights_08004988:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4988
   symbol: cannon_base_seg8_lights_08004988
 
 cannon_base_seg8_lights_080049A0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x49A0
   symbol: cannon_base_seg8_lights_080049A0

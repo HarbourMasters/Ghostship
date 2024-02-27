@@ -49,19 +49,19 @@ bubba_sunglasses:
 #   type: U64
 
 bubba_seg5_lights_05004408:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4408
   symbol: bubba_seg5_lights_05004408
 
 bubba_seg5_lights_05004420:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4420
   symbol: bubba_seg5_lights_05004420
 
 bubba_seg5_lights_05004438:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4438
   symbol: bubba_seg5_lights_05004438
@@ -151,19 +151,19 @@ bubba_seg5_dl_05004E80:
   symbol: bubba_seg5_dl_05004E80
 
 bubba_seg5_lights_05004F30:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4F30
   symbol: bubba_seg5_lights_05004F30
 
 bubba_seg5_lights_05004F50:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4F48
   symbol: bubba_seg5_lights_05004F50
 
 bubba_seg5_lights_05004F60:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4F60
   symbol: bubba_seg5_lights_05004F60

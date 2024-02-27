@@ -38,7 +38,7 @@ seaweed_upper_center:
   symbol: seaweed_seg6_texture_06008610
 
 seaweed_seg6_lights_06007DF8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x7DF8
   symbol: seaweed_seg6_lights_06007DF8

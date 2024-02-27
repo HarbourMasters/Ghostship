@@ -38,49 +38,49 @@ spindrift_petal:
   symbol: spindrift_seg5_texture_05000ED0
 
 spindrift_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x0
   symbol: spindrift_lights_unused1
 
 spindrift_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x18
   symbol: spindrift_lights_unused2
 
 spindrift_seg5_lights_05000030:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x30
   symbol: spindrift_seg5_lights_05000030
 
 spindrift_seg5_lights_05000048:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x48
   symbol: spindrift_seg5_lights_05000048
 
 spindrift_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x60
   symbol: spindrift_lights_unused3
 
 spindrift_seg5_lights_05000078:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x78
   symbol: spindrift_seg5_lights_05000078
 
 spindrift_seg5_lights_05000090:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x90
   symbol: spindrift_seg5_lights_05000090
 
 spindrift_lights_unused4:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA8
   symbol: spindrift_lights_unused4

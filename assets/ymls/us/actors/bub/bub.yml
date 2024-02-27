@@ -38,13 +38,13 @@ bub_scales:
   symbol: bub_seg6_texture_060102A8
 
 bub_seg6_lights_0600E280:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE278
   symbol: bub_seg6_lights_0600E280
 
 bub_seg6_lights_0600E290:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE290
   symbol: bub_seg6_lights_0600E290

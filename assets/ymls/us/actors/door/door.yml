@@ -118,13 +118,13 @@ zero_star_door_sign:
   symbol: door_seg3_texture_03011D10
 
 door_seg3_lights_03009CE0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9CE0
   symbol: door_seg3_lights_03009CE0
 
 door_seg3_lights_03009CF8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9CF8
   symbol: door_seg3_lights_03009CF8

@@ -238,19 +238,19 @@ bowser_upper_face:
   symbol: bowser_seg6_texture_06028438
 
 bowser_seg6_lights_06038C38:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x38C38
   symbol: bowser_seg6_lights_06038C38
 
 bowser_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x38C50
   symbol: bowser_lights_unused1
 
 bowser_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x38C68
   symbol: bowser_lights_unused2

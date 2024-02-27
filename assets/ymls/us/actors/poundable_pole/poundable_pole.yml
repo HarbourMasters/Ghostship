@@ -22,7 +22,7 @@ poundable_pole_top:
   symbol: poundable_pole_seg6_texture_06001050
 
 poundable_pole_seg6_lights_06001038:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1038
   symbol: poundable_pole_seg6_lights_06001038

@@ -24,7 +24,7 @@ purple_switch_exclamation_point:
   symbol: purple_switch_seg8_texture_0800C128
 
 purple_switch_seg8_lights_0800C090:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC090
   symbol: purple_switch_seg8_lights_0800C090

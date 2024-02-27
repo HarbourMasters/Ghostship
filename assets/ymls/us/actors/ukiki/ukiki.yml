@@ -38,19 +38,19 @@ ukiki_fur:
   symbol: ukiki_seg5_texture_0500A3C0
 
 ukiki_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x7B70
   symbol: ukiki_lights_unused1
 
 ukiki_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x7B88
   symbol: ukiki_lights_unused2
 
 ukiki_seg5_lights_05007BA0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x7BA0
   symbol: ukiki_seg5_lights_05007BA0
@@ -59,13 +59,13 @@ ukiki_seg5_lights_05007BA0:
 #   type: U64
 
 ukiki_seg5_lights_0500ABC0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xABC0
   symbol: ukiki_seg5_lights_0500ABC0
 
 ukiki_seg5_lights_0500ABD8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xABD8
   symbol: ukiki_seg5_lights_0500ABD8
@@ -131,7 +131,7 @@ ukiki_seg5_dl_0500B310:
   symbol: ukiki_seg5_dl_0500B310
 
 ukiki_seg5_lights_0500B338:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xB338
   symbol: ukiki_seg5_lights_0500B338
@@ -176,7 +176,7 @@ ukiki_seg5_dl_0500B820:
   symbol: ukiki_seg5_dl_0500B820
 
 ukiki_seg5_lights_0500B888:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xB888
   symbol: ukiki_seg5_lights_0500B888
@@ -198,7 +198,7 @@ ukiki_seg5_dl_0500B988:
   symbol: ukiki_seg5_dl_0500B988
 
 ukiki_seg5_lights_0500B9E8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xB9E8
   symbol: ukiki_seg5_lights_0500B9E8
@@ -220,7 +220,7 @@ ukiki_seg5_dl_0500BB28:
   symbol: ukiki_seg5_dl_0500BB28
 
 ukiki_seg5_lights_0500BB88:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xBB88
   symbol: ukiki_seg5_lights_0500BB88
@@ -242,7 +242,7 @@ ukiki_seg5_dl_0500BC78:
   symbol: ukiki_seg5_dl_0500BC78
 
 ukiki_seg5_lights_0500BCD8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xBCD8
   symbol: ukiki_seg5_lights_0500BCD8
@@ -264,7 +264,7 @@ ukiki_seg5_dl_0500BE38:
   symbol: ukiki_seg5_dl_0500BE38
 
 ukiki_seg5_lights_0500BE98:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xBE98
   symbol: ukiki_seg5_lights_0500BE98
@@ -286,7 +286,7 @@ ukiki_seg5_dl_0500BFF8:
   symbol: ukiki_seg5_dl_0500BFF8
 
 ukiki_seg5_lights_0500C058:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC058
   symbol: ukiki_seg5_lights_0500C058
@@ -308,7 +308,7 @@ ukiki_seg5_dl_0500C1B8:
   symbol: ukiki_seg5_dl_0500C1B8
 
 ukiki_seg5_lights_0500C218:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC218
   symbol: ukiki_seg5_lights_0500C218
@@ -330,7 +330,7 @@ ukiki_seg5_dl_0500C368:
   symbol: ukiki_seg5_dl_0500C368
 
 ukiki_seg5_lights_0500C3C8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC3C8
   symbol: ukiki_seg5_lights_0500C3C8
@@ -352,7 +352,7 @@ ukiki_seg5_dl_0500C528:
   symbol: ukiki_seg5_dl_0500C528
 
 ukiki_seg5_lights_0500C588:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC588
   symbol: ukiki_seg5_lights_0500C588
@@ -374,7 +374,7 @@ ukiki_seg5_dl_0500C6E8:
   symbol: ukiki_seg5_dl_0500C6E8
 
 ukiki_seg5_lights_0500C748:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC748
   symbol: ukiki_seg5_lights_0500C748
@@ -396,7 +396,7 @@ ukiki_seg5_dl_0500C898:
   symbol: ukiki_seg5_dl_0500C898
 
 ukiki_seg5_lights_0500C8F8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC8F8
   symbol: ukiki_seg5_lights_0500C8F8

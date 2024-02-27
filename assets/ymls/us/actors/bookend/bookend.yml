@@ -46,31 +46,31 @@ bookend_tooth:
   symbol: bookend_seg5_texture_05000460
 
 bookend_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1800
   symbol: bookend_lights_unused1
 
 bookend_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1818
   symbol: bookend_lights_unused2
 
 bookend_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1830
   symbol: bookend_lights_unused3
 
 bookend_lights_unused4:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1848
   symbol: bookend_lights_unused4
 
 bookend_seg5_lights_05001860:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1860
   symbol: bookend_seg5_lights_05001860
@@ -103,7 +103,7 @@ bookend_seg5_dl_05001978:
   symbol: bookend_seg5_dl_05001978
 
 bookend_seg5_lights_05001A08:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1A08
   symbol: bookend_seg5_lights_05001A08
@@ -136,7 +136,7 @@ bookend_seg5_dl_05001B20:
   symbol: bookend_seg5_dl_05001B20
 
 bookend_seg5_lights_05001BB0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1BB0
   symbol: bookend_seg5_lights_05001BB0
@@ -169,7 +169,7 @@ bookend_seg5_dl_05001D68:
   symbol: bookend_seg5_dl_05001D68
 
 bookend_seg5_lights_05001DE0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1DE0
   symbol: bookend_seg5_lights_05001DE0
@@ -202,7 +202,7 @@ bookend_seg5_dl_05001F98:
   symbol: bookend_seg5_dl_05001F98
 
 bookend_seg5_lights_05002010:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2010
   symbol: bookend_seg5_lights_05002010
@@ -224,7 +224,7 @@ bookend_seg5_dl_05002140:
   symbol: bookend_seg5_dl_05002140
 
 bookend_seg5_lights_050021B0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x21B0
   symbol: bookend_seg5_lights_050021B0

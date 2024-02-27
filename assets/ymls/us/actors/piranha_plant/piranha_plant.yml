@@ -54,19 +54,19 @@ piranha_plant_leaf:
   symbol: piranha_plant_seg6_texture_060143F8
 
 piranha_plant_seg6_lights_060113B0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x113B0
   symbol: piranha_plant_seg6_lights_060113B0
 
 piranha_plant_seg6_lights_060113C8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x113C8
   symbol: piranha_plant_seg6_lights_060113C8
 
 piranha_plant_seg6_lights_060113E0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x113E0
   symbol: piranha_plant_seg6_lights_060113E0

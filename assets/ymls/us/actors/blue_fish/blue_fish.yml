@@ -14,7 +14,7 @@ blue_fish:
   symbol: blue_fish_seg3_texture_0301B5E0
 
 blue_fish_seg3_lights_0301B5C8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1B5C8
   symbol: blue_fish_seg3_lights_0301B5C8

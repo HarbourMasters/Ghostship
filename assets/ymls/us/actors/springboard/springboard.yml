@@ -22,7 +22,7 @@ springboard_top_unused:
   symbol: springboard_seg5_texture_05000018
 
 springboard_seg5_lights_05000000:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x0
   symbol: springboard_seg5_lights_05000000

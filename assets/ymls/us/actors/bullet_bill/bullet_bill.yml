@@ -22,7 +22,7 @@ bullet_bill_mouth:
   symbol: bullet_bill_seg5_texture_0500CAA8
 
 bullet_bill_seg5_lights_0500BA90:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xBA90
   symbol: bullet_bill_seg5_lights_0500BA90

@@ -70,61 +70,61 @@ koopa_shoe:
   symbol: koopa_seg6_texture_06003648
 
 koopa_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2588
   symbol: koopa_lights_unused1
 
 koopa_seg6_lights_060025A0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x25A0
   symbol: koopa_seg6_lights_060025A0
 
 koopa_seg6_lights_060025B8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x25B8
   symbol: koopa_seg6_lights_060025B8
 
 koopa_seg6_lights_060025D0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x25D0
   symbol: koopa_seg6_lights_060025D0
 
 koopa_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x25E8
   symbol: koopa_lights_unused2
 
 koopa_seg6_lights_06002600:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2600
   symbol: koopa_seg6_lights_06002600
 
 koopa_seg6_lights_06002618:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2618
   symbol: koopa_seg6_lights_06002618
 
 koopa_seg6_lights_06002630:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2630
   symbol: koopa_seg6_lights_06002630
 
 koopa_seg6_lights_06006E48:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x6E48
   symbol: koopa_seg6_lights_06006E48
 
 koopa_seg6_lights_06006E60:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x6E60
   symbol: koopa_seg6_lights_06006E60
@@ -236,13 +236,13 @@ koopa_seg6_dl_06007B20:
   symbol: koopa_seg6_dl_06007B20
 
 koopa_seg6_lights_06007B48:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x7B48
   symbol: koopa_seg6_lights_06007B48
 
 koopa_seg6_lights_06007B60:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x7B60
   symbol: koopa_seg6_lights_06007B60
@@ -304,13 +304,13 @@ koopa_seg6_dl_06008250:
   symbol: koopa_seg6_dl_06008250
 
 koopa_seg6_lights_060082C0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x82C0
   symbol: koopa_seg6_lights_060082C0
 
 koopa_seg6_lights_060082D8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x82D8
   symbol: koopa_seg6_lights_060082D8
@@ -354,13 +354,13 @@ koopa_seg6_dl_060086D0:
   symbol: koopa_seg6_dl_060086D0
 
 koopa_seg6_lights_06008740:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x8740
   symbol: koopa_seg6_lights_06008740
 
 koopa_seg6_lights_06008758:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x8758
   symbol: koopa_seg6_lights_06008758

@@ -54,25 +54,25 @@ bully_seg5_dl_05000398:
   symbol: bully_seg5_dl_05000398
 
 bully_seg5_lights_05000408:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x408
   symbol: bully_seg5_lights_05000408
 
 bully_seg5_lights_05000420:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x420
   symbol: bully_seg5_lights_05000420
 
 bully_lights_unused:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x438
   symbol: bully_lights_unused
 
 bully_seg5_lights_05000450:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x450
   symbol: bully_seg5_lights_05000450

@@ -54,43 +54,43 @@ penguin_eye_open:
   symbol: penguin_seg5_texture_05002DE0
 
 penguin_seg5_lights_05002D80:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2D80
   symbol: penguin_seg5_lights_05002D80
 
 penguin_seg5_lights_05002D98:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2D98
   symbol: penguin_seg5_lights_05002D98
 
 penguin_seg5_lights_05002DB0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2DB0
   symbol: penguin_seg5_lights_05002DB0
 
 penguin_seg5_lights_05002DC8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2DC8
   symbol: penguin_seg5_lights_05002DC8
 
 penguin_seg5_lights_05005DE0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x5DE0
   symbol: penguin_seg5_lights_05005DE0
 
 penguin_seg5_lights_05005DF8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x5DF8
   symbol: penguin_seg5_lights_05005DF8
 
 penguin_seg5_lights_05005E10:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x5E10
   symbol: penguin_seg5_lights_05005E10
