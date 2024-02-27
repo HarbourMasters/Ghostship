@@ -38,7 +38,7 @@ impact_smoke_3:
 
 impact_smoke_seg6_vertex_06062A28:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x62A28
   symbol: impact_smoke_seg6_vertex_06062A28
 

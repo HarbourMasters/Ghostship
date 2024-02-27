@@ -28,67 +28,67 @@ toad_seg6_lights_06005908:
 
 toad_seg6_vertex_06006920:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6920
   symbol: toad_seg6_vertex_06006920
 
 toad_seg6_vertex_06006A10:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6A10
   symbol: toad_seg6_vertex_06006A10
 
 toad_seg6_vertex_06006B10:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x6B10
   symbol: toad_seg6_vertex_06006B10
 
 toad_seg6_vertex_06006BD0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6BD0
   symbol: toad_seg6_vertex_06006BD0
 
 toad_seg6_vertex_06006CC0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6CC0
   symbol: toad_seg6_vertex_06006CC0
 
 toad_seg6_vertex_06006DC0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6DC0
   symbol: toad_seg6_vertex_06006DC0
 
 toad_seg6_vertex_06006EC0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6EC0
   symbol: toad_seg6_vertex_06006EC0
 
 toad_seg6_vertex_06006FB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6FB0
   symbol: toad_seg6_vertex_06006FB0
 
 toad_seg6_vertex_060070B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x70B0
   symbol: toad_seg6_vertex_060070B0
 
 toad_seg6_vertex_060071B0:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x71B0
   symbol: toad_seg6_vertex_060071B0
 
 toad_seg6_vertex_06007200:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x7200
   symbol: toad_seg6_vertex_06007200
 
@@ -125,13 +125,13 @@ toad_seg6_lights_06007788:
 
 toad_seg6_vertex_060077A0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x77A0
   symbol: toad_seg6_vertex_060077A0
 
 toad_seg6_vertex_060078A0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x78A0
   symbol: toad_seg6_vertex_060078A0
 
@@ -164,19 +164,19 @@ toad_seg6_lights_06007A98:
 
 toad_seg6_vertex_06007AB0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x7AB0
   symbol: toad_seg6_vertex_06007AB0
 
 toad_seg6_vertex_06007B90:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x7B90
   symbol: toad_seg6_vertex_06007B90
 
 toad_seg6_vertex_06007C50:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x7C50
   symbol: toad_seg6_vertex_06007C50
 
@@ -198,13 +198,13 @@ toad_seg6_lights_06007ED8:
 
 toad_seg6_vertex_06007EF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x7EF0
   symbol: toad_seg6_vertex_06007EF0
 
 toad_seg6_vertex_06007FF0:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x7FF0
   symbol: toad_seg6_vertex_06007FF0
 
@@ -226,13 +226,13 @@ toad_seg6_lights_06008220:
 
 toad_seg6_vertex_06008238:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x8238
   symbol: toad_seg6_vertex_06008238
 
 toad_seg6_vertex_06008338:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x8338
   symbol: toad_seg6_vertex_06008338
 
@@ -259,13 +259,13 @@ toad_seg6_lights_06008560:
 
 toad_seg6_vertex_06008578:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x8578
   symbol: toad_seg6_vertex_06008578
 
 toad_seg6_vertex_06008678:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x8678
   symbol: toad_seg6_vertex_06008678
 
@@ -287,13 +287,13 @@ toad_seg6_lights_060088B8:
 
 toad_seg6_vertex_060088D0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x88D0
   symbol: toad_seg6_vertex_060088D0
 
 toad_seg6_vertex_060089D0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x89D0
   symbol: toad_seg6_vertex_060089D0
 

@@ -44,7 +44,7 @@ seaweed_seg6_lights_06007DF8:
 
 seaweed_seg6_vertex_06009E10:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x9E10
   symbol: seaweed_seg6_vertex_06009E10
 
@@ -60,7 +60,7 @@ seaweed_seg6_dl_06009E98:
 
 seaweed_seg6_vertex_06009F08:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x9F08
   symbol: seaweed_seg6_vertex_06009F08
 
@@ -76,7 +76,7 @@ seaweed_seg6_dl_06009F90:
 
 seaweed_seg6_vertex_0600A000:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA000
   symbol: seaweed_seg6_vertex_0600A000
 
@@ -92,7 +92,7 @@ seaweed_seg6_dl_0600A088:
 
 seaweed_seg6_vertex_0600A0F8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA0F8
   symbol: seaweed_seg6_vertex_0600A0F8
 

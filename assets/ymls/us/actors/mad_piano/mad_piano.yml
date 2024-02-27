@@ -84,31 +84,31 @@ mad_piano_seg5_lights_050086F0:
 
 mad_piano_seg5_vertex_05008708:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x8708
   symbol: mad_piano_seg5_vertex_05008708
 
 mad_piano_seg5_vertex_050087A8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x87A8
   symbol: mad_piano_seg5_vertex_050087A8
 
 mad_piano_seg5_vertex_05008898:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x8898
   symbol: mad_piano_seg5_vertex_05008898
 
 mad_piano_seg5_vertex_05008988:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x8988
   symbol: mad_piano_seg5_vertex_05008988
 
 mad_piano_seg5_vertex_05008A78:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x8A78
   symbol: mad_piano_seg5_vertex_05008A78
 
@@ -153,67 +153,67 @@ mad_piano_seg5_lights_05008D88:
 
 mad_piano_seg5_vertex_05008DA0:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x8DA0
   symbol: mad_piano_seg5_vertex_05008DA0
 
 mad_piano_seg5_vertex_05008E70:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x8E70
   symbol: mad_piano_seg5_vertex_05008E70
 
 mad_piano_seg5_vertex_05008F60:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x8F60
   symbol: mad_piano_seg5_vertex_05008F60
 
 mad_piano_seg5_vertex_05009050:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x9050
   symbol: mad_piano_seg5_vertex_05009050
 
 mad_piano_seg5_vertex_05009150:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x9150
   symbol: mad_piano_seg5_vertex_05009150
 
 mad_piano_seg5_vertex_05009240:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x9240
   symbol: mad_piano_seg5_vertex_05009240
 
 mad_piano_seg5_vertex_05009330:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x9330
   symbol: mad_piano_seg5_vertex_05009330
 
 mad_piano_seg5_vertex_050093F0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x93F0
   symbol: mad_piano_seg5_vertex_050093F0
 
 mad_piano_seg5_vertex_05009430:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x9430
   symbol: mad_piano_seg5_vertex_05009430
 
 mad_piano_seg5_vertex_05009470:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x9470
   symbol: mad_piano_seg5_vertex_05009470
 
 mad_piano_seg5_vertex_050094F0:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x94F0
   symbol: mad_piano_seg5_vertex_050094F0
 

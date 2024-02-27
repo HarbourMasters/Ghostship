@@ -20,43 +20,43 @@ water_bubble_seg5_lights_0500FE68:
 
 water_bubble_seg5_vertex_05010680:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x10680
   symbol: water_bubble_seg5_vertex_05010680
 
 water_bubble_seg5_vertex_05010780:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x10780
   symbol: water_bubble_seg5_vertex_05010780
 
 water_bubble_seg5_vertex_05010870:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x10870
   symbol: water_bubble_seg5_vertex_05010870
 
 water_bubble_seg5_vertex_05010950:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x10950
   symbol: water_bubble_seg5_vertex_05010950
 
 water_bubble_seg5_vertex_05010A50:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x10A50
   symbol: water_bubble_seg5_vertex_05010A50
 
 water_bubble_seg5_vertex_05010B50:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x10B50
   symbol: water_bubble_seg5_vertex_05010B50
 
 water_bubble_seg5_vertex_05010C50:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x10C50
   symbol: water_bubble_seg5_vertex_05010C50
 

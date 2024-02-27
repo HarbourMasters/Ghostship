@@ -67,55 +67,55 @@ bubba_seg5_lights_05004438:
 
 bubba_seg5_vertex_05004450:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x4450
   symbol: bubba_seg5_vertex_05004450
 
 bubba_seg5_vertex_050044C0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x44C0
   symbol: bubba_seg5_vertex_050044C0
 
 bubba_seg5_vertex_050045B0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x45B0
   symbol: bubba_seg5_vertex_050045B0
 
 bubba_seg5_vertex_05004620:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x4620
   symbol: bubba_seg5_vertex_05004620
 
 bubba_seg5_vertex_05004680:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4680
   symbol: bubba_seg5_vertex_05004680
 
 bubba_seg5_vertex_05004780:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x4780
   symbol: bubba_seg5_vertex_05004780
 
 bubba_seg5_vertex_05004870:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x4870
   symbol: bubba_seg5_vertex_05004870
 
 bubba_seg5_vertex_05004940:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x4940
   symbol: bubba_seg5_vertex_05004940
 
 bubba_seg5_vertex_050049D0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x49D0
   symbol: bubba_seg5_vertex_050049D0
 
@@ -169,55 +169,55 @@ bubba_seg5_lights_05004F60:
 
 bubba_seg5_vertex_05004F78:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x4F78
   symbol: bubba_seg5_vertex_05004F78
 
 bubba_seg5_vertex_05004FE8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x4FE8
   symbol: bubba_seg5_vertex_05004FE8
 
 bubba_seg5_vertex_050050D8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x50D8
   symbol: bubba_seg5_vertex_050050D8
 
 bubba_seg5_vertex_05005148:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x5148
   symbol: bubba_seg5_vertex_05005148
 
 bubba_seg5_vertex_050051A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x51A8
   symbol: bubba_seg5_vertex_050051A8
 
 bubba_seg5_vertex_050052A8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x52A8
   symbol: bubba_seg5_vertex_050052A8
 
 bubba_seg5_vertex_05005368:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x5368
   symbol: bubba_seg5_vertex_05005368
 
 bubba_seg5_vertex_05005438:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x5438
   symbol: bubba_seg5_vertex_05005438
 
 bubba_seg5_vertex_050054C8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x54C8
   symbol: bubba_seg5_vertex_050054C8
 

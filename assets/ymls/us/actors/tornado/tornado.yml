@@ -20,25 +20,25 @@ tornado_seg5_lights_05014128:
 
 tornado_seg5_vertex_05014140:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x14140
   symbol: tornado_seg5_vertex_05014140
 
 tornado_seg5_vertex_05014220:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14220
   symbol: tornado_seg5_vertex_05014220
 
 tornado_seg5_vertex_05014320:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x14320
   symbol: tornado_seg5_vertex_05014320
 
 tornado_seg5_vertex_05014400:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x14400
   symbol: tornado_seg5_vertex_05014400
 

@@ -58,13 +58,13 @@ eyerok_seg5_lights_0500B540:
 
 eyerok_seg5_vertex_0500B558:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xB558
   symbol: eyerok_seg5_vertex_0500B558
 
 eyerok_seg5_vertex_0500B648:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xB648
   symbol: eyerok_seg5_vertex_0500B648
 
@@ -86,13 +86,13 @@ eyerok_seg5_lights_0500B7B8:
 
 eyerok_seg5_vertex_0500B7D0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xB7D0
   symbol: eyerok_seg5_vertex_0500B7D0
 
 eyerok_seg5_vertex_0500B8C0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xB8C0
   symbol: eyerok_seg5_vertex_0500B8C0
 
@@ -114,13 +114,13 @@ eyerok_seg5_lights_0500BA30:
 
 eyerok_seg5_vertex_0500BA48:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xBA48
   symbol: eyerok_seg5_vertex_0500BA48
 
 eyerok_seg5_vertex_0500BB38:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xBB38
   symbol: eyerok_seg5_vertex_0500BB38
 
@@ -142,13 +142,13 @@ eyerok_seg5_lights_0500BCF8:
 
 eyerok_seg5_vertex_0500BD10:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xBD10
   symbol: eyerok_seg5_vertex_0500BD10
 
 eyerok_seg5_vertex_0500BE00:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xBE00
   symbol: eyerok_seg5_vertex_0500BE00
 
@@ -170,7 +170,7 @@ eyerok_seg5_lights_0500BF70:
 
 eyerok_seg5_vertex_0500BF88:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xBF88
   symbol: eyerok_seg5_vertex_0500BF88
 
@@ -192,13 +192,13 @@ eyerok_seg5_lights_0500C170:
 
 eyerok_seg5_vertex_0500C188:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xC188
   symbol: eyerok_seg5_vertex_0500C188
 
 eyerok_seg5_vertex_0500C278:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xC278
   symbol: eyerok_seg5_vertex_0500C278
 
@@ -220,13 +220,13 @@ eyerok_seg5_lights_0500C3E8:
 
 eyerok_seg5_vertex_0500C400:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xC400
   symbol: eyerok_seg5_vertex_0500C400
 
 eyerok_seg5_vertex_0500C4F0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xC4F0
   symbol: eyerok_seg5_vertex_0500C4F0
 
@@ -248,13 +248,13 @@ eyerok_seg5_lights_0500C6B0:
 
 eyerok_seg5_vertex_0500C6C8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xC6C8
   symbol: eyerok_seg5_vertex_0500C6C8
 
 eyerok_seg5_vertex_0500C7B8:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xC7B8
   symbol: eyerok_seg5_vertex_0500C7B8
 
@@ -270,7 +270,7 @@ eyerok_seg5_dl_0500C908:
 
 eyerok_seg5_vertex_0500C978:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC978
   symbol: eyerok_seg5_vertex_0500C978
 

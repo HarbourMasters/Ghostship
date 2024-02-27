@@ -38,7 +38,7 @@ dirt_seg3_lights_0302BDB0:
 
 dirt_seg3_vertex_0302BDC8:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x2BDC8
   symbol: dirt_seg3_vertex_0302BDC8
 
@@ -54,25 +54,25 @@ dirt_seg3_dl_0302C028:
 
 dirt_seg3_vertex_0302C098:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x2C098
   symbol: dirt_seg3_vertex_0302C098
 
 dirt_seg3_vertex_0302C0C8:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x2C0C8
   symbol: dirt_seg3_vertex_0302C0C8
 
 dirt_seg3_vertex_0302C0F8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x2C0F8
   symbol: dirt_seg3_vertex_0302C0F8
 
 dirt_seg3_vertex_0302C198:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x2C198
   symbol: dirt_seg3_vertex_0302C198
 

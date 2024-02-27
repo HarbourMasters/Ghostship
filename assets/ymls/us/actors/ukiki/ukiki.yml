@@ -71,31 +71,31 @@ ukiki_seg5_lights_0500ABD8:
 
 ukiki_seg5_vertex_0500ABF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xABF0
   symbol: ukiki_seg5_vertex_0500ABF0
 
 ukiki_seg5_vertex_0500ACF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xACF0
   symbol: ukiki_seg5_vertex_0500ACF0
 
 ukiki_seg5_vertex_0500ADF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xADF0
   symbol: ukiki_seg5_vertex_0500ADF0
 
 ukiki_seg5_vertex_0500AEF0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xAEF0
   symbol: ukiki_seg5_vertex_0500AEF0
 
 ukiki_seg5_vertex_0500AF60:
   type: VTX
-  size: 112
+  count: 14
   offset: 0xAF60
   symbol: ukiki_seg5_vertex_0500AF60
 
@@ -137,25 +137,25 @@ ukiki_seg5_lights_0500B338:
 
 ukiki_seg5_vertex_0500B350:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xB350
   symbol: ukiki_seg5_vertex_0500B350
 
 ukiki_seg5_vertex_0500B440:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB440
   symbol: ukiki_seg5_vertex_0500B440
 
 ukiki_seg5_vertex_0500B540:
   type: VTX
-  size: 112
+  count: 14
   offset: 0xB540
   symbol: ukiki_seg5_vertex_0500B540
 
 ukiki_seg5_vertex_0500B620:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xB620
   symbol: ukiki_seg5_vertex_0500B620
 
@@ -182,7 +182,7 @@ ukiki_seg5_lights_0500B888:
 
 ukiki_seg5_vertex_0500B8A0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xB8A0
   symbol: ukiki_seg5_vertex_0500B8A0
 
@@ -204,7 +204,7 @@ ukiki_seg5_lights_0500B9E8:
 
 ukiki_seg5_vertex_0500BA00:
   type: VTX
-  size: 72
+  count: 9
   offset: 0xBA00
   symbol: ukiki_seg5_vertex_0500BA00
 
@@ -226,7 +226,7 @@ ukiki_seg5_lights_0500BB88:
 
 ukiki_seg5_vertex_0500BBA0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xBBA0
   symbol: ukiki_seg5_vertex_0500BBA0
 
@@ -248,7 +248,7 @@ ukiki_seg5_lights_0500BCD8:
 
 ukiki_seg5_vertex_0500BCF0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xBCF0
   symbol: ukiki_seg5_vertex_0500BCF0
 
@@ -270,7 +270,7 @@ ukiki_seg5_lights_0500BE98:
 
 ukiki_seg5_vertex_0500BEB0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xBEB0
   symbol: ukiki_seg5_vertex_0500BEB0
 
@@ -292,7 +292,7 @@ ukiki_seg5_lights_0500C058:
 
 ukiki_seg5_vertex_0500C070:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xC070
   symbol: ukiki_seg5_vertex_0500C070
 
@@ -314,7 +314,7 @@ ukiki_seg5_lights_0500C218:
 
 ukiki_seg5_vertex_0500C230:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xC230
   symbol: ukiki_seg5_vertex_0500C230
 
@@ -336,7 +336,7 @@ ukiki_seg5_lights_0500C3C8:
 
 ukiki_seg5_vertex_0500C3E0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xC3E0
   symbol: ukiki_seg5_vertex_0500C3E0
 
@@ -358,7 +358,7 @@ ukiki_seg5_lights_0500C588:
 
 ukiki_seg5_vertex_0500C5A0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xC5A0
   symbol: ukiki_seg5_vertex_0500C5A0
 
@@ -380,7 +380,7 @@ ukiki_seg5_lights_0500C748:
 
 ukiki_seg5_vertex_0500C760:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xC760
   symbol: ukiki_seg5_vertex_0500C760
 
@@ -402,7 +402,7 @@ ukiki_seg5_lights_0500C8F8:
 
 ukiki_seg5_vertex_0500C910:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xC910
   symbol: ukiki_seg5_vertex_0500C910
 
@@ -418,37 +418,37 @@ ukiki_seg5_dl_0500CA48:
 
 ukiki_seg5_vertex_0500CAA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xCAA8
   symbol: ukiki_seg5_vertex_0500CAA8
 
 ukiki_seg5_vertex_0500CBA8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xCBA8
   symbol: ukiki_seg5_vertex_0500CBA8
 
 ukiki_seg5_vertex_0500CC28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xCC28
   symbol: ukiki_seg5_vertex_0500CC28
 
 ukiki_seg5_vertex_0500CD28:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xCD28
   symbol: ukiki_seg5_vertex_0500CD28
 
 ukiki_seg5_vertex_0500CDA8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xCDA8
   symbol: ukiki_seg5_vertex_0500CDA8
 
 ukiki_seg5_vertex_0500CE98:
   type: VTX
-  size: 104
+  count: 13
   offset: 0xCE98
   symbol: ukiki_seg5_vertex_0500CE98
 

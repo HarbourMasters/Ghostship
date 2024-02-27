@@ -14,7 +14,7 @@ spinning_heart:
 
 heart_seg8_vertex_0800D7A0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xD7A0
   symbol: heart_seg8_vertex_0800D7A0
 

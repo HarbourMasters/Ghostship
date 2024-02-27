@@ -50,37 +50,37 @@ snufit_seg6_lights_06008CF8:
 
 snufit_seg6_vertex_06008D10:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x8D10
   symbol: snufit_seg6_vertex_06008D10
 
 snufit_seg6_vertex_06008DF0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x8DF0
   symbol: snufit_seg6_vertex_06008DF0
 
 snufit_seg6_vertex_06008EB0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x8EB0
   symbol: snufit_seg6_vertex_06008EB0
 
 snufit_seg6_vertex_06008F90:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x8F90
   symbol: snufit_seg6_vertex_06008F90
 
 snufit_seg6_vertex_06009070:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x9070
   symbol: snufit_seg6_vertex_06009070
 
 snufit_seg6_vertex_06009170:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x9170
   symbol: snufit_seg6_vertex_06009170
 
@@ -112,13 +112,13 @@ snufit_seg6_lights_06009530:
 
 snufit_seg6_vertex_06009548:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x9548
   symbol: snufit_seg6_vertex_06009548
 
 snufit_seg6_vertex_06009608:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x9608
   symbol: snufit_seg6_vertex_06009608
 
@@ -145,7 +145,7 @@ snufit_seg6_lights_060097C8:
 
 snufit_seg6_vertex_060097E0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x97E0
   symbol: snufit_seg6_vertex_060097E0
 
@@ -161,7 +161,7 @@ snufit_seg6_dl_06009938:
 
 snufit_seg6_vertex_06009998:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x9998
   symbol: snufit_seg6_vertex_06009998
 
@@ -183,7 +183,7 @@ snufit_seg6_lights_06009A80:
 
 snufit_seg6_vertex_06009A98:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x9A98
   symbol: snufit_seg6_vertex_06009A98
 

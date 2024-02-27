@@ -50,55 +50,55 @@ bub_seg6_lights_0600E290:
 
 bub_seg6_vertex_060112A8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x112A8
   symbol: bub_seg6_vertex_060112A8
 
 bub_seg6_vertex_06011388:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x11388
   symbol: bub_seg6_vertex_06011388
 
 bub_seg6_vertex_060113B8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x113B8
   symbol: bub_seg6_vertex_060113B8
 
 bub_seg6_vertex_06011418:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x11418
   symbol: bub_seg6_vertex_06011418
 
 bub_seg6_vertex_06011488:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x11488
   symbol: bub_seg6_vertex_06011488
 
 bub_seg6_vertex_06011578:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x11578
   symbol: bub_seg6_vertex_06011578
 
 bub_seg6_vertex_06011658:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x11658
   symbol: bub_seg6_vertex_06011658
 
 bub_seg6_vertex_06011718:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x11718
   symbol: bub_seg6_vertex_06011718
 
 bub_seg6_vertex_060117D8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x117D8
   symbol: bub_seg6_vertex_060117D8
 
@@ -134,7 +134,7 @@ bub_seg6_dl_06011B28:
 
 bub_seg6_vertex_06011BD8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x11BD8
   symbol: bub_seg6_vertex_06011BD8
 
@@ -150,7 +150,7 @@ bub_seg6_dl_06011CF0:
 
 bub_seg6_vertex_06011D50:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x11D50
   symbol: bub_seg6_vertex_06011D50
 
@@ -166,7 +166,7 @@ bub_seg6_dl_06011E48:
 
 bub_seg6_vertex_06011EA8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x11EA8
   symbol: bub_seg6_vertex_06011EA8
 

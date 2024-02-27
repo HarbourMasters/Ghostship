@@ -47,19 +47,19 @@ whomp_seg6_lights_0601F360:
 
 whomp_seg6_vertex_0601F378:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1F378
   symbol: whomp_seg6_vertex_0601F378
 
 whomp_seg6_vertex_0601F478:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1F478
   symbol: whomp_seg6_vertex_0601F478
 
 whomp_seg6_vertex_0601F4B8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1F4B8
   symbol: whomp_seg6_vertex_0601F4B8
 
@@ -91,13 +91,13 @@ whomp_seg6_lights_0601F678:
 
 whomp_seg6_vertex_0601F690:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x1F690
   symbol: whomp_seg6_vertex_0601F690
 
 whomp_seg6_vertex_0601F780:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x1F780
   symbol: whomp_seg6_vertex_0601F780
 
@@ -119,13 +119,13 @@ whomp_seg6_lights_0601F8E0:
 
 whomp_seg6_vertex_0601F8F8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x1F8F8
   symbol: whomp_seg6_vertex_0601F8F8
 
 whomp_seg6_vertex_0601F9E8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x1F9E8
   symbol: whomp_seg6_vertex_0601F9E8
 
@@ -141,7 +141,7 @@ whomp_seg6_dl_0601FAE8:
 
 whomp_seg6_vertex_0601FB48:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1FB48
   symbol: whomp_seg6_vertex_0601FB48
 
@@ -157,7 +157,7 @@ whomp_seg6_dl_0601FBC0:
 
 whomp_seg6_vertex_0601FC30:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1FC30
   symbol: whomp_seg6_vertex_0601FC30
 
@@ -179,7 +179,7 @@ whomp_seg6_lights_0601FD18:
 
 whomp_seg6_vertex_0601FD30:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x1FD30
   symbol: whomp_seg6_vertex_0601FD30
 
@@ -201,7 +201,7 @@ whomp_seg6_lights_0601FF08:
 
 whomp_seg6_vertex_0601FF20:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x1FF20
   symbol: whomp_seg6_vertex_0601FF20
 

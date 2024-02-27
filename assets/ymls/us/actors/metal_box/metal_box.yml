@@ -19,13 +19,13 @@ metal_box_seg8_lights_08023980:
 
 metal_box_seg8_vertex_08024998:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x24998
   symbol: metal_box_seg8_vertex_08024998
 
 metal_box_seg8_vertex_08024A98:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x24A98
   symbol: metal_box_seg8_vertex_08024A98
 

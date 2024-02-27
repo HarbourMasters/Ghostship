@@ -14,7 +14,7 @@ monty_mole_hole:
 
 monty_mole_hole_seg5_vertex_05000000:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x0
   symbol: monty_mole_hole_seg5_vertex_05000000
 

@@ -28,7 +28,7 @@ wooden_signpost_seg3_lights_0302C940:
 
 wooden_signpost_seg3_vertex_0302C958:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x2C958
   symbol: wooden_signpost_seg3_vertex_0302C958
 
@@ -50,19 +50,19 @@ wooden_signpost_seg3_lights_0302DAA8:
 
 wooden_signpost_seg3_vertex_0302DAC0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2DAC0
   symbol: wooden_signpost_seg3_vertex_0302DAC0
 
 wooden_signpost_seg3_vertex_0302DBC0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2DBC0
   symbol: wooden_signpost_seg3_vertex_0302DBC0
 
 wooden_signpost_seg3_vertex_0302DC00:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2DC00
   symbol: wooden_signpost_seg3_vertex_0302DC00
 

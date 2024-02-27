@@ -11,7 +11,7 @@ transparent_star_seg3_lights_0302C488:
 
 transparent_star_seg3_vertex_0302C4A0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x2C4A0
   symbol: transparent_star_seg3_vertex_0302C4A0
 

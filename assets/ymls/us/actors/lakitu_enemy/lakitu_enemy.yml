@@ -76,19 +76,19 @@ lakitu_enemy_seg5_lights_050124F8:
 
 lakitu_enemy_seg5_vertex_05012510:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12510
   symbol: lakitu_enemy_seg5_vertex_05012510
 
 lakitu_enemy_seg5_vertex_05012610:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x12610
   symbol: lakitu_enemy_seg5_vertex_05012610
 
 lakitu_enemy_seg5_vertex_050126B0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x126B0
   symbol: lakitu_enemy_seg5_vertex_050126B0
 
@@ -115,37 +115,37 @@ lakitu_enemy_seg5_lights_05012978:
 
 lakitu_enemy_seg5_vertex_05012990:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12990
   symbol: lakitu_enemy_seg5_vertex_05012990
 
 lakitu_enemy_seg5_vertex_05012A90:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x12A90
   symbol: lakitu_enemy_seg5_vertex_05012A90
 
 lakitu_enemy_seg5_vertex_05012B80:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12B80
   symbol: lakitu_enemy_seg5_vertex_05012B80
 
 lakitu_enemy_seg5_vertex_05012C80:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x12C80
   symbol: lakitu_enemy_seg5_vertex_05012C80
 
 lakitu_enemy_seg5_vertex_05012D70:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12D70
   symbol: lakitu_enemy_seg5_vertex_05012D70
 
 lakitu_enemy_seg5_vertex_05012E70:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x12E70
   symbol: lakitu_enemy_seg5_vertex_05012E70
 
@@ -167,7 +167,7 @@ lakitu_enemy_seg5_lights_050131C0:
 
 lakitu_enemy_seg5_vertex_050131D8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x131D8
   symbol: lakitu_enemy_seg5_vertex_050131D8
 
@@ -204,7 +204,7 @@ lakitu_enemy_seg5_lights_050133A0:
 
 lakitu_enemy_seg5_vertex_050133B8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x133B8
   symbol: lakitu_enemy_seg5_vertex_050133B8
 
@@ -221,7 +221,7 @@ lakitu_enemy_seg5_lights_05013598:
 
 lakitu_enemy_seg5_vertex_050135B0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x135B0
   symbol: lakitu_enemy_seg5_vertex_050135B0
 
@@ -232,7 +232,7 @@ lakitu_enemy_seg5_dl_050136A0:
 
 lakitu_enemy_seg5_vertex_05013790:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x13790
   symbol: lakitu_enemy_seg5_vertex_05013790
 

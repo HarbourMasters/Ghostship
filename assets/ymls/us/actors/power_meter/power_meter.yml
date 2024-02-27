@@ -86,7 +86,7 @@ power_meter_two_segments:
 
 vertex_power_meter_base:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x29400
   symbol: vertex_power_meter_base
 
@@ -97,7 +97,7 @@ dl_power_meter_base:
 
 vertex_power_meter_health_segments:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x29530
   symbol: vertex_power_meter_health_segments
 

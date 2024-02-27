@@ -36,25 +36,25 @@ dorrie_seg6_lights_0600B5A0:
 
 dorrie_seg6_vertex_0600B5B8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0xB5B8
   symbol: dorrie_seg6_vertex_0600B5B8
 
 dorrie_seg6_vertex_0600B618:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB618
   symbol: dorrie_seg6_vertex_0600B618
 
 dorrie_seg6_vertex_0600B718:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xB718
   symbol: dorrie_seg6_vertex_0600B718
 
 dorrie_seg6_vertex_0600B808:
   type: VTX
-  size: 112
+  count: 14
   offset: 0xB808
   symbol: dorrie_seg6_vertex_0600B808
 
@@ -81,19 +81,19 @@ dorrie_seg6_lights_0600BBC0:
 
 dorrie_seg6_vertex_0600BBD8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0xBBD8
   symbol: dorrie_seg6_vertex_0600BBD8
 
 dorrie_seg6_vertex_0600BC98:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xBC98
   symbol: dorrie_seg6_vertex_0600BC98
 
 dorrie_seg6_vertex_0600BD98:
   type: VTX
-  size: 104
+  count: 13
   offset: 0xBD98
   symbol: dorrie_seg6_vertex_0600BD98
 
@@ -120,13 +120,13 @@ dorrie_seg6_lights_0600C0F8:
 
 dorrie_seg6_vertex_0600C110:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xC110
   symbol: dorrie_seg6_vertex_0600C110
 
 dorrie_seg6_vertex_0600C210:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xC210
   symbol: dorrie_seg6_vertex_0600C210
 
@@ -148,19 +148,19 @@ dorrie_seg6_lights_0600C510:
 
 dorrie_seg6_vertex_0600C528:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xC528
   symbol: dorrie_seg6_vertex_0600C528
 
 dorrie_seg6_vertex_0600C628:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xC628
   symbol: dorrie_seg6_vertex_0600C628
 
 dorrie_seg6_vertex_0600C728:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xC728
   symbol: dorrie_seg6_vertex_0600C728
 
@@ -182,31 +182,31 @@ dorrie_seg6_lights_0600C960:
 
 dorrie_seg6_vertex_0600C978:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xC978
   symbol: dorrie_seg6_vertex_0600C978
 
 dorrie_seg6_vertex_0600CA68:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xCA68
   symbol: dorrie_seg6_vertex_0600CA68
 
 dorrie_seg6_vertex_0600CB58:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xCB58
   symbol: dorrie_seg6_vertex_0600CB58
 
 dorrie_seg6_vertex_0600CC58:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xCC58
   symbol: dorrie_seg6_vertex_0600CC58
 
 dorrie_seg6_vertex_0600CD58:
   type: VTX
-  size: 72
+  count: 9
   offset: 0xCD58
   symbol: dorrie_seg6_vertex_0600CD58
 
@@ -228,19 +228,19 @@ dorrie_seg6_lights_0600D078:
 
 dorrie_seg6_vertex_0600D090:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xD090
   symbol: dorrie_seg6_vertex_0600D090
 
 dorrie_seg6_vertex_0600D180:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xD180
   symbol: dorrie_seg6_vertex_0600D180
 
 dorrie_seg6_vertex_0600D280:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xD280
   symbol: dorrie_seg6_vertex_0600D280
 
@@ -262,13 +262,13 @@ dorrie_seg6_lights_0600D4E8:
 
 dorrie_seg6_vertex_0600D500:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xD500
   symbol: dorrie_seg6_vertex_0600D500
 
 dorrie_seg6_vertex_0600D5F0:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xD5F0
   symbol: dorrie_seg6_vertex_0600D5F0
 
@@ -290,7 +290,7 @@ dorrie_seg6_lights_0600D780:
 
 dorrie_seg6_vertex_0600D798:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xD798
   symbol: dorrie_seg6_vertex_0600D798
 
@@ -312,7 +312,7 @@ dorrie_seg6_lights_0600D958:
 
 dorrie_seg6_vertex_0600D970:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xD970
   symbol: dorrie_seg6_vertex_0600D970
 
@@ -334,7 +334,7 @@ dorrie_seg6_lights_0600DB30:
 
 dorrie_seg6_vertex_0600DB48:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xDB48
   symbol: dorrie_seg6_vertex_0600DB48
 
@@ -356,7 +356,7 @@ dorrie_seg6_lights_0600DD08:
 
 dorrie_seg6_vertex_0600DD20:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xDD20
   symbol: dorrie_seg6_vertex_0600DD20
 
@@ -372,7 +372,7 @@ dorrie_seg6_dl_0600DE38:
 
 dorrie_seg6_vertex_0600DEE0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xDEE0
   symbol: dorrie_seg6_vertex_0600DEE0
 

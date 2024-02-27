@@ -62,7 +62,7 @@ explosion_6:
 
 explosion_seg3_vertex_030009C8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x9C8
   symbol: explosion_seg3_vertex_030009C8
 

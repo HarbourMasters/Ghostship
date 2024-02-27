@@ -26,25 +26,25 @@ mips_seg6_lights_06010398:
 
 mips_seg6_vertex_060103B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x103B0
   symbol: mips_seg6_vertex_060103B0
 
 mips_seg6_vertex_060104B0:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x104B0
   symbol: mips_seg6_vertex_060104B0
 
 mips_seg6_vertex_06010580:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x10580
   symbol: mips_seg6_vertex_06010580
 
 mips_seg6_vertex_060105C0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x105C0
   symbol: mips_seg6_vertex_060105C0
 
@@ -71,19 +71,19 @@ mips_seg6_lights_06010820:
 
 mips_seg6_vertex_06010838:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x10838
   symbol: mips_seg6_vertex_06010838
 
 mips_seg6_vertex_06010928:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x10928
   symbol: mips_seg6_vertex_06010928
 
 mips_seg6_vertex_06010A18:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x10A18
   symbol: mips_seg6_vertex_06010A18
 
@@ -111,13 +111,13 @@ mips_seg6_lights_06010CB8:
 
 mips_seg6_vertex_06010CD0:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x10CD0
   symbol: mips_seg6_vertex_06010CD0
 
 mips_seg6_vertex_06010D30:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x10D30
   symbol: mips_seg6_vertex_06010D30
 
@@ -151,19 +151,19 @@ mips_seg6_lights_06010EF0:
 
 mips_seg6_vertex_06010F08:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x10F08
   symbol: mips_seg6_vertex_06010F08
 
 mips_seg6_vertex_06010F58:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x10F58
   symbol: mips_seg6_vertex_06010F58
 
 mips_seg6_vertex_06010F88:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x10F88
   symbol: mips_seg6_vertex_06010F88
 
@@ -191,13 +191,13 @@ mips_seg6_lights_06011128:
 
 mips_seg6_vertex_06011140:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x11140
   symbol: mips_seg6_vertex_06011140
 
 mips_seg6_vertex_060111A0:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x111A0
   symbol: mips_seg6_vertex_060111A0
 
@@ -225,13 +225,13 @@ mips_seg6_lights_06011388:
 
 mips_seg6_vertex_060113A0:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x113A0
   symbol: mips_seg6_vertex_060113A0
 
 mips_seg6_vertex_060113F0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x113F0
   symbol: mips_seg6_vertex_060113F0
 
@@ -259,13 +259,13 @@ mips_seg6_lights_06011598:
 
 mips_seg6_vertex_060115B0:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x115B0
   symbol: mips_seg6_vertex_060115B0
 
 mips_seg6_vertex_06011610:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x11610
   symbol: mips_seg6_vertex_06011610
 
@@ -293,13 +293,13 @@ mips_seg6_lights_060117F8:
 
 mips_seg6_vertex_06011810:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x11810
   symbol: mips_seg6_vertex_06011810
 
 mips_seg6_vertex_06011860:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x11860
   symbol: mips_seg6_vertex_06011860
 
@@ -327,13 +327,13 @@ mips_seg6_lights_06011A08:
 
 mips_seg6_vertex_06011A20:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x11A20
   symbol: mips_seg6_vertex_06011A20
 
 mips_seg6_vertex_06011A80:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x11A80
   symbol: mips_seg6_vertex_06011A80
 
@@ -361,13 +361,13 @@ mips_seg6_lights_06011C28:
 
 mips_seg6_vertex_06011C40:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x11C40
   symbol: mips_seg6_vertex_06011C40
 
 mips_seg6_vertex_06011CA0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x11CA0
   symbol: mips_seg6_vertex_06011CA0
 
@@ -389,7 +389,7 @@ mips_seg6_lights_06011E10:
 
 mips_seg6_vertex_06011E28:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x11E28
   symbol: mips_seg6_vertex_06011E28
 
@@ -411,7 +411,7 @@ mips_seg6_lights_06011EF8:
 
 mips_seg6_vertex_06011F10:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x11F10
   symbol: mips_seg6_vertex_06011F10
 

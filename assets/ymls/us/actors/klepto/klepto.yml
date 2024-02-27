@@ -61,25 +61,25 @@ klepto_seg5_lights_05003820:
 
 klepto_seg5_vertex_05003838:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x3838
   symbol: klepto_seg5_vertex_05003838
 
 klepto_seg5_vertex_05003898:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3898
   symbol: klepto_seg5_vertex_05003898
 
 klepto_seg5_vertex_05003988:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x3988
   symbol: klepto_seg5_vertex_05003988
 
 klepto_seg5_vertex_050039B8:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x39B8
   symbol: klepto_seg5_vertex_050039B8
 
@@ -111,7 +111,7 @@ klepto_seg5_lights_05003C58:
 
 klepto_seg5_vertex_05003C70:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x3C70
   symbol: klepto_seg5_vertex_05003C70
 
@@ -133,7 +133,7 @@ klepto_seg5_lights_05003DB0:
 
 klepto_seg5_vertex_05003DC8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x3DC8
   symbol: klepto_seg5_vertex_05003DC8
 
@@ -155,7 +155,7 @@ klepto_seg5_lights_05003F80:
 
 klepto_seg5_vertex_05003F98:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x3F98
   symbol: klepto_seg5_vertex_05003F98
 
@@ -177,7 +177,7 @@ klepto_seg5_lights_05004148:
 
 klepto_seg5_vertex_05004160:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4160
   symbol: klepto_seg5_vertex_05004160
 
@@ -199,7 +199,7 @@ klepto_seg5_lights_05004258:
 
 klepto_seg5_vertex_05004270:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x4270
   symbol: klepto_seg5_vertex_05004270
 
@@ -221,7 +221,7 @@ klepto_seg5_lights_05004360:
 
 klepto_seg5_vertex_05004378:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x4378
   symbol: klepto_seg5_vertex_05004378
 
@@ -249,19 +249,19 @@ klepto_seg5_lights_05004480:
 
 klepto_seg5_vertex_05004498:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4498
   symbol: klepto_seg5_vertex_05004498
 
 klepto_seg5_vertex_05004558:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x4558
   symbol: klepto_seg5_vertex_05004558
 
 klepto_seg5_vertex_05004648:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x4648
   symbol: klepto_seg5_vertex_05004648
 
@@ -289,19 +289,19 @@ klepto_seg5_lights_05004810:
 
 klepto_seg5_vertex_05004828:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4828
   symbol: klepto_seg5_vertex_05004828
 
 klepto_seg5_vertex_050048E8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x48E8
   symbol: klepto_seg5_vertex_050048E8
 
 klepto_seg5_vertex_050049D8:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x49D8
   symbol: klepto_seg5_vertex_050049D8
 
@@ -323,7 +323,7 @@ klepto_seg5_lights_05004B88:
 
 klepto_seg5_vertex_05004BA0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4BA0
   symbol: klepto_seg5_vertex_05004BA0
 
@@ -345,7 +345,7 @@ klepto_seg5_lights_05004C98:
 
 klepto_seg5_vertex_05004CB0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4CB0
   symbol: klepto_seg5_vertex_05004CB0
 
@@ -367,7 +367,7 @@ klepto_seg5_lights_05004DA8:
 
 klepto_seg5_vertex_05004DC0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4DC0
   symbol: klepto_seg5_vertex_05004DC0
 
@@ -389,7 +389,7 @@ klepto_seg5_lights_05004EB8:
 
 klepto_seg5_vertex_05004ED0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4ED0
   symbol: klepto_seg5_vertex_05004ED0
 
@@ -411,7 +411,7 @@ klepto_seg5_lights_05004FC8:
 
 klepto_seg5_vertex_05004FE0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4FE0
   symbol: klepto_seg5_vertex_05004FE0
 
@@ -433,7 +433,7 @@ klepto_seg5_lights_050050D8:
 
 klepto_seg5_vertex_050050F0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x50F0
   symbol: klepto_seg5_vertex_050050F0
 

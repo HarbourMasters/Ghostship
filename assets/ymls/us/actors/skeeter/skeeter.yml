@@ -58,7 +58,7 @@ skeeter_lights_unused6:
 
 skeeter_seg6_vertex_06000990:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x990
   symbol: skeeter_seg6_vertex_06000990
 
@@ -74,7 +74,7 @@ skeeter_seg6_dl_06000A08:
 
 skeeter_seg6_vertex_06000A78:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA78
   symbol: skeeter_seg6_vertex_06000A78
 
@@ -90,7 +90,7 @@ skeeter_seg6_dl_06000AF0:
 
 skeeter_seg6_vertex_06000B60:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xB60
   symbol: skeeter_seg6_vertex_06000B60
 
@@ -106,7 +106,7 @@ skeeter_seg6_dl_06000BD8:
 
 skeeter_seg6_vertex_06000C48:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xC48
   symbol: skeeter_seg6_vertex_06000C48
 
@@ -122,7 +122,7 @@ skeeter_seg6_dl_06000CA8:
 
 skeeter_seg6_vertex_06000D18:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xD18
   symbol: skeeter_seg6_vertex_06000D18
 
@@ -144,7 +144,7 @@ skeeter_seg6_lights_06000DE8:
 
 skeeter_seg6_vertex_06000E00:
   type: VTX
-  size: 48
+  count: 6
   offset: 0xE00
   symbol: skeeter_seg6_vertex_06000E00
 
@@ -160,343 +160,343 @@ skeeter_seg6_dl_06000EC0:
 
 skeeter_seg6_vertex_06000EF0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xEF0
   symbol: skeeter_seg6_vertex_06000EF0
 
 skeeter_seg6_vertex_06000FA0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xFA0
   symbol: skeeter_seg6_vertex_06000FA0
 
 skeeter_seg6_vertex_06000FE0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xFE0
   symbol: skeeter_seg6_vertex_06000FE0
 
 skeeter_seg6_vertex_06001020:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x1020
   symbol: skeeter_seg6_vertex_06001020
 
 skeeter_seg6_vertex_060010D0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x10D0
   symbol: skeeter_seg6_vertex_060010D0
 
 skeeter_seg6_vertex_06001110:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1110
   symbol: skeeter_seg6_vertex_06001110
 
 skeeter_seg6_vertex_06001150:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x1150
   symbol: skeeter_seg6_vertex_06001150
 
 skeeter_seg6_vertex_06001200:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1200
   symbol: skeeter_seg6_vertex_06001200
 
 skeeter_seg6_vertex_06001240:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1240
   symbol: skeeter_seg6_vertex_06001240
 
 skeeter_seg6_vertex_06001280:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1280
   symbol: skeeter_seg6_vertex_06001280
 
 skeeter_seg6_vertex_06001380:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1380
   symbol: skeeter_seg6_vertex_06001380
 
 skeeter_seg6_vertex_06001480:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1480
   symbol: skeeter_seg6_vertex_06001480
 
 skeeter_seg6_vertex_06001580:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1580
   symbol: skeeter_seg6_vertex_06001580
 
 skeeter_seg6_vertex_06001680:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1680
   symbol: skeeter_seg6_vertex_06001680
 
 skeeter_seg6_vertex_06001780:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1780
   symbol: skeeter_seg6_vertex_06001780
 
 skeeter_seg6_vertex_06001880:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1880
   symbol: skeeter_seg6_vertex_06001880
 
 skeeter_seg6_vertex_06001980:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1980
   symbol: skeeter_seg6_vertex_06001980
 
 skeeter_seg6_vertex_06001A80:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x1A80
   symbol: skeeter_seg6_vertex_06001A80
 
 skeeter_seg6_vertex_06001B30:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1B30
   symbol: skeeter_seg6_vertex_06001B30
 
 skeeter_seg6_vertex_06001B70:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1B70
   symbol: skeeter_seg6_vertex_06001B70
 
 skeeter_seg6_vertex_06001BB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1BB0
   symbol: skeeter_seg6_vertex_06001BB0
 
 skeeter_seg6_vertex_06001CB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1CB0
   symbol: skeeter_seg6_vertex_06001CB0
 
 skeeter_seg6_vertex_06001DB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1DB0
   symbol: skeeter_seg6_vertex_06001DB0
 
 skeeter_seg6_vertex_06001EB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1EB0
   symbol: skeeter_seg6_vertex_06001EB0
 
 skeeter_seg6_vertex_06001FB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1FB0
   symbol: skeeter_seg6_vertex_06001FB0
 
 skeeter_seg6_vertex_060020B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x20B0
   symbol: skeeter_seg6_vertex_060020B0
 
 skeeter_seg6_vertex_060021B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x21B0
   symbol: skeeter_seg6_vertex_060021B0
 
 skeeter_seg6_vertex_060022B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x22B0
   symbol: skeeter_seg6_vertex_060022B0
 
 skeeter_seg6_vertex_060023B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x23B0
   symbol: skeeter_seg6_vertex_060023B0
 
 skeeter_seg6_vertex_060024B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x24B0
   symbol: skeeter_seg6_vertex_060024B0
 
 skeeter_seg6_vertex_060025B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x25B0
   symbol: skeeter_seg6_vertex_060025B0
 
 skeeter_seg6_vertex_060026B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x26B0
   symbol: skeeter_seg6_vertex_060026B0
 
 skeeter_seg6_vertex_060027B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x27B0
   symbol: skeeter_seg6_vertex_060027B0
 
 skeeter_seg6_vertex_060028B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x28B0
   symbol: skeeter_seg6_vertex_060028B0
 
 skeeter_seg6_vertex_060029B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x29B0
   symbol: skeeter_seg6_vertex_060029B0
 
 skeeter_seg6_vertex_06002AB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2AB0
   symbol: skeeter_seg6_vertex_06002AB0
 
 skeeter_seg6_vertex_06002BB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2BB0
   symbol: skeeter_seg6_vertex_06002BB0
 
 skeeter_seg6_vertex_06002CB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2CB0
   symbol: skeeter_seg6_vertex_06002CB0
 
 skeeter_seg6_vertex_06002DB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2DB0
   symbol: skeeter_seg6_vertex_06002DB0
 
 skeeter_seg6_vertex_06002EB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2EB0
   symbol: skeeter_seg6_vertex_06002EB0
 
 skeeter_seg6_vertex_06002FB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2FB0
   symbol: skeeter_seg6_vertex_06002FB0
 
 skeeter_seg6_vertex_060030B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x30B0
   symbol: skeeter_seg6_vertex_060030B0
 
 skeeter_seg6_vertex_060031B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x31B0
   symbol: skeeter_seg6_vertex_060031B0
 
 skeeter_seg6_vertex_060032B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x32B0
   symbol: skeeter_seg6_vertex_060032B0
 
 skeeter_seg6_vertex_060033B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x33B0
   symbol: skeeter_seg6_vertex_060033B0
 
 skeeter_seg6_vertex_060034B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x34B0
   symbol: skeeter_seg6_vertex_060034B0
 
 skeeter_seg6_vertex_060035B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x35B0
   symbol: skeeter_seg6_vertex_060035B0
 
 skeeter_seg6_vertex_060036B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x36B0
   symbol: skeeter_seg6_vertex_060036B0
 
 skeeter_seg6_vertex_060037B0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x37B0
   symbol: skeeter_seg6_vertex_060037B0
 
 skeeter_seg6_vertex_060037F0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x37F0
   symbol: skeeter_seg6_vertex_060037F0
 
 skeeter_seg6_vertex_060038F0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x38F0
   symbol: skeeter_seg6_vertex_060038F0
 
 skeeter_seg6_vertex_060039F0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x39F0
   symbol: skeeter_seg6_vertex_060039F0
 
 skeeter_seg6_vertex_06003AF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3AF0
   symbol: skeeter_seg6_vertex_06003AF0
 
 skeeter_seg6_vertex_06003BF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3BF0
   symbol: skeeter_seg6_vertex_06003BF0
 
 skeeter_seg6_vertex_06003CF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3CF0
   symbol: skeeter_seg6_vertex_06003CF0
 
 skeeter_seg6_vertex_06003DF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3DF0
   symbol: skeeter_seg6_vertex_06003DF0
 
 skeeter_seg6_vertex_06003EF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3EF0
   symbol: skeeter_seg6_vertex_06003EF0
 

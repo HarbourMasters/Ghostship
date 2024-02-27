@@ -58,7 +58,7 @@ capswitch_seg5_lights_05001C30:
 
 capswitch_seg5_vertex_05002CC8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x2CC8
   symbol: capswitch_seg5_vertex_05002CC8
 
@@ -74,13 +74,13 @@ cap_switch_exclamation_seg5_dl_05002E00:
 
 capswitch_seg5_vertex_05002E60:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2E60
   symbol: capswitch_seg5_vertex_05002E60
 
 capswitch_seg5_vertex_05002F60:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x2F60
   symbol: capswitch_seg5_vertex_05002F60
 
@@ -96,7 +96,7 @@ cap_switch_base_seg5_dl_05003120:
 
 capswitch_seg5_vertex_05003180:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3120
   symbol: capswitch_seg5_vertex_05003180
 

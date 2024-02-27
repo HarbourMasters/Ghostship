@@ -102,13 +102,13 @@ unagi_lights_unused8:
 
 unagi_seg5_vertex_0500CBA0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xCBA0
   symbol: unagi_seg5_vertex_0500CBA0
 
 unagi_seg5_vertex_0500CC10:
   type: VTX
-  size: 104
+  count: 13
   offset: 0xCC10
   symbol: unagi_seg5_vertex_0500CC10
 
@@ -129,13 +129,13 @@ unagi_seg5_dl_0500CDD0:
 
 unagi_seg5_vertex_0500CEA8:
   type: VTX
-  size: 88
+  count: 11
   offset: 0xCEA8
   symbol: unagi_seg5_vertex_0500CEA8
 
 unagi_seg5_vertex_0500CF58:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xCF58
   symbol: unagi_seg5_vertex_0500CF58
 
@@ -156,7 +156,7 @@ unagi_seg5_dl_0500D050:
 
 unagi_seg5_vertex_0500D120:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xD120
   symbol: unagi_seg5_vertex_0500D120
 
@@ -172,7 +172,7 @@ unagi_seg5_dl_0500D268:
 
 unagi_seg5_vertex_0500D320:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xD320
   symbol: unagi_seg5_vertex_0500D320
 
@@ -188,7 +188,7 @@ unagi_seg5_dl_0500D468:
 
 unagi_seg5_vertex_0500D520:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xD520
   symbol: unagi_seg5_vertex_0500D520
 
@@ -204,7 +204,7 @@ unagi_seg5_dl_0500D668:
 
 unagi_seg5_vertex_0500D720:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xD720
   symbol: unagi_seg5_vertex_0500D720
 
@@ -220,19 +220,19 @@ unagi_seg5_dl_0500D828:
 
 unagi_seg5_vertex_0500D8E0:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xD8E0
   symbol: unagi_seg5_vertex_0500D8E0
 
 unagi_seg5_vertex_0500D980:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xD980
   symbol: unagi_seg5_vertex_0500D980
 
 unagi_seg5_vertex_0500DA70:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xDA70
   symbol: unagi_seg5_vertex_0500DA70
 
@@ -253,7 +253,7 @@ unagi_seg5_dl_0500DD08:
 
 unagi_seg5_vertex_0500DDE0:
   type: VTX
-  size: 72
+  count: 9
   offset: 0xDDE0
   symbol: unagi_seg5_vertex_0500DDE0
 
@@ -269,7 +269,7 @@ unagi_seg5_dl_0500DEB8:
 
 unagi_seg5_vertex_0500DF70:
   type: VTX
-  size: 96
+  count: 12
   offset: 0xDF70
   symbol: unagi_seg5_vertex_0500DF70
 
@@ -285,7 +285,7 @@ unagi_seg5_dl_0500E088:
 
 unagi_seg5_vertex_0500E140:
   type: VTX
-  size: 96
+  count: 12
   offset: 0xE140
   symbol: unagi_seg5_vertex_0500E140
 

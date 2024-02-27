@@ -66,73 +66,73 @@ haunted_cage_seg5_lights_0500C270:
 
 haunted_cage_seg5_vertex_0500EA88:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xEA88
   symbol: haunted_cage_seg5_vertex_0500EA88
 
 haunted_cage_seg5_vertex_0500EB78:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xEB78
   symbol: haunted_cage_seg5_vertex_0500EB78
 
 haunted_cage_seg5_vertex_0500EC68:
   type: VTX
-  size: 48
+  count: 6
   offset: 0xEC68
   symbol: haunted_cage_seg5_vertex_0500EC68
 
 haunted_cage_seg5_vertex_0500ECC8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xECC8
   symbol: haunted_cage_seg5_vertex_0500ECC8
 
 haunted_cage_seg5_vertex_0500EDB8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0xEDB8
   symbol: haunted_cage_seg5_vertex_0500EDB8
 
 haunted_cage_seg5_vertex_0500EE98:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xEE98
   symbol: haunted_cage_seg5_vertex_0500EE98
 
 haunted_cage_seg5_vertex_0500EF88:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xEF88
   symbol: haunted_cage_seg5_vertex_0500EF88
 
 haunted_cage_seg5_vertex_0500F008:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xF008
   symbol: haunted_cage_seg5_vertex_0500F008
 
 haunted_cage_seg5_vertex_0500F108:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xF108
   symbol: haunted_cage_seg5_vertex_0500F108
 
 haunted_cage_seg5_vertex_0500F208:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xF208
   symbol: haunted_cage_seg5_vertex_0500F208
 
 haunted_cage_seg5_vertex_0500F308:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xF308
   symbol: haunted_cage_seg5_vertex_0500F308
 
 haunted_cage_seg5_vertex_0500F408:
   type: VTX
-  size: 96
+  count: 12
   offset: 0xF408
   symbol: haunted_cage_seg5_vertex_0500F408
 
@@ -164,19 +164,19 @@ haunted_cage_seg5_lights_0500F888:
 
 haunted_cage_seg5_vertex_0500F8A0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xF8A0
   symbol: haunted_cage_seg5_vertex_0500F8A0
 
 haunted_cage_seg5_vertex_0500F990:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xF990
   symbol: haunted_cage_seg5_vertex_0500F990
 
 haunted_cage_seg5_vertex_0500FA80:
   type: VTX
-  size: 96
+  count: 12
   offset: 0xFA80
   symbol: haunted_cage_seg5_vertex_0500FA80
 
@@ -198,25 +198,25 @@ haunted_cage_seg5_lights_0500FC98:
 
 haunted_cage_seg5_vertex_0500FCB0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xFCB0
   symbol: haunted_cage_seg5_vertex_0500FCB0
 
 haunted_cage_seg5_vertex_0500FDA0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0xFDA0
   symbol: haunted_cage_seg5_vertex_0500FDA0
 
 haunted_cage_seg5_vertex_0500FE80:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xFE80
   symbol: haunted_cage_seg5_vertex_0500FE80
 
 haunted_cage_seg5_vertex_0500FF80:
   type: VTX
-  size: 56
+  count: 7
   offset: 0xFF80
   symbol: haunted_cage_seg5_vertex_0500FF80
 
