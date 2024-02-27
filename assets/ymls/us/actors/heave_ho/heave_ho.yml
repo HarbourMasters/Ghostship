@@ -54,55 +54,55 @@ heave-ho_turnkey:
   symbol: heave_ho_seg5_texture_050113C8
 
 heave_ho_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE920
   symbol: heave_ho_lights_unused1
 
 heave_ho_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE938
   symbol: heave_ho_lights_unused2
 
 heave_ho_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE950
   symbol: heave_ho_lights_unused3
 
 heave_ho_seg5_lights_0500E968:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE968
   symbol: heave_ho_seg5_lights_0500E968
 
 heave_ho_seg5_lights_0500E980:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE980
   symbol: heave_ho_seg5_lights_0500E980
 
 heave_ho_lights_unused4:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE998
   symbol: heave_ho_lights_unused4
 
 heave_ho_lights_unused5:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xE9B0
   symbol: heave_ho_lights_unused5
 
 heave_ho_seg5_lights_05011BC8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11BC8
   symbol: heave_ho_seg5_lights_05011BC8
 
 heave_ho_seg5_lights_05011BE0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11BE0
   symbol: heave_ho_seg5_lights_05011BE0
@@ -157,13 +157,13 @@ heave_ho_seg5_dl_05011EC0:
   symbol: heave_ho_seg5_dl_05011EC0
 
 heave_ho_seg5_lights_05011F50:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11F50
   symbol: heave_ho_seg5_lights_05011F50
 
 heave_ho_seg5_lights_05011F68:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11F68
   symbol: heave_ho_seg5_lights_05011F68
@@ -196,13 +196,13 @@ heave_ho_seg5_dl_05012148:
   symbol: heave_ho_seg5_dl_05012148
 
 heave_ho_seg5_lights_050121B0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x121B0
   symbol: heave_ho_seg5_lights_050121B0
 
 heave_ho_seg5_lights_050121C8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x121C8
   symbol: heave_ho_seg5_lights_050121C8
@@ -235,13 +235,13 @@ heave_ho_seg5_dl_050123A8:
   symbol: heave_ho_seg5_dl_050123A8
 
 heave_ho_seg5_lights_05012410:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12410
   symbol: heave_ho_seg5_lights_05012410
 
 heave_ho_seg5_lights_05012428:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12428
   symbol: heave_ho_seg5_lights_05012428
@@ -290,7 +290,7 @@ heave_ho_seg5_dl_050126E8:
   symbol: heave_ho_seg5_dl_050126E8
 
 heave_ho_seg5_lights_05012758:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12758
   symbol: heave_ho_seg5_lights_05012758

@@ -14,13 +14,13 @@ mips_eyes:
   symbol: mips_seg6_texture_0600FB80
 
 mips_seg6_lights_06010380:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10380
   symbol: mips_seg6_lights_06010380
 
 mips_seg6_lights_06010398:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10398
   symbol: mips_seg6_lights_06010398
@@ -65,7 +65,7 @@ mips_seg6_dl_060107B8:
   symbol: mips_seg6_dl_060107B8
 
 mips_seg6_lights_06010820:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10820
   symbol: mips_seg6_lights_06010820
@@ -99,13 +99,13 @@ mips_seg6_dl_06010C40:
   symbol: mips_seg6_dl_06010C40
 
 mips_seg6_lights_06010CA0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10CA0
   symbol: mips_seg6_lights_06010CA0
 
 mips_seg6_lights_06010CB8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10CB8
   symbol: mips_seg6_lights_06010CB8
@@ -133,19 +133,19 @@ mips_seg6_dl_06010E60:
   symbol: mips_seg6_dl_06010E60
 
 mips_seg6_lights_06010EC0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10EC0
   symbol: mips_seg6_lights_06010EC0
 
 mips_seg6_lights_06010ED8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10ED8
   symbol: mips_seg6_lights_06010ED8
 
 mips_seg6_lights_06010EF0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x10EF0
   symbol: mips_seg6_lights_06010EF0
@@ -179,13 +179,13 @@ mips_seg6_dl_060110B0:
   symbol: mips_seg6_dl_060110B0
 
 mips_seg6_lights_06011110:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11110
   symbol: mips_seg6_lights_06011110
 
 mips_seg6_lights_06011128:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11128
   symbol: mips_seg6_lights_06011128
@@ -213,13 +213,13 @@ mips_seg6_dl_06011310:
   symbol: mips_seg6_dl_06011310
 
 mips_seg6_lights_06011370:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11370
   symbol: mips_seg6_lights_06011370
 
 mips_seg6_lights_06011388:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11388
   symbol: mips_seg6_lights_06011388
@@ -247,13 +247,13 @@ mips_seg6_dl_06011520:
   symbol: mips_seg6_dl_06011520
 
 mips_seg6_lights_06011580:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11580
   symbol: mips_seg6_lights_06011580
 
 mips_seg6_lights_06011598:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11598
   symbol: mips_seg6_lights_06011598
@@ -281,13 +281,13 @@ mips_seg6_dl_06011780:
   symbol: mips_seg6_dl_06011780
 
 mips_seg6_lights_060117E0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x117E0
   symbol: mips_seg6_lights_060117E0
 
 mips_seg6_lights_060117F8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x117F8
   symbol: mips_seg6_lights_060117F8
@@ -315,13 +315,13 @@ mips_seg6_dl_06011990:
   symbol: mips_seg6_dl_06011990
 
 mips_seg6_lights_060119F0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x119F0
   symbol: mips_seg6_lights_060119F0
 
 mips_seg6_lights_06011A08:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11A08
   symbol: mips_seg6_lights_06011A08
@@ -349,13 +349,13 @@ mips_seg6_dl_06011BB0:
   symbol: mips_seg6_dl_06011BB0
 
 mips_seg6_lights_06011C10:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11C10
   symbol: mips_seg6_lights_06011C10
 
 mips_seg6_lights_06011C28:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11C28
   symbol: mips_seg6_lights_06011C28
@@ -383,7 +383,7 @@ mips_seg6_dl_06011DB0:
   symbol: mips_seg6_dl_06011DB0
 
 mips_seg6_lights_06011E10:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11E10
   symbol: mips_seg6_lights_06011E10
@@ -405,7 +405,7 @@ mips_seg6_dl_06011ED8:
   symbol: mips_seg6_dl_06011ED8
 
 mips_seg6_lights_06011EF8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11EF8
   symbol: mips_seg6_lights_06011EF8

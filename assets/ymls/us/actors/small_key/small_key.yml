@@ -8,25 +8,25 @@
 #   type: U64
 
 small_key_seg5_lights_05005798:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x5798
   symbol: small_key_seg5_lights_05005798
 
 small_key_seg5_lights_050057B0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x57B0
   symbol: small_key_seg5_lights_050057B0
 
 small_key_seg5_lights_050057C8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x57C8
   symbol: small_key_seg5_lights_050057C8
 
 small_key_seg5_lights_050057E0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x57E0
   symbol: small_key_seg5_lights_050057E0

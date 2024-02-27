@@ -14,7 +14,7 @@ cannon_lid:
   symbol: cannon_lid_seg8_texture_08004058
 
 cannon_lid_seg8_lights_08004040:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4040
   symbol: cannon_lid_seg8_lights_08004040

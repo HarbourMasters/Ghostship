@@ -5,25 +5,25 @@
     seg5: 0x180BB0
 
 wiggler_seg5_lights_0500C878:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC878
   symbol: wiggler_seg5_lights_0500C878
 
 wiggler_seg5_lights_0500C890:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC890
   symbol: wiggler_seg5_lights_0500C890
 
 wiggler_head_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC8A8
   symbol: wiggler_head_lights_unused1
 
 wiggler_head_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xC8C0
   symbol: wiggler_head_lights_unused2

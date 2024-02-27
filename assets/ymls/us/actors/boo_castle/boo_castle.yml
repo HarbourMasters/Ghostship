@@ -22,7 +22,7 @@ bbh_boo_mouth:
   symbol: boo_castle_seg6_texture_06016670
 
 boo_castle_seg6_lights_06015658:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x15658
   symbol: boo_castle_seg6_lights_06015658

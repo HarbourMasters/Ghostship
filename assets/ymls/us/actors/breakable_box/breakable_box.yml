@@ -22,7 +22,7 @@ crazy_box_surface:
   symbol: breakable_box_seg8_texture_08011A90
 
 breakable_box_seg8_lights_08011A80:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x11A78
   symbol: breakable_box_seg8_lights_08011A80

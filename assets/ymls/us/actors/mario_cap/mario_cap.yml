@@ -54,19 +54,19 @@ mario_cap_wing_tip:
   symbol: mario_cap_seg3_texture_0301F750
 
 mario_cap_seg3_lights_0301CF08:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1CF08
   symbol: mario_cap_seg3_lights_0301CF08
 
 mario_cap_seg3_lights_0301CF20:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1CF20
   symbol: mario_cap_seg3_lights_0301CF20
 
 mario_cap_seg3_lights_0301CF38:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x1CF38
   symbol: mario_cap_seg3_lights_0301CF38

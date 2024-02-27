@@ -22,7 +22,7 @@ star_eye:
   symbol: star_seg3_texture_0302AEF0
 
 star_seg3_lights_0302A6D8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2A6D8
   symbol: star_seg3_lights_0302A6D8
@@ -44,7 +44,7 @@ star_seg3_dl_0302B870:
   symbol: star_seg3_dl_0302B870
 
 star_seg3_lights_0302B908:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x2B908
   symbol: star_seg3_lights_0302B908

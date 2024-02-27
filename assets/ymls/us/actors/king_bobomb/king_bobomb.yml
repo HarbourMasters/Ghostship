@@ -94,31 +94,31 @@ king_bob-omb_right_side:
   symbol: king_bobomb_seg5_texture_05009478
 
 king_bobomb_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x0
   symbol: king_bobomb_lights_unused1
 
 king_bobomb_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x18
   symbol: king_bobomb_lights_unused2
 
 king_bobomb_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x30
   symbol: king_bobomb_lights_unused3
 
 king_bobomb_lights_unused4:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x48
   symbol: king_bobomb_lights_unused4
 
 king_bobomb_lights_unused5:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x60
   symbol: king_bobomb_lights_unused5
@@ -220,7 +220,7 @@ king_bobomb_seg5_dl_0500A978:
   symbol: king_bobomb_seg5_dl_0500A978
 
 king_bobomb_seg5_lights_0500A9E8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA9E8
   symbol: king_bobomb_seg5_lights_0500A9E8
@@ -248,7 +248,7 @@ king_bobomb_seg5_dl_0500AD08:
   symbol: king_bobomb_seg5_dl_0500AD08
 
 king_bobomb_seg5_lights_0500AD38:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xAD38
   symbol: king_bobomb_seg5_lights_0500AD38
@@ -303,7 +303,7 @@ king_bobomb_seg5_dl_0500B188:
   symbol: king_bobomb_seg5_dl_0500B188
 
 king_bobomb_seg5_lights_0500B200:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xB200
   symbol: king_bobomb_seg5_lights_0500B200
@@ -325,7 +325,7 @@ king_bobomb_seg5_dl_0500B2D0:
   symbol: king_bobomb_seg5_dl_0500B2D0
 
 king_bobomb_seg5_lights_0500B330:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xB330
   symbol: king_bobomb_seg5_lights_0500B330
@@ -347,7 +347,7 @@ king_bobomb_seg5_dl_0500B418:
   symbol: king_bobomb_seg5_dl_0500B418
 
 king_bobomb_seg5_lights_0500B458:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xB458
   symbol: king_bobomb_seg5_lights_0500B458

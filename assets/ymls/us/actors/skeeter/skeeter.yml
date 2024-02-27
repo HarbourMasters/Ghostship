@@ -22,37 +22,37 @@ skeeter_iris:
   symbol: skeeter_seg6_texture_06000890
 
 skeeter_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x0
   symbol: skeeter_lights_unused1
 
 skeeter_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x18
   symbol: skeeter_lights_unused2
 
 skeeter_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x30
   symbol: skeeter_lights_unused3
 
 skeeter_lights_unused4:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x48
   symbol: skeeter_lights_unused4
 
 skeeter_lights_unused5:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x60
   symbol: skeeter_lights_unused5
 
 skeeter_lights_unused6:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x78
   symbol: skeeter_lights_unused6
@@ -138,7 +138,7 @@ skeeter_seg6_dl_06000D78:
   symbol: skeeter_seg6_dl_06000D78
 
 skeeter_seg6_lights_06000DE8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xDE8
   symbol: skeeter_seg6_lights_06000DE8

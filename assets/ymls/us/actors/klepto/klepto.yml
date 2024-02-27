@@ -49,13 +49,13 @@ klepto_wing_flap:
 #   type: U64
 
 klepto_seg5_lights_05003808:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3808
   symbol: klepto_seg5_lights_05003808
 
 klepto_seg5_lights_05003820:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3820
   symbol: klepto_seg5_lights_05003820
@@ -105,7 +105,7 @@ klepto_seg5_dl_05003BD0:
   symbol: klepto_seg5_dl_05003BD0
 
 klepto_seg5_lights_05003C58:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3C58
   symbol: klepto_seg5_lights_05003C58
@@ -127,7 +127,7 @@ klepto_seg5_dl_05003D80:
   symbol: klepto_seg5_dl_05003D80
 
 klepto_seg5_lights_05003DB0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3DB0
   symbol: klepto_seg5_lights_05003DB0
@@ -149,7 +149,7 @@ klepto_seg5_dl_05003F20:
   symbol: klepto_seg5_dl_05003F20
 
 klepto_seg5_lights_05003F80:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x3F80
   symbol: klepto_seg5_lights_05003F80
@@ -171,7 +171,7 @@ klepto_seg5_dl_05004118:
   symbol: klepto_seg5_dl_05004118
 
 klepto_seg5_lights_05004148:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4148
   symbol: klepto_seg5_lights_05004148
@@ -193,7 +193,7 @@ klepto_seg5_dl_050041E8:
   symbol: klepto_seg5_dl_050041E8
 
 klepto_seg5_lights_05004258:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4258
   symbol: klepto_seg5_lights_05004258
@@ -215,7 +215,7 @@ klepto_seg5_dl_05004330:
   symbol: klepto_seg5_dl_05004330
 
 klepto_seg5_lights_05004360:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4360
   symbol: klepto_seg5_lights_05004360
@@ -237,13 +237,13 @@ klepto_seg5_dl_05004438:
   symbol: klepto_seg5_dl_05004438
 
 klepto_seg5_lights_05004468:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4468
   symbol: klepto_seg5_lights_05004468
 
 klepto_seg5_lights_05004480:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4480
   symbol: klepto_seg5_lights_05004480
@@ -277,13 +277,13 @@ klepto_seg5_dl_050047C8:
   symbol: klepto_seg5_dl_050047C8
 
 klepto_seg5_lights_050047F8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x47F8
   symbol: klepto_seg5_lights_050047F8
 
 klepto_seg5_lights_05004810:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4810
   symbol: klepto_seg5_lights_05004810
@@ -317,7 +317,7 @@ klepto_seg5_dl_05004B58:
   symbol: klepto_seg5_dl_05004B58
 
 klepto_seg5_lights_05004B88:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4B88
   symbol: klepto_seg5_lights_05004B88
@@ -339,7 +339,7 @@ klepto_seg5_dl_05004C28:
   symbol: klepto_seg5_dl_05004C28
 
 klepto_seg5_lights_05004C98:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4C98
   symbol: klepto_seg5_lights_05004C98
@@ -361,7 +361,7 @@ klepto_seg5_dl_05004D38:
   symbol: klepto_seg5_dl_05004D38
 
 klepto_seg5_lights_05004DA8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4DA8
   symbol: klepto_seg5_lights_05004DA8
@@ -383,7 +383,7 @@ klepto_seg5_dl_05004E48:
   symbol: klepto_seg5_dl_05004E48
 
 klepto_seg5_lights_05004EB8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4EB8
   symbol: klepto_seg5_lights_05004EB8
@@ -405,7 +405,7 @@ klepto_seg5_dl_05004F58:
   symbol: klepto_seg5_dl_05004F58
 
 klepto_seg5_lights_05004FC8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x4FC8
   symbol: klepto_seg5_lights_05004FC8
@@ -427,7 +427,7 @@ klepto_seg5_dl_05005068:
   symbol: klepto_seg5_dl_05005068
 
 klepto_seg5_lights_050050D8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x50D8
   symbol: klepto_seg5_lights_050050D8

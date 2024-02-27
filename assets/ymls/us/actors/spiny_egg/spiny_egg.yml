@@ -5,13 +5,13 @@
     seg5: 0x180BB0
 
 spiny_egg_seg5_lights_050144F8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x144F8
   symbol: spiny_egg_seg5_lights_050144F8
 
 spiny_egg_seg5_lights_05014510:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x14510
   symbol: spiny_egg_seg5_lights_05014510

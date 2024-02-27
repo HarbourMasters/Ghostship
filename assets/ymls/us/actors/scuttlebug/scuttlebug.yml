@@ -46,13 +46,13 @@ scuttlebug_right_side:
   symbol: scuttlebug_seg6_texture_06011908
 
 scuttlebug_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x100D8
   symbol: scuttlebug_lights_unused1
 
 scuttlebug_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x100F0
   symbol: scuttlebug_lights_unused2
@@ -149,7 +149,7 @@ scuttlebug_seg6_dl_06013DA0:
   symbol: scuttlebug_seg6_dl_06013DA0
 
 scuttlebug_seg6_lights_06013E10:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x13E10
   symbol: scuttlebug_seg6_lights_06013E10
@@ -209,7 +209,7 @@ scuttlebug_seg6_dl_06014270:
   symbol: scuttlebug_seg6_dl_06014270
 
 scuttlebug_seg6_lights_060142E0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x142E0
   symbol: scuttlebug_seg6_lights_060142E0

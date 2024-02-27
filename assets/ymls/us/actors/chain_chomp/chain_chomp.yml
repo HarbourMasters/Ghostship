@@ -46,19 +46,19 @@ chain_chomp_tongue:
   symbol: chain_chomp_seg6_texture_060223D0
 
 chain_chomp_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x21388
   symbol: chain_chomp_lights_unused1
 
 chain_chomp_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x213A0
   symbol: chain_chomp_lights_unused2
 
 chain_chomp_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x213B8
   symbol: chain_chomp_lights_unused3
@@ -154,7 +154,7 @@ chain_chomp_seg6_dl_06024940:
   symbol: chain_chomp_seg6_dl_06024940
 
 chain_chomp_seg6_lights_060249D0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x249D0
   symbol: chain_chomp_seg6_lights_060249D0
