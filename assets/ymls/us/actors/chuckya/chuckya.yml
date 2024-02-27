@@ -38,43 +38,43 @@ chuckya_hand_antenna:
   symbol: chuckya_seg8_texture_08007778
 
 chuckya_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x66D0
   symbol: chuckya_lights_unused1
 
 chuckya_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x66E8
   symbol: chuckya_lights_unused2
 
 chuckya_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x6700
   symbol: chuckya_lights_unused3
 
 chuckya_lights_unused4:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x6718
   symbol: chuckya_lights_unused4
 
 chuckya_lights_unused5:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x6730
   symbol: chuckya_lights_unused5
 
 chuckya_lights_unused6:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x6748
   symbol: chuckya_lights_unused6
 
 chuckya_lights_unused7:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x6760
   symbol: chuckya_lights_unused7
@@ -209,7 +209,7 @@ chuckya_seg8_dl_0800A5F8:
   symbol: chuckya_seg8_dl_0800A5F8
 
 chuckya_seg8_lights_0800A668:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA668
   symbol: chuckya_seg8_lights_0800A668
@@ -231,7 +231,7 @@ chuckya_seg8_dl_0800A758:
   symbol: chuckya_seg8_dl_0800A758
 
 chuckya_seg8_lights_0800A7C8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA7C8
   symbol: chuckya_seg8_lights_0800A7C8
@@ -253,7 +253,7 @@ chuckya_seg8_dl_0800A8D0:
   symbol: chuckya_seg8_dl_0800A8D0
 
 chuckya_seg8_lights_0800A8F0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA8F0
   symbol: chuckya_seg8_lights_0800A8F0
@@ -275,7 +275,7 @@ chuckya_seg8_dl_0800A998:
   symbol: chuckya_seg8_dl_0800A998
 
 chuckya_seg8_lights_0800A9B8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA9B8
   symbol: chuckya_seg8_lights_0800A9B8

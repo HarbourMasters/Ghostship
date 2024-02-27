@@ -5,7 +5,7 @@
     seg8: 0x1F2200
 
 unknown_seg8_lights_08026008:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x26008
   symbol: unknown_seg8_lights_08026008

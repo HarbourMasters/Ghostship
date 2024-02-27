@@ -22,7 +22,7 @@ warp_pipe_top:
   symbol: warp_pipe_seg3_texture_03009168
 
 warp_pipe_seg3_lights_030079E8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x79E8
   symbol: warp_pipe_seg3_lights_030079E8
@@ -68,13 +68,13 @@ warp_pipe_seg3_dl_03008F98:
   symbol: warp_pipe_seg3_dl_03008F98
 
 warp_pipe_seg3_lights_03008FF8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x8FF8
   symbol: warp_pipe_seg3_lights_03008FF8
 
 warp_pipe_seg3_lights_03009010:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x9010
   symbol: warp_pipe_seg3_lights_03009010

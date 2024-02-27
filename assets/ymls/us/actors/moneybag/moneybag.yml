@@ -22,13 +22,13 @@ moneybag_mouth:
   symbol: moneybag_seg6_texture_060039B0
 
 moneybag_seg6_lights_060051B0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x51B0
   symbol: moneybag_seg6_lights_060051B0
 
 moneybag_seg6_lights_060051C8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x51C8
   symbol: moneybag_seg6_lights_060051C8
@@ -61,7 +61,7 @@ moneybag_seg6_dl_060053B8:
   symbol: moneybag_seg6_dl_060053B8
 
 moneybag_seg6_lights_06005428:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x5428
   symbol: moneybag_seg6_lights_06005428
@@ -110,25 +110,25 @@ moneybag_seg6_dl_06005750:
   symbol: moneybag_seg6_dl_06005750
 
 moneybag_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x57C0
   symbol: moneybag_lights_unused1
 
 moneybag_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x57D8
   symbol: moneybag_lights_unused2
 
 moneybag_seg6_lights_060057F0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x57F0
   symbol: moneybag_seg6_lights_060057F0
 
 moneybag_lights_unused3:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x5808
   symbol: moneybag_lights_unused3

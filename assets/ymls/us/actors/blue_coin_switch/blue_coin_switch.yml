@@ -22,7 +22,7 @@ blue_coin_switch_top:
   symbol: blue_coin_switch_seg8_texture_08000418
 
 blue_coin_switch_seg8_lights_08000000:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x0
   symbol: blue_coin_switch_seg8_lights_08000000

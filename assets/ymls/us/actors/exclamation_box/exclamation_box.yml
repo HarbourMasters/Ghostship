@@ -70,7 +70,7 @@ wing_cap_box_side:
   symbol: exclamation_box_seg8_texture_08016628
 
 exclamation_box_seg8_lights_08012E10:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12E10
   symbol: exclamation_box_seg8_lights_08012E10

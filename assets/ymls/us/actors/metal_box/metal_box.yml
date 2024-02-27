@@ -13,7 +13,7 @@ metal_box_side:
   format: RGBA16
   symbol: metal_box_seg8_texture_08023998
 metal_box_seg8_lights_08023980:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x23980
   symbol: metal_box_seg8_lights_08023980

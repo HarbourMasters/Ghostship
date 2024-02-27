@@ -30,7 +30,7 @@ water_mine_spike_unused:
   symbol: water_mine_seg6_texture_0600C4F8
 
 water_mine_seg6_lights_0600A4E0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xA4E0
   symbol: water_mine_seg6_lights_0600A4E0

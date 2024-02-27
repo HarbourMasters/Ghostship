@@ -41,25 +41,25 @@ chilly_chief_big_geo:
   symbol: chilly_chief_big_geo
 
 chilly_chief_seg6_lights_06000000:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x0
   symbol: chilly_chief_seg6_lights_06000000
 
 chilly_chief_seg6_lights_06000018:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x18
   symbol: chilly_chief_seg6_lights_06000018
 
 chilly_chief_seg6_lights_06000030:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x30
   symbol: chilly_chief_seg6_lights_06000030
 
 chillychief_lights_unused:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x48
   symbol: chillychief_lights_unused

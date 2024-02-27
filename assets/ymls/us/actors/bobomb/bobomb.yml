@@ -110,19 +110,19 @@ bobomb_seg8_dl_08022D78:
   symbol: bobomb_seg8_dl_08022D78
 
 bobomb_seg8_lights_08022DE8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x22DE8
   symbol: bobomb_seg8_lights_08022DE8
 
 bobomb_seg8_lights_08022E00:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x22E00
   symbol: bobomb_seg8_lights_08022E00
 
 bobomb_lights_unused:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x22E18
   symbol: bobomb_lights_unused

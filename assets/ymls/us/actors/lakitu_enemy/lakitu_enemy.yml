@@ -46,31 +46,31 @@ lakitu_enemy_shell:
   symbol: lakitu_enemy_seg5_texture_050114E0
 
 lakitu_enemy_lights_unused1:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xEC98
   symbol: lakitu_enemy_lights_unused1
 
 lakitu_enemy_seg5_lights_0500ECB0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xECB0
   symbol: lakitu_enemy_seg5_lights_0500ECB0
 
 lakitu_enemy_lights_unused2:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0xECC8
   symbol: lakitu_enemy_lights_unused2
 
 lakitu_enemy_seg5_lights_050124E0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x124E0
   symbol: lakitu_enemy_seg5_lights_050124E0
 
 lakitu_enemy_seg5_lights_050124F8:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x124F8
   symbol: lakitu_enemy_seg5_lights_050124F8
@@ -109,7 +109,7 @@ lakitu_enemy_seg5_dl_05012910:
   symbol: lakitu_enemy_seg5_dl_05012910
 
 lakitu_enemy_seg5_lights_05012978:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12978
   symbol: lakitu_enemy_seg5_lights_05012978
@@ -161,7 +161,7 @@ lakitu_enemy_seg5_dl_05013160:
   symbol: lakitu_enemy_seg5_dl_05013160
 
 lakitu_enemy_seg5_lights_050131C0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x131C0
   symbol: lakitu_enemy_seg5_lights_050131C0
@@ -198,7 +198,7 @@ lakitu_enemy_seg5_dl_05013378:
   symbol: lakitu_enemy_seg5_dl_05013378
 
 lakitu_enemy_seg5_lights_050133A0:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x133A0
   symbol: lakitu_enemy_seg5_lights_050133A0
@@ -215,7 +215,7 @@ lakitu_enemy_seg5_dl_050134A8:
   symbol: lakitu_enemy_seg5_dl_050134A8
 
 lakitu_enemy_seg5_lights_05013598:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x13598
   symbol: lakitu_enemy_seg5_lights_05013598

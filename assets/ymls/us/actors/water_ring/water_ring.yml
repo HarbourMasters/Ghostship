@@ -14,7 +14,7 @@ water_ring:
   symbol: water_ring_seg6_texture_06012380
 
 water_ring_seg6_lights_06012368:
-  type: LIGHTS1
+  type: LIGHTS
   size: 24
   offset: 0x12368
   symbol: water_ring_seg6_lights_06012368
