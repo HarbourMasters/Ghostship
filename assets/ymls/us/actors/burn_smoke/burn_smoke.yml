@@ -14,7 +14,7 @@ burn_smoke:
 
 burn_smoke_seg4_vertex_040217C0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x217C0
   symbol: burn_smoke_seg4_vertex_040217C0
 

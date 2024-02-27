@@ -14,13 +14,13 @@ butterfly_wing:
 
 butterfly_seg3_vertex_03004348:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x4348
   symbol: butterfly_seg3_vertex_03004348
 
 butterfly_seg3_vertex_030053A8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x53A8
   symbol: butterfly_seg3_vertex_030053A8
 

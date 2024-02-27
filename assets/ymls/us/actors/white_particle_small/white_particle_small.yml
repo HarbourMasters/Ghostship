@@ -14,13 +14,13 @@ small_snow_particle:
 
 white_particle_small_vertex:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x32700
   symbol: white_particle_small_vertex
 
 white_particle_small_unused_vertex:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x32740
   symbol: white_particle_small_unused_vertex
 

@@ -56,13 +56,13 @@ manta_lights_unused:
 
 manta_seg5_vertex_050047A0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x47A0
   symbol: manta_seg5_vertex_050047A0
 
 manta_seg5_vertex_050048A0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x48A0
   symbol: manta_seg5_vertex_050048A0
 
@@ -83,13 +83,13 @@ manta_seg5_dl_05004A70:
 
 manta_seg5_vertex_05004AE8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4AE8
   symbol: manta_seg5_vertex_05004AE8
 
 manta_seg5_vertex_05004BE8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4BE8
   symbol: manta_seg5_vertex_05004BE8
 
@@ -110,7 +110,7 @@ manta_seg5_dl_05004DB8:
 
 manta_seg5_vertex_05004E30:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x4E30
   symbol: manta_seg5_vertex_05004E30
 
@@ -126,7 +126,7 @@ manta_seg5_dl_05004E90:
 
 manta_seg5_vertex_05004F00:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x4F00
   symbol: manta_seg5_vertex_05004F00
 
@@ -142,19 +142,19 @@ manta_seg5_dl_05005038:
 
 manta_seg5_vertex_050050A8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x50A8
   symbol: manta_seg5_vertex_050050A8
 
 manta_seg5_vertex_05005118:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x5118
   symbol: manta_seg5_vertex_05005118
 
 manta_seg5_vertex_050051B8:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x51B8
   symbol: manta_seg5_vertex_050051B8
 
@@ -180,13 +180,13 @@ manta_seg5_dl_05005358:
 
 manta_seg5_vertex_050053F0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x53F0
   symbol: manta_seg5_vertex_050053F0
 
 manta_seg5_vertex_05005470:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x5470
   symbol: manta_seg5_vertex_05005470
 
@@ -207,13 +207,13 @@ manta_seg5_dl_050055A8:
 
 manta_seg5_vertex_05005620:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x5620
   symbol: manta_seg5_vertex_05005620
 
 manta_seg5_vertex_05005680:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x5680
   symbol: manta_seg5_vertex_05005680
 
@@ -234,7 +234,7 @@ manta_seg5_dl_05005768:
 
 manta_seg5_vertex_050057E0:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x57E0
   symbol: manta_seg5_vertex_050057E0
 
@@ -250,19 +250,19 @@ manta_seg5_dl_05005918:
 
 manta_seg5_vertex_05005988:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x5988
   symbol: manta_seg5_vertex_05005988
 
 manta_seg5_vertex_050059F8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x59F8
   symbol: manta_seg5_vertex_050059F8
 
 manta_seg5_vertex_05005A98:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x5A98
   symbol: manta_seg5_vertex_05005A98
 
@@ -288,13 +288,13 @@ manta_seg5_dl_05005C38:
 
 manta_seg5_vertex_05005CD0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x5CD0
   symbol: manta_seg5_vertex_05005CD0
 
 manta_seg5_vertex_05005D50:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x5D50
   symbol: manta_seg5_vertex_05005D50
 
@@ -315,13 +315,13 @@ manta_seg5_dl_05005E88:
 
 manta_seg5_vertex_05005F00:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x5F00
   symbol: manta_seg5_vertex_05005F00
 
 manta_seg5_vertex_05005F60:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x5F60
   symbol: manta_seg5_vertex_05005F60
 
@@ -342,31 +342,31 @@ manta_seg5_dl_05006048:
 
 manta_seg5_vertex_050060C0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x60C0
   symbol: manta_seg5_vertex_050060C0
 
 manta_seg5_vertex_050061A0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x61A0
   symbol: manta_seg5_vertex_050061A0
 
 manta_seg5_vertex_05006290:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x6290
   symbol: manta_seg5_vertex_05006290
 
 manta_seg5_vertex_05006370:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x6370
   symbol: manta_seg5_vertex_05006370
 
 manta_seg5_vertex_05006420:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6420
   symbol: manta_seg5_vertex_05006420
 
@@ -397,37 +397,37 @@ manta_seg5_dl_05006750:
 
 manta_seg5_vertex_05006808:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x6808
   symbol: manta_seg5_vertex_05006808
 
 manta_seg5_vertex_05006868:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x6868
   symbol: manta_seg5_vertex_05006868
 
 manta_seg5_vertex_050068C8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x68C8
   symbol: manta_seg5_vertex_050068C8
 
 manta_seg5_vertex_05006948:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x6948
   symbol: manta_seg5_vertex_05006948
 
 manta_seg5_vertex_050069C8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x69C8
   symbol: manta_seg5_vertex_050069C8
 
 manta_seg5_vertex_05006A88:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x6A88
   symbol: manta_seg5_vertex_05006A88
 

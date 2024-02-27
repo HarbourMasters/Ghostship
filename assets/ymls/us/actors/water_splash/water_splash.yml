@@ -70,7 +70,7 @@ water_splash_7:
 
 water_splash_seg4_vertex_0402A588:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2A588
   symbol: water_splash_seg4_vertex_0402A588
 

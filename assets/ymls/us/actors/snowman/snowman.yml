@@ -79,7 +79,7 @@ snowman_seg5_lights_0500C470:
 
 snowman_seg5_vertex_0500C488:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC488
   symbol: snowman_seg5_vertex_0500C488
 
@@ -95,13 +95,13 @@ snowman_seg5_dl_0500C500:
 
 snowman_seg5_vertex_0500C530:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC530
   symbol: snowman_seg5_vertex_0500C530
 
 snowman_seg5_vertex_0500C570:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC570
   symbol: snowman_seg5_vertex_0500C570
 
@@ -122,7 +122,7 @@ snowman_seg5_dl_0500C620:
 
 snowman_seg5_vertex_0500C698:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xC698
   symbol: snowman_seg5_vertex_0500C698
 
@@ -144,13 +144,13 @@ snowman_seg5_lights_0500C7D0:
 
 snowman_seg5_vertex_0500C7E8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xC7E8
   symbol: snowman_seg5_vertex_0500C7E8
 
 snowman_seg5_vertex_0500C8E8:
   type: VTX
-  size: 72
+  count: 9
   offset: 0xC8E8
   symbol: snowman_seg5_vertex_0500C8E8
 
@@ -166,13 +166,13 @@ snowman_seg5_dl_0500CAA8:
 
 snowman_seg5_vertex_0500CB08:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xCB08
   symbol: snowman_seg5_vertex_0500CB08
 
 snowman_seg5_vertex_0500CB48:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xCB48
   symbol: snowman_seg5_vertex_0500CB48
 
@@ -193,7 +193,7 @@ snowman_seg5_dl_0500CBF8:
 
 snowman_seg5_vertex_0500CC70:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xCC70
   symbol: snowman_seg5_vertex_0500CC70
 

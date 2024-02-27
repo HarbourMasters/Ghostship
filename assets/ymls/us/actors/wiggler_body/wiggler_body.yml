@@ -23,73 +23,73 @@ wiggler_body_lights_unused:
 
 wiggler_seg5_vertex_0500B278:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB278
   symbol: wiggler_seg5_vertex_0500B278
 
 wiggler_seg5_vertex_0500B378:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB378
   symbol: wiggler_seg5_vertex_0500B378
 
 wiggler_seg5_vertex_0500B478:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB478
   symbol: wiggler_seg5_vertex_0500B478
 
 wiggler_seg5_vertex_0500B578:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xB578
   symbol: wiggler_seg5_vertex_0500B578
 
 wiggler_seg5_vertex_0500B5B8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xB5B8
   symbol: wiggler_seg5_vertex_0500B5B8
 
 wiggler_seg5_vertex_0500B6A8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xB6A8
   symbol: wiggler_seg5_vertex_0500B6A8
 
 wiggler_seg5_vertex_0500B798:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB798
   symbol: wiggler_seg5_vertex_0500B798
 
 wiggler_seg5_vertex_0500B898:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB898
   symbol: wiggler_seg5_vertex_0500B898
 
 wiggler_seg5_vertex_0500B998:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB998
   symbol: wiggler_seg5_vertex_0500B998
 
 wiggler_seg5_vertex_0500BA98:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xBA98
   symbol: wiggler_seg5_vertex_0500BA98
 
 wiggler_seg5_vertex_0500BAD8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xBAD8
   symbol: wiggler_seg5_vertex_0500BAD8
 
 wiggler_seg5_vertex_0500BBC8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xBBC8
   symbol: wiggler_seg5_vertex_0500BBC8
 
@@ -125,13 +125,13 @@ wiggler_seg5_dl_0500C100:
 
 wiggler_seg5_vertex_0500C188:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC188
   symbol: wiggler_seg5_vertex_0500C188
 
 wiggler_seg5_vertex_0500C1C8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC1C8
   symbol: wiggler_seg5_vertex_0500C1C8
 

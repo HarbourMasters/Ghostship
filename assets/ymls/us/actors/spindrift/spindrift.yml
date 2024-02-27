@@ -86,25 +86,25 @@ spindrift_lights_unused4:
 
 spindrift_seg5_vertex_050000C0:
   type: VTX
-  size: 48
+  count: 6
   offset: 0xC0
   symbol: spindrift_seg5_vertex_050000C0
 
 spindrift_seg5_vertex_05000120:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x120
   symbol: spindrift_seg5_vertex_05000120
 
 spindrift_seg5_vertex_05000180:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x180
   symbol: spindrift_seg5_vertex_05000180
 
 spindrift_seg5_vertex_05000210:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x210
   symbol: spindrift_seg5_vertex_05000210
 

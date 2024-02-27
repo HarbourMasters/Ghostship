@@ -26,31 +26,31 @@ cannon_base_seg8_lights_080049A0:
 
 cannon_base_seg8_vertex_080051B8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x51B8
   symbol: cannon_base_seg8_vertex_080051B8
 
 cannon_base_seg8_vertex_08005278:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x5278
   symbol: cannon_base_seg8_vertex_08005278
 
 cannon_base_seg8_vertex_08005378:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5378
   symbol: cannon_base_seg8_vertex_08005378
 
 cannon_base_seg8_vertex_08005468:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5468
   symbol: cannon_base_seg8_vertex_08005468
 
 cannon_base_seg8_vertex_08005558:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x5558
   symbol: cannon_base_seg8_vertex_08005558
 

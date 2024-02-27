@@ -65,31 +65,31 @@ chillychief_lights_unused:
 
 chilly_chief_seg6_vertex_06002860:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x2860
   symbol: chilly_chief_seg6_vertex_06002860
 
 chilly_chief_seg6_vertex_06002940:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2940
   symbol: chilly_chief_seg6_vertex_06002940
 
 chilly_chief_seg6_vertex_06002980:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x2980
   symbol: chilly_chief_seg6_vertex_06002980
 
 chilly_chief_seg6_vertex_06002A60:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2A60
   symbol: chilly_chief_seg6_vertex_06002A60
 
 chilly_chief_seg6_vertex_06002AA0:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x2AA0
   symbol: chilly_chief_seg6_vertex_06002AA0
 
@@ -110,13 +110,13 @@ chilly_chief_seg6_dl_06002C60:
 
 chilly_chief_seg6_vertex_06002C98:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2C98
   symbol: chilly_chief_seg6_vertex_06002C98
 
 chilly_chief_seg6_vertex_06002CD8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2CD8
   symbol: chilly_chief_seg6_vertex_06002CD8
 
@@ -137,13 +137,13 @@ chilly_chief_seg6_dl_06002D88:
 
 chilly_chief_seg6_vertex_06002E00:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2E00
   symbol: chilly_chief_seg6_vertex_06002E00
 
 chilly_chief_seg6_vertex_06002E40:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2E40
   symbol: chilly_chief_seg6_vertex_06002E40
 
@@ -164,7 +164,7 @@ chilly_chief_seg6_dl_06002EF0:
 
 chilly_chief_seg6_vertex_06002F68:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x2F68
   symbol: chilly_chief_seg6_vertex_06002F68
 

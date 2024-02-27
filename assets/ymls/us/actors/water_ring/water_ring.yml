@@ -20,49 +20,49 @@ water_ring_seg6_lights_06012368:
 
 water_ring_seg6_vertex_06013380:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13380
   symbol: water_ring_seg6_vertex_06013380
 
 water_ring_seg6_vertex_06013480:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13480
   symbol: water_ring_seg6_vertex_06013480
 
 water_ring_seg6_vertex_06013580:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13580
   symbol: water_ring_seg6_vertex_06013580
 
 water_ring_seg6_vertex_06013680:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13680
   symbol: water_ring_seg6_vertex_06013680
 
 water_ring_seg6_vertex_06013780:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13780
   symbol: water_ring_seg6_vertex_06013780
 
 water_ring_seg6_vertex_06013880:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13880
   symbol: water_ring_seg6_vertex_06013880
 
 water_ring_seg6_vertex_06013980:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13980
   symbol: water_ring_seg6_vertex_06013980
 
 water_ring_seg6_vertex_06013A80:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x13A80
   symbol: water_ring_seg6_vertex_06013A80
 

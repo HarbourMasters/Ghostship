@@ -14,7 +14,7 @@ snow_particle:
 
 white_particle_vertex:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2C660
   symbol: white_particle_vertex
 

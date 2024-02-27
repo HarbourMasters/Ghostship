@@ -62,7 +62,7 @@ walk_smoke_6:
 
 smoke_seg4_vertex_0401DE60:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1DE60
   symbol: smoke_seg4_vertex_0401DE60
 

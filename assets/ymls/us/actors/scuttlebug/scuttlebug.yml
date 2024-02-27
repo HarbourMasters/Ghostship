@@ -58,13 +58,13 @@ scuttlebug_lights_unused2:
 
 scuttlebug_seg6_vertex_06013908:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x13908
   symbol: scuttlebug_seg6_vertex_06013908
 
 scuttlebug_seg6_vertex_06013948:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x13948
   symbol: scuttlebug_seg6_vertex_06013948
 
@@ -85,7 +85,7 @@ scuttlebug_seg6_dl_060139F8:
 
 scuttlebug_seg6_vertex_06013A70:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x13A70
   symbol: scuttlebug_seg6_vertex_06013A70
 
@@ -101,7 +101,7 @@ scuttlebug_seg6_dl_06013AE8:
 
 scuttlebug_seg6_vertex_06013B58:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x13B58
   symbol: scuttlebug_seg6_vertex_06013B58
 
@@ -117,7 +117,7 @@ scuttlebug_seg6_dl_06013BD0:
 
 scuttlebug_seg6_vertex_06013C40:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x13C40
   symbol: scuttlebug_seg6_vertex_06013C40
 
@@ -133,7 +133,7 @@ scuttlebug_seg6_dl_06013CB8:
 
 scuttlebug_seg6_vertex_06013D28:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x13D28
   symbol: scuttlebug_seg6_vertex_06013D28
 
@@ -155,13 +155,13 @@ scuttlebug_seg6_lights_06013E10:
 
 scuttlebug_seg6_vertex_06013E28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13E28
   symbol: scuttlebug_seg6_vertex_06013E28
 
 scuttlebug_seg6_vertex_06013F28:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x13F28
   symbol: scuttlebug_seg6_vertex_06013F28
 
@@ -177,7 +177,7 @@ scuttlebug_seg6_dl_060140F0:
 
 scuttlebug_seg6_vertex_06014110:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x14110
   symbol: scuttlebug_seg6_vertex_06014110
 
@@ -193,7 +193,7 @@ scuttlebug_seg6_dl_06014188:
 
 scuttlebug_seg6_vertex_060141F8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x141F8
   symbol: scuttlebug_seg6_vertex_060141F8
 
@@ -215,7 +215,7 @@ scuttlebug_seg6_lights_060142E0:
 
 scuttlebug_seg6_vertex_060142F8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x142F8
   symbol: scuttlebug_seg6_vertex_060142F8
 

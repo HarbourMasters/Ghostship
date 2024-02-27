@@ -52,7 +52,7 @@ bob-omb_eyes_blink:
   format: RGBA16
   symbol: bobomb_seg8_texture_08022260bobomb_seg8_vertex_08022A60:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x22A60
   symbol: bobomb_seg8_vertex_08022A60
 
@@ -78,13 +78,13 @@ bobomb_seg8_dl_08022B88:
 
 bobomb_seg8_vertex_08022BB8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x22BB8
   symbol: bobomb_seg8_vertex_08022BB8
 
 bobomb_seg8_vertex_08022BF8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x22BF8
   symbol: bobomb_seg8_vertex_08022BF8
 
@@ -128,37 +128,37 @@ bobomb_lights_unused:
 
 bobomb_seg8_vertex_08022E30:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x22E30
   symbol: bobomb_seg8_vertex_08022E30
 
 bobomb_seg8_vertex_08022F30:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x22F30
   symbol: bobomb_seg8_vertex_08022F30
 
 bobomb_seg8_vertex_08022F70:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x22F70
   symbol: bobomb_seg8_vertex_08022F70
 
 bobomb_seg8_vertex_08023070:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x23070
   symbol: bobomb_seg8_vertex_08023070
 
 bobomb_seg8_vertex_080230B0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x230B0
   symbol: bobomb_seg8_vertex_080230B0
 
 bobomb_seg8_vertex_08023190:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x23190
   symbol: bobomb_seg8_vertex_08023190
 

@@ -14,7 +14,7 @@ sand_particle:
 
 sand_seg3_vertex_0302BA90:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2BA90
   symbol: sand_seg3_vertex_0302BA90
 

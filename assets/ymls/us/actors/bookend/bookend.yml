@@ -76,13 +76,13 @@ bookend_seg5_lights_05001860:
 
 bookend_seg5_vertex_05001878:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1878
   symbol: bookend_seg5_vertex_05001878
 
 bookend_seg5_vertex_050018B8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x18B8
   symbol: bookend_seg5_vertex_050018B8
 
@@ -109,13 +109,13 @@ bookend_seg5_lights_05001A08:
 
 bookend_seg5_vertex_05001A20:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1A20
   symbol: bookend_seg5_vertex_05001A20
 
 bookend_seg5_vertex_05001A60:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1A60
   symbol: bookend_seg5_vertex_05001A60
 
@@ -142,13 +142,13 @@ bookend_seg5_lights_05001BB0:
 
 bookend_seg5_vertex_05001BC8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1BC8
   symbol: bookend_seg5_vertex_05001BC8
 
 bookend_seg5_vertex_05001C08:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x1C08
   symbol: bookend_seg5_vertex_05001C08
 
@@ -175,13 +175,13 @@ bookend_seg5_lights_05001DE0:
 
 bookend_seg5_vertex_05001DF8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1DF8
   symbol: bookend_seg5_vertex_05001DF8
 
 bookend_seg5_vertex_05001E38:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x1E38
   symbol: bookend_seg5_vertex_05001E38
 
@@ -208,7 +208,7 @@ bookend_seg5_lights_05002010:
 
 bookend_seg5_vertex_05002028:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x2028
   symbol: bookend_seg5_vertex_05002028
 
@@ -230,7 +230,7 @@ bookend_seg5_lights_050021B0:
 
 bookend_seg5_vertex_050021C8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x21C8
   symbol: bookend_seg5_vertex_050021C8
 

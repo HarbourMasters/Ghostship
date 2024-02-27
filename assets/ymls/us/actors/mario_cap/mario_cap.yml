@@ -72,31 +72,31 @@ mario_cap_seg3_lights_0301CF38:
 
 mario_cap_seg3_vertex_03022750:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x22750
   symbol: mario_cap_seg3_vertex_03022750
 
 mario_cap_seg3_vertex_030227C0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x227C0
   symbol: mario_cap_seg3_vertex_030227C0
 
 mario_cap_seg3_vertex_030228C0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x228C0
   symbol: mario_cap_seg3_vertex_030228C0
 
 mario_cap_seg3_vertex_030229B0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x229B0
   symbol: mario_cap_seg3_vertex_030229B0
 
 mario_cap_seg3_vertex_03022AA0:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x22AA0
   symbol: mario_cap_seg3_vertex_03022AA0
 
@@ -122,13 +122,13 @@ mario_cap_seg3_dl_03022D10:
 
 mario_cap_seg3_vertex_03022D38:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x22D38
   symbol: mario_cap_seg3_vertex_03022D38
 
 mario_cap_seg3_vertex_03022DF8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x22DF8
   symbol: mario_cap_seg3_vertex_03022DF8
 

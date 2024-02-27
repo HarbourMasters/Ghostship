@@ -54,13 +54,13 @@ stomp_smoke_5:
 
 stomp_smoke_seg4_vertex_040220C8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x220C8
   symbol: stomp_smoke_seg4_vertex_040220C8
 
 stomp_smoke_seg4_vertex_04022108:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x22108
   symbol: stomp_smoke_seg4_vertex_04022108
 

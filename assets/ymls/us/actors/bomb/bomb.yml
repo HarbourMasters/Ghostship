@@ -36,43 +36,43 @@ bomb_seg6_lights_06057AA8:
 
 bomb_seg6_vertex_0605A2C0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x5A2C0
   symbol: bomb_seg6_vertex_0605A2C0
 
 bomb_seg6_vertex_0605A300:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x5A300
   symbol: bomb_seg6_vertex_0605A300
 
 bomb_seg6_vertex_0605A340:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5A340
   symbol: bomb_seg6_vertex_0605A340
 
 bomb_seg6_vertex_0605A430:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5A430
   symbol: bomb_seg6_vertex_0605A430
 
 bomb_seg6_vertex_0605A520:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5A520
   symbol: bomb_seg6_vertex_0605A520
 
 bomb_seg6_vertex_0605A610:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5A610
   symbol: bomb_seg6_vertex_0605A610
 
 bomb_seg6_vertex_0605A700:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x5A700
   symbol: bomb_seg6_vertex_0605A700
 

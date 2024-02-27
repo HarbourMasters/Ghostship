@@ -50,13 +50,13 @@ chair_seg5_lights_05004C60:
 
 chair_seg5_vertex_05004C78:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4C78
   symbol: chair_seg5_vertex_05004C78
 
 chair_seg5_vertex_05004D78:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4D78
   symbol: chair_seg5_vertex_05004D78
 
@@ -78,13 +78,13 @@ chair_seg5_lights_05004F58:
 
 chair_seg5_vertex_05004F70:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4F70
   symbol: chair_seg5_vertex_05004F70
 
 chair_seg5_vertex_05005070:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x5070
   symbol: chair_seg5_vertex_05005070
 
@@ -106,13 +106,13 @@ chair_seg5_lights_05005200:
 
 chair_seg5_vertex_05005218:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5218
   symbol: chair_seg5_vertex_05005218
 
 chair_seg5_vertex_05005308:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x5308
   symbol: chair_seg5_vertex_05005308
 
@@ -134,13 +134,13 @@ chair_seg5_lights_05005478:
 
 chair_seg5_vertex_05005490:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5490
   symbol: chair_seg5_vertex_05005490
 
 chair_seg5_vertex_05005580:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x5580
   symbol: chair_seg5_vertex_05005580
 

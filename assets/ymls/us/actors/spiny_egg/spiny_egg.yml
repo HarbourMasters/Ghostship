@@ -17,97 +17,97 @@ spiny_egg_seg5_lights_05014510:
 
 spiny_egg_seg5_vertex_05014528:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x14528
   symbol: spiny_egg_seg5_vertex_05014528
 
 spiny_egg_seg5_vertex_050145B8:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x145B8
   symbol: spiny_egg_seg5_vertex_050145B8
 
 spiny_egg_seg5_vertex_05014648:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x14648
   symbol: spiny_egg_seg5_vertex_05014648
 
 spiny_egg_seg5_vertex_050146D8:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x146D8
   symbol: spiny_egg_seg5_vertex_050146D8
 
 spiny_egg_seg5_vertex_05014768:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x14768
   symbol: spiny_egg_seg5_vertex_05014768
 
 spiny_egg_seg5_vertex_050147F8:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x147F8
   symbol: spiny_egg_seg5_vertex_050147F8
 
 spiny_egg_seg5_vertex_05014888:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x14888
   symbol: spiny_egg_seg5_vertex_05014888
 
 spiny_egg_seg5_vertex_05014918:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x14918
   symbol: spiny_egg_seg5_vertex_05014918
 
 spiny_egg_seg5_vertex_050149A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x149A8
   symbol: spiny_egg_seg5_vertex_050149A8
 
 spiny_egg_seg5_vertex_05014AA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14AA8
   symbol: spiny_egg_seg5_vertex_05014AA8
 
 spiny_egg_seg5_vertex_05014BA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14BA8
   symbol: spiny_egg_seg5_vertex_05014BA8
 
 spiny_egg_seg5_vertex_05014CA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14CA8
   symbol: spiny_egg_seg5_vertex_05014CA8
 
 spiny_egg_seg5_vertex_05014DA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14DA8
   symbol: spiny_egg_seg5_vertex_05014DA8
 
 spiny_egg_seg5_vertex_05014EA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14EA8
   symbol: spiny_egg_seg5_vertex_05014EA8
 
 spiny_egg_seg5_vertex_05014FA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14FA8
   symbol: spiny_egg_seg5_vertex_05014FA8
 
 spiny_egg_seg5_vertex_050150A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x150A8
   symbol: spiny_egg_seg5_vertex_050150A8
 

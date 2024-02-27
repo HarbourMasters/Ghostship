@@ -46,7 +46,7 @@ sparkle_animation_4:
 
 sparkles_animation_seg4_vertex_04032A48:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x32A48
   symbol: sparkles_animation_seg4_vertex_04032A48
 

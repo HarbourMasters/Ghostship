@@ -23,61 +23,61 @@ birds_seg5_lights_05000030:
 
 birds_seg5_vertex_05000048:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x48
   symbol: birds_seg5_vertex_05000048
 
 birds_seg5_vertex_050000D8:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xD8
   symbol: birds_seg5_vertex_050000D8
 
 birds_seg5_vertex_05000108:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x108
   symbol: birds_seg5_vertex_05000108
 
 birds_seg5_vertex_05000138:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x138
   symbol: birds_seg5_vertex_05000138
 
 birds_seg5_vertex_05000168:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x168
   symbol: birds_seg5_vertex_05000168
 
 birds_seg5_vertex_050001F8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1F8
   symbol: birds_seg5_vertex_050001F8
 
 birds_seg5_vertex_050002F8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2F8
   symbol: birds_seg5_vertex_050002F8
 
 birds_seg5_vertex_050003F8:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x3F8
   symbol: birds_seg5_vertex_050003F8
 
 birds_seg5_vertex_05000428:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x428
   symbol: birds_seg5_vertex_05000428
 
 birds_seg5_vertex_050004C8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x4C8
   symbol: birds_seg5_vertex_050004C8
 

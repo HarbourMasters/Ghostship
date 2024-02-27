@@ -28,7 +28,7 @@ star_seg3_lights_0302A6D8:
 
 star_seg3_vertex_0302B6F0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x2B6F0
   symbol: star_seg3_vertex_0302B6F0
 
@@ -50,7 +50,7 @@ star_seg3_lights_0302B908:
 
 star_seg3_vertex_0302B920:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x2B920
   symbol: star_seg3_vertex_0302B920
 

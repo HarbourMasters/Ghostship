@@ -14,7 +14,7 @@ yellow_sphere:
 
 yellow_sphere_seg6_vertex_0601EB48:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1EB48
   symbol: yellow_sphere_seg6_vertex_0601EB48
 
@@ -27,4 +27,3 @@ yellow_sphere_seg6_dl_0601F3C0:
   type: GFX
   offset: 0x1F3C0
   symbol: yellow_sphere_seg6_dl_0601F3C0
-

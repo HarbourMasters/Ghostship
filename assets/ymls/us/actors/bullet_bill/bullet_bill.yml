@@ -28,79 +28,79 @@ bullet_bill_seg5_lights_0500BA90:
 
 bullet_bill_seg5_vertex_0500DAA8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xDAA8
   symbol: bullet_bill_seg5_vertex_0500DAA8
 
 bullet_bill_seg5_vertex_0500DB98:
   type: VTX
-  size: 72
+  count: 9
   offset: 0xDB98
   symbol: bullet_bill_seg5_vertex_0500DB98
 
 bullet_bill_seg5_vertex_0500DC28:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xDC28
   symbol: bullet_bill_seg5_vertex_0500DC28
 
 bullet_bill_seg5_vertex_0500DD18:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xDD18
   symbol: bullet_bill_seg5_vertex_0500DD18
 
 bullet_bill_seg5_vertex_0500DE08:
   type: VTX
-  size: 96
+  count: 12
   offset: 0xDE08
   symbol: bullet_bill_seg5_vertex_0500DE08
 
 bullet_bill_seg5_vertex_0500DEC8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xDEC8
   symbol: bullet_bill_seg5_vertex_0500DEC8
 
 bullet_bill_seg5_vertex_0500DFB8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xDFB8
   symbol: bullet_bill_seg5_vertex_0500DFB8
 
 bullet_bill_seg5_vertex_0500E0A8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xE0A8
   symbol: bullet_bill_seg5_vertex_0500E0A8
 
 bullet_bill_seg5_vertex_0500E198:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xE198
   symbol: bullet_bill_seg5_vertex_0500E198
 
 bullet_bill_seg5_vertex_0500E288:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xE288
   symbol: bullet_bill_seg5_vertex_0500E288
 
 bullet_bill_seg5_vertex_0500E378:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xE378
   symbol: bullet_bill_seg5_vertex_0500E378
 
 bullet_bill_seg5_vertex_0500E468:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xE468
   symbol: bullet_bill_seg5_vertex_0500E468
 
 bullet_bill_seg5_vertex_0500E558:
   type: VTX
-  size: 72
+  count: 9
   offset: 0xE558
   symbol: bullet_bill_seg5_vertex_0500E558
 

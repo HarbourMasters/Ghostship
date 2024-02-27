@@ -30,7 +30,7 @@ pokey_face_blink:
 
 pokey_seg5_vertex_05011710:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x11710
   symbol: pokey_seg5_vertex_05011710
 
@@ -56,7 +56,7 @@ pokey_seg5_dl_05012808:
 
 pokey_seg5_vertex_05012838:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x12838
   symbol: pokey_seg5_vertex_05012838
 

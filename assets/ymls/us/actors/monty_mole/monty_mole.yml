@@ -88,7 +88,7 @@ monty_mole_seg5_lights_05003170:
 
 monty_mole_seg5_vertex_05003188:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x3188
   symbol: monty_mole_seg5_vertex_05003188
 
@@ -110,13 +110,13 @@ monty_mole_seg5_lights_05003300:
 
 monty_mole_seg5_vertex_05003318:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x3318
   symbol: monty_mole_seg5_vertex_05003318
 
 monty_mole_seg5_vertex_050033B8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x33B8
   symbol: monty_mole_seg5_vertex_050033B8
 
@@ -143,13 +143,13 @@ monty_mole_seg5_lights_05003598:
 
 monty_mole_seg5_vertex_050035B0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x35B0
   symbol: monty_mole_seg5_vertex_050035B0
 
 monty_mole_seg5_vertex_05003670:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x3670
   symbol: monty_mole_seg5_vertex_05003670
 
@@ -176,7 +176,7 @@ monty_mole_seg5_lights_050038A0:
 
 monty_mole_seg5_vertex_050038B8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x38B8
   symbol: monty_mole_seg5_vertex_050038B8
 
@@ -198,13 +198,13 @@ monty_mole_seg5_lights_05003A30:
 
 monty_mole_seg5_vertex_05003A48:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x3A48
   symbol: monty_mole_seg5_vertex_05003A48
 
 monty_mole_seg5_vertex_05003AE8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x3AE8
   symbol: monty_mole_seg5_vertex_05003AE8
 
@@ -231,13 +231,13 @@ monty_mole_seg5_lights_05003CC8:
 
 monty_mole_seg5_vertex_05003CE0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x3CE0
   symbol: monty_mole_seg5_vertex_05003CE0
 
 monty_mole_seg5_vertex_05003DA0:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x3DA0
   symbol: monty_mole_seg5_vertex_05003DA0
 
@@ -264,19 +264,19 @@ monty_mole_seg5_lights_05003FD0:
 
 monty_mole_seg5_vertex_05003FE8:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x3FE8
   symbol: monty_mole_seg5_vertex_05003FE8
 
 monty_mole_seg5_vertex_050040B8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x40B8
   symbol: monty_mole_seg5_vertex_050040B8
 
 monty_mole_seg5_vertex_050041B8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x41B8
   symbol: monty_mole_seg5_vertex_050041B8
 
@@ -303,43 +303,43 @@ monty_mole_seg5_lights_05004518:
 
 monty_mole_seg5_vertex_05004530:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x4530
   symbol: monty_mole_seg5_vertex_05004530
 
 monty_mole_seg5_vertex_05004590:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4590
   symbol: monty_mole_seg5_vertex_05004590
 
 monty_mole_seg5_vertex_05004690:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4690
   symbol: monty_mole_seg5_vertex_05004690
 
 monty_mole_seg5_vertex_05004790:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x4790
   symbol: monty_mole_seg5_vertex_05004790
 
 monty_mole_seg5_vertex_05004830:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4830
   symbol: monty_mole_seg5_vertex_05004830
 
 monty_mole_seg5_vertex_05004930:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4930
   symbol: monty_mole_seg5_vertex_05004930
 
 monty_mole_seg5_vertex_05004970:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4970
   symbol: monty_mole_seg5_vertex_05004970
 
@@ -376,7 +376,7 @@ monty_mole_seg5_lights_05004C90:
 
 monty_mole_seg5_vertex_05004CA8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4CA8
   symbol: monty_mole_seg5_vertex_05004CA8
 

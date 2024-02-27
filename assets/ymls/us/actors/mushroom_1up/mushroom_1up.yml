@@ -14,7 +14,7 @@
 
 mushroom_1up_seg3_vertex_030295E8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x295E8
   symbol: mushroom_1up_seg3_vertex_030295E8
 

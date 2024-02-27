@@ -14,7 +14,7 @@ smoke:
 
 smoke_seg5_vertex_05007280:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x7280
   symbol: smoke_seg5_vertex_05007280
 

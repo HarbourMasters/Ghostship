@@ -130,25 +130,25 @@ door_seg3_lights_03009CF8:
 
 door_seg3_vertex_03013910:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13910
   symbol: door_seg3_vertex_03013910
 
 door_seg3_vertex_03013A10:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x13A10
   symbol: door_seg3_vertex_03013A10
 
 door_seg3_vertex_03013A90:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x13A90
   symbol: door_seg3_vertex_03013A90
 
 door_seg3_vertex_03013B50:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x13B50
   symbol: door_seg3_vertex_03013B50
 
@@ -179,13 +179,13 @@ door_seg3_dl_03013EA8:
 
 door_seg3_vertex_03013F20:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x13F20
   symbol: door_seg3_vertex_03013F20
 
 door_seg3_vertex_03013FA0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x13FA0
   symbol: door_seg3_vertex_03013FA0
 
@@ -206,13 +206,13 @@ door_seg3_dl_03014128:
 
 door_seg3_vertex_03014140:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x14140
   symbol: door_seg3_vertex_03014140
 
 door_seg3_vertex_03014180:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x14180
   symbol: door_seg3_vertex_03014180
 
@@ -258,13 +258,13 @@ door_seg3_dl_03014340:
 
 door_seg3_vertex_03014370:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x14370
   symbol: door_seg3_vertex_03014370
 
 door_seg3_vertex_030143F0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x143F0
   symbol: door_seg3_vertex_030143F0
 
@@ -290,25 +290,25 @@ door_seg3_dl_03014540:
 
 door_seg3_vertex_03014558:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14558
   symbol: door_seg3_vertex_03014558
 
 door_seg3_vertex_03014658:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x14658
   symbol: door_seg3_vertex_03014658
 
 door_seg3_vertex_030146D8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x146D8
   symbol: door_seg3_vertex_030146D8
 
 door_seg3_vertex_030147C8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x147C8
   symbol: door_seg3_vertex_030147C8
 
@@ -359,13 +359,13 @@ door_seg3_dl_03014D40:
 
 door_seg3_vertex_03014DF0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x14DF0
   symbol: door_seg3_vertex_03014DF0
 
 door_seg3_vertex_03014E70:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x14E70
   symbol: door_seg3_vertex_03014E70
 

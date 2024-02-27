@@ -28,49 +28,49 @@ springboard_seg5_lights_05000000:
 
 springboard_seg5_vertex_05001018:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1018
   symbol: springboard_seg5_vertex_05001018
 
 springboard_seg5_vertex_05001118:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x1118
   symbol: springboard_seg5_vertex_05001118
 
 springboard_seg5_vertex_05001208:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x1208
   symbol: springboard_seg5_vertex_05001208
 
 springboard_seg5_vertex_050012B8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x12B8
   symbol: springboard_seg5_vertex_050012B8
 
 springboard_seg5_vertex_050013A8:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x13A8
   symbol: springboard_seg5_vertex_050013A8
 
 springboard_seg5_vertex_05001458:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1458
   symbol: springboard_seg5_vertex_05001458
 
 springboard_seg5_vertex_05001558:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x1558
   symbol: springboard_seg5_vertex_05001558
 
 springboard_seg5_vertex_05001658:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x1658
   symbol: springboard_seg5_vertex_05001658
 

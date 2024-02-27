@@ -35,115 +35,115 @@ blargg_seg5_lights_05004788:
 
 blargg_seg5_vertex_050047A0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x47A0
   symbol: blargg_seg5_vertex_050047A0
 
 blargg_seg5_vertex_050048A0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x48A0
   symbol: blargg_seg5_vertex_050048A0
 
 blargg_seg5_vertex_050049A0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x49A0
   symbol: blargg_seg5_vertex_050049A0
 
 blargg_seg5_vertex_05004A20:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4A20
   symbol: blargg_seg5_vertex_05004A20
 
 blargg_seg5_vertex_05004B20:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4B20
   symbol: blargg_seg5_vertex_05004B20
 
 blargg_seg5_vertex_05004BE0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4BE0
   symbol: blargg_seg5_vertex_05004BE0
 
 blargg_seg5_vertex_05004CE0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4CE0
   symbol: blargg_seg5_vertex_05004CE0
 
 blargg_seg5_vertex_05004DE0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x4DE0
   symbol: blargg_seg5_vertex_05004DE0
 
 blargg_seg5_vertex_05004E60:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4E60
   symbol: blargg_seg5_vertex_05004E60
 
 blargg_seg5_vertex_05004F60:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x4F60
   symbol: blargg_seg5_vertex_05004F60
 
 blargg_seg5_vertex_05005050:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x5050
   symbol: blargg_seg5_vertex_05005050
 
 blargg_seg5_vertex_05005150:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x5150
   symbol: blargg_seg5_vertex_05005150
 
 blargg_seg5_vertex_05005250:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x5250
   symbol: blargg_seg5_vertex_05005250
 
 blargg_seg5_vertex_05005340:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x5340
   symbol: blargg_seg5_vertex_05005340
 
 blargg_seg5_vertex_050053E0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x53E0
   symbol: blargg_seg5_vertex_050053E0
 
 blargg_seg5_vertex_050054E0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x54E0
   symbol: blargg_seg5_vertex_050054E0
 
 blargg_seg5_vertex_050055E0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x55E0
   symbol: blargg_seg5_vertex_050055E0
 
 blargg_seg5_vertex_050056E0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x56E0
   symbol: blargg_seg5_vertex_050056E0
 
 blargg_seg5_vertex_050057E0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x57E0
   symbol: blargg_seg5_vertex_050057E0
 

@@ -44,13 +44,13 @@ koopa_flag_seg6_lights_06000860:
 
 koopa_flag_seg6_vertex_06000878:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x878
   symbol: koopa_flag_seg6_vertex_06000878
 
 koopa_flag_seg6_vertex_060008C8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x8C8
   symbol: koopa_flag_seg6_vertex_060008C8
 
@@ -66,13 +66,13 @@ koopa_flag_seg6_dl_06000A08:
 
 koopa_flag_seg6_vertex_06000A38:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xA38
   symbol: koopa_flag_seg6_vertex_06000A38
 
 koopa_flag_seg6_vertex_06000A68:
   type: VTX
-  size: 40
+  count: 5
   offset: 0xA68
   symbol: koopa_flag_seg6_vertex_06000A68
 
@@ -93,7 +93,7 @@ koopa_flag_seg6_dl_06000B08:
 
 koopa_flag_seg6_vertex_06000B80:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xB80
   symbol: koopa_flag_seg6_vertex_06000B80
 
@@ -109,7 +109,7 @@ koopa_flag_seg6_dl_06000BF8:
 
 koopa_flag_seg6_vertex_06000C68:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC68
   symbol: koopa_flag_seg6_vertex_06000C68
 
@@ -125,7 +125,7 @@ koopa_flag_seg6_dl_06000CE0:
 
 koopa_flag_seg6_vertex_06000D50:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xD50
   symbol: koopa_flag_seg6_vertex_06000D50
 
@@ -141,7 +141,7 @@ koopa_flag_seg6_dl_06000DB0:
 
 koopa_flag_seg6_vertex_06000DF0:
   type: VTX
-  size: 24
+  count: 3
   offset: 0xDF0
   symbol: koopa_flag_seg6_vertex_06000DF0
 

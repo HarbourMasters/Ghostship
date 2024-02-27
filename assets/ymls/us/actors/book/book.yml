@@ -20,13 +20,13 @@ book_seg5_lights_05002558:
 
 book_seg5_vertex_05002D70:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x2D70
   symbol: book_seg5_vertex_05002D70
 
 book_seg5_vertex_05002E30:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x2E30
   symbol: book_seg5_vertex_05002E30
 
