@@ -1,7 +1,8 @@
 :config:
-  compressed_offset: 0x16D5C0
+  compression:
+    offset: 0x166C60
   segments:
-    seg5: 0x16D5C0
+    seg5: 0x166C60
 
 # small_key_unused_1:
 #   type: U64
