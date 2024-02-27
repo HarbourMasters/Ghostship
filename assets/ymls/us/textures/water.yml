@@ -1,5 +1,6 @@
 :config:
-  compressed_offset: 0x334B30
+  compression:
+    offset: 0x334B30
   segments:
     seg9: 0x334B30
 
