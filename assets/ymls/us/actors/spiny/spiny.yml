@@ -41,97 +41,97 @@ spiny_seg5_lights_05015870:
 
 spiny_seg5_vertex_05015888:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x15888
   symbol: spiny_seg5_vertex_05015888
 
 spiny_seg5_vertex_05015958:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x15958
   symbol: spiny_seg5_vertex_05015958
 
 spiny_seg5_vertex_050159B8:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x159B8
   symbol: spiny_seg5_vertex_050159B8
 
 spiny_seg5_vertex_05015A88:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x15A88
   symbol: spiny_seg5_vertex_05015A88
 
 spiny_seg5_vertex_05015AE8:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x15AE8
   symbol: spiny_seg5_vertex_05015AE8
 
 spiny_seg5_vertex_05015BB8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x15BB8
   symbol: spiny_seg5_vertex_05015BB8
 
 spiny_seg5_vertex_05015C18:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x15C18
   symbol: spiny_seg5_vertex_05015C18
 
 spiny_seg5_vertex_05015CE8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x15CE8
   symbol: spiny_seg5_vertex_05015CE8
 
 spiny_seg5_vertex_05015D48:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x15D48
   symbol: spiny_seg5_vertex_05015D48
 
 spiny_seg5_vertex_05015E48:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x15E48
   symbol: spiny_seg5_vertex_05015E48
 
 spiny_seg5_vertex_05015F48:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x15F48
   symbol: spiny_seg5_vertex_05015F48
 
 spiny_seg5_vertex_05015FA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x15FA8
   symbol: spiny_seg5_vertex_05015FA8
 
 spiny_seg5_vertex_050160A8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x160A8
   symbol: spiny_seg5_vertex_050160A8
 
 spiny_seg5_vertex_05016148:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16148
   symbol: spiny_seg5_vertex_05016148
 
 spiny_seg5_vertex_05016238:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16238
   symbol: spiny_seg5_vertex_05016238
 
 spiny_seg5_vertex_05016328:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16328
   symbol: spiny_seg5_vertex_05016328
 

@@ -56,25 +56,25 @@ swoop_seg6_lights_06006270:
 
 swoop_seg6_vertex_06006288:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x6288
   symbol: swoop_seg6_vertex_06006288
 
 swoop_seg6_vertex_06006368:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6368
   symbol: swoop_seg6_vertex_06006368
 
 swoop_seg6_vertex_06006468:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x6468
   symbol: swoop_seg6_vertex_06006468
 
 swoop_seg6_vertex_06006518:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x6518
   symbol: swoop_seg6_vertex_06006518
 
@@ -95,7 +95,7 @@ swoop_seg6_dl_06006758:
 
 swoop_seg6_vertex_06006808:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x6808
   symbol: swoop_seg6_vertex_06006808
 
@@ -117,13 +117,13 @@ swoop_seg6_lights_06006938:
 
 swoop_seg6_vertex_06006950:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x6950
   symbol: swoop_seg6_vertex_06006950
 
 swoop_seg6_vertex_060069D0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x69D0
   symbol: swoop_seg6_vertex_060069D0
 
@@ -144,7 +144,7 @@ swoop_seg6_dl_06006A88:
 
 swoop_seg6_vertex_06006B58:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x6B58
   symbol: swoop_seg6_vertex_06006B58
 
@@ -160,7 +160,7 @@ swoop_seg6_dl_06006BD0:
 
 swoop_seg6_vertex_06006C88:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x6C88
   symbol: swoop_seg6_vertex_06006C88
 

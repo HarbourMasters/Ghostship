@@ -46,13 +46,13 @@ exclamation_box_outline_seg8_lights_08024D00:
 
 exclamation_box_outline_seg8_vertex_08024D18:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x24D18
   symbol: exclamation_box_outline_seg8_vertex_08024D18
 
 exclamation_box_outline_seg8_vertex_08024E08:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x24E08
   symbol: exclamation_box_outline_seg8_vertex_08024E08
 
@@ -93,13 +93,13 @@ exclamation_box_outline_seg8_dl_08024FE8:
 
 exclamation_box_outline_seg8_vertex_08025008:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x25008
   symbol: exclamation_box_outline_seg8_vertex_08025008
 
 exclamation_box_outline_seg8_vertex_080250E8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x250E8
   symbol: exclamation_box_outline_seg8_vertex_080250E8
 
@@ -121,7 +121,7 @@ exclamation_box_outline_seg8_lights_08025A68:
 
 exclamation_box_outline_seg8_vertex_08025E80:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x25E80
   symbol: exclamation_box_outline_seg8_vertex_08025E80
 

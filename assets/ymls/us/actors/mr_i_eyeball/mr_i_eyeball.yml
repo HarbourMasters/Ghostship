@@ -22,7 +22,7 @@ mr_i_eyeball_right_side:
 
 mr_i_eyeball_seg6_vertex_06000000:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x0
   symbol: mr_i_eyeball_seg6_vertex_06000000
 

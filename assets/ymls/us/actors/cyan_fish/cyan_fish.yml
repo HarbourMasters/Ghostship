@@ -23,7 +23,7 @@ cyan_fish_seg6_lights_0600DC68:
 
 cyan_fish_seg6_vertex_0600DC80:
   type: VTX
-  size: 80
+  count: 10
   offset: 0xDC80
   symbol: cyan_fish_seg6_vertex_0600DC80
 
@@ -45,7 +45,7 @@ cyan_fish_seg6_lights_0600DE38:
 
 cyan_fish_seg6_vertex_0600DE50:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xDE50
   symbol: cyan_fish_seg6_vertex_0600DE50
 
@@ -67,7 +67,7 @@ cyan_fish_seg6_lights_0600DF48:
 
 cyan_fish_seg6_vertex_0600DF60:
   type: VTX
-  size: 48
+  count: 6
   offset: 0xDF60
   symbol: cyan_fish_seg6_vertex_0600DF60
 

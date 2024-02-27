@@ -14,7 +14,7 @@ pebble:
 
 pebble_seg3_vertex_0301C2C0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1C2C0
   symbol: pebble_seg3_vertex_0301C2C0
 

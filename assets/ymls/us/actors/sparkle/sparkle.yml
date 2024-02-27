@@ -54,7 +54,7 @@ sparkle_5:
 
 sparkles_seg4_vertex_04027450:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x27450
   symbol: sparkles_seg4_vertex_04027450
 

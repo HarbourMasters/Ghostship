@@ -14,7 +14,7 @@ leaf:
 
 leaves_seg3_vertex_0301CBA0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x1CBA0
   symbol: leaves_seg3_vertex_0301CBA0
 

@@ -256,37 +256,37 @@ bowser_lights_unused2:
 
 bowser_seg6_vertex_06038C80:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x38C80
   symbol: bowser_seg6_vertex_06038C80
 
 bowser_seg6_vertex_06038D80:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x38D80
   symbol: bowser_seg6_vertex_06038D80
 
 bowser_seg6_vertex_06038E20:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x38E20
   symbol: bowser_seg6_vertex_06038E20
 
 bowser_seg6_vertex_06038F20:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x38F20
   symbol: bowser_seg6_vertex_06038F20
 
 bowser_seg6_vertex_06038FB0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x38FB0
   symbol: bowser_seg6_vertex_06038FB0
 
 bowser_seg6_vertex_060390A0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x390A0
   symbol: bowser_seg6_vertex_060390A0
 
@@ -312,37 +312,37 @@ bowser_seg6_dl_060392E0:
 
 bowser_seg6_vertex_06039368:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x39368
   symbol: bowser_seg6_vertex_06039368
 
 bowser_seg6_vertex_06039458:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x39458
   symbol: bowser_seg6_vertex_06039458
 
 bowser_seg6_vertex_06039528:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x39528
   symbol: bowser_seg6_vertex_06039528
 
 bowser_seg6_vertex_06039628:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x39628
   symbol: bowser_seg6_vertex_06039628
 
 bowser_seg6_vertex_060396C8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x396C8
   symbol: bowser_seg6_vertex_060396C8
 
 bowser_seg6_vertex_060397C8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x397C8
   symbol: bowser_seg6_vertex_060397C8
 
@@ -368,55 +368,55 @@ bowser_seg6_dl_060399D8:
 
 bowser_seg6_vertex_06039A60:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x39A60
   symbol: bowser_seg6_vertex_06039A60
 
 bowser_seg6_vertex_06039B60:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x39B60
   symbol: bowser_seg6_vertex_06039B60
 
 bowser_seg6_vertex_06039C50:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x39C50
   symbol: bowser_seg6_vertex_06039C50
 
 bowser_seg6_vertex_06039D50:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x39D50
   symbol: bowser_seg6_vertex_06039D50
 
 bowser_seg6_vertex_06039E10:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x39E10
   symbol: bowser_seg6_vertex_06039E10
 
 bowser_seg6_vertex_06039EF0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x39EF0
   symbol: bowser_seg6_vertex_06039EF0
 
 bowser_seg6_vertex_06039FF0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x39FF0
   symbol: bowser_seg6_vertex_06039FF0
 
 bowser_seg6_vertex_0603A0D0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3A0D0
   symbol: bowser_seg6_vertex_0603A0D0
 
 bowser_seg6_vertex_0603A1C0:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x3A1C0
   symbol: bowser_seg6_vertex_0603A1C0
 
@@ -437,61 +437,61 @@ bowser_seg6_dl_0603A4E8:
 
 bowser_seg6_vertex_0603A568:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3A568
   symbol: bowser_seg6_vertex_0603A568
 
 bowser_seg6_vertex_0603A648:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3A648
   symbol: bowser_seg6_vertex_0603A648
 
 bowser_seg6_vertex_0603A748:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3A748
   symbol: bowser_seg6_vertex_0603A748
 
 bowser_seg6_vertex_0603A848:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3A848
   symbol: bowser_seg6_vertex_0603A848
 
 bowser_seg6_vertex_0603A928:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3A928
   symbol: bowser_seg6_vertex_0603A928
 
 bowser_seg6_vertex_0603AA18:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3AA18
   symbol: bowser_seg6_vertex_0603AA18
 
 bowser_seg6_vertex_0603AAF8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3AAF8
   symbol: bowser_seg6_vertex_0603AAF8
 
 bowser_seg6_vertex_0603ABE8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3ABE8
   symbol: bowser_seg6_vertex_0603ABE8
 
 bowser_seg6_vertex_0603ACE8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3ACE8
   symbol: bowser_seg6_vertex_0603ACE8
 
 bowser_seg6_vertex_0603ADD8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3ADD8
   symbol: bowser_seg6_vertex_0603ADD8
 
@@ -512,31 +512,31 @@ bowser_seg6_dl_0603B208:
 
 bowser_seg6_vertex_0603B288:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3B288
   symbol: bowser_seg6_vertex_0603B288
 
 bowser_seg6_vertex_0603B388:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3B388
   symbol: bowser_seg6_vertex_0603B388
 
 bowser_seg6_vertex_0603B478:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3B478
   symbol: bowser_seg6_vertex_0603B478
 
 bowser_seg6_vertex_0603B578:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3B578
   symbol: bowser_seg6_vertex_0603B578
 
 bowser_seg6_vertex_0603B678:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x3B678
   symbol: bowser_seg6_vertex_0603B678
 
@@ -557,37 +557,37 @@ bowser_seg6_dl_0603B948:
 
 bowser_seg6_vertex_0603B948:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3B948
   symbol: bowser_seg6_vertex_0603B948
 
 bowser_seg6_vertex_0603BA48:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x3BA48
   symbol: bowser_seg6_vertex_0603BA48
 
 bowser_seg6_vertex_0603BAF8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3BAF8
   symbol: bowser_seg6_vertex_0603BAF8
 
 bowser_seg6_vertex_0603BBF8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x3BBF8
   symbol: bowser_seg6_vertex_0603BBF8
 
 bowser_seg6_vertex_0603BC98:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3BC98
   symbol: bowser_seg6_vertex_0603BC98
 
 bowser_seg6_vertex_0603BD88:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x3BD88
   symbol: bowser_seg6_vertex_0603BD88
 
@@ -613,37 +613,37 @@ bowser_seg6_dl_0603BFC8:
 
 bowser_seg6_vertex_0603C050:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3C050
   symbol: bowser_seg6_vertex_0603C050
 
 bowser_seg6_vertex_0603C150:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x3C150
   symbol: bowser_seg6_vertex_0603C150
 
 bowser_seg6_vertex_0603C200:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3C200
   symbol: bowser_seg6_vertex_0603C200
 
 bowser_seg6_vertex_0603C300:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x3C300
   symbol: bowser_seg6_vertex_0603C300
 
 bowser_seg6_vertex_0603C3A0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3C3A0
   symbol: bowser_seg6_vertex_0603C3A0
 
 bowser_seg6_vertex_0603C490:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x3C490
   symbol: bowser_seg6_vertex_0603C490
 
@@ -669,55 +669,55 @@ bowser_seg6_dl_0603C6D0:
 
 bowser_seg6_vertex_0603C758:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3C758
   symbol: bowser_seg6_vertex_0603C758
 
 bowser_seg6_vertex_0603C848:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3C848
   symbol: bowser_seg6_vertex_0603C848
 
 bowser_seg6_vertex_0603C948:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3C948
   symbol: bowser_seg6_vertex_0603C948
 
 bowser_seg6_vertex_0603CA48:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3CA48
   symbol: bowser_seg6_vertex_0603CA48
 
 bowser_seg6_vertex_0603CB28:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3CB28
   symbol: bowser_seg6_vertex_0603CB28
 
 bowser_seg6_vertex_0603CC18:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3CC18
   symbol: bowser_seg6_vertex_0603CC18
 
 bowser_seg6_vertex_0603CCF8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3CCF8
   symbol: bowser_seg6_vertex_0603CCF8
 
 bowser_seg6_vertex_0603CDF8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3CDF8
   symbol: bowser_seg6_vertex_0603CDF8
 
 bowser_seg6_vertex_0603CED8:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x3CED8
   symbol: bowser_seg6_vertex_0603CED8
 
@@ -738,73 +738,73 @@ bowser_seg6_dl_0603D200:
 
 bowser_seg6_vertex_0603D280:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3D280
   symbol: bowser_seg6_vertex_0603D280
 
 bowser_seg6_vertex_0603D380:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3D380
   symbol: bowser_seg6_vertex_0603D380
 
 bowser_seg6_vertex_0603D470:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3D470
   symbol: bowser_seg6_vertex_0603D470
 
 bowser_seg6_vertex_0603D570:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3D570
   symbol: bowser_seg6_vertex_0603D570
 
 bowser_seg6_vertex_0603D650:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x3D650
   symbol: bowser_seg6_vertex_0603D650
 
 bowser_seg6_vertex_0603D680:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3D680
   symbol: bowser_seg6_vertex_0603D680
 
 bowser_seg6_vertex_0603D770:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3D770
   symbol: bowser_seg6_vertex_0603D770
 
 bowser_seg6_vertex_0603D870:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3D870
   symbol: bowser_seg6_vertex_0603D870
 
 bowser_seg6_vertex_0603D950:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3D950
   symbol: bowser_seg6_vertex_0603D950
 
 bowser_seg6_vertex_0603DA50:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3DA50
   symbol: bowser_seg6_vertex_0603DA50
 
 bowser_seg6_vertex_0603DB50:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3DB50
   symbol: bowser_seg6_vertex_0603DB50
 
 bowser_seg6_vertex_0603DC40:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x3DC40
   symbol: bowser_seg6_vertex_0603DC40
 
@@ -825,31 +825,31 @@ bowser_seg6_dl_0603DFB0:
 
 bowser_seg6_vertex_0603E030:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3E030
   symbol: bowser_seg6_vertex_0603E030
 
 bowser_seg6_vertex_0603E120:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3E120
   symbol: bowser_seg6_vertex_0603E120
 
 bowser_seg6_vertex_0603E220:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3E220
   symbol: bowser_seg6_vertex_0603E220
 
 bowser_seg6_vertex_0603E320:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3E320
   symbol: bowser_seg6_vertex_0603E320
 
 bowser_seg6_vertex_0603E420:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3E420
   symbol: bowser_seg6_vertex_0603E420
 
@@ -865,145 +865,145 @@ bowser_seg6_dl_0603E6B8:
 
 bowser_seg6_vertex_0603E718:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x3E718
   symbol: bowser_seg6_vertex_0603E718
 
 bowser_seg6_vertex_0603E7A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3E7A8
   symbol: bowser_seg6_vertex_0603E7A8
 
 bowser_seg6_vertex_0603E8A8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3E8A8
   symbol: bowser_seg6_vertex_0603E8A8
 
 bowser_seg6_vertex_0603E988:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3E988
   symbol: bowser_seg6_vertex_0603E988
 
 bowser_seg6_vertex_0603EA68:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3EA68
   symbol: bowser_seg6_vertex_0603EA68
 
 bowser_seg6_vertex_0603EB48:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x3EB48
   symbol: bowser_seg6_vertex_0603EB48
 
 bowser_seg6_vertex_0603EC18:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3EC18
   symbol: bowser_seg6_vertex_0603EC18
 
 bowser_seg6_vertex_0603ED18:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3ED18
   symbol: bowser_seg6_vertex_0603ED18
 
 bowser_seg6_vertex_0603EDF8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x3EDF8
   symbol: bowser_seg6_vertex_0603EDF8
 
 bowser_seg6_vertex_0603EE58:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3EE58
   symbol: bowser_seg6_vertex_0603EE58
 
 bowser_seg6_vertex_0603EF58:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x3EF58
   symbol: bowser_seg6_vertex_0603EF58
 
 bowser_seg6_vertex_0603F038:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F038
   symbol: bowser_seg6_vertex_0603F038
 
 bowser_seg6_vertex_0603F128:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x3F128
   symbol: bowser_seg6_vertex_0603F128
 
 bowser_seg6_vertex_0603F1F8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F1F8
   symbol: bowser_seg6_vertex_0603F1F8
 
 bowser_seg6_vertex_0603F2E8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F2E8
   symbol: bowser_seg6_vertex_0603F2E8
 
 bowser_seg6_vertex_0603F3D8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F3D8
   symbol: bowser_seg6_vertex_0603F3D8
 
 bowser_seg6_vertex_0603F4C8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F4C8
   symbol: bowser_seg6_vertex_0603F4C8
 
 bowser_seg6_vertex_0603F5B8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F5B8
   symbol: bowser_seg6_vertex_0603F5B8
 
 bowser_seg6_vertex_0603F6A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3F6A8
   symbol: bowser_seg6_vertex_0603F6A8
 
 bowser_seg6_vertex_0603F7A8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F7A8
   symbol: bowser_seg6_vertex_0603F7A8
 
 bowser_seg6_vertex_0603F898:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F898
   symbol: bowser_seg6_vertex_0603F898
 
 bowser_seg6_vertex_0603F988:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F988
   symbol: bowser_seg6_vertex_0603F988
 
 bowser_seg6_vertex_0603FA78:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3FA78
   symbol: bowser_seg6_vertex_0603FA78
 
 bowser_seg6_vertex_0603FB68:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x3FB68
   symbol: bowser_seg6_vertex_0603FB68
 
@@ -1059,169 +1059,169 @@ bowser_seg6_dl_06040358:
 
 bowser_seg6_vertex_060402D8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x402D8
   symbol: bowser_seg6_vertex_060402D8
 
 bowser_seg6_vertex_060403D8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x403D8
   symbol: bowser_seg6_vertex_060403D8
 
 bowser_seg6_vertex_060404B8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x404B8
   symbol: bowser_seg6_vertex_060404B8
 
 bowser_seg6_vertex_060405B8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x405B8
   symbol: bowser_seg6_vertex_060405B8
 
 bowser_seg6_vertex_060406A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x406A8
   symbol: bowser_seg6_vertex_060406A8
 
 bowser_seg6_vertex_060407A8:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x407A8
   symbol: bowser_seg6_vertex_060407A8
 
 bowser_seg6_vertex_060407D8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x407D8
   symbol: bowser_seg6_vertex_060407D8
 
 bowser_seg6_vertex_060408B8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x408B8
   symbol: bowser_seg6_vertex_060408B8
 
 bowser_seg6_vertex_060409B8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x409B8
   symbol: bowser_seg6_vertex_060409B8
 
 bowser_seg6_vertex_06040AA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x40AA8
   symbol: bowser_seg6_vertex_06040AA8
 
 bowser_seg6_vertex_06040BA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x40BA8
   symbol: bowser_seg6_vertex_06040BA8
 
 bowser_seg6_vertex_06040CA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x40CA8
   symbol: bowser_seg6_vertex_06040CA8
 
 bowser_seg6_vertex_06040DA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x40DA8
   symbol: bowser_seg6_vertex_06040DA8
 
 bowser_seg6_vertex_06040EA8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x40EA8
   symbol: bowser_seg6_vertex_06040EA8
 
 bowser_seg6_vertex_06040FA8:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x40FA8
   symbol: bowser_seg6_vertex_06040FA8
 
 bowser_seg6_vertex_06040FD8:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x40FD8
   symbol: bowser_seg6_vertex_06040FD8
 
 bowser_seg6_vertex_06041088:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x41088
   symbol: bowser_seg6_vertex_06041088
 
 bowser_seg6_vertex_06041188:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x41188
   symbol: bowser_seg6_vertex_06041188
 
 bowser_seg6_vertex_06041218:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x41218
   symbol: bowser_seg6_vertex_06041218
 
 bowser_seg6_vertex_06041308:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x41308
   symbol: bowser_seg6_vertex_06041308
 
 bowser_seg6_vertex_060413E8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x413E8
   symbol: bowser_seg6_vertex_060413E8
 
 bowser_seg6_vertex_060414D8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x414D8
   symbol: bowser_seg6_vertex_060414D8
 
 bowser_seg6_vertex_060415D8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x415D8
   symbol: bowser_seg6_vertex_060415D8
 
 bowser_seg6_vertex_06041698:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x41698
   symbol: bowser_seg6_vertex_06041698
 
 bowser_seg6_vertex_06041758:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x41758
   symbol: bowser_seg6_vertex_06041758
 
 bowser_seg6_vertex_06041808:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x41808
   symbol: bowser_seg6_vertex_06041808
 
 bowser_seg6_vertex_06041908:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x41908
   symbol: bowser_seg6_vertex_06041908
 
 bowser_seg6_vertex_06041968:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x41968
   symbol: bowser_seg6_vertex_06041968
 
@@ -1332,61 +1332,61 @@ bowser_seg6_dl_06042608:
 
 bowser_seg6_vertex_06042660:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x42660
   symbol: bowser_seg6_vertex_06042660
 
 bowser_seg6_vertex_06042760:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x42760
   symbol: bowser_seg6_vertex_06042760
 
 bowser_seg6_vertex_06042860:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x42860
   symbol: bowser_seg6_vertex_06042860
 
 bowser_seg6_vertex_06042950:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x42950
   symbol: bowser_seg6_vertex_06042950
 
 bowser_seg6_vertex_06042A40:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x42A40
   symbol: bowser_seg6_vertex_06042A40
 
 bowser_seg6_vertex_06042B40:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x42B40
   symbol: bowser_seg6_vertex_06042B40
 
 bowser_seg6_vertex_06042BF0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x42BF0
   symbol: bowser_seg6_vertex_06042BF0
 
 bowser_seg6_vertex_06042CE0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x42CE0
   symbol: bowser_seg6_vertex_06042CE0
 
 bowser_seg6_vertex_06042DD0:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x42DD0
   symbol: bowser_seg6_vertex_06042DD0
 
 bowser_seg6_vertex_06042E30:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x42E30
   symbol: bowser_seg6_vertex_06042E30
 
@@ -1412,25 +1412,25 @@ bowser_seg6_dl_060431F0:
 
 bowser_seg6_vertex_06043278:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x43278
   symbol: bowser_seg6_vertex_06043278
 
 bowser_seg6_vertex_06043378:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x43378
   symbol: bowser_seg6_vertex_06043378
 
 bowser_seg6_vertex_06043468:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x43468
   symbol: bowser_seg6_vertex_06043468
 
 bowser_seg6_vertex_060434D8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x434D8
   symbol: bowser_seg6_vertex_060434D8
 

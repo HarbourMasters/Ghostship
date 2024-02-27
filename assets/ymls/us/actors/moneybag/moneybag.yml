@@ -34,13 +34,13 @@ moneybag_seg6_lights_060051C8:
 
 moneybag_seg6_vertex_060051E0:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x51E0
   symbol: moneybag_seg6_vertex_060051E0
 
 moneybag_seg6_vertex_06005280:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x5280
   symbol: moneybag_seg6_vertex_06005280
 
@@ -67,13 +67,13 @@ moneybag_seg6_lights_06005428:
 
 moneybag_seg6_vertex_06005440:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x5440
   symbol: moneybag_seg6_vertex_06005440
 
 moneybag_seg6_vertex_06005520:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x5520
   symbol: moneybag_seg6_vertex_06005520
 
@@ -94,7 +94,7 @@ moneybag_seg6_dl_06005688:
 
 moneybag_seg6_vertex_060056A8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x56A8
   symbol: moneybag_seg6_vertex_060056A8
 
@@ -134,13 +134,13 @@ moneybag_lights_unused3:
 
 moneybag_seg6_vertex_06005820:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x5820
   symbol: moneybag_seg6_vertex_06005820
 
 moneybag_seg6_vertex_060058D0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x58D0
   symbol: moneybag_seg6_vertex_060058D0
 

@@ -14,13 +14,13 @@ mist:
 
 mist_seg3_vertex_03000000:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x0
   symbol: mist_seg3_vertex_03000000
 
 mist_seg3_vertex_03000040:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x40
   symbol: mist_seg3_vertex_03000040
 

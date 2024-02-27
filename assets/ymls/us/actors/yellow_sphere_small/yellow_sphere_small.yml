@@ -14,7 +14,7 @@ small_yellow_sphere:
 
 yellow_sphere_seg5_vertex_05000000:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x0
   symbol: yellow_sphere_seg5_vertex_05000000
 

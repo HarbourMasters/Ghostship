@@ -96,37 +96,37 @@ penguin_seg5_lights_05005E10:
 
 penguin_seg5_vertex_05005E28:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x5E28
   symbol: penguin_seg5_vertex_05005E28
 
 penguin_seg5_vertex_05005EA8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x5EA8
   symbol: penguin_seg5_vertex_05005EA8
 
 penguin_seg5_vertex_05005EE8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x5EE8
   symbol: penguin_seg5_vertex_05005EE8
 
 penguin_seg5_vertex_05005FE8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x5FE8
   symbol: penguin_seg5_vertex_05005FE8
 
 penguin_seg5_vertex_050060E8:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x60E8
   symbol: penguin_seg5_vertex_050060E8
 
 penguin_seg5_vertex_05006158:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x6158
   symbol: penguin_seg5_vertex_05006158
 
@@ -182,97 +182,97 @@ penguin_seg5_dl_050064E8:
 
 penguin_seg5_vertex_05006518:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x6518
   symbol: penguin_seg5_vertex_05006518
 
 penguin_seg5_vertex_050065B8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x65B8
   symbol: penguin_seg5_vertex_050065B8
 
 penguin_seg5_vertex_05006658:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6658
   symbol: penguin_seg5_vertex_05006658
 
 penguin_seg5_vertex_05006748:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6748
   symbol: penguin_seg5_vertex_05006748
 
 penguin_seg5_vertex_05006838:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x6838
   symbol: penguin_seg5_vertex_05006838
 
 penguin_seg5_vertex_05006888:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6888
   symbol: penguin_seg5_vertex_05006888
 
 penguin_seg5_vertex_05006988:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6988
   symbol: penguin_seg5_vertex_05006988
 
 penguin_seg5_vertex_05006A78:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6A78
   symbol: penguin_seg5_vertex_05006A78
 
 penguin_seg5_vertex_05006B68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6B68
   symbol: penguin_seg5_vertex_05006B68
 
 penguin_seg5_vertex_05006C68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6C68
   symbol: penguin_seg5_vertex_05006C68
 
 penguin_seg5_vertex_05006D68:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x6D68
   symbol: penguin_seg5_vertex_05006D68
 
 penguin_seg5_vertex_05006DE8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x6DE8
   symbol: penguin_seg5_vertex_05006DE8
 
 penguin_seg5_vertex_05006E28:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x6E28
   symbol: penguin_seg5_vertex_05006E28
 
 penguin_seg5_vertex_05006F18:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x6F18
   symbol: penguin_seg5_vertex_05006F18
 
 penguin_seg5_vertex_05007018:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x7018
   symbol: penguin_seg5_vertex_05007018
 
 penguin_seg5_vertex_050070A8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x70A8
   symbol: penguin_seg5_vertex_050070A8
 

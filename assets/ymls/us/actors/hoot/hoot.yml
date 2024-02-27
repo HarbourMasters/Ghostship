@@ -102,67 +102,67 @@ hoot_seg5_lights_05000A08:
 
 hoot_seg5_vertex_05001220:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x1220
   symbol: hoot_seg5_vertex_05001220
 
 hoot_seg5_vertex_05001310:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x1310
   symbol: hoot_seg5_vertex_05001310
 
 hoot_seg5_vertex_050013D0:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x13D0
   symbol: hoot_seg5_vertex_050013D0
 
 hoot_seg5_vertex_05001400:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x1400
   symbol: hoot_seg5_vertex_05001400
 
 hoot_seg5_vertex_050014F0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x14F0
   symbol: hoot_seg5_vertex_050014F0
 
 hoot_seg5_vertex_050015E0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x15E0
   symbol: hoot_seg5_vertex_050015E0
 
 hoot_seg5_vertex_050016D0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16D0
   symbol: hoot_seg5_vertex_050016D0
 
 hoot_seg5_vertex_050017C0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x17C0
   symbol: hoot_seg5_vertex_050017C0
 
 hoot_seg5_vertex_050018B0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x18B0
   symbol: hoot_seg5_vertex_050018B0
 
 hoot_seg5_vertex_050019A0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x19A0
   symbol: hoot_seg5_vertex_050019A0
 
 hoot_seg5_vertex_05001A90:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x1A90
   symbol: hoot_seg5_vertex_05001A90
 
@@ -189,7 +189,7 @@ hoot_seg5_lights_05001E38:
 
 hoot_seg5_vertex_05002E50:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x2E50
   symbol: hoot_seg5_vertex_05002E50
 
@@ -211,7 +211,7 @@ hoot_seg5_lights_05002F60:
 
 hoot_seg5_vertex_05002F78:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x2F78
   symbol: hoot_seg5_vertex_05002F78
 
@@ -233,7 +233,7 @@ hoot_seg5_lights_05003088:
 
 hoot_seg5_vertex_050030A0:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x30A0
   symbol: hoot_seg5_vertex_050030A0
 
@@ -255,7 +255,7 @@ hoot_seg5_lights_050031B0:
 
 hoot_seg5_vertex_050031C8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x31C8
   symbol: hoot_seg5_vertex_050031C8
 
@@ -277,7 +277,7 @@ hoot_seg5_lights_050032D8:
 
 hoot_seg5_vertex_050032F0:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x32F0
   symbol: hoot_seg5_vertex_050032F0
 
@@ -299,7 +299,7 @@ hoot_seg5_lights_05003400:
 
 hoot_seg5_vertex_05003418:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x3418
   symbol: hoot_seg5_vertex_05003418
 
@@ -321,7 +321,7 @@ hoot_seg5_lights_05003528:
 
 hoot_seg5_vertex_05003540:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x3540
   symbol: hoot_seg5_vertex_05003540
 
@@ -343,7 +343,7 @@ hoot_seg5_lights_05003650:
 
 hoot_seg5_vertex_05003668:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x3668
   symbol: hoot_seg5_vertex_05003668
 
@@ -359,133 +359,133 @@ hoot_seg5_dl_05003728:
 
 hoot_seg5_vertex_05003778:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3778
   symbol: hoot_seg5_vertex_05003778
 
 hoot_seg5_vertex_05003868:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3868
   symbol: hoot_seg5_vertex_05003868
 
 hoot_seg5_vertex_05003958:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3958
   symbol: hoot_seg5_vertex_05003958
 
 hoot_seg5_vertex_05003A58:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3A58
   symbol: hoot_seg5_vertex_05003A58
 
 hoot_seg5_vertex_05003B48:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x3B48
   symbol: hoot_seg5_vertex_05003B48
 
 hoot_seg5_vertex_05003BA8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3BA8
   symbol: hoot_seg5_vertex_05003BA8
 
 hoot_seg5_vertex_05003C98:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x3C98
   symbol: hoot_seg5_vertex_05003C98
 
 hoot_seg5_vertex_05003D58:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3D58
   symbol: hoot_seg5_vertex_05003D58
 
 hoot_seg5_vertex_05003E58:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x3E58
   symbol: hoot_seg5_vertex_05003E58
 
 hoot_seg5_vertex_05003F18:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x3F18
   symbol: hoot_seg5_vertex_05003F18
 
 hoot_seg5_vertex_05003F58:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3F58
   symbol: hoot_seg5_vertex_05003F58
 
 hoot_seg5_vertex_05004048:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4048
   symbol: hoot_seg5_vertex_05004048
 
 hoot_seg5_vertex_05004108:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x4108
   symbol: hoot_seg5_vertex_05004108
 
 hoot_seg5_vertex_050041F8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x41F8
   symbol: hoot_seg5_vertex_050041F8
 
 hoot_seg5_vertex_050042D8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x42D8
   symbol: hoot_seg5_vertex_050042D8
 
 hoot_seg5_vertex_050043B8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x43B8
   symbol: hoot_seg5_vertex_050043B8
 
 hoot_seg5_vertex_050044A8:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x44A8
   symbol: hoot_seg5_vertex_050044A8
 
 hoot_seg5_vertex_05004548:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4548
   symbol: hoot_seg5_vertex_05004548
 
 hoot_seg5_vertex_05004648:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4648
   symbol: hoot_seg5_vertex_05004648
 
 hoot_seg5_vertex_05004708:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4708
   symbol: hoot_seg5_vertex_05004708
 
 hoot_seg5_vertex_05004748:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x4748
   symbol: hoot_seg5_vertex_05004748
 
 hoot_seg5_vertex_05004828:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4828
   symbol: hoot_seg5_vertex_05004828
 

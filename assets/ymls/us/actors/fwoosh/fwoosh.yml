@@ -14,7 +14,7 @@ fwoosh_face:
 
 fwoosh_seg5_vertex_050157C8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x157C8
   symbol: fwoosh_seg5_vertex_050157C8
 

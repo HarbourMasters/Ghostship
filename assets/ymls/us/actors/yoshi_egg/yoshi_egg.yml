@@ -70,7 +70,7 @@ yoshi_egg_7_unused:
 
 yoshi_egg_seg5_vertex_05005778:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x5778
   symbol: yoshi_egg_seg5_vertex_05005778
 

@@ -28,13 +28,13 @@ checkerboard_platform_seg8_lights_0800C828:
 
 checkerboard_platform_seg8_vertex_0800D440:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xD440
   symbol: checkerboard_platform_seg8_vertex_0800D440
 
 checkerboard_platform_seg8_vertex_0800D4C0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xD4C0
   symbol: checkerboard_platform_seg8_vertex_0800D4C0
 

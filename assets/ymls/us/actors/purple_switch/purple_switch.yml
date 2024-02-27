@@ -30,13 +30,13 @@ purple_switch_seg8_lights_0800C090:
 
 purple_switch_seg8_vertex_0800C528:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xC528
   symbol: purple_switch_seg8_vertex_0800C528
 
 purple_switch_seg8_vertex_0800C628:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xC628
   symbol: purple_switch_seg8_vertex_0800C628
 

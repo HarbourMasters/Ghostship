@@ -20,7 +20,7 @@ cannon_lid_seg8_lights_08004040:
 
 cannon_lid_seg8_vertex_08004858:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4858
   symbol: cannon_lid_seg8_vertex_08004858
 

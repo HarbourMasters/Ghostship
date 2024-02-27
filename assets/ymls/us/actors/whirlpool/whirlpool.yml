@@ -14,25 +14,25 @@ whirlpool:
 
 whirlpool_seg5_vertex_05013848:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x13848
   symbol: whirlpool_seg5_vertex_05013848
 
 whirlpool_seg5_vertex_05013928:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13928
   symbol: whirlpool_seg5_vertex_05013928
 
 whirlpool_seg5_vertex_05013A28:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x13A28
   symbol: whirlpool_seg5_vertex_05013A28
 
 whirlpool_seg5_vertex_05013B08:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x13B08
   symbol: whirlpool_seg5_vertex_05013B08
 

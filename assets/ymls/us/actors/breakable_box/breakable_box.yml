@@ -28,13 +28,13 @@ breakable_box_seg8_lights_08011A80:
 
 breakable_box_seg8_vertex_08012A90:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x12A90
   symbol: breakable_box_seg8_vertex_08012A90
 
 breakable_box_seg8_vertex_08012B80:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x12B80
   symbol: breakable_box_seg8_vertex_08012B80
 

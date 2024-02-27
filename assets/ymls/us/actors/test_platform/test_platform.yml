@@ -11,19 +11,19 @@ unknown_seg8_lights_08026008:
 
 unknown_seg8_vertex_08026020:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x26020
   symbol: unknown_seg8_vertex_08026020
 
 unknown_seg8_vertex_08026110:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x26110
   symbol: unknown_seg8_vertex_08026110
 
 unknown_seg8_vertex_08026200:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x26200
   symbol: unknown_seg8_vertex_08026200
 

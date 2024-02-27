@@ -38,7 +38,7 @@ bully_right_side:
 
 bully_seg5_vertex_05000000:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x0
   symbol: bully_seg5_vertex_05000000
 
@@ -78,79 +78,79 @@ bully_seg5_lights_05000450:
 
 bully_seg5_vertex_05002C68:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x2C68
   symbol: bully_seg5_vertex_05002C68
 
 bully_seg5_vertex_05002D48:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2D48
   symbol: bully_seg5_vertex_05002D48
 
 bully_seg5_vertex_05002D88:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x2D88
   symbol: bully_seg5_vertex_05002D88
 
 bully_seg5_vertex_05002E68:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x2E68
   symbol: bully_seg5_vertex_05002E68
 
 bully_seg5_vertex_05002EA8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x2EA8
   symbol: bully_seg5_vertex_05002EA8
 
 bully_seg5_vertex_05002F08:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x2F08
   symbol: bully_seg5_vertex_05002F08
 
 bully_seg5_vertex_05003008:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3008
   symbol: bully_seg5_vertex_05003008
 
 bully_seg5_vertex_05003108:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3108
   symbol: bully_seg5_vertex_05003108
 
 bully_seg5_vertex_05003208:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3208
   symbol: bully_seg5_vertex_05003208
 
 bully_seg5_vertex_05003308:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3308
   symbol: bully_seg5_vertex_05003308
 
 bully_seg5_vertex_05003408:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3408
   symbol: bully_seg5_vertex_05003408
 
 bully_seg5_vertex_05003508:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3508
   symbol: bully_seg5_vertex_05003508
 
 bully_seg5_vertex_05003608:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3608
   symbol: bully_seg5_vertex_05003608
 
@@ -176,13 +176,13 @@ bully_seg5_dl_05003878:
 
 bully_seg5_vertex_05003C50:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x3C50
   symbol: bully_seg5_vertex_05003C50
 
 bully_seg5_vertex_05003C90:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x3C90
   symbol: bully_seg5_vertex_05003C90
 
@@ -203,13 +203,13 @@ bully_seg5_dl_05003D40:
 
 bully_seg5_vertex_05003DB8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x3DB8
   symbol: bully_seg5_vertex_05003DB8
 
 bully_seg5_vertex_05003DF8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x3DF8
   symbol: bully_seg5_vertex_05003DF8
 
@@ -230,7 +230,7 @@ bully_seg5_dl_05003EA8:
 
 bully_seg5_vertex_05003F20:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x3F20
   symbol: bully_seg5_vertex_05003F20
 

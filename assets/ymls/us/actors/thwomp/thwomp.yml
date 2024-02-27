@@ -28,37 +28,37 @@ thwomp_seg5_lights_050098E8:
 
 thwomp_seg5_vertex_0500B100:
   type: VTX
-  size: 120
+  count: 15
   offset: 0xB100
   symbol: thwomp_seg5_vertex_0500B100
 
 thwomp_seg5_vertex_0500B1F0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB1F0
   symbol: thwomp_seg5_vertex_0500B1F0
 
 thwomp_seg5_vertex_0500B2F0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0xB2F0
   symbol: thwomp_seg5_vertex_0500B2F0
 
 thwomp_seg5_vertex_0500B3D0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB3D0
   symbol: thwomp_seg5_vertex_0500B3D0
 
 thwomp_seg5_vertex_0500B4D0:
   type: VTX
-  size: 48
+  count: 6
   offset: 0xB4D0
   symbol: thwomp_seg5_vertex_0500B4D0
 
 thwomp_seg5_vertex_0500B530:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xB530
   symbol: thwomp_seg5_vertex_0500B530
 

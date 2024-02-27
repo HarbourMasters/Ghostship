@@ -70,7 +70,7 @@ flame_7:
 
 flame_seg3_vertex_030172E0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x172E0
   symbol: flame_seg3_vertex_030172E0
 

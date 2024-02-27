@@ -28,13 +28,13 @@ blue_coin_switch_seg8_lights_08000000:
 
 blue_coin_switch_seg8_vertex_08000C18:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xC18
   symbol: blue_coin_switch_seg8_vertex_08000C18
 
 blue_coin_switch_seg8_vertex_08000D18:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xD18
   symbol: blue_coin_switch_seg8_vertex_08000D18
 

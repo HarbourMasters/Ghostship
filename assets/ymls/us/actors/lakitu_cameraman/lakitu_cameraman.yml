@@ -66,19 +66,19 @@ lakitu_seg6_lights_06003A18:
 
 lakitu_seg6_vertex_06003A30:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3A30
   symbol: lakitu_seg6_vertex_06003A30
 
 lakitu_seg6_vertex_06003B30:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x3B30
   symbol: lakitu_seg6_vertex_06003B30
 
 lakitu_seg6_vertex_06003BD0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x3BD0
   symbol: lakitu_seg6_vertex_06003BD0
 
@@ -105,37 +105,37 @@ lakitu_seg6_lights_06003E98:
 
 lakitu_seg6_vertex_06003EB0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x3EB0
   symbol: lakitu_seg6_vertex_06003EB0
 
 lakitu_seg6_vertex_06003FB0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x3FB0
   symbol: lakitu_seg6_vertex_06003FB0
 
 lakitu_seg6_vertex_060040A0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x40A0
   symbol: lakitu_seg6_vertex_060040A0
 
 lakitu_seg6_vertex_060041A0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x41A0
   symbol: lakitu_seg6_vertex_060041A0
 
 lakitu_seg6_vertex_06004290:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x4290
   symbol: lakitu_seg6_vertex_06004290
 
 lakitu_seg6_vertex_06004390:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x4390
   symbol: lakitu_seg6_vertex_06004390
 
@@ -157,7 +157,7 @@ lakitu_seg6_lights_060046E0:
 
 lakitu_seg6_vertex_060046F8:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x46F8
   symbol: lakitu_seg6_vertex_060046F8
 
@@ -174,7 +174,7 @@ lakitu_seg6_lights_060048D8:
 
 lakitu_seg6_vertex_060048F0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x48F0
   symbol: lakitu_seg6_vertex_060048F0
 
@@ -191,7 +191,7 @@ lakitu_seg6_lights_06004AD0:
 
 lakitu_seg6_vertex_06004AE8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x4AE8
   symbol: lakitu_seg6_vertex_06004AE8
 
@@ -246,43 +246,43 @@ lakitu_seg6_lights_06004CF8:
 
 lakitu_seg6_vertex_06004D10:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x4D10
   symbol: lakitu_seg6_vertex_06004D10
 
 lakitu_seg6_vertex_06004D50:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x4D50
   symbol: lakitu_seg6_vertex_06004D50
 
 lakitu_seg6_vertex_06004E40:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x4E40
   symbol: lakitu_seg6_vertex_06004E40
 
 lakitu_seg6_vertex_06004F30:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x4F30
   symbol: lakitu_seg6_vertex_06004F30
 
 lakitu_seg6_vertex_06004F90:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x4F90
   symbol: lakitu_seg6_vertex_06004F90
 
 lakitu_seg6_vertex_06005070:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x5070
   symbol: lakitu_seg6_vertex_06005070
 
 lakitu_seg6_vertex_06005150:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x5150
   symbol: lakitu_seg6_vertex_06005150
 
@@ -339,19 +339,19 @@ lakitu_cameraman_lights_unused4:
 
 lakitu_seg6_vertex_06005468:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x5468
   symbol: lakitu_seg6_vertex_06005468
 
 lakitu_seg6_vertex_06005538:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x5538
   symbol: lakitu_seg6_vertex_06005538
 
 lakitu_seg6_vertex_06005568:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x5568
   symbol: lakitu_seg6_vertex_06005568
 

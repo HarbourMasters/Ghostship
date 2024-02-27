@@ -52,13 +52,13 @@ tree_seg3_lights_0302DE10:
 
 tree_seg3_vertex_0302FE28:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x2FE28
   symbol: tree_seg3_vertex_0302FE28
 
 tree_seg3_vertex_0302FE58:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x2FE58
   symbol: tree_seg3_vertex_0302FE58
 
@@ -79,7 +79,7 @@ tree_seg3_dl_0302FEE8:
 
 tree_seg3_vertex_03030F60:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x30F60
   symbol: tree_seg3_vertex_03030F60
 
@@ -90,7 +90,7 @@ tree_seg3_dl_03030FA0:
 
 tree_seg3_vertex_03032048:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x32048
   symbol: tree_seg3_vertex_03032048
 
@@ -101,7 +101,7 @@ tree_seg3_dl_03032088:
 
 tree_seg3_vertex_03032130:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x32130
   symbol: tree_seg3_vertex_03032130
 
@@ -112,7 +112,7 @@ tree_seg3_dl_03032170:
 
 tree_seg3_vertex_03033218:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x33218
   symbol: tree_seg3_vertex_03033218
 

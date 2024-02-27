@@ -124,7 +124,7 @@ king_bobomb_lights_unused5:
 
 king_bobomb_seg5_vertex_0500A478:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA478
   symbol: king_bobomb_seg5_vertex_0500A478
 
@@ -140,7 +140,7 @@ king_bobomb_seg5_dl_0500A4F0:
 
 king_bobomb_seg5_vertex_0500A560:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA560
   symbol: king_bobomb_seg5_vertex_0500A560
 
@@ -156,7 +156,7 @@ king_bobomb_seg5_dl_0500A5D8:
 
 king_bobomb_seg5_vertex_0500A648:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA648
   symbol: king_bobomb_seg5_vertex_0500A648
 
@@ -172,7 +172,7 @@ king_bobomb_seg5_dl_0500A6C0:
 
 king_bobomb_seg5_vertex_0500A730:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA730
   symbol: king_bobomb_seg5_vertex_0500A730
 
@@ -188,7 +188,7 @@ king_bobomb_seg5_dl_0500A7A8:
 
 king_bobomb_seg5_vertex_0500A818:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA818
   symbol: king_bobomb_seg5_vertex_0500A818
 
@@ -204,7 +204,7 @@ king_bobomb_seg5_dl_0500A890:
 
 king_bobomb_seg5_vertex_0500A900:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xA900
   symbol: king_bobomb_seg5_vertex_0500A900
 
@@ -226,13 +226,13 @@ king_bobomb_seg5_lights_0500A9E8:
 
 king_bobomb_seg5_vertex_0500AA00:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xAA00
   symbol: king_bobomb_seg5_vertex_0500AA00
 
 king_bobomb_seg5_vertex_0500AB00:
   type: VTX
-  size: 96
+  count: 12
   offset: 0xAB00
   symbol: king_bobomb_seg5_vertex_0500AB00
 
@@ -254,13 +254,13 @@ king_bobomb_seg5_lights_0500AD38:
 
 king_bobomb_seg5_vertex_0500AD50:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xAD50
   symbol: king_bobomb_seg5_vertex_0500AD50
 
 king_bobomb_seg5_vertex_0500AE50:
   type: VTX
-  size: 104
+  count: 13
   offset: 0xAE50
   symbol: king_bobomb_seg5_vertex_0500AE50
 
@@ -276,13 +276,13 @@ king_bobomb_seg5_dl_0500B068:
 
 king_bobomb_seg5_vertex_0500B098:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xB098
   symbol: king_bobomb_seg5_vertex_0500B098
 
 king_bobomb_seg5_vertex_0500B0D8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0xB0D8
   symbol: king_bobomb_seg5_vertex_0500B0D8
 
@@ -309,7 +309,7 @@ king_bobomb_seg5_lights_0500B200:
 
 king_bobomb_seg5_vertex_0500B218:
   type: VTX
-  size: 48
+  count: 6
   offset: 0xB218
   symbol: king_bobomb_seg5_vertex_0500B218
 
@@ -331,7 +331,7 @@ king_bobomb_seg5_lights_0500B330:
 
 king_bobomb_seg5_vertex_0500B348:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xB348
   symbol: king_bobomb_seg5_vertex_0500B348
 
@@ -353,13 +353,13 @@ king_bobomb_seg5_lights_0500B458:
 
 king_bobomb_seg5_vertex_0500B470:
   type: VTX
-  size: 128
+  count: 16
   offset: 0xB470
   symbol: king_bobomb_seg5_vertex_0500B470
 
 king_bobomb_seg5_vertex_0500B570:
   type: VTX
-  size: 64
+  count: 8
   offset: 0xB570
   symbol: king_bobomb_seg5_vertex_0500B570
 

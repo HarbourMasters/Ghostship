@@ -72,7 +72,7 @@ piranha_plant_seg6_lights_060113E0:
 
 piranha_plant_seg6_vertex_060153F8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x153F8
   symbol: piranha_plant_seg6_vertex_060153F8
 
@@ -88,7 +88,7 @@ piranha_plant_seg6_dl_06015480:
 
 piranha_plant_seg6_vertex_060154F0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x154F0
   symbol: piranha_plant_seg6_vertex_060154F0
 
@@ -104,13 +104,13 @@ piranha_plant_seg6_dl_06015578:
 
 piranha_plant_seg6_vertex_060155E8:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x155E8
   symbol: piranha_plant_seg6_vertex_060155E8
 
 piranha_plant_seg6_vertex_060156C8:
   type: VTX
-  size: 104
+  count: 13
   offset: 0x156C8
   symbol: piranha_plant_seg6_vertex_060156C8
 
@@ -126,43 +126,43 @@ piranha_plant_seg6_dl_06015850:
 
 piranha_plant_seg6_vertex_060158B0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x158B0
   symbol: piranha_plant_seg6_vertex_060158B0
 
 piranha_plant_seg6_vertex_06015990:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x15990
   symbol: piranha_plant_seg6_vertex_06015990
 
 piranha_plant_seg6_vertex_06015A80:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x15A80
   symbol: piranha_plant_seg6_vertex_06015A80
 
 piranha_plant_seg6_vertex_06015B40:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x15B40
   symbol: piranha_plant_seg6_vertex_06015B40
 
 piranha_plant_seg6_vertex_06015C40:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x15C40
   symbol: piranha_plant_seg6_vertex_06015C40
 
 piranha_plant_seg6_vertex_06015D40:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x15D40
   symbol: piranha_plant_seg6_vertex_06015D40
 
 piranha_plant_seg6_vertex_06015DC0:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x15DC0
   symbol: piranha_plant_seg6_vertex_06015DC0
 
@@ -198,49 +198,49 @@ piranha_plant_seg6_dl_06016120:
 
 piranha_plant_seg6_vertex_06016190:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x16190
   symbol: piranha_plant_seg6_vertex_06016190
 
 piranha_plant_seg6_vertex_06016270:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16270
   symbol: piranha_plant_seg6_vertex_06016270
 
 piranha_plant_seg6_vertex_06016360:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x16360
   symbol: piranha_plant_seg6_vertex_06016360
 
 piranha_plant_seg6_vertex_06016460:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x16460
   symbol: piranha_plant_seg6_vertex_06016460
 
 piranha_plant_seg6_vertex_06016490:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16490
   symbol: piranha_plant_seg6_vertex_06016490
 
 piranha_plant_seg6_vertex_06016580:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x16580
   symbol: piranha_plant_seg6_vertex_06016580
 
 piranha_plant_seg6_vertex_06016680:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x16680
   symbol: piranha_plant_seg6_vertex_06016680
 
 piranha_plant_seg6_vertex_060166E0:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x166E0
   symbol: piranha_plant_seg6_vertex_060166E0
 
@@ -281,7 +281,7 @@ piranha_plant_seg6_dl_06016A78:
 
 piranha_plant_seg6_vertex_06016AE8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x16AE8
   symbol: piranha_plant_seg6_vertex_06016AE8
 
@@ -297,7 +297,7 @@ piranha_plant_seg6_dl_06016C10:
 
 piranha_plant_seg6_vertex_06016C70:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x16C70
   symbol: piranha_plant_seg6_vertex_06016C70
 
@@ -313,7 +313,7 @@ piranha_plant_seg6_dl_06016D98:
 
 piranha_plant_seg6_vertex_06016DF8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x16DF8
   symbol: piranha_plant_seg6_vertex_06016DF8
 

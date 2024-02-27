@@ -44,49 +44,49 @@ treasure_chest_seg6_lights_06013F90:
 
 treasure_chest_seg6_vertex_060167A8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x167A8
   symbol: treasure_chest_seg6_vertex_060167A8
 
 treasure_chest_seg6_vertex_060167E8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x167E8
   symbol: treasure_chest_seg6_vertex_060167E8
 
 treasure_chest_seg6_vertex_060168E8:
   type: VTX
-  size: 24
+  count: 3
   offset: 0x168E8
   symbol: treasure_chest_seg6_vertex_060168E8
 
 treasure_chest_seg6_vertex_06016918:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16918
   symbol: treasure_chest_seg6_vertex_06016918
 
 treasure_chest_seg6_vertex_06016A08:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x16A08
   symbol: treasure_chest_seg6_vertex_06016A08
 
 treasure_chest_seg6_vertex_06016AF8:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x16AF8
   symbol: treasure_chest_seg6_vertex_06016AF8
 
 treasure_chest_seg6_vertex_06016B78:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x16B78
   symbol: treasure_chest_seg6_vertex_06016B78
 
 treasure_chest_seg6_vertex_06016C78:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x16C78
   symbol: treasure_chest_seg6_vertex_06016C78
 
@@ -117,49 +117,49 @@ treasure_chest_seg6_dl_06016F90:
 
 treasure_chest_seg6_vertex_06017030:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x17030
   symbol: treasure_chest_seg6_vertex_06017030
 
 treasure_chest_seg6_vertex_06017110:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x17110
   symbol: treasure_chest_seg6_vertex_06017110
 
 treasure_chest_seg6_vertex_06017200:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x17200
   symbol: treasure_chest_seg6_vertex_06017200
 
 treasure_chest_seg6_vertex_060172F0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x172F0
   symbol: treasure_chest_seg6_vertex_060172F0
 
 treasure_chest_seg6_vertex_06017330:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x17330
   symbol: treasure_chest_seg6_vertex_06017330
 
 treasure_chest_seg6_vertex_06017420:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x17420
   symbol: treasure_chest_seg6_vertex_06017420
 
 treasure_chest_seg6_vertex_06017490:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x17490
   symbol: treasure_chest_seg6_vertex_06017490
 
 treasure_chest_seg6_vertex_06017590:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x17590
   symbol: treasure_chest_seg6_vertex_06017590
 

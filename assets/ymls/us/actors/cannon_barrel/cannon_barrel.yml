@@ -26,25 +26,25 @@ cannon_barrel_seg8_lights_08005890:
 
 cannon_barrel_seg8_vertex_080060A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x60A8
   symbol: cannon_barrel_seg8_vertex_080060A8
 
 cannon_barrel_seg8_vertex_080061A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x61A8
   symbol: cannon_barrel_seg8_vertex_080061A8
 
 cannon_barrel_seg8_vertex_080062A8:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x62A8
   symbol: cannon_barrel_seg8_vertex_080062A8
 
 cannon_barrel_seg8_vertex_080063A8:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x63A8
   symbol: cannon_barrel_seg8_vertex_080063A8
 

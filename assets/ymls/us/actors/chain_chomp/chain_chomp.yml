@@ -64,31 +64,31 @@ chain_chomp_lights_unused3:
 
 chain_chomp_seg6_vertex_06023BD0:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x23BD0
   symbol: chain_chomp_seg6_vertex_06023BD0
 
 chain_chomp_seg6_vertex_06023C20:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x23C20
   symbol: chain_chomp_seg6_vertex_06023C20
 
 chain_chomp_seg6_vertex_06023D20:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x23D20
   symbol: chain_chomp_seg6_vertex_06023D20
 
 chain_chomp_seg6_vertex_06023E10:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x23E10
   symbol: chain_chomp_seg6_vertex_06023E10
 
 chain_chomp_seg6_vertex_06023F00:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x23F00
   symbol: chain_chomp_seg6_vertex_06023F00
 
@@ -109,31 +109,31 @@ chain_chomp_seg6_dl_06024240:
 
 chain_chomp_seg6_vertex_060242D0:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x242D0
   symbol: chain_chomp_seg6_vertex_060242D0
 
 chain_chomp_seg6_vertex_060243B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x243B0
   symbol: chain_chomp_seg6_vertex_060243B0
 
 chain_chomp_seg6_vertex_060244B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x244B0
   symbol: chain_chomp_seg6_vertex_060244B0
 
 chain_chomp_seg6_vertex_060245B0:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x245B0
   symbol: chain_chomp_seg6_vertex_060245B0
 
 chain_chomp_seg6_vertex_060246B0:
   type: VTX
-  size: 40
+  count: 5
   offset: 0x246B0
   symbol: chain_chomp_seg6_vertex_060246B0
 
@@ -160,7 +160,7 @@ chain_chomp_seg6_lights_060249D0:
 
 chain_chomp_seg6_vertex_060249E8:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x249E8
   symbol: chain_chomp_seg6_vertex_060249E8
 
@@ -176,13 +176,13 @@ chain_chomp_seg6_dl_06024B00:
 
 chain_chomp_seg6_vertex_06024B70:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x24B70
   symbol: chain_chomp_seg6_vertex_06024B70
 
 chain_chomp_seg6_vertex_06024C60:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x24C60
   symbol: chain_chomp_seg6_vertex_06024C60
 
@@ -198,13 +198,13 @@ chain_chomp_seg6_dl_06024D60:
 
 chain_chomp_seg6_vertex_06024DD0:
   type: VTX
-  size: 120
+  count: 15
   offset: 0x24DD0
   symbol: chain_chomp_seg6_vertex_06024DD0
 
 chain_chomp_seg6_vertex_06024EC0:
   type: VTX
-  size: 72
+  count: 9
   offset: 0x24EC0
   symbol: chain_chomp_seg6_vertex_06024EC0
 

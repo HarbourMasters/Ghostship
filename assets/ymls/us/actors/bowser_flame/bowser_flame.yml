@@ -118,7 +118,7 @@ bowser_flame_9:
 
 flame_seg6_vertex_0601C000:
   type: VTX
-  size: 64
+  count: 8
   offset: 0x1C000
   symbol: flame_seg6_vertex_0601C000
 

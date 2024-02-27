@@ -38,19 +38,19 @@ coin_tilt_right:
 
 coin_seg3_vertex_030056C0:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x56C0
   symbol: coin_seg3_vertex_030056C0
 
 coin_seg3_vertex_03005700:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x5700
   symbol: coin_seg3_vertex_03005700
 
 coin_seg3_vertex_03005740:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x5740
   symbol: coin_seg3_vertex_03005740
 

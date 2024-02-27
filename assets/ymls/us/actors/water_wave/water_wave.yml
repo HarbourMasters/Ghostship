@@ -38,7 +38,7 @@ water_wave_3:
 
 water_wave_seg4_vertex_04025318:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x25318
   symbol: water_wave_seg4_vertex_04025318
 

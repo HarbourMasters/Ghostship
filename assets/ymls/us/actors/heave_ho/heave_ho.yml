@@ -108,25 +108,25 @@ heave_ho_seg5_lights_05011BE0:
 
 heave_ho_seg5_vertex_05011BF8:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x11BF8
   symbol: heave_ho_seg5_vertex_05011BF8
 
 heave_ho_seg5_vertex_05011C38:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x11C38
   symbol: heave_ho_seg5_vertex_05011C38
 
 heave_ho_seg5_vertex_05011C98:
   type: VTX
-  size: 80
+  count: 10
   offset: 0x11C98
   symbol: heave_ho_seg5_vertex_05011C98
 
 heave_ho_seg5_vertex_05011D38:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x11D38
   symbol: heave_ho_seg5_vertex_05011D38
 
@@ -169,13 +169,13 @@ heave_ho_seg5_lights_05011F68:
 
 heave_ho_seg5_vertex_05011F80:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x11F80
   symbol: heave_ho_seg5_vertex_05011F80
 
 heave_ho_seg5_vertex_05012030:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x12030
   symbol: heave_ho_seg5_vertex_05012030
 
@@ -208,13 +208,13 @@ heave_ho_seg5_lights_050121C8:
 
 heave_ho_seg5_vertex_050121E0:
   type: VTX
-  size: 88
+  count: 11
   offset: 0x121E0
   symbol: heave_ho_seg5_vertex_050121E0
 
 heave_ho_seg5_vertex_05012290:
   type: VTX
-  size: 56
+  count: 7
   offset: 0x12290
   symbol: heave_ho_seg5_vertex_05012290
 
@@ -247,13 +247,13 @@ heave_ho_seg5_lights_05012428:
 
 heave_ho_seg5_vertex_05012440:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x12440
   symbol: heave_ho_seg5_vertex_05012440
 
 heave_ho_seg5_vertex_05012480:
   type: VTX
-  size: 112
+  count: 14
   offset: 0x12480
   symbol: heave_ho_seg5_vertex_05012480
 
@@ -274,7 +274,7 @@ heave_ho_seg5_dl_050125F8:
 
 heave_ho_seg5_vertex_05012670:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x12670
   symbol: heave_ho_seg5_vertex_05012670
 
@@ -296,7 +296,7 @@ heave_ho_seg5_lights_05012758:
 
 heave_ho_seg5_vertex_05012770:
   type: VTX
-  size: 32
+  count: 4
   offset: 0x12770
   symbol: heave_ho_seg5_vertex_05012770
 
@@ -312,157 +312,157 @@ heave_ho_seg5_dl_050127F8:
 
 heave_ho_seg5_vertex_05012868:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12868
   symbol: heave_ho_seg5_vertex_05012868
 
 heave_ho_seg5_vertex_05012968:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12968
   symbol: heave_ho_seg5_vertex_05012968
 
 heave_ho_seg5_vertex_05012A68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12A68
   symbol: heave_ho_seg5_vertex_05012A68
 
 heave_ho_seg5_vertex_05012B68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12B68
   symbol: heave_ho_seg5_vertex_05012B68
 
 heave_ho_seg5_vertex_05012C68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12C68
   symbol: heave_ho_seg5_vertex_05012C68
 
 heave_ho_seg5_vertex_05012D68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12D68
   symbol: heave_ho_seg5_vertex_05012D68
 
 heave_ho_seg5_vertex_05012E68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12E68
   symbol: heave_ho_seg5_vertex_05012E68
 
 heave_ho_seg5_vertex_05012F68:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x12F68
   symbol: heave_ho_seg5_vertex_05012F68
 
 heave_ho_seg5_vertex_05013068:
   type: VTX
-  size: 96
+  count: 12
   offset: 0x13068
   symbol: heave_ho_seg5_vertex_05013068
 
 heave_ho_seg5_vertex_05013128:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13128
   symbol: heave_ho_seg5_vertex_05013128
 
 heave_ho_seg5_vertex_05013228:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13228
   symbol: heave_ho_seg5_vertex_05013228
 
 heave_ho_seg5_vertex_05013328:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13328
   symbol: heave_ho_seg5_vertex_05013328
 
 heave_ho_seg5_vertex_05013428:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13428
   symbol: heave_ho_seg5_vertex_05013428
 
 heave_ho_seg5_vertex_05013528:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13528
   symbol: heave_ho_seg5_vertex_05013528
 
 heave_ho_seg5_vertex_05013628:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13628
   symbol: heave_ho_seg5_vertex_05013628
 
 heave_ho_seg5_vertex_05013728:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13728
   symbol: heave_ho_seg5_vertex_05013728
 
 heave_ho_seg5_vertex_05013828:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13828
   symbol: heave_ho_seg5_vertex_05013828
 
 heave_ho_seg5_vertex_05013928:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13928
   symbol: heave_ho_seg5_vertex_05013928
 
 heave_ho_seg5_vertex_05013A28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13A28
   symbol: heave_ho_seg5_vertex_05013A28
 
 heave_ho_seg5_vertex_05013B28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13B28
   symbol: heave_ho_seg5_vertex_05013B28
 
 heave_ho_seg5_vertex_05013C28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13C28
   symbol: heave_ho_seg5_vertex_05013C28
 
 heave_ho_seg5_vertex_05013D28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13D28
   symbol: heave_ho_seg5_vertex_05013D28
 
 heave_ho_seg5_vertex_05013E28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13E28
   symbol: heave_ho_seg5_vertex_05013E28
 
 heave_ho_seg5_vertex_05013F28:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x13F28
   symbol: heave_ho_seg5_vertex_05013F28
 
 heave_ho_seg5_vertex_05014028:
   type: VTX
-  size: 128
+  count: 16
   offset: 0x14028
   symbol: heave_ho_seg5_vertex_05014028
 
 heave_ho_seg5_vertex_05014128:
   type: VTX
-  size: 48
+  count: 6
   offset: 0x14128
   symbol: heave_ho_seg5_vertex_05014128
 
