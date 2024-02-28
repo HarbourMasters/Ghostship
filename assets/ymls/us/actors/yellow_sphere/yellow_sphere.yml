@@ -1,8 +1,8 @@
 :config:
   compression:
-    offset: 0x12A7E0
+    offset: 0x188440
   segments:
-    seg5: 0x12A7E0
+    seg6: 0x188440
 
 yellow_sphere:
   type: TEXTURE

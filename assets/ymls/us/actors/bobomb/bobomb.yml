@@ -51,7 +51,9 @@ bob-omb_eyes_blink:
   height: 32
   offset: 0x22260
   format: RGBA16
-  symbol: bobomb_seg8_texture_08022260bobomb_seg8_vertex_08022A60:
+  symbol: bobomb_seg8_texture_08022260
+
+bobomb_seg8_vertex_08022A60:
   type: VTX
   count: 6
   offset: 0x22A60
@@ -177,4 +179,3 @@ bobomb_seg8_dl_08023480:
   type: GFX
   offset: 0x23480
   symbol: bobomb_seg8_dl_08023480
-
