@@ -1,15 +1,15 @@
 :config:
   compression:
-    offset: 0x1C4230
+    offset: 0x1F2200
   segments:
-    seg6: 0x1C4230
+    seg8: 0x1F2200
 
 koopa_shell_back:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x2E48
+  offset: 0x27CA0
   format: RGBA16
   symbol: koopa_shell_seg8_texture_08027CA0
 koopa_shell_front:
@@ -17,7 +17,7 @@ koopa_shell_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2648
+  offset: 0x274A0
   format: RGBA16
   symbol: koopa_shell_seg8_texture_080274A0
 
