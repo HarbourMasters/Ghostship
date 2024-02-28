@@ -1,0 +1,15 @@
+:config:
+  compression:
+    offset: 0x1E51F0
+  segments:
+    seg6: 0x1E51F0
+
+chilly_chief_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x3754
+  symbol: chilly_chief_geo
+
+chilly_chief_big_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x3874
+  symbol: chilly_chief_big_geo
