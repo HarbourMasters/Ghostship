@@ -1,3 +1,6 @@
+# Offsets in this file are 0x150 greater than the jp version
+# This is possibly a result of a 0x150 offset introduced in bowser
+
 :config:
   compression:
     offset: 0x188440
@@ -32,73 +35,73 @@ bomb_spike:
 bomb_seg6_lights_06057AA8:
   type: LIGHTS
   size: 24
-  offset: 0x57AA8
+  offset: 0x57BF8
   symbol: bomb_seg6_lights_06057AA8
 
 bomb_seg6_vertex_0605A2C0:
   type: VTX
   count: 4
-  offset: 0x5A2C0
+  offset: 0x5A410
   symbol: bomb_seg6_vertex_0605A2C0
 
 bomb_seg6_vertex_0605A300:
   type: VTX
   count: 4
-  offset: 0x5A300
+  offset: 0x5A450
   symbol: bomb_seg6_vertex_0605A300
 
 bomb_seg6_vertex_0605A340:
   type: VTX
   count: 15
-  offset: 0x5A340
+  offset: 0x5A490
   symbol: bomb_seg6_vertex_0605A340
 
 bomb_seg6_vertex_0605A430:
   type: VTX
   count: 15
-  offset: 0x5A430
+  offset: 0x5A580
   symbol: bomb_seg6_vertex_0605A430
 
 bomb_seg6_vertex_0605A520:
   type: VTX
   count: 15
-  offset: 0x5A520
+  offset: 0x5A670
   symbol: bomb_seg6_vertex_0605A520
 
 bomb_seg6_vertex_0605A610:
   type: VTX
   count: 15
-  offset: 0x5A610
+  offset: 0x5A760
   symbol: bomb_seg6_vertex_0605A610
 
 bomb_seg6_vertex_0605A700:
   type: VTX
   count: 12
-  offset: 0x5A700
+  offset: 0x5A850
   symbol: bomb_seg6_vertex_0605A700
 
 bomb_seg6_dl_0605A7C0:
   type: GFX
-  offset: 0x5A7C0
+  offset: 0x5A910
   symbol: bomb_seg6_dl_0605A7C0
 
 bomb_seg6_dl_0605A7F8:
   type: GFX
-  offset: 0x5A7F8
+  offset: 0x5A948
   symbol: bomb_seg6_dl_0605A7F8
 
 bomb_seg6_dl_0605A830:
   type: GFX
-  offset: 0x5A830
+  offset: 0x5A980
   symbol: bomb_seg6_dl_0605A830
 
 bomb_seg6_dl_0605A8A8:
   type: GFX
-  offset: 0x5A8A8
+  offset: 0x5A9F8
   symbol: bomb_seg6_dl_0605A8A8
 
 bomb_seg6_dl_0605A9C0:
   type: GFX
-  offset: 0x5A9C0
+  offset: 0x5AB10
   symbol: bomb_seg6_dl_0605A9C0
 
