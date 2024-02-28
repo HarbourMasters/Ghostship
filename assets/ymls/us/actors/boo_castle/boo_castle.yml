@@ -1,8 +1,8 @@
 :config:
   compression:
-    offset: 0x166C60
+    offset: 0x1D8310
   segments:
-    seg5: 0x166C60
+    seg6: 0x1D8310
 
 bbh_boo_eyes:
   type: TEXTURE

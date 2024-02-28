@@ -1,8 +1,8 @@
 :config:
   compression:
-    offset: 0x13B910
+    offset: 0x145E90
   segments:
-    seg5: 0x13B910
+    seg5: 0x145E90
 
 tornado:
   type: TEXTURE
