@@ -1,3 +1,5 @@
+# Offsets in this file are 0xF0 greater than the jp version
+
 :config:
   compression:
     offset: 0x1D8310
@@ -16,413 +18,413 @@ mips_eyes:
 mips_seg6_lights_06010380:
   type: LIGHTS
   size: 24
-  offset: 0x10380
+  offset: 0x10470
   symbol: mips_seg6_lights_06010380
 
 mips_seg6_lights_06010398:
   type: LIGHTS
   size: 24
-  offset: 0x10398
+  offset: 0x10488
   symbol: mips_seg6_lights_06010398
 
 mips_seg6_vertex_060103B0:
   type: VTX
   count: 16
-  offset: 0x103B0
+  offset: 0x104A0
   symbol: mips_seg6_vertex_060103B0
 
 mips_seg6_vertex_060104B0:
   type: VTX
   count: 13
-  offset: 0x104B0
+  offset: 0x105A0
   symbol: mips_seg6_vertex_060104B0
 
 mips_seg6_vertex_06010580:
   type: VTX
   count: 4
-  offset: 0x10580
+  offset: 0x10670
   symbol: mips_seg6_vertex_06010580
 
 mips_seg6_vertex_060105C0:
   type: VTX
   count: 4
-  offset: 0x105C0
+  offset: 0x106B0
   symbol: mips_seg6_vertex_060105C0
 
 mips_seg6_dl_06010600:
   type: GFX
-  offset: 0x10600
+  offset: 0x106F0
   symbol: mips_seg6_dl_06010600
 
 mips_seg6_dl_06010748:
   type: GFX
-  offset: 0x10748
+  offset: 0x10838
   symbol: mips_seg6_dl_06010748
 
 mips_seg6_dl_060107B8:
   type: GFX
-  offset: 0x107B8
+  offset: 0x108A8
   symbol: mips_seg6_dl_060107B8
 
 mips_seg6_lights_06010820:
   type: LIGHTS
   size: 24
-  offset: 0x10820
+  offset: 0x10910
   symbol: mips_seg6_lights_06010820
 
 mips_seg6_vertex_06010838:
   type: VTX
   count: 15
-  offset: 0x10838
+  offset: 0x10928
   symbol: mips_seg6_vertex_06010838
 
 mips_seg6_vertex_06010928:
   type: VTX
   count: 15
-  offset: 0x10928
+  offset: 0x10A18
   symbol: mips_seg6_vertex_06010928
 
 mips_seg6_vertex_06010A18:
   type: VTX
   count: 8
-  offset: 0x10A18
+  offset: 0x10B08
   symbol: mips_seg6_vertex_06010A18
 
 mips_seg6_dl_06010A98:
   type: GFX
-  offset: 0x10A98
+  offset: 0x10B88
   symbol: mips_seg6_dl_06010A98
 
 mips_seg6_dl_06010C40:
   type: GFX
-  offset: 0x10C40
+  offset: 0x10D30
   symbol: mips_seg6_dl_06010C40
 
 mips_seg6_lights_06010CA0:
   type: LIGHTS
   size: 24
-  offset: 0x10CA0
+  offset: 0x10D90
   symbol: mips_seg6_lights_06010CA0
 
 mips_seg6_lights_06010CB8:
   type: LIGHTS
   size: 24
-  offset: 0x10CB8
+  offset: 0x10DA8
   symbol: mips_seg6_lights_06010CB8
 
 mips_seg6_vertex_06010CD0:
   type: VTX
   count: 6
-  offset: 0x10CD0
+  offset: 0x10DC0
   symbol: mips_seg6_vertex_06010CD0
 
 mips_seg6_vertex_06010D30:
   type: VTX
   count: 8
-  offset: 0x10D30
+  offset: 0x10E20
   symbol: mips_seg6_vertex_06010D30
 
 mips_seg6_dl_06010DB0:
   type: GFX
-  offset: 0x10DB0
+  offset: 0x10EA0
   symbol: mips_seg6_dl_06010DB0
 
 mips_seg6_dl_06010E60:
   type: GFX
-  offset: 0x10E60
+  offset: 0x10F50
   symbol: mips_seg6_dl_06010E60
 
 mips_seg6_lights_06010EC0:
   type: LIGHTS
   size: 24
-  offset: 0x10EC0
+  offset: 0x10FB0
   symbol: mips_seg6_lights_06010EC0
 
 mips_seg6_lights_06010ED8:
   type: LIGHTS
   size: 24
-  offset: 0x10ED8
+  offset: 0x10FC8
   symbol: mips_seg6_lights_06010ED8
 
 mips_seg6_lights_06010EF0:
   type: LIGHTS
   size: 24
-  offset: 0x10EF0
+  offset: 0x10FE0
   symbol: mips_seg6_lights_06010EF0
 
 mips_seg6_vertex_06010F08:
   type: VTX
   count: 5
-  offset: 0x10F08
+  offset: 0x10FF8
   symbol: mips_seg6_vertex_06010F08
 
 mips_seg6_vertex_06010F58:
   type: VTX
   count: 3
-  offset: 0x10F58
+  offset: 0x11048
   symbol: mips_seg6_vertex_06010F58
 
 mips_seg6_vertex_06010F88:
   type: VTX
   count: 7
-  offset: 0x10F88
+  offset: 0x11078
   symbol: mips_seg6_vertex_06010F88
 
 mips_seg6_dl_06010FF8:
   type: GFX
-  offset: 0x10FF8
+  offset: 0x110E8
   symbol: mips_seg6_dl_06010FF8
 
 mips_seg6_dl_060110B0:
   type: GFX
-  offset: 0x110B0
+  offset: 0x111A0
   symbol: mips_seg6_dl_060110B0
 
 mips_seg6_lights_06011110:
   type: LIGHTS
   size: 24
-  offset: 0x11110
+  offset: 0x11200
   symbol: mips_seg6_lights_06011110
 
 mips_seg6_lights_06011128:
   type: LIGHTS
   size: 24
-  offset: 0x11128
+  offset: 0x11218
   symbol: mips_seg6_lights_06011128
 
 mips_seg6_vertex_06011140:
   type: VTX
   count: 6
-  offset: 0x11140
+  offset: 0x11230
   symbol: mips_seg6_vertex_06011140
 
 mips_seg6_vertex_060111A0:
   type: VTX
   count: 10
-  offset: 0x111A0
+  offset: 0x11290
   symbol: mips_seg6_vertex_060111A0
 
 mips_seg6_dl_06011240:
   type: GFX
-  offset: 0x11240
+  offset: 0x11330
   symbol: mips_seg6_dl_06011240
 
 mips_seg6_dl_06011310:
   type: GFX
-  offset: 0x11310
+  offset: 0x11400
   symbol: mips_seg6_dl_06011310
 
 mips_seg6_lights_06011370:
   type: LIGHTS
   size: 24
-  offset: 0x11370
+  offset: 0x11460
   symbol: mips_seg6_lights_06011370
 
 mips_seg6_lights_06011388:
   type: LIGHTS
   size: 24
-  offset: 0x11388
+  offset: 0x11478
   symbol: mips_seg6_lights_06011388
 
 mips_seg6_vertex_060113A0:
   type: VTX
   count: 5
-  offset: 0x113A0
+  offset: 0x11490
   symbol: mips_seg6_vertex_060113A0
 
 mips_seg6_vertex_060113F0:
   type: VTX
   count: 8
-  offset: 0x113F0
+  offset: 0x114E0
   symbol: mips_seg6_vertex_060113F0
 
 mips_seg6_dl_06011470:
   type: GFX
-  offset: 0x11470
+  offset: 0x11560
   symbol: mips_seg6_dl_06011470
 
 mips_seg6_dl_06011520:
   type: GFX
-  offset: 0x11520
+  offset: 0x11610
   symbol: mips_seg6_dl_06011520
 
 mips_seg6_lights_06011580:
   type: LIGHTS
   size: 24
-  offset: 0x11580
+  offset: 0x11670
   symbol: mips_seg6_lights_06011580
 
 mips_seg6_lights_06011598:
   type: LIGHTS
   size: 24
-  offset: 0x11598
+  offset: 0x11688
   symbol: mips_seg6_lights_06011598
 
 mips_seg6_vertex_060115B0:
   type: VTX
   count: 6
-  offset: 0x115B0
+  offset: 0x116A0
   symbol: mips_seg6_vertex_060115B0
 
 mips_seg6_vertex_06011610:
   type: VTX
   count: 10
-  offset: 0x11610
+  offset: 0x11700
   symbol: mips_seg6_vertex_06011610
 
 mips_seg6_dl_060116B0:
   type: GFX
-  offset: 0x116B0
+  offset: 0x117A0
   symbol: mips_seg6_dl_060116B0
 
 mips_seg6_dl_06011780:
   type: GFX
-  offset: 0x11780
+  offset: 0x11870
   symbol: mips_seg6_dl_06011780
 
 mips_seg6_lights_060117E0:
   type: LIGHTS
   size: 24
-  offset: 0x117E0
+  offset: 0x118D0
   symbol: mips_seg6_lights_060117E0
 
 mips_seg6_lights_060117F8:
   type: LIGHTS
   size: 24
-  offset: 0x117F8
+  offset: 0x118E8
   symbol: mips_seg6_lights_060117F8
 
 mips_seg6_vertex_06011810:
   type: VTX
   count: 5
-  offset: 0x11810
+  offset: 0x11900
   symbol: mips_seg6_vertex_06011810
 
 mips_seg6_vertex_06011860:
   type: VTX
   count: 8
-  offset: 0x11860
+  offset: 0x11950
   symbol: mips_seg6_vertex_06011860
 
 mips_seg6_dl_060118E0:
   type: GFX
-  offset: 0x118E0
+  offset: 0x119D0
   symbol: mips_seg6_dl_060118E0
 
 mips_seg6_dl_06011990:
   type: GFX
-  offset: 0x11990
+  offset: 0x11A80
   symbol: mips_seg6_dl_06011990
 
 mips_seg6_lights_060119F0:
   type: LIGHTS
   size: 24
-  offset: 0x119F0
+  offset: 0x11AE0
   symbol: mips_seg6_lights_060119F0
 
 mips_seg6_lights_06011A08:
   type: LIGHTS
   size: 24
-  offset: 0x11A08
+  offset: 0x11AF8
   symbol: mips_seg6_lights_06011A08
 
 mips_seg6_vertex_06011A20:
   type: VTX
   count: 6
-  offset: 0x11A20
+  offset: 0x11B10
   symbol: mips_seg6_vertex_06011A20
 
 mips_seg6_vertex_06011A80:
   type: VTX
   count: 8
-  offset: 0x11A80
+  offset: 0x11B70
   symbol: mips_seg6_vertex_06011A80
 
 mips_seg6_dl_06011B00:
   type: GFX
-  offset: 0x11B00
+  offset: 0x11BF0
   symbol: mips_seg6_dl_06011B00
 
 mips_seg6_dl_06011BB0:
   type: GFX
-  offset: 0x11BB0
+  offset: 0x11CA0
   symbol: mips_seg6_dl_06011BB0
 
 mips_seg6_lights_06011C10:
   type: LIGHTS
   size: 24
-  offset: 0x11C10
+  offset: 0x11D00
   symbol: mips_seg6_lights_06011C10
 
 mips_seg6_lights_06011C28:
   type: LIGHTS
   size: 24
-  offset: 0x11C28
+  offset: 0x11D18
   symbol: mips_seg6_lights_06011C28
 
 mips_seg6_vertex_06011C40:
   type: VTX
   count: 6
-  offset: 0x11C40
+  offset: 0x11D30
   symbol: mips_seg6_vertex_06011C40
 
 mips_seg6_vertex_06011CA0:
   type: VTX
   count: 7
-  offset: 0x11CA0
+  offset: 0x11D90
   symbol: mips_seg6_vertex_06011CA0
 
 mips_seg6_dl_06011D10:
   type: GFX
-  offset: 0x11D10
+  offset: 0x11E00
   symbol: mips_seg6_dl_06011D10
 
 mips_seg6_dl_06011DB0:
   type: GFX
-  offset: 0x11DB0
+  offset: 0x11EA0
   symbol: mips_seg6_dl_06011DB0
 
 mips_seg6_lights_06011E10:
   type: LIGHTS
   size: 24
-  offset: 0x11E10
+  offset: 0x11F00
   symbol: mips_seg6_lights_06011E10
 
 mips_seg6_vertex_06011E28:
   type: VTX
   count: 6
-  offset: 0x11E28
+  offset: 0x11F18
   symbol: mips_seg6_vertex_06011E28
 
 mips_seg6_dl_06011E88:
   type: GFX
-  offset: 0x11E88
+  offset: 0x11F78
   symbol: mips_seg6_dl_06011E88
 
 mips_seg6_dl_06011ED8:
   type: GFX
-  offset: 0x11ED8
+  offset: 0x11FC8
   symbol: mips_seg6_dl_06011ED8
 
 mips_seg6_lights_06011EF8:
   type: LIGHTS
   size: 24
-  offset: 0x11EF8
+  offset: 0x11FE8
   symbol: mips_seg6_lights_06011EF8
 
 mips_seg6_vertex_06011F10:
   type: VTX
   count: 6
-  offset: 0x11F10
+  offset: 0x12000
   symbol: mips_seg6_vertex_06011F10
 
 mips_seg6_dl_06011F70:
   type: GFX
-  offset: 0x11F70
+  offset: 0x12060
   symbol: mips_seg6_dl_06011F70
 
 mips_seg6_dl_06011FC0:
   type: GFX
-  offset: 0x11FC0
+  offset: 0x120B0
   symbol: mips_seg6_dl_06011FC0
 
