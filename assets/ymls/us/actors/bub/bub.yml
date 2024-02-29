@@ -1,15 +1,15 @@
 :config:
   compression:
-    offset: 0x180BB0
+    offset: 0x1B9CC0
   segments:
-    seg5: 0x180BB0
+    seg6: 0x1B9CC0
 
 bub_eye_border:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1408
+  offset: 0xE2A8
   format: RGBA16
   symbol: bub_seg6_texture_0600E2A8
 bub_eyes:
@@ -17,7 +17,7 @@ bub_eyes:
   size: 4096
   width: 64
   height: 32
-  offset: 0x408
+  offset: 0xF2A8
   format: RGBA16
   symbol: bub_seg6_texture_0600F2A8
 bub_fins:
@@ -25,7 +25,7 @@ bub_fins:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C08
+  offset: 0xEAA8
   format: RGBA16
   symbol: bub_seg6_texture_0600EAA8
 bub_scales:
@@ -33,10 +33,11 @@ bub_scales:
   size: 4096
   width: 64
   height: 32
-  offset: 0x2408
+  offset: 0x102A8
   format: RGBA16
   symbol: bub_seg6_texture_060102A8
 
+# This symbol appears to be mislabeled
 bub_seg6_lights_0600E280:
   type: LIGHTS
   size: 24

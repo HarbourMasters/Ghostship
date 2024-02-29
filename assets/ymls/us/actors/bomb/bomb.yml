@@ -1,5 +1,4 @@
 # Offsets in this file are 0x150 greater than the jp version
-# This is possibly a result of a 0x150 offset introduced in bowser
 
 :config:
   compression:

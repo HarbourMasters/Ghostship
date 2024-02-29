@@ -39,7 +39,7 @@ amp_mouth:
 
 amp_electricity_vertices:
   type: VTX
-  count: 10
+  count: 5
   offset: 0x2B18
   symbol: dAmpElectricityVertices
 
@@ -55,7 +55,7 @@ amp_electricity_dl:
 
 amp_eye_vertices:
   type: VTX
-  count: 10
+  count: 4
   offset: 0x2C10
   symbol: dAmpEyeVertices
 
@@ -71,7 +71,7 @@ amp_eye_dl:
 
 amp_mouth_vertices:
   type: VTX
-  count: 10
+  count: 4
   offset: 0x2CF8
   symbol: dAmpMouthVertices
 
@@ -87,7 +87,7 @@ amp_mouth_dl:
 
 amp_body_vertices:
   type: VTX
-  count: 10
+  count: 4
   offset: 0x2DE0
   symbol: dAmpBodyVertices
 
