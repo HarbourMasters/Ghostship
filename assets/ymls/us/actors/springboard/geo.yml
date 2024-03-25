@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x166BD0
+    - [0x0C,  0x166BD0]
 
 springboard_top_geo:
   type: SM64:GEO_LAYOUT

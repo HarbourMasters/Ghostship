@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x419F90
+    - [0x0E,  0x419F90]
 
 wdw_geo_000580:
   type: SM64:GEO_LAYOUT

@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg22: 0x218DA0
+    - [0x16,  0x218DA0]
 
 mist_geo:
   type: SM64:GEO_LAYOUT

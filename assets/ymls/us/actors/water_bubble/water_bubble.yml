@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x134D20
   segments:
-    seg5: 0x134D20
+    - [0x05,  0x134D20]
 
 water_bubble:
   type: TEXTURE

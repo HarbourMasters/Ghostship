@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x188440
   segments:
-    seg6: 0x188440
+    - [0x06,  0x188440]
 
 bowser_armband:
   type: TEXTURE
@@ -722,10 +723,10 @@ bowser_seg6_vertex_0603CED8:
   offset: 0x3CED8
   symbol: bowser_seg6_vertex_0603CED8
 
-bowser_seg6_dl_0603CF28:
-  type: GFX
-  offset: 0x3CF28
-  symbol: bowser_seg6_dl_0603CF28
+# bowser_seg6_dl_0603CF28:
+#   type: GFX
+#   offset: 0x3CF28
+#   symbol: bowser_seg6_dl_0603CF28
 
 bowser_seg6_dl_0603D098:
   type: GFX
@@ -1226,10 +1227,10 @@ bowser_seg6_vertex_06041968:
   offset: 0x41968
   symbol: bowser_seg6_vertex_06041968
 
-bowser_seg6_dl_06041A28:
-  type: GFX
-  offset: 0x41A28
-  symbol: bowser_seg6_dl_06041A28
+# bowser_seg6_dl_06041A28:
+#   type: GFX
+#   offset: 0x41A28
+#   symbol: bowser_seg6_dl_06041A28
 
 bowser_seg6_dl_06041BA0:
   type: GFX
@@ -1391,10 +1392,10 @@ bowser_seg6_vertex_06042E30:
   offset: 0x42E30
   symbol: bowser_seg6_vertex_06042E30
 
-bowser_seg6_dl_06042EE0:
-  type: GFX
-  offset: 0x42EE0
-  symbol: bowser_seg6_dl_06042EE0
+# bowser_seg6_dl_06042EE0:
+#   type: GFX
+#   offset: 0x42EE0
+#   symbol: bowser_seg6_dl_06042EE0
 
 bowser_seg6_dl_060430E8:
   type: GFX
@@ -1435,15 +1436,15 @@ bowser_seg6_vertex_060434D8:
   offset: 0x434D8
   symbol: bowser_seg6_vertex_060434D8
 
-bowser_seg6_dl_06043548:
-  type: GFX
-  offset: 0x43548
-  symbol: bowser_seg6_dl_06043548
+# bowser_seg6_dl_06043548:
+#   type: GFX
+#   offset: 0x43548
+#   symbol: bowser_seg6_dl_06043548
 
-bowser_seg6_dl_06043648:
-  type: GFX
-  offset: 0x43648
-  symbol: bowser_seg6_dl_06043648
+# bowser_seg6_dl_06043648:
+#   type: GFX
+#   offset: 0x43648
+#   symbol: bowser_seg6_dl_06043648
 
 bowser_seg6_dl_06043698:
   type: GFX

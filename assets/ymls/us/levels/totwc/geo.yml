@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x4C2700
+    - [0x0E,  0x4C2700]
 
 totwc_geo_000160:
   type: SM64:GEO_LAYOUT

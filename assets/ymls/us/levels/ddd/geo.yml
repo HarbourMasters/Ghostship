@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x495A60
+    - [0x0E,  0x495A60]
 
 ddd_geo_000450:
   type: SM64:GEO_LAYOUT

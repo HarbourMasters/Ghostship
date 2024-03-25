@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x108A40
   segments:
-    seg2: 0x108A40
+    - [0x02,  0x108A40]
 
 font_graphics.05900:
   type: TEXTURE

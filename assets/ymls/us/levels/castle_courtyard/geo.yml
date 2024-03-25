@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x4AF670
+    - [0x0E,  0x4AF670]
 
 castle_courtyard_geo_000200:
   type: SM64:GEO_LAYOUT

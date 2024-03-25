@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg5: 0x13B910
+    - [0x05,  0x13B910]
 
 manta_seg5_geo_05008D14:
   type: SM64:GEO_LAYOUT

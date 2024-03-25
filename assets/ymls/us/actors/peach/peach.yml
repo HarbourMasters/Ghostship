@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x16D870
   segments:
-    seg5: 0x16D870
+    - [0x05,  0x16D870]
 
 peach_chest_jewel:
   type: TEXTURE
@@ -782,10 +783,10 @@ peach_seg5_vertex_05009D50:
   offset: 0x9D50
   symbol: peach_seg5_vertex_05009D50
 
-peach_seg5_dl_05009E20:
-  type: GFX
-  offset: 0x9E20
-  symbol: peach_seg5_dl_05009E20
+# peach_seg5_dl_05009E20:
+#   type: GFX
+#   offset: 0x9E20
+#   symbol: peach_seg5_dl_05009E20
 
 peach_seg5_dl_0500A0A8:
   type: GFX

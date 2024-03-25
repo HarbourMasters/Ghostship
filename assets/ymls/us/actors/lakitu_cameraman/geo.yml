@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg13: 0x1E4BF0
+    - [0x0D,  0x1E4BF0]
 
 lakitu_geo:
   type: SM64:GEO_LAYOUT

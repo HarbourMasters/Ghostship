@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x13B5D0
+    - [0x0C,  0x13B5D0]
 
 king_bobomb_geo:
   type: SM64:GEO_LAYOUT

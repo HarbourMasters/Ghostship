@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x4545E0
+    - [0x0E,  0x4545E0]
 
 castle_grounds_geo_000660:
   type: SM64:GEO_LAYOUT

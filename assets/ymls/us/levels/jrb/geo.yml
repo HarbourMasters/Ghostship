@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x423B20
+    - [0x0E,  0x423B20]
 
 jrb_geo_000900:
   type: SM64:GEO_LAYOUT

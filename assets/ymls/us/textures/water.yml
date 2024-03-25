@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x334B30
   segments:
-    seg9: 0x334B30
+    - [0x09,  0x334B30]
 
 jrb_textures.00000:
   type: TEXTURE

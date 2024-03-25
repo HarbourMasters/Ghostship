@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x365980
   segments:
-    seg9: 0x365980
+    - [0x09,  0x365980]
 
 inside_castle_textures.00000:
   type: TEXTURE

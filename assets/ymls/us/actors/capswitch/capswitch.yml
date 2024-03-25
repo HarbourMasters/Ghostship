@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x165A50
   segments:
-    seg5: 0x165A50
+    - [0x05,  0x165A50]
 
 cap_switch_base:
   type: TEXTURE

@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x405A60
+    - [0x0E,  0x405A60]
 
 bob_geo_000440:
   type: SM64:GEO_LAYOUT

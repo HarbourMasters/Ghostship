@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x16D870
   segments:
-    seg5: 0x16D870
+    - [0x05,  0x16D870]
 
 yoshi_eye:
   type: TEXTURE

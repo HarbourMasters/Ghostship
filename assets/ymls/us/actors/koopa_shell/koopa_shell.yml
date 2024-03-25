@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x1F2200
   segments:
-    seg8: 0x1F2200
+    - [0x08,  0x1F2200]
 
 koopa_shell_back:
   type: TEXTURE
@@ -145,10 +146,10 @@ koopa_shell_seg8_dl_08027170:
   offset: 0x27170
   symbol: koopa_shell_seg8_dl_08027170
 
-koopa_shell_seg8_dl_08027258:
-  type: GFX
-  offset: 0x27258
-  symbol: koopa_shell_seg8_dl_08027258
+# koopa_shell_seg8_dl_08027258:
+#   type: GFX
+#   offset: 0x27258
+#   symbol: koopa_shell_seg8_dl_08027258
 
 koopa_shell_seg8_dl_080273C8:
   type: GFX

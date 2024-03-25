@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x351960
   segments:
-    seg9: 0x351960
+    - [0x09,  0x351960]
 
 ttm_textures.00000:
   type: TEXTURE

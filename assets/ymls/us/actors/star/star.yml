@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x201410
   segments:
-    seg3: 0x201410
+    - [0x03,  0x201410]
 
 star_surface:
   type: TEXTURE

@@ -1,10 +1,11 @@
 # Offsets in this file are 0x150 greater than the jp version
 
 :config:
+  autopads: false
   compression:
     offset: 0x188440
   segments:
-    seg6: 0x188440
+    - [0x06,  0x188440]
 
 bomb_left_side:
   type: TEXTURE
