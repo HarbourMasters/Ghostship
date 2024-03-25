@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x34E760
   segments:
-    seg9: 0x34E760
+    - [0x09,  0x34E760]
 
 ttc_textures.00000:
   type: TEXTURE

@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x31E1D0
   segments:
-    seg9: 0x31E1D0
+    - [0x09,  0x31E1D0]
 
 lll_textures.00000:
   type: TEXTURE

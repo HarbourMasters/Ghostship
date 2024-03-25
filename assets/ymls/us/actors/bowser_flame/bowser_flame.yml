@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x188440
   segments:
-    seg6: 0x188440
+    - [0x06,  0x188440]
 
 bowser_flame_0:
   type: TEXTURE

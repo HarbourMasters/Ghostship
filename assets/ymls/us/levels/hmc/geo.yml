@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x3E6A00
+    - [0x0E,  0x3E6A00]
 
 hmc_geo_000530:
   type: SM64:GEO_LAYOUT

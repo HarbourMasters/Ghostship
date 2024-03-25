@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x132850
+    - [0x0C,  0x132850]
 
 heave_ho_geo:
   type: SM64:GEO_LAYOUT

@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x1D8310
   segments:
-    seg6: 0x1D8310
+    - [0x06,  0x1D8310]
 
 lakitu_cameraman_cloud_face_unused:
   type: TEXTURE

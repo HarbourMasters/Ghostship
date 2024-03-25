@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x145E90
   segments:
-    seg5: 0x145E90
+    - [0x05,  0x145E90]
 
 tweester_geo:
   type: SM64:GEO_LAYOUT

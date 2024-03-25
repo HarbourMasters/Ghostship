@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x187FA0
+    - [0x0C,  0x187FA0]
 
 wiggler_head_geo:
   type: SM64:GEO_LAYOUT

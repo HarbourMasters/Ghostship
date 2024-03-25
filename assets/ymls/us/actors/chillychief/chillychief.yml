@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x1E51F0
   segments:
-    seg6: 0x1E51F0
+    - [0x06,  0x1E51F0]
 
 chill_bully_left_side:
   type: TEXTURE

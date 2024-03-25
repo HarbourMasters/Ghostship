@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x461220
+    - [0x0E,  0x461220]
 
 vcutm_geo_0001F0:
   type: SM64:GEO_LAYOUT

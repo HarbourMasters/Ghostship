@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x32D070
   segments:
-    seg9: 0x32D070
+    - [0x09,  0x32D070]
 
 bob_textures.00000:
   type: TEXTURE

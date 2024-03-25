@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x180BB0
   segments:
-    seg5: 0x180BB0
+    - [0x05,  0x180BB0]
 
 lakitu_enemy_cloud_face_unused:
   type: TEXTURE

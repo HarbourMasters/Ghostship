@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x16D5C0
+    - [0x0C,  0x16D5C0]
 
 bookend_geo:
   type: SM64:GEO_LAYOUT

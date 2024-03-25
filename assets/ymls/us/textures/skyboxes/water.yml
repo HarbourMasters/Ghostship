@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x2AC6B0
   segments:
-    seg10: 0x2AC6B0
+    - [0x0A,  0x2AC6B0]
 
 water:
   type: BLOB

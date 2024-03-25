@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x357350
   segments:
-    seg9: 0x357350
+    - [0x09,  0x357350]
 
 wf_textures.00000:
   type: TEXTURE

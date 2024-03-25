@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x33D710
   segments:
-    seg9: 0x33D710
+    - [0x09,  0x33D710]
 
 metal_hole:
   type: TEXTURE

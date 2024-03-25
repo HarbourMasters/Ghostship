@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x12A7E0
   segments:
-    seg5: 0x12A7E0
+    - [0x05,  0x12A7E0]
 
 thwomp_face:
   type: TEXTURE

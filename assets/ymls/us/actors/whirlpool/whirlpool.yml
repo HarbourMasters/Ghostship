@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x13B910
   segments:
-    seg5: 0x13B910
+    - [0x05,  0x13B910]
 
 whirlpool:
   type: TEXTURE

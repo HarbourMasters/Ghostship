@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x114750
   segments:
-    seg4: 0x114750
+    - [0x04,  0x114750]
 
 burn_smoke:
   type: TEXTURE

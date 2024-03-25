@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x132C60
   segments:
-    seg5: 0x132C60
+    - [0x05,  0x132C60]
 
 blargg_lights_unused:
   type: LIGHTS
