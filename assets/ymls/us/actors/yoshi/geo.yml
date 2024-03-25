@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x180540
+    - [0x0C,  0x180540]
 
 yoshi_geo:
   type: SM64:GEO_LAYOUT

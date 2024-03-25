@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x180BB0
   segments:
-    seg5: 0x180BB0
+    - [0x05,  0x180BB0]
 
 spiny_egg_seg5_lights_050144F8:
   type: LIGHTS

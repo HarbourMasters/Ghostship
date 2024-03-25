@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x3FB990
+    - [0x0E,  0x3FB990]
 
 ssl_geo_0005C0:
   type: SM64:GEO_LAYOUT

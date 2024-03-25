@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x396340
   segments:
-    seg7: 0x396340
+    - [0x07,  0x396340]
 
 castle_light:
   type: TEXTURE

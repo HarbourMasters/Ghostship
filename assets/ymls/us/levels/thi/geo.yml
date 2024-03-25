@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x42C6E0
+    - [0x0E,  0x42C6E0]
 
 thi_geo_0005B0:
   type: SM64:GEO_LAYOUT

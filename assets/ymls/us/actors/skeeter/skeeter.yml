@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x1B9CC0
   segments:
-    seg6: 0x1B9CC0
+    - [0x06,  0x1B9CC0]
 
 skeeter_eye:
   type: TEXTURE

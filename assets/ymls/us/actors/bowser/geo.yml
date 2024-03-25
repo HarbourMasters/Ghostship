@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg13: 0x1B9070
+    - [0x0D,  0x1B9070]
 
 bowser_geo_0000D8:
   type: SM64:GEO_LAYOUT

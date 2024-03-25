@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x145C10
+    - [0x0C,  0x145C10]
 
 sushi_geo:
   type: SM64:GEO_LAYOUT

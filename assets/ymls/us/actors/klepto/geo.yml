@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg12: 0x151B70
+    - [0x0C,  0x151B70]
 
 klepto_geo:
   type: SM64:GEO_LAYOUT

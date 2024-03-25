@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x44A140
+    - [0x0E,  0x44A140]
 
 rr_geo_000660:
   type: SM64:GEO_LAYOUT

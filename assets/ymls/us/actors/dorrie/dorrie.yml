@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x1E7EE0
   segments:
-    seg6: 0x1E7EE0
+    - [0x06,  0x1E7EE0]
 
 dorrie_eye:
   type: TEXTURE

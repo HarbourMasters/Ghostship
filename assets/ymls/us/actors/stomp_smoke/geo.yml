@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg23: 0x1279B0
+    - [0x17,  0x1279B0]
 
 small_water_splash_geo:
   type: SM64:GEO_LAYOUT

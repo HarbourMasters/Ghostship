@@ -1,10 +1,11 @@
 # Offsets in this file are 0xF0 greater than the jp version
 
 :config:
+  autopads: false
   compression:
     offset: 0x1D8310
   segments:
-    seg6: 0x1D8310
+    - [0x06,  0x1D8310]
 
 mips_eyes:
   type: TEXTURE

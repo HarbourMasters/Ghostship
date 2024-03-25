@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg20: 0x2A6120
+    - [0x14,  0x2A6120]
 
 geo_menu_mario_save_button:
   type: SM64:GEO_LAYOUT

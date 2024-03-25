@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x1521D0
   segments:
-    seg5: 0x1521D0
+    - [0x05,  0x1521D0]
 
 smoke:
   type: TEXTURE

@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x341140
   segments:
-    seg9: 0x341140
+    - [0x09,  0x341140]
 
 ccm_textures.00000:
   type: TEXTURE

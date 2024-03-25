@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x36F530
   segments:
-    seg11: 0x36F530
+    - [0x0B,  0x36F530]
 
 bubble.06048:
   type: TEXTURE

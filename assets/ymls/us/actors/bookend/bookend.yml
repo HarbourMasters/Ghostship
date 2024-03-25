@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x166C60
   segments:
-    seg5: 0x166C60
+    - [0x05,  0x166C60]
 
 bookend_cover:
   type: TEXTURE

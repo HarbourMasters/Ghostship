@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x160670
   segments:
-    seg5: 0x160670
+    - [0x05,  0x160670]
 
 penguin_beak:
   type: TEXTURE

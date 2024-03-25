@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x180BB0
   segments:
-    seg5: 0x180BB0
+    - [0x05,  0x180BB0]
 
 wiggler_seg5_lights_0500B230:
   type: LIGHTS

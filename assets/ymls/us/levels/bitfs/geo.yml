@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x46A840
+    - [0x0E,  0x46A840]
 
 bitfs_geo_0004B0:
   type: SM64:GEO_LAYOUT

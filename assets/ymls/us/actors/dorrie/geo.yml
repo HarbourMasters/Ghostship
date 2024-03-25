@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg13: 0x1F1B30
+    - [0x0D,  0x1F1B30]
 
 dorrie_geo:
   type: SM64:GEO_LAYOUT

@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x45BF60
+    - [0x0E,  0x45BF60]
 
 geo_bitdw_0003C0:
   type: SM64:GEO_LAYOUT

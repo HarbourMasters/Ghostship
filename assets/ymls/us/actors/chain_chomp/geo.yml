@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg13: 0x1D7C90
+    - [0x0D,  0x1D7C90]
 
 chain_chomp_geo:
   type: SM64:GEO_LAYOUT

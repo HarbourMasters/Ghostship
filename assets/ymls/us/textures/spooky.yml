@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x326E40
   segments:
-    seg9: 0x326E40
+    - [0x09,  0x326E40]
 
 bbh_textures.00000:
   type: TEXTURE

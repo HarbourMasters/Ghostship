@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x4C2920
   segments:
-    seg7: 0x4C2920
+    - [0x07,  0x4C2920]
 
 0:
   type: TEXTURE

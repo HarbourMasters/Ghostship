@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg14: 0x395C90
+    - [0x0E,  0x395C90]
 
 ccm_geo_0003D0:
   type: SM64:GEO_LAYOUT

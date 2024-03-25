@@ -1,6 +1,7 @@
 :config:
+  autopads: false
   segments:
-    seg13: 0x1E7D90
+    - [0x0D,  0x1E7D90]
 
 moneybag_geo_000000:
   type: SM64:GEO_LAYOUT

@@ -1,8 +1,9 @@
 :config:
+  autopads: false
   compression:
     offset: 0x35ED10
   segments:
-    seg9: 0x35ED10
+    - [0x09,  0x35ED10]
 
 castle_grounds_textures.00000:
   type: TEXTURE
