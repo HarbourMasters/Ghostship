@@ -45,3 +45,1855 @@
   offset: 0x2000
   format: RGBA16
   symbol: wdw_seg7_texture_07002000
+wdw_seg7_lights_07002800:
+  type: LIGHTS
+  size: 24
+  offset: 0x2800
+  symbol: wdw_seg7_lights_07002800
+
+wdw_seg7_lights_07002818:
+  type: LIGHTS
+  size: 24
+  offset: 0x2818
+  symbol: wdw_seg7_lights_07002818
+
+wdw_seg7_vertex_07002830:
+  type: VTX
+  count: 15
+  offset: 0x2830
+  symbol: wdw_seg7_vertex_07002830
+
+wdw_seg7_vertex_07002920:
+  type: VTX
+  count: 16
+  offset: 0x2920
+  symbol: wdw_seg7_vertex_07002920
+
+wdw_seg7_vertex_07002A20:
+  type: VTX
+  count: 16
+  offset: 0x2A20
+  symbol: wdw_seg7_vertex_07002A20
+
+wdw_seg7_vertex_07002B20:
+  type: VTX
+  count: 16
+  offset: 0x2B20
+  symbol: wdw_seg7_vertex_07002B20
+
+wdw_seg7_vertex_07002C20:
+  type: VTX
+  count: 16
+  offset: 0x2C20
+  symbol: wdw_seg7_vertex_07002C20
+
+wdw_seg7_vertex_07002D20:
+  type: VTX
+  count: 14
+  offset: 0x2D20
+  symbol: wdw_seg7_vertex_07002D20
+
+wdw_seg7_vertex_07002E00:
+  type: VTX
+  count: 16
+  offset: 0x2E00
+  symbol: wdw_seg7_vertex_07002E00
+
+wdw_seg7_vertex_07002F00:
+  type: VTX
+  count: 14
+  offset: 0x2F00
+  symbol: wdw_seg7_vertex_07002F00
+
+wdw_seg7_vertex_07002FE0:
+  type: VTX
+  count: 14
+  offset: 0x2FE0
+  symbol: wdw_seg7_vertex_07002FE0
+
+wdw_seg7_vertex_070030C0:
+  type: VTX
+  count: 14
+  offset: 0x30C0
+  symbol: wdw_seg7_vertex_070030C0
+
+wdw_seg7_vertex_070031A0:
+  type: VTX
+  count: 15
+  offset: 0x31A0
+  symbol: wdw_seg7_vertex_070031A0
+
+wdw_seg7_vertex_07003290:
+  type: VTX
+  count: 15
+  offset: 0x3290
+  symbol: wdw_seg7_vertex_07003290
+
+wdw_seg7_vertex_07003380:
+  type: VTX
+  count: 14
+  offset: 0x3380
+  symbol: wdw_seg7_vertex_07003380
+
+wdw_seg7_vertex_07003460:
+  type: VTX
+  count: 15
+  offset: 0x3460
+  symbol: wdw_seg7_vertex_07003460
+
+wdw_seg7_vertex_07003550:
+  type: VTX
+  count: 14
+  offset: 0x3550
+  symbol: wdw_seg7_vertex_07003550
+
+wdw_seg7_vertex_07003630:
+  type: VTX
+  count: 15
+  offset: 0x3630
+  symbol: wdw_seg7_vertex_07003630
+
+wdw_seg7_vertex_07003720:
+  type: VTX
+  count: 11
+  offset: 0x3720
+  symbol: wdw_seg7_vertex_07003720
+
+wdw_seg7_vertex_070037D0:
+  type: VTX
+  count: 15
+  offset: 0x37D0
+  symbol: wdw_seg7_vertex_070037D0
+
+wdw_seg7_vertex_070038C0:
+  type: VTX
+  count: 16
+  offset: 0x38C0
+  symbol: wdw_seg7_vertex_070038C0
+
+wdw_seg7_vertex_070039C0:
+  type: VTX
+  count: 15
+  offset: 0x39C0
+  symbol: wdw_seg7_vertex_070039C0
+
+wdw_seg7_vertex_07003AB0:
+  type: VTX
+  count: 16
+  offset: 0x3AB0
+  symbol: wdw_seg7_vertex_07003AB0
+
+wdw_seg7_vertex_07003BB0:
+  type: VTX
+  count: 16
+  offset: 0x3BB0
+  symbol: wdw_seg7_vertex_07003BB0
+
+wdw_seg7_vertex_07003CB0:
+  type: VTX
+  count: 12
+  offset: 0x3CB0
+  symbol: wdw_seg7_vertex_07003CB0
+
+wdw_seg7_vertex_07003D70:
+  type: VTX
+  count: 12
+  offset: 0x3D70
+  symbol: wdw_seg7_vertex_07003D70
+
+wdw_seg7_vertex_07003E30:
+  type: VTX
+  count: 15
+  offset: 0x3E30
+  symbol: wdw_seg7_vertex_07003E30
+
+wdw_seg7_vertex_07003F20:
+  type: VTX
+  count: 15
+  offset: 0x3F20
+  symbol: wdw_seg7_vertex_07003F20
+
+wdw_seg7_vertex_07004010:
+  type: VTX
+  count: 15
+  offset: 0x4010
+  symbol: wdw_seg7_vertex_07004010
+
+wdw_seg7_vertex_07004100:
+  type: VTX
+  count: 15
+  offset: 0x4100
+  symbol: wdw_seg7_vertex_07004100
+
+wdw_seg7_vertex_070041F0:
+  type: VTX
+  count: 8
+  offset: 0x41F0
+  symbol: wdw_seg7_vertex_070041F0
+
+wdw_seg7_vertex_07004270:
+  type: VTX
+  count: 15
+  offset: 0x4270
+  symbol: wdw_seg7_vertex_07004270
+
+wdw_seg7_vertex_07004360:
+  type: VTX
+  count: 14
+  offset: 0x4360
+  symbol: wdw_seg7_vertex_07004360
+
+wdw_seg7_vertex_07004440:
+  type: VTX
+  count: 15
+  offset: 0x4440
+  symbol: wdw_seg7_vertex_07004440
+
+wdw_seg7_vertex_07004530:
+  type: VTX
+  count: 15
+  offset: 0x4530
+  symbol: wdw_seg7_vertex_07004530
+
+wdw_seg7_vertex_07004620:
+  type: VTX
+  count: 15
+  offset: 0x4620
+  symbol: wdw_seg7_vertex_07004620
+
+wdw_seg7_vertex_07004710:
+  type: VTX
+  count: 12
+  offset: 0x4710
+  symbol: wdw_seg7_vertex_07004710
+
+wdw_seg7_vertex_070047D0:
+  type: VTX
+  count: 16
+  offset: 0x47D0
+  symbol: wdw_seg7_vertex_070047D0
+
+wdw_seg7_vertex_070048D0:
+  type: VTX
+  count: 14
+  offset: 0x48D0
+  symbol: wdw_seg7_vertex_070048D0
+
+wdw_seg7_vertex_070049B0:
+  type: VTX
+  count: 15
+  offset: 0x49B0
+  symbol: wdw_seg7_vertex_070049B0
+
+wdw_seg7_vertex_07004AA0:
+  type: VTX
+  count: 10
+  offset: 0x4AA0
+  symbol: wdw_seg7_vertex_07004AA0
+
+wdw_seg7_vertex_07004B40:
+  type: VTX
+  count: 15
+  offset: 0x4B40
+  symbol: wdw_seg7_vertex_07004B40
+
+wdw_seg7_vertex_07004C30:
+  type: VTX
+  count: 15
+  offset: 0x4C30
+  symbol: wdw_seg7_vertex_07004C30
+
+wdw_seg7_vertex_07004D20:
+  type: VTX
+  count: 14
+  offset: 0x4D20
+  symbol: wdw_seg7_vertex_07004D20
+
+wdw_seg7_vertex_07004E00:
+  type: VTX
+  count: 15
+  offset: 0x4E00
+  symbol: wdw_seg7_vertex_07004E00
+
+wdw_seg7_vertex_07004EF0:
+  type: VTX
+  count: 16
+  offset: 0x4EF0
+  symbol: wdw_seg7_vertex_07004EF0
+
+wdw_seg7_vertex_07004FF0:
+  type: VTX
+  count: 14
+  offset: 0x4FF0
+  symbol: wdw_seg7_vertex_07004FF0
+
+wdw_seg7_vertex_070050D0:
+  type: VTX
+  count: 15
+  offset: 0x50D0
+  symbol: wdw_seg7_vertex_070050D0
+
+wdw_seg7_vertex_070051C0:
+  type: VTX
+  count: 14
+  offset: 0x51C0
+  symbol: wdw_seg7_vertex_070051C0
+
+wdw_seg7_vertex_070052A0:
+  type: VTX
+  count: 15
+  offset: 0x52A0
+  symbol: wdw_seg7_vertex_070052A0
+
+wdw_seg7_vertex_07005390:
+  type: VTX
+  count: 16
+  offset: 0x5390
+  symbol: wdw_seg7_vertex_07005390
+
+wdw_seg7_vertex_07005490:
+  type: VTX
+  count: 15
+  offset: 0x5490
+  symbol: wdw_seg7_vertex_07005490
+
+wdw_seg7_vertex_07005580:
+  type: VTX
+  count: 15
+  offset: 0x5580
+  symbol: wdw_seg7_vertex_07005580
+
+wdw_seg7_vertex_07005670:
+  type: VTX
+  count: 16
+  offset: 0x5670
+  symbol: wdw_seg7_vertex_07005670
+
+wdw_seg7_vertex_07005770:
+  type: VTX
+  count: 16
+  offset: 0x5770
+  symbol: wdw_seg7_vertex_07005770
+
+wdw_seg7_vertex_07005870:
+  type: VTX
+  count: 15
+  offset: 0x5870
+  symbol: wdw_seg7_vertex_07005870
+
+wdw_seg7_vertex_07005960:
+  type: VTX
+  count: 16
+  offset: 0x5960
+  symbol: wdw_seg7_vertex_07005960
+
+wdw_seg7_vertex_07005A60:
+  type: VTX
+  count: 16
+  offset: 0x5A60
+  symbol: wdw_seg7_vertex_07005A60
+
+wdw_seg7_vertex_07005B60:
+  type: VTX
+  count: 16
+  offset: 0x5B60
+  symbol: wdw_seg7_vertex_07005B60
+
+wdw_seg7_vertex_07005C60:
+  type: VTX
+  count: 16
+  offset: 0x5C60
+  symbol: wdw_seg7_vertex_07005C60
+
+wdw_seg7_vertex_07005D60:
+  type: VTX
+  count: 14
+  offset: 0x5D60
+  symbol: wdw_seg7_vertex_07005D60
+
+wdw_seg7_vertex_07005E40:
+  type: VTX
+  count: 15
+  offset: 0x5E40
+  symbol: wdw_seg7_vertex_07005E40
+
+wdw_seg7_vertex_07005F30:
+  type: VTX
+  count: 15
+  offset: 0x5F30
+  symbol: wdw_seg7_vertex_07005F30
+
+wdw_seg7_vertex_07006020:
+  type: VTX
+  count: 15
+  offset: 0x6020
+  symbol: wdw_seg7_vertex_07006020
+
+wdw_seg7_vertex_07006110:
+  type: VTX
+  count: 16
+  offset: 0x6110
+  symbol: wdw_seg7_vertex_07006110
+
+wdw_seg7_vertex_07006210:
+  type: VTX
+  count: 11
+  offset: 0x6210
+  symbol: wdw_seg7_vertex_07006210
+
+wdw_seg7_vertex_070062C0:
+  type: VTX
+  count: 15
+  offset: 0x62C0
+  symbol: wdw_seg7_vertex_070062C0
+
+wdw_seg7_vertex_070063B0:
+  type: VTX
+  count: 15
+  offset: 0x63B0
+  symbol: wdw_seg7_vertex_070063B0
+
+wdw_seg7_vertex_070064A0:
+  type: VTX
+  count: 14
+  offset: 0x64A0
+  symbol: wdw_seg7_vertex_070064A0
+
+wdw_seg7_vertex_07006580:
+  type: VTX
+  count: 3
+  offset: 0x6580
+  symbol: wdw_seg7_vertex_07006580
+
+wdw_seg7_vertex_070065B0:
+  type: VTX
+  count: 15
+  offset: 0x65B0
+  symbol: wdw_seg7_vertex_070065B0
+
+wdw_seg7_vertex_070066A0:
+  type: VTX
+  count: 15
+  offset: 0x66A0
+  symbol: wdw_seg7_vertex_070066A0
+
+wdw_seg7_vertex_07006790:
+  type: VTX
+  count: 15
+  offset: 0x6790
+  symbol: wdw_seg7_vertex_07006790
+
+wdw_seg7_vertex_07006880:
+  type: VTX
+  count: 15
+  offset: 0x6880
+  symbol: wdw_seg7_vertex_07006880
+
+wdw_seg7_vertex_07006970:
+  type: VTX
+  count: 14
+  offset: 0x6970
+  symbol: wdw_seg7_vertex_07006970
+
+wdw_seg7_vertex_07006A50:
+  type: VTX
+  count: 15
+  offset: 0x6A50
+  symbol: wdw_seg7_vertex_07006A50
+
+wdw_seg7_vertex_07006B40:
+  type: VTX
+  count: 14
+  offset: 0x6B40
+  symbol: wdw_seg7_vertex_07006B40
+
+wdw_seg7_vertex_07006C20:
+  type: VTX
+  count: 15
+  offset: 0x6C20
+  symbol: wdw_seg7_vertex_07006C20
+
+wdw_seg7_vertex_07006D10:
+  type: VTX
+  count: 15
+  offset: 0x6D10
+  symbol: wdw_seg7_vertex_07006D10
+
+wdw_seg7_vertex_07006E00:
+  type: VTX
+  count: 15
+  offset: 0x6E00
+  symbol: wdw_seg7_vertex_07006E00
+
+wdw_seg7_vertex_07006EF0:
+  type: VTX
+  count: 14
+  offset: 0x6EF0
+  symbol: wdw_seg7_vertex_07006EF0
+
+wdw_seg7_vertex_07006FD0:
+  type: VTX
+  count: 16
+  offset: 0x6FD0
+  symbol: wdw_seg7_vertex_07006FD0
+
+wdw_seg7_vertex_070070D0:
+  type: VTX
+  count: 16
+  offset: 0x70D0
+  symbol: wdw_seg7_vertex_070070D0
+
+wdw_seg7_vertex_070071D0:
+  type: VTX
+  count: 16
+  offset: 0x71D0
+  symbol: wdw_seg7_vertex_070071D0
+
+wdw_seg7_vertex_070072D0:
+  type: VTX
+  count: 15
+  offset: 0x72D0
+  symbol: wdw_seg7_vertex_070072D0
+
+wdw_seg7_vertex_070073C0:
+  type: VTX
+  count: 16
+  offset: 0x73C0
+  symbol: wdw_seg7_vertex_070073C0
+
+wdw_seg7_vertex_070074C0:
+  type: VTX
+  count: 15
+  offset: 0x74C0
+  symbol: wdw_seg7_vertex_070074C0
+
+wdw_seg7_vertex_070075B0:
+  type: VTX
+  count: 16
+  offset: 0x75B0
+  symbol: wdw_seg7_vertex_070075B0
+
+wdw_seg7_vertex_070076B0:
+  type: VTX
+  count: 16
+  offset: 0x76B0
+  symbol: wdw_seg7_vertex_070076B0
+
+wdw_seg7_vertex_070077B0:
+  type: VTX
+  count: 9
+  offset: 0x77B0
+  symbol: wdw_seg7_vertex_070077B0
+
+wdw_seg7_vertex_07007840:
+  type: VTX
+  count: 15
+  offset: 0x7840
+  symbol: wdw_seg7_vertex_07007840
+
+wdw_seg7_vertex_07007930:
+  type: VTX
+  count: 15
+  offset: 0x7930
+  symbol: wdw_seg7_vertex_07007930
+
+wdw_seg7_vertex_07007A20:
+  type: VTX
+  count: 15
+  offset: 0x7A20
+  symbol: wdw_seg7_vertex_07007A20
+
+wdw_seg7_vertex_07007B10:
+  type: VTX
+  count: 15
+  offset: 0x7B10
+  symbol: wdw_seg7_vertex_07007B10
+
+wdw_seg7_vertex_07007C00:
+  type: VTX
+  count: 15
+  offset: 0x7C00
+  symbol: wdw_seg7_vertex_07007C00
+
+wdw_seg7_vertex_07007CF0:
+  type: VTX
+  count: 16
+  offset: 0x7CF0
+  symbol: wdw_seg7_vertex_07007CF0
+
+wdw_seg7_vertex_07007DF0:
+  type: VTX
+  count: 3
+  offset: 0x7DF0
+  symbol: wdw_seg7_vertex_07007DF0
+
+wdw_seg7_vertex_07007E20:
+  type: VTX
+  count: 14
+  offset: 0x7E20
+  symbol: wdw_seg7_vertex_07007E20
+
+wdw_seg7_vertex_07007F00:
+  type: VTX
+  count: 15
+  offset: 0x7F00
+  symbol: wdw_seg7_vertex_07007F00
+
+wdw_seg7_vertex_07007FF0:
+  type: VTX
+  count: 16
+  offset: 0x7FF0
+  symbol: wdw_seg7_vertex_07007FF0
+
+wdw_seg7_vertex_070080F0:
+  type: VTX
+  count: 3
+  offset: 0x80F0
+  symbol: wdw_seg7_vertex_070080F0
+
+wdw_seg7_vertex_07008120:
+  type: VTX
+  count: 4
+  offset: 0x8120
+  symbol: wdw_seg7_vertex_07008120
+
+wdw_seg7_dl_07008160:
+  type: GFX
+  offset: 0x8160
+  symbol: wdw_seg7_dl_07008160
+
+wdw_seg7_dl_07008598:
+  type: GFX
+  offset: 0x8598
+  symbol: wdw_seg7_dl_07008598
+
+wdw_seg7_dl_070087B8:
+  type: GFX
+  offset: 0x87B8
+  symbol: wdw_seg7_dl_070087B8
+
+wdw_seg7_dl_07008910:
+  type: GFX
+  offset: 0x8910
+  symbol: wdw_seg7_dl_07008910
+
+wdw_seg7_dl_07008B00:
+  type: GFX
+  offset: 0x8B00
+  symbol: wdw_seg7_dl_07008B00
+
+wdw_seg7_dl_07008C00:
+  type: GFX
+  offset: 0x8C00
+  symbol: wdw_seg7_dl_07008C00
+
+wdw_seg7_dl_07008CA0:
+  type: GFX
+  offset: 0x8CA0
+  symbol: wdw_seg7_dl_07008CA0
+
+wdw_seg7_dl_07008E08:
+  type: GFX
+  offset: 0x8E08
+  symbol: wdw_seg7_dl_07008E08
+
+wdw_seg7_dl_07009268:
+  type: GFX
+  offset: 0x9268
+  symbol: wdw_seg7_dl_07009268
+
+wdw_seg7_dl_07009358:
+  type: GFX
+  offset: 0x9358
+  symbol: wdw_seg7_dl_07009358
+
+wdw_seg7_dl_07009850:
+  type: GFX
+  offset: 0x9850
+  symbol: wdw_seg7_dl_07009850
+
+wdw_seg7_dl_070099B0:
+  type: GFX
+  offset: 0x99B0
+  symbol: wdw_seg7_dl_070099B0
+
+wdw_seg7_dl_07009AB0:
+  type: GFX
+  offset: 0x9AB0
+  symbol: wdw_seg7_dl_07009AB0
+
+wdw_seg7_vertex_070122C8:
+  type: VTX
+  count: 14
+  offset: 0x122C8
+  symbol: wdw_seg7_vertex_070122C8
+
+wdw_seg7_vertex_070123A8:
+  type: VTX
+  count: 16
+  offset: 0x123A8
+  symbol: wdw_seg7_vertex_070123A8
+
+wdw_seg7_vertex_070124A8:
+  type: VTX
+  count: 15
+  offset: 0x124A8
+  symbol: wdw_seg7_vertex_070124A8
+
+wdw_seg7_vertex_07012598:
+  type: VTX
+  count: 12
+  offset: 0x12598
+  symbol: wdw_seg7_vertex_07012598
+
+wdw_seg7_dl_07012658:
+  type: GFX
+  offset: 0x12658
+  symbol: wdw_seg7_dl_07012658
+
+wdw_seg7_dl_07012798:
+  type: GFX
+  offset: 0x12798
+  symbol: wdw_seg7_dl_07012798
+
+wdw_seg7_lights_07009B78:
+  type: LIGHTS
+  size: 24
+  offset: 0x9B78
+  symbol: wdw_seg7_lights_07009B78
+
+wdw_seg7_vertex_07009B90:
+  type: VTX
+  count: 14
+  offset: 0x9B90
+  symbol: wdw_seg7_vertex_07009B90
+
+wdw_seg7_vertex_07009C70:
+  type: VTX
+  count: 14
+  offset: 0x9C70
+  symbol: wdw_seg7_vertex_07009C70
+
+wdw_seg7_vertex_07009D50:
+  type: VTX
+  count: 15
+  offset: 0x9D50
+  symbol: wdw_seg7_vertex_07009D50
+
+wdw_seg7_vertex_07009E40:
+  type: VTX
+  count: 7
+  offset: 0x9E40
+  symbol: wdw_seg7_vertex_07009E40
+
+wdw_seg7_vertex_07009EB0:
+  type: VTX
+  count: 16
+  offset: 0x9EB0
+  symbol: wdw_seg7_vertex_07009EB0
+
+wdw_seg7_dl_07009FB0:
+  type: GFX
+  offset: 0x9FB0
+  symbol: wdw_seg7_dl_07009FB0
+
+wdw_seg7_dl_0700A0D0:
+  type: GFX
+  offset: 0xA0D0
+  symbol: wdw_seg7_dl_0700A0D0
+
+wdw_seg7_dl_0700A138:
+  type: GFX
+  offset: 0xA138
+  symbol: wdw_seg7_dl_0700A138
+
+wdw_seg7_lights_0700A1B0:
+  type: LIGHTS
+  size: 24
+  offset: 0xA1B0
+  symbol: wdw_seg7_lights_0700A1B0
+
+wdw_seg7_lights_0700A1C8:
+  type: LIGHTS
+  size: 24
+  offset: 0xA1C8
+  symbol: wdw_seg7_lights_0700A1C8
+
+wdw_seg7_lights_0700A1E0:
+  type: LIGHTS
+  size: 24
+  offset: 0xA1E0
+  symbol: wdw_seg7_lights_0700A1E0
+
+wdw_seg7_lights_0700A1F8:
+  type: LIGHTS
+  size: 24
+  offset: 0xA1F8
+  symbol: wdw_seg7_lights_0700A1F8
+
+wdw_seg7_vertex_0700A210:
+  type: VTX
+  count: 6
+  offset: 0xA210
+  symbol: wdw_seg7_vertex_0700A210
+
+wdw_seg7_vertex_0700A270:
+  type: VTX
+  count: 16
+  offset: 0xA270
+  symbol: wdw_seg7_vertex_0700A270
+
+wdw_seg7_vertex_0700A370:
+  type: VTX
+  count: 15
+  offset: 0xA370
+  symbol: wdw_seg7_vertex_0700A370
+
+wdw_seg7_vertex_0700A460:
+  type: VTX
+  count: 15
+  offset: 0xA460
+  symbol: wdw_seg7_vertex_0700A460
+
+wdw_seg7_vertex_0700A550:
+  type: VTX
+  count: 15
+  offset: 0xA550
+  symbol: wdw_seg7_vertex_0700A550
+
+wdw_seg7_vertex_0700A640:
+  type: VTX
+  count: 15
+  offset: 0xA640
+  symbol: wdw_seg7_vertex_0700A640
+
+wdw_seg7_vertex_0700A730:
+  type: VTX
+  count: 15
+  offset: 0xA730
+  symbol: wdw_seg7_vertex_0700A730
+
+wdw_seg7_vertex_0700A820:
+  type: VTX
+  count: 15
+  offset: 0xA820
+  symbol: wdw_seg7_vertex_0700A820
+
+wdw_seg7_vertex_0700A910:
+  type: VTX
+  count: 16
+  offset: 0xA910
+  symbol: wdw_seg7_vertex_0700A910
+
+wdw_seg7_vertex_0700AA10:
+  type: VTX
+  count: 15
+  offset: 0xAA10
+  symbol: wdw_seg7_vertex_0700AA10
+
+wdw_seg7_vertex_0700AB00:
+  type: VTX
+  count: 15
+  offset: 0xAB00
+  symbol: wdw_seg7_vertex_0700AB00
+
+wdw_seg7_vertex_0700ABF0:
+  type: VTX
+  count: 14
+  offset: 0xABF0
+  symbol: wdw_seg7_vertex_0700ABF0
+
+wdw_seg7_vertex_0700ACD0:
+  type: VTX
+  count: 4
+  offset: 0xACD0
+  symbol: wdw_seg7_vertex_0700ACD0
+
+wdw_seg7_vertex_0700AD10:
+  type: VTX
+  count: 15
+  offset: 0xAD10
+  symbol: wdw_seg7_vertex_0700AD10
+
+wdw_seg7_vertex_0700AE00:
+  type: VTX
+  count: 13
+  offset: 0xAE00
+  symbol: wdw_seg7_vertex_0700AE00
+
+wdw_seg7_vertex_0700AED0:
+  type: VTX
+  count: 14
+  offset: 0xAED0
+  symbol: wdw_seg7_vertex_0700AED0
+
+wdw_seg7_vertex_0700AFB0:
+  type: VTX
+  count: 16
+  offset: 0xAFB0
+  symbol: wdw_seg7_vertex_0700AFB0
+
+wdw_seg7_vertex_0700B0B0:
+  type: VTX
+  count: 15
+  offset: 0xB0B0
+  symbol: wdw_seg7_vertex_0700B0B0
+
+wdw_seg7_vertex_0700B1A0:
+  type: VTX
+  count: 15
+  offset: 0xB1A0
+  symbol: wdw_seg7_vertex_0700B1A0
+
+wdw_seg7_vertex_0700B290:
+  type: VTX
+  count: 14
+  offset: 0xB290
+  symbol: wdw_seg7_vertex_0700B290
+
+wdw_seg7_vertex_0700B370:
+  type: VTX
+  count: 16
+  offset: 0xB370
+  symbol: wdw_seg7_vertex_0700B370
+
+wdw_seg7_vertex_0700B470:
+  type: VTX
+  count: 16
+  offset: 0xB470
+  symbol: wdw_seg7_vertex_0700B470
+
+wdw_seg7_vertex_0700B570:
+  type: VTX
+  count: 12
+  offset: 0xB570
+  symbol: wdw_seg7_vertex_0700B570
+
+wdw_seg7_vertex_0700B630:
+  type: VTX
+  count: 15
+  offset: 0xB630
+  symbol: wdw_seg7_vertex_0700B630
+
+wdw_seg7_vertex_0700B720:
+  type: VTX
+  count: 15
+  offset: 0xB720
+  symbol: wdw_seg7_vertex_0700B720
+
+wdw_seg7_vertex_0700B810:
+  type: VTX
+  count: 16
+  offset: 0xB810
+  symbol: wdw_seg7_vertex_0700B810
+
+wdw_seg7_vertex_0700B910:
+  type: VTX
+  count: 16
+  offset: 0xB910
+  symbol: wdw_seg7_vertex_0700B910
+
+wdw_seg7_vertex_0700BA10:
+  type: VTX
+  count: 15
+  offset: 0xBA10
+  symbol: wdw_seg7_vertex_0700BA10
+
+wdw_seg7_vertex_0700BB00:
+  type: VTX
+  count: 16
+  offset: 0xBB00
+  symbol: wdw_seg7_vertex_0700BB00
+
+wdw_seg7_vertex_0700BC00:
+  type: VTX
+  count: 15
+  offset: 0xBC00
+  symbol: wdw_seg7_vertex_0700BC00
+
+wdw_seg7_vertex_0700BCF0:
+  type: VTX
+  count: 15
+  offset: 0xBCF0
+  symbol: wdw_seg7_vertex_0700BCF0
+
+wdw_seg7_vertex_0700BDE0:
+  type: VTX
+  count: 15
+  offset: 0xBDE0
+  symbol: wdw_seg7_vertex_0700BDE0
+
+wdw_seg7_vertex_0700BED0:
+  type: VTX
+  count: 11
+  offset: 0xBED0
+  symbol: wdw_seg7_vertex_0700BED0
+
+wdw_seg7_vertex_0700BF80:
+  type: VTX
+  count: 15
+  offset: 0xBF80
+  symbol: wdw_seg7_vertex_0700BF80
+
+wdw_seg7_vertex_0700C070:
+  type: VTX
+  count: 15
+  offset: 0xC070
+  symbol: wdw_seg7_vertex_0700C070
+
+wdw_seg7_vertex_0700C160:
+  type: VTX
+  count: 15
+  offset: 0xC160
+  symbol: wdw_seg7_vertex_0700C160
+
+wdw_seg7_vertex_0700C250:
+  type: VTX
+  count: 14
+  offset: 0xC250
+  symbol: wdw_seg7_vertex_0700C250
+
+wdw_seg7_vertex_0700C330:
+  type: VTX
+  count: 14
+  offset: 0xC330
+  symbol: wdw_seg7_vertex_0700C330
+
+wdw_seg7_vertex_0700C410:
+  type: VTX
+  count: 7
+  offset: 0xC410
+  symbol: wdw_seg7_vertex_0700C410
+
+wdw_seg7_vertex_0700C480:
+  type: VTX
+  count: 15
+  offset: 0xC480
+  symbol: wdw_seg7_vertex_0700C480
+
+wdw_seg7_vertex_0700C570:
+  type: VTX
+  count: 15
+  offset: 0xC570
+  symbol: wdw_seg7_vertex_0700C570
+
+wdw_seg7_vertex_0700C660:
+  type: VTX
+  count: 15
+  offset: 0xC660
+  symbol: wdw_seg7_vertex_0700C660
+
+wdw_seg7_vertex_0700C750:
+  type: VTX
+  count: 15
+  offset: 0xC750
+  symbol: wdw_seg7_vertex_0700C750
+
+wdw_seg7_vertex_0700C840:
+  type: VTX
+  count: 15
+  offset: 0xC840
+  symbol: wdw_seg7_vertex_0700C840
+
+wdw_seg7_vertex_0700C930:
+  type: VTX
+  count: 15
+  offset: 0xC930
+  symbol: wdw_seg7_vertex_0700C930
+
+wdw_seg7_vertex_0700CA20:
+  type: VTX
+  count: 16
+  offset: 0xCA20
+  symbol: wdw_seg7_vertex_0700CA20
+
+wdw_seg7_vertex_0700CB20:
+  type: VTX
+  count: 16
+  offset: 0xCB20
+  symbol: wdw_seg7_vertex_0700CB20
+
+wdw_seg7_vertex_0700CC20:
+  type: VTX
+  count: 3
+  offset: 0xCC20
+  symbol: wdw_seg7_vertex_0700CC20
+
+wdw_seg7_vertex_0700CC50:
+  type: VTX
+  count: 14
+  offset: 0xCC50
+  symbol: wdw_seg7_vertex_0700CC50
+
+wdw_seg7_vertex_0700CD30:
+  type: VTX
+  count: 15
+  offset: 0xCD30
+  symbol: wdw_seg7_vertex_0700CD30
+
+wdw_seg7_vertex_0700CE20:
+  type: VTX
+  count: 15
+  offset: 0xCE20
+  symbol: wdw_seg7_vertex_0700CE20
+
+wdw_seg7_vertex_0700CF10:
+  type: VTX
+  count: 14
+  offset: 0xCF10
+  symbol: wdw_seg7_vertex_0700CF10
+
+wdw_seg7_vertex_0700CFF0:
+  type: VTX
+  count: 15
+  offset: 0xCFF0
+  symbol: wdw_seg7_vertex_0700CFF0
+
+wdw_seg7_vertex_0700D0E0:
+  type: VTX
+  count: 16
+  offset: 0xD0E0
+  symbol: wdw_seg7_vertex_0700D0E0
+
+wdw_seg7_vertex_0700D1E0:
+  type: VTX
+  count: 16
+  offset: 0xD1E0
+  symbol: wdw_seg7_vertex_0700D1E0
+
+wdw_seg7_vertex_0700D2E0:
+  type: VTX
+  count: 16
+  offset: 0xD2E0
+  symbol: wdw_seg7_vertex_0700D2E0
+
+wdw_seg7_vertex_0700D3E0:
+  type: VTX
+  count: 15
+  offset: 0xD3E0
+  symbol: wdw_seg7_vertex_0700D3E0
+
+wdw_seg7_vertex_0700D4D0:
+  type: VTX
+  count: 16
+  offset: 0xD4D0
+  symbol: wdw_seg7_vertex_0700D4D0
+
+wdw_seg7_vertex_0700D5D0:
+  type: VTX
+  count: 15
+  offset: 0xD5D0
+  symbol: wdw_seg7_vertex_0700D5D0
+
+wdw_seg7_vertex_0700D6C0:
+  type: VTX
+  count: 11
+  offset: 0xD6C0
+  symbol: wdw_seg7_vertex_0700D6C0
+
+wdw_seg7_vertex_0700D770:
+  type: VTX
+  count: 4
+  offset: 0xD770
+  symbol: wdw_seg7_vertex_0700D770
+
+wdw_seg7_vertex_0700D7B0:
+  type: VTX
+  count: 8
+  offset: 0xD7B0
+  symbol: wdw_seg7_vertex_0700D7B0
+
+wdw_seg7_vertex_0700D830:
+  type: VTX
+  count: 4
+  offset: 0xD830
+  symbol: wdw_seg7_vertex_0700D830
+
+wdw_seg7_vertex_0700D870:
+  type: VTX
+  count: 15
+  offset: 0xD870
+  symbol: wdw_seg7_vertex_0700D870
+
+wdw_seg7_vertex_0700D960:
+  type: VTX
+  count: 14
+  offset: 0xD960
+  symbol: wdw_seg7_vertex_0700D960
+
+wdw_seg7_vertex_0700DA40:
+  type: VTX
+  count: 15
+  offset: 0xDA40
+  symbol: wdw_seg7_vertex_0700DA40
+
+wdw_seg7_vertex_0700DB30:
+  type: VTX
+  count: 15
+  offset: 0xDB30
+  symbol: wdw_seg7_vertex_0700DB30
+
+wdw_seg7_vertex_0700DC20:
+  type: VTX
+  count: 14
+  offset: 0xDC20
+  symbol: wdw_seg7_vertex_0700DC20
+
+wdw_seg7_vertex_0700DD00:
+  type: VTX
+  count: 16
+  offset: 0xDD00
+  symbol: wdw_seg7_vertex_0700DD00
+
+wdw_seg7_vertex_0700DE00:
+  type: VTX
+  count: 14
+  offset: 0xDE00
+  symbol: wdw_seg7_vertex_0700DE00
+
+wdw_seg7_vertex_0700DEE0:
+  type: VTX
+  count: 15
+  offset: 0xDEE0
+  symbol: wdw_seg7_vertex_0700DEE0
+
+wdw_seg7_vertex_0700DFD0:
+  type: VTX
+  count: 15
+  offset: 0xDFD0
+  symbol: wdw_seg7_vertex_0700DFD0
+
+wdw_seg7_vertex_0700E0C0:
+  type: VTX
+  count: 16
+  offset: 0xE0C0
+  symbol: wdw_seg7_vertex_0700E0C0
+
+wdw_seg7_vertex_0700E1C0:
+  type: VTX
+  count: 15
+  offset: 0xE1C0
+  symbol: wdw_seg7_vertex_0700E1C0
+
+wdw_seg7_vertex_0700E2B0:
+  type: VTX
+  count: 15
+  offset: 0xE2B0
+  symbol: wdw_seg7_vertex_0700E2B0
+
+wdw_seg7_vertex_0700E3A0:
+  type: VTX
+  count: 14
+  offset: 0xE3A0
+  symbol: wdw_seg7_vertex_0700E3A0
+
+wdw_seg7_vertex_0700E480:
+  type: VTX
+  count: 14
+  offset: 0xE480
+  symbol: wdw_seg7_vertex_0700E480
+
+wdw_seg7_vertex_0700E560:
+  type: VTX
+  count: 15
+  offset: 0xE560
+  symbol: wdw_seg7_vertex_0700E560
+
+wdw_seg7_vertex_0700E650:
+  type: VTX
+  count: 14
+  offset: 0xE650
+  symbol: wdw_seg7_vertex_0700E650
+
+wdw_seg7_vertex_0700E730:
+  type: VTX
+  count: 15
+  offset: 0xE730
+  symbol: wdw_seg7_vertex_0700E730
+
+wdw_seg7_vertex_0700E820:
+  type: VTX
+  count: 14
+  offset: 0xE820
+  symbol: wdw_seg7_vertex_0700E820
+
+wdw_seg7_vertex_0700E900:
+  type: VTX
+  count: 14
+  offset: 0xE900
+  symbol: wdw_seg7_vertex_0700E900
+
+wdw_seg7_vertex_0700E9E0:
+  type: VTX
+  count: 15
+  offset: 0xE9E0
+  symbol: wdw_seg7_vertex_0700E9E0
+
+wdw_seg7_vertex_0700EAD0:
+  type: VTX
+  count: 15
+  offset: 0xEAD0
+  symbol: wdw_seg7_vertex_0700EAD0
+
+wdw_seg7_vertex_0700EBC0:
+  type: VTX
+  count: 15
+  offset: 0xEBC0
+  symbol: wdw_seg7_vertex_0700EBC0
+
+wdw_seg7_vertex_0700ECB0:
+  type: VTX
+  count: 16
+  offset: 0xECB0
+  symbol: wdw_seg7_vertex_0700ECB0
+
+wdw_seg7_vertex_0700EDB0:
+  type: VTX
+  count: 14
+  offset: 0xEDB0
+  symbol: wdw_seg7_vertex_0700EDB0
+
+wdw_seg7_vertex_0700EE90:
+  type: VTX
+  count: 15
+  offset: 0xEE90
+  symbol: wdw_seg7_vertex_0700EE90
+
+wdw_seg7_vertex_0700EF80:
+  type: VTX
+  count: 16
+  offset: 0xEF80
+  symbol: wdw_seg7_vertex_0700EF80
+
+wdw_seg7_vertex_0700F080:
+  type: VTX
+  count: 11
+  offset: 0xF080
+  symbol: wdw_seg7_vertex_0700F080
+
+wdw_seg7_vertex_0700F130:
+  type: VTX
+  count: 15
+  offset: 0xF130
+  symbol: wdw_seg7_vertex_0700F130
+
+wdw_seg7_vertex_0700F220:
+  type: VTX
+  count: 15
+  offset: 0xF220
+  symbol: wdw_seg7_vertex_0700F220
+
+wdw_seg7_vertex_0700F310:
+  type: VTX
+  count: 15
+  offset: 0xF310
+  symbol: wdw_seg7_vertex_0700F310
+
+wdw_seg7_vertex_0700F400:
+  type: VTX
+  count: 15
+  offset: 0xF400
+  symbol: wdw_seg7_vertex_0700F400
+
+wdw_seg7_vertex_0700F4F0:
+  type: VTX
+  count: 15
+  offset: 0xF4F0
+  symbol: wdw_seg7_vertex_0700F4F0
+
+wdw_seg7_vertex_0700F5E0:
+  type: VTX
+  count: 15
+  offset: 0xF5E0
+  symbol: wdw_seg7_vertex_0700F5E0
+
+wdw_seg7_vertex_0700F6D0:
+  type: VTX
+  count: 16
+  offset: 0xF6D0
+  symbol: wdw_seg7_vertex_0700F6D0
+
+wdw_seg7_vertex_0700F7D0:
+  type: VTX
+  count: 14
+  offset: 0xF7D0
+  symbol: wdw_seg7_vertex_0700F7D0
+
+wdw_seg7_vertex_0700F8B0:
+  type: VTX
+  count: 15
+  offset: 0xF8B0
+  symbol: wdw_seg7_vertex_0700F8B0
+
+wdw_seg7_vertex_0700F9A0:
+  type: VTX
+  count: 15
+  offset: 0xF9A0
+  symbol: wdw_seg7_vertex_0700F9A0
+
+wdw_seg7_vertex_0700FA90:
+  type: VTX
+  count: 15
+  offset: 0xFA90
+  symbol: wdw_seg7_vertex_0700FA90
+
+wdw_seg7_vertex_0700FB80:
+  type: VTX
+  count: 15
+  offset: 0xFB80
+  symbol: wdw_seg7_vertex_0700FB80
+
+wdw_seg7_vertex_0700FC70:
+  type: VTX
+  count: 15
+  offset: 0xFC70
+  symbol: wdw_seg7_vertex_0700FC70
+
+wdw_seg7_vertex_0700FD60:
+  type: VTX
+  count: 14
+  offset: 0xFD60
+  symbol: wdw_seg7_vertex_0700FD60
+
+wdw_seg7_vertex_0700FE40:
+  type: VTX
+  count: 4
+  offset: 0xFE40
+  symbol: wdw_seg7_vertex_0700FE40
+
+wdw_seg7_vertex_0700FE80:
+  type: VTX
+  count: 15
+  offset: 0xFE80
+  symbol: wdw_seg7_vertex_0700FE80
+
+wdw_seg7_vertex_0700FF70:
+  type: VTX
+  count: 7
+  offset: 0xFF70
+  symbol: wdw_seg7_vertex_0700FF70
+
+wdw_seg7_vertex_0700FFE0:
+  type: VTX
+  count: 4
+  offset: 0xFFE0
+  symbol: wdw_seg7_vertex_0700FFE0
+
+wdw_seg7_vertex_07010020:
+  type: VTX
+  count: 16
+  offset: 0x10020
+  symbol: wdw_seg7_vertex_07010020
+
+wdw_seg7_dl_07010120:
+  type: GFX
+  offset: 0x10120
+  symbol: wdw_seg7_dl_07010120
+
+wdw_seg7_dl_07010578:
+  type: GFX
+  offset: 0x10578
+  symbol: wdw_seg7_dl_07010578
+
+wdw_seg7_dl_07010748:
+  type: GFX
+  offset: 0x10748
+  symbol: wdw_seg7_dl_07010748
+
+wdw_seg7_dl_070107E8:
+  type: GFX
+  offset: 0x107E8
+  symbol: wdw_seg7_dl_070107E8
+
+wdw_seg7_dl_07010AB8:
+  type: GFX
+  offset: 0x10AB8
+  symbol: wdw_seg7_dl_07010AB8
+
+wdw_seg7_dl_07010C38:
+  type: GFX
+  offset: 0x10C38
+  symbol: wdw_seg7_dl_07010C38
+
+wdw_seg7_dl_07010EA0:
+  type: GFX
+  offset: 0x10EA0
+  symbol: wdw_seg7_dl_07010EA0
+
+wdw_seg7_dl_07011208:
+  type: GFX
+  offset: 0x11208
+  symbol: wdw_seg7_dl_07011208
+
+wdw_seg7_dl_07011260:
+  type: GFX
+  offset: 0x11260
+  symbol: wdw_seg7_dl_07011260
+
+wdw_seg7_dl_07011298:
+  type: GFX
+  offset: 0x11298
+  symbol: wdw_seg7_dl_07011298
+
+wdw_seg7_dl_07011920:
+  type: GFX
+  offset: 0x11920
+  symbol: wdw_seg7_dl_07011920
+
+wdw_seg7_dl_07011B08:
+  type: GFX
+  offset: 0x11B08
+  symbol: wdw_seg7_dl_07011B08
+
+wdw_seg7_dl_07011D08:
+  type: GFX
+  offset: 0x11D08
+  symbol: wdw_seg7_dl_07011D08
+
+wdw_seg7_dl_07011D88:
+  type: GFX
+  offset: 0x11D88
+  symbol: wdw_seg7_dl_07011D88
+
+wdw_seg7_dl_07011DC0:
+  type: GFX
+  offset: 0x11DC0
+  symbol: wdw_seg7_dl_07011DC0
+
+wdw_seg7_dl_07011E48:
+  type: GFX
+  offset: 0x11E48
+  symbol: wdw_seg7_dl_07011E48
+
+wdw_seg7_lights_07011F58:
+  type: LIGHTS
+  size: 24
+  offset: 0x11F58
+  symbol: wdw_seg7_lights_07011F58
+
+wdw_seg7_lights_07011F70:
+  type: LIGHTS
+  size: 24
+  offset: 0x11F70
+  symbol: wdw_seg7_lights_07011F70
+
+wdw_seg7_lights_07011F88:
+  type: LIGHTS
+  size: 24
+  offset: 0x11F88
+  symbol: wdw_seg7_lights_07011F88
+
+wdw_seg7_vertex_07011FA0:
+  type: VTX
+  count: 8
+  offset: 0x11FA0
+  symbol: wdw_seg7_vertex_07011FA0
+
+wdw_seg7_vertex_07012020:
+  type: VTX
+  count: 8
+  offset: 0x12020
+  symbol: wdw_seg7_vertex_07012020
+
+wdw_seg7_vertex_070120A0:
+  type: VTX
+  count: 12
+  offset: 0x120A0
+  symbol: wdw_seg7_vertex_070120A0
+
+wdw_seg7_dl_07012160:
+  type: GFX
+  offset: 0x12160
+  symbol: wdw_seg7_dl_07012160
+
+wdw_seg7_dl_07012258:
+  type: GFX
+  offset: 0x12258
+  symbol: wdw_seg7_dl_07012258
+
+wdw_seg7_lights_07013238:
+  type: LIGHTS
+  size: 24
+  offset: 0x13238
+  symbol: wdw_seg7_lights_07013238
+
+wdw_seg7_vertex_07013250:
+  type: VTX
+  count: 15
+  offset: 0x13250
+  symbol: wdw_seg7_vertex_07013250
+
+wdw_seg7_vertex_07013340:
+  type: VTX
+  count: 11
+  offset: 0x13340
+  symbol: wdw_seg7_vertex_07013340
+
+wdw_seg7_dl_070133F0:
+  type: GFX
+  offset: 0x133F0
+  symbol: wdw_seg7_dl_070133F0
+
+wdw_seg7_dl_07013490:
+  type: GFX
+  offset: 0x13490
+  symbol: wdw_seg7_dl_07013490
+
+wdw_seg7_lights_07013EB8:
+  type: LIGHTS
+  size: 24
+  offset: 0x13EB8
+  symbol: wdw_seg7_lights_07013EB8
+
+wdw_seg7_vertex_07013ED0:
+  type: VTX
+  count: 15
+  offset: 0x13ED0
+  symbol: wdw_seg7_vertex_07013ED0
+
+wdw_seg7_vertex_07013FC0:
+  type: VTX
+  count: 9
+  offset: 0x13FC0
+  symbol: wdw_seg7_vertex_07013FC0
+
+wdw_seg7_dl_07014050:
+  type: GFX
+  offset: 0x14050
+  symbol: wdw_seg7_dl_07014050
+
+wdw_seg7_dl_070140E0:
+  type: GFX
+  offset: 0x140E0
+  symbol: wdw_seg7_dl_070140E0
+
+wdw_seg7_lights_07012C08:
+  type: LIGHTS
+  size: 24
+  offset: 0x12C08
+  symbol: wdw_seg7_lights_07012C08
+
+wdw_seg7_vertex_07012C20:
+  type: VTX
+  count: 4
+  offset: 0x12C20
+  symbol: wdw_seg7_vertex_07012C20
+
+wdw_seg7_vertex_07012C60:
+  type: VTX
+  count: 15
+  offset: 0x12C60
+  symbol: wdw_seg7_vertex_07012C60
+
+wdw_seg7_vertex_07012D50:
+  type: VTX
+  count: 7
+  offset: 0x12D50
+  symbol: wdw_seg7_vertex_07012D50
+
+wdw_seg7_dl_07012DC0:
+  type: GFX
+  offset: 0x12DC0
+  symbol: wdw_seg7_dl_07012DC0
+
+wdw_seg7_dl_07012E08:
+  type: GFX
+  offset: 0x12E08
+  symbol: wdw_seg7_dl_07012E08
+
+wdw_seg7_dl_07012E88:
+  type: GFX
+  offset: 0x12E88
+  symbol: wdw_seg7_dl_07012E88
+
+wdw_seg7_lights_07013BE8:
+  type: LIGHTS
+  size: 24
+  offset: 0x13BE8
+  symbol: wdw_seg7_lights_07013BE8
+
+wdw_seg7_vertex_07013C00:
+  type: VTX
+  count: 16
+  offset: 0x13C00
+  symbol: wdw_seg7_vertex_07013C00
+
+wdw_seg7_vertex_07013D00:
+  type: VTX
+  count: 8
+  offset: 0x13D00
+  symbol: wdw_seg7_vertex_07013D00
+
+wdw_seg7_dl_07013D80:
+  type: GFX
+  offset: 0x13D80
+  symbol: wdw_seg7_dl_07013D80
+
+wdw_seg7_dl_07013DF8:
+  type: GFX
+  offset: 0x13DF8
+  symbol: wdw_seg7_dl_07013DF8
+
+wdw_seg7_dl_07013E40:
+  type: GFX
+  offset: 0x13E40
+  symbol: wdw_seg7_dl_07013E40
+
+wdw_seg7_lights_07012938:
+  type: LIGHTS
+  size: 24
+  offset: 0x12938
+  symbol: wdw_seg7_lights_07012938
+
+wdw_seg7_vertex_07012950:
+  type: VTX
+  count: 16
+  offset: 0x12950
+  symbol: wdw_seg7_vertex_07012950
+
+wdw_seg7_vertex_07012A50:
+  type: VTX
+  count: 8
+  offset: 0x12A50
+  symbol: wdw_seg7_vertex_07012A50
+
+wdw_seg7_dl_07012AD0:
+  type: GFX
+  offset: 0x12AD0
+  symbol: wdw_seg7_dl_07012AD0
+
+wdw_seg7_dl_07012B48:
+  type: GFX
+  offset: 0x12B48
+  symbol: wdw_seg7_dl_07012B48
+
+wdw_seg7_dl_07012B90:
+  type: GFX
+  offset: 0x12B90
+  symbol: wdw_seg7_dl_07012B90
+
+wdw_seg7_lights_07012F18:
+  type: LIGHTS
+  size: 24
+  offset: 0x12F18
+  symbol: wdw_seg7_lights_07012F18
+
+wdw_seg7_lights_07012F30:
+  type: LIGHTS
+  size: 24
+  offset: 0x12F30
+  symbol: wdw_seg7_lights_07012F30
+
+wdw_seg7_lights_07012F48:
+  type: LIGHTS
+  size: 24
+  offset: 0x12F48
+  symbol: wdw_seg7_lights_07012F48
+
+wdw_seg7_lights_07012F60:
+  type: LIGHTS
+  size: 24
+  offset: 0x12F60
+  symbol: wdw_seg7_lights_07012F60
+
+wdw_seg7_vertex_07012F78:
+  type: VTX
+  count: 6
+  offset: 0x12F78
+  symbol: wdw_seg7_vertex_07012F78
+
+wdw_seg7_vertex_07012FD8:
+  type: VTX
+  count: 6
+  offset: 0x12FD8
+  symbol: wdw_seg7_vertex_07012FD8
+
+wdw_seg7_vertex_07013038:
+  type: VTX
+  count: 6
+  offset: 0x13038
+  symbol: wdw_seg7_vertex_07013038
+
+wdw_seg7_vertex_07013098:
+  type: VTX
+  count: 6
+  offset: 0x13098
+  symbol: wdw_seg7_vertex_07013098
+
+wdw_seg7_dl_070130F8:
+  type: GFX
+  offset: 0x130F8
+  symbol: wdw_seg7_dl_070130F8
+
+wdw_seg7_dl_070131B8:
+  type: GFX
+  offset: 0x131B8
+  symbol: wdw_seg7_dl_070131B8
+
+wdw_seg7_vertex_070127C8:
+  type: VTX
+  count: 14
+  offset: 0x127C8
+  symbol: wdw_seg7_vertex_070127C8
+
+wdw_seg7_dl_070128A8:
+  type: GFX
+  offset: 0x128A8
+  symbol: wdw_seg7_dl_070128A8
+
+wdw_seg7_dl_07012908:
+  type: GFX
+  offset: 0x12908
+  symbol: wdw_seg7_dl_07012908
+
+wdw_seg7_lights_07013500:
+  type: LIGHTS
+  size: 24
+  offset: 0x13500
+  symbol: wdw_seg7_lights_07013500
+
+wdw_seg7_vertex_07013518:
+  type: VTX
+  count: 16
+  offset: 0x13518
+  symbol: wdw_seg7_vertex_07013518
+
+wdw_seg7_vertex_07013618:
+  type: VTX
+  count: 15
+  offset: 0x13618
+  symbol: wdw_seg7_vertex_07013618
+
+wdw_seg7_vertex_07013708:
+  type: VTX
+  count: 15
+  offset: 0x13708
+  symbol: wdw_seg7_vertex_07013708
+
+wdw_seg7_vertex_070137F8:
+  type: VTX
+  count: 15
+  offset: 0x137F8
+  symbol: wdw_seg7_vertex_070137F8
+
+wdw_seg7_vertex_070138E8:
+  type: VTX
+  count: 15
+  offset: 0x138E8
+  symbol: wdw_seg7_vertex_070138E8
+
+wdw_seg7_dl_070139D8:
+  type: GFX
+  offset: 0x139D8
+  symbol: wdw_seg7_dl_070139D8
+
+wdw_seg7_dl_07013A50:
+  type: GFX
+  offset: 0x13A50
+  symbol: wdw_seg7_dl_07013A50
+
+wdw_seg7_dl_07013B70:
+  type: GFX
+  offset: 0x13B70
+  symbol: wdw_seg7_dl_07013B70
+
