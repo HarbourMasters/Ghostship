@@ -1,0 +1,567 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x4AC570
+  segments:
+    - [0x07,  0x4AC570]
+
+castle_courtyard_seg7_vertex_07000000:
+  type: VTX
+  count: 15
+  offset: 0x0
+  symbol: castle_courtyard_seg7_vertex_07000000
+
+castle_courtyard_seg7_vertex_070000F0:
+  type: VTX
+  count: 14
+  offset: 0xF0
+  symbol: castle_courtyard_seg7_vertex_070000F0
+
+castle_courtyard_seg7_vertex_070001D0:
+  type: VTX
+  count: 15
+  offset: 0x1D0
+  symbol: castle_courtyard_seg7_vertex_070001D0
+
+castle_courtyard_seg7_vertex_070002C0:
+  type: VTX
+  count: 15
+  offset: 0x2C0
+  symbol: castle_courtyard_seg7_vertex_070002C0
+
+castle_courtyard_seg7_vertex_070003B0:
+  type: VTX
+  count: 15
+  offset: 0x3B0
+  symbol: castle_courtyard_seg7_vertex_070003B0
+
+castle_courtyard_seg7_vertex_070004A0:
+  type: VTX
+  count: 15
+  offset: 0x4A0
+  symbol: castle_courtyard_seg7_vertex_070004A0
+
+castle_courtyard_seg7_vertex_07000590:
+  type: VTX
+  count: 14
+  offset: 0x590
+  symbol: castle_courtyard_seg7_vertex_07000590
+
+castle_courtyard_seg7_vertex_07000670:
+  type: VTX
+  count: 14
+  offset: 0x670
+  symbol: castle_courtyard_seg7_vertex_07000670
+
+castle_courtyard_seg7_vertex_07000750:
+  type: VTX
+  count: 15
+  offset: 0x750
+  symbol: castle_courtyard_seg7_vertex_07000750
+
+castle_courtyard_seg7_vertex_07000840:
+  type: VTX
+  count: 15
+  offset: 0x840
+  symbol: castle_courtyard_seg7_vertex_07000840
+
+castle_courtyard_seg7_vertex_07000930:
+  type: VTX
+  count: 14
+  offset: 0x930
+  symbol: castle_courtyard_seg7_vertex_07000930
+
+castle_courtyard_seg7_vertex_07000A10:
+  type: VTX
+  count: 7
+  offset: 0xA10
+  symbol: castle_courtyard_seg7_vertex_07000A10
+
+castle_courtyard_seg7_vertex_07000A80:
+  type: VTX
+  count: 16
+  offset: 0xA80
+  symbol: castle_courtyard_seg7_vertex_07000A80
+
+castle_courtyard_seg7_vertex_07000B80:
+  type: VTX
+  count: 15
+  offset: 0xB80
+  symbol: castle_courtyard_seg7_vertex_07000B80
+
+castle_courtyard_seg7_vertex_07000C70:
+  type: VTX
+  count: 16
+  offset: 0xC70
+  symbol: castle_courtyard_seg7_vertex_07000C70
+
+castle_courtyard_seg7_vertex_07000D70:
+  type: VTX
+  count: 16
+  offset: 0xD70
+  symbol: castle_courtyard_seg7_vertex_07000D70
+
+castle_courtyard_seg7_vertex_07000E70:
+  type: VTX
+  count: 16
+  offset: 0xE70
+  symbol: castle_courtyard_seg7_vertex_07000E70
+
+castle_courtyard_seg7_vertex_07000F70:
+  type: VTX
+  count: 15
+  offset: 0xF70
+  symbol: castle_courtyard_seg7_vertex_07000F70
+
+castle_courtyard_seg7_vertex_07001060:
+  type: VTX
+  count: 15
+  offset: 0x1060
+  symbol: castle_courtyard_seg7_vertex_07001060
+
+castle_courtyard_seg7_vertex_07001150:
+  type: VTX
+  count: 16
+  offset: 0x1150
+  symbol: castle_courtyard_seg7_vertex_07001150
+
+castle_courtyard_seg7_vertex_07001250:
+  type: VTX
+  count: 14
+  offset: 0x1250
+  symbol: castle_courtyard_seg7_vertex_07001250
+
+castle_courtyard_seg7_vertex_07001330:
+  type: VTX
+  count: 15
+  offset: 0x1330
+  symbol: castle_courtyard_seg7_vertex_07001330
+
+castle_courtyard_seg7_vertex_07001420:
+  type: VTX
+  count: 14
+  offset: 0x1420
+  symbol: castle_courtyard_seg7_vertex_07001420
+
+castle_courtyard_seg7_vertex_07001500:
+  type: VTX
+  count: 14
+  offset: 0x1500
+  symbol: castle_courtyard_seg7_vertex_07001500
+
+castle_courtyard_seg7_vertex_070015E0:
+  type: VTX
+  count: 15
+  offset: 0x15E0
+  symbol: castle_courtyard_seg7_vertex_070015E0
+
+castle_courtyard_seg7_vertex_070016D0:
+  type: VTX
+  count: 14
+  offset: 0x16D0
+  symbol: castle_courtyard_seg7_vertex_070016D0
+
+castle_courtyard_seg7_vertex_070017B0:
+  type: VTX
+  count: 16
+  offset: 0x17B0
+  symbol: castle_courtyard_seg7_vertex_070017B0
+
+castle_courtyard_seg7_vertex_070018B0:
+  type: VTX
+  count: 16
+  offset: 0x18B0
+  symbol: castle_courtyard_seg7_vertex_070018B0
+
+castle_courtyard_seg7_vertex_070019B0:
+  type: VTX
+  count: 16
+  offset: 0x19B0
+  symbol: castle_courtyard_seg7_vertex_070019B0
+
+castle_courtyard_seg7_vertex_07001AB0:
+  type: VTX
+  count: 15
+  offset: 0x1AB0
+  symbol: castle_courtyard_seg7_vertex_07001AB0
+
+castle_courtyard_seg7_vertex_07001BA0:
+  type: VTX
+  count: 16
+  offset: 0x1BA0
+  symbol: castle_courtyard_seg7_vertex_07001BA0
+
+castle_courtyard_seg7_vertex_07001CA0:
+  type: VTX
+  count: 15
+  offset: 0x1CA0
+  symbol: castle_courtyard_seg7_vertex_07001CA0
+
+castle_courtyard_seg7_vertex_07001D90:
+  type: VTX
+  count: 16
+  offset: 0x1D90
+  symbol: castle_courtyard_seg7_vertex_07001D90
+
+castle_courtyard_seg7_vertex_07001E90:
+  type: VTX
+  count: 16
+  offset: 0x1E90
+  symbol: castle_courtyard_seg7_vertex_07001E90
+
+castle_courtyard_seg7_vertex_07001F90:
+  type: VTX
+  count: 16
+  offset: 0x1F90
+  symbol: castle_courtyard_seg7_vertex_07001F90
+
+castle_courtyard_seg7_vertex_07002090:
+  type: VTX
+  count: 11
+  offset: 0x2090
+  symbol: castle_courtyard_seg7_vertex_07002090
+
+castle_courtyard_seg7_vertex_07002140:
+  type: VTX
+  count: 4
+  offset: 0x2140
+  symbol: castle_courtyard_seg7_vertex_07002140
+
+castle_courtyard_seg7_vertex_07002180:
+  type: VTX
+  count: 4
+  offset: 0x2180
+  symbol: castle_courtyard_seg7_vertex_07002180
+
+castle_courtyard_seg7_vertex_070021C0:
+  type: VTX
+  count: 14
+  offset: 0x21C0
+  symbol: castle_courtyard_seg7_vertex_070021C0
+
+castle_courtyard_seg7_vertex_070022A0:
+  type: VTX
+  count: 14
+  offset: 0x22A0
+  symbol: castle_courtyard_seg7_vertex_070022A0
+
+castle_courtyard_seg7_vertex_07002380:
+  type: VTX
+  count: 15
+  offset: 0x2380
+  symbol: castle_courtyard_seg7_vertex_07002380
+
+castle_courtyard_seg7_vertex_07002470:
+  type: VTX
+  count: 14
+  offset: 0x2470
+  symbol: castle_courtyard_seg7_vertex_07002470
+
+castle_courtyard_seg7_vertex_07002550:
+  type: VTX
+  count: 16
+  offset: 0x2550
+  symbol: castle_courtyard_seg7_vertex_07002550
+
+castle_courtyard_seg7_vertex_07002650:
+  type: VTX
+  count: 15
+  offset: 0x2650
+  symbol: castle_courtyard_seg7_vertex_07002650
+
+castle_courtyard_seg7_vertex_07002740:
+  type: VTX
+  count: 15
+  offset: 0x2740
+  symbol: castle_courtyard_seg7_vertex_07002740
+
+castle_courtyard_seg7_vertex_07002830:
+  type: VTX
+  count: 14
+  offset: 0x2830
+  symbol: castle_courtyard_seg7_vertex_07002830
+
+castle_courtyard_seg7_vertex_07002910:
+  type: VTX
+  count: 14
+  offset: 0x2910
+  symbol: castle_courtyard_seg7_vertex_07002910
+
+castle_courtyard_seg7_vertex_070029F0:
+  type: VTX
+  count: 15
+  offset: 0x29F0
+  symbol: castle_courtyard_seg7_vertex_070029F0
+
+castle_courtyard_seg7_vertex_07002AE0:
+  type: VTX
+  count: 15
+  offset: 0x2AE0
+  symbol: castle_courtyard_seg7_vertex_07002AE0
+
+castle_courtyard_seg7_vertex_07002BD0:
+  type: VTX
+  count: 16
+  offset: 0x2BD0
+  symbol: castle_courtyard_seg7_vertex_07002BD0
+
+castle_courtyard_seg7_vertex_07002CD0:
+  type: VTX
+  count: 14
+  offset: 0x2CD0
+  symbol: castle_courtyard_seg7_vertex_07002CD0
+
+castle_courtyard_seg7_vertex_07002DB0:
+  type: VTX
+  count: 7
+  offset: 0x2DB0
+  symbol: castle_courtyard_seg7_vertex_07002DB0
+
+castle_courtyard_seg7_vertex_07002E20:
+  type: VTX
+  count: 16
+  offset: 0x2E20
+  symbol: castle_courtyard_seg7_vertex_07002E20
+
+castle_courtyard_seg7_vertex_07002F20:
+  type: VTX
+  count: 16
+  offset: 0x2F20
+  symbol: castle_courtyard_seg7_vertex_07002F20
+
+castle_courtyard_seg7_vertex_07003020:
+  type: VTX
+  count: 16
+  offset: 0x3020
+  symbol: castle_courtyard_seg7_vertex_07003020
+
+castle_courtyard_seg7_vertex_07003120:
+  type: VTX
+  count: 15
+  offset: 0x3120
+  symbol: castle_courtyard_seg7_vertex_07003120
+
+castle_courtyard_seg7_vertex_07003210:
+  type: VTX
+  count: 15
+  offset: 0x3210
+  symbol: castle_courtyard_seg7_vertex_07003210
+
+castle_courtyard_seg7_vertex_07003300:
+  type: VTX
+  count: 15
+  offset: 0x3300
+  symbol: castle_courtyard_seg7_vertex_07003300
+
+castle_courtyard_seg7_vertex_070033F0:
+  type: VTX
+  count: 15
+  offset: 0x33F0
+  symbol: castle_courtyard_seg7_vertex_070033F0
+
+castle_courtyard_seg7_vertex_070034E0:
+  type: VTX
+  count: 14
+  offset: 0x34E0
+  symbol: castle_courtyard_seg7_vertex_070034E0
+
+castle_courtyard_seg7_vertex_070035C0:
+  type: VTX
+  count: 11
+  offset: 0x35C0
+  symbol: castle_courtyard_seg7_vertex_070035C0
+
+castle_courtyard_seg7_vertex_07003670:
+  type: VTX
+  count: 8
+  offset: 0x3670
+  symbol: castle_courtyard_seg7_vertex_07003670
+
+castle_courtyard_seg7_dl_070036F0:
+  type: GFX
+  offset: 0x36F0
+  symbol: castle_courtyard_seg7_dl_070036F0
+
+castle_courtyard_seg7_dl_070039D0:
+  type: GFX
+  offset: 0x39D0
+  symbol: castle_courtyard_seg7_dl_070039D0
+
+castle_courtyard_seg7_dl_07003AF8:
+  type: GFX
+  offset: 0x3AF8
+  symbol: castle_courtyard_seg7_dl_07003AF8
+
+castle_courtyard_seg7_dl_07003BA8:
+  type: GFX
+  offset: 0x3BA8
+  symbol: castle_courtyard_seg7_dl_07003BA8
+
+castle_courtyard_seg7_dl_07003EC8:
+  type: GFX
+  offset: 0x3EC8
+  symbol: castle_courtyard_seg7_dl_07003EC8
+
+castle_courtyard_seg7_dl_07003F30:
+  type: GFX
+  offset: 0x3F30
+  symbol: castle_courtyard_seg7_dl_07003F30
+
+castle_courtyard_seg7_dl_070040A8:
+  type: GFX
+  offset: 0x40A8
+  symbol: castle_courtyard_seg7_dl_070040A8
+
+castle_courtyard_seg7_dl_07004168:
+  type: GFX
+  offset: 0x4168
+  symbol: castle_courtyard_seg7_dl_07004168
+
+castle_courtyard_seg7_dl_070041A0:
+  type: GFX
+  offset: 0x41A0
+  symbol: castle_courtyard_seg7_dl_070041A0
+
+castle_courtyard_seg7_dl_070041D8:
+  type: GFX
+  offset: 0x41D8
+  symbol: castle_courtyard_seg7_dl_070041D8
+
+castle_courtyard_seg7_dl_07004370:
+  type: GFX
+  offset: 0x4370
+  symbol: castle_courtyard_seg7_dl_07004370
+
+castle_courtyard_seg7_dl_070045F0:
+  type: GFX
+  offset: 0x45F0
+  symbol: castle_courtyard_seg7_dl_070045F0
+
+castle_courtyard_seg7_dl_07004868:
+  type: GFX
+  offset: 0x4868
+  symbol: castle_courtyard_seg7_dl_07004868
+
+castle_courtyard_seg7_dl_070048B8:
+  type: GFX
+  offset: 0x48B8
+  symbol: castle_courtyard_seg7_dl_070048B8
+
+castle_courtyard_seg7_vertex_070049E8:
+  type: VTX
+  count: 14
+  offset: 0x49E8
+  symbol: castle_courtyard_seg7_vertex_070049E8
+
+castle_courtyard_seg7_vertex_07004AC8:
+  type: VTX
+  count: 15
+  offset: 0x4AC8
+  symbol: castle_courtyard_seg7_vertex_07004AC8
+
+castle_courtyard_seg7_vertex_07004BB8:
+  type: VTX
+  count: 15
+  offset: 0x4BB8
+  symbol: castle_courtyard_seg7_vertex_07004BB8
+
+castle_courtyard_seg7_vertex_07004CA8:
+  type: VTX
+  count: 16
+  offset: 0x4CA8
+  symbol: castle_courtyard_seg7_vertex_07004CA8
+
+castle_courtyard_seg7_vertex_07004DA8:
+  type: VTX
+  count: 16
+  offset: 0x4DA8
+  symbol: castle_courtyard_seg7_vertex_07004DA8
+
+castle_courtyard_seg7_vertex_07004EA8:
+  type: VTX
+  count: 3
+  offset: 0x4EA8
+  symbol: castle_courtyard_seg7_vertex_07004EA8
+
+castle_courtyard_seg7_dl_07004ED8:
+  type: GFX
+  offset: 0x4ED8
+  symbol: castle_courtyard_seg7_dl_07004ED8
+
+castle_courtyard_seg7_dl_07004FB0:
+  type: GFX
+  offset: 0x4FB0
+  symbol: castle_courtyard_seg7_dl_07004FB0
+
+castle_courtyard_seg7_dl_07005060:
+  type: GFX
+  offset: 0x5060
+  symbol: castle_courtyard_seg7_dl_07005060
+
+castle_courtyard_seg7_dl_07005078:
+  type: GFX
+  offset: 0x5078
+  symbol: castle_courtyard_seg7_dl_07005078
+
+castle_courtyard_seg7_vertex_07005708:
+  type: VTX
+  count: 15
+  offset: 0x5708
+  symbol: castle_courtyard_seg7_vertex_07005708
+
+castle_courtyard_seg7_vertex_070057F8:
+  type: VTX
+  count: 11
+  offset: 0x57F8
+  symbol: castle_courtyard_seg7_vertex_070057F8
+
+castle_courtyard_seg7_dl_070058A8:
+  type: GFX
+  offset: 0x58A8
+  symbol: castle_courtyard_seg7_dl_070058A8
+
+castle_courtyard_seg7_dl_07005938:
+  type: GFX
+  offset: 0x5938
+  symbol: castle_courtyard_seg7_dl_07005938
+
+castle_courtyard_seg7_vertex_07005110:
+  type: VTX
+  count: 15
+  offset: 0x5110
+  symbol: castle_courtyard_seg7_vertex_07005110
+
+castle_courtyard_seg7_vertex_07005200:
+  type: VTX
+  count: 15
+  offset: 0x5200
+  symbol: castle_courtyard_seg7_vertex_07005200
+
+castle_courtyard_seg7_vertex_070052F0:
+  type: VTX
+  count: 15
+  offset: 0x52F0
+  symbol: castle_courtyard_seg7_vertex_070052F0
+
+castle_courtyard_seg7_vertex_070053E0:
+  type: VTX
+  count: 15
+  offset: 0x53E0
+  symbol: castle_courtyard_seg7_vertex_070053E0
+
+castle_courtyard_seg7_vertex_070054D0:
+  type: VTX
+  count: 8
+  offset: 0x54D0
+  symbol: castle_courtyard_seg7_vertex_070054D0
+
+castle_courtyard_seg7_dl_07005550:
+  type: GFX
+  offset: 0x5550
+  symbol: castle_courtyard_seg7_dl_07005550
+
+castle_courtyard_seg7_dl_07005698:
+  type: GFX
+  offset: 0x5698
+  symbol: castle_courtyard_seg7_dl_07005698
+
