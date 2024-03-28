@@ -28,6 +28,7 @@ toad_seg6_lights_06005908:
   offset: 0x5908
   symbol: toad_seg6_lights_06005908
 
+
 toad_seg6_vertex_06006920:
   type: VTX
   count: 15
@@ -122,29 +123,29 @@ toad_seg6_us_dl_06007788:
 toad_seg6_lights_06007788:
   type: LIGHTS
   size: 24
-  offset: 0x7788
+  offset: 0x7808
   symbol: toad_seg6_lights_06007788
 
 toad_seg6_vertex_060077A0:
   type: VTX
   count: 16
-  offset: 0x77A0
+  offset: 0x7820
   symbol: toad_seg6_vertex_060077A0
 
 toad_seg6_vertex_060078A0:
   type: VTX
   count: 12
-  offset: 0x78A0
+  offset: 0x7920
   symbol: toad_seg6_vertex_060078A0
 
 toad_seg6_dl_06007960:
   type: GFX
-  offset: 0x7960
+  offset: 0x79E0
   symbol: toad_seg6_dl_06007960
 
 toad_seg6_dl_06007A48:
   type: GFX
-  offset: 0x7A48
+  offset: 0x7AC8
   symbol: toad_seg6_dl_06007A48
 
 toad_seg6_us_dl_06007B00:
@@ -155,97 +156,97 @@ toad_seg6_us_dl_06007B00:
 toad_seg6_lights_06007A80:
   type: LIGHTS
   size: 24
-  offset: 0x7A80
+  offset: 0x7B28
   symbol: toad_seg6_lights_06007A80
 
 toad_seg6_lights_06007A98:
   type: LIGHTS
   size: 24
-  offset: 0x7A98
+  offset: 0x7B40
   symbol: toad_seg6_lights_06007A98
 
 toad_seg6_vertex_06007AB0:
   type: VTX
   count: 14
-  offset: 0x7AB0
+  offset: 0x7B58
   symbol: toad_seg6_vertex_06007AB0
 
 toad_seg6_vertex_06007B90:
   type: VTX
   count: 12
-  offset: 0x7B90
+  offset: 0x7C38
   symbol: toad_seg6_vertex_06007B90
 
 toad_seg6_vertex_06007C50:
   type: VTX
   count: 12
-  offset: 0x7C50
+  offset: 0x7CF8
   symbol: toad_seg6_vertex_06007C50
 
 toad_seg6_dl_06007D10:
   type: GFX
-  offset: 0x7D10
+  offset: 0x7DB8
   symbol: toad_seg6_dl_06007D10
 
 toad_seg6_dl_06007EB0:
   type: GFX
-  offset: 0x7EB0
+  offset: 0x7F58
   symbol: toad_seg6_dl_06007EB0
 
 toad_seg6_lights_06007ED8:
   type: LIGHTS
   size: 24
-  offset: 0x7ED8
+  offset: 0x7F80
   symbol: toad_seg6_lights_06007ED8
 
 toad_seg6_vertex_06007EF0:
   type: VTX
   count: 16
-  offset: 0x7EF0
+  offset: 0x7F98
   symbol: toad_seg6_vertex_06007EF0
 
 toad_seg6_vertex_06007FF0:
   type: VTX
   count: 13
-  offset: 0x7FF0
+  offset: 0x8098
   symbol: toad_seg6_vertex_06007FF0
 
 toad_seg6_dl_060080C0:
   type: GFX
-  offset: 0x80C0
+  offset: 0x8168
   symbol: toad_seg6_dl_060080C0
 
 toad_seg6_dl_060081F8:
   type: GFX
-  offset: 0x81F8
+  offset: 0x82A0
   symbol: toad_seg6_dl_060081F8
 
 toad_seg6_lights_06008220:
   type: LIGHTS
   size: 24
-  offset: 0x8220
+  offset: 0x82C8
   symbol: toad_seg6_lights_06008220
 
 toad_seg6_vertex_06008238:
   type: VTX
   count: 16
-  offset: 0x8238
+  offset: 0x82E0
   symbol: toad_seg6_vertex_06008238
 
 toad_seg6_vertex_06008338:
   type: VTX
   count: 11
-  offset: 0x8338
+  offset: 0x83E0
   symbol: toad_seg6_vertex_06008338
 
 toad_seg6_dl_060083E8:
   type: GFX
-  offset: 0x83E8
+  offset: 0x8490
   symbol: toad_seg6_dl_060083E8
 
 toad_seg6_dl_06008520:
   type: GFX
-  offset: 0x8520
+  offset: 0x85C8
   symbol: toad_seg6_dl_06008520
 
 toad_seg6_us_dl_06008608:
@@ -256,56 +257,56 @@ toad_seg6_us_dl_06008608:
 toad_seg6_lights_06008560:
   type: LIGHTS
   size: 24
-  offset: 0x8560
+  offset: 0x8650
   symbol: toad_seg6_lights_06008560
 
 toad_seg6_vertex_06008578:
   type: VTX
   count: 16
-  offset: 0x8578
+  offset: 0x8668
   symbol: toad_seg6_vertex_06008578
 
 toad_seg6_vertex_06008678:
   type: VTX
   count: 13
-  offset: 0x8678
+  offset: 0x8768
   symbol: toad_seg6_vertex_06008678
 
 toad_seg6_dl_06008748:
   type: GFX
-  offset: 0x8748
+  offset: 0x8838
   symbol: toad_seg6_dl_06008748
 
 toad_seg6_dl_06008890:
   type: GFX
-  offset: 0x8890
+  offset: 0x8980
   symbol: toad_seg6_dl_06008890
 
 toad_seg6_lights_060088B8:
   type: LIGHTS
   size: 24
-  offset: 0x88B8
+  offset: 0x89A8
   symbol: toad_seg6_lights_060088B8
 
 toad_seg6_vertex_060088D0:
   type: VTX
   count: 16
-  offset: 0x88D0
+  offset: 0x89C0
   symbol: toad_seg6_vertex_060088D0
 
 toad_seg6_vertex_060089D0:
   type: VTX
   count: 12
-  offset: 0x89D0
+  offset: 0x8AC0
   symbol: toad_seg6_vertex_060089D0
 
 toad_seg6_dl_06008A90:
   type: GFX
-  offset: 0x8A90
+  offset: 0x8B80
   symbol: toad_seg6_dl_06008A90
 
 toad_seg6_dl_06008BD8:
   type: GFX
-  offset: 0x8BD8
+  offset: 0x8CC8
   symbol: toad_seg6_dl_06008BD8
 

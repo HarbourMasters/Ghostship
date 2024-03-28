@@ -426,371 +426,371 @@ peach_seg5_us_dl_05007288:
 peach_seg5_lights_05007288:
   type: LIGHTS
   size: 24
-  offset: 0x7288
+  offset: 0x72E8
   symbol: peach_seg5_lights_05007288
 
 peach_seg5_vertex_050072A0:
   type: VTX
   count: 14
-  offset: 0x72A0
+  offset: 0x7300
   symbol: peach_seg5_vertex_050072A0
 
 peach_seg5_vertex_05007380:
   type: VTX
   count: 16
-  offset: 0x7380
+  offset: 0x73E0
   symbol: peach_seg5_vertex_05007380
 
 peach_seg5_vertex_05007480:
   type: VTX
   count: 16
-  offset: 0x7480
+  offset: 0x74E0
   symbol: peach_seg5_vertex_05007480
 
 peach_seg5_vertex_05007580:
   type: VTX
   count: 16
-  offset: 0x7580
+  offset: 0x75E0
   symbol: peach_seg5_vertex_05007580
 
 peach_seg5_vertex_05007680:
   type: VTX
   count: 16
-  offset: 0x7680
+  offset: 0x76E0
   symbol: peach_seg5_vertex_05007680
 
 peach_seg5_vertex_05007780:
   type: VTX
   count: 9
-  offset: 0x7780
+  offset: 0x77E0
   symbol: peach_seg5_vertex_05007780
 
 peach_seg5_dl_05007810:
   type: GFX
-  offset: 0x7810
+  offset: 0x7870
   symbol: peach_seg5_dl_05007810
 
 peach_seg5_dl_05007AB8:
   type: GFX
-  offset: 0x7AB8
+  offset: 0x7B18
   symbol: peach_seg5_dl_05007AB8
 
 peach_seg5_lights_05007AE0:
   type: LIGHTS
   size: 24
-  offset: 0x7AE0
+  offset: 0x7B40
   symbol: peach_seg5_lights_05007AE0
 
 peach_seg5_vertex_05007AF8:
   type: VTX
   count: 15
-  offset: 0x7AF8
+  offset: 0x7B58
   symbol: peach_seg5_vertex_05007AF8
 
 peach_seg5_vertex_05007BE8:
   type: VTX
   count: 16
-  offset: 0x7BE8
+  offset: 0x7C48
   symbol: peach_seg5_vertex_05007BE8
 
 peach_seg5_dl_05007CE8:
   type: GFX
-  offset: 0x7CE8
+  offset: 0x7D48
   symbol: peach_seg5_dl_05007CE8
 
 peach_seg5_dl_05007E58:
   type: GFX
-  offset: 0x7E58
+  offset: 0x7EB8
   symbol: peach_seg5_dl_05007E58
 
 peach_seg5_lights_05007EB0:
   type: LIGHTS
   size: 24
-  offset: 0x7EB0
+  offset: 0x7F10
   symbol: peach_seg5_lights_05007EB0
 
 peach_seg5_vertex_05007EC8:
   type: VTX
   count: 15
-  offset: 0x7EC8
+  offset: 0x7F28
   symbol: peach_seg5_vertex_05007EC8
 
 peach_seg5_vertex_05007FB8:
   type: VTX
   count: 16
-  offset: 0x7FB8
+  offset: 0x8018
   symbol: peach_seg5_vertex_05007FB8
 
 peach_seg5_dl_050080B8:
   type: GFX
-  offset: 0x80B8
+  offset: 0x8118
   symbol: peach_seg5_dl_050080B8
 
 peach_seg5_dl_05008228:
   type: GFX
-  offset: 0x8228
+  offset: 0x8288
   symbol: peach_seg5_dl_05008228
 
 peach_seg5_lights_05008280:
   type: LIGHTS
   size: 24
-  offset: 0x8280
+  offset: 0x82E0
   symbol: peach_seg5_lights_05008280
 
 peach_seg5_vertex_05008298:
   type: VTX
   count: 12
-  offset: 0x8298
+  offset: 0x82F8
   symbol: peach_seg5_vertex_05008298
 
 peach_seg5_vertex_05008358:
   type: VTX
   count: 13
-  offset: 0x8358
+  offset: 0x83B8
   symbol: peach_seg5_vertex_05008358
 
 peach_seg5_dl_05008428:
   type: GFX
-  offset: 0x8428
+  offset: 0x8488
   symbol: peach_seg5_dl_05008428
 
 peach_seg5_dl_050084C0:
   type: GFX
-  offset: 0x84C0
+  offset: 0x8520
   symbol: peach_seg5_dl_050084C0
 
 peach_seg5_dl_05008560:
   type: GFX
-  offset: 0x8560
+  offset: 0x85C0
   symbol: peach_seg5_dl_05008560
 
 peach_seg5_lights_050085D0:
   type: LIGHTS
   size: 24
-  offset: 0x85D0
+  offset: 0x8630
   symbol: peach_seg5_lights_050085D0
 
 peach_seg5_vertex_050085E8:
   type: VTX
   count: 14
-  offset: 0x85E8
+  offset: 0x8648
   symbol: peach_seg5_vertex_050085E8
 
 peach_seg5_dl_050086C8:
   type: GFX
-  offset: 0x86C8
+  offset: 0x8728
   symbol: peach_seg5_dl_050086C8
 
 peach_seg5_dl_050087A8:
   type: GFX
-  offset: 0x87A8
+  offset: 0x8808
   symbol: peach_seg5_dl_050087A8
 
 peach_seg5_lights_050087D0:
   type: LIGHTS
   size: 24
-  offset: 0x87D0
+  offset: 0x8830
   symbol: peach_seg5_lights_050087D0
 
 peach_seg5_vertex_050087E8:
   type: VTX
   count: 12
-  offset: 0x87E8
+  offset: 0x8848
   symbol: peach_seg5_vertex_050087E8
 
 peach_seg5_vertex_050088A8:
   type: VTX
   count: 13
-  offset: 0x88A8
+  offset: 0x8908
   symbol: peach_seg5_vertex_050088A8
 
 peach_seg5_dl_05008978:
   type: GFX
-  offset: 0x8978
+  offset: 0x89D8
   symbol: peach_seg5_dl_05008978
 
 peach_seg5_dl_05008A10:
   type: GFX
-  offset: 0x8A10
+  offset: 0x8A70
   symbol: peach_seg5_dl_05008A10
 
 peach_seg5_dl_05008AB0:
   type: GFX
-  offset: 0x8AB0
+  offset: 0x8B10
   symbol: peach_seg5_dl_05008AB0
 
 peach_seg5_lights_05008B20:
   type: LIGHTS
   size: 24
-  offset: 0x8B20
+  offset: 0x8B80
   symbol: peach_seg5_lights_05008B20
 
 peach_seg5_vertex_05008B38:
   type: VTX
   count: 14
-  offset: 0x8B38
+  offset: 0x8B98
   symbol: peach_seg5_vertex_05008B38
 
 peach_seg5_dl_05008C18:
   type: GFX
-  offset: 0x8C18
+  offset: 0x8C78
   symbol: peach_seg5_dl_05008C18
 
 peach_seg5_dl_05008CF8:
   type: GFX
-  offset: 0x8CF8
+  offset: 0x8D58
   symbol: peach_seg5_dl_05008CF8
 
 peach_seg5_lights_05008D20:
   type: LIGHTS
   size: 24
-  offset: 0x8D20
+  offset: 0x8D80
   symbol: peach_seg5_lights_05008D20
 
 peach_seg5_vertex_05008D38:
   type: VTX
   count: 16
-  offset: 0x8D38
+  offset: 0x8D98
   symbol: peach_seg5_vertex_05008D38
 
 peach_seg5_dl_05008E38:
   type: GFX
-  offset: 0x8E38
+  offset: 0x8E98
   symbol: peach_seg5_dl_05008E38
 
 peach_seg5_dl_05008F20:
   type: GFX
-  offset: 0x8F20
+  offset: 0x8F80
   symbol: peach_seg5_dl_05008F20
 
 peach_seg5_lights_05008F48:
   type: LIGHTS
   size: 24
-  offset: 0x8F48
+  offset: 0x8FA8
   symbol: peach_seg5_lights_05008F48
 
 peach_seg5_vertex_05008F60:
   type: VTX
   count: 16
-  offset: 0x8F60
+  offset: 0x8FC0
   symbol: peach_seg5_vertex_05008F60
 
 peach_seg5_dl_05009060:
   type: GFX
-  offset: 0x9060
+  offset: 0x90C0
   symbol: peach_seg5_dl_05009060
 
 peach_seg5_dl_05009148:
   type: GFX
-  offset: 0x9148
+  offset: 0x91A8
   symbol: peach_seg5_dl_05009148
 
 peach_seg5_lights_05009170:
   type: LIGHTS
   size: 24
-  offset: 0x9170
+  offset: 0x91D0
   symbol: peach_seg5_lights_05009170
 
 peach_seg5_vertex_05009188:
   type: VTX
   count: 16
-  offset: 0x9188
+  offset: 0x91E8
   symbol: peach_seg5_vertex_05009188
 
 peach_seg5_vertex_05009288:
   type: VTX
   count: 16
-  offset: 0x9288
+  offset: 0x92E8
   symbol: peach_seg5_vertex_05009288
 
 peach_seg5_dl_05009388:
   type: GFX
-  offset: 0x9388
+  offset: 0x93E8
   symbol: peach_seg5_dl_05009388
 
 peach_seg5_dl_05009500:
   type: GFX
-  offset: 0x9500
+  offset: 0x9560
   symbol: peach_seg5_dl_05009500
 
 peach_seg5_lights_05009528:
   type: LIGHTS
   size: 24
-  offset: 0x9528
+  offset: 0x9588
   symbol: peach_seg5_lights_05009528
 
 peach_seg5_vertex_05009540:
   type: VTX
   count: 16
-  offset: 0x9540
+  offset: 0x95A0
   symbol: peach_seg5_vertex_05009540
 
 peach_seg5_vertex_05009640:
   type: VTX
   count: 16
-  offset: 0x9640
+  offset: 0x96A0
   symbol: peach_seg5_vertex_05009640
 
 peach_seg5_vertex_05009740:
   type: VTX
   count: 8
-  offset: 0x9740
+  offset: 0x97A0
   symbol: peach_seg5_vertex_05009740
 
 peach_seg5_dl_050097C0:
   type: GFX
-  offset: 0x97C0
+  offset: 0x9820
   symbol: peach_seg5_dl_050097C0
 
 peach_seg5_dl_05009940:
   type: GFX
-  offset: 0x9940
+  offset: 0x99A0
   symbol: peach_seg5_dl_05009940
 
 peach_seg5_lights_05009968:
   type: LIGHTS
   size: 24
-  offset: 0x9968
+  offset: 0x99C8
   symbol: peach_seg5_lights_05009968
 
 peach_seg5_vertex_05009980:
   type: VTX
   count: 15
-  offset: 0x9980
+  offset: 0x99E0
   symbol: peach_seg5_vertex_05009980
 
 peach_seg5_vertex_05009A70:
   type: VTX
   count: 15
-  offset: 0x9A70
+  offset: 0x9AD0
   symbol: peach_seg5_vertex_05009A70
 
 peach_seg5_vertex_05009B60:
   type: VTX
   count: 16
-  offset: 0x9B60
+  offset: 0x9BC0
   symbol: peach_seg5_vertex_05009B60
 
 peach_seg5_vertex_05009C60:
   type: VTX
   count: 15
-  offset: 0x9C60
+  offset: 0x9CC0
   symbol: peach_seg5_vertex_05009C60
 
 peach_seg5_vertex_05009D50:
   type: VTX
   count: 13
-  offset: 0x9D50
+  offset: 0x9DB0
   symbol: peach_seg5_vertex_05009D50
 
-# peach_seg5_dl_05009E20:
-#   type: GFX
-#   offset: 0x9E20
-#   symbol: peach_seg5_dl_05009E20
+peach_seg5_dl_05009E20:
+  type: GFX
+  offset: 0x9E80
+  symbol: peach_seg5_dl_05009E20
 
 peach_seg5_dl_0500A0A8:
   type: GFX
-  offset: 0xA0A8
+  offset: 0xA108
   symbol: peach_seg5_dl_0500A0A8
 
 peach_seg5_us_dl_0500A188:
