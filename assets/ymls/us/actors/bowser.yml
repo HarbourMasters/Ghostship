@@ -238,6 +238,7 @@ bowser_upper_face:
   format: RGBA16
   symbol: bowser_seg6_texture_06028438
 
+
 bowser_seg6_lights_06038C38:
   type: LIGHTS
   size: 24
@@ -560,498 +561,498 @@ bowser_seg6_dl_0603B948:
 bowser_seg6_vertex_0603B948:
   type: VTX
   count: 16
-  offset: 0x3B948
+  offset: 0x3B9C8
   symbol: bowser_seg6_vertex_0603B948
 
 bowser_seg6_vertex_0603BA48:
   type: VTX
   count: 11
-  offset: 0x3BA48
+  offset: 0x3BAC8
   symbol: bowser_seg6_vertex_0603BA48
 
 bowser_seg6_vertex_0603BAF8:
   type: VTX
   count: 16
-  offset: 0x3BAF8
+  offset: 0x3BB78
   symbol: bowser_seg6_vertex_0603BAF8
 
 bowser_seg6_vertex_0603BBF8:
   type: VTX
   count: 10
-  offset: 0x3BBF8
+  offset: 0x3BC78
   symbol: bowser_seg6_vertex_0603BBF8
 
 bowser_seg6_vertex_0603BC98:
   type: VTX
   count: 15
-  offset: 0x3BC98
+  offset: 0x3BD18
   symbol: bowser_seg6_vertex_0603BC98
 
 bowser_seg6_vertex_0603BD88:
   type: VTX
   count: 7
-  offset: 0x3BD88
+  offset: 0x3BE08
   symbol: bowser_seg6_vertex_0603BD88
 
 bowser_seg6_dl_0603BDF8:
   type: GFX
-  offset: 0x3BDF8
+  offset: 0x3BE78
   symbol: bowser_seg6_dl_0603BDF8
 
 bowser_seg6_dl_0603BEA0:
   type: GFX
-  offset: 0x3BEA0
+  offset: 0x3BF20
   symbol: bowser_seg6_dl_0603BEA0
 
 bowser_seg6_dl_0603BF48:
   type: GFX
-  offset: 0x3BF48
+  offset: 0x3BFC8
   symbol: bowser_seg6_dl_0603BF48
 
 bowser_seg6_dl_0603BFC8:
   type: GFX
-  offset: 0x3BFC8
+  offset: 0x3C048
   symbol: bowser_seg6_dl_0603BFC8
 
 bowser_seg6_vertex_0603C050:
   type: VTX
   count: 16
-  offset: 0x3C050
+  offset: 0x3C0D0
   symbol: bowser_seg6_vertex_0603C050
 
 bowser_seg6_vertex_0603C150:
   type: VTX
   count: 11
-  offset: 0x3C150
+  offset: 0x3C1D0
   symbol: bowser_seg6_vertex_0603C150
 
 bowser_seg6_vertex_0603C200:
   type: VTX
   count: 16
-  offset: 0x3C200
+  offset: 0x3C280
   symbol: bowser_seg6_vertex_0603C200
 
 bowser_seg6_vertex_0603C300:
   type: VTX
   count: 10
-  offset: 0x3C300
+  offset: 0x3C380
   symbol: bowser_seg6_vertex_0603C300
 
 bowser_seg6_vertex_0603C3A0:
   type: VTX
   count: 15
-  offset: 0x3C3A0
+  offset: 0x3C420
   symbol: bowser_seg6_vertex_0603C3A0
 
 bowser_seg6_vertex_0603C490:
   type: VTX
   count: 7
-  offset: 0x3C490
+  offset: 0x3C510
   symbol: bowser_seg6_vertex_0603C490
 
 bowser_seg6_dl_0603C500:
   type: GFX
-  offset: 0x3C500
+  offset: 0x3C580
   symbol: bowser_seg6_dl_0603C500
 
 bowser_seg6_dl_0603C5A8:
   type: GFX
-  offset: 0x3C5A8
+  offset: 0x3C628
   symbol: bowser_seg6_dl_0603C5A8
 
 bowser_seg6_dl_0603C650:
   type: GFX
-  offset: 0x3C650
+  offset: 0x3C6D0
   symbol: bowser_seg6_dl_0603C650
 
 bowser_seg6_dl_0603C6D0:
   type: GFX
-  offset: 0x3C6D0
+  offset: 0x3C750
   symbol: bowser_seg6_dl_0603C6D0
 
 bowser_seg6_vertex_0603C758:
   type: VTX
   count: 15
-  offset: 0x3C758
+  offset: 0x3C7D8
   symbol: bowser_seg6_vertex_0603C758
 
 bowser_seg6_vertex_0603C848:
   type: VTX
   count: 16
-  offset: 0x3C848
+  offset: 0x3C8C8
   symbol: bowser_seg6_vertex_0603C848
 
 bowser_seg6_vertex_0603C948:
   type: VTX
   count: 16
-  offset: 0x3C948
+  offset: 0x3C9C8
   symbol: bowser_seg6_vertex_0603C948
 
 bowser_seg6_vertex_0603CA48:
   type: VTX
   count: 14
-  offset: 0x3CA48
+  offset: 0x3CAC8
   symbol: bowser_seg6_vertex_0603CA48
 
 bowser_seg6_vertex_0603CB28:
   type: VTX
   count: 15
-  offset: 0x3CB28
+  offset: 0x3CBA8
   symbol: bowser_seg6_vertex_0603CB28
 
 bowser_seg6_vertex_0603CC18:
   type: VTX
   count: 14
-  offset: 0x3CC18
+  offset: 0x3CC98
   symbol: bowser_seg6_vertex_0603CC18
 
 bowser_seg6_vertex_0603CCF8:
   type: VTX
   count: 16
-  offset: 0x3CCF8
+  offset: 0x3CD78
   symbol: bowser_seg6_vertex_0603CCF8
 
 bowser_seg6_vertex_0603CDF8:
   type: VTX
   count: 14
-  offset: 0x3CDF8
+  offset: 0x3CE78
   symbol: bowser_seg6_vertex_0603CDF8
 
 bowser_seg6_vertex_0603CED8:
   type: VTX
   count: 5
-  offset: 0x3CED8
+  offset: 0x3CF58
   symbol: bowser_seg6_vertex_0603CED8
 
-# bowser_seg6_dl_0603CF28:
-#   type: GFX
-#   offset: 0x3CF28
-#   symbol: bowser_seg6_dl_0603CF28
+bowser_seg6_dl_0603CF28:
+  type: GFX
+  offset: 0x3CFA8
+  symbol: bowser_seg6_dl_0603CF28
 
 bowser_seg6_dl_0603D098:
   type: GFX
-  offset: 0x3D098
+  offset: 0x3D118
   symbol: bowser_seg6_dl_0603D098
 
 bowser_seg6_dl_0603D200:
   type: GFX
-  offset: 0x3D200
+  offset: 0x3D280
   symbol: bowser_seg6_dl_0603D200
 
 bowser_seg6_vertex_0603D280:
   type: VTX
   count: 16
-  offset: 0x3D280
+  offset: 0x3D300
   symbol: bowser_seg6_vertex_0603D280
 
 bowser_seg6_vertex_0603D380:
   type: VTX
   count: 15
-  offset: 0x3D380
+  offset: 0x3D400
   symbol: bowser_seg6_vertex_0603D380
 
 bowser_seg6_vertex_0603D470:
   type: VTX
   count: 16
-  offset: 0x3D470
+  offset: 0x3D4F0
   symbol: bowser_seg6_vertex_0603D470
 
 bowser_seg6_vertex_0603D570:
   type: VTX
   count: 14
-  offset: 0x3D570
+  offset: 0x3D5F0
   symbol: bowser_seg6_vertex_0603D570
 
 bowser_seg6_vertex_0603D650:
   type: VTX
   count: 3
-  offset: 0x3D650
+  offset: 0x3D6D0
   symbol: bowser_seg6_vertex_0603D650
 
 bowser_seg6_vertex_0603D680:
   type: VTX
   count: 15
-  offset: 0x3D680
+  offset: 0x3D700
   symbol: bowser_seg6_vertex_0603D680
 
 bowser_seg6_vertex_0603D770:
   type: VTX
   count: 16
-  offset: 0x3D770
+  offset: 0x3D7F0
   symbol: bowser_seg6_vertex_0603D770
 
 bowser_seg6_vertex_0603D870:
   type: VTX
   count: 14
-  offset: 0x3D870
+  offset: 0x3D8F0
   symbol: bowser_seg6_vertex_0603D870
 
 bowser_seg6_vertex_0603D950:
   type: VTX
   count: 16
-  offset: 0x3D950
+  offset: 0x3D9D0
   symbol: bowser_seg6_vertex_0603D950
 
 bowser_seg6_vertex_0603DA50:
   type: VTX
   count: 16
-  offset: 0x3DA50
+  offset: 0x3DAD0
   symbol: bowser_seg6_vertex_0603DA50
 
 bowser_seg6_vertex_0603DB50:
   type: VTX
   count: 15
-  offset: 0x3DB50
+  offset: 0x3DBD0
   symbol: bowser_seg6_vertex_0603DB50
 
 bowser_seg6_vertex_0603DC40:
   type: VTX
   count: 3
-  offset: 0x3DC40
+  offset: 0x3DCC0
   symbol: bowser_seg6_vertex_0603DC40
 
 bowser_seg6_dl_0603DC70:
   type: GFX
-  offset: 0x3DC70
+  offset: 0x3DCF0
   symbol: bowser_seg6_dl_0603DC70
 
 bowser_seg6_dl_0603DDD0:
   type: GFX
-  offset: 0x3DDD0
+  offset: 0x3DE50
   symbol: bowser_seg6_dl_0603DDD0
 
 bowser_seg6_dl_0603DFB0:
   type: GFX
-  offset: 0x3DFB0
+  offset: 0x3E030
   symbol: bowser_seg6_dl_0603DFB0
 
 bowser_seg6_vertex_0603E030:
   type: VTX
   count: 15
-  offset: 0x3E030
+  offset: 0x3E0B0
   symbol: bowser_seg6_vertex_0603E030
 
 bowser_seg6_vertex_0603E120:
   type: VTX
   count: 16
-  offset: 0x3E120
+  offset: 0x3E1A0
   symbol: bowser_seg6_vertex_0603E120
 
 bowser_seg6_vertex_0603E220:
   type: VTX
   count: 16
-  offset: 0x3E220
+  offset: 0x3E2A0
   symbol: bowser_seg6_vertex_0603E220
 
 bowser_seg6_vertex_0603E320:
   type: VTX
   count: 16
-  offset: 0x3E320
+  offset: 0x3E3A0
   symbol: bowser_seg6_vertex_0603E320
 
 bowser_seg6_vertex_0603E420:
   type: VTX
   count: 14
-  offset: 0x3E420
+  offset: 0x3E4A0
   symbol: bowser_seg6_vertex_0603E420
 
 bowser_seg6_dl_0603E500:
   type: GFX
-  offset: 0x3E500
+  offset: 0x3E580
   symbol: bowser_seg6_dl_0603E500
 
 bowser_seg6_dl_0603E6B8:
   type: GFX
-  offset: 0x3E6B8
+  offset: 0x3E738
   symbol: bowser_seg6_dl_0603E6B8
 
 bowser_seg6_vertex_0603E718:
   type: VTX
   count: 9
-  offset: 0x3E718
+  offset: 0x3E798
   symbol: bowser_seg6_vertex_0603E718
 
 bowser_seg6_vertex_0603E7A8:
   type: VTX
   count: 16
-  offset: 0x3E7A8
+  offset: 0x3E828
   symbol: bowser_seg6_vertex_0603E7A8
 
 bowser_seg6_vertex_0603E8A8:
   type: VTX
   count: 14
-  offset: 0x3E8A8
+  offset: 0x3E928
   symbol: bowser_seg6_vertex_0603E8A8
 
 bowser_seg6_vertex_0603E988:
   type: VTX
   count: 14
-  offset: 0x3E988
+  offset: 0x3EA08
   symbol: bowser_seg6_vertex_0603E988
 
 bowser_seg6_vertex_0603EA68:
   type: VTX
   count: 14
-  offset: 0x3EA68
+  offset: 0x3EAE8
   symbol: bowser_seg6_vertex_0603EA68
 
 bowser_seg6_vertex_0603EB48:
   type: VTX
   count: 13
-  offset: 0x3EB48
+  offset: 0x3EBC8
   symbol: bowser_seg6_vertex_0603EB48
 
 bowser_seg6_vertex_0603EC18:
   type: VTX
   count: 16
-  offset: 0x3EC18
+  offset: 0x3EC98
   symbol: bowser_seg6_vertex_0603EC18
 
 bowser_seg6_vertex_0603ED18:
   type: VTX
   count: 14
-  offset: 0x3ED18
+  offset: 0x3ED98
   symbol: bowser_seg6_vertex_0603ED18
 
 bowser_seg6_vertex_0603EDF8:
   type: VTX
   count: 6
-  offset: 0x3EDF8
+  offset: 0x3EE78
   symbol: bowser_seg6_vertex_0603EDF8
 
 bowser_seg6_vertex_0603EE58:
   type: VTX
   count: 16
-  offset: 0x3EE58
+  offset: 0x3EED8
   symbol: bowser_seg6_vertex_0603EE58
 
 bowser_seg6_vertex_0603EF58:
   type: VTX
   count: 14
-  offset: 0x3EF58
+  offset: 0x3EFD8
   symbol: bowser_seg6_vertex_0603EF58
 
 bowser_seg6_vertex_0603F038:
   type: VTX
   count: 15
-  offset: 0x3F038
+  offset: 0x3F0B8
   symbol: bowser_seg6_vertex_0603F038
 
 bowser_seg6_vertex_0603F128:
   type: VTX
   count: 13
-  offset: 0x3F128
+  offset: 0x3F1A8
   symbol: bowser_seg6_vertex_0603F128
 
 bowser_seg6_vertex_0603F1F8:
   type: VTX
   count: 15
-  offset: 0x3F1F8
+  offset: 0x3F278
   symbol: bowser_seg6_vertex_0603F1F8
 
 bowser_seg6_vertex_0603F2E8:
   type: VTX
   count: 15
-  offset: 0x3F2E8
+  offset: 0x3F368
   symbol: bowser_seg6_vertex_0603F2E8
 
 bowser_seg6_vertex_0603F3D8:
   type: VTX
   count: 15
-  offset: 0x3F3D8
+  offset: 0x3F458
   symbol: bowser_seg6_vertex_0603F3D8
 
 bowser_seg6_vertex_0603F4C8:
   type: VTX
   count: 15
-  offset: 0x3F4C8
+  offset: 0x3F548
   symbol: bowser_seg6_vertex_0603F4C8
 
 bowser_seg6_vertex_0603F5B8:
   type: VTX
   count: 15
-  offset: 0x3F5B8
+  offset: 0x3F638
   symbol: bowser_seg6_vertex_0603F5B8
 
 bowser_seg6_vertex_0603F6A8:
   type: VTX
   count: 16
-  offset: 0x3F6A8
+  offset: 0x3F728
   symbol: bowser_seg6_vertex_0603F6A8
 
 bowser_seg6_vertex_0603F7A8:
   type: VTX
   count: 15
-  offset: 0x3F7A8
+  offset: 0x3F828
   symbol: bowser_seg6_vertex_0603F7A8
 
 bowser_seg6_vertex_0603F898:
   type: VTX
   count: 15
-  offset: 0x3F898
+  offset: 0x3F918
   symbol: bowser_seg6_vertex_0603F898
 
 bowser_seg6_vertex_0603F988:
   type: VTX
   count: 15
-  offset: 0x3F988
+  offset: 0x3FA08
   symbol: bowser_seg6_vertex_0603F988
 
 bowser_seg6_vertex_0603FA78:
   type: VTX
   count: 15
-  offset: 0x3FA78
+  offset: 0x3FAF8
   symbol: bowser_seg6_vertex_0603FA78
 
 bowser_seg6_vertex_0603FB68:
   type: VTX
   count: 4
-  offset: 0x3FB68
+  offset: 0x3FBE8
   symbol: bowser_seg6_vertex_0603FB68
 
 bowser_seg6_dl_0603FBA8:
   type: GFX
-  offset: 0x3FBA8
+  offset: 0x3FC28
   symbol: bowser_seg6_dl_0603FBA8
 
 bowser_seg6_dl_0603FC18:
   type: GFX
-  offset: 0x3FC18
+  offset: 0x3FC98
   symbol: bowser_seg6_dl_0603FC18
 
 bowser_seg6_dl_0603FD38:
   type: GFX
-  offset: 0x3FD38
+  offset: 0x3FDB8
   symbol: bowser_seg6_dl_0603FD38
 
 bowser_seg6_dl_0603FDD0:
   type: GFX
-  offset: 0x3FDD0
+  offset: 0x3FE50
   symbol: bowser_seg6_dl_0603FDD0
 
 bowser_seg6_dl_0603FEA8:
   type: GFX
-  offset: 0x3FEA8
+  offset: 0x3FF28
   symbol: bowser_seg6_dl_0603FEA8
 
 bowser_seg6_dl_0603FFA8:
   type: GFX
-  offset: 0x3FFA8
+  offset: 0x40028
   symbol: bowser_seg6_dl_0603FFA8
 
 bowser_seg6_dl_06040180:
   type: GFX
-  offset: 0x40180
+  offset: 0x40200
   symbol: bowser_seg6_dl_06040180
 
 bowser_seg6_dl_060401F0:
   type: GFX
-  offset: 0x401F0
+  offset: 0x40270
   symbol: bowser_seg6_dl_060401F0
 
 bowser_seg6_dl_06040210:
   type: GFX
-  offset: 0x40210
+  offset: 0x40290
   symbol: bowser_seg6_dl_06040210
 
 bowser_seg6_dl_06040358:
@@ -1062,392 +1063,392 @@ bowser_seg6_dl_06040358:
 bowser_seg6_vertex_060402D8:
   type: VTX
   count: 16
-  offset: 0x402D8
+  offset: 0x40428
   symbol: bowser_seg6_vertex_060402D8
 
 bowser_seg6_vertex_060403D8:
   type: VTX
   count: 14
-  offset: 0x403D8
+  offset: 0x40528
   symbol: bowser_seg6_vertex_060403D8
 
 bowser_seg6_vertex_060404B8:
   type: VTX
   count: 16
-  offset: 0x404B8
+  offset: 0x40608
   symbol: bowser_seg6_vertex_060404B8
 
 bowser_seg6_vertex_060405B8:
   type: VTX
   count: 15
-  offset: 0x405B8
+  offset: 0x40708
   symbol: bowser_seg6_vertex_060405B8
 
 bowser_seg6_vertex_060406A8:
   type: VTX
   count: 16
-  offset: 0x406A8
+  offset: 0x407F8
   symbol: bowser_seg6_vertex_060406A8
 
 bowser_seg6_vertex_060407A8:
   type: VTX
   count: 3
-  offset: 0x407A8
+  offset: 0x408F8
   symbol: bowser_seg6_vertex_060407A8
 
 bowser_seg6_vertex_060407D8:
   type: VTX
   count: 14
-  offset: 0x407D8
+  offset: 0x40928
   symbol: bowser_seg6_vertex_060407D8
 
 bowser_seg6_vertex_060408B8:
   type: VTX
   count: 16
-  offset: 0x408B8
+  offset: 0x40A08
   symbol: bowser_seg6_vertex_060408B8
 
 bowser_seg6_vertex_060409B8:
   type: VTX
   count: 15
-  offset: 0x409B8
+  offset: 0x40B08
   symbol: bowser_seg6_vertex_060409B8
 
 bowser_seg6_vertex_06040AA8:
   type: VTX
   count: 16
-  offset: 0x40AA8
+  offset: 0x40BF8
   symbol: bowser_seg6_vertex_06040AA8
 
 bowser_seg6_vertex_06040BA8:
   type: VTX
   count: 16
-  offset: 0x40BA8
+  offset: 0x40CF8
   symbol: bowser_seg6_vertex_06040BA8
 
 bowser_seg6_vertex_06040CA8:
   type: VTX
   count: 16
-  offset: 0x40CA8
+  offset: 0x40DF8
   symbol: bowser_seg6_vertex_06040CA8
 
 bowser_seg6_vertex_06040DA8:
   type: VTX
   count: 16
-  offset: 0x40DA8
+  offset: 0x40EF8
   symbol: bowser_seg6_vertex_06040DA8
 
 bowser_seg6_vertex_06040EA8:
   type: VTX
   count: 16
-  offset: 0x40EA8
+  offset: 0x40FF8
   symbol: bowser_seg6_vertex_06040EA8
 
 bowser_seg6_vertex_06040FA8:
   type: VTX
   count: 3
-  offset: 0x40FA8
+  offset: 0x410F8
   symbol: bowser_seg6_vertex_06040FA8
 
 bowser_seg6_vertex_06040FD8:
   type: VTX
   count: 11
-  offset: 0x40FD8
+  offset: 0x41128
   symbol: bowser_seg6_vertex_06040FD8
 
 bowser_seg6_vertex_06041088:
   type: VTX
   count: 16
-  offset: 0x41088
+  offset: 0x411D8
   symbol: bowser_seg6_vertex_06041088
 
 bowser_seg6_vertex_06041188:
   type: VTX
   count: 9
-  offset: 0x41188
+  offset: 0x412D8
   symbol: bowser_seg6_vertex_06041188
 
 bowser_seg6_vertex_06041218:
   type: VTX
   count: 15
-  offset: 0x41218
+  offset: 0x41368
   symbol: bowser_seg6_vertex_06041218
 
 bowser_seg6_vertex_06041308:
   type: VTX
   count: 14
-  offset: 0x41308
+  offset: 0x41458
   symbol: bowser_seg6_vertex_06041308
 
 bowser_seg6_vertex_060413E8:
   type: VTX
   count: 15
-  offset: 0x413E8
+  offset: 0x41538
   symbol: bowser_seg6_vertex_060413E8
 
 bowser_seg6_vertex_060414D8:
   type: VTX
   count: 16
-  offset: 0x414D8
+  offset: 0x41628
   symbol: bowser_seg6_vertex_060414D8
 
 bowser_seg6_vertex_060415D8:
   type: VTX
   count: 12
-  offset: 0x415D8
+  offset: 0x41728
   symbol: bowser_seg6_vertex_060415D8
 
 bowser_seg6_vertex_06041698:
   type: VTX
   count: 12
-  offset: 0x41698
+  offset: 0x417E8
   symbol: bowser_seg6_vertex_06041698
 
 bowser_seg6_vertex_06041758:
   type: VTX
   count: 11
-  offset: 0x41758
+  offset: 0x418A8
   symbol: bowser_seg6_vertex_06041758
 
 bowser_seg6_vertex_06041808:
   type: VTX
   count: 16
-  offset: 0x41808
+  offset: 0x41958
   symbol: bowser_seg6_vertex_06041808
 
 bowser_seg6_vertex_06041908:
   type: VTX
   count: 6
-  offset: 0x41908
+  offset: 0x41A58
   symbol: bowser_seg6_vertex_06041908
 
 bowser_seg6_vertex_06041968:
   type: VTX
   count: 12
-  offset: 0x41968
+  offset: 0x41AB8
   symbol: bowser_seg6_vertex_06041968
 
-# bowser_seg6_dl_06041A28:
-#   type: GFX
-#   offset: 0x41A28
-#   symbol: bowser_seg6_dl_06041A28
+bowser_seg6_dl_06041A28:
+  type: GFX
+  offset: 0x41B78
+  symbol: bowser_seg6_dl_06041A28
 
 bowser_seg6_dl_06041BA0:
   type: GFX
-  offset: 0x41BA0
+  offset: 0x41CF0
   symbol: bowser_seg6_dl_06041BA0
 
 bowser_seg6_dl_06041E48:
   type: GFX
-  offset: 0x41E48
+  offset: 0x41F98
   symbol: bowser_seg6_dl_06041E48
 
 bowser_seg6_dl_06041EA8:
   type: GFX
-  offset: 0x41EA8
+  offset: 0x41FF8
   symbol: bowser_seg6_dl_06041EA8
 
 bowser_seg6_dl_06041F50:
   type: GFX
-  offset: 0x41F50
+  offset: 0x420A0
   symbol: bowser_seg6_dl_06041F50
 
 bowser_seg6_dl_06042098:
   type: GFX
-  offset: 0x42098
+  offset: 0x421E8
   symbol: bowser_seg6_dl_06042098
 
 bowser_seg6_dl_060420F0:
   type: GFX
-  offset: 0x420F0
+  offset: 0x42240
   symbol: bowser_seg6_dl_060420F0
 
 bowser_seg6_dl_06042140:
   type: GFX
-  offset: 0x42140
+  offset: 0x42290
   symbol: bowser_seg6_dl_06042140
 
 bowser_seg6_dl_060421D8:
   type: GFX
-  offset: 0x421D8
+  offset: 0x42328
   symbol: bowser_seg6_dl_060421D8
 
 bowser_seg6_dl_06042220:
   type: GFX
-  offset: 0x42220
+  offset: 0x42370
   symbol: bowser_seg6_dl_06042220
 
 bowser_seg6_dl_06042278:
   type: GFX
-  offset: 0x42278
+  offset: 0x423C8
   symbol: bowser_seg6_dl_06042278
 
 bowser_seg6_dl_06042328:
   type: GFX
-  offset: 0x42328
+  offset: 0x42478
   symbol: bowser_seg6_dl_06042328
 
 bowser_seg6_dl_06042348:
   type: GFX
-  offset: 0x42348
+  offset: 0x42498
   symbol: bowser_seg6_dl_06042348
 
 bowser_seg6_dl_060423A0:
   type: GFX
-  offset: 0x423A0
+  offset: 0x424F0
   symbol: bowser_seg6_dl_060423A0
 
 bowser_seg6_dl_060423F8:
   type: GFX
-  offset: 0x423F8
+  offset: 0x42548
   symbol: bowser_seg6_dl_060423F8
 
 bowser_seg6_dl_06042450:
   type: GFX
-  offset: 0x42450
+  offset: 0x425A0
   symbol: bowser_seg6_dl_06042450
 
 bowser_seg6_dl_060424A8:
   type: GFX
-  offset: 0x424A8
+  offset: 0x425F8
   symbol: bowser_seg6_dl_060424A8
 
 bowser_seg6_dl_06042500:
   type: GFX
-  offset: 0x42500
+  offset: 0x42650
   symbol: bowser_seg6_dl_06042500
 
 bowser_seg6_dl_06042558:
   type: GFX
-  offset: 0x42558
+  offset: 0x426A8
   symbol: bowser_seg6_dl_06042558
 
 bowser_seg6_dl_060425B0:
   type: GFX
-  offset: 0x425B0
+  offset: 0x42700
   symbol: bowser_seg6_dl_060425B0
 
 bowser_seg6_dl_06042608:
   type: GFX
-  offset: 0x42608
+  offset: 0x42758
   symbol: bowser_seg6_dl_06042608
 
 bowser_seg6_vertex_06042660:
   type: VTX
   count: 16
-  offset: 0x42660
+  offset: 0x427B0
   symbol: bowser_seg6_vertex_06042660
 
 bowser_seg6_vertex_06042760:
   type: VTX
   count: 16
-  offset: 0x42760
+  offset: 0x428B0
   symbol: bowser_seg6_vertex_06042760
 
 bowser_seg6_vertex_06042860:
   type: VTX
   count: 15
-  offset: 0x42860
+  offset: 0x429B0
   symbol: bowser_seg6_vertex_06042860
 
 bowser_seg6_vertex_06042950:
   type: VTX
   count: 15
-  offset: 0x42950
+  offset: 0x42AA0
   symbol: bowser_seg6_vertex_06042950
 
 bowser_seg6_vertex_06042A40:
   type: VTX
   count: 16
-  offset: 0x42A40
+  offset: 0x42B90
   symbol: bowser_seg6_vertex_06042A40
 
 bowser_seg6_vertex_06042B40:
   type: VTX
   count: 11
-  offset: 0x42B40
+  offset: 0x42C90
   symbol: bowser_seg6_vertex_06042B40
 
 bowser_seg6_vertex_06042BF0:
   type: VTX
   count: 15
-  offset: 0x42BF0
+  offset: 0x42D40
   symbol: bowser_seg6_vertex_06042BF0
 
 bowser_seg6_vertex_06042CE0:
   type: VTX
   count: 15
-  offset: 0x42CE0
+  offset: 0x42E30
   symbol: bowser_seg6_vertex_06042CE0
 
 bowser_seg6_vertex_06042DD0:
   type: VTX
   count: 6
-  offset: 0x42DD0
+  offset: 0x42F20
   symbol: bowser_seg6_vertex_06042DD0
 
 bowser_seg6_vertex_06042E30:
   type: VTX
   count: 11
-  offset: 0x42E30
+  offset: 0x42F80
   symbol: bowser_seg6_vertex_06042E30
 
-# bowser_seg6_dl_06042EE0:
-#   type: GFX
-#   offset: 0x42EE0
-#   symbol: bowser_seg6_dl_06042EE0
+bowser_seg6_dl_06042EE0:
+  type: GFX
+  offset: 0x43030
+  symbol: bowser_seg6_dl_06042EE0
 
 bowser_seg6_dl_060430E8:
   type: GFX
-  offset: 0x430E8
+  offset: 0x43238
   symbol: bowser_seg6_dl_060430E8
 
 bowser_seg6_dl_06043180:
   type: GFX
-  offset: 0x43180
+  offset: 0x432D0
   symbol: bowser_seg6_dl_06043180
 
 bowser_seg6_dl_060431F0:
   type: GFX
-  offset: 0x431F0
+  offset: 0x43340
   symbol: bowser_seg6_dl_060431F0
 
 bowser_seg6_vertex_06043278:
   type: VTX
   count: 16
-  offset: 0x43278
+  offset: 0x433C8
   symbol: bowser_seg6_vertex_06043278
 
 bowser_seg6_vertex_06043378:
   type: VTX
   count: 15
-  offset: 0x43378
+  offset: 0x434C8
   symbol: bowser_seg6_vertex_06043378
 
 bowser_seg6_vertex_06043468:
   type: VTX
   count: 7
-  offset: 0x43468
+  offset: 0x435B8
   symbol: bowser_seg6_vertex_06043468
 
 bowser_seg6_vertex_060434D8:
   type: VTX
   count: 7
-  offset: 0x434D8
+  offset: 0x43628
   symbol: bowser_seg6_vertex_060434D8
 
-# bowser_seg6_dl_06043548:
-#   type: GFX
-#   offset: 0x43548
-#   symbol: bowser_seg6_dl_06043548
+bowser_seg6_dl_06043548:
+  type: GFX
+  offset: 0x43698
+  symbol: bowser_seg6_dl_06043548
 
-# bowser_seg6_dl_06043648:
-#   type: GFX
-#   offset: 0x43648
-#   symbol: bowser_seg6_dl_06043648
+bowser_seg6_dl_06043648:
+  type: GFX
+  offset: 0x43798
+  symbol: bowser_seg6_dl_06043648
 
 bowser_seg6_dl_06043698:
   type: GFX
-  offset: 0x43698
+  offset: 0x437E8
   symbol: bowser_seg6_dl_06043698
 
