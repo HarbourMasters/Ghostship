@@ -29,3 +29,2161 @@
   offset: 0x2000
   format: RGBA16
   symbol: bits_seg7_texture_07002000
+bits_seg7_vertex_07016B18:
+  type: VTX
+  count: 4
+  offset: 0x16B18
+  symbol: bits_seg7_vertex_07016B18
+
+bits_seg7_vertex_07016B58:
+  type: VTX
+  count: 16
+  offset: 0x16B58
+  symbol: bits_seg7_vertex_07016B58
+
+bits_seg7_vertex_07016C58:
+  type: VTX
+  count: 8
+  offset: 0x16C58
+  symbol: bits_seg7_vertex_07016C58
+
+bits_seg7_dl_07016CD8:
+  type: GFX
+  offset: 0x16CD8
+  symbol: bits_seg7_dl_07016CD8
+
+bits_seg7_dl_07016D10:
+  type: GFX
+  offset: 0x16D10
+  symbol: bits_seg7_dl_07016D10
+
+bits_seg7_dl_07016DA0:
+  type: GFX
+  offset: 0x16DA0
+  symbol: bits_seg7_dl_07016DA0
+
+bits_seg7_vertex_070129A8:
+  type: VTX
+  count: 16
+  offset: 0x129A8
+  symbol: bits_seg7_vertex_070129A8
+
+bits_seg7_dl_07012AA8:
+  type: GFX
+  offset: 0x12AA8
+  symbol: bits_seg7_dl_07012AA8
+
+bits_seg7_dl_07012B10:
+  type: GFX
+  offset: 0x12B10
+  symbol: bits_seg7_dl_07012B10
+
+bits_seg7_vertex_0700DD98:
+  type: VTX
+  count: 16
+  offset: 0xDD98
+  symbol: bits_seg7_vertex_0700DD98
+
+bits_seg7_vertex_0700DE98:
+  type: VTX
+  count: 16
+  offset: 0xDE98
+  symbol: bits_seg7_vertex_0700DE98
+
+bits_seg7_vertex_0700DF98:
+  type: VTX
+  count: 14
+  offset: 0xDF98
+  symbol: bits_seg7_vertex_0700DF98
+
+bits_seg7_vertex_0700E078:
+  type: VTX
+  count: 16
+  offset: 0xE078
+  symbol: bits_seg7_vertex_0700E078
+
+bits_seg7_vertex_0700E178:
+  type: VTX
+  count: 15
+  offset: 0xE178
+  symbol: bits_seg7_vertex_0700E178
+
+bits_seg7_vertex_0700E268:
+  type: VTX
+  count: 15
+  offset: 0xE268
+  symbol: bits_seg7_vertex_0700E268
+
+bits_seg7_vertex_0700E358:
+  type: VTX
+  count: 16
+  offset: 0xE358
+  symbol: bits_seg7_vertex_0700E358
+
+bits_seg7_vertex_0700E458:
+  type: VTX
+  count: 15
+  offset: 0xE458
+  symbol: bits_seg7_vertex_0700E458
+
+bits_seg7_vertex_0700E548:
+  type: VTX
+  count: 14
+  offset: 0xE548
+  symbol: bits_seg7_vertex_0700E548
+
+bits_seg7_vertex_0700E628:
+  type: VTX
+  count: 15
+  offset: 0xE628
+  symbol: bits_seg7_vertex_0700E628
+
+bits_seg7_vertex_0700E718:
+  type: VTX
+  count: 15
+  offset: 0xE718
+  symbol: bits_seg7_vertex_0700E718
+
+bits_seg7_vertex_0700E808:
+  type: VTX
+  count: 16
+  offset: 0xE808
+  symbol: bits_seg7_vertex_0700E808
+
+bits_seg7_vertex_0700E908:
+  type: VTX
+  count: 16
+  offset: 0xE908
+  symbol: bits_seg7_vertex_0700E908
+
+bits_seg7_vertex_0700EA08:
+  type: VTX
+  count: 16
+  offset: 0xEA08
+  symbol: bits_seg7_vertex_0700EA08
+
+bits_seg7_vertex_0700EB08:
+  type: VTX
+  count: 15
+  offset: 0xEB08
+  symbol: bits_seg7_vertex_0700EB08
+
+bits_seg7_vertex_0700EBF8:
+  type: VTX
+  count: 14
+  offset: 0xEBF8
+  symbol: bits_seg7_vertex_0700EBF8
+
+bits_seg7_vertex_0700ECD8:
+  type: VTX
+  count: 15
+  offset: 0xECD8
+  symbol: bits_seg7_vertex_0700ECD8
+
+bits_seg7_vertex_0700EDC8:
+  type: VTX
+  count: 16
+  offset: 0xEDC8
+  symbol: bits_seg7_vertex_0700EDC8
+
+bits_seg7_vertex_0700EEC8:
+  type: VTX
+  count: 16
+  offset: 0xEEC8
+  symbol: bits_seg7_vertex_0700EEC8
+
+bits_seg7_vertex_0700EFC8:
+  type: VTX
+  count: 15
+  offset: 0xEFC8
+  symbol: bits_seg7_vertex_0700EFC8
+
+bits_seg7_vertex_0700F0B8:
+  type: VTX
+  count: 14
+  offset: 0xF0B8
+  symbol: bits_seg7_vertex_0700F0B8
+
+bits_seg7_vertex_0700F198:
+  type: VTX
+  count: 16
+  offset: 0xF198
+  symbol: bits_seg7_vertex_0700F198
+
+bits_seg7_vertex_0700F298:
+  type: VTX
+  count: 16
+  offset: 0xF298
+  symbol: bits_seg7_vertex_0700F298
+
+bits_seg7_vertex_0700F398:
+  type: VTX
+  count: 14
+  offset: 0xF398
+  symbol: bits_seg7_vertex_0700F398
+
+bits_seg7_vertex_0700F478:
+  type: VTX
+  count: 15
+  offset: 0xF478
+  symbol: bits_seg7_vertex_0700F478
+
+bits_seg7_dl_0700F568:
+  type: GFX
+  offset: 0xF568
+  symbol: bits_seg7_dl_0700F568
+
+bits_seg7_dl_0700F790:
+  type: GFX
+  offset: 0xF790
+  symbol: bits_seg7_dl_0700F790
+
+bits_seg7_dl_0700FC70:
+  type: GFX
+  offset: 0xFC70
+  symbol: bits_seg7_dl_0700FC70
+
+bits_seg7_vertex_070141E8:
+  type: VTX
+  count: 16
+  offset: 0x141E8
+  symbol: bits_seg7_vertex_070141E8
+
+bits_seg7_vertex_070142E8:
+  type: VTX
+  count: 15
+  offset: 0x142E8
+  symbol: bits_seg7_vertex_070142E8
+
+bits_seg7_vertex_070143D8:
+  type: VTX
+  count: 14
+  offset: 0x143D8
+  symbol: bits_seg7_vertex_070143D8
+
+bits_seg7_vertex_070144B8:
+  type: VTX
+  count: 15
+  offset: 0x144B8
+  symbol: bits_seg7_vertex_070144B8
+
+bits_seg7_vertex_070145A8:
+  type: VTX
+  count: 16
+  offset: 0x145A8
+  symbol: bits_seg7_vertex_070145A8
+
+bits_seg7_vertex_070146A8:
+  type: VTX
+  count: 14
+  offset: 0x146A8
+  symbol: bits_seg7_vertex_070146A8
+
+bits_seg7_vertex_07014788:
+  type: VTX
+  count: 15
+  offset: 0x14788
+  symbol: bits_seg7_vertex_07014788
+
+bits_seg7_vertex_07014878:
+  type: VTX
+  count: 15
+  offset: 0x14878
+  symbol: bits_seg7_vertex_07014878
+
+bits_seg7_vertex_07014968:
+  type: VTX
+  count: 4
+  offset: 0x14968
+  symbol: bits_seg7_vertex_07014968
+
+bits_seg7_dl_070149A8:
+  type: GFX
+  offset: 0x149A8
+  symbol: bits_seg7_dl_070149A8
+
+bits_seg7_dl_07014C28:
+  type: GFX
+  offset: 0x14C28
+  symbol: bits_seg7_dl_07014C28
+
+bits_seg7_vertex_07008DB8:
+  type: VTX
+  count: 15
+  offset: 0x8DB8
+  symbol: bits_seg7_vertex_07008DB8
+
+bits_seg7_vertex_07008EA8:
+  type: VTX
+  count: 11
+  offset: 0x8EA8
+  symbol: bits_seg7_vertex_07008EA8
+
+bits_seg7_dl_07008F58:
+  type: GFX
+  offset: 0x8F58
+  symbol: bits_seg7_dl_07008F58
+
+bits_seg7_dl_07008FE8:
+  type: GFX
+  offset: 0x8FE8
+  symbol: bits_seg7_dl_07008FE8
+
+bits_seg7_vertex_07009700:
+  type: VTX
+  count: 14
+  offset: 0x9700
+  symbol: bits_seg7_vertex_07009700
+
+bits_seg7_vertex_070097E0:
+  type: VTX
+  count: 16
+  offset: 0x97E0
+  symbol: bits_seg7_vertex_070097E0
+
+bits_seg7_vertex_070098E0:
+  type: VTX
+  count: 14
+  offset: 0x98E0
+  symbol: bits_seg7_vertex_070098E0
+
+bits_seg7_vertex_070099C0:
+  type: VTX
+  count: 14
+  offset: 0x99C0
+  symbol: bits_seg7_vertex_070099C0
+
+bits_seg7_vertex_07009AA0:
+  type: VTX
+  count: 4
+  offset: 0x9AA0
+  symbol: bits_seg7_vertex_07009AA0
+
+bits_seg7_vertex_07009AE0:
+  type: VTX
+  count: 15
+  offset: 0x9AE0
+  symbol: bits_seg7_vertex_07009AE0
+
+bits_seg7_vertex_07009BD0:
+  type: VTX
+  count: 16
+  offset: 0x9BD0
+  symbol: bits_seg7_vertex_07009BD0
+
+bits_seg7_vertex_07009CD0:
+  type: VTX
+  count: 15
+  offset: 0x9CD0
+  symbol: bits_seg7_vertex_07009CD0
+
+bits_seg7_vertex_07009DC0:
+  type: VTX
+  count: 16
+  offset: 0x9DC0
+  symbol: bits_seg7_vertex_07009DC0
+
+bits_seg7_vertex_07009EC0:
+  type: VTX
+  count: 15
+  offset: 0x9EC0
+  symbol: bits_seg7_vertex_07009EC0
+
+bits_seg7_vertex_07009FB0:
+  type: VTX
+  count: 14
+  offset: 0x9FB0
+  symbol: bits_seg7_vertex_07009FB0
+
+bits_seg7_vertex_0700A090:
+  type: VTX
+  count: 14
+  offset: 0xA090
+  symbol: bits_seg7_vertex_0700A090
+
+bits_seg7_vertex_0700A170:
+  type: VTX
+  count: 14
+  offset: 0xA170
+  symbol: bits_seg7_vertex_0700A170
+
+bits_seg7_vertex_0700A250:
+  type: VTX
+  count: 7
+  offset: 0xA250
+  symbol: bits_seg7_vertex_0700A250
+
+bits_seg7_vertex_0700A2C0:
+  type: VTX
+  count: 14
+  offset: 0xA2C0
+  symbol: bits_seg7_vertex_0700A2C0
+
+bits_seg7_vertex_0700A3A0:
+  type: VTX
+  count: 16
+  offset: 0xA3A0
+  symbol: bits_seg7_vertex_0700A3A0
+
+bits_seg7_vertex_0700A4A0:
+  type: VTX
+  count: 14
+  offset: 0xA4A0
+  symbol: bits_seg7_vertex_0700A4A0
+
+bits_seg7_vertex_0700A580:
+  type: VTX
+  count: 16
+  offset: 0xA580
+  symbol: bits_seg7_vertex_0700A580
+
+bits_seg7_vertex_0700A680:
+  type: VTX
+  count: 16
+  offset: 0xA680
+  symbol: bits_seg7_vertex_0700A680
+
+bits_seg7_vertex_0700A780:
+  type: VTX
+  count: 16
+  offset: 0xA780
+  symbol: bits_seg7_vertex_0700A780
+
+bits_seg7_vertex_0700A880:
+  type: VTX
+  count: 15
+  offset: 0xA880
+  symbol: bits_seg7_vertex_0700A880
+
+bits_seg7_vertex_0700A970:
+  type: VTX
+  count: 16
+  offset: 0xA970
+  symbol: bits_seg7_vertex_0700A970
+
+bits_seg7_vertex_0700AA70:
+  type: VTX
+  count: 16
+  offset: 0xAA70
+  symbol: bits_seg7_vertex_0700AA70
+
+bits_seg7_vertex_0700AB70:
+  type: VTX
+  count: 11
+  offset: 0xAB70
+  symbol: bits_seg7_vertex_0700AB70
+
+bits_seg7_vertex_0700AC20:
+  type: VTX
+  count: 16
+  offset: 0xAC20
+  symbol: bits_seg7_vertex_0700AC20
+
+bits_seg7_vertex_0700AD20:
+  type: VTX
+  count: 4
+  offset: 0xAD20
+  symbol: bits_seg7_vertex_0700AD20
+
+bits_seg7_dl_0700AD60:
+  type: GFX
+  offset: 0xAD60
+  symbol: bits_seg7_dl_0700AD60
+
+bits_seg7_dl_0700AE98:
+  type: GFX
+  offset: 0xAE98
+  symbol: bits_seg7_dl_0700AE98
+
+bits_seg7_dl_0700B0E0:
+  type: GFX
+  offset: 0xB0E0
+  symbol: bits_seg7_dl_0700B0E0
+
+bits_seg7_dl_0700B420:
+  type: GFX
+  offset: 0xB420
+  symbol: bits_seg7_dl_0700B420
+
+bits_seg7_dl_0700B4A0:
+  type: GFX
+  offset: 0xB4A0
+  symbol: bits_seg7_dl_0700B4A0
+
+bits_seg7_vertex_07007C98:
+  type: VTX
+  count: 8
+  offset: 0x7C98
+  symbol: bits_seg7_vertex_07007C98
+
+bits_seg7_vertex_07007D18:
+  type: VTX
+  count: 16
+  offset: 0x7D18
+  symbol: bits_seg7_vertex_07007D18
+
+bits_seg7_dl_07007E18:
+  type: GFX
+  offset: 0x7E18
+  symbol: bits_seg7_dl_07007E18
+
+bits_seg7_dl_07007E60:
+  type: GFX
+  offset: 0x7E60
+  symbol: bits_seg7_dl_07007E60
+
+bits_seg7_dl_07007EC8:
+  type: GFX
+  offset: 0x7EC8
+  symbol: bits_seg7_dl_07007EC8
+
+bits_seg7_vertex_07015438:
+  type: VTX
+  count: 4
+  offset: 0x15438
+  symbol: bits_seg7_vertex_07015438
+
+bits_seg7_vertex_07015478:
+  type: VTX
+  count: 16
+  offset: 0x15478
+  symbol: bits_seg7_vertex_07015478
+
+bits_seg7_vertex_07015578:
+  type: VTX
+  count: 15
+  offset: 0x15578
+  symbol: bits_seg7_vertex_07015578
+
+bits_seg7_vertex_07015668:
+  type: VTX
+  count: 14
+  offset: 0x15668
+  symbol: bits_seg7_vertex_07015668
+
+bits_seg7_vertex_07015748:
+  type: VTX
+  count: 14
+  offset: 0x15748
+  symbol: bits_seg7_vertex_07015748
+
+bits_seg7_vertex_07015828:
+  type: VTX
+  count: 14
+  offset: 0x15828
+  symbol: bits_seg7_vertex_07015828
+
+bits_seg7_vertex_07015908:
+  type: VTX
+  count: 11
+  offset: 0x15908
+  symbol: bits_seg7_vertex_07015908
+
+bits_seg7_dl_070159B8:
+  type: GFX
+  offset: 0x159B8
+  symbol: bits_seg7_dl_070159B8
+
+bits_seg7_dl_070159F0:
+  type: GFX
+  offset: 0x159F0
+  symbol: bits_seg7_dl_070159F0
+
+bits_seg7_dl_07015B60:
+  type: GFX
+  offset: 0x15B60
+  symbol: bits_seg7_dl_07015B60
+
+bits_seg7_vertex_0700D2F0:
+  type: VTX
+  count: 16
+  offset: 0xD2F0
+  symbol: bits_seg7_vertex_0700D2F0
+
+bits_seg7_vertex_0700D3F0:
+  type: VTX
+  count: 14
+  offset: 0xD3F0
+  symbol: bits_seg7_vertex_0700D3F0
+
+bits_seg7_dl_0700D4D0:
+  type: GFX
+  offset: 0xD4D0
+  symbol: bits_seg7_dl_0700D4D0
+
+bits_seg7_dl_0700D5A0:
+  type: GFX
+  offset: 0xD5A0
+  symbol: bits_seg7_dl_0700D5A0
+
+bits_seg7_vertex_07007B60:
+  type: VTX
+  count: 8
+  offset: 0x7B60
+  symbol: bits_seg7_vertex_07007B60
+
+bits_seg7_dl_07007BE0:
+  type: GFX
+  offset: 0x7BE0
+  symbol: bits_seg7_dl_07007BE0
+
+bits_seg7_dl_07007C28:
+  type: GFX
+  offset: 0x7C28
+  symbol: bits_seg7_dl_07007C28
+
+bits_seg7_vertex_07014C98:
+  type: VTX
+  count: 4
+  offset: 0x14C98
+  symbol: bits_seg7_vertex_07014C98
+
+bits_seg7_vertex_07014CD8:
+  type: VTX
+  count: 16
+  offset: 0x14CD8
+  symbol: bits_seg7_vertex_07014CD8
+
+bits_seg7_vertex_07014DD8:
+  type: VTX
+  count: 15
+  offset: 0x14DD8
+  symbol: bits_seg7_vertex_07014DD8
+
+bits_seg7_vertex_07014EC8:
+  type: VTX
+  count: 14
+  offset: 0x14EC8
+  symbol: bits_seg7_vertex_07014EC8
+
+bits_seg7_vertex_07014FA8:
+  type: VTX
+  count: 14
+  offset: 0x14FA8
+  symbol: bits_seg7_vertex_07014FA8
+
+bits_seg7_vertex_07015088:
+  type: VTX
+  count: 14
+  offset: 0x15088
+  symbol: bits_seg7_vertex_07015088
+
+bits_seg7_vertex_07015168:
+  type: VTX
+  count: 11
+  offset: 0x15168
+  symbol: bits_seg7_vertex_07015168
+
+bits_seg7_dl_07015218:
+  type: GFX
+  offset: 0x15218
+  symbol: bits_seg7_dl_07015218
+
+bits_seg7_dl_07015250:
+  type: GFX
+  offset: 0x15250
+  symbol: bits_seg7_dl_07015250
+
+bits_seg7_dl_070153C0:
+  type: GFX
+  offset: 0x153C0
+  symbol: bits_seg7_dl_070153C0
+
+bits_seg7_vertex_0700D620:
+  type: VTX
+  count: 16
+  offset: 0xD620
+  symbol: bits_seg7_vertex_0700D620
+
+bits_seg7_vertex_0700D720:
+  type: VTX
+  count: 16
+  offset: 0xD720
+  symbol: bits_seg7_vertex_0700D720
+
+bits_seg7_vertex_0700D820:
+  type: VTX
+  count: 8
+  offset: 0xD820
+  symbol: bits_seg7_vertex_0700D820
+
+bits_seg7_vertex_0700D8A0:
+  type: VTX
+  count: 14
+  offset: 0xD8A0
+  symbol: bits_seg7_vertex_0700D8A0
+
+bits_seg7_vertex_0700D980:
+  type: VTX
+  count: 16
+  offset: 0xD980
+  symbol: bits_seg7_vertex_0700D980
+
+bits_seg7_vertex_0700DA80:
+  type: VTX
+  count: 10
+  offset: 0xDA80
+  symbol: bits_seg7_vertex_0700DA80
+
+bits_seg7_dl_0700DB20:
+  type: GFX
+  offset: 0xDB20
+  symbol: bits_seg7_dl_0700DB20
+
+bits_seg7_dl_0700DC08:
+  type: GFX
+  offset: 0xDC08
+  symbol: bits_seg7_dl_0700DC08
+
+bits_seg7_dl_0700DCB8:
+  type: GFX
+  offset: 0xDCB8
+  symbol: bits_seg7_dl_0700DCB8
+
+bits_seg7_dl_0700DD00:
+  type: GFX
+  offset: 0xDD00
+  symbol: bits_seg7_dl_0700DD00
+
+bits_seg7_vertex_07002800:
+  type: VTX
+  count: 12
+  offset: 0x2800
+  symbol: bits_seg7_vertex_07002800
+
+bits_seg7_dl_070028C0:
+  type: GFX
+  offset: 0x28C0
+  symbol: bits_seg7_dl_070028C0
+
+bits_seg7_dl_07002918:
+  type: GFX
+  offset: 0x2918
+  symbol: bits_seg7_dl_07002918
+
+bits_seg7_vertex_07009058:
+  type: VTX
+  count: 16
+  offset: 0x9058
+  symbol: bits_seg7_vertex_07009058
+
+bits_seg7_vertex_07009158:
+  type: VTX
+  count: 16
+  offset: 0x9158
+  symbol: bits_seg7_vertex_07009158
+
+bits_seg7_vertex_07009258:
+  type: VTX
+  count: 14
+  offset: 0x9258
+  symbol: bits_seg7_vertex_07009258
+
+bits_seg7_vertex_07009338:
+  type: VTX
+  count: 16
+  offset: 0x9338
+  symbol: bits_seg7_vertex_07009338
+
+bits_seg7_vertex_07009438:
+  type: VTX
+  count: 12
+  offset: 0x9438
+  symbol: bits_seg7_vertex_07009438
+
+bits_seg7_dl_070094F8:
+  type: GFX
+  offset: 0x94F8
+  symbol: bits_seg7_dl_070094F8
+
+bits_seg7_dl_07009690:
+  type: GFX
+  offset: 0x9690
+  symbol: bits_seg7_dl_07009690
+
+bits_seg7_vertex_0700FCE8:
+  type: VTX
+  count: 16
+  offset: 0xFCE8
+  symbol: bits_seg7_vertex_0700FCE8
+
+bits_seg7_vertex_0700FDE8:
+  type: VTX
+  count: 15
+  offset: 0xFDE8
+  symbol: bits_seg7_vertex_0700FDE8
+
+bits_seg7_vertex_0700FED8:
+  type: VTX
+  count: 15
+  offset: 0xFED8
+  symbol: bits_seg7_vertex_0700FED8
+
+bits_seg7_vertex_0700FFC8:
+  type: VTX
+  count: 16
+  offset: 0xFFC8
+  symbol: bits_seg7_vertex_0700FFC8
+
+bits_seg7_vertex_070100C8:
+  type: VTX
+  count: 16
+  offset: 0x100C8
+  symbol: bits_seg7_vertex_070100C8
+
+bits_seg7_vertex_070101C8:
+  type: VTX
+  count: 4
+  offset: 0x101C8
+  symbol: bits_seg7_vertex_070101C8
+
+bits_seg7_vertex_07010208:
+  type: VTX
+  count: 16
+  offset: 0x10208
+  symbol: bits_seg7_vertex_07010208
+
+bits_seg7_vertex_07010308:
+  type: VTX
+  count: 15
+  offset: 0x10308
+  symbol: bits_seg7_vertex_07010308
+
+bits_seg7_vertex_070103F8:
+  type: VTX
+  count: 14
+  offset: 0x103F8
+  symbol: bits_seg7_vertex_070103F8
+
+bits_seg7_vertex_070104D8:
+  type: VTX
+  count: 15
+  offset: 0x104D8
+  symbol: bits_seg7_vertex_070104D8
+
+bits_seg7_vertex_070105C8:
+  type: VTX
+  count: 16
+  offset: 0x105C8
+  symbol: bits_seg7_vertex_070105C8
+
+bits_seg7_vertex_070106C8:
+  type: VTX
+  count: 14
+  offset: 0x106C8
+  symbol: bits_seg7_vertex_070106C8
+
+bits_seg7_vertex_070107A8:
+  type: VTX
+  count: 14
+  offset: 0x107A8
+  symbol: bits_seg7_vertex_070107A8
+
+bits_seg7_vertex_07010888:
+  type: VTX
+  count: 15
+  offset: 0x10888
+  symbol: bits_seg7_vertex_07010888
+
+bits_seg7_vertex_07010978:
+  type: VTX
+  count: 15
+  offset: 0x10978
+  symbol: bits_seg7_vertex_07010978
+
+bits_seg7_vertex_07010A68:
+  type: VTX
+  count: 15
+  offset: 0x10A68
+  symbol: bits_seg7_vertex_07010A68
+
+bits_seg7_vertex_07010B58:
+  type: VTX
+  count: 15
+  offset: 0x10B58
+  symbol: bits_seg7_vertex_07010B58
+
+bits_seg7_vertex_07010C48:
+  type: VTX
+  count: 15
+  offset: 0x10C48
+  symbol: bits_seg7_vertex_07010C48
+
+bits_seg7_vertex_07010D38:
+  type: VTX
+  count: 14
+  offset: 0x10D38
+  symbol: bits_seg7_vertex_07010D38
+
+bits_seg7_vertex_07010E18:
+  type: VTX
+  count: 14
+  offset: 0x10E18
+  symbol: bits_seg7_vertex_07010E18
+
+bits_seg7_vertex_07010EF8:
+  type: VTX
+  count: 15
+  offset: 0x10EF8
+  symbol: bits_seg7_vertex_07010EF8
+
+bits_seg7_vertex_07010FE8:
+  type: VTX
+  count: 14
+  offset: 0x10FE8
+  symbol: bits_seg7_vertex_07010FE8
+
+bits_seg7_vertex_070110C8:
+  type: VTX
+  count: 15
+  offset: 0x110C8
+  symbol: bits_seg7_vertex_070110C8
+
+bits_seg7_vertex_070111B8:
+  type: VTX
+  count: 14
+  offset: 0x111B8
+  symbol: bits_seg7_vertex_070111B8
+
+bits_seg7_vertex_07011298:
+  type: VTX
+  count: 15
+  offset: 0x11298
+  symbol: bits_seg7_vertex_07011298
+
+bits_seg7_vertex_07011388:
+  type: VTX
+  count: 15
+  offset: 0x11388
+  symbol: bits_seg7_vertex_07011388
+
+bits_seg7_vertex_07011478:
+  type: VTX
+  count: 14
+  offset: 0x11478
+  symbol: bits_seg7_vertex_07011478
+
+bits_seg7_vertex_07011558:
+  type: VTX
+  count: 15
+  offset: 0x11558
+  symbol: bits_seg7_vertex_07011558
+
+bits_seg7_vertex_07011648:
+  type: VTX
+  count: 15
+  offset: 0x11648
+  symbol: bits_seg7_vertex_07011648
+
+bits_seg7_vertex_07011738:
+  type: VTX
+  count: 16
+  offset: 0x11738
+  symbol: bits_seg7_vertex_07011738
+
+bits_seg7_vertex_07011838:
+  type: VTX
+  count: 16
+  offset: 0x11838
+  symbol: bits_seg7_vertex_07011838
+
+bits_seg7_vertex_07011938:
+  type: VTX
+  count: 16
+  offset: 0x11938
+  symbol: bits_seg7_vertex_07011938
+
+bits_seg7_vertex_07011A38:
+  type: VTX
+  count: 16
+  offset: 0x11A38
+  symbol: bits_seg7_vertex_07011A38
+
+bits_seg7_vertex_07011B38:
+  type: VTX
+  count: 16
+  offset: 0x11B38
+  symbol: bits_seg7_vertex_07011B38
+
+bits_seg7_vertex_07011C38:
+  type: VTX
+  count: 16
+  offset: 0x11C38
+  symbol: bits_seg7_vertex_07011C38
+
+bits_seg7_vertex_07011D38:
+  type: VTX
+  count: 16
+  offset: 0x11D38
+  symbol: bits_seg7_vertex_07011D38
+
+bits_seg7_vertex_07011E38:
+  type: VTX
+  count: 12
+  offset: 0x11E38
+  symbol: bits_seg7_vertex_07011E38
+
+bits_seg7_dl_07011EF8:
+  type: GFX
+  offset: 0x11EF8
+  symbol: bits_seg7_dl_07011EF8
+
+bits_seg7_dl_07012098:
+  type: GFX
+  offset: 0x12098
+  symbol: bits_seg7_dl_07012098
+
+bits_seg7_dl_07012758:
+  type: GFX
+  offset: 0x12758
+  symbol: bits_seg7_dl_07012758
+
+bits_seg7_dl_07012898:
+  type: GFX
+  offset: 0x12898
+  symbol: bits_seg7_dl_07012898
+
+bits_seg7_dl_070128F0:
+  type: GFX
+  offset: 0x128F0
+  symbol: bits_seg7_dl_070128F0
+
+bits_seg7_vertex_07013F68:
+  type: VTX
+  count: 16
+  offset: 0x13F68
+  symbol: bits_seg7_vertex_07013F68
+
+bits_seg7_vertex_07014068:
+  type: VTX
+  count: 8
+  offset: 0x14068
+  symbol: bits_seg7_vertex_07014068
+
+bits_seg7_dl_070140E8:
+  type: GFX
+  offset: 0x140E8
+  symbol: bits_seg7_dl_070140E8
+
+bits_seg7_dl_07014178:
+  type: GFX
+  offset: 0x14178
+  symbol: bits_seg7_dl_07014178
+
+bits_seg7_vertex_07007F58:
+  type: VTX
+  count: 16
+  offset: 0x7F58
+  symbol: bits_seg7_vertex_07007F58
+
+bits_seg7_vertex_07008058:
+  type: VTX
+  count: 4
+  offset: 0x8058
+  symbol: bits_seg7_vertex_07008058
+
+bits_seg7_vertex_07008098:
+  type: VTX
+  count: 15
+  offset: 0x8098
+  symbol: bits_seg7_vertex_07008098
+
+bits_seg7_vertex_07008188:
+  type: VTX
+  count: 16
+  offset: 0x8188
+  symbol: bits_seg7_vertex_07008188
+
+bits_seg7_vertex_07008288:
+  type: VTX
+  count: 16
+  offset: 0x8288
+  symbol: bits_seg7_vertex_07008288
+
+bits_seg7_vertex_07008388:
+  type: VTX
+  count: 14
+  offset: 0x8388
+  symbol: bits_seg7_vertex_07008388
+
+bits_seg7_vertex_07008468:
+  type: VTX
+  count: 6
+  offset: 0x8468
+  symbol: bits_seg7_vertex_07008468
+
+bits_seg7_vertex_070084C8:
+  type: VTX
+  count: 16
+  offset: 0x84C8
+  symbol: bits_seg7_vertex_070084C8
+
+bits_seg7_vertex_070085C8:
+  type: VTX
+  count: 16
+  offset: 0x85C8
+  symbol: bits_seg7_vertex_070085C8
+
+bits_seg7_vertex_070086C8:
+  type: VTX
+  count: 12
+  offset: 0x86C8
+  symbol: bits_seg7_vertex_070086C8
+
+bits_seg7_vertex_07008788:
+  type: VTX
+  count: 16
+  offset: 0x8788
+  symbol: bits_seg7_vertex_07008788
+
+bits_seg7_vertex_07008888:
+  type: VTX
+  count: 16
+  offset: 0x8888
+  symbol: bits_seg7_vertex_07008888
+
+bits_seg7_dl_07008988:
+  type: GFX
+  offset: 0x8988
+  symbol: bits_seg7_dl_07008988
+
+bits_seg7_dl_07008A08:
+  type: GFX
+  offset: 0x8A08
+  symbol: bits_seg7_dl_07008A08
+
+bits_seg7_dl_07008B70:
+  type: GFX
+  offset: 0x8B70
+  symbol: bits_seg7_dl_07008B70
+
+bits_seg7_dl_07008C68:
+  type: GFX
+  offset: 0x8C68
+  symbol: bits_seg7_dl_07008C68
+
+bits_seg7_dl_07008D18:
+  type: GFX
+  offset: 0x8D18
+  symbol: bits_seg7_dl_07008D18
+
+bits_seg7_vertex_07012B80:
+  type: VTX
+  count: 16
+  offset: 0x12B80
+  symbol: bits_seg7_vertex_07012B80
+
+bits_seg7_vertex_07012C80:
+  type: VTX
+  count: 4
+  offset: 0x12C80
+  symbol: bits_seg7_vertex_07012C80
+
+bits_seg7_dl_07012CC0:
+  type: GFX
+  offset: 0x12CC0
+  symbol: bits_seg7_dl_07012CC0
+
+bits_seg7_dl_07012D40:
+  type: GFX
+  offset: 0x12D40
+  symbol: bits_seg7_dl_07012D40
+
+bits_seg7_vertex_07016378:
+  type: VTX
+  count: 4
+  offset: 0x16378
+  symbol: bits_seg7_vertex_07016378
+
+bits_seg7_vertex_070163B8:
+  type: VTX
+  count: 16
+  offset: 0x163B8
+  symbol: bits_seg7_vertex_070163B8
+
+bits_seg7_vertex_070164B8:
+  type: VTX
+  count: 15
+  offset: 0x164B8
+  symbol: bits_seg7_vertex_070164B8
+
+bits_seg7_vertex_070165A8:
+  type: VTX
+  count: 14
+  offset: 0x165A8
+  symbol: bits_seg7_vertex_070165A8
+
+bits_seg7_vertex_07016688:
+  type: VTX
+  count: 14
+  offset: 0x16688
+  symbol: bits_seg7_vertex_07016688
+
+bits_seg7_vertex_07016768:
+  type: VTX
+  count: 14
+  offset: 0x16768
+  symbol: bits_seg7_vertex_07016768
+
+bits_seg7_vertex_07016848:
+  type: VTX
+  count: 11
+  offset: 0x16848
+  symbol: bits_seg7_vertex_07016848
+
+bits_seg7_dl_070168F8:
+  type: GFX
+  offset: 0x168F8
+  symbol: bits_seg7_dl_070168F8
+
+bits_seg7_dl_07016930:
+  type: GFX
+  offset: 0x16930
+  symbol: bits_seg7_dl_07016930
+
+bits_seg7_dl_07016AA0:
+  type: GFX
+  offset: 0x16AA0
+  symbol: bits_seg7_dl_07016AA0
+
+bits_seg7_vertex_07015BD8:
+  type: VTX
+  count: 4
+  offset: 0x15BD8
+  symbol: bits_seg7_vertex_07015BD8
+
+bits_seg7_vertex_07015C18:
+  type: VTX
+  count: 16
+  offset: 0x15C18
+  symbol: bits_seg7_vertex_07015C18
+
+bits_seg7_vertex_07015D18:
+  type: VTX
+  count: 15
+  offset: 0x15D18
+  symbol: bits_seg7_vertex_07015D18
+
+bits_seg7_vertex_07015E08:
+  type: VTX
+  count: 14
+  offset: 0x15E08
+  symbol: bits_seg7_vertex_07015E08
+
+bits_seg7_vertex_07015EE8:
+  type: VTX
+  count: 14
+  offset: 0x15EE8
+  symbol: bits_seg7_vertex_07015EE8
+
+bits_seg7_vertex_07015FC8:
+  type: VTX
+  count: 14
+  offset: 0x15FC8
+  symbol: bits_seg7_vertex_07015FC8
+
+bits_seg7_vertex_070160A8:
+  type: VTX
+  count: 11
+  offset: 0x160A8
+  symbol: bits_seg7_vertex_070160A8
+
+bits_seg7_dl_07016158:
+  type: GFX
+  offset: 0x16158
+  symbol: bits_seg7_dl_07016158
+
+bits_seg7_dl_07016190:
+  type: GFX
+  offset: 0x16190
+  symbol: bits_seg7_dl_07016190
+
+bits_seg7_dl_07016300:
+  type: GFX
+  offset: 0x16300
+  symbol: bits_seg7_dl_07016300
+
+bits_seg7_lights_07013890:
+  type: LIGHTS
+  size: 24
+  offset: 0x13890
+  symbol: bits_seg7_lights_07013890
+
+bits_seg7_vertex_070138A8:
+  type: VTX
+  count: 15
+  offset: 0x138A8
+  symbol: bits_seg7_vertex_070138A8
+
+bits_seg7_vertex_07013998:
+  type: VTX
+  count: 15
+  offset: 0x13998
+  symbol: bits_seg7_vertex_07013998
+
+bits_seg7_vertex_07013A88:
+  type: VTX
+  count: 15
+  offset: 0x13A88
+  symbol: bits_seg7_vertex_07013A88
+
+bits_seg7_vertex_07013B78:
+  type: VTX
+  count: 3
+  offset: 0x13B78
+  symbol: bits_seg7_vertex_07013B78
+
+bits_seg7_dl_07013BA8:
+  type: GFX
+  offset: 0x13BA8
+  symbol: bits_seg7_dl_07013BA8
+
+bits_seg7_dl_07013C78:
+  type: GFX
+  offset: 0x13C78
+  symbol: bits_seg7_dl_07013C78
+
+bits_seg7_vertex_07013610:
+  type: VTX
+  count: 16
+  offset: 0x13610
+  symbol: bits_seg7_vertex_07013610
+
+bits_seg7_vertex_07013710:
+  type: VTX
+  count: 8
+  offset: 0x13710
+  symbol: bits_seg7_vertex_07013710
+
+bits_seg7_dl_07013790:
+  type: GFX
+  offset: 0x13790
+  symbol: bits_seg7_dl_07013790
+
+bits_seg7_dl_07013820:
+  type: GFX
+  offset: 0x13820
+  symbol: bits_seg7_dl_07013820
+
+bits_seg7_vertex_07004880:
+  type: VTX
+  count: 16
+  offset: 0x4880
+  symbol: bits_seg7_vertex_07004880
+
+bits_seg7_vertex_07004980:
+  type: VTX
+  count: 8
+  offset: 0x4980
+  symbol: bits_seg7_vertex_07004980
+
+bits_seg7_vertex_07004A00:
+  type: VTX
+  count: 16
+  offset: 0x4A00
+  symbol: bits_seg7_vertex_07004A00
+
+bits_seg7_vertex_07004B00:
+  type: VTX
+  count: 16
+  offset: 0x4B00
+  symbol: bits_seg7_vertex_07004B00
+
+bits_seg7_vertex_07004C00:
+  type: VTX
+  count: 16
+  offset: 0x4C00
+  symbol: bits_seg7_vertex_07004C00
+
+bits_seg7_vertex_07004D00:
+  type: VTX
+  count: 15
+  offset: 0x4D00
+  symbol: bits_seg7_vertex_07004D00
+
+bits_seg7_vertex_07004DF0:
+  type: VTX
+  count: 15
+  offset: 0x4DF0
+  symbol: bits_seg7_vertex_07004DF0
+
+bits_seg7_vertex_07004EE0:
+  type: VTX
+  count: 15
+  offset: 0x4EE0
+  symbol: bits_seg7_vertex_07004EE0
+
+bits_seg7_vertex_07004FD0:
+  type: VTX
+  count: 16
+  offset: 0x4FD0
+  symbol: bits_seg7_vertex_07004FD0
+
+bits_seg7_vertex_070050D0:
+  type: VTX
+  count: 16
+  offset: 0x50D0
+  symbol: bits_seg7_vertex_070050D0
+
+bits_seg7_vertex_070051D0:
+  type: VTX
+  count: 14
+  offset: 0x51D0
+  symbol: bits_seg7_vertex_070051D0
+
+bits_seg7_vertex_070052B0:
+  type: VTX
+  count: 16
+  offset: 0x52B0
+  symbol: bits_seg7_vertex_070052B0
+
+bits_seg7_vertex_070053B0:
+  type: VTX
+  count: 15
+  offset: 0x53B0
+  symbol: bits_seg7_vertex_070053B0
+
+bits_seg7_vertex_070054A0:
+  type: VTX
+  count: 5
+  offset: 0x54A0
+  symbol: bits_seg7_vertex_070054A0
+
+bits_seg7_vertex_070054F0:
+  type: VTX
+  count: 16
+  offset: 0x54F0
+  symbol: bits_seg7_vertex_070054F0
+
+bits_seg7_vertex_070055F0:
+  type: VTX
+  count: 15
+  offset: 0x55F0
+  symbol: bits_seg7_vertex_070055F0
+
+bits_seg7_vertex_070056E0:
+  type: VTX
+  count: 8
+  offset: 0x56E0
+  symbol: bits_seg7_vertex_070056E0
+
+bits_seg7_vertex_07005760:
+  type: VTX
+  count: 16
+  offset: 0x5760
+  symbol: bits_seg7_vertex_07005760
+
+bits_seg7_vertex_07005860:
+  type: VTX
+  count: 4
+  offset: 0x5860
+  symbol: bits_seg7_vertex_07005860
+
+bits_seg7_dl_070058A0:
+  type: GFX
+  offset: 0x58A0
+  symbol: bits_seg7_dl_070058A0
+
+bits_seg7_dl_07005930:
+  type: GFX
+  offset: 0x5930
+  symbol: bits_seg7_dl_07005930
+
+bits_seg7_dl_07005C50:
+  type: GFX
+  offset: 0x5C50
+  symbol: bits_seg7_dl_07005C50
+
+bits_seg7_dl_07005D38:
+  type: GFX
+  offset: 0x5D38
+  symbol: bits_seg7_dl_07005D38
+
+bits_seg7_dl_07005DB8:
+  type: GFX
+  offset: 0x5DB8
+  symbol: bits_seg7_dl_07005DB8
+
+bits_seg7_vertex_0700CE50:
+  type: VTX
+  count: 16
+  offset: 0xCE50
+  symbol: bits_seg7_vertex_0700CE50
+
+bits_seg7_vertex_0700CF50:
+  type: VTX
+  count: 15
+  offset: 0xCF50
+  symbol: bits_seg7_vertex_0700CF50
+
+bits_seg7_vertex_0700D040:
+  type: VTX
+  count: 8
+  offset: 0xD040
+  symbol: bits_seg7_vertex_0700D040
+
+bits_seg7_vertex_0700D0C0:
+  type: VTX
+  count: 8
+  offset: 0xD0C0
+  symbol: bits_seg7_vertex_0700D0C0
+
+bits_seg7_dl_0700D140:
+  type: GFX
+  offset: 0xD140
+  symbol: bits_seg7_dl_0700D140
+
+bits_seg7_dl_0700D228:
+  type: GFX
+  offset: 0xD228
+  symbol: bits_seg7_dl_0700D228
+
+bits_seg7_dl_0700D278:
+  type: GFX
+  offset: 0xD278
+  symbol: bits_seg7_dl_0700D278
+
+bits_seg7_vertex_070036F8:
+  type: VTX
+  count: 16
+  offset: 0x36F8
+  symbol: bits_seg7_vertex_070036F8
+
+bits_seg7_vertex_070037F8:
+  type: VTX
+  count: 16
+  offset: 0x37F8
+  symbol: bits_seg7_vertex_070037F8
+
+bits_seg7_vertex_070038F8:
+  type: VTX
+  count: 14
+  offset: 0x38F8
+  symbol: bits_seg7_vertex_070038F8
+
+bits_seg7_vertex_070039D8:
+  type: VTX
+  count: 15
+  offset: 0x39D8
+  symbol: bits_seg7_vertex_070039D8
+
+bits_seg7_vertex_07003AC8:
+  type: VTX
+  count: 16
+  offset: 0x3AC8
+  symbol: bits_seg7_vertex_07003AC8
+
+bits_seg7_vertex_07003BC8:
+  type: VTX
+  count: 12
+  offset: 0x3BC8
+  symbol: bits_seg7_vertex_07003BC8
+
+bits_seg7_vertex_07003C88:
+  type: VTX
+  count: 16
+  offset: 0x3C88
+  symbol: bits_seg7_vertex_07003C88
+
+bits_seg7_vertex_07003D88:
+  type: VTX
+  count: 14
+  offset: 0x3D88
+  symbol: bits_seg7_vertex_07003D88
+
+bits_seg7_vertex_07003E68:
+  type: VTX
+  count: 16
+  offset: 0x3E68
+  symbol: bits_seg7_vertex_07003E68
+
+bits_seg7_vertex_07003F68:
+  type: VTX
+  count: 14
+  offset: 0x3F68
+  symbol: bits_seg7_vertex_07003F68
+
+bits_seg7_vertex_07004048:
+  type: VTX
+  count: 15
+  offset: 0x4048
+  symbol: bits_seg7_vertex_07004048
+
+bits_seg7_vertex_07004138:
+  type: VTX
+  count: 7
+  offset: 0x4138
+  symbol: bits_seg7_vertex_07004138
+
+bits_seg7_vertex_070041A8:
+  type: VTX
+  count: 16
+  offset: 0x41A8
+  symbol: bits_seg7_vertex_070041A8
+
+bits_seg7_vertex_070042A8:
+  type: VTX
+  count: 16
+  offset: 0x42A8
+  symbol: bits_seg7_vertex_070042A8
+
+bits_seg7_vertex_070043A8:
+  type: VTX
+  count: 4
+  offset: 0x43A8
+  symbol: bits_seg7_vertex_070043A8
+
+bits_seg7_dl_070043E8:
+  type: GFX
+  offset: 0x43E8
+  symbol: bits_seg7_dl_070043E8
+
+bits_seg7_dl_07004590:
+  type: GFX
+  offset: 0x4590
+  symbol: bits_seg7_dl_07004590
+
+bits_seg7_dl_070045F8:
+  type: GFX
+  offset: 0x45F8
+  symbol: bits_seg7_dl_070045F8
+
+bits_seg7_dl_07004720:
+  type: GFX
+  offset: 0x4720
+  symbol: bits_seg7_dl_07004720
+
+bits_seg7_dl_070047D0:
+  type: GFX
+  offset: 0x47D0
+  symbol: bits_seg7_dl_070047D0
+
+bits_seg7_dl_070047F0:
+  type: GFX
+  offset: 0x47F0
+  symbol: bits_seg7_dl_070047F0
+
+bits_seg7_vertex_0700B528:
+  type: VTX
+  count: 8
+  offset: 0xB528
+  symbol: bits_seg7_vertex_0700B528
+
+bits_seg7_vertex_0700B5A8:
+  type: VTX
+  count: 15
+  offset: 0xB5A8
+  symbol: bits_seg7_vertex_0700B5A8
+
+bits_seg7_vertex_0700B698:
+  type: VTX
+  count: 11
+  offset: 0xB698
+  symbol: bits_seg7_vertex_0700B698
+
+bits_seg7_dl_0700B748:
+  type: GFX
+  offset: 0xB748
+  symbol: bits_seg7_dl_0700B748
+
+bits_seg7_dl_0700B790:
+  type: GFX
+  offset: 0xB790
+  symbol: bits_seg7_dl_0700B790
+
+bits_seg7_dl_0700B820:
+  type: GFX
+  offset: 0xB820
+  symbol: bits_seg7_dl_0700B820
+
+bits_seg7_vertex_07002988:
+  type: VTX
+  count: 16
+  offset: 0x2988
+  symbol: bits_seg7_vertex_07002988
+
+bits_seg7_vertex_07002A88:
+  type: VTX
+  count: 15
+  offset: 0x2A88
+  symbol: bits_seg7_vertex_07002A88
+
+bits_seg7_vertex_07002B78:
+  type: VTX
+  count: 15
+  offset: 0x2B78
+  symbol: bits_seg7_vertex_07002B78
+
+bits_seg7_vertex_07002C68:
+  type: VTX
+  count: 16
+  offset: 0x2C68
+  symbol: bits_seg7_vertex_07002C68
+
+bits_seg7_vertex_07002D68:
+  type: VTX
+  count: 16
+  offset: 0x2D68
+  symbol: bits_seg7_vertex_07002D68
+
+bits_seg7_vertex_07002E68:
+  type: VTX
+  count: 14
+  offset: 0x2E68
+  symbol: bits_seg7_vertex_07002E68
+
+bits_seg7_vertex_07002F48:
+  type: VTX
+  count: 16
+  offset: 0x2F48
+  symbol: bits_seg7_vertex_07002F48
+
+bits_seg7_vertex_07003048:
+  type: VTX
+  count: 16
+  offset: 0x3048
+  symbol: bits_seg7_vertex_07003048
+
+bits_seg7_vertex_07003148:
+  type: VTX
+  count: 8
+  offset: 0x3148
+  symbol: bits_seg7_vertex_07003148
+
+bits_seg7_vertex_070031C8:
+  type: VTX
+  count: 16
+  offset: 0x31C8
+  symbol: bits_seg7_vertex_070031C8
+
+bits_seg7_vertex_070032C8:
+  type: VTX
+  count: 8
+  offset: 0x32C8
+  symbol: bits_seg7_vertex_070032C8
+
+bits_seg7_dl_07003348:
+  type: GFX
+  offset: 0x3348
+  symbol: bits_seg7_dl_07003348
+
+bits_seg7_dl_070033B0:
+  type: GFX
+  offset: 0x33B0
+  symbol: bits_seg7_dl_070033B0
+
+bits_seg7_dl_070034F8:
+  type: GFX
+  offset: 0x34F8
+  symbol: bits_seg7_dl_070034F8
+
+bits_seg7_dl_070035E0:
+  type: GFX
+  offset: 0x35E0
+  symbol: bits_seg7_dl_070035E0
+
+bits_seg7_dl_07003670:
+  type: GFX
+  offset: 0x3670
+  symbol: bits_seg7_dl_07003670
+
+bits_seg7_vertex_0700B8B0:
+  type: VTX
+  count: 16
+  offset: 0xB8B0
+  symbol: bits_seg7_vertex_0700B8B0
+
+bits_seg7_dl_0700B9B0:
+  type: GFX
+  offset: 0xB9B0
+  symbol: bits_seg7_dl_0700B9B0
+
+bits_seg7_dl_0700BA18:
+  type: GFX
+  offset: 0xBA18
+  symbol: bits_seg7_dl_0700BA18
+
+bits_seg7_vertex_07005E58:
+  type: VTX
+  count: 16
+  offset: 0x5E58
+  symbol: bits_seg7_vertex_07005E58
+
+bits_seg7_vertex_07005F58:
+  type: VTX
+  count: 16
+  offset: 0x5F58
+  symbol: bits_seg7_vertex_07005F58
+
+bits_seg7_vertex_07006058:
+  type: VTX
+  count: 16
+  offset: 0x6058
+  symbol: bits_seg7_vertex_07006058
+
+bits_seg7_vertex_07006158:
+  type: VTX
+  count: 15
+  offset: 0x6158
+  symbol: bits_seg7_vertex_07006158
+
+bits_seg7_vertex_07006248:
+  type: VTX
+  count: 14
+  offset: 0x6248
+  symbol: bits_seg7_vertex_07006248
+
+bits_seg7_vertex_07006328:
+  type: VTX
+  count: 15
+  offset: 0x6328
+  symbol: bits_seg7_vertex_07006328
+
+bits_seg7_vertex_07006418:
+  type: VTX
+  count: 14
+  offset: 0x6418
+  symbol: bits_seg7_vertex_07006418
+
+bits_seg7_vertex_070064F8:
+  type: VTX
+  count: 14
+  offset: 0x64F8
+  symbol: bits_seg7_vertex_070064F8
+
+bits_seg7_vertex_070065D8:
+  type: VTX
+  count: 16
+  offset: 0x65D8
+  symbol: bits_seg7_vertex_070065D8
+
+bits_seg7_vertex_070066D8:
+  type: VTX
+  count: 15
+  offset: 0x66D8
+  symbol: bits_seg7_vertex_070066D8
+
+bits_seg7_vertex_070067C8:
+  type: VTX
+  count: 15
+  offset: 0x67C8
+  symbol: bits_seg7_vertex_070067C8
+
+bits_seg7_vertex_070068B8:
+  type: VTX
+  count: 15
+  offset: 0x68B8
+  symbol: bits_seg7_vertex_070068B8
+
+bits_seg7_vertex_070069A8:
+  type: VTX
+  count: 15
+  offset: 0x69A8
+  symbol: bits_seg7_vertex_070069A8
+
+bits_seg7_vertex_07006A98:
+  type: VTX
+  count: 14
+  offset: 0x6A98
+  symbol: bits_seg7_vertex_07006A98
+
+bits_seg7_vertex_07006B78:
+  type: VTX
+  count: 15
+  offset: 0x6B78
+  symbol: bits_seg7_vertex_07006B78
+
+bits_seg7_vertex_07006C68:
+  type: VTX
+  count: 16
+  offset: 0x6C68
+  symbol: bits_seg7_vertex_07006C68
+
+bits_seg7_vertex_07006D68:
+  type: VTX
+  count: 15
+  offset: 0x6D68
+  symbol: bits_seg7_vertex_07006D68
+
+bits_seg7_vertex_07006E58:
+  type: VTX
+  count: 16
+  offset: 0x6E58
+  symbol: bits_seg7_vertex_07006E58
+
+bits_seg7_vertex_07006F58:
+  type: VTX
+  count: 16
+  offset: 0x6F58
+  symbol: bits_seg7_vertex_07006F58
+
+bits_seg7_vertex_07007058:
+  type: VTX
+  count: 14
+  offset: 0x7058
+  symbol: bits_seg7_vertex_07007058
+
+bits_seg7_vertex_07007138:
+  type: VTX
+  count: 14
+  offset: 0x7138
+  symbol: bits_seg7_vertex_07007138
+
+bits_seg7_vertex_07007218:
+  type: VTX
+  count: 15
+  offset: 0x7218
+  symbol: bits_seg7_vertex_07007218
+
+bits_seg7_vertex_07007308:
+  type: VTX
+  count: 15
+  offset: 0x7308
+  symbol: bits_seg7_vertex_07007308
+
+bits_seg7_vertex_070073F8:
+  type: VTX
+  count: 5
+  offset: 0x73F8
+  symbol: bits_seg7_vertex_070073F8
+
+bits_seg7_dl_07007448:
+  type: GFX
+  offset: 0x7448
+  symbol: bits_seg7_dl_07007448
+
+bits_seg7_dl_07007AF0:
+  type: GFX
+  offset: 0x7AF0
+  symbol: bits_seg7_dl_07007AF0
+
+bits_seg7_vertex_0700BA88:
+  type: VTX
+  count: 16
+  offset: 0xBA88
+  symbol: bits_seg7_vertex_0700BA88
+
+bits_seg7_vertex_0700BB88:
+  type: VTX
+  count: 8
+  offset: 0xBB88
+  symbol: bits_seg7_vertex_0700BB88
+
+bits_seg7_vertex_0700BC08:
+  type: VTX
+  count: 16
+  offset: 0xBC08
+  symbol: bits_seg7_vertex_0700BC08
+
+bits_seg7_vertex_0700BD08:
+  type: VTX
+  count: 16
+  offset: 0xBD08
+  symbol: bits_seg7_vertex_0700BD08
+
+bits_seg7_vertex_0700BE08:
+  type: VTX
+  count: 4
+  offset: 0xBE08
+  symbol: bits_seg7_vertex_0700BE08
+
+bits_seg7_vertex_0700BE48:
+  type: VTX
+  count: 16
+  offset: 0xBE48
+  symbol: bits_seg7_vertex_0700BE48
+
+bits_seg7_vertex_0700BF48:
+  type: VTX
+  count: 4
+  offset: 0xBF48
+  symbol: bits_seg7_vertex_0700BF48
+
+bits_seg7_vertex_0700BF88:
+  type: VTX
+  count: 16
+  offset: 0xBF88
+  symbol: bits_seg7_vertex_0700BF88
+
+bits_seg7_vertex_0700C088:
+  type: VTX
+  count: 16
+  offset: 0xC088
+  symbol: bits_seg7_vertex_0700C088
+
+bits_seg7_vertex_0700C188:
+  type: VTX
+  count: 16
+  offset: 0xC188
+  symbol: bits_seg7_vertex_0700C188
+
+bits_seg7_vertex_0700C288:
+  type: VTX
+  count: 15
+  offset: 0xC288
+  symbol: bits_seg7_vertex_0700C288
+
+bits_seg7_vertex_0700C378:
+  type: VTX
+  count: 15
+  offset: 0xC378
+  symbol: bits_seg7_vertex_0700C378
+
+bits_seg7_vertex_0700C468:
+  type: VTX
+  count: 15
+  offset: 0xC468
+  symbol: bits_seg7_vertex_0700C468
+
+bits_seg7_vertex_0700C558:
+  type: VTX
+  count: 15
+  offset: 0xC558
+  symbol: bits_seg7_vertex_0700C558
+
+bits_seg7_vertex_0700C648:
+  type: VTX
+  count: 15
+  offset: 0xC648
+  symbol: bits_seg7_vertex_0700C648
+
+bits_seg7_vertex_0700C738:
+  type: VTX
+  count: 15
+  offset: 0xC738
+  symbol: bits_seg7_vertex_0700C738
+
+bits_seg7_vertex_0700C828:
+  type: VTX
+  count: 10
+  offset: 0xC828
+  symbol: bits_seg7_vertex_0700C828
+
+bits_seg7_vertex_0700C8C8:
+  type: VTX
+  count: 4
+  offset: 0xC8C8
+  symbol: bits_seg7_vertex_0700C8C8
+
+bits_seg7_dl_0700C908:
+  type: GFX
+  offset: 0xC908
+  symbol: bits_seg7_dl_0700C908
+
+bits_seg7_dl_0700C998:
+  type: GFX
+  offset: 0xC998
+  symbol: bits_seg7_dl_0700C998
+
+bits_seg7_dl_0700CA70:
+  type: GFX
+  offset: 0xCA70
+  symbol: bits_seg7_dl_0700CA70
+
+bits_seg7_dl_0700CAF0:
+  type: GFX
+  offset: 0xCAF0
+  symbol: bits_seg7_dl_0700CAF0
+
+bits_seg7_dl_0700CDA0:
+  type: GFX
+  offset: 0xCDA0
+  symbol: bits_seg7_dl_0700CDA0
+
+bits_seg7_dl_0700CDC0:
+  type: GFX
+  offset: 0xCDC0
+  symbol: bits_seg7_dl_0700CDC0
+
+bits_seg7_lights_07012DB0:
+  type: LIGHTS
+  size: 24
+  offset: 0x12DB0
+  symbol: bits_seg7_lights_07012DB0
+
+bits_seg7_lights_07012DC8:
+  type: LIGHTS
+  size: 24
+  offset: 0x12DC8
+  symbol: bits_seg7_lights_07012DC8
+
+bits_seg7_lights_07012DE0:
+  type: LIGHTS
+  size: 24
+  offset: 0x12DE0
+  symbol: bits_seg7_lights_07012DE0
+
+bits_seg7_vertex_07012DF8:
+  type: VTX
+  count: 8
+  offset: 0x12DF8
+  symbol: bits_seg7_vertex_07012DF8
+
+bits_seg7_vertex_07012E78:
+  type: VTX
+  count: 14
+  offset: 0x12E78
+  symbol: bits_seg7_vertex_07012E78
+
+bits_seg7_vertex_07012F58:
+  type: VTX
+  count: 16
+  offset: 0x12F58
+  symbol: bits_seg7_vertex_07012F58
+
+bits_seg7_vertex_07013058:
+  type: VTX
+  count: 10
+  offset: 0x13058
+  symbol: bits_seg7_vertex_07013058
+
+bits_seg7_vertex_070130F8:
+  type: VTX
+  count: 15
+  offset: 0x130F8
+  symbol: bits_seg7_vertex_070130F8
+
+bits_seg7_vertex_070131E8:
+  type: VTX
+  count: 15
+  offset: 0x131E8
+  symbol: bits_seg7_vertex_070131E8
+
+bits_seg7_vertex_070132D8:
+  type: VTX
+  count: 14
+  offset: 0x132D8
+  symbol: bits_seg7_vertex_070132D8
+
+bits_seg7_dl_070133B8:
+  type: GFX
+  offset: 0x133B8
+  symbol: bits_seg7_dl_070133B8
+
+bits_seg7_dl_070135A0:
+  type: GFX
+  offset: 0x135A0
+  symbol: bits_seg7_dl_070135A0
+
+bits_seg7_vertex_07013CE8:
+  type: VTX
+  count: 16
+  offset: 0x13CE8
+  symbol: bits_seg7_vertex_07013CE8
+
+bits_seg7_vertex_07013DE8:
+  type: VTX
+  count: 8
+  offset: 0x13DE8
+  symbol: bits_seg7_vertex_07013DE8
+
+bits_seg7_dl_07013E68:
+  type: GFX
+  offset: 0x13E68
+  symbol: bits_seg7_dl_07013E68
+
+bits_seg7_dl_07013EF8:
+  type: GFX
+  offset: 0x13EF8
+  symbol: bits_seg7_dl_07013EF8
+

@@ -29,3 +29,77 @@
   offset: 0x1800
   format: RGBA16
   symbol: bowser_1_seg7_texture_07001800
+bowser_1_seg7_lights_07002000:
+  type: LIGHTS
+  size: 24
+  offset: 0x2000
+  symbol: bowser_1_seg7_lights_07002000
+
+bowser_1_seg7_vertex_07002018:
+  type: VTX
+  count: 15
+  offset: 0x2018
+  symbol: bowser_1_seg7_vertex_07002018
+
+bowser_1_seg7_vertex_07002108:
+  type: VTX
+  count: 3
+  offset: 0x2108
+  symbol: bowser_1_seg7_vertex_07002108
+
+bowser_1_seg7_vertex_07002138:
+  type: VTX
+  count: 15
+  offset: 0x2138
+  symbol: bowser_1_seg7_vertex_07002138
+
+bowser_1_seg7_vertex_07002228:
+  type: VTX
+  count: 15
+  offset: 0x2228
+  symbol: bowser_1_seg7_vertex_07002228
+
+bowser_1_seg7_vertex_07002318:
+  type: VTX
+  count: 4
+  offset: 0x2318
+  symbol: bowser_1_seg7_vertex_07002318
+
+bowser_1_seg7_vertex_07002358:
+  type: VTX
+  count: 15
+  offset: 0x2358
+  symbol: bowser_1_seg7_vertex_07002358
+
+bowser_1_seg7_vertex_07002448:
+  type: VTX
+  count: 15
+  offset: 0x2448
+  symbol: bowser_1_seg7_vertex_07002448
+
+bowser_1_seg7_vertex_07002538:
+  type: VTX
+  count: 4
+  offset: 0x2538
+  symbol: bowser_1_seg7_vertex_07002538
+
+bowser_1_seg7_dl_07002578:
+  type: GFX
+  offset: 0x2578
+  symbol: bowser_1_seg7_dl_07002578
+
+bowser_1_seg7_dl_070025F8:
+  type: GFX
+  offset: 0x25F8
+  symbol: bowser_1_seg7_dl_070025F8
+
+bowser_1_seg7_dl_070026B0:
+  type: GFX
+  offset: 0x26B0
+  symbol: bowser_1_seg7_dl_070026B0
+
+bowser_1_seg7_dl_07002768:
+  type: GFX
+  offset: 0x2768
+  symbol: bowser_1_seg7_dl_07002768
+

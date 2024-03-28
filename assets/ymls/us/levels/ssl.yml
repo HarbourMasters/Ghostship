@@ -102,3 +102,2412 @@
   format: RGBA16
   symbol: ssl_seg7_texture_0700E7A8
 
+ssl_seg7_lights_07022AA0:
+  type: LIGHTS
+  size: 24
+  offset: 0x22AA0
+  symbol: ssl_seg7_lights_07022AA0
+
+ssl_seg7_vertex_07022AB8:
+  type: VTX
+  count: 16
+  offset: 0x22AB8
+  symbol: ssl_seg7_vertex_07022AB8
+
+ssl_seg7_vertex_07022BB8:
+  type: VTX
+  count: 8
+  offset: 0x22BB8
+  symbol: ssl_seg7_vertex_07022BB8
+
+ssl_seg7_dl_07022C38:
+  type: GFX
+  offset: 0x22C38
+  symbol: ssl_seg7_dl_07022C38
+
+ssl_seg7_dl_07022CB0:
+  type: GFX
+  offset: 0x22CB0
+  symbol: ssl_seg7_dl_07022CB0
+
+ssl_seg7_dl_07022CF8:
+  type: GFX
+  offset: 0x22CF8
+  symbol: ssl_seg7_dl_07022CF8
+
+ssl_seg7_lights_07022DA8:
+  type: LIGHTS
+  size: 24
+  offset: 0x22DA8
+  symbol: ssl_seg7_lights_07022DA8
+
+ssl_seg7_vertex_07022DC0:
+  type: VTX
+  count: 12
+  offset: 0x22DC0
+  symbol: ssl_seg7_vertex_07022DC0
+
+ssl_seg7_vertex_07022E80:
+  type: VTX
+  count: 15
+  offset: 0x22E80
+  symbol: ssl_seg7_vertex_07022E80
+
+ssl_seg7_vertex_07022F70:
+  type: VTX
+  count: 15
+  offset: 0x22F70
+  symbol: ssl_seg7_vertex_07022F70
+
+ssl_seg7_vertex_07023060:
+  type: VTX
+  count: 15
+  offset: 0x23060
+  symbol: ssl_seg7_vertex_07023060
+
+ssl_seg7_vertex_07023150:
+  type: VTX
+  count: 8
+  offset: 0x23150
+  symbol: ssl_seg7_vertex_07023150
+
+ssl_seg7_dl_070231D0:
+  type: GFX
+  offset: 0x231D0
+  symbol: ssl_seg7_dl_070231D0
+
+ssl_seg7_dl_07023268:
+  type: GFX
+  offset: 0x23268
+  symbol: ssl_seg7_dl_07023268
+
+ssl_seg7_dl_070233A8:
+  type: GFX
+  offset: 0x233A8
+  symbol: ssl_seg7_dl_070233A8
+
+ssl_seg7_vertex_07023458:
+  type: VTX
+  count: 16
+  offset: 0x23458
+  symbol: ssl_seg7_vertex_07023458
+
+ssl_seg7_dl_07023558:
+  type: GFX
+  offset: 0x23558
+  symbol: ssl_seg7_dl_07023558
+
+ssl_seg7_dl_070235C0:
+  type: GFX
+  offset: 0x235C0
+  symbol: ssl_seg7_dl_070235C0
+
+ssl_seg7_lights_07004BE0:
+  type: LIGHTS
+  size: 24
+  offset: 0x4BE0
+  symbol: ssl_seg7_lights_07004BE0
+
+ssl_seg7_lights_07004BF8:
+  type: LIGHTS
+  size: 24
+  offset: 0x4BF8
+  symbol: ssl_seg7_lights_07004BF8
+
+ssl_seg7_lights_07004C10:
+  type: LIGHTS
+  size: 24
+  offset: 0x4C10
+  symbol: ssl_seg7_lights_07004C10
+
+ssl_seg7_lights_07004C28:
+  type: LIGHTS
+  size: 24
+  offset: 0x4C28
+  symbol: ssl_seg7_lights_07004C28
+
+ssl_seg7_vertex_07004C40:
+  type: VTX
+  count: 4
+  offset: 0x4C40
+  symbol: ssl_seg7_vertex_07004C40
+
+ssl_seg7_vertex_07004C80:
+  type: VTX
+  count: 15
+  offset: 0x4C80
+  symbol: ssl_seg7_vertex_07004C80
+
+ssl_seg7_vertex_07004D70:
+  type: VTX
+  count: 15
+  offset: 0x4D70
+  symbol: ssl_seg7_vertex_07004D70
+
+ssl_seg7_vertex_07004E60:
+  type: VTX
+  count: 16
+  offset: 0x4E60
+  symbol: ssl_seg7_vertex_07004E60
+
+ssl_seg7_vertex_07004F60:
+  type: VTX
+  count: 4
+  offset: 0x4F60
+  symbol: ssl_seg7_vertex_07004F60
+
+ssl_seg7_vertex_07004FA0:
+  type: VTX
+  count: 4
+  offset: 0x4FA0
+  symbol: ssl_seg7_vertex_07004FA0
+
+ssl_seg7_vertex_07004FE0:
+  type: VTX
+  count: 15
+  offset: 0x4FE0
+  symbol: ssl_seg7_vertex_07004FE0
+
+ssl_seg7_vertex_070050D0:
+  type: VTX
+  count: 15
+  offset: 0x50D0
+  symbol: ssl_seg7_vertex_070050D0
+
+ssl_seg7_vertex_070051C0:
+  type: VTX
+  count: 15
+  offset: 0x51C0
+  symbol: ssl_seg7_vertex_070051C0
+
+ssl_seg7_vertex_070052B0:
+  type: VTX
+  count: 15
+  offset: 0x52B0
+  symbol: ssl_seg7_vertex_070052B0
+
+ssl_seg7_vertex_070053A0:
+  type: VTX
+  count: 15
+  offset: 0x53A0
+  symbol: ssl_seg7_vertex_070053A0
+
+ssl_seg7_vertex_07005490:
+  type: VTX
+  count: 15
+  offset: 0x5490
+  symbol: ssl_seg7_vertex_07005490
+
+ssl_seg7_vertex_07005580:
+  type: VTX
+  count: 15
+  offset: 0x5580
+  symbol: ssl_seg7_vertex_07005580
+
+ssl_seg7_vertex_07005670:
+  type: VTX
+  count: 15
+  offset: 0x5670
+  symbol: ssl_seg7_vertex_07005670
+
+ssl_seg7_vertex_07005760:
+  type: VTX
+  count: 15
+  offset: 0x5760
+  symbol: ssl_seg7_vertex_07005760
+
+ssl_seg7_vertex_07005850:
+  type: VTX
+  count: 15
+  offset: 0x5850
+  symbol: ssl_seg7_vertex_07005850
+
+ssl_seg7_vertex_07005940:
+  type: VTX
+  count: 15
+  offset: 0x5940
+  symbol: ssl_seg7_vertex_07005940
+
+ssl_seg7_vertex_07005A30:
+  type: VTX
+  count: 15
+  offset: 0x5A30
+  symbol: ssl_seg7_vertex_07005A30
+
+ssl_seg7_vertex_07005B20:
+  type: VTX
+  count: 15
+  offset: 0x5B20
+  symbol: ssl_seg7_vertex_07005B20
+
+ssl_seg7_vertex_07005C10:
+  type: VTX
+  count: 7
+  offset: 0x5C10
+  symbol: ssl_seg7_vertex_07005C10
+
+ssl_seg7_vertex_07005C80:
+  type: VTX
+  count: 14
+  offset: 0x5C80
+  symbol: ssl_seg7_vertex_07005C80
+
+ssl_seg7_vertex_07005D60:
+  type: VTX
+  count: 16
+  offset: 0x5D60
+  symbol: ssl_seg7_vertex_07005D60
+
+ssl_seg7_vertex_07005E60:
+  type: VTX
+  count: 15
+  offset: 0x5E60
+  symbol: ssl_seg7_vertex_07005E60
+
+ssl_seg7_vertex_07005F50:
+  type: VTX
+  count: 14
+  offset: 0x5F50
+  symbol: ssl_seg7_vertex_07005F50
+
+ssl_seg7_vertex_07006030:
+  type: VTX
+  count: 15
+  offset: 0x6030
+  symbol: ssl_seg7_vertex_07006030
+
+ssl_seg7_vertex_07006120:
+  type: VTX
+  count: 16
+  offset: 0x6120
+  symbol: ssl_seg7_vertex_07006120
+
+ssl_seg7_vertex_07006220:
+  type: VTX
+  count: 15
+  offset: 0x6220
+  symbol: ssl_seg7_vertex_07006220
+
+ssl_seg7_vertex_07006310:
+  type: VTX
+  count: 14
+  offset: 0x6310
+  symbol: ssl_seg7_vertex_07006310
+
+ssl_seg7_vertex_070063F0:
+  type: VTX
+  count: 8
+  offset: 0x63F0
+  symbol: ssl_seg7_vertex_070063F0
+
+ssl_seg7_vertex_07006470:
+  type: VTX
+  count: 15
+  offset: 0x6470
+  symbol: ssl_seg7_vertex_07006470
+
+ssl_seg7_vertex_07006560:
+  type: VTX
+  count: 7
+  offset: 0x6560
+  symbol: ssl_seg7_vertex_07006560
+
+ssl_seg7_vertex_070065D0:
+  type: VTX
+  count: 15
+  offset: 0x65D0
+  symbol: ssl_seg7_vertex_070065D0
+
+ssl_seg7_vertex_070066C0:
+  type: VTX
+  count: 15
+  offset: 0x66C0
+  symbol: ssl_seg7_vertex_070066C0
+
+ssl_seg7_vertex_070067B0:
+  type: VTX
+  count: 16
+  offset: 0x67B0
+  symbol: ssl_seg7_vertex_070067B0
+
+ssl_seg7_vertex_070068B0:
+  type: VTX
+  count: 14
+  offset: 0x68B0
+  symbol: ssl_seg7_vertex_070068B0
+
+ssl_seg7_vertex_07006990:
+  type: VTX
+  count: 15
+  offset: 0x6990
+  symbol: ssl_seg7_vertex_07006990
+
+ssl_seg7_vertex_07006A80:
+  type: VTX
+  count: 14
+  offset: 0x6A80
+  symbol: ssl_seg7_vertex_07006A80
+
+ssl_seg7_vertex_07006B60:
+  type: VTX
+  count: 15
+  offset: 0x6B60
+  symbol: ssl_seg7_vertex_07006B60
+
+ssl_seg7_vertex_07006C50:
+  type: VTX
+  count: 16
+  offset: 0x6C50
+  symbol: ssl_seg7_vertex_07006C50
+
+ssl_seg7_vertex_07006D50:
+  type: VTX
+  count: 15
+  offset: 0x6D50
+  symbol: ssl_seg7_vertex_07006D50
+
+ssl_seg7_vertex_07006E40:
+  type: VTX
+  count: 14
+  offset: 0x6E40
+  symbol: ssl_seg7_vertex_07006E40
+
+ssl_seg7_vertex_07006F20:
+  type: VTX
+  count: 15
+  offset: 0x6F20
+  symbol: ssl_seg7_vertex_07006F20
+
+ssl_seg7_vertex_07007010:
+  type: VTX
+  count: 15
+  offset: 0x7010
+  symbol: ssl_seg7_vertex_07007010
+
+ssl_seg7_vertex_07007100:
+  type: VTX
+  count: 15
+  offset: 0x7100
+  symbol: ssl_seg7_vertex_07007100
+
+ssl_seg7_vertex_070071F0:
+  type: VTX
+  count: 15
+  offset: 0x71F0
+  symbol: ssl_seg7_vertex_070071F0
+
+ssl_seg7_vertex_070072E0:
+  type: VTX
+  count: 15
+  offset: 0x72E0
+  symbol: ssl_seg7_vertex_070072E0
+
+ssl_seg7_vertex_070073D0:
+  type: VTX
+  count: 15
+  offset: 0x73D0
+  symbol: ssl_seg7_vertex_070073D0
+
+ssl_seg7_vertex_070074C0:
+  type: VTX
+  count: 15
+  offset: 0x74C0
+  symbol: ssl_seg7_vertex_070074C0
+
+ssl_seg7_vertex_070075B0:
+  type: VTX
+  count: 15
+  offset: 0x75B0
+  symbol: ssl_seg7_vertex_070075B0
+
+ssl_seg7_vertex_070076A0:
+  type: VTX
+  count: 15
+  offset: 0x76A0
+  symbol: ssl_seg7_vertex_070076A0
+
+ssl_seg7_vertex_07007790:
+  type: VTX
+  count: 15
+  offset: 0x7790
+  symbol: ssl_seg7_vertex_07007790
+
+ssl_seg7_vertex_07007880:
+  type: VTX
+  count: 8
+  offset: 0x7880
+  symbol: ssl_seg7_vertex_07007880
+
+ssl_seg7_vertex_07007900:
+  type: VTX
+  count: 16
+  offset: 0x7900
+  symbol: ssl_seg7_vertex_07007900
+
+ssl_seg7_vertex_07007A00:
+  type: VTX
+  count: 15
+  offset: 0x7A00
+  symbol: ssl_seg7_vertex_07007A00
+
+ssl_seg7_vertex_07007AF0:
+  type: VTX
+  count: 15
+  offset: 0x7AF0
+  symbol: ssl_seg7_vertex_07007AF0
+
+ssl_seg7_vertex_07007BE0:
+  type: VTX
+  count: 10
+  offset: 0x7BE0
+  symbol: ssl_seg7_vertex_07007BE0
+
+ssl_seg7_vertex_07007C80:
+  type: VTX
+  count: 15
+  offset: 0x7C80
+  symbol: ssl_seg7_vertex_07007C80
+
+ssl_seg7_vertex_07007D70:
+  type: VTX
+  count: 15
+  offset: 0x7D70
+  symbol: ssl_seg7_vertex_07007D70
+
+ssl_seg7_vertex_07007E60:
+  type: VTX
+  count: 15
+  offset: 0x7E60
+  symbol: ssl_seg7_vertex_07007E60
+
+ssl_seg7_vertex_07007F50:
+  type: VTX
+  count: 15
+  offset: 0x7F50
+  symbol: ssl_seg7_vertex_07007F50
+
+ssl_seg7_vertex_07008040:
+  type: VTX
+  count: 15
+  offset: 0x8040
+  symbol: ssl_seg7_vertex_07008040
+
+ssl_seg7_vertex_07008130:
+  type: VTX
+  count: 15
+  offset: 0x8130
+  symbol: ssl_seg7_vertex_07008130
+
+ssl_seg7_vertex_07008220:
+  type: VTX
+  count: 15
+  offset: 0x8220
+  symbol: ssl_seg7_vertex_07008220
+
+ssl_seg7_vertex_07008310:
+  type: VTX
+  count: 15
+  offset: 0x8310
+  symbol: ssl_seg7_vertex_07008310
+
+ssl_seg7_vertex_07008400:
+  type: VTX
+  count: 15
+  offset: 0x8400
+  symbol: ssl_seg7_vertex_07008400
+
+ssl_seg7_vertex_070084F0:
+  type: VTX
+  count: 15
+  offset: 0x84F0
+  symbol: ssl_seg7_vertex_070084F0
+
+ssl_seg7_vertex_070085E0:
+  type: VTX
+  count: 14
+  offset: 0x85E0
+  symbol: ssl_seg7_vertex_070085E0
+
+ssl_seg7_vertex_070086C0:
+  type: VTX
+  count: 16
+  offset: 0x86C0
+  symbol: ssl_seg7_vertex_070086C0
+
+ssl_seg7_vertex_070087C0:
+  type: VTX
+  count: 14
+  offset: 0x87C0
+  symbol: ssl_seg7_vertex_070087C0
+
+ssl_seg7_vertex_070088A0:
+  type: VTX
+  count: 16
+  offset: 0x88A0
+  symbol: ssl_seg7_vertex_070088A0
+
+ssl_seg7_vertex_070089A0:
+  type: VTX
+  count: 16
+  offset: 0x89A0
+  symbol: ssl_seg7_vertex_070089A0
+
+ssl_seg7_vertex_07008AA0:
+  type: VTX
+  count: 16
+  offset: 0x8AA0
+  symbol: ssl_seg7_vertex_07008AA0
+
+ssl_seg7_vertex_07008BA0:
+  type: VTX
+  count: 10
+  offset: 0x8BA0
+  symbol: ssl_seg7_vertex_07008BA0
+
+ssl_seg7_dl_07008C40:
+  type: GFX
+  offset: 0x8C40
+  symbol: ssl_seg7_dl_07008C40
+
+ssl_seg7_dl_07008DE0:
+  type: GFX
+  offset: 0x8DE0
+  symbol: ssl_seg7_dl_07008DE0
+
+ssl_seg7_dl_07009170:
+  type: GFX
+  offset: 0x9170
+  symbol: ssl_seg7_dl_07009170
+
+ssl_seg7_dl_07009410:
+  type: GFX
+  offset: 0x9410
+  symbol: ssl_seg7_dl_07009410
+
+ssl_seg7_dl_07009950:
+  type: GFX
+  offset: 0x9950
+  symbol: ssl_seg7_dl_07009950
+
+ssl_seg7_dl_07009A40:
+  type: GFX
+  offset: 0x9A40
+  symbol: ssl_seg7_dl_07009A40
+
+ssl_seg7_dl_07009C60:
+  type: GFX
+  offset: 0x9C60
+  symbol: ssl_seg7_dl_07009C60
+
+ssl_seg7_dl_07009E90:
+  type: GFX
+  offset: 0x9E90
+  symbol: ssl_seg7_dl_07009E90
+
+ssl_seg7_dl_07009F48:
+  type: GFX
+  offset: 0x9F48
+  symbol: ssl_seg7_dl_07009F48
+
+ssl_seg7_vertex_0700BC88:
+  type: VTX
+  count: 4
+  offset: 0xBC88
+  symbol: ssl_seg7_vertex_0700BC88
+
+ssl_seg7_dl_0700BCC8:
+  type: GFX
+  offset: 0xBCC8
+  symbol: ssl_seg7_dl_0700BCC8
+
+ssl_seg7_dl_0700BD00:
+  type: GFX
+  offset: 0xBD00
+  symbol: ssl_seg7_dl_0700BD00
+
+ssl_seg7_lights_0700BAD8:
+  type: LIGHTS
+  size: 24
+  offset: 0xBAD8
+  symbol: ssl_seg7_lights_0700BAD8
+
+ssl_seg7_vertex_0700BAF0:
+  type: VTX
+  count: 12
+  offset: 0xBAF0
+  symbol: ssl_seg7_vertex_0700BAF0
+
+ssl_seg7_dl_0700BBB0:
+  type: GFX
+  offset: 0xBBB0
+  symbol: ssl_seg7_dl_0700BBB0
+
+ssl_seg7_dl_0700BC18:
+  type: GFX
+  offset: 0xBC18
+  symbol: ssl_seg7_dl_0700BC18
+
+ssl_seg7_lights_0700A020:
+  type: LIGHTS
+  size: 24
+  offset: 0xA020
+  symbol: ssl_seg7_lights_0700A020
+
+ssl_seg7_vertex_0700A038:
+  type: VTX
+  count: 16
+  offset: 0xA038
+  symbol: ssl_seg7_vertex_0700A038
+
+ssl_seg7_vertex_0700A138:
+  type: VTX
+  count: 16
+  offset: 0xA138
+  symbol: ssl_seg7_vertex_0700A138
+
+ssl_seg7_vertex_0700A238:
+  type: VTX
+  count: 15
+  offset: 0xA238
+  symbol: ssl_seg7_vertex_0700A238
+
+ssl_seg7_vertex_0700A328:
+  type: VTX
+  count: 14
+  offset: 0xA328
+  symbol: ssl_seg7_vertex_0700A328
+
+ssl_seg7_vertex_0700A408:
+  type: VTX
+  count: 15
+  offset: 0xA408
+  symbol: ssl_seg7_vertex_0700A408
+
+ssl_seg7_vertex_0700A4F8:
+  type: VTX
+  count: 15
+  offset: 0xA4F8
+  symbol: ssl_seg7_vertex_0700A4F8
+
+ssl_seg7_vertex_0700A5E8:
+  type: VTX
+  count: 16
+  offset: 0xA5E8
+  symbol: ssl_seg7_vertex_0700A5E8
+
+ssl_seg7_vertex_0700A6E8:
+  type: VTX
+  count: 16
+  offset: 0xA6E8
+  symbol: ssl_seg7_vertex_0700A6E8
+
+ssl_seg7_vertex_0700A7E8:
+  type: VTX
+  count: 16
+  offset: 0xA7E8
+  symbol: ssl_seg7_vertex_0700A7E8
+
+ssl_seg7_vertex_0700A8E8:
+  type: VTX
+  count: 16
+  offset: 0xA8E8
+  symbol: ssl_seg7_vertex_0700A8E8
+
+ssl_seg7_vertex_0700A9E8:
+  type: VTX
+  count: 15
+  offset: 0xA9E8
+  symbol: ssl_seg7_vertex_0700A9E8
+
+ssl_seg7_vertex_0700AAD8:
+  type: VTX
+  count: 16
+  offset: 0xAAD8
+  symbol: ssl_seg7_vertex_0700AAD8
+
+ssl_seg7_vertex_0700ABD8:
+  type: VTX
+  count: 15
+  offset: 0xABD8
+  symbol: ssl_seg7_vertex_0700ABD8
+
+ssl_seg7_vertex_0700ACC8:
+  type: VTX
+  count: 15
+  offset: 0xACC8
+  symbol: ssl_seg7_vertex_0700ACC8
+
+ssl_seg7_vertex_0700ADB8:
+  type: VTX
+  count: 15
+  offset: 0xADB8
+  symbol: ssl_seg7_vertex_0700ADB8
+
+ssl_seg7_vertex_0700AEA8:
+  type: VTX
+  count: 15
+  offset: 0xAEA8
+  symbol: ssl_seg7_vertex_0700AEA8
+
+ssl_seg7_vertex_0700AF98:
+  type: VTX
+  count: 16
+  offset: 0xAF98
+  symbol: ssl_seg7_vertex_0700AF98
+
+ssl_seg7_vertex_0700B098:
+  type: VTX
+  count: 14
+  offset: 0xB098
+  symbol: ssl_seg7_vertex_0700B098
+
+ssl_seg7_vertex_0700B178:
+  type: VTX
+  count: 16
+  offset: 0xB178
+  symbol: ssl_seg7_vertex_0700B178
+
+ssl_seg7_vertex_0700B278:
+  type: VTX
+  count: 7
+  offset: 0xB278
+  symbol: ssl_seg7_vertex_0700B278
+
+ssl_seg7_dl_0700B2E8:
+  type: GFX
+  offset: 0xB2E8
+  symbol: ssl_seg7_dl_0700B2E8
+
+ssl_seg7_dl_0700BA78:
+  type: GFX
+  offset: 0xBA78
+  symbol: ssl_seg7_dl_0700BA78
+
+ssl_seg7_lights_0701FD60:
+  type: LIGHTS
+  size: 24
+  offset: 0x1FD60
+  symbol: ssl_seg7_lights_0701FD60
+
+ssl_seg7_lights_0701FD78:
+  type: LIGHTS
+  size: 24
+  offset: 0x1FD78
+  symbol: ssl_seg7_lights_0701FD78
+
+ssl_seg7_vertex_0701FD90:
+  type: VTX
+  count: 12
+  offset: 0x1FD90
+  symbol: ssl_seg7_vertex_0701FD90
+
+ssl_seg7_vertex_0701FE50:
+  type: VTX
+  count: 15
+  offset: 0x1FE50
+  symbol: ssl_seg7_vertex_0701FE50
+
+ssl_seg7_vertex_0701FF40:
+  type: VTX
+  count: 15
+  offset: 0x1FF40
+  symbol: ssl_seg7_vertex_0701FF40
+
+ssl_seg7_vertex_07020030:
+  type: VTX
+  count: 15
+  offset: 0x20030
+  symbol: ssl_seg7_vertex_07020030
+
+ssl_seg7_vertex_07020120:
+  type: VTX
+  count: 15
+  offset: 0x20120
+  symbol: ssl_seg7_vertex_07020120
+
+ssl_seg7_vertex_07020210:
+  type: VTX
+  count: 15
+  offset: 0x20210
+  symbol: ssl_seg7_vertex_07020210
+
+ssl_seg7_vertex_07020300:
+  type: VTX
+  count: 15
+  offset: 0x20300
+  symbol: ssl_seg7_vertex_07020300
+
+ssl_seg7_vertex_070203F0:
+  type: VTX
+  count: 15
+  offset: 0x203F0
+  symbol: ssl_seg7_vertex_070203F0
+
+ssl_seg7_vertex_070204E0:
+  type: VTX
+  count: 7
+  offset: 0x204E0
+  symbol: ssl_seg7_vertex_070204E0
+
+ssl_seg7_vertex_07020550:
+  type: VTX
+  count: 8
+  offset: 0x20550
+  symbol: ssl_seg7_vertex_07020550
+
+ssl_seg7_vertex_070205D0:
+  type: VTX
+  count: 15
+  offset: 0x205D0
+  symbol: ssl_seg7_vertex_070205D0
+
+ssl_seg7_vertex_070206C0:
+  type: VTX
+  count: 15
+  offset: 0x206C0
+  symbol: ssl_seg7_vertex_070206C0
+
+ssl_seg7_vertex_070207B0:
+  type: VTX
+  count: 12
+  offset: 0x207B0
+  symbol: ssl_seg7_vertex_070207B0
+
+ssl_seg7_vertex_07020870:
+  type: VTX
+  count: 14
+  offset: 0x20870
+  symbol: ssl_seg7_vertex_07020870
+
+ssl_seg7_vertex_07020950:
+  type: VTX
+  count: 13
+  offset: 0x20950
+  symbol: ssl_seg7_vertex_07020950
+
+ssl_seg7_vertex_07020A20:
+  type: VTX
+  count: 16
+  offset: 0x20A20
+  symbol: ssl_seg7_vertex_07020A20
+
+ssl_seg7_vertex_07020B20:
+  type: VTX
+  count: 16
+  offset: 0x20B20
+  symbol: ssl_seg7_vertex_07020B20
+
+ssl_seg7_vertex_07020C20:
+  type: VTX
+  count: 15
+  offset: 0x20C20
+  symbol: ssl_seg7_vertex_07020C20
+
+ssl_seg7_vertex_07020D10:
+  type: VTX
+  count: 15
+  offset: 0x20D10
+  symbol: ssl_seg7_vertex_07020D10
+
+ssl_seg7_vertex_07020E00:
+  type: VTX
+  count: 11
+  offset: 0x20E00
+  symbol: ssl_seg7_vertex_07020E00
+
+ssl_seg7_vertex_07020EB0:
+  type: VTX
+  count: 16
+  offset: 0x20EB0
+  symbol: ssl_seg7_vertex_07020EB0
+
+ssl_seg7_vertex_07020FB0:
+  type: VTX
+  count: 14
+  offset: 0x20FB0
+  symbol: ssl_seg7_vertex_07020FB0
+
+ssl_seg7_vertex_07021090:
+  type: VTX
+  count: 12
+  offset: 0x21090
+  symbol: ssl_seg7_vertex_07021090
+
+ssl_seg7_vertex_07021150:
+  type: VTX
+  count: 16
+  offset: 0x21150
+  symbol: ssl_seg7_vertex_07021150
+
+ssl_seg7_vertex_07021250:
+  type: VTX
+  count: 4
+  offset: 0x21250
+  symbol: ssl_seg7_vertex_07021250
+
+ssl_seg7_dl_07021290:
+  type: GFX
+  offset: 0x21290
+  symbol: ssl_seg7_dl_07021290
+
+ssl_seg7_dl_070214E8:
+  type: GFX
+  offset: 0x214E8
+  symbol: ssl_seg7_dl_070214E8
+
+ssl_seg7_dl_07021638:
+  type: GFX
+  offset: 0x21638
+  symbol: ssl_seg7_dl_07021638
+
+ssl_seg7_dl_07021870:
+  type: GFX
+  offset: 0x21870
+  symbol: ssl_seg7_dl_07021870
+
+ssl_seg7_dl_07021910:
+  type: GFX
+  offset: 0x21910
+  symbol: ssl_seg7_dl_07021910
+
+ssl_seg7_dl_07021968:
+  type: GFX
+  offset: 0x21968
+  symbol: ssl_seg7_dl_07021968
+
+ssl_seg7_dl_070219D0:
+  type: GFX
+  offset: 0x219D0
+  symbol: ssl_seg7_dl_070219D0
+
+ssl_seg7_dl_07021A08:
+  type: GFX
+  offset: 0x21A08
+  symbol: ssl_seg7_dl_07021A08
+
+ssl_seg7_lights_07021AC8:
+  type: LIGHTS
+  size: 24
+  offset: 0x21AC8
+  symbol: ssl_seg7_lights_07021AC8
+
+ssl_seg7_vertex_07021AE0:
+  type: VTX
+  count: 12
+  offset: 0x21AE0
+  symbol: ssl_seg7_vertex_07021AE0
+
+ssl_seg7_vertex_07021BA0:
+  type: VTX
+  count: 15
+  offset: 0x21BA0
+  symbol: ssl_seg7_vertex_07021BA0
+
+ssl_seg7_vertex_07021C90:
+  type: VTX
+  count: 7
+  offset: 0x21C90
+  symbol: ssl_seg7_vertex_07021C90
+
+ssl_seg7_dl_07021D00:
+  type: GFX
+  offset: 0x21D00
+  symbol: ssl_seg7_dl_07021D00
+
+ssl_seg7_dl_07021D68:
+  type: GFX
+  offset: 0x21D68
+  symbol: ssl_seg7_dl_07021D68
+
+ssl_seg7_dl_07021DE8:
+  type: GFX
+  offset: 0x21DE8
+  symbol: ssl_seg7_dl_07021DE8
+
+ssl_seg7_lights_07012BD0:
+  type: LIGHTS
+  size: 24
+  offset: 0x12BD0
+  symbol: ssl_seg7_lights_07012BD0
+
+ssl_seg7_lights_07012BE8:
+  type: LIGHTS
+  size: 24
+  offset: 0x12BE8
+  symbol: ssl_seg7_lights_07012BE8
+
+ssl_seg7_lights_07012C00:
+  type: LIGHTS
+  size: 24
+  offset: 0x12C00
+  symbol: ssl_seg7_lights_07012C00
+
+ssl_seg7_lights_07012C18:
+  type: LIGHTS
+  size: 24
+  offset: 0x12C18
+  symbol: ssl_seg7_lights_07012C18
+
+ssl_seg7_lights_07012C30:
+  type: LIGHTS
+  size: 24
+  offset: 0x12C30
+  symbol: ssl_seg7_lights_07012C30
+
+ssl_seg7_vertex_07012C48:
+  type: VTX
+  count: 8
+  offset: 0x12C48
+  symbol: ssl_seg7_vertex_07012C48
+
+ssl_seg7_vertex_07012CC8:
+  type: VTX
+  count: 8
+  offset: 0x12CC8
+  symbol: ssl_seg7_vertex_07012CC8
+
+ssl_seg7_vertex_07012D48:
+  type: VTX
+  count: 16
+  offset: 0x12D48
+  symbol: ssl_seg7_vertex_07012D48
+
+ssl_seg7_vertex_07012E48:
+  type: VTX
+  count: 3
+  offset: 0x12E48
+  symbol: ssl_seg7_vertex_07012E48
+
+ssl_seg7_vertex_07012E78:
+  type: VTX
+  count: 15
+  offset: 0x12E78
+  symbol: ssl_seg7_vertex_07012E78
+
+ssl_seg7_vertex_07012F68:
+  type: VTX
+  count: 16
+  offset: 0x12F68
+  symbol: ssl_seg7_vertex_07012F68
+
+ssl_seg7_vertex_07013068:
+  type: VTX
+  count: 15
+  offset: 0x13068
+  symbol: ssl_seg7_vertex_07013068
+
+ssl_seg7_vertex_07013158:
+  type: VTX
+  count: 15
+  offset: 0x13158
+  symbol: ssl_seg7_vertex_07013158
+
+ssl_seg7_vertex_07013248:
+  type: VTX
+  count: 15
+  offset: 0x13248
+  symbol: ssl_seg7_vertex_07013248
+
+ssl_seg7_vertex_07013338:
+  type: VTX
+  count: 15
+  offset: 0x13338
+  symbol: ssl_seg7_vertex_07013338
+
+ssl_seg7_vertex_07013428:
+  type: VTX
+  count: 16
+  offset: 0x13428
+  symbol: ssl_seg7_vertex_07013428
+
+ssl_seg7_vertex_07013528:
+  type: VTX
+  count: 16
+  offset: 0x13528
+  symbol: ssl_seg7_vertex_07013528
+
+ssl_seg7_vertex_07013628:
+  type: VTX
+  count: 16
+  offset: 0x13628
+  symbol: ssl_seg7_vertex_07013628
+
+ssl_seg7_vertex_07013728:
+  type: VTX
+  count: 15
+  offset: 0x13728
+  symbol: ssl_seg7_vertex_07013728
+
+ssl_seg7_vertex_07013818:
+  type: VTX
+  count: 16
+  offset: 0x13818
+  symbol: ssl_seg7_vertex_07013818
+
+ssl_seg7_vertex_07013918:
+  type: VTX
+  count: 14
+  offset: 0x13918
+  symbol: ssl_seg7_vertex_07013918
+
+ssl_seg7_vertex_070139F8:
+  type: VTX
+  count: 14
+  offset: 0x139F8
+  symbol: ssl_seg7_vertex_070139F8
+
+ssl_seg7_vertex_07013AD8:
+  type: VTX
+  count: 16
+  offset: 0x13AD8
+  symbol: ssl_seg7_vertex_07013AD8
+
+ssl_seg7_vertex_07013BD8:
+  type: VTX
+  count: 15
+  offset: 0x13BD8
+  symbol: ssl_seg7_vertex_07013BD8
+
+ssl_seg7_vertex_07013CC8:
+  type: VTX
+  count: 16
+  offset: 0x13CC8
+  symbol: ssl_seg7_vertex_07013CC8
+
+ssl_seg7_vertex_07013DC8:
+  type: VTX
+  count: 16
+  offset: 0x13DC8
+  symbol: ssl_seg7_vertex_07013DC8
+
+ssl_seg7_vertex_07013EC8:
+  type: VTX
+  count: 16
+  offset: 0x13EC8
+  symbol: ssl_seg7_vertex_07013EC8
+
+ssl_seg7_vertex_07013FC8:
+  type: VTX
+  count: 13
+  offset: 0x13FC8
+  symbol: ssl_seg7_vertex_07013FC8
+
+ssl_seg7_vertex_07014098:
+  type: VTX
+  count: 15
+  offset: 0x14098
+  symbol: ssl_seg7_vertex_07014098
+
+ssl_seg7_vertex_07014188:
+  type: VTX
+  count: 15
+  offset: 0x14188
+  symbol: ssl_seg7_vertex_07014188
+
+ssl_seg7_vertex_07014278:
+  type: VTX
+  count: 15
+  offset: 0x14278
+  symbol: ssl_seg7_vertex_07014278
+
+ssl_seg7_vertex_07014368:
+  type: VTX
+  count: 14
+  offset: 0x14368
+  symbol: ssl_seg7_vertex_07014368
+
+ssl_seg7_vertex_07014448:
+  type: VTX
+  count: 16
+  offset: 0x14448
+  symbol: ssl_seg7_vertex_07014448
+
+ssl_seg7_vertex_07014548:
+  type: VTX
+  count: 14
+  offset: 0x14548
+  symbol: ssl_seg7_vertex_07014548
+
+ssl_seg7_vertex_07014628:
+  type: VTX
+  count: 16
+  offset: 0x14628
+  symbol: ssl_seg7_vertex_07014628
+
+ssl_seg7_vertex_07014728:
+  type: VTX
+  count: 15
+  offset: 0x14728
+  symbol: ssl_seg7_vertex_07014728
+
+ssl_seg7_vertex_07014818:
+  type: VTX
+  count: 14
+  offset: 0x14818
+  symbol: ssl_seg7_vertex_07014818
+
+ssl_seg7_vertex_070148F8:
+  type: VTX
+  count: 15
+  offset: 0x148F8
+  symbol: ssl_seg7_vertex_070148F8
+
+ssl_seg7_vertex_070149E8:
+  type: VTX
+  count: 14
+  offset: 0x149E8
+  symbol: ssl_seg7_vertex_070149E8
+
+ssl_seg7_vertex_07014AC8:
+  type: VTX
+  count: 15
+  offset: 0x14AC8
+  symbol: ssl_seg7_vertex_07014AC8
+
+ssl_seg7_vertex_07014BB8:
+  type: VTX
+  count: 15
+  offset: 0x14BB8
+  symbol: ssl_seg7_vertex_07014BB8
+
+ssl_seg7_vertex_07014CA8:
+  type: VTX
+  count: 15
+  offset: 0x14CA8
+  symbol: ssl_seg7_vertex_07014CA8
+
+ssl_seg7_vertex_07014D98:
+  type: VTX
+  count: 15
+  offset: 0x14D98
+  symbol: ssl_seg7_vertex_07014D98
+
+ssl_seg7_vertex_07014E88:
+  type: VTX
+  count: 15
+  offset: 0x14E88
+  symbol: ssl_seg7_vertex_07014E88
+
+ssl_seg7_vertex_07014F78:
+  type: VTX
+  count: 16
+  offset: 0x14F78
+  symbol: ssl_seg7_vertex_07014F78
+
+ssl_seg7_vertex_07015078:
+  type: VTX
+  count: 15
+  offset: 0x15078
+  symbol: ssl_seg7_vertex_07015078
+
+ssl_seg7_vertex_07015168:
+  type: VTX
+  count: 14
+  offset: 0x15168
+  symbol: ssl_seg7_vertex_07015168
+
+ssl_seg7_vertex_07015248:
+  type: VTX
+  count: 16
+  offset: 0x15248
+  symbol: ssl_seg7_vertex_07015248
+
+ssl_seg7_vertex_07015348:
+  type: VTX
+  count: 14
+  offset: 0x15348
+  symbol: ssl_seg7_vertex_07015348
+
+ssl_seg7_vertex_07015428:
+  type: VTX
+  count: 16
+  offset: 0x15428
+  symbol: ssl_seg7_vertex_07015428
+
+ssl_seg7_vertex_07015528:
+  type: VTX
+  count: 16
+  offset: 0x15528
+  symbol: ssl_seg7_vertex_07015528
+
+ssl_seg7_vertex_07015628:
+  type: VTX
+  count: 16
+  offset: 0x15628
+  symbol: ssl_seg7_vertex_07015628
+
+ssl_seg7_vertex_07015728:
+  type: VTX
+  count: 15
+  offset: 0x15728
+  symbol: ssl_seg7_vertex_07015728
+
+ssl_seg7_vertex_07015818:
+  type: VTX
+  count: 15
+  offset: 0x15818
+  symbol: ssl_seg7_vertex_07015818
+
+ssl_seg7_vertex_07015908:
+  type: VTX
+  count: 16
+  offset: 0x15908
+  symbol: ssl_seg7_vertex_07015908
+
+ssl_seg7_vertex_07015A08:
+  type: VTX
+  count: 14
+  offset: 0x15A08
+  symbol: ssl_seg7_vertex_07015A08
+
+ssl_seg7_vertex_07015AE8:
+  type: VTX
+  count: 6
+  offset: 0x15AE8
+  symbol: ssl_seg7_vertex_07015AE8
+
+ssl_seg7_vertex_07015B48:
+  type: VTX
+  count: 10
+  offset: 0x15B48
+  symbol: ssl_seg7_vertex_07015B48
+
+ssl_seg7_vertex_07015BE8:
+  type: VTX
+  count: 16
+  offset: 0x15BE8
+  symbol: ssl_seg7_vertex_07015BE8
+
+ssl_seg7_vertex_07015CE8:
+  type: VTX
+  count: 15
+  offset: 0x15CE8
+  symbol: ssl_seg7_vertex_07015CE8
+
+ssl_seg7_vertex_07015DD8:
+  type: VTX
+  count: 15
+  offset: 0x15DD8
+  symbol: ssl_seg7_vertex_07015DD8
+
+ssl_seg7_vertex_07015EC8:
+  type: VTX
+  count: 15
+  offset: 0x15EC8
+  symbol: ssl_seg7_vertex_07015EC8
+
+ssl_seg7_vertex_07015FB8:
+  type: VTX
+  count: 15
+  offset: 0x15FB8
+  symbol: ssl_seg7_vertex_07015FB8
+
+ssl_seg7_vertex_070160A8:
+  type: VTX
+  count: 15
+  offset: 0x160A8
+  symbol: ssl_seg7_vertex_070160A8
+
+ssl_seg7_vertex_07016198:
+  type: VTX
+  count: 15
+  offset: 0x16198
+  symbol: ssl_seg7_vertex_07016198
+
+ssl_seg7_vertex_07016288:
+  type: VTX
+  count: 15
+  offset: 0x16288
+  symbol: ssl_seg7_vertex_07016288
+
+ssl_seg7_vertex_07016378:
+  type: VTX
+  count: 16
+  offset: 0x16378
+  symbol: ssl_seg7_vertex_07016378
+
+ssl_seg7_vertex_07016478:
+  type: VTX
+  count: 16
+  offset: 0x16478
+  symbol: ssl_seg7_vertex_07016478
+
+ssl_seg7_vertex_07016578:
+  type: VTX
+  count: 16
+  offset: 0x16578
+  symbol: ssl_seg7_vertex_07016578
+
+ssl_seg7_vertex_07016678:
+  type: VTX
+  count: 14
+  offset: 0x16678
+  symbol: ssl_seg7_vertex_07016678
+
+ssl_seg7_vertex_07016758:
+  type: VTX
+  count: 15
+  offset: 0x16758
+  symbol: ssl_seg7_vertex_07016758
+
+ssl_seg7_vertex_07016848:
+  type: VTX
+  count: 15
+  offset: 0x16848
+  symbol: ssl_seg7_vertex_07016848
+
+ssl_seg7_vertex_07016938:
+  type: VTX
+  count: 14
+  offset: 0x16938
+  symbol: ssl_seg7_vertex_07016938
+
+ssl_seg7_vertex_07016A18:
+  type: VTX
+  count: 15
+  offset: 0x16A18
+  symbol: ssl_seg7_vertex_07016A18
+
+ssl_seg7_vertex_07016B08:
+  type: VTX
+  count: 15
+  offset: 0x16B08
+  symbol: ssl_seg7_vertex_07016B08
+
+ssl_seg7_vertex_07016BF8:
+  type: VTX
+  count: 15
+  offset: 0x16BF8
+  symbol: ssl_seg7_vertex_07016BF8
+
+ssl_seg7_vertex_07016CE8:
+  type: VTX
+  count: 15
+  offset: 0x16CE8
+  symbol: ssl_seg7_vertex_07016CE8
+
+ssl_seg7_vertex_07016DD8:
+  type: VTX
+  count: 15
+  offset: 0x16DD8
+  symbol: ssl_seg7_vertex_07016DD8
+
+ssl_seg7_vertex_07016EC8:
+  type: VTX
+  count: 15
+  offset: 0x16EC8
+  symbol: ssl_seg7_vertex_07016EC8
+
+ssl_seg7_vertex_07016FB8:
+  type: VTX
+  count: 4
+  offset: 0x16FB8
+  symbol: ssl_seg7_vertex_07016FB8
+
+ssl_seg7_vertex_07016FF8:
+  type: VTX
+  count: 15
+  offset: 0x16FF8
+  symbol: ssl_seg7_vertex_07016FF8
+
+ssl_seg7_vertex_070170E8:
+  type: VTX
+  count: 15
+  offset: 0x170E8
+  symbol: ssl_seg7_vertex_070170E8
+
+ssl_seg7_vertex_070171D8:
+  type: VTX
+  count: 15
+  offset: 0x171D8
+  symbol: ssl_seg7_vertex_070171D8
+
+ssl_seg7_vertex_070172C8:
+  type: VTX
+  count: 15
+  offset: 0x172C8
+  symbol: ssl_seg7_vertex_070172C8
+
+ssl_seg7_vertex_070173B8:
+  type: VTX
+  count: 15
+  offset: 0x173B8
+  symbol: ssl_seg7_vertex_070173B8
+
+ssl_seg7_vertex_070174A8:
+  type: VTX
+  count: 16
+  offset: 0x174A8
+  symbol: ssl_seg7_vertex_070174A8
+
+ssl_seg7_vertex_070175A8:
+  type: VTX
+  count: 15
+  offset: 0x175A8
+  symbol: ssl_seg7_vertex_070175A8
+
+ssl_seg7_vertex_07017698:
+  type: VTX
+  count: 14
+  offset: 0x17698
+  symbol: ssl_seg7_vertex_07017698
+
+ssl_seg7_vertex_07017778:
+  type: VTX
+  count: 14
+  offset: 0x17778
+  symbol: ssl_seg7_vertex_07017778
+
+ssl_seg7_vertex_07017858:
+  type: VTX
+  count: 14
+  offset: 0x17858
+  symbol: ssl_seg7_vertex_07017858
+
+ssl_seg7_vertex_07017938:
+  type: VTX
+  count: 15
+  offset: 0x17938
+  symbol: ssl_seg7_vertex_07017938
+
+ssl_seg7_vertex_07017A28:
+  type: VTX
+  count: 15
+  offset: 0x17A28
+  symbol: ssl_seg7_vertex_07017A28
+
+ssl_seg7_vertex_07017B18:
+  type: VTX
+  count: 15
+  offset: 0x17B18
+  symbol: ssl_seg7_vertex_07017B18
+
+ssl_seg7_vertex_07017C08:
+  type: VTX
+  count: 15
+  offset: 0x17C08
+  symbol: ssl_seg7_vertex_07017C08
+
+ssl_seg7_vertex_07017CF8:
+  type: VTX
+  count: 15
+  offset: 0x17CF8
+  symbol: ssl_seg7_vertex_07017CF8
+
+ssl_seg7_vertex_07017DE8:
+  type: VTX
+  count: 15
+  offset: 0x17DE8
+  symbol: ssl_seg7_vertex_07017DE8
+
+ssl_seg7_vertex_07017ED8:
+  type: VTX
+  count: 15
+  offset: 0x17ED8
+  symbol: ssl_seg7_vertex_07017ED8
+
+ssl_seg7_vertex_07017FC8:
+  type: VTX
+  count: 15
+  offset: 0x17FC8
+  symbol: ssl_seg7_vertex_07017FC8
+
+ssl_seg7_vertex_070180B8:
+  type: VTX
+  count: 15
+  offset: 0x180B8
+  symbol: ssl_seg7_vertex_070180B8
+
+ssl_seg7_vertex_070181A8:
+  type: VTX
+  count: 15
+  offset: 0x181A8
+  symbol: ssl_seg7_vertex_070181A8
+
+ssl_seg7_vertex_07018298:
+  type: VTX
+  count: 15
+  offset: 0x18298
+  symbol: ssl_seg7_vertex_07018298
+
+ssl_seg7_vertex_07018388:
+  type: VTX
+  count: 15
+  offset: 0x18388
+  symbol: ssl_seg7_vertex_07018388
+
+ssl_seg7_vertex_07018478:
+  type: VTX
+  count: 15
+  offset: 0x18478
+  symbol: ssl_seg7_vertex_07018478
+
+ssl_seg7_vertex_07018568:
+  type: VTX
+  count: 15
+  offset: 0x18568
+  symbol: ssl_seg7_vertex_07018568
+
+ssl_seg7_vertex_07018658:
+  type: VTX
+  count: 15
+  offset: 0x18658
+  symbol: ssl_seg7_vertex_07018658
+
+ssl_seg7_vertex_07018748:
+  type: VTX
+  count: 15
+  offset: 0x18748
+  symbol: ssl_seg7_vertex_07018748
+
+ssl_seg7_vertex_07018838:
+  type: VTX
+  count: 15
+  offset: 0x18838
+  symbol: ssl_seg7_vertex_07018838
+
+ssl_seg7_vertex_07018928:
+  type: VTX
+  count: 15
+  offset: 0x18928
+  symbol: ssl_seg7_vertex_07018928
+
+ssl_seg7_vertex_07018A18:
+  type: VTX
+  count: 15
+  offset: 0x18A18
+  symbol: ssl_seg7_vertex_07018A18
+
+ssl_seg7_vertex_07018B08:
+  type: VTX
+  count: 15
+  offset: 0x18B08
+  symbol: ssl_seg7_vertex_07018B08
+
+ssl_seg7_vertex_07018BF8:
+  type: VTX
+  count: 15
+  offset: 0x18BF8
+  symbol: ssl_seg7_vertex_07018BF8
+
+ssl_seg7_vertex_07018CE8:
+  type: VTX
+  count: 15
+  offset: 0x18CE8
+  symbol: ssl_seg7_vertex_07018CE8
+
+ssl_seg7_vertex_07018DD8:
+  type: VTX
+  count: 15
+  offset: 0x18DD8
+  symbol: ssl_seg7_vertex_07018DD8
+
+ssl_seg7_vertex_07018EC8:
+  type: VTX
+  count: 15
+  offset: 0x18EC8
+  symbol: ssl_seg7_vertex_07018EC8
+
+ssl_seg7_vertex_07018FB8:
+  type: VTX
+  count: 15
+  offset: 0x18FB8
+  symbol: ssl_seg7_vertex_07018FB8
+
+ssl_seg7_vertex_070190A8:
+  type: VTX
+  count: 15
+  offset: 0x190A8
+  symbol: ssl_seg7_vertex_070190A8
+
+ssl_seg7_vertex_07019198:
+  type: VTX
+  count: 14
+  offset: 0x19198
+  symbol: ssl_seg7_vertex_07019198
+
+ssl_seg7_vertex_07019278:
+  type: VTX
+  count: 16
+  offset: 0x19278
+  symbol: ssl_seg7_vertex_07019278
+
+ssl_seg7_vertex_07019378:
+  type: VTX
+  count: 14
+  offset: 0x19378
+  symbol: ssl_seg7_vertex_07019378
+
+ssl_seg7_vertex_07019458:
+  type: VTX
+  count: 15
+  offset: 0x19458
+  symbol: ssl_seg7_vertex_07019458
+
+ssl_seg7_vertex_07019548:
+  type: VTX
+  count: 16
+  offset: 0x19548
+  symbol: ssl_seg7_vertex_07019548
+
+ssl_seg7_vertex_07019648:
+  type: VTX
+  count: 16
+  offset: 0x19648
+  symbol: ssl_seg7_vertex_07019648
+
+ssl_seg7_vertex_07019748:
+  type: VTX
+  count: 16
+  offset: 0x19748
+  symbol: ssl_seg7_vertex_07019748
+
+ssl_seg7_vertex_07019848:
+  type: VTX
+  count: 14
+  offset: 0x19848
+  symbol: ssl_seg7_vertex_07019848
+
+ssl_seg7_vertex_07019928:
+  type: VTX
+  count: 15
+  offset: 0x19928
+  symbol: ssl_seg7_vertex_07019928
+
+ssl_seg7_vertex_07019A18:
+  type: VTX
+  count: 14
+  offset: 0x19A18
+  symbol: ssl_seg7_vertex_07019A18
+
+ssl_seg7_vertex_07019AF8:
+  type: VTX
+  count: 15
+  offset: 0x19AF8
+  symbol: ssl_seg7_vertex_07019AF8
+
+ssl_seg7_vertex_07019BE8:
+  type: VTX
+  count: 15
+  offset: 0x19BE8
+  symbol: ssl_seg7_vertex_07019BE8
+
+ssl_seg7_vertex_07019CD8:
+  type: VTX
+  count: 16
+  offset: 0x19CD8
+  symbol: ssl_seg7_vertex_07019CD8
+
+ssl_seg7_vertex_07019DD8:
+  type: VTX
+  count: 14
+  offset: 0x19DD8
+  symbol: ssl_seg7_vertex_07019DD8
+
+ssl_seg7_vertex_07019EB8:
+  type: VTX
+  count: 14
+  offset: 0x19EB8
+  symbol: ssl_seg7_vertex_07019EB8
+
+ssl_seg7_vertex_07019F98:
+  type: VTX
+  count: 16
+  offset: 0x19F98
+  symbol: ssl_seg7_vertex_07019F98
+
+ssl_seg7_vertex_0701A098:
+  type: VTX
+  count: 16
+  offset: 0x1A098
+  symbol: ssl_seg7_vertex_0701A098
+
+ssl_seg7_vertex_0701A198:
+  type: VTX
+  count: 16
+  offset: 0x1A198
+  symbol: ssl_seg7_vertex_0701A198
+
+ssl_seg7_vertex_0701A298:
+  type: VTX
+  count: 16
+  offset: 0x1A298
+  symbol: ssl_seg7_vertex_0701A298
+
+ssl_seg7_vertex_0701A398:
+  type: VTX
+  count: 16
+  offset: 0x1A398
+  symbol: ssl_seg7_vertex_0701A398
+
+ssl_seg7_vertex_0701A498:
+  type: VTX
+  count: 15
+  offset: 0x1A498
+  symbol: ssl_seg7_vertex_0701A498
+
+ssl_seg7_vertex_0701A588:
+  type: VTX
+  count: 16
+  offset: 0x1A588
+  symbol: ssl_seg7_vertex_0701A588
+
+ssl_seg7_vertex_0701A688:
+  type: VTX
+  count: 15
+  offset: 0x1A688
+  symbol: ssl_seg7_vertex_0701A688
+
+ssl_seg7_vertex_0701A778:
+  type: VTX
+  count: 14
+  offset: 0x1A778
+  symbol: ssl_seg7_vertex_0701A778
+
+ssl_seg7_vertex_0701A858:
+  type: VTX
+  count: 14
+  offset: 0x1A858
+  symbol: ssl_seg7_vertex_0701A858
+
+ssl_seg7_vertex_0701A938:
+  type: VTX
+  count: 15
+  offset: 0x1A938
+  symbol: ssl_seg7_vertex_0701A938
+
+ssl_seg7_vertex_0701AA28:
+  type: VTX
+  count: 14
+  offset: 0x1AA28
+  symbol: ssl_seg7_vertex_0701AA28
+
+ssl_seg7_vertex_0701AB08:
+  type: VTX
+  count: 15
+  offset: 0x1AB08
+  symbol: ssl_seg7_vertex_0701AB08
+
+ssl_seg7_vertex_0701ABF8:
+  type: VTX
+  count: 15
+  offset: 0x1ABF8
+  symbol: ssl_seg7_vertex_0701ABF8
+
+ssl_seg7_vertex_0701ACE8:
+  type: VTX
+  count: 15
+  offset: 0x1ACE8
+  symbol: ssl_seg7_vertex_0701ACE8
+
+ssl_seg7_vertex_0701ADD8:
+  type: VTX
+  count: 15
+  offset: 0x1ADD8
+  symbol: ssl_seg7_vertex_0701ADD8
+
+ssl_seg7_vertex_0701AEC8:
+  type: VTX
+  count: 15
+  offset: 0x1AEC8
+  symbol: ssl_seg7_vertex_0701AEC8
+
+ssl_seg7_vertex_0701AFB8:
+  type: VTX
+  count: 15
+  offset: 0x1AFB8
+  symbol: ssl_seg7_vertex_0701AFB8
+
+ssl_seg7_vertex_0701B0A8:
+  type: VTX
+  count: 14
+  offset: 0x1B0A8
+  symbol: ssl_seg7_vertex_0701B0A8
+
+ssl_seg7_vertex_0701B188:
+  type: VTX
+  count: 16
+  offset: 0x1B188
+  symbol: ssl_seg7_vertex_0701B188
+
+ssl_seg7_vertex_0701B288:
+  type: VTX
+  count: 10
+  offset: 0x1B288
+  symbol: ssl_seg7_vertex_0701B288
+
+ssl_seg7_vertex_0701B328:
+  type: VTX
+  count: 15
+  offset: 0x1B328
+  symbol: ssl_seg7_vertex_0701B328
+
+ssl_seg7_vertex_0701B418:
+  type: VTX
+  count: 15
+  offset: 0x1B418
+  symbol: ssl_seg7_vertex_0701B418
+
+ssl_seg7_vertex_0701B508:
+  type: VTX
+  count: 15
+  offset: 0x1B508
+  symbol: ssl_seg7_vertex_0701B508
+
+ssl_seg7_vertex_0701B5F8:
+  type: VTX
+  count: 15
+  offset: 0x1B5F8
+  symbol: ssl_seg7_vertex_0701B5F8
+
+ssl_seg7_vertex_0701B6E8:
+  type: VTX
+  count: 12
+  offset: 0x1B6E8
+  symbol: ssl_seg7_vertex_0701B6E8
+
+ssl_seg7_vertex_0701B7A8:
+  type: VTX
+  count: 14
+  offset: 0x1B7A8
+  symbol: ssl_seg7_vertex_0701B7A8
+
+ssl_seg7_vertex_0701B888:
+  type: VTX
+  count: 16
+  offset: 0x1B888
+  symbol: ssl_seg7_vertex_0701B888
+
+ssl_seg7_vertex_0701B988:
+  type: VTX
+  count: 16
+  offset: 0x1B988
+  symbol: ssl_seg7_vertex_0701B988
+
+ssl_seg7_vertex_0701BA88:
+  type: VTX
+  count: 16
+  offset: 0x1BA88
+  symbol: ssl_seg7_vertex_0701BA88
+
+ssl_seg7_vertex_0701BB88:
+  type: VTX
+  count: 12
+  offset: 0x1BB88
+  symbol: ssl_seg7_vertex_0701BB88
+
+ssl_seg7_vertex_0701BC48:
+  type: VTX
+  count: 14
+  offset: 0x1BC48
+  symbol: ssl_seg7_vertex_0701BC48
+
+ssl_seg7_vertex_0701BD28:
+  type: VTX
+  count: 14
+  offset: 0x1BD28
+  symbol: ssl_seg7_vertex_0701BD28
+
+ssl_seg7_vertex_0701BE08:
+  type: VTX
+  count: 16
+  offset: 0x1BE08
+  symbol: ssl_seg7_vertex_0701BE08
+
+ssl_seg7_vertex_0701BF08:
+  type: VTX
+  count: 15
+  offset: 0x1BF08
+  symbol: ssl_seg7_vertex_0701BF08
+
+ssl_seg7_vertex_0701BFF8:
+  type: VTX
+  count: 14
+  offset: 0x1BFF8
+  symbol: ssl_seg7_vertex_0701BFF8
+
+ssl_seg7_vertex_0701C0D8:
+  type: VTX
+  count: 12
+  offset: 0x1C0D8
+  symbol: ssl_seg7_vertex_0701C0D8
+
+ssl_seg7_dl_0701C198:
+  type: GFX
+  offset: 0x1C198
+  symbol: ssl_seg7_dl_0701C198
+
+ssl_seg7_dl_0701CFA8:
+  type: GFX
+  offset: 0x1CFA8
+  symbol: ssl_seg7_dl_0701CFA8
+
+ssl_seg7_dl_0701D060:
+  type: GFX
+  offset: 0x1D060
+  symbol: ssl_seg7_dl_0701D060
+
+ssl_seg7_dl_0701E980:
+  type: GFX
+  offset: 0x1E980
+  symbol: ssl_seg7_dl_0701E980
+
+ssl_seg7_dl_0701EAD8:
+  type: GFX
+  offset: 0x1EAD8
+  symbol: ssl_seg7_dl_0701EAD8
+
+ssl_seg7_dl_0701ECB0:
+  type: GFX
+  offset: 0x1ECB0
+  symbol: ssl_seg7_dl_0701ECB0
+
+ssl_seg7_dl_0701EE80:
+  type: GFX
+  offset: 0x1EE80
+  symbol: ssl_seg7_dl_0701EE80
+
+ssl_lights_quicksand_pit:
+  type: LIGHTS
+  size: 24
+  offset: 0x4000
+  symbol: ssl_lights_quicksand_pit
+
+ssl_dl_quicksand_pit_begin:
+  type: GFX
+  offset: 0x4818
+  symbol: ssl_dl_quicksand_pit_begin
+
+ssl_dl_quicksand_pit_end:
+  type: GFX
+  offset: 0x4860
+  symbol: ssl_dl_quicksand_pit_end
+
+ssl_dl_pyramid_quicksand_pit_begin:
+  type: GFX
+  offset: 0x4880
+  symbol: ssl_dl_pyramid_quicksand_pit_begin
+
+ssl_dl_pyramid_quicksand_pit_end:
+  type: GFX
+  offset: 0x48F8
+  symbol: ssl_dl_pyramid_quicksand_pit_end
+
+ssl_dl_quicksand_pit:
+  type: GFX
+  offset: 0x4A38
+  symbol: ssl_dl_quicksand_pit
+
+ssl_seg7_vertex_07004A70:
+  type: VTX
+  count: 7
+  offset: 0x4A70
+  symbol: ssl_seg7_vertex_07004A70
+
+ssl_dl_pyramid_quicksand_pit_static:
+  type: GFX
+  offset: 0x4AE0
+  symbol: ssl_dl_pyramid_quicksand_pit_static
+
+ssl_seg7_vertex_0701F9D8:
+  type: VTX
+  count: 16
+  offset: 0x1F9D8
+  symbol: ssl_seg7_vertex_0701F9D8
+
+ssl_seg7_vertex_0701FAD8:
+  type: VTX
+  count: 16
+  offset: 0x1FAD8
+  symbol: ssl_seg7_vertex_0701FAD8
+
+ssl_seg7_vertex_0701FBD8:
+  type: VTX
+  count: 4
+  offset: 0x1FBD8
+  symbol: ssl_seg7_vertex_0701FBD8
+
+ssl_seg7_dl_0701FC18:
+  type: GFX
+  offset: 0x1FC18
+  symbol: ssl_seg7_dl_0701FC18
+
+ssl_seg7_dl_0701FCE0:
+  type: GFX
+  offset: 0x1FCE0
+  symbol: ssl_seg7_dl_0701FCE0
+
+ssl_seg7_vertex_0701EF80:
+  type: VTX
+  count: 15
+  offset: 0x1EF80
+  symbol: ssl_seg7_vertex_0701EF80
+
+ssl_seg7_vertex_0701F070:
+  type: VTX
+  count: 15
+  offset: 0x1F070
+  symbol: ssl_seg7_vertex_0701F070
+
+ssl_seg7_vertex_0701F160:
+  type: VTX
+  count: 15
+  offset: 0x1F160
+  symbol: ssl_seg7_vertex_0701F160
+
+ssl_seg7_vertex_0701F250:
+  type: VTX
+  count: 15
+  offset: 0x1F250
+  symbol: ssl_seg7_vertex_0701F250
+
+ssl_seg7_vertex_0701F340:
+  type: VTX
+  count: 15
+  offset: 0x1F340
+  symbol: ssl_seg7_vertex_0701F340
+
+ssl_seg7_vertex_0701F430:
+  type: VTX
+  count: 16
+  offset: 0x1F430
+  symbol: ssl_seg7_vertex_0701F430
+
+ssl_seg7_vertex_0701F530:
+  type: VTX
+  count: 15
+  offset: 0x1F530
+  symbol: ssl_seg7_vertex_0701F530
+
+ssl_seg7_vertex_0701F620:
+  type: VTX
+  count: 14
+  offset: 0x1F620
+  symbol: ssl_seg7_vertex_0701F620
+
+ssl_seg7_dl_0701F700:
+  type: GFX
+  offset: 0x1F700
+  symbol: ssl_seg7_dl_0701F700
+
+ssl_seg7_dl_0701F920:
+  type: GFX
+  offset: 0x1F920
+  symbol: ssl_seg7_dl_0701F920
+
+ssl_seg7_lights_0700BD70:
+  type: LIGHTS
+  size: 24
+  offset: 0xBD70
+  symbol: ssl_seg7_lights_0700BD70
+
+ssl_seg7_vertex_0700BD88:
+  type: VTX
+  count: 12
+  offset: 0xBD88
+  symbol: ssl_seg7_vertex_0700BD88
+
+ssl_seg7_vertex_0700BE48:
+  type: VTX
+  count: 4
+  offset: 0xBE48
+  symbol: ssl_seg7_vertex_0700BE48
+
+ssl_seg7_dl_0700BE88:
+  type: GFX
+  offset: 0xBE88
+  symbol: ssl_seg7_dl_0700BE88
+
+ssl_seg7_dl_0700BEE0:
+  type: GFX
+  offset: 0xBEE0
+  symbol: ssl_seg7_dl_0700BEE0
+
+ssl_seg7_dl_0700BF18:
+  type: GFX
+  offset: 0xBF18
+  symbol: ssl_seg7_dl_0700BF18
+
+ssl_seg7_lights_07021E50:
+  type: LIGHTS
+  size: 24
+  offset: 0x21E50
+  symbol: ssl_seg7_lights_07021E50
+
+ssl_seg7_vertex_07021E68:
+  type: VTX
+  count: 8
+  offset: 0x21E68
+  symbol: ssl_seg7_vertex_07021E68
+
+ssl_seg7_vertex_07021EE8:
+  type: VTX
+  count: 16
+  offset: 0x21EE8
+  symbol: ssl_seg7_vertex_07021EE8
+
+ssl_seg7_dl_07021FE8:
+  type: GFX
+  offset: 0x21FE8
+  symbol: ssl_seg7_dl_07021FE8
+
+ssl_seg7_dl_07022040:
+  type: GFX
+  offset: 0x22040
+  symbol: ssl_seg7_dl_07022040
+
+ssl_seg7_dl_070220A8:
+  type: GFX
+  offset: 0x220A8
+  symbol: ssl_seg7_dl_070220A8
+
+ssl_seg7_vertex_07022170:
+  type: VTX
+  count: 4
+  offset: 0x22170
+  symbol: ssl_seg7_vertex_07022170
+
+ssl_seg7_dl_070221B0:
+  type: GFX
+  offset: 0x221B0
+  symbol: ssl_seg7_dl_070221B0
+
+ssl_seg7_dl_070221E8:
+  type: GFX
+  offset: 0x221E8
+  symbol: ssl_seg7_dl_070221E8
+
+ssl_seg7_lights_070222A0:
+  type: LIGHTS
+  size: 24
+  offset: 0x222A0
+  symbol: ssl_seg7_lights_070222A0
+
+ssl_seg7_vertex_070222B8:
+  type: VTX
+  count: 16
+  offset: 0x222B8
+  symbol: ssl_seg7_vertex_070222B8
+
+ssl_seg7_vertex_070223B8:
+  type: VTX
+  count: 16
+  offset: 0x223B8
+  symbol: ssl_seg7_vertex_070223B8
+
+ssl_seg7_vertex_070224B8:
+  type: VTX
+  count: 5
+  offset: 0x224B8
+  symbol: ssl_seg7_vertex_070224B8
+
+ssl_seg7_vertex_07022508:
+  type: VTX
+  count: 15
+  offset: 0x22508
+  symbol: ssl_seg7_vertex_07022508
+
+ssl_seg7_vertex_070225F8:
+  type: VTX
+  count: 15
+  offset: 0x225F8
+  symbol: ssl_seg7_vertex_070225F8
+
+ssl_seg7_vertex_070226E8:
+  type: VTX
+  count: 4
+  offset: 0x226E8
+  symbol: ssl_seg7_vertex_070226E8
+
+ssl_seg7_dl_07022728:
+  type: GFX
+  offset: 0x22728
+  symbol: ssl_seg7_dl_07022728
+
+ssl_seg7_dl_070227F0:
+  type: GFX
+  offset: 0x227F0
+  symbol: ssl_seg7_dl_070227F0
+
+ssl_seg7_dl_070228A8:
+  type: GFX
+  offset: 0x228A8
+  symbol: ssl_seg7_dl_070228A8
+
+ssl_seg7_vertex_07022970:
+  type: VTX
+  count: 4
+  offset: 0x22970
+  symbol: ssl_seg7_vertex_07022970
+
+ssl_seg7_dl_070229B0:
+  type: GFX
+  offset: 0x229B0
+  symbol: ssl_seg7_dl_070229B0
+
+ssl_seg7_dl_070229E8:
+  type: GFX
+  offset: 0x229E8
+  symbol: ssl_seg7_dl_070229E8
+
+ssl_seg7_lights_0700BF90:
+  type: LIGHTS
+  size: 24
+  offset: 0xBF90
+  symbol: ssl_seg7_lights_0700BF90
+
+ssl_seg7_vertex_0700F7A8:
+  type: VTX
+  count: 15
+  offset: 0xF7A8
+  symbol: ssl_seg7_vertex_0700F7A8
+
+ssl_seg7_vertex_0700F898:
+  type: VTX
+  count: 7
+  offset: 0xF898
+  symbol: ssl_seg7_vertex_0700F898
+
+ssl_seg7_vertex_0700F908:
+  type: VTX
+  count: 16
+  offset: 0xF908
+  symbol: ssl_seg7_vertex_0700F908
+
+ssl_seg7_vertex_0700FA08:
+  type: VTX
+  count: 16
+  offset: 0xFA08
+  symbol: ssl_seg7_vertex_0700FA08
+
+ssl_seg7_vertex_0700FB08:
+  type: VTX
+  count: 4
+  offset: 0xFB08
+  symbol: ssl_seg7_vertex_0700FB08
+
+ssl_seg7_dl_0700FB48:
+  type: GFX
+  offset: 0xFB48
+  symbol: ssl_seg7_dl_0700FB48
+
+ssl_seg7_dl_0700FBD8:
+  type: GFX
+  offset: 0xFBD8
+  symbol: ssl_seg7_dl_0700FBD8
+
+ssl_seg7_dl_0700FC40:
+  type: GFX
+  offset: 0xFC40
+  symbol: ssl_seg7_dl_0700FC40
+
+ssl_seg7_dl_0700FCA8:
+  type: GFX
+  offset: 0xFCA8
+  symbol: ssl_seg7_dl_0700FCA8
+
+ssl_seg7_dl_0700FCE0:
+  type: GFX
+  offset: 0xFCE0
+  symbol: ssl_seg7_dl_0700FCE0
+
