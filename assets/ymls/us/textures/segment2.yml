@@ -1009,7 +1009,7 @@ segment2.04400:
   offset: 0x3C00
   format: RGBA16
   symbol: texture_hud_char_Y
-# texture_hud_char_Z does not exist on US versions, offsets from here will be off by 0xA000
+# texture_hud_char_Z does not exist on US versions, offsets from here will be off by 0xA00
 segment2.04800:
   type: TEXTURE
   size: 512
@@ -1026,7 +1026,7 @@ segment2.04A00:
   offset: 0x4000
   format: RGBA16
   symbol: texture_hud_char_double_quote
-# several symbols do not exist on US versions, offsets from here will be off by 0x14000
+# several symbols do not exist on US versions, offsets from here will be off by 0x1400
 segment2.05600:
   type: TEXTURE
   size: 512
