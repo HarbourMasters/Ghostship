@@ -232,11 +232,12 @@ void process_cmd_node_camera() {
 
     Vec3f pos, focus;
 
+    const auto type = GeoLayoutParser::mReader->ReadUInt16();
+    
     ReadVec3f(pos);
     ReadVec3f(focus);
 
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
-    const auto type = GeoLayoutParser::mReader->ReadUInt16();
 
     GraphNodeCamera* graphNode = init_graph_node_camera(gGraphNodePool, nullptr, pos, focus,
                                         GetFunctionByAddr(addr), type);
@@ -350,9 +351,10 @@ void process_cmd_nop2() {}
 void process_cmd_node_animated_part() {
     Vec3s translation;
     const auto drawingLayer = GeoLayoutParser::mReader->ReadUByte();
-    void* displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
 
     ReadVec3s(translation);
+
+    void* displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
 
     GraphNodeAnimatedPart* graphNode =
         init_graph_node_animated_part(gGraphNodePool, nullptr, drawingLayer, displayList, translation);
