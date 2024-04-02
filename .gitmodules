@@ -2,3 +2,6 @@
 	path = libultraship
 	url = https://github.com/KiritoDv/libultraship
 	branch = version/pu
+[submodule "Torch"]
+	path = Torch
+	url = https://github.com/HarbourMasters/Torch.git
