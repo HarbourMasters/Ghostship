@@ -1,9 +1,38 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 butterfly_wing:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x1FF740
-  mio0: 0x43A8
+  offset: 0x43A8
   format: RGBA16
   symbol: butterfly_seg3_texture_030043A8
+
+butterfly_seg3_vertex_03004348:
+  type: VTX
+  count: 6
+  offset: 0x4348
+  symbol: butterfly_seg3_vertex_03004348
+
+butterfly_seg3_vertex_030053A8:
+  type: VTX
+  count: 6
+  offset: 0x53A8
+  symbol: butterfly_seg3_vertex_030053A8
+
+butterfly_seg3_dl_03005408:
+  type: GFX
+  offset: 0x5408
+  symbol: butterfly_seg3_dl_03005408
+
+butterfly_seg3_dl_030054A0:
+  type: GFX
+  offset: 0x54A0
+  symbol: butterfly_seg3_dl_030054A0
+

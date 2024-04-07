@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x112B50
+  segments:
+    - [0x04,  0x112B50]
+
 mario_eyes_center:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x3090
+  offset: 0x3090
   format: RGBA16
   symbol: mario_texture_eyes_front
 mario_eyes_closed:
@@ -12,8 +18,7 @@ mario_eyes_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x4090
+  offset: 0x4090
   format: RGBA16
   symbol: mario_texture_eyes_closed
 mario_eyes_closed_unused_0:
@@ -21,8 +26,7 @@ mario_eyes_closed_unused_0:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x4090
+  offset: 0x4090
   format: RGBA16
   symbol: mario_texture_eyes_closed_unused1
 mario_eyes_closed_unused_1:
@@ -30,8 +34,7 @@ mario_eyes_closed_unused_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x4090
+  offset: 0x4090
   format: RGBA16
   symbol: mario_texture_eyes_closed_unused2
 mario_eyes_dead:
@@ -39,8 +42,7 @@ mario_eyes_dead:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x7890
+  offset: 0x7890
   format: RGBA16
   symbol: mario_texture_eyes_dead
 mario_eyes_down_unused:
@@ -48,8 +50,7 @@ mario_eyes_down_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x7090
+  offset: 0x7090
   format: RGBA16
   symbol: mario_texture_eyes_down
 mario_eyes_half_closed:
@@ -57,8 +58,7 @@ mario_eyes_half_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x3890
+  offset: 0x3890
   format: RGBA16
   symbol: mario_texture_eyes_half_closed
 mario_eyes_left_unused:
@@ -66,8 +66,7 @@ mario_eyes_left_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x5890
+  offset: 0x5890
   format: RGBA16
   symbol: mario_texture_eyes_right
 mario_eyes_right_unused:
@@ -75,8 +74,7 @@ mario_eyes_right_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x6090
+  offset: 0x6090
   format: RGBA16
   symbol: mario_texture_eyes_left
 mario_eyes_up_unused:
@@ -84,8 +82,7 @@ mario_eyes_up_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x6890
+  offset: 0x6890
   format: RGBA16
   symbol: mario_texture_eyes_up
 mario_logo:
@@ -93,8 +90,7 @@ mario_logo:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x1890
+  offset: 0x1890
   format: RGBA16
   symbol: mario_texture_m_logo
 mario_metal:
@@ -102,8 +98,7 @@ mario_metal:
   size: 4096
   width: 64
   height: 32
-  offset: 0x112B50
-  mio0: 0x90
+  offset: 0x90
   format: RGBA16
   symbol: mario_texture_metal
 mario_metal_wing_tip_unused:
@@ -111,8 +106,7 @@ mario_metal_wing_tip_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0xB090
+  offset: 0xB090
   format: RGBA16
   symbol: mario_texture_metal_wings_half_2
 mario_metal_wing_unused:
@@ -120,8 +114,7 @@ mario_metal_wing_unused:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0xA090
+  offset: 0xA090
   format: RGBA16
   symbol: mario_texture_metal_wings_half_1
 mario_mustache:
@@ -129,8 +122,7 @@ mario_mustache:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x2890
+  offset: 0x2890
   format: RGBA16
   symbol: mario_texture_mustache
 mario_overalls_button:
@@ -138,8 +130,7 @@ mario_overalls_button:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x1090
+  offset: 0x1090
   format: RGBA16
   symbol: mario_texture_yellow_button
 mario_sideburn:
@@ -147,8 +138,7 @@ mario_sideburn:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x2090
+  offset: 0x2090
   format: RGBA16
   symbol: mario_texture_hair_sideburn
 mario_wing:
@@ -156,8 +146,7 @@ mario_wing:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x8090
+  offset: 0x8090
   format: RGBA16
   symbol: mario_texture_wings_half_1
 mario_wing_tip:
@@ -165,7 +154,2139 @@ mario_wing_tip:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x9090
+  offset: 0x9090
   format: RGBA16
   symbol: mario_texture_wings_half_2
+
+mario_blue_lights_group:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: mario_blue_lights_group
+
+mario_red_lights_group:
+  type: LIGHTS
+  size: 24
+  offset: 0x18
+  symbol: mario_red_lights_group
+
+mario_white_lights_group:
+  type: LIGHTS
+  size: 24
+  offset: 0x30
+  symbol: mario_white_lights_group
+
+mario_brown1_lights_group:
+  type: LIGHTS
+  size: 24
+  offset: 0x48
+  symbol: mario_brown1_lights_group
+
+mario_beige_lights_group:
+  type: LIGHTS
+  size: 24
+  offset: 0x60
+  symbol: mario_beige_lights_group
+
+mario_brown2_lights_group:
+  type: LIGHTS
+  size: 24
+  offset: 0x78
+  symbol: mario_brown2_lights_group
+
+mario_butt_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0xC090
+  symbol: mario_butt_dl_vertex_group1
+
+mario_butt_dl_vertex_group2:
+  type: VTX
+  count: 14
+  offset: 0xC180
+  symbol: mario_butt_dl_vertex_group2
+
+mario_butt_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0xC260
+  symbol: mario_butt_dl_vertex_group3
+
+mario_butt_dl_vertex_group4:
+  type: VTX
+  count: 15
+  offset: 0xC360
+  symbol: mario_butt_dl_vertex_group4
+
+mario_butt_dl_vertex_group5:
+  type: VTX
+  count: 15
+  offset: 0xC450
+  symbol: mario_butt_dl_vertex_group5
+
+mario_butt_dl_vertex_group6:
+  type: VTX
+  count: 15
+  offset: 0xC540
+  symbol: mario_butt_dl_vertex_group6
+
+mario_butt_dl_vertex_group7:
+  type: VTX
+  count: 15
+  offset: 0xC630
+  symbol: mario_butt_dl_vertex_group7
+
+mario_butt_dl_vertex_group8:
+  type: VTX
+  count: 16
+  offset: 0xC720
+  symbol: mario_butt_dl_vertex_group8
+
+mario_butt_dl_vertex_group9:
+  type: VTX
+  count: 16
+  offset: 0xC820
+  symbol: mario_butt_dl_vertex_group9
+
+mario_butt_dl_vertex_group10:
+  type: VTX
+  count: 14
+  offset: 0xC920
+  symbol: mario_butt_dl_vertex_group10
+
+mario_butt_dl:
+  type: GFX
+  offset: 0xCA00
+  symbol: mario_butt_dl
+
+mario_butt:
+  type: GFX
+  offset: 0xCC98
+  symbol: mario_butt
+
+mario_metal_butt:
+  type: GFX
+  offset: 0xCCC8
+  symbol: mario_metal_butt
+
+mario_left_arm_shared_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0xCD40
+  symbol: mario_left_arm_shared_dl_vertex_group1
+
+mario_left_arm_shared_dl_vertex_group2:
+  type: VTX
+  count: 15
+  offset: 0xCE30
+  symbol: mario_left_arm_shared_dl_vertex_group2
+
+mario_left_arm_shared_dl_vertex_group3:
+  type: VTX
+  count: 14
+  offset: 0xCF20
+  symbol: mario_left_arm_shared_dl_vertex_group3
+
+mario_left_arm_shared_dl_vertex_group4:
+  type: VTX
+  count: 9
+  offset: 0xD000
+  symbol: mario_left_arm_shared_dl_vertex_group4
+
+mario_left_arm_shared_dl:
+  type: GFX
+  offset: 0xD090
+  symbol: mario_left_arm_shared_dl
+
+mario_left_arm:
+  type: GFX
+  offset: 0xD1D8
+  symbol: mario_left_arm
+
+mario_left_forearm_shared_dl_vertex:
+  type: VTX
+  count: 16
+  offset: 0xD1F8
+  symbol: mario_left_forearm_shared_dl_vertex
+
+mario_left_forearm_shared_dl:
+  type: GFX
+  offset: 0xD2F8
+  symbol: mario_left_forearm_shared_dl
+
+mario_left_hand_closed_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xD3E8
+  symbol: mario_left_hand_closed_shared_dl_vertex_group1
+
+mario_left_hand_closed_shared_dl_vertex_group2:
+  type: VTX
+  count: 14
+  offset: 0xD4E8
+  symbol: mario_left_hand_closed_shared_dl_vertex_group2
+
+mario_left_hand_closed_shared_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0xD5C8
+  symbol: mario_left_hand_closed_shared_dl_vertex_group3
+
+mario_left_hand_closed_shared_dl_vertex_group4:
+  type: VTX
+  count: 10
+  offset: 0xD6B8
+  symbol: mario_left_hand_closed_shared_dl_vertex_group4
+
+mario_left_hand_closed_shared_dl:
+  type: GFX
+  offset: 0xD758
+  symbol: mario_left_hand_closed_shared_dl
+
+mario_left_hand_closed:
+  type: GFX
+  offset: 0xD8F0
+  symbol: mario_left_hand_closed
+
+mario_right_arm_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xD910
+  symbol: mario_right_arm_shared_dl_vertex_group1
+
+mario_right_arm_shared_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0xDA10
+  symbol: mario_right_arm_shared_dl_vertex_group2
+
+mario_right_arm_shared_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0xDB10
+  symbol: mario_right_arm_shared_dl_vertex_group3
+
+mario_right_arm_shared_dl_vertex_group4:
+  type: VTX
+  count: 9
+  offset: 0xDC10
+  symbol: mario_right_arm_shared_dl_vertex_group4
+
+mario_right_arm_shared_dl:
+  type: GFX
+  offset: 0xDCA0
+  symbol: mario_right_arm_shared_dl
+
+mario_right_arm:
+  type: GFX
+  offset: 0xDDE8
+  symbol: mario_right_arm
+
+mario_right_forearm_shared_dl_vertex:
+  type: VTX
+  count: 16
+  offset: 0xDE08
+  symbol: mario_right_forearm_shared_dl_vertex
+
+mario_right_forearm_shared_dl:
+  type: GFX
+  offset: 0xDF08
+  symbol: mario_right_forearm_shared_dl
+
+mario_right_hand_closed_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xDFF8
+  symbol: mario_right_hand_closed_dl_vertex_group1
+
+mario_right_hand_closed_dl_vertex_group2:
+  type: VTX
+  count: 14
+  offset: 0xE0F8
+  symbol: mario_right_hand_closed_dl_vertex_group2
+
+mario_right_hand_closed_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0xE1D8
+  symbol: mario_right_hand_closed_dl_vertex_group3
+
+mario_right_hand_closed_dl:
+  type: GFX
+  offset: 0xE2C8
+  symbol: mario_right_hand_closed_dl
+
+mario_right_hand_closed:
+  type: GFX
+  offset: 0xE458
+  symbol: mario_right_hand_closed
+
+mario_metal_right_hand_closed:
+  type: GFX
+  offset: 0xE478
+  symbol: mario_metal_right_hand_closed
+
+mario_left_thigh_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xE4A8
+  symbol: mario_left_thigh_dl_vertex_group1
+
+mario_left_thigh_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0xE5A8
+  symbol: mario_left_thigh_dl_vertex_group2
+
+mario_left_thigh_dl:
+  type: GFX
+  offset: 0xE6A8
+  symbol: mario_left_thigh_dl
+
+mario_left_thigh:
+  type: GFX
+  offset: 0xE7B0
+  symbol: mario_left_thigh
+
+mario_metal_left_thigh:
+  type: GFX
+  offset: 0xE7E0
+  symbol: mario_metal_left_thigh
+
+mario_left_leg_shared_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0xE858
+  symbol: mario_left_leg_shared_dl_vertex
+
+mario_left_leg_shared_dl:
+  type: GFX
+  offset: 0xE918
+  symbol: mario_left_leg_shared_dl
+
+mario_left_foot_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xE9C8
+  symbol: mario_left_foot_shared_dl_vertex_group1
+
+mario_left_foot_shared_dl_vertex_group2:
+  type: VTX
+  count: 15
+  offset: 0xEAC8
+  symbol: mario_left_foot_shared_dl_vertex_group2
+
+mario_left_foot_shared_dl:
+  type: GFX
+  offset: 0xEBB8
+  symbol: mario_left_foot_shared_dl
+
+mario_left_foot:
+  type: GFX
+  offset: 0xECA0
+  symbol: mario_left_foot
+
+mario_right_thigh_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xECC0
+  symbol: mario_right_thigh_shared_dl_vertex_group1
+
+mario_right_thigh_shared_dl_vertex_group2:
+  type: VTX
+  count: 15
+  offset: 0xEDC0
+  symbol: mario_right_thigh_shared_dl_vertex_group2
+
+mario_right_thigh_shared_dl:
+  type: GFX
+  offset: 0xEEB0
+  symbol: mario_right_thigh_shared_dl
+
+mario_right_thigh:
+  type: GFX
+  offset: 0xEFB8
+  symbol: mario_right_thigh
+
+mario_right_leg_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xEFD8
+  symbol: mario_right_leg_shared_dl_vertex_group1
+
+mario_right_leg_shared_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0xF0D8
+  symbol: mario_right_leg_shared_dl_vertex_group2
+
+mario_right_leg_shared_dl:
+  type: GFX
+  offset: 0xF1D8
+  symbol: mario_right_leg_shared_dl
+
+mario_right_foot_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0xF290
+  symbol: mario_right_foot_dl_vertex_group1
+
+mario_right_foot_dl_vertex_group2:
+  type: VTX
+  count: 8
+  offset: 0xF380
+  symbol: mario_right_foot_dl_vertex_group2
+
+mario_right_foot_dl:
+  type: GFX
+  offset: 0xF400
+  symbol: mario_right_foot_dl
+
+mario_right_foot:
+  type: GFX
+  offset: 0xF4E8
+  symbol: mario_right_foot
+
+mario_metal_right_foot:
+  type: GFX
+  offset: 0xF528
+  symbol: mario_metal_right_foot
+
+mario_yellow_button_dl_vertex:
+  type: VTX
+  count: 14
+  offset: 0xF568
+  symbol: mario_yellow_button_dl_vertex
+
+mario_tshirt_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0xF648
+  symbol: mario_tshirt_shared_dl_vertex_group1
+
+mario_tshirt_shared_dl_vertex_group2:
+  type: VTX
+  count: 14
+  offset: 0xF748
+  symbol: mario_tshirt_shared_dl_vertex_group2
+
+mario_tshirt_shared_dl_vertex_group3:
+  type: VTX
+  count: 5
+  offset: 0xF828
+  symbol: mario_tshirt_shared_dl_vertex_group3
+
+mario_pants_overalls_shared_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0xF878
+  symbol: mario_pants_overalls_shared_dl_vertex_group1
+
+mario_pants_overalls_shared_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0xF968
+  symbol: mario_pants_overalls_shared_dl_vertex_group2
+
+mario_pants_overalls_shared_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0xFA68
+  symbol: mario_pants_overalls_shared_dl_vertex_group3
+
+mario_pants_overalls_shared_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0xFB68
+  symbol: mario_pants_overalls_shared_dl_vertex_group4
+
+mario_pants_overalls_shared_dl_vertex_group5:
+  type: VTX
+  count: 14
+  offset: 0xFC68
+  symbol: mario_pants_overalls_shared_dl_vertex_group5
+
+mario_pants_overalls_shared_dl_vertex_group6:
+  type: VTX
+  count: 15
+  offset: 0xFD48
+  symbol: mario_pants_overalls_shared_dl_vertex_group6
+
+mario_pants_overalls_shared_dl_vertex_group7:
+  type: VTX
+  count: 15
+  offset: 0xFE38
+  symbol: mario_pants_overalls_shared_dl_vertex_group7
+
+mario_yellow_button_dl:
+  type: GFX
+  offset: 0xFF28
+  symbol: mario_yellow_button_dl
+
+mario_pants_overalls_shared_dl:
+  type: GFX
+  offset: 0xFF88
+  symbol: mario_pants_overalls_shared_dl
+
+mario_tshirt_shared_dl:
+  type: GFX
+  offset: 0x10260
+  symbol: mario_tshirt_shared_dl
+
+mario_torso_dl:
+  type: GFX
+  offset: 0x10348
+  symbol: mario_torso_dl
+
+mario_torso:
+  type: GFX
+  offset: 0x10370
+  symbol: mario_torso
+
+mario_metal_torso_shared_dl:
+  type: GFX
+  offset: 0x103F0
+  symbol: mario_metal_torso_shared_dl
+
+mario_m_logo_dl_vertex:
+  type: VTX
+  count: 7
+  offset: 0x10410
+  symbol: mario_m_logo_dl_vertex
+
+mario_eyes_cap_on_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x10480
+  symbol: mario_eyes_cap_on_dl_vertex
+
+mario_hair_sideburn_cap_on_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x10540
+  symbol: mario_hair_sideburn_cap_on_dl_vertex
+
+mario_mustache_cap_on_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x10600
+  symbol: mario_mustache_cap_on_dl_vertex_group1
+
+mario_mustache_cap_on_dl_vertex_group2:
+  type: VTX
+  count: 5
+  offset: 0x10700
+  symbol: mario_mustache_cap_on_dl_vertex_group2
+
+mario_face_cap_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x10750
+  symbol: mario_face_cap_dl_vertex_group1
+
+mario_face_cap_dl_vertex_group2:
+  type: VTX
+  count: 15
+  offset: 0x10850
+  symbol: mario_face_cap_dl_vertex_group2
+
+mario_face_cap_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0x10940
+  symbol: mario_face_cap_dl_vertex_group3
+
+mario_face_part_cap_on_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0x10A30
+  symbol: mario_face_part_cap_on_dl_vertex_group1
+
+mario_face_part_cap_on_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x10B20
+  symbol: mario_face_part_cap_on_dl_vertex_group2
+
+mario_face_part_cap_on_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0x10C20
+  symbol: mario_face_part_cap_on_dl_vertex_group3
+
+mario_face_part_cap_on_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0x10D10
+  symbol: mario_face_part_cap_on_dl_vertex_group4
+
+mario_face_part_cap_on_dl_vertex_group5:
+  type: VTX
+  count: 15
+  offset: 0x10E10
+  symbol: mario_face_part_cap_on_dl_vertex_group5
+
+mario_face_part_cap_on_dl_vertex_group6:
+  type: VTX
+  count: 16
+  offset: 0x10F00
+  symbol: mario_face_part_cap_on_dl_vertex_group6
+
+mario_face_part_cap_on_dl_vertex_group7:
+  type: VTX
+  count: 13
+  offset: 0x11000
+  symbol: mario_face_part_cap_on_dl_vertex_group7
+
+mario_face_back_hair_cap_on_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x110D0
+  symbol: mario_face_back_hair_cap_on_dl_vertex_group1
+
+mario_face_back_hair_cap_on_dl_vertex_group2:
+  type: VTX
+  count: 14
+  offset: 0x111D0
+  symbol: mario_face_back_hair_cap_on_dl_vertex_group2
+
+mario_m_logo_dl:
+  type: GFX
+  offset: 0x112B0
+  symbol: mario_m_logo_dl
+
+mario_eyes_cap_on_dl:
+  type: GFX
+  offset: 0x112E8
+  symbol: mario_eyes_cap_on_dl
+
+mario_hair_sideburn_cap_on_dl:
+  type: GFX
+  offset: 0x11350
+  symbol: mario_hair_sideburn_cap_on_dl
+
+mario_mustache_cap_on_dl:
+  type: GFX
+  offset: 0x113A0
+  symbol: mario_mustache_cap_on_dl
+
+mario_face_part_cap_on_dl:
+  type: GFX
+  offset: 0x11438
+  symbol: mario_face_part_cap_on_dl
+
+mario_face_cap_dl:
+  type: GFX
+  offset: 0x116F8
+  symbol: mario_face_cap_dl
+
+mario_face_back_hair_cap_on_dl:
+  type: GFX
+  offset: 0x11870
+  symbol: mario_face_back_hair_cap_on_dl
+
+mario_face_cap_on_dl:
+  type: GFX
+  offset: 0x11960
+  symbol: mario_face_cap_on_dl
+
+mario_cap_on_eyes_front:
+  type: GFX
+  offset: 0x119A0
+  symbol: mario_cap_on_eyes_front
+
+mario_cap_on_eyes_half_closed:
+  type: GFX
+  offset: 0x11A90
+  symbol: mario_cap_on_eyes_half_closed
+
+mario_cap_on_eyes_closed:
+  type: GFX
+  offset: 0x11B80
+  symbol: mario_cap_on_eyes_closed
+
+mario_cap_on_eyes_right:
+  type: GFX
+  offset: 0x11C70
+  symbol: mario_cap_on_eyes_right
+
+mario_cap_on_eyes_left:
+  type: GFX
+  offset: 0x11D60
+  symbol: mario_cap_on_eyes_left
+
+mario_cap_on_eyes_up:
+  type: GFX
+  offset: 0x11E50
+  symbol: mario_cap_on_eyes_up
+
+mario_cap_on_eyes_down:
+  type: GFX
+  offset: 0x11F40
+  symbol: mario_cap_on_eyes_down
+
+mario_cap_on_eyes_dead:
+  type: GFX
+  offset: 0x12030
+  symbol: mario_cap_on_eyes_dead
+
+mario_metal_cap_on_shared_dl:
+  type: GFX
+  offset: 0x12120
+  symbol: mario_metal_cap_on_shared_dl
+
+mario_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x12120
+  symbol: mario_lights_unused1
+
+mario_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x12120
+  symbol: mario_lights_unused2
+
+mario_eyes_cap_off_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x12190
+  symbol: mario_eyes_cap_off_dl_vertex
+
+mario_hair_sideburn_cap_off_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x12250
+  symbol: mario_hair_sideburn_cap_off_dl_vertex
+
+mario_mustache_cap_off_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x12310
+  symbol: mario_mustache_cap_off_dl_vertex_group1
+
+mario_mustache_cap_off_dl_vertex_group2:
+  type: VTX
+  count: 5
+  offset: 0x12410
+  symbol: mario_mustache_cap_off_dl_vertex_group2
+
+mario_face_part_cap_off_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0x12460
+  symbol: mario_face_part_cap_off_dl_vertex_group1
+
+mario_face_part_cap_off_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x12550
+  symbol: mario_face_part_cap_off_dl_vertex_group2
+
+mario_face_part_cap_off_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0x12650
+  symbol: mario_face_part_cap_off_dl_vertex_group3
+
+mario_face_part_cap_off_dl_vertex_group4:
+  type: VTX
+  count: 15
+  offset: 0x12740
+  symbol: mario_face_part_cap_off_dl_vertex_group4
+
+mario_face_part_cap_off_dl_vertex_group5:
+  type: VTX
+  count: 16
+  offset: 0x12830
+  symbol: mario_face_part_cap_off_dl_vertex_group5
+
+mario_face_part_cap_off_dl_vertex_group6:
+  type: VTX
+  count: 16
+  offset: 0x12930
+  symbol: mario_face_part_cap_off_dl_vertex_group6
+
+mario_face_part_cap_off_dl_vertex_group7:
+  type: VTX
+  count: 16
+  offset: 0x12A30
+  symbol: mario_face_part_cap_off_dl_vertex_group7
+
+mario_face_part_cap_off_dl_vertex_group8:
+  type: VTX
+  count: 9
+  offset: 0x12B30
+  symbol: mario_face_part_cap_off_dl_vertex_group8
+
+mario_face_hair_cap_off_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x12BC0
+  symbol: mario_face_hair_cap_off_dl_vertex_group1
+
+mario_face_hair_cap_off_dl_vertex_group2:
+  type: VTX
+  count: 15
+  offset: 0x12CC0
+  symbol: mario_face_hair_cap_off_dl_vertex_group2
+
+mario_face_hair_cap_off_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0x12DB0
+  symbol: mario_face_hair_cap_off_dl_vertex_group3
+
+mario_face_hair_cap_off_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0x12EB0
+  symbol: mario_face_hair_cap_off_dl_vertex_group4
+
+mario_face_hair_cap_off_dl_vertex_group5:
+  type: VTX
+  count: 16
+  offset: 0x12FB0
+  symbol: mario_face_hair_cap_off_dl_vertex_group5
+
+mario_face_hair_cap_off_dl_vertex_group6:
+  type: VTX
+  count: 16
+  offset: 0x130B0
+  symbol: mario_face_hair_cap_off_dl_vertex_group6
+
+mario_face_hair_cap_off_dl_vertex_group7:
+  type: VTX
+  count: 13
+  offset: 0x131B0
+  symbol: mario_face_hair_cap_off_dl_vertex_group7
+
+mario_face_part_cap_off_dl_vertex_group9:
+  type: VTX
+  count: 3
+  offset: 0x13280
+  symbol: mario_face_part_cap_off_dl_vertex_group9
+
+mario_eyes_cap_off_dl:
+  type: GFX
+  offset: 0x132B0
+  symbol: mario_eyes_cap_off_dl
+
+mario_mustache_cap_off_dl:
+  type: GFX
+  offset: 0x13318
+  symbol: mario_mustache_cap_off_dl
+
+mario_hair_sideburn_cap_off_dl:
+  type: GFX
+  offset: 0x133A8
+  symbol: mario_hair_sideburn_cap_off_dl
+
+mario_face_part_cap_off_dl:
+  type: GFX
+  offset: 0x133F8
+  symbol: mario_face_part_cap_off_dl
+
+mario_face_hair_cap_off_dl:
+  type: GFX
+  offset: 0x136D0
+  symbol: mario_face_hair_cap_off_dl
+
+mario_face_cap_off_dl:
+  type: GFX
+  offset: 0x139C0
+  symbol: mario_face_cap_off_dl
+
+mario_cap_off_eyes_front:
+  type: GFX
+  offset: 0x139E8
+  symbol: mario_cap_off_eyes_front
+
+mario_cap_off_eyes_half_closed:
+  type: GFX
+  offset: 0x13AB8
+  symbol: mario_cap_off_eyes_half_closed
+
+mario_cap_off_eyes_closed:
+  type: GFX
+  offset: 0x13B88
+  symbol: mario_cap_off_eyes_closed
+
+mario_cap_off_eyes_right:
+  type: GFX
+  offset: 0x13C58
+  symbol: mario_cap_off_eyes_right
+
+mario_cap_off_eyes_left:
+  type: GFX
+  offset: 0x13D28
+  symbol: mario_cap_off_eyes_left
+
+mario_cap_off_eyes_up:
+  type: GFX
+  offset: 0x13DF8
+  symbol: mario_cap_off_eyes_up
+
+mario_cap_off_eyes_down:
+  type: GFX
+  offset: 0x13EC8
+  symbol: mario_cap_off_eyes_down
+
+mario_cap_off_eyes_dead:
+  type: GFX
+  offset: 0x13F98
+  symbol: mario_cap_off_eyes_dead
+
+mario_metal_cap_off_shared_dl:
+  type: GFX
+  offset: 0x14068
+  symbol: mario_metal_cap_off_shared_dl
+
+mario_medium_poly_butt_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x14098
+  symbol: mario_medium_poly_butt_dl_vertex_group1
+
+mario_medium_poly_butt_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x14198
+  symbol: mario_medium_poly_butt_dl_vertex_group2
+
+mario_medium_poly_butt_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0x14298
+  symbol: mario_medium_poly_butt_dl_vertex_group3
+
+mario_medium_poly_butt_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0x14398
+  symbol: mario_medium_poly_butt_dl_vertex_group4
+
+mario_medium_poly_butt_dl_vertex_group5:
+  type: VTX
+  count: 4
+  offset: 0x14498
+  symbol: mario_medium_poly_butt_dl_vertex_group5
+
+mario_medium_poly_butt_dl:
+  type: GFX
+  offset: 0x144D8
+  symbol: mario_medium_poly_butt_dl
+
+mario_medium_poly_butt:
+  type: GFX
+  offset: 0x14638
+  symbol: mario_medium_poly_butt
+
+mario_metal_medium_poly_butt:
+  type: GFX
+  offset: 0x14668
+  symbol: mario_metal_medium_poly_butt
+
+mario_medium_poly_left_arm_shared_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x146E0
+  symbol: mario_medium_poly_left_arm_shared_dl_vertex
+
+mario_medium_poly_left_arm_shared_dl:
+  type: GFX
+  offset: 0x147D0
+  symbol: mario_medium_poly_left_arm_shared_dl
+
+mario_medium_poly_left_arm:
+  type: GFX
+  offset: 0x14840
+  symbol: mario_medium_poly_left_arm
+
+mario_medium_poly_left_forearm_shared_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x14860
+  symbol: mario_medium_poly_left_forearm_shared_dl_vertex
+
+mario_medium_poly_left_forearm_shared_dl:
+  type: GFX
+  offset: 0x14950
+  symbol: mario_medium_poly_left_forearm_shared_dl
+
+mario_medium_poly_left_hand_closed_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x149C0
+  symbol: mario_medium_poly_left_hand_closed_shared_dl_vertex_group1
+
+mario_medium_poly_left_hand_closed_shared_dl_vertex_group2:
+  type: VTX
+  count: 15
+  offset: 0x14AC0
+  symbol: mario_medium_poly_left_hand_closed_shared_dl_vertex_group2
+
+mario_medium_poly_left_hand_closed_shared_dl_vertex_group3:
+  type: VTX
+  count: 14
+  offset: 0x14BB0
+  symbol: mario_medium_poly_left_hand_closed_shared_dl_vertex_group3
+
+mario_medium_poly_left_hand_closed_shared_dl:
+  type: GFX
+  offset: 0x14C90
+  symbol: mario_medium_poly_left_hand_closed_shared_dl
+
+mario_medium_poly_left_hand_closed:
+  type: GFX
+  offset: 0x14DC0
+  symbol: mario_medium_poly_left_hand_closed
+
+mario_medium_poly_right_arm_shared_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x14DE0
+  symbol: mario_medium_poly_right_arm_shared_dl_vertex
+
+mario_medium_poly_right_arm_shared_dl:
+  type: GFX
+  offset: 0x14ED0
+  symbol: mario_medium_poly_right_arm_shared_dl
+
+mario_medium_poly_right_arm:
+  type: GFX
+  offset: 0x14F40
+  symbol: mario_medium_poly_right_arm
+
+mario_medium_poly_right_forearm_shared_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x14F60
+  symbol: mario_medium_poly_right_forearm_shared_dl_vertex
+
+mario_medium_poly_right_forearm_shared_dl:
+  type: GFX
+  offset: 0x15050
+  symbol: mario_medium_poly_right_forearm_shared_dl
+
+mario_medium_poly_right_hand_closed_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x150C0
+  symbol: mario_medium_poly_right_hand_closed_dl_vertex_group1
+
+mario_medium_poly_right_hand_closed_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x151C0
+  symbol: mario_medium_poly_right_hand_closed_dl_vertex_group2
+
+mario_medium_poly_right_hand_closed_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0x152C0
+  symbol: mario_medium_poly_right_hand_closed_dl_vertex_group3
+
+mario_medium_poly_right_hand_closed_dl:
+  type: GFX
+  offset: 0x153B0
+  symbol: mario_medium_poly_right_hand_closed_dl
+
+mario_medium_poly_right_hand_closed:
+  type: GFX
+  offset: 0x154E0
+  symbol: mario_medium_poly_right_hand_closed
+
+mario_metal_medium_poly_right_hand_closed:
+  type: GFX
+  offset: 0x15500
+  symbol: mario_metal_medium_poly_right_hand_closed
+
+mario_medium_poly_left_thigh_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x15530
+  symbol: mario_medium_poly_left_thigh_dl_vertex
+
+mario_medium_poly_left_thigh_dl:
+  type: GFX
+  offset: 0x15620
+  symbol: mario_medium_poly_left_thigh_dl
+
+mario_medium_poly_left_thigh:
+  type: GFX
+  offset: 0x156B0
+  symbol: mario_medium_poly_left_thigh
+
+mario_metal_medium_poly_left_thigh:
+  type: GFX
+  offset: 0x156E0
+  symbol: mario_metal_medium_poly_left_thigh
+
+mario_medium_poly_left_leg_shared_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x15758
+  symbol: mario_medium_poly_left_leg_shared_dl_vertex
+
+mario_medium_poly_left_leg_shared_dl:
+  type: GFX
+  offset: 0x15848
+  symbol: mario_medium_poly_left_leg_shared_dl
+
+mario_medium_poly_left_foot_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x158D8
+  symbol: mario_medium_poly_left_foot_shared_dl_vertex_group1
+
+mario_medium_poly_left_foot_shared_dl_vertex_group2:
+  type: VTX
+  count: 12
+  offset: 0x159D8
+  symbol: mario_medium_poly_left_foot_shared_dl_vertex_group2
+
+mario_medium_poly_left_foot_shared_dl:
+  type: GFX
+  offset: 0x15A98
+  symbol: mario_medium_poly_left_foot_shared_dl
+
+mario_medium_poly_left_foot:
+  type: GFX
+  offset: 0x15B60
+  symbol: mario_medium_poly_left_foot
+
+mario_medium_poly_right_thigh_shared_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x15B80
+  symbol: mario_medium_poly_right_thigh_shared_dl_vertex
+
+mario_medium_poly_right_thigh_shared_dl:
+  type: GFX
+  offset: 0x15C70
+  symbol: mario_medium_poly_right_thigh_shared_dl
+
+mario_medium_poly_right_thigh:
+  type: GFX
+  offset: 0x15D00
+  symbol: mario_medium_poly_right_thigh
+
+mario_medium_poly_right_leg_shared_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x15D20
+  symbol: mario_medium_poly_right_leg_shared_dl_vertex
+
+mario_medium_poly_right_leg_shared_dl:
+  type: GFX
+  offset: 0x15E10
+  symbol: mario_medium_poly_right_leg_shared_dl
+
+mario_medium_poly_right_foot_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x15EA0
+  symbol: mario_medium_poly_right_foot_dl_vertex_group1
+
+mario_medium_poly_right_foot_dl_vertex_group2:
+  type: VTX
+  count: 6
+  offset: 0x15FA0
+  symbol: mario_medium_poly_right_foot_dl_vertex_group2
+
+mario_medium_poly_right_foot_dl:
+  type: GFX
+  offset: 0x16000
+  symbol: mario_medium_poly_right_foot_dl
+
+mario_medium_poly_right_foot:
+  type: GFX
+  offset: 0x160C8
+  symbol: mario_medium_poly_right_foot
+
+mario_metal_medium_poly_right_foot:
+  type: GFX
+  offset: 0x16108
+  symbol: mario_metal_medium_poly_right_foot
+
+mario_seg4_vertex_04016148:
+  type: VTX
+  count: 12
+  offset: 0x16148
+  symbol: mario_seg4_vertex_04016148
+
+mario_seg4_vertex_04016208:
+  type: VTX
+  count: 16
+  offset: 0x16208
+  symbol: mario_seg4_vertex_04016208
+
+mario_seg4_vertex_04016308:
+  type: VTX
+  count: 9
+  offset: 0x16308
+  symbol: mario_seg4_vertex_04016308
+
+mario_seg4_vertex_04016398:
+  type: VTX
+  count: 16
+  offset: 0x16398
+  symbol: mario_seg4_vertex_04016398
+
+mario_seg4_vertex_04016498:
+  type: VTX
+  count: 16
+  offset: 0x16498
+  symbol: mario_seg4_vertex_04016498
+
+mario_seg4_vertex_04016598:
+  type: VTX
+  count: 13
+  offset: 0x16598
+  symbol: mario_seg4_vertex_04016598
+
+mario_medium_poly_yellow_button_dl:
+  type: GFX
+  offset: 0x16668
+  symbol: mario_medium_poly_yellow_button_dl
+
+mario_medium_poly_pants_overalls_shared_dl:
+  type: GFX
+  offset: 0x166B8
+  symbol: mario_medium_poly_pants_overalls_shared_dl
+
+mario_medium_poly_tshirt_shared_dl:
+  type: GFX
+  offset: 0x16800
+  symbol: mario_medium_poly_tshirt_shared_dl
+
+mario_medium_poly_torso_dl:
+  type: GFX
+  offset: 0x168A0
+  symbol: mario_medium_poly_torso_dl
+
+mario_medium_poly_torso:
+  type: GFX
+  offset: 0x168C8
+  symbol: mario_medium_poly_torso
+
+mario_metal_medium_poly_torso:
+  type: GFX
+  offset: 0x16948
+  symbol: mario_metal_medium_poly_torso
+
+mario_low_poly_butt_dl_vertex:
+  type: VTX
+  count: 11
+  offset: 0x16968
+  symbol: mario_low_poly_butt_dl_vertex
+
+mario_low_poly_butt_dl:
+  type: GFX
+  offset: 0x16A18
+  symbol: mario_low_poly_butt_dl
+
+mario_low_poly_butt:
+  type: GFX
+  offset: 0x16AB8
+  symbol: mario_low_poly_butt
+
+mario_metal_low_poly_butt:
+  type: GFX
+  offset: 0x16AE8
+  symbol: mario_metal_low_poly_butt
+
+mario_low_poly_left_arm_shared_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x16B60
+  symbol: mario_low_poly_left_arm_shared_dl_vertex
+
+mario_low_poly_left_arm_shared_dl:
+  type: GFX
+  offset: 0x16C20
+  symbol: mario_low_poly_left_arm_shared_dl
+
+mario_low_poly_left_arm:
+  type: GFX
+  offset: 0x16C70
+  symbol: mario_low_poly_left_arm
+
+mario_low_poly_left_forearm_shared_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x16C90
+  symbol: mario_low_poly_left_forearm_shared_dl_vertex
+
+mario_low_poly_left_forearm_shared_dl:
+  type: GFX
+  offset: 0x16D50
+  symbol: mario_low_poly_left_forearm_shared_dl
+
+mario_low_poly_left_hand_closed_shared_dl_vertex:
+  type: VTX
+  count: 8
+  offset: 0x16DA0
+  symbol: mario_low_poly_left_hand_closed_shared_dl_vertex
+
+mario_low_poly_left_hand_closed_shared_dl:
+  type: GFX
+  offset: 0x16E20
+  symbol: mario_low_poly_left_hand_closed_shared_dl
+
+mario_low_poly_left_hand_closed:
+  type: GFX
+  offset: 0x16E80
+  symbol: mario_low_poly_left_hand_closed
+
+mario_low_poly_right_arm_shared_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x16EA0
+  symbol: mario_low_poly_right_arm_shared_dl_vertex
+
+mario_low_poly_right_arm_shared_dl:
+  type: GFX
+  offset: 0x16F60
+  symbol: mario_low_poly_right_arm_shared_dl
+
+mario_low_poly_right_arm:
+  type: GFX
+  offset: 0x16FB0
+  symbol: mario_low_poly_right_arm
+
+mario_low_poly_right_forearm_shared_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x16FD0
+  symbol: mario_low_poly_right_forearm_shared_dl_vertex
+
+mario_low_poly_right_forearm_shared_dl:
+  type: GFX
+  offset: 0x17090
+  symbol: mario_low_poly_right_forearm_shared_dl
+
+mario_low_poly_right_hand_closed_dl_vertex:
+  type: VTX
+  count: 8
+  offset: 0x170E0
+  symbol: mario_low_poly_right_hand_closed_dl_vertex
+
+mario_low_poly_right_hand_closed_dl:
+  type: GFX
+  offset: 0x17160
+  symbol: mario_low_poly_right_hand_closed_dl
+
+mario_low_poly_right_hand_closed:
+  type: GFX
+  offset: 0x171C0
+  symbol: mario_low_poly_right_hand_closed
+
+mario_metal_low_poly_right_hand_closed:
+  type: GFX
+  offset: 0x171E0
+  symbol: mario_metal_low_poly_right_hand_closed
+
+mario_low_poly_left_thigh_dl_vertex:
+  type: VTX
+  count: 14
+  offset: 0x17210
+  symbol: mario_low_poly_left_thigh_dl_vertex
+
+mario_low_poly_left_thigh_dl:
+  type: GFX
+  offset: 0x172F0
+  symbol: mario_low_poly_left_thigh_dl
+
+mario_low_poly_left_thigh:
+  type: GFX
+  offset: 0x17360
+  symbol: mario_low_poly_left_thigh
+
+mario_metal_low_poly_left_thigh:
+  type: GFX
+  offset: 0x17390
+  symbol: mario_metal_low_poly_left_thigh
+
+mario_low_poly_left_leg_shared_dl_vertex:
+  type: VTX
+  count: 14
+  offset: 0x17408
+  symbol: mario_low_poly_left_leg_shared_dl_vertex
+
+mario_low_poly_left_leg_shared_dl:
+  type: GFX
+  offset: 0x174E8
+  symbol: mario_low_poly_left_leg_shared_dl
+
+mario_low_poly_left_foot_shared_dl_vertex:
+  type: VTX
+  count: 14
+  offset: 0x17558
+  symbol: mario_low_poly_left_foot_shared_dl_vertex
+
+mario_low_poly_left_foot_shared_dl:
+  type: GFX
+  offset: 0x17638
+  symbol: mario_low_poly_left_foot_shared_dl
+
+mario_low_poly_left_foot:
+  type: GFX
+  offset: 0x176A8
+  symbol: mario_low_poly_left_foot
+
+mario_low_poly_right_thigh_shared_dl_vertex:
+  type: VTX
+  count: 14
+  offset: 0x176C8
+  symbol: mario_low_poly_right_thigh_shared_dl_vertex
+
+mario_low_poly_right_thigh_shared_dl:
+  type: GFX
+  offset: 0x177A8
+  symbol: mario_low_poly_right_thigh_shared_dl
+
+mario_low_poly_right_thigh:
+  type: GFX
+  offset: 0x17818
+  symbol: mario_low_poly_right_thigh
+
+mario_low_poly_right_leg_shared_dl_vertex:
+  type: VTX
+  count: 14
+  offset: 0x17838
+  symbol: mario_low_poly_right_leg_shared_dl_vertex
+
+mario_low_poly_right_leg_shared_dl:
+  type: GFX
+  offset: 0x17918
+  symbol: mario_low_poly_right_leg_shared_dl
+
+mario_low_poly_right_foot_dl_vertex:
+  type: VTX
+  count: 14
+  offset: 0x17988
+  symbol: mario_low_poly_right_foot_dl_vertex
+
+mario_low_poly_right_foot_dl:
+  type: GFX
+  offset: 0x17A68
+  symbol: mario_low_poly_right_foot_dl
+
+mario_low_poly_right_foot:
+  type: GFX
+  offset: 0x17AD8
+  symbol: mario_low_poly_right_foot
+
+mario_metal_low_poly_right_foot:
+  type: GFX
+  offset: 0x17B18
+  symbol: mario_metal_low_poly_right_foot
+
+mario_seg4_vertex_04017B58:
+  type: VTX
+  count: 8
+  offset: 0x17B58
+  symbol: mario_seg4_vertex_04017B58
+
+mario_seg4_vertex_04017BD8:
+  type: VTX
+  count: 15
+  offset: 0x17BD8
+  symbol: mario_seg4_vertex_04017BD8
+
+mario_seg4_vertex_04017CC8:
+  type: VTX
+  count: 10
+  offset: 0x17CC8
+  symbol: mario_seg4_vertex_04017CC8
+
+mario_low_poly_yellow_button_dl:
+  type: GFX
+  offset: 0x17D68
+  symbol: mario_low_poly_yellow_button_dl
+
+mario_low_poly_pants_overalls_shared_dl:
+  type: GFX
+  offset: 0x17D98
+  symbol: mario_low_poly_pants_overalls_shared_dl
+
+mario_low_poly_tshirt_shared_dl:
+  type: GFX
+  offset: 0x17E20
+  symbol: mario_low_poly_tshirt_shared_dl
+
+mario_low_poly_torso_dl:
+  type: GFX
+  offset: 0x17E78
+  symbol: mario_low_poly_torso_dl
+
+mario_low_poly_torso:
+  type: GFX
+  offset: 0x17EA0
+  symbol: mario_low_poly_torso
+
+mario_metal_low_poly_torso:
+  type: GFX
+  offset: 0x17F20
+  symbol: mario_metal_low_poly_torso
+
+mario_low_poly_mario_m_logo_dl_vertex:
+  type: VTX
+  count: 5
+  offset: 0x17F40
+  symbol: mario_low_poly_mario_m_logo_dl_vertex
+
+mario_low_poly_eyes_cap_on_dl_vertex:
+  type: VTX
+  count: 5
+  offset: 0x17F90
+  symbol: mario_low_poly_eyes_cap_on_dl_vertex
+
+mario_low_poly_mustache_cap_on_dl_vertex:
+  type: VTX
+  count: 10
+  offset: 0x17FE0
+  symbol: mario_low_poly_mustache_cap_on_dl_vertex
+
+mario_low_poly_face_cap_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x18080
+  symbol: mario_low_poly_face_cap_dl_vertex
+
+mario_low_poly_face_part_cap_on_dl_vertex:
+  type: VTX
+  count: 13
+  offset: 0x18140
+  symbol: mario_low_poly_face_part_cap_on_dl_vertex
+
+mario_low_poly_face_back_hair_cap_on_dl_vertex:
+  type: VTX
+  count: 6
+  offset: 0x18210
+  symbol: mario_low_poly_face_back_hair_cap_on_dl_vertex
+
+mario_low_poly_mario_m_logo_dl:
+  type: GFX
+  offset: 0x18270
+  symbol: mario_low_poly_mario_m_logo_dl
+
+mario_low_poly_eyes_cap_on_dl:
+  type: GFX
+  offset: 0x18298
+  symbol: mario_low_poly_eyes_cap_on_dl
+
+mario_low_poly_mustache_cap_on_dl:
+  type: GFX
+  offset: 0x182C0
+  symbol: mario_low_poly_mustache_cap_on_dl
+
+mario_low_poly_face_part_cap_on_dl:
+  type: GFX
+  offset: 0x18300
+  symbol: mario_low_poly_face_part_cap_on_dl
+
+mario_low_poly_face_cap_dl:
+  type: GFX
+  offset: 0x18370
+  symbol: mario_low_poly_face_cap_dl
+
+mario_low_poly_face_back_hair_cap_on_dl:
+  type: GFX
+  offset: 0x183F0
+  symbol: mario_low_poly_face_back_hair_cap_on_dl
+
+mario_low_poly_face_cap_on_dl:
+  type: GFX
+  offset: 0x18420
+  symbol: mario_low_poly_face_cap_on_dl
+
+mario_low_poly_cap_on_eyes_front:
+  type: GFX
+  offset: 0x18460
+  symbol: mario_low_poly_cap_on_eyes_front
+
+mario_low_poly_cap_on_eyes_half_closed:
+  type: GFX
+  offset: 0x18530
+  symbol: mario_low_poly_cap_on_eyes_half_closed
+
+mario_low_poly_cap_on_eyes_closed:
+  type: GFX
+  offset: 0x18600
+  symbol: mario_low_poly_cap_on_eyes_closed
+
+mario_low_poly_cap_on_eyes_right:
+  type: GFX
+  offset: 0x186D0
+  symbol: mario_low_poly_cap_on_eyes_right
+
+mario_low_poly_cap_on_eyes_left:
+  type: GFX
+  offset: 0x187A0
+  symbol: mario_low_poly_cap_on_eyes_left
+
+mario_low_poly_cap_on_eyes_up:
+  type: GFX
+  offset: 0x18870
+  symbol: mario_low_poly_cap_on_eyes_up
+
+mario_low_poly_cap_on_eyes_down:
+  type: GFX
+  offset: 0x18940
+  symbol: mario_low_poly_cap_on_eyes_down
+
+mario_low_poly_cap_on_eyes_dead:
+  type: GFX
+  offset: 0x18A10
+  symbol: mario_low_poly_cap_on_eyes_dead
+
+mario_metal_low_poly_cap_on:
+  type: GFX
+  offset: 0x18AE0
+  symbol: mario_metal_low_poly_cap_on
+
+mario_low_poly_mario_eyes_cap_off_dl_vertex:
+  type: VTX
+  count: 5
+  offset: 0x18B18
+  symbol: mario_low_poly_mario_eyes_cap_off_dl_vertex
+
+mario_low_poly_mustache_cap_off_dl_vertex:
+  type: VTX
+  count: 10
+  offset: 0x18B68
+  symbol: mario_low_poly_mustache_cap_off_dl_vertex
+
+mario_low_poly_face_part_cap_off_dl_vertex:
+  type: VTX
+  count: 13
+  offset: 0x18C08
+  symbol: mario_low_poly_face_part_cap_off_dl_vertex
+
+mario_low_poly_face_hair_cap_off_dl_vertex:
+  type: VTX
+  count: 15
+  offset: 0x18CD8
+  symbol: mario_low_poly_face_hair_cap_off_dl_vertex
+
+mario_low_poly_mario_eyes_cap_off_dl:
+  type: GFX
+  offset: 0x18DC8
+  symbol: mario_low_poly_mario_eyes_cap_off_dl
+
+mario_low_poly_mustache_cap_off_dl:
+  type: GFX
+  offset: 0x18DF0
+  symbol: mario_low_poly_mustache_cap_off_dl
+
+mario_low_poly_face_part_cap_off_dl:
+  type: GFX
+  offset: 0x18E30
+  symbol: mario_low_poly_face_part_cap_off_dl
+
+mario_low_poly_face_hair_cap_off_dl:
+  type: GFX
+  offset: 0x18EA0
+  symbol: mario_low_poly_face_hair_cap_off_dl
+
+mario_low_poly_face_cap_off_dl:
+  type: GFX
+  offset: 0x18F68
+  symbol: mario_low_poly_face_cap_off_dl
+
+mario_low_poly_cap_off_eyes_front:
+  type: GFX
+  offset: 0x18F90
+  symbol: mario_low_poly_cap_off_eyes_front
+
+mario_low_poly_cap_off_eyes_half_closed:
+  type: GFX
+  offset: 0x19040
+  symbol: mario_low_poly_cap_off_eyes_half_closed
+
+mario_low_poly_cap_off_eyes_closed:
+  type: GFX
+  offset: 0x190F0
+  symbol: mario_low_poly_cap_off_eyes_closed
+
+mario_low_poly_cap_off_eyes_right:
+  type: GFX
+  offset: 0x191A0
+  symbol: mario_low_poly_cap_off_eyes_right
+
+mario_low_poly_cap_off_eyes_left:
+  type: GFX
+  offset: 0x19250
+  symbol: mario_low_poly_cap_off_eyes_left
+
+mario_low_poly_cap_off_eyes_up:
+  type: GFX
+  offset: 0x19300
+  symbol: mario_low_poly_cap_off_eyes_up
+
+mario_low_poly_cap_off_eyes_down:
+  type: GFX
+  offset: 0x193B0
+  symbol: mario_low_poly_cap_off_eyes_down
+
+mario_low_poly_cap_off_eyes_dead:
+  type: GFX
+  offset: 0x19460
+  symbol: mario_low_poly_cap_off_eyes_dead
+
+mario_metal_low_poly_cap_off:
+  type: GFX
+  offset: 0x19510
+  symbol: mario_metal_low_poly_cap_off
+
+mario_left_hand_open_shared_dl_vertex_group1:
+  type: VTX
+  count: 14
+  offset: 0x19538
+  symbol: mario_left_hand_open_shared_dl_vertex_group1
+
+mario_left_hand_open_shared_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x19618
+  symbol: mario_left_hand_open_shared_dl_vertex_group2
+
+mario_left_hand_open_shared_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0x19718
+  symbol: mario_left_hand_open_shared_dl_vertex_group3
+
+mario_left_hand_open_shared_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0x19818
+  symbol: mario_left_hand_open_shared_dl_vertex_group4
+
+mario_left_hand_open_shared_dl_vertex_group5:
+  type: VTX
+  count: 16
+  offset: 0x19918
+  symbol: mario_left_hand_open_shared_dl_vertex_group5
+
+mario_left_hand_open_shared_dl_vertex_group6:
+  type: VTX
+  count: 5
+  offset: 0x19A18
+  symbol: mario_left_hand_open_shared_dl_vertex_group6
+
+mario_left_hand_open_shared_dl:
+  type: GFX
+  offset: 0x19A68
+  symbol: mario_left_hand_open_shared_dl
+
+mario_left_hand_open:
+  type: GFX
+  offset: 0x19CA0
+  symbol: mario_left_hand_open
+
+mario_right_hand_open_dl_vertex_group1:
+  type: VTX
+  count: 14
+  offset: 0x19CC0
+  symbol: mario_right_hand_open_dl_vertex_group1
+
+mario_right_hand_open_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x19DA0
+  symbol: mario_right_hand_open_dl_vertex_group2
+
+mario_right_hand_open_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0x19EA0
+  symbol: mario_right_hand_open_dl_vertex_group3
+
+mario_right_hand_open_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0x19FA0
+  symbol: mario_right_hand_open_dl_vertex_group4
+
+mario_right_hand_open_dl_vertex_group5:
+  type: VTX
+  count: 16
+  offset: 0x1A0A0
+  symbol: mario_right_hand_open_dl_vertex_group5
+
+mario_right_hand_open_dl_vertex_group6:
+  type: VTX
+  count: 5
+  offset: 0x1A1A0
+  symbol: mario_right_hand_open_dl_vertex_group6
+
+mario_right_hand_open_dl:
+  type: GFX
+  offset: 0x1A1F0
+  symbol: mario_right_hand_open_dl
+
+mario_right_hand_open:
+  type: GFX
+  offset: 0x1A428
+  symbol: mario_right_hand_open
+
+mario_metal_right_hand_open:
+  type: GFX
+  offset: 0x1A448
+  symbol: mario_metal_right_hand_open
+
+mario_right_hand_cap_m_logo_dl_vertex:
+  type: VTX
+  count: 5
+  offset: 0x1A478
+  symbol: mario_right_hand_cap_m_logo_dl_vertex
+
+mario_right_hand_cap_hand_position_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0x1A4C8
+  symbol: mario_right_hand_cap_hand_position_dl_vertex_group1
+
+mario_right_hand_cap_hand_position_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x1A5B8
+  symbol: mario_right_hand_cap_hand_position_dl_vertex_group2
+
+mario_right_hand_cap_hand_position_dl_vertex_group3:
+  type: VTX
+  count: 14
+  offset: 0x1A6B8
+  symbol: mario_right_hand_cap_hand_position_dl_vertex_group3
+
+mario_right_hand_cap_top_dl_vertex_group1:
+  type: VTX
+  count: 15
+  offset: 0x1A798
+  symbol: mario_right_hand_cap_top_dl_vertex_group1
+
+mario_right_hand_cap_top_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x1A888
+  symbol: mario_right_hand_cap_top_dl_vertex_group2
+
+mario_right_hand_cap_top_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0x1A988
+  symbol: mario_right_hand_cap_top_dl_vertex_group3
+
+mario_right_hand_cap_top_dl_vertex_group4:
+  type: VTX
+  count: 8
+  offset: 0x1AA88
+  symbol: mario_right_hand_cap_top_dl_vertex_group4
+
+mario_right_hand_cap_bottom_dl_vertex:
+  type: VTX
+  count: 10
+  offset: 0x1AB08
+  symbol: mario_right_hand_cap_bottom_dl_vertex
+
+mario_right_hand_cap_m_logo_dl:
+  type: GFX
+  offset: 0x1ABA8
+  symbol: mario_right_hand_cap_m_logo_dl
+
+mario_right_hand_cap_top_dl:
+  type: GFX
+  offset: 0x1ABD0
+  symbol: mario_right_hand_cap_top_dl
+
+mario_right_hand_cap_hand_position_dl:
+  type: GFX
+  offset: 0x1AD40
+  symbol: mario_right_hand_cap_hand_position_dl
+
+mario_right_hand_cap_bottom_dl:
+  type: GFX
+  offset: 0x1AED0
+  symbol: mario_right_hand_cap_bottom_dl
+
+mario_right_hand_cap_dl:
+  type: GFX
+  offset: 0x1AF20
+  symbol: mario_right_hand_cap_dl
+
+mario_right_hand_cap_wings_half_1_dl_vertex:
+  type: VTX
+  count: 10
+  offset: 0x1AF60
+  symbol: mario_right_hand_cap_wings_half_1_dl_vertex
+
+mario_right_hand_cap_wings_half_2_dl_vertex:
+  type: VTX
+  count: 8
+  offset: 0x1B000
+  symbol: mario_right_hand_cap_wings_half_2_dl_vertex
+
+mario_right_hand_cap_wings_half_1_dl:
+  type: GFX
+  offset: 0x1B080
+  symbol: mario_right_hand_cap_wings_half_1_dl
+
+mario_right_hand_cap_wings_half_2_dl:
+  type: GFX
+  offset: 0x1B0B0
+  symbol: mario_right_hand_cap_wings_half_2_dl
+
+mario_right_hand_cap_wings_initial_dl:
+  type: GFX
+  offset: 0x1B0E0
+  symbol: mario_right_hand_cap_wings_initial_dl
+
+mario_right_hand_cap_wings_end_dl:
+  type: GFX
+  offset: 0x1B138
+  symbol: mario_right_hand_cap_wings_end_dl
+
+mario_right_hand_cap:
+  type: GFX
+  offset: 0x1B158
+  symbol: mario_right_hand_cap
+
+mario_right_hand_cap_wings:
+  type: GFX
+  offset: 0x1B1D8
+  symbol: mario_right_hand_cap_wings
+
+mario_metal_right_hand_cap_shared_dl:
+  type: GFX
+  offset: 0x1B230
+  symbol: mario_metal_right_hand_cap_shared_dl
+
+mario_metal_right_hand_cap_shared_dl_wings:
+  type: GFX
+  offset: 0x1B278
+  symbol: mario_metal_right_hand_cap_shared_dl_wings
+
+mario_right_hand_peace_shared_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x1B2D0
+  symbol: mario_right_hand_peace_shared_dl_vertex_group1
+
+mario_right_hand_peace_shared_dl_vertex_group2:
+  type: VTX
+  count: 14
+  offset: 0x1B3D0
+  symbol: mario_right_hand_peace_shared_dl_vertex_group2
+
+mario_right_hand_peace_shared_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0x1B4B0
+  symbol: mario_right_hand_peace_shared_dl_vertex_group3
+
+mario_right_hand_peace_shared_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0x1B5A0
+  symbol: mario_right_hand_peace_shared_dl_vertex_group4
+
+mario_right_hand_peace_shared_dl_vertex_group5:
+  type: VTX
+  count: 16
+  offset: 0x1B6A0
+  symbol: mario_right_hand_peace_shared_dl_vertex_group5
+
+mario_right_hand_peace_shared_dl_vertex_group6:
+  type: VTX
+  count: 15
+  offset: 0x1B7A0
+  symbol: mario_right_hand_peace_shared_dl_vertex_group6
+
+mario_right_hand_peace_shared_dl_vertex_group7:
+  type: VTX
+  count: 15
+  offset: 0x1B890
+  symbol: mario_right_hand_peace_shared_dl_vertex_group7
+
+mario_right_hand_peace_shared_dl_vertex_group8:
+  type: VTX
+  count: 15
+  offset: 0x1B980
+  symbol: mario_right_hand_peace_shared_dl_vertex_group8
+
+mario_right_hand_peace_shared_dl_vertex_group9:
+  type: VTX
+  count: 16
+  offset: 0x1BA70
+  symbol: mario_right_hand_peace_shared_dl_vertex_group9
+
+mario_right_hand_peace_shared_dl_vertex_group10:
+  type: VTX
+  count: 14
+  offset: 0x1BB70
+  symbol: mario_right_hand_peace_shared_dl_vertex_group10
+
+mario_right_hand_peace_shared_dl_vertex_group11:
+  type: VTX
+  count: 3
+  offset: 0x1BC50
+  symbol: mario_right_hand_peace_shared_dl_vertex_group11
+
+mario_right_hand_peace_shared_dl:
+  type: GFX
+  offset: 0x1BC80
+  symbol: mario_right_hand_peace_shared_dl
+
+mario_right_hand_peace:
+  type: GFX
+  offset: 0x1BF30
+  symbol: mario_right_hand_peace
+
+mario_cap_unused_m_logo_dl_vertex:
+  type: VTX
+  count: 7
+  offset: 0x1BF50
+  symbol: mario_cap_unused_m_logo_dl_vertex
+
+mario_cap_unused_base_top_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x1BFC0
+  symbol: mario_cap_unused_base_top_dl_vertex_group1
+
+mario_cap_unused_base_top_dl_vertex_group2:
+  type: VTX
+  count: 15
+  offset: 0x1C0C0
+  symbol: mario_cap_unused_base_top_dl_vertex_group2
+
+mario_cap_unused_base_top_dl_vertex_group3:
+  type: VTX
+  count: 15
+  offset: 0x1C1B0
+  symbol: mario_cap_unused_base_top_dl_vertex_group3
+
+mario_cap_unused_base_bottom_dl_vertex:
+  type: VTX
+  count: 9
+  offset: 0x1C2A0
+  symbol: mario_cap_unused_base_bottom_dl_vertex
+
+mario_cap_unused_m_logo_dl:
+  type: GFX
+  offset: 0x1C330
+  symbol: mario_cap_unused_m_logo_dl
+
+mario_cap_unused_base_top_dl:
+  type: GFX
+  offset: 0x1C368
+  symbol: mario_cap_unused_base_top_dl
+
+mario_cap_unused_base_bottom_dl:
+  type: GFX
+  offset: 0x1C4C8
+  symbol: mario_cap_unused_base_bottom_dl
+
+mario_cap_unused_base_dl:
+  type: GFX
+  offset: 0x1C510
+  symbol: mario_cap_unused_base_dl
+
+mario_wings_half_1_unused_dl_vertex:
+  type: VTX
+  count: 12
+  offset: 0x1C538
+  symbol: mario_wings_half_1_unused_dl_vertex
+
+mario_wings_half_2_unused_dl_vertex:
+  type: VTX
+  count: 8
+  offset: 0x1C5F8
+  symbol: mario_wings_half_2_unused_dl_vertex
+
+mario_wings_half_1_unused_dl:
+  type: GFX
+  offset: 0x1C678
+  symbol: mario_wings_half_1_unused_dl
+
+mario_wings_half_2_unused_dl:
+  type: GFX
+  offset: 0x1C6A8
+  symbol: mario_wings_half_2_unused_dl
+
+mario_cap_wings_unused_initial_dl:
+  type: GFX
+  offset: 0x1C6D8
+  symbol: mario_cap_wings_unused_initial_dl
+
+mario_cap_wings_unused_end_dl:
+  type: GFX
+  offset: 0x1C730
+  symbol: mario_cap_wings_unused_end_dl
+
+mario_cap_unused_dl:
+  type: GFX
+  offset: 0x1C758
+  symbol: mario_cap_unused_dl
+
+mario_metal_cap_unused_dl:
+  type: GFX
+  offset: 0x1C7E8
+  symbol: mario_metal_cap_unused_dl
+
+mario_cap_wings_unused:
+  type: GFX
+  offset: 0x1C890
+  symbol: mario_cap_wings_unused
+
+mario_metal_cap_wings_unused:
+  type: GFX
+  offset: 0x1C8E8
+  symbol: mario_metal_cap_wings_unused
+
+mario_wings_half_1_dl_vertex:
+  type: VTX
+  count: 4
+  offset: 0x1C940
+  symbol: mario_wings_half_1_dl_vertex
+
+mario_wings_half_2_dl_vertex:
+  type: VTX
+  count: 4
+  offset: 0x1C980
+  symbol: mario_wings_half_2_dl_vertex
+
+mario_wings_half_1_dl:
+  type: GFX
+  offset: 0x1C9C0
+  symbol: mario_wings_half_1_dl
+
+mario_wings_half_2_dl:
+  type: GFX
+  offset: 0x1C9E0
+  symbol: mario_wings_half_2_dl
+
+mario_cap_wings:
+  type: GFX
+  offset: 0x1CA00
+  symbol: mario_cap_wings
+
+mario_cap_wings_transparent:
+  type: GFX
+  offset: 0x1CAB8
+  symbol: mario_cap_wings_transparent
+
+mario_metal_cap_wings:
+  type: GFX
+  offset: 0x1CB70
+  symbol: mario_metal_cap_wings
+
+mario_metal_cap_wings_transparent:
+  type: GFX
+  offset: 0x1CC28
+  symbol: mario_metal_cap_wings_transparent
+

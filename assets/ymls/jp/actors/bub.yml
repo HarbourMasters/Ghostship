@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1B8010
+  segments:
+    - [0x06,  0x1B8010]
+
 bub_eye_border:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x17EF80
-  mio0: 0x1408
+  offset: 0x1408
   format: RGBA16
   symbol: bub_seg6_texture_0600E2A8
 bub_eyes:
@@ -12,8 +18,7 @@ bub_eyes:
   size: 4096
   width: 64
   height: 32
-  offset: 0x17EF80
-  mio0: 0x408
+  offset: 0x408
   format: RGBA16
   symbol: bub_seg6_texture_0600F2A8
 bub_fins:
@@ -21,8 +26,7 @@ bub_fins:
   size: 2048
   width: 32
   height: 32
-  offset: 0x17EF80
-  mio0: 0x1C08
+  offset: 0x1C08
   format: RGBA16
   symbol: bub_seg6_texture_0600EAA8
 bub_scales:
@@ -30,7 +34,151 @@ bub_scales:
   size: 4096
   width: 64
   height: 32
-  offset: 0x17EF80
-  mio0: 0x2408
+  offset: 0x2408
   format: RGBA16
   symbol: bub_seg6_texture_060102A8
+
+bub_seg6_lights_0600E280:
+  type: LIGHTS
+  size: 24
+  offset: 0xE278
+  symbol: bub_seg6_lights_0600E280
+
+bub_seg6_lights_0600E290:
+  type: LIGHTS
+  size: 24
+  offset: 0xE290
+  symbol: bub_seg6_lights_0600E290
+
+bub_seg6_vertex_060112A8:
+  type: VTX
+  count: 14
+  offset: 0x112A8
+  symbol: bub_seg6_vertex_060112A8
+
+bub_seg6_vertex_06011388:
+  type: VTX
+  count: 3
+  offset: 0x11388
+  symbol: bub_seg6_vertex_06011388
+
+bub_seg6_vertex_060113B8:
+  type: VTX
+  count: 6
+  offset: 0x113B8
+  symbol: bub_seg6_vertex_060113B8
+
+bub_seg6_vertex_06011418:
+  type: VTX
+  count: 7
+  offset: 0x11418
+  symbol: bub_seg6_vertex_06011418
+
+bub_seg6_vertex_06011488:
+  type: VTX
+  count: 15
+  offset: 0x11488
+  symbol: bub_seg6_vertex_06011488
+
+bub_seg6_vertex_06011578:
+  type: VTX
+  count: 14
+  offset: 0x11578
+  symbol: bub_seg6_vertex_06011578
+
+bub_seg6_vertex_06011658:
+  type: VTX
+  count: 12
+  offset: 0x11658
+  symbol: bub_seg6_vertex_06011658
+
+bub_seg6_vertex_06011718:
+  type: VTX
+  count: 12
+  offset: 0x11718
+  symbol: bub_seg6_vertex_06011718
+
+bub_seg6_vertex_060117D8:
+  type: VTX
+  count: 7
+  offset: 0x117D8
+  symbol: bub_seg6_vertex_060117D8
+
+bub_seg6_dl_06011848:
+  type: GFX
+  offset: 0x11848
+  symbol: bub_seg6_dl_06011848
+
+bub_seg6_dl_060118C0:
+  type: GFX
+  offset: 0x118C0
+  symbol: bub_seg6_dl_060118C0
+
+bub_seg6_dl_06011918:
+  type: GFX
+  offset: 0x11918
+  symbol: bub_seg6_dl_06011918
+
+bub_seg6_dl_06011968:
+  type: GFX
+  offset: 0x11968
+  symbol: bub_seg6_dl_06011968
+
+bub_seg6_dl_06011A50:
+  type: GFX
+  offset: 0x11A50
+  symbol: bub_seg6_dl_06011A50
+
+bub_seg6_dl_06011B28:
+  type: GFX
+  offset: 0x11B28
+  symbol: bub_seg6_dl_06011B28
+
+bub_seg6_vertex_06011BD8:
+  type: VTX
+  count: 8
+  offset: 0x11BD8
+  symbol: bub_seg6_vertex_06011BD8
+
+bub_seg6_dl_06011C58:
+  type: GFX
+  offset: 0x11C58
+  symbol: bub_seg6_dl_06011C58
+
+bub_seg6_dl_06011CF0:
+  type: GFX
+  offset: 0x11CF0
+  symbol: bub_seg6_dl_06011CF0
+
+bub_seg6_vertex_06011D50:
+  type: VTX
+  count: 7
+  offset: 0x11D50
+  symbol: bub_seg6_vertex_06011D50
+
+bub_seg6_dl_06011DC0:
+  type: GFX
+  offset: 0x11DC0
+  symbol: bub_seg6_dl_06011DC0
+
+bub_seg6_dl_06011E48:
+  type: GFX
+  offset: 0x11E48
+  symbol: bub_seg6_dl_06011E48
+
+bub_seg6_vertex_06011EA8:
+  type: VTX
+  count: 7
+  offset: 0x11EA8
+  symbol: bub_seg6_vertex_06011EA8
+
+bub_seg6_dl_06011F18:
+  type: GFX
+  offset: 0x11F18
+  symbol: bub_seg6_dl_06011F18
+
+bub_seg6_dl_06011FA0:
+  type: GFX
+  offset: 0x11FA0
+  symbol: bub_seg6_dl_06011FA0
+

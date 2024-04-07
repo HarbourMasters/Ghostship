@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x128BE0
+  segments:
+    - [0x05,  0x128BE0]
+
 yoshi_egg_0_unused:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x57B8
+  offset: 0x57B8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_050057B8
 yoshi_egg_1_unused:
@@ -12,8 +18,7 @@ yoshi_egg_1_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x5FB8
+  offset: 0x5FB8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_05005FB8
 yoshi_egg_2_unused:
@@ -21,8 +26,7 @@ yoshi_egg_2_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x67B8
+  offset: 0x67B8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_050067B8
 yoshi_egg_3_unused:
@@ -30,8 +34,7 @@ yoshi_egg_3_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x6FB8
+  offset: 0x6FB8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_05006FB8
 yoshi_egg_4_unused:
@@ -39,8 +42,7 @@ yoshi_egg_4_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x77B8
+  offset: 0x77B8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_050077B8
 yoshi_egg_5_unused:
@@ -48,8 +50,7 @@ yoshi_egg_5_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x7FB8
+  offset: 0x7FB8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_05007FB8
 yoshi_egg_6_unused:
@@ -57,8 +58,7 @@ yoshi_egg_6_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x87B8
+  offset: 0x87B8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_050087B8
 yoshi_egg_7_unused:
@@ -66,7 +66,58 @@ yoshi_egg_7_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x8FB8
+  offset: 0x8FB8
   format: RGBA16
   symbol: yoshi_egg_seg5_texture_05008FB8
+
+yoshi_egg_seg5_vertex_05005778:
+  type: VTX
+  count: 4
+  offset: 0x5778
+  symbol: yoshi_egg_seg5_vertex_05005778
+
+yoshi_egg_seg5_dl_050097B8:
+  type: GFX
+  offset: 0x97B8
+  symbol: yoshi_egg_seg5_dl_050097B8
+
+yoshi_egg_seg5_dl_05009820:
+  type: GFX
+  offset: 0x9820
+  symbol: yoshi_egg_seg5_dl_05009820
+
+yoshi_egg_seg5_dl_05009838:
+  type: GFX
+  offset: 0x9838
+  symbol: yoshi_egg_seg5_dl_05009838
+
+yoshi_egg_seg5_dl_05009850:
+  type: GFX
+  offset: 0x9850
+  symbol: yoshi_egg_seg5_dl_05009850
+
+yoshi_egg_seg5_dl_05009868:
+  type: GFX
+  offset: 0x9868
+  symbol: yoshi_egg_seg5_dl_05009868
+
+yoshi_egg_seg5_dl_05009880:
+  type: GFX
+  offset: 0x9880
+  symbol: yoshi_egg_seg5_dl_05009880
+
+yoshi_egg_seg5_dl_05009898:
+  type: GFX
+  offset: 0x9898
+  symbol: yoshi_egg_seg5_dl_05009898
+
+yoshi_egg_seg5_dl_050098B0:
+  type: GFX
+  offset: 0x98B0
+  symbol: yoshi_egg_seg5_dl_050098B0
+
+yoshi_egg_seg5_dl_050098C8:
+  type: GFX
+  offset: 0x98C8
+  symbol: yoshi_egg_seg5_dl_050098C8
+

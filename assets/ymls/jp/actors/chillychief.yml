@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E3520
+  segments:
+    - [0x06,  0x1E3520]
+
 chill_bully_eye:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x131060
-  mio0: 0x2468
+  offset: 0x2468
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06002060
 chill_bully_left_side:
@@ -12,8 +18,7 @@ chill_bully_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E3520
-  mio0: 0x60
+  offset: 0x60
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06000060
 chill_bully_right_side:
@@ -21,7 +26,146 @@ chill_bully_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E3520
-  mio0: 0x1060
+  offset: 0x1060
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06001060
+
+chilly_chief_seg6_lights_06000000:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: chilly_chief_seg6_lights_06000000
+
+chilly_chief_seg6_lights_06000018:
+  type: LIGHTS
+  size: 24
+  offset: 0x18
+  symbol: chilly_chief_seg6_lights_06000018
+
+chilly_chief_seg6_lights_06000030:
+  type: LIGHTS
+  size: 24
+  offset: 0x30
+  symbol: chilly_chief_seg6_lights_06000030
+
+chillychief_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0x30
+  symbol: chillychief_lights_unused
+
+chilly_chief_seg6_vertex_06002860:
+  type: VTX
+  count: 14
+  offset: 0x2860
+  symbol: chilly_chief_seg6_vertex_06002860
+
+chilly_chief_seg6_vertex_06002940:
+  type: VTX
+  count: 4
+  offset: 0x2940
+  symbol: chilly_chief_seg6_vertex_06002940
+
+chilly_chief_seg6_vertex_06002980:
+  type: VTX
+  count: 14
+  offset: 0x2980
+  symbol: chilly_chief_seg6_vertex_06002980
+
+chilly_chief_seg6_vertex_06002A60:
+  type: VTX
+  count: 4
+  offset: 0x2A60
+  symbol: chilly_chief_seg6_vertex_06002A60
+
+chilly_chief_seg6_vertex_06002AA0:
+  type: VTX
+  count: 9
+  offset: 0x2AA0
+  symbol: chilly_chief_seg6_vertex_06002AA0
+
+chilly_chief_seg6_dl_06002B30:
+  type: GFX
+  offset: 0x2B30
+  symbol: chilly_chief_seg6_dl_06002B30
+
+chilly_chief_seg6_dl_06002BC8:
+  type: GFX
+  offset: 0x2BC8
+  symbol: chilly_chief_seg6_dl_06002BC8
+
+chilly_chief_seg6_dl_06002C60:
+  type: GFX
+  offset: 0x2C60
+  symbol: chilly_chief_seg6_dl_06002C60
+
+chilly_chief_seg6_vertex_06002C98:
+  type: VTX
+  count: 4
+  offset: 0x2C98
+  symbol: chilly_chief_seg6_vertex_06002C98
+
+chilly_chief_seg6_vertex_06002CD8:
+  type: VTX
+  count: 4
+  offset: 0x2CD8
+  symbol: chilly_chief_seg6_vertex_06002CD8
+
+chilly_chief_seg6_dl_06002D18:
+  type: GFX
+  offset: 0x2D18
+  symbol: chilly_chief_seg6_dl_06002D18
+
+chilly_chief_seg6_dl_06002D50:
+  type: GFX
+  offset: 0x2D50
+  symbol: chilly_chief_seg6_dl_06002D50
+
+chilly_chief_seg6_dl_06002D88:
+  type: GFX
+  offset: 0x2D88
+  symbol: chilly_chief_seg6_dl_06002D88
+
+chilly_chief_seg6_vertex_06002E00:
+  type: VTX
+  count: 4
+  offset: 0x2E00
+  symbol: chilly_chief_seg6_vertex_06002E00
+
+chilly_chief_seg6_vertex_06002E40:
+  type: VTX
+  count: 4
+  offset: 0x2E40
+  symbol: chilly_chief_seg6_vertex_06002E40
+
+chilly_chief_seg6_dl_06002E80:
+  type: GFX
+  offset: 0x2E80
+  symbol: chilly_chief_seg6_dl_06002E80
+
+chilly_chief_seg6_dl_06002EB8:
+  type: GFX
+  offset: 0x2EB8
+  symbol: chilly_chief_seg6_dl_06002EB8
+
+chilly_chief_seg6_dl_06002EF0:
+  type: GFX
+  offset: 0x2EF0
+  symbol: chilly_chief_seg6_dl_06002EF0
+
+chilly_chief_seg6_vertex_06002F68:
+  type: VTX
+  count: 6
+  offset: 0x2F68
+  symbol: chilly_chief_seg6_vertex_06002F68
+
+chilly_chief_seg6_dl_06002FC8:
+  type: GFX
+  offset: 0x2FC8
+  symbol: chilly_chief_seg6_dl_06002FC8
+
+chilly_chief_seg6_dl_06003010:
+  type: GFX
+  offset: 0x3010
+  symbol: chilly_chief_seg6_dl_06003010
+

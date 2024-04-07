@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x128BE0
+  segments:
+    - [0x05,  0x128BE0]
+
 heave-ho_arm_ornament:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x109C8
+  offset: 0x109C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050109C8
 heave-ho_face:
@@ -12,8 +18,7 @@ heave-ho_face:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0xE9C8
+  offset: 0xE9C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_0500E9C8
 heave-ho_logo:
@@ -21,8 +26,7 @@ heave-ho_logo:
   size: 4096
   width: 64
   height: 32
-  offset: 0x128BE0
-  mio0: 0xF9C8
+  offset: 0xF9C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_0500F9C8
 heave-ho_platform:
@@ -30,8 +34,7 @@ heave-ho_platform:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0xF1C8
+  offset: 0xF1C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_0500F1C8
 heave-ho_roller:
@@ -39,8 +42,7 @@ heave-ho_roller:
   size: 512
   width: 16
   height: 16
-  offset: 0x128BE0
-  mio0: 0x111C8
+  offset: 0x111C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050111C8
 heave-ho_turnkey:
@@ -48,7 +50,446 @@ heave-ho_turnkey:
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x113C8
+  offset: 0x113C8
   format: RGBA16
   symbol: heave_ho_seg5_texture_050113C8
+
+heave_ho_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x2080
+  symbol: heave_ho_lights_unused1
+
+heave_ho_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x2080
+  symbol: heave_ho_lights_unused2
+
+heave_ho_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x2080
+  symbol: heave_ho_lights_unused3
+
+heave_ho_seg5_lights_0500E968:
+  type: LIGHTS
+  size: 24
+  offset: 0xE968
+  symbol: heave_ho_seg5_lights_0500E968
+
+heave_ho_seg5_lights_0500E980:
+  type: LIGHTS
+  size: 24
+  offset: 0xE980
+  symbol: heave_ho_seg5_lights_0500E980
+
+heave_ho_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0xE980
+  symbol: heave_ho_lights_unused4
+
+heave_ho_lights_unused5:
+  type: LIGHTS
+  size: 24
+  offset: 0xE980
+  symbol: heave_ho_lights_unused5
+
+heave_ho_seg5_lights_05011BC8:
+  type: LIGHTS
+  size: 24
+  offset: 0x11BC8
+  symbol: heave_ho_seg5_lights_05011BC8
+
+heave_ho_seg5_lights_05011BE0:
+  type: LIGHTS
+  size: 24
+  offset: 0x11BE0
+  symbol: heave_ho_seg5_lights_05011BE0
+
+heave_ho_seg5_vertex_05011BF8:
+  type: VTX
+  count: 4
+  offset: 0x11BF8
+  symbol: heave_ho_seg5_vertex_05011BF8
+
+heave_ho_seg5_vertex_05011C38:
+  type: VTX
+  count: 6
+  offset: 0x11C38
+  symbol: heave_ho_seg5_vertex_05011C38
+
+heave_ho_seg5_vertex_05011C98:
+  type: VTX
+  count: 10
+  offset: 0x11C98
+  symbol: heave_ho_seg5_vertex_05011C98
+
+heave_ho_seg5_vertex_05011D38:
+  type: VTX
+  count: 6
+  offset: 0x11D38
+  symbol: heave_ho_seg5_vertex_05011D38
+
+heave_ho_seg5_dl_05011D98:
+  type: GFX
+  offset: 0x11D98
+  symbol: heave_ho_seg5_dl_05011D98
+
+heave_ho_seg5_dl_05011DE0:
+  type: GFX
+  offset: 0x11DE0
+  symbol: heave_ho_seg5_dl_05011DE0
+
+heave_ho_seg5_dl_05011E28:
+  type: GFX
+  offset: 0x11E28
+  symbol: heave_ho_seg5_dl_05011E28
+
+heave_ho_seg5_dl_05011E80:
+  type: GFX
+  offset: 0x11E80
+  symbol: heave_ho_seg5_dl_05011E80
+
+heave_ho_seg5_dl_05011EC0:
+  type: GFX
+  offset: 0x11EC0
+  symbol: heave_ho_seg5_dl_05011EC0
+
+heave_ho_seg5_lights_05011F50:
+  type: LIGHTS
+  size: 24
+  offset: 0x11F50
+  symbol: heave_ho_seg5_lights_05011F50
+
+heave_ho_seg5_lights_05011F68:
+  type: LIGHTS
+  size: 24
+  offset: 0x11F68
+  symbol: heave_ho_seg5_lights_05011F68
+
+heave_ho_seg5_vertex_05011F80:
+  type: VTX
+  count: 11
+  offset: 0x11F80
+  symbol: heave_ho_seg5_vertex_05011F80
+
+heave_ho_seg5_vertex_05012030:
+  type: VTX
+  count: 7
+  offset: 0x12030
+  symbol: heave_ho_seg5_vertex_05012030
+
+heave_ho_seg5_dl_050120A0:
+  type: GFX
+  offset: 0x120A0
+  symbol: heave_ho_seg5_dl_050120A0
+
+heave_ho_seg5_dl_05012100:
+  type: GFX
+  offset: 0x12100
+  symbol: heave_ho_seg5_dl_05012100
+
+heave_ho_seg5_dl_05012148:
+  type: GFX
+  offset: 0x12148
+  symbol: heave_ho_seg5_dl_05012148
+
+heave_ho_seg5_lights_050121B0:
+  type: LIGHTS
+  size: 24
+  offset: 0x121B0
+  symbol: heave_ho_seg5_lights_050121B0
+
+heave_ho_seg5_lights_050121C8:
+  type: LIGHTS
+  size: 24
+  offset: 0x121C8
+  symbol: heave_ho_seg5_lights_050121C8
+
+heave_ho_seg5_vertex_050121E0:
+  type: VTX
+  count: 11
+  offset: 0x121E0
+  symbol: heave_ho_seg5_vertex_050121E0
+
+heave_ho_seg5_vertex_05012290:
+  type: VTX
+  count: 7
+  offset: 0x12290
+  symbol: heave_ho_seg5_vertex_05012290
+
+heave_ho_seg5_dl_05012300:
+  type: GFX
+  offset: 0x12300
+  symbol: heave_ho_seg5_dl_05012300
+
+heave_ho_seg5_dl_05012360:
+  type: GFX
+  offset: 0x12360
+  symbol: heave_ho_seg5_dl_05012360
+
+heave_ho_seg5_dl_050123A8:
+  type: GFX
+  offset: 0x123A8
+  symbol: heave_ho_seg5_dl_050123A8
+
+heave_ho_seg5_lights_05012410:
+  type: LIGHTS
+  size: 24
+  offset: 0x12410
+  symbol: heave_ho_seg5_lights_05012410
+
+heave_ho_seg5_lights_05012428:
+  type: LIGHTS
+  size: 24
+  offset: 0x12428
+  symbol: heave_ho_seg5_lights_05012428
+
+heave_ho_seg5_vertex_05012440:
+  type: VTX
+  count: 4
+  offset: 0x12440
+  symbol: heave_ho_seg5_vertex_05012440
+
+heave_ho_seg5_vertex_05012480:
+  type: VTX
+  count: 14
+  offset: 0x12480
+  symbol: heave_ho_seg5_vertex_05012480
+
+heave_ho_seg5_dl_05012560:
+  type: GFX
+  offset: 0x12560
+  symbol: heave_ho_seg5_dl_05012560
+
+heave_ho_seg5_dl_050125A8:
+  type: GFX
+  offset: 0x125A8
+  symbol: heave_ho_seg5_dl_050125A8
+
+heave_ho_seg5_dl_050125F8:
+  type: GFX
+  offset: 0x125F8
+  symbol: heave_ho_seg5_dl_050125F8
+
+heave_ho_seg5_vertex_05012670:
+  type: VTX
+  count: 4
+  offset: 0x12670
+  symbol: heave_ho_seg5_vertex_05012670
+
+heave_ho_seg5_dl_050126B0:
+  type: GFX
+  offset: 0x126B0
+  symbol: heave_ho_seg5_dl_050126B0
+
+heave_ho_seg5_dl_050126E8:
+  type: GFX
+  offset: 0x126E8
+  symbol: heave_ho_seg5_dl_050126E8
+
+heave_ho_seg5_lights_05012758:
+  type: LIGHTS
+  size: 24
+  offset: 0x12758
+  symbol: heave_ho_seg5_lights_05012758
+
+heave_ho_seg5_vertex_05012770:
+  type: VTX
+  count: 4
+  offset: 0x12770
+  symbol: heave_ho_seg5_vertex_05012770
+
+heave_ho_seg5_dl_050127B0:
+  type: GFX
+  offset: 0x127B0
+  symbol: heave_ho_seg5_dl_050127B0
+
+heave_ho_seg5_dl_050127F8:
+  type: GFX
+  offset: 0x127F8
+  symbol: heave_ho_seg5_dl_050127F8
+
+heave_ho_seg5_vertex_05012868:
+  type: VTX
+  count: 16
+  offset: 0x12868
+  symbol: heave_ho_seg5_vertex_05012868
+
+heave_ho_seg5_vertex_05012968:
+  type: VTX
+  count: 16
+  offset: 0x12968
+  symbol: heave_ho_seg5_vertex_05012968
+
+heave_ho_seg5_vertex_05012A68:
+  type: VTX
+  count: 16
+  offset: 0x12A68
+  symbol: heave_ho_seg5_vertex_05012A68
+
+heave_ho_seg5_vertex_05012B68:
+  type: VTX
+  count: 16
+  offset: 0x12B68
+  symbol: heave_ho_seg5_vertex_05012B68
+
+heave_ho_seg5_vertex_05012C68:
+  type: VTX
+  count: 16
+  offset: 0x12C68
+  symbol: heave_ho_seg5_vertex_05012C68
+
+heave_ho_seg5_vertex_05012D68:
+  type: VTX
+  count: 16
+  offset: 0x12D68
+  symbol: heave_ho_seg5_vertex_05012D68
+
+heave_ho_seg5_vertex_05012E68:
+  type: VTX
+  count: 16
+  offset: 0x12E68
+  symbol: heave_ho_seg5_vertex_05012E68
+
+heave_ho_seg5_vertex_05012F68:
+  type: VTX
+  count: 16
+  offset: 0x12F68
+  symbol: heave_ho_seg5_vertex_05012F68
+
+heave_ho_seg5_vertex_05013068:
+  type: VTX
+  count: 12
+  offset: 0x13068
+  symbol: heave_ho_seg5_vertex_05013068
+
+heave_ho_seg5_vertex_05013128:
+  type: VTX
+  count: 16
+  offset: 0x13128
+  symbol: heave_ho_seg5_vertex_05013128
+
+heave_ho_seg5_vertex_05013228:
+  type: VTX
+  count: 16
+  offset: 0x13228
+  symbol: heave_ho_seg5_vertex_05013228
+
+heave_ho_seg5_vertex_05013328:
+  type: VTX
+  count: 16
+  offset: 0x13328
+  symbol: heave_ho_seg5_vertex_05013328
+
+heave_ho_seg5_vertex_05013428:
+  type: VTX
+  count: 16
+  offset: 0x13428
+  symbol: heave_ho_seg5_vertex_05013428
+
+heave_ho_seg5_vertex_05013528:
+  type: VTX
+  count: 16
+  offset: 0x13528
+  symbol: heave_ho_seg5_vertex_05013528
+
+heave_ho_seg5_vertex_05013628:
+  type: VTX
+  count: 16
+  offset: 0x13628
+  symbol: heave_ho_seg5_vertex_05013628
+
+heave_ho_seg5_vertex_05013728:
+  type: VTX
+  count: 16
+  offset: 0x13728
+  symbol: heave_ho_seg5_vertex_05013728
+
+heave_ho_seg5_vertex_05013828:
+  type: VTX
+  count: 16
+  offset: 0x13828
+  symbol: heave_ho_seg5_vertex_05013828
+
+heave_ho_seg5_vertex_05013928:
+  type: VTX
+  count: 16
+  offset: 0x13928
+  symbol: heave_ho_seg5_vertex_05013928
+
+heave_ho_seg5_vertex_05013A28:
+  type: VTX
+  count: 16
+  offset: 0x13A28
+  symbol: heave_ho_seg5_vertex_05013A28
+
+heave_ho_seg5_vertex_05013B28:
+  type: VTX
+  count: 16
+  offset: 0x13B28
+  symbol: heave_ho_seg5_vertex_05013B28
+
+heave_ho_seg5_vertex_05013C28:
+  type: VTX
+  count: 16
+  offset: 0x13C28
+  symbol: heave_ho_seg5_vertex_05013C28
+
+heave_ho_seg5_vertex_05013D28:
+  type: VTX
+  count: 16
+  offset: 0x13D28
+  symbol: heave_ho_seg5_vertex_05013D28
+
+heave_ho_seg5_vertex_05013E28:
+  type: VTX
+  count: 16
+  offset: 0x13E28
+  symbol: heave_ho_seg5_vertex_05013E28
+
+heave_ho_seg5_vertex_05013F28:
+  type: VTX
+  count: 16
+  offset: 0x13F28
+  symbol: heave_ho_seg5_vertex_05013F28
+
+heave_ho_seg5_vertex_05014028:
+  type: VTX
+  count: 16
+  offset: 0x14028
+  symbol: heave_ho_seg5_vertex_05014028
+
+heave_ho_seg5_vertex_05014128:
+  type: VTX
+  count: 6
+  offset: 0x14128
+  symbol: heave_ho_seg5_vertex_05014128
+
+heave_ho_seg5_dl_05014188:
+  type: GFX
+  offset: 0x14188
+  symbol: heave_ho_seg5_dl_05014188
+
+heave_ho_seg5_dl_05014560:
+  type: GFX
+  offset: 0x14560
+  symbol: heave_ho_seg5_dl_05014560
+
+heave_ho_seg5_dl_050145D0:
+  type: GFX
+  offset: 0x145D0
+  symbol: heave_ho_seg5_dl_050145D0
+
+heave_ho_seg5_dl_050149A8:
+  type: GFX
+  offset: 0x149A8
+  symbol: heave_ho_seg5_dl_050149A8
+
+heave_ho_seg5_dl_05014D80:
+  type: GFX
+  offset: 0x14D80
+  symbol: heave_ho_seg5_dl_05014D80
+

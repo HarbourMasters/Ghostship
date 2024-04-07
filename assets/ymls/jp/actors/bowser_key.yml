@@ -1,0 +1,90 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
+bowser_key_lights:
+  type: LIGHTS
+  size: 24
+  offset: 0x156E0
+  symbol: bowser_key_lights
+
+bowser_key_dl_vertex_group1:
+  type: VTX
+  count: 16
+  offset: 0x156F8
+  symbol: bowser_key_dl_vertex_group1
+
+bowser_key_dl_vertex_group2:
+  type: VTX
+  count: 16
+  offset: 0x157F8
+  symbol: bowser_key_dl_vertex_group2
+
+bowser_key_dl_vertex_group3:
+  type: VTX
+  count: 16
+  offset: 0x158F8
+  symbol: bowser_key_dl_vertex_group3
+
+bowser_key_dl_vertex_group4:
+  type: VTX
+  count: 16
+  offset: 0x159F8
+  symbol: bowser_key_dl_vertex_group4
+
+bowser_key_dl_vertex_group5:
+  type: VTX
+  count: 16
+  offset: 0x15AF8
+  symbol: bowser_key_dl_vertex_group5
+
+bowser_key_dl_vertex_group6:
+  type: VTX
+  count: 16
+  offset: 0x15BF8
+  symbol: bowser_key_dl_vertex_group6
+
+bowser_key_dl_vertex_group7:
+  type: VTX
+  count: 14
+  offset: 0x15CF8
+  symbol: bowser_key_dl_vertex_group7
+
+bowser_key_dl_vertex_group8:
+  type: VTX
+  count: 16
+  offset: 0x15DD8
+  symbol: bowser_key_dl_vertex_group8
+
+bowser_key_dl_vertex_group9:
+  type: VTX
+  count: 16
+  offset: 0x15ED8
+  symbol: bowser_key_dl_vertex_group9
+
+bowser_key_dl_vertex_group10:
+  type: VTX
+  count: 14
+  offset: 0x15FD8
+  symbol: bowser_key_dl_vertex_group10
+
+bowser_key_dl_vertex_group11:
+  type: VTX
+  count: 16
+  offset: 0x160B8
+  symbol: bowser_key_dl_vertex_group11
+
+bowser_key_dl_vertex_group12:
+  type: VTX
+  count: 4
+  offset: 0x161B8
+  symbol: bowser_key_dl_vertex_group12
+
+bowser_key_dl:
+  type: GFX
+  offset: 0x161F8
+  symbol: bowser_key_dl
+

@@ -1,0 +1,241 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x17EF80
+  segments:
+    - [0x05,  0x17EF80]
+
+wiggler_seg5_lights_0500C878:
+  type: LIGHTS
+  size: 24
+  offset: 0xC878
+  symbol: wiggler_seg5_lights_0500C878
+
+wiggler_seg5_lights_0500C890:
+  type: LIGHTS
+  size: 24
+  offset: 0xC890
+  symbol: wiggler_seg5_lights_0500C890
+
+wiggler_head_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0xC890
+  symbol: wiggler_head_lights_unused1
+
+wiggler_head_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0xC890
+  symbol: wiggler_head_lights_unused2
+
+wiggler_seg5_vertex_0500C8D8:
+  type: VTX
+  count: 16
+  offset: 0xC8D8
+  symbol: wiggler_seg5_vertex_0500C8D8
+
+wiggler_seg5_vertex_0500C9D8:
+  type: VTX
+  count: 16
+  offset: 0xC9D8
+  symbol: wiggler_seg5_vertex_0500C9D8
+
+wiggler_seg5_vertex_0500CAD8:
+  type: VTX
+  count: 16
+  offset: 0xCAD8
+  symbol: wiggler_seg5_vertex_0500CAD8
+
+wiggler_seg5_vertex_0500CBD8:
+  type: VTX
+  count: 4
+  offset: 0xCBD8
+  symbol: wiggler_seg5_vertex_0500CBD8
+
+wiggler_seg5_vertex_0500CC18:
+  type: VTX
+  count: 15
+  offset: 0xCC18
+  symbol: wiggler_seg5_vertex_0500CC18
+
+wiggler_seg5_vertex_0500CD08:
+  type: VTX
+  count: 15
+  offset: 0xCD08
+  symbol: wiggler_seg5_vertex_0500CD08
+
+wiggler_seg5_vertex_0500CDF8:
+  type: VTX
+  count: 16
+  offset: 0xCDF8
+  symbol: wiggler_seg5_vertex_0500CDF8
+
+wiggler_seg5_vertex_0500CEF8:
+  type: VTX
+  count: 16
+  offset: 0xCEF8
+  symbol: wiggler_seg5_vertex_0500CEF8
+
+wiggler_seg5_vertex_0500CFF8:
+  type: VTX
+  count: 16
+  offset: 0xCFF8
+  symbol: wiggler_seg5_vertex_0500CFF8
+
+wiggler_seg5_vertex_0500D0F8:
+  type: VTX
+  count: 4
+  offset: 0xD0F8
+  symbol: wiggler_seg5_vertex_0500D0F8
+
+wiggler_seg5_vertex_0500D138:
+  type: VTX
+  count: 15
+  offset: 0xD138
+  symbol: wiggler_seg5_vertex_0500D138
+
+wiggler_seg5_vertex_0500D228:
+  type: VTX
+  count: 15
+  offset: 0xD228
+  symbol: wiggler_seg5_vertex_0500D228
+
+wiggler_seg5_vertex_0500D318:
+  type: VTX
+  count: 144
+  offset: 0xD228
+  symbol: wiggler_seg5_vertex_0500D318
+
+wiggler_seg5_dl_0500DC18:
+  type: GFX
+  offset: 0xDC18
+  symbol: wiggler_seg5_dl_0500DC18
+
+wiggler_seg5_dl_0500DD70:
+  type: GFX
+  offset: 0xDD70
+  symbol: wiggler_seg5_dl_0500DD70
+
+wiggler_seg5_dl_0500DDF8:
+  type: GFX
+  offset: 0xDDF8
+  symbol: wiggler_seg5_dl_0500DDF8
+
+wiggler_seg5_dl_0500DE80:
+  type: GFX
+  offset: 0xDE80
+  symbol: wiggler_seg5_dl_0500DE80
+
+wiggler_seg5_dl_0500DFD8:
+  type: GFX
+  offset: 0xDFD8
+  symbol: wiggler_seg5_dl_0500DFD8
+
+wiggler_seg5_dl_0500E060:
+  type: GFX
+  offset: 0xE060
+  symbol: wiggler_seg5_dl_0500E060
+
+wiggler_seg5_vertex_0500E0E8:
+  type: VTX
+  count: 4
+  offset: 0xE0E8
+  symbol: wiggler_seg5_vertex_0500E0E8
+
+wiggler_seg5_vertex_0500E128:
+  type: VTX
+  count: 4
+  offset: 0xE128
+  symbol: wiggler_seg5_vertex_0500E128
+
+wiggler_seg5_dl_0500E168:
+  type: GFX
+  offset: 0xE168
+  symbol: wiggler_seg5_dl_0500E168
+
+wiggler_seg5_dl_0500E1A0:
+  type: GFX
+  offset: 0xE1A0
+  symbol: wiggler_seg5_dl_0500E1A0
+
+wiggler_seg5_dl_0500E1D8:
+  type: GFX
+  offset: 0xE1D8
+  symbol: wiggler_seg5_dl_0500E1D8
+
+wiggler_seg5_vertex_0500E250:
+  type: VTX
+  count: 6
+  offset: 0xE250
+  symbol: wiggler_seg5_vertex_0500E250
+
+wiggler_seg5_dl_0500E2B0:
+  type: GFX
+  offset: 0xE2B0
+  symbol: wiggler_seg5_dl_0500E2B0
+
+wiggler_seg5_dl_0500E2F8:
+  type: GFX
+  offset: 0xE2F8
+  symbol: wiggler_seg5_dl_0500E2F8
+
+wiggler_seg5_vertex_0500E368:
+  type: VTX
+  count: 8
+  offset: 0xE368
+  symbol: wiggler_seg5_vertex_0500E368
+
+wiggler_seg5_dl_0500E3E8:
+  type: GFX
+  offset: 0xE3E8
+  symbol: wiggler_seg5_dl_0500E3E8
+
+wiggler_seg5_dl_0500E430:
+  type: GFX
+  offset: 0xE430
+  symbol: wiggler_seg5_dl_0500E430
+
+wiggler_seg5_vertex_0500E4A0:
+  type: VTX
+  count: 4
+  offset: 0xE4A0
+  symbol: wiggler_seg5_vertex_0500E4A0
+
+wiggler_seg5_dl_0500E4E0:
+  type: GFX
+  offset: 0xE4E0
+  symbol: wiggler_seg5_dl_0500E4E0
+
+wiggler_seg5_dl_0500E518:
+  type: GFX
+  offset: 0xE518
+  symbol: wiggler_seg5_dl_0500E518
+
+wiggler_seg5_vertex_0500E588:
+  type: VTX
+  count: 4
+  offset: 0xE588
+  symbol: wiggler_seg5_vertex_0500E588
+
+wiggler_seg5_vertex_0500E5C8:
+  type: VTX
+  count: 4
+  offset: 0xE5C8
+  symbol: wiggler_seg5_vertex_0500E5C8
+
+wiggler_seg5_dl_0500E608:
+  type: GFX
+  offset: 0xE608
+  symbol: wiggler_seg5_dl_0500E608
+
+wiggler_seg5_dl_0500E640:
+  type: GFX
+  offset: 0xE640
+  symbol: wiggler_seg5_dl_0500E640
+
+wiggler_seg5_dl_0500E678:
+  type: GFX
+  offset: 0xE678
+  symbol: wiggler_seg5_dl_0500E678
+

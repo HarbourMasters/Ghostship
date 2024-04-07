@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 bbh_door:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x1FF740
-  mio0: 0x10510
+  offset: 0x10510
   format: RGBA16
   symbol: door_seg3_texture_03010510
 bbh_door_overlay:
@@ -12,8 +18,7 @@ bbh_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x11510
+  offset: 0x11510
   format: RGBA16
   symbol: door_seg3_texture_03011510
 door_lock:
@@ -21,8 +26,7 @@ door_lock:
   size: 1024
   width: 16
   height: 32
-  offset: 0x1FF740
-  mio0: 0x13510
+  offset: 0x13510
   format: RGBA16
   symbol: door_seg3_texture_03013510
 hmc_mural_door:
@@ -30,8 +34,7 @@ hmc_mural_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1FF740
-  mio0: 0xED10
+  offset: 0xED10
   format: RGBA16
   symbol: door_seg3_texture_0300ED10
 hmc_mural_door_overlay:
@@ -39,8 +42,7 @@ hmc_mural_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0xFD10
+  offset: 0xFD10
   format: RGBA16
   symbol: door_seg3_texture_0300FD10
 metal_door:
@@ -48,8 +50,7 @@ metal_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1FF740
-  mio0: 0xD510
+  offset: 0xD510
   format: RGBA16
   symbol: door_seg3_texture_0300D510
 metal_door_overlay:
@@ -57,8 +58,7 @@ metal_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0xE510
+  offset: 0xE510
   format: RGBA16
   symbol: door_seg3_texture_0300E510
 one_star_door_sign:
@@ -66,8 +66,7 @@ one_star_door_sign:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x12510
+  offset: 0x12510
   format: RGBA16
   symbol: door_seg3_texture_03012510
 polished_wooden_door:
@@ -75,8 +74,7 @@ polished_wooden_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1FF740
-  mio0: 0x9D10
+  offset: 0x9D10
   format: RGBA16
   symbol: door_seg3_texture_03009D10
 polished_wooden_door_overlay:
@@ -84,8 +82,7 @@ polished_wooden_door_overlay:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1FF740
-  mio0: 0xAD10
+  offset: 0xAD10
   format: RGBA16
   symbol: door_seg3_texture_0300AD10
 rough_wooden_door:
@@ -93,8 +90,7 @@ rough_wooden_door:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1FF740
-  mio0: 0xBD10
+  offset: 0xBD10
   format: RGBA16
   symbol: door_seg3_texture_0300BD10
 rough_wooden_door_overlay:
@@ -102,8 +98,7 @@ rough_wooden_door_overlay:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0xCD10
+  offset: 0xCD10
   format: RGBA16
   symbol: door_seg3_texture_0300CD10
 three_star_door_sign:
@@ -111,8 +106,7 @@ three_star_door_sign:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x12D10
+  offset: 0x12D10
   format: RGBA16
   symbol: door_seg3_texture_03012D10
 zero_star_door_sign:
@@ -120,7 +114,300 @@ zero_star_door_sign:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x11D10
+  offset: 0x11D10
   format: RGBA16
   symbol: door_seg3_texture_03011D10
+
+door_seg3_lights_03009CE0:
+  type: LIGHTS
+  size: 24
+  offset: 0x9CE0
+  symbol: door_seg3_lights_03009CE0
+
+door_seg3_lights_03009CF8:
+  type: LIGHTS
+  size: 24
+  offset: 0x9CF8
+  symbol: door_seg3_lights_03009CF8
+
+door_seg3_vertex_03013910:
+  type: VTX
+  count: 16
+  offset: 0x13910
+  symbol: door_seg3_vertex_03013910
+
+door_seg3_vertex_03013A10:
+  type: VTX
+  count: 8
+  offset: 0x13A10
+  symbol: door_seg3_vertex_03013A10
+
+door_seg3_vertex_03013A90:
+  type: VTX
+  count: 12
+  offset: 0x13A90
+  symbol: door_seg3_vertex_03013A90
+
+door_seg3_vertex_03013B50:
+  type: VTX
+  count: 12
+  offset: 0x13B50
+  symbol: door_seg3_vertex_03013B50
+
+door_seg3_dl_03013C10:
+  type: GFX
+  offset: 0x13C10
+  symbol: door_seg3_dl_03013C10
+
+door_seg3_dl_03013CC8:
+  type: GFX
+  offset: 0x13CC8
+  symbol: door_seg3_dl_03013CC8
+
+door_seg3_dl_03013D78:
+  type: GFX
+  offset: 0x13D78
+  symbol: door_seg3_dl_03013D78
+
+door_seg3_dl_03013E28:
+  type: GFX
+  offset: 0x13E28
+  symbol: door_seg3_dl_03013E28
+
+door_seg3_dl_03013EA8:
+  type: GFX
+  offset: 0x13EA8
+  symbol: door_seg3_dl_03013EA8
+
+door_seg3_vertex_03013F20:
+  type: VTX
+  count: 8
+  offset: 0x13F20
+  symbol: door_seg3_vertex_03013F20
+
+door_seg3_vertex_03013FA0:
+  type: VTX
+  count: 8
+  offset: 0x13FA0
+  symbol: door_seg3_vertex_03013FA0
+
+door_seg3_dl_03014020:
+  type: GFX
+  offset: 0x14020
+  symbol: door_seg3_dl_03014020
+
+door_seg3_dl_03014100:
+  type: GFX
+  offset: 0x14100
+  symbol: door_seg3_dl_03014100
+
+door_seg3_dl_03014128:
+  type: GFX
+  offset: 0x14128
+  symbol: door_seg3_dl_03014128
+
+door_seg3_vertex_03014140:
+  type: VTX
+  count: 4
+  offset: 0x14140
+  symbol: door_seg3_vertex_03014140
+
+door_seg3_vertex_03014180:
+  type: VTX
+  count: 4
+  offset: 0x14180
+  symbol: door_seg3_vertex_03014180
+
+door_seg3_dl_030141C0:
+  type: GFX
+  offset: 0x141C0
+  symbol: door_seg3_dl_030141C0
+
+door_seg3_dl_03014218:
+  type: GFX
+  offset: 0x14218
+  symbol: door_seg3_dl_03014218
+
+door_seg3_dl_03014250:
+  type: GFX
+  offset: 0x14250
+  symbol: door_seg3_dl_03014250
+
+door_seg3_dl_03014280:
+  type: GFX
+  offset: 0x14280
+  symbol: door_seg3_dl_03014280
+
+door_seg3_dl_030142B0:
+  type: GFX
+  offset: 0x142B0
+  symbol: door_seg3_dl_030142B0
+
+door_seg3_dl_030142E0:
+  type: GFX
+  offset: 0x142E0
+  symbol: door_seg3_dl_030142E0
+
+door_seg3_dl_03014310:
+  type: GFX
+  offset: 0x14310
+  symbol: door_seg3_dl_03014310
+
+door_seg3_dl_03014340:
+  type: GFX
+  offset: 0x14340
+  symbol: door_seg3_dl_03014340
+
+door_seg3_vertex_03014370:
+  type: VTX
+  count: 8
+  offset: 0x14370
+  symbol: door_seg3_vertex_03014370
+
+door_seg3_vertex_030143F0:
+  type: VTX
+  count: 8
+  offset: 0x143F0
+  symbol: door_seg3_vertex_030143F0
+
+door_seg3_dl_03014470:
+  type: GFX
+  offset: 0x14470
+  symbol: door_seg3_dl_03014470
+
+door_seg3_dl_030144E0:
+  type: GFX
+  offset: 0x144E0
+  symbol: door_seg3_dl_030144E0
+
+door_seg3_dl_03014528:
+  type: GFX
+  offset: 0x14528
+  symbol: door_seg3_dl_03014528
+
+door_seg3_dl_03014540:
+  type: GFX
+  offset: 0x14540
+  symbol: door_seg3_dl_03014540
+
+door_seg3_vertex_03014558:
+  type: VTX
+  count: 16
+  offset: 0x14558
+  symbol: door_seg3_vertex_03014558
+
+door_seg3_vertex_03014658:
+  type: VTX
+  count: 8
+  offset: 0x14658
+  symbol: door_seg3_vertex_03014658
+
+door_seg3_vertex_030146D8:
+  type: VTX
+  count: 15
+  offset: 0x146D8
+  symbol: door_seg3_vertex_030146D8
+
+door_seg3_vertex_030147C8:
+  type: VTX
+  count: 12
+  offset: 0x147C8
+  symbol: door_seg3_vertex_030147C8
+
+door_seg3_dl_03014888:
+  type: GFX
+  offset: 0x14888
+  symbol: door_seg3_dl_03014888
+
+door_seg3_dl_030149C0:
+  type: GFX
+  offset: 0x149C0
+  symbol: door_seg3_dl_030149C0
+
+door_seg3_dl_03014A20:
+  type: GFX
+  offset: 0x14A20
+  symbol: door_seg3_dl_03014A20
+
+door_seg3_dl_03014A50:
+  type: GFX
+  offset: 0x14A50
+  symbol: door_seg3_dl_03014A50
+
+door_seg3_dl_03014A80:
+  type: GFX
+  offset: 0x14A80
+  symbol: door_seg3_dl_03014A80
+
+door_seg3_dl_03014B30:
+  type: GFX
+  offset: 0x14B30
+  symbol: door_seg3_dl_03014B30
+
+door_seg3_dl_03014BE0:
+  type: GFX
+  offset: 0x14BE0
+  symbol: door_seg3_dl_03014BE0
+
+door_seg3_dl_03014C90:
+  type: GFX
+  offset: 0x14C90
+  symbol: door_seg3_dl_03014C90
+
+door_seg3_dl_03014D40:
+  type: GFX
+  offset: 0x14D40
+  symbol: door_seg3_dl_03014D40
+
+door_seg3_vertex_03014DF0:
+  type: VTX
+  count: 8
+  offset: 0x14DF0
+  symbol: door_seg3_vertex_03014DF0
+
+door_seg3_vertex_03014E70:
+  type: VTX
+  count: 8
+  offset: 0x14E70
+  symbol: door_seg3_vertex_03014E70
+
+door_seg3_dl_03014EF0:
+  type: GFX
+  offset: 0x14EF0
+  symbol: door_seg3_dl_03014EF0
+
+door_seg3_dl_03014F30:
+  type: GFX
+  offset: 0x14F30
+  symbol: door_seg3_dl_03014F30
+
+door_seg3_dl_03014F68:
+  type: GFX
+  offset: 0x14F68
+  symbol: door_seg3_dl_03014F68
+
+door_seg3_dl_03014F98:
+  type: GFX
+  offset: 0x14F98
+  symbol: door_seg3_dl_03014F98
+
+door_seg3_dl_03015008:
+  type: GFX
+  offset: 0x15008
+  symbol: door_seg3_dl_03015008
+
+door_seg3_dl_03015078:
+  type: GFX
+  offset: 0x15078
+  symbol: door_seg3_dl_03015078
+
+door_seg3_dl_030150E8:
+  type: GFX
+  offset: 0x150E8
+  symbol: door_seg3_dl_030150E8
+
+door_seg3_dl_03015158:
+  type: GFX
+  offset: 0x15158
+  symbol: door_seg3_dl_03015158
+

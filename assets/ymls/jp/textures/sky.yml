@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x33BCB0
+  segments:
+    - [0x09,  0x33BCB0]
+
 metal_hole:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x6800
+  offset: 0x6800
   format: RGBA16
   symbol: texture_metal_hole
 rr_textures.00000:
@@ -12,8 +18,7 @@ rr_textures.00000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: sky_09000000
 rr_textures.00800:
@@ -21,8 +26,7 @@ rr_textures.00800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: sky_09000800
 rr_textures.01000:
@@ -30,8 +34,7 @@ rr_textures.01000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: sky_09001000
 rr_textures.01800:
@@ -39,8 +42,7 @@ rr_textures.01800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x1800
+  offset: 0x1800
   format: RGBA16
   symbol: sky_09001800
 rr_textures.02000:
@@ -48,8 +50,7 @@ rr_textures.02000:
   size: 4096
   width: 32
   height: 64
-  offset: 0x33BCB0
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: sky_09002000
 rr_textures.03000:
@@ -57,8 +58,7 @@ rr_textures.03000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x3000
+  offset: 0x3000
   format: RGBA16
   symbol: sky_09003000
 rr_textures.03800:
@@ -66,8 +66,7 @@ rr_textures.03800:
   size: 4096
   width: 64
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x3800
+  offset: 0x3800
   format: RGBA16
   symbol: sky_09003800
 rr_textures.04800:
@@ -75,8 +74,7 @@ rr_textures.04800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x4800
+  offset: 0x4800
   format: RGBA16
   symbol: sky_09004800
 rr_textures.05000:
@@ -84,8 +82,7 @@ rr_textures.05000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x5000
+  offset: 0x5000
   format: RGBA16
   symbol: sky_09005000
 rr_textures.05800:
@@ -93,8 +90,7 @@ rr_textures.05800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x5800
+  offset: 0x5800
   format: RGBA16
   symbol: sky_09005800
 rr_textures.06000:
@@ -102,8 +98,7 @@ rr_textures.06000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x6000
+  offset: 0x6000
   format: RGBA16
   symbol: sky_09006000
 rr_textures.07000:
@@ -111,8 +106,7 @@ rr_textures.07000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x7000
+  offset: 0x7000
   format: RGBA16
   symbol: sky_09007000
 rr_textures.07800:
@@ -120,8 +114,7 @@ rr_textures.07800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x7800
+  offset: 0x7800
   format: RGBA16
   symbol: sky_09007800
 rr_textures.08000:
@@ -129,7 +122,6 @@ rr_textures.08000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x33BCB0
-  mio0: 0x8000
+  offset: 0x8000
   format: RGBA16
   symbol: sky_09008000

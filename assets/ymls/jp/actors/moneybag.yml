@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E3520
+  segments:
+    - [0x06,  0x1E3520]
+
 moneybag_eyes:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E3520
-  mio0: 0x49B0
+  offset: 0x49B0
   format: RGBA16
   symbol: moneybag_seg6_texture_060049B0
 moneybag_mouth:
@@ -12,7 +18,141 @@ moneybag_mouth:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1E3520
-  mio0: 0x39B0
+  offset: 0x39B0
   format: RGBA16
   symbol: moneybag_seg6_texture_060039B0
+
+moneybag_seg6_lights_060051B0:
+  type: LIGHTS
+  size: 24
+  offset: 0x51B0
+  symbol: moneybag_seg6_lights_060051B0
+
+moneybag_seg6_lights_060051C8:
+  type: LIGHTS
+  size: 24
+  offset: 0x51C8
+  symbol: moneybag_seg6_lights_060051C8
+
+moneybag_seg6_vertex_060051E0:
+  type: VTX
+  count: 10
+  offset: 0x51E0
+  symbol: moneybag_seg6_vertex_060051E0
+
+moneybag_seg6_vertex_06005280:
+  type: VTX
+  count: 8
+  offset: 0x5280
+  symbol: moneybag_seg6_vertex_06005280
+
+moneybag_seg6_dl_06005300:
+  type: GFX
+  offset: 0x5300
+  symbol: moneybag_seg6_dl_06005300
+
+moneybag_seg6_dl_06005358:
+  type: GFX
+  offset: 0x5358
+  symbol: moneybag_seg6_dl_06005358
+
+moneybag_seg6_dl_060053B8:
+  type: GFX
+  offset: 0x53B8
+  symbol: moneybag_seg6_dl_060053B8
+
+moneybag_seg6_lights_06005428:
+  type: LIGHTS
+  size: 24
+  offset: 0x5428
+  symbol: moneybag_seg6_lights_06005428
+
+moneybag_seg6_vertex_06005440:
+  type: VTX
+  count: 14
+  offset: 0x5440
+  symbol: moneybag_seg6_vertex_06005440
+
+moneybag_seg6_vertex_06005520:
+  type: VTX
+  count: 7
+  offset: 0x5520
+  symbol: moneybag_seg6_vertex_06005520
+
+moneybag_seg6_dl_06005590:
+  type: GFX
+  offset: 0x5590
+  symbol: moneybag_seg6_dl_06005590
+
+moneybag_seg6_dl_06005618:
+  type: GFX
+  offset: 0x5618
+  symbol: moneybag_seg6_dl_06005618
+
+moneybag_seg6_dl_06005688:
+  type: GFX
+  offset: 0x5688
+  symbol: moneybag_seg6_dl_06005688
+
+moneybag_seg6_vertex_060056A8:
+  type: VTX
+  count: 6
+  offset: 0x56A8
+  symbol: moneybag_seg6_vertex_060056A8
+
+moneybag_seg6_dl_06005708:
+  type: GFX
+  offset: 0x5708
+  symbol: moneybag_seg6_dl_06005708
+
+moneybag_seg6_dl_06005750:
+  type: GFX
+  offset: 0x5750
+  symbol: moneybag_seg6_dl_06005750
+
+moneybag_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x5750
+  symbol: moneybag_lights_unused1
+
+moneybag_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x5750
+  symbol: moneybag_lights_unused2
+
+moneybag_seg6_lights_060057F0:
+  type: LIGHTS
+  size: 24
+  offset: 0x57F0
+  symbol: moneybag_seg6_lights_060057F0
+
+moneybag_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x57F0
+  symbol: moneybag_lights_unused3
+
+moneybag_seg6_vertex_06005820:
+  type: VTX
+  count: 11
+  offset: 0x5820
+  symbol: moneybag_seg6_vertex_06005820
+
+moneybag_seg6_vertex_060058D0:
+  type: VTX
+  count: 11
+  offset: 0x58D0
+  symbol: moneybag_seg6_vertex_060058D0
+
+moneybag_seg6_dl_06005980:
+  type: GFX
+  offset: 0x5980
+  symbol: moneybag_seg6_dl_06005980
+
+moneybag_seg6_dl_060059F0:
+  type: GFX
+  offset: 0x59F0
+  symbol: moneybag_seg6_dl_060059F0
+

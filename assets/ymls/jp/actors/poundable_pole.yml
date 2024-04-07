@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1C2580
+  segments:
+    - [0x06,  0x1C2580]
+
 poundable_pole_side:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x1850
+  offset: 0x1850
   format: RGBA16
   symbol: poundable_pole_seg6_texture_06001850
 poundable_pole_top:
@@ -12,7 +18,52 @@ poundable_pole_top:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x1050
+  offset: 0x1050
   format: RGBA16
   symbol: poundable_pole_seg6_texture_06001050
+
+poundable_pole_seg6_lights_06001038:
+  type: LIGHTS
+  size: 24
+  offset: 0x1038
+  symbol: poundable_pole_seg6_lights_06001038
+
+poundable_pole_seg6_vertex_06002050:
+  type: VTX
+  count: 8
+  offset: 0x2050
+  symbol: poundable_pole_seg6_vertex_06002050
+
+poundable_pole_seg6_vertex_060020D0:
+  type: VTX
+  count: 15
+  offset: 0x20D0
+  symbol: poundable_pole_seg6_vertex_060020D0
+
+poundable_pole_seg6_vertex_060021C0:
+  type: VTX
+  count: 15
+  offset: 0x21C0
+  symbol: poundable_pole_seg6_vertex_060021C0
+
+poundable_pole_seg6_vertex_060022B0:
+  type: VTX
+  count: 4
+  offset: 0x22B0
+  symbol: poundable_pole_seg6_vertex_060022B0
+
+poundable_pole_seg6_dl_060022F0:
+  type: GFX
+  offset: 0x22F0
+  symbol: poundable_pole_seg6_dl_060022F0
+
+poundable_pole_seg6_dl_06002358:
+  type: GFX
+  offset: 0x2358
+  symbol: poundable_pole_seg6_dl_06002358
+
+poundable_pole_seg6_dl_06002410:
+  type: GFX
+  offset: 0x2410
+  symbol: poundable_pole_seg6_dl_06002410
+

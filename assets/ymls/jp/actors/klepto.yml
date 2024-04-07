@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x139D10
+  segments:
+    - [0x05,  0x139D10]
+
 klepto_beak:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x144290
-  mio0: 0x1008
+  offset: 0x1008
   format: RGBA16
   symbol: klepto_seg5_texture_05001008
 klepto_chest_tuft:
@@ -12,8 +18,7 @@ klepto_chest_tuft:
   size: 2048
   width: 32
   height: 32
-  offset: 0x144290
-  mio0: 0x8
+  offset: 0x8
   format: RGBA16
   symbol: klepto_seg5_texture_05000008
 klepto_eye:
@@ -21,8 +26,7 @@ klepto_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x144290
-  mio0: 0x808
+  offset: 0x808
   format: RGBA16
   symbol: klepto_seg5_texture_05000808
 klepto_wing:
@@ -30,8 +34,7 @@ klepto_wing:
   size: 4096
   width: 64
   height: 32
-  offset: 0x144290
-  mio0: 0x2008
+  offset: 0x2008
   format: RGBA16
   symbol: klepto_seg5_texture_05002008
 klepto_wing_flap:
@@ -39,7 +42,407 @@ klepto_wing_flap:
   size: 2048
   width: 32
   height: 32
-  offset: 0x144290
-  mio0: 0x3008
+  offset: 0x3008
   format: RGBA16
   symbol: klepto_seg5_texture_05003008
+
+klepto_seg5_lights_05003808:
+  type: LIGHTS
+  size: 24
+  offset: 0x3808
+  symbol: klepto_seg5_lights_05003808
+
+klepto_seg5_lights_05003820:
+  type: LIGHTS
+  size: 24
+  offset: 0x3820
+  symbol: klepto_seg5_lights_05003820
+
+klepto_seg5_vertex_05003838:
+  type: VTX
+  count: 6
+  offset: 0x3838
+  symbol: klepto_seg5_vertex_05003838
+
+klepto_seg5_vertex_05003898:
+  type: VTX
+  count: 15
+  offset: 0x3898
+  symbol: klepto_seg5_vertex_05003898
+
+klepto_seg5_vertex_05003988:
+  type: VTX
+  count: 3
+  offset: 0x3988
+  symbol: klepto_seg5_vertex_05003988
+
+klepto_seg5_vertex_050039B8:
+  type: VTX
+  count: 11
+  offset: 0x39B8
+  symbol: klepto_seg5_vertex_050039B8
+
+klepto_seg5_dl_05003A68:
+  type: GFX
+  offset: 0x3A68
+  symbol: klepto_seg5_dl_05003A68
+
+klepto_seg5_dl_05003AC0:
+  type: GFX
+  offset: 0x3AC0
+  symbol: klepto_seg5_dl_05003AC0
+
+klepto_seg5_dl_05003B40:
+  type: GFX
+  offset: 0x3B40
+  symbol: klepto_seg5_dl_05003B40
+
+klepto_seg5_dl_05003BD0:
+  type: GFX
+  offset: 0x3BD0
+  symbol: klepto_seg5_dl_05003BD0
+
+klepto_seg5_lights_05003C58:
+  type: LIGHTS
+  size: 24
+  offset: 0x3C58
+  symbol: klepto_seg5_lights_05003C58
+
+klepto_seg5_vertex_05003C70:
+  type: VTX
+  count: 9
+  offset: 0x3C70
+  symbol: klepto_seg5_vertex_05003C70
+
+klepto_seg5_dl_05003D00:
+  type: GFX
+  offset: 0x3D00
+  symbol: klepto_seg5_dl_05003D00
+
+klepto_seg5_dl_05003D80:
+  type: GFX
+  offset: 0x3D80
+  symbol: klepto_seg5_dl_05003D80
+
+klepto_seg5_lights_05003DB0:
+  type: LIGHTS
+  size: 24
+  offset: 0x3DB0
+  symbol: klepto_seg5_lights_05003DB0
+
+klepto_seg5_vertex_05003DC8:
+  type: VTX
+  count: 10
+  offset: 0x3DC8
+  symbol: klepto_seg5_vertex_05003DC8
+
+klepto_seg5_dl_05003E68:
+  type: GFX
+  offset: 0x3E68
+  symbol: klepto_seg5_dl_05003E68
+
+klepto_seg5_dl_05003F20:
+  type: GFX
+  offset: 0x3F20
+  symbol: klepto_seg5_dl_05003F20
+
+klepto_seg5_lights_05003F80:
+  type: LIGHTS
+  size: 24
+  offset: 0x3F80
+  symbol: klepto_seg5_lights_05003F80
+
+klepto_seg5_vertex_05003F98:
+  type: VTX
+  count: 12
+  offset: 0x3F98
+  symbol: klepto_seg5_vertex_05003F98
+
+klepto_seg5_dl_05004058:
+  type: GFX
+  offset: 0x4058
+  symbol: klepto_seg5_dl_05004058
+
+klepto_seg5_dl_05004118:
+  type: GFX
+  offset: 0x4118
+  symbol: klepto_seg5_dl_05004118
+
+klepto_seg5_lights_05004148:
+  type: LIGHTS
+  size: 24
+  offset: 0x4148
+  symbol: klepto_seg5_lights_05004148
+
+klepto_seg5_vertex_05004160:
+  type: VTX
+  count: 4
+  offset: 0x4160
+  symbol: klepto_seg5_vertex_05004160
+
+klepto_seg5_dl_050041A0:
+  type: GFX
+  offset: 0x41A0
+  symbol: klepto_seg5_dl_050041A0
+
+klepto_seg5_dl_050041E8:
+  type: GFX
+  offset: 0x41E8
+  symbol: klepto_seg5_dl_050041E8
+
+klepto_seg5_lights_05004258:
+  type: LIGHTS
+  size: 24
+  offset: 0x4258
+  symbol: klepto_seg5_lights_05004258
+
+klepto_seg5_vertex_05004270:
+  type: VTX
+  count: 6
+  offset: 0x4270
+  symbol: klepto_seg5_vertex_05004270
+
+klepto_seg5_dl_050042D0:
+  type: GFX
+  offset: 0x42D0
+  symbol: klepto_seg5_dl_050042D0
+
+klepto_seg5_dl_05004330:
+  type: GFX
+  offset: 0x4330
+  symbol: klepto_seg5_dl_05004330
+
+klepto_seg5_lights_05004360:
+  type: LIGHTS
+  size: 24
+  offset: 0x4360
+  symbol: klepto_seg5_lights_05004360
+
+klepto_seg5_vertex_05004378:
+  type: VTX
+  count: 6
+  offset: 0x4378
+  symbol: klepto_seg5_vertex_05004378
+
+klepto_seg5_dl_050043D8:
+  type: GFX
+  offset: 0x43D8
+  symbol: klepto_seg5_dl_050043D8
+
+klepto_seg5_dl_05004438:
+  type: GFX
+  offset: 0x4438
+  symbol: klepto_seg5_dl_05004438
+
+klepto_seg5_lights_05004468:
+  type: LIGHTS
+  size: 24
+  offset: 0x4468
+  symbol: klepto_seg5_lights_05004468
+
+klepto_seg5_lights_05004480:
+  type: LIGHTS
+  size: 24
+  offset: 0x4480
+  symbol: klepto_seg5_lights_05004480
+
+klepto_seg5_vertex_05004498:
+  type: VTX
+  count: 12
+  offset: 0x4498
+  symbol: klepto_seg5_vertex_05004498
+
+klepto_seg5_vertex_05004558:
+  type: VTX
+  count: 15
+  offset: 0x4558
+  symbol: klepto_seg5_vertex_05004558
+
+klepto_seg5_vertex_05004648:
+  type: VTX
+  count: 5
+  offset: 0x4648
+  symbol: klepto_seg5_vertex_05004648
+
+klepto_seg5_dl_05004698:
+  type: GFX
+  offset: 0x4698
+  symbol: klepto_seg5_dl_05004698
+
+klepto_seg5_dl_050047C8:
+  type: GFX
+  offset: 0x47C8
+  symbol: klepto_seg5_dl_050047C8
+
+klepto_seg5_lights_050047F8:
+  type: LIGHTS
+  size: 24
+  offset: 0x47F8
+  symbol: klepto_seg5_lights_050047F8
+
+klepto_seg5_lights_05004810:
+  type: LIGHTS
+  size: 24
+  offset: 0x4810
+  symbol: klepto_seg5_lights_05004810
+
+klepto_seg5_vertex_05004828:
+  type: VTX
+  count: 12
+  offset: 0x4828
+  symbol: klepto_seg5_vertex_05004828
+
+klepto_seg5_vertex_050048E8:
+  type: VTX
+  count: 15
+  offset: 0x48E8
+  symbol: klepto_seg5_vertex_050048E8
+
+klepto_seg5_vertex_050049D8:
+  type: VTX
+  count: 5
+  offset: 0x49D8
+  symbol: klepto_seg5_vertex_050049D8
+
+klepto_seg5_dl_05004A28:
+  type: GFX
+  offset: 0x4A28
+  symbol: klepto_seg5_dl_05004A28
+
+klepto_seg5_dl_05004B58:
+  type: GFX
+  offset: 0x4B58
+  symbol: klepto_seg5_dl_05004B58
+
+klepto_seg5_lights_05004B88:
+  type: LIGHTS
+  size: 24
+  offset: 0x4B88
+  symbol: klepto_seg5_lights_05004B88
+
+klepto_seg5_vertex_05004BA0:
+  type: VTX
+  count: 4
+  offset: 0x4BA0
+  symbol: klepto_seg5_vertex_05004BA0
+
+klepto_seg5_dl_05004BE0:
+  type: GFX
+  offset: 0x4BE0
+  symbol: klepto_seg5_dl_05004BE0
+
+klepto_seg5_dl_05004C28:
+  type: GFX
+  offset: 0x4C28
+  symbol: klepto_seg5_dl_05004C28
+
+klepto_seg5_lights_05004C98:
+  type: LIGHTS
+  size: 24
+  offset: 0x4C98
+  symbol: klepto_seg5_lights_05004C98
+
+klepto_seg5_vertex_05004CB0:
+  type: VTX
+  count: 4
+  offset: 0x4CB0
+  symbol: klepto_seg5_vertex_05004CB0
+
+klepto_seg5_dl_05004CF0:
+  type: GFX
+  offset: 0x4CF0
+  symbol: klepto_seg5_dl_05004CF0
+
+klepto_seg5_dl_05004D38:
+  type: GFX
+  offset: 0x4D38
+  symbol: klepto_seg5_dl_05004D38
+
+klepto_seg5_lights_05004DA8:
+  type: LIGHTS
+  size: 24
+  offset: 0x4DA8
+  symbol: klepto_seg5_lights_05004DA8
+
+klepto_seg5_vertex_05004DC0:
+  type: VTX
+  count: 4
+  offset: 0x4DC0
+  symbol: klepto_seg5_vertex_05004DC0
+
+klepto_seg5_dl_05004E00:
+  type: GFX
+  offset: 0x4E00
+  symbol: klepto_seg5_dl_05004E00
+
+klepto_seg5_dl_05004E48:
+  type: GFX
+  offset: 0x4E48
+  symbol: klepto_seg5_dl_05004E48
+
+klepto_seg5_lights_05004EB8:
+  type: LIGHTS
+  size: 24
+  offset: 0x4EB8
+  symbol: klepto_seg5_lights_05004EB8
+
+klepto_seg5_vertex_05004ED0:
+  type: VTX
+  count: 4
+  offset: 0x4ED0
+  symbol: klepto_seg5_vertex_05004ED0
+
+klepto_seg5_dl_05004F10:
+  type: GFX
+  offset: 0x4F10
+  symbol: klepto_seg5_dl_05004F10
+
+klepto_seg5_dl_05004F58:
+  type: GFX
+  offset: 0x4F58
+  symbol: klepto_seg5_dl_05004F58
+
+klepto_seg5_lights_05004FC8:
+  type: LIGHTS
+  size: 24
+  offset: 0x4FC8
+  symbol: klepto_seg5_lights_05004FC8
+
+klepto_seg5_vertex_05004FE0:
+  type: VTX
+  count: 4
+  offset: 0x4FE0
+  symbol: klepto_seg5_vertex_05004FE0
+
+klepto_seg5_dl_05005020:
+  type: GFX
+  offset: 0x5020
+  symbol: klepto_seg5_dl_05005020
+
+klepto_seg5_dl_05005068:
+  type: GFX
+  offset: 0x5068
+  symbol: klepto_seg5_dl_05005068
+
+klepto_seg5_lights_050050D8:
+  type: LIGHTS
+  size: 24
+  offset: 0x50D8
+  symbol: klepto_seg5_lights_050050D8
+
+klepto_seg5_vertex_050050F0:
+  type: VTX
+  count: 4
+  offset: 0x50F0
+  symbol: klepto_seg5_vertex_050050F0
+
+klepto_seg5_dl_05005130:
+  type: GFX
+  offset: 0x5130
+  symbol: klepto_seg5_dl_05005130
+
+klepto_seg5_dl_05005178:
+  type: GFX
+  offset: 0x5178
+  symbol: klepto_seg5_dl_05005178
+

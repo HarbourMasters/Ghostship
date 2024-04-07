@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 amp_body:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x1B18
+  offset: 0x1B18
   format: RGBA16
   symbol: dAmpBodyTexture
 amp_electricity:
@@ -12,8 +18,7 @@ amp_electricity:
   size: 1024
   width: 16
   height: 32
-  offset: 0x1F0530
-  mio0: 0xF18
+  offset: 0xF18
   format: RGBA16
   symbol: dAmpElectricityTexture
 amp_eyes:
@@ -21,8 +26,7 @@ amp_eyes:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x1318
+  offset: 0x1318
   format: RGBA16
   symbol: dAmpEyesTexture
 amp_mouth:
@@ -30,7 +34,6 @@ amp_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x2318
+  offset: 0x2318
   format: RGBA16
   symbol: dAmpMouthTexture

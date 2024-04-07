@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x112B50
+  segments:
+    - [0x04,  0x112B50]
+
 water_wave_0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x25358
+  offset: 0x25358
   format: IA16
   symbol: water_wave_seg4_texture_04025358
 water_wave_1:
@@ -12,8 +18,7 @@ water_wave_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x25B58
+  offset: 0x25B58
   format: IA16
   symbol: water_wave_seg4_texture_04025B58
 water_wave_2:
@@ -21,8 +26,7 @@ water_wave_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x26358
+  offset: 0x26358
   format: IA16
   symbol: water_wave_seg4_texture_04026358
 water_wave_3:
@@ -30,7 +34,48 @@ water_wave_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x26B58
+  offset: 0x26B58
   format: IA16
   symbol: water_wave_seg4_texture_04026B58
+
+water_wave_seg4_vertex_04025318:
+  type: VTX
+  count: 4
+  offset: 0x25318
+  symbol: water_wave_seg4_vertex_04025318
+
+water_wave_seg4_dl_04027358:
+  type: GFX
+  offset: 0x27358
+  symbol: water_wave_seg4_dl_04027358
+
+water_wave_seg4_dl_040273A0:
+  type: GFX
+  offset: 0x273A0
+  symbol: water_wave_seg4_dl_040273A0
+
+water_wave_seg4_dl_040273D8:
+  type: GFX
+  offset: 0x273D8
+  symbol: water_wave_seg4_dl_040273D8
+
+water_wave_seg4_dl_040273F0:
+  type: GFX
+  offset: 0x273F0
+  symbol: water_wave_seg4_dl_040273F0
+
+water_wave_seg4_dl_04027408:
+  type: GFX
+  offset: 0x27408
+  symbol: water_wave_seg4_dl_04027408
+
+water_wave_seg4_dl_04027420:
+  type: GFX
+  offset: 0x27420
+  symbol: water_wave_seg4_dl_04027420
+
+water_wave_seg4_dl_04027438:
+  type: GFX
+  offset: 0x27438
+  symbol: water_wave_seg4_dl_04027438
+

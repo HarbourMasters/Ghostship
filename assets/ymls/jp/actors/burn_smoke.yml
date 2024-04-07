@@ -1,9 +1,42 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x112B50
+  segments:
+    - [0x04,  0x112B50]
+
 burn_smoke:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x21800
+  offset: 0x21800
   format: IA16
   symbol: burn_smoke_seg4_texture_04021800
+
+burn_smoke_seg4_vertex_040217C0:
+  type: VTX
+  count: 4
+  offset: 0x217C0
+  symbol: burn_smoke_seg4_vertex_040217C0
+
+burn_smoke_seg4_dl_04022000:
+  type: GFX
+  offset: 0x22000
+  symbol: burn_smoke_seg4_dl_04022000
+
+burn_smoke_seg4_dl_04022028:
+  type: GFX
+  offset: 0x22028
+  symbol: burn_smoke_seg4_dl_04022028
+
+burn_smoke_seg4_dl_04022048:
+  type: GFX
+  offset: 0x22048
+  symbol: burn_smoke_seg4_dl_04022048
+
+burn_smoke_seg4_dl_04022070:
+  type: GFX
+  offset: 0x22070
+  symbol: burn_smoke_seg4_dl_04022070
+

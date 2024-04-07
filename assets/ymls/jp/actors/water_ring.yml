@@ -1,9 +1,75 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1B8010
+  segments:
+    - [0x06,  0x1B8010]
+
 water_ring:
   type: TEXTURE
   size: 4096
   width: 64
   height: 32
-  offset: 0x1B8010
-  mio0: 0x12380
+  offset: 0x12380
   format: RGBA16
   symbol: water_ring_seg6_texture_06012380
+
+water_ring_seg6_lights_06012368:
+  type: LIGHTS
+  size: 24
+  offset: 0x12368
+  symbol: water_ring_seg6_lights_06012368
+
+water_ring_seg6_vertex_06013380:
+  type: VTX
+  count: 16
+  offset: 0x13380
+  symbol: water_ring_seg6_vertex_06013380
+
+water_ring_seg6_vertex_06013480:
+  type: VTX
+  count: 16
+  offset: 0x13480
+  symbol: water_ring_seg6_vertex_06013480
+
+water_ring_seg6_vertex_06013580:
+  type: VTX
+  count: 16
+  offset: 0x13580
+  symbol: water_ring_seg6_vertex_06013580
+
+water_ring_seg6_vertex_06013680:
+  type: VTX
+  count: 16
+  offset: 0x13680
+  symbol: water_ring_seg6_vertex_06013680
+
+water_ring_seg6_vertex_06013780:
+  type: VTX
+  count: 16
+  offset: 0x13780
+  symbol: water_ring_seg6_vertex_06013780
+
+water_ring_seg6_vertex_06013880:
+  type: VTX
+  count: 16
+  offset: 0x13880
+  symbol: water_ring_seg6_vertex_06013880
+
+water_ring_seg6_vertex_06013980:
+  type: VTX
+  count: 16
+  offset: 0x13980
+  symbol: water_ring_seg6_vertex_06013980
+
+water_ring_seg6_vertex_06013A80:
+  type: VTX
+  count: 4
+  offset: 0x13A80
+  symbol: water_ring_seg6_vertex_06013A80
+
+water_ring_seg6_dl_06013AC0:
+  type: GFX
+  offset: 0x13AC0
+  symbol: water_ring_seg6_dl_06013AC0
+

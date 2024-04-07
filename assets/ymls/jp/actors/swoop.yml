@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E6210
+  segments:
+    - [0x06,  0x1E6210]
+
 swoop_body:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x4270
+  offset: 0x4270
   format: RGBA16
   symbol: swoop_seg6_texture_06004270
 swoop_eye:
@@ -12,8 +18,7 @@ swoop_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x4A70
+  offset: 0x4A70
   format: RGBA16
   symbol: swoop_seg6_texture_06004A70
 swoop_nose:
@@ -21,8 +26,7 @@ swoop_nose:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x5270
+  offset: 0x5270
   format: RGBA16
   symbol: swoop_seg6_texture_06005270
 swoop_wing:
@@ -30,7 +34,145 @@ swoop_wing:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x5A70
+  offset: 0x5A70
   format: RGBA16
   symbol: swoop_seg6_texture_06005A70
+
+swoop_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0xE08
+  symbol: swoop_lights_unused1
+
+swoop_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0xE08
+  symbol: swoop_lights_unused2
+
+swoop_seg6_lights_06006270:
+  type: LIGHTS
+  size: 24
+  offset: 0x6270
+  symbol: swoop_seg6_lights_06006270
+
+swoop_seg6_vertex_06006288:
+  type: VTX
+  count: 14
+  offset: 0x6288
+  symbol: swoop_seg6_vertex_06006288
+
+swoop_seg6_vertex_06006368:
+  type: VTX
+  count: 16
+  offset: 0x6368
+  symbol: swoop_seg6_vertex_06006368
+
+swoop_seg6_vertex_06006468:
+  type: VTX
+  count: 11
+  offset: 0x6468
+  symbol: swoop_seg6_vertex_06006468
+
+swoop_seg6_vertex_06006518:
+  type: VTX
+  count: 10
+  offset: 0x6518
+  symbol: swoop_seg6_vertex_06006518
+
+swoop_seg6_dl_060065B8:
+  type: GFX
+  offset: 0x65B8
+  symbol: swoop_seg6_dl_060065B8
+
+swoop_seg6_dl_060066F8:
+  type: GFX
+  offset: 0x66F8
+  symbol: swoop_seg6_dl_060066F8
+
+swoop_seg6_dl_06006758:
+  type: GFX
+  offset: 0x6758
+  symbol: swoop_seg6_dl_06006758
+
+swoop_seg6_vertex_06006808:
+  type: VTX
+  count: 4
+  offset: 0x6808
+  symbol: swoop_seg6_vertex_06006808
+
+swoop_seg6_dl_06006848:
+  type: GFX
+  offset: 0x6848
+  symbol: swoop_seg6_dl_06006848
+
+swoop_seg6_dl_06006880:
+  type: GFX
+  offset: 0x6880
+  symbol: swoop_seg6_dl_06006880
+
+swoop_seg6_lights_06006938:
+  type: LIGHTS
+  size: 24
+  offset: 0x6938
+  symbol: swoop_seg6_lights_06006938
+
+swoop_seg6_vertex_06006950:
+  type: VTX
+  count: 8
+  offset: 0x6950
+  symbol: swoop_seg6_vertex_06006950
+
+swoop_seg6_vertex_060069D0:
+  type: VTX
+  count: 4
+  offset: 0x69D0
+  symbol: swoop_seg6_vertex_060069D0
+
+swoop_seg6_dl_06006A10:
+  type: GFX
+  offset: 0x6A10
+  symbol: swoop_seg6_dl_06006A10
+
+swoop_seg6_dl_06006A68:
+  type: GFX
+  offset: 0x6A68
+  symbol: swoop_seg6_dl_06006A68
+
+swoop_seg6_dl_06006A88:
+  type: GFX
+  offset: 0x6A88
+  symbol: swoop_seg6_dl_06006A88
+
+swoop_seg6_vertex_06006B58:
+  type: VTX
+  count: 4
+  offset: 0x6B58
+  symbol: swoop_seg6_vertex_06006B58
+
+swoop_seg6_dl_06006B98:
+  type: GFX
+  offset: 0x6B98
+  symbol: swoop_seg6_dl_06006B98
+
+swoop_seg6_dl_06006BD0:
+  type: GFX
+  offset: 0x6BD0
+  symbol: swoop_seg6_dl_06006BD0
+
+swoop_seg6_vertex_06006C88:
+  type: VTX
+  count: 4
+  offset: 0x6C88
+  symbol: swoop_seg6_vertex_06006C88
+
+swoop_seg6_dl_06006CC8:
+  type: GFX
+  offset: 0x6CC8
+  symbol: swoop_seg6_dl_06006CC8
+
+swoop_seg6_dl_06006D00:
+  type: GFX
+  offset: 0x6D00
+  symbol: swoop_seg6_dl_06006D00
+

@@ -1,680 +1,517 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1076D0
+  segments:
+    - [0x02,  0x1076D0]
+
 dialog_00:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD548
+  offset: 0xD548
 dialog_01:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD558
+  offset: 0xD558
 dialog_02:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD568
+  offset: 0xD568
 dialog_03:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD578
+  offset: 0xD578
 dialog_04:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD588
+  offset: 0xD588
 dialog_05:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD598
+  offset: 0xD598
 dialog_06:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD5A8
+  offset: 0xD5A8
 dialog_07:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD5B8
+  offset: 0xD5B8
 dialog_08:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD5C8
+  offset: 0xD5C8
 dialog_09:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD5D8
+  offset: 0xD5D8
 dialog_0A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD5E8
+  offset: 0xD5E8
 dialog_0B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD5F8
+  offset: 0xD5F8
 dialog_0C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD608
+  offset: 0xD608
 dialog_0D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD618
+  offset: 0xD618
 dialog_0E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD628
+  offset: 0xD628
 dialog_0F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD638
+  offset: 0xD638
 dialog_10:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD648
+  offset: 0xD648
 dialog_11:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD658
+  offset: 0xD658
 dialog_12:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD668
+  offset: 0xD668
 dialog_13:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD678
+  offset: 0xD678
 dialog_14:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD688
+  offset: 0xD688
 dialog_15:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD698
+  offset: 0xD698
 dialog_16:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD6A8
+  offset: 0xD6A8
 dialog_17:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD6B8
+  offset: 0xD6B8
 dialog_18:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD6C8
+  offset: 0xD6C8
 dialog_19:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD6D8
+  offset: 0xD6D8
 dialog_1A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD6E8
+  offset: 0xD6E8
 dialog_1B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD6F8
+  offset: 0xD6F8
 dialog_1C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD708
+  offset: 0xD708
 dialog_1D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD718
+  offset: 0xD718
 dialog_1E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD728
+  offset: 0xD728
 dialog_1F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD738
+  offset: 0xD738
 dialog_20:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD748
+  offset: 0xD748
 dialog_21:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD758
+  offset: 0xD758
 dialog_22:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD768
+  offset: 0xD768
 dialog_23:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD778
+  offset: 0xD778
 dialog_24:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD788
+  offset: 0xD788
 dialog_25:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD798
+  offset: 0xD798
 dialog_26:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD7A8
+  offset: 0xD7A8
 dialog_27:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD7B8
+  offset: 0xD7B8
 dialog_28:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD7C8
+  offset: 0xD7C8
 dialog_29:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD7D8
+  offset: 0xD7D8
 dialog_2A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD7E8
+  offset: 0xD7E8
 dialog_2B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD7F8
+  offset: 0xD7F8
 dialog_2C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD808
+  offset: 0xD808
 dialog_2D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD818
+  offset: 0xD818
 dialog_2E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD828
+  offset: 0xD828
 dialog_2F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD838
+  offset: 0xD838
 dialog_30:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD848
+  offset: 0xD848
 dialog_31:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD858
+  offset: 0xD858
 dialog_32:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD868
+  offset: 0xD868
 dialog_33:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD878
+  offset: 0xD878
 dialog_34:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD888
+  offset: 0xD888
 dialog_35:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD898
+  offset: 0xD898
 dialog_36:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD8A8
+  offset: 0xD8A8
 dialog_37:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD8B8
+  offset: 0xD8B8
 dialog_38:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD8C8
+  offset: 0xD8C8
 dialog_39:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD8D8
+  offset: 0xD8D8
 dialog_3A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD8E8
+  offset: 0xD8E8
 dialog_3B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD8F8
+  offset: 0xD8F8
 dialog_3C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD908
+  offset: 0xD908
 dialog_3D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD918
+  offset: 0xD918
 dialog_3E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD928
+  offset: 0xD928
 dialog_3F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD938
+  offset: 0xD938
 dialog_40:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD948
+  offset: 0xD948
 dialog_41:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD958
+  offset: 0xD958
 dialog_42:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD968
+  offset: 0xD968
 dialog_43:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD978
+  offset: 0xD978
 dialog_44:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD988
+  offset: 0xD988
 dialog_45:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD998
+  offset: 0xD998
 dialog_46:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD9A8
+  offset: 0xD9A8
 dialog_47:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD9B8
+  offset: 0xD9B8
 dialog_48:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD9C8
+  offset: 0xD9C8
 dialog_49:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD9D8
+  offset: 0xD9D8
 dialog_4A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD9E8
+  offset: 0xD9E8
 dialog_4B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xD9F8
+  offset: 0xD9F8
 dialog_4C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA08
+  offset: 0xDA08
 dialog_4D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA18
+  offset: 0xDA18
 dialog_4E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA28
+  offset: 0xDA28
 dialog_4F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA38
+  offset: 0xDA38
 dialog_50:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA48
+  offset: 0xDA48
 dialog_51:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA58
+  offset: 0xDA58
 dialog_52:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA68
+  offset: 0xDA68
 dialog_53:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA78
+  offset: 0xDA78
 dialog_54:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA88
+  offset: 0xDA88
 dialog_55:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDA98
+  offset: 0xDA98
 dialog_56:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDAA8
+  offset: 0xDAA8
 dialog_57:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDAB8
+  offset: 0xDAB8
 dialog_58:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDAC8
+  offset: 0xDAC8
 dialog_59:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDAD8
+  offset: 0xDAD8
 dialog_5A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDAE8
+  offset: 0xDAE8
 dialog_5B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDAF8
+  offset: 0xDAF8
 dialog_5C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB08
+  offset: 0xDB08
 dialog_5D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB18
+  offset: 0xDB18
 dialog_5E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB28
+  offset: 0xDB28
 dialog_5F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB38
+  offset: 0xDB38
 dialog_60:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB48
+  offset: 0xDB48
 dialog_61:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB58
+  offset: 0xDB58
 dialog_62:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB68
+  offset: 0xDB68
 dialog_63:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB78
+  offset: 0xDB78
 dialog_64:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB88
+  offset: 0xDB88
 dialog_65:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDB98
+  offset: 0xDB98
 dialog_66:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDBA8
+  offset: 0xDBA8
 dialog_67:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDBB8
+  offset: 0xDBB8
 dialog_68:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDBC8
+  offset: 0xDBC8
 dialog_69:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDBD8
+  offset: 0xDBD8
 dialog_6A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDBE8
+  offset: 0xDBE8
 dialog_6B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDBF8
+  offset: 0xDBF8
 dialog_6C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC08
+  offset: 0xDC08
 dialog_6D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC18
+  offset: 0xDC18
 dialog_6E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC28
+  offset: 0xDC28
 dialog_6F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC38
+  offset: 0xDC38
 dialog_70:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC48
+  offset: 0xDC48
 dialog_71:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC58
+  offset: 0xDC58
 dialog_72:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC68
+  offset: 0xDC68
 dialog_73:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC78
+  offset: 0xDC78
 dialog_74:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC88
+  offset: 0xDC88
 dialog_75:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDC98
+  offset: 0xDC98
 dialog_76:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDCA8
+  offset: 0xDCA8
 dialog_77:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDCB8
+  offset: 0xDCB8
 dialog_78:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDCC8
+  offset: 0xDCC8
 dialog_79:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDCD8
+  offset: 0xDCD8
 dialog_7A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDCE8
+  offset: 0xDCE8
 dialog_7B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDCF8
+  offset: 0xDCF8
 dialog_7C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD08
+  offset: 0xDD08
 dialog_7D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD18
+  offset: 0xDD18
 dialog_7E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD28
+  offset: 0xDD28
 dialog_7F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD38
+  offset: 0xDD38
 dialog_80:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD48
+  offset: 0xDD48
 dialog_81:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD58
+  offset: 0xDD58
 dialog_82:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD68
+  offset: 0xDD68
 dialog_83:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD78
+  offset: 0xDD78
 dialog_84:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD88
+  offset: 0xDD88
 dialog_85:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDD98
+  offset: 0xDD98
 dialog_86:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDDA8
+  offset: 0xDDA8
 dialog_87:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDDB8
+  offset: 0xDDB8
 dialog_88:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDDC8
+  offset: 0xDDC8
 dialog_89:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDDD8
+  offset: 0xDDD8
 dialog_8A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDDE8
+  offset: 0xDDE8
 dialog_8B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDDF8
+  offset: 0xDDF8
 dialog_8C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE08
+  offset: 0xDE08
 dialog_8D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE18
+  offset: 0xDE18
 dialog_8E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE28
+  offset: 0xDE28
 dialog_8F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE38
+  offset: 0xDE38
 dialog_90:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE48
+  offset: 0xDE48
 dialog_91:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE58
+  offset: 0xDE58
 dialog_92:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE68
+  offset: 0xDE68
 dialog_93:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE78
+  offset: 0xDE78
 dialog_94:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE88
+  offset: 0xDE88
 dialog_95:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDE98
+  offset: 0xDE98
 dialog_96:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDEA8
+  offset: 0xDEA8
 dialog_97:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDEB8
+  offset: 0xDEB8
 dialog_98:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDEC8
+  offset: 0xDEC8
 dialog_99:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDED8
+  offset: 0xDED8
 dialog_9A:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDEE8
+  offset: 0xDEE8
 dialog_9B:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDEF8
+  offset: 0xDEF8
 dialog_9C:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF08
+  offset: 0xDF08
 dialog_9D:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF18
+  offset: 0xDF18
 dialog_9E:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF28
+  offset: 0xDF28
 dialog_9F:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF38
+  offset: 0xDF38
 dialog_A0:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF48
+  offset: 0xDF48
 dialog_A1:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF58
+  offset: 0xDF58
 dialog_A2:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF68
+  offset: 0xDF68
 dialog_A3:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF78
+  offset: 0xDF78
 dialog_A4:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF88
+  offset: 0xDF88
 dialog_A5:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDF98
+  offset: 0xDF98
 dialog_A6:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDFA8
+  offset: 0xDFA8
 dialog_A7:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDFB8
+  offset: 0xDFB8
 dialog_A8:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDFC8
+  offset: 0xDFC8
 dialog_A9:
   type: SM64:DIALOG
-  offset: 0x1076D0
-  mio0: 0xDFD8
+  offset: 0xDFD8

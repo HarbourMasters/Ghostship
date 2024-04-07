@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 exclamation_box_front:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x17628
+  offset: 0x17628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08017628
 exclamation_box_side:
@@ -12,8 +18,7 @@ exclamation_box_side:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1F0530
-  mio0: 0x17E28
+  offset: 0x17E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08017E28
 metal_cap_box_front:
@@ -21,8 +26,7 @@ metal_cap_box_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x14628
+  offset: 0x14628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08014628
 metal_cap_box_side:
@@ -30,8 +34,7 @@ metal_cap_box_side:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1F0530
-  mio0: 0x14E28
+  offset: 0x14E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08014E28
 vanish_cap_box_front:
@@ -39,8 +42,7 @@ vanish_cap_box_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x12E28
+  offset: 0x12E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08012E28
 vanish_cap_box_side:
@@ -48,8 +50,7 @@ vanish_cap_box_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F0530
-  mio0: 0x13628
+  offset: 0x13628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08013628
 wing_cap_box_front:
@@ -57,8 +58,7 @@ wing_cap_box_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x15E28
+  offset: 0x15E28
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08015E28
 wing_cap_box_side:
@@ -66,7 +66,87 @@ wing_cap_box_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F0530
-  mio0: 0x16628
+  offset: 0x16628
   format: RGBA16
   symbol: exclamation_box_seg8_texture_08016628
+
+exclamation_box_seg8_lights_08012E10:
+  type: LIGHTS
+  size: 24
+  offset: 0x12E10
+  symbol: exclamation_box_seg8_lights_08012E10
+
+exclamation_box_seg8_vertex_08018E28:
+  type: VTX
+  count: 16
+  offset: 0x18E28
+  symbol: exclamation_box_seg8_vertex_08018E28
+
+exclamation_box_seg8_vertex_08018F28:
+  type: VTX
+  count: 8
+  offset: 0x18F28
+  symbol: exclamation_box_seg8_vertex_08018F28
+
+exclamation_box_seg8_dl_08018FA8:
+  type: GFX
+  offset: 0x18FA8
+  symbol: exclamation_box_seg8_dl_08018FA8
+
+exclamation_box_seg8_dl_08019008:
+  type: GFX
+  offset: 0x19008
+  symbol: exclamation_box_seg8_dl_08019008
+
+exclamation_box_seg8_dl_08019058:
+  type: GFX
+  offset: 0x19058
+  symbol: exclamation_box_seg8_dl_08019058
+
+exclamation_box_seg8_vertex_080190A0:
+  type: VTX
+  count: 16
+  offset: 0x190A0
+  symbol: exclamation_box_seg8_vertex_080190A0
+
+exclamation_box_seg8_vertex_080191A0:
+  type: VTX
+  count: 8
+  offset: 0x191A0
+  symbol: exclamation_box_seg8_vertex_080191A0
+
+exclamation_box_seg8_dl_08019220:
+  type: GFX
+  offset: 0x19220
+  symbol: exclamation_box_seg8_dl_08019220
+
+exclamation_box_seg8_dl_08019280:
+  type: GFX
+  offset: 0x19280
+  symbol: exclamation_box_seg8_dl_08019280
+
+exclamation_box_seg8_dl_080192D0:
+  type: GFX
+  offset: 0x192D0
+  symbol: exclamation_box_seg8_dl_080192D0
+
+exclamation_box_seg8_dl_08019318:
+  type: GFX
+  offset: 0x19318
+  symbol: exclamation_box_seg8_dl_08019318
+
+exclamation_box_seg8_dl_08019378:
+  type: GFX
+  offset: 0x19378
+  symbol: exclamation_box_seg8_dl_08019378
+
+exclamation_box_seg8_dl_080193D8:
+  type: GFX
+  offset: 0x193D8
+  symbol: exclamation_box_seg8_dl_080193D8
+
+exclamation_box_seg8_dl_08019438:
+  type: GFX
+  offset: 0x19438
+  symbol: exclamation_box_seg8_dl_08019438
+

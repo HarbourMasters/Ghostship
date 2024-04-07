@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x4AD8D0
+  segments:
+    - [0x07,  0x4AD8D0]
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x4AD8D0
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: pss_seg7_texture_07000000
 1:
@@ -12,8 +18,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4AD8D0
-  mio0: 0x800
+  offset: 0x800
   format: IA16
   symbol: pss_seg7_texture_07000800
 2:
@@ -21,7 +26,1125 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4AD8D0
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: pss_seg7_texture_07001000
+
+pss_seg7_lights_0700E348:
+  type: LIGHTS
+  size: 24
+  offset: 0xE348
+  symbol: pss_seg7_lights_0700E348
+
+pss_seg7_vertex_0700E360:
+  type: VTX
+  count: 4
+  offset: 0xE360
+  symbol: pss_seg7_vertex_0700E360
+
+pss_seg7_dl_0700E3A0:
+  type: GFX
+  offset: 0xE3A0
+  symbol: pss_seg7_dl_0700E3A0
+
+pss_seg7_dl_0700E3E8:
+  type: GFX
+  offset: 0xE3E8
+  symbol: pss_seg7_dl_0700E3E8
+
+pss_seg7_vertex_0700DB48:
+  type: VTX
+  count: 4
+  offset: 0xDB48
+  symbol: pss_seg7_vertex_0700DB48
+
+pss_seg7_vertex_0700DB88:
+  type: VTX
+  count: 12
+  offset: 0xDB88
+  symbol: pss_seg7_vertex_0700DB88
+
+pss_seg7_vertex_0700DC48:
+  type: VTX
+  count: 15
+  offset: 0xDC48
+  symbol: pss_seg7_vertex_0700DC48
+
+pss_seg7_vertex_0700DD38:
+  type: VTX
+  count: 15
+  offset: 0xDD38
+  symbol: pss_seg7_vertex_0700DD38
+
+pss_seg7_vertex_0700DE28:
+  type: VTX
+  count: 15
+  offset: 0xDE28
+  symbol: pss_seg7_vertex_0700DE28
+
+pss_seg7_vertex_0700DF18:
+  type: VTX
+  count: 14
+  offset: 0xDF18
+  symbol: pss_seg7_vertex_0700DF18
+
+pss_seg7_vertex_0700DFF8:
+  type: VTX
+  count: 11
+  offset: 0xDFF8
+  symbol: pss_seg7_vertex_0700DFF8
+
+pss_seg7_dl_0700E0A8:
+  type: GFX
+  offset: 0xE0A8
+  symbol: pss_seg7_dl_0700E0A8
+
+pss_seg7_dl_0700E0E0:
+  type: GFX
+  offset: 0xE0E0
+  symbol: pss_seg7_dl_0700E0E0
+
+pss_seg7_dl_0700E138:
+  type: GFX
+  offset: 0xE138
+  symbol: pss_seg7_dl_0700E138
+
+pss_seg7_dl_0700E2B0:
+  type: GFX
+  offset: 0xE2B0
+  symbol: pss_seg7_dl_0700E2B0
+
+pss_seg7_lights_07001800:
+  type: LIGHTS
+  size: 24
+  offset: 0x1800
+  symbol: pss_seg7_lights_07001800
+
+pss_seg7_lights_07001818:
+  type: LIGHTS
+  size: 24
+  offset: 0x1818
+  symbol: pss_seg7_lights_07001818
+
+pss_seg7_vertex_07001830:
+  type: VTX
+  count: 16
+  offset: 0x1830
+  symbol: pss_seg7_vertex_07001830
+
+pss_seg7_vertex_07001930:
+  type: VTX
+  count: 16
+  offset: 0x1930
+  symbol: pss_seg7_vertex_07001930
+
+pss_seg7_vertex_07001A30:
+  type: VTX
+  count: 5
+  offset: 0x1A30
+  symbol: pss_seg7_vertex_07001A30
+
+pss_seg7_vertex_07001A80:
+  type: VTX
+  count: 16
+  offset: 0x1A80
+  symbol: pss_seg7_vertex_07001A80
+
+pss_seg7_vertex_07001B80:
+  type: VTX
+  count: 14
+  offset: 0x1B80
+  symbol: pss_seg7_vertex_07001B80
+
+pss_seg7_vertex_07001C60:
+  type: VTX
+  count: 16
+  offset: 0x1C60
+  symbol: pss_seg7_vertex_07001C60
+
+pss_seg7_vertex_07001D60:
+  type: VTX
+  count: 16
+  offset: 0x1D60
+  symbol: pss_seg7_vertex_07001D60
+
+pss_seg7_vertex_07001E60:
+  type: VTX
+  count: 15
+  offset: 0x1E60
+  symbol: pss_seg7_vertex_07001E60
+
+pss_seg7_vertex_07001F50:
+  type: VTX
+  count: 16
+  offset: 0x1F50
+  symbol: pss_seg7_vertex_07001F50
+
+pss_seg7_vertex_07002050:
+  type: VTX
+  count: 16
+  offset: 0x2050
+  symbol: pss_seg7_vertex_07002050
+
+pss_seg7_vertex_07002150:
+  type: VTX
+  count: 16
+  offset: 0x2150
+  symbol: pss_seg7_vertex_07002150
+
+pss_seg7_vertex_07002250:
+  type: VTX
+  count: 15
+  offset: 0x2250
+  symbol: pss_seg7_vertex_07002250
+
+pss_seg7_vertex_07002340:
+  type: VTX
+  count: 16
+  offset: 0x2340
+  symbol: pss_seg7_vertex_07002340
+
+pss_seg7_vertex_07002440:
+  type: VTX
+  count: 14
+  offset: 0x2440
+  symbol: pss_seg7_vertex_07002440
+
+pss_seg7_vertex_07002520:
+  type: VTX
+  count: 16
+  offset: 0x2520
+  symbol: pss_seg7_vertex_07002520
+
+pss_seg7_vertex_07002620:
+  type: VTX
+  count: 16
+  offset: 0x2620
+  symbol: pss_seg7_vertex_07002620
+
+pss_seg7_vertex_07002720:
+  type: VTX
+  count: 15
+  offset: 0x2720
+  symbol: pss_seg7_vertex_07002720
+
+pss_seg7_vertex_07002810:
+  type: VTX
+  count: 15
+  offset: 0x2810
+  symbol: pss_seg7_vertex_07002810
+
+pss_seg7_vertex_07002900:
+  type: VTX
+  count: 16
+  offset: 0x2900
+  symbol: pss_seg7_vertex_07002900
+
+pss_seg7_vertex_07002A00:
+  type: VTX
+  count: 16
+  offset: 0x2A00
+  symbol: pss_seg7_vertex_07002A00
+
+pss_seg7_vertex_07002B00:
+  type: VTX
+  count: 14
+  offset: 0x2B00
+  symbol: pss_seg7_vertex_07002B00
+
+pss_seg7_vertex_07002BE0:
+  type: VTX
+  count: 16
+  offset: 0x2BE0
+  symbol: pss_seg7_vertex_07002BE0
+
+pss_seg7_vertex_07002CE0:
+  type: VTX
+  count: 16
+  offset: 0x2CE0
+  symbol: pss_seg7_vertex_07002CE0
+
+pss_seg7_vertex_07002DE0:
+  type: VTX
+  count: 11
+  offset: 0x2DE0
+  symbol: pss_seg7_vertex_07002DE0
+
+pss_seg7_vertex_07002E90:
+  type: VTX
+  count: 16
+  offset: 0x2E90
+  symbol: pss_seg7_vertex_07002E90
+
+pss_seg7_vertex_07002F90:
+  type: VTX
+  count: 4
+  offset: 0x2F90
+  symbol: pss_seg7_vertex_07002F90
+
+pss_seg7_vertex_07002FD0:
+  type: VTX
+  count: 15
+  offset: 0x2FD0
+  symbol: pss_seg7_vertex_07002FD0
+
+pss_seg7_vertex_070030C0:
+  type: VTX
+  count: 16
+  offset: 0x30C0
+  symbol: pss_seg7_vertex_070030C0
+
+pss_seg7_vertex_070031C0:
+  type: VTX
+  count: 15
+  offset: 0x31C0
+  symbol: pss_seg7_vertex_070031C0
+
+pss_seg7_vertex_070032B0:
+  type: VTX
+  count: 15
+  offset: 0x32B0
+  symbol: pss_seg7_vertex_070032B0
+
+pss_seg7_vertex_070033A0:
+  type: VTX
+  count: 16
+  offset: 0x33A0
+  symbol: pss_seg7_vertex_070033A0
+
+pss_seg7_vertex_070034A0:
+  type: VTX
+  count: 15
+  offset: 0x34A0
+  symbol: pss_seg7_vertex_070034A0
+
+pss_seg7_vertex_07003590:
+  type: VTX
+  count: 16
+  offset: 0x3590
+  symbol: pss_seg7_vertex_07003590
+
+pss_seg7_vertex_07003690:
+  type: VTX
+  count: 14
+  offset: 0x3690
+  symbol: pss_seg7_vertex_07003690
+
+pss_seg7_vertex_07003770:
+  type: VTX
+  count: 15
+  offset: 0x3770
+  symbol: pss_seg7_vertex_07003770
+
+pss_seg7_vertex_07003860:
+  type: VTX
+  count: 14
+  offset: 0x3860
+  symbol: pss_seg7_vertex_07003860
+
+pss_seg7_vertex_07003940:
+  type: VTX
+  count: 16
+  offset: 0x3940
+  symbol: pss_seg7_vertex_07003940
+
+pss_seg7_vertex_07003A40:
+  type: VTX
+  count: 15
+  offset: 0x3A40
+  symbol: pss_seg7_vertex_07003A40
+
+pss_seg7_vertex_07003B30:
+  type: VTX
+  count: 15
+  offset: 0x3B30
+  symbol: pss_seg7_vertex_07003B30
+
+pss_seg7_vertex_07003C20:
+  type: VTX
+  count: 14
+  offset: 0x3C20
+  symbol: pss_seg7_vertex_07003C20
+
+pss_seg7_vertex_07003D00:
+  type: VTX
+  count: 15
+  offset: 0x3D00
+  symbol: pss_seg7_vertex_07003D00
+
+pss_seg7_vertex_07003DF0:
+  type: VTX
+  count: 15
+  offset: 0x3DF0
+  symbol: pss_seg7_vertex_07003DF0
+
+pss_seg7_vertex_07003EE0:
+  type: VTX
+  count: 15
+  offset: 0x3EE0
+  symbol: pss_seg7_vertex_07003EE0
+
+pss_seg7_vertex_07003FD0:
+  type: VTX
+  count: 15
+  offset: 0x3FD0
+  symbol: pss_seg7_vertex_07003FD0
+
+pss_seg7_vertex_070040C0:
+  type: VTX
+  count: 15
+  offset: 0x40C0
+  symbol: pss_seg7_vertex_070040C0
+
+pss_seg7_vertex_070041B0:
+  type: VTX
+  count: 15
+  offset: 0x41B0
+  symbol: pss_seg7_vertex_070041B0
+
+pss_seg7_vertex_070042A0:
+  type: VTX
+  count: 10
+  offset: 0x42A0
+  symbol: pss_seg7_vertex_070042A0
+
+pss_seg7_vertex_07004340:
+  type: VTX
+  count: 15
+  offset: 0x4340
+  symbol: pss_seg7_vertex_07004340
+
+pss_seg7_vertex_07004430:
+  type: VTX
+  count: 15
+  offset: 0x4430
+  symbol: pss_seg7_vertex_07004430
+
+pss_seg7_vertex_07004520:
+  type: VTX
+  count: 15
+  offset: 0x4520
+  symbol: pss_seg7_vertex_07004520
+
+pss_seg7_vertex_07004610:
+  type: VTX
+  count: 15
+  offset: 0x4610
+  symbol: pss_seg7_vertex_07004610
+
+pss_seg7_vertex_07004700:
+  type: VTX
+  count: 16
+  offset: 0x4700
+  symbol: pss_seg7_vertex_07004700
+
+pss_seg7_vertex_07004800:
+  type: VTX
+  count: 14
+  offset: 0x4800
+  symbol: pss_seg7_vertex_07004800
+
+pss_seg7_vertex_070048E0:
+  type: VTX
+  count: 15
+  offset: 0x48E0
+  symbol: pss_seg7_vertex_070048E0
+
+pss_seg7_vertex_070049D0:
+  type: VTX
+  count: 15
+  offset: 0x49D0
+  symbol: pss_seg7_vertex_070049D0
+
+pss_seg7_vertex_07004AC0:
+  type: VTX
+  count: 15
+  offset: 0x4AC0
+  symbol: pss_seg7_vertex_07004AC0
+
+pss_seg7_vertex_07004BB0:
+  type: VTX
+  count: 15
+  offset: 0x4BB0
+  symbol: pss_seg7_vertex_07004BB0
+
+pss_seg7_vertex_07004CA0:
+  type: VTX
+  count: 15
+  offset: 0x4CA0
+  symbol: pss_seg7_vertex_07004CA0
+
+pss_seg7_vertex_07004D90:
+  type: VTX
+  count: 15
+  offset: 0x4D90
+  symbol: pss_seg7_vertex_07004D90
+
+pss_seg7_vertex_07004E80:
+  type: VTX
+  count: 15
+  offset: 0x4E80
+  symbol: pss_seg7_vertex_07004E80
+
+pss_seg7_vertex_07004F70:
+  type: VTX
+  count: 15
+  offset: 0x4F70
+  symbol: pss_seg7_vertex_07004F70
+
+pss_seg7_vertex_07005060:
+  type: VTX
+  count: 15
+  offset: 0x5060
+  symbol: pss_seg7_vertex_07005060
+
+pss_seg7_vertex_07005150:
+  type: VTX
+  count: 15
+  offset: 0x5150
+  symbol: pss_seg7_vertex_07005150
+
+pss_seg7_vertex_07005240:
+  type: VTX
+  count: 15
+  offset: 0x5240
+  symbol: pss_seg7_vertex_07005240
+
+pss_seg7_vertex_07005330:
+  type: VTX
+  count: 15
+  offset: 0x5330
+  symbol: pss_seg7_vertex_07005330
+
+pss_seg7_vertex_07005420:
+  type: VTX
+  count: 15
+  offset: 0x5420
+  symbol: pss_seg7_vertex_07005420
+
+pss_seg7_vertex_07005510:
+  type: VTX
+  count: 15
+  offset: 0x5510
+  symbol: pss_seg7_vertex_07005510
+
+pss_seg7_vertex_07005600:
+  type: VTX
+  count: 16
+  offset: 0x5600
+  symbol: pss_seg7_vertex_07005600
+
+pss_seg7_vertex_07005700:
+  type: VTX
+  count: 15
+  offset: 0x5700
+  symbol: pss_seg7_vertex_07005700
+
+pss_seg7_vertex_070057F0:
+  type: VTX
+  count: 14
+  offset: 0x57F0
+  symbol: pss_seg7_vertex_070057F0
+
+pss_seg7_vertex_070058D0:
+  type: VTX
+  count: 15
+  offset: 0x58D0
+  symbol: pss_seg7_vertex_070058D0
+
+pss_seg7_vertex_070059C0:
+  type: VTX
+  count: 14
+  offset: 0x59C0
+  symbol: pss_seg7_vertex_070059C0
+
+pss_seg7_vertex_07005AA0:
+  type: VTX
+  count: 14
+  offset: 0x5AA0
+  symbol: pss_seg7_vertex_07005AA0
+
+pss_seg7_vertex_07005B80:
+  type: VTX
+  count: 15
+  offset: 0x5B80
+  symbol: pss_seg7_vertex_07005B80
+
+pss_seg7_vertex_07005C70:
+  type: VTX
+  count: 15
+  offset: 0x5C70
+  symbol: pss_seg7_vertex_07005C70
+
+pss_seg7_vertex_07005D60:
+  type: VTX
+  count: 15
+  offset: 0x5D60
+  symbol: pss_seg7_vertex_07005D60
+
+pss_seg7_vertex_07005E50:
+  type: VTX
+  count: 15
+  offset: 0x5E50
+  symbol: pss_seg7_vertex_07005E50
+
+pss_seg7_vertex_07005F40:
+  type: VTX
+  count: 15
+  offset: 0x5F40
+  symbol: pss_seg7_vertex_07005F40
+
+pss_seg7_vertex_07006030:
+  type: VTX
+  count: 15
+  offset: 0x6030
+  symbol: pss_seg7_vertex_07006030
+
+pss_seg7_vertex_07006120:
+  type: VTX
+  count: 16
+  offset: 0x6120
+  symbol: pss_seg7_vertex_07006120
+
+pss_seg7_vertex_07006220:
+  type: VTX
+  count: 16
+  offset: 0x6220
+  symbol: pss_seg7_vertex_07006220
+
+pss_seg7_vertex_07006320:
+  type: VTX
+  count: 16
+  offset: 0x6320
+  symbol: pss_seg7_vertex_07006320
+
+pss_seg7_vertex_07006420:
+  type: VTX
+  count: 14
+  offset: 0x6420
+  symbol: pss_seg7_vertex_07006420
+
+pss_seg7_vertex_07006500:
+  type: VTX
+  count: 15
+  offset: 0x6500
+  symbol: pss_seg7_vertex_07006500
+
+pss_seg7_vertex_070065F0:
+  type: VTX
+  count: 15
+  offset: 0x65F0
+  symbol: pss_seg7_vertex_070065F0
+
+pss_seg7_vertex_070066E0:
+  type: VTX
+  count: 15
+  offset: 0x66E0
+  symbol: pss_seg7_vertex_070066E0
+
+pss_seg7_vertex_070067D0:
+  type: VTX
+  count: 15
+  offset: 0x67D0
+  symbol: pss_seg7_vertex_070067D0
+
+pss_seg7_vertex_070068C0:
+  type: VTX
+  count: 15
+  offset: 0x68C0
+  symbol: pss_seg7_vertex_070068C0
+
+pss_seg7_vertex_070069B0:
+  type: VTX
+  count: 15
+  offset: 0x69B0
+  symbol: pss_seg7_vertex_070069B0
+
+pss_seg7_vertex_07006AA0:
+  type: VTX
+  count: 15
+  offset: 0x6AA0
+  symbol: pss_seg7_vertex_07006AA0
+
+pss_seg7_vertex_07006B90:
+  type: VTX
+  count: 15
+  offset: 0x6B90
+  symbol: pss_seg7_vertex_07006B90
+
+pss_seg7_vertex_07006C80:
+  type: VTX
+  count: 15
+  offset: 0x6C80
+  symbol: pss_seg7_vertex_07006C80
+
+pss_seg7_vertex_07006D70:
+  type: VTX
+  count: 15
+  offset: 0x6D70
+  symbol: pss_seg7_vertex_07006D70
+
+pss_seg7_vertex_07006E60:
+  type: VTX
+  count: 15
+  offset: 0x6E60
+  symbol: pss_seg7_vertex_07006E60
+
+pss_seg7_vertex_07006F50:
+  type: VTX
+  count: 15
+  offset: 0x6F50
+  symbol: pss_seg7_vertex_07006F50
+
+pss_seg7_vertex_07007040:
+  type: VTX
+  count: 15
+  offset: 0x7040
+  symbol: pss_seg7_vertex_07007040
+
+pss_seg7_vertex_07007130:
+  type: VTX
+  count: 15
+  offset: 0x7130
+  symbol: pss_seg7_vertex_07007130
+
+pss_seg7_vertex_07007220:
+  type: VTX
+  count: 15
+  offset: 0x7220
+  symbol: pss_seg7_vertex_07007220
+
+pss_seg7_vertex_07007310:
+  type: VTX
+  count: 15
+  offset: 0x7310
+  symbol: pss_seg7_vertex_07007310
+
+pss_seg7_vertex_07007400:
+  type: VTX
+  count: 15
+  offset: 0x7400
+  symbol: pss_seg7_vertex_07007400
+
+pss_seg7_vertex_070074F0:
+  type: VTX
+  count: 15
+  offset: 0x74F0
+  symbol: pss_seg7_vertex_070074F0
+
+pss_seg7_vertex_070075E0:
+  type: VTX
+  count: 15
+  offset: 0x75E0
+  symbol: pss_seg7_vertex_070075E0
+
+pss_seg7_vertex_070076D0:
+  type: VTX
+  count: 15
+  offset: 0x76D0
+  symbol: pss_seg7_vertex_070076D0
+
+pss_seg7_vertex_070077C0:
+  type: VTX
+  count: 15
+  offset: 0x77C0
+  symbol: pss_seg7_vertex_070077C0
+
+pss_seg7_vertex_070078B0:
+  type: VTX
+  count: 15
+  offset: 0x78B0
+  symbol: pss_seg7_vertex_070078B0
+
+pss_seg7_vertex_070079A0:
+  type: VTX
+  count: 15
+  offset: 0x79A0
+  symbol: pss_seg7_vertex_070079A0
+
+pss_seg7_vertex_07007A90:
+  type: VTX
+  count: 15
+  offset: 0x7A90
+  symbol: pss_seg7_vertex_07007A90
+
+pss_seg7_vertex_07007B80:
+  type: VTX
+  count: 15
+  offset: 0x7B80
+  symbol: pss_seg7_vertex_07007B80
+
+pss_seg7_vertex_07007C70:
+  type: VTX
+  count: 15
+  offset: 0x7C70
+  symbol: pss_seg7_vertex_07007C70
+
+pss_seg7_vertex_07007D60:
+  type: VTX
+  count: 15
+  offset: 0x7D60
+  symbol: pss_seg7_vertex_07007D60
+
+pss_seg7_vertex_07007E50:
+  type: VTX
+  count: 15
+  offset: 0x7E50
+  symbol: pss_seg7_vertex_07007E50
+
+pss_seg7_vertex_07007F40:
+  type: VTX
+  count: 15
+  offset: 0x7F40
+  symbol: pss_seg7_vertex_07007F40
+
+pss_seg7_vertex_07008030:
+  type: VTX
+  count: 15
+  offset: 0x8030
+  symbol: pss_seg7_vertex_07008030
+
+pss_seg7_vertex_07008120:
+  type: VTX
+  count: 15
+  offset: 0x8120
+  symbol: pss_seg7_vertex_07008120
+
+pss_seg7_vertex_07008210:
+  type: VTX
+  count: 15
+  offset: 0x8210
+  symbol: pss_seg7_vertex_07008210
+
+pss_seg7_vertex_07008300:
+  type: VTX
+  count: 11
+  offset: 0x8300
+  symbol: pss_seg7_vertex_07008300
+
+pss_seg7_dl_070083B0:
+  type: GFX
+  offset: 0x83B0
+  symbol: pss_seg7_dl_070083B0
+
+pss_seg7_dl_07008E20:
+  type: GFX
+  offset: 0x8E20
+  symbol: pss_seg7_dl_07008E20
+
+pss_seg7_dl_07008EB0:
+  type: GFX
+  offset: 0x8EB0
+  symbol: pss_seg7_dl_07008EB0
+
+pss_seg7_dl_070095E8:
+  type: GFX
+  offset: 0x95E8
+  symbol: pss_seg7_dl_070095E8
+
+pss_seg7_dl_07009750:
+  type: GFX
+  offset: 0x9750
+  symbol: pss_seg7_dl_07009750
+
+pss_seg7_dl_0700A7C0:
+  type: GFX
+  offset: 0xA7C0
+  symbol: pss_seg7_dl_0700A7C0
+
+pss_seg7_vertex_0700B4A8:
+  type: VTX
+  count: 15
+  offset: 0xB4A8
+  symbol: pss_seg7_vertex_0700B4A8
+
+pss_seg7_vertex_0700B598:
+  type: VTX
+  count: 15
+  offset: 0xB598
+  symbol: pss_seg7_vertex_0700B598
+
+pss_seg7_vertex_0700B688:
+  type: VTX
+  count: 15
+  offset: 0xB688
+  symbol: pss_seg7_vertex_0700B688
+
+pss_seg7_vertex_0700B778:
+  type: VTX
+  count: 15
+  offset: 0xB778
+  symbol: pss_seg7_vertex_0700B778
+
+pss_seg7_vertex_0700B868:
+  type: VTX
+  count: 15
+  offset: 0xB868
+  symbol: pss_seg7_vertex_0700B868
+
+pss_seg7_vertex_0700B958:
+  type: VTX
+  count: 15
+  offset: 0xB958
+  symbol: pss_seg7_vertex_0700B958
+
+pss_seg7_vertex_0700BA48:
+  type: VTX
+  count: 15
+  offset: 0xBA48
+  symbol: pss_seg7_vertex_0700BA48
+
+pss_seg7_vertex_0700BB38:
+  type: VTX
+  count: 15
+  offset: 0xBB38
+  symbol: pss_seg7_vertex_0700BB38
+
+pss_seg7_vertex_0700BC28:
+  type: VTX
+  count: 15
+  offset: 0xBC28
+  symbol: pss_seg7_vertex_0700BC28
+
+pss_seg7_vertex_0700BD18:
+  type: VTX
+  count: 14
+  offset: 0xBD18
+  symbol: pss_seg7_vertex_0700BD18
+
+pss_seg7_vertex_0700BDF8:
+  type: VTX
+  count: 15
+  offset: 0xBDF8
+  symbol: pss_seg7_vertex_0700BDF8
+
+pss_seg7_vertex_0700BEE8:
+  type: VTX
+  count: 15
+  offset: 0xBEE8
+  symbol: pss_seg7_vertex_0700BEE8
+
+pss_seg7_vertex_0700BFD8:
+  type: VTX
+  count: 15
+  offset: 0xBFD8
+  symbol: pss_seg7_vertex_0700BFD8
+
+pss_seg7_vertex_0700C0C8:
+  type: VTX
+  count: 15
+  offset: 0xC0C8
+  symbol: pss_seg7_vertex_0700C0C8
+
+pss_seg7_vertex_0700C1B8:
+  type: VTX
+  count: 15
+  offset: 0xC1B8
+  symbol: pss_seg7_vertex_0700C1B8
+
+pss_seg7_vertex_0700C2A8:
+  type: VTX
+  count: 15
+  offset: 0xC2A8
+  symbol: pss_seg7_vertex_0700C2A8
+
+pss_seg7_vertex_0700C398:
+  type: VTX
+  count: 15
+  offset: 0xC398
+  symbol: pss_seg7_vertex_0700C398
+
+pss_seg7_vertex_0700C488:
+  type: VTX
+  count: 15
+  offset: 0xC488
+  symbol: pss_seg7_vertex_0700C488
+
+pss_seg7_vertex_0700C578:
+  type: VTX
+  count: 15
+  offset: 0xC578
+  symbol: pss_seg7_vertex_0700C578
+
+pss_seg7_vertex_0700C668:
+  type: VTX
+  count: 15
+  offset: 0xC668
+  symbol: pss_seg7_vertex_0700C668
+
+pss_seg7_vertex_0700C758:
+  type: VTX
+  count: 15
+  offset: 0xC758
+  symbol: pss_seg7_vertex_0700C758
+
+pss_seg7_vertex_0700C848:
+  type: VTX
+  count: 14
+  offset: 0xC848
+  symbol: pss_seg7_vertex_0700C848
+
+pss_seg7_vertex_0700C928:
+  type: VTX
+  count: 15
+  offset: 0xC928
+  symbol: pss_seg7_vertex_0700C928
+
+pss_seg7_vertex_0700CA18:
+  type: VTX
+  count: 15
+  offset: 0xCA18
+  symbol: pss_seg7_vertex_0700CA18
+
+pss_seg7_vertex_0700CB08:
+  type: VTX
+  count: 15
+  offset: 0xCB08
+  symbol: pss_seg7_vertex_0700CB08
+
+pss_seg7_vertex_0700CBF8:
+  type: VTX
+  count: 11
+  offset: 0xCBF8
+  symbol: pss_seg7_vertex_0700CBF8
+
+pss_seg7_dl_0700CCA8:
+  type: GFX
+  offset: 0xCCA8
+  symbol: pss_seg7_dl_0700CCA8
+
+pss_seg7_dl_0700D338:
+  type: GFX
+  offset: 0xD338
+  symbol: pss_seg7_dl_0700D338
+
+pss_seg7_vertex_0700B070:
+  type: VTX
+  count: 15
+  offset: 0xB070
+  symbol: pss_seg7_vertex_0700B070
+
+pss_seg7_vertex_0700B160:
+  type: VTX
+  count: 15
+  offset: 0xB160
+  symbol: pss_seg7_vertex_0700B160
+
+pss_seg7_vertex_0700B250:
+  type: VTX
+  count: 15
+  offset: 0xB250
+  symbol: pss_seg7_vertex_0700B250
+
+pss_seg7_dl_0700B340:
+  type: GFX
+  offset: 0xB340
+  symbol: pss_seg7_dl_0700B340
+
+pss_seg7_dl_0700B3F0:
+  type: GFX
+  offset: 0xB3F0
+  symbol: pss_seg7_dl_0700B3F0
+
+pss_seg7_vertex_0700A8B8:
+  type: VTX
+  count: 12
+  offset: 0xA8B8
+  symbol: pss_seg7_vertex_0700A8B8
+
+pss_seg7_vertex_0700A978:
+  type: VTX
+  count: 16
+  offset: 0xA978
+  symbol: pss_seg7_vertex_0700A978
+
+pss_seg7_vertex_0700AA78:
+  type: VTX
+  count: 15
+  offset: 0xAA78
+  symbol: pss_seg7_vertex_0700AA78
+
+pss_seg7_vertex_0700AB68:
+  type: VTX
+  count: 15
+  offset: 0xAB68
+  symbol: pss_seg7_vertex_0700AB68
+
+pss_seg7_vertex_0700AC58:
+  type: VTX
+  count: 15
+  offset: 0xAC58
+  symbol: pss_seg7_vertex_0700AC58
+
+pss_seg7_vertex_0700AD48:
+  type: VTX
+  count: 6
+  offset: 0xAD48
+  symbol: pss_seg7_vertex_0700AD48
+
+pss_seg7_dl_0700ADA8:
+  type: GFX
+  offset: 0xADA8
+  symbol: pss_seg7_dl_0700ADA8
+
+pss_seg7_dl_0700AE00:
+  type: GFX
+  offset: 0xAE00
+  symbol: pss_seg7_dl_0700AE00
+
+pss_seg7_dl_0700AF60:
+  type: GFX
+  offset: 0xAF60
+  symbol: pss_seg7_dl_0700AF60
+
+pss_seg7_dl_0700AFA8:
+  type: GFX
+  offset: 0xAFA8
+  symbol: pss_seg7_dl_0700AFA8
+
+pss_seg7_vertex_0700D3A8:
+  type: VTX
+  count: 15
+  offset: 0xD3A8
+  symbol: pss_seg7_vertex_0700D3A8
+
+pss_seg7_vertex_0700D498:
+  type: VTX
+  count: 15
+  offset: 0xD498
+  symbol: pss_seg7_vertex_0700D498
+
+pss_seg7_vertex_0700D588:
+  type: VTX
+  count: 16
+  offset: 0xD588
+  symbol: pss_seg7_vertex_0700D588
+
+pss_seg7_vertex_0700D688:
+  type: VTX
+  count: 14
+  offset: 0xD688
+  symbol: pss_seg7_vertex_0700D688
+
+pss_seg7_vertex_0700D768:
+  type: VTX
+  count: 15
+  offset: 0xD768
+  symbol: pss_seg7_vertex_0700D768
+
+pss_seg7_vertex_0700D858:
+  type: VTX
+  count: 13
+  offset: 0xD858
+  symbol: pss_seg7_vertex_0700D858
+
+pss_seg7_dl_0700D928:
+  type: GFX
+  offset: 0xD928
+  symbol: pss_seg7_dl_0700D928
+
+pss_seg7_dl_0700DAD8:
+  type: GFX
+  offset: 0xDAD8
+  symbol: pss_seg7_dl_0700DAD8
+
