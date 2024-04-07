@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 flyguy_cloth_wrinkle:
   type: TEXTURE
   size: 4096
   width: 64
   height: 32
-  offset: 0x1F0530
-  mio0: 0xE088
+  offset: 0xE088
   format: RGBA16
   symbol: flyguy_seg8_texture_0800E088
 flyguy_face:
@@ -12,8 +18,7 @@ flyguy_face:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0xF088
+  offset: 0xF088
   format: RGBA16
   symbol: flyguy_seg8_texture_0800F088
 flyguy_propeller:
@@ -21,7 +26,238 @@ flyguy_propeller:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0xF888
+  offset: 0xF888
   format: IA16
   symbol: flyguy_seg8_texture_0800F888
+
+flyguy_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0xF888
+  symbol: flyguy_lights_unused1
+
+flyguy_seg8_lights_080100A0:
+  type: LIGHTS
+  size: 24
+  offset: 0x100A0
+  symbol: flyguy_seg8_lights_080100A0
+
+flyguy_seg8_lights_080100B8:
+  type: LIGHTS
+  size: 24
+  offset: 0x100B8
+  symbol: flyguy_seg8_lights_080100B8
+
+flyguy_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x100B8
+  symbol: flyguy_lights_unused2
+
+flyguy_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x100B8
+  symbol: flyguy_lights_unused3
+
+flyguy_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x100B8
+  symbol: flyguy_lights_unused4
+
+flyguy_lights_unused5:
+  type: LIGHTS
+  size: 24
+  offset: 0x100B8
+  symbol: flyguy_lights_unused5
+
+flyguy_seg8_vertex_08010130:
+  type: VTX
+  count: 16
+  offset: 0x10130
+  symbol: flyguy_seg8_vertex_08010130
+
+flyguy_seg8_vertex_08010230:
+  type: VTX
+  count: 16
+  offset: 0x10230
+  symbol: flyguy_seg8_vertex_08010230
+
+flyguy_seg8_vertex_08010330:
+  type: VTX
+  count: 16
+  offset: 0x10330
+  symbol: flyguy_seg8_vertex_08010330
+
+flyguy_seg8_vertex_08010430:
+  type: VTX
+  count: 3
+  offset: 0x10430
+  symbol: flyguy_seg8_vertex_08010430
+
+flyguy_seg8_vertex_08010460:
+  type: VTX
+  count: 16
+  offset: 0x10460
+  symbol: flyguy_seg8_vertex_08010460
+
+flyguy_seg8_vertex_08010560:
+  type: VTX
+  count: 14
+  offset: 0x10560
+  symbol: flyguy_seg8_vertex_08010560
+
+flyguy_seg8_vertex_08010640:
+  type: VTX
+  count: 16
+  offset: 0x10640
+  symbol: flyguy_seg8_vertex_08010640
+
+flyguy_seg8_vertex_08010740:
+  type: VTX
+  count: 3
+  offset: 0x10740
+  symbol: flyguy_seg8_vertex_08010740
+
+flyguy_seg8_vertex_08010770:
+  type: VTX
+  count: 13
+  offset: 0x10770
+  symbol: flyguy_seg8_vertex_08010770
+
+flyguy_seg8_dl_08010840:
+  type: GFX
+  offset: 0x10840
+  symbol: flyguy_seg8_dl_08010840
+
+flyguy_seg8_dl_08010968:
+  type: GFX
+  offset: 0x10968
+  symbol: flyguy_seg8_dl_08010968
+
+flyguy_seg8_dl_08010A90:
+  type: GFX
+  offset: 0x10A90
+  symbol: flyguy_seg8_dl_08010A90
+
+flyguy_seg8_lights_08010AE0:
+  type: LIGHTS
+  size: 24
+  offset: 0x10AE0
+  symbol: flyguy_seg8_lights_08010AE0
+
+flyguy_seg8_vertex_08010AF8:
+  type: VTX
+  count: 4
+  offset: 0x10AF8
+  symbol: flyguy_seg8_vertex_08010AF8
+
+flyguy_seg8_dl_08010B38:
+  type: GFX
+  offset: 0x10B38
+  symbol: flyguy_seg8_dl_08010B38
+
+flyguy_seg8_dl_08010B80:
+  type: GFX
+  offset: 0x10B80
+  symbol: flyguy_seg8_dl_08010B80
+
+flyguy_seg8_lights_08010BF0:
+  type: LIGHTS
+  size: 24
+  offset: 0x10BF0
+  symbol: flyguy_seg8_lights_08010BF0
+
+flyguy_seg8_lights_08010C08:
+  type: LIGHTS
+  size: 24
+  offset: 0x10C08
+  symbol: flyguy_seg8_lights_08010C08
+
+flyguy_seg8_lights_08010C20:
+  type: LIGHTS
+  size: 24
+  offset: 0x10C20
+  symbol: flyguy_seg8_lights_08010C20
+
+flyguy_seg8_vertex_08010C38:
+  type: VTX
+  count: 9
+  offset: 0x10C38
+  symbol: flyguy_seg8_vertex_08010C38
+
+flyguy_seg8_vertex_08010CC8:
+  type: VTX
+  count: 6
+  offset: 0x10CC8
+  symbol: flyguy_seg8_vertex_08010CC8
+
+flyguy_seg8_vertex_08010D28:
+  type: VTX
+  count: 14
+  offset: 0x10D28
+  symbol: flyguy_seg8_vertex_08010D28
+
+flyguy_seg8_vertex_08010E08:
+  type: VTX
+  count: 16
+  offset: 0x10E08
+  symbol: flyguy_seg8_vertex_08010E08
+
+flyguy_seg8_vertex_08010F08:
+  type: VTX
+  count: 16
+  offset: 0x10F08
+  symbol: flyguy_seg8_vertex_08010F08
+
+flyguy_seg8_vertex_08011008:
+  type: VTX
+  count: 15
+  offset: 0x11008
+  symbol: flyguy_seg8_vertex_08011008
+
+flyguy_seg8_vertex_080110F8:
+  type: VTX
+  count: 16
+  offset: 0x110F8
+  symbol: flyguy_seg8_vertex_080110F8
+
+flyguy_seg8_vertex_080111F8:
+  type: VTX
+  count: 14
+  offset: 0x111F8
+  symbol: flyguy_seg8_vertex_080111F8
+
+flyguy_seg8_vertex_080112D8:
+  type: VTX
+  count: 7
+  offset: 0x112D8
+  symbol: flyguy_seg8_vertex_080112D8
+
+flyguy_seg8_vertex_08011348:
+  type: VTX
+  count: 6
+  offset: 0x11348
+  symbol: flyguy_seg8_vertex_08011348
+
+flyguy_seg8_dl_080113A8:
+  type: GFX
+  offset: 0x113A8
+  symbol: flyguy_seg8_dl_080113A8
+
+flyguy_seg8_dl_08011420:
+  type: GFX
+  offset: 0x11420
+  symbol: flyguy_seg8_dl_08011420
+
+flyguy_seg8_dl_080116D0:
+  type: GFX
+  offset: 0x116D0
+  symbol: flyguy_seg8_dl_080116D0
+
+flyguy_seg8_dl_08011710:
+  type: GFX
+  offset: 0x11710
+  symbol: flyguy_seg8_dl_08011710
+

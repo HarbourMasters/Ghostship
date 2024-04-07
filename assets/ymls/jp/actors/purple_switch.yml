@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 purple_switch_base:
   type: TEXTURE
   size: 128
   width: 16
   height: 4
-  offset: 0x1F0530
-  mio0: 0xC0A8
+  offset: 0xC0A8
   format: RGBA16
   symbol: purple_switch_seg8_texture_0800C0A8
 purple_switch_exclamation_point:
@@ -12,7 +18,40 @@ purple_switch_exclamation_point:
   size: 1024
   width: 16
   height: 32
-  offset: 0x1F0530
-  mio0: 0xC128
+  offset: 0xC128
   format: RGBA16
   symbol: purple_switch_seg8_texture_0800C128
+
+purple_switch_seg8_lights_0800C090:
+  type: LIGHTS
+  size: 24
+  offset: 0xC090
+  symbol: purple_switch_seg8_lights_0800C090
+
+purple_switch_seg8_vertex_0800C528:
+  type: VTX
+  count: 16
+  offset: 0xC528
+  symbol: purple_switch_seg8_vertex_0800C528
+
+purple_switch_seg8_vertex_0800C628:
+  type: VTX
+  count: 4
+  offset: 0xC628
+  symbol: purple_switch_seg8_vertex_0800C628
+
+purple_switch_seg8_dl_0800C668:
+  type: GFX
+  offset: 0xC668
+  symbol: purple_switch_seg8_dl_0800C668
+
+purple_switch_seg8_dl_0800C6E0:
+  type: GFX
+  offset: 0xC6E0
+  symbol: purple_switch_seg8_dl_0800C6E0
+
+purple_switch_seg8_dl_0800C718:
+  type: GFX
+  offset: 0xC718
+  symbol: purple_switch_seg8_dl_0800C718
+

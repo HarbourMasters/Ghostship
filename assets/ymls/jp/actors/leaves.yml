@@ -1,9 +1,27 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 leaf:
   type: TEXTURE
   size: 512
   width: 16
   height: 16
-  offset: 0x1FF740
-  mio0: 0x1CBE0
+  offset: 0x1CBE0
   format: RGBA16
   symbol: leaves_seg3_texture_0301CBE0
+
+leaves_seg3_vertex_0301CBA0:
+  type: VTX
+  count: 4
+  offset: 0x1CBA0
+  symbol: leaves_seg3_vertex_0301CBA0
+
+leaves_seg3_dl_0301CDE0:
+  type: GFX
+  offset: 0x1CDE0
+  symbol: leaves_seg3_dl_0301CDE0
+

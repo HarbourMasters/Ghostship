@@ -1,0 +1,11 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x300270
+  segments:
+    - [0x0A,  0x300270]
+
+bidw:
+  type: BLOB
+  size: 131392
+  offset: 0x0

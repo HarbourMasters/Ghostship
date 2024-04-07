@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x452D40
+  segments:
+    - [0x07,  0x452D40]
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x452D40
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: bitdw_seg7_texture_07000000
 1:
@@ -12,8 +18,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x452D40
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: bitdw_seg7_texture_07000800
 2:
@@ -21,8 +26,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x452D40
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: bitdw_seg7_texture_07001000
 3:
@@ -30,7 +34,1323 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x452D40
-  mio0: 0x1800
+  offset: 0x1800
   format: RGBA16
   symbol: bitdw_seg7_texture_07001800
+
+bitdw_seg7_vertex_0700A718:
+  type: VTX
+  count: 16
+  offset: 0xA718
+  symbol: bitdw_seg7_vertex_0700A718
+
+bitdw_seg7_vertex_0700A818:
+  type: VTX
+  count: 16
+  offset: 0xA818
+  symbol: bitdw_seg7_vertex_0700A818
+
+bitdw_seg7_vertex_0700A918:
+  type: VTX
+  count: 16
+  offset: 0xA918
+  symbol: bitdw_seg7_vertex_0700A918
+
+bitdw_seg7_vertex_0700AA18:
+  type: VTX
+  count: 14
+  offset: 0xAA18
+  symbol: bitdw_seg7_vertex_0700AA18
+
+bitdw_seg7_vertex_0700AAF8:
+  type: VTX
+  count: 8
+  offset: 0xAAF8
+  symbol: bitdw_seg7_vertex_0700AAF8
+
+bitdw_seg7_dl_0700AB78:
+  type: GFX
+  offset: 0xAB78
+  symbol: bitdw_seg7_dl_0700AB78
+
+bitdw_seg7_dl_0700AC70:
+  type: GFX
+  offset: 0xAC70
+  symbol: bitdw_seg7_dl_0700AC70
+
+bitdw_seg7_dl_0700ACC8:
+  type: GFX
+  offset: 0xACC8
+  symbol: bitdw_seg7_dl_0700ACC8
+
+bitdw_seg7_dl_0700AD10:
+  type: GFX
+  offset: 0xAD10
+  symbol: bitdw_seg7_dl_0700AD10
+
+bitdw_seg7_vertex_07002928:
+  type: VTX
+  count: 16
+  offset: 0x2928
+  symbol: bitdw_seg7_vertex_07002928
+
+bitdw_seg7_vertex_07002A28:
+  type: VTX
+  count: 16
+  offset: 0x2A28
+  symbol: bitdw_seg7_vertex_07002A28
+
+bitdw_seg7_vertex_07002B28:
+  type: VTX
+  count: 8
+  offset: 0x2B28
+  symbol: bitdw_seg7_vertex_07002B28
+
+bitdw_seg7_vertex_07002BA8:
+  type: VTX
+  count: 16
+  offset: 0x2BA8
+  symbol: bitdw_seg7_vertex_07002BA8
+
+bitdw_seg7_vertex_07002CA8:
+  type: VTX
+  count: 15
+  offset: 0x2CA8
+  symbol: bitdw_seg7_vertex_07002CA8
+
+bitdw_seg7_vertex_07002D98:
+  type: VTX
+  count: 15
+  offset: 0x2D98
+  symbol: bitdw_seg7_vertex_07002D98
+
+bitdw_seg7_vertex_07002E88:
+  type: VTX
+  count: 16
+  offset: 0x2E88
+  symbol: bitdw_seg7_vertex_07002E88
+
+bitdw_seg7_vertex_07002F88:
+  type: VTX
+  count: 16
+  offset: 0x2F88
+  symbol: bitdw_seg7_vertex_07002F88
+
+bitdw_seg7_dl_07003088:
+  type: GFX
+  offset: 0x3088
+  symbol: bitdw_seg7_dl_07003088
+
+bitdw_seg7_dl_07003160:
+  type: GFX
+  offset: 0x3160
+  symbol: bitdw_seg7_dl_07003160
+
+bitdw_seg7_dl_070032F8:
+  type: GFX
+  offset: 0x32F8
+  symbol: bitdw_seg7_dl_070032F8
+
+bitdw_seg7_vertex_07009078:
+  type: VTX
+  count: 15
+  offset: 0x9078
+  symbol: bitdw_seg7_vertex_07009078
+
+bitdw_seg7_vertex_07009168:
+  type: VTX
+  count: 16
+  offset: 0x9168
+  symbol: bitdw_seg7_vertex_07009168
+
+bitdw_seg7_vertex_07009268:
+  type: VTX
+  count: 8
+  offset: 0x9268
+  symbol: bitdw_seg7_vertex_07009268
+
+bitdw_seg7_dl_070092E8:
+  type: GFX
+  offset: 0x92E8
+  symbol: bitdw_seg7_dl_070092E8
+
+bitdw_seg7_dl_070093B0:
+  type: GFX
+  offset: 0x93B0
+  symbol: bitdw_seg7_dl_070093B0
+
+bitdw_seg7_vertex_07003C60:
+  type: VTX
+  count: 16
+  offset: 0x3C60
+  symbol: bitdw_seg7_vertex_07003C60
+
+bitdw_seg7_vertex_07003D60:
+  type: VTX
+  count: 16
+  offset: 0x3D60
+  symbol: bitdw_seg7_vertex_07003D60
+
+bitdw_seg7_vertex_07003E60:
+  type: VTX
+  count: 16
+  offset: 0x3E60
+  symbol: bitdw_seg7_vertex_07003E60
+
+bitdw_seg7_vertex_07003F60:
+  type: VTX
+  count: 16
+  offset: 0x3F60
+  symbol: bitdw_seg7_vertex_07003F60
+
+bitdw_seg7_vertex_07004060:
+  type: VTX
+  count: 16
+  offset: 0x4060
+  symbol: bitdw_seg7_vertex_07004060
+
+bitdw_seg7_dl_07004160:
+  type: GFX
+  offset: 0x4160
+  symbol: bitdw_seg7_dl_07004160
+
+bitdw_seg7_dl_07004220:
+  type: GFX
+  offset: 0x4220
+  symbol: bitdw_seg7_dl_07004220
+
+bitdw_seg7_dl_07004318:
+  type: GFX
+  offset: 0x4318
+  symbol: bitdw_seg7_dl_07004318
+
+bitdw_seg7_vertex_07006670:
+  type: VTX
+  count: 16
+  offset: 0x6670
+  symbol: bitdw_seg7_vertex_07006670
+
+bitdw_seg7_vertex_07006770:
+  type: VTX
+  count: 16
+  offset: 0x6770
+  symbol: bitdw_seg7_vertex_07006770
+
+bitdw_seg7_vertex_07006870:
+  type: VTX
+  count: 16
+  offset: 0x6870
+  symbol: bitdw_seg7_vertex_07006870
+
+bitdw_seg7_vertex_07006970:
+  type: VTX
+  count: 16
+  offset: 0x6970
+  symbol: bitdw_seg7_vertex_07006970
+
+bitdw_seg7_vertex_07006A70:
+  type: VTX
+  count: 16
+  offset: 0x6A70
+  symbol: bitdw_seg7_vertex_07006A70
+
+bitdw_seg7_vertex_07006B70:
+  type: VTX
+  count: 16
+  offset: 0x6B70
+  symbol: bitdw_seg7_vertex_07006B70
+
+bitdw_seg7_vertex_07006C70:
+  type: VTX
+  count: 16
+  offset: 0x6C70
+  symbol: bitdw_seg7_vertex_07006C70
+
+bitdw_seg7_vertex_07006D70:
+  type: VTX
+  count: 14
+  offset: 0x6D70
+  symbol: bitdw_seg7_vertex_07006D70
+
+bitdw_seg7_vertex_07006E50:
+  type: VTX
+  count: 16
+  offset: 0x6E50
+  symbol: bitdw_seg7_vertex_07006E50
+
+bitdw_seg7_vertex_07006F50:
+  type: VTX
+  count: 16
+  offset: 0x6F50
+  symbol: bitdw_seg7_vertex_07006F50
+
+bitdw_seg7_vertex_07007050:
+  type: VTX
+  count: 16
+  offset: 0x7050
+  symbol: bitdw_seg7_vertex_07007050
+
+bitdw_seg7_vertex_07007150:
+  type: VTX
+  count: 12
+  offset: 0x7150
+  symbol: bitdw_seg7_vertex_07007150
+
+bitdw_seg7_vertex_07007210:
+  type: VTX
+  count: 15
+  offset: 0x7210
+  symbol: bitdw_seg7_vertex_07007210
+
+bitdw_seg7_vertex_07007300:
+  type: VTX
+  count: 15
+  offset: 0x7300
+  symbol: bitdw_seg7_vertex_07007300
+
+bitdw_seg7_vertex_070073F0:
+  type: VTX
+  count: 4
+  offset: 0x73F0
+  symbol: bitdw_seg7_vertex_070073F0
+
+bitdw_seg7_vertex_07007430:
+  type: VTX
+  count: 16
+  offset: 0x7430
+  symbol: bitdw_seg7_vertex_07007430
+
+bitdw_seg7_vertex_07007530:
+  type: VTX
+  count: 8
+  offset: 0x7530
+  symbol: bitdw_seg7_vertex_07007530
+
+bitdw_seg7_dl_070075B0:
+  type: GFX
+  offset: 0x75B0
+  symbol: bitdw_seg7_dl_070075B0
+
+bitdw_seg7_dl_07007810:
+  type: GFX
+  offset: 0x7810
+  symbol: bitdw_seg7_dl_07007810
+
+bitdw_seg7_dl_07007940:
+  type: GFX
+  offset: 0x7940
+  symbol: bitdw_seg7_dl_07007940
+
+bitdw_seg7_dl_07007A18:
+  type: GFX
+  offset: 0x7A18
+  symbol: bitdw_seg7_dl_07007A18
+
+bitdw_seg7_dl_07007AA8:
+  type: GFX
+  offset: 0x7AA8
+  symbol: bitdw_seg7_dl_07007AA8
+
+bitdw_seg7_vertex_070050F8:
+  type: VTX
+  count: 16
+  offset: 0x50F8
+  symbol: bitdw_seg7_vertex_070050F8
+
+bitdw_seg7_vertex_070051F8:
+  type: VTX
+  count: 16
+  offset: 0x51F8
+  symbol: bitdw_seg7_vertex_070051F8
+
+bitdw_seg7_vertex_070052F8:
+  type: VTX
+  count: 8
+  offset: 0x52F8
+  symbol: bitdw_seg7_vertex_070052F8
+
+bitdw_seg7_vertex_07005378:
+  type: VTX
+  count: 16
+  offset: 0x5378
+  symbol: bitdw_seg7_vertex_07005378
+
+bitdw_seg7_vertex_07005478:
+  type: VTX
+  count: 15
+  offset: 0x5478
+  symbol: bitdw_seg7_vertex_07005478
+
+bitdw_seg7_vertex_07005568:
+  type: VTX
+  count: 16
+  offset: 0x5568
+  symbol: bitdw_seg7_vertex_07005568
+
+bitdw_seg7_vertex_07005668:
+  type: VTX
+  count: 14
+  offset: 0x5668
+  symbol: bitdw_seg7_vertex_07005668
+
+bitdw_seg7_vertex_07005748:
+  type: VTX
+  count: 11
+  offset: 0x5748
+  symbol: bitdw_seg7_vertex_07005748
+
+bitdw_seg7_vertex_070057F8:
+  type: VTX
+  count: 16
+  offset: 0x57F8
+  symbol: bitdw_seg7_vertex_070057F8
+
+bitdw_seg7_dl_070058F8:
+  type: GFX
+  offset: 0x58F8
+  symbol: bitdw_seg7_dl_070058F8
+
+bitdw_seg7_dl_070059D0:
+  type: GFX
+  offset: 0x59D0
+  symbol: bitdw_seg7_dl_070059D0
+
+bitdw_seg7_dl_07005B58:
+  type: GFX
+  offset: 0x5B58
+  symbol: bitdw_seg7_dl_07005B58
+
+bitdw_seg7_dl_07005BC0:
+  type: GFX
+  offset: 0x5BC0
+  symbol: bitdw_seg7_dl_07005BC0
+
+bitdw_seg7_vertex_07007B30:
+  type: VTX
+  count: 16
+  offset: 0x7B30
+  symbol: bitdw_seg7_vertex_07007B30
+
+bitdw_seg7_vertex_07007C30:
+  type: VTX
+  count: 16
+  offset: 0x7C30
+  symbol: bitdw_seg7_vertex_07007C30
+
+bitdw_seg7_vertex_07007D30:
+  type: VTX
+  count: 16
+  offset: 0x7D30
+  symbol: bitdw_seg7_vertex_07007D30
+
+bitdw_seg7_vertex_07007E30:
+  type: VTX
+  count: 16
+  offset: 0x7E30
+  symbol: bitdw_seg7_vertex_07007E30
+
+bitdw_seg7_vertex_07007F30:
+  type: VTX
+  count: 16
+  offset: 0x7F30
+  symbol: bitdw_seg7_vertex_07007F30
+
+bitdw_seg7_vertex_07008030:
+  type: VTX
+  count: 15
+  offset: 0x8030
+  symbol: bitdw_seg7_vertex_07008030
+
+bitdw_seg7_vertex_07008120:
+  type: VTX
+  count: 15
+  offset: 0x8120
+  symbol: bitdw_seg7_vertex_07008120
+
+bitdw_seg7_vertex_07008210:
+  type: VTX
+  count: 16
+  offset: 0x8210
+  symbol: bitdw_seg7_vertex_07008210
+
+bitdw_seg7_vertex_07008310:
+  type: VTX
+  count: 7
+  offset: 0x8310
+  symbol: bitdw_seg7_vertex_07008310
+
+bitdw_seg7_vertex_07008380:
+  type: VTX
+  count: 16
+  offset: 0x8380
+  symbol: bitdw_seg7_vertex_07008380
+
+bitdw_seg7_vertex_07008480:
+  type: VTX
+  count: 16
+  offset: 0x8480
+  symbol: bitdw_seg7_vertex_07008480
+
+bitdw_seg7_vertex_07008580:
+  type: VTX
+  count: 16
+  offset: 0x8580
+  symbol: bitdw_seg7_vertex_07008580
+
+bitdw_seg7_vertex_07008680:
+  type: VTX
+  count: 12
+  offset: 0x8680
+  symbol: bitdw_seg7_vertex_07008680
+
+bitdw_seg7_vertex_07008740:
+  type: VTX
+  count: 15
+  offset: 0x8740
+  symbol: bitdw_seg7_vertex_07008740
+
+bitdw_seg7_vertex_07008830:
+  type: VTX
+  count: 16
+  offset: 0x8830
+  symbol: bitdw_seg7_vertex_07008830
+
+bitdw_seg7_vertex_07008930:
+  type: VTX
+  count: 4
+  offset: 0x8930
+  symbol: bitdw_seg7_vertex_07008930
+
+bitdw_seg7_vertex_07008970:
+  type: VTX
+  count: 16
+  offset: 0x8970
+  symbol: bitdw_seg7_vertex_07008970
+
+bitdw_seg7_vertex_07008A70:
+  type: VTX
+  count: 8
+  offset: 0x8A70
+  symbol: bitdw_seg7_vertex_07008A70
+
+bitdw_seg7_dl_07008AF0:
+  type: GFX
+  offset: 0x8AF0
+  symbol: bitdw_seg7_dl_07008AF0
+
+bitdw_seg7_dl_07008D58:
+  type: GFX
+  offset: 0x8D58
+  symbol: bitdw_seg7_dl_07008D58
+
+bitdw_seg7_dl_07008E88:
+  type: GFX
+  offset: 0x8E88
+  symbol: bitdw_seg7_dl_07008E88
+
+bitdw_seg7_dl_07008F60:
+  type: GFX
+  offset: 0x8F60
+  symbol: bitdw_seg7_dl_07008F60
+
+bitdw_seg7_dl_07008FF0:
+  type: GFX
+  offset: 0x8FF0
+  symbol: bitdw_seg7_dl_07008FF0
+
+bitdw_seg7_vertex_07004390:
+  type: VTX
+  count: 15
+  offset: 0x4390
+  symbol: bitdw_seg7_vertex_07004390
+
+bitdw_seg7_vertex_07004480:
+  type: VTX
+  count: 11
+  offset: 0x4480
+  symbol: bitdw_seg7_vertex_07004480
+
+bitdw_seg7_dl_07004530:
+  type: GFX
+  offset: 0x4530
+  symbol: bitdw_seg7_dl_07004530
+
+bitdw_seg7_dl_070045C0:
+  type: GFX
+  offset: 0x45C0
+  symbol: bitdw_seg7_dl_070045C0
+
+bitdw_seg7_vertex_07009430:
+  type: VTX
+  count: 16
+  offset: 0x9430
+  symbol: bitdw_seg7_vertex_07009430
+
+bitdw_seg7_vertex_07009530:
+  type: VTX
+  count: 14
+  offset: 0x9530
+  symbol: bitdw_seg7_vertex_07009530
+
+bitdw_seg7_vertex_07009610:
+  type: VTX
+  count: 8
+  offset: 0x9610
+  symbol: bitdw_seg7_vertex_07009610
+
+bitdw_seg7_vertex_07009690:
+  type: VTX
+  count: 16
+  offset: 0x9690
+  symbol: bitdw_seg7_vertex_07009690
+
+bitdw_seg7_vertex_07009790:
+  type: VTX
+  count: 15
+  offset: 0x9790
+  symbol: bitdw_seg7_vertex_07009790
+
+bitdw_seg7_vertex_07009880:
+  type: VTX
+  count: 15
+  offset: 0x9880
+  symbol: bitdw_seg7_vertex_07009880
+
+bitdw_seg7_vertex_07009970:
+  type: VTX
+  count: 16
+  offset: 0x9970
+  symbol: bitdw_seg7_vertex_07009970
+
+bitdw_seg7_vertex_07009A70:
+  type: VTX
+  count: 15
+  offset: 0x9A70
+  symbol: bitdw_seg7_vertex_07009A70
+
+bitdw_seg7_vertex_07009B60:
+  type: VTX
+  count: 15
+  offset: 0x9B60
+  symbol: bitdw_seg7_vertex_07009B60
+
+bitdw_seg7_vertex_07009C50:
+  type: VTX
+  count: 16
+  offset: 0x9C50
+  symbol: bitdw_seg7_vertex_07009C50
+
+bitdw_seg7_vertex_07009D50:
+  type: VTX
+  count: 14
+  offset: 0x9D50
+  symbol: bitdw_seg7_vertex_07009D50
+
+bitdw_seg7_vertex_07009E30:
+  type: VTX
+  count: 6
+  offset: 0x9E30
+  symbol: bitdw_seg7_vertex_07009E30
+
+bitdw_seg7_vertex_07009E90:
+  type: VTX
+  count: 8
+  offset: 0x9E90
+  symbol: bitdw_seg7_vertex_07009E90
+
+bitdw_seg7_vertex_07009F10:
+  type: VTX
+  count: 8
+  offset: 0x9F10
+  symbol: bitdw_seg7_vertex_07009F10
+
+bitdw_seg7_dl_07009F90:
+  type: GFX
+  offset: 0x9F90
+  symbol: bitdw_seg7_dl_07009F90
+
+bitdw_seg7_dl_0700A058:
+  type: GFX
+  offset: 0xA058
+  symbol: bitdw_seg7_dl_0700A058
+
+bitdw_seg7_dl_0700A188:
+  type: GFX
+  offset: 0xA188
+  symbol: bitdw_seg7_dl_0700A188
+
+bitdw_seg7_dl_0700A2B8:
+  type: GFX
+  offset: 0xA2B8
+  symbol: bitdw_seg7_dl_0700A2B8
+
+bitdw_seg7_dl_0700A310:
+  type: GFX
+  offset: 0xA310
+  symbol: bitdw_seg7_dl_0700A310
+
+bitdw_seg7_dl_0700A368:
+  type: GFX
+  offset: 0xA368
+  symbol: bitdw_seg7_dl_0700A368
+
+bitdw_seg7_vertex_0700A3F8:
+  type: VTX
+  count: 16
+  offset: 0xA3F8
+  symbol: bitdw_seg7_vertex_0700A3F8
+
+bitdw_seg7_vertex_0700A4F8:
+  type: VTX
+  count: 16
+  offset: 0xA4F8
+  symbol: bitdw_seg7_vertex_0700A4F8
+
+bitdw_seg7_dl_0700A5F8:
+  type: GFX
+  offset: 0xA5F8
+  symbol: bitdw_seg7_dl_0700A5F8
+
+bitdw_seg7_dl_0700A6A8:
+  type: GFX
+  offset: 0xA6A8
+  symbol: bitdw_seg7_dl_0700A6A8
+
+bitdw_seg7_vertex_07002000:
+  type: VTX
+  count: 8
+  offset: 0x2000
+  symbol: bitdw_seg7_vertex_07002000
+
+bitdw_seg7_dl_07002080:
+  type: GFX
+  offset: 0x2080
+  symbol: bitdw_seg7_dl_07002080
+
+bitdw_seg7_dl_070020C8:
+  type: GFX
+  offset: 0x20C8
+  symbol: bitdw_seg7_dl_070020C8
+
+bitdw_seg7_vertex_07003688:
+  type: VTX
+  count: 15
+  offset: 0x3688
+  symbol: bitdw_seg7_vertex_07003688
+
+bitdw_seg7_vertex_07003778:
+  type: VTX
+  count: 15
+  offset: 0x3778
+  symbol: bitdw_seg7_vertex_07003778
+
+bitdw_seg7_vertex_07003868:
+  type: VTX
+  count: 16
+  offset: 0x3868
+  symbol: bitdw_seg7_vertex_07003868
+
+bitdw_seg7_vertex_07003968:
+  type: VTX
+  count: 16
+  offset: 0x3968
+  symbol: bitdw_seg7_vertex_07003968
+
+bitdw_seg7_vertex_07003A68:
+  type: VTX
+  count: 3
+  offset: 0x3A68
+  symbol: bitdw_seg7_vertex_07003A68
+
+bitdw_seg7_dl_07003A98:
+  type: GFX
+  offset: 0x3A98
+  symbol: bitdw_seg7_dl_07003A98
+
+bitdw_seg7_dl_07003BF0:
+  type: GFX
+  offset: 0x3BF0
+  symbol: bitdw_seg7_dl_07003BF0
+
+bitdw_seg7_vertex_07002138:
+  type: VTX
+  count: 16
+  offset: 0x2138
+  symbol: bitdw_seg7_vertex_07002138
+
+bitdw_seg7_vertex_07002238:
+  type: VTX
+  count: 12
+  offset: 0x2238
+  symbol: bitdw_seg7_vertex_07002238
+
+bitdw_seg7_vertex_070022F8:
+  type: VTX
+  count: 16
+  offset: 0x22F8
+  symbol: bitdw_seg7_vertex_070022F8
+
+bitdw_seg7_vertex_070023F8:
+  type: VTX
+  count: 16
+  offset: 0x23F8
+  symbol: bitdw_seg7_vertex_070023F8
+
+bitdw_seg7_vertex_070024F8:
+  type: VTX
+  count: 14
+  offset: 0x24F8
+  symbol: bitdw_seg7_vertex_070024F8
+
+bitdw_seg7_vertex_070025D8:
+  type: VTX
+  count: 8
+  offset: 0x25D8
+  symbol: bitdw_seg7_vertex_070025D8
+
+bitdw_seg7_vertex_07002658:
+  type: VTX
+  count: 4
+  offset: 0x2658
+  symbol: bitdw_seg7_vertex_07002658
+
+bitdw_seg7_dl_07002698:
+  type: GFX
+  offset: 0x2698
+  symbol: bitdw_seg7_dl_07002698
+
+bitdw_seg7_dl_07002700:
+  type: GFX
+  offset: 0x2700
+  symbol: bitdw_seg7_dl_07002700
+
+bitdw_seg7_dl_07002758:
+  type: GFX
+  offset: 0x2758
+  symbol: bitdw_seg7_dl_07002758
+
+bitdw_seg7_dl_07002868:
+  type: GFX
+  offset: 0x2868
+  symbol: bitdw_seg7_dl_07002868
+
+bitdw_seg7_dl_070028A0:
+  type: GFX
+  offset: 0x28A0
+  symbol: bitdw_seg7_dl_070028A0
+
+bitdw_seg7_vertex_07003370:
+  type: VTX
+  count: 15
+  offset: 0x3370
+  symbol: bitdw_seg7_vertex_07003370
+
+bitdw_seg7_vertex_07003460:
+  type: VTX
+  count: 8
+  offset: 0x3460
+  symbol: bitdw_seg7_vertex_07003460
+
+bitdw_seg7_vertex_070034E0:
+  type: VTX
+  count: 4
+  offset: 0x34E0
+  symbol: bitdw_seg7_vertex_070034E0
+
+bitdw_seg7_dl_07003520:
+  type: GFX
+  offset: 0x3520
+  symbol: bitdw_seg7_dl_07003520
+
+bitdw_seg7_dl_07003588:
+  type: GFX
+  offset: 0x3588
+  symbol: bitdw_seg7_dl_07003588
+
+bitdw_seg7_dl_070035D0:
+  type: GFX
+  offset: 0x35D0
+  symbol: bitdw_seg7_dl_070035D0
+
+bitdw_seg7_dl_07003608:
+  type: GFX
+  offset: 0x3608
+  symbol: bitdw_seg7_dl_07003608
+
+bitdw_seg7_vertex_07004630:
+  type: VTX
+  count: 15
+  offset: 0x4630
+  symbol: bitdw_seg7_vertex_07004630
+
+bitdw_seg7_vertex_07004720:
+  type: VTX
+  count: 15
+  offset: 0x4720
+  symbol: bitdw_seg7_vertex_07004720
+
+bitdw_seg7_vertex_07004810:
+  type: VTX
+  count: 16
+  offset: 0x4810
+  symbol: bitdw_seg7_vertex_07004810
+
+bitdw_seg7_vertex_07004910:
+  type: VTX
+  count: 15
+  offset: 0x4910
+  symbol: bitdw_seg7_vertex_07004910
+
+bitdw_seg7_vertex_07004A00:
+  type: VTX
+  count: 16
+  offset: 0x4A00
+  symbol: bitdw_seg7_vertex_07004A00
+
+bitdw_seg7_vertex_07004B00:
+  type: VTX
+  count: 8
+  offset: 0x4B00
+  symbol: bitdw_seg7_vertex_07004B00
+
+bitdw_seg7_vertex_07004B80:
+  type: VTX
+  count: 16
+  offset: 0x4B80
+  symbol: bitdw_seg7_vertex_07004B80
+
+bitdw_seg7_vertex_07004C80:
+  type: VTX
+  count: 16
+  offset: 0x4C80
+  symbol: bitdw_seg7_vertex_07004C80
+
+bitdw_seg7_vertex_07004D80:
+  type: VTX
+  count: 4
+  offset: 0x4D80
+  symbol: bitdw_seg7_vertex_07004D80
+
+bitdw_seg7_dl_07004DC0:
+  type: GFX
+  offset: 0x4DC0
+  symbol: bitdw_seg7_dl_07004DC0
+
+bitdw_seg7_dl_07004F70:
+  type: GFX
+  offset: 0x4F70
+  symbol: bitdw_seg7_dl_07004F70
+
+bitdw_seg7_dl_07004FF8:
+  type: GFX
+  offset: 0x4FF8
+  symbol: bitdw_seg7_dl_07004FF8
+
+bitdw_seg7_dl_07005078:
+  type: GFX
+  offset: 0x5078
+  symbol: bitdw_seg7_dl_07005078
+
+bitdw_seg7_vertex_07005C40:
+  type: VTX
+  count: 16
+  offset: 0x5C40
+  symbol: bitdw_seg7_vertex_07005C40
+
+bitdw_seg7_vertex_07005D40:
+  type: VTX
+  count: 16
+  offset: 0x5D40
+  symbol: bitdw_seg7_vertex_07005D40
+
+bitdw_seg7_vertex_07005E40:
+  type: VTX
+  count: 14
+  offset: 0x5E40
+  symbol: bitdw_seg7_vertex_07005E40
+
+bitdw_seg7_vertex_07005F20:
+  type: VTX
+  count: 15
+  offset: 0x5F20
+  symbol: bitdw_seg7_vertex_07005F20
+
+bitdw_seg7_vertex_07006010:
+  type: VTX
+  count: 14
+  offset: 0x6010
+  symbol: bitdw_seg7_vertex_07006010
+
+bitdw_seg7_vertex_070060F0:
+  type: VTX
+  count: 15
+  offset: 0x60F0
+  symbol: bitdw_seg7_vertex_070060F0
+
+bitdw_seg7_vertex_070061E0:
+  type: VTX
+  count: 16
+  offset: 0x61E0
+  symbol: bitdw_seg7_vertex_070061E0
+
+bitdw_seg7_vertex_070062E0:
+  type: VTX
+  count: 8
+  offset: 0x62E0
+  symbol: bitdw_seg7_vertex_070062E0
+
+bitdw_seg7_dl_07006360:
+  type: GFX
+  offset: 0x6360
+  symbol: bitdw_seg7_dl_07006360
+
+bitdw_seg7_dl_070063E8:
+  type: GFX
+  offset: 0x63E8
+  symbol: bitdw_seg7_dl_070063E8
+
+bitdw_seg7_dl_070064A8:
+  type: GFX
+  offset: 0x64A8
+  symbol: bitdw_seg7_dl_070064A8
+
+bitdw_seg7_dl_070065F0:
+  type: GFX
+  offset: 0x65F0
+  symbol: bitdw_seg7_dl_070065F0
+
+bitdw_seg7_vertex_0700CC78:
+  type: VTX
+  count: 14
+  offset: 0xCC78
+  symbol: bitdw_seg7_vertex_0700CC78
+
+bitdw_seg7_vertex_0700CD58:
+  type: VTX
+  count: 15
+  offset: 0xCD58
+  symbol: bitdw_seg7_vertex_0700CD58
+
+bitdw_seg7_vertex_0700CE48:
+  type: VTX
+  count: 16
+  offset: 0xCE48
+  symbol: bitdw_seg7_vertex_0700CE48
+
+bitdw_seg7_vertex_0700CF48:
+  type: VTX
+  count: 13
+  offset: 0xCF48
+  symbol: bitdw_seg7_vertex_0700CF48
+
+bitdw_seg7_vertex_0700D018:
+  type: VTX
+  count: 4
+  offset: 0xD018
+  symbol: bitdw_seg7_vertex_0700D018
+
+bitdw_seg7_dl_0700D058:
+  type: GFX
+  offset: 0xD058
+  symbol: bitdw_seg7_dl_0700D058
+
+bitdw_seg7_dl_0700D158:
+  type: GFX
+  offset: 0xD158
+  symbol: bitdw_seg7_dl_0700D158
+
+bitdw_seg7_dl_0700D190:
+  type: GFX
+  offset: 0xD190
+  symbol: bitdw_seg7_dl_0700D190
+
+bitdw_seg7_vertex_0700C6E8:
+  type: VTX
+  count: 14
+  offset: 0xC6E8
+  symbol: bitdw_seg7_vertex_0700C6E8
+
+bitdw_seg7_vertex_0700C7C8:
+  type: VTX
+  count: 15
+  offset: 0xC7C8
+  symbol: bitdw_seg7_vertex_0700C7C8
+
+bitdw_seg7_vertex_0700C8B8:
+  type: VTX
+  count: 16
+  offset: 0xC8B8
+  symbol: bitdw_seg7_vertex_0700C8B8
+
+bitdw_seg7_vertex_0700C9B8:
+  type: VTX
+  count: 13
+  offset: 0xC9B8
+  symbol: bitdw_seg7_vertex_0700C9B8
+
+bitdw_seg7_vertex_0700CA88:
+  type: VTX
+  count: 4
+  offset: 0xCA88
+  symbol: bitdw_seg7_vertex_0700CA88
+
+bitdw_seg7_dl_0700CAC8:
+  type: GFX
+  offset: 0xCAC8
+  symbol: bitdw_seg7_dl_0700CAC8
+
+bitdw_seg7_dl_0700CBC8:
+  type: GFX
+  offset: 0xCBC8
+  symbol: bitdw_seg7_dl_0700CBC8
+
+bitdw_seg7_dl_0700CC00:
+  type: GFX
+  offset: 0xCC00
+  symbol: bitdw_seg7_dl_0700CC00
+
+bitdw_seg7_vertex_0700C158:
+  type: VTX
+  count: 14
+  offset: 0xC158
+  symbol: bitdw_seg7_vertex_0700C158
+
+bitdw_seg7_vertex_0700C238:
+  type: VTX
+  count: 15
+  offset: 0xC238
+  symbol: bitdw_seg7_vertex_0700C238
+
+bitdw_seg7_vertex_0700C328:
+  type: VTX
+  count: 16
+  offset: 0xC328
+  symbol: bitdw_seg7_vertex_0700C328
+
+bitdw_seg7_vertex_0700C428:
+  type: VTX
+  count: 13
+  offset: 0xC428
+  symbol: bitdw_seg7_vertex_0700C428
+
+bitdw_seg7_vertex_0700C4F8:
+  type: VTX
+  count: 4
+  offset: 0xC4F8
+  symbol: bitdw_seg7_vertex_0700C4F8
+
+bitdw_seg7_dl_0700C538:
+  type: GFX
+  offset: 0xC538
+  symbol: bitdw_seg7_dl_0700C538
+
+bitdw_seg7_dl_0700C638:
+  type: GFX
+  offset: 0xC638
+  symbol: bitdw_seg7_dl_0700C638
+
+bitdw_seg7_dl_0700C670:
+  type: GFX
+  offset: 0xC670
+  symbol: bitdw_seg7_dl_0700C670
+
+bitdw_seg7_vertex_0700D208:
+  type: VTX
+  count: 16
+  offset: 0xD208
+  symbol: bitdw_seg7_vertex_0700D208
+
+bitdw_seg7_vertex_0700D308:
+  type: VTX
+  count: 4
+  offset: 0xD308
+  symbol: bitdw_seg7_vertex_0700D308
+
+bitdw_seg7_dl_0700D348:
+  type: GFX
+  offset: 0xD348
+  symbol: bitdw_seg7_dl_0700D348
+
+bitdw_seg7_dl_0700D3B0:
+  type: GFX
+  offset: 0xD3B0
+  symbol: bitdw_seg7_dl_0700D3B0
+
+bitdw_seg7_dl_0700D3E8:
+  type: GFX
+  offset: 0xD3E8
+  symbol: bitdw_seg7_dl_0700D3E8
+
+bitdw_seg7_vertex_0700AD90:
+  type: VTX
+  count: 16
+  offset: 0xAD90
+  symbol: bitdw_seg7_vertex_0700AD90
+
+bitdw_seg7_vertex_0700AE90:
+  type: VTX
+  count: 8
+  offset: 0xAE90
+  symbol: bitdw_seg7_vertex_0700AE90
+
+bitdw_seg7_dl_0700AF10:
+  type: GFX
+  offset: 0xAF10
+  symbol: bitdw_seg7_dl_0700AF10
+
+bitdw_seg7_dl_0700AFA0:
+  type: GFX
+  offset: 0xAFA0
+  symbol: bitdw_seg7_dl_0700AFA0
+
+bitdw_seg7_vertex_0700B290:
+  type: VTX
+  count: 15
+  offset: 0xB290
+  symbol: bitdw_seg7_vertex_0700B290
+
+bitdw_seg7_vertex_0700B380:
+  type: VTX
+  count: 9
+  offset: 0xB380
+  symbol: bitdw_seg7_vertex_0700B380
+
+bitdw_seg7_dl_0700B410:
+  type: GFX
+  offset: 0xB410
+  symbol: bitdw_seg7_dl_0700B410
+
+bitdw_seg7_dl_0700B480:
+  type: GFX
+  offset: 0xB480
+  symbol: bitdw_seg7_dl_0700B480
+
+bitdw_seg7_vertex_0700B948:
+  type: VTX
+  count: 16
+  offset: 0xB948
+  symbol: bitdw_seg7_vertex_0700B948
+
+bitdw_seg7_vertex_0700BA48:
+  type: VTX
+  count: 8
+  offset: 0xBA48
+  symbol: bitdw_seg7_vertex_0700BA48
+
+bitdw_seg7_dl_0700BAC8:
+  type: GFX
+  offset: 0xBAC8
+  symbol: bitdw_seg7_dl_0700BAC8
+
+bitdw_seg7_dl_0700BB58:
+  type: GFX
+  offset: 0xBB58
+  symbol: bitdw_seg7_dl_0700BB58
+
+bitdw_seg7_lights_0700B4F0:
+  type: LIGHTS
+  size: 24
+  offset: 0xB4F0
+  symbol: bitdw_seg7_lights_0700B4F0
+
+bitdw_seg7_vertex_0700B508:
+  type: VTX
+  count: 15
+  offset: 0xB508
+  symbol: bitdw_seg7_vertex_0700B508
+
+bitdw_seg7_vertex_0700B5F8:
+  type: VTX
+  count: 15
+  offset: 0xB5F8
+  symbol: bitdw_seg7_vertex_0700B5F8
+
+bitdw_seg7_vertex_0700B6E8:
+  type: VTX
+  count: 15
+  offset: 0xB6E8
+  symbol: bitdw_seg7_vertex_0700B6E8
+
+bitdw_seg7_vertex_0700B7D8:
+  type: VTX
+  count: 3
+  offset: 0xB7D8
+  symbol: bitdw_seg7_vertex_0700B7D8
+
+bitdw_seg7_dl_0700B808:
+  type: GFX
+  offset: 0xB808
+  symbol: bitdw_seg7_dl_0700B808
+
+bitdw_seg7_dl_0700B8D8:
+  type: GFX
+  offset: 0xB8D8
+  symbol: bitdw_seg7_dl_0700B8D8
+
+bitdw_seg7_vertex_0700B010:
+  type: VTX
+  count: 16
+  offset: 0xB010
+  symbol: bitdw_seg7_vertex_0700B010
+
+bitdw_seg7_vertex_0700B110:
+  type: VTX
+  count: 8
+  offset: 0xB110
+  symbol: bitdw_seg7_vertex_0700B110
+
+bitdw_seg7_dl_0700B190:
+  type: GFX
+  offset: 0xB190
+  symbol: bitdw_seg7_dl_0700B190
+
+bitdw_seg7_dl_0700B220:
+  type: GFX
+  offset: 0xB220
+  symbol: bitdw_seg7_dl_0700B220
+
+bitdw_seg7_vertex_0700BBC8:
+  type: VTX
+  count: 14
+  offset: 0xBBC8
+  symbol: bitdw_seg7_vertex_0700BBC8
+
+bitdw_seg7_vertex_0700BCA8:
+  type: VTX
+  count: 15
+  offset: 0xBCA8
+  symbol: bitdw_seg7_vertex_0700BCA8
+
+bitdw_seg7_vertex_0700BD98:
+  type: VTX
+  count: 16
+  offset: 0xBD98
+  symbol: bitdw_seg7_vertex_0700BD98
+
+bitdw_seg7_vertex_0700BE98:
+  type: VTX
+  count: 13
+  offset: 0xBE98
+  symbol: bitdw_seg7_vertex_0700BE98
+
+bitdw_seg7_vertex_0700BF68:
+  type: VTX
+  count: 4
+  offset: 0xBF68
+  symbol: bitdw_seg7_vertex_0700BF68
+
+bitdw_seg7_dl_0700BFA8:
+  type: GFX
+  offset: 0xBFA8
+  symbol: bitdw_seg7_dl_0700BFA8
+
+bitdw_seg7_dl_0700C0A8:
+  type: GFX
+  offset: 0xC0A8
+  symbol: bitdw_seg7_dl_0700C0A8
+
+bitdw_seg7_dl_0700C0E0:
+  type: GFX
+  offset: 0xC0E0
+  symbol: bitdw_seg7_dl_0700C0E0
+

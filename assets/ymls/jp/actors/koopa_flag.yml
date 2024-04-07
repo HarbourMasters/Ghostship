@@ -1,9 +1,159 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1C2580
+  segments:
+    - [0x06,  0x1C2580]
+
 koopa_flag_banner:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x48
+  offset: 0x48
   format: RGBA16
   symbol: koopa_flag_seg6_texture_06000048
+
+koopa_flag_seg6_lights_06000000:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: koopa_flag_seg6_lights_06000000
+
+koopa_flag_seg6_lights_06000018:
+  type: LIGHTS
+  size: 24
+  offset: 0x18
+  symbol: koopa_flag_seg6_lights_06000018
+
+koopa_flag_seg6_lights_06000030:
+  type: LIGHTS
+  size: 24
+  offset: 0x30
+  symbol: koopa_flag_seg6_lights_06000030
+
+koopa_flag_seg6_lights_06000848:
+  type: LIGHTS
+  size: 24
+  offset: 0x848
+  symbol: koopa_flag_seg6_lights_06000848
+
+koopa_flag_seg6_lights_06000860:
+  type: LIGHTS
+  size: 24
+  offset: 0x860
+  symbol: koopa_flag_seg6_lights_06000860
+
+koopa_flag_seg6_vertex_06000878:
+  type: VTX
+  count: 5
+  offset: 0x878
+  symbol: koopa_flag_seg6_vertex_06000878
+
+koopa_flag_seg6_vertex_060008C8:
+  type: VTX
+  count: 10
+  offset: 0x8C8
+  symbol: koopa_flag_seg6_vertex_060008C8
+
+koopa_flag_seg6_dl_06000968:
+  type: GFX
+  offset: 0x968
+  symbol: koopa_flag_seg6_dl_06000968
+
+koopa_flag_seg6_dl_06000A08:
+  type: GFX
+  offset: 0xA08
+  symbol: koopa_flag_seg6_dl_06000A08
+
+koopa_flag_seg6_vertex_06000A38:
+  type: VTX
+  count: 3
+  offset: 0xA38
+  symbol: koopa_flag_seg6_vertex_06000A38
+
+koopa_flag_seg6_vertex_06000A68:
+  type: VTX
+  count: 5
+  offset: 0xA68
+  symbol: koopa_flag_seg6_vertex_06000A68
+
+koopa_flag_seg6_dl_06000AB8:
+  type: GFX
+  offset: 0xAB8
+  symbol: koopa_flag_seg6_dl_06000AB8
+
+koopa_flag_seg6_dl_06000AE8:
+  type: GFX
+  offset: 0xAE8
+  symbol: koopa_flag_seg6_dl_06000AE8
+
+koopa_flag_seg6_dl_06000B08:
+  type: GFX
+  offset: 0xB08
+  symbol: koopa_flag_seg6_dl_06000B08
+
+koopa_flag_seg6_vertex_06000B80:
+  type: VTX
+  count: 4
+  offset: 0xB80
+  symbol: koopa_flag_seg6_vertex_06000B80
+
+koopa_flag_seg6_dl_06000BC0:
+  type: GFX
+  offset: 0xBC0
+  symbol: koopa_flag_seg6_dl_06000BC0
+
+koopa_flag_seg6_dl_06000BF8:
+  type: GFX
+  offset: 0xBF8
+  symbol: koopa_flag_seg6_dl_06000BF8
+
+koopa_flag_seg6_vertex_06000C68:
+  type: VTX
+  count: 4
+  offset: 0xC68
+  symbol: koopa_flag_seg6_vertex_06000C68
+
+koopa_flag_seg6_dl_06000CA8:
+  type: GFX
+  offset: 0xCA8
+  symbol: koopa_flag_seg6_dl_06000CA8
+
+koopa_flag_seg6_dl_06000CE0:
+  type: GFX
+  offset: 0xCE0
+  symbol: koopa_flag_seg6_dl_06000CE0
+
+koopa_flag_seg6_vertex_06000D50:
+  type: VTX
+  count: 4
+  offset: 0xD50
+  symbol: koopa_flag_seg6_vertex_06000D50
+
+koopa_flag_seg6_dl_06000D90:
+  type: GFX
+  offset: 0xD90
+  symbol: koopa_flag_seg6_dl_06000D90
+
+koopa_flag_seg6_dl_06000DB0:
+  type: GFX
+  offset: 0xDB0
+  symbol: koopa_flag_seg6_dl_06000DB0
+
+koopa_flag_seg6_vertex_06000DF0:
+  type: VTX
+  count: 3
+  offset: 0xDF0
+  symbol: koopa_flag_seg6_vertex_06000DF0
+
+koopa_flag_seg6_dl_06000E20:
+  type: GFX
+  offset: 0xE20
+  symbol: koopa_flag_seg6_dl_06000E20
+
+koopa_flag_seg6_dl_06000E38:
+  type: GFX
+  offset: 0xE38
+  symbol: koopa_flag_seg6_dl_06000E38
+

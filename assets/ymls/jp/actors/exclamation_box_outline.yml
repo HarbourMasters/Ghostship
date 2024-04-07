@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 exclamation_box_outline:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x25168
+  offset: 0x25168
   format: RGBA16
   symbol: exclamation_box_outline_seg8_texture_08025168
 exclamation_point:
@@ -12,7 +18,121 @@ exclamation_point:
   size: 1024
   width: 16
   height: 32
-  offset: 0x1F0530
-  mio0: 0x25A80
+  offset: 0x25A80
   format: RGBA16
   symbol: exclamation_box_outline_seg8_texture_08025A80
+
+exclamation_box_outline_seg8_lights_08024CB8:
+  type: LIGHTS
+  size: 24
+  offset: 0x24CB8
+  symbol: exclamation_box_outline_seg8_lights_08024CB8
+
+exclamation_box_outline_seg8_lights_08024CD0:
+  type: LIGHTS
+  size: 24
+  offset: 0x24CD0
+  symbol: exclamation_box_outline_seg8_lights_08024CD0
+
+exclamation_box_outline_seg8_lights_08024CE8:
+  type: LIGHTS
+  size: 24
+  offset: 0x24CE8
+  symbol: exclamation_box_outline_seg8_lights_08024CE8
+
+exclamation_box_outline_seg8_lights_08024D00:
+  type: LIGHTS
+  size: 24
+  offset: 0x24D00
+  symbol: exclamation_box_outline_seg8_lights_08024D00
+
+exclamation_box_outline_seg8_vertex_08024D18:
+  type: VTX
+  count: 15
+  offset: 0x24D18
+  symbol: exclamation_box_outline_seg8_vertex_08024D18
+
+exclamation_box_outline_seg8_vertex_08024E08:
+  type: VTX
+  count: 11
+  offset: 0x24E08
+  symbol: exclamation_box_outline_seg8_vertex_08024E08
+
+exclamation_box_outline_seg8_dl_08024EB8:
+  type: GFX
+  offset: 0x24EB8
+  symbol: exclamation_box_outline_seg8_dl_08024EB8
+
+exclamation_box_outline_seg8_dl_08024F30:
+  type: GFX
+  offset: 0x24F30
+  symbol: exclamation_box_outline_seg8_dl_08024F30
+
+exclamation_box_outline_seg8_dl_08024F58:
+  type: GFX
+  offset: 0x24F58
+  symbol: exclamation_box_outline_seg8_dl_08024F58
+
+exclamation_box_outline_seg8_dl_08024F88:
+  type: GFX
+  offset: 0x24F88
+  symbol: exclamation_box_outline_seg8_dl_08024F88
+
+exclamation_box_outline_seg8_dl_08024FA8:
+  type: GFX
+  offset: 0x24FA8
+  symbol: exclamation_box_outline_seg8_dl_08024FA8
+
+exclamation_box_outline_seg8_dl_08024FC8:
+  type: GFX
+  offset: 0x24FC8
+  symbol: exclamation_box_outline_seg8_dl_08024FC8
+
+exclamation_box_outline_seg8_dl_08024FE8:
+  type: GFX
+  offset: 0x24FE8
+  symbol: exclamation_box_outline_seg8_dl_08024FE8
+
+exclamation_box_outline_seg8_vertex_08025008:
+  type: VTX
+  count: 14
+  offset: 0x25008
+  symbol: exclamation_box_outline_seg8_vertex_08025008
+
+exclamation_box_outline_seg8_vertex_080250E8:
+  type: VTX
+  count: 8
+  offset: 0x250E8
+  symbol: exclamation_box_outline_seg8_vertex_080250E8
+
+exclamation_box_outline_seg8_dl_08025968:
+  type: GFX
+  offset: 0x25968
+  symbol: exclamation_box_outline_seg8_dl_08025968
+
+exclamation_box_outline_seg8_dl_080259F8:
+  type: GFX
+  offset: 0x259F8
+  symbol: exclamation_box_outline_seg8_dl_080259F8
+
+exclamation_box_outline_seg8_lights_08025A68:
+  type: LIGHTS
+  size: 24
+  offset: 0x25A68
+  symbol: exclamation_box_outline_seg8_lights_08025A68
+
+exclamation_box_outline_seg8_vertex_08025E80:
+  type: VTX
+  count: 4
+  offset: 0x25E80
+  symbol: exclamation_box_outline_seg8_vertex_08025E80
+
+exclamation_box_outline_seg8_dl_08025EC0:
+  type: GFX
+  offset: 0x25EC0
+  symbol: exclamation_box_outline_seg8_dl_08025EC0
+
+exclamation_box_outline_seg8_dl_08025F08:
+  type: GFX
+  offset: 0x25F08
+  symbol: exclamation_box_outline_seg8_dl_08025F08

@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x139D10
+  segments:
+    - [0x05,  0x139D10]
+
 pokey_body:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x144290
-  mio0: 0x12878
+  offset: 0x12878
   format: RGBA16
   symbol: pokey_seg5_texture_05012878
 pokey_face:
@@ -12,8 +18,7 @@ pokey_face:
   size: 2048
   width: 32
   height: 32
-  offset: 0x144290
-  mio0: 0x11750
+  offset: 0x11750
   format: RGBA16
   symbol: pokey_seg5_texture_05011750
 pokey_face_blink:
@@ -21,7 +26,49 @@ pokey_face_blink:
   size: 2048
   width: 32
   height: 32
-  offset: 0x144290
-  mio0: 0x11F50
+  offset: 0x11F50
   format: RGBA16
   symbol: pokey_seg5_texture_05011F50
+
+pokey_seg5_vertex_05011710:
+  type: VTX
+  count: 4
+  offset: 0x11710
+  symbol: pokey_seg5_vertex_05011710
+
+pokey_seg5_dl_05012750:
+  type: GFX
+  offset: 0x12750
+  symbol: pokey_seg5_dl_05012750
+
+pokey_seg5_dl_05012798:
+  type: GFX
+  offset: 0x12798
+  symbol: pokey_seg5_dl_05012798
+
+pokey_seg5_dl_050127D8:
+  type: GFX
+  offset: 0x127D8
+  symbol: pokey_seg5_dl_050127D8
+
+pokey_seg5_dl_05012808:
+  type: GFX
+  offset: 0x12808
+  symbol: pokey_seg5_dl_05012808
+
+pokey_seg5_vertex_05012838:
+  type: VTX
+  count: 4
+  offset: 0x12838
+  symbol: pokey_seg5_vertex_05012838
+
+pokey_seg5_dl_05013078:
+  type: GFX
+  offset: 0x13078
+  symbol: pokey_seg5_dl_05013078
+
+pokey_seg5_dl_050130B0:
+  type: GFX
+  offset: 0x130B0
+  symbol: pokey_seg5_dl_050130B0
+

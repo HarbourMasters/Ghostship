@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1505D0
+  segments:
+    - [0x05,  0x1505D0]
+
 ukiki_butt:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1505D0
-  mio0: 0x9BC0
+  offset: 0x9BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05009BC0
 ukiki_face:
@@ -12,8 +18,7 @@ ukiki_face:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1505D0
-  mio0: 0x7BC0
+  offset: 0x7BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05007BC0
 ukiki_face_blink:
@@ -21,8 +26,7 @@ ukiki_face_blink:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1505D0
-  mio0: 0x8BC0
+  offset: 0x8BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05008BC0
 ukiki_fur:
@@ -30,7 +34,440 @@ ukiki_fur:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1505D0
-  mio0: 0xA3C0
+  offset: 0xA3C0
   format: RGBA16
   symbol: ukiki_seg5_texture_0500A3C0
+
+ukiki_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x326E8
+  symbol: ukiki_lights_unused1
+
+ukiki_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x326E8
+  symbol: ukiki_lights_unused2
+
+ukiki_seg5_lights_05007BA0:
+  type: LIGHTS
+  size: 24
+  offset: 0x7BA0
+  symbol: ukiki_seg5_lights_05007BA0
+
+ukiki_seg5_lights_0500ABC0:
+  type: LIGHTS
+  size: 24
+  offset: 0xABC0
+  symbol: ukiki_seg5_lights_0500ABC0
+
+ukiki_seg5_lights_0500ABD8:
+  type: LIGHTS
+  size: 24
+  offset: 0xABD8
+  symbol: ukiki_seg5_lights_0500ABD8
+
+ukiki_seg5_vertex_0500ABF0:
+  type: VTX
+  count: 16
+  offset: 0xABF0
+  symbol: ukiki_seg5_vertex_0500ABF0
+
+ukiki_seg5_vertex_0500ACF0:
+  type: VTX
+  count: 16
+  offset: 0xACF0
+  symbol: ukiki_seg5_vertex_0500ACF0
+
+ukiki_seg5_vertex_0500ADF0:
+  type: VTX
+  count: 16
+  offset: 0xADF0
+  symbol: ukiki_seg5_vertex_0500ADF0
+
+ukiki_seg5_vertex_0500AEF0:
+  type: VTX
+  count: 7
+  offset: 0xAEF0
+  symbol: ukiki_seg5_vertex_0500AEF0
+
+ukiki_seg5_vertex_0500AF60:
+  type: VTX
+  count: 14
+  offset: 0xAF60
+  symbol: ukiki_seg5_vertex_0500AF60
+
+ukiki_seg5_dl_0500B040:
+  type: GFX
+  offset: 0xB040
+  symbol: ukiki_seg5_dl_0500B040
+
+ukiki_seg5_dl_0500B1D8:
+  type: GFX
+  offset: 0xB1D8
+  symbol: ukiki_seg5_dl_0500B1D8
+
+ukiki_seg5_dl_0500B278:
+  type: GFX
+  offset: 0xB278
+  symbol: ukiki_seg5_dl_0500B278
+
+ukiki_seg5_dl_0500B2B8:
+  type: GFX
+  offset: 0xB2B8
+  symbol: ukiki_seg5_dl_0500B2B8
+
+ukiki_seg5_dl_0500B2E8:
+  type: GFX
+  offset: 0xB2E8
+  symbol: ukiki_seg5_dl_0500B2E8
+
+ukiki_seg5_dl_0500B310:
+  type: GFX
+  offset: 0xB310
+  symbol: ukiki_seg5_dl_0500B310
+
+ukiki_seg5_lights_0500B338:
+  type: LIGHTS
+  size: 24
+  offset: 0xB338
+  symbol: ukiki_seg5_lights_0500B338
+
+ukiki_seg5_vertex_0500B350:
+  type: VTX
+  count: 15
+  offset: 0xB350
+  symbol: ukiki_seg5_vertex_0500B350
+
+ukiki_seg5_vertex_0500B440:
+  type: VTX
+  count: 16
+  offset: 0xB440
+  symbol: ukiki_seg5_vertex_0500B440
+
+ukiki_seg5_vertex_0500B540:
+  type: VTX
+  count: 14
+  offset: 0xB540
+  symbol: ukiki_seg5_vertex_0500B540
+
+ukiki_seg5_vertex_0500B620:
+  type: VTX
+  count: 4
+  offset: 0xB620
+  symbol: ukiki_seg5_vertex_0500B620
+
+ukiki_seg5_dl_0500B660:
+  type: GFX
+  offset: 0xB660
+  symbol: ukiki_seg5_dl_0500B660
+
+ukiki_seg5_dl_0500B7E8:
+  type: GFX
+  offset: 0xB7E8
+  symbol: ukiki_seg5_dl_0500B7E8
+
+ukiki_seg5_dl_0500B820:
+  type: GFX
+  offset: 0xB820
+  symbol: ukiki_seg5_dl_0500B820
+
+ukiki_seg5_lights_0500B888:
+  type: LIGHTS
+  size: 24
+  offset: 0xB888
+  symbol: ukiki_seg5_lights_0500B888
+
+ukiki_seg5_vertex_0500B8A0:
+  type: VTX
+  count: 8
+  offset: 0xB8A0
+  symbol: ukiki_seg5_vertex_0500B8A0
+
+ukiki_seg5_dl_0500B920:
+  type: GFX
+  offset: 0xB920
+  symbol: ukiki_seg5_dl_0500B920
+
+ukiki_seg5_dl_0500B988:
+  type: GFX
+  offset: 0xB988
+  symbol: ukiki_seg5_dl_0500B988
+
+ukiki_seg5_lights_0500B9E8:
+  type: LIGHTS
+  size: 24
+  offset: 0xB9E8
+  symbol: ukiki_seg5_lights_0500B9E8
+
+ukiki_seg5_vertex_0500BA00:
+  type: VTX
+  count: 9
+  offset: 0xBA00
+  symbol: ukiki_seg5_vertex_0500BA00
+
+ukiki_seg5_dl_0500BA90:
+  type: GFX
+  offset: 0xBA90
+  symbol: ukiki_seg5_dl_0500BA90
+
+ukiki_seg5_dl_0500BB28:
+  type: GFX
+  offset: 0xBB28
+  symbol: ukiki_seg5_dl_0500BB28
+
+ukiki_seg5_lights_0500BB88:
+  type: LIGHTS
+  size: 24
+  offset: 0xBB88
+  symbol: ukiki_seg5_lights_0500BB88
+
+ukiki_seg5_vertex_0500BBA0:
+  type: VTX
+  count: 7
+  offset: 0xBBA0
+  symbol: ukiki_seg5_vertex_0500BBA0
+
+ukiki_seg5_dl_0500BC10:
+  type: GFX
+  offset: 0xBC10
+  symbol: ukiki_seg5_dl_0500BC10
+
+ukiki_seg5_dl_0500BC78:
+  type: GFX
+  offset: 0xBC78
+  symbol: ukiki_seg5_dl_0500BC78
+
+ukiki_seg5_lights_0500BCD8:
+  type: LIGHTS
+  size: 24
+  offset: 0xBCD8
+  symbol: ukiki_seg5_lights_0500BCD8
+
+ukiki_seg5_vertex_0500BCF0:
+  type: VTX
+  count: 11
+  offset: 0xBCF0
+  symbol: ukiki_seg5_vertex_0500BCF0
+
+ukiki_seg5_dl_0500BDA0:
+  type: GFX
+  offset: 0xBDA0
+  symbol: ukiki_seg5_dl_0500BDA0
+
+ukiki_seg5_dl_0500BE38:
+  type: GFX
+  offset: 0xBE38
+  symbol: ukiki_seg5_dl_0500BE38
+
+ukiki_seg5_lights_0500BE98:
+  type: LIGHTS
+  size: 24
+  offset: 0xBE98
+  symbol: ukiki_seg5_lights_0500BE98
+
+ukiki_seg5_vertex_0500BEB0:
+  type: VTX
+  count: 11
+  offset: 0xBEB0
+  symbol: ukiki_seg5_vertex_0500BEB0
+
+ukiki_seg5_dl_0500BF60:
+  type: GFX
+  offset: 0xBF60
+  symbol: ukiki_seg5_dl_0500BF60
+
+ukiki_seg5_dl_0500BFF8:
+  type: GFX
+  offset: 0xBFF8
+  symbol: ukiki_seg5_dl_0500BFF8
+
+ukiki_seg5_lights_0500C058:
+  type: LIGHTS
+  size: 24
+  offset: 0xC058
+  symbol: ukiki_seg5_lights_0500C058
+
+ukiki_seg5_vertex_0500C070:
+  type: VTX
+  count: 11
+  offset: 0xC070
+  symbol: ukiki_seg5_vertex_0500C070
+
+ukiki_seg5_dl_0500C120:
+  type: GFX
+  offset: 0xC120
+  symbol: ukiki_seg5_dl_0500C120
+
+ukiki_seg5_dl_0500C1B8:
+  type: GFX
+  offset: 0xC1B8
+  symbol: ukiki_seg5_dl_0500C1B8
+
+ukiki_seg5_lights_0500C218:
+  type: LIGHTS
+  size: 24
+  offset: 0xC218
+  symbol: ukiki_seg5_lights_0500C218
+
+ukiki_seg5_vertex_0500C230:
+  type: VTX
+  count: 10
+  offset: 0xC230
+  symbol: ukiki_seg5_vertex_0500C230
+
+ukiki_seg5_dl_0500C2D0:
+  type: GFX
+  offset: 0xC2D0
+  symbol: ukiki_seg5_dl_0500C2D0
+
+ukiki_seg5_dl_0500C368:
+  type: GFX
+  offset: 0xC368
+  symbol: ukiki_seg5_dl_0500C368
+
+ukiki_seg5_lights_0500C3C8:
+  type: LIGHTS
+  size: 24
+  offset: 0xC3C8
+  symbol: ukiki_seg5_lights_0500C3C8
+
+ukiki_seg5_vertex_0500C3E0:
+  type: VTX
+  count: 11
+  offset: 0xC3E0
+  symbol: ukiki_seg5_vertex_0500C3E0
+
+ukiki_seg5_dl_0500C490:
+  type: GFX
+  offset: 0xC490
+  symbol: ukiki_seg5_dl_0500C490
+
+ukiki_seg5_dl_0500C528:
+  type: GFX
+  offset: 0xC528
+  symbol: ukiki_seg5_dl_0500C528
+
+ukiki_seg5_lights_0500C588:
+  type: LIGHTS
+  size: 24
+  offset: 0xC588
+  symbol: ukiki_seg5_lights_0500C588
+
+ukiki_seg5_vertex_0500C5A0:
+  type: VTX
+  count: 11
+  offset: 0xC5A0
+  symbol: ukiki_seg5_vertex_0500C5A0
+
+ukiki_seg5_dl_0500C650:
+  type: GFX
+  offset: 0xC650
+  symbol: ukiki_seg5_dl_0500C650
+
+ukiki_seg5_dl_0500C6E8:
+  type: GFX
+  offset: 0xC6E8
+  symbol: ukiki_seg5_dl_0500C6E8
+
+ukiki_seg5_lights_0500C748:
+  type: LIGHTS
+  size: 24
+  offset: 0xC748
+  symbol: ukiki_seg5_lights_0500C748
+
+ukiki_seg5_vertex_0500C760:
+  type: VTX
+  count: 10
+  offset: 0xC760
+  symbol: ukiki_seg5_vertex_0500C760
+
+ukiki_seg5_dl_0500C800:
+  type: GFX
+  offset: 0xC800
+  symbol: ukiki_seg5_dl_0500C800
+
+ukiki_seg5_dl_0500C898:
+  type: GFX
+  offset: 0xC898
+  symbol: ukiki_seg5_dl_0500C898
+
+ukiki_seg5_lights_0500C8F8:
+  type: LIGHTS
+  size: 24
+  offset: 0xC8F8
+  symbol: ukiki_seg5_lights_0500C8F8
+
+ukiki_seg5_vertex_0500C910:
+  type: VTX
+  count: 10
+  offset: 0xC910
+  symbol: ukiki_seg5_vertex_0500C910
+
+ukiki_seg5_dl_0500C9B0:
+  type: GFX
+  offset: 0xC9B0
+  symbol: ukiki_seg5_dl_0500C9B0
+
+ukiki_seg5_dl_0500CA48:
+  type: GFX
+  offset: 0xCA48
+  symbol: ukiki_seg5_dl_0500CA48
+
+ukiki_seg5_vertex_0500CAA8:
+  type: VTX
+  count: 16
+  offset: 0xCAA8
+  symbol: ukiki_seg5_vertex_0500CAA8
+
+ukiki_seg5_vertex_0500CBA8:
+  type: VTX
+  count: 8
+  offset: 0xCBA8
+  symbol: ukiki_seg5_vertex_0500CBA8
+
+ukiki_seg5_vertex_0500CC28:
+  type: VTX
+  count: 16
+  offset: 0xCC28
+  symbol: ukiki_seg5_vertex_0500CC28
+
+ukiki_seg5_vertex_0500CD28:
+  type: VTX
+  count: 8
+  offset: 0xCD28
+  symbol: ukiki_seg5_vertex_0500CD28
+
+ukiki_seg5_vertex_0500CDA8:
+  type: VTX
+  count: 15
+  offset: 0xCDA8
+  symbol: ukiki_seg5_vertex_0500CDA8
+
+ukiki_seg5_vertex_0500CE98:
+  type: VTX
+  count: 13
+  offset: 0xCE98
+  symbol: ukiki_seg5_vertex_0500CE98
+
+ukiki_seg5_dl_0500CF68:
+  type: GFX
+  offset: 0xCF68
+  symbol: ukiki_seg5_dl_0500CF68
+
+ukiki_seg5_dl_0500CFF0:
+  type: GFX
+  offset: 0xCFF0
+  symbol: ukiki_seg5_dl_0500CFF0
+
+ukiki_seg5_dl_0500D078:
+  type: GFX
+  offset: 0xD078
+  symbol: ukiki_seg5_dl_0500D078
+
+ukiki_seg5_dl_0500D108:
+  type: GFX
+  offset: 0xD108
+  symbol: ukiki_seg5_dl_0500D108
+

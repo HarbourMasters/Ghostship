@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x186810
+  segments:
+    - [0x06,  0x186810]
+
 impact_smoke_0:
   type: TEXTURE
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x5AA28
+  offset: 0x5AA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605AA28
 impact_smoke_1:
@@ -12,8 +18,7 @@ impact_smoke_1:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x5CA28
+  offset: 0x5CA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605CA28
 impact_smoke_2:
@@ -21,8 +26,7 @@ impact_smoke_2:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x5EA28
+  offset: 0x5EA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605EA28
 impact_smoke_3:
@@ -30,7 +34,53 @@ impact_smoke_3:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x60A28
+  offset: 0x60A28
   format: IA16
   symbol: impact_smoke_seg6_texture_06060A28
+
+impact_smoke_seg6_vertex_06062A28:
+  type: VTX
+  count: 8
+  offset: 0x62A28
+  symbol: impact_smoke_seg6_vertex_06062A28
+
+impact_smoke_seg6_dl_06062AA8:
+  type: GFX
+  offset: 0x62AA8
+  symbol: impact_smoke_seg6_dl_06062AA8
+
+impact_smoke_seg6_dl_06062AD8:
+  type: GFX
+  offset: 0x62AD8
+  symbol: impact_smoke_seg6_dl_06062AD8
+
+impact_smoke_seg6_dl_06062AF0:
+  type: GFX
+  offset: 0x62AF0
+  symbol: impact_smoke_seg6_dl_06062AF0
+
+impact_smoke_seg6_dl_06062B08:
+  type: GFX
+  offset: 0x62B08
+  symbol: impact_smoke_seg6_dl_06062B08
+
+impact_smoke_seg6_dl_06062B38:
+  type: GFX
+  offset: 0x62B38
+  symbol: impact_smoke_seg6_dl_06062B38
+
+impact_smoke_seg6_dl_06062BD8:
+  type: GFX
+  offset: 0x62BD8
+  symbol: impact_smoke_seg6_dl_06062BD8
+
+impact_smoke_seg6_dl_06062C78:
+  type: GFX
+  offset: 0x62C78
+  symbol: impact_smoke_seg6_dl_06062C78
+
+impact_smoke_seg6_dl_06062D18:
+  type: GFX
+  offset: 0x62D18
+  symbol: impact_smoke_seg6_dl_06062D18
+

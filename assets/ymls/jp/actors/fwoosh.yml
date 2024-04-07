@@ -1,9 +1,32 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1505D0
+  segments:
+    - [0x05,  0x1505D0]
+
 fwoosh_face:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1505D0
-  mio0: 0x15808
+  offset: 0x15808
   format: IA16
   symbol: fwoosh_seg5_texture_05015808
+
+fwoosh_seg5_vertex_050157C8:
+  type: VTX
+  count: 4
+  offset: 0x157C8
+  symbol: fwoosh_seg5_vertex_050157C8
+
+fwoosh_seg5_dl_05016008:
+  type: GFX
+  offset: 0x16008
+  symbol: fwoosh_seg5_dl_05016008
+
+fwoosh_seg5_dl_05016040:
+  type: GFX
+  offset: 0x16040
+  symbol: fwoosh_seg5_dl_05016040
+

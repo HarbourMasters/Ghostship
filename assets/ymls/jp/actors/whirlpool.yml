@@ -1,9 +1,50 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x139D10
+  segments:
+    - [0x05,  0x139D10]
+
 whirlpool:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x139D10
-  mio0: 0x12848
+  offset: 0x12848
   format: IA16
   symbol: whirlpool_seg5_texture_05012848
+
+whirlpool_seg5_vertex_05013848:
+  type: VTX
+  count: 14
+  offset: 0x13848
+  symbol: whirlpool_seg5_vertex_05013848
+
+whirlpool_seg5_vertex_05013928:
+  type: VTX
+  count: 16
+  offset: 0x13928
+  symbol: whirlpool_seg5_vertex_05013928
+
+whirlpool_seg5_vertex_05013A28:
+  type: VTX
+  count: 14
+  offset: 0x13A28
+  symbol: whirlpool_seg5_vertex_05013A28
+
+whirlpool_seg5_vertex_05013B08:
+  type: VTX
+  count: 5
+  offset: 0x13B08
+  symbol: whirlpool_seg5_vertex_05013B08
+
+whirlpool_seg5_dl_05013B58:
+  type: GFX
+  offset: 0x13B58
+  symbol: whirlpool_seg5_dl_05013B58
+
+whirlpool_seg5_dl_05013CB8:
+  type: GFX
+  offset: 0x13CB8
+  symbol: whirlpool_seg5_dl_05013CB8
+

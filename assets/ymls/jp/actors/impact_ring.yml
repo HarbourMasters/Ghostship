@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x186810
+  segments:
+    - [0x06,  0x186810]
+
 impact_ring_left_side:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x186810
-  mio0: 0x1CA50
+  offset: 0x1CA50
   format: IA16
   symbol: impact_ring_seg6_texture_0601CA50
 impact_ring_right_side:
@@ -12,7 +18,34 @@ impact_ring_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x186810
-  mio0: 0x1DA50
+  offset: 0x1DA50
   format: IA16
   symbol: impact_ring_seg6_texture_0601DA50
+
+impact_ring_seg6_vertex_0601C9D0:
+  type: VTX
+  count: 4
+  offset: 0x1C9D0
+  symbol: impact_ring_seg6_vertex_0601C9D0
+
+impact_ring_seg6_vertex_0601CA10:
+  type: VTX
+  count: 4
+  offset: 0x1CA10
+  symbol: impact_ring_seg6_vertex_0601CA10
+
+impact_ring_seg6_dl_0601EA50:
+  type: GFX
+  offset: 0x1EA50
+  symbol: impact_ring_seg6_dl_0601EA50
+
+impact_ring_seg6_dl_0601EA88:
+  type: GFX
+  offset: 0x1EA88
+  symbol: impact_ring_seg6_dl_0601EA88
+
+impact_ring_seg6_dl_0601EAC0:
+  type: GFX
+  offset: 0x1EAC0
+  symbol: impact_ring_seg6_dl_0601EAC0
+

@@ -1,9 +1,37 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x128BE0
+  segments:
+    - [0x05,  0x128BE0]
+
 small_yellow_sphere:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x128BE0
-  mio0: 0x40
+  offset: 0x40
   format: RGBA16
   symbol: yellow_sphere_seg5_texture_05000040
+
+yellow_sphere_seg5_vertex_05000000:
+  type: VTX
+  count: 4
+  offset: 0x0
+  symbol: yellow_sphere_seg5_vertex_05000000
+
+yellow_sphere_seg5_dl_05000840:
+  type: GFX
+  offset: 0x840
+  symbol: yellow_sphere_seg5_dl_05000840
+
+yellow_sphere_seg5_dl_05000888:
+  type: GFX
+  offset: 0x888
+  symbol: yellow_sphere_seg5_dl_05000888
+
+yellow_sphere_seg5_dl_050008C8:
+  type: GFX
+  offset: 0x8C8
+  symbol: yellow_sphere_seg5_dl_050008C8
+

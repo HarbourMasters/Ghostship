@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E6210
+  segments:
+    - [0x06,  0x1E6210]
+
 scuttlebug_eye:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x10108
+  offset: 0x10108
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06010108
 scuttlebug_iris:
@@ -12,8 +18,7 @@ scuttlebug_iris:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x12908
+  offset: 0x12908
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06012908
 scuttlebug_left_side:
@@ -21,8 +26,7 @@ scuttlebug_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E6210
-  mio0: 0x10908
+  offset: 0x10908
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06010908
 scuttlebug_leg:
@@ -30,8 +34,7 @@ scuttlebug_leg:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x13108
+  offset: 0x13108
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06013108
 scuttlebug_right_side:
@@ -39,7 +42,192 @@ scuttlebug_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1E6210
-  mio0: 0x11908
+  offset: 0x11908
   format: RGBA16
   symbol: scuttlebug_seg6_texture_06011908
+
+scuttlebug_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x10100
+  symbol: scuttlebug_lights_unused1
+
+scuttlebug_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x10100
+  symbol: scuttlebug_lights_unused2
+
+scuttlebug_seg6_vertex_06013908:
+  type: VTX
+  count: 4
+  offset: 0x13908
+  symbol: scuttlebug_seg6_vertex_06013908
+
+scuttlebug_seg6_vertex_06013948:
+  type: VTX
+  count: 4
+  offset: 0x13948
+  symbol: scuttlebug_seg6_vertex_06013948
+
+scuttlebug_seg6_dl_06013988:
+  type: GFX
+  offset: 0x13988
+  symbol: scuttlebug_seg6_dl_06013988
+
+scuttlebug_seg6_dl_060139C0:
+  type: GFX
+  offset: 0x139C0
+  symbol: scuttlebug_seg6_dl_060139C0
+
+scuttlebug_seg6_dl_060139F8:
+  type: GFX
+  offset: 0x139F8
+  symbol: scuttlebug_seg6_dl_060139F8
+
+scuttlebug_seg6_vertex_06013A70:
+  type: VTX
+  count: 4
+  offset: 0x13A70
+  symbol: scuttlebug_seg6_vertex_06013A70
+
+scuttlebug_seg6_dl_06013AB0:
+  type: GFX
+  offset: 0x13AB0
+  symbol: scuttlebug_seg6_dl_06013AB0
+
+scuttlebug_seg6_dl_06013AE8:
+  type: GFX
+  offset: 0x13AE8
+  symbol: scuttlebug_seg6_dl_06013AE8
+
+scuttlebug_seg6_vertex_06013B58:
+  type: VTX
+  count: 4
+  offset: 0x13B58
+  symbol: scuttlebug_seg6_vertex_06013B58
+
+scuttlebug_seg6_dl_06013B98:
+  type: GFX
+  offset: 0x13B98
+  symbol: scuttlebug_seg6_dl_06013B98
+
+scuttlebug_seg6_dl_06013BD0:
+  type: GFX
+  offset: 0x13BD0
+  symbol: scuttlebug_seg6_dl_06013BD0
+
+scuttlebug_seg6_vertex_06013C40:
+  type: VTX
+  count: 4
+  offset: 0x13C40
+  symbol: scuttlebug_seg6_vertex_06013C40
+
+scuttlebug_seg6_dl_06013C80:
+  type: GFX
+  offset: 0x13C80
+  symbol: scuttlebug_seg6_dl_06013C80
+
+scuttlebug_seg6_dl_06013CB8:
+  type: GFX
+  offset: 0x13CB8
+  symbol: scuttlebug_seg6_dl_06013CB8
+
+scuttlebug_seg6_vertex_06013D28:
+  type: VTX
+  count: 4
+  offset: 0x13D28
+  symbol: scuttlebug_seg6_vertex_06013D28
+
+scuttlebug_seg6_dl_06013D68:
+  type: GFX
+  offset: 0x13D68
+  symbol: scuttlebug_seg6_dl_06013D68
+
+scuttlebug_seg6_dl_06013DA0:
+  type: GFX
+  offset: 0x13DA0
+  symbol: scuttlebug_seg6_dl_06013DA0
+
+scuttlebug_seg6_lights_06013E10:
+  type: LIGHTS
+  size: 24
+  offset: 0x13E10
+  symbol: scuttlebug_seg6_lights_06013E10
+
+scuttlebug_seg6_vertex_06013E28:
+  type: VTX
+  count: 16
+  offset: 0x13E28
+  symbol: scuttlebug_seg6_vertex_06013E28
+
+scuttlebug_seg6_vertex_06013F28:
+  type: VTX
+  count: 10
+  offset: 0x13F28
+  symbol: scuttlebug_seg6_vertex_06013F28
+
+scuttlebug_seg6_dl_06013FC8:
+  type: GFX
+  offset: 0x13FC8
+  symbol: scuttlebug_seg6_dl_06013FC8
+
+scuttlebug_seg6_dl_060140F0:
+  type: GFX
+  offset: 0x140F0
+  symbol: scuttlebug_seg6_dl_060140F0
+
+scuttlebug_seg6_vertex_06014110:
+  type: VTX
+  count: 4
+  offset: 0x14110
+  symbol: scuttlebug_seg6_vertex_06014110
+
+scuttlebug_seg6_dl_06014150:
+  type: GFX
+  offset: 0x14150
+  symbol: scuttlebug_seg6_dl_06014150
+
+scuttlebug_seg6_dl_06014188:
+  type: GFX
+  offset: 0x14188
+  symbol: scuttlebug_seg6_dl_06014188
+
+scuttlebug_seg6_vertex_060141F8:
+  type: VTX
+  count: 4
+  offset: 0x141F8
+  symbol: scuttlebug_seg6_vertex_060141F8
+
+scuttlebug_seg6_dl_06014238:
+  type: GFX
+  offset: 0x14238
+  symbol: scuttlebug_seg6_dl_06014238
+
+scuttlebug_seg6_dl_06014270:
+  type: GFX
+  offset: 0x14270
+  symbol: scuttlebug_seg6_dl_06014270
+
+scuttlebug_seg6_lights_060142E0:
+  type: LIGHTS
+  size: 24
+  offset: 0x142E0
+  symbol: scuttlebug_seg6_lights_060142E0
+
+scuttlebug_seg6_vertex_060142F8:
+  type: VTX
+  count: 4
+  offset: 0x142F8
+  symbol: scuttlebug_seg6_vertex_060142F8
+
+scuttlebug_seg6_dl_06014338:
+  type: GFX
+  offset: 0x14338
+  symbol: scuttlebug_seg6_dl_06014338
+
+scuttlebug_seg6_dl_06014378:
+  type: GFX
+  offset: 0x14378
+  symbol: scuttlebug_seg6_dl_06014378
+

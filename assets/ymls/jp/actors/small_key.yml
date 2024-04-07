@@ -1,0 +1,152 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x165060
+  segments:
+    - [0x05,  0x165060]
+
+small_key_seg5_lights_05005798:
+  type: LIGHTS
+  size: 24
+  offset: 0x5798
+  symbol: small_key_seg5_lights_05005798
+
+small_key_seg5_lights_050057B0:
+  type: LIGHTS
+  size: 24
+  offset: 0x57B0
+  symbol: small_key_seg5_lights_050057B0
+
+small_key_seg5_lights_050057C8:
+  type: LIGHTS
+  size: 24
+  offset: 0x57C8
+  symbol: small_key_seg5_lights_050057C8
+
+small_key_seg5_lights_050057E0:
+  type: LIGHTS
+  size: 24
+  offset: 0x57E0
+  symbol: small_key_seg5_lights_050057E0
+
+small_key_seg5_vertex_05005800:
+  type: VTX
+  count: 15
+  offset: 0x5800
+  symbol: small_key_seg5_vertex_05005800
+
+small_key_seg5_vertex_050058F0:
+  type: VTX
+  count: 15
+  offset: 0x58F0
+  symbol: small_key_seg5_vertex_050058F0
+
+small_key_seg5_vertex_050059E0:
+  type: VTX
+  count: 15
+  offset: 0x59E0
+  symbol: small_key_seg5_vertex_050059E0
+
+small_key_seg5_vertex_05005AD0:
+  type: VTX
+  count: 15
+  offset: 0x5AD0
+  symbol: small_key_seg5_vertex_05005AD0
+
+small_key_seg5_vertex_05005BC0:
+  type: VTX
+  count: 15
+  offset: 0x5BC0
+  symbol: small_key_seg5_vertex_05005BC0
+
+small_key_seg5_vertex_05005CB0:
+  type: VTX
+  count: 15
+  offset: 0x5CB0
+  symbol: small_key_seg5_vertex_05005CB0
+
+small_key_seg5_vertex_05005DA0:
+  type: VTX
+  count: 15
+  offset: 0x5DA0
+  symbol: small_key_seg5_vertex_05005DA0
+
+small_key_seg5_vertex_05005E90:
+  type: VTX
+  count: 15
+  offset: 0x5E90
+  symbol: small_key_seg5_vertex_05005E90
+
+small_key_seg5_vertex_05005F80:
+  type: VTX
+  count: 15
+  offset: 0x5F80
+  symbol: small_key_seg5_vertex_05005F80
+
+small_key_seg5_vertex_05006070:
+  type: VTX
+  count: 15
+  offset: 0x6070
+  symbol: small_key_seg5_vertex_05006070
+
+small_key_seg5_vertex_05006160:
+  type: VTX
+  count: 15
+  offset: 0x6160
+  symbol: small_key_seg5_vertex_05006160
+
+small_key_seg5_vertex_05006250:
+  type: VTX
+  count: 15
+  offset: 0x6250
+  symbol: small_key_seg5_vertex_05006250
+
+small_key_seg5_vertex_05006340:
+  type: VTX
+  count: 15
+  offset: 0x6340
+  symbol: small_key_seg5_vertex_05006340
+
+small_key_seg5_vertex_05006430:
+  type: VTX
+  count: 15
+  offset: 0x6430
+  symbol: small_key_seg5_vertex_05006430
+
+small_key_seg5_vertex_05006520:
+  type: VTX
+  count: 15
+  offset: 0x6520
+  symbol: small_key_seg5_vertex_05006520
+
+small_key_seg5_vertex_05006610:
+  type: VTX
+  count: 15
+  offset: 0x6610
+  symbol: small_key_seg5_vertex_05006610
+
+small_key_seg5_dl_05006700:
+  type: GFX
+  offset: 0x6700
+  symbol: small_key_seg5_dl_05006700
+
+small_key_seg5_dl_05006A08:
+  type: GFX
+  offset: 0x6A08
+  symbol: small_key_seg5_dl_05006A08
+
+small_key_seg5_dl_05006A28:
+  type: GFX
+  offset: 0x6A28
+  symbol: small_key_seg5_dl_05006A28
+
+small_key_seg5_dl_05006A48:
+  type: GFX
+  offset: 0x6A48
+  symbol: small_key_seg5_dl_05006A48
+
+small_key_seg5_dl_05006A68:
+  type: GFX
+  offset: 0x6A68
+  symbol: small_key_seg5_dl_05006A68
+

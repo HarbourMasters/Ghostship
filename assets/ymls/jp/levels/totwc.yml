@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x4BCBD0
+  segments:
+    - [0x07,  0x4BCBD0]
+
 0:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x4BCBD0
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: totwc_seg7_texture_07000000
 1:
@@ -12,8 +18,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4BCBD0
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: totwc_seg7_texture_07001000
 2:
@@ -21,8 +26,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4BCBD0
-  mio0: 0x1800
+  offset: 0x1800
   format: RGBA16
   symbol: totwc_seg7_texture_07001800
 3:
@@ -30,7 +34,463 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x4BCBD0
-  mio0: 0x2000
+  offset: 0x2000
   format: IA16
   symbol: totwc_seg7_texture_07002000
+
+totwc_seg7_vertex_07002800:
+  type: VTX
+  count: 16
+  offset: 0x2800
+  symbol: totwc_seg7_vertex_07002800
+
+totwc_seg7_vertex_07002900:
+  type: VTX
+  count: 16
+  offset: 0x2900
+  symbol: totwc_seg7_vertex_07002900
+
+totwc_seg7_vertex_07002A00:
+  type: VTX
+  count: 16
+  offset: 0x2A00
+  symbol: totwc_seg7_vertex_07002A00
+
+totwc_seg7_vertex_07002B00:
+  type: VTX
+  count: 16
+  offset: 0x2B00
+  symbol: totwc_seg7_vertex_07002B00
+
+totwc_seg7_vertex_07002C00:
+  type: VTX
+  count: 14
+  offset: 0x2C00
+  symbol: totwc_seg7_vertex_07002C00
+
+totwc_seg7_vertex_07002CE0:
+  type: VTX
+  count: 15
+  offset: 0x2CE0
+  symbol: totwc_seg7_vertex_07002CE0
+
+totwc_seg7_vertex_07002DD0:
+  type: VTX
+  count: 14
+  offset: 0x2DD0
+  symbol: totwc_seg7_vertex_07002DD0
+
+totwc_seg7_vertex_07002EB0:
+  type: VTX
+  count: 15
+  offset: 0x2EB0
+  symbol: totwc_seg7_vertex_07002EB0
+
+totwc_seg7_vertex_07002FA0:
+  type: VTX
+  count: 14
+  offset: 0x2FA0
+  symbol: totwc_seg7_vertex_07002FA0
+
+totwc_seg7_vertex_07003080:
+  type: VTX
+  count: 14
+  offset: 0x3080
+  symbol: totwc_seg7_vertex_07003080
+
+totwc_seg7_vertex_07003160:
+  type: VTX
+  count: 16
+  offset: 0x3160
+  symbol: totwc_seg7_vertex_07003160
+
+totwc_seg7_vertex_07003260:
+  type: VTX
+  count: 15
+  offset: 0x3260
+  symbol: totwc_seg7_vertex_07003260
+
+totwc_seg7_vertex_07003350:
+  type: VTX
+  count: 12
+  offset: 0x3350
+  symbol: totwc_seg7_vertex_07003350
+
+totwc_seg7_vertex_07003410:
+  type: VTX
+  count: 14
+  offset: 0x3410
+  symbol: totwc_seg7_vertex_07003410
+
+totwc_seg7_vertex_070034F0:
+  type: VTX
+  count: 15
+  offset: 0x34F0
+  symbol: totwc_seg7_vertex_070034F0
+
+totwc_seg7_vertex_070035E0:
+  type: VTX
+  count: 15
+  offset: 0x35E0
+  symbol: totwc_seg7_vertex_070035E0
+
+totwc_seg7_vertex_070036D0:
+  type: VTX
+  count: 15
+  offset: 0x36D0
+  symbol: totwc_seg7_vertex_070036D0
+
+totwc_seg7_vertex_070037C0:
+  type: VTX
+  count: 15
+  offset: 0x37C0
+  symbol: totwc_seg7_vertex_070037C0
+
+totwc_seg7_vertex_070038B0:
+  type: VTX
+  count: 16
+  offset: 0x38B0
+  symbol: totwc_seg7_vertex_070038B0
+
+totwc_seg7_vertex_070039B0:
+  type: VTX
+  count: 16
+  offset: 0x39B0
+  symbol: totwc_seg7_vertex_070039B0
+
+totwc_seg7_vertex_07003AB0:
+  type: VTX
+  count: 16
+  offset: 0x3AB0
+  symbol: totwc_seg7_vertex_07003AB0
+
+totwc_seg7_vertex_07003BB0:
+  type: VTX
+  count: 16
+  offset: 0x3BB0
+  symbol: totwc_seg7_vertex_07003BB0
+
+totwc_seg7_vertex_07003CB0:
+  type: VTX
+  count: 16
+  offset: 0x3CB0
+  symbol: totwc_seg7_vertex_07003CB0
+
+totwc_seg7_vertex_07003DB0:
+  type: VTX
+  count: 16
+  offset: 0x3DB0
+  symbol: totwc_seg7_vertex_07003DB0
+
+totwc_seg7_vertex_07003EB0:
+  type: VTX
+  count: 16
+  offset: 0x3EB0
+  symbol: totwc_seg7_vertex_07003EB0
+
+totwc_seg7_vertex_07003FB0:
+  type: VTX
+  count: 15
+  offset: 0x3FB0
+  symbol: totwc_seg7_vertex_07003FB0
+
+totwc_seg7_vertex_070040A0:
+  type: VTX
+  count: 15
+  offset: 0x40A0
+  symbol: totwc_seg7_vertex_070040A0
+
+totwc_seg7_vertex_07004190:
+  type: VTX
+  count: 14
+  offset: 0x4190
+  symbol: totwc_seg7_vertex_07004190
+
+totwc_seg7_vertex_07004270:
+  type: VTX
+  count: 16
+  offset: 0x4270
+  symbol: totwc_seg7_vertex_07004270
+
+totwc_seg7_vertex_07004370:
+  type: VTX
+  count: 14
+  offset: 0x4370
+  symbol: totwc_seg7_vertex_07004370
+
+totwc_seg7_vertex_07004450:
+  type: VTX
+  count: 14
+  offset: 0x4450
+  symbol: totwc_seg7_vertex_07004450
+
+totwc_seg7_vertex_07004530:
+  type: VTX
+  count: 16
+  offset: 0x4530
+  symbol: totwc_seg7_vertex_07004530
+
+totwc_seg7_vertex_07004630:
+  type: VTX
+  count: 15
+  offset: 0x4630
+  symbol: totwc_seg7_vertex_07004630
+
+totwc_seg7_vertex_07004720:
+  type: VTX
+  count: 16
+  offset: 0x4720
+  symbol: totwc_seg7_vertex_07004720
+
+totwc_seg7_vertex_07004820:
+  type: VTX
+  count: 15
+  offset: 0x4820
+  symbol: totwc_seg7_vertex_07004820
+
+totwc_seg7_vertex_07004910:
+  type: VTX
+  count: 15
+  offset: 0x4910
+  symbol: totwc_seg7_vertex_07004910
+
+totwc_seg7_vertex_07004A00:
+  type: VTX
+  count: 16
+  offset: 0x4A00
+  symbol: totwc_seg7_vertex_07004A00
+
+totwc_seg7_vertex_07004B00:
+  type: VTX
+  count: 15
+  offset: 0x4B00
+  symbol: totwc_seg7_vertex_07004B00
+
+totwc_seg7_vertex_07004BF0:
+  type: VTX
+  count: 15
+  offset: 0x4BF0
+  symbol: totwc_seg7_vertex_07004BF0
+
+totwc_seg7_vertex_07004CE0:
+  type: VTX
+  count: 16
+  offset: 0x4CE0
+  symbol: totwc_seg7_vertex_07004CE0
+
+totwc_seg7_vertex_07004DE0:
+  type: VTX
+  count: 16
+  offset: 0x4DE0
+  symbol: totwc_seg7_vertex_07004DE0
+
+totwc_seg7_vertex_07004EE0:
+  type: VTX
+  count: 16
+  offset: 0x4EE0
+  symbol: totwc_seg7_vertex_07004EE0
+
+totwc_seg7_vertex_07004FE0:
+  type: VTX
+  count: 16
+  offset: 0x4FE0
+  symbol: totwc_seg7_vertex_07004FE0
+
+totwc_seg7_dl_070050E0:
+  type: GFX
+  offset: 0x50E0
+  symbol: totwc_seg7_dl_070050E0
+
+totwc_seg7_dl_07005220:
+  type: GFX
+  offset: 0x5220
+  symbol: totwc_seg7_dl_07005220
+
+totwc_seg7_dl_07005448:
+  type: GFX
+  offset: 0x5448
+  symbol: totwc_seg7_dl_07005448
+
+totwc_seg7_dl_07005BE8:
+  type: GFX
+  offset: 0x5BE8
+  symbol: totwc_seg7_dl_07005BE8
+
+totwc_seg7_dl_07005D28:
+  type: GFX
+  offset: 0x5D28
+  symbol: totwc_seg7_dl_07005D28
+
+totwc_seg7_vertex_070070C8:
+  type: VTX
+  count: 16
+  offset: 0x70C8
+  symbol: totwc_seg7_vertex_070070C8
+
+totwc_seg7_vertex_070071C8:
+  type: VTX
+  count: 16
+  offset: 0x71C8
+  symbol: totwc_seg7_vertex_070071C8
+
+totwc_seg7_vertex_070072C8:
+  type: VTX
+  count: 16
+  offset: 0x72C8
+  symbol: totwc_seg7_vertex_070072C8
+
+totwc_seg7_vertex_070073C8:
+  type: VTX
+  count: 16
+  offset: 0x73C8
+  symbol: totwc_seg7_vertex_070073C8
+
+totwc_seg7_vertex_070074C8:
+  type: VTX
+  count: 16
+  offset: 0x74C8
+  symbol: totwc_seg7_vertex_070074C8
+
+totwc_seg7_vertex_070075C8:
+  type: VTX
+  count: 16
+  offset: 0x75C8
+  symbol: totwc_seg7_vertex_070075C8
+
+totwc_seg7_dl_070076C8:
+  type: GFX
+  offset: 0x76C8
+  symbol: totwc_seg7_dl_070076C8
+
+totwc_seg7_dl_07007808:
+  type: GFX
+  offset: 0x7808
+  symbol: totwc_seg7_dl_07007808
+
+totwc_seg7_dl_070078B8:
+  type: GFX
+  offset: 0x78B8
+  symbol: totwc_seg7_dl_070078B8
+
+totwc_seg7_vertex_07005DC8:
+  type: VTX
+  count: 15
+  offset: 0x5DC8
+  symbol: totwc_seg7_vertex_07005DC8
+
+totwc_seg7_vertex_07005EB8:
+  type: VTX
+  count: 15
+  offset: 0x5EB8
+  symbol: totwc_seg7_vertex_07005EB8
+
+totwc_seg7_vertex_07005FA8:
+  type: VTX
+  count: 15
+  offset: 0x5FA8
+  symbol: totwc_seg7_vertex_07005FA8
+
+totwc_seg7_vertex_07006098:
+  type: VTX
+  count: 15
+  offset: 0x6098
+  symbol: totwc_seg7_vertex_07006098
+
+totwc_seg7_vertex_07006188:
+  type: VTX
+  count: 15
+  offset: 0x6188
+  symbol: totwc_seg7_vertex_07006188
+
+totwc_seg7_vertex_07006278:
+  type: VTX
+  count: 15
+  offset: 0x6278
+  symbol: totwc_seg7_vertex_07006278
+
+totwc_seg7_vertex_07006368:
+  type: VTX
+  count: 15
+  offset: 0x6368
+  symbol: totwc_seg7_vertex_07006368
+
+totwc_seg7_vertex_07006458:
+  type: VTX
+  count: 15
+  offset: 0x6458
+  symbol: totwc_seg7_vertex_07006458
+
+totwc_seg7_vertex_07006548:
+  type: VTX
+  count: 15
+  offset: 0x6548
+  symbol: totwc_seg7_vertex_07006548
+
+totwc_seg7_vertex_07006638:
+  type: VTX
+  count: 15
+  offset: 0x6638
+  symbol: totwc_seg7_vertex_07006638
+
+totwc_seg7_vertex_07006728:
+  type: VTX
+  count: 15
+  offset: 0x6728
+  symbol: totwc_seg7_vertex_07006728
+
+totwc_seg7_vertex_07006818:
+  type: VTX
+  count: 15
+  offset: 0x6818
+  symbol: totwc_seg7_vertex_07006818
+
+totwc_seg7_vertex_07006908:
+  type: VTX
+  count: 15
+  offset: 0x6908
+  symbol: totwc_seg7_vertex_07006908
+
+totwc_seg7_vertex_070069F8:
+  type: VTX
+  count: 15
+  offset: 0x69F8
+  symbol: totwc_seg7_vertex_070069F8
+
+totwc_seg7_vertex_07006AE8:
+  type: VTX
+  count: 15
+  offset: 0x6AE8
+  symbol: totwc_seg7_vertex_07006AE8
+
+totwc_seg7_vertex_07006BD8:
+  type: VTX
+  count: 7
+  offset: 0x6BD8
+  symbol: totwc_seg7_vertex_07006BD8
+
+totwc_seg7_dl_07006C48:
+  type: GFX
+  offset: 0x6C48
+  symbol: totwc_seg7_dl_07006C48
+
+totwc_seg7_dl_07007048:
+  type: GFX
+  offset: 0x7048
+  symbol: totwc_seg7_dl_07007048
+
+totwc_seg7_vertex_07007930:
+  type: VTX
+  count: 4
+  offset: 0x7930
+  symbol: totwc_seg7_vertex_07007930
+
+totwc_seg7_dl_07007970:
+  type: GFX
+  offset: 0x7970
+  symbol: totwc_seg7_dl_07007970
+
+totwc_seg7_dl_070079A8:
+  type: GFX
+  offset: 0x79A8
+  symbol: totwc_seg7_dl_070079A8
+

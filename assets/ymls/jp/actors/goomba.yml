@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 goomba_body:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x19530
+  offset: 0x19530
   format: RGBA16
   symbol: goomba_seg8_texture_08019530
 goomba_face:
@@ -12,8 +18,7 @@ goomba_face:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x19D30
+  offset: 0x19D30
   format: RGBA16
   symbol: goomba_seg8_texture_08019D30
 goomba_face_blink:
@@ -21,7 +26,307 @@ goomba_face_blink:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0x1A530
+  offset: 0x1A530
   format: RGBA16
   symbol: goomba_seg8_texture_0801A530
+
+goomba_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x22608
+  symbol: goomba_lights_unused1
+
+goomba_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x22608
+  symbol: goomba_lights_unused2
+
+goomba_seg8_lights_080194D0:
+  type: LIGHTS
+  size: 24
+  offset: 0x194D0
+  symbol: goomba_seg8_lights_080194D0
+
+goomba_seg8_lights_080194E8:
+  type: LIGHTS
+  size: 24
+  offset: 0x194E8
+  symbol: goomba_seg8_lights_080194E8
+
+goomba_seg8_lights_08019500:
+  type: LIGHTS
+  size: 24
+  offset: 0x19500
+  symbol: goomba_seg8_lights_08019500
+
+goomba_seg8_lights_08019518:
+  type: LIGHTS
+  size: 24
+  offset: 0x19518
+  symbol: goomba_seg8_lights_08019518
+
+goomba_seg8_lights_0801AD30:
+  type: LIGHTS
+  size: 24
+  offset: 0x1AD30
+  symbol: goomba_seg8_lights_0801AD30
+
+goomba_seg8_vertex_0801AD48:
+  type: VTX
+  count: 15
+  offset: 0x1AD48
+  symbol: goomba_seg8_vertex_0801AD48
+
+goomba_seg8_vertex_0801AE38:
+  type: VTX
+  count: 16
+  offset: 0x1AE38
+  symbol: goomba_seg8_vertex_0801AE38
+
+goomba_seg8_vertex_0801AF38:
+  type: VTX
+  count: 16
+  offset: 0x1AF38
+  symbol: goomba_seg8_vertex_0801AF38
+
+goomba_seg8_vertex_0801B038:
+  type: VTX
+  count: 16
+  offset: 0x1B038
+  symbol: goomba_seg8_vertex_0801B038
+
+goomba_seg8_vertex_0801B138:
+  type: VTX
+  count: 16
+  offset: 0x1B138
+  symbol: goomba_seg8_vertex_0801B138
+
+goomba_seg8_vertex_0801B238:
+  type: VTX
+  count: 11
+  offset: 0x1B238
+  symbol: goomba_seg8_vertex_0801B238
+
+goomba_seg8_dl_0801B2E8:
+  type: GFX
+  offset: 0x1B2E8
+  symbol: goomba_seg8_dl_0801B2E8
+
+goomba_seg8_dl_0801B560:
+  type: GFX
+  offset: 0x1B560
+  symbol: goomba_seg8_dl_0801B560
+
+goomba_seg8_dl_0801B5A0:
+  type: GFX
+  offset: 0x1B5A0
+  symbol: goomba_seg8_dl_0801B5A0
+
+goomba_seg8_dl_0801B5C8:
+  type: GFX
+  offset: 0x1B5C8
+  symbol: goomba_seg8_dl_0801B5C8
+
+goomba_seg8_dl_0801B5F0:
+  type: GFX
+  offset: 0x1B5F0
+  symbol: goomba_seg8_dl_0801B5F0
+
+goomba_seg8_vertex_0801B618:
+  type: VTX
+  count: 4
+  offset: 0x1B618
+  symbol: goomba_seg8_vertex_0801B618
+
+goomba_seg8_dl_0801B658:
+  type: GFX
+  offset: 0x1B658
+  symbol: goomba_seg8_dl_0801B658
+
+goomba_seg8_dl_0801B690:
+  type: GFX
+  offset: 0x1B690
+  symbol: goomba_seg8_dl_0801B690
+
+goomba_seg8_vertex_0801B700:
+  type: VTX
+  count: 16
+  offset: 0x1B700
+  symbol: goomba_seg8_vertex_0801B700
+
+goomba_seg8_vertex_0801B800:
+  type: VTX
+  count: 15
+  offset: 0x1B800
+  symbol: goomba_seg8_vertex_0801B800
+
+goomba_seg8_vertex_0801B8F0:
+  type: VTX
+  count: 14
+  offset: 0x1B8F0
+  symbol: goomba_seg8_vertex_0801B8F0
+
+goomba_seg8_vertex_0801B9D0:
+  type: VTX
+  count: 8
+  offset: 0x1B9D0
+  symbol: goomba_seg8_vertex_0801B9D0
+
+goomba_seg8_vertex_0801BA50:
+  type: VTX
+  count: 15
+  offset: 0x1BA50
+  symbol: goomba_seg8_vertex_0801BA50
+
+goomba_seg8_vertex_0801BB40:
+  type: VTX
+  count: 16
+  offset: 0x1BB40
+  symbol: goomba_seg8_vertex_0801BB40
+
+goomba_seg8_vertex_0801BC40:
+  type: VTX
+  count: 16
+  offset: 0x1BC40
+  symbol: goomba_seg8_vertex_0801BC40
+
+goomba_seg8_vertex_0801BD40:
+  type: VTX
+  count: 8
+  offset: 0x1BD40
+  symbol: goomba_seg8_vertex_0801BD40
+
+goomba_seg8_vertex_0801BDC0:
+  type: VTX
+  count: 16
+  offset: 0x1BDC0
+  symbol: goomba_seg8_vertex_0801BDC0
+
+goomba_seg8_vertex_0801BEC0:
+  type: VTX
+  count: 15
+  offset: 0x1BEC0
+  symbol: goomba_seg8_vertex_0801BEC0
+
+goomba_seg8_vertex_0801BFB0:
+  type: VTX
+  count: 15
+  offset: 0x1BFB0
+  symbol: goomba_seg8_vertex_0801BFB0
+
+goomba_seg8_vertex_0801C0A0:
+  type: VTX
+  count: 16
+  offset: 0x1C0A0
+  symbol: goomba_seg8_vertex_0801C0A0
+
+goomba_seg8_vertex_0801C1A0:
+  type: VTX
+  count: 14
+  offset: 0x1C1A0
+  symbol: goomba_seg8_vertex_0801C1A0
+
+goomba_seg8_vertex_0801C280:
+  type: VTX
+  count: 14
+  offset: 0x1C280
+  symbol: goomba_seg8_vertex_0801C280
+
+goomba_seg8_vertex_0801C360:
+  type: VTX
+  count: 16
+  offset: 0x1C360
+  symbol: goomba_seg8_vertex_0801C360
+
+goomba_seg8_vertex_0801C460:
+  type: VTX
+  count: 16
+  offset: 0x1C460
+  symbol: goomba_seg8_vertex_0801C460
+
+goomba_seg8_vertex_0801C560:
+  type: VTX
+  count: 12
+  offset: 0x1C560
+  symbol: goomba_seg8_vertex_0801C560
+
+goomba_seg8_vertex_0801C620:
+  type: VTX
+  count: 16
+  offset: 0x1C620
+  symbol: goomba_seg8_vertex_0801C620
+
+goomba_seg8_vertex_0801C720:
+  type: VTX
+  count: 15
+  offset: 0x1C720
+  symbol: goomba_seg8_vertex_0801C720
+
+goomba_seg8_vertex_0801C810:
+  type: VTX
+  count: 16
+  offset: 0x1C810
+  symbol: goomba_seg8_vertex_0801C810
+
+goomba_seg8_vertex_0801C910:
+  type: VTX
+  count: 15
+  offset: 0x1C910
+  symbol: goomba_seg8_vertex_0801C910
+
+goomba_seg8_vertex_0801CA00:
+  type: VTX
+  count: 16
+  offset: 0x1CA00
+  symbol: goomba_seg8_vertex_0801CA00
+
+goomba_seg8_vertex_0801CB00:
+  type: VTX
+  count: 15
+  offset: 0x1CB00
+  symbol: goomba_seg8_vertex_0801CB00
+
+goomba_seg8_vertex_0801CBF0:
+  type: VTX
+  count: 16
+  offset: 0x1CBF0
+  symbol: goomba_seg8_vertex_0801CBF0
+
+goomba_seg8_vertex_0801CCF0:
+  type: VTX
+  count: 16
+  offset: 0x1CCF0
+  symbol: goomba_seg8_vertex_0801CCF0
+
+goomba_seg8_vertex_0801CDF0:
+  type: VTX
+  count: 3
+  offset: 0x1CDF0
+  symbol: goomba_seg8_vertex_0801CDF0
+
+goomba_seg8_dl_0801CE20:
+  type: GFX
+  offset: 0x1CE20
+  symbol: goomba_seg8_dl_0801CE20
+
+goomba_seg8_dl_0801CF78:
+  type: GFX
+  offset: 0x1CF78
+  symbol: goomba_seg8_dl_0801CF78
+
+goomba_seg8_dl_0801D0D0:
+  type: GFX
+  offset: 0x1D0D0
+  symbol: goomba_seg8_dl_0801D0D0
+
+goomba_seg8_dl_0801D360:
+  type: GFX
+  offset: 0x1D360
+  symbol: goomba_seg8_dl_0801D360
+
+goomba_seg8_dl_0801D760:
+  type: GFX
+  offset: 0x1D760
+  symbol: goomba_seg8_dl_0801D760
+

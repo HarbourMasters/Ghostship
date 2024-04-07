@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x35D2B0
+  segments:
+    - [0x09,  0x35D2B0]
+
 castle_grounds_textures.00000:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: outside_09000000
 castle_grounds_textures.00800:
@@ -12,8 +18,7 @@ castle_grounds_textures.00800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: outside_09000800
 castle_grounds_textures.01000:
@@ -21,8 +26,7 @@ castle_grounds_textures.01000:
   size: 4096
   width: 64
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: outside_09001000
 castle_grounds_textures.02000:
@@ -30,8 +34,7 @@ castle_grounds_textures.02000:
   size: 4096
   width: 32
   height: 64
-  offset: 0x35D2B0
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: outside_09002000
 castle_grounds_textures.03000:
@@ -39,8 +42,7 @@ castle_grounds_textures.03000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x3000
+  offset: 0x3000
   format: RGBA16
   symbol: outside_09003000
 castle_grounds_textures.03800:
@@ -48,8 +50,7 @@ castle_grounds_textures.03800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x3800
+  offset: 0x3800
   format: RGBA16
   symbol: outside_09003800
 castle_grounds_textures.04000:
@@ -57,8 +58,7 @@ castle_grounds_textures.04000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x4000
+  offset: 0x4000
   format: RGBA16
   symbol: outside_09004000
 castle_grounds_textures.04800:
@@ -66,8 +66,7 @@ castle_grounds_textures.04800:
   size: 4096
   width: 32
   height: 64
-  offset: 0x35D2B0
-  mio0: 0x4800
+  offset: 0x4800
   format: RGBA16
   symbol: outside_09004800
 castle_grounds_textures.05800:
@@ -75,8 +74,7 @@ castle_grounds_textures.05800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x5800
+  offset: 0x5800
   format: RGBA16
   symbol: outside_09005800
 castle_grounds_textures.06000:
@@ -84,8 +82,7 @@ castle_grounds_textures.06000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x6000
+  offset: 0x6000
   format: RGBA16
   symbol: outside_09006000
 castle_grounds_textures.06800:
@@ -93,8 +90,7 @@ castle_grounds_textures.06800:
   size: 4096
   width: 64
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x6800
+  offset: 0x6800
   format: RGBA16
   symbol: outside_09006800
 castle_grounds_textures.07800:
@@ -102,8 +98,7 @@ castle_grounds_textures.07800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x7800
+  offset: 0x7800
   format: RGBA16
   symbol: outside_09007800
 castle_grounds_textures.08000:
@@ -111,8 +106,7 @@ castle_grounds_textures.08000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x8000
+  offset: 0x8000
   format: RGBA16
   symbol: outside_09008000
 castle_grounds_textures.08800:
@@ -120,8 +114,7 @@ castle_grounds_textures.08800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x8800
+  offset: 0x8800
   format: RGBA16
   symbol: outside_09008800
 castle_grounds_textures.09000:
@@ -129,8 +122,7 @@ castle_grounds_textures.09000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x9000
+  offset: 0x9000
   format: RGBA16
   symbol: outside_09009000
 castle_grounds_textures.09800:
@@ -138,8 +130,7 @@ castle_grounds_textures.09800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0x9800
+  offset: 0x9800
   format: RGBA16
   symbol: outside_09009800
 castle_grounds_textures.0A000:
@@ -147,8 +138,7 @@ castle_grounds_textures.0A000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0xA000
+  offset: 0xA000
   format: RGBA16
   symbol: outside_0900A000
 castle_grounds_textures.0A800:
@@ -156,8 +146,7 @@ castle_grounds_textures.0A800:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0xA800
+  offset: 0xA800
   format: RGBA16
   symbol: outside_0900A800
 castle_grounds_textures.0B000:
@@ -165,8 +154,7 @@ castle_grounds_textures.0B000:
   size: 1024
   width: 16
   height: 32
-  offset: 0x35D2B0
-  mio0: 0xB000
+  offset: 0xB000
   format: RGBA16
   symbol: outside_0900B000
 castle_grounds_textures.0B400:
@@ -174,8 +162,7 @@ castle_grounds_textures.0B400:
   size: 2048
   width: 32
   height: 32
-  offset: 0x35D2B0
-  mio0: 0xB400
+  offset: 0xB400
   format: RGBA16
   symbol: outside_0900B400
 castle_grounds_textures.0BC00:
@@ -183,7 +170,6 @@ castle_grounds_textures.0BC00:
   size: 2048
   width: 32
   height: 32
-  offset: 0x32B610
-  mio0: 0xB000
+  offset: 0xB000
   format: IA16
   symbol: outside_0900BC00

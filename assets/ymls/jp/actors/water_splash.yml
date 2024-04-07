@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x112B50
+  segments:
+    - [0x04,  0x112B50]
+
 water_splash_0:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x2A5C8
+  offset: 0x2A5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402A5C8
 water_splash_1:
@@ -12,8 +18,7 @@ water_splash_1:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x2B5C8
+  offset: 0x2B5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402B5C8
 water_splash_2:
@@ -21,8 +26,7 @@ water_splash_2:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x2C5C8
+  offset: 0x2C5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402C5C8
 water_splash_3:
@@ -30,8 +34,7 @@ water_splash_3:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x2D5C8
+  offset: 0x2D5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402D5C8
 water_splash_4:
@@ -39,8 +42,7 @@ water_splash_4:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x2E5C8
+  offset: 0x2E5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402E5C8
 water_splash_5:
@@ -48,8 +50,7 @@ water_splash_5:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x2F5C8
+  offset: 0x2F5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402F5C8
 water_splash_6:
@@ -57,8 +58,7 @@ water_splash_6:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x305C8
+  offset: 0x305C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040305C8
 water_splash_7:
@@ -66,7 +66,58 @@ water_splash_7:
   size: 4096
   width: 32
   height: 64
-  offset: 0x112B50
-  mio0: 0x315C8
+  offset: 0x315C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040315C8
+
+water_splash_seg4_vertex_0402A588:
+  type: VTX
+  count: 4
+  offset: 0x2A588
+  symbol: water_splash_seg4_vertex_0402A588
+
+water_splash_seg4_dl_040325C8:
+  type: GFX
+  offset: 0x325C8
+  symbol: water_splash_seg4_dl_040325C8
+
+water_splash_seg4_dl_04032640:
+  type: GFX
+  offset: 0x32640
+  symbol: water_splash_seg4_dl_04032640
+
+water_splash_seg4_dl_04032658:
+  type: GFX
+  offset: 0x32658
+  symbol: water_splash_seg4_dl_04032658
+
+water_splash_seg4_dl_04032670:
+  type: GFX
+  offset: 0x32670
+  symbol: water_splash_seg4_dl_04032670
+
+water_splash_seg4_dl_04032688:
+  type: GFX
+  offset: 0x32688
+  symbol: water_splash_seg4_dl_04032688
+
+water_splash_seg4_dl_040326A0:
+  type: GFX
+  offset: 0x326A0
+  symbol: water_splash_seg4_dl_040326A0
+
+water_splash_seg4_dl_040326B8:
+  type: GFX
+  offset: 0x326B8
+  symbol: water_splash_seg4_dl_040326B8
+
+water_splash_seg4_dl_040326D0:
+  type: GFX
+  offset: 0x326D0
+  symbol: water_splash_seg4_dl_040326D0
+
+water_splash_seg4_dl_040326E8:
+  type: GFX
+  offset: 0x326E8
+  symbol: water_splash_seg4_dl_040326E8
+

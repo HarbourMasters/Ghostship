@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x165060
+  segments:
+    - [0x05,  0x165060]
+
 chair_bottom:
   type: TEXTURE
   size: 1024
   width: 32
   height: 16
-  offset: 0x165060
-  mio0: 0x4060
+  offset: 0x4060
   format: RGBA16
   symbol: chair_seg5_texture_05004060
 chair_front:
@@ -12,8 +18,7 @@ chair_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0x3060
+  offset: 0x3060
   format: RGBA16
   symbol: chair_seg5_texture_05003060
 chair_leg:
@@ -21,8 +26,7 @@ chair_leg:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0x3860
+  offset: 0x3860
   format: RGBA16
   symbol: chair_seg5_texture_05003860
 chair_surface_unused:
@@ -30,7 +34,124 @@ chair_surface_unused:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0x4460
+  offset: 0x4460
   format: RGBA16
   symbol: chair_seg5_texture_05004460
+
+chair_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0x57F8
+  symbol: chair_lights_unused
+
+chair_seg5_lights_05004C60:
+  type: LIGHTS
+  size: 24
+  offset: 0x4C60
+  symbol: chair_seg5_lights_05004C60
+
+chair_seg5_vertex_05004C78:
+  type: VTX
+  count: 16
+  offset: 0x4C78
+  symbol: chair_seg5_vertex_05004C78
+
+chair_seg5_vertex_05004D78:
+  type: VTX
+  count: 12
+  offset: 0x4D78
+  symbol: chair_seg5_vertex_05004D78
+
+chair_seg5_dl_05004E38:
+  type: GFX
+  offset: 0x4E38
+  symbol: chair_seg5_dl_05004E38
+
+chair_seg5_dl_05004EE8:
+  type: GFX
+  offset: 0x4EE8
+  symbol: chair_seg5_dl_05004EE8
+
+chair_seg5_lights_05004F58:
+  type: LIGHTS
+  size: 24
+  offset: 0x4F58
+  symbol: chair_seg5_lights_05004F58
+
+chair_seg5_vertex_05004F70:
+  type: VTX
+  count: 16
+  offset: 0x4F70
+  symbol: chair_seg5_vertex_05004F70
+
+chair_seg5_vertex_05005070:
+  type: VTX
+  count: 8
+  offset: 0x5070
+  symbol: chair_seg5_vertex_05005070
+
+chair_seg5_dl_050050F0:
+  type: GFX
+  offset: 0x50F0
+  symbol: chair_seg5_dl_050050F0
+
+chair_seg5_dl_05005190:
+  type: GFX
+  offset: 0x5190
+  symbol: chair_seg5_dl_05005190
+
+chair_seg5_lights_05005200:
+  type: LIGHTS
+  size: 24
+  offset: 0x5200
+  symbol: chair_seg5_lights_05005200
+
+chair_seg5_vertex_05005218:
+  type: VTX
+  count: 15
+  offset: 0x5218
+  symbol: chair_seg5_vertex_05005218
+
+chair_seg5_vertex_05005308:
+  type: VTX
+  count: 7
+  offset: 0x5308
+  symbol: chair_seg5_vertex_05005308
+
+chair_seg5_dl_05005378:
+  type: GFX
+  offset: 0x5378
+  symbol: chair_seg5_dl_05005378
+
+chair_seg5_dl_05005408:
+  type: GFX
+  offset: 0x5408
+  symbol: chair_seg5_dl_05005408
+
+chair_seg5_lights_05005478:
+  type: LIGHTS
+  size: 24
+  offset: 0x5478
+  symbol: chair_seg5_lights_05005478
+
+chair_seg5_vertex_05005490:
+  type: VTX
+  count: 15
+  offset: 0x5490
+  symbol: chair_seg5_vertex_05005490
+
+chair_seg5_vertex_05005580:
+  type: VTX
+  count: 7
+  offset: 0x5580
+  symbol: chair_seg5_vertex_05005580
+
+chair_seg5_dl_050055F0:
+  type: GFX
+  offset: 0x55F0
+  symbol: chair_seg5_dl_050055F0
+
+chair_seg5_dl_05005680:
+  type: GFX
+  offset: 0x5680
+  symbol: chair_seg5_dl_05005680

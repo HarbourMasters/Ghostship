@@ -1,104 +1,85 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1076D0
+  segments:
+    - [0x02,  0x1076D0]
+
 course_00:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE294
+  offset: 0xE294
 course_01:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE2A8
+  offset: 0xE2A8
 course_02:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE2BC
+  offset: 0xE2BC
 course_03:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE2CC
+  offset: 0xE2CC
 course_04:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE2DC
+  offset: 0xE2DC
 course_05:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE2EC
+  offset: 0xE2EC
 course_06:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE2FC
+  offset: 0xE2FC
 course_07:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE310
+  offset: 0xE310
 course_08:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE320
+  offset: 0xE320
 course_09:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE330
+  offset: 0xE330
 course_0A:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE340
+  offset: 0xE340
 course_0B:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE350
+  offset: 0xE350
 course_0C:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE360
+  offset: 0xE360
 course_0D:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE374
+  offset: 0xE374
 course_0E:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE384
+  offset: 0xE384
 course_0F:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE394
+  offset: 0xE394
 course_10:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE3A8
+  offset: 0xE3A8
 course_11:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE3BC
+  offset: 0xE3BC
 course_12:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE3CC
+  offset: 0xE3CC
 course_13:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE3E0
+  offset: 0xE3E0
 course_14:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE3F0
+  offset: 0xE3F0
 course_15:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE404
+  offset: 0xE404
 course_16:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE414
+  offset: 0xE414
 course_17:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE428
+  offset: 0xE428
 course_18:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE438
+  offset: 0xE438
 course_19:
   type: SM64:TEXT
-  offset: 0x1076D0
-  mio0: 0xE444
+  offset: 0xE444

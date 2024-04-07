@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 flame_0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x17320
+  offset: 0x17320
   format: IA16
   symbol: flame_seg3_texture_03017320
 flame_1:
@@ -12,8 +18,7 @@ flame_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x17B20
+  offset: 0x17B20
   format: IA16
   symbol: flame_seg3_texture_03017B20
 flame_2:
@@ -21,8 +26,7 @@ flame_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x18320
+  offset: 0x18320
   format: IA16
   symbol: flame_seg3_texture_03018320
 flame_3:
@@ -30,8 +34,7 @@ flame_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x18B20
+  offset: 0x18B20
   format: IA16
   symbol: flame_seg3_texture_03018B20
 flame_4:
@@ -39,8 +42,7 @@ flame_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x19320
+  offset: 0x19320
   format: IA16
   symbol: flame_seg3_texture_03019320
 flame_5:
@@ -48,8 +50,7 @@ flame_5:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x19B20
+  offset: 0x19B20
   format: IA16
   symbol: flame_seg3_texture_03019B20
 flame_6:
@@ -57,8 +58,7 @@ flame_6:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x1A320
+  offset: 0x1A320
   format: IA16
   symbol: flame_seg3_texture_0301A320
 flame_7:
@@ -66,7 +66,103 @@ flame_7:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x1AB20
+  offset: 0x1AB20
   format: IA16
   symbol: flame_seg3_texture_0301AB20
+
+flame_seg3_vertex_030172E0:
+  type: VTX
+  count: 4
+  offset: 0x172E0
+  symbol: flame_seg3_vertex_030172E0
+
+flame_seg3_dl_0301B320:
+  type: GFX
+  offset: 0x1B320
+  symbol: flame_seg3_dl_0301B320
+
+flame_seg3_dl_0301B3B0:
+  type: GFX
+  offset: 0x1B3B0
+  symbol: flame_seg3_dl_0301B3B0
+
+flame_seg3_dl_0301B3C8:
+  type: GFX
+  offset: 0x1B3C8
+  symbol: flame_seg3_dl_0301B3C8
+
+flame_seg3_dl_0301B3E0:
+  type: GFX
+  offset: 0x1B3E0
+  symbol: flame_seg3_dl_0301B3E0
+
+flame_seg3_dl_0301B3F8:
+  type: GFX
+  offset: 0x1B3F8
+  symbol: flame_seg3_dl_0301B3F8
+
+flame_seg3_dl_0301B410:
+  type: GFX
+  offset: 0x1B410
+  symbol: flame_seg3_dl_0301B410
+
+flame_seg3_dl_0301B428:
+  type: GFX
+  offset: 0x1B428
+  symbol: flame_seg3_dl_0301B428
+
+flame_seg3_dl_0301B440:
+  type: GFX
+  offset: 0x1B440
+  symbol: flame_seg3_dl_0301B440
+
+flame_seg3_dl_0301B458:
+  type: GFX
+  offset: 0x1B458
+  symbol: flame_seg3_dl_0301B458
+
+flame_seg3_dl_0301B470:
+  type: GFX
+  offset: 0x1B470
+  symbol: flame_seg3_dl_0301B470
+
+flame_seg3_dl_0301B500:
+  type: GFX
+  offset: 0x1B500
+  symbol: flame_seg3_dl_0301B500
+
+flame_seg3_dl_0301B518:
+  type: GFX
+  offset: 0x1B518
+  symbol: flame_seg3_dl_0301B518
+
+flame_seg3_dl_0301B530:
+  type: GFX
+  offset: 0x1B530
+  symbol: flame_seg3_dl_0301B530
+
+flame_seg3_dl_0301B548:
+  type: GFX
+  offset: 0x1B548
+  symbol: flame_seg3_dl_0301B548
+
+flame_seg3_dl_0301B560:
+  type: GFX
+  offset: 0x1B560
+  symbol: flame_seg3_dl_0301B560
+
+flame_seg3_dl_0301B578:
+  type: GFX
+  offset: 0x1B578
+  symbol: flame_seg3_dl_0301B578
+
+flame_seg3_dl_0301B590:
+  type: GFX
+  offset: 0x1B590
+  symbol: flame_seg3_dl_0301B590
+
+flame_seg3_dl_0301B5A8:
+  type: GFX
+  offset: 0x1B5A8
+  symbol: flame_seg3_dl_0301B5A8
+

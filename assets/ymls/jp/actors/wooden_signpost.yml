@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 wooden_signpost_back:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x2C9C8
+  offset: 0x2C9C8
   format: RGBA16
   symbol: wooden_signpost_seg3_texture_0302C9C8
 wooden_signpost_front:
@@ -12,7 +18,68 @@ wooden_signpost_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x2D1C8
+  offset: 0x2D1C8
   format: RGBA16
   symbol: wooden_signpost_seg3_texture_0302D1C8
+
+wooden_signpost_seg3_lights_0302C940:
+  type: LIGHTS
+  size: 24
+  offset: 0x2C940
+  symbol: wooden_signpost_seg3_lights_0302C940
+
+wooden_signpost_seg3_vertex_0302C958:
+  type: VTX
+  count: 7
+  offset: 0x2C958
+  symbol: wooden_signpost_seg3_vertex_0302C958
+
+wooden_signpost_seg3_dl_0302D9C8:
+  type: GFX
+  offset: 0x2D9C8
+  symbol: wooden_signpost_seg3_dl_0302D9C8
+
+wooden_signpost_seg3_dl_0302DA48:
+  type: GFX
+  offset: 0x2DA48
+  symbol: wooden_signpost_seg3_dl_0302DA48
+
+wooden_signpost_seg3_lights_0302DAA8:
+  type: LIGHTS
+  size: 24
+  offset: 0x2DAA8
+  symbol: wooden_signpost_seg3_lights_0302DAA8
+
+wooden_signpost_seg3_vertex_0302DAC0:
+  type: VTX
+  count: 16
+  offset: 0x2DAC0
+  symbol: wooden_signpost_seg3_vertex_0302DAC0
+
+wooden_signpost_seg3_vertex_0302DBC0:
+  type: VTX
+  count: 4
+  offset: 0x2DBC0
+  symbol: wooden_signpost_seg3_vertex_0302DBC0
+
+wooden_signpost_seg3_vertex_0302DC00:
+  type: VTX
+  count: 4
+  offset: 0x2DC00
+  symbol: wooden_signpost_seg3_vertex_0302DC00
+
+wooden_signpost_seg3_dl_0302DC40:
+  type: GFX
+  offset: 0x2DC40
+  symbol: wooden_signpost_seg3_dl_0302DC40
+
+wooden_signpost_seg3_dl_0302DCD0:
+  type: GFX
+  offset: 0x2DCD0
+  symbol: wooden_signpost_seg3_dl_0302DCD0
+
+wooden_signpost_seg3_dl_0302DD08:
+  type: GFX
+  offset: 0x2DD08
+  symbol: wooden_signpost_seg3_dl_0302DD08
+

@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x165060
+  segments:
+    - [0x05,  0x165060]
+
 mad_piano_body:
   type: TEXTURE
   size: 1024
   width: 16
   height: 32
-  offset: 0x165060
-  mio0: 0x72F0
+  offset: 0x72F0
   format: RGBA16
   symbol: mad_piano_seg5_texture_050072F0
 mad_piano_keys:
@@ -12,8 +18,7 @@ mad_piano_keys:
   size: 1024
   width: 32
   height: 16
-  offset: 0x165060
-  mio0: 0x7EF0
+  offset: 0x7EF0
   format: RGBA16
   symbol: mad_piano_seg5_texture_05007EF0
 mad_piano_keys_corner:
@@ -21,8 +26,7 @@ mad_piano_keys_corner:
   size: 1024
   width: 32
   height: 16
-  offset: 0x165060
-  mio0: 0x76F0
+  offset: 0x76F0
   format: RGBA16
   symbol: mad_piano_seg5_texture_050076F0
 mad_piano_keys_edge:
@@ -30,8 +34,7 @@ mad_piano_keys_edge:
   size: 1024
   width: 32
   height: 16
-  offset: 0x165060
-  mio0: 0x82F0
+  offset: 0x82F0
   format: RGBA16
   symbol: mad_piano_seg5_texture_050082F0
 mad_piano_mouth:
@@ -39,8 +42,7 @@ mad_piano_mouth:
   size: 1024
   width: 16
   height: 32
-  offset: 0x165060
-  mio0: 0x7AF0
+  offset: 0x7AF0
   format: RGBA16
   symbol: mad_piano_seg5_texture_05007AF0
 mad_piano_tooth:
@@ -48,7 +50,207 @@ mad_piano_tooth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0x6AF0
+  offset: 0x6AF0
   format: RGBA16
   symbol: mad_piano_seg5_texture_05006AF0
+
+mad_piano_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x2C620
+  symbol: mad_piano_lights_unused1
+
+mad_piano_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x2C620
+  symbol: mad_piano_lights_unused2
+
+mad_piano_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x2C620
+  symbol: mad_piano_lights_unused3
+
+mad_piano_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x2C620
+  symbol: mad_piano_lights_unused4
+
+mad_piano_seg5_lights_050086F0:
+  type: LIGHTS
+  size: 24
+  offset: 0x86F0
+  symbol: mad_piano_seg5_lights_050086F0
+
+mad_piano_seg5_vertex_05008708:
+  type: VTX
+  count: 10
+  offset: 0x8708
+  symbol: mad_piano_seg5_vertex_05008708
+
+mad_piano_seg5_vertex_050087A8:
+  type: VTX
+  count: 15
+  offset: 0x87A8
+  symbol: mad_piano_seg5_vertex_050087A8
+
+mad_piano_seg5_vertex_05008898:
+  type: VTX
+  count: 15
+  offset: 0x8898
+  symbol: mad_piano_seg5_vertex_05008898
+
+mad_piano_seg5_vertex_05008988:
+  type: VTX
+  count: 15
+  offset: 0x8988
+  symbol: mad_piano_seg5_vertex_05008988
+
+mad_piano_seg5_vertex_05008A78:
+  type: VTX
+  count: 15
+  offset: 0x8A78
+  symbol: mad_piano_seg5_vertex_05008A78
+
+mad_piano_seg5_dl_05008B68:
+  type: GFX
+  offset: 0x8B68
+  symbol: mad_piano_seg5_dl_05008B68
+
+mad_piano_seg5_dl_05008BD0:
+  type: GFX
+  offset: 0x8BD0
+  symbol: mad_piano_seg5_dl_05008BD0
+
+mad_piano_seg5_dl_05008CB0:
+  type: GFX
+  offset: 0x8CB0
+  symbol: mad_piano_seg5_dl_05008CB0
+
+mad_piano_seg5_lights_05008D40:
+  type: LIGHTS
+  size: 24
+  offset: 0x8D40
+  symbol: mad_piano_seg5_lights_05008D40
+
+mad_piano_seg5_lights_05008D58:
+  type: LIGHTS
+  size: 24
+  offset: 0x8D58
+  symbol: mad_piano_seg5_lights_05008D58
+
+mad_piano_seg5_lights_05008D70:
+  type: LIGHTS
+  size: 24
+  offset: 0x8D70
+  symbol: mad_piano_seg5_lights_05008D70
+
+mad_piano_seg5_lights_05008D88:
+  type: LIGHTS
+  size: 24
+  offset: 0x8D88
+  symbol: mad_piano_seg5_lights_05008D88
+
+mad_piano_seg5_vertex_05008DA0:
+  type: VTX
+  count: 13
+  offset: 0x8DA0
+  symbol: mad_piano_seg5_vertex_05008DA0
+
+mad_piano_seg5_vertex_05008E70:
+  type: VTX
+  count: 15
+  offset: 0x8E70
+  symbol: mad_piano_seg5_vertex_05008E70
+
+mad_piano_seg5_vertex_05008F60:
+  type: VTX
+  count: 15
+  offset: 0x8F60
+  symbol: mad_piano_seg5_vertex_05008F60
+
+mad_piano_seg5_vertex_05009050:
+  type: VTX
+  count: 16
+  offset: 0x9050
+  symbol: mad_piano_seg5_vertex_05009050
+
+mad_piano_seg5_vertex_05009150:
+  type: VTX
+  count: 15
+  offset: 0x9150
+  symbol: mad_piano_seg5_vertex_05009150
+
+mad_piano_seg5_vertex_05009240:
+  type: VTX
+  count: 15
+  offset: 0x9240
+  symbol: mad_piano_seg5_vertex_05009240
+
+mad_piano_seg5_vertex_05009330:
+  type: VTX
+  count: 12
+  offset: 0x9330
+  symbol: mad_piano_seg5_vertex_05009330
+
+mad_piano_seg5_vertex_050093F0:
+  type: VTX
+  count: 4
+  offset: 0x93F0
+  symbol: mad_piano_seg5_vertex_050093F0
+
+mad_piano_seg5_vertex_05009430:
+  type: VTX
+  count: 4
+  offset: 0x9430
+  symbol: mad_piano_seg5_vertex_05009430
+
+mad_piano_seg5_vertex_05009470:
+  type: VTX
+  count: 8
+  offset: 0x9470
+  symbol: mad_piano_seg5_vertex_05009470
+
+mad_piano_seg5_vertex_050094F0:
+  type: VTX
+  count: 10
+  offset: 0x94F0
+  symbol: mad_piano_seg5_vertex_050094F0
+
+mad_piano_seg5_dl_05009590:
+  type: GFX
+  offset: 0x9590
+  symbol: mad_piano_seg5_dl_05009590
+
+mad_piano_seg5_dl_050096C8:
+  type: GFX
+  offset: 0x96C8
+  symbol: mad_piano_seg5_dl_050096C8
+
+mad_piano_seg5_dl_050097B0:
+  type: GFX
+  offset: 0x97B0
+  symbol: mad_piano_seg5_dl_050097B0
+
+mad_piano_seg5_dl_050097F8:
+  type: GFX
+  offset: 0x97F8
+  symbol: mad_piano_seg5_dl_050097F8
+
+mad_piano_seg5_dl_05009840:
+  type: GFX
+  offset: 0x9840
+  symbol: mad_piano_seg5_dl_05009840
+
+mad_piano_seg5_dl_05009888:
+  type: GFX
+  offset: 0x9888
+  symbol: mad_piano_seg5_dl_05009888
+
+mad_piano_seg5_dl_050098E8:
+  type: GFX
+  offset: 0x98E8
+  symbol: mad_piano_seg5_dl_050098E8
+

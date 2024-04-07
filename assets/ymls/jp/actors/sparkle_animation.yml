@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x112B50
+  segments:
+    - [0x04,  0x112B50]
+
 sparkle_animation_0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x32A88
+  offset: 0x32A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04032A88
 sparkle_animation_1:
@@ -12,8 +18,7 @@ sparkle_animation_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x33288
+  offset: 0x33288
   format: IA16
   symbol: sparkles_animation_seg4_texture_04033288
 sparkle_animation_2:
@@ -21,8 +26,7 @@ sparkle_animation_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x33A88
+  offset: 0x33A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04033A88
 sparkle_animation_3:
@@ -30,8 +34,7 @@ sparkle_animation_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x34288
+  offset: 0x34288
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034288
 sparkle_animation_4:
@@ -39,7 +42,43 @@ sparkle_animation_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x34A88
+  offset: 0x34A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034A88
+
+sparkles_animation_seg4_vertex_04032A48:
+  type: VTX
+  count: 4
+  offset: 0x32A48
+  symbol: sparkles_animation_seg4_vertex_04032A48
+
+sparkles_animation_seg4_dl_04035288:
+  type: GFX
+  offset: 0x35288
+  symbol: sparkles_animation_seg4_dl_04035288
+
+sparkles_animation_seg4_dl_04035300:
+  type: GFX
+  offset: 0x35300
+  symbol: sparkles_animation_seg4_dl_04035300
+
+sparkles_animation_seg4_dl_04035318:
+  type: GFX
+  offset: 0x35318
+  symbol: sparkles_animation_seg4_dl_04035318
+
+sparkles_animation_seg4_dl_04035330:
+  type: GFX
+  offset: 0x35330
+  symbol: sparkles_animation_seg4_dl_04035330
+
+sparkles_animation_seg4_dl_04035348:
+  type: GFX
+  offset: 0x35348
+  symbol: sparkles_animation_seg4_dl_04035348
+
+sparkles_animation_seg4_dl_04035360:
+  type: GFX
+  offset: 0x35360
+  symbol: sparkles_animation_seg4_dl_04035360
+
