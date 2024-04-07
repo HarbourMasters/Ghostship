@@ -1,9 +1,38 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 mist:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1FF740
-  mio0: 0x80
+  offset: 0x80
   format: IA16
   symbol: mist_seg3_texture_03000080
+
+mist_seg3_vertex_03000000:
+  type: VTX
+  count: 4
+  offset: 0x0
+  symbol: mist_seg3_vertex_03000000
+
+mist_seg3_vertex_03000040:
+  type: VTX
+  count: 4
+  offset: 0x40
+  symbol: mist_seg3_vertex_03000040
+
+mist_seg3_dl_03000880:
+  type: GFX
+  offset: 0x880
+  symbol: mist_seg3_dl_03000880
+
+mist_seg3_dl_03000920:
+  type: GFX
+  offset: 0x920
+  symbol: mist_seg3_dl_03000920
+

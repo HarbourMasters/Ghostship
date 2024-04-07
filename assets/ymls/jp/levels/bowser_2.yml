@@ -1,9 +1,134 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x4CBB70
+  segments:
+    - [0x07,  0x4CBB70]
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x4CBB70
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: bowser_2_seg7_texture_07000000
+
+bowser_2_seg7_vertex_07000800:
+  type: VTX
+  count: 16
+  offset: 0x800
+  symbol: bowser_2_seg7_vertex_07000800
+
+bowser_2_seg7_vertex_07000900:
+  type: VTX
+  count: 16
+  offset: 0x900
+  symbol: bowser_2_seg7_vertex_07000900
+
+bowser_2_seg7_vertex_07000A00:
+  type: VTX
+  count: 10
+  offset: 0xA00
+  symbol: bowser_2_seg7_vertex_07000A00
+
+bowser_2_seg7_vertex_07000AA0:
+  type: VTX
+  count: 16
+  offset: 0xAA0
+  symbol: bowser_2_seg7_vertex_07000AA0
+
+bowser_2_seg7_vertex_07000BA0:
+  type: VTX
+  count: 9
+  offset: 0xBA0
+  symbol: bowser_2_seg7_vertex_07000BA0
+
+bowser_2_seg7_vertex_07000C30:
+  type: VTX
+  count: 16
+  offset: 0xC30
+  symbol: bowser_2_seg7_vertex_07000C30
+
+bowser_2_seg7_dl_07000D30:
+  type: GFX
+  offset: 0xD30
+  symbol: bowser_2_seg7_dl_07000D30
+
+bowser_2_seg7_dl_07000E28:
+  type: GFX
+  offset: 0xE28
+  symbol: bowser_2_seg7_dl_07000E28
+
+bowser_2_seg7_dl_07000ED0:
+  type: GFX
+  offset: 0xED0
+  symbol: bowser_2_seg7_dl_07000ED0
+
+bowser_2_seg7_dl_07000F38:
+  type: GFX
+  offset: 0xF38
+  symbol: bowser_2_seg7_dl_07000F38
+
+bowser_2_seg7_dl_07000FE0:
+  type: GFX
+  offset: 0xFE0
+  symbol: bowser_2_seg7_dl_07000FE0
+
+bowser_2_seg7_vertex_070010B0:
+  type: VTX
+  count: 16
+  offset: 0x10B0
+  symbol: bowser_2_seg7_vertex_070010B0
+
+bowser_2_seg7_vertex_070011B0:
+  type: VTX
+  count: 16
+  offset: 0x11B0
+  symbol: bowser_2_seg7_vertex_070011B0
+
+bowser_2_seg7_vertex_070012B0:
+  type: VTX
+  count: 3
+  offset: 0x12B0
+  symbol: bowser_2_seg7_vertex_070012B0
+
+bowser_2_seg7_vertex_070012E0:
+  type: VTX
+  count: 16
+  offset: 0x12E0
+  symbol: bowser_2_seg7_vertex_070012E0
+
+bowser_2_seg7_vertex_070013E0:
+  type: VTX
+  count: 16
+  offset: 0x13E0
+  symbol: bowser_2_seg7_vertex_070013E0
+
+bowser_2_seg7_vertex_070014E0:
+  type: VTX
+  count: 16
+  offset: 0x14E0
+  symbol: bowser_2_seg7_vertex_070014E0
+
+bowser_2_seg7_vertex_070015E0:
+  type: VTX
+  count: 12
+  offset: 0x15E0
+  symbol: bowser_2_seg7_vertex_070015E0
+
+bowser_2_seg7_dl_070016A0:
+  type: GFX
+  offset: 0x16A0
+  symbol: bowser_2_seg7_dl_070016A0
+
+bowser_2_seg7_dl_07001788:
+  type: GFX
+  offset: 0x1788
+  symbol: bowser_2_seg7_dl_07001788
+
+bowser_2_seg7_dl_07001930:
+  type: GFX
+  offset: 0x1930
+  symbol: bowser_2_seg7_dl_07001930
+

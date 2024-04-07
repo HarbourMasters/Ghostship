@@ -1,9 +1,49 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x165060
+  segments:
+    - [0x05,  0x165060]
+
 book_cover:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0x1060
+  offset: 0x2570
   format: RGBA16
   symbol: book_seg5_texture_05002570
+
+book_seg5_lights_05002558:
+  type: LIGHTS
+  size: 24
+  offset: 0x2558
+  symbol: book_seg5_lights_05002558
+
+book_seg5_vertex_05002D70:
+  type: VTX
+  count: 12
+  offset: 0x2D70
+  symbol: book_seg5_vertex_05002D70
+
+book_seg5_vertex_05002E30:
+  type: VTX
+  count: 12
+  offset: 0x2E30
+  symbol: book_seg5_vertex_05002E30
+
+book_seg5_dl_05002EF0:
+  type: GFX
+  offset: 0x2EF0
+  symbol: book_seg5_dl_05002EF0
+
+book_seg5_dl_05002F58:
+  type: GFX
+  offset: 0x2F58
+  symbol: book_seg5_dl_05002F58
+
+book_seg5_dl_05002FB0:
+  type: GFX
+  offset: 0x2FB0
+  symbol: book_seg5_dl_05002FB0
+

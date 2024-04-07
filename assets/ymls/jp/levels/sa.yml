@@ -1,0 +1,277 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x468FD0
+  segments:
+    - [0x07,  0x468FD0]
+
+sa_lights:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: sa_lights
+
+sa_vertex_07000018:
+  type: VTX
+  count: 12
+  offset: 0x18
+  symbol: sa_vertex_07000018
+
+sa_vertex_070000D8:
+  type: VTX
+  count: 15
+  offset: 0xD8
+  symbol: sa_vertex_070000D8
+
+sa_vertex_070001C8:
+  type: VTX
+  count: 16
+  offset: 0x1C8
+  symbol: sa_vertex_070001C8
+
+sa_vertex_070002C8:
+  type: VTX
+  count: 16
+  offset: 0x2C8
+  symbol: sa_vertex_070002C8
+
+sa_vertex_070003C8:
+  type: VTX
+  count: 15
+  offset: 0x3C8
+  symbol: sa_vertex_070003C8
+
+sa_vertex_070004B8:
+  type: VTX
+  count: 16
+  offset: 0x4B8
+  symbol: sa_vertex_070004B8
+
+sa_vertex_070005B8:
+  type: VTX
+  count: 14
+  offset: 0x5B8
+  symbol: sa_vertex_070005B8
+
+sa_vertex_07000698:
+  type: VTX
+  count: 16
+  offset: 0x698
+  symbol: sa_vertex_07000698
+
+sa_vertex_07000798:
+  type: VTX
+  count: 16
+  offset: 0x798
+  symbol: sa_vertex_07000798
+
+sa_vertex_07000898:
+  type: VTX
+  count: 16
+  offset: 0x898
+  symbol: sa_vertex_07000898
+
+sa_vertex_07000998:
+  type: VTX
+  count: 15
+  offset: 0x998
+  symbol: sa_vertex_07000998
+
+sa_vertex_07000A88:
+  type: VTX
+  count: 14
+  offset: 0xA88
+  symbol: sa_vertex_07000A88
+
+sa_vertex_07000B68:
+  type: VTX
+  count: 15
+  offset: 0xB68
+  symbol: sa_vertex_07000B68
+
+sa_vertex_07000C58:
+  type: VTX
+  count: 16
+  offset: 0xC58
+  symbol: sa_vertex_07000C58
+
+sa_vertex_07000D58:
+  type: VTX
+  count: 15
+  offset: 0xD58
+  symbol: sa_vertex_07000D58
+
+sa_vertex_07000E48:
+  type: VTX
+  count: 16
+  offset: 0xE48
+  symbol: sa_vertex_07000E48
+
+sa_vertex_07000F48:
+  type: VTX
+  count: 16
+  offset: 0xF48
+  symbol: sa_vertex_07000F48
+
+sa_vertex_07001048:
+  type: VTX
+  count: 14
+  offset: 0x1048
+  symbol: sa_vertex_07001048
+
+sa_vertex_07001128:
+  type: VTX
+  count: 15
+  offset: 0x1128
+  symbol: sa_vertex_07001128
+
+sa_vertex_07001218:
+  type: VTX
+  count: 15
+  offset: 0x1218
+  symbol: sa_vertex_07001218
+
+sa_vertex_07001308:
+  type: VTX
+  count: 14
+  offset: 0x1308
+  symbol: sa_vertex_07001308
+
+sa_vertex_070013E8:
+  type: VTX
+  count: 14
+  offset: 0x13E8
+  symbol: sa_vertex_070013E8
+
+sa_vertex_070014C8:
+  type: VTX
+  count: 15
+  offset: 0x14C8
+  symbol: sa_vertex_070014C8
+
+sa_vertex_070015B8:
+  type: VTX
+  count: 16
+  offset: 0x15B8
+  symbol: sa_vertex_070015B8
+
+sa_vertex_070016B8:
+  type: VTX
+  count: 16
+  offset: 0x16B8
+  symbol: sa_vertex_070016B8
+
+sa_vertex_070017B8:
+  type: VTX
+  count: 15
+  offset: 0x17B8
+  symbol: sa_vertex_070017B8
+
+sa_vertex_070018A8:
+  type: VTX
+  count: 16
+  offset: 0x18A8
+  symbol: sa_vertex_070018A8
+
+sa_vertex_070019A8:
+  type: VTX
+  count: 16
+  offset: 0x19A8
+  symbol: sa_vertex_070019A8
+
+sa_vertex_07001AA8:
+  type: VTX
+  count: 15
+  offset: 0x1AA8
+  symbol: sa_vertex_07001AA8
+
+sa_vertex_07001B98:
+  type: VTX
+  count: 14
+  offset: 0x1B98
+  symbol: sa_vertex_07001B98
+
+sa_vertex_07001C78:
+  type: VTX
+  count: 16
+  offset: 0x1C78
+  symbol: sa_vertex_07001C78
+
+sa_vertex_07001D78:
+  type: VTX
+  count: 16
+  offset: 0x1D78
+  symbol: sa_vertex_07001D78
+
+sa_vertex_07001E78:
+  type: VTX
+  count: 16
+  offset: 0x1E78
+  symbol: sa_vertex_07001E78
+
+sa_vertex_07001F78:
+  type: VTX
+  count: 16
+  offset: 0x1F78
+  symbol: sa_vertex_07001F78
+
+sa_vertex_07002078:
+  type: VTX
+  count: 15
+  offset: 0x2078
+  symbol: sa_vertex_07002078
+
+sa_vertex_07002168:
+  type: VTX
+  count: 16
+  offset: 0x2168
+  symbol: sa_vertex_07002168
+
+sa_vertex_07002268:
+  type: VTX
+  count: 16
+  offset: 0x2268
+  symbol: sa_vertex_07002268
+
+sa_vertex_07002368:
+  type: VTX
+  count: 8
+  offset: 0x2368
+  symbol: sa_vertex_07002368
+
+sa_dl_070023E8:
+  type: GFX
+  offset: 0x23E8
+  symbol: sa_dl_070023E8
+
+sa_dl_07002470:
+  type: GFX
+  offset: 0x2470
+  symbol: sa_dl_07002470
+
+sa_dl_070028F0:
+  type: GFX
+  offset: 0x28F0
+  symbol: sa_dl_070028F0
+
+sa_seg7_dl_07002DE8:
+  type: GFX
+  offset: 0x2DE8
+  symbol: sa_seg7_dl_07002DE8
+
+sa_vertex_07002E80:
+  type: VTX
+  count: 16
+  offset: 0x2E80
+  symbol: sa_vertex_07002E80
+
+sa_dl_07002F80:
+  type: GFX
+  offset: 0x2F80
+  symbol: sa_dl_07002F80
+
+sa_seg7_dl_07002FD0:
+  type: GFX
+  offset: 0x2FD0
+  symbol: sa_seg7_dl_07002FD0
+

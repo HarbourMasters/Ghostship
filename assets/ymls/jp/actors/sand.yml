@@ -1,9 +1,27 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 sand_particle:
   type: TEXTURE
   size: 512
   width: 16
   height: 16
-  offset: 0x1FF740
-  mio0: 0x2BAD0
+  offset: 0x2BAD0
   format: RGBA16
   symbol: sand_seg3_texture_0302BAD0
+
+sand_seg3_vertex_0302BA90:
+  type: VTX
+  count: 4
+  offset: 0x2BA90
+  symbol: sand_seg3_vertex_0302BA90
+
+sand_seg3_dl_0302BCD0:
+  type: GFX
+  offset: 0x2BCD0
+  symbol: sand_seg3_dl_0302BCD0
+

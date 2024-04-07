@@ -1,0 +1,29 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
+transparent_star_seg3_lights_0302C488:
+  type: LIGHTS
+  size: 24
+  offset: 0x2C488
+  symbol: transparent_star_seg3_lights_0302C488
+
+transparent_star_seg3_vertex_0302C4A0:
+  type: VTX
+  count: 12
+  offset: 0x2C4A0
+  symbol: transparent_star_seg3_vertex_0302C4A0
+
+transparent_star_seg3_dl_0302C560:
+  type: GFX
+  offset: 0x2C560
+  symbol: transparent_star_seg3_dl_0302C560
+
+transparent_star_seg3_dl_0302C620:
+  type: GFX
+  offset: 0x2C620
+  symbol: transparent_star_seg3_dl_0302C620
+

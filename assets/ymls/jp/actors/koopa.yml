@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1C2580
+  segments:
+    - [0x06,  0x1C2580]
+
 koopa_eye_border:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x5648
+  offset: 0x5648
   format: RGBA16
   symbol: koopa_seg6_texture_06005648
 koopa_eyes_closed:
@@ -12,8 +18,7 @@ koopa_eyes_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x4E48
+  offset: 0x4E48
   format: RGBA16
   symbol: koopa_seg6_texture_06004E48
 koopa_eyes_open:
@@ -21,8 +26,7 @@ koopa_eyes_open:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x4648
+  offset: 0x4648
   format: RGBA16
   symbol: koopa_seg6_texture_06004648
 koopa_nostrils:
@@ -30,8 +34,7 @@ koopa_nostrils:
   size: 4096
   width: 64
   height: 32
-  offset: 0x1C2580
-  mio0: 0x5E48
+  offset: 0x5E48
   format: RGBA16
   symbol: koopa_seg6_texture_06005E48
 koopa_shell_back:
@@ -39,8 +42,7 @@ koopa_shell_back:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x2E48
+  offset: 0x2E48
   format: RGBA16
   symbol: koopa_seg6_texture_06002E48
 koopa_shell_front:
@@ -48,8 +50,7 @@ koopa_shell_front:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x2648
+  offset: 0x2648
   format: RGBA16
   symbol: koopa_seg6_texture_06002648
 koopa_shell_front_top:
@@ -57,8 +58,7 @@ koopa_shell_front_top:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x3E48
+  offset: 0x3E48
   format: RGBA16
   symbol: koopa_seg6_texture_06003E48
 koopa_shoe:
@@ -66,7 +66,690 @@ koopa_shoe:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x3648
+  offset: 0x3648
   format: RGBA16
   symbol: koopa_seg6_texture_06003648
+
+koopa_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x33B0
+  symbol: koopa_lights_unused1
+
+koopa_seg6_lights_060025A0:
+  type: LIGHTS
+  size: 24
+  offset: 0x25A0
+  symbol: koopa_seg6_lights_060025A0
+
+koopa_seg6_lights_060025B8:
+  type: LIGHTS
+  size: 24
+  offset: 0x25B8
+  symbol: koopa_seg6_lights_060025B8
+
+koopa_seg6_lights_060025D0:
+  type: LIGHTS
+  size: 24
+  offset: 0x25D0
+  symbol: koopa_seg6_lights_060025D0
+
+koopa_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x25D0
+  symbol: koopa_lights_unused2
+
+koopa_seg6_lights_06002600:
+  type: LIGHTS
+  size: 24
+  offset: 0x2600
+  symbol: koopa_seg6_lights_06002600
+
+koopa_seg6_lights_06002618:
+  type: LIGHTS
+  size: 24
+  offset: 0x2618
+  symbol: koopa_seg6_lights_06002618
+
+koopa_seg6_lights_06002630:
+  type: LIGHTS
+  size: 24
+  offset: 0x2630
+  symbol: koopa_seg6_lights_06002630
+
+koopa_seg6_lights_06006E48:
+  type: LIGHTS
+  size: 24
+  offset: 0x6E48
+  symbol: koopa_seg6_lights_06006E48
+
+koopa_seg6_lights_06006E60:
+  type: LIGHTS
+  size: 24
+  offset: 0x6E60
+  symbol: koopa_seg6_lights_06006E60
+
+koopa_seg6_vertex_06006E78:
+  type: VTX
+  count: 9
+  offset: 0x6E78
+  symbol: koopa_seg6_vertex_06006E78
+
+koopa_seg6_vertex_06006F08:
+  type: VTX
+  count: 15
+  offset: 0x6F08
+  symbol: koopa_seg6_vertex_06006F08
+
+koopa_seg6_vertex_06006FF8:
+  type: VTX
+  count: 16
+  offset: 0x6FF8
+  symbol: koopa_seg6_vertex_06006FF8
+
+koopa_seg6_vertex_060070F8:
+  type: VTX
+  count: 15
+  offset: 0x70F8
+  symbol: koopa_seg6_vertex_060070F8
+
+koopa_seg6_vertex_060071E8:
+  type: VTX
+  count: 8
+  offset: 0x71E8
+  symbol: koopa_seg6_vertex_060071E8
+
+koopa_seg6_vertex_06007268:
+  type: VTX
+  count: 15
+  offset: 0x7268
+  symbol: koopa_seg6_vertex_06007268
+
+koopa_seg6_vertex_06007358:
+  type: VTX
+  count: 16
+  offset: 0x7358
+  symbol: koopa_seg6_vertex_06007358
+
+koopa_seg6_vertex_06007458:
+  type: VTX
+  count: 3
+  offset: 0x7458
+  symbol: koopa_seg6_vertex_06007458
+
+koopa_seg6_vertex_06007488:
+  type: VTX
+  count: 3
+  offset: 0x7488
+  symbol: koopa_seg6_vertex_06007488
+
+koopa_seg6_vertex_060074B8:
+  type: VTX
+  count: 16
+  offset: 0x74B8
+  symbol: koopa_seg6_vertex_060074B8
+
+koopa_seg6_vertex_060075B8:
+  type: VTX
+  count: 10
+  offset: 0x75B8
+  symbol: koopa_seg6_vertex_060075B8
+
+koopa_seg6_dl_06007658:
+  type: GFX
+  offset: 0x7658
+  symbol: koopa_seg6_dl_06007658
+
+koopa_seg6_dl_060076B0:
+  type: GFX
+  offset: 0x76B0
+  symbol: koopa_seg6_dl_060076B0
+
+koopa_seg6_dl_06007850:
+  type: GFX
+  offset: 0x7850
+  symbol: koopa_seg6_dl_06007850
+
+koopa_seg6_dl_06007970:
+  type: GFX
+  offset: 0x7970
+  symbol: koopa_seg6_dl_06007970
+
+koopa_seg6_dl_06007A60:
+  type: GFX
+  offset: 0x7A60
+  symbol: koopa_seg6_dl_06007A60
+
+koopa_seg6_dl_06007AA0:
+  type: GFX
+  offset: 0x7AA0
+  symbol: koopa_seg6_dl_06007AA0
+
+koopa_seg6_dl_06007AF8:
+  type: GFX
+  offset: 0x7AF8
+  symbol: koopa_seg6_dl_06007AF8
+
+koopa_seg6_dl_06007B20:
+  type: GFX
+  offset: 0x7B20
+  symbol: koopa_seg6_dl_06007B20
+
+koopa_seg6_lights_06007B48:
+  type: LIGHTS
+  size: 24
+  offset: 0x7B48
+  symbol: koopa_seg6_lights_06007B48
+
+koopa_seg6_lights_06007B60:
+  type: LIGHTS
+  size: 24
+  offset: 0x7B60
+  symbol: koopa_seg6_lights_06007B60
+
+koopa_seg6_vertex_06007B78:
+  type: VTX
+  count: 10
+  offset: 0x7B78
+  symbol: koopa_seg6_vertex_06007B78
+
+koopa_seg6_vertex_06007C18:
+  type: VTX
+  count: 14
+  offset: 0x7C18
+  symbol: koopa_seg6_vertex_06007C18
+
+koopa_seg6_vertex_06007CF8:
+  type: VTX
+  count: 5
+  offset: 0x7CF8
+  symbol: koopa_seg6_vertex_06007CF8
+
+koopa_seg6_vertex_06007D48:
+  type: VTX
+  count: 15
+  offset: 0x7D48
+  symbol: koopa_seg6_vertex_06007D48
+
+koopa_seg6_vertex_06007E38:
+  type: VTX
+  count: 15
+  offset: 0x7E38
+  symbol: koopa_seg6_vertex_06007E38
+
+koopa_seg6_vertex_06007F28:
+  type: VTX
+  count: 9
+  offset: 0x7F28
+  symbol: koopa_seg6_vertex_06007F28
+
+koopa_seg6_dl_06007FB8:
+  type: GFX
+  offset: 0x7FB8
+  symbol: koopa_seg6_dl_06007FB8
+
+koopa_seg6_dl_06008050:
+  type: GFX
+  offset: 0x8050
+  symbol: koopa_seg6_dl_06008050
+
+koopa_seg6_dl_060080F8:
+  type: GFX
+  offset: 0x80F8
+  symbol: koopa_seg6_dl_060080F8
+
+koopa_seg6_dl_06008250:
+  type: GFX
+  offset: 0x8250
+  symbol: koopa_seg6_dl_06008250
+
+koopa_seg6_lights_060082C0:
+  type: LIGHTS
+  size: 24
+  offset: 0x82C0
+  symbol: koopa_seg6_lights_060082C0
+
+koopa_seg6_lights_060082D8:
+  type: LIGHTS
+  size: 24
+  offset: 0x82D8
+  symbol: koopa_seg6_lights_060082D8
+
+koopa_seg6_vertex_060082F0:
+  type: VTX
+  count: 16
+  offset: 0x82F0
+  symbol: koopa_seg6_vertex_060082F0
+
+koopa_seg6_vertex_060083F0:
+  type: VTX
+  count: 8
+  offset: 0x83F0
+  symbol: koopa_seg6_vertex_060083F0
+
+koopa_seg6_vertex_06008470:
+  type: VTX
+  count: 12
+  offset: 0x8470
+  symbol: koopa_seg6_vertex_06008470
+
+koopa_seg6_dl_06008530:
+  type: GFX
+  offset: 0x8530
+  symbol: koopa_seg6_dl_06008530
+
+koopa_seg6_dl_060085E8:
+  type: GFX
+  offset: 0x85E8
+  symbol: koopa_seg6_dl_060085E8
+
+koopa_seg6_dl_06008640:
+  type: GFX
+  offset: 0x8640
+  symbol: koopa_seg6_dl_06008640
+
+koopa_seg6_dl_060086D0:
+  type: GFX
+  offset: 0x86D0
+  symbol: koopa_seg6_dl_060086D0
+
+koopa_seg6_lights_06008740:
+  type: LIGHTS
+  size: 24
+  offset: 0x8740
+  symbol: koopa_seg6_lights_06008740
+
+koopa_seg6_lights_06008758:
+  type: LIGHTS
+  size: 24
+  offset: 0x8758
+  symbol: koopa_seg6_lights_06008758
+
+koopa_seg6_vertex_06008770:
+  type: VTX
+  count: 16
+  offset: 0x8770
+  symbol: koopa_seg6_vertex_06008770
+
+koopa_seg6_vertex_06008870:
+  type: VTX
+  count: 8
+  offset: 0x8870
+  symbol: koopa_seg6_vertex_06008870
+
+koopa_seg6_vertex_060088F0:
+  type: VTX
+  count: 12
+  offset: 0x88F0
+  symbol: koopa_seg6_vertex_060088F0
+
+koopa_seg6_dl_060089B0:
+  type: GFX
+  offset: 0x89B0
+  symbol: koopa_seg6_dl_060089B0
+
+koopa_seg6_dl_06008A68:
+  type: GFX
+  offset: 0x8A68
+  symbol: koopa_seg6_dl_06008A68
+
+koopa_seg6_dl_06008AC0:
+  type: GFX
+  offset: 0x8AC0
+  symbol: koopa_seg6_dl_06008AC0
+
+koopa_seg6_dl_06008B50:
+  type: GFX
+  offset: 0x8B50
+  symbol: koopa_seg6_dl_06008B50
+
+koopa_seg6_vertex_06008BC0:
+  type: VTX
+  count: 16
+  offset: 0x8BC0
+  symbol: koopa_seg6_vertex_06008BC0
+
+koopa_seg6_vertex_06008CC0:
+  type: VTX
+  count: 14
+  offset: 0x8CC0
+  symbol: koopa_seg6_vertex_06008CC0
+
+koopa_seg6_vertex_06008DA0:
+  type: VTX
+  count: 14
+  offset: 0x8DA0
+  symbol: koopa_seg6_vertex_06008DA0
+
+koopa_seg6_vertex_06008E80:
+  type: VTX
+  count: 14
+  offset: 0x8E80
+  symbol: koopa_seg6_vertex_06008E80
+
+koopa_seg6_vertex_06008F60:
+  type: VTX
+  count: 14
+  offset: 0x8F60
+  symbol: koopa_seg6_vertex_06008F60
+
+koopa_seg6_vertex_06009040:
+  type: VTX
+  count: 16
+  offset: 0x9040
+  symbol: koopa_seg6_vertex_06009040
+
+koopa_seg6_vertex_06009140:
+  type: VTX
+  count: 16
+  offset: 0x9140
+  symbol: koopa_seg6_vertex_06009140
+
+koopa_seg6_vertex_06009240:
+  type: VTX
+  count: 16
+  offset: 0x9240
+  symbol: koopa_seg6_vertex_06009240
+
+koopa_seg6_vertex_06009340:
+  type: VTX
+  count: 13
+  offset: 0x9340
+  symbol: koopa_seg6_vertex_06009340
+
+koopa_seg6_vertex_06009410:
+  type: VTX
+  count: 14
+  offset: 0x9410
+  symbol: koopa_seg6_vertex_06009410
+
+koopa_seg6_vertex_060094F0:
+  type: VTX
+  count: 14
+  offset: 0x94F0
+  symbol: koopa_seg6_vertex_060094F0
+
+koopa_seg6_vertex_060095D0:
+  type: VTX
+  count: 15
+  offset: 0x95D0
+  symbol: koopa_seg6_vertex_060095D0
+
+koopa_seg6_vertex_060096C0:
+  type: VTX
+  count: 15
+  offset: 0x96C0
+  symbol: koopa_seg6_vertex_060096C0
+
+koopa_seg6_vertex_060097B0:
+  type: VTX
+  count: 15
+  offset: 0x97B0
+  symbol: koopa_seg6_vertex_060097B0
+
+koopa_seg6_vertex_060098A0:
+  type: VTX
+  count: 16
+  offset: 0x98A0
+  symbol: koopa_seg6_vertex_060098A0
+
+koopa_seg6_vertex_060099A0:
+  type: VTX
+  count: 9
+  offset: 0x99A0
+  symbol: koopa_seg6_vertex_060099A0
+
+koopa_seg6_vertex_06009A30:
+  type: VTX
+  count: 10
+  offset: 0x9A30
+  symbol: koopa_seg6_vertex_06009A30
+
+koopa_seg6_vertex_06009AD0:
+  type: VTX
+  count: 14
+  offset: 0x9AD0
+  symbol: koopa_seg6_vertex_06009AD0
+
+koopa_seg6_vertex_06009BB0:
+  type: VTX
+  count: 15
+  offset: 0x9BB0
+  symbol: koopa_seg6_vertex_06009BB0
+
+koopa_seg6_vertex_06009CA0:
+  type: VTX
+  count: 15
+  offset: 0x9CA0
+  symbol: koopa_seg6_vertex_06009CA0
+
+koopa_seg6_vertex_06009D90:
+  type: VTX
+  count: 15
+  offset: 0x9D90
+  symbol: koopa_seg6_vertex_06009D90
+
+koopa_seg6_vertex_06009E80:
+  type: VTX
+  count: 16
+  offset: 0x9E80
+  symbol: koopa_seg6_vertex_06009E80
+
+koopa_seg6_vertex_06009F80:
+  type: VTX
+  count: 9
+  offset: 0x9F80
+  symbol: koopa_seg6_vertex_06009F80
+
+koopa_seg6_vertex_0600A010:
+  type: VTX
+  count: 10
+  offset: 0xA010
+  symbol: koopa_seg6_vertex_0600A010
+
+koopa_seg6_vertex_0600A0B0:
+  type: VTX
+  count: 15
+  offset: 0xA0B0
+  symbol: koopa_seg6_vertex_0600A0B0
+
+koopa_seg6_vertex_0600A1A0:
+  type: VTX
+  count: 16
+  offset: 0xA1A0
+  symbol: koopa_seg6_vertex_0600A1A0
+
+koopa_seg6_vertex_0600A2A0:
+  type: VTX
+  count: 16
+  offset: 0xA2A0
+  symbol: koopa_seg6_vertex_0600A2A0
+
+koopa_seg6_vertex_0600A3A0:
+  type: VTX
+  count: 16
+  offset: 0xA3A0
+  symbol: koopa_seg6_vertex_0600A3A0
+
+koopa_seg6_vertex_0600A4A0:
+  type: VTX
+  count: 16
+  offset: 0xA4A0
+  symbol: koopa_seg6_vertex_0600A4A0
+
+koopa_seg6_vertex_0600A5A0:
+  type: VTX
+  count: 15
+  offset: 0xA5A0
+  symbol: koopa_seg6_vertex_0600A5A0
+
+koopa_seg6_vertex_0600A690:
+  type: VTX
+  count: 16
+  offset: 0xA690
+  symbol: koopa_seg6_vertex_0600A690
+
+koopa_seg6_vertex_0600A790:
+  type: VTX
+  count: 16
+  offset: 0xA790
+  symbol: koopa_seg6_vertex_0600A790
+
+koopa_seg6_vertex_0600A890:
+  type: VTX
+  count: 16
+  offset: 0xA890
+  symbol: koopa_seg6_vertex_0600A890
+
+koopa_seg6_vertex_0600A990:
+  type: VTX
+  count: 3
+  offset: 0xA990
+  symbol: koopa_seg6_vertex_0600A990
+
+koopa_seg6_vertex_0600A9C0:
+  type: VTX
+  count: 16
+  offset: 0xA9C0
+  symbol: koopa_seg6_vertex_0600A9C0
+
+koopa_seg6_vertex_0600AAC0:
+  type: VTX
+  count: 15
+  offset: 0xAAC0
+  symbol: koopa_seg6_vertex_0600AAC0
+
+koopa_seg6_vertex_0600ABB0:
+  type: VTX
+  count: 14
+  offset: 0xABB0
+  symbol: koopa_seg6_vertex_0600ABB0
+
+koopa_seg6_vertex_0600AC90:
+  type: VTX
+  count: 16
+  offset: 0xAC90
+  symbol: koopa_seg6_vertex_0600AC90
+
+koopa_seg6_vertex_0600AD90:
+  type: VTX
+  count: 16
+  offset: 0xAD90
+  symbol: koopa_seg6_vertex_0600AD90
+
+koopa_seg6_vertex_0600AE90:
+  type: VTX
+  count: 13
+  offset: 0xAE90
+  symbol: koopa_seg6_vertex_0600AE90
+
+koopa_seg6_vertex_0600AF60:
+  type: VTX
+  count: 10
+  offset: 0xAF60
+  symbol: koopa_seg6_vertex_0600AF60
+
+koopa_seg6_vertex_0600B000:
+  type: VTX
+  count: 14
+  offset: 0xB000
+  symbol: koopa_seg6_vertex_0600B000
+
+koopa_seg6_vertex_0600B0E0:
+  type: VTX
+  count: 11
+  offset: 0xB0E0
+  symbol: koopa_seg6_vertex_0600B0E0
+
+koopa_seg6_vertex_0600B190:
+  type: VTX
+  count: 14
+  offset: 0xB190
+  symbol: koopa_seg6_vertex_0600B190
+
+koopa_seg6_vertex_0600B270:
+  type: VTX
+  count: 16
+  offset: 0xB270
+  symbol: koopa_seg6_vertex_0600B270
+
+koopa_seg6_vertex_0600B370:
+  type: VTX
+  count: 16
+  offset: 0xB370
+  symbol: koopa_seg6_vertex_0600B370
+
+koopa_seg6_vertex_0600B470:
+  type: VTX
+  count: 15
+  offset: 0xB470
+  symbol: koopa_seg6_vertex_0600B470
+
+koopa_seg6_vertex_0600B560:
+  type: VTX
+  count: 9
+  offset: 0xB560
+  symbol: koopa_seg6_vertex_0600B560
+
+koopa_seg6_vertex_0600B5F0:
+  type: VTX
+  count: 15
+  offset: 0xB5F0
+  symbol: koopa_seg6_vertex_0600B5F0
+
+koopa_seg6_dl_0600B6E0:
+  type: GFX
+  offset: 0xB6E0
+  symbol: koopa_seg6_dl_0600B6E0
+
+koopa_seg6_dl_0600B838:
+  type: GFX
+  offset: 0xB838
+  symbol: koopa_seg6_dl_0600B838
+
+koopa_seg6_dl_0600B8B8:
+  type: GFX
+  offset: 0xB8B8
+  symbol: koopa_seg6_dl_0600B8B8
+
+koopa_seg6_dl_0600BA10:
+  type: GFX
+  offset: 0xBA10
+  symbol: koopa_seg6_dl_0600BA10
+
+koopa_seg6_dl_0600BA90:
+  type: GFX
+  offset: 0xBA90
+  symbol: koopa_seg6_dl_0600BA90
+
+koopa_seg6_dl_0600BC18:
+  type: GFX
+  offset: 0xBC18
+  symbol: koopa_seg6_dl_0600BC18
+
+koopa_seg6_dl_0600BC88:
+  type: GFX
+  offset: 0xBC88
+  symbol: koopa_seg6_dl_0600BC88
+
+koopa_seg6_dl_0600BE10:
+  type: GFX
+  offset: 0xBE10
+  symbol: koopa_seg6_dl_0600BE10
+
+koopa_seg6_dl_0600BE80:
+  type: GFX
+  offset: 0xBE80
+  symbol: koopa_seg6_dl_0600BE80
+
+koopa_seg6_dl_0600C240:
+  type: GFX
+  offset: 0xC240
+  symbol: koopa_seg6_dl_0600C240
+
+koopa_seg6_dl_0600C498:
+  type: GFX
+  offset: 0xC498
+  symbol: koopa_seg6_dl_0600C498
+

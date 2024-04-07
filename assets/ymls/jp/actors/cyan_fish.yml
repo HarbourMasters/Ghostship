@@ -1,9 +1,82 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1B8010
+  segments:
+    - [0x06,  0x1B8010]
+
 cyan_fish:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1B8010
-  mio0: 0xD468
+  offset: 0xD468
   format: RGBA16
   symbol: cyan_fish_seg6_texture_0600D468
+
+cyan_fish_seg6_lights_0600DC68:
+  type: LIGHTS
+  size: 24
+  offset: 0xD468
+  symbol: cyan_fish_seg6_lights_0600DC68
+
+cyan_fish_seg6_vertex_0600DC80:
+  type: VTX
+  count: 10
+  offset: 0xDC80
+  symbol: cyan_fish_seg6_vertex_0600DC80
+
+cyan_fish_seg6_dl_0600DD20:
+  type: GFX
+  offset: 0xDD20
+  symbol: cyan_fish_seg6_dl_0600DD20
+
+cyan_fish_seg6_dl_0600DDD8:
+  type: GFX
+  offset: 0xDDD8
+  symbol: cyan_fish_seg6_dl_0600DDD8
+
+cyan_fish_seg6_lights_0600DE38:
+  type: LIGHTS
+  size: 24
+  offset: 0xDE38
+  symbol: cyan_fish_seg6_lights_0600DE38
+
+cyan_fish_seg6_vertex_0600DE50:
+  type: VTX
+  count: 4
+  offset: 0xDE50
+  symbol: cyan_fish_seg6_vertex_0600DE50
+
+cyan_fish_seg6_dl_0600DE90:
+  type: GFX
+  offset: 0xDE90
+  symbol: cyan_fish_seg6_dl_0600DE90
+
+cyan_fish_seg6_dl_0600DED8:
+  type: GFX
+  offset: 0xDED8
+  symbol: cyan_fish_seg6_dl_0600DED8
+
+cyan_fish_seg6_lights_0600DF48:
+  type: LIGHTS
+  size: 24
+  offset: 0xDF48
+  symbol: cyan_fish_seg6_lights_0600DF48
+
+cyan_fish_seg6_vertex_0600DF60:
+  type: VTX
+  count: 6
+  offset: 0xDF60
+  symbol: cyan_fish_seg6_vertex_0600DF60
+
+cyan_fish_seg6_dl_0600DFC0:
+  type: GFX
+  offset: 0xDFC0
+  symbol: cyan_fish_seg6_dl_0600DFC0
+
+cyan_fish_seg6_dl_0600E038:
+  type: GFX
+  offset: 0xE038
+  symbol: cyan_fish_seg6_dl_0600E038
+

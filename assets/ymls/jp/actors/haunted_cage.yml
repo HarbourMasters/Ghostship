@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x165060
+  segments:
+    - [0x05,  0x165060]
+
 bbh_cage_bars:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0xDA88
+  offset: 0xDA88
   format: RGBA16
   symbol: haunted_cage_seg5_texture_0500DA88
 bbh_cage_double_ornament:
@@ -12,8 +18,7 @@ bbh_cage_double_ornament:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0xCA88
+  offset: 0xCA88
   format: RGBA16
   symbol: haunted_cage_seg5_texture_0500CA88
 bbh_cage_floor:
@@ -21,8 +26,7 @@ bbh_cage_floor:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0xC288
+  offset: 0xC288
   format: RGBA16
   symbol: haunted_cage_seg5_texture_0500C288
 bbh_cage_garbage:
@@ -30,8 +34,7 @@ bbh_cage_garbage:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0xE288
+  offset: 0xE288
   format: RGBA16
   symbol: haunted_cage_seg5_texture_0500E288
 bbh_cage_ornament:
@@ -39,8 +42,7 @@ bbh_cage_ornament:
   size: 1024
   width: 32
   height: 16
-  offset: 0x165060
-  mio0: 0xD288
+  offset: 0xD288
   format: RGBA16
   symbol: haunted_cage_seg5_texture_0500D288
 bbh_cage_wooden_base:
@@ -48,7 +50,185 @@ bbh_cage_wooden_base:
   size: 1024
   width: 32
   height: 16
-  offset: 0x165060
-  mio0: 0xD688
+  offset: 0xD688
   format: RGBA16
   symbol: haunted_cage_seg5_texture_0500D688
+
+haunted_cage_seg5_lights_0500C258:
+  type: LIGHTS
+  size: 24
+  offset: 0xC258
+  symbol: haunted_cage_seg5_lights_0500C258
+
+haunted_cage_seg5_lights_0500C270:
+  type: LIGHTS
+  size: 24
+  offset: 0xC270
+  symbol: haunted_cage_seg5_lights_0500C270
+
+haunted_cage_seg5_vertex_0500EA88:
+  type: VTX
+  count: 15
+  offset: 0xEA88
+  symbol: haunted_cage_seg5_vertex_0500EA88
+
+haunted_cage_seg5_vertex_0500EB78:
+  type: VTX
+  count: 15
+  offset: 0xEB78
+  symbol: haunted_cage_seg5_vertex_0500EB78
+
+haunted_cage_seg5_vertex_0500EC68:
+  type: VTX
+  count: 6
+  offset: 0xEC68
+  symbol: haunted_cage_seg5_vertex_0500EC68
+
+haunted_cage_seg5_vertex_0500ECC8:
+  type: VTX
+  count: 15
+  offset: 0xECC8
+  symbol: haunted_cage_seg5_vertex_0500ECC8
+
+haunted_cage_seg5_vertex_0500EDB8:
+  type: VTX
+  count: 14
+  offset: 0xEDB8
+  symbol: haunted_cage_seg5_vertex_0500EDB8
+
+haunted_cage_seg5_vertex_0500EE98:
+  type: VTX
+  count: 15
+  offset: 0xEE98
+  symbol: haunted_cage_seg5_vertex_0500EE98
+
+haunted_cage_seg5_vertex_0500EF88:
+  type: VTX
+  count: 8
+  offset: 0xEF88
+  symbol: haunted_cage_seg5_vertex_0500EF88
+
+haunted_cage_seg5_vertex_0500F008:
+  type: VTX
+  count: 16
+  offset: 0xF008
+  symbol: haunted_cage_seg5_vertex_0500F008
+
+haunted_cage_seg5_vertex_0500F108:
+  type: VTX
+  count: 16
+  offset: 0xF108
+  symbol: haunted_cage_seg5_vertex_0500F108
+
+haunted_cage_seg5_vertex_0500F208:
+  type: VTX
+  count: 16
+  offset: 0xF208
+  symbol: haunted_cage_seg5_vertex_0500F208
+
+haunted_cage_seg5_vertex_0500F308:
+  type: VTX
+  count: 16
+  offset: 0xF308
+  symbol: haunted_cage_seg5_vertex_0500F308
+
+haunted_cage_seg5_vertex_0500F408:
+  type: VTX
+  count: 12
+  offset: 0xF408
+  symbol: haunted_cage_seg5_vertex_0500F408
+
+haunted_cage_seg5_dl_0500F4C8:
+  type: GFX
+  offset: 0xF4C8
+  symbol: haunted_cage_seg5_dl_0500F4C8
+
+haunted_cage_seg5_dl_0500F660:
+  type: GFX
+  offset: 0xF660
+  symbol: haunted_cage_seg5_dl_0500F660
+
+haunted_cage_seg5_dl_0500F760:
+  type: GFX
+  offset: 0xF760
+  symbol: haunted_cage_seg5_dl_0500F760
+
+haunted_cage_seg5_dl_0500F7D8:
+  type: GFX
+  offset: 0xF7D8
+  symbol: haunted_cage_seg5_dl_0500F7D8
+
+haunted_cage_seg5_lights_0500F888:
+  type: LIGHTS
+  size: 24
+  offset: 0xF888
+  symbol: haunted_cage_seg5_lights_0500F888
+
+haunted_cage_seg5_vertex_0500F8A0:
+  type: VTX
+  count: 15
+  offset: 0xF8A0
+  symbol: haunted_cage_seg5_vertex_0500F8A0
+
+haunted_cage_seg5_vertex_0500F990:
+  type: VTX
+  count: 15
+  offset: 0xF990
+  symbol: haunted_cage_seg5_vertex_0500F990
+
+haunted_cage_seg5_vertex_0500FA80:
+  type: VTX
+  count: 12
+  offset: 0xFA80
+  symbol: haunted_cage_seg5_vertex_0500FA80
+
+haunted_cage_seg5_dl_0500FB40:
+  type: GFX
+  offset: 0xFB40
+  symbol: haunted_cage_seg5_dl_0500FB40
+
+haunted_cage_seg5_dl_0500FC28:
+  type: GFX
+  offset: 0xFC28
+  symbol: haunted_cage_seg5_dl_0500FC28
+
+haunted_cage_seg5_lights_0500FC98:
+  type: LIGHTS
+  size: 24
+  offset: 0xFC98
+  symbol: haunted_cage_seg5_lights_0500FC98
+
+haunted_cage_seg5_vertex_0500FCB0:
+  type: VTX
+  count: 15
+  offset: 0xFCB0
+  symbol: haunted_cage_seg5_vertex_0500FCB0
+
+haunted_cage_seg5_vertex_0500FDA0:
+  type: VTX
+  count: 14
+  offset: 0xFDA0
+  symbol: haunted_cage_seg5_vertex_0500FDA0
+
+haunted_cage_seg5_vertex_0500FE80:
+  type: VTX
+  count: 16
+  offset: 0xFE80
+  symbol: haunted_cage_seg5_vertex_0500FE80
+
+haunted_cage_seg5_vertex_0500FF80:
+  type: VTX
+  count: 7
+  offset: 0xFF80
+  symbol: haunted_cage_seg5_vertex_0500FF80
+
+haunted_cage_seg5_dl_0500FFF0:
+  type: GFX
+  offset: 0xFFF0
+  symbol: haunted_cage_seg5_dl_0500FFF0
+
+haunted_cage_seg5_dl_05010100:
+  type: GFX
+  offset: 0x10100
+  symbol: haunted_cage_seg5_dl_05010100
+

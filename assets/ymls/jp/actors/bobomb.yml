@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 bob-omb_buddy_left_side:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x133120
-  mio0: 0x78
+  offset: 0x78
   format: RGBA16
   symbol: bobomb_seg8_texture_0801FA60
 bob-omb_buddy_right_side:
@@ -12,8 +18,7 @@ bob-omb_buddy_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x133120
-  mio0: 0x1078
+  offset: 0x1078
   format: RGBA16
   symbol: bobomb_seg8_texture_08020A60
 bob-omb_eyes:
@@ -21,8 +26,7 @@ bob-omb_eyes:
   size: 2048
   width: 32
   height: 32
-  offset: 0x133120
-  mio0: 0x4878
+  offset: 0x4878
   format: RGBA16
   symbol: bobomb_seg8_texture_08021A60
 bob-omb_eyes_blink:
@@ -30,8 +34,7 @@ bob-omb_eyes_blink:
   size: 2048
   width: 32
   height: 32
-  offset: 0x133120
-  mio0: 0x5078
+  offset: 0x5078
   format: RGBA16
   symbol: bobomb_seg8_texture_08022260
 bob-omb_left_side:
@@ -39,8 +42,7 @@ bob-omb_left_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F0530
-  mio0: 0x1DA60
+  offset: 0x1DA60
   format: RGBA16
   symbol: bobomb_seg8_texture_0801DA60
 bob-omb_right_side:
@@ -48,7 +50,134 @@ bob-omb_right_side:
   size: 4096
   width: 32
   height: 64
-  offset: 0x1F0530
-  mio0: 0x1EA60
+  offset: 0x1EA60
   format: RGBA16
   symbol: bobomb_seg8_texture_0801EA60
+
+bobomb_seg8_vertex_08022A60:
+  type: VTX
+  count: 6
+  offset: 0x22A60
+  symbol: bobomb_seg8_vertex_08022A60
+
+bobomb_seg8_dl_08022AC0:
+  type: GFX
+  offset: 0x22AC0
+  symbol: bobomb_seg8_dl_08022AC0
+
+bobomb_seg8_dl_08022B08:
+  type: GFX
+  offset: 0x22B08
+  symbol: bobomb_seg8_dl_08022B08
+
+bobomb_seg8_dl_08022B58:
+  type: GFX
+  offset: 0x22B58
+  symbol: bobomb_seg8_dl_08022B58
+
+bobomb_seg8_dl_08022B88:
+  type: GFX
+  offset: 0x22B88
+  symbol: bobomb_seg8_dl_08022B88
+
+bobomb_seg8_vertex_08022BB8:
+  type: VTX
+  count: 4
+  offset: 0x22BB8
+  symbol: bobomb_seg8_vertex_08022BB8
+
+bobomb_seg8_vertex_08022BF8:
+  type: VTX
+  count: 4
+  offset: 0x22BF8
+  symbol: bobomb_seg8_vertex_08022BF8
+
+bobomb_seg8_dl_08022C38:
+  type: GFX
+  offset: 0x22C38
+  symbol: bobomb_seg8_dl_08022C38
+
+bobomb_seg8_dl_08022CA0:
+  type: GFX
+  offset: 0x22CA0
+  symbol: bobomb_seg8_dl_08022CA0
+
+bobomb_seg8_dl_08022D08:
+  type: GFX
+  offset: 0x22D08
+  symbol: bobomb_seg8_dl_08022D08
+
+bobomb_seg8_dl_08022D78:
+  type: GFX
+  offset: 0x22D78
+  symbol: bobomb_seg8_dl_08022D78
+
+bobomb_seg8_lights_08022DE8:
+  type: LIGHTS
+  size: 24
+  offset: 0x22DE8
+  symbol: bobomb_seg8_lights_08022DE8
+
+bobomb_seg8_lights_08022E00:
+  type: LIGHTS
+  size: 24
+  offset: 0x22E00
+  symbol: bobomb_seg8_lights_08022E00
+
+bobomb_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0x22E00
+  symbol: bobomb_lights_unused
+
+bobomb_seg8_vertex_08022E30:
+  type: VTX
+  count: 16
+  offset: 0x22E30
+  symbol: bobomb_seg8_vertex_08022E30
+
+bobomb_seg8_vertex_08022F30:
+  type: VTX
+  count: 4
+  offset: 0x22F30
+  symbol: bobomb_seg8_vertex_08022F30
+
+bobomb_seg8_vertex_08022F70:
+  type: VTX
+  count: 16
+  offset: 0x22F70
+  symbol: bobomb_seg8_vertex_08022F70
+
+bobomb_seg8_vertex_08023070:
+  type: VTX
+  count: 4
+  offset: 0x23070
+  symbol: bobomb_seg8_vertex_08023070
+
+bobomb_seg8_vertex_080230B0:
+  type: VTX
+  count: 14
+  offset: 0x230B0
+  symbol: bobomb_seg8_vertex_080230B0
+
+bobomb_seg8_vertex_08023190:
+  type: VTX
+  count: 14
+  offset: 0x23190
+  symbol: bobomb_seg8_vertex_08023190
+
+bobomb_seg8_dl_08023270:
+  type: GFX
+  offset: 0x23270
+  symbol: bobomb_seg8_dl_08023270
+
+bobomb_seg8_dl_08023378:
+  type: GFX
+  offset: 0x23378
+  symbol: bobomb_seg8_dl_08023378
+
+bobomb_seg8_dl_08023480:
+  type: GFX
+  offset: 0x23480
+  symbol: bobomb_seg8_dl_08023480
+

@@ -1,9 +1,27 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1FF740
+  segments:
+    - [0x03,  0x1FF740]
+
 snow_particle:
   type: TEXTURE
   size: 512
   width: 16
   height: 16
-  offset: 0x1FF740
-  mio0: 0x2C6A0
+  offset: 0x2C6A0
   format: RGBA16
   symbol: white_particle_texture
+
+white_particle_vertex:
+  type: VTX
+  count: 4
+  offset: 0x2C660
+  symbol: white_particle_vertex
+
+white_particle_dl:
+  type: GFX
+  offset: 0x2C8A0
+  symbol: white_particle_dl
+

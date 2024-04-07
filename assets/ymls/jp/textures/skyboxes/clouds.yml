@@ -1,0 +1,11 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x2C5970
+  segments:
+    - [0x0A,  0x2C5970]
+
+clouds:
+  type: BLOB
+  size: 84288
+  offset: 0x0

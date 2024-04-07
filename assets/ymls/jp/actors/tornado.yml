@@ -1,9 +1,56 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x139D10
+  segments:
+    - [0x05,  0x139D10]
+
 tornado:
   type: TEXTURE
   size: 4096
   width: 32
   height: 64
-  offset: 0x139D10
-  mio0: 0x12848
+  offset: 0x12848
   format: IA16
   symbol: tornado_seg5_texture_05013128
+
+tornado_seg5_lights_05014128:
+  type: LIGHTS
+  size: 24
+  offset: 0x14128
+  symbol: tornado_seg5_lights_05014128
+
+tornado_seg5_vertex_05014140:
+  type: VTX
+  count: 14
+  offset: 0x14140
+  symbol: tornado_seg5_vertex_05014140
+
+tornado_seg5_vertex_05014220:
+  type: VTX
+  count: 16
+  offset: 0x14220
+  symbol: tornado_seg5_vertex_05014220
+
+tornado_seg5_vertex_05014320:
+  type: VTX
+  count: 14
+  offset: 0x14320
+  symbol: tornado_seg5_vertex_05014320
+
+tornado_seg5_vertex_05014400:
+  type: VTX
+  count: 5
+  offset: 0x14400
+  symbol: tornado_seg5_vertex_05014400
+
+tornado_seg5_dl_05014450:
+  type: GFX
+  offset: 0x14450
+  symbol: tornado_seg5_dl_05014450
+
+tornado_seg5_dl_050145C0:
+  type: GFX
+  offset: 0x145C0
+  symbol: tornado_seg5_dl_050145C0
+

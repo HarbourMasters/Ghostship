@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x404010
+  segments:
+    - [0x07,  0x404010]
+
 0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x404010
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: sl_seg7_texture_07000000
 1:
@@ -12,8 +18,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x404010
-  mio0: 0x800
+  offset: 0x800
   format: RGBA16
   symbol: sl_seg7_texture_07000800
 2:
@@ -21,8 +26,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x404010
-  mio0: 0x1000
+  offset: 0x1000
   format: RGBA16
   symbol: sl_seg7_texture_07001000
 3:
@@ -30,8 +34,7 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x404010
-  mio0: 0x1800
+  offset: 0x1800
   format: RGBA16
   symbol: sl_seg7_texture_07001800
 4:
@@ -39,7 +42,1140 @@
   size: 2048
   width: 32
   height: 32
-  offset: 0x404010
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: sl_seg7_texture_07002000
+
+sl_seg7_lights_0700A910:
+  type: LIGHTS
+  size: 24
+  offset: 0xA910
+  symbol: sl_seg7_lights_0700A910
+
+sl_seg7_vertex_0700A928:
+  type: VTX
+  count: 3
+  offset: 0xA928
+  symbol: sl_seg7_vertex_0700A928
+
+sl_seg7_dl_0700A958:
+  type: GFX
+  offset: 0xA958
+  symbol: sl_seg7_dl_0700A958
+
+sl_seg7_dl_0700A980:
+  type: GFX
+  offset: 0xA980
+  symbol: sl_seg7_dl_0700A980
+
+sl_seg7_lights_0700A620:
+  type: LIGHTS
+  size: 24
+  offset: 0xA620
+  symbol: sl_seg7_lights_0700A620
+
+sl_seg7_vertex_0700A638:
+  type: VTX
+  count: 14
+  offset: 0xA638
+  symbol: sl_seg7_vertex_0700A638
+
+sl_seg7_dl_0700A718:
+  type: GFX
+  offset: 0xA718
+  symbol: sl_seg7_dl_0700A718
+
+sl_seg7_dl_0700A780:
+  type: GFX
+  offset: 0xA780
+  symbol: sl_seg7_dl_0700A780
+
+sl_seg7_lights_07008DE8:
+  type: LIGHTS
+  size: 24
+  offset: 0x8DE8
+  symbol: sl_seg7_lights_07008DE8
+
+sl_seg7_vertex_07008E00:
+  type: VTX
+  count: 16
+  offset: 0x8E00
+  symbol: sl_seg7_vertex_07008E00
+
+sl_seg7_vertex_07008F00:
+  type: VTX
+  count: 4
+  offset: 0x8F00
+  symbol: sl_seg7_vertex_07008F00
+
+sl_seg7_vertex_07008F40:
+  type: VTX
+  count: 14
+  offset: 0x8F40
+  symbol: sl_seg7_vertex_07008F40
+
+sl_seg7_vertex_07009020:
+  type: VTX
+  count: 16
+  offset: 0x9020
+  symbol: sl_seg7_vertex_07009020
+
+sl_seg7_vertex_07009120:
+  type: VTX
+  count: 16
+  offset: 0x9120
+  symbol: sl_seg7_vertex_07009120
+
+sl_seg7_vertex_07009220:
+  type: VTX
+  count: 16
+  offset: 0x9220
+  symbol: sl_seg7_vertex_07009220
+
+sl_seg7_vertex_07009320:
+  type: VTX
+  count: 15
+  offset: 0x9320
+  symbol: sl_seg7_vertex_07009320
+
+sl_seg7_vertex_07009410:
+  type: VTX
+  count: 16
+  offset: 0x9410
+  symbol: sl_seg7_vertex_07009410
+
+sl_seg7_vertex_07009510:
+  type: VTX
+  count: 15
+  offset: 0x9510
+  symbol: sl_seg7_vertex_07009510
+
+sl_seg7_vertex_07009600:
+  type: VTX
+  count: 15
+  offset: 0x9600
+  symbol: sl_seg7_vertex_07009600
+
+sl_seg7_vertex_070096F0:
+  type: VTX
+  count: 14
+  offset: 0x96F0
+  symbol: sl_seg7_vertex_070096F0
+
+sl_seg7_vertex_070097D0:
+  type: VTX
+  count: 16
+  offset: 0x97D0
+  symbol: sl_seg7_vertex_070097D0
+
+sl_seg7_vertex_070098D0:
+  type: VTX
+  count: 16
+  offset: 0x98D0
+  symbol: sl_seg7_vertex_070098D0
+
+sl_seg7_vertex_070099D0:
+  type: VTX
+  count: 14
+  offset: 0x99D0
+  symbol: sl_seg7_vertex_070099D0
+
+sl_seg7_vertex_07009AB0:
+  type: VTX
+  count: 11
+  offset: 0x9AB0
+  symbol: sl_seg7_vertex_07009AB0
+
+sl_seg7_vertex_07009B60:
+  type: VTX
+  count: 4
+  offset: 0x9B60
+  symbol: sl_seg7_vertex_07009B60
+
+sl_seg7_vertex_07009BA0:
+  type: VTX
+  count: 16
+  offset: 0x9BA0
+  symbol: sl_seg7_vertex_07009BA0
+
+sl_seg7_vertex_07009CA0:
+  type: VTX
+  count: 16
+  offset: 0x9CA0
+  symbol: sl_seg7_vertex_07009CA0
+
+sl_seg7_vertex_07009DA0:
+  type: VTX
+  count: 14
+  offset: 0x9DA0
+  symbol: sl_seg7_vertex_07009DA0
+
+sl_seg7_vertex_07009E80:
+  type: VTX
+  count: 11
+  offset: 0x9E80
+  symbol: sl_seg7_vertex_07009E80
+
+sl_seg7_dl_07009F30:
+  type: GFX
+  offset: 0x9F30
+  symbol: sl_seg7_dl_07009F30
+
+sl_seg7_dl_07009FE0:
+  type: GFX
+  offset: 0x9FE0
+  symbol: sl_seg7_dl_07009FE0
+
+sl_seg7_dl_0700A058:
+  type: GFX
+  offset: 0xA058
+  symbol: sl_seg7_dl_0700A058
+
+sl_seg7_dl_0700A418:
+  type: GFX
+  offset: 0xA418
+  symbol: sl_seg7_dl_0700A418
+
+sl_seg7_dl_0700A450:
+  type: GFX
+  offset: 0xA450
+  symbol: sl_seg7_dl_0700A450
+
+sl_seg7_dl_0700A5A0:
+  type: GFX
+  offset: 0xA5A0
+  symbol: sl_seg7_dl_0700A5A0
+
+sl_seg7_lights_07008930:
+  type: LIGHTS
+  size: 24
+  offset: 0x8930
+  symbol: sl_seg7_lights_07008930
+
+sl_seg7_lights_07008948:
+  type: LIGHTS
+  size: 24
+  offset: 0x8948
+  symbol: sl_seg7_lights_07008948
+
+sl_seg7_vertex_07008960:
+  type: VTX
+  count: 16
+  offset: 0x8960
+  symbol: sl_seg7_vertex_07008960
+
+sl_seg7_vertex_07008A60:
+  type: VTX
+  count: 15
+  offset: 0x8A60
+  symbol: sl_seg7_vertex_07008A60
+
+sl_seg7_vertex_07008B50:
+  type: VTX
+  count: 10
+  offset: 0x8B50
+  symbol: sl_seg7_vertex_07008B50
+
+sl_seg7_vertex_07008BF0:
+  type: VTX
+  count: 4
+  offset: 0x8BF0
+  symbol: sl_seg7_vertex_07008BF0
+
+sl_seg7_dl_07008C30:
+  type: GFX
+  offset: 0x8C30
+  symbol: sl_seg7_dl_07008C30
+
+sl_seg7_dl_07008D10:
+  type: GFX
+  offset: 0x8D10
+  symbol: sl_seg7_dl_07008D10
+
+sl_seg7_dl_07008D58:
+  type: GFX
+  offset: 0x8D58
+  symbol: sl_seg7_dl_07008D58
+
+sl_seg7_lights_07002800:
+  type: LIGHTS
+  size: 24
+  offset: 0x2800
+  symbol: sl_seg7_lights_07002800
+
+sl_seg7_lights_07002818:
+  type: LIGHTS
+  size: 24
+  offset: 0x2818
+  symbol: sl_seg7_lights_07002818
+
+sl_seg7_vertex_07002830:
+  type: VTX
+  count: 14
+  offset: 0x2830
+  symbol: sl_seg7_vertex_07002830
+
+sl_seg7_vertex_07002910:
+  type: VTX
+  count: 16
+  offset: 0x2910
+  symbol: sl_seg7_vertex_07002910
+
+sl_seg7_vertex_07002A10:
+  type: VTX
+  count: 16
+  offset: 0x2A10
+  symbol: sl_seg7_vertex_07002A10
+
+sl_seg7_vertex_07002B10:
+  type: VTX
+  count: 15
+  offset: 0x2B10
+  symbol: sl_seg7_vertex_07002B10
+
+sl_seg7_vertex_07002C00:
+  type: VTX
+  count: 16
+  offset: 0x2C00
+  symbol: sl_seg7_vertex_07002C00
+
+sl_seg7_vertex_07002D00:
+  type: VTX
+  count: 15
+  offset: 0x2D00
+  symbol: sl_seg7_vertex_07002D00
+
+sl_seg7_vertex_07002DF0:
+  type: VTX
+  count: 15
+  offset: 0x2DF0
+  symbol: sl_seg7_vertex_07002DF0
+
+sl_seg7_vertex_07002EE0:
+  type: VTX
+  count: 16
+  offset: 0x2EE0
+  symbol: sl_seg7_vertex_07002EE0
+
+sl_seg7_vertex_07002FE0:
+  type: VTX
+  count: 16
+  offset: 0x2FE0
+  symbol: sl_seg7_vertex_07002FE0
+
+sl_seg7_vertex_070030E0:
+  type: VTX
+  count: 14
+  offset: 0x30E0
+  symbol: sl_seg7_vertex_070030E0
+
+sl_seg7_vertex_070031C0:
+  type: VTX
+  count: 16
+  offset: 0x31C0
+  symbol: sl_seg7_vertex_070031C0
+
+sl_seg7_vertex_070032C0:
+  type: VTX
+  count: 16
+  offset: 0x32C0
+  symbol: sl_seg7_vertex_070032C0
+
+sl_seg7_vertex_070033C0:
+  type: VTX
+  count: 15
+  offset: 0x33C0
+  symbol: sl_seg7_vertex_070033C0
+
+sl_seg7_vertex_070034B0:
+  type: VTX
+  count: 15
+  offset: 0x34B0
+  symbol: sl_seg7_vertex_070034B0
+
+sl_seg7_vertex_070035A0:
+  type: VTX
+  count: 14
+  offset: 0x35A0
+  symbol: sl_seg7_vertex_070035A0
+
+sl_seg7_vertex_07003680:
+  type: VTX
+  count: 16
+  offset: 0x3680
+  symbol: sl_seg7_vertex_07003680
+
+sl_seg7_vertex_07003780:
+  type: VTX
+  count: 14
+  offset: 0x3780
+  symbol: sl_seg7_vertex_07003780
+
+sl_seg7_vertex_07003860:
+  type: VTX
+  count: 16
+  offset: 0x3860
+  symbol: sl_seg7_vertex_07003860
+
+sl_seg7_vertex_07003960:
+  type: VTX
+  count: 16
+  offset: 0x3960
+  symbol: sl_seg7_vertex_07003960
+
+sl_seg7_vertex_07003A60:
+  type: VTX
+  count: 16
+  offset: 0x3A60
+  symbol: sl_seg7_vertex_07003A60
+
+sl_seg7_vertex_07003B60:
+  type: VTX
+  count: 14
+  offset: 0x3B60
+  symbol: sl_seg7_vertex_07003B60
+
+sl_seg7_vertex_07003C40:
+  type: VTX
+  count: 15
+  offset: 0x3C40
+  symbol: sl_seg7_vertex_07003C40
+
+sl_seg7_vertex_07003D30:
+  type: VTX
+  count: 14
+  offset: 0x3D30
+  symbol: sl_seg7_vertex_07003D30
+
+sl_seg7_vertex_07003E10:
+  type: VTX
+  count: 14
+  offset: 0x3E10
+  symbol: sl_seg7_vertex_07003E10
+
+sl_seg7_vertex_07003EF0:
+  type: VTX
+  count: 15
+  offset: 0x3EF0
+  symbol: sl_seg7_vertex_07003EF0
+
+sl_seg7_vertex_07003FE0:
+  type: VTX
+  count: 16
+  offset: 0x3FE0
+  symbol: sl_seg7_vertex_07003FE0
+
+sl_seg7_vertex_070040E0:
+  type: VTX
+  count: 15
+  offset: 0x40E0
+  symbol: sl_seg7_vertex_070040E0
+
+sl_seg7_vertex_070041D0:
+  type: VTX
+  count: 14
+  offset: 0x41D0
+  symbol: sl_seg7_vertex_070041D0
+
+sl_seg7_vertex_070042B0:
+  type: VTX
+  count: 14
+  offset: 0x42B0
+  symbol: sl_seg7_vertex_070042B0
+
+sl_seg7_vertex_07004390:
+  type: VTX
+  count: 16
+  offset: 0x4390
+  symbol: sl_seg7_vertex_07004390
+
+sl_seg7_vertex_07004490:
+  type: VTX
+  count: 16
+  offset: 0x4490
+  symbol: sl_seg7_vertex_07004490
+
+sl_seg7_vertex_07004590:
+  type: VTX
+  count: 9
+  offset: 0x4590
+  symbol: sl_seg7_vertex_07004590
+
+sl_seg7_vertex_07004620:
+  type: VTX
+  count: 5
+  offset: 0x4620
+  symbol: sl_seg7_vertex_07004620
+
+sl_seg7_vertex_07004670:
+  type: VTX
+  count: 8
+  offset: 0x4670
+  symbol: sl_seg7_vertex_07004670
+
+sl_seg7_vertex_070046F0:
+  type: VTX
+  count: 6
+  offset: 0x46F0
+  symbol: sl_seg7_vertex_070046F0
+
+sl_seg7_vertex_07004750:
+  type: VTX
+  count: 14
+  offset: 0x4750
+  symbol: sl_seg7_vertex_07004750
+
+sl_seg7_dl_07004830:
+  type: GFX
+  offset: 0x4830
+  symbol: sl_seg7_dl_07004830
+
+sl_seg7_dl_07005370:
+  type: GFX
+  offset: 0x5370
+  symbol: sl_seg7_dl_07005370
+
+sl_seg7_dl_070053C8:
+  type: GFX
+  offset: 0x53C8
+  symbol: sl_seg7_dl_070053C8
+
+sl_seg7_dl_07005410:
+  type: GFX
+  offset: 0x5410
+  symbol: sl_seg7_dl_07005410
+
+sl_seg7_dl_07005478:
+  type: GFX
+  offset: 0x5478
+  symbol: sl_seg7_dl_07005478
+
+sl_seg7_vertex_07007480:
+  type: VTX
+  count: 15
+  offset: 0x7480
+  symbol: sl_seg7_vertex_07007480
+
+sl_seg7_vertex_07007570:
+  type: VTX
+  count: 7
+  offset: 0x7570
+  symbol: sl_seg7_vertex_07007570
+
+sl_seg7_vertex_070075E0:
+  type: VTX
+  count: 16
+  offset: 0x75E0
+  symbol: sl_seg7_vertex_070075E0
+
+sl_seg7_vertex_070076E0:
+  type: VTX
+  count: 9
+  offset: 0x76E0
+  symbol: sl_seg7_vertex_070076E0
+
+sl_seg7_dl_07007770:
+  type: GFX
+  offset: 0x7770
+  symbol: sl_seg7_dl_07007770
+
+sl_seg7_dl_070077F0:
+  type: GFX
+  offset: 0x77F0
+  symbol: sl_seg7_dl_070077F0
+
+sl_seg7_dl_07007880:
+  type: GFX
+  offset: 0x7880
+  symbol: sl_seg7_dl_07007880
+
+sl_seg7_lights_07005730:
+  type: LIGHTS
+  size: 24
+  offset: 0x5730
+  symbol: sl_seg7_lights_07005730
+
+sl_seg7_lights_07005748:
+  type: LIGHTS
+  size: 24
+  offset: 0x5748
+  symbol: sl_seg7_lights_07005748
+
+sl_seg7_vertex_07005760:
+  type: VTX
+  count: 7
+  offset: 0x5760
+  symbol: sl_seg7_vertex_07005760
+
+sl_seg7_vertex_070057D0:
+  type: VTX
+  count: 4
+  offset: 0x57D0
+  symbol: sl_seg7_vertex_070057D0
+
+sl_seg7_vertex_07005810:
+  type: VTX
+  count: 15
+  offset: 0x5810
+  symbol: sl_seg7_vertex_07005810
+
+sl_seg7_vertex_07005900:
+  type: VTX
+  count: 16
+  offset: 0x5900
+  symbol: sl_seg7_vertex_07005900
+
+sl_seg7_vertex_07005A00:
+  type: VTX
+  count: 3
+  offset: 0x5A00
+  symbol: sl_seg7_vertex_07005A00
+
+sl_seg7_vertex_07005A30:
+  type: VTX
+  count: 16
+  offset: 0x5A30
+  symbol: sl_seg7_vertex_07005A30
+
+sl_seg7_vertex_07005B30:
+  type: VTX
+  count: 16
+  offset: 0x5B30
+  symbol: sl_seg7_vertex_07005B30
+
+sl_seg7_vertex_07005C30:
+  type: VTX
+  count: 16
+  offset: 0x5C30
+  symbol: sl_seg7_vertex_07005C30
+
+sl_seg7_vertex_07005D30:
+  type: VTX
+  count: 14
+  offset: 0x5D30
+  symbol: sl_seg7_vertex_07005D30
+
+sl_seg7_vertex_07005E10:
+  type: VTX
+  count: 14
+  offset: 0x5E10
+  symbol: sl_seg7_vertex_07005E10
+
+sl_seg7_vertex_07005EF0:
+  type: VTX
+  count: 16
+  offset: 0x5EF0
+  symbol: sl_seg7_vertex_07005EF0
+
+sl_seg7_vertex_07005FF0:
+  type: VTX
+  count: 15
+  offset: 0x5FF0
+  symbol: sl_seg7_vertex_07005FF0
+
+sl_seg7_vertex_070060E0:
+  type: VTX
+  count: 16
+  offset: 0x60E0
+  symbol: sl_seg7_vertex_070060E0
+
+sl_seg7_vertex_070061E0:
+  type: VTX
+  count: 7
+  offset: 0x61E0
+  symbol: sl_seg7_vertex_070061E0
+
+sl_seg7_vertex_07006250:
+  type: VTX
+  count: 16
+  offset: 0x6250
+  symbol: sl_seg7_vertex_07006250
+
+sl_seg7_vertex_07006350:
+  type: VTX
+  count: 6
+  offset: 0x6350
+  symbol: sl_seg7_vertex_07006350
+
+sl_seg7_vertex_070063B0:
+  type: VTX
+  count: 16
+  offset: 0x63B0
+  symbol: sl_seg7_vertex_070063B0
+
+sl_seg7_vertex_070064B0:
+  type: VTX
+  count: 14
+  offset: 0x64B0
+  symbol: sl_seg7_vertex_070064B0
+
+sl_seg7_vertex_07006590:
+  type: VTX
+  count: 16
+  offset: 0x6590
+  symbol: sl_seg7_vertex_07006590
+
+sl_seg7_vertex_07006690:
+  type: VTX
+  count: 16
+  offset: 0x6690
+  symbol: sl_seg7_vertex_07006690
+
+sl_seg7_vertex_07006790:
+  type: VTX
+  count: 14
+  offset: 0x6790
+  symbol: sl_seg7_vertex_07006790
+
+sl_seg7_vertex_07006870:
+  type: VTX
+  count: 14
+  offset: 0x6870
+  symbol: sl_seg7_vertex_07006870
+
+sl_seg7_vertex_07006950:
+  type: VTX
+  count: 15
+  offset: 0x6950
+  symbol: sl_seg7_vertex_07006950
+
+sl_seg7_vertex_07006A40:
+  type: VTX
+  count: 15
+  offset: 0x6A40
+  symbol: sl_seg7_vertex_07006A40
+
+sl_seg7_vertex_07006B30:
+  type: VTX
+  count: 16
+  offset: 0x6B30
+  symbol: sl_seg7_vertex_07006B30
+
+sl_seg7_vertex_07006C30:
+  type: VTX
+  count: 4
+  offset: 0x6C30
+  symbol: sl_seg7_vertex_07006C30
+
+sl_seg7_vertex_07006C70:
+  type: VTX
+  count: 16
+  offset: 0x6C70
+  symbol: sl_seg7_vertex_07006C70
+
+sl_seg7_dl_07006D70:
+  type: GFX
+  offset: 0x6D70
+  symbol: sl_seg7_dl_07006D70
+
+sl_seg7_dl_07006DE8:
+  type: GFX
+  offset: 0x6DE8
+  symbol: sl_seg7_dl_07006DE8
+
+sl_seg7_dl_07006EB0:
+  type: GFX
+  offset: 0x6EB0
+  symbol: sl_seg7_dl_07006EB0
+
+sl_seg7_dl_070070A8:
+  type: GFX
+  offset: 0x70A8
+  symbol: sl_seg7_dl_070070A8
+
+sl_seg7_dl_07007118:
+  type: GFX
+  offset: 0x7118
+  symbol: sl_seg7_dl_07007118
+
+sl_seg7_dl_07007368:
+  type: GFX
+  offset: 0x7368
+  symbol: sl_seg7_dl_07007368
+
+sl_seg7_dl_070073D0:
+  type: GFX
+  offset: 0x73D0
+  symbol: sl_seg7_dl_070073D0
+
+sl_seg7_lights_07005520:
+  type: LIGHTS
+  size: 24
+  offset: 0x5520
+  symbol: sl_seg7_lights_07005520
+
+sl_seg7_vertex_07005538:
+  type: VTX
+  count: 16
+  offset: 0x5538
+  symbol: sl_seg7_vertex_07005538
+
+sl_seg7_dl_07005638:
+  type: GFX
+  offset: 0x5638
+  symbol: sl_seg7_dl_07005638
+
+sl_seg7_dl_070056B0:
+  type: GFX
+  offset: 0x56B0
+  symbol: sl_seg7_dl_070056B0
+
+sl_seg7_lights_07007910:
+  type: LIGHTS
+  size: 24
+  offset: 0x7910
+  symbol: sl_seg7_lights_07007910
+
+sl_seg7_vertex_07007928:
+  type: VTX
+  count: 15
+  offset: 0x7928
+  symbol: sl_seg7_vertex_07007928
+
+sl_seg7_vertex_07007A18:
+  type: VTX
+  count: 15
+  offset: 0x7A18
+  symbol: sl_seg7_vertex_07007A18
+
+sl_seg7_vertex_07007B08:
+  type: VTX
+  count: 15
+  offset: 0x7B08
+  symbol: sl_seg7_vertex_07007B08
+
+sl_seg7_vertex_07007BF8:
+  type: VTX
+  count: 16
+  offset: 0x7BF8
+  symbol: sl_seg7_vertex_07007BF8
+
+sl_seg7_vertex_07007CF8:
+  type: VTX
+  count: 15
+  offset: 0x7CF8
+  symbol: sl_seg7_vertex_07007CF8
+
+sl_seg7_vertex_07007DE8:
+  type: VTX
+  count: 14
+  offset: 0x7DE8
+  symbol: sl_seg7_vertex_07007DE8
+
+sl_seg7_vertex_07007EC8:
+  type: VTX
+  count: 15
+  offset: 0x7EC8
+  symbol: sl_seg7_vertex_07007EC8
+
+sl_seg7_vertex_07007FB8:
+  type: VTX
+  count: 15
+  offset: 0x7FB8
+  symbol: sl_seg7_vertex_07007FB8
+
+sl_seg7_vertex_070080A8:
+  type: VTX
+  count: 15
+  offset: 0x80A8
+  symbol: sl_seg7_vertex_070080A8
+
+sl_seg7_vertex_07008198:
+  type: VTX
+  count: 15
+  offset: 0x8198
+  symbol: sl_seg7_vertex_07008198
+
+sl_seg7_vertex_07008288:
+  type: VTX
+  count: 15
+  offset: 0x8288
+  symbol: sl_seg7_vertex_07008288
+
+sl_seg7_vertex_07008378:
+  type: VTX
+  count: 16
+  offset: 0x8378
+  symbol: sl_seg7_vertex_07008378
+
+sl_seg7_vertex_07008478:
+  type: VTX
+  count: 11
+  offset: 0x8478
+  symbol: sl_seg7_vertex_07008478
+
+sl_seg7_dl_07008528:
+  type: GFX
+  offset: 0x8528
+  symbol: sl_seg7_dl_07008528
+
+sl_seg7_dl_070088B0:
+  type: GFX
+  offset: 0x88B0
+  symbol: sl_seg7_dl_070088B0
+
+sl_seg7_lights_0700A9B0:
+  type: LIGHTS
+  size: 24
+  offset: 0xA9B0
+  symbol: sl_seg7_lights_0700A9B0
+
+sl_seg7_lights_0700A9C8:
+  type: LIGHTS
+  size: 24
+  offset: 0xA9C8
+  symbol: sl_seg7_lights_0700A9C8
+
+sl_seg7_vertex_0700A9E0:
+  type: VTX
+  count: 16
+  offset: 0xA9E0
+  symbol: sl_seg7_vertex_0700A9E0
+
+sl_seg7_vertex_0700AAE0:
+  type: VTX
+  count: 16
+  offset: 0xAAE0
+  symbol: sl_seg7_vertex_0700AAE0
+
+sl_seg7_vertex_0700ABE0:
+  type: VTX
+  count: 14
+  offset: 0xABE0
+  symbol: sl_seg7_vertex_0700ABE0
+
+sl_seg7_vertex_0700ACC0:
+  type: VTX
+  count: 15
+  offset: 0xACC0
+  symbol: sl_seg7_vertex_0700ACC0
+
+sl_seg7_vertex_0700ADB0:
+  type: VTX
+  count: 15
+  offset: 0xADB0
+  symbol: sl_seg7_vertex_0700ADB0
+
+sl_seg7_vertex_0700AEA0:
+  type: VTX
+  count: 16
+  offset: 0xAEA0
+  symbol: sl_seg7_vertex_0700AEA0
+
+sl_seg7_vertex_0700AFA0:
+  type: VTX
+  count: 14
+  offset: 0xAFA0
+  symbol: sl_seg7_vertex_0700AFA0
+
+sl_seg7_vertex_0700B080:
+  type: VTX
+  count: 15
+  offset: 0xB080
+  symbol: sl_seg7_vertex_0700B080
+
+sl_seg7_vertex_0700B170:
+  type: VTX
+  count: 14
+  offset: 0xB170
+  symbol: sl_seg7_vertex_0700B170
+
+sl_seg7_vertex_0700B250:
+  type: VTX
+  count: 14
+  offset: 0xB250
+  symbol: sl_seg7_vertex_0700B250
+
+sl_seg7_vertex_0700B330:
+  type: VTX
+  count: 15
+  offset: 0xB330
+  symbol: sl_seg7_vertex_0700B330
+
+sl_seg7_vertex_0700B420:
+  type: VTX
+  count: 15
+  offset: 0xB420
+  symbol: sl_seg7_vertex_0700B420
+
+sl_seg7_vertex_0700B510:
+  type: VTX
+  count: 12
+  offset: 0xB510
+  symbol: sl_seg7_vertex_0700B510
+
+sl_seg7_vertex_0700B5D0:
+  type: VTX
+  count: 5
+  offset: 0xB5D0
+  symbol: sl_seg7_vertex_0700B5D0
+
+sl_seg7_vertex_0700B620:
+  type: VTX
+  count: 10
+  offset: 0xB620
+  symbol: sl_seg7_vertex_0700B620
+
+sl_seg7_dl_0700B6C0:
+  type: GFX
+  offset: 0xB6C0
+  symbol: sl_seg7_dl_0700B6C0
+
+sl_seg7_dl_0700BA70:
+  type: GFX
+  offset: 0xBA70
+  symbol: sl_seg7_dl_0700BA70
+
+sl_seg7_dl_0700BAE8:
+  type: GFX
+  offset: 0xBAE8
+  symbol: sl_seg7_dl_0700BAE8
+
+sl_seg7_lights_0700CA68:
+  type: LIGHTS
+  size: 24
+  offset: 0xCA68
+  symbol: sl_seg7_lights_0700CA68
+
+sl_seg7_vertex_0700CA80:
+  type: VTX
+  count: 8
+  offset: 0xCA80
+  symbol: sl_seg7_vertex_0700CA80
+
+sl_seg7_dl_0700CB00:
+  type: GFX
+  offset: 0xCB00
+  symbol: sl_seg7_dl_0700CB00
+
+sl_seg7_dl_0700CB58:
+  type: GFX
+  offset: 0xCB58
+  symbol: sl_seg7_dl_0700CB58
+
+sl_seg7_lights_0700BD68:
+  type: LIGHTS
+  size: 24
+  offset: 0xBD68
+  symbol: sl_seg7_lights_0700BD68
+
+sl_seg7_vertex_0700BD80:
+  type: VTX
+  count: 15
+  offset: 0xBD80
+  symbol: sl_seg7_vertex_0700BD80
+
+sl_seg7_vertex_0700BE70:
+  type: VTX
+  count: 15
+  offset: 0xBE70
+  symbol: sl_seg7_vertex_0700BE70
+
+sl_seg7_vertex_0700BF60:
+  type: VTX
+  count: 15
+  offset: 0xBF60
+  symbol: sl_seg7_vertex_0700BF60
+
+sl_seg7_vertex_0700C050:
+  type: VTX
+  count: 15
+  offset: 0xC050
+  symbol: sl_seg7_vertex_0700C050
+
+sl_seg7_vertex_0700C140:
+  type: VTX
+  count: 15
+  offset: 0xC140
+  symbol: sl_seg7_vertex_0700C140
+
+sl_seg7_vertex_0700C230:
+  type: VTX
+  count: 15
+  offset: 0xC230
+  symbol: sl_seg7_vertex_0700C230
+
+sl_seg7_vertex_0700C320:
+  type: VTX
+  count: 15
+  offset: 0xC320
+  symbol: sl_seg7_vertex_0700C320
+
+sl_seg7_vertex_0700C410:
+  type: VTX
+  count: 15
+  offset: 0xC410
+  symbol: sl_seg7_vertex_0700C410
+
+sl_seg7_vertex_0700C500:
+  type: VTX
+  count: 15
+  offset: 0xC500
+  symbol: sl_seg7_vertex_0700C500
+
+sl_seg7_vertex_0700C5F0:
+  type: VTX
+  count: 15
+  offset: 0xC5F0
+  symbol: sl_seg7_vertex_0700C5F0
+
+sl_seg7_vertex_0700C6E0:
+  type: VTX
+  count: 4
+  offset: 0xC6E0
+  symbol: sl_seg7_vertex_0700C6E0
+
+sl_seg7_dl_0700C720:
+  type: GFX
+  offset: 0xC720
+  symbol: sl_seg7_dl_0700C720
+
+sl_seg7_dl_0700C9E8:
+  type: GFX
+  offset: 0xC9E8
+  symbol: sl_seg7_dl_0700C9E8
+
+sl_seg7_lights_0700BB68:
+  type: LIGHTS
+  size: 24
+  offset: 0xBB68
+  symbol: sl_seg7_lights_0700BB68
+
+sl_seg7_vertex_0700BB80:
+  type: VTX
+  count: 16
+  offset: 0xBB80
+  symbol: sl_seg7_vertex_0700BB80
+
+sl_seg7_dl_0700BC80:
+  type: GFX
+  offset: 0xBC80
+  symbol: sl_seg7_dl_0700BC80
+
+sl_seg7_dl_0700BCF8:
+  type: GFX
+  offset: 0xBCF8
+  symbol: sl_seg7_dl_0700BCF8
+
+sl_seg7_lights_0700A7F0:
+  type: LIGHTS
+  size: 24
+  offset: 0xA7F0
+  symbol: sl_seg7_lights_0700A7F0
+
+sl_seg7_vertex_0700A808:
+  type: VTX
+  count: 4
+  offset: 0xA808
+  symbol: sl_seg7_vertex_0700A808
+
+sl_seg7_dl_0700A848:
+  type: GFX
+  offset: 0xA848
+  symbol: sl_seg7_dl_0700A848
+
+sl_seg7_dl_0700A890:
+  type: GFX
+  offset: 0xA890
+  symbol: sl_seg7_dl_0700A890
+

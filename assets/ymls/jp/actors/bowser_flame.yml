@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x186810
+  segments:
+    - [0x06,  0x186810]
+
 bowser_flame_0:
   type: TEXTURE
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x0
+  offset: 0x0
   format: RGBA16
   symbol: flame_seg6_texture_06000000
 bowser_flame_1:
@@ -12,8 +18,7 @@ bowser_flame_1:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x2000
+  offset: 0x2000
   format: RGBA16
   symbol: flame_seg6_texture_06002000
 bowser_flame_10:
@@ -21,8 +26,7 @@ bowser_flame_10:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x14000
+  offset: 0x14000
   format: RGBA16
   symbol: flame_seg6_texture_06014000
 bowser_flame_11:
@@ -30,8 +34,7 @@ bowser_flame_11:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x16000
+  offset: 0x16000
   format: RGBA16
   symbol: flame_seg6_texture_06016000
 bowser_flame_12:
@@ -39,8 +42,7 @@ bowser_flame_12:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x18000
+  offset: 0x18000
   format: RGBA16
   symbol: flame_seg6_texture_06018000
 bowser_flame_13:
@@ -48,8 +50,7 @@ bowser_flame_13:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x1A000
+  offset: 0x1A000
   format: RGBA16
   symbol: flame_seg6_texture_0601A000
 bowser_flame_2:
@@ -57,8 +58,7 @@ bowser_flame_2:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x4000
+  offset: 0x4000
   format: RGBA16
   symbol: flame_seg6_texture_06004000
 bowser_flame_3:
@@ -66,8 +66,7 @@ bowser_flame_3:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x6000
+  offset: 0x6000
   format: RGBA16
   symbol: flame_seg6_texture_06006000
 bowser_flame_4:
@@ -75,8 +74,7 @@ bowser_flame_4:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x8000
+  offset: 0x8000
   format: RGBA16
   symbol: flame_seg6_texture_06008000
 bowser_flame_5:
@@ -84,8 +82,7 @@ bowser_flame_5:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0xA000
+  offset: 0xA000
   format: RGBA16
   symbol: flame_seg6_texture_0600A000
 bowser_flame_6:
@@ -93,8 +90,7 @@ bowser_flame_6:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0xC000
+  offset: 0xC000
   format: RGBA16
   symbol: flame_seg6_texture_0600C000
 bowser_flame_7:
@@ -102,8 +98,7 @@ bowser_flame_7:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0xE000
+  offset: 0xE000
   format: RGBA16
   symbol: flame_seg6_texture_0600E000
 bowser_flame_8:
@@ -111,8 +106,7 @@ bowser_flame_8:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x10000
+  offset: 0x10000
   format: RGBA16
   symbol: flame_seg6_texture_06010000
 bowser_flame_9:
@@ -120,7 +114,103 @@ bowser_flame_9:
   size: 8192
   width: 64
   height: 64
-  offset: 0x186810
-  mio0: 0x12000
+  offset: 0x12000
   format: RGBA16
   symbol: flame_seg6_texture_06012000
+
+flame_seg6_vertex_0601C000:
+  type: VTX
+  count: 8
+  offset: 0x1C000
+  symbol: flame_seg6_vertex_0601C000
+
+flame_seg6_dl_0601C080:
+  type: GFX
+  offset: 0x1C080
+  symbol: flame_seg6_dl_0601C080
+
+flame_seg6_dl_0601C0B0:
+  type: GFX
+  offset: 0x1C0B0
+  symbol: flame_seg6_dl_0601C0B0
+
+flame_seg6_dl_0601C0C8:
+  type: GFX
+  offset: 0x1C0C8
+  symbol: flame_seg6_dl_0601C0C8
+
+flame_seg6_dl_0601C0E0:
+  type: GFX
+  offset: 0x1C0E0
+  symbol: flame_seg6_dl_0601C0E0
+
+flame_seg6_dl_0601C108:
+  type: GFX
+  offset: 0x1C108
+  symbol: flame_seg6_dl_0601C108
+
+flame_seg6_dl_0601C1A8:
+  type: GFX
+  offset: 0x1C1A8
+  symbol: flame_seg6_dl_0601C1A8
+
+flame_seg6_dl_0601C248:
+  type: GFX
+  offset: 0x1C248
+  symbol: flame_seg6_dl_0601C248
+
+flame_seg6_dl_0601C2E8:
+  type: GFX
+  offset: 0x1C2E8
+  symbol: flame_seg6_dl_0601C2E8
+
+flame_seg6_dl_0601C388:
+  type: GFX
+  offset: 0x1C388
+  symbol: flame_seg6_dl_0601C388
+
+flame_seg6_dl_0601C428:
+  type: GFX
+  offset: 0x1C428
+  symbol: flame_seg6_dl_0601C428
+
+flame_seg6_dl_0601C4C8:
+  type: GFX
+  offset: 0x1C4C8
+  symbol: flame_seg6_dl_0601C4C8
+
+flame_seg6_dl_0601C568:
+  type: GFX
+  offset: 0x1C568
+  symbol: flame_seg6_dl_0601C568
+
+flame_seg6_dl_0601C608:
+  type: GFX
+  offset: 0x1C608
+  symbol: flame_seg6_dl_0601C608
+
+flame_seg6_dl_0601C6A8:
+  type: GFX
+  offset: 0x1C6A8
+  symbol: flame_seg6_dl_0601C6A8
+
+flame_seg6_dl_0601C748:
+  type: GFX
+  offset: 0x1C748
+  symbol: flame_seg6_dl_0601C748
+
+flame_seg6_dl_0601C7E8:
+  type: GFX
+  offset: 0x1C7E8
+  symbol: flame_seg6_dl_0601C7E8
+
+flame_seg6_dl_0601C888:
+  type: GFX
+  offset: 0x1C888
+  symbol: flame_seg6_dl_0601C888
+
+flame_seg6_dl_0601C928:
+  type: GFX
+  offset: 0x1C928
+  symbol: flame_seg6_dl_0601C928
+

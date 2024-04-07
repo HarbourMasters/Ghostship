@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E6210
+  segments:
+    - [0x06,  0x1E6210]
+
 snufit_body:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x70E0
+  offset: 0x70E0
   format: RGBA16
   symbol: snufit_seg6_texture_060070E0
 snufit_eye:
@@ -12,8 +18,7 @@ snufit_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x78E0
+  offset: 0x78E0
   format: RGBA16
   symbol: snufit_seg6_texture_060078E0
 snufit_mask_strap:
@@ -21,8 +26,7 @@ snufit_mask_strap:
   size: 1024
   width: 16
   height: 32
-  offset: 0x1E6210
-  mio0: 0x80E0
+  offset: 0x80E0
   format: RGBA16
   symbol: snufit_seg6_texture_060080E0
 snufit_mouth:
@@ -30,7 +34,168 @@ snufit_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1E6210
-  mio0: 0x84E0
+  offset: 0x84E0
   format: RGBA16
   symbol: snufit_seg6_texture_060084E0
+
+snufit_seg6_lights_06008CE0:
+  type: LIGHTS
+  size: 24
+  offset: 0x8CE0
+  symbol: snufit_seg6_lights_06008CE0
+
+snufit_seg6_lights_06008CF8:
+  type: LIGHTS
+  size: 24
+  offset: 0x8CF8
+  symbol: snufit_seg6_lights_06008CF8
+
+snufit_seg6_vertex_06008D10:
+  type: VTX
+  count: 14
+  offset: 0x8D10
+  symbol: snufit_seg6_vertex_06008D10
+
+snufit_seg6_vertex_06008DF0:
+  type: VTX
+  count: 12
+  offset: 0x8DF0
+  symbol: snufit_seg6_vertex_06008DF0
+
+snufit_seg6_vertex_06008EB0:
+  type: VTX
+  count: 14
+  offset: 0x8EB0
+  symbol: snufit_seg6_vertex_06008EB0
+
+snufit_seg6_vertex_06008F90:
+  type: VTX
+  count: 14
+  offset: 0x8F90
+  symbol: snufit_seg6_vertex_06008F90
+
+snufit_seg6_vertex_06009070:
+  type: VTX
+  count: 16
+  offset: 0x9070
+  symbol: snufit_seg6_vertex_06009070
+
+snufit_seg6_vertex_06009170:
+  type: VTX
+  count: 7
+  offset: 0x9170
+  symbol: snufit_seg6_vertex_06009170
+
+snufit_seg6_dl_060091E0:
+  type: GFX
+  offset: 0x91E0
+  symbol: snufit_seg6_dl_060091E0
+
+snufit_seg6_dl_06009278:
+  type: GFX
+  offset: 0x9278
+  symbol: snufit_seg6_dl_06009278
+
+snufit_seg6_dl_060092F0:
+  type: GFX
+  offset: 0x92F0
+  symbol: snufit_seg6_dl_060092F0
+
+snufit_seg6_dl_06009498:
+  type: GFX
+  offset: 0x9498
+  symbol: snufit_seg6_dl_06009498
+
+snufit_seg6_lights_06009530:
+  type: LIGHTS
+  size: 24
+  offset: 0x9530
+  symbol: snufit_seg6_lights_06009530
+
+snufit_seg6_vertex_06009548:
+  type: VTX
+  count: 12
+  offset: 0x9548
+  symbol: snufit_seg6_vertex_06009548
+
+snufit_seg6_vertex_06009608:
+  type: VTX
+  count: 6
+  offset: 0x9608
+  symbol: snufit_seg6_vertex_06009608
+
+snufit_seg6_dl_06009668:
+  type: GFX
+  offset: 0x9668
+  symbol: snufit_seg6_dl_06009668
+
+snufit_seg6_dl_06009700:
+  type: GFX
+  offset: 0x9700
+  symbol: snufit_seg6_dl_06009700
+
+snufit_seg6_dl_06009748:
+  type: GFX
+  offset: 0x9748
+  symbol: snufit_seg6_dl_06009748
+
+snufit_seg6_lights_060097C8:
+  type: LIGHTS
+  size: 24
+  offset: 0x97C8
+  symbol: snufit_seg6_lights_060097C8
+
+snufit_seg6_vertex_060097E0:
+  type: VTX
+  count: 12
+  offset: 0x97E0
+  symbol: snufit_seg6_vertex_060097E0
+
+snufit_seg6_dl_060098A0:
+  type: GFX
+  offset: 0x98A0
+  symbol: snufit_seg6_dl_060098A0
+
+snufit_seg6_dl_06009938:
+  type: GFX
+  offset: 0x9938
+  symbol: snufit_seg6_dl_06009938
+
+snufit_seg6_vertex_06009998:
+  type: VTX
+  count: 4
+  offset: 0x9998
+  symbol: snufit_seg6_vertex_06009998
+
+snufit_seg6_dl_060099D8:
+  type: GFX
+  offset: 0x99D8
+  symbol: snufit_seg6_dl_060099D8
+
+snufit_seg6_dl_06009A10:
+  type: GFX
+  offset: 0x9A10
+  symbol: snufit_seg6_dl_06009A10
+
+snufit_seg6_lights_06009A80:
+  type: LIGHTS
+  size: 24
+  offset: 0x9A80
+  symbol: snufit_seg6_lights_06009A80
+
+snufit_seg6_vertex_06009A98:
+  type: VTX
+  count: 8
+  offset: 0x9A98
+  symbol: snufit_seg6_vertex_06009A98
+
+snufit_seg6_dl_06009B18:
+  type: GFX
+  offset: 0x9B18
+  symbol: snufit_seg6_dl_06009B18
+
+snufit_seg6_dl_06009B68:
+  type: GFX
+  offset: 0x9B68
+  symbol: snufit_seg6_dl_06009B68
+

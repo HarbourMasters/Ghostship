@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1C2580
+  segments:
+    - [0x06,  0x1C2580]
+
 chain_chomp_bright_shine:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x213D0
+  offset: 0x213D0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_060213D0
 chain_chomp_dull_shine:
@@ -12,8 +18,7 @@ chain_chomp_dull_shine:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x21BD0
+  offset: 0x21BD0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_06021BD0
 chain_chomp_eye:
@@ -21,8 +26,7 @@ chain_chomp_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x233D0
+  offset: 0x233D0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_060233D0
 chain_chomp_tongue:
@@ -30,8 +34,7 @@ chain_chomp_tongue:
   size: 2048
   width: 32
   height: 32
-  offset: 0x1C2580
-  mio0: 0x223D0
+  offset: 0x223D0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_060223D0
 chain_chomp_tooth:
@@ -39,7 +42,181 @@ chain_chomp_tooth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x165060
-  mio0: 0x6AF0
+  offset: 0x6AF0
   format: RGBA16
   symbol: chain_chomp_seg6_texture_06022BD0
+
+chain_chomp_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x21388
+  symbol: chain_chomp_lights_unused1
+
+chain_chomp_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x213A0
+  symbol: chain_chomp_lights_unused2
+
+chain_chomp_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x213B8
+  symbol: chain_chomp_lights_unused3
+
+chain_chomp_seg6_vertex_06023BD0:
+  type: VTX
+  count: 5
+  offset: 0x23BD0
+  symbol: chain_chomp_seg6_vertex_06023BD0
+
+chain_chomp_seg6_vertex_06023C20:
+  type: VTX
+  count: 16
+  offset: 0x23C20
+  symbol: chain_chomp_seg6_vertex_06023C20
+
+chain_chomp_seg6_vertex_06023D20:
+  type: VTX
+  count: 15
+  offset: 0x23D20
+  symbol: chain_chomp_seg6_vertex_06023D20
+
+chain_chomp_seg6_vertex_06023E10:
+  type: VTX
+  count: 15
+  offset: 0x23E10
+  symbol: chain_chomp_seg6_vertex_06023E10
+
+chain_chomp_seg6_vertex_06023F00:
+  type: VTX
+  count: 16
+  offset: 0x23F00
+  symbol: chain_chomp_seg6_vertex_06023F00
+
+chain_chomp_seg6_dl_06024000:
+  type: GFX
+  offset: 0x24000
+  symbol: chain_chomp_seg6_dl_06024000
+
+chain_chomp_seg6_dl_06024040:
+  type: GFX
+  offset: 0x24040
+  symbol: chain_chomp_seg6_dl_06024040
+
+chain_chomp_seg6_dl_06024240:
+  type: GFX
+  offset: 0x24240
+  symbol: chain_chomp_seg6_dl_06024240
+
+chain_chomp_seg6_vertex_060242D0:
+  type: VTX
+  count: 14
+  offset: 0x242D0
+  symbol: chain_chomp_seg6_vertex_060242D0
+
+chain_chomp_seg6_vertex_060243B0:
+  type: VTX
+  count: 16
+  offset: 0x243B0
+  symbol: chain_chomp_seg6_vertex_060243B0
+
+chain_chomp_seg6_vertex_060244B0:
+  type: VTX
+  count: 16
+  offset: 0x244B0
+  symbol: chain_chomp_seg6_vertex_060244B0
+
+chain_chomp_seg6_vertex_060245B0:
+  type: VTX
+  count: 16
+  offset: 0x245B0
+  symbol: chain_chomp_seg6_vertex_060245B0
+
+chain_chomp_seg6_vertex_060246B0:
+  type: VTX
+  count: 5
+  offset: 0x246B0
+  symbol: chain_chomp_seg6_vertex_060246B0
+
+chain_chomp_seg6_dl_06024700:
+  type: GFX
+  offset: 0x24700
+  symbol: chain_chomp_seg6_dl_06024700
+
+chain_chomp_seg6_dl_06024900:
+  type: GFX
+  offset: 0x24900
+  symbol: chain_chomp_seg6_dl_06024900
+
+chain_chomp_seg6_dl_06024940:
+  type: GFX
+  offset: 0x24940
+  symbol: chain_chomp_seg6_dl_06024940
+
+chain_chomp_seg6_lights_060249D0:
+  type: LIGHTS
+  size: 24
+  offset: 0x249D0
+  symbol: chain_chomp_seg6_lights_060249D0
+
+chain_chomp_seg6_vertex_060249E8:
+  type: VTX
+  count: 12
+  offset: 0x249E8
+  symbol: chain_chomp_seg6_vertex_060249E8
+
+chain_chomp_seg6_dl_06024AA8:
+  type: GFX
+  offset: 0x24AA8
+  symbol: chain_chomp_seg6_dl_06024AA8
+
+chain_chomp_seg6_dl_06024B00:
+  type: GFX
+  offset: 0x24B00
+  symbol: chain_chomp_seg6_dl_06024B00
+
+chain_chomp_seg6_vertex_06024B70:
+  type: VTX
+  count: 15
+  offset: 0x24B70
+  symbol: chain_chomp_seg6_vertex_06024B70
+
+chain_chomp_seg6_vertex_06024C60:
+  type: VTX
+  count: 9
+  offset: 0x24C60
+  symbol: chain_chomp_seg6_vertex_06024C60
+
+chain_chomp_seg6_dl_06024CF0:
+  type: GFX
+  offset: 0x24CF0
+  symbol: chain_chomp_seg6_dl_06024CF0
+
+chain_chomp_seg6_dl_06024D60:
+  type: GFX
+  offset: 0x24D60
+  symbol: chain_chomp_seg6_dl_06024D60
+
+chain_chomp_seg6_vertex_06024DD0:
+  type: VTX
+  count: 15
+  offset: 0x24DD0
+  symbol: chain_chomp_seg6_vertex_06024DD0
+
+chain_chomp_seg6_vertex_06024EC0:
+  type: VTX
+  count: 9
+  offset: 0x24EC0
+  symbol: chain_chomp_seg6_vertex_06024EC0
+
+chain_chomp_seg6_dl_06024F50:
+  type: GFX
+  offset: 0x24F50
+  symbol: chain_chomp_seg6_dl_06024F50
+
+chain_chomp_seg6_dl_06024FC0:
+  type: GFX
+  offset: 0x24FC0
+  symbol: chain_chomp_seg6_dl_06024FC0
+

@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x112B50
+  segments:
+    - [0x04,  0x112B50]
+
 walk_smoke_0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x1DEA0
+  offset: 0x1DEA0
   format: IA16
   symbol: smoke_seg4_texture_0401DEA0
 walk_smoke_1:
@@ -12,8 +18,7 @@ walk_smoke_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x1E6A0
+  offset: 0x1E6A0
   format: IA16
   symbol: smoke_seg4_texture_0401E6A0
 walk_smoke_2:
@@ -21,8 +26,7 @@ walk_smoke_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x1EEA0
+  offset: 0x1EEA0
   format: IA16
   symbol: smoke_seg4_texture_0401EEA0
 walk_smoke_3:
@@ -30,8 +34,7 @@ walk_smoke_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x1F6A0
+  offset: 0x1F6A0
   format: IA16
   symbol: smoke_seg4_texture_0401F6A0
 walk_smoke_4:
@@ -39,8 +42,7 @@ walk_smoke_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x1FEA0
+  offset: 0x1FEA0
   format: IA16
   symbol: smoke_seg4_texture_0401FEA0
 walk_smoke_5:
@@ -48,8 +50,7 @@ walk_smoke_5:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x206A0
+  offset: 0x206A0
   format: IA16
   symbol: smoke_seg4_texture_040206A0
 walk_smoke_6:
@@ -57,7 +58,53 @@ walk_smoke_6:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x20EA0
+  offset: 0x20EA0
   format: IA16
   symbol: smoke_seg4_texture_04020EA0
+
+smoke_seg4_vertex_0401DE60:
+  type: VTX
+  count: 4
+  offset: 0x1DE60
+  symbol: smoke_seg4_vertex_0401DE60
+
+smoke_seg4_dl_040216A0:
+  type: GFX
+  offset: 0x216A0
+  symbol: smoke_seg4_dl_040216A0
+
+smoke_seg4_dl_04021718:
+  type: GFX
+  offset: 0x21718
+  symbol: smoke_seg4_dl_04021718
+
+smoke_seg4_dl_04021730:
+  type: GFX
+  offset: 0x21730
+  symbol: smoke_seg4_dl_04021730
+
+smoke_seg4_dl_04021748:
+  type: GFX
+  offset: 0x21748
+  symbol: smoke_seg4_dl_04021748
+
+smoke_seg4_dl_04021760:
+  type: GFX
+  offset: 0x21760
+  symbol: smoke_seg4_dl_04021760
+
+smoke_seg4_dl_04021778:
+  type: GFX
+  offset: 0x21778
+  symbol: smoke_seg4_dl_04021778
+
+smoke_seg4_dl_04021790:
+  type: GFX
+  offset: 0x21790
+  symbol: smoke_seg4_dl_04021790
+
+smoke_seg4_dl_040217A8:
+  type: GFX
+  offset: 0x217A8
+  symbol: smoke_seg4_dl_040217A8
+

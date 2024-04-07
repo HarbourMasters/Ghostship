@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x36DAD0
+  segments:
+    - [0x0B,  0x36DAD0]
+
 bubble.06048:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x6048
+  offset: 0x6048
   format: RGBA16
   symbol: effect_0B006048
 flower.00008:
@@ -12,8 +18,7 @@ flower.00008:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x8
+  offset: 0x8
   format: RGBA16
   symbol: effect_0B000008
 flower.00808:
@@ -21,8 +26,7 @@ flower.00808:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x808
+  offset: 0x808
   format: RGBA16
   symbol: effect_0B000808
 flower.01008:
@@ -30,8 +34,7 @@ flower.01008:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x1008
+  offset: 0x1008
   format: RGBA16
   symbol: effect_0B001008
 flower.01808:
@@ -39,8 +42,7 @@ flower.01808:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x1808
+  offset: 0x1808
   format: RGBA16
   symbol: effect_0B001808
 lava_bubble.02020:
@@ -48,8 +50,7 @@ lava_bubble.02020:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x2020
+  offset: 0x2020
   format: RGBA16
   symbol: effect_0B002020
 lava_bubble.02820:
@@ -57,8 +58,7 @@ lava_bubble.02820:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x2820
+  offset: 0x2820
   format: RGBA16
   symbol: effect_0B002820
 lava_bubble.03020:
@@ -66,8 +66,7 @@ lava_bubble.03020:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x3020
+  offset: 0x3020
   format: RGBA16
   symbol: effect_0B003020
 lava_bubble.03820:
@@ -75,8 +74,7 @@ lava_bubble.03820:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x3820
+  offset: 0x3820
   format: RGBA16
   symbol: effect_0B003820
 lava_bubble.04020:
@@ -84,8 +82,7 @@ lava_bubble.04020:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x4020
+  offset: 0x4020
   format: RGBA16
   symbol: effect_0B004020
 lava_bubble.04820:
@@ -93,8 +90,7 @@ lava_bubble.04820:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x4820
+  offset: 0x4820
   format: RGBA16
   symbol: effect_0B004820
 lava_bubble.05020:
@@ -102,8 +98,7 @@ lava_bubble.05020:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x5020
+  offset: 0x5020
   format: RGBA16
   symbol: effect_0B005020
 lava_bubble.05820:
@@ -111,8 +106,7 @@ lava_bubble.05820:
   size: 2048
   width: 32
   height: 32
-  offset: 0x36DAD0
-  mio0: 0x5820
+  offset: 0x5820
   format: RGBA16
   symbol: effect_0B005820
 tiny_bubble.0684C:
@@ -120,8 +114,7 @@ tiny_bubble.0684C:
   size: 512
   width: 16
   height: 16
-  offset: 0x36DAD0
-  mio0: 0x684C
+  offset: 0x684C
   format: RGBA16
   symbol: effect_0B00684C
 tiny_bubble.06AD8:
@@ -129,7 +122,6 @@ tiny_bubble.06AD8:
   size: 512
   width: 16
   height: 16
-  offset: 0x36DAD0
-  mio0: 0x6AD8
+  offset: 0x6AD8
   format: RGBA16
   symbol: effect_0B006AD8

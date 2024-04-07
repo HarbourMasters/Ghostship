@@ -1,0 +1,11 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x2D4A90
+  segments:
+    - [0x0A,  0x2D4A90]
+
+wdw:
+  type: BLOB
+  size: 131392
+  offset: 0x0

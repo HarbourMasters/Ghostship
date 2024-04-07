@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x112B50
+  segments:
+    - [0x04,  0x112B50]
+
 sparkle_0:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x27490
+  offset: 0x27490
   format: RGBA16
   symbol: sparkles_seg4_texture_04027490
 sparkle_1:
@@ -12,8 +18,7 @@ sparkle_1:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x27C90
+  offset: 0x27C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04027C90
 sparkle_2:
@@ -21,8 +26,7 @@ sparkle_2:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x28490
+  offset: 0x28490
   format: RGBA16
   symbol: sparkles_seg4_texture_04028490
 sparkle_3:
@@ -30,8 +34,7 @@ sparkle_3:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x28C90
+  offset: 0x28C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04028C90
 sparkle_4:
@@ -39,8 +42,7 @@ sparkle_4:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x29490
+  offset: 0x29490
   format: RGBA16
   symbol: sparkles_seg4_texture_04029490
 sparkle_5:
@@ -48,7 +50,48 @@ sparkle_5:
   size: 2048
   width: 32
   height: 32
-  offset: 0x112B50
-  mio0: 0x29C90
+  offset: 0x29C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04029C90
+
+sparkles_seg4_vertex_04027450:
+  type: VTX
+  count: 4
+  offset: 0x27450
+  symbol: sparkles_seg4_vertex_04027450
+
+sparkles_seg4_dl_0402A490:
+  type: GFX
+  offset: 0x2A490
+  symbol: sparkles_seg4_dl_0402A490
+
+sparkles_seg4_dl_0402A4F8:
+  type: GFX
+  offset: 0x2A4F8
+  symbol: sparkles_seg4_dl_0402A4F8
+
+sparkles_seg4_dl_0402A510:
+  type: GFX
+  offset: 0x2A510
+  symbol: sparkles_seg4_dl_0402A510
+
+sparkles_seg4_dl_0402A528:
+  type: GFX
+  offset: 0x2A528
+  symbol: sparkles_seg4_dl_0402A528
+
+sparkles_seg4_dl_0402A540:
+  type: GFX
+  offset: 0x2A540
+  symbol: sparkles_seg4_dl_0402A540
+
+sparkles_seg4_dl_0402A558:
+  type: GFX
+  offset: 0x2A558
+  symbol: sparkles_seg4_dl_0402A558
+
+sparkles_seg4_dl_0402A570:
+  type: GFX
+  offset: 0x2A570
+  symbol: sparkles_seg4_dl_0402A570
+

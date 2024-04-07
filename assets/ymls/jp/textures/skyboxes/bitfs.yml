@@ -1,0 +1,11 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x2CE5E0
+  segments:
+    - [0x0A,  0x2CE5E0]
+
+bitfs:
+  type: BLOB
+  size: 102720
+  offset: 0x0

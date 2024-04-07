@@ -1,10 +1,16 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
 checkerboard_platform:
   type: TEXTURE
   size: 2048
   width: 32
   height: 32
-  offset: 0x1F0530
-  mio0: 0xCC40
+  offset: 0xCC40
   format: RGBA16
   symbol: checkerboard_platform_seg8_texture_0800CC40
 checkerboard_platform_side:
@@ -12,7 +18,40 @@ checkerboard_platform_side:
   size: 1024
   width: 32
   height: 16
-  offset: 0x1F0530
-  mio0: 0xC840
+  offset: 0xC840
   format: RGBA16
   symbol: checkerboard_platform_seg8_texture_0800C840
+
+checkerboard_platform_seg8_lights_0800C828:
+  type: LIGHTS
+  size: 24
+  offset: 0xC828
+  symbol: checkerboard_platform_seg8_lights_0800C828
+
+checkerboard_platform_seg8_vertex_0800D440:
+  type: VTX
+  count: 8
+  offset: 0xD440
+  symbol: checkerboard_platform_seg8_vertex_0800D440
+
+checkerboard_platform_seg8_vertex_0800D4C0:
+  type: VTX
+  count: 16
+  offset: 0xD4C0
+  symbol: checkerboard_platform_seg8_vertex_0800D4C0
+
+checkerboard_platform_seg8_dl_0800D5C0:
+  type: GFX
+  offset: 0xD5C0
+  symbol: checkerboard_platform_seg8_dl_0800D5C0
+
+checkerboard_platform_seg8_dl_0800D618:
+  type: GFX
+  offset: 0xD618
+  symbol: checkerboard_platform_seg8_dl_0800D618
+
+checkerboard_platform_seg8_dl_0800D680:
+  type: GFX
+  offset: 0xD680
+  symbol: checkerboard_platform_seg8_dl_0800D680
+
