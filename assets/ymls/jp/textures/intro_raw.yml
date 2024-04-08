@@ -133,6 +133,7 @@ sparkle_5:
   height: 32
   offset: 0x262A08
   format: RGBA16
+  symbol: gd_texture_sparkle_5
 white_star_0:
   type: TEXTURE
   size: 2048
