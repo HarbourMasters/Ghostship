@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x128BE0
+    offset: 0x186810
   segments:
-    - [0x06,  0x128BE0]
+    - [0x06,  0x186810]
 
 yellow_sphere:
   type: TEXTURE

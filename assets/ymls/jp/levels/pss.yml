@@ -30,6 +30,7 @@
   format: RGBA16
   symbol: pss_seg7_texture_07001000
 
+
 pss_seg7_lights_0700E348:
   type: LIGHTS
   size: 24

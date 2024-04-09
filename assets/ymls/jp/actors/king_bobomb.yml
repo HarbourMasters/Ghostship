@@ -97,31 +97,31 @@ king_bob-omb_right_side:
 king_bobomb_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x2BA18
+  offset: 0x0
   symbol: king_bobomb_lights_unused1
 
 king_bobomb_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0x2BA18
+  offset: 0x18
   symbol: king_bobomb_lights_unused2
 
 king_bobomb_lights_unused3:
   type: LIGHTS
   size: 24
-  offset: 0x2BA18
+  offset: 0x30
   symbol: king_bobomb_lights_unused3
 
 king_bobomb_lights_unused4:
   type: LIGHTS
   size: 24
-  offset: 0x2BA18
+  offset: 0x48
   symbol: king_bobomb_lights_unused4
 
 king_bobomb_lights_unused5:
   type: LIGHTS
   size: 24
-  offset: 0x2BA18
+  offset: 0x60
   symbol: king_bobomb_lights_unused5
 
 king_bobomb_seg5_vertex_0500A478:

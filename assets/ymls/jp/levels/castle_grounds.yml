@@ -1189,11 +1189,6 @@ castle_grounds_seg7_dl_070095F0:
   offset: 0x95F0
   symbol: castle_grounds_seg7_dl_070095F0
 
-castle_grounds_seg7_us_dl_0700F2E8:
-  type: GFX
-  offset: 0xF2E8
-  symbol: castle_grounds_seg7_us_dl_0700F2E8
-
 castle_grounds_seg7_vertex_0700A8D0:
   type: VTX
   count: 15

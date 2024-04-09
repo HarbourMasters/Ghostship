@@ -5,22 +5,6 @@
   segments:
     - [0x02,  0x1076D0]
 
-font_graphics.06410:
-  type: TEXTURE
-  size: 16
-  width: 16
-  height: 8
-  offset: 0x14676
-  format: IA1
-  symbol: texture_font_char_eu_colon
-font_graphics.06420:
-  type: TEXTURE
-  size: 16
-  width: 16
-  height: 8
-  offset: 0x20B5B
-  format: IA1
-  symbol: texture_font_char_EU_slash
 segment2.00000:
   type: TEXTURE
   size: 512

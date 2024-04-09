@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x139D10
+    offset: 0x144290
   segments:
-    - [0x05,  0x139D10]
+    - [0x05,  0x144290]
 
 tornado:
   type: TEXTURE

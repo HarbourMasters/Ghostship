@@ -552,11 +552,6 @@ bowser_seg6_dl_0603B8D0:
   offset: 0x3B8D0
   symbol: bowser_seg6_dl_0603B8D0
 
-bowser_seg6_dl_0603B948:
-  type: GFX
-  offset: 0x3B948
-  symbol: bowser_seg6_dl_0603B948
-
 bowser_seg6_vertex_0603B948:
   type: VTX
   count: 16
@@ -1053,11 +1048,6 @@ bowser_seg6_dl_06040210:
   type: GFX
   offset: 0x40210
   symbol: bowser_seg6_dl_06040210
-
-bowser_seg6_dl_06040358:
-  type: GFX
-  offset: 0x40358
-  symbol: bowser_seg6_dl_06040358
 
 bowser_seg6_vertex_060402D8:
   type: VTX
