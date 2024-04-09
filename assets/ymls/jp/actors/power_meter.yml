@@ -86,9 +86,6 @@ power_meter_two_segments:
   format: RGBA16
   symbol: texture_power_meter_two_segments
 
-  offset: 0x293E0
-  symbol: *const
-
 vertex_power_meter_base:
   type: VTX
   count: 8

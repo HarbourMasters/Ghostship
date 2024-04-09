@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x139D10
+    offset: 0x144290
   segments:
-    - [0x05,  0x139D10]
+    - [0x05,  0x144290]
 
 eyerok_bricks:
   type: TEXTURE
@@ -49,7 +49,7 @@ eyerok_eye_open:
 eyerok_lights_unused:
   type: LIGHTS
   size: 24
-  offset: 0x1B5A8
+  offset: 0x8D28
   symbol: eyerok_lights_unused
 
 eyerok_seg5_lights_0500B540:
