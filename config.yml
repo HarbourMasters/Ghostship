@@ -9,6 +9,7 @@
     sort: OFFSET
     output:
       binary: smcube.otr
+      code: code/jp
   segments:
     - 0x000000
     - 0x000000
@@ -43,6 +44,7 @@
     sort: OFFSET
     output:
       binary: smcube.otr
+      code: code/us
   segments:
     - 0x000000
     - 0x000000
