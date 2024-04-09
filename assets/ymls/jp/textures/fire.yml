@@ -154,7 +154,7 @@ lll_textures.09000:
   size: 2048
   width: 32
   height: 32
-  offset: 0x13C58
+  offset: 0x9000
   format: RGBA16
   symbol: fire_09009000
 lll_textures.09800:

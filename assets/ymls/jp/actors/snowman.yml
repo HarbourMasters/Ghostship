@@ -49,25 +49,25 @@ mr_blizzard_right_side:
 snowman_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x19438
+  offset: 0x8C10
   symbol: snowman_lights_unused1
 
 snowman_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0x19438
+  offset: 0x8C28
   symbol: snowman_lights_unused2
 
 snowman_lights_unused3:
   type: LIGHTS
   size: 24
-  offset: 0x19438
+  offset: 0x8C40
   symbol: snowman_lights_unused3
 
 snowman_lights_unused4:
   type: LIGHTS
   size: 24
-  offset: 0x19438
+  offset: 0x8C58
   symbol: snowman_lights_unused4
 
 snowman_seg5_lights_0500C470:
