@@ -1228,3 +1228,23 @@ bob_seg7_dl_0700E8A0:
   offset: 0xE8A0
   symbol: bob_seg7_dl_0700E8A0
 
+bob_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0xE958
+    symbol: bob_seg7_collision_level
+
+bob_seg7_collision_chain_chomp_gate:
+    type: SM64:COLLISION
+    offset: 0x113C0
+    symbol: bob_seg7_collision_chain_chomp_gate
+
+bob_seg7_collision_bridge:
+    type: SM64:COLLISION
+    offset: 0x113F0
+    symbol: bob_seg7_collision_bridge
+
+bob_seg7_collision_gate:
+    type: SM64:COLLISION
+    offset: 0x11474
+    symbol: bob_seg7_collision_gate
+
