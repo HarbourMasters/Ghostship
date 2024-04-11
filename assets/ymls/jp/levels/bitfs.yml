@@ -1748,3 +1748,58 @@ bitfs_seg7_dl_0700F508:
   offset: 0xF508
   symbol: bitfs_seg7_dl_0700F508
 
+bitfs_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0x11E98
+    symbol: bitfs_seg7_collision_level
+
+bitfs_seg7_collision_07015124:
+    type: SM64:COLLISION
+    offset: 0x15124
+    symbol: bitfs_seg7_collision_07015124
+
+bitfs_seg7_collision_sinking_cage_platform:
+    type: SM64:COLLISION
+    offset: 0x151B4
+    symbol: bitfs_seg7_collision_sinking_cage_platform
+
+bitfs_seg7_collision_inverted_pyramid:
+    type: SM64:COLLISION
+    offset: 0x15238
+    symbol: bitfs_seg7_collision_inverted_pyramid
+
+bitfs_seg7_collision_07015288:
+    type: SM64:COLLISION
+    offset: 0x15288
+    symbol: bitfs_seg7_collision_07015288
+
+bitfs_seg7_collision_squishable_platform:
+    type: SM64:COLLISION
+    offset: 0x1530C
+    symbol: bitfs_seg7_collision_squishable_platform
+
+bitfs_seg7_collision_07015714:
+    type: SM64:COLLISION
+    offset: 0x15714
+    symbol: bitfs_seg7_collision_07015714
+
+bitfs_seg7_collision_07015768:
+    type: SM64:COLLISION
+    offset: 0x15768
+    symbol: bitfs_seg7_collision_07015768
+
+bitfs_seg7_collision_070157E0:
+    type: SM64:COLLISION
+    offset: 0x157E0
+    symbol: bitfs_seg7_collision_070157E0
+
+bitfs_seg7_collision_sinking_platform:
+    type: SM64:COLLISION
+    offset: 0x15858
+    symbol: bitfs_seg7_collision_sinking_platform
+
+bitfs_seg7_collision_07015928:
+    type: SM64:COLLISION
+    offset: 0x15928
+    symbol: bitfs_seg7_collision_07015928
+
