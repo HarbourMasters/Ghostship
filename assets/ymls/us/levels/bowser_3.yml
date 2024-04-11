@@ -570,3 +570,58 @@ bowser_3_seg7_dl_070025E0:
   offset: 0x25E0
   symbol: bowser_3_seg7_dl_070025E0
 
+bowser_3_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0x49C8
+    symbol: bowser_3_seg7_collision_level
+
+bowser_3_seg7_collision_07004B94:
+    type: SM64:COLLISION
+    offset: 0x4B94
+    symbol: bowser_3_seg7_collision_07004B94
+
+bowser_3_seg7_collision_07004C18:
+    type: SM64:COLLISION
+    offset: 0x4C18
+    symbol: bowser_3_seg7_collision_07004C18
+
+bowser_3_seg7_collision_07004C9C:
+    type: SM64:COLLISION
+    offset: 0x4C9C
+    symbol: bowser_3_seg7_collision_07004C9C
+
+bowser_3_seg7_collision_07004D20:
+    type: SM64:COLLISION
+    offset: 0x4D20
+    symbol: bowser_3_seg7_collision_07004D20
+
+bowser_3_seg7_collision_07004DA4:
+    type: SM64:COLLISION
+    offset: 0x4DA4
+    symbol: bowser_3_seg7_collision_07004DA4
+
+bowser_3_seg7_collision_07004E28:
+    type: SM64:COLLISION
+    offset: 0x4E28
+    symbol: bowser_3_seg7_collision_07004E28
+
+bowser_3_seg7_collision_07004EAC:
+    type: SM64:COLLISION
+    offset: 0x4EAC
+    symbol: bowser_3_seg7_collision_07004EAC
+
+bowser_3_seg7_collision_07004F30:
+    type: SM64:COLLISION
+    offset: 0x4F30
+    symbol: bowser_3_seg7_collision_07004F30
+
+bowser_3_seg7_collision_07004FB4:
+    type: SM64:COLLISION
+    offset: 0x4FB4
+    symbol: bowser_3_seg7_collision_07004FB4
+
+bowser_3_seg7_collision_07005038:
+    type: SM64:COLLISION
+    offset: 0x5038
+    symbol: bowser_3_seg7_collision_07005038
+
