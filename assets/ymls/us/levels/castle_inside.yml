@@ -7931,3 +7931,43 @@ inside_castle_seg7_dl_07068B10:
   offset: 0x68B10
   symbol: inside_castle_seg7_dl_07068B10
 
+inside_castle_seg7_area_1_collision:
+    type: SM64:COLLISION
+    offset: 0x68B88
+    symbol: inside_castle_seg7_area_1_collision
+
+inside_castle_seg7_area_2_collision:
+    type: SM64:COLLISION
+    offset: 0x6E364
+    symbol: inside_castle_seg7_area_2_collision
+
+inside_castle_seg7_area_3_collision:
+    type: SM64:COLLISION
+    offset: 0x73AAC
+    symbol: inside_castle_seg7_area_3_collision
+
+inside_castle_seg7_collision_ddd_warp:
+    type: SM64:COLLISION
+    offset: 0x775B4
+    symbol: inside_castle_seg7_collision_ddd_warp
+
+inside_castle_seg7_collision_ddd_warp_2:
+    type: SM64:COLLISION
+    offset: 0x7768C
+    symbol: inside_castle_seg7_collision_ddd_warp_2
+
+inside_castle_seg7_collision_floor_trap:
+    type: SM64:COLLISION
+    offset: 0x78DE4
+    symbol: inside_castle_seg7_collision_floor_trap
+
+inside_castle_seg7_collision_star_door:
+    type: SM64:COLLISION
+    offset: 0x78E14
+    symbol: inside_castle_seg7_collision_star_door
+
+inside_castle_seg7_collision_water_level_pillar:
+    type: SM64:COLLISION
+    offset: 0x78E80
+    symbol: inside_castle_seg7_collision_water_level_pillar
+

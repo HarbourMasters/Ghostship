@@ -565,3 +565,8 @@ castle_courtyard_seg7_dl_07005698:
   offset: 0x5698
   symbol: castle_courtyard_seg7_dl_07005698
 
+castle_courtyard_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0x59A8
+    symbol: castle_courtyard_seg7_collision_level
+
