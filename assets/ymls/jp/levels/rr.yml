@@ -3595,3 +3595,83 @@ rr_seg7_dl_0701A680:
   offset: 0x1A680
   symbol: rr_seg7_dl_0701A680
 
+rr_seg7_collision_07029038:
+  type: SM64:COLLISION
+  offset: 0x29038
+  symbol: rr_seg7_collision_07029038
+
+rr_seg7_collision_pendulum:
+  type: SM64:COLLISION
+  offset: 0x29154
+  symbol: rr_seg7_collision_pendulum
+
+rr_seg7_collision_rotating_platform_with_fire:
+  type: SM64:COLLISION
+  offset: 0x29308
+  symbol: rr_seg7_collision_rotating_platform_with_fire
+
+rr_seg7_collision_07029508:
+  type: SM64:COLLISION
+  offset: 0x29508
+  symbol: rr_seg7_collision_07029508
+
+rr_seg7_collision_070295F8:
+  type: SM64:COLLISION
+  offset: 0x295F8
+  symbol: rr_seg7_collision_070295F8
+
+rr_seg7_collision_0702967C:
+  type: SM64:COLLISION
+  offset: 0x2967C
+  symbol: rr_seg7_collision_0702967C
+
+rr_seg7_collision_elevator_platform:
+  type: SM64:COLLISION
+  offset: 0x296CC
+  symbol: rr_seg7_collision_elevator_platform
+
+rr_seg7_collision_07029750:
+  type: SM64:COLLISION
+  offset: 0x29750
+  symbol: rr_seg7_collision_07029750
+
+rr_seg7_collision_donut_platform:
+  type: SM64:COLLISION
+  offset: 0x297D4
+  symbol: rr_seg7_collision_donut_platform
+
+rr_seg7_collision_07029858:
+  type: SM64:COLLISION
+  offset: 0x29858
+  symbol: rr_seg7_collision_07029858
+
+rr_seg7_collision_07029924:
+  type: SM64:COLLISION
+  offset: 0x29924
+  symbol: rr_seg7_collision_07029924
+
+rr_seg7_collision_07029C1C:
+  type: SM64:COLLISION
+  offset: 0x29C1C
+  symbol: rr_seg7_collision_07029C1C
+
+rr_seg7_collision_07029FA4:
+  type: SM64:COLLISION
+  offset: 0x29FA4
+  symbol: rr_seg7_collision_07029FA4
+
+rr_seg7_collision_0702A32C:
+  type: SM64:COLLISION
+  offset: 0x2A32C
+  symbol: rr_seg7_collision_0702A32C
+
+rr_seg7_collision_0702A6B4:
+  type: SM64:COLLISION
+  offset: 0x2A6B4
+  symbol: rr_seg7_collision_0702A6B4
+
+rr_seg7_collision_level:
+  type: SM64:COLLISION
+  offset: 0x2A9A8
+  symbol: rr_seg7_collision_level
+
