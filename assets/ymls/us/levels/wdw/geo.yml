@@ -1,4 +1,6 @@
 :config:
+  external_files:
+    - "assets/ymls/us/levels/wdw.yml"
   autopads: false
   segments:
     - [0x0E,  0x419F90]

@@ -3414,3 +3414,756 @@ ttm_seg7_dl_0702BB60:
   offset: 0x2BB60
   symbol: ttm_seg7_dl_0702BB60
 
+ttm_seg7_vertex_070109F0:
+  type: VTX
+  count: 4
+  offset: 0x109F0
+  symbol: ttm_seg7_vertex_070109F0
+
+ttm_seg7_dl_07010A30:
+  type: GFX
+  offset: 0x10A30
+  symbol: ttm_seg7_dl_07010A30
+
+ttm_seg7_dl_07010A68:
+  type: GFX
+  offset: 0x10A68
+  symbol: ttm_seg7_dl_07010A68
+
+ttm_seg7_lights_0700FA90:
+  type: LIGHTS
+  size: 24
+  offset: 0xFA90
+  symbol: ttm_seg7_lights_0700FA90
+
+ttm_seg7_lights_0700FAA8:
+  type: LIGHTS
+  size: 24
+  offset: 0xFAA8
+  symbol: ttm_seg7_lights_0700FAA8
+
+ttm_seg7_lights_0700FAC0:
+  type: LIGHTS
+  size: 24
+  offset: 0xFAC0
+  symbol: ttm_seg7_lights_0700FAC0
+
+ttm_seg7_vertex_0700FAD8:
+  type: VTX
+  count: 14
+  offset: 0xFAD8
+  symbol: ttm_seg7_vertex_0700FAD8
+
+ttm_seg7_vertex_0700FBB8:
+  type: VTX
+  count: 16
+  offset: 0xFBB8
+  symbol: ttm_seg7_vertex_0700FBB8
+
+ttm_seg7_vertex_0700FCB8:
+  type: VTX
+  count: 9
+  offset: 0xFCB8
+  symbol: ttm_seg7_vertex_0700FCB8
+
+ttm_seg7_vertex_0700FD48:
+  type: VTX
+  count: 15
+  offset: 0xFD48
+  symbol: ttm_seg7_vertex_0700FD48
+
+ttm_seg7_vertex_0700FE38:
+  type: VTX
+  count: 16
+  offset: 0xFE38
+  symbol: ttm_seg7_vertex_0700FE38
+
+ttm_seg7_vertex_0700FF38:
+  type: VTX
+  count: 12
+  offset: 0xFF38
+  symbol: ttm_seg7_vertex_0700FF38
+
+ttm_seg7_vertex_0700FFF8:
+  type: VTX
+  count: 16
+  offset: 0xFFF8
+  symbol: ttm_seg7_vertex_0700FFF8
+
+ttm_seg7_vertex_070100F8:
+  type: VTX
+  count: 15
+  offset: 0x100F8
+  symbol: ttm_seg7_vertex_070100F8
+
+ttm_seg7_vertex_070101E8:
+  type: VTX
+  count: 9
+  offset: 0x101E8
+  symbol: ttm_seg7_vertex_070101E8
+
+ttm_seg7_vertex_07010278:
+  type: VTX
+  count: 16
+  offset: 0x10278
+  symbol: ttm_seg7_vertex_07010278
+
+ttm_seg7_vertex_07010378:
+  type: VTX
+  count: 15
+  offset: 0x10378
+  symbol: ttm_seg7_vertex_07010378
+
+ttm_seg7_vertex_07010468:
+  type: VTX
+  count: 4
+  offset: 0x10468
+  symbol: ttm_seg7_vertex_07010468
+
+ttm_seg7_vertex_070104A8:
+  type: VTX
+  count: 12
+  offset: 0x104A8
+  symbol: ttm_seg7_vertex_070104A8
+
+ttm_seg7_vertex_07010568:
+  type: VTX
+  count: 13
+  offset: 0x10568
+  symbol: ttm_seg7_vertex_07010568
+
+ttm_seg7_dl_07010638:
+  type: GFX
+  offset: 0x10638
+  symbol: ttm_seg7_dl_07010638
+
+ttm_seg7_dl_07010830:
+  type: GFX
+  offset: 0x10830
+  symbol: ttm_seg7_dl_07010830
+
+ttm_seg7_dl_07010978:
+  type: GFX
+  offset: 0x10978
+  symbol: ttm_seg7_dl_07010978
+
+ttm_seg7_vertex_0700EB40:
+  type: VTX
+  count: 12
+  offset: 0xEB40
+  symbol: ttm_seg7_vertex_0700EB40
+
+ttm_seg7_dl_0700EC00:
+  type: GFX
+  offset: 0xEC00
+  symbol: ttm_seg7_dl_0700EC00
+
+ttm_seg7_dl_0700EC58:
+  type: GFX
+  offset: 0xEC58
+  symbol: ttm_seg7_dl_0700EC58
+
+ttm_seg7_lights_0700E378:
+  type: LIGHTS
+  size: 24
+  offset: 0xE378
+  symbol: ttm_seg7_lights_0700E378
+
+ttm_seg7_lights_0700E390:
+  type: LIGHTS
+  size: 24
+  offset: 0xE390
+  symbol: ttm_seg7_lights_0700E390
+
+ttm_seg7_lights_0700E3A8:
+  type: LIGHTS
+  size: 24
+  offset: 0xE3A8
+  symbol: ttm_seg7_lights_0700E3A8
+
+ttm_seg7_vertex_0700E3C0:
+  type: VTX
+  count: 15
+  offset: 0xE3C0
+  symbol: ttm_seg7_vertex_0700E3C0
+
+ttm_seg7_vertex_0700E4B0:
+  type: VTX
+  count: 14
+  offset: 0xE4B0
+  symbol: ttm_seg7_vertex_0700E4B0
+
+ttm_seg7_vertex_0700E590:
+  type: VTX
+  count: 15
+  offset: 0xE590
+  symbol: ttm_seg7_vertex_0700E590
+
+ttm_seg7_vertex_0700E680:
+  type: VTX
+  count: 6
+  offset: 0xE680
+  symbol: ttm_seg7_vertex_0700E680
+
+ttm_seg7_vertex_0700E6E0:
+  type: VTX
+  count: 4
+  offset: 0xE6E0
+  symbol: ttm_seg7_vertex_0700E6E0
+
+ttm_seg7_vertex_0700E720:
+  type: VTX
+  count: 16
+  offset: 0xE720
+  symbol: ttm_seg7_vertex_0700E720
+
+ttm_seg7_vertex_0700E820:
+  type: VTX
+  count: 9
+  offset: 0xE820
+  symbol: ttm_seg7_vertex_0700E820
+
+ttm_seg7_vertex_0700E8B0:
+  type: VTX
+  count: 6
+  offset: 0xE8B0
+  symbol: ttm_seg7_vertex_0700E8B0
+
+ttm_seg7_dl_0700E910:
+  type: GFX
+  offset: 0xE910
+  symbol: ttm_seg7_dl_0700E910
+
+ttm_seg7_dl_0700EA28:
+  type: GFX
+  offset: 0xEA28
+  symbol: ttm_seg7_dl_0700EA28
+
+ttm_seg7_dl_0700EAC8:
+  type: GFX
+  offset: 0xEAC8
+  symbol: ttm_seg7_dl_0700EAC8
+
+ttm_seg7_lights_0700BB30:
+  type: LIGHTS
+  size: 24
+  offset: 0xBB30
+  symbol: ttm_seg7_lights_0700BB30
+
+ttm_seg7_vertex_0700BB48:
+  type: VTX
+  count: 6
+  offset: 0xBB48
+  symbol: ttm_seg7_vertex_0700BB48
+
+ttm_seg7_dl_0700BBA8:
+  type: GFX
+  offset: 0xBBA8
+  symbol: ttm_seg7_dl_0700BBA8
+
+ttm_seg7_dl_0700BC10:
+  type: GFX
+  offset: 0xBC10
+  symbol: ttm_seg7_dl_0700BC10
+
+ttm_seg7_lights_0700B6D0:
+  type: LIGHTS
+  size: 24
+  offset: 0xB6D0
+  symbol: ttm_seg7_lights_0700B6D0
+
+ttm_seg7_vertex_0700B6E8:
+  type: VTX
+  count: 15
+  offset: 0xB6E8
+  symbol: ttm_seg7_vertex_0700B6E8
+
+ttm_seg7_vertex_0700B7D8:
+  type: VTX
+  count: 16
+  offset: 0xB7D8
+  symbol: ttm_seg7_vertex_0700B7D8
+
+ttm_seg7_vertex_0700B8D8:
+  type: VTX
+  count: 12
+  offset: 0xB8D8
+  symbol: ttm_seg7_vertex_0700B8D8
+
+ttm_seg7_dl_0700B998:
+  type: GFX
+  offset: 0xB998
+  symbol: ttm_seg7_dl_0700B998
+
+ttm_seg7_dl_0700BAD0:
+  type: GFX
+  offset: 0xBAD0
+  symbol: ttm_seg7_dl_0700BAD0
+
+ttm_seg7_lights_0700F300:
+  type: LIGHTS
+  size: 24
+  offset: 0xF300
+  symbol: ttm_seg7_lights_0700F300
+
+ttm_seg7_vertex_0700F318:
+  type: VTX
+  count: 16
+  offset: 0xF318
+  symbol: ttm_seg7_vertex_0700F318
+
+ttm_seg7_vertex_0700F418:
+  type: VTX
+  count: 15
+  offset: 0xF418
+  symbol: ttm_seg7_vertex_0700F418
+
+ttm_seg7_vertex_0700F508:
+  type: VTX
+  count: 15
+  offset: 0xF508
+  symbol: ttm_seg7_vertex_0700F508
+
+ttm_seg7_vertex_0700F5F8:
+  type: VTX
+  count: 15
+  offset: 0xF5F8
+  symbol: ttm_seg7_vertex_0700F5F8
+
+ttm_seg7_vertex_0700F6E8:
+  type: VTX
+  count: 15
+  offset: 0xF6E8
+  symbol: ttm_seg7_vertex_0700F6E8
+
+ttm_seg7_vertex_0700F7D8:
+  type: VTX
+  count: 8
+  offset: 0xF7D8
+  symbol: ttm_seg7_vertex_0700F7D8
+
+ttm_seg7_dl_0700F858:
+  type: GFX
+  offset: 0xF858
+  symbol: ttm_seg7_dl_0700F858
+
+ttm_seg7_dl_0700F8D0:
+  type: GFX
+  offset: 0xF8D0
+  symbol: ttm_seg7_dl_0700F8D0
+
+ttm_seg7_dl_0700FA18:
+  type: GFX
+  offset: 0xFA18
+  symbol: ttm_seg7_dl_0700FA18
+
+ttm_seg7_vertex_0700ECC8:
+  type: VTX
+  count: 13
+  offset: 0xECC8
+  symbol: ttm_seg7_vertex_0700ECC8
+
+ttm_seg7_vertex_0700ED98:
+  type: VTX
+  count: 15
+  offset: 0xED98
+  symbol: ttm_seg7_vertex_0700ED98
+
+ttm_seg7_vertex_0700EE88:
+  type: VTX
+  count: 15
+  offset: 0xEE88
+  symbol: ttm_seg7_vertex_0700EE88
+
+ttm_seg7_vertex_0700EF78:
+  type: VTX
+  count: 15
+  offset: 0xEF78
+  symbol: ttm_seg7_vertex_0700EF78
+
+ttm_seg7_vertex_0700F068:
+  type: VTX
+  count: 7
+  offset: 0xF068
+  symbol: ttm_seg7_vertex_0700F068
+
+ttm_seg7_dl_0700F0D8:
+  type: GFX
+  offset: 0xF0D8
+  symbol: ttm_seg7_dl_0700F0D8
+
+ttm_seg7_dl_0700F170:
+  type: GFX
+  offset: 0xF170
+  symbol: ttm_seg7_dl_0700F170
+
+ttm_seg7_dl_0700F270:
+  type: GFX
+  offset: 0xF270
+  symbol: ttm_seg7_dl_0700F270
+
+ttm_seg7_vertex_07011D00:
+  type: VTX
+  count: 4
+  offset: 0x11D00
+  symbol: ttm_seg7_vertex_07011D00
+
+ttm_seg7_dl_07011D40:
+  type: GFX
+  offset: 0x11D40
+  symbol: ttm_seg7_dl_07011D40
+
+ttm_seg7_dl_07011D78:
+  type: GFX
+  offset: 0x11D78
+  symbol: ttm_seg7_dl_07011D78
+
+ttm_seg7_lights_07011680:
+  type: LIGHTS
+  size: 24
+  offset: 0x11680
+  symbol: ttm_seg7_lights_07011680
+
+ttm_seg7_lights_07011698:
+  type: LIGHTS
+  size: 24
+  offset: 0x11698
+  symbol: ttm_seg7_lights_07011698
+
+ttm_seg7_lights_070116B0:
+  type: LIGHTS
+  size: 24
+  offset: 0x116B0
+  symbol: ttm_seg7_lights_070116B0
+
+ttm_seg7_vertex_070116C8:
+  type: VTX
+  count: 16
+  offset: 0x116C8
+  symbol: ttm_seg7_vertex_070116C8
+
+ttm_seg7_vertex_070117C8:
+  type: VTX
+  count: 4
+  offset: 0x117C8
+  symbol: ttm_seg7_vertex_070117C8
+
+ttm_seg7_vertex_07011808:
+  type: VTX
+  count: 15
+  offset: 0x11808
+  symbol: ttm_seg7_vertex_07011808
+
+ttm_seg7_vertex_070118F8:
+  type: VTX
+  count: 16
+  offset: 0x118F8
+  symbol: ttm_seg7_vertex_070118F8
+
+ttm_seg7_vertex_070119F8:
+  type: VTX
+  count: 3
+  offset: 0x119F8
+  symbol: ttm_seg7_vertex_070119F8
+
+ttm_seg7_vertex_07011A28:
+  type: VTX
+  count: 4
+  offset: 0x11A28
+  symbol: ttm_seg7_vertex_07011A28
+
+ttm_seg7_vertex_07011A68:
+  type: VTX
+  count: 4
+  offset: 0x11A68
+  symbol: ttm_seg7_vertex_07011A68
+
+ttm_seg7_dl_07011AA8:
+  type: GFX
+  offset: 0x11AA8
+  symbol: ttm_seg7_dl_07011AA8
+
+ttm_seg7_dl_07011B20:
+  type: GFX
+  offset: 0x11B20
+  symbol: ttm_seg7_dl_07011B20
+
+ttm_seg7_dl_07011C10:
+  type: GFX
+  offset: 0x11C10
+  symbol: ttm_seg7_dl_07011C10
+
+ttm_seg7_dl_07011C48:
+  type: GFX
+  offset: 0x11C48
+  symbol: ttm_seg7_dl_07011C48
+
+ttm_seg7_dl_07011C78:
+  type: GFX
+  offset: 0x11C78
+  symbol: ttm_seg7_dl_07011C78
+
+ttm_seg7_lights_0700AFF0:
+  type: LIGHTS
+  size: 24
+  offset: 0xAFF0
+  symbol: ttm_seg7_lights_0700AFF0
+
+ttm_seg7_vertex_0700B008:
+  type: VTX
+  count: 6
+  offset: 0xB008
+  symbol: ttm_seg7_vertex_0700B008
+
+ttm_seg7_dl_0700B068:
+  type: GFX
+  offset: 0xB068
+  symbol: ttm_seg7_dl_0700B068
+
+ttm_seg7_dl_0700B0D0:
+  type: GFX
+  offset: 0xB0D0
+  symbol: ttm_seg7_dl_0700B0D0
+
+ttm_seg7_lights_0700AB70:
+  type: LIGHTS
+  size: 24
+  offset: 0xAB70
+  symbol: ttm_seg7_lights_0700AB70
+
+ttm_seg7_vertex_0700AB88:
+  type: VTX
+  count: 15
+  offset: 0xAB88
+  symbol: ttm_seg7_vertex_0700AB88
+
+ttm_seg7_vertex_0700AC78:
+  type: VTX
+  count: 16
+  offset: 0xAC78
+  symbol: ttm_seg7_vertex_0700AC78
+
+ttm_seg7_vertex_0700AD78:
+  type: VTX
+  count: 14
+  offset: 0xAD78
+  symbol: ttm_seg7_vertex_0700AD78
+
+ttm_seg7_dl_0700AE58:
+  type: GFX
+  offset: 0xAE58
+  symbol: ttm_seg7_dl_0700AE58
+
+ttm_seg7_dl_0700AF90:
+  type: GFX
+  offset: 0xAF90
+  symbol: ttm_seg7_dl_0700AF90
+
+ttm_seg7_lights_0700A928:
+  type: LIGHTS
+  size: 24
+  offset: 0xA928
+  symbol: ttm_seg7_lights_0700A928
+
+ttm_seg7_vertex_0700A940:
+  type: VTX
+  count: 8
+  offset: 0xA940
+  symbol: ttm_seg7_vertex_0700A940
+
+ttm_seg7_vertex_0700A9C0:
+  type: VTX
+  count: 8
+  offset: 0xA9C0
+  symbol: ttm_seg7_vertex_0700A9C0
+
+ttm_seg7_dl_0700AA40:
+  type: GFX
+  offset: 0xAA40
+  symbol: ttm_seg7_dl_0700AA40
+
+ttm_seg7_dl_0700AAB8:
+  type: GFX
+  offset: 0xAAB8
+  symbol: ttm_seg7_dl_0700AAB8
+
+ttm_seg7_dl_0700AB08:
+  type: GFX
+  offset: 0xAB08
+  symbol: ttm_seg7_dl_0700AB08
+
+ttm_seg7_lights_0700A340:
+  type: LIGHTS
+  size: 24
+  offset: 0xA340
+  symbol: ttm_seg7_lights_0700A340
+
+ttm_seg7_lights_0700A358:
+  type: LIGHTS
+  size: 24
+  offset: 0xA358
+  symbol: ttm_seg7_lights_0700A358
+
+ttm_seg7_vertex_0700A370:
+  type: VTX
+  count: 15
+  offset: 0xA370
+  symbol: ttm_seg7_vertex_0700A370
+
+ttm_seg7_vertex_0700A460:
+  type: VTX
+  count: 16
+  offset: 0xA460
+  symbol: ttm_seg7_vertex_0700A460
+
+ttm_seg7_vertex_0700A560:
+  type: VTX
+  count: 14
+  offset: 0xA560
+  symbol: ttm_seg7_vertex_0700A560
+
+ttm_seg7_vertex_0700A640:
+  type: VTX
+  count: 13
+  offset: 0xA640
+  symbol: ttm_seg7_vertex_0700A640
+
+ttm_seg7_dl_0700A710:
+  type: GFX
+  offset: 0xA710
+  symbol: ttm_seg7_dl_0700A710
+
+ttm_seg7_dl_0700A848:
+  type: GFX
+  offset: 0xA848
+  symbol: ttm_seg7_dl_0700A848
+
+ttm_seg7_dl_0700A8C0:
+  type: GFX
+  offset: 0xA8C0
+  symbol: ttm_seg7_dl_0700A8C0
+
+ttm_seg7_lights_0700B590:
+  type: LIGHTS
+  size: 24
+  offset: 0xB590
+  symbol: ttm_seg7_lights_0700B590
+
+ttm_seg7_vertex_0700B5A8:
+  type: VTX
+  count: 6
+  offset: 0xB5A8
+  symbol: ttm_seg7_vertex_0700B5A8
+
+ttm_seg7_dl_0700B608:
+  type: GFX
+  offset: 0xB608
+  symbol: ttm_seg7_dl_0700B608
+
+ttm_seg7_dl_0700B670:
+  type: GFX
+  offset: 0xB670
+  symbol: ttm_seg7_dl_0700B670
+
+ttm_seg7_lights_0700B130:
+  type: LIGHTS
+  size: 24
+  offset: 0xB130
+  symbol: ttm_seg7_lights_0700B130
+
+ttm_seg7_vertex_0700B148:
+  type: VTX
+  count: 16
+  offset: 0xB148
+  symbol: ttm_seg7_vertex_0700B148
+
+ttm_seg7_vertex_0700B248:
+  type: VTX
+  count: 15
+  offset: 0xB248
+  symbol: ttm_seg7_vertex_0700B248
+
+ttm_seg7_vertex_0700B338:
+  type: VTX
+  count: 12
+  offset: 0xB338
+  symbol: ttm_seg7_vertex_0700B338
+
+ttm_seg7_dl_0700B3F8:
+  type: GFX
+  offset: 0xB3F8
+  symbol: ttm_seg7_dl_0700B3F8
+
+ttm_seg7_dl_0700B530:
+  type: GFX
+  offset: 0xB530
+  symbol: ttm_seg7_dl_0700B530
+
+ttm_seg7_vertex_070134A0:
+  type: VTX
+  count: 16
+  offset: 0x134A0
+  symbol: ttm_seg7_vertex_070134A0
+
+ttm_seg7_dl_070135A0:
+  type: GFX
+  offset: 0x135A0
+  symbol: ttm_seg7_dl_070135A0
+
+ttm_seg7_dl_07013608:
+  type: GFX
+  offset: 0x13608
+  symbol: ttm_seg7_dl_07013608
+
+ttm_seg7_lights_07012F78:
+  type: LIGHTS
+  size: 24
+  offset: 0x12F78
+  symbol: ttm_seg7_lights_07012F78
+
+ttm_seg7_lights_07012F90:
+  type: LIGHTS
+  size: 24
+  offset: 0x12F90
+  symbol: ttm_seg7_lights_07012F90
+
+ttm_seg7_vertex_07012FA8:
+  type: VTX
+  count: 8
+  offset: 0x12FA8
+  symbol: ttm_seg7_vertex_07012FA8
+
+ttm_seg7_vertex_07013028:
+  type: VTX
+  count: 14
+  offset: 0x13028
+  symbol: ttm_seg7_vertex_07013028
+
+ttm_seg7_vertex_07013108:
+  type: VTX
+  count: 14
+  offset: 0x13108
+  symbol: ttm_seg7_vertex_07013108
+
+ttm_seg7_vertex_070131E8:
+  type: VTX
+  count: 14
+  offset: 0x131E8
+  symbol: ttm_seg7_vertex_070131E8
+
+ttm_seg7_vertex_070132C8:
+  type: VTX
+  count: 4
+  offset: 0x132C8
+  symbol: ttm_seg7_vertex_070132C8
+
+ttm_seg7_dl_07013308:
+  type: GFX
+  offset: 0x13308
+  symbol: ttm_seg7_dl_07013308
+
+ttm_seg7_dl_07013430:
+  type: GFX
+  offset: 0x13430
+  symbol: ttm_seg7_dl_07013430
+

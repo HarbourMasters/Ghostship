@@ -57,6 +57,6 @@ breakable_box_seg8_dl_08012D20:
 
 breakable_box_seg8_dl_08012D48:
   type: GFX
-  offset: 0x12D20
+  offset: 0x12D48
   symbol: breakable_box_seg8_dl_08012D48
 

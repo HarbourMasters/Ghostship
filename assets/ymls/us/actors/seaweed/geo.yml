@@ -1,4 +1,6 @@
 :config:
+  external_files:
+    - "assets/ymls/us/actors/seaweed.yml"
   autopads: false
   segments:
     - [0x0D,  0x1C3DB0]
