@@ -4166,3 +4166,38 @@ ttm_seg7_dl_07013430:
   offset: 0x13430
   symbol: ttm_seg7_dl_07013430
 
+ttm_seg7_collision_pitoune_2:
+  type: SM64:COLLISION
+  offset: 0x13678
+  symbol: ttm_seg7_collision_pitoune_2
+
+ttm_seg7_collision_ukiki_cage:
+  type: SM64:COLLISION
+  offset: 0x13790
+  symbol: ttm_seg7_collision_ukiki_cage
+
+ttm_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0x13814
+  symbol: ttm_seg7_area_1_collision
+
+ttm_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0x2BBD0
+  symbol: ttm_seg7_area_2_collision
+
+ttm_seg7_area_3_collision:
+  type: SM64:COLLISION
+  offset: 0x2D5EC
+  symbol: ttm_seg7_area_3_collision
+
+ttm_seg7_area_4_collision:
+  type: SM64:COLLISION
+  offset: 0x2F0F8
+  symbol: ttm_seg7_area_4_collision
+
+ttm_seg7_collision_podium_warp:
+  type: SM64:COLLISION
+  offset: 0x3013C
+  symbol: ttm_seg7_collision_podium_warp
+
