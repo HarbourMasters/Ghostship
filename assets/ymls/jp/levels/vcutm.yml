@@ -669,3 +669,13 @@ vcutm_seg7_dl_070080D0:
   offset: 0x80D0
   symbol: vcutm_seg7_dl_070080D0
 
+vcutm_seg7_collision:
+  type: SM64:COLLISION
+  offset: 0x9750
+  symbol: vcutm_seg7_collision
+
+vcutm_seg7_collision_0700AC44:
+  type: SM64:COLLISION
+  offset: 0xAC44
+  symbol: vcutm_seg7_collision_0700AC44
+

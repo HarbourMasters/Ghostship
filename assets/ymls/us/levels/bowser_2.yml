@@ -131,3 +131,13 @@ bowser_2_seg7_dl_07001930:
   offset: 0x1930
   symbol: bowser_2_seg7_dl_07001930
 
+bowser_2_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0x19F0
+    symbol: bowser_2_seg7_collision_level
+
+bowser_2_seg7_collision_tilting_platform:
+    type: SM64:COLLISION
+    offset: 0x1A68
+    symbol: bowser_2_seg7_collision_tilting_platform
+

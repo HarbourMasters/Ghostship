@@ -3476,3 +3476,42 @@ bbh_seg7_dl_0701FD28:
   offset: 0x1FD28
   symbol: bbh_seg7_dl_0701FD28
 
+bbh_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0x207A0
+    symbol: bbh_seg7_collision_level
+
+bbh_seg7_collision_staircase_step:
+    type: SM64:COLLISION
+    offset: 0x26A1C
+    symbol: bbh_seg7_collision_staircase_step
+
+bbh_seg7_collision_tilt_floor_platform:
+    type: SM64:COLLISION
+    offset: 0x26A98
+    symbol: bbh_seg7_collision_tilt_floor_platform
+
+bbh_seg7_collision_07026B1C:
+    type: SM64:COLLISION
+    offset: 0x26B1C
+    symbol: bbh_seg7_collision_07026B1C
+
+bbh_seg7_collision_haunted_bookshelf:
+    type: SM64:COLLISION
+    offset: 0x26B4C
+    symbol: bbh_seg7_collision_haunted_bookshelf
+
+bbh_seg7_collision_mesh_elevator:
+    type: SM64:COLLISION
+    offset: 0x26B94
+    symbol: bbh_seg7_collision_mesh_elevator
+
+bbh_seg7_collision_merry_go_round:
+    type: SM64:COLLISION
+    offset: 0x26C1C
+    symbol: bbh_seg7_collision_merry_go_round
+
+bbh_seg7_collision_coffin:
+    type: SM64:COLLISION
+    offset: 0x26D18
+    symbol: bbh_seg7_collision_coffin

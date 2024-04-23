@@ -1451,4 +1451,59 @@ jrb_seg7_dl_0700AFB0:
   type: GFX
   offset: 0xAFB0
   symbol: jrb_seg7_dl_0700AFB0
+  
+jrb_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0xB058
+  symbol: jrb_seg7_area_1_collision
+
+jrb_seg7_collision_rock_solid:
+  type: SM64:COLLISION
+  offset: 0xC758
+  symbol: jrb_seg7_collision_rock_solid
+
+jrb_seg7_collision_floating_platform:
+  type: SM64:COLLISION
+  offset: 0xC824
+  symbol: jrb_seg7_collision_floating_platform
+
+jrb_seg7_collision_floating_box:
+  type: SM64:COLLISION
+  offset: 0xC8A8
+  symbol: jrb_seg7_collision_floating_box
+
+jrb_seg7_collision_in_sunken_ship_3:
+  type: SM64:COLLISION
+  offset: 0xC92C
+  symbol: jrb_seg7_collision_in_sunken_ship_3
+
+jrb_seg7_collision_in_sunken_ship:
+  type: SM64:COLLISION
+  offset: 0xCE5C
+  symbol: jrb_seg7_collision_in_sunken_ship
+
+jrb_seg7_collision_0700CEF0:
+  type: SM64:COLLISION
+  offset: 0xCEF0
+  symbol: jrb_seg7_collision_0700CEF0
+
+jrb_seg7_collision_in_sunken_ship_2:
+  type: SM64:COLLISION
+  offset: 0xCF80
+  symbol: jrb_seg7_collision_in_sunken_ship_2
+
+jrb_seg7_collision_pillar_base:
+  type: SM64:COLLISION
+  offset: 0xD198
+  symbol: jrb_seg7_collision_pillar_base
+
+jrb_seg7_collision_0700D1DC:
+  type: SM64:COLLISION
+  offset: 0xD1DC
+  symbol: jrb_seg7_collision_0700D1DC
+
+jrb_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0x105B8
+  symbol: jrb_seg7_area_2_collision
 

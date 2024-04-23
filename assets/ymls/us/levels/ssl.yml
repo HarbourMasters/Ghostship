@@ -2511,3 +2511,69 @@ ssl_seg7_dl_0700FCE0:
   offset: 0xFCE0
   symbol: ssl_seg7_dl_0700FCE0
 
+ssl_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0xFD80
+  symbol: ssl_seg7_area_1_collision
+
+ssl_seg7_collision_pyramid_top:
+  type: SM64:COLLISION
+  offset: 0x125F4
+  symbol: ssl_seg7_collision_pyramid_top
+
+ssl_seg7_collision_tox_box:
+  type: SM64:COLLISION
+  offset: 0x12644
+  symbol: ssl_seg7_collision_tox_box
+
+ssl_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0x23678
+  symbol: ssl_seg7_area_2_collision
+
+ssl_seg7_area_3_collision:
+  type: SM64:COLLISION
+  offset: 0x275BC
+  symbol: ssl_seg7_area_3_collision
+
+ssl_seg7_collision_grindel:
+  type: SM64:COLLISION
+  offset: 0x27ED0
+  symbol: ssl_seg7_collision_grindel
+
+ssl_seg7_collision_spindel:
+  type: SM64:COLLISION
+  offset: 0x27F54
+  symbol: ssl_seg7_collision_spindel
+
+ssl_seg7_collision_0702808C:
+  type: SM64:COLLISION
+  offset: 0x2808C
+  symbol: ssl_seg7_collision_0702808C
+
+ssl_seg7_collision_pyramid_elevator:
+  type: SM64:COLLISION
+  offset: 0x28110
+  symbol: ssl_seg7_collision_pyramid_elevator
+
+ssl_seg7_collision_07028274:
+  type: SM64:COLLISION
+  offset: 0x28274
+  symbol: ssl_seg7_collision_07028274
+
+ssl_seg7_collision_070282F8:
+  type: SM64:COLLISION
+  offset: 0x282F8
+  symbol: ssl_seg7_collision_070282F8
+
+ssl_seg7_collision_07028370:
+  type: SM64:COLLISION
+  offset: 0x28370
+  symbol: ssl_seg7_collision_07028370
+
+ssl_seg7_collision_070284B0:
+  type: SM64:COLLISION
+  offset: 0x284B0
+  symbol: ssl_seg7_collision_070284B0
+
+
