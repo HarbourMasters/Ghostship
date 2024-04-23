@@ -1897,3 +1897,48 @@ wdw_seg7_dl_07013B70:
   offset: 0x13B70
   symbol: wdw_seg7_dl_07013B70
 
+wdw_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0x14150
+  symbol: wdw_seg7_area_1_collision
+
+wdw_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0x1633C
+  symbol: wdw_seg7_area_2_collision
+
+wdw_seg7_collision_square_floating_platform:
+  type: SM64:COLLISION
+  offset: 0x183C0
+  symbol: wdw_seg7_collision_square_floating_platform
+
+wdw_seg7_collision_arrow_lift:
+  type: SM64:COLLISION
+  offset: 0x18444
+  symbol: wdw_seg7_collision_arrow_lift
+
+wdw_seg7_collision_070184C8:
+  type: SM64:COLLISION
+  offset: 0x184C8
+  symbol: wdw_seg7_070184C8
+
+wdw_seg7_collision_07018528:
+  type: SM64:COLLISION
+  offset: 0x18528
+  symbol: wdw_seg7_07018528
+
+wdw_seg7_collision_express_elevator_platform:
+  type: SM64:COLLISION
+  offset: 0x185AC
+  symbol: wdw_seg7_express_elevator_platform
+
+wdw_seg7_collision_rect_floating_platform:
+  type: SM64:COLLISION
+  offset: 0x18630
+  symbol: wdw_seg7_rect_floating_platform
+
+wdw_seg7_collision_070186B4:
+  type: SM64:COLLISION
+  offset: 0x186B4
+  symbol: wdw_seg7_070186B4
+
