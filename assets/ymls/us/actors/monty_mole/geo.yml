@@ -1,4 +1,6 @@
 :config:
+  external_files:
+    - "assets/ymls/us/actors/monty_mole.yml"
   autopads: false
   segments:
     - [0x0C,  0x1602E0]

@@ -5,6 +5,8 @@
   segments:
     - [0x05,  0x16D870]
 
+# shifted by 0xE8 compared to jp
+
 yoshi_eye:
   type: TEXTURE
   size: 512
@@ -33,637 +35,637 @@ yoshi_nostril:
 yoshi_seg5_lights_0501C458:
   type: LIGHTS
   size: 24
-  offset: 0x1C458
+  offset: 0x1C540
   symbol: yoshi_seg5_lights_0501C458
 
 yoshi_seg5_lights_0501C470:
   type: LIGHTS
   size: 24
-  offset: 0x1C470
+  offset: 0x1C558
   symbol: yoshi_seg5_lights_0501C470
 
 yoshi_seg5_lights_0501C488:
   type: LIGHTS
   size: 24
-  offset: 0x1C488
+  offset: 0x1C570
   symbol: yoshi_seg5_lights_0501C488
 
 yoshi_seg5_vertex_0501CAA0:
   type: VTX
   count: 6
-  offset: 0x1CAA0
+  offset: 0x1CB88
   symbol: yoshi_seg5_vertex_0501CAA0
 
 yoshi_seg5_vertex_0501CB00:
   type: VTX
   count: 11
-  offset: 0x1CB00
+  offset: 0x1CBE8
   symbol: yoshi_seg5_vertex_0501CB00
 
 yoshi_seg5_vertex_0501CBB0:
   type: VTX
   count: 5
-  offset: 0x1CBB0
+  offset: 0x1CC98
   symbol: yoshi_seg5_vertex_0501CBB0
 
 yoshi_seg5_vertex_0501CC00:
   type: VTX
   count: 15
-  offset: 0x1CC00
+  offset: 0x1CCE8
   symbol: yoshi_seg5_vertex_0501CC00
 
 yoshi_seg5_vertex_0501CCF0:
   type: VTX
   count: 15
-  offset: 0x1CCF0
+  offset: 0x1CDD8
   symbol: yoshi_seg5_vertex_0501CCF0
 
 yoshi_seg5_vertex_0501CDE0:
   type: VTX
   count: 16
-  offset: 0x1CDE0
+  offset: 0x1CEC8
   symbol: yoshi_seg5_vertex_0501CDE0
 
 yoshi_seg5_vertex_0501CEE0:
   type: VTX
   count: 16
-  offset: 0x1CEE0
+  offset: 0x1CFC8
   symbol: yoshi_seg5_vertex_0501CEE0
 
 yoshi_seg5_vertex_0501CFE0:
   type: VTX
   count: 16
-  offset: 0x1CFE0
+  offset: 0x1D0C8
   symbol: yoshi_seg5_vertex_0501CFE0
 
 yoshi_seg5_vertex_0501D0E0:
   type: VTX
   count: 14
-  offset: 0x1D0E0
+  offset: 0x1D1C8
   symbol: yoshi_seg5_vertex_0501D0E0
 
 yoshi_seg5_vertex_0501D1C0:
   type: VTX
   count: 16
-  offset: 0x1D1C0
+  offset: 0x1D2A8
   symbol: yoshi_seg5_vertex_0501D1C0
 
 yoshi_seg5_vertex_0501D2C0:
   type: VTX
   count: 7
-  offset: 0x1D2C0
+  offset: 0x1D3A8
   symbol: yoshi_seg5_vertex_0501D2C0
 
 yoshi_seg5_vertex_0501D330:
   type: VTX
   count: 14
-  offset: 0x1D330
+  offset: 0x1D418
   symbol: yoshi_seg5_vertex_0501D330
 
 yoshi_seg5_vertex_0501D410:
   type: VTX
   count: 3
-  offset: 0x1D410
+  offset: 0x1D4F8
   symbol: yoshi_seg5_vertex_0501D410
 
 yoshi_seg5_dl_0501D440:
   type: GFX
-  offset: 0x1D440
+  offset: 0x1D528
   symbol: yoshi_seg5_dl_0501D440
 
 yoshi_seg5_dl_0501D488:
   type: GFX
-  offset: 0x1D488
+  offset: 0x1D570
   symbol: yoshi_seg5_dl_0501D488
 
 yoshi_seg5_dl_0501D4E0:
   type: GFX
-  offset: 0x1D4E0
+  offset: 0x1D5C8
   symbol: yoshi_seg5_dl_0501D4E0
 
 yoshi_seg5_dl_0501D8F8:
   type: GFX
-  offset: 0x1D8F8
+  offset: 0x1D9E0
   symbol: yoshi_seg5_dl_0501D8F8
 
 yoshi_seg5_dl_0501D940:
   type: GFX
-  offset: 0x1D940
+  offset: 0x1DA28
   symbol: yoshi_seg5_dl_0501D940
 
 yoshi_seg5_dl_0501D970:
   type: GFX
-  offset: 0x1D970
+  offset: 0x1DA58
   symbol: yoshi_seg5_dl_0501D970
 
 yoshi_seg5_dl_0501D998:
   type: GFX
-  offset: 0x1D998
+  offset: 0x1DA80
   symbol: yoshi_seg5_dl_0501D998
 
 yoshi_seg5_lights_0501D9C0:
   type: LIGHTS
   size: 24
-  offset: 0x1D9C0
+  offset: 0x1DAA8
   symbol: yoshi_seg5_lights_0501D9C0
 
 yoshi_seg5_lights_0501D9D8:
   type: LIGHTS
   size: 24
-  offset: 0x1D9D8
+  offset: 0x1DAC0
   symbol: yoshi_seg5_lights_0501D9D8
 
 yoshi_seg5_lights_0501D9F0:
   type: LIGHTS
   size: 24
-  offset: 0x1D9F0
+  offset: 0x1DAD8
   symbol: yoshi_seg5_lights_0501D9F0
 
 yoshi_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x1DA08
+  offset: 0x1DAF0
   symbol: yoshi_lights_unused1
 
 yoshi_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0x1DA20
+  offset: 0x1DB08
   symbol: yoshi_lights_unused2
 
 yoshi_seg5_lights_0501DA38:
   type: LIGHTS
   size: 24
-  offset: 0x1DA38
+  offset: 0x1DB20
   symbol: yoshi_seg5_lights_0501DA38
 
 yoshi_seg5_vertex_0501DA50:
   type: VTX
   count: 15
-  offset: 0x1DA50
+  offset: 0x1DB38
   symbol: yoshi_seg5_vertex_0501DA50
 
 yoshi_seg5_vertex_0501DB40:
   type: VTX
   count: 15
-  offset: 0x1DB40
+  offset: 0x1DC28
   symbol: yoshi_seg5_vertex_0501DB40
 
 yoshi_seg5_vertex_0501DC30:
   type: VTX
   count: 14
-  offset: 0x1DC30
+  offset: 0x1DD18
   symbol: yoshi_seg5_vertex_0501DC30
 
 yoshi_seg5_vertex_0501DD10:
   type: VTX
   count: 16
-  offset: 0x1DD10
+  offset: 0x1DDF8
   symbol: yoshi_seg5_vertex_0501DD10
 
 yoshi_seg5_vertex_0501DE10:
   type: VTX
   count: 15
-  offset: 0x1DE10
+  offset: 0x1DEF8
   symbol: yoshi_seg5_vertex_0501DE10
 
 yoshi_seg5_vertex_0501DF00:
   type: VTX
   count: 15
-  offset: 0x1DF00
+  offset: 0x1DFE8
   symbol: yoshi_seg5_vertex_0501DF00
 
 yoshi_seg5_vertex_0501DFF0:
   type: VTX
   count: 14
-  offset: 0x1DFF0
+  offset: 0x1E0D8
   symbol: yoshi_seg5_vertex_0501DFF0
 
 yoshi_seg5_vertex_0501E0D0:
   type: VTX
   count: 14
-  offset: 0x1E0D0
+  offset: 0x1E1B8
   symbol: yoshi_seg5_vertex_0501E0D0
 
 yoshi_seg5_vertex_0501E1B0:
   type: VTX
   count: 3
-  offset: 0x1E1B0
+  offset: 0x1E298
   symbol: yoshi_seg5_vertex_0501E1B0
 
 yoshi_seg5_vertex_0501E1E0:
   type: VTX
   count: 14
-  offset: 0x1E1E0
+  offset: 0x1E2C8
   symbol: yoshi_seg5_vertex_0501E1E0
 
 yoshi_seg5_vertex_0501E2C0:
   type: VTX
   count: 16
-  offset: 0x1E2C0
+  offset: 0x1E3A8
   symbol: yoshi_seg5_vertex_0501E2C0
 
 yoshi_seg5_vertex_0501E3C0:
   type: VTX
   count: 15
-  offset: 0x1E3C0
+  offset: 0x1E4A8
   symbol: yoshi_seg5_vertex_0501E3C0
 
 yoshi_seg5_vertex_0501E4B0:
   type: VTX
   count: 8
-  offset: 0x1E4B0
+  offset: 0x1E598
   symbol: yoshi_seg5_vertex_0501E4B0
 
 yoshi_seg5_vertex_0501E530:
   type: VTX
   count: 10
-  offset: 0x1E530
+  offset: 0x1E618
   symbol: yoshi_seg5_vertex_0501E530
 
 yoshi_seg5_vertex_0501E5D0:
   type: VTX
   count: 11
-  offset: 0x1E5D0
+  offset: 0x1E6B8
   symbol: yoshi_seg5_vertex_0501E5D0
 
 yoshi_seg5_vertex_0501E680:
   type: VTX
   count: 14
-  offset: 0x1E680
+  offset: 0x1E768
   symbol: yoshi_seg5_vertex_0501E680
 
 yoshi_seg5_vertex_0501E760:
   type: VTX
   count: 16
-  offset: 0x1E760
+  offset: 0x1E848
   symbol: yoshi_seg5_vertex_0501E760
 
 yoshi_seg5_vertex_0501E860:
   type: VTX
   count: 15
-  offset: 0x1E860
+  offset: 0x1E948
   symbol: yoshi_seg5_vertex_0501E860
 
 yoshi_seg5_vertex_0501E950:
   type: VTX
   count: 8
-  offset: 0x1E950
+  offset: 0x1EA38
   symbol: yoshi_seg5_vertex_0501E950
 
 yoshi_seg5_vertex_0501E9D0:
   type: VTX
   count: 10
-  offset: 0x1E9D0
+  offset: 0x1EAB8
   symbol: yoshi_seg5_vertex_0501E9D0
 
 yoshi_seg5_vertex_0501EA70:
   type: VTX
   count: 11
-  offset: 0x1EA70
+  offset: 0x1EB58
   symbol: yoshi_seg5_vertex_0501EA70
 
 yoshi_seg5_vertex_0501EB20:
   type: VTX
   count: 15
-  offset: 0x1EB20
+  offset: 0x1EC08
   symbol: yoshi_seg5_vertex_0501EB20
 
 yoshi_seg5_vertex_0501EC10:
   type: VTX
   count: 16
-  offset: 0x1EC10
+  offset: 0x1ECF8
   symbol: yoshi_seg5_vertex_0501EC10
 
 yoshi_seg5_vertex_0501ED10:
   type: VTX
   count: 16
-  offset: 0x1ED10
+  offset: 0x1EDF8
   symbol: yoshi_seg5_vertex_0501ED10
 
 yoshi_seg5_vertex_0501EE10:
   type: VTX
   count: 16
-  offset: 0x1EE10
+  offset: 0x1EEF8
   symbol: yoshi_seg5_vertex_0501EE10
 
 yoshi_seg5_vertex_0501EF10:
   type: VTX
   count: 15
-  offset: 0x1EF10
+  offset: 0x1EFF8
   symbol: yoshi_seg5_vertex_0501EF10
 
 yoshi_seg5_vertex_0501F000:
   type: VTX
   count: 16
-  offset: 0x1F000
+  offset: 0x1F0E8
   symbol: yoshi_seg5_vertex_0501F000
 
 yoshi_seg5_vertex_0501F100:
   type: VTX
   count: 8
-  offset: 0x1F100
+  offset: 0x1F1E8
   symbol: yoshi_seg5_vertex_0501F100
 
 yoshi_seg5_vertex_0501F180:
   type: VTX
   count: 16
-  offset: 0x1F180
+  offset: 0x1F268
   symbol: yoshi_seg5_vertex_0501F180
 
 yoshi_seg5_vertex_0501F280:
   type: VTX
   count: 16
-  offset: 0x1F280
+  offset: 0x1F368
   symbol: yoshi_seg5_vertex_0501F280
 
 yoshi_seg5_vertex_0501F380:
   type: VTX
   count: 16
-  offset: 0x1F380
+  offset: 0x1F468
   symbol: yoshi_seg5_vertex_0501F380
 
 yoshi_seg5_vertex_0501F480:
   type: VTX
   count: 12
-  offset: 0x1F480
+  offset: 0x1F568
   symbol: yoshi_seg5_vertex_0501F480
 
 yoshi_seg5_vertex_0501F540:
   type: VTX
   count: 16
-  offset: 0x1F540
+  offset: 0x1F628
   symbol: yoshi_seg5_vertex_0501F540
 
 yoshi_seg5_vertex_0501F640:
   type: VTX
   count: 15
-  offset: 0x1F640
+  offset: 0x1F728
   symbol: yoshi_seg5_vertex_0501F640
 
 yoshi_seg5_vertex_0501F730:
   type: VTX
   count: 15
-  offset: 0x1F730
+  offset: 0x1F818
   symbol: yoshi_seg5_vertex_0501F730
 
 yoshi_seg5_vertex_0501F820:
   type: VTX
   count: 15
-  offset: 0x1F820
+  offset: 0x1F908
   symbol: yoshi_seg5_vertex_0501F820
 
 yoshi_seg5_vertex_0501F910:
   type: VTX
   count: 15
-  offset: 0x1F910
+  offset: 0x1F9F8
   symbol: yoshi_seg5_vertex_0501F910
 
 yoshi_seg5_vertex_0501FA00:
   type: VTX
   count: 15
-  offset: 0x1FA00
+  offset: 0x1FAE8
   symbol: yoshi_seg5_vertex_0501FA00
 
 yoshi_seg5_vertex_0501FAF0:
   type: VTX
   count: 11
-  offset: 0x1FAF0
+  offset: 0x1FBD8
   symbol: yoshi_seg5_vertex_0501FAF0
 
 yoshi_seg5_vertex_0501FBA0:
   type: VTX
   count: 15
-  offset: 0x1FBA0
+  offset: 0x1FC88
   symbol: yoshi_seg5_vertex_0501FBA0
 
 yoshi_seg5_vertex_0501FC90:
   type: VTX
   count: 16
-  offset: 0x1FC90
+  offset: 0x1FD78
   symbol: yoshi_seg5_vertex_0501FC90
 
 yoshi_seg5_vertex_0501FD90:
   type: VTX
   count: 16
-  offset: 0x1FD90
+  offset: 0x1FE78
   symbol: yoshi_seg5_vertex_0501FD90
 
 yoshi_seg5_vertex_0501FE90:
   type: VTX
   count: 16
-  offset: 0x1FE90
+  offset: 0x1FF78
   symbol: yoshi_seg5_vertex_0501FE90
 
 yoshi_seg5_vertex_0501FF90:
   type: VTX
   count: 15
-  offset: 0x1FF90
+  offset: 0x20078
   symbol: yoshi_seg5_vertex_0501FF90
 
 yoshi_seg5_vertex_05020080:
   type: VTX
   count: 16
-  offset: 0x20080
+  offset: 0x20168
   symbol: yoshi_seg5_vertex_05020080
 
 yoshi_seg5_vertex_05020180:
   type: VTX
   count: 8
-  offset: 0x20180
+  offset: 0x20268
   symbol: yoshi_seg5_vertex_05020180
 
 yoshi_seg5_vertex_05020200:
   type: VTX
   count: 16
-  offset: 0x20200
+  offset: 0x202E8
   symbol: yoshi_seg5_vertex_05020200
 
 yoshi_seg5_vertex_05020300:
   type: VTX
   count: 16
-  offset: 0x20300
+  offset: 0x203E8
   symbol: yoshi_seg5_vertex_05020300
 
 yoshi_seg5_vertex_05020400:
   type: VTX
   count: 16
-  offset: 0x20400
+  offset: 0x204E8
   symbol: yoshi_seg5_vertex_05020400
 
 yoshi_seg5_vertex_05020500:
   type: VTX
   count: 12
-  offset: 0x20500
+  offset: 0x205E8
   symbol: yoshi_seg5_vertex_05020500
 
 yoshi_seg5_vertex_050205C0:
   type: VTX
   count: 16
-  offset: 0x205C0
+  offset: 0x206A8
   symbol: yoshi_seg5_vertex_050205C0
 
 yoshi_seg5_vertex_050206C0:
   type: VTX
   count: 15
-  offset: 0x206C0
+  offset: 0x207A8
   symbol: yoshi_seg5_vertex_050206C0
 
 yoshi_seg5_vertex_050207B0:
   type: VTX
   count: 15
-  offset: 0x207B0
+  offset: 0x20898
   symbol: yoshi_seg5_vertex_050207B0
 
 yoshi_seg5_vertex_050208A0:
   type: VTX
   count: 15
-  offset: 0x208A0
+  offset: 0x20988
   symbol: yoshi_seg5_vertex_050208A0
 
 yoshi_seg5_vertex_05020990:
   type: VTX
   count: 15
-  offset: 0x20990
+  offset: 0x20A78
   symbol: yoshi_seg5_vertex_05020990
 
 yoshi_seg5_vertex_05020A80:
   type: VTX
   count: 16
-  offset: 0x20A80
+  offset: 0x20B68
   symbol: yoshi_seg5_vertex_05020A80
 
 yoshi_seg5_vertex_05020B80:
   type: VTX
   count: 16
-  offset: 0x20B80
+  offset: 0x20C68
   symbol: yoshi_seg5_vertex_05020B80
 
 yoshi_seg5_vertex_05020C80:
   type: VTX
   count: 14
-  offset: 0x20C80
+  offset: 0x20D68
   symbol: yoshi_seg5_vertex_05020C80
 
 yoshi_seg5_vertex_05020D60:
   type: VTX
   count: 16
-  offset: 0x20D60
+  offset: 0x20E48
   symbol: yoshi_seg5_vertex_05020D60
 
 yoshi_seg5_vertex_05020E60:
   type: VTX
   count: 3
-  offset: 0x20E60
+  offset: 0x20F48
   symbol: yoshi_seg5_vertex_05020E60
 
 yoshi_seg5_vertex_05020E90:
   type: VTX
   count: 16
-  offset: 0x20E90
+  offset: 0x20F78
   symbol: yoshi_seg5_vertex_05020E90
 
 yoshi_seg5_vertex_05020F90:
   type: VTX
   count: 8
-  offset: 0x20F90
+  offset: 0x21078
   symbol: yoshi_seg5_vertex_05020F90
 
 yoshi_seg5_vertex_05021010:
   type: VTX
   count: 16
-  offset: 0x21010
+  offset: 0x210F8
   symbol: yoshi_seg5_vertex_05021010
 
 yoshi_seg5_vertex_05021110:
   type: VTX
   count: 12
-  offset: 0x21110
+  offset: 0x211F8
   symbol: yoshi_seg5_vertex_05021110
 
 yoshi_seg5_vertex_050211D0:
   type: VTX
   count: 14
-  offset: 0x211D0
+  offset: 0x212B8
   symbol: yoshi_seg5_vertex_050211D0
 
 yoshi_seg5_dl_050212B0:
   type: GFX
-  offset: 0x212B0
+  offset: 0x21398
   symbol: yoshi_seg5_dl_050212B0
 
 yoshi_seg5_dl_05021490:
   type: GFX
-  offset: 0x21490
+  offset: 0x21578
   symbol: yoshi_seg5_dl_05021490
 
 yoshi_seg5_dl_050215D8:
   type: GFX
-  offset: 0x215D8
+  offset: 0x216C0
   symbol: yoshi_seg5_dl_050215D8
 
 yoshi_seg5_dl_05021678:
   type: GFX
-  offset: 0x21678
+  offset: 0x21760
   symbol: yoshi_seg5_dl_05021678
 
 yoshi_seg5_dl_05021718:
   type: GFX
-  offset: 0x21718
+  offset: 0x21800
   symbol: yoshi_seg5_dl_05021718
 
 yoshi_seg5_dl_05021860:
   type: GFX
-  offset: 0x21860
+  offset: 0x21948
   symbol: yoshi_seg5_dl_05021860
 
 yoshi_seg5_dl_05021900:
   type: GFX
-  offset: 0x21900
+  offset: 0x219E8
   symbol: yoshi_seg5_dl_05021900
 
 yoshi_seg5_dl_050219A0:
   type: GFX
-  offset: 0x219A0
+  offset: 0x21A88
   symbol: yoshi_seg5_dl_050219A0
 
 yoshi_seg5_dl_05021B90:
   type: GFX
-  offset: 0x21B90
+  offset: 0x21C78
   symbol: yoshi_seg5_dl_05021B90
 
 yoshi_seg5_dl_05021CD8:
   type: GFX
-  offset: 0x21CD8
+  offset: 0x21DC0
   symbol: yoshi_seg5_dl_05021CD8
 
 yoshi_seg5_dl_05021E38:
   type: GFX
-  offset: 0x21E38
+  offset: 0x21F20
   symbol: yoshi_seg5_dl_05021E38
 
 yoshi_seg5_dl_05021F70:
   type: GFX
-  offset: 0x21F70
+  offset: 0x22058
   symbol: yoshi_seg5_dl_05021F70
 
 yoshi_seg5_dl_05022160:
   type: GFX
-  offset: 0x22160
+  offset: 0x22248
   symbol: yoshi_seg5_dl_05022160
 
 yoshi_seg5_dl_050222A8:
   type: GFX
-  offset: 0x222A8
+  offset: 0x22390
   symbol: yoshi_seg5_dl_050222A8
 
 yoshi_seg5_dl_05022408:
   type: GFX
-  offset: 0x22408
+  offset: 0x224F0
   symbol: yoshi_seg5_dl_05022408
 
 yoshi_seg5_dl_05022608:
   type: GFX
-  offset: 0x22608
+  offset: 0x226F0
   symbol: yoshi_seg5_dl_05022608
 

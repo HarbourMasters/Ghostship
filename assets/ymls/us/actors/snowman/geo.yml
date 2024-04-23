@@ -1,4 +1,7 @@
 :config:
+  external_files:
+    - "assets/ymls/us/actors/snowman.yml"
+    - "assets/ymls/us/actors/mario_cap.yml"
   autopads: false
   segments:
     - [0x0C,  0x1656E0]
