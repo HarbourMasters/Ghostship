@@ -1354,3 +1354,58 @@ bitdw_seg7_dl_0700C0E0:
   offset: 0xC0E0
   symbol: bitdw_seg7_dl_0700C0E0
 
+bitdw_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0xD460
+    symbol: bitdw_seg7_collision_level
+
+bitdw_seg7_collision_0700F688:
+    type: SM64:COLLISION
+    offset: 0xF688
+    symbol: bitdw_seg7_collision_0700F688
+
+bitdw_seg7_collision_0700F70C:
+    type: SM64:COLLISION
+    offset: 0xF70C
+    symbol: bitdw_seg7_collision_0700F70C
+
+bitdw_seg7_collision_moving_pyramid:
+    type: SM64:COLLISION
+    offset: 0xF790
+    symbol: bitdw_seg7_collision_moving_pyramid
+
+bitdw_seg7_collision_0700F7F0:
+    type: SM64:COLLISION
+    offset: 0xF7F0
+    symbol: bitdw_seg7_collision_0700F7F0
+
+bitdw_seg7_collision_0700F898:
+    type: SM64:COLLISION
+    offset: 0xF898
+    symbol: bitdw_seg7_collision_0700F898
+
+bitdw_seg7_collision_0700F91C:
+    type: SM64:COLLISION
+    offset: 0xF91C
+    symbol: bitdw_seg7_collision_0700F91C
+
+bitdw_seg7_collision_0700FA3C:
+    type: SM64:COLLISION
+    offset: 0xFA3C
+    symbol: bitdw_seg7_collision_0700FA3C
+
+bitdw_seg7_collision_0700FB5C:
+    type: SM64:COLLISION
+    offset: 0xFB5C
+    symbol: bitdw_seg7_collision_0700FB5C
+
+bitdw_seg7_collision_0700FC7C:
+    type: SM64:COLLISION
+    offset: 0xFC7C
+    symbol: bitdw_seg7_collision_0700FC7C
+
+bitdw_seg7_collision_0700FD9C:
+    type: SM64:COLLISION
+    offset: 0xFD9C
+    symbol: bitdw_seg7_collision_0700FD9C
+

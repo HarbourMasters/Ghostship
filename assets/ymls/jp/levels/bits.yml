@@ -2188,3 +2188,73 @@ bits_seg7_dl_07013EF8:
   offset: 0x13EF8
   symbol: bits_seg7_dl_07013EF8
 
+bits_seg7_collision_level:
+    type: SM64:COLLISION
+    offset: 0x16E18
+    symbol: bits_seg7_collision_level
+
+bits_seg7_collision_0701A9A0:
+    type: SM64:COLLISION
+    offset: 0x1A9A0
+    symbol: bits_seg7_collision_0701A9A0
+
+bits_seg7_collision_0701AA0C:
+    type: SM64:COLLISION
+    offset: 0x1AA0C
+    symbol: bits_seg7_collision_0701AA0C
+
+bits_seg7_collision_0701AA84:
+    type: SM64:COLLISION
+    offset: 0x1AA84
+    symbol: bits_seg7_collision_0701AA84
+
+bits_seg7_collision_0701AC28:
+    type: SM64:COLLISION
+    offset: 0x1AC28
+    symbol: bits_seg7_collision_0701AC28
+
+bits_seg7_collision_0701ACAC:
+    type: SM64:COLLISION
+    offset: 0x1ACAC
+    symbol: bits_seg7_collision_0701ACAC
+
+bits_seg7_collision_0701AD54:
+    type: SM64:COLLISION
+    offset: 0x1AD54
+    symbol: bits_seg7_collision_0701AD54
+
+bits_seg7_collision_0701ADD8:
+    type: SM64:COLLISION
+    offset: 0x1ADD8
+    symbol: bits_seg7_collision_0701ADD8
+
+bits_seg7_collision_0701AE5C:
+    type: SM64:COLLISION
+    offset: 0x1AE5C
+    symbol: bits_seg7_collision_0701AE5C
+
+bits_seg7_collision_0701B0D4:
+    type: SM64:COLLISION
+    offset: 0x1B0D4
+    symbol: bits_seg7_collision_0701B0D4
+
+bits_seg7_collision_0701B26C:
+    type: SM64:COLLISION
+    offset: 0x1B26C
+    symbol: bits_seg7_collision_0701B26C
+
+bits_seg7_collision_0701B404:
+    type: SM64:COLLISION
+    offset: 0x1B404
+    symbol: bits_seg7_collision_0701B404
+
+bits_seg7_collision_0701B59C:
+    type: SM64:COLLISION
+    offset: 0x1B59C
+    symbol: bits_seg7_collision_0701B59C
+
+bits_seg7_collision_0701B734:
+    type: SM64:COLLISION
+    offset: 0x1B734
+    symbol: bits_seg7_collision_0701B734
+

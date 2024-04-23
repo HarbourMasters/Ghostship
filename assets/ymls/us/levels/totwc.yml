@@ -493,3 +493,8 @@ totwc_seg7_dl_070079A8:
   offset: 0x79A8
   symbol: totwc_seg7_dl_070079A8
 
+totwc_seg7_collision:
+  type: SM64:COLLISION
+  offset: 0x7A18
+  symbol: totwc_seg7_collision
+

@@ -2512,3 +2512,83 @@ lll_seg7_dl_07018380:
   offset: 0x18380
   symbol: lll_seg7_dl_07018380
 
+lll_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0x1ADE8
+  symbol: lll_seg7_area_1_collision
+
+lll_seg7_collision_octagonal_moving_platform:
+  type: SM64:COLLISION
+  offset: 0x1D018
+  symbol: lll_seg7_collision_octagonal_moving_platform
+
+lll_seg7_collision_drawbridge:
+  type: SM64:COLLISION
+  offset: 0x1D108
+  symbol: lll_seg7_collision_drawbridge
+
+lll_seg7_collision_rotating_fire_bars:
+  type: SM64:COLLISION
+  offset: 0x1D138
+  symbol: lll_seg7_collision_rotating_fire_bars
+
+lll_seg7_collision_wood_piece:
+  type: SM64:COLLISION
+  offset: 0x1D1EC
+  symbol: lll_seg7_collision_wood_piece
+
+lll_seg7_collision_0701D21C:
+  type: SM64:COLLISION
+  offset: 0x1D21C
+  symbol: lll_seg7_collision_0701D21C
+
+lll_seg7_collision_rotating_platform:
+  type: SM64:COLLISION
+  offset: 0x1D294
+  symbol: lll_seg7_collision_rotating_platform
+
+lll_seg7_collision_slow_tilting_platform:
+  type: SM64:COLLISION
+  offset: 0x1D408
+  symbol: lll_seg7_collision_slow_tilting_platform
+
+lll_seg7_collision_sinking_pyramids:
+  type: SM64:COLLISION
+  offset: 0x1D450
+  symbol: lll_seg7_collision_sinking_pyramids
+
+lll_seg7_collision_inverted_pyramid:
+  type: SM64:COLLISION
+  offset: 0x1D510
+  symbol: lll_seg7_collision_inverted_pyramid
+
+lll_seg7_collision_puzzle_piece:
+  type: SM64:COLLISION
+  offset: 0x1D560
+  symbol: lll_seg7_collision_puzzle_piece
+
+lll_seg7_collision_floating_block:
+  type: SM64:COLLISION
+  offset: 0x1D590
+  symbol: lll_seg7_collision_floating_block
+
+lll_seg7_collision_pitoune:
+  type: SM64:COLLISION
+  offset: 0x1D608
+  symbol: lll_seg7_collision_pitoune
+
+lll_seg7_collision_hexagonal_platform:
+  type: SM64:COLLISION
+  offset: 0x1D71C
+  symbol: lll_seg7_collision_hexagonal_platform
+
+lll_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0x25F80
+  symbol: lll_seg7_area_2_collision
+
+lll_seg7_collision_falling_wall:
+  type: SM64:COLLISION
+  offset: 0x284DC
+  symbol: lll_seg7_collision_falling_wall
+

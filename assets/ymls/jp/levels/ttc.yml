@@ -1858,3 +1858,73 @@ ttc_seg7_dl_0700EFE0:
   offset: 0xEFE0
   symbol: ttc_seg7_dl_0700EFE0
 
+ttc_seg7_collision_level:
+  type: SM64:COLLISION
+  offset: 0x12330
+  symbol: ttc_seg7_collision_level
+
+ttc_seg7_collision_07014F70:
+  type: SM64:COLLISION
+  offset: 0x14F70
+  symbol: ttc_seg7_collision_07014F70
+
+ttc_seg7_collision_07015008:
+  type: SM64:COLLISION
+  offset: 0x15008
+  symbol: ttc_seg7_collision_07015008
+
+ttc_seg7_collision_clock_pendulum:
+  type: SM64:COLLISION
+  offset: 0x1508C
+  symbol: ttc_seg7_collision_clock_pendulum
+
+ttc_seg7_collision_070152B4:
+  type: SM64:COLLISION
+  offset: 0x152B4
+  symbol: ttc_seg7_collision_070152B4
+
+ttc_seg7_collision_070153E0:
+  type: SM64:COLLISION
+  offset: 0x153E0
+  symbol: ttc_seg7_collision_070153E0
+
+ttc_seg7_collision_sliding_surface:
+  type: SM64:COLLISION
+  offset: 0x1550C
+  symbol: ttc_seg7_collision_sliding_surface
+
+ttc_seg7_collision_07015584:
+  type: SM64:COLLISION
+  offset: 0x15584
+  symbol: ttc_seg7_collision_07015584
+
+ttc_seg7_collision_07015650:
+  type: SM64:COLLISION
+  offset: 0x15650
+  symbol: ttc_seg7_collision_07015650
+
+ttc_seg7_collision_07015754:
+  type: SM64:COLLISION
+  offset: 0x15754
+  symbol: ttc_seg7_collision_07015754
+
+ttc_seg7_collision_070157D8:
+  type: SM64:COLLISION
+  offset: 0x157D8
+  symbol: ttc_seg7_collision_070157D8
+
+ttc_seg7_collision_clock_platform:
+  type: SM64:COLLISION
+  offset: 0x1585C
+  symbol: ttc_seg7_collision_clock_platform
+
+ttc_seg7_collision_clock_main_rotation:
+  type: SM64:COLLISION
+  offset: 0x158E0
+  symbol: ttc_seg7_collision_clock_main_rotation
+
+ttc_seg7_collision_rotating_clock_platform2:
+  type: SM64:COLLISION
+  offset: 0x159D0
+  symbol: ttc_seg7_collision_rotating_clock_platform2
+
