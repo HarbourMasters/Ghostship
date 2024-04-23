@@ -5,6 +5,8 @@
   segments:
     - [0x06,  0x188440]
 
+# shifted 0x150 compared to JP
+
 impact_smoke_0:
   type: TEXTURE
   size: 8192
@@ -41,46 +43,46 @@ impact_smoke_3:
 impact_smoke_seg6_vertex_06062A28:
   type: VTX
   count: 8
-  offset: 0x62A28
+  offset: 0x62B78
   symbol: impact_smoke_seg6_vertex_06062A28
 
 impact_smoke_seg6_dl_06062AA8:
   type: GFX
-  offset: 0x62AA8
+  offset: 0x62BF8
   symbol: impact_smoke_seg6_dl_06062AA8
 
 impact_smoke_seg6_dl_06062AD8:
   type: GFX
-  offset: 0x62AD8
+  offset: 0x62C28
   symbol: impact_smoke_seg6_dl_06062AD8
 
 impact_smoke_seg6_dl_06062AF0:
   type: GFX
-  offset: 0x62AF0
+  offset: 0x62C40
   symbol: impact_smoke_seg6_dl_06062AF0
 
 impact_smoke_seg6_dl_06062B08:
   type: GFX
-  offset: 0x62B08
+  offset: 0x62C58
   symbol: impact_smoke_seg6_dl_06062B08
 
 impact_smoke_seg6_dl_06062B38:
   type: GFX
-  offset: 0x62B38
+  offset: 0x62C88
   symbol: impact_smoke_seg6_dl_06062B38
 
 impact_smoke_seg6_dl_06062BD8:
   type: GFX
-  offset: 0x62BD8
+  offset: 0x62D28
   symbol: impact_smoke_seg6_dl_06062BD8
 
 impact_smoke_seg6_dl_06062C78:
   type: GFX
-  offset: 0x62C78
+  offset: 0x62DC8
   symbol: impact_smoke_seg6_dl_06062C78
 
 impact_smoke_seg6_dl_06062D18:
   type: GFX
-  offset: 0x62D18
+  offset: 0x62E68
   symbol: impact_smoke_seg6_dl_06062D18
 

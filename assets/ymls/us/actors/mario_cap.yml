@@ -3,7 +3,7 @@
   compression:
     offset: 0x114750
   segments:
-    - [0x04,  0x114750]
+    - [0x03,  0x114750]
 
 mario_cap_logo:
   type: TEXTURE

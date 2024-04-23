@@ -120,3 +120,33 @@ spindrift_seg5_dl_05000328:
   offset: 0x328
   symbol: spindrift_seg5_dl_05000328
 
+spindrift_seg5_dl_05002748:
+  type: GFX
+  offset: 0x2748
+  symbol: spindrift_seg5_dl_05002748
+
+spindrift_seg5_dl_05002830:
+  type: GFX
+  offset: 0x2830
+  symbol: spindrift_seg5_dl_05002830
+
+spindrift_seg5_dl_05002900:
+  type: GFX
+  offset: 0x2900
+  symbol: spindrift_seg5_dl_05002900
+
+spindrift_seg5_dl_05002A20:
+  type: GFX
+  offset: 0x2A20
+  symbol: spindrift_seg5_dl_05002A20
+
+spindrift_seg5_dl_05002B30:
+  type: GFX
+  offset: 0x2B30
+  symbol: spindrift_seg5_dl_05002B30
+
+spindrift_seg5_dl_05002D08:
+  type: GFX
+  offset: 0x2D08
+  symbol: spindrift_seg5_dl_05002D08
+
