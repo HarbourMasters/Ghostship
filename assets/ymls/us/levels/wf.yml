@@ -1949,3 +1949,78 @@ wf_seg7_dl_0700AFB8:
   offset: 0xAFB8
   symbol: wf_seg7_dl_0700AFB8
 
+wf_seg7_collision_small_bomp:
+  type: SM64:COLLISION
+  offset: 0xF868
+  symbol: wf_seg7_collision_small_bomp
+
+wf_seg7_collision_large_bomp:
+  type: SM64:COLLISION
+  offset: 0xF934
+  symbol: wf_seg7_collision_large_bomp
+
+wf_seg7_collision_clocklike_rotation:
+  type: SM64:COLLISION
+  offset: 0xFA00
+  symbol: wf_seg7_collision_clocklike_rotation
+
+wf_seg7_collision_sliding_brick_platform:
+  type: SM64:COLLISION
+  offset: 0xFAA4 
+  symbol: wf_seg7_collision_sliding_brick_platform
+
+wf_seg7_collision_tumbling_bridge:
+  type: SM64:COLLISION
+  offset: 0xFAEC
+  symbol: wf_seg7_collision_tumbling_bridge
+
+wf_seg7_collision_trapezoid:
+  type: SM64:COLLISION
+  offset: 0xFB1C
+  symbol: wf_seg7_collision_trapezoid
+
+wf_seg7_collision_platform:
+  type: SM64:COLLISION
+  offset: 0xFB94
+  symbol: wf_seg7_collision_platform
+
+wf_seg7_collision_breakable_wall:
+  type: SM64:COLLISION
+  offset: 0xFC0C
+  symbol: wf_seg7_collision_breakable_wall
+
+wf_seg7_collision_breakable_wall_2:
+  type: SM64:COLLISION
+  offset: 0xFC44
+  symbol: wf_seg7_collision_breakable_wall_2
+
+wf_seg7_collision_kickable_board:
+  type: SM64:COLLISION
+  offset: 0xFC7C
+  symbol: wf_seg7_collision_kickable_board
+
+wf_seg7_collision_tower_door:
+  type: SM64:COLLISION
+  offset: 0xFD00
+  symbol: wf_seg7_collision_tower_door
+
+wf_seg7_collision_rotating_platform:
+  type: SM64:COLLISION
+  offset: 0xFD30
+  symbol: wf_seg7_collision_rotating_platform
+
+wf_seg7_collision_tower:
+  type: SM64:COLLISION
+  offset: 0xFE14
+  symbol: wf_seg7_collision_tower
+
+wf_seg7_collision_bullet_bill_cannon:
+  type: SM64:COLLISION
+  offset: 0x10260
+  symbol: wf_seg7_collision_bullet_bill_cannon
+
+wf_seg7_collision_070102D8:
+  type: SM64:COLLISION
+  offset: 0x102D8
+  symbol: wf_seg7_collision_070102D8
+
