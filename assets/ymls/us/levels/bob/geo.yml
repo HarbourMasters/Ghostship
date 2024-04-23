@@ -1,4 +1,6 @@
 :config:
+  external_files:
+    - "assets/ymls/us/levels/bob.yml"
   autopads: false
   segments:
     - [0x0E,  0x405A60]
