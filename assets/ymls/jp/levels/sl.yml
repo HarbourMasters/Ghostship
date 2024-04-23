@@ -1179,3 +1179,23 @@ sl_seg7_dl_0700A890:
   offset: 0xA890
   symbol: sl_seg7_dl_0700A890
 
+sl_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0xCBD8
+  symbol: sl_seg7_area_1_collision
+
+sl_seg7_collision_sliding_snow_mound:
+  type: SM64:COLLISION
+  offset: 0xEF6C
+  symbol: sl_seg7_collision_sliding_snow_mound
+
+sl_seg7_collision_pound_explodes:
+  type: SM64:COLLISION
+  offset: 0xEFC0
+  symbol: sl_seg7_collision_pound_explodes
+
+sl_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0xEFFC
+  symbol: sl_seg7_area_2_collision
+
