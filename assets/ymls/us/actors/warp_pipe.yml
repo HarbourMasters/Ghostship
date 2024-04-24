@@ -107,3 +107,8 @@ warp_pipe_seg3_dl_03009A50:
   offset: 0x9A50
   symbol: warp_pipe_seg3_dl_03009A50
 
+warp_pipe_seg3_collision_03009AC8:
+  type: SM64:COLLISION
+  offset: 0x9AC8
+  symbol: warp_pipe_seg3_collision_03009AC8
+
