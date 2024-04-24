@@ -55,3 +55,8 @@ purple_switch_seg8_dl_0800C718:
   offset: 0xC718
   symbol: purple_switch_seg8_dl_0800C718
 
+purple_switch_seg8_collision_0800C7A8:
+  type: SM64:COLLISION
+  offset: 0xC7A8
+  symbol: purple_switch_seg8_collision_0800C7A8
+

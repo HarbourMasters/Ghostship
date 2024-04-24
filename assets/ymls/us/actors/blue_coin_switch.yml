@@ -55,3 +55,8 @@ blue_coin_switch_seg8_dl_08000E08:
   offset: 0xE08
   symbol: blue_coin_switch_seg8_dl_08000E08
 
+blue_coin_switch_seg8_collision_08000E98:
+  type: SM64:COLLISION
+  offset: 0xE98
+  symbol: blue_coin_switch_seg8_collision_08000E98
+

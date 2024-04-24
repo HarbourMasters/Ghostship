@@ -137,3 +137,8 @@ exclamation_box_outline_seg8_dl_08025F08:
   offset: 0x25F08
   symbol: exclamation_box_outline_seg8_dl_08025F08
 
+exclamation_box_outline_seg8_collision_08025F78:
+  type: SM64:COLLISION
+  offset: 0x25F78
+  symbol: exclamation_box_outline_seg8_collision_08025F78
+

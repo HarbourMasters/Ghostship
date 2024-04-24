@@ -308,3 +308,8 @@ penguin_seg5_dl_05007540:
   offset: 0x7540
   symbol: penguin_seg5_dl_05007540
 
+penguin_seg5_collision_05008B88:
+  type: SM64:COLLISION
+  offset: 0x8B88
+  symbol: penguin_seg5_collision_05008B88
+

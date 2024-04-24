@@ -83,3 +83,8 @@ wooden_signpost_seg3_dl_0302DD08:
   offset: 0x2DD08
   symbol: wooden_signpost_seg3_dl_0302DD08
 
+wooden_signpost_seg3_collision_0302DD80:
+  type: SM64:COLLISION
+  offset: 0x2DD80
+  symbol: wooden_signpost_seg3_collision_0302DD80
+
