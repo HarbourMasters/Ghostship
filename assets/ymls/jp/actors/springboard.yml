@@ -91,3 +91,8 @@ springboard_checkerboard_seg5_dl_05001900:
   offset: 0x1900
   symbol: springboard_checkerboard_seg5_dl_05001900
 
+springboard_collision_05001A28:
+  type: SM64:COLLISION
+  offset: 0x1A28
+  symbol: springboard_collision_05001A28
+

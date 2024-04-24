@@ -79,3 +79,13 @@ thwomp_seg5_dl_0500B750:
   offset: 0xB750
   symbol: thwomp_seg5_dl_0500B750
 
+thwomp_seg5_collision_0500B7D0:
+  type: SM64:COLLISION
+  offset: 0xB7D0
+  symbol: thwomp_seg5_collision_0500B7D0
+
+thwomp_seg5_collision_0500B92C:
+  type: SM64:COLLISION
+  offset: 0xB92C
+  symbol: thwomp_seg5_collision_0500B92C
+

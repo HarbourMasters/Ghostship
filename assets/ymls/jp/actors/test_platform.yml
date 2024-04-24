@@ -34,3 +34,8 @@ unknown_seg8_dl_08026260:
   offset: 0x26260
   symbol: unknown_seg8_dl_08026260
 
+unknown_seg8_collision_080262F8:
+  type: SM64:COLLISION
+  offset: 0x262F8
+  symbol: unknown_seg8_collision_080262F8
+

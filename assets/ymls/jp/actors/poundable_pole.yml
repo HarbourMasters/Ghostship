@@ -67,3 +67,8 @@ poundable_pole_seg6_dl_06002410:
   offset: 0x2410
   symbol: poundable_pole_seg6_dl_06002410
 
+poundable_pole_collision_06002490:
+  type: SM64:COLLISION
+  offset: 0x2490
+  symbol: poundable_pole_collision_06002490
+

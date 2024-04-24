@@ -127,3 +127,14 @@ capswitch_seg5_dl_050033B0:
   offset: 0x33B0
   symbol: capswitch_seg5_dl_050033B0
 
+capswitch_collision_050033D0:
+  type: SM64:COLLISION
+  offset: 0x33D0
+  symbol: capswitch_collision_050033D0
+
+capswitch_collision_05003448:
+  type: SM64:COLLISION
+  offset: 0x3448
+  symbol: capswitch_collision_05003448
+
+

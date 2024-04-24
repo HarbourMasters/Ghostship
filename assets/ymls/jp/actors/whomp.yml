@@ -214,3 +214,8 @@ whomp_seg6_dl_06020038:
   offset: 0x20038
   symbol: whomp_seg6_dl_06020038
 
+whomp_seg6_collision_06020A0C:
+  type: SM64:COLLISION
+  offset: 0x20A0C
+  symbol: whomp_seg6_collision_06020A0C
+

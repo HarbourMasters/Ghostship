@@ -41,3 +41,8 @@ metal_box_dl:
   offset: 0x24BB8
   symbol: metal_box_dl
 
+metal_box_seg8_collision_08024C28:
+  type: SM64:COLLISION
+  offset: 0x24C28
+  symbol: metal_box_seg8_collision_08024C28
+

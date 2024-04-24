@@ -60,3 +60,8 @@ breakable_box_seg8_dl_08012D48:
   offset: 0x12D48
   symbol: breakable_box_seg8_dl_08012D48
 
+breakable_box_seg8_collision_08012D70:
+  type: SM64:COLLISION
+  offset: 0x12D70
+  symbol: breakable_box_seg8_collision_08012D70
+
