@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x201410]
 
+blue_fish_seg3_lights_0301B5C8:
+  type: LIGHTS
+  size: 24
+  offset: 0x1B5C8
+  symbol: blue_fish_seg3_lights_0301B5C8
+
 blue_fish:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ blue_fish:
   offset: 0x1B5E0
   format: RGBA16
   symbol: blue_fish_seg3_texture_0301B5E0
-
-blue_fish_seg3_lights_0301B5C8:
-  type: LIGHTS
-  size: 24
-  offset: 0x1B5C8
-  symbol: blue_fish_seg3_lights_0301B5C8
 
 blue_fish_seg3_vertex_0301BDE0:
   type: VTX

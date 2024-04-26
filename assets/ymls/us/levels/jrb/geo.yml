@@ -7,65 +7,65 @@
 
 jrb_geo_000900:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000900
+  offset: 0xE000900
   symbol: jrb_geo_000900
 
 jrb_geo_000918:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000918
+  offset: 0xE000918
   symbol: jrb_geo_000918
 
 jrb_geo_000930:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000930
+  offset: 0xE000930
   symbol: jrb_geo_000930
 
 jrb_geo_000948:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000948
+  offset: 0xE000948
   symbol: jrb_geo_000948
 
 jrb_geo_000960:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000960
+  offset: 0xE000960
   symbol: jrb_geo_000960
 
 jrb_geo_000978:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000978
+  offset: 0xE000978
   symbol: jrb_geo_000978
 
 jrb_geo_000990:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000990
+  offset: 0xE000990
   symbol: jrb_geo_000990
 
 jrb_geo_0009B0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0009B0
+  offset: 0xE0009B0
   symbol: jrb_geo_0009B0
 
 jrb_geo_0009C8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0009C8
+  offset: 0xE0009C8
   symbol: jrb_geo_0009C8
 
 jrb_geo_0009E8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0009E8
+  offset: 0xE0009E8
   symbol: jrb_geo_0009E8
 
 jrb_geo_000A00:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000A00
+  offset: 0xE000A00
   symbol: jrb_geo_000A00
 
 jrb_geo_000A18:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000A18
+  offset: 0xE000A18
   symbol: jrb_geo_000A18
 
 jrb_geo_000AFC:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000AFC
+  offset: 0xE000AFC
   symbol: jrb_geo_000AFC

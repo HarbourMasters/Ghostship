@@ -13,6 +13,7 @@ bob-omb_buddy_left_side:
   offset: 0x78
   format: RGBA16
   symbol: bobomb_seg8_texture_0801FA60
+
 bob-omb_buddy_right_side:
   type: TEXTURE
   size: 4096
@@ -21,6 +22,7 @@ bob-omb_buddy_right_side:
   offset: 0x1078
   format: RGBA16
   symbol: bobomb_seg8_texture_08020A60
+
 bob-omb_eyes:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@ bob-omb_eyes:
   offset: 0x4878
   format: RGBA16
   symbol: bobomb_seg8_texture_08021A60
+
 bob-omb_eyes_blink:
   type: TEXTURE
   size: 2048
@@ -37,6 +40,7 @@ bob-omb_eyes_blink:
   offset: 0x5078
   format: RGBA16
   symbol: bobomb_seg8_texture_08022260
+
 bob-omb_left_side:
   type: TEXTURE
   size: 4096
@@ -45,6 +49,7 @@ bob-omb_left_side:
   offset: 0x1DA60
   format: RGBA16
   symbol: bobomb_seg8_texture_0801DA60
+
 bob-omb_right_side:
   type: TEXTURE
   size: 4096

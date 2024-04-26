@@ -7,5 +7,5 @@
 
 thwomp_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C000248
+  offset: 0xC000248
   symbol: thwomp_geo

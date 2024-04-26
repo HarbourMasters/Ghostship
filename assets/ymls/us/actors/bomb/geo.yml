@@ -7,5 +7,5 @@
 
 bowser_bomb_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000BBC
+  offset: 0xD000BBC
   symbol: bowser_bomb_geo

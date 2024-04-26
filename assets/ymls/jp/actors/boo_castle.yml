@@ -13,6 +13,7 @@ bbh_boo_eyes:
   offset: 0x9B40
   format: RGBA16
   symbol: boo_castle_seg6_texture_06015670
+
 bbh_boo_mouth:
   type: TEXTURE
   size: 2048

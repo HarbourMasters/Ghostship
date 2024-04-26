@@ -7,5 +7,5 @@
 
 whomp_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000480
+  offset: 0xD000480
   symbol: whomp_geo

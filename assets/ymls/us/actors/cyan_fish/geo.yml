@@ -5,5 +5,5 @@
 
 cyan_fish_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000324
+  offset: 0xD000324
   symbol: cyan_fish_geo

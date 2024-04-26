@@ -7,5 +7,5 @@
 
 heart_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0F0004FC
+  offset: 0xF0004FC
   symbol: heart_geo

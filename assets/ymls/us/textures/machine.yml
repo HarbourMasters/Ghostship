@@ -13,6 +13,7 @@ ttc_textures.00000:
   offset: 0x0
   format: RGBA16
   symbol: machine_09000000
+
 ttc_textures.00800:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@ ttc_textures.00800:
   offset: 0x800
   format: RGBA16
   symbol: machine_09000800
+
 ttc_textures.01000:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@ ttc_textures.01000:
   offset: 0x1000
   format: RGBA16
   symbol: machine_09001000
+
 ttc_textures.01800:
   type: TEXTURE
   size: 2048
@@ -37,6 +40,7 @@ ttc_textures.01800:
   offset: 0x1800
   format: RGBA16
   symbol: machine_09001800
+
 ttc_textures.02000:
   type: TEXTURE
   size: 2048
@@ -45,6 +49,7 @@ ttc_textures.02000:
   offset: 0x2000
   format: RGBA16
   symbol: machine_09002000
+
 ttc_textures.02800:
   type: TEXTURE
   size: 2048
@@ -53,6 +58,7 @@ ttc_textures.02800:
   offset: 0x2800
   format: RGBA16
   symbol: machine_09002800
+
 ttc_textures.03000:
   type: TEXTURE
   size: 2048
@@ -61,6 +67,7 @@ ttc_textures.03000:
   offset: 0x3000
   format: RGBA16
   symbol: machine_09003000
+
 ttc_textures.03800:
   type: TEXTURE
   size: 2048
@@ -69,6 +76,7 @@ ttc_textures.03800:
   offset: 0x3800
   format: RGBA16
   symbol: machine_09003800
+
 ttc_textures.04000:
   type: TEXTURE
   size: 4096
@@ -77,6 +85,7 @@ ttc_textures.04000:
   offset: 0x4000
   format: RGBA16
   symbol: machine_09004000
+
 ttc_textures.05000:
   type: TEXTURE
   size: 2048
@@ -85,6 +94,7 @@ ttc_textures.05000:
   offset: 0x5000
   format: RGBA16
   symbol: machine_09005000
+
 ttc_textures.05800:
   type: TEXTURE
   size: 2048
@@ -93,6 +103,7 @@ ttc_textures.05800:
   offset: 0x5800
   format: RGBA16
   symbol: machine_09005800
+
 ttc_textures.06000:
   type: TEXTURE
   size: 2048
@@ -101,6 +112,7 @@ ttc_textures.06000:
   offset: 0x6000
   format: RGBA16
   symbol: machine_09006000
+
 ttc_textures.06800:
   type: TEXTURE
   size: 2048
@@ -109,6 +121,7 @@ ttc_textures.06800:
   offset: 0x6800
   format: RGBA16
   symbol: machine_09006800
+
 ttc_textures.07000:
   type: TEXTURE
   size: 2048
@@ -117,6 +130,7 @@ ttc_textures.07000:
   offset: 0x7000
   format: RGBA16
   symbol: machine_09007000
+
 ttc_textures.07800:
   type: TEXTURE
   size: 2048
@@ -125,6 +139,7 @@ ttc_textures.07800:
   offset: 0x7800
   format: RGBA16
   symbol: machine_09007800
+
 ttc_textures.08000:
   type: TEXTURE
   size: 1024
@@ -133,6 +148,7 @@ ttc_textures.08000:
   offset: 0x8000
   format: RGBA16
   symbol: machine_09008000
+
 ttc_textures.08400:
   type: TEXTURE
   size: 2048

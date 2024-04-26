@@ -5,14 +5,6 @@
   segments:
     - [0x03,  0x112B50]
 
-mario_cap_logo:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1890
-  format: RGBA16
-  symbol: mario_cap_seg3_texture_0301DF50
 mario_cap_metal:
   type: TEXTURE
   size: 4096
@@ -21,22 +13,16 @@ mario_cap_metal:
   offset: 0x90
   format: RGBA16
   symbol: mario_cap_seg3_texture_0301CF50
-mario_cap_metal_wing_tip_unused:
+
+mario_cap_logo:
   type: TEXTURE
-  size: 4096
+  size: 2048
   width: 32
-  height: 64
-  offset: 0xB090
+  height: 32
+  offset: 0x1890
   format: RGBA16
-  symbol: mario_cap_seg3_texture_03021750
-mario_cap_metal_wing_unused:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0xA090
-  format: RGBA16
-  symbol: mario_cap_seg3_texture_03020750
+  symbol: mario_cap_seg3_texture_0301DF50
+
 mario_cap_wing:
   type: TEXTURE
   size: 4096
@@ -45,6 +31,7 @@ mario_cap_wing:
   offset: 0x8090
   format: RGBA16
   symbol: mario_cap_seg3_texture_0301E750
+
 mario_cap_wing_tip:
   type: TEXTURE
   size: 4096
@@ -53,6 +40,24 @@ mario_cap_wing_tip:
   offset: 0x9090
   format: RGBA16
   symbol: mario_cap_seg3_texture_0301F750
+
+mario_cap_metal_wing_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xA090
+  format: RGBA16
+  symbol: mario_cap_seg3_texture_03020750
+
+mario_cap_metal_wing_tip_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xB090
+  format: RGBA16
+  symbol: mario_cap_seg3_texture_03021750
 
 mario_cap_seg3_lights_0301CF08:
   type: LIGHTS

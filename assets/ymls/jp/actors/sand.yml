@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x1FF740]
 
+sand_seg3_vertex_0302BA90:
+  type: VTX
+  count: 4
+  offset: 0x2BA90
+  symbol: sand_seg3_vertex_0302BA90
+
 sand_particle:
   type: TEXTURE
   size: 512
@@ -13,12 +19,6 @@ sand_particle:
   offset: 0x2BAD0
   format: RGBA16
   symbol: sand_seg3_texture_0302BAD0
-
-sand_seg3_vertex_0302BA90:
-  type: VTX
-  count: 4
-  offset: 0x2BA90
-  symbol: sand_seg3_vertex_0302BA90
 
 sand_seg3_dl_0302BCD0:
   type: GFX

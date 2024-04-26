@@ -5,31 +5,6 @@
   segments:
     - [0x06,  0x1E3520]
 
-chill_bully_eye:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2468
-  format: RGBA16
-  symbol: chilly_chief_seg6_texture_06002060
-chill_bully_left_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x60
-  format: RGBA16
-  symbol: chilly_chief_seg6_texture_06000060
-chill_bully_right_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x1060
-  format: RGBA16
-  symbol: chilly_chief_seg6_texture_06001060
-
 chilly_chief_seg6_lights_06000000:
   type: LIGHTS
   size: 24
@@ -53,6 +28,33 @@ chillychief_lights_unused:
   size: 24
   offset: 0x30
   symbol: chillychief_lights_unused
+
+chill_bully_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x60
+  format: RGBA16
+  symbol: chilly_chief_seg6_texture_06000060
+
+chill_bully_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1060
+  format: RGBA16
+  symbol: chilly_chief_seg6_texture_06001060
+
+chill_bully_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2468
+  format: RGBA16
+  symbol: chilly_chief_seg6_texture_06002060
 
 chilly_chief_seg6_vertex_06002860:
   type: VTX

@@ -7,5 +7,5 @@
 
 skeeter_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000000
+  offset: 0xD000000
   symbol: skeeter_geo

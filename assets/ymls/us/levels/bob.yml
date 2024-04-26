@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: bob_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x800
   format: RGBA16
   symbol: bob_seg7_texture_07000800
+
 2:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@
   offset: 0x1000
   format: RGBA16
   symbol: bob_seg7_texture_07001000
+
 3:
   type: TEXTURE
   size: 2048
@@ -37,6 +40,7 @@
   offset: 0x1800
   format: RGBA16
   symbol: bob_seg7_texture_07001800
+
 4:
   type: TEXTURE
   size: 2048
@@ -45,45 +49,6 @@
   offset: 0x2000
   format: RGBA16
   symbol: bob_seg7_texture_07002000
-bob_seg7_lights_0700DE30:
-  type: LIGHTS
-  size: 24
-  offset: 0xDE30
-  symbol: bob_seg7_lights_0700DE30
-
-bob_seg7_vertex_0700DE48:
-  type: VTX
-  count: 15
-  offset: 0xDE48
-  symbol: bob_seg7_vertex_0700DE48
-
-bob_seg7_vertex_0700DF38:
-  type: VTX
-  count: 16
-  offset: 0xDF38
-  symbol: bob_seg7_vertex_0700DF38
-
-bob_seg7_vertex_0700E038:
-  type: VTX
-  count: 15
-  offset: 0xE038
-  symbol: bob_seg7_vertex_0700E038
-
-bob_seg7_vertex_0700E128:
-  type: VTX
-  count: 12
-  offset: 0xE128
-  symbol: bob_seg7_vertex_0700E128
-
-bob_seg7_dl_0700E1E8:
-  type: GFX
-  offset: 0xE1E8
-  symbol: bob_seg7_dl_0700E1E8
-
-bob_seg7_dl_0700E338:
-  type: GFX
-  offset: 0xE338
-  symbol: bob_seg7_dl_0700E338
 
 bob_seg7_lights_07002800:
   type: LIGHTS
@@ -248,85 +213,6 @@ bob_seg7_dl_07004390:
   type: GFX
   offset: 0x4390
   symbol: bob_seg7_dl_07004390
-
-bob_seg7_vertex_0700A4E0:
-  type: VTX
-  count: 8
-  offset: 0xA4E0
-  symbol: bob_seg7_vertex_0700A4E0
-
-bob_seg7_vertex_0700A560:
-  type: VTX
-  count: 15
-  offset: 0xA560
-  symbol: bob_seg7_vertex_0700A560
-
-bob_seg7_vertex_0700A650:
-  type: VTX
-  count: 15
-  offset: 0xA650
-  symbol: bob_seg7_vertex_0700A650
-
-bob_seg7_vertex_0700A740:
-  type: VTX
-  count: 12
-  offset: 0xA740
-  symbol: bob_seg7_vertex_0700A740
-
-bob_seg7_dl_0700A800:
-  type: GFX
-  offset: 0xA800
-  symbol: bob_seg7_dl_0700A800
-
-bob_seg7_dl_0700A848:
-  type: GFX
-  offset: 0xA848
-  symbol: bob_seg7_dl_0700A848
-
-bob_seg7_dl_0700A920:
-  type: GFX
-  offset: 0xA920
-  symbol: bob_seg7_dl_0700A920
-
-bob_seg7_vertex_07009E98:
-  type: VTX
-  count: 15
-  offset: 0x9E98
-  symbol: bob_seg7_vertex_07009E98
-
-bob_seg7_vertex_07009F88:
-  type: VTX
-  count: 15
-  offset: 0x9F88
-  symbol: bob_seg7_vertex_07009F88
-
-bob_seg7_vertex_0700A078:
-  type: VTX
-  count: 15
-  offset: 0xA078
-  symbol: bob_seg7_vertex_0700A078
-
-bob_seg7_vertex_0700A168:
-  type: VTX
-  count: 15
-  offset: 0xA168
-  symbol: bob_seg7_vertex_0700A168
-
-bob_seg7_vertex_0700A258:
-  type: VTX
-  count: 12
-  offset: 0xA258
-  symbol: bob_seg7_vertex_0700A258
-
-bob_seg7_dl_0700A318:
-  type: GFX
-  offset: 0xA318
-  symbol: bob_seg7_dl_0700A318
-
-bob_seg7_dl_0700A470:
-  type: GFX
-  offset: 0xA470
-  symbol: bob_seg7_dl_0700A470
 
 bob_seg7_lights_07004478:
   type: LIGHTS
@@ -863,6 +749,85 @@ bob_seg7_dl_07009D80:
   offset: 0x9D80
   symbol: bob_seg7_dl_07009D80
 
+bob_seg7_vertex_07009E98:
+  type: VTX
+  count: 15
+  offset: 0x9E98
+  symbol: bob_seg7_vertex_07009E98
+
+bob_seg7_vertex_07009F88:
+  type: VTX
+  count: 15
+  offset: 0x9F88
+  symbol: bob_seg7_vertex_07009F88
+
+bob_seg7_vertex_0700A078:
+  type: VTX
+  count: 15
+  offset: 0xA078
+  symbol: bob_seg7_vertex_0700A078
+
+bob_seg7_vertex_0700A168:
+  type: VTX
+  count: 15
+  offset: 0xA168
+  symbol: bob_seg7_vertex_0700A168
+
+bob_seg7_vertex_0700A258:
+  type: VTX
+  count: 12
+  offset: 0xA258
+  symbol: bob_seg7_vertex_0700A258
+
+bob_seg7_dl_0700A318:
+  type: GFX
+  offset: 0xA318
+  symbol: bob_seg7_dl_0700A318
+
+bob_seg7_dl_0700A470:
+  type: GFX
+  offset: 0xA470
+  symbol: bob_seg7_dl_0700A470
+
+bob_seg7_vertex_0700A4E0:
+  type: VTX
+  count: 8
+  offset: 0xA4E0
+  symbol: bob_seg7_vertex_0700A4E0
+
+bob_seg7_vertex_0700A560:
+  type: VTX
+  count: 15
+  offset: 0xA560
+  symbol: bob_seg7_vertex_0700A560
+
+bob_seg7_vertex_0700A650:
+  type: VTX
+  count: 15
+  offset: 0xA650
+  symbol: bob_seg7_vertex_0700A650
+
+bob_seg7_vertex_0700A740:
+  type: VTX
+  count: 12
+  offset: 0xA740
+  symbol: bob_seg7_vertex_0700A740
+
+bob_seg7_dl_0700A800:
+  type: GFX
+  offset: 0xA800
+  symbol: bob_seg7_dl_0700A800
+
+bob_seg7_dl_0700A848:
+  type: GFX
+  offset: 0xA848
+  symbol: bob_seg7_dl_0700A848
+
+bob_seg7_dl_0700A920:
+  type: GFX
+  offset: 0xA920
+  symbol: bob_seg7_dl_0700A920
+
 bob_seg7_lights_0700A9E0:
   type: LIGHTS
   size: 24
@@ -1168,6 +1133,46 @@ bob_seg7_dl_0700DD18:
   offset: 0xDD18
   symbol: bob_seg7_dl_0700DD18
 
+bob_seg7_lights_0700DE30:
+  type: LIGHTS
+  size: 24
+  offset: 0xDE30
+  symbol: bob_seg7_lights_0700DE30
+
+bob_seg7_vertex_0700DE48:
+  type: VTX
+  count: 15
+  offset: 0xDE48
+  symbol: bob_seg7_vertex_0700DE48
+
+bob_seg7_vertex_0700DF38:
+  type: VTX
+  count: 16
+  offset: 0xDF38
+  symbol: bob_seg7_vertex_0700DF38
+
+bob_seg7_vertex_0700E038:
+  type: VTX
+  count: 15
+  offset: 0xE038
+  symbol: bob_seg7_vertex_0700E038
+
+bob_seg7_vertex_0700E128:
+  type: VTX
+  count: 12
+  offset: 0xE128
+  symbol: bob_seg7_vertex_0700E128
+
+bob_seg7_dl_0700E1E8:
+  type: GFX
+  offset: 0xE1E8
+  symbol: bob_seg7_dl_0700E1E8
+
+bob_seg7_dl_0700E338:
+  type: GFX
+  offset: 0xE338
+  symbol: bob_seg7_dl_0700E338
+
 bob_seg7_vertex_0700E3E0:
   type: VTX
   count: 4
@@ -1229,22 +1234,22 @@ bob_seg7_dl_0700E8A0:
   symbol: bob_seg7_dl_0700E8A0
 
 bob_seg7_collision_level:
-    type: SM64:COLLISION
-    offset: 0xE958
-    symbol: bob_seg7_collision_level
+  type: SM64:COLLISION
+  offset: 0xE958
+  symbol: bob_seg7_collision_level
 
 bob_seg7_collision_chain_chomp_gate:
-    type: SM64:COLLISION
-    offset: 0x113C0
-    symbol: bob_seg7_collision_chain_chomp_gate
+  type: SM64:COLLISION
+  offset: 0x113C0
+  symbol: bob_seg7_collision_chain_chomp_gate
 
 bob_seg7_collision_bridge:
-    type: SM64:COLLISION
-    offset: 0x113F0
-    symbol: bob_seg7_collision_bridge
+  type: SM64:COLLISION
+  offset: 0x113F0
+  symbol: bob_seg7_collision_bridge
 
 bob_seg7_collision_gate:
-    type: SM64:COLLISION
-    offset: 0x11474
-    symbol: bob_seg7_collision_gate
+  type: SM64:COLLISION
+  offset: 0x11474
+  symbol: bob_seg7_collision_gate
 

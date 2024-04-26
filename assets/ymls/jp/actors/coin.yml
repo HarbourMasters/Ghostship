@@ -5,39 +5,6 @@
   segments:
     - [0x03,  0x1FF740]
 
-coin_front:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x5780
-  format: IA16
-  symbol: coin_seg3_texture_03005780
-coin_side:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x6780
-  format: IA16
-  symbol: coin_seg3_texture_03006780
-coin_tilt_left:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x6F80
-  format: IA16
-  symbol: coin_seg3_texture_03006F80
-coin_tilt_right:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x5F80
-  format: IA16
-  symbol: coin_seg3_texture_03005F80
-
 coin_seg3_vertex_030056C0:
   type: VTX
   count: 4
@@ -55,6 +22,42 @@ coin_seg3_vertex_03005740:
   count: 4
   offset: 0x5740
   symbol: coin_seg3_vertex_03005740
+
+coin_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5780
+  format: IA16
+  symbol: coin_seg3_texture_03005780
+
+coin_tilt_right:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5F80
+  format: IA16
+  symbol: coin_seg3_texture_03005F80
+
+coin_side:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6780
+  format: IA16
+  symbol: coin_seg3_texture_03006780
+
+coin_tilt_left:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6F80
+  format: IA16
+  symbol: coin_seg3_texture_03006F80
 
 coin_seg3_dl_03007780:
   type: GFX

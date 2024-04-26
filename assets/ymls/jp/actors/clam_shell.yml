@@ -13,6 +13,7 @@ clam_shell:
   offset: 0x30
   format: RGBA16
   symbol: clam_shell_seg5_texture_05000030
+
 clam_shell_mouth:
   type: TEXTURE
   size: 2048
@@ -21,18 +22,6 @@ clam_shell_mouth:
   offset: 0x830
   format: RGBA16
   symbol: clam_shell_seg5_texture_05000830
-
-clam_shell_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x130B0
-  symbol: clam_shell_lights_unused1
-
-clam_shell_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x130B0
-  symbol: clam_shell_lights_unused2
 
 clam_shell_seg5_lights_05001030:
   type: LIGHTS
@@ -99,3 +88,16 @@ clam_shell_seg5_dl_05001568:
   type: GFX
   offset: 0x1568
   symbol: clam_shell_seg5_dl_05001568
+
+clam_shell_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x130B0
+  symbol: clam_shell_lights_unused1
+
+clam_shell_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x130B0
+  symbol: clam_shell_lights_unused2
+

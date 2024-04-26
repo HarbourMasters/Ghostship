@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x201410]
 
+butterfly_seg3_vertex_03004348:
+  type: VTX
+  count: 6
+  offset: 0x4348
+  symbol: butterfly_seg3_vertex_03004348
+
 butterfly_wing:
   type: TEXTURE
   size: 4096
@@ -13,12 +19,6 @@ butterfly_wing:
   offset: 0x43A8
   format: RGBA16
   symbol: butterfly_seg3_texture_030043A8
-
-butterfly_seg3_vertex_03004348:
-  type: VTX
-  count: 6
-  offset: 0x4348
-  symbol: butterfly_seg3_vertex_03004348
 
 butterfly_seg3_vertex_030053A8:
   type: VTX

@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x201410]
 
+star_seg3_lights_0302A6D8:
+  type: LIGHTS
+  size: 24
+  offset: 0x2A6D8
+  symbol: star_seg3_lights_0302A6D8
+
 star_surface:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ star_surface:
   offset: 0x2A6F0
   format: RGBA16
   symbol: star_seg3_texture_0302A6F0
+
 star_eye:
   type: TEXTURE
   size: 2048
@@ -21,12 +28,6 @@ star_eye:
   offset: 0x2AEF0
   format: RGBA16
   symbol: star_seg3_texture_0302AEF0
-
-star_seg3_lights_0302A6D8:
-  type: LIGHTS
-  size: 24
-  offset: 0x2A6D8
-  symbol: star_seg3_lights_0302A6D8
 
 star_seg3_vertex_0302B6F0:
   type: VTX

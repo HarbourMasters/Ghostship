@@ -8,78 +8,103 @@
 course_00:
   type: SM64:TEXT
   offset: 0x10D14
+
 course_01:
   type: SM64:TEXT
   offset: 0x10D2C
+
 course_02:
   type: SM64:TEXT
   offset: 0x10D40
+
 course_03:
   type: SM64:TEXT
   offset: 0x10D54
+
 course_04:
   type: SM64:TEXT
   offset: 0x10D6C
+
 course_05:
   type: SM64:TEXT
   offset: 0x10D80
+
 course_06:
   type: SM64:TEXT
   offset: 0x10D94
+
 course_07:
   type: SM64:TEXT
   offset: 0x10DA8
+
 course_08:
   type: SM64:TEXT
   offset: 0x10DC0
+
 course_09:
   type: SM64:TEXT
   offset: 0x10DD4
+
 course_0A:
   type: SM64:TEXT
   offset: 0x10DE8
+
 course_0B:
   type: SM64:TEXT
   offset: 0x10DFC
+
 course_0C:
   type: SM64:TEXT
   offset: 0x10E14
+
 course_0D:
   type: SM64:TEXT
   offset: 0x10E28
+
 course_0E:
   type: SM64:TEXT
   offset: 0x10E3C
+
 course_0F:
   type: SM64:TEXT
   offset: 0x10E4C
+
 course_10:
   type: SM64:TEXT
   offset: 0x10E68
+
 course_11:
   type: SM64:TEXT
   offset: 0x10E84
+
 course_12:
   type: SM64:TEXT
   offset: 0x10E9C
+
 course_13:
   type: SM64:TEXT
   offset: 0x10EBC
+
 course_14:
   type: SM64:TEXT
   offset: 0x10ED8
+
 course_15:
   type: SM64:TEXT
   offset: 0x10EF4
+
 course_16:
   type: SM64:TEXT
   offset: 0x10F14
+
 course_17:
   type: SM64:TEXT
   offset: 0x10F34
+
 course_18:
   type: SM64:TEXT
   offset: 0x10F4C
+
 course_19:
   type: SM64:TEXT
   offset: 0x10F50

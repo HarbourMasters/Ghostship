@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x1521D0]
 
+fwoosh_seg5_vertex_050157C8:
+  type: VTX
+  count: 4
+  offset: 0x157C8
+  symbol: fwoosh_seg5_vertex_050157C8
+
 fwoosh_face:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ fwoosh_face:
   offset: 0x15808
   format: IA16
   symbol: fwoosh_seg5_texture_05015808
-
-fwoosh_seg5_vertex_050157C8:
-  type: VTX
-  count: 4
-  offset: 0x157C8
-  symbol: fwoosh_seg5_vertex_050157C8
 
 fwoosh_seg5_dl_05016008:
   type: GFX

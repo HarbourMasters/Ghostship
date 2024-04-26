@@ -7,5 +7,5 @@
 
 cannon_barrel_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0F0001C0
+  offset: 0xF0001C0
   symbol: cannon_barrel_geo

@@ -7,5 +7,5 @@
 
 snufit_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D0001A0
+  offset: 0xD0001A0
   symbol: snufit_geo

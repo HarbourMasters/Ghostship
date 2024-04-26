@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: castle_grounds_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 4096
@@ -21,6 +22,7 @@
   offset: 0x1000
   format: RGBA16
   symbol: castle_grounds_seg7_texture_07001000
+
 2:
   type: TEXTURE
   size: 4096
@@ -29,260 +31,6 @@
   offset: 0x2000
   format: RGBA16
   symbol: castle_grounds_seg7_texture_07002000
-3:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0xC9E8
-  format: RGBA16
-  symbol: castle_grounds_seg7_texture_0700C9E8
-4:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0xD9E8
-  format: RGBA16
-  symbol: castle_grounds_seg7_texture_0700D9E8
-
-castle_grounds_seg7_lights_0700BCD8:
-  type: LIGHTS
-  size: 24
-  offset: 0xBCD8
-  symbol: castle_grounds_seg7_lights_0700BCD8
-
-castle_grounds_seg7_lights_0700BCF0:
-  type: LIGHTS
-  size: 24
-  offset: 0xBCF0
-  symbol: castle_grounds_seg7_lights_0700BCF0
-
-castle_grounds_seg7_lights_0700BD08:
-  type: LIGHTS
-  size: 24
-  offset: 0xBD08
-  symbol: castle_grounds_seg7_lights_0700BD08
-
-castle_grounds_seg7_lights_0700BD20:
-  type: LIGHTS
-  size: 24
-  offset: 0xBD20
-  symbol: castle_grounds_seg7_lights_0700BD20
-
-castle_grounds_seg7_lights_0700BD38:
-  type: LIGHTS
-  size: 24
-  offset: 0xBD38
-  symbol: castle_grounds_seg7_lights_0700BD38
-
-castle_grounds_seg7_vertex_0700BD50:
-  type: VTX
-  count: 12
-  offset: 0xBD50
-  symbol: castle_grounds_seg7_vertex_0700BD50
-
-castle_grounds_seg7_vertex_0700BE10:
-  type: VTX
-  count: 8
-  offset: 0xBE10
-  symbol: castle_grounds_seg7_vertex_0700BE10
-
-castle_grounds_seg7_vertex_0700BE90:
-  type: VTX
-  count: 12
-  offset: 0xBE90
-  symbol: castle_grounds_seg7_vertex_0700BE90
-
-castle_grounds_seg7_vertex_0700BF50:
-  type: VTX
-  count: 6
-  offset: 0xBF50
-  symbol: castle_grounds_seg7_vertex_0700BF50
-
-castle_grounds_seg7_vertex_0700BFB0:
-  type: VTX
-  count: 6
-  offset: 0xBFB0
-  symbol: castle_grounds_seg7_vertex_0700BFB0
-
-castle_grounds_seg7_vertex_0700C010:
-  type: VTX
-  count: 6
-  offset: 0xC010
-  symbol: castle_grounds_seg7_vertex_0700C010
-
-castle_grounds_seg7_dl_0700C070:
-  type: GFX
-  offset: 0xC070
-  symbol: castle_grounds_seg7_dl_0700C070
-
-castle_grounds_seg7_dl_0700C110:
-  type: GFX
-  offset: 0xC110
-  symbol: castle_grounds_seg7_dl_0700C110
-
-castle_grounds_seg7_dl_0700C210:
-  type: GFX
-  offset: 0xC210
-  symbol: castle_grounds_seg7_dl_0700C210
-
-castle_grounds_seg7_lights_0700C4C8:
-  type: LIGHTS
-  size: 24
-  offset: 0xC4C8
-  symbol: castle_grounds_seg7_lights_0700C4C8
-
-castle_grounds_seg7_lights_0700C4E0:
-  type: LIGHTS
-  size: 24
-  offset: 0xC4E0
-  symbol: castle_grounds_seg7_lights_0700C4E0
-
-castle_grounds_seg7_vertex_0700C500:
-  type: VTX
-  count: 3
-  offset: 0xC500
-  symbol: castle_grounds_seg7_vertex_0700C500
-
-castle_grounds_seg7_vertex_0700C530:
-  type: VTX
-  count: 4
-  offset: 0xC530
-  symbol: castle_grounds_seg7_vertex_0700C530
-
-castle_grounds_seg7_vertex_0700C570:
-  type: VTX
-  count: 4
-  offset: 0xC570
-  symbol: castle_grounds_seg7_vertex_0700C570
-
-castle_grounds_seg7_vertex_0700C5B0:
-  type: VTX
-  count: 4
-  offset: 0xC5B0
-  symbol: castle_grounds_seg7_vertex_0700C5B0
-
-castle_grounds_seg7_vertex_0700C5F0:
-  type: VTX
-  count: 5
-  offset: 0xC5F0
-  symbol: castle_grounds_seg7_vertex_0700C5F0
-
-castle_grounds_seg7_vertex_0700C640:
-  type: VTX
-  count: 3
-  offset: 0xC640
-  symbol: castle_grounds_seg7_vertex_0700C640
-
-castle_grounds_seg7_dl_0700C670:
-  type: GFX
-  offset: 0xC670
-  symbol: castle_grounds_seg7_dl_0700C670
-
-castle_grounds_seg7_dl_0700C6A8:
-  type: GFX
-  offset: 0xC6A8
-  symbol: castle_grounds_seg7_dl_0700C6A8
-
-castle_grounds_seg7_dl_0700C6E8:
-  type: GFX
-  offset: 0xC6E8
-  symbol: castle_grounds_seg7_dl_0700C6E8
-
-castle_grounds_seg7_dl_0700C728:
-  type: GFX
-  offset: 0xC728
-  symbol: castle_grounds_seg7_dl_0700C728
-
-castle_grounds_seg7_dl_0700C768:
-  type: GFX
-  offset: 0xC768
-  symbol: castle_grounds_seg7_dl_0700C768
-
-castle_grounds_seg7_vertex_0700BAB8:
-  type: VTX
-  count: 8
-  offset: 0xBAB8
-  symbol: castle_grounds_seg7_vertex_0700BAB8
-
-castle_grounds_seg7_dl_0700BB38:
-  type: GFX
-  offset: 0xBB38
-  symbol: castle_grounds_seg7_dl_0700BB38
-
-castle_grounds_seg7_dl_0700BB80:
-  type: GFX
-  offset: 0xBB80
-  symbol: castle_grounds_seg7_dl_0700BB80
-
-castle_grounds_seg7_vertex_0700B240:
-  type: VTX
-  count: 16
-  offset: 0xB240
-  symbol: castle_grounds_seg7_vertex_0700B240
-
-castle_grounds_seg7_vertex_0700B340:
-  type: VTX
-  count: 15
-  offset: 0xB340
-  symbol: castle_grounds_seg7_vertex_0700B340
-
-castle_grounds_seg7_vertex_0700B430:
-  type: VTX
-  count: 15
-  offset: 0xB430
-  symbol: castle_grounds_seg7_vertex_0700B430
-
-castle_grounds_seg7_vertex_0700B520:
-  type: VTX
-  count: 15
-  offset: 0xB520
-  symbol: castle_grounds_seg7_vertex_0700B520
-
-castle_grounds_seg7_vertex_0700B610:
-  type: VTX
-  count: 14
-  offset: 0xB610
-  symbol: castle_grounds_seg7_vertex_0700B610
-
-castle_grounds_seg7_vertex_0700B6F0:
-  type: VTX
-  count: 11
-  offset: 0xB6F0
-  symbol: castle_grounds_seg7_vertex_0700B6F0
-
-castle_grounds_seg7_vertex_0700B7A0:
-  type: VTX
-  count: 4
-  offset: 0xB7A0
-  symbol: castle_grounds_seg7_vertex_0700B7A0
-
-castle_grounds_seg7_vertex_0700B7E0:
-  type: VTX
-  count: 4
-  offset: 0xB7E0
-  symbol: castle_grounds_seg7_vertex_0700B7E0
-
-castle_grounds_seg7_dl_0700B820:
-  type: GFX
-  offset: 0xB820
-  symbol: castle_grounds_seg7_dl_0700B820
-
-castle_grounds_seg7_dl_0700B9B0:
-  type: GFX
-  offset: 0xB9B0
-  symbol: castle_grounds_seg7_dl_0700B9B0
-
-castle_grounds_seg7_dl_0700B9E8:
-  type: GFX
-  offset: 0xB9E8
-  symbol: castle_grounds_seg7_dl_0700B9E8
-
-castle_grounds_seg7_dl_0700BA20:
-  type: GFX
-  offset: 0xBA20
-  symbol: castle_grounds_seg7_dl_0700BA20
 
 castle_grounds_seg7_vertex_07003000:
   type: VTX
@@ -662,202 +410,6 @@ castle_grounds_seg7_dl_07006D70:
   offset: 0x6D70
   symbol: castle_grounds_seg7_dl_07006D70
 
-castle_grounds_seg7_vertex_0700C2A0:
-  type: VTX
-  count: 4
-  offset: 0xC2A0
-  symbol: castle_grounds_seg7_vertex_0700C2A0
-
-castle_grounds_seg7_vertex_0700C2E0:
-  type: VTX
-  count: 12
-  offset: 0xC2E0
-  symbol: castle_grounds_seg7_vertex_0700C2E0
-
-castle_grounds_seg7_dl_0700C3A0:
-  type: GFX
-  offset: 0xC3A0
-  symbol: castle_grounds_seg7_dl_0700C3A0
-
-castle_grounds_seg7_dl_0700C3D8:
-  type: GFX
-  offset: 0xC3D8
-  symbol: castle_grounds_seg7_dl_0700C3D8
-
-castle_grounds_seg7_dl_0700C430:
-  type: GFX
-  offset: 0xC430
-  symbol: castle_grounds_seg7_dl_0700C430
-
-castle_grounds_seg7_vertex_0700BBF0:
-  type: VTX
-  count: 4
-  offset: 0xBBF0
-  symbol: castle_grounds_seg7_vertex_0700BBF0
-
-castle_grounds_seg7_dl_0700BC30:
-  type: GFX
-  offset: 0xBC30
-  symbol: castle_grounds_seg7_dl_0700BC30
-
-castle_grounds_seg7_dl_0700BC68:
-  type: GFX
-  offset: 0xBC68
-  symbol: castle_grounds_seg7_dl_0700BC68
-
-castle_grounds_seg7_vertex_0700A328:
-  type: VTX
-  count: 15
-  offset: 0xA328
-  symbol: castle_grounds_seg7_vertex_0700A328
-
-castle_grounds_seg7_vertex_0700A418:
-  type: VTX
-  count: 15
-  offset: 0xA418
-  symbol: castle_grounds_seg7_vertex_0700A418
-
-castle_grounds_seg7_vertex_0700A508:
-  type: VTX
-  count: 15
-  offset: 0xA508
-  symbol: castle_grounds_seg7_vertex_0700A508
-
-castle_grounds_seg7_vertex_0700A5F8:
-  type: VTX
-  count: 15
-  offset: 0xA5F8
-  symbol: castle_grounds_seg7_vertex_0700A5F8
-
-castle_grounds_seg7_vertex_0700A6E8:
-  type: VTX
-  count: 4
-  offset: 0xA6E8
-  symbol: castle_grounds_seg7_vertex_0700A6E8
-
-castle_grounds_seg7_dl_0700A728:
-  type: GFX
-  offset: 0xA728
-  symbol: castle_grounds_seg7_dl_0700A728
-
-castle_grounds_seg7_dl_0700A860:
-  type: GFX
-  offset: 0xA860
-  symbol: castle_grounds_seg7_dl_0700A860
-
-castle_grounds_seg7_vertex_070096F8:
-  type: VTX
-  count: 16
-  offset: 0x96F8
-  symbol: castle_grounds_seg7_vertex_070096F8
-
-castle_grounds_seg7_vertex_070097F8:
-  type: VTX
-  count: 14
-  offset: 0x97F8
-  symbol: castle_grounds_seg7_vertex_070097F8
-
-castle_grounds_seg7_vertex_070098D8:
-  type: VTX
-  count: 14
-  offset: 0x98D8
-  symbol: castle_grounds_seg7_vertex_070098D8
-
-castle_grounds_seg7_vertex_070099B8:
-  type: VTX
-  count: 15
-  offset: 0x99B8
-  symbol: castle_grounds_seg7_vertex_070099B8
-
-castle_grounds_seg7_vertex_07009AA8:
-  type: VTX
-  count: 15
-  offset: 0x9AA8
-  symbol: castle_grounds_seg7_vertex_07009AA8
-
-castle_grounds_seg7_vertex_07009B98:
-  type: VTX
-  count: 3
-  offset: 0x9B98
-  symbol: castle_grounds_seg7_vertex_07009B98
-
-castle_grounds_seg7_vertex_07009BC8:
-  type: VTX
-  count: 15
-  offset: 0x9BC8
-  symbol: castle_grounds_seg7_vertex_07009BC8
-
-castle_grounds_seg7_vertex_07009CB8:
-  type: VTX
-  count: 15
-  offset: 0x9CB8
-  symbol: castle_grounds_seg7_vertex_07009CB8
-
-castle_grounds_seg7_vertex_07009DA8:
-  type: VTX
-  count: 15
-  offset: 0x9DA8
-  symbol: castle_grounds_seg7_vertex_07009DA8
-
-castle_grounds_seg7_vertex_07009E98:
-  type: VTX
-  count: 15
-  offset: 0x9E98
-  symbol: castle_grounds_seg7_vertex_07009E98
-
-castle_grounds_seg7_vertex_07009F88:
-  type: VTX
-  count: 5
-  offset: 0x9F88
-  symbol: castle_grounds_seg7_vertex_07009F88
-
-castle_grounds_seg7_dl_07009FD8:
-  type: GFX
-  offset: 0x9FD8
-  symbol: castle_grounds_seg7_dl_07009FD8
-
-castle_grounds_seg7_dl_0700A140:
-  type: GFX
-  offset: 0xA140
-  symbol: castle_grounds_seg7_dl_0700A140
-
-castle_grounds_seg7_dl_0700A260:
-  type: GFX
-  offset: 0xA260
-  symbol: castle_grounds_seg7_dl_0700A260
-
-castle_grounds_seg7_dl_0700A290:
-  type: GFX
-  offset: 0xA290
-  symbol: castle_grounds_seg7_dl_0700A290
-
-castle_grounds_seg7_vertex_0700C968:
-  type: VTX
-  count: 4
-  offset: 0xC968
-  symbol: castle_grounds_seg7_vertex_0700C968
-
-castle_grounds_seg7_vertex_0700C9A8:
-  type: VTX
-  count: 4
-  offset: 0xC9A8
-  symbol: castle_grounds_seg7_vertex_0700C9A8
-
-castle_grounds_seg7_dl_0700E9E8:
-  type: GFX
-  offset: 0xE9E8
-  symbol: castle_grounds_seg7_dl_0700E9E8
-
-castle_grounds_seg7_dl_0700EA20:
-  type: GFX
-  offset: 0xEA20
-  symbol: castle_grounds_seg7_dl_0700EA20
-
-castle_grounds_seg7_dl_0700EA58:
-  type: GFX
-  offset: 0xEA58
-  symbol: castle_grounds_seg7_dl_0700EA58
-
 castle_grounds_seg7_lights_07006ED8:
   type: LIGHTS
   size: 24
@@ -1189,6 +741,132 @@ castle_grounds_seg7_dl_070095F0:
   offset: 0x95F0
   symbol: castle_grounds_seg7_dl_070095F0
 
+castle_grounds_seg7_vertex_070096F8:
+  type: VTX
+  count: 16
+  offset: 0x96F8
+  symbol: castle_grounds_seg7_vertex_070096F8
+
+castle_grounds_seg7_vertex_070097F8:
+  type: VTX
+  count: 14
+  offset: 0x97F8
+  symbol: castle_grounds_seg7_vertex_070097F8
+
+castle_grounds_seg7_vertex_070098D8:
+  type: VTX
+  count: 14
+  offset: 0x98D8
+  symbol: castle_grounds_seg7_vertex_070098D8
+
+castle_grounds_seg7_vertex_070099B8:
+  type: VTX
+  count: 15
+  offset: 0x99B8
+  symbol: castle_grounds_seg7_vertex_070099B8
+
+castle_grounds_seg7_vertex_07009AA8:
+  type: VTX
+  count: 15
+  offset: 0x9AA8
+  symbol: castle_grounds_seg7_vertex_07009AA8
+
+castle_grounds_seg7_vertex_07009B98:
+  type: VTX
+  count: 3
+  offset: 0x9B98
+  symbol: castle_grounds_seg7_vertex_07009B98
+
+castle_grounds_seg7_vertex_07009BC8:
+  type: VTX
+  count: 15
+  offset: 0x9BC8
+  symbol: castle_grounds_seg7_vertex_07009BC8
+
+castle_grounds_seg7_vertex_07009CB8:
+  type: VTX
+  count: 15
+  offset: 0x9CB8
+  symbol: castle_grounds_seg7_vertex_07009CB8
+
+castle_grounds_seg7_vertex_07009DA8:
+  type: VTX
+  count: 15
+  offset: 0x9DA8
+  symbol: castle_grounds_seg7_vertex_07009DA8
+
+castle_grounds_seg7_vertex_07009E98:
+  type: VTX
+  count: 15
+  offset: 0x9E98
+  symbol: castle_grounds_seg7_vertex_07009E98
+
+castle_grounds_seg7_vertex_07009F88:
+  type: VTX
+  count: 5
+  offset: 0x9F88
+  symbol: castle_grounds_seg7_vertex_07009F88
+
+castle_grounds_seg7_dl_07009FD8:
+  type: GFX
+  offset: 0x9FD8
+  symbol: castle_grounds_seg7_dl_07009FD8
+
+castle_grounds_seg7_dl_0700A140:
+  type: GFX
+  offset: 0xA140
+  symbol: castle_grounds_seg7_dl_0700A140
+
+castle_grounds_seg7_dl_0700A260:
+  type: GFX
+  offset: 0xA260
+  symbol: castle_grounds_seg7_dl_0700A260
+
+castle_grounds_seg7_dl_0700A290:
+  type: GFX
+  offset: 0xA290
+  symbol: castle_grounds_seg7_dl_0700A290
+
+castle_grounds_seg7_vertex_0700A328:
+  type: VTX
+  count: 15
+  offset: 0xA328
+  symbol: castle_grounds_seg7_vertex_0700A328
+
+castle_grounds_seg7_vertex_0700A418:
+  type: VTX
+  count: 15
+  offset: 0xA418
+  symbol: castle_grounds_seg7_vertex_0700A418
+
+castle_grounds_seg7_vertex_0700A508:
+  type: VTX
+  count: 15
+  offset: 0xA508
+  symbol: castle_grounds_seg7_vertex_0700A508
+
+castle_grounds_seg7_vertex_0700A5F8:
+  type: VTX
+  count: 15
+  offset: 0xA5F8
+  symbol: castle_grounds_seg7_vertex_0700A5F8
+
+castle_grounds_seg7_vertex_0700A6E8:
+  type: VTX
+  count: 4
+  offset: 0xA6E8
+  symbol: castle_grounds_seg7_vertex_0700A6E8
+
+castle_grounds_seg7_dl_0700A728:
+  type: GFX
+  offset: 0xA728
+  symbol: castle_grounds_seg7_dl_0700A728
+
+castle_grounds_seg7_dl_0700A860:
+  type: GFX
+  offset: 0xA860
+  symbol: castle_grounds_seg7_dl_0700A860
+
 castle_grounds_seg7_vertex_0700A8D0:
   type: VTX
   count: 15
@@ -1247,18 +925,344 @@ castle_grounds_seg7_dl_0700B1D0:
   offset: 0xB1D0
   symbol: castle_grounds_seg7_dl_0700B1D0
 
+castle_grounds_seg7_vertex_0700B240:
+  type: VTX
+  count: 16
+  offset: 0xB240
+  symbol: castle_grounds_seg7_vertex_0700B240
+
+castle_grounds_seg7_vertex_0700B340:
+  type: VTX
+  count: 15
+  offset: 0xB340
+  symbol: castle_grounds_seg7_vertex_0700B340
+
+castle_grounds_seg7_vertex_0700B430:
+  type: VTX
+  count: 15
+  offset: 0xB430
+  symbol: castle_grounds_seg7_vertex_0700B430
+
+castle_grounds_seg7_vertex_0700B520:
+  type: VTX
+  count: 15
+  offset: 0xB520
+  symbol: castle_grounds_seg7_vertex_0700B520
+
+castle_grounds_seg7_vertex_0700B610:
+  type: VTX
+  count: 14
+  offset: 0xB610
+  symbol: castle_grounds_seg7_vertex_0700B610
+
+castle_grounds_seg7_vertex_0700B6F0:
+  type: VTX
+  count: 11
+  offset: 0xB6F0
+  symbol: castle_grounds_seg7_vertex_0700B6F0
+
+castle_grounds_seg7_vertex_0700B7A0:
+  type: VTX
+  count: 4
+  offset: 0xB7A0
+  symbol: castle_grounds_seg7_vertex_0700B7A0
+
+castle_grounds_seg7_vertex_0700B7E0:
+  type: VTX
+  count: 4
+  offset: 0xB7E0
+  symbol: castle_grounds_seg7_vertex_0700B7E0
+
+castle_grounds_seg7_dl_0700B820:
+  type: GFX
+  offset: 0xB820
+  symbol: castle_grounds_seg7_dl_0700B820
+
+castle_grounds_seg7_dl_0700B9B0:
+  type: GFX
+  offset: 0xB9B0
+  symbol: castle_grounds_seg7_dl_0700B9B0
+
+castle_grounds_seg7_dl_0700B9E8:
+  type: GFX
+  offset: 0xB9E8
+  symbol: castle_grounds_seg7_dl_0700B9E8
+
+castle_grounds_seg7_dl_0700BA20:
+  type: GFX
+  offset: 0xBA20
+  symbol: castle_grounds_seg7_dl_0700BA20
+
+castle_grounds_seg7_vertex_0700BAB8:
+  type: VTX
+  count: 8
+  offset: 0xBAB8
+  symbol: castle_grounds_seg7_vertex_0700BAB8
+
+castle_grounds_seg7_dl_0700BB38:
+  type: GFX
+  offset: 0xBB38
+  symbol: castle_grounds_seg7_dl_0700BB38
+
+castle_grounds_seg7_dl_0700BB80:
+  type: GFX
+  offset: 0xBB80
+  symbol: castle_grounds_seg7_dl_0700BB80
+
+castle_grounds_seg7_vertex_0700BBF0:
+  type: VTX
+  count: 4
+  offset: 0xBBF0
+  symbol: castle_grounds_seg7_vertex_0700BBF0
+
+castle_grounds_seg7_dl_0700BC30:
+  type: GFX
+  offset: 0xBC30
+  symbol: castle_grounds_seg7_dl_0700BC30
+
+castle_grounds_seg7_dl_0700BC68:
+  type: GFX
+  offset: 0xBC68
+  symbol: castle_grounds_seg7_dl_0700BC68
+
+castle_grounds_seg7_lights_0700BCD8:
+  type: LIGHTS
+  size: 24
+  offset: 0xBCD8
+  symbol: castle_grounds_seg7_lights_0700BCD8
+
+castle_grounds_seg7_lights_0700BCF0:
+  type: LIGHTS
+  size: 24
+  offset: 0xBCF0
+  symbol: castle_grounds_seg7_lights_0700BCF0
+
+castle_grounds_seg7_lights_0700BD08:
+  type: LIGHTS
+  size: 24
+  offset: 0xBD08
+  symbol: castle_grounds_seg7_lights_0700BD08
+
+castle_grounds_seg7_lights_0700BD20:
+  type: LIGHTS
+  size: 24
+  offset: 0xBD20
+  symbol: castle_grounds_seg7_lights_0700BD20
+
+castle_grounds_seg7_lights_0700BD38:
+  type: LIGHTS
+  size: 24
+  offset: 0xBD38
+  symbol: castle_grounds_seg7_lights_0700BD38
+
+castle_grounds_seg7_vertex_0700BD50:
+  type: VTX
+  count: 12
+  offset: 0xBD50
+  symbol: castle_grounds_seg7_vertex_0700BD50
+
+castle_grounds_seg7_vertex_0700BE10:
+  type: VTX
+  count: 8
+  offset: 0xBE10
+  symbol: castle_grounds_seg7_vertex_0700BE10
+
+castle_grounds_seg7_vertex_0700BE90:
+  type: VTX
+  count: 12
+  offset: 0xBE90
+  symbol: castle_grounds_seg7_vertex_0700BE90
+
+castle_grounds_seg7_vertex_0700BF50:
+  type: VTX
+  count: 6
+  offset: 0xBF50
+  symbol: castle_grounds_seg7_vertex_0700BF50
+
+castle_grounds_seg7_vertex_0700BFB0:
+  type: VTX
+  count: 6
+  offset: 0xBFB0
+  symbol: castle_grounds_seg7_vertex_0700BFB0
+
+castle_grounds_seg7_vertex_0700C010:
+  type: VTX
+  count: 6
+  offset: 0xC010
+  symbol: castle_grounds_seg7_vertex_0700C010
+
+castle_grounds_seg7_dl_0700C070:
+  type: GFX
+  offset: 0xC070
+  symbol: castle_grounds_seg7_dl_0700C070
+
+castle_grounds_seg7_dl_0700C110:
+  type: GFX
+  offset: 0xC110
+  symbol: castle_grounds_seg7_dl_0700C110
+
+castle_grounds_seg7_dl_0700C210:
+  type: GFX
+  offset: 0xC210
+  symbol: castle_grounds_seg7_dl_0700C210
+
+castle_grounds_seg7_vertex_0700C2A0:
+  type: VTX
+  count: 4
+  offset: 0xC2A0
+  symbol: castle_grounds_seg7_vertex_0700C2A0
+
+castle_grounds_seg7_vertex_0700C2E0:
+  type: VTX
+  count: 12
+  offset: 0xC2E0
+  symbol: castle_grounds_seg7_vertex_0700C2E0
+
+castle_grounds_seg7_dl_0700C3A0:
+  type: GFX
+  offset: 0xC3A0
+  symbol: castle_grounds_seg7_dl_0700C3A0
+
+castle_grounds_seg7_dl_0700C3D8:
+  type: GFX
+  offset: 0xC3D8
+  symbol: castle_grounds_seg7_dl_0700C3D8
+
+castle_grounds_seg7_dl_0700C430:
+  type: GFX
+  offset: 0xC430
+  symbol: castle_grounds_seg7_dl_0700C430
+
+castle_grounds_seg7_lights_0700C4C8:
+  type: LIGHTS
+  size: 24
+  offset: 0xC4C8
+  symbol: castle_grounds_seg7_lights_0700C4C8
+
+castle_grounds_seg7_lights_0700C4E0:
+  type: LIGHTS
+  size: 24
+  offset: 0xC4E0
+  symbol: castle_grounds_seg7_lights_0700C4E0
+
+castle_grounds_seg7_vertex_0700C500:
+  type: VTX
+  count: 3
+  offset: 0xC500
+  symbol: castle_grounds_seg7_vertex_0700C500
+
+castle_grounds_seg7_vertex_0700C530:
+  type: VTX
+  count: 4
+  offset: 0xC530
+  symbol: castle_grounds_seg7_vertex_0700C530
+
+castle_grounds_seg7_vertex_0700C570:
+  type: VTX
+  count: 4
+  offset: 0xC570
+  symbol: castle_grounds_seg7_vertex_0700C570
+
+castle_grounds_seg7_vertex_0700C5B0:
+  type: VTX
+  count: 4
+  offset: 0xC5B0
+  symbol: castle_grounds_seg7_vertex_0700C5B0
+
+castle_grounds_seg7_vertex_0700C5F0:
+  type: VTX
+  count: 5
+  offset: 0xC5F0
+  symbol: castle_grounds_seg7_vertex_0700C5F0
+
+castle_grounds_seg7_vertex_0700C640:
+  type: VTX
+  count: 3
+  offset: 0xC640
+  symbol: castle_grounds_seg7_vertex_0700C640
+
+castle_grounds_seg7_dl_0700C670:
+  type: GFX
+  offset: 0xC670
+  symbol: castle_grounds_seg7_dl_0700C670
+
+castle_grounds_seg7_dl_0700C6A8:
+  type: GFX
+  offset: 0xC6A8
+  symbol: castle_grounds_seg7_dl_0700C6A8
+
+castle_grounds_seg7_dl_0700C6E8:
+  type: GFX
+  offset: 0xC6E8
+  symbol: castle_grounds_seg7_dl_0700C6E8
+
+castle_grounds_seg7_dl_0700C728:
+  type: GFX
+  offset: 0xC728
+  symbol: castle_grounds_seg7_dl_0700C728
+
+castle_grounds_seg7_dl_0700C768:
+  type: GFX
+  offset: 0xC768
+  symbol: castle_grounds_seg7_dl_0700C768
+
+castle_grounds_seg7_vertex_0700C968:
+  type: VTX
+  count: 4
+  offset: 0xC968
+  symbol: castle_grounds_seg7_vertex_0700C968
+
+castle_grounds_seg7_vertex_0700C9A8:
+  type: VTX
+  count: 4
+  offset: 0xC9A8
+  symbol: castle_grounds_seg7_vertex_0700C9A8
+
+3:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xC9E8
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_0700C9E8
+
+4:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xD9E8
+  format: RGBA16
+  symbol: castle_grounds_seg7_texture_0700D9E8
+
+castle_grounds_seg7_dl_0700E9E8:
+  type: GFX
+  offset: 0xE9E8
+  symbol: castle_grounds_seg7_dl_0700E9E8
+
+castle_grounds_seg7_dl_0700EA20:
+  type: GFX
+  offset: 0xEA20
+  symbol: castle_grounds_seg7_dl_0700EA20
+
+castle_grounds_seg7_dl_0700EA58:
+  type: GFX
+  offset: 0xEA58
+  symbol: castle_grounds_seg7_dl_0700EA58
+
 castle_grounds_seg7_collision_level:
-    type: SM64:COLLISION
-    offset: 0xEAE8
-    symbol: castle_grounds_seg7_collision_level
+  type: SM64:COLLISION
+  offset: 0xEAE8
+  symbol: castle_grounds_seg7_collision_level
 
 castle_grounds_seg7_moat_grills:
-    type: SM64:COLLISION
-    offset: 0x10DB4
-    symbol: castle_grounds_seg7_moat_grills
+  type: SM64:COLLISION
+  offset: 0x10DB4
+  symbol: castle_grounds_seg7_moat_grills
 
 castle_grounds_seg7_cannon_grill:
-    type: SM64:COLLISION
-    offset: 0x10E10
-    symbol: castle_grounds_seg7_cannon_grill
+  type: SM64:COLLISION
+  offset: 0x10E10
+  symbol: castle_grounds_seg7_cannon_grill
 

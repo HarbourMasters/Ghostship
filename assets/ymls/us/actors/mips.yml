@@ -1,5 +1,3 @@
-# Offsets in this file are 0xF0 greater than the jp version
-
 :config:
   autopads: false
   compression:

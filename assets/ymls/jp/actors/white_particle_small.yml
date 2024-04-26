@@ -5,15 +5,6 @@
   segments:
     - [0x04,  0x112B50]
 
-small_snow_particle:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0x32780
-  format: RGBA16
-  symbol: white_particle_small_texture
-
 white_particle_small_vertex:
   type: VTX
   count: 4
@@ -25,6 +16,15 @@ white_particle_small_unused_vertex:
   count: 4
   offset: 0x32740
   symbol: white_particle_small_unused_vertex
+
+small_snow_particle:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x32780
+  format: RGBA16
+  symbol: white_particle_small_texture
 
 white_particle_small_dl_begin:
   type: GFX

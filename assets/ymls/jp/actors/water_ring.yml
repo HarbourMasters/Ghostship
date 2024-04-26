@@ -5,6 +5,12 @@
   segments:
     - [0x06,  0x1B8010]
 
+water_ring_seg6_lights_06012368:
+  type: LIGHTS
+  size: 24
+  offset: 0x12368
+  symbol: water_ring_seg6_lights_06012368
+
 water_ring:
   type: TEXTURE
   size: 4096
@@ -13,12 +19,6 @@ water_ring:
   offset: 0x12380
   format: RGBA16
   symbol: water_ring_seg6_texture_06012380
-
-water_ring_seg6_lights_06012368:
-  type: LIGHTS
-  size: 24
-  offset: 0x12368
-  symbol: water_ring_seg6_lights_06012368
 
 water_ring_seg6_vertex_06013380:
   type: VTX

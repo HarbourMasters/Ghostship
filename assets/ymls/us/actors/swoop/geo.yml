@@ -7,5 +7,5 @@
 
 swoop_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D0000DC
+  offset: 0xD0000DC
   symbol: swoop_geo

@@ -5,6 +5,12 @@
   segments:
     - [0x08,  0x1F0530]
 
+heart_seg8_vertex_0800D7A0:
+  type: VTX
+  count: 4
+  offset: 0xD7A0
+  symbol: heart_seg8_vertex_0800D7A0
+
 spinning_heart:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ spinning_heart:
   offset: 0xD7E0
   format: RGBA16
   symbol: heart_seg8_texture_0800D7E0
-
-heart_seg8_vertex_0800D7A0:
-  type: VTX
-  count: 4
-  offset: 0xD7A0
-  symbol: heart_seg8_vertex_0800D7A0
 
 heart_seg8_dl_0800DFE0:
   type: GFX

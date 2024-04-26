@@ -5,14 +5,12 @@
   segments:
     - [0x05,  0x145E90]
 
-pokey_body:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x12878
-  format: RGBA16
-  symbol: pokey_seg5_texture_05012878
+pokey_seg5_vertex_05011710:
+  type: VTX
+  count: 4
+  offset: 0x11710
+  symbol: pokey_seg5_vertex_05011710
+
 pokey_face:
   type: TEXTURE
   size: 2048
@@ -21,6 +19,7 @@ pokey_face:
   offset: 0x11750
   format: RGBA16
   symbol: pokey_seg5_texture_05011750
+
 pokey_face_blink:
   type: TEXTURE
   size: 2048
@@ -29,12 +28,6 @@ pokey_face_blink:
   offset: 0x11F50
   format: RGBA16
   symbol: pokey_seg5_texture_05011F50
-
-pokey_seg5_vertex_05011710:
-  type: VTX
-  count: 4
-  offset: 0x11710
-  symbol: pokey_seg5_vertex_05011710
 
 pokey_seg5_dl_05012750:
   type: GFX
@@ -61,6 +54,15 @@ pokey_seg5_vertex_05012838:
   count: 4
   offset: 0x12838
   symbol: pokey_seg5_vertex_05012838
+
+pokey_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12878
+  format: RGBA16
+  symbol: pokey_seg5_texture_05012878
 
 pokey_seg5_dl_05013078:
   type: GFX

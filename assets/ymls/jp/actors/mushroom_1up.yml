@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x1FF740]
 
+mushroom_1up_seg3_vertex_030295E8:
+  type: VTX
+  count: 4
+  offset: 0x295E8
+  symbol: mushroom_1up_seg3_vertex_030295E8
+
 1-up_mushroom:
   type: TEXTURE
   size: 4096
@@ -13,12 +19,6 @@
   offset: 0x29628
   format: RGBA16
   symbol: mushroom_1up_seg3_texture_03029628
-
-mushroom_1up_seg3_vertex_030295E8:
-  type: VTX
-  count: 4
-  offset: 0x295E8
-  symbol: mushroom_1up_seg3_vertex_030295E8
 
 mushroom_1up_seg3_dl_0302A628:
   type: GFX

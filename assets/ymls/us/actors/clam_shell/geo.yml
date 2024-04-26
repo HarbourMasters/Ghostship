@@ -7,5 +7,5 @@
 
 clam_shell_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C000000
+  offset: 0xC000000
   symbol: clam_shell_geo

@@ -7,205 +7,205 @@
 
 geo_bbh_0005B0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005B0
+  offset: 0xE0005B0
   symbol: geo_bbh_0005B0
 
 geo_bbh_0005C8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005C8
+  offset: 0xE0005C8
   symbol: geo_bbh_0005C8
 
 geo_bbh_0005E0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005E0
+  offset: 0xE0005E0
   symbol: geo_bbh_0005E0
 
 geo_bbh_0005F8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005F8
+  offset: 0xE0005F8
   symbol: geo_bbh_0005F8
 
 geo_bbh_000610:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000610
+  offset: 0xE000610
   symbol: geo_bbh_000610
 
 geo_bbh_000628:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000628
+  offset: 0xE000628
   symbol: geo_bbh_000628
 
 geo_bbh_000640:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000640
+  offset: 0xE000640
   symbol: geo_bbh_000640
 
 geo_bbh_000658:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000658
+  offset: 0xE000658
   symbol: geo_bbh_000658
 
 geo_bbh_000670:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000670
+  offset: 0xE000670
   symbol: geo_bbh_000670
 
 geo_bbh_0006B0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0006B0
+  offset: 0xE0006B0
   symbol: geo_bbh_0006B0
 
 geo_bbh_0006E8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0006E8
+  offset: 0xE0006E8
   symbol: geo_bbh_0006E8
 
 geo_bbh_000730:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000730
+  offset: 0xE000730
   symbol: geo_bbh_000730
 
 geo_bbh_000750:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000750
+  offset: 0xE000750
   symbol: geo_bbh_000750
 
 geo_bbh_000768:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000768
+  offset: 0xE000768
   symbol: geo_bbh_000768
 
 geo_bbh_0007B0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0007B0
+  offset: 0xE0007B0
   symbol: geo_bbh_0007B0
 
 geo_bbh_0007D0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0007D0
+  offset: 0xE0007D0
   symbol: geo_bbh_0007D0
 
 geo_bbh_000800:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000800
+  offset: 0xE000800
   symbol: geo_bbh_000800
 
 geo_bbh_000828:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000828
+  offset: 0xE000828
   symbol: geo_bbh_000828
 
 geo_bbh_000860:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000860
+  offset: 0xE000860
   symbol: geo_bbh_000860
 
 geo_bbh_000888:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000888
+  offset: 0xE000888
   symbol: geo_bbh_000888
 
 geo_bbh_0008B0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0008B0
+  offset: 0xE0008B0
   symbol: geo_bbh_0008B0
 
 geo_bbh_0008E8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0008E8
+  offset: 0xE0008E8
   symbol: geo_bbh_0008E8
 
 geo_bbh_000950:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000950
+  offset: 0xE000950
   symbol: geo_bbh_000950
 
 geo_bbh_0009C8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0009C8
+  offset: 0xE0009C8
   symbol: geo_bbh_0009C8
 
 geo_bbh_000A18:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000A18
+  offset: 0xE000A18
   symbol: geo_bbh_000A18
 
 geo_bbh_000A60:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000A60
+  offset: 0xE000A60
   symbol: geo_bbh_000A60
 
 geo_bbh_000AD8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000AD8
+  offset: 0xE000AD8
   symbol: geo_bbh_000AD8
 
 geo_bbh_000B28:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000B28
+  offset: 0xE000B28
   symbol: geo_bbh_000B28
 
 geo_bbh_000B88:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000B88
+  offset: 0xE000B88
   symbol: geo_bbh_000B88
 
 geo_bbh_000BF0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000BF0
+  offset: 0xE000BF0
   symbol: geo_bbh_000BF0
 
 geo_bbh_000C38:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000C38
+  offset: 0xE000C38
   symbol: geo_bbh_000C38
 
 geo_bbh_000C88:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000C88
+  offset: 0xE000C88
   symbol: geo_bbh_000C88
 
 geo_bbh_000CE8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000CE8
+  offset: 0xE000CE8
   symbol: geo_bbh_000CE8
 
 geo_bbh_000D20:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000D20
+  offset: 0xE000D20
   symbol: geo_bbh_000D20
 
 geo_bbh_000D68:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000D68
+  offset: 0xE000D68
   symbol: geo_bbh_000D68
 
 geo_bbh_000DB0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000DB0
+  offset: 0xE000DB0
   symbol: geo_bbh_000DB0
 
 geo_bbh_000DF0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000DF0
+  offset: 0xE000DF0
   symbol: geo_bbh_000DF0
 
 geo_bbh_000E40:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000E40
+  offset: 0xE000E40
   symbol: geo_bbh_000E40
 
 geo_bbh_000E80:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000E80
+  offset: 0xE000E80
   symbol: geo_bbh_000E80
 
 geo_bbh_000EB0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000EB0
+  offset: 0xE000EB0
   symbol: geo_bbh_000EB0
 
 geo_bbh_000F00:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000F00
+  offset: 0xE000F00
   symbol: geo_bbh_000F00

@@ -5,9 +5,6 @@
   segments:
     - [0x05,  0x166C60]
 
-# small_key_unused_1:
-#   type: U64
-
 small_key_seg5_lights_05005798:
   type: LIGHTS
   size: 24

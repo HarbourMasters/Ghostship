@@ -5,31 +5,6 @@
   segments:
     - [0x05,  0x128BE0]
 
-hoot_eyes:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xA20
-  format: RGBA16
-  symbol: hoot_seg5_texture_05000A20
-hoot_wing:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1E50
-  format: RGBA16
-  symbol: hoot_seg5_texture_05001E50
-hoot_wing_tip:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2650
-  format: RGBA16
-  symbol: hoot_seg5_texture_05002650
-
 hoot_seg5_lights_05000900:
   type: LIGHTS
   size: 24
@@ -101,6 +76,15 @@ hoot_seg5_lights_05000A08:
   size: 24
   offset: 0xA08
   symbol: hoot_seg5_lights_05000A08
+
+hoot_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA20
+  format: RGBA16
+  symbol: hoot_seg5_texture_05000A20
 
 hoot_seg5_vertex_05001220:
   type: VTX
@@ -188,6 +172,24 @@ hoot_seg5_lights_05001E38:
   size: 24
   offset: 0x1E38
   symbol: hoot_seg5_lights_05001E38
+
+hoot_wing:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1E50
+  format: RGBA16
+  symbol: hoot_seg5_texture_05001E50
+
+hoot_wing_tip:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2650
+  format: RGBA16
+  symbol: hoot_seg5_texture_05002650
 
 hoot_seg5_vertex_05002E50:
   type: VTX

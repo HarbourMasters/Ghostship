@@ -5,47 +5,6 @@
   segments:
     - [0x05,  0x1521D0]
 
-monty_mole_cheek:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x970
-  format: RGBA16
-  symbol: monty_mole_seg5_texture_05000970
-monty_mole_claw:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2970
-  format: RGBA16
-  symbol: monty_mole_seg5_texture_05002970
-monty_mole_eye:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1170
-  format: RGBA16
-  symbol: monty_mole_seg5_texture_05001170
-monty_mole_nose:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1970
-  format: RGBA16
-  symbol: monty_mole_seg5_texture_05001970
-monty_mole_tooth:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2170
-  format: RGBA16
-  symbol: monty_mole_seg5_texture_05002170
-
 monty_mole_lights_unused1:
   type: LIGHTS
   size: 24
@@ -81,6 +40,51 @@ monty_mole_lights_unused6:
   size: 24
   offset: 0x958
   symbol: monty_mole_lights_unused6
+
+monty_mole_cheek:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x970
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05000970
+
+monty_mole_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1170
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05001170
+
+monty_mole_nose:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1970
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05001970
+
+monty_mole_tooth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2170
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05002170
+
+monty_mole_claw:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2970
+  format: RGBA16
+  symbol: monty_mole_seg5_texture_05002970
 
 monty_mole_seg5_lights_05003170:
   type: LIGHTS

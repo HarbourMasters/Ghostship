@@ -5,6 +5,12 @@
   segments:
     - [0x04,  0x114750]
 
+sparkles_seg4_vertex_04027450:
+  type: VTX
+  count: 4
+  offset: 0x27450
+  symbol: sparkles_seg4_vertex_04027450
+
 sparkle_0:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ sparkle_0:
   offset: 0x27490
   format: RGBA16
   symbol: sparkles_seg4_texture_04027490
+
 sparkle_1:
   type: TEXTURE
   size: 2048
@@ -21,6 +28,7 @@ sparkle_1:
   offset: 0x27C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04027C90
+
 sparkle_2:
   type: TEXTURE
   size: 2048
@@ -29,6 +37,7 @@ sparkle_2:
   offset: 0x28490
   format: RGBA16
   symbol: sparkles_seg4_texture_04028490
+
 sparkle_3:
   type: TEXTURE
   size: 2048
@@ -37,6 +46,7 @@ sparkle_3:
   offset: 0x28C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04028C90
+
 sparkle_4:
   type: TEXTURE
   size: 2048
@@ -45,6 +55,7 @@ sparkle_4:
   offset: 0x29490
   format: RGBA16
   symbol: sparkles_seg4_texture_04029490
+
 sparkle_5:
   type: TEXTURE
   size: 2048
@@ -53,12 +64,6 @@ sparkle_5:
   offset: 0x29C90
   format: RGBA16
   symbol: sparkles_seg4_texture_04029C90
-
-sparkles_seg4_vertex_04027450:
-  type: VTX
-  count: 4
-  offset: 0x27450
-  symbol: sparkles_seg4_vertex_04027450
 
 sparkles_seg4_dl_0402A490:
   type: GFX

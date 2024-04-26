@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: totwc_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x1000
   format: RGBA16
   symbol: totwc_seg7_texture_07001000
+
 2:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@
   offset: 0x1800
   format: RGBA16
   symbol: totwc_seg7_texture_07001800
+
 3:
   type: TEXTURE
   size: 2048
@@ -37,6 +40,7 @@
   offset: 0x2000
   format: IA16
   symbol: totwc_seg7_texture_07002000
+
 totwc_seg7_vertex_07002800:
   type: VTX
   count: 16
@@ -320,57 +324,6 @@ totwc_seg7_dl_07005D28:
   offset: 0x5D28
   symbol: totwc_seg7_dl_07005D28
 
-totwc_seg7_vertex_070070C8:
-  type: VTX
-  count: 16
-  offset: 0x70C8
-  symbol: totwc_seg7_vertex_070070C8
-
-totwc_seg7_vertex_070071C8:
-  type: VTX
-  count: 16
-  offset: 0x71C8
-  symbol: totwc_seg7_vertex_070071C8
-
-totwc_seg7_vertex_070072C8:
-  type: VTX
-  count: 16
-  offset: 0x72C8
-  symbol: totwc_seg7_vertex_070072C8
-
-totwc_seg7_vertex_070073C8:
-  type: VTX
-  count: 16
-  offset: 0x73C8
-  symbol: totwc_seg7_vertex_070073C8
-
-totwc_seg7_vertex_070074C8:
-  type: VTX
-  count: 16
-  offset: 0x74C8
-  symbol: totwc_seg7_vertex_070074C8
-
-totwc_seg7_vertex_070075C8:
-  type: VTX
-  count: 16
-  offset: 0x75C8
-  symbol: totwc_seg7_vertex_070075C8
-
-totwc_seg7_dl_070076C8:
-  type: GFX
-  offset: 0x76C8
-  symbol: totwc_seg7_dl_070076C8
-
-totwc_seg7_dl_07007808:
-  type: GFX
-  offset: 0x7808
-  symbol: totwc_seg7_dl_07007808
-
-totwc_seg7_dl_070078B8:
-  type: GFX
-  offset: 0x78B8
-  symbol: totwc_seg7_dl_070078B8
-
 totwc_seg7_vertex_07005DC8:
   type: VTX
   count: 15
@@ -476,6 +429,57 @@ totwc_seg7_dl_07007048:
   type: GFX
   offset: 0x7048
   symbol: totwc_seg7_dl_07007048
+
+totwc_seg7_vertex_070070C8:
+  type: VTX
+  count: 16
+  offset: 0x70C8
+  symbol: totwc_seg7_vertex_070070C8
+
+totwc_seg7_vertex_070071C8:
+  type: VTX
+  count: 16
+  offset: 0x71C8
+  symbol: totwc_seg7_vertex_070071C8
+
+totwc_seg7_vertex_070072C8:
+  type: VTX
+  count: 16
+  offset: 0x72C8
+  symbol: totwc_seg7_vertex_070072C8
+
+totwc_seg7_vertex_070073C8:
+  type: VTX
+  count: 16
+  offset: 0x73C8
+  symbol: totwc_seg7_vertex_070073C8
+
+totwc_seg7_vertex_070074C8:
+  type: VTX
+  count: 16
+  offset: 0x74C8
+  symbol: totwc_seg7_vertex_070074C8
+
+totwc_seg7_vertex_070075C8:
+  type: VTX
+  count: 16
+  offset: 0x75C8
+  symbol: totwc_seg7_vertex_070075C8
+
+totwc_seg7_dl_070076C8:
+  type: GFX
+  offset: 0x76C8
+  symbol: totwc_seg7_dl_070076C8
+
+totwc_seg7_dl_07007808:
+  type: GFX
+  offset: 0x7808
+  symbol: totwc_seg7_dl_07007808
+
+totwc_seg7_dl_070078B8:
+  type: GFX
+  offset: 0x78B8
+  symbol: totwc_seg7_dl_070078B8
 
 totwc_seg7_vertex_07007930:
   type: VTX

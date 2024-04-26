@@ -5,30 +5,6 @@
   segments:
     - [0x05,  0x165060]
 
-bookend_cover:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1060
-  format: RGBA16
-  symbol: bookend_seg5_texture_05001060
-bookend_mouth:
-  type: TEXTURE
-  size: 1024
-  width: 16
-  height: 32
-  offset: 0x860
-  format: RGBA16
-  symbol: bookend_seg5_texture_05000860
-bookend_pages:
-  type: TEXTURE
-  size: 1024
-  width: 16
-  height: 32
-  offset: 0xC60
-  format: RGBA16
-  symbol: bookend_seg5_texture_05000C60
 bookend_spine:
   type: TEXTURE
   size: 1024
@@ -37,6 +13,7 @@ bookend_spine:
   offset: 0x60
   format: RGBA16
   symbol: bookend_seg5_texture_05000060
+
 bookend_tooth:
   type: TEXTURE
   size: 1024
@@ -46,29 +23,32 @@ bookend_tooth:
   format: RGBA16
   symbol: bookend_seg5_texture_05000460
 
-bookend_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused1
+bookend_mouth:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x860
+  format: RGBA16
+  symbol: bookend_seg5_texture_05000860
 
-bookend_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused2
+bookend_pages:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0xC60
+  format: RGBA16
+  symbol: bookend_seg5_texture_05000C60
 
-bookend_lights_unused3:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused3
-
-bookend_lights_unused4:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused4
+bookend_cover:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1060
+  format: RGBA16
+  symbol: bookend_seg5_texture_05001060
 
 bookend_seg5_lights_05001860:
   type: LIGHTS
@@ -245,4 +225,28 @@ bookend_seg5_dl_050022E0:
   type: GFX
   offset: 0x22E0
   symbol: bookend_seg5_dl_050022E0
+
+bookend_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x6C08
+  symbol: bookend_lights_unused1
+
+bookend_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x6C08
+  symbol: bookend_lights_unused2
+
+bookend_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x6C08
+  symbol: bookend_lights_unused3
+
+bookend_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x6C08
+  symbol: bookend_lights_unused4
 
