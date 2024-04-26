@@ -1124,8 +1124,8 @@ thi_seg7_area_3_collision:
   offset: 0xD444
   symbol: thi_seg7_area_3_collision
 
-thi_seg7_area_1_collision:
+thi_seg7_collision_top_trap:
   type: SM64:COLLISION
   offset: 0xE228
-  symbol: thi_seg7_area_1_collision
+  symbol: thi_seg7_collision_top_trap
 
