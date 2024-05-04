@@ -1,6 +1,6 @@
 #include "Dialog.h"
 
-namespace CubeOS {
+namespace SM64 {
 DialogEntry* Dialog::GetPointer() {
     return &mData;
 }

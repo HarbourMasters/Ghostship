@@ -12,7 +12,7 @@ struct DialogEntry {
 };
 
 
-namespace CubeOS {
+namespace SM64 {
 
 class Dialog : public LUS::Resource<DialogEntry> {
   public:

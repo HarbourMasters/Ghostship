@@ -1,6 +1,6 @@
 #include "AudioSample.h"
 
-namespace CubeOS {
+namespace SM64 {
 AudioBankSample* AudioSample::GetPointer() {
     return &mData;
 }

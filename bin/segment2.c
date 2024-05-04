@@ -1319,7 +1319,6 @@ const Gfx dl_ia_text_end[] = {
 #elif defined(VERSION_US)
 const Gfx dl_ia_text_begin_us[] = {
     gsDPPipeSync(),
-    gsSPDisableFiltering(1),
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),
     gsDPSetEnvColor(255, 255, 255, 255),
@@ -1331,7 +1330,6 @@ const Gfx dl_ia_text_begin_us[] = {
 
 const Gfx dl_ia_text_begin_jp[] = {
     gsDPPipeSync(),
-    gsSPDisableFiltering(1),
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),
     gsDPSetEnvColor(255, 255, 255, 255),
@@ -1399,7 +1397,6 @@ const Gfx dl_ia_text_end[] = {
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
     gsDPSetTextureFilter(G_TF_BILERP),
-    gsSPDisableFiltering(0),
     gsSPEndDisplayList(),
 };
 #endif

@@ -413,7 +413,6 @@ void print_generic_string(s16 x, s16 y, const u8 *str) {
 
 #ifndef VERSION_EU
     create_dl_translation_matrix(MENU_MTX_PUSH, x, y, 0.0f);
-    gSPDisableFiltering(gDisplayListHead++, TRUE);
 #endif
 
     while (str[strPos] != DIALOG_CHAR_TERMINATOR) {
@@ -488,7 +487,6 @@ void print_generic_string(s16 x, s16 y, const u8 *str) {
 
 #ifndef VERSION_EU
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
-    gSPDisableFiltering(gDisplayListHead++, FALSE);
 #endif
 }
 
@@ -517,7 +515,6 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
     u32 curX = x;
     u32 curY = y;
 
-    gSPDisableFiltering(gDisplayListHead++, TRUE);
     u32 xStride; // X separation
 
     if (hudLUT == HUD_LUT_JPMENU) {
@@ -586,7 +583,6 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
         }
         strPos++;
     }
-    gSPDisableFiltering(gDisplayListHead++, FALSE);
 }
 
 #ifdef VERSION_EU
@@ -611,7 +607,6 @@ void print_menu_generic_string(s16 x, s16 y, const u8 *str) {
     u32 curX = x;
     u32 curY = y;
     void **fontLUT = segmented_to_virtual(ROM_JP ? menu_font_lut_jp : menu_font_lut_us);
-    gSPDisableFiltering(gDisplayListHead++, TRUE);
 
     while (str[strPos] != DIALOG_CHAR_TERMINATOR) {
         switch (str[strPos]) {
@@ -662,7 +657,6 @@ void print_menu_generic_string(s16 x, s16 y, const u8 *str) {
         strPos++;
     }
 
-    gSPDisableFiltering(gDisplayListHead++, FALSE);
 }
 
 void print_credits_string(s16 x, s16 y, const u8 *str) {

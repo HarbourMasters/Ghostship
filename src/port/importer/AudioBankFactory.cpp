@@ -2,33 +2,15 @@
 #include "port/importer/types/AudioBank.h"
 #include "spdlog/spdlog.h"
 #include "resourcebridge.h"
+#include "ResourceUtil.h"
 
-std::shared_ptr<LUS::IResource> CubeOS::AudioBankFactory::ReadResource(std::shared_ptr<LUS::ResourceInitData> initData, std::shared_ptr<LUS::BinaryReader> reader) {
-    auto resource = std::make_shared<AudioBank>(initData);
-    std::shared_ptr<LUS::ResourceVersionFactory> factory = nullptr;
-
-    switch (resource->GetInitData()->ResourceVersion) {
-        case 0:
-            factory = std::make_shared<AudioBankFactoryV0>();
-            break;
-    }
-
-    if (factory == nullptr) {
-        SPDLOG_ERROR("Failed to load AudioBank with version {}", resource->GetInitData()->ResourceVersion);
+std::shared_ptr<LUS::IResource> SM64::AudioBankFactoryV0::ReadResource(std::shared_ptr<LUS::File> file) {
+    if (!FileHasValidFormatAndReader(file)) {
         return nullptr;
     }
 
-    factory->ParseFileBinary(reader, resource);
-
-    return resource;
-}
-
-
-
-void CubeOS::AudioBankFactoryV0::ParseFileBinary(std::shared_ptr<LUS::BinaryReader> reader, std::shared_ptr<LUS::IResource> resource) {
-    std::shared_ptr<AudioBank> bank = std::static_pointer_cast<AudioBank>(resource);
-
-    ResourceVersionFactory::ParseFileBinary(reader, bank);
+    std::shared_ptr<AudioBank> bank = std::make_shared<AudioBank>(file->InitData);
+    auto reader = std::get<std::shared_ptr<LUS::BinaryReader>>(file->Reader);
 
     uint8_t bankId = reader->ReadUInt32();
     uint32_t instrumentCount = reader->ReadUInt32();
@@ -61,19 +43,19 @@ void CubeOS::AudioBankFactoryV0::ParseFileBinary(std::shared_ptr<LUS::BinaryRead
 
         if(hasLo){
             std::string lowSampleName = reader->ReadString();
-            instrument->lowNotesSound.sample = static_cast<AudioBankSample *>(ResourceGetDataByName(lowSampleName.c_str()));
+            instrument->lowNotesSound.sample = LoadChild<AudioBankSample*>(lowSampleName.c_str());
             instrument->lowNotesSound.tuning = reader->ReadFloat();
         }
 
         if(hasMed){
             std::string normalSampleName = reader->ReadString();
-            instrument->normalNotesSound.sample = static_cast<AudioBankSample *>(ResourceGetDataByName(normalSampleName.c_str()));
+            instrument->normalNotesSound.sample = LoadChild<AudioBankSample*>(normalSampleName.c_str());
             instrument->normalNotesSound.tuning = reader->ReadFloat();
         }
 
         if(hasHi){
             std::string highSampleName = reader->ReadString();
-            instrument->highNotesSound.sample = static_cast<AudioBankSample *>(ResourceGetDataByName(highSampleName.c_str()));
+            instrument->highNotesSound.sample = LoadChild<AudioBankSample*>(highSampleName.c_str());
             instrument->highNotesSound.tuning = reader->ReadFloat();
         }
 
@@ -98,7 +80,7 @@ void CubeOS::AudioBankFactoryV0::ParseFileBinary(std::shared_ptr<LUS::BinaryRead
         }
 
         std::string sampleName = reader->ReadString();
-        drum->sound.sample = static_cast<AudioBankSample *>(ResourceGetDataByName(sampleName.c_str()));
+        drum->sound.sample = LoadChild<AudioBankSample*>(sampleName.c_str());
         drum->sound.tuning = reader->ReadFloat();
 
         bank->drums.push_back(drum);
@@ -109,4 +91,6 @@ void CubeOS::AudioBankFactoryV0::ParseFileBinary(std::shared_ptr<LUS::BinaryRead
     bank->mData.numDrums = drumCount;
     bank->mData.instruments = bank->instruments.data();
     bank->mData.drums = bank->drums.data();
+
+    return bank;
 }

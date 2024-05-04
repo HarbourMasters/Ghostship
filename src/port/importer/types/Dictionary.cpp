@@ -1,6 +1,6 @@
 #include "Dictionary.h"
 
-namespace CubeOS {
+namespace SM64 {
 GameDictionary* Dictionary::GetPointer() {
     return &mData;
 }

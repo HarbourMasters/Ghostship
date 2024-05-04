@@ -33,8 +33,12 @@ set(VCPKG_TRIPLET x64-mingw-static)
 set(VCPKG_TARGET_TRIPLET x64-mingw-static)
 endif()
 
+if(NOT CMAKE_BUILD_TYPE )
+    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build." FORCE)
+endif()
+
 vcpkg_bootstrap()
-vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libpng getopt dirent libusb pthread glew glfw3)
+vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libzip libpng getopt dirent libusb pthread glew glfw3)
 endif()
 
 if (MSVC)
@@ -45,7 +49,7 @@ endif()
 
 # Set game compilation version
 set(VERSION us)
-set(USE_NETWORKING ON)
+set(USE_NETWORKING OFF)
 
 # Add compile definitions for the target
 add_compile_definitions(
@@ -56,6 +60,9 @@ add_compile_definitions(
     _LANGUAGE_C
     _USE_MATH_DEFINES
     CIMGUI_DEFINE_ENUMS_AND_STRUCTS
+    IMGUI_DEFINE_MATH_OPERATORS
+    AVOID_UB=1
+    ENABLE_OPENGL=1
 )
 
 # Find necessary libraries
@@ -137,10 +144,10 @@ if (MSVC)
 	  if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
 		  string(CONCAT "MSVC_RUNTIME_LIBRARY_STR"
 			  $<$<CONFIG:Debug>:
-				  MultiThreadedDebug
+                MultiThreadedDebug
 			  >
 			  $<$<CONFIG:Release>:
-				  MultiThreaded
+                MultiThreaded
 			  >
 			  $<$<NOT:$<OR:$<CONFIG:Debug>,$<CONFIG:Release>>>:${MSVC_RUNTIME_LIBRARY_DEFAULT}>
 		  )

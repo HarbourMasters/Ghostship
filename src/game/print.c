@@ -398,7 +398,6 @@ void render_text_labels(void) {
     gSPPerspNormalize((Gfx *) (gDisplayListHead++), 0xFFFF);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx), G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
     gSPDisplayList(gDisplayListHead++, dl_hud_img_begin);
-    gSPDisableFiltering(gDisplayListHead++, TRUE);
 
     for (i = 0; i < sTextLabelsCount; i++) {
         for (j = 0; j < sTextLabels[i]->length; j++) {
@@ -428,7 +427,6 @@ void render_text_labels(void) {
         mem_pool_free(gEffectsMemoryPool, sTextLabels[i]);
     }
 
-    gSPDisableFiltering(gDisplayListHead++, FALSE);
     gSPDisplayList(gDisplayListHead++, dl_hud_img_end);
 
     sTextLabelsCount = 0;

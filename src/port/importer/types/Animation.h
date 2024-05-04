@@ -1,10 +1,11 @@
 #pragma once
 
 #include <cstdint>
+
 #include <Resource.h>
 #include <libultraship/libultra/types.h>
 
-namespace CubeOS {
+namespace SM64 {
 struct AnimationData {
     /*0x00*/ int16_t flags;
     /*0x02*/ int16_t animYTransDivisor;
