@@ -27,7 +27,7 @@ struct AudioBankSample {
     uint32_t sampleSize; // never read. either 0 or 1 mod 9, depending on padding
 };
 
-namespace CubeOS {
+namespace SM64 {
 
 
 class AudioSample : public LUS::Resource<AudioBankSample> {

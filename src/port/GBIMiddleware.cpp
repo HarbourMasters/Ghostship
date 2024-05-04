@@ -33,9 +33,9 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
     if (texAddr != 0 && GameEngine_OTRSigCheck(imgData)) {
         auto res = LUS::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
 
-        if (res->GetInitData()->Type == LUS::ResourceType::DisplayList)
+        if (res->GetInitData()->Type == (uint32_t) LUS::ResourceType::DisplayList)
             texAddr = (uintptr_t)&((std::static_pointer_cast<LUS::DisplayList>(res))->Instructions[0]);
-        else if (res->GetInitData()->Type == LUS::ResourceType::Array)
+        else if (res->GetInitData()->Type == (uint32_t) LUS::ResourceType::Array)
             texAddr = (uintptr_t)(std::static_pointer_cast<LUS::Array>(res))->Vertices.data();
         else {
             texAddr = (uintptr_t) res->GetRawPointer();

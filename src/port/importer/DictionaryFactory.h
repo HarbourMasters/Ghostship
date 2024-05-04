@@ -1,16 +1,11 @@
 #pragma once
 
-#include "ResourceFactory.h"
+#include "Resource.h"
+#include "ResourceFactoryBinary.h"
 
-namespace CubeOS{
-class DictionaryFactory : public LUS::ResourceFactory {
+namespace SM64 {
+class DictionaryFactoryV0 : public LUS::ResourceFactoryBinary {
   public:
-    std::shared_ptr<LUS::IResource>
-    ReadResource(std::shared_ptr<LUS::ResourceInitData> initData, std::shared_ptr<LUS::BinaryReader> reader) override;
-};
-
-class DictionaryFactoryV0 : public LUS::ResourceVersionFactory {
-  public:
-    void ParseFileBinary(std::shared_ptr<LUS::BinaryReader> reader, std::shared_ptr<LUS::IResource> resource) override;
+    std::shared_ptr<LUS::IResource> ReadResource(std::shared_ptr<LUS::File> file) override;
 };
 }

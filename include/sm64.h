@@ -470,9 +470,6 @@
 
 #define C_BUTTONS     (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS   )
 
-extern void osInvalDCache(void *, size_t);
-extern void osInvalICache(void *, size_t);
-extern void osWritebackDCache(void *, size_t);
 extern void osWritebackDCacheAll(void);
 extern s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
 extern void osCreatePiManager(OSPri pri, OSMesgQueue *cmdQ, OSMesg *cmdBuf, s32 cmdMsgCnt);

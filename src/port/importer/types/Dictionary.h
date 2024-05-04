@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <Resource.h>
 
-namespace CubeOS {
+namespace SM64 {
 
 typedef std::unordered_map<std::string, std::vector<uint8_t>> GameDictionary;
 

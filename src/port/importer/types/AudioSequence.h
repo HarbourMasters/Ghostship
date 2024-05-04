@@ -10,7 +10,7 @@ struct AudioSequenceData {
     uint8_t id;
 };
 
-namespace CubeOS {
+namespace SM64 {
 
 class AudioSequence : public LUS::Resource<AudioSequenceData> {
   public:

@@ -4,11 +4,12 @@
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/AudioSampleFactory.h"
 #include "port/importer/AudioSequenceFactory.h"
+#include "port/importer/DialogFactory.h"
+#include "port/importer/DictionaryFactory.h"
+#include "port/importer/ResourceType.h"
 #include "audio/GameAudio.h"
 #include "ZAPDUtils/Utils/StringHelper.h"
 #include "texts_table.h"
-#include "port/importer/DialogFactory.h"
-#include "port/importer/DictionaryFactory.h"
 #include "port/Enhancements/game-interactor/GameInteractor.h"
 #include "port/Enhancements/mods.h"
 #include <Fast3D/gfx_pc.h>
@@ -49,18 +50,13 @@ GameEngine::GameEngine(): dictionary(nullptr) {
                                                  {0xFF2B5A63, 0xE3DAA4E}, 3);
     this->context->GetWindow()->SetTargetFps(60);
     this->context->GetWindow()->SetMaximumFrameLatency(1);
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
-        LUS::ResourceType::SAnim, "Animation", std::make_shared<CubeOS::AnimationFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
-        LUS::ResourceType::Bank, "Bank", std::make_shared<CubeOS::AudioBankFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
-        LUS::ResourceType::Sample, "Sample", std::make_shared<CubeOS::AudioSampleFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
-        LUS::ResourceType::Sequence, "Sequence", std::make_shared<CubeOS::AudioSequenceFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
-        LUS::ResourceType::SDialog, "Dialog", std::make_shared<CubeOS::DialogFactory>());
-    this->context->GetResourceManager()->GetResourceLoader()->RegisterResourceFactory(
-        LUS::ResourceType::Dictionary, "Dictionary", std::make_shared<CubeOS::DictionaryFactory>());
+    auto loader = context->GetResourceManager()->GetResourceLoader();
+    loader->RegisterResourceFactory(std::make_shared<SM64::AnimationFactoryV0>(), RESOURCE_FORMAT_BINARY, "Animation", static_cast<uint32_t>(SM64::ResourceType::Anim), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank", static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::DialogFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dialog", static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary", static_cast<uint32_t>(SM64::ResourceType::Dictionary), 0);
 }
 
 void GameEngine::Create(){
@@ -163,14 +159,16 @@ void GameEngine::EndAudioFrame(){
 void GameEngine::AudioInit() {
     const auto resourceMgr = LUS::Context::GetInstance()->GetResourceManager();
     resourceMgr->LoadDirectory("sound");
+    const auto banksFiles = resourceMgr->GetArchiveManager()->ListFiles("sound/banks/*");
+    const auto sequences_files = resourceMgr->GetArchiveManager()->ListFiles("sound/sequences/*");
 
-    for(const auto banksFiles = resourceMgr->GetArchive()->ListFiles("sound/banks/*"); auto& bank : *banksFiles){
+    for(auto& bank : *banksFiles){
         auto path = "__OTR__" + bank;
         const auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(path.c_str()));
         this->bankMapTable[bank] = ctl->bankId;
     }
 
-    for(const auto sequences_files = resourceMgr->GetArchive()->ListFiles("sound/sequences/*"); auto& sequence : *sequences_files){
+    for( auto& sequence : *sequences_files){
         auto path = "__OTR__" + sequence;
         auto seq = static_cast<AudioSequenceData *>(ResourceGetDataByName(path.c_str()));
         this->sequencesMapTable[seq->id] = path;
@@ -206,7 +204,7 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
 }
 
 uint32_t GameEngine::GetGameVersion() {
-    return LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
+    return LUS::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
 void GameEngine::RunCommands(Gfx* Commands) {
@@ -357,7 +355,7 @@ extern "C" void GameEngine_UnloadSequence(uint8_t seqId) {
 }
 
 extern "C" uint32_t GameEngine_GetGameVersion() {
-    return LUS::Context::GetInstance()->GetResourceManager()->GetArchive()->GetGameVersions()[0];
+    return LUS::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
 extern "C" uint8_t* GameEngine_LoadActName(uint32_t actId){
@@ -384,5 +382,5 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
 }
 
 extern "C" int GameEngine_OTRSigCheck(const char* data) {
-    return LUS::ResourceManager::OtrSignatureCheck(data);
+    return LUS::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
 }

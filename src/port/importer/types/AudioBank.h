@@ -42,7 +42,7 @@ struct CtlEntry {
 }; // size = 0xC
 
 
-namespace CubeOS {
+namespace SM64 {
 
 
 class AudioBank : public LUS::Resource<CtlEntry> {

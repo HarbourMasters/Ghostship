@@ -4,30 +4,13 @@
 #include "port/Engine.h"
 #include "port/importer/types/AudioBank.h"
 
-std::shared_ptr<LUS::IResource> CubeOS::AudioSequenceFactory::ReadResource(std::shared_ptr<LUS::ResourceInitData> initData, std::shared_ptr<LUS::BinaryReader> reader) {
-    auto resource = std::make_shared<AudioSequence>(initData);
-    std::shared_ptr<LUS::ResourceVersionFactory> factory = nullptr;
-
-    switch (resource->GetInitData()->ResourceVersion) {
-        case 0:
-            factory = std::make_shared<AudioSequenceFactoryV0>();
-            break;
-    }
-
-    if (factory == nullptr) {
-        SPDLOG_ERROR("Failed to load AudioBank with version {}", resource->GetInitData()->ResourceVersion);
+std::shared_ptr<LUS::IResource> SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<LUS::File> file) {
+    if (!FileHasValidFormatAndReader(file)) {
         return nullptr;
     }
 
-    factory->ParseFileBinary(reader, resource);
-
-    return resource;
-}
-
-void CubeOS::AudioSequenceFactoryV0::ParseFileBinary(std::shared_ptr<LUS::BinaryReader> reader, std::shared_ptr<LUS::IResource> resource) {
-    std::shared_ptr<AudioSequence> bank = std::static_pointer_cast<AudioSequence>(resource);
-
-    ResourceVersionFactory::ParseFileBinary(reader, bank);
+    std::shared_ptr<AudioSequence> bank = std::make_shared<AudioSequence>(file->InitData);
+    auto reader = std::get<std::shared_ptr<LUS::BinaryReader>>(file->Reader);
 
     uint8_t id = reader->ReadUInt32();
     size_t bankCount = reader->ReadUInt32();
@@ -45,4 +28,6 @@ void CubeOS::AudioSequenceFactoryV0::ParseFileBinary(std::shared_ptr<LUS::Binary
     bank->mData.banks = bank->banks.data();
     bank->mData.data = bank->sampleData.data();
     bank->mData.id = id;
+
+    return bank;
 }
