@@ -745,3 +745,8 @@ cotmc_seg7_dl_0700A160:
   offset: 0xA160
   symbol: cotmc_seg7_dl_0700A160
 
+cotmc_seg7_collision_level:
+  type: SM64:COLLISION
+  offset: 0xA508
+  symbol: cotmc_seg7_collision_level
+
