@@ -2666,3 +2666,18 @@ ccm_seg7_dl_07010B50:
   offset: 0x10B50
   symbol: ccm_seg7_dl_07010B50
 
+ccm_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0x138E8
+  symbol: ccm_seg7_area_1_collision
+
+ccm_seg7_collision_070163F8:
+  type: SM64:COLLISION
+  offset: 0x163F8
+  symbol: ccm_seg7_collision_070163F8
+
+ccm_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0x20880
+  symbol: ccm_seg7_area_2_collision
+
