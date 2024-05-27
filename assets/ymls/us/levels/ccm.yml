@@ -1751,6 +1751,16 @@ ccm_seg7_dl_07013870:
   offset: 0x13870
   symbol: ccm_seg7_dl_07013870
 
+ccm_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0x138E8
+  symbol: ccm_seg7_area_1_collision
+
+ccm_seg7_collision_070163F8:
+  type: SM64:COLLISION
+  offset: 0x163F8
+  symbol: ccm_seg7_collision_070163F8
+
 ccm_seg7_lights_07016718:
   type: LIGHTS
   size: 24
@@ -2677,16 +2687,6 @@ ccm_seg7_dl_070207F0:
   type: GFX
   offset: 0x207F0
   symbol: ccm_seg7_dl_070207F0
-
-ccm_seg7_area_1_collision:
-  type: SM64:COLLISION
-  offset: 0x138E8
-  symbol: ccm_seg7_area_1_collision
-
-ccm_seg7_collision_070163F8:
-  type: SM64:COLLISION
-  offset: 0x163F8
-  symbol: ccm_seg7_collision_070163F8
 
 ccm_seg7_area_2_collision:
   type: SM64:COLLISION
