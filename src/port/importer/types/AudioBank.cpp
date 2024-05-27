@@ -1,6 +1,6 @@
 #include "AudioBank.h"
 
-namespace CubeOS {
+namespace SM64 {
 CtlEntry* AudioBank::GetPointer() {
     return &mData;
 }

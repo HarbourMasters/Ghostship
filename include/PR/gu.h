@@ -6,6 +6,7 @@
 #define GU_PI 3.1415926
 /* Functions */
 
+#ifndef __cplusplus
 void guPerspectiveF(float mf[4][4], u16 *perspNorm, float fovy, float aspect,
                     float near, float far, float scale);
 void guPerspective(Mtx *m, u16 *perspNorm, float fovy, float aspect, float near,
@@ -25,4 +26,5 @@ void guNormalize(float *, float *, float *);
 void guLookAtReflect (Mtx *m, LookAt *l, float xEye, float yEye, float zEye,
                     float xAt,  float yAt,  float zAt,
                     float xUp,  float yUp,  float zUp);
+#endif
 #endif

@@ -1,6 +1,6 @@
 #include "AudioSequence.h"
 
-namespace CubeOS {
+namespace SM64 {
 AudioSequenceData* AudioSequence::GetPointer() {
     return &mData;
 }

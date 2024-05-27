@@ -1169,3 +1169,23 @@ ddd_seg7_dl_0700D2A0:
   offset: 0xD2A0
   symbol: ddd_seg7_dl_0700D2A0
 
+ddd_seg7_area_1_collision:
+  type: SM64:COLLISION
+  offset: 0xD310
+  symbol: ddd_seg7_area_1_collision
+
+ddd_seg7_area_2_collision:
+  type: SM64:COLLISION
+  offset: 0xDE70
+  symbol: ddd_seg7_area_2_collision
+
+ddd_seg7_collision_submarine:
+  type: SM64:COLLISION
+  offset: 0xF17C
+  symbol: ddd_seg7_collision_submarine
+
+ddd_seg7_collision_bowser_sub_door:
+  type: SM64:COLLISION
+  offset: 0xFC48
+  symbol: ddd_seg7_collision_bowser_sub_door
+

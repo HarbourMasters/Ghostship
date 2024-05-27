@@ -177,15 +177,15 @@ void process_cmd_node_perspective() {
 
     const auto param = GeoLayoutParser::mReader->ReadUByte();
     const auto fov = GeoLayoutParser::mReader->ReadInt16();
-    const auto near = GeoLayoutParser::mReader->ReadInt16();
-    const auto far = GeoLayoutParser::mReader->ReadInt16();
+    const auto _near = GeoLayoutParser::mReader->ReadInt16();
+    const auto _far = GeoLayoutParser::mReader->ReadInt16();
 
     if (param != 0) {
         const auto func = GeoLayoutParser::mReader->ReadUInt32();
         frustumFunc = GetFunctionByAddr(func);
     }
 
-    GraphNodePerspective* graphNode = init_graph_node_perspective(gGraphNodePool, nullptr, fov, near, far, frustumFunc, 0);
+    GraphNodePerspective* graphNode = init_graph_node_perspective(gGraphNodePool, nullptr, fov, _near, _far, frustumFunc, 0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 }

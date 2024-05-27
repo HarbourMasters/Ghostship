@@ -115,8 +115,7 @@ void DrawSettingsMenu(){
             }
 
             static std::unordered_map<LUS::AudioBackend, const char*> audioBackendNames = {
-                    { LUS::AudioBackend::WASAPI, "Windows Audio Session API" },
-                    { LUS::AudioBackend::PULSE, "PulseAudio" },
+                    { LUS::AudioBackend::WASAPI, "Windows Audio Session API" },                    
                     { LUS::AudioBackend::SDL, "SDL" },
             };
 
@@ -366,8 +365,8 @@ void DrawSettingsMenu(){
 void DrawMenuBarIcon() {
     static bool gameIconLoaded = false;
     if (!gameIconLoaded) {
-        LUS::Context::GetInstance()->GetWindow()->GetGui()->LoadTexture("Game_Icon", "textures/icons/gIcon.png");
-        gameIconLoaded = true;
+        // LUS::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Game_Icon", "textures/icons/gIcon.png", ImVec4(1.0f, 1.0f, 1.0f, 1.0f));
+        // gameIconLoaded = true;
     }
 
     if (LUS::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon")) {
