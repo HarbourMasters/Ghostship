@@ -13,6 +13,7 @@ castle_light:
   offset: 0x0
   format: IA16
   symbol: texture_castle_light
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@ castle_light:
   offset: 0x800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07000800
+
 2:
   type: TEXTURE
   size: 4096
@@ -29,6 +31,7 @@ castle_light:
   offset: 0x1000
   format: IA16
   symbol: inside_castle_seg7_texture_07001000
+
 3:
   type: TEXTURE
   size: 4096
@@ -37,6 +40,7 @@ castle_light:
   offset: 0x2000
   format: RGBA16
   symbol: inside_castle_seg7_texture_07002000
+
 4:
   type: TEXTURE
   size: 2048
@@ -45,6 +49,7 @@ castle_light:
   offset: 0x3000
   format: RGBA16
   symbol: inside_castle_seg7_texture_07003000
+
 5:
   type: TEXTURE
   size: 4096
@@ -53,6 +58,7 @@ castle_light:
   offset: 0x3800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07003800
+
 6:
   type: TEXTURE
   size: 4096
@@ -61,6 +67,7 @@ castle_light:
   offset: 0x4800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07004800
+
 7:
   type: TEXTURE
   size: 2048
@@ -69,6 +76,7 @@ castle_light:
   offset: 0x5800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07005800
+
 8:
   type: TEXTURE
   size: 2048
@@ -77,6 +85,7 @@ castle_light:
   offset: 0x6000
   format: RGBA16
   symbol: inside_castle_seg7_texture_07006000
+
 9:
   type: TEXTURE
   size: 2048
@@ -85,6 +94,7 @@ castle_light:
   offset: 0x6800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07006800
+
 10:
   type: TEXTURE
   size: 2048
@@ -93,6 +103,7 @@ castle_light:
   offset: 0x7000
   format: RGBA16
   symbol: inside_castle_seg7_texture_07007000
+
 11:
   type: TEXTURE
   size: 2048
@@ -101,6 +112,7 @@ castle_light:
   offset: 0x7800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07007800
+
 12:
   type: TEXTURE
   size: 2048
@@ -109,6 +121,7 @@ castle_light:
   offset: 0x8000
   format: RGBA16
   symbol: inside_castle_seg7_texture_07008000
+
 13:
   type: TEXTURE
   size: 2048
@@ -117,6 +130,7 @@ castle_light:
   offset: 0x8800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07008800
+
 14:
   type: TEXTURE
   size: 2048
@@ -125,6 +139,7 @@ castle_light:
   offset: 0x9000
   format: RGBA16
   symbol: inside_castle_seg7_texture_07009000
+
 15:
   type: TEXTURE
   size: 2048
@@ -133,6 +148,7 @@ castle_light:
   offset: 0x9800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07009800
+
 16:
   type: TEXTURE
   size: 2048
@@ -141,6 +157,7 @@ castle_light:
   offset: 0xA000
   format: IA16
   symbol: inside_castle_seg7_texture_0700A000
+
 17:
   type: TEXTURE
   size: 4096
@@ -149,6 +166,7 @@ castle_light:
   offset: 0xA800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0700A800
+
 18:
   type: TEXTURE
   size: 4096
@@ -157,6 +175,7 @@ castle_light:
   offset: 0xB800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0700B800
+
 19:
   type: TEXTURE
   size: 4096
@@ -174,6 +193,7 @@ castle_light:
   offset: 0xD800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0700D800
+
 21:
   type: TEXTURE
   size: 4096
@@ -182,6 +202,7 @@ castle_light:
   offset: 0xE800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0700E800
+
 22:
   type: TEXTURE
   size: 4096
@@ -190,6 +211,7 @@ castle_light:
   offset: 0xF800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0700F800
+
 23:
   type: TEXTURE
   size: 4096
@@ -198,6 +220,7 @@ castle_light:
   offset: 0x10800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07010800
+
 24:
   type: TEXTURE
   size: 4096
@@ -206,6 +229,7 @@ castle_light:
   offset: 0x11800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07011800
+
 25:
   type: TEXTURE
   size: 4096
@@ -214,6 +238,7 @@ castle_light:
   offset: 0x12800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07012800
+
 26:
   type: TEXTURE
   size: 4096
@@ -222,6 +247,7 @@ castle_light:
   offset: 0x13800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07013800
+
 27:
   type: TEXTURE
   size: 4096
@@ -230,6 +256,7 @@ castle_light:
   offset: 0x14800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07014800
+
 28:
   type: TEXTURE
   size: 4096
@@ -238,6 +265,7 @@ castle_light:
   offset: 0x15800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07015800
+
 29:
   type: TEXTURE
   size: 2048
@@ -246,6 +274,7 @@ castle_light:
   offset: 0x16800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07016800
+
 30:
   type: TEXTURE
   size: 2048
@@ -254,6 +283,7 @@ castle_light:
   offset: 0x17000
   format: RGBA16
   symbol: inside_castle_seg7_texture_07017000
+
 31:
   type: TEXTURE
   size: 4096
@@ -262,6 +292,7 @@ castle_light:
   offset: 0x17800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07017800
+
 32:
   type: TEXTURE
   size: 4096
@@ -270,6 +301,7 @@ castle_light:
   offset: 0x18800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07018800
+
 33:
   type: TEXTURE
   size: 4096
@@ -278,6 +310,7 @@ castle_light:
   offset: 0x19800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07019800
+
 34:
   type: TEXTURE
   size: 4096
@@ -286,6 +319,7 @@ castle_light:
   offset: 0x1A800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0701A800
+
 35:
   type: TEXTURE
   size: 4096
@@ -294,6 +328,7 @@ castle_light:
   offset: 0x1B800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0701B800
+
 36:
   type: TEXTURE
   size: 4096
@@ -302,6 +337,7 @@ castle_light:
   offset: 0x1C800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0701C800
+
 37:
   type: TEXTURE
   size: 4096
@@ -310,6 +346,7 @@ castle_light:
   offset: 0x1D800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0701D800
+
 38:
   type: TEXTURE
   size: 4096
@@ -318,6 +355,7 @@ castle_light:
   offset: 0x1E800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0701E800
+
 39:
   type: TEXTURE
   size: 4096
@@ -326,6 +364,7 @@ castle_light:
   offset: 0x1F800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0701F800
+
 40:
   type: TEXTURE
   size: 4096
@@ -334,7 +373,6 @@ castle_light:
   offset: 0x20800
   format: RGBA16
   symbol: inside_castle_seg7_texture_07020800
-
 
 inside_castle_seg7_vertex_07023CB0:
   type: VTX
@@ -346,7 +384,6 @@ inside_castle_seg7_dl_07023DB0:
   type: GFX
   offset: 0x23DB0
   symbol: inside_castle_seg7_dl_07023DB0
-
 
 inside_castle_seg7_lights_07023FE0:
   type: LIGHTS
@@ -810,7 +847,6 @@ inside_castle_seg7_dl_07028FD0:
   offset: 0x28FD0
   symbol: inside_castle_seg7_dl_07028FD0
 
-
 inside_castle_seg7_vertex_07029078:
   type: VTX
   count: 15
@@ -844,7 +880,6 @@ inside_castle_seg7_dl_07029578:
   type: GFX
   offset: 0x29578
   symbol: inside_castle_seg7_dl_07029578
-
 
 inside_castle_seg7_lights_070295E8:
   type: LIGHTS
@@ -1010,7 +1045,6 @@ inside_castle_seg7_dl_0702A650:
   offset: 0x2A650
   symbol: inside_castle_seg7_dl_0702A650
 
-
 dl_castle_lobby_wing_cap_light_vertex_group:
   type: VTX
   count: 16
@@ -1026,7 +1060,6 @@ dl_castle_lobby_wing_cap_light:
   type: GFX
   offset: 0x2A880
   symbol: dl_castle_lobby_wing_cap_light
-
 
 inside_castle_seg7_lights_0702A8F0:
   type: LIGHTS
@@ -1050,7 +1083,6 @@ inside_castle_seg7_dl_0702AA10:
   offset: 0x2AA10
   symbol: inside_castle_seg7_dl_0702AA10
 
-
 inside_castle_seg7_lights_0702AA80:
   type: LIGHTS
   size: 24
@@ -1072,7 +1104,6 @@ inside_castle_seg7_dl_0702AB20:
   type: GFX
   offset: 0x2AB20
   symbol: inside_castle_seg7_dl_0702AB20
-
 
 inside_castle_seg7_lights_0702AB90:
   type: LIGHTS
@@ -1399,7 +1430,6 @@ inside_castle_seg7_dl_0702E408:
   offset: 0x2E408
   symbol: inside_castle_seg7_dl_0702E408
 
-
 inside_castle_seg7_lights_0702E490:
   type: LIGHTS
   size: 24
@@ -1592,7 +1622,6 @@ inside_castle_seg7_dl_0702FD30:
   offset: 0x2FD30
   symbol: inside_castle_seg7_dl_0702FD30
 
-
 inside_castle_seg7_lights_0702FDD8:
   type: LIGHTS
   size: 24
@@ -1745,7 +1774,6 @@ inside_castle_seg7_dl_07031588:
   offset: 0x31588
   symbol: inside_castle_seg7_dl_07031588
 
-
 inside_castle_seg7_vertex_07031608:
   type: VTX
   count: 12
@@ -1761,7 +1789,6 @@ inside_castle_seg7_dl_07031720:
   type: GFX
   offset: 0x31720
   symbol: inside_castle_seg7_dl_07031720
-
 
 inside_castle_seg7_lights_07031790:
   type: LIGHTS
@@ -1784,7 +1811,6 @@ inside_castle_seg7_dl_07031830:
   type: GFX
   offset: 0x31830
   symbol: inside_castle_seg7_dl_07031830
-
 
 inside_castle_seg7_lights_070318A0:
   type: LIGHTS
@@ -1948,7 +1974,6 @@ inside_castle_seg7_dl_07032FC0:
   offset: 0x32FC0
   symbol: inside_castle_seg7_dl_07032FC0
 
-
 inside_castle_seg7_lights_07033068:
   type: LIGHTS
   size: 24
@@ -1970,7 +1995,6 @@ inside_castle_seg7_dl_07033158:
   type: GFX
   offset: 0x33158
   symbol: inside_castle_seg7_dl_07033158
-
 
 inside_castle_seg7_lights_070331C8:
   type: LIGHTS
@@ -2163,7 +2187,6 @@ inside_castle_seg7_dl_07034D88:
   offset: 0x34D88
   symbol: inside_castle_seg7_dl_07034D88
 
-
 inside_castle_seg7_vertex_07034E50:
   type: VTX
   count: 15
@@ -2192,7 +2215,6 @@ inside_castle_seg7_dl_07035178:
   offset: 0x35178
   symbol: inside_castle_seg7_dl_07035178
 
-
 inside_castle_seg7_lights_070351E8:
   type: LIGHTS
   size: 24
@@ -2214,7 +2236,6 @@ inside_castle_seg7_dl_07035288:
   type: GFX
   offset: 0x35288
   symbol: inside_castle_seg7_dl_07035288
-
 
 inside_castle_seg7_lights_070352F8:
   type: LIGHTS
@@ -2413,7 +2434,6 @@ inside_castle_seg7_dl_07036D88:
   offset: 0x36D88
   symbol: inside_castle_seg7_dl_07036D88
 
-
 inside_castle_seg7_lights_07036E68:
   type: LIGHTS
   size: 24
@@ -2484,7 +2504,6 @@ inside_castle_seg7_dl_07037988:
   offset: 0x37988
   symbol: inside_castle_seg7_dl_07037988
 
-
 inside_castle_seg7_lights_070379F8:
   type: LIGHTS
   size: 24
@@ -2507,7 +2526,6 @@ inside_castle_seg7_dl_07037BF8:
   offset: 0x37BF8
   symbol: inside_castle_seg7_dl_07037BF8
 
-
 inside_castle_seg7_lights_07037C58:
   type: LIGHTS
   size: 24
@@ -2529,7 +2547,6 @@ inside_castle_seg7_dl_07037DE8:
   type: GFX
   offset: 0x37DE8
   symbol: inside_castle_seg7_dl_07037DE8
-
 
 dl_castle_aquarium_light_vertex_group_1:
   type: VTX
@@ -2559,7 +2576,6 @@ dl_castle_aquarium_light:
   offset: 0x38240
   symbol: dl_castle_aquarium_light
 
-
 inside_castle_seg7_lights_070382B0:
   type: LIGHTS
   size: 24
@@ -2581,7 +2597,6 @@ inside_castle_seg7_dl_07038350:
   type: GFX
   offset: 0x38350
   symbol: inside_castle_seg7_dl_07038350
-
 
 inside_castle_seg7_lights_070383C0:
   type: LIGHTS
@@ -2806,7 +2821,6 @@ inside_castle_seg7_dl_0703A6C8:
   offset: 0x3A6C8
   symbol: inside_castle_seg7_dl_0703A6C8
 
-
 inside_castle_seg7_lights_0703A768:
   type: LIGHTS
   size: 24
@@ -2828,7 +2842,6 @@ inside_castle_seg7_dl_0703A808:
   type: GFX
   offset: 0x3A808
   symbol: inside_castle_seg7_dl_0703A808
-
 
 inside_castle_seg7_lights_0703A878:
   type: LIGHTS
@@ -2962,7 +2975,6 @@ inside_castle_seg7_dl_0703BA08:
   offset: 0x3BA08
   symbol: inside_castle_seg7_dl_0703BA08
 
-
 inside_castle_seg7_lights_0703BAB0:
   type: LIGHTS
   size: 24
@@ -2990,7 +3002,6 @@ inside_castle_seg7_dl_0703BCB8:
   type: GFX
   offset: 0x3BCB8
   symbol: inside_castle_seg7_dl_0703BCB8
-
 
 inside_castle_seg7_lights_0703BD28:
   type: LIGHTS
@@ -3035,7 +3046,6 @@ inside_castle_seg7_dl_0703BFA8:
   type: GFX
   offset: 0x3BFA8
   symbol: inside_castle_seg7_dl_0703BFA8
-
 
 inside_castle_seg7_lights_0703C040:
   type: LIGHTS
@@ -3276,7 +3286,6 @@ inside_castle_seg7_dl_0703E6F0:
   type: GFX
   offset: 0x3E6F0
   symbol: inside_castle_seg7_dl_0703E6F0
-
 
 inside_castle_seg7_lights_0703E798:
   type: LIGHTS
@@ -3684,7 +3693,6 @@ inside_castle_seg7_dl_07043028:
   offset: 0x43028
   symbol: inside_castle_seg7_dl_07043028
 
-
 inside_castle_seg7_lights_070430F8:
   type: LIGHTS
   size: 24
@@ -3841,7 +3849,6 @@ inside_castle_seg7_dl_07043B48:
   offset: 0x43B48
   symbol: inside_castle_seg7_dl_07043B48
 
-
 inside_castle_seg7_lights_07043C38:
   type: LIGHTS
   size: 24
@@ -3863,7 +3870,6 @@ inside_castle_seg7_dl_07043CD8:
   type: GFX
   offset: 0x43CD8
   symbol: inside_castle_seg7_dl_07043CD8
-
 
 inside_castle_seg7_vertex_07043D48:
   type: VTX
@@ -4409,7 +4415,6 @@ inside_castle_seg7_dl_0704A0E8:
   offset: 0x4A0E8
   symbol: inside_castle_seg7_dl_0704A0E8
 
-
 inside_castle_seg7_lights_0704A1B8:
   type: LIGHTS
   size: 24
@@ -4431,7 +4436,6 @@ inside_castle_seg7_dl_0704A2E0:
   type: GFX
   offset: 0x4A2E0
   symbol: inside_castle_seg7_dl_0704A2E0
-
 
 inside_castle_seg7_vertex_0704A368:
   type: VTX
@@ -4547,7 +4551,6 @@ inside_castle_seg7_dl_0704AA98:
   type: GFX
   offset: 0x4AA98
   symbol: inside_castle_seg7_dl_0704AA98
-
 
 inside_castle_seg7_lights_0704AB80:
   type: LIGHTS
@@ -4767,7 +4770,6 @@ inside_castle_seg7_dl_0704C7D8:
   type: GFX
   offset: 0x4C7D8
   symbol: inside_castle_seg7_dl_0704C7D8
-
 
 inside_castle_seg7_lights_0704C8B0:
   type: LIGHTS
@@ -5248,7 +5250,6 @@ inside_castle_seg7_dl_07050938:
   offset: 0x50938
   symbol: inside_castle_seg7_dl_07050938
 
-
 inside_castle_seg7_lights_07050A78:
   type: LIGHTS
   size: 24
@@ -5318,7 +5319,6 @@ inside_castle_seg7_dl_070512F8:
   offset: 0x512F8
   symbol: inside_castle_seg7_dl_070512F8
 
-
 inside_castle_seg7_vertex_07051370:
   type: VTX
   count: 15
@@ -5347,7 +5347,6 @@ inside_castle_seg7_dl_07051678:
   offset: 0x51678
   symbol: inside_castle_seg7_dl_07051678
 
-
 inside_castle_seg7_vertex_070516E8:
   type: VTX
   count: 16
@@ -5370,7 +5369,6 @@ inside_castle_seg7_dl_070519C8:
   offset: 0x519C8
   symbol: inside_castle_seg7_dl_070519C8
 
-
 inside_castle_seg7_lights_07051A38:
   type: LIGHTS
   size: 24
@@ -5392,7 +5390,6 @@ inside_castle_seg7_dl_07051B60:
   type: GFX
   offset: 0x51B60
   symbol: inside_castle_seg7_dl_07051B60
-
 
 inside_castle_seg7_lights_07051B88:
   type: LIGHTS
@@ -5760,7 +5757,6 @@ inside_castle_seg7_dl_070558D0:
   offset: 0x558D0
   symbol: inside_castle_seg7_dl_070558D0
 
-
 inside_castle_seg7_lights_070559C0:
   type: LIGHTS
   size: 24
@@ -5986,7 +5982,6 @@ inside_castle_seg7_dl_070572A0:
   offset: 0x572A0
   symbol: inside_castle_seg7_dl_070572A0
 
-
 inside_castle_seg7_lights_07057380:
   type: LIGHTS
   size: 24
@@ -6116,7 +6111,6 @@ inside_castle_seg7_dl_07057F00:
   offset: 0x57F00
   symbol: inside_castle_seg7_dl_07057F00
 
-
 inside_castle_seg7_lights_07057FD8:
   type: LIGHTS
   size: 24
@@ -6187,7 +6181,6 @@ inside_castle_seg7_dl_07058950:
   offset: 0x58950
   symbol: inside_castle_seg7_dl_07058950
 
-
 inside_castle_seg7_lights_070589C0:
   type: LIGHTS
   size: 24
@@ -6251,7 +6244,6 @@ inside_castle_seg7_dl_07059190:
   type: GFX
   offset: 0x59190
   symbol: inside_castle_seg7_dl_07059190
-
 
 inside_castle_seg7_lights_07059200:
   type: LIGHTS
@@ -6762,7 +6754,6 @@ inside_castle_seg7_dl_0705E088:
   offset: 0x5E088
   symbol: inside_castle_seg7_dl_0705E088
 
-
 inside_castle_seg7_vertex_0705E138:
   type: VTX
   count: 16
@@ -6778,7 +6769,6 @@ inside_castle_seg7_dl_0705E2A0:
   type: GFX
   offset: 0x5E2A0
   symbol: inside_castle_seg7_dl_0705E2A0
-
 
 inside_castle_seg7_lights_0705E310:
   type: LIGHTS
@@ -6801,7 +6791,6 @@ inside_castle_seg7_dl_0705E450:
   type: GFX
   offset: 0x5E450
   symbol: inside_castle_seg7_dl_0705E450
-
 
 inside_castle_seg7_lights_0705E4C0:
   type: LIGHTS
@@ -7121,7 +7110,6 @@ inside_castle_seg7_dl_070616E8:
   offset: 0x616E8
   symbol: inside_castle_seg7_dl_070616E8
 
-
 inside_castle_seg7_vertex_07061790:
   type: VTX
   count: 15
@@ -7155,7 +7143,6 @@ inside_castle_seg7_dl_07061C20:
   type: GFX
   offset: 0x61C20
   symbol: inside_castle_seg7_dl_07061C20
-
 
 inside_castle_seg7_lights_07061C90:
   type: LIGHTS
@@ -7456,7 +7443,6 @@ inside_castle_seg7_dl_07064B78:
   offset: 0x64B78
   symbol: inside_castle_seg7_dl_07064B78
 
-
 inside_castle_seg7_vertex_07064C40:
   type: VTX
   count: 12
@@ -7472,7 +7458,6 @@ inside_castle_seg7_dl_07064D58:
   type: GFX
   offset: 0x64D58
   symbol: inside_castle_seg7_dl_07064D58
-
 
 inside_castle_seg7_lights_07064DC8:
   type: LIGHTS
@@ -7666,7 +7651,6 @@ inside_castle_seg7_dl_07066CE0:
   offset: 0x66CE0
   symbol: inside_castle_seg7_dl_07066CE0
 
-
 inside_castle_seg7_vertex_07066D88:
   type: VTX
   count: 12
@@ -7682,7 +7666,6 @@ inside_castle_seg7_dl_07066E90:
   type: GFX
   offset: 0x66E90
   symbol: inside_castle_seg7_dl_07066E90
-
 
 inside_castle_seg7_lights_07066F00:
   type: LIGHTS
@@ -7705,7 +7688,6 @@ inside_castle_seg7_dl_07066FA0:
   type: GFX
   offset: 0x66FA0
   symbol: inside_castle_seg7_dl_07066FA0
-
 
 inside_castle_seg7_lights_07067010:
   type: LIGHTS
@@ -7897,7 +7879,6 @@ inside_castle_seg7_dl_07068850:
   offset: 0x68850
   symbol: inside_castle_seg7_dl_07068850
 
-
 inside_castle_seg7_lights_07068908:
   type: LIGHTS
   size: 24
@@ -7932,42 +7913,42 @@ inside_castle_seg7_dl_07068B10:
   symbol: inside_castle_seg7_dl_07068B10
 
 inside_castle_seg7_area_1_collision:
-    type: SM64:COLLISION
-    offset: 0x68B88
-    symbol: inside_castle_seg7_area_1_collision
+  type: SM64:COLLISION
+  offset: 0x68B88
+  symbol: inside_castle_seg7_area_1_collision
 
 inside_castle_seg7_area_2_collision:
-    type: SM64:COLLISION
-    offset: 0x6E364
-    symbol: inside_castle_seg7_area_2_collision
+  type: SM64:COLLISION
+  offset: 0x6E364
+  symbol: inside_castle_seg7_area_2_collision
 
 inside_castle_seg7_area_3_collision:
-    type: SM64:COLLISION
-    offset: 0x73AAC
-    symbol: inside_castle_seg7_area_3_collision
+  type: SM64:COLLISION
+  offset: 0x73AAC
+  symbol: inside_castle_seg7_area_3_collision
 
 inside_castle_seg7_collision_ddd_warp:
-    type: SM64:COLLISION
-    offset: 0x775B4
-    symbol: inside_castle_seg7_collision_ddd_warp
+  type: SM64:COLLISION
+  offset: 0x775B4
+  symbol: inside_castle_seg7_collision_ddd_warp
 
 inside_castle_seg7_collision_ddd_warp_2:
-    type: SM64:COLLISION
-    offset: 0x7768C
-    symbol: inside_castle_seg7_collision_ddd_warp_2
+  type: SM64:COLLISION
+  offset: 0x7768C
+  symbol: inside_castle_seg7_collision_ddd_warp_2
 
 inside_castle_seg7_collision_floor_trap:
-    type: SM64:COLLISION
-    offset: 0x78DE4
-    symbol: inside_castle_seg7_collision_floor_trap
+  type: SM64:COLLISION
+  offset: 0x78DE4
+  symbol: inside_castle_seg7_collision_floor_trap
 
 inside_castle_seg7_collision_star_door:
-    type: SM64:COLLISION
-    offset: 0x78E14
-    symbol: inside_castle_seg7_collision_star_door
+  type: SM64:COLLISION
+  offset: 0x78E14
+  symbol: inside_castle_seg7_collision_star_door
 
 inside_castle_seg7_collision_water_level_pillar:
-    type: SM64:COLLISION
-    offset: 0x78E80
-    symbol: inside_castle_seg7_collision_water_level_pillar
+  type: SM64:COLLISION
+  offset: 0x78E80
+  symbol: inside_castle_seg7_collision_water_level_pillar
 

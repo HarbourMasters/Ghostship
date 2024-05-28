@@ -13,6 +13,7 @@ lakitu_cameraman_cloud_face_unused:
   offset: 0x0
   format: RGBA16
   symbol: lakitu_seg6_texture_06000000
+
 lakitu_cameraman_eyes_open:
   type: TEXTURE
   size: 4096
@@ -21,6 +22,7 @@ lakitu_cameraman_eyes_open:
   offset: 0x800
   format: RGBA16
   symbol: lakitu_seg6_texture_06000800
+
 lakitu_cameraman_eyes_closed:
   type: TEXTURE
   size: 4096
@@ -29,6 +31,7 @@ lakitu_cameraman_eyes_closed:
   offset: 0x1800
   format: RGBA16
   symbol: lakitu_seg6_texture_06001800
+
 lakitu_cameraman_shell:
   type: TEXTURE
   size: 2048
@@ -37,6 +40,7 @@ lakitu_cameraman_shell:
   offset: 0x2800
   format: RGBA16
   symbol: lakitu_seg6_texture_06002800
+
 lakitu_cameraman_frown:
   type: TEXTURE
   size: 2048
@@ -45,6 +49,7 @@ lakitu_cameraman_frown:
   offset: 0x3000
   format: RGBA16
   symbol: lakitu_seg6_texture_06003000
+
 lakitu_camera_lens:
   type: TEXTURE
   size: 512

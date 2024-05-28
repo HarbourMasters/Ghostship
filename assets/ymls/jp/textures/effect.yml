@@ -5,14 +5,6 @@
   segments:
     - [0x0B,  0x36DAD0]
 
-bubble.06048:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x6048
-  format: RGBA16
-  symbol: effect_0B006048
 flower.00008:
   type: TEXTURE
   size: 2048
@@ -21,6 +13,7 @@ flower.00008:
   offset: 0x8
   format: RGBA16
   symbol: effect_0B000008
+
 flower.00808:
   type: TEXTURE
   size: 2048
@@ -29,6 +22,7 @@ flower.00808:
   offset: 0x808
   format: RGBA16
   symbol: effect_0B000808
+
 flower.01008:
   type: TEXTURE
   size: 2048
@@ -37,6 +31,7 @@ flower.01008:
   offset: 0x1008
   format: RGBA16
   symbol: effect_0B001008
+
 flower.01808:
   type: TEXTURE
   size: 2048
@@ -45,6 +40,7 @@ flower.01808:
   offset: 0x1808
   format: RGBA16
   symbol: effect_0B001808
+
 lava_bubble.02020:
   type: TEXTURE
   size: 2048
@@ -53,6 +49,7 @@ lava_bubble.02020:
   offset: 0x2020
   format: RGBA16
   symbol: effect_0B002020
+
 lava_bubble.02820:
   type: TEXTURE
   size: 2048
@@ -61,6 +58,7 @@ lava_bubble.02820:
   offset: 0x2820
   format: RGBA16
   symbol: effect_0B002820
+
 lava_bubble.03020:
   type: TEXTURE
   size: 2048
@@ -69,6 +67,7 @@ lava_bubble.03020:
   offset: 0x3020
   format: RGBA16
   symbol: effect_0B003020
+
 lava_bubble.03820:
   type: TEXTURE
   size: 2048
@@ -77,6 +76,7 @@ lava_bubble.03820:
   offset: 0x3820
   format: RGBA16
   symbol: effect_0B003820
+
 lava_bubble.04020:
   type: TEXTURE
   size: 2048
@@ -85,6 +85,7 @@ lava_bubble.04020:
   offset: 0x4020
   format: RGBA16
   symbol: effect_0B004020
+
 lava_bubble.04820:
   type: TEXTURE
   size: 2048
@@ -93,6 +94,7 @@ lava_bubble.04820:
   offset: 0x4820
   format: RGBA16
   symbol: effect_0B004820
+
 lava_bubble.05020:
   type: TEXTURE
   size: 2048
@@ -101,6 +103,7 @@ lava_bubble.05020:
   offset: 0x5020
   format: RGBA16
   symbol: effect_0B005020
+
 lava_bubble.05820:
   type: TEXTURE
   size: 2048
@@ -109,6 +112,16 @@ lava_bubble.05820:
   offset: 0x5820
   format: RGBA16
   symbol: effect_0B005820
+
+bubble.06048:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6048
+  format: RGBA16
+  symbol: effect_0B006048
+
 tiny_bubble.0684C:
   type: TEXTURE
   size: 512
@@ -117,6 +130,7 @@ tiny_bubble.0684C:
   offset: 0x684C
   format: RGBA16
   symbol: effect_0B00684C
+
 tiny_bubble.06AD8:
   type: TEXTURE
   size: 512

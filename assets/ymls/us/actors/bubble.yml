@@ -5,6 +5,12 @@
   segments:
     - [0x04,  0x114750]
 
+bubble_seg4_vertex_0401CD20:
+  type: VTX
+  count: 4
+  offset: 0x1CD20
+  symbol: bubble_seg4_vertex_0401CD20
+
 bubble:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ bubble:
   offset: 0x1CD60
   format: RGBA16
   symbol: bubble_seg4_texture_0401CD60
+
 mr_i_bubble:
   type: TEXTURE
   size: 2048
@@ -21,12 +28,6 @@ mr_i_bubble:
   offset: 0x1D560
   format: RGBA16
   symbol: bubble_seg4_texture_0401D560
-
-bubble_seg4_vertex_0401CD20:
-  type: VTX
-  count: 4
-  offset: 0x1CD20
-  symbol: bubble_seg4_vertex_0401CD20
 
 bubble_seg4_dl_0401DD60:
   type: GFX

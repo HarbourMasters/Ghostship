@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: wdw_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x800
   format: RGBA16
   symbol: wdw_seg7_texture_07000800
+
 2:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@
   offset: 0x1000
   format: RGBA16
   symbol: wdw_seg7_texture_07001000
+
 3:
   type: TEXTURE
   size: 2048
@@ -37,6 +40,7 @@
   offset: 0x1800
   format: RGBA16
   symbol: wdw_seg7_texture_07001800
+
 4:
   type: TEXTURE
   size: 2048
@@ -45,6 +49,7 @@
   offset: 0x2000
   format: RGBA16
   symbol: wdw_seg7_texture_07002000
+
 wdw_seg7_lights_07002800:
   type: LIGHTS
   size: 24
@@ -721,40 +726,6 @@ wdw_seg7_dl_07009AB0:
   type: GFX
   offset: 0x9AB0
   symbol: wdw_seg7_dl_07009AB0
-
-wdw_seg7_vertex_070122C8:
-  type: VTX
-  count: 14
-  offset: 0x122C8
-  symbol: wdw_seg7_vertex_070122C8
-
-wdw_seg7_vertex_070123A8:
-  type: VTX
-  count: 16
-  offset: 0x123A8
-  symbol: wdw_seg7_vertex_070123A8
-
-wdw_seg7_vertex_070124A8:
-  type: VTX
-  count: 15
-  offset: 0x124A8
-  symbol: wdw_seg7_vertex_070124A8
-
-wdw_seg7_vertex_07012598:
-  type: VTX
-  count: 12
-  offset: 0x12598
-  symbol: wdw_seg7_vertex_07012598
-
-wdw_seg7_dl_07012658:
-  type: GFX
-  offset: 0x12658
-  symbol: wdw_seg7_dl_07012658
-
-wdw_seg7_dl_07012798:
-  type: GFX
-  offset: 0x12798
-  symbol: wdw_seg7_dl_07012798
 
 wdw_seg7_lights_07009B78:
   type: LIGHTS
@@ -1611,61 +1582,88 @@ wdw_seg7_dl_07012258:
   offset: 0x12258
   symbol: wdw_seg7_dl_07012258
 
-wdw_seg7_lights_07013238:
-  type: LIGHTS
-  size: 24
-  offset: 0x13238
-  symbol: wdw_seg7_lights_07013238
+wdw_seg7_vertex_070122C8:
+  type: VTX
+  count: 14
+  offset: 0x122C8
+  symbol: wdw_seg7_vertex_070122C8
 
-wdw_seg7_vertex_07013250:
+wdw_seg7_vertex_070123A8:
+  type: VTX
+  count: 16
+  offset: 0x123A8
+  symbol: wdw_seg7_vertex_070123A8
+
+wdw_seg7_vertex_070124A8:
   type: VTX
   count: 15
-  offset: 0x13250
-  symbol: wdw_seg7_vertex_07013250
+  offset: 0x124A8
+  symbol: wdw_seg7_vertex_070124A8
 
-wdw_seg7_vertex_07013340:
+wdw_seg7_vertex_07012598:
   type: VTX
-  count: 11
-  offset: 0x13340
-  symbol: wdw_seg7_vertex_07013340
+  count: 12
+  offset: 0x12598
+  symbol: wdw_seg7_vertex_07012598
 
-wdw_seg7_dl_070133F0:
+wdw_seg7_dl_07012658:
   type: GFX
-  offset: 0x133F0
-  symbol: wdw_seg7_dl_070133F0
+  offset: 0x12658
+  symbol: wdw_seg7_dl_07012658
 
-wdw_seg7_dl_07013490:
+wdw_seg7_dl_07012798:
   type: GFX
-  offset: 0x13490
-  symbol: wdw_seg7_dl_07013490
+  offset: 0x12798
+  symbol: wdw_seg7_dl_07012798
 
-wdw_seg7_lights_07013EB8:
+wdw_seg7_vertex_070127C8:
+  type: VTX
+  count: 14
+  offset: 0x127C8
+  symbol: wdw_seg7_vertex_070127C8
+
+wdw_seg7_dl_070128A8:
+  type: GFX
+  offset: 0x128A8
+  symbol: wdw_seg7_dl_070128A8
+
+wdw_seg7_dl_07012908:
+  type: GFX
+  offset: 0x12908
+  symbol: wdw_seg7_dl_07012908
+
+wdw_seg7_lights_07012938:
   type: LIGHTS
   size: 24
-  offset: 0x13EB8
-  symbol: wdw_seg7_lights_07013EB8
+  offset: 0x12938
+  symbol: wdw_seg7_lights_07012938
 
-wdw_seg7_vertex_07013ED0:
+wdw_seg7_vertex_07012950:
   type: VTX
-  count: 15
-  offset: 0x13ED0
-  symbol: wdw_seg7_vertex_07013ED0
+  count: 16
+  offset: 0x12950
+  symbol: wdw_seg7_vertex_07012950
 
-wdw_seg7_vertex_07013FC0:
+wdw_seg7_vertex_07012A50:
   type: VTX
-  count: 9
-  offset: 0x13FC0
-  symbol: wdw_seg7_vertex_07013FC0
+  count: 8
+  offset: 0x12A50
+  symbol: wdw_seg7_vertex_07012A50
 
-wdw_seg7_dl_07014050:
+wdw_seg7_dl_07012AD0:
   type: GFX
-  offset: 0x14050
-  symbol: wdw_seg7_dl_07014050
+  offset: 0x12AD0
+  symbol: wdw_seg7_dl_07012AD0
 
-wdw_seg7_dl_070140E0:
+wdw_seg7_dl_07012B48:
   type: GFX
-  offset: 0x140E0
-  symbol: wdw_seg7_dl_070140E0
+  offset: 0x12B48
+  symbol: wdw_seg7_dl_07012B48
+
+wdw_seg7_dl_07012B90:
+  type: GFX
+  offset: 0x12B90
+  symbol: wdw_seg7_dl_07012B90
 
 wdw_seg7_lights_07012C08:
   type: LIGHTS
@@ -1705,72 +1703,6 @@ wdw_seg7_dl_07012E88:
   type: GFX
   offset: 0x12E88
   symbol: wdw_seg7_dl_07012E88
-
-wdw_seg7_lights_07013BE8:
-  type: LIGHTS
-  size: 24
-  offset: 0x13BE8
-  symbol: wdw_seg7_lights_07013BE8
-
-wdw_seg7_vertex_07013C00:
-  type: VTX
-  count: 16
-  offset: 0x13C00
-  symbol: wdw_seg7_vertex_07013C00
-
-wdw_seg7_vertex_07013D00:
-  type: VTX
-  count: 8
-  offset: 0x13D00
-  symbol: wdw_seg7_vertex_07013D00
-
-wdw_seg7_dl_07013D80:
-  type: GFX
-  offset: 0x13D80
-  symbol: wdw_seg7_dl_07013D80
-
-wdw_seg7_dl_07013DF8:
-  type: GFX
-  offset: 0x13DF8
-  symbol: wdw_seg7_dl_07013DF8
-
-wdw_seg7_dl_07013E40:
-  type: GFX
-  offset: 0x13E40
-  symbol: wdw_seg7_dl_07013E40
-
-wdw_seg7_lights_07012938:
-  type: LIGHTS
-  size: 24
-  offset: 0x12938
-  symbol: wdw_seg7_lights_07012938
-
-wdw_seg7_vertex_07012950:
-  type: VTX
-  count: 16
-  offset: 0x12950
-  symbol: wdw_seg7_vertex_07012950
-
-wdw_seg7_vertex_07012A50:
-  type: VTX
-  count: 8
-  offset: 0x12A50
-  symbol: wdw_seg7_vertex_07012A50
-
-wdw_seg7_dl_07012AD0:
-  type: GFX
-  offset: 0x12AD0
-  symbol: wdw_seg7_dl_07012AD0
-
-wdw_seg7_dl_07012B48:
-  type: GFX
-  offset: 0x12B48
-  symbol: wdw_seg7_dl_07012B48
-
-wdw_seg7_dl_07012B90:
-  type: GFX
-  offset: 0x12B90
-  symbol: wdw_seg7_dl_07012B90
 
 wdw_seg7_lights_07012F18:
   type: LIGHTS
@@ -1830,21 +1762,33 @@ wdw_seg7_dl_070131B8:
   offset: 0x131B8
   symbol: wdw_seg7_dl_070131B8
 
-wdw_seg7_vertex_070127C8:
+wdw_seg7_lights_07013238:
+  type: LIGHTS
+  size: 24
+  offset: 0x13238
+  symbol: wdw_seg7_lights_07013238
+
+wdw_seg7_vertex_07013250:
   type: VTX
-  count: 14
-  offset: 0x127C8
-  symbol: wdw_seg7_vertex_070127C8
+  count: 15
+  offset: 0x13250
+  symbol: wdw_seg7_vertex_07013250
 
-wdw_seg7_dl_070128A8:
-  type: GFX
-  offset: 0x128A8
-  symbol: wdw_seg7_dl_070128A8
+wdw_seg7_vertex_07013340:
+  type: VTX
+  count: 11
+  offset: 0x13340
+  symbol: wdw_seg7_vertex_07013340
 
-wdw_seg7_dl_07012908:
+wdw_seg7_dl_070133F0:
   type: GFX
-  offset: 0x12908
-  symbol: wdw_seg7_dl_07012908
+  offset: 0x133F0
+  symbol: wdw_seg7_dl_070133F0
+
+wdw_seg7_dl_07013490:
+  type: GFX
+  offset: 0x13490
+  symbol: wdw_seg7_dl_07013490
 
 wdw_seg7_lights_07013500:
   type: LIGHTS
@@ -1896,6 +1840,67 @@ wdw_seg7_dl_07013B70:
   type: GFX
   offset: 0x13B70
   symbol: wdw_seg7_dl_07013B70
+
+wdw_seg7_lights_07013BE8:
+  type: LIGHTS
+  size: 24
+  offset: 0x13BE8
+  symbol: wdw_seg7_lights_07013BE8
+
+wdw_seg7_vertex_07013C00:
+  type: VTX
+  count: 16
+  offset: 0x13C00
+  symbol: wdw_seg7_vertex_07013C00
+
+wdw_seg7_vertex_07013D00:
+  type: VTX
+  count: 8
+  offset: 0x13D00
+  symbol: wdw_seg7_vertex_07013D00
+
+wdw_seg7_dl_07013D80:
+  type: GFX
+  offset: 0x13D80
+  symbol: wdw_seg7_dl_07013D80
+
+wdw_seg7_dl_07013DF8:
+  type: GFX
+  offset: 0x13DF8
+  symbol: wdw_seg7_dl_07013DF8
+
+wdw_seg7_dl_07013E40:
+  type: GFX
+  offset: 0x13E40
+  symbol: wdw_seg7_dl_07013E40
+
+wdw_seg7_lights_07013EB8:
+  type: LIGHTS
+  size: 24
+  offset: 0x13EB8
+  symbol: wdw_seg7_lights_07013EB8
+
+wdw_seg7_vertex_07013ED0:
+  type: VTX
+  count: 15
+  offset: 0x13ED0
+  symbol: wdw_seg7_vertex_07013ED0
+
+wdw_seg7_vertex_07013FC0:
+  type: VTX
+  count: 9
+  offset: 0x13FC0
+  symbol: wdw_seg7_vertex_07013FC0
+
+wdw_seg7_dl_07014050:
+  type: GFX
+  offset: 0x14050
+  symbol: wdw_seg7_dl_07014050
+
+wdw_seg7_dl_070140E0:
+  type: GFX
+  offset: 0x140E0
+  symbol: wdw_seg7_dl_070140E0
 
 wdw_seg7_area_1_collision:
   type: SM64:COLLISION

@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: vcutm_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 4096
@@ -21,6 +22,7 @@
   offset: 0x800
   format: RGBA16
   symbol: vcutm_seg7_texture_07000800
+
 2:
   type: TEXTURE
   size: 4096
@@ -29,6 +31,7 @@
   offset: 0x1800
   format: RGBA16
   symbol: vcutm_seg7_texture_07001800
+
 3:
   type: TEXTURE
   size: 2048
@@ -37,46 +40,6 @@
   offset: 0x2800
   format: RGBA16
   symbol: vcutm_seg7_texture_07002800
-
-vcutm_seg7_lights_07009458:
-  type: LIGHTS
-  size: 24
-  offset: 0x9458
-  symbol: vcutm_seg7_lights_07009458
-
-vcutm_seg7_lights_07009470:
-  type: LIGHTS
-  size: 24
-  offset: 0x9470
-  symbol: vcutm_seg7_lights_07009470
-
-vcutm_seg7_vertex_07009488:
-  type: VTX
-  count: 15
-  offset: 0x9488
-  symbol: vcutm_seg7_vertex_07009488
-
-vcutm_seg7_vertex_07009578:
-  type: VTX
-  count: 7
-  offset: 0x9578
-  symbol: vcutm_seg7_vertex_07009578
-
-vcutm_seg7_vertex_070095E8:
-  type: VTX
-  count: 4
-  offset: 0x95E8
-  symbol: vcutm_seg7_vertex_070095E8
-
-vcutm_seg7_dl_07009628:
-  type: GFX
-  offset: 0x9628
-  symbol: vcutm_seg7_dl_07009628
-
-vcutm_seg7_dl_070096E0:
-  type: GFX
-  offset: 0x96E0
-  symbol: vcutm_seg7_dl_070096E0
 
 vcutm_seg7_lights_07003000:
   type: LIGHTS
@@ -531,45 +494,27 @@ vcutm_seg7_dl_07007E88:
   offset: 0x7E88
   symbol: vcutm_seg7_dl_07007E88
 
-vcutm_seg7_vertex_07008E80:
-  type: VTX
-  count: 15
-  offset: 0x8E80
-  symbol: vcutm_seg7_vertex_07008E80
+vcutm_seg7_lights_07007F90:
+  type: LIGHTS
+  size: 24
+  offset: 0x7F90
+  symbol: vcutm_seg7_lights_07007F90
 
-vcutm_seg7_vertex_07008F70:
+vcutm_seg7_vertex_07007FA8:
   type: VTX
-  count: 15
-  offset: 0x8F70
-  symbol: vcutm_seg7_vertex_07008F70
+  count: 12
+  offset: 0x7FA8
+  symbol: vcutm_seg7_vertex_07007FA8
 
-vcutm_seg7_vertex_07009060:
-  type: VTX
-  count: 14
-  offset: 0x9060
-  symbol: vcutm_seg7_vertex_07009060
-
-vcutm_seg7_vertex_07009140:
-  type: VTX
-  count: 15
-  offset: 0x9140
-  symbol: vcutm_seg7_vertex_07009140
-
-vcutm_seg7_vertex_07009230:
-  type: VTX
-  count: 7
-  offset: 0x9230
-  symbol: vcutm_seg7_vertex_07009230
-
-vcutm_seg7_dl_070092A0:
+vcutm_seg7_dl_07008068:
   type: GFX
-  offset: 0x92A0
-  symbol: vcutm_seg7_dl_070092A0
+  offset: 0x8068
+  symbol: vcutm_seg7_dl_07008068
 
-vcutm_seg7_dl_070093E8:
+vcutm_seg7_dl_070080D0:
   type: GFX
-  offset: 0x93E8
-  symbol: vcutm_seg7_dl_070093E8
+  offset: 0x80D0
+  symbol: vcutm_seg7_dl_070080D0
 
 vcutm_seg7_vertex_07008140:
   type: VTX
@@ -647,27 +592,85 @@ vcutm_seg7_dl_07008E10:
   offset: 0x8E10
   symbol: vcutm_seg7_dl_07008E10
 
-vcutm_seg7_lights_07007F90:
+vcutm_seg7_vertex_07008E80:
+  type: VTX
+  count: 15
+  offset: 0x8E80
+  symbol: vcutm_seg7_vertex_07008E80
+
+vcutm_seg7_vertex_07008F70:
+  type: VTX
+  count: 15
+  offset: 0x8F70
+  symbol: vcutm_seg7_vertex_07008F70
+
+vcutm_seg7_vertex_07009060:
+  type: VTX
+  count: 14
+  offset: 0x9060
+  symbol: vcutm_seg7_vertex_07009060
+
+vcutm_seg7_vertex_07009140:
+  type: VTX
+  count: 15
+  offset: 0x9140
+  symbol: vcutm_seg7_vertex_07009140
+
+vcutm_seg7_vertex_07009230:
+  type: VTX
+  count: 7
+  offset: 0x9230
+  symbol: vcutm_seg7_vertex_07009230
+
+vcutm_seg7_dl_070092A0:
+  type: GFX
+  offset: 0x92A0
+  symbol: vcutm_seg7_dl_070092A0
+
+vcutm_seg7_dl_070093E8:
+  type: GFX
+  offset: 0x93E8
+  symbol: vcutm_seg7_dl_070093E8
+
+vcutm_seg7_lights_07009458:
   type: LIGHTS
   size: 24
-  offset: 0x7F90
-  symbol: vcutm_seg7_lights_07007F90
+  offset: 0x9458
+  symbol: vcutm_seg7_lights_07009458
 
-vcutm_seg7_vertex_07007FA8:
+vcutm_seg7_lights_07009470:
+  type: LIGHTS
+  size: 24
+  offset: 0x9470
+  symbol: vcutm_seg7_lights_07009470
+
+vcutm_seg7_vertex_07009488:
   type: VTX
-  count: 12
-  offset: 0x7FA8
-  symbol: vcutm_seg7_vertex_07007FA8
+  count: 15
+  offset: 0x9488
+  symbol: vcutm_seg7_vertex_07009488
 
-vcutm_seg7_dl_07008068:
-  type: GFX
-  offset: 0x8068
-  symbol: vcutm_seg7_dl_07008068
+vcutm_seg7_vertex_07009578:
+  type: VTX
+  count: 7
+  offset: 0x9578
+  symbol: vcutm_seg7_vertex_07009578
 
-vcutm_seg7_dl_070080D0:
+vcutm_seg7_vertex_070095E8:
+  type: VTX
+  count: 4
+  offset: 0x95E8
+  symbol: vcutm_seg7_vertex_070095E8
+
+vcutm_seg7_dl_07009628:
   type: GFX
-  offset: 0x80D0
-  symbol: vcutm_seg7_dl_070080D0
+  offset: 0x9628
+  symbol: vcutm_seg7_dl_07009628
+
+vcutm_seg7_dl_070096E0:
+  type: GFX
+  offset: 0x96E0
+  symbol: vcutm_seg7_dl_070096E0
 
 vcutm_seg7_collision:
   type: SM64:COLLISION

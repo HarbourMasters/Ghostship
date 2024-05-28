@@ -5,6 +5,12 @@
   segments:
     - [0x06,  0x1E6210]
 
+mr_i_eyeball_seg6_vertex_06000000:
+  type: VTX
+  count: 8
+  offset: 0x0
+  symbol: mr_i_eyeball_seg6_vertex_06000000
+
 mr_i_eyeball_left_side:
   type: TEXTURE
   size: 4096
@@ -13,6 +19,7 @@ mr_i_eyeball_left_side:
   offset: 0x80
   format: RGBA16
   symbol: mr_i_eyeball_seg6_texture_06000080
+
 mr_i_eyeball_right_side:
   type: TEXTURE
   size: 4096
@@ -21,12 +28,6 @@ mr_i_eyeball_right_side:
   offset: 0x1080
   format: RGBA16
   symbol: mr_i_eyeball_seg6_texture_06001080
-
-mr_i_eyeball_seg6_vertex_06000000:
-  type: VTX
-  count: 8
-  offset: 0x0
-  symbol: mr_i_eyeball_seg6_vertex_06000000
 
 mr_i_eyeball_seg6_dl_06002080:
   type: GFX

@@ -5,14 +5,12 @@
   segments:
     - [0x06,  0x1C2580]
 
-poundable_pole_side:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1850
-  format: RGBA16
-  symbol: poundable_pole_seg6_texture_06001850
+poundable_pole_seg6_lights_06001038:
+  type: LIGHTS
+  size: 24
+  offset: 0x1038
+  symbol: poundable_pole_seg6_lights_06001038
+
 poundable_pole_top:
   type: TEXTURE
   size: 2048
@@ -22,11 +20,14 @@ poundable_pole_top:
   format: RGBA16
   symbol: poundable_pole_seg6_texture_06001050
 
-poundable_pole_seg6_lights_06001038:
-  type: LIGHTS
-  size: 24
-  offset: 0x1038
-  symbol: poundable_pole_seg6_lights_06001038
+poundable_pole_side:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1850
+  format: RGBA16
+  symbol: poundable_pole_seg6_texture_06001850
 
 poundable_pole_seg6_vertex_06002050:
   type: VTX

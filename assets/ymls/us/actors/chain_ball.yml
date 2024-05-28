@@ -5,15 +5,6 @@
   segments:
     - [0x06,  0x1C4230]
 
-chain_ball:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x20AE8
-  format: RGBA16
-  symbol: chain_ball_seg6_texture_06020AE8
-
 chain_ball_seg6_vertex_06020AA0:
   type: VTX
   count: 4
@@ -22,6 +13,15 @@ chain_ball_seg6_vertex_06020AA0:
 
 # chain_ball_unused_1:
 #   type: U64
+
+chain_ball:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x20AE8
+  format: RGBA16
+  symbol: chain_ball_seg6_texture_06020AE8
 
 chain_ball_seg6_dl_060212E8:
   type: GFX

@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: bowser_3_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x800
   format: RGBA16
   symbol: bowser_3_seg7_texture_07000800
+
 2:
   type: TEXTURE
   size: 4096
@@ -29,231 +31,6 @@
   offset: 0x1000
   format: RGBA16
   symbol: bowser_3_seg7_texture_07001000
-bowser_3_seg7_lights_07003CF8:
-  type: LIGHTS
-  size: 24
-  offset: 0x3CF8
-  symbol: bowser_3_seg7_lights_07003CF8
-
-bowser_3_seg7_lights_07003D10:
-  type: LIGHTS
-  size: 24
-  offset: 0x3D10
-  symbol: bowser_3_seg7_lights_07003D10
-
-bowser_3_seg7_vertex_07003D28:
-  type: VTX
-  count: 6
-  offset: 0x3D28
-  symbol: bowser_3_seg7_vertex_07003D28
-
-bowser_3_seg7_vertex_07003D88:
-  type: VTX
-  count: 4
-  offset: 0x3D88
-  symbol: bowser_3_seg7_vertex_07003D88
-
-bowser_3_seg7_vertex_07003DC8:
-  type: VTX
-  count: 16
-  offset: 0x3DC8
-  symbol: bowser_3_seg7_vertex_07003DC8
-
-bowser_3_seg7_dl_07003EC8:
-  type: GFX
-  offset: 0x3EC8
-  symbol: bowser_3_seg7_dl_07003EC8
-
-bowser_3_seg7_dl_07003F38:
-  type: GFX
-  offset: 0x3F38
-  symbol: bowser_3_seg7_dl_07003F38
-
-bowser_3_seg7_dl_07003FA0:
-  type: GFX
-  offset: 0x3FA0
-  symbol: bowser_3_seg7_dl_07003FA0
-
-bowser_3_seg7_lights_07004030:
-  type: LIGHTS
-  size: 24
-  offset: 0x4030
-  symbol: bowser_3_seg7_lights_07004030
-
-bowser_3_seg7_lights_07004048:
-  type: LIGHTS
-  size: 24
-  offset: 0x4048
-  symbol: bowser_3_seg7_lights_07004048
-
-bowser_3_seg7_vertex_07004060:
-  type: VTX
-  count: 16
-  offset: 0x4060
-  symbol: bowser_3_seg7_vertex_07004060
-
-bowser_3_seg7_vertex_07004160:
-  type: VTX
-  count: 6
-  offset: 0x4160
-  symbol: bowser_3_seg7_vertex_07004160
-
-bowser_3_seg7_vertex_070041C0:
-  type: VTX
-  count: 10
-  offset: 0x41C0
-  symbol: bowser_3_seg7_vertex_070041C0
-
-bowser_3_seg7_vertex_07004260:
-  type: VTX
-  count: 15
-  offset: 0x4260
-  symbol: bowser_3_seg7_vertex_07004260
-
-bowser_3_seg7_vertex_07004350:
-  type: VTX
-  count: 15
-  offset: 0x4350
-  symbol: bowser_3_seg7_vertex_07004350
-
-bowser_3_seg7_vertex_07004440:
-  type: VTX
-  count: 12
-  offset: 0x4440
-  symbol: bowser_3_seg7_vertex_07004440
-
-bowser_3_seg7_dl_07004500:
-  type: GFX
-  offset: 0x4500
-  symbol: bowser_3_seg7_dl_07004500
-
-bowser_3_seg7_dl_070045D8:
-  type: GFX
-  offset: 0x45D8
-  symbol: bowser_3_seg7_dl_070045D8
-
-bowser_3_seg7_dl_070046B0:
-  type: GFX
-  offset: 0x46B0
-  symbol: bowser_3_seg7_dl_070046B0
-
-bowser_3_seg7_lights_07004740:
-  type: LIGHTS
-  size: 24
-  offset: 0x4740
-  symbol: bowser_3_seg7_lights_07004740
-
-bowser_3_seg7_vertex_07004758:
-  type: VTX
-  count: 15
-  offset: 0x4758
-  symbol: bowser_3_seg7_vertex_07004758
-
-bowser_3_seg7_vertex_07004848:
-  type: VTX
-  count: 9
-  offset: 0x4848
-  symbol: bowser_3_seg7_vertex_07004848
-
-bowser_3_seg7_dl_070048D8:
-  type: GFX
-  offset: 0x48D8
-  symbol: bowser_3_seg7_dl_070048D8
-
-bowser_3_seg7_dl_07004958:
-  type: GFX
-  offset: 0x4958
-  symbol: bowser_3_seg7_dl_07004958
-
-bowser_3_seg7_lights_070039C0:
-  type: LIGHTS
-  size: 24
-  offset: 0x39C0
-  symbol: bowser_3_seg7_lights_070039C0
-
-bowser_3_seg7_lights_070039D8:
-  type: LIGHTS
-  size: 24
-  offset: 0x39D8
-  symbol: bowser_3_seg7_lights_070039D8
-
-bowser_3_seg7_vertex_070039F0:
-  type: VTX
-  count: 6
-  offset: 0x39F0
-  symbol: bowser_3_seg7_vertex_070039F0
-
-bowser_3_seg7_vertex_07003A50:
-  type: VTX
-  count: 4
-  offset: 0x3A50
-  symbol: bowser_3_seg7_vertex_07003A50
-
-bowser_3_seg7_vertex_07003A90:
-  type: VTX
-  count: 16
-  offset: 0x3A90
-  symbol: bowser_3_seg7_vertex_07003A90
-
-bowser_3_seg7_dl_07003B90:
-  type: GFX
-  offset: 0x3B90
-  symbol: bowser_3_seg7_dl_07003B90
-
-bowser_3_seg7_dl_07003C00:
-  type: GFX
-  offset: 0x3C00
-  symbol: bowser_3_seg7_dl_07003C00
-
-bowser_3_seg7_dl_07003C68:
-  type: GFX
-  offset: 0x3C68
-  symbol: bowser_3_seg7_dl_07003C68
-
-bowser_3_seg7_lights_07003350:
-  type: LIGHTS
-  size: 24
-  offset: 0x3350
-  symbol: bowser_3_seg7_lights_07003350
-
-bowser_3_seg7_lights_07003368:
-  type: LIGHTS
-  size: 24
-  offset: 0x3368
-  symbol: bowser_3_seg7_lights_07003368
-
-bowser_3_seg7_vertex_07003380:
-  type: VTX
-  count: 6
-  offset: 0x3380
-  symbol: bowser_3_seg7_vertex_07003380
-
-bowser_3_seg7_vertex_070033E0:
-  type: VTX
-  count: 4
-  offset: 0x33E0
-  symbol: bowser_3_seg7_vertex_070033E0
-
-bowser_3_seg7_vertex_07003420:
-  type: VTX
-  count: 16
-  offset: 0x3420
-  symbol: bowser_3_seg7_vertex_07003420
-
-bowser_3_seg7_dl_07003520:
-  type: GFX
-  offset: 0x3520
-  symbol: bowser_3_seg7_dl_07003520
-
-bowser_3_seg7_dl_07003590:
-  type: GFX
-  offset: 0x3590
-  symbol: bowser_3_seg7_dl_07003590
-
-bowser_3_seg7_dl_070035F8:
-  type: GFX
-  offset: 0x35F8
-  symbol: bowser_3_seg7_dl_070035F8
 
 bowser_3_seg7_lights_07002000:
   type: LIGHTS
@@ -300,95 +77,50 @@ bowser_3_seg7_dl_070022A8:
   offset: 0x22A8
   symbol: bowser_3_seg7_dl_070022A8
 
-bowser_3_seg7_lights_07003018:
+bowser_3_seg7_lights_07002338:
   type: LIGHTS
   size: 24
-  offset: 0x3018
-  symbol: bowser_3_seg7_lights_07003018
+  offset: 0x2338
+  symbol: bowser_3_seg7_lights_07002338
 
-bowser_3_seg7_lights_07003030:
+bowser_3_seg7_lights_07002350:
   type: LIGHTS
   size: 24
-  offset: 0x3030
-  symbol: bowser_3_seg7_lights_07003030
+  offset: 0x2350
+  symbol: bowser_3_seg7_lights_07002350
 
-bowser_3_seg7_vertex_07003048:
+bowser_3_seg7_vertex_07002368:
   type: VTX
   count: 6
-  offset: 0x3048
-  symbol: bowser_3_seg7_vertex_07003048
+  offset: 0x2368
+  symbol: bowser_3_seg7_vertex_07002368
 
-bowser_3_seg7_vertex_070030A8:
+bowser_3_seg7_vertex_070023C8:
   type: VTX
   count: 4
-  offset: 0x30A8
-  symbol: bowser_3_seg7_vertex_070030A8
+  offset: 0x23C8
+  symbol: bowser_3_seg7_vertex_070023C8
 
-bowser_3_seg7_vertex_070030E8:
+bowser_3_seg7_vertex_07002408:
   type: VTX
   count: 16
-  offset: 0x30E8
-  symbol: bowser_3_seg7_vertex_070030E8
+  offset: 0x2408
+  symbol: bowser_3_seg7_vertex_07002408
 
-bowser_3_seg7_dl_070031E8:
+bowser_3_seg7_dl_07002508:
   type: GFX
-  offset: 0x31E8
-  symbol: bowser_3_seg7_dl_070031E8
+  offset: 0x2508
+  symbol: bowser_3_seg7_dl_07002508
 
-bowser_3_seg7_dl_07003258:
+bowser_3_seg7_dl_07002578:
   type: GFX
-  offset: 0x3258
-  symbol: bowser_3_seg7_dl_07003258
+  offset: 0x2578
+  symbol: bowser_3_seg7_dl_07002578
 
-bowser_3_seg7_dl_070032C0:
+bowser_3_seg7_dl_070025E0:
   type: GFX
-  offset: 0x32C0
-  symbol: bowser_3_seg7_dl_070032C0
-
-bowser_3_seg7_lights_07003688:
-  type: LIGHTS
-  size: 24
-  offset: 0x3688
-  symbol: bowser_3_seg7_lights_07003688
-
-bowser_3_seg7_lights_070036A0:
-  type: LIGHTS
-  size: 24
-  offset: 0x36A0
-  symbol: bowser_3_seg7_lights_070036A0
-
-bowser_3_seg7_vertex_070036B8:
-  type: VTX
-  count: 6
-  offset: 0x36B8
-  symbol: bowser_3_seg7_vertex_070036B8
-
-bowser_3_seg7_vertex_07003718:
-  type: VTX
-  count: 4
-  offset: 0x3718
-  symbol: bowser_3_seg7_vertex_07003718
-
-bowser_3_seg7_vertex_07003758:
-  type: VTX
-  count: 16
-  offset: 0x3758
-  symbol: bowser_3_seg7_vertex_07003758
-
-bowser_3_seg7_dl_07003858:
-  type: GFX
-  offset: 0x3858
-  symbol: bowser_3_seg7_dl_07003858
-
-bowser_3_seg7_dl_070038C8:
-  type: GFX
-  offset: 0x38C8
-  symbol: bowser_3_seg7_dl_070038C8
-
-bowser_3_seg7_dl_07003930:
-  type: GFX
-  offset: 0x3930
-  symbol: bowser_3_seg7_dl_07003930
+  offset: 0x25E0
+  symbol: bowser_3_seg7_dl_070025E0
 
 bowser_3_seg7_lights_07002670:
   type: LIGHTS
@@ -525,103 +257,374 @@ bowser_3_seg7_dl_07002F88:
   offset: 0x2F88
   symbol: bowser_3_seg7_dl_07002F88
 
-bowser_3_seg7_lights_07002338:
+bowser_3_seg7_lights_07003018:
   type: LIGHTS
   size: 24
-  offset: 0x2338
-  symbol: bowser_3_seg7_lights_07002338
+  offset: 0x3018
+  symbol: bowser_3_seg7_lights_07003018
 
-bowser_3_seg7_lights_07002350:
+bowser_3_seg7_lights_07003030:
   type: LIGHTS
   size: 24
-  offset: 0x2350
-  symbol: bowser_3_seg7_lights_07002350
+  offset: 0x3030
+  symbol: bowser_3_seg7_lights_07003030
 
-bowser_3_seg7_vertex_07002368:
+bowser_3_seg7_vertex_07003048:
   type: VTX
   count: 6
-  offset: 0x2368
-  symbol: bowser_3_seg7_vertex_07002368
+  offset: 0x3048
+  symbol: bowser_3_seg7_vertex_07003048
 
-bowser_3_seg7_vertex_070023C8:
+bowser_3_seg7_vertex_070030A8:
   type: VTX
   count: 4
-  offset: 0x23C8
-  symbol: bowser_3_seg7_vertex_070023C8
+  offset: 0x30A8
+  symbol: bowser_3_seg7_vertex_070030A8
 
-bowser_3_seg7_vertex_07002408:
+bowser_3_seg7_vertex_070030E8:
   type: VTX
   count: 16
-  offset: 0x2408
-  symbol: bowser_3_seg7_vertex_07002408
+  offset: 0x30E8
+  symbol: bowser_3_seg7_vertex_070030E8
 
-bowser_3_seg7_dl_07002508:
+bowser_3_seg7_dl_070031E8:
   type: GFX
-  offset: 0x2508
-  symbol: bowser_3_seg7_dl_07002508
+  offset: 0x31E8
+  symbol: bowser_3_seg7_dl_070031E8
 
-bowser_3_seg7_dl_07002578:
+bowser_3_seg7_dl_07003258:
   type: GFX
-  offset: 0x2578
-  symbol: bowser_3_seg7_dl_07002578
+  offset: 0x3258
+  symbol: bowser_3_seg7_dl_07003258
 
-bowser_3_seg7_dl_070025E0:
+bowser_3_seg7_dl_070032C0:
   type: GFX
-  offset: 0x25E0
-  symbol: bowser_3_seg7_dl_070025E0
+  offset: 0x32C0
+  symbol: bowser_3_seg7_dl_070032C0
+
+bowser_3_seg7_lights_07003350:
+  type: LIGHTS
+  size: 24
+  offset: 0x3350
+  symbol: bowser_3_seg7_lights_07003350
+
+bowser_3_seg7_lights_07003368:
+  type: LIGHTS
+  size: 24
+  offset: 0x3368
+  symbol: bowser_3_seg7_lights_07003368
+
+bowser_3_seg7_vertex_07003380:
+  type: VTX
+  count: 6
+  offset: 0x3380
+  symbol: bowser_3_seg7_vertex_07003380
+
+bowser_3_seg7_vertex_070033E0:
+  type: VTX
+  count: 4
+  offset: 0x33E0
+  symbol: bowser_3_seg7_vertex_070033E0
+
+bowser_3_seg7_vertex_07003420:
+  type: VTX
+  count: 16
+  offset: 0x3420
+  symbol: bowser_3_seg7_vertex_07003420
+
+bowser_3_seg7_dl_07003520:
+  type: GFX
+  offset: 0x3520
+  symbol: bowser_3_seg7_dl_07003520
+
+bowser_3_seg7_dl_07003590:
+  type: GFX
+  offset: 0x3590
+  symbol: bowser_3_seg7_dl_07003590
+
+bowser_3_seg7_dl_070035F8:
+  type: GFX
+  offset: 0x35F8
+  symbol: bowser_3_seg7_dl_070035F8
+
+bowser_3_seg7_lights_07003688:
+  type: LIGHTS
+  size: 24
+  offset: 0x3688
+  symbol: bowser_3_seg7_lights_07003688
+
+bowser_3_seg7_lights_070036A0:
+  type: LIGHTS
+  size: 24
+  offset: 0x36A0
+  symbol: bowser_3_seg7_lights_070036A0
+
+bowser_3_seg7_vertex_070036B8:
+  type: VTX
+  count: 6
+  offset: 0x36B8
+  symbol: bowser_3_seg7_vertex_070036B8
+
+bowser_3_seg7_vertex_07003718:
+  type: VTX
+  count: 4
+  offset: 0x3718
+  symbol: bowser_3_seg7_vertex_07003718
+
+bowser_3_seg7_vertex_07003758:
+  type: VTX
+  count: 16
+  offset: 0x3758
+  symbol: bowser_3_seg7_vertex_07003758
+
+bowser_3_seg7_dl_07003858:
+  type: GFX
+  offset: 0x3858
+  symbol: bowser_3_seg7_dl_07003858
+
+bowser_3_seg7_dl_070038C8:
+  type: GFX
+  offset: 0x38C8
+  symbol: bowser_3_seg7_dl_070038C8
+
+bowser_3_seg7_dl_07003930:
+  type: GFX
+  offset: 0x3930
+  symbol: bowser_3_seg7_dl_07003930
+
+bowser_3_seg7_lights_070039C0:
+  type: LIGHTS
+  size: 24
+  offset: 0x39C0
+  symbol: bowser_3_seg7_lights_070039C0
+
+bowser_3_seg7_lights_070039D8:
+  type: LIGHTS
+  size: 24
+  offset: 0x39D8
+  symbol: bowser_3_seg7_lights_070039D8
+
+bowser_3_seg7_vertex_070039F0:
+  type: VTX
+  count: 6
+  offset: 0x39F0
+  symbol: bowser_3_seg7_vertex_070039F0
+
+bowser_3_seg7_vertex_07003A50:
+  type: VTX
+  count: 4
+  offset: 0x3A50
+  symbol: bowser_3_seg7_vertex_07003A50
+
+bowser_3_seg7_vertex_07003A90:
+  type: VTX
+  count: 16
+  offset: 0x3A90
+  symbol: bowser_3_seg7_vertex_07003A90
+
+bowser_3_seg7_dl_07003B90:
+  type: GFX
+  offset: 0x3B90
+  symbol: bowser_3_seg7_dl_07003B90
+
+bowser_3_seg7_dl_07003C00:
+  type: GFX
+  offset: 0x3C00
+  symbol: bowser_3_seg7_dl_07003C00
+
+bowser_3_seg7_dl_07003C68:
+  type: GFX
+  offset: 0x3C68
+  symbol: bowser_3_seg7_dl_07003C68
+
+bowser_3_seg7_lights_07003CF8:
+  type: LIGHTS
+  size: 24
+  offset: 0x3CF8
+  symbol: bowser_3_seg7_lights_07003CF8
+
+bowser_3_seg7_lights_07003D10:
+  type: LIGHTS
+  size: 24
+  offset: 0x3D10
+  symbol: bowser_3_seg7_lights_07003D10
+
+bowser_3_seg7_vertex_07003D28:
+  type: VTX
+  count: 6
+  offset: 0x3D28
+  symbol: bowser_3_seg7_vertex_07003D28
+
+bowser_3_seg7_vertex_07003D88:
+  type: VTX
+  count: 4
+  offset: 0x3D88
+  symbol: bowser_3_seg7_vertex_07003D88
+
+bowser_3_seg7_vertex_07003DC8:
+  type: VTX
+  count: 16
+  offset: 0x3DC8
+  symbol: bowser_3_seg7_vertex_07003DC8
+
+bowser_3_seg7_dl_07003EC8:
+  type: GFX
+  offset: 0x3EC8
+  symbol: bowser_3_seg7_dl_07003EC8
+
+bowser_3_seg7_dl_07003F38:
+  type: GFX
+  offset: 0x3F38
+  symbol: bowser_3_seg7_dl_07003F38
+
+bowser_3_seg7_dl_07003FA0:
+  type: GFX
+  offset: 0x3FA0
+  symbol: bowser_3_seg7_dl_07003FA0
+
+bowser_3_seg7_lights_07004030:
+  type: LIGHTS
+  size: 24
+  offset: 0x4030
+  symbol: bowser_3_seg7_lights_07004030
+
+bowser_3_seg7_lights_07004048:
+  type: LIGHTS
+  size: 24
+  offset: 0x4048
+  symbol: bowser_3_seg7_lights_07004048
+
+bowser_3_seg7_vertex_07004060:
+  type: VTX
+  count: 16
+  offset: 0x4060
+  symbol: bowser_3_seg7_vertex_07004060
+
+bowser_3_seg7_vertex_07004160:
+  type: VTX
+  count: 6
+  offset: 0x4160
+  symbol: bowser_3_seg7_vertex_07004160
+
+bowser_3_seg7_vertex_070041C0:
+  type: VTX
+  count: 10
+  offset: 0x41C0
+  symbol: bowser_3_seg7_vertex_070041C0
+
+bowser_3_seg7_vertex_07004260:
+  type: VTX
+  count: 15
+  offset: 0x4260
+  symbol: bowser_3_seg7_vertex_07004260
+
+bowser_3_seg7_vertex_07004350:
+  type: VTX
+  count: 15
+  offset: 0x4350
+  symbol: bowser_3_seg7_vertex_07004350
+
+bowser_3_seg7_vertex_07004440:
+  type: VTX
+  count: 12
+  offset: 0x4440
+  symbol: bowser_3_seg7_vertex_07004440
+
+bowser_3_seg7_dl_07004500:
+  type: GFX
+  offset: 0x4500
+  symbol: bowser_3_seg7_dl_07004500
+
+bowser_3_seg7_dl_070045D8:
+  type: GFX
+  offset: 0x45D8
+  symbol: bowser_3_seg7_dl_070045D8
+
+bowser_3_seg7_dl_070046B0:
+  type: GFX
+  offset: 0x46B0
+  symbol: bowser_3_seg7_dl_070046B0
+
+bowser_3_seg7_lights_07004740:
+  type: LIGHTS
+  size: 24
+  offset: 0x4740
+  symbol: bowser_3_seg7_lights_07004740
+
+bowser_3_seg7_vertex_07004758:
+  type: VTX
+  count: 15
+  offset: 0x4758
+  symbol: bowser_3_seg7_vertex_07004758
+
+bowser_3_seg7_vertex_07004848:
+  type: VTX
+  count: 9
+  offset: 0x4848
+  symbol: bowser_3_seg7_vertex_07004848
+
+bowser_3_seg7_dl_070048D8:
+  type: GFX
+  offset: 0x48D8
+  symbol: bowser_3_seg7_dl_070048D8
+
+bowser_3_seg7_dl_07004958:
+  type: GFX
+  offset: 0x4958
+  symbol: bowser_3_seg7_dl_07004958
 
 bowser_3_seg7_collision_level:
-    type: SM64:COLLISION
-    offset: 0x49C8
-    symbol: bowser_3_seg7_collision_level
+  type: SM64:COLLISION
+  offset: 0x49C8
+  symbol: bowser_3_seg7_collision_level
 
 bowser_3_seg7_collision_07004B94:
-    type: SM64:COLLISION
-    offset: 0x4B94
-    symbol: bowser_3_seg7_collision_07004B94
+  type: SM64:COLLISION
+  offset: 0x4B94
+  symbol: bowser_3_seg7_collision_07004B94
 
 bowser_3_seg7_collision_07004C18:
-    type: SM64:COLLISION
-    offset: 0x4C18
-    symbol: bowser_3_seg7_collision_07004C18
+  type: SM64:COLLISION
+  offset: 0x4C18
+  symbol: bowser_3_seg7_collision_07004C18
 
 bowser_3_seg7_collision_07004C9C:
-    type: SM64:COLLISION
-    offset: 0x4C9C
-    symbol: bowser_3_seg7_collision_07004C9C
+  type: SM64:COLLISION
+  offset: 0x4C9C
+  symbol: bowser_3_seg7_collision_07004C9C
 
 bowser_3_seg7_collision_07004D20:
-    type: SM64:COLLISION
-    offset: 0x4D20
-    symbol: bowser_3_seg7_collision_07004D20
+  type: SM64:COLLISION
+  offset: 0x4D20
+  symbol: bowser_3_seg7_collision_07004D20
 
 bowser_3_seg7_collision_07004DA4:
-    type: SM64:COLLISION
-    offset: 0x4DA4
-    symbol: bowser_3_seg7_collision_07004DA4
+  type: SM64:COLLISION
+  offset: 0x4DA4
+  symbol: bowser_3_seg7_collision_07004DA4
 
 bowser_3_seg7_collision_07004E28:
-    type: SM64:COLLISION
-    offset: 0x4E28
-    symbol: bowser_3_seg7_collision_07004E28
+  type: SM64:COLLISION
+  offset: 0x4E28
+  symbol: bowser_3_seg7_collision_07004E28
 
 bowser_3_seg7_collision_07004EAC:
-    type: SM64:COLLISION
-    offset: 0x4EAC
-    symbol: bowser_3_seg7_collision_07004EAC
+  type: SM64:COLLISION
+  offset: 0x4EAC
+  symbol: bowser_3_seg7_collision_07004EAC
 
 bowser_3_seg7_collision_07004F30:
-    type: SM64:COLLISION
-    offset: 0x4F30
-    symbol: bowser_3_seg7_collision_07004F30
+  type: SM64:COLLISION
+  offset: 0x4F30
+  symbol: bowser_3_seg7_collision_07004F30
 
 bowser_3_seg7_collision_07004FB4:
-    type: SM64:COLLISION
-    offset: 0x4FB4
-    symbol: bowser_3_seg7_collision_07004FB4
+  type: SM64:COLLISION
+  offset: 0x4FB4
+  symbol: bowser_3_seg7_collision_07004FB4
 
 bowser_3_seg7_collision_07005038:
-    type: SM64:COLLISION
-    offset: 0x5038
-    symbol: bowser_3_seg7_collision_07005038
+  type: SM64:COLLISION
+  offset: 0x5038
+  symbol: bowser_3_seg7_collision_07005038
 

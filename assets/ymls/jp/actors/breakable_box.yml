@@ -5,14 +5,12 @@
   segments:
     - [0x08,  0x1F0530]
 
-cork_box_surface:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x12290
-  format: RGBA16
-  symbol: breakable_box_seg8_texture_08012290
+breakable_box_seg8_lights_08011A80:
+  type: LIGHTS
+  size: 24
+  offset: 0x11A78
+  symbol: breakable_box_seg8_lights_08011A80
+
 crazy_box_surface:
   type: TEXTURE
   size: 2048
@@ -22,11 +20,14 @@ crazy_box_surface:
   format: RGBA16
   symbol: breakable_box_seg8_texture_08011A90
 
-breakable_box_seg8_lights_08011A80:
-  type: LIGHTS
-  size: 24
-  offset: 0x11A78
-  symbol: breakable_box_seg8_lights_08011A80
+cork_box_surface:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12290
+  format: RGBA16
+  symbol: breakable_box_seg8_texture_08012290
 
 breakable_box_seg8_vertex_08012A90:
   type: VTX

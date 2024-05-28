@@ -5,6 +5,12 @@
   segments:
     - [0x06,  0x1C2580]
 
+chain_ball_seg6_vertex_06020AA0:
+  type: VTX
+  count: 4
+  offset: 0x20AA0
+  symbol: chain_ball_seg6_vertex_06020AA0
+
 chain_ball:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ chain_ball:
   offset: 0x20AE8
   format: RGBA16
   symbol: chain_ball_seg6_texture_06020AE8
-
-chain_ball_seg6_vertex_06020AA0:
-  type: VTX
-  count: 4
-  offset: 0x20AA0
-  symbol: chain_ball_seg6_vertex_06020AA0
 
 chain_ball_seg6_dl_060212E8:
   type: GFX

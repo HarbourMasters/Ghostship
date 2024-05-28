@@ -5,30 +5,12 @@
   segments:
     - [0x03,  0x201410]
 
-palm_tree:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x32218
-  format: RGBA16
-  symbol: tree_seg3_texture_03032218
-pine_tree:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x2FF60
-  format: RGBA16
-  symbol: tree_seg3_texture_0302FF60
-snowy_pine_tree:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x31048
-  format: RGBA16
-  symbol: tree_seg3_texture_03031048
+tree_seg3_lights_0302DE10:
+  type: LIGHTS
+  size: 24
+  offset: 0x2DE10
+  symbol: tree_seg3_lights_0302DE10
+
 tree_left_side:
   type: TEXTURE
   size: 4096
@@ -37,6 +19,7 @@ tree_left_side:
   offset: 0x2DE28
   format: RGBA16
   symbol: tree_seg3_texture_0302DE28
+
 tree_right_side:
   type: TEXTURE
   size: 4096
@@ -45,12 +28,6 @@ tree_right_side:
   offset: 0x2EE28
   format: RGBA16
   symbol: tree_seg3_texture_0302EE28
-
-tree_seg3_lights_0302DE10:
-  type: LIGHTS
-  size: 24
-  offset: 0x2DE10
-  symbol: tree_seg3_lights_0302DE10
 
 tree_seg3_vertex_0302FE28:
   type: VTX
@@ -79,6 +56,15 @@ tree_seg3_dl_0302FEE8:
   offset: 0x2FEE8
   symbol: tree_seg3_dl_0302FEE8
 
+pine_tree:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x2FF60
+  format: RGBA16
+  symbol: tree_seg3_texture_0302FF60
+
 tree_seg3_vertex_03030F60:
   type: VTX
   count: 4
@@ -89,6 +75,15 @@ tree_seg3_dl_03030FA0:
   type: GFX
   offset: 0x30FA0
   symbol: tree_seg3_dl_03030FA0
+
+snowy_pine_tree:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x31048
+  format: RGBA16
+  symbol: tree_seg3_texture_03031048
 
 tree_seg3_vertex_03032048:
   type: VTX
@@ -111,6 +106,15 @@ tree_seg3_dl_03032170:
   type: GFX
   offset: 0x32170
   symbol: tree_seg3_dl_03032170
+
+palm_tree:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x32218
+  format: RGBA16
+  symbol: tree_seg3_texture_03032218
 
 tree_seg3_vertex_03033218:
   type: VTX

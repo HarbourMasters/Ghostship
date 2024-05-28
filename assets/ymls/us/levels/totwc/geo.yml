@@ -7,10 +7,10 @@
 
 totwc_geo_000160:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000160
+  offset: 0xE000160
   symbol: totwc_geo_000160
 
 totwc_geo_000188:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000188
+  offset: 0xE000188
   symbol: totwc_geo_000188

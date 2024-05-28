@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x201410]
 
+pebble_seg3_vertex_0301C2C0:
+  type: VTX
+  count: 4
+  offset: 0x1C2C0
+  symbol: pebble_seg3_vertex_0301C2C0
+
 pebble:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ pebble:
   offset: 0x1C300
   format: RGBA16
   symbol: pebble_seg3_texture_0301C300
-
-pebble_seg3_vertex_0301C2C0:
-  type: VTX
-  count: 4
-  offset: 0x1C2C0
-  symbol: pebble_seg3_vertex_0301C2C0
 
 pebble_seg3_dl_0301CB00:
   type: GFX

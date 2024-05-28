@@ -5,23 +5,6 @@
   segments:
     - [0x08,  0x1F2200]
 
-koopa_shell_back:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x27CA0
-  format: RGBA16
-  symbol: koopa_shell_seg8_texture_08027CA0
-koopa_shell_front:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x274A0
-  format: RGBA16
-  symbol: koopa_shell_seg8_texture_080274A0
-
 koopa_shell_seg8_lights_08026388:
   type: LIGHTS
   size: 24
@@ -172,6 +155,24 @@ koopa_shell_seg8_lights_08027488:
   size: 24
   offset: 0x27488
   symbol: koopa_shell_seg8_lights_08027488
+
+koopa_shell_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x274A0
+  format: RGBA16
+  symbol: koopa_shell_seg8_texture_080274A0
+
+koopa_shell_back:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x27CA0
+  format: RGBA16
+  symbol: koopa_shell_seg8_texture_08027CA0
 
 koopa_shell_seg8_vertex_080284A0:
   type: VTX

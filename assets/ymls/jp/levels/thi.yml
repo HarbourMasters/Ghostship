@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: thi_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,78 +22,6 @@
   offset: 0x800
   format: RGBA16
   symbol: thi_seg7_texture_07000800
-
-thi_seg7_lights_070076A8:
-  type: LIGHTS
-  size: 24
-  offset: 0x76A8
-  symbol: thi_seg7_lights_070076A8
-
-thi_seg7_lights_070076C0:
-  type: LIGHTS
-  size: 24
-  offset: 0x76C0
-  symbol: thi_seg7_lights_070076C0
-
-thi_seg7_vertex_070076D8:
-  type: VTX
-  count: 4
-  offset: 0x76D8
-  symbol: thi_seg7_vertex_070076D8
-
-thi_seg7_vertex_07007718:
-  type: VTX
-  count: 12
-  offset: 0x7718
-  symbol: thi_seg7_vertex_07007718
-
-thi_seg7_vertex_070077D8:
-  type: VTX
-  count: 5
-  offset: 0x77D8
-  symbol: thi_seg7_vertex_070077D8
-
-thi_seg7_dl_07007828:
-  type: GFX
-  offset: 0x7828
-  symbol: thi_seg7_dl_07007828
-
-thi_seg7_dl_07007870:
-  type: GFX
-  offset: 0x7870
-  symbol: thi_seg7_dl_07007870
-
-thi_seg7_dl_070078D8:
-  type: GFX
-  offset: 0x78D8
-  symbol: thi_seg7_dl_070078D8
-
-thi_seg7_dl_07007930:
-  type: GFX
-  offset: 0x7930
-  symbol: thi_seg7_dl_07007930
-
-thi_seg7_lights_070075A8:
-  type: LIGHTS
-  size: 24
-  offset: 0x75A8
-  symbol: thi_seg7_lights_070075A8
-
-thi_seg7_vertex_070075C0:
-  type: VTX
-  count: 4
-  offset: 0x75C0
-  symbol: thi_seg7_vertex_070075C0
-
-thi_seg7_dl_07007600:
-  type: GFX
-  offset: 0x7600
-  symbol: thi_seg7_dl_07007600
-
-thi_seg7_dl_07007648:
-  type: GFX
-  offset: 0x7648
-  symbol: thi_seg7_dl_07007648
 
 thi_seg7_lights_07001000:
   type: LIGHTS
@@ -522,74 +451,6 @@ thi_seg7_dl_07005260:
   offset: 0x5260
   symbol: thi_seg7_dl_07005260
 
-thi_seg7_lights_07007078:
-  type: LIGHTS
-  size: 24
-  offset: 0x7078
-  symbol: thi_seg7_lights_07007078
-
-thi_seg7_vertex_07007090:
-  type: VTX
-  count: 15
-  offset: 0x7090
-  symbol: thi_seg7_vertex_07007090
-
-thi_seg7_vertex_07007180:
-  type: VTX
-  count: 12
-  offset: 0x7180
-  symbol: thi_seg7_vertex_07007180
-
-thi_seg7_dl_07007240:
-  type: GFX
-  offset: 0x7240
-  symbol: thi_seg7_dl_07007240
-
-thi_seg7_dl_070072E8:
-  type: GFX
-  offset: 0x72E8
-  symbol: thi_seg7_dl_070072E8
-
-thi_seg7_vertex_07006A30:
-  type: VTX
-  count: 15
-  offset: 0x6A30
-  symbol: thi_seg7_vertex_07006A30
-
-thi_seg7_vertex_07006B20:
-  type: VTX
-  count: 15
-  offset: 0x6B20
-  symbol: thi_seg7_vertex_07006B20
-
-thi_seg7_vertex_07006C10:
-  type: VTX
-  count: 15
-  offset: 0x6C10
-  symbol: thi_seg7_vertex_07006C10
-
-thi_seg7_vertex_07006D00:
-  type: VTX
-  count: 15
-  offset: 0x6D00
-  symbol: thi_seg7_vertex_07006D00
-
-thi_seg7_vertex_07006DF0:
-  type: VTX
-  count: 12
-  offset: 0x6DF0
-  symbol: thi_seg7_vertex_07006DF0
-
-thi_seg7_dl_07006EB0:
-  type: GFX
-  offset: 0x6EB0
-  symbol: thi_seg7_dl_07006EB0
-
-thi_seg7_dl_07007008:
-  type: GFX
-  offset: 0x7008
-  symbol: thi_seg7_dl_07007008
-
 thi_seg7_lights_07005330:
   type: LIGHTS
   size: 24
@@ -763,6 +624,74 @@ thi_seg7_dl_07006968:
   offset: 0x6968
   symbol: thi_seg7_dl_07006968
 
+thi_seg7_vertex_07006A30:
+  type: VTX
+  count: 15
+  offset: 0x6A30
+  symbol: thi_seg7_vertex_07006A30
+
+thi_seg7_vertex_07006B20:
+  type: VTX
+  count: 15
+  offset: 0x6B20
+  symbol: thi_seg7_vertex_07006B20
+
+thi_seg7_vertex_07006C10:
+  type: VTX
+  count: 15
+  offset: 0x6C10
+  symbol: thi_seg7_vertex_07006C10
+
+thi_seg7_vertex_07006D00:
+  type: VTX
+  count: 15
+  offset: 0x6D00
+  symbol: thi_seg7_vertex_07006D00
+
+thi_seg7_vertex_07006DF0:
+  type: VTX
+  count: 12
+  offset: 0x6DF0
+  symbol: thi_seg7_vertex_07006DF0
+
+thi_seg7_dl_07006EB0:
+  type: GFX
+  offset: 0x6EB0
+  symbol: thi_seg7_dl_07006EB0
+
+thi_seg7_dl_07007008:
+  type: GFX
+  offset: 0x7008
+  symbol: thi_seg7_dl_07007008
+
+thi_seg7_lights_07007078:
+  type: LIGHTS
+  size: 24
+  offset: 0x7078
+  symbol: thi_seg7_lights_07007078
+
+thi_seg7_vertex_07007090:
+  type: VTX
+  count: 15
+  offset: 0x7090
+  symbol: thi_seg7_vertex_07007090
+
+thi_seg7_vertex_07007180:
+  type: VTX
+  count: 12
+  offset: 0x7180
+  symbol: thi_seg7_vertex_07007180
+
+thi_seg7_dl_07007240:
+  type: GFX
+  offset: 0x7240
+  symbol: thi_seg7_dl_07007240
+
+thi_seg7_dl_070072E8:
+  type: GFX
+  offset: 0x72E8
+  symbol: thi_seg7_dl_070072E8
+
 thi_seg7_vertex_07007348:
   type: VTX
   count: 4
@@ -778,6 +707,94 @@ thi_seg7_dl_070073C0:
   type: GFX
   offset: 0x73C0
   symbol: thi_seg7_dl_070073C0
+
+thi_seg7_vertex_07007430:
+  type: VTX
+  count: 10
+  offset: 0x7430
+  symbol: thi_seg7_vertex_07007430
+
+thi_seg7_dl_070074D0:
+  type: GFX
+  offset: 0x74D0
+  symbol: thi_seg7_dl_070074D0
+
+thi_seg7_dl_07007538:
+  type: GFX
+  offset: 0x7538
+  symbol: thi_seg7_dl_07007538
+
+thi_seg7_lights_070075A8:
+  type: LIGHTS
+  size: 24
+  offset: 0x75A8
+  symbol: thi_seg7_lights_070075A8
+
+thi_seg7_vertex_070075C0:
+  type: VTX
+  count: 4
+  offset: 0x75C0
+  symbol: thi_seg7_vertex_070075C0
+
+thi_seg7_dl_07007600:
+  type: GFX
+  offset: 0x7600
+  symbol: thi_seg7_dl_07007600
+
+thi_seg7_dl_07007648:
+  type: GFX
+  offset: 0x7648
+  symbol: thi_seg7_dl_07007648
+
+thi_seg7_lights_070076A8:
+  type: LIGHTS
+  size: 24
+  offset: 0x76A8
+  symbol: thi_seg7_lights_070076A8
+
+thi_seg7_lights_070076C0:
+  type: LIGHTS
+  size: 24
+  offset: 0x76C0
+  symbol: thi_seg7_lights_070076C0
+
+thi_seg7_vertex_070076D8:
+  type: VTX
+  count: 4
+  offset: 0x76D8
+  symbol: thi_seg7_vertex_070076D8
+
+thi_seg7_vertex_07007718:
+  type: VTX
+  count: 12
+  offset: 0x7718
+  symbol: thi_seg7_vertex_07007718
+
+thi_seg7_vertex_070077D8:
+  type: VTX
+  count: 5
+  offset: 0x77D8
+  symbol: thi_seg7_vertex_070077D8
+
+thi_seg7_dl_07007828:
+  type: GFX
+  offset: 0x7828
+  symbol: thi_seg7_dl_07007828
+
+thi_seg7_dl_07007870:
+  type: GFX
+  offset: 0x7870
+  symbol: thi_seg7_dl_07007870
+
+thi_seg7_dl_070078D8:
+  type: GFX
+  offset: 0x78D8
+  symbol: thi_seg7_dl_070078D8
+
+thi_seg7_dl_07007930:
+  type: GFX
+  offset: 0x7930
+  symbol: thi_seg7_dl_07007930
 
 thi_seg7_vertex_070079D0:
   type: VTX
@@ -800,89 +817,6 @@ thi_seg7_dl_07007C20:
   type: GFX
   offset: 0x7C20
   symbol: thi_seg7_dl_07007C20
-
-thi_seg7_vertex_07009DF0:
-  type: VTX
-  count: 12
-  offset: 0x9DF0
-  symbol: thi_seg7_vertex_07009DF0
-
-thi_seg7_dl_07009EB0:
-  type: GFX
-  offset: 0x9EB0
-  symbol: thi_seg7_dl_07009EB0
-
-thi_seg7_dl_07009F58:
-  type: GFX
-  offset: 0x9F58
-  symbol: thi_seg7_dl_07009F58
-
-thi_seg7_vertex_07009740:
-  type: VTX
-  count: 14
-  offset: 0x9740
-  symbol: thi_seg7_vertex_07009740
-
-thi_seg7_vertex_07009820:
-  type: VTX
-  count: 11
-  offset: 0x9820
-  symbol: thi_seg7_vertex_07009820
-
-thi_seg7_vertex_070098D0:
-  type: VTX
-  count: 15
-  offset: 0x98D0
-  symbol: thi_seg7_vertex_070098D0
-
-thi_seg7_vertex_070099C0:
-  type: VTX
-  count: 15
-  offset: 0x99C0
-  symbol: thi_seg7_vertex_070099C0
-
-thi_seg7_vertex_07009AB0:
-  type: VTX
-  count: 4
-  offset: 0x9AB0
-  symbol: thi_seg7_vertex_07009AB0
-
-thi_seg7_vertex_07009AF0:
-  type: VTX
-  count: 4
-  offset: 0x9AF0
-  symbol: thi_seg7_vertex_07009AF0
-
-thi_seg7_vertex_07009B30:
-  type: VTX
-  count: 4
-  offset: 0x9B30
-  symbol: thi_seg7_vertex_07009B30
-
-thi_seg7_dl_07009B70:
-  type: GFX
-  offset: 0x9B70
-  symbol: thi_seg7_dl_07009B70
-
-thi_seg7_dl_07009C40:
-  type: GFX
-  offset: 0x9C40
-  symbol: thi_seg7_dl_07009C40
-
-thi_seg7_dl_07009CF8:
-  type: GFX
-  offset: 0x9CF8
-  symbol: thi_seg7_dl_07009CF8
-
-thi_seg7_dl_07009D30:
-  type: GFX
-  offset: 0x9D30
-  symbol: thi_seg7_dl_07009D30
-
-thi_seg7_dl_07009D50:
-  type: GFX
-  offset: 0x9D50
-  symbol: thi_seg7_dl_07009D50
 
 thi_seg7_lights_07007C90:
   type: LIGHTS
@@ -1093,21 +1027,88 @@ thi_seg7_dl_07009670:
   offset: 0x9670
   symbol: thi_seg7_dl_07009670
 
-thi_seg7_vertex_07007430:
+thi_seg7_vertex_07009740:
   type: VTX
-  count: 10
-  offset: 0x7430
-  symbol: thi_seg7_vertex_07007430
+  count: 14
+  offset: 0x9740
+  symbol: thi_seg7_vertex_07009740
 
-thi_seg7_dl_070074D0:
-  type: GFX
-  offset: 0x74D0
-  symbol: thi_seg7_dl_070074D0
+thi_seg7_vertex_07009820:
+  type: VTX
+  count: 11
+  offset: 0x9820
+  symbol: thi_seg7_vertex_07009820
 
-thi_seg7_dl_07007538:
+thi_seg7_vertex_070098D0:
+  type: VTX
+  count: 15
+  offset: 0x98D0
+  symbol: thi_seg7_vertex_070098D0
+
+thi_seg7_vertex_070099C0:
+  type: VTX
+  count: 15
+  offset: 0x99C0
+  symbol: thi_seg7_vertex_070099C0
+
+thi_seg7_vertex_07009AB0:
+  type: VTX
+  count: 4
+  offset: 0x9AB0
+  symbol: thi_seg7_vertex_07009AB0
+
+thi_seg7_vertex_07009AF0:
+  type: VTX
+  count: 4
+  offset: 0x9AF0
+  symbol: thi_seg7_vertex_07009AF0
+
+thi_seg7_vertex_07009B30:
+  type: VTX
+  count: 4
+  offset: 0x9B30
+  symbol: thi_seg7_vertex_07009B30
+
+thi_seg7_dl_07009B70:
   type: GFX
-  offset: 0x7538
-  symbol: thi_seg7_dl_07007538
+  offset: 0x9B70
+  symbol: thi_seg7_dl_07009B70
+
+thi_seg7_dl_07009C40:
+  type: GFX
+  offset: 0x9C40
+  symbol: thi_seg7_dl_07009C40
+
+thi_seg7_dl_07009CF8:
+  type: GFX
+  offset: 0x9CF8
+  symbol: thi_seg7_dl_07009CF8
+
+thi_seg7_dl_07009D30:
+  type: GFX
+  offset: 0x9D30
+  symbol: thi_seg7_dl_07009D30
+
+thi_seg7_dl_07009D50:
+  type: GFX
+  offset: 0x9D50
+  symbol: thi_seg7_dl_07009D50
+
+thi_seg7_vertex_07009DF0:
+  type: VTX
+  count: 12
+  offset: 0x9DF0
+  symbol: thi_seg7_vertex_07009DF0
+
+thi_seg7_dl_07009EB0:
+  type: GFX
+  offset: 0x9EB0
+  symbol: thi_seg7_dl_07009EB0
+
+thi_seg7_dl_07009F58:
+  type: GFX
+  offset: 0x9F58
+  symbol: thi_seg7_dl_07009F58
 
 thi_seg7_area_1_collision:
   type: SM64:COLLISION

@@ -5,51 +5,6 @@
   segments:
     - [0x05,  0x15EA70]
 
-spindrift_face:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x6D0
-  format: RGBA16
-  symbol: spindrift_seg5_texture_050006D0
-spindrift_head:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1ED0
-  format: RGBA16
-  symbol: spindrift_seg5_texture_05001ED0
-spindrift_leaf:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x16D0
-  format: RGBA16
-  symbol: spindrift_seg5_texture_050016D0
-spindrift_petal:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xED0
-  format: RGBA16
-  symbol: spindrift_seg5_texture_05000ED0
-
-spindrift_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x6D00
-  symbol: spindrift_lights_unused1
-
-spindrift_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x6D00
-  symbol: spindrift_lights_unused2
-
 spindrift_seg5_lights_05000030:
   type: LIGHTS
   size: 24
@@ -120,6 +75,42 @@ spindrift_seg5_dl_05000328:
   offset: 0x328
   symbol: spindrift_seg5_dl_05000328
 
+spindrift_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x6D0
+  format: RGBA16
+  symbol: spindrift_seg5_texture_050006D0
+
+spindrift_petal:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xED0
+  format: RGBA16
+  symbol: spindrift_seg5_texture_05000ED0
+
+spindrift_leaf:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x16D0
+  format: RGBA16
+  symbol: spindrift_seg5_texture_050016D0
+
+spindrift_head:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1ED0
+  format: RGBA16
+  symbol: spindrift_seg5_texture_05001ED0
+
 spindrift_seg5_dl_05002748:
   type: GFX
   offset: 0x2748
@@ -149,4 +140,16 @@ spindrift_seg5_dl_05002D08:
   type: GFX
   offset: 0x2D08
   symbol: spindrift_seg5_dl_05002D08
+
+spindrift_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x6D00
+  symbol: spindrift_lights_unused1
+
+spindrift_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x6D00
+  symbol: spindrift_lights_unused2
 

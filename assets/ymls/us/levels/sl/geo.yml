@@ -7,25 +7,25 @@
 
 sl_geo_000360:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000360
+  offset: 0xE000360
   symbol: sl_geo_000360
 
 sl_geo_000378:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000378
+  offset: 0xE000378
   symbol: sl_geo_000378
 
 sl_geo_000390:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000390
+  offset: 0xE000390
   symbol: sl_geo_000390
 
 sl_geo_0003A8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0003A8
+  offset: 0xE0003A8
   symbol: sl_geo_0003A8
 
 sl_geo_000484:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000484
+  offset: 0xE000484
   symbol: sl_geo_000484

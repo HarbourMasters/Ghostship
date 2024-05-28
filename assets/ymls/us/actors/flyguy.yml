@@ -13,6 +13,7 @@ flyguy_cloth_wrinkle:
   offset: 0xE088
   format: RGBA16
   symbol: flyguy_seg8_texture_0800E088
+
 flyguy_face:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@ flyguy_face:
   offset: 0xF088
   format: RGBA16
   symbol: flyguy_seg8_texture_0800F088
+
 flyguy_propeller:
   type: TEXTURE
   size: 2048

@@ -7,10 +7,10 @@
 
 castle_courtyard_geo_000200:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000200
+  offset: 0xE000200
   symbol: castle_courtyard_geo_000200
 
 castle_courtyard_geo_000218:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000218
+  offset: 0xE000218
   symbol: castle_courtyard_geo_000218

@@ -5,31 +5,6 @@
   segments:
     - [0x06,  0x186810]
 
-water_mine_left_side_unused:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x57AC0
-  format: RGBA16
-  symbol: water_mine_seg6_texture_0600A4F8
-water_mine_right_side_unused:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x58AC0
-  format: RGBA16
-  symbol: water_mine_seg6_texture_0600B4F8
-water_mine_spike_unused:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x59AC0
-  format: RGBA16
-  symbol: water_mine_seg6_texture_0600C4F8
-
 water_mine_seg6_lights_0600A4E0:
   type: LIGHTS
   size: 24
@@ -102,4 +77,31 @@ water_mine_seg6_dl_0600D3F8:
   type: GFX
   offset: 0xD3F8
   symbol: water_mine_seg6_dl_0600D3F8
+
+water_mine_left_side_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x57AC0
+  format: RGBA16
+  symbol: water_mine_seg6_texture_0600A4F8
+
+water_mine_right_side_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x58AC0
+  format: RGBA16
+  symbol: water_mine_seg6_texture_0600B4F8
+
+water_mine_spike_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x59AC0
+  format: RGBA16
+  symbol: water_mine_seg6_texture_0600C4F8
 

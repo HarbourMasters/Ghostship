@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x1505D0]
 
+monty_mole_hole_seg5_vertex_05000000:
+  type: VTX
+  count: 4
+  offset: 0x0
+  symbol: monty_mole_hole_seg5_vertex_05000000
+
 monty_mole_hole:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ monty_mole_hole:
   offset: 0x40
   format: IA16
   symbol: monty_mole_hole_seg5_texture_05000040
-
-monty_mole_hole_seg5_vertex_05000000:
-  type: VTX
-  count: 4
-  offset: 0x0
-  symbol: monty_mole_hole_seg5_vertex_05000000
 
 monty_mole_hole_seg5_dl_05000840:
   type: GFX

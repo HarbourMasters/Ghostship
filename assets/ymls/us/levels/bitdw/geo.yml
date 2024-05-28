@@ -7,130 +7,130 @@
 
 geo_bitdw_0003C0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0003C0
+  offset: 0xE0003C0
   symbol: geo_bitdw_0003C0
 
 geo_bitdw_0003D8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0003D8
+  offset: 0xE0003D8
   symbol: geo_bitdw_0003D8
 
 geo_bitdw_0003F0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0003F0
+  offset: 0xE0003F0
   symbol: geo_bitdw_0003F0
 
 geo_bitdw_000408:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000408
+  offset: 0xE000408
   symbol: geo_bitdw_000408
 
 geo_bitdw_000420:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000420
+  offset: 0xE000420
   symbol: geo_bitdw_000420
 
 geo_bitdw_000438:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000438
+  offset: 0xE000438
   symbol: geo_bitdw_000438
 
 geo_bitdw_000450:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000450
+  offset: 0xE000450
   symbol: geo_bitdw_000450
 
 geo_bitdw_000468:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000468
+  offset: 0xE000468
   symbol: geo_bitdw_000468
 
 geo_bitdw_000480:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000480
+  offset: 0xE000480
   symbol: geo_bitdw_000480
 
 geo_bitdw_000498:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000498
+  offset: 0xE000498
   symbol: geo_bitdw_000498
 
 geo_bitdw_0004B0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004B0
+  offset: 0xE0004B0
   symbol: geo_bitdw_0004B0
 
 geo_bitdw_0004C8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004C8
+  offset: 0xE0004C8
   symbol: geo_bitdw_0004C8
 
 geo_bitdw_0004E0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004E0
+  offset: 0xE0004E0
   symbol: geo_bitdw_0004E0
 
 geo_bitdw_0004F8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004F8
+  offset: 0xE0004F8
   symbol: geo_bitdw_0004F8
 
 geo_bitdw_000510:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000510
+  offset: 0xE000510
   symbol: geo_bitdw_000510
 
 geo_bitdw_000528:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000528
+  offset: 0xE000528
   symbol: geo_bitdw_000528
 
 geo_bitdw_000540:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000540
+  offset: 0xE000540
   symbol: geo_bitdw_000540
 
 geo_bitdw_000558:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000558
+  offset: 0xE000558
   symbol: geo_bitdw_000558
 
 geo_bitdw_000570:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000570
+  offset: 0xE000570
   symbol: geo_bitdw_000570
 
 geo_bitdw_000588:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000588
+  offset: 0xE000588
   symbol: geo_bitdw_000588
 
 geo_bitdw_0005A0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005A0
+  offset: 0xE0005A0
   symbol: geo_bitdw_0005A0
 
 geo_bitdw_0005B8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005B8
+  offset: 0xE0005B8
   symbol: geo_bitdw_0005B8
 
 geo_bitdw_0005D0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005D0
+  offset: 0xE0005D0
   symbol: geo_bitdw_0005D0
 
 geo_bitdw_0005E8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005E8
+  offset: 0xE0005E8
   symbol: geo_bitdw_0005E8
 
 geo_bitdw_000600:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000600
+  offset: 0xE000600
   symbol: geo_bitdw_000600
 
 geo_bitdw_000618:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000618
+  offset: 0xE000618
   symbol: geo_bitdw_000618

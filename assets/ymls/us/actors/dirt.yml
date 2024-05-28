@@ -5,15 +5,6 @@
   segments:
     - [0x03,  0x201410]
 
-dirt_particle:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0x2BDF8
-  format: RGBA16
-  symbol: dirt_seg3_texture_0302BDF8
-
 dirt_seg3_lights_0302BD68:
   type: LIGHTS
   size: 24
@@ -43,6 +34,15 @@ dirt_seg3_vertex_0302BDC8:
   count: 3
   offset: 0x2BDC8
   symbol: dirt_seg3_vertex_0302BDC8
+
+dirt_particle:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x2BDF8
+  format: RGBA16
+  symbol: dirt_seg3_texture_0302BDF8
 
 dirt_seg3_dl_0302BFF8:
   type: GFX

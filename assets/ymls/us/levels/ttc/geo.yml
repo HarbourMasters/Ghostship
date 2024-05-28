@@ -7,80 +7,80 @@
 
 ttc_geo_000240:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000240
+  offset: 0xE000240
   symbol: ttc_geo_000240
 
 ttc_geo_000258:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000258
+  offset: 0xE000258
   symbol: ttc_geo_000258
 
 ttc_geo_000270:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000270
+  offset: 0xE000270
   symbol: ttc_geo_000270
 
 ttc_geo_000288:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000288
+  offset: 0xE000288
   symbol: ttc_geo_000288
 
 ttc_geo_0002A8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002A8
+  offset: 0xE0002A8
   symbol: ttc_geo_0002A8
 
 ttc_geo_0002C8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002C8
+  offset: 0xE0002C8
   symbol: ttc_geo_0002C8
 
 ttc_geo_0002E0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002E0
+  offset: 0xE0002E0
   symbol: ttc_geo_0002E0
 
 ttc_geo_0002F8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002F8
+  offset: 0xE0002F8
   symbol: ttc_geo_0002F8
 
 ttc_geo_000310:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000310
+  offset: 0xE000310
   symbol: ttc_geo_000310
 
 ttc_geo_000328:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000328
+  offset: 0xE000328
   symbol: ttc_geo_000328
 
 ttc_geo_000340:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000340
+  offset: 0xE000340
   symbol: ttc_geo_000340
 
 ttc_geo_000358:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000358
+  offset: 0xE000358
   symbol: ttc_geo_000358
 
 ttc_geo_000370:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000370
+  offset: 0xE000370
   symbol: ttc_geo_000370
 
 ttc_geo_000388:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000388
+  offset: 0xE000388
   symbol: ttc_geo_000388
 
 ttc_geo_0003A0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0003A0
+  offset: 0xE0003A0
   symbol: ttc_geo_0003A0
 
 ttc_geo_0003B8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0003B8
+  offset: 0xE0003B8
   symbol: ttc_geo_0003B8

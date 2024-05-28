@@ -7,5 +7,5 @@
 
 metal_box_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0F000A30
+  offset: 0xF000A30
   symbol: metal_box_geo

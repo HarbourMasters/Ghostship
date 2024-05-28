@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x201410]
 
+white_particle_vertex:
+  type: VTX
+  count: 4
+  offset: 0x2C660
+  symbol: white_particle_vertex
+
 snow_particle:
   type: TEXTURE
   size: 512
@@ -13,12 +19,6 @@ snow_particle:
   offset: 0x2C6A0
   format: RGBA16
   symbol: white_particle_texture
-
-white_particle_vertex:
-  type: VTX
-  count: 4
-  offset: 0x2C660
-  symbol: white_particle_vertex
 
 white_particle_dl:
   type: GFX

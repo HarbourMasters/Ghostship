@@ -5,47 +5,6 @@
   segments:
     - [0x06,  0x1E7EE0]
 
-scuttlebug_eye:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x10108
-  format: RGBA16
-  symbol: scuttlebug_seg6_texture_06010108
-scuttlebug_iris:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x12908
-  format: RGBA16
-  symbol: scuttlebug_seg6_texture_06012908
-scuttlebug_left_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x10908
-  format: RGBA16
-  symbol: scuttlebug_seg6_texture_06010908
-scuttlebug_leg:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x13108
-  format: RGBA16
-  symbol: scuttlebug_seg6_texture_06013108
-scuttlebug_right_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x11908
-  format: RGBA16
-  symbol: scuttlebug_seg6_texture_06011908
-
 scuttlebug_lights_unused1:
   type: LIGHTS
   size: 24
@@ -57,6 +16,51 @@ scuttlebug_lights_unused2:
   size: 24
   offset: 0x100F0
   symbol: scuttlebug_lights_unused2
+
+scuttlebug_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x10108
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06010108
+
+scuttlebug_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x10908
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06010908
+
+scuttlebug_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x11908
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06011908
+
+scuttlebug_iris:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12908
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06012908
+
+scuttlebug_leg:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x13108
+  format: RGBA16
+  symbol: scuttlebug_seg6_texture_06013108
 
 scuttlebug_seg6_vertex_06013908:
   type: VTX

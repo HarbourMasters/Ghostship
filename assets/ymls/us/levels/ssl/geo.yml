@@ -7,55 +7,55 @@
 
 ssl_geo_0005C0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005C0
+  offset: 0xE0005C0
   symbol: ssl_geo_0005C0
 
 ssl_geo_0005D8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005D8
+  offset: 0xE0005D8
   symbol: ssl_geo_0005D8
 
 ssl_geo_000618:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000618
+  offset: 0xE000618
   symbol: ssl_geo_000618
 
 ssl_geo_000630:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000630
+  offset: 0xE000630
   symbol: ssl_geo_000630
 
 ssl_geo_000648:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000648
+  offset: 0xE000648
   symbol: ssl_geo_000648
 
 ssl_geo_000734:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000734
+  offset: 0xE000734
   symbol: ssl_geo_000734
 
 ssl_geo_000764:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000764
+  offset: 0xE000764
   symbol: ssl_geo_000764
 
 ssl_geo_000794:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000794
+  offset: 0xE000794
   symbol: ssl_geo_000794
 
 ssl_geo_0007AC:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0007AC
+  offset: 0xE0007AC
   symbol: ssl_geo_0007AC
 
 ssl_geo_0007CC:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0007CC
+  offset: 0xE0007CC
   symbol: ssl_geo_0007CC
 
 ssl_geo_00088C:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E00088C
+  offset: 0xE00088C
   symbol: ssl_geo_00088C

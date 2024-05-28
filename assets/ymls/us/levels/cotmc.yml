@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: cotmc_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x1000
   format: RGBA16
   symbol: cotmc_seg7_texture_07001000
+
 2:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@
   offset: 0x1800
   format: RGBA16
   symbol: cotmc_seg7_texture_07001800
+
 3:
   type: TEXTURE
   size: 2048
@@ -37,6 +40,7 @@
   offset: 0x2000
   format: RGBA16
   symbol: cotmc_seg7_texture_07002000
+
 4:
   type: TEXTURE
   size: 2048
@@ -45,6 +49,7 @@
   offset: 0x2800
   format: RGBA16
   symbol: cotmc_seg7_texture_07002800
+
 cotmc_seg7_lights_07003000:
   type: LIGHTS
   size: 24
@@ -521,28 +526,6 @@ cotmc_seg7_dl_07007D48:
   offset: 0x7D48
   symbol: cotmc_seg7_dl_07007D48
 
-cotmc_seg7_vertex_0700A1E0:
-  type: VTX
-  count: 16
-  offset: 0xA1E0
-  symbol: cotmc_seg7_vertex_0700A1E0
-
-cotmc_seg7_vertex_0700A2E0:
-  type: VTX
-  count: 15
-  offset: 0xA2E0
-  symbol: cotmc_seg7_vertex_0700A2E0
-
-cotmc_seg7_dl_0700A3D0:
-  type: GFX
-  offset: 0xA3D0
-  symbol: cotmc_seg7_dl_0700A3D0
-
-cotmc_seg7_dl_0700A4B8:
-  type: GFX
-  offset: 0xA4B8
-  symbol: cotmc_seg7_dl_0700A4B8
-
 cotmc_seg7_lights_07007E88:
   type: LIGHTS
   size: 24
@@ -744,6 +727,28 @@ cotmc_seg7_dl_0700A160:
   type: GFX
   offset: 0xA160
   symbol: cotmc_seg7_dl_0700A160
+
+cotmc_seg7_vertex_0700A1E0:
+  type: VTX
+  count: 16
+  offset: 0xA1E0
+  symbol: cotmc_seg7_vertex_0700A1E0
+
+cotmc_seg7_vertex_0700A2E0:
+  type: VTX
+  count: 15
+  offset: 0xA2E0
+  symbol: cotmc_seg7_vertex_0700A2E0
+
+cotmc_seg7_dl_0700A3D0:
+  type: GFX
+  offset: 0xA3D0
+  symbol: cotmc_seg7_dl_0700A3D0
+
+cotmc_seg7_dl_0700A4B8:
+  type: GFX
+  offset: 0xA4B8
+  symbol: cotmc_seg7_dl_0700A4B8
 
 cotmc_seg7_collision_level:
   type: SM64:COLLISION

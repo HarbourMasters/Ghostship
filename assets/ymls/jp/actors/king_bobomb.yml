@@ -5,95 +5,6 @@
   segments:
     - [0x05,  0x133120]
 
-bob-omb_buddy_body_unused:
-  type: TEXTURE
-  size: 8192
-  width: 64
-  height: 64
-  offset: 0x6478
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05006478
-bob-omb_buddy_left_side_unused:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x78
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05000078
-bob-omb_buddy_right_side_unused:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x1078
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05001078
-king_bob-omb_arm:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2078
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05002078
-king_bob-omb_body_unused:
-  type: TEXTURE
-  size: 8192
-  width: 64
-  height: 64
-  offset: 0x2878
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05002878
-king_bob-omb_crown_rim:
-  type: TEXTURE
-  size: 1024
-  width: 32
-  height: 16
-  offset: 0x6078
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05006078
-king_bob-omb_eyes:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4878
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05004878
-king_bob-omb_eyes_blink:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x5078
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05005078
-king_bob-omb_hand:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x5878
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05005878
-king_bob-omb_left_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x8478
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05008478
-king_bob-omb_right_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x9478
-  format: RGBA16
-  symbol: king_bobomb_seg5_texture_05009478
-
 king_bobomb_lights_unused1:
   type: LIGHTS
   size: 24
@@ -123,6 +34,105 @@ king_bobomb_lights_unused5:
   size: 24
   offset: 0x60
   symbol: king_bobomb_lights_unused5
+
+bob-omb_buddy_left_side_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x78
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05000078
+
+bob-omb_buddy_right_side_unused:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1078
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05001078
+
+king_bob-omb_arm:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2078
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05002078
+
+king_bob-omb_body_unused:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x2878
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05002878
+
+king_bob-omb_eyes:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4878
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05004878
+
+king_bob-omb_eyes_blink:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5078
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05005078
+
+king_bob-omb_hand:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5878
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05005878
+
+king_bob-omb_crown_rim:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x6078
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05006078
+
+bob-omb_buddy_body_unused:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x6478
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05006478
+
+king_bob-omb_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x8478
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05008478
+
+king_bob-omb_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9478
+  format: RGBA16
+  symbol: king_bobomb_seg5_texture_05009478
 
 king_bobomb_seg5_vertex_0500A478:
   type: VTX

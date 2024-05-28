@@ -5,55 +5,6 @@
   segments:
     - [0x06,  0x1C4230]
 
-piranha_plant_tongue:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x113F8
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_060113F8
-piranha_plant_skin:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x123F8
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_060123F8
-piranha_plant_stem:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x12BF8
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_06012BF8
-piranha_plant_bottom_lip:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x133F8
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_060133F8
-piranha_plant_tooth:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x13BF8
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_06013BF8
-piranha_plant_leaf:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x143F8
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_060143F8
-
 piranha_plant_seg6_lights_060113B0:
   type: LIGHTS
   size: 24
@@ -71,6 +22,60 @@ piranha_plant_seg6_lights_060113E0:
   size: 24
   offset: 0x113E0
   symbol: piranha_plant_seg6_lights_060113E0
+
+piranha_plant_tongue:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x113F8
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060113F8
+
+piranha_plant_skin:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x123F8
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060123F8
+
+piranha_plant_stem:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x12BF8
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_06012BF8
+
+piranha_plant_bottom_lip:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x133F8
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060133F8
+
+piranha_plant_tooth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x13BF8
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_06013BF8
+
+piranha_plant_leaf:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x143F8
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060143F8
 
 piranha_plant_seg6_vertex_060153F8:
   type: VTX

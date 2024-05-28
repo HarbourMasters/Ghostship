@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: bitfs_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x1000
   format: RGBA16
   symbol: bitfs_seg7_texture_07001000
+
 2:
   type: TEXTURE
   size: 2048
@@ -30,103 +32,1110 @@
   format: RGBA16
   symbol: bitfs_seg7_texture_07001800
 
-bitfs_seg7_vertex_0700FBA8:
+bitfs_seg7_vertex_07002000:
   type: VTX
-  count: 4
-  offset: 0xFBA8
-  symbol: bitfs_seg7_vertex_0700FBA8
+  count: 12
+  offset: 0x2000
+  symbol: bitfs_seg7_vertex_07002000
 
-bitfs_seg7_vertex_0700FBE8:
-  type: VTX
-  count: 10
-  offset: 0xFBE8
-  symbol: bitfs_seg7_vertex_0700FBE8
-
-bitfs_seg7_dl_0700FC88:
+bitfs_seg7_dl_070020C0:
   type: GFX
-  offset: 0xFC88
-  symbol: bitfs_seg7_dl_0700FC88
+  offset: 0x20C0
+  symbol: bitfs_seg7_dl_070020C0
 
-bitfs_seg7_dl_0700FCC0:
+bitfs_seg7_dl_07002118:
   type: GFX
-  offset: 0xFCC0
-  symbol: bitfs_seg7_dl_0700FCC0
+  offset: 0x2118
+  symbol: bitfs_seg7_dl_07002118
 
-bitfs_seg7_dl_0700FD08:
-  type: GFX
-  offset: 0xFD08
-  symbol: bitfs_seg7_dl_0700FD08
-
-bitfs_seg7_vertex_070111A8:
-  type: VTX
-  count: 4
-  offset: 0x111A8
-  symbol: bitfs_seg7_vertex_070111A8
-
-bitfs_seg7_vertex_070111E8:
-  type: VTX
-  count: 11
-  offset: 0x111E8
-  symbol: bitfs_seg7_vertex_070111E8
-
-bitfs_seg7_dl_07011298:
-  type: GFX
-  offset: 0x11298
-  symbol: bitfs_seg7_dl_07011298
-
-bitfs_seg7_dl_070112D0:
-  type: GFX
-  offset: 0x112D0
-  symbol: bitfs_seg7_dl_070112D0
-
-bitfs_seg7_dl_07011318:
-  type: GFX
-  offset: 0x11318
-  symbol: bitfs_seg7_dl_07011318
-
-bitfs_seg7_vertex_07010000:
+bitfs_seg7_vertex_07002188:
   type: VTX
   count: 16
-  offset: 0x10000
-  symbol: bitfs_seg7_vertex_07010000
+  offset: 0x2188
+  symbol: bitfs_seg7_vertex_07002188
 
-bitfs_seg7_dl_07010100:
-  type: GFX
-  offset: 0x10100
-  symbol: bitfs_seg7_dl_07010100
+bitfs_seg7_vertex_07002288:
+  type: VTX
+  count: 8
+  offset: 0x2288
+  symbol: bitfs_seg7_vertex_07002288
 
-bitfs_seg7_dl_07010168:
-  type: GFX
-  offset: 0x10168
-  symbol: bitfs_seg7_dl_07010168
-
-bitfs_seg7_vertex_0700EE10:
+bitfs_seg7_vertex_07002308:
   type: VTX
   count: 16
-  offset: 0xEE10
-  symbol: bitfs_seg7_vertex_0700EE10
+  offset: 0x2308
+  symbol: bitfs_seg7_vertex_07002308
 
-bitfs_seg7_vertex_0700EF10:
+bitfs_seg7_vertex_07002408:
   type: VTX
-  count: 14
-  offset: 0xEF10
-  symbol: bitfs_seg7_vertex_0700EF10
+  count: 8
+  offset: 0x2408
+  symbol: bitfs_seg7_vertex_07002408
 
-bitfs_seg7_vertex_0700EFF0:
+bitfs_seg7_vertex_07002488:
+  type: VTX
+  count: 16
+  offset: 0x2488
+  symbol: bitfs_seg7_vertex_07002488
+
+bitfs_seg7_vertex_07002588:
+  type: VTX
+  count: 16
+  offset: 0x2588
+  symbol: bitfs_seg7_vertex_07002588
+
+bitfs_seg7_vertex_07002688:
+  type: VTX
+  count: 16
+  offset: 0x2688
+  symbol: bitfs_seg7_vertex_07002688
+
+bitfs_seg7_vertex_07002788:
+  type: VTX
+  count: 6
+  offset: 0x2788
+  symbol: bitfs_seg7_vertex_07002788
+
+bitfs_seg7_dl_070027E8:
+  type: GFX
+  offset: 0x27E8
+  symbol: bitfs_seg7_dl_070027E8
+
+bitfs_seg7_dl_07002878:
+  type: GFX
+  offset: 0x2878
+  symbol: bitfs_seg7_dl_07002878
+
+bitfs_seg7_dl_07002908:
+  type: GFX
+  offset: 0x2908
+  symbol: bitfs_seg7_dl_07002908
+
+bitfs_seg7_dl_070029C8:
+  type: GFX
+  offset: 0x29C8
+  symbol: bitfs_seg7_dl_070029C8
+
+bitfs_seg7_dl_07002A78:
+  type: GFX
+  offset: 0x2A78
+  symbol: bitfs_seg7_dl_07002A78
+
+bitfs_seg7_vertex_07002B30:
+  type: VTX
+  count: 16
+  offset: 0x2B30
+  symbol: bitfs_seg7_vertex_07002B30
+
+bitfs_seg7_vertex_07002C30:
   type: VTX
   count: 15
-  offset: 0xEFF0
-  symbol: bitfs_seg7_vertex_0700EFF0
+  offset: 0x2C30
+  symbol: bitfs_seg7_vertex_07002C30
 
-bitfs_seg7_dl_0700F0E0:
-  type: GFX
-  offset: 0xF0E0
-  symbol: bitfs_seg7_dl_0700F0E0
+bitfs_seg7_vertex_07002D20:
+  type: VTX
+  count: 15
+  offset: 0x2D20
+  symbol: bitfs_seg7_vertex_07002D20
 
-bitfs_seg7_dl_0700F1C8:
+bitfs_seg7_vertex_07002E10:
+  type: VTX
+  count: 15
+  offset: 0x2E10
+  symbol: bitfs_seg7_vertex_07002E10
+
+bitfs_seg7_vertex_07002F00:
+  type: VTX
+  count: 7
+  offset: 0x2F00
+  symbol: bitfs_seg7_vertex_07002F00
+
+bitfs_seg7_vertex_07002F70:
+  type: VTX
+  count: 16
+  offset: 0x2F70
+  symbol: bitfs_seg7_vertex_07002F70
+
+bitfs_seg7_vertex_07003070:
+  type: VTX
+  count: 15
+  offset: 0x3070
+  symbol: bitfs_seg7_vertex_07003070
+
+bitfs_seg7_vertex_07003160:
+  type: VTX
+  count: 15
+  offset: 0x3160
+  symbol: bitfs_seg7_vertex_07003160
+
+bitfs_seg7_vertex_07003250:
+  type: VTX
+  count: 15
+  offset: 0x3250
+  symbol: bitfs_seg7_vertex_07003250
+
+bitfs_seg7_vertex_07003340:
+  type: VTX
+  count: 7
+  offset: 0x3340
+  symbol: bitfs_seg7_vertex_07003340
+
+bitfs_seg7_dl_070033E0:
   type: GFX
-  offset: 0xF1C8
-  symbol: bitfs_seg7_dl_0700F1C8
+  offset: 0x33E0
+  symbol: bitfs_seg7_dl_070033E0
+
+bitfs_seg7_dl_07003528:
+  type: GFX
+  offset: 0x3528
+  symbol: bitfs_seg7_dl_07003528
+
+bitfs_seg7_dl_07003670:
+  type: GFX
+  offset: 0x3670
+  symbol: bitfs_seg7_dl_07003670
+
+bitfs_seg7_vertex_07003700:
+  type: VTX
+  count: 8
+  offset: 0x3700
+  symbol: bitfs_seg7_vertex_07003700
+
+bitfs_seg7_vertex_07003780:
+  type: VTX
+  count: 15
+  offset: 0x3780
+  symbol: bitfs_seg7_vertex_07003780
+
+bitfs_seg7_vertex_07003870:
+  type: VTX
+  count: 12
+  offset: 0x3870
+  symbol: bitfs_seg7_vertex_07003870
+
+bitfs_seg7_vertex_07003930:
+  type: VTX
+  count: 16
+  offset: 0x3930
+  symbol: bitfs_seg7_vertex_07003930
+
+bitfs_seg7_vertex_07003A30:
+  type: VTX
+  count: 8
+  offset: 0x3A30
+  symbol: bitfs_seg7_vertex_07003A30
+
+bitfs_seg7_dl_07003AB0:
+  type: GFX
+  offset: 0x3AB0
+  symbol: bitfs_seg7_dl_07003AB0
+
+bitfs_seg7_dl_07003AF8:
+  type: GFX
+  offset: 0x3AF8
+  symbol: bitfs_seg7_dl_07003AF8
+
+bitfs_seg7_dl_07003BD0:
+  type: GFX
+  offset: 0x3BD0
+  symbol: bitfs_seg7_dl_07003BD0
+
+bitfs_seg7_dl_07003C60:
+  type: GFX
+  offset: 0x3C60
+  symbol: bitfs_seg7_dl_07003C60
+
+bitfs_seg7_vertex_07003CF8:
+  type: VTX
+  count: 16
+  offset: 0x3CF8
+  symbol: bitfs_seg7_vertex_07003CF8
+
+bitfs_seg7_vertex_07003DF8:
+  type: VTX
+  count: 14
+  offset: 0x3DF8
+  symbol: bitfs_seg7_vertex_07003DF8
+
+bitfs_seg7_vertex_07003ED8:
+  type: VTX
+  count: 15
+  offset: 0x3ED8
+  symbol: bitfs_seg7_vertex_07003ED8
+
+bitfs_seg7_dl_07003FC8:
+  type: GFX
+  offset: 0x3FC8
+  symbol: bitfs_seg7_dl_07003FC8
+
+bitfs_seg7_dl_070040B0:
+  type: GFX
+  offset: 0x40B0
+  symbol: bitfs_seg7_dl_070040B0
+
+bitfs_seg7_vertex_07004120:
+  type: VTX
+  count: 15
+  offset: 0x4120
+  symbol: bitfs_seg7_vertex_07004120
+
+bitfs_seg7_vertex_07004210:
+  type: VTX
+  count: 15
+  offset: 0x4210
+  symbol: bitfs_seg7_vertex_07004210
+
+bitfs_seg7_vertex_07004300:
+  type: VTX
+  count: 16
+  offset: 0x4300
+  symbol: bitfs_seg7_vertex_07004300
+
+bitfs_seg7_vertex_07004400:
+  type: VTX
+  count: 16
+  offset: 0x4400
+  symbol: bitfs_seg7_vertex_07004400
+
+bitfs_seg7_dl_07004500:
+  type: GFX
+  offset: 0x4500
+  symbol: bitfs_seg7_dl_07004500
+
+bitfs_seg7_dl_07004630:
+  type: GFX
+  offset: 0x4630
+  symbol: bitfs_seg7_dl_07004630
+
+bitfs_seg7_vertex_070046A0:
+  type: VTX
+  count: 15
+  offset: 0x46A0
+  symbol: bitfs_seg7_vertex_070046A0
+
+bitfs_seg7_vertex_07004790:
+  type: VTX
+  count: 16
+  offset: 0x4790
+  symbol: bitfs_seg7_vertex_07004790
+
+bitfs_seg7_vertex_07004890:
+  type: VTX
+  count: 16
+  offset: 0x4890
+  symbol: bitfs_seg7_vertex_07004890
+
+bitfs_seg7_vertex_07004990:
+  type: VTX
+  count: 16
+  offset: 0x4990
+  symbol: bitfs_seg7_vertex_07004990
+
+bitfs_seg7_vertex_07004A90:
+  type: VTX
+  count: 16
+  offset: 0x4A90
+  symbol: bitfs_seg7_vertex_07004A90
+
+bitfs_seg7_vertex_07004B90:
+  type: VTX
+  count: 16
+  offset: 0x4B90
+  symbol: bitfs_seg7_vertex_07004B90
+
+bitfs_seg7_vertex_07004C90:
+  type: VTX
+  count: 16
+  offset: 0x4C90
+  symbol: bitfs_seg7_vertex_07004C90
+
+bitfs_seg7_vertex_07004D90:
+  type: VTX
+  count: 8
+  offset: 0x4D90
+  symbol: bitfs_seg7_vertex_07004D90
+
+bitfs_seg7_vertex_07004E10:
+  type: VTX
+  count: 16
+  offset: 0x4E10
+  symbol: bitfs_seg7_vertex_07004E10
+
+bitfs_seg7_vertex_07004F10:
+  type: VTX
+  count: 16
+  offset: 0x4F10
+  symbol: bitfs_seg7_vertex_07004F10
+
+bitfs_seg7_vertex_07005010:
+  type: VTX
+  count: 14
+  offset: 0x5010
+  symbol: bitfs_seg7_vertex_07005010
+
+bitfs_seg7_vertex_070050F0:
+  type: VTX
+  count: 16
+  offset: 0x50F0
+  symbol: bitfs_seg7_vertex_070050F0
+
+bitfs_seg7_vertex_070051F0:
+  type: VTX
+  count: 14
+  offset: 0x51F0
+  symbol: bitfs_seg7_vertex_070051F0
+
+bitfs_seg7_vertex_070052D0:
+  type: VTX
+  count: 15
+  offset: 0x52D0
+  symbol: bitfs_seg7_vertex_070052D0
+
+bitfs_seg7_vertex_070053C0:
+  type: VTX
+  count: 14
+  offset: 0x53C0
+  symbol: bitfs_seg7_vertex_070053C0
+
+bitfs_seg7_vertex_070054A0:
+  type: VTX
+  count: 15
+  offset: 0x54A0
+  symbol: bitfs_seg7_vertex_070054A0
+
+bitfs_seg7_vertex_07005590:
+  type: VTX
+  count: 7
+  offset: 0x5590
+  symbol: bitfs_seg7_vertex_07005590
+
+bitfs_seg7_vertex_07005600:
+  type: VTX
+  count: 16
+  offset: 0x5600
+  symbol: bitfs_seg7_vertex_07005600
+
+bitfs_seg7_vertex_07005700:
+  type: VTX
+  count: 16
+  offset: 0x5700
+  symbol: bitfs_seg7_vertex_07005700
+
+bitfs_seg7_vertex_07005800:
+  type: VTX
+  count: 15
+  offset: 0x5800
+  symbol: bitfs_seg7_vertex_07005800
+
+bitfs_seg7_vertex_070058F0:
+  type: VTX
+  count: 12
+  offset: 0x58F0
+  symbol: bitfs_seg7_vertex_070058F0
+
+bitfs_seg7_vertex_070059B0:
+  type: VTX
+  count: 15
+  offset: 0x59B0
+  symbol: bitfs_seg7_vertex_070059B0
+
+bitfs_seg7_vertex_07005AA0:
+  type: VTX
+  count: 15
+  offset: 0x5AA0
+  symbol: bitfs_seg7_vertex_07005AA0
+
+bitfs_seg7_vertex_07005B90:
+  type: VTX
+  count: 16
+  offset: 0x5B90
+  symbol: bitfs_seg7_vertex_07005B90
+
+bitfs_seg7_vertex_07005C90:
+  type: VTX
+  count: 15
+  offset: 0x5C90
+  symbol: bitfs_seg7_vertex_07005C90
+
+bitfs_seg7_vertex_07005D80:
+  type: VTX
+  count: 14
+  offset: 0x5D80
+  symbol: bitfs_seg7_vertex_07005D80
+
+bitfs_seg7_vertex_07005E60:
+  type: VTX
+  count: 14
+  offset: 0x5E60
+  symbol: bitfs_seg7_vertex_07005E60
+
+bitfs_seg7_vertex_07005F40:
+  type: VTX
+  count: 12
+  offset: 0x5F40
+  symbol: bitfs_seg7_vertex_07005F40
+
+bitfs_seg7_vertex_07006000:
+  type: VTX
+  count: 15
+  offset: 0x6000
+  symbol: bitfs_seg7_vertex_07006000
+
+bitfs_seg7_vertex_070060F0:
+  type: VTX
+  count: 15
+  offset: 0x60F0
+  symbol: bitfs_seg7_vertex_070060F0
+
+bitfs_seg7_vertex_070061E0:
+  type: VTX
+  count: 4
+  offset: 0x61E0
+  symbol: bitfs_seg7_vertex_070061E0
+
+bitfs_seg7_dl_07006220:
+  type: GFX
+  offset: 0x6220
+  symbol: bitfs_seg7_dl_07006220
+
+bitfs_seg7_dl_070064A8:
+  type: GFX
+  offset: 0x64A8
+  symbol: bitfs_seg7_dl_070064A8
+
+bitfs_seg7_dl_07006790:
+  type: GFX
+  offset: 0x6790
+  symbol: bitfs_seg7_dl_07006790
+
+bitfs_seg7_dl_070067F8:
+  type: GFX
+  offset: 0x67F8
+  symbol: bitfs_seg7_dl_070067F8
+
+bitfs_seg7_dl_07006900:
+  type: GFX
+  offset: 0x6900
+  symbol: bitfs_seg7_dl_07006900
+
+bitfs_seg7_dl_07006AD8:
+  type: GFX
+  offset: 0x6AD8
+  symbol: bitfs_seg7_dl_07006AD8
+
+bitfs_seg7_dl_07006B90:
+  type: GFX
+  offset: 0x6B90
+  symbol: bitfs_seg7_dl_07006B90
+
+bitfs_seg7_vertex_07006C58:
+  type: VTX
+  count: 16
+  offset: 0x6C58
+  symbol: bitfs_seg7_vertex_07006C58
+
+bitfs_seg7_vertex_07006D58:
+  type: VTX
+  count: 16
+  offset: 0x6D58
+  symbol: bitfs_seg7_vertex_07006D58
+
+bitfs_seg7_vertex_07006E58:
+  type: VTX
+  count: 16
+  offset: 0x6E58
+  symbol: bitfs_seg7_vertex_07006E58
+
+bitfs_seg7_dl_07006F58:
+  type: GFX
+  offset: 0x6F58
+  symbol: bitfs_seg7_dl_07006F58
+
+bitfs_seg7_dl_07007008:
+  type: GFX
+  offset: 0x7008
+  symbol: bitfs_seg7_dl_07007008
+
+bitfs_seg7_dl_07007070:
+  type: GFX
+  offset: 0x7070
+  symbol: bitfs_seg7_dl_07007070
+
+bitfs_seg7_vertex_070070E8:
+  type: VTX
+  count: 14
+  offset: 0x70E8
+  symbol: bitfs_seg7_vertex_070070E8
+
+bitfs_seg7_vertex_070071C8:
+  type: VTX
+  count: 14
+  offset: 0x71C8
+  symbol: bitfs_seg7_vertex_070071C8
+
+bitfs_seg7_vertex_070072A8:
+  type: VTX
+  count: 16
+  offset: 0x72A8
+  symbol: bitfs_seg7_vertex_070072A8
+
+bitfs_seg7_vertex_070073A8:
+  type: VTX
+  count: 14
+  offset: 0x73A8
+  symbol: bitfs_seg7_vertex_070073A8
+
+bitfs_seg7_vertex_07007488:
+  type: VTX
+  count: 11
+  offset: 0x7488
+  symbol: bitfs_seg7_vertex_07007488
+
+bitfs_seg7_vertex_07007538:
+  type: VTX
+  count: 4
+  offset: 0x7538
+  symbol: bitfs_seg7_vertex_07007538
+
+bitfs_seg7_dl_07007578:
+  type: GFX
+  offset: 0x7578
+  symbol: bitfs_seg7_dl_07007578
+
+bitfs_seg7_dl_07007700:
+  type: GFX
+  offset: 0x7700
+  symbol: bitfs_seg7_dl_07007700
+
+bitfs_seg7_dl_07007720:
+  type: GFX
+  offset: 0x7720
+  symbol: bitfs_seg7_dl_07007720
+
+bitfs_seg7_vertex_07007798:
+  type: VTX
+  count: 16
+  offset: 0x7798
+  symbol: bitfs_seg7_vertex_07007798
+
+bitfs_seg7_vertex_07007898:
+  type: VTX
+  count: 4
+  offset: 0x7898
+  symbol: bitfs_seg7_vertex_07007898
+
+bitfs_seg7_dl_070078D8:
+  type: GFX
+  offset: 0x78D8
+  symbol: bitfs_seg7_dl_070078D8
+
+bitfs_seg7_dl_07007958:
+  type: GFX
+  offset: 0x7958
+  symbol: bitfs_seg7_dl_07007958
+
+bitfs_seg7_vertex_070079C8:
+  type: VTX
+  count: 16
+  offset: 0x79C8
+  symbol: bitfs_seg7_vertex_070079C8
+
+bitfs_seg7_vertex_07007AC8:
+  type: VTX
+  count: 4
+  offset: 0x7AC8
+  symbol: bitfs_seg7_vertex_07007AC8
+
+bitfs_seg7_vertex_07007B08:
+  type: VTX
+  count: 15
+  offset: 0x7B08
+  symbol: bitfs_seg7_vertex_07007B08
+
+bitfs_seg7_vertex_07007BF8:
+  type: VTX
+  count: 15
+  offset: 0x7BF8
+  symbol: bitfs_seg7_vertex_07007BF8
+
+bitfs_seg7_vertex_07007CE8:
+  type: VTX
+  count: 16
+  offset: 0x7CE8
+  symbol: bitfs_seg7_vertex_07007CE8
+
+bitfs_seg7_vertex_07007DE8:
+  type: VTX
+  count: 16
+  offset: 0x7DE8
+  symbol: bitfs_seg7_vertex_07007DE8
+
+bitfs_seg7_vertex_07007EE8:
+  type: VTX
+  count: 15
+  offset: 0x7EE8
+  symbol: bitfs_seg7_vertex_07007EE8
+
+bitfs_seg7_vertex_07007FD8:
+  type: VTX
+  count: 14
+  offset: 0x7FD8
+  symbol: bitfs_seg7_vertex_07007FD8
+
+bitfs_seg7_vertex_070080B8:
+  type: VTX
+  count: 16
+  offset: 0x80B8
+  symbol: bitfs_seg7_vertex_070080B8
+
+bitfs_seg7_vertex_070081B8:
+  type: VTX
+  count: 15
+  offset: 0x81B8
+  symbol: bitfs_seg7_vertex_070081B8
+
+bitfs_seg7_vertex_070082A8:
+  type: VTX
+  count: 12
+  offset: 0x82A8
+  symbol: bitfs_seg7_vertex_070082A8
+
+bitfs_seg7_vertex_07008368:
+  type: VTX
+  count: 16
+  offset: 0x8368
+  symbol: bitfs_seg7_vertex_07008368
+
+bitfs_seg7_vertex_07008468:
+  type: VTX
+  count: 14
+  offset: 0x8468
+  symbol: bitfs_seg7_vertex_07008468
+
+bitfs_seg7_vertex_07008548:
+  type: VTX
+  count: 6
+  offset: 0x8548
+  symbol: bitfs_seg7_vertex_07008548
+
+bitfs_seg7_vertex_070085A8:
+  type: VTX
+  count: 16
+  offset: 0x85A8
+  symbol: bitfs_seg7_vertex_070085A8
+
+bitfs_seg7_vertex_070086A8:
+  type: VTX
+  count: 8
+  offset: 0x86A8
+  symbol: bitfs_seg7_vertex_070086A8
+
+bitfs_seg7_vertex_07008728:
+  type: VTX
+  count: 16
+  offset: 0x8728
+  symbol: bitfs_seg7_vertex_07008728
+
+bitfs_seg7_vertex_07008828:
+  type: VTX
+  count: 16
+  offset: 0x8828
+  symbol: bitfs_seg7_vertex_07008828
+
+bitfs_seg7_vertex_07008928:
+  type: VTX
+  count: 12
+  offset: 0x8928
+  symbol: bitfs_seg7_vertex_07008928
+
+bitfs_seg7_dl_070089E8:
+  type: GFX
+  offset: 0x89E8
+  symbol: bitfs_seg7_dl_070089E8
+
+bitfs_seg7_dl_07008A68:
+  type: GFX
+  offset: 0x8A68
+  symbol: bitfs_seg7_dl_07008A68
+
+bitfs_seg7_dl_07008CE0:
+  type: GFX
+  offset: 0x8CE0
+  symbol: bitfs_seg7_dl_07008CE0
+
+bitfs_seg7_dl_07008DB8:
+  type: GFX
+  offset: 0x8DB8
+  symbol: bitfs_seg7_dl_07008DB8
+
+bitfs_seg7_dl_07008E20:
+  type: GFX
+  offset: 0x8E20
+  symbol: bitfs_seg7_dl_07008E20
+
+bitfs_seg7_dl_07008E68:
+  type: GFX
+  offset: 0x8E68
+  symbol: bitfs_seg7_dl_07008E68
+
+bitfs_seg7_dl_07008F18:
+  type: GFX
+  offset: 0x8F18
+  symbol: bitfs_seg7_dl_07008F18
+
+bitfs_seg7_dl_07008F48:
+  type: GFX
+  offset: 0x8F48
+  symbol: bitfs_seg7_dl_07008F48
+
+bitfs_seg7_vertex_07009000:
+  type: VTX
+  count: 4
+  offset: 0x9000
+  symbol: bitfs_seg7_vertex_07009000
+
+bitfs_seg7_vertex_07009040:
+  type: VTX
+  count: 16
+  offset: 0x9040
+  symbol: bitfs_seg7_vertex_07009040
+
+bitfs_seg7_dl_07009140:
+  type: GFX
+  offset: 0x9140
+  symbol: bitfs_seg7_dl_07009140
+
+bitfs_seg7_dl_07009178:
+  type: GFX
+  offset: 0x9178
+  symbol: bitfs_seg7_dl_07009178
+
+bitfs_seg7_dl_070091E0:
+  type: GFX
+  offset: 0x91E0
+  symbol: bitfs_seg7_dl_070091E0
+
+bitfs_seg7_vertex_07009258:
+  type: VTX
+  count: 16
+  offset: 0x9258
+  symbol: bitfs_seg7_vertex_07009258
+
+bitfs_seg7_vertex_07009358:
+  type: VTX
+  count: 16
+  offset: 0x9358
+  symbol: bitfs_seg7_vertex_07009358
+
+bitfs_seg7_vertex_07009458:
+  type: VTX
+  count: 8
+  offset: 0x9458
+  symbol: bitfs_seg7_vertex_07009458
+
+bitfs_seg7_dl_070094D8:
+  type: GFX
+  offset: 0x94D8
+  symbol: bitfs_seg7_dl_070094D8
+
+bitfs_seg7_dl_07009588:
+  type: GFX
+  offset: 0x9588
+  symbol: bitfs_seg7_dl_07009588
+
+bitfs_seg7_dl_070095E0:
+  type: GFX
+  offset: 0x95E0
+  symbol: bitfs_seg7_dl_070095E0
+
+bitfs_seg7_vertex_07009670:
+  type: VTX
+  count: 16
+  offset: 0x9670
+  symbol: bitfs_seg7_vertex_07009670
+
+bitfs_seg7_vertex_07009770:
+  type: VTX
+  count: 16
+  offset: 0x9770
+  symbol: bitfs_seg7_vertex_07009770
+
+bitfs_seg7_vertex_07009870:
+  type: VTX
+  count: 15
+  offset: 0x9870
+  symbol: bitfs_seg7_vertex_07009870
+
+bitfs_seg7_vertex_07009960:
+  type: VTX
+  count: 16
+  offset: 0x9960
+  symbol: bitfs_seg7_vertex_07009960
+
+bitfs_seg7_vertex_07009A60:
+  type: VTX
+  count: 15
+  offset: 0x9A60
+  symbol: bitfs_seg7_vertex_07009A60
+
+bitfs_seg7_vertex_07009B50:
+  type: VTX
+  count: 15
+  offset: 0x9B50
+  symbol: bitfs_seg7_vertex_07009B50
+
+bitfs_seg7_vertex_07009C40:
+  type: VTX
+  count: 15
+  offset: 0x9C40
+  symbol: bitfs_seg7_vertex_07009C40
+
+bitfs_seg7_vertex_07009D30:
+  type: VTX
+  count: 16
+  offset: 0x9D30
+  symbol: bitfs_seg7_vertex_07009D30
+
+bitfs_seg7_vertex_07009E30:
+  type: VTX
+  count: 16
+  offset: 0x9E30
+  symbol: bitfs_seg7_vertex_07009E30
+
+bitfs_seg7_vertex_07009F30:
+  type: VTX
+  count: 14
+  offset: 0x9F30
+  symbol: bitfs_seg7_vertex_07009F30
+
+bitfs_seg7_vertex_0700A010:
+  type: VTX
+  count: 15
+  offset: 0xA010
+  symbol: bitfs_seg7_vertex_0700A010
+
+bitfs_seg7_vertex_0700A100:
+  type: VTX
+  count: 15
+  offset: 0xA100
+  symbol: bitfs_seg7_vertex_0700A100
+
+bitfs_seg7_vertex_0700A1F0:
+  type: VTX
+  count: 15
+  offset: 0xA1F0
+  symbol: bitfs_seg7_vertex_0700A1F0
+
+bitfs_seg7_vertex_0700A2E0:
+  type: VTX
+  count: 16
+  offset: 0xA2E0
+  symbol: bitfs_seg7_vertex_0700A2E0
+
+bitfs_seg7_vertex_0700A3E0:
+  type: VTX
+  count: 12
+  offset: 0xA3E0
+  symbol: bitfs_seg7_vertex_0700A3E0
+
+bitfs_seg7_vertex_0700A4A0:
+  type: VTX
+  count: 8
+  offset: 0xA4A0
+  symbol: bitfs_seg7_vertex_0700A4A0
+
+bitfs_seg7_dl_0700A520:
+  type: GFX
+  offset: 0xA520
+  symbol: bitfs_seg7_dl_0700A520
+
+bitfs_seg7_dl_0700A9D0:
+  type: GFX
+  offset: 0xA9D0
+  symbol: bitfs_seg7_dl_0700A9D0
+
+bitfs_seg7_dl_0700AA00:
+  type: GFX
+  offset: 0xAA00
+  symbol: bitfs_seg7_dl_0700AA00
+
+bitfs_seg7_vertex_0700AA78:
+  type: VTX
+  count: 12
+  offset: 0xAA78
+  symbol: bitfs_seg7_vertex_0700AA78
+
+bitfs_seg7_dl_0700AB38:
+  type: GFX
+  offset: 0xAB38
+  symbol: bitfs_seg7_dl_0700AB38
+
+bitfs_seg7_dl_0700AB90:
+  type: GFX
+  offset: 0xAB90
+  symbol: bitfs_seg7_dl_0700AB90
+
+bitfs_seg7_vertex_0700AC00:
+  type: VTX
+  count: 16
+  offset: 0xAC00
+  symbol: bitfs_seg7_vertex_0700AC00
+
+bitfs_seg7_vertex_0700AD00:
+  type: VTX
+  count: 16
+  offset: 0xAD00
+  symbol: bitfs_seg7_vertex_0700AD00
+
+bitfs_seg7_vertex_0700AE00:
+  type: VTX
+  count: 14
+  offset: 0xAE00
+  symbol: bitfs_seg7_vertex_0700AE00
+
+bitfs_seg7_vertex_0700AEE0:
+  type: VTX
+  count: 15
+  offset: 0xAEE0
+  symbol: bitfs_seg7_vertex_0700AEE0
+
+bitfs_seg7_vertex_0700AFD0:
+  type: VTX
+  count: 15
+  offset: 0xAFD0
+  symbol: bitfs_seg7_vertex_0700AFD0
+
+bitfs_seg7_vertex_0700B0C0:
+  type: VTX
+  count: 15
+  offset: 0xB0C0
+  symbol: bitfs_seg7_vertex_0700B0C0
+
+bitfs_seg7_vertex_0700B1B0:
+  type: VTX
+  count: 11
+  offset: 0xB1B0
+  symbol: bitfs_seg7_vertex_0700B1B0
+
+bitfs_seg7_vertex_0700B260:
+  type: VTX
+  count: 16
+  offset: 0xB260
+  symbol: bitfs_seg7_vertex_0700B260
+
+bitfs_seg7_vertex_0700B360:
+  type: VTX
+  count: 15
+  offset: 0xB360
+  symbol: bitfs_seg7_vertex_0700B360
+
+bitfs_seg7_vertex_0700B450:
+  type: VTX
+  count: 8
+  offset: 0xB450
+  symbol: bitfs_seg7_vertex_0700B450
+
+bitfs_seg7_vertex_0700B4D0:
+  type: VTX
+  count: 16
+  offset: 0xB4D0
+  symbol: bitfs_seg7_vertex_0700B4D0
+
+bitfs_seg7_vertex_0700B5D0:
+  type: VTX
+  count: 15
+  offset: 0xB5D0
+  symbol: bitfs_seg7_vertex_0700B5D0
+
+bitfs_seg7_vertex_0700B6C0:
+  type: VTX
+  count: 15
+  offset: 0xB6C0
+  symbol: bitfs_seg7_vertex_0700B6C0
+
+bitfs_seg7_vertex_0700B7B0:
+  type: VTX
+  count: 15
+  offset: 0xB7B0
+  symbol: bitfs_seg7_vertex_0700B7B0
+
+bitfs_seg7_vertex_0700B8A0:
+  type: VTX
+  count: 7
+  offset: 0xB8A0
+  symbol: bitfs_seg7_vertex_0700B8A0
+
+bitfs_seg7_vertex_0700B910:
+  type: VTX
+  count: 16
+  offset: 0xB910
+  symbol: bitfs_seg7_vertex_0700B910
+
+bitfs_seg7_vertex_0700BA10:
+  type: VTX
+  count: 4
+  offset: 0xBA10
+  symbol: bitfs_seg7_vertex_0700BA10
+
+bitfs_seg7_dl_0700BA50:
+  type: GFX
+  offset: 0xBA50
+  symbol: bitfs_seg7_dl_0700BA50
+
+bitfs_seg7_dl_0700BC38:
+  type: GFX
+  offset: 0xBC38
+  symbol: bitfs_seg7_dl_0700BC38
+
+bitfs_seg7_dl_0700BD10:
+  type: GFX
+  offset: 0xBD10
+  symbol: bitfs_seg7_dl_0700BD10
+
+bitfs_seg7_dl_0700BE58:
+  type: GFX
+  offset: 0xBE58
+  symbol: bitfs_seg7_dl_0700BE58
+
+bitfs_seg7_dl_0700BED8:
+  type: GFX
+  offset: 0xBED8
+  symbol: bitfs_seg7_dl_0700BED8
+
+bitfs_seg7_vertex_0700BF90:
+  type: VTX
+  count: 16
+  offset: 0xBF90
+  symbol: bitfs_seg7_vertex_0700BF90
+
+bitfs_seg7_vertex_0700C090:
+  type: VTX
+  count: 16
+  offset: 0xC090
+  symbol: bitfs_seg7_vertex_0700C090
+
+bitfs_seg7_vertex_0700C190:
+  type: VTX
+  count: 14
+  offset: 0xC190
+  symbol: bitfs_seg7_vertex_0700C190
+
+bitfs_seg7_vertex_0700C270:
+  type: VTX
+  count: 4
+  offset: 0xC270
+  symbol: bitfs_seg7_vertex_0700C270
+
+bitfs_seg7_dl_0700C2B0:
+  type: GFX
+  offset: 0xC2B0
+  symbol: bitfs_seg7_dl_0700C2B0
+
+bitfs_seg7_dl_0700C3C0:
+  type: GFX
+  offset: 0xC3C0
+  symbol: bitfs_seg7_dl_0700C3C0
 
 bitfs_seg7_lights_0700C430:
   type: LIGHTS
@@ -401,665 +1410,6 @@ bitfs_seg7_dl_0700EC78:
   offset: 0xEC78
   symbol: bitfs_seg7_dl_0700EC78
 
-bitfs_seg7_vertex_070070E8:
-  type: VTX
-  count: 14
-  offset: 0x70E8
-  symbol: bitfs_seg7_vertex_070070E8
-
-bitfs_seg7_vertex_070071C8:
-  type: VTX
-  count: 14
-  offset: 0x71C8
-  symbol: bitfs_seg7_vertex_070071C8
-
-bitfs_seg7_vertex_070072A8:
-  type: VTX
-  count: 16
-  offset: 0x72A8
-  symbol: bitfs_seg7_vertex_070072A8
-
-bitfs_seg7_vertex_070073A8:
-  type: VTX
-  count: 14
-  offset: 0x73A8
-  symbol: bitfs_seg7_vertex_070073A8
-
-bitfs_seg7_vertex_07007488:
-  type: VTX
-  count: 11
-  offset: 0x7488
-  symbol: bitfs_seg7_vertex_07007488
-
-bitfs_seg7_vertex_07007538:
-  type: VTX
-  count: 4
-  offset: 0x7538
-  symbol: bitfs_seg7_vertex_07007538
-
-bitfs_seg7_dl_07007578:
-  type: GFX
-  offset: 0x7578
-  symbol: bitfs_seg7_dl_07007578
-
-bitfs_seg7_dl_07007700:
-  type: GFX
-  offset: 0x7700
-  symbol: bitfs_seg7_dl_07007700
-
-bitfs_seg7_dl_07007720:
-  type: GFX
-  offset: 0x7720
-  symbol: bitfs_seg7_dl_07007720
-
-bitfs_seg7_vertex_070079C8:
-  type: VTX
-  count: 16
-  offset: 0x79C8
-  symbol: bitfs_seg7_vertex_070079C8
-
-bitfs_seg7_vertex_07007AC8:
-  type: VTX
-  count: 4
-  offset: 0x7AC8
-  symbol: bitfs_seg7_vertex_07007AC8
-
-bitfs_seg7_vertex_07007B08:
-  type: VTX
-  count: 15
-  offset: 0x7B08
-  symbol: bitfs_seg7_vertex_07007B08
-
-bitfs_seg7_vertex_07007BF8:
-  type: VTX
-  count: 15
-  offset: 0x7BF8
-  symbol: bitfs_seg7_vertex_07007BF8
-
-bitfs_seg7_vertex_07007CE8:
-  type: VTX
-  count: 16
-  offset: 0x7CE8
-  symbol: bitfs_seg7_vertex_07007CE8
-
-bitfs_seg7_vertex_07007DE8:
-  type: VTX
-  count: 16
-  offset: 0x7DE8
-  symbol: bitfs_seg7_vertex_07007DE8
-
-bitfs_seg7_vertex_07007EE8:
-  type: VTX
-  count: 15
-  offset: 0x7EE8
-  symbol: bitfs_seg7_vertex_07007EE8
-
-bitfs_seg7_vertex_07007FD8:
-  type: VTX
-  count: 14
-  offset: 0x7FD8
-  symbol: bitfs_seg7_vertex_07007FD8
-
-bitfs_seg7_vertex_070080B8:
-  type: VTX
-  count: 16
-  offset: 0x80B8
-  symbol: bitfs_seg7_vertex_070080B8
-
-bitfs_seg7_vertex_070081B8:
-  type: VTX
-  count: 15
-  offset: 0x81B8
-  symbol: bitfs_seg7_vertex_070081B8
-
-bitfs_seg7_vertex_070082A8:
-  type: VTX
-  count: 12
-  offset: 0x82A8
-  symbol: bitfs_seg7_vertex_070082A8
-
-bitfs_seg7_vertex_07008368:
-  type: VTX
-  count: 16
-  offset: 0x8368
-  symbol: bitfs_seg7_vertex_07008368
-
-bitfs_seg7_vertex_07008468:
-  type: VTX
-  count: 14
-  offset: 0x8468
-  symbol: bitfs_seg7_vertex_07008468
-
-bitfs_seg7_vertex_07008548:
-  type: VTX
-  count: 6
-  offset: 0x8548
-  symbol: bitfs_seg7_vertex_07008548
-
-bitfs_seg7_vertex_070085A8:
-  type: VTX
-  count: 16
-  offset: 0x85A8
-  symbol: bitfs_seg7_vertex_070085A8
-
-bitfs_seg7_vertex_070086A8:
-  type: VTX
-  count: 8
-  offset: 0x86A8
-  symbol: bitfs_seg7_vertex_070086A8
-
-bitfs_seg7_vertex_07008728:
-  type: VTX
-  count: 16
-  offset: 0x8728
-  symbol: bitfs_seg7_vertex_07008728
-
-bitfs_seg7_vertex_07008828:
-  type: VTX
-  count: 16
-  offset: 0x8828
-  symbol: bitfs_seg7_vertex_07008828
-
-bitfs_seg7_vertex_07008928:
-  type: VTX
-  count: 12
-  offset: 0x8928
-  symbol: bitfs_seg7_vertex_07008928
-
-bitfs_seg7_dl_070089E8:
-  type: GFX
-  offset: 0x89E8
-  symbol: bitfs_seg7_dl_070089E8
-
-bitfs_seg7_dl_07008A68:
-  type: GFX
-  offset: 0x8A68
-  symbol: bitfs_seg7_dl_07008A68
-
-bitfs_seg7_dl_07008CE0:
-  type: GFX
-  offset: 0x8CE0
-  symbol: bitfs_seg7_dl_07008CE0
-
-bitfs_seg7_dl_07008DB8:
-  type: GFX
-  offset: 0x8DB8
-  symbol: bitfs_seg7_dl_07008DB8
-
-bitfs_seg7_dl_07008E20:
-  type: GFX
-  offset: 0x8E20
-  symbol: bitfs_seg7_dl_07008E20
-
-bitfs_seg7_dl_07008E68:
-  type: GFX
-  offset: 0x8E68
-  symbol: bitfs_seg7_dl_07008E68
-
-bitfs_seg7_dl_07008F18:
-  type: GFX
-  offset: 0x8F18
-  symbol: bitfs_seg7_dl_07008F18
-
-bitfs_seg7_dl_07008F48:
-  type: GFX
-  offset: 0x8F48
-  symbol: bitfs_seg7_dl_07008F48
-
-bitfs_seg7_vertex_070046A0:
-  type: VTX
-  count: 15
-  offset: 0x46A0
-  symbol: bitfs_seg7_vertex_070046A0
-
-bitfs_seg7_vertex_07004790:
-  type: VTX
-  count: 16
-  offset: 0x4790
-  symbol: bitfs_seg7_vertex_07004790
-
-bitfs_seg7_vertex_07004890:
-  type: VTX
-  count: 16
-  offset: 0x4890
-  symbol: bitfs_seg7_vertex_07004890
-
-bitfs_seg7_vertex_07004990:
-  type: VTX
-  count: 16
-  offset: 0x4990
-  symbol: bitfs_seg7_vertex_07004990
-
-bitfs_seg7_vertex_07004A90:
-  type: VTX
-  count: 16
-  offset: 0x4A90
-  symbol: bitfs_seg7_vertex_07004A90
-
-bitfs_seg7_vertex_07004B90:
-  type: VTX
-  count: 16
-  offset: 0x4B90
-  symbol: bitfs_seg7_vertex_07004B90
-
-bitfs_seg7_vertex_07004C90:
-  type: VTX
-  count: 16
-  offset: 0x4C90
-  symbol: bitfs_seg7_vertex_07004C90
-
-bitfs_seg7_vertex_07004D90:
-  type: VTX
-  count: 8
-  offset: 0x4D90
-  symbol: bitfs_seg7_vertex_07004D90
-
-bitfs_seg7_vertex_07004E10:
-  type: VTX
-  count: 16
-  offset: 0x4E10
-  symbol: bitfs_seg7_vertex_07004E10
-
-bitfs_seg7_vertex_07004F10:
-  type: VTX
-  count: 16
-  offset: 0x4F10
-  symbol: bitfs_seg7_vertex_07004F10
-
-bitfs_seg7_vertex_07005010:
-  type: VTX
-  count: 14
-  offset: 0x5010
-  symbol: bitfs_seg7_vertex_07005010
-
-bitfs_seg7_vertex_070050F0:
-  type: VTX
-  count: 16
-  offset: 0x50F0
-  symbol: bitfs_seg7_vertex_070050F0
-
-bitfs_seg7_vertex_070051F0:
-  type: VTX
-  count: 14
-  offset: 0x51F0
-  symbol: bitfs_seg7_vertex_070051F0
-
-bitfs_seg7_vertex_070052D0:
-  type: VTX
-  count: 15
-  offset: 0x52D0
-  symbol: bitfs_seg7_vertex_070052D0
-
-bitfs_seg7_vertex_070053C0:
-  type: VTX
-  count: 14
-  offset: 0x53C0
-  symbol: bitfs_seg7_vertex_070053C0
-
-bitfs_seg7_vertex_070054A0:
-  type: VTX
-  count: 15
-  offset: 0x54A0
-  symbol: bitfs_seg7_vertex_070054A0
-
-bitfs_seg7_vertex_07005590:
-  type: VTX
-  count: 7
-  offset: 0x5590
-  symbol: bitfs_seg7_vertex_07005590
-
-bitfs_seg7_vertex_07005600:
-  type: VTX
-  count: 16
-  offset: 0x5600
-  symbol: bitfs_seg7_vertex_07005600
-
-bitfs_seg7_vertex_07005700:
-  type: VTX
-  count: 16
-  offset: 0x5700
-  symbol: bitfs_seg7_vertex_07005700
-
-bitfs_seg7_vertex_07005800:
-  type: VTX
-  count: 15
-  offset: 0x5800
-  symbol: bitfs_seg7_vertex_07005800
-
-bitfs_seg7_vertex_070058F0:
-  type: VTX
-  count: 12
-  offset: 0x58F0
-  symbol: bitfs_seg7_vertex_070058F0
-
-bitfs_seg7_vertex_070059B0:
-  type: VTX
-  count: 15
-  offset: 0x59B0
-  symbol: bitfs_seg7_vertex_070059B0
-
-bitfs_seg7_vertex_07005AA0:
-  type: VTX
-  count: 15
-  offset: 0x5AA0
-  symbol: bitfs_seg7_vertex_07005AA0
-
-bitfs_seg7_vertex_07005B90:
-  type: VTX
-  count: 16
-  offset: 0x5B90
-  symbol: bitfs_seg7_vertex_07005B90
-
-bitfs_seg7_vertex_07005C90:
-  type: VTX
-  count: 15
-  offset: 0x5C90
-  symbol: bitfs_seg7_vertex_07005C90
-
-bitfs_seg7_vertex_07005D80:
-  type: VTX
-  count: 14
-  offset: 0x5D80
-  symbol: bitfs_seg7_vertex_07005D80
-
-bitfs_seg7_vertex_07005E60:
-  type: VTX
-  count: 14
-  offset: 0x5E60
-  symbol: bitfs_seg7_vertex_07005E60
-
-bitfs_seg7_vertex_07005F40:
-  type: VTX
-  count: 12
-  offset: 0x5F40
-  symbol: bitfs_seg7_vertex_07005F40
-
-bitfs_seg7_vertex_07006000:
-  type: VTX
-  count: 15
-  offset: 0x6000
-  symbol: bitfs_seg7_vertex_07006000
-
-bitfs_seg7_vertex_070060F0:
-  type: VTX
-  count: 15
-  offset: 0x60F0
-  symbol: bitfs_seg7_vertex_070060F0
-
-bitfs_seg7_vertex_070061E0:
-  type: VTX
-  count: 4
-  offset: 0x61E0
-  symbol: bitfs_seg7_vertex_070061E0
-
-bitfs_seg7_dl_07006220:
-  type: GFX
-  offset: 0x6220
-  symbol: bitfs_seg7_dl_07006220
-
-bitfs_seg7_dl_070064A8:
-  type: GFX
-  offset: 0x64A8
-  symbol: bitfs_seg7_dl_070064A8
-
-bitfs_seg7_dl_07006790:
-  type: GFX
-  offset: 0x6790
-  symbol: bitfs_seg7_dl_07006790
-
-bitfs_seg7_dl_070067F8:
-  type: GFX
-  offset: 0x67F8
-  symbol: bitfs_seg7_dl_070067F8
-
-bitfs_seg7_dl_07006900:
-  type: GFX
-  offset: 0x6900
-  symbol: bitfs_seg7_dl_07006900
-
-bitfs_seg7_dl_07006AD8:
-  type: GFX
-  offset: 0x6AD8
-  symbol: bitfs_seg7_dl_07006AD8
-
-bitfs_seg7_dl_07006B90:
-  type: GFX
-  offset: 0x6B90
-  symbol: bitfs_seg7_dl_07006B90
-
-bitfs_seg7_vertex_0700AC00:
-  type: VTX
-  count: 16
-  offset: 0xAC00
-  symbol: bitfs_seg7_vertex_0700AC00
-
-bitfs_seg7_vertex_0700AD00:
-  type: VTX
-  count: 16
-  offset: 0xAD00
-  symbol: bitfs_seg7_vertex_0700AD00
-
-bitfs_seg7_vertex_0700AE00:
-  type: VTX
-  count: 14
-  offset: 0xAE00
-  symbol: bitfs_seg7_vertex_0700AE00
-
-bitfs_seg7_vertex_0700AEE0:
-  type: VTX
-  count: 15
-  offset: 0xAEE0
-  symbol: bitfs_seg7_vertex_0700AEE0
-
-bitfs_seg7_vertex_0700AFD0:
-  type: VTX
-  count: 15
-  offset: 0xAFD0
-  symbol: bitfs_seg7_vertex_0700AFD0
-
-bitfs_seg7_vertex_0700B0C0:
-  type: VTX
-  count: 15
-  offset: 0xB0C0
-  symbol: bitfs_seg7_vertex_0700B0C0
-
-bitfs_seg7_vertex_0700B1B0:
-  type: VTX
-  count: 11
-  offset: 0xB1B0
-  symbol: bitfs_seg7_vertex_0700B1B0
-
-bitfs_seg7_vertex_0700B260:
-  type: VTX
-  count: 16
-  offset: 0xB260
-  symbol: bitfs_seg7_vertex_0700B260
-
-bitfs_seg7_vertex_0700B360:
-  type: VTX
-  count: 15
-  offset: 0xB360
-  symbol: bitfs_seg7_vertex_0700B360
-
-bitfs_seg7_vertex_0700B450:
-  type: VTX
-  count: 8
-  offset: 0xB450
-  symbol: bitfs_seg7_vertex_0700B450
-
-bitfs_seg7_vertex_0700B4D0:
-  type: VTX
-  count: 16
-  offset: 0xB4D0
-  symbol: bitfs_seg7_vertex_0700B4D0
-
-bitfs_seg7_vertex_0700B5D0:
-  type: VTX
-  count: 15
-  offset: 0xB5D0
-  symbol: bitfs_seg7_vertex_0700B5D0
-
-bitfs_seg7_vertex_0700B6C0:
-  type: VTX
-  count: 15
-  offset: 0xB6C0
-  symbol: bitfs_seg7_vertex_0700B6C0
-
-bitfs_seg7_vertex_0700B7B0:
-  type: VTX
-  count: 15
-  offset: 0xB7B0
-  symbol: bitfs_seg7_vertex_0700B7B0
-
-bitfs_seg7_vertex_0700B8A0:
-  type: VTX
-  count: 7
-  offset: 0xB8A0
-  symbol: bitfs_seg7_vertex_0700B8A0
-
-bitfs_seg7_vertex_0700B910:
-  type: VTX
-  count: 16
-  offset: 0xB910
-  symbol: bitfs_seg7_vertex_0700B910
-
-bitfs_seg7_vertex_0700BA10:
-  type: VTX
-  count: 4
-  offset: 0xBA10
-  symbol: bitfs_seg7_vertex_0700BA10
-
-bitfs_seg7_dl_0700BA50:
-  type: GFX
-  offset: 0xBA50
-  symbol: bitfs_seg7_dl_0700BA50
-
-bitfs_seg7_dl_0700BC38:
-  type: GFX
-  offset: 0xBC38
-  symbol: bitfs_seg7_dl_0700BC38
-
-bitfs_seg7_dl_0700BD10:
-  type: GFX
-  offset: 0xBD10
-  symbol: bitfs_seg7_dl_0700BD10
-
-bitfs_seg7_dl_0700BE58:
-  type: GFX
-  offset: 0xBE58
-  symbol: bitfs_seg7_dl_0700BE58
-
-bitfs_seg7_dl_0700BED8:
-  type: GFX
-  offset: 0xBED8
-  symbol: bitfs_seg7_dl_0700BED8
-
-bitfs_seg7_vertex_07004120:
-  type: VTX
-  count: 15
-  offset: 0x4120
-  symbol: bitfs_seg7_vertex_07004120
-
-bitfs_seg7_vertex_07004210:
-  type: VTX
-  count: 15
-  offset: 0x4210
-  symbol: bitfs_seg7_vertex_07004210
-
-bitfs_seg7_vertex_07004300:
-  type: VTX
-  count: 16
-  offset: 0x4300
-  symbol: bitfs_seg7_vertex_07004300
-
-bitfs_seg7_vertex_07004400:
-  type: VTX
-  count: 16
-  offset: 0x4400
-  symbol: bitfs_seg7_vertex_07004400
-
-bitfs_seg7_dl_07004500:
-  type: GFX
-  offset: 0x4500
-  symbol: bitfs_seg7_dl_07004500
-
-bitfs_seg7_dl_07004630:
-  type: GFX
-  offset: 0x4630
-  symbol: bitfs_seg7_dl_07004630
-
-bitfs_seg7_vertex_0700BF90:
-  type: VTX
-  count: 16
-  offset: 0xBF90
-  symbol: bitfs_seg7_vertex_0700BF90
-
-bitfs_seg7_vertex_0700C090:
-  type: VTX
-  count: 16
-  offset: 0xC090
-  symbol: bitfs_seg7_vertex_0700C090
-
-bitfs_seg7_vertex_0700C190:
-  type: VTX
-  count: 14
-  offset: 0xC190
-  symbol: bitfs_seg7_vertex_0700C190
-
-bitfs_seg7_vertex_0700C270:
-  type: VTX
-  count: 4
-  offset: 0xC270
-  symbol: bitfs_seg7_vertex_0700C270
-
-bitfs_seg7_dl_0700C2B0:
-  type: GFX
-  offset: 0xC2B0
-  symbol: bitfs_seg7_dl_0700C2B0
-
-bitfs_seg7_dl_0700C3C0:
-  type: GFX
-  offset: 0xC3C0
-  symbol: bitfs_seg7_dl_0700C3C0
-
-bitfs_seg7_vertex_07002000:
-  type: VTX
-  count: 12
-  offset: 0x2000
-  symbol: bitfs_seg7_vertex_07002000
-
-bitfs_seg7_dl_070020C0:
-  type: GFX
-  offset: 0x20C0
-  symbol: bitfs_seg7_dl_070020C0
-
-bitfs_seg7_dl_07002118:
-  type: GFX
-  offset: 0x2118
-  symbol: bitfs_seg7_dl_07002118
-
-bitfs_seg7_vertex_07007798:
-  type: VTX
-  count: 16
-  offset: 0x7798
-  symbol: bitfs_seg7_vertex_07007798
-
-bitfs_seg7_vertex_07007898:
-  type: VTX
-  count: 4
-  offset: 0x7898
-  symbol: bitfs_seg7_vertex_07007898
-
-bitfs_seg7_dl_070078D8:
-  type: GFX
-  offset: 0x78D8
-  symbol: bitfs_seg7_dl_070078D8
-
-bitfs_seg7_dl_07007958:
-  type: GFX
-  offset: 0x7958
-  symbol: bitfs_seg7_dl_07007958
-
 bitfs_seg7_vertex_0700ECF0:
   type: VTX
   count: 6
@@ -1076,628 +1426,33 @@ bitfs_seg7_dl_0700ED90:
   offset: 0xED90
   symbol: bitfs_seg7_dl_0700ED90
 
-bitfs_seg7_vertex_07006C58:
+bitfs_seg7_vertex_0700EE10:
   type: VTX
   count: 16
-  offset: 0x6C58
-  symbol: bitfs_seg7_vertex_07006C58
+  offset: 0xEE10
+  symbol: bitfs_seg7_vertex_0700EE10
 
-bitfs_seg7_vertex_07006D58:
-  type: VTX
-  count: 16
-  offset: 0x6D58
-  symbol: bitfs_seg7_vertex_07006D58
-
-bitfs_seg7_vertex_07006E58:
-  type: VTX
-  count: 16
-  offset: 0x6E58
-  symbol: bitfs_seg7_vertex_07006E58
-
-bitfs_seg7_dl_07006F58:
-  type: GFX
-  offset: 0x6F58
-  symbol: bitfs_seg7_dl_07006F58
-
-bitfs_seg7_dl_07007008:
-  type: GFX
-  offset: 0x7008
-  symbol: bitfs_seg7_dl_07007008
-
-bitfs_seg7_dl_07007070:
-  type: GFX
-  offset: 0x7070
-  symbol: bitfs_seg7_dl_07007070
-
-bitfs_seg7_vertex_07003700:
-  type: VTX
-  count: 8
-  offset: 0x3700
-  symbol: bitfs_seg7_vertex_07003700
-
-bitfs_seg7_vertex_07003780:
-  type: VTX
-  count: 15
-  offset: 0x3780
-  symbol: bitfs_seg7_vertex_07003780
-
-bitfs_seg7_vertex_07003870:
-  type: VTX
-  count: 12
-  offset: 0x3870
-  symbol: bitfs_seg7_vertex_07003870
-
-bitfs_seg7_vertex_07003930:
-  type: VTX
-  count: 16
-  offset: 0x3930
-  symbol: bitfs_seg7_vertex_07003930
-
-bitfs_seg7_vertex_07003A30:
-  type: VTX
-  count: 8
-  offset: 0x3A30
-  symbol: bitfs_seg7_vertex_07003A30
-
-bitfs_seg7_dl_07003AB0:
-  type: GFX
-  offset: 0x3AB0
-  symbol: bitfs_seg7_dl_07003AB0
-
-bitfs_seg7_dl_07003AF8:
-  type: GFX
-  offset: 0x3AF8
-  symbol: bitfs_seg7_dl_07003AF8
-
-bitfs_seg7_dl_07003BD0:
-  type: GFX
-  offset: 0x3BD0
-  symbol: bitfs_seg7_dl_07003BD0
-
-bitfs_seg7_dl_07003C60:
-  type: GFX
-  offset: 0x3C60
-  symbol: bitfs_seg7_dl_07003C60
-
-bitfs_seg7_vertex_0700AA78:
-  type: VTX
-  count: 12
-  offset: 0xAA78
-  symbol: bitfs_seg7_vertex_0700AA78
-
-bitfs_seg7_dl_0700AB38:
-  type: GFX
-  offset: 0xAB38
-  symbol: bitfs_seg7_dl_0700AB38
-
-bitfs_seg7_dl_0700AB90:
-  type: GFX
-  offset: 0xAB90
-  symbol: bitfs_seg7_dl_0700AB90
-
-bitfs_seg7_vertex_07002B30:
-  type: VTX
-  count: 16
-  offset: 0x2B30
-  symbol: bitfs_seg7_vertex_07002B30
-
-bitfs_seg7_vertex_07002C30:
-  type: VTX
-  count: 15
-  offset: 0x2C30
-  symbol: bitfs_seg7_vertex_07002C30
-
-bitfs_seg7_vertex_07002D20:
-  type: VTX
-  count: 15
-  offset: 0x2D20
-  symbol: bitfs_seg7_vertex_07002D20
-
-bitfs_seg7_vertex_07002E10:
-  type: VTX
-  count: 15
-  offset: 0x2E10
-  symbol: bitfs_seg7_vertex_07002E10
-
-bitfs_seg7_vertex_07002F00:
-  type: VTX
-  count: 7
-  offset: 0x2F00
-  symbol: bitfs_seg7_vertex_07002F00
-
-bitfs_seg7_vertex_07002F70:
-  type: VTX
-  count: 16
-  offset: 0x2F70
-  symbol: bitfs_seg7_vertex_07002F70
-
-bitfs_seg7_vertex_07003070:
-  type: VTX
-  count: 15
-  offset: 0x3070
-  symbol: bitfs_seg7_vertex_07003070
-
-bitfs_seg7_vertex_07003160:
-  type: VTX
-  count: 15
-  offset: 0x3160
-  symbol: bitfs_seg7_vertex_07003160
-
-bitfs_seg7_vertex_07003250:
-  type: VTX
-  count: 15
-  offset: 0x3250
-  symbol: bitfs_seg7_vertex_07003250
-
-bitfs_seg7_vertex_07003340:
-  type: VTX
-  count: 7
-  offset: 0x3340
-  symbol: bitfs_seg7_vertex_07003340
-
-bitfs_seg7_dl_070033E0:
-  type: GFX
-  offset: 0x33E0
-  symbol: bitfs_seg7_dl_070033E0
-
-bitfs_seg7_dl_07003528:
-  type: GFX
-  offset: 0x3528
-  symbol: bitfs_seg7_dl_07003528
-
-bitfs_seg7_dl_07003670:
-  type: GFX
-  offset: 0x3670
-  symbol: bitfs_seg7_dl_07003670
-
-bitfs_seg7_vertex_07009000:
-  type: VTX
-  count: 4
-  offset: 0x9000
-  symbol: bitfs_seg7_vertex_07009000
-
-bitfs_seg7_vertex_07009040:
-  type: VTX
-  count: 16
-  offset: 0x9040
-  symbol: bitfs_seg7_vertex_07009040
-
-bitfs_seg7_dl_07009140:
-  type: GFX
-  offset: 0x9140
-  symbol: bitfs_seg7_dl_07009140
-
-bitfs_seg7_dl_07009178:
-  type: GFX
-  offset: 0x9178
-  symbol: bitfs_seg7_dl_07009178
-
-bitfs_seg7_dl_070091E0:
-  type: GFX
-  offset: 0x91E0
-  symbol: bitfs_seg7_dl_070091E0
-
-bitfs_seg7_vertex_07002188:
-  type: VTX
-  count: 16
-  offset: 0x2188
-  symbol: bitfs_seg7_vertex_07002188
-
-bitfs_seg7_vertex_07002288:
-  type: VTX
-  count: 8
-  offset: 0x2288
-  symbol: bitfs_seg7_vertex_07002288
-
-bitfs_seg7_vertex_07002308:
-  type: VTX
-  count: 16
-  offset: 0x2308
-  symbol: bitfs_seg7_vertex_07002308
-
-bitfs_seg7_vertex_07002408:
-  type: VTX
-  count: 8
-  offset: 0x2408
-  symbol: bitfs_seg7_vertex_07002408
-
-bitfs_seg7_vertex_07002488:
-  type: VTX
-  count: 16
-  offset: 0x2488
-  symbol: bitfs_seg7_vertex_07002488
-
-bitfs_seg7_vertex_07002588:
-  type: VTX
-  count: 16
-  offset: 0x2588
-  symbol: bitfs_seg7_vertex_07002588
-
-bitfs_seg7_vertex_07002688:
-  type: VTX
-  count: 16
-  offset: 0x2688
-  symbol: bitfs_seg7_vertex_07002688
-
-bitfs_seg7_vertex_07002788:
-  type: VTX
-  count: 6
-  offset: 0x2788
-  symbol: bitfs_seg7_vertex_07002788
-
-bitfs_seg7_dl_070027E8:
-  type: GFX
-  offset: 0x27E8
-  symbol: bitfs_seg7_dl_070027E8
-
-bitfs_seg7_dl_07002878:
-  type: GFX
-  offset: 0x2878
-  symbol: bitfs_seg7_dl_07002878
-
-bitfs_seg7_dl_07002908:
-  type: GFX
-  offset: 0x2908
-  symbol: bitfs_seg7_dl_07002908
-
-bitfs_seg7_dl_070029C8:
-  type: GFX
-  offset: 0x29C8
-  symbol: bitfs_seg7_dl_070029C8
-
-bitfs_seg7_dl_07002A78:
-  type: GFX
-  offset: 0x2A78
-  symbol: bitfs_seg7_dl_07002A78
-
-bitfs_seg7_vertex_07009258:
-  type: VTX
-  count: 16
-  offset: 0x9258
-  symbol: bitfs_seg7_vertex_07009258
-
-bitfs_seg7_vertex_07009358:
-  type: VTX
-  count: 16
-  offset: 0x9358
-  symbol: bitfs_seg7_vertex_07009358
-
-bitfs_seg7_vertex_07009458:
-  type: VTX
-  count: 8
-  offset: 0x9458
-  symbol: bitfs_seg7_vertex_07009458
-
-bitfs_seg7_dl_070094D8:
-  type: GFX
-  offset: 0x94D8
-  symbol: bitfs_seg7_dl_070094D8
-
-bitfs_seg7_dl_07009588:
-  type: GFX
-  offset: 0x9588
-  symbol: bitfs_seg7_dl_07009588
-
-bitfs_seg7_dl_070095E0:
-  type: GFX
-  offset: 0x95E0
-  symbol: bitfs_seg7_dl_070095E0
-
-bitfs_seg7_vertex_07003CF8:
-  type: VTX
-  count: 16
-  offset: 0x3CF8
-  symbol: bitfs_seg7_vertex_07003CF8
-
-bitfs_seg7_vertex_07003DF8:
+bitfs_seg7_vertex_0700EF10:
   type: VTX
   count: 14
-  offset: 0x3DF8
-  symbol: bitfs_seg7_vertex_07003DF8
+  offset: 0xEF10
+  symbol: bitfs_seg7_vertex_0700EF10
 
-bitfs_seg7_vertex_07003ED8:
+bitfs_seg7_vertex_0700EFF0:
   type: VTX
   count: 15
-  offset: 0x3ED8
-  symbol: bitfs_seg7_vertex_07003ED8
+  offset: 0xEFF0
+  symbol: bitfs_seg7_vertex_0700EFF0
 
-bitfs_seg7_dl_07003FC8:
+bitfs_seg7_dl_0700F0E0:
   type: GFX
-  offset: 0x3FC8
-  symbol: bitfs_seg7_dl_07003FC8
+  offset: 0xF0E0
+  symbol: bitfs_seg7_dl_0700F0E0
 
-bitfs_seg7_dl_070040B0:
+bitfs_seg7_dl_0700F1C8:
   type: GFX
-  offset: 0x40B0
-  symbol: bitfs_seg7_dl_070040B0
-
-bitfs_seg7_vertex_07009670:
-  type: VTX
-  count: 16
-  offset: 0x9670
-  symbol: bitfs_seg7_vertex_07009670
-
-bitfs_seg7_vertex_07009770:
-  type: VTX
-  count: 16
-  offset: 0x9770
-  symbol: bitfs_seg7_vertex_07009770
-
-bitfs_seg7_vertex_07009870:
-  type: VTX
-  count: 15
-  offset: 0x9870
-  symbol: bitfs_seg7_vertex_07009870
-
-bitfs_seg7_vertex_07009960:
-  type: VTX
-  count: 16
-  offset: 0x9960
-  symbol: bitfs_seg7_vertex_07009960
-
-bitfs_seg7_vertex_07009A60:
-  type: VTX
-  count: 15
-  offset: 0x9A60
-  symbol: bitfs_seg7_vertex_07009A60
-
-bitfs_seg7_vertex_07009B50:
-  type: VTX
-  count: 15
-  offset: 0x9B50
-  symbol: bitfs_seg7_vertex_07009B50
-
-bitfs_seg7_vertex_07009C40:
-  type: VTX
-  count: 15
-  offset: 0x9C40
-  symbol: bitfs_seg7_vertex_07009C40
-
-bitfs_seg7_vertex_07009D30:
-  type: VTX
-  count: 16
-  offset: 0x9D30
-  symbol: bitfs_seg7_vertex_07009D30
-
-bitfs_seg7_vertex_07009E30:
-  type: VTX
-  count: 16
-  offset: 0x9E30
-  symbol: bitfs_seg7_vertex_07009E30
-
-bitfs_seg7_vertex_07009F30:
-  type: VTX
-  count: 14
-  offset: 0x9F30
-  symbol: bitfs_seg7_vertex_07009F30
-
-bitfs_seg7_vertex_0700A010:
-  type: VTX
-  count: 15
-  offset: 0xA010
-  symbol: bitfs_seg7_vertex_0700A010
-
-bitfs_seg7_vertex_0700A100:
-  type: VTX
-  count: 15
-  offset: 0xA100
-  symbol: bitfs_seg7_vertex_0700A100
-
-bitfs_seg7_vertex_0700A1F0:
-  type: VTX
-  count: 15
-  offset: 0xA1F0
-  symbol: bitfs_seg7_vertex_0700A1F0
-
-bitfs_seg7_vertex_0700A2E0:
-  type: VTX
-  count: 16
-  offset: 0xA2E0
-  symbol: bitfs_seg7_vertex_0700A2E0
-
-bitfs_seg7_vertex_0700A3E0:
-  type: VTX
-  count: 12
-  offset: 0xA3E0
-  symbol: bitfs_seg7_vertex_0700A3E0
-
-bitfs_seg7_vertex_0700A4A0:
-  type: VTX
-  count: 8
-  offset: 0xA4A0
-  symbol: bitfs_seg7_vertex_0700A4A0
-
-bitfs_seg7_dl_0700A520:
-  type: GFX
-  offset: 0xA520
-  symbol: bitfs_seg7_dl_0700A520
-
-bitfs_seg7_dl_0700A9D0:
-  type: GFX
-  offset: 0xA9D0
-  symbol: bitfs_seg7_dl_0700A9D0
-
-bitfs_seg7_dl_0700AA00:
-  type: GFX
-  offset: 0xAA00
-  symbol: bitfs_seg7_dl_0700AA00
-
-bitfs_seg7_vertex_0700FD80:
-  type: VTX
-  count: 16
-  offset: 0xFD80
-  symbol: bitfs_seg7_vertex_0700FD80
-
-bitfs_seg7_vertex_0700FE80:
-  type: VTX
-  count: 8
-  offset: 0xFE80
-  symbol: bitfs_seg7_vertex_0700FE80
-
-bitfs_seg7_dl_0700FF00:
-  type: GFX
-  offset: 0xFF00
-  symbol: bitfs_seg7_dl_0700FF00
-
-bitfs_seg7_dl_0700FF90:
-  type: GFX
-  offset: 0xFF90
-  symbol: bitfs_seg7_dl_0700FF90
-
-bitfs_seg7_vertex_070113A8:
-  type: VTX
-  count: 16
-  offset: 0x113A8
-  symbol: bitfs_seg7_vertex_070113A8
-
-bitfs_seg7_vertex_070114A8:
-  type: VTX
-  count: 4
-  offset: 0x114A8
-  symbol: bitfs_seg7_vertex_070114A8
-
-bitfs_seg7_dl_070114E8:
-  type: GFX
-  offset: 0x114E8
-  symbol: bitfs_seg7_dl_070114E8
-
-bitfs_seg7_dl_07011568:
-  type: GFX
-  offset: 0x11568
-  symbol: bitfs_seg7_dl_07011568
-
-bitfs_seg7_vertex_0700F718:
-  type: VTX
-  count: 16
-  offset: 0xF718
-  symbol: bitfs_seg7_vertex_0700F718
-
-bitfs_seg7_vertex_0700F818:
-  type: VTX
-  count: 14
-  offset: 0xF818
-  symbol: bitfs_seg7_vertex_0700F818
-
-bitfs_seg7_vertex_0700F8F8:
-  type: VTX
-  count: 16
-  offset: 0xF8F8
-  symbol: bitfs_seg7_vertex_0700F8F8
-
-bitfs_seg7_vertex_0700F9F8:
-  type: VTX
-  count: 4
-  offset: 0xF9F8
-  symbol: bitfs_seg7_vertex_0700F9F8
-
-bitfs_seg7_dl_0700FA38:
-  type: GFX
-  offset: 0xFA38
-  symbol: bitfs_seg7_dl_0700FA38
-
-bitfs_seg7_dl_0700FB38:
-  type: GFX
-  offset: 0xFB38
-  symbol: bitfs_seg7_dl_0700FB38
-
-bitfs_seg7_vertex_0700F590:
-  type: VTX
-  count: 12
-  offset: 0xF590
-  symbol: bitfs_seg7_vertex_0700F590
-
-bitfs_seg7_dl_0700F650:
-  type: GFX
-  offset: 0xF650
-  symbol: bitfs_seg7_dl_0700F650
-
-bitfs_seg7_dl_0700F6A8:
-  type: GFX
-  offset: 0xF6A8
-  symbol: bitfs_seg7_dl_0700F6A8
-
-bitfs_seg7_vertex_070115D8:
-  type: VTX
-  count: 16
-  offset: 0x115D8
-  symbol: bitfs_seg7_vertex_070115D8
-
-bitfs_seg7_vertex_070116D8:
-  type: VTX
-  count: 4
-  offset: 0x116D8
-  symbol: bitfs_seg7_vertex_070116D8
-
-bitfs_seg7_dl_07011718:
-  type: GFX
-  offset: 0x11718
-  symbol: bitfs_seg7_dl_07011718
-
-bitfs_seg7_dl_07011798:
-  type: GFX
-  offset: 0x11798
-  symbol: bitfs_seg7_dl_07011798
-
-bitfs_seg7_vertex_07011C18:
-  type: VTX
-  count: 16
-  offset: 0x11C18
-  symbol: bitfs_seg7_vertex_07011C18
-
-bitfs_seg7_vertex_07011D18:
-  type: VTX
-  count: 8
-  offset: 0x11D18
-  symbol: bitfs_seg7_vertex_07011D18
-
-bitfs_seg7_dl_07011D98:
-  type: GFX
-  offset: 0x11D98
-  symbol: bitfs_seg7_dl_07011D98
-
-bitfs_seg7_dl_07011E28:
-  type: GFX
-  offset: 0x11E28
-  symbol: bitfs_seg7_dl_07011E28
-
-bitfs_seg7_vertex_07011808:
-  type: VTX
-  count: 16
-  offset: 0x11808
-  symbol: bitfs_seg7_vertex_07011808
-
-bitfs_seg7_vertex_07011908:
-  type: VTX
-  count: 8
-  offset: 0x11908
-  symbol: bitfs_seg7_vertex_07011908
-
-bitfs_seg7_vertex_07011988:
-  type: VTX
-  count: 14
-  offset: 0x11988
-  symbol: bitfs_seg7_vertex_07011988
-
-bitfs_seg7_vertex_07011A68:
-  type: VTX
-  count: 5
-  offset: 0x11A68
-  symbol: bitfs_seg7_vertex_07011A68
-
-bitfs_seg7_dl_07011AB8:
-  type: GFX
-  offset: 0x11AB8
-  symbol: bitfs_seg7_dl_07011AB8
-
-bitfs_seg7_dl_07011B48:
-  type: GFX
-  offset: 0x11B48
-  symbol: bitfs_seg7_dl_07011B48
-
-bitfs_seg7_dl_07011BA0:
-  type: GFX
-  offset: 0x11BA0
-  symbol: bitfs_seg7_dl_07011BA0
+  offset: 0xF1C8
+  symbol: bitfs_seg7_dl_0700F1C8
 
 bitfs_seg7_vertex_0700F238:
   type: VTX
@@ -1747,6 +1502,137 @@ bitfs_seg7_dl_0700F508:
   type: GFX
   offset: 0xF508
   symbol: bitfs_seg7_dl_0700F508
+
+bitfs_seg7_vertex_0700F590:
+  type: VTX
+  count: 12
+  offset: 0xF590
+  symbol: bitfs_seg7_vertex_0700F590
+
+bitfs_seg7_dl_0700F650:
+  type: GFX
+  offset: 0xF650
+  symbol: bitfs_seg7_dl_0700F650
+
+bitfs_seg7_dl_0700F6A8:
+  type: GFX
+  offset: 0xF6A8
+  symbol: bitfs_seg7_dl_0700F6A8
+
+bitfs_seg7_vertex_0700F718:
+  type: VTX
+  count: 16
+  offset: 0xF718
+  symbol: bitfs_seg7_vertex_0700F718
+
+bitfs_seg7_vertex_0700F818:
+  type: VTX
+  count: 14
+  offset: 0xF818
+  symbol: bitfs_seg7_vertex_0700F818
+
+bitfs_seg7_vertex_0700F8F8:
+  type: VTX
+  count: 16
+  offset: 0xF8F8
+  symbol: bitfs_seg7_vertex_0700F8F8
+
+bitfs_seg7_vertex_0700F9F8:
+  type: VTX
+  count: 4
+  offset: 0xF9F8
+  symbol: bitfs_seg7_vertex_0700F9F8
+
+bitfs_seg7_dl_0700FA38:
+  type: GFX
+  offset: 0xFA38
+  symbol: bitfs_seg7_dl_0700FA38
+
+bitfs_seg7_dl_0700FB38:
+  type: GFX
+  offset: 0xFB38
+  symbol: bitfs_seg7_dl_0700FB38
+
+bitfs_seg7_vertex_0700FBA8:
+  type: VTX
+  count: 4
+  offset: 0xFBA8
+  symbol: bitfs_seg7_vertex_0700FBA8
+
+bitfs_seg7_vertex_0700FBE8:
+  type: VTX
+  count: 10
+  offset: 0xFBE8
+  symbol: bitfs_seg7_vertex_0700FBE8
+
+bitfs_seg7_dl_0700FC88:
+  type: GFX
+  offset: 0xFC88
+  symbol: bitfs_seg7_dl_0700FC88
+
+bitfs_seg7_dl_0700FCC0:
+  type: GFX
+  offset: 0xFCC0
+  symbol: bitfs_seg7_dl_0700FCC0
+
+bitfs_seg7_dl_0700FD08:
+  type: GFX
+  offset: 0xFD08
+  symbol: bitfs_seg7_dl_0700FD08
+
+bitfs_seg7_vertex_0700FD80:
+  type: VTX
+  count: 16
+  offset: 0xFD80
+  symbol: bitfs_seg7_vertex_0700FD80
+
+bitfs_seg7_vertex_0700FE80:
+  type: VTX
+  count: 8
+  offset: 0xFE80
+  symbol: bitfs_seg7_vertex_0700FE80
+
+bitfs_seg7_dl_0700FF00:
+  type: GFX
+  offset: 0xFF00
+  symbol: bitfs_seg7_dl_0700FF00
+
+bitfs_seg7_dl_0700FF90:
+  type: GFX
+  offset: 0xFF90
+  symbol: bitfs_seg7_dl_0700FF90
+
+bitfs_seg7_vertex_07010000:
+  type: VTX
+  count: 16
+  offset: 0x10000
+  symbol: bitfs_seg7_vertex_07010000
+
+bitfs_seg7_dl_07010100:
+  type: GFX
+  offset: 0x10100
+  symbol: bitfs_seg7_dl_07010100
+
+bitfs_seg7_dl_07010168:
+  type: GFX
+  offset: 0x10168
+  symbol: bitfs_seg7_dl_07010168
+
+bitfs_seg7_vertex_070101D8:
+  type: VTX
+  count: 16
+  offset: 0x101D8
+  symbol: bitfs_seg7_vertex_070101D8
+
+bitfs_seg7_dl_070102D8:
+  type: GFX
+  offset: 0x102D8
+  symbol: bitfs_seg7_dl_070102D8
+
+bitfs_seg7_dl_07010340:
+  type: GFX
+  offset: 0x10340
+  symbol: bitfs_seg7_dl_07010340
 
 bitfs_seg7_vertex_070103B0:
   type: VTX
@@ -1824,74 +1710,190 @@ bitfs_seg7_dl_07011138:
   offset: 0x11138
   symbol: bitfs_seg7_dl_07011138
 
-bitfs_seg7_vertex_070101D8:
+bitfs_seg7_vertex_070111A8:
+  type: VTX
+  count: 4
+  offset: 0x111A8
+  symbol: bitfs_seg7_vertex_070111A8
+
+bitfs_seg7_vertex_070111E8:
+  type: VTX
+  count: 11
+  offset: 0x111E8
+  symbol: bitfs_seg7_vertex_070111E8
+
+bitfs_seg7_dl_07011298:
+  type: GFX
+  offset: 0x11298
+  symbol: bitfs_seg7_dl_07011298
+
+bitfs_seg7_dl_070112D0:
+  type: GFX
+  offset: 0x112D0
+  symbol: bitfs_seg7_dl_070112D0
+
+bitfs_seg7_dl_07011318:
+  type: GFX
+  offset: 0x11318
+  symbol: bitfs_seg7_dl_07011318
+
+bitfs_seg7_vertex_070113A8:
   type: VTX
   count: 16
-  offset: 0x101D8
-  symbol: bitfs_seg7_vertex_070101D8
+  offset: 0x113A8
+  symbol: bitfs_seg7_vertex_070113A8
 
-bitfs_seg7_dl_070102D8:
-  type: GFX
-  offset: 0x102D8
-  symbol: bitfs_seg7_dl_070102D8
+bitfs_seg7_vertex_070114A8:
+  type: VTX
+  count: 4
+  offset: 0x114A8
+  symbol: bitfs_seg7_vertex_070114A8
 
-bitfs_seg7_dl_07010340:
+bitfs_seg7_dl_070114E8:
   type: GFX
-  offset: 0x10340
-  symbol: bitfs_seg7_dl_07010340
+  offset: 0x114E8
+  symbol: bitfs_seg7_dl_070114E8
+
+bitfs_seg7_dl_07011568:
+  type: GFX
+  offset: 0x11568
+  symbol: bitfs_seg7_dl_07011568
+
+bitfs_seg7_vertex_070115D8:
+  type: VTX
+  count: 16
+  offset: 0x115D8
+  symbol: bitfs_seg7_vertex_070115D8
+
+bitfs_seg7_vertex_070116D8:
+  type: VTX
+  count: 4
+  offset: 0x116D8
+  symbol: bitfs_seg7_vertex_070116D8
+
+bitfs_seg7_dl_07011718:
+  type: GFX
+  offset: 0x11718
+  symbol: bitfs_seg7_dl_07011718
+
+bitfs_seg7_dl_07011798:
+  type: GFX
+  offset: 0x11798
+  symbol: bitfs_seg7_dl_07011798
+
+bitfs_seg7_vertex_07011808:
+  type: VTX
+  count: 16
+  offset: 0x11808
+  symbol: bitfs_seg7_vertex_07011808
+
+bitfs_seg7_vertex_07011908:
+  type: VTX
+  count: 8
+  offset: 0x11908
+  symbol: bitfs_seg7_vertex_07011908
+
+bitfs_seg7_vertex_07011988:
+  type: VTX
+  count: 14
+  offset: 0x11988
+  symbol: bitfs_seg7_vertex_07011988
+
+bitfs_seg7_vertex_07011A68:
+  type: VTX
+  count: 5
+  offset: 0x11A68
+  symbol: bitfs_seg7_vertex_07011A68
+
+bitfs_seg7_dl_07011AB8:
+  type: GFX
+  offset: 0x11AB8
+  symbol: bitfs_seg7_dl_07011AB8
+
+bitfs_seg7_dl_07011B48:
+  type: GFX
+  offset: 0x11B48
+  symbol: bitfs_seg7_dl_07011B48
+
+bitfs_seg7_dl_07011BA0:
+  type: GFX
+  offset: 0x11BA0
+  symbol: bitfs_seg7_dl_07011BA0
+
+bitfs_seg7_vertex_07011C18:
+  type: VTX
+  count: 16
+  offset: 0x11C18
+  symbol: bitfs_seg7_vertex_07011C18
+
+bitfs_seg7_vertex_07011D18:
+  type: VTX
+  count: 8
+  offset: 0x11D18
+  symbol: bitfs_seg7_vertex_07011D18
+
+bitfs_seg7_dl_07011D98:
+  type: GFX
+  offset: 0x11D98
+  symbol: bitfs_seg7_dl_07011D98
+
+bitfs_seg7_dl_07011E28:
+  type: GFX
+  offset: 0x11E28
+  symbol: bitfs_seg7_dl_07011E28
 
 bitfs_seg7_collision_level:
-    type: SM64:COLLISION
-    offset: 0x11E98
-    symbol: bitfs_seg7_collision_level
+  type: SM64:COLLISION
+  offset: 0x11E98
+  symbol: bitfs_seg7_collision_level
 
 bitfs_seg7_collision_07015124:
-    type: SM64:COLLISION
-    offset: 0x15124
-    symbol: bitfs_seg7_collision_07015124
+  type: SM64:COLLISION
+  offset: 0x15124
+  symbol: bitfs_seg7_collision_07015124
 
 bitfs_seg7_collision_sinking_cage_platform:
-    type: SM64:COLLISION
-    offset: 0x151B4
-    symbol: bitfs_seg7_collision_sinking_cage_platform
+  type: SM64:COLLISION
+  offset: 0x151B4
+  symbol: bitfs_seg7_collision_sinking_cage_platform
 
 bitfs_seg7_collision_inverted_pyramid:
-    type: SM64:COLLISION
-    offset: 0x15238
-    symbol: bitfs_seg7_collision_inverted_pyramid
+  type: SM64:COLLISION
+  offset: 0x15238
+  symbol: bitfs_seg7_collision_inverted_pyramid
 
 bitfs_seg7_collision_07015288:
-    type: SM64:COLLISION
-    offset: 0x15288
-    symbol: bitfs_seg7_collision_07015288
+  type: SM64:COLLISION
+  offset: 0x15288
+  symbol: bitfs_seg7_collision_07015288
 
 bitfs_seg7_collision_squishable_platform:
-    type: SM64:COLLISION
-    offset: 0x1530C
-    symbol: bitfs_seg7_collision_squishable_platform
+  type: SM64:COLLISION
+  offset: 0x1530C
+  symbol: bitfs_seg7_collision_squishable_platform
 
 bitfs_seg7_collision_07015714:
-    type: SM64:COLLISION
-    offset: 0x15714
-    symbol: bitfs_seg7_collision_07015714
+  type: SM64:COLLISION
+  offset: 0x15714
+  symbol: bitfs_seg7_collision_07015714
 
 bitfs_seg7_collision_07015768:
-    type: SM64:COLLISION
-    offset: 0x15768
-    symbol: bitfs_seg7_collision_07015768
+  type: SM64:COLLISION
+  offset: 0x15768
+  symbol: bitfs_seg7_collision_07015768
 
 bitfs_seg7_collision_070157E0:
-    type: SM64:COLLISION
-    offset: 0x157E0
-    symbol: bitfs_seg7_collision_070157E0
+  type: SM64:COLLISION
+  offset: 0x157E0
+  symbol: bitfs_seg7_collision_070157E0
 
 bitfs_seg7_collision_sinking_platform:
-    type: SM64:COLLISION
-    offset: 0x15858
-    symbol: bitfs_seg7_collision_sinking_platform
+  type: SM64:COLLISION
+  offset: 0x15858
+  symbol: bitfs_seg7_collision_sinking_platform
 
 bitfs_seg7_collision_07015928:
-    type: SM64:COLLISION
-    offset: 0x15928
-    symbol: bitfs_seg7_collision_07015928
+  type: SM64:COLLISION
+  offset: 0x15928
+  symbol: bitfs_seg7_collision_07015928
 

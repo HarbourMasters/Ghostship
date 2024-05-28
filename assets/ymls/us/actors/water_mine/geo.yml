@@ -7,5 +7,5 @@
 
 water_mine_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D0002F4
+  offset: 0xD0002F4
   symbol: water_mine_geo

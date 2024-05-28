@@ -7,5 +7,5 @@
 
 dorrie_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000230
+  offset: 0xD000230
   symbol: dorrie_geo

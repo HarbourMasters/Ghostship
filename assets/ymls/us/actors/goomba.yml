@@ -5,31 +5,6 @@
   segments:
     - [0x08,  0x1F2200]
 
-goomba_body:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x19530
-  format: RGBA16
-  symbol: goomba_seg8_texture_08019530
-goomba_face:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x19D30
-  format: RGBA16
-  symbol: goomba_seg8_texture_08019D30
-goomba_face_blink:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1A530
-  format: RGBA16
-  symbol: goomba_seg8_texture_0801A530
-
 goomba_lights_unused1:
   type: LIGHTS
   size: 24
@@ -65,6 +40,33 @@ goomba_seg8_lights_08019518:
   size: 24
   offset: 0x19518
   symbol: goomba_seg8_lights_08019518
+
+goomba_body:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x19530
+  format: RGBA16
+  symbol: goomba_seg8_texture_08019530
+
+goomba_face:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x19D30
+  format: RGBA16
+  symbol: goomba_seg8_texture_08019D30
+
+goomba_face_blink:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1A530
+  format: RGBA16
+  symbol: goomba_seg8_texture_0801A530
 
 goomba_seg8_lights_0801AD30:
   type: LIGHTS

@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x12A7E0]
 
+bullet_bill_seg5_lights_0500BA90:
+  type: LIGHTS
+  size: 24
+  offset: 0xBA90
+  symbol: bullet_bill_seg5_lights_0500BA90
+
 bullet_bill_eye:
   type: TEXTURE
   size: 4096
@@ -13,6 +19,7 @@ bullet_bill_eye:
   offset: 0xBAA8
   format: RGBA16
   symbol: bullet_bill_seg5_texture_0500BAA8
+
 bullet_bill_mouth:
   type: TEXTURE
   size: 4096
@@ -21,12 +28,6 @@ bullet_bill_mouth:
   offset: 0xCAA8
   format: RGBA16
   symbol: bullet_bill_seg5_texture_0500CAA8
-
-bullet_bill_seg5_lights_0500BA90:
-  type: LIGHTS
-  size: 24
-  offset: 0xBA90
-  symbol: bullet_bill_seg5_lights_0500BA90
 
 bullet_bill_seg5_vertex_0500DAA8:
   type: VTX

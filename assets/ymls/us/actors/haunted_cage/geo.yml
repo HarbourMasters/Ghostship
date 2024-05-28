@@ -7,5 +7,5 @@
 
 haunted_cage_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C000274
+  offset: 0xC000274
   symbol: haunted_cage_geo

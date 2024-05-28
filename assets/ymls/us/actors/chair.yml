@@ -5,14 +5,12 @@
   segments:
     - [0x05,  0x166C60]
 
-chair_bottom:
-  type: TEXTURE
-  size: 1024
-  width: 32
-  height: 16
-  offset: 0x4060
-  format: RGBA16
-  symbol: chair_seg5_texture_05004060
+chair_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0x3048
+  symbol: chair_lights_unused
+
 chair_front:
   type: TEXTURE
   size: 2048
@@ -21,6 +19,7 @@ chair_front:
   offset: 0x3060
   format: RGBA16
   symbol: chair_seg5_texture_05003060
+
 chair_leg:
   type: TEXTURE
   size: 2048
@@ -29,6 +28,16 @@ chair_leg:
   offset: 0x3860
   format: RGBA16
   symbol: chair_seg5_texture_05003860
+
+chair_bottom:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x4060
+  format: RGBA16
+  symbol: chair_seg5_texture_05004060
+
 chair_surface_unused:
   type: TEXTURE
   size: 2048
@@ -37,12 +46,6 @@ chair_surface_unused:
   offset: 0x4460
   format: RGBA16
   symbol: chair_seg5_texture_05004460
-
-chair_lights_unused:
-  type: LIGHTS
-  size: 24
-  offset: 0x3048
-  symbol: chair_lights_unused
 
 chair_seg5_lights_05004C60:
   type: LIGHTS

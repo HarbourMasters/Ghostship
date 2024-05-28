@@ -5,23 +5,6 @@
   segments:
     - [0x05,  0x13B910]
 
-clam_shell:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x30
-  format: RGBA16
-  symbol: clam_shell_seg5_texture_05000030
-clam_shell_mouth:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x830
-  format: RGBA16
-  symbol: clam_shell_seg5_texture_05000830
-
 clam_shell_lights_unused1:
   type: LIGHTS
   size: 24
@@ -33,6 +16,24 @@ clam_shell_lights_unused2:
   size: 24
   offset: 0x18
   symbol: clam_shell_lights_unused2
+
+clam_shell:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x30
+  format: RGBA16
+  symbol: clam_shell_seg5_texture_05000030
+
+clam_shell_mouth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x830
+  format: RGBA16
+  symbol: clam_shell_seg5_texture_05000830
 
 clam_shell_seg5_lights_05001030:
   type: LIGHTS

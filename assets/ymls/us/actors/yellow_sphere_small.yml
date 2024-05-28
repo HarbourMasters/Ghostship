@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x12A7E0]
 
+yellow_sphere_seg5_vertex_05000000:
+  type: VTX
+  count: 4
+  offset: 0x0
+  symbol: yellow_sphere_seg5_vertex_05000000
+
 small_yellow_sphere:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ small_yellow_sphere:
   offset: 0x40
   format: RGBA16
   symbol: yellow_sphere_seg5_texture_05000040
-
-yellow_sphere_seg5_vertex_05000000:
-  type: VTX
-  count: 4
-  offset: 0x0
-  symbol: yellow_sphere_seg5_vertex_05000000
 
 yellow_sphere_seg5_dl_05000840:
   type: GFX

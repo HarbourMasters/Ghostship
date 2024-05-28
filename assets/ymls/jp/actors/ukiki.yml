@@ -5,14 +5,12 @@
   segments:
     - [0x05,  0x1505D0]
 
-ukiki_butt:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x9BC0
-  format: RGBA16
-  symbol: ukiki_seg5_texture_05009BC0
+ukiki_seg5_lights_05007BA0:
+  type: LIGHTS
+  size: 24
+  offset: 0x7BA0
+  symbol: ukiki_seg5_lights_05007BA0
+
 ukiki_face:
   type: TEXTURE
   size: 4096
@@ -21,6 +19,7 @@ ukiki_face:
   offset: 0x7BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05007BC0
+
 ukiki_face_blink:
   type: TEXTURE
   size: 4096
@@ -29,6 +28,16 @@ ukiki_face_blink:
   offset: 0x8BC0
   format: RGBA16
   symbol: ukiki_seg5_texture_05008BC0
+
+ukiki_butt:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9BC0
+  format: RGBA16
+  symbol: ukiki_seg5_texture_05009BC0
+
 ukiki_fur:
   type: TEXTURE
   size: 2048
@@ -37,24 +46,6 @@ ukiki_fur:
   offset: 0xA3C0
   format: RGBA16
   symbol: ukiki_seg5_texture_0500A3C0
-
-ukiki_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x326E8
-  symbol: ukiki_lights_unused1
-
-ukiki_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x326E8
-  symbol: ukiki_lights_unused2
-
-ukiki_seg5_lights_05007BA0:
-  type: LIGHTS
-  size: 24
-  offset: 0x7BA0
-  symbol: ukiki_seg5_lights_05007BA0
 
 ukiki_seg5_lights_0500ABC0:
   type: LIGHTS
@@ -470,4 +461,16 @@ ukiki_seg5_dl_0500D108:
   type: GFX
   offset: 0xD108
   symbol: ukiki_seg5_dl_0500D108
+
+ukiki_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x326E8
+  symbol: ukiki_lights_unused1
+
+ukiki_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x326E8
+  symbol: ukiki_lights_unused2
 

@@ -7,5 +7,5 @@
 
 chuckya_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0F0001D8
+  offset: 0xF0001D8
   symbol: chuckya_geo

@@ -5,6 +5,12 @@
   segments:
     - [0x08,  0x1F2200]
 
+blue_coin_switch_seg8_lights_08000000:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: blue_coin_switch_seg8_lights_08000000
+
 blue_coin_switch_side:
   type: TEXTURE
   size: 1024
@@ -13,6 +19,7 @@ blue_coin_switch_side:
   offset: 0x18
   format: RGBA16
   symbol: blue_coin_switch_seg8_texture_08000018
+
 blue_coin_switch_top:
   type: TEXTURE
   size: 2048
@@ -21,12 +28,6 @@ blue_coin_switch_top:
   offset: 0x418
   format: RGBA16
   symbol: blue_coin_switch_seg8_texture_08000418
-
-blue_coin_switch_seg8_lights_08000000:
-  type: LIGHTS
-  size: 24
-  offset: 0x0
-  symbol: blue_coin_switch_seg8_lights_08000000
 
 blue_coin_switch_seg8_vertex_08000C18:
   type: VTX

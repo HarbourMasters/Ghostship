@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x133120]
 
+water_bubble_seg5_lights_0500FE68:
+  type: LIGHTS
+  size: 24
+  offset: 0xFE68
+  symbol: water_bubble_seg5_lights_0500FE68
+
 water_bubble:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ water_bubble:
   offset: 0xFE80
   format: RGBA16
   symbol: water_bubble_seg5_texture_0500FE80
-
-water_bubble_seg5_lights_0500FE68:
-  type: LIGHTS
-  size: 24
-  offset: 0xFE68
-  symbol: water_bubble_seg5_lights_0500FE68
 
 water_bubble_seg5_vertex_05010680:
   type: VTX

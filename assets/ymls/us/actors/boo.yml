@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x166C60]
 
+boo_seg5_lights_05009B28:
+  type: LIGHTS
+  size: 24
+  offset: 0x9B28
+  symbol: boo_seg5_lights_05009B28
+
 boo_eyes:
   type: TEXTURE
   size: 4096
@@ -13,6 +19,7 @@ boo_eyes:
   offset: 0x9B40
   format: RGBA16
   symbol: boo_seg5_texture_05009B40
+
 boo_mouth:
   type: TEXTURE
   size: 2048
@@ -21,12 +28,6 @@ boo_mouth:
   offset: 0xAB40
   format: RGBA16
   symbol: boo_seg5_texture_0500AB40
-
-boo_seg5_lights_05009B28:
-  type: LIGHTS
-  size: 24
-  offset: 0x9B28
-  symbol: boo_seg5_lights_05009B28
 
 boo_seg5_vertex_0500B340:
   type: VTX

@@ -13,6 +13,7 @@ impact_smoke_0:
   offset: 0x5AA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605AA28
+
 impact_smoke_1:
   type: TEXTURE
   size: 8192
@@ -21,6 +22,7 @@ impact_smoke_1:
   offset: 0x5CA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605CA28
+
 impact_smoke_2:
   type: TEXTURE
   size: 8192
@@ -29,6 +31,7 @@ impact_smoke_2:
   offset: 0x5EA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605EA28
+
 impact_smoke_3:
   type: TEXTURE
   size: 8192

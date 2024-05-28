@@ -5,15 +5,6 @@
   segments:
     - [0x08,  0x1F2200]
 
-cannon_barrel:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x58A8
-  format: RGBA16
-  symbol: cannon_barrel_seg8_texture_080058A8
-
 cannon_barrel_seg8_lights_08005878:
   type: LIGHTS
   size: 24
@@ -25,6 +16,15 @@ cannon_barrel_seg8_lights_08005890:
   size: 24
   offset: 0x5890
   symbol: cannon_barrel_seg8_lights_08005890
+
+cannon_barrel:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x58A8
+  format: RGBA16
+  symbol: cannon_barrel_seg8_texture_080058A8
 
 cannon_barrel_seg8_vertex_080060A8:
   type: VTX

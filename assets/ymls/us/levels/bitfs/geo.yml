@@ -7,160 +7,160 @@
 
 bitfs_geo_0004B0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004B0
+  offset: 0xE0004B0
   symbol: bitfs_geo_0004B0
 
 bitfs_geo_0004C8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004C8
+  offset: 0xE0004C8
   symbol: bitfs_geo_0004C8
 
 bitfs_geo_0004E0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004E0
+  offset: 0xE0004E0
   symbol: bitfs_geo_0004E0
 
 bitfs_geo_0004F8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0004F8
+  offset: 0xE0004F8
   symbol: bitfs_geo_0004F8
 
 bitfs_geo_000510:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000510
+  offset: 0xE000510
   symbol: bitfs_geo_000510
 
 bitfs_geo_000528:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000528
+  offset: 0xE000528
   symbol: bitfs_geo_000528
 
 bitfs_geo_000540:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000540
+  offset: 0xE000540
   symbol: bitfs_geo_000540
 
 bitfs_geo_000558:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000558
+  offset: 0xE000558
   symbol: bitfs_geo_000558
 
 bitfs_geo_000570:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000570
+  offset: 0xE000570
   symbol: bitfs_geo_000570
 
 bitfs_geo_000588:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000588
+  offset: 0xE000588
   symbol: bitfs_geo_000588
 
 bitfs_geo_0005A0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005A0
+  offset: 0xE0005A0
   symbol: bitfs_geo_0005A0
 
 bitfs_geo_0005B8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005B8
+  offset: 0xE0005B8
   symbol: bitfs_geo_0005B8
 
 bitfs_geo_0005D0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005D0
+  offset: 0xE0005D0
   symbol: bitfs_geo_0005D0
 
 bitfs_geo_0005E8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0005E8
+  offset: 0xE0005E8
   symbol: bitfs_geo_0005E8
 
 bitfs_geo_000600:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000600
+  offset: 0xE000600
   symbol: bitfs_geo_000600
 
 bitfs_geo_000618:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000618
+  offset: 0xE000618
   symbol: bitfs_geo_000618
 
 bitfs_geo_000630:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000630
+  offset: 0xE000630
   symbol: bitfs_geo_000630
 
 bitfs_geo_000648:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000648
+  offset: 0xE000648
   symbol: bitfs_geo_000648
 
 bitfs_geo_000660:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000660
+  offset: 0xE000660
   symbol: bitfs_geo_000660
 
 bitfs_geo_000678:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000678
+  offset: 0xE000678
   symbol: bitfs_geo_000678
 
 bitfs_geo_000690:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000690
+  offset: 0xE000690
   symbol: bitfs_geo_000690
 
 bitfs_geo_0006A8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0006A8
+  offset: 0xE0006A8
   symbol: bitfs_geo_0006A8
 
 bitfs_geo_0006C0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0006C0
+  offset: 0xE0006C0
   symbol: bitfs_geo_0006C0
 
 bitfs_geo_0006D8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0006D8
+  offset: 0xE0006D8
   symbol: bitfs_geo_0006D8
 
 bitfs_geo_0006F0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0006F0
+  offset: 0xE0006F0
   symbol: bitfs_geo_0006F0
 
 bitfs_geo_000708:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000708
+  offset: 0xE000708
   symbol: bitfs_geo_000708
 
 bitfs_geo_000728:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000728
+  offset: 0xE000728
   symbol: bitfs_geo_000728
 
 bitfs_geo_000740:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000740
+  offset: 0xE000740
   symbol: bitfs_geo_000740
 
 bitfs_geo_000758:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000758
+  offset: 0xE000758
   symbol: bitfs_geo_000758
 
 bitfs_geo_000770:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000770
+  offset: 0xE000770
   symbol: bitfs_geo_000770
 
 bitfs_geo_000788:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000788
+  offset: 0xE000788
   symbol: bitfs_geo_000788
 
 bitfs_geo_0007A0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0007A0
+  offset: 0xE0007A0
   symbol: bitfs_geo_0007A0
