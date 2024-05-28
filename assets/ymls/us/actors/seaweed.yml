@@ -5,22 +5,12 @@
   segments:
     - [0x06,  0x1B9CC0]
 
-seaweed_base:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x9610
-  format: RGBA16
-  symbol: seaweed_seg6_texture_06009610
-seaweed_lower_center:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x8E10
-  format: RGBA16
-  symbol: seaweed_seg6_texture_06008E10
+seaweed_seg6_lights_06007DF8:
+  type: LIGHTS
+  size: 24
+  offset: 0x7DF8
+  symbol: seaweed_seg6_lights_06007DF8
+
 seaweed_tip:
   type: TEXTURE
   size: 2048
@@ -29,6 +19,7 @@ seaweed_tip:
   offset: 0x7E10
   format: RGBA16
   symbol: seaweed_seg6_texture_06007E10
+
 seaweed_upper_center:
   type: TEXTURE
   size: 2048
@@ -38,11 +29,23 @@ seaweed_upper_center:
   format: RGBA16
   symbol: seaweed_seg6_texture_06008610
 
-seaweed_seg6_lights_06007DF8:
-  type: LIGHTS
-  size: 24
-  offset: 0x7DF8
-  symbol: seaweed_seg6_lights_06007DF8
+seaweed_lower_center:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8E10
+  format: RGBA16
+  symbol: seaweed_seg6_texture_06008E10
+
+seaweed_base:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x9610
+  format: RGBA16
+  symbol: seaweed_seg6_texture_06009610
 
 seaweed_seg6_vertex_06009E10:
   type: VTX

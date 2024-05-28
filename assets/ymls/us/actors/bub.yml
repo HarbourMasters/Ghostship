@@ -5,40 +5,6 @@
   segments:
     - [0x06,  0x1B9CC0]
 
-bub_eye_border:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xE2A8
-  format: RGBA16
-  symbol: bub_seg6_texture_0600E2A8
-bub_eyes:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0xF2A8
-  format: RGBA16
-  symbol: bub_seg6_texture_0600F2A8
-bub_fins:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xEAA8
-  format: RGBA16
-  symbol: bub_seg6_texture_0600EAA8
-bub_scales:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0x102A8
-  format: RGBA16
-  symbol: bub_seg6_texture_060102A8
-
-# This symbol appears to be mislabeled
 bub_seg6_lights_0600E280:
   type: LIGHTS
   size: 24
@@ -50,6 +16,44 @@ bub_seg6_lights_0600E290:
   size: 24
   offset: 0xE290
   symbol: bub_seg6_lights_0600E290
+
+bub_eye_border:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xE2A8
+  format: RGBA16
+  symbol: bub_seg6_texture_0600E2A8
+
+bub_fins:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xEAA8
+  format: RGBA16
+  symbol: bub_seg6_texture_0600EAA8
+
+bub_eyes:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xF2A8
+  format: RGBA16
+  symbol: bub_seg6_texture_0600F2A8
+
+bub_scales:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x102A8
+  format: RGBA16
+  symbol: bub_seg6_texture_060102A8
+
+# This symbol appears to be mislabeled
 
 bub_seg6_vertex_060112A8:
   type: VTX

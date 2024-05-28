@@ -7,15 +7,15 @@
 
 toad_geo_000114:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000114
+  offset: 0xD000114
   symbol: toad_geo_000114
 
 toad_geo_00027C:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D00027C
+  offset: 0xD00027C
   symbol: toad_geo_00027C
 
 toad_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D0003E4
+  offset: 0xD0003E4
   symbol: toad_geo

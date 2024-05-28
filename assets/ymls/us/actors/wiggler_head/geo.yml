@@ -8,5 +8,5 @@
 
 wiggler_head_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C000030
+  offset: 0xC000030
   symbol: wiggler_head_geo

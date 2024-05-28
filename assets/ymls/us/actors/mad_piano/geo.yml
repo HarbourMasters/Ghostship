@@ -7,5 +7,5 @@
 
 mad_piano_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C0001B4
+  offset: 0xC0001B4
   symbol: mad_piano_geo

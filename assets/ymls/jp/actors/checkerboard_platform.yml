@@ -5,14 +5,12 @@
   segments:
     - [0x08,  0x1F0530]
 
-checkerboard_platform:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xCC40
-  format: RGBA16
-  symbol: checkerboard_platform_seg8_texture_0800CC40
+checkerboard_platform_seg8_lights_0800C828:
+  type: LIGHTS
+  size: 24
+  offset: 0xC828
+  symbol: checkerboard_platform_seg8_lights_0800C828
+
 checkerboard_platform_side:
   type: TEXTURE
   size: 1024
@@ -22,11 +20,14 @@ checkerboard_platform_side:
   format: RGBA16
   symbol: checkerboard_platform_seg8_texture_0800C840
 
-checkerboard_platform_seg8_lights_0800C828:
-  type: LIGHTS
-  size: 24
-  offset: 0xC828
-  symbol: checkerboard_platform_seg8_lights_0800C828
+checkerboard_platform:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xCC40
+  format: RGBA16
+  symbol: checkerboard_platform_seg8_texture_0800CC40
 
 checkerboard_platform_seg8_vertex_0800D440:
   type: VTX

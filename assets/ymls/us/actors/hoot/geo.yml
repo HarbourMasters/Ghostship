@@ -7,5 +7,5 @@
 
 hoot_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C000018
+  offset: 0xC000018
   symbol: hoot_geo

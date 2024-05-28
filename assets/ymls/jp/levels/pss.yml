@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: pss_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x800
   format: IA16
   symbol: pss_seg7_texture_07000800
+
 2:
   type: TEXTURE
   size: 2048
@@ -29,91 +31,6 @@
   offset: 0x1000
   format: RGBA16
   symbol: pss_seg7_texture_07001000
-
-
-pss_seg7_lights_0700E348:
-  type: LIGHTS
-  size: 24
-  offset: 0xE348
-  symbol: pss_seg7_lights_0700E348
-
-pss_seg7_vertex_0700E360:
-  type: VTX
-  count: 4
-  offset: 0xE360
-  symbol: pss_seg7_vertex_0700E360
-
-pss_seg7_dl_0700E3A0:
-  type: GFX
-  offset: 0xE3A0
-  symbol: pss_seg7_dl_0700E3A0
-
-pss_seg7_dl_0700E3E8:
-  type: GFX
-  offset: 0xE3E8
-  symbol: pss_seg7_dl_0700E3E8
-
-pss_seg7_vertex_0700DB48:
-  type: VTX
-  count: 4
-  offset: 0xDB48
-  symbol: pss_seg7_vertex_0700DB48
-
-pss_seg7_vertex_0700DB88:
-  type: VTX
-  count: 12
-  offset: 0xDB88
-  symbol: pss_seg7_vertex_0700DB88
-
-pss_seg7_vertex_0700DC48:
-  type: VTX
-  count: 15
-  offset: 0xDC48
-  symbol: pss_seg7_vertex_0700DC48
-
-pss_seg7_vertex_0700DD38:
-  type: VTX
-  count: 15
-  offset: 0xDD38
-  symbol: pss_seg7_vertex_0700DD38
-
-pss_seg7_vertex_0700DE28:
-  type: VTX
-  count: 15
-  offset: 0xDE28
-  symbol: pss_seg7_vertex_0700DE28
-
-pss_seg7_vertex_0700DF18:
-  type: VTX
-  count: 14
-  offset: 0xDF18
-  symbol: pss_seg7_vertex_0700DF18
-
-pss_seg7_vertex_0700DFF8:
-  type: VTX
-  count: 11
-  offset: 0xDFF8
-  symbol: pss_seg7_vertex_0700DFF8
-
-pss_seg7_dl_0700E0A8:
-  type: GFX
-  offset: 0xE0A8
-  symbol: pss_seg7_dl_0700E0A8
-
-pss_seg7_dl_0700E0E0:
-  type: GFX
-  offset: 0xE0E0
-  symbol: pss_seg7_dl_0700E0E0
-
-pss_seg7_dl_0700E138:
-  type: GFX
-  offset: 0xE138
-  symbol: pss_seg7_dl_0700E138
-
-pss_seg7_dl_0700E2B0:
-  type: GFX
-  offset: 0xE2B0
-  symbol: pss_seg7_dl_0700E2B0
 
 pss_seg7_lights_07001800:
   type: LIGHTS
@@ -853,6 +770,90 @@ pss_seg7_dl_0700A7C0:
   offset: 0xA7C0
   symbol: pss_seg7_dl_0700A7C0
 
+pss_seg7_vertex_0700A8B8:
+  type: VTX
+  count: 12
+  offset: 0xA8B8
+  symbol: pss_seg7_vertex_0700A8B8
+
+pss_seg7_vertex_0700A978:
+  type: VTX
+  count: 16
+  offset: 0xA978
+  symbol: pss_seg7_vertex_0700A978
+
+pss_seg7_vertex_0700AA78:
+  type: VTX
+  count: 15
+  offset: 0xAA78
+  symbol: pss_seg7_vertex_0700AA78
+
+pss_seg7_vertex_0700AB68:
+  type: VTX
+  count: 15
+  offset: 0xAB68
+  symbol: pss_seg7_vertex_0700AB68
+
+pss_seg7_vertex_0700AC58:
+  type: VTX
+  count: 15
+  offset: 0xAC58
+  symbol: pss_seg7_vertex_0700AC58
+
+pss_seg7_vertex_0700AD48:
+  type: VTX
+  count: 6
+  offset: 0xAD48
+  symbol: pss_seg7_vertex_0700AD48
+
+pss_seg7_dl_0700ADA8:
+  type: GFX
+  offset: 0xADA8
+  symbol: pss_seg7_dl_0700ADA8
+
+pss_seg7_dl_0700AE00:
+  type: GFX
+  offset: 0xAE00
+  symbol: pss_seg7_dl_0700AE00
+
+pss_seg7_dl_0700AF60:
+  type: GFX
+  offset: 0xAF60
+  symbol: pss_seg7_dl_0700AF60
+
+pss_seg7_dl_0700AFA8:
+  type: GFX
+  offset: 0xAFA8
+  symbol: pss_seg7_dl_0700AFA8
+
+pss_seg7_vertex_0700B070:
+  type: VTX
+  count: 15
+  offset: 0xB070
+  symbol: pss_seg7_vertex_0700B070
+
+pss_seg7_vertex_0700B160:
+  type: VTX
+  count: 15
+  offset: 0xB160
+  symbol: pss_seg7_vertex_0700B160
+
+pss_seg7_vertex_0700B250:
+  type: VTX
+  count: 15
+  offset: 0xB250
+  symbol: pss_seg7_vertex_0700B250
+
+pss_seg7_dl_0700B340:
+  type: GFX
+  offset: 0xB340
+  symbol: pss_seg7_dl_0700B340
+
+pss_seg7_dl_0700B3F0:
+  type: GFX
+  offset: 0xB3F0
+  symbol: pss_seg7_dl_0700B3F0
+
 pss_seg7_vertex_0700B4A8:
   type: VTX
   count: 15
@@ -1019,90 +1020,6 @@ pss_seg7_dl_0700D338:
   offset: 0xD338
   symbol: pss_seg7_dl_0700D338
 
-pss_seg7_vertex_0700B070:
-  type: VTX
-  count: 15
-  offset: 0xB070
-  symbol: pss_seg7_vertex_0700B070
-
-pss_seg7_vertex_0700B160:
-  type: VTX
-  count: 15
-  offset: 0xB160
-  symbol: pss_seg7_vertex_0700B160
-
-pss_seg7_vertex_0700B250:
-  type: VTX
-  count: 15
-  offset: 0xB250
-  symbol: pss_seg7_vertex_0700B250
-
-pss_seg7_dl_0700B340:
-  type: GFX
-  offset: 0xB340
-  symbol: pss_seg7_dl_0700B340
-
-pss_seg7_dl_0700B3F0:
-  type: GFX
-  offset: 0xB3F0
-  symbol: pss_seg7_dl_0700B3F0
-
-pss_seg7_vertex_0700A8B8:
-  type: VTX
-  count: 12
-  offset: 0xA8B8
-  symbol: pss_seg7_vertex_0700A8B8
-
-pss_seg7_vertex_0700A978:
-  type: VTX
-  count: 16
-  offset: 0xA978
-  symbol: pss_seg7_vertex_0700A978
-
-pss_seg7_vertex_0700AA78:
-  type: VTX
-  count: 15
-  offset: 0xAA78
-  symbol: pss_seg7_vertex_0700AA78
-
-pss_seg7_vertex_0700AB68:
-  type: VTX
-  count: 15
-  offset: 0xAB68
-  symbol: pss_seg7_vertex_0700AB68
-
-pss_seg7_vertex_0700AC58:
-  type: VTX
-  count: 15
-  offset: 0xAC58
-  symbol: pss_seg7_vertex_0700AC58
-
-pss_seg7_vertex_0700AD48:
-  type: VTX
-  count: 6
-  offset: 0xAD48
-  symbol: pss_seg7_vertex_0700AD48
-
-pss_seg7_dl_0700ADA8:
-  type: GFX
-  offset: 0xADA8
-  symbol: pss_seg7_dl_0700ADA8
-
-pss_seg7_dl_0700AE00:
-  type: GFX
-  offset: 0xAE00
-  symbol: pss_seg7_dl_0700AE00
-
-pss_seg7_dl_0700AF60:
-  type: GFX
-  offset: 0xAF60
-  symbol: pss_seg7_dl_0700AF60
-
-pss_seg7_dl_0700AFA8:
-  type: GFX
-  offset: 0xAFA8
-  symbol: pss_seg7_dl_0700AFA8
-
 pss_seg7_vertex_0700D3A8:
   type: VTX
   count: 15
@@ -1148,6 +1065,90 @@ pss_seg7_dl_0700DAD8:
   type: GFX
   offset: 0xDAD8
   symbol: pss_seg7_dl_0700DAD8
+
+pss_seg7_vertex_0700DB48:
+  type: VTX
+  count: 4
+  offset: 0xDB48
+  symbol: pss_seg7_vertex_0700DB48
+
+pss_seg7_vertex_0700DB88:
+  type: VTX
+  count: 12
+  offset: 0xDB88
+  symbol: pss_seg7_vertex_0700DB88
+
+pss_seg7_vertex_0700DC48:
+  type: VTX
+  count: 15
+  offset: 0xDC48
+  symbol: pss_seg7_vertex_0700DC48
+
+pss_seg7_vertex_0700DD38:
+  type: VTX
+  count: 15
+  offset: 0xDD38
+  symbol: pss_seg7_vertex_0700DD38
+
+pss_seg7_vertex_0700DE28:
+  type: VTX
+  count: 15
+  offset: 0xDE28
+  symbol: pss_seg7_vertex_0700DE28
+
+pss_seg7_vertex_0700DF18:
+  type: VTX
+  count: 14
+  offset: 0xDF18
+  symbol: pss_seg7_vertex_0700DF18
+
+pss_seg7_vertex_0700DFF8:
+  type: VTX
+  count: 11
+  offset: 0xDFF8
+  symbol: pss_seg7_vertex_0700DFF8
+
+pss_seg7_dl_0700E0A8:
+  type: GFX
+  offset: 0xE0A8
+  symbol: pss_seg7_dl_0700E0A8
+
+pss_seg7_dl_0700E0E0:
+  type: GFX
+  offset: 0xE0E0
+  symbol: pss_seg7_dl_0700E0E0
+
+pss_seg7_dl_0700E138:
+  type: GFX
+  offset: 0xE138
+  symbol: pss_seg7_dl_0700E138
+
+pss_seg7_dl_0700E2B0:
+  type: GFX
+  offset: 0xE2B0
+  symbol: pss_seg7_dl_0700E2B0
+
+pss_seg7_lights_0700E348:
+  type: LIGHTS
+  size: 24
+  offset: 0xE348
+  symbol: pss_seg7_lights_0700E348
+
+pss_seg7_vertex_0700E360:
+  type: VTX
+  count: 4
+  offset: 0xE360
+  symbol: pss_seg7_vertex_0700E360
+
+pss_seg7_dl_0700E3A0:
+  type: GFX
+  offset: 0xE3A0
+  symbol: pss_seg7_dl_0700E3A0
+
+pss_seg7_dl_0700E3E8:
+  type: GFX
+  offset: 0xE3E8
+  symbol: pss_seg7_dl_0700E3E8
 
 pss_seg7_collision:
   type: SM64:COLLISION

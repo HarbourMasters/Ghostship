@@ -5,6 +5,12 @@
   segments:
     - [0x04,  0x114750]
 
+smoke_seg4_vertex_0401DE60:
+  type: VTX
+  count: 4
+  offset: 0x1DE60
+  symbol: smoke_seg4_vertex_0401DE60
+
 walk_smoke_0:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ walk_smoke_0:
   offset: 0x1DEA0
   format: IA16
   symbol: smoke_seg4_texture_0401DEA0
+
 walk_smoke_1:
   type: TEXTURE
   size: 2048
@@ -21,6 +28,7 @@ walk_smoke_1:
   offset: 0x1E6A0
   format: IA16
   symbol: smoke_seg4_texture_0401E6A0
+
 walk_smoke_2:
   type: TEXTURE
   size: 2048
@@ -29,6 +37,7 @@ walk_smoke_2:
   offset: 0x1EEA0
   format: IA16
   symbol: smoke_seg4_texture_0401EEA0
+
 walk_smoke_3:
   type: TEXTURE
   size: 2048
@@ -37,6 +46,7 @@ walk_smoke_3:
   offset: 0x1F6A0
   format: IA16
   symbol: smoke_seg4_texture_0401F6A0
+
 walk_smoke_4:
   type: TEXTURE
   size: 2048
@@ -45,6 +55,7 @@ walk_smoke_4:
   offset: 0x1FEA0
   format: IA16
   symbol: smoke_seg4_texture_0401FEA0
+
 walk_smoke_5:
   type: TEXTURE
   size: 2048
@@ -53,6 +64,7 @@ walk_smoke_5:
   offset: 0x206A0
   format: IA16
   symbol: smoke_seg4_texture_040206A0
+
 walk_smoke_6:
   type: TEXTURE
   size: 2048
@@ -61,12 +73,6 @@ walk_smoke_6:
   offset: 0x20EA0
   format: IA16
   symbol: smoke_seg4_texture_04020EA0
-
-smoke_seg4_vertex_0401DE60:
-  type: VTX
-  count: 4
-  offset: 0x1DE60
-  symbol: smoke_seg4_vertex_0401DE60
 
 smoke_seg4_dl_040216A0:
   type: GFX

@@ -13,6 +13,7 @@ amp_electricity:
   offset: 0xF18
   format: RGBA16
   symbol: dAmpElectricityTexture
+
 amp_eyes:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@ amp_eyes:
   offset: 0x1318
   format: RGBA16
   symbol: dAmpEyesTexture
+
 amp_body:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@ amp_body:
   offset: 0x1B18
   format: RGBA16
   symbol: dAmpBodyTexture
+
 amp_mouth:
   type: TEXTURE
   size: 2048

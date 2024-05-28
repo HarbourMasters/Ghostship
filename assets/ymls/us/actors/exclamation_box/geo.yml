@@ -7,5 +7,5 @@
 
 exclamation_box_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0F000694
+  offset: 0xF000694
   symbol: exclamation_box_geo

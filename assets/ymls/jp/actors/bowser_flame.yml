@@ -13,6 +13,7 @@ bowser_flame_0:
   offset: 0x0
   format: RGBA16
   symbol: flame_seg6_texture_06000000
+
 bowser_flame_1:
   type: TEXTURE
   size: 8192
@@ -21,38 +22,7 @@ bowser_flame_1:
   offset: 0x2000
   format: RGBA16
   symbol: flame_seg6_texture_06002000
-bowser_flame_10:
-  type: TEXTURE
-  size: 8192
-  width: 64
-  height: 64
-  offset: 0x14000
-  format: RGBA16
-  symbol: flame_seg6_texture_06014000
-bowser_flame_11:
-  type: TEXTURE
-  size: 8192
-  width: 64
-  height: 64
-  offset: 0x16000
-  format: RGBA16
-  symbol: flame_seg6_texture_06016000
-bowser_flame_12:
-  type: TEXTURE
-  size: 8192
-  width: 64
-  height: 64
-  offset: 0x18000
-  format: RGBA16
-  symbol: flame_seg6_texture_06018000
-bowser_flame_13:
-  type: TEXTURE
-  size: 8192
-  width: 64
-  height: 64
-  offset: 0x1A000
-  format: RGBA16
-  symbol: flame_seg6_texture_0601A000
+
 bowser_flame_2:
   type: TEXTURE
   size: 8192
@@ -61,6 +31,7 @@ bowser_flame_2:
   offset: 0x4000
   format: RGBA16
   symbol: flame_seg6_texture_06004000
+
 bowser_flame_3:
   type: TEXTURE
   size: 8192
@@ -69,6 +40,7 @@ bowser_flame_3:
   offset: 0x6000
   format: RGBA16
   symbol: flame_seg6_texture_06006000
+
 bowser_flame_4:
   type: TEXTURE
   size: 8192
@@ -77,6 +49,7 @@ bowser_flame_4:
   offset: 0x8000
   format: RGBA16
   symbol: flame_seg6_texture_06008000
+
 bowser_flame_5:
   type: TEXTURE
   size: 8192
@@ -85,6 +58,7 @@ bowser_flame_5:
   offset: 0xA000
   format: RGBA16
   symbol: flame_seg6_texture_0600A000
+
 bowser_flame_6:
   type: TEXTURE
   size: 8192
@@ -93,6 +67,7 @@ bowser_flame_6:
   offset: 0xC000
   format: RGBA16
   symbol: flame_seg6_texture_0600C000
+
 bowser_flame_7:
   type: TEXTURE
   size: 8192
@@ -101,6 +76,7 @@ bowser_flame_7:
   offset: 0xE000
   format: RGBA16
   symbol: flame_seg6_texture_0600E000
+
 bowser_flame_8:
   type: TEXTURE
   size: 8192
@@ -109,6 +85,7 @@ bowser_flame_8:
   offset: 0x10000
   format: RGBA16
   symbol: flame_seg6_texture_06010000
+
 bowser_flame_9:
   type: TEXTURE
   size: 8192
@@ -117,6 +94,42 @@ bowser_flame_9:
   offset: 0x12000
   format: RGBA16
   symbol: flame_seg6_texture_06012000
+
+bowser_flame_10:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x14000
+  format: RGBA16
+  symbol: flame_seg6_texture_06014000
+
+bowser_flame_11:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x16000
+  format: RGBA16
+  symbol: flame_seg6_texture_06016000
+
+bowser_flame_12:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x18000
+  format: RGBA16
+  symbol: flame_seg6_texture_06018000
+
+bowser_flame_13:
+  type: TEXTURE
+  size: 8192
+  width: 64
+  height: 64
+  offset: 0x1A000
+  format: RGBA16
+  symbol: flame_seg6_texture_0601A000
 
 flame_seg6_vertex_0601C000:
   type: VTX

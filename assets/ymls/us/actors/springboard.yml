@@ -5,14 +5,12 @@
   segments:
     - [0x05,  0x165A50]
 
-springboard_base_unused:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x818
-  format: RGBA16
-  symbol: springboard_seg5_texture_05000818
+springboard_seg5_lights_05000000:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: springboard_seg5_lights_05000000
+
 springboard_top_unused:
   type: TEXTURE
   size: 2048
@@ -22,11 +20,14 @@ springboard_top_unused:
   format: RGBA16
   symbol: springboard_seg5_texture_05000018
 
-springboard_seg5_lights_05000000:
-  type: LIGHTS
-  size: 24
-  offset: 0x0
-  symbol: springboard_seg5_lights_05000000
+springboard_base_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x818
+  format: RGBA16
+  symbol: springboard_seg5_texture_05000818
 
 springboard_seg5_vertex_05001018:
   type: VTX

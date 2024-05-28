@@ -5,6 +5,12 @@
   segments:
     - [0x04,  0x112B50]
 
+water_splash_seg4_vertex_0402A588:
+  type: VTX
+  count: 4
+  offset: 0x2A588
+  symbol: water_splash_seg4_vertex_0402A588
+
 water_splash_0:
   type: TEXTURE
   size: 4096
@@ -13,6 +19,7 @@ water_splash_0:
   offset: 0x2A5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402A5C8
+
 water_splash_1:
   type: TEXTURE
   size: 4096
@@ -21,6 +28,7 @@ water_splash_1:
   offset: 0x2B5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402B5C8
+
 water_splash_2:
   type: TEXTURE
   size: 4096
@@ -29,6 +37,7 @@ water_splash_2:
   offset: 0x2C5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402C5C8
+
 water_splash_3:
   type: TEXTURE
   size: 4096
@@ -37,6 +46,7 @@ water_splash_3:
   offset: 0x2D5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402D5C8
+
 water_splash_4:
   type: TEXTURE
   size: 4096
@@ -45,6 +55,7 @@ water_splash_4:
   offset: 0x2E5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402E5C8
+
 water_splash_5:
   type: TEXTURE
   size: 4096
@@ -53,6 +64,7 @@ water_splash_5:
   offset: 0x2F5C8
   format: RGBA16
   symbol: water_splash_seg4_texture_0402F5C8
+
 water_splash_6:
   type: TEXTURE
   size: 4096
@@ -61,6 +73,7 @@ water_splash_6:
   offset: 0x305C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040305C8
+
 water_splash_7:
   type: TEXTURE
   size: 4096
@@ -69,12 +82,6 @@ water_splash_7:
   offset: 0x315C8
   format: RGBA16
   symbol: water_splash_seg4_texture_040315C8
-
-water_splash_seg4_vertex_0402A588:
-  type: VTX
-  count: 4
-  offset: 0x2A588
-  symbol: water_splash_seg4_vertex_0402A588
 
 water_splash_seg4_dl_040325C8:
   type: GFX

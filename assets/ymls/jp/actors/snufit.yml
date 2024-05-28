@@ -13,6 +13,7 @@ snufit_body:
   offset: 0x70E0
   format: RGBA16
   symbol: snufit_seg6_texture_060070E0
+
 snufit_eye:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@ snufit_eye:
   offset: 0x78E0
   format: RGBA16
   symbol: snufit_seg6_texture_060078E0
+
 snufit_mask_strap:
   type: TEXTURE
   size: 1024
@@ -29,6 +31,7 @@ snufit_mask_strap:
   offset: 0x80E0
   format: RGBA16
   symbol: snufit_seg6_texture_060080E0
+
 snufit_mouth:
   type: TEXTURE
   size: 2048

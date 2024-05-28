@@ -5,6 +5,12 @@
   segments:
     - [0x06,  0x1D8310]
 
+toad_seg6_lights_06005908:
+  type: LIGHTS
+  size: 24
+  offset: 0x5908
+  symbol: toad_seg6_lights_06005908
+
 toad_face:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ toad_face:
   offset: 0x5920
   format: RGBA16
   symbol: toad_seg6_texture_06005920
+
 toad_head:
   type: TEXTURE
   size: 2048
@@ -21,13 +28,6 @@ toad_head:
   offset: 0x6120
   format: RGBA16
   symbol: toad_seg6_texture_06006120
-
-toad_seg6_lights_06005908:
-  type: LIGHTS
-  size: 24
-  offset: 0x5908
-  symbol: toad_seg6_lights_06005908
-
 
 toad_seg6_vertex_06006920:
   type: VTX

@@ -7,5 +7,5 @@
 
 yoshi_egg_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C0001E4
+  offset: 0xC0001E4
   symbol: yoshi_egg_geo

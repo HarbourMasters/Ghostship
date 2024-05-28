@@ -13,6 +13,7 @@ title_screen_bg.001C0:
   offset: 0x1C0
   format: RGBA16
   symbol: title_texture_0A0001C0
+
 title_screen_bg.00E40:
   type: TEXTURE
   size: 3200
@@ -21,6 +22,7 @@ title_screen_bg.00E40:
   offset: 0xE40
   format: RGBA16
   symbol: title_texture_0A000E40
+
 title_screen_bg.01AC0:
   type: TEXTURE
   size: 3200
@@ -29,6 +31,7 @@ title_screen_bg.01AC0:
   offset: 0x1AC0
   format: RGBA16
   symbol: title_texture_0A001AC0
+
 title_screen_bg.02740:
   type: TEXTURE
   size: 3200
@@ -37,6 +40,7 @@ title_screen_bg.02740:
   offset: 0x2740
   format: RGBA16
   symbol: title_texture_0A002740
+
 title_screen_bg.033C0:
   type: TEXTURE
   size: 3200
@@ -45,6 +49,7 @@ title_screen_bg.033C0:
   offset: 0x33C0
   format: RGBA16
   symbol: title_texture_0A0033C0
+
 title_screen_bg.04040:
   type: TEXTURE
   size: 3200
@@ -53,6 +58,7 @@ title_screen_bg.04040:
   offset: 0x4040
   format: RGBA16
   symbol: title_texture_0A004040
+
 title_screen_bg.04CC0:
   type: TEXTURE
   size: 3200
@@ -61,6 +67,7 @@ title_screen_bg.04CC0:
   offset: 0x4CC0
   format: RGBA16
   symbol: title_texture_0A004CC0
+
 title_screen_bg.05940:
   type: TEXTURE
   size: 3200

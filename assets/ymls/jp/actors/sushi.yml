@@ -5,14 +5,6 @@
   segments:
     - [0x05,  0x139D10]
 
-sushi_eye:
-  type: TEXTURE
-  size: 1024
-  width: 32
-  height: 16
-  offset: 0x96D0
-  format: RGBA16
-  symbol: sushi_seg5_texture_050096D0
 sushi_snout:
   type: TEXTURE
   size: 2048
@@ -21,6 +13,16 @@ sushi_snout:
   offset: 0x8ED0
   format: RGBA16
   symbol: sushi_seg5_texture_05008ED0
+
+sushi_eye:
+  type: TEXTURE
+  size: 1024
+  width: 32
+  height: 16
+  offset: 0x96D0
+  format: RGBA16
+  symbol: sushi_seg5_texture_050096D0
+
 sushi_tooth:
   type: TEXTURE
   size: 128

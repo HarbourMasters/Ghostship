@@ -7,5 +7,5 @@
 
 sa_geo_000170:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000170
+  offset: 0xE000170
   symbol: sa_geo_000170

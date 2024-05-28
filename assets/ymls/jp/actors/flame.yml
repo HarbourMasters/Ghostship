@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x1FF740]
 
+flame_seg3_vertex_030172E0:
+  type: VTX
+  count: 4
+  offset: 0x172E0
+  symbol: flame_seg3_vertex_030172E0
+
 flame_0:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ flame_0:
   offset: 0x17320
   format: IA16
   symbol: flame_seg3_texture_03017320
+
 flame_1:
   type: TEXTURE
   size: 2048
@@ -21,6 +28,7 @@ flame_1:
   offset: 0x17B20
   format: IA16
   symbol: flame_seg3_texture_03017B20
+
 flame_2:
   type: TEXTURE
   size: 2048
@@ -29,6 +37,7 @@ flame_2:
   offset: 0x18320
   format: IA16
   symbol: flame_seg3_texture_03018320
+
 flame_3:
   type: TEXTURE
   size: 2048
@@ -37,6 +46,7 @@ flame_3:
   offset: 0x18B20
   format: IA16
   symbol: flame_seg3_texture_03018B20
+
 flame_4:
   type: TEXTURE
   size: 2048
@@ -45,6 +55,7 @@ flame_4:
   offset: 0x19320
   format: IA16
   symbol: flame_seg3_texture_03019320
+
 flame_5:
   type: TEXTURE
   size: 2048
@@ -53,6 +64,7 @@ flame_5:
   offset: 0x19B20
   format: IA16
   symbol: flame_seg3_texture_03019B20
+
 flame_6:
   type: TEXTURE
   size: 2048
@@ -61,6 +73,7 @@ flame_6:
   offset: 0x1A320
   format: IA16
   symbol: flame_seg3_texture_0301A320
+
 flame_7:
   type: TEXTURE
   size: 2048
@@ -69,12 +82,6 @@ flame_7:
   offset: 0x1AB20
   format: IA16
   symbol: flame_seg3_texture_0301AB20
-
-flame_seg3_vertex_030172E0:
-  type: VTX
-  count: 4
-  offset: 0x172E0
-  symbol: flame_seg3_vertex_030172E0
 
 flame_seg3_dl_0301B320:
   type: GFX

@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x1505D0]
 
+smoke_seg5_vertex_05007280:
+  type: VTX
+  count: 4
+  offset: 0x7280
+  symbol: smoke_seg5_vertex_05007280
+
 smoke:
   type: TEXTURE
   size: 2048
@@ -13,12 +19,6 @@ smoke:
   offset: 0x72C0
   format: IA16
   symbol: smoke_seg5_texture_050072C0
-
-smoke_seg5_vertex_05007280:
-  type: VTX
-  count: 4
-  offset: 0x7280
-  symbol: smoke_seg5_vertex_05007280
 
 smoke_seg5_dl_05007AC0:
   type: GFX

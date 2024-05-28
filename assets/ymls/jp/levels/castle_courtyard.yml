@@ -503,28 +503,6 @@ castle_courtyard_seg7_dl_07005078:
   offset: 0x5078
   symbol: castle_courtyard_seg7_dl_07005078
 
-castle_courtyard_seg7_vertex_07005708:
-  type: VTX
-  count: 15
-  offset: 0x5708
-  symbol: castle_courtyard_seg7_vertex_07005708
-
-castle_courtyard_seg7_vertex_070057F8:
-  type: VTX
-  count: 11
-  offset: 0x57F8
-  symbol: castle_courtyard_seg7_vertex_070057F8
-
-castle_courtyard_seg7_dl_070058A8:
-  type: GFX
-  offset: 0x58A8
-  symbol: castle_courtyard_seg7_dl_070058A8
-
-castle_courtyard_seg7_dl_07005938:
-  type: GFX
-  offset: 0x5938
-  symbol: castle_courtyard_seg7_dl_07005938
-
 castle_courtyard_seg7_vertex_07005110:
   type: VTX
   count: 15
@@ -565,8 +543,30 @@ castle_courtyard_seg7_dl_07005698:
   offset: 0x5698
   symbol: castle_courtyard_seg7_dl_07005698
 
+castle_courtyard_seg7_vertex_07005708:
+  type: VTX
+  count: 15
+  offset: 0x5708
+  symbol: castle_courtyard_seg7_vertex_07005708
+
+castle_courtyard_seg7_vertex_070057F8:
+  type: VTX
+  count: 11
+  offset: 0x57F8
+  symbol: castle_courtyard_seg7_vertex_070057F8
+
+castle_courtyard_seg7_dl_070058A8:
+  type: GFX
+  offset: 0x58A8
+  symbol: castle_courtyard_seg7_dl_070058A8
+
+castle_courtyard_seg7_dl_07005938:
+  type: GFX
+  offset: 0x5938
+  symbol: castle_courtyard_seg7_dl_07005938
+
 castle_courtyard_seg7_collision_level:
-    type: SM64:COLLISION
-    offset: 0x59A8
-    symbol: castle_courtyard_seg7_collision_level
+  type: SM64:COLLISION
+  offset: 0x59A8
+  symbol: castle_courtyard_seg7_collision_level
 

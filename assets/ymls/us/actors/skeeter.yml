@@ -5,23 +5,6 @@
   segments:
     - [0x06,  0x1B9CC0]
 
-skeeter_eye:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x90
-  format: RGBA16
-  symbol: skeeter_seg6_texture_06000090
-skeeter_iris:
-  type: TEXTURE
-  size: 256
-  width: 16
-  height: 8
-  offset: 0x890
-  format: RGBA16
-  symbol: skeeter_seg6_texture_06000890
-
 skeeter_lights_unused1:
   type: LIGHTS
   size: 24
@@ -57,6 +40,24 @@ skeeter_lights_unused6:
   size: 24
   offset: 0x78
   symbol: skeeter_lights_unused6
+
+skeeter_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x90
+  format: RGBA16
+  symbol: skeeter_seg6_texture_06000090
+
+skeeter_iris:
+  type: TEXTURE
+  size: 256
+  width: 16
+  height: 8
+  offset: 0x890
+  format: RGBA16
+  symbol: skeeter_seg6_texture_06000890
 
 skeeter_seg6_vertex_06000990:
   type: VTX

@@ -13,46 +13,6 @@ lakitu_camera_lens:
   offset: 0x3800
   format: RGBA16
   symbol: lakitu_seg6_texture_06003800
-lakitu_cameraman_cloud_face_unused:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xECE0
-  format: RGBA16
-  symbol: lakitu_seg6_texture_06000000
-lakitu_cameraman_eyes_closed:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0x104E0
-  format: RGBA16
-  symbol: lakitu_seg6_texture_06001800
-lakitu_cameraman_eyes_open:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0xF4E0
-  format: RGBA16
-  symbol: lakitu_seg6_texture_06000800
-lakitu_cameraman_frown:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x11CE0
-  format: RGBA16
-  symbol: lakitu_seg6_texture_06003000
-lakitu_cameraman_shell:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x114E0
-  format: RGBA16
-  symbol: lakitu_seg6_texture_06002800
 
 lakitu_seg6_lights_06003A00:
   type: LIGHTS
@@ -372,3 +332,47 @@ lakitu_seg6_dl_06005610:
   offset: 0x5610
   symbol: lakitu_seg6_dl_06005610
 
+lakitu_cameraman_cloud_face_unused:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xECE0
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06000000
+
+lakitu_cameraman_eyes_open:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0xF4E0
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06000800
+
+lakitu_cameraman_eyes_closed:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x104E0
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06001800
+
+lakitu_cameraman_shell:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x114E0
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06002800
+
+lakitu_cameraman_frown:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x11CE0
+  format: RGBA16
+  symbol: lakitu_seg6_texture_06003000

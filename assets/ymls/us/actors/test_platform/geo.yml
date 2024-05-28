@@ -7,5 +7,5 @@
 
 test_platform_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0F000020
+  offset: 0xF000020
   symbol: test_platform_geo

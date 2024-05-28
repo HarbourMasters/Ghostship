@@ -1,627 +1,835 @@
 anim_00:
   type: SM64:ANIM
-  offset: 5154352
+  offset: 0x4EA630
+
 anim_01:
   type: SM64:ANIM
-  offset: 5157232
-anim_02:
-  type: SM64:ANIM
-  offset: 5157256
-anim_03:
-  type: SM64:ANIM
-  offset: 5164108
-anim_04:
-  type: SM64:ANIM
-  offset: 5168756
-anim_05:
-  type: SM64:ANIM
-  offset: 5171296
-anim_06:
-  type: SM64:ANIM
-  offset: 5177368
-anim_07:
-  type: SM64:ANIM
-  offset: 5157256
-anim_08:
-  type: SM64:ANIM
-  offset: 5178560
-anim_09:
-  type: SM64:ANIM
-  offset: 5180304
-anim_0A:
-  type: SM64:ANIM
-  offset: 5183632
-anim_0B:
-  type: SM64:ANIM
-  offset: 5186452
-anim_0C:
-  type: SM64:ANIM
-  offset: 5186476
-anim_0D:
-  type: SM64:ANIM
-  offset: 5188100
-anim_0E:
-  type: SM64:ANIM
-  offset: 5157256
-anim_0F:
-  type: SM64:ANIM
-  offset: 5157256
-anim_10:
-  type: SM64:ANIM
-  offset: 5189528
-anim_11:
-  type: SM64:ANIM
-  offset: 5191308
-anim_12:
-  type: SM64:ANIM
-  offset: 5192760
-anim_13:
-  type: SM64:ANIM
-  offset: 5194356
-anim_14:
-  type: SM64:ANIM
-  offset: 5196312
-anim_15:
-  type: SM64:ANIM
-  offset: 5197692
-anim_16:
-  type: SM64:ANIM
-  offset: 5198900
-anim_17:
-  type: SM64:ANIM
-  offset: 5203628
-anim_18:
-  type: SM64:ANIM
-  offset: 5206848
-anim_19:
-  type: SM64:ANIM
-  offset: 5211576
-anim_1A:
-  type: SM64:ANIM
-  offset: 5217208
-anim_1B:
-  type: SM64:ANIM
-  offset: 5218632
-anim_1C:
-  type: SM64:ANIM
-  offset: 5221768
-anim_1D:
-  type: SM64:ANIM
-  offset: 5222824
-anim_1E:
-  type: SM64:ANIM
-  offset: 5224480
-anim_1F:
-  type: SM64:ANIM
-  offset: 5226288
-anim_20:
-  type: SM64:ANIM
-  offset: 5227412
-anim_21:
-  type: SM64:ANIM
-  offset: 5234812
-anim_22:
-  type: SM64:ANIM
-  offset: 5237700
-anim_23:
-  type: SM64:ANIM
-  offset: 5239728
-anim_24:
-  type: SM64:ANIM
-  offset: 5248220
-anim_25:
-  type: SM64:ANIM
-  offset: 5257872
-anim_26:
-  type: SM64:ANIM
-  offset: 5266168
-anim_27:
-  type: SM64:ANIM
-  offset: 5273796
-anim_28:
-  type: SM64:ANIM
-  offset: 5196312
-anim_29:
-  type: SM64:ANIM
-  offset: 5284340
-anim_2A:
-  type: SM64:ANIM
-  offset: 5285200
-anim_2B:
-  type: SM64:ANIM
-  offset: 5285200
+  offset: 0x4EB170
+
 anim_2C:
   type: SM64:ANIM
-  offset: 5157232
-anim_2D:
-  type: SM64:ANIM
-  offset: 5157256
-anim_2E:
-  type: SM64:ANIM
-  offset: 5294508
-anim_2F:
-  type: SM64:ANIM
-  offset: 5239728
-anim_30:
-  type: SM64:ANIM
-  offset: 5171296
-anim_31:
-  type: SM64:ANIM
-  offset: 5311212
-anim_32:
-  type: SM64:ANIM
-  offset: 5227412
-anim_33:
-  type: SM64:ANIM
-  offset: 5330316
-anim_34:
-  type: SM64:ANIM
-  offset: 5191308
-anim_35:
-  type: SM64:ANIM
-  offset: 5335008
-anim_36:
-  type: SM64:ANIM
-  offset: 5338988
-anim_37:
-  type: SM64:ANIM
-  offset: 5239728
-anim_38:
-  type: SM64:ANIM
-  offset: 5177368
-anim_39:
-  type: SM64:ANIM
-  offset: 5351188
-anim_3A:
-  type: SM64:ANIM
-  offset: 5363884
-anim_3B:
-  type: SM64:ANIM
-  offset: 5191308
-anim_3C:
-  type: SM64:ANIM
-  offset: 5366016
-anim_3D:
-  type: SM64:ANIM
-  offset: 5366040
-anim_3E:
-  type: SM64:ANIM
-  offset: 5351188
-anim_3F:
-  type: SM64:ANIM
-  offset: 5378860
-anim_40:
-  type: SM64:ANIM
-  offset: 5382232
-anim_41:
-  type: SM64:ANIM
-  offset: 5221768
-anim_42:
-  type: SM64:ANIM
-  offset: 5384416
-anim_43:
-  type: SM64:ANIM
-  offset: 5385648
-anim_44:
-  type: SM64:ANIM
-  offset: 5196312
-anim_45:
-  type: SM64:ANIM
-  offset: 5157256
-anim_46:
-  type: SM64:ANIM
-  offset: 5386960
-anim_47:
-  type: SM64:ANIM
-  offset: 5366016
-anim_48:
-  type: SM64:ANIM
-  offset: 5389544
-anim_49:
-  type: SM64:ANIM
-  offset: 5191308
-anim_4A:
-  type: SM64:ANIM
-  offset: 5396496
-anim_4B:
-  type: SM64:ANIM
-  offset: 5192760
-anim_4C:
-  type: SM64:ANIM
-  offset: 5399052
-anim_4D:
-  type: SM64:ANIM
-  offset: 5177368
-anim_4E:
-  type: SM64:ANIM
-  offset: 5400024
-anim_4F:
-  type: SM64:ANIM
-  offset: 5226288
-anim_50:
-  type: SM64:ANIM
-  offset: 5363884
-anim_51:
-  type: SM64:ANIM
-  offset: 5405308
-anim_52:
-  type: SM64:ANIM
-  offset: 5366016
-anim_53:
-  type: SM64:ANIM
-  offset: 5407744
-anim_54:
-  type: SM64:ANIM
-  offset: 5409992
-anim_55:
-  type: SM64:ANIM
-  offset: 5411584
-anim_56:
-  type: SM64:ANIM
-  offset: 5157256
-anim_57:
-  type: SM64:ANIM
-  offset: 5423152
-anim_58:
-  type: SM64:ANIM
-  offset: 5424988
-anim_59:
-  type: SM64:ANIM
-  offset: 5426348
-anim_5A:
-  type: SM64:ANIM
-  offset: 5429676
-anim_5B:
-  type: SM64:ANIM
-  offset: 5221768
-anim_5C:
-  type: SM64:ANIM
-  offset: 5434228
-anim_5D:
-  type: SM64:ANIM
-  offset: 5382232
-anim_5E:
-  type: SM64:ANIM
-  offset: 5351188
-anim_5F:
-  type: SM64:ANIM
-  offset: 5449572
-anim_60:
-  type: SM64:ANIM
-  offset: 5454908
-anim_61:
-  type: SM64:ANIM
-  offset: 5459204
-anim_62:
-  type: SM64:ANIM
-  offset: 5221768
-anim_63:
-  type: SM64:ANIM
-  offset: 5473160
-anim_64:
-  type: SM64:ANIM
-  offset: 5475064
-anim_65:
-  type: SM64:ANIM
-  offset: 5226288
-anim_66:
-  type: SM64:ANIM
-  offset: 5478564
-anim_67:
-  type: SM64:ANIM
-  offset: 5480788
-anim_68:
-  type: SM64:ANIM
-  offset: 5481452
-anim_69:
-  type: SM64:ANIM
-  offset: 5221768
-anim_6A:
-  type: SM64:ANIM
-  offset: 5483108
-anim_6B:
-  type: SM64:ANIM
-  offset: 5366016
-anim_6C:
-  type: SM64:ANIM
-  offset: 5485660
-anim_6D:
-  type: SM64:ANIM
-  offset: 5192760
-anim_6E:
-  type: SM64:ANIM
-  offset: 5191308
-anim_6F:
-  type: SM64:ANIM
-  offset: 5284340
-anim_70:
-  type: SM64:ANIM
-  offset: 5490220
-anim_71:
-  type: SM64:ANIM
-  offset: 5490596
-anim_72:
-  type: SM64:ANIM
-  offset: 5492952
-anim_73:
-  type: SM64:ANIM
-  offset: 5492952
-anim_74:
-  type: SM64:ANIM
-  offset: 5490596
-anim_75:
-  type: SM64:ANIM
-  offset: 5490596
-anim_76:
-  type: SM64:ANIM
-  offset: 5239728
-anim_77:
-  type: SM64:ANIM
-  offset: 5198900
-anim_78:
-  type: SM64:ANIM
-  offset: 5509548
-anim_79:
-  type: SM64:ANIM
-  offset: 5520280
-anim_7A:
-  type: SM64:ANIM
-  offset: 5524192
-anim_7B:
-  type: SM64:ANIM
-  offset: 5409992
-anim_7C:
-  type: SM64:ANIM
-  offset: 5409992
-anim_7D:
-  type: SM64:ANIM
-  offset: 5285200
-anim_7E:
-  type: SM64:ANIM
-  offset: 5171296
-anim_7F:
-  type: SM64:ANIM
-  offset: 5218632
-anim_80:
-  type: SM64:ANIM
-  offset: 5218632
-anim_81:
-  type: SM64:ANIM
-  offset: 5544716
-anim_82:
-  type: SM64:ANIM
-  offset: 5549300
-anim_83:
-  type: SM64:ANIM
-  offset: 5555348
-anim_84:
-  type: SM64:ANIM
-  offset: 5164108
-anim_85:
-  type: SM64:ANIM
-  offset: 5285200
-anim_86:
-  type: SM64:ANIM
-  offset: 5565992
-anim_87:
-  type: SM64:ANIM
-  offset: 5330316
-anim_88:
-  type: SM64:ANIM
-  offset: 5434228
-anim_89:
-  type: SM64:ANIM
-  offset: 5571036
-anim_8A:
-  type: SM64:ANIM
-  offset: 5565992
-anim_8B:
-  type: SM64:ANIM
-  offset: 5426348
-anim_8C:
-  type: SM64:ANIM
-  offset: 5396496
-anim_8D:
-  type: SM64:ANIM
-  offset: 5405308
-anim_8E:
-  type: SM64:ANIM
-  offset: 5157256
-anim_8F:
-  type: SM64:ANIM
-  offset: 5178560
-anim_90:
-  type: SM64:ANIM
-  offset: 5196312
-anim_91:
-  type: SM64:ANIM
-  offset: 5584572
-anim_92:
-  type: SM64:ANIM
-  offset: 5585116
-anim_93:
-  type: SM64:ANIM
-  offset: 5221768
-anim_94:
-  type: SM64:ANIM
-  offset: 5157256
-anim_95:
-  type: SM64:ANIM
-  offset: 5480788
-anim_96:
-  type: SM64:ANIM
-  offset: 5221768
-anim_97:
-  type: SM64:ANIM
-  offset: 5363884
-anim_98:
-  type: SM64:ANIM
-  offset: 5171296
-anim_99:
-  type: SM64:ANIM
-  offset: 5597468
-anim_9A:
-  type: SM64:ANIM
-  offset: 5396496
-anim_9B:
-  type: SM64:ANIM
-  offset: 5396496
-anim_9C:
-  type: SM64:ANIM
-  offset: 5606588
-anim_9D:
-  type: SM64:ANIM
-  offset: 5611748
-anim_9E:
-  type: SM64:ANIM
-  offset: 5544716
-anim_9F:
-  type: SM64:ANIM
-  offset: 5191308
-anim_A0:
-  type: SM64:ANIM
-  offset: 5221768
-anim_A1:
-  type: SM64:ANIM
-  offset: 5619972
-anim_A2:
-  type: SM64:ANIM
-  offset: 5194356
-anim_A3:
-  type: SM64:ANIM
-  offset: 5409992
-anim_A4:
-  type: SM64:ANIM
-  offset: 5224480
+  offset: 0x4EB170
+
 anim_A5:
   type: SM64:ANIM
-  offset: 5157232
-anim_A6:
+  offset: 0x4EB170
+
+anim_02:
   type: SM64:ANIM
-  offset: 5633112
-anim_A7:
+  offset: 0x4EB188
+
+anim_07:
   type: SM64:ANIM
-  offset: 5565992
-anim_A8:
+  offset: 0x4EB188
+
+anim_0E:
   type: SM64:ANIM
-  offset: 5544716
-anim_A9:
+  offset: 0x4EB188
+
+anim_0F:
   type: SM64:ANIM
-  offset: 5434228
-anim_AA:
+  offset: 0x4EB188
+
+anim_2D:
   type: SM64:ANIM
-  offset: 5483108
-anim_AB:
+  offset: 0x4EB188
+
+anim_45:
   type: SM64:ANIM
-  offset: 5221768
-anim_AC:
+  offset: 0x4EB188
+
+anim_56:
   type: SM64:ANIM
-  offset: 5649840
-anim_AD:
+  offset: 0x4EB188
+
+anim_8E:
   type: SM64:ANIM
-  offset: 5407744
-anim_AE:
+  offset: 0x4EB188
+
+anim_94:
   type: SM64:ANIM
-  offset: 5366016
-anim_AF:
-  type: SM64:ANIM
-  offset: 5407744
-anim_B0:
-  type: SM64:ANIM
-  offset: 5480788
-anim_B1:
-  type: SM64:ANIM
-  offset: 5658344
-anim_B2:
-  type: SM64:ANIM
-  offset: 5224480
-anim_B3:
-  type: SM64:ANIM
-  offset: 5663140
-anim_B4:
-  type: SM64:ANIM
-  offset: 5490596
-anim_B5:
-  type: SM64:ANIM
-  offset: 5434228
-anim_B6:
-  type: SM64:ANIM
-  offset: 5672060
-anim_B7:
-  type: SM64:ANIM
-  offset: 5565992
-anim_B8:
-  type: SM64:ANIM
-  offset: 5330316
-anim_B9:
-  type: SM64:ANIM
-  offset: 5407744
-anim_BA:
-  type: SM64:ANIM
-  offset: 5424988
-anim_BB:
-  type: SM64:ANIM
-  offset: 5681636
+  offset: 0x4EB188
+
 anim_BC:
   type: SM64:ANIM
-  offset: 5157256
-anim_BD:
-  type: SM64:ANIM
-  offset: 5189528
-anim_BE:
-  type: SM64:ANIM
-  offset: 5221768
-anim_BF:
-  type: SM64:ANIM
-  offset: 5490596
-anim_C0:
-  type: SM64:ANIM
-  offset: 5691120
-anim_C1:
-  type: SM64:ANIM
-  offset: 5183632
-anim_C2:
-  type: SM64:ANIM
-  offset: 5171296
-anim_C3:
-  type: SM64:ANIM
-  offset: 5409992
-anim_C4:
-  type: SM64:ANIM
-  offset: 5409992
-anim_C5:
-  type: SM64:ANIM
-  offset: 5409992
-anim_C6:
-  type: SM64:ANIM
-  offset: 5330316
-anim_C7:
-  type: SM64:ANIM
-  offset: 5330316
-anim_C8:
-  type: SM64:ANIM
-  offset: 5714016
-anim_C9:
-  type: SM64:ANIM
-  offset: 5226288
-anim_CA:
-  type: SM64:ANIM
-  offset: 5718156
-anim_CB:
-  type: SM64:ANIM
-  offset: 5217208
+  offset: 0x4EB188
+
 anim_CC:
   type: SM64:ANIM
-  offset: 5157256
-anim_CD:
+  offset: 0x4EB188
+
+anim_03:
   type: SM64:ANIM
-  offset: 5722116
+  offset: 0x4ECC4C
+
+anim_84:
+  type: SM64:ANIM
+  offset: 0x4ECC4C
+
+anim_04:
+  type: SM64:ANIM
+  offset: 0x4EDE74
+
+anim_05:
+  type: SM64:ANIM
+  offset: 0x4EE860
+
+anim_30:
+  type: SM64:ANIM
+  offset: 0x4EE860
+
+anim_7E:
+  type: SM64:ANIM
+  offset: 0x4EE860
+
+anim_98:
+  type: SM64:ANIM
+  offset: 0x4EE860
+
+anim_C2:
+  type: SM64:ANIM
+  offset: 0x4EE860
+
+anim_06:
+  type: SM64:ANIM
+  offset: 0x4F0018
+
+anim_38:
+  type: SM64:ANIM
+  offset: 0x4F0018
+
+anim_4D:
+  type: SM64:ANIM
+  offset: 0x4F0018
+
+anim_08:
+  type: SM64:ANIM
+  offset: 0x4F04C0
+
+anim_8F:
+  type: SM64:ANIM
+  offset: 0x4F04C0
+
+anim_09:
+  type: SM64:ANIM
+  offset: 0x4F0B90
+
+anim_0A:
+  type: SM64:ANIM
+  offset: 0x4F1890
+
+anim_C1:
+  type: SM64:ANIM
+  offset: 0x4F1890
+
+anim_0B:
+  type: SM64:ANIM
+  offset: 0x4F2394
+
+anim_0C:
+  type: SM64:ANIM
+  offset: 0x4F23AC
+
+anim_0D:
+  type: SM64:ANIM
+  offset: 0x4F2A04
+
+anim_10:
+  type: SM64:ANIM
+  offset: 0x4F2F98
+
+anim_BD:
+  type: SM64:ANIM
+  offset: 0x4F2F98
+
+anim_11:
+  type: SM64:ANIM
+  offset: 0x4F368C
+
+anim_34:
+  type: SM64:ANIM
+  offset: 0x4F368C
+
+anim_3B:
+  type: SM64:ANIM
+  offset: 0x4F368C
+
+anim_49:
+  type: SM64:ANIM
+  offset: 0x4F368C
+
+anim_6E:
+  type: SM64:ANIM
+  offset: 0x4F368C
+
+anim_9F:
+  type: SM64:ANIM
+  offset: 0x4F368C
+
+anim_12:
+  type: SM64:ANIM
+  offset: 0x4F3C38
+
+anim_4B:
+  type: SM64:ANIM
+  offset: 0x4F3C38
+
+anim_6D:
+  type: SM64:ANIM
+  offset: 0x4F3C38
+
 anim_CE:
   type: SM64:ANIM
-  offset: 5192760
-anim_CF:
+  offset: 0x4F3C38
+
+anim_13:
   type: SM64:ANIM
-  offset: 5729312
+  offset: 0x4F4274
+
+anim_A2:
+  type: SM64:ANIM
+  offset: 0x4F4274
+
+anim_14:
+  type: SM64:ANIM
+  offset: 0x4F4A18
+
+anim_28:
+  type: SM64:ANIM
+  offset: 0x4F4A18
+
+anim_44:
+  type: SM64:ANIM
+  offset: 0x4F4A18
+
+anim_90:
+  type: SM64:ANIM
+  offset: 0x4F4A18
+
+anim_15:
+  type: SM64:ANIM
+  offset: 0x4F4F7C
+
+anim_16:
+  type: SM64:ANIM
+  offset: 0x4F5434
+
+anim_77:
+  type: SM64:ANIM
+  offset: 0x4F5434
+
+anim_17:
+  type: SM64:ANIM
+  offset: 0x4F66AC
+
+anim_18:
+  type: SM64:ANIM
+  offset: 0x4F7340
+
+anim_19:
+  type: SM64:ANIM
+  offset: 0x4F85B8
+
+anim_1A:
+  type: SM64:ANIM
+  offset: 0x4F9BB8
+
+anim_CB:
+  type: SM64:ANIM
+  offset: 0x4F9BB8
+
+anim_1B:
+  type: SM64:ANIM
+  offset: 0x4FA148
+
+anim_7F:
+  type: SM64:ANIM
+  offset: 0x4FA148
+
+anim_80:
+  type: SM64:ANIM
+  offset: 0x4FA148
+
+anim_1C:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_41:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_5B:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_62:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_69:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_93:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_96:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_A0:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_AB:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_BE:
+  type: SM64:ANIM
+  offset: 0x4FAD88
+
+anim_1D:
+  type: SM64:ANIM
+  offset: 0x4FB1A8
+
+anim_1E:
+  type: SM64:ANIM
+  offset: 0x4FB820
+
+anim_A4:
+  type: SM64:ANIM
+  offset: 0x4FB820
+
+anim_B2:
+  type: SM64:ANIM
+  offset: 0x4FB820
+
+anim_1F:
+  type: SM64:ANIM
+  offset: 0x4FBF30
+
+anim_4F:
+  type: SM64:ANIM
+  offset: 0x4FBF30
+
+anim_65:
+  type: SM64:ANIM
+  offset: 0x4FBF30
+
+anim_C9:
+  type: SM64:ANIM
+  offset: 0x4FBF30
+
+anim_20:
+  type: SM64:ANIM
+  offset: 0x4FC394
+
+anim_32:
+  type: SM64:ANIM
+  offset: 0x4FC394
+
+anim_21:
+  type: SM64:ANIM
+  offset: 0x4FE07C
+
+anim_22:
+  type: SM64:ANIM
+  offset: 0x4FEBC4
+
+anim_23:
+  type: SM64:ANIM
+  offset: 0x4FF3B0
+
+anim_2F:
+  type: SM64:ANIM
+  offset: 0x4FF3B0
+
+anim_37:
+  type: SM64:ANIM
+  offset: 0x4FF3B0
+
+anim_76:
+  type: SM64:ANIM
+  offset: 0x4FF3B0
+
+anim_24:
+  type: SM64:ANIM
+  offset: 0x5014DC
+
+anim_25:
+  type: SM64:ANIM
+  offset: 0x503A90
+
+anim_26:
+  type: SM64:ANIM
+  offset: 0x505AF8
+
+anim_27:
+  type: SM64:ANIM
+  offset: 0x5078C4
+
+anim_29:
+  type: SM64:ANIM
+  offset: 0x50A1F4
+
+anim_6F:
+  type: SM64:ANIM
+  offset: 0x50A1F4
+
+anim_2A:
+  type: SM64:ANIM
+  offset: 0x50A550
+
+anim_2B:
+  type: SM64:ANIM
+  offset: 0x50A550
+
+anim_7D:
+  type: SM64:ANIM
+  offset: 0x50A550
+
+anim_85:
+  type: SM64:ANIM
+  offset: 0x50A550
+
+anim_2E:
+  type: SM64:ANIM
+  offset: 0x50C9AC
+
+anim_31:
+  type: SM64:ANIM
+  offset: 0x510AEC
+
+anim_33:
+  type: SM64:ANIM
+  offset: 0x51558C
+
+anim_87:
+  type: SM64:ANIM
+  offset: 0x51558C
+
+anim_B8:
+  type: SM64:ANIM
+  offset: 0x51558C
+
+anim_C6:
+  type: SM64:ANIM
+  offset: 0x51558C
+
+anim_C7:
+  type: SM64:ANIM
+  offset: 0x51558C
+
+anim_35:
+  type: SM64:ANIM
+  offset: 0x5167E0
+
+anim_36:
+  type: SM64:ANIM
+  offset: 0x51776C
+
+anim_39:
+  type: SM64:ANIM
+  offset: 0x51A714
+
+anim_3E:
+  type: SM64:ANIM
+  offset: 0x51A714
+
+anim_5E:
+  type: SM64:ANIM
+  offset: 0x51A714
+
+anim_3A:
+  type: SM64:ANIM
+  offset: 0x51D8AC
+
+anim_50:
+  type: SM64:ANIM
+  offset: 0x51D8AC
+
+anim_97:
+  type: SM64:ANIM
+  offset: 0x51D8AC
+
+anim_3C:
+  type: SM64:ANIM
+  offset: 0x51E100
+
+anim_47:
+  type: SM64:ANIM
+  offset: 0x51E100
+
+anim_52:
+  type: SM64:ANIM
+  offset: 0x51E100
+
+anim_6B:
+  type: SM64:ANIM
+  offset: 0x51E100
+
+anim_AE:
+  type: SM64:ANIM
+  offset: 0x51E100
+
+anim_3D:
+  type: SM64:ANIM
+  offset: 0x51E118
+
+anim_3F:
+  type: SM64:ANIM
+  offset: 0x52132C
+
+anim_40:
+  type: SM64:ANIM
+  offset: 0x522058
+
+anim_5D:
+  type: SM64:ANIM
+  offset: 0x522058
+
+anim_42:
+  type: SM64:ANIM
+  offset: 0x5228E0
+
+anim_43:
+  type: SM64:ANIM
+  offset: 0x522DB0
+
+anim_46:
+  type: SM64:ANIM
+  offset: 0x5232D0
+
+anim_48:
+  type: SM64:ANIM
+  offset: 0x523CE8
+
+anim_4A:
+  type: SM64:ANIM
+  offset: 0x525810
+
+anim_8C:
+  type: SM64:ANIM
+  offset: 0x525810
+
+anim_9A:
+  type: SM64:ANIM
+  offset: 0x525810
+
+anim_9B:
+  type: SM64:ANIM
+  offset: 0x525810
+
+anim_4C:
+  type: SM64:ANIM
+  offset: 0x52620C
+
+anim_4E:
+  type: SM64:ANIM
+  offset: 0x5265D8
+
+anim_51:
+  type: SM64:ANIM
+  offset: 0x527A7C
+
+anim_8D:
+  type: SM64:ANIM
+  offset: 0x527A7C
+
 anim_D0:
   type: SM64:ANIM
-  offset: 5405308
+  offset: 0x527A7C
+
+anim_53:
+  type: SM64:ANIM
+  offset: 0x528400
+
+anim_AD:
+  type: SM64:ANIM
+  offset: 0x528400
+
+anim_AF:
+  type: SM64:ANIM
+  offset: 0x528400
+
+anim_B9:
+  type: SM64:ANIM
+  offset: 0x528400
+
+anim_54:
+  type: SM64:ANIM
+  offset: 0x528CC8
+
+anim_7B:
+  type: SM64:ANIM
+  offset: 0x528CC8
+
+anim_7C:
+  type: SM64:ANIM
+  offset: 0x528CC8
+
+anim_A3:
+  type: SM64:ANIM
+  offset: 0x528CC8
+
+anim_C3:
+  type: SM64:ANIM
+  offset: 0x528CC8
+
+anim_C4:
+  type: SM64:ANIM
+  offset: 0x528CC8
+
+anim_C5:
+  type: SM64:ANIM
+  offset: 0x528CC8
+
+anim_55:
+  type: SM64:ANIM
+  offset: 0x529300
+
+anim_57:
+  type: SM64:ANIM
+  offset: 0x52C030
+
+anim_58:
+  type: SM64:ANIM
+  offset: 0x52C75C
+
+anim_BA:
+  type: SM64:ANIM
+  offset: 0x52C75C
+
+anim_59:
+  type: SM64:ANIM
+  offset: 0x52CCAC
+
+anim_8B:
+  type: SM64:ANIM
+  offset: 0x52CCAC
+
+anim_5A:
+  type: SM64:ANIM
+  offset: 0x52D9AC
+
+anim_5C:
+  type: SM64:ANIM
+  offset: 0x52EB74
+
+anim_88:
+  type: SM64:ANIM
+  offset: 0x52EB74
+
+anim_A9:
+  type: SM64:ANIM
+  offset: 0x52EB74
+
+anim_B5:
+  type: SM64:ANIM
+  offset: 0x52EB74
+
+anim_5F:
+  type: SM64:ANIM
+  offset: 0x532764
+
+anim_60:
+  type: SM64:ANIM
+  offset: 0x533C3C
+
+anim_61:
+  type: SM64:ANIM
+  offset: 0x534D04
+
+anim_63:
+  type: SM64:ANIM
+  offset: 0x538388
+
+anim_64:
+  type: SM64:ANIM
+  offset: 0x538AF8
+
+anim_66:
+  type: SM64:ANIM
+  offset: 0x5398A4
+
+anim_67:
+  type: SM64:ANIM
+  offset: 0x53A154
+
+anim_95:
+  type: SM64:ANIM
+  offset: 0x53A154
+
+anim_B0:
+  type: SM64:ANIM
+  offset: 0x53A154
+
+anim_68:
+  type: SM64:ANIM
+  offset: 0x53A3EC
+
+anim_6A:
+  type: SM64:ANIM
+  offset: 0x53AA64
+
+anim_AA:
+  type: SM64:ANIM
+  offset: 0x53AA64
+
+anim_6C:
+  type: SM64:ANIM
+  offset: 0x53B45C
+
+anim_70:
+  type: SM64:ANIM
+  offset: 0x53C62C
+
+anim_71:
+  type: SM64:ANIM
+  offset: 0x53C7A4
+
+anim_74:
+  type: SM64:ANIM
+  offset: 0x53C7A4
+
+anim_75:
+  type: SM64:ANIM
+  offset: 0x53C7A4
+
+anim_B4:
+  type: SM64:ANIM
+  offset: 0x53C7A4
+
+anim_BF:
+  type: SM64:ANIM
+  offset: 0x53C7A4
+
+anim_72:
+  type: SM64:ANIM
+  offset: 0x53D0D8
+
+anim_73:
+  type: SM64:ANIM
+  offset: 0x53D0D8
+
+anim_78:
+  type: SM64:ANIM
+  offset: 0x5411AC
+
+anim_79:
+  type: SM64:ANIM
+  offset: 0x543B98
+
+anim_7A:
+  type: SM64:ANIM
+  offset: 0x544AE0
+
+anim_81:
+  type: SM64:ANIM
+  offset: 0x549B0C
+
+anim_9E:
+  type: SM64:ANIM
+  offset: 0x549B0C
+
+anim_A8:
+  type: SM64:ANIM
+  offset: 0x549B0C
+
+anim_82:
+  type: SM64:ANIM
+  offset: 0x54ACF4
+
+anim_83:
+  type: SM64:ANIM
+  offset: 0x54C494
+
+anim_86:
+  type: SM64:ANIM
+  offset: 0x54EE28
+
+anim_8A:
+  type: SM64:ANIM
+  offset: 0x54EE28
+
+anim_A7:
+  type: SM64:ANIM
+  offset: 0x54EE28
+
+anim_B7:
+  type: SM64:ANIM
+  offset: 0x54EE28
+
+anim_89:
+  type: SM64:ANIM
+  offset: 0x5501DC
+
+anim_91:
+  type: SM64:ANIM
+  offset: 0x5536BC
+
+anim_92:
+  type: SM64:ANIM
+  offset: 0x5538DC
+
+anim_99:
+  type: SM64:ANIM
+  offset: 0x55691C
+
+anim_9C:
+  type: SM64:ANIM
+  offset: 0x558CBC
+
+anim_9D:
+  type: SM64:ANIM
+  offset: 0x55A0E4
+
+anim_A1:
+  type: SM64:ANIM
+  offset: 0x55C104
+
+anim_A6:
+  type: SM64:ANIM
+  offset: 0x55F458
+
+anim_AC:
+  type: SM64:ANIM
+  offset: 0x5635B0
+
+anim_B1:
+  type: SM64:ANIM
+  offset: 0x5656E8
+
+anim_B3:
+  type: SM64:ANIM
+  offset: 0x5669A4
+
+anim_B6:
+  type: SM64:ANIM
+  offset: 0x568C7C
+
+anim_BB:
+  type: SM64:ANIM
+  offset: 0x56B1E4
+
+anim_C0:
+  type: SM64:ANIM
+  offset: 0x56D6F0
+
+anim_C8:
+  type: SM64:ANIM
+  offset: 0x573060
+
+anim_CA:
+  type: SM64:ANIM
+  offset: 0x57408C
+
+anim_CD:
+  type: SM64:ANIM
+  offset: 0x575004
+
+anim_CF:
+  type: SM64:ANIM
+  offset: 0x576C20

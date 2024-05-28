@@ -7,5 +7,5 @@
 
 bowser_1_geo_0000D0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0000D0
+  offset: 0xE0000D0
   symbol: bowser_1_geo_0000D0

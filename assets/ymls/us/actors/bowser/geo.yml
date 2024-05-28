@@ -7,30 +7,30 @@
 
 bowser_geo_0000D8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D0000D8
+  offset: 0xD0000D8
   symbol: bowser_geo_0000D8
 
 bowser_geo_000424:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000424
+  offset: 0xD000424
   symbol: bowser_geo_000424
 
 bowser_geo_000770:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000770
+  offset: 0xD000770
   symbol: bowser_geo_000770
 
 bowser_shadow_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000AB8
+  offset: 0xD000AB8
   symbol: bowser_shadow_geo
 
 bowser_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000AC4
+  offset: 0xD000AC4
   symbol: bowser_geo
 
 bowser_geo_no_shadow:
   type: SM64:GEO_LAYOUT
-  offset: 0x0D000B40
+  offset: 0xD000B40
   symbol: bowser_geo_no_shadow

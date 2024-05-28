@@ -13,6 +13,7 @@ skeeter_eye:
   offset: 0x90
   format: RGBA16
   symbol: skeeter_seg6_texture_06000090
+
 skeeter_iris:
   type: TEXTURE
   size: 256
@@ -21,42 +22,6 @@ skeeter_iris:
   offset: 0x890
   format: RGBA16
   symbol: skeeter_seg6_texture_06000890
-
-skeeter_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused1
-
-skeeter_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused2
-
-skeeter_lights_unused3:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused3
-
-skeeter_lights_unused4:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused4
-
-skeeter_lights_unused5:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused5
-
-skeeter_lights_unused6:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused6
 
 skeeter_seg6_vertex_06000990:
   type: VTX
@@ -571,6 +536,42 @@ skeeter_seg6_dl_06004678:
   type: GFX
   offset: 0x4678
   symbol: skeeter_seg6_dl_06004678
+
+skeeter_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x48E0
+  symbol: skeeter_lights_unused1
+
+skeeter_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x48E0
+  symbol: skeeter_lights_unused2
+
+skeeter_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x48E0
+  symbol: skeeter_lights_unused3
+
+skeeter_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x48E0
+  symbol: skeeter_lights_unused4
+
+skeeter_lights_unused5:
+  type: LIGHTS
+  size: 24
+  offset: 0x48E0
+  symbol: skeeter_lights_unused5
+
+skeeter_lights_unused6:
+  type: LIGHTS
+  size: 24
+  offset: 0x48E0
+  symbol: skeeter_lights_unused6
 
 skeeter_seg6_dl_06004A40:
   type: GFX

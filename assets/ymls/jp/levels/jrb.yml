@@ -5,14 +5,6 @@
   segments:
     - [0x07,  0x4187C0]
 
-0:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1000
-  format: RGBA16
-  symbol: jrb_seg7_texture_07000000
 1:
   type: TEXTURE
   size: 4096
@@ -21,6 +13,16 @@
   offset: 0x800
   format: RGBA16
   symbol: jrb_seg7_texture_07000800
+
+0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x1000
+  format: RGBA16
+  symbol: jrb_seg7_texture_07000000
+
 2:
   type: TEXTURE
   size: 2048
@@ -29,6 +31,7 @@
   offset: 0x1800
   format: RGBA16
   symbol: jrb_seg7_texture_07001800
+
 3:
   type: TEXTURE
   size: 2048
@@ -37,146 +40,6 @@
   offset: 0x2000
   format: RGBA16
   symbol: jrb_seg7_texture_07002000
-
-jrb_seg7_lights_07007B70:
-  type: LIGHTS
-  size: 24
-  offset: 0x7B70
-  symbol: jrb_seg7_lights_07007B70
-
-jrb_seg7_vertex_07007B88:
-  type: VTX
-  count: 16
-  offset: 0x7B88
-  symbol: jrb_seg7_vertex_07007B88
-
-jrb_seg7_vertex_07007C88:
-  type: VTX
-  count: 8
-  offset: 0x7C88
-  symbol: jrb_seg7_vertex_07007C88
-
-jrb_seg7_dl_07007D08:
-  type: GFX
-  offset: 0x7D08
-  symbol: jrb_seg7_dl_07007D08
-
-jrb_seg7_dl_07007D80:
-  type: GFX
-  offset: 0x7D80
-  symbol: jrb_seg7_dl_07007D80
-
-jrb_seg7_dl_07007DC8:
-  type: GFX
-  offset: 0x7DC8
-  symbol: jrb_seg7_dl_07007DC8
-
-jrb_seg7_vertex_07007628:
-  type: VTX
-  count: 4
-  offset: 0x7628
-  symbol: jrb_seg7_vertex_07007628
-
-jrb_seg7_vertex_07007668:
-  type: VTX
-  count: 4
-  offset: 0x7668
-  symbol: jrb_seg7_vertex_07007668
-
-jrb_seg7_dl_070076A8:
-  type: GFX
-  offset: 0x76A8
-  symbol: jrb_seg7_dl_070076A8
-
-jrb_seg7_dl_070076E0:
-  type: GFX
-  offset: 0x76E0
-  symbol: jrb_seg7_dl_070076E0
-
-jrb_seg7_dl_07007718:
-  type: GFX
-  offset: 0x7718
-  symbol: jrb_seg7_dl_07007718
-
-jrb_seg7_lights_07006A98:
-  type: LIGHTS
-  size: 24
-  offset: 0x6A98
-  symbol: jrb_seg7_lights_07006A98
-
-jrb_seg7_vertex_07006AB0:
-  type: VTX
-  count: 15
-  offset: 0x6AB0
-  symbol: jrb_seg7_vertex_07006AB0
-
-jrb_seg7_vertex_07006BA0:
-  type: VTX
-  count: 16
-  offset: 0x6BA0
-  symbol: jrb_seg7_vertex_07006BA0
-
-jrb_seg7_vertex_07006CA0:
-  type: VTX
-  count: 15
-  offset: 0x6CA0
-  symbol: jrb_seg7_vertex_07006CA0
-
-jrb_seg7_vertex_07006D90:
-  type: VTX
-  count: 14
-  offset: 0x6D90
-  symbol: jrb_seg7_vertex_07006D90
-
-jrb_seg7_vertex_07006E70:
-  type: VTX
-  count: 15
-  offset: 0x6E70
-  symbol: jrb_seg7_vertex_07006E70
-
-jrb_seg7_vertex_07006F60:
-  type: VTX
-  count: 15
-  offset: 0x6F60
-  symbol: jrb_seg7_vertex_07006F60
-
-jrb_seg7_vertex_07007050:
-  type: VTX
-  count: 12
-  offset: 0x7050
-  symbol: jrb_seg7_vertex_07007050
-
-jrb_seg7_vertex_07007110:
-  type: VTX
-  count: 12
-  offset: 0x7110
-  symbol: jrb_seg7_vertex_07007110
-
-jrb_seg7_vertex_070071D0:
-  type: VTX
-  count: 13
-  offset: 0x71D0
-  symbol: jrb_seg7_vertex_070071D0
-
-jrb_seg7_dl_070072A0:
-  type: GFX
-  offset: 0x72A0
-  symbol: jrb_seg7_dl_070072A0
-
-jrb_seg7_dl_070074A8:
-  type: GFX
-  offset: 0x74A8
-  symbol: jrb_seg7_dl_070074A8
-
-jrb_seg7_dl_07007500:
-  type: GFX
-  offset: 0x7500
-  symbol: jrb_seg7_dl_07007500
-
-jrb_seg7_dl_07007570:
-  type: GFX
-  offset: 0x7570
-  symbol: jrb_seg7_dl_07007570
 
 jrb_seg7_vertex_07002800:
   type: VTX
@@ -234,126 +97,6 @@ jrb_seg7_dl_07002FD0:
   type: GFX
   offset: 0x2FD0
   symbol: jrb_seg7_dl_07002FD0
-
-jrb_seg7_lights_07004D40:
-  type: LIGHTS
-  size: 24
-  offset: 0x4D40
-  symbol: jrb_seg7_lights_07004D40
-
-jrb_seg7_lights_07004D58:
-  type: LIGHTS
-  size: 24
-  offset: 0x4D58
-  symbol: jrb_seg7_lights_07004D58
-
-jrb_seg7_vertex_07004D70:
-  type: VTX
-  count: 8
-  offset: 0x4D70
-  symbol: jrb_seg7_vertex_07004D70
-
-jrb_seg7_vertex_07004DF0:
-  type: VTX
-  count: 16
-  offset: 0x4DF0
-  symbol: jrb_seg7_vertex_07004DF0
-
-jrb_seg7_vertex_07004EF0:
-  type: VTX
-  count: 16
-  offset: 0x4EF0
-  symbol: jrb_seg7_vertex_07004EF0
-
-jrb_seg7_vertex_07004FF0:
-  type: VTX
-  count: 16
-  offset: 0x4FF0
-  symbol: jrb_seg7_vertex_07004FF0
-
-jrb_seg7_vertex_070050F0:
-  type: VTX
-  count: 16
-  offset: 0x50F0
-  symbol: jrb_seg7_vertex_070050F0
-
-jrb_seg7_vertex_070051F0:
-  type: VTX
-  count: 16
-  offset: 0x51F0
-  symbol: jrb_seg7_vertex_070051F0
-
-jrb_seg7_vertex_070052F0:
-  type: VTX
-  count: 16
-  offset: 0x52F0
-  symbol: jrb_seg7_vertex_070052F0
-
-jrb_seg7_vertex_070053F0:
-  type: VTX
-  count: 15
-  offset: 0x53F0
-  symbol: jrb_seg7_vertex_070053F0
-
-jrb_seg7_vertex_070054E0:
-  type: VTX
-  count: 8
-  offset: 0x54E0
-  symbol: jrb_seg7_vertex_070054E0
-
-jrb_seg7_dl_07005560:
-  type: GFX
-  offset: 0x5560
-  symbol: jrb_seg7_dl_07005560
-
-jrb_seg7_dl_07005660:
-  type: GFX
-  offset: 0x5660
-  symbol: jrb_seg7_dl_07005660
-
-jrb_seg7_dl_070058C8:
-  type: GFX
-  offset: 0x58C8
-  symbol: jrb_seg7_dl_070058C8
-
-jrb_seg7_lights_07004A18:
-  type: LIGHTS
-  size: 24
-  offset: 0x4A18
-  symbol: jrb_seg7_lights_07004A18
-
-jrb_seg7_lights_07004A30:
-  type: LIGHTS
-  size: 24
-  offset: 0x4A30
-  symbol: jrb_seg7_lights_07004A30
-
-jrb_seg7_vertex_07004A48:
-  type: VTX
-  count: 8
-  offset: 0x4A48
-  symbol: jrb_seg7_vertex_07004A48
-
-jrb_seg7_vertex_07004AC8:
-  type: VTX
-  count: 12
-  offset: 0x4AC8
-  symbol: jrb_seg7_vertex_07004AC8
-
-jrb_seg7_dl_07004B88:
-  type: GFX
-  offset: 0x4B88
-  symbol: jrb_seg7_dl_07004B88
-
-jrb_seg7_dl_07004BF0:
-  type: GFX
-  offset: 0x4BF0
-  symbol: jrb_seg7_dl_07004BF0
-
-jrb_seg7_dl_07004C78:
-  type: GFX
-  offset: 0x4C78
-  symbol: jrb_seg7_dl_07004C78
 
 jrb_seg7_lights_070030A8:
   type: LIGHTS
@@ -518,6 +261,126 @@ jrb_seg7_dl_07004940:
   offset: 0x4940
   symbol: jrb_seg7_dl_07004940
 
+jrb_seg7_lights_07004A18:
+  type: LIGHTS
+  size: 24
+  offset: 0x4A18
+  symbol: jrb_seg7_lights_07004A18
+
+jrb_seg7_lights_07004A30:
+  type: LIGHTS
+  size: 24
+  offset: 0x4A30
+  symbol: jrb_seg7_lights_07004A30
+
+jrb_seg7_vertex_07004A48:
+  type: VTX
+  count: 8
+  offset: 0x4A48
+  symbol: jrb_seg7_vertex_07004A48
+
+jrb_seg7_vertex_07004AC8:
+  type: VTX
+  count: 12
+  offset: 0x4AC8
+  symbol: jrb_seg7_vertex_07004AC8
+
+jrb_seg7_dl_07004B88:
+  type: GFX
+  offset: 0x4B88
+  symbol: jrb_seg7_dl_07004B88
+
+jrb_seg7_dl_07004BF0:
+  type: GFX
+  offset: 0x4BF0
+  symbol: jrb_seg7_dl_07004BF0
+
+jrb_seg7_dl_07004C78:
+  type: GFX
+  offset: 0x4C78
+  symbol: jrb_seg7_dl_07004C78
+
+jrb_seg7_lights_07004D40:
+  type: LIGHTS
+  size: 24
+  offset: 0x4D40
+  symbol: jrb_seg7_lights_07004D40
+
+jrb_seg7_lights_07004D58:
+  type: LIGHTS
+  size: 24
+  offset: 0x4D58
+  symbol: jrb_seg7_lights_07004D58
+
+jrb_seg7_vertex_07004D70:
+  type: VTX
+  count: 8
+  offset: 0x4D70
+  symbol: jrb_seg7_vertex_07004D70
+
+jrb_seg7_vertex_07004DF0:
+  type: VTX
+  count: 16
+  offset: 0x4DF0
+  symbol: jrb_seg7_vertex_07004DF0
+
+jrb_seg7_vertex_07004EF0:
+  type: VTX
+  count: 16
+  offset: 0x4EF0
+  symbol: jrb_seg7_vertex_07004EF0
+
+jrb_seg7_vertex_07004FF0:
+  type: VTX
+  count: 16
+  offset: 0x4FF0
+  symbol: jrb_seg7_vertex_07004FF0
+
+jrb_seg7_vertex_070050F0:
+  type: VTX
+  count: 16
+  offset: 0x50F0
+  symbol: jrb_seg7_vertex_070050F0
+
+jrb_seg7_vertex_070051F0:
+  type: VTX
+  count: 16
+  offset: 0x51F0
+  symbol: jrb_seg7_vertex_070051F0
+
+jrb_seg7_vertex_070052F0:
+  type: VTX
+  count: 16
+  offset: 0x52F0
+  symbol: jrb_seg7_vertex_070052F0
+
+jrb_seg7_vertex_070053F0:
+  type: VTX
+  count: 15
+  offset: 0x53F0
+  symbol: jrb_seg7_vertex_070053F0
+
+jrb_seg7_vertex_070054E0:
+  type: VTX
+  count: 8
+  offset: 0x54E0
+  symbol: jrb_seg7_vertex_070054E0
+
+jrb_seg7_dl_07005560:
+  type: GFX
+  offset: 0x5560
+  symbol: jrb_seg7_dl_07005560
+
+jrb_seg7_dl_07005660:
+  type: GFX
+  offset: 0x5660
+  symbol: jrb_seg7_dl_07005660
+
+jrb_seg7_dl_070058C8:
+  type: GFX
+  offset: 0x58C8
+  symbol: jrb_seg7_dl_070058C8
+
 jrb_seg7_lights_07005990:
   type: LIGHTS
   size: 24
@@ -645,343 +508,206 @@ jrb_seg7_dl_070069B0:
   offset: 0x69B0
   symbol: jrb_seg7_dl_070069B0
 
-jrb_seg7_lights_0700D318:
+jrb_seg7_lights_07006A98:
   type: LIGHTS
   size: 24
-  offset: 0xD318
-  symbol: jrb_seg7_lights_0700D318
+  offset: 0x6A98
+  symbol: jrb_seg7_lights_07006A98
 
-jrb_seg7_lights_0700D330:
-  type: LIGHTS
-  size: 24
-  offset: 0xD330
-  symbol: jrb_seg7_lights_0700D330
-
-jrb_seg7_lights_0700D348:
-  type: LIGHTS
-  size: 24
-  offset: 0xD348
-  symbol: jrb_seg7_lights_0700D348
-
-jrb_seg7_lights_0700D360:
-  type: LIGHTS
-  size: 24
-  offset: 0xD360
-  symbol: jrb_seg7_lights_0700D360
-
-jrb_seg7_vertex_0700D378:
-  type: VTX
-  count: 8
-  offset: 0xD378
-  symbol: jrb_seg7_vertex_0700D378
-
-jrb_seg7_vertex_0700D3F8:
+jrb_seg7_vertex_07006AB0:
   type: VTX
   count: 15
-  offset: 0xD3F8
-  symbol: jrb_seg7_vertex_0700D3F8
+  offset: 0x6AB0
+  symbol: jrb_seg7_vertex_07006AB0
 
-jrb_seg7_vertex_0700D4E8:
-  type: VTX
-  count: 15
-  offset: 0xD4E8
-  symbol: jrb_seg7_vertex_0700D4E8
-
-jrb_seg7_vertex_0700D5D8:
+jrb_seg7_vertex_07006BA0:
   type: VTX
   count: 16
-  offset: 0xD5D8
-  symbol: jrb_seg7_vertex_0700D5D8
+  offset: 0x6BA0
+  symbol: jrb_seg7_vertex_07006BA0
 
-jrb_seg7_vertex_0700D6D8:
+jrb_seg7_vertex_07006CA0:
   type: VTX
   count: 15
-  offset: 0xD6D8
-  symbol: jrb_seg7_vertex_0700D6D8
+  offset: 0x6CA0
+  symbol: jrb_seg7_vertex_07006CA0
 
-jrb_seg7_vertex_0700D7C8:
+jrb_seg7_vertex_07006D90:
   type: VTX
-  count: 11
-  offset: 0xD7C8
-  symbol: jrb_seg7_vertex_0700D7C8
+  count: 14
+  offset: 0x6D90
+  symbol: jrb_seg7_vertex_07006D90
 
-jrb_seg7_vertex_0700D878:
+jrb_seg7_vertex_07006E70:
   type: VTX
-  count: 11
-  offset: 0xD878
-  symbol: jrb_seg7_vertex_0700D878
+  count: 15
+  offset: 0x6E70
+  symbol: jrb_seg7_vertex_07006E70
 
-jrb_seg7_vertex_0700D928:
+jrb_seg7_vertex_07006F60:
   type: VTX
-  count: 4
-  offset: 0xD928
-  symbol: jrb_seg7_vertex_0700D928
+  count: 15
+  offset: 0x6F60
+  symbol: jrb_seg7_vertex_07006F60
 
-jrb_seg7_vertex_0700D968:
+jrb_seg7_vertex_07007050:
   type: VTX
   count: 12
-  offset: 0xD968
-  symbol: jrb_seg7_vertex_0700D968
+  offset: 0x7050
+  symbol: jrb_seg7_vertex_07007050
 
-jrb_seg7_vertex_0700DA28:
+jrb_seg7_vertex_07007110:
   type: VTX
-  count: 16
-  offset: 0xDA28
-  symbol: jrb_seg7_vertex_0700DA28
+  count: 12
+  offset: 0x7110
+  symbol: jrb_seg7_vertex_07007110
 
-jrb_seg7_vertex_0700DB28:
-  type: VTX
-  count: 14
-  offset: 0xDB28
-  symbol: jrb_seg7_vertex_0700DB28
-
-jrb_seg7_vertex_0700DC08:
-  type: VTX
-  count: 15
-  offset: 0xDC08
-  symbol: jrb_seg7_vertex_0700DC08
-
-jrb_seg7_vertex_0700DCF8:
-  type: VTX
-  count: 14
-  offset: 0xDCF8
-  symbol: jrb_seg7_vertex_0700DCF8
-
-jrb_seg7_vertex_0700DDD8:
-  type: VTX
-  count: 16
-  offset: 0xDDD8
-  symbol: jrb_seg7_vertex_0700DDD8
-
-jrb_seg7_vertex_0700DED8:
-  type: VTX
-  count: 16
-  offset: 0xDED8
-  symbol: jrb_seg7_vertex_0700DED8
-
-jrb_seg7_vertex_0700DFD8:
-  type: VTX
-  count: 15
-  offset: 0xDFD8
-  symbol: jrb_seg7_vertex_0700DFD8
-
-jrb_seg7_vertex_0700E0C8:
-  type: VTX
-  count: 16
-  offset: 0xE0C8
-  symbol: jrb_seg7_vertex_0700E0C8
-
-jrb_seg7_vertex_0700E1C8:
+jrb_seg7_vertex_070071D0:
   type: VTX
   count: 13
-  offset: 0xE1C8
-  symbol: jrb_seg7_vertex_0700E1C8
+  offset: 0x71D0
+  symbol: jrb_seg7_vertex_070071D0
 
-jrb_seg7_vertex_0700E298:
-  type: VTX
-  count: 16
-  offset: 0xE298
-  symbol: jrb_seg7_vertex_0700E298
+jrb_seg7_dl_070072A0:
+  type: GFX
+  offset: 0x72A0
+  symbol: jrb_seg7_dl_070072A0
 
-jrb_seg7_vertex_0700E398:
-  type: VTX
-  count: 12
-  offset: 0xE398
-  symbol: jrb_seg7_vertex_0700E398
+jrb_seg7_dl_070074A8:
+  type: GFX
+  offset: 0x74A8
+  symbol: jrb_seg7_dl_070074A8
 
-jrb_seg7_vertex_0700E458:
-  type: VTX
-  count: 12
-  offset: 0xE458
-  symbol: jrb_seg7_vertex_0700E458
+jrb_seg7_dl_07007500:
+  type: GFX
+  offset: 0x7500
+  symbol: jrb_seg7_dl_07007500
 
-jrb_seg7_vertex_0700E518:
+jrb_seg7_dl_07007570:
+  type: GFX
+  offset: 0x7570
+  symbol: jrb_seg7_dl_07007570
+
+jrb_seg7_vertex_07007628:
   type: VTX
   count: 4
-  offset: 0xE518
-  symbol: jrb_seg7_vertex_0700E518
+  offset: 0x7628
+  symbol: jrb_seg7_vertex_07007628
 
-jrb_seg7_vertex_0700E558:
+jrb_seg7_vertex_07007668:
   type: VTX
-  count: 16
-  offset: 0xE558
-  symbol: jrb_seg7_vertex_0700E558
+  count: 4
+  offset: 0x7668
+  symbol: jrb_seg7_vertex_07007668
 
-jrb_seg7_vertex_0700E658:
-  type: VTX
-  count: 9
-  offset: 0xE658
-  symbol: jrb_seg7_vertex_0700E658
-
-jrb_seg7_dl_0700E6E8:
+jrb_seg7_dl_070076A8:
   type: GFX
-  offset: 0xE6E8
-  symbol: jrb_seg7_dl_0700E6E8
+  offset: 0x76A8
+  symbol: jrb_seg7_dl_070076A8
 
-jrb_seg7_dl_0700E8C8:
+jrb_seg7_dl_070076E0:
   type: GFX
-  offset: 0xE8C8
-  symbol: jrb_seg7_dl_0700E8C8
+  offset: 0x76E0
+  symbol: jrb_seg7_dl_070076E0
 
-jrb_seg7_dl_0700E998:
+jrb_seg7_dl_07007718:
   type: GFX
-  offset: 0xE998
-  symbol: jrb_seg7_dl_0700E998
+  offset: 0x7718
+  symbol: jrb_seg7_dl_07007718
 
-jrb_seg7_dl_0700ECB8:
-  type: GFX
-  offset: 0xECB8
-  symbol: jrb_seg7_dl_0700ECB8
-
-jrb_seg7_dl_0700EE28:
-  type: GFX
-  offset: 0xEE28
-  symbol: jrb_seg7_dl_0700EE28
-
-jrb_seg7_dl_0700EF00:
-  type: GFX
-  offset: 0xEF00
-  symbol: jrb_seg7_dl_0700EF00
-
-jrb_seg7_lights_0700FEB8:
+jrb_seg7_lights_070077F0:
   type: LIGHTS
   size: 24
-  offset: 0xFEB8
-  symbol: jrb_seg7_lights_0700FEB8
+  offset: 0x77F0
+  symbol: jrb_seg7_lights_070077F0
 
-jrb_seg7_vertex_0700FED0:
-  type: VTX
-  count: 15
-  offset: 0xFED0
-  symbol: jrb_seg7_vertex_0700FED0
-
-jrb_seg7_vertex_0700FFC0:
+jrb_seg7_vertex_07007808:
   type: VTX
   count: 16
-  offset: 0xFFC0
-  symbol: jrb_seg7_vertex_0700FFC0
+  offset: 0x7808
+  symbol: jrb_seg7_vertex_07007808
 
-jrb_seg7_vertex_070100C0:
-  type: VTX
-  count: 15
-  offset: 0x100C0
-  symbol: jrb_seg7_vertex_070100C0
-
-jrb_seg7_vertex_070101B0:
+jrb_seg7_vertex_07007908:
   type: VTX
   count: 14
-  offset: 0x101B0
-  symbol: jrb_seg7_vertex_070101B0
+  offset: 0x7908
+  symbol: jrb_seg7_vertex_07007908
 
-jrb_seg7_vertex_07010290:
-  type: VTX
-  count: 16
-  offset: 0x10290
-  symbol: jrb_seg7_vertex_07010290
-
-jrb_seg7_dl_07010390:
+jrb_seg7_dl_070079E8:
   type: GFX
-  offset: 0x10390
-  symbol: jrb_seg7_dl_07010390
+  offset: 0x79E8
+  symbol: jrb_seg7_dl_070079E8
 
-jrb_seg7_dl_07010548:
+jrb_seg7_dl_07007AC8:
   type: GFX
-  offset: 0x10548
-  symbol: jrb_seg7_dl_07010548
+  offset: 0x7AC8
+  symbol: jrb_seg7_dl_07007AC8
 
-jrb_seg7_lights_0700EF98:
+jrb_seg7_lights_07007B70:
   type: LIGHTS
   size: 24
-  offset: 0xEF98
-  symbol: jrb_seg7_lights_0700EF98
+  offset: 0x7B70
+  symbol: jrb_seg7_lights_07007B70
 
-jrb_seg7_vertex_0700EFB0:
+jrb_seg7_vertex_07007B88:
   type: VTX
   count: 16
-  offset: 0xEFB0
-  symbol: jrb_seg7_vertex_0700EFB0
+  offset: 0x7B88
+  symbol: jrb_seg7_vertex_07007B88
 
-jrb_seg7_vertex_0700F0B0:
+jrb_seg7_vertex_07007C88:
   type: VTX
-  count: 14
-  offset: 0xF0B0
-  symbol: jrb_seg7_vertex_0700F0B0
+  count: 8
+  offset: 0x7C88
+  symbol: jrb_seg7_vertex_07007C88
 
-jrb_seg7_vertex_0700F190:
-  type: VTX
-  count: 14
-  offset: 0xF190
-  symbol: jrb_seg7_vertex_0700F190
+jrb_seg7_dl_07007D08:
+  type: GFX
+  offset: 0x7D08
+  symbol: jrb_seg7_dl_07007D08
 
-jrb_seg7_vertex_0700F270:
-  type: VTX
-  count: 14
-  offset: 0xF270
-  symbol: jrb_seg7_vertex_0700F270
+jrb_seg7_dl_07007D80:
+  type: GFX
+  offset: 0x7D80
+  symbol: jrb_seg7_dl_07007D80
 
-jrb_seg7_vertex_0700F350:
-  type: VTX
-  count: 15
-  offset: 0xF350
-  symbol: jrb_seg7_vertex_0700F350
+jrb_seg7_dl_07007DC8:
+  type: GFX
+  offset: 0x7DC8
+  symbol: jrb_seg7_dl_07007DC8
 
-jrb_seg7_vertex_0700F440:
-  type: VTX
-  count: 14
-  offset: 0xF440
-  symbol: jrb_seg7_vertex_0700F440
+jrb_seg7_lights_07007EA0:
+  type: LIGHTS
+  size: 24
+  offset: 0x7EA0
+  symbol: jrb_seg7_lights_07007EA0
 
-jrb_seg7_vertex_0700F520:
-  type: VTX
-  count: 14
-  offset: 0xF520
-  symbol: jrb_seg7_vertex_0700F520
-
-jrb_seg7_vertex_0700F600:
-  type: VTX
-  count: 14
-  offset: 0xF600
-  symbol: jrb_seg7_vertex_0700F600
-
-jrb_seg7_vertex_0700F6E0:
-  type: VTX
-  count: 14
-  offset: 0xF6E0
-  symbol: jrb_seg7_vertex_0700F6E0
-
-jrb_seg7_vertex_0700F7C0:
-  type: VTX
-  count: 14
-  offset: 0xF7C0
-  symbol: jrb_seg7_vertex_0700F7C0
-
-jrb_seg7_vertex_0700F8A0:
+jrb_seg7_vertex_07007EB8:
   type: VTX
   count: 16
-  offset: 0xF8A0
-  symbol: jrb_seg7_vertex_0700F8A0
+  offset: 0x7EB8
+  symbol: jrb_seg7_vertex_07007EB8
 
-jrb_seg7_vertex_0700F9A0:
+jrb_seg7_vertex_07007FB8:
   type: VTX
-  count: 15
-  offset: 0xF9A0
-  symbol: jrb_seg7_vertex_0700F9A0
+  count: 8
+  offset: 0x7FB8
+  symbol: jrb_seg7_vertex_07007FB8
 
-jrb_seg7_vertex_0700FA90:
-  type: VTX
-  count: 10
-  offset: 0xFA90
-  symbol: jrb_seg7_vertex_0700FA90
-
-jrb_seg7_dl_0700FB30:
+jrb_seg7_dl_07008038:
   type: GFX
-  offset: 0xFB30
-  symbol: jrb_seg7_dl_0700FB30
+  offset: 0x8038
+  symbol: jrb_seg7_dl_07008038
 
-jrb_seg7_dl_0700FE48:
+jrb_seg7_dl_070080B0:
   type: GFX
-  offset: 0xFE48
-  symbol: jrb_seg7_dl_0700FE48
+  offset: 0x80B0
+  symbol: jrb_seg7_dl_070080B0
+
+jrb_seg7_dl_070080F8:
+  type: GFX
+  offset: 0x80F8
+  symbol: jrb_seg7_dl_070080F8
 
 jrb_seg7_lights_070081A8:
   type: LIGHTS
@@ -1369,67 +1095,6 @@ jrb_seg7_dl_0700AE48:
   offset: 0xAE48
   symbol: jrb_seg7_dl_0700AE48
 
-jrb_seg7_lights_07007EA0:
-  type: LIGHTS
-  size: 24
-  offset: 0x7EA0
-  symbol: jrb_seg7_lights_07007EA0
-
-jrb_seg7_vertex_07007EB8:
-  type: VTX
-  count: 16
-  offset: 0x7EB8
-  symbol: jrb_seg7_vertex_07007EB8
-
-jrb_seg7_vertex_07007FB8:
-  type: VTX
-  count: 8
-  offset: 0x7FB8
-  symbol: jrb_seg7_vertex_07007FB8
-
-jrb_seg7_dl_07008038:
-  type: GFX
-  offset: 0x8038
-  symbol: jrb_seg7_dl_07008038
-
-jrb_seg7_dl_070080B0:
-  type: GFX
-  offset: 0x80B0
-  symbol: jrb_seg7_dl_070080B0
-
-jrb_seg7_dl_070080F8:
-  type: GFX
-  offset: 0x80F8
-  symbol: jrb_seg7_dl_070080F8
-
-jrb_seg7_lights_070077F0:
-  type: LIGHTS
-  size: 24
-  offset: 0x77F0
-  symbol: jrb_seg7_lights_070077F0
-
-jrb_seg7_vertex_07007808:
-  type: VTX
-  count: 16
-  offset: 0x7808
-  symbol: jrb_seg7_vertex_07007808
-
-jrb_seg7_vertex_07007908:
-  type: VTX
-  count: 14
-  offset: 0x7908
-  symbol: jrb_seg7_vertex_07007908
-
-jrb_seg7_dl_070079E8:
-  type: GFX
-  offset: 0x79E8
-  symbol: jrb_seg7_dl_070079E8
-
-jrb_seg7_dl_07007AC8:
-  type: GFX
-  offset: 0x7AC8
-  symbol: jrb_seg7_dl_07007AC8
-
 jrb_seg7_lights_0700AEF0:
   type: LIGHTS
   size: 24
@@ -1451,7 +1116,7 @@ jrb_seg7_dl_0700AFB0:
   type: GFX
   offset: 0xAFB0
   symbol: jrb_seg7_dl_0700AFB0
-  
+
 jrb_seg7_area_1_collision:
   type: SM64:COLLISION
   offset: 0xB058
@@ -1501,6 +1166,344 @@ jrb_seg7_collision_0700D1DC:
   type: SM64:COLLISION
   offset: 0xD1DC
   symbol: jrb_seg7_collision_0700D1DC
+
+jrb_seg7_lights_0700D318:
+  type: LIGHTS
+  size: 24
+  offset: 0xD318
+  symbol: jrb_seg7_lights_0700D318
+
+jrb_seg7_lights_0700D330:
+  type: LIGHTS
+  size: 24
+  offset: 0xD330
+  symbol: jrb_seg7_lights_0700D330
+
+jrb_seg7_lights_0700D348:
+  type: LIGHTS
+  size: 24
+  offset: 0xD348
+  symbol: jrb_seg7_lights_0700D348
+
+jrb_seg7_lights_0700D360:
+  type: LIGHTS
+  size: 24
+  offset: 0xD360
+  symbol: jrb_seg7_lights_0700D360
+
+jrb_seg7_vertex_0700D378:
+  type: VTX
+  count: 8
+  offset: 0xD378
+  symbol: jrb_seg7_vertex_0700D378
+
+jrb_seg7_vertex_0700D3F8:
+  type: VTX
+  count: 15
+  offset: 0xD3F8
+  symbol: jrb_seg7_vertex_0700D3F8
+
+jrb_seg7_vertex_0700D4E8:
+  type: VTX
+  count: 15
+  offset: 0xD4E8
+  symbol: jrb_seg7_vertex_0700D4E8
+
+jrb_seg7_vertex_0700D5D8:
+  type: VTX
+  count: 16
+  offset: 0xD5D8
+  symbol: jrb_seg7_vertex_0700D5D8
+
+jrb_seg7_vertex_0700D6D8:
+  type: VTX
+  count: 15
+  offset: 0xD6D8
+  symbol: jrb_seg7_vertex_0700D6D8
+
+jrb_seg7_vertex_0700D7C8:
+  type: VTX
+  count: 11
+  offset: 0xD7C8
+  symbol: jrb_seg7_vertex_0700D7C8
+
+jrb_seg7_vertex_0700D878:
+  type: VTX
+  count: 11
+  offset: 0xD878
+  symbol: jrb_seg7_vertex_0700D878
+
+jrb_seg7_vertex_0700D928:
+  type: VTX
+  count: 4
+  offset: 0xD928
+  symbol: jrb_seg7_vertex_0700D928
+
+jrb_seg7_vertex_0700D968:
+  type: VTX
+  count: 12
+  offset: 0xD968
+  symbol: jrb_seg7_vertex_0700D968
+
+jrb_seg7_vertex_0700DA28:
+  type: VTX
+  count: 16
+  offset: 0xDA28
+  symbol: jrb_seg7_vertex_0700DA28
+
+jrb_seg7_vertex_0700DB28:
+  type: VTX
+  count: 14
+  offset: 0xDB28
+  symbol: jrb_seg7_vertex_0700DB28
+
+jrb_seg7_vertex_0700DC08:
+  type: VTX
+  count: 15
+  offset: 0xDC08
+  symbol: jrb_seg7_vertex_0700DC08
+
+jrb_seg7_vertex_0700DCF8:
+  type: VTX
+  count: 14
+  offset: 0xDCF8
+  symbol: jrb_seg7_vertex_0700DCF8
+
+jrb_seg7_vertex_0700DDD8:
+  type: VTX
+  count: 16
+  offset: 0xDDD8
+  symbol: jrb_seg7_vertex_0700DDD8
+
+jrb_seg7_vertex_0700DED8:
+  type: VTX
+  count: 16
+  offset: 0xDED8
+  symbol: jrb_seg7_vertex_0700DED8
+
+jrb_seg7_vertex_0700DFD8:
+  type: VTX
+  count: 15
+  offset: 0xDFD8
+  symbol: jrb_seg7_vertex_0700DFD8
+
+jrb_seg7_vertex_0700E0C8:
+  type: VTX
+  count: 16
+  offset: 0xE0C8
+  symbol: jrb_seg7_vertex_0700E0C8
+
+jrb_seg7_vertex_0700E1C8:
+  type: VTX
+  count: 13
+  offset: 0xE1C8
+  symbol: jrb_seg7_vertex_0700E1C8
+
+jrb_seg7_vertex_0700E298:
+  type: VTX
+  count: 16
+  offset: 0xE298
+  symbol: jrb_seg7_vertex_0700E298
+
+jrb_seg7_vertex_0700E398:
+  type: VTX
+  count: 12
+  offset: 0xE398
+  symbol: jrb_seg7_vertex_0700E398
+
+jrb_seg7_vertex_0700E458:
+  type: VTX
+  count: 12
+  offset: 0xE458
+  symbol: jrb_seg7_vertex_0700E458
+
+jrb_seg7_vertex_0700E518:
+  type: VTX
+  count: 4
+  offset: 0xE518
+  symbol: jrb_seg7_vertex_0700E518
+
+jrb_seg7_vertex_0700E558:
+  type: VTX
+  count: 16
+  offset: 0xE558
+  symbol: jrb_seg7_vertex_0700E558
+
+jrb_seg7_vertex_0700E658:
+  type: VTX
+  count: 9
+  offset: 0xE658
+  symbol: jrb_seg7_vertex_0700E658
+
+jrb_seg7_dl_0700E6E8:
+  type: GFX
+  offset: 0xE6E8
+  symbol: jrb_seg7_dl_0700E6E8
+
+jrb_seg7_dl_0700E8C8:
+  type: GFX
+  offset: 0xE8C8
+  symbol: jrb_seg7_dl_0700E8C8
+
+jrb_seg7_dl_0700E998:
+  type: GFX
+  offset: 0xE998
+  symbol: jrb_seg7_dl_0700E998
+
+jrb_seg7_dl_0700ECB8:
+  type: GFX
+  offset: 0xECB8
+  symbol: jrb_seg7_dl_0700ECB8
+
+jrb_seg7_dl_0700EE28:
+  type: GFX
+  offset: 0xEE28
+  symbol: jrb_seg7_dl_0700EE28
+
+jrb_seg7_dl_0700EF00:
+  type: GFX
+  offset: 0xEF00
+  symbol: jrb_seg7_dl_0700EF00
+
+jrb_seg7_lights_0700EF98:
+  type: LIGHTS
+  size: 24
+  offset: 0xEF98
+  symbol: jrb_seg7_lights_0700EF98
+
+jrb_seg7_vertex_0700EFB0:
+  type: VTX
+  count: 16
+  offset: 0xEFB0
+  symbol: jrb_seg7_vertex_0700EFB0
+
+jrb_seg7_vertex_0700F0B0:
+  type: VTX
+  count: 14
+  offset: 0xF0B0
+  symbol: jrb_seg7_vertex_0700F0B0
+
+jrb_seg7_vertex_0700F190:
+  type: VTX
+  count: 14
+  offset: 0xF190
+  symbol: jrb_seg7_vertex_0700F190
+
+jrb_seg7_vertex_0700F270:
+  type: VTX
+  count: 14
+  offset: 0xF270
+  symbol: jrb_seg7_vertex_0700F270
+
+jrb_seg7_vertex_0700F350:
+  type: VTX
+  count: 15
+  offset: 0xF350
+  symbol: jrb_seg7_vertex_0700F350
+
+jrb_seg7_vertex_0700F440:
+  type: VTX
+  count: 14
+  offset: 0xF440
+  symbol: jrb_seg7_vertex_0700F440
+
+jrb_seg7_vertex_0700F520:
+  type: VTX
+  count: 14
+  offset: 0xF520
+  symbol: jrb_seg7_vertex_0700F520
+
+jrb_seg7_vertex_0700F600:
+  type: VTX
+  count: 14
+  offset: 0xF600
+  symbol: jrb_seg7_vertex_0700F600
+
+jrb_seg7_vertex_0700F6E0:
+  type: VTX
+  count: 14
+  offset: 0xF6E0
+  symbol: jrb_seg7_vertex_0700F6E0
+
+jrb_seg7_vertex_0700F7C0:
+  type: VTX
+  count: 14
+  offset: 0xF7C0
+  symbol: jrb_seg7_vertex_0700F7C0
+
+jrb_seg7_vertex_0700F8A0:
+  type: VTX
+  count: 16
+  offset: 0xF8A0
+  symbol: jrb_seg7_vertex_0700F8A0
+
+jrb_seg7_vertex_0700F9A0:
+  type: VTX
+  count: 15
+  offset: 0xF9A0
+  symbol: jrb_seg7_vertex_0700F9A0
+
+jrb_seg7_vertex_0700FA90:
+  type: VTX
+  count: 10
+  offset: 0xFA90
+  symbol: jrb_seg7_vertex_0700FA90
+
+jrb_seg7_dl_0700FB30:
+  type: GFX
+  offset: 0xFB30
+  symbol: jrb_seg7_dl_0700FB30
+
+jrb_seg7_dl_0700FE48:
+  type: GFX
+  offset: 0xFE48
+  symbol: jrb_seg7_dl_0700FE48
+
+jrb_seg7_lights_0700FEB8:
+  type: LIGHTS
+  size: 24
+  offset: 0xFEB8
+  symbol: jrb_seg7_lights_0700FEB8
+
+jrb_seg7_vertex_0700FED0:
+  type: VTX
+  count: 15
+  offset: 0xFED0
+  symbol: jrb_seg7_vertex_0700FED0
+
+jrb_seg7_vertex_0700FFC0:
+  type: VTX
+  count: 16
+  offset: 0xFFC0
+  symbol: jrb_seg7_vertex_0700FFC0
+
+jrb_seg7_vertex_070100C0:
+  type: VTX
+  count: 15
+  offset: 0x100C0
+  symbol: jrb_seg7_vertex_070100C0
+
+jrb_seg7_vertex_070101B0:
+  type: VTX
+  count: 14
+  offset: 0x101B0
+  symbol: jrb_seg7_vertex_070101B0
+
+jrb_seg7_vertex_07010290:
+  type: VTX
+  count: 16
+  offset: 0x10290
+  symbol: jrb_seg7_vertex_07010290
+
+jrb_seg7_dl_07010390:
+  type: GFX
+  offset: 0x10390
+  symbol: jrb_seg7_dl_07010390
+
+jrb_seg7_dl_07010548:
+  type: GFX
+  offset: 0x10548
+  symbol: jrb_seg7_dl_07010548
 
 jrb_seg7_area_2_collision:
   type: SM64:COLLISION

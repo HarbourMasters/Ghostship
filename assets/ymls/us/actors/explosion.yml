@@ -5,6 +5,12 @@
   segments:
     - [0x03,  0x201410]
 
+explosion_seg3_vertex_030009C8:
+  type: VTX
+  count: 4
+  offset: 0x9C8
+  symbol: explosion_seg3_vertex_030009C8
+
 explosion_0:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ explosion_0:
   offset: 0xA08
   format: RGBA16
   symbol: explosion_seg3_texture_03000A08
+
 explosion_1:
   type: TEXTURE
   size: 2048
@@ -21,6 +28,7 @@ explosion_1:
   offset: 0x1208
   format: RGBA16
   symbol: explosion_seg3_texture_03001208
+
 explosion_2:
   type: TEXTURE
   size: 2048
@@ -29,6 +37,7 @@ explosion_2:
   offset: 0x1A08
   format: RGBA16
   symbol: explosion_seg3_texture_03001A08
+
 explosion_3:
   type: TEXTURE
   size: 2048
@@ -37,6 +46,7 @@ explosion_3:
   offset: 0x2208
   format: RGBA16
   symbol: explosion_seg3_texture_03002208
+
 explosion_4:
   type: TEXTURE
   size: 2048
@@ -45,6 +55,7 @@ explosion_4:
   offset: 0x2A08
   format: RGBA16
   symbol: explosion_seg3_texture_03002A08
+
 explosion_5:
   type: TEXTURE
   size: 2048
@@ -53,6 +64,7 @@ explosion_5:
   offset: 0x3208
   format: RGBA16
   symbol: explosion_seg3_texture_03003208
+
 explosion_6:
   type: TEXTURE
   size: 2048
@@ -61,12 +73,6 @@ explosion_6:
   offset: 0x3A08
   format: RGBA16
   symbol: explosion_seg3_texture_03003A08
-
-explosion_seg3_vertex_030009C8:
-  type: VTX
-  count: 4
-  offset: 0x9C8
-  symbol: explosion_seg3_vertex_030009C8
 
 explosion_seg3_dl_03004208:
   type: GFX

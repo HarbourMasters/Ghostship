@@ -5,6 +5,12 @@
   segments:
     - [0x04,  0x112B50]
 
+sparkles_animation_seg4_vertex_04032A48:
+  type: VTX
+  count: 4
+  offset: 0x32A48
+  symbol: sparkles_animation_seg4_vertex_04032A48
+
 sparkle_animation_0:
   type: TEXTURE
   size: 2048
@@ -13,6 +19,7 @@ sparkle_animation_0:
   offset: 0x32A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04032A88
+
 sparkle_animation_1:
   type: TEXTURE
   size: 2048
@@ -21,6 +28,7 @@ sparkle_animation_1:
   offset: 0x33288
   format: IA16
   symbol: sparkles_animation_seg4_texture_04033288
+
 sparkle_animation_2:
   type: TEXTURE
   size: 2048
@@ -29,6 +37,7 @@ sparkle_animation_2:
   offset: 0x33A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04033A88
+
 sparkle_animation_3:
   type: TEXTURE
   size: 2048
@@ -37,6 +46,7 @@ sparkle_animation_3:
   offset: 0x34288
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034288
+
 sparkle_animation_4:
   type: TEXTURE
   size: 2048
@@ -45,12 +55,6 @@ sparkle_animation_4:
   offset: 0x34A88
   format: IA16
   symbol: sparkles_animation_seg4_texture_04034A88
-
-sparkles_animation_seg4_vertex_04032A48:
-  type: VTX
-  count: 4
-  offset: 0x32A48
-  symbol: sparkles_animation_seg4_vertex_04032A48
 
 sparkles_animation_seg4_dl_04035288:
   type: GFX

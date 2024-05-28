@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: ttc_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,59 +22,6 @@
   offset: 0x800
   format: RGBA16
   symbol: ttc_seg7_texture_07000800
-2:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x15F90
-  format: RGBA16
-  symbol: ttc_yellow_triangle
-
-ttc_seg7_lights_0700E950:
-  type: LIGHTS
-  size: 24
-  offset: 0xE950
-  symbol: ttc_seg7_lights_0700E950
-
-ttc_seg7_lights_0700E968:
-  type: LIGHTS
-  size: 24
-  offset: 0xE968
-  symbol: ttc_seg7_lights_0700E968
-
-ttc_seg7_vertex_0700E980:
-  type: VTX
-  count: 10
-  offset: 0xE980
-  symbol: ttc_seg7_vertex_0700E980
-
-ttc_seg7_vertex_0700EA20:
-  type: VTX
-  count: 10
-  offset: 0xEA20
-  symbol: ttc_seg7_vertex_0700EA20
-
-ttc_seg7_vertex_0700EAC0:
-  type: VTX
-  count: 16
-  offset: 0xEAC0
-  symbol: ttc_seg7_vertex_0700EAC0
-
-ttc_seg7_dl_0700EBC0:
-  type: GFX
-  offset: 0xEBC0
-  symbol: ttc_seg7_dl_0700EBC0
-
-ttc_seg7_dl_0700EC50:
-  type: GFX
-  offset: 0xEC50
-  symbol: ttc_seg7_dl_0700EC50
-
-ttc_seg7_dl_0700ECB8:
-  type: GFX
-  offset: 0xECB8
-  symbol: ttc_seg7_dl_0700ECB8
 
 ttc_seg7_lights_07001000:
   type: LIGHTS
@@ -974,6 +922,40 @@ ttc_seg7_dl_0700AD38:
   offset: 0xAD38
   symbol: ttc_seg7_dl_0700AD38
 
+ttc_seg7_lights_0700AED8:
+  type: LIGHTS
+  size: 24
+  offset: 0xAED8
+  symbol: ttc_seg7_lights_0700AED8
+
+ttc_seg7_vertex_0700AEF0:
+  type: VTX
+  count: 15
+  offset: 0xAEF0
+  symbol: ttc_seg7_vertex_0700AEF0
+
+ttc_seg7_vertex_0700AFE0:
+  type: VTX
+  count: 15
+  offset: 0xAFE0
+  symbol: ttc_seg7_vertex_0700AFE0
+
+ttc_seg7_vertex_0700B0D0:
+  type: VTX
+  count: 4
+  offset: 0xB0D0
+  symbol: ttc_seg7_vertex_0700B0D0
+
+ttc_seg7_dl_0700B110:
+  type: GFX
+  offset: 0xB110
+  symbol: ttc_seg7_dl_0700B110
+
+ttc_seg7_dl_0700B1D8:
+  type: GFX
+  offset: 0xB1D8
+  symbol: ttc_seg7_dl_0700B1D8
+
 ttc_seg7_vertex_0700B238:
   type: VTX
   count: 15
@@ -1265,72 +1247,83 @@ ttc_seg7_dl_0700E878:
   offset: 0xE878
   symbol: ttc_seg7_dl_0700E878
 
-ttc_seg7_lights_0700AED8:
+ttc_seg7_lights_0700E950:
   type: LIGHTS
   size: 24
-  offset: 0xAED8
-  symbol: ttc_seg7_lights_0700AED8
+  offset: 0xE950
+  symbol: ttc_seg7_lights_0700E950
 
-ttc_seg7_vertex_0700AEF0:
-  type: VTX
-  count: 15
-  offset: 0xAEF0
-  symbol: ttc_seg7_vertex_0700AEF0
-
-ttc_seg7_vertex_0700AFE0:
-  type: VTX
-  count: 15
-  offset: 0xAFE0
-  symbol: ttc_seg7_vertex_0700AFE0
-
-ttc_seg7_vertex_0700B0D0:
-  type: VTX
-  count: 4
-  offset: 0xB0D0
-  symbol: ttc_seg7_vertex_0700B0D0
-
-ttc_seg7_dl_0700B110:
-  type: GFX
-  offset: 0xB110
-  symbol: ttc_seg7_dl_0700B110
-
-ttc_seg7_dl_0700B1D8:
-  type: GFX
-  offset: 0xB1D8
-  symbol: ttc_seg7_dl_0700B1D8
-
-ttc_seg7_lights_07010DE8:
+ttc_seg7_lights_0700E968:
   type: LIGHTS
   size: 24
-  offset: 0x10DE8
-  symbol: ttc_seg7_lights_07010DE8
+  offset: 0xE968
+  symbol: ttc_seg7_lights_0700E968
 
-ttc_seg7_vertex_07010E00:
+ttc_seg7_vertex_0700E980:
   type: VTX
-  count: 8
-  offset: 0x10E00
-  symbol: ttc_seg7_vertex_07010E00
+  count: 10
+  offset: 0xE980
+  symbol: ttc_seg7_vertex_0700E980
 
-ttc_seg7_vertex_07010E80:
+ttc_seg7_vertex_0700EA20:
+  type: VTX
+  count: 10
+  offset: 0xEA20
+  symbol: ttc_seg7_vertex_0700EA20
+
+ttc_seg7_vertex_0700EAC0:
   type: VTX
   count: 16
-  offset: 0x10E80
-  symbol: ttc_seg7_vertex_07010E80
+  offset: 0xEAC0
+  symbol: ttc_seg7_vertex_0700EAC0
 
-ttc_seg7_dl_07010F80:
+ttc_seg7_dl_0700EBC0:
   type: GFX
-  offset: 0x10F80
-  symbol: ttc_seg7_dl_07010F80
+  offset: 0xEBC0
+  symbol: ttc_seg7_dl_0700EBC0
 
-ttc_seg7_dl_07010FD8:
+ttc_seg7_dl_0700EC50:
   type: GFX
-  offset: 0x10FD8
-  symbol: ttc_seg7_dl_07010FD8
+  offset: 0xEC50
+  symbol: ttc_seg7_dl_0700EC50
 
-ttc_seg7_dl_07011040:
+ttc_seg7_dl_0700ECB8:
   type: GFX
-  offset: 0x11040
-  symbol: ttc_seg7_dl_07011040
+  offset: 0xECB8
+  symbol: ttc_seg7_dl_0700ECB8
+
+ttc_seg7_lights_0700ED68:
+  type: LIGHTS
+  size: 24
+  offset: 0xED68
+  symbol: ttc_seg7_lights_0700ED68
+
+ttc_seg7_vertex_0700ED80:
+  type: VTX
+  count: 14
+  offset: 0xED80
+  symbol: ttc_seg7_vertex_0700ED80
+
+ttc_seg7_vertex_0700EE60:
+  type: VTX
+  count: 12
+  offset: 0xEE60
+  symbol: ttc_seg7_vertex_0700EE60
+
+ttc_seg7_dl_0700EF20:
+  type: GFX
+  offset: 0xEF20
+  symbol: ttc_seg7_dl_0700EF20
+
+ttc_seg7_dl_0700EF88:
+  type: GFX
+  offset: 0xEF88
+  symbol: ttc_seg7_dl_0700EF88
+
+ttc_seg7_dl_0700EFE0:
+  type: GFX
+  offset: 0xEFE0
+  symbol: ttc_seg7_dl_0700EFE0
 
 ttc_seg7_lights_0700F090:
   type: LIGHTS
@@ -1388,217 +1381,61 @@ ttc_seg7_dl_0700F760:
   offset: 0xF760
   symbol: ttc_seg7_dl_0700F760
 
-ttc_seg7_lights_07011108:
+ttc_seg7_lights_0700F830:
   type: LIGHTS
   size: 24
-  offset: 0x11108
-  symbol: ttc_seg7_lights_07011108
+  offset: 0xF830
+  symbol: ttc_seg7_lights_0700F830
 
-ttc_seg7_vertex_07011120:
+ttc_seg7_lights_0700F848:
+  type: LIGHTS
+  size: 24
+  offset: 0xF848
+  symbol: ttc_seg7_lights_0700F848
+
+ttc_seg7_vertex_0700F860:
   type: VTX
   count: 8
-  offset: 0x11120
-  symbol: ttc_seg7_vertex_07011120
+  offset: 0xF860
+  symbol: ttc_seg7_vertex_0700F860
 
-ttc_seg7_vertex_070111A0:
-  type: VTX
-  count: 16
-  offset: 0x111A0
-  symbol: ttc_seg7_vertex_070111A0
-
-ttc_seg7_dl_070112A0:
-  type: GFX
-  offset: 0x112A0
-  symbol: ttc_seg7_dl_070112A0
-
-ttc_seg7_dl_070112F8:
-  type: GFX
-  offset: 0x112F8
-  symbol: ttc_seg7_dl_070112F8
-
-ttc_seg7_dl_07011360:
-  type: GFX
-  offset: 0x11360
-  symbol: ttc_seg7_dl_07011360
-
-ttc_seg7_lights_07010930:
-  type: LIGHTS
-  size: 24
-  offset: 0x10930
-  symbol: ttc_seg7_lights_07010930
-
-ttc_seg7_vertex_07010948:
+ttc_seg7_vertex_0700F8E0:
   type: VTX
   count: 14
-  offset: 0x10948
-  symbol: ttc_seg7_vertex_07010948
+  offset: 0xF8E0
+  symbol: ttc_seg7_vertex_0700F8E0
 
-ttc_seg7_vertex_07010A28:
+ttc_seg7_vertex_0700F9C0:
   type: VTX
-  count: 16
-  offset: 0x10A28
-  symbol: ttc_seg7_vertex_07010A28
+  count: 10
+  offset: 0xF9C0
+  symbol: ttc_seg7_vertex_0700F9C0
 
-ttc_seg7_vertex_07010B28:
-  type: VTX
-  count: 5
-  offset: 0x10B28
-  symbol: ttc_seg7_vertex_07010B28
-
-ttc_seg7_vertex_07010B78:
-  type: VTX
-  count: 8
-  offset: 0x10B78
-  symbol: ttc_seg7_vertex_07010B78
-
-ttc_seg7_dl_07010BF8:
-  type: GFX
-  offset: 0x10BF8
-  symbol: ttc_seg7_dl_07010BF8
-
-ttc_seg7_dl_07010CF0:
-  type: GFX
-  offset: 0x10CF0
-  symbol: ttc_seg7_dl_07010CF0
-
-ttc_seg7_dl_07010D38:
-  type: GFX
-  offset: 0x10D38
-  symbol: ttc_seg7_dl_07010D38
-
-ttc_seg7_lights_07011BE0:
-  type: LIGHTS
-  size: 24
-  offset: 0x11BE0
-  symbol: ttc_seg7_lights_07011BE0
-
-ttc_seg7_lights_07011BF8:
-  type: LIGHTS
-  size: 24
-  offset: 0x11BF8
-  symbol: ttc_seg7_lights_07011BF8
-
-ttc_seg7_vertex_07011C10:
-  type: VTX
-  count: 16
-  offset: 0x11C10
-  symbol: ttc_seg7_vertex_07011C10
-
-ttc_seg7_vertex_07011D10:
-  type: VTX
-  count: 11
-  offset: 0x11D10
-  symbol: ttc_seg7_vertex_07011D10
-
-ttc_seg7_vertex_07011DC0:
-  type: VTX
-  count: 16
-  offset: 0x11DC0
-  symbol: ttc_seg7_vertex_07011DC0
-
-ttc_seg7_dl_07011EC0:
-  type: GFX
-  offset: 0x11EC0
-  symbol: ttc_seg7_dl_07011EC0
-
-ttc_seg7_dl_07012028:
-  type: GFX
-  offset: 0x12028
-  symbol: ttc_seg7_dl_07012028
-
-ttc_seg7_lights_07010380:
-  type: LIGHTS
-  size: 24
-  offset: 0x10380
-  symbol: ttc_seg7_lights_07010380
-
-ttc_seg7_vertex_07010398:
-  type: VTX
-  count: 15
-  offset: 0x10398
-  symbol: ttc_seg7_vertex_07010398
-
-ttc_seg7_vertex_07010488:
-  type: VTX
-  count: 11
-  offset: 0x10488
-  symbol: ttc_seg7_vertex_07010488
-
-ttc_seg7_vertex_07010538:
-  type: VTX
-  count: 16
-  offset: 0x10538
-  symbol: ttc_seg7_vertex_07010538
-
-ttc_seg7_vertex_07010638:
-  type: VTX
-  count: 16
-  offset: 0x10638
-  symbol: ttc_seg7_vertex_07010638
-
-ttc_seg7_dl_07010738:
-  type: GFX
-  offset: 0x10738
-  symbol: ttc_seg7_dl_07010738
-
-ttc_seg7_dl_070107D8:
-  type: GFX
-  offset: 0x107D8
-  symbol: ttc_seg7_dl_070107D8
-
-ttc_seg7_dl_07010868:
-  type: GFX
-  offset: 0x10868
-  symbol: ttc_seg7_dl_07010868
-
-ttc_seg7_lights_070100B0:
-  type: LIGHTS
-  size: 24
-  offset: 0x100B0
-  symbol: ttc_seg7_lights_070100B0
-
-ttc_seg7_vertex_070100C8:
-  type: VTX
-  count: 16
-  offset: 0x100C8
-  symbol: ttc_seg7_vertex_070100C8
-
-ttc_seg7_vertex_070101C8:
+ttc_seg7_vertex_0700FA60:
   type: VTX
   count: 4
-  offset: 0x101C8
-  symbol: ttc_seg7_vertex_070101C8
+  offset: 0xFA60
+  symbol: ttc_seg7_vertex_0700FA60
 
-ttc_seg7_dl_07010208:
+ttc_seg7_dl_0700FAA0:
   type: GFX
-  offset: 0x10208
-  symbol: ttc_seg7_dl_07010208
+  offset: 0xFAA0
+  symbol: ttc_seg7_dl_0700FAA0
 
-ttc_seg7_dl_07010280:
+ttc_seg7_dl_0700FAF8:
   type: GFX
-  offset: 0x10280
-  symbol: ttc_seg7_dl_07010280
+  offset: 0xFAF8
+  symbol: ttc_seg7_dl_0700FAF8
 
-ttc_seg7_dl_070102B8:
+ttc_seg7_dl_0700FB88:
   type: GFX
-  offset: 0x102B8
-  symbol: ttc_seg7_dl_070102B8
+  offset: 0xFB88
+  symbol: ttc_seg7_dl_0700FB88
 
-ttc_seg7_vertex_07012200:
-  type: VTX
-  count: 4
-  offset: 0x12200
-  symbol: ttc_seg7_vertex_07012200
-
-ttc_seg7_dl_07012240:
+ttc_seg7_dl_0700FBB8:
   type: GFX
-  offset: 0x12240
-  symbol: ttc_seg7_dl_07012240
-
-ttc_seg7_dl_07012278:
-  type: GFX
-  offset: 0x12278
-  symbol: ttc_seg7_dl_07012278
+  offset: 0xFBB8
+  symbol: ttc_seg7_dl_0700FBB8
 
 ttc_seg7_lights_0700FC80:
   type: LIGHTS
@@ -1656,6 +1493,195 @@ ttc_seg7_dl_0700FFE8:
   offset: 0xFFE8
   symbol: ttc_seg7_dl_0700FFE8
 
+ttc_seg7_lights_070100B0:
+  type: LIGHTS
+  size: 24
+  offset: 0x100B0
+  symbol: ttc_seg7_lights_070100B0
+
+ttc_seg7_vertex_070100C8:
+  type: VTX
+  count: 16
+  offset: 0x100C8
+  symbol: ttc_seg7_vertex_070100C8
+
+ttc_seg7_vertex_070101C8:
+  type: VTX
+  count: 4
+  offset: 0x101C8
+  symbol: ttc_seg7_vertex_070101C8
+
+ttc_seg7_dl_07010208:
+  type: GFX
+  offset: 0x10208
+  symbol: ttc_seg7_dl_07010208
+
+ttc_seg7_dl_07010280:
+  type: GFX
+  offset: 0x10280
+  symbol: ttc_seg7_dl_07010280
+
+ttc_seg7_dl_070102B8:
+  type: GFX
+  offset: 0x102B8
+  symbol: ttc_seg7_dl_070102B8
+
+ttc_seg7_lights_07010380:
+  type: LIGHTS
+  size: 24
+  offset: 0x10380
+  symbol: ttc_seg7_lights_07010380
+
+ttc_seg7_vertex_07010398:
+  type: VTX
+  count: 15
+  offset: 0x10398
+  symbol: ttc_seg7_vertex_07010398
+
+ttc_seg7_vertex_07010488:
+  type: VTX
+  count: 11
+  offset: 0x10488
+  symbol: ttc_seg7_vertex_07010488
+
+ttc_seg7_vertex_07010538:
+  type: VTX
+  count: 16
+  offset: 0x10538
+  symbol: ttc_seg7_vertex_07010538
+
+ttc_seg7_vertex_07010638:
+  type: VTX
+  count: 16
+  offset: 0x10638
+  symbol: ttc_seg7_vertex_07010638
+
+ttc_seg7_dl_07010738:
+  type: GFX
+  offset: 0x10738
+  symbol: ttc_seg7_dl_07010738
+
+ttc_seg7_dl_070107D8:
+  type: GFX
+  offset: 0x107D8
+  symbol: ttc_seg7_dl_070107D8
+
+ttc_seg7_dl_07010868:
+  type: GFX
+  offset: 0x10868
+  symbol: ttc_seg7_dl_07010868
+
+ttc_seg7_lights_07010930:
+  type: LIGHTS
+  size: 24
+  offset: 0x10930
+  symbol: ttc_seg7_lights_07010930
+
+ttc_seg7_vertex_07010948:
+  type: VTX
+  count: 14
+  offset: 0x10948
+  symbol: ttc_seg7_vertex_07010948
+
+ttc_seg7_vertex_07010A28:
+  type: VTX
+  count: 16
+  offset: 0x10A28
+  symbol: ttc_seg7_vertex_07010A28
+
+ttc_seg7_vertex_07010B28:
+  type: VTX
+  count: 5
+  offset: 0x10B28
+  symbol: ttc_seg7_vertex_07010B28
+
+ttc_seg7_vertex_07010B78:
+  type: VTX
+  count: 8
+  offset: 0x10B78
+  symbol: ttc_seg7_vertex_07010B78
+
+ttc_seg7_dl_07010BF8:
+  type: GFX
+  offset: 0x10BF8
+  symbol: ttc_seg7_dl_07010BF8
+
+ttc_seg7_dl_07010CF0:
+  type: GFX
+  offset: 0x10CF0
+  symbol: ttc_seg7_dl_07010CF0
+
+ttc_seg7_dl_07010D38:
+  type: GFX
+  offset: 0x10D38
+  symbol: ttc_seg7_dl_07010D38
+
+ttc_seg7_lights_07010DE8:
+  type: LIGHTS
+  size: 24
+  offset: 0x10DE8
+  symbol: ttc_seg7_lights_07010DE8
+
+ttc_seg7_vertex_07010E00:
+  type: VTX
+  count: 8
+  offset: 0x10E00
+  symbol: ttc_seg7_vertex_07010E00
+
+ttc_seg7_vertex_07010E80:
+  type: VTX
+  count: 16
+  offset: 0x10E80
+  symbol: ttc_seg7_vertex_07010E80
+
+ttc_seg7_dl_07010F80:
+  type: GFX
+  offset: 0x10F80
+  symbol: ttc_seg7_dl_07010F80
+
+ttc_seg7_dl_07010FD8:
+  type: GFX
+  offset: 0x10FD8
+  symbol: ttc_seg7_dl_07010FD8
+
+ttc_seg7_dl_07011040:
+  type: GFX
+  offset: 0x11040
+  symbol: ttc_seg7_dl_07011040
+
+ttc_seg7_lights_07011108:
+  type: LIGHTS
+  size: 24
+  offset: 0x11108
+  symbol: ttc_seg7_lights_07011108
+
+ttc_seg7_vertex_07011120:
+  type: VTX
+  count: 8
+  offset: 0x11120
+  symbol: ttc_seg7_vertex_07011120
+
+ttc_seg7_vertex_070111A0:
+  type: VTX
+  count: 16
+  offset: 0x111A0
+  symbol: ttc_seg7_vertex_070111A0
+
+ttc_seg7_dl_070112A0:
+  type: GFX
+  offset: 0x112A0
+  symbol: ttc_seg7_dl_070112A0
+
+ttc_seg7_dl_070112F8:
+  type: GFX
+  offset: 0x112F8
+  symbol: ttc_seg7_dl_070112F8
+
+ttc_seg7_dl_07011360:
+  type: GFX
+  offset: 0x11360
+  symbol: ttc_seg7_dl_07011360
+
 ttc_seg7_lights_07011428:
   type: LIGHTS
   size: 24
@@ -1694,78 +1720,6 @@ ttc_seg7_dl_070116A8:
   type: GFX
   offset: 0x116A8
   symbol: ttc_seg7_dl_070116A8
-
-ttc_seg7_vertex_070120D0:
-  type: VTX
-  count: 4
-  offset: 0x120D0
-  symbol: ttc_seg7_vertex_070120D0
-
-ttc_seg7_dl_07012110:
-  type: GFX
-  offset: 0x12110
-  symbol: ttc_seg7_dl_07012110
-
-ttc_seg7_dl_07012148:
-  type: GFX
-  offset: 0x12148
-  symbol: ttc_seg7_dl_07012148
-
-ttc_seg7_lights_0700F830:
-  type: LIGHTS
-  size: 24
-  offset: 0xF830
-  symbol: ttc_seg7_lights_0700F830
-
-ttc_seg7_lights_0700F848:
-  type: LIGHTS
-  size: 24
-  offset: 0xF848
-  symbol: ttc_seg7_lights_0700F848
-
-ttc_seg7_vertex_0700F860:
-  type: VTX
-  count: 8
-  offset: 0xF860
-  symbol: ttc_seg7_vertex_0700F860
-
-ttc_seg7_vertex_0700F8E0:
-  type: VTX
-  count: 14
-  offset: 0xF8E0
-  symbol: ttc_seg7_vertex_0700F8E0
-
-ttc_seg7_vertex_0700F9C0:
-  type: VTX
-  count: 10
-  offset: 0xF9C0
-  symbol: ttc_seg7_vertex_0700F9C0
-
-ttc_seg7_vertex_0700FA60:
-  type: VTX
-  count: 4
-  offset: 0xFA60
-  symbol: ttc_seg7_vertex_0700FA60
-
-ttc_seg7_dl_0700FAA0:
-  type: GFX
-  offset: 0xFAA0
-  symbol: ttc_seg7_dl_0700FAA0
-
-ttc_seg7_dl_0700FAF8:
-  type: GFX
-  offset: 0xFAF8
-  symbol: ttc_seg7_dl_0700FAF8
-
-ttc_seg7_dl_0700FB88:
-  type: GFX
-  offset: 0xFB88
-  symbol: ttc_seg7_dl_0700FB88
-
-ttc_seg7_dl_0700FBB8:
-  type: GFX
-  offset: 0xFBB8
-  symbol: ttc_seg7_dl_0700FBB8
 
 ttc_seg7_lights_07011758:
   type: LIGHTS
@@ -1825,38 +1779,77 @@ ttc_seg7_dl_07011B38:
   offset: 0x11B38
   symbol: ttc_seg7_dl_07011B38
 
-ttc_seg7_lights_0700ED68:
+ttc_seg7_lights_07011BE0:
   type: LIGHTS
   size: 24
-  offset: 0xED68
-  symbol: ttc_seg7_lights_0700ED68
+  offset: 0x11BE0
+  symbol: ttc_seg7_lights_07011BE0
 
-ttc_seg7_vertex_0700ED80:
+ttc_seg7_lights_07011BF8:
+  type: LIGHTS
+  size: 24
+  offset: 0x11BF8
+  symbol: ttc_seg7_lights_07011BF8
+
+ttc_seg7_vertex_07011C10:
   type: VTX
-  count: 14
-  offset: 0xED80
-  symbol: ttc_seg7_vertex_0700ED80
+  count: 16
+  offset: 0x11C10
+  symbol: ttc_seg7_vertex_07011C10
 
-ttc_seg7_vertex_0700EE60:
+ttc_seg7_vertex_07011D10:
   type: VTX
-  count: 12
-  offset: 0xEE60
-  symbol: ttc_seg7_vertex_0700EE60
+  count: 11
+  offset: 0x11D10
+  symbol: ttc_seg7_vertex_07011D10
 
-ttc_seg7_dl_0700EF20:
-  type: GFX
-  offset: 0xEF20
-  symbol: ttc_seg7_dl_0700EF20
+ttc_seg7_vertex_07011DC0:
+  type: VTX
+  count: 16
+  offset: 0x11DC0
+  symbol: ttc_seg7_vertex_07011DC0
 
-ttc_seg7_dl_0700EF88:
+ttc_seg7_dl_07011EC0:
   type: GFX
-  offset: 0xEF88
-  symbol: ttc_seg7_dl_0700EF88
+  offset: 0x11EC0
+  symbol: ttc_seg7_dl_07011EC0
 
-ttc_seg7_dl_0700EFE0:
+ttc_seg7_dl_07012028:
   type: GFX
-  offset: 0xEFE0
-  symbol: ttc_seg7_dl_0700EFE0
+  offset: 0x12028
+  symbol: ttc_seg7_dl_07012028
+
+ttc_seg7_vertex_070120D0:
+  type: VTX
+  count: 4
+  offset: 0x120D0
+  symbol: ttc_seg7_vertex_070120D0
+
+ttc_seg7_dl_07012110:
+  type: GFX
+  offset: 0x12110
+  symbol: ttc_seg7_dl_07012110
+
+ttc_seg7_dl_07012148:
+  type: GFX
+  offset: 0x12148
+  symbol: ttc_seg7_dl_07012148
+
+ttc_seg7_vertex_07012200:
+  type: VTX
+  count: 4
+  offset: 0x12200
+  symbol: ttc_seg7_vertex_07012200
+
+ttc_seg7_dl_07012240:
+  type: GFX
+  offset: 0x12240
+  symbol: ttc_seg7_dl_07012240
+
+ttc_seg7_dl_07012278:
+  type: GFX
+  offset: 0x12278
+  symbol: ttc_seg7_dl_07012278
 
 ttc_seg7_collision_level:
   type: SM64:COLLISION
@@ -1927,4 +1920,13 @@ ttc_seg7_collision_rotating_clock_platform2:
   type: SM64:COLLISION
   offset: 0x159D0
   symbol: ttc_seg7_collision_rotating_clock_platform2
+
+2:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x15F90
+  format: RGBA16
+  symbol: ttc_yellow_triangle
 

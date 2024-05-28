@@ -5,23 +5,6 @@
   segments:
     - [0x03,  0x201410]
 
-wooden_signpost_back:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2C9C8
-  format: RGBA16
-  symbol: wooden_signpost_seg3_texture_0302C9C8
-wooden_signpost_front:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x2D1C8
-  format: RGBA16
-  symbol: wooden_signpost_seg3_texture_0302D1C8
-
 wooden_signpost_seg3_lights_0302C940:
   type: LIGHTS
   size: 24
@@ -33,6 +16,24 @@ wooden_signpost_seg3_vertex_0302C958:
   count: 7
   offset: 0x2C958
   symbol: wooden_signpost_seg3_vertex_0302C958
+
+wooden_signpost_back:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2C9C8
+  format: RGBA16
+  symbol: wooden_signpost_seg3_texture_0302C9C8
+
+wooden_signpost_front:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2D1C8
+  format: RGBA16
+  symbol: wooden_signpost_seg3_texture_0302D1C8
 
 wooden_signpost_seg3_dl_0302D9C8:
   type: GFX

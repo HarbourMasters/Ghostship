@@ -7,5 +7,5 @@
 
 wmotr_geo_0001F0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0001F0
+  offset: 0xE0001F0
   symbol: wmotr_geo_0001F0

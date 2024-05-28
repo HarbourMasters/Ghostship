@@ -5,15 +5,6 @@
   segments:
     - [0x03,  0x201410]
 
-mist:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x80
-  format: IA16
-  symbol: mist_seg3_texture_03000080
-
 mist_seg3_vertex_03000000:
   type: VTX
   count: 4
@@ -25,6 +16,15 @@ mist_seg3_vertex_03000040:
   count: 4
   offset: 0x40
   symbol: mist_seg3_vertex_03000040
+
+mist:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x80
+  format: IA16
+  symbol: mist_seg3_texture_03000080
 
 mist_seg3_dl_03000880:
   type: GFX

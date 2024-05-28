@@ -5,31 +5,6 @@
   segments:
     - [0x05,  0x16BC70]
 
-yoshi_eye:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0x1C4A0
-  format: RGBA16
-  symbol: yoshi_seg5_texture_0501C4A0
-yoshi_eye_blink:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0x1C6A0
-  format: RGBA16
-  symbol: yoshi_seg5_texture_0501C6A0
-yoshi_nostril:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0x1C8A0
-  format: RGBA16
-  symbol: yoshi_seg5_texture_0501C8A0
-
 yoshi_seg5_lights_0501C458:
   type: LIGHTS
   size: 24
@@ -47,6 +22,33 @@ yoshi_seg5_lights_0501C488:
   size: 24
   offset: 0x1C488
   symbol: yoshi_seg5_lights_0501C488
+
+yoshi_eye:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x1C4A0
+  format: RGBA16
+  symbol: yoshi_seg5_texture_0501C4A0
+
+yoshi_eye_blink:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x1C6A0
+  format: RGBA16
+  symbol: yoshi_seg5_texture_0501C6A0
+
+yoshi_nostril:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0x1C8A0
+  format: RGBA16
+  symbol: yoshi_seg5_texture_0501C8A0
 
 yoshi_seg5_vertex_0501CAA0:
   type: VTX

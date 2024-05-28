@@ -7,5 +7,5 @@
 
 pss_geo_000100:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000100
+  offset: 0xE000100
   symbol: pss_geo_000100

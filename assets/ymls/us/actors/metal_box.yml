@@ -5,6 +5,12 @@
   segments:
     - [0x08,  0x1F2200]
 
+metal_box_seg8_lights_08023980:
+  type: LIGHTS
+  size: 24
+  offset: 0x23980
+  symbol: metal_box_seg8_lights_08023980
+
 metal_box_side:
   type: TEXTURE
   size: 4096
@@ -13,11 +19,6 @@ metal_box_side:
   offset: 0x23998
   format: RGBA16
   symbol: metal_box_seg8_texture_08023998
-metal_box_seg8_lights_08023980:
-  type: LIGHTS
-  size: 24
-  offset: 0x23980
-  symbol: metal_box_seg8_lights_08023980
 
 metal_box_seg8_vertex_08024998:
   type: VTX

@@ -7,5 +7,5 @@
 
 sushi_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0x0C000068
+  offset: 0xC000068
   symbol: sushi_geo

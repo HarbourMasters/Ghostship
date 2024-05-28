@@ -5,22 +5,6 @@
   segments:
     - [0x08,  0x1F0530]
 
-chuckya_body_arm_left_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x7F78
-  format: RGBA16
-  symbol: chuckya_seg8_texture_08007F78
-chuckya_body_arm_right_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x8F78
-  format: RGBA16
-  symbol: chuckya_seg8_texture_08008F78
 chuckya_eyes:
   type: TEXTURE
   size: 4096
@@ -29,6 +13,7 @@ chuckya_eyes:
   offset: 0x6778
   format: RGBA16
   symbol: chuckya_seg8_texture_08006778
+
 chuckya_hand_antenna:
   type: TEXTURE
   size: 2048
@@ -38,47 +23,23 @@ chuckya_hand_antenna:
   format: RGBA16
   symbol: chuckya_seg8_texture_08007778
 
-chuckya_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x1CB00
-  symbol: chuckya_lights_unused1
+chuckya_body_arm_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x7F78
+  format: RGBA16
+  symbol: chuckya_seg8_texture_08007F78
 
-chuckya_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x1CB00
-  symbol: chuckya_lights_unused2
-
-chuckya_lights_unused3:
-  type: LIGHTS
-  size: 24
-  offset: 0x1CB00
-  symbol: chuckya_lights_unused3
-
-chuckya_lights_unused4:
-  type: LIGHTS
-  size: 24
-  offset: 0x1CB00
-  symbol: chuckya_lights_unused4
-
-chuckya_lights_unused5:
-  type: LIGHTS
-  size: 24
-  offset: 0x1CB00
-  symbol: chuckya_lights_unused5
-
-chuckya_lights_unused6:
-  type: LIGHTS
-  size: 24
-  offset: 0x1CB00
-  symbol: chuckya_lights_unused6
-
-chuckya_lights_unused7:
-  type: LIGHTS
-  size: 24
-  offset: 0x1CB00
-  symbol: chuckya_lights_unused7
+chuckya_body_arm_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x8F78
+  format: RGBA16
+  symbol: chuckya_seg8_texture_08008F78
 
 chuckya_seg8_vertex_08009F78:
   type: VTX
@@ -302,4 +263,46 @@ chuckya_seg8_dl_0800ABE8:
   type: GFX
   offset: 0xABE8
   symbol: chuckya_seg8_dl_0800ABE8
+
+chuckya_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x1CB00
+  symbol: chuckya_lights_unused1
+
+chuckya_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x1CB00
+  symbol: chuckya_lights_unused2
+
+chuckya_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x1CB00
+  symbol: chuckya_lights_unused3
+
+chuckya_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x1CB00
+  symbol: chuckya_lights_unused4
+
+chuckya_lights_unused5:
+  type: LIGHTS
+  size: 24
+  offset: 0x1CB00
+  symbol: chuckya_lights_unused5
+
+chuckya_lights_unused6:
+  type: LIGHTS
+  size: 24
+  offset: 0x1CB00
+  symbol: chuckya_lights_unused6
+
+chuckya_lights_unused7:
+  type: LIGHTS
+  size: 24
+  offset: 0x1CB00
+  symbol: chuckya_lights_unused7
 

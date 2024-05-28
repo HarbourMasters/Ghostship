@@ -13,6 +13,7 @@ dorrie_eye:
   offset: 0x9BA0
   format: RGBA16
   symbol: dorrie_seg6_texture_06009BA0
+
 dorrie_skin:
   type: TEXTURE
   size: 4096
@@ -21,6 +22,7 @@ dorrie_skin:
   offset: 0x9DA0
   format: RGBA16
   symbol: dorrie_seg6_texture_06009DA0
+
 dorrie_tongue:
   type: TEXTURE
   size: 2048

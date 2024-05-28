@@ -7,60 +7,60 @@
 
 bowser_3_geo_000290:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000290
+  offset: 0xE000290
   symbol: bowser_3_geo_000290
 
 bowser_3_geo_0002A8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002A8
+  offset: 0xE0002A8
   symbol: bowser_3_geo_0002A8
 
 bowser_3_geo_0002C0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002C0
+  offset: 0xE0002C0
   symbol: bowser_3_geo_0002C0
 
 bowser_3_geo_0002D8:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002D8
+  offset: 0xE0002D8
   symbol: bowser_3_geo_0002D8
 
 bowser_3_geo_0002F0:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E0002F0
+  offset: 0xE0002F0
   symbol: bowser_3_geo_0002F0
 
 bowser_3_geo_000308:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000308
+  offset: 0xE000308
   symbol: bowser_3_geo_000308
 
 bowser_3_geo_000320:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000320
+  offset: 0xE000320
   symbol: bowser_3_geo_000320
 
 bowser_3_geo_000338:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000338
+  offset: 0xE000338
   symbol: bowser_3_geo_000338
 
 bowser_3_geo_000350:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000350
+  offset: 0xE000350
   symbol: bowser_3_geo_000350
 
 bowser_3_geo_000368:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000368
+  offset: 0xE000368
   symbol: bowser_3_geo_000368
 
 bowser_3_geo_000380:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000380
+  offset: 0xE000380
   symbol: bowser_3_geo_000380
 
 bowser_3_geo_000398:
   type: SM64:GEO_LAYOUT
-  offset: 0x0E000398
+  offset: 0xE000398
   symbol: bowser_3_geo_000398

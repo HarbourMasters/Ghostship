@@ -13,6 +13,7 @@
   offset: 0x0
   format: RGBA16
   symbol: bowser_1_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 2048
@@ -21,6 +22,7 @@
   offset: 0x1000
   format: RGBA16
   symbol: bowser_1_seg7_texture_07001000
+
 2:
   type: TEXTURE
   size: 2048
@@ -105,7 +107,7 @@ bowser_1_seg7_dl_07002768:
   symbol: bowser_1_seg7_dl_07002768
 
 bowser_1_seg7_collision_level:
-    type: SM64:COLLISION
-    offset: 0x2838
-    symbol: bowser_1_seg7_collision_level
+  type: SM64:COLLISION
+  offset: 0x2838
+  symbol: bowser_1_seg7_collision_level
 

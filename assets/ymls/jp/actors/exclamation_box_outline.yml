@@ -5,23 +5,6 @@
   segments:
     - [0x08,  0x1F0530]
 
-exclamation_box_outline:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x25168
-  format: RGBA16
-  symbol: exclamation_box_outline_seg8_texture_08025168
-exclamation_point:
-  type: TEXTURE
-  size: 1024
-  width: 16
-  height: 32
-  offset: 0x25A80
-  format: RGBA16
-  symbol: exclamation_box_outline_seg8_texture_08025A80
-
 exclamation_box_outline_seg8_lights_08024CB8:
   type: LIGHTS
   size: 24
@@ -105,6 +88,15 @@ exclamation_box_outline_seg8_vertex_080250E8:
   offset: 0x250E8
   symbol: exclamation_box_outline_seg8_vertex_080250E8
 
+exclamation_box_outline:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x25168
+  format: RGBA16
+  symbol: exclamation_box_outline_seg8_texture_08025168
+
 exclamation_box_outline_seg8_dl_08025968:
   type: GFX
   offset: 0x25968
@@ -120,6 +112,15 @@ exclamation_box_outline_seg8_lights_08025A68:
   size: 24
   offset: 0x25A68
   symbol: exclamation_box_outline_seg8_lights_08025A68
+
+exclamation_point:
+  type: TEXTURE
+  size: 1024
+  width: 16
+  height: 32
+  offset: 0x25A80
+  format: RGBA16
+  symbol: exclamation_box_outline_seg8_texture_08025A80
 
 exclamation_box_outline_seg8_vertex_08025E80:
   type: VTX

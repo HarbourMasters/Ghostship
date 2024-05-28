@@ -5,47 +5,6 @@
   segments:
     - [0x05,  0x15EA70]
 
-mr_blizzard_eye:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xB470
-  format: RGBA16
-  symbol: snowman_seg5_texture_0500B470
-mr_blizzard_left_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x9470
-  format: RGBA16
-  symbol: snowman_seg5_texture_05009470
-mr_blizzard_mitten:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x8C70
-  format: RGBA16
-  symbol: snowman_seg5_texture_05008C70
-mr_blizzard_mouth:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xBC70
-  format: RGBA16
-  symbol: snowman_seg5_texture_0500BC70
-mr_blizzard_right_side:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0xA470
-  format: RGBA16
-  symbol: snowman_seg5_texture_0500A470
-
 snowman_lights_unused1:
   type: LIGHTS
   size: 24
@@ -69,6 +28,51 @@ snowman_lights_unused4:
   size: 24
   offset: 0x8C58
   symbol: snowman_lights_unused4
+
+mr_blizzard_mitten:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8C70
+  format: RGBA16
+  symbol: snowman_seg5_texture_05008C70
+
+mr_blizzard_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9470
+  format: RGBA16
+  symbol: snowman_seg5_texture_05009470
+
+mr_blizzard_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xA470
+  format: RGBA16
+  symbol: snowman_seg5_texture_0500A470
+
+mr_blizzard_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xB470
+  format: RGBA16
+  symbol: snowman_seg5_texture_0500B470
+
+mr_blizzard_mouth:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xBC70
+  format: RGBA16
+  symbol: snowman_seg5_texture_0500BC70
 
 snowman_seg5_lights_0500C470:
   type: LIGHTS
