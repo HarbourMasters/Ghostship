@@ -19,7 +19,7 @@ class GameEngine {
   public:
     static GameEngine* Instance;
 
-    std::shared_ptr<LUS::Context> context;
+    std::shared_ptr<Ship::Context> context;
     std::unordered_map<uint8_t, CtlEntry*> banks;
     std::unordered_map<uint8_t, AudioSequenceData*> sequences;
     std::unordered_map<std::string, uint8_t> bankMapTable;
@@ -30,15 +30,14 @@ class GameEngine {
     static void Create();
     void AudioInit();
     void StartFrame() const;
-    static void RunCommands(Gfx* Commands);
-    void ProcessFrame(void (*run_one_game_iter)()) const;
+    static void RunCommands(F3DGfx* Commands);
     static uint32_t GetInterpolationFPS();
     static void HandleAudioThread();
     static void StartAudioFrame();
     static void EndAudioFrame();
     static void AudioExit();
     static void PatchInterpolations();
-    static void ProcessGfxCommands(Gfx* commands);
+    static void ProcessGfxCommands(F3DGfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();
     uint32_t GetGameVersion();

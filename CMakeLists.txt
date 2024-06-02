@@ -56,6 +56,7 @@ add_compile_definitions(
     VERSION_US=1
     ENABLE_RUMBLE=1
     F3D_OLD=1
+    F3D_GBI=1
     GBI_FLOATS=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
@@ -379,6 +380,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
           -Wno-parentheses
           -Wno-narrowing
           -Wno-missing-braces
+          -Wno-int-conversion
           $<$<COMPILE_LANGUAGE:C>:
               -Werror-implicit-function-declaration
               -Wno-incompatible-pointer-types

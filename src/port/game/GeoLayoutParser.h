@@ -6,8 +6,8 @@
 
 class GeoLayoutParser {
 public:
-    static LUS::BinaryReader* mLoadedReader;
-    static LUS::BinaryReader* mReader;
+    static Ship::BinaryReader* mLoadedReader;
+    static Ship::BinaryReader* mReader;
     static void execute(const char* path);
 };
 #else

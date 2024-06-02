@@ -14,11 +14,11 @@ struct DialogEntry {
 
 namespace SM64 {
 
-class Dialog : public LUS::Resource<DialogEntry> {
+class Dialog : public Ship::Resource<DialogEntry> {
   public:
     using Resource::Resource;
 
-    Dialog() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    Dialog() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     DialogEntry* GetPointer();
     size_t GetPointerSize();

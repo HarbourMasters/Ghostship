@@ -342,7 +342,7 @@ static void geo_process_perspective(struct GraphNodePerspective *node) {
 static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
 #ifdef GBI_FLOATS
     Mtx *mtx = gMatStackFixed[gMatStackIndex];
-    s16 distanceFromCam = (s32) -mtx->m[3][2]; // z-component of the translation column
+    s16 distanceFromCam = (s32) -mtx->mf[3][2]; // z-component of the translation column
 #else
     // The fixed point Mtx type is defined as 16 longs, but it's actually 16
     // shorts for the integer parts followed by 16 shorts for the fraction parts

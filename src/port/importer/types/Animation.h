@@ -18,11 +18,11 @@ struct AnimationData {
     /*0x14*/ uint64_t length; // only used with Mario animations to determine how much to load. 0 otherwise.
 };
 
-class Animation : public LUS::Resource<AnimationData> {
+class Animation : public Ship::Resource<AnimationData> {
   public:
     using Resource::Resource;
 
-    Animation() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    Animation() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     AnimationData* GetPointer();
     size_t GetPointerSize();

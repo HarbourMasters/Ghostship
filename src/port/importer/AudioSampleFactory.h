@@ -4,8 +4,8 @@
 #include "ResourceFactoryBinary.h"
 
 namespace SM64 {
-class AudioSampleFactoryV0 : public LUS::ResourceFactoryBinary {
+class AudioSampleFactoryV0 : public Ship::ResourceFactoryBinary {
   public:
-    std::shared_ptr<LUS::IResource> ReadResource(std::shared_ptr<LUS::File> file) override;
+    std::shared_ptr<Ship::IResource> ReadResource(std::shared_ptr<Ship::File> file) override;
 };
 }

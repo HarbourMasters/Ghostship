@@ -28,7 +28,7 @@ void patch_interpolations() {
 
 extern "C"
 void exec_display_list(SPTask *spTask) {
-    GameEngine::ProcessGfxCommands((Gfx *) spTask->task.t.data_ptr);
+    GameEngine::ProcessGfxCommands((F3DGfx *) spTask->task.t.data_ptr);
 }
 
 void push_frame() {
@@ -48,7 +48,9 @@ int main(){
     audio_init();
     sound_init();
     thread5_game_loop();
-    GameEngine::Instance->ProcessFrame(push_frame);
+    while (WindowIsRunning()) {
+        push_frame();
+    }
     GameEngine::Instance->Destroy();
     return 0;
 }

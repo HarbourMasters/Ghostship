@@ -45,11 +45,11 @@ struct CtlEntry {
 namespace SM64 {
 
 
-class AudioBank : public LUS::Resource<CtlEntry> {
+class AudioBank : public Ship::Resource<CtlEntry> {
   public:
     using Resource::Resource;
 
-    AudioBank() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    AudioBank() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     CtlEntry* GetPointer();
     size_t GetPointerSize();

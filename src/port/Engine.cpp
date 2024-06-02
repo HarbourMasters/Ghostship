@@ -8,7 +8,6 @@
 #include "port/importer/DictionaryFactory.h"
 #include "port/importer/ResourceType.h"
 #include "audio/GameAudio.h"
-#include "ZAPDUtils/Utils/StringHelper.h"
 #include "texts_table.h"
 #include "port/Enhancements/game-interactor/GameInteractor.h"
 #include "port/Enhancements/mods.h"
@@ -17,6 +16,15 @@
 #include <SDL2/SDL_net.h>
 
 #include <utility>
+
+#include "ArrayFactory.h"
+#include "BlobFactory.h"
+#include "DisplayListFactory.h"
+#include "MatrixFactory.h"
+#include "StringHelper.h"
+#include "TextureFactory.h"
+#include "VertexFactory.h"
+#include "Fast3D/Fast3dWindow.h"
 
 extern "C" {
 #include "sm64.h"
@@ -31,13 +39,13 @@ GameInteractor* GameInteractor::Instance;
 
 GameEngine::GameEngine(): dictionary(nullptr) {
     std::vector<std::string> OTRFiles;
-    if (const std::string cube_path = LUS::Context::GetPathRelativeToAppDirectory("smcube.otr"); std::filesystem::exists(cube_path)) {
+    if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("smcube.otr"); std::filesystem::exists(cube_path)) {
         OTRFiles.push_back(cube_path);
     }
-    if (const std::string sm64_otr_path = LUS::Context::GetPathRelativeToAppBundle("sm64.otr"); std::filesystem::exists(sm64_otr_path)) {
+    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("sm64.otr"); std::filesystem::exists(sm64_otr_path)) {
         OTRFiles.push_back(sm64_otr_path);
     }
-    if (const std::string patches_path = LUS::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
+    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
             for (const auto&p: std::filesystem::recursive_directory_iterator(patches_path)) {
                 if (StringHelper::IEquals(p.path().extension().string(), ".otr")) {
@@ -46,10 +54,14 @@ GameEngine::GameEngine(): dictionary(nullptr) {
             }
         }
     }
-    this->context = LUS::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles,
+    this->context = Ship::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles,
                                                  {0xFF2B5A63, 0xE3DAA4E}, 3);
-    this->context->GetWindow()->SetTargetFps(60);
-    this->context->GetWindow()->SetMaximumFrameLatency(1);
+
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+    wnd->SetTargetFps(60);
+    wnd->SetMaximumFrameLatency(1);
+    wnd->SetRendererUCode(ucode_f3d);
+
     auto loader = context->GetResourceManager()->GetResourceLoader();
     loader->RegisterResourceFactory(std::make_shared<SM64::AnimationFactoryV0>(), RESOURCE_FORMAT_BINARY, "Animation", static_cast<uint32_t>(SM64::ResourceType::Anim), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank", static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
@@ -57,6 +69,13 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DialogFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dialog", static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary", static_cast<uint32_t>(SM64::ResourceType::Dictionary), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 1);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY, "Vertex", static_cast<uint32_t>(LUS::ResourceType::Vertex), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY, "DisplayList", static_cast<uint32_t>(LUS::ResourceType::DisplayList), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(LUS::ResourceType::Matrix), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryArrayV0>(), RESOURCE_FORMAT_BINARY, "Array", static_cast<uint32_t>(LUS::ResourceType::Array), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryBlobV0>(), RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
 }
 
 void GameEngine::Create(){
@@ -75,7 +94,7 @@ void GameEngine::Destroy(){
 bool ShouldClearTextureCacheAtEndOfFrame = false;
 
 void GameEngine::StartFrame() const{
-    using LUS::KbScancode;
+    using Ship::KbScancode;
     const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
     this->context->GetWindow()->SetLastScancode(-1);
 
@@ -91,20 +110,16 @@ void GameEngine::StartFrame() const{
     this->context->GetWindow()->StartFrame();
 }
 
-void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
-    this->context->GetWindow()->MainLoop(run_one_game_iter);
-}
-
 uint32_t GameEngine::GetInterpolationFPS() {
-    if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+    if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
         return CVarGetInteger("gInterpolationFPS", 30);
     }
 
     if (CVarGetInteger("gMatchRefreshRate", 0)) {
-        return LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+        return Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
     }
 
-    return std::min<uint32_t>(LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(), CVarGetInteger("gInterpolationFPS", 30));
+    return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(), CVarGetInteger("gInterpolationFPS", 30));
 }
 
 // Audio
@@ -157,7 +172,7 @@ void GameEngine::EndAudioFrame(){
 }
 
 void GameEngine::AudioInit() {
-    const auto resourceMgr = LUS::Context::GetInstance()->GetResourceManager();
+    const auto resourceMgr = Ship::Context::GetInstance()->GetResourceManager();
     resourceMgr->LoadDirectory("sound");
     const auto banksFiles = resourceMgr->GetArchiveManager()->ListFiles("sound/banks/*");
     const auto sequences_files = resourceMgr->GetArchiveManager()->ListFiles("sound/sequences/*");
@@ -204,11 +219,11 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
 }
 
 uint32_t GameEngine::GetGameVersion() {
-    return LUS::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
+    return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
-void GameEngine::RunCommands(Gfx* Commands) {
-    gfx_run(Commands, {});
+void GameEngine::RunCommands(F3DGfx* Commands) {
+    gfx_run(reinterpret_cast<Gfx*>(Commands), {});
     gfx_end_frame();
 
     if (ShouldClearTextureCacheAtEndOfFrame) {
@@ -228,7 +243,9 @@ void GameEngine::PatchInterpolations() {
     patch_interpolated_snow_particles();
 }
 
-void GameEngine::ProcessGfxCommands(Gfx* commands) {
+void GameEngine::ProcessGfxCommands(F3DGfx* commands) {
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+
     int target_fps = GetInterpolationFPS();
     static int last_fps;
     static int time;
@@ -255,10 +272,10 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
 
     time -= fps;
 
-    Instance->context->GetWindow()->SetTargetFps(fps);
+    wnd->SetTargetFps(fps);
 
     int threshold = CVarGetInteger("gExtraLatencyThreshold", 80);
-    Instance->context->GetWindow()->SetMaximumFrameLatency(threshold > 0 && target_fps >= threshold ? 2 : 1);
+    wnd->SetMaximumFrameLatency(threshold > 0 && target_fps >= threshold ? 2 : 1);
 
     last_fps = fps;
 }
@@ -268,7 +285,7 @@ extern "C" uint32_t GameEngine_GetInterpolatedFPS() {
 }
 
 extern "C" uint32_t GameEngine_GetSampleRate() {
-    auto player = LUS::Context::GetInstance()->GetAudio()->GetAudioPlayer();
+    auto player = Ship::Context::GetInstance()->GetAudio()->GetAudioPlayer();
     if (player == nullptr) {
         return 0;
     }
@@ -355,7 +372,7 @@ extern "C" void GameEngine_UnloadSequence(uint8_t seqId) {
 }
 
 extern "C" uint32_t GameEngine_GetGameVersion() {
-    return LUS::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
+    return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
 extern "C" uint8_t* GameEngine_LoadActName(uint32_t actId){
@@ -382,5 +399,5 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
 }
 
 extern "C" int GameEngine_OTRSigCheck(const char* data) {
-    return LUS::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
+    return Ship::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
 }

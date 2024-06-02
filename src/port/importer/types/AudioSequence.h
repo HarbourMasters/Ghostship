@@ -12,11 +12,11 @@ struct AudioSequenceData {
 
 namespace SM64 {
 
-class AudioSequence : public LUS::Resource<AudioSequenceData> {
+class AudioSequence : public Ship::Resource<AudioSequenceData> {
   public:
     using Resource::Resource;
 
-    AudioSequence() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    AudioSequence() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     AudioSequenceData* GetPointer();
     size_t GetPointerSize();

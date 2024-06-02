@@ -12,8 +12,8 @@ extern "C" {
 // Function Table
 #include "menu/intro_geo.h"
 }
-LUS::BinaryReader* GeoLayoutParser::mReader;
-LUS::BinaryReader* GeoLayoutParser::mLoadedReader;
+Ship::BinaryReader* GeoLayoutParser::mReader;
+Ship::BinaryReader* GeoLayoutParser::mLoadedReader;
 
 typedef void (*GeoCommandFunction)();
 #undef cur_geo_cmd_ptr
@@ -73,7 +73,7 @@ void process_cmd_branch_and_link() {
 
     const auto data = static_cast<char*>(ResourceGetDataByCrc(crc));
     const auto size = ResourceGetSizeByCrc(crc);
-    GeoLayoutParser::mReader = new LUS::BinaryReader(data, size);
+    GeoLayoutParser::mReader = new Ship::BinaryReader(data, size);
 
     gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mLoadedReader);
     gGeoLayoutStack[gGeoLayoutStackIndex++] = (gCurGraphNodeIndex << 16) + gGeoLayoutReturnIndex;
@@ -84,7 +84,7 @@ void process_cmd_end() {
     gGeoLayoutStackIndex = gGeoLayoutReturnIndex;
     gGeoLayoutReturnIndex = gGeoLayoutStack[--gGeoLayoutStackIndex] & 0xFFFF;
     gCurGraphNodeIndex = gGeoLayoutStack[gGeoLayoutStackIndex] >> 16;
-    GeoLayoutParser::mReader = reinterpret_cast<LUS::BinaryReader*>(gGeoLayoutStack[--gGeoLayoutStackIndex]);
+    GeoLayoutParser::mReader = reinterpret_cast<Ship::BinaryReader*>(gGeoLayoutStack[--gGeoLayoutStackIndex]);
 }
 
 void process_cmd_branch() {
@@ -96,15 +96,15 @@ void process_cmd_branch() {
 
     if (param == 1) {
         gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mLoadedReader);
-        GeoLayoutParser::mReader = new LUS::BinaryReader(data, size);
+        GeoLayoutParser::mReader = new Ship::BinaryReader(data, size);
     } else {
-        GeoLayoutParser::mLoadedReader = new LUS::BinaryReader(data, size);
+        GeoLayoutParser::mLoadedReader = new Ship::BinaryReader(data, size);
         GeoLayoutParser::mReader = GeoLayoutParser::mLoadedReader;
     }
 }
 
 void process_cmd_return() {
-    GeoLayoutParser::mReader = reinterpret_cast<LUS::BinaryReader*>(gGeoLayoutStack[--gGeoLayoutStackIndex]);
+    GeoLayoutParser::mReader = reinterpret_cast<Ship::BinaryReader*>(gGeoLayoutStack[--gGeoLayoutStackIndex]);
 }
 
 void process_cmd_open_node() {
@@ -233,7 +233,7 @@ void process_cmd_node_camera() {
     Vec3f pos, focus;
 
     const auto type = GeoLayoutParser::mReader->ReadUInt16();
-    
+
     ReadVec3f(pos);
     ReadVec3f(focus);
 
@@ -515,7 +515,7 @@ void GeoLayoutParser::execute(const char* path) {
     const auto data = static_cast<char*>(ResourceGetDataByName(path));
     const auto size = ResourceGetSizeByName(path);
 
-    mLoadedReader = new LUS::BinaryReader(data, size);
+    mLoadedReader = new Ship::BinaryReader(data, size);
     mReader = mLoadedReader;
 
     while (mReader != nullptr) {

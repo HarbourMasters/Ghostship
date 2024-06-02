@@ -2,13 +2,13 @@
 #include "port/importer/types/Animation.h"
 #include "spdlog/spdlog.h"
 
-std::shared_ptr<LUS::IResource> SM64::AnimationFactoryV0::ReadResource(std::shared_ptr<LUS::File> file) {
+std::shared_ptr<Ship::IResource> SM64::AnimationFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
     if (!FileHasValidFormatAndReader(file)) {
         return nullptr;
     }
 
     std::shared_ptr<Animation> animation = std::make_shared<Animation>(file->InitData);
-    auto reader = std::get<std::shared_ptr<LUS::BinaryReader>>(file->Reader);
+    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     animation->mData.flags = reader->ReadInt16();
     animation->mData.animYTransDivisor = reader->ReadInt16();
