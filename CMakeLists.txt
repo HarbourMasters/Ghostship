@@ -38,13 +38,28 @@ if(NOT CMAKE_BUILD_TYPE )
 endif()
 
 vcpkg_bootstrap()
-vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libzip libpng getopt dirent libusb pthread glew glfw3)
+vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libzip libpng getopt dirent libusb pthread glew glfw3 nlohmann-json tinyxml2 spdlog)
 endif()
 
 if (MSVC)
 set(CPP "${CMAKE_C_COMPILER}" "/EP")
 else()
 set(CPP "${CMAKE_C_COMPILER}" "-E" "-P" "-Wno-trigraphs" "-x" "c")
+endif()
+
+################################################################################
+# Set target arch type if empty. Visual studio solution generator provides it.
+################################################################################
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    if(NOT CMAKE_VS_PLATFORM_NAME)
+        set(CMAKE_VS_PLATFORM_NAME "x64")
+    endif()
+    message("${CMAKE_VS_PLATFORM_NAME} architecture in use")
+
+    if(NOT ("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64"
+        OR "${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32"))
+        message(FATAL_ERROR "${CMAKE_VS_PLATFORM_NAME} arch is not supported!")
+    endif()
 endif()
 
 # Set game compilation version
