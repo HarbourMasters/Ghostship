@@ -125,4 +125,25 @@
 #define G_RM_CUSTOM_AA_ZB_XLU_SURF	RM_CUSTOM_AA_ZB_XLU_SURF(1)
 #define G_RM_CUSTOM_AA_ZB_XLU_SURF2	RM_CUSTOM_AA_ZB_XLU_SURF(2)
 
+#define gSP2Triangles(pkt, v00, v01, v02, flag0, v10, v11, v12, flag1)	\
+{									\
+	gSP1Triangle(pkt, v00, v01, v02, flag0);			\
+	gSP1Triangle(pkt, v10, v11, v12, flag1);			\
+}
+#define gsSP2Triangles(v00, v01, v02, flag0, v10, v11, v12, flag1)	\
+	gsSP1Triangle(v00, v01, v02, flag0),				\
+	gsSP1Triangle(v10, v11, v12, flag1)
+
+/*
+ * gsSPGeometryMode
+ * In Fast3DEX2 it is better to use this, as the RSP geometry mode
+ * is able to be set and cleared in a single command.
+ */
+#define gsSPGeometryMode(c, s)						\
+	gsSPClearGeometryMode(c),					\
+	gsSPSetGeometryMode(s)
+#define gsSPGeometryModeSetFirst(c, s)					\
+	gsSPSetGeometryMode(s),						\
+	gsSPClearGeometryMode(c)
+
 #endif // MACROS_H
