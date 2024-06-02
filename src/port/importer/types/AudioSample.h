@@ -30,11 +30,11 @@ struct AudioBankSample {
 namespace SM64 {
 
 
-class AudioSample : public LUS::Resource<AudioBankSample> {
+class AudioSample : public Ship::Resource<AudioBankSample> {
   public:
     using Resource::Resource;
 
-    AudioSample() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    AudioSample() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     AudioBankSample* GetPointer();
     size_t GetPointerSize();

@@ -84,9 +84,9 @@ const std::vector<FlagTable> flagTables = {
     } },
 };
 
-class SaveEditorWindow : public LUS::GuiWindow {
+class SaveEditorWindow : public Ship::GuiWindow {
   public:
-    using LUS::GuiWindow::GuiWindow;
+    using Ship::GuiWindow::GuiWindow;
 
     void InitElement() override;
     void DrawElement() override;

@@ -2,7 +2,7 @@
 #include "UIWidgets.h"
 
 #include <string>
-#include <ImGui/imgui.h>
+#include <imgui.h>
 #include <libultraship/libultraship.h>
 
 extern "C" {

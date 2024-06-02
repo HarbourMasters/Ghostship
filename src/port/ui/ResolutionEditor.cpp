@@ -1,7 +1,7 @@
 #include "ResolutionEditor.h"
 #include "UIWidgets.h"
 
-#include <ImGui/imgui.h>
+#include <imgui.h>
 #include <libultraship/libultraship.h>
 #include <graphic/Fast3D/gfx_pc.h>
 
@@ -39,7 +39,7 @@ namespace AdvancedResolutionSettings {
     const int pixelCountPresets[] = { 480, 240, 480, 720, 960, 1200, 1440, 1080, 2160, 480 };
     const int default_pixelCount = 0; // Default combo list option
 
-    const uint32_t minVerticalPixelCount = 240; // see: LUS::AdvancedResolution()
+    const uint32_t minVerticalPixelCount = 240; // see: Ship::AdvancedResolution()
     const uint32_t maxVerticalPixelCount = 4320;
 
     const unsigned short default_maxIntegerScaleFactor = 6; // Default size of Integer scale factor slider.
@@ -103,7 +103,7 @@ namespace AdvancedResolutionSettings {
                                                   (CVarGetInteger("gAdvancedResolution.VerticalResolutionToggle", 0) &&
                                                    CVarGetInteger("gAdvancedResolution.Enabled", 0)) ||
                                                   CVarGetInteger("gLowResMode", 0))) {
-                LUS::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
+                Ship::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
             }
             UIWidgets::Tooltip("Multiplies your output resolution by the value entered, as a more intensive but effective "
                                "form of anti-aliasing"); // Description pulled from SohMenuBar.cpp

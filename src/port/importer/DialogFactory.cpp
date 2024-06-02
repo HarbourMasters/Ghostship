@@ -2,13 +2,13 @@
 #include "port/importer/types/Dialog.h"
 #include "spdlog/spdlog.h"
 
-std::shared_ptr<LUS::IResource> SM64::DialogFactoryV0::ReadResource(std::shared_ptr<LUS::File> file) {
+std::shared_ptr<Ship::IResource> SM64::DialogFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
     if (!FileHasValidFormatAndReader(file)) {
         return nullptr;
     }
 
     std::shared_ptr<Dialog> dialog = std::make_shared<Dialog>(file->InitData);
-    auto reader = std::get<std::shared_ptr<LUS::BinaryReader>>(file->Reader);
+    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     dialog->mData.unused = reader->ReadUInt32();
     dialog->mData.linesPerBox = reader->ReadInt8();

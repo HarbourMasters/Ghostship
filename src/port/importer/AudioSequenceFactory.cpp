@@ -4,13 +4,13 @@
 #include "port/Engine.h"
 #include "port/importer/types/AudioBank.h"
 
-std::shared_ptr<LUS::IResource> SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<LUS::File> file) {
+std::shared_ptr<Ship::IResource> SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
     if (!FileHasValidFormatAndReader(file)) {
         return nullptr;
     }
 
     std::shared_ptr<AudioSequence> bank = std::make_shared<AudioSequence>(file->InitData);
-    auto reader = std::get<std::shared_ptr<LUS::BinaryReader>>(file->Reader);
+    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     uint8_t id = reader->ReadUInt32();
     size_t bankCount = reader->ReadUInt32();

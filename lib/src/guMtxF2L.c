@@ -65,6 +65,6 @@ void guMtxIdent(Mtx *m) {
     guMtxIdentF(mf);
     guMtxF2L(mf, m);
 #else
-    guMtxIdentF(m->m);
+    guMtxIdentF(m->mf);
 #endif
 }

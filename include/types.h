@@ -5,9 +5,9 @@
 // have an appropriate header.
 
 #include <libultraship.h>
+#include <libultra/gbi.h>
 #include "macros.h"
 #include "config.h"
-
 
 // Certain functions are marked as having return values, but do not
 // actually return a value. This causes undefined behavior, which we'd rather
