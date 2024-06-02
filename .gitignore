@@ -87,3 +87,4 @@ code/
 # Torch hash
 torch.hash.yml
 merge/
+.vs/

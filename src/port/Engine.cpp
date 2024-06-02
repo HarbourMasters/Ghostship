@@ -13,7 +13,10 @@
 #include "port/Enhancements/mods.h"
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
+
+#ifdef USE_NETWORKING
 #include <SDL2/SDL_net.h>
+#endif
 
 #include <utility>
 
