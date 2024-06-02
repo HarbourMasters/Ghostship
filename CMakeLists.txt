@@ -500,7 +500,7 @@ add_custom_target(
     DEPENDS Torch
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${TORCH_EXECUTABLE} otr baserom.us.z64
-    # COMMAND ${TORCH_EXECUTABLE} pack assets sm64.otr
+    COMMAND ${TORCH_EXECUTABLE} pack assets sm64.otr
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/smcube.otr" "${CMAKE_BINARY_DIR}/smcube.otr"
-    # COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/sm64.otr" "${CMAKE_BINARY_DIR}/sm64.otr"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/sm64.otr" "${CMAKE_BINARY_DIR}/sm64.otr"
 )
