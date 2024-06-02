@@ -487,3 +487,20 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
       )
   endif()
 endif()
+
+include(ExternalProject)
+ExternalProject_Add(Torch
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/Torch
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/Torch
+)
+ExternalProject_Get_Property(Torch install_dir)
+set(TORCH_EXECUTABLE ${install_dir}/src/Torch-build/torch)
+add_custom_target(
+    ExtractAssets
+    DEPENDS Torch
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${TORCH_EXECUTABLE} otr baserom.us.z64
+    # COMMAND ${TORCH_EXECUTABLE} pack assets sm64.otr
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/smcube.otr" "${CMAKE_BINARY_DIR}/smcube.otr"
+    # COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/sm64.otr" "${CMAKE_BINARY_DIR}/sm64.otr"
+)
