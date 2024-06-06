@@ -5,12 +5,18 @@
   segments:
     - [0x06,  0x1D6660]
 
+boo_castle_seg6_lights_06015658:
+  type: LIGHTS
+  size: 24
+  offset: 0x15658
+  symbol: boo_castle_seg6_lights_06015658
+
 bbh_boo_eyes:
   type: TEXTURE
   size: 4096
   width: 64
   height: 32
-  offset: 0x9B40
+  offset: 0x15670
   format: RGBA16
   symbol: boo_castle_seg6_texture_06015670
 
@@ -19,15 +25,9 @@ bbh_boo_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0xAB40
+  offset: 0x16670
   format: RGBA16
   symbol: boo_castle_seg6_texture_06016670
-
-boo_castle_seg6_lights_06015658:
-  type: LIGHTS
-  size: 24
-  offset: 0x15658
-  symbol: boo_castle_seg6_lights_06015658
 
 boo_castle_seg6_vertex_06016E70:
   type: VTX
