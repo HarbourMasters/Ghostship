@@ -61,6 +61,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
                                                  {0xFF2B5A63, 0xE3DAA4E}, 3);
 
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+
     wnd->SetTargetFps(60);
     wnd->SetMaximumFrameLatency(1);
     wnd->SetRendererUCode(ucode_f3d);
@@ -88,6 +89,7 @@ void GameEngine::Create(){
     GameUI::SetupGuiElements();
     instance->AudioInit();
     instance->LoadDictionary();
+    instance->LoadPlayerAnims();
 }
 
 void GameEngine::Destroy(){
@@ -180,6 +182,10 @@ void GameEngine::AudioInit() {
     const auto banksFiles = resourceMgr->GetArchiveManager()->ListFiles("sound/banks/*");
     const auto sequences_files = resourceMgr->GetArchiveManager()->ListFiles("sound/sequences/*");
 
+    Instance->sequenceTable.resize(512);
+    Instance->audioSequenceTable.resize(512);
+    Instance->banksTable.resize(512);
+
     for(auto& bank : *banksFiles){
         auto path = "__OTR__" + bank;
         const auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(path.c_str()));
@@ -189,7 +195,7 @@ void GameEngine::AudioInit() {
     for( auto& sequence : *sequences_files){
         auto path = "__OTR__" + sequence;
         auto seq = static_cast<AudioSequenceData *>(ResourceGetDataByName(path.c_str()));
-        this->sequencesMapTable[seq->id] = path;
+        Instance->sequenceTable[seq->id] = path;
     }
 
     if (!audio.running) {
@@ -213,10 +219,21 @@ void GameEngine::LoadDictionary() {
     this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>> *>(ResourceGetDataByName("__OTR__texts/strings/global"));
 }
 
+void GameEngine::LoadPlayerAnims() {
+    auto resourceMgr = Ship::Context::GetInstance()->GetResourceManager();
+    auto archiveMgr = resourceMgr->GetArchiveManager();
+    auto anims = archiveMgr->ListFiles("assets/anims/*");
+    this->animationsTable.resize(anims->size());
+
+    for(auto& anim : *anims){
+        const auto id = std::stoi(anim.substr(anim.find('_') + 1, anim.length()), nullptr, 16);
+        this->animationsTable[id] = static_cast<Animation *>(ResourceGetDataByName(anim.c_str()));
+    }
+}
+
 uint8_t GameEngine::GetBankIdByName(const std::string& name) {
-    auto engine = GameEngine::Instance;
-    if(engine->bankMapTable.contains(name)){
-        return engine->bankMapTable[name];
+    if(Instance->bankMapTable.contains(name)){
+        return Instance->bankMapTable[name];
     }
     return 0;
 }
@@ -267,7 +284,7 @@ void GameEngine::ProcessGfxCommands(F3DGfx* commands) {
     while (time + original_fps <= next_original_frame) {
         time += original_fps;
         if (time != next_original_frame) {
-            gInterpolationStep = (float)time / next_original_frame;
+            gInterpolationStep = static_cast<float>(time) / next_original_frame;
         }
         RunCommands(commands);
         PatchInterpolations();
@@ -310,83 +327,81 @@ extern "C" float GameEngine_GetAspectRatio() {
     return gfx_current_dimensions.aspect_ratio;
 }
 
-extern "C" CtlEntry* GameEngine_LoadBank(uint8_t bankId) {
-    auto engine = GameEngine::Instance;
+extern "C" CtlEntry* GameEngine_LoadBank(const uint8_t bankId) {
+    const auto engine = GameEngine::Instance;
+
     if(bankId >= engine->bankMapTable.size()){
         return nullptr;
     }
-    if(engine->banks.contains(bankId)){
-        return engine->banks[bankId];
+
+    if(engine->banksTable[bankId] != nullptr){
+        return engine->banksTable[bankId];
     }
+
     for(auto& bank : engine->bankMapTable){
         if(bank.second == bankId){
             const auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(("__OTR__" + bank.first).c_str()));
-            engine->banks[bankId] = ctl;
+            engine->banksTable[bankId] = ctl;
             return ctl;
         }
     }
     return nullptr;
 }
 
-extern "C" uint8_t GameEngine_IsBankLoaded(uint8_t bankId) {
-    auto engine = GameEngine::Instance;
+extern "C" uint8_t GameEngine_IsBankLoaded(const uint8_t bankId) {
+    const auto engine = GameEngine::Instance;
     GameEngine_LoadBank(bankId);
-    return engine->banks.contains(bankId);
+    return engine->banksTable[bankId] != nullptr;
 }
 
-extern "C" void GameEngine_UnloadBank(uint8_t bankId) {
-    auto engine = GameEngine::Instance;
-    if(engine->banks.contains(bankId)){
-        engine->banks.erase(bankId);
-    }
+extern "C" void GameEngine_UnloadBank(const uint8_t bankId) {
+    const auto engine = GameEngine::Instance;
+    engine->banksTable[bankId] = nullptr;
 }
 
-extern "C" AudioSequenceData* GameEngine_LoadSequence(uint8_t seqId) {
+extern "C" AudioSequenceData* GameEngine_LoadSequence(const uint8_t seqId) {
     auto engine = GameEngine::Instance;
-    if(!engine->sequencesMapTable.contains(seqId)){
+
+    if(engine->sequenceTable[seqId].empty()){
         return nullptr;
     }
 
-    if(engine->sequences.contains(seqId)){
-        return engine->sequences[seqId];
+    if(engine->audioSequenceTable[seqId] != nullptr){
+        return engine->audioSequenceTable[seqId];
     }
 
-    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(engine->sequencesMapTable[seqId].c_str()));
-    engine->sequences[seqId] = sequences;
+    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(engine->sequenceTable[seqId].c_str()));
+    engine->audioSequenceTable[seqId] = sequences;
     return sequences;
 }
 
 extern "C" uint32_t GameEngine_GetSequenceCount(){
     auto engine = GameEngine::Instance;
-    return engine->sequencesMapTable.size();
+    return engine->sequenceTable.size();
 }
 
-extern "C" uint8_t GameEngine_IsSequenceLoaded(uint8_t seqId) {
-    const auto engine = GameEngine::Instance;
-    GameEngine_LoadSequence(seqId);
-    return engine->sequences.contains(seqId);
+extern "C" uint8_t GameEngine_IsSequenceLoaded(const uint8_t seqId) {
+    return GameEngine_LoadSequence(seqId) != nullptr;
 }
 
-extern "C" void GameEngine_UnloadSequence(uint8_t seqId) {
+extern "C" void GameEngine_UnloadSequence(const uint8_t seqId) {
     const auto engine = GameEngine::Instance;
-    if(engine->sequences.contains(seqId)){
-        engine->sequences.erase(seqId);
-    }
+    engine->audioSequenceTable[seqId] = nullptr;
 }
 
 extern "C" uint32_t GameEngine_GetGameVersion() {
     return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
-extern "C" uint8_t* GameEngine_LoadActName(uint32_t actId){
+extern "C" uint8_t* GameEngine_LoadActName(const uint32_t actId){
     return static_cast<uint8_t *>(ResourceGetDataByName(StringHelper::Sprintf(gActRoot, actId).c_str()));
 }
 
-extern "C" uint8_t* GameEngine_LoadLevelName(uint32_t courseId){
+extern "C" uint8_t* GameEngine_LoadLevelName(const uint32_t courseId){
     return static_cast<uint8_t *>(ResourceGetDataByName(StringHelper::Sprintf(gCourseRoot, courseId).c_str()));
 }
 
-extern "C" DialogEntry* GameEngine_LoadDialog(uint32_t dialogId){
+extern "C" DialogEntry* GameEngine_LoadDialog(const uint32_t dialogId){
     auto dialog = static_cast<DialogEntry *>(ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str()));
     return dialog;
 }
@@ -403,4 +418,12 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
 
 extern "C" int GameEngine_OTRSigCheck(const char* data) {
     return Ship::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
+}
+
+extern "C" Animation* GameEngine_LoadAnimation(const uint32_t animId) {
+    auto engine = GameEngine::Instance;
+    if(animId >= engine->animationsTable.size()){
+        return nullptr;
+    }
+    return engine->animationsTable[animId];
 }

@@ -33,7 +33,6 @@
 #include "save_file.h"
 #include "sound_init.h"
 #include "rumble_init.h"
-#include "animation_table.h"
 
 #include "port/Enhancements/game-interactor/GameInteractor_Hooks.h"
 
@@ -68,10 +67,7 @@ s32 is_anim_past_end(struct MarioState *m) {
 s16 set_mario_animation(struct MarioState *m, s32 targetAnimID) {
     struct Object *o = m->marioObj;
 
-    char gAnimationData[sizeof(gAnimationRoot) / sizeof(gAnimationRoot[0]) + 1];
-    sprintf(gAnimationData, gAnimationRoot, targetAnimID);
-
-    struct Animation *targetAnim = ResourceGetDataByName(gAnimationData);
+    struct Animation *targetAnim = GameEngine_LoadAnimation(targetAnimID);
 
     if (o->header.gfx.animInfo.animID != targetAnimID) {
         o->header.gfx.animInfo.animID = targetAnimID;
@@ -99,10 +95,7 @@ s16 set_mario_animation(struct MarioState *m, s32 targetAnimID) {
  */
 s16 set_mario_anim_with_accel(struct MarioState *m, s32 targetAnimID, s32 accel) {
     struct Object *o = m->marioObj;
-    char gAnimationData[sizeof(gAnimationRoot) / sizeof(gAnimationRoot[0]) + 1];
-    sprintf(gAnimationData, gAnimationRoot, targetAnimID);
-
-    struct Animation *targetAnim = ResourceGetDataByName(gAnimationData);
+    struct Animation *targetAnim = GameEngine_LoadAnimation(targetAnimID);
 
     if (o->header.gfx.animInfo.animID != targetAnimID) {
         o->header.gfx.animInfo.animID = targetAnimID;

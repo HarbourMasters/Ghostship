@@ -11,6 +11,7 @@
 #define NUM_AUDIO_CHANNELS 2
 #define SAMPLES_PER_FRAME (SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 2)
 
+struct Animation;
 struct CtlEntry;
 struct AudioBankSample;
 struct AudioSequenceData;
@@ -20,10 +21,13 @@ class GameEngine {
     static GameEngine* Instance;
 
     std::shared_ptr<Ship::Context> context;
-    std::unordered_map<uint8_t, CtlEntry*> banks;
-    std::unordered_map<uint8_t, AudioSequenceData*> sequences;
+    std::vector<Animation*> animationsTable;
+
+    std::vector<CtlEntry*> banksTable;
+    std::vector<std::string> sequenceTable;
+    std::vector<AudioSequenceData*> audioSequenceTable;
+
     std::unordered_map<std::string, uint8_t> bankMapTable;
-    std::unordered_map<uint8_t, std::string> sequencesMapTable;
     std::unordered_map<std::string, std::vector<uint8_t>>* dictionary;
 
     GameEngine();
@@ -40,7 +44,10 @@ class GameEngine {
     static void ProcessGfxCommands(F3DGfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();
-    uint32_t GetGameVersion();
+
+    void LoadPlayerAnims();
+
+    static uint32_t GetGameVersion();
 
     static void Destroy();
 };
@@ -63,4 +70,5 @@ uint8_t* GameEngine_LoadLevelName(uint32_t levelId);
 struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 uint8_t* GameEngine_LoadTranslation(const char* key);
 int GameEngine_OTRSigCheck(char* imgData);
+struct Animation* GameEngine_LoadAnimation(uint32_t animId);
 #endif
