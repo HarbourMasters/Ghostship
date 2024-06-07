@@ -1,0 +1,31 @@
+:config:
+  external_files:
+    - "assets/ymls/us/levels/ddd.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x495A60]
+
+ddd_geo_000450:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000450
+  symbol: ddd_geo_000450
+
+ddd_geo_000478:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000478
+  symbol: ddd_geo_000478
+
+ddd_geo_0004A0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0004A0
+  symbol: ddd_geo_0004A0
+
+ddd_geo_0004C0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0004C0
+  symbol: ddd_geo_0004C0
+
+ddd_geo_000570:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000570
+  symbol: ddd_geo_000570

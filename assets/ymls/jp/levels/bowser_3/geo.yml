@@ -1,0 +1,66 @@
+:config:
+  external_files:
+    - "assets/ymls/us/levels/bowser_3.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x4D14F0]
+
+bowser_3_geo_000290:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000290
+  symbol: bowser_3_geo_000290
+
+bowser_3_geo_0002A8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0002A8
+  symbol: bowser_3_geo_0002A8
+
+bowser_3_geo_0002C0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0002C0
+  symbol: bowser_3_geo_0002C0
+
+bowser_3_geo_0002D8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0002D8
+  symbol: bowser_3_geo_0002D8
+
+bowser_3_geo_0002F0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0002F0
+  symbol: bowser_3_geo_0002F0
+
+bowser_3_geo_000308:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000308
+  symbol: bowser_3_geo_000308
+
+bowser_3_geo_000320:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000320
+  symbol: bowser_3_geo_000320
+
+bowser_3_geo_000338:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000338
+  symbol: bowser_3_geo_000338
+
+bowser_3_geo_000350:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000350
+  symbol: bowser_3_geo_000350
+
+bowser_3_geo_000368:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000368
+  symbol: bowser_3_geo_000368
+
+bowser_3_geo_000380:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000380
+  symbol: bowser_3_geo_000380
+
+bowser_3_geo_000398:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000398
+  symbol: bowser_3_geo_000398

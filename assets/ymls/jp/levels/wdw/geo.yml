@@ -1,0 +1,51 @@
+:config:
+  external_files:
+    - "assets/ymls/us/levels/wdw.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x419F90]
+
+wdw_geo_000580:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000580
+  symbol: wdw_geo_000580
+
+wdw_geo_000598:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000598
+  symbol: wdw_geo_000598
+
+wdw_geo_0005C0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0005C0
+  symbol: wdw_geo_0005C0
+
+wdw_geo_0005E8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0005E8
+  symbol: wdw_geo_0005E8
+
+wdw_geo_000610:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000610
+  symbol: wdw_geo_000610
+
+wdw_geo_000628:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000628
+  symbol: wdw_geo_000628
+
+wdw_geo_000640:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000640
+  symbol: wdw_geo_000640
+
+wdw_geo_000658:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000658
+  symbol: wdw_geo_000658
+
+wdw_geo_000724:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000724
+  symbol: wdw_geo_000724
