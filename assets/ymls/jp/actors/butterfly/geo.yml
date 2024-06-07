@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/butterfly.yml"
+    - "assets/ymls/jp/actors/butterfly.yml"
   autopads: false
   segments:
     - [0x16,  0x218DA0]

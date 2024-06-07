@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/water_splash.yml"
+    - "assets/ymls/jp/actors/water_splash.yml"
   autopads: false
   segments:
     - [0x17,  0x1279B0]

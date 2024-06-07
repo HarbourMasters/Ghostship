@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/yellow_sphere_small.yml"
+    - "assets/ymls/jp/actors/yellow_sphere_small.yml"
   autopads: false
   segments:
     - [0x0C,  0x132850]

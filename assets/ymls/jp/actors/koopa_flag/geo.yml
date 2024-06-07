@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/koopa_flag.yml"
+    - "assets/ymls/jp/actors/koopa_flag.yml"
   autopads: false
   segments:
     - [0x0D,  0x1D7C90]

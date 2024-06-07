@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/chillychief.yml"
+    - "assets/ymls/jp/actors/chillychief.yml"
   autopads: false
   compression:
     offset: 0x1E51F0

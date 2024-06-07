@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/bowser_flame.yml"
+    - "assets/ymls/jp/actors/bowser_flame.yml"
   autopads: false
   segments:
     - [0x0D,  0x1B9070]

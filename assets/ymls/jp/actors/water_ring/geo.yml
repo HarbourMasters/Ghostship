@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/water_ring.yml"
+    - "assets/ymls/jp/actors/water_ring.yml"
   autopads: false
   segments:
     - [0x0D,  0x1C3DB0]

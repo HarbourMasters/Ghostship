@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/scuttlebug.yml"
+    - "assets/ymls/jp/actors/scuttlebug.yml"
   autopads: false
   segments:
     - [0x0D,  0x1F1B30]

@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/blue_fish.yml"
+    - "assets/ymls/jp/actors/blue_fish.yml"
   autopads: false
   segments:
     - [0x16,  0x218DA0]

@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/skeeter.yml"
+    - "assets/ymls/jp/actors/skeeter.yml"
   autopads: false
   segments:
     - [0x0D,  0x1C3DB0]

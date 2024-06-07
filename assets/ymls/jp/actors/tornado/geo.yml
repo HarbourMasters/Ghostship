@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/tornado.yml"
+    - "assets/ymls/jp/actors/tornado.yml"
   autopads: false
   compression:
     offset: 0x145E90

@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/swoop.yml"
+    - "assets/ymls/jp/actors/swoop.yml"
   autopads: false
   segments:
     - [0x0D,  0x1F1B30]
