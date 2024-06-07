@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/warp_pipe.yml"
+  autopads: false
+  segments:
+    - [0x16,  0x2170D0]
+
+warp_pipe_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000388
+  symbol: warp_pipe_geo

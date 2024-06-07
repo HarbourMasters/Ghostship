@@ -1,0 +1,21 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/flame.yml"
+  autopads: false
+  segments:
+    - [0x16,  0x2170D0]
+
+red_flame_shadow_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000B10
+  symbol: red_flame_shadow_geo
+
+red_flame_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000B2C
+  symbol: red_flame_geo
+
+blue_flame_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000B8C
+  symbol: blue_flame_geo

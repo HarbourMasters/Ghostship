@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/lakitu_cameraman.yml"
+  autopads: false
+  segments:
+    - [0x0D,  0x1E2F20]
+
+lakitu_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD000000
+  symbol: lakitu_geo

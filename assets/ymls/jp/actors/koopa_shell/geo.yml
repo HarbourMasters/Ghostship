@@ -1,0 +1,21 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/koopa_shell.yml"
+  autopads: false
+  segments:
+    - [0x0F,  0x1FEC00]
+
+koopa_shell_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF000AB0
+  symbol: koopa_shell_geo
+
+koopa_shell2_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF000ADC
+  symbol: koopa_shell2_geo
+
+koopa_shell3_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF000B08
+  symbol: koopa_shell3_geo

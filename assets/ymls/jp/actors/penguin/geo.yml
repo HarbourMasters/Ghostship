@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/penguin.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x163AE0]
+
+penguin_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000104
+  symbol: penguin_geo

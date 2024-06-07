@@ -1,0 +1,16 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/pokey.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x14FF70]
+
+pokey_head_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000610
+  symbol: pokey_head_geo
+
+pokey_body_part_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000644
+  symbol: pokey_body_part_geo

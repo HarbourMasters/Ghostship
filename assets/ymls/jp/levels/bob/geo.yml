@@ -1,0 +1,26 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/levels/bob.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x403AC0]
+
+bob_geo_000440:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000440
+  symbol: bob_geo_000440
+
+bob_geo_000458:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000458
+  symbol: bob_geo_000458
+
+bob_geo_000470:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000470
+  symbol: bob_geo_000470
+
+bob_geo_000488:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000488
+  symbol: bob_geo_000488

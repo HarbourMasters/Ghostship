@@ -1,0 +1,21 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/eyerok.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x14FF70]
+
+eyerok_geo_0002AC:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC0002AC
+  symbol: eyerok_geo_0002AC
+
+eyerok_left_hand_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC0005A8
+  symbol: eyerok_left_hand_geo
+
+eyerok_right_hand_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC0005E4
+  symbol: eyerok_right_hand_geo

@@ -1,0 +1,16 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/bobomb.yml"
+  autopads: false
+  segments:
+    - [0x0F,  0x1FEC00]
+
+bowling_ball_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF000640
+  symbol: bowling_ball_geo
+
+bowling_ball_track_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF00066C
+  symbol: bowling_ball_track_geo

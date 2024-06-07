@@ -1,0 +1,31 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/bowser.yml"
+  autopads: false
+  segments:
+    - [0x0D,  0x1B7400]
+
+bowser_geo_0000D8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD0000D8
+  symbol: bowser_geo_0000D8
+
+bowser_geo_000424:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD000424
+  symbol: bowser_geo_000424
+
+bowser_geo_000770:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD000770
+  symbol: bowser_geo_000770
+
+bowser_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD000AB8
+  symbol: bowser_geo
+
+bowser_geo_no_shadow:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD000B18
+  symbol: bowser_geo_no_shadow

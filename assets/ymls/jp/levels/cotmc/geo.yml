@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/levels/cotmc.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x4BC980]
+
+cotmc_geo_0001A0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0001A0
+  symbol: cotmc_geo_0001A0
