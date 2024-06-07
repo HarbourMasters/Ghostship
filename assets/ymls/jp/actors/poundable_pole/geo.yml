@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/poundable_pole.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1D7C90]
+    - [0x0D,  0x1D5FE0]
 
 wooden_post_geo:
   type: SM64:GEO_LAYOUT

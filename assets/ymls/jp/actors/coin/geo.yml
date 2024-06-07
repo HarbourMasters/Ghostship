@@ -1,7 +1,7 @@
 :config:
   autopads: false
   segments:
-    - [0x16,  0x218DA0]
+    - [0x16,  0x2170D0]
 
 yellow_coin_geo:
   type: SM64:GEO_LAYOUT

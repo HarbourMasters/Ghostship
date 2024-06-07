@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/bobomb.yml"
   autopads: false
   segments:
-    - [0x0F,  0x2008D0]
+    - [0x0F,  0x1FEC00]
 
 black_bobomb_geo:
   type: SM64:GEO_LAYOUT

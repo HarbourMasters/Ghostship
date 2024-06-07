@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/dorrie.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1F1B30]
+    - [0x0D,  0x1EFE60]
 
 dorrie_geo:
   type: SM64:GEO_LAYOUT

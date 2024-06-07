@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/moneybag.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1E7D90]
+    - [0x0D,  0x1E60C0]
 
 moneybag_geo_000000:
   type: SM64:GEO_LAYOUT

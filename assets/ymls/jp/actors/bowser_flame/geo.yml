@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/bowser_flame.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1B9070]
+    - [0x0D,  0x1B7400]
 
 bowser_flames_geo:
   type: SM64:GEO_LAYOUT

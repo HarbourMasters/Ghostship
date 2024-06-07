@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/water_bubble.yml"
   autopads: false
   segments:
-    - [0x0C,  0x13B5D0]
+    - [0x0C,  0x1399D0]
 
 water_bomb_geo:
   type: SM64:GEO_LAYOUT

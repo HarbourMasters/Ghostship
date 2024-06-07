@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/spiny_egg.yml"
   autopads: false
   segments:
-    - [0x0C,  0x187FA0]
+    - [0x0C,  0x186370]
 
 spiny_ball_geo:
   type: SM64:GEO_LAYOUT

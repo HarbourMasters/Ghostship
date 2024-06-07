@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/walk_smoke.yml"
   autopads: false
   segments:
-    - [0x17,  0x1279B0]
+    - [0x17,  0x125DB0]
 
 smoke_geo:
   type: SM64:GEO_LAYOUT

@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/capswitch.yml"
   autopads: false
   segments:
-    - [0x0C,  0x166BD0]
+    - [0x0C,  0x16B9C0]
 
 cap_switch_geo:
   type: SM64:GEO_LAYOUT

@@ -4,7 +4,7 @@
     - "assets/ymls/jp/actors/mario_cap.yml"
   autopads: false
   segments:
-    - [0x0C,  0x1656E0]
+    - [0x0C,  0x163AE0]
 
 mr_blizzard_hidden_geo:
   type: SM64:GEO_LAYOUT

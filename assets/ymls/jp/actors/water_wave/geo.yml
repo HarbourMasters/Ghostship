@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/water_wave.yml"
   autopads: false
   segments:
-    - [0x17,  0x1279B0]
+    - [0x17,  0x125DB0]
 
 idle_water_wave_geo:
   type: SM64:GEO_LAYOUT

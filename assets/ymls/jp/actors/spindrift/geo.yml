@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/spindrift.yml"
   autopads: false
   segments:
-    - [0x0C,  0x1656E0]
+    - [0x0C,  0x163AE0]
 
 spindrift_geo:
   type: SM64:GEO_LAYOUT

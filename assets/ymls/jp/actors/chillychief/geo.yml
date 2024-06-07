@@ -3,9 +3,9 @@
     - "assets/ymls/jp/actors/chillychief.yml"
   autopads: false
   compression:
-    offset: 0x1E51F0
+    offset: 0x1E3520
   segments:
-    - [0x06,  0x1E51F0]
+    - [0x06,  0x1E3520]
 
 chilly_chief_geo:
   type: SM64:GEO_LAYOUT

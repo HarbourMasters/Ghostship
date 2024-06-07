@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/boo.yml"
   autopads: false
   segments:
-    - [0x0C,  0x16D5C0]
+    - [0x0C,  0x165060]
 
 boo_geo:
   type: SM64:GEO_LAYOUT

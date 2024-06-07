@@ -3,9 +3,9 @@
     - "assets/ymls/jp/actors/tornado.yml"
   autopads: false
   compression:
-    offset: 0x145E90
+    offset: 0x144290
   segments:
-    - [0x05,  0x145E90]
+    - [0x05,  0x144290]
 
 tweester_geo:
   type: SM64:GEO_LAYOUT
