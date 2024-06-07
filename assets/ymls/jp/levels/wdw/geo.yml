@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/wdw.yml"
   autopads: false
   segments:
-    - [0x0E,  0x419F90]
+    - [0x0E,  0x417FF0]
 
 wdw_geo_000580:
   type: SM64:GEO_LAYOUT

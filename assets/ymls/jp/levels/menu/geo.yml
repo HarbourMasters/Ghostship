@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/menu.yml"
   autopads: false
   segments:
-    - [0x14,  0x2A6120]
+    - [0x14,  0x2A42A0]
 
 # TODO: menu
 

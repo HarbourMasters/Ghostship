@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/jrb.yml"
   autopads: false
   segments:
-    - [0x0E,  0x423B20]
+    - [0x0E,  0x421B80]
 
 jrb_geo_000900:
   type: SM64:GEO_LAYOUT

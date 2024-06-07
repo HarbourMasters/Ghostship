@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/pss.yml"
   autopads: false
   segments:
-    - [0x0E,  0x4B7F10]
+    - [0x0E,  0x4B5EB0]
 
 pss_geo_000100:
   type: SM64:GEO_LAYOUT

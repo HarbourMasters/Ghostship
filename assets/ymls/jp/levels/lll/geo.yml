@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/lll.yml"
   autopads: false
   segments:
-    - [0x0E,  0x48C9B0]
+    - [0x0E,  0x48A950]
 
 lll_geo_0009E0:
   type: SM64:GEO_LAYOUT

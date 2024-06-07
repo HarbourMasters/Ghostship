@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/castle_inside.yml"
   autopads: false
   segments:
-    - [0x0E,  0x3CF0D0]
+    - [0x0E,  0x3CD140]
 
 castle_geo_000F00:
   type: SM64:GEO_LAYOUT

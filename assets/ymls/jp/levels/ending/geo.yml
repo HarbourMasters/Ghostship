@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/ending.yml"
   autopads: false
   segments:
-    - [0x0E,  0x4AC4B0]
+    - [0x0E,  0x4AA450]
 
 ending_geo_000050:
   type: SM64:GEO_LAYOUT

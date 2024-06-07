@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/wmotr.yml"
   autopads: false
   segments:
-    - [0x0E,  0x4CD930]
+    - [0x0E,  0x4CB8D0]
 
 wmotr_geo_0001F0:
   type: SM64:GEO_LAYOUT

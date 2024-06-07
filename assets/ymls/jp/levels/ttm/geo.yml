@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/ttm.yml"
   autopads: false
   segments:
-    - [0x0E,  0x4EB1F0]
+    - [0x0E,  0x4E9190]
 
 ttm_geo_000710:
   type: SM64:GEO_LAYOUT
