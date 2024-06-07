@@ -1962,6 +1962,48 @@ ttm_seg7_dl_07012270:
   offset: 0x12270
   symbol: ttm_seg7_dl_07012270
 
+ttm_seg7_lights_070122F0:
+  type: LIGHTS
+  size: 24
+  offset: 0x122F0
+  symbol: ttm_seg7_lights_070122F0
+
+ttm_seg7_vertex_07012308:
+  type: VTX
+  count: 8
+  offset: 0x12308
+  symbol: ttm_seg7_vertex_07012308
+
+ttm_seg7_dl_07012388:
+  type: GFX
+  offset: 0x12388
+  symbol: ttm_seg7_dl_07012388
+
+ttm_seg7_dl_070123A0:
+  type: GFX
+  offset: 0x123A0
+  symbol: ttm_seg7_dl_070123A0
+
+ttm_seg7_dl_070123B8:
+  type: GFX
+  offset: 0x123B8
+  symbol: ttm_seg7_dl_070123B8
+
+ttm_seg7_dl_07012410:
+  type: GFX
+  offset: 0x12410
+  symbol: ttm_seg7_dl_07012410
+
+ttm_seg7_painting_dl_07012430:
+  type: GFX
+  offset: 0x12430
+  symbol: ttm_seg7_painting_dl_07012430
+
+ttm_seg7_painting_dl_07012E98:
+  type: GFX
+  offset: 0x12E98
+  symbol: ttm_seg7_painting_dl_07012E98
+
 ttm_seg7_lights_07012F78:
   type: LIGHTS
   size: 24
