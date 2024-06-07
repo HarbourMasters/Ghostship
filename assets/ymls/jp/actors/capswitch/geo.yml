@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/capswitch.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x166BD0]
+
+cap_switch_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000048
+  symbol: cap_switch_geo

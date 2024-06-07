@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/heave_ho.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x132850]
+
+heave_ho_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC00028C
+  symbol: heave_ho_geo

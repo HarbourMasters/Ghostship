@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/heart.yml"
+  autopads: false
+  segments:
+    - [0x0F,  0x2008D0]
+
+heart_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF0004FC
+  symbol: heart_geo

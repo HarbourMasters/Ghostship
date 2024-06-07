@@ -1,0 +1,16 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/water_bubble.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x13B5D0]
+
+water_bomb_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000308
+  symbol: water_bomb_geo
+
+water_bomb_shadow_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000328
+  symbol: water_bomb_shadow_geo

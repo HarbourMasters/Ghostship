@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/mr_i_eyeball.yml"
+  autopads: false
+  segments:
+    - [0x0D,  0x1F1B30]
+
+mr_i_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD000000
+  symbol: mr_i_geo

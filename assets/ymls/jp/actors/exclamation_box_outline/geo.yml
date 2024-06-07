@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/exclamation_box_outline.yml"
+  autopads: false
+  segments:
+    - [0x0F,  0x2008D0]
+
+exclamation_box_outline_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF000A58
+  symbol: exclamation_box_outline_geo

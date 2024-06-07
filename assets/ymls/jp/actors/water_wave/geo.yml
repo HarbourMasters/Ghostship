@@ -1,0 +1,16 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/water_wave.yml"
+  autopads: false
+  segments:
+    - [0x17,  0x1279B0]
+
+idle_water_wave_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x17000124
+  symbol: idle_water_wave_geo
+
+wave_trail_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x17000168
+  symbol: wave_trail_geo

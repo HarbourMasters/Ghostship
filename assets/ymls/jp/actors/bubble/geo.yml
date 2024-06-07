@@ -1,0 +1,14 @@
+:config:
+  autopads: false
+  segments:
+    - [0x17, 0x125DB0]
+
+bubble_geo:
+  type: GEO_LAYOUT
+  offset: 0x17000000
+  symbol: bubble_geo
+
+purple_marble_geo:
+  type: GEO_LAYOUT
+  offset: 0x1700001C
+  symbol: purple_marble_geo

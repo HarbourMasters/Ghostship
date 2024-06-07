@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/goomba.yml"
+  autopads: false
+  segments:
+    - [0x0F,  0x2008D0]
+
+goomba_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xF0006E4
+  symbol: goomba_geo

@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/us/actors/monty_mole.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x1602E0]
+
+monty_mole_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000000
+  symbol: monty_mole_geo
