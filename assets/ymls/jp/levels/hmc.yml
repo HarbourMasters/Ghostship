@@ -3217,3 +3217,46 @@ hmc_seg7_dl_07024110:
   offset: 0x24110
   symbol: hmc_seg7_dl_07024110
 
+hmc_seg7_lights_070241B8:
+  type: LIGHTS
+  size: 24
+  offset: 0x241B8
+  symbol: hmc_seg7_lights_070241B8
+
+hmc_seg7_lights_070241D0:
+  type: LIGHTS
+  size: 24
+  offset: 0x241D0
+  symbol: hmc_seg7_lights_070241D0
+
+hmc_seg7_vertex_070241E8:
+  type: VTX
+  count: 4
+  offset: 0x241E8
+  symbol: hmc_seg7_vertex_070241E8
+
+hmc_seg7_vertex_07024228:
+  type: VTX
+  count: 4
+  offset: 0x24228
+  symbol: hmc_seg7_vertex_07024228
+
+hmc_seg7_dl_07024268:
+  type: GFX
+  offset: 0x24268
+  symbol: hmc_seg7_dl_07024268
+
+hmc_seg7_dl_070242A0:
+  type: GFX
+  offset: 0x242A0
+  symbol: hmc_seg7_dl_070242A0
+
+hmc_seg7_painting_dl_070242D0:
+  type: GFX
+  offset: 0x242D0
+  symbol: hmc_seg7_painting_dl_070242D0
+
+hmc_seg7_painting_dl_070254E0:
+  type: GFX
+  offset: 0x254E0
+  symbol: hmc_seg7_painting_dl_070254E0

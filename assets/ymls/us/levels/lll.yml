@@ -1870,748 +1870,748 @@ lll_seg7_collision_hexagonal_platform:
 lll_seg7_vertex_0701D7D0:
   type: VTX
   count: 15
-  offset: 0x1D7D0
+  offset: 0x1D740
   symbol: lll_seg7_vertex_0701D7D0
 
 lll_seg7_vertex_0701D8C0:
   type: VTX
   count: 16
-  offset: 0x1D8C0
+  offset: 0x1D830
   symbol: lll_seg7_vertex_0701D8C0
 
 lll_seg7_vertex_0701D9C0:
   type: VTX
   count: 16
-  offset: 0x1D9C0
+  offset: 0x1D930
   symbol: lll_seg7_vertex_0701D9C0
 
 lll_seg7_vertex_0701DAC0:
   type: VTX
   count: 15
-  offset: 0x1DAC0
+  offset: 0x1DA30
   symbol: lll_seg7_vertex_0701DAC0
 
 lll_seg7_vertex_0701DBB0:
   type: VTX
   count: 15
-  offset: 0x1DBB0
+  offset: 0x1DB20
   symbol: lll_seg7_vertex_0701DBB0
 
 lll_seg7_vertex_0701DCA0:
   type: VTX
   count: 16
-  offset: 0x1DCA0
+  offset: 0x1DC10
   symbol: lll_seg7_vertex_0701DCA0
 
 lll_seg7_vertex_0701DDA0:
   type: VTX
   count: 16
-  offset: 0x1DDA0
+  offset: 0x1DD10
   symbol: lll_seg7_vertex_0701DDA0
 
 lll_seg7_vertex_0701DEA0:
   type: VTX
   count: 15
-  offset: 0x1DEA0
+  offset: 0x1DE10
   symbol: lll_seg7_vertex_0701DEA0
 
 lll_seg7_vertex_0701DF90:
   type: VTX
   count: 16
-  offset: 0x1DF90
+  offset: 0x1DF00
   symbol: lll_seg7_vertex_0701DF90
 
 lll_seg7_vertex_0701E090:
   type: VTX
   count: 15
-  offset: 0x1E090
+  offset: 0x1E000
   symbol: lll_seg7_vertex_0701E090
 
 lll_seg7_vertex_0701E180:
   type: VTX
   count: 16
-  offset: 0x1E180
+  offset: 0x1E0F0
   symbol: lll_seg7_vertex_0701E180
 
 lll_seg7_vertex_0701E280:
   type: VTX
   count: 14
-  offset: 0x1E280
+  offset: 0x1E1F0
   symbol: lll_seg7_vertex_0701E280
 
 lll_seg7_vertex_0701E360:
   type: VTX
   count: 14
-  offset: 0x1E360
+  offset: 0x1E2D0
   symbol: lll_seg7_vertex_0701E360
 
 lll_seg7_vertex_0701E440:
   type: VTX
   count: 15
-  offset: 0x1E440
+  offset: 0x1E3B0
   symbol: lll_seg7_vertex_0701E440
 
 lll_seg7_vertex_0701E530:
   type: VTX
   count: 15
-  offset: 0x1E530
+  offset: 0x1E4A0
   symbol: lll_seg7_vertex_0701E530
 
 lll_seg7_vertex_0701E620:
   type: VTX
   count: 16
-  offset: 0x1E620
+  offset: 0x1E590
   symbol: lll_seg7_vertex_0701E620
 
 lll_seg7_vertex_0701E720:
   type: VTX
   count: 15
-  offset: 0x1E720
+  offset: 0x1E690
   symbol: lll_seg7_vertex_0701E720
 
 lll_seg7_vertex_0701E810:
   type: VTX
   count: 15
-  offset: 0x1E810
+  offset: 0x1E780
   symbol: lll_seg7_vertex_0701E810
 
 lll_seg7_vertex_0701E900:
   type: VTX
   count: 4
-  offset: 0x1E900
+  offset: 0x1E870
   symbol: lll_seg7_vertex_0701E900
 
 lll_seg7_vertex_0701E940:
   type: VTX
   count: 15
-  offset: 0x1E940
+  offset: 0x1E8B0
   symbol: lll_seg7_vertex_0701E940
 
 lll_seg7_vertex_0701EA30:
   type: VTX
   count: 16
-  offset: 0x1EA30
+  offset: 0x1E9A0
   symbol: lll_seg7_vertex_0701EA30
 
 lll_seg7_vertex_0701EB30:
   type: VTX
   count: 16
-  offset: 0x1EB30
+  offset: 0x1EAA0
   symbol: lll_seg7_vertex_0701EB30
 
 lll_seg7_vertex_0701EC30:
   type: VTX
   count: 15
-  offset: 0x1EC30
+  offset: 0x1EBA0
   symbol: lll_seg7_vertex_0701EC30
 
 lll_seg7_vertex_0701ED20:
   type: VTX
   count: 14
-  offset: 0x1ED20
+  offset: 0x1EC90
   symbol: lll_seg7_vertex_0701ED20
 
 lll_seg7_vertex_0701EE00:
   type: VTX
   count: 16
-  offset: 0x1EE00
+  offset: 0x1ED70
   symbol: lll_seg7_vertex_0701EE00
 
 lll_seg7_vertex_0701EF00:
   type: VTX
   count: 16
-  offset: 0x1EF00
+  offset: 0x1EE70
   symbol: lll_seg7_vertex_0701EF00
 
 lll_seg7_vertex_0701F000:
   type: VTX
   count: 16
-  offset: 0x1F000
+  offset: 0x1EF70
   symbol: lll_seg7_vertex_0701F000
 
 lll_seg7_vertex_0701F100:
   type: VTX
   count: 16
-  offset: 0x1F100
+  offset: 0x1F070
   symbol: lll_seg7_vertex_0701F100
 
 lll_seg7_vertex_0701F200:
   type: VTX
   count: 15
-  offset: 0x1F200
+  offset: 0x1F170
   symbol: lll_seg7_vertex_0701F200
 
 lll_seg7_vertex_0701F2F0:
   type: VTX
   count: 16
-  offset: 0x1F2F0
+  offset: 0x1F260
   symbol: lll_seg7_vertex_0701F2F0
 
 lll_seg7_vertex_0701F3F0:
   type: VTX
   count: 16
-  offset: 0x1F3F0
+  offset: 0x1F360
   symbol: lll_seg7_vertex_0701F3F0
 
 lll_seg7_vertex_0701F4F0:
   type: VTX
   count: 15
-  offset: 0x1F4F0
+  offset: 0x1F460
   symbol: lll_seg7_vertex_0701F4F0
 
 lll_seg7_vertex_0701F5E0:
   type: VTX
   count: 16
-  offset: 0x1F5E0
+  offset: 0x1F550
   symbol: lll_seg7_vertex_0701F5E0
 
 lll_seg7_vertex_0701F6E0:
   type: VTX
   count: 14
-  offset: 0x1F6E0
+  offset: 0x1F650
   symbol: lll_seg7_vertex_0701F6E0
 
 lll_seg7_vertex_0701F7C0:
   type: VTX
   count: 15
-  offset: 0x1F7C0
+  offset: 0x1F730
   symbol: lll_seg7_vertex_0701F7C0
 
 lll_seg7_vertex_0701F8B0:
   type: VTX
   count: 14
-  offset: 0x1F8B0
+  offset: 0x1F820
   symbol: lll_seg7_vertex_0701F8B0
 
 lll_seg7_vertex_0701F990:
   type: VTX
   count: 16
-  offset: 0x1F990
+  offset: 0x1F900
   symbol: lll_seg7_vertex_0701F990
 
 lll_seg7_vertex_0701FA90:
   type: VTX
   count: 15
-  offset: 0x1FA90
+  offset: 0x1FA00
   symbol: lll_seg7_vertex_0701FA90
 
 lll_seg7_vertex_0701FB80:
   type: VTX
   count: 14
-  offset: 0x1FB80
+  offset: 0x1FAF0
   symbol: lll_seg7_vertex_0701FB80
 
 lll_seg7_vertex_0701FC60:
   type: VTX
   count: 16
-  offset: 0x1FC60
+  offset: 0x1FBD0
   symbol: lll_seg7_vertex_0701FC60
 
 lll_seg7_vertex_0701FD60:
   type: VTX
   count: 14
-  offset: 0x1FD60
+  offset: 0x1FCD0
   symbol: lll_seg7_vertex_0701FD60
 
 lll_seg7_vertex_0701FE40:
   type: VTX
   count: 16
-  offset: 0x1FE40
+  offset: 0x1FDB0
   symbol: lll_seg7_vertex_0701FE40
 
 lll_seg7_vertex_0701FF40:
   type: VTX
   count: 16
-  offset: 0x1FF40
+  offset: 0x1FEB0
   symbol: lll_seg7_vertex_0701FF40
 
 lll_seg7_vertex_07020040:
   type: VTX
   count: 16
-  offset: 0x20040
+  offset: 0x1FFB0
   symbol: lll_seg7_vertex_07020040
 
 lll_seg7_vertex_07020140:
   type: VTX
   count: 15
-  offset: 0x20140
+  offset: 0x200B0
   symbol: lll_seg7_vertex_07020140
 
 lll_seg7_vertex_07020230:
   type: VTX
   count: 14
-  offset: 0x20230
+  offset: 0x201A0
   symbol: lll_seg7_vertex_07020230
 
 lll_seg7_vertex_07020310:
   type: VTX
   count: 15
-  offset: 0x20310
+  offset: 0x20280
   symbol: lll_seg7_vertex_07020310
 
 lll_seg7_vertex_07020400:
   type: VTX
   count: 15
-  offset: 0x20400
+  offset: 0x20370
   symbol: lll_seg7_vertex_07020400
 
 lll_seg7_vertex_070204F0:
   type: VTX
   count: 15
-  offset: 0x204F0
+  offset: 0x20460
   symbol: lll_seg7_vertex_070204F0
 
 lll_seg7_vertex_070205E0:
   type: VTX
   count: 16
-  offset: 0x205E0
+  offset: 0x20550
   symbol: lll_seg7_vertex_070205E0
 
 lll_seg7_vertex_070206E0:
   type: VTX
   count: 15
-  offset: 0x206E0
+  offset: 0x20650
   symbol: lll_seg7_vertex_070206E0
 
 lll_seg7_vertex_070207D0:
   type: VTX
   count: 16
-  offset: 0x207D0
+  offset: 0x20740
   symbol: lll_seg7_vertex_070207D0
 
 lll_seg7_vertex_070208D0:
   type: VTX
   count: 15
-  offset: 0x208D0
+  offset: 0x20840
   symbol: lll_seg7_vertex_070208D0
 
 lll_seg7_vertex_070209C0:
   type: VTX
   count: 14
-  offset: 0x209C0
+  offset: 0x20930
   symbol: lll_seg7_vertex_070209C0
 
 lll_seg7_vertex_07020AA0:
   type: VTX
   count: 14
-  offset: 0x20AA0
+  offset: 0x20A10
   symbol: lll_seg7_vertex_07020AA0
 
 lll_seg7_vertex_07020B80:
   type: VTX
   count: 16
-  offset: 0x20B80
+  offset: 0x20AF0
   symbol: lll_seg7_vertex_07020B80
 
 lll_seg7_vertex_07020C80:
   type: VTX
   count: 16
-  offset: 0x20C80
+  offset: 0x20BF0
   symbol: lll_seg7_vertex_07020C80
 
 lll_seg7_vertex_07020D80:
   type: VTX
   count: 16
-  offset: 0x20D80
+  offset: 0x20CF0
   symbol: lll_seg7_vertex_07020D80
 
 lll_seg7_vertex_07020E80:
   type: VTX
   count: 16
-  offset: 0x20E80
+  offset: 0x20DF0
   symbol: lll_seg7_vertex_07020E80
 
 lll_seg7_vertex_07020F80:
   type: VTX
   count: 15
-  offset: 0x20F80
+  offset: 0x20EF0
   symbol: lll_seg7_vertex_07020F80
 
 lll_seg7_vertex_07021070:
   type: VTX
   count: 16
-  offset: 0x21070
+  offset: 0x20FE0
   symbol: lll_seg7_vertex_07021070
 
 lll_seg7_vertex_07021170:
   type: VTX
   count: 14
-  offset: 0x21170
+  offset: 0x210E0
   symbol: lll_seg7_vertex_07021170
 
 lll_seg7_vertex_07021250:
   type: VTX
   count: 16
-  offset: 0x21250
+  offset: 0x211C0
   symbol: lll_seg7_vertex_07021250
 
 lll_seg7_vertex_07021350:
   type: VTX
   count: 16
-  offset: 0x21350
+  offset: 0x212C0
   symbol: lll_seg7_vertex_07021350
 
 lll_seg7_vertex_07021450:
   type: VTX
   count: 16
-  offset: 0x21450
+  offset: 0x213C0
   symbol: lll_seg7_vertex_07021450
 
 lll_seg7_vertex_07021550:
   type: VTX
   count: 14
-  offset: 0x21550
+  offset: 0x214C0
   symbol: lll_seg7_vertex_07021550
 
 lll_seg7_vertex_07021630:
   type: VTX
   count: 15
-  offset: 0x21630
+  offset: 0x215A0
   symbol: lll_seg7_vertex_07021630
 
 lll_seg7_vertex_07021720:
   type: VTX
   count: 16
-  offset: 0x21720
+  offset: 0x21690
   symbol: lll_seg7_vertex_07021720
 
 lll_seg7_vertex_07021820:
   type: VTX
   count: 16
-  offset: 0x21820
+  offset: 0x21790
   symbol: lll_seg7_vertex_07021820
 
 lll_seg7_vertex_07021920:
   type: VTX
   count: 14
-  offset: 0x21920
+  offset: 0x21890
   symbol: lll_seg7_vertex_07021920
 
 lll_seg7_vertex_07021A00:
   type: VTX
   count: 14
-  offset: 0x21A00
+  offset: 0x21970
   symbol: lll_seg7_vertex_07021A00
 
 lll_seg7_vertex_07021AE0:
   type: VTX
   count: 15
-  offset: 0x21AE0
+  offset: 0x21A50
   symbol: lll_seg7_vertex_07021AE0
 
 lll_seg7_vertex_07021BD0:
   type: VTX
   count: 15
-  offset: 0x21BD0
+  offset: 0x21B40
   symbol: lll_seg7_vertex_07021BD0
 
 lll_seg7_vertex_07021CC0:
   type: VTX
   count: 15
-  offset: 0x21CC0
+  offset: 0x21C30
   symbol: lll_seg7_vertex_07021CC0
 
 lll_seg7_vertex_07021DB0:
   type: VTX
   count: 7
-  offset: 0x21DB0
+  offset: 0x21D20
   symbol: lll_seg7_vertex_07021DB0
 
 lll_seg7_dl_07021E20:
   type: GFX
-  offset: 0x21E20
+  offset: 0x21D90
   symbol: lll_seg7_dl_07021E20
 
 lll_seg7_dl_070223C0:
   type: GFX
-  offset: 0x223C0
+  offset: 0x22330
   symbol: lll_seg7_dl_070223C0
 
 lll_seg7_dl_070229B8:
   type: GFX
-  offset: 0x229B8
+  offset: 0x22928
   symbol: lll_seg7_dl_070229B8
 
 lll_seg7_dl_07022AE0:
   type: GFX
-  offset: 0x22AE0
+  offset: 0x22A50
   symbol: lll_seg7_dl_07022AE0
 
 lll_seg7_dl_07022DF0:
   type: GFX
-  offset: 0x22DF0
+  offset: 0x22D60
   symbol: lll_seg7_dl_07022DF0
 
 lll_seg7_dl_070235C8:
   type: GFX
-  offset: 0x235C8
+  offset: 0x23538
   symbol: lll_seg7_dl_070235C8
 
 lll_seg7_lights_070236E8:
   type: LIGHTS
   size: 24
-  offset: 0x236E8
+  offset: 0x23658
   symbol: lll_seg7_lights_070236E8
 
 lll_seg7_vertex_07023700:
   type: VTX
   count: 14
-  offset: 0x23700
+  offset: 0x23670
   symbol: lll_seg7_vertex_07023700
 
 lll_seg7_vertex_070237E0:
   type: VTX
   count: 16
-  offset: 0x237E0
+  offset: 0x23750
   symbol: lll_seg7_vertex_070237E0
 
 lll_seg7_vertex_070238E0:
   type: VTX
   count: 16
-  offset: 0x238E0
+  offset: 0x23850
   symbol: lll_seg7_vertex_070238E0
 
 lll_seg7_vertex_070239E0:
   type: VTX
   count: 16
-  offset: 0x239E0
+  offset: 0x23950
   symbol: lll_seg7_vertex_070239E0
 
 lll_seg7_vertex_07023AE0:
   type: VTX
   count: 16
-  offset: 0x23AE0
+  offset: 0x23A50
   symbol: lll_seg7_vertex_07023AE0
 
 lll_seg7_vertex_07023BE0:
   type: VTX
   count: 15
-  offset: 0x23BE0
+  offset: 0x23B50
   symbol: lll_seg7_vertex_07023BE0
 
 lll_seg7_vertex_07023CD0:
   type: VTX
   count: 15
-  offset: 0x23CD0
+  offset: 0x23C40
   symbol: lll_seg7_vertex_07023CD0
 
 lll_seg7_vertex_07023DC0:
   type: VTX
   count: 15
-  offset: 0x23DC0
+  offset: 0x23D30
   symbol: lll_seg7_vertex_07023DC0
 
 lll_seg7_vertex_07023EB0:
   type: VTX
   count: 16
-  offset: 0x23EB0
+  offset: 0x23E20
   symbol: lll_seg7_vertex_07023EB0
 
 lll_seg7_vertex_07023FB0:
   type: VTX
   count: 16
-  offset: 0x23FB0
+  offset: 0x23F20
   symbol: lll_seg7_vertex_07023FB0
 
 lll_seg7_vertex_070240B0:
   type: VTX
   count: 16
-  offset: 0x240B0
+  offset: 0x24020
   symbol: lll_seg7_vertex_070240B0
 
 lll_seg7_vertex_070241B0:
   type: VTX
   count: 14
-  offset: 0x241B0
+  offset: 0x24120
   symbol: lll_seg7_vertex_070241B0
 
 lll_seg7_vertex_07024290:
   type: VTX
   count: 12
-  offset: 0x24290
+  offset: 0x24200
   symbol: lll_seg7_vertex_07024290
 
 lll_seg7_vertex_07024350:
   type: VTX
   count: 4
-  offset: 0x24350
+  offset: 0x242C0
   symbol: lll_seg7_vertex_07024350
 
 lll_seg7_vertex_07024390:
   type: VTX
   count: 15
-  offset: 0x24390
+  offset: 0x24300
   symbol: lll_seg7_vertex_07024390
 
 lll_seg7_vertex_07024480:
   type: VTX
   count: 15
-  offset: 0x24480
+  offset: 0x243F0
   symbol: lll_seg7_vertex_07024480
 
 lll_seg7_vertex_07024570:
   type: VTX
   count: 12
-  offset: 0x24570
+  offset: 0x244E0
   symbol: lll_seg7_vertex_07024570
 
 lll_seg7_dl_07024630:
   type: GFX
-  offset: 0x24630
+  offset: 0x245A0
   symbol: lll_seg7_dl_07024630
 
 lll_seg7_dl_070247C8:
   type: GFX
-  offset: 0x247C8
+  offset: 0x24738
   symbol: lll_seg7_dl_070247C8
 
 lll_seg7_dl_07024B08:
   type: GFX
-  offset: 0x24B08
+  offset: 0x24A78
   symbol: lll_seg7_dl_07024B08
 
 lll_seg7_dl_07024B40:
   type: GFX
-  offset: 0x24B40
+  offset: 0x24AB0
   symbol: lll_seg7_dl_07024B40
 
 lll_seg7_dl_07024C18:
   type: GFX
-  offset: 0x24C18
+  offset: 0x24B88
   symbol: lll_seg7_dl_07024C18
 
 lll_seg7_vertex_07024CD8:
   type: VTX
   count: 15
-  offset: 0x24CD8
+  offset: 0x24C48
   symbol: lll_seg7_vertex_07024CD8
 
 lll_seg7_vertex_07024DC8:
   type: VTX
   count: 15
-  offset: 0x24DC8
+  offset: 0x24D38
   symbol: lll_seg7_vertex_07024DC8
 
 lll_seg7_vertex_07024EB8:
   type: VTX
   count: 15
-  offset: 0x24EB8
+  offset: 0x24E28
   symbol: lll_seg7_vertex_07024EB8
 
 lll_seg7_vertex_07024FA8:
   type: VTX
   count: 15
-  offset: 0x24FA8
+  offset: 0x24F18
   symbol: lll_seg7_vertex_07024FA8
 
 lll_seg7_vertex_07025098:
   type: VTX
   count: 15
-  offset: 0x25098
+  offset: 0x25008
   symbol: lll_seg7_vertex_07025098
 
 lll_seg7_vertex_07025188:
   type: VTX
   count: 15
-  offset: 0x25188
+  offset: 0x250F8
   symbol: lll_seg7_vertex_07025188
 
 lll_seg7_vertex_07025278:
   type: VTX
   count: 16
-  offset: 0x25278
+  offset: 0x251E8
   symbol: lll_seg7_vertex_07025278
 
 lll_seg7_vertex_07025378:
   type: VTX
   count: 6
-  offset: 0x25378
+  offset: 0x252E8
   symbol: lll_seg7_vertex_07025378
 
 lll_seg7_dl_070253D8:
   type: GFX
-  offset: 0x253D8
+  offset: 0x25348
   symbol: lll_seg7_dl_070253D8
 
 lll_seg7_dl_070255D8:
   type: GFX
-  offset: 0x255D8
+  offset: 0x25548
   symbol: lll_seg7_dl_070255D8
 
 lll_seg7_vertex_07025648:
   type: VTX
   count: 12
-  offset: 0x25648
+  offset: 0x255B8
   symbol: lll_seg7_vertex_07025648
 
 lll_seg7_vertex_07025708:
   type: VTX
   count: 16
-  offset: 0x25708
+  offset: 0x25678
   symbol: lll_seg7_vertex_07025708
 
 lll_seg7_vertex_07025808:
   type: VTX
   count: 15
-  offset: 0x25808
+  offset: 0x25778
   symbol: lll_seg7_vertex_07025808
 
 lll_seg7_dl_070258F8:
   type: GFX
-  offset: 0x258F8
+  offset: 0x25868
   symbol: lll_seg7_dl_070258F8
 
 lll_seg7_dl_07025970:
   type: GFX
-  offset: 0x25970
+  offset: 0x258E0
   symbol: lll_seg7_dl_07025970
 
 lll_seg7_dl_07025A48:
   type: GFX
-  offset: 0x25A48
+  offset: 0x259B8
   symbol: lll_seg7_dl_07025A48
 
 lll_seg7_vertex_07025AC0:
   type: VTX
   count: 12
-  offset: 0x25AC0
+  offset: 0x25A30
   symbol: lll_seg7_vertex_07025AC0
 
 lll_seg7_dl_07025B80:
   type: GFX
-  offset: 0x25B80
+  offset: 0x25AF0
   symbol: lll_seg7_dl_07025B80
 
 lll_seg7_dl_07025BD8:
   type: GFX
-  offset: 0x25BD8
+  offset: 0x25B48
   symbol: lll_seg7_dl_07025BD8
 
 lll_seg7_vertex_07025C90:
   type: VTX
   count: 14
-  offset: 0x25C90
+  offset: 0x25C00
   symbol: lll_seg7_vertex_07025C90
 
 lll_seg7_vertex_07025D70:
   type: VTX
   count: 10
-  offset: 0x25D70
+  offset: 0x25CE0
   symbol: lll_seg7_vertex_07025D70
 
 lll_seg7_dl_07025E10:
   type: GFX
-  offset: 0x25E10
+  offset: 0x25D80
   symbol: lll_seg7_dl_07025E10
 
 lll_seg7_dl_07025E78:
   type: GFX
-  offset: 0x25E78
+  offset: 0x25DE8
   symbol: lll_seg7_dl_07025E78
 
 lll_seg7_dl_07025EC0:
   type: GFX
-  offset: 0x25EC0
+  offset: 0x25E30
   symbol: lll_seg7_dl_07025EC0
 
 lll_seg7_area_2_collision:
