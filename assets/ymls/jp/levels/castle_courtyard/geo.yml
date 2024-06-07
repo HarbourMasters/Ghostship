@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/levels/castle_courtyard.yml"
+    - "assets/ymls/jp/levels/castle_courtyard.yml"
   autopads: false
   segments:
     - [0x0E,  0x4AF670]

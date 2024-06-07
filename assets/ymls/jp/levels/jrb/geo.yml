@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/levels/jrb.yml"
+    - "assets/ymls/jp/levels/jrb.yml"
   autopads: false
   segments:
     - [0x0E,  0x423B20]

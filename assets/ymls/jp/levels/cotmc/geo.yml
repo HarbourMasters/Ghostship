@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/levels/cotmc.yml"
+    - "assets/ymls/jp/levels/cotmc.yml"
   autopads: false
   segments:
     - [0x0E,  0x4BE9E0]

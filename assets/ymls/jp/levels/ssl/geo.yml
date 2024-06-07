@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/levels/ssl.yml"
+    - "assets/ymls/jp/levels/ssl.yml"
   autopads: false
   segments:
     - [0x0E,  0x3FB990]

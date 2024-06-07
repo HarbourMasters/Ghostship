@@ -1,6 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/levels/wf.yml"
+    - "assets/ymls/jp/levels/wf.yml"
   autopads: false
   segments:
     - [0x0E,  0x49DA50]
