@@ -1,0 +1,16 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/bully.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x132E70]
+
+bully_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000000
+  symbol: bully_geo
+
+bully_boss_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000120
+  symbol: bully_boss_geo

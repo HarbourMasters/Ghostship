@@ -1,0 +1,13 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/tornado.yml"
+  autopads: false
+  compression:
+    offset: 0x144290
+  segments:
+    - [0x05,  0x144290]
+
+tweester_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x14630
+  symbol: tweester_geo

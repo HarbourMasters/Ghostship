@@ -1,0 +1,166 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/levels/bits.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x475C20]
+
+bits_geo_000430:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000430
+  symbol: bits_geo_000430
+
+bits_geo_000448:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000448
+  symbol: bits_geo_000448
+
+bits_geo_000460:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000460
+  symbol: bits_geo_000460
+
+bits_geo_000478:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000478
+  symbol: bits_geo_000478
+
+bits_geo_000490:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000490
+  symbol: bits_geo_000490
+
+bits_geo_0004A8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0004A8
+  symbol: bits_geo_0004A8
+
+bits_geo_0004C0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0004C0
+  symbol: bits_geo_0004C0
+
+bits_geo_0004D8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0004D8
+  symbol: bits_geo_0004D8
+
+bits_geo_0004F0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0004F0
+  symbol: bits_geo_0004F0
+
+bits_geo_000508:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000508
+  symbol: bits_geo_000508
+
+bits_geo_000520:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000520
+  symbol: bits_geo_000520
+
+bits_geo_000538:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000538
+  symbol: bits_geo_000538
+
+bits_geo_000550:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000550
+  symbol: bits_geo_000550
+
+bits_geo_000568:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000568
+  symbol: bits_geo_000568
+
+bits_geo_000580:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000580
+  symbol: bits_geo_000580
+
+bits_geo_000598:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000598
+  symbol: bits_geo_000598
+
+bits_geo_0005B0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0005B0
+  symbol: bits_geo_0005B0
+
+bits_geo_0005C8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0005C8
+  symbol: bits_geo_0005C8
+
+bits_geo_0005E0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0005E0
+  symbol: bits_geo_0005E0
+
+bits_geo_0005F8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0005F8
+  symbol: bits_geo_0005F8
+
+bits_geo_000610:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000610
+  symbol: bits_geo_000610
+
+bits_geo_000628:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000628
+  symbol: bits_geo_000628
+
+bits_geo_000640:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000640
+  symbol: bits_geo_000640
+
+bits_geo_000658:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000658
+  symbol: bits_geo_000658
+
+bits_geo_000670:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000670
+  symbol: bits_geo_000670
+
+bits_geo_000688:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000688
+  symbol: bits_geo_000688
+
+bits_geo_0006A0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0006A0
+  symbol: bits_geo_0006A0
+
+bits_geo_0006B8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0006B8
+  symbol: bits_geo_0006B8
+
+bits_geo_0006D0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0006D0
+  symbol: bits_geo_0006D0
+
+bits_geo_0006E8:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0006E8
+  symbol: bits_geo_0006E8
+
+bits_geo_000700:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000700
+  symbol: bits_geo_000700
+
+bits_geo_000718:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000718
+  symbol: bits_geo_000718

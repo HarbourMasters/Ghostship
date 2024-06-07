@@ -1,0 +1,21 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/toad.yml"
+  autopads: false
+  segments:
+    - [0x0D,  0x1E2F20]
+
+toad_geo_000114:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD000114
+  symbol: toad_geo_000114
+
+toad_geo_00027C:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD00027C
+  symbol: toad_geo_00027C
+
+toad_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xD0003E4
+  symbol: toad_geo

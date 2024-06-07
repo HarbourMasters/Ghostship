@@ -728,6 +728,22 @@ ddd_seg7_dl_07009120:
   offset: 0x9120
   symbol: ddd_seg7_dl_07009120
 
+ddd_seg7_vertex_07009190:
+  type: VTX
+  count: 4
+  offset: 0x9190
+  symbol: ddd_seg7_vertex_07009190
+
+ddd_seg7_dl_070091D0:
+  type: GFX
+  offset: 0x91D0
+  symbol: ddd_seg7_dl_070091D0
+
+ddd_seg7_dl_07009208:
+  type: GFX
+  offset: 0x9208
+  symbol: ddd_seg7_dl_07009208
+
 ddd_seg7_lights_07009288:
   type: LIGHTS
   size: 24

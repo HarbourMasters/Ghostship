@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/bookend.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x16B9C0]
+
+bookend_part_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC000000
+  symbol: bookend_part_geo

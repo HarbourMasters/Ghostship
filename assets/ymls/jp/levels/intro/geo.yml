@@ -1,0 +1,28 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/levels/intro.yml"
+  autopads: false
+  segments:
+    - [0x14,  0x268020]
+
+intro_geo_0002D0:
+  type: SM64:GEO_LAYOUT
+  offset: 0x140002D0
+  symbol: intro_geo_0002D0
+
+intro_geo_mario_head_regular:
+  type: SM64:GEO_LAYOUT
+  offset: 0x1400035C
+  symbol: intro_geo_mario_head_regular
+
+intro_geo_mario_head_dizzy:
+  type: SM64:GEO_LAYOUT
+  offset: 0x140003B8
+  symbol: intro_geo_mario_head_dizzy
+
+# TODO: Requires debug_level_select
+
+# intro_geo_000414:
+#   type: SM64:GEO_LAYOUT
+#   offset: 0x14000414
+#   symbol: intro_geo_000414

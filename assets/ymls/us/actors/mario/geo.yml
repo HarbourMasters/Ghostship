@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/mario.yml"
   autopads: false
   segments:
-    - [0x17,  0x1279b0]
+    - [0x17,  0x1279B0]
 
 mario_geo_face_and_wings:
   type: SM64:GEO_LAYOUT

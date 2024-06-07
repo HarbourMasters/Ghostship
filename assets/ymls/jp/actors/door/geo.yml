@@ -1,0 +1,61 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/door.yml"
+  autopads: false
+  segments:
+    - [0x16,  0x2170D0]
+
+castle_door_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x160003A8
+  symbol: castle_door_geo
+
+cabin_door_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x1600043C
+  symbol: cabin_door_geo
+
+wooden_door_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x160004D0
+  symbol: wooden_door_geo
+
+wooden_door2_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000564
+  symbol: wooden_door2_geo
+
+metal_door_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x160005F8
+  symbol: metal_door_geo
+
+hazy_maze_door_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x1600068C
+  symbol: hazy_maze_door_geo
+
+haunted_door_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000720
+  symbol: haunted_door_geo
+
+castle_door_0_star_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x160007B4
+  symbol: castle_door_0_star_geo
+
+castle_door_1_star_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000868
+  symbol: castle_door_1_star_geo
+
+castle_door_3_stars_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x1600091C
+  symbol: castle_door_3_stars_geo
+
+key_door_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x160009D0
+  symbol: key_door_geo

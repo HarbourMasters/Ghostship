@@ -1,0 +1,36 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/coin.yml"
+  autopads: false
+  segments:
+    - [0x16,  0x2170D0]
+
+yellow_coin_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x1600013C
+  symbol: yellow_coin_geo
+
+yellow_coin_no_shadow_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x160001A0
+  symbol: yellow_coin_no_shadow_geo
+
+blue_coin_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000200
+  symbol: blue_coin_geo
+
+blue_coin_no_shadow_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000264
+  symbol: blue_coin_no_shadow_geo
+
+red_coin_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x160002C4
+  symbol: red_coin_geo
+
+red_coin_no_shadow_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0x16000328
+  symbol: red_coin_no_shadow_geo

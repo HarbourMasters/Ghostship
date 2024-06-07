@@ -1,0 +1,16 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/levels/totwc.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x4C06A0]
+
+totwc_geo_000160:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000160
+  symbol: totwc_geo_000160
+
+totwc_geo_000188:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000188
+  symbol: totwc_geo_000188

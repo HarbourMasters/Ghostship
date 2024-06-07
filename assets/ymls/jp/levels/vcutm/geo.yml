@@ -1,0 +1,16 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/levels/vcutm.yml"
+  autopads: false
+  segments:
+    - [0x0E,  0x45F160]
+
+vcutm_geo_0001F0:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE0001F0
+  symbol: vcutm_geo_0001F0
+
+vcutm_geo_000208:
+  type: SM64:GEO_LAYOUT
+  offset: 0xE000208
+  symbol: vcutm_geo_000208

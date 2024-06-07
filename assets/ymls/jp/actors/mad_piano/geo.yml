@@ -1,0 +1,11 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/mad_piano.yml"
+  autopads: false
+  segments:
+    - [0x0C,  0x16B9C0]
+
+mad_piano_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC0001B4
+  symbol: mad_piano_geo

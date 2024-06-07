@@ -1,0 +1,13 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/actors/manta.yml"
+  autopads: false
+  compression:
+    offset: 0x139D10
+  segments:
+    - [0x05,  0x139D10]
+
+manta_seg5_geo_05008D14:
+  type: SM64:GEO_LAYOUT
+  offset: 0x8D14
+  symbol: manta_seg5_geo_05008D14
