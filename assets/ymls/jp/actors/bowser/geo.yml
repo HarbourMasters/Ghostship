@@ -20,17 +20,12 @@ bowser_geo_000770:
   offset: 0xD000770
   symbol: bowser_geo_000770
 
-bowser_shadow_geo:
-  type: SM64:GEO_LAYOUT
-  offset: 0xD000AB8
-  symbol: bowser_shadow_geo
-
 bowser_geo:
   type: SM64:GEO_LAYOUT
-  offset: 0xD000AC4
+  offset: 0xD000AB8
   symbol: bowser_geo
 
 bowser_geo_no_shadow:
   type: SM64:GEO_LAYOUT
-  offset: 0xD000B40
+  offset: 0xD000B18
   symbol: bowser_geo_no_shadow

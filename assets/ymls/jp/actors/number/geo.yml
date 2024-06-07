@@ -1,6 +1,4 @@
 :config:
-  external_files:
-    - "assets/ymls/jp/actors/number.yml"
   autopads: false
   segments:
     - [0x16,  0x2170D0]

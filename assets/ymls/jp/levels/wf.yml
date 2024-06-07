@@ -2014,3 +2014,18 @@ wf_seg7_collision_070102D8:
   offset: 0x102D8
   symbol: wf_seg7_collision_070102D8
 
+wf_seg7_vertex_0700AF40:
+  type: VTX
+  count: 4
+  offset: 0xAF40
+  symbol: wf_seg7_vertex_0700AF40
+
+wf_seg7_dl_0700AF80:
+  type: GFX
+  offset: 0xAF80
+  symbol: wf_seg7_dl_0700AF80
+
+wf_seg7_dl_0700AFB8:
+  type: GFX
+  offset: 0xAFB8
+  symbol: wf_seg7_dl_0700AFB8
