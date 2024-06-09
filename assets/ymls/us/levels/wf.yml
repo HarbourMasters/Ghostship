@@ -2030,3 +2030,7 @@ wf_seg7_collision_070102D8:
   offset: 0x102D8
   symbol: wf_seg7_collision_070102D8
 
+wf_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x11C38
+  symbol: wf_seg7_macro_objs

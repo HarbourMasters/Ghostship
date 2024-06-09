@@ -1130,3 +1130,22 @@ thi_seg7_collision_top_trap:
   offset: 0xE228
   symbol: thi_seg7_collision_top_trap
 
+thi_seg7_trajectory_koopa:
+  type: SM64:TRAJECTORY
+  offset: 0xE258
+  symbol: thi_seg7_trajectory_koopa
+
+thi_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0xDD50
+  symbol: thi_seg7_area_1_macro_objs
+
+thi_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0xDEE4
+  symbol: thi_seg7_area_2_macro_objs
+
+thi_seg7_area_3_macro_objs:
+  type: SM64:MACRO
+  offset: 0xE190
+  symbol: thi_seg7_area_3_macro_objs

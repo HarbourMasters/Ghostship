@@ -2260,3 +2260,8 @@ bits_seg7_collision_0701B734:
   offset: 0x1B734
   symbol: bits_seg7_collision_0701B734
 
+bits_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x1A76C
+  symbol: bits_seg7_macro_objs
+

@@ -1897,3 +1897,13 @@ bitfs_seg7_collision_07015928:
   offset: 0x15928
   symbol: bitfs_seg7_collision_07015928
 
+bitfs_seg7_trajectory_070159AC:
+  type: SM64:TRAJECTORY
+  offset: 0x159AC
+  symbol: bitfs_seg7_trajectory_070159AC
+
+bitfs_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x14F90
+  symbol: bitfs_seg7_macro_objs
+

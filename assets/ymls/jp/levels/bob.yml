@@ -1253,3 +1253,23 @@ bob_seg7_collision_gate:
   offset: 0x11474
   symbol: bob_seg7_collision_gate
 
+bob_seg7_metal_ball_path0:
+  type: SM64:TRAJECTORY
+  offset: 0x11530
+  symbol: bob_seg7_metal_ball_path0
+
+bob_seg7_metal_ball_path1:
+  type: SM64:TRAJECTORY
+  offset: 0x115C4
+  symbol: bob_seg7_metal_ball_path1
+
+bob_seg7_trajectory_koopa:
+  type: SM64:TRAJECTORY
+  offset: 0x116A0
+  symbol: bob_seg7_trajectory_koopa
+
+bob_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x1104C
+  symbol: bob_seg7_macro_objs
+

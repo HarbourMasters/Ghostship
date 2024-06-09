@@ -755,3 +755,7 @@ cotmc_seg7_collision_level:
   offset: 0xA508
   symbol: cotmc_seg7_collision_level
 
+cotmc_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0xBD38
+  symbol: cotmc_seg7_macro_objs
