@@ -61,6 +61,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
                                                  {0xFF2B5A63, 0xE3DAA4E}, 3);
 
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+    Ship::Context::GetInstance()->GetControlDeck()->SetSinglePlayerMappingMode(true);
 
     wnd->SetTargetFps(60);
     wnd->SetMaximumFrameLatency(1);

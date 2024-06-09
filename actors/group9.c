@@ -27,8 +27,5 @@ UNUSED static const u64 binid_3 = 3;
 #include "mad_piano/anims/table.inc.c"
 UNUSED static const u64 binid_4 = 4;
 
-#include "boo/model.inc.c"
-UNUSED static const u64 binid_5 = 5;
-
 #include "haunted_cage/model.inc.c"
 UNUSED static const u64 binid_6 = 6;

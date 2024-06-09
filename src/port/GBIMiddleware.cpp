@@ -10,6 +10,7 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
     char* imgData = (char*)dl;
 
     if (GameEngine_OTRSigCheck(imgData) == 1) {
+        SPDLOG_INFO("gSPDisplayList: {}", imgData);
         auto resource = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
         auto res = std::static_pointer_cast<LUS::DisplayList>(resource);
         dl = &res->Instructions[0];
@@ -28,17 +29,17 @@ extern "C" void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0) {
 }
 
 extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
-    char* imgData = (char*)texAddr;
+    auto imgData = reinterpret_cast<char *>(texAddr);
 
     if (texAddr != 0 && GameEngine_OTRSigCheck(imgData)) {
         auto res = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
 
-        if (res->GetInitData()->Type == (uint32_t) LUS::ResourceType::DisplayList)
-            texAddr = (uintptr_t)&((std::static_pointer_cast<LUS::DisplayList>(res))->Instructions[0]);
-        else if (res->GetInitData()->Type == (uint32_t) LUS::ResourceType::Array)
-            texAddr = (uintptr_t)(std::static_pointer_cast<LUS::Array>(res))->Vertices.data();
+        if (res->GetInitData()->Type == static_cast<uint32_t>(LUS::ResourceType::DisplayList))
+            texAddr = reinterpret_cast<uintptr_t>(&(std::static_pointer_cast<LUS::DisplayList>(res))->Instructions[0]);
+        else if (res->GetInitData()->Type == static_cast<uint32_t>(LUS::ResourceType::Array))
+            texAddr = reinterpret_cast<uintptr_t>(std::static_pointer_cast<LUS::Array>(res)->Vertices.data());
         else {
-            texAddr = (uintptr_t) res->GetRawPointer();
+            texAddr = reinterpret_cast<uintptr_t>(res->GetRawPointer());
         }
     }
    __gSPInvalidateTexCache(pkt, texAddr);

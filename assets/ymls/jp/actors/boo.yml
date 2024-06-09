@@ -4,6 +4,10 @@
     offset: 0x165060
   segments:
     - [0x05,  0x165060]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "boo/geo.h"'
 
 boo_seg5_lights_05009B28:
   type: LIGHTS
@@ -126,4 +130,3 @@ boo_seg5_dl_0500C1B0:
   type: GFX
   offset: 0xC1B0
   symbol: boo_seg5_dl_0500C1B0
-

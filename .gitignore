@@ -88,3 +88,4 @@ code/
 torch.hash.yml
 merge/
 .vs/
+include/assets/*

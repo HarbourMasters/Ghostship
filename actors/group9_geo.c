@@ -12,5 +12,4 @@
 #include "chair/geo.inc.c"
 #include "small_key/geo.inc.c"
 #include "mad_piano/geo.inc.c"
-#include "boo/geo.inc.c"
 #include "haunted_cage/geo.inc.c"
