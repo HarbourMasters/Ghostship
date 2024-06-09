@@ -1155,3 +1155,7 @@ pss_seg7_collision:
   offset: 0xE490
   symbol: pss_seg7_collision
 
+pss_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x10F00
+  symbol: pss_seg7_macro_objs

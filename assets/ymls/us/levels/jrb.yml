@@ -1510,3 +1510,22 @@ jrb_seg7_area_2_collision:
   offset: 0x105B8
   symbol: jrb_seg7_area_2_collision
 
+jrb_seg7_trajectory_unagi_1:
+  type: SM64:TRAJECTORY
+  offset: 0xD20C
+  symbol: jrb_seg7_trajectory_unagi_1
+
+jrb_seg7_trajectory_unagi_2:
+  type: SM64:TRAJECTORY
+  offset: 0xD240
+  symbol: jrb_seg7_trajectory_unagi_2
+
+jrb_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0xC4E8
+  symbol: jrb_seg7_area_1_macro_objs
+
+jrb_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x11370
+  symbol: jrb_seg7_area_2_macro_objs

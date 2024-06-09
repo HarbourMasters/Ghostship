@@ -1266,3 +1266,8 @@ castle_grounds_seg7_cannon_grill:
   offset: 0x10E10
   symbol: castle_grounds_seg7_cannon_grill
 
+castle_grounds_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x10D08
+  symbol: castle_grounds_seg7_macro_objs
+

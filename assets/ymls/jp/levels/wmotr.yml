@@ -1174,3 +1174,7 @@ wmotr_seg7_collision:
   offset: 0x10688
   symbol: wmotr_seg7_collision
 
+wmotr_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x136A8
+  symbol: wmotr_seg7_macro_objs

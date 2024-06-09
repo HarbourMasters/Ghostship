@@ -3521,3 +3521,8 @@ bbh_seg7_collision_coffin:
   type: SM64:COLLISION
   offset: 0x26D18
   symbol: bbh_seg7_collision_coffin
+
+bbh_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x268C4
+  symbol: bbh_seg7_macro_objs
