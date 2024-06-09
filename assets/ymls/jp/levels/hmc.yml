@@ -3260,3 +3260,38 @@ hmc_seg7_painting_dl_070254E0:
   type: GFX
   offset: 0x254E0
   symbol: hmc_seg7_painting_dl_070254E0
+
+hmc_seg7_collision_level:
+  type: SM64:COLLISION
+  offset: 0x25594
+  symbol: hmc_seg7_collision_level
+
+hmc_seg7_collision_elevator:
+  type: SM64:COLLISION
+  offset: 0x2B5E4
+  symbol: hmc_seg7_collision_elevator
+
+hmc_seg7_collision_0702B65C:
+  type: SM64:COLLISION
+  offset: 0x2B65C
+  symbol: hmc_seg7_collision_0702B65C
+
+hmc_seg7_collision_controllable_platform:
+  type: SM64:COLLISION
+  offset: 0x2B6E0
+  symbol: hmc_seg7_collision_controllable_platform
+
+hmc_seg7_collision_controllable_platform_sub:
+  type: SM64:COLLISION
+  offset: 0x2B7F4
+  symbol: hmc_seg7_collision_controllable_platform_sub
+
+hmc_seg7_trajectory_0702B86C:
+  type: SM64:TRAJECTORY
+  offset: 0x2B86C
+  symbol: hmc_seg7_trajectory_0702B86C
+
+hmc_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x2AA78
+  symbol: hmc_seg7_macro_objs

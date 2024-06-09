@@ -2624,3 +2624,22 @@ lll_seg7_collision_falling_wall:
   offset: 0x2844C
   symbol: lll_seg7_collision_falling_wall
 
+lll_seg7_trajectory_0702856C:
+  type: SM64:TRAJECTORY
+  offset: 0x284DC
+  symbol: lll_seg7_trajectory_0702856C
+
+lll_seg7_trajectory_07028660:
+  type: SM64:TRAJECTORY
+  offset: 0x285D0
+  symbol: lll_seg7_trajectory_07028660
+  
+lll_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x1CD88
+  symbol: lll_seg7_area_1_macro_objs
+
+lll_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x28344
+  symbol: lll_seg7_area_2_macro_objs

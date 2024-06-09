@@ -502,3 +502,7 @@ totwc_seg7_collision:
   offset: 0x7A18
   symbol: totwc_seg7_collision
 
+totwc_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x88AC
+  symbol: totwc_seg7_macro_objs

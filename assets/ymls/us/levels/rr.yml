@@ -4025,3 +4025,27 @@ rr_seg7_collision_level:
   offset: 0x2A7C0
   symbol: rr_seg7_collision_level
 
+rr_seg7_trajectory_0702EC3C:
+  type: SM64:TRAJECTORY
+  offset: 0x2EA80
+  symbol: rr_seg7_trajectory_0702EC3C
+
+rr_seg7_trajectory_0702ECC0:
+  type: SM64:TRAJECTORY
+  offset: 0x2EB04
+  symbol: rr_seg7_trajectory_0702ECC0
+
+rr_seg7_trajectory_0702ED9C:
+  type: SM64:TRAJECTORY
+  offset: 0x2EBE0
+  symbol: rr_seg7_trajectory_0702ED9C
+
+rr_seg7_trajectory_0702EEE0:
+  type: SM64:TRAJECTORY
+  offset: 0x2ED24
+  symbol: rr_seg7_trajectory_0702EEE0
+
+rr_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x2E81C
+  symbol: rr_seg7_macro_objs

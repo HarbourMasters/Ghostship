@@ -2587,3 +2587,17 @@ ssl_seg7_collision_070284B0:
   offset: 0x284B0
   symbol: ssl_seg7_collision_070284B0
 
+ssl_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x12424
+  symbol: ssl_seg7_area_1_macro_objs
+
+ssl_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x27CD4
+  symbol: ssl_seg7_area_2_macro_objs
+
+ssl_seg7_area_3_macro_objs:
+  type: SM64:MACRO
+  offset: 0x27ECC
+  symbol: ssl_seg7_area_3_macro_objs

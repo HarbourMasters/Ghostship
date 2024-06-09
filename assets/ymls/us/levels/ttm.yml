@@ -4252,3 +4252,27 @@ ttm_seg7_collision_podium_warp:
   offset: 0x3013C
   symbol: ttm_seg7_collision_podium_warp
 
+ttm_seg7_trajectory_070170A0:
+  type: SM64:TRAJECTORY
+  offset: 0x170A0
+  symbol: ttm_seg7_trajectory_070170A0
+
+ttm_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x16F18
+  symbol: ttm_seg7_area_1_macro_objs
+
+ttm_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x302C8
+  symbol: ttm_seg7_area_2_macro_objs
+
+ttm_seg7_area_3_macro_objs:
+  type: SM64:MACRO
+  offset: 0x30338
+  symbol: ttm_seg7_area_3_macro_objs
+
+ttm_seg7_area_4_macro_objs:
+  type: SM64:MACRO
+  offset: 0x30418
+  symbol: ttm_seg7_area_4_macro_objs

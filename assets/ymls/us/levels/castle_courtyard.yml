@@ -570,3 +570,8 @@ castle_courtyard_seg7_collision_level:
   offset: 0x59A8
   symbol: castle_courtyard_seg7_collision_level
 
+castle_courtyard_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x6E20
+  symbol: castle_courtyard_seg7_macro_objs
+
