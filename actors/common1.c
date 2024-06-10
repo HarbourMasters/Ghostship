@@ -17,7 +17,6 @@ UNUSED static const u64 binid_1 = 1;
 #include "butterfly/anims/table.inc.c"
 UNUSED static const u64 binid_2 = 2;
 
-#include "coin/model.inc.c"
 UNUSED static const u64 binid_3 = 3;
 
 #include "warp_pipe/model.inc.c"

@@ -9,7 +9,6 @@
 #include "mist/geo.inc.c"
 #include "explosion/geo.inc.c"
 #include "butterfly/geo.inc.c"
-#include "coin/geo.inc.c"
 #include "warp_pipe/geo.inc.c"
 #include "door/geo.inc.c"
 #include "bowser_key/geo.inc.c"

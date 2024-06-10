@@ -20,5 +20,6 @@ enum class ResourceType {
     PaintingData = 0x504E5444,   // PNTD
     Trajectory = 0x5452414A,     // TRAJ
     WaterDroplet = 0x57545244,   // WTRD
+    AssetArray = 0x41415252,   // AARR
 };
 } // namespace SOH

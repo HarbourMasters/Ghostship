@@ -938,8 +938,9 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
                 if (geo != NULL && geo->type == GRAPH_NODE_TYPE_SCALE) {
                     objScale = ((struct GraphNodeScale *) geo)->scale;
                 }
+                int idx = retrieve_animation_index(gCurrAnimFrame, &gCurrAnimAttribute);
                 animOffset[0] =
-                    gCurrAnimData[retrieve_animation_index(gCurrAnimFrame, &gCurrAnimAttribute)]
+                    gCurrAnimData[idx]
                     * gCurrAnimTranslationMultiplier * objScale;
                 animOffset[1] = 0.0f;
                 gCurrAnimAttribute += 2;

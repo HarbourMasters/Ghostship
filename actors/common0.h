@@ -19,33 +19,14 @@ extern const Gfx blue_coin_switch_seg8_dl_08000E08[];
 extern const Collision blue_coin_switch_seg8_collision_08000E98[];
 
 // bobomb
-extern const GeoLayout black_bobomb_geo[];
-extern const GeoLayout bobomb_buddy_geo[];
-extern const Gfx bobomb_seg8_dl_08022AC0[];
-extern const Gfx bobomb_seg8_dl_08022B08[];
-extern const Gfx bobomb_seg8_dl_08022B58[];
-extern const Gfx bobomb_seg8_dl_08022B88[];
-extern const Gfx bobomb_seg8_dl_08022C38[];
-extern const Gfx bobomb_seg8_dl_08022CA0[];
-extern const Gfx bobomb_seg8_dl_08022D08[];
-extern const Gfx bobomb_seg8_dl_08022D78[];
-extern const Gfx bobomb_seg8_dl_08023270[];
-extern const Gfx bobomb_seg8_dl_08023378[];
-extern const Gfx bobomb_seg8_dl_08023480[];
-extern const struct Animation *const bobomb_seg8_anims_0802396C[];
+#include "assets/actors/bobomb.h"
 
 // bowling_ball
 extern const GeoLayout bowling_ball_geo[];
 extern const GeoLayout bowling_ball_track_geo[];
 
 // breakable_box
-extern const GeoLayout breakable_box_geo[];
-extern const GeoLayout breakable_box_small_geo[];
-extern const Gfx breakable_box_seg8_dl_08012C30[];
-extern const Gfx breakable_box_seg8_dl_08012CD8[];
-extern const Gfx breakable_box_seg8_dl_08012D20[];
-extern const Gfx breakable_box_seg8_dl_08012D48[];
-extern const Collision breakable_box_seg8_collision_08012D70[];
+#include "assets/actors/breakable_box.h"
 
 // cannon_barrel
 extern const GeoLayout cannon_barrel_geo[];

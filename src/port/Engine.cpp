@@ -28,6 +28,7 @@
 #include "TextureFactory.h"
 #include "VertexFactory.h"
 #include "Fast3D/Fast3dWindow.h"
+#include "importer/AssetArrayFactory.h"
 
 extern "C" {
 #include "sm64.h"
@@ -68,6 +69,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     wnd->SetRendererUCode(ucode_f3d);
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
+    auto blobFactory = std::make_shared<LUS::ResourceFactoryBinaryBlobV0>();
     loader->RegisterResourceFactory(std::make_shared<SM64::AnimationFactoryV0>(), RESOURCE_FORMAT_BINARY, "Animation", static_cast<uint32_t>(SM64::ResourceType::Anim), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank", static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
@@ -80,7 +82,10 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY, "DisplayList", static_cast<uint32_t>(LUS::ResourceType::DisplayList), 0);
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(LUS::ResourceType::Matrix), 0);
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryArrayV0>(), RESOURCE_FORMAT_BINARY, "Array", static_cast<uint32_t>(LUS::ResourceType::Array), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryBlobV0>(), RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::ResourceFactoryBinaryAssetArrayV0>(), RESOURCE_FORMAT_BINARY, "AssetArray", static_cast<uint32_t>(SM64::ResourceType::AssetArray), 0);
+
+    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
+    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "CollisionBlob", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
 }
 
 void GameEngine::Create(){

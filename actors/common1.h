@@ -25,26 +25,7 @@ extern const Gfx butterfly_seg3_dl_030054A0[];
 extern const struct Animation *const butterfly_seg3_anims_030056B0[];
 
 // coin
-extern const GeoLayout yellow_coin_geo[];
-extern const GeoLayout yellow_coin_no_shadow_geo[];
-extern const GeoLayout blue_coin_geo[];
-extern const GeoLayout blue_coin_no_shadow_geo[];
-extern const GeoLayout red_coin_geo[];
-extern const GeoLayout red_coin_no_shadow_geo[];
-extern const Gfx coin_seg3_dl_03007780[];
-extern const Gfx coin_seg3_dl_030077D0[];
-extern const Gfx coin_seg3_dl_03007800[];
-extern const Gfx coin_seg3_dl_03007828[];
-extern const Gfx coin_seg3_dl_03007850[];
-extern const Gfx coin_seg3_dl_03007878[];
-extern const Gfx coin_seg3_dl_030078A0[];
-extern const Gfx coin_seg3_dl_030078C8[];
-extern const Gfx coin_seg3_dl_030078F0[];
-extern const Gfx coin_seg3_dl_03007918[];
-extern const Gfx coin_seg3_dl_03007940[];
-extern const Gfx coin_seg3_dl_03007968[];
-extern const Gfx coin_seg3_dl_03007990[];
-extern const Gfx coin_seg3_dl_030079B8[];
+#include "assets/actors/coin.h"
 
 // dirt
 extern const GeoLayout dirt_animation_geo[];

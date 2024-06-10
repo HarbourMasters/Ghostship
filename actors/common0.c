@@ -46,8 +46,6 @@ UNUSED static const u64 binid_8 = 8;
 #include "flyguy/anims/table.inc.c"
 UNUSED static const u64 binid_9 = 9;
 
-#include "breakable_box/model.inc.c"
-#include "breakable_box/collision.inc.c"
 UNUSED static const u64 binid_10 = 10;
 
 UNUSED static const u64 binid_11 = 11;
@@ -60,9 +58,6 @@ UNUSED static const u64 binid_12 = 12;
 #include "goomba/anims/table.inc.c"
 UNUSED static const u64 binid_13 = 13;
 
-#include "bobomb/model.inc.c"
-#include "bobomb/anims/data.inc.c"
-#include "bobomb/anims/table.inc.c"
 UNUSED static const u64 binid_14 = 14;
 
 #include "metal_box/model.inc.c"

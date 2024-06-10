@@ -4,6 +4,10 @@
     offset: 0x1F0530
   segments:
     - [0x08,  0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "breakable_box/geo.h"'
 
 breakable_box_seg8_lights_08011A80:
   type: LIGHTS
@@ -65,4 +69,3 @@ breakable_box_seg8_collision_08012D70:
   type: SM64:COLLISION
   offset: 0x12D70
   symbol: breakable_box_seg8_collision_08012D70
-
