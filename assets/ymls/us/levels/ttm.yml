@@ -4276,3 +4276,75 @@ ttm_seg7_area_4_macro_objs:
   type: SM64:MACRO
   offset: 0x30418
   symbol: ttm_seg7_area_4_macro_objs
+
+ttm_seg7_lights_070122F0:
+  type: LIGHTS
+  offset: 0x122F0
+  symbol: ttm_seg7_lights_070122F0
+
+ttm_seg7_vertex_07012308:
+  type: VTX
+  count: 8
+  offset: 0x12308
+  symbol: ttm_seg7_vertex_07012308
+
+ttm_seg7_dl_07012388:
+  type: GFX
+  offset: 0x12388
+  symbol: ttm_seg7_dl_07012388
+
+ttm_seg7_dl_070123A0:
+  type: GFX
+  offset: 0x123A0
+  symbol: ttm_seg7_dl_070123A0
+
+ttm_seg7_dl_070123B8:
+  type: GFX
+  offset: 0x123B8
+  symbol: ttm_seg7_dl_070123B8
+
+ttm_seg7_dl_07012410:
+  type: GFX
+  offset: 0x12410
+  symbol: ttm_seg7_dl_07012410
+
+ttm_seg7_painting_dl_07012430:
+  type: GFX
+  offset: 0x12430
+  symbol: ttm_seg7_painting_dl_07012430
+
+ttm_seg7_painting_texture_map_bottom_07012450:
+  type: SM64:PAINTING_MAP
+  offset: 0x12450
+  symbol: ttm_seg7_painting_texture_map_bottom_07012450
+
+ttm_seg7_painting_top_0701296C:
+  type: SM64:PAINTING_MAP
+  offset: 0x1296C
+  symbol: ttm_seg7_painting_top_0701296C
+
+ttm_seg7_painting_texture_maps_07012E88:
+  type: ASSET_ARRAY
+  assetType: PaintingData
+  factoryType: SM64:PAINTING_MAP
+  count: 2
+  offset: 0x12E88
+  symbol: ttm_seg7_painting_texture_maps_07012E88
+
+ttm_seg7_painting_dl_07012E98:
+  type: GFX
+  offset: 0x12E98
+  symbol: ttm_seg7_painting_dl_07012E98
+
+ttm_seg7_painting_textures_07012EF8:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x12EF8
+  symbol: ttm_seg7_painting_textures_07012EF8
+
+ttm_slide_painting:
+  type: SM64:PAINTING
+  offset: 0x12F00
+  symbol: ttm_slide_painting
