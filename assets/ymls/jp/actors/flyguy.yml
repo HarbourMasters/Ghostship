@@ -3,7 +3,11 @@
   compression:
     offset: 0x1F0530
   segments:
-    - [0x08,  0x1F0530]
+    - [0x08, 0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "flyguy/geo.h"'
 
 flyguy_cloth_wrinkle:
   type: TEXTURE
@@ -263,3 +267,10 @@ flyguy_seg8_dl_08011710:
   offset: 0x11710
   symbol: flyguy_seg8_dl_08011710
 
+flyguy_seg8_anims_08011A64:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x11A64
+  symbol: flyguy_seg8_anims_08011A64

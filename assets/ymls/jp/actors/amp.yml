@@ -4,6 +4,10 @@
     offset: 0x1F0530
   segments:
     - [0x08,  0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "amp/geo.h"'
 
 amp_electricity:
   type: TEXTURE
@@ -40,3 +44,31 @@ amp_mouth:
   offset: 0x2318
   format: RGBA16
   symbol: dAmpMouthTexture
+
+dAmpAnimsList:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 1
+  offset: 0x4034
+  symbol: dAmpAnimsList
+
+amp_seg8_gfx_2BA0:
+  type: GFX
+  offset: 0x2BA0
+  symbol: amp_seg8_gfx_2BA0
+
+amp_seg8_gfx_2C88:
+  type: GFX
+  offset: 0x2C88
+  symbol: amp_seg8_gfx_2C88
+
+amp_seg8_gfx_2D70:
+  type: GFX
+  offset: 0x2D70
+  symbol: amp_seg8_gfx_2D70
+
+amp_seg8_gfx_2E58:
+  type: GFX
+  offset: 0x2E58
+  symbol: amp_seg8_gfx_2E58

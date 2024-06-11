@@ -4,6 +4,10 @@
     offset: 0x1F0530
   segments:
     - [0x08,  0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "exclamation_box/geo.h"'
 
 exclamation_box_seg8_lights_08012E10:
   type: LIGHTS
@@ -156,4 +160,3 @@ exclamation_box_seg8_dl_08019438:
   type: GFX
   offset: 0x19438
   symbol: exclamation_box_seg8_dl_08019438
-

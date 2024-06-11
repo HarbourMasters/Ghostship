@@ -4,6 +4,10 @@
     offset: 0x1F0530
   segments:
     - [0x08,  0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "koopa_shell/geo.h"'
 
 koopa_shell_seg8_lights_08026388:
   type: LIGHTS
@@ -229,4 +233,3 @@ koopa_shell_seg8_dl_08028B78:
   type: GFX
   offset: 0x28B78
   symbol: koopa_shell_seg8_dl_08028B78
-

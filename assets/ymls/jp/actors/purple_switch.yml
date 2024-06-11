@@ -4,6 +4,10 @@
     offset: 0x1F0530
   segments:
     - [0x08,  0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "purple_switch/geo.h"'
 
 purple_switch_seg8_lights_0800C090:
   type: LIGHTS
@@ -60,4 +64,3 @@ purple_switch_seg8_collision_0800C7A8:
   type: SM64:COLLISION
   offset: 0xC7A8
   symbol: purple_switch_seg8_collision_0800C7A8
-
