@@ -12,11 +12,7 @@ extern const Gfx dAmpBodyDl[];
 extern const struct Animation *const dAmpAnimsList[];
 
 // blue_coin_switch
-extern const GeoLayout blue_coin_switch_geo[];
-extern const Gfx blue_coin_switch_seg8_dl_08000D58[];
-extern const Gfx blue_coin_switch_seg8_dl_08000DD0[];
-extern const Gfx blue_coin_switch_seg8_dl_08000E08[];
-extern const Collision blue_coin_switch_seg8_collision_08000E98[];
+#include "assets/actors/blue_coin_switch.h"
 
 // bobomb
 #include "assets/actors/bobomb.h"

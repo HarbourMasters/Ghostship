@@ -6,8 +6,6 @@
 #include "types.h"
 #include "make_const_nonconst.h"
 
-#include "blue_coin_switch/model.inc.c"
-#include "blue_coin_switch/collision.inc.c"
 UNUSED static const u64 binid_0 = 0;
 
 #include "amp/model.inc.c"
