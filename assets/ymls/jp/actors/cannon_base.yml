@@ -4,6 +4,10 @@
     offset: 0x1F0530
   segments:
     - [0x08,  0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "cannon_base/geo.h"'
 
 cannon_base_seg8_lights_08004988:
   type: LIGHTS
@@ -70,4 +74,3 @@ cannon_base_seg8_dl_080057F8:
   type: GFX
   offset: 0x57F8
   symbol: cannon_base_seg8_dl_080057F8
-
