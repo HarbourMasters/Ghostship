@@ -45,6 +45,71 @@ amp_mouth:
   format: RGBA16
   symbol: dAmpMouthTexture
 
+amp_electricity_vertices:
+  type: VTX
+  count: 5
+  offset: 0x2B18
+  symbol: dAmpElectricityVertices
+
+amp_electricity_sub_dl:
+  type: GFX
+  offset: 0x2B68
+  symbol: dAmpElectricitySubDl
+
+amp_electricity_dl:
+  type: GFX
+  offset: 0x2BA0
+  symbol: dAmpElectricityDl
+
+amp_eye_vertices:
+  type: VTX
+  count: 4
+  offset: 0x2C10
+  symbol: dAmpEyeVertices
+
+amp_eye_sub_dl:
+  type: GFX
+  offset: 0x2C50
+  symbol: dAmpEyeSubDl
+
+amp_eye_dl:
+  type: GFX
+  offset: 0x2C88
+  symbol: dAmpEyeDl
+
+amp_mouth_vertices:
+  type: VTX
+  count: 4
+  offset: 0x2CF8
+  symbol: dAmpMouthVertices
+
+amp_mouth_sub_dl:
+  type: GFX
+  offset: 0x2D38
+  symbol: dAmpMouthSubDl
+
+amp_mouth_dl:
+  type: GFX
+  offset: 0x2D70
+  symbol: dAmpMouthDl
+
+amp_body_vertices:
+  type: VTX
+  count: 4
+  offset: 0x2DE0
+  symbol: dAmpBodyVertices
+
+amp_body_sub_dl:
+  type: GFX
+  offset: 0x2E20
+  symbol: dAmpBodySubDl
+
+amp_body_dl:
+  type: GFX
+  offset: 0x2E58
+  symbol: dAmpBodyDl
+
+
 dAmpAnimsList:
   type: ASSET_ARRAY
   assetType: Animation
@@ -52,23 +117,3 @@ dAmpAnimsList:
   count: 1
   offset: 0x4034
   symbol: dAmpAnimsList
-
-amp_seg8_gfx_2BA0:
-  type: GFX
-  offset: 0x2BA0
-  symbol: amp_seg8_gfx_2BA0
-
-amp_seg8_gfx_2C88:
-  type: GFX
-  offset: 0x2C88
-  symbol: amp_seg8_gfx_2C88
-
-amp_seg8_gfx_2D70:
-  type: GFX
-  offset: 0x2D70
-  symbol: amp_seg8_gfx_2D70
-
-amp_seg8_gfx_2E58:
-  type: GFX
-  offset: 0x2E58
-  symbol: amp_seg8_gfx_2E58
