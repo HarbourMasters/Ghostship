@@ -28,8 +28,6 @@ UNUSED static const u64 binid_5 = 5;
 #include "purple_switch/collision.inc.c"
 UNUSED static const u64 binid_6 = 6;
 
-#include "checkerboard_platform/model.inc.c"
-#include "checkerboard_platform/collision.inc.c"
 UNUSED static const u64 binid_7 = 7;
 
 #include "heart/model.inc.c"

@@ -4,6 +4,10 @@
     offset: 0x1F0530
   segments:
     - [0x08,  0x1F0530]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "checkerboard_platform/geo.h"'
 
 checkerboard_platform_seg8_lights_0800C828:
   type: LIGHTS
@@ -60,4 +64,3 @@ checkerboard_platform_seg8_collision_0800D710:
   type: SM64:COLLISION
   offset: 0xD710
   symbol: checkerboard_platform_seg8_collision_0800D710
-
