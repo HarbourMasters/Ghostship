@@ -8,49 +8,49 @@
 unagi_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAE60
   symbol: unagi_lights_unused1
 
 unagi_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAE78
   symbol: unagi_lights_unused2
 
 unagi_lights_unused3:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAE90
   symbol: unagi_lights_unused3
 
 unagi_lights_unused4:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAEA8
   symbol: unagi_lights_unused4
 
 unagi_lights_unused5:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAEC0
   symbol: unagi_lights_unused5
 
 unagi_lights_unused6:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAED8
   symbol: unagi_lights_unused6
 
 unagi_lights_unused7:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAEF0
   symbol: unagi_lights_unused7
 
 unagi_lights_unused8:
   type: LIGHTS
   size: 24
-  offset: 0x2410
+  offset: 0xAF08
   symbol: unagi_lights_unused8
 
 unagi_body:

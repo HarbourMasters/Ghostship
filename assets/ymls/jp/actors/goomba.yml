@@ -5,6 +5,18 @@
   segments:
     - [0x08,  0x1F0530]
 
+goomba_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x194A0
+  symbol: goomba_lights_unused1
+
+goomba_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x194B8
+  symbol: goomba_lights_unused2
+
 goomba_seg8_lights_080194D0:
   type: LIGHTS
   size: 24
@@ -319,16 +331,4 @@ goomba_seg8_dl_0801D760:
   type: GFX
   offset: 0x1D760
   symbol: goomba_seg8_dl_0801D760
-
-goomba_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x22608
-  symbol: goomba_lights_unused1
-
-goomba_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x22608
-  symbol: goomba_lights_unused2
 

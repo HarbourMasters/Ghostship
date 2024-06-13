@@ -50,6 +50,24 @@
   format: RGBA16
   symbol: ccm_seg7_texture_07001900
 
+5:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2100
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002100
+
+6:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2900
+  format: RGBA16
+  symbol: ccm_seg7_texture_07002900
+
 7:
   type: TEXTURE
   size: 2048
@@ -674,15 +692,6 @@ ccm_seg7_vertex_0700B3A8:
   offset: 0xB3A8
   symbol: ccm_seg7_vertex_0700B3A8
 
-6:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xB470
-  format: RGBA16
-  symbol: ccm_seg7_texture_07002900
-
 ccm_seg7_vertex_0700B4A8:
   type: VTX
   count: 16
@@ -742,15 +751,6 @@ ccm_seg7_vertex_0700BB88:
   count: 15
   offset: 0xBB88
   symbol: ccm_seg7_vertex_0700BB88
-
-5:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xBC70
-  format: RGBA16
-  symbol: ccm_seg7_texture_07002100
 
 ccm_seg7_vertex_0700BC78:
   type: VTX

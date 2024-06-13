@@ -23,6 +23,15 @@ piranha_plant_seg6_lights_060113E0:
   offset: 0x113E0
   symbol: piranha_plant_seg6_lights_060113E0
 
+piranha_plant_tongue:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x113F8
+  format: RGBA16
+  symbol: piranha_plant_seg6_texture_060113F8
+
 piranha_plant_skin:
   type: TEXTURE
   size: 2048
@@ -325,11 +334,3 @@ piranha_plant_seg6_dl_06016F20:
   offset: 0x16F20
   symbol: piranha_plant_seg6_dl_06016F20
 
-piranha_plant_tongue:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x24438
-  format: RGBA16
-  symbol: piranha_plant_seg6_texture_060113F8

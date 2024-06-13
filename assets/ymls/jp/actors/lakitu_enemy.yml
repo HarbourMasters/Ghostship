@@ -8,7 +8,7 @@
 lakitu_enemy_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0xE38
+  offset: 0xEC98
   symbol: lakitu_enemy_lights_unused1
 
 lakitu_enemy_seg5_lights_0500ECB0:

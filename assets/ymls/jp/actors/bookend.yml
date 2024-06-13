@@ -5,6 +5,30 @@
   segments:
     - [0x05,  0x165060]
 
+bookend_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: bookend_lights_unused1
+
+bookend_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x18
+  symbol: bookend_lights_unused2
+
+bookend_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x30
+  symbol: bookend_lights_unused3
+
+bookend_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x48
+  symbol: bookend_lights_unused4
+
 bookend_spine:
   type: TEXTURE
   size: 1024
@@ -225,28 +249,4 @@ bookend_seg5_dl_050022E0:
   type: GFX
   offset: 0x22E0
   symbol: bookend_seg5_dl_050022E0
-
-bookend_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused1
-
-bookend_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused2
-
-bookend_lights_unused3:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused3
-
-bookend_lights_unused4:
-  type: LIGHTS
-  size: 24
-  offset: 0x6C08
-  symbol: bookend_lights_unused4
 

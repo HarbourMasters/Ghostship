@@ -5,6 +5,15 @@
   segments:
     - [0x07,  0x4187C0]
 
+0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  format: RGBA16
+  symbol: jrb_seg7_texture_07000000
+
 1:
   type: TEXTURE
   size: 4096
@@ -13,15 +22,6 @@
   offset: 0x800
   format: RGBA16
   symbol: jrb_seg7_texture_07000800
-
-0:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x1000
-  format: RGBA16
-  symbol: jrb_seg7_texture_07000000
 
 2:
   type: TEXTURE
