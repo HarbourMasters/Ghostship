@@ -1,0 +1,64 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1C4230
+  segments:
+    - [0x06,  0x1C4230]
+
+piranha_plant_seg6_anim_06017C38:
+  type: SM64:ANIM
+  offset: 0x17C38
+  symbol: piranha_plant_seg6_anim_06017C38
+
+piranha_plant_seg6_anim_06017D88:
+  type: SM64:ANIM
+  offset: 0x17D88
+  symbol: piranha_plant_seg6_anim_06017D88
+
+piranha_plant_seg6_anim_060187B0:
+  type: SM64:ANIM
+  offset: 0x187B0
+  symbol: piranha_plant_seg6_anim_060187B0
+
+piranha_plant_seg6_anim_06018BA8:
+  type: SM64:ANIM
+  offset: 0x18BA8
+  symbol: piranha_plant_seg6_anim_06018BA8
+
+piranha_plant_seg6_anim_06019854:
+  type: SM64:ANIM
+  offset: 0x19854
+  symbol: piranha_plant_seg6_anim_06019854
+
+piranha_plant_seg6_anim_0601A014:
+  type: SM64:ANIM
+  offset: 0x1A014
+  symbol: piranha_plant_seg6_anim_0601A014
+
+piranha_plant_seg6_anim_0601AAE4:
+  type: SM64:ANIM
+  offset: 0x1AAE4
+  symbol: piranha_plant_seg6_anim_0601AAE4
+
+piranha_plant_seg6_anim_0601AF34:
+  type: SM64:ANIM
+  offset: 0x1AF34
+  symbol: piranha_plant_seg6_anim_0601AF34
+
+piranha_plant_seg6_anim_0601B634:
+  type: SM64:ANIM
+  offset: 0x1B634
+  symbol: piranha_plant_seg6_anim_0601B634
+
+piranha_plant_seg6_anim_0601C304:
+  type: SM64:ANIM
+  offset: 0x1C304
+  symbol: piranha_plant_seg6_anim_0601C304
+
+piranha_plant_seg6_anims_0601C31C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 11
+  offset: 0x1C31C
+  symbol: piranha_plant_seg6_anims_0601C31C

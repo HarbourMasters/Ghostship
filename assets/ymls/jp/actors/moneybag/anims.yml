@@ -1,0 +1,39 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E3520
+  segments:
+    - [0x06,  0x1E3520]
+
+moneybag_seg6_anim_06005AD8:
+  type: SM64:ANIM
+  offset: 0x5AD8
+  symbol: moneybag_seg6_anim_06005AD8
+
+moneybag_seg6_anim_06005BEC:
+  type: SM64:ANIM
+  offset: 0x5BEC
+  symbol: moneybag_seg6_anim_06005BEC
+
+moneybag_seg6_anim_06005C98:
+  type: SM64:ANIM
+  offset: 0x5C98
+  symbol: moneybag_seg6_anim_06005C98
+
+moneybag_seg6_anim_06005D3C:
+  type: SM64:ANIM
+  offset: 0x5D3C
+  symbol: moneybag_seg6_anim_06005D3C
+
+moneybag_seg6_anim_06005E44:
+  type: SM64:ANIM
+  offset: 0x5E44
+  symbol: moneybag_seg6_anim_06005E44
+
+moneybag_seg6_anims_06005E5C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 5
+  offset: 0x5E5C
+  symbol: moneybag_seg6_anims_06005E5C

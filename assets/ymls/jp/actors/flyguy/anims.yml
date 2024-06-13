@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
+flyguy_seg8_anim_08011A4C:
+  type: SM64:ANIM
+  offset: 0x11A4C
+  symbol: flyguy_seg8_anim_08011A4C
+
+flyguy_seg8_anims_08011A64:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x11A64
+  symbol: flyguy_seg8_anims_08011A64

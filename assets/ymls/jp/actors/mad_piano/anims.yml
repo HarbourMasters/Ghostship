@@ -1,0 +1,24 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x165060
+  segments:
+    - [0x05,  0x165060]
+
+mad_piano_seg5_anim_05009A04:
+  type: SM64:ANIM
+  offset: 0x9A04
+  symbol: mad_piano_seg5_anim_05009A04
+
+mad_piano_seg5_anim_05009AFC:
+  type: SM64:ANIM
+  offset: 0x9AFC
+  symbol: mad_piano_seg5_anim_05009AFC
+
+mad_piano_seg5_anims_05009B14:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x9B14
+  symbol: mad_piano_seg5_anims_05009B14

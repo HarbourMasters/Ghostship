@@ -1,0 +1,84 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1C4230
+  segments:
+    - [0x06,  0x1C4230]
+
+koopa_seg6_anim_0600CC24:
+  type: SM64:ANIM
+  offset: 0xCC24
+  symbol: koopa_seg6_anim_0600CC24
+
+koopa_seg6_anim_0600CFB8:
+  type: SM64:ANIM
+  offset: 0xCFB8
+  symbol: koopa_seg6_anim_0600CFB8
+
+koopa_seg6_anim_0600D518:
+  type: SM64:ANIM
+  offset: 0xD518
+  symbol: koopa_seg6_anim_0600D518
+
+koopa_seg6_anim_0600D804:
+  type: SM64:ANIM
+  offset: 0xD804
+  symbol: koopa_seg6_anim_0600D804
+
+koopa_seg6_anim_0600DD90:
+  type: SM64:ANIM
+  offset: 0xDD90
+  symbol: koopa_seg6_anim_0600DD90
+
+koopa_seg6_anim_0600E32C:
+  type: SM64:ANIM
+  offset: 0xE32C
+  symbol: koopa_seg6_anim_0600E32C
+
+koopa_seg6_anim_0600E928:
+  type: SM64:ANIM
+  offset: 0xE928
+  symbol: koopa_seg6_anim_0600E928
+
+koopa_seg6_anim_0600F3EC:
+  type: SM64:ANIM
+  offset: 0xF3EC
+  symbol: koopa_seg6_anim_0600F3EC
+
+koopa_seg6_anim_0600FB1C:
+  type: SM64:ANIM
+  offset: 0xFB1C
+  symbol: koopa_seg6_anim_0600FB1C
+
+koopa_seg6_anim_06010258:
+  type: SM64:ANIM
+  offset: 0x10258
+  symbol: koopa_seg6_anim_06010258
+
+koopa_seg6_anim_06010634:
+  type: SM64:ANIM
+  offset: 0x10634
+  symbol: koopa_seg6_anim_06010634
+
+koopa_seg6_anim_06010E48:
+  type: SM64:ANIM
+  offset: 0x10E48
+  symbol: koopa_seg6_anim_06010E48
+
+koopa_seg6_anim_060110D8:
+  type: SM64:ANIM
+  offset: 0x110D8
+  symbol: koopa_seg6_anim_060110D8
+
+koopa_seg6_anim_0601134C:
+  type: SM64:ANIM
+  offset: 0x1134C
+  symbol: koopa_seg6_anim_0601134C
+
+koopa_seg6_anims_06011364:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 17
+  offset: 0x11364
+  symbol: koopa_seg6_anims_06011364

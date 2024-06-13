@@ -1,0 +1,24 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x15EA70
+  segments:
+    - [0x05,  0x15EA70]
+
+snowman_seg5_anim_0500CED8:
+  type: SM64:ANIM
+  offset: 0xCED8
+  symbol: snowman_seg5_anim_0500CED8
+
+snowman_seg5_anim_0500D100:
+  type: SM64:ANIM
+  offset: 0xD100
+  symbol: snowman_seg5_anim_0500D100
+
+snowman_seg5_anims_0500D118:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 4
+  offset: 0xD118
+  symbol: snowman_seg5_anims_0500D118

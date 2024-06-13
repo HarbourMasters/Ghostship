@@ -1,0 +1,24 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x131060
+  segments:
+    - [0x05,  0x131060]
+
+blargg_seg5_anim_05006070:
+  type: SM64:ANIM
+  offset: 0x6070
+  symbol: blargg_seg5_anim_05006070
+
+blargg_seg5_anim_05006154:
+  type: SM64:ANIM
+  offset: 0x6154
+  symbol: blargg_seg5_anim_05006154
+
+blargg_seg5_anims_0500616C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x616C
+  symbol: blargg_seg5_anims_0500616C

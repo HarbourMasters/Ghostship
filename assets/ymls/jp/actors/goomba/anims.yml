@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
+goomba_seg8_anim_0801DA34:
+  type: SM64:ANIM
+  offset: 0x1DA34
+  symbol: goomba_seg8_anim_0801DA34
+
+goomba_seg8_anims_0801DA4C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x1DA4C
+  symbol: goomba_seg8_anims_0801DA4C

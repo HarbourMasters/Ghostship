@@ -1,0 +1,29 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E7EE0
+  segments:
+    - [0x06,  0x1E7EE0]
+
+dorrie_seg6_anim_0600E18C:
+  type: SM64:ANIM
+  offset: 0xE18C
+  symbol: dorrie_seg6_anim_0600E18C
+
+dorrie_seg6_anim_0600E9BC:
+  type: SM64:ANIM
+  offset: 0xE9BC
+  symbol: dorrie_seg6_anim_0600E9BC
+
+dorrie_seg6_anim_0600F620:
+  type: SM64:ANIM
+  offset: 0xF620
+  symbol: dorrie_seg6_anim_0600F620
+
+dorrie_seg6_anims_0600F638:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0xF638
+  symbol: dorrie_seg6_anims_0600F638

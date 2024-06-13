@@ -1,0 +1,64 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1521D0
+  segments:
+    - [0x05,  0x1521D0]
+
+monty_mole_seg5_anim_05004FEC:
+  type: SM64:ANIM
+  offset: 0x4FEC
+  symbol: monty_mole_seg5_anim_05004FEC
+
+monty_mole_seg5_anim_0500527C:
+  type: SM64:ANIM
+  offset: 0x527C
+  symbol: monty_mole_seg5_anim_0500527C
+
+monty_mole_seg5_anim_050054B0:
+  type: SM64:ANIM
+  offset: 0x54B0
+  symbol: monty_mole_seg5_anim_050054B0
+
+monty_mole_seg5_anim_050062B0:
+  type: SM64:ANIM
+  offset: 0x62B0
+  symbol: monty_mole_seg5_anim_050062B0
+
+monty_mole_seg5_anim_050065C0:
+  type: SM64:ANIM
+  offset: 0x65C0
+  symbol: monty_mole_seg5_anim_050065C0
+
+monty_mole_seg5_anim_050065D8:
+  type: SM64:ANIM
+  offset: 0x65D8
+  symbol: monty_mole_seg5_anim_050065D8
+
+monty_mole_seg5_anim_05006880:
+  type: SM64:ANIM
+  offset: 0x6880
+  symbol: monty_mole_seg5_anim_05006880
+
+monty_mole_seg5_anim_05006B10:
+  type: SM64:ANIM
+  offset: 0x6B10
+  symbol: monty_mole_seg5_anim_05006B10
+
+monty_mole_seg5_anim_05006DB8:
+  type: SM64:ANIM
+  offset: 0x6DB8
+  symbol: monty_mole_seg5_anim_05006DB8
+
+monty_mole_seg5_anim_05007230:
+  type: SM64:ANIM
+  offset: 0x7230
+  symbol: monty_mole_seg5_anim_05007230
+
+monty_mole_seg5_anims_05007248:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 12
+  offset: 0x7248
+  symbol: monty_mole_seg5_anims_05007248

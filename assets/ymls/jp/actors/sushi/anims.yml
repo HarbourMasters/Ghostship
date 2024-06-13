@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x139D10
+  segments:
+    - [0x05,  0x139D10]
+
+sushi_seg5_anim_0500AE3C:
+  type: SM64:ANIM
+  offset: 0xAE3C
+  symbol: sushi_seg5_anim_0500AE3C
+
+sushi_seg5_anims_0500AE54:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 1
+  offset: 0xAE54
+  symbol: sushi_seg5_anims_0500AE54
