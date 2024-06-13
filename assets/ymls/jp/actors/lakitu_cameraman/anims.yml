@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1D8310
+  segments:
+    - [0x06,  0x1D8310]
+
+lakitu_seg6_anim_060058E0:
+  type: SM64:ANIM
+  offset: 0x58E0
+  symbol: lakitu_seg6_anim_060058E0
+
+lakitu_seg6_anims_060058F8:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 2
+  offset: 0x58F8
+  symbol: lakitu_seg6_anims_060058F8

@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x180BB0
+  segments:
+    - [0x05,  0x180BB0]
+
+wiggler_seg5_anim_0500EC74:
+  type: SM64:ANIM
+  offset: 0xEC74
+  symbol: wiggler_seg5_anim_0500EC74
+
+wiggler_seg5_anims_0500EC8C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 2
+  offset: 0xEC8C
+  symbol: wiggler_seg5_anims_0500EC8C

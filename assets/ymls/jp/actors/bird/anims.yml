@@ -1,0 +1,24 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x16D870
+  segments:
+    - [0x05,  0x16D870]
+
+birds_seg5_anim_050008D0:
+  type: SM64:ANIM
+  offset: 0x8D0
+  symbol: birds_seg5_anim_050008D0
+
+birds_seg5_anim_050009D0:
+  type: SM64:ANIM
+  offset: 0x9D0
+  symbol: birds_seg5_anim_050009D0
+
+birds_seg5_anims_050009E8:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 2
+  offset: 0x9E8
+  symbol: birds_seg5_anims_050009E8

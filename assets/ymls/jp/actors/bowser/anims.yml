@@ -1,0 +1,149 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x188440
+  segments:
+    - [0x06,  0x188440]
+
+bowser_seg6_anim_060445EC:
+  type: SM64:ANIM
+  offset: 0x445EC
+  symbol: bowser_seg6_anim_060445EC
+
+bowser_seg6_anim_060453C8:
+  type: SM64:ANIM
+  offset: 0x453C8
+  symbol: bowser_seg6_anim_060453C8
+
+bowser_seg6_anim_06045D28:
+  type: SM64:ANIM
+  offset: 0x45D28
+  symbol: bowser_seg6_anim_06045D28
+
+bowser_seg6_anim_0604671C:
+  type: SM64:ANIM
+  offset: 0x4671C
+  symbol: bowser_seg6_anim_0604671C
+
+bowser_seg6_anim_0604675C:
+  type: SM64:ANIM
+  offset: 0x4675C
+  symbol: bowser_seg6_anim_0604675C
+
+bowser_seg6_anim_06048200:
+  type: SM64:ANIM
+  offset: 0x48200
+  symbol: bowser_seg6_anim_06048200
+
+bowser_seg6_anim_06049880:
+  type: SM64:ANIM
+  offset: 0x49880
+  symbol: bowser_seg6_anim_06049880
+
+bowser_seg6_anim_0604A8E4:
+  type: SM64:ANIM
+  offset: 0x4A8E4
+  symbol: bowser_seg6_anim_0604A8E4
+
+bowser_seg6_anim_0604B178:
+  type: SM64:ANIM
+  offset: 0x4B178
+  symbol: bowser_seg6_anim_0604B178
+
+bowser_seg6_anim_0604B8CC:
+  type: SM64:ANIM
+  offset: 0x4B8CC
+  symbol: bowser_seg6_anim_0604B8CC
+
+bowser_seg6_anim_0604D184:
+  type: SM64:ANIM
+  offset: 0x4D184
+  symbol: bowser_seg6_anim_0604D184
+
+bowser_seg6_anim_0604E5A0:
+  type: SM64:ANIM
+  offset: 0x4E5A0
+  symbol: bowser_seg6_anim_0604E5A0
+
+bowser_seg6_anim_0604F030:
+  type: SM64:ANIM
+  offset: 0x4F030
+  symbol: bowser_seg6_anim_0604F030
+
+bowser_seg6_anim_0604FF4C:
+  type: SM64:ANIM
+  offset: 0x4FF4C
+  symbol: bowser_seg6_anim_0604FF4C
+
+bowser_seg6_anim_06050530:
+  type: SM64:ANIM
+  offset: 0x50530
+  symbol: bowser_seg6_anim_06050530
+
+bowser_seg6_anim_060514E8:
+  type: SM64:ANIM
+  offset: 0x514E8
+  symbol: bowser_seg6_anim_060514E8
+
+bowser_seg6_anim_06051C68:
+  type: SM64:ANIM
+  offset: 0x51C68
+  symbol: bowser_seg6_anim_06051C68
+
+bowser_seg6_anim_06052680:
+  type: SM64:ANIM
+  offset: 0x52680
+  symbol: bowser_seg6_anim_06052680
+
+bowser_seg6_anim_06052D94:
+  type: SM64:ANIM
+  offset: 0x52D94
+  symbol: bowser_seg6_anim_06052D94
+
+bowser_seg6_anim_060534F4:
+  type: SM64:ANIM
+  offset: 0x534F4
+  symbol: bowser_seg6_anim_060534F4
+
+bowser_seg6_anim_06053B8C:
+  type: SM64:ANIM
+  offset: 0x53B8C
+  symbol: bowser_seg6_anim_06053B8C
+
+bowser_seg6_anim_06054290:
+  type: SM64:ANIM
+  offset: 0x54290
+  symbol: bowser_seg6_anim_06054290
+
+bowser_seg6_anim_06054950:
+  type: SM64:ANIM
+  offset: 0x54950
+  symbol: bowser_seg6_anim_06054950
+
+bowser_seg6_anim_06055210:
+  type: SM64:ANIM
+  offset: 0x55210
+  symbol: bowser_seg6_anim_06055210
+
+bowser_seg6_anim_06055984:
+  type: SM64:ANIM
+  offset: 0x55984
+  symbol: bowser_seg6_anim_06055984
+
+bowser_seg6_anim_06056774:
+  type: SM64:ANIM
+  offset: 0x56774
+  symbol: bowser_seg6_anim_06056774
+
+bowser_seg6_anim_06057678:
+  type: SM64:ANIM
+  offset: 0x57678
+  symbol: bowser_seg6_anim_06057678
+
+bowser_seg6_anims_06057690:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 27
+  offset: 0x57690
+  symbol: bowser_seg6_anims_06057690
