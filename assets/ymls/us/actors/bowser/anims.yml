@@ -95,11 +95,6 @@ bowser_seg6_anim_06052680:
   offset: 0x52680
   symbol: bowser_seg6_anim_06052680
 
-bowser_seg6_anim_06054290:
-  type: SM64:ANIM
-  offset: 0x54290
-  symbol: bowser_seg6_anim_06054290
-
 bowser_seg6_anim_06052D94:
   type: SM64:ANIM
   offset: 0x52D94
@@ -114,6 +109,11 @@ bowser_seg6_anim_06053B8C:
   type: SM64:ANIM
   offset: 0x53B8C
   symbol: bowser_seg6_anim_06053B8C
+
+bowser_seg6_anim_06054290:
+  type: SM64:ANIM
+  offset: 0x54290
+  symbol: bowser_seg6_anim_06054290
 
 bowser_seg6_anim_06054950:
   type: SM64:ANIM

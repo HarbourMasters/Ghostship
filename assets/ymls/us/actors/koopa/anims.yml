@@ -65,15 +65,15 @@ koopa_seg6_anim_06010E48:
   offset: 0x10E48
   symbol: koopa_seg6_anim_06010E48
 
-koopa_seg6_anim_0601134C:
-  type: SM64:ANIM
-  offset: 0x1134C
-  symbol: koopa_seg6_anim_0601134C
-
 koopa_seg6_anim_060110D8:
   type: SM64:ANIM
   offset: 0x110D8
   symbol: koopa_seg6_anim_060110D8
+
+koopa_seg6_anim_0601134C:
+  type: SM64:ANIM
+  offset: 0x1134C
+  symbol: koopa_seg6_anim_0601134C
 
 koopa_seg6_anims_06011364:
   type: ASSET_ARRAY

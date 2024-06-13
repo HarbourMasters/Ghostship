@@ -5,15 +5,15 @@
   segments:
     - [0x06,  0x1C4230]
 
-whomp_seg6_anim_060209EC:
-  type: SM64:ANIM
-  offset: 0x209EC
-  symbol: whomp_seg6_anim_060209EC
-
 whomp_seg6_anim_060202DC:
   type: SM64:ANIM
   offset: 0x202DC
   symbol: whomp_seg6_anim_060202DC
+
+whomp_seg6_anim_060209EC:
+  type: SM64:ANIM
+  offset: 0x209EC
+  symbol: whomp_seg6_anim_060209EC
 
 whomp_seg6_anims_06020A04:
   type: ASSET_ARRAY

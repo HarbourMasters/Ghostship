@@ -5,6 +5,26 @@
   segments:
     - [0x06,  0x1D8310]
 
+toad_seg6_anim_06008F7C:
+  type: SM64:ANIM
+  offset: 0x8F7C
+  symbol: toad_seg6_anim_06008F7C
+
+toad_seg6_anim_06009310:
+  type: SM64:ANIM
+  offset: 0x9310
+  symbol: toad_seg6_anim_06009310
+
+toad_seg6_anim_060099F0:
+  type: SM64:ANIM
+  offset: 0x99F0
+  symbol: toad_seg6_anim_060099F0
+
+toad_seg6_anim_0600A0D0:
+  type: SM64:ANIM
+  offset: 0xA0D0
+  symbol: toad_seg6_anim_0600A0D0
+
 toad_seg6_anim_0600B66C:
   type: SM64:ANIM
   offset: 0xB66C
@@ -24,26 +44,6 @@ toad_seg6_anim_0600FB40:
   type: SM64:ANIM
   offset: 0xFB40
   symbol: toad_seg6_anim_0600FB40
-
-toad_seg6_anim_060099F0:
-  type: SM64:ANIM
-  offset: 0x99F0
-  symbol: toad_seg6_anim_060099F0
-
-toad_seg6_anim_0600A0D0:
-  type: SM64:ANIM
-  offset: 0xA0D0
-  symbol: toad_seg6_anim_0600A0D0
-
-toad_seg6_anim_06008F7C:
-  type: SM64:ANIM
-  offset: 0x8F7C
-  symbol: toad_seg6_anim_06008F7C
-
-toad_seg6_anim_06009310:
-  type: SM64:ANIM
-  offset: 0x9310
-  symbol: toad_seg6_anim_06009310
 
 toad_seg6_anims_0600FB58:
   type: ASSET_ARRAY

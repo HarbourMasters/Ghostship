@@ -30,6 +30,11 @@ eyerok_seg5_anim_0500F3D8:
   offset: 0xF3D8
   symbol: eyerok_seg5_anim_0500F3D8
 
+eyerok_seg5_anim_0500F3F0:
+  type: SM64:ANIM
+  offset: 0xF3F0
+  symbol: eyerok_seg5_anim_0500F3F0
+
 eyerok_seg5_anim_0500FCCC:
   type: SM64:ANIM
   offset: 0xFCCC
@@ -39,11 +44,6 @@ eyerok_seg5_anim_050116CC:
   type: SM64:ANIM
   offset: 0x116CC
   symbol: eyerok_seg5_anim_050116CC
-
-eyerok_seg5_anim_0500F3F0:
-  type: SM64:ANIM
-  offset: 0xF3F0
-  symbol: eyerok_seg5_anim_0500F3F0
 
 eyerok_seg5_anims_050116E4:
   type: ASSET_ARRAY

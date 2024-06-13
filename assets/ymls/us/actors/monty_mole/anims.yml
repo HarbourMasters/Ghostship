@@ -30,6 +30,11 @@ monty_mole_seg5_anim_050065C0:
   offset: 0x65C0
   symbol: monty_mole_seg5_anim_050065C0
 
+monty_mole_seg5_anim_050065D8:
+  type: SM64:ANIM
+  offset: 0x65D8
+  symbol: monty_mole_seg5_anim_050065D8
+
 monty_mole_seg5_anim_05006880:
   type: SM64:ANIM
   offset: 0x6880
@@ -49,11 +54,6 @@ monty_mole_seg5_anim_05007230:
   type: SM64:ANIM
   offset: 0x7230
   symbol: monty_mole_seg5_anim_05007230
-
-monty_mole_seg5_anim_050065D8:
-  type: SM64:ANIM
-  offset: 0x65D8
-  symbol: monty_mole_seg5_anim_050065D8
 
 monty_mole_seg5_anims_05007248:
   type: ASSET_ARRAY

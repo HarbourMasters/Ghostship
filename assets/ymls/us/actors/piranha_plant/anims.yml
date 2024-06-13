@@ -35,15 +35,15 @@ piranha_plant_seg6_anim_0601A014:
   offset: 0x1A014
   symbol: piranha_plant_seg6_anim_0601A014
 
-piranha_plant_seg6_anim_0601AF34:
-  type: SM64:ANIM
-  offset: 0x1AF34
-  symbol: piranha_plant_seg6_anim_0601AF34
-
 piranha_plant_seg6_anim_0601AAE4:
   type: SM64:ANIM
   offset: 0x1AAE4
   symbol: piranha_plant_seg6_anim_0601AAE4
+
+piranha_plant_seg6_anim_0601AF34:
+  type: SM64:ANIM
+  offset: 0x1AF34
+  symbol: piranha_plant_seg6_anim_0601AF34
 
 piranha_plant_seg6_anim_0601B634:
   type: SM64:ANIM

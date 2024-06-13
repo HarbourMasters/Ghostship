@@ -5,11 +5,6 @@
   segments:
     - [0x05,  0x166C60]
 
-bookend_seg5_anim_05002528:
-  type: SM64:ANIM
-  offset: 0x2528
-  symbol: bookend_seg5_anim_05002528
-
 bookend_seg5_anim_050023F4:
   type: SM64:ANIM
   offset: 0x23F4
@@ -19,6 +14,11 @@ bookend_seg5_anim_05002510:
   type: SM64:ANIM
   offset: 0x2510
   symbol: bookend_seg5_anim_05002510
+
+bookend_seg5_anim_05002528:
+  type: SM64:ANIM
+  offset: 0x2528
+  symbol: bookend_seg5_anim_05002528
 
 bookend_seg5_anims_05002540:
   type: ASSET_ARRAY

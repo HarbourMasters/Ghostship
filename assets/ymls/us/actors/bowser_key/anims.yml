@@ -5,15 +5,15 @@
   segments:
     - [0x03,  0x201410]
 
-bowser_key_seg3_anim_unlock_door:
-  type: SM64:ANIM
-  offset: 0x16C00
-  symbol: bowser_key_seg3_anim_unlock_door
-
 bowser_key_seg3_anim_course_exit:
   type: SM64:ANIM
   offset: 0x16530
   symbol: bowser_key_seg3_anim_course_exit
+
+bowser_key_seg3_anim_unlock_door:
+  type: SM64:ANIM
+  offset: 0x16C00
+  symbol: bowser_key_seg3_anim_unlock_door
 
 bowser_key_seg3_anims_list:
   type: ASSET_ARRAY

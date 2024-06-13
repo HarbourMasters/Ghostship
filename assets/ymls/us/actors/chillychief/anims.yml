@@ -5,20 +5,20 @@
   segments:
     - [0x06,  0x1E51F0]
 
-chilly_chief_seg6_anim_060035E0:
+chilly_chief_seg6_anim_060032EC:
   type: SM64:ANIM
-  offset: 0x35E0
-  symbol: chilly_chief_seg6_anim_060035E0
+  offset: 0x32EC
+  symbol: chilly_chief_seg6_anim_060032EC
 
 chilly_chief_seg6_anim_06003420:
   type: SM64:ANIM
   offset: 0x3420
   symbol: chilly_chief_seg6_anim_06003420
 
-chilly_chief_seg6_anim_060032EC:
+chilly_chief_seg6_anim_060035E0:
   type: SM64:ANIM
-  offset: 0x32EC
-  symbol: chilly_chief_seg6_anim_060032EC
+  offset: 0x35E0
+  symbol: chilly_chief_seg6_anim_060035E0
 
 chilly_chief_seg6_anim_0600373C:
   type: SM64:ANIM

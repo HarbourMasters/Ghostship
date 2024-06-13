@@ -5,6 +5,11 @@
   segments:
     - [0x05,  0x12A7E0]
 
+heave_ho_seg5_anim_05014F28:
+  type: SM64:ANIM
+  offset: 0x14F28
+  symbol: heave_ho_seg5_anim_05014F28
+
 heave_ho_seg5_anim_05015118:
   type: SM64:ANIM
   offset: 0x15118
@@ -14,11 +19,6 @@ heave_ho_seg5_anim_05015334:
   type: SM64:ANIM
   offset: 0x15334
   symbol: heave_ho_seg5_anim_05015334
-
-heave_ho_seg5_anim_05014F28:
-  type: SM64:ANIM
-  offset: 0x14F28
-  symbol: heave_ho_seg5_anim_05014F28
 
 heave_ho_seg5_anims_0501534C:
   type: ASSET_ARRAY
