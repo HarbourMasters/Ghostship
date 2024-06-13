@@ -8106,6 +8106,21 @@ inside_castle_seg7_collision_ddd_warp_2:
   offset: 0x7768C
   symbol: inside_castle_seg7_collision_ddd_warp_2
 
+inside_castle_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x77764
+  symbol: inside_castle_seg7_area_1_macro_objs
+
+inside_castle_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x777E0
+  symbol: inside_castle_seg7_area_2_macro_objs
+
+inside_castle_seg7_area_3_macro_objs:
+  type: SM64:MACRO
+  offset: 0x777EC
+  symbol: inside_castle_seg7_area_3_macro_objs
+
 inside_castle_seg7_collision_floor_trap:
   type: SM64:COLLISION
   offset: 0x78DE4
@@ -8179,17 +8194,3 @@ inside_castle_seg7_trajectory_mips:
   offset: 0x79068
   symbol: inside_castle_seg7_trajectory_mips
 
-inside_castle_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x77764
-  symbol: inside_castle_seg7_area_1_macro_objs
-
-inside_castle_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0x777E0
-  symbol: inside_castle_seg7_area_2_macro_objs
-
-inside_castle_seg7_area_3_macro_objs:
-  type: SM64:MACRO
-  offset: 0x777EC
-  symbol: inside_castle_seg7_area_3_macro_objs

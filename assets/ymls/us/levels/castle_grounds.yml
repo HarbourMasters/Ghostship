@@ -1270,6 +1270,11 @@ castle_grounds_seg7_collision_level:
   offset: 0xF3A0
   symbol: castle_grounds_seg7_collision_level
 
+castle_grounds_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x115C0
+  symbol: castle_grounds_seg7_macro_objs
+
 castle_grounds_seg7_moat_grills:
   type: SM64:COLLISION
   offset: 0x1166C
@@ -1279,9 +1284,4 @@ castle_grounds_seg7_cannon_grill:
   type: SM64:COLLISION
   offset: 0x116C8
   symbol: castle_grounds_seg7_cannon_grill
-
-castle_grounds_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x115C0
-  symbol: castle_grounds_seg7_macro_objs
 

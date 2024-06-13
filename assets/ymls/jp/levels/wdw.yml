@@ -1907,10 +1907,20 @@ wdw_seg7_area_1_collision:
   offset: 0x14150
   symbol: wdw_seg7_area_1_collision
 
+wdw_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x160D8
+  symbol: wdw_seg7_area_1_macro_objs
+
 wdw_seg7_area_2_collision:
   type: SM64:COLLISION
   offset: 0x1633C
   symbol: wdw_seg7_area_2_collision
+
+wdw_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x18224
+  symbol: wdw_seg7_area_2_macro_objs
 
 wdw_seg7_collision_square_floating_platform:
   type: SM64:COLLISION
@@ -1947,12 +1957,3 @@ wdw_seg7_collision_070186B4:
   offset: 0x186B4
   symbol: wdw_seg7_070186B4
 
-wdw_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x160D8
-  symbol: wdw_seg7_area_1_macro_objs
-
-wdw_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0x18224
-  symbol: wdw_seg7_area_2_macro_objs

@@ -1188,6 +1188,11 @@ sl_seg7_area_1_collision:
   offset: 0xCBD8
   symbol: sl_seg7_area_1_collision
 
+sl_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0xED94
+  symbol: sl_seg7_area_1_macro_objs
+
 sl_seg7_collision_sliding_snow_mound:
   type: SM64:COLLISION
   offset: 0xEF6C
@@ -1202,11 +1207,6 @@ sl_seg7_area_2_collision:
   type: SM64:COLLISION
   offset: 0xEFFC
   symbol: sl_seg7_area_2_collision
-
-sl_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0xED94
-  symbol: sl_seg7_area_1_macro_objs
 
 sl_seg7_area_2_macro_objs:
   type: SM64:MACRO

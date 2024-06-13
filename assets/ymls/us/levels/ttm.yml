@@ -2087,6 +2087,16 @@ ttm_seg7_area_1_collision:
   offset: 0x13814
   symbol: ttm_seg7_area_1_collision
 
+ttm_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x16F18
+  symbol: ttm_seg7_area_1_macro_objs
+
+ttm_seg7_trajectory_070170A0:
+  type: SM64:TRAJECTORY
+  offset: 0x170A0
+  symbol: ttm_seg7_trajectory_070170A0
+
 ttm_seg7_lights_070172D8:
   type: LIGHTS
   size: 24
@@ -4251,16 +4261,6 @@ ttm_seg7_collision_podium_warp:
   type: SM64:COLLISION
   offset: 0x3013C
   symbol: ttm_seg7_collision_podium_warp
-
-ttm_seg7_trajectory_070170A0:
-  type: SM64:TRAJECTORY
-  offset: 0x170A0
-  symbol: ttm_seg7_trajectory_070170A0
-
-ttm_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x16F18
-  symbol: ttm_seg7_area_1_macro_objs
 
 ttm_seg7_area_2_macro_objs:
   type: SM64:MACRO
