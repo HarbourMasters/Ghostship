@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x160670
+    offset: 0x15EA70
   segments:
-    - [0x05,  0x160670]
+    - [0x05,  0x15EA70]
 
 snowman_seg5_anim_0500CED8:
   type: SM64:ANIM

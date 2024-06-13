@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1C4230
+    offset: 0x1C2580
   segments:
-    - [0x06,  0x1C4230]
+    - [0x06,  0x1C2580]
 
 koopa_flag_seg6_anim_06001010:
   type: SM64:ANIM

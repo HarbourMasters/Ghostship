@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x134D20
+    offset: 0x133120
   segments:
-    - [0x05,  0x134D20]
+    - [0x05,  0x133120]
 
 king_bobomb_seg5_anim_0500BDFC:
   type: SM64:ANIM

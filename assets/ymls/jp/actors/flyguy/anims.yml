@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1F2200
+    offset: 0x1F0530
   segments:
-    - [0x08,  0x1F2200]
+    - [0x08,  0x1F0530]
 
 flyguy_seg8_anim_08011A4C:
   type: SM64:ANIM

@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1E7EE0
+    offset: 0x1E6210
   segments:
-    - [0x06,  0x1E7EE0]
+    - [0x06,  0x1E6210]
 
 swoop_seg6_anim_06006E88:
   type: SM64:ANIM

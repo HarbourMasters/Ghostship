@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1B9CC0
+    offset: 0x1B8010
   segments:
-    - [0x06,  0x1B9CC0]
+    - [0x06,  0x1B8010]
 
 water_ring_seg6_anim_06013F64:
   type: SM64:ANIM

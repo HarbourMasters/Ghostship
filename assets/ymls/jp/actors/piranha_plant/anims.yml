@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1C4230
+    offset: 0x1C2580
   segments:
-    - [0x06,  0x1C4230]
+    - [0x06,  0x1C2580]
 
 piranha_plant_seg6_anim_06017C38:
   type: SM64:ANIM

@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x160670
+    offset: 0x15EA70
   segments:
-    - [0x05,  0x160670]
+    - [0x05,  0x15EA70]
 
 penguin_seg5_anim_050079E4:
   type: SM64:ANIM

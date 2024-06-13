@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1E51F0
+    offset: 0x1E3520
   segments:
-    - [0x06,  0x1E51F0]
+    - [0x06,  0x1E3520]
 
 moneybag_seg6_anim_06005AD8:
   type: SM64:ANIM

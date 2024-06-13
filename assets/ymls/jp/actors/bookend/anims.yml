@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x166C60
+    offset: 0x165060
   segments:
-    - [0x05,  0x166C60]
+    - [0x05,  0x165060]
 
 bookend_seg5_anim_050023F4:
   type: SM64:ANIM

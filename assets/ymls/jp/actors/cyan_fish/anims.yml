@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1B9CC0
+    offset: 0x1B8010
   segments:
-    - [0x06,  0x1B9CC0]
+    - [0x06,  0x1B8010]
 
 cyan_fish_seg6_anim_0600E24C:
   type: SM64:ANIM

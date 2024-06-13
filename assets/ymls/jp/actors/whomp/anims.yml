@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1C4230
+    offset: 0x1C2580
   segments:
-    - [0x06,  0x1C4230]
+    - [0x06,  0x1C2580]
 
 whomp_seg6_anim_060202DC:
   type: SM64:ANIM

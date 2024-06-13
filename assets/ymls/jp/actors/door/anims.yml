@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x201410
+    offset: 0x1FF740
   segments:
-    - [0x03,  0x201410]
+    - [0x03,  0x1FF740]
 
 door_seg3_anim_03015208:
   type: SM64:ANIM

@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x180BB0
+    offset: 0x17EF80
   segments:
-    - [0x05,  0x180BB0]
+    - [0x05,  0x17EF80]
 
 lakitu_enemy_seg5_anim_05013EDC:
   type: SM64:ANIM

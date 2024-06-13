@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x1D8310
+    offset: 0x1D6660
   segments:
-    - [0x06,  0x1D8310]
+    - [0x06,  0x1D6660]
 
 mips_seg6_anim_06013248:
   type: SM64:ANIM
