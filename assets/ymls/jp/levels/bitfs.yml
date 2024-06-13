@@ -1847,6 +1847,11 @@ bitfs_seg7_collision_level:
   offset: 0x11E98
   symbol: bitfs_seg7_collision_level
 
+bitfs_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x14F90
+  symbol: bitfs_seg7_macro_objs
+
 bitfs_seg7_collision_07015124:
   type: SM64:COLLISION
   offset: 0x15124
@@ -1901,9 +1906,4 @@ bitfs_seg7_trajectory_070159AC:
   type: SM64:TRAJECTORY
   offset: 0x159AC
   symbol: bitfs_seg7_trajectory_070159AC
-
-bitfs_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x14F90
-  symbol: bitfs_seg7_macro_objs
 

@@ -3260,11 +3260,16 @@ hmc_seg7_painting_dl_070254E0:
   type: GFX
   offset: 0x254E0
   symbol: hmc_seg7_painting_dl_070254E0
-  
+
 hmc_seg7_collision_level:
   type: SM64:COLLISION
   offset: 0x25594
   symbol: hmc_seg7_collision_level
+
+hmc_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x2AA78
+  symbol: hmc_seg7_macro_objs
 
 hmc_seg7_collision_elevator:
   type: SM64:COLLISION
@@ -3291,7 +3296,3 @@ hmc_seg7_trajectory_0702B86C:
   offset: 0x2B86C
   symbol: hmc_seg7_trajectory_0702B86C
 
-hmc_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x2AA78
-  symbol: hmc_seg7_macro_objs

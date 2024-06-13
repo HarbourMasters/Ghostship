@@ -1802,6 +1802,11 @@ lll_seg7_area_1_collision:
   offset: 0x1ADE8
   symbol: lll_seg7_area_1_collision
 
+lll_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x1CE18
+  symbol: lll_seg7_area_1_macro_objs
+
 lll_seg7_collision_octagonal_moving_platform:
   type: SM64:COLLISION
   offset: 0x1D018
@@ -2619,6 +2624,11 @@ lll_seg7_area_2_collision:
   offset: 0x25F80
   symbol: lll_seg7_area_2_collision
 
+lll_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x283D4
+  symbol: lll_seg7_area_2_macro_objs
+
 lll_seg7_collision_falling_wall:
   type: SM64:COLLISION
   offset: 0x284DC
@@ -2634,12 +2644,3 @@ lll_seg7_trajectory_07028660:
   offset: 0x28660
   symbol: lll_seg7_trajectory_07028660
 
-lll_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x1CE18
-  symbol: lll_seg7_area_1_macro_objs
-
-lll_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0x283D4
-  symbol: lll_seg7_area_2_macro_objs
