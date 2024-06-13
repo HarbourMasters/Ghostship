@@ -176,15 +176,6 @@ castle_grounds_textures.0B000:
   format: RGBA16
   symbol: outside_0900B000
 
-castle_grounds_textures.0BC00:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xB000
-  format: IA16
-  symbol: outside_0900BC00
-
 castle_grounds_textures.0B400:
   type: TEXTURE
   size: 2048
@@ -193,3 +184,13 @@ castle_grounds_textures.0B400:
   offset: 0xB400
   format: RGBA16
   symbol: outside_0900B400
+
+castle_grounds_textures.0BC00:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xBC00
+  format: IA16
+  symbol: outside_0900BC00
+

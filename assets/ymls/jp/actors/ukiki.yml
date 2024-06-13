@@ -5,6 +5,18 @@
   segments:
     - [0x05,  0x1505D0]
 
+ukiki_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x7B70
+  symbol: ukiki_lights_unused1
+
+ukiki_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x7B88
+  symbol: ukiki_lights_unused2
+
 ukiki_seg5_lights_05007BA0:
   type: LIGHTS
   size: 24
@@ -461,16 +473,4 @@ ukiki_seg5_dl_0500D108:
   type: GFX
   offset: 0xD108
   symbol: ukiki_seg5_dl_0500D108
-
-ukiki_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x326E8
-  symbol: ukiki_lights_unused1
-
-ukiki_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x326E8
-  symbol: ukiki_lights_unused2
 

@@ -52,7 +52,7 @@ chill_bully_eye:
   size: 2048
   width: 32
   height: 32
-  offset: 0x2468
+  offset: 0x2060
   format: RGBA16
   symbol: chilly_chief_seg6_texture_06002060
 

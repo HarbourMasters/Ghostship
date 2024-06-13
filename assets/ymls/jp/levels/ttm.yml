@@ -687,15 +687,6 @@ ttm_seg7_vertex_0700AC78:
   offset: 0xAC78
   symbol: ttm_seg7_vertex_0700AC78
 
-8:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xAD30
-  format: RGBA16
-  symbol: ttm_seg7_texture_0702AD30
-
 ttm_seg7_vertex_0700AD78:
   type: VTX
   count: 14
@@ -4195,6 +4186,15 @@ ttm_seg7_lights_0702AD18:
   size: 24
   offset: 0x2AD18
   symbol: ttm_seg7_lights_0702AD18
+
+8:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x2AD30
+  format: RGBA16
+  symbol: ttm_seg7_texture_0702AD30
 
 ttm_seg7_vertex_0702B530:
   type: VTX

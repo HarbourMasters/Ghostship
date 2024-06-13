@@ -77,15 +77,6 @@ main_menu_seg7.04C68:
   format: RGBA16
   symbol: texture_menu_score
 
-main_menu_seg7.0A1D0:
-  type: TEXTURE
-  size: 512
-  width: 16
-  height: 16
-  offset: 0x5000
-  format: RGBA16
-  symbol: texture_menu_hud_char_question
-
 main_menu_seg7.05468:
   type: TEXTURE
   size: 2048
@@ -319,6 +310,15 @@ main_menu_seg7.09FD0:
   offset: 0x9FD0
   format: RGBA16
   symbol: texture_menu_hud_char_hiragana_no
+
+main_menu_seg7.0A1D0:
+  type: TEXTURE
+  size: 512
+  width: 16
+  height: 16
+  offset: 0xA1D0
+  format: RGBA16
+  symbol: texture_menu_hud_char_question
 
 main_menu_seg7.0A3D0:
   type: TEXTURE
@@ -706,15 +706,6 @@ main_menu_seg7.0B5C8:
   offset: 0xB5C8
   format: IA8
   symbol: texture_menu_font_char_jp_hiragana_he
-
-main_menu_seg7.0C448:
-  type: TEXTURE
-  size: 64
-  width: 8
-  height: 8
-  offset: 0xB5C8
-  format: IA8
-  symbol: texture_menu_font_char_jp_katakana_he
 
 main_menu_seg7.0B608:
   type: TEXTURE
@@ -1228,6 +1219,15 @@ main_menu_seg7.0C408:
   offset: 0xC408
   format: IA8
   symbol: texture_menu_font_char_jp_katakana_hu
+
+main_menu_seg7.0C448:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xC448
+  format: IA8
+  symbol: texture_menu_font_char_jp_katakana_he
 
 main_menu_seg7.0C488:
   type: TEXTURE

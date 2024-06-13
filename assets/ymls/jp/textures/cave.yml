@@ -140,15 +140,6 @@ hmc_textures.0A800:
   format: RGBA16
   symbol: cave_0900A800
 
-hmc_textures.0C000:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xA800
-  format: IA16
-  symbol: cave_0900C000
-
 hmc_textures.0B800:
   type: TEXTURE
   size: 2048
@@ -157,3 +148,13 @@ hmc_textures.0B800:
   offset: 0xB800
   format: IA16
   symbol: cave_0900B800
+
+hmc_textures.0C000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xC000
+  format: IA16
+  symbol: cave_0900C000
+
