@@ -935,6 +935,11 @@ ssl_seg7_area_1_collision:
   offset: 0xFD80
   symbol: ssl_seg7_area_1_collision
 
+ssl_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x12424
+  symbol: ssl_seg7_area_1_macro_objs
+
 ssl_seg7_collision_pyramid_top:
   type: SM64:COLLISION
   offset: 0x125F4
@@ -2547,6 +2552,16 @@ ssl_seg7_area_3_collision:
   offset: 0x275BC
   symbol: ssl_seg7_area_3_collision
 
+ssl_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x27CD4
+  symbol: ssl_seg7_area_2_macro_objs
+
+ssl_seg7_area_3_macro_objs:
+  type: SM64:MACRO
+  offset: 0x27ECC
+  symbol: ssl_seg7_area_3_macro_objs
+
 ssl_seg7_collision_grindel:
   type: SM64:COLLISION
   offset: 0x27ED0
@@ -2587,17 +2602,3 @@ ssl_seg7_collision_070284B0:
   offset: 0x284B0
   symbol: ssl_seg7_collision_070284B0
 
-ssl_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x12424
-  symbol: ssl_seg7_area_1_macro_objs
-
-ssl_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0x27CD4
-  symbol: ssl_seg7_area_2_macro_objs
-
-ssl_seg7_area_3_macro_objs:
-  type: SM64:MACRO
-  offset: 0x27ECC
-  symbol: ssl_seg7_area_3_macro_objs

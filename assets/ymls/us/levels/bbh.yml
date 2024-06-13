@@ -3487,6 +3487,11 @@ bbh_seg7_collision_level:
   offset: 0x207A0
   symbol: bbh_seg7_collision_level
 
+bbh_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x268C4
+  symbol: bbh_seg7_macro_objs
+
 bbh_seg7_collision_staircase_step:
   type: SM64:COLLISION
   offset: 0x26A1C
@@ -3522,7 +3527,3 @@ bbh_seg7_collision_coffin:
   offset: 0x26D18
   symbol: bbh_seg7_collision_coffin
 
-bbh_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x268C4
-  symbol: bbh_seg7_macro_objs

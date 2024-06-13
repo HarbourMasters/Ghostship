@@ -1238,6 +1238,11 @@ bob_seg7_collision_level:
   offset: 0xE958
   symbol: bob_seg7_collision_level
 
+bob_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x1104C
+  symbol: bob_seg7_macro_objs
+
 bob_seg7_collision_chain_chomp_gate:
   type: SM64:COLLISION
   offset: 0x113C0
@@ -1267,9 +1272,4 @@ bob_seg7_trajectory_koopa:
   type: SM64:TRAJECTORY
   offset: 0x116A0
   symbol: bob_seg7_trajectory_koopa
-
-bob_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x1104C
-  symbol: bob_seg7_macro_objs
 

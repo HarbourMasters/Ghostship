@@ -1921,6 +1921,11 @@ ttc_seg7_collision_rotating_clock_platform2:
   offset: 0x159D0
   symbol: ttc_seg7_collision_rotating_clock_platform2
 
+ttc_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x15B24
+  symbol: ttc_seg7_macro_objs
+
 2:
   type: TEXTURE
   size: 2048
@@ -1930,7 +1935,3 @@ ttc_seg7_collision_rotating_clock_platform2:
   format: RGBA16
   symbol: ttc_yellow_triangle
 
-ttc_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x15B24
-  symbol: ttc_seg7_macro_objs

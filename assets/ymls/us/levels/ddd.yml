@@ -1179,6 +1179,16 @@ ddd_seg7_area_2_collision:
   offset: 0xDE70
   symbol: ddd_seg7_area_2_collision
 
+ddd_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0xEEF4
+  symbol: ddd_seg7_area_1_macro_objs
+
+ddd_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0xEFAC
+  symbol: ddd_seg7_area_2_macro_objs
+
 ddd_seg7_collision_submarine:
   type: SM64:COLLISION
   offset: 0xF17C
@@ -1189,12 +1199,3 @@ ddd_seg7_collision_bowser_sub_door:
   offset: 0xFC48
   symbol: ddd_seg7_collision_bowser_sub_door
 
-ddd_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0xEEF4
-  symbol: ddd_seg7_area_1_macro_objs
-
-ddd_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0xEFAC
-  symbol: ddd_seg7_area_2_macro_objs
