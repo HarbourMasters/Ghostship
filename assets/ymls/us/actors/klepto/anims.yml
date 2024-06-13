@@ -1,0 +1,49 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x145E90
+  segments:
+    - [0x05,  0x145E90]
+
+klepto_seg5_anim_05005E44:
+  type: SM64:ANIM
+  offset: 0x5E44
+  symbol: klepto_seg5_anim_05005E44
+
+klepto_seg5_anim_05007574:
+  type: SM64:ANIM
+  offset: 0x7574
+  symbol: klepto_seg5_anim_05007574
+
+klepto_seg5_anim_050079B0:
+  type: SM64:ANIM
+  offset: 0x79B0
+  symbol: klepto_seg5_anim_050079B0
+
+klepto_seg5_anim_05007E34:
+  type: SM64:ANIM
+  offset: 0x7E34
+  symbol: klepto_seg5_anim_05007E34
+
+klepto_seg5_anim_050086C0:
+  type: SM64:ANIM
+  offset: 0x86C0
+  symbol: klepto_seg5_anim_050086C0
+
+klepto_seg5_anim_05008A18:
+  type: SM64:ANIM
+  offset: 0x8A18
+  symbol: klepto_seg5_anim_05008A18
+
+klepto_seg5_anim_05008CE4:
+  type: SM64:ANIM
+  offset: 0x8CE4
+  symbol: klepto_seg5_anim_05008CE4
+
+klepto_seg5_anims_05008CFC:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 9
+  offset: 0x8CFC
+  symbol: klepto_seg5_anims_05008CFC

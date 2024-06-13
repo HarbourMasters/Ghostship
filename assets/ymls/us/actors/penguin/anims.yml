@@ -1,0 +1,34 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x160670
+  segments:
+    - [0x05,  0x160670]
+
+penguin_seg5_anim_05008B5C:
+  type: SM64:ANIM
+  offset: 0x8B5C
+  symbol: penguin_seg5_anim_05008B5C
+
+penguin_seg5_anim_050079E4:
+  type: SM64:ANIM
+  offset: 0x79E4
+  symbol: penguin_seg5_anim_050079E4
+
+penguin_seg5_anim_05007DCC:
+  type: SM64:ANIM
+  offset: 0x7DCC
+  symbol: penguin_seg5_anim_05007DCC
+
+penguin_seg5_anim_050087C0:
+  type: SM64:ANIM
+  offset: 0x87C0
+  symbol: penguin_seg5_anim_050087C0
+
+penguin_seg5_anims_05008B74:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 5
+  offset: 0x8B74
+  symbol: penguin_seg5_anims_05008B74

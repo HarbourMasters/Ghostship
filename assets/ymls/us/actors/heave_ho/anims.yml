@@ -1,0 +1,29 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x12A7E0
+  segments:
+    - [0x05,  0x12A7E0]
+
+heave_ho_seg5_anim_05015118:
+  type: SM64:ANIM
+  offset: 0x15118
+  symbol: heave_ho_seg5_anim_05015118
+
+heave_ho_seg5_anim_05015334:
+  type: SM64:ANIM
+  offset: 0x15334
+  symbol: heave_ho_seg5_anim_05015334
+
+heave_ho_seg5_anim_05014F28:
+  type: SM64:ANIM
+  offset: 0x14F28
+  symbol: heave_ho_seg5_anim_05014F28
+
+heave_ho_seg5_anims_0501534C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x1534C
+  symbol: heave_ho_seg5_anims_0501534C

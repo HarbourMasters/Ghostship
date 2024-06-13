@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x160670
+  segments:
+    - [0x05,  0x160670]
+
+spindrift_seg5_anim_050006AC:
+  type: SM64:ANIM
+  offset: 0x6AC
+  symbol: spindrift_seg5_anim_050006AC
+
+spindrift_seg5_anims_05002D68:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 4
+  offset: 0x2D68
+  symbol: spindrift_seg5_anims_05002D68

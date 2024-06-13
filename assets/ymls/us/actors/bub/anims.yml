@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1B9CC0
+  segments:
+    - [0x06,  0x1B9CC0]
+
+bub_seg6_anim_0601233C:
+  type: SM64:ANIM
+  offset: 0x1233C
+  symbol: bub_seg6_anim_0601233C
+
+bub_seg6_anims_06012354:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x12354
+  symbol: bub_seg6_anims_06012354

@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x180BB0
+  segments:
+    - [0x05,  0x180BB0]
+
+spiny_egg_seg5_anim_050157CC:
+  type: SM64:ANIM
+  offset: 0x157CC
+  symbol: spiny_egg_seg5_anim_050157CC
+
+spiny_egg_seg5_anims_050157E4:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0x157E4
+  symbol: spiny_egg_seg5_anims_050157E4

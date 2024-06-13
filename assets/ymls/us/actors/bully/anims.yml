@@ -1,0 +1,34 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x132C60
+  segments:
+    - [0x05,  0x132C60]
+
+bully_seg5_anim_05004598:
+  type: SM64:ANIM
+  offset: 0x4598
+  symbol: bully_seg5_anim_05004598
+
+bully_seg5_anim_050043D8:
+  type: SM64:ANIM
+  offset: 0x43D8
+  symbol: bully_seg5_anim_050043D8
+
+bully_seg5_anim_050042A4:
+  type: SM64:ANIM
+  offset: 0x42A4
+  symbol: bully_seg5_anim_050042A4
+
+bully_seg5_anim_050046F4:
+  type: SM64:ANIM
+  offset: 0x46F4
+  symbol: bully_seg5_anim_050046F4
+
+bully_seg5_anims_0500470C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 5
+  offset: 0x470C
+  symbol: bully_seg5_anims_0500470C

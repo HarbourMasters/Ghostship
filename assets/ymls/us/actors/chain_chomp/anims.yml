@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1C4230
+  segments:
+    - [0x06,  0x1C4230]
+
+chain_chomp_seg6_anim_06025160:
+  type: SM64:ANIM
+  offset: 0x25160
+  symbol: chain_chomp_seg6_anim_06025160
+
+chain_chomp_seg6_anims_06025178:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 2
+  offset: 0x25178
+  symbol: chain_chomp_seg6_anims_06025178

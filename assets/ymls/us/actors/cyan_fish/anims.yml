@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1B9CC0
+  segments:
+    - [0x06,  0x1B9CC0]
+
+cyan_fish_seg6_anim_0600E24C:
+  type: SM64:ANIM
+  offset: 0xE24C
+  symbol: cyan_fish_seg6_anim_0600E24C
+
+cyan_fish_seg6_anims_0600E264:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 3
+  offset: 0xE264
+  symbol: cyan_fish_seg6_anims_0600E264

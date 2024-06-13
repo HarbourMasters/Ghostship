@@ -1,0 +1,54 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x145E90
+  segments:
+    - [0x05,  0x145E90]
+
+eyerok_seg5_anim_0500D270:
+  type: SM64:ANIM
+  offset: 0xD270
+  symbol: eyerok_seg5_anim_0500D270
+
+eyerok_seg5_anim_0500DF50:
+  type: SM64:ANIM
+  offset: 0xDF50
+  symbol: eyerok_seg5_anim_0500DF50
+
+eyerok_seg5_anim_0500E1D8:
+  type: SM64:ANIM
+  offset: 0xE1D8
+  symbol: eyerok_seg5_anim_0500E1D8
+
+eyerok_seg5_anim_0500E99C:
+  type: SM64:ANIM
+  offset: 0xE99C
+  symbol: eyerok_seg5_anim_0500E99C
+
+eyerok_seg5_anim_0500F3D8:
+  type: SM64:ANIM
+  offset: 0xF3D8
+  symbol: eyerok_seg5_anim_0500F3D8
+
+eyerok_seg5_anim_0500FCCC:
+  type: SM64:ANIM
+  offset: 0xFCCC
+  symbol: eyerok_seg5_anim_0500FCCC
+
+eyerok_seg5_anim_050116CC:
+  type: SM64:ANIM
+  offset: 0x116CC
+  symbol: eyerok_seg5_anim_050116CC
+
+eyerok_seg5_anim_0500F3F0:
+  type: SM64:ANIM
+  offset: 0xF3F0
+  symbol: eyerok_seg5_anim_0500F3F0
+
+eyerok_seg5_anims_050116E4:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 9
+  offset: 0x116E4
+  symbol: eyerok_seg5_anims_050116E4

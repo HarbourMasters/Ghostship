@@ -1,0 +1,49 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x13B910
+  segments:
+    - [0x05,  0x13B910]
+
+unagi_seg5_anim_0500FBF4:
+  type: SM64:ANIM
+  offset: 0xFBF4
+  symbol: unagi_seg5_anim_0500FBF4
+
+unagi_seg5_anim_05010488:
+  type: SM64:ANIM
+  offset: 0x10488
+  symbol: unagi_seg5_anim_05010488
+
+unagi_seg5_anim_05010B54:
+  type: SM64:ANIM
+  offset: 0x10B54
+  symbol: unagi_seg5_anim_05010B54
+
+unagi_seg5_anim_05011488:
+  type: SM64:ANIM
+  offset: 0x11488
+  symbol: unagi_seg5_anim_05011488
+
+unagi_seg5_anim_05011890:
+  type: SM64:ANIM
+  offset: 0x11890
+  symbol: unagi_seg5_anim_05011890
+
+unagi_seg5_anim_05011D40:
+  type: SM64:ANIM
+  offset: 0x11D40
+  symbol: unagi_seg5_anim_05011D40
+
+unagi_seg5_anim_0501280C:
+  type: SM64:ANIM
+  offset: 0x1280C
+  symbol: unagi_seg5_anim_0501280C
+
+unagi_seg5_anims_05012824:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 7
+  offset: 0x12824
+  symbol: unagi_seg5_anims_05012824
