@@ -7,137 +7,137 @@
 
 bowser_seg6_anim_060445EC:
   type: SM64:ANIM
-  offset: 0x445EC
+  offset: 0x4473C
   symbol: bowser_seg6_anim_060445EC
 
 bowser_seg6_anim_060453C8:
   type: SM64:ANIM
-  offset: 0x453C8
+  offset: 0x45518
   symbol: bowser_seg6_anim_060453C8
 
 bowser_seg6_anim_06045D28:
   type: SM64:ANIM
-  offset: 0x45D28
+  offset: 0x45E78
   symbol: bowser_seg6_anim_06045D28
 
 bowser_seg6_anim_0604671C:
   type: SM64:ANIM
-  offset: 0x4671C
+  offset: 0x4686C
   symbol: bowser_seg6_anim_0604671C
 
 bowser_seg6_anim_0604675C:
   type: SM64:ANIM
-  offset: 0x4675C
+  offset: 0x468AC
   symbol: bowser_seg6_anim_0604675C
 
 bowser_seg6_anim_06048200:
   type: SM64:ANIM
-  offset: 0x48200
+  offset: 0x48350
   symbol: bowser_seg6_anim_06048200
 
 bowser_seg6_anim_06049880:
   type: SM64:ANIM
-  offset: 0x49880
+  offset: 0x499D0
   symbol: bowser_seg6_anim_06049880
 
 bowser_seg6_anim_0604A8E4:
   type: SM64:ANIM
-  offset: 0x4A8E4
+  offset: 0x4AA34
   symbol: bowser_seg6_anim_0604A8E4
 
 bowser_seg6_anim_0604B178:
   type: SM64:ANIM
-  offset: 0x4B178
+  offset: 0x4B2C8
   symbol: bowser_seg6_anim_0604B178
 
 bowser_seg6_anim_0604B8CC:
   type: SM64:ANIM
-  offset: 0x4B8CC
+  offset: 0x4BA1C
   symbol: bowser_seg6_anim_0604B8CC
 
 bowser_seg6_anim_0604D184:
   type: SM64:ANIM
-  offset: 0x4D184
+  offset: 0x4D2D4
   symbol: bowser_seg6_anim_0604D184
 
 bowser_seg6_anim_0604E5A0:
   type: SM64:ANIM
-  offset: 0x4E5A0
+  offset: 0x4E6F0
   symbol: bowser_seg6_anim_0604E5A0
 
 bowser_seg6_anim_0604F030:
   type: SM64:ANIM
-  offset: 0x4F030
+  offset: 0x4F180
   symbol: bowser_seg6_anim_0604F030
 
 bowser_seg6_anim_0604FF4C:
   type: SM64:ANIM
-  offset: 0x4FF4C
+  offset: 0x5009C
   symbol: bowser_seg6_anim_0604FF4C
 
 bowser_seg6_anim_06050530:
   type: SM64:ANIM
-  offset: 0x50530
+  offset: 0x50680
   symbol: bowser_seg6_anim_06050530
 
 bowser_seg6_anim_060514E8:
   type: SM64:ANIM
-  offset: 0x514E8
+  offset: 0x51638
   symbol: bowser_seg6_anim_060514E8
 
 bowser_seg6_anim_06051C68:
   type: SM64:ANIM
-  offset: 0x51C68
+  offset: 0x51DB8
   symbol: bowser_seg6_anim_06051C68
 
 bowser_seg6_anim_06052680:
   type: SM64:ANIM
-  offset: 0x52680
+  offset: 0x527D0
   symbol: bowser_seg6_anim_06052680
 
 bowser_seg6_anim_06052D94:
   type: SM64:ANIM
-  offset: 0x52D94
+  offset: 0x52EE4
   symbol: bowser_seg6_anim_06052D94
 
 bowser_seg6_anim_060534F4:
   type: SM64:ANIM
-  offset: 0x534F4
+  offset: 0x53644
   symbol: bowser_seg6_anim_060534F4
 
 bowser_seg6_anim_06053B8C:
   type: SM64:ANIM
-  offset: 0x53B8C
+  offset: 0x53CDC
   symbol: bowser_seg6_anim_06053B8C
 
 bowser_seg6_anim_06054290:
   type: SM64:ANIM
-  offset: 0x54290
+  offset: 0x543E0
   symbol: bowser_seg6_anim_06054290
 
 bowser_seg6_anim_06054950:
   type: SM64:ANIM
-  offset: 0x54950
+  offset: 0x54AA0
   symbol: bowser_seg6_anim_06054950
 
 bowser_seg6_anim_06055210:
   type: SM64:ANIM
-  offset: 0x55210
+  offset: 0x55360
   symbol: bowser_seg6_anim_06055210
 
 bowser_seg6_anim_06055984:
   type: SM64:ANIM
-  offset: 0x55984
+  offset: 0x55AD4
   symbol: bowser_seg6_anim_06055984
 
 bowser_seg6_anim_06056774:
   type: SM64:ANIM
-  offset: 0x56774
+  offset: 0x568C4
   symbol: bowser_seg6_anim_06056774
 
 bowser_seg6_anim_06057678:
   type: SM64:ANIM
-  offset: 0x57678
+  offset: 0x577C8
   symbol: bowser_seg6_anim_06057678
 
 bowser_seg6_anims_06057690:
@@ -145,5 +145,5 @@ bowser_seg6_anims_06057690:
   assetType: Animation
   factoryType: SM64:ANIM
   count: 27
-  offset: 0x57690
+  offset: 0x577E0
   symbol: bowser_seg6_anims_06057690

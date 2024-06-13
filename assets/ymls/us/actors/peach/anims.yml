@@ -7,62 +7,62 @@
 
 peach_seg5_anim_0500C638:
   type: SM64:ANIM
-  offset: 0xC638
+  offset: 0xC698
   symbol: peach_seg5_anim_0500C638
 
 peach_seg5_anim_0500E6B4:
   type: SM64:ANIM
-  offset: 0xE6B4
+  offset: 0xE714
   symbol: peach_seg5_anim_0500E6B4
 
 peach_seg5_anim_0500ED94:
   type: SM64:ANIM
-  offset: 0xED94
+  offset: 0xEDF4
   symbol: peach_seg5_anim_0500ED94
 
 peach_seg5_anim_0500F474:
   type: SM64:ANIM
-  offset: 0xF474
+  offset: 0xF4D4
   symbol: peach_seg5_anim_0500F474
 
 peach_seg5_anim_0500FE84:
   type: SM64:ANIM
-  offset: 0xFE84
+  offset: 0xFEE4
   symbol: peach_seg5_anim_0500FE84
 
 peach_seg5_anim_05011050:
   type: SM64:ANIM
-  offset: 0x11050
+  offset: 0x110B0
   symbol: peach_seg5_anim_05011050
 
 peach_seg5_anim_05012F40:
   type: SM64:ANIM
-  offset: 0x12F40
+  offset: 0x12FA0
   symbol: peach_seg5_anim_05012F40
 
 peach_seg5_anim_05015468:
   type: SM64:ANIM
-  offset: 0x15468
+  offset: 0x154C8
   symbol: peach_seg5_anim_05015468
 
 peach_seg5_anim_05016798:
   type: SM64:ANIM
-  offset: 0x16798
+  offset: 0x167F8
   symbol: peach_seg5_anim_05016798
 
 peach_seg5_anim_05018664:
   type: SM64:ANIM
-  offset: 0x18664
+  offset: 0x186C4
   symbol: peach_seg5_anim_05018664
 
 peach_seg5_anim_0501B328:
   type: SM64:ANIM
-  offset: 0x1B328
+  offset: 0x1B388
   symbol: peach_seg5_anim_0501B328
 
 peach_seg5_anim_0501C404:
   type: SM64:ANIM
-  offset: 0x1C404
+  offset: 0x1C464
   symbol: peach_seg5_anim_0501C404
 
 peach_seg5_anims_0501C41C:
@@ -70,5 +70,5 @@ peach_seg5_anims_0501C41C:
   assetType: Animation
   factoryType: SM64:ANIM
   count: 13
-  offset: 0x1C41C
+  offset: 0x1C47C
   symbol: peach_seg5_anims_0501C41C

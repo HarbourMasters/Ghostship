@@ -7,42 +7,42 @@
 
 toad_seg6_anim_06008F7C:
   type: SM64:ANIM
-  offset: 0x8F7C
+  offset: 0x906C
   symbol: toad_seg6_anim_06008F7C
 
 toad_seg6_anim_06009310:
   type: SM64:ANIM
-  offset: 0x9310
+  offset: 0x9400
   symbol: toad_seg6_anim_06009310
 
 toad_seg6_anim_060099F0:
   type: SM64:ANIM
-  offset: 0x99F0
+  offset: 0x9AE0
   symbol: toad_seg6_anim_060099F0
 
 toad_seg6_anim_0600A0D0:
   type: SM64:ANIM
-  offset: 0xA0D0
+  offset: 0xA1C0
   symbol: toad_seg6_anim_0600A0D0
 
 toad_seg6_anim_0600B66C:
   type: SM64:ANIM
-  offset: 0xB66C
+  offset: 0xB75C
   symbol: toad_seg6_anim_0600B66C
 
 toad_seg6_anim_0600CE78:
   type: SM64:ANIM
-  offset: 0xCE78
+  offset: 0xCF68
   symbol: toad_seg6_anim_0600CE78
 
 toad_seg6_anim_0600E414:
   type: SM64:ANIM
-  offset: 0xE414
+  offset: 0xE504
   symbol: toad_seg6_anim_0600E414
 
 toad_seg6_anim_0600FB40:
   type: SM64:ANIM
-  offset: 0xFB40
+  offset: 0xFC30
   symbol: toad_seg6_anim_0600FB40
 
 toad_seg6_anims_0600FB58:
@@ -50,5 +50,5 @@ toad_seg6_anims_0600FB58:
   assetType: Animation
   factoryType: SM64:ANIM
   count: 8
-  offset: 0xFB58
+  offset: 0xFC48
   symbol: toad_seg6_anims_0600FB58
