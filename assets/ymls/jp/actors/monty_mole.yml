@@ -5,6 +5,42 @@
   segments:
     - [0x05,  0x1505D0]
 
+monty_mole_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x8E0
+  symbol: monty_mole_lights_unused1
+
+monty_mole_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x8F8
+  symbol: monty_mole_lights_unused2
+
+monty_mole_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x910
+  symbol: monty_mole_lights_unused3
+
+monty_mole_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x928
+  symbol: monty_mole_lights_unused4
+
+monty_mole_lights_unused5:
+  type: LIGHTS
+  size: 24
+  offset: 0x940
+  symbol: monty_mole_lights_unused5
+
+monty_mole_lights_unused6:
+  type: LIGHTS
+  size: 24
+  offset: 0x958
+  symbol: monty_mole_lights_unused6
+
 monty_mole_cheek:
   type: TEXTURE
   size: 2048
@@ -359,40 +395,4 @@ monty_mole_seg5_dl_05004D30:
   type: GFX
   offset: 0x4D30
   symbol: monty_mole_seg5_dl_05004D30
-
-monty_mole_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x1D760
-  symbol: monty_mole_lights_unused1
-
-monty_mole_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x1D760
-  symbol: monty_mole_lights_unused2
-
-monty_mole_lights_unused3:
-  type: LIGHTS
-  size: 24
-  offset: 0x1D760
-  symbol: monty_mole_lights_unused3
-
-monty_mole_lights_unused4:
-  type: LIGHTS
-  size: 24
-  offset: 0x1D760
-  symbol: monty_mole_lights_unused4
-
-monty_mole_lights_unused5:
-  type: LIGHTS
-  size: 24
-  offset: 0x1D760
-  symbol: monty_mole_lights_unused5
-
-monty_mole_lights_unused6:
-  type: LIGHTS
-  size: 24
-  offset: 0x1D760
-  symbol: monty_mole_lights_unused6
 

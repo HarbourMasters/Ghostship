@@ -122,6 +122,15 @@ bbh_textures.09000:
   format: RGBA16
   symbol: spooky_09009000
 
+bbh_textures.0A000:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0xA000
+  format: RGBA16
+  symbol: spooky_0900A000
+
 bbh_textures.0A800:
   type: TEXTURE
   size: 2048
@@ -149,11 +158,3 @@ bbh_textures.0B800:
   format: IA16
   symbol: spooky_0900B800
 
-bbh_textures.0A000:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xC288
-  format: RGBA16
-  symbol: spooky_0900A000

@@ -8,13 +8,13 @@
 swoop_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0xE08
+  offset: 0x4240
   symbol: swoop_lights_unused1
 
 swoop_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0xE08
+  offset: 0x4258
   symbol: swoop_lights_unused2
 
 swoop_body:

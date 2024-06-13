@@ -8,13 +8,13 @@
 scuttlebug_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x10100
+  offset: 0x100D8
   symbol: scuttlebug_lights_unused1
 
 scuttlebug_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0x10100
+  offset: 0x100F0
   symbol: scuttlebug_lights_unused2
 
 scuttlebug_eye:

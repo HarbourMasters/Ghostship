@@ -14,6 +14,15 @@ bob_textures.00000:
   format: RGBA16
   symbol: generic_09000000
 
+bob_textures.00800:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x800
+  format: RGBA16
+  symbol: generic_09000800
+
 bob_textures.01000:
   type: TEXTURE
   size: 2048
@@ -148,15 +157,6 @@ bob_textures.08800:
   offset: 0x8800
   format: RGBA16
   symbol: generic_09008800
-
-bob_textures.00800:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x8D40
-  format: RGBA16
-  symbol: generic_09000800
 
 bob_textures.09000:
   type: TEXTURE

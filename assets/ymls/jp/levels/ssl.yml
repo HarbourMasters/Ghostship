@@ -74,6 +74,15 @@ ssl_lights_quicksand_pit:
   offset: 0x4000
   symbol: ssl_lights_quicksand_pit
 
+7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4018
+  format: RGBA16
+  symbol: ssl_quicksand
+
 ssl_dl_quicksand_pit_begin:
   type: GFX
   offset: 0x4818
@@ -493,15 +502,6 @@ ssl_seg7_vertex_07007F50:
   count: 15
   offset: 0x7F50
   symbol: ssl_seg7_vertex_07007F50
-
-7:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x8000
-  format: RGBA16
-  symbol: ssl_quicksand
 
 ssl_seg7_vertex_07008040:
   type: VTX

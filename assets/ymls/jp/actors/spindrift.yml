@@ -5,6 +5,18 @@
   segments:
     - [0x05,  0x15EA70]
 
+spindrift_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: spindrift_lights_unused1
+
+spindrift_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x18
+  symbol: spindrift_lights_unused2
+
 spindrift_seg5_lights_05000030:
   type: LIGHTS
   size: 24
@@ -140,16 +152,4 @@ spindrift_seg5_dl_05002D08:
   type: GFX
   offset: 0x2D08
   symbol: spindrift_seg5_dl_05002D08
-
-spindrift_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x6D00
-  symbol: spindrift_lights_unused1
-
-spindrift_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x6D00
-  symbol: spindrift_lights_unused2
 
