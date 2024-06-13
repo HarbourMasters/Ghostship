@@ -7,27 +7,27 @@
 
 mips_seg6_anim_06013248:
   type: SM64:ANIM
-  offset: 0x13248
+  offset: 0x13338
   symbol: mips_seg6_anim_06013248
 
 mips_seg6_anim_0601369C:
   type: SM64:ANIM
-  offset: 0x1369C
+  offset: 0x1378C
   symbol: mips_seg6_anim_0601369C
 
 mips_seg6_anim_060139F8:
   type: SM64:ANIM
-  offset: 0x139F8
+  offset: 0x13AE8
   symbol: mips_seg6_anim_060139F8
 
 mips_seg6_anim_06014B94:
   type: SM64:ANIM
-  offset: 0x14B94
+  offset: 0x14C84
   symbol: mips_seg6_anim_06014B94
 
 mips_seg6_anim_0601561C:
   type: SM64:ANIM
-  offset: 0x1561C
+  offset: 0x1570C
   symbol: mips_seg6_anim_0601561C
 
 mips_seg6_anims_06015634:
@@ -35,5 +35,5 @@ mips_seg6_anims_06015634:
   assetType: Animation
   factoryType: SM64:ANIM
   count: 7
-  offset: 0x15634
+  offset: 0x15724
   symbol: mips_seg6_anims_06015634

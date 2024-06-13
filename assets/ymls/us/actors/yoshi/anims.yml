@@ -7,17 +7,17 @@
 
 yoshi_seg5_anim_050233A4:
   type: SM64:ANIM
-  offset: 0x233A4
+  offset: 0x2348C
   symbol: yoshi_seg5_anim_050233A4
 
 yoshi_seg5_anim_05023E4C:
   type: SM64:ANIM
-  offset: 0x23E4C
+  offset: 0x23F34
   symbol: yoshi_seg5_anim_05023E4C
 
 yoshi_seg5_anim_050240E8:
   type: SM64:ANIM
-  offset: 0x240E8
+  offset: 0x241D0
   symbol: yoshi_seg5_anim_050240E8
 
 yoshi_seg5_anims_05024100:
@@ -25,5 +25,5 @@ yoshi_seg5_anims_05024100:
   assetType: Animation
   factoryType: SM64:ANIM
   count: 4
-  offset: 0x24100
+  offset: 0x241E8
   symbol: yoshi_seg5_anims_05024100
