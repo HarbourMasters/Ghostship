@@ -1756,10 +1756,25 @@ ccm_seg7_area_1_collision:
   offset: 0x138E8
   symbol: ccm_seg7_area_1_collision
 
+ccm_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x16284
+  symbol: ccm_seg7_area_1_macro_objs
+
 ccm_seg7_collision_070163F8:
   type: SM64:COLLISION
   offset: 0x163F8
   symbol: ccm_seg7_collision_070163F8
+
+ccm_seg7_trajectory_snowman:
+  type: SM64:TRAJECTORY
+  offset: 0x165A8
+  symbol: ccm_seg7_trajectory_snowman
+
+ccm_seg7_trajectory_0701669C:
+  type: SM64:TRAJECTORY
+  offset: 0x1669C
+  symbol: ccm_seg7_trajectory_0701669C
 
 ccm_seg7_lights_07016718:
   type: LIGHTS
@@ -2693,27 +2708,13 @@ ccm_seg7_area_2_collision:
   offset: 0x20880
   symbol: ccm_seg7_area_2_collision
 
-ccm_seg7_trajectory_snowman:
-  type: SM64:TRAJECTORY
-  offset: 0x165A8
-  symbol: ccm_seg7_trajectory_snowman
-
-ccm_seg7_trajectory_0701669C:
-  type: SM64:TRAJECTORY
-  offset: 0x1669C
-  symbol: ccm_seg7_trajectory_0701669C
+ccm_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x23468
+  symbol: ccm_seg7_area_2_macro_objs
 
 ccm_seg7_trajectory_penguin_race:
   type: SM64:TRAJECTORY
   offset: 0x23604
   symbol: ccm_seg7_trajectory_penguin_race
 
-ccm_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x16284
-  symbol: ccm_seg7_area_1_macro_objs
-
-ccm_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0x23468
-  symbol: ccm_seg7_area_2_macro_objs

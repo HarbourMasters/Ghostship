@@ -677,12 +677,13 @@ vcutm_seg7_collision:
   offset: 0x9750
   symbol: vcutm_seg7_collision
 
+vcutm_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0xAB0C
+  symbol: vcutm_seg7_macro_objs
+
 vcutm_seg7_collision_0700AC44:
   type: SM64:COLLISION
   offset: 0xAC44
   symbol: vcutm_seg7_collision_0700AC44
 
-vcutm_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0xAB0C
-  symbol: vcutm_seg7_macro_objs

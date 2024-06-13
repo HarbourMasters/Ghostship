@@ -1362,6 +1362,11 @@ bitdw_seg7_collision_level:
   offset: 0xD460
   symbol: bitdw_seg7_collision_level
 
+bitdw_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0xF438
+  symbol: bitdw_seg7_macro_objs
+
 bitdw_seg7_collision_0700F688:
   type: SM64:COLLISION
   offset: 0xF688
@@ -1412,7 +1417,3 @@ bitdw_seg7_collision_0700FD9C:
   offset: 0xFD9C
   symbol: bitdw_seg7_collision_0700FD9C
 
-bitdw_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0xF438
-  symbol: bitdw_seg7_macro_objs

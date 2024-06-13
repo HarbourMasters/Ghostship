@@ -4025,6 +4025,11 @@ rr_seg7_collision_level:
   offset: 0x2A7C0
   symbol: rr_seg7_collision_level
 
+rr_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x2E81C
+  symbol: rr_seg7_macro_objs
+
 rr_seg7_trajectory_0702EC3C:
   type: SM64:TRAJECTORY
   offset: 0x2EA80
@@ -4045,7 +4050,3 @@ rr_seg7_trajectory_0702EEE0:
   offset: 0x2ED24
   symbol: rr_seg7_trajectory_0702EEE0
 
-rr_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x2E81C
-  symbol: rr_seg7_macro_objs
