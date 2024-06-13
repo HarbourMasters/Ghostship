@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x165060
+  segments:
+    - [0x05,  0x165060]
+
+chair_seg5_anim_0500576C:
+  type: SM64:ANIM
+  offset: 0x576C
+  symbol: chair_seg5_anim_0500576C
+
+chair_seg5_anims_05005784:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 1
+  offset: 0x5784
+  symbol: chair_seg5_anims_05005784

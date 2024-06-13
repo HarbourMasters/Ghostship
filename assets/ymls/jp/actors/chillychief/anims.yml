@@ -1,0 +1,34 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1E3520
+  segments:
+    - [0x06,  0x1E3520]
+
+chilly_chief_seg6_anim_060032EC:
+  type: SM64:ANIM
+  offset: 0x32EC
+  symbol: chilly_chief_seg6_anim_060032EC
+
+chilly_chief_seg6_anim_06003420:
+  type: SM64:ANIM
+  offset: 0x3420
+  symbol: chilly_chief_seg6_anim_06003420
+
+chilly_chief_seg6_anim_060035E0:
+  type: SM64:ANIM
+  offset: 0x35E0
+  symbol: chilly_chief_seg6_anim_060035E0
+
+chilly_chief_seg6_anim_0600373C:
+  type: SM64:ANIM
+  offset: 0x373C
+  symbol: chilly_chief_seg6_anim_0600373C
+
+chilly_chief_seg6_anims_06003994:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 5
+  offset: 0x3994
+  symbol: chilly_chief_seg6_anims_06003994

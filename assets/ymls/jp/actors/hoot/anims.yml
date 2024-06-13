@@ -1,0 +1,24 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x128BE0
+  segments:
+    - [0x05,  0x128BE0]
+
+hoot_seg5_anim_050053EC:
+  type: SM64:ANIM
+  offset: 0x53EC
+  symbol: hoot_seg5_anim_050053EC
+
+hoot_seg5_anim_05005750:
+  type: SM64:ANIM
+  offset: 0x5750
+  symbol: hoot_seg5_anim_05005750
+
+hoot_seg5_anims_05005768:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 2
+  offset: 0x5768
+  symbol: hoot_seg5_anims_05005768

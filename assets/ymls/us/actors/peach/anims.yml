@@ -1,0 +1,74 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x16D870
+  segments:
+    - [0x05,  0x16D870]
+
+peach_seg5_anim_0500C638:
+  type: SM64:ANIM
+  offset: 0xC720
+  symbol: peach_seg5_anim_0500C638
+
+peach_seg5_anim_0500E6B4:
+  type: SM64:ANIM
+  offset: 0xE79C
+  symbol: peach_seg5_anim_0500E6B4
+
+peach_seg5_anim_0500ED94:
+  type: SM64:ANIM
+  offset: 0xEE7C
+  symbol: peach_seg5_anim_0500ED94
+
+peach_seg5_anim_0500F474:
+  type: SM64:ANIM
+  offset: 0xF55C
+  symbol: peach_seg5_anim_0500F474
+
+peach_seg5_anim_0500FE84:
+  type: SM64:ANIM
+  offset: 0xFF6C
+  symbol: peach_seg5_anim_0500FE84
+
+peach_seg5_anim_05011050:
+  type: SM64:ANIM
+  offset: 0x11138
+  symbol: peach_seg5_anim_05011050
+
+peach_seg5_anim_05012F40:
+  type: SM64:ANIM
+  offset: 0x13028
+  symbol: peach_seg5_anim_05012F40
+
+peach_seg5_anim_05015468:
+  type: SM64:ANIM
+  offset: 0x15550
+  symbol: peach_seg5_anim_05015468
+
+peach_seg5_anim_05016798:
+  type: SM64:ANIM
+  offset: 0x16880
+  symbol: peach_seg5_anim_05016798
+
+peach_seg5_anim_05018664:
+  type: SM64:ANIM
+  offset: 0x1874C
+  symbol: peach_seg5_anim_05018664
+
+peach_seg5_anim_0501B328:
+  type: SM64:ANIM
+  offset: 0x1B410
+  symbol: peach_seg5_anim_0501B328
+
+peach_seg5_anim_0501C404:
+  type: SM64:ANIM
+  offset: 0x1C4EC
+  symbol: peach_seg5_anim_0501C404
+
+peach_seg5_anims_0501C41C:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 13
+  offset: 0x1C504
+  symbol: peach_seg5_anims_0501C41C

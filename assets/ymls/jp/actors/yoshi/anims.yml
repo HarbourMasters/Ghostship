@@ -1,0 +1,29 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x16BC70
+  segments:
+    - [0x05,  0x16BC70]
+
+yoshi_seg5_anim_050233A4:
+  type: SM64:ANIM
+  offset: 0x233A4
+  symbol: yoshi_seg5_anim_050233A4
+
+yoshi_seg5_anim_05023E4C:
+  type: SM64:ANIM
+  offset: 0x23E4C
+  symbol: yoshi_seg5_anim_05023E4C
+
+yoshi_seg5_anim_050240E8:
+  type: SM64:ANIM
+  offset: 0x240E8
+  symbol: yoshi_seg5_anim_050240E8
+
+yoshi_seg5_anims_05024100:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 4
+  offset: 0x24100
+  symbol: yoshi_seg5_anims_05024100

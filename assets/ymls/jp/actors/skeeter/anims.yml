@@ -1,0 +1,34 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1B8010
+  segments:
+    - [0x06,  0x1B8010]
+
+skeeter_seg6_anim_06005D44:
+  type: SM64:ANIM
+  offset: 0x5D44
+  symbol: skeeter_seg6_anim_06005D44
+
+skeeter_seg6_anim_06006B70:
+  type: SM64:ANIM
+  offset: 0x6B70
+  symbol: skeeter_seg6_anim_06006B70
+
+skeeter_seg6_anim_060071E0:
+  type: SM64:ANIM
+  offset: 0x71E0
+  symbol: skeeter_seg6_anim_060071E0
+
+skeeter_seg6_anim_06007DC8:
+  type: SM64:ANIM
+  offset: 0x7DC8
+  symbol: skeeter_seg6_anim_06007DC8
+
+skeeter_seg6_anims_06007DE0:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 4
+  offset: 0x7DE0
+  symbol: skeeter_seg6_anims_06007DE0

@@ -1,0 +1,19 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1F0530
+  segments:
+    - [0x08,  0x1F0530]
+
+amp_animation:
+  type: SM64:ANIM
+  offset: 0x401C
+  symbol: dAmpAnimation
+
+amp_anims_list:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 1
+  offset: 0x4034
+  symbol: dAmpAnimsList

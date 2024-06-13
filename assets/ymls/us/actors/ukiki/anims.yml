@@ -1,0 +1,79 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1521D0
+  segments:
+    - [0x05,  0x1521D0]
+
+ukiki_seg5_anim_0500D658:
+  type: SM64:ANIM
+  offset: 0xD658
+  symbol: ukiki_seg5_anim_0500D658
+
+ukiki_seg5_anim_0500DC80:
+  type: SM64:ANIM
+  offset: 0xDC80
+  symbol: ukiki_seg5_anim_0500DC80
+
+ukiki_seg5_anim_0500DDEC:
+  type: SM64:ANIM
+  offset: 0xDDEC
+  symbol: ukiki_seg5_anim_0500DDEC
+
+ukiki_seg5_anim_0500EACC:
+  type: SM64:ANIM
+  offset: 0xEACC
+  symbol: ukiki_seg5_anim_0500EACC
+
+ukiki_seg5_anim_0500EEA8:
+  type: SM64:ANIM
+  offset: 0xEEA8
+  symbol: ukiki_seg5_anim_0500EEA8
+
+ukiki_seg5_anim_0500F530:
+  type: SM64:ANIM
+  offset: 0xF530
+  symbol: ukiki_seg5_anim_0500F530
+
+ukiki_seg5_anim_0500FC84:
+  type: SM64:ANIM
+  offset: 0xFC84
+  symbol: ukiki_seg5_anim_0500FC84
+
+ukiki_seg5_anim_0501006C:
+  type: SM64:ANIM
+  offset: 0x1006C
+  symbol: ukiki_seg5_anim_0501006C
+
+ukiki_seg5_anim_050103F4:
+  type: SM64:ANIM
+  offset: 0x103F4
+  symbol: ukiki_seg5_anim_050103F4
+
+ukiki_seg5_anim_05012ABC:
+  type: SM64:ANIM
+  offset: 0x12ABC
+  symbol: ukiki_seg5_anim_05012ABC
+
+ukiki_seg5_anim_05014BE4:
+  type: SM64:ANIM
+  offset: 0x14BE4
+  symbol: ukiki_seg5_anim_05014BE4
+
+ukiki_seg5_anim_050153C4:
+  type: SM64:ANIM
+  offset: 0x153C4
+  symbol: ukiki_seg5_anim_050153C4
+
+ukiki_seg5_anim_0501576C:
+  type: SM64:ANIM
+  offset: 0x1576C
+  symbol: ukiki_seg5_anim_0501576C
+
+ukiki_seg5_anims_05015784:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 15
+  offset: 0x15784
+  symbol: ukiki_seg5_anims_05015784

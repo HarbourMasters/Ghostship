@@ -1,0 +1,24 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x201410
+  segments:
+    - [0x03,  0x201410]
+
+butterfly_seg3_anim_030055B0:
+  type: SM64:ANIM
+  offset: 0x55B0
+  symbol: butterfly_seg3_anim_030055B0
+
+butterfly_seg3_anim_03005698:
+  type: SM64:ANIM
+  offset: 0x5698
+  symbol: butterfly_seg3_anim_03005698
+
+butterfly_seg3_anims_030056B0:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 2
+  offset: 0x56B0
+  symbol: butterfly_seg3_anims_030056B0
