@@ -104,7 +104,7 @@ wiggler_seg5_vertex_0500D228:
 wiggler_seg5_vertex_0500D318:
   type: VTX
   count: 144
-  offset: 0xD228
+  offset: 0xD318
   symbol: wiggler_seg5_vertex_0500D318
 
 wiggler_seg5_dl_0500DC18:
