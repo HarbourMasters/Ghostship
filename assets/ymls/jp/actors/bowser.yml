@@ -167,15 +167,6 @@ bowser_eye_left_0:
   format: RGBA16
   symbol: bowser_seg6_texture_0602CC38
 
-bowser_eye_left_1:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0x32C38
-  format: RGBA16
-  symbol: bowser_seg6_texture_06032C38
-
 bowser_eye_half_closed_0:
   type: TEXTURE
   size: 4096
@@ -184,15 +175,6 @@ bowser_eye_half_closed_0:
   offset: 0x2DC38
   format: RGBA16
   symbol: bowser_seg6_texture_0602DC38
-
-bowser_eye_half_closed_1:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0x33C38
-  format: RGBA16
-  symbol: bowser_seg6_texture_06033C38
 
 bowser_eye_closed_0:
   type: TEXTURE
@@ -203,15 +185,6 @@ bowser_eye_closed_0:
   format: RGBA16
   symbol: bowser_seg6_texture_0602EC38
 
-bowser_eye_closed_1:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0x34C38
-  format: RGBA16
-  symbol: bowser_seg6_texture_06034C38
-
 bowser_eye_center_0:
   type: TEXTURE
   size: 4096
@@ -220,15 +193,6 @@ bowser_eye_center_0:
   offset: 0x2FC38
   format: RGBA16
   symbol: bowser_seg6_texture_0602FC38
-
-bowser_eye_center_1:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0x35C38
-  format: RGBA16
-  symbol: bowser_seg6_texture_06035C38
 
 bowser_eye_right_0:
   type: TEXTURE
@@ -239,15 +203,6 @@ bowser_eye_right_0:
   format: RGBA16
   symbol: bowser_seg6_texture_06030C38
 
-bowser_eye_right_1:
-  type: TEXTURE
-  size: 4096
-  width: 64
-  height: 32
-  offset: 0x36C38
-  format: RGBA16
-  symbol: bowser_seg6_texture_06036C38
-
 bowser_eye_far_left_0:
   type: TEXTURE
   size: 4096
@@ -256,6 +211,51 @@ bowser_eye_far_left_0:
   offset: 0x31C38
   format: RGBA16
   symbol: bowser_seg6_texture_06031C38
+
+bowser_eye_left_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x32C38
+  format: RGBA16
+  symbol: bowser_seg6_texture_06032C38
+
+bowser_eye_half_closed_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x33C38
+  format: RGBA16
+  symbol: bowser_seg6_texture_06033C38
+
+bowser_eye_closed_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x34C38
+  format: RGBA16
+  symbol: bowser_seg6_texture_06034C38
+
+bowser_eye_center_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x35C38
+  format: RGBA16
+  symbol: bowser_seg6_texture_06035C38
+
+bowser_eye_right_1:
+  type: TEXTURE
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x36C38
+  format: RGBA16
+  symbol: bowser_seg6_texture_06036C38
 
 bowser_eye_far_left_1:
   type: TEXTURE

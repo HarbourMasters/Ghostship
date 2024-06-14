@@ -716,15 +716,6 @@ main_menu_seg7.0B600:
   format: IA8
   symbol: texture_menu_font_char_dash
 
-main_menu_seg7.0B7C0:
-  type: TEXTURE
-  size: 64
-  width: 8
-  height: 8
-  offset: 0xB7C0
-  format: IA8
-  symbol: texture_menu_font_char_period
-
 main_menu_seg7.0B640:
   type: TEXTURE
   size: 64
@@ -778,6 +769,15 @@ main_menu_seg7.0B780:
   offset: 0xB780
   format: IA8
   symbol: texture_menu_font_char_mface2
+
+main_menu_seg7.0B7C0:
+  type: TEXTURE
+  size: 64
+  width: 8
+  height: 8
+  offset: 0xB7C0
+  format: IA8
+  symbol: texture_menu_font_char_period
 
 main_menu_seg7.0B800:
   type: TEXTURE

@@ -1805,15 +1805,6 @@ hmc_seg7_vertex_070167F8:
   offset: 0x167F8
   symbol: hmc_seg7_vertex_070167F8
 
-7:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x24CE0
-  format: RGBA16
-  symbol: hmc_seg7_texture_07024CE0
-
 hmc_seg7_vertex_07016898:
   type: VTX
   count: 4
@@ -3255,6 +3246,15 @@ hmc_seg7_painting_dl_070242D0:
   type: GFX
   offset: 0x242D0
   symbol: hmc_seg7_painting_dl_070242D0
+
+7:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x24CE0
+  format: RGBA16
+  symbol: hmc_seg7_texture_07024CE0
 
 hmc_seg7_painting_dl_070254E0:
   type: GFX

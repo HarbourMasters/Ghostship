@@ -14,6 +14,15 @@
   format: RGBA16
   symbol: inside_castle_seg7_texture_07000800
 
+2:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x1000
+  format: IA16
+  symbol: inside_castle_seg7_texture_07001000
+
 3:
   type: TEXTURE
   size: 4096
@@ -157,15 +166,6 @@
   offset: 0xB800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0700B800
-
-2:
-  type: TEXTURE
-  size: 4096
-  width: 32
-  height: 64
-  offset: 0x1000
-  format: IA16
-  symbol: inside_castle_seg7_texture_07001000
 
 castle_light:
   type: TEXTURE
@@ -1214,6 +1214,22 @@ inside_castle_seg7_dl_0702A650:
   offset: 0x2A650
   symbol: inside_castle_seg7_dl_0702A650
 
+dl_castle_lobby_wing_cap_light_vertex_group:
+  type: VTX
+  count: 16
+  offset: 0x2A6D8
+  symbol: dl_castle_lobby_wing_cap_light_vertex_group
+
+dl_castle_lobby_wing_cap_light_model:
+  type: GFX
+  offset: 0x2A7D8
+  symbol: dl_castle_lobby_wing_cap_light_model
+
+dl_castle_lobby_wing_cap_light:
+  type: GFX
+  offset: 0x2A880
+  symbol: dl_castle_lobby_wing_cap_light
+
 inside_castle_seg7_lights_0702A8F0:
   type: LIGHTS
   size: 24
@@ -2127,22 +2143,6 @@ inside_castle_seg7_dl_07032FC0:
   offset: 0x32FC0
   symbol: inside_castle_seg7_dl_07032FC0
 
-dl_castle_lobby_wing_cap_light_vertex_group:
-  type: VTX
-  count: 16
-  offset: 0x2A6D8
-  symbol: dl_castle_lobby_wing_cap_light_vertex_group
-
-dl_castle_lobby_wing_cap_light_model:
-  type: GFX
-  offset: 0x2A7D8
-  symbol: dl_castle_lobby_wing_cap_light_model
-
-dl_castle_lobby_wing_cap_light:
-  type: GFX
-  offset: 0x2A880
-  symbol: dl_castle_lobby_wing_cap_light
-
 inside_castle_seg7_lights_07033068:
   type: LIGHTS
   size: 24
@@ -2164,29 +2164,6 @@ inside_castle_seg7_dl_07033158:
   type: GFX
   offset: 0x33158
   symbol: inside_castle_seg7_dl_07033158
-
-dl_castle_aquarium_light_vertex_group_1:
-  type: VTX
-  count: 16
-  offset: 0x37E38
-  symbol: dl_castle_aquarium_light_vertex_group_1
-
-dl_castle_aquarium_light_vertex_group_2:
-  type: VTX
-  count: 16
-  offset: 0x37F38
-  symbol: dl_castle_aquarium_light_vertex_group_2
-
-dl_castle_aquarium_light_vertex_group_3:
-  type: VTX
-  count: 13
-  offset: 0x38038
-  symbol: dl_castle_aquarium_light_vertex_group_3
-
-dl_castle_aquarium_light_model:
-  type: GFX
-  offset: 0x38108
-  symbol: dl_castle_aquarium_light_model
 
 inside_castle_seg7_lights_070331C8:
   type: LIGHTS
@@ -2739,6 +2716,29 @@ inside_castle_seg7_dl_07037DE8:
   type: GFX
   offset: 0x37DE8
   symbol: inside_castle_seg7_dl_07037DE8
+
+dl_castle_aquarium_light_vertex_group_1:
+  type: VTX
+  count: 16
+  offset: 0x37E38
+  symbol: dl_castle_aquarium_light_vertex_group_1
+
+dl_castle_aquarium_light_vertex_group_2:
+  type: VTX
+  count: 16
+  offset: 0x37F38
+  symbol: dl_castle_aquarium_light_vertex_group_2
+
+dl_castle_aquarium_light_vertex_group_3:
+  type: VTX
+  count: 13
+  offset: 0x38038
+  symbol: dl_castle_aquarium_light_vertex_group_3
+
+dl_castle_aquarium_light_model:
+  type: GFX
+  offset: 0x38108
+  symbol: dl_castle_aquarium_light_model
 
 dl_castle_aquarium_light:
   type: GFX
