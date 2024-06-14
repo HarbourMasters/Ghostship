@@ -1448,7 +1448,7 @@ bits_seg7_vertex_07010208:
 
 bits_seg7_vertex_07010308:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x10308
   symbol: bits_seg7_vertex_07010308
 
@@ -1472,19 +1472,19 @@ bits_seg7_vertex_070105C8:
 
 bits_seg7_vertex_070106C8:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x106C8
   symbol: bits_seg7_vertex_070106C8
 
 bits_seg7_vertex_070107A8:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x107A8
   symbol: bits_seg7_vertex_070107A8
 
 bits_seg7_vertex_07010888:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x10888
   symbol: bits_seg7_vertex_07010888
 
@@ -1508,7 +1508,7 @@ bits_seg7_vertex_07010B58:
 
 bits_seg7_vertex_07010C48:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x10C48
   symbol: bits_seg7_vertex_07010C48
 
@@ -1520,7 +1520,7 @@ bits_seg7_vertex_07010D38:
 
 bits_seg7_vertex_07010E18:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x10E18
   symbol: bits_seg7_vertex_07010E18
 
@@ -1556,13 +1556,13 @@ bits_seg7_vertex_07011298:
 
 bits_seg7_vertex_07011388:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x11388
   symbol: bits_seg7_vertex_07011388
 
 bits_seg7_vertex_07011478:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x11478
   symbol: bits_seg7_vertex_07011478
 

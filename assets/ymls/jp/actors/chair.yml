@@ -5,6 +5,12 @@
   segments:
     - [0x05,  0x165060]
 
+chair_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0x3048
+  symbol: chair_lights_unused
+
 chair_front:
   type: TEXTURE
   size: 2048
@@ -152,10 +158,4 @@ chair_seg5_dl_05005680:
   type: GFX
   offset: 0x5680
   symbol: chair_seg5_dl_05005680
-
-chair_lights_unused:
-  type: LIGHTS
-  size: 24
-  offset: 0x57F8
-  symbol: chair_lights_unused
 
