@@ -1810,7 +1810,7 @@ hmc_seg7_vertex_070167F8:
   size: 2048
   width: 32
   height: 32
-  offset: 0x16800
+  offset: 0x24CE0
   format: RGBA16
   symbol: hmc_seg7_texture_07024CE0
 

@@ -163,7 +163,7 @@
   size: 4096
   width: 32
   height: 64
-  offset: 0xB800
+  offset: 0x1000
   format: IA16
   symbol: inside_castle_seg7_texture_07001000
 
@@ -1783,19 +1783,19 @@ inside_castle_seg7_lights_0702FDD8:
 
 inside_castle_seg7_vertex_0702FDF0:
   type: VTX
-  count: 9
+  count: 8
   offset: 0x2FDF0
   symbol: inside_castle_seg7_vertex_0702FDF0
 
 inside_castle_seg7_vertex_0702FE70:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x2FE70
   symbol: inside_castle_seg7_vertex_0702FE70
 
 inside_castle_seg7_vertex_0702FF70:
   type: VTX
-  count: 9
+  count: 8
   offset: 0x2FF70
   symbol: inside_castle_seg7_vertex_0702FF70
 
@@ -1819,91 +1819,91 @@ inside_castle_seg7_vertex_070301D0:
 
 inside_castle_seg7_vertex_070302B0:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x302B0
   symbol: inside_castle_seg7_vertex_070302B0
 
 inside_castle_seg7_vertex_070303B0:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x303B0
   symbol: inside_castle_seg7_vertex_070303B0
 
 inside_castle_seg7_vertex_07030490:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x30490
   symbol: inside_castle_seg7_vertex_07030490
 
 inside_castle_seg7_vertex_07030590:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x30590
   symbol: inside_castle_seg7_vertex_07030590
 
 inside_castle_seg7_vertex_07030670:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x30670
   symbol: inside_castle_seg7_vertex_07030670
 
 inside_castle_seg7_vertex_07030760:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x30760
   symbol: inside_castle_seg7_vertex_07030760
 
 inside_castle_seg7_vertex_07030860:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x30860
   symbol: inside_castle_seg7_vertex_07030860
 
 inside_castle_seg7_vertex_07030940:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x30940
   symbol: inside_castle_seg7_vertex_07030940
 
 inside_castle_seg7_vertex_07030A40:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x30A40
   symbol: inside_castle_seg7_vertex_07030A40
 
 inside_castle_seg7_vertex_07030B30:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x30B30
   symbol: inside_castle_seg7_vertex_07030B30
 
 inside_castle_seg7_vertex_07030C20:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x30C20
   symbol: inside_castle_seg7_vertex_07030C20
 
 inside_castle_seg7_vertex_07030D20:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x30D20
   symbol: inside_castle_seg7_vertex_07030D20
 
 inside_castle_seg7_vertex_07030E20:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x30E20
   symbol: inside_castle_seg7_vertex_07030E20
 
 inside_castle_seg7_vertex_07030F10:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x30F10
   symbol: inside_castle_seg7_vertex_07030F10
 
 inside_castle_seg7_vertex_07030FF0:
   type: VTX
-  count: 9
+  count: 8
   offset: 0x30FF0
   symbol: inside_castle_seg7_vertex_07030FF0
 
@@ -2130,17 +2130,17 @@ inside_castle_seg7_dl_07032FC0:
 dl_castle_lobby_wing_cap_light_vertex_group:
   type: VTX
   count: 16
-  offset: 0x32FC0
+  offset: 0x2A6D8
   symbol: dl_castle_lobby_wing_cap_light_vertex_group
 
 dl_castle_lobby_wing_cap_light_model:
   type: GFX
-  offset: 0x32FC0
+  offset: 0x2A7D8
   symbol: dl_castle_lobby_wing_cap_light_model
 
 dl_castle_lobby_wing_cap_light:
   type: GFX
-  offset: 0x32FC0
+  offset: 0x2A880
   symbol: dl_castle_lobby_wing_cap_light
 
 inside_castle_seg7_lights_07033068:
@@ -2168,24 +2168,24 @@ inside_castle_seg7_dl_07033158:
 dl_castle_aquarium_light_vertex_group_1:
   type: VTX
   count: 16
-  offset: 0x33158
+  offset: 0x37E38
   symbol: dl_castle_aquarium_light_vertex_group_1
 
 dl_castle_aquarium_light_vertex_group_2:
   type: VTX
   count: 16
-  offset: 0x33158
+  offset: 0x37F38
   symbol: dl_castle_aquarium_light_vertex_group_2
 
 dl_castle_aquarium_light_vertex_group_3:
   type: VTX
   count: 13
-  offset: 0x33158
+  offset: 0x38038
   symbol: dl_castle_aquarium_light_vertex_group_3
 
 dl_castle_aquarium_light_model:
   type: GFX
-  offset: 0x33158
+  offset: 0x38108
   symbol: dl_castle_aquarium_light_model
 
 inside_castle_seg7_lights_070331C8:

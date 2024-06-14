@@ -721,7 +721,7 @@ main_menu_seg7.0B7C0:
   size: 64
   width: 8
   height: 8
-  offset: 0xB638
+  offset: 0xB7C0
   format: IA8
   symbol: texture_menu_font_char_period
 
@@ -793,7 +793,7 @@ main_menu_seg7.0D1A8:
   size: 4096
   width: 64
   height: 32
-  offset: 0xBCE0
+  offset: 0xD1A8
   format: RGBA16
   symbol: texture_menu_course_upper
 
@@ -802,6 +802,6 @@ main_menu_seg7.0E1A8:
   size: 4096
   width: 64
   height: 32
-  offset: 0xCCE0
+  offset: 0xE1A8
   format: RGBA16
   symbol: texture_menu_course_lower

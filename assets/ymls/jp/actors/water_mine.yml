@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x186810
+    offset: 0x1B8010
   segments:
-    - [0x06,  0x186810]
+    - [0x06, 0x1B8010]
 
 water_mine_seg6_lights_0600A4E0:
   type: LIGHTS

@@ -86,25 +86,25 @@ rr_seg7_vertex_07002688:
 
 rr_seg7_vertex_070026F8:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x26F8
   symbol: rr_seg7_vertex_070026F8
 
 rr_seg7_vertex_070027F8:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x27F8
   symbol: rr_seg7_vertex_070027F8
 
 rr_seg7_vertex_070028E8:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x28E8
   symbol: rr_seg7_vertex_070028E8
 
 rr_seg7_vertex_070029D8:
   type: VTX
-  count: 5
+  count: 4
   offset: 0x29D8
   symbol: rr_seg7_vertex_070029D8
 
@@ -1587,151 +1587,151 @@ rr_seg7_dl_07012758:
 
 rr_seg7_vertex_070127E8:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x127E8
   symbol: rr_seg7_vertex_070127E8
 
 rr_seg7_vertex_070128D8:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x128D8
   symbol: rr_seg7_vertex_070128D8
 
 rr_seg7_vertex_070129B8:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x129B8
   symbol: rr_seg7_vertex_070129B8
 
 rr_seg7_vertex_07012AA8:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x12AA8
   symbol: rr_seg7_vertex_07012AA8
 
 rr_seg7_vertex_07012B98:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x12B98
   symbol: rr_seg7_vertex_07012B98
 
 rr_seg7_vertex_07012C98:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x12C98
   symbol: rr_seg7_vertex_07012C98
 
 rr_seg7_vertex_07012D78:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x12D78
   symbol: rr_seg7_vertex_07012D78
 
 rr_seg7_vertex_07012E68:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x12E68
   symbol: rr_seg7_vertex_07012E68
 
 rr_seg7_vertex_07012F58:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x12F58
   symbol: rr_seg7_vertex_07012F58
 
 rr_seg7_vertex_07013038:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x13038
   symbol: rr_seg7_vertex_07013038
 
 rr_seg7_vertex_07013128:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x13128
   symbol: rr_seg7_vertex_07013128
 
 rr_seg7_vertex_07013208:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x13208
   symbol: rr_seg7_vertex_07013208
 
 rr_seg7_vertex_070132F8:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x132F8
   symbol: rr_seg7_vertex_070132F8
 
 rr_seg7_vertex_070133E8:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x133E8
   symbol: rr_seg7_vertex_070133E8
 
 rr_seg7_vertex_070134C8:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x134C8
   symbol: rr_seg7_vertex_070134C8
 
 rr_seg7_vertex_070135C8:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x135C8
   symbol: rr_seg7_vertex_070135C8
 
 rr_seg7_vertex_070136A8:
   type: VTX
-  count: 9
+  count: 8
   offset: 0x136A8
   symbol: rr_seg7_vertex_070136A8
 
 rr_seg7_vertex_07013728:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x13728
   symbol: rr_seg7_vertex_07013728
 
 rr_seg7_vertex_07013828:
   type: VTX
-  count: 9
+  count: 8
   offset: 0x13828
   symbol: rr_seg7_vertex_07013828
 
 rr_seg7_vertex_070138A8:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x138A8
   symbol: rr_seg7_vertex_070138A8
 
 rr_seg7_vertex_07013998:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x13998
   symbol: rr_seg7_vertex_07013998
 
 rr_seg7_vertex_07013A88:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x13A88
   symbol: rr_seg7_vertex_07013A88
 
 rr_seg7_vertex_07013B88:
   type: VTX
-  count: 17
+  count: 16
   offset: 0x13B88
   symbol: rr_seg7_vertex_07013B88
 
 rr_seg7_vertex_07013C88:
   type: VTX
-  count: 16
+  count: 15
   offset: 0x13C88
   symbol: rr_seg7_vertex_07013C88
 
 rr_seg7_vertex_07013D78:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x13D78
   symbol: rr_seg7_vertex_07013D78
 
@@ -2538,13 +2538,13 @@ rr_seg7_dl_0701B220:
 
 rr_seg7_vertex_0701B290:
   type: VTX
-  count: 15
+  count: 14
   offset: 0x1B290
   symbol: rr_seg7_vertex_0701B290
 
 rr_seg7_vertex_0701B370:
   type: VTX
-  count: 13
+  count: 12
   offset: 0x1B370
   symbol: rr_seg7_vertex_0701B370
 

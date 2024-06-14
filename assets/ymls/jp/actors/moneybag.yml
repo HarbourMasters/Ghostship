@@ -114,13 +114,13 @@ moneybag_seg6_dl_06005750:
 moneybag_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x5750
+  offset: 0x57C0
   symbol: moneybag_lights_unused1
 
 moneybag_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0x5750
+  offset: 0x57D8
   symbol: moneybag_lights_unused2
 
 moneybag_seg6_lights_060057F0:
@@ -132,7 +132,7 @@ moneybag_seg6_lights_060057F0:
 moneybag_lights_unused3:
   type: LIGHTS
   size: 24
-  offset: 0x57F0
+  offset: 0x5808
   symbol: moneybag_lights_unused3
 
 moneybag_seg6_vertex_06005820:

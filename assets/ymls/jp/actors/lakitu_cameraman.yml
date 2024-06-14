@@ -311,7 +311,7 @@ lakitu_seg6_dl_06005360:
 lakitu_cameraman_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x5360
+  offset: 0x53D8
   symbol: lakitu_cameraman_lights_unused1
 
 lakitu_seg6_lights_060053F0:
@@ -323,13 +323,13 @@ lakitu_seg6_lights_060053F0:
 lakitu_cameraman_lights_unused2:
   type: LIGHTS
   size: 24
-  offset: 0x53F0
+  offset: 0x5408
   symbol: lakitu_cameraman_lights_unused2
 
 lakitu_cameraman_lights_unused3:
   type: LIGHTS
   size: 24
-  offset: 0x53F0
+  offset: 0x5420
   symbol: lakitu_cameraman_lights_unused3
 
 lakitu_seg6_lights_06005438:
@@ -341,7 +341,7 @@ lakitu_seg6_lights_06005438:
 lakitu_cameraman_lights_unused4:
   type: LIGHTS
   size: 24
-  offset: 0x5438
+  offset: 0x5450
   symbol: lakitu_cameraman_lights_unused4
 
 lakitu_seg6_vertex_06005468:

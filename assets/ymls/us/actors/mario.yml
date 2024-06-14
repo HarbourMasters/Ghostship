@@ -109,7 +109,7 @@ mario_eyes_closed:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4090
+  offset: 0x4890
   format: RGBA16
   symbol: mario_texture_eyes_closed
 
@@ -118,7 +118,7 @@ mario_eyes_closed_unused_0:
   size: 2048
   width: 32
   height: 32
-  offset: 0x4090
+  offset: 0x5090
   format: RGBA16
   symbol: mario_texture_eyes_closed_unused1
 

@@ -68,7 +68,7 @@ koopa_shell_back:
 koopa_lights_unused1:
   type: LIGHTS
   size: 24
-  offset: 0x33B0
+  offset: 0x2588
   symbol: koopa_lights_unused1
 
 koopa_shoe:

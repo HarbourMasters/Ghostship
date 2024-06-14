@@ -1,9 +1,9 @@
 :config:
   autopads: false
   compression:
-    offset: 0x114750
+    offset: 0x201410
   segments:
-    - [0x03,  0x114750]
+    - [0x03,  0x201410]
 
 mario_cap_seg3_lights_0301CF08:
   type: LIGHTS

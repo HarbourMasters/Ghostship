@@ -794,15 +794,6 @@ font_graphics.05DC0:
   format: IA4
   symbol: texture_font_char_us_J
 
-segment2.07340:
-  type: TEXTURE
-  size: 16
-  width: 8
-  height: 16
-  offset: 0x5DF2
-  format: IA1
-  symbol: texture_font_char_jp_long_vowel
-
 font_graphics.05E00:
   type: TEXTURE
   size: 64
@@ -846,7 +837,7 @@ font_graphics.05F00:
   height: 8
   offset: 0x5F00
   format: IA4
-  symbol: texture_font_char_eu_0
+  symbol: texture_font_char_us_O
 
 font_graphics.05F40:
   type: TEXTURE
@@ -855,7 +846,7 @@ font_graphics.05F40:
   height: 8
   offset: 0x5F40
   format: IA4
-  symbol: texture_font_char_eu_4
+  symbol: texture_font_char_us_P
 
 font_graphics.05F80:
   type: TEXTURE
@@ -864,7 +855,7 @@ font_graphics.05F80:
   height: 8
   offset: 0x5F80
   format: IA4
-  symbol: texture_font_char_eu_8
+  symbol: texture_font_char_us_Q
 
 font_graphics.05FC0:
   type: TEXTURE
@@ -873,7 +864,7 @@ font_graphics.05FC0:
   height: 8
   offset: 0x5FC0
   format: IA4
-  symbol: texture_font_char_eu_C
+  symbol: texture_font_char_us_R
 
 font_graphics.06000:
   type: TEXTURE
@@ -882,7 +873,7 @@ font_graphics.06000:
   height: 8
   offset: 0x6000
   format: IA4
-  symbol: texture_font_char_eu_G
+  symbol: texture_font_char_us_S
 
 font_graphics.06040:
   type: TEXTURE
@@ -891,7 +882,7 @@ font_graphics.06040:
   height: 8
   offset: 0x6040
   format: IA4
-  symbol: texture_font_char_eu_K
+  symbol: texture_font_char_us_T
 
 font_graphics.06080:
   type: TEXTURE
@@ -900,7 +891,7 @@ font_graphics.06080:
   height: 8
   offset: 0x6080
   format: IA4
-  symbol: texture_font_char_eu_O
+  symbol: texture_font_char_us_U
 
 font_graphics.060C0:
   type: TEXTURE
@@ -909,7 +900,7 @@ font_graphics.060C0:
   height: 8
   offset: 0x60C0
   format: IA4
-  symbol: texture_font_char_eu_S
+  symbol: texture_font_char_us_V
 
 font_graphics.06100:
   type: TEXTURE
@@ -918,7 +909,7 @@ font_graphics.06100:
   height: 8
   offset: 0x6100
   format: IA4
-  symbol: texture_font_char_eu_W
+  symbol: texture_font_char_us_W
 
 font_graphics.06140:
   type: TEXTURE
@@ -927,7 +918,7 @@ font_graphics.06140:
   height: 8
   offset: 0x6140
   format: IA4
-  symbol: texture_font_char_eu_a
+  symbol: texture_font_char_us_X
 
 font_graphics.06180:
   type: TEXTURE
@@ -936,7 +927,7 @@ font_graphics.06180:
   height: 8
   offset: 0x6180
   format: IA4
-  symbol: texture_font_char_eu_e
+  symbol: texture_font_char_us_Y
 
 font_graphics.061C0:
   type: TEXTURE
@@ -945,7 +936,7 @@ font_graphics.061C0:
   height: 8
   offset: 0x61C0
   format: IA4
-  symbol: texture_font_char_eu_i
+  symbol: texture_font_char_us_Z
 
 font_graphics.06200:
   type: TEXTURE
@@ -954,7 +945,7 @@ font_graphics.06200:
   height: 8
   offset: 0x6200
   format: IA4
-  symbol: texture_font_char_eu_m
+  symbol: texture_font_char_us_a
 
 font_graphics.06240:
   type: TEXTURE
@@ -963,7 +954,7 @@ font_graphics.06240:
   height: 8
   offset: 0x6240
   format: IA4
-  symbol: texture_font_char_eu_q
+  symbol: texture_font_char_us_b
 
 font_graphics.06280:
   type: TEXTURE
@@ -972,7 +963,7 @@ font_graphics.06280:
   height: 8
   offset: 0x6280
   format: IA4
-  symbol: texture_font_char_eu_u
+  symbol: texture_font_char_us_c
 
 font_graphics.062C0:
   type: TEXTURE
@@ -981,7 +972,7 @@ font_graphics.062C0:
   height: 8
   offset: 0x62C0
   format: IA4
-  symbol: texture_font_char_eu_y
+  symbol: texture_font_char_us_d
 
 font_graphics.06300:
   type: TEXTURE
@@ -990,7 +981,7 @@ font_graphics.06300:
   height: 8
   offset: 0x6300
   format: IA4
-  symbol: texture_font_char_eu_exclamation
+  symbol: texture_font_char_us_e
 
 font_graphics.06340:
   type: TEXTURE
@@ -999,7 +990,7 @@ font_graphics.06340:
   height: 8
   offset: 0x6340
   format: IA4
-  symbol: texture_font_char_eu_close_open_parentheses
+  symbol: texture_font_char_us_f
 
 font_graphics.06380:
   type: TEXTURE
@@ -1008,7 +999,7 @@ font_graphics.06380:
   height: 8
   offset: 0x6380
   format: IA4
-  symbol: texture_font_char_eu_percent
+  symbol: texture_font_char_us_g
 
 font_graphics.063C0:
   type: TEXTURE
@@ -1017,7 +1008,7 @@ font_graphics.063C0:
   height: 8
   offset: 0x63C0
   format: IA4
-  symbol: texture_font_char_eu_question
+  symbol: texture_font_char_us_h
 
 font_graphics.06400:
   type: TEXTURE
@@ -1026,25 +1017,7 @@ font_graphics.06400:
   height: 8
   offset: 0x6400
   format: IA4
-  symbol: texture_font_char_eu_double_quote_close
-
-font_graphics.06410:
-  type: TEXTURE
-  size: 16
-  width: 16
-  height: 8
-  offset: 0x6410
-  format: IA1
-  symbol: texture_font_char_eu_colon
-
-font_graphics.06420:
-  type: TEXTURE
-  size: 16
-  width: 16
-  height: 8
-  offset: 0x6420
-  format: IA1
-  symbol: texture_font_char_EU_slash
+  symbol: texture_font_char_us_i
 
 font_graphics.06440:
   type: TEXTURE
@@ -1053,7 +1026,7 @@ font_graphics.06440:
   height: 8
   offset: 0x6440
   format: IA4
-  symbol: texture_font_char_eu_button_B
+  symbol: texture_font_char_us_j
 
 font_graphics.06480:
   type: TEXTURE
@@ -1062,7 +1035,7 @@ font_graphics.06480:
   height: 8
   offset: 0x6480
   format: IA4
-  symbol: texture_font_char_eu_button_C_up
+  symbol: texture_font_char_us_k
 
 font_graphics.064C0:
   type: TEXTURE
@@ -1071,7 +1044,7 @@ font_graphics.064C0:
   height: 8
   offset: 0x64C0
   format: IA4
-  symbol: texture_font_char_eu_umlaut
+  symbol: texture_font_char_us_l
 
 font_graphics.06500:
   type: TEXTURE
@@ -1080,7 +1053,7 @@ font_graphics.06500:
   height: 8
   offset: 0x6500
   format: IA4
-  symbol: texture_font_char_eu_cedilla
+  symbol: texture_font_char_us_m
 
 font_graphics.06540:
   type: TEXTURE

@@ -156,6 +156,6 @@ chair_seg5_dl_05005680:
 chair_lights_unused:
   type: LIGHTS
   size: 24
-  offset: 0x57F8
+  offset: 0x3048
   symbol: chair_lights_unused
 

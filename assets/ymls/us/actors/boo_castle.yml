@@ -8,7 +8,7 @@
 boo_castle_seg6_lights_06015658:
   type: LIGHTS
   size: 24
-  offset: 0x15658
+  offset: 0x15748
   symbol: boo_castle_seg6_lights_06015658
 
 bbh_boo_eyes:
@@ -16,7 +16,7 @@ bbh_boo_eyes:
   size: 4096
   width: 64
   height: 32
-  offset: 0x15670
+  offset: 0x15760
   format: RGBA16
   symbol: boo_castle_seg6_texture_06015670
 
@@ -25,105 +25,105 @@ bbh_boo_mouth:
   size: 2048
   width: 32
   height: 32
-  offset: 0x16670
+  offset: 0x16760
   format: RGBA16
   symbol: boo_castle_seg6_texture_06016670
 
 boo_castle_seg6_vertex_06016E70:
   type: VTX
   count: 12
-  offset: 0x16E70
+  offset: 0x16F60
   symbol: boo_castle_seg6_vertex_06016E70
 
 boo_castle_seg6_vertex_06016F30:
   type: VTX
   count: 12
-  offset: 0x16F30
+  offset: 0x17020
   symbol: boo_castle_seg6_vertex_06016F30
 
 boo_castle_seg6_vertex_06016FF0:
   type: VTX
   count: 15
-  offset: 0x16FF0
+  offset: 0x170E0
   symbol: boo_castle_seg6_vertex_06016FF0
 
 boo_castle_seg6_vertex_060170E0:
   type: VTX
   count: 15
-  offset: 0x170E0
+  offset: 0x171D0
   symbol: boo_castle_seg6_vertex_060170E0
 
 boo_castle_seg6_vertex_060171D0:
   type: VTX
   count: 15
-  offset: 0x171D0
+  offset: 0x172C0
   symbol: boo_castle_seg6_vertex_060171D0
 
 boo_castle_seg6_vertex_060172C0:
   type: VTX
   count: 15
-  offset: 0x172C0
+  offset: 0x173B0
   symbol: boo_castle_seg6_vertex_060172C0
 
 boo_castle_seg6_vertex_060173B0:
   type: VTX
   count: 15
-  offset: 0x173B0
+  offset: 0x174A0
   symbol: boo_castle_seg6_vertex_060173B0
 
 boo_castle_seg6_vertex_060174A0:
   type: VTX
   count: 15
-  offset: 0x174A0
+  offset: 0x17590
   symbol: boo_castle_seg6_vertex_060174A0
 
 boo_castle_seg6_vertex_06017590:
   type: VTX
   count: 15
-  offset: 0x17590
+  offset: 0x17680
   symbol: boo_castle_seg6_vertex_06017590
 
 boo_castle_seg6_vertex_06017680:
   type: VTX
   count: 15
-  offset: 0x17680
+  offset: 0x17770
   symbol: boo_castle_seg6_vertex_06017680
 
 boo_castle_seg6_vertex_06017770:
   type: VTX
   count: 15
-  offset: 0x17770
+  offset: 0x17860
   symbol: boo_castle_seg6_vertex_06017770
 
 boo_castle_seg6_vertex_06017860:
   type: VTX
   count: 15
-  offset: 0x17860
+  offset: 0x17950
   symbol: boo_castle_seg6_vertex_06017860
 
 boo_castle_seg6_vertex_06017950:
   type: VTX
   count: 12
-  offset: 0x17950
+  offset: 0x17A40
   symbol: boo_castle_seg6_vertex_06017950
 
 boo_castle_seg6_dl_06017A10:
   type: GFX
-  offset: 0x17A10
+  offset: 0x17B00
   symbol: boo_castle_seg6_dl_06017A10
 
 boo_castle_seg6_dl_06017A78:
   type: GFX
-  offset: 0x17A78
+  offset: 0x17B68
   symbol: boo_castle_seg6_dl_06017A78
 
 boo_castle_seg6_dl_06017AD0:
   type: GFX
-  offset: 0x17AD0
+  offset: 0x17BC0
   symbol: boo_castle_seg6_dl_06017AD0
 
 boo_castle_seg6_dl_06017CE0:
   type: GFX
-  offset: 0x17CE0
+  offset: 0x17DD0
   symbol: boo_castle_seg6_dl_06017CE0
 
