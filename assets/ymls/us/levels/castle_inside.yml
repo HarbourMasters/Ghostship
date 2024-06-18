@@ -8198,60 +8198,6 @@ inside_castle_seg7_area_3_macro_objs:
   offset: 0x777EC
   symbol: inside_castle_seg7_area_3_macro_objs
 
-inside_castle_seg7_lights_07021800:
-  type: LIGHTS
-  offset: 0x21800
-  symbol: inside_castle_seg7_lights_07021800
-
-inside_castle_seg7_vertex_07021818:
-  type: VTX
-  count: 8
-  offset: 0x21818
-  symbol: inside_castle_seg7_vertex_07021818
-
-inside_castle_seg7_vertex_07021898:
-  type: VTX
-  count: 8
-  offset: 0x21898
-  symbol: inside_castle_seg7_vertex_07021898
-
-inside_castle_seg7_vertex_07021918:
-  type: VTX
-  count: 8
-  offset: 0x21918
-  symbol: inside_castle_seg7_vertex_07021918
-
-inside_castle_seg7_vertex_07021998:
-  type: VTX
-  count: 8
-  offset: 0x21998
-  symbol: inside_castle_seg7_vertex_07021998
-
-inside_castle_seg7_dl_07021A18:
-  type: GFX
-  offset: 0x21A18
-  symbol: inside_castle_seg7_dl_07021A18
-
-inside_castle_seg7_dl_07021A30:
-  type: GFX
-  offset: 0x21A30
-  symbol: inside_castle_seg7_dl_07021A30
-
-inside_castle_seg7_dl_07021A48:
-  type: GFX
-  offset: 0x21A48
-  symbol: inside_castle_seg7_dl_07021A48
-
-inside_castle_seg7_dl_07021AA0:
-  type: GFX
-  offset: 0x21AA0
-  symbol: inside_castle_seg7_dl_07021AA0
-
-inside_castle_seg7_painting_dl_07021AC0:
-  type: GFX
-  offset: 0x21AC0
-  symbol: inside_castle_seg7_painting_dl_07021AC0
-
 inside_castle_seg7_painting_texture_map_bottom_07021AE0:
   type: SM64:PAINTING_MAP
   offset: 0x21AE0
@@ -8270,43 +8216,6 @@ inside_castle_seg7_painting_texture_maps_07022518:
   offset: 0x22518
   symbol: inside_castle_seg7_painting_texture_maps_07022518
 
-inside_castle_seg7_lights_07022528:
-  type: LIGHTS
-  offset: 0x22528
-  symbol: inside_castle_seg7_lights_07022528
-
-inside_castle_seg7_lights_07022540:
-  type: LIGHTS
-  offset: 0x22540
-  symbol: inside_castle_seg7_lights_07022540
-
-inside_castle_seg7_vertex_07022558:
-  type: VTX
-  count: 4
-  offset: 0x22558
-  symbol: inside_castle_seg7_vertex_07022558
-
-inside_castle_seg7_vertex_07022598:
-  type: VTX
-  count: 4
-  offset: 0x22598
-  symbol: inside_castle_seg7_vertex_07022598
-
-inside_castle_seg7_dl_070225D8:
-  type: GFX
-  offset: 0x225D8
-  symbol: inside_castle_seg7_dl_070225D8
-
-inside_castle_seg7_dl_07022610:
-  type: GFX
-  offset: 0x22610
-  symbol: inside_castle_seg7_dl_07022610
-
-inside_castle_seg7_painting_dl_07022640:
-  type: GFX
-  offset: 0x22640
-  symbol: inside_castle_seg7_painting_dl_07022640
-
 inside_castle_seg7_painting_env_map_texture_map_07022660:
   type: SM64:PAINTING_MAP
   offset: 0x22660
@@ -8319,81 +8228,6 @@ inside_castle_seg7_painting_env_map_texture_maps_07023044:
   count: 1
   offset: 0x23044
   symbol: inside_castle_seg7_painting_env_map_texture_maps_07023044
-
-inside_castle_seg7_painting_dl_07023050:
-  type: GFX
-  offset: 0x23050
-  symbol: inside_castle_seg7_painting_dl_07023050
-
-inside_castle_seg7_painting_dl_070230B0:
-  type: GFX
-  offset: 0x230B0
-  symbol: inside_castle_seg7_painting_dl_070230B0
-
-inside_castle_seg7_painting_dl_07023110:
-  type: GFX
-  offset: 0x23110
-  symbol: inside_castle_seg7_painting_dl_07023110
-
-inside_castle_seg7_painting_dl_07023170:
-  type: GFX
-  offset: 0x23170
-  symbol: inside_castle_seg7_painting_dl_07023170
-
-inside_castle_seg7_painting_dl_070231D0:
-  type: GFX
-  offset: 0x231D0
-  symbol: inside_castle_seg7_painting_dl_070231D0
-
-inside_castle_seg7_painting_dl_07023230:
-  type: GFX
-  offset: 0x23230
-  symbol: inside_castle_seg7_painting_dl_07023230
-
-inside_castle_seg7_painting_dl_07023290:
-  type: GFX
-  offset: 0x23290
-  symbol: inside_castle_seg7_painting_dl_07023290
-
-inside_castle_seg7_painting_dl_070232F0:
-  type: GFX
-  offset: 0x232F0
-  symbol: inside_castle_seg7_painting_dl_070232F0
-
-inside_castle_seg7_painting_dl_07023350:
-  type: GFX
-  offset: 0x23350
-  symbol: inside_castle_seg7_painting_dl_07023350
-
-inside_castle_seg7_painting_dl_070233B0:
-  type: GFX
-  offset: 0x233B0
-  symbol: inside_castle_seg7_painting_dl_070233B0
-
-inside_castle_seg7_painting_dl_07023410:
-  type: GFX
-  offset: 0x23410
-  symbol: inside_castle_seg7_painting_dl_07023410
-
-inside_castle_seg7_dl_070234C0:
-  type: GFX
-  offset: 0x234C0
-  symbol: inside_castle_seg7_dl_070234C0
-
-inside_castle_seg7_dl_07023520:
-  type: GFX
-  offset: 0x23520
-  symbol: inside_castle_seg7_dl_07023520
-
-inside_castle_seg7_painting_dl_07023580:
-  type: GFX
-  offset: 0x23580
-  symbol: inside_castle_seg7_painting_dl_07023580
-
-inside_castle_seg7_painting_dl_070235B8:
-  type: GFX
-  offset: 0x235B8
-  symbol: inside_castle_seg7_painting_dl_070235B8
 
 inside_castle_seg7_painting_textures_070235C0:
   type: ASSET_ARRAY
@@ -8475,7 +8309,7 @@ inside_castle_seg7_painting_textures_07023600:
   offset: 0x23600
   symbol: inside_castle_seg7_painting_textures_07023600
 
-inside_castle_seg7_painting_textures_07023608
+inside_castle_seg7_painting_textures_07023608:
   type: ASSET_ARRAY
   assetType: Texture
   factoryType: TEXTURE

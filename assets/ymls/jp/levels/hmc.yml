@@ -3296,43 +3296,6 @@ hmc_seg7_macro_objs:
   offset: 0x2AA78
   symbol: hmc_seg7_macro_objs
 
-hmc_seg7_lights_070241B8:
-  type: LIGHTS
-  offset: 0x241B8
-  symbol: hmc_seg7_lights_070241B8
-
-hmc_seg7_lights_070241D0:
-  type: LIGHTS
-  offset: 0x241D0
-  symbol: hmc_seg7_lights_070241D0
-
-hmc_seg7_vertex_070241E8:
-  type: VTX
-  count: 4
-  offset: 0x241E8
-  symbol: hmc_seg7_vertex_070241E8
-
-hmc_seg7_vertex_07024228:
-  type: VTX
-  count: 4
-  offset: 0x24228
-  symbol: hmc_seg7_vertex_07024228
-
-hmc_seg7_dl_07024268:
-  type: GFX
-  offset: 0x24268
-  symbol: hmc_seg7_dl_07024268
-
-hmc_seg7_dl_070242A0:
-  type: GFX
-  offset: 0x242A0
-  symbol: hmc_seg7_dl_070242A0
-
-hmc_seg7_painting_dl_070242D0:
-  type: GFX
-  offset: 0x242D0
-  symbol: hmc_seg7_painting_dl_070242D0
-
 hmc_seg7_pool_texture_map_070242F0:
   type: SM64:PAINTING_MAP
   offset: 0x242F0
