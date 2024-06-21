@@ -1285,3 +1285,31 @@ castle_grounds_seg7_cannon_grill:
   offset: 0x116C8
   symbol: castle_grounds_seg7_cannon_grill
 
+castle_grounds_movtex_moat_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x10E40
+  symbol: castle_grounds_movtex_moat_water_data
+
+castle_grounds_movtex_lake_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x10E60
+  symbol: castle_grounds_movtex_lake_water_data
+
+castle_grounds_movtex_water:
+  type: SM64:MOVTEX_QUAD
+  offset: 0x10E80
+  symbol: castle_grounds_movtex_water
+
+castle_grounds_movtex_tris_waterfall:
+  type: SM64:MOVTEX
+  count: 16
+  has_color: false
+  offset: 0x10E98
+  symbol: castle_grounds_movtex_tris_waterfall
+
+castle_grounds_dl_waterfall:
+  type: GFX
+  offset: 0x10F30
+  symbol: castle_grounds_dl_waterfall

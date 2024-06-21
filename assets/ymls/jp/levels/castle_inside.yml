@@ -8398,3 +8398,31 @@ thi_huge_painting:
   type: SM64:PAINTING
   offset: 0x23C38
   symbol: thi_huge_painting
+
+inside_castle_movtex_green_room_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x79090
+  symbol: inside_castle_movtex_green_room_water_data
+
+inside_castle_movtex_moat_leftover_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x790B0
+  symbol: inside_castle_movtex_moat_leftover_water_data
+
+inside_castle_movtex_moat_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x790D0
+  symbol: inside_castle_movtex_moat_water_data
+
+inside_castle_movtex_green_room_water:
+  type: SM64:MOVTEX_QUAD
+  offset: 0x790F0
+  symbol: inside_castle_movtex_green_room_water
+
+inside_castle_movtex_moat_water:
+  type: SM64:MOVTEX_QUAD
+  offset: 0x79100
+  symbol: inside_castle_movtex_moat_water

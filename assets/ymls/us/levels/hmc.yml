@@ -3321,3 +3321,31 @@ cotmc_painting:
   type: SM64:PAINTING
   offset: 0x2551C
   symbol: cotmc_painting
+
+hmc_movtex_dorrie_pool_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x2B8E0
+  symbol: hmc_movtex_dorrie_pool_water_data
+
+hmc_movtex_dorrie_pool_water:
+  type: SM64:MOVTEX_QUAD
+  offset: 0x2B900
+  symbol: hmc_movtex_dorrie_pool_water
+
+hmc_movtex_toxic_maze_rot_count_clock_mist_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x2B910
+  symbol: hmc_movtex_toxic_maze_rot_count_clock_mist_data
+
+hmc_movtex_toxic_maze_rot_clock_mist_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x2B930
+  symbol: hmc_movtex_toxic_maze_rot_clock_mist_data
+
+hmc_movtex_toxic_maze_mist:
+  type: SM64:MOVTEX_QUAD
+  offset: 0x2B950
+  symbol: hmc_movtex_toxic_maze_mist

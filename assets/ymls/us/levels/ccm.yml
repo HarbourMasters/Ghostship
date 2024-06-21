@@ -2718,3 +2718,13 @@ ccm_seg7_trajectory_penguin_race:
   offset: 0x23604
   symbol: ccm_seg7_trajectory_penguin_race
 
+ccm_movtex_penguin_puddle_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x166E8
+  symbol: ccm_movtex_penguin_puddle_water_data
+
+ccm_movtex_penguin_puddle_water:
+  type: SM64:MOVTEX_QUAD
+  offset: 0x16708
+  symbol: ccm_movtex_penguin_puddle_water
