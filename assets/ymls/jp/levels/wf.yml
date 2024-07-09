@@ -2042,5 +2042,6 @@ wf_movtex_water_data:
 
 wf_movtex_water:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x11E08
   symbol: wf_movtex_water

@@ -583,5 +583,6 @@ castle_courtyard_movtex_star_statue_water_data:
 
 castle_courtyard_movtex_star_statue_water:
   type: SM64:MOVTEX_QUAD
-  offset: 0x6E7C
+  count: 2
+  offset: 0x6E6C
   symbol: castle_courtyard_movtex_star_statue_water

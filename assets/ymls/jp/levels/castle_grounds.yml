@@ -1285,6 +1285,7 @@ castle_grounds_movtex_lake_water_data:
 
 castle_grounds_movtex_water:
   type: SM64:MOVTEX_QUAD
+  count: 3
   offset: 0x10E80
   symbol: castle_grounds_movtex_water
 

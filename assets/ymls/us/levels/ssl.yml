@@ -2610,6 +2610,7 @@ ssl_movtex_puddle_water_data:
 
 ssl_movtex_puddle_water:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x12778
   symbol: ssl_movtex_puddle_water
 
@@ -2627,6 +2628,7 @@ ssl_movtex_toxbox_quicksand_short_mist:
 
 ssl_movtex_toxbox_quicksand_mist:
   type: SM64:MOVTEX_QUAD
+  count: 3
   offset: 0x127C8
   symbol: ssl_movtex_toxbox_quicksand_mist
 

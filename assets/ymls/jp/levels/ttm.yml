@@ -4316,6 +4316,7 @@ ttm_movtex_puddle_data:
 
 ttm_movtex_puddle:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x17124
   symbol: ttm_movtex_puddle
 

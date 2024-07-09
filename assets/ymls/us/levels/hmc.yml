@@ -3330,6 +3330,7 @@ hmc_movtex_dorrie_pool_water_data:
 
 hmc_movtex_dorrie_pool_water:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x2B900
   symbol: hmc_movtex_dorrie_pool_water
 
@@ -3347,5 +3348,6 @@ hmc_movtex_toxic_maze_rot_clock_mist_data:
 
 hmc_movtex_toxic_maze_mist:
   type: SM64:MOVTEX_QUAD
+  count: 3
   offset: 0x2B950
   symbol: hmc_movtex_toxic_maze_mist

@@ -1964,6 +1964,7 @@ wdw_movtex_area1_water_data:
 
 wdw_movtex_area1_water:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x18748
   symbol: wdw_movtex_area1_water
 
@@ -1974,5 +1975,6 @@ wdw_movtex_area2_water_data:
 
 wdw_movtex_area2_water:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x18778
   symbol: wdw_movtex_area2_water

@@ -2664,7 +2664,8 @@ lll_movtex_volcano_floor_lava_data:
 
 lll_movtex_volcano_floor_lava:
   type: SM64:MOVTEX_QUAD
-  offset: 0x28800
+  count: 2
+  offset: 0x28810
   symbol: lll_movtex_volcano_floor_lava
 
 lll_movtex_tris_lavafall_volcano:

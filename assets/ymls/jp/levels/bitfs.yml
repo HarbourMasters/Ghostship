@@ -1,4 +1,6 @@
 :config:
+  external_files:
+    - "assets/ymls/jp/textures/sky.yml"
   autopads: false
   compression:
     offset: 0x45F410

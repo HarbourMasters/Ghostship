@@ -2726,5 +2726,6 @@ ccm_movtex_penguin_puddle_water_data:
 
 ccm_movtex_penguin_puddle_water:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x16708
   symbol: ccm_movtex_penguin_puddle_water

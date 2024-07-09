@@ -3541,10 +3541,12 @@ bbh_movtex_merry_go_round_water_side_data:
 
 bbh_movtex_merry_go_round_water_entrance:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x26E24
   symbol: bbh_movtex_merry_go_round_water_entrance
 
 bbh_movtex_merry_go_round_water_side:
   type: SM64:MOVTEX_QUAD
+  count: 2
   offset: 0x26E34
   symbol: bbh_movtex_merry_go_round_water_side
