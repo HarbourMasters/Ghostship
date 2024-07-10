@@ -1959,6 +1959,7 @@ wdw_seg7_area_2_macro_objs:
 
 wdw_movtex_area1_water_data:
   type: SM64:MOVTEX
+  quad: true
   offset: 0x18728
   symbol: wdw_movtex_area1_water_data
 
@@ -1970,6 +1971,7 @@ wdw_movtex_area1_water:
 
 wdw_movtex_area2_water_data:
   type: SM64:MOVTEX
+  quad: true
   offset: 0x18758
   symbol: wdw_movtex_area2_water_data
 

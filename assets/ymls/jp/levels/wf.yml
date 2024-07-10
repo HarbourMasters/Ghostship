@@ -2037,6 +2037,7 @@ wf_seg7_macro_objs:
 
 wf_movtex_water_data:
   type: SM64:MOVTEX
+  quad: true
   offset: 0x11DE8
   symbol: wf_movtex_water_data
 

@@ -1954,18 +1954,18 @@ ttc_dl_surface_treadmill_end:
 ttc_movtex_tris_big_surface_treadmill:
   type: SM64:MOVTEX
   count: 12
-  has_color: false
+  has_color: true
   offset: 0x16840
   symbol: ttc_movtex_tris_big_surface_treadmill
 
 ttc_movtex_tris_small_surface_treadmill:
   type: SM64:MOVTEX
   count: 12
-  has_color: false
+  has_color: true
   offset: 0x16904
   symbol: ttc_movtex_tris_small_surface_treadmill
 
 ttc_dl_surface_treadmill:
   type: GFX
-  offset: 0x168C8
+  offset: 0x169C8
   symbol: ttc_dl_surface_treadmill

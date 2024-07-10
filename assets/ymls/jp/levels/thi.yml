@@ -1184,7 +1184,7 @@ thi_movtex_area2_large_side_water_data:
   type: SM64:MOVTEX
   quad: true
   offset: 0xE35C
-  symbol: thi_movtex_area1_large_side_water_data
+  symbol: thi_movtex_area2_large_side_water_data
 
 thi_movtex_area2_mountain_top_water_data:
   type: SM64:MOVTEX

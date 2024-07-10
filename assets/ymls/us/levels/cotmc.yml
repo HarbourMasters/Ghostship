@@ -772,7 +772,7 @@ cotmc_dl_water_end:
 
 cotmc_movtex_tris_water:
   type: SM64:MOVTEX
-  count: 12
+  count: 14
   has_color: false
   offset: 0xBED0
   symbol: cotmc_movtex_tris_water

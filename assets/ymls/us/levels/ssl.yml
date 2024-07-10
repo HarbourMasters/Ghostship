@@ -2645,7 +2645,7 @@ ssl_dl_quicksand_end:
 ssl_movtex_tris_pyramid_quicksand:
   type: SM64:MOVTEX
   count: 12
-  has_color: false
+  has_color: true
   offset: 0x127F0
   symbol: ssl_movtex_tris_pyramid_quicksand
 
@@ -2656,8 +2656,8 @@ ssl_dl_pyramid_quicksand:
 
 ssl_movtex_tris_pyramid_corners_quicksand:
   type: SM64:MOVTEX
-  count: 12
-  has_color: false
+  count: 16
+  has_color: true
   offset: 0x12900
   symbol: ssl_movtex_tris_pyramid_corners_quicksand
 
@@ -2668,8 +2668,8 @@ ssl_dl_pyramid_corners_quicksand:
 
 ssl_movtex_tris_sides_quicksand:
   type: SM64:MOVTEX
-  count: 12
-  has_color: false
+  count: 15
+  has_color: true
   offset: 0x12A50
   symbol: ssl_movtex_tris_sides_quicksand
 

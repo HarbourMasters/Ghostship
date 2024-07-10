@@ -4357,15 +4357,15 @@ ttm_movtex_tris_puddle_waterfall:
 
 ttm_dl_waterfall:
   type: GFX
-  offset: 0x12260
+  offset: 0x17260
   symbol: ttm_dl_waterfall
 
 ttm_dl_bottom_waterfall:
   type: GFX
-  offset: 0x12288
+  offset: 0x17288
   symbol: ttm_dl_bottom_waterfall
 
 ttm_dl_puddle_waterfall:
   type: GFX
-  offset: 0x122A0
+  offset: 0x172A0
   symbol: ttm_dl_puddle_waterfall
