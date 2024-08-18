@@ -377,6 +377,23 @@ void append_snowflake_vertex_buffer(Gfx *gfx, s32 index, Vec3s vertex1, Vec3s ve
         return;
     }
 
+    for (i = 0; i < 15; i += 3) {
+        vertBuf[i] = gSnowTempVtx[0];
+        vertBuf[i].v.ob[0] = gEnvFxBuffer[index + i / 3].xPos + vertex1[0];
+        vertBuf[i].v.ob[1] = gEnvFxBuffer[index + i / 3].yPos + vertex1[1];
+        vertBuf[i].v.ob[2] = gEnvFxBuffer[index + i / 3].zPos + vertex1[2];
+
+        vertBuf[i + 1] = gSnowTempVtx[1];
+        vertBuf[i + 1].v.ob[0] = gEnvFxBuffer[index + i / 3].xPos + vertex2[0];
+        vertBuf[i + 1].v.ob[1] = gEnvFxBuffer[index + i / 3].yPos + vertex2[1];
+        vertBuf[i + 1].v.ob[2] = gEnvFxBuffer[index + i / 3].zPos + vertex2[2];
+
+        vertBuf[i + 2] = gSnowTempVtx[2];
+        vertBuf[i + 2].v.ob[0] = gEnvFxBuffer[index + i / 3].xPos + vertex3[0];
+        vertBuf[i + 2].v.ob[1] = gEnvFxBuffer[index + i / 3].yPos + vertex3[1];
+        vertBuf[i + 2].v.ob[2] = gEnvFxBuffer[index + i / 3].zPos + vertex3[2];
+    }
+
     for (i = 0; i < 15; i++) {
         v = &sPrevSnowVertices[index / 5].vertices[i];
         vertBufInterpolated[i] = gSnowTempVtx[i % 3];
