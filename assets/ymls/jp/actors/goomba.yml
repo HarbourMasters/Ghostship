@@ -8,6 +8,7 @@
     header:
       - '#include "sm64.h"'
       - '#include "goomba/geo.h"'
+      - '#include "goomba/anims.h"'
 
 goomba_lights_unused1:
   type: LIGHTS
@@ -335,11 +336,3 @@ goomba_seg8_dl_0801D760:
   type: GFX
   offset: 0x1D760
   symbol: goomba_seg8_dl_0801D760
-
-goomba_seg8_anims_0801DA4C:
-  type: ASSET_ARRAY
-  assetType: Animation
-  factoryType: SM64:ANIM
-  count: 3
-  offset: 0x1DA4C
-  symbol: goomba_seg8_anims_0801DA4C

@@ -8,6 +8,7 @@
     header:
       - '#include "sm64.h"'
       - '#include "chuckya/geo.h"'
+      - '#include "chuckya/anims.h"'
 
 chuckya_lights_unused1:
   type: LIGHTS
@@ -309,11 +310,3 @@ chuckya_seg8_dl_0800ABE8:
   type: GFX
   offset: 0xABE8
   symbol: chuckya_seg8_dl_0800ABE8
-
-chuckya_seg8_anims_0800C070:
-  type: ASSET_ARRAY
-  assetType: Animation
-  factoryType: SM64:ANIM
-  count: 6
-  offset: 0xC070
-  symbol: chuckya_seg8_anims_0800C070

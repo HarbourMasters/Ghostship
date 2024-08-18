@@ -7,6 +7,7 @@
   header:
     header:
       - '#include "sm64.h"'
+      - '#include "amp/anims.h"'
       - '#include "amp/geo.h"'
 
 amp_electricity:
@@ -108,12 +109,3 @@ amp_body_dl:
   type: GFX
   offset: 0x2E58
   symbol: dAmpBodyDl
-
-
-dAmpAnimsList:
-  type: ASSET_ARRAY
-  assetType: Animation
-  factoryType: SM64:ANIM
-  count: 1
-  offset: 0x4034
-  symbol: dAmpAnimsList
