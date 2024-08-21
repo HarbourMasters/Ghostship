@@ -4,6 +4,10 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "explosion/geo.h"'
 
 explosion_seg3_vertex_030009C8:
   type: VTX

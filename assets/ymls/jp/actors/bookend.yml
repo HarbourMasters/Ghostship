@@ -4,6 +4,11 @@
     offset: 0x165060
   segments:
     - [0x05,  0x165060]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bookend/anims.h"'
+      - '#include "bookend/geo.h"'
 
 bookend_lights_unused1:
   type: LIGHTS

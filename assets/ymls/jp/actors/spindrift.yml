@@ -4,6 +4,11 @@
     offset: 0x15EA70
   segments:
     - [0x05,  0x15EA70]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "spindrift/anims.h"'
+      - '#include "spindrift/geo.h"'
 
 spindrift_lights_unused1:
   type: LIGHTS

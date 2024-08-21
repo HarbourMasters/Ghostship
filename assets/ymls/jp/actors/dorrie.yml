@@ -4,6 +4,11 @@
     offset: 0x1E6210
   segments:
     - [0x06,  0x1E6210]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "dorrie/anims.h"'
+      - '#include "dorrie/geo.h"'
 
 dorrie_eye:
   type: TEXTURE

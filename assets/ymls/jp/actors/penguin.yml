@@ -4,6 +4,11 @@
     offset: 0x15EA70
   segments:
     - [0x05,  0x15EA70]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "penguin/anims.h"'
+      - '#include "penguin/geo.h"'
 
 penguin_seg5_lights_05002D80:
   type: LIGHTS

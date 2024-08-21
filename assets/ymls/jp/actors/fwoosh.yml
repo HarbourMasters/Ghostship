@@ -4,6 +4,10 @@
     offset: 0x1505D0
   segments:
     - [0x05,  0x1505D0]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "fwoosh/geo.h"'
 
 fwoosh_seg5_vertex_050157C8:
   type: VTX

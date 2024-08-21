@@ -4,6 +4,11 @@
     offset: 0x1B8010
   segments:
     - [0x06,  0x1B8010]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "cyan_fish/anims.h"'
+      - '#include "cyan_fish/geo.h"'
 
 cyan_fish:
   type: TEXTURE

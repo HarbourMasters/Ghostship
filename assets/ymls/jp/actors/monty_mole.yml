@@ -4,6 +4,11 @@
     offset: 0x1505D0
   segments:
     - [0x05,  0x1505D0]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "monty_mole/anims.h"'
+      - '#include "monty_mole/geo.h"'
 
 monty_mole_lights_unused1:
   type: LIGHTS

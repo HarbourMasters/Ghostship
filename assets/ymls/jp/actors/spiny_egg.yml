@@ -4,6 +4,11 @@
     offset: 0x17EF80
   segments:
     - [0x05,  0x17EF80]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "spiny_egg/anims.h"'
+      - '#include "spiny_egg/geo.h"'
 
 spiny_egg_seg5_lights_050144F8:
   type: LIGHTS

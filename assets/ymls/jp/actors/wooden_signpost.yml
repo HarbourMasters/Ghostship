@@ -4,6 +4,10 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "wooden_signpost/geo.h"'
 
 wooden_signpost_seg3_lights_0302C940:
   type: LIGHTS

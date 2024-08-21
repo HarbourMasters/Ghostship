@@ -4,6 +4,11 @@
     offset: 0x131060
   segments:
     - [0x05,  0x131060]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bully/anims.h"'
+      - '#include "bully/geo.h"'
 
 bully_seg5_vertex_05000000:
   type: VTX

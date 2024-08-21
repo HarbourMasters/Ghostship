@@ -4,6 +4,10 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "dirt/geo.h"'
 
 dirt_seg3_lights_0302BD68:
   type: LIGHTS

@@ -4,6 +4,10 @@
     offset: 0x186810
   segments:
     - [0x06,  0x186810]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bowser_flame/geo.h"'
 
 bowser_flame_0:
   type: TEXTURE

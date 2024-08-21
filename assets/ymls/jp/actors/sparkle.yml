@@ -4,6 +4,10 @@
     offset: 0x112B50
   segments:
     - [0x04,  0x112B50]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "sparkle/geo.h"'
 
 sparkles_seg4_vertex_04027450:
   type: VTX

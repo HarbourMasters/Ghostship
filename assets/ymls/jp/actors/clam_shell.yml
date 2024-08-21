@@ -4,6 +4,11 @@
     offset: 0x139D10
   segments:
     - [0x05,  0x139D10]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "clam_shell/anims.h"'
+      - '#include "clam_shell/geo.h"'
 
 clam_shell_lights_unused1:
   type: LIGHTS

@@ -4,6 +4,11 @@
     offset: 0x139D10
   segments:
     - [0x05,  0x139D10]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "unagi/anims.h"'
+      - '#include "unagi/geo.h"'
 
 unagi_lights_unused1:
   type: LIGHTS

@@ -4,6 +4,11 @@
     offset: 0x16BC70
   segments:
     - [0x05,  0x16BC70]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bird/anims.h"'
+      - '#include "bird/geo.h"'
 
 birds_seg5_lights_05000000:
   type: LIGHTS

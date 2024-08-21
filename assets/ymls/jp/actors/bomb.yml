@@ -4,6 +4,10 @@
     offset: 0x186810
   segments:
     - [0x06,  0x186810]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bomb/geo.h"'
 
 bomb_seg6_lights_06057AA8:
   type: LIGHTS

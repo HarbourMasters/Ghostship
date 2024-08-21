@@ -4,6 +4,11 @@
     offset: 0x133120
   segments:
     - [0x05,  0x133120]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "king_bobomb/anims.h"'
+      - '#include "king_bobomb/geo.h"'
 
 king_bobomb_lights_unused1:
   type: LIGHTS

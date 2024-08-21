@@ -4,6 +4,10 @@
     offset: 0x186810
   segments:
     - [0x06,  0x186810]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "impact_ring/geo.h"'
 
 impact_ring_seg6_vertex_0601C9D0:
   type: VTX

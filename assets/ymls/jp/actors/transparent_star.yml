@@ -4,6 +4,10 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "transparent_star/geo.h"'
 
 transparent_star_seg3_lights_0302C488:
   type: LIGHTS

@@ -4,6 +4,11 @@
     offset: 0x1E6210
   segments:
     - [0x06,  0x1E6210]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "swoop/anims.h"'
+      - '#include "swoop/geo.h"'
 
 swoop_lights_unused1:
   type: LIGHTS

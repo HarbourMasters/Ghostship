@@ -4,6 +4,11 @@
     offset: 0x186810
   segments:
     - [0x06,  0x186810]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bowser/anims.h"'
+      - '#include "bowser/geo.h"'
 
 bowser_shell:
   type: TEXTURE
@@ -1469,3 +1474,9 @@ bowser_seg6_dl_06043698:
   offset: 0x43698
   symbol: bowser_seg6_dl_06043698
 
+dBowserFlamesOrientationValues:
+  type: ARRAY
+  offset: 0x576FC
+  array_type: s16
+  count: 465
+  symbol: dBowserFlamesOrientationValues

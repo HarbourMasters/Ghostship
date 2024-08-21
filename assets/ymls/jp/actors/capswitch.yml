@@ -4,6 +4,10 @@
     offset: 0x163E50
   segments:
     - [0x05,  0x163E50]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "capswitch/geo.h"'
 
 capswitch_seg5_lights_05001BB8:
   type: LIGHTS

@@ -4,6 +4,11 @@
     offset: 0x1D6660
   segments:
     - [0x06,  0x1D6660]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "toad/anims.h"'
+      - '#include "toad/geo.h"'
 
 toad_seg6_lights_06005908:
   type: LIGHTS

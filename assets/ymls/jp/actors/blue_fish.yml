@@ -4,6 +4,11 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "blue_fish/anims.h"'
+      - '#include "blue_fish/geo.h"'
 
 blue_fish_seg3_lights_0301B5C8:
   type: LIGHTS

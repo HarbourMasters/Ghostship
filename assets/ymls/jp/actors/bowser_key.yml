@@ -4,6 +4,11 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bowser_key/anims.h"'
+      - '#include "bowser_key/geo.h"'
 
 bowser_key_lights:
   type: LIGHTS

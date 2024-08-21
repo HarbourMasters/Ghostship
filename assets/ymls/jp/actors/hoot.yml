@@ -4,6 +4,11 @@
     offset: 0x128BE0
   segments:
     - [0x05,  0x128BE0]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "hoot/anims.h"'
+      - '#include "hoot/geo.h"'
 
 hoot_seg5_lights_05000900:
   type: LIGHTS

@@ -4,6 +4,10 @@
     offset: 0x128BE0
   segments:
     - [0x05,  0x128BE0]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bullet_bill/geo.h"'
 
 bullet_bill_seg5_lights_0500BA90:
   type: LIGHTS

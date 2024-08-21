@@ -13,8 +13,7 @@
 #include "assets/actors/bobomb.h"
 
 // bowling_ball
-extern const GeoLayout bowling_ball_geo[];
-extern const GeoLayout bowling_ball_track_geo[];
+#include "assets/actors/bowling_ball/geo.h"
 
 // breakable_box
 #include "assets/actors/breakable_box.h"

@@ -4,6 +4,10 @@
     offset: 0x1E6210
   segments:
     - [0x06,  0x1E6210]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mr_i_iris/geo.h"'
 
 mr_i_iris_seg6_vertex_06002130:
   type: VTX

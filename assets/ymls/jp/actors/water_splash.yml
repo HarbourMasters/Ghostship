@@ -4,6 +4,10 @@
     offset: 0x112B50
   segments:
     - [0x04,  0x112B50]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "water_splash/geo.h"'
 
 water_splash_seg4_vertex_0402A588:
   type: VTX

@@ -4,6 +4,10 @@
     offset: 0x1D6660
   segments:
     - [0x06,  0x1D6660]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "boo_castle/geo.h"'
 
 boo_castle_seg6_lights_06015658:
   type: LIGHTS

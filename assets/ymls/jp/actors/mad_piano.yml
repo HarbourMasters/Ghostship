@@ -4,6 +4,11 @@
     offset: 0x165060
   segments:
     - [0x05,  0x165060]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mad_piano/anims.h"'
+      - '#include "mad_piano/geo.h"'
 
 mad_piano_lights_unused1:
   type: LIGHTS

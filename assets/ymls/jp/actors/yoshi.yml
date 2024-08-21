@@ -4,6 +4,11 @@
     offset: 0x16BC70
   segments:
     - [0x05,  0x16BC70]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "yoshi/anims.h"'
+      - '#include "yoshi/geo.h"'
 
 yoshi_seg5_lights_0501C458:
   type: LIGHTS

@@ -4,6 +4,11 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "door/anims.h"'
+      - '#include "door/geo.h"'
 
 door_seg3_lights_03009CE0:
   type: LIGHTS

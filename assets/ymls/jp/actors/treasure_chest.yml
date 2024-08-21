@@ -4,6 +4,10 @@
     offset: 0x1B8010
   segments:
     - [0x06,  0x1B8010]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "treasure_chest/geo.h"'
 
 treasure_chest_seg6_lights_06013F90:
   type: LIGHTS

@@ -4,6 +4,11 @@
     offset: 0x1E3520
   segments:
     - [0x06,  0x1E3520]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "moneybag/anims.h"'
+      - '#include "moneybag/geo.h"'
 
 moneybag_mouth:
   type: TEXTURE

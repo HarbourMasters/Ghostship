@@ -4,6 +4,11 @@
     offset: 0x128BE0
   segments:
     - [0x05,  0x128BE0]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "heave_ho/anims.h"'
+      - '#include "heave_ho/geo.h"'
 
 heave_ho_lights_unused1:
   type: LIGHTS

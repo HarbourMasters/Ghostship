@@ -4,6 +4,10 @@
     offset: 0x128BE0
   segments:
     - [0x05,  0x128BE0]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "yoshi_egg/geo.h"'
 
 yoshi_egg_seg5_vertex_05005778:
   type: VTX

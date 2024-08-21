@@ -4,6 +4,11 @@
     offset: 0x17EF80
   segments:
     - [0x05,  0x17EF80]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "wiggler_head/anims.h"'
+      - '#include "wiggler_head/geo.h"'
 
 wiggler_seg5_lights_0500C878:
   type: LIGHTS

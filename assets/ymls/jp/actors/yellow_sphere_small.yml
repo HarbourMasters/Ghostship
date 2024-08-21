@@ -4,6 +4,10 @@
     offset: 0x128BE0
   segments:
     - [0x05,  0x128BE0]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "yellow_sphere_small/geo.h"'
 
 yellow_sphere_seg5_vertex_05000000:
   type: VTX

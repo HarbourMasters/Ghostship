@@ -4,6 +4,10 @@
     offset: 0x1FF740
   segments:
     - [0x03,  0x1FF740]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mushroom_1up/geo.h"'
 
 mushroom_1up_seg3_vertex_030295E8:
   type: VTX

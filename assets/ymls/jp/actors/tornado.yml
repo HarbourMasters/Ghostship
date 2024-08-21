@@ -4,6 +4,10 @@
     offset: 0x144290
   segments:
     - [0x05,  0x144290]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "tornado/geo.h"'
 
 tornado:
   type: TEXTURE

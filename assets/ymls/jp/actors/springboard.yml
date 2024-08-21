@@ -4,6 +4,10 @@
     offset: 0x163E50
   segments:
     - [0x05,  0x163E50]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "springboard/geo.h"'
 
 springboard_seg5_lights_05000000:
   type: LIGHTS

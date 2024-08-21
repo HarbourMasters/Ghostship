@@ -4,6 +4,11 @@
     offset: 0x1D6660
   segments:
     - [0x06,  0x1D6660]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "lakitu_cameraman/anims.h"'
+      - '#include "lakitu_cameraman/geo.h"'
 
 lakitu_cameraman_cloud_face_unused:
   type: TEXTURE

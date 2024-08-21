@@ -4,6 +4,11 @@
     offset: 0x139D10
   segments:
     - [0x05,  0x139D10]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "sushi/anims.h"'
+      - '#include "sushi/geo.h"'
 
 sushi_snout:
   type: TEXTURE
