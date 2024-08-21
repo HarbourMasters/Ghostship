@@ -9,7 +9,7 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
     char* imgData = (char*)dl;
 
     if (GameEngine_OTRSigCheck(imgData) == 1) {
-        SPDLOG_INFO("gSPDisplayList: {}", imgData);
+//      SPDLOG_INFO("gSPDisplayList: {}", imgData);
         auto resource = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
         auto res = std::static_pointer_cast<LUS::DisplayList>(resource);
         dl = &res->Instructions[0];

@@ -52,14 +52,17 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
             for (const auto&p: std::filesystem::recursive_directory_iterator(patches_path)) {
-                if (StringHelper::IEquals(p.path().extension().string(), ".otr")) {
+                auto ext = p.path().extension().string();
+                if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
                     OTRFiles.push_back(p.path().generic_string());
                 }
             }
         }
     }
+
+    // 0xFF2B5A63, 0xE3DAA4E
     this->context = Ship::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles,
-                                                 {0xFF2B5A63, 0xE3DAA4E}, 3);
+                                                 {}, 3, {32000, 1024, 2480});
 
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
     Ship::Context::GetInstance()->GetControlDeck()->SetSinglePlayerMappingMode(true);
