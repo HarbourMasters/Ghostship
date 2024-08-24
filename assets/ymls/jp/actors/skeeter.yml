@@ -10,6 +10,42 @@
       - '#include "skeeter/anims.h"'
       - '#include "skeeter/geo.h"'
 
+skeeter_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: skeeter_lights_unused1
+
+skeeter_lights_unused2:
+  type: LIGHTS
+  size: 24
+  offset: 0x18
+  symbol: skeeter_lights_unused2
+
+skeeter_lights_unused3:
+  type: LIGHTS
+  size: 24
+  offset: 0x30
+  symbol: skeeter_lights_unused3
+
+skeeter_lights_unused4:
+  type: LIGHTS
+  size: 24
+  offset: 0x48
+  symbol: skeeter_lights_unused4
+
+skeeter_lights_unused5:
+  type: LIGHTS
+  size: 24
+  offset: 0x60
+  symbol: skeeter_lights_unused5
+
+skeeter_lights_unused6:
+  type: LIGHTS
+  size: 24
+  offset: 0x78
+  symbol: skeeter_lights_unused6
+
 skeeter_eye:
   type: TEXTURE
   size: 2048
@@ -541,42 +577,6 @@ skeeter_seg6_dl_06004678:
   type: GFX
   offset: 0x4678
   symbol: skeeter_seg6_dl_06004678
-
-skeeter_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused1
-
-skeeter_lights_unused2:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused2
-
-skeeter_lights_unused3:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused3
-
-skeeter_lights_unused4:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused4
-
-skeeter_lights_unused5:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused5
-
-skeeter_lights_unused6:
-  type: LIGHTS
-  size: 24
-  offset: 0x48E0
-  symbol: skeeter_lights_unused6
 
 skeeter_seg6_dl_06004A40:
   type: GFX

@@ -10,6 +10,12 @@
       - '#include "koopa/anims.h"'
       - '#include "koopa/geo.h"'
 
+koopa_lights_unused1:
+  type: LIGHTS
+  size: 24
+  offset: 0x2588
+  symbol: koopa_lights_unused1
+
 koopa_seg6_lights_060025A0:
   type: LIGHTS
   size: 24
@@ -69,12 +75,6 @@ koopa_shell_back:
   offset: 0x2E48
   format: RGBA16
   symbol: koopa_seg6_texture_06002E48
-
-koopa_lights_unused1:
-  type: LIGHTS
-  size: 24
-  offset: 0x33B0
-  symbol: koopa_lights_unused1
 
 koopa_shoe:
   type: TEXTURE

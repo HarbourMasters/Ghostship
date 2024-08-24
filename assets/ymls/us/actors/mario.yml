@@ -104,24 +104,6 @@ mario_eyes_half_closed:
   format: RGBA16
   symbol: mario_texture_eyes_half_closed
 
-mario_eyes_closed:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4090
-  format: RGBA16
-  symbol: mario_texture_eyes_closed
-
-mario_eyes_closed_unused_0:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x4090
-  format: RGBA16
-  symbol: mario_texture_eyes_closed_unused1
-
 mario_eyes_closed_unused_1:
   type: TEXTURE
   size: 2048
@@ -130,6 +112,24 @@ mario_eyes_closed_unused_1:
   offset: 0x4090
   format: RGBA16
   symbol: mario_texture_eyes_closed_unused2
+
+mario_eyes_closed:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x4890
+  format: RGBA16
+  symbol: mario_texture_eyes_closed
+
+mario_eyes_closed_unused_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x5090
+  format: RGBA16
+  symbol: mario_texture_eyes_closed_unused1
 
 mario_eyes_left_unused:
   type: TEXTURE

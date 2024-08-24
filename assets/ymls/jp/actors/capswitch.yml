@@ -104,7 +104,7 @@ cap_switch_base_seg5_dl_05003120:
 capswitch_seg5_vertex_05003180:
   type: VTX
   count: 16
-  offset: 0x3120
+  offset: 0x3180
   symbol: capswitch_seg5_vertex_05003180
 
 capswitch_seg5_dl_05003280:
