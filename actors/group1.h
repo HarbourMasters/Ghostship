@@ -3,22 +3,22 @@
 
 #include "types.h"
 
-// bullet_bill - Done
+// bullet_bill
 #include "assets/actors/bullet_bill.h"
 
-// heave_ho - Done
+// heave_ho
 #include "assets/actors/heave_ho.h"
 
-// hoot - Done
+// hoot
 #include "assets/actors/hoot.h"
 
-// thwomp - Done
+// thwomp
 #include "assets/actors/thwomp.h"
 
-// yellow_sphere_small - Done
+// yellow_sphere_small
 #include "assets/actors/yellow_sphere_small.h"
 
-// yoshi_egg - Done
+// yoshi_egg
 #include "assets/actors/yoshi_egg.h"
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-// fwoosh - Done
+// fwoosh
 #include "assets/actors/fwoosh.h"
 
 // monty_mole

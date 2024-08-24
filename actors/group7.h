@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-// penguin - Done
+// penguin
 #include "assets/actors/penguin.h"
 
 // snowman

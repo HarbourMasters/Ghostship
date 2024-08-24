@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-// eyerok - Done
+// eyerok
 #include "assets/actors/eyerok.h"
 
 // klepto

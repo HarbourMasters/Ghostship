@@ -3,10 +3,10 @@
 
 #include "types.h"
 
-// blargg - Done
+// blargg
 #include "assets/actors/blargg.h"
 
-// bully - Done
+// bully
 #include "assets/actors/bully.h"
 
 #endif
