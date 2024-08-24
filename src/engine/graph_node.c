@@ -735,6 +735,12 @@ void geo_obj_init_spawninfo(struct GraphNodeObject *graphNode, struct SpawnInfo 
  */
 void geo_obj_init_animation(struct GraphNodeObject *graphNode, struct Animation **animPtrAddr) {
     struct Animation **animSegmented = animPtrAddr;
+
+    // TODO: In theory we dont need this but lets keep it
+    if(animSegmented == NULL){
+        return;
+    }
+
     struct Animation *anim = segmented_to_virtual(*animSegmented);
 
     if (graphNode->animInfo.curAnim != anim) {
