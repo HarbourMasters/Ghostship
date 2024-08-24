@@ -7,6 +7,7 @@
   header:
     header:
       - '#include "sm64.h"'
+      - '#include "flyguy/anims.h"'
       - '#include "flyguy/geo.h"'
 
 flyguy_cloth_wrinkle:
@@ -266,11 +267,3 @@ flyguy_seg8_dl_08011710:
   type: GFX
   offset: 0x11710
   symbol: flyguy_seg8_dl_08011710
-
-flyguy_seg8_anims_08011A64:
-  type: ASSET_ARRAY
-  assetType: Animation
-  factoryType: SM64:ANIM
-  count: 3
-  offset: 0x11A64
-  symbol: flyguy_seg8_anims_08011A64

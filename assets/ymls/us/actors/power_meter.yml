@@ -122,3 +122,10 @@ dl_power_meter_health_segments_end:
   offset: 0x295A0
   symbol: dl_power_meter_health_segments_end
 
+power_meter_health_segments_lut:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 8
+  offset: 0x293E0
+  symbol: power_meter_health_segments_lut
