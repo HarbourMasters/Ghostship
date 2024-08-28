@@ -2602,3 +2602,129 @@ ssl_seg7_collision_070284B0:
   offset: 0x284B0
   symbol: ssl_seg7_collision_070284B0
 
+ssl_movtex_puddle_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x12758
+  symbol: ssl_movtex_puddle_water_data
+
+ssl_movtex_puddle_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x12778
+  symbol: ssl_movtex_puddle_water
+
+ssl_movtex_toxbox_quicksand_large_mist:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x12788
+  symbol: ssl_movtex_toxbox_quicksand_large_mist
+
+ssl_movtex_toxbox_quicksand_short_mist:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x127A8
+  symbol: ssl_movtex_toxbox_quicksand_short_mist
+
+ssl_movtex_toxbox_quicksand_mist:
+  type: SM64:MOVTEX_QUAD
+  count: 3
+  offset: 0x127C8
+  symbol: ssl_movtex_toxbox_quicksand_mist
+
+ssl_dl_quicksand_begin:
+  type: GFX
+  offset: 0x127E0
+  symbol: ssl_dl_quicksand_begin
+
+ssl_dl_quicksand_end:
+  type: GFX
+  offset: 0x127E8
+  symbol: ssl_dl_quicksand_end
+
+ssl_movtex_tris_pyramid_quicksand:
+  type: SM64:MOVTEX
+  count: 12
+  has_color: true
+  offset: 0x127F0
+  symbol: ssl_movtex_tris_pyramid_quicksand
+
+ssl_dl_pyramid_quicksand:
+  type: GFX
+  offset: 0x128B8
+  symbol: ssl_dl_pyramid_quicksand
+
+ssl_movtex_tris_pyramid_corners_quicksand:
+  type: SM64:MOVTEX
+  count: 16
+  has_color: true
+  offset: 0x12900
+  symbol: ssl_movtex_tris_pyramid_corners_quicksand
+
+ssl_dl_pyramid_corners_quicksand:
+  type: GFX
+  offset: 0x12A08
+  symbol: ssl_dl_pyramid_corners_quicksand
+
+ssl_movtex_tris_sides_quicksand:
+  type: SM64:MOVTEX
+  count: 15
+  has_color: true
+  offset: 0x12A50
+  symbol: ssl_movtex_tris_sides_quicksand
+
+ssl_dl_sides_quicksand:
+  type: GFX
+  offset: 0x12B48
+  symbol: ssl_dl_sides_quicksand
+
+ssl_dl_pyramid_sand_pathway_floor_begin:
+  type: GFX
+  offset: 0x285F0
+  symbol: ssl_dl_pyramid_sand_pathway_floor_begin
+
+ssl_dl_pyramid_sand_pathway_floor_end:
+  type: GFX
+  offset: 0x28660
+  symbol: ssl_dl_pyramid_sand_pathway_floor_end
+
+ssl_dl_pyramid_sand_pathway_begin:
+  type: GFX
+  offset: 0x286A0
+  symbol: ssl_dl_pyramid_sand_pathway_begin
+
+ssl_dl_pyramid_sand_pathway_end:
+  type: GFX
+  offset: 0x28718
+  symbol: ssl_dl_pyramid_sand_pathway_end
+
+ssl_movtex_tris_pyramid_sand_pathway_front:
+  type: SM64:MOVTEX
+  count: 8
+  has_color: false
+  offset: 0x28760
+  symbol: ssl_movtex_tris_pyramid_sand_pathway_front
+
+ssl_dl_pyramid_sand_pathway_front_end:
+  type: GFX
+  offset: 0x287B8
+  symbol: ssl_dl_pyramid_sand_pathway_front_end
+
+ssl_movtex_tris_pyramid_sand_pathway_floor:
+  type: SM64:MOVTEX
+  count: 8
+  has_color: false
+  offset: 0x287F0
+  symbol: ssl_movtex_tris_pyramid_sand_pathway_floor
+
+ssl_movtex_tris_pyramid_sand_pathway_side:
+  type: SM64:MOVTEX
+  count: 6
+  has_color: false
+  offset: 0x28844
+  symbol: ssl_movtex_tris_pyramid_sand_pathway_side
+
+ssl_dl_pyramid_sand_pathway_side_end:
+  type: GFX
+  offset: 0x28888
+  symbol: ssl_dl_pyramid_sand_pathway_side_end

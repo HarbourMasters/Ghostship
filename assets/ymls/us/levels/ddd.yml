@@ -1199,3 +1199,26 @@ ddd_seg7_collision_bowser_sub_door:
   offset: 0xFC48
   symbol: ddd_seg7_collision_bowser_sub_door
 
+ddd_movtex_area1_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xFC78
+  symbol: ddd_movtex_area1_water_data
+
+ddd_movtex_area1_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0xFCB4
+  symbol: ddd_movtex_area1_water
+
+ddd_movtex_area2_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xFCC4
+  symbol: ddd_movtex_area2_water_data
+
+ddd_movtex_area2_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0xFD00
+  symbol: ddd_movtex_area2_water
