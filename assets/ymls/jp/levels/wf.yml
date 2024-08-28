@@ -2034,3 +2034,15 @@ wf_seg7_macro_objs:
   type: SM64:MACRO
   offset: 0x11C38
   symbol: wf_seg7_macro_objs
+
+wf_movtex_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x11DE8
+  symbol: wf_movtex_water_data
+
+wf_movtex_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x11E08
+  symbol: wf_movtex_water

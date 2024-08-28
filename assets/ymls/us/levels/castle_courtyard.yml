@@ -575,3 +575,14 @@ castle_courtyard_seg7_macro_objs:
   offset: 0x6E20
   symbol: castle_courtyard_seg7_macro_objs
 
+castle_courtyard_movtex_star_statue_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x6E4C
+  symbol: castle_courtyard_movtex_star_statue_water_data
+
+castle_courtyard_movtex_star_statue_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x6E6C
+  symbol: castle_courtyard_movtex_star_statue_water

@@ -3266,11 +3266,6 @@ hmc_seg7_collision_level:
   offset: 0x25594
   symbol: hmc_seg7_collision_level
 
-hmc_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x2AA78
-  symbol: hmc_seg7_macro_objs
-
 hmc_seg7_collision_elevator:
   type: SM64:COLLISION
   offset: 0x2B5E4
@@ -3296,3 +3291,63 @@ hmc_seg7_trajectory_0702B86C:
   offset: 0x2B86C
   symbol: hmc_seg7_trajectory_0702B86C
 
+hmc_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x2AA78
+  symbol: hmc_seg7_macro_objs
+
+hmc_seg7_pool_texture_map_070242F0:
+  type: SM64:PAINTING_MAP
+  offset: 0x242F0
+  symbol: hmc_seg7_pool_texture_map_070242F0
+
+hmc_seg7_painting_texture_maps_07024CD4:
+  type: ASSET_ARRAY
+  assetType: PaintingData
+  factoryType: SM64:PAINTING_MAP
+  count: 1
+  offset: 0x24CD4
+  symbol: hmc_seg7_painting_texture_maps_07024CD4
+
+hmc_seg7_painting_textures_07025518:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 1
+  offset: 0x25518
+  symbol: hmc_seg7_painting_textures_07025518
+
+cotmc_painting:
+  type: SM64:PAINTING
+  offset: 0x2551C
+  symbol: cotmc_painting
+
+hmc_movtex_dorrie_pool_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x2B8E0
+  symbol: hmc_movtex_dorrie_pool_water_data
+
+hmc_movtex_dorrie_pool_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x2B900
+  symbol: hmc_movtex_dorrie_pool_water
+
+hmc_movtex_toxic_maze_rot_count_clock_mist_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x2B910
+  symbol: hmc_movtex_toxic_maze_rot_count_clock_mist_data
+
+hmc_movtex_toxic_maze_rot_clock_mist_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x2B930
+  symbol: hmc_movtex_toxic_maze_rot_clock_mist_data
+
+hmc_movtex_toxic_maze_mist:
+  type: SM64:MOVTEX_QUAD
+  count: 3
+  offset: 0x2B950
+  symbol: hmc_movtex_toxic_maze_mist

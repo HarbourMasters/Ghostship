@@ -1935,3 +1935,37 @@ ttc_seg7_macro_objs:
   format: RGBA16
   symbol: ttc_yellow_triangle
 
+ttc_lights_surface_treadmill:
+  type: LIGHTS
+  size: 24
+  offset: 0x15F78
+  symbol: ttc_lights_surface_treadmill
+
+ttc_dl_surface_treadmill_begin:
+  type: GFX
+  offset: 0x16790
+  symbol: ttc_dl_surface_treadmill_begin
+
+ttc_dl_surface_treadmill_end:
+  type: GFX
+  offset: 0x16808
+  symbol: ttc_dl_surface_treadmill_end
+
+ttc_movtex_tris_big_surface_treadmill:
+  type: SM64:MOVTEX
+  count: 12
+  has_color: true
+  offset: 0x16840
+  symbol: ttc_movtex_tris_big_surface_treadmill
+
+ttc_movtex_tris_small_surface_treadmill:
+  type: SM64:MOVTEX
+  count: 12
+  has_color: true
+  offset: 0x16904
+  symbol: ttc_movtex_tris_small_surface_treadmill
+
+ttc_dl_surface_treadmill:
+  type: GFX
+  offset: 0x169C8
+  symbol: ttc_dl_surface_treadmill

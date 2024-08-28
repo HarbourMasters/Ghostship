@@ -759,3 +759,25 @@ cotmc_seg7_macro_objs:
   type: SM64:MACRO
   offset: 0xBD38
   symbol: cotmc_seg7_macro_objs
+
+cotmc_dl_water_begin:
+  type: GFX
+  offset: 0xBE10
+  symbol: cotmc_dl_water_begin
+
+cotmc_dl_water_end:
+  type: GFX
+  offset: 0xBE88
+  symbol: cotmc_dl_water_end
+
+cotmc_movtex_tris_water:
+  type: SM64:MOVTEX
+  count: 14
+  has_color: false
+  offset: 0xBED0
+  symbol: cotmc_movtex_tris_water
+
+cotmc_dl_water:
+  type: GFX
+  offset: 0xBF60
+  symbol: cotmc_dl_water
