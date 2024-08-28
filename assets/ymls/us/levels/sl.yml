@@ -1212,3 +1212,21 @@ sl_seg7_area_2_macro_objs:
   type: SM64:MACRO
   offset: 0xF978
   symbol: sl_seg7_area_2_macro_objs
+
+sl_movtex_snowman_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xFA30
+  symbol: sl_movtex_snowman_water_data
+
+sl_movtex_ice_bully_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xFA50
+  symbol: sl_movtex_ice_bully_water_data
+
+sl_movtex_water:
+  type: SM64:MOVTEX_QUAD
+  count: 3
+  offset: 0xFA70
+  symbol: sl_movtex_water

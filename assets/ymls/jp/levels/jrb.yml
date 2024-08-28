@@ -1529,3 +1529,45 @@ jrb_seg7_area_2_macro_objs:
   type: SM64:MACRO
   offset: 0x11370
   symbol: jrb_seg7_area_2_macro_objs
+
+jrb_movtex_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xD28C
+  symbol: jrb_movtex_water_data
+
+jrb_movtex_ocean_cave_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xD2AC
+  symbol: jrb_movtex_ocean_cave_water_data
+
+jrb_movtex_water:
+  type: SM64:MOVTEX_QUAD
+  count: 3
+  offset: 0xD2CC
+  symbol: jrb_movtex_water
+
+jrb_movtex_initial_mist_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xD2E4
+  symbol: jrb_movtex_initial_mist_data
+
+jrb_movtex_initial_mist:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0xD304
+  symbol: jrb_movtex_initial_mist
+
+jrb_movtex_sunken_ship_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x1137C
+  symbol: jrb_movtex_sunken_ship_water_data
+
+jrb_movtex_sunken_ship_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x1139C
+  symbol: jrb_movtex_sunken_ship_water

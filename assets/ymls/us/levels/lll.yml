@@ -2644,3 +2644,38 @@ lll_seg7_trajectory_07028660:
   offset: 0x285D0
   symbol: lll_seg7_trajectory_07028660
 
+lll_movtex_tris_lava_floor:
+  type: SM64:MOVTEX
+  count: 9
+  has_color: false
+  offset: 0x286BC
+  symbol: lll_movtex_tris_lava_floor
+
+lll_dl_lava_floor:
+  type: GFX
+  offset: 0x28718
+  symbol: lll_dl_lava_floor
+
+lll_movtex_volcano_floor_lava_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x28760
+  symbol: lll_movtex_volcano_floor_lava_data
+
+lll_movtex_volcano_floor_lava:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x28780
+  symbol: lll_movtex_volcano_floor_lava
+
+lll_movtex_tris_lavafall_volcano:
+  type: SM64:MOVTEX
+  count: 16
+  has_color: false
+  offset: 0x28790
+  symbol: lll_movtex_tris_lavafall_volcano
+
+lll_dl_lavafall_volcano:
+  type: GFX
+  offset: 0x28838
+  symbol: lll_dl_lavafall_volcano

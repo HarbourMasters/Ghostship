@@ -1150,3 +1150,50 @@ thi_seg7_trajectory_koopa:
   offset: 0xE258
   symbol: thi_seg7_trajectory_koopa
 
+thi_movtex_area1_short_side_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xE2BC
+  symbol: thi_movtex_area1_short_side_water_data
+
+thi_movtex_area1_large_side_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xE2DC
+  symbol: thi_movtex_area1_large_side_water_data
+
+thi_movtex_area1_mountain_top_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xE2FC
+  symbol: thi_movtex_area1_mountain_top_water_data
+
+thi_movtex_area1_water:
+  type: SM64:MOVTEX_QUAD
+  count: 4
+  offset: 0xE31C
+  symbol: thi_movtex_area1_water
+
+thi_movtex_area2_short_side_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xE33C
+  symbol: thi_movtex_area2_short_side_water_data
+
+thi_movtex_area2_large_side_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xE35C
+  symbol: thi_movtex_area2_large_side_water_data
+
+thi_movtex_area2_mountain_top_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xE37C
+  symbol: thi_movtex_area2_mountain_top_water_data
+
+thi_movtex_area2_water:
+  type: SM64:MOVTEX_QUAD
+  count: 4
+  offset: 0xE39C
+  symbol: thi_movtex_area2_water

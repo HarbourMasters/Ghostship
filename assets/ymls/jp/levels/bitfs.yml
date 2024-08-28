@@ -1,4 +1,6 @@
 :config:
+  external_files:
+    - "assets/ymls/jp/textures/sky.yml"
   autopads: false
   compression:
     offset: 0x45F410
@@ -1907,3 +1909,33 @@ bitfs_seg7_trajectory_070159AC:
   offset: 0x159AC
   symbol: bitfs_seg7_trajectory_070159AC
 
+bitfs_movtex_tris_lava_first_section:
+  type: SM64:MOVTEX
+  count: 4
+  has_color: false
+  offset: 0x15AF0
+  symbol: bitfs_movtex_tris_lava_first_section
+
+bitfs_movtex_tris_lava_second_section:
+  type: SM64:MOVTEX
+  count: 4
+  has_color: false
+  offset: 0x15B1C
+  symbol: bitfs_movtex_tris_lava_second_section
+
+bitfs_movtex_tris_lava_floor:
+  type: SM64:MOVTEX
+  count: 9
+  has_color: false
+  offset: 0x15B48
+  symbol: bitfs_movtex_tris_lava_floor
+
+bitfs_dl_lava_sections:
+  type: GFX
+  offset: 0x15BA8
+  symbol: bitfs_dl_lava_sections
+
+bitfs_dl_lava_floor:
+  type: GFX
+  offset: 0x15BC0
+  symbol: bitfs_dl_lava_floor
