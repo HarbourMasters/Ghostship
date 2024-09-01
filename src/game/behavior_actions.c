@@ -22,7 +22,7 @@
 #include "level_misc_macros.h"
 #include "level_table.h"
 #include "level_update.h"
-#include "levels/bob/header.h"
+#include "assets/levels/bob.h"
 #include "levels/bowser_3/header.h"
 #include "levels/castle_inside/header.h"
 #include "levels/hmc/header.h"

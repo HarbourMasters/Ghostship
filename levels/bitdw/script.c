@@ -14,7 +14,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/bitdw/header.h"
+#include "assets/levels/bitdw.h"
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -1966, -3154,  3586, /*angle*/ 0, 0, 0,  /*behParam*/ 0x00000000, /*beh*/ bhvSquarishPathMoving),

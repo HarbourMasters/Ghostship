@@ -4,7 +4,7 @@
 #include "ResourceFactoryBinary.h"
 
 namespace SM64 {
-class TrajectoryFactoryV0 : public Ship::ResourceFactoryBinary {
+class MovtexFactoryV0 : public Ship::ResourceFactoryBinary {
   public:
     std::shared_ptr<Ship::IResource> ReadResource(std::shared_ptr<Ship::File> file) override;
 };

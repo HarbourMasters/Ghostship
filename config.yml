@@ -46,6 +46,7 @@
     output:
       binary: smcube.otr
       code: code/us
+      headers: include/assets
   segments:
     - 0x000000
     - 0x000000

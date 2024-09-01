@@ -2,6 +2,10 @@
 #include "ui/ImguiUI.h"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
+#include "port/importer/TrajectoryFactory.h"
+#include "port/importer/MovtexFactory.h"
+#include "port/importer/MovtexQuadFactory.h"
+#include "port/importer/MacroObjectFactory.h"
 #include "port/importer/AudioSampleFactory.h"
 #include "port/importer/AudioSequenceFactory.h"
 #include "port/importer/DialogFactory.h"
@@ -28,7 +32,7 @@
 #include "VertexFactory.h"
 #include "Fast3D/Fast3dWindow.h"
 #include "importer/AssetArrayFactory.h"
-#include "libultraship/src/resource/factory/LightFactory.h"
+#include "LightFactory.h"
 
 extern "C" {
 #include "sm64.h"
@@ -86,9 +90,14 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(LUS::ResourceType::Matrix), 0);
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryLightV0>(), RESOURCE_FORMAT_BINARY, "Light", static_cast<uint32_t>(LUS::ResourceType::Light), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::ResourceFactoryBinaryAssetArrayV0>(), RESOURCE_FORMAT_BINARY, "AssetArray", static_cast<uint32_t>(SM64::ResourceType::AssetArray), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::TrajectoryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Trajectory", static_cast<uint32_t>(SM64::ResourceType::Trajectory), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Movtex", static_cast<uint32_t>(SM64::ResourceType::Movtex), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Collision", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexQuadFactoryV0>(), RESOURCE_FORMAT_BINARY, "MovtexQuad", static_cast<uint32_t>(SM64::ResourceType::MovtexQuad), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MacroObjectFactoryV0>(), RESOURCE_FORMAT_BINARY, "MacroObject", static_cast<uint32_t>(SM64::ResourceType::MacroObject), 0);
 
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
-    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "CollisionBlob", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
+//    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "CollisionBlob", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
 }
 
 void GameEngine::Create(){

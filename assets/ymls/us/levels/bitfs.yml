@@ -1,11 +1,16 @@
 :config:
-  external_files:
-    - "assets/ymls/us/textures/sky.yml"
   autopads: false
   compression:
     offset: 0x4614D0
   segments:
     - [0x07,  0x4614D0]
+  external_files:
+    - "assets/ymls/us/textures/sky.yml"
+  header:
+    header:
+      - '#include "bitfs/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bitfs_entry[];'
 
 0:
   type: TEXTURE

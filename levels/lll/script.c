@@ -14,7 +14,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/lll/header.h"
+#include "assets/levels/lll.h"
 
 // Unlike most levels, level geometry objects in LLL are defined as regular objects instead of terrain objects.
 static const LevelScript script_func_local_1[] = {

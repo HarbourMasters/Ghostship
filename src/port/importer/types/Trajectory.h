@@ -3,27 +3,24 @@
 #include <cstdint>
 #include <Resource.h>
 
-struct DialogEntry {
-    /*0x00*/ uint32_t unused;
-    /*0x04*/ int8_t linesPerBox;
-    /*0x06*/ int16_t leftOffset;
-    /*0x08*/ int16_t width;
-    /*0x0C*/ uint8_t *str;
+struct TrajectoryData {
+    int16_t trajId;
+    int16_t posX;
+    int16_t posY;
+    int16_t posZ;
 };
-
 
 namespace SM64 {
 
-class Dialog : public Ship::Resource<DialogEntry> {
+class Trajectory : public Ship::Resource<TrajectoryData> {
   public:
     using Resource::Resource;
 
-    Dialog() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    Trajectory() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
-    DialogEntry* GetPointer();
+    TrajectoryData* GetPointer();
     size_t GetPointerSize();
 
-    DialogEntry mData;
-    std::vector<uint8_t> mText;
+    std::vector<TrajectoryData> mData;
 };
 }

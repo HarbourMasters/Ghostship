@@ -1,11 +1,11 @@
-#include "Dialog.h"
+#include "Trajectory.h"
 
 namespace SM64 {
-DialogEntry* Dialog::GetPointer() {
-    return &mData;
+TrajectoryData* Trajectory::GetPointer() {
+    return mData.data();
 }
 
-size_t Dialog::GetPointerSize() {
-    return sizeof(mData);
+size_t Trajectory::GetPointerSize() {
+    return sizeof(mData.size()) * sizeof(TrajectoryData);
 }
 }

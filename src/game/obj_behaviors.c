@@ -18,7 +18,7 @@
 #include "level_misc_macros.h"
 #include "level_table.h"
 #include "level_update.h"
-#include "levels/bob/header.h"
+#include "assets/levels/bob.h"
 #include "levels/ttm/header.h"
 #include "mario.h"
 #include "mario_actions_cutscene.h"

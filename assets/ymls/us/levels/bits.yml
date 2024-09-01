@@ -4,6 +4,13 @@
     offset: 0x46C3A0
   segments:
     - [0x07,  0x46C3A0]
+  external_files:
+    - "assets/ymls/us/textures/sky.yml"
+  header:
+    header:
+      - '#include "bits/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bits_entry[];'
 
 0:
   type: TEXTURE

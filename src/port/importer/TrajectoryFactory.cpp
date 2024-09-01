@@ -1,25 +1,24 @@
-#include "DialogFactory.h"
-#include "port/importer/types/Dialog.h"
-#include "spdlog/spdlog.h"
+#include "TrajectoryFactory.h"
+#include "port/importer/types/Trajectory.h"
 
-std::shared_ptr<Ship::IResource> SM64::DialogFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
+std::shared_ptr<Ship::IResource> SM64::TrajectoryFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
     if (!FileHasValidFormatAndReader(file)) {
         return nullptr;
     }
 
-    std::shared_ptr<Dialog> dialog = std::make_shared<Dialog>(file->InitData);
+    std::shared_ptr<Trajectory> trajectory = std::make_shared<Trajectory>(file->InitData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
-    dialog->mData.unused = reader->ReadUInt32();
-    dialog->mData.linesPerBox = reader->ReadInt8();
-    dialog->mData.leftOffset = reader->ReadInt16();
-    dialog->mData.width = reader->ReadInt16();
+    uint32_t count = reader->ReadUInt32();
 
-    size_t textSize = reader->ReadUInt32();
-    for(size_t i = 0; i < textSize; i++){
-        dialog->mText.push_back(reader->ReadUByte());
+    for(size_t i = 0; i < count; i++){
+        trajectory->mData.push_back({
+            reader->ReadInt16(),
+            reader->ReadInt16(),
+            reader->ReadInt16(),
+            reader->ReadInt16()
+        });
     }
 
-    dialog->mData.str = dialog->mText.data();
-    return dialog;
+    return trajectory;
 }

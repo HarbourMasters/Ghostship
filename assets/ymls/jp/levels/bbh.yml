@@ -4,6 +4,13 @@
     offset: 0x3701E0
   segments:
     - [0x07,  0x3701E0]
+  external_files:
+    - "assets/ymls/jp/textures/spooky.yml"
+  header:
+    header:
+      - '#include "bbh/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bbh_entry[];'
 
 0:
   type: TEXTURE
@@ -3550,3 +3557,9 @@ bbh_movtex_merry_go_round_water_side:
   count: 2
   offset: 0x26E34
   symbol: bbh_movtex_merry_go_round_water_side
+
+bbh_seg7_rooms:
+  type: BLOB
+  size: 0x866
+  offset: 0x2605C
+  symbol: bbh_seg7_rooms

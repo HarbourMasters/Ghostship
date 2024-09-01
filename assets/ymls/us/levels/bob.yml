@@ -4,6 +4,13 @@
     offset: 0x3FC2B0
   segments:
     - [0x07,  0x3FC2B0]
+  external_files:
+    - "assets/ymls/us/textures/generic.yml"
+  header:
+    header:
+      - '#include "bob/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bob_entry[];'
 
 0:
   type: TEXTURE

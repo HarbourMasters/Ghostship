@@ -149,12 +149,16 @@ std::unordered_map<uint32_t, std::unordered_map<uint32_t, GraphNodeEntry>> mFunc
     { 0xE3DAA4E, mJPFunctionTable }
 };
 
-GraphNodeFunc GetFunctionByAddr(const uint32_t addr) {
+GraphNodeFunc GetFunctionByAddr(const uint32_t addr, std::string opcode) {
     const auto version = GameEngine::Instance->GetGameVersion();
     auto table = mFunctionTable[version];
 
+    if(addr == 0){
+        return nullptr;
+    }
+
     if(!table.contains(addr)) {
-        SPDLOG_ERROR("Function table does not contain address: 0x{:X}", addr);
+        SPDLOG_ERROR("Function table does not contain address: 0x{:X} on {}", addr, opcode);
         return nullptr;
     }
 
@@ -303,7 +307,7 @@ void process_cmd_node_perspective() {
 
     if (param != 0) {
         const auto func = GeoLayoutParser::mReader->ReadUInt32();
-        frustumFunc = GetFunctionByAddr(func);
+        frustumFunc = GetFunctionByAddr(func, "NODE_PERSPECTIVE");
     }
 
     GraphNodePerspective* graphNode = init_graph_node_perspective(gGraphNodePool, nullptr, (f32) fov, _near, _far, frustumFunc, 0);
@@ -345,7 +349,7 @@ void process_cmd_node_switch_case() {
         init_graph_node_switch_case(gGraphNodePool, nullptr,
                                     cs, // case which is initially selected
                                     0,
-                                    GetFunctionByAddr(func), // case update function
+                                    GetFunctionByAddr(func, "NODE_SWITCH_CASE"), // case update function
                                     0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
@@ -362,7 +366,7 @@ void process_cmd_node_camera() {
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
     GraphNodeCamera* graphNode = init_graph_node_camera(gGraphNodePool, nullptr, pos, focus,
-                                        GetFunctionByAddr(addr), type);
+                                        GetFunctionByAddr(addr, "NODE_CAMERA"), type);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 
@@ -476,7 +480,8 @@ void process_cmd_node_animated_part() {
 
     ReadVec3s(translation);
 
-    void* displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+    uint64_t crc = GeoLayoutParser::mReader->ReadUInt64();
+    void* displayList = crc == 0 ? nullptr : ResourceGetDataByCrc(crc);
 
     GraphNodeAnimatedPart* graphNode =
         init_graph_node_animated_part(gGraphNodePool, nullptr, drawingLayer, displayList, translation);
@@ -532,7 +537,7 @@ void process_cmd_node_generated() {
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
     GraphNodeGenerated* graphNode = init_graph_node_generated(gGraphNodePool, nullptr,
-                                          GetFunctionByAddr(addr), // asm function
+                                          GetFunctionByAddr(addr, "NODE_ASM"), // asm function
                                           param);                  // parameter
 
     register_scene_graph_node(&graphNode->fnNode.node);
@@ -545,7 +550,7 @@ void process_cmd_node_background() {
     GraphNodeBackground* graphNode = init_graph_node_background(
         gGraphNodePool, nullptr,
         param, // background ID, or RGBA5551 color if asm function is null
-        GetFunctionByAddr(addr), // asm function
+        GetFunctionByAddr(addr, "NODE_BACKGROUND"), // asm function
         0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
@@ -583,7 +588,7 @@ void process_cmd_node_held_obj() {
     GraphNodeHeldObject *graphNode = init_graph_node_held_object(
         gGraphNodePool, nullptr, nullptr,
         offset,
-        GetFunctionByAddr(addr),
+        GetFunctionByAddr(addr, "NODE_HELD_OBJ"),
         player
     );
 

@@ -94,7 +94,7 @@ static void level_cmd_load_and_execute(void) {
     *sStackTop++ = (uintptr_t) sStackBase;
     sStackBase = sStackTop;
 
-    sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 12));
+    sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 12));
 }
 
 static void level_cmd_exit_and_execute(void) {
@@ -107,7 +107,7 @@ static void level_cmd_exit_and_execute(void) {
             MEMORY_POOL_LEFT);
 
     sStackTop = sStackBase;
-    sCurrentCmd = segmented_to_virtual(targetAddr);
+    sCurrentCmd = LOAD_ASSET(targetAddr);
 }
 
 static void level_cmd_exit(void) {
@@ -141,12 +141,12 @@ static void level_cmd_sleep2(void) {
 }
 
 static void level_cmd_jump(void) {
-    sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 4));
+    sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 4));
 }
 
 static void level_cmd_jump_and_link(void) {
     *sStackTop++ = (uintptr_t) NEXT_CMD;
-    sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 4));
+    sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 4));
 }
 
 static void level_cmd_return(void) {
@@ -190,7 +190,7 @@ static void level_cmd_loop_until(void) {
 
 static void level_cmd_jump_if(void) {
     if (eval_script_op(CMD_GET(u8, 2), CMD_GET(s32, 4)) != 0) {
-        sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 8));
+        sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 8));
     } else {
         sCurrentCmd = CMD_NEXT;
     }
@@ -199,7 +199,7 @@ static void level_cmd_jump_if(void) {
 static void level_cmd_jump_and_link_if(void) {
     if (eval_script_op(CMD_GET(u8, 2), CMD_GET(s32, 4)) != 0) {
         *sStackTop++ = (uintptr_t) NEXT_CMD;
-        sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 8));
+        sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 8));
     } else {
         sCurrentCmd = CMD_NEXT;
     }
@@ -596,7 +596,7 @@ static void level_cmd_set_terrain_data(void) {
         u32 size;
 
         // The game modifies the terrain data and must be reset upon level reload.
-        data = segmented_to_virtual(CMD_GET(void *, 4));
+        data = LOAD_ASSET(CMD_GET(void *, 4));
         size = get_area_terrain_size(data) * sizeof(Collision);
         gAreas[sCurrAreaIndex].terrainData = alloc_only_pool_alloc(sLevelPool, size);
         memcpy(gAreas[sCurrAreaIndex].terrainData, data, size);
@@ -606,16 +606,18 @@ static void level_cmd_set_terrain_data(void) {
 
 static void level_cmd_set_rooms(void) {
     if (sCurrAreaIndex != -1) {
-        gAreas[sCurrAreaIndex].surfaceRooms = segmented_to_virtual(CMD_GET(void *, 4));
+        gAreas[sCurrAreaIndex].surfaceRooms = LOAD_ASSET(CMD_GET(void *, 4));
     }
     sCurrentCmd = CMD_NEXT;
 }
+
+#include <stdio.h>
 
 static void level_cmd_set_macro_objects(void) {
     if (sCurrAreaIndex != -1) {
         // The game modifies the macro object data (for example marking coins as taken),
         // so it must be reset when the level reloads.
-        MacroObject *data = segmented_to_virtual(CMD_GET(void *, 4));
+        MacroObject *data = LOAD_ASSET(CMD_GET(void *, 4));
         s32 len = 0;
         while (data[len++] != MACRO_OBJECT_END()) {
             len += 4;

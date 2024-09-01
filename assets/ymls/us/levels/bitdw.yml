@@ -4,6 +4,13 @@
     offset: 0x454E00
   segments:
     - [0x07,  0x454E00]
+  external_files:
+    - "assets/ymls/us/textures/sky.yml"
+  header:
+    header:
+      - '#include "bitdw/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bitdw_entry[];'
 
 0:
   type: TEXTURE
