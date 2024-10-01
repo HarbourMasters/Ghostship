@@ -471,9 +471,15 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
           -Wno-parentheses
           -Wno-narrowing
           -Wno-missing-braces
+          -Wno-int-conversion
           $<$<COMPILE_LANGUAGE:C>:
               -Werror-implicit-function-declaration
               -Wno-incompatible-pointer-types
+              -Wno-discarded-array-qualifiers
+              -Wno-discarded-qualifiers
+              -Wno-builtin-declaration-mismatch
+              -Wno-switch-unreachable
+              -Wno-stringop-overflow
           >
           $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
           $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-enum-enum-conversion>
