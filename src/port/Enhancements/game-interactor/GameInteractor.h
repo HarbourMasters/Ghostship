@@ -13,6 +13,7 @@ extern "C" {
 
 #include <vector>
 #include <functional>
+#include <stdint.h>
 
 #define DEFINE_HOOK(name, type)         \
     struct name {                       \

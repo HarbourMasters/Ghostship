@@ -4945,7 +4945,7 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
     if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
-            if(ROM_JP) return;
+            if(ROM_JP) return dummy;
             play_camera_buzz_if_cdown();
         } else {
             gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
