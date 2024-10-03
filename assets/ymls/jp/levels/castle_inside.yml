@@ -4,6 +4,22 @@
     offset: 0x3948D0
   segments:
     - [0x07,  0x3948D0]
+  external_files:
+    - "assets/ymls/jp/textures/inside.yml"
+  header:
+    header:
+      - '#include "castle_inside/geo.h"'
+      - ''
+      - 'extern const LevelScript level_castle_inside_entry[];'
+
+castle_light:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x0
+  format: IA16
+  symbol: texture_castle_light
 
 1:
   type: TEXTURE
@@ -166,15 +182,6 @@
   offset: 0xB800
   format: RGBA16
   symbol: inside_castle_seg7_texture_0700B800
-
-castle_light:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0xB800
-  format: IA16
-  symbol: texture_castle_light
 
 19:
   type: TEXTURE
@@ -8398,6 +8405,24 @@ thi_huge_painting:
   type: SM64:PAINTING
   offset: 0x23C38
   symbol: thi_huge_painting
+
+inside_castle_seg7_area_1_rooms:
+  type: BLOB
+  size: 0x860
+  offset: 0x7782C
+  symbol: inside_castle_seg7_area_1_rooms
+
+inside_castle_seg7_area_2_rooms:
+  type: BLOB
+  size: 0x7E2
+  offset: 0x7808C
+  symbol: inside_castle_seg7_area_2_rooms
+
+inside_castle_seg7_area_3_rooms:
+  type: BLOB
+  size: 0x572
+  offset: 0x78870
+  symbol: inside_castle_seg7_area_3_rooms
 
 inside_castle_movtex_green_room_water_data:
   type: SM64:MOVTEX

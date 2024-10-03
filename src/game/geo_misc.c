@@ -7,7 +7,7 @@
 #include "area.h"
 #include "engine/math_util.h"
 #include "level_update.h"
-#include "levels/castle_inside/header.h"
+#include "assets/levels/castle_inside.h"
 #include "levels/ending/header.h"
 #include "levels/rr/header.h"
 #include "mario.h"

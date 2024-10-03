@@ -16,6 +16,9 @@
 #include "assets/levels/lll.h"
 #include "assets/levels/bbh.h"
 #include "assets/levels/bitfs.h"
+#include "assets/levels/castle_grounds.h"
+#include "assets/levels/castle_courtyard.h"
+#include "assets/levels/castle_inside.h"
 
 /**
  * This file contains functions for generating display lists with moving textures
@@ -136,8 +139,8 @@ u8 *gMovtexIdToTexture[] = { texture_waterbox_water,     texture_waterbox_mist,
                              texture_waterbox_lava,      ssl_quicksand,
                              ssl_pyramid_sand,           ttc_yellow_triangle };
 
-extern Gfx castle_grounds_dl_waterfall[];
-extern s16 castle_grounds_movtex_tris_waterfall[];
+// extern Gfx castle_grounds_dl_waterfall[];
+// extern s16 castle_grounds_movtex_tris_waterfall[];
 extern s16 ssl_movtex_tris_pyramid_sand_pathway_front[];
 extern Gfx ssl_dl_pyramid_sand_pathway_begin[];
 extern Gfx ssl_dl_pyramid_sand_pathway_end[];
@@ -518,8 +521,8 @@ Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) {
 // extern u8 bbh_movtex_merry_go_round_water_entrance[];
 // extern u8 bbh_movtex_merry_go_round_water_side[];
 extern u8 ccm_movtex_penguin_puddle_water[];
-extern u8 inside_castle_movtex_green_room_water[];
-extern u8 inside_castle_movtex_moat_water[];
+// extern u8 inside_castle_movtex_green_room_water[];
+// extern u8 inside_castle_movtex_moat_water[];
 extern u8 hmc_movtex_dorrie_pool_water[];
 extern u8 hmc_movtex_toxic_maze_mist[];
 extern u8 ssl_movtex_puddle_water[];
@@ -532,12 +535,12 @@ extern u8 jrb_movtex_initial_mist[];
 extern u8 jrb_movtex_sunken_ship_water[];
 extern u8 thi_movtex_area1_water[];
 extern u8 thi_movtex_area2_water[];
-extern u8 castle_grounds_movtex_water[];
+// extern u8 castle_grounds_movtex_water[];
 //extern u8 lll_movtex_volcano_floor_lava[];
 extern u8 ddd_movtex_area1_water[];
 extern u8 ddd_movtex_area2_water[];
 extern u8 wf_movtex_water[];
-extern u8 castle_courtyard_movtex_star_statue_water[];
+// extern u8 castle_courtyard_movtex_star_statue_water[];
 extern u8 ttm_movtex_puddle[];
 
 /**

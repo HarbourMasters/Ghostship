@@ -358,7 +358,7 @@ void process_cmd_node_switch_case() {
 void process_cmd_node_camera() {
     Vec3f pos, focus;
 
-    const auto type = GeoLayoutParser::mReader->ReadUInt16();
+    const auto type = GeoLayoutParser::mReader->ReadInt16();
 
     ReadVec3f(pos);
     ReadVec3f(focus);

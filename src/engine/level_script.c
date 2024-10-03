@@ -611,8 +611,6 @@ static void level_cmd_set_rooms(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
-#include <stdio.h>
-
 static void level_cmd_set_macro_objects(void) {
     if (sCurrAreaIndex != -1) {
         // The game modifies the macro object data (for example marking coins as taken),

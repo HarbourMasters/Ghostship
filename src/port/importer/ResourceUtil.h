@@ -9,6 +9,7 @@ template <typename T> T LoadChild(uint64_t crc) {
     if (path == nullptr) {
         return nullptr;
     }
+    printf("LoadChild: %s\n", path);
     auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path);
     return asset ? static_cast<T>(asset->GetRawPointer()) : nullptr;
 }

@@ -14,7 +14,7 @@
 #include "gfx_dimensions.h"
 #include "ingame_menu.h"
 #include "level_update.h"
-#include "levels/castle_grounds/header.h"
+#include "assets/levels/castle_grounds.h"
 #include "memory.h"
 #include "print.h"
 #include "save_file.h"

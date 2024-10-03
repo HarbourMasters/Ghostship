@@ -4,6 +4,11 @@
     offset: 0x4C08C0
   segments:
     - [0x07,  0x4C08C0]
+  header:
+    header:
+      - '#include "bowser_1/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bowser_1_entry[];'
 
 0:
   type: TEXTURE

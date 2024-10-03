@@ -4,6 +4,13 @@
     offset: 0x4AA510
   segments:
     - [0x07,  0x4AA510]
+  external_files:
+    - "assets/ymls/jp/textures/outside.yml"
+  header:
+    header:
+      - '#include "castle_courtyard/geo.h"'
+      - ''
+      - 'extern const LevelScript level_castle_courtyard_entry[];'
 
 castle_courtyard_seg7_vertex_07000000:
   type: VTX
@@ -565,10 +572,10 @@ castle_courtyard_seg7_dl_07005938:
   offset: 0x5938
   symbol: castle_courtyard_seg7_dl_07005938
 
-castle_courtyard_seg7_collision_level:
+castle_courtyard_seg7_collision:
   type: SM64:COLLISION
   offset: 0x59A8
-  symbol: castle_courtyard_seg7_collision_level
+  symbol: castle_courtyard_seg7_collision
 
 castle_courtyard_seg7_macro_objs:
   type: SM64:MACRO

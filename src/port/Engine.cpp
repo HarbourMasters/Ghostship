@@ -5,7 +5,7 @@
 #include "port/importer/TrajectoryFactory.h"
 #include "port/importer/MovtexFactory.h"
 #include "port/importer/MovtexQuadFactory.h"
-#include "port/importer/MacroObjectFactory.h"
+#include "port/importer/PaintingFactory.h"
 #include "port/importer/AudioSampleFactory.h"
 #include "port/importer/AudioSequenceFactory.h"
 #include "port/importer/DialogFactory.h"
@@ -92,12 +92,15 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     loader->RegisterResourceFactory(std::make_shared<SM64::ResourceFactoryBinaryAssetArrayV0>(), RESOURCE_FORMAT_BINARY, "AssetArray", static_cast<uint32_t>(SM64::ResourceType::AssetArray), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::TrajectoryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Trajectory", static_cast<uint32_t>(SM64::ResourceType::Trajectory), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Movtex", static_cast<uint32_t>(SM64::ResourceType::Movtex), 0);
+    // TODO: This shit needs to change, i mean why i have 5 factories doing the same thing xD
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Collision", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "PaintingData", static_cast<uint32_t>(SM64::ResourceType::PaintingData), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "MacroObject", static_cast<uint32_t>(SM64::ResourceType::MacroObject), 0);
+
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexQuadFactoryV0>(), RESOURCE_FORMAT_BINARY, "MovtexQuad", static_cast<uint32_t>(SM64::ResourceType::MovtexQuad), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::MacroObjectFactoryV0>(), RESOURCE_FORMAT_BINARY, "MacroObject", static_cast<uint32_t>(SM64::ResourceType::MacroObject), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::PaintingFactoryV0>(), RESOURCE_FORMAT_BINARY, "Painting", static_cast<uint32_t>(SM64::ResourceType::Painting), 0);
 
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
-//    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "CollisionBlob", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
 }
 
 void GameEngine::Create(){

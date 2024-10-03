@@ -4,6 +4,15 @@
     offset: 0x448C80
   segments:
     - [0x07,  0x448C80]
+  external_files:
+    - "assets/ymls/jp/textures/outside.yml"
+  header:
+    header:
+      - '#include "castle_grounds/geo.h"'
+      - ''
+      - 'extern const LevelScript level_castle_grounds_entry[];'
+      - '// This fake symbol is just to avoid having compilation errors on jp roms'
+      - 'static const ALIGN_ASSET(2) char castle_grounds_seg7_us_dl_0700F2E8[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_us_dl_0700F2E8";'
 
 0:
   type: TEXTURE
@@ -1300,3 +1309,16 @@ castle_grounds_dl_waterfall:
   type: GFX
   offset: 0x10F30
   symbol: castle_grounds_dl_waterfall
+
+castle_grounds_seg7_anim_flags:
+  type: SM64:ANIM
+  offset: 0xC944
+  symbol: castle_grounds_seg7_anim_flags
+
+castle_grounds_seg7_anims_flags:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 1
+  offset: 0xC95C
+  symbol: castle_grounds_seg7_anims_flags

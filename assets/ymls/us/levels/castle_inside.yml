@@ -8403,6 +8403,24 @@ thi_huge_painting:
   offset: 0x23C38
   symbol: thi_huge_painting
 
+inside_castle_seg7_area_1_rooms:
+  type: BLOB
+  size: 0x860
+  offset: 0x7782C
+  symbol: inside_castle_seg7_area_1_rooms
+
+inside_castle_seg7_area_2_rooms:
+  type: BLOB
+  size: 0x7E2
+  offset: 0x7808C
+  symbol: inside_castle_seg7_area_2_rooms
+
+inside_castle_seg7_area_3_rooms:
+  type: BLOB
+  size: 0x572
+  offset: 0x78870
+  symbol: inside_castle_seg7_area_3_rooms
+
 inside_castle_movtex_green_room_water_data:
   type: SM64:MOVTEX
   quad: true

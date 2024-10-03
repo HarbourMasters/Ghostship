@@ -55,7 +55,7 @@ s16 *read_vec3s_angle(Vec3s dst, s16 *src) {
     return src;
 }
 
-/**
+/**https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjK486muamIAxXMiMIIHer7DmUYABAAGgJqZg&co=1&ase=2&gclid=Cj0KCQjwiuC2BhDSARIsALOVfBLhGoIUMEVyF3KNqrrWGkfdIpCsm158dQL1gEx1g4B6Alc2_I9E86YaAhzxEALw_wcB&ei=u2fYZoSEFeq3wN4P1469kQc&ohost=www.google.com&cid=CAESVuD2BOG9M6-mYXjeuwt_QDxaO_RlSjsPmeydLFjtEJvfVekclYQbsaMR4_JzOQCT67MwokpbHV-NysbBvVAFjNGPd94nHvgo1Mq-IbcWm1fpEy9cUU8b&sig=AOD64_0mZy-8SJAA_tPPrUXAMGdVwyiaPw&q&sqi=2&nis=4&adurl&ved=2ahUKEwjEzcmmuamIAxXqG9AFHVdHL3IQ0Qx6BAgKEAE
  * Add the given graph node as a child to the current top of the gfx stack:
  * 'gCurGraphNodeList'. This is called from geo_layout commands to add nodes
  * to the scene graph.

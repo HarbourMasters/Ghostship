@@ -15,6 +15,8 @@
 
 #include "make_const_nonconst.h"
 #include "assets/levels/bob.h"
+#include "assets/actors/tree.h"
+#include "assets/actors/warp_pipe.h"
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_BOB_CHAIN_CHOMP_GATE,  /*pos*/  1456,   768,   446, /*angle*/ 0, 326, 0,  /*behParam*/ 0x00000000, /*beh*/ bhvChainChompGate),

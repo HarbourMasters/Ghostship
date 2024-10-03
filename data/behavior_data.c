@@ -33,7 +33,7 @@
 #include "actors/group16.h"
 #include "actors/group17.h"
 #include "assets/levels/bbh.h"
-#include "levels/castle_inside/header.h"
+#include "assets/levels/castle_inside.h"
 #include "levels/hmc/header.h"
 #include "levels/ssl/header.h"
 #include "assets/levels/bob.h"
@@ -43,14 +43,14 @@
 #include "levels/thi/header.h"
 #include "levels/ttc/header.h"
 #include "levels/rr/header.h"
-#include "levels/castle_grounds/header.h"
+#include "assets/levels/castle_grounds.h"
 #include "assets/levels/bitdw.h"
 #include "assets/levels/lll.h"
 #include "levels/sa/header.h"
 #include "assets/levels/bitfs.h"
 #include "levels/ddd/header.h"
 #include "levels/wf/header.h"
-#include "levels/bowser_2/header.h"
+#include "assets/levels/bowser_2.h"
 #include "levels/ttm/header.h"
 
 #include "make_const_nonconst.h"
@@ -2198,7 +2198,7 @@ const BehaviorScript bhvDddWarp[] = {
 const BehaviorScript bhvMoatGrills[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    LOAD_COLLISION_DATA(castle_grounds_seg7_collision_moat_grills),
+    LOAD_COLLISION_DATA(castle_grounds_seg7_moat_grills),
     SET_FLOAT(oCollisionDistance, 30000),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_moat_grills_loop),
@@ -4495,7 +4495,7 @@ const BehaviorScript bhvSandSoundLoop[] = {
 const BehaviorScript bhvHiddenAt120Stars[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    LOAD_COLLISION_DATA(castle_grounds_seg7_collision_cannon_grill),
+    LOAD_COLLISION_DATA(castle_grounds_seg7_cannon_grill),
     SET_FLOAT(oCollisionDistance, 4000),
     CALL_NATIVE(bhv_castle_cannon_grate_init),
     BEGIN_LOOP(),

@@ -14,7 +14,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/castle_inside/header.h"
+#include "assets/levels/castle_inside.h"
 
 static const LevelScript script_func_local_1[] = {
     WARP_NODE(/*id*/ 0x00, /*destLevel*/ LEVEL_CASTLE_GROUNDS, /*destArea*/ 0x01, /*destNode*/ 0x00, /*flags*/ WARP_NO_CHECKPOINT),
