@@ -1477,6 +1477,12 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
     if (velocity < 0) {
         velocity = 0;
     }
+
+
+    float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
+    volLeft *= master_vol;
+    volRight *= master_vol;
+
 #ifdef VERSION_JP
     note->targetVolLeft = (u16)(velocity * volLeft) & ~0x80FF; // 0x7F00, but that doesn't match
     note->targetVolRight = (u16)(velocity * volRight) & ~0x80FF;
@@ -1490,9 +1496,6 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
     if (note->targetVolRight == 0) {
         note->targetVolRight++;
     }
-    float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
-    note->targetVolLeft *= master_vol;
-    note->targetVolRight *= master_vol;
 
     if (note->reverbVol != reverbVol) {
         note->reverbVol = reverbVol;
