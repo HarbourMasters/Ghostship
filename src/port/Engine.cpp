@@ -47,10 +47,10 @@ GameInteractor* GameInteractor::Instance;
 
 GameEngine::GameEngine(): dictionary(nullptr) {
     std::vector<std::string> OTRFiles;
-    if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("smcube.otr"); std::filesystem::exists(cube_path)) {
+    if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.otr"); std::filesystem::exists(cube_path)) {
         OTRFiles.push_back(cube_path);
     }
-    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("sm64.otr"); std::filesystem::exists(sm64_otr_path)) {
+    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("ghostship.otr"); std::filesystem::exists(sm64_otr_path)) {
         OTRFiles.push_back(sm64_otr_path);
     }
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {

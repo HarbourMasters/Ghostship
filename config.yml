@@ -8,7 +8,7 @@
     gbi: F3D
     sort: OFFSET
     output:
-      binary: smcube.otr
+      binary: sm64.otr
       code: code/jp
       headers: include/assets
   segments:
@@ -44,7 +44,7 @@
     gbi: F3D
     sort: OFFSET
     output:
-      binary: smcube.otr
+      binary: sm64.otr
       code: code/us
       headers: include/assets
   segments:
