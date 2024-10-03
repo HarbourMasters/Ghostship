@@ -1,0 +1,47 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x26EA40
+  segments:
+    - [0x0A,  0x26EA40]
+
+title_screen_bg_vertex_0A000000:
+  type: VTX
+  count: 16
+  offset: 0x0
+  symbol: title_screen_bg_vertex_0A000000
+
+title_screen_bg_dl_0A000100:
+  type: GFX
+  offset: 0x100
+  symbol: title_screen_bg_dl_0A000100
+
+title_screen_bg_dl_0A000118:
+  type: GFX
+  offset: 0x118
+  symbol: title_screen_bg_dl_0A000118
+
+title_screen_bg_dl_0A000130:
+  type: GFX
+  offset: 0x130
+  symbol: title_screen_bg_dl_0A000130
+
+title_screen_bg_dl_0A000148:
+  type: GFX
+  offset: 0x148
+  symbol: title_screen_bg_dl_0A000148
+
+title_screen_bg_dl_0A000160:
+  type: GFX
+  offset: 0x160
+  symbol: title_screen_bg_dl_0A000160
+
+title_screen_bg_dl_0A000178:
+  type: GFX
+  offset: 0x178
+  symbol: title_screen_bg_dl_0A000178
+
+title_screen_bg_dl_0A000190:
+  type: GFX
+  offset: 0x190
+  symbol: title_screen_bg_dl_0A000190
