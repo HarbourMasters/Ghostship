@@ -120,7 +120,7 @@ void DrawSettingsMenu(){
             };
 
             ImGui::Text("Audio API (Needs reload)");
-            auto currentAudioBackend = Ship::Context::GetInstance()->GetAudio()->GetAudioBackend();
+            auto currentAudioBackend = Ship::Context::GetInstance()->GetAudio()->GetCurrentAudioBackend();
 
             if (Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
                 UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
@@ -129,7 +129,7 @@ void DrawSettingsMenu(){
                 for (uint8_t i = 0; i < Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size(); i++) {
                     auto backend = Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->data()[i];
                     if (ImGui::Selectable(audioBackendNames[backend], backend == currentAudioBackend)) {
-                        Ship::Context::GetInstance()->GetAudio()->SetAudioBackend(backend);
+                        Ship::Context::GetInstance()->GetAudio()->SetCurrentAudioBackend(backend);
                     }
                 }
                 ImGui::EndCombo();
@@ -254,7 +254,7 @@ void DrawSettingsMenu(){
                 currentFps = 60;
             }
             CVarSetInteger("gInterpolationFPS", currentFps);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         #else
             bool matchingRefreshRate =
                 CVarGetInteger("gMatchRefreshRate", 0) && Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() != Ship::WindowBackend::FAST3D_DXGI_DX11;
@@ -282,7 +282,7 @@ void DrawSettingsMenu(){
                 int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
                 if (hz >= 30 && hz <= 360) {
                     CVarSetInteger("gInterpolationFPS", hz);
-                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 }
             }
         } else {

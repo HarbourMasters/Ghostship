@@ -39,6 +39,7 @@ extern "C" {
 #include "audio/external.h"
 #include "audio/internal.h"
 #include "game/ingame_menu.h"
+bool prevAltAssets = false;
 float gInterpolationStep = 0.0f;
 }
 
@@ -64,31 +65,41 @@ GameEngine::GameEngine(): dictionary(nullptr) {
         }
     }
 
+    this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
+
+    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
+    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
+                                           // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
+
+    auto controlDeck = std::make_shared<LUS::ControlDeck>();
+
+    this->context->InitResourceManager(OTRFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
+    this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
+
+    auto window = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
+
+
     // 0xFF2B5A63, 0xE3DAA4E
-    this->context = Ship::Context::CreateInstance("Ghostship", "sm64", "ghostship.cfg.json", OTRFiles,
-                                                 {}, 3, {32000, 1024, 2480});
+    this->context->Init(OTRFiles, {}, 3, { 32000, 1024, 1680 }, window, controlDeck);
 
-    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
-    Ship::Context::GetInstance()->GetControlDeck()->SetSinglePlayerMappingMode(true);
-
-    wnd->SetTargetFps(60);
-    wnd->SetMaximumFrameLatency(1);
-    wnd->SetRendererUCode(ucode_f3d);
+    window->SetTargetFps(60);
+    window->SetMaximumFrameLatency(1);
+    window->SetRendererUCode(ucode_f3d);
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
-    auto blobFactory = std::make_shared<LUS::ResourceFactoryBinaryBlobV0>();
+    auto blobFactory = std::make_shared<Ship::ResourceFactoryBinaryBlobV0>();
     loader->RegisterResourceFactory(std::make_shared<SM64::AnimationFactoryV0>(), RESOURCE_FORMAT_BINARY, "Animation", static_cast<uint32_t>(SM64::ResourceType::Anim), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank", static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DialogFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dialog", static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary", static_cast<uint32_t>(SM64::ResourceType::Dictionary), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 1);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY, "Vertex", static_cast<uint32_t>(LUS::ResourceType::Vertex), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY, "DisplayList", static_cast<uint32_t>(LUS::ResourceType::DisplayList), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(LUS::ResourceType::Matrix), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryLightV0>(), RESOURCE_FORMAT_BINARY, "Light", static_cast<uint32_t>(LUS::ResourceType::Light), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY, "Vertex", static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY, "DisplayList", static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(Fast::ResourceType::Matrix), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryLightV0>(), RESOURCE_FORMAT_BINARY, "Light", static_cast<uint32_t>(Fast::ResourceType::Light), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::ResourceFactoryBinaryAssetArrayV0>(), RESOURCE_FORMAT_BINARY, "AssetArray", static_cast<uint32_t>(SM64::ResourceType::AssetArray), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::TrajectoryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Trajectory", static_cast<uint32_t>(SM64::ResourceType::Trajectory), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Movtex", static_cast<uint32_t>(SM64::ResourceType::Movtex), 0);
@@ -100,7 +111,9 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexQuadFactoryV0>(), RESOURCE_FORMAT_BINARY, "MovtexQuad", static_cast<uint32_t>(SM64::ResourceType::MovtexQuad), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::PaintingFactoryV0>(), RESOURCE_FORMAT_BINARY, "Painting", static_cast<uint32_t>(SM64::ResourceType::Painting), 0);
 
-    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
+    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
+    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 }
 
 void GameEngine::Create(){
@@ -117,9 +130,7 @@ void GameEngine::Destroy(){
     AudioExit();
 }
 
-bool ShouldClearTextureCacheAtEndOfFrame = false;
-
-void GameEngine::StartFrame() const{
+void GameEngine::StartFrame() const {
     using Ship::KbScancode;
     const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
     this->context->GetWindow()->SetLastScancode(-1);
@@ -127,13 +138,12 @@ void GameEngine::StartFrame() const{
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
-            CVarSetInteger("gAltAssets", !CVarGetInteger("gAltAssets", 0));
-            ShouldClearTextureCacheAtEndOfFrame = true;
+            CVarSetInteger("gEnhancements.Mods.AlternateAssets", !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
             break;
         }
-        default: break;
+        default:
+            break;
     }
-    this->context->GetWindow()->StartFrame();
 }
 
 uint32_t GameEngine::GetInterpolationFPS() {
@@ -199,7 +209,7 @@ void GameEngine::EndAudioFrame(){
 
 void GameEngine::AudioInit() {
     const auto resourceMgr = Ship::Context::GetInstance()->GetResourceManager();
-    resourceMgr->LoadDirectory("sound");
+    resourceMgr->LoadResources("sound");
     const auto banksFiles = resourceMgr->GetArchiveManager()->ListFiles("sound/banks/*");
     const auto sequences_files = resourceMgr->GetArchiveManager()->ListFiles("sound/sequences/*");
 
@@ -263,13 +273,22 @@ uint32_t GameEngine::GetGameVersion() {
     return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
-void GameEngine::RunCommands(F3DGfx* Commands) {
-    gfx_run(reinterpret_cast<Gfx*>(Commands), {});
-    gfx_end_frame();
+void GameEngine::RunCommands(Gfx* Commands) {
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
-    if (ShouldClearTextureCacheAtEndOfFrame) {
+    if (wnd == nullptr) {
+        return;
+    }
+
+    // Process window events for resize, mouse, keyboard events
+    wnd->HandleEvents();
+    wnd->DrawAndRunGraphicsCommands(Commands, {});
+
+    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    if (prevAltAssets != curAltAssets) {
+        prevAltAssets = curAltAssets;
+        Ship::Context::GetInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
         gfx_texture_cache_clear();
-        ShouldClearTextureCacheAtEndOfFrame = false;
     }
 }
 
@@ -284,7 +303,7 @@ void GameEngine::PatchInterpolations() {
     patch_interpolated_snow_particles();
 }
 
-void GameEngine::ProcessGfxCommands(F3DGfx* commands) {
+void GameEngine::ProcessGfxCommands(Gfx* commands) {
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     int target_fps = GetInterpolationFPS();

@@ -1,5 +1,5 @@
 header:
-  type: AUDIO:HEADER
+  type: NAUDIO:V0:AUDIO_HEADER
   ctl:
     offset: 5748512
     size: 97856

@@ -1,24 +1,24 @@
 00_step_default:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 6
 01_step_grass:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 7
 02_step_stone:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 8
 03_step_spooky:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 9
 04_step_snow:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 10
 05_step_ice:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 11
 06_step_metal:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 12
 07_step_sand:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 13

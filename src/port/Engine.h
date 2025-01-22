@@ -7,8 +7,9 @@
 #include <vector>
 #include <Context.h>
 #include <Fast3D/gfx_pc.h>
+#include "libultraship/src/Context.h"
 
-#define SAMPLES_HIGH 544
+#define SAMPLES_HIGH 560
 #define SAMPLES_LOW 528
 #define AUDIO_FRAMES_PER_UPDATE 2
 #define NUM_AUDIO_CHANNELS 2
@@ -37,14 +38,14 @@ class GameEngine {
     static void Create();
     void AudioInit();
     void StartFrame() const;
-    static void RunCommands(F3DGfx* Commands);
+    static void RunCommands(Gfx* Commands);
     static uint32_t GetInterpolationFPS();
     static void HandleAudioThread();
     static void StartAudioFrame();
     static void EndAudioFrame();
     static void AudioExit();
     static void PatchInterpolations();
-    static void ProcessGfxCommands(F3DGfx* commands);
+    static void ProcessGfxCommands(Gfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();
 

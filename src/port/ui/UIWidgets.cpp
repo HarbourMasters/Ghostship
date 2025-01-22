@@ -1,13 +1,8 @@
-//
-//  UIWidgets.cpp
-//  soh
-//
-//  Created by David Chavez on 25.08.22.
-//
-
 #include "UIWidgets.h"
 
-#define IMGUI_DEFINE_MATH_OPERATORS
+#include "libultraship/src/Context.h"
+
+#include <imgui.h>
 #include <imgui_internal.h>
 #include <libultraship/libultraship.h>
 #include <libultraship/libultra/types.h>
@@ -154,7 +149,7 @@ namespace UIWidgets {
         ImGui::RenderFrame(check_bb.Min, check_bb.Max, ImGui::GetColorU32((held && hovered) ? ImGuiCol_FrameBgActive : hovered ? ImGuiCol_FrameBgHovered : ImGuiCol_FrameBg), true, style.FrameRounding);
         ImU32 check_col = ImGui::GetColorU32(ImGuiCol_CheckMark);
         ImU32 cross_col = ImGui::GetColorU32(ImVec4(0.50f, 0.50f, 0.50f, 1.00f));
-        bool mixed_value = (g.LastItemData.InFlags & ImGuiItemFlags_MixedValue) != 0;
+        bool mixed_value = (g.LastItemData.ItemFlags & ImGuiItemFlags_MixedValue) != 0;
         if (mixed_value) {
             // Undocumented tristate/mixed/indeterminate checkbox (#2644)
             // This may seem awkwardly designed because the aim is to make ImGuiItemFlags_MixedValue supported by all widgets (not just checkbox)
@@ -203,7 +198,7 @@ namespace UIWidgets {
         bool val = (bool)CVarGetInteger(cvarName, defaultValue);
         if (CustomCheckbox(text, &val, disabled, disabledGraphic)) {
             CVarSetInteger(cvarName, val);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             changed = true;
         }
 
@@ -243,7 +238,7 @@ namespace UIWidgets {
                         CVarSetInteger(cvarName, i);
                         selected = i;
                         changed = true;
-                        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                     }
                 }
             }
@@ -256,7 +251,7 @@ namespace UIWidgets {
             if (disabledValue >= 0 && selected != disabledValue) {
                 CVarSetInteger(cvarName, disabledValue);
                 changed = true;
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
         }
 
@@ -345,7 +340,7 @@ namespace UIWidgets {
 
         if (changed) {
             CVarSetInteger(cvarName, val);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         }
 
         return changed;
@@ -421,7 +416,7 @@ namespace UIWidgets {
 
         if (changed) {
             CVarSetFloat(cvarName, val);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         }
 
         return changed;
@@ -468,7 +463,7 @@ namespace UIWidgets {
         int val = CVarGetInteger(cvarName, 0);
         if (ImGui::RadioButton(make_invisible.c_str(), id == val)) {
             CVarSetInteger(cvarName, id);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             ret = true;
         }
         ImGui::SameLine();
@@ -495,7 +490,7 @@ namespace UIWidgets {
 
             CVarSetColor(cvarName, colorsRGBA);
             CVarSetInteger(Cvar_RBM.c_str(), 0); //On click disable rainbow mode.
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             changed = true;
         }
         Tooltip("Revert colors to the game's original colors (GameCube version)\nOverwrites previously chosen color");
@@ -761,7 +756,7 @@ namespace UIWidgets {
         bool value = (bool)CVarGetInteger(cvarName, options.defaultValue);
         if (Checkbox(label, &value, options)) {
             CVarSetInteger(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         return dirty;
@@ -865,7 +860,7 @@ namespace UIWidgets {
         uint8_t value = (uint8_t)CVarGetInteger(cvarName, options.defaultIndex);
         if (Combobox(label, &value, comboArray, options)) {
             CVarSetInteger(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         return dirty;
@@ -912,7 +907,7 @@ namespace UIWidgets {
             if (Button("-", { .color = options.color, .size = Sizes::Inline }) && *value > min) {
                 *value -= options.step;
                 if (*value < min) *value = min;
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 dirty = true;
             }
             ImGui::SameLine(0, 3.0f);
@@ -921,7 +916,7 @@ namespace UIWidgets {
             ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
         }
         if (ImGui::SliderScalar(invisibleLabel, ImGuiDataType_S32, value, &min, &max, options.format, options.flags)) {
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         if (options.showButtons) {
@@ -930,7 +925,7 @@ namespace UIWidgets {
             if (Button("+", { .color = options.color, .size = Sizes::Inline }) && *value < max) {
                 *value += options.step;
                 if (*value > max) *value = max;
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 dirty = true;
             }
         }
@@ -951,7 +946,7 @@ namespace UIWidgets {
         int32_t value = CVarGetInteger(cvarName, defaultValue);
         if (SliderInt(label, &value, min, max, options)) {
             CVarSetInteger(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         return dirty;
@@ -983,7 +978,7 @@ namespace UIWidgets {
             if (Button("-", { .color = options.color, .size = Sizes::Inline }) && *value > min) {
                 *value -= options.step;
                 if (*value < min) *value = min;
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 dirty = true;
             }
             ImGui::SameLine(0, 3.0f);
@@ -993,7 +988,7 @@ namespace UIWidgets {
         }
         if (ImGui::SliderScalar(invisibleLabel, ImGuiDataType_Float, &valueToDisplay, &minToDisplay, &maxToDisplay, options.format, options.flags)) {
             *value = options.isPercentage ? valueToDisplay / 100.0f : valueToDisplay;
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         if (options.showButtons) {
@@ -1002,7 +997,7 @@ namespace UIWidgets {
             if (Button("+", { .color = options.color, .size = Sizes::Inline }) && *value < max) {
                 *value += options.step;
                 if (*value > max) *value = max;
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 dirty = true;
             }
         }
@@ -1023,7 +1018,7 @@ namespace UIWidgets {
         float value = CVarGetFloat(cvarName, defaultValue);
         if (SliderFloat(label, &value, min, max, options)) {
             CVarSetFloat(cvarName, value);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         return dirty;
