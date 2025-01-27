@@ -1,7 +1,7 @@
 [submodule "libultraship"]
 	path = libultraship
-	url = https://github.com/KiritoDv/libultraship
-	branch = version/pu
+	url = https://github.com/Kenix3/libultraship
+	branch = main
 [submodule "Torch"]
 	path = Torch
 	url = https://github.com/HarbourMasters/Torch.git
