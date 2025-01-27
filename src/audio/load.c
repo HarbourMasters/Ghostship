@@ -302,7 +302,7 @@ void init_sample_dma_buffers(UNUSED s32 arg0) {
 #if defined(VERSION_EU)
     sDmaBufSize = 0x400;
 #else
-    sDmaBufSize = 0x800;
+    sDmaBufSize = 0x400;
 #endif
 
 #if defined(VERSION_EU)
@@ -346,7 +346,7 @@ out1:
 #if defined(VERSION_EU)
     sDmaBufSize = 0x200;
 #else
-    sDmaBufSize = 160 * 9;
+    sDmaBufSize = 0x200;
 #endif
     for (i = 0; i < gMaxSimultaneousNotes; i++) {
         sSampleDmas[gSampleDmaNumListItems].buffer = soundAlloc(&gNotesAndBuffersPool, sDmaBufSize);
