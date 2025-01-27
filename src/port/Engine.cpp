@@ -53,7 +53,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r"); std::filesystem::exists(cube_path)) {
         OTRFiles.push_back(cube_path);
     }
-    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("ghostship.otr"); std::filesystem::exists(sm64_otr_path)) {
+    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("ghostship.o2r"); std::filesystem::exists(sm64_otr_path)) {
         OTRFiles.push_back(sm64_otr_path);
     }
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
