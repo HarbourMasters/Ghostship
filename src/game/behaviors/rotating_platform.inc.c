@@ -1,7 +1,7 @@
 // rotating_platform.inc.c
 
-#include "levels/wf/header.h"
-#include "levels/wdw/header.h"
+#include "assets/levels/wf.h"
+#include "assets/levels/wdw.h"
 
 struct WFRotatingPlatformData {
     s16 unused;

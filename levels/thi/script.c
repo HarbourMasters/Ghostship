@@ -13,7 +13,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/thi/header.h"
+#include "assets/levels/thi.h"
 
 static const LevelScript script_func_local_1[] = {
     RETURN(),

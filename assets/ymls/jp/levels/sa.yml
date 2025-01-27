@@ -4,6 +4,13 @@
     offset: 0x468FD0
   segments:
     - [0x07,  0x468FD0]
+  external_files:
+    - "assets/ymls/jp/textures/inside.yml"
+  header:
+    header:
+      - '#include "sa/geo.h"'
+      - ''
+      - 'extern const LevelScript level_sa_entry[];'
 
 sa_lights:
   type: LIGHTS
@@ -278,7 +285,7 @@ sa_seg7_dl_07002FD0:
 sa_seg7_collision:
   type: SM64:COLLISION
   offset: 0x3000
-  symbol: bbh_seg7_collision
+  symbol: sa_seg7_collision
 
 sa_seg7_macro_objs:
   type: SM64:MACRO

@@ -13,7 +13,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/rr/header.h"
+#include "assets/levels/rr.h"
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_RR_SLIDING_PLATFORM,         /*pos*/ -3400, -2038,  6564, /*angle*/  0,   0,   0, /*behParam*/ 0x02560000, /*beh*/ bhvSlidingPlatform2),

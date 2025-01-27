@@ -13,12 +13,7 @@
 #include "geo_misc.h"
 #include "rendering_graph_node.h"
 #include "object_list_processor.h"
-#include "assets/levels/lll.h"
-#include "assets/levels/bbh.h"
-#include "assets/levels/bitfs.h"
-#include "assets/levels/castle_grounds.h"
-#include "assets/levels/castle_courtyard.h"
-#include "assets/levels/castle_inside.h"
+#include "level_headers.h"
 
 /**
  * This file contains functions for generating display lists with moving textures
@@ -126,9 +121,9 @@ float gPaintingMarioYEntry = 0.0f;
 /// Variable to ensure the initial Wet-Dry World water level is set only once
 s32 gWdwWaterLevelSet = FALSE;
 
-extern u8 ssl_quicksand[];
-extern u8 ssl_pyramid_sand[];
-extern u8 ttc_yellow_triangle[];
+//extern u8 ssl_quicksand[];
+//extern u8 ssl_pyramid_sand[];
+//extern u8 ttc_yellow_triangle[];
 
 /**
  * An array for converting a movtex texture id to a pointer that can
@@ -141,15 +136,15 @@ u8 *gMovtexIdToTexture[] = { texture_waterbox_water,     texture_waterbox_mist,
 
 // extern Gfx castle_grounds_dl_waterfall[];
 // extern s16 castle_grounds_movtex_tris_waterfall[];
-extern s16 ssl_movtex_tris_pyramid_sand_pathway_front[];
-extern Gfx ssl_dl_pyramid_sand_pathway_begin[];
-extern Gfx ssl_dl_pyramid_sand_pathway_end[];
-extern Gfx ssl_dl_pyramid_sand_pathway_front_end[];
-extern s16 ssl_movtex_tris_pyramid_sand_pathway_floor[];
-extern Gfx ssl_dl_pyramid_sand_pathway_floor_begin[];
-extern Gfx ssl_dl_pyramid_sand_pathway_floor_end[];
-extern s16 ssl_movtex_tris_pyramid_sand_pathway_side[];
-extern Gfx ssl_dl_pyramid_sand_pathway_side_end[];
+//extern s16 ssl_movtex_tris_pyramid_sand_pathway_front[];
+//extern Gfx ssl_dl_pyramid_sand_pathway_begin[];
+//extern Gfx ssl_dl_pyramid_sand_pathway_end[];
+//extern Gfx ssl_dl_pyramid_sand_pathway_front_end[];
+//extern s16 ssl_movtex_tris_pyramid_sand_pathway_floor[];
+//extern Gfx ssl_dl_pyramid_sand_pathway_floor_begin[];
+//extern Gfx ssl_dl_pyramid_sand_pathway_floor_end[];
+//extern s16 ssl_movtex_tris_pyramid_sand_pathway_side[];
+//extern Gfx ssl_dl_pyramid_sand_pathway_side_end[];
 // extern s16 bitfs_movtex_tris_lava_first_section[];
 // extern Gfx bitfs_dl_lava_sections[];
 // extern s16 bitfs_movtex_tris_lava_second_section[];
@@ -161,38 +156,38 @@ extern Gfx ssl_dl_pyramid_sand_pathway_side_end[];
 // extern s16 lll_movtex_tris_lavafall_volcano[];
 // extern Gfx lll_dl_lavafall_volcano[];
 
-extern s16 cotmc_movtex_tris_water[];
-extern Gfx cotmc_dl_water_begin[];
-extern Gfx cotmc_dl_water_end[];
-extern Gfx cotmc_dl_water[];
-extern s16 ttm_movtex_tris_begin_waterfall[];
-extern Gfx ttm_dl_waterfall[];
-extern s16 ttm_movtex_tris_end_waterfall[];
-extern s16 ttm_movtex_tris_begin_puddle_waterfall[];
-extern Gfx ttm_dl_bottom_waterfall[];
-extern s16 ttm_movtex_tris_end_puddle_waterfall[];
-extern s16 ttm_movtex_tris_puddle_waterfall[];
-extern Gfx ttm_dl_puddle_waterfall[];
-extern s16 ssl_movtex_tris_pyramid_quicksand[];
-extern Gfx ssl_dl_quicksand_begin[];
-extern Gfx ssl_dl_quicksand_end[];
-extern Gfx ssl_dl_pyramid_quicksand[];
-extern s16 ssl_movtex_tris_pyramid_corners_quicksand[];
-extern Gfx ssl_dl_pyramid_corners_quicksand[];
-extern s16 ssl_movtex_tris_sides_quicksand[];
-extern Gfx ssl_dl_sides_quicksand[];
-extern s16 ttc_movtex_tris_big_surface_treadmill[];
-extern Gfx ttc_dl_surface_treadmill_begin[];
-extern Gfx ttc_dl_surface_treadmill_end[];
-extern Gfx ttc_dl_surface_treadmill[];
-extern s16 ttc_movtex_tris_small_surface_treadmill[];
-extern s16 ssl_movtex_tris_quicksand_pit[];
-extern Gfx ssl_dl_quicksand_pit_begin[];
-extern Gfx ssl_dl_quicksand_pit_end[];
-extern Gfx ssl_dl_quicksand_pit[];
-extern s16 ssl_movtex_tris_pyramid_quicksand_pit[];
-extern Gfx ssl_dl_pyramid_quicksand_pit_begin[];
-extern Gfx ssl_dl_pyramid_quicksand_pit_end[];
+// extern s16 cotmc_movtex_tris_water[];
+// extern Gfx cotmc_dl_water_begin[];
+// extern Gfx cotmc_dl_water_end[];
+// extern Gfx cotmc_dl_water[];
+// extern s16 ttm_movtex_tris_begin_waterfall[];
+// extern Gfx ttm_dl_waterfall[];
+// extern s16 ttm_movtex_tris_end_waterfall[];
+// extern s16 ttm_movtex_tris_begin_puddle_waterfall[];
+// extern Gfx ttm_dl_bottom_waterfall[];
+// extern s16 ttm_movtex_tris_end_puddle_waterfall[];
+// extern s16 ttm_movtex_tris_puddle_waterfall[];
+// extern Gfx ttm_dl_puddle_waterfall[];
+// extern s16 ssl_movtex_tris_pyramid_quicksand[];
+// extern Gfx ssl_dl_quicksand_begin[];
+// extern Gfx ssl_dl_quicksand_end[];
+// extern Gfx ssl_dl_pyramid_quicksand[];
+// extern s16 ssl_movtex_tris_pyramid_corners_quicksand[];
+// extern Gfx ssl_dl_pyramid_corners_quicksand[];
+// extern s16 ssl_movtex_tris_sides_quicksand[];
+// extern Gfx ssl_dl_sides_quicksand[];
+// extern s16 ttc_movtex_tris_big_surface_treadmill[];
+// extern Gfx ttc_dl_surface_treadmill_begin[];
+// extern Gfx ttc_dl_surface_treadmill_end[];
+// extern Gfx ttc_dl_surface_treadmill[];
+// extern s16 ttc_movtex_tris_small_surface_treadmill[];
+// extern s16 ssl_movtex_tris_quicksand_pit[];
+// extern Gfx ssl_dl_quicksand_pit_begin[];
+// extern Gfx ssl_dl_quicksand_pit_end[];
+// extern Gfx ssl_dl_quicksand_pit[];
+// extern s16 ssl_movtex_tris_pyramid_quicksand_pit[];
+// extern Gfx ssl_dl_pyramid_quicksand_pit_begin[];
+// extern Gfx ssl_dl_pyramid_quicksand_pit_end[];
 
 /**
  * MovtexObjects that have no color attributes per vertex (though the mesh
@@ -520,28 +515,28 @@ Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) {
 
 // extern u8 bbh_movtex_merry_go_round_water_entrance[];
 // extern u8 bbh_movtex_merry_go_round_water_side[];
-extern u8 ccm_movtex_penguin_puddle_water[];
+//extern u8 ccm_movtex_penguin_puddle_water[];
 // extern u8 inside_castle_movtex_green_room_water[];
 // extern u8 inside_castle_movtex_moat_water[];
-extern u8 hmc_movtex_dorrie_pool_water[];
-extern u8 hmc_movtex_toxic_maze_mist[];
-extern u8 ssl_movtex_puddle_water[];
-extern u8 ssl_movtex_toxbox_quicksand_mist[];
-extern u8 sl_movtex_water[];
-extern u8 wdw_movtex_area1_water[];
-extern u8 wdw_movtex_area2_water[];
-extern u8 jrb_movtex_water[];
-extern u8 jrb_movtex_initial_mist[];
-extern u8 jrb_movtex_sunken_ship_water[];
-extern u8 thi_movtex_area1_water[];
-extern u8 thi_movtex_area2_water[];
+//extern u8 hmc_movtex_dorrie_pool_water[];
+//extern u8 hmc_movtex_toxic_maze_mist[];
+//extern u8 ssl_movtex_puddle_water[];
+//extern u8 ssl_movtex_toxbox_quicksand_mist[];
+//extern u8 sl_movtex_water[];
+//extern u8 wdw_movtex_area1_water[];
+//extern u8 wdw_movtex_area2_water[];
+//extern u8 jrb_movtex_water[];
+//extern u8 jrb_movtex_initial_mist[];
+//extern u8 jrb_movtex_sunken_ship_water[];
+//extern u8 thi_movtex_area1_water[];
+//extern u8 thi_movtex_area2_water[];
 // extern u8 castle_grounds_movtex_water[];
 //extern u8 lll_movtex_volcano_floor_lava[];
-extern u8 ddd_movtex_area1_water[];
-extern u8 ddd_movtex_area2_water[];
-extern u8 wf_movtex_water[];
+//extern u8 ddd_movtex_area1_water[];
+//extern u8 ddd_movtex_area2_water[];
+//extern u8 wf_movtex_water[];
 // extern u8 castle_courtyard_movtex_star_statue_water[];
-extern u8 ttm_movtex_puddle[];
+//extern u8 ttm_movtex_puddle[];
 
 /**
  * Find the quadCollection for a given quad collection id.
@@ -969,16 +964,16 @@ Gfx *geo_movtex_update_horizontal(s32 callContext, struct GraphNode *node, UNUSE
 
         switch (asGenerated->parameter) {
             case MOVTEX_SSL_SAND_PIT_OUTSIDE:
-                movtexVerts = LOAD_ASSET(ssl_movtex_tris_quicksand_pit);
+                movtexVerts = segmented_to_virtual(ssl_movtex_tris_quicksand_pit);
                 break;
             case MOVTEX_SSL_SAND_PIT_PYRAMID:
-                movtexVerts = LOAD_ASSET(ssl_movtex_tris_pyramid_quicksand_pit);
+                movtexVerts = segmented_to_virtual(ssl_movtex_tris_pyramid_quicksand_pit);
                 break;
             case MOVTEX_TREADMILL_BIG:
-                movtexVerts = LOAD_ASSET(ttc_movtex_tris_big_surface_treadmill);
+                movtexVerts = segmented_to_virtual(ttc_movtex_tris_big_surface_treadmill);
                 break;
             case MOVTEX_TREADMILL_SMALL:
-                movtexVerts = LOAD_ASSET(ttc_movtex_tris_small_surface_treadmill);
+                movtexVerts = segmented_to_virtual(ttc_movtex_tris_small_surface_treadmill);
                 break;
         }
         update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_COLORED_S);

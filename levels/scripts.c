@@ -29,8 +29,9 @@
 #include "actors/group16.h"
 #include "actors/group17.h"
 
-#include "levels/menu/header.h"
-#include "levels/intro/header.h"
+#include "assets/levels/menu.h"
+#include "assets/levels/intro.h"
+#include "assets/levels/ending.h"
 
 #include "level_headers.h"
 

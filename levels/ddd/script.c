@@ -13,7 +13,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/ddd/header.h"
+#include "assets/levels/ddd.h"
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_SUSHI,        /*pos*/ -3071,  -270,   0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSushiShark),

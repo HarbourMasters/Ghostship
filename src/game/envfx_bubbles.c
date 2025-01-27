@@ -457,18 +457,18 @@ void envfx_set_bubble_texture(s32 mode, s16 index) {
 
     switch (mode) {
         case ENVFX_FLOWERS:
-            imageArr = segmented_to_virtual(&flower_bubbles_textures_ptr_0B002008);
+            imageArr = segmented_to_virtual(flower_bubbles_textures_ptr_0B002008);
             frame = (gEnvFxBuffer + index)->animFrame;
             break;
 
         case ENVFX_LAVA_BUBBLES:
-            imageArr = segmented_to_virtual(&lava_bubble_ptr_0B006020);
+            imageArr = segmented_to_virtual(lava_bubble_ptr_0B006020);
             frame = (gEnvFxBuffer + index)->animFrame;
             break;
 
         case ENVFX_WHIRLPOOL_BUBBLES:
         case ENVFX_JETSTREAM_BUBBLES:
-            imageArr = segmented_to_virtual(&bubble_ptr_0B006848);
+            imageArr = segmented_to_virtual(bubble_ptr_0B006848);
             frame = 0;
             break;
     }

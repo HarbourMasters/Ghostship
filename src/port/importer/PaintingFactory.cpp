@@ -38,8 +38,8 @@ std::shared_ptr<Ship::IResource> SM64::PaintingFactoryV0::ReadResource(std::shar
     painting->mData.rippleX = reader->ReadFloat();
     painting->mData.rippleY = reader->ReadFloat();
     painting->mData.normalDisplayList = LoadChild<void*>(reader->ReadUInt64());
-    painting->mData.textureMaps = LoadChild<int16_t*>(reader->ReadUInt64());
-    painting->mData.textureArray = LoadChild<uint8_t*>(reader->ReadUInt64());
+    painting->mData.textureMaps = LoadChild<int16_t**>(reader->ReadUInt64());
+    painting->mData.textureArray = LoadChild<uint8_t**>(reader->ReadUInt64());
     painting->mData.textureWidth = reader->ReadInt16();
     painting->mData.textureHeight = reader->ReadInt16();
     painting->mData.rippleDisplayList = LoadChild<void*>(reader->ReadUInt64());

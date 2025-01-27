@@ -2,8 +2,13 @@
   autopads: false
   compression:
     offset: 0x1076D0
+  external_files:
+    - "assets/ymls/jp/textures/segment2.yml"
   segments:
     - [0x02,  0x1076D0]
+  header:
+    header:
+      - '#include "sm64.h"'
 
 dl_hud_img_begin:
   type: GFX
@@ -147,16 +152,18 @@ dl_billboard_num_9:
 segment2_lights_unused:
   type: LIGHTS
   size: 24
-  offset: 0xF228
+  offset: 0x14458
   symbol: segment2_lights_unused
 
 matrix_identity:
   type: MTX
+  floats: true
   offset: 0x14470
   symbol: matrix_identity
 
 matrix_fullscreen:
   type: MTX
+  floats: true
   offset: 0x144B0
   symbol: matrix_fullscreen
 
@@ -172,17 +179,17 @@ dl_draw_quad_verts_4567:
 
 dl_shadow_begin:
   type: GFX
-  offset: 0x14508
+  offset: 0x14520
   symbol: dl_shadow_begin
 
 dl_shadow_circle:
   type: GFX
-  offset: 0x14508
+  offset: 0x14548
   symbol: dl_shadow_circle
 
 dl_shadow_square:
   type: GFX
-  offset: 0x14508
+  offset: 0x14590
   symbol: dl_shadow_square
 
 dl_shadow_9_verts:
@@ -295,3 +302,35 @@ dl_paintings_draw_ripples:
   type: GFX
   offset: 0x14A30
   symbol: dl_paintings_draw_ripples
+
+main_hud_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8250
+  count: 58
+  symbol: main_hud_lut
+
+main_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8338
+  count: 256
+  symbol: main_font_lut
+
+main_credits_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8738
+  count: 37
+  symbol: main_credits_font_lut
+
+main_hud_camera_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x87CC
+  count: 6
+  symbol: main_hud_camera_lut

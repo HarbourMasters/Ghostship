@@ -25,7 +25,7 @@
 #include "assets/levels/bob.h"
 #include "assets/levels/bowser_3.h"
 #include "assets/levels/castle_inside.h"
-#include "levels/hmc/header.h"
+#include "assets/levels/hmc.h"
 #include "main.h"
 #include "mario.h"
 #include "mario_actions_cutscene.h"

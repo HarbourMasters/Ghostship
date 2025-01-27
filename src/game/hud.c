@@ -336,7 +336,7 @@ void render_hud_keys(void) {
  * Renders the timer when Mario start sliding in PSS.
  */
 void render_hud_timer(void) {
-    u8 *(*hudLUT)[58] = segmented_to_virtual(&main_hud_lut);
+    u8 *(*hudLUT)[58] = segmented_to_virtual(main_hud_lut);
     u16 timerValFrames = gHudDisplay.timer;
     u16 timerMins = timerValFrames / (30 * 60);
     u16 timerSecs = (timerValFrames - (timerMins * 1800)) / 30;
@@ -381,7 +381,7 @@ void set_hud_camera_status(s16 status) {
  * the camera status called, a defined glyph is rendered.
  */
 void render_hud_camera_status(void) {
-    u8 *(*cameraLUT)[6] = segmented_to_virtual(&main_hud_camera_lut);
+    u8 *(*cameraLUT)[6] = segmented_to_virtual(main_hud_camera_lut);
     s32 x = GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(54);
     s32 y = 205;
 

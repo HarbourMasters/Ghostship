@@ -40,7 +40,7 @@
 #include "assets/actors/mushroom_1up.h"
 
 // number
-extern const GeoLayout number_geo[];
+#include "assets/actors/number/geo.h"
 
 // pebble
 #include "assets/actors/pebble.h"

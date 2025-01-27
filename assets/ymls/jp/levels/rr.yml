@@ -4,6 +4,13 @@
     offset: 0x4358D0
   segments:
     - [0x07,  0x4358D0]
+  external_files:
+    - "assets/ymls/jp/textures/sky.yml"
+  header:
+    header:
+      - '#include "rr/geo.h"'
+      - ''
+      - 'extern const LevelScript level_rr_entry[];'
 
 quarter_flying_carpet:
   type: TEXTURE
@@ -2228,6 +2235,13 @@ rr_seg7_lights_07019230:
   size: 24
   offset: 0x19230
   symbol: rr_seg7_lights_07019230
+
+flying_carpet_static_vertex_data:
+  type: ARRAY
+  offset: 0x19248
+  array_type: s16
+  count: 84
+  symbol: flying_carpet_static_vertex_data
 
 dl_flying_carpet_begin:
   type: GFX

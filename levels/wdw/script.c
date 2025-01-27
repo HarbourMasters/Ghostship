@@ -13,7 +13,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/wdw/header.h"
+#include "assets/levels/wdw.h"
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_WDW_SQUARE_FLOATING_PLATFORM,      /*pos*/  3390,    0,   384, /*angle*/ 0, 180, 0, /*behParam*/ 0x00000000, /*beh*/ bhvWdwSquareFloatingPlatform),

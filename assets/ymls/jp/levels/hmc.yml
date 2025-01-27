@@ -4,7 +4,13 @@
     offset: 0x3CEE30
   segments:
     - [0x07,  0x3CEE30]
-
+  external_files:
+    - "assets/ymls/jp/textures/cave.yml"
+  header:
+    header:
+      - '#include "hmc/geo.h"'
+      - ''
+      - 'extern const LevelScript level_hmc_entry[];'
 0:
   type: TEXTURE
   size: 4096
@@ -3351,3 +3357,9 @@ hmc_movtex_toxic_maze_mist:
   count: 3
   offset: 0x2B950
   symbol: hmc_movtex_toxic_maze_mist
+
+hmc_seg7_rooms:
+  type: BLOB
+  size: 0x820
+  offset: 0x2ADC4
+  symbol: hmc_seg7_rooms

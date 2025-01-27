@@ -41,8 +41,8 @@ struct PaintingData {
     float rippleY;
 
     void* normalDisplayList;
-    int16_t* textureMaps;
-    uint8_t* textureArray;
+    int16_t** textureMaps;
+    uint8_t** textureArray;
 
     int16_t textureWidth;
     int16_t textureHeight;

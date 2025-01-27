@@ -4,6 +4,8 @@
     offset: 0x4CBB70
   segments:
     - [0x07,  0x4CBB70]
+  external_files:
+    - "assets/ymls/jp/textures/fire.yml"
   header:
     header:
       - '#include "bowser_2/geo.h"'

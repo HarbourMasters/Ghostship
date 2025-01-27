@@ -7,8 +7,8 @@
 #include "game_init.h"
 #include "geo_misc.h"
 #include "assets/levels/castle_inside.h"
-#include "levels/hmc/header.h"
-#include "levels/ttm/header.h"
+#include "assets/levels/hmc.h"
+#include "assets/levels/ttm.h"
 #include "mario.h"
 #include "memory.h"
 #include "moving_texture.h"
@@ -981,8 +981,8 @@ Gfx *painting_ripple_image(struct Painting *painting) {
     s16 imageCount = painting->imageCount;
     s16 tWidth = painting->textureWidth;
     s16 tHeight = painting->textureHeight;
-    s16 **textureMaps = LOAD_ASSET(painting->textureMaps);
-    u8 **textures = LOAD_ASSET(painting->textureArray);
+    s16 **textureMaps = segmented_to_virtual(painting->textureMaps);
+    u8 **textures = segmented_to_virtual(painting->textureArray);
     Gfx *dlist = alloc_display_list((imageCount + 6) * sizeof(Gfx));
     Gfx *gfx = dlist;
 
@@ -996,12 +996,14 @@ Gfx *painting_ripple_image(struct Painting *painting) {
 
     // Map each image to the mesh's vertices
     for (i = 0; i < imageCount; i++) {
-        textureMap = LOAD_ASSET(textureMaps[i]);
+        textureMap = segmented_to_virtual(textureMaps[i]);
         meshVerts = textureMap[0];
         meshTris = textureMap[meshVerts * 3 + 1];
-        gSPDisplayList(gfx++, render_painting(textures[i], tWidth, tHeight, textureMap, meshVerts, meshTris, painting->alpha));
+        Gfx* render = render_painting(textures[i], tWidth, tHeight, textureMap, meshVerts, meshTris, painting->alpha);
+        if(gfx != NULL){
+            gSPDisplayList(gfx++, render);
+        }
     }
-    sLastVerticesTimestamp = gGlobalTimer;
 
     // Update the ripple, may automatically reset the painting's state.
     painting_update_ripple_state(painting);

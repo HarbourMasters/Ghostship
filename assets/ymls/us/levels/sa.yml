@@ -278,7 +278,7 @@ sa_seg7_dl_07002FD0:
 sa_seg7_collision:
   type: SM64:COLLISION
   offset: 0x3000
-  symbol: bbh_seg7_collision
+  symbol: sa_seg7_collision
 
 sa_seg7_macro_objs:
   type: SM64:MACRO

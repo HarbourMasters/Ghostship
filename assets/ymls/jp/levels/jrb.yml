@@ -4,7 +4,13 @@
     offset: 0x4187C0
   segments:
     - [0x07,  0x4187C0]
-
+  external_files:
+    - "assets/ymls/jp/textures/water.yml"
+  header:
+    header:
+      - '#include "jrb/geo.h"'
+      - ''
+      - 'extern const LevelScript level_jrb_entry[];'
 0:
   type: TEXTURE
   size: 2048

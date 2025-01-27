@@ -14,7 +14,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/ending/header.h"
+#include "assets/levels/ending.h"
 
 const LevelScript level_ending_entry[] = {
     /*0*/ INIT_LEVEL(),

@@ -278,7 +278,7 @@ static u8 *alloc_ia8_text_from_i1(u16 *in, s16 width, s16 height) {
 }
 
 void render_generic_char(u8 c) {
-    void **fontLUT = segmented_to_virtual(ROM_JP ? main_font_lut_jp : main_font_lut_us);
+    void **fontLUT = segmented_to_virtual(main_font_lut);
     char* packedTexture = segmented_to_virtual(fontLUT[c]);
 
     if (packedTexture == NULL) {
@@ -288,10 +288,10 @@ void render_generic_char(u8 c) {
     gDPPipeSync(gDisplayListHead++);
     if(ROM_JP){
         gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings_jp);
+        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
     } else {
         gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings_us);
+        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
     }
 #ifdef VERSION_EU
     gSPTextureRectangleFlip(gDisplayListHead++, gDialogX << 2, (gDialogY - 16) << 2,
@@ -606,7 +606,7 @@ void print_menu_generic_string(s16 x, s16 y, const u8 *str) {
     s32 strPos = 0;
     u32 curX = x;
     u32 curY = y;
-    void **fontLUT = segmented_to_virtual(ROM_JP ? menu_font_lut_jp : menu_font_lut_us);
+    void **fontLUT = segmented_to_virtual(menu_font_lut);
 
     while (str[strPos] != DIALOG_CHAR_TERMINATOR) {
         switch (str[strPos]) {
@@ -1189,7 +1189,7 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
         totalLines = linesPerBox + 1;
     }
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
     strIdx = gDialogTextPos;
 
@@ -1746,7 +1746,7 @@ void do_cutscene_handler(void) {
 
     create_dl_ortho_matrix();
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gCutsceneMsgFade);
 
 #ifdef VERSION_EU
@@ -1833,7 +1833,7 @@ void print_peach_letter_message(void) {
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gCutsceneMsgFade);
     gSPDisplayList(gDisplayListHead++, castle_grounds_seg7_dl_0700EA58);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 20, 20, 20, gCutsceneMsgFade);
 
     print_generic_string(STR_X, STR_Y, str);
@@ -2036,7 +2036,7 @@ void render_pause_my_score_coins(void) {
     }
 
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
@@ -2082,7 +2082,7 @@ void render_pause_my_score_coins(void) {
 void render_pause_camera_options(s16 x, s16 y, s8 *index, s16 xIndex) {
     handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 2);
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     print_generic_string(x + 14, y + 2, GameEngine_LoadTranslation("TEXT_LAKITU_MARIO"));
@@ -2113,7 +2113,7 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
 
     handle_menu_scrolling(MENU_SCROLL_VERTICAL, index, 1, 3);
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     print_generic_string(x + 10, y - 2, GameEngine_LoadTranslation("TEXT_CONTINUE"));
@@ -2281,7 +2281,7 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
         }
     }
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     if (gDialogLineNum <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) { // Main courses
@@ -2529,7 +2529,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
         }
 
         // Print course number
-        gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+        gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
         int_to_str(gLastCompletedCourseNum, strCourseNum);
 
@@ -2546,7 +2546,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
         name = GameEngine_LoadLevelName(COURSE_NUM_TO_INDEX(gLastCompletedCourseNum));
 
         // Print course name and clear text
-        gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+        gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
         gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, gDialogTextAlpha);
 #ifdef VERSION_EU
@@ -2586,7 +2586,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 
     // Print act name and catch text
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, gDialogTextAlpha);
     print_generic_string(76, 145, name);
@@ -2650,7 +2650,7 @@ void render_save_confirmation(s16 x, s16 y, s8 *index, s16 sp6e)
 
     handle_menu_scrolling(MENU_SCROLL_VERTICAL, index, 1, 3);
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     print_generic_string(TXT_SAVEOPTIONS_X, y + TXT_SAVECONT_Y, GameEngine_LoadTranslation("TEXT_SAVE_AND_CONTINUE"));

@@ -4,6 +4,13 @@
     offset: 0x42AF80
   segments:
     - [0x07,  0x42AF80]
+  external_files:
+    - "assets/ymls/jp/textures/machine.yml"
+  header:
+    header:
+      - '#include "ttc/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ttc_entry[];'
 
 0:
   type: TEXTURE

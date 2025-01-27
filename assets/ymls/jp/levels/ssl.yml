@@ -4,6 +4,13 @@
     offset: 0x3E5710
   segments:
     - [0x07,  0x3E5710]
+  external_files:
+    - "assets/ymls/jp/textures/generic.yml"
+  header:
+    header:
+      - '#include "ssl/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ssl_entry[];'
 
 0:
   type: TEXTURE
@@ -2728,3 +2735,17 @@ ssl_dl_pyramid_sand_pathway_side_end:
   type: GFX
   offset: 0x28888
   symbol: ssl_dl_pyramid_sand_pathway_side_end
+
+ssl_movtex_tris_quicksand_pit:
+  type: SM64:MOVTEX
+  count: 10
+  has_color: true
+  offset: 0x4930
+  symbol: ssl_movtex_tris_quicksand_pit
+
+ssl_movtex_tris_pyramid_quicksand_pit:
+  type: SM64:MOVTEX
+  count: 10
+  has_color: true
+  offset: 0x49B4
+  symbol: ssl_movtex_tris_pyramid_quicksand_pit

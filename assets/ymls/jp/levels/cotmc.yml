@@ -4,6 +4,13 @@
     offset: 0x4B6070
   segments:
     - [0x07,  0x4B6070]
+  external_files:
+    - "assets/ymls/jp/textures/cave.yml"
+  header:
+    header:
+      - '#include "cotmc/geo.h"'
+      - ''
+      - 'extern const LevelScript level_cotmc_entry[];'
 
 0:
   type: TEXTURE

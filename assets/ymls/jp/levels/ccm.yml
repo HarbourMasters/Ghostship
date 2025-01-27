@@ -4,6 +4,13 @@
     offset: 0x381EF0
   segments:
     - [0x07,  0x381EF0]
+  external_files:
+    - "assets/ymls/jp/textures/snow.yml"
+  header:
+    header:
+      - '#include "ccm/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ccm_entry[];'
 
 0:
   type: TEXTURE

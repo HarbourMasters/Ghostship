@@ -4,6 +4,13 @@
     offset: 0x4CF8B0
   segments:
     - [0x07,  0x4CF8B0]
+  external_files:
+    - "assets/ymls/jp/textures/mountain.yml"
+  header:
+    header:
+      - '#include "ttm/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ttm_entry[];'
 
 0:
   type: TEXTURE

@@ -21,6 +21,8 @@ extern "C" {
 #include "game/screen_transition.h"
 #include "game/paintings.h"
 #include "game/geo_misc.h"
+#include "menu/star_select.h"
+#include "menu/file_select.h"
 }
 Ship::BinaryReader* GeoLayoutParser::mReader;
 
@@ -87,6 +89,8 @@ std::unordered_map<uint32_t, GraphNodeEntry> mUSFunctionTable = {
     { 0x802d5d0c, FUNC(geo_painting_update) },
     { 0x8030d93c, FUNC(geo_snufit_move_mask) },
     { 0x8030d9ac, FUNC(geo_snufit_scale_body) },
+    { 0x80177518, FUNC(geo_act_selector_strings) },
+    { 0x80176688, FUNC(geo_file_select_strings_and_menu_cursor) },
 };
 
 std::unordered_map<uint32_t, GraphNodeEntry> mJPFunctionTable = {
@@ -142,6 +146,8 @@ std::unordered_map<uint32_t, GraphNodeEntry> mJPFunctionTable = {
     { 0x802cf5a0, FUNC(geo_wdw_set_initial_water_level) },
     { 0x802d1880, FUNC(geo_exec_inside_castle_light) },
     { 0x80277564, FUNC(geo_render_mirror_mario) },
+    { 0x801773D8, FUNC(geo_act_selector_strings) },
+    { 0x8017654C, FUNC(geo_file_select_strings_and_menu_cursor) },
 };
 
 std::unordered_map<uint32_t, std::unordered_map<uint32_t, GraphNodeEntry>> mFunctionTable = {

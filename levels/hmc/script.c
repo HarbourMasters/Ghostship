@@ -13,7 +13,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/hmc/header.h"
+#include "assets/levels/hmc.h"
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_RED_FLAME, /*pos*/ 4936, -357, -4146, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvFlame),

@@ -4,6 +4,13 @@
     offset: 0x45A540
   segments:
     - [0x07,  0x45A540]
+  external_files:
+    - "assets/ymls/jp/textures/outside.yml"
+  header:
+    header:
+      - '#include "vcutm/geo.h"'
+      - ''
+      - 'extern const LevelScript level_vcutm_entry[];'
 
 0:
   type: TEXTURE

@@ -1,6 +1,6 @@
 // tumbling_bridge.inc.c
 
-#include "levels/wf/header.h"
+#include "assets/levels/wf.h"
 #include "assets/levels/bbh.h"
 #include "assets/levels/lll.h"
 #include "assets/levels/bitfs.h"

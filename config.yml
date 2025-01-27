@@ -8,7 +8,7 @@
     gbi: F3D
     sort: OFFSET
     output:
-      binary: sm64.otr
+      binary: sm64.o2r
       code: code/jp
       headers: include/assets
   segments:

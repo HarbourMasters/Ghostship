@@ -33,6 +33,8 @@
 #include "Fast3D/Fast3dWindow.h"
 #include "importer/AssetArrayFactory.h"
 #include "LightFactory.h"
+#include "port/importer/MacroObjectFactory.h"
+#include "port/importer/GenericArrayFactory.h"
 
 extern "C" {
 #include "sm64.h"
@@ -48,7 +50,7 @@ GameInteractor* GameInteractor::Instance;
 
 GameEngine::GameEngine(): dictionary(nullptr) {
     std::vector<std::string> OTRFiles;
-    if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.otr"); std::filesystem::exists(cube_path)) {
+    if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r"); std::filesystem::exists(cube_path)) {
         OTRFiles.push_back(cube_path);
     }
     if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("ghostship.otr"); std::filesystem::exists(sm64_otr_path)) {
@@ -104,6 +106,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     loader->RegisterResourceFactory(std::make_shared<SM64::TrajectoryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Trajectory", static_cast<uint32_t>(SM64::ResourceType::Trajectory), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Movtex", static_cast<uint32_t>(SM64::ResourceType::Movtex), 0);
     // TODO: This shit needs to change, i mean why i have 5 factories doing the same thing xD
+    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryGenericArrayV0>(), RESOURCE_FORMAT_BINARY, "GenericArray", static_cast<uint32_t>(SM64::ResourceType::GenericArray), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Collision", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "PaintingData", static_cast<uint32_t>(SM64::ResourceType::PaintingData), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "MacroObject", static_cast<uint32_t>(SM64::ResourceType::MacroObject), 0);

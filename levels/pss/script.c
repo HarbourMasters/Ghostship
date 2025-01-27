@@ -13,7 +13,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/pss/header.h"
+#include "assets/levels/pss.h"
 
 const LevelScript level_pss_entry[] = {
     INIT_LEVEL(),

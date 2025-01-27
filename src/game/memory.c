@@ -75,11 +75,11 @@ void *get_segment_base_addr(s32 segment) {
 }
 
 void *segmented_to_virtual(const void *addr) {
-    return (void *) addr;
+    return LOAD_ASSET(addr);
 }
 
 void *virtual_to_segmented(u32 segment, const void *addr) {
-    return (void *) addr;
+    return LOAD_ASSET(addr);
 }
 
 void move_segment_table_to_dmem(void) {

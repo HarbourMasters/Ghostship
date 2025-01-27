@@ -1,6 +1,7 @@
 :config:
   external_files:
     - "assets/ymls/us/levels/intro.yml"
+    - "assets/ymls/us/bin/debug_level_select.yml"
   autopads: false
   segments:
     - [0x14,  0x269EA0]
@@ -22,7 +23,7 @@ intro_geo_mario_head_dizzy:
 
 # TODO: Requires debug_level_select
 
-# intro_geo_000414:
-#   type: SM64:GEO_LAYOUT
-#   offset: 0x14000414
-#   symbol: intro_geo_000414
+intro_geo_000414:
+  type: SM64:GEO_LAYOUT
+  offset: 0x14000414
+  symbol: intro_geo_000414
