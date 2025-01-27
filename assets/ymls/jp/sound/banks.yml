@@ -1,3 +1,21 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/sound/root.yml"
+    - "assets/ymls/jp/sound/samples/bowser_organ.yml"
+    - "assets/ymls/jp/sound/samples/course_start.yml"
+    - "assets/ymls/jp/sound/samples/instruments.yml"
+    - "assets/ymls/jp/sound/samples/piranha_music_box.yml"
+    - "assets/ymls/jp/sound/samples/sfx_1.yml"
+    - "assets/ymls/jp/sound/samples/sfx_4.yml"
+    - "assets/ymls/jp/sound/samples/sfx_5.yml"
+    - "assets/ymls/jp/sound/samples/sfx_6.yml"
+    - "assets/ymls/jp/sound/samples/sfx_7.yml"
+    - "assets/ymls/jp/sound/samples/sfx_9.yml"
+    - "assets/ymls/jp/sound/samples/sfx_mario_peach.yml"
+    - "assets/ymls/jp/sound/samples/sfx_mario.yml"
+    - "assets/ymls/jp/sound/samples/sfx_terrain.yml"
+    - "assets/ymls/jp/sound/samples/sfx_water.yml"
+  
 00:
   type: NAUDIO:V0:BANK
   id: 0
