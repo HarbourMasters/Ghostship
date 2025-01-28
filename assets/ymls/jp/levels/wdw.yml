@@ -4,6 +4,8 @@
     offset: 0x40CDD0
   segments:
     - [0x07,  0x40CDD0]
+  external_files:
+    - "assets/ymls/jp/textures/grass.yml"
   header:
     header:
       - '#include "wdw/geo.h"'
