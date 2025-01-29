@@ -15,7 +15,7 @@ void bhv_mips_init(void) {
     if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 15
         && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_1))) {
         o->oBehParams2ndByte = 0;
-        if(!ROM_JP){
+        if(!ROM_JP) {
             o->oMipsForwardVelocity = 40.0f;
         }
     }
@@ -23,7 +23,7 @@ void bhv_mips_init(void) {
     else if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 50
              && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_2))) {
         o->oBehParams2ndByte = 1;
-        if(!ROM_JP){
+        if(!ROM_JP) {
             o->oMipsForwardVelocity = 45.0f;
         }
     } else {

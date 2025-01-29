@@ -77,7 +77,7 @@ void patch_interpolated_hud(void) {
 void render_hud_tex_lut(s32 x, s32 y, u8 *texture) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture);
-    gSPDisplayList(gDisplayListHead++, &dl_hud_img_load_tex_block);
+    gSPDisplayList(gDisplayListHead++, dl_hud_img_load_tex_block);
     gSPTextureRectangle(gDisplayListHead++, x << 2, y << 2, (x + 15) << 2, (y + 15) << 2,
                         G_TX_RENDERTILE, 0, 0, 4 << 10, 1 << 10);
 }
@@ -139,12 +139,12 @@ void render_dl_power_meter(s16 numHealthWedges) {
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx++),
               G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-    gSPDisplayList(gDisplayListHead++, &dl_power_meter_base);
+    gSPDisplayList(gDisplayListHead++, dl_power_meter_base);
 
     if (numHealthWedges != 0) {
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_begin);
+        gSPDisplayList(gDisplayListHead++, dl_power_meter_health_segments_begin);
         render_power_meter_health_segment(numHealthWedges);
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_end);
+        gSPDisplayList(gDisplayListHead++, dl_power_meter_health_segments_end);
     }
 
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);

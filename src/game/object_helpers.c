@@ -94,7 +94,7 @@ Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUS
 
             objectGraphNode->oAnimState = 1;
 
-            if(ROM_JP){
+            if(ROM_JP) {
                 if (currentGraphNode->parameter == 10) {
                     if (gDebugInfo[DEBUG_PAGE_ENEMYINFO][3]) {
                         gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
@@ -1740,7 +1740,7 @@ static void cur_obj_update_floor(void) {
 }
 
 static void cur_obj_update_floor_and_resolve_wall_collisions(s16 steepSlopeDegrees) {
-    if(ROM_JP){
+    if(ROM_JP) {
         o->oMoveFlags &= ~OBJ_MOVE_ABOVE_LAVA;
     } else {
         o->oMoveFlags &= ~(OBJ_MOVE_ABOVE_LAVA | OBJ_MOVE_ABOVE_DEATH_BARRIER);

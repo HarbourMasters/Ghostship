@@ -3334,7 +3334,7 @@ void init_camera(struct Camera *c) {
         // Note: This replaced an "old" way to call these cutscenes using
         // a camEvent value: CAM_EVENT_BOWSER_INIT
         case LEVEL_BOWSER_1:
-            if(!ROM_JP){
+            if(!ROM_JP) {
                 // Since Bowser 1 has a demo entry, check for it
                 // If it is, then set CamAct to the end to directly activate Bowser
                 // If it isn't, then start cutscene
@@ -4945,8 +4945,9 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
     if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
-            if(ROM_JP) return dummy;
-            play_camera_buzz_if_cdown();
+            if(!ROM_JP) {
+                play_camera_buzz_if_cdown();
+            }
         } else {
             gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
             play_sound_cbutton_down();
@@ -4998,8 +4999,9 @@ void handle_c_button_movement(struct Camera *c) {
             if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
                 gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
-                if(ROM_JP) return;
-                play_camera_buzz_if_cdown();
+                if(!ROM_JP) {
+                    play_camera_buzz_if_cdown();
+                }
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
@@ -5710,7 +5712,7 @@ BAD_RETURN(s32) cam_hmc_enter_maze(struct Camera *c) {
         vec3f_get_dist_and_angle(c->focus, gLakituState.goalPos, &dist, &pitch, &yaw);
         vec3f_set_dist_and_angle(c->focus, gLakituState.goalPos, 300.f, pitch, yaw);
         gLakituState.goalPos[1] = -800.f;
-        if(!ROM_JP){
+        if(!ROM_JP) {
             c->pos[1] = gLakituState.goalPos[1];
             gLakituState.curPos[1] = gLakituState.goalPos[1];
         }
@@ -7032,7 +7034,7 @@ BAD_RETURN(s32) cutscene_intro_peach_start_letter_music(UNUSED struct Camera *c)
  * Raise the volume (not in JP) and start the flying music.
  */
 BAD_RETURN(s32) cutscene_intro_peach_start_flying_music(UNUSED struct Camera *c) {\
-    if(!ROM_JP){
+    if(!ROM_JP) {
         seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
     } else {
         cutscene_intro_peach_play_lakitu_flying_music();
@@ -8910,7 +8912,7 @@ BAD_RETURN(s32) cutscene_dialog_start(struct Camera *c) {
     cutscene_soften_music(c);
     set_time_stop_flags(TIME_STOP_ENABLED | TIME_STOP_DIALOG);
 
-    if (!ROM_JP && c->mode == CAMERA_MODE_BOSS_FIGHT) {
+    if(!ROM_JP && c->mode == CAMERA_MODE_BOSS_FIGHT) {
         vec3f_copy(sCameraStoreCutscene.focus, c->focus);
         vec3f_copy(sCameraStoreCutscene.pos, c->pos);
     } else {
@@ -9526,7 +9528,7 @@ BAD_RETURN(s32) peach_letter_text(UNUSED struct Camera *c) {
 }
 
 BAD_RETURN(s32) play_sound_peach_reading_letter(UNUSED struct Camera *c) {
-    if(!ROM_JP){
+    if(!ROM_JP) {
         play_sound(SOUND_PEACH_DEAR_MARIO, gGlobalSoundSource);
     }
 }
@@ -9596,8 +9598,9 @@ BAD_RETURN(s32) intro_pipe_exit_text(UNUSED struct Camera *c) {
 }
 
 BAD_RETURN(s32) play_sound_intro_turn_on_hud(UNUSED struct Camera *c) {
-    if(ROM_JP) return;
-    play_sound_rbutton_changed();
+    if(!ROM_JP) {
+        play_sound_rbutton_changed();
+    }
 }
 
 /**

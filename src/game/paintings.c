@@ -165,18 +165,18 @@ struct Painting *gRipplingPainting;
 s8 gDddPaintingStatus;
 
 struct Painting *sHmcPaintings[] = {
-    &cotmc_painting,
+    cotmc_painting,
     NULL,
 };
 
 struct Painting *sInsideCastlePaintings[] = {
-    &bob_painting, &ccm_painting, &wf_painting,  &jrb_painting,      &lll_painting,
-    &ssl_painting, &hmc_painting, &ddd_painting, &wdw_painting,      &thi_tiny_painting,
-    &ttm_painting, &ttc_painting, &sl_painting,  &thi_huge_painting, NULL,
+    bob_painting, ccm_painting, wf_painting,  jrb_painting,      lll_painting,
+    ssl_painting, hmc_painting, ddd_painting, wdw_painting,      thi_tiny_painting,
+    ttm_painting, ttc_painting, sl_painting,  thi_huge_painting, NULL,
 };
 
 struct Painting *sTtmPaintings[] = {
-    &ttm_slide_painting,
+    ttm_slide_painting,
     NULL,
 };
 

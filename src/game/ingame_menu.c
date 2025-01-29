@@ -286,13 +286,13 @@ void render_generic_char(u8 c) {
     }
 
     gDPPipeSync(gDisplayListHead++);
-    if(ROM_JP){
+    if(ROM_JP) {
         gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
     } else {
         gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
     }
+
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
 #ifdef VERSION_EU
     gSPTextureRectangleFlip(gDisplayListHead++, gDialogX << 2, (gDialogY - 16) << 2,
                             (gDialogX + 8) << 2, gDialogY << 2, G_TX_RENDERTILE, 8 << 6, 4 << 6, 1 << 10, 1 << 10);
@@ -1060,7 +1060,7 @@ void render_star_count_dialog_text(s8 *xMatrix, s16 *linePos)
 
     if (tensDigit != 0) {
 #if !defined(VERSION_EU)
-        if(ROM_JP){
+        if(ROM_JP) {
             create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * *xMatrix, 0, 0);
             render_generic_char(tensDigit);
         } else {
@@ -1087,7 +1087,7 @@ void render_star_count_dialog_text(s8 *xMatrix, s16 *linePos)
 #endif
 
 #ifndef VERSION_EU
-    if(ROM_JP){
+    if(ROM_JP) {
         create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * *xMatrix, 0, 0);
         render_generic_char(onesDigit);
     } else {
@@ -1235,25 +1235,25 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
                     break;
                 }
             case DIALOG_CHAR_SLASH:
-                if(!ROM_JP){
+                if(!ROM_JP) {
                     xMatrix += 2;
                     linePos += 2;
                     break;
                 }
             case DIALOG_CHAR_MULTI_THE:
-                if(!ROM_JP){
+                if(!ROM_JP) {
                     render_multi_text_string_lines(STRING_THE, lineNum, &linePos, linesPerBox, xMatrix, lowerBound);
                     xMatrix = 1;
                     break;
                 }
             case DIALOG_CHAR_MULTI_YOU:
-                if(!ROM_JP){
+                if(!ROM_JP) {
                     render_multi_text_string_lines(STRING_YOU, lineNum, &linePos, linesPerBox, xMatrix, lowerBound);
                     xMatrix = 1;
                     break;
                 }
             default:
-                if(ROM_JP){
+                if(ROM_JP) {
                     if (linePos != 0) {
                         create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * xMatrix, 0, 0);
                     }
@@ -1837,7 +1837,7 @@ void print_peach_letter_message(void) {
     gDPSetEnvColor(gDisplayListHead++, 20, 20, 20, gCutsceneMsgFade);
 
     print_generic_string(STR_X, STR_Y, str);
-    if(ROM_JP){
+    if(ROM_JP) {
         gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, 255);
     } else {
@@ -2061,7 +2061,7 @@ void render_pause_my_score_coins(void) {
         }
 
         print_generic_string(ACT_NAME_X, 140, actName);
-        if(!ROM_JP){
+        if(!ROM_JP) {
             print_generic_string(LVL_NAME_X, 157, &courseName[3]);
         }
     } else if(!ROM_JP) {
@@ -2591,13 +2591,13 @@ void render_course_complete_lvl_info_and_hud_str(void) {
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, gDialogTextAlpha);
     print_generic_string(76, 145, name);
 
-    if(ROM_JP){
+    if(ROM_JP) {
         print_generic_string(220, 145, GameEngine_LoadTranslation("TEXT_CATCH"));
     }
 
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
     print_generic_string(74, 147, name);
-    if(ROM_JP){
+    if(ROM_JP) {
         print_generic_string(218, 147, GameEngine_LoadTranslation("TEXT_CATCH"));
     }
 

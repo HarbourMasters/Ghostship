@@ -497,6 +497,7 @@ Gfx *envfx_update_snow(s32 snowMode, Vec3s marioPos, Vec3s camFrom, Vec3s camTo)
     sPrevSnowParticleCount = gSnowParticleCount;
     sPrevSnowTimestamp = gGlobalTimer;
 
+    // TORCH-TODO: Export and fix this
     gSPDisplayList(gfx++, &tiny_bubble_dl_0B006AB0);
     gSPEndDisplayList(gfx++);
 

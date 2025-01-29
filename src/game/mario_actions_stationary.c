@@ -292,7 +292,7 @@ s32 act_sleeping(struct MarioState *m) {
         case 2:
             animFrame = set_mario_animation(m, MARIO_ANIM_SLEEP_LYING);
 
-            if(!ROM_JP){
+            if(!ROM_JP) {
                 play_sound_if_no_flag(m, SOUND_MARIO_SNORING3, MARIO_ACTION_SOUND_PLAYED);
             } else {
                 if (animFrame == 2) {
@@ -313,7 +313,7 @@ s32 act_waking_up(struct MarioState *m) {
     if (!m->actionTimer) {
         stop_sound(SOUND_MARIO_SNORING1, m->marioObj->header.gfx.cameraToObject);
         stop_sound(SOUND_MARIO_SNORING2, m->marioObj->header.gfx.cameraToObject);
-        if(!ROM_JP){
+        if(!ROM_JP) {
             stop_sound(SOUND_MARIO_SNORING3, m->marioObj->header.gfx.cameraToObject);
         }
         raise_background_noise(2);

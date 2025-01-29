@@ -440,19 +440,13 @@ void init_mario_after_warp(void) {
             play_cap_music(SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP));
         }
 
-#if BUGFIX_KOOPA_RACE_MUSIC
-        if (gCurrLevelNum == LEVEL_BOB
+        if (CVarGetInteger("gFixKoopaRaceMusic", 0) == 1 && gCurrLevelNum == LEVEL_BOB
             && get_current_background_music() != SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE) && sTimerRunning) {
             play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE), 0);
         }
-#endif
 
         if (sWarpDest.levelNum == LEVEL_CASTLE && sWarpDest.areaIdx == 1
-#ifndef VERSION_JP
-            && (sWarpDest.nodeId == 31 || sWarpDest.nodeId == 32)
-#else
-            && sWarpDest.nodeId == 31
-#endif
+            && ( ROM_JP ? sWarpDest.nodeId == 31 : (sWarpDest.nodeId == 31 || sWarpDest.nodeId == 32))
         ) {
             play_sound(SOUND_MENU_MARIO_CASTLE_WARP, gGlobalSoundSource);
         }
@@ -574,32 +568,30 @@ s16 music_changed_through_warp(s16 arg) {
     struct ObjectWarpNode *warpNode = area_get_warp_node(arg);
     s16 levelNum = warpNode->node.destLevel & 0x7F;
 
-#if BUGFIX_KOOPA_RACE_MUSIC
+    if(CVarGetInteger("gFixKoopaRaceMusic", 0) == 1) {
+        s16 destArea = warpNode->node.destArea;
+        s16 val4 = TRUE;
+        s16 sp2C;
 
-    s16 destArea = warpNode->node.destArea;
-    s16 val4 = TRUE;
-    s16 sp2C;
+        if (levelNum == LEVEL_BOB && levelNum == gCurrLevelNum && destArea == gCurrAreaIndex) {
+            sp2C = get_current_background_music();
+            if (sp2C == SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP | SEQ_VARIATION)
+                || sp2C == SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP)) {
+                val4 = FALSE;
+            }
+        } else {
+            u16 val8 = gAreas[destArea].musicParam;
+            u16 val6 = gAreas[destArea].musicParam2;
 
-    if (levelNum == LEVEL_BOB && levelNum == gCurrLevelNum && destArea == gCurrAreaIndex) {
-        sp2C = get_current_background_music();
-        if (sp2C == SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP | SEQ_VARIATION)
-            || sp2C == SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP)) {
-            val4 = FALSE;
+            val4 = levelNum == gCurrLevelNum && val8 == gCurrentArea->musicParam
+                && val6 == gCurrentArea->musicParam2;
+
+            if (get_current_background_music() != val6) {
+                val4 = FALSE;
+            }
         }
-    } else {
-        u16 val8 = gAreas[destArea].musicParam;
-        u16 val6 = gAreas[destArea].musicParam2;
-
-        val4 = levelNum == gCurrLevelNum && val8 == gCurrentArea->musicParam
-               && val6 == gCurrentArea->musicParam2;
-
-        if (get_current_background_music() != val6) {
-            val4 = FALSE;
-        }
+        return val4;
     }
-    return val4;
-
-#else
 
     u16 val8 = gAreas[warpNode->node.destArea].musicParam;
     u16 val6 = gAreas[warpNode->node.destArea].musicParam2;
@@ -611,8 +603,6 @@ s16 music_changed_through_warp(s16 arg) {
         val4 = FALSE;
     }
     return val4;
-
-#endif
 }
 
 /**
@@ -761,7 +751,7 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 sDelayedWarpTimer = 30;
                 sSourceWarpNodeId = WARP_NODE_F2;
                 play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x1E, 0xFF, 0xFF, 0xFF);
-                if(!ROM_JP){
+                if(!ROM_JP) {
                     play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
                 }
                 break;

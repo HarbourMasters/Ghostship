@@ -1752,14 +1752,14 @@ s32 execute_mario_action(UNUSED struct Object *o) {
         // non-Japanese releases.
         if (gMarioState->floor->type == SURFACE_HORIZONTAL_WIND) {
             spawn_wind_particles(0, (gMarioState->floor->force << 8));
-            if(!ROM_JP){
+            if(!ROM_JP) {
                 play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
             }
         }
 
         if (gMarioState->floor->type == SURFACE_VERTICAL_WIND) {
             spawn_wind_particles(1, 0);
-            if(!ROM_JP){
+            if(!ROM_JP) {
                 play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
             }
         }

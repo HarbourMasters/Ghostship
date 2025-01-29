@@ -173,6 +173,7 @@ static Gfx *intro_backdrop_one_image(s32 index, s8 *backgroundTable) {
     Gfx *displayList = alloc_display_list(36 * sizeof(*displayList));
     Gfx *displayListIter = displayList;
     // TODO: Fix this for gameover screen
+    // TORCH-TODO: Export and fix this
     const u8 *const *vIntroBgTable = segmented_to_virtual(textureTables[backgroundTable[0]]);
     s32 i;
 
@@ -216,7 +217,8 @@ Gfx *geo_intro_regular_backdrop(s32 state, struct GraphNode *node, UNUSED void *
         dl = alloc_display_list((num_tiles_h + 4) * sizeof(*dl));
         dlIter = dl;
         graphNode->node.flags = (graphNode->node.flags & 0xFF) | (LAYER_OPAQUE << 8);
-        gSPDisplayList(dlIter++, &dl_proj_mtx_fullscreen);
+        gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
+        // TORCH-TODO: Export and fix this
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000100);
         for (i = 0; i < num_tiles_h; ++i) {
             gSPDisplayList(dlIter++, intro_backdrop_one_image(i, backgroundTable));
@@ -274,10 +276,12 @@ Gfx *geo_intro_gameover_backdrop(s32 state, struct GraphNode *node, UNUSED void 
         graphNode->flags = (graphNode->flags & 0xFF) | (LAYER_OPAQUE << 8);
 
         // draw all the tiles
-        gSPDisplayList(dlIter++, &dl_proj_mtx_fullscreen);
+        gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
+        // TORCH-TODO: Export and fix this
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000100);
         for (j = 0; j < ARRAY_COUNT(gameOverBackgroundTable); ++j)
             gSPDisplayList(dlIter++, intro_backdrop_one_image(j, gameOverBackgroundTable));
+        // TORCH-TODO: Export and fix this
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000190);
         gSPEndDisplayList(dlIter);
     }
@@ -466,6 +470,7 @@ Gfx *geo_intro_rumble_pak_graphic(s32 state, struct GraphNode *node, UNUSED void
             dl = alloc_display_list(3 * sizeof(*dl));
             if (dl != NULL) {
                 dlIter = dl;
+                // TORCH-TODO: Export and fix this
                 gSPDisplayList(dlIter++, &title_screen_bg_dl_0A007548);
                 gSPEndDisplayList(dlIter);
             }
