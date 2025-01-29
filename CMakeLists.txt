@@ -80,6 +80,7 @@ add_compile_definitions(
     F3D_OLD=1
     F3D_GBI=1
     GBI_FLOATS=1
+    USE_GBI_TRACE=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
     CIMGUI_DEFINE_ENUMS_AND_STRUCTS

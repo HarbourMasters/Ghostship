@@ -430,6 +430,14 @@ void DrawEnhancementsMenu() {
             ImGui::EndMenu();
         }
 
+        if (UIWidgets::BeginMenu("Fixes")) {
+            UIWidgets::CVarCheckbox("Fix Koopa race music", "gFixKoopaRaceMusic", {
+                .tooltip = "Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island"
+            });
+
+            ImGui::EndMenu();
+        }
+
         ImGui::EndMenu();
     }
 }
@@ -461,6 +469,12 @@ void DrawDebugMenu() {
         UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
             .tooltip = "Various debug features, including a level selector from the main menu"
         });
+
+#ifdef USE_GBI_TRACE
+        UIWidgets::CVarCheckbox("GFX trace mode", "gEnableGFXTrace", {
+            .tooltip = "Enables the Gfx trace mode, which will output information about the Gfx commands being run"
+        });
+#endif
 
         UIWidgets::CVarCheckbox("Better Level Select", "gDeveloper.BetterLevelSelect", {
             .tooltip = "Tweaks to the level select screen, like naming and allowing C-buttons to be used"
