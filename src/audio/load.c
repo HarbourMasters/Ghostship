@@ -302,7 +302,7 @@ void init_sample_dma_buffers(UNUSED s32 arg0) {
 #if defined(VERSION_EU)
     sDmaBufSize = 0x400;
 #else
-    sDmaBufSize = 0x400;
+    sDmaBufSize = 144 * 9;
 #endif
 
 #if defined(VERSION_EU)

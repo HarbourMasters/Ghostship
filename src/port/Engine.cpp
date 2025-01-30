@@ -82,7 +82,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
 
 
     // 0xFF2B5A63, 0xE3DAA4E
-    this->context->Init(OTRFiles, {}, 3, { 32000, 1024, 1680 }, window, controlDeck);
+    this->context->Init(OTRFiles, {}, 3, { 32000, 512, 1100 }, window, controlDeck);
 
     window->SetTargetFps(60);
     window->SetMaximumFrameLatency(1);
