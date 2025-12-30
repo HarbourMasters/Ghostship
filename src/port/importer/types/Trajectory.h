@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 
 struct TrajectoryData {
     int16_t trajId;

@@ -23,7 +23,7 @@
 #include "seq_ids.h"
 #include "sm64.h"
 #include "types.h"
-#include "endianness.h"
+#include <ship/utils/binarytools/endianness.h>
 
 #ifdef VERSION_EU
 #undef LANGUAGE_FUNCTION

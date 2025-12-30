@@ -8,7 +8,7 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui_internal.h>
 #include <libultraship/libultraship.h>
-#include <Fast3D/interpreter.h>
+#include <fast/interpreter.h>
 #include "port/Engine.h"
 extern "C" {
 #include "audio/external.h"

@@ -1,7 +1,7 @@
 #include <libultraship.h>
 
 #include "sm64.h"
-#include <Fast3D/interpreter.h>
+#include <fast/interpreter.h>
 
 extern "C" {
 #include "game/main.h"

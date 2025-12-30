@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 
 namespace SM64 {
     class AssetArray : public Ship::Resource<uintptr_t> {

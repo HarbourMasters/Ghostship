@@ -214,43 +214,14 @@ endif()
 # Libultraship Integration                                                     #
 #==============================================================================#
 
-include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_BINARY_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/log
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/debug
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/menu
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/utils
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/utils/binarytools
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/config
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource/type
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource/factory
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/audio
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/window
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/window/gui
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/config
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public/libultra
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public/bridge
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/extern
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/extern/tinyxml2
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/libjpeg/include/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/spdlog/include/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/graphic/Fast3D/U64/PR
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/graphic
-  ${SDL2_INCLUDE_DIRS}
-  ${GLEW_INCLUDE_DIRS}
-)
 
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
 target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
+)
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     target_compile_definitions(${PROJECT_NAME} PRIVATE

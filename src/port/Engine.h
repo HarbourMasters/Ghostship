@@ -5,9 +5,9 @@
 
 #ifdef __cplusplus
 #include <vector>
-#include <Context.h>
-#include <Fast3D/interpreter.h>
-#include "libultraship/src/Context.h"
+#include <ship/controller/controldeck/ControlDeck.h>
+#include <ship/Context.h>
+#include <fast/interpreter.h>
 
 #define SAMPLES_HIGH 544
 #define SAMPLES_LOW 528

@@ -1,6 +1,5 @@
 #include "Engine.h"
 #include "ui/ImguiUI.h"
-#include "libultraship/src/Context.h"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/TrajectoryFactory.h"
@@ -16,28 +15,26 @@
 #include "texts_table.h"
 #include "port/Enhancements/game-interactor/GameInteractor.h"
 #include "port/Enhancements/mods.h"
-#include <Fast3D/Fast3dWindow.h>
-#include <Fast3D/interpreter.h>
-#include <Fast3D/gfx_rendering_api.h>
+#include <fast/Fast3dWindow.h>
+#include <fast/interpreter.h>
 
 #ifdef USE_NETWORKING
 #include <SDL2/SDL_net.h>
 #endif
 
-#include <utility>
+#include <fast/resource/ResourceType.h>
+#include <fast/resource/factory/DisplayListFactory.h>
+#include <fast/resource/factory/TextureFactory.h>
+#include <fast/resource/factory/MatrixFactory.h>
+#include <fast/resource/factory/VertexFactory.h>
+#include <fast/resource/factory/LightFactory.h>
+#include <ship/resource/factory/BlobFactory.h>
+#include <ship/utils/StringHelper.h>
+#include <ship/resource/ResourceType.h>
 
-#include <Fast3D/Fast3dWindow.h>
-#include <DisplayListFactory.h>
-#include <TextureFactory.h>
-#include <MatrixFactory.h>
-#include <BlobFactory.h>
-#include <VertexFactory.h>
-#include <LightFactory.h>
-
-#include "StringHelper.h"
 #include "importer/AssetArrayFactory.h"
-#include "port/importer/MacroObjectFactory.h"
 #include "port/importer/GenericArrayFactory.h"
+#include "controller/controldeck/ControlDeck.h"
 
 extern "C" {
 #include "sm64.h"
