@@ -150,7 +150,7 @@ dl_billboard_num_9:
   symbol: dl_billboard_num_9
 
 segment2_lights_unused:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x14458
   symbol: segment2_lights_unused
@@ -273,7 +273,7 @@ dl_ia8_up_arrow_end:
   symbol: dl_ia8_up_arrow_end
 
 seg2_lights_02014958:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x14958
   symbol: seg2_lights_02014958

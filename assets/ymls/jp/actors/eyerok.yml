@@ -11,7 +11,7 @@
       - '#include "eyerok/anims.h"'
 
 eyerok_lights_unused:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8D28
   symbol: eyerok_lights_unused
@@ -62,7 +62,7 @@ eyerok_eye_closed:
   symbol: eyerok_seg5_texture_0500AD40
 
 eyerok_seg5_lights_0500B540:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB540
   symbol: eyerok_seg5_lights_0500B540
@@ -90,7 +90,7 @@ eyerok_seg5_dl_0500B748:
   symbol: eyerok_seg5_dl_0500B748
 
 eyerok_seg5_lights_0500B7B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB7B8
   symbol: eyerok_seg5_lights_0500B7B8
@@ -118,7 +118,7 @@ eyerok_seg5_dl_0500B9C0:
   symbol: eyerok_seg5_dl_0500B9C0
 
 eyerok_seg5_lights_0500BA30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBA30
   symbol: eyerok_seg5_lights_0500BA30
@@ -146,7 +146,7 @@ eyerok_seg5_dl_0500BC88:
   symbol: eyerok_seg5_dl_0500BC88
 
 eyerok_seg5_lights_0500BCF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBCF8
   symbol: eyerok_seg5_lights_0500BCF8
@@ -174,7 +174,7 @@ eyerok_seg5_dl_0500BF00:
   symbol: eyerok_seg5_dl_0500BF00
 
 eyerok_seg5_lights_0500BF70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBF70
   symbol: eyerok_seg5_lights_0500BF70
@@ -196,7 +196,7 @@ eyerok_seg5_dl_0500C100:
   symbol: eyerok_seg5_dl_0500C100
 
 eyerok_seg5_lights_0500C170:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC170
   symbol: eyerok_seg5_lights_0500C170
@@ -224,7 +224,7 @@ eyerok_seg5_dl_0500C378:
   symbol: eyerok_seg5_dl_0500C378
 
 eyerok_seg5_lights_0500C3E8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC3E8
   symbol: eyerok_seg5_lights_0500C3E8
@@ -252,7 +252,7 @@ eyerok_seg5_dl_0500C640:
   symbol: eyerok_seg5_dl_0500C640
 
 eyerok_seg5_lights_0500C6B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC6B0
   symbol: eyerok_seg5_lights_0500C6B0

@@ -13,7 +13,7 @@
       - 'extern const LevelScript level_sa_entry[];'
 
 sa_lights:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: sa_lights

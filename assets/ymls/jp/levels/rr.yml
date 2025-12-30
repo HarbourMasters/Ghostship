@@ -2231,7 +2231,7 @@ rr_seg7_dl_070191A0:
   symbol: rr_seg7_dl_070191A0
 
 rr_seg7_lights_07019230:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19230
   symbol: rr_seg7_lights_07019230
@@ -2326,31 +2326,31 @@ rr_seg7_dl_07019AE0:
   symbol: rr_seg7_dl_07019AE0
 
 rr_seg7_lights_07019B68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19B68
   symbol: rr_seg7_lights_07019B68
 
 rr_seg7_lights_07019B80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19B80
   symbol: rr_seg7_lights_07019B80
 
 rr_seg7_lights_07019B98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19B98
   symbol: rr_seg7_lights_07019B98
 
 rr_seg7_lights_07019BB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19BB0
   symbol: rr_seg7_lights_07019BB0
 
 rr_seg7_lights_07019BC8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19BC8
   symbol: rr_seg7_lights_07019BC8
@@ -2451,7 +2451,7 @@ rr_seg7_dl_0701A680:
   symbol: rr_seg7_dl_0701A680
 
 rr_seg7_lights_0701A6F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1A6F0
   symbol: rr_seg7_lights_0701A6F0

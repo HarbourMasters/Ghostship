@@ -11,7 +11,7 @@
       - '#include "water_ring/geo.h"'
 
 water_ring_seg6_lights_06012368:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12368
   symbol: water_ring_seg6_lights_06012368

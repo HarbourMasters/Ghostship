@@ -11,25 +11,25 @@
       - '#include "snowman/geo.h"'
 
 snowman_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8C10
   symbol: snowman_lights_unused1
 
 snowman_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8C28
   symbol: snowman_lights_unused2
 
 snowman_lights_unused3:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8C40
   symbol: snowman_lights_unused3
 
 snowman_lights_unused4:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8C58
   symbol: snowman_lights_unused4
@@ -80,7 +80,7 @@ mr_blizzard_mouth:
   symbol: snowman_seg5_texture_0500BC70
 
 snowman_seg5_lights_0500C470:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC470
   symbol: snowman_seg5_lights_0500C470
@@ -145,7 +145,7 @@ snowman_seg5_dl_0500C760:
   symbol: snowman_seg5_dl_0500C760
 
 snowman_seg5_lights_0500C7D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC7D0
   symbol: snowman_seg5_lights_0500C7D0

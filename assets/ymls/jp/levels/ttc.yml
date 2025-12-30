@@ -31,31 +31,31 @@
   symbol: ttc_seg7_texture_07000800
 
 ttc_seg7_lights_07001000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1000
   symbol: ttc_seg7_lights_07001000
 
 ttc_seg7_lights_07001018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1018
   symbol: ttc_seg7_lights_07001018
 
 ttc_seg7_lights_07001030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1030
   symbol: ttc_seg7_lights_07001030
 
 ttc_seg7_lights_07001048:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1048
   symbol: ttc_seg7_lights_07001048
 
 ttc_seg7_lights_07001060:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1060
   symbol: ttc_seg7_lights_07001060
@@ -930,7 +930,7 @@ ttc_seg7_dl_0700AD38:
   symbol: ttc_seg7_dl_0700AD38
 
 ttc_seg7_lights_0700AED8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xAED8
   symbol: ttc_seg7_lights_0700AED8
@@ -1255,13 +1255,13 @@ ttc_seg7_dl_0700E878:
   symbol: ttc_seg7_dl_0700E878
 
 ttc_seg7_lights_0700E950:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE950
   symbol: ttc_seg7_lights_0700E950
 
 ttc_seg7_lights_0700E968:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE968
   symbol: ttc_seg7_lights_0700E968
@@ -1300,7 +1300,7 @@ ttc_seg7_dl_0700ECB8:
   symbol: ttc_seg7_dl_0700ECB8
 
 ttc_seg7_lights_0700ED68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xED68
   symbol: ttc_seg7_lights_0700ED68
@@ -1333,7 +1333,7 @@ ttc_seg7_dl_0700EFE0:
   symbol: ttc_seg7_dl_0700EFE0
 
 ttc_seg7_lights_0700F090:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF090
   symbol: ttc_seg7_lights_0700F090
@@ -1389,13 +1389,13 @@ ttc_seg7_dl_0700F760:
   symbol: ttc_seg7_dl_0700F760
 
 ttc_seg7_lights_0700F830:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF830
   symbol: ttc_seg7_lights_0700F830
 
 ttc_seg7_lights_0700F848:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF848
   symbol: ttc_seg7_lights_0700F848
@@ -1445,13 +1445,13 @@ ttc_seg7_dl_0700FBB8:
   symbol: ttc_seg7_dl_0700FBB8
 
 ttc_seg7_lights_0700FC80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFC80
   symbol: ttc_seg7_lights_0700FC80
 
 ttc_seg7_lights_0700FC98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFC98
   symbol: ttc_seg7_lights_0700FC98
@@ -1501,7 +1501,7 @@ ttc_seg7_dl_0700FFE8:
   symbol: ttc_seg7_dl_0700FFE8
 
 ttc_seg7_lights_070100B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x100B0
   symbol: ttc_seg7_lights_070100B0
@@ -1534,7 +1534,7 @@ ttc_seg7_dl_070102B8:
   symbol: ttc_seg7_dl_070102B8
 
 ttc_seg7_lights_07010380:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10380
   symbol: ttc_seg7_lights_07010380
@@ -1579,7 +1579,7 @@ ttc_seg7_dl_07010868:
   symbol: ttc_seg7_dl_07010868
 
 ttc_seg7_lights_07010930:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10930
   symbol: ttc_seg7_lights_07010930
@@ -1624,7 +1624,7 @@ ttc_seg7_dl_07010D38:
   symbol: ttc_seg7_dl_07010D38
 
 ttc_seg7_lights_07010DE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10DE8
   symbol: ttc_seg7_lights_07010DE8
@@ -1657,7 +1657,7 @@ ttc_seg7_dl_07011040:
   symbol: ttc_seg7_dl_07011040
 
 ttc_seg7_lights_07011108:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11108
   symbol: ttc_seg7_lights_07011108
@@ -1690,7 +1690,7 @@ ttc_seg7_dl_07011360:
   symbol: ttc_seg7_dl_07011360
 
 ttc_seg7_lights_07011428:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11428
   symbol: ttc_seg7_lights_07011428
@@ -1729,25 +1729,25 @@ ttc_seg7_dl_070116A8:
   symbol: ttc_seg7_dl_070116A8
 
 ttc_seg7_lights_07011758:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11758
   symbol: ttc_seg7_lights_07011758
 
 ttc_seg7_lights_07011770:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11770
   symbol: ttc_seg7_lights_07011770
 
 ttc_seg7_lights_07011788:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11788
   symbol: ttc_seg7_lights_07011788
 
 ttc_seg7_lights_070117A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x117A0
   symbol: ttc_seg7_lights_070117A0
@@ -1787,13 +1787,13 @@ ttc_seg7_dl_07011B38:
   symbol: ttc_seg7_dl_07011B38
 
 ttc_seg7_lights_07011BE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11BE0
   symbol: ttc_seg7_lights_07011BE0
 
 ttc_seg7_lights_07011BF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11BF8
   symbol: ttc_seg7_lights_07011BF8
@@ -1943,7 +1943,7 @@ ttc_seg7_macro_objs:
   symbol: ttc_yellow_triangle
 
 ttc_lights_surface_treadmill:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x15F78
   symbol: ttc_lights_surface_treadmill

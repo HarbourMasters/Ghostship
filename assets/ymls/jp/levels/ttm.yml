@@ -85,25 +85,25 @@
   symbol: ttm_seg7_texture_07004000
 
 ttm_seg7_lights_07005000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5000
   symbol: ttm_seg7_lights_07005000
 
 ttm_seg7_lights_07005018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5018
   symbol: ttm_seg7_lights_07005018
 
 ttm_seg7_lights_07005030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5030
   symbol: ttm_seg7_lights_07005030
 
 ttm_seg7_lights_07005048:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5048
   symbol: ttm_seg7_lights_07005048
@@ -571,7 +571,7 @@ ttm_seg7_dl_0700A120:
   symbol: ttm_seg7_dl_0700A120
 
 ttm_seg7_lights_0700A1B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA1B0
   symbol: ttm_seg7_lights_0700A1B0
@@ -593,13 +593,13 @@ ttm_seg7_dl_0700A2E0:
   symbol: ttm_seg7_dl_0700A2E0
 
 ttm_seg7_lights_0700A340:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA340
   symbol: ttm_seg7_lights_0700A340
 
 ttm_seg7_lights_0700A358:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA358
   symbol: ttm_seg7_lights_0700A358
@@ -644,7 +644,7 @@ ttm_seg7_dl_0700A8C0:
   symbol: ttm_seg7_dl_0700A8C0
 
 ttm_seg7_lights_0700A928:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA928
   symbol: ttm_seg7_lights_0700A928
@@ -677,7 +677,7 @@ ttm_seg7_dl_0700AB08:
   symbol: ttm_seg7_dl_0700AB08
 
 ttm_seg7_lights_0700AB70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xAB70
   symbol: ttm_seg7_lights_0700AB70
@@ -711,7 +711,7 @@ ttm_seg7_dl_0700AF90:
   symbol: ttm_seg7_dl_0700AF90
 
 ttm_seg7_lights_0700AFF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xAFF0
   symbol: ttm_seg7_lights_0700AFF0
@@ -733,7 +733,7 @@ ttm_seg7_dl_0700B0D0:
   symbol: ttm_seg7_dl_0700B0D0
 
 ttm_seg7_lights_0700B130:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB130
   symbol: ttm_seg7_lights_0700B130
@@ -767,7 +767,7 @@ ttm_seg7_dl_0700B530:
   symbol: ttm_seg7_dl_0700B530
 
 ttm_seg7_lights_0700B590:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB590
   symbol: ttm_seg7_lights_0700B590
@@ -789,7 +789,7 @@ ttm_seg7_dl_0700B670:
   symbol: ttm_seg7_dl_0700B670
 
 ttm_seg7_lights_0700B6D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB6D0
   symbol: ttm_seg7_lights_0700B6D0
@@ -823,7 +823,7 @@ ttm_seg7_dl_0700BAD0:
   symbol: ttm_seg7_dl_0700BAD0
 
 ttm_seg7_lights_0700BB30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBB30
   symbol: ttm_seg7_lights_0700BB30
@@ -845,13 +845,13 @@ ttm_seg7_dl_0700BC10:
   symbol: ttm_seg7_dl_0700BC10
 
 ttm_seg7_lights_0700BC70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBC70
   symbol: ttm_seg7_lights_0700BC70
 
 ttm_seg7_lights_0700BC88:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBC88
   symbol: ttm_seg7_lights_0700BC88
@@ -879,13 +879,13 @@ ttm_seg7_dl_0700BE20:
   symbol: ttm_seg7_dl_0700BE20
 
 ttm_seg7_lights_0700BE90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBE90
   symbol: ttm_seg7_lights_0700BE90
 
 ttm_seg7_lights_0700BEA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBEA8
   symbol: ttm_seg7_lights_0700BEA8
@@ -913,19 +913,19 @@ ttm_seg7_dl_0700C070:
   symbol: ttm_seg7_dl_0700C070
 
 ttm_seg7_lights_0700C0E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC0E0
   symbol: ttm_seg7_lights_0700C0E0
 
 ttm_seg7_lights_0700C0F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC0F8
   symbol: ttm_seg7_lights_0700C0F8
 
 ttm_seg7_lights_0700C110:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC110
   symbol: ttm_seg7_lights_0700C110
@@ -969,19 +969,19 @@ ttm_seg7_dl_0700C408:
   symbol: ttm_seg7_dl_0700C408
 
 ttm_seg7_lights_0700C488:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC488
   symbol: ttm_seg7_lights_0700C488
 
 ttm_seg7_lights_0700C4A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC4A0
   symbol: ttm_seg7_lights_0700C4A0
 
 ttm_seg7_lights_0700C4B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC4B8
   symbol: ttm_seg7_lights_0700C4B8
@@ -1061,13 +1061,13 @@ ttm_seg7_dl_0700CAE0:
   symbol: ttm_seg7_dl_0700CAE0
 
 ttm_seg7_lights_0700CB60:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xCB60
   symbol: ttm_seg7_lights_0700CB60
 
 ttm_seg7_lights_0700CB78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xCB78
   symbol: ttm_seg7_lights_0700CB78
@@ -1106,19 +1106,19 @@ ttm_seg7_dl_0700CD10:
   symbol: ttm_seg7_dl_0700CD10
 
 ttm_seg7_lights_0700CD88:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xCD88
   symbol: ttm_seg7_lights_0700CD88
 
 ttm_seg7_lights_0700CDA0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xCDA0
   symbol: ttm_seg7_lights_0700CDA0
 
 ttm_seg7_lights_0700CDB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xCDB8
   symbol: ttm_seg7_lights_0700CDB8
@@ -1169,19 +1169,19 @@ ttm_seg7_dl_0700D1D8:
   symbol: ttm_seg7_dl_0700D1D8
 
 ttm_seg7_lights_0700D250:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD250
   symbol: ttm_seg7_lights_0700D250
 
 ttm_seg7_lights_0700D268:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD268
   symbol: ttm_seg7_lights_0700D268
 
 ttm_seg7_lights_0700D280:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD280
   symbol: ttm_seg7_lights_0700D280
@@ -1232,19 +1232,19 @@ ttm_seg7_dl_0700D688:
   symbol: ttm_seg7_dl_0700D688
 
 ttm_seg7_lights_0700D700:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD700
   symbol: ttm_seg7_lights_0700D700
 
 ttm_seg7_lights_0700D718:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD718
   symbol: ttm_seg7_lights_0700D718
 
 ttm_seg7_lights_0700D730:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD730
   symbol: ttm_seg7_lights_0700D730
@@ -1314,7 +1314,7 @@ ttm_seg7_dl_0700DF78:
   symbol: ttm_seg7_dl_0700DF78
 
 ttm_seg7_lights_0700DFE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDFE8
   symbol: ttm_seg7_lights_0700DFE8
@@ -1348,19 +1348,19 @@ ttm_seg7_dl_0700E308:
   symbol: ttm_seg7_dl_0700E308
 
 ttm_seg7_lights_0700E378:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE378
   symbol: ttm_seg7_lights_0700E378
 
 ttm_seg7_lights_0700E390:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE390
   symbol: ttm_seg7_lights_0700E390
 
 ttm_seg7_lights_0700E3A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE3A8
   symbol: ttm_seg7_lights_0700E3A8
@@ -1490,7 +1490,7 @@ ttm_seg7_dl_0700F270:
   symbol: ttm_seg7_dl_0700F270
 
 ttm_seg7_lights_0700F300:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF300
   symbol: ttm_seg7_lights_0700F300
@@ -1547,19 +1547,19 @@ ttm_seg7_dl_0700FA18:
   symbol: ttm_seg7_dl_0700FA18
 
 ttm_seg7_lights_0700FA90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFA90
   symbol: ttm_seg7_lights_0700FA90
 
 ttm_seg7_lights_0700FAA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFAA8
   symbol: ttm_seg7_lights_0700FAA8
 
 ttm_seg7_lights_0700FAC0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFAC0
   symbol: ttm_seg7_lights_0700FAC0
@@ -1680,19 +1680,19 @@ ttm_seg7_dl_07010A68:
   symbol: ttm_seg7_dl_07010A68
 
 ttm_seg7_lights_07010AD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10AD8
   symbol: ttm_seg7_lights_07010AD8
 
 ttm_seg7_lights_07010AF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10AF0
   symbol: ttm_seg7_lights_07010AF0
 
 ttm_seg7_lights_07010B08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10B08
   symbol: ttm_seg7_lights_07010B08
@@ -1761,19 +1761,19 @@ ttm_seg7_dl_07011128:
   symbol: ttm_seg7_dl_07011128
 
 ttm_seg7_lights_070111A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x111A0
   symbol: ttm_seg7_lights_070111A0
 
 ttm_seg7_lights_070111B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x111B8
   symbol: ttm_seg7_lights_070111B8
 
 ttm_seg7_lights_070111D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x111D0
   symbol: ttm_seg7_lights_070111D0
@@ -1824,19 +1824,19 @@ ttm_seg7_dl_07011608:
   symbol: ttm_seg7_dl_07011608
 
 ttm_seg7_lights_07011680:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11680
   symbol: ttm_seg7_lights_07011680
 
 ttm_seg7_lights_07011698:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11698
   symbol: ttm_seg7_lights_07011698
 
 ttm_seg7_lights_070116B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x116B0
   symbol: ttm_seg7_lights_070116B0
@@ -1925,7 +1925,7 @@ ttm_seg7_dl_07011D78:
   symbol: ttm_seg7_dl_07011D78
 
 ttm_seg7_lights_07011DE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11DE8
   symbol: ttm_seg7_lights_07011DE8
@@ -1970,7 +1970,7 @@ ttm_seg7_dl_07012270:
   symbol: ttm_seg7_dl_07012270
 
 ttm_seg7_lights_070122F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x122F0
   symbol: ttm_seg7_lights_070122F0
@@ -2012,13 +2012,13 @@ ttm_seg7_painting_dl_07012E98:
   symbol: ttm_seg7_painting_dl_07012E98
 
 ttm_seg7_lights_07012F78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12F78
   symbol: ttm_seg7_lights_07012F78
 
 ttm_seg7_lights_07012F90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12F90
   symbol: ttm_seg7_lights_07012F90
@@ -2105,79 +2105,79 @@ ttm_seg7_trajectory_070170A0:
   symbol: ttm_seg7_trajectory_070170A0
 
 ttm_seg7_lights_070172D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x172D8
   symbol: ttm_seg7_lights_070172D8
 
 ttm_seg7_lights_070172F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x172F0
   symbol: ttm_seg7_lights_070172F0
 
 ttm_seg7_lights_07017308:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x17308
   symbol: ttm_seg7_lights_07017308
 
 ttm_seg7_lights_07017320:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x17320
   symbol: ttm_seg7_lights_07017320
 
 ttm_seg7_lights_07017338:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x17338
   symbol: ttm_seg7_lights_07017338
 
 ttm_seg7_lights_07017350:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x17350
   symbol: ttm_seg7_lights_07017350
 
 ttm_seg7_lights_07017368:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x17368
   symbol: ttm_seg7_lights_07017368
 
 ttm_seg7_lights_07017380:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x17380
   symbol: ttm_seg7_lights_07017380
 
 ttm_seg7_lights_07017398:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x17398
   symbol: ttm_seg7_lights_07017398
 
 ttm_seg7_lights_070173B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x173B0
   symbol: ttm_seg7_lights_070173B0
 
 ttm_seg7_lights_070173C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x173C8
   symbol: ttm_seg7_lights_070173C8
 
 ttm_seg7_lights_070173E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x173E0
   symbol: ttm_seg7_lights_070173E0
 
 ttm_seg7_lights_070173F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x173F8
   symbol: ttm_seg7_lights_070173F8
@@ -2747,7 +2747,7 @@ ttm_seg7_dl_0701D798:
   symbol: ttm_seg7_dl_0701D798
 
 ttm_seg7_lights_0701D888:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1D888
   symbol: ttm_seg7_lights_0701D888
@@ -2781,91 +2781,91 @@ ttm_seg7_dl_0701DBB8:
   symbol: ttm_seg7_dl_0701DBB8
 
 ttm_seg7_lights_0701DC60:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DC60
   symbol: ttm_seg7_lights_0701DC60
 
 ttm_seg7_lights_0701DC78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DC78
   symbol: ttm_seg7_lights_0701DC78
 
 ttm_seg7_lights_0701DC90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DC90
   symbol: ttm_seg7_lights_0701DC90
 
 ttm_seg7_lights_0701DCA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DCA8
   symbol: ttm_seg7_lights_0701DCA8
 
 ttm_seg7_lights_0701DCC0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DCC0
   symbol: ttm_seg7_lights_0701DCC0
 
 ttm_seg7_lights_0701DCD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DCD8
   symbol: ttm_seg7_lights_0701DCD8
 
 ttm_seg7_lights_0701DCF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DCF0
   symbol: ttm_seg7_lights_0701DCF0
 
 ttm_seg7_lights_0701DD08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DD08
   symbol: ttm_seg7_lights_0701DD08
 
 ttm_seg7_lights_0701DD20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DD20
   symbol: ttm_seg7_lights_0701DD20
 
 ttm_seg7_lights_0701DD38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DD38
   symbol: ttm_seg7_lights_0701DD38
 
 ttm_seg7_lights_0701DD50:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DD50
   symbol: ttm_seg7_lights_0701DD50
 
 ttm_seg7_lights_0701DD68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DD68
   symbol: ttm_seg7_lights_0701DD68
 
 ttm_seg7_lights_0701DD80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DD80
   symbol: ttm_seg7_lights_0701DD80
 
 ttm_seg7_lights_0701DD98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DD98
   symbol: ttm_seg7_lights_0701DD98
 
 ttm_seg7_lights_0701DDB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DDB0
   symbol: ttm_seg7_lights_0701DDB0
@@ -3504,7 +3504,7 @@ ttm_seg7_dl_07024C78:
   symbol: ttm_seg7_dl_07024C78
 
 ttm_seg7_lights_07024CA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x24CA8
   symbol: ttm_seg7_lights_07024CA8
@@ -3616,79 +3616,79 @@ ttm_seg7_dl_07025F48:
   symbol: ttm_seg7_dl_07025F48
 
 ttm_seg7_lights_07025FF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x25FF0
   symbol: ttm_seg7_lights_07025FF0
 
 ttm_seg7_lights_07026008:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26008
   symbol: ttm_seg7_lights_07026008
 
 ttm_seg7_lights_07026020:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26020
   symbol: ttm_seg7_lights_07026020
 
 ttm_seg7_lights_07026038:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26038
   symbol: ttm_seg7_lights_07026038
 
 ttm_seg7_lights_07026050:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26050
   symbol: ttm_seg7_lights_07026050
 
 ttm_seg7_lights_07026068:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26068
   symbol: ttm_seg7_lights_07026068
 
 ttm_seg7_lights_07026080:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26080
   symbol: ttm_seg7_lights_07026080
 
 ttm_seg7_lights_07026098:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26098
   symbol: ttm_seg7_lights_07026098
 
 ttm_seg7_lights_070260B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x260B0
   symbol: ttm_seg7_lights_070260B0
 
 ttm_seg7_lights_070260C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x260C8
   symbol: ttm_seg7_lights_070260C8
 
 ttm_seg7_lights_070260E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x260E0
   symbol: ttm_seg7_lights_070260E0
 
 ttm_seg7_lights_070260F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x260F8
   symbol: ttm_seg7_lights_070260F8
 
 ttm_seg7_lights_07026110:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26110
   symbol: ttm_seg7_lights_07026110
@@ -4067,7 +4067,7 @@ ttm_seg7_dl_0702A1B8:
   symbol: ttm_seg7_dl_0702A1B8
 
 ttm_seg7_lights_0702A2A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2A2A0
   symbol: ttm_seg7_lights_0702A2A0
@@ -4177,19 +4177,19 @@ ttm_seg7_dl_0702AC78:
   symbol: ttm_seg7_dl_0702AC78
 
 ttm_seg7_lights_0702ACE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2ACE8
   symbol: ttm_seg7_lights_0702ACE8
 
 ttm_seg7_lights_0702AD00:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2AD00
   symbol: ttm_seg7_lights_0702AD00
 
 ttm_seg7_lights_0702AD18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2AD18
   symbol: ttm_seg7_lights_0702AD18

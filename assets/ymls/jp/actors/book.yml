@@ -18,7 +18,7 @@ bookend_seg5_texture_05000C60:
   symbol: book_seg5_texture_05000C60
 
 book_seg5_lights_05002558:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2558
   symbol: book_seg5_lights_05002558

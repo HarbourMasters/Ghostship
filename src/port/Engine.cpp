@@ -302,17 +302,6 @@ void GameEngine::RunCommands(Gfx* Commands) {
     }
 }
 
-void GameEngine::PatchInterpolations() {
-    mtx_patch_interpolated();
-    patch_screen_transition_interpolated();
-    patch_title_screen_scales();
-    patch_interpolated_dialog();
-    patch_interpolated_hud();
-    patch_interpolated_paintings();
-    patch_interpolated_bubble_particles();
-    patch_interpolated_snow_particles();
-}
-
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
@@ -337,7 +326,6 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
             gInterpolationStep = static_cast<float>(time) / next_original_frame;
         }
         RunCommands(commands);
-        PatchInterpolations();
     }
 
     time -= fps;

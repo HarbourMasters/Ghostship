@@ -10,7 +10,7 @@
       - '#include "blue_coin_switch/geo.h"'
 
 blue_coin_switch_seg8_lights_08000000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: blue_coin_switch_seg8_lights_08000000

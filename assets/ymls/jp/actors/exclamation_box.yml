@@ -10,7 +10,7 @@
       - '#include "exclamation_box/geo.h"'
 
 exclamation_box_seg8_lights_08012E10:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12E10
   symbol: exclamation_box_seg8_lights_08012E10

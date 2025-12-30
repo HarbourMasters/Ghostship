@@ -31,25 +31,25 @@
   symbol: thi_seg7_texture_07000800
 
 thi_seg7_lights_07001000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1000
   symbol: thi_seg7_lights_07001000
 
 thi_seg7_lights_07001018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1018
   symbol: thi_seg7_lights_07001018
 
 thi_seg7_lights_07001030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1030
   symbol: thi_seg7_lights_07001030
 
 thi_seg7_lights_07001048:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1048
   symbol: thi_seg7_lights_07001048
@@ -459,25 +459,25 @@ thi_seg7_dl_07005260:
   symbol: thi_seg7_dl_07005260
 
 thi_seg7_lights_07005330:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5330
   symbol: thi_seg7_lights_07005330
 
 thi_seg7_lights_07005348:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5348
   symbol: thi_seg7_lights_07005348
 
 thi_seg7_lights_07005360:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5360
   symbol: thi_seg7_lights_07005360
 
 thi_seg7_lights_07005378:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5378
   symbol: thi_seg7_lights_07005378
@@ -672,7 +672,7 @@ thi_seg7_dl_07007008:
   symbol: thi_seg7_dl_07007008
 
 thi_seg7_lights_07007078:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7078
   symbol: thi_seg7_lights_07007078
@@ -732,7 +732,7 @@ thi_seg7_dl_07007538:
   symbol: thi_seg7_dl_07007538
 
 thi_seg7_lights_070075A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x75A8
   symbol: thi_seg7_lights_070075A8
@@ -754,13 +754,13 @@ thi_seg7_dl_07007648:
   symbol: thi_seg7_dl_07007648
 
 thi_seg7_lights_070076A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x76A8
   symbol: thi_seg7_lights_070076A8
 
 thi_seg7_lights_070076C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x76C0
   symbol: thi_seg7_lights_070076C0
@@ -826,31 +826,31 @@ thi_seg7_dl_07007C20:
   symbol: thi_seg7_dl_07007C20
 
 thi_seg7_lights_07007C90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7C90
   symbol: thi_seg7_lights_07007C90
 
 thi_seg7_lights_07007CA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7CA8
   symbol: thi_seg7_lights_07007CA8
 
 thi_seg7_lights_07007CC0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7CC0
   symbol: thi_seg7_lights_07007CC0
 
 thi_seg7_lights_07007CD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7CD8
   symbol: thi_seg7_lights_07007CD8
 
 thi_seg7_lights_07007CF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7CF0
   symbol: thi_seg7_lights_07007CF0

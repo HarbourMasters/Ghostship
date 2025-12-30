@@ -121,25 +121,25 @@
   symbol: ccm_seg7_texture_07004B00
 
 ccm_seg7_lights_07005300:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5300
   symbol: ccm_seg7_lights_07005300
 
 ccm_seg7_lights_07005318:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5318
   symbol: ccm_seg7_lights_07005318
 
 ccm_seg7_lights_07005330:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5330
   symbol: ccm_seg7_lights_07005330
 
 ccm_seg7_lights_07005348:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5348
   symbol: ccm_seg7_lights_07005348
@@ -642,7 +642,7 @@ ccm_seg7_dl_0700B090:
   symbol: ccm_seg7_dl_0700B090
 
 ccm_seg7_lights_0700B118:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB118
   symbol: ccm_seg7_lights_0700B118
@@ -664,25 +664,25 @@ ccm_seg7_dl_0700B1D8:
   symbol: ccm_seg7_dl_0700B1D8
 
 ccm_seg7_lights_0700B248:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB248
   symbol: ccm_seg7_lights_0700B248
 
 ccm_seg7_lights_0700B260:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB260
   symbol: ccm_seg7_lights_0700B260
 
 ccm_seg7_lights_0700B278:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB278
   symbol: ccm_seg7_lights_0700B278
 
 ccm_seg7_lights_0700B290:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB290
   symbol: ccm_seg7_lights_0700B290
@@ -997,25 +997,25 @@ ccm_seg7_dl_0700DDF0:
   symbol: ccm_seg7_dl_0700DDF0
 
 ccm_seg7_lights_0700DE68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDE68
   symbol: ccm_seg7_lights_0700DE68
 
 ccm_seg7_lights_0700DE80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDE80
   symbol: ccm_seg7_lights_0700DE80
 
 ccm_seg7_lights_0700DE98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDE98
   symbol: ccm_seg7_lights_0700DE98
 
 ccm_seg7_lights_0700DEB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDEB0
   symbol: ccm_seg7_lights_0700DEB0
@@ -1127,19 +1127,19 @@ ccm_seg7_dl_0700E970:
   symbol: ccm_seg7_dl_0700E970
 
 ccm_seg7_lights_0700EA00:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xEA00
   symbol: ccm_seg7_lights_0700EA00
 
 ccm_seg7_lights_0700EA18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xEA18
   symbol: ccm_seg7_lights_0700EA18
 
 ccm_seg7_lights_0700EA30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xEA30
   symbol: ccm_seg7_lights_0700EA30
@@ -1252,7 +1252,7 @@ ccm_seg7_dl_0700F650:
   symbol: ccm_seg7_dl_0700F650
 
 ccm_seg7_lights_0700F6E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF6E0
   symbol: ccm_seg7_lights_0700F6E0
@@ -1274,7 +1274,7 @@ ccm_seg7_dl_0700F780:
   symbol: ccm_seg7_dl_0700F780
 
 ccm_seg7_lights_0700F800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF800
   symbol: ccm_seg7_lights_0700F800
@@ -1313,7 +1313,7 @@ ccm_seg7_dl_0700FB00:
   symbol: ccm_seg7_dl_0700FB00
 
 ccm_seg7_lights_0700FB78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFB78
   symbol: ccm_seg7_lights_0700FB78
@@ -1335,19 +1335,19 @@ ccm_seg7_dl_0700FD08:
   symbol: ccm_seg7_dl_0700FD08
 
 ccm_seg7_lights_0700FD88:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFD88
   symbol: ccm_seg7_lights_0700FD88
 
 ccm_seg7_lights_0700FDA0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFDA0
   symbol: ccm_seg7_lights_0700FDA0
 
 ccm_seg7_lights_0700FDB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFDB8
   symbol: ccm_seg7_lights_0700FDB8
@@ -1471,7 +1471,7 @@ ccm_seg7_dl_070109D0:
   symbol: ccm_seg7_dl_070109D0
 
 ccm_seg7_lights_07010A60:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10A60
   symbol: ccm_seg7_lights_07010A60
@@ -1526,7 +1526,7 @@ ccm_seg7_dl_07010F28:
   symbol: ccm_seg7_dl_07010F28
 
 ccm_seg7_lights_07010FB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10FB8
   symbol: ccm_seg7_lights_07010FB8
@@ -1595,7 +1595,7 @@ ccm_seg7_dl_070118B0:
   symbol: ccm_seg7_dl_070118B0
 
 ccm_seg7_lights_07011940:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11940
   symbol: ccm_seg7_lights_07011940
@@ -1668,7 +1668,7 @@ ccm_seg7_dl_07012BD8:
   symbol: ccm_seg7_dl_07012BD8
 
 ccm_seg7_lights_07012C38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12C38
   symbol: ccm_seg7_lights_07012C38
@@ -1784,7 +1784,7 @@ ccm_seg7_trajectory_0701669C:
   symbol: ccm_seg7_trajectory_0701669C
 
 ccm_seg7_lights_07016718:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x16718
   symbol: ccm_seg7_lights_07016718
@@ -2283,25 +2283,25 @@ ccm_seg7_dl_0701CE30:
   symbol: ccm_seg7_dl_0701CE30
 
 ccm_seg7_lights_0701CED8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1CED8
   symbol: ccm_seg7_lights_0701CED8
 
 ccm_seg7_lights_0701CEF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1CEF0
   symbol: ccm_seg7_lights_0701CEF0
 
 ccm_seg7_lights_0701CF08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1CF08
   symbol: ccm_seg7_lights_0701CF08
 
 ccm_seg7_lights_0701CF20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1CF20
   symbol: ccm_seg7_lights_0701CF20
@@ -2452,7 +2452,7 @@ ccm_seg7_dl_0701E558:
   symbol: ccm_seg7_dl_0701E558
 
 ccm_seg7_lights_0701E610:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1E610
   symbol: ccm_seg7_lights_0701E610
@@ -2474,7 +2474,7 @@ ccm_seg7_dl_0701E6B0:
   symbol: ccm_seg7_dl_0701E6B0
 
 ccm_seg7_lights_0701E720:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1E720
   symbol: ccm_seg7_lights_0701E720
@@ -2598,7 +2598,7 @@ ccm_seg7_dl_0701FC78:
   symbol: ccm_seg7_dl_0701FC78
 
 ccm_seg7_lights_0701FCD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1FCD8
   symbol: ccm_seg7_lights_0701FCD8
@@ -2636,13 +2636,13 @@ ccm_seg7_dl_0701FE60:
   symbol: ccm_seg7_dl_0701FE60
 
 ccm_seg7_lights_0701FEE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1FEE0
   symbol: ccm_seg7_lights_0701FEE0
 
 ccm_seg7_lights_0701FEF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1FEF8
   symbol: ccm_seg7_lights_0701FEF8

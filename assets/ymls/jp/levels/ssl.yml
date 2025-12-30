@@ -76,7 +76,7 @@
   symbol: ssl_seg7_texture_07003800
 
 ssl_lights_quicksand_pit:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4000
   symbol: ssl_lights_quicksand_pit
@@ -127,25 +127,25 @@ ssl_dl_pyramid_quicksand_pit_static:
   symbol: ssl_dl_pyramid_quicksand_pit_static
 
 ssl_seg7_lights_07004BE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4BE0
   symbol: ssl_seg7_lights_07004BE0
 
 ssl_seg7_lights_07004BF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4BF8
   symbol: ssl_seg7_lights_07004BF8
 
 ssl_seg7_lights_07004C10:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C10
   symbol: ssl_seg7_lights_07004C10
 
 ssl_seg7_lights_07004C28:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C28
   symbol: ssl_seg7_lights_07004C28
@@ -634,7 +634,7 @@ ssl_seg7_dl_07009F48:
   symbol: ssl_seg7_dl_07009F48
 
 ssl_seg7_lights_0700A020:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA020
   symbol: ssl_seg7_lights_0700A020
@@ -770,7 +770,7 @@ ssl_seg7_dl_0700BA78:
   symbol: ssl_seg7_dl_0700BA78
 
 ssl_seg7_lights_0700BAD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBAD8
   symbol: ssl_seg7_lights_0700BAD8
@@ -808,7 +808,7 @@ ssl_seg7_dl_0700BD00:
   symbol: ssl_seg7_dl_0700BD00
 
 ssl_seg7_lights_0700BD70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBD70
   symbol: ssl_seg7_lights_0700BD70
@@ -841,7 +841,7 @@ ssl_seg7_dl_0700BF18:
   symbol: ssl_seg7_dl_0700BF18
 
 ssl_seg7_lights_0700BF90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBF90
   symbol: ssl_seg7_lights_0700BF90
@@ -958,31 +958,31 @@ ssl_seg7_collision_tox_box:
   symbol: ssl_seg7_collision_tox_box
 
 ssl_seg7_lights_07012BD0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12BD0
   symbol: ssl_seg7_lights_07012BD0
 
 ssl_seg7_lights_07012BE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12BE8
   symbol: ssl_seg7_lights_07012BE8
 
 ssl_seg7_lights_07012C00:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12C00
   symbol: ssl_seg7_lights_07012C00
 
 ssl_seg7_lights_07012C18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12C18
   symbol: ssl_seg7_lights_07012C18
 
 ssl_seg7_lights_07012C30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12C30
   symbol: ssl_seg7_lights_07012C30
@@ -2087,13 +2087,13 @@ ssl_seg7_dl_0701FCE0:
   symbol: ssl_seg7_dl_0701FCE0
 
 ssl_seg7_lights_0701FD60:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1FD60
   symbol: ssl_seg7_lights_0701FD60
 
 ssl_seg7_lights_0701FD78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1FD78
   symbol: ssl_seg7_lights_0701FD78
@@ -2289,7 +2289,7 @@ ssl_seg7_dl_07021A08:
   symbol: ssl_seg7_dl_07021A08
 
 ssl_seg7_lights_07021AC8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x21AC8
   symbol: ssl_seg7_lights_07021AC8
@@ -2328,7 +2328,7 @@ ssl_seg7_dl_07021DE8:
   symbol: ssl_seg7_dl_07021DE8
 
 ssl_seg7_lights_07021E50:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x21E50
   symbol: ssl_seg7_lights_07021E50
@@ -2377,7 +2377,7 @@ ssl_seg7_dl_070221E8:
   symbol: ssl_seg7_dl_070221E8
 
 ssl_seg7_lights_070222A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x222A0
   symbol: ssl_seg7_lights_070222A0
@@ -2450,7 +2450,7 @@ ssl_seg7_dl_070229E8:
   symbol: ssl_seg7_dl_070229E8
 
 ssl_seg7_lights_07022AA0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22AA0
   symbol: ssl_seg7_lights_07022AA0
@@ -2483,7 +2483,7 @@ ssl_seg7_dl_07022CF8:
   symbol: ssl_seg7_dl_07022CF8
 
 ssl_seg7_lights_07022DA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22DA8
   symbol: ssl_seg7_lights_07022DA8

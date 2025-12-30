@@ -11,13 +11,13 @@
       - '#include "door/geo.h"'
 
 door_seg3_lights_03009CE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9CE0
   symbol: door_seg3_lights_03009CE0
 
 door_seg3_lights_03009CF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9CF8
   symbol: door_seg3_lights_03009CF8

@@ -11,19 +11,19 @@
       - '#include "koopa_flag/geo.h"'
 
 koopa_flag_seg6_lights_06000000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: koopa_flag_seg6_lights_06000000
 
 koopa_flag_seg6_lights_06000018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x18
   symbol: koopa_flag_seg6_lights_06000018
 
 koopa_flag_seg6_lights_06000030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x30
   symbol: koopa_flag_seg6_lights_06000030
@@ -38,13 +38,13 @@ koopa_flag_banner:
   symbol: koopa_flag_seg6_texture_06000048
 
 koopa_flag_seg6_lights_06000848:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x848
   symbol: koopa_flag_seg6_lights_06000848
 
 koopa_flag_seg6_lights_06000860:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x860
   symbol: koopa_flag_seg6_lights_06000860

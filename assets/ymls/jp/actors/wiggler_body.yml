@@ -73,19 +73,19 @@ wiggler_nose_right_side:
   symbol: wiggler_seg5_texture_0500A230
 
 wiggler_seg5_lights_0500B230:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB230
   symbol: wiggler_seg5_lights_0500B230
 
 wiggler_seg5_lights_0500B248:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB248
   symbol: wiggler_seg5_lights_0500B248
 
 wiggler_body_lights_unused:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB248
   symbol: wiggler_body_lights_unused

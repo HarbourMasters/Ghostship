@@ -58,7 +58,7 @@
   symbol: bob_seg7_texture_07002000
 
 bob_seg7_lights_07002800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2800
   symbol: bob_seg7_lights_07002800
@@ -222,7 +222,7 @@ bob_seg7_dl_07004390:
   symbol: bob_seg7_dl_07004390
 
 bob_seg7_lights_07004478:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4478
   symbol: bob_seg7_lights_07004478
@@ -836,13 +836,13 @@ bob_seg7_dl_0700A920:
   symbol: bob_seg7_dl_0700A920
 
 bob_seg7_lights_0700A9E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA9E0
   symbol: bob_seg7_lights_0700A9E0
 
 bob_seg7_lights_0700A9F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA9F8
   symbol: bob_seg7_lights_0700A9F8
@@ -1141,7 +1141,7 @@ bob_seg7_dl_0700DD18:
   symbol: bob_seg7_dl_0700DD18
 
 bob_seg7_lights_0700DE30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDE30
   symbol: bob_seg7_lights_0700DE30
@@ -1197,7 +1197,7 @@ bob_seg7_dl_0700E458:
   symbol: bob_seg7_dl_0700E458
 
 bob_seg7_lights_0700E510:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE510
   symbol: bob_seg7_lights_0700E510

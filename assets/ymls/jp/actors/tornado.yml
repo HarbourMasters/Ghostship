@@ -19,7 +19,7 @@ tornado:
   symbol: tornado_seg5_texture_05013128
 
 tornado_seg5_lights_05014128:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x14128
   symbol: tornado_seg5_lights_05014128

@@ -75,19 +75,19 @@
   symbol: hmc_seg7_texture_07004800
 
 hmc_seg7_lights_07005800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5800
   symbol: hmc_seg7_lights_07005800
 
 hmc_seg7_lights_07005818:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5818
   symbol: hmc_seg7_lights_07005818
 
 hmc_seg7_lights_07005830:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5830
   symbol: hmc_seg7_lights_07005830
@@ -457,19 +457,19 @@ hmc_seg7_dl_070093F0:
   symbol: hmc_seg7_dl_070093F0
 
 hmc_seg7_lights_07009460:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9460
   symbol: hmc_seg7_lights_07009460
 
 hmc_seg7_lights_07009478:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9478
   symbol: hmc_seg7_lights_07009478
 
 hmc_seg7_lights_07009490:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9490
   symbol: hmc_seg7_lights_07009490
@@ -1120,7 +1120,7 @@ hmc_seg7_dl_0700FEF0:
   symbol: hmc_seg7_dl_0700FEF0
 
 hmc_seg7_lights_0700FF70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFF70
   symbol: hmc_seg7_lights_0700FF70
@@ -1142,13 +1142,13 @@ hmc_seg7_dl_07010070:
   symbol: hmc_seg7_dl_07010070
 
 hmc_seg7_lights_07010118:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10118
   symbol: hmc_seg7_lights_07010118
 
 hmc_seg7_lights_07010130:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10130
   symbol: hmc_seg7_lights_07010130
@@ -1610,7 +1610,7 @@ hmc_seg7_dl_07014C00:
   symbol: hmc_seg7_dl_07014C00
 
 hmc_seg7_lights_07014CB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x14CB8
   symbol: hmc_seg7_lights_07014CB8
@@ -1632,13 +1632,13 @@ hmc_seg7_dl_07014E48:
   symbol: hmc_seg7_dl_07014E48
 
 hmc_seg7_lights_07014EB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x14EB8
   symbol: hmc_seg7_lights_07014EB8
 
 hmc_seg7_lights_07014ED0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x14ED0
   symbol: hmc_seg7_lights_07014ED0
@@ -2059,7 +2059,7 @@ hmc_seg7_dl_07019368:
   symbol: hmc_seg7_dl_07019368
 
 hmc_seg7_lights_07019430:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19430
   symbol: hmc_seg7_lights_07019430
@@ -2173,31 +2173,31 @@ hmc_seg7_dl_0701A400:
   symbol: hmc_seg7_dl_0701A400
 
 hmc_seg7_lights_0701A4B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1A4B8
   symbol: hmc_seg7_lights_0701A4B8
 
 hmc_seg7_lights_0701A4D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1A4D0
   symbol: hmc_seg7_lights_0701A4D0
 
 hmc_seg7_lights_0701A4E8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1A4E8
   symbol: hmc_seg7_lights_0701A4E8
 
 hmc_seg7_lights_0701A500:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1A500
   symbol: hmc_seg7_lights_0701A500
 
 hmc_seg7_lights_0701A518:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1A518
   symbol: hmc_seg7_lights_0701A518
@@ -2745,7 +2745,7 @@ hmc_seg7_dl_0701FFF8:
   symbol: hmc_seg7_dl_0701FFF8
 
 hmc_seg7_lights_070200B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x200B0
   symbol: hmc_seg7_lights_070200B0
@@ -2858,7 +2858,7 @@ hmc_seg7_dl_07020FD0:
   symbol: hmc_seg7_dl_07020FD0
 
 hmc_seg7_lights_070210E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x210E0
   symbol: hmc_seg7_lights_070210E0
@@ -3007,7 +3007,7 @@ hmc_seg7_dl_070228A0:
   symbol: hmc_seg7_dl_070228A0
 
 hmc_seg7_lights_07022910:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22910
   symbol: hmc_seg7_lights_07022910
@@ -3029,7 +3029,7 @@ hmc_seg7_dl_07022AA0:
   symbol: hmc_seg7_dl_07022AA0
 
 hmc_seg7_lights_07022B48:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22B48
   symbol: hmc_seg7_lights_07022B48
@@ -3062,13 +3062,13 @@ hmc_seg7_dl_07022DA0:
   symbol: hmc_seg7_dl_07022DA0
 
 hmc_seg7_lights_07022E78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22E78
   symbol: hmc_seg7_lights_07022E78
 
 hmc_seg7_lights_07022E90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22E90
   symbol: hmc_seg7_lights_07022E90
@@ -3101,7 +3101,7 @@ hmc_seg7_dl_07023090:
   symbol: hmc_seg7_dl_07023090
 
 hmc_seg7_lights_07023160:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x23160
   symbol: hmc_seg7_lights_07023160
@@ -3165,7 +3165,7 @@ hmc_seg7_dl_07023BC8:
   symbol: hmc_seg7_dl_07023BC8
 
 hmc_seg7_lights_07023C70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x23C70
   symbol: hmc_seg7_lights_07023C70
@@ -3187,7 +3187,7 @@ hmc_seg7_dl_07023E10:
   symbol: hmc_seg7_dl_07023E10
 
 hmc_seg7_lights_07023EB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x23EB8
   symbol: hmc_seg7_lights_07023EB8
@@ -3215,13 +3215,13 @@ hmc_seg7_dl_07024110:
   symbol: hmc_seg7_dl_07024110
 
 hmc_seg7_lights_070241B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x241B8
   symbol: hmc_seg7_lights_070241B8
 
 hmc_seg7_lights_070241D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x241D0
   symbol: hmc_seg7_lights_070241D0

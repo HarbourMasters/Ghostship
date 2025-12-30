@@ -10,25 +10,25 @@
       - '#include "exclamation_box_outline/geo.h"'
 
 exclamation_box_outline_seg8_lights_08024CB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x24CB8
   symbol: exclamation_box_outline_seg8_lights_08024CB8
 
 exclamation_box_outline_seg8_lights_08024CD0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x24CD0
   symbol: exclamation_box_outline_seg8_lights_08024CD0
 
 exclamation_box_outline_seg8_lights_08024CE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x24CE8
   symbol: exclamation_box_outline_seg8_lights_08024CE8
 
 exclamation_box_outline_seg8_lights_08024D00:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x24D00
   symbol: exclamation_box_outline_seg8_lights_08024D00
@@ -112,7 +112,7 @@ exclamation_box_outline_seg8_dl_080259F8:
   symbol: exclamation_box_outline_seg8_dl_080259F8
 
 exclamation_box_outline_seg8_lights_08025A68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x25A68
   symbol: exclamation_box_outline_seg8_lights_08025A68

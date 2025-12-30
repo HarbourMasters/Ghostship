@@ -58,43 +58,43 @@
   symbol: cotmc_seg7_texture_07002800
 
 cotmc_seg7_lights_07003000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3000
   symbol: cotmc_seg7_lights_07003000
 
 cotmc_seg7_lights_07003018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3018
   symbol: cotmc_seg7_lights_07003018
 
 cotmc_seg7_lights_07003030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3030
   symbol: cotmc_seg7_lights_07003030
 
 cotmc_seg7_lights_07003048:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3048
   symbol: cotmc_seg7_lights_07003048
 
 cotmc_seg7_lights_07003060:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3060
   symbol: cotmc_seg7_lights_07003060
 
 cotmc_seg7_lights_07003078:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3078
   symbol: cotmc_seg7_lights_07003078
 
 cotmc_seg7_lights_07003090:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3090
   symbol: cotmc_seg7_lights_07003090
@@ -534,7 +534,7 @@ cotmc_seg7_dl_07007D48:
   symbol: cotmc_seg7_dl_07007D48
 
 cotmc_seg7_lights_07007E88:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7E88
   symbol: cotmc_seg7_lights_07007E88

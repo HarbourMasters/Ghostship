@@ -11,7 +11,7 @@
       - '#include "blue_fish/geo.h"'
 
 blue_fish_seg3_lights_0301B5C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1B5C8
   symbol: blue_fish_seg3_lights_0301B5C8

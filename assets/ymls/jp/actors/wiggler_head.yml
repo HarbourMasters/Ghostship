@@ -11,25 +11,25 @@
       - '#include "wiggler_head/geo.h"'
 
 wiggler_seg5_lights_0500C878:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC878
   symbol: wiggler_seg5_lights_0500C878
 
 wiggler_seg5_lights_0500C890:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC890
   symbol: wiggler_seg5_lights_0500C890
 
 wiggler_head_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC890
   symbol: wiggler_head_lights_unused1
 
 wiggler_head_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC890
   symbol: wiggler_head_lights_unused2

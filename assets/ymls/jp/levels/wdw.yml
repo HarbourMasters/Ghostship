@@ -58,13 +58,13 @@
   symbol: wdw_seg7_texture_07002000
 
 wdw_seg7_lights_07002800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2800
   symbol: wdw_seg7_lights_07002800
 
 wdw_seg7_lights_07002818:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2818
   symbol: wdw_seg7_lights_07002818
@@ -735,7 +735,7 @@ wdw_seg7_dl_07009AB0:
   symbol: wdw_seg7_dl_07009AB0
 
 wdw_seg7_lights_07009B78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9B78
   symbol: wdw_seg7_lights_07009B78
@@ -786,25 +786,25 @@ wdw_seg7_dl_0700A138:
   symbol: wdw_seg7_dl_0700A138
 
 wdw_seg7_lights_0700A1B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA1B0
   symbol: wdw_seg7_lights_0700A1B0
 
 wdw_seg7_lights_0700A1C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA1C8
   symbol: wdw_seg7_lights_0700A1C8
 
 wdw_seg7_lights_0700A1E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA1E0
   symbol: wdw_seg7_lights_0700A1E0
 
 wdw_seg7_lights_0700A1F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA1F8
   symbol: wdw_seg7_lights_0700A1F8
@@ -1544,19 +1544,19 @@ wdw_seg7_dl_07011E48:
   symbol: wdw_seg7_dl_07011E48
 
 wdw_seg7_lights_07011F58:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11F58
   symbol: wdw_seg7_lights_07011F58
 
 wdw_seg7_lights_07011F70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11F70
   symbol: wdw_seg7_lights_07011F70
 
 wdw_seg7_lights_07011F88:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11F88
   symbol: wdw_seg7_lights_07011F88
@@ -1640,7 +1640,7 @@ wdw_seg7_dl_07012908:
   symbol: wdw_seg7_dl_07012908
 
 wdw_seg7_lights_07012938:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12938
   symbol: wdw_seg7_lights_07012938
@@ -1673,7 +1673,7 @@ wdw_seg7_dl_07012B90:
   symbol: wdw_seg7_dl_07012B90
 
 wdw_seg7_lights_07012C08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12C08
   symbol: wdw_seg7_lights_07012C08
@@ -1712,25 +1712,25 @@ wdw_seg7_dl_07012E88:
   symbol: wdw_seg7_dl_07012E88
 
 wdw_seg7_lights_07012F18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12F18
   symbol: wdw_seg7_lights_07012F18
 
 wdw_seg7_lights_07012F30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12F30
   symbol: wdw_seg7_lights_07012F30
 
 wdw_seg7_lights_07012F48:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12F48
   symbol: wdw_seg7_lights_07012F48
 
 wdw_seg7_lights_07012F60:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12F60
   symbol: wdw_seg7_lights_07012F60
@@ -1770,7 +1770,7 @@ wdw_seg7_dl_070131B8:
   symbol: wdw_seg7_dl_070131B8
 
 wdw_seg7_lights_07013238:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x13238
   symbol: wdw_seg7_lights_07013238
@@ -1798,7 +1798,7 @@ wdw_seg7_dl_07013490:
   symbol: wdw_seg7_dl_07013490
 
 wdw_seg7_lights_07013500:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x13500
   symbol: wdw_seg7_lights_07013500
@@ -1849,7 +1849,7 @@ wdw_seg7_dl_07013B70:
   symbol: wdw_seg7_dl_07013B70
 
 wdw_seg7_lights_07013BE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x13BE8
   symbol: wdw_seg7_lights_07013BE8
@@ -1882,7 +1882,7 @@ wdw_seg7_dl_07013E40:
   symbol: wdw_seg7_dl_07013E40
 
 wdw_seg7_lights_07013EB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x13EB8
   symbol: wdw_seg7_lights_07013EB8

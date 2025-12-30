@@ -10,7 +10,7 @@
       - '#include "water_bubble/geo.h"'
 
 water_bubble_seg5_lights_0500FE68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFE68
   symbol: water_bubble_seg5_lights_0500FE68

@@ -10,7 +10,7 @@
       - '#include "transparent_star/geo.h"'
 
 transparent_star_seg3_lights_0302C488:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2C488
   symbol: transparent_star_seg3_lights_0302C488

@@ -10,7 +10,7 @@
       - '#include "treasure_chest/geo.h"'
 
 treasure_chest_seg6_lights_06013F90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x13F90
   symbol: treasure_chest_seg6_lights_06013F90

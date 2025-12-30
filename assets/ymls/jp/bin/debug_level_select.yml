@@ -6,7 +6,7 @@
     - [0x07,  0x26D5A0]
 
 debug_level_select_lights_07000000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: debug_level_select_lights_07000000
@@ -71,7 +71,7 @@ debug_level_select_dl_07000858:
   symbol: debug_level_select_dl_07000858
 
 debug_level_select_lights_07000A28:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA28
   symbol: debug_level_select_lights_07000A28
@@ -130,7 +130,7 @@ debug_level_select_dl_07001100:
   symbol: debug_level_select_dl_07001100
 
 debug_level_select_lights_07001288:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1288
   symbol: debug_level_select_lights_07001288
@@ -201,7 +201,7 @@ debug_level_select_dl_07001BA0:
   symbol: debug_level_select_dl_07001BA0
 
 debug_level_select_lights_07001D98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1D98
   symbol: debug_level_select_lights_07001D98
@@ -266,7 +266,7 @@ debug_level_select_dl_070025F0:
   symbol: debug_level_select_dl_070025F0
 
 debug_level_select_lights_070027C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x27C0
   symbol: debug_level_select_lights_070027C0
@@ -349,7 +349,7 @@ debug_level_select_dl_07003258:
   symbol: debug_level_select_dl_07003258
 
 debug_level_select_lights_070034A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x34A0
   symbol: debug_level_select_lights_070034A0
@@ -420,7 +420,7 @@ debug_level_select_dl_07003DB8:
   symbol: debug_level_select_dl_07003DB8
 
 debug_level_select_lights_07003FB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3FB0
   symbol: debug_level_select_lights_07003FB0
@@ -491,7 +491,7 @@ debug_level_select_dl_070048C8:
   symbol: debug_level_select_dl_070048C8
 
 debug_level_select_lights_07004AC0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4AC0
   symbol: debug_level_select_lights_07004AC0
@@ -574,7 +574,7 @@ debug_level_select_dl_07005558:
   symbol: debug_level_select_dl_07005558
 
 debug_level_select_lights_070057A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x57A0
   symbol: debug_level_select_lights_070057A0
@@ -603,7 +603,7 @@ debug_level_select_dl_070059F8:
   symbol: debug_level_select_dl_070059F8
 
 debug_level_select_lights_07005A98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5A98
   symbol: debug_level_select_lights_07005A98

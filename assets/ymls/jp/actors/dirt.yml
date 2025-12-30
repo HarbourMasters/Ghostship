@@ -10,25 +10,25 @@
       - '#include "dirt/geo.h"'
 
 dirt_seg3_lights_0302BD68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2BD68
   symbol: dirt_seg3_lights_0302BD68
 
 dirt_seg3_lights_0302BD80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2BD80
   symbol: dirt_seg3_lights_0302BD80
 
 dirt_seg3_lights_0302BD98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2BD98
   symbol: dirt_seg3_lights_0302BD98
 
 dirt_seg3_lights_0302BDB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2BDB0
   symbol: dirt_seg3_lights_0302BDB0

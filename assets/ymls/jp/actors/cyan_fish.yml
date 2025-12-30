@@ -20,7 +20,7 @@ cyan_fish:
   symbol: cyan_fish_seg6_texture_0600D468
 
 cyan_fish_seg6_lights_0600DC68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDC68
   symbol: cyan_fish_seg6_lights_0600DC68
@@ -42,7 +42,7 @@ cyan_fish_seg6_dl_0600DDD8:
   symbol: cyan_fish_seg6_dl_0600DDD8
 
 cyan_fish_seg6_lights_0600DE38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDE38
   symbol: cyan_fish_seg6_lights_0600DE38
@@ -64,7 +64,7 @@ cyan_fish_seg6_dl_0600DED8:
   symbol: cyan_fish_seg6_dl_0600DED8
 
 cyan_fish_seg6_lights_0600DF48:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDF48
   symbol: cyan_fish_seg6_lights_0600DF48

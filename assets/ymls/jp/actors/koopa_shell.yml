@@ -10,25 +10,25 @@
       - '#include "koopa_shell/geo.h"'
 
 koopa_shell_seg8_lights_08026388:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x26388
   symbol: koopa_shell_seg8_lights_08026388
 
 koopa_shell_seg8_lights_080263A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x263A0
   symbol: koopa_shell_seg8_lights_080263A0
 
 koopa_shell_seg8_lights_080263B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x263B8
   symbol: koopa_shell_seg8_lights_080263B8
 
 koopa_shell_seg8_lights_080263D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x263D0
   symbol: koopa_shell_seg8_lights_080263D0
@@ -149,13 +149,13 @@ koopa_shell_seg8_dl_08027420:
   symbol: koopa_shell_seg8_dl_08027420
 
 koopa_shell_seg8_lights_08027470:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x27470
   symbol: koopa_shell_seg8_lights_08027470
 
 koopa_shell_seg8_lights_08027488:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x27488
   symbol: koopa_shell_seg8_lights_08027488

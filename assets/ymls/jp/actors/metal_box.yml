@@ -10,7 +10,7 @@
       - '#include "metal_box/geo.h"'
 
 metal_box_seg8_lights_08023980:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x23980
   symbol: metal_box_seg8_lights_08023980

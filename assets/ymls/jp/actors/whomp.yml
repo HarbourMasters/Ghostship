@@ -47,7 +47,7 @@ whomp_surface:
   symbol: whomp_seg6_texture_0601EB60
 
 whomp_seg6_lights_0601F360:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1F360
   symbol: whomp_seg6_lights_0601F360
@@ -91,7 +91,7 @@ whomp_seg6_dl_0601F5E0:
   symbol: whomp_seg6_dl_0601F5E0
 
 whomp_seg6_lights_0601F678:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1F678
   symbol: whomp_seg6_lights_0601F678
@@ -119,7 +119,7 @@ whomp_seg6_dl_0601F880:
   symbol: whomp_seg6_dl_0601F880
 
 whomp_seg6_lights_0601F8E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1F8E0
   symbol: whomp_seg6_lights_0601F8E0
@@ -179,7 +179,7 @@ whomp_seg6_dl_0601FCA8:
   symbol: whomp_seg6_dl_0601FCA8
 
 whomp_seg6_lights_0601FD18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1FD18
   symbol: whomp_seg6_lights_0601FD18
@@ -201,7 +201,7 @@ whomp_seg6_dl_0601FEA8:
   symbol: whomp_seg6_dl_0601FEA8
 
 whomp_seg6_lights_0601FF08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1FF08
   symbol: whomp_seg6_lights_0601FF08

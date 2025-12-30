@@ -10,13 +10,13 @@
       - '#include "haunted_cage/geo.h"'
 
 haunted_cage_seg5_lights_0500C258:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC258
   symbol: haunted_cage_seg5_lights_0500C258
 
 haunted_cage_seg5_lights_0500C270:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC270
   symbol: haunted_cage_seg5_lights_0500C270
@@ -168,7 +168,7 @@ haunted_cage_seg5_dl_0500F7D8:
   symbol: haunted_cage_seg5_dl_0500F7D8
 
 haunted_cage_seg5_lights_0500F888:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF888
   symbol: haunted_cage_seg5_lights_0500F888
@@ -202,7 +202,7 @@ haunted_cage_seg5_dl_0500FC28:
   symbol: haunted_cage_seg5_dl_0500FC28
 
 haunted_cage_seg5_lights_0500FC98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFC98
   symbol: haunted_cage_seg5_lights_0500FC98

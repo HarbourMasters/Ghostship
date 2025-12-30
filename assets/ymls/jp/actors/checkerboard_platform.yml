@@ -10,7 +10,7 @@
       - '#include "checkerboard_platform/geo.h"'
 
 checkerboard_platform_seg8_lights_0800C828:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC828
   symbol: checkerboard_platform_seg8_lights_0800C828

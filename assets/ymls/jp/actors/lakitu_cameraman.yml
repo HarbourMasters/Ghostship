@@ -65,13 +65,13 @@ lakitu_camera_lens:
   symbol: lakitu_seg6_texture_06003800
 
 lakitu_seg6_lights_06003A00:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3A00
   symbol: lakitu_seg6_lights_06003A00
 
 lakitu_seg6_lights_06003A18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3A18
   symbol: lakitu_seg6_lights_06003A18
@@ -110,7 +110,7 @@ lakitu_seg6_dl_06003E30:
   symbol: lakitu_seg6_dl_06003E30
 
 lakitu_seg6_lights_06003E98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3E98
   symbol: lakitu_seg6_lights_06003E98
@@ -162,7 +162,7 @@ lakitu_seg6_dl_06004680:
   symbol: lakitu_seg6_dl_06004680
 
 lakitu_seg6_lights_060046E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x46E0
   symbol: lakitu_seg6_lights_060046E0
@@ -179,7 +179,7 @@ lakitu_seg6_dl_060047E8:
   symbol: lakitu_seg6_dl_060047E8
 
 lakitu_seg6_lights_060048D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x48D8
   symbol: lakitu_seg6_lights_060048D8
@@ -196,7 +196,7 @@ lakitu_seg6_dl_060049E0:
   symbol: lakitu_seg6_dl_060049E0
 
 lakitu_seg6_lights_06004AD0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4AD0
   symbol: lakitu_seg6_lights_06004AD0
@@ -233,25 +233,25 @@ lakitu_seg6_dl_06004C88:
   symbol: lakitu_seg6_dl_06004C88
 
 lakitu_seg6_lights_06004CB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4CB0
   symbol: lakitu_seg6_lights_06004CB0
 
 lakitu_seg6_lights_06004CC8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4CC8
   symbol: lakitu_seg6_lights_06004CC8
 
 lakitu_seg6_lights_06004CE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4CE0
   symbol: lakitu_seg6_lights_06004CE0
 
 lakitu_seg6_lights_06004CF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4CF8
   symbol: lakitu_seg6_lights_06004CF8
@@ -314,37 +314,37 @@ lakitu_seg6_dl_06005360:
   symbol: lakitu_seg6_dl_06005360
 
 lakitu_cameraman_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x53D8
   symbol: lakitu_cameraman_lights_unused1
 
 lakitu_seg6_lights_060053F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x53F0
   symbol: lakitu_seg6_lights_060053F0
 
 lakitu_cameraman_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5408
   symbol: lakitu_cameraman_lights_unused2
 
 lakitu_cameraman_lights_unused3:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5420
   symbol: lakitu_cameraman_lights_unused3
 
 lakitu_seg6_lights_06005438:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5438
   symbol: lakitu_seg6_lights_06005438
 
 lakitu_cameraman_lights_unused4:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5450
   symbol: lakitu_cameraman_lights_unused4

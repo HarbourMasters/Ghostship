@@ -11,19 +11,19 @@
       - '#include "manta/geo.h"'
 
 manta_seg5_lights_05001758:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1758
   symbol: manta_seg5_lights_05001758
 
 manta_seg5_lights_05001770:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1770
   symbol: manta_seg5_lights_05001770
 
 manta_lights_unused:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1770
   symbol: manta_lights_unused

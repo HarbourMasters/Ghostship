@@ -10,7 +10,7 @@
       - '#include "purple_switch/geo.h"'
 
 purple_switch_seg8_lights_0800C090:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC090
   symbol: purple_switch_seg8_lights_0800C090

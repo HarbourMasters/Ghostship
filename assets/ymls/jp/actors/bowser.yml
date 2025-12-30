@@ -272,19 +272,19 @@ bowser_eye_far_left_1:
   symbol: bowser_seg6_texture_06037C38
 
 bowser_seg6_lights_06038C38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x38C38
   symbol: bowser_seg6_lights_06038C38
 
 bowser_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x38C38
   symbol: bowser_lights_unused1
 
 bowser_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x38C38
   symbol: bowser_lights_unused2

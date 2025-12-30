@@ -6,7 +6,7 @@
     - [0x08,  0x1F0530]
 
 cannon_lid_seg8_lights_08004040:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4040
   symbol: cannon_lid_seg8_lights_08004040

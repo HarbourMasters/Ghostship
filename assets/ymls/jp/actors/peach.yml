@@ -11,13 +11,13 @@
       - '#include "peach/geo.h"'
 
 peach_seg5_lights_050009F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9F8
   symbol: peach_seg5_lights_050009F8
 
 peach_seg5_lights_05000A10:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA10
   symbol: peach_seg5_lights_05000A10
@@ -290,7 +290,7 @@ peach_seg5_dl_05005F48:
   symbol: peach_seg5_dl_05005F48
 
 peach_seg5_lights_05005FA0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5FA0
   symbol: peach_seg5_lights_05005FA0
@@ -312,13 +312,13 @@ peach_seg5_dl_050060E0:
   symbol: peach_seg5_dl_050060E0
 
 peach_seg5_lights_05006138:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6138
   symbol: peach_seg5_lights_05006138
 
 peach_seg5_lights_05006150:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6150
   symbol: peach_seg5_lights_05006150
@@ -387,7 +387,7 @@ peach_seg5_dl_05006A18:
   symbol: peach_seg5_dl_05006A18
 
 peach_seg5_lights_05006A90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6A90
   symbol: peach_seg5_lights_05006A90
@@ -433,7 +433,7 @@ peach_seg5_dl_05007230:
   symbol: peach_seg5_dl_05007230
 
 peach_seg5_lights_05007288:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7288
   symbol: peach_seg5_lights_05007288
@@ -485,7 +485,7 @@ peach_seg5_dl_05007AB8:
   symbol: peach_seg5_dl_05007AB8
 
 peach_seg5_lights_05007AE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7AE0
   symbol: peach_seg5_lights_05007AE0
@@ -513,7 +513,7 @@ peach_seg5_dl_05007E58:
   symbol: peach_seg5_dl_05007E58
 
 peach_seg5_lights_05007EB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7EB0
   symbol: peach_seg5_lights_05007EB0
@@ -541,7 +541,7 @@ peach_seg5_dl_05008228:
   symbol: peach_seg5_dl_05008228
 
 peach_seg5_lights_05008280:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8280
   symbol: peach_seg5_lights_05008280
@@ -574,7 +574,7 @@ peach_seg5_dl_05008560:
   symbol: peach_seg5_dl_05008560
 
 peach_seg5_lights_050085D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x85D0
   symbol: peach_seg5_lights_050085D0
@@ -596,7 +596,7 @@ peach_seg5_dl_050087A8:
   symbol: peach_seg5_dl_050087A8
 
 peach_seg5_lights_050087D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x87D0
   symbol: peach_seg5_lights_050087D0
@@ -629,7 +629,7 @@ peach_seg5_dl_05008AB0:
   symbol: peach_seg5_dl_05008AB0
 
 peach_seg5_lights_05008B20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8B20
   symbol: peach_seg5_lights_05008B20
@@ -651,7 +651,7 @@ peach_seg5_dl_05008CF8:
   symbol: peach_seg5_dl_05008CF8
 
 peach_seg5_lights_05008D20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8D20
   symbol: peach_seg5_lights_05008D20
@@ -673,7 +673,7 @@ peach_seg5_dl_05008F20:
   symbol: peach_seg5_dl_05008F20
 
 peach_seg5_lights_05008F48:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8F48
   symbol: peach_seg5_lights_05008F48
@@ -695,7 +695,7 @@ peach_seg5_dl_05009148:
   symbol: peach_seg5_dl_05009148
 
 peach_seg5_lights_05009170:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9170
   symbol: peach_seg5_lights_05009170
@@ -723,7 +723,7 @@ peach_seg5_dl_05009500:
   symbol: peach_seg5_dl_05009500
 
 peach_seg5_lights_05009528:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9528
   symbol: peach_seg5_lights_05009528
@@ -757,7 +757,7 @@ peach_seg5_dl_05009940:
   symbol: peach_seg5_dl_05009940
 
 peach_seg5_lights_05009968:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9968
   symbol: peach_seg5_lights_05009968

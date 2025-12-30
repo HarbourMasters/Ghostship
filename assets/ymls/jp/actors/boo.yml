@@ -10,7 +10,7 @@
       - '#include "boo/geo.h"'
 
 boo_seg5_lights_05009B28:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9B28
   symbol: boo_seg5_lights_05009B28

@@ -10,7 +10,7 @@
       - '#include "boo_castle/geo.h"'
 
 boo_castle_seg6_lights_06015658:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x15658
   symbol: boo_castle_seg6_lights_06015658

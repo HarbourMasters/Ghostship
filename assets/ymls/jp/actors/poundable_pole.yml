@@ -10,7 +10,7 @@
       - '#include "poundable_pole/geo.h"'
 
 poundable_pole_seg6_lights_06001038:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1038
   symbol: poundable_pole_seg6_lights_06001038

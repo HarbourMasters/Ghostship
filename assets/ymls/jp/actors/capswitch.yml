@@ -10,37 +10,37 @@
       - '#include "capswitch/geo.h"'
 
 capswitch_seg5_lights_05001BB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1BB8
   symbol: capswitch_seg5_lights_05001BB8
 
 capswitch_seg5_lights_05001BD0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1BD0
   symbol: capswitch_seg5_lights_05001BD0
 
 capswitch_seg5_lights_05001BE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1BE8
   symbol: capswitch_seg5_lights_05001BE8
 
 capswitch_seg5_lights_05001C00:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1C00
   symbol: capswitch_seg5_lights_05001C00
 
 capswitch_seg5_lights_05001C18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1C18
   symbol: capswitch_seg5_lights_05001C18
 
 capswitch_seg5_lights_05001C30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1C30
   symbol: capswitch_seg5_lights_05001C30

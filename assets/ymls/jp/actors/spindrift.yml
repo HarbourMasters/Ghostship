@@ -11,49 +11,49 @@
       - '#include "spindrift/geo.h"'
 
 spindrift_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: spindrift_lights_unused1
 
 spindrift_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x18
   symbol: spindrift_lights_unused2
 
 spindrift_seg5_lights_05000030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x30
   symbol: spindrift_seg5_lights_05000030
 
 spindrift_seg5_lights_05000048:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x48
   symbol: spindrift_seg5_lights_05000048
 
 spindrift_lights_unused3:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x48
   symbol: spindrift_lights_unused3
 
 spindrift_seg5_lights_05000078:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x78
   symbol: spindrift_seg5_lights_05000078
 
 spindrift_seg5_lights_05000090:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x90
   symbol: spindrift_seg5_lights_05000090
 
 spindrift_lights_unused4:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x90
   symbol: spindrift_lights_unused4

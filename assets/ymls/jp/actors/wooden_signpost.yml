@@ -10,7 +10,7 @@
       - '#include "wooden_signpost/geo.h"'
 
 wooden_signpost_seg3_lights_0302C940:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2C940
   symbol: wooden_signpost_seg3_lights_0302C940
@@ -50,7 +50,7 @@ wooden_signpost_seg3_dl_0302DA48:
   symbol: wooden_signpost_seg3_dl_0302DA48
 
 wooden_signpost_seg3_lights_0302DAA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2DAA8
   symbol: wooden_signpost_seg3_lights_0302DAA8

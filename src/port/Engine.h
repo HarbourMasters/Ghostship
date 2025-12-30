@@ -44,7 +44,6 @@ class GameEngine {
     static void StartAudioFrame();
     static void EndAudioFrame();
     static void AudioExit();
-    static void PatchInterpolations();
     static void ProcessGfxCommands(Gfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();

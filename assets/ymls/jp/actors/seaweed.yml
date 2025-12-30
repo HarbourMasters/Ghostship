@@ -11,7 +11,7 @@
       - '#include "seaweed/geo.h"'
 
 seaweed_seg6_lights_06007DF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7DF8
   symbol: seaweed_seg6_lights_06007DF8

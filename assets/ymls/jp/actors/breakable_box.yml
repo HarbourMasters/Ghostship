@@ -10,7 +10,7 @@
       - '#include "breakable_box/geo.h"'
 
 breakable_box_seg8_lights_08011A80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x11A78
   symbol: breakable_box_seg8_lights_08011A80

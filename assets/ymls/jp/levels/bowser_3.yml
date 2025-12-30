@@ -38,13 +38,13 @@
   symbol: bowser_3_seg7_texture_07001000
 
 bowser_3_seg7_lights_07002000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2000
   symbol: bowser_3_seg7_lights_07002000
 
 bowser_3_seg7_lights_07002018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2018
   symbol: bowser_3_seg7_lights_07002018
@@ -83,13 +83,13 @@ bowser_3_seg7_dl_070022A8:
   symbol: bowser_3_seg7_dl_070022A8
 
 bowser_3_seg7_lights_07002338:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2338
   symbol: bowser_3_seg7_lights_07002338
 
 bowser_3_seg7_lights_07002350:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2350
   symbol: bowser_3_seg7_lights_07002350
@@ -128,13 +128,13 @@ bowser_3_seg7_dl_070025E0:
   symbol: bowser_3_seg7_dl_070025E0
 
 bowser_3_seg7_lights_07002670:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2670
   symbol: bowser_3_seg7_lights_07002670
 
 bowser_3_seg7_lights_07002688:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2688
   symbol: bowser_3_seg7_lights_07002688
@@ -173,13 +173,13 @@ bowser_3_seg7_dl_07002918:
   symbol: bowser_3_seg7_dl_07002918
 
 bowser_3_seg7_lights_070029A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x29A8
   symbol: bowser_3_seg7_lights_070029A8
 
 bowser_3_seg7_lights_070029C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x29C0
   symbol: bowser_3_seg7_lights_070029C0
@@ -218,13 +218,13 @@ bowser_3_seg7_dl_07002C50:
   symbol: bowser_3_seg7_dl_07002C50
 
 bowser_3_seg7_lights_07002CE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2CE0
   symbol: bowser_3_seg7_lights_07002CE0
 
 bowser_3_seg7_lights_07002CF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2CF8
   symbol: bowser_3_seg7_lights_07002CF8
@@ -263,13 +263,13 @@ bowser_3_seg7_dl_07002F88:
   symbol: bowser_3_seg7_dl_07002F88
 
 bowser_3_seg7_lights_07003018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3018
   symbol: bowser_3_seg7_lights_07003018
 
 bowser_3_seg7_lights_07003030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3030
   symbol: bowser_3_seg7_lights_07003030
@@ -308,13 +308,13 @@ bowser_3_seg7_dl_070032C0:
   symbol: bowser_3_seg7_dl_070032C0
 
 bowser_3_seg7_lights_07003350:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3350
   symbol: bowser_3_seg7_lights_07003350
 
 bowser_3_seg7_lights_07003368:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3368
   symbol: bowser_3_seg7_lights_07003368
@@ -353,13 +353,13 @@ bowser_3_seg7_dl_070035F8:
   symbol: bowser_3_seg7_dl_070035F8
 
 bowser_3_seg7_lights_07003688:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3688
   symbol: bowser_3_seg7_lights_07003688
 
 bowser_3_seg7_lights_070036A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x36A0
   symbol: bowser_3_seg7_lights_070036A0
@@ -398,13 +398,13 @@ bowser_3_seg7_dl_07003930:
   symbol: bowser_3_seg7_dl_07003930
 
 bowser_3_seg7_lights_070039C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x39C0
   symbol: bowser_3_seg7_lights_070039C0
 
 bowser_3_seg7_lights_070039D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x39D8
   symbol: bowser_3_seg7_lights_070039D8
@@ -443,13 +443,13 @@ bowser_3_seg7_dl_07003C68:
   symbol: bowser_3_seg7_dl_07003C68
 
 bowser_3_seg7_lights_07003CF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3CF8
   symbol: bowser_3_seg7_lights_07003CF8
 
 bowser_3_seg7_lights_07003D10:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3D10
   symbol: bowser_3_seg7_lights_07003D10
@@ -488,13 +488,13 @@ bowser_3_seg7_dl_07003FA0:
   symbol: bowser_3_seg7_dl_07003FA0
 
 bowser_3_seg7_lights_07004030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4030
   symbol: bowser_3_seg7_lights_07004030
 
 bowser_3_seg7_lights_07004048:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4048
   symbol: bowser_3_seg7_lights_07004048
@@ -551,7 +551,7 @@ bowser_3_seg7_dl_070046B0:
   symbol: bowser_3_seg7_dl_070046B0
 
 bowser_3_seg7_lights_07004740:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4740
   symbol: bowser_3_seg7_lights_07004740

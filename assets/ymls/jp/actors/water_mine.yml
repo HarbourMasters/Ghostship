@@ -10,7 +10,7 @@
       - '#include "water_mine/geo.h"'
 
 water_mine_seg6_lights_0600A4E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA4E0
   symbol: water_mine_seg6_lights_0600A4E0

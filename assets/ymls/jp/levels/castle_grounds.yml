@@ -420,49 +420,49 @@ castle_grounds_seg7_dl_07006D70:
   symbol: castle_grounds_seg7_dl_07006D70
 
 castle_grounds_seg7_lights_07006ED8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6ED8
   symbol: castle_grounds_seg7_lights_07006ED8
 
 castle_grounds_seg7_lights_07006EF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6EF0
   symbol: castle_grounds_seg7_lights_07006EF0
 
 castle_grounds_seg7_lights_07006F08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6F08
   symbol: castle_grounds_seg7_lights_07006F08
 
 castle_grounds_seg7_lights_07006F20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6F20
   symbol: castle_grounds_seg7_lights_07006F20
 
 castle_grounds_seg7_lights_07006F38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6F38
   symbol: castle_grounds_seg7_lights_07006F38
 
 castle_grounds_seg7_lights_07006F50:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6F50
   symbol: castle_grounds_seg7_lights_07006F50
 
 castle_grounds_seg7_lights_07006F68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6F68
   symbol: castle_grounds_seg7_lights_07006F68
 
 castle_grounds_seg7_lights_07006F80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6F80
   symbol: castle_grounds_seg7_lights_07006F80
@@ -1035,31 +1035,31 @@ castle_grounds_seg7_dl_0700BC68:
   symbol: castle_grounds_seg7_dl_0700BC68
 
 castle_grounds_seg7_lights_0700BCD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBCD8
   symbol: castle_grounds_seg7_lights_0700BCD8
 
 castle_grounds_seg7_lights_0700BCF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBCF0
   symbol: castle_grounds_seg7_lights_0700BCF0
 
 castle_grounds_seg7_lights_0700BD08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBD08
   symbol: castle_grounds_seg7_lights_0700BD08
 
 castle_grounds_seg7_lights_0700BD20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBD20
   symbol: castle_grounds_seg7_lights_0700BD20
 
 castle_grounds_seg7_lights_0700BD38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBD38
   symbol: castle_grounds_seg7_lights_0700BD38
@@ -1143,13 +1143,13 @@ castle_grounds_seg7_dl_0700C430:
   symbol: castle_grounds_seg7_dl_0700C430
 
 castle_grounds_seg7_lights_0700C4C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC4C8
   symbol: castle_grounds_seg7_lights_0700C4C8
 
 castle_grounds_seg7_lights_0700C4E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC4E0
   symbol: castle_grounds_seg7_lights_0700C4E0

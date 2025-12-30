@@ -382,7 +382,7 @@ castle_light:
   symbol: inside_castle_seg7_texture_07020800
 
 inside_castle_seg7_lights_07021800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x21800
   symbol: inside_castle_seg7_lights_07021800
@@ -437,13 +437,13 @@ inside_castle_seg7_painting_dl_07021AC0:
   symbol: inside_castle_seg7_painting_dl_07021AC0
 
 inside_castle_seg7_lights_07022528:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22528
   symbol: inside_castle_seg7_lights_07022528
 
 inside_castle_seg7_lights_07022540:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x22540
   symbol: inside_castle_seg7_lights_07022540
@@ -562,19 +562,19 @@ inside_castle_seg7_dl_07023DB0:
   symbol: inside_castle_seg7_dl_07023DB0
 
 inside_castle_seg7_lights_07023FE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x23FE0
   symbol: inside_castle_seg7_lights_07023FE0
 
 inside_castle_seg7_lights_07023FF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x23FF8
   symbol: inside_castle_seg7_lights_07023FF8
 
 inside_castle_seg7_lights_07024010:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x24010
   symbol: inside_castle_seg7_lights_07024010
@@ -1058,37 +1058,37 @@ inside_castle_seg7_dl_07029578:
   symbol: inside_castle_seg7_dl_07029578
 
 inside_castle_seg7_lights_070295E8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x295E8
   symbol: inside_castle_seg7_lights_070295E8
 
 inside_castle_seg7_lights_07029600:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x29600
   symbol: inside_castle_seg7_lights_07029600
 
 inside_castle_seg7_lights_07029618:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x29618
   symbol: inside_castle_seg7_lights_07029618
 
 inside_castle_seg7_lights_07029630:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x29630
   symbol: inside_castle_seg7_lights_07029630
 
 inside_castle_seg7_lights_07029648:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x29648
   symbol: inside_castle_seg7_lights_07029648
 
 inside_castle_seg7_lights_07029660:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x29660
   symbol: inside_castle_seg7_lights_07029660
@@ -1238,7 +1238,7 @@ dl_castle_lobby_wing_cap_light:
   symbol: dl_castle_lobby_wing_cap_light
 
 inside_castle_seg7_lights_0702A8F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2A8F0
   symbol: inside_castle_seg7_lights_0702A8F0
@@ -1260,7 +1260,7 @@ inside_castle_seg7_dl_0702AA10:
   symbol: inside_castle_seg7_dl_0702AA10
 
 inside_castle_seg7_lights_0702AA80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2AA80
   symbol: inside_castle_seg7_lights_0702AA80
@@ -1282,13 +1282,13 @@ inside_castle_seg7_dl_0702AB20:
   symbol: inside_castle_seg7_dl_0702AB20
 
 inside_castle_seg7_lights_0702AB90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2AB90
   symbol: inside_castle_seg7_lights_0702AB90
 
 inside_castle_seg7_lights_0702ABA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2ABA8
   symbol: inside_castle_seg7_lights_0702ABA8
@@ -1607,31 +1607,31 @@ inside_castle_seg7_dl_0702E408:
   symbol: inside_castle_seg7_dl_0702E408
 
 inside_castle_seg7_lights_0702E490:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2E490
   symbol: inside_castle_seg7_lights_0702E490
 
 inside_castle_seg7_lights_0702E4A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2E4A8
   symbol: inside_castle_seg7_lights_0702E4A8
 
 inside_castle_seg7_lights_0702E4C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2E4C0
   symbol: inside_castle_seg7_lights_0702E4C0
 
 inside_castle_seg7_lights_0702E4D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2E4D8
   symbol: inside_castle_seg7_lights_0702E4D8
 
 inside_castle_seg7_lights_0702E4F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2E4F0
   symbol: inside_castle_seg7_lights_0702E4F0
@@ -1799,7 +1799,7 @@ inside_castle_seg7_dl_0702FD30:
   symbol: inside_castle_seg7_dl_0702FD30
 
 inside_castle_seg7_lights_0702FDD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2FDD8
   symbol: inside_castle_seg7_lights_0702FDD8
@@ -1967,7 +1967,7 @@ inside_castle_seg7_dl_07031720:
   symbol: inside_castle_seg7_dl_07031720
 
 inside_castle_seg7_lights_07031790:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x31790
   symbol: inside_castle_seg7_lights_07031790
@@ -1989,13 +1989,13 @@ inside_castle_seg7_dl_07031830:
   symbol: inside_castle_seg7_dl_07031830
 
 inside_castle_seg7_lights_070318A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x318A0
   symbol: inside_castle_seg7_lights_070318A0
 
 inside_castle_seg7_lights_070318B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x318B8
   symbol: inside_castle_seg7_lights_070318B8
@@ -2151,7 +2151,7 @@ inside_castle_seg7_dl_07032FC0:
   symbol: inside_castle_seg7_dl_07032FC0
 
 inside_castle_seg7_lights_07033068:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x33068
   symbol: inside_castle_seg7_lights_07033068
@@ -2173,13 +2173,13 @@ inside_castle_seg7_dl_07033158:
   symbol: inside_castle_seg7_dl_07033158
 
 inside_castle_seg7_lights_070331C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x331C8
   symbol: inside_castle_seg7_lights_070331C8
 
 inside_castle_seg7_lights_070331E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x331E0
   symbol: inside_castle_seg7_lights_070331E0
@@ -2392,7 +2392,7 @@ inside_castle_seg7_dl_07035178:
   symbol: inside_castle_seg7_dl_07035178
 
 inside_castle_seg7_lights_070351E8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x351E8
   symbol: inside_castle_seg7_lights_070351E8
@@ -2414,25 +2414,25 @@ inside_castle_seg7_dl_07035288:
   symbol: inside_castle_seg7_dl_07035288
 
 inside_castle_seg7_lights_070352F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x352F8
   symbol: inside_castle_seg7_lights_070352F8
 
 inside_castle_seg7_lights_07035310:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x35310
   symbol: inside_castle_seg7_lights_07035310
 
 inside_castle_seg7_lights_07035328:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x35328
   symbol: inside_castle_seg7_lights_07035328
 
 inside_castle_seg7_lights_07035340:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x35340
   symbol: inside_castle_seg7_lights_07035340
@@ -2611,7 +2611,7 @@ inside_castle_seg7_dl_07036D88:
   symbol: inside_castle_seg7_dl_07036D88
 
 inside_castle_seg7_lights_07036E68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x36E68
   symbol: inside_castle_seg7_lights_07036E68
@@ -2681,7 +2681,7 @@ inside_castle_seg7_dl_07037988:
   symbol: inside_castle_seg7_dl_07037988
 
 inside_castle_seg7_lights_070379F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x379F8
   symbol: inside_castle_seg7_lights_070379F8
@@ -2703,7 +2703,7 @@ inside_castle_seg7_dl_07037BF8:
   symbol: inside_castle_seg7_dl_07037BF8
 
 inside_castle_seg7_lights_07037C58:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x37C58
   symbol: inside_castle_seg7_lights_07037C58
@@ -2753,7 +2753,7 @@ dl_castle_aquarium_light:
   symbol: dl_castle_aquarium_light
 
 inside_castle_seg7_lights_070382B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x382B0
   symbol: inside_castle_seg7_lights_070382B0
@@ -2775,19 +2775,19 @@ inside_castle_seg7_dl_07038350:
   symbol: inside_castle_seg7_dl_07038350
 
 inside_castle_seg7_lights_070383C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x383C0
   symbol: inside_castle_seg7_lights_070383C0
 
 inside_castle_seg7_lights_070383D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x383D8
   symbol: inside_castle_seg7_lights_070383D8
 
 inside_castle_seg7_lights_070383F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x383F0
   symbol: inside_castle_seg7_lights_070383F0
@@ -2998,7 +2998,7 @@ inside_castle_seg7_dl_0703A6C8:
   symbol: inside_castle_seg7_dl_0703A6C8
 
 inside_castle_seg7_lights_0703A768:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3A768
   symbol: inside_castle_seg7_lights_0703A768
@@ -3020,13 +3020,13 @@ inside_castle_seg7_dl_0703A808:
   symbol: inside_castle_seg7_dl_0703A808
 
 inside_castle_seg7_lights_0703A878:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3A878
   symbol: inside_castle_seg7_lights_0703A878
 
 inside_castle_seg7_lights_0703A890:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3A890
   symbol: inside_castle_seg7_lights_0703A890
@@ -3152,7 +3152,7 @@ inside_castle_seg7_dl_0703BA08:
   symbol: inside_castle_seg7_dl_0703BA08
 
 inside_castle_seg7_lights_0703BAB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3BAB0
   symbol: inside_castle_seg7_lights_0703BAB0
@@ -3180,7 +3180,7 @@ inside_castle_seg7_dl_0703BCB8:
   symbol: inside_castle_seg7_dl_0703BCB8
 
 inside_castle_seg7_lights_0703BD28:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3BD28
   symbol: inside_castle_seg7_lights_0703BD28
@@ -3224,13 +3224,13 @@ inside_castle_seg7_dl_0703BFA8:
   symbol: inside_castle_seg7_dl_0703BFA8
 
 inside_castle_seg7_lights_0703C040:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3C040
   symbol: inside_castle_seg7_lights_0703C040
 
 inside_castle_seg7_lights_0703C058:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3C058
   symbol: inside_castle_seg7_lights_0703C058
@@ -3464,7 +3464,7 @@ inside_castle_seg7_dl_0703E6F0:
   symbol: inside_castle_seg7_dl_0703E6F0
 
 inside_castle_seg7_lights_0703E798:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3E798
   symbol: inside_castle_seg7_lights_0703E798
@@ -3870,13 +3870,13 @@ inside_castle_seg7_dl_07043028:
   symbol: inside_castle_seg7_dl_07043028
 
 inside_castle_seg7_lights_070430F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x430F8
   symbol: inside_castle_seg7_lights_070430F8
 
 inside_castle_seg7_lights_07043110:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x43110
   symbol: inside_castle_seg7_lights_07043110
@@ -4026,7 +4026,7 @@ inside_castle_seg7_dl_07043B48:
   symbol: inside_castle_seg7_dl_07043B48
 
 inside_castle_seg7_lights_07043C38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x43C38
   symbol: inside_castle_seg7_lights_07043C38
@@ -4592,7 +4592,7 @@ inside_castle_seg7_dl_0704A0E8:
   symbol: inside_castle_seg7_dl_0704A0E8
 
 inside_castle_seg7_lights_0704A1B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4A1B8
   symbol: inside_castle_seg7_lights_0704A1B8
@@ -4729,19 +4729,19 @@ inside_castle_seg7_dl_0704AA98:
   symbol: inside_castle_seg7_dl_0704AA98
 
 inside_castle_seg7_lights_0704AB80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4AB80
   symbol: inside_castle_seg7_lights_0704AB80
 
 inside_castle_seg7_lights_0704AB98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4AB98
   symbol: inside_castle_seg7_lights_0704AB98
 
 inside_castle_seg7_lights_0704ABB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4ABB0
   symbol: inside_castle_seg7_lights_0704ABB0
@@ -4948,67 +4948,67 @@ inside_castle_seg7_dl_0704C7D8:
   symbol: inside_castle_seg7_dl_0704C7D8
 
 inside_castle_seg7_lights_0704C8B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C8B0
   symbol: inside_castle_seg7_lights_0704C8B0
 
 inside_castle_seg7_lights_0704C8C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C8C8
   symbol: inside_castle_seg7_lights_0704C8C8
 
 inside_castle_seg7_lights_0704C8E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C8E0
   symbol: inside_castle_seg7_lights_0704C8E0
 
 inside_castle_seg7_lights_0704C8F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C8F8
   symbol: inside_castle_seg7_lights_0704C8F8
 
 inside_castle_seg7_lights_0704C910:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C910
   symbol: inside_castle_seg7_lights_0704C910
 
 inside_castle_seg7_lights_0704C928:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C928
   symbol: inside_castle_seg7_lights_0704C928
 
 inside_castle_seg7_lights_0704C940:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C940
   symbol: inside_castle_seg7_lights_0704C940
 
 inside_castle_seg7_lights_0704C958:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C958
   symbol: inside_castle_seg7_lights_0704C958
 
 inside_castle_seg7_lights_0704C970:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C970
   symbol: inside_castle_seg7_lights_0704C970
 
 inside_castle_seg7_lights_0704C988:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C988
   symbol: inside_castle_seg7_lights_0704C988
 
 inside_castle_seg7_lights_0704C9A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C9A0
   symbol: inside_castle_seg7_lights_0704C9A0
@@ -5427,13 +5427,13 @@ inside_castle_seg7_dl_07050938:
   symbol: inside_castle_seg7_dl_07050938
 
 inside_castle_seg7_lights_07050A78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x50A78
   symbol: inside_castle_seg7_lights_07050A78
 
 inside_castle_seg7_lights_07050A90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x50A90
   symbol: inside_castle_seg7_lights_07050A90
@@ -5546,7 +5546,7 @@ inside_castle_seg7_dl_070519C8:
   symbol: inside_castle_seg7_dl_070519C8
 
 inside_castle_seg7_lights_07051A38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x51A38
   symbol: inside_castle_seg7_lights_07051A38
@@ -5568,19 +5568,19 @@ inside_castle_seg7_dl_07051B60:
   symbol: inside_castle_seg7_dl_07051B60
 
 inside_castle_seg7_lights_07051B88:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x51B88
   symbol: inside_castle_seg7_lights_07051B88
 
 inside_castle_seg7_lights_07051BA0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x51BA0
   symbol: inside_castle_seg7_lights_07051BA0
 
 inside_castle_seg7_lights_07051BB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x51BB8
   symbol: inside_castle_seg7_lights_07051BB8
@@ -5934,13 +5934,13 @@ inside_castle_seg7_dl_070558D0:
   symbol: inside_castle_seg7_dl_070558D0
 
 inside_castle_seg7_lights_070559C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x559C0
   symbol: inside_castle_seg7_lights_070559C0
 
 inside_castle_seg7_lights_070559D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x559D8
   symbol: inside_castle_seg7_lights_070559D8
@@ -6159,13 +6159,13 @@ inside_castle_seg7_dl_070572A0:
   symbol: inside_castle_seg7_dl_070572A0
 
 inside_castle_seg7_lights_07057380:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x57380
   symbol: inside_castle_seg7_lights_07057380
 
 inside_castle_seg7_lights_07057398:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x57398
   symbol: inside_castle_seg7_lights_07057398
@@ -6288,13 +6288,13 @@ inside_castle_seg7_dl_07057F00:
   symbol: inside_castle_seg7_dl_07057F00
 
 inside_castle_seg7_lights_07057FD8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x57FD8
   symbol: inside_castle_seg7_lights_07057FD8
 
 inside_castle_seg7_lights_07057FF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x57FF0
   symbol: inside_castle_seg7_lights_07057FF0
@@ -6358,13 +6358,13 @@ inside_castle_seg7_dl_07058950:
   symbol: inside_castle_seg7_dl_07058950
 
 inside_castle_seg7_lights_070589C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x589C0
   symbol: inside_castle_seg7_lights_070589C0
 
 inside_castle_seg7_lights_070589D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x589D8
   symbol: inside_castle_seg7_lights_070589D8
@@ -6422,49 +6422,49 @@ inside_castle_seg7_dl_07059190:
   symbol: inside_castle_seg7_dl_07059190
 
 inside_castle_seg7_lights_07059200:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59200
   symbol: inside_castle_seg7_lights_07059200
 
 inside_castle_seg7_lights_07059218:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59218
   symbol: inside_castle_seg7_lights_07059218
 
 inside_castle_seg7_lights_07059230:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59230
   symbol: inside_castle_seg7_lights_07059230
 
 inside_castle_seg7_lights_07059248:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59248
   symbol: inside_castle_seg7_lights_07059248
 
 inside_castle_seg7_lights_07059260:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59260
   symbol: inside_castle_seg7_lights_07059260
 
 inside_castle_seg7_lights_07059278:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59278
   symbol: inside_castle_seg7_lights_07059278
 
 inside_castle_seg7_lights_07059290:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59290
   symbol: inside_castle_seg7_lights_07059290
 
 inside_castle_seg7_lights_070592A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x592A8
   symbol: inside_castle_seg7_lights_070592A8
@@ -6947,7 +6947,7 @@ inside_castle_seg7_dl_0705E2A0:
   symbol: inside_castle_seg7_dl_0705E2A0
 
 inside_castle_seg7_lights_0705E310:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5E310
   symbol: inside_castle_seg7_lights_0705E310
@@ -6969,31 +6969,31 @@ inside_castle_seg7_dl_0705E450:
   symbol: inside_castle_seg7_dl_0705E450
 
 inside_castle_seg7_lights_0705E4C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5E4C0
   symbol: inside_castle_seg7_lights_0705E4C0
 
 inside_castle_seg7_lights_0705E4D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5E4D8
   symbol: inside_castle_seg7_lights_0705E4D8
 
 inside_castle_seg7_lights_0705E4F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5E4F0
   symbol: inside_castle_seg7_lights_0705E4F0
 
 inside_castle_seg7_lights_0705E508:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5E508
   symbol: inside_castle_seg7_lights_0705E508
 
 inside_castle_seg7_lights_0705E520:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5E520
   symbol: inside_castle_seg7_lights_0705E520
@@ -7321,19 +7321,19 @@ inside_castle_seg7_dl_07061C20:
   symbol: inside_castle_seg7_dl_07061C20
 
 inside_castle_seg7_lights_07061C90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x61C90
   symbol: inside_castle_seg7_lights_07061C90
 
 inside_castle_seg7_lights_07061CA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x61CA8
   symbol: inside_castle_seg7_lights_07061CA8
 
 inside_castle_seg7_lights_07061CC0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x61CC0
   symbol: inside_castle_seg7_lights_07061CC0
@@ -7636,7 +7636,7 @@ inside_castle_seg7_dl_07064D58:
   symbol: inside_castle_seg7_dl_07064D58
 
 inside_castle_seg7_lights_07064DC8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x64DC8
   symbol: inside_castle_seg7_lights_07064DC8
@@ -7844,7 +7844,7 @@ inside_castle_seg7_dl_07066E90:
   symbol: inside_castle_seg7_dl_07066E90
 
 inside_castle_seg7_lights_07066F00:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x66F00
   symbol: inside_castle_seg7_lights_07066F00
@@ -7866,25 +7866,25 @@ inside_castle_seg7_dl_07066FA0:
   symbol: inside_castle_seg7_dl_07066FA0
 
 inside_castle_seg7_lights_07067010:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x67010
   symbol: inside_castle_seg7_lights_07067010
 
 inside_castle_seg7_lights_07067028:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x67028
   symbol: inside_castle_seg7_lights_07067028
 
 inside_castle_seg7_lights_07067040:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x67040
   symbol: inside_castle_seg7_lights_07067040
 
 inside_castle_seg7_lights_07067058:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x67058
   symbol: inside_castle_seg7_lights_07067058
@@ -8056,7 +8056,7 @@ inside_castle_seg7_dl_07068850:
   symbol: inside_castle_seg7_dl_07068850
 
 inside_castle_seg7_lights_07068908:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x68908
   symbol: inside_castle_seg7_lights_07068908

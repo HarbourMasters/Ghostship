@@ -1145,37 +1145,37 @@ bitfs_seg7_dl_0700C3C0:
   symbol: bitfs_seg7_dl_0700C3C0
 
 bitfs_seg7_lights_0700C430:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC430
   symbol: bitfs_seg7_lights_0700C430
 
 bitfs_seg7_lights_0700C448:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC448
   symbol: bitfs_seg7_lights_0700C448
 
 bitfs_seg7_lights_0700C460:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC460
   symbol: bitfs_seg7_lights_0700C460
 
 bitfs_seg7_lights_0700C478:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC478
   symbol: bitfs_seg7_lights_0700C478
 
 bitfs_seg7_lights_0700C490:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC490
   symbol: bitfs_seg7_lights_0700C490
 
 bitfs_seg7_lights_0700C4A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC4A8
   symbol: bitfs_seg7_lights_0700C4A8

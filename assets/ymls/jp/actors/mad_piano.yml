@@ -11,25 +11,25 @@
       - '#include "mad_piano/geo.h"'
 
 mad_piano_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6A90
   symbol: mad_piano_lights_unused1
 
 mad_piano_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6AA8
   symbol: mad_piano_lights_unused2
 
 mad_piano_lights_unused3:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6AC0
   symbol: mad_piano_lights_unused3
 
 mad_piano_lights_unused4:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6AD8
   symbol: mad_piano_lights_unused4
@@ -89,7 +89,7 @@ mad_piano_keys_edge:
   symbol: mad_piano_seg5_texture_050082F0
 
 mad_piano_seg5_lights_050086F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x86F0
   symbol: mad_piano_seg5_lights_050086F0
@@ -140,25 +140,25 @@ mad_piano_seg5_dl_05008CB0:
   symbol: mad_piano_seg5_dl_05008CB0
 
 mad_piano_seg5_lights_05008D40:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8D40
   symbol: mad_piano_seg5_lights_05008D40
 
 mad_piano_seg5_lights_05008D58:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8D58
   symbol: mad_piano_seg5_lights_05008D58
 
 mad_piano_seg5_lights_05008D70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8D70
   symbol: mad_piano_seg5_lights_05008D70
 
 mad_piano_seg5_lights_05008D88:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8D88
   symbol: mad_piano_seg5_lights_05008D88

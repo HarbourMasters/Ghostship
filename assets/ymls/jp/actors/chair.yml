@@ -11,7 +11,7 @@
       - '#include "chair/geo.h"'
 
 chair_lights_unused:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3048
   symbol: chair_lights_unused
@@ -53,7 +53,7 @@ chair_surface_unused:
   symbol: chair_seg5_texture_05004460
 
 chair_seg5_lights_05004C60:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C60
   symbol: chair_seg5_lights_05004C60
@@ -81,7 +81,7 @@ chair_seg5_dl_05004EE8:
   symbol: chair_seg5_dl_05004EE8
 
 chair_seg5_lights_05004F58:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4F58
   symbol: chair_seg5_lights_05004F58
@@ -109,7 +109,7 @@ chair_seg5_dl_05005190:
   symbol: chair_seg5_dl_05005190
 
 chair_seg5_lights_05005200:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5200
   symbol: chair_seg5_lights_05005200
@@ -137,7 +137,7 @@ chair_seg5_dl_05005408:
   symbol: chair_seg5_dl_05005408
 
 chair_seg5_lights_05005478:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5478
   symbol: chair_seg5_lights_05005478

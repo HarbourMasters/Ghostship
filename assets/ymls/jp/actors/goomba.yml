@@ -11,37 +11,37 @@
       - '#include "goomba/anims.h"'
 
 goomba_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x194A0
   symbol: goomba_lights_unused1
 
 goomba_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x194B8
   symbol: goomba_lights_unused2
 
 goomba_seg8_lights_080194D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x194D0
   symbol: goomba_seg8_lights_080194D0
 
 goomba_seg8_lights_080194E8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x194E8
   symbol: goomba_seg8_lights_080194E8
 
 goomba_seg8_lights_08019500:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19500
   symbol: goomba_seg8_lights_08019500
 
 goomba_seg8_lights_08019518:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x19518
   symbol: goomba_seg8_lights_08019518
@@ -74,7 +74,7 @@ goomba_face_blink:
   symbol: goomba_seg8_texture_0801A530
 
 goomba_seg8_lights_0801AD30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1AD30
   symbol: goomba_seg8_lights_0801AD30

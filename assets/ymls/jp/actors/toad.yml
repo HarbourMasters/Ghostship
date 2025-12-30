@@ -11,7 +11,7 @@
       - '#include "toad/geo.h"'
 
 toad_seg6_lights_06005908:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5908
   symbol: toad_seg6_lights_06005908
@@ -121,7 +121,7 @@ toad_seg6_dl_06007710:
   symbol: toad_seg6_dl_06007710
 
 toad_seg6_lights_06007788:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7788
   symbol: toad_seg6_lights_06007788
@@ -149,13 +149,13 @@ toad_seg6_dl_06007A48:
   symbol: toad_seg6_dl_06007A48
 
 toad_seg6_lights_06007A80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7A80
   symbol: toad_seg6_lights_06007A80
 
 toad_seg6_lights_06007A98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7A98
   symbol: toad_seg6_lights_06007A98
@@ -189,7 +189,7 @@ toad_seg6_dl_06007EB0:
   symbol: toad_seg6_dl_06007EB0
 
 toad_seg6_lights_06007ED8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7ED8
   symbol: toad_seg6_lights_06007ED8
@@ -217,7 +217,7 @@ toad_seg6_dl_060081F8:
   symbol: toad_seg6_dl_060081F8
 
 toad_seg6_lights_06008220:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8220
   symbol: toad_seg6_lights_06008220
@@ -245,7 +245,7 @@ toad_seg6_dl_06008520:
   symbol: toad_seg6_dl_06008520
 
 toad_seg6_lights_06008560:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8560
   symbol: toad_seg6_lights_06008560
@@ -273,7 +273,7 @@ toad_seg6_dl_06008890:
   symbol: toad_seg6_dl_06008890
 
 toad_seg6_lights_060088B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x88B8
   symbol: toad_seg6_lights_060088B8

@@ -58,13 +58,13 @@
   symbol: sl_seg7_texture_07002000
 
 sl_seg7_lights_07002800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2800
   symbol: sl_seg7_lights_07002800
 
 sl_seg7_lights_07002818:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2818
   symbol: sl_seg7_lights_07002818
@@ -311,7 +311,7 @@ sl_seg7_dl_07005478:
   symbol: sl_seg7_dl_07005478
 
 sl_seg7_lights_07005520:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5520
   symbol: sl_seg7_lights_07005520
@@ -333,13 +333,13 @@ sl_seg7_dl_070056B0:
   symbol: sl_seg7_dl_070056B0
 
 sl_seg7_lights_07005730:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5730
   symbol: sl_seg7_lights_07005730
 
 sl_seg7_lights_07005748:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5748
   symbol: sl_seg7_lights_07005748
@@ -581,7 +581,7 @@ sl_seg7_dl_07007880:
   symbol: sl_seg7_dl_07007880
 
 sl_seg7_lights_07007910:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7910
   symbol: sl_seg7_lights_07007910
@@ -675,13 +675,13 @@ sl_seg7_dl_070088B0:
   symbol: sl_seg7_dl_070088B0
 
 sl_seg7_lights_07008930:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8930
   symbol: sl_seg7_lights_07008930
 
 sl_seg7_lights_07008948:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8948
   symbol: sl_seg7_lights_07008948
@@ -726,7 +726,7 @@ sl_seg7_dl_07008D58:
   symbol: sl_seg7_dl_07008D58
 
 sl_seg7_lights_07008DE8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8DE8
   symbol: sl_seg7_lights_07008DE8
@@ -882,7 +882,7 @@ sl_seg7_dl_0700A5A0:
   symbol: sl_seg7_dl_0700A5A0
 
 sl_seg7_lights_0700A620:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA620
   symbol: sl_seg7_lights_0700A620
@@ -904,7 +904,7 @@ sl_seg7_dl_0700A780:
   symbol: sl_seg7_dl_0700A780
 
 sl_seg7_lights_0700A7F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA7F0
   symbol: sl_seg7_lights_0700A7F0
@@ -926,7 +926,7 @@ sl_seg7_dl_0700A890:
   symbol: sl_seg7_dl_0700A890
 
 sl_seg7_lights_0700A910:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA910
   symbol: sl_seg7_lights_0700A910
@@ -948,13 +948,13 @@ sl_seg7_dl_0700A980:
   symbol: sl_seg7_dl_0700A980
 
 sl_seg7_lights_0700A9B0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA9B0
   symbol: sl_seg7_lights_0700A9B0
 
 sl_seg7_lights_0700A9C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA9C8
   symbol: sl_seg7_lights_0700A9C8
@@ -1065,7 +1065,7 @@ sl_seg7_dl_0700BAE8:
   symbol: sl_seg7_dl_0700BAE8
 
 sl_seg7_lights_0700BB68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBB68
   symbol: sl_seg7_lights_0700BB68
@@ -1087,7 +1087,7 @@ sl_seg7_dl_0700BCF8:
   symbol: sl_seg7_dl_0700BCF8
 
 sl_seg7_lights_0700BD68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBD68
   symbol: sl_seg7_lights_0700BD68
@@ -1169,7 +1169,7 @@ sl_seg7_dl_0700C9E8:
   symbol: sl_seg7_dl_0700C9E8
 
 sl_seg7_lights_0700CA68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xCA68
   symbol: sl_seg7_lights_0700CA68

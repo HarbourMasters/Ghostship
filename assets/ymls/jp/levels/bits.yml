@@ -1697,19 +1697,19 @@ bits_seg7_dl_07012D40:
   symbol: bits_seg7_dl_07012D40
 
 bits_seg7_lights_07012DB0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12DB0
   symbol: bits_seg7_lights_07012DB0
 
 bits_seg7_lights_07012DC8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12DC8
   symbol: bits_seg7_lights_07012DC8
 
 bits_seg7_lights_07012DE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x12DE0
   symbol: bits_seg7_lights_07012DE0
@@ -1789,7 +1789,7 @@ bits_seg7_dl_07013820:
   symbol: bits_seg7_dl_07013820
 
 bits_seg7_lights_07013890:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x13890
   symbol: bits_seg7_lights_07013890

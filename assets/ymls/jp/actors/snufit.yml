@@ -46,13 +46,13 @@ snufit_mouth:
   symbol: snufit_seg6_texture_060084E0
 
 snufit_seg6_lights_06008CE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8CE0
   symbol: snufit_seg6_lights_06008CE0
 
 snufit_seg6_lights_06008CF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8CF8
   symbol: snufit_seg6_lights_06008CF8
@@ -114,7 +114,7 @@ snufit_seg6_dl_06009498:
   symbol: snufit_seg6_dl_06009498
 
 snufit_seg6_lights_06009530:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9530
   symbol: snufit_seg6_lights_06009530
@@ -147,7 +147,7 @@ snufit_seg6_dl_06009748:
   symbol: snufit_seg6_dl_06009748
 
 snufit_seg6_lights_060097C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x97C8
   symbol: snufit_seg6_lights_060097C8
@@ -185,7 +185,7 @@ snufit_seg6_dl_06009A10:
   symbol: snufit_seg6_dl_06009A10
 
 snufit_seg6_lights_06009A80:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9A80
   symbol: snufit_seg6_lights_06009A80

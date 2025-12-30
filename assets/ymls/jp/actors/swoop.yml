@@ -11,13 +11,13 @@
       - '#include "swoop/geo.h"'
 
 swoop_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4240
   symbol: swoop_lights_unused1
 
 swoop_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4258
   symbol: swoop_lights_unused2
@@ -59,7 +59,7 @@ swoop_wing:
   symbol: swoop_seg6_texture_06005A70
 
 swoop_seg6_lights_06006270:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6270
   symbol: swoop_seg6_lights_06006270
@@ -120,7 +120,7 @@ swoop_seg6_dl_06006880:
   symbol: swoop_seg6_dl_06006880
 
 swoop_seg6_lights_06006938:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6938
   symbol: swoop_seg6_lights_06006938

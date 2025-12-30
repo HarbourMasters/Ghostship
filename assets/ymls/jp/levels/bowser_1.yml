@@ -38,7 +38,7 @@
   symbol: bowser_1_seg7_texture_07001800
 
 bowser_1_seg7_lights_07002000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2000
   symbol: bowser_1_seg7_lights_07002000

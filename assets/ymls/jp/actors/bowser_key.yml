@@ -11,7 +11,7 @@
       - '#include "bowser_key/geo.h"'
 
 bowser_key_lights:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x156E0
   symbol: bowser_key_lights

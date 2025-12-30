@@ -10,19 +10,19 @@
       - '#include "mario_cap/geo.h"'
 
 mario_cap_seg3_lights_0301CF08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1CF08
   symbol: mario_cap_seg3_lights_0301CF08
 
 mario_cap_seg3_lights_0301CF20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1CF20
   symbol: mario_cap_seg3_lights_0301CF20
 
 mario_cap_seg3_lights_0301CF38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1CF38
   symbol: mario_cap_seg3_lights_0301CF38

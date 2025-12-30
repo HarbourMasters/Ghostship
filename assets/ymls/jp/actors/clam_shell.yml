@@ -11,13 +11,13 @@
       - '#include "clam_shell/geo.h"'
 
 clam_shell_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: clam_shell_lights_unused1
 
 clam_shell_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x18
   symbol: clam_shell_lights_unused2
@@ -41,7 +41,7 @@ clam_shell_mouth:
   symbol: clam_shell_seg5_texture_05000830
 
 clam_shell_seg5_lights_05001030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1030
   symbol: clam_shell_seg5_lights_05001030
@@ -74,7 +74,7 @@ clam_shell_seg5_dl_050012B8:
   symbol: clam_shell_seg5_dl_050012B8
 
 clam_shell_seg5_lights_05001320:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1320
   symbol: clam_shell_seg5_lights_05001320

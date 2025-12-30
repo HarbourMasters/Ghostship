@@ -11,19 +11,19 @@
       - '#include "yoshi/geo.h"'
 
 yoshi_seg5_lights_0501C458:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1C458
   symbol: yoshi_seg5_lights_0501C458
 
 yoshi_seg5_lights_0501C470:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1C470
   symbol: yoshi_seg5_lights_0501C470
 
 yoshi_seg5_lights_0501C488:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1C488
   symbol: yoshi_seg5_lights_0501C488
@@ -169,37 +169,37 @@ yoshi_seg5_dl_0501D998:
   symbol: yoshi_seg5_dl_0501D998
 
 yoshi_seg5_lights_0501D9C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1D9C0
   symbol: yoshi_seg5_lights_0501D9C0
 
 yoshi_seg5_lights_0501D9D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1D9D8
   symbol: yoshi_seg5_lights_0501D9D8
 
 yoshi_seg5_lights_0501D9F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1D9F0
   symbol: yoshi_seg5_lights_0501D9F0
 
 yoshi_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1D9F0
   symbol: yoshi_lights_unused1
 
 yoshi_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1D9F0
   symbol: yoshi_lights_unused2
 
 yoshi_seg5_lights_0501DA38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1DA38
   symbol: yoshi_seg5_lights_0501DA38

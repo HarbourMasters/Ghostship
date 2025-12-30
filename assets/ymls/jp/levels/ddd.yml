@@ -58,25 +58,25 @@
   symbol: ddd_seg7_texture_07003000
 
 ddd_seg7_lights_07003800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3800
   symbol: ddd_seg7_lights_07003800
 
 ddd_seg7_lights_07003818:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3818
   symbol: ddd_seg7_lights_07003818
 
 ddd_seg7_lights_07003830:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3830
   symbol: ddd_seg7_lights_07003830
 
 ddd_seg7_lights_07003848:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3848
   symbol: ddd_seg7_lights_07003848
@@ -194,7 +194,7 @@ ddd_seg7_dl_07004D48:
   symbol: ddd_seg7_dl_07004D48
 
 ddd_seg7_lights_07004DA8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4DA8
   symbol: ddd_seg7_lights_07004DA8
@@ -269,7 +269,7 @@ ddd_seg7_dl_070057E8:
   symbol: ddd_seg7_dl_070057E8
 
 ddd_seg7_lights_07005850:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5850
   symbol: ddd_seg7_lights_07005850
@@ -331,31 +331,31 @@ ddd_seg7_dl_07005F78:
   symbol: ddd_seg7_dl_07005F78
 
 ddd_seg7_lights_07005FC8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5FC8
   symbol: ddd_seg7_lights_07005FC8
 
 ddd_seg7_lights_07005FE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5FE0
   symbol: ddd_seg7_lights_07005FE0
 
 ddd_seg7_lights_07005FF8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5FF8
   symbol: ddd_seg7_lights_07005FF8
 
 ddd_seg7_lights_07006010:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6010
   symbol: ddd_seg7_lights_07006010
 
 ddd_seg7_lights_07006028:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6028
   symbol: ddd_seg7_lights_07006028
@@ -518,7 +518,7 @@ ddd_seg7_dl_07007408:
   symbol: ddd_seg7_dl_07007408
 
 ddd_seg7_lights_070074C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x74C8
   symbol: ddd_seg7_lights_070074C8
@@ -576,7 +576,7 @@ ddd_seg7_dl_07007CB8:
   symbol: ddd_seg7_dl_07007CB8
 
 ddd_seg7_lights_07007D18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7D18
   symbol: ddd_seg7_lights_07007D18
@@ -714,7 +714,7 @@ ddd_seg7_dl_07009030:
   symbol: ddd_seg7_dl_07009030
 
 ddd_seg7_lights_07009080:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9080
   symbol: ddd_seg7_lights_07009080
@@ -752,31 +752,31 @@ ddd_seg7_dl_07009208:
   symbol: ddd_seg7_dl_07009208
 
 ddd_seg7_lights_07009288:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9288
   symbol: ddd_seg7_lights_07009288
 
 ddd_seg7_lights_070092A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x92A0
   symbol: ddd_seg7_lights_070092A0
 
 ddd_seg7_lights_070092B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x92B8
   symbol: ddd_seg7_lights_070092B8
 
 ddd_seg7_lights_070092D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x92D0
   symbol: ddd_seg7_lights_070092D0
 
 ddd_seg7_lights_070092E8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x92E8
   symbol: ddd_seg7_lights_070092E8
@@ -929,7 +929,7 @@ ddd_seg7_dl_0700AF10:
   symbol: ddd_seg7_dl_0700AF10
 
 ddd_seg7_lights_0700AF78:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xAF78
   symbol: ddd_seg7_lights_0700AF78
@@ -951,7 +951,7 @@ ddd_seg7_dl_0700B068:
   symbol: ddd_seg7_dl_0700B068
 
 ddd_seg7_lights_0700B0D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB0D8
   symbol: ddd_seg7_lights_0700B0D8
@@ -1015,7 +1015,7 @@ ddd_seg7_dl_0700BAE0:
   symbol: ddd_seg7_dl_0700BAE0
 
 ddd_seg7_lights_0700BB50:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBB50
   symbol: ddd_seg7_lights_0700BB50
@@ -1143,7 +1143,7 @@ ddd_seg7_dl_0700CE48:
   symbol: ddd_seg7_dl_0700CE48
 
 ddd_seg7_lights_0700CEE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xCEE0
   symbol: ddd_seg7_lights_0700CEE0

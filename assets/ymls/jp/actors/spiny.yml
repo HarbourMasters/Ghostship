@@ -11,37 +11,37 @@
       - '#include "spiny/geo.h"'
 
 spiny_seg5_lights_050157F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x157F8
   symbol: spiny_seg5_lights_050157F8
 
 spiny_seg5_lights_05015810:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x15810
   symbol: spiny_seg5_lights_05015810
 
 spiny_seg5_lights_05015828:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x15828
   symbol: spiny_seg5_lights_05015828
 
 spiny_seg5_lights_05015840:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x15840
   symbol: spiny_seg5_lights_05015840
 
 spiny_seg5_lights_05015858:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x15858
   symbol: spiny_seg5_lights_05015858
 
 spiny_seg5_lights_05015870:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x15870
   symbol: spiny_seg5_lights_05015870

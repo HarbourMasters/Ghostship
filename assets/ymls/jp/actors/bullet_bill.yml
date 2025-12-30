@@ -10,7 +10,7 @@
       - '#include "bullet_bill/geo.h"'
 
 bullet_bill_seg5_lights_0500BA90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBA90
   symbol: bullet_bill_seg5_lights_0500BA90

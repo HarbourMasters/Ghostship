@@ -1096,7 +1096,7 @@ bitdw_seg7_dl_0700B480:
   symbol: bitdw_seg7_dl_0700B480
 
 bitdw_seg7_lights_0700B4F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB4F0
   symbol: bitdw_seg7_lights_0700B4F0

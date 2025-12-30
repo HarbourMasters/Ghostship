@@ -10,7 +10,7 @@
       - '#include "tree/geo.h"'
 
 tree_seg3_lights_0302DE10:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2DE10
   symbol: tree_seg3_lights_0302DE10

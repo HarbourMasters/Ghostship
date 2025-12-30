@@ -49,19 +49,19 @@
   symbol: vcutm_seg7_texture_07002800
 
 vcutm_seg7_lights_07003000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3000
   symbol: vcutm_seg7_lights_07003000
 
 vcutm_seg7_lights_07003018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3018
   symbol: vcutm_seg7_lights_07003018
 
 vcutm_seg7_lights_07003030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3030
   symbol: vcutm_seg7_lights_07003030
@@ -502,7 +502,7 @@ vcutm_seg7_dl_07007E88:
   symbol: vcutm_seg7_dl_07007E88
 
 vcutm_seg7_lights_07007F90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7F90
   symbol: vcutm_seg7_lights_07007F90
@@ -640,13 +640,13 @@ vcutm_seg7_dl_070093E8:
   symbol: vcutm_seg7_dl_070093E8
 
 vcutm_seg7_lights_07009458:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9458
   symbol: vcutm_seg7_lights_07009458
 
 vcutm_seg7_lights_07009470:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9470
   symbol: vcutm_seg7_lights_07009470

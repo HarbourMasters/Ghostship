@@ -11,13 +11,13 @@
       - '#include "bub/geo.h"'
 
 bub_seg6_lights_0600E280:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE278
   symbol: bub_seg6_lights_0600E280
 
 bub_seg6_lights_0600E290:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE290
   symbol: bub_seg6_lights_0600E290

@@ -38,7 +38,7 @@ dorrie_tongue:
   symbol: dorrie_seg6_texture_0600ADA0
 
 dorrie_seg6_lights_0600B5A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB5A0
   symbol: dorrie_seg6_lights_0600B5A0
@@ -83,7 +83,7 @@ dorrie_seg6_dl_0600BAF8:
   symbol: dorrie_seg6_dl_0600BAF8
 
 dorrie_seg6_lights_0600BBC0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBBC0
   symbol: dorrie_seg6_lights_0600BBC0
@@ -122,7 +122,7 @@ dorrie_seg6_dl_0600C030:
   symbol: dorrie_seg6_dl_0600C030
 
 dorrie_seg6_lights_0600C0F8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC0F8
   symbol: dorrie_seg6_lights_0600C0F8
@@ -150,7 +150,7 @@ dorrie_seg6_dl_0600C468:
   symbol: dorrie_seg6_dl_0600C468
 
 dorrie_seg6_lights_0600C510:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC510
   symbol: dorrie_seg6_lights_0600C510
@@ -184,7 +184,7 @@ dorrie_seg6_dl_0600C8B8:
   symbol: dorrie_seg6_dl_0600C8B8
 
 dorrie_seg6_lights_0600C960:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xC960
   symbol: dorrie_seg6_lights_0600C960
@@ -230,7 +230,7 @@ dorrie_seg6_dl_0600CFD0:
   symbol: dorrie_seg6_dl_0600CFD0
 
 dorrie_seg6_lights_0600D078:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD078
   symbol: dorrie_seg6_lights_0600D078
@@ -264,7 +264,7 @@ dorrie_seg6_dl_0600D440:
   symbol: dorrie_seg6_dl_0600D440
 
 dorrie_seg6_lights_0600D4E8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD4E8
   symbol: dorrie_seg6_lights_0600D4E8
@@ -292,7 +292,7 @@ dorrie_seg6_dl_0600D6D8:
   symbol: dorrie_seg6_dl_0600D6D8
 
 dorrie_seg6_lights_0600D780:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD780
   symbol: dorrie_seg6_lights_0600D780
@@ -314,7 +314,7 @@ dorrie_seg6_dl_0600D8B0:
   symbol: dorrie_seg6_dl_0600D8B0
 
 dorrie_seg6_lights_0600D958:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD958
   symbol: dorrie_seg6_lights_0600D958
@@ -336,7 +336,7 @@ dorrie_seg6_dl_0600DA88:
   symbol: dorrie_seg6_dl_0600DA88
 
 dorrie_seg6_lights_0600DB30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDB30
   symbol: dorrie_seg6_lights_0600DB30
@@ -358,7 +358,7 @@ dorrie_seg6_dl_0600DC60:
   symbol: dorrie_seg6_dl_0600DC60
 
 dorrie_seg6_lights_0600DD08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDD08
   symbol: dorrie_seg6_lights_0600DD08

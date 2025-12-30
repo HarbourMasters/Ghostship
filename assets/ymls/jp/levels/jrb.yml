@@ -105,19 +105,19 @@ jrb_seg7_dl_07002FD0:
   symbol: jrb_seg7_dl_07002FD0
 
 jrb_seg7_lights_070030A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x30A8
   symbol: jrb_seg7_lights_070030A8
 
 jrb_seg7_lights_070030C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x30C0
   symbol: jrb_seg7_lights_070030C0
 
 jrb_seg7_lights_070030D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x30D8
   symbol: jrb_seg7_lights_070030D8
@@ -268,13 +268,13 @@ jrb_seg7_dl_07004940:
   symbol: jrb_seg7_dl_07004940
 
 jrb_seg7_lights_07004A18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4A18
   symbol: jrb_seg7_lights_07004A18
 
 jrb_seg7_lights_07004A30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4A30
   symbol: jrb_seg7_lights_07004A30
@@ -307,13 +307,13 @@ jrb_seg7_dl_07004C78:
   symbol: jrb_seg7_dl_07004C78
 
 jrb_seg7_lights_07004D40:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4D40
   symbol: jrb_seg7_lights_07004D40
 
 jrb_seg7_lights_07004D58:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4D58
   symbol: jrb_seg7_lights_07004D58
@@ -388,19 +388,19 @@ jrb_seg7_dl_070058C8:
   symbol: jrb_seg7_dl_070058C8
 
 jrb_seg7_lights_07005990:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5990
   symbol: jrb_seg7_lights_07005990
 
 jrb_seg7_lights_070059A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59A8
   symbol: jrb_seg7_lights_070059A8
 
 jrb_seg7_lights_070059C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x59C0
   symbol: jrb_seg7_lights_070059C0
@@ -515,7 +515,7 @@ jrb_seg7_dl_070069B0:
   symbol: jrb_seg7_dl_070069B0
 
 jrb_seg7_lights_07006A98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6A98
   symbol: jrb_seg7_lights_07006A98
@@ -622,7 +622,7 @@ jrb_seg7_dl_07007718:
   symbol: jrb_seg7_dl_07007718
 
 jrb_seg7_lights_070077F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x77F0
   symbol: jrb_seg7_lights_070077F0
@@ -650,7 +650,7 @@ jrb_seg7_dl_07007AC8:
   symbol: jrb_seg7_dl_07007AC8
 
 jrb_seg7_lights_07007B70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7B70
   symbol: jrb_seg7_lights_07007B70
@@ -683,7 +683,7 @@ jrb_seg7_dl_07007DC8:
   symbol: jrb_seg7_dl_07007DC8
 
 jrb_seg7_lights_07007EA0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7EA0
   symbol: jrb_seg7_lights_07007EA0
@@ -716,13 +716,13 @@ jrb_seg7_dl_070080F8:
   symbol: jrb_seg7_dl_070080F8
 
 jrb_seg7_lights_070081A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x81A8
   symbol: jrb_seg7_lights_070081A8
 
 jrb_seg7_lights_070081C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x81C0
   symbol: jrb_seg7_lights_070081C0
@@ -830,19 +830,19 @@ jrb_seg7_dl_070090B0:
   symbol: jrb_seg7_dl_070090B0
 
 jrb_seg7_lights_07009190:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9190
   symbol: jrb_seg7_lights_07009190
 
 jrb_seg7_lights_070091A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x91A8
   symbol: jrb_seg7_lights_070091A8
 
 jrb_seg7_lights_070091C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x91C0
   symbol: jrb_seg7_lights_070091C0
@@ -932,19 +932,19 @@ jrb_seg7_dl_07009B30:
   symbol: jrb_seg7_dl_07009B30
 
 jrb_seg7_lights_07009C10:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9C10
   symbol: jrb_seg7_lights_07009C10
 
 jrb_seg7_lights_07009C28:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9C28
   symbol: jrb_seg7_lights_07009C28
 
 jrb_seg7_lights_07009C40:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9C40
   symbol: jrb_seg7_lights_07009C40
@@ -1018,13 +1018,13 @@ jrb_seg7_dl_0700A608:
   symbol: jrb_seg7_dl_0700A608
 
 jrb_seg7_lights_0700A6D8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA6D8
   symbol: jrb_seg7_lights_0700A6D8
 
 jrb_seg7_lights_0700A6F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA6F0
   symbol: jrb_seg7_lights_0700A6F0
@@ -1080,7 +1080,7 @@ jrb_seg7_dl_0700AC68:
   symbol: jrb_seg7_dl_0700AC68
 
 jrb_seg7_lights_0700AD38:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xAD38
   symbol: jrb_seg7_lights_0700AD38
@@ -1102,7 +1102,7 @@ jrb_seg7_dl_0700AE48:
   symbol: jrb_seg7_dl_0700AE48
 
 jrb_seg7_lights_0700AEF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xAEF0
   symbol: jrb_seg7_lights_0700AEF0
@@ -1189,25 +1189,25 @@ jrb_seg7_trajectory_unagi_2:
   symbol: jrb_seg7_trajectory_unagi_2
 
 jrb_seg7_lights_0700D318:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD318
   symbol: jrb_seg7_lights_0700D318
 
 jrb_seg7_lights_0700D330:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD330
   symbol: jrb_seg7_lights_0700D330
 
 jrb_seg7_lights_0700D348:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD348
   symbol: jrb_seg7_lights_0700D348
 
 jrb_seg7_lights_0700D360:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD360
   symbol: jrb_seg7_lights_0700D360
@@ -1387,7 +1387,7 @@ jrb_seg7_dl_0700EF00:
   symbol: jrb_seg7_dl_0700EF00
 
 jrb_seg7_lights_0700EF98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xEF98
   symbol: jrb_seg7_lights_0700EF98
@@ -1481,7 +1481,7 @@ jrb_seg7_dl_0700FE48:
   symbol: jrb_seg7_dl_0700FE48
 
 jrb_seg7_lights_0700FEB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xFEB8
   symbol: jrb_seg7_lights_0700FEB8

@@ -67,7 +67,7 @@
   symbol: wf_seg7_texture_07002800
 
 wf_seg7_lights_07002900:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x2900
   symbol: wf_seg7_lights_07002900
@@ -365,7 +365,7 @@ wf_seg7_dl_070050C8:
   symbol: wf_seg7_dl_070050C8
 
 wf_seg7_lights_070051C8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x51C8
   symbol: wf_seg7_lights_070051C8
@@ -425,7 +425,7 @@ wf_seg7_dl_07005690:
   symbol: wf_seg7_dl_07005690
 
 wf_seg7_lights_070056C0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x56C0
   symbol: wf_seg7_lights_070056C0
@@ -477,7 +477,7 @@ wf_seg7_dl_07005DD8:
   symbol: wf_seg7_dl_07005DD8
 
 wf_seg7_lights_07005E48:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5E48
   symbol: wf_seg7_lights_07005E48
@@ -499,7 +499,7 @@ wf_seg7_dl_07005EE8:
   symbol: wf_seg7_dl_07005EE8
 
 wf_seg7_lights_07005F58:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5F58
   symbol: wf_seg7_lights_07005F58
@@ -545,7 +545,7 @@ wf_seg7_dl_070064E8:
   symbol: wf_seg7_dl_070064E8
 
 wf_seg7_lights_07006558:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6558
   symbol: wf_seg7_lights_07006558
@@ -567,7 +567,7 @@ wf_seg7_dl_070065F8:
   symbol: wf_seg7_dl_070065F8
 
 wf_seg7_lights_07006668:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x6668
   symbol: wf_seg7_lights_07006668
@@ -669,7 +669,7 @@ wf_seg7_dl_07007220:
   symbol: wf_seg7_dl_07007220
 
 wf_seg7_lights_07007298:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7298
   symbol: wf_seg7_lights_07007298
@@ -708,7 +708,7 @@ wf_seg7_dl_07007518:
   symbol: wf_seg7_dl_07007518
 
 wf_seg7_lights_07007590:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x7590
   symbol: wf_seg7_lights_07007590
@@ -829,7 +829,7 @@ wf_seg7_dl_070087B0:
   symbol: wf_seg7_dl_070087B0
 
 wf_seg7_lights_07008838:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8838
   symbol: wf_seg7_lights_07008838
@@ -902,7 +902,7 @@ wf_seg7_dl_07008FE8:
   symbol: wf_seg7_dl_07008FE8
 
 wf_seg7_lights_07009070:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9070
   symbol: wf_seg7_lights_07009070
@@ -935,7 +935,7 @@ wf_seg7_dl_07009278:
   symbol: wf_seg7_dl_07009278
 
 wf_seg7_lights_070092F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x92F0
   symbol: wf_seg7_lights_070092F0
@@ -975,7 +975,7 @@ wf_seg7_dl_07009780:
   symbol: wf_seg7_dl_07009780
 
 wf_seg7_lights_070097F0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x97F0
   symbol: wf_seg7_lights_070097F0
@@ -997,7 +997,7 @@ wf_seg7_dl_07009890:
   symbol: wf_seg7_dl_07009890
 
 wf_seg7_lights_07009900:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9900
   symbol: wf_seg7_lights_07009900
@@ -1053,7 +1053,7 @@ wf_seg7_dl_07009DB0:
   symbol: wf_seg7_dl_07009DB0
 
 wf_seg7_lights_07009E30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x9E30
   symbol: wf_seg7_lights_07009E30
@@ -1087,7 +1087,7 @@ wf_seg7_dl_0700A170:
   symbol: wf_seg7_dl_0700A170
 
 wf_seg7_lights_0700A1E0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xA1E0
   symbol: wf_seg7_lights_0700A1E0
@@ -1172,7 +1172,7 @@ wf_seg7_dl_0700ABA0:
   symbol: wf_seg7_dl_0700ABA0
 
 wf_seg7_lights_0700AC70:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xAC70
   symbol: wf_seg7_lights_0700AC70
@@ -1221,7 +1221,7 @@ wf_seg7_dl_0700AFB8:
   symbol: wf_seg7_dl_0700AFB8
 
 wf_seg7_lights_0700B028:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xB028
   symbol: wf_seg7_lights_0700B028
@@ -1317,7 +1317,7 @@ wf_seg7_dl_0700BA28:
   symbol: wf_seg7_dl_0700BA28
 
 wf_seg7_lights_0700BB18:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBB18
   symbol: wf_seg7_lights_0700BB18
@@ -1362,7 +1362,7 @@ wf_seg7_dl_0700BF50:
   symbol: wf_seg7_dl_0700BF50
 
 wf_seg7_lights_0700BFE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xBFE0
   symbol: wf_seg7_lights_0700BFE0
@@ -1472,7 +1472,7 @@ wf_seg7_dl_0700D028:
   symbol: wf_seg7_dl_0700D028
 
 wf_seg7_lights_0700D0A8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD0A8
   symbol: wf_seg7_lights_0700D0A8
@@ -1500,7 +1500,7 @@ wf_seg7_dl_0700D300:
   symbol: wf_seg7_dl_0700D300
 
 wf_seg7_lights_0700D370:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD370
   symbol: wf_seg7_lights_0700D370
@@ -1545,7 +1545,7 @@ wf_seg7_dl_0700D708:
   symbol: wf_seg7_dl_0700D708
 
 wf_seg7_lights_0700D780:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xD780
   symbol: wf_seg7_lights_0700D780
@@ -1584,7 +1584,7 @@ wf_seg7_dl_0700D9F0:
   symbol: wf_seg7_dl_0700D9F0
 
 wf_seg7_lights_0700DA68:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDA68
   symbol: wf_seg7_lights_0700DA68
@@ -1629,7 +1629,7 @@ wf_seg7_dl_0700DE20:
   symbol: wf_seg7_dl_0700DE20
 
 wf_seg7_lights_0700DE98:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xDE98
   symbol: wf_seg7_lights_0700DE98
@@ -1657,7 +1657,7 @@ wf_seg7_dl_0700E0F0:
   symbol: wf_seg7_dl_0700E0F0
 
 wf_seg7_lights_0700E160:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE160
   symbol: wf_seg7_lights_0700E160
@@ -1685,7 +1685,7 @@ wf_seg7_dl_0700E3D0:
   symbol: wf_seg7_dl_0700E3D0
 
 wf_seg7_lights_0700E440:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE440
   symbol: wf_seg7_lights_0700E440
@@ -1719,7 +1719,7 @@ wf_seg7_dl_0700E760:
   symbol: wf_seg7_dl_0700E760
 
 wf_seg7_lights_0700E7D0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE7D0
   symbol: wf_seg7_lights_0700E7D0
@@ -1747,7 +1747,7 @@ wf_seg7_dl_0700E9B8:
   symbol: wf_seg7_dl_0700E9B8
 
 wf_seg7_lights_0700EA28:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xEA28
   symbol: wf_seg7_lights_0700EA28
@@ -1780,7 +1780,7 @@ wf_seg7_dl_0700EB40:
   symbol: wf_seg7_dl_0700EB40
 
 wf_seg7_lights_0700EBB8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xEBB8
   symbol: wf_seg7_lights_0700EBB8
@@ -1808,7 +1808,7 @@ wf_seg7_dl_0700EDC0:
   symbol: wf_seg7_dl_0700EDC0
 
 wf_seg7_lights_0700EE30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xEE30
   symbol: wf_seg7_lights_0700EE30
@@ -1836,7 +1836,7 @@ wf_seg7_dl_0700F018:
   symbol: wf_seg7_dl_0700F018
 
 wf_seg7_lights_0700F088:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF088
   symbol: wf_seg7_lights_0700F088
@@ -1869,7 +1869,7 @@ wf_seg7_dl_0700F1A8:
   symbol: wf_seg7_dl_0700F1A8
 
 wf_seg7_lights_0700F220:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF220
   symbol: wf_seg7_lights_0700F220
@@ -1902,7 +1902,7 @@ wf_seg7_dl_0700F340:
   symbol: wf_seg7_dl_0700F340
 
 wf_seg7_lights_0700F3B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF3B8
   symbol: wf_seg7_lights_0700F3B8
@@ -1941,7 +1941,7 @@ wf_seg7_dl_0700F6C0:
   symbol: wf_seg7_dl_0700F6C0
 
 wf_seg7_lights_0700F758:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xF758
   symbol: wf_seg7_lights_0700F758

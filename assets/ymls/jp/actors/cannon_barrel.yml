@@ -10,13 +10,13 @@
       - '#include "cannon_barrel/geo.h"'
 
 cannon_barrel_seg8_lights_08005878:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5878
   symbol: cannon_barrel_seg8_lights_08005878
 
 cannon_barrel_seg8_lights_08005890:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x5890
   symbol: cannon_barrel_seg8_lights_08005890

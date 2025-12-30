@@ -39,13 +39,13 @@
   symbol: pss_seg7_texture_07001000
 
 pss_seg7_lights_07001800:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1800
   symbol: pss_seg7_lights_07001800
 
 pss_seg7_lights_07001818:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x1818
   symbol: pss_seg7_lights_07001818
@@ -1135,7 +1135,7 @@ pss_seg7_dl_0700E2B0:
   symbol: pss_seg7_dl_0700E2B0
 
 pss_seg7_lights_0700E348:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0xE348
   symbol: pss_seg7_lights_0700E348

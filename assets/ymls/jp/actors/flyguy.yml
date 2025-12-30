@@ -38,43 +38,43 @@ flyguy_propeller:
   symbol: flyguy_seg8_texture_0800F888
 
 flyguy_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10088
   symbol: flyguy_lights_unused1
 
 flyguy_seg8_lights_080100A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x100A0
   symbol: flyguy_seg8_lights_080100A0
 
 flyguy_seg8_lights_080100B8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x100B8
   symbol: flyguy_seg8_lights_080100B8
 
 flyguy_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x100D0
   symbol: flyguy_lights_unused2
 
 flyguy_lights_unused3:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x100E8
   symbol: flyguy_lights_unused3
 
 flyguy_lights_unused4:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10100
   symbol: flyguy_lights_unused4
 
 flyguy_lights_unused5:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10118
   symbol: flyguy_lights_unused5
@@ -149,7 +149,7 @@ flyguy_seg8_dl_08010A90:
   symbol: flyguy_seg8_dl_08010A90
 
 flyguy_seg8_lights_08010AE0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10AE0
   symbol: flyguy_seg8_lights_08010AE0
@@ -171,19 +171,19 @@ flyguy_seg8_dl_08010B80:
   symbol: flyguy_seg8_dl_08010B80
 
 flyguy_seg8_lights_08010BF0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10BF0
   symbol: flyguy_seg8_lights_08010BF0
 
 flyguy_seg8_lights_08010C08:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10C08
   symbol: flyguy_seg8_lights_08010C08
 
 flyguy_seg8_lights_08010C20:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x10C20
   symbol: flyguy_seg8_lights_08010C20

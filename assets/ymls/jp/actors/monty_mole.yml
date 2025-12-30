@@ -11,37 +11,37 @@
       - '#include "monty_mole/geo.h"'
 
 monty_mole_lights_unused1:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8E0
   symbol: monty_mole_lights_unused1
 
 monty_mole_lights_unused2:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x8F8
   symbol: monty_mole_lights_unused2
 
 monty_mole_lights_unused3:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x910
   symbol: monty_mole_lights_unused3
 
 monty_mole_lights_unused4:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x928
   symbol: monty_mole_lights_unused4
 
 monty_mole_lights_unused5:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x940
   symbol: monty_mole_lights_unused5
 
 monty_mole_lights_unused6:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x958
   symbol: monty_mole_lights_unused6
@@ -92,7 +92,7 @@ monty_mole_claw:
   symbol: monty_mole_seg5_texture_05002970
 
 monty_mole_seg5_lights_05003170:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3170
   symbol: monty_mole_seg5_lights_05003170
@@ -114,7 +114,7 @@ monty_mole_seg5_dl_050032A0:
   symbol: monty_mole_seg5_dl_050032A0
 
 monty_mole_seg5_lights_05003300:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3300
   symbol: monty_mole_seg5_lights_05003300
@@ -147,7 +147,7 @@ monty_mole_seg5_dl_05003518:
   symbol: monty_mole_seg5_dl_05003518
 
 monty_mole_seg5_lights_05003598:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3598
   symbol: monty_mole_seg5_lights_05003598
@@ -180,7 +180,7 @@ monty_mole_seg5_dl_05003820:
   symbol: monty_mole_seg5_dl_05003820
 
 monty_mole_seg5_lights_050038A0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x38A0
   symbol: monty_mole_seg5_lights_050038A0
@@ -202,7 +202,7 @@ monty_mole_seg5_dl_050039D0:
   symbol: monty_mole_seg5_dl_050039D0
 
 monty_mole_seg5_lights_05003A30:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3A30
   symbol: monty_mole_seg5_lights_05003A30
@@ -235,7 +235,7 @@ monty_mole_seg5_dl_05003C48:
   symbol: monty_mole_seg5_dl_05003C48
 
 monty_mole_seg5_lights_05003CC8:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3CC8
   symbol: monty_mole_seg5_lights_05003CC8
@@ -268,7 +268,7 @@ monty_mole_seg5_dl_05003F50:
   symbol: monty_mole_seg5_dl_05003F50
 
 monty_mole_seg5_lights_05003FD0:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x3FD0
   symbol: monty_mole_seg5_lights_05003FD0
@@ -307,7 +307,7 @@ monty_mole_seg5_dl_050044B0:
   symbol: monty_mole_seg5_dl_050044B0
 
 monty_mole_seg5_lights_05004518:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4518
   symbol: monty_mole_seg5_lights_05004518
@@ -380,7 +380,7 @@ monty_mole_seg5_dl_05004C00:
   symbol: monty_mole_seg5_dl_05004C00
 
 monty_mole_seg5_lights_05004C90:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x4C90
   symbol: monty_mole_seg5_lights_05004C90
