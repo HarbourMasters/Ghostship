@@ -7,6 +7,7 @@
   config:
     gbi: F3D
     sort: OFFSET
+    gbi_floats: true
     output:
       binary: sm64.o2r
       code: code/jp

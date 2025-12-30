@@ -9,6 +9,14 @@
       - '#include "sm64.h"'
       - '#include "book/geo.h"'
 
+bookend_seg5_texture_05000C60:
+  type: TEXTURE
+  width: 16
+  height: 32
+  offset: 0xC60
+  format: RGBA16
+  symbol: book_seg5_texture_05000C60
+
 book_seg5_lights_05002558:
   type: LIGHTS
   size: 24

@@ -10,7 +10,7 @@
       - '#include "springboard/geo.h"'
 
 springboard_seg5_lights_05000000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: springboard_seg5_lights_05000000

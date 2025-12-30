@@ -8,7 +8,7 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui_internal.h>
 #include <libultraship/libultraship.h>
-#include <Fast3D/gfx_pc.h>
+#include <Fast3D/interpreter.h>
 #include "port/Engine.h"
 extern "C" {
 #include "audio/external.h"
@@ -452,16 +452,27 @@ void DrawCheatsMenu() {
 }
 
 const char* debugInfoPages[6] = {
-        "Object",
-        "Check Surface",
-        "Map",
-        "Stage",
-        "Effect",
-        "Enemy",
+    "Object",
+    "Check Surface",
+    "Map",
+    "Stage",
+    "Effect",
+    "Enemy",
+};
+
+static const char* logLevels[] = {
+    "trace", "debug", "info", "warn", "error", "critical", "off",
 };
 
 void DrawDebugMenu() {
     if (UIWidgets::BeginMenu("Developer")) {
+        if (UIWidgets::CVarCombobox("Log Level", "gDeveloperTools.LogLevel", logLevels, {
+            .tooltip = "The log level determines which messages are printed to the "
+                        "console. This does not affect the log file output",
+            .defaultIndex = 1,
+        })) {
+            Ship::Context::GetInstance()->GetLogger()->set_level((spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
+        }
         UIWidgets::WindowButton("Gfx Debugger", "gGfxDebuggerEnabled", GameUI::mGfxDebuggerWindow, {
             .tooltip = "Enables the Gfx Debugger window, allowing you to input commands, type help for some examples"
         });

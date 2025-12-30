@@ -6,6 +6,6 @@ int16_t* Movtex::GetPointer() {
 }
 
 size_t Movtex::GetPointerSize() {
-    return sizeof(mData.size()) * sizeof(int16_t);
+    return mData.size() * sizeof(int16_t);
 }
 }

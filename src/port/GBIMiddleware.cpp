@@ -3,8 +3,6 @@
 #include "Engine.h"
 #include "DisplayList.h"
 
-extern "C" int GameEngine_OTRSigCheck(const char* data);
-
 extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
     char* imgData = (char*)dl;
 
@@ -18,7 +16,7 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
             auto gfx = &res->Instructions[i];
             gfx->words.trace.file = imgData;
             gfx->words.trace.idx = i;
-            gfx->words.trace.valid = true;
+            gfx->words.trace.valid = 0xB00B;
         }
 #endif
     }

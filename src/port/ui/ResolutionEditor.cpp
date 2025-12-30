@@ -1,9 +1,11 @@
 #include "ResolutionEditor.h"
 #include "UIWidgets.h"
+#include "libultraship/src/Context.h"
+#include "port/Engine.h"
 
 #include <imgui.h>
 #include <libultraship/libultraship.h>
-#include <graphic/Fast3D/gfx_pc.h>
+#include <graphic/Fast3D/interpreter.h>
 
 /*  Console Variables are grouped under gAdvancedResolution. (e.g. "gAdvancedResolution.Enabled")
 
@@ -58,7 +60,8 @@ namespace AdvancedResolutionSettings {
             for (unsigned short i = 0; i < sizeof(setting); i++)
                 update[i] = false;
             static short updateCountdown = 0;
-            short countdownStartingValue = CVarGetInteger("gInterpolationFPS", 20) / 2; // half of a second, in frames.
+            auto interpreter = GameEngine_GetInterpreter();
+            short countdownStartingValue = CVarGetInteger("gInterpolationFPS", 60) / 2; // half of a second, in frames.
 
             // Initialise integer scale bounds.
             short max_integerScaleFactor = default_maxIntegerScaleFactor; // default value, which may or may not get
@@ -66,13 +69,13 @@ namespace AdvancedResolutionSettings {
 
             short integerScale_maximumBounds = 1; // can change when window is resized
             // This is mostly just for UX purposes, as Fit Automatically logic is part of LUS.
-            if (((float)gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.height) >
-                ((float)gfx_current_dimensions.width / gfx_current_dimensions.height)) {
+            if (((float)interpreter->mGameWindowViewport.width / interpreter->mGameWindowViewport.height) >
+                ((float)interpreter->mCurDimensions.width / interpreter->mCurDimensions.height)) {
                 // Scale to window height
-                integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_dimensions.height;
+                integerScale_maximumBounds = interpreter->mGameWindowViewport.height / interpreter->mCurDimensions.height;
             } else {
                 // Scale to window width
-                integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_dimensions.width;
+                integerScale_maximumBounds = interpreter->mGameWindowViewport.width / interpreter->mCurDimensions.width;
             }
             // Lower-clamping maximum bounds value to 1 is no-longer necessary as that's accounted for in LUS.
             // Letting it go below 1 in this Editor will even allow for checking if screen bounds are being exceeded.
@@ -135,9 +138,9 @@ namespace AdvancedResolutionSettings {
                 }
             }
             // Resolution visualiser
-            ImGui::Text("Viewport dimensions: %d x %d", gfx_current_game_window_viewport.width,
-                        gfx_current_game_window_viewport.height);
-            ImGui::Text("Internal resolution: %d x %d", gfx_current_dimensions.width, gfx_current_dimensions.height);
+            ImGui::Text("Viewport dimensions: %d x %d", interpreter->mGameWindowViewport.width,
+                        interpreter->mGameWindowViewport.height);
+            ImGui::Text("Internal resolution: %d x %d", interpreter->mCurDimensions.width, interpreter->mCurDimensions.height);
 
             UIWidgets::PaddedSeparator(true, true, 3.0f, 3.0f);
 
@@ -170,7 +173,7 @@ namespace AdvancedResolutionSettings {
             } else if (showHorizontalResField) { // Show calculated aspect ratio
                 if (item_aspectRatio) {
                     UIWidgets::Spacer(2);
-                    float resolvedAspectRatio = (float)gfx_current_dimensions.height / gfx_current_dimensions.width;
+                    float resolvedAspectRatio = (float)interpreter->mCurDimensions.height / interpreter->mCurDimensions.width;
                     ImGui::Text("Aspect ratio: %.4f", resolvedAspectRatio);
                 } else {
                     UIWidgets::Spacer(enhancementSpacerHeight);
@@ -407,7 +410,7 @@ namespace AdvancedResolutionSettings {
     bool AdvancedResolutionSettingsWindow::IsDroppingFrames() {
         // a rather imprecise way of checking for frame drops.
         // but it's mostly there to inform the player of large drops.
-        const short targetFPS = CVarGetInteger("gInterpolationFPS", 20);
+        const short targetFPS = CVarGetInteger("gInterpolationFPS", 60);
         const float threshold = targetFPS / 20.0f + 4.1f;
         return ImGui::GetIO().Framerate < targetFPS - threshold;
     }

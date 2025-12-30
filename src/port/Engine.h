@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 #include <vector>
 #include <Context.h>
-#include <Fast3D/gfx_pc.h>
+#include <Fast3D/interpreter.h>
 #include "libultraship/src/Context.h"
 
 #define SAMPLES_HIGH 544
@@ -48,14 +48,15 @@ class GameEngine {
     static void ProcessGfxCommands(Gfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
     void LoadDictionary();
-
     void LoadPlayerAnims();
-
     static uint32_t GetGameVersion();
-
     static void Destroy();
 };
-#else
+
+Fast::Interpreter* GameEngine_GetInterpreter();
+
+extern "C" {
+#endif
 void GameEngine_ProcessGfxCommands(Gfx* commands);
 uint32_t GameEngine_GetInterpolatedFPS();
 uint32_t GameEngine_GetSampleRate();
@@ -73,6 +74,8 @@ uint8_t* GameEngine_LoadActName(uint32_t actId);
 uint8_t* GameEngine_LoadLevelName(uint32_t levelId);
 struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 uint8_t* GameEngine_LoadTranslation(const char* key);
-int GameEngine_OTRSigCheck(char* imgData);
+int GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
+#ifdef __cplusplus
+}
 #endif

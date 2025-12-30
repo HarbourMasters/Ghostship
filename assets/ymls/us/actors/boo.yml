@@ -31,81 +31,9 @@ boo_mouth:
 
 boo_seg5_vertex_0500B340:
   type: VTX
-  count: 12
+  count: 186
   offset: 0xB340
   symbol: boo_seg5_vertex_0500B340
-
-boo_seg5_vertex_0500B400:
-  type: VTX
-  count: 12
-  offset: 0xB400
-  symbol: boo_seg5_vertex_0500B400
-
-boo_seg5_vertex_0500B4C0:
-  type: VTX
-  count: 15
-  offset: 0xB4C0
-  symbol: boo_seg5_vertex_0500B4C0
-
-boo_seg5_vertex_0500B5B0:
-  type: VTX
-  count: 15
-  offset: 0xB5B0
-  symbol: boo_seg5_vertex_0500B5B0
-
-boo_seg5_vertex_0500B6A0:
-  type: VTX
-  count: 15
-  offset: 0xB6A0
-  symbol: boo_seg5_vertex_0500B6A0
-
-boo_seg5_vertex_0500B790:
-  type: VTX
-  count: 15
-  offset: 0xB790
-  symbol: boo_seg5_vertex_0500B790
-
-boo_seg5_vertex_0500B880:
-  type: VTX
-  count: 15
-  offset: 0xB880
-  symbol: boo_seg5_vertex_0500B880
-
-boo_seg5_vertex_0500B970:
-  type: VTX
-  count: 15
-  offset: 0xB970
-  symbol: boo_seg5_vertex_0500B970
-
-boo_seg5_vertex_0500BA60:
-  type: VTX
-  count: 15
-  offset: 0xBA60
-  symbol: boo_seg5_vertex_0500BA60
-
-boo_seg5_vertex_0500BB50:
-  type: VTX
-  count: 15
-  offset: 0xBB50
-  symbol: boo_seg5_vertex_0500BB50
-
-boo_seg5_vertex_0500BC40:
-  type: VTX
-  count: 15
-  offset: 0xBC40
-  symbol: boo_seg5_vertex_0500BC40
-
-boo_seg5_vertex_0500BD30:
-  type: VTX
-  count: 15
-  offset: 0xBD30
-  symbol: boo_seg5_vertex_0500BD30
-
-boo_seg5_vertex_0500BE20:
-  type: VTX
-  count: 12
-  offset: 0xBE20
-  symbol: boo_seg5_vertex_0500BE20
 
 boo_seg5_dl_0500BEE0:
   type: GFX

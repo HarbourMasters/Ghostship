@@ -2,12 +2,13 @@
 #include "ResourceUtil.h"
 #include "port/importer/types/Painting.h"
 
-std::shared_ptr<Ship::IResource> SM64::PaintingFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
-    if (!FileHasValidFormatAndReader(file)) {
+std::shared_ptr<Ship::IResource> SM64::PaintingFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
+    if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
-    std::shared_ptr<Painting> painting = std::make_shared<Painting>(file->InitData);
+    std::shared_ptr<Painting> painting = std::make_shared<Painting>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     painting->mData.id = reader->ReadInt16();

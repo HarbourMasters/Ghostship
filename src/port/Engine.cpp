@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "ui/ImguiUI.h"
+#include "libultraship/src/Context.h"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/TrajectoryFactory.h"
@@ -15,7 +16,8 @@
 #include "texts_table.h"
 #include "port/Enhancements/game-interactor/GameInteractor.h"
 #include "port/Enhancements/mods.h"
-#include <Fast3D/gfx_pc.h>
+#include <Fast3D/Fast3dWindow.h>
+#include <Fast3D/interpreter.h>
 #include <Fast3D/gfx_rendering_api.h>
 
 #ifdef USE_NETWORKING
@@ -24,15 +26,16 @@
 
 #include <utility>
 
-#include "BlobFactory.h"
-#include "DisplayListFactory.h"
-#include "MatrixFactory.h"
+#include <Fast3D/Fast3dWindow.h>
+#include <DisplayListFactory.h>
+#include <TextureFactory.h>
+#include <MatrixFactory.h>
+#include <BlobFactory.h>
+#include <VertexFactory.h>
+#include <LightFactory.h>
+
 #include "StringHelper.h"
-#include "TextureFactory.h"
-#include "VertexFactory.h"
-#include "Fast3D/Fast3dWindow.h"
 #include "importer/AssetArrayFactory.h"
-#include "LightFactory.h"
 #include "port/importer/MacroObjectFactory.h"
 #include "port/importer/GenericArrayFactory.h"
 
@@ -53,7 +56,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r"); std::filesystem::exists(cube_path)) {
         OTRFiles.push_back(cube_path);
     }
-    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("ghostship.o2r"); std::filesystem::exists(sm64_otr_path)) {
+    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppDirectory("ghostship.o2r"); std::filesystem::exists(sm64_otr_path)) {
         OTRFiles.push_back(sm64_otr_path);
     }
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
@@ -83,6 +86,10 @@ GameEngine::GameEngine(): dictionary(nullptr) {
 
     // 0xFF2B5A63, 0xE3DAA4E
     this->context->Init(OTRFiles, {}, 3, { 32000, 512, 1100 }, window, controlDeck);
+
+    Ship::Context::GetInstance()->GetLogger()->set_level(
+        (spdlog::level::level_enum) CVarGetInteger("gDeveloperTools.LogLevel", 1));
+    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
 
     window->SetTargetFps(60);
     window->SetMaximumFrameLatency(1);
@@ -366,8 +373,16 @@ extern "C" uint32_t GameEngine_GetSamplesPerFrame(){
 
 // End
 
+Fast::Interpreter* GameEngine_GetInterpreter() {
+    return static_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow())
+             ->GetInterpreterWeak()
+             .lock()
+             .get();
+}
+
 extern "C" float GameEngine_GetAspectRatio() {
-    return gfx_current_dimensions.aspect_ratio;
+    auto interpreter = GameEngine_GetInterpreter();
+    return interpreter->mCurDimensions.aspect_ratio;
 }
 
 extern "C" CtlEntry* GameEngine_LoadBank(const uint8_t bankId) {

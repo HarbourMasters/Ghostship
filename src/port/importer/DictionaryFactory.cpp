@@ -3,12 +3,13 @@
 #include "spdlog/spdlog.h"
 
 
-std::shared_ptr<Ship::IResource> SM64::DictionaryFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
-    if (!FileHasValidFormatAndReader(file)) {
+std::shared_ptr<Ship::IResource> SM64::DictionaryFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
+    if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
-    std::shared_ptr<Dictionary> dictionary = std::make_shared<Dictionary>(file->InitData);
+    std::shared_ptr<Dictionary> dictionary = std::make_shared<Dictionary>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     size_t numEntries = reader->ReadUInt32();

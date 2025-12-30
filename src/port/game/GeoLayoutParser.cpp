@@ -195,8 +195,19 @@ void ReadVec3sAngle(Vec3s dst) {
     dst[2] = (GeoLayoutParser::mReader->ReadInt16() << 15) / 180;
 }
 
-void process_cmd_branch_and_link() {
+uint64_t ReadSafeCrc() {
     const auto crc = GeoLayoutParser::mReader->ReadUInt64();
+    if (crc != 0) {
+        const auto name = ResourceGetNameByCrc(crc);
+        printf("CRC: %016llX, Name: %s\n", crc, name);
+    } else {
+        printf("Found NULL CRC\n");
+    }
+    return crc;
+}
+
+void process_cmd_branch_and_link() {
+    const auto crc = ReadSafeCrc();
 
     const auto data = static_cast<char*>(ResourceGetDataByCrc(crc));
     const auto size = ResourceGetSizeByCrc(crc);
@@ -205,7 +216,6 @@ void process_cmd_branch_and_link() {
     gGeoLayoutStack[gGeoLayoutStackIndex++] = (gCurGraphNodeIndex << 16) + gGeoLayoutReturnIndex;
     gGeoLayoutReturnIndex = gGeoLayoutStackIndex;
     GeoLayoutParser::mReader = new Ship::BinaryReader(data, size);
-
 }
 
 void process_cmd_end() {
@@ -217,7 +227,7 @@ void process_cmd_end() {
 
 void process_cmd_branch() {
     const auto param = GeoLayoutParser::mReader->ReadUByte();
-    const auto crc = GeoLayoutParser::mReader->ReadUInt64();
+    const auto crc = ReadSafeCrc();
 
     const auto name = ResourceGetNameByCrc(crc);
     const auto data = static_cast<char*>(ResourceGetDataByCrc(crc));
@@ -225,7 +235,7 @@ void process_cmd_branch() {
 
     if (param == 1) {
         gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mReader);
-        SPDLOG_INFO("Branching to {}:{}", name, gGeoLayoutStackIndex);
+        SPDLOG_INFO("Branching and returning to {}:{}", name, gGeoLayoutStackIndex);
     } else {
         delete GeoLayoutParser::mReader;
     }
@@ -408,7 +418,7 @@ void process_cmd_node_translation_rotation() {
     }
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -431,7 +441,7 @@ void process_cmd_node_translation() {
     ReadVec3s(translation);
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
         SPDLOG_INFO("Current Offset {}", GeoLayoutParser::mReader->GetBaseAddress());
     }
@@ -452,7 +462,7 @@ void process_cmd_node_rotation() {
     ReadVec3sAngle(rotation);
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -469,7 +479,7 @@ void process_cmd_node_scale() {
     void *displayList = nullptr;
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -486,7 +496,7 @@ void process_cmd_node_animated_part() {
 
     ReadVec3s(translation);
 
-    uint64_t crc = GeoLayoutParser::mReader->ReadUInt64();
+    uint64_t crc = ReadSafeCrc();
     void* displayList = crc == 0 ? nullptr : ResourceGetDataByCrc(crc);
 
     GraphNodeAnimatedPart* graphNode =
@@ -504,7 +514,7 @@ void process_cmd_node_billboard() {
     ReadVec3s(translation);
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -515,7 +525,7 @@ void process_cmd_node_billboard() {
 
 void process_cmd_node_display_list() {
     const auto drawingLayer = GeoLayoutParser::mReader->ReadUByte();
-    void *displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+    void *displayList = ResourceGetDataByCrc(ReadSafeCrc());
 
     GraphNodeDisplayList* graphNode = init_graph_node_display_list(gGraphNodePool, nullptr, drawingLayer, displayList);
 
@@ -659,5 +669,6 @@ void GeoLayoutParser::execute(const char* path) {
 }
 
 extern "C" void GeoLayoutExecute(char const* path) {
+    printf("Executing GeoLayout: %s\n", path);
     GeoLayoutParser::execute(path);
 }
