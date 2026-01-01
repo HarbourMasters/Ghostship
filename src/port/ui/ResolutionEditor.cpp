@@ -1,11 +1,10 @@
 #include "ResolutionEditor.h"
 #include "UIWidgets.h"
-#include "libultraship/src/Context.h"
+#include <ship/Context.h>
 #include "port/Engine.h"
 
 #include <imgui.h>
 #include <libultraship/libultraship.h>
-#include <graphic/Fast3D/interpreter.h>
 
 /*  Console Variables are grouped under gAdvancedResolution. (e.g. "gAdvancedResolution.Enabled")
 

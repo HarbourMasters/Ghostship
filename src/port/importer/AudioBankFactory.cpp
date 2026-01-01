@@ -1,7 +1,6 @@
 #include "AudioBankFactory.h"
 #include "port/importer/types/AudioBank.h"
-#include "spdlog/spdlog.h"
-#include "resourcebridge.h"
+#include <bridge/resourcebridge.h>
 #include "ResourceUtil.h"
 
 std::shared_ptr<Ship::IResource> SM64::AudioBankFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,

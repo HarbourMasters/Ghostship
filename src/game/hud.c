@@ -57,20 +57,6 @@ UNUSED static struct UnusedHUDStruct sUnusedHUDValues = { 0x00, 0x0A, 0x00 };
 
 static struct CameraHUD sCameraHUD = { CAM_STATUS_NONE };
 
-static u32 sPowerMeterLastRenderTimestamp;
-static s16 sPowerMeterLastY;
-static Gfx *sPowerMeterDisplayListPos;
-
-void patch_interpolated_hud(void) {
-    if (sPowerMeterDisplayListPos != NULL) {
-        Mtx *mtx = alloc_display_list(sizeof(Mtx));
-        guTranslate(mtx, (f32) sPowerMeterHUD.x, (f32) sPowerMeterHUD.y, 0);
-        gSPMatrix(sPowerMeterDisplayListPos, VIRTUAL_TO_PHYSICAL(mtx),
-              G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-        sPowerMeterDisplayListPos = NULL;
-    }
-}
-
 /**
  * Renders a rgba16 16x16 glyph texture from a table list.
  */
@@ -121,21 +107,13 @@ void render_power_meter_health_segment(s16 numHealthWedges) {
  */
 void render_dl_power_meter(s16 numHealthWedges) {
     Mtx *mtx = alloc_display_list(sizeof(Mtx));
-    f32 interpolatedY;
+
 
     if (mtx == NULL) {
         return;
     }
 
-    if (gGlobalTimer == sPowerMeterLastRenderTimestamp + 1) {
-        interpolatedY = (sPowerMeterLastY + sPowerMeterHUD.y) / 2.0f;
-    } else {
-        interpolatedY = sPowerMeterHUD.y;
-    }
-    guTranslate(mtx, (f32) sPowerMeterHUD.x, interpolatedY, 0);
-    sPowerMeterLastY = sPowerMeterHUD.y;
-    sPowerMeterLastRenderTimestamp = gGlobalTimer;
-    sPowerMeterDisplayListPos = gDisplayListHead;
+    guTranslate(mtx, (f32) sPowerMeterHUD.x, (f32) sPowerMeterHUD.y, 0);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx++),
               G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
@@ -173,21 +151,21 @@ void animate_power_meter_emphasized(void) {
 static void animate_power_meter_deemphasizing(void) {
     s16 speed = 5;
 
-    if (sPowerMeterHUD.y > 180) {
+    if (sPowerMeterHUD.y >= 181) {
         speed = 3;
     }
 
-    if (sPowerMeterHUD.y > 190) {
+    if (sPowerMeterHUD.y >= 191) {
         speed = 2;
     }
 
-    if (sPowerMeterHUD.y > 195) {
+    if (sPowerMeterHUD.y >= 196) {
         speed = 1;
     }
 
     sPowerMeterHUD.y += speed;
 
-    if (sPowerMeterHUD.y > 200) {
+    if (sPowerMeterHUD.y >= 201) {
         sPowerMeterHUD.y = 200;
         sPowerMeterHUD.animation = POWER_METER_VISIBLE;
     }
@@ -199,7 +177,7 @@ static void animate_power_meter_deemphasizing(void) {
  */
 static void animate_power_meter_hiding(void) {
     sPowerMeterHUD.y += 20;
-    if (sPowerMeterHUD.y > 300) {
+    if (sPowerMeterHUD.y >= 301) {
         sPowerMeterHUD.animation = POWER_METER_HIDDEN;
         sPowerMeterVisibleTimer = 0;
     }
@@ -275,7 +253,7 @@ void render_hud_power_meter(void) {
     sPowerMeterVisibleTimer++;
 }
 
-#define HUD_TOP_Y 209
+#define HUD_TOP_Y (ROM_JP ? 210 : 209)
 
 /**
  * Renders the amount of lives Mario has.

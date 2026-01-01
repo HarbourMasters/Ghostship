@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 
 struct DialogEntry {
     /*0x00*/ uint32_t unused;

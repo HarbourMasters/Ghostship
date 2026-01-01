@@ -189,32 +189,6 @@ struct Painting **sPaintingGroups[] = {
 s16 gPaintingUpdateCounter = 1;
 s16 gLastPaintingUpdateCounter = 0;
 
-static Vtx sLastVertices[2 * 264 * 3];
-static u32 sLastVerticesTimestamp;
-static Vtx *sVerticesPtr[2];
-static s32 sVerticesCount;
-
-void patch_interpolated_paintings(void) {
-    if (sVerticesPtr[0] != NULL) {
-        s32 i;
-        if (sVerticesPtr[1] != NULL) {
-            for (i = 0; i < sVerticesCount / 2; i++) {
-                sVerticesPtr[0][i] = sLastVertices[i];
-            }
-            for (; i < sVerticesCount; i++) {
-                sVerticesPtr[1][i - sVerticesCount / 2] = sLastVertices[i];
-            }
-        } else {
-            for (i = 0; i < sVerticesCount; i++) {
-                sVerticesPtr[0][i] = sLastVertices[i];
-            }
-        }
-        sVerticesPtr[0] = NULL;
-        sVerticesPtr[1] = NULL;
-        sVerticesCount = 0;
-    }
-}
-
 /**
  * Stop paintings in paintingGroup from rippling if their id is different from *idptr.
  */
@@ -867,7 +841,6 @@ Gfx *render_painting(u8 *img, s16 tWidth, s16 tHeight, s16 *textureMap, s16 mapV
     Gfx *gfx = dlist;
 
     if (verts == NULL || dlist == NULL) {
-        return NULL;
     }
 
     gLoadBlockTexture(gfx++, tWidth, tHeight, G_IM_FMT_RGBA, img);
@@ -919,23 +892,6 @@ Gfx *render_painting(u8 *img, s16 tWidth, s16 tHeight, s16 *textureMap, s16 mapV
     for (group = 0; group < remGroupTris; group++) {
         gSP1Triangle(gfx++, group * 3, group * 3 + 1, group * 3 + 2, 0);
     }
-
-    if (sVerticesCount >= numVtx * 2) {
-        sVerticesCount = 0;
-    }
-    for (map = 0; map < numVtx; map++) {
-        Vtx v = verts[map];
-        if (gGlobalTimer == sLastVerticesTimestamp + 1) {
-            s32 i;
-            for (i = 0; i < 3; i++) {
-                verts[map].n.ob[i] = (v.n.ob[i] + sLastVertices[sVerticesCount + map].n.ob[i]) / 2;
-                verts[map].n.n[i] = (v.n.n[i] + sLastVertices[sVerticesCount + map].n.n[i]) / 2;
-            }
-        }
-        sLastVertices[sVerticesCount + map] = v;
-    }
-    sVerticesPtr[sVerticesCount / numVtx] = verts;
-    sVerticesCount += numVtx;
 
     gSPEndDisplayList(gfx);
     return dlist;
@@ -1041,7 +997,6 @@ Gfx *painting_ripple_env_mapped(struct Painting *painting) {
     meshVerts = textureMap[0];
     meshTris = textureMap[meshVerts * 3 + 1];
     gSPDisplayList(gfx++, render_painting(tArray[0], tWidth, tHeight, textureMap, meshVerts, meshTris, painting->alpha));
-    sLastVerticesTimestamp = gGlobalTimer;
 
     // Update the ripple, may automatically reset the painting's state.
     painting_update_ripple_state(painting);
