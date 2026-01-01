@@ -2657,6 +2657,7 @@ void gd_create_perspective_matrix(f32 fovy, f32 aspect, f32 near, f32 far) {
     UNUSED f32 unused = 0.0625f;
 
     sGdPerspTimer += 0.1;
+    FrameInterpolation_RecordOpenChild("gd_create_perspective_matrix", 0);
     guPerspective(&DL_CURRENT_MTX(sCurrentGdDl), &perspNorm, fovy, aspect, near, far, 1.0f);
 
     gSPPerspNormalize(next_gfx(), perspNorm);
@@ -2670,6 +2671,7 @@ void gd_create_perspective_matrix(f32 fovy, f32 aspect, f32 near, f32 far) {
     gSPMatrix(next_gfx(), rotMtx, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
     func_801A3324(0.0f, 0.0f, 0.0f);
     next_mtx();
+    FrameInterpolation_RecordCloseChild();
 }
 
 /* 25262C -> 252AF8 */

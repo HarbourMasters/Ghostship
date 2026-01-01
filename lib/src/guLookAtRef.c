@@ -22,6 +22,7 @@
 #include <libultraship.h>
 #include <PR/gu.h>
 #include <math.h>
+#include "port/interpolation/FrameInterpolation.h"
 #define FTOFRAC8(x) ((int) MIN(((x) * (128.0)), 127.0) & 0xff)
 
 void guLookAtReflectF(float mf[4][4], LookAt *l, float xEye, float yEye, float zEye, float xAt,
@@ -111,6 +112,6 @@ void guLookAtReflect(Mtx *m, LookAt *l, float xEye, float yEye, float zEye, floa
     float mf[4][4];
 
     guLookAtReflectF(mf, l, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
-
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)mf, m);
     guMtxF2L(mf, m);
 }
