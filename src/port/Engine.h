@@ -9,6 +9,13 @@
 #include <ship/Context.h>
 #include <fast/interpreter.h>
 
+#ifndef IDYES
+#define IDYES 6
+#endif
+#ifndef IDNO
+#define IDNO 7
+#endif
+
 #define SAMPLES_HIGH 544
 #define SAMPLES_LOW 528
 #define AUDIO_FRAMES_PER_UPDATE 2
@@ -36,9 +43,10 @@ class GameEngine {
 
     GameEngine();
     static void Create();
+    static bool GenAssetFile();
     void AudioInit();
     void StartFrame() const;
-    static void RunCommands(Gfx* Commands);
+    static void RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);
     static uint32_t GetInterpolationFPS();
     static void HandleAudioThread();
     static void StartAudioFrame();
@@ -46,6 +54,8 @@ class GameEngine {
     static void AudioExit();
     static void ProcessGfxCommands(Gfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
+    static int ShowYesNoBox(const char* title, const char* box);
+    static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
     void LoadDictionary();
     void LoadPlayerAnims();
     static uint32_t GetGameVersion();

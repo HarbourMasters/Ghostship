@@ -69,6 +69,9 @@ struct VblankHandler {
     OSMesg msg;
 };
 
+typedef u16 Vec3su[3];
+typedef f32 Mat3[3][3];
+
 #define ANIM_FLAG_NOLOOP     (1 << 0) // 0x01
 #define ANIM_FLAG_FORWARD    (1 << 1) // 0x02
 #define ANIM_FLAG_2          (1 << 2) // 0x04

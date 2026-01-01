@@ -24,6 +24,7 @@
 #include "save_file.h"
 #include "skybox.h"
 #include "sound_init.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 #define TOAD_STAR_1_REQUIREMENT 12
 #define TOAD_STAR_2_REQUIREMENT 25
@@ -92,9 +93,11 @@ Gfx *geo_draw_mario_head_goddard(s32 callContext, struct GraphNode *node, Mat4 *
         if (gPlayer1Controller->controllerData != NULL && !gWarpTransition.isActive) {
             gd_copy_p1_contpad(gPlayer1Controller->controllerData);
         }
+        FrameInterpolation_RecordOpenChild("geo_draw_mario_head_goddard", (uintptr_t)node);
         gfx = (Gfx *) PHYSICAL_TO_VIRTUAL(gdm_gettestdl(asGenerated->parameter));
         gGoddardVblankCallback = gd_vblank;
         sfx = gd_sfx_to_play();
+        FrameInterpolation_RecordCloseChild();
         play_menu_sounds(sfx);
     }
     return gfx;

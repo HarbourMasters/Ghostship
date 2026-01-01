@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include "port/Engine.h"
 #include <libultraship.h>
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "engine/geo_layout.h"
@@ -662,7 +663,9 @@ void GeoLayoutParser::execute(const char* path) {
 
     while (mReader != nullptr) {
         const auto cmdId = mReader->ReadUByte();
+        FrameInterpolation_RecordOpenChild("GeoLayout Command", cmdId);
         GeoLayoutFunctionTable[cmdId]();
+        FrameInterpolation_RecordCloseChild();
     }
 
     delete mReader;

@@ -119,6 +119,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "lib/src/guPerspectiveF.c"
     "lib/src/guRotateF.c"
     "lib/src/guScaleF.c"
+    "lib/src/guLookAtF.c"
     "lib/src/guTranslateF.c"
     "sound/*.c"
     "src/audio/*.h"

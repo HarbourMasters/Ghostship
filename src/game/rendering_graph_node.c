@@ -10,6 +10,8 @@
 #include "rendering_graph_node.h"
 #include "shadow.h"
 #include "sm64.h"
+#include "port/interpolation/FrameInterpolation.h"
+#include "port/Matrix.h"
 
 /**
  * This file contains the code that processes the scene graph for rendering.
@@ -1069,6 +1071,9 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         mtxf_to_mtx(initialMatrix, gMatStack[gMatStackIndex]);
         gMatStackFixed[gMatStackIndex] = initialMatrix;
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(viewport));
+        // AddObjectMatrix(gMatStack[gMatStackIndex], G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
+        // // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(gMatStackFixed[gMatStackIndex]),
+        // //           G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(gMatStackFixed[gMatStackIndex]),
                   G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
         gCurGraphNodeRoot = node;

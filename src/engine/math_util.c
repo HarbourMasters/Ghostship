@@ -6,6 +6,11 @@
 #include "surface_collision.h"
 
 #include "trig_tables.inc.c"
+#include "port/interpolation/FrameInterpolation.h"
+
+// Stack for interpolation matrices
+Mat4 sInterpolationMatrixStack[0x1000];
+Mat4* gInterpolationMatrix = &sInterpolationMatrixStack[0];
 
 // Variables for a spline curve animation (used for the flight path in the grand star cutscene)
 Vec4s *gSplineKeyframe;
@@ -179,6 +184,7 @@ void mtxf_identity(Mat4 mtx) {
  * Set dest to a translation matrix of vector b
  */
 void mtxf_translate(Mat4 dest, Vec3f b) {
+    FrameInterpolation_RecordMatrixTranslate(dest, b);
     mtxf_identity(dest);
     dest[3][0] = b[0];
     dest[3][1] = b[1];
@@ -270,6 +276,7 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll) {
  * axis, and then translates.
  */
 void mtxf_rotate_zxy_and_translate(Mat4 dest, Vec3f translate, Vec3s rotate) {
+    FrameInterpolation_RecordMatrixPosRotZXY(dest, translate, rotate);
     register f32 sx = sins(rotate[0]);
     register f32 cx = coss(rotate[0]);
 
@@ -303,6 +310,7 @@ void mtxf_rotate_zxy_and_translate(Mat4 dest, Vec3f translate, Vec3s rotate) {
  * axis, and then translates.
  */
 void mtxf_rotate_xyz_and_translate(Mat4 dest, Vec3f b, Vec3s c) {
+    FrameInterpolation_RecordMatrixPosRotXYZ(dest, b, c);
     register f32 sx = sins(c[0]);
     register f32 cx = coss(c[0]);
 
@@ -489,6 +497,7 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
  * then a.
  */
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
+    FrameInterpolation_RecordMatrixMult(dest, dest, 0);
     Mat4 temp;
     register f32 entry0;
     register f32 entry1;
@@ -573,6 +582,7 @@ void mtxf_mul_vec3s(Mat4 mtx, Vec3s b) {
 void mtxf_to_mtx(Mtx *dest, Mat4 src) {
     // Avoid type-casting which is technically UB by calling the equivalent
     // guMtxF2L function. This helps little-endian systems, as well.
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)src, dest);
     guMtxF2L(src, dest);
 }
 
@@ -587,6 +597,7 @@ void mtxf_rotate_xy(Mtx *mtx, s16 angle) {
     temp[0][1] = sins(angle);
     temp[1][0] = -temp[0][1];
     temp[1][1] = temp[0][0];
+    FrameInterpolation_RecordMatrixRotateXYCoords(temp, angle, angle);
     mtxf_to_mtx(mtx, temp);
 }
 

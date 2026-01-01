@@ -19,6 +19,7 @@
 #include "segment2.h"
 #include "segment_symbols.h"
 #include "rumble_init.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 // First 3 controller slots
 struct Controller gControllers[3];
@@ -353,6 +354,7 @@ void select_gfx_pool(void) {
  * - Selects which framebuffer will be rendered and displayed to next time.
  */
 void display_and_vsync(void) {
+    FrameInterpolation_StartRecord();
     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
     osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
     if (gGoddardVblankCallback != NULL) {
@@ -375,6 +377,7 @@ void display_and_vsync(void) {
         sRenderingFramebuffer = 0;
     }
     gGlobalTimer++;
+    FrameInterpolation_StopRecord();
 }
 
 // Controls

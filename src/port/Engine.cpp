@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "ui/ImguiUI.h"
+#include "GameExtractor.h"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/TrajectoryFactory.h"
@@ -11,12 +12,14 @@
 #include "port/importer/DialogFactory.h"
 #include "port/importer/DictionaryFactory.h"
 #include "port/importer/ResourceType.h"
+#include "port/interpolation/FrameInterpolation.h"
 #include "audio/GameAudio.h"
 #include "texts_table.h"
 #include "port/Enhancements/game-interactor/GameInteractor.h"
 #include "port/Enhancements/mods.h"
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
+#include <SDL2/SDL.h>
 
 #ifdef USE_NETWORKING
 #include <SDL2/SDL_net.h>
@@ -42,7 +45,6 @@ extern "C" {
 #include "audio/internal.h"
 #include "game/ingame_menu.h"
 bool prevAltAssets = false;
-float gInterpolationStep = 0.0f;
 }
 
 GameEngine* GameEngine::Instance;
@@ -123,6 +125,63 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 }
 
+bool GameEngine::GenAssetFile() {
+    auto extractor = new GameExtractor();
+
+    if (!extractor->SelectGameFromUI()) {
+        ShowMessage("Error", "No ROM selected.\n\nExiting...");
+        exit(1);
+    }
+
+    auto game = extractor->ValidateChecksum();
+    if (!game.has_value()) {
+        ShowMessage("Unsupported ROM",
+                    "The provided ROM is not supported.\n\nCheck the readme for a list of supported versions.");
+        exit(1);
+    }
+
+    ShowMessage(("Found " + game.value()).c_str(),
+                "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
+
+    return extractor->GenerateOTR();
+}
+
+void GameEngine::ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type) {
+#if defined(__SWITCH__)
+    SPDLOG_ERROR(message);
+#else
+    SDL_ShowSimpleMessageBox(type, title, message, nullptr);
+    SPDLOG_ERROR(message);
+#endif
+}
+
+int GameEngine::ShowYesNoBox(const char* title, const char* box) {
+    int ret;
+#ifdef _WIN32
+    ret = MessageBoxA(nullptr, box, title, MB_YESNO | MB_ICONQUESTION);
+#elif defined(__SWITCH__)
+    SPDLOG_ERROR(box);
+    return IDYES;
+#else
+    SDL_MessageBoxData boxData = { 0 };
+    SDL_MessageBoxButtonData buttons[2] = { { 0 } };
+
+    buttons[0].buttonid = IDYES;
+    buttons[0].text = "Yes";
+    buttons[0].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
+    buttons[1].buttonid = IDNO;
+    buttons[1].text = "No";
+    buttons[1].flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
+    boxData.numbuttons = 2;
+    boxData.flags = SDL_MESSAGEBOX_INFORMATION;
+    boxData.message = box;
+    boxData.title = title;
+    boxData.buttons = buttons;
+    SDL_ShowMessageBox(&boxData, &ret);
+#endif
+    return ret;
+}
+
 void GameEngine::Create(){
     const auto instance = Instance = new GameEngine();
     GameInteractor::Instance = new GameInteractor();
@@ -131,10 +190,15 @@ void GameEngine::Create(){
     instance->AudioInit();
     instance->LoadDictionary();
     instance->LoadPlayerAnims();
+#if defined(__SWITCH__) || defined(__WIIU__)
+    CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
+#endif
 }
 
 void GameEngine::Destroy(){
     AudioExit();
+    delete GameEngine::Instance;
+    GameEngine::Instance = nullptr;
 }
 
 void GameEngine::StartFrame() const {
@@ -280,16 +344,23 @@ uint32_t GameEngine::GetGameVersion() {
     return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
-void GameEngine::RunCommands(Gfx* Commands) {
+void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements) {
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     if (wnd == nullptr) {
         return;
     }
 
+    auto interpreter = wnd->GetInterpreterWeak().lock().get();
+
     // Process window events for resize, mouse, keyboard events
     wnd->HandleEvents();
-    wnd->DrawAndRunGraphicsCommands(Commands, {});
+
+    interpreter->mInterpolationIndex = 0;
+    for (const auto& mtxStack : mtx_replacements) {
+        wnd->DrawAndRunGraphicsCommands(Commands, mtxStack);
+        interpreter->mInterpolationIndex++;
+    }
 
     bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
     if (prevAltAssets != curAltAssets) {
@@ -300,13 +371,14 @@ void GameEngine::RunCommands(Gfx* Commands) {
 }
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
+    std::vector<std::unordered_map<Mtx*, MtxF>> mtx_replacements;
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     int target_fps = GetInterpolationFPS();
     static int last_fps;
     static int time;
     int fps = target_fps;
-    int original_fps = 30;
+    int original_fps = 60 / 2;
 
     if (target_fps == 30 || original_fps > target_fps) {
         fps = original_fps;
@@ -320,17 +392,19 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
     while (time + original_fps <= next_original_frame) {
         time += original_fps;
         if (time != next_original_frame) {
-            gInterpolationStep = static_cast<float>(time) / next_original_frame;
+            mtx_replacements.push_back(FrameInterpolation_Interpolate((float) time / next_original_frame));
+        } else {
+            mtx_replacements.emplace_back(); // No interpolation for key frames
         }
-        RunCommands(commands);
     }
 
     time -= fps;
 
-    wnd->SetTargetFps(fps);
-
-    int threshold = CVarGetInteger("gExtraLatencyThreshold", 80);
-    wnd->SetMaximumFrameLatency(threshold > 0 && target_fps >= threshold ? 2 : 1);
+    if (wnd != nullptr) {
+        wnd->SetTargetFps(GetInterpolationFPS());
+        wnd->SetMaximumFrameLatency(1);
+    }
+    RunCommands(commands, mtx_replacements);
 
     last_fps = fps;
 }

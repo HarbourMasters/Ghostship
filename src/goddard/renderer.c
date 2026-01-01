@@ -19,6 +19,7 @@
 #include "skin.h"
 #include "types.h"
 #include "sm64.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 #define MAX_GD_DLS 1000
 #define OS_MESG_SI_COMPLETE 0x33333333
@@ -1666,6 +1667,7 @@ void mat4_to_mtx(Mat4f *src, Mtx *dst) {
         }
     }
 #else
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)src, dst);
     guMtxF2L(*src, dst);
 #endif
 }
