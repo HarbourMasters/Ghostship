@@ -199,9 +199,9 @@ uint64_t ReadSafeCrc() {
     const auto crc = GeoLayoutParser::mReader->ReadUInt64();
     if (crc != 0) {
         const auto name = ResourceGetNameByCrc(crc);
-        printf("CRC: %016llX, Name: %s\n", crc, name);
+        SPDLOG_TRACE("CRC: {:X} Name: {}", crc, name);
     } else {
-        printf("Found NULL CRC\n");
+        SPDLOG_TRACE("Found NULL CRC");
     }
     return crc;
 }
