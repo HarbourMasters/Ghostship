@@ -140,6 +140,7 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     s32 enableZBuffer = (node->node.flags & GRAPH_RENDER_Z_BUFFER) != 0;
     struct RenderModeContainer *modeList = &renderModeTable_1Cycle[enableZBuffer];
     struct RenderModeContainer *mode2List = &renderModeTable_2Cycle[enableZBuffer];
+    FrameInterpolation_RecordOpenChild("geo_process_master_list_sub", node);
 
     // @bug This is where the LookAt values should be calculated but aren't.
     // As a result, environment mapping is broken on Fast3DEX2 without the
@@ -169,6 +170,7 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
         gDPPipeSync(gDisplayListHead++);
         gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -177,7 +179,7 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
  * render modes of layers.
  */
 static void geo_append_display_list(void *displayList, s16 layer) {
-
+    FrameInterpolation_RecordOpenChild("geo_append_display_list", displayList);
 #ifdef F3DEX_GBI_2
     gSPLookAt(gDisplayListHead++, &lookAt);
 #endif
@@ -195,6 +197,7 @@ static void geo_append_display_list(void *displayList, s16 layer) {
         }
         gCurGraphNodeMasterList->listTails[layer] = listNode;
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -204,6 +207,7 @@ static void geo_process_master_list(struct GraphNodeMasterList *node) {
     s32 i;
     UNUSED s32 sp1C;
 
+    FrameInterpolation_RecordOpenChild("geo_process_master_list", node);
     if (gCurGraphNodeMasterList == NULL && node->node.children != NULL) {
         gCurGraphNodeMasterList = node;
         for (i = 0; i < GFX_NUM_MASTER_LISTS; i++) {
@@ -213,6 +217,7 @@ static void geo_process_master_list(struct GraphNodeMasterList *node) {
         geo_process_master_list_sub(node);
         gCurGraphNodeMasterList = NULL;
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -240,6 +245,7 @@ static void geo_process_ortho_projection(struct GraphNodeOrthoProjection *node) 
  * Process a perspective projection node.
  */
 static void geo_process_perspective(struct GraphNodePerspective *node) {
+    FrameInterpolation_RecordOpenChild("geo_process_perspective", (uintptr_t)node);
     if (node->fnNode.func != NULL) {
         node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node, gMatStack[gMatStackIndex]);
     }
@@ -252,7 +258,6 @@ static void geo_process_perspective(struct GraphNodePerspective *node) {
 #else
         f32 aspect = (f32) gCurGraphNodeRoot->width / (f32) gCurGraphNodeRoot->height;
 #endif
-        FrameInterpolation_RecordOpenChild("geo_process_perspective", (uintptr_t)node);
         guPerspective(mtx, &perspNorm, node->fov, aspect, node->near, node->far, 1.0f);
         gSPPerspNormalize(gDisplayListHead++, perspNorm);
 
@@ -260,9 +265,9 @@ static void geo_process_perspective(struct GraphNodePerspective *node) {
 
         gCurGraphNodeCamFrustum = node;
         geo_process_node_and_siblings(node->fnNode.node.children);
-        FrameInterpolation_RecordCloseChild();
         gCurGraphNodeCamFrustum = NULL;
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -281,7 +286,7 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
     Mtx *mtx = gMatStackFixed[gMatStackIndex];
     s16 distanceFromCam = -GET_HIGH_S16_OF_32(mtx->m[1][3]); // z-component of the translation column
 #endif
-
+    FrameInterpolation_RecordOpenChild("geo_process_level_of_detail", (uintptr_t)node);
     if(CVarGetInteger("gDisableLOD", 0) == 1) {
         distanceFromCam = 0;
     }
@@ -291,6 +296,7 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
             geo_process_node_and_siblings(node->node.children);
         }
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -301,7 +307,7 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
 static void geo_process_switch(struct GraphNodeSwitchCase *node) {
     struct GraphNode *selectedChild = node->fnNode.node.children;
     s32 i;
-
+    FrameInterpolation_RecordOpenChild("geo_process_switch", (uintptr_t)node);
     if (node->fnNode.func != NULL) {
         node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node, gMatStack[gMatStackIndex]);
     }
@@ -311,6 +317,7 @@ static void geo_process_switch(struct GraphNodeSwitchCase *node) {
     if (selectedChild != NULL) {
         geo_process_node_and_siblings(selectedChild);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -320,6 +327,8 @@ static void geo_process_camera(struct GraphNodeCamera *node) {
     Mat4 cameraTransform;
     Mtx *rollMtx = alloc_display_list(sizeof(*rollMtx));
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
+
+    FrameInterpolation_RecordOpenChild("geo_process_camera", (uintptr_t)node);
 
     if (node->fnNode.func != NULL) {
         node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node, gMatStack[gMatStackIndex]);
@@ -340,6 +349,7 @@ static void geo_process_camera(struct GraphNodeCamera *node) {
         gCurGraphNodeCamera = NULL;
     }
     gMatStackIndex--;
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -352,6 +362,7 @@ static void geo_process_translation_rotation(struct GraphNodeTranslationRotation
     Mat4 mtxf;
     Vec3f translation;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
+    FrameInterpolation_RecordOpenChild("geo_process_translation_rotation", (uintptr_t)node);
 
     vec3s_to_vec3f(translation, node->translation);
     mtxf_rotate_zxy_and_translate(mtxf, translation, node->rotation);
@@ -366,6 +377,7 @@ static void geo_process_translation_rotation(struct GraphNodeTranslationRotation
         geo_process_node_and_siblings(node->node.children);
     }
     gMatStackIndex--;
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -377,6 +389,8 @@ static void geo_process_translation(struct GraphNodeTranslation *node) {
     Mat4 mtxf;
     Vec3f translation;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
+
+    FrameInterpolation_RecordOpenChild("geo_process_translation", (uintptr_t)node);
 
     vec3s_to_vec3f(translation, node->translation);
     mtxf_rotate_zxy_and_translate(mtxf, translation, gVec3sZero);
@@ -391,6 +405,7 @@ static void geo_process_translation(struct GraphNodeTranslation *node) {
         geo_process_node_and_siblings(node->node.children);
     }
     gMatStackIndex--;
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -401,6 +416,8 @@ static void geo_process_translation(struct GraphNodeTranslation *node) {
 static void geo_process_rotation(struct GraphNodeRotation *node) {
     Mat4 mtxf;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
+
+    FrameInterpolation_RecordOpenChild("geo_process_rotation", (uintptr_t)node);
 
     mtxf_rotate_zxy_and_translate(mtxf, gVec3fZero, node->rotation);
     mtxf_mul(gMatStack[gMatStackIndex + 1], mtxf, gMatStack[gMatStackIndex]);
@@ -414,6 +431,7 @@ static void geo_process_rotation(struct GraphNodeRotation *node) {
         geo_process_node_and_siblings(node->node.children);
     }
     gMatStackIndex--;
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -425,6 +443,8 @@ static void geo_process_scale(struct GraphNodeScale *node) {
     UNUSED Mat4 transform;
     Vec3f scaleVec;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
+
+    FrameInterpolation_RecordOpenChild("geo_process_scale", (uintptr_t)node);
 
     vec3f_set(scaleVec, node->scale, node->scale, node->scale);
     mtxf_scale_vec3f(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], scaleVec);
@@ -438,6 +458,7 @@ static void geo_process_scale(struct GraphNodeScale *node) {
         geo_process_node_and_siblings(node->node.children);
     }
     gMatStackIndex--;
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -449,6 +470,8 @@ static void geo_process_scale(struct GraphNodeScale *node) {
 static void geo_process_billboard(struct GraphNodeBillboard *node) {
     Vec3f translation;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
+
+    FrameInterpolation_RecordOpenChild("geo_process_billboard", (uintptr_t)node);
 
     gMatStackIndex++;
     vec3s_to_vec3f(translation, node->translation);
@@ -471,6 +494,7 @@ static void geo_process_billboard(struct GraphNodeBillboard *node) {
         geo_process_node_and_siblings(node->node.children);
     }
     gMatStackIndex--;
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -479,12 +503,14 @@ static void geo_process_billboard(struct GraphNodeBillboard *node) {
  * parent node. It processes its children if it has them.
  */
 static void geo_process_display_list(struct GraphNodeDisplayList *node) {
+    FrameInterpolation_RecordOpenChild("geo_process_display_list", (uintptr_t)node);
     if (node->displayList != NULL) {
         geo_append_display_list(node->displayList, node->node.flags >> 8);
     }
     if (node->node.children != NULL) {
         geo_process_node_and_siblings(node->node.children);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -492,6 +518,7 @@ static void geo_process_display_list(struct GraphNodeDisplayList *node) {
  * the list is generated on the fly by a function.
  */
 static void geo_process_generated_list(struct GraphNodeGenerated *node) {
+    FrameInterpolation_RecordOpenChild("geo_process_generated_list", (uintptr_t)node);
     if (node->fnNode.func != NULL) {
         Gfx *list = node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node,
                                      (struct AllocOnlyPool *) gMatStack[gMatStackIndex]);
@@ -503,6 +530,7 @@ static void geo_process_generated_list(struct GraphNodeGenerated *node) {
     if (node->fnNode.node.children != NULL) {
         geo_process_node_and_siblings(node->fnNode.node.children);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -512,6 +540,8 @@ static void geo_process_generated_list(struct GraphNodeGenerated *node) {
  */
 static void geo_process_background(struct GraphNodeBackground *node) {
     Gfx *list = NULL;
+
+    FrameInterpolation_RecordOpenChild("geo_process_background", (uintptr_t)node);
 
     if (node->fnNode.func != NULL) {
         list = node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node,
@@ -541,6 +571,7 @@ static void geo_process_background(struct GraphNodeBackground *node) {
     if (node->fnNode.node.children != NULL) {
         geo_process_node_and_siblings(node->fnNode.node.children);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -552,6 +583,7 @@ static void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
     Vec3s rotation;
     Vec3f translation;
     Mtx *matrixPtr = alloc_display_list(sizeof(*matrixPtr));
+    FrameInterpolation_RecordOpenChild("geo_process_animated_part", (uintptr_t)node);
 
     vec3s_copy(rotation, gVec3sZero);
     vec3f_set(translation, node->translation[0], node->translation[1], node->translation[2]);
@@ -605,6 +637,7 @@ static void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
         geo_process_node_and_siblings(node->node.children);
     }
     gMatStackIndex--;
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -613,6 +646,8 @@ static void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
  */
 void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     struct Animation *anim = node->curAnim;
+
+    FrameInterpolation_RecordOpenChild("geo_set_animation_globals", (uintptr_t)node);
 
     if (hasAnimation) {
         node->animFrame = geo_update_animation_frame(node, &node->animFrameAccelAssist);
@@ -638,6 +673,7 @@ void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     } else {
         gCurrAnimTranslationMultiplier = (f32) node->animYTrans / (f32) anim->animYTransDivisor;
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -656,6 +692,8 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
     f32 cosAng;
     struct GraphNode *geo;
     Mtx *mtx;
+
+    FrameInterpolation_RecordOpenChild("geo_process_shadow", (uintptr_t)node);
 
     if (gCurGraphNodeCamera != NULL && gCurGraphNodeObject != NULL) {
         if (gCurGraphNodeHeldObject != NULL) {
@@ -716,6 +754,7 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
     if (node->node.children != NULL) {
         geo_process_node_and_siblings(node->node.children);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -811,6 +850,8 @@ static void geo_process_object(struct Object *node) {
     Mat4 mtxf;
     s32 hasAnimation = (node->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0;
 
+    FrameInterpolation_RecordOpenChild("geo_process_object", (uintptr_t)node);
+
     if (node->header.gfx.areaIndex == gCurGraphNodeRoot->areaIndex) {
         if (node->header.gfx.throwMatrix != NULL) {
             mtxf_mul(gMatStack[gMatStackIndex + 1], *node->header.gfx.throwMatrix,
@@ -855,6 +896,7 @@ static void geo_process_object(struct Object *node) {
         gCurrAnimType = ANIM_TYPE_NONE;
         node->header.gfx.throwMatrix = NULL;
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -863,6 +905,7 @@ static void geo_process_object(struct Object *node) {
  * actual children are be processed. (in practice they are null though)
  */
 static void geo_process_object_parent(struct GraphNodeObjectParent *node) {
+    FrameInterpolation_RecordOpenChild("geo_process_object_parent", (uintptr_t)node);
     if (node->sharedChild != NULL) {
         node->sharedChild->parent = (struct GraphNode *) node;
         geo_process_node_and_siblings(node->sharedChild);
@@ -871,6 +914,7 @@ static void geo_process_object_parent(struct GraphNodeObjectParent *node) {
     if (node->node.children != NULL) {
         geo_process_node_and_siblings(node->node.children);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -880,6 +924,7 @@ void geo_process_held_object(struct GraphNodeHeldObject *node) {
     Mat4 mat;
     Vec3f translation;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
+    FrameInterpolation_RecordOpenChild("geo_process_held_object", (uintptr_t)node);
 
 #ifdef F3DEX_GBI_2
     gSPLookAt(gDisplayListHead++, &lookAt);
@@ -936,6 +981,7 @@ void geo_process_held_object(struct GraphNodeHeldObject *node) {
     if (node->fnNode.node.children != NULL) {
         geo_process_node_and_siblings(node->fnNode.node.children);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -1049,6 +1095,7 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
     UNUSED s32 unused;
 
     if (node->node.flags & GRAPH_RENDER_ACTIVE) {
+        FrameInterpolation_RecordOpenChild("geo_process_root", (uintptr_t)node);
         Mtx *initialMatrix;
         Vp *viewport = alloc_display_list(sizeof(*viewport));
 
@@ -1089,5 +1136,6 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
                                gDisplayListHeap->totalSpace - gDisplayListHeap->usedSpace);
         }
         main_pool_free(gDisplayListHeap);
+        FrameInterpolation_RecordCloseChild();
     }
 }

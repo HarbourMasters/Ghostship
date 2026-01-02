@@ -29,7 +29,8 @@
 #include "course_table.h"
 #include "rumble_init.h"
 
-#include "port/Enhancements/game-interactor/GameInteractor_Hooks.h"
+#include "port/hooks/list/EngineEvent.h"
+#include "port/mods/PortEnhancements.h"
 
 #define PLAY_MODE_NORMAL 0
 #define PLAY_MODE_PAUSED 2
@@ -1146,7 +1147,7 @@ s32 update_level(void) {
     }
 
     // Updates only when in game, i.e. past the save select screen
-    GameInteractor_ExecuteOnGameFrameUpdate();
+    CALL_EVENT(GameFrameUpdate);
 
     return changeLevel;
 }

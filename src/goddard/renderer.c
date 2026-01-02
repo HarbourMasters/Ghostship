@@ -1275,9 +1275,13 @@ Gfx *gdm_gettestdl(s32 id) {
         case GD_SCENE_REGULAR_MARIO:
         case GD_SCENE_DIZZY_MARIO:
             setup_timers();
+            FrameInterpolation_RecordOpenChild("Mario Head DL", 1);
             update_view_and_dl(sMSceneView);
+            FrameInterpolation_RecordCloseChild();
             if (sHandView != NULL) {
+                FrameInterpolation_RecordOpenChild("Mario Hand DL", 1);
                 update_view_and_dl(sHandView);
+                FrameInterpolation_RecordCloseChild();
             }
             sCurrentGdDl = sMHeadMainDls[gGdFrameBufNum];
             gSPEndDisplayList(next_gfx());
@@ -1667,7 +1671,8 @@ void mat4_to_mtx(Mat4f *src, Mtx *dst) {
         }
     }
 #else
-    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)src, dst);
+    // TODO: Interpolation is broken on goddard
+    // FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)src, dst);
     guMtxF2L(*src, dst);
 #endif
 }
@@ -1751,7 +1756,6 @@ void gd_dl_scale(f32 x, f32 y, f32 z) {
 /* 24DA94 -> 24DAE8 */
 void func_8019F2C4(f32 arg0, s8 arg1) {
     Mat4f mtx; // 18
-
     gd_set_identity_mat4(&mtx);
     gd_absrot_mat4(&mtx, arg1 - 120, -arg0);
     gd_dl_mul_matrix(&mtx);
@@ -2657,7 +2661,6 @@ void gd_create_perspective_matrix(f32 fovy, f32 aspect, f32 near, f32 far) {
     UNUSED f32 unused = 0.0625f;
 
     sGdPerspTimer += 0.1;
-    FrameInterpolation_RecordOpenChild("gd_create_perspective_matrix", 0);
     guPerspective(&DL_CURRENT_MTX(sCurrentGdDl), &perspNorm, fovy, aspect, near, far, 1.0f);
 
     gSPPerspNormalize(next_gfx(), perspNorm);
@@ -2671,7 +2674,6 @@ void gd_create_perspective_matrix(f32 fovy, f32 aspect, f32 near, f32 far) {
     gSPMatrix(next_gfx(), rotMtx, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
     func_801A3324(0.0f, 0.0f, 0.0f);
     next_mtx();
-    FrameInterpolation_RecordCloseChild();
 }
 
 /* 25262C -> 252AF8 */

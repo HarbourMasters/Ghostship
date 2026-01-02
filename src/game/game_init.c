@@ -354,7 +354,6 @@ void select_gfx_pool(void) {
  * - Selects which framebuffer will be rendered and displayed to next time.
  */
 void display_and_vsync(void) {
-    FrameInterpolation_StartRecord();
     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
     osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
     if (gGoddardVblankCallback != NULL) {
@@ -377,7 +376,6 @@ void display_and_vsync(void) {
         sRenderingFramebuffer = 0;
     }
     gGlobalTimer++;
-    FrameInterpolation_StopRecord();
 }
 
 // Controls
@@ -664,6 +662,7 @@ void thread5_iteration(void){
         draw_reset_bars();
         return;
     }
+    FrameInterpolation_StartRecord();
     profiler_log_thread5_time(THREAD5_START);
 
     // If any controllers are plugged in, start read the data for when
@@ -688,4 +687,5 @@ void thread5_iteration(void){
         // amount of free space remaining.
         print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
     }
+    FrameInterpolation_StopRecord();
 }

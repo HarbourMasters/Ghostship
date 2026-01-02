@@ -13,6 +13,7 @@
 #include "area.h"
 #include "save_file.h"
 #include "print.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 /* @file hud.c
  * This file implements HUD rendering and power meter animations.
@@ -400,12 +401,12 @@ void render_hud_camera_status(void) {
  */
 void render_hud(void) {
     s16 hudDisplayFlags = gHudDisplay.flags;
-
     if (hudDisplayFlags == HUD_DISPLAY_NONE) {
         sPowerMeterHUD.animation = POWER_METER_HIDDEN;
         sPowerMeterStoredHealth = 8;
         sPowerMeterVisibleTimer = 0;
     } else {
+        FrameInterpolation_RecordOpenChild("render_hud", (uintptr_t)&hudDisplayFlags);
 #ifdef VERSION_EU
         // basically create_dl_ortho_matrix but guOrtho screen width is different
         Mtx *mtx = alloc_display_list(sizeof(*mtx));
@@ -424,33 +425,49 @@ void render_hud(void) {
 #endif
 
         if (gCurrentArea != NULL && gCurrentArea->camera->mode == CAMERA_MODE_INSIDE_CANNON) {
+            FrameInterpolation_RecordOpenChild("render_hud_cannon_reticle", (uintptr_t)&gCurrentArea->camera->mode);
             render_hud_cannon_reticle();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_LIVES) {
+            FrameInterpolation_RecordOpenChild("render_hud_mario_lives", (uintptr_t)&gHudDisplay.lives);
             render_hud_mario_lives();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_COIN_COUNT) {
+            FrameInterpolation_RecordOpenChild("render_hud_coins", (uintptr_t)&gHudDisplay.coins);
             render_hud_coins();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_STAR_COUNT) {
+            FrameInterpolation_RecordOpenChild("render_hud_stars", (uintptr_t)&gHudDisplay.stars);
             render_hud_stars();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_KEYS) {
+            FrameInterpolation_RecordOpenChild("render_hud_keys", (uintptr_t)&gHudDisplay.keys);
             render_hud_keys();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_CAMERA_AND_POWER) {
+            FrameInterpolation_RecordOpenChild("render_hud_power_meter", (uintptr_t)&sPowerMeterHUD.animation);
             render_hud_power_meter();
+            FrameInterpolation_RecordCloseChild();
+            FrameInterpolation_RecordOpenChild("render_hud_camera_status", (uintptr_t)&sCameraHUD.status);
             render_hud_camera_status();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_TIMER) {
+            FrameInterpolation_RecordOpenChild("render_hud_timer", (uintptr_t)&gHudDisplay.timer);
             render_hud_timer();
+            FrameInterpolation_RecordCloseChild();
         }
-
+        FrameInterpolation_RecordCloseChild();
     }
 }

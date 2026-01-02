@@ -15,8 +15,7 @@
 #include "port/interpolation/FrameInterpolation.h"
 #include "audio/GameAudio.h"
 #include "texts_table.h"
-#include "port/Enhancements/game-interactor/GameInteractor.h"
-#include "port/Enhancements/mods.h"
+#include "port/mods/PortEnhancements.h"
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
 #include <SDL2/SDL.h>
@@ -48,7 +47,6 @@ bool prevAltAssets = false;
 }
 
 GameEngine* GameEngine::Instance;
-GameInteractor* GameInteractor::Instance;
 
 GameEngine::GameEngine(): dictionary(nullptr) {
     std::vector<std::string> OTRFiles;
@@ -184,8 +182,6 @@ int GameEngine::ShowYesNoBox(const char* title, const char* box) {
 
 void GameEngine::Create(){
     const auto instance = Instance = new GameEngine();
-    GameInteractor::Instance = new GameInteractor();
-    InitMods();
     GameUI::SetupGuiElements();
     instance->AudioInit();
     instance->LoadDictionary();
@@ -193,9 +189,11 @@ void GameEngine::Create(){
 #if defined(__SWITCH__) || defined(__WIIU__)
     CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
 #endif
+    PortEnhancements_Init();
 }
 
 void GameEngine::Destroy(){
+    PortEnhancements_Exit();
     AudioExit();
     delete GameEngine::Instance;
     GameEngine::Instance = nullptr;
