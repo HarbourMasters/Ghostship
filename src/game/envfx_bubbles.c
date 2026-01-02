@@ -181,10 +181,10 @@ void envfx_update_lava(Vec3s centerPos) {
  * Rotate the input x, y and z around the rotation origin of the whirlpool
  * according to the pitch and yaw of the whirlpool.
  */
-void envfx_rotate_around_whirlpool(s32 *x, s32 *y, s32 *z) {
-    s32 vecX = *x - gEnvFxBubbleConfig[ENVFX_STATE_DEST_X];
-    s32 vecY = *y - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y];
-    s32 vecZ = *z - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z];
+void envfx_rotate_around_whirlpool(f32 *x, f32 *y, f32 *z) {
+    f32 vecX = *x - gEnvFxBubbleConfig[ENVFX_STATE_DEST_X];
+    f32 vecY = *y - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y];
+    f32 vecZ = *z - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z];
     f32 cosPitch = coss(gEnvFxBubbleConfig[ENVFX_STATE_PITCH]);
     f32 sinPitch = sins(gEnvFxBubbleConfig[ENVFX_STATE_PITCH]);
     f32 cosMYaw = coss(-gEnvFxBubbleConfig[ENVFX_STATE_YAW]);
@@ -194,9 +194,9 @@ void envfx_rotate_around_whirlpool(s32 *x, s32 *y, s32 *z) {
     f32 rotatedY = vecX * sinMYaw + cosPitch * cosMYaw * vecY - sinPitch * cosMYaw * vecZ;
     f32 rotatedZ = vecY * sinPitch + cosPitch * vecZ;
 
-    *x = gEnvFxBubbleConfig[ENVFX_STATE_DEST_X] + (s32) rotatedX;
-    *y = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y] + (s32) rotatedY;
-    *z = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z] + (s32) rotatedZ;
+    *x = gEnvFxBubbleConfig[ENVFX_STATE_DEST_X] + rotatedX;
+    *y = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y] + rotatedY;
+    *z = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z] + rotatedZ;
 }
 
 /**
@@ -364,7 +364,7 @@ s32 envfx_init_bubble(s32 mode) {
  * Also sets the given vertices to the correct shape for each mode,
  * though they are not being rotated yet.
  */
-void envfx_bubbles_update_switch(s32 mode, Vec3s camTo, Vec3s vertex1, Vec3s vertex2, Vec3s vertex3) {
+void envfx_bubbles_update_switch(s32 mode, Vec3s camTo, Vec3f vertex1, Vec3f vertex2, Vec3f vertex3) {
     switch (mode) {
         case ENVFX_FLOWERS:
             envfx_update_flower(camTo);
@@ -401,7 +401,7 @@ void envfx_bubbles_update_switch(s32 mode, Vec3s camTo, Vec3s vertex1, Vec3s ver
  * 'index'. The 3 input vertices represent the rotated triangle around (0,0,0)
  * that will be translated to bubble positions to draw the bubble image
  */
-void append_bubble_vertex_buffer(Gfx *gfx, s32 index, Vec3s vertex1, Vec3s vertex2, Vec3s vertex3,
+void append_bubble_vertex_buffer(Gfx *gfx, s32 index, Vec3f vertex1, Vec3f vertex2, Vec3f vertex3,
                                  Vtx *template) {
     s32 i = 0;
     Vtx *vertBuf = alloc_display_list(15 * sizeof(Vtx));
@@ -470,9 +470,9 @@ Gfx *envfx_update_bubble_particles(s32 mode, UNUSED Vec3s marioPos, Vec3s camFro
     s32 i;
     s16 radius, pitch, yaw;
 
-    Vec3s vertex1;
-    Vec3s vertex2;
-    Vec3s vertex3;
+    Vec3f vertex1;
+    Vec3f vertex2;
+    Vec3f vertex3;
 
     Gfx *gfxStart = alloc_display_list(((sBubbleParticleMaxCount / 5) * 10 + sBubbleParticleMaxCount + 3)
                                        * sizeof(Gfx));
