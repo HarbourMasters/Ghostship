@@ -23,16 +23,6 @@ static const Mtx matrix_patch_fullscreen = {{
     { -1.0f, -1.0f, -1.0f, 1.0f }
 }};
 
-void OnGameUpdate(IEvent* event) {
-    if(gMarioState == NULL) {
-        return;
-    }
-
-    if (CVarGetInteger("gInfiniteLives", 0) != 0) {
-        gMarioState->numLives = 100;
-    }
-}
-
 void OnLivesChange(IEvent* event) {
     PlayerLivesChange* ev = (PlayerLivesChange*) event;
     if (CVarGetInteger("gInfiniteLives", 0) == 0 || ev->lives > 0) {
@@ -95,14 +85,15 @@ void PortEnhancements_Init() {
     PatchSetupDList();
 
     // Register event listeners
-    REGISTER_LISTENER(GameFrameUpdate, OnGameUpdate, EVENT_PRIORITY_NORMAL);
     REGISTER_LISTENER(PlayerHealthChange, OnHealthChange, EVENT_PRIORITY_NORMAL);
+    REGISTER_LISTENER(PlayerLivesChange, OnLivesChange, EVENT_PRIORITY_NORMAL);
 }
 
 void PortEnhancements_Register() {
     // Register engine events
     REGISTER_EVENT(GameFrameUpdate);
     REGISTER_EVENT(PlayerHealthChange);
+    REGISTER_EVENT(PlayerLivesChange);
 }
 
 void PortEnhancements_Exit() {
