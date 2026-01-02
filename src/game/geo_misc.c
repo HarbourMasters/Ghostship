@@ -131,7 +131,8 @@ Gfx *geo_exec_flying_carpet_timer_update(s32 callContext, UNUSED struct GraphNod
  * Create a display list for a flying carpet with dynamic ripples.
  */
 Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUSED f32 mtx[4][4]) {
-    s16 n, row, col, x, y, z, tx, ty;
+    f32 x, y, z;
+    s16 n, row, col, tx, ty;
     Vtx *verts;
     struct GraphNodeGenerated *generatedNode = (struct GraphNodeGenerated *) node;
 
@@ -156,7 +157,7 @@ Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUS
             col = n % 3;
 
             x = sp64[n * 4 + 0];
-            y = round_float(sins(sFlyingCarpetRippleTimer + (row << 12) + (col << 14)) * 20.0);
+            y = sins(sFlyingCarpetRippleTimer + (row << 12) + (col << 14)) * 20.0f;
             z = sp64[n * 4 + 1];
             tx = sp64[n * 4 + 2];
             ty = sp64[n * 4 + 3];

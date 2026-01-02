@@ -131,8 +131,8 @@ void make_tex_transition_vertex(Vtx *verts, s32 n, s8 fadeTimer, struct WarpTran
     u16 zeroTimer = sTransitionTextureFadeCount[fadeTimer];
     f32 centerX = texRadius1 * coss(zeroTimer) - texRadius2 * sins(zeroTimer) + centerTransX;
     f32 centerY = texRadius1 * sins(zeroTimer) + texRadius2 * coss(zeroTimer) + centerTransY;
-    s16 x = round_float(centerX);
-    s16 y = round_float(centerY);
+    f32 x = centerX;
+    f32 y = centerY;
 
     make_vertex(verts, n, x, y, -1, tx * 32, ty * 32, r, g, b, 255);
 }
