@@ -271,6 +271,17 @@ void init_rcp(void) {
     select_framebuffer();
 }
 
+void handle_nmi_request(void) {
+    gResetTimer = 1;
+    gNmiResetBarsTimer = 0;
+    stop_sounds_in_continuous_banks();
+    sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_BACKGROUND);
+    fadeout_music(90);
+#ifdef VERSION_SH
+    func_sh_802f69cc();
+#endif
+}
+
 /**
  * End the master display list and initialize the graphics task structure for the next frame to be rendered.
  */
@@ -293,6 +304,8 @@ void draw_reset_bars(void) {
     s32 width, height;
     s32 fbNum;
     u64 *fbPtr;
+
+    return;
 
     if (gResetTimer != 0 && gNmiResetBarsTimer < 15) {
         if (sRenderedFramebuffer == 0) {
@@ -651,11 +664,26 @@ void thread5_game_loop(void) {
     gGlobalTimer++;
 }
 
+void update_vblank_reset(void) {
+    gNumVblanks++;
+#ifdef VERSION_SH
+    if (gResetTimer > 0 && gResetTimer < 100) {
+        gResetTimer++;
+    }
+#else
+    if (gResetTimer > 0) {
+        gResetTimer++;
+    }
+#endif
+}
+
 void thread5_iteration(void){
     if (GfxDebuggerIsDebugging()) {
         exec_display_list(&gGfxPool->spTask);
         return;
     }
+
+    update_vblank_reset();
 
     // If the reset timer is active, run the process to reset the game.
     if (gResetTimer != 0) {

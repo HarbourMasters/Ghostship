@@ -1,9 +1,9 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "port/interpolation/FrameInterpolation.h"
-#include "engine/math_util.h"
 
 extern "C" {
+#include "engine/math_util.h"
 #include "game/game_init.h"
 }
 

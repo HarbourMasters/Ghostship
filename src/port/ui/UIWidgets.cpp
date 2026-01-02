@@ -1,3 +1,4 @@
+#define NOMINMAX
 #include "UIWidgets.h"
 
 #include <ship/Context.h>

@@ -16,6 +16,7 @@
 #include "audio/GameAudio.h"
 #include "texts_table.h"
 #include "port/mods/PortEnhancements.h"
+#include "port/console/DevConsole.h"
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
 #include <SDL2/SDL.h>
@@ -190,6 +191,7 @@ void GameEngine::Create(){
     CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
 #endif
     PortEnhancements_Init();
+    DevConsole_Init();
 }
 
 void GameEngine::Destroy(){

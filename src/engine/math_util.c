@@ -184,7 +184,8 @@ void mtxf_identity(Mat4 mtx) {
  * Set dest to a translation matrix of vector b
  */
 void mtxf_translate(Mat4 dest, Vec3f b) {
-    FrameInterpolation_RecordMatrixTranslate(dest, b);
+    // TODO: FrameInterpolation is broken, fix it
+    // FrameInterpolation_RecordMatrixTranslate(dest, b);
     mtxf_identity(dest);
     dest[3][0] = b[0];
     dest[3][1] = b[1];
@@ -310,7 +311,8 @@ void mtxf_rotate_zxy_and_translate(Mat4 dest, Vec3f translate, Vec3s rotate) {
  * axis, and then translates.
  */
 void mtxf_rotate_xyz_and_translate(Mat4 dest, Vec3f b, Vec3s c) {
-    FrameInterpolation_RecordMatrixPosRotXYZ(dest, b, c);
+    // TODO: FrameInterpolation is broken, fix it
+    // FrameInterpolation_RecordMatrixPosRotXYZ(dest, b, c);
     register f32 sx = sins(c[0]);
     register f32 cx = coss(c[0]);
 
@@ -497,7 +499,8 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
  * then a.
  */
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
-    FrameInterpolation_RecordMatrixMult(dest, dest, 0);
+    // TODO: FrameInterpolation is broken, fix it
+    // FrameInterpolation_RecordMatrixMult(dest, dest, 0);
     Mat4 temp;
     register f32 entry0;
     register f32 entry1;

@@ -12,6 +12,7 @@
 #include "port/Engine.h"
 extern "C" {
 #include "audio/external.h"
+extern void handle_nmi_request(void);
 }
 
 namespace GameUI {

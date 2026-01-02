@@ -327,4 +327,9 @@ struct MarioState {
     /*0xC4*/ f32 unkC4;
 };
 
+typedef struct {
+    int index;
+    Gfx instruction;
+} GfxPatch;
+
 #endif // TYPES_H

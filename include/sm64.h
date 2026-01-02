@@ -501,6 +501,7 @@ extern void osMapTLB(int32_t a, uint32_t b, void* c, uint32_t d, uint32_t e, uin
 
 // LUS
 
+void ResourceMgr_PatchGfxByName(const char* path, const char* patchName, GfxPatch* patches, int patchCount);
 void gSPSegmentLoadRes(void* value, int segNum, uintptr_t target);
 void gSPDisplayList(Gfx* pkt, Gfx* dl);
 void gSPDisplayListOffset(Gfx* pkt, Gfx* dl, int offset);

@@ -1,35 +1,31 @@
 #include <libultraship.h>
 
+#include "types.h"
 #include "Engine.h"
 #include <fast/resource/ResourceType.h>
 #include <fast/resource/type/DisplayList.h>
 
-typedef struct {
-    int index;
-    Gfx instruction;
-} GfxPatch;
-
-std::unordered_map<std::string, std::unordered_map<std::string, GfxPatch>> originalGfx;
+std::unordered_map<std::string, std::unordered_map<std::string, std::vector<GfxPatch>>> originalGfx;
 
 // Attention! This is primarily for cosmetics & bug fixes. For things like mods and model replacement you should be
 // using OTRs instead (When that is available). Index can be found using the commented out section below.
-extern "C" void ResourceMgr_PatchGfxByName(const char* path, const char* patchName, int index, Gfx instruction) {
+extern "C" void ResourceMgr_PatchGfxByName(const char* path, const char* patchName, GfxPatch* patches, int patchCount) {
     auto res = std::static_pointer_cast<Fast::DisplayList>(
         Ship::Context::GetInstance()->GetResourceManager()->LoadResource(path));
 
     // Leaving this here for people attempting to find the correct Dlist index to patch
-    /*if (strcmp("__OTR__objects/object_gi_longsword/gGiBiggoronSwordDL", path) == 0) {
-        for (int i = 0; i < res->instructions.size(); i++) {
-            Gfx* gfx = (Gfx*)&res->instructions[i];
-            // Log all commands
-            // SPDLOG_INFO("index:{} command:{}", i, gfx->words.w0 >> 24);
-            // Log only SetPrimColors
-            if (gfx->words.w0 >> 24 == 250) {
-                SPDLOG_INFO("index:{} r:{} g:{} b:{} a:{}", i, _SHIFTR(gfx->words.w1, 24, 8), _SHIFTR(gfx->words.w1, 16,
-    8), _SHIFTR(gfx->words.w1, 8, 8), _SHIFTR(gfx->words.w1, 0, 8));
-            }
+    /*SPDLOG_INFO("Patching DList: {}", path);
+    for (int i = 0; i < res->Instructions.size(); i++) {
+        Gfx* gfx = (Gfx*)&res->Instructions[i];
+        // Log all commands
+        SPDLOG_INFO("index:{} command:{}", i, gfx->words.w0 >> 24);
+        // Log only SetPrimColors
+        if (gfx->words.w0 >> 24 == G_MTX_OTR) {
+            SPDLOG_INFO("index:{} r:{} g:{} b:{} a:{}", i, _SHIFTR(gfx->words.w1, 24, 8), _SHIFTR(gfx->words.w1, 16,
+8), _SHIFTR(gfx->words.w1, 8, 8), _SHIFTR(gfx->words.w1, 0, 8));
         }
-    }*/
+    }
+    SPDLOG_INFO("End of DList: {}", path);*/
 
     // Index refers to individual gfx words, which are half the size on 32-bit
     // if (sizeof(uintptr_t) < 8) {
@@ -41,13 +37,20 @@ extern "C" void ResourceMgr_PatchGfxByName(const char* path, const char* patchNa
         return;
     }
 
-    Gfx* gfx = (Gfx*)&res->Instructions[index];
+    for(int i = 0; i < patchCount; i++) {
+        GfxPatch patch = patches[i];
 
-    if (!originalGfx.contains(path) || !originalGfx[path].contains(patchName)) {
-        originalGfx[path][patchName] = { index, *gfx };
+        // Store original gfx if not already stored
+        if (originalGfx.find(path) == originalGfx.end() ||
+            originalGfx[path].find(patchName) == originalGfx[path].end()) {
+            originalGfx[path][patchName] = {};
+            Gfx originalGfxCmd = res->Instructions[patch.index];
+            GfxPatch originalPatch = { patch.index, originalGfxCmd };
+            originalGfx[path][patchName].push_back(originalPatch);
+        }
+        // Apply patch
+        res->Instructions[patch.index] = patch.instruction;
     }
-
-    *gfx = instruction;
 }
 
 extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
