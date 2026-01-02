@@ -670,6 +670,6 @@ void GeoLayoutParser::execute(const char* path) {
 }
 
 extern "C" void GeoLayoutExecute(char const* path) {
-    printf("Executing GeoLayout: %s\n", path);
+    SPDLOG_TRACE("Executing GeoLayout: {}", path);
     GeoLayoutParser::execute(path);
 }
