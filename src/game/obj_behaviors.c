@@ -35,6 +35,9 @@
 #include "assets/levels/castle_inside.h"
 #include "assets/levels/ccm.h"
 
+#include "port/hooks/list/PlayerEvent.h"
+#include "port/mods/PortEnhancements.h"
+
 /**
  * @file obj_behaviors.c
  * This file contains a portion of the obj behaviors and many helper functions for those

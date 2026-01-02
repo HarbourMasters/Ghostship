@@ -23,6 +23,7 @@
 #include "seq_ids.h"
 #include "sm64.h"
 #include "types.h"
+#include "port/interpolation/FrameInterpolation.h"
 #include <ship/utils/binarytools/endianness.h>
 
 #ifdef VERSION_EU
@@ -2675,6 +2676,7 @@ s16 render_course_complete_screen(void) {
 s16 render_menus_and_dialogs(void) {
     s16 index = MENU_OPT_NONE;
 
+    FrameInterpolation_RecordOpenChild("render_menus_and_dialogs", 0);
     create_dl_ortho_matrix();
 
     if (gMenuMode != MENU_MODE_NONE) {
@@ -2704,6 +2706,6 @@ s16 render_menus_and_dialogs(void) {
         render_dialog_entries();
         gDialogColorFadeTimer = (s16) gDialogColorFadeTimer + 0x1000;
     }
-
+    FrameInterpolation_RecordCloseChild();
     return index;
 }

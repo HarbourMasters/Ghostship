@@ -7,8 +7,6 @@
 
 #include "assets/bin/segment2.h"
 
-#define MARIO_HEALTH_MAX 0x880
-
 static const Mtx matrix_patch_identity = {{
     { 1.0f, 0.0f, 0.0f, 0.0f },
     { 0.0f, 1.0f, 0.0f, 0.0f },
@@ -31,14 +29,26 @@ void OnGameUpdate(IEvent* event) {
     }
 
     if (CVarGetInteger("gInfiniteLives", 0) != 0) {
-        gMarioState->numLives = MARIO_HEALTH_MAX;
+        gMarioState->numLives = 100;
     }
 }
 
-void OnHealthChange(IEvent* event) {
-    if (CVarGetInteger("gInfiniteHealth", 0) != 0) {
-        gMarioState->health = MARIO_HEALTH_MAX;
+void OnLivesChange(IEvent* event) {
+    PlayerLivesChange* ev = (PlayerLivesChange*) event;
+    if (CVarGetInteger("gInfiniteLives", 0) == 0 || ev->lives > 0) {
+        return;
     }
+
+    event->cancelled = true;
+}
+
+void OnHealthChange(IEvent* event) {
+    PlayerHealthChange* ev = (PlayerHealthChange*) event;
+    if (CVarGetInteger("gInfiniteHealth", 0) == 0 || ev->health > 0) {
+        return;
+    }
+
+    event->cancelled = true;
 }
 
 void PatchSetupDList() {

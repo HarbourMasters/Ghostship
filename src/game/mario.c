@@ -1450,8 +1450,9 @@ void update_mario_health(struct MarioState *m) {
         if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
                 if (!(m->flags & MARIO_METAL_CAP) && !gDebugLevelSelect) {
-                    CALL_CANCELLABLE_EVENT(PlayerHealthChange, m) {
-                        m->health -= 4;
+                    s32 amount = -4;
+                    CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                        m->health += amount;
                     }
                 }
             } else {
@@ -1462,12 +1463,14 @@ void update_mario_health(struct MarioState *m) {
                     // when in snow terrains lose 3 health.
                     // If using the debug level select, do not lose any HP to water.
                     if ((m->pos[1] >= (m->waterLevel - 140)) && !terrainIsSnow) {
-                        CALL_CANCELLABLE_EVENT(PlayerHealthChange, m) {
-                            m->health += 0x1A;
+                        s32 amount = 0x1A;
+                        CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                            m->health += amount;
                         }
                     } else if (!gDebugLevelSelect) {
-                        CALL_CANCELLABLE_EVENT(PlayerHealthChange, m) {
-                            m->health -= (terrainIsSnow ? 3 : 1);
+                        s32 amount = (terrainIsSnow ? 3 : 1);
+                        CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                            m->health += amount;
                         }
                     }
                 }
@@ -1475,14 +1478,16 @@ void update_mario_health(struct MarioState *m) {
         }
 
         if (m->healCounter > 0) {
-            CALL_CANCELLABLE_EVENT(PlayerHealthChange, m) {
-                m->health += 0x40;
+            s32 amount = 0x40;
+            CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                m->health += amount;
                 m->healCounter--;
             }
         }
         if (m->hurtCounter > 0) {
-            CALL_CANCELLABLE_EVENT(PlayerHealthChange, m) {
-                m->health -= 0x40;
+            s32 amount = -0x40;
+            CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                m->health += amount;
                 m->hurtCounter--;
             }
         }
