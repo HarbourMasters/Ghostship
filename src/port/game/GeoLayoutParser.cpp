@@ -25,7 +25,7 @@ extern "C" {
 #include "menu/star_select.h"
 #include "menu/file_select.h"
 }
-Ship::BinaryReader* GeoLayoutParser::mReader;
+Ship::BinaryReader* GeoLayoutParser::mReader = nullptr;
 
 typedef void (*GeoCommandFunction)();
 #undef cur_geo_cmd_ptr
@@ -220,6 +220,8 @@ void process_cmd_branch_and_link() {
 }
 
 void process_cmd_end() {
+    delete GeoLayoutParser::mReader;
+
     gGeoLayoutStackIndex = gGeoLayoutReturnIndex;
     gGeoLayoutReturnIndex = gGeoLayoutStack[--gGeoLayoutStackIndex] & 0xFFFF;
     gCurGraphNodeIndex = gGeoLayoutStack[gGeoLayoutStackIndex] >> 16;
@@ -245,6 +247,7 @@ void process_cmd_branch() {
 }
 
 void process_cmd_return() {
+    delete GeoLayoutParser::mReader;
     GeoLayoutParser::mReader = reinterpret_cast<Ship::BinaryReader*>(gGeoLayoutStack[--gGeoLayoutStackIndex]);
     SPDLOG_INFO("Returning to {}", gGeoLayoutStackIndex);
 }
@@ -669,6 +672,7 @@ void GeoLayoutParser::execute(const char* path) {
     }
 
     delete mReader;
+    mReader = nullptr; 
 }
 
 extern "C" void GeoLayoutExecute(char const* path) {
