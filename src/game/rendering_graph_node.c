@@ -253,7 +253,7 @@ static void geo_process_perspective(struct GraphNodePerspective *node) {
     if (node->fnNode.node.children != NULL) {
         u16 perspNorm;
         Mtx *mtx = alloc_display_list(sizeof(*mtx));
-        FrameInterpolation_RecordOpenChild("geo_process_perspective", (uintptr_t)node);
+        FrameInterpolation_RecordOpenChild("geo_process_perspective_children", (uintptr_t)node);
 
 #ifdef VERSION_EU
         f32 aspect = ((f32) gCurGraphNodeRoot->width / (f32) gCurGraphNodeRoot->height) * 1.1f;
@@ -309,6 +309,7 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
 static void geo_process_switch(struct GraphNodeSwitchCase *node) {
     struct GraphNode *selectedChild = node->fnNode.node.children;
     s32 i;
+    FrameInterpolation_RecordOpenChild("geo_process_switch", (uintptr_t)node);
     if (node->fnNode.func != NULL) {
         node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node, gMatStack[gMatStackIndex]);
     }
@@ -318,6 +319,7 @@ static void geo_process_switch(struct GraphNodeSwitchCase *node) {
     if (selectedChild != NULL) {
         geo_process_node_and_siblings(selectedChild);
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -649,6 +651,8 @@ static void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
 void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     struct Animation *anim = node->curAnim;
 
+    FrameInterpolation_RecordOpenChild("geo_set_animation_globals", (uintptr_t)node);
+
     if (hasAnimation) {
         node->animFrame = geo_update_animation_frame(node, &node->animFrameAccelAssist);
     }
@@ -673,6 +677,7 @@ void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     } else {
         gCurrAnimTranslationMultiplier = (f32) node->animYTrans / (f32) anim->animYTransDivisor;
     }
+    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -751,7 +756,7 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
         FrameInterpolation_RecordCloseChild();
     }
     if (node->node.children != NULL) {
-        FrameInterpolation_RecordOpenChild("geo_process_shadow", (uintptr_t)node);
+        FrameInterpolation_RecordOpenChild("geo_process_shadow_children", (uintptr_t)node);
         geo_process_node_and_siblings(node->node.children);
         FrameInterpolation_RecordCloseChild();
     }
@@ -913,7 +918,7 @@ static void geo_process_object_parent(struct GraphNodeObjectParent *node) {
         FrameInterpolation_RecordCloseChild();
     }
     if (node->node.children != NULL) {
-        FrameInterpolation_RecordOpenChild("geo_process_object_parent", (uintptr_t)node);
+        FrameInterpolation_RecordOpenChild("geo_process_object_parent_children", (uintptr_t)node);
         geo_process_node_and_siblings(node->node.children);
         FrameInterpolation_RecordCloseChild();
     }

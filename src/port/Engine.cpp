@@ -197,8 +197,6 @@ void GameEngine::Create(){
 void GameEngine::Destroy(){
     PortEnhancements_Exit();
     AudioExit();
-    delete GameEngine::Instance;
-    GameEngine::Instance = nullptr;
 }
 
 void GameEngine::StartFrame() const {
