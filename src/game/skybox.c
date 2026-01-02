@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "area.h"
 #include "engine/math_util.h"
 #include "geo_misc.h"
@@ -214,7 +215,7 @@ void* CalculateDataOffset(void* data, int x, int y, size_t blobSize) {
     // Calculate the total offset in bytes within the data bin
     uint32_t totalOffset = (chunkOffset * (CHUNK_WIDTH * CHUNK_HEIGHT * BYTES_PER_PIXEL) + chunkDataOffset);
 
-    if(totalOffset + 2048 > blobSize) {
+    if(totalOffset + 4096 > blobSize) {
         totalOffset = 0;
     }
 
@@ -232,6 +233,9 @@ void* CalculateDataOffset(void* data, int x, int y, size_t blobSize) {
 void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex) {
     s32 row;
     s32 col;
+
+    void* data = ResourceGetDataByName(gSkyboxTextures[background]);
+    size_t blobSize = ResourceGetSizeByName(gSkyboxTextures[background]);
 
     for (row = 0; row < 3; row++) {
         for (col = 0; col < 3; col++) {
@@ -255,12 +259,8 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
                 y -= CHUNK_HEIGHT;
             }
 
-            void* data = ResourceGetDataByName(gSkyboxTextures[background]);
-            size_t blobSize = ResourceGetSizeByName(gSkyboxTextures[background]);
+            assert((tileIndex >= 0 && tileIndex <= 80) && "Panic");
 
-            if (gSkyboxTiles[tileIndex] == NULL) {
-                gSkyboxTiles[tileIndex] = malloc(2048);
-            }
             uint8_t* texture = gSkyboxTiles[tileIndex];
 
             // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
@@ -297,16 +297,14 @@ void *create_skybox_ortho_matrix(s8 player) {
     return mtx;
 }
 
-void cleanup_skybox_tiles(void) {
-    if (gSkyboxTiles != NULL) {
-        for (size_t i = 0; i < 80; i++) {
-            if (gSkyboxTiles[i] != NULL) {
-                free(gSkyboxTiles[i]);
-                gSkyboxTiles[i] = NULL;
-            }
-        }
-        free(gSkyboxTiles);
-        gSkyboxTiles = NULL;
+void skybox_init_tiles() {
+    if(gSkyboxTiles != NULL) {
+        return;
+    }
+
+    gSkyboxTiles = malloc(80 * sizeof(uint8_t*));
+    for (size_t idx = 0; idx < 80; idx++) {
+        gSkyboxTiles[idx] = malloc(4096);
     }
 }
 
@@ -317,17 +315,14 @@ Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
     s32 dlCommandCount = 20 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
     void *skybox = alloc_display_list(dlCommandCount * sizeof(Gfx));
     Gfx *dlist = skybox;
+
+    skybox_init_tiles();
+
     if (skybox == NULL) {
         return NULL;
     } else {
         Mtx *ortho = create_skybox_ortho_matrix(player);
-        if(gSkyboxTiles == NULL){
-            gSkyboxTiles = malloc(80 * sizeof(uint8_t*));
-            for (size_t idx = 0; idx < 80; idx++) {
-                gSkyboxTiles[idx] = NULL;
-            }
-            gLastSkybox = background;
-        } else if(gLastSkybox != background ){
+        if(gLastSkybox != background){
             for(size_t i = 0; i < 80; i++){
                 if (gSkyboxTiles[i] != NULL) {
                    gSPInvalidateTexCache(dlist++, (uintptr_t) gSkyboxTiles[i]);
