@@ -648,12 +648,9 @@ void thread5_game_loop(void) {
 
     setup_game_memory();
 #if ENABLE_RUMBLE
-    init_rumble_pak_scheduler_queue();
+    // init_rumble_pak_scheduler_queue();
 #endif
     init_controllers();
-#if ENABLE_RUMBLE
-    create_thread_6();
-#endif
     save_file_load_all();
 
     // Point address to the entry point into the level script data.
@@ -716,4 +713,8 @@ void thread5_iteration(void){
         print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
     }
     FrameInterpolation_StopRecord();
+
+#if ENABLE_RUMBLE
+    create_thread_6();
+#endif
 }
