@@ -663,9 +663,7 @@ void GeoLayoutParser::execute(const char* path) {
 
     while (mReader != nullptr) {
         const auto cmdId = mReader->ReadUByte();
-        FrameInterpolation_RecordOpenChild("GeoLayout Command", cmdId);
         GeoLayoutFunctionTable[cmdId]();
-        FrameInterpolation_RecordCloseChild();
     }
 
     delete mReader;

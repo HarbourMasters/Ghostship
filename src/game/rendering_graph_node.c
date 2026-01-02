@@ -179,11 +179,11 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
  * render modes of layers.
  */
 static void geo_append_display_list(void *displayList, s16 layer) {
-    FrameInterpolation_RecordOpenChild("geo_append_display_list", displayList);
 #ifdef F3DEX_GBI_2
     gSPLookAt(gDisplayListHead++, &lookAt);
 #endif
     if (gCurGraphNodeMasterList != 0) {
+        FrameInterpolation_RecordOpenChild("geo_append_display_list", displayList);
         struct DisplayListNode *listNode =
             alloc_only_pool_alloc(gDisplayListHeap, sizeof(struct DisplayListNode));
 
@@ -196,8 +196,8 @@ static void geo_append_display_list(void *displayList, s16 layer) {
             gCurGraphNodeMasterList->listTails[layer]->next = listNode;
         }
         gCurGraphNodeMasterList->listTails[layer] = listNode;
+        FrameInterpolation_RecordCloseChild();
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -207,8 +207,8 @@ static void geo_process_master_list(struct GraphNodeMasterList *node) {
     s32 i;
     UNUSED s32 sp1C;
 
-    FrameInterpolation_RecordOpenChild("geo_process_master_list", node);
     if (gCurGraphNodeMasterList == NULL && node->node.children != NULL) {
+        FrameInterpolation_RecordOpenChild("geo_process_master_list", node);
         gCurGraphNodeMasterList = node;
         for (i = 0; i < GFX_NUM_MASTER_LISTS; i++) {
             node->listHeads[i] = NULL;
@@ -216,8 +216,8 @@ static void geo_process_master_list(struct GraphNodeMasterList *node) {
         geo_process_node_and_siblings(node->node.children);
         geo_process_master_list_sub(node);
         gCurGraphNodeMasterList = NULL;
+        FrameInterpolation_RecordCloseChild();
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -245,13 +245,15 @@ static void geo_process_ortho_projection(struct GraphNodeOrthoProjection *node) 
  * Process a perspective projection node.
  */
 static void geo_process_perspective(struct GraphNodePerspective *node) {
-    FrameInterpolation_RecordOpenChild("geo_process_perspective", (uintptr_t)node);
     if (node->fnNode.func != NULL) {
+        FrameInterpolation_RecordOpenChild("geo_process_perspective", (uintptr_t)node);
         node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node, gMatStack[gMatStackIndex]);
+        FrameInterpolation_RecordCloseChild();
     }
     if (node->fnNode.node.children != NULL) {
         u16 perspNorm;
         Mtx *mtx = alloc_display_list(sizeof(*mtx));
+        FrameInterpolation_RecordOpenChild("geo_process_perspective", (uintptr_t)node);
 
 #ifdef VERSION_EU
         f32 aspect = ((f32) gCurGraphNodeRoot->width / (f32) gCurGraphNodeRoot->height) * 1.1f;
@@ -266,8 +268,8 @@ static void geo_process_perspective(struct GraphNodePerspective *node) {
         gCurGraphNodeCamFrustum = node;
         geo_process_node_and_siblings(node->fnNode.node.children);
         gCurGraphNodeCamFrustum = NULL;
+        FrameInterpolation_RecordCloseChild();
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -286,17 +288,17 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
     Mtx *mtx = gMatStackFixed[gMatStackIndex];
     s16 distanceFromCam = -GET_HIGH_S16_OF_32(mtx->m[1][3]); // z-component of the translation column
 #endif
-    FrameInterpolation_RecordOpenChild("geo_process_level_of_detail", (uintptr_t)node);
     if(CVarGetInteger("gDisableLOD", 0) == 1) {
         distanceFromCam = 0;
     }
 
     if (node->minDistance <= distanceFromCam && distanceFromCam < node->maxDistance) {
         if (node->node.children != 0) {
+            FrameInterpolation_RecordOpenChild("geo_process_level_of_detail", (uintptr_t)node);
             geo_process_node_and_siblings(node->node.children);
+            FrameInterpolation_RecordCloseChild();
         }
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -307,7 +309,6 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
 static void geo_process_switch(struct GraphNodeSwitchCase *node) {
     struct GraphNode *selectedChild = node->fnNode.node.children;
     s32 i;
-    FrameInterpolation_RecordOpenChild("geo_process_switch", (uintptr_t)node);
     if (node->fnNode.func != NULL) {
         node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node, gMatStack[gMatStackIndex]);
     }
@@ -317,7 +318,6 @@ static void geo_process_switch(struct GraphNodeSwitchCase *node) {
     if (selectedChild != NULL) {
         geo_process_node_and_siblings(selectedChild);
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -518,19 +518,21 @@ static void geo_process_display_list(struct GraphNodeDisplayList *node) {
  * the list is generated on the fly by a function.
  */
 static void geo_process_generated_list(struct GraphNodeGenerated *node) {
-    FrameInterpolation_RecordOpenChild("geo_process_generated_list", (uintptr_t)node);
     if (node->fnNode.func != NULL) {
         Gfx *list = node->fnNode.func(GEO_CONTEXT_RENDER, &node->fnNode.node,
                                      (struct AllocOnlyPool *) gMatStack[gMatStackIndex]);
 
         if (list != NULL) {
+            FrameInterpolation_RecordOpenChild("geo_process_generated_list", (uintptr_t)node);
             geo_append_display_list((void *) VIRTUAL_TO_PHYSICAL(list), node->fnNode.node.flags >> 8);
+            FrameInterpolation_RecordCloseChild();
         }
     }
     if (node->fnNode.node.children != NULL) {
+        FrameInterpolation_RecordOpenChild("geo_process_generated_list_ch", (uintptr_t)node);
         geo_process_node_and_siblings(node->fnNode.node.children);
+        FrameInterpolation_RecordCloseChild();
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -647,8 +649,6 @@ static void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
 void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     struct Animation *anim = node->curAnim;
 
-    FrameInterpolation_RecordOpenChild("geo_set_animation_globals", (uintptr_t)node);
-
     if (hasAnimation) {
         node->animFrame = geo_update_animation_frame(node, &node->animFrameAccelAssist);
     }
@@ -673,7 +673,6 @@ void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     } else {
         gCurrAnimTranslationMultiplier = (f32) node->animYTrans / (f32) anim->animYTransDivisor;
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -693,9 +692,8 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
     struct GraphNode *geo;
     Mtx *mtx;
 
-    FrameInterpolation_RecordOpenChild("geo_process_shadow", (uintptr_t)node);
-
     if (gCurGraphNodeCamera != NULL && gCurGraphNodeObject != NULL) {
+        FrameInterpolation_RecordOpenChild("geo_process_shadow", (uintptr_t)node);
         if (gCurGraphNodeHeldObject != NULL) {
             get_pos_from_transform_mtx(shadowPos, gMatStack[gMatStackIndex],
                                        *gCurGraphNodeCamera->matrixPtr);
@@ -750,11 +748,13 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
             }
             gMatStackIndex--;
         }
+        FrameInterpolation_RecordCloseChild();
     }
     if (node->node.children != NULL) {
+        FrameInterpolation_RecordOpenChild("geo_process_shadow", (uintptr_t)node);
         geo_process_node_and_siblings(node->node.children);
+        FrameInterpolation_RecordCloseChild();
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
@@ -905,16 +905,18 @@ static void geo_process_object(struct Object *node) {
  * actual children are be processed. (in practice they are null though)
  */
 static void geo_process_object_parent(struct GraphNodeObjectParent *node) {
-    FrameInterpolation_RecordOpenChild("geo_process_object_parent", (uintptr_t)node);
     if (node->sharedChild != NULL) {
+        FrameInterpolation_RecordOpenChild("geo_process_object_parent", (uintptr_t)node);
         node->sharedChild->parent = (struct GraphNode *) node;
         geo_process_node_and_siblings(node->sharedChild);
         node->sharedChild->parent = NULL;
+        FrameInterpolation_RecordCloseChild();
     }
     if (node->node.children != NULL) {
+        FrameInterpolation_RecordOpenChild("geo_process_object_parent", (uintptr_t)node);
         geo_process_node_and_siblings(node->node.children);
+        FrameInterpolation_RecordCloseChild();
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 /**
