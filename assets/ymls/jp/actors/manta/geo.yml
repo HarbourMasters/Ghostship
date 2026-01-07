@@ -5,7 +5,7 @@
   compression:
     offset: 0x139D10
   segments:
-    - [0x05,  0x139D10]
+    - [ 0x5, 0x139D10 ]
 
 manta_seg5_geo_05008D14:
   type: SM64:GEO_LAYOUT

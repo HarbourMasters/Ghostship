@@ -3,7 +3,7 @@
   compression:
     offset: 0x4AA510
   segments:
-    - [0x07,  0x4AA510]
+    - [ 0x7, 0x4AA510 ]
   external_files:
     - "assets/ymls/jp/textures/outside.yml"
   header:

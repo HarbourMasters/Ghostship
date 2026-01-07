@@ -3,7 +3,7 @@
   compression:
     offset: 0x133120
   segments:
-    - [0x05,  0x133120]
+    - [ 0x5, 0x133120 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -389,4 +389,3 @@ king_bobomb_seg5_dl_0500B6C0:
   type: GFX
   offset: 0xB6C0
   symbol: king_bobomb_seg5_dl_0500B6C0
-

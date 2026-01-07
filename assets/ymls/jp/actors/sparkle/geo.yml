@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/sparkle.yml"
   autopads: false
   segments:
-    - [0x17,  0x125DB0]
+    - [ 0x17, 0x125DB0 ]
 
 sparkles_geo:
   type: SM64:GEO_LAYOUT

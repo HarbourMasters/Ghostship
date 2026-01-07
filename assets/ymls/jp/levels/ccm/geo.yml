@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/ccm.yml"
   autopads: false
   segments:
-    - [0x0E,  0x394230]
+    - [ 0xE, 0x394230 ]
 
 ccm_geo_0003D0:
   type: SM64:GEO_LAYOUT

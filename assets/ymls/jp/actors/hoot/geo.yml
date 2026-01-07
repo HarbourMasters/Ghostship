@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/hoot.yml"
   autopads: false
   segments:
-    - [0x0C,  0x130C50]
+    - [ 0xC, 0x130C50 ]
 
 hoot_geo:
   type: SM64:GEO_LAYOUT

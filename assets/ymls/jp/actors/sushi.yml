@@ -3,7 +3,7 @@
   compression:
     offset: 0x139D10
   segments:
-    - [0x05,  0x139D10]
+    - [ 0x5, 0x139D10 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -167,4 +167,3 @@ sushi_seg5_dl_0500A990:
   type: GFX
   offset: 0xA990
   symbol: sushi_seg5_dl_0500A990
-

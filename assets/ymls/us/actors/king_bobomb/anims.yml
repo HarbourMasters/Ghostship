@@ -3,7 +3,7 @@
   compression:
     offset: 0x134D20
   segments:
-    - [0x05,  0x134D20]
+    - [ 0x5, 0x134D20 ]
 
 king_bobomb_seg5_anim_0500BDFC:
   type: SM64:ANIM

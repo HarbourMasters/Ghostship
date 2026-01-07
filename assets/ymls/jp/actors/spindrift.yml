@@ -3,7 +3,7 @@
   compression:
     offset: 0x15EA70
   segments:
-    - [0x05,  0x15EA70]
+    - [ 0x5, 0x15EA70 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -157,4 +157,3 @@ spindrift_seg5_dl_05002D08:
   type: GFX
   offset: 0x2D08
   symbol: spindrift_seg5_dl_05002D08
-

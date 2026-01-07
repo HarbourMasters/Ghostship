@@ -3,7 +3,7 @@
   compression:
     offset: 0x16BC70
   segments:
-    - [0x05,  0x16BC70]
+    - [ 0x5, 0x16BC70 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -673,4 +673,3 @@ yoshi_seg5_dl_05022608:
   type: GFX
   offset: 0x22608
   symbol: yoshi_seg5_dl_05022608
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x2EFA80
   segments:
-    - [0x0A,  0x2EFA80]
+    - [ 0xA, 0x2EFA80 ]
 
 ssl:
   type: BLOB

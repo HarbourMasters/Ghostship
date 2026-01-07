@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -40,4 +40,3 @@ butterfly_seg3_dl_030054A0:
   type: GFX
   offset: 0x54A0
   symbol: butterfly_seg3_dl_030054A0
-

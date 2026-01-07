@@ -3,7 +3,7 @@
   compression:
     offset: 0x347A50
   segments:
-    - [0x09,  0x347A50]
+    - [ 0x9, 0x347A50 ]
 
 hmc_textures.00000:
   type: TEXTURE

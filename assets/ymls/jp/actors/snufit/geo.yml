@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/snufit.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1EFE60]
+    - [ 0xD, 0x1EFE60 ]
 
 snufit_geo:
   type: SM64:GEO_LAYOUT

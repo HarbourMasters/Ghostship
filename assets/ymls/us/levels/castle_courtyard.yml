@@ -3,7 +3,14 @@
   compression:
     offset: 0x4AC570
   segments:
-    - [0x07,  0x4AC570]
+    - [ 0x7, 0x4AC570 ]
+  external_files:
+    - "assets/ymls/us/textures/outside.yml"
+  header:
+    header:
+      - '#include "castle_courtyard/geo.h"'
+      - ''
+      - 'extern const LevelScript level_castle_courtyard_entry[];'
 
 castle_courtyard_seg7_vertex_07000000:
   type: VTX

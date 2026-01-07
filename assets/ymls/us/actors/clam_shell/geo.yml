@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/clam_shell.yml"
   autopads: false
   segments:
-    - [0x0C,  0x145C10]
+    - [ 0xC, 0x145C10 ]
 
 clam_shell_geo:
   type: SM64:GEO_LAYOUT

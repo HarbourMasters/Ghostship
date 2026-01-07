@@ -3,7 +3,11 @@
   compression:
     offset: 0x188440
   segments:
-    - [0x06,  0x188440]
+    - [ 0x6, 0x188440 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "yellow_sphere/geo.h"'
 
 yellow_sphere_seg6_vertex_0601EB48:
   type: VTX

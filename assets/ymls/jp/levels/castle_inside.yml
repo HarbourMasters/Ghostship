@@ -3,7 +3,7 @@
   compression:
     offset: 0x3948D0
   segments:
-    - [0x07,  0x3948D0]
+    - [ 0x7, 0x3948D0 ]
   external_files:
     - "assets/ymls/jp/textures/inside.yml"
   header:
@@ -436,6 +436,24 @@ inside_castle_seg7_painting_dl_07021AC0:
   offset: 0x21AC0
   symbol: inside_castle_seg7_painting_dl_07021AC0
 
+inside_castle_seg7_painting_texture_map_bottom_07021AE0:
+  type: SM64:PAINTING_MAP
+  offset: 0x21AE0
+  symbol: inside_castle_seg7_painting_texture_map_bottom_07021AE0
+
+inside_castle_seg7_painting_texture_map_top_07021FFC:
+  type: SM64:PAINTING_MAP
+  offset: 0x21FFC
+  symbol: inside_castle_seg7_painting_texture_map_top_07021FFC
+
+inside_castle_seg7_painting_texture_maps_07022518:
+  type: ASSET_ARRAY
+  assetType: PaintingData
+  factoryType: SM64:PAINTING_MAP
+  count: 2
+  offset: 0x22518
+  symbol: inside_castle_seg7_painting_texture_maps_07022518
+
 inside_castle_seg7_lights_07022528:
   type: LIGHTS
   size: 24
@@ -474,6 +492,19 @@ inside_castle_seg7_painting_dl_07022640:
   type: GFX
   offset: 0x22640
   symbol: inside_castle_seg7_painting_dl_07022640
+
+inside_castle_seg7_painting_env_map_texture_map_07022660:
+  type: SM64:PAINTING_MAP
+  offset: 0x22660
+  symbol: inside_castle_seg7_painting_env_map_texture_map_07022660
+
+inside_castle_seg7_painting_env_map_texture_maps_07023044:
+  type: ASSET_ARRAY
+  assetType: PaintingData
+  factoryType: SM64:PAINTING_MAP
+  count: 1
+  offset: 0x23044
+  symbol: inside_castle_seg7_painting_env_map_texture_maps_07023044
 
 inside_castle_seg7_painting_dl_07023050:
   type: GFX
@@ -549,6 +580,180 @@ inside_castle_seg7_painting_dl_070235B8:
   type: GFX
   offset: 0x235B8
   symbol: inside_castle_seg7_painting_dl_070235B8
+
+inside_castle_seg7_painting_textures_070235C0:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x235C0
+  symbol: inside_castle_seg7_painting_textures_070235C0
+
+inside_castle_seg7_painting_textures_070235C8:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x235C8
+  symbol: inside_castle_seg7_painting_textures_070235C8
+
+inside_castle_seg7_painting_textures_070235D0:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x235D0
+  symbol: inside_castle_seg7_painting_textures_070235D0
+
+inside_castle_seg7_painting_textures_070235D8:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x235D8
+  symbol: inside_castle_seg7_painting_textures_070235D8
+
+inside_castle_seg7_painting_textures_070235E0:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x235E0
+  symbol: inside_castle_seg7_painting_textures_070235E0
+
+inside_castle_seg7_painting_textures_070235E8:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x235E8
+  symbol: inside_castle_seg7_painting_textures_070235E8
+
+inside_castle_seg7_painting_textures_070235F0:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 1
+  offset: 0x235F0
+  symbol: inside_castle_seg7_painting_textures_070235F0
+
+inside_castle_seg7_painting_textures_070235F4:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 1
+  offset: 0x235F4
+  symbol: inside_castle_seg7_painting_textures_070235F4
+
+inside_castle_seg7_painting_textures_070235F8:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x235F8
+  symbol: inside_castle_seg7_painting_textures_070235F8
+
+inside_castle_seg7_painting_textures_07023600:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x23600
+  symbol: inside_castle_seg7_painting_textures_07023600
+
+inside_castle_seg7_painting_textures_07023608:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x23608
+  symbol: inside_castle_seg7_painting_textures_07023608
+
+inside_castle_seg7_painting_textures_07023610:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x23610
+  symbol: inside_castle_seg7_painting_textures_07023610
+
+inside_castle_seg7_painting_textures_07023618:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x23618
+  symbol: inside_castle_seg7_painting_textures_07023618
+
+bob_painting:
+  type: SM64:PAINTING
+  offset: 0x23620
+  symbol: bob_painting
+
+ccm_painting:
+  type: SM64:PAINTING
+  offset: 0x23698
+  symbol: ccm_painting
+
+wf_painting:
+  type: SM64:PAINTING
+  offset: 0x23710
+  symbol: wf_painting
+
+jrb_painting:
+  type: SM64:PAINTING
+  offset: 0x23788
+  symbol: jrb_painting
+
+lll_painting:
+  type: SM64:PAINTING
+  offset: 0x23800
+  symbol: lll_painting
+
+ssl_painting:
+  type: SM64:PAINTING
+  offset: 0x23878
+  symbol: ssl_painting
+
+hmc_painting:
+  type: SM64:PAINTING
+  offset: 0x238F0
+  symbol: hmc_painting
+
+ddd_painting:
+  type: SM64:PAINTING
+  offset: 0x23968
+  symbol: ddd_painting
+
+wdw_painting:
+  type: SM64:PAINTING
+  offset: 0x239E0
+  symbol: wdw_painting
+
+thi_tiny_painting:
+  type: SM64:PAINTING
+  offset: 0x23A58
+  symbol: thi_tiny_painting
+
+ttm_painting:
+  type: SM64:PAINTING
+  offset: 0x23AD0
+  symbol: ttm_painting
+
+ttc_painting:
+  type: SM64:PAINTING
+  offset: 0x23B48
+  symbol: ttc_painting
+
+sl_painting:
+  type: SM64:PAINTING
+  offset: 0x23BC0
+  symbol: sl_painting
+
+thi_huge_painting:
+  type: SM64:PAINTING
+  offset: 0x23C38
+  symbol: thi_huge_painting
 
 inside_castle_seg7_vertex_07023CB0:
   type: VTX
@@ -8113,6 +8318,39 @@ inside_castle_seg7_collision_ddd_warp_2:
   offset: 0x7768C
   symbol: inside_castle_seg7_collision_ddd_warp_2
 
+inside_castle_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x77764
+  symbol: inside_castle_seg7_area_1_macro_objs
+
+inside_castle_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x777E0
+  symbol: inside_castle_seg7_area_2_macro_objs
+
+inside_castle_seg7_area_3_macro_objs:
+  type: SM64:MACRO
+  offset: 0x777EC
+  symbol: inside_castle_seg7_area_3_macro_objs
+
+inside_castle_seg7_area_1_rooms:
+  type: BLOB
+  size: 0x860
+  offset: 0x7782C
+  symbol: inside_castle_seg7_area_1_rooms
+
+inside_castle_seg7_area_2_rooms:
+  type: BLOB
+  size: 0x7E2
+  offset: 0x7808C
+  symbol: inside_castle_seg7_area_2_rooms
+
+inside_castle_seg7_area_3_rooms:
+  type: BLOB
+  size: 0x572
+  offset: 0x78870
+  symbol: inside_castle_seg7_area_3_rooms
+
 inside_castle_seg7_collision_floor_trap:
   type: SM64:COLLISION
   offset: 0x78DE4
@@ -8185,244 +8423,6 @@ inside_castle_seg7_trajectory_mips:
   count: 10
   offset: 0x79068
   symbol: inside_castle_seg7_trajectory_mips
-
-inside_castle_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x77764
-  symbol: inside_castle_seg7_area_1_macro_objs
-
-inside_castle_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0x777E0
-  symbol: inside_castle_seg7_area_2_macro_objs
-
-inside_castle_seg7_area_3_macro_objs:
-  type: SM64:MACRO
-  offset: 0x777EC
-  symbol: inside_castle_seg7_area_3_macro_objs
-
-inside_castle_seg7_painting_texture_map_bottom_07021AE0:
-  type: SM64:PAINTING_MAP
-  offset: 0x21AE0
-  symbol: inside_castle_seg7_painting_texture_map_bottom_07021AE0
-
-inside_castle_seg7_painting_texture_map_top_07021FFC:
-  type: SM64:PAINTING_MAP
-  offset: 0x21FFC
-  symbol: inside_castle_seg7_painting_texture_map_top_07021FFC
-
-inside_castle_seg7_painting_texture_maps_07022518:
-  type: ASSET_ARRAY
-  assetType: PaintingData
-  factoryType: SM64:PAINTING_MAP
-  count: 2
-  offset: 0x22518
-  symbol: inside_castle_seg7_painting_texture_maps_07022518
-
-inside_castle_seg7_painting_env_map_texture_map_07022660:
-  type: SM64:PAINTING_MAP
-  offset: 0x22660
-  symbol: inside_castle_seg7_painting_env_map_texture_map_07022660
-
-inside_castle_seg7_painting_env_map_texture_maps_07023044:
-  type: ASSET_ARRAY
-  assetType: PaintingData
-  factoryType: SM64:PAINTING_MAP
-  count: 1
-  offset: 0x23044
-  symbol: inside_castle_seg7_painting_env_map_texture_maps_07023044
-
-inside_castle_seg7_painting_textures_070235C0:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x235C0
-  symbol: inside_castle_seg7_painting_textures_070235C0
-
-inside_castle_seg7_painting_textures_070235C8:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x235C8
-  symbol: inside_castle_seg7_painting_textures_070235C8
-
-inside_castle_seg7_painting_textures_070235D0:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x235D0
-  symbol: inside_castle_seg7_painting_textures_070235D0
-
-inside_castle_seg7_painting_textures_070235D8:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x235D8
-  symbol: inside_castle_seg7_painting_textures_070235D8
-
-inside_castle_seg7_painting_textures_070235E0:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x235E0
-  symbol: inside_castle_seg7_painting_textures_070235E0
-
-inside_castle_seg7_painting_textures_070235E8:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x235E8
-  symbol: inside_castle_seg7_painting_textures_070235E8
-
-inside_castle_seg7_painting_textures_070235F0:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 1
-  offset: 0x235F0
-  symbol: inside_castle_seg7_painting_textures_070235F0
-
-inside_castle_seg7_painting_textures_070235F4:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 1
-  offset: 0x235F4
-  symbol: inside_castle_seg7_painting_textures_070235F4
-
-inside_castle_seg7_painting_textures_070235F8:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x235F8
-  symbol: inside_castle_seg7_painting_textures_070235F8
-
-inside_castle_seg7_painting_textures_07023600:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x23600
-  symbol: inside_castle_seg7_painting_textures_07023600
-
-inside_castle_seg7_painting_textures_07023608:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x23608
-  symbol: inside_castle_seg7_painting_textures_07023608
-
-inside_castle_seg7_painting_textures_07023610:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x23610
-  symbol: inside_castle_seg7_painting_textures_07023610
-
-inside_castle_seg7_painting_textures_07023618:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x23618
-  symbol: inside_castle_seg7_painting_textures_07023618
-
-bob_painting:
-  type: SM64:PAINTING
-  offset: 0x23620
-  symbol: bob_painting
-
-ccm_painting:
-  type: SM64:PAINTING
-  offset: 0x23698
-  symbol: ccm_painting
-
-wf_painting:
-  type: SM64:PAINTING
-  offset: 0x23710
-  symbol: wf_painting
-
-jrb_painting:
-  type: SM64:PAINTING
-  offset: 0x23788
-  symbol: jrb_painting
-
-lll_painting:
-  type: SM64:PAINTING
-  offset: 0x23800
-  symbol: lll_painting
-
-ssl_painting:
-  type: SM64:PAINTING
-  offset: 0x23878
-  symbol: ssl_painting
-
-hmc_painting:
-  type: SM64:PAINTING
-  offset: 0x238F0
-  symbol: hmc_painting
-
-ddd_painting:
-  type: SM64:PAINTING
-  offset: 0x23968
-  symbol: ddd_painting
-
-wdw_painting:
-  type: SM64:PAINTING
-  offset: 0x239E0
-  symbol: wdw_painting
-
-thi_tiny_painting:
-  type: SM64:PAINTING
-  offset: 0x23A58
-  symbol: thi_tiny_painting
-
-ttm_painting:
-  type: SM64:PAINTING
-  offset: 0x23AD0
-  symbol: ttm_painting
-
-ttc_painting:
-  type: SM64:PAINTING
-  offset: 0x23B48
-  symbol: ttc_painting
-
-sl_painting:
-  type: SM64:PAINTING
-  offset: 0x23BC0
-  symbol: sl_painting
-
-thi_huge_painting:
-  type: SM64:PAINTING
-  offset: 0x23C38
-  symbol: thi_huge_painting
-
-inside_castle_seg7_area_1_rooms:
-  type: BLOB
-  size: 0x860
-  offset: 0x7782C
-  symbol: inside_castle_seg7_area_1_rooms
-
-inside_castle_seg7_area_2_rooms:
-  type: BLOB
-  size: 0x7E2
-  offset: 0x7808C
-  symbol: inside_castle_seg7_area_2_rooms
-
-inside_castle_seg7_area_3_rooms:
-  type: BLOB
-  size: 0x572
-  offset: 0x78870
-  symbol: inside_castle_seg7_area_3_rooms
 
 inside_castle_movtex_green_room_water_data:
   type: SM64:MOVTEX

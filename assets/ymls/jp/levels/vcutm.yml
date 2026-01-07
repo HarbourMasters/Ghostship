@@ -3,7 +3,7 @@
   compression:
     offset: 0x45A540
   segments:
-    - [0x07,  0x45A540]
+    - [ 0x7, 0x45A540 ]
   external_files:
     - "assets/ymls/jp/textures/outside.yml"
   header:
@@ -693,4 +693,3 @@ vcutm_seg7_collision_0700AC44:
   type: SM64:COLLISION
   offset: 0xAC44
   symbol: vcutm_seg7_collision_0700AC44
-

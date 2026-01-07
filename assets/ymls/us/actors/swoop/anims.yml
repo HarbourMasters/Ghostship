@@ -3,7 +3,7 @@
   compression:
     offset: 0x1E7EE0
   segments:
-    - [0x06,  0x1E7EE0]
+    - [ 0x6, 0x1E7EE0 ]
 
 swoop_seg6_anim_06006E88:
   type: SM64:ANIM

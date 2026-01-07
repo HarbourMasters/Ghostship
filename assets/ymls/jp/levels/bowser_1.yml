@@ -3,7 +3,7 @@
   compression:
     offset: 0x4C08C0
   segments:
-    - [0x07,  0x4C08C0]
+    - [ 0x7, 0x4C08C0 ]
   header:
     header:
       - '#include "bowser_1/geo.h"'
@@ -115,4 +115,3 @@ bowser_1_seg7_collision_level:
   type: SM64:COLLISION
   offset: 0x2838
   symbol: bowser_1_seg7_collision_level
-

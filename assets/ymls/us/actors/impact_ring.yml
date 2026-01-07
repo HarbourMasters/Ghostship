@@ -3,7 +3,11 @@
   compression:
     offset: 0x188440
   segments:
-    - [0x06,  0x188440]
+    - [ 0x6, 0x188440 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "impact_ring/geo.h"'
 
 impact_ring_seg6_vertex_0601C9D0:
   type: VTX
@@ -49,4 +53,3 @@ impact_ring_seg6_dl_0601EAC0:
   type: GFX
   offset: 0x1EAC0
   symbol: impact_ring_seg6_dl_0601EAC0
-

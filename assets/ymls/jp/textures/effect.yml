@@ -3,7 +3,7 @@
   compression:
     offset: 0x36DAD0
   segments:
-    - [0x0B,  0x36DAD0]
+    - [ 0xB, 0x36DAD0 ]
 
 flower.00008:
   type: TEXTURE

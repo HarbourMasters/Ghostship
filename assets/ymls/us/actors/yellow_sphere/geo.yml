@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/yellow_sphere.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1B9070]
+    - [ 0xD, 0x1B9070 ]
 
 bowser_1_yellow_sphere_geo:
   type: SM64:GEO_LAYOUT

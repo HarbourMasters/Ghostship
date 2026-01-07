@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B8010
   segments:
-    - [0x06,  0x1B8010]
+    - [ 0x6, 0x1B8010 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -592,4 +592,3 @@ skeeter_seg6_dl_06005358:
   type: GFX
   offset: 0x5358
   symbol: skeeter_seg6_dl_06005358
-

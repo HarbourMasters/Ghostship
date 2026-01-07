@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/bitfs.yml"
   autopads: false
   segments:
-    - [0x0E,  0x468780]
+    - [ 0xE, 0x468780 ]
 
 bitfs_geo_0004B0:
   type: SM64:GEO_LAYOUT

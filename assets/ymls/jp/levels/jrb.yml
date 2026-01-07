@@ -3,7 +3,7 @@
   compression:
     offset: 0x4187C0
   segments:
-    - [0x07,  0x4187C0]
+    - [ 0x7, 0x4187C0 ]
   external_files:
     - "assets/ymls/jp/textures/water.yml"
   header:
@@ -1188,6 +1188,36 @@ jrb_seg7_trajectory_unagi_2:
   offset: 0xD240
   symbol: jrb_seg7_trajectory_unagi_2
 
+jrb_movtex_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xD28C
+  symbol: jrb_movtex_water_data
+
+jrb_movtex_ocean_cave_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xD2AC
+  symbol: jrb_movtex_ocean_cave_water_data
+
+jrb_movtex_water:
+  type: SM64:MOVTEX_QUAD
+  count: 3
+  offset: 0xD2CC
+  symbol: jrb_movtex_water
+
+jrb_movtex_initial_mist_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0xD2E4
+  symbol: jrb_movtex_initial_mist_data
+
+jrb_movtex_initial_mist:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0xD304
+  symbol: jrb_movtex_initial_mist
+
 jrb_seg7_lights_0700D318:
   type: LIGHTS
   size: 24
@@ -1535,36 +1565,6 @@ jrb_seg7_area_2_macro_objs:
   type: SM64:MACRO
   offset: 0x11370
   symbol: jrb_seg7_area_2_macro_objs
-
-jrb_movtex_water_data:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0xD28C
-  symbol: jrb_movtex_water_data
-
-jrb_movtex_ocean_cave_water_data:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0xD2AC
-  symbol: jrb_movtex_ocean_cave_water_data
-
-jrb_movtex_water:
-  type: SM64:MOVTEX_QUAD
-  count: 3
-  offset: 0xD2CC
-  symbol: jrb_movtex_water
-
-jrb_movtex_initial_mist_data:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0xD2E4
-  symbol: jrb_movtex_initial_mist_data
-
-jrb_movtex_initial_mist:
-  type: SM64:MOVTEX_QUAD
-  count: 2
-  offset: 0xD304
-  symbol: jrb_movtex_initial_mist
 
 jrb_movtex_sunken_ship_water_data:
   type: SM64:MOVTEX

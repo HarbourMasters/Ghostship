@@ -3,7 +3,7 @@
   compression:
     offset: 0x49C6B0
   segments:
-    - [0x07,  0x49C6B0]
+    - [ 0x7, 0x49C6B0 ]
   header:
     header:
       - '#include "ending/geo.h"'

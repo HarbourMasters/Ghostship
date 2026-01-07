@@ -3,7 +3,14 @@
   compression:
     offset: 0x3E76B0
   segments:
-    - [0x07,  0x3E76B0]
+    - [ 0x7, 0x3E76B0 ]
+  external_files:
+    - "assets/ymls/us/textures/generic.yml"
+  header:
+    header:
+      - '#include "ssl/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ssl_entry[];'
 
 0:
   type: TEXTURE
@@ -102,6 +109,20 @@ ssl_dl_pyramid_quicksand_pit_end:
   type: GFX
   offset: 0x48F8
   symbol: ssl_dl_pyramid_quicksand_pit_end
+
+ssl_movtex_tris_quicksand_pit:
+  type: SM64:MOVTEX
+  count: 10
+  has_color: true
+  offset: 0x4930
+  symbol: ssl_movtex_tris_quicksand_pit
+
+ssl_movtex_tris_pyramid_quicksand_pit:
+  type: SM64:MOVTEX
+  count: 10
+  has_color: true
+  offset: 0x49B4
+  symbol: ssl_movtex_tris_pyramid_quicksand_pit
 
 ssl_dl_quicksand_pit:
   type: GFX
@@ -949,6 +970,82 @@ ssl_seg7_collision_tox_box:
   type: SM64:COLLISION
   offset: 0x12644
   symbol: ssl_seg7_collision_tox_box
+
+ssl_movtex_puddle_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x12758
+  symbol: ssl_movtex_puddle_water_data
+
+ssl_movtex_puddle_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x12778
+  symbol: ssl_movtex_puddle_water
+
+ssl_movtex_toxbox_quicksand_large_mist:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x12788
+  symbol: ssl_movtex_toxbox_quicksand_large_mist
+
+ssl_movtex_toxbox_quicksand_short_mist:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x127A8
+  symbol: ssl_movtex_toxbox_quicksand_short_mist
+
+ssl_movtex_toxbox_quicksand_mist:
+  type: SM64:MOVTEX_QUAD
+  count: 3
+  offset: 0x127C8
+  symbol: ssl_movtex_toxbox_quicksand_mist
+
+ssl_dl_quicksand_begin:
+  type: GFX
+  offset: 0x127E0
+  symbol: ssl_dl_quicksand_begin
+
+ssl_dl_quicksand_end:
+  type: GFX
+  offset: 0x127E8
+  symbol: ssl_dl_quicksand_end
+
+ssl_movtex_tris_pyramid_quicksand:
+  type: SM64:MOVTEX
+  count: 12
+  has_color: true
+  offset: 0x127F0
+  symbol: ssl_movtex_tris_pyramid_quicksand
+
+ssl_dl_pyramid_quicksand:
+  type: GFX
+  offset: 0x128B8
+  symbol: ssl_dl_pyramid_quicksand
+
+ssl_movtex_tris_pyramid_corners_quicksand:
+  type: SM64:MOVTEX
+  count: 16
+  has_color: true
+  offset: 0x12900
+  symbol: ssl_movtex_tris_pyramid_corners_quicksand
+
+ssl_dl_pyramid_corners_quicksand:
+  type: GFX
+  offset: 0x12A08
+  symbol: ssl_dl_pyramid_corners_quicksand
+
+ssl_movtex_tris_sides_quicksand:
+  type: SM64:MOVTEX
+  count: 15
+  has_color: true
+  offset: 0x12A50
+  symbol: ssl_movtex_tris_sides_quicksand
+
+ssl_dl_sides_quicksand:
+  type: GFX
+  offset: 0x12B48
+  symbol: ssl_dl_sides_quicksand
 
 ssl_seg7_lights_07012BD0:
   type: LIGHTS
@@ -2601,82 +2698,6 @@ ssl_seg7_collision_070284B0:
   type: SM64:COLLISION
   offset: 0x284B0
   symbol: ssl_seg7_collision_070284B0
-
-ssl_movtex_puddle_water_data:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0x12758
-  symbol: ssl_movtex_puddle_water_data
-
-ssl_movtex_puddle_water:
-  type: SM64:MOVTEX_QUAD
-  count: 2
-  offset: 0x12778
-  symbol: ssl_movtex_puddle_water
-
-ssl_movtex_toxbox_quicksand_large_mist:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0x12788
-  symbol: ssl_movtex_toxbox_quicksand_large_mist
-
-ssl_movtex_toxbox_quicksand_short_mist:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0x127A8
-  symbol: ssl_movtex_toxbox_quicksand_short_mist
-
-ssl_movtex_toxbox_quicksand_mist:
-  type: SM64:MOVTEX_QUAD
-  count: 3
-  offset: 0x127C8
-  symbol: ssl_movtex_toxbox_quicksand_mist
-
-ssl_dl_quicksand_begin:
-  type: GFX
-  offset: 0x127E0
-  symbol: ssl_dl_quicksand_begin
-
-ssl_dl_quicksand_end:
-  type: GFX
-  offset: 0x127E8
-  symbol: ssl_dl_quicksand_end
-
-ssl_movtex_tris_pyramid_quicksand:
-  type: SM64:MOVTEX
-  count: 12
-  has_color: true
-  offset: 0x127F0
-  symbol: ssl_movtex_tris_pyramid_quicksand
-
-ssl_dl_pyramid_quicksand:
-  type: GFX
-  offset: 0x128B8
-  symbol: ssl_dl_pyramid_quicksand
-
-ssl_movtex_tris_pyramid_corners_quicksand:
-  type: SM64:MOVTEX
-  count: 16
-  has_color: true
-  offset: 0x12900
-  symbol: ssl_movtex_tris_pyramid_corners_quicksand
-
-ssl_dl_pyramid_corners_quicksand:
-  type: GFX
-  offset: 0x12A08
-  symbol: ssl_dl_pyramid_corners_quicksand
-
-ssl_movtex_tris_sides_quicksand:
-  type: SM64:MOVTEX
-  count: 15
-  has_color: true
-  offset: 0x12A50
-  symbol: ssl_movtex_tris_sides_quicksand
-
-ssl_dl_sides_quicksand:
-  type: GFX
-  offset: 0x12B48
-  symbol: ssl_dl_sides_quicksand
 
 ssl_dl_pyramid_sand_pathway_floor_begin:
   type: GFX

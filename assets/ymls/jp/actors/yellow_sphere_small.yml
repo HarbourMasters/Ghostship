@@ -3,7 +3,7 @@
   compression:
     offset: 0x128BE0
   segments:
-    - [0x05,  0x128BE0]
+    - [ 0x5, 0x128BE0 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -38,4 +38,3 @@ yellow_sphere_seg5_dl_050008C8:
   type: GFX
   offset: 0x8C8
   symbol: yellow_sphere_seg5_dl_050008C8
-

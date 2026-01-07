@@ -3,7 +3,12 @@
   compression:
     offset: 0x1C4230
   segments:
-    - [0x06,  0x1C4230]
+    - [ 0x6, 0x1C4230 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "koopa/anims.h"'
+      - '#include "koopa/geo.h"'
 
 koopa_lights_unused1:
   type: LIGHTS
@@ -759,4 +764,3 @@ koopa_seg6_dl_0600C498:
   type: GFX
   offset: 0xC498
   symbol: koopa_seg6_dl_0600C498
-

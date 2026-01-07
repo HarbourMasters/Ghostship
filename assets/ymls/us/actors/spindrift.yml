@@ -3,7 +3,12 @@
   compression:
     offset: 0x160670
   segments:
-    - [0x05,  0x160670]
+    - [ 0x5, 0x160670 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "spindrift/anims.h"'
+      - '#include "spindrift/geo.h"'
 
 spindrift_lights_unused1:
   type: LIGHTS
@@ -152,4 +157,3 @@ spindrift_seg5_dl_05002D08:
   type: GFX
   offset: 0x2D08
   symbol: spindrift_seg5_dl_05002D08
-

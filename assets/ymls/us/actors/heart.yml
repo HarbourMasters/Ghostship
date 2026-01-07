@@ -3,7 +3,11 @@
   compression:
     offset: 0x1F2200
   segments:
-    - [0x08,  0x1F2200]
+    - [ 0x8, 0x1F2200 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "heart/geo.h"'
 
 heart_seg8_vertex_0800D7A0:
   type: VTX
@@ -24,4 +28,3 @@ heart_seg8_dl_0800DFE0:
   type: GFX
   offset: 0xDFE0
   symbol: heart_seg8_dl_0800DFE0
-

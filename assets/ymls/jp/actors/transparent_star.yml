@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -30,4 +30,3 @@ transparent_star_seg3_dl_0302C620:
   type: GFX
   offset: 0x2C620
   symbol: transparent_star_seg3_dl_0302C620
-

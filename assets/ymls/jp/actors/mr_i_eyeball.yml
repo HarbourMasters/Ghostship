@@ -3,7 +3,7 @@
   compression:
     offset: 0x1E6210
   segments:
-    - [0x06,  0x1E6210]
+    - [ 0x6, 0x1E6210 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -37,4 +37,3 @@ mr_i_eyeball_seg6_dl_06002080:
   type: GFX
   offset: 0x2080
   symbol: mr_i_eyeball_seg6_dl_06002080
-

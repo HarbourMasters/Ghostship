@@ -3,7 +3,12 @@
   compression:
     offset: 0x1F2200
   segments:
-    - [0x08,  0x1F2200]
+    - [ 0x8, 0x1F2200 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "amp/anims.h"'
+      - '#include "amp/geo.h"'
 
 amp_electricity:
   type: TEXTURE

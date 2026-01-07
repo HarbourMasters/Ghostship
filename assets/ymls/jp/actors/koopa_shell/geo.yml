@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/koopa_shell.yml"
   autopads: false
   segments:
-    - [0x0F,  0x1FEC00]
+    - [ 0xF, 0x1FEC00 ]
 
 koopa_shell_geo:
   type: SM64:GEO_LAYOUT

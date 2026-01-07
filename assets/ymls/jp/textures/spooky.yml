@@ -3,7 +3,7 @@
   compression:
     offset: 0x3253E0
   segments:
-    - [0x09,  0x3253E0]
+    - [ 0x9, 0x3253E0 ]
 
 bbh_textures.00000:
   type: TEXTURE
@@ -157,4 +157,3 @@ bbh_textures.0B800:
   offset: 0xB800
   format: IA16
   symbol: spooky_0900B800
-

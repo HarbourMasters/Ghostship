@@ -3,7 +3,7 @@
   compression:
     offset: 0x1C2580
   segments:
-    - [0x06,  0x1C2580]
+    - [ 0x6, 0x1C2580 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -161,4 +161,3 @@ koopa_flag_seg6_dl_06000E38:
   type: GFX
   offset: 0xE38
   symbol: koopa_flag_seg6_dl_06000E38
-

@@ -3,7 +3,11 @@
   compression:
     offset: 0x145E90
   segments:
-    - [0x05,  0x145E90]
+    - [ 0x5, 0x145E90 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "tornado/geo.h"'
 
 tornado:
   type: TEXTURE
@@ -53,4 +57,3 @@ tornado_seg5_dl_050145C0:
   type: GFX
   offset: 0x145C0
   symbol: tornado_seg5_dl_050145C0
-

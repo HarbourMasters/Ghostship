@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/king_bobomb.yml"
   autopads: false
   segments:
-    - [0x0C,  0x1399D0]
+    - [ 0xC, 0x1399D0 ]
 
 king_bobomb_geo:
   type: SM64:GEO_LAYOUT

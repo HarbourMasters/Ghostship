@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/bowser.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1B7400]
+    - [ 0xD, 0x1B7400 ]
 
 bowser_geo_0000D8:
   type: SM64:GEO_LAYOUT

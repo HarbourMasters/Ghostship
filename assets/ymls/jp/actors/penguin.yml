@@ -3,7 +3,7 @@
   compression:
     offset: 0x15EA70
   segments:
-    - [0x05,  0x15EA70]
+    - [ 0x5, 0x15EA70 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -322,4 +322,3 @@ penguin_seg5_collision_05008B88:
   type: SM64:COLLISION
   offset: 0x8B88
   symbol: penguin_seg5_collision_05008B88
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B8010
   segments:
-    - [0x06,  0x1B8010]
+    - [ 0x6, 0x1B8010 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -84,4 +84,3 @@ cyan_fish_seg6_dl_0600E038:
   type: GFX
   offset: 0xE038
   symbol: cyan_fish_seg6_dl_0600E038
-

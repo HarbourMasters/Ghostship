@@ -3,7 +3,7 @@
   compression:
     offset: 0x12A7E0
   segments:
-    - [0x05,  0x12A7E0]
+    - [ 0x5, 0x12A7E0 ]
 
 hoot_seg5_anim_050053EC:
   type: SM64:ANIM

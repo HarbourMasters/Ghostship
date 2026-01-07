@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -92,4 +92,3 @@ bowser_key_dl:
   type: GFX
   offset: 0x161F8
   symbol: bowser_key_dl
-

@@ -3,7 +3,11 @@
   compression:
     offset: 0x166C60
   segments:
-    - [0x05,  0x166C60]
+    - [ 0x5, 0x166C60 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "book/geo.h"'
 
 book_seg5_lights_05002558:
   type: LIGHTS
@@ -46,4 +50,3 @@ book_seg5_dl_05002FB0:
   type: GFX
   offset: 0x2FB0
   symbol: book_seg5_dl_05002FB0
-

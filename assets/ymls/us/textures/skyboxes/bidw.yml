@@ -3,7 +3,7 @@
   compression:
     offset: 0x301CD0
   segments:
-    - [0x0A,  0x301CD0]
+    - [ 0xA, 0x301CD0 ]
 
 bidw:
   type: BLOB

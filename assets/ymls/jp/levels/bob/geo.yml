@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/bob.yml"
   autopads: false
   segments:
-    - [0x0E,  0x403AC0]
+    - [ 0xE, 0x403AC0 ]
 
 bob_geo_000440:
   type: SM64:GEO_LAYOUT

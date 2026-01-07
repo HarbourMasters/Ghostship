@@ -3,7 +3,7 @@
   compression:
     offset: 0x4358D0
   segments:
-    - [0x07,  0x4358D0]
+    - [ 0x7, 0x4358D0 ]
   external_files:
     - "assets/ymls/jp/textures/sky.yml"
   header:
@@ -3891,4 +3891,3 @@ rr_seg7_trajectory_0702EEE0:
   type: SM64:TRAJECTORY
   offset: 0x2EEE0
   symbol: rr_seg7_trajectory_0702EEE0
-

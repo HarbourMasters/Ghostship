@@ -3,7 +3,12 @@
   compression:
     offset: 0x1E7EE0
   segments:
-    - [0x06,  0x1E7EE0]
+    - [ 0x6, 0x1E7EE0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "dorrie/anims.h"'
+      - '#include "dorrie/geo.h"'
 
 dorrie_eye:
   type: TEXTURE
@@ -399,4 +404,3 @@ dorrie_seg6_collision_0600FBB8:
   type: SM64:COLLISION
   offset: 0xFBB8
   symbol: dorrie_seg6_collision_0600FBB8
-

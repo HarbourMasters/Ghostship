@@ -3,7 +3,7 @@
   compression:
     offset: 0x17EF80
   segments:
-    - [0x05,  0x17EF80]
+    - [ 0x5, 0x17EF80 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -243,4 +243,3 @@ wiggler_seg5_dl_0500E678:
   type: GFX
   offset: 0xE678
   symbol: wiggler_seg5_dl_0500E678
-

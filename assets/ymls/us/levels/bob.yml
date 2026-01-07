@@ -3,7 +3,7 @@
   compression:
     offset: 0x3FC2B0
   segments:
-    - [0x07,  0x3FC2B0]
+    - [ 0x7, 0x3FC2B0 ]
   external_files:
     - "assets/ymls/us/textures/generic.yml"
   header:
@@ -1279,4 +1279,3 @@ bob_seg7_trajectory_koopa:
   type: SM64:TRAJECTORY
   offset: 0x116A0
   symbol: bob_seg7_trajectory_koopa
-

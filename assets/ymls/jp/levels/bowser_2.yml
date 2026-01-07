@@ -3,7 +3,7 @@
   compression:
     offset: 0x4CBB70
   segments:
-    - [0x07,  0x4CBB70]
+    - [ 0x7, 0x4CBB70 ]
   external_files:
     - "assets/ymls/jp/textures/fire.yml"
   header:
@@ -148,4 +148,3 @@ bowser_2_seg7_collision_tilting_platform:
   type: SM64:COLLISION
   offset: 0x1A68
   symbol: bowser_2_seg7_collision_tilting_platform
-

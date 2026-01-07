@@ -3,7 +3,7 @@
   compression:
     offset: 0x422730
   segments:
-    - [0x07,  0x422730]
+    - [ 0x7, 0x422730 ]
   external_files:
     - "assets/ymls/jp/textures/grass.yml"
   header:

@@ -3,7 +3,7 @@
   compression:
     offset: 0x163E50
   segments:
-    - [0x05,  0x163E50]
+    - [ 0x5, 0x163E50 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -141,4 +141,3 @@ capswitch_collision_05003448:
   type: SM64:COLLISION
   offset: 0x3448
   symbol: capswitch_collision_05003448
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -130,4 +130,3 @@ tree_seg3_dl_03033258:
   type: GFX
   offset: 0x33258
   symbol: tree_seg3_dl_03033258
-

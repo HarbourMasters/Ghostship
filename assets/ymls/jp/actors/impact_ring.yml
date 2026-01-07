@@ -3,7 +3,7 @@
   compression:
     offset: 0x186810
   segments:
-    - [0x06,  0x186810]
+    - [ 0x6, 0x186810 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -53,4 +53,3 @@ impact_ring_seg6_dl_0601EAC0:
   type: GFX
   offset: 0x1EAC0
   symbol: impact_ring_seg6_dl_0601EAC0
-

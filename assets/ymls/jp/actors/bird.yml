@@ -3,7 +3,7 @@
   compression:
     offset: 0x16BC70
   segments:
-    - [0x05,  0x16BC70]
+    - [ 0x5, 0x16BC70 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -107,4 +107,3 @@ birds_seg5_dl_05000670:
   type: GFX
   offset: 0x670
   symbol: birds_seg5_dl_05000670
-

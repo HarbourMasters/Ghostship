@@ -4,7 +4,7 @@
     - "assets/ymls/jp/bin/debug_level_select.yml"
   autopads: false
   segments:
-    - [0x14,  0x268020]
+    - [ 0x14, 0x268020 ]
 
 intro_geo_0002D0:
   type: SM64:GEO_LAYOUT

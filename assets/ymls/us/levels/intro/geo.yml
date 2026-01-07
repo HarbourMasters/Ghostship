@@ -4,7 +4,7 @@
     - "assets/ymls/us/bin/debug_level_select.yml"
   autopads: false
   segments:
-    - [0x14,  0x269EA0]
+    - [ 0x14, 0x269EA0 ]
 
 intro_geo_0002D0:
   type: SM64:GEO_LAYOUT

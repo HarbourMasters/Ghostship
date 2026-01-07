@@ -3,7 +3,7 @@
   compression:
     offset: 0x165060
   segments:
-    - [0x05,  0x165060]
+    - [ 0x5, 0x165060 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -263,4 +263,3 @@ mad_piano_seg5_dl_050098E8:
   type: GFX
   offset: 0x98E8
   symbol: mad_piano_seg5_dl_050098E8
-

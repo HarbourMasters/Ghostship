@@ -3,7 +3,7 @@
   compression:
     offset: 0x4B6070
   segments:
-    - [0x07,  0x4B6070]
+    - [ 0x7, 0x4B6070 ]
   external_files:
     - "assets/ymls/jp/textures/cave.yml"
   header:

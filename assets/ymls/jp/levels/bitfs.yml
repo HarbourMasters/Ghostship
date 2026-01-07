@@ -3,7 +3,7 @@
   compression:
     offset: 0x45F410
   segments:
-    - [0x07,  0x45F410]
+    - [ 0x7, 0x45F410 ]
   external_files:
     - "assets/ymls/jp/textures/sky.yml"
   header:

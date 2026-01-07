@@ -3,7 +3,7 @@
   compression:
     offset: 0x17EF80
   segments:
-    - [0x05,  0x17EF80]
+    - [ 0x5, 0x17EF80 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -171,4 +171,3 @@ spiny_seg5_dl_05016A48:
   type: GFX
   offset: 0x16A48
   symbol: spiny_seg5_dl_05016A48
-

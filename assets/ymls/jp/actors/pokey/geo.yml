@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/pokey.yml"
   autopads: false
   segments:
-    - [0x0C,  0x14FF70]
+    - [ 0xC, 0x14FF70 ]
 
 pokey_head_geo:
   type: SM64:GEO_LAYOUT

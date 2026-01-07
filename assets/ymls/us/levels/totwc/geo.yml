@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/totwc.yml"
   autopads: false
   segments:
-    - [0x0E,  0x4C2700]
+    - [ 0xE, 0x4C2700 ]
 
 totwc_geo_000160:
   type: SM64:GEO_LAYOUT

@@ -3,7 +3,7 @@
   compression:
     offset: 0x15EA70
   segments:
-    - [0x05,  0x15EA70]
+    - [ 0x5, 0x15EA70 ]
 
 spindrift_seg5_anim_050006AC:
   type: SM64:ANIM

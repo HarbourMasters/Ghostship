@@ -3,7 +3,7 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
 
 bowser_key_seg3_anim_course_exit:
   type: SM64:ANIM

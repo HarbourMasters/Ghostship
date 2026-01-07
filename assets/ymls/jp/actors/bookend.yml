@@ -3,7 +3,7 @@
   compression:
     offset: 0x165060
   segments:
-    - [0x05,  0x165060]
+    - [ 0x5, 0x165060 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -254,4 +254,3 @@ bookend_seg5_dl_050022E0:
   type: GFX
   offset: 0x22E0
   symbol: bookend_seg5_dl_050022E0
-

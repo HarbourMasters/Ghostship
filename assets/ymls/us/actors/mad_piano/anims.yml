@@ -3,7 +3,7 @@
   compression:
     offset: 0x166C60
   segments:
-    - [0x05,  0x166C60]
+    - [ 0x5, 0x166C60 ]
 
 mad_piano_seg5_anim_05009A04:
   type: SM64:ANIM

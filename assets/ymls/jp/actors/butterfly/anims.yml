@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
 
 butterfly_seg3_anim_030055B0:
   type: SM64:ANIM

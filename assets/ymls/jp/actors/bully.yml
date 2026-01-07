@@ -3,7 +3,7 @@
   compression:
     offset: 0x131060
   segments:
-    - [0x05,  0x131060]
+    - [ 0x5, 0x131060 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -254,4 +254,3 @@ bully_seg5_dl_05003FC8:
   type: GFX
   offset: 0x3FC8
   symbol: bully_seg5_dl_05003FC8
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x26D5A0
   segments:
-    - [0x07,  0x26D5A0]
+    - [ 0x7, 0x26D5A0 ]
 
 debug_level_select_lights_07000000:
   type: LIGHTS

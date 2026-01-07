@@ -3,7 +3,11 @@
   compression:
     offset: 0x12A7E0
   segments:
-    - [0x05,  0x12A7E0]
+    - [ 0x5, 0x12A7E0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bullet_bill/geo.h"'
 
 bullet_bill_seg5_lights_0500BA90:
   type: LIGHTS
@@ -126,4 +130,3 @@ bullet_bill_seg5_dl_0500E8A8:
   type: GFX
   offset: 0xE8A8
   symbol: bullet_bill_seg5_dl_0500E8A8
-

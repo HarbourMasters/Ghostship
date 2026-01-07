@@ -3,7 +3,7 @@
   compression:
     offset: 0x160670
   segments:
-    - [0x05,  0x160670]
+    - [ 0x5, 0x160670 ]
 
 penguin_seg5_anim_050079E4:
   type: SM64:ANIM

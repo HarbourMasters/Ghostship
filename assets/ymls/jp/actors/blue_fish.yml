@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -56,4 +56,3 @@ blue_fish_seg3_dl_0301C150:
   type: GFX
   offset: 0x1C150
   symbol: blue_fish_seg3_dl_0301C150
-

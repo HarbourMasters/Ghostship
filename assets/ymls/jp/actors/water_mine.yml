@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B8010
   segments:
-    - [0x06, 0x1B8010]
+    - [ 0x6, 0x1B8010 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -108,4 +108,3 @@ water_mine_seg6_dl_0600D3F8:
   type: GFX
   offset: 0xD3F8
   symbol: water_mine_seg6_dl_0600D3F8
-

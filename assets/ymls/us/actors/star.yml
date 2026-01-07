@@ -3,7 +3,11 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "star/geo.h"'
 
 star_seg3_lights_0302A6D8:
   type: LIGHTS
@@ -66,4 +70,3 @@ star_seg3_dl_0302BA18:
   type: GFX
   offset: 0x2BA18
   symbol: star_seg3_dl_0302BA18
-

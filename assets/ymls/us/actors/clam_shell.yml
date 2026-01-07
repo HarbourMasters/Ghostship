@@ -3,7 +3,12 @@
   compression:
     offset: 0x13B910
   segments:
-    - [0x05,  0x13B910]
+    - [ 0x5, 0x13B910 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "clam_shell/anims.h"'
+      - '#include "clam_shell/geo.h"'
 
 clam_shell_lights_unused1:
   type: LIGHTS
@@ -100,4 +105,3 @@ clam_shell_seg5_dl_05001568:
   type: GFX
   offset: 0x1568
   symbol: clam_shell_seg5_dl_05001568
-

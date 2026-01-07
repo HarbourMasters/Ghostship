@@ -3,7 +3,14 @@
   compression:
     offset: 0x4246D0
   segments:
-    - [0x07,  0x4246D0]
+    - [ 0x7, 0x4246D0 ]
+  external_files:
+    - "assets/ymls/us/textures/grass.yml"
+  header:
+    header:
+      - '#include "thi/geo.h"'
+      - ''
+      - 'extern const LevelScript level_thi_entry[];'
 
 0:
   type: TEXTURE

@@ -3,7 +3,11 @@
   compression:
     offset: 0x114750
   segments:
-    - [0x04,  0x114750]
+    - [ 0x4, 0x114750 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "walk_smoke/geo.h"'
 
 smoke_seg4_vertex_0401DE60:
   type: VTX
@@ -113,4 +117,3 @@ smoke_seg4_dl_040217A8:
   type: GFX
   offset: 0x217A8
   symbol: smoke_seg4_dl_040217A8
-

@@ -3,7 +3,11 @@
   compression:
     offset: 0x114750
   segments:
-    - [0x04,  0x114750]
+    - [ 0x4, 0x114750 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "water_wave/geo.h"'
 
 water_wave_seg4_vertex_04025318:
   type: VTX
@@ -81,4 +85,3 @@ water_wave_seg4_dl_04027438:
   type: GFX
   offset: 0x27438
   symbol: water_wave_seg4_dl_04027438
-

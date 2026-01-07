@@ -3,7 +3,7 @@
   compression:
     offset: 0x2E7880
   segments:
-    - [0x0A,  0x2E7880]
+    - [ 0xA, 0x2E7880 ]
 
 cloud_floor:
   type: BLOB

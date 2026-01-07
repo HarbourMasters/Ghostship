@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/fwoosh.yml"
   autopads: false
   segments:
-    - [0x0C,  0x15E6E0]
+    - [ 0xC, 0x15E6E0 ]
 
 fwoosh_geo:
   type: SM64:GEO_LAYOUT

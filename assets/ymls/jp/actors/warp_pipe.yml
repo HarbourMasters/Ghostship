@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -116,4 +116,3 @@ warp_pipe_seg3_collision_03009AC8:
   type: SM64:COLLISION
   offset: 0x9AC8
   symbol: warp_pipe_seg3_collision_03009AC8
-

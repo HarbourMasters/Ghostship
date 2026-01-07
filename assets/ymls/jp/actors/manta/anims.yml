@@ -3,7 +3,7 @@
   compression:
     offset: 0x139D10
   segments:
-    - [0x05,  0x139D10]
+    - [ 0x5, 0x139D10 ]
 
 manta_seg5_anim_05008CFC:
   type: SM64:ANIM

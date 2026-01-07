@@ -3,7 +3,12 @@
   compression:
     offset: 0x1C4230
   segments:
-    - [0x06,  0x1C4230]
+    - [ 0x6, 0x1C4230 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "piranha_plant/anims.h"'
+      - '#include "piranha_plant/geo.h"'
 
 piranha_plant_seg6_lights_060113B0:
   type: LIGHTS
@@ -333,4 +338,3 @@ piranha_plant_seg6_dl_06016F20:
   type: GFX
   offset: 0x16F20
   symbol: piranha_plant_seg6_dl_06016F20
-

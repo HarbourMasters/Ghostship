@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B8010
   segments:
-    - [0x06,  0x1B8010]
+    - [ 0x6, 0x1B8010 ]
 
 seaweed_seg6_anim_0600A4BC:
   type: SM64:ANIM

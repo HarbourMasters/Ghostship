@@ -3,7 +3,7 @@
   compression:
     offset: 0x2B8F10
   segments:
-    - [0x0A,  0x2B8F10]
+    - [ 0xA, 0x2B8F10 ]
 
 ccm:
   type: BLOB

@@ -3,7 +3,7 @@
   compression:
     offset: 0x144290
   segments:
-    - [0x05,  0x144290]
+    - [ 0x5, 0x144290 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -77,4 +77,3 @@ pokey_seg5_dl_050130B0:
   type: GFX
   offset: 0x130B0
   symbol: pokey_seg5_dl_050130B0
-

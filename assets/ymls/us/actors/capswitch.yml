@@ -3,7 +3,11 @@
   compression:
     offset: 0x165A50
   segments:
-    - [0x05,  0x165A50]
+    - [ 0x5, 0x165A50 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "capswitch/geo.h"'
 
 capswitch_seg5_lights_05001BB8:
   type: LIGHTS
@@ -137,4 +141,3 @@ capswitch_collision_05003448:
   type: SM64:COLLISION
   offset: 0x3448
   symbol: capswitch_collision_05003448
-

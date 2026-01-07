@@ -3,7 +3,7 @@
   compression:
     offset: 0x3701E0
   segments:
-    - [0x07,  0x3701E0]
+    - [ 0x7, 0x3701E0 ]
   external_files:
     - "assets/ymls/jp/textures/spooky.yml"
   header:
@@ -3494,6 +3494,12 @@ bbh_seg7_collision_level:
   offset: 0x207A0
   symbol: bbh_seg7_collision_level
 
+bbh_seg7_rooms:
+  type: BLOB
+  size: 0x866
+  offset: 0x2605C
+  symbol: bbh_seg7_rooms
+
 bbh_seg7_macro_objs:
   type: SM64:MACRO
   offset: 0x268C4
@@ -3557,9 +3563,3 @@ bbh_movtex_merry_go_round_water_side:
   count: 2
   offset: 0x26E34
   symbol: bbh_movtex_merry_go_round_water_side
-
-bbh_seg7_rooms:
-  type: BLOB
-  size: 0x866
-  offset: 0x2605C
-  symbol: bbh_seg7_rooms

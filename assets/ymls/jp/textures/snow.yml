@@ -3,7 +3,7 @@
   compression:
     offset: 0x33F6E0
   segments:
-    - [0x09,  0x33F6E0]
+    - [ 0x9, 0x33F6E0 ]
 
 ccm_textures.00000:
   type: TEXTURE

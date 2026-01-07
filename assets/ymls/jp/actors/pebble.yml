@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -27,4 +27,3 @@ pebble_seg3_dl_0301CB00:
   type: GFX
   offset: 0x1CB00
   symbol: pebble_seg3_dl_0301CB00
-

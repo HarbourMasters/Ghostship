@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03, 0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -192,4 +192,3 @@ mario_cap_seg3_dl_03023298:
   type: GFX
   offset: 0x23298
   symbol: mario_cap_seg3_dl_03023298
-

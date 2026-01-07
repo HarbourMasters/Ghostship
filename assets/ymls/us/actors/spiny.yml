@@ -3,7 +3,12 @@
   compression:
     offset: 0x180BB0
   segments:
-    - [0x05,  0x180BB0]
+    - [ 0x5, 0x180BB0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "spiny/anims.h"'
+      - '#include "spiny/geo.h"'
 
 spiny_seg5_lights_050157F8:
   type: LIGHTS
@@ -166,4 +171,3 @@ spiny_seg5_dl_05016A48:
   type: GFX
   offset: 0x16A48
   symbol: spiny_seg5_dl_05016A48
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x46A2E0
   segments:
-    - [0x07,  0x46A2E0]
+    - [ 0x7, 0x46A2E0 ]
   external_files:
     - "assets/ymls/jp/textures/sky.yml"
   header:
@@ -2271,4 +2271,3 @@ bits_seg7_collision_0701B734:
   type: SM64:COLLISION
   offset: 0x1B734
   symbol: bits_seg7_collision_0701B734
-

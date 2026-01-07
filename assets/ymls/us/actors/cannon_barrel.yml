@@ -3,7 +3,11 @@
   compression:
     offset: 0x1F2200
   segments:
-    - [0x08,  0x1F2200]
+    - [ 0x8, 0x1F2200 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "cannon_barrel/geo.h"'
 
 cannon_barrel_seg8_lights_08005878:
   type: LIGHTS
@@ -64,4 +68,3 @@ cannon_barrel_seg8_dl_08006660:
   type: GFX
   offset: 0x6660
   symbol: cannon_barrel_seg8_dl_08006660
-

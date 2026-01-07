@@ -3,7 +3,44 @@
   compression:
     offset: 0x108A40
   segments:
-    - [0x02,  0x108A40]
+    - [ 0x2, 0x108A40 ]
+  external_files:
+    - "assets/ymls/us/textures/segment2.yml"
+  header:
+    header:
+      - '#include "sm64.h"'
+
+main_hud_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x7700
+  count: 58
+  symbol: main_hud_lut
+
+main_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x77E8
+  count: 256
+  symbol: main_font_lut
+
+main_credits_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x7BE8
+  count: 37
+  symbol: main_credits_font_lut
+
+main_hud_camera_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x7C7C
+  count: 6
+  symbol: main_hud_camera_lut
 
 dl_hud_img_begin:
   type: GFX

@@ -3,7 +3,7 @@
   compression:
     offset: 0x163E50
   segments:
-    - [0x05,  0x163E50]
+    - [ 0x5, 0x163E50 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -100,4 +100,3 @@ springboard_collision_05001A28:
   type: SM64:COLLISION
   offset: 0x1A28
   symbol: springboard_collision_05001A28
-

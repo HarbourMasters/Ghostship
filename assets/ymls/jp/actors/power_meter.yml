@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -100,6 +100,14 @@ power_meter_one_segment:
   format: RGBA16
   symbol: texture_power_meter_one_segments
 
+power_meter_health_segments_lut:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 8
+  offset: 0x293E0
+  symbol: power_meter_health_segments_lut
+
 vertex_power_meter_base:
   type: VTX
   count: 8
@@ -126,11 +134,3 @@ dl_power_meter_health_segments_end:
   type: GFX
   offset: 0x295A0
   symbol: dl_power_meter_health_segments_end
-
-power_meter_health_segments_lut:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 8
-  offset: 0x293E0
-  symbol: power_meter_health_segments_lut

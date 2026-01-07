@@ -3,7 +3,7 @@
   compression:
     offset: 0x112B50
   segments:
-    - [0x04,  0x112B50]
+    - [ 0x4, 0x112B50 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -85,4 +85,3 @@ water_wave_seg4_dl_04027438:
   type: GFX
   offset: 0x27438
   symbol: water_wave_seg4_dl_04027438
-

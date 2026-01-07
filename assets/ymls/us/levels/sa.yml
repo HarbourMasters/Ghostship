@@ -3,7 +3,14 @@
   compression:
     offset: 0x46B090
   segments:
-    - [0x07,  0x46B090]
+    - [ 0x7, 0x46B090 ]
+  external_files:
+    - "assets/ymls/us/textures/inside.yml"
+  header:
+    header:
+      - '#include "sa/geo.h"'
+      - ''
+      - 'extern const LevelScript level_sa_entry[];'
 
 sa_lights:
   type: LIGHTS

@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -33,4 +33,3 @@ mushroom_1up_seg3_dl_0302A660:
   type: GFX
   offset: 0x2A660
   symbol: mushroom_1up_seg3_dl_0302A660
-

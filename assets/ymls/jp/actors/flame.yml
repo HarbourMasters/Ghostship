@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -176,4 +176,3 @@ flame_seg3_dl_0301B5A8:
   type: GFX
   offset: 0x1B5A8
   symbol: flame_seg3_dl_0301B5A8
-

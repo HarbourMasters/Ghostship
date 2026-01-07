@@ -3,7 +3,14 @@
   compression:
     offset: 0x4CDBD0
   segments:
-    - [0x07,  0x4CDBD0]
+    - [ 0x7, 0x4CDBD0 ]
+  external_files:
+    - "assets/ymls/us/textures/fire.yml"
+  header:
+    header:
+      - '#include "bowser_2/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bowser_2_entry[];'
 
 0:
   type: TEXTURE
@@ -141,4 +148,3 @@ bowser_2_seg7_collision_tilting_platform:
   type: SM64:COLLISION
   offset: 0x1A68
   symbol: bowser_2_seg7_collision_tilting_platform
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x128BE0
   segments:
-    - [0x05,  0x128BE0]
+    - [ 0x5, 0x128BE0 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -502,4 +502,3 @@ heave_ho_seg5_dl_05014D80:
   type: GFX
   offset: 0x14D80
   symbol: heave_ho_seg5_dl_05014D80
-

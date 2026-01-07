@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/wooden_signpost.yml"
   autopads: false
   segments:
-    - [0x16,  0x2170D0]
+    - [ 0x16, 0x2170D0 ]
 
 wooden_signpost_geo:
   type: SM64:GEO_LAYOUT

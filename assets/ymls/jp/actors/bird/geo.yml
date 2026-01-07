@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/bird.yml"
   autopads: false
   segments:
-    - [0x0C,  0x17E910]
+    - [ 0xC, 0x17E910 ]
 
 birds_geo:
   type: SM64:GEO_LAYOUT

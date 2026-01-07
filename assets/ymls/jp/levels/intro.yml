@@ -3,7 +3,7 @@
   compression:
     offset: 0x268520
   segments:
-    - [0x07,  0x268520]
+    - [ 0x7, 0x268520 ]
   header:
     header:
       - '#include "intro/geo.h"'
@@ -17,30 +17,6 @@
       - 'extern const LevelScript level_intro_splash_screen[];'
       - 'extern const LevelScript level_intro_mario_head_regular[];'
       - 'extern const LevelScript level_intro_mario_head_dizzy[];'
-
-intro_seg7_dl_0700B3A0:
-  type: GFX
-  offset: 0xB3A0
-  symbol: intro_seg7_dl_0700B3A0
-
-intro_seg7_dl_0700C6A0:
-  type: GFX
-  offset: 0xC6A0
-  symbol: intro_seg7_dl_0700C6A0
-
-intro_seg7_table_0700C790:
-  type: ARRAY
-  offset: 0xC790
-  array_type: f32
-  count: 60
-  symbol: intro_seg7_table_0700C790
-
-intro_seg7_table_0700C880:
-  type: ARRAY
-  offset: 0xC880
-  array_type: f32
-  count: 48
-  symbol: intro_seg7_table_0700C880
 
 0:
   type: TEXTURE
@@ -60,6 +36,11 @@ intro_seg7_table_0700C880:
   format: RGBA16
   symbol: intro_seg7_texture_070086A0
 
+intro_seg7_dl_0700B3A0:
+  type: GFX
+  offset: 0xB3A0
+  symbol: intro_seg7_dl_0700B3A0
+
 2_copyright:
   type: TEXTURE
   size: 4096
@@ -77,3 +58,22 @@ intro_seg7_table_0700C880:
   offset: 0xC4A0
   format: RGBA16
   symbol: intro_seg7_texture_0700C4A0
+
+intro_seg7_dl_0700C6A0:
+  type: GFX
+  offset: 0xC6A0
+  symbol: intro_seg7_dl_0700C6A0
+
+intro_seg7_table_0700C790:
+  type: ARRAY
+  offset: 0xC790
+  array_type: f32
+  count: 60
+  symbol: intro_seg7_table_0700C790
+
+intro_seg7_table_0700C880:
+  type: ARRAY
+  offset: 0xC880
+  array_type: f32
+  count: 48
+  symbol: intro_seg7_table_0700C880

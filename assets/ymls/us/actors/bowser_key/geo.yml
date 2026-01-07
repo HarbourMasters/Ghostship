@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/bowser_key.yml"
   autopads: false
   segments:
-    - [0x16,  0x218DA0]
+    - [ 0x16, 0x218DA0 ]
 
 bowser_key_geo:
   type: SM64:GEO_LAYOUT

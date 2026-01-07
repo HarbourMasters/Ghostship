@@ -3,7 +3,7 @@
   compression:
     offset: 0x188440
   segments:
-    - [0x06,  0x188440]
+    - [ 0x6, 0x188440 ]
 
 bowser_seg6_anim_060445EC:
   type: SM64:ANIM

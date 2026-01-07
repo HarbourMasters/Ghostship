@@ -5,10 +5,42 @@
   external_files:
     - "assets/ymls/jp/textures/segment2.yml"
   segments:
-    - [0x02,  0x1076D0]
+    - [ 0x2, 0x1076D0 ]
   header:
     header:
       - '#include "sm64.h"'
+
+main_hud_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8250
+  count: 58
+  symbol: main_hud_lut
+
+main_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8338
+  count: 256
+  symbol: main_font_lut
+
+main_credits_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8738
+  count: 37
+  symbol: main_credits_font_lut
+
+main_hud_camera_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x87CC
+  count: 6
+  symbol: main_hud_camera_lut
 
 dl_hud_img_begin:
   type: GFX
@@ -302,35 +334,3 @@ dl_paintings_draw_ripples:
   type: GFX
   offset: 0x14A30
   symbol: dl_paintings_draw_ripples
-
-main_hud_lut:
-  type: ASSET_ARRAY
-  assetType: TEXTURE
-  factoryType: TEXTURE
-  offset: 0x8250
-  count: 58
-  symbol: main_hud_lut
-
-main_font_lut:
-  type: ASSET_ARRAY
-  assetType: TEXTURE
-  factoryType: TEXTURE
-  offset: 0x8338
-  count: 256
-  symbol: main_font_lut
-
-main_credits_font_lut:
-  type: ASSET_ARRAY
-  assetType: TEXTURE
-  factoryType: TEXTURE
-  offset: 0x8738
-  count: 37
-  symbol: main_credits_font_lut
-
-main_hud_camera_lut:
-  type: ASSET_ARRAY
-  assetType: TEXTURE
-  factoryType: TEXTURE
-  offset: 0x87CC
-  count: 6
-  symbol: main_hud_camera_lut

@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/boo_castle.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1E2F20]
+    - [ 0xD, 0x1E2F20 ]
 
 boo_castle_geo:
   type: SM64:GEO_LAYOUT

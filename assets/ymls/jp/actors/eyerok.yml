@@ -3,7 +3,7 @@
   compression:
     offset: 0x144290
   segments:
-    - [0x05,  0x144290]
+    - [ 0x5, 0x144290 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -314,4 +314,3 @@ eyerok_seg5_dl_0500CC30:
   type: GFX
   offset: 0xCC30
   symbol: eyerok_seg5_dl_0500CC30
-

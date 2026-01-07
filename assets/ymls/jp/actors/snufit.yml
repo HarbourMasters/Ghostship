@@ -3,7 +3,7 @@
   compression:
     offset: 0x1E6210
   segments:
-    - [0x06,  0x1E6210]
+    - [ 0x6, 0x1E6210 ]
   header:
     header:
       - '#include "sm64.h"'
@@ -205,4 +205,3 @@ snufit_seg6_dl_06009B68:
   type: GFX
   offset: 0x9B68
   symbol: snufit_seg6_dl_06009B68
-

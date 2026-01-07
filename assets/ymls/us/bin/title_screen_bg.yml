@@ -3,7 +3,7 @@
   compression:
     offset: 0x2708C0
   segments:
-    - [0x0A,  0x2708C0]
+    - [ 0xA, 0x2708C0 ]
 
 title_screen_bg_vertex_0A000000:
   type: VTX

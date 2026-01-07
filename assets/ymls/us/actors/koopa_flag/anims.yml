@@ -3,7 +3,7 @@
   compression:
     offset: 0x1C4230
   segments:
-    - [0x06,  0x1C4230]
+    - [ 0x6, 0x1C4230 ]
 
 koopa_flag_seg6_anim_06001010:
   type: SM64:ANIM

@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/bully.yml"
   autopads: false
   segments:
-    - [0x0C,  0x132E70]
+    - [ 0xC, 0x132E70 ]
 
 bully_geo:
   type: SM64:GEO_LAYOUT

@@ -3,7 +3,7 @@
   compression:
     offset: 0x4784A0
   segments:
-    - [0x07,  0x4784A0]
+    - [ 0x7, 0x4784A0 ]
   external_files:
     - "assets/ymls/us/textures/fire.yml"
   header:

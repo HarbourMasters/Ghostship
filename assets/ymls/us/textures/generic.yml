@@ -3,7 +3,7 @@
   compression:
     offset: 0x32D070
   segments:
-    - [0x09,  0x32D070]
+    - [ 0x9, 0x32D070 ]
 
 bob_textures.00000:
   type: TEXTURE
