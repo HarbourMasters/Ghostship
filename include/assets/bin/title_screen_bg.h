@@ -1,5 +1,7 @@
 #pragma once
 
+#include "sm64.h"
+
 static const ALIGN_ASSET(2) char title_screen_bg_vertex_0A000000[] = "__OTR__bin/title_screen_bg/title_screen_bg_vertex_0A000000";
 
 static const ALIGN_ASSET(2) char title_screen_bg_dl_0A000100[] = "__OTR__bin/title_screen_bg/title_screen_bg_dl_0A000100";

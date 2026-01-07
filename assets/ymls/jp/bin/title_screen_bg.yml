@@ -4,6 +4,9 @@
     offset: 0x26EA40
   segments:
     - [ 0xA, 0x26EA40 ]
+  header:
+    header:
+      - '#include "sm64.h"'
 
 title_screen_bg_vertex_0A000000:
   type: VTX

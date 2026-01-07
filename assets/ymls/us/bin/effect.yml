@@ -1,0 +1,33 @@
+:config:
+  autopads: false
+  external_files:
+    - 'assets/ymls/us/textures/effect.yml'
+  compression:
+    offset: 0x36F530
+  segments:
+    - [ 0xB, 0x36F530 ]
+
+tiny_bubble_dl_0B006A50:
+  type: GFX
+  offset: 0x6A50
+  symbol: tiny_bubble_dl_0B006A50
+
+tiny_bubble_dl_0B006AB0:
+  type: GFX
+  offset: 0x6AB0
+  symbol: tiny_bubble_dl_0B006AB0
+
+tiny_bubble_dl_0B006CD8:
+  type: GFX
+  offset: 0x6CD8
+  symbol: tiny_bubble_dl_0B006CD8
+
+tiny_bubble_dl_0B006D38:
+  type: GFX
+  offset: 0x6D38
+  symbol: tiny_bubble_dl_0B006D38
+
+tiny_bubble_dl_0B006D68:
+  type: GFX
+  offset: 0x6D68
+  symbol: tiny_bubble_dl_0B006D68

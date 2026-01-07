@@ -449,10 +449,10 @@ Gfx *movtex_gen_from_quad(s16 y, struct MovtexQuad *quad) {
     if (textureId != gMovetexLastTextureId) {
         switch (textureId) {
             case TEXTURE_MIST: // an ia16 texture
-                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_IA, LOAD_ASSET(gMovtexIdToTexture[textureId]));
+                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_IA, segmented_to_virtual(gMovtexIdToTexture[textureId]));
                 break;
             default: // any rgba16 texture
-                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, LOAD_ASSET(gMovtexIdToTexture[textureId]));
+                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, segmented_to_virtual(gMovtexIdToTexture[textureId]));
                 break;
         }
         gMovetexLastTextureId = textureId;
@@ -470,7 +470,7 @@ Gfx *movtex_gen_from_quad(s16 y, struct MovtexQuad *quad) {
  * is the number of entries, followed by that number of MovtexQuad structs.
  */
 Gfx *movtex_gen_from_quad_array(s16 y, void *quadArrSegmented) {
-    s16 *quadArr = LOAD_ASSET(quadArrSegmented);
+    s16 *quadArr = segmented_to_virtual(quadArrSegmented);
     s16 numLists = quadArr[0];
     Gfx *gfxHead = alloc_display_list((numLists + 1) * sizeof(*gfxHead));
     Gfx *gfx = gfxHead;
@@ -501,7 +501,7 @@ Gfx *movtex_gen_from_quad_array(s16 y, void *quadArrSegmented) {
  * that will be searched.
  */
 Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) {
-    struct MovtexQuadCollection *collection = LOAD_ASSET(movetexQuadsSegmented);
+    struct MovtexQuadCollection *collection = segmented_to_virtual(movetexQuadsSegmented);
     s32 i = 0;
 
     while (collection[i].id != -1) {
@@ -848,7 +848,7 @@ Gfx *geo_movtex_draw_nocolor(s32 callContext, struct GraphNode *node, UNUSED Mat
             if (gMovtexNonColored[i].geoId == asGenerated->parameter) {
                 asGenerated->fnNode.node.flags =
                     (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexNonColored[i].layer << 8);
-                movtexVerts = LOAD_ASSET(gMovtexNonColored[i].movtexVerts);
+                movtexVerts = segmented_to_virtual(gMovtexNonColored[i].movtexVerts);
                 update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_NOCOLOR_S);
                 gfx = movtex_gen_list(movtexVerts, &gMovtexNonColored[i],
                                       MOVTEX_LAYOUT_NOCOLOR); // no perVertex colors
@@ -876,7 +876,7 @@ Gfx *geo_movtex_draw_colored(s32 callContext, struct GraphNode *node, UNUSED Mat
             if (gMovtexColored[i].geoId == asGenerated->parameter) {
                 asGenerated->fnNode.node.flags =
                     (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexColored[i].layer << 8);
-                movtexVerts = LOAD_ASSET(gMovtexColored[i].movtexVerts);
+                movtexVerts = segmented_to_virtual(gMovtexColored[i].movtexVerts);
                 update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_COLORED_S);
                 gfx = movtex_gen_list(movtexVerts, &gMovtexColored[i], MOVTEX_LAYOUT_COLORED);
                 break;
@@ -907,7 +907,7 @@ Gfx *geo_movtex_draw_colored_no_update(s32 callContext, struct GraphNode *node, 
             if (gMovtexColored[i].geoId == asGenerated->parameter) {
                 asGenerated->fnNode.node.flags =
                     (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexColored[i].layer << 8);
-                movtexVerts = LOAD_ASSET(gMovtexColored[i].movtexVerts);
+                movtexVerts = segmented_to_virtual(gMovtexColored[i].movtexVerts);
                 gfx = movtex_gen_list(movtexVerts, &gMovtexColored[i], MOVTEX_LAYOUT_COLORED);
                 break;
             }
@@ -934,7 +934,7 @@ Gfx *geo_movtex_draw_colored_2_no_update(s32 callContext, struct GraphNode *node
             if (gMovtexColored2[i].geoId == asGenerated->parameter) {
                 asGenerated->fnNode.node.flags =
                     (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexColored2[i].layer << 8);
-                movtexVerts = LOAD_ASSET(gMovtexColored2[i].movtexVerts);
+                movtexVerts = segmented_to_virtual(gMovtexColored2[i].movtexVerts);
                 gfx = movtex_gen_list(movtexVerts, &gMovtexColored2[i], MOVTEX_LAYOUT_COLORED);
                 break;
             }

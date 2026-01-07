@@ -12,6 +12,7 @@
 #include "engine/behavior_script.h"
 #include "audio/external.h"
 #include "obj_behaviors.h"
+#include "assets/bin/effect.h"
 
 /**
  * This file contains the function that handles 'environment effects',
@@ -50,10 +51,6 @@ Vtx gSnowTempVtx[3] = { { { { -5, 5, 0 }, 0, { 0, 0 }, { 0x7F, 0x7F, 0x7F, 0xFF 
 struct SnowFlakeVertex gSnowFlakeVertex1 = { -5, 5, 0 };
 struct SnowFlakeVertex gSnowFlakeVertex2 = { -5, -5, 0 };
 struct SnowFlakeVertex gSnowFlakeVertex3 = { 5, 5, 0 };
-
-extern void *tiny_bubble_dl_0B006AB0;
-extern void *tiny_bubble_dl_0B006A50;
-extern void *tiny_bubble_dl_0B006CD8;
 
 /**
  * Initialize snow particles by allocating a buffer for storing their state
@@ -442,9 +439,9 @@ Gfx *envfx_update_snow(s32 snowMode, Vec3s marioPos, Vec3s camFrom, Vec3s camTo)
     rotate_triangle_vertices((f32 *) &vertex1, (f32 *) &vertex2, (f32 *) &vertex3, pitch, yaw);
 
     if (snowMode == ENVFX_SNOW_NORMAL || snowMode == ENVFX_SNOW_BLIZZARD) {
-        gSPDisplayList(gfx++, &tiny_bubble_dl_0B006A50); // snowflake with gray edge
+        gSPDisplayList(gfx++, tiny_bubble_dl_0B006A50); // snowflake with gray edge
     } else if (snowMode == ENVFX_SNOW_WATER) {
-        gSPDisplayList(gfx++, &tiny_bubble_dl_0B006CD8); // snowflake with blue edge
+        gSPDisplayList(gfx++, tiny_bubble_dl_0B006CD8); // snowflake with blue edge
     }
 
     for (i = 0; i < gSnowParticleCount; i += 5) {
@@ -457,8 +454,7 @@ Gfx *envfx_update_snow(s32 snowMode, Vec3s marioPos, Vec3s camFrom, Vec3s camTo)
         gSP1Triangle(gfx++, 12, 13, 14, 0);
     }
 
-    // TORCH-TODO: Export and fix this
-    gSPDisplayList(gfx++, &tiny_bubble_dl_0B006AB0);
+    gSPDisplayList(gfx++, tiny_bubble_dl_0B006AB0);
     gSPEndDisplayList(gfx++);
 
     return gfxStart;

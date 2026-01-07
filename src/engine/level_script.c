@@ -94,7 +94,7 @@ static void level_cmd_load_and_execute(void) {
     *sStackTop++ = (uintptr_t) sStackBase;
     sStackBase = sStackTop;
 
-    sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 12));
+    sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 12));
 }
 
 static void level_cmd_exit_and_execute(void) {
@@ -107,7 +107,7 @@ static void level_cmd_exit_and_execute(void) {
             MEMORY_POOL_LEFT);
 
     sStackTop = sStackBase;
-    sCurrentCmd = LOAD_ASSET(targetAddr);
+    sCurrentCmd = segmented_to_virtual(targetAddr);
 }
 
 static void level_cmd_exit(void) {
@@ -141,12 +141,12 @@ static void level_cmd_sleep2(void) {
 }
 
 static void level_cmd_jump(void) {
-    sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 4));
+    sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 4));
 }
 
 static void level_cmd_jump_and_link(void) {
     *sStackTop++ = (uintptr_t) NEXT_CMD;
-    sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 4));
+    sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 4));
 }
 
 static void level_cmd_return(void) {
@@ -190,7 +190,7 @@ static void level_cmd_loop_until(void) {
 
 static void level_cmd_jump_if(void) {
     if (eval_script_op(CMD_GET(u8, 2), CMD_GET(s32, 4)) != 0) {
-        sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 8));
+        sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 8));
     } else {
         sCurrentCmd = CMD_NEXT;
     }
@@ -199,7 +199,7 @@ static void level_cmd_jump_if(void) {
 static void level_cmd_jump_and_link_if(void) {
     if (eval_script_op(CMD_GET(u8, 2), CMD_GET(s32, 4)) != 0) {
         *sStackTop++ = (uintptr_t) NEXT_CMD;
-        sCurrentCmd = LOAD_ASSET(CMD_GET(void *, 8));
+        sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 8));
     } else {
         sCurrentCmd = CMD_NEXT;
     }
@@ -610,7 +610,7 @@ static void level_cmd_set_terrain_data(void) {
 
 static void level_cmd_set_rooms(void) {
     if (sCurrAreaIndex != -1) {
-        gAreas[sCurrAreaIndex].surfaceRooms = LOAD_ASSET(CMD_GET(void *, 4));
+        gAreas[sCurrAreaIndex].surfaceRooms = segmented_to_virtual(CMD_GET(void *, 4));
     }
     sCurrentCmd = CMD_NEXT;
 }
