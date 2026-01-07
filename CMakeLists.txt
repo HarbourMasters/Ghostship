@@ -1,7 +1,24 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
 # Set the project version and language
-project(Ghostship VERSION 0.1.0 LANGUAGES C CXX ASM)
+project(Ghostship VERSION 1.0.0 LANGUAGES C CXX ASM)
+include(FetchContent)
+
+set(NATO_PHONETIC_ALPHABET
+  "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
+  "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
+  "Quebec" "Romeo" "Sierra" "Tango" "Uniform" "Victor" "Whiskey"
+  "Xray" "Yankee" "Zulu"
+)
+
+# Get the patch version number from the project version
+math(EXPR PATCH_INDEX "${PROJECT_VERSION_PATCH}")
+
+# Use the patch number to select the correct word
+list(GET NATO_PHONETIC_ALPHABET ${PATCH_INDEX} PROJECT_PATCH_WORD)
+
+set(PROJECT_BUILD_NAME "Barnard ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
+set(PROJECT_TEAM "Lywx" CACHE STRING "" FORCE)
 
 if(APPLE)
   enable_language(OBJCXX)
@@ -30,11 +47,6 @@ vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 glew glfw3 nlohmann-json ti
 
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-endif()
-
-if(NOT EXISTS ${CMAKE_BINARY_DIR}/config.yml)
-	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "${CMAKE_BINARY_DIR}/config.yml")
-	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "${CMAKE_BINARY_DIR}/assets/")
 endif()
 
 if (MSVC)
@@ -106,6 +118,8 @@ add_compile_definitions(
 if (UNIX AND NOT APPLE)
 find_package(OpenGL REQUIRED)
 endif()
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/properties.h.in ${CMAKE_CURRENT_SOURCE_DIR}/properties.h @ONLY)
 
 # Include directories
 include_directories(
@@ -228,7 +242,6 @@ endif()
 # Libultraship Integration                                                     #
 #==============================================================================#
 
-
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
 target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
@@ -291,8 +304,10 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
         "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net-static>"
     )
 elseif(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    find_package(SDL2)
     set(ADDITIONAL_LIBRARY_DEPENDENCIES
         -lglad
+        SDL2::SDL2
     )
 elseif(CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
     set(ADDITIONAL_LIBRARY_DEPENDENCIES
@@ -336,6 +351,7 @@ nx_generate_nacp(${PROJECT_NAME}.nacp
 
 nx_create_nro(${PROJECT_NAME}
     NACP ${PROJECT_NAME}.nacp
+    ICON ${CMAKE_CURRENT_SOURCE_DIR}/nx-logo.jpg
 )
 
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nro DESTINATION . COMPONENT ${PROJECT_NAME})
@@ -504,6 +520,8 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
   else()
       if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
         set(CPU_OPTION -msse2 -mfpmath=sse)
+      elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+        set(CPU_OPTION -mcpu=native)
       endif()
 
       target_compile_options(${PROJECT_NAME} PRIVATE
@@ -534,6 +552,13 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
   endif()
 endif()
 
+add_custom_command(
+	TARGET ${PROJECT_NAME} POST_BUILD
+	COMMENT "Copying asset yamls..."
+	COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "$<TARGET_FILE_DIR:Ghostship>/config.yml"
+	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
+)
+
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 include(ExternalProject)
 ExternalProject_Add(TorchExternal
@@ -551,24 +576,21 @@ add_custom_target(
     ExtractAssets
     DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND ${TORCH_EXECUTABLE} o2r baserom.jp.z64
+    COMMAND ${TORCH_EXECUTABLE} o2r baserom.us.z64
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/sm64.o2r" "${CMAKE_BINARY_DIR}/sm64.o2r"
 )
 
 add_custom_target(
-    ExtractHeaders
-    DEPENDS TorchExternal
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND ${TORCH_EXECUTABLE} header -o baserom.jp.z64
-)
-
-add_custom_target(
-    GeneratePortOTR
+    GeneratePortO2R
     DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${TORCH_EXECUTABLE} pack port ghostship.o2r o2r
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ghostship.o2r" "${CMAKE_BINARY_DIR}/ghostship.o2r"
 )
+
+if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+  install(FILES "${CMAKE_BINARY_DIR}/ghostship.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
+endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
 add_custom_target(CreateOSXIcons
