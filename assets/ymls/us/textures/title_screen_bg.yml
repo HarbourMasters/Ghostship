@@ -76,3 +76,19 @@ title_screen_bg.05940:
   offset: 0x5940
   format: RGBA16
   symbol: title_texture_0A005940
+
+mario_title_texture_table:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x65C0
+  count: 4
+  symbol: mario_title_texture_table
+
+game_over_texture_table:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x65D0
+  count: 4
+  symbol: game_over_texture_table
