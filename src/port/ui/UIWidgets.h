@@ -3,7 +3,8 @@
 #include <string>
 #include <vector>
 #include <span>
-#include <stdint.h>
+#include <cstdint>
+#define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui.h>
 #include <libultraship/libultraship.h>
 

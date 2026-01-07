@@ -27,7 +27,8 @@
 #endif
 
 std::unordered_map<std::string, std::string> mGameList = {
-    { "579c48e211ae952530ffc8738709f078d5dd215e", "Mario Kart 64 (US)" },
+    { "8a20a5c83d6ceb0f0506cfc9fa20d8f438cafe51", "Super Mario 64 (JP)" },
+    { "9bef1128717f958171a4afac3ed78ee2bb4e86ce", "Super Mario 64 (US)" },
 };
 
 bool GameExtractor::SelectGameFromUI() {

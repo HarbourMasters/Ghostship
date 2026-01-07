@@ -43,7 +43,7 @@ class GameEngine {
 
     GameEngine();
     static void Create();
-    static bool GenAssetFile();
+    static bool GenAssetFile(bool exitOnFail = true);
     void AudioInit();
     void StartFrame() const;
     static void RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);

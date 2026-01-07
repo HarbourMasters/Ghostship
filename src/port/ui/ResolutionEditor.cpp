@@ -5,6 +5,7 @@
 
 #include <imgui.h>
 #include <libultraship/libultraship.h>
+#include <fast/interpreter.h>
 
 /*  Console Variables are grouped under gAdvancedResolution. (e.g. "gAdvancedResolution.Enabled")
 

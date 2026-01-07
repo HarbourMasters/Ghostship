@@ -2,6 +2,7 @@
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
 #include "SaveEditor.h"
+#include "Notification.h"
 
 #include <spdlog/spdlog.h>
 #include <imgui.h>
@@ -10,6 +11,12 @@
 #include <libultraship/libultraship.h>
 #include <fast/interpreter.h>
 #include "port/Engine.h"
+
+#ifdef __SWITCH__
+#include <port/switch/SwitchImpl.h>
+#include <port/switch/SwitchPerformanceProfiles.h>
+#endif
+
 extern "C" {
 #include "audio/external.h"
 extern void handle_nmi_request(void);
@@ -34,6 +41,15 @@ void SetupGuiElements() {
 
     mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
     gui->SetMenuBar(mGameMenuBar);
+
+    if (gui->GetMenuBar() && !gui->GetMenuBar()->IsVisible()) {
+#if defined(__SWITCH__) || defined(__WIIU__)
+    Notification::Emit({ .message = "Press - to access enhancements menu", .remainingTime = 10.0f });
+#else
+    Notification::Emit({ .message = "Press F1 to access enhancements menu", .remainingTime = 10.0f });
+#endif
+    }
+
     mStatsWindow = gui->GetGuiWindow("Stats");
     if (mStatsWindow == nullptr) {
         SPDLOG_ERROR("Could not find stats window");
@@ -399,15 +415,13 @@ void DrawGameMenu() {
             std::reinterpret_pointer_cast<Ship::ConsoleWindow>(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Console"))->Dispatch("reset");
         }
 #if !defined(__SWITCH__) && !defined(__WIIU__)
-
         if (UIWidgets::MenuItem("Toggle Fullscreen", "F9")) {
             Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen();
         }
-
+#endif
         if (UIWidgets::MenuItem("Quit")) {
             Ship::Context::GetInstance()->GetWindow()->Close();
         }
-#endif
         ImGui::EndMenu();
     }
 }
