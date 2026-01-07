@@ -3,7 +3,12 @@
   compression:
     offset: 0x165060
   segments:
-    - [0x05,  0x165060]
+    - [ 0x5, 0x165060 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "chair/anims.h"'
+      - '#include "chair/geo.h"'
 
 chair_lights_unused:
   type: LIGHTS
@@ -158,4 +163,3 @@ chair_seg5_dl_05005680:
   type: GFX
   offset: 0x5680
   symbol: chair_seg5_dl_05005680
-

@@ -2,11 +2,10 @@
 
 #ifdef __cplusplus
 
-#include <binarytools/BinaryReader.h>
+#include <ship/utils/binarytools/BinaryReader.h>
 
 class GeoLayoutParser {
 public:
-    static Ship::BinaryReader* mLoadedReader;
     static Ship::BinaryReader* mReader;
     static void execute(const char* path);
 };

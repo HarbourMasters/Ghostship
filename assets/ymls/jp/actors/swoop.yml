@@ -3,7 +3,12 @@
   compression:
     offset: 0x1E6210
   segments:
-    - [0x06,  0x1E6210]
+    - [ 0x6, 0x1E6210 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "swoop/anims.h"'
+      - '#include "swoop/geo.h"'
 
 swoop_lights_unused1:
   type: LIGHTS
@@ -178,4 +183,3 @@ swoop_seg6_dl_06006D00:
   type: GFX
   offset: 0x6D00
   symbol: swoop_seg6_dl_06006D00
-

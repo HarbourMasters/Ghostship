@@ -3,7 +3,14 @@
   compression:
     offset: 0x44ABC0
   segments:
-    - [0x07,  0x44ABC0]
+    - [ 0x7, 0x44ABC0 ]
+  external_files:
+    - "assets/ymls/us/textures/outside.yml"
+  header:
+    header:
+      - '#include "castle_grounds/geo.h"'
+      - ''
+      - 'extern const LevelScript level_castle_grounds_entry[];'
 
 0:
   type: TEXTURE
@@ -1205,6 +1212,19 @@ castle_grounds_seg7_dl_0700C768:
   type: GFX
   offset: 0xC768
   symbol: castle_grounds_seg7_dl_0700C768
+
+castle_grounds_seg7_anim_flags:
+  type: SM64:ANIM
+  offset: 0xC944
+  symbol: castle_grounds_seg7_anim_flags
+
+castle_grounds_seg7_anims_flags:
+  type: ASSET_ARRAY
+  assetType: Animation
+  factoryType: SM64:ANIM
+  count: 1
+  offset: 0xC95C
+  symbol: castle_grounds_seg7_anims_flags
 
 castle_grounds_seg7_vertex_0700C968:
   type: VTX

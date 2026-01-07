@@ -61,7 +61,7 @@ void bhv_red_coin_loop(void) {
                 spawn_orange_number(o->parentObj->oHiddenStarTriggerCounter, 0, 0, 0);
             }
 
-            if(ROM_JP){
+            if(ROM_JP) {
                 // For JP version, play an identical sound for all coins.
                 create_sound_spawner(SOUND_GENERAL_RED_COIN);
             } else {

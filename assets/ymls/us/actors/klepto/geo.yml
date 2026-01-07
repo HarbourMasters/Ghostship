@@ -6,7 +6,7 @@
     - "assets/ymls/us/actors/transparent_star.yml"
   autopads: false
   segments:
-    - [0x0C,  0x151B70]
+    - [ 0xC, 0x151B70 ]
 
 klepto_geo:
   type: SM64:GEO_LAYOUT

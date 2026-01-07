@@ -153,8 +153,10 @@ void yoshi_give_present_loop(void) {
     }
 
     if (!(globalTimer & 3)) {
-        play_sound(SOUND_MENU_YOSHI_GAIN_LIVES, gGlobalSoundSource);
-        gMarioState->numLives++;
+        CALL_CANCELLABLE_EVENT(PlayerLivesChange, gMarioState, 1) {
+            play_sound(SOUND_MENU_YOSHI_GAIN_LIVES, gGlobalSoundSource);
+            gMarioState->numLives++;
+        }
     }
 }
 

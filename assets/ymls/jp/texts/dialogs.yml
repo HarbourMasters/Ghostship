@@ -3,7 +3,7 @@
   compression:
     offset: 0x1076D0
   segments:
-    - [0x02,  0x1076D0]
+    - [ 0x2, 0x1076D0 ]
 
 dialog_00:
   type: SM64:DIALOG

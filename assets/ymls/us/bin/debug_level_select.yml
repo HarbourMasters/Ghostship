@@ -1,0 +1,674 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x26F420
+  segments:
+    - [ 0x7, 0x26F420 ]
+
+debug_level_select_lights_07000000:
+  type: LIGHTS
+  size: 24
+  offset: 0x0
+  symbol: debug_level_select_lights_07000000
+
+debug_level_select_vertex_07000018:
+  type: VTX
+  count: 15
+  offset: 0x18
+  symbol: debug_level_select_vertex_07000018
+
+debug_level_select_vertex_07000108:
+  type: VTX
+  count: 15
+  offset: 0x108
+  symbol: debug_level_select_vertex_07000108
+
+debug_level_select_vertex_070001F8:
+  type: VTX
+  count: 15
+  offset: 0x1F8
+  symbol: debug_level_select_vertex_070001F8
+
+debug_level_select_vertex_070002E8:
+  type: VTX
+  count: 15
+  offset: 0x2E8
+  symbol: debug_level_select_vertex_070002E8
+
+debug_level_select_vertex_070003D8:
+  type: VTX
+  count: 15
+  offset: 0x3D8
+  symbol: debug_level_select_vertex_070003D8
+
+debug_level_select_vertex_070004C8:
+  type: VTX
+  count: 15
+  offset: 0x4C8
+  symbol: debug_level_select_vertex_070004C8
+
+debug_level_select_vertex_070005B8:
+  type: VTX
+  count: 15
+  offset: 0x5B8
+  symbol: debug_level_select_vertex_070005B8
+
+debug_level_select_vertex_070006A8:
+  type: VTX
+  count: 15
+  offset: 0x6A8
+  symbol: debug_level_select_vertex_070006A8
+
+debug_level_select_vertex_07000798:
+  type: VTX
+  count: 12
+  offset: 0x798
+  symbol: debug_level_select_vertex_07000798
+
+debug_level_select_dl_07000858:
+  type: GFX
+  offset: 0x858
+  symbol: debug_level_select_dl_07000858
+
+debug_level_select_lights_07000A28:
+  type: LIGHTS
+  size: 24
+  offset: 0xA28
+  symbol: debug_level_select_lights_07000A28
+
+debug_level_select_vertex_07000A40:
+  type: VTX
+  count: 15
+  offset: 0xA40
+  symbol: debug_level_select_vertex_07000A40
+
+debug_level_select_vertex_07000B30:
+  type: VTX
+  count: 15
+  offset: 0xB30
+  symbol: debug_level_select_vertex_07000B30
+
+debug_level_select_vertex_07000C20:
+  type: VTX
+  count: 15
+  offset: 0xC20
+  symbol: debug_level_select_vertex_07000C20
+
+debug_level_select_vertex_07000D10:
+  type: VTX
+  count: 15
+  offset: 0xD10
+  symbol: debug_level_select_vertex_07000D10
+
+debug_level_select_vertex_07000E00:
+  type: VTX
+  count: 15
+  offset: 0xE00
+  symbol: debug_level_select_vertex_07000E00
+
+debug_level_select_vertex_07000EF0:
+  type: VTX
+  count: 15
+  offset: 0xEF0
+  symbol: debug_level_select_vertex_07000EF0
+
+debug_level_select_vertex_07000FE0:
+  type: VTX
+  count: 15
+  offset: 0xFE0
+  symbol: debug_level_select_vertex_07000FE0
+
+debug_level_select_vertex_070010D0:
+  type: VTX
+  count: 3
+  offset: 0x10D0
+  symbol: debug_level_select_vertex_070010D0
+
+debug_level_select_dl_07001100:
+  type: GFX
+  offset: 0x1100
+  symbol: debug_level_select_dl_07001100
+
+debug_level_select_lights_07001288:
+  type: LIGHTS
+  size: 24
+  offset: 0x1288
+  symbol: debug_level_select_lights_07001288
+
+debug_level_select_vertex_070012A0:
+  type: VTX
+  count: 15
+  offset: 0x12A0
+  symbol: debug_level_select_vertex_070012A0
+
+debug_level_select_vertex_07001390:
+  type: VTX
+  count: 15
+  offset: 0x1390
+  symbol: debug_level_select_vertex_07001390
+
+debug_level_select_vertex_07001480:
+  type: VTX
+  count: 15
+  offset: 0x1480
+  symbol: debug_level_select_vertex_07001480
+
+debug_level_select_vertex_07001570:
+  type: VTX
+  count: 15
+  offset: 0x1570
+  symbol: debug_level_select_vertex_07001570
+
+debug_level_select_vertex_07001660:
+  type: VTX
+  count: 15
+  offset: 0x1660
+  symbol: debug_level_select_vertex_07001660
+
+debug_level_select_vertex_07001750:
+  type: VTX
+  count: 15
+  offset: 0x1750
+  symbol: debug_level_select_vertex_07001750
+
+debug_level_select_vertex_07001840:
+  type: VTX
+  count: 15
+  offset: 0x1840
+  symbol: debug_level_select_vertex_07001840
+
+debug_level_select_vertex_07001930:
+  type: VTX
+  count: 15
+  offset: 0x1930
+  symbol: debug_level_select_vertex_07001930
+
+debug_level_select_vertex_07001A20:
+  type: VTX
+  count: 15
+  offset: 0x1A20
+  symbol: debug_level_select_vertex_07001A20
+
+debug_level_select_vertex_07001B10:
+  type: VTX
+  count: 9
+  offset: 0x1B10
+  symbol: debug_level_select_vertex_07001B10
+
+debug_level_select_dl_07001BA0:
+  type: GFX
+  offset: 0x1BA0
+  symbol: debug_level_select_dl_07001BA0
+
+debug_level_select_lights_07001D98:
+  type: LIGHTS
+  size: 24
+  offset: 0x1D98
+  symbol: debug_level_select_lights_07001D98
+
+debug_level_select_vertex_07001DB0:
+  type: VTX
+  count: 15
+  offset: 0x1DB0
+  symbol: debug_level_select_vertex_07001DB0
+
+debug_level_select_vertex_07001EA0:
+  type: VTX
+  count: 15
+  offset: 0x1EA0
+  symbol: debug_level_select_vertex_07001EA0
+
+debug_level_select_vertex_07001F90:
+  type: VTX
+  count: 15
+  offset: 0x1F90
+  symbol: debug_level_select_vertex_07001F90
+
+debug_level_select_vertex_07002080:
+  type: VTX
+  count: 15
+  offset: 0x2080
+  symbol: debug_level_select_vertex_07002080
+
+debug_level_select_vertex_07002170:
+  type: VTX
+  count: 15
+  offset: 0x2170
+  symbol: debug_level_select_vertex_07002170
+
+debug_level_select_vertex_07002260:
+  type: VTX
+  count: 15
+  offset: 0x2260
+  symbol: debug_level_select_vertex_07002260
+
+debug_level_select_vertex_07002350:
+  type: VTX
+  count: 15
+  offset: 0x2350
+  symbol: debug_level_select_vertex_07002350
+
+debug_level_select_vertex_07002440:
+  type: VTX
+  count: 15
+  offset: 0x2440
+  symbol: debug_level_select_vertex_07002440
+
+debug_level_select_vertex_07002530:
+  type: VTX
+  count: 12
+  offset: 0x2530
+  symbol: debug_level_select_vertex_07002530
+
+debug_level_select_dl_070025F0:
+  type: GFX
+  offset: 0x25F0
+  symbol: debug_level_select_dl_070025F0
+
+debug_level_select_lights_070027C0:
+  type: LIGHTS
+  size: 24
+  offset: 0x27C0
+  symbol: debug_level_select_lights_070027C0
+
+debug_level_select_vertex_070027D8:
+  type: VTX
+  count: 15
+  offset: 0x27D8
+  symbol: debug_level_select_vertex_070027D8
+
+debug_level_select_vertex_070028C8:
+  type: VTX
+  count: 15
+  offset: 0x28C8
+  symbol: debug_level_select_vertex_070028C8
+
+debug_level_select_vertex_070029B8:
+  type: VTX
+  count: 15
+  offset: 0x29B8
+  symbol: debug_level_select_vertex_070029B8
+
+debug_level_select_vertex_07002AA8:
+  type: VTX
+  count: 15
+  offset: 0x2AA8
+  symbol: debug_level_select_vertex_07002AA8
+
+debug_level_select_vertex_07002B98:
+  type: VTX
+  count: 15
+  offset: 0x2B98
+  symbol: debug_level_select_vertex_07002B98
+
+debug_level_select_vertex_07002C88:
+  type: VTX
+  count: 15
+  offset: 0x2C88
+  symbol: debug_level_select_vertex_07002C88
+
+debug_level_select_vertex_07002D78:
+  type: VTX
+  count: 15
+  offset: 0x2D78
+  symbol: debug_level_select_vertex_07002D78
+
+debug_level_select_vertex_07002E68:
+  type: VTX
+  count: 15
+  offset: 0x2E68
+  symbol: debug_level_select_vertex_07002E68
+
+debug_level_select_vertex_07002F58:
+  type: VTX
+  count: 15
+  offset: 0x2F58
+  symbol: debug_level_select_vertex_07002F58
+
+debug_level_select_vertex_07003048:
+  type: VTX
+  count: 15
+  offset: 0x3048
+  symbol: debug_level_select_vertex_07003048
+
+debug_level_select_vertex_07003138:
+  type: VTX
+  count: 15
+  offset: 0x3138
+  symbol: debug_level_select_vertex_07003138
+
+debug_level_select_vertex_07003228:
+  type: VTX
+  count: 3
+  offset: 0x3228
+  symbol: debug_level_select_vertex_07003228
+
+debug_level_select_dl_07003258:
+  type: GFX
+  offset: 0x3258
+  symbol: debug_level_select_dl_07003258
+
+debug_level_select_lights_070034A0:
+  type: LIGHTS
+  size: 24
+  offset: 0x34A0
+  symbol: debug_level_select_lights_070034A0
+
+debug_level_select_vertex_070034B8:
+  type: VTX
+  count: 15
+  offset: 0x34B8
+  symbol: debug_level_select_vertex_070034B8
+
+debug_level_select_vertex_070035A8:
+  type: VTX
+  count: 15
+  offset: 0x35A8
+  symbol: debug_level_select_vertex_070035A8
+
+debug_level_select_vertex_07003698:
+  type: VTX
+  count: 15
+  offset: 0x3698
+  symbol: debug_level_select_vertex_07003698
+
+debug_level_select_vertex_07003788:
+  type: VTX
+  count: 15
+  offset: 0x3788
+  symbol: debug_level_select_vertex_07003788
+
+debug_level_select_vertex_07003878:
+  type: VTX
+  count: 15
+  offset: 0x3878
+  symbol: debug_level_select_vertex_07003878
+
+debug_level_select_vertex_07003968:
+  type: VTX
+  count: 15
+  offset: 0x3968
+  symbol: debug_level_select_vertex_07003968
+
+debug_level_select_vertex_07003A58:
+  type: VTX
+  count: 15
+  offset: 0x3A58
+  symbol: debug_level_select_vertex_07003A58
+
+debug_level_select_vertex_07003B48:
+  type: VTX
+  count: 15
+  offset: 0x3B48
+  symbol: debug_level_select_vertex_07003B48
+
+debug_level_select_vertex_07003C38:
+  type: VTX
+  count: 15
+  offset: 0x3C38
+  symbol: debug_level_select_vertex_07003C38
+
+debug_level_select_vertex_07003D28:
+  type: VTX
+  count: 9
+  offset: 0x3D28
+  symbol: debug_level_select_vertex_07003D28
+
+debug_level_select_dl_07003DB8:
+  type: GFX
+  offset: 0x3DB8
+  symbol: debug_level_select_dl_07003DB8
+
+debug_level_select_lights_07003FB0:
+  type: LIGHTS
+  size: 24
+  offset: 0x3FB0
+  symbol: debug_level_select_lights_07003FB0
+
+debug_level_select_vertex_07003FC8:
+  type: VTX
+  count: 15
+  offset: 0x3FC8
+  symbol: debug_level_select_vertex_07003FC8
+
+debug_level_select_vertex_070040B8:
+  type: VTX
+  count: 15
+  offset: 0x40B8
+  symbol: debug_level_select_vertex_070040B8
+
+debug_level_select_vertex_070041A8:
+  type: VTX
+  count: 15
+  offset: 0x41A8
+  symbol: debug_level_select_vertex_070041A8
+
+debug_level_select_vertex_07004298:
+  type: VTX
+  count: 15
+  offset: 0x4298
+  symbol: debug_level_select_vertex_07004298
+
+debug_level_select_vertex_07004388:
+  type: VTX
+  count: 15
+  offset: 0x4388
+  symbol: debug_level_select_vertex_07004388
+
+debug_level_select_vertex_07004478:
+  type: VTX
+  count: 15
+  offset: 0x4478
+  symbol: debug_level_select_vertex_07004478
+
+debug_level_select_vertex_07004568:
+  type: VTX
+  count: 15
+  offset: 0x4568
+  symbol: debug_level_select_vertex_07004568
+
+debug_level_select_vertex_07004658:
+  type: VTX
+  count: 15
+  offset: 0x4658
+  symbol: debug_level_select_vertex_07004658
+
+debug_level_select_vertex_07004748:
+  type: VTX
+  count: 15
+  offset: 0x4748
+  symbol: debug_level_select_vertex_07004748
+
+debug_level_select_vertex_07004838:
+  type: VTX
+  count: 9
+  offset: 0x4838
+  symbol: debug_level_select_vertex_07004838
+
+debug_level_select_dl_070048C8:
+  type: GFX
+  offset: 0x48C8
+  symbol: debug_level_select_dl_070048C8
+
+debug_level_select_lights_07004AC0:
+  type: LIGHTS
+  size: 24
+  offset: 0x4AC0
+  symbol: debug_level_select_lights_07004AC0
+
+debug_level_select_vertex_07004AD8:
+  type: VTX
+  count: 15
+  offset: 0x4AD8
+  symbol: debug_level_select_vertex_07004AD8
+
+debug_level_select_vertex_07004BC8:
+  type: VTX
+  count: 15
+  offset: 0x4BC8
+  symbol: debug_level_select_vertex_07004BC8
+
+debug_level_select_vertex_07004CB8:
+  type: VTX
+  count: 15
+  offset: 0x4CB8
+  symbol: debug_level_select_vertex_07004CB8
+
+debug_level_select_vertex_07004DA8:
+  type: VTX
+  count: 15
+  offset: 0x4DA8
+  symbol: debug_level_select_vertex_07004DA8
+
+debug_level_select_vertex_07004E98:
+  type: VTX
+  count: 15
+  offset: 0x4E98
+  symbol: debug_level_select_vertex_07004E98
+
+debug_level_select_vertex_07004F88:
+  type: VTX
+  count: 15
+  offset: 0x4F88
+  symbol: debug_level_select_vertex_07004F88
+
+debug_level_select_vertex_07005078:
+  type: VTX
+  count: 15
+  offset: 0x5078
+  symbol: debug_level_select_vertex_07005078
+
+debug_level_select_vertex_07005168:
+  type: VTX
+  count: 15
+  offset: 0x5168
+  symbol: debug_level_select_vertex_07005168
+
+debug_level_select_vertex_07005258:
+  type: VTX
+  count: 15
+  offset: 0x5258
+  symbol: debug_level_select_vertex_07005258
+
+debug_level_select_vertex_07005348:
+  type: VTX
+  count: 15
+  offset: 0x5348
+  symbol: debug_level_select_vertex_07005348
+
+debug_level_select_vertex_07005438:
+  type: VTX
+  count: 15
+  offset: 0x5438
+  symbol: debug_level_select_vertex_07005438
+
+debug_level_select_vertex_07005528:
+  type: VTX
+  count: 3
+  offset: 0x5528
+  symbol: debug_level_select_vertex_07005528
+
+debug_level_select_dl_07005558:
+  type: GFX
+  offset: 0x5558
+  symbol: debug_level_select_dl_07005558
+
+debug_level_select_lights_070057A0:
+  type: LIGHTS
+  size: 24
+  offset: 0x57A0
+  symbol: debug_level_select_lights_070057A0
+
+debug_level_select_vertex_070057B8:
+  type: VTX
+  count: 15
+  offset: 0x57B8
+  symbol: debug_level_select_vertex_070057B8
+
+debug_level_select_vertex_070058A8:
+  type: VTX
+  count: 15
+  offset: 0x58A8
+  symbol: debug_level_select_vertex_070058A8
+
+debug_level_select_vertex_07005998:
+  type: VTX
+  count: 6
+  offset: 0x5998
+  symbol: debug_level_select_vertex_07005998
+
+debug_level_select_dl_070059F8:
+  type: GFX
+  offset: 0x59F8
+  symbol: debug_level_select_dl_070059F8
+
+debug_level_select_lights_07005A98:
+  type: LIGHTS
+  size: 24
+  offset: 0x5A98
+  symbol: debug_level_select_lights_07005A98
+
+debug_level_select_vertex_07005AB0:
+  type: VTX
+  count: 15
+  offset: 0x5AB0
+  symbol: debug_level_select_vertex_07005AB0
+
+debug_level_select_vertex_07005BA0:
+  type: VTX
+  count: 15
+  offset: 0x5BA0
+  symbol: debug_level_select_vertex_07005BA0
+
+debug_level_select_vertex_07005C90:
+  type: VTX
+  count: 15
+  offset: 0x5C90
+  symbol: debug_level_select_vertex_07005C90
+
+debug_level_select_vertex_07005D80:
+  type: VTX
+  count: 15
+  offset: 0x5D80
+  symbol: debug_level_select_vertex_07005D80
+
+debug_level_select_vertex_07005E70:
+  type: VTX
+  count: 15
+  offset: 0x5E70
+  symbol: debug_level_select_vertex_07005E70
+
+debug_level_select_vertex_07005F60:
+  type: VTX
+  count: 15
+  offset: 0x5F60
+  symbol: debug_level_select_vertex_07005F60
+
+debug_level_select_vertex_07006050:
+  type: VTX
+  count: 15
+  offset: 0x6050
+  symbol: debug_level_select_vertex_07006050
+
+debug_level_select_vertex_07006140:
+  type: VTX
+  count: 15
+  offset: 0x6140
+  symbol: debug_level_select_vertex_07006140
+
+debug_level_select_vertex_07006230:
+  type: VTX
+  count: 15
+  offset: 0x6230
+  symbol: debug_level_select_vertex_07006230
+
+debug_level_select_vertex_07006320:
+  type: VTX
+  count: 9
+  offset: 0x6320
+  symbol: debug_level_select_vertex_07006320
+
+debug_level_select_dl_070063B0:
+  type: GFX
+  offset: 0x63B0
+  symbol: debug_level_select_dl_070063B0

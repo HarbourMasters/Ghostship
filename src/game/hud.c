@@ -13,6 +13,7 @@
 #include "area.h"
 #include "save_file.h"
 #include "print.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 /* @file hud.c
  * This file implements HUD rendering and power meter animations.
@@ -57,27 +58,13 @@ UNUSED static struct UnusedHUDStruct sUnusedHUDValues = { 0x00, 0x0A, 0x00 };
 
 static struct CameraHUD sCameraHUD = { CAM_STATUS_NONE };
 
-static u32 sPowerMeterLastRenderTimestamp;
-static s16 sPowerMeterLastY;
-static Gfx *sPowerMeterDisplayListPos;
-
-void patch_interpolated_hud(void) {
-    if (sPowerMeterDisplayListPos != NULL) {
-        Mtx *mtx = alloc_display_list(sizeof(Mtx));
-        guTranslate(mtx, (f32) sPowerMeterHUD.x, (f32) sPowerMeterHUD.y, 0);
-        gSPMatrix(sPowerMeterDisplayListPos, VIRTUAL_TO_PHYSICAL(mtx),
-              G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-        sPowerMeterDisplayListPos = NULL;
-    }
-}
-
 /**
  * Renders a rgba16 16x16 glyph texture from a table list.
  */
 void render_hud_tex_lut(s32 x, s32 y, u8 *texture) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture);
-    gSPDisplayList(gDisplayListHead++, &dl_hud_img_load_tex_block);
+    gSPDisplayList(gDisplayListHead++, dl_hud_img_load_tex_block);
     gSPTextureRectangle(gDisplayListHead++, x << 2, y << 2, (x + 15) << 2, (y + 15) << 2,
                         G_TX_RENDERTILE, 0, 0, 4 << 10, 1 << 10);
 }
@@ -104,7 +91,7 @@ void render_hud_small_tex_lut(s32 x, s32 y, u8 *texture) {
  * Renders power meter health segment texture using a table list.
  */
 void render_power_meter_health_segment(s16 numHealthWedges) {
-    u8 *(*healthLUT)[] = segmented_to_virtual(&power_meter_health_segments_lut);
+    u8 *(*healthLUT)[] = ResourceGetDataByName(power_meter_health_segments_lut);
 
     gDPPipeSync(gDisplayListHead++);
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,
@@ -121,30 +108,22 @@ void render_power_meter_health_segment(s16 numHealthWedges) {
  */
 void render_dl_power_meter(s16 numHealthWedges) {
     Mtx *mtx = alloc_display_list(sizeof(Mtx));
-    f32 interpolatedY;
+
 
     if (mtx == NULL) {
         return;
     }
 
-    if (gGlobalTimer == sPowerMeterLastRenderTimestamp + 1) {
-        interpolatedY = (sPowerMeterLastY + sPowerMeterHUD.y) / 2.0f;
-    } else {
-        interpolatedY = sPowerMeterHUD.y;
-    }
-    guTranslate(mtx, (f32) sPowerMeterHUD.x, interpolatedY, 0);
-    sPowerMeterLastY = sPowerMeterHUD.y;
-    sPowerMeterLastRenderTimestamp = gGlobalTimer;
-    sPowerMeterDisplayListPos = gDisplayListHead;
+    guTranslate(mtx, (f32) sPowerMeterHUD.x, (f32) sPowerMeterHUD.y, 0);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx++),
               G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-    gSPDisplayList(gDisplayListHead++, &dl_power_meter_base);
+    gSPDisplayList(gDisplayListHead++, dl_power_meter_base);
 
     if (numHealthWedges != 0) {
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_begin);
+        gSPDisplayList(gDisplayListHead++, dl_power_meter_health_segments_begin);
         render_power_meter_health_segment(numHealthWedges);
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_end);
+        gSPDisplayList(gDisplayListHead++, dl_power_meter_health_segments_end);
     }
 
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -173,21 +152,21 @@ void animate_power_meter_emphasized(void) {
 static void animate_power_meter_deemphasizing(void) {
     s16 speed = 5;
 
-    if (sPowerMeterHUD.y > 180) {
+    if (sPowerMeterHUD.y >= 181) {
         speed = 3;
     }
 
-    if (sPowerMeterHUD.y > 190) {
+    if (sPowerMeterHUD.y >= 191) {
         speed = 2;
     }
 
-    if (sPowerMeterHUD.y > 195) {
+    if (sPowerMeterHUD.y >= 196) {
         speed = 1;
     }
 
     sPowerMeterHUD.y += speed;
 
-    if (sPowerMeterHUD.y > 200) {
+    if (sPowerMeterHUD.y >= 201) {
         sPowerMeterHUD.y = 200;
         sPowerMeterHUD.animation = POWER_METER_VISIBLE;
     }
@@ -199,7 +178,7 @@ static void animate_power_meter_deemphasizing(void) {
  */
 static void animate_power_meter_hiding(void) {
     sPowerMeterHUD.y += 20;
-    if (sPowerMeterHUD.y > 300) {
+    if (sPowerMeterHUD.y >= 301) {
         sPowerMeterHUD.animation = POWER_METER_HIDDEN;
         sPowerMeterVisibleTimer = 0;
     }
@@ -275,7 +254,7 @@ void render_hud_power_meter(void) {
     sPowerMeterVisibleTimer++;
 }
 
-#define HUD_TOP_Y 209
+#define HUD_TOP_Y (ROM_JP ? 210 : 209)
 
 /**
  * Renders the amount of lives Mario has.
@@ -336,7 +315,7 @@ void render_hud_keys(void) {
  * Renders the timer when Mario start sliding in PSS.
  */
 void render_hud_timer(void) {
-    u8 *(*hudLUT)[58] = segmented_to_virtual(&main_hud_lut);
+    u8 *(*hudLUT)[58] = segmented_to_virtual(main_hud_lut);
     u16 timerValFrames = gHudDisplay.timer;
     u16 timerMins = timerValFrames / (30 * 60);
     u16 timerSecs = (timerValFrames - (timerMins * 1800)) / 30;
@@ -381,7 +360,7 @@ void set_hud_camera_status(s16 status) {
  * the camera status called, a defined glyph is rendered.
  */
 void render_hud_camera_status(void) {
-    u8 *(*cameraLUT)[6] = segmented_to_virtual(&main_hud_camera_lut);
+    u8 *(*cameraLUT)[6] = segmented_to_virtual(main_hud_camera_lut);
     s32 x = GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(54);
     s32 y = 205;
 
@@ -422,12 +401,12 @@ void render_hud_camera_status(void) {
  */
 void render_hud(void) {
     s16 hudDisplayFlags = gHudDisplay.flags;
-
     if (hudDisplayFlags == HUD_DISPLAY_NONE) {
         sPowerMeterHUD.animation = POWER_METER_HIDDEN;
         sPowerMeterStoredHealth = 8;
         sPowerMeterVisibleTimer = 0;
     } else {
+        FrameInterpolation_RecordOpenChild("render_hud", (uintptr_t)&hudDisplayFlags);
 #ifdef VERSION_EU
         // basically create_dl_ortho_matrix but guOrtho screen width is different
         Mtx *mtx = alloc_display_list(sizeof(*mtx));
@@ -446,33 +425,49 @@ void render_hud(void) {
 #endif
 
         if (gCurrentArea != NULL && gCurrentArea->camera->mode == CAMERA_MODE_INSIDE_CANNON) {
+            FrameInterpolation_RecordOpenChild("render_hud_cannon_reticle", (uintptr_t)&gCurrentArea->camera->mode);
             render_hud_cannon_reticle();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_LIVES) {
+            FrameInterpolation_RecordOpenChild("render_hud_mario_lives", (uintptr_t)&gHudDisplay.lives);
             render_hud_mario_lives();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_COIN_COUNT) {
+            FrameInterpolation_RecordOpenChild("render_hud_coins", (uintptr_t)&gHudDisplay.coins);
             render_hud_coins();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_STAR_COUNT) {
+            FrameInterpolation_RecordOpenChild("render_hud_stars", (uintptr_t)&gHudDisplay.stars);
             render_hud_stars();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_KEYS) {
+            FrameInterpolation_RecordOpenChild("render_hud_keys", (uintptr_t)&gHudDisplay.keys);
             render_hud_keys();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_CAMERA_AND_POWER) {
+            FrameInterpolation_RecordOpenChild("render_hud_power_meter", (uintptr_t)&sPowerMeterHUD.animation);
             render_hud_power_meter();
+            FrameInterpolation_RecordCloseChild();
+            FrameInterpolation_RecordOpenChild("render_hud_camera_status", (uintptr_t)&sCameraHUD.status);
             render_hud_camera_status();
+            FrameInterpolation_RecordCloseChild();
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_TIMER) {
+            FrameInterpolation_RecordOpenChild("render_hud_timer", (uintptr_t)&gHudDisplay.timer);
             render_hud_timer();
+            FrameInterpolation_RecordCloseChild();
         }
-
+        FrameInterpolation_RecordCloseChild();
     }
 }

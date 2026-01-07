@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/peach.yml"
   autopads: false
   segments:
-    - [0x0C,  0x180540]
+    - [ 0xC, 0x180540 ]
 
 peach_geo_000098:
   type: SM64:GEO_LAYOUT

@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/cannon_barrel.yml"
   autopads: false
   segments:
-    - [0x0F,  0x2008D0]
+    - [ 0xF, 0x2008D0 ]
 
 cannon_barrel_geo:
   type: SM64:GEO_LAYOUT

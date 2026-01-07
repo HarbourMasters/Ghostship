@@ -3,7 +3,12 @@
   compression:
     offset: 0x1B9CC0
   segments:
-    - [0x06,  0x1B9CC0]
+    - [ 0x6, 0x1B9CC0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "water_ring/anims.h"'
+      - '#include "water_ring/geo.h"'
 
 water_ring_seg6_lights_06012368:
   type: LIGHTS
@@ -72,4 +77,3 @@ water_ring_seg6_dl_06013AC0:
   type: GFX
   offset: 0x13AC0
   symbol: water_ring_seg6_dl_06013AC0
-

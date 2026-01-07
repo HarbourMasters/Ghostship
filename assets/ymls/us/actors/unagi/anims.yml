@@ -3,7 +3,7 @@
   compression:
     offset: 0x13B910
   segments:
-    - [0x05,  0x13B910]
+    - [ 0x5, 0x13B910 ]
 
 unagi_seg5_anim_0500FBF4:
   type: SM64:ANIM

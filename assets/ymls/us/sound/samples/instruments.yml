@@ -1,219 +1,219 @@
 00:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 141
 01_banjo_1:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 142
 02:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 143
 03_human_whistle:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 144
 04_bright_piano:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 145
 05_acoustic_bass:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 146
 06_kick_drum_1:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 147
 07_rimshot:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 148
 08:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 149
 09:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 150
 0A_tambourine:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 151
 0B:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 152
 0C_conga_stick:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 153
 0D_clave:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 154
 0E_hihat_closed:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 155
 0F_hihat_open:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 156
 10_cymbal_bell:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 157
 11_splash_cymbal:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 158
 12_snare_drum_1:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 159
 13_snare_drum_2:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 160
 14_strings_5:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 161
 15_strings_4:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 162
 16_french_horns:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 163
 17_trumpet:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 164
 18_timpani:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 165
 19_brass:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 166
 1A_slap_bass:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 167
 1B_organ_2:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 168
 1C:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 169
 1D:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 170
 1E_closed_triangle:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 171
 1F_open_triangle:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 172
 20_cabasa:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 173
 21_sine_bass:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 174
 22_boys_choir:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 175
 23_strings_1:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 176
 24_strings_2:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 177
 25_strings_3:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 178
 26_crystal_rhodes:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 179
 27_harpsichord:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 180
 28_sitar_1:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 181
 29_orchestra_hit:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 182
 2A:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 183
 2B:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 184
 2C:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 185
 2D_trombone:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 186
 2E_accordion:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 187
 2F_sleigh_bells:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 188
 30_rarefaction-lahna:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 189
 31_rarefaction-convolution:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 190
 32_metal_rimshot:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 191
 33_kick_drum_2:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 192
 34_alto_flute:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 193
 35_gospel_organ:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 194
 36_sawtooth_synth:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 195
 37_square_synth:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 196
 38_electric_kick_drum:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 197
 39_sitar_2:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 198
 3A_music_box:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 199
 3B_banjo_2:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 200
 3C_acoustic_guitar:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 201
 3D:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 202
 3E_monk_choir:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 203
 3F:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 204
 40_bell:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 205
 41_pan_flute:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 206
 42_vibraphone:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 207
 43_harmonica:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 208
 44_grand_piano:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 209
 45_french_horns_lq:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 210
 46_pizzicato_strings_1:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 211
 47_pizzicato_strings_2:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 212
 48_steel_drum:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 213

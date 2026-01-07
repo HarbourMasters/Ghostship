@@ -1,42 +1,42 @@
 00:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 56
 01:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 57
 02:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 58
 03:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 59
 04:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 60
 05:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 61
 06:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 62
 07:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 63
 08:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 64
 09:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 65
 0A:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 66
 0B:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 67
 0C:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 68
 0D:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 69

@@ -3,7 +3,12 @@
   compression:
     offset: 0x1D8310
   segments:
-    - [0x06,  0x1D8310]
+    - [ 0x6, 0x1D8310 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "lakitu_cameraman/anims.h"'
+      - '#include "lakitu_cameraman/geo.h"'
 
 lakitu_cameraman_cloud_face_unused:
   type: TEXTURE
@@ -376,4 +381,3 @@ lakitu_seg6_dl_06005610:
   type: GFX
   offset: 0x5610
   symbol: lakitu_seg6_dl_06005610
-

@@ -3,7 +3,11 @@
   compression:
     offset: 0x180BB0
   segments:
-    - [0x05,  0x180BB0]
+    - [ 0x5, 0x180BB0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "wiggler_body/anims.h"'
 
 wiggler_segment_left_side:
   type: TEXTURE

@@ -3,7 +3,7 @@
   compression:
     offset: 0x2D0040
   segments:
-    - [0x0A,  0x2D0040]
+    - [ 0xA, 0x2D0040 ]
 
 bitfs:
   type: BLOB

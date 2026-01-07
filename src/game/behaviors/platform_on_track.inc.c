@@ -64,9 +64,9 @@ void bhv_platform_on_track_init(void) {
         o->oPlatformOnTrackIsNotSkiLift = o->oPlatformOnTrackType - PLATFORM_ON_TRACK_TYPE_SKI_LIFT;
 
         o->collisionData =
-            segmented_to_virtual(sPlatformOnTrackCollisionModels[o->oPlatformOnTrackType]);
+            LOAD_ASSET(sPlatformOnTrackCollisionModels[o->oPlatformOnTrackType]);
 
-        o->oPlatformOnTrackStartWaypoint = segmented_to_virtual(sPlatformOnTrackPaths[pathIndex]);
+        o->oPlatformOnTrackStartWaypoint = LOAD_ASSET(sPlatformOnTrackPaths[pathIndex]);
 
         o->oPlatformOnTrackIsNotHMC = pathIndex - 4;
 

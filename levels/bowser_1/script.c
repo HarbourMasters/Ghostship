@@ -14,7 +14,7 @@
 #include "actors/group12.h"
 
 #include "make_const_nonconst.h"
-#include "levels/bowser_1/header.h"
+#include "assets/levels/bowser_1.h"
 
 const LevelScript level_bowser_1_entry[] = {
     INIT_LEVEL(),

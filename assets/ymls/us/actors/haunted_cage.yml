@@ -3,7 +3,11 @@
   compression:
     offset: 0x166C60
   segments:
-    - [0x05,  0x166C60]
+    - [ 0x5, 0x166C60 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "haunted_cage/geo.h"'
 
 haunted_cage_seg5_lights_0500C258:
   type: LIGHTS
@@ -236,4 +240,3 @@ haunted_cage_seg5_dl_05010100:
   type: GFX
   offset: 0x10100
   symbol: haunted_cage_seg5_dl_05010100
-

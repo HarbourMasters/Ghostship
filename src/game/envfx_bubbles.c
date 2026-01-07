@@ -36,20 +36,6 @@ Vtx_t gBubbleTempVtx[3] = {
     { { 0, 0, 0 }, 0, { -498, 964 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
 };
 
-static Gfx sGfxSaved[60 / 5];
-static Gfx *sBubbleInterpolatedDisplayListPos[60 / 5];
-static Vec3s sPrevBubblePositions[60];
-
-void patch_interpolated_bubble_particles(void) {
-    s32 i;
-    for (i = 0; i < 60 / 5; i++) {
-        if (sBubbleInterpolatedDisplayListPos[i] != NULL) {
-            *sBubbleInterpolatedDisplayListPos[i] = sGfxSaved[i];
-            sBubbleInterpolatedDisplayListPos[i] = NULL;
-        }
-    }
-}
-
 /**
  * Check whether the particle with the given index is
  * laterally within distance of point (x, z). Used to
@@ -195,10 +181,10 @@ void envfx_update_lava(Vec3s centerPos) {
  * Rotate the input x, y and z around the rotation origin of the whirlpool
  * according to the pitch and yaw of the whirlpool.
  */
-void envfx_rotate_around_whirlpool(s32 *x, s32 *y, s32 *z) {
-    s32 vecX = *x - gEnvFxBubbleConfig[ENVFX_STATE_DEST_X];
-    s32 vecY = *y - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y];
-    s32 vecZ = *z - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z];
+void envfx_rotate_around_whirlpool(f32 *x, f32 *y, f32 *z) {
+    f32 vecX = *x - gEnvFxBubbleConfig[ENVFX_STATE_DEST_X];
+    f32 vecY = *y - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y];
+    f32 vecZ = *z - gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z];
     f32 cosPitch = coss(gEnvFxBubbleConfig[ENVFX_STATE_PITCH]);
     f32 sinPitch = sins(gEnvFxBubbleConfig[ENVFX_STATE_PITCH]);
     f32 cosMYaw = coss(-gEnvFxBubbleConfig[ENVFX_STATE_YAW]);
@@ -208,9 +194,9 @@ void envfx_rotate_around_whirlpool(s32 *x, s32 *y, s32 *z) {
     f32 rotatedY = vecX * sinMYaw + cosPitch * cosMYaw * vecY - sinPitch * cosMYaw * vecZ;
     f32 rotatedZ = vecY * sinPitch + cosPitch * vecZ;
 
-    *x = gEnvFxBubbleConfig[ENVFX_STATE_DEST_X] + (s32) rotatedX;
-    *y = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y] + (s32) rotatedY;
-    *z = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z] + (s32) rotatedZ;
+    *x = gEnvFxBubbleConfig[ENVFX_STATE_DEST_X] + rotatedX;
+    *y = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y] + rotatedY;
+    *z = gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z] + rotatedZ;
 }
 
 /**
@@ -254,7 +240,6 @@ void envfx_update_whirlpool(void) {
             (gEnvFxBuffer + i)->yPos = (i + gEnvFxBuffer)->bubbleY;
             (gEnvFxBuffer + i)->unusedBubbleVar = 0;
             (gEnvFxBuffer + i)->isAlive = TRUE;
-            (gEnvFxBuffer + i)->spawnTimestamp = gGlobalTimer;
 
             envfx_rotate_around_whirlpool(&(gEnvFxBuffer + i)->xPos, &(gEnvFxBuffer + i)->yPos,
                                           &(gEnvFxBuffer + i)->zPos);
@@ -313,7 +298,6 @@ void envfx_update_jetstream(void) {
                 + coss((gEnvFxBuffer + i)->angleAndDist[0]) * (gEnvFxBuffer + i)->angleAndDist[1];
             (gEnvFxBuffer + i)->yPos =
                 gEnvFxBubbleConfig[ENVFX_STATE_SRC_Y] + (random_float() * 400.0f - 200.0f);
-            (gEnvFxBuffer + i)->spawnTimestamp = gGlobalTimer;
         } else {
             (gEnvFxBuffer + i)->angleAndDist[1] += 10;
             (gEnvFxBuffer + i)->xPos += sins((gEnvFxBuffer + i)->angleAndDist[0]) * 10.0f;
@@ -380,7 +364,7 @@ s32 envfx_init_bubble(s32 mode) {
  * Also sets the given vertices to the correct shape for each mode,
  * though they are not being rotated yet.
  */
-void envfx_bubbles_update_switch(s32 mode, Vec3s camTo, Vec3s vertex1, Vec3s vertex2, Vec3s vertex3) {
+void envfx_bubbles_update_switch(s32 mode, Vec3s camTo, Vec3f vertex1, Vec3f vertex2, Vec3f vertex3) {
     switch (mode) {
         case ENVFX_FLOWERS:
             envfx_update_flower(camTo);
@@ -417,7 +401,7 @@ void envfx_bubbles_update_switch(s32 mode, Vec3s camTo, Vec3s vertex1, Vec3s ver
  * 'index'. The 3 input vertices represent the rotated triangle around (0,0,0)
  * that will be translated to bubble positions to draw the bubble image
  */
-void append_bubble_vertex_buffer(Gfx *gfx, s32 index, Vec3s vertex1, Vec3s vertex2, Vec3s vertex3,
+void append_bubble_vertex_buffer(Gfx *gfx, s32 index, Vec3f vertex1, Vec3f vertex2, Vec3f vertex3,
                                  Vtx *template) {
     s32 i = 0;
     Vtx *vertBuf = alloc_display_list(15 * sizeof(Vtx));
@@ -457,23 +441,24 @@ void envfx_set_bubble_texture(s32 mode, s16 index) {
 
     switch (mode) {
         case ENVFX_FLOWERS:
-            imageArr = segmented_to_virtual(&flower_bubbles_textures_ptr_0B002008);
+            imageArr = segmented_to_virtual(flower_bubbles_textures_ptr_0B002008);
             frame = (gEnvFxBuffer + index)->animFrame;
             break;
 
         case ENVFX_LAVA_BUBBLES:
-            imageArr = segmented_to_virtual(&lava_bubble_ptr_0B006020);
+            imageArr = segmented_to_virtual(lava_bubble_ptr_0B006020);
             frame = (gEnvFxBuffer + index)->animFrame;
             break;
 
         case ENVFX_WHIRLPOOL_BUBBLES:
         case ENVFX_JETSTREAM_BUBBLES:
-            imageArr = segmented_to_virtual(&bubble_ptr_0B006848);
+            imageArr = segmented_to_virtual(bubble_ptr_0B006848);
             frame = 0;
             break;
     }
 
     gDPSetTextureImage(sGfxCursor++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, *(imageArr + frame));
+    // TORCH-TODO: Export and fix this
     gSPDisplayList(sGfxCursor++, &tiny_bubble_dl_0B006D68);
 }
 
@@ -485,15 +470,9 @@ Gfx *envfx_update_bubble_particles(s32 mode, UNUSED Vec3s marioPos, Vec3s camFro
     s32 i;
     s16 radius, pitch, yaw;
 
-    Vec3s vertex1;
-    Vec3s vertex2;
-    Vec3s vertex3;
-    Vec3s interpolatedVertices[3];
-
-    static Vec3s prevVertex1;
-    static Vec3s prevVertex2;
-    static Vec3s prevVertex3;
-    static u32 prevTimestamp;
+    Vec3f vertex1;
+    Vec3f vertex2;
+    Vec3f vertex3;
 
     Gfx *gfxStart = alloc_display_list(((sBubbleParticleMaxCount / 5) * 10 + sBubbleParticleMaxCount + 3)
                                        * sizeof(Gfx));
@@ -507,54 +486,21 @@ Gfx *envfx_update_bubble_particles(s32 mode, UNUSED Vec3s marioPos, Vec3s camFro
     envfx_bubbles_update_switch(mode, camTo, vertex1, vertex2, vertex3);
     rotate_triangle_vertices(vertex1, vertex2, vertex3, pitch, yaw);
 
-    if (gGlobalTimer == prevTimestamp + 1) {
-        interpolate_vectors_s16(interpolatedVertices[0], prevVertex1, vertex1);
-        interpolate_vectors_s16(interpolatedVertices[1], prevVertex2, vertex2);
-        interpolate_vectors_s16(interpolatedVertices[2], prevVertex3, vertex3);
-    }
-    vec3s_copy(prevVertex1, vertex1);
-    vec3s_copy(prevVertex2, vertex2);
-    vec3s_copy(prevVertex3, vertex3);
-    prevTimestamp = gGlobalTimer;
-
+    // TORCH-TODO: Export and fix this
     gSPDisplayList(sGfxCursor++, &tiny_bubble_dl_0B006D38);
 
     for (i = 0; i < sBubbleParticleMaxCount; i += 5) {
-        Vtx *interpolatedVertBuf = alloc_display_list(15 * sizeof(Vtx));
-        s32 j, k;
         gDPPipeSync(sGfxCursor++);
         envfx_set_bubble_texture(mode, i);
         append_bubble_vertex_buffer(sGfxCursor++, i, vertex1, vertex2, vertex3, (Vtx *) gBubbleTempVtx);
-        sBubbleInterpolatedDisplayListPos[i / 5] = sGfxCursor;
-        for (j = 0; j < 5; j++) {
-            for (k = 0; k < 3; k++) {
-                Vtx *v = &interpolatedVertBuf[j * 3 + k];
-                v->v = gBubbleTempVtx[k];
-                if (gGlobalTimer != gEnvFxBuffer[i + j].spawnTimestamp && mode != ENVFX_LAVA_BUBBLES) {
-                    v->v.ob[0] = (sPrevBubblePositions[i + j][0] + gEnvFxBuffer[i + j].xPos) / 2.0f + interpolatedVertices[k][0];
-                    v->v.ob[1] = (sPrevBubblePositions[i + j][1] + gEnvFxBuffer[i + j].yPos) / 2.0f + interpolatedVertices[k][1];
-                    v->v.ob[2] = (sPrevBubblePositions[i + j][2] + gEnvFxBuffer[i + j].zPos) / 2.0f + interpolatedVertices[k][2];
-                } else {
-                    v->v.ob[0] = gEnvFxBuffer[i + j].xPos + interpolatedVertices[k][0];
-                    v->v.ob[1] = gEnvFxBuffer[i + j].yPos + interpolatedVertices[k][1];
-                    v->v.ob[2] = gEnvFxBuffer[i + j].zPos + interpolatedVertices[k][2];
-                }
-            }
-        }
-        gSPVertex(sGfxCursor++, VIRTUAL_TO_PHYSICAL(interpolatedVertBuf), 15, 0);
-        append_bubble_vertex_buffer(&sGfxSaved[i / 5], i, vertex1, vertex2, vertex3, (Vtx *) gBubbleTempVtx);
         gSP1Triangle(sGfxCursor++, 0, 1, 2, 0);
         gSP1Triangle(sGfxCursor++, 3, 4, 5, 0);
         gSP1Triangle(sGfxCursor++, 6, 7, 8, 0);
         gSP1Triangle(sGfxCursor++, 9, 10, 11, 0);
         gSP1Triangle(sGfxCursor++, 12, 13, 14, 0);
     }
-    for (i = 0; i < sBubbleParticleMaxCount; i++) {
-        sPrevBubblePositions[i][0] = gEnvFxBuffer[i].xPos;
-        sPrevBubblePositions[i][1] = gEnvFxBuffer[i].yPos;
-        sPrevBubblePositions[i][2] = gEnvFxBuffer[i].zPos;
-    }
 
+    // TORCH-TODO: Export and fix this
     gSPDisplayList(sGfxCursor++, &tiny_bubble_dl_0B006AB0);
     gSPEndDisplayList(sGfxCursor++);
 

@@ -1,9 +1,9 @@
 00_plunge:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 14
 01_splash:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 15
 02_swim:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 16

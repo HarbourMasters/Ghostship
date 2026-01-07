@@ -3,7 +3,12 @@
   compression:
     offset: 0x1E3520
   segments:
-    - [0x06,  0x1E3520]
+    - [ 0x6, 0x1E3520 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "chillychief/anims.h"'
+      - '#include "chillychief/geo.h"'
 
 chilly_chief_seg6_lights_06000000:
   type: LIGHTS
@@ -170,4 +175,3 @@ chilly_chief_seg6_dl_06003010:
   type: GFX
   offset: 0x3010
   symbol: chilly_chief_seg6_dl_06003010
-

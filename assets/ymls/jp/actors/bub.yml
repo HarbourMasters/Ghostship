@@ -3,7 +3,12 @@
   compression:
     offset: 0x1B8010
   segments:
-    - [0x06,  0x1B8010]
+    - [ 0x6, 0x1B8010 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bub/anims.h"'
+      - '#include "bub/geo.h"'
 
 bub_seg6_lights_0600E280:
   type: LIGHTS
@@ -184,4 +189,3 @@ bub_seg6_dl_06011FA0:
   type: GFX
   offset: 0x11FA0
   symbol: bub_seg6_dl_06011FA0
-

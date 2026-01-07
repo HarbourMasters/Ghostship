@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/bubble.yml"
   autopads: false
   segments:
-    - [0x17,  0x1279B0]
+    - [ 0x17, 0x1279B0 ]
 
 bubble_geo:
   type: SM64:GEO_LAYOUT

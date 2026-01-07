@@ -3,7 +3,11 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mist/geo.h"'
 
 mist_seg3_vertex_03000000:
   type: VTX
@@ -35,4 +39,3 @@ mist_seg3_dl_03000920:
   type: GFX
   offset: 0x920
   symbol: mist_seg3_dl_03000920
-

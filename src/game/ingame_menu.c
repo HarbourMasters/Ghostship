@@ -14,7 +14,7 @@
 #include "gfx_dimensions.h"
 #include "ingame_menu.h"
 #include "level_update.h"
-#include "levels/castle_grounds/header.h"
+#include "assets/levels/castle_grounds.h"
 #include "memory.h"
 #include "print.h"
 #include "save_file.h"
@@ -23,7 +23,8 @@
 #include "seq_ids.h"
 #include "sm64.h"
 #include "types.h"
-#include "endianness.h"
+#include "port/interpolation/FrameInterpolation.h"
+#include <ship/utils/binarytools/endianness.h>
 
 #ifdef VERSION_EU
 #undef LANGUAGE_FUNCTION
@@ -118,42 +119,6 @@ s8 gLastDialogResponse = 0;
 u8 gMenuHoldKeyIndex = 0;
 u8 gMenuHoldKeyTimer = 0;
 s32 gDialogResponse = DIALOG_RESPONSE_NONE;
-
-static Gfx *sInterpolatedDialogOffsetPos;
-static f32 sInterpolatedDialogOffset;
-static Gfx *sInterpolatedDialogRotationPos;
-static f32 sInterpolatedDialogScale;
-static f32 sInterpolatedDialogRotation;
-static Gfx *sInterpolatedDialogZoomPos;
-
-void patch_interpolated_dialog(void) {
-    Mtx *matrix;
-
-    if (sInterpolatedDialogOffsetPos != NULL) {
-        matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
-        guTranslate(matrix, 0, sInterpolatedDialogOffset, 0);
-        gSPMatrix(sInterpolatedDialogOffsetPos, VIRTUAL_TO_PHYSICAL(matrix), G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_NOPUSH);
-        sInterpolatedDialogOffsetPos = NULL;
-    }
-    if (sInterpolatedDialogRotationPos != NULL) {
-        matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
-        guScale(matrix, 1.0 / sInterpolatedDialogScale, 1.0 / sInterpolatedDialogScale, 1.0f);
-        gSPMatrix(sInterpolatedDialogRotationPos++, VIRTUAL_TO_PHYSICAL(matrix), G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_NOPUSH);
-        matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
-        guRotate(matrix, sInterpolatedDialogRotation * 4.0f, 0, 0, 1.0f);
-        gSPMatrix(sInterpolatedDialogRotationPos, VIRTUAL_TO_PHYSICAL(matrix), G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_NOPUSH);
-        sInterpolatedDialogRotationPos = NULL;
-    }
-    if (sInterpolatedDialogZoomPos != NULL) {
-        matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
-        guTranslate(matrix, 65.0 - (65.0 / sInterpolatedDialogScale), (40.0 / sInterpolatedDialogScale) - 40, 0);
-        gSPMatrix(sInterpolatedDialogZoomPos++, VIRTUAL_TO_PHYSICAL(matrix), G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_NOPUSH);
-        matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
-        guScale(matrix, 1.0 / sInterpolatedDialogScale, 1.0 / sInterpolatedDialogScale, 1.0f);
-        gSPMatrix(sInterpolatedDialogZoomPos, VIRTUAL_TO_PHYSICAL(matrix), G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_NOPUSH);
-        sInterpolatedDialogZoomPos = NULL;
-    }
-}
 
 void create_dl_identity_matrix(void) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
@@ -278,7 +243,7 @@ static u8 *alloc_ia8_text_from_i1(u16 *in, s16 width, s16 height) {
 }
 
 void render_generic_char(u8 c) {
-    void **fontLUT = segmented_to_virtual(ROM_JP ? main_font_lut_jp : main_font_lut_us);
+    void **fontLUT = segmented_to_virtual(main_font_lut);
     char* packedTexture = segmented_to_virtual(fontLUT[c]);
 
     if (packedTexture == NULL) {
@@ -286,13 +251,13 @@ void render_generic_char(u8 c) {
     }
 
     gDPPipeSync(gDisplayListHead++);
-    if(ROM_JP){
+    if(ROM_JP) {
         gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings_jp);
     } else {
         gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings_us);
     }
+
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
 #ifdef VERSION_EU
     gSPTextureRectangleFlip(gDisplayListHead++, gDialogX << 2, (gDialogY - 16) << 2,
                             (gDialogX + 8) << 2, gDialogY << 2, G_TX_RENDERTILE, 8 << 6, 4 << 6, 1 << 10, 1 << 10);
@@ -555,7 +520,8 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
                     }
 
                     if (hudLUT == HUD_LUT_GLOBAL) {
-                        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT2[str[strPos]]);
+                        const u8 *texture = hudLUT2[str[strPos]];
+                        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture == NULL ? hudLUT2[COLOR_CHAR_STAR] : texture);
                     }
 
                     gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
@@ -572,7 +538,8 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
             }
 
             if (hudLUT == HUD_LUT_GLOBAL) {
-                gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT2[str[strPos]]);
+                const u8 *texture = hudLUT2[str[strPos]];
+                gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture == NULL ? hudLUT2[COLOR_CHAR_STAR] : texture);
             }
 
             gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
@@ -606,7 +573,7 @@ void print_menu_generic_string(s16 x, s16 y, const u8 *str) {
     s32 strPos = 0;
     u32 curX = x;
     u32 curY = y;
-    void **fontLUT = segmented_to_virtual(ROM_JP ? menu_font_lut_jp : menu_font_lut_us);
+    void **fontLUT = segmented_to_virtual(menu_font_lut);
 
     while (str[strPos] != DIALOG_CHAR_TERMINATOR) {
         switch (str[strPos]) {
@@ -919,21 +886,13 @@ void reset_dialog_render_state(void) {
 #define Y_VAL2 (ROM_JP ? 4 : 5.0f)
 
 void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
-    UNUSED u8 filler[4];
+    UNUSED s32 unused;
 
     create_dl_translation_matrix(MENU_MTX_NOPUSH, dialog->leftOffset, dialog->width, 0);
 
     switch (gDialogBoxType) {
         case DIALOG_TYPE_ROTATE: // Renders a dialog black box with zoom and rotation
             if (gDialogBoxState == DIALOG_STATE_OPENING || gDialogBoxState == DIALOG_STATE_CLOSING) {
-                sInterpolatedDialogRotationPos = gDisplayListHead;
-                if (gDialogBoxState == DIALOG_STATE_OPENING) {
-                    sInterpolatedDialogScale = gDialogBoxScale - 2 / 2;
-                    sInterpolatedDialogRotation = gDialogBoxOpenTimer - 7.5f / 2;
-                } else {
-                    sInterpolatedDialogScale = gDialogBoxScale + 2 / 2;
-                    sInterpolatedDialogRotation = gDialogBoxOpenTimer + 7.5f / 2;
-                }
                 create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.0 / gDialogBoxScale, 1.0 / gDialogBoxScale, 1.0f);
                 // convert the speed into angle
                 create_dl_rotation_matrix(MENU_MTX_NOPUSH, gDialogBoxOpenTimer * 4.0f, 0, 0, 1.0f);
@@ -942,14 +901,8 @@ void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
             break;
         case DIALOG_TYPE_ZOOM: // Renders a dialog white box with zoom
             if (gDialogBoxState == DIALOG_STATE_OPENING || gDialogBoxState == DIALOG_STATE_CLOSING) {
-                sInterpolatedDialogZoomPos = gDisplayListHead;
-                if (gDialogBoxState == DIALOG_STATE_OPENING) {
-                    sInterpolatedDialogScale = gDialogBoxScale - 2 / 2;
-                } else {
-                    sInterpolatedDialogScale = gDialogBoxScale + 2 / 2;
-                }
                 create_dl_translation_matrix(MENU_MTX_NOPUSH, 65.0 - (65.0 / gDialogBoxScale),
-                                             (40.0 / gDialogBoxScale) - 40, 0);
+                                              (40.0 / gDialogBoxScale) - 40, 0);
                 create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.0 / gDialogBoxScale, 1.0 / gDialogBoxScale, 1.0f);
             }
             gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, 150);
@@ -1060,7 +1013,7 @@ void render_star_count_dialog_text(s8 *xMatrix, s16 *linePos)
 
     if (tensDigit != 0) {
 #if !defined(VERSION_EU)
-        if(ROM_JP){
+        if(ROM_JP) {
             create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * *xMatrix, 0, 0);
             render_generic_char(tensDigit);
         } else {
@@ -1087,7 +1040,7 @@ void render_star_count_dialog_text(s8 *xMatrix, s16 *linePos)
 #endif
 
 #ifndef VERSION_EU
-    if(ROM_JP){
+    if(ROM_JP) {
         create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * *xMatrix, 0, 0);
         render_generic_char(onesDigit);
     } else {
@@ -1189,13 +1142,11 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
         totalLines = linesPerBox + 1;
     }
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
     strIdx = gDialogTextPos;
 
     if (gDialogBoxState == DIALOG_STATE_HORIZONTAL) {
-        sInterpolatedDialogOffset = gDialogScrollOffsetY + dialog->linesPerBox;
-        sInterpolatedDialogOffsetPos = gDisplayListHead;
         create_dl_translation_matrix(MENU_MTX_NOPUSH, 0, (f32) gDialogScrollOffsetY, 0);
     }
 
@@ -1235,25 +1186,25 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
                     break;
                 }
             case DIALOG_CHAR_SLASH:
-                if(!ROM_JP){
+                if(!ROM_JP) {
                     xMatrix += 2;
                     linePos += 2;
                     break;
                 }
             case DIALOG_CHAR_MULTI_THE:
-                if(!ROM_JP){
+                if(!ROM_JP) {
                     render_multi_text_string_lines(STRING_THE, lineNum, &linePos, linesPerBox, xMatrix, lowerBound);
                     xMatrix = 1;
                     break;
                 }
             case DIALOG_CHAR_MULTI_YOU:
-                if(!ROM_JP){
+                if(!ROM_JP) {
                     render_multi_text_string_lines(STRING_YOU, lineNum, &linePos, linesPerBox, xMatrix, lowerBound);
                     xMatrix = 1;
                     break;
                 }
             default:
-                if(ROM_JP){
+                if(ROM_JP) {
                     if (linePos != 0) {
                         create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * xMatrix, 0, 0);
                     }
@@ -1746,7 +1697,7 @@ void do_cutscene_handler(void) {
 
     create_dl_ortho_matrix();
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gCutsceneMsgFade);
 
 #ifdef VERSION_EU
@@ -1833,11 +1784,11 @@ void print_peach_letter_message(void) {
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gCutsceneMsgFade);
     gSPDisplayList(gDisplayListHead++, castle_grounds_seg7_dl_0700EA58);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 20, 20, 20, gCutsceneMsgFade);
 
     print_generic_string(STR_X, STR_Y, str);
-    if(ROM_JP){
+    if(ROM_JP) {
         gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, 255);
     } else {
@@ -2036,7 +1987,7 @@ void render_pause_my_score_coins(void) {
     }
 
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
@@ -2061,7 +2012,7 @@ void render_pause_my_score_coins(void) {
         }
 
         print_generic_string(ACT_NAME_X, 140, actName);
-        if(!ROM_JP){
+        if(!ROM_JP) {
             print_generic_string(LVL_NAME_X, 157, &courseName[3]);
         }
     } else if(!ROM_JP) {
@@ -2082,7 +2033,7 @@ void render_pause_my_score_coins(void) {
 void render_pause_camera_options(s16 x, s16 y, s8 *index, s16 xIndex) {
     handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 2);
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     print_generic_string(x + 14, y + 2, GameEngine_LoadTranslation("TEXT_LAKITU_MARIO"));
@@ -2113,7 +2064,7 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
 
     handle_menu_scrolling(MENU_SCROLL_VERTICAL, index, 1, 3);
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     print_generic_string(x + 10, y - 2, GameEngine_LoadTranslation("TEXT_CONTINUE"));
@@ -2281,7 +2232,7 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
         }
     }
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     if (gDialogLineNum <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) { // Main courses
@@ -2529,7 +2480,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
         }
 
         // Print course number
-        gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+        gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
         int_to_str(gLastCompletedCourseNum, strCourseNum);
 
@@ -2546,7 +2497,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
         name = GameEngine_LoadLevelName(COURSE_NUM_TO_INDEX(gLastCompletedCourseNum));
 
         // Print course name and clear text
-        gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+        gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
         gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, gDialogTextAlpha);
 #ifdef VERSION_EU
@@ -2586,18 +2537,18 @@ void render_course_complete_lvl_info_and_hud_str(void) {
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 
     // Print act name and catch text
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, gDialogTextAlpha);
     print_generic_string(76, 145, name);
 
-    if(ROM_JP){
+    if(ROM_JP) {
         print_generic_string(220, 145, GameEngine_LoadTranslation("TEXT_CATCH"));
     }
 
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
     print_generic_string(74, 147, name);
-    if(ROM_JP){
+    if(ROM_JP) {
         print_generic_string(218, 147, GameEngine_LoadTranslation("TEXT_CATCH"));
     }
 
@@ -2650,7 +2601,7 @@ void render_save_confirmation(s16 x, s16 y, s8 *index, s16 sp6e)
 
     handle_menu_scrolling(MENU_SCROLL_VERTICAL, index, 1, 3);
 
-    gSPDisplayList(gDisplayListHead++, ROM_JP ? dl_ia_text_begin_jp : dl_ia_text_begin_us);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
     print_generic_string(TXT_SAVEOPTIONS_X, y + TXT_SAVECONT_Y, GameEngine_LoadTranslation("TEXT_SAVE_AND_CONTINUE"));
@@ -2727,6 +2678,7 @@ s16 render_course_complete_screen(void) {
 s16 render_menus_and_dialogs(void) {
     s16 index = MENU_OPT_NONE;
 
+    FrameInterpolation_RecordOpenChild("render_menus_and_dialogs", 0);
     create_dl_ortho_matrix();
 
     if (gMenuMode != MENU_MODE_NONE) {
@@ -2756,6 +2708,6 @@ s16 render_menus_and_dialogs(void) {
         render_dialog_entries();
         gDialogColorFadeTimer = (s16) gDialogColorFadeTimer + 0x1000;
     }
-
+    FrameInterpolation_RecordCloseChild();
     return index;
 }

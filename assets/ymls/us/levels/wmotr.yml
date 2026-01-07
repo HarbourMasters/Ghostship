@@ -3,7 +3,12 @@
   compression:
     offset: 0x4C4320
   segments:
-    - [0x07,  0x4C4320]
+    - [ 0x7, 0x4C4320 ]
+  header:
+    header:
+      - '#include "wmotr/geo.h"'
+      - ''
+      - 'extern const LevelScript level_wmotr_entry[];'
 
 0:
   type: TEXTURE

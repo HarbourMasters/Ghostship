@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/burn_smoke.yml"
   autopads: false
   segments:
-    - [0x17,  0x1279B0]
+    - [ 0x17, 0x1279B0 ]
 
 burn_smoke_geo:
   type: SM64:GEO_LAYOUT

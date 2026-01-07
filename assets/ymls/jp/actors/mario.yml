@@ -3,7 +3,11 @@
   compression:
     offset: 0x112B50
   segments:
-    - [0x04,  0x112B50]
+    - [ 0x4, 0x112B50 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mario/geo.h"'
 
 mario_blue_lights_group:
   type: LIGHTS
@@ -2307,4 +2311,3 @@ mario_metal_cap_wings_transparent:
   type: GFX
   offset: 0x1CC28
   symbol: mario_metal_cap_wings_transparent
-

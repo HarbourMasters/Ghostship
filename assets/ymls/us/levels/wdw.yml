@@ -3,7 +3,14 @@
   compression:
     offset: 0x40ED70
   segments:
-    - [0x07,  0x40ED70]
+    - [ 0x7, 0x40ED70 ]
+  external_files:
+    - "assets/ymls/us/textures/grass.yml"
+  header:
+    header:
+      - '#include "wdw/geo.h"'
+      - ''
+      - 'extern const LevelScript level_wdw_entry[];'
 
 0:
   type: TEXTURE
@@ -1907,10 +1914,20 @@ wdw_seg7_area_1_collision:
   offset: 0x14150
   symbol: wdw_seg7_area_1_collision
 
+wdw_seg7_area_1_macro_objs:
+  type: SM64:MACRO
+  offset: 0x160D8
+  symbol: wdw_seg7_area_1_macro_objs
+
 wdw_seg7_area_2_collision:
   type: SM64:COLLISION
   offset: 0x1633C
   symbol: wdw_seg7_area_2_collision
+
+wdw_seg7_area_2_macro_objs:
+  type: SM64:MACRO
+  offset: 0x18224
+  symbol: wdw_seg7_area_2_macro_objs
 
 wdw_seg7_collision_square_floating_platform:
   type: SM64:COLLISION
@@ -1930,32 +1947,22 @@ wdw_seg7_collision_070184C8:
 wdw_seg7_collision_07018528:
   type: SM64:COLLISION
   offset: 0x18528
-  symbol: wdw_seg7_07018528
+  symbol: wdw_seg7_collision_07018528
 
 wdw_seg7_collision_express_elevator_platform:
   type: SM64:COLLISION
   offset: 0x185AC
-  symbol: wdw_seg7_express_elevator_platform
+  symbol: wdw_seg7_collision_express_elevator_platform
 
 wdw_seg7_collision_rect_floating_platform:
   type: SM64:COLLISION
   offset: 0x18630
-  symbol: wdw_seg7_rect_floating_platform
+  symbol: wdw_seg7_collision_rect_floating_platform
 
 wdw_seg7_collision_070186B4:
   type: SM64:COLLISION
   offset: 0x186B4
-  symbol: wdw_seg7_070186B4
-
-wdw_seg7_area_1_macro_objs:
-  type: SM64:MACRO
-  offset: 0x160D8
-  symbol: wdw_seg7_area_1_macro_objs
-
-wdw_seg7_area_2_macro_objs:
-  type: SM64:MACRO
-  offset: 0x18224
-  symbol: wdw_seg7_area_2_macro_objs
+  symbol: wdw_seg7_collision_070186B4
 
 wdw_movtex_area1_water_data:
   type: SM64:MOVTEX

@@ -1,6 +1,6 @@
 #include <libultraship.h>
 
-#include <Fast3D/gfx_pc.h>
+#include <fast/interpreter.h>
 #include "Engine.h"
 
 extern "C" {
@@ -15,20 +15,9 @@ void alloc_pool() {
     gEffectsMemoryPool = mem_pool_init(0x4000, MEMORY_POOL_LEFT);
 }
 
-void patch_interpolations() {
-    mtx_patch_interpolated();
-    patch_screen_transition_interpolated();
-    patch_title_screen_scales();
-    patch_interpolated_dialog();
-    patch_interpolated_hud();
-    patch_interpolated_paintings();
-    patch_interpolated_bubble_particles();
-    patch_interpolated_snow_particles();
-}
-
 extern "C"
 void exec_display_list(SPTask *spTask) {
-    GameEngine::ProcessGfxCommands((F3DGfx *) spTask->task.t.data_ptr);
+    GameEngine::ProcessGfxCommands((Gfx *) spTask->task.t.data_ptr);
 }
 
 void push_frame() {

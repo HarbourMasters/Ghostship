@@ -3,7 +3,7 @@
   compression:
     offset: 0x2AAC50
   segments:
-    - [0x0A,  0x2AAC50]
+    - [ 0xA, 0x2AAC50 ]
 
 water:
   type: BLOB

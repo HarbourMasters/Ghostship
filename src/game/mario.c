@@ -34,7 +34,8 @@
 #include "sound_init.h"
 #include "rumble_init.h"
 
-#include "port/Enhancements/game-interactor/GameInteractor_Hooks.h"
+#include "port/hooks/list/PlayerEvent.h"
+#include "port/mods/PortEnhancements.h"
 
 u32 unused80339F10;
 u8 unused80339F1C[20];
@@ -1449,8 +1450,10 @@ void update_mario_health(struct MarioState *m) {
         if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
                 if (!(m->flags & MARIO_METAL_CAP) && !gDebugLevelSelect) {
-                    m->health -= 4;
-                    GameInteractor_ExecuteOnHealthChange(m->health);
+                    s32 amount = -4;
+                    CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                        m->health += amount;
+                    }
                 }
             } else {
                 if ((m->action & ACT_FLAG_SWIMMING) && !(m->action & ACT_FLAG_INTANGIBLE)) {
@@ -1460,25 +1463,33 @@ void update_mario_health(struct MarioState *m) {
                     // when in snow terrains lose 3 health.
                     // If using the debug level select, do not lose any HP to water.
                     if ((m->pos[1] >= (m->waterLevel - 140)) && !terrainIsSnow) {
-                        m->health += 0x1A;
-                        GameInteractor_ExecuteOnHealthChange(m->health);
+                        s32 amount = 0x1A;
+                        CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                            m->health += amount;
+                        }
                     } else if (!gDebugLevelSelect) {
-                        m->health -= (terrainIsSnow ? 3 : 1);
-                        GameInteractor_ExecuteOnHealthChange(m->health);
+                        s32 amount = (terrainIsSnow ? 3 : 1);
+                        CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                            m->health += amount;
+                        }
                     }
                 }
             }
         }
 
         if (m->healCounter > 0) {
-            m->health += 0x40;
-            m->healCounter--;
-            GameInteractor_ExecuteOnHealthChange(m->health);
+            s32 amount = 0x40;
+            CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                m->health += amount;
+                m->healCounter--;
+            }
         }
         if (m->hurtCounter > 0) {
-            m->health -= 0x40;
-            m->hurtCounter--;
-            GameInteractor_ExecuteOnHealthChange(m->health);
+            s32 amount = -0x40;
+            CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
+                m->health += amount;
+                m->hurtCounter--;
+            }
         }
 
         if (m->health > 0x880) {
@@ -1752,14 +1763,14 @@ s32 execute_mario_action(UNUSED struct Object *o) {
         // non-Japanese releases.
         if (gMarioState->floor->type == SURFACE_HORIZONTAL_WIND) {
             spawn_wind_particles(0, (gMarioState->floor->force << 8));
-            if(!ROM_JP){
+            if(!ROM_JP) {
                 play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
             }
         }
 
         if (gMarioState->floor->type == SURFACE_VERTICAL_WIND) {
             spawn_wind_particles(1, 0);
-            if(!ROM_JP){
+            if(!ROM_JP) {
                 play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
             }
         }

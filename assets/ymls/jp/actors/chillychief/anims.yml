@@ -3,7 +3,7 @@
   compression:
     offset: 0x1E3520
   segments:
-    - [0x06,  0x1E3520]
+    - [ 0x6, 0x1E3520 ]
 
 chilly_chief_seg6_anim_060032EC:
   type: SM64:ANIM

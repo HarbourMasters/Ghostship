@@ -3,7 +3,7 @@
   compression:
     offset: 0x2D64F0
   segments:
-    - [0x0A,  0x2D64F0]
+    - [ 0xA, 0x2D64F0 ]
 
 wdw:
   type: BLOB

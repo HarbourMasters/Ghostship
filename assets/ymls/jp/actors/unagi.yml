@@ -3,7 +3,12 @@
   compression:
     offset: 0x139D10
   segments:
-    - [0x05,  0x139D10]
+    - [ 0x5, 0x139D10 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "unagi/anims.h"'
+      - '#include "unagi/geo.h"'
 
 unagi_lights_unused1:
   type: LIGHTS
@@ -305,4 +310,3 @@ unagi_seg5_dl_0500E258:
   type: GFX
   offset: 0xE258
   symbol: unagi_seg5_dl_0500E258
-

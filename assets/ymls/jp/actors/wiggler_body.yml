@@ -3,7 +3,11 @@
   compression:
     offset: 0x17EF80
   segments:
-    - [0x05,  0x17EF80]
+    - [ 0x5, 0x17EF80 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "wiggler_body/anims.h"'
 
 wiggler_segment_left_side:
   type: TEXTURE
@@ -215,3 +219,7 @@ wiggler_seg5_dl_0500C278:
   offset: 0xC278
   symbol: wiggler_seg5_dl_0500C278
 
+wiggler_body_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC778
+  symbol: wiggler_body_geo

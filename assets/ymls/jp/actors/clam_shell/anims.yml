@@ -3,7 +3,7 @@
   compression:
     offset: 0x139D10
   segments:
-    - [0x05,  0x139D10]
+    - [ 0x5, 0x139D10 ]
 
 clam_shell_seg5_anim_05001654:
   type: SM64:ANIM

@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/sa.yml"
   autopads: false
   segments:
-    - [0x0E,  0x46C1A0]
+    - [ 0xE, 0x46C1A0 ]
 
 sa_geo_000170:
   type: SM64:GEO_LAYOUT

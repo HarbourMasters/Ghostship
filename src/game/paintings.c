@@ -6,9 +6,9 @@
 #include "engine/surface_collision.h"
 #include "game_init.h"
 #include "geo_misc.h"
-#include "levels/castle_inside/header.h"
-#include "levels/hmc/header.h"
-#include "levels/ttm/header.h"
+#include "assets/levels/castle_inside.h"
+#include "assets/levels/hmc.h"
+#include "assets/levels/ttm.h"
 #include "mario.h"
 #include "memory.h"
 #include "moving_texture.h"
@@ -165,18 +165,18 @@ struct Painting *gRipplingPainting;
 s8 gDddPaintingStatus;
 
 struct Painting *sHmcPaintings[] = {
-    &cotmc_painting,
+    cotmc_painting,
     NULL,
 };
 
 struct Painting *sInsideCastlePaintings[] = {
-    &bob_painting, &ccm_painting, &wf_painting,  &jrb_painting,      &lll_painting,
-    &ssl_painting, &hmc_painting, &ddd_painting, &wdw_painting,      &thi_tiny_painting,
-    &ttm_painting, &ttc_painting, &sl_painting,  &thi_huge_painting, NULL,
+    bob_painting, ccm_painting, wf_painting,  jrb_painting,      lll_painting,
+    ssl_painting, hmc_painting, ddd_painting, wdw_painting,      thi_tiny_painting,
+    ttm_painting, ttc_painting, sl_painting,  thi_huge_painting, NULL,
 };
 
 struct Painting *sTtmPaintings[] = {
-    &ttm_slide_painting,
+    ttm_slide_painting,
     NULL,
 };
 
@@ -189,32 +189,6 @@ struct Painting **sPaintingGroups[] = {
 s16 gPaintingUpdateCounter = 1;
 s16 gLastPaintingUpdateCounter = 0;
 
-static Vtx sLastVertices[2 * 264 * 3];
-static u32 sLastVerticesTimestamp;
-static Vtx *sVerticesPtr[2];
-static s32 sVerticesCount;
-
-void patch_interpolated_paintings(void) {
-    if (sVerticesPtr[0] != NULL) {
-        s32 i;
-        if (sVerticesPtr[1] != NULL) {
-            for (i = 0; i < sVerticesCount / 2; i++) {
-                sVerticesPtr[0][i] = sLastVertices[i];
-            }
-            for (; i < sVerticesCount; i++) {
-                sVerticesPtr[1][i - sVerticesCount / 2] = sLastVertices[i];
-            }
-        } else {
-            for (i = 0; i < sVerticesCount; i++) {
-                sVerticesPtr[0][i] = sLastVertices[i];
-            }
-        }
-        sVerticesPtr[0] = NULL;
-        sVerticesPtr[1] = NULL;
-        sVerticesCount = 0;
-    }
-}
-
 /**
  * Stop paintings in paintingGroup from rippling if their id is different from *idptr.
  */
@@ -224,7 +198,7 @@ void stop_other_paintings(s16 *idptr, struct Painting *paintingGroup[]) {
 
     index = 0;
     while (paintingGroup[index] != NULL) {
-        struct Painting *painting = segmented_to_virtual(paintingGroup[index]);
+        struct Painting *painting = LOAD_ASSET(paintingGroup[index]);
 
         // stop all rippling except for the selected painting
         if (painting->id != id) {
@@ -919,23 +893,6 @@ Gfx *render_painting(u8 *img, s16 tWidth, s16 tHeight, s16 *textureMap, s16 mapV
         gSP1Triangle(gfx++, group * 3, group * 3 + 1, group * 3 + 2, 0);
     }
 
-    if (sVerticesCount >= numVtx * 2) {
-        sVerticesCount = 0;
-    }
-    for (map = 0; map < numVtx; map++) {
-        Vtx v = verts[map];
-        if (gGlobalTimer == sLastVerticesTimestamp + 1) {
-            s32 i;
-            for (i = 0; i < 3; i++) {
-                verts[map].n.ob[i] = (v.n.ob[i] + sLastVertices[sVerticesCount + map].n.ob[i]) / 2;
-                verts[map].n.n[i] = (v.n.n[i] + sLastVertices[sVerticesCount + map].n.n[i]) / 2;
-            }
-        }
-        sLastVertices[sVerticesCount + map] = v;
-    }
-    sVerticesPtr[sVerticesCount / numVtx] = verts;
-    sVerticesCount += numVtx;
-
     gSPEndDisplayList(gfx);
     return dlist;
 }
@@ -998,9 +955,11 @@ Gfx *painting_ripple_image(struct Painting *painting) {
         textureMap = segmented_to_virtual(textureMaps[i]);
         meshVerts = textureMap[0];
         meshTris = textureMap[meshVerts * 3 + 1];
-        gSPDisplayList(gfx++, render_painting(textures[i], tWidth, tHeight, textureMap, meshVerts, meshTris, painting->alpha));
+        Gfx* render = render_painting(textures[i], tWidth, tHeight, textureMap, meshVerts, meshTris, painting->alpha);
+        if(gfx != NULL){
+            gSPDisplayList(gfx++, render);
+        }
     }
-    sLastVerticesTimestamp = gGlobalTimer;
 
     // Update the ripple, may automatically reset the painting's state.
     painting_update_ripple_state(painting);
@@ -1020,8 +979,8 @@ Gfx *painting_ripple_env_mapped(struct Painting *painting) {
     s16 *textureMap;
     s16 tWidth = painting->textureWidth;
     s16 tHeight = painting->textureHeight;
-    s16 **textureMaps = segmented_to_virtual(painting->textureMaps);
-    u8 **tArray = segmented_to_virtual(painting->textureArray);
+    s16 **textureMaps = LOAD_ASSET(painting->textureMaps);
+    u8 **tArray = LOAD_ASSET(painting->textureArray);
     Gfx *dlist = alloc_display_list(7 * sizeof(Gfx));
     Gfx *gfx = dlist;
 
@@ -1034,11 +993,10 @@ Gfx *painting_ripple_env_mapped(struct Painting *painting) {
     gSPDisplayList(gfx++, painting->rippleDisplayList);
 
     // Map the image to the mesh's vertices
-    textureMap = segmented_to_virtual(textureMaps[0]);
+    textureMap = LOAD_ASSET(textureMaps[0]);
     meshVerts = textureMap[0];
     meshTris = textureMap[meshVerts * 3 + 1];
     gSPDisplayList(gfx++, render_painting(tArray[0], tWidth, tHeight, textureMap, meshVerts, meshTris, painting->alpha));
-    sLastVerticesTimestamp = gGlobalTimer;
 
     // Update the ripple, may automatically reset the painting's state.
     painting_update_ripple_state(painting);
@@ -1054,8 +1012,8 @@ Gfx *painting_ripple_env_mapped(struct Painting *painting) {
  * The mesh and vertex normals are regenerated and freed every frame.
  */
 Gfx *display_painting_rippling(struct Painting *painting) {
-    s16 *mesh = segmented_to_virtual(seg2_painting_triangle_mesh);
-    s16 *neighborTris = segmented_to_virtual(seg2_painting_mesh_neighbor_tris);
+    s16 *mesh = LOAD_ASSET(seg2_painting_triangle_mesh);
+    s16 *neighborTris = LOAD_ASSET(seg2_painting_mesh_neighbor_tris);
     s16 numVtx = mesh[0];
     s16 numTris = mesh[numVtx * 3 + 1];
     Gfx *dlist;
@@ -1122,7 +1080,7 @@ void reset_painting(struct Painting *painting) {
     painting->rippleTimer = 0.0f;
     painting->rippleX = 0.0f;
     painting->rippleY = 0.0f;
-    if (painting == &ddd_painting) {
+    if (painting == LOAD_ASSET(ddd_painting)) {
         // Move DDD painting to initial position, in case the animation
         // that moves the painting stops during level unload.
         painting->posX = 3456.0f;
@@ -1267,7 +1225,7 @@ Gfx *geo_painting_draw(s32 callContext, struct GraphNode *node, UNUSED void *con
     s32 id = gen->parameter & 0xFF;
     Gfx *paintingDlist = NULL;
     struct Painting **paintingGroup = sPaintingGroups[group];
-    struct Painting *painting = segmented_to_virtual(paintingGroup[id]);
+    struct Painting *painting = LOAD_ASSET(paintingGroup[id]);
 
     if (callContext != GEO_CONTEXT_RENDER) {
         reset_painting(painting);

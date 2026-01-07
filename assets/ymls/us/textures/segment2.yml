@@ -3,7 +3,10 @@
   compression:
     offset: 0x108A40
   segments:
-    - [0x02,  0x108A40]
+    - [ 0x2, 0x108A40 ]
+  header:
+    header:
+      - '#include "sm64.h"'
 
 segment2.00000:
   type: TEXTURE

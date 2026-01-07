@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/small_key.yml"
   autopads: false
   segments:
-    - [0x0C,  0x16D5C0]
+    - [ 0xC, 0x16D5C0 ]
 
 small_key_geo:
   type: SM64:GEO_LAYOUT

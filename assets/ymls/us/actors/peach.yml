@@ -3,7 +3,12 @@
   compression:
     offset: 0x16D870
   segments:
-    - [0x05,  0x16D870]
+    - [ 0x5, 0x16D870 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "peach/anims.h"'
+      - '#include "peach/geo.h"'
 
 peach_seg5_lights_050009F8:
   type: LIGHTS
@@ -806,4 +811,3 @@ peach_seg5_us_dl_0500A188:
   type: GFX
   offset: 0xA188
   symbol: peach_seg5_us_dl_0500A188
-

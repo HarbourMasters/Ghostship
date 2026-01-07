@@ -3,7 +3,7 @@
   compression:
     offset: 0x132C60
   segments:
-    - [0x05,  0x132C60]
+    - [ 0x5, 0x132C60 ]
 
 blargg_seg5_anim_05006070:
   type: SM64:ANIM

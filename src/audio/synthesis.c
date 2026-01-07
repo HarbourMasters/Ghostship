@@ -857,9 +857,27 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                             }
 #else
                             temp = (note->samplePosInt - s2 + 0x10) / 16;
-                            v0_2 = dma_sample_data(
-                                (uintptr_t) (sampleAddr + temp * 9),
-                                t0 * 9, flags, &note->sampleDmaIndex);
+//                            v0_2 = dma_sample_data(
+//                                (uintptr_t) (sampleAddr + temp * 9),
+//                                t0 * 9, flags, &note->sampleDmaIndex);
+                            // Bounds check: ensure we don't read past the sample buffer
+                            {
+                                u32 offset = temp * 9;
+                                u32 size = t0 * 9;
+                                if (audioBookSample->sampleSize > 0 &&
+                                    offset + size > audioBookSample->sampleSize) {
+                                    // Clamp to prevent buffer overflow
+                                    if (offset >= audioBookSample->sampleSize) {
+                                        offset = 0;
+                                        size = 0;
+                                        t0 = 0;
+                                    } else {
+                                        size = audioBookSample->sampleSize - offset;
+                                        t0 = size / 9;
+                                    }
+                                }
+                                v0_2 = (uintptr_t) (sampleAddr + offset);
+                            }
 #endif
                             a3 = (u32)((uintptr_t) v0_2 & 0xf);
                             aSetBuffer(cmd++, 0, DMEM_ADDR_COMPRESSED_ADPCM_DATA, 0, t0 * 9 + a3);
@@ -1477,6 +1495,12 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
     if (velocity < 0) {
         velocity = 0;
     }
+
+
+    float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
+    volLeft *= master_vol;
+    volRight *= master_vol;
+
 #ifdef VERSION_JP
     note->targetVolLeft = (u16)(velocity * volLeft) & ~0x80FF; // 0x7F00, but that doesn't match
     note->targetVolRight = (u16)(velocity * volRight) & ~0x80FF;
@@ -1490,9 +1514,6 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
     if (note->targetVolRight == 0) {
         note->targetVolRight++;
     }
-    float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
-    note->targetVolLeft *= master_vol;
-    note->targetVolRight *= master_vol;
 
     if (note->reverbVol != reverbVol) {
         note->reverbVol = reverbVol;

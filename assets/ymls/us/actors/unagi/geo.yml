@@ -4,7 +4,7 @@
     - "assets/ymls/us/actors/star.yml"
   autopads: false
   segments:
-    - [0x0C,  0x145C10]
+    - [ 0xC, 0x145C10 ]
 
 unagi_geo:
   type: SM64:GEO_LAYOUT

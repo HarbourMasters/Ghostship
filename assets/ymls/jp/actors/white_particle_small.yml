@@ -3,7 +3,7 @@
   compression:
     offset: 0x112B50
   segments:
-    - [0x04,  0x112B50]
+    - [ 0x4, 0x112B50 ]
 
 white_particle_small_vertex:
   type: VTX
@@ -45,4 +45,3 @@ white_particle_small_unused_dl:
   type: GFX
   offset: 0x32A30
   symbol: white_particle_small_unused_dl
-

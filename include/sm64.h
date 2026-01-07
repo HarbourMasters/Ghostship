@@ -18,6 +18,7 @@
 #include <libultra/os.h>
 #include <math.h>
 #include "port/Engine.h"
+#include "align_asset_macro.h"
 
 #define GAME_VERSION GameEngine_GetGameVersion()
 #define ROM_JP (GAME_VERSION == 0xE3DAA4E)
@@ -498,22 +499,9 @@ extern uintptr_t osVirtualToPhysical(void *addr);
 extern void * osPhysicalToVirtual(u32);
 extern void osMapTLB(int32_t a, uint32_t b, void* c, uint32_t d, uint32_t e, uint32_t f);
 
-// Interpolation
-
-extern void *vec3s_copy(Vec3s dest, Vec3s src);
-extern void interpolate_vectors(Vec3f res, Vec3f a, Vec3f b);
-extern void interpolate_vectors_s16(Vec3s res, Vec3s a, Vec3s b);
-extern void mtx_patch_interpolated(void);
-extern void patch_screen_transition_interpolated(void);
-extern void patch_title_screen_scales(void);
-extern void patch_interpolated_dialog(void);
-extern void patch_interpolated_hud(void);
-extern void patch_interpolated_paintings(void);
-extern void patch_interpolated_bubble_particles(void);
-extern void patch_interpolated_snow_particles(void);
-
 // LUS
 
+void ResourceMgr_PatchGfxByName(const char* path, const char* patchName, GfxPatch* patches, int patchCount);
 void gSPSegmentLoadRes(void* value, int segNum, uintptr_t target);
 void gSPDisplayList(Gfx* pkt, Gfx* dl);
 void gSPDisplayListOffset(Gfx* pkt, Gfx* dl, int offset);

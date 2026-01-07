@@ -3,7 +3,7 @@
   compression:
     offset: 0x114750
   segments:
-    - [0x04,  0x114750]
+    - [ 0x4, 0x114750 ]
 
 white_particle_small_vertex:
   type: VTX

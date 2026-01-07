@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/mist.yml"
   autopads: false
   segments:
-    - [0x16,  0x2170D0]
+    - [ 0x16, 0x2170D0 ]
 
 mist_geo:
   type: SM64:GEO_LAYOUT

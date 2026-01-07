@@ -13,7 +13,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/sl/header.h"
+#include "assets/levels/sl.h"
 
 
 static const LevelScript script_func_local_1[] = {

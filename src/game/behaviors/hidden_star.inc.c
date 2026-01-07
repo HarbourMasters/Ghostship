@@ -42,7 +42,7 @@ void bhv_hidden_star_trigger_loop(void) {
                 spawn_orange_number(hiddenStar->oHiddenStarTriggerCounter, 0, 0, 0);
             }
 
-            if(ROM_JP){
+            if(ROM_JP) {
                 play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
             } else {
                 play_sound(SOUND_MENU_COLLECT_SECRET

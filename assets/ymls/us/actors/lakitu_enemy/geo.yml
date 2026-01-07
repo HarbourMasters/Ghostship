@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/lakitu_enemy.yml"
   autopads: false
   segments:
-    - [0x0C,  0x187FA0]
+    - [ 0xC, 0x187FA0 ]
 
 enemy_lakitu_geo:
   type: SM64:GEO_LAYOUT

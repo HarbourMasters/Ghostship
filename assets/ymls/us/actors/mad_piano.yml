@@ -3,7 +3,12 @@
   compression:
     offset: 0x166C60
   segments:
-    - [0x05,  0x166C60]
+    - [ 0x5, 0x166C60 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mad_piano/anims.h"'
+      - '#include "mad_piano/geo.h"'
 
 mad_piano_lights_unused1:
   type: LIGHTS
@@ -258,4 +263,3 @@ mad_piano_seg5_dl_050098E8:
   type: GFX
   offset: 0x98E8
   symbol: mad_piano_seg5_dl_050098E8
-

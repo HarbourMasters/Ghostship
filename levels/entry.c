@@ -3,7 +3,7 @@
 #include "segment_symbols.h"
 #include "level_commands.h"
 
-#include "levels/intro/header.h"
+#include "assets/levels/intro.h"
 
 #include "make_const_nonconst.h"
 

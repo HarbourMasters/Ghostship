@@ -1,30 +1,30 @@
 00:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 17
 01:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 18
 02:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 19
 03:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 20
 04:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 21
 05:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 22
 06:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 23
 07:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 24
 08:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 25
 09:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 26

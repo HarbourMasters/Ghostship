@@ -3,7 +3,11 @@
   compression:
     offset: 0x1C4230
   segments:
-    - [0x06,  0x1C4230]
+    - [ 0x6, 0x1C4230 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "poundable_pole/geo.h"'
 
 poundable_pole_seg6_lights_06001038:
   type: LIGHTS
@@ -72,4 +76,3 @@ poundable_pole_collision_06002490:
   type: SM64:COLLISION
   offset: 0x2490
   symbol: poundable_pole_collision_06002490
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B9CC0
   segments:
-    - [0x06,  0x1B9CC0]
+    - [ 0x6, 0x1B9CC0 ]
 
 cyan_fish_seg6_anim_0600E24C:
   type: SM64:ANIM

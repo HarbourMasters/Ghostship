@@ -3,7 +3,7 @@
   compression:
     offset: 0x108A40
   segments:
-    - [0x02,  0x108A40]
+    - [ 0x2, 0x108A40 ]
 
 course_00:
   type: SM64:TEXT

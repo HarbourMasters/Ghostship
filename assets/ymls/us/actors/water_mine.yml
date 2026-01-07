@@ -3,7 +3,11 @@
   compression:
     offset: 0x1B9CC0
   segments:
-    - [0x06, 0x1B9CC0]
+    - [ 0x6, 0x1B9CC0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "water_mine/geo.h"'
 
 water_mine_seg6_lights_0600A4E0:
   type: LIGHTS
@@ -104,4 +108,3 @@ water_mine_seg6_dl_0600D3F8:
   type: GFX
   offset: 0xD3F8
   symbol: water_mine_seg6_dl_0600D3F8
-

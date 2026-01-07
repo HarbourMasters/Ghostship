@@ -3,7 +3,14 @@
   compression:
     offset: 0x371C40
   segments:
-    - [0x07,  0x371C40]
+    - [ 0x7, 0x371C40 ]
+  external_files:
+    - "assets/ymls/us/textures/spooky.yml"
+  header:
+    header:
+      - '#include "bbh/geo.h"'
+      - ''
+      - 'extern const LevelScript level_bbh_entry[];'
 
 0:
   type: TEXTURE
@@ -3486,6 +3493,12 @@ bbh_seg7_collision_level:
   type: SM64:COLLISION
   offset: 0x207A0
   symbol: bbh_seg7_collision_level
+
+bbh_seg7_rooms:
+  type: BLOB
+  size: 0x866
+  offset: 0x2605C
+  symbol: bbh_seg7_rooms
 
 bbh_seg7_macro_objs:
   type: SM64:MACRO

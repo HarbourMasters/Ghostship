@@ -4,8 +4,10 @@ void bhv_1up_interact(void) {
     UNUSED u8 filler[4];
 
     if (obj_check_if_collided_with_object(o, gMarioObject) == TRUE) {
-        play_sound(SOUND_GENERAL_COLLECT_1UP, gGlobalSoundSource);
-        gMarioState->numLives++;
+        CALL_CANCELLABLE_EVENT(PlayerLivesChange, gMarioState, 1) {
+            play_sound(SOUND_GENERAL_COLLECT_1UP, gGlobalSoundSource);
+            gMarioState->numLives++;
+        }
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
 #if ENABLE_RUMBLE
         queue_rumble_data(5, 80);

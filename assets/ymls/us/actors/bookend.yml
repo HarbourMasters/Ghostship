@@ -3,7 +3,12 @@
   compression:
     offset: 0x166C60
   segments:
-    - [0x05,  0x166C60]
+    - [ 0x5, 0x166C60 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bookend/anims.h"'
+      - '#include "bookend/geo.h"'
 
 bookend_lights_unused1:
   type: LIGHTS
@@ -249,4 +254,3 @@ bookend_seg5_dl_050022E0:
   type: GFX
   offset: 0x22E0
   symbol: bookend_seg5_dl_050022E0
-

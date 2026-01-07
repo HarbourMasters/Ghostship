@@ -3,54 +3,54 @@
     - "assets/ymls/jp/levels/ccm.yml"
   autopads: false
   segments:
-    - [0x0E,  0x394230]
+    - [ 0xE, 0x394230 ]
 
 ccm_geo_0003D0:
   type: SM64:GEO_LAYOUT
-  offset: 0xE0003E0
+  offset: 0xE0003D0
   symbol: ccm_geo_0003D0
 
 ccm_geo_0003F0:
   type: SM64:GEO_LAYOUT
-  offset: 0xE000400
+  offset: 0xE0003F0
   symbol: ccm_geo_0003F0
 
 ccm_geo_00040C:
   type: SM64:GEO_LAYOUT
-  offset: 0xE00041C
+  offset: 0xE00040C
   symbol: ccm_geo_00040C
 
 ccm_geo_00042C:
   type: SM64:GEO_LAYOUT
-  offset: 0xE00043C
+  offset: 0xE00042C
   symbol: ccm_geo_00042C
 
 ccm_geo_00045C:
   type: SM64:GEO_LAYOUT
-  offset: 0xE00046C
+  offset: 0xE00045C
   symbol: ccm_geo_00045C
 
 ccm_geo_000494:
   type: SM64:GEO_LAYOUT
-  offset: 0xE0004A4
+  offset: 0xE000494
   symbol: ccm_geo_000494
 
 ccm_geo_0004BC:
   type: SM64:GEO_LAYOUT
-  offset: 0xE0004CC
+  offset: 0xE0004BC
   symbol: ccm_geo_0004BC
 
 ccm_geo_0004E4:
   type: SM64:GEO_LAYOUT
-  offset: 0xE0004F4
+  offset: 0xE0004E4
   symbol: ccm_geo_0004E4
 
 ccm_geo_00051C:
   type: SM64:GEO_LAYOUT
-  offset: 0xE00052C
+  offset: 0xE00051C
   symbol: ccm_geo_00051C
 
 ccm_geo_0005E8:
   type: SM64:GEO_LAYOUT
-  offset: 0xE0005F8
+  offset: 0xE0005E8
   symbol: ccm_geo_0005E8

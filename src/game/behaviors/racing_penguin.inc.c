@@ -132,7 +132,7 @@ static void racing_penguin_act_show_final_text(void) {
             }
         } else {
             cur_obj_init_animation_with_sound(0);
-            if(!ROM_JP){
+            if(!ROM_JP) {
                 play_penguin_walking_sound(1);
             }
 
@@ -146,7 +146,7 @@ static void racing_penguin_act_show_final_text(void) {
             o->oTimer = 0;
         }
     } else if (o->oRacingPenguinMarioWon) {
-        if(ROM_JP){
+        if(ROM_JP) {
             spawn_default_star(-7339.0f, -5700.0f, -6774.0f);
         } else {
             cur_obj_spawn_star_at_y_offset(-7339.0f, -5700.0f, -6774.0f, 200.0f);

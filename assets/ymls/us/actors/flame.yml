@@ -3,7 +3,11 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "flame/geo.h"'
 
 flame_seg3_vertex_030172E0:
   type: VTX
@@ -172,4 +176,3 @@ flame_seg3_dl_0301B5A8:
   type: GFX
   offset: 0x1B5A8
   symbol: flame_seg3_dl_0301B5A8
-

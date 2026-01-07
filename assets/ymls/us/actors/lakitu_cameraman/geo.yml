@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/lakitu_cameraman.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1E4BF0]
+    - [ 0xD, 0x1E4BF0 ]
 
 lakitu_geo:
   type: SM64:GEO_LAYOUT

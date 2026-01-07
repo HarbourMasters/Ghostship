@@ -3,7 +3,7 @@
   compression:
     offset: 0x345FF0
   segments:
-    - [0x09,  0x345FF0]
+    - [ 0x9, 0x345FF0 ]
 
 hmc_textures.00000:
   type: TEXTURE
@@ -157,4 +157,3 @@ hmc_textures.0C000:
   offset: 0xC000
   format: IA16
   symbol: cave_0900C000
-

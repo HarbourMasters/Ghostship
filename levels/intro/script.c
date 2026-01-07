@@ -11,12 +11,12 @@
 #include "menu/title_screen.h"
 
 #include "levels/scripts.h"
-#include "levels/menu/header.h"
+#include "assets/levels/menu.h"
 
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/intro/header.h"
+#include "assets/levels/intro.h"
 
 const LevelScript level_intro_splash_screen[] = {
     INIT_LEVEL(),

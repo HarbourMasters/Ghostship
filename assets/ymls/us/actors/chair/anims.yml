@@ -3,7 +3,7 @@
   compression:
     offset: 0x166C60
   segments:
-    - [0x05,  0x166C60]
+    - [ 0x5, 0x166C60 ]
 
 chair_seg5_anim_0500576C:
   type: SM64:ANIM

@@ -3,7 +3,12 @@
   compression:
     offset: 0x1C2580
   segments:
-    - [0x06,  0x1C2580]
+    - [ 0x6, 0x1C2580 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "chain_chomp/anims.h"'
+      - '#include "chain_chomp/geo.h"'
 
 chain_chomp_lights_unused1:
   type: LIGHTS
@@ -223,4 +228,3 @@ chain_chomp_seg6_dl_06024FC0:
   type: GFX
   offset: 0x24FC0
   symbol: chain_chomp_seg6_dl_06024FC0
-

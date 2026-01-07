@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/impact_smoke.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1B7400]
+    - [ 0xD, 0x1B7400 ]
 
 bowser_impact_smoke_geo:
   type: SM64:GEO_LAYOUT

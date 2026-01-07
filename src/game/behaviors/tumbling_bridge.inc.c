@@ -1,9 +1,9 @@
 // tumbling_bridge.inc.c
 
-#include "levels/wf/header.h"
-#include "levels/bbh/header.h"
-#include "levels/lll/header.h"
-#include "levels/bitfs/header.h"
+#include "assets/levels/wf.h"
+#include "assets/levels/bbh.h"
+#include "assets/levels/lll.h"
+#include "assets/levels/bitfs.h"
 
 struct Struct8032F34C {
     s16 numBridgeSections;

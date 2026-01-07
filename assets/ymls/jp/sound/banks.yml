@@ -1,114 +1,132 @@
+:config:
+  external_files:
+    - "assets/ymls/jp/sound/root.yml"
+    - "assets/ymls/jp/sound/samples/bowser_organ.yml"
+    - "assets/ymls/jp/sound/samples/course_start.yml"
+    - "assets/ymls/jp/sound/samples/instruments.yml"
+    - "assets/ymls/jp/sound/samples/piranha_music_box.yml"
+    - "assets/ymls/jp/sound/samples/sfx_1.yml"
+    - "assets/ymls/jp/sound/samples/sfx_4.yml"
+    - "assets/ymls/jp/sound/samples/sfx_5.yml"
+    - "assets/ymls/jp/sound/samples/sfx_6.yml"
+    - "assets/ymls/jp/sound/samples/sfx_7.yml"
+    - "assets/ymls/jp/sound/samples/sfx_9.yml"
+    - "assets/ymls/jp/sound/samples/sfx_mario_peach.yml"
+    - "assets/ymls/jp/sound/samples/sfx_mario.yml"
+    - "assets/ymls/jp/sound/samples/sfx_terrain.yml"
+    - "assets/ymls/jp/sound/samples/sfx_water.yml"
+  
 00:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 0
 01_terrain:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 1
 02_water:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 2
 03:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 3
 04:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 4
 05:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 5
 06:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 6
 07:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 7
 08_mario:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 8
 09:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 9
 0A_mario_peach:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 10
 0B:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 11
 0C:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 12
 0D:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 13
 0E:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 14
 0F:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 15
 10:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 16
 11:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 17
 12:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 18
 13:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 19
 14_piranha_music_box:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 20
 15:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 21
 16_course_start:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 22
 17:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 23
 18:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 24
 19:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 25
 1A:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 26
 1B:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 27
 1C_endless_stairs:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 28
 1D_bowser_organ:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 29
 1E:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 30
 1F:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 31
 20:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 32
 21:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 33
 22:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 34
 23:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 35
 24:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 36
 25:
-  type: BANK
+  type: NAUDIO:V0:BANK
   id: 37

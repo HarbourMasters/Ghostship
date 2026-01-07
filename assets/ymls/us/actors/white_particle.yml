@@ -3,7 +3,11 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "white_particle/geo.h"'
 
 white_particle_vertex:
   type: VTX
@@ -24,4 +28,3 @@ white_particle_dl:
   type: GFX
   offset: 0x2C8A0
   symbol: white_particle_dl
-

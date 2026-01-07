@@ -11,6 +11,7 @@ enum class ResourceType {
     SDialog = 0x53444C47,        // SDLG
     Dictionary = 0x44494354,     // DICT
     GeoLayout = 0x47454F20,      // GEO
+    GenericArray = 0x47415252,   // GARR
     Collision = 0x434F4C20,      // COL
     LevelScript = 0x4C564C53,    // LVLS
     MacroObject = 0x4D41434F,    // MACO
@@ -20,5 +21,6 @@ enum class ResourceType {
     PaintingData = 0x504E5444,   // PNTD
     Trajectory = 0x5452414A,     // TRAJ
     WaterDroplet = 0x57545244,   // WTRD
+    AssetArray = 0x41415252,   // AARR
 };
 } // namespace SOH

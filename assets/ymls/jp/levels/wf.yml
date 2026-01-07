@@ -3,7 +3,14 @@
   compression:
     offset: 0x494030
   segments:
-    - [0x07,  0x494030]
+    - [ 0x7, 0x494030 ]
+  external_files:
+    - "assets/ymls/jp/textures/grass.yml"
+  header:
+    header:
+      - '#include "wf/geo.h"'
+      - ''
+      - 'extern const LevelScript level_wf_entry[];'
 
 0:
   type: TEXTURE

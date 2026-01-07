@@ -3,7 +3,12 @@
   compression:
     offset: 0x139D10
   segments:
-    - [0x05,  0x139D10]
+    - [ 0x5, 0x139D10 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "manta/anims.h"'
+      - '#include "manta/geo.h"'
 
 manta_seg5_lights_05001758:
   type: LIGHTS
@@ -450,4 +455,3 @@ manta_seg5_dl_05006C08:
   type: GFX
   offset: 0x6C08
   symbol: manta_seg5_dl_05006C08
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
 
 door_seg3_collision_0301CE78:
   type: SM64:COLLISION
@@ -14,4 +14,3 @@ lll_hexagonal_mesh_seg3_collision_0301CECC:
   type: SM64:COLLISION
   offset: 0x1CECC
   symbol: lll_hexagonal_mesh_seg3_collision_0301CECC
-

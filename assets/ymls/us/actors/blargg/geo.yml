@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/blargg.yml"
   autopads: false
   segments:
-    - [0x0C,  0x134A70]
+    - [ 0xC, 0x134A70 ]
 
 blargg_geo:
   type: SM64:GEO_LAYOUT

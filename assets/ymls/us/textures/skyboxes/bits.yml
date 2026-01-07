@@ -3,7 +3,7 @@
   compression:
     offset: 0x30CEC0
   segments:
-    - [0x0A,  0x30CEC0]
+    - [ 0xA, 0x30CEC0 ]
 
 bits:
   type: BLOB

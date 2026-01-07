@@ -3,7 +3,7 @@
   compression:
     offset: 0x1E6210
   segments:
-    - [0x06,  0x1E6210]
+    - [ 0x6, 0x1E6210 ]
 
 scuttlebug_seg6_anim_0601504C:
   type: SM64:ANIM

@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/ttc.yml"
   autopads: false
   segments:
-    - [0x0E,  0x437400]
+    - [ 0xE, 0x437400 ]
 
 ttc_geo_000240:
   type: SM64:GEO_LAYOUT

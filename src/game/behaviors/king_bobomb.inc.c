@@ -20,7 +20,7 @@ void bhv_bobomb_anchor_mario_loop(void) {
 }
 
 void king_bobomb_act_0(void) {
-    if(!ROM_JP){
+    if(!ROM_JP) {
         o->oForwardVel = 0.0f;
         o->oVelY = 0.0f;
     }
@@ -211,7 +211,7 @@ void king_bobomb_act_7(void) {
         spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
         cur_obj_shake_screen(SHAKE_POS_SMALL);
 
-        if(ROM_JP){
+        if(ROM_JP) {
             o->oPosY += 100.0f;
             spawn_default_star(2000.0f, 4500.0f, -4500.0f);
         } else {

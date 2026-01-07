@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/spiny.yml"
   autopads: false
   segments:
-    - [0x0C,  0x186370]
+    - [ 0xC, 0x186370 ]
 
 spiny_geo:
   type: SM64:GEO_LAYOUT

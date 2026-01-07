@@ -3,7 +3,12 @@
   compression:
     offset: 0x1F0530
   segments:
-    - [0x08,  0x1F0530]
+    - [ 0x8, 0x1F0530 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "amp/anims.h"'
+      - '#include "amp/geo.h"'
 
 amp_electricity:
   type: TEXTURE
@@ -40,3 +45,67 @@ amp_mouth:
   offset: 0x2318
   format: RGBA16
   symbol: dAmpMouthTexture
+
+amp_electricity_vertices:
+  type: VTX
+  count: 5
+  offset: 0x2B18
+  symbol: dAmpElectricityVertices
+
+amp_electricity_sub_dl:
+  type: GFX
+  offset: 0x2B68
+  symbol: dAmpElectricitySubDl
+
+amp_electricity_dl:
+  type: GFX
+  offset: 0x2BA0
+  symbol: dAmpElectricityDl
+
+amp_eye_vertices:
+  type: VTX
+  count: 4
+  offset: 0x2C10
+  symbol: dAmpEyeVertices
+
+amp_eye_sub_dl:
+  type: GFX
+  offset: 0x2C50
+  symbol: dAmpEyeSubDl
+
+amp_eye_dl:
+  type: GFX
+  offset: 0x2C88
+  symbol: dAmpEyeDl
+
+amp_mouth_vertices:
+  type: VTX
+  count: 4
+  offset: 0x2CF8
+  symbol: dAmpMouthVertices
+
+amp_mouth_sub_dl:
+  type: GFX
+  offset: 0x2D38
+  symbol: dAmpMouthSubDl
+
+amp_mouth_dl:
+  type: GFX
+  offset: 0x2D70
+  symbol: dAmpMouthDl
+
+amp_body_vertices:
+  type: VTX
+  count: 4
+  offset: 0x2DE0
+  symbol: dAmpBodyVertices
+
+amp_body_sub_dl:
+  type: GFX
+  offset: 0x2E20
+  symbol: dAmpBodySubDl
+
+amp_body_dl:
+  type: GFX
+  offset: 0x2E58
+  symbol: dAmpBodyDl

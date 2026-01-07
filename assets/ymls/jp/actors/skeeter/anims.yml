@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B8010
   segments:
-    - [0x06,  0x1B8010]
+    - [ 0x6, 0x1B8010 ]
 
 skeeter_seg6_anim_06005D44:
   type: SM64:ANIM

@@ -444,16 +444,16 @@ void aADPCMdecImpl(uint8_t flags, ADPCM_STATE state) {
 }
 
 void aResampleImpl(uint8_t flags, uint16_t pitch, RESAMPLE_STATE state) {
-    int16_t tmp[32];
+    int16_t tmp[16] = {0};
     int16_t *in_initial = BUF_S16(rspa.in);
     int16_t *in = in_initial;
     int16_t *out = BUF_S16(rspa.out);
     int nbytes = ROUND_UP_16(rspa.nbytes);
-    uint32_t pitch_accumulator;
-    int i;
+    uint32_t pitch_accumulator = 0;
+    int i = 0;
 #if !HAS_SSE41 && !HAS_NEON
-    int16_t *tbl;
-    int32_t sample;
+    int16_t *tbl = NULL;
+    int32_t sample = 0;
 #endif
     if (flags & A_INIT) {
         memset(tmp, 0, 5 * sizeof(int16_t));

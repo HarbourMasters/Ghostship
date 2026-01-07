@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/castle_courtyard.yml"
   autopads: false
   segments:
-    - [0x0E,  0x4AF670]
+    - [ 0xE, 0x4AF670 ]
 
 castle_courtyard_geo_000200:
   type: SM64:GEO_LAYOUT

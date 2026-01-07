@@ -3,7 +3,12 @@
   compression:
     offset: 0x1F2200
   segments:
-    - [0x08,  0x1F2200]
+    - [ 0x8, 0x1F2200 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "flyguy/anims.h"'
+      - '#include "flyguy/geo.h"'
 
 flyguy_cloth_wrinkle:
   type: TEXTURE
@@ -265,4 +270,3 @@ flyguy_seg8_dl_08011710:
   type: GFX
   offset: 0x11710
   symbol: flyguy_seg8_dl_08011710
-

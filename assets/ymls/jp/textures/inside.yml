@@ -3,7 +3,7 @@
   compression:
     offset: 0x363F20
   segments:
-    - [0x09,  0x363F20]
+    - [ 0x9, 0x363F20 ]
 
 inside_castle_textures.00000:
   type: TEXTURE

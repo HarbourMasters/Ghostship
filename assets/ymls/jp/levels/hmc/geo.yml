@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/hmc.yml"
   autopads: false
   segments:
-    - [0x0E,  0x3E4A60]
+    - [ 0xE, 0x3E4A60 ]
 
 hmc_geo_000530:
   type: SM64:GEO_LAYOUT

@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/bitdw.yml"
   autopads: false
   segments:
-    - [0x0E,  0x45BF60]
+    - [ 0xE, 0x45BF60 ]
 
 geo_bitdw_0003C0:
   type: SM64:GEO_LAYOUT

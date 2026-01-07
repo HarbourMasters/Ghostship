@@ -3,7 +3,7 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
 
 sand_seg3_vertex_0302BA90:
   type: VTX
@@ -24,4 +24,3 @@ sand_seg3_dl_0302BCD0:
   type: GFX
   offset: 0x2BCD0
   symbol: sand_seg3_dl_0302BCD0
-

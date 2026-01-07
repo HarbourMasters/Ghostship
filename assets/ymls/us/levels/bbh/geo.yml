@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/bbh.yml"
   autopads: false
   segments:
-    - [0x0E,  0x3828C0]
+    - [ 0xE, 0x3828C0 ]
 
 geo_bbh_0005B0:
   type: SM64:GEO_LAYOUT

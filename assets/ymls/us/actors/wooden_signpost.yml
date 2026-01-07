@@ -3,7 +3,11 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "wooden_signpost/geo.h"'
 
 wooden_signpost_seg3_lights_0302C940:
   type: LIGHTS
@@ -88,4 +92,3 @@ wooden_signpost_seg3_collision_0302DD80:
   type: SM64:COLLISION
   offset: 0x2DD80
   symbol: wooden_signpost_seg3_collision_0302DD80
-

@@ -61,7 +61,7 @@ void dorrie_act_lower_head(void) {
     if (cur_obj_init_anim_check_frame(2, 35)) {
         cur_obj_reverse_animation();
 
-        if(ROM_JP){
+        if(ROM_JP) {
             if (o->oTimer > 150) {
                 dorrie_begin_head_raise(FALSE);
             } else if (gMarioObject->platform == o) {

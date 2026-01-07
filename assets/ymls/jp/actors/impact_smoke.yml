@@ -3,7 +3,11 @@
   compression:
     offset: 0x186810
   segments:
-    - [0x06,  0x186810]
+    - [ 0x6, 0x186810 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "impact_smoke/geo.h"'
 
 impact_smoke_0:
   type: TEXTURE
@@ -86,4 +90,3 @@ impact_smoke_seg6_dl_06062D18:
   type: GFX
   offset: 0x62D18
   symbol: impact_smoke_seg6_dl_06062D18
-

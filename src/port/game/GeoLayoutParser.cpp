@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include "port/Engine.h"
 #include <libultraship.h>
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "engine/geo_layout.h"
@@ -11,36 +12,164 @@ extern "C" {
 
 // Function Table
 #include "menu/intro_geo.h"
+#include "game/object_helpers.h"
+#include "game/behavior_actions.h"
+#include "game/mario_misc.h"
+#include "game/camera.h"
+#include "game/mario_actions_cutscene.h"
+#include "game/level_geo.h"
+#include "game/moving_texture.h"
+#include "game/screen_transition.h"
+#include "game/paintings.h"
+#include "game/geo_misc.h"
+#include "menu/star_select.h"
+#include "menu/file_select.h"
 }
-Ship::BinaryReader* GeoLayoutParser::mReader;
-Ship::BinaryReader* GeoLayoutParser::mLoadedReader;
+Ship::BinaryReader* GeoLayoutParser::mReader = nullptr;
 
 typedef void (*GeoCommandFunction)();
 #undef cur_geo_cmd_ptr
 
-std::unordered_map<uint32_t, GraphNodeFunc> mUSFunctionTable = {
-    { 0x8016F670, geo_intro_super_mario_64_logo },
-    { 0x8016f984, geo_intro_tm_copyright },
-    { 0x8016fe70, geo_intro_regular_backdrop },
-    { 0x8016fffc, geo_intro_gameover_backdrop }
+struct GraphNodeEntry {
+    const char* name;
+    GraphNodeFunc function;
 };
 
-std::unordered_map<uint32_t, GraphNodeFunc> mJPFunctionTable = {};
+#define FUNC(f) GraphNodeEntry { #f, reinterpret_cast<GraphNodeFunc>(f) }
 
-std::unordered_map<uint32_t, std::unordered_map<uint32_t, GraphNodeFunc>> mFunctionTable = {
+std::unordered_map<uint32_t, GraphNodeEntry> mUSFunctionTable = {
+    { 0x8016f670, FUNC(geo_intro_super_mario_64_logo) },
+    { 0x8016f984, FUNC(geo_intro_tm_copyright) },
+    { 0x8016fe70, FUNC(geo_intro_regular_backdrop) },
+    { 0x8016fffc, FUNC(geo_intro_gameover_backdrop) },
+    { 0x80257198, FUNC(geo_switch_peach_eyes) },
+    { 0x802761d0, FUNC(geo_envfx_main) },
+    { 0x802763d4, FUNC(geo_skybox_main) },
+    { 0x802764b0, FUNC(geo_draw_mario_head_goddard) },
+    { 0x802770a4, FUNC(geo_mirror_mario_set_alpha) },
+    { 0x80277150, FUNC(geo_switch_mario_stand_run) },
+    { 0x802771bc, FUNC(geo_switch_mario_eyes) },
+    { 0x80277294, FUNC(geo_mario_tilt_torso) },
+    { 0x802773a4, FUNC(geo_mario_head_rotation) },
+    { 0x802774f4, FUNC(geo_switch_mario_hand) },
+    { 0x802775cc, FUNC(geo_mario_hand_foot_scaler) },
+    { 0x802776d8, FUNC(geo_switch_mario_cap_effect) },
+    { 0x80277740, FUNC(geo_switch_mario_cap_on_off) },
+    { 0x80277824, FUNC(geo_mario_rotate_wing_cap_wings) },
+    { 0x8027795c, FUNC(geo_switch_mario_hand_grab_pos) },
+    { 0x80277b14, FUNC(geo_render_mirror_mario) },
+    { 0x80277d6c, FUNC(geo_mirror_mario_backface_culling) },
+    { 0x80287d30, FUNC(geo_camera_main) },
+    { 0x8029aa3c, FUNC(geo_camera_fov) },
+    { 0x8029d890, FUNC(geo_update_projectile_pos_from_parent) },
+    { 0x8029d924, FUNC(geo_update_layer_transparency) },
+    { 0x8029db48, FUNC(geo_switch_anim_state) },
+    { 0x8029dbd4, FUNC(geo_switch_area) },
+    { 0x802a45e4, FUNC(geo_offset_klepto_held_object) },
+    { 0x802a719c, FUNC(geo_update_held_mario_pos) },
+    { 0x802b1bb0, FUNC(geo_move_mario_part_from_parent) },
+    { 0x802b798c, FUNC(geo_update_body_rot_from_parent) },
+    { 0x802b7c64, FUNC(geo_switch_bowser_eyes) },
+    { 0x802b7d44, FUNC(geo_bits_bowser_coloring) },
+    { 0x802ba2b0, FUNC(geo_scale_bowser_key) },
+    { 0x802bfbac, FUNC(geo_switch_tuxie_mother_eyes) },
+    { 0x802cd1e8, FUNC(geo_cannon_circle_base) },
+    { 0x802d0080, FUNC(geo_wdw_set_initial_water_level) },
+    { 0x802d01e0, FUNC(geo_movtex_pause_control) },
+    { 0x802d104c, FUNC(geo_movtex_draw_water_regions) },
+    { 0x802d1b70, FUNC(geo_movtex_draw_nocolor) },
+    { 0x802d1cdc, FUNC(geo_movtex_draw_colored) },
+    { 0x802d1e48, FUNC(geo_movtex_draw_colored_no_update) },
+    { 0x802d1fa8, FUNC(geo_movtex_draw_colored_2_no_update) },
+    { 0x802d2108, FUNC(geo_movtex_update_horizontal) },
+    { 0x802d2360, FUNC(geo_exec_inside_castle_light) },
+    { 0x802d2470, FUNC(geo_exec_flying_carpet_timer_update) },
+    { 0x802d2520, FUNC(geo_exec_flying_carpet_create) },
+    { 0x802d28cc, FUNC(geo_exec_cake_end_screen) },
+    { 0x802d5b98, FUNC(geo_painting_draw) },
+    { 0x802d5d0c, FUNC(geo_painting_update) },
+    { 0x8030d93c, FUNC(geo_snufit_move_mask) },
+    { 0x8030d9ac, FUNC(geo_snufit_scale_body) },
+    { 0x80177518, FUNC(geo_act_selector_strings) },
+    { 0x80176688, FUNC(geo_file_select_strings_and_menu_cursor) },
+};
+
+std::unordered_map<uint32_t, GraphNodeEntry> mJPFunctionTable = {
+    { 0x8029d3cc, FUNC(geo_switch_anim_state) },
+    { 0x8029d194, FUNC(geo_update_layer_transparency) },
+    { 0x8029a320, FUNC(geo_camera_fov) },
+    { 0x80287748, FUNC(geo_camera_main) },
+    { 0x8016f5d0, FUNC(geo_intro_super_mario_64_logo) },
+    { 0x8016f8e4, FUNC(geo_intro_tm_copyright) },
+    { 0x8016fdd0, FUNC(geo_intro_regular_backdrop) },
+    { 0x8016ff5c, FUNC(geo_intro_gameover_backdrop) },
+    { 0x8029d458, FUNC(geo_switch_area) },
+    { 0x802d50b8, FUNC(geo_painting_draw) },
+    { 0x8029d100, FUNC(geo_update_projectile_pos_from_parent) },
+    { 0x802a6938, FUNC(geo_update_held_mario_pos) },
+    { 0x802a3e3c, FUNC(geo_offset_klepto_held_object) },
+    { 0x802bf1e0, FUNC(geo_switch_tuxie_mother_eyes) },
+    { 0x8030c83c, FUNC(geo_snufit_move_mask) },
+    { 0x8030c8ac, FUNC(geo_snufit_scale_body) },
+    { 0x802b7034, FUNC(geo_update_body_rot_from_parent) },
+    { 0x802b730c, FUNC(geo_switch_bowser_eyes) },
+    { 0x802b73ec, FUNC(geo_bits_bowser_coloring) },
+    { 0x80276df4, FUNC(geo_mario_head_rotation) },
+    { 0x80277190, FUNC(geo_switch_mario_cap_on_off) },
+    { 0x80276c0c, FUNC(geo_switch_mario_eyes) },
+    { 0x80277274, FUNC(geo_mario_rotate_wing_cap_wings) },
+    { 0x80276f44, FUNC(geo_switch_mario_hand) },
+    { 0x8027701c, FUNC(geo_mario_hand_foot_scaler) },
+    { 0x802773ac, FUNC(geo_switch_mario_hand_grab_pos) },
+    { 0x802b1310, FUNC(geo_move_mario_part_from_parent) },
+    { 0x80276ce4, FUNC(geo_mario_tilt_torso) },
+    { 0x80277128, FUNC(geo_switch_mario_cap_effect) },
+    { 0x802777bc, FUNC(geo_mirror_mario_backface_culling) },
+    { 0x80276af4, FUNC(geo_mirror_mario_set_alpha) },
+    { 0x80276ba0, FUNC(geo_switch_mario_stand_run) },
+    { 0x802b9958, FUNC(geo_scale_bowser_key) },
+    { 0x80256f20, FUNC(geo_switch_peach_eyes) },
+    { 0x80275e24, FUNC(geo_skybox_main) },
+    { 0x802cf700, FUNC(geo_movtex_pause_control) },
+    { 0x802d056c, FUNC(geo_movtex_draw_water_regions) },
+    { 0x80275c20, FUNC(geo_envfx_main) },
+    { 0x802cc708, FUNC(geo_cannon_circle_base) },
+    { 0x802d1090, FUNC(geo_movtex_draw_nocolor) },
+    { 0x802d14c8, FUNC(geo_movtex_draw_colored_2_no_update) },
+    { 0x802d1628, FUNC(geo_movtex_update_horizontal) },
+    { 0x802d11fc, FUNC(geo_movtex_draw_colored) },
+    { 0x80275f00, FUNC(geo_draw_mario_head_goddard) },
+    { 0x802d522c, FUNC(geo_painting_update) },
+    { 0x802d1368, FUNC(geo_movtex_draw_colored_no_update) },
+    { 0x802d1a40, FUNC(geo_exec_flying_carpet_create) },
+    { 0x802d1990, FUNC(geo_exec_flying_carpet_timer_update) },
+    { 0x802d1dec, FUNC(geo_exec_cake_end_screen) },
+    { 0x802cf5a0, FUNC(geo_wdw_set_initial_water_level) },
+    { 0x802d1880, FUNC(geo_exec_inside_castle_light) },
+    { 0x80277564, FUNC(geo_render_mirror_mario) },
+    { 0x801773D8, FUNC(geo_act_selector_strings) },
+    { 0x8017654C, FUNC(geo_file_select_strings_and_menu_cursor) },
+};
+
+std::unordered_map<uint32_t, std::unordered_map<uint32_t, GraphNodeEntry>> mFunctionTable = {
     { 0xFF2B5A63, mUSFunctionTable },
-    { 0xE3DAA4E0, mJPFunctionTable }
+    { 0xE3DAA4E, mJPFunctionTable }
 };
 
-GraphNodeFunc GetFunctionByAddr(const uint32_t addr) {
-    auto table = mFunctionTable[GameEngine::Instance->GetGameVersion()];
+GraphNodeFunc GetFunctionByAddr(const uint32_t addr, std::string opcode) {
+    const auto version = GameEngine::Instance->GetGameVersion();
+    auto table = mFunctionTable[version];
 
-    if(!table.contains(addr)) {
-        SPDLOG_ERROR("Function table does not contain address: 0x{:X}", addr);
+    if(addr == 0){
         return nullptr;
     }
 
-    return table[addr];
+    if(!table.contains(addr)) {
+        SPDLOG_ERROR("Function table does not contain address: 0x{:X} on {}", addr, opcode);
+        return nullptr;
+    }
+
+    return table[addr].function;
 }
 
 void ReadVec3f(Vec3f dst) {
@@ -67,20 +196,32 @@ void ReadVec3sAngle(Vec3s dst) {
     dst[2] = (GeoLayoutParser::mReader->ReadInt16() << 15) / 180;
 }
 
+uint64_t ReadSafeCrc() {
+    const auto crc = GeoLayoutParser::mReader->ReadUInt64();
+    if (crc != 0) {
+        const auto name = ResourceGetNameByCrc(crc);
+        SPDLOG_TRACE("CRC: {:X} Name: {}", crc, name);
+    } else {
+        SPDLOG_TRACE("Found NULL CRC");
+    }
+    return crc;
+}
 
 void process_cmd_branch_and_link() {
-    const auto crc = GeoLayoutParser::mReader->ReadUInt64();
+    const auto crc = ReadSafeCrc();
 
     const auto data = static_cast<char*>(ResourceGetDataByCrc(crc));
     const auto size = ResourceGetSizeByCrc(crc);
-    GeoLayoutParser::mReader = new Ship::BinaryReader(data, size);
 
-    gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mLoadedReader);
+    gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mReader);
     gGeoLayoutStack[gGeoLayoutStackIndex++] = (gCurGraphNodeIndex << 16) + gGeoLayoutReturnIndex;
     gGeoLayoutReturnIndex = gGeoLayoutStackIndex;
+    GeoLayoutParser::mReader = new Ship::BinaryReader(data, size);
 }
 
 void process_cmd_end() {
+    delete GeoLayoutParser::mReader;
+
     gGeoLayoutStackIndex = gGeoLayoutReturnIndex;
     gGeoLayoutReturnIndex = gGeoLayoutStack[--gGeoLayoutStackIndex] & 0xFFFF;
     gCurGraphNodeIndex = gGeoLayoutStack[gGeoLayoutStackIndex] >> 16;
@@ -89,22 +230,26 @@ void process_cmd_end() {
 
 void process_cmd_branch() {
     const auto param = GeoLayoutParser::mReader->ReadUByte();
-    const auto crc = GeoLayoutParser::mReader->ReadUInt32();
+    const auto crc = ReadSafeCrc();
 
+    const auto name = ResourceGetNameByCrc(crc);
     const auto data = static_cast<char*>(ResourceGetDataByCrc(crc));
     const auto size = ResourceGetSizeByCrc(crc);
 
     if (param == 1) {
-        gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mLoadedReader);
-        GeoLayoutParser::mReader = new Ship::BinaryReader(data, size);
+        gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mReader);
+        SPDLOG_INFO("Branching and returning to {}:{}", name, gGeoLayoutStackIndex);
     } else {
-        GeoLayoutParser::mLoadedReader = new Ship::BinaryReader(data, size);
-        GeoLayoutParser::mReader = GeoLayoutParser::mLoadedReader;
+        delete GeoLayoutParser::mReader;
     }
+
+    GeoLayoutParser::mReader = new Ship::BinaryReader(data, size);
 }
 
 void process_cmd_return() {
+    delete GeoLayoutParser::mReader;
     GeoLayoutParser::mReader = reinterpret_cast<Ship::BinaryReader*>(gGeoLayoutStack[--gGeoLayoutStackIndex]);
+    SPDLOG_INFO("Returning to {}", gGeoLayoutStackIndex);
 }
 
 void process_cmd_open_node() {
@@ -182,10 +327,10 @@ void process_cmd_node_perspective() {
 
     if (param != 0) {
         const auto func = GeoLayoutParser::mReader->ReadUInt32();
-        frustumFunc = GetFunctionByAddr(func);
+        frustumFunc = GetFunctionByAddr(func, "NODE_PERSPECTIVE");
     }
 
-    GraphNodePerspective* graphNode = init_graph_node_perspective(gGraphNodePool, nullptr, fov, _near, _far, frustumFunc, 0);
+    GraphNodePerspective* graphNode = init_graph_node_perspective(gGraphNodePool, nullptr, (f32) fov, _near, _far, frustumFunc, 0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 }
@@ -195,7 +340,9 @@ void process_cmd_node_start() {
     register_scene_graph_node(&graphNode->node);
 }
 
-void process_cmd_nop3() {}
+void process_cmd_nop3() {
+    int bp = 0;
+}
 
 void process_cmd_node_master_list() {
     const auto enable = GeoLayoutParser::mReader->ReadUByte();
@@ -222,17 +369,16 @@ void process_cmd_node_switch_case() {
         init_graph_node_switch_case(gGraphNodePool, nullptr,
                                     cs, // case which is initially selected
                                     0,
-                                    GetFunctionByAddr(func), // case update function
+                                    GetFunctionByAddr(func, "NODE_SWITCH_CASE"), // case update function
                                     0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 }
 
 void process_cmd_node_camera() {
-
     Vec3f pos, focus;
 
-    const auto type = GeoLayoutParser::mReader->ReadUInt16();
+    const auto type = GeoLayoutParser::mReader->ReadInt16();
 
     ReadVec3f(pos);
     ReadVec3f(focus);
@@ -240,7 +386,7 @@ void process_cmd_node_camera() {
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
     GraphNodeCamera* graphNode = init_graph_node_camera(gGraphNodePool, nullptr, pos, focus,
-                                        GetFunctionByAddr(addr), type);
+                                        GetFunctionByAddr(addr, "NODE_CAMERA"), type);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 
@@ -276,7 +422,7 @@ void process_cmd_node_translation_rotation() {
     }
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -299,7 +445,7 @@ void process_cmd_node_translation() {
     ReadVec3s(translation);
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
         SPDLOG_INFO("Current Offset {}", GeoLayoutParser::mReader->GetBaseAddress());
     }
@@ -320,7 +466,7 @@ void process_cmd_node_rotation() {
     ReadVec3sAngle(rotation);
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -331,13 +477,13 @@ void process_cmd_node_rotation() {
 }
 
 void process_cmd_node_scale() {
+    s16 drawingLayer = 0;
     const auto params = GeoLayoutParser::mReader->ReadUByte();
     const auto scale = GeoLayoutParser::mReader->ReadUInt32() / 65536.0f;
-    s16 drawingLayer = 0;
     void *displayList = nullptr;
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -354,7 +500,8 @@ void process_cmd_node_animated_part() {
 
     ReadVec3s(translation);
 
-    void* displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+    uint64_t crc = ReadSafeCrc();
+    void* displayList = crc == 0 ? nullptr : ResourceGetDataByCrc(crc);
 
     GraphNodeAnimatedPart* graphNode =
         init_graph_node_animated_part(gGraphNodePool, nullptr, drawingLayer, displayList, translation);
@@ -371,7 +518,7 @@ void process_cmd_node_billboard() {
     ReadVec3s(translation);
 
     if (params & 0x80) {
-        displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+        displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
     }
 
@@ -382,7 +529,7 @@ void process_cmd_node_billboard() {
 
 void process_cmd_node_display_list() {
     const auto drawingLayer = GeoLayoutParser::mReader->ReadUByte();
-    void *displayList = ResourceGetDataByCrc(GeoLayoutParser::mReader->ReadUInt64());
+    void *displayList = ResourceGetDataByCrc(ReadSafeCrc());
 
     GraphNodeDisplayList* graphNode = init_graph_node_display_list(gGraphNodePool, nullptr, drawingLayer, displayList);
 
@@ -410,7 +557,7 @@ void process_cmd_node_generated() {
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
     GraphNodeGenerated* graphNode = init_graph_node_generated(gGraphNodePool, nullptr,
-                                          GetFunctionByAddr(addr), // asm function
+                                          GetFunctionByAddr(addr, "NODE_ASM"), // asm function
                                           param);                  // parameter
 
     register_scene_graph_node(&graphNode->fnNode.node);
@@ -423,7 +570,7 @@ void process_cmd_node_background() {
     GraphNodeBackground* graphNode = init_graph_node_background(
         gGraphNodePool, nullptr,
         param, // background ID, or RGBA5551 color if asm function is null
-        GetFunctionByAddr(addr), // asm function
+        GetFunctionByAddr(addr, "NODE_BACKGROUND"), // asm function
         0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
@@ -461,7 +608,7 @@ void process_cmd_node_held_obj() {
     GraphNodeHeldObject *graphNode = init_graph_node_held_object(
         gGraphNodePool, nullptr, nullptr,
         offset,
-        GetFunctionByAddr(addr),
+        GetFunctionByAddr(addr, "NODE_HELD_OBJ"),
         player
     );
 
@@ -515,15 +662,20 @@ void GeoLayoutParser::execute(const char* path) {
     const auto data = static_cast<char*>(ResourceGetDataByName(path));
     const auto size = ResourceGetSizeByName(path);
 
-    mLoadedReader = new Ship::BinaryReader(data, size);
-    mReader = mLoadedReader;
+    mReader = new Ship::BinaryReader(data, size);
 
     while (mReader != nullptr) {
         const auto cmdId = mReader->ReadUByte();
+        FrameInterpolation_RecordOpenChild("GeoLayout Command", cmdId);
         GeoLayoutFunctionTable[cmdId]();
+        FrameInterpolation_RecordCloseChild();
     }
+
+    delete mReader;
+    mReader = nullptr; 
 }
 
 extern "C" void GeoLayoutExecute(char const* path) {
+    SPDLOG_TRACE("Executing GeoLayout: {}", path);
     GeoLayoutParser::execute(path);
 }

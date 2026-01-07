@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/ddd.yml"
   autopads: false
   segments:
-    - [0x0E,  0x495A60]
+    - [ 0xE, 0x495A60 ]
 
 ddd_geo_000450:
   type: SM64:GEO_LAYOUT

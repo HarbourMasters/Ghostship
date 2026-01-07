@@ -3,7 +3,11 @@
   compression:
     offset: 0x1E7EE0
   segments:
-    - [0x06,  0x1E7EE0]
+    - [ 0x6, 0x1E7EE0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mr_i_iris/geo.h"'
 
 mr_i_iris_seg6_vertex_06002130:
   type: VTX
@@ -71,4 +75,3 @@ mr_i_iris_seg6_dl_06004220:
   type: GFX
   offset: 0x4220
   symbol: mr_i_iris_seg6_dl_06004220
-

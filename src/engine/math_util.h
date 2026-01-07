@@ -28,6 +28,10 @@ extern f32 gSineTable[];
 
 #define sqr(x) ((x) * (x))
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void *vec3f_copy(Vec3f dest, Vec3f src);
 void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z);
 void *vec3f_add(Vec3f dest, Vec3f a);
@@ -66,5 +70,9 @@ f32 atan2f(f32 a, f32 b);
 void spline_get_weights(Vec4f result, f32 t, UNUSED s32 c);
 void anim_spline_init(Vec4s *keyFrames);
 s32 anim_spline_poll(Vec3f result);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // MATH_UTIL_H

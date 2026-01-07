@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/eyerok.yml"
   autopads: false
   segments:
-    - [0x0C,  0x151B70]
+    - [ 0xC, 0x151B70 ]
 
 eyerok_geo_0002AC:
   type: SM64:GEO_LAYOUT

@@ -3,7 +3,7 @@
   compression:
     offset: 0x1D8310
   segments:
-    - [0x06,  0x1D8310]
+    - [ 0x6, 0x1D8310 ]
 
 toad_seg6_anim_06008F7C:
   type: SM64:ANIM

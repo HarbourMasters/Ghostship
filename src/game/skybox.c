@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "area.h"
 #include "engine/math_util.h"
 #include "geo_misc.h"
@@ -50,17 +51,17 @@ struct Skybox {
     /// The camera's pitch, which is bounded by +-16384, which maps to -90 to 90 degrees
     s16 pitch;
     /// The skybox's X position in world space
-    s32 scaledX;
+    f32 scaledX;
     /// The skybox's Y position in world space
-    s32 scaledY;
+    f32 scaledY;
 
     /// The index of the upper-left tile in the 3x3 grid that gets drawn
     s32 upperLeftTile;
 };
 
 struct Skybox sSkyBoxInfo[2];
-static uint8_t** gSkyboxTiles;
-static s8 gLastSkybox;
+static uint8_t** gSkyboxTiles = NULL;
+static s8 gLastSkybox = -1;
 
 static const char* gSkyboxTextures[] = {
     gSkyboxWater, gSkyboxBitfs, gSkyboxWdw, gSkyboxCloudFloor, gSkyboxCcm,
@@ -120,16 +121,16 @@ u8 sSkyboxColors[][3] = {
  *                 (how far is the camera rotated from 0, scaled 0 to 1)   *
  *                 (the screen width)
  */
-s32 calculate_skybox_scaled_x(s8 player, f32 fov) {
+f32 calculate_skybox_scaled_x(s8 player, f32 fov) {
     f32 yaw = sSkyBoxInfo[player].yaw;
 
     //! double literals are used instead of floats
     f32 yawScaled = SCREEN_WIDTH * 360.0 * yaw / (fov * 65536.0);
     // Round the scaled yaw. Since yaw is a u16, it doesn't need to check for < 0
-    s32 scaledX = yawScaled + 0.5;
+    f32 scaledX = yawScaled;
 
     if (scaledX > SKYBOX_WIDTH) {
-        scaledX -= scaledX / SKYBOX_WIDTH * SKYBOX_WIDTH;
+        scaledX -= (s32) scaledX / SKYBOX_WIDTH * SKYBOX_WIDTH;
     }
     return SKYBOX_WIDTH - scaledX;
 }
@@ -140,17 +141,16 @@ s32 calculate_skybox_scaled_x(s8 player, f32 fov) {
  * fov may have been used in an earlier version, but the developers changed the function to always use
  * 90 degrees.
  */
-s32 calculate_skybox_scaled_y(s8 player, UNUSED f32 fov) {
+f32 calculate_skybox_scaled_y(s8 player, UNUSED f32 fov) {
     // Convert pitch to degrees. Pitch is bounded between -90 (looking down) and 90 (looking up).
     f32 pitchInDegrees = (f32) sSkyBoxInfo[player].pitch * 360.0 / 65535.0;
 
     // Scale by 360 / fov
     f32 degreesToScale = 360.0f * pitchInDegrees / 90.0;
-    s32 roundedY = round_float(degreesToScale);
 
     // Since pitch can be negative, and the tile grid starts 1 octant above the camera's focus, add
     // 5 octants to the y position
-    s32 scaledY = roundedY + 5 * SKYBOX_TILE_HEIGHT;
+    f32 scaledY = degreesToScale + 5 * SKYBOX_TILE_HEIGHT;
 
     if (scaledY > SKYBOX_HEIGHT) {
         scaledY = SKYBOX_HEIGHT;
@@ -180,8 +180,8 @@ static s32 get_top_left_tile_idx(s8 player) {
  */
 Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
     Vtx *verts = alloc_display_list(4 * sizeof(*verts));
-    s16 x = tileIndex % SKYBOX_COLS * SKYBOX_TILE_WIDTH;
-    s16 y = SKYBOX_HEIGHT - tileIndex / SKYBOX_COLS * SKYBOX_TILE_HEIGHT;
+    s16 x = (tileIndex % SKYBOX_COLS) * SKYBOX_TILE_WIDTH;
+    s16 y = SKYBOX_HEIGHT - (tileIndex / SKYBOX_COLS) * SKYBOX_TILE_HEIGHT;
 
     if (verts != NULL) {
         make_vertex(verts, 0, x, y, -1, 0, 0, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
@@ -215,7 +215,7 @@ void* CalculateDataOffset(void* data, int x, int y, size_t blobSize) {
     // Calculate the total offset in bytes within the data bin
     uint32_t totalOffset = (chunkOffset * (CHUNK_WIDTH * CHUNK_HEIGHT * BYTES_PER_PIXEL) + chunkDataOffset);
 
-    if(totalOffset + 2048 > blobSize) {
+    if(totalOffset + 4096 > blobSize) {
         totalOffset = 0;
     }
 
@@ -234,9 +234,18 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
     s32 row;
     s32 col;
 
+    void* data = ResourceGetDataByName(gSkyboxTextures[background]);
+    size_t blobSize = ResourceGetSizeByName(gSkyboxTextures[background]);
+
     for (row = 0; row < 3; row++) {
         for (col = 0; col < 3; col++) {
-            s32 tileIndex = sSkyBoxInfo[player].upperLeftTile + row * SKYBOX_COLS + col;
+            s32 tileRow = (sSkyBoxInfo[player].upperLeftTile / SKYBOX_COLS) + row;
+            s32 tileCol = (sSkyBoxInfo[player].upperLeftTile % SKYBOX_COLS) + col;
+            
+            // Wrap horizontally
+            tileCol %= SKYBOX_COLS;
+
+            s32 tileIndex = (tileRow * SKYBOX_COLS) + tileCol;
 
             // Calculate the column and row of the tile in the whole skybox image
             int32_t skyboxCol = tileIndex % SKYBOX_COLS;
@@ -245,20 +254,14 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
             // Calculate the x and y coordinates within the skybox image
             int32_t x = skyboxCol * CHUNK_WIDTH;
             int32_t y = skyboxRow * CHUNK_HEIGHT;
-
+        
             if(x >= 256){
                 y -= CHUNK_HEIGHT;
             }
 
-            void* data = ResourceGetDataByName(gSkyboxTextures[background]);
-            size_t blobSize = ResourceGetSizeByName(gSkyboxTextures[background]);
+            assert((tileIndex >= 0 && tileIndex <= 80) && "Panic");
 
             uint8_t* texture = gSkyboxTiles[tileIndex];
-
-            if(texture == NULL){
-                gSkyboxTiles[tileIndex] = malloc(2048);
-                texture = gSkyboxTiles[tileIndex];
-            }
 
             // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
             memcpy(texture, CalculateDataOffset(data, x, y, blobSize), 2048);
@@ -294,27 +297,36 @@ void *create_skybox_ortho_matrix(s8 player) {
     return mtx;
 }
 
+void skybox_init_tiles() {
+    if(gSkyboxTiles != NULL) {
+        return;
+    }
+
+    gSkyboxTiles = malloc(80 * sizeof(uint8_t*));
+    for (size_t idx = 0; idx < 80; idx++) {
+        gSkyboxTiles[idx] = malloc(4096);
+    }
+}
+
 /**
  * Creates the skybox's display list, then draws the 3x3 grid of tiles.
  */
 Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
-    s32 dlCommandCount = 10 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
+    s32 dlCommandCount = 20 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
     void *skybox = alloc_display_list(dlCommandCount * sizeof(Gfx));
     Gfx *dlist = skybox;
+
+    skybox_init_tiles();
 
     if (skybox == NULL) {
         return NULL;
     } else {
         Mtx *ortho = create_skybox_ortho_matrix(player);
-        if(gSkyboxTiles == NULL){
-            gSkyboxTiles = malloc(80 * sizeof(uint8_t*));
-            for (size_t idx = 0; idx < 80; idx++) {
-                gSkyboxTiles[idx] = NULL;
-            }
-            gLastSkybox = background;
-        } else if(gLastSkybox != background ){
+        if(gLastSkybox != background){
             for(size_t i = 0; i < 80; i++){
-                gSPInvalidateTexCache(dlist++, (uintptr_t) gSkyboxTiles[i]);
+                if (gSkyboxTiles[i] != NULL) {
+                   gSPInvalidateTexCache(dlist++, (uintptr_t) gSkyboxTiles[i]);
+                }
             }
             gLastSkybox = background;
         }

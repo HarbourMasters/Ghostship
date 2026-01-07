@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/bobomb.yml"
   autopads: false
   segments:
-    - [0x0F,  0x2008D0]
+    - [ 0xF, 0x2008D0 ]
 
 bowling_ball_geo:
   type: SM64:GEO_LAYOUT

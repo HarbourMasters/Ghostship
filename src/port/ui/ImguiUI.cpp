@@ -2,16 +2,24 @@
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
 #include "SaveEditor.h"
+#include "Notification.h"
 
 #include <spdlog/spdlog.h>
 #include <imgui.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui_internal.h>
 #include <libultraship/libultraship.h>
-#include <Fast3D/gfx_pc.h>
+#include <fast/interpreter.h>
 #include "port/Engine.h"
+
+#ifdef __SWITCH__
+#include <port/switch/SwitchImpl.h>
+#include <port/switch/SwitchPerformanceProfiles.h>
+#endif
+
 extern "C" {
 #include "audio/external.h"
+extern void handle_nmi_request(void);
 }
 
 namespace GameUI {
@@ -33,6 +41,15 @@ void SetupGuiElements() {
 
     mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
     gui->SetMenuBar(mGameMenuBar);
+
+    if (gui->GetMenuBar() && !gui->GetMenuBar()->IsVisible()) {
+#if defined(__SWITCH__) || defined(__WIIU__)
+    Notification::Emit({ .message = "Press - to access enhancements menu", .remainingTime = 10.0f });
+#else
+    Notification::Emit({ .message = "Press F1 to access enhancements menu", .remainingTime = 10.0f });
+#endif
+    }
+
     mStatsWindow = gui->GetGuiWindow("Stats");
     if (mStatsWindow == nullptr) {
         SPDLOG_ERROR("Could not find stats window");
@@ -120,7 +137,7 @@ void DrawSettingsMenu(){
             };
 
             ImGui::Text("Audio API (Needs reload)");
-            auto currentAudioBackend = Ship::Context::GetInstance()->GetAudio()->GetAudioBackend();
+            auto currentAudioBackend = Ship::Context::GetInstance()->GetAudio()->GetCurrentAudioBackend();
 
             if (Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
                 UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
@@ -129,7 +146,7 @@ void DrawSettingsMenu(){
                 for (uint8_t i = 0; i < Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size(); i++) {
                     auto backend = Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->data()[i];
                     if (ImGui::Selectable(audioBackendNames[backend], backend == currentAudioBackend)) {
-                        Ship::Context::GetInstance()->GetAudio()->SetAudioBackend(backend);
+                        Ship::Context::GetInstance()->GetAudio()->SetCurrentAudioBackend(backend);
                     }
                 }
                 ImGui::EndCombo();
@@ -189,7 +206,7 @@ void DrawSettingsMenu(){
         { // FPS Slider
             const int minFps = 30;
             static int maxFps;
-            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
                 maxFps = 360;
             } else {
                 maxFps = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
@@ -254,15 +271,15 @@ void DrawSettingsMenu(){
                 currentFps = 60;
             }
             CVarSetInteger("gInterpolationFPS", currentFps);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         #else
             bool matchingRefreshRate =
-                CVarGetInteger("gMatchRefreshRate", 0) && Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() != Ship::WindowBackend::DX11;
+                CVarGetInteger("gMatchRefreshRate", 0) && Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() != Ship::WindowBackend::FAST3D_DXGI_DX11;
             UIWidgets::CVarSliderInt((currentFps == 20) ? "FPS: Original (20)" : "FPS: %d", "gInterpolationFPS", minFps, maxFps, 1, {
                 .disabled = matchingRefreshRate
             });
         #endif
-            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
                 UIWidgets::Tooltip(
                     "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
                     "visual and does not impact game logic, execution of glitches etc.\n\n"
@@ -276,13 +293,13 @@ void DrawSettingsMenu(){
             }
         } // END FPS Slider
 
-        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
             UIWidgets::Spacer(0);
             if (ImGui::Button("Match Refresh Rate")) {
                 int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
                 if (hz >= 30 && hz <= 360) {
                     CVarSetInteger("gInterpolationFPS", hz);
-                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 }
             }
         } else {
@@ -291,7 +308,7 @@ void DrawSettingsMenu(){
 
         UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
 
-        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
             UIWidgets::PaddedEnhancementSliderInt(CVarGetInteger("gExtraLatencyThreshold", 80) == 0 ? "Jitter fix: Off" : "Jitter fix: >= %d FPS",
                                                   "##ExtraLatencyThreshold", "gExtraLatencyThreshold", 0, 360, "", 80, true, true, false);
             UIWidgets::Tooltip("When Interpolation FPS setting is at least this threshold, add one frame of input lag (e.g. 16.6 ms for 60 FPS) in order to avoid jitter. This setting allows the CPU to work on one frame while GPU works on the previous frame.\nThis setting should be used when your computer is too slow to do CPU + GPU work in time.");
@@ -301,17 +318,16 @@ void DrawSettingsMenu(){
 
 
         static std::unordered_map<Ship::WindowBackend, const char*> windowBackendNames = {
-                { Ship::WindowBackend::DX11, "DirectX" },
-                { Ship::WindowBackend::SDL_OPENGL, "OpenGL"},
-                { Ship::WindowBackend::SDL_METAL, "Metal" },
-                { Ship::WindowBackend::GX2, "GX2"}
+                { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
+                { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL"},
+                { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
         };
 
         ImGui::Text("Renderer API (Needs reload)");
         Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
         Ship::WindowBackend configWindowBackend;
         int configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-        if (configWindowBackendId != -1 && configWindowBackendId < static_cast<int>(Ship::WindowBackend::BACKEND_COUNT)) {
+        if (configWindowBackendId != -1 && configWindowBackendId < static_cast<int>(Ship::WindowBackend::WINDOW_BACKEND_COUNT)) {
             configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
         } else {
             configWindowBackend = runningWindowBackend;
@@ -399,15 +415,13 @@ void DrawGameMenu() {
             std::reinterpret_pointer_cast<Ship::ConsoleWindow>(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Console"))->Dispatch("reset");
         }
 #if !defined(__SWITCH__) && !defined(__WIIU__)
-
         if (UIWidgets::MenuItem("Toggle Fullscreen", "F9")) {
             Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen();
         }
-
+#endif
         if (UIWidgets::MenuItem("Quit")) {
             Ship::Context::GetInstance()->GetWindow()->Close();
         }
-#endif
         ImGui::EndMenu();
     }
 }
@@ -431,6 +445,14 @@ void DrawEnhancementsMenu() {
             ImGui::EndMenu();
         }
 
+        if (UIWidgets::BeginMenu("Fixes")) {
+            UIWidgets::CVarCheckbox("Fix Koopa race music", "gFixKoopaRaceMusic", {
+                .tooltip = "Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island"
+            });
+
+            ImGui::EndMenu();
+        }
+
         ImGui::EndMenu();
     }
 }
@@ -445,16 +467,27 @@ void DrawCheatsMenu() {
 }
 
 const char* debugInfoPages[6] = {
-        "Object",
-        "Check Surface",
-        "Map",
-        "Stage",
-        "Effect",
-        "Enemy",
+    "Object",
+    "Check Surface",
+    "Map",
+    "Stage",
+    "Effect",
+    "Enemy",
+};
+
+static const char* logLevels[] = {
+    "trace", "debug", "info", "warn", "error", "critical", "off",
 };
 
 void DrawDebugMenu() {
     if (UIWidgets::BeginMenu("Developer")) {
+        if (UIWidgets::CVarCombobox("Log Level", "gDeveloperTools.LogLevel", logLevels, {
+            .tooltip = "The log level determines which messages are printed to the "
+                        "console. This does not affect the log file output",
+            .defaultIndex = 1,
+        })) {
+            Ship::Context::GetInstance()->GetLogger()->set_level((spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
+        }
         UIWidgets::WindowButton("Gfx Debugger", "gGfxDebuggerEnabled", GameUI::mGfxDebuggerWindow, {
             .tooltip = "Enables the Gfx Debugger window, allowing you to input commands, type help for some examples"
         });
@@ -462,6 +495,12 @@ void DrawDebugMenu() {
         UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
             .tooltip = "Various debug features, including a level selector from the main menu"
         });
+
+#ifdef USE_GBI_TRACE
+        UIWidgets::CVarCheckbox("GFX trace mode", "gEnableGFXTrace", {
+            .tooltip = "Enables the Gfx trace mode, which will output information about the Gfx commands being run"
+        });
+#endif
 
         UIWidgets::CVarCheckbox("Better Level Select", "gDeveloper.BetterLevelSelect", {
             .tooltip = "Tweaks to the level select screen, like naming and allowing C-buttons to be used"

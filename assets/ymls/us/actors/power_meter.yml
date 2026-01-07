@@ -3,7 +3,12 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "amp/anims.h"'
+      - '#include "amp/geo.h"'
 
 power_meter_left_side:
   type: TEXTURE
@@ -95,6 +100,14 @@ power_meter_one_segment:
   format: RGBA16
   symbol: texture_power_meter_one_segments
 
+power_meter_health_segments_lut:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 8
+  offset: 0x293E0
+  symbol: power_meter_health_segments_lut
+
 vertex_power_meter_base:
   type: VTX
   count: 8
@@ -121,4 +134,3 @@ dl_power_meter_health_segments_end:
   type: GFX
   offset: 0x295A0
   symbol: dl_power_meter_health_segments_end
-

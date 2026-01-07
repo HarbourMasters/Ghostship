@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/vcutm.yml"
   autopads: false
   segments:
-    - [0x0E,  0x461220]
+    - [ 0xE, 0x461220 ]
 
 vcutm_geo_0001F0:
   type: SM64:GEO_LAYOUT

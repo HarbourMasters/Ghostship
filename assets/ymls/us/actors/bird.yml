@@ -3,7 +3,12 @@
   compression:
     offset: 0x16D870
   segments:
-    - [0x05,  0x16D870]
+    - [ 0x5, 0x16D870 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bird/anims.h"'
+      - '#include "bird/geo.h"'
 
 birds_seg5_lights_05000000:
   type: LIGHTS
@@ -102,4 +107,3 @@ birds_seg5_dl_05000670:
   type: GFX
   offset: 0x670
   symbol: birds_seg5_dl_05000670
-

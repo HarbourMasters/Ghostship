@@ -3,7 +3,7 @@
   compression:
     offset: 0x1F2200
   segments:
-    - [0x08,  0x1F2200]
+    - [ 0x8, 0x1F2200 ]
 
 amp_animation:
   type: SM64:ANIM

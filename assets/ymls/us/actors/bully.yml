@@ -3,7 +3,12 @@
   compression:
     offset: 0x132C60
   segments:
-    - [0x05,  0x132C60]
+    - [ 0x5, 0x132C60 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bully/anims.h"'
+      - '#include "bully/geo.h"'
 
 bully_seg5_vertex_05000000:
   type: VTX
@@ -169,10 +174,11 @@ bully_seg5_dl_050037A0:
   offset: 0x37A0
   symbol: bully_seg5_dl_050037A0
 
-bully_seg5_dl_05003838:
-  type: GFX
-  offset: 0x3838
-  symbol: bully_seg5_dl_05003838
+# This is pretty much broken and unused
+# bully_seg5_dl_05003838:
+#   type: GFX
+#   offset: 0x3838
+#   symbol: bully_seg5_dl_05003838
 
 bully_seg5_dl_05003878:
   type: GFX
@@ -248,4 +254,3 @@ bully_seg5_dl_05003FC8:
   type: GFX
   offset: 0x3FC8
   symbol: bully_seg5_dl_05003FC8
-
