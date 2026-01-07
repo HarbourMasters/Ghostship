@@ -75,18 +75,12 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     if (std::filesystem::exists(main_path)) {
         archiveFiles.push_back(main_path);
     } else {
-        if (ShowYesNoBox("Starship - Asset Extraction", "Please provide a Starfox 64 ROM.\n\nSupported Versions:\nUS 1.0\nUS 1.1\n\nAssets will be extracted into an O2R file.") == IDYES) {
+        if (ShowYesNoBox("Ghostship - Asset Extraction", "Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\nAssets will be extracted into an O2R file.") == IDYES) {
             if(!GenAssetFile()){
                 ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
                 exit(1);
             } else {
                 archiveFiles.push_back(main_path);
-            }
-
-            if (ShowYesNoBox("Extraction Complete", "ROM Extracted. Extract another?\n\n Starship supports JP and EU ROMs for voice replacement.\n Voice replacement ROM assets can also be installed in:\n Settings->Language->Install JP/EU Audio") == IDYES) {
-                if(!GenAssetFile()){
-                    ShowMessage("Error", "An error occured, no O2R file was generated.");
-                }
             }
         } else {
             exit(1);
