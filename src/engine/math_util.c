@@ -185,7 +185,7 @@ void mtxf_identity(Mat4 mtx) {
  */
 void mtxf_translate(Mat4 dest, Vec3f b) {
     // TODO: FrameInterpolation is broken, fix it
-    // FrameInterpolation_RecordMatrixTranslate(dest, b);
+    FrameInterpolation_RecordMatrixTranslate(dest, b);
     mtxf_identity(dest);
     dest[3][0] = b[0];
     dest[3][1] = b[1];

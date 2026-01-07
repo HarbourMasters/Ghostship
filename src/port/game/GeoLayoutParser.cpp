@@ -288,6 +288,12 @@ void process_cmd_update_node_flags() {
     }
 }
 
+uint64_t generate_uuid64() {
+    uint64_t high = rand();
+    uint64_t low = rand();
+    return (high << 32) | low;
+}
+
 void process_cmd_node_root() {
     gGeoNumViews = GeoLayoutParser::mReader->ReadInt16() + 2;
     const auto x = GeoLayoutParser::mReader->ReadInt16();
@@ -299,6 +305,7 @@ void process_cmd_node_root() {
 
     gGeoViews = static_cast<GraphNode**>(alloc_only_pool_alloc(gGraphNodePool, gGeoNumViews * sizeof(GraphNode *)));
 
+    graphNode->nodeId = generate_uuid64();
     graphNode->views = gGeoViews;
     graphNode->numViews = gGeoNumViews;
 
