@@ -94,7 +94,7 @@ Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUS
 
             objectGraphNode->oAnimState = 1;
 
-            if(ROM_JP){
+            if(ROM_JP) {
                 if (currentGraphNode->parameter == 10) {
                     if (gDebugInfo[DEBUG_PAGE_ENEMYINFO][3]) {
                         gDPSetAlphaCompare(dlHead++, G_AC_DITHER);
@@ -706,25 +706,25 @@ void cur_obj_scale(f32 scale) {
 }
 
 void cur_obj_init_animation(s32 animIndex) {
-    struct Animation **anims = o->oAnimations;
+    struct Animation **anims = LOAD_ASSET(o->oAnimations);
     geo_obj_init_animation(&o->header.gfx, &anims[animIndex]);
 }
 
 void cur_obj_init_animation_with_sound(s32 animIndex) {
-    struct Animation **anims = o->oAnimations;
+    struct Animation **anims = LOAD_ASSET(o->oAnimations);
     geo_obj_init_animation(&o->header.gfx, &anims[animIndex]);
     o->oSoundStateID = animIndex;
 }
 
 void cur_obj_init_animation_with_accel_and_sound(s32 animIndex, f32 accel) {
-    struct Animation **anims = o->oAnimations;
+    struct Animation **anims = LOAD_ASSET(o->oAnimations);
     s32 animAccel = (s32)(accel * 65536.0f);
     geo_obj_init_animation_accel(&o->header.gfx, &anims[animIndex], animAccel);
     o->oSoundStateID = animIndex;
 }
 
 void obj_init_animation_with_sound(struct Object *obj, const struct Animation * const* animations, s32 animIndex) {
-    struct Animation **anims = (struct Animation **)animations;
+    struct Animation **anims = (struct Animation **)LOAD_ASSET(animations);
     obj->oAnimations = (struct Animation **)animations;
     geo_obj_init_animation(&obj->header.gfx, &anims[animIndex]);
     obj->oSoundStateID = animIndex;
@@ -1536,7 +1536,6 @@ void cur_obj_set_pos_to_home(void) {
     o->oPosX = o->oHomeX;
     o->oPosY = o->oHomeY;
     o->oPosZ = o->oHomeZ;
-    o->header.gfx.skipInterpolationTimestamp = gGlobalTimer;
 }
 
 void cur_obj_set_pos_to_home_and_stop(void) {
@@ -1740,7 +1739,7 @@ static void cur_obj_update_floor(void) {
 }
 
 static void cur_obj_update_floor_and_resolve_wall_collisions(s16 steepSlopeDegrees) {
-    if(ROM_JP){
+    if(ROM_JP) {
         o->oMoveFlags &= ~OBJ_MOVE_ABOVE_LAVA;
     } else {
         o->oMoveFlags &= ~(OBJ_MOVE_ABOVE_LAVA | OBJ_MOVE_ABOVE_DEATH_BARRIER);

@@ -3,7 +3,11 @@
   compression:
     offset: 0x133120
   segments:
-    - [0x05,  0x133120]
+    - [ 0x5, 0x133120 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "water_bubble/geo.h"'
 
 water_bubble_seg5_lights_0500FE68:
   type: LIGHTS
@@ -71,4 +75,3 @@ water_bubble_seg5_dl_05011000:
   type: GFX
   offset: 0x11000
   symbol: water_bubble_seg5_dl_05011000
-

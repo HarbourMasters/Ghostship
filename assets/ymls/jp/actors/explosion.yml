@@ -3,7 +3,11 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "explosion/geo.h"'
 
 explosion_seg3_vertex_030009C8:
   type: VTX
@@ -113,4 +117,3 @@ explosion_seg3_dl_03004328:
   type: GFX
   offset: 0x4328
   symbol: explosion_seg3_dl_03004328
-

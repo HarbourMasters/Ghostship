@@ -111,7 +111,7 @@ void bhv_coin_loop(void) {
     }
 
     if (o->oMoveFlags & OBJ_MOVE_BOUNCE) {
-        if (!ROM_JP && o->oCoinUnk1B0 < 5) {
+        if (ROM_JP || o->oCoinUnk1B0 < 5) {
             cur_obj_play_sound_2(SOUND_GENERAL_COIN_DROP);
         }
         o->oCoinUnk1B0++;

@@ -3,7 +3,11 @@
   compression:
     offset: 0x1B8010
   segments:
-    - [0x06,  0x1B8010]
+    - [ 0x6, 0x1B8010 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "treasure_chest/geo.h"'
 
 treasure_chest_seg6_lights_06013F90:
   type: LIGHTS
@@ -187,4 +191,3 @@ treasure_chest_seg6_dl_060178C0:
   type: GFX
   offset: 0x178C0
   symbol: treasure_chest_seg6_dl_060178C0
-

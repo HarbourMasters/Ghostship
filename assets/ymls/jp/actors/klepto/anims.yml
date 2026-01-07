@@ -3,7 +3,7 @@
   compression:
     offset: 0x144290
   segments:
-    - [0x05,  0x144290]
+    - [ 0x5, 0x144290 ]
 
 klepto_seg5_anim_05005E44:
   type: SM64:ANIM

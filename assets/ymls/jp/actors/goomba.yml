@@ -3,7 +3,12 @@
   compression:
     offset: 0x1F0530
   segments:
-    - [0x08,  0x1F0530]
+    - [ 0x8, 0x1F0530 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "goomba/geo.h"'
+      - '#include "goomba/anims.h"'
 
 goomba_lights_unused1:
   type: LIGHTS
@@ -331,4 +336,3 @@ goomba_seg8_dl_0801D760:
   type: GFX
   offset: 0x1D760
   symbol: goomba_seg8_dl_0801D760
-

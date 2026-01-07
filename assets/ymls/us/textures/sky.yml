@@ -3,7 +3,7 @@
   compression:
     offset: 0x33D710
   segments:
-    - [0x09,  0x33D710]
+    - [ 0x9, 0x33D710 ]
 
 rr_textures.00000:
   type: TEXTURE

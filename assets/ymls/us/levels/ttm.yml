@@ -3,7 +3,14 @@
   compression:
     offset: 0x4D1910
   segments:
-    - [0x07,  0x4D1910]
+    - [ 0x7, 0x4D1910 ]
+  external_files:
+    - "assets/ymls/us/textures/mountain.yml"
+  header:
+    header:
+      - '#include "ttm/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ttm_entry[];'
 
 0:
   type: TEXTURE
@@ -1999,10 +2006,41 @@ ttm_seg7_painting_dl_07012430:
   offset: 0x12430
   symbol: ttm_seg7_painting_dl_07012430
 
+ttm_seg7_painting_texture_map_bottom_07012450:
+  type: SM64:PAINTING_MAP
+  offset: 0x12450
+  symbol: ttm_seg7_painting_texture_map_bottom_07012450
+
+ttm_seg7_painting_top_0701296C:
+  type: SM64:PAINTING_MAP
+  offset: 0x1296C
+  symbol: ttm_seg7_painting_top_0701296C
+
+ttm_seg7_painting_texture_maps_07012E88:
+  type: ASSET_ARRAY
+  assetType: PaintingData
+  factoryType: SM64:PAINTING_MAP
+  count: 2
+  offset: 0x12E88
+  symbol: ttm_seg7_painting_texture_maps_07012E88
+
 ttm_seg7_painting_dl_07012E98:
   type: GFX
   offset: 0x12E98
   symbol: ttm_seg7_painting_dl_07012E98
+
+ttm_seg7_painting_textures_07012EF8:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 2
+  offset: 0x12EF8
+  symbol: ttm_seg7_painting_textures_07012EF8
+
+ttm_slide_painting:
+  type: SM64:PAINTING
+  offset: 0x12F00
+  symbol: ttm_slide_painting
 
 ttm_seg7_lights_07012F78:
   type: LIGHTS
@@ -2096,6 +2134,68 @@ ttm_seg7_trajectory_070170A0:
   type: SM64:TRAJECTORY
   offset: 0x170A0
   symbol: ttm_seg7_trajectory_070170A0
+
+ttm_movtex_puddle_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x17104
+  symbol: ttm_movtex_puddle_data
+
+ttm_movtex_puddle:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x17124
+  symbol: ttm_movtex_puddle
+
+ttm_movtex_tris_begin_waterfall:
+  type: SM64:MOVTEX
+  count: 6
+  has_color: false
+  offset: 0x17134
+  symbol: ttm_movtex_tris_begin_waterfall
+
+ttm_movtex_tris_begin_puddle_waterfall:
+  type: SM64:MOVTEX
+  count: 4
+  has_color: false
+  offset: 0x17174
+  symbol: ttm_movtex_tris_begin_puddle_waterfall
+
+ttm_movtex_tris_end_waterfall:
+  type: SM64:MOVTEX
+  count: 6
+  has_color: false
+  offset: 0x171A0
+  symbol: ttm_movtex_tris_end_waterfall
+
+ttm_movtex_tris_end_puddle_waterfall:
+  type: SM64:MOVTEX
+  count: 4
+  has_color: false
+  offset: 0x171E0
+  symbol: ttm_movtex_tris_end_puddle_waterfall
+
+ttm_movtex_tris_puddle_waterfall:
+  type: SM64:MOVTEX
+  count: 8
+  has_color: false
+  offset: 0x1720C
+  symbol: ttm_movtex_tris_puddle_waterfall
+
+ttm_dl_waterfall:
+  type: GFX
+  offset: 0x17260
+  symbol: ttm_dl_waterfall
+
+ttm_dl_bottom_waterfall:
+  type: GFX
+  offset: 0x17288
+  symbol: ttm_dl_bottom_waterfall
+
+ttm_dl_puddle_waterfall:
+  type: GFX
+  offset: 0x172A0
+  symbol: ttm_dl_puddle_waterfall
 
 ttm_seg7_lights_070172D8:
   type: LIGHTS
@@ -4276,96 +4376,3 @@ ttm_seg7_area_4_macro_objs:
   type: SM64:MACRO
   offset: 0x30418
   symbol: ttm_seg7_area_4_macro_objs
-
-ttm_seg7_painting_texture_map_bottom_07012450:
-  type: SM64:PAINTING_MAP
-  offset: 0x12450
-  symbol: ttm_seg7_painting_texture_map_bottom_07012450
-
-ttm_seg7_painting_top_0701296C:
-  type: SM64:PAINTING_MAP
-  offset: 0x1296C
-  symbol: ttm_seg7_painting_top_0701296C
-
-ttm_seg7_painting_texture_maps_07012E88:
-  type: ASSET_ARRAY
-  assetType: PaintingData
-  factoryType: SM64:PAINTING_MAP
-  count: 2
-  offset: 0x12E88
-  symbol: ttm_seg7_painting_texture_maps_07012E88
-
-ttm_seg7_painting_textures_07012EF8:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 2
-  offset: 0x12EF8
-  symbol: ttm_seg7_painting_textures_07012EF8
-
-ttm_slide_painting:
-  type: SM64:PAINTING
-  offset: 0x12F00
-  symbol: ttm_slide_painting
-
-ttm_movtex_puddle_data:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0x17104
-  symbol: ttm_movtex_puddle_data
-
-ttm_movtex_puddle:
-  type: SM64:MOVTEX_QUAD
-  count: 2
-  offset: 0x17124
-  symbol: ttm_movtex_puddle
-
-ttm_movtex_tris_begin_waterfall:
-  type: SM64:MOVTEX
-  count: 6
-  has_color: false
-  offset: 0x17134
-  symbol: ttm_movtex_tris_begin_waterfall
-
-ttm_movtex_tris_begin_puddle_waterfall:
-  type: SM64:MOVTEX
-  count: 4
-  has_color: false
-  offset: 0x17174
-  symbol: ttm_movtex_tris_begin_puddle_waterfall
-
-ttm_movtex_tris_end_waterfall:
-  type: SM64:MOVTEX
-  count: 6
-  has_color: false
-  offset: 0x171A0
-  symbol: ttm_movtex_tris_end_waterfall
-
-ttm_movtex_tris_end_puddle_waterfall:
-  type: SM64:MOVTEX
-  count: 4
-  has_color: false
-  offset: 0x171E0
-  symbol: ttm_movtex_tris_end_puddle_waterfall
-
-ttm_movtex_tris_puddle_waterfall:
-  type: SM64:MOVTEX
-  count: 8
-  has_color: false
-  offset: 0x1720C
-  symbol: ttm_movtex_tris_puddle_waterfall
-
-ttm_dl_waterfall:
-  type: GFX
-  offset: 0x17260
-  symbol: ttm_dl_waterfall
-
-ttm_dl_bottom_waterfall:
-  type: GFX
-  offset: 0x17288
-  symbol: ttm_dl_bottom_waterfall
-
-ttm_dl_puddle_waterfall:
-  type: GFX
-  offset: 0x172A0
-  symbol: ttm_dl_puddle_waterfall

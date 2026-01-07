@@ -3,7 +3,12 @@
   compression:
     offset: 0x15EA70
   segments:
-    - [0x05,  0x15EA70]
+    - [ 0x5, 0x15EA70 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "snowman/anims.h"'
+      - '#include "snowman/geo.h"'
 
 snowman_lights_unused1:
   type: LIGHTS
@@ -209,4 +214,3 @@ snowman_seg5_dl_0500CCE8:
   type: GFX
   offset: 0xCCE8
   symbol: snowman_seg5_dl_0500CCE8
-

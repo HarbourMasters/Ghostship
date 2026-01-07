@@ -3,7 +3,11 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "leaves/geo.h"'
 
 leaves_seg3_vertex_0301CBA0:
   type: VTX
@@ -24,4 +28,3 @@ leaves_seg3_dl_0301CDE0:
   type: GFX
   offset: 0x1CDE0
   symbol: leaves_seg3_dl_0301CDE0
-

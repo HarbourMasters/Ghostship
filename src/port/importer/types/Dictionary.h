@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include <unordered_map>
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 
 namespace SM64 {
 

@@ -3,7 +3,12 @@
   compression:
     offset: 0x13B910
   segments:
-    - [0x05,  0x13B910]
+    - [ 0x5, 0x13B910 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "sushi/anims.h"'
+      - '#include "sushi/geo.h"'
 
 sushi_snout:
   type: TEXTURE
@@ -165,4 +170,3 @@ sushi_seg5_dl_0500A990:
   type: GFX
   offset: 0xA990
   symbol: sushi_seg5_dl_0500A990
-

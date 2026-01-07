@@ -29,8 +29,9 @@
 #include "actors/group16.h"
 #include "actors/group17.h"
 
-#include "levels/menu/header.h"
-#include "levels/intro/header.h"
+#include "assets/levels/menu.h"
+#include "assets/levels/intro.h"
+#include "assets/levels/ending.h"
 
 #include "level_headers.h"
 
@@ -264,7 +265,7 @@ const LevelScript script_func_global_9[] = {
 
 const LevelScript script_func_global_10[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BOO,                     boo_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BETA_BOO_KEY,               small_key_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_BETA_BOO_KEY,            small_key_geo),
     LOAD_MODEL_FROM_GEO(MODEL_HAUNTED_CHAIR,           haunted_chair_geo),
     LOAD_MODEL_FROM_GEO(MODEL_MAD_PIANO,               mad_piano_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BOOKEND_PART,            bookend_part_geo),

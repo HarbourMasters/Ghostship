@@ -3,7 +3,12 @@
   compression:
     offset: 0x17EF80
   segments:
-    - [0x05,  0x17EF80]
+    - [ 0x5, 0x17EF80 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "lakitu_enemy/anims.h"'
+      - '#include "lakitu_enemy/geo.h"'
 
 lakitu_enemy_lights_unused1:
   type: LIGHTS
@@ -251,4 +256,3 @@ lakitu_enemy_seg5_dl_050138B0:
   type: GFX
   offset: 0x138B0
   symbol: lakitu_enemy_seg5_dl_050138B0
-

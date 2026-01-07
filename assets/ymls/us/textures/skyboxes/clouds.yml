@@ -3,7 +3,7 @@
   compression:
     offset: 0x2C73D0
   segments:
-    - [0x0A,  0x2C73D0]
+    - [ 0xA, 0x2C73D0 ]
 
 clouds:
   type: BLOB

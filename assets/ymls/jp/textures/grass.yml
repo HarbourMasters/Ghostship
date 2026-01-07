@@ -3,7 +3,7 @@
   compression:
     offset: 0x3558F0
   segments:
-    - [0x09,  0x3558F0]
+    - [ 0x9, 0x3558F0 ]
 
 wf_textures.00000:
   type: TEXTURE

@@ -3,10 +3,14 @@
   compression:
     offset: 0x163E50
   segments:
-    - [0x05,  0x163E50]
+    - [ 0x5, 0x163E50 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "springboard/geo.h"'
 
 springboard_seg5_lights_05000000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: springboard_seg5_lights_05000000
@@ -96,4 +100,3 @@ springboard_collision_05001A28:
   type: SM64:COLLISION
   offset: 0x1A28
   symbol: springboard_collision_05001A28
-

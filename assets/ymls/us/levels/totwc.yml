@@ -3,7 +3,14 @@
   compression:
     offset: 0x4BEC30
   segments:
-    - [0x07,  0x4BEC30]
+    - [ 0x7, 0x4BEC30 ]
+  external_files:
+    - "assets/ymls/us/textures/sky.yml"
+  header:
+    header:
+      - '#include "totwc/geo.h"'
+      - ''
+      - 'extern const LevelScript level_totwc_entry[];'
 
 0:
   type: TEXTURE

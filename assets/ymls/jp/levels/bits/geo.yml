@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/bits.yml"
   autopads: false
   segments:
-    - [0x0E,  0x475C20]
+    - [ 0xE, 0x475C20 ]
 
 bits_geo_000430:
   type: SM64:GEO_LAYOUT

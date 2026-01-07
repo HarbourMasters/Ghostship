@@ -338,7 +338,7 @@ s32 act_holding_bowser(struct MarioState *m) {
 
     if (m->input & INPUT_B_PRESSED) {
 
-        if(!ROM_JP){
+        if(!ROM_JP) {
             if (m->angleVel[1] <= -0xE00 || m->angleVel[1] >= 0xE00) {
                 play_sound(SOUND_MARIO_SO_LONGA_BOWSER, m->marioObj->header.gfx.cameraToObject);
             } else {

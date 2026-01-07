@@ -21,9 +21,6 @@ static s16 sTTCTreadmillSpeeds[] = {
     /* TTC_SPEED_STOPPED */ 0,
 };
 
-extern s16 ttc_movtex_tris_big_surface_treadmill[];
-extern s16 ttc_movtex_tris_small_surface_treadmill[];
-
 void bhv_ttc_treadmill_init(void) {
     o->collisionData = segmented_to_virtual(sTTCTreadmillCollisionModels[o->oBehParams2ndByte & 0x01]);
 

@@ -3,7 +3,14 @@
   compression:
     offset: 0x42AF80
   segments:
-    - [0x07,  0x42AF80]
+    - [ 0x7, 0x42AF80 ]
+  external_files:
+    - "assets/ymls/jp/textures/machine.yml"
+  header:
+    header:
+      - '#include "ttc/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ttc_entry[];'
 
 0:
   type: TEXTURE
@@ -1926,6 +1933,12 @@ ttc_seg7_macro_objs:
   offset: 0x15B24
   symbol: ttc_seg7_macro_objs
 
+ttc_lights_surface_treadmill:
+  type: LIGHTS
+  size: 24
+  offset: 0x15F78
+  symbol: ttc_lights_surface_treadmill
+
 2:
   type: TEXTURE
   size: 2048
@@ -1934,12 +1947,6 @@ ttc_seg7_macro_objs:
   offset: 0x15F90
   format: RGBA16
   symbol: ttc_yellow_triangle
-
-ttc_lights_surface_treadmill:
-  type: LIGHTS
-  size: 24
-  offset: 0x15F78
-  symbol: ttc_lights_surface_treadmill
 
 ttc_dl_surface_treadmill_begin:
   type: GFX

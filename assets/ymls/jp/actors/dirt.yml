@@ -3,7 +3,11 @@
   compression:
     offset: 0x1FF740
   segments:
-    - [0x03,  0x1FF740]
+    - [ 0x3, 0x1FF740 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "dirt/geo.h"'
 
 dirt_seg3_lights_0302BD68:
   type: LIGHTS
@@ -132,4 +136,3 @@ dirt_seg3_dl_0302C458:
   type: GFX
   offset: 0x2C458
   symbol: dirt_seg3_dl_0302C458
-

@@ -3,22 +3,27 @@
   compression:
     offset: 0x16BC70
   segments:
-    - [0x05,  0x16BC70]
+    - [ 0x5, 0x16BC70 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bird/anims.h"'
+      - '#include "bird/geo.h"'
 
 birds_seg5_lights_05000000:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x0
   symbol: birds_seg5_lights_05000000
 
 birds_seg5_lights_05000018:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x18
   symbol: birds_seg5_lights_05000018
 
 birds_seg5_lights_05000030:
-  type: LIGHTS
+  type: BLOB
   size: 24
   offset: 0x30
   symbol: birds_seg5_lights_05000030
@@ -102,4 +107,3 @@ birds_seg5_dl_05000670:
   type: GFX
   offset: 0x670
   symbol: birds_seg5_dl_05000670
-

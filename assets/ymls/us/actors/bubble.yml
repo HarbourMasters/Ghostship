@@ -3,7 +3,11 @@
   compression:
     offset: 0x114750
   segments:
-    - [0x04,  0x114750]
+    - [ 0x4, 0x114750 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bubble/geo.h"'
 
 bubble_seg4_vertex_0401CD20:
   type: VTX
@@ -38,4 +42,3 @@ bubble_seg4_dl_0401DDE0:
   type: GFX
   offset: 0x1DDE0
   symbol: bubble_seg4_dl_0401DDE0
-

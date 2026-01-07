@@ -3,7 +3,7 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
 
 door_seg3_anim_03015208:
   type: SM64:ANIM

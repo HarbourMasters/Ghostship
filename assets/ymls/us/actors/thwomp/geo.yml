@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/thwomp.yml"
   autopads: false
   segments:
-    - [0x0C,  0x132850]
+    - [ 0xC, 0x132850 ]
 
 thwomp_geo:
   type: SM64:GEO_LAYOUT

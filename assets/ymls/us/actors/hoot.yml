@@ -3,7 +3,12 @@
   compression:
     offset: 0x12A7E0
   segments:
-    - [0x05,  0x12A7E0]
+    - [ 0x5, 0x12A7E0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "hoot/anims.h"'
+      - '#include "hoot/geo.h"'
 
 hoot_seg5_lights_05000900:
   type: LIGHTS
@@ -517,4 +522,3 @@ hoot_seg5_dl_05004D48:
   type: GFX
   offset: 0x4D48
   symbol: hoot_seg5_dl_05004D48
-

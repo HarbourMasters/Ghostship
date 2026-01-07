@@ -7,9 +7,9 @@
 #include "area.h"
 #include "engine/math_util.h"
 #include "level_update.h"
-#include "levels/castle_inside/header.h"
-#include "levels/ending/header.h"
-#include "levels/rr/header.h"
+#include "assets/levels/castle_inside.h"
+#include "assets/levels/ending.h"
+#include "assets/levels/rr.h"
 #include "mario.h"
 #include "mario_actions_cutscene.h"
 #include "memory.h"
@@ -29,7 +29,6 @@
  */
 
 #define NUM_FLYING_CARPET_VERTICES 21
-extern const s16 flying_carpet_static_vertex_data[NUM_FLYING_CARPET_VERTICES];
 
 static s16 sCurAreaTimer = 1;
 static s16 sPrevAreaTimer = 0;
@@ -132,11 +131,12 @@ Gfx *geo_exec_flying_carpet_timer_update(s32 callContext, UNUSED struct GraphNod
  * Create a display list for a flying carpet with dynamic ripples.
  */
 Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUSED f32 mtx[4][4]) {
-    s16 n, row, col, x, y, z, tx, ty;
+    f32 x, y, z;
+    s16 n, row, col, tx, ty;
     Vtx *verts;
     struct GraphNodeGenerated *generatedNode = (struct GraphNodeGenerated *) node;
 
-    s16 *sp64 = segmented_to_virtual(&flying_carpet_static_vertex_data);
+    s16 *sp64 = segmented_to_virtual(flying_carpet_static_vertex_data);
     Gfx *displayList = NULL;
     Gfx *displayListHead = NULL;
     struct Object *curGraphNodeObject;
@@ -157,7 +157,7 @@ Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUS
             col = n % 3;
 
             x = sp64[n * 4 + 0];
-            y = round_float(sins(sFlyingCarpetRippleTimer + (row << 12) + (col << 14)) * 20.0);
+            y = sins(sFlyingCarpetRippleTimer + (row << 12) + (col << 14)) * 20.0f;
             z = sp64[n * 4 + 1];
             tx = sp64[n * 4 + 2];
             ty = sp64[n * 4 + 3];
@@ -201,12 +201,8 @@ Gfx *geo_exec_cake_end_screen(s32 callContext, struct GraphNode *node, UNUSED f3
     Gfx *displayList = NULL;
     Gfx *displayListHead = NULL;
 
-    if(gCakeSlices == NULL){
-        gCakeSlices = malloc((12 * 4) * sizeof(char*));
-    }
-
     if (callContext == GEO_CONTEXT_RENDER) {
-        displayList = alloc_display_list(64 * sizeof(*displayList));
+        displayList = alloc_display_list(3 * sizeof(*displayList));
         displayListHead = displayList;
 
         generatedNode->fnNode.node.flags = (generatedNode->fnNode.node.flags & 0xFF) | 0x100;
@@ -228,33 +224,7 @@ Gfx *geo_exec_cake_end_screen(s32 callContext, struct GraphNode *node, UNUSED f3
                 break;
         }
 #else
-        Gfx* cake = alloc_display_list(512 * sizeof(*cake));
-        Gfx *cakeHead = cake;
-        gDPPipeSync(cakeHead++);
-        gDPSetCombineMode(cakeHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-        gDPSetRenderMode(cakeHead++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
-        gSPTexture(cakeHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-
-        uintptr_t data = (uintptr_t) ResourceGetDataByName(gCakeImage);
-        s32 size = 80 * 20 * 2;
-        for (int i = 0; i < 4 * 12; i++) {
-            if (!gCakeSlices[i]) {
-                gCakeSlices[i] = malloc(size);
-                memcpy(gCakeSlices[i], (const void *) (data + i * 3200), size);
-            }
-            gDPLoadTextureBlock(cakeHead++, gCakeSlices[i], G_IM_FMT_RGBA, G_IM_SIZ_16b, 80, 20, 0, G_TX_CLAMP, G_TX_CLAMP, 7, 6, G_TX_NOLOD, G_TX_NOLOD);
-            gSPVertex(cakeHead++, cake_end_vertex_positions[i], 4, 0);
-            gSP2Triangles(cakeHead++, 0, 1, 2, 0x0, 0, 2, 3, 0x0);
-        }
-
-        gDPPipeSync(cakeHead++);
-        gSPTexture(cakeHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF);
-        gSPSetGeometryMode(cakeHead++, G_LIGHTING);
-        gDPSetCombineMode(cakeHead++, G_CC_SHADE, G_CC_SHADE);
-        gDPSetRenderMode(cakeHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        gSPEndDisplayList(cakeHead++);
-
-        gSPDisplayList(displayListHead++, cake);
+        gSPDisplayList(displayListHead++, dl_cake_end_screen);
 #endif
         gSPEndDisplayList(displayListHead);
     }

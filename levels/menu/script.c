@@ -16,7 +16,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/menu/header.h"
+#include "assets/levels/menu.h"
 
 const LevelScript level_main_menu_entry_1[] = {
     INIT_LEVEL(),

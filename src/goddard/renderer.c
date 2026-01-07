@@ -19,6 +19,7 @@
 #include "skin.h"
 #include "types.h"
 #include "sm64.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 #define MAX_GD_DLS 1000
 #define OS_MESG_SI_COMPLETE 0x33333333
@@ -1274,9 +1275,13 @@ Gfx *gdm_gettestdl(s32 id) {
         case GD_SCENE_REGULAR_MARIO:
         case GD_SCENE_DIZZY_MARIO:
             setup_timers();
+            FrameInterpolation_RecordOpenChild("Mario Head DL", 1);
             update_view_and_dl(sMSceneView);
+            FrameInterpolation_RecordCloseChild();
             if (sHandView != NULL) {
+                FrameInterpolation_RecordOpenChild("Mario Hand DL", 1);
                 update_view_and_dl(sHandView);
+                FrameInterpolation_RecordCloseChild();
             }
             sCurrentGdDl = sMHeadMainDls[gGdFrameBufNum];
             gSPEndDisplayList(next_gfx());
@@ -1666,6 +1671,8 @@ void mat4_to_mtx(Mat4f *src, Mtx *dst) {
         }
     }
 #else
+    // TODO: Interpolation is broken on goddard
+    // FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)src, dst);
     guMtxF2L(*src, dst);
 #endif
 }
@@ -1749,7 +1756,6 @@ void gd_dl_scale(f32 x, f32 y, f32 z) {
 /* 24DA94 -> 24DAE8 */
 void func_8019F2C4(f32 arg0, s8 arg1) {
     Mat4f mtx; // 18
-
     gd_set_identity_mat4(&mtx);
     gd_absrot_mat4(&mtx, arg1 - 120, -arg0);
     gd_dl_mul_matrix(&mtx);

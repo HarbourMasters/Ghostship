@@ -32,26 +32,26 @@
 #include "actors/group15.h"
 #include "actors/group16.h"
 #include "actors/group17.h"
-#include "levels/bbh/header.h"
-#include "levels/castle_inside/header.h"
-#include "levels/hmc/header.h"
-#include "levels/ssl/header.h"
-#include "levels/bob/header.h"
-#include "levels/sl/header.h"
-#include "levels/wdw/header.h"
-#include "levels/jrb/header.h"
-#include "levels/thi/header.h"
-#include "levels/ttc/header.h"
-#include "levels/rr/header.h"
-#include "levels/castle_grounds/header.h"
-#include "levels/bitdw/header.h"
-#include "levels/lll/header.h"
-#include "levels/sa/header.h"
-#include "levels/bitfs/header.h"
-#include "levels/ddd/header.h"
-#include "levels/wf/header.h"
-#include "levels/bowser_2/header.h"
-#include "levels/ttm/header.h"
+#include "assets/levels/bbh.h"
+#include "assets/levels/castle_inside.h"
+#include "assets/levels/hmc.h"
+#include "assets/levels/ssl.h"
+#include "assets/levels/bob.h"
+#include "assets/levels/sl.h"
+#include "assets/levels/wdw.h"
+#include "assets/levels/jrb.h"
+#include "assets/levels/thi.h"
+#include "assets/levels/ttc.h"
+#include "assets/levels/rr.h"
+#include "assets/levels/castle_grounds.h"
+#include "assets/levels/bitdw.h"
+#include "assets/levels/lll.h"
+#include "assets/levels/sa.h"
+#include "assets/levels/bitfs.h"
+#include "assets/levels/ddd.h"
+#include "assets/levels/wf.h"
+#include "assets/levels/bowser_2.h"
+#include "assets/levels/ttm.h"
 
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
@@ -2198,7 +2198,7 @@ const BehaviorScript bhvDddWarp[] = {
 const BehaviorScript bhvMoatGrills[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    LOAD_COLLISION_DATA(castle_grounds_seg7_collision_moat_grills),
+    LOAD_COLLISION_DATA(castle_grounds_seg7_moat_grills),
     SET_FLOAT(oCollisionDistance, 30000),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_moat_grills_loop),
@@ -4495,7 +4495,7 @@ const BehaviorScript bhvSandSoundLoop[] = {
 const BehaviorScript bhvHiddenAt120Stars[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    LOAD_COLLISION_DATA(castle_grounds_seg7_collision_cannon_grill),
+    LOAD_COLLISION_DATA(castle_grounds_seg7_cannon_grill),
     SET_FLOAT(oCollisionDistance, 4000),
     CALL_NATIVE(bhv_castle_cannon_grate_init),
     BEGIN_LOOP(),

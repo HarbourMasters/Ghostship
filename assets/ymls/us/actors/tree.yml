@@ -3,7 +3,11 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "tree/geo.h"'
 
 tree_seg3_lights_0302DE10:
   type: LIGHTS
@@ -126,4 +130,3 @@ tree_seg3_dl_03033258:
   type: GFX
   offset: 0x33258
   symbol: tree_seg3_dl_03033258
-

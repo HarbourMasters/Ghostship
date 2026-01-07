@@ -3,7 +3,7 @@
   compression:
     offset: 0x351960
   segments:
-    - [0x09,  0x351960]
+    - [ 0x9, 0x351960 ]
 
 ttm_textures.00000:
   type: TEXTURE

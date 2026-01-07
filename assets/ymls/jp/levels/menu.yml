@@ -3,7 +3,14 @@
   compression:
     offset: 0x2A4730
   segments:
-    - [0x07,  0x2A4730]
+    - [ 0x7, 0x2A4730 ]
+  header:
+    header:
+      - '#include "menu/geo.h"'
+      - ''
+      - 'extern const LevelScript level_menu_entry[];'
+      - 'extern const LevelScript level_main_menu_entry_1[];'
+      - 'extern const LevelScript level_main_menu_entry_2[];'
 
 main_menu_seg7.00018:
   type: TEXTURE
@@ -40,6 +47,51 @@ main_menu_seg7.02018:
   offset: 0x2018
   format: RGBA16
   symbol: texture_menu_mario_new
+
+dl_tex_block_menu_save_button_base:
+  type: GFX
+  offset: 0x3158
+  symbol: dl_tex_block_menu_save_button_base
+
+dl_vertex_menu_save_button_borders:
+  type: GFX
+  offset: 0x31A0
+  symbol: dl_vertex_menu_save_button_borders
+
+dl_vertex_menu_save_button_front:
+  type: GFX
+  offset: 0x3218
+  symbol: dl_vertex_menu_save_button_front
+
+dl_tex_block_menu_save_button_back:
+  type: GFX
+  offset: 0x3298
+  symbol: dl_tex_block_menu_save_button_back
+
+dl_vertex_menu_save_button_back:
+  type: GFX
+  offset: 0x32E0
+  symbol: dl_vertex_menu_save_button_back
+
+dl_menu_mario_save_button_base:
+  type: GFX
+  offset: 0x3330
+  symbol: dl_menu_mario_save_button_base
+
+dl_menu_mario_new_button_base:
+  type: GFX
+  offset: 0x3380
+  symbol: dl_menu_mario_new_button_base
+
+dl_menu_save_button_back:
+  type: GFX
+  offset: 0x33D0
+  symbol: dl_menu_save_button_back
+
+dl_menu_save_button_fade_back:
+  type: GFX
+  offset: 0x3400
+  symbol: dl_menu_save_button_fade_back
 
 main_menu_seg7.03468:
   type: TEXTURE
@@ -86,6 +138,51 @@ main_menu_seg7.05468:
   format: RGBA16
   symbol: texture_menu_sound
 
+dl_vertex_menu_main_button:
+  type: GFX
+  offset: 0x6038
+  symbol: dl_vertex_menu_main_button
+
+dl_tex_block_menu_main_button:
+  type: GFX
+  offset: 0x6150
+  symbol: dl_tex_block_menu_main_button
+
+dl_menu_main_button:
+  type: GFX
+  offset: 0x6198
+  symbol: dl_menu_main_button
+
+dl_menu_erase_button:
+  type: GFX
+  offset: 0x61C8
+  symbol: dl_menu_erase_button
+
+dl_menu_copy_button:
+  type: GFX
+  offset: 0x61F8
+  symbol: dl_menu_copy_button
+
+dl_menu_file_button:
+  type: GFX
+  offset: 0x6228
+  symbol: dl_menu_file_button
+
+dl_menu_score_button:
+  type: GFX
+  offset: 0x6258
+  symbol: dl_menu_score_button
+
+dl_menu_sound_button:
+  type: GFX
+  offset: 0x6288
+  symbol: dl_menu_sound_button
+
+dl_menu_generic_button:
+  type: GFX
+  offset: 0x62B8
+  symbol: dl_menu_generic_button
+
 main_menu_seg7.06328:
   type: TEXTURE
   size: 2048
@@ -103,6 +200,21 @@ main_menu_seg7.06B28:
   offset: 0x6B28
   format: RGBA16
   symbol: texture_menu_grabbing_hand
+
+dl_menu_hand:
+  type: GFX
+  offset: 0x7328
+  symbol: dl_menu_hand
+
+dl_menu_idle_hand:
+  type: GFX
+  offset: 0x73A0
+  symbol: dl_menu_idle_hand
+
+dl_menu_grabbing_hand:
+  type: GFX
+  offset: 0x73B8
+  symbol: dl_menu_grabbing_hand
 
 main_menu_seg7.073D0:
   type: TEXTURE
@@ -355,6 +467,14 @@ main_menu_seg7.0A9D0:
   offset: 0xA9D0
   format: RGBA16
   symbol: texture_menu_hud_char_kana_dakuten_do
+
+menu_hud_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0xABD0
+  count: 28
+  symbol: menu_hud_lut
 
 main_menu_seg7.0AC48:
   type: TEXTURE
@@ -1535,6 +1655,24 @@ main_menu_seg7.0CCC8:
   format: IA8
   symbol: texture_menu_font_char_jp_exclamation
 
+menu_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0xCD08
+  count: 256
+  symbol: menu_font_lut
+
+dl_menu_ia8_text_begin:
+  type: GFX
+  offset: 0xD108
+  symbol: dl_menu_ia8_text_begin
+
+dl_menu_ia8_text_end:
+  type: GFX
+  offset: 0xD160
+  symbol: dl_menu_ia8_text_end
+
 main_menu_seg7.0D1A8:
   type: TEXTURE
   size: 4096
@@ -1552,3 +1690,13 @@ main_menu_seg7.0E1A8:
   offset: 0xE1A8
   format: RGBA16
   symbol: texture_menu_course_lower
+
+dl_menu_rgba16_wood_course:
+  type: GFX
+  offset: 0xF228
+  symbol: dl_menu_rgba16_wood_course
+
+main_menu_seg7_collision:
+  type: SM64:COLLISION
+  offset: 0xF2F8
+  symbol: main_menu_seg7_collision

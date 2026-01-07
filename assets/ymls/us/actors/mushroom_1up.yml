@@ -3,7 +3,11 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "mushroom_1up/geo.h"'
 
 mushroom_1up_seg3_vertex_030295E8:
   type: VTX
@@ -29,4 +33,3 @@ mushroom_1up_seg3_dl_0302A660:
   type: GFX
   offset: 0x2A660
   symbol: mushroom_1up_seg3_dl_0302A660
-

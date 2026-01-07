@@ -3,7 +3,7 @@
   compression:
     offset: 0x17EF80
   segments:
-    - [0x05,  0x17EF80]
+    - [ 0x5, 0x17EF80 ]
 
 wiggler_seg5_anim_0500C760:
   type: SM64:ANIM

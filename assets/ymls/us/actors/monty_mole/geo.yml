@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/monty_mole.yml"
   autopads: false
   segments:
-    - [0x0C,  0x1602E0]
+    - [ 0xC, 0x1602E0 ]
 
 monty_mole_geo:
   type: SM64:GEO_LAYOUT

@@ -3,7 +3,7 @@
   compression:
     offset: 0x1C4230
   segments:
-    - [0x06,  0x1C4230]
+    - [ 0x6, 0x1C4230 ]
 
 whomp_seg6_anim_060202DC:
   type: SM64:ANIM

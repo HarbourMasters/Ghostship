@@ -3,7 +3,12 @@
   compression:
     offset: 0x145E90
   segments:
-    - [0x05,  0x145E90]
+    - [ 0x5, 0x145E90 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "klepto/anims.h"'
+      - '#include "klepto/geo.h"'
 
 klepto_chest_tuft:
   type: TEXTURE
@@ -452,4 +457,3 @@ klepto_seg5_dl_05005178:
   type: GFX
   offset: 0x5178
   symbol: klepto_seg5_dl_05005178
-

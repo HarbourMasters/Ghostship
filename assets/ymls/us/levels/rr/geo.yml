@@ -3,7 +3,7 @@
     - "assets/ymls/us/levels/rr.yml"
   autopads: false
   segments:
-    - [0x0E,  0x44A140]
+    - [ 0xE, 0x44A140 ]
 
 rr_geo_000660:
   type: SM64:GEO_LAYOUT

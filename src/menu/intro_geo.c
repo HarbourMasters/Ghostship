@@ -38,18 +38,6 @@ static s32 sGameOverTableIndex;
 static s16 sIntroFrameCounter;
 static s32 sTmCopyrightAlpha;
 
-static Gfx *sIntroScalePos;
-static Vec3f sIntroScale;
-
-void patch_title_screen_scales(void) {
-    if (sIntroScalePos != NULL) {
-        Mtx *scaleMat = alloc_display_list(sizeof(*scaleMat));
-        guScale(scaleMat, sIntroScale[0], sIntroScale[1], sIntroScale[2]);
-        gSPMatrix(sIntroScalePos, scaleMat, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-        sIntroScalePos = NULL;
-    }
-}
-
 /**
  * Geo callback to render the "Super Mario 64" logo on the title screen
  */
@@ -63,8 +51,6 @@ Gfx *geo_intro_super_mario_64_logo(s32 state, struct GraphNode *node, UNUSED voi
     f32 scaleX;
     f32 scaleY;
     f32 scaleZ;
-    Vec3f scale;
-    Vec3f scaleInterpolated;
 
     if (state != 1) {
         sIntroFrameCounter = 0;
@@ -96,15 +82,10 @@ Gfx *geo_intro_super_mario_64_logo(s32 state, struct GraphNode *node, UNUSED voi
             scaleY = 0.0f;
             scaleZ = 0.0f;
         }
-
-        vec3f_set(scale, scaleX, scaleY, scaleZ);
-        interpolate_vectors(scaleInterpolated, sIntroScale, scale);
-        vec3f_set(sIntroScale, scaleX, scaleY, scaleZ);
-        guScale(scaleMat, scaleInterpolated[0], scaleInterpolated[1], scaleInterpolated[2]);
-        sIntroScalePos = dlIter;
+        guScale(scaleMat, scaleX, scaleY, scaleZ);
 
         gSPMatrix(dlIter++, scaleMat, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-        gSPDisplayList(dlIter++, &intro_seg7_dl_0700B3A0);  // draw model
+        gSPDisplayList(dlIter++, intro_seg7_dl_0700B3A0);  // draw model
         gSPPopMatrix(dlIter++, G_MTX_MODELVIEW);
         gSPEndDisplayList(dlIter);
 
@@ -138,7 +119,7 @@ Gfx *geo_intro_tm_copyright(s32 state, struct GraphNode *node, UNUSED void *cont
                 gDPSetRenderMode(dlIter++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
                 break;
         }
-        gSPDisplayList(dlIter++, &intro_seg7_dl_0700C6A0);  // draw model
+        gSPDisplayList(dlIter++, intro_seg7_dl_0700C6A0);  // draw model
         gSPEndDisplayList(dlIter);
 
         // Once the "Super Mario 64" logo has just about zoomed fully, fade in the "TM" and copyright text
@@ -173,6 +154,7 @@ static Gfx *intro_backdrop_one_image(s32 index, s8 *backgroundTable) {
     Gfx *displayList = alloc_display_list(36 * sizeof(*displayList));
     Gfx *displayListIter = displayList;
     // TODO: Fix this for gameover screen
+    // TORCH-TODO: Export and fix this
     const u8 *const *vIntroBgTable = segmented_to_virtual(textureTables[backgroundTable[0]]);
     s32 i;
 
@@ -216,7 +198,8 @@ Gfx *geo_intro_regular_backdrop(s32 state, struct GraphNode *node, UNUSED void *
         dl = alloc_display_list((num_tiles_h + 4) * sizeof(*dl));
         dlIter = dl;
         graphNode->node.flags = (graphNode->node.flags & 0xFF) | (LAYER_OPAQUE << 8);
-        gSPDisplayList(dlIter++, &dl_proj_mtx_fullscreen);
+        gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
+        // TORCH-TODO: Export and fix this
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000100);
         for (i = 0; i < num_tiles_h; ++i) {
             gSPDisplayList(dlIter++, intro_backdrop_one_image(i, backgroundTable));
@@ -274,10 +257,12 @@ Gfx *geo_intro_gameover_backdrop(s32 state, struct GraphNode *node, UNUSED void 
         graphNode->flags = (graphNode->flags & 0xFF) | (LAYER_OPAQUE << 8);
 
         // draw all the tiles
-        gSPDisplayList(dlIter++, &dl_proj_mtx_fullscreen);
+        gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
+        // TORCH-TODO: Export and fix this
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000100);
         for (j = 0; j < ARRAY_COUNT(gameOverBackgroundTable); ++j)
             gSPDisplayList(dlIter++, intro_backdrop_one_image(j, gameOverBackgroundTable));
+        // TORCH-TODO: Export and fix this
         gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000190);
         gSPEndDisplayList(dlIter);
     }
@@ -466,6 +451,7 @@ Gfx *geo_intro_rumble_pak_graphic(s32 state, struct GraphNode *node, UNUSED void
             dl = alloc_display_list(3 * sizeof(*dl));
             if (dl != NULL) {
                 dlIter = dl;
+                // TORCH-TODO: Export and fix this
                 gSPDisplayList(dlIter++, &title_screen_bg_dl_0A007548);
                 gSPEndDisplayList(dlIter);
             }

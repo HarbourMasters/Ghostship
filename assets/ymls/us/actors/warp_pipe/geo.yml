@@ -3,7 +3,7 @@
     - "assets/ymls/us/actors/warp_pipe.yml"
   autopads: false
   segments:
-    - [0x16,  0x218DA0]
+    - [ 0x16, 0x218DA0 ]
 
 warp_pipe_geo:
   type: SM64:GEO_LAYOUT

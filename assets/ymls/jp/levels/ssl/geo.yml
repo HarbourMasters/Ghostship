@@ -3,7 +3,7 @@
     - "assets/ymls/jp/levels/ssl.yml"
   autopads: false
   segments:
-    - [0x0E,  0x3F99F0]
+    - [ 0xE, 0x3F99F0 ]
 
 ssl_geo_0005C0:
   type: SM64:GEO_LAYOUT

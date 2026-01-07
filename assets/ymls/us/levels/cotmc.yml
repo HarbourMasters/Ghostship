@@ -3,7 +3,14 @@
   compression:
     offset: 0x4B80D0
   segments:
-    - [0x07,  0x4B80D0]
+    - [ 0x7, 0x4B80D0 ]
+  external_files:
+    - "assets/ymls/us/textures/cave.yml"
+  header:
+    header:
+      - '#include "cotmc/geo.h"'
+      - ''
+      - 'extern const LevelScript level_cotmc_entry[];'
 
 0:
   type: TEXTURE

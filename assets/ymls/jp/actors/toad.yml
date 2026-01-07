@@ -3,7 +3,12 @@
   compression:
     offset: 0x1D6660
   segments:
-    - [0x06,  0x1D6660]
+    - [ 0x6, 0x1D6660 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "toad/anims.h"'
+      - '#include "toad/geo.h"'
 
 toad_seg6_lights_06005908:
   type: LIGHTS
@@ -294,4 +299,3 @@ toad_seg6_dl_06008BD8:
   type: GFX
   offset: 0x8BD8
   symbol: toad_seg6_dl_06008BD8
-

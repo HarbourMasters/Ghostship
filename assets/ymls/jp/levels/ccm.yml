@@ -3,7 +3,14 @@
   compression:
     offset: 0x381EF0
   segments:
-    - [0x07,  0x381EF0]
+    - [ 0x7, 0x381EF0 ]
+  external_files:
+    - "assets/ymls/jp/textures/snow.yml"
+  header:
+    header:
+      - '#include "ccm/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ccm_entry[];'
 
 0:
   type: TEXTURE
@@ -1776,6 +1783,18 @@ ccm_seg7_trajectory_0701669C:
   offset: 0x1669C
   symbol: ccm_seg7_trajectory_0701669C
 
+ccm_movtex_penguin_puddle_water_data:
+  type: SM64:MOVTEX
+  quad: true
+  offset: 0x166E8
+  symbol: ccm_movtex_penguin_puddle_water_data
+
+ccm_movtex_penguin_puddle_water:
+  type: SM64:MOVTEX_QUAD
+  count: 2
+  offset: 0x16708
+  symbol: ccm_movtex_penguin_puddle_water
+
 ccm_seg7_lights_07016718:
   type: LIGHTS
   size: 24
@@ -2717,15 +2736,3 @@ ccm_seg7_trajectory_penguin_race:
   type: SM64:TRAJECTORY
   offset: 0x23604
   symbol: ccm_seg7_trajectory_penguin_race
-
-ccm_movtex_penguin_puddle_water_data:
-  type: SM64:MOVTEX
-  quad: true
-  offset: 0x166E8
-  symbol: ccm_movtex_penguin_puddle_water_data
-
-ccm_movtex_penguin_puddle_water:
-  type: SM64:MOVTEX_QUAD
-  count: 2
-  offset: 0x16708
-  symbol: ccm_movtex_penguin_puddle_water

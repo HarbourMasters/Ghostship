@@ -3,8 +3,14 @@
   compression:
     offset: 0x3CEE30
   segments:
-    - [0x07,  0x3CEE30]
-
+    - [ 0x7, 0x3CEE30 ]
+  external_files:
+    - "assets/ymls/jp/textures/cave.yml"
+  header:
+    header:
+      - '#include "hmc/geo.h"'
+      - ''
+      - 'extern const LevelScript level_hmc_entry[];'
 0:
   type: TEXTURE
   size: 4096
@@ -3247,6 +3253,19 @@ hmc_seg7_painting_dl_070242D0:
   offset: 0x242D0
   symbol: hmc_seg7_painting_dl_070242D0
 
+hmc_seg7_pool_texture_map_070242F0:
+  type: SM64:PAINTING_MAP
+  offset: 0x242F0
+  symbol: hmc_seg7_pool_texture_map_070242F0
+
+hmc_seg7_painting_texture_maps_07024CD4:
+  type: ASSET_ARRAY
+  assetType: PaintingData
+  factoryType: SM64:PAINTING_MAP
+  count: 1
+  offset: 0x24CD4
+  symbol: hmc_seg7_painting_texture_maps_07024CD4
+
 7:
   type: TEXTURE
   size: 2048
@@ -3261,10 +3280,34 @@ hmc_seg7_painting_dl_070254E0:
   offset: 0x254E0
   symbol: hmc_seg7_painting_dl_070254E0
 
+hmc_seg7_painting_textures_07025518:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 1
+  offset: 0x25518
+  symbol: hmc_seg7_painting_textures_07025518
+
+cotmc_painting:
+  type: SM64:PAINTING
+  offset: 0x2551C
+  symbol: cotmc_painting
+
 hmc_seg7_collision_level:
   type: SM64:COLLISION
   offset: 0x25594
   symbol: hmc_seg7_collision_level
+
+hmc_seg7_macro_objs:
+  type: SM64:MACRO
+  offset: 0x2AA78
+  symbol: hmc_seg7_macro_objs
+
+hmc_seg7_rooms:
+  type: BLOB
+  size: 0x820
+  offset: 0x2ADC4
+  symbol: hmc_seg7_rooms
 
 hmc_seg7_collision_elevator:
   type: SM64:COLLISION
@@ -3290,37 +3333,6 @@ hmc_seg7_trajectory_0702B86C:
   type: SM64:TRAJECTORY
   offset: 0x2B86C
   symbol: hmc_seg7_trajectory_0702B86C
-
-hmc_seg7_macro_objs:
-  type: SM64:MACRO
-  offset: 0x2AA78
-  symbol: hmc_seg7_macro_objs
-
-hmc_seg7_pool_texture_map_070242F0:
-  type: SM64:PAINTING_MAP
-  offset: 0x242F0
-  symbol: hmc_seg7_pool_texture_map_070242F0
-
-hmc_seg7_painting_texture_maps_07024CD4:
-  type: ASSET_ARRAY
-  assetType: PaintingData
-  factoryType: SM64:PAINTING_MAP
-  count: 1
-  offset: 0x24CD4
-  symbol: hmc_seg7_painting_texture_maps_07024CD4
-
-hmc_seg7_painting_textures_07025518:
-  type: ASSET_ARRAY
-  assetType: Texture
-  factoryType: TEXTURE
-  count: 1
-  offset: 0x25518
-  symbol: hmc_seg7_painting_textures_07025518
-
-cotmc_painting:
-  type: SM64:PAINTING
-  offset: 0x2551C
-  symbol: cotmc_painting
 
 hmc_movtex_dorrie_pool_water_data:
   type: SM64:MOVTEX

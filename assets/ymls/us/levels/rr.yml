@@ -3,7 +3,14 @@
   compression:
     offset: 0x437870
   segments:
-    - [0x07,  0x437870]
+    - [ 0x7, 0x437870 ]
+  external_files:
+    - "assets/ymls/us/textures/sky.yml"
+  header:
+    header:
+      - '#include "rr/geo.h"'
+      - ''
+      - 'extern const LevelScript level_rr_entry[];'
 
 quarter_flying_carpet:
   type: TEXTURE
@@ -2223,6 +2230,13 @@ rr_seg7_lights_07019230:
   offset: 0x19068
   symbol: rr_seg7_lights_07019230
 
+flying_carpet_static_vertex_data:
+  type: ARRAY
+  offset: 0x19080
+  array_type: s16
+  count: 84
+  symbol: flying_carpet_static_vertex_data
+
 dl_flying_carpet_begin:
   type: GFX
   offset: 0x19128
@@ -4049,4 +4063,3 @@ rr_seg7_trajectory_0702EEE0:
   type: SM64:TRAJECTORY
   offset: 0x2ED24
   symbol: rr_seg7_trajectory_0702EEE0
-

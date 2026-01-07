@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/haunted_cage.yml"
   autopads: false
   segments:
-    - [0x0C,  0x16B9C0]
+    - [ 0xC, 0x16B9C0 ]
 
 haunted_cage_geo:
   type: SM64:GEO_LAYOUT

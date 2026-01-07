@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/skeeter.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1C2100]
+    - [ 0xD, 0x1C2100 ]
 
 skeeter_geo:
   type: SM64:GEO_LAYOUT

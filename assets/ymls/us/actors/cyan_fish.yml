@@ -3,7 +3,12 @@
   compression:
     offset: 0x1B9CC0
   segments:
-    - [0x06,  0x1B9CC0]
+    - [ 0x6, 0x1B9CC0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "cyan_fish/anims.h"'
+      - '#include "cyan_fish/geo.h"'
 
 cyan_fish:
   type: TEXTURE
@@ -82,4 +87,3 @@ cyan_fish_seg6_dl_0600E038:
   type: GFX
   offset: 0xE038
   symbol: cyan_fish_seg6_dl_0600E038
-

@@ -3,7 +3,7 @@
   compression:
     offset: 0x13B910
   segments:
-    - [0x05,  0x13B910]
+    - [ 0x5, 0x13B910 ]
 
 whirlpool:
   type: TEXTURE
@@ -47,4 +47,3 @@ whirlpool_seg5_dl_05013CB8:
   type: GFX
   offset: 0x13CB8
   symbol: whirlpool_seg5_dl_05013CB8
-

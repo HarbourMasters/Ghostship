@@ -734,7 +734,13 @@ void geo_obj_init_spawninfo(struct GraphNodeObject *graphNode, struct SpawnInfo 
  * Initialize the animation of an object node
  */
 void geo_obj_init_animation(struct GraphNodeObject *graphNode, struct Animation **animPtrAddr) {
-    struct Animation **animSegmented = segmented_to_virtual(animPtrAddr);
+    struct Animation **animSegmented = animPtrAddr;
+
+    // TODO: In theory we dont need this but lets keep it
+    if(animSegmented == NULL){
+        return;
+    }
+
     struct Animation *anim = segmented_to_virtual(*animSegmented);
 
     if (graphNode->animInfo.curAnim != anim) {
@@ -749,7 +755,7 @@ void geo_obj_init_animation(struct GraphNodeObject *graphNode, struct Animation 
  * Initialize the animation of an object node
  */
 void geo_obj_init_animation_accel(struct GraphNodeObject *graphNode, struct Animation **animPtrAddr, u32 animAccel) {
-    struct Animation **animSegmented = segmented_to_virtual(animPtrAddr);
+    struct Animation **animSegmented = animPtrAddr;
     struct Animation *anim = segmented_to_virtual(*animSegmented);
 
     if (graphNode->animInfo.curAnim != anim) {
@@ -819,7 +825,7 @@ s16 geo_update_animation_frame(struct AnimInfo *obj, s32 *accelAssist) {
         if (obj->animAccel != 0) {
             result = obj->animFrameAccelAssist + obj->animAccel;
         } else {
-            result = (obj->animFrame + 1) << 16;
+            result = obj->animFrame + 1 << 16;
         }
 
         if (GET_HIGH_S16_OF_32(result) >= anim->loopEnd) {

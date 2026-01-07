@@ -14,7 +14,7 @@
 #include "actors/common1.h"
 
 #include "make_const_nonconst.h"
-#include "levels/bbh/header.h"
+#include "assets/levels/bbh.h"
 
 
 static const LevelScript script_func_local_1[] = {

@@ -3,7 +3,14 @@
   compression:
     offset: 0x45C600
   segments:
-    - [0x07,  0x45C600]
+    - [ 0x7, 0x45C600 ]
+  external_files:
+    - "assets/ymls/us/textures/outside.yml"
+  header:
+    header:
+      - '#include "vcutm/geo.h"'
+      - ''
+      - 'extern const LevelScript level_vcutm_entry[];'
 
 0:
   type: TEXTURE
@@ -686,4 +693,3 @@ vcutm_seg7_collision_0700AC44:
   type: SM64:COLLISION
   offset: 0xAC44
   symbol: vcutm_seg7_collision_0700AC44
-

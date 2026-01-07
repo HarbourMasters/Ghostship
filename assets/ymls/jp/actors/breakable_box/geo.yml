@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/breakable_box.yml"
   autopads: false
   segments:
-    - [0x0F,  0x1FEC00]
+    - [ 0xF, 0x1FEC00 ]
 
 breakable_box_geo:
   type: SM64:GEO_LAYOUT

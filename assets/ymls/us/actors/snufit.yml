@@ -3,7 +3,11 @@
   compression:
     offset: 0x1E7EE0
   segments:
-    - [0x06,  0x1E7EE0]
+    - [ 0x6, 0x1E7EE0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "snufit/geo.h"'
 
 snufit_body:
   type: TEXTURE
@@ -201,4 +205,3 @@ snufit_seg6_dl_06009B68:
   type: GFX
   offset: 0x9B68
   symbol: snufit_seg6_dl_06009B68
-

@@ -13,38 +13,44 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment ve
 # Set the C++ standard and enable the MSVC parallel build option
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
 set(CMAKE_C_STANDARD 11 CACHE STRING "The C standard to use")
-#add_compile_options(-fsanitize=address)
-#add_link_options(-fsanitize=address)
+# add_compile_options(-fsanitize=address)
+# add_link_options(-fsanitize=address)
 
 # Add a custom module path to locate additional CMake modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
-include(FindFontconfig)
+set(YAML_CPP_STATIC_DEFINE ON)
+add_compile_definitions(YAML_CPP_STATIC_DEFINE)
 
 if (WIN32)
 include(cmake/automate-vcpkg.cmake)
-# Forced to use MSVC
-set(MSVC ON)
-
-if(MSVC)
 set(VCPKG_TRIPLET x64-windows-static)
 set(VCPKG_TARGET_TRIPLET x64-windows-static)
-else()
-set(VCPKG_TRIPLET x64-mingw-static)
-set(VCPKG_TARGET_TRIPLET x64-mingw-static)
-endif()
-
-if(NOT CMAKE_BUILD_TYPE )
-    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build." FORCE)
-endif()
-
 vcpkg_bootstrap()
-vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libzip libpng getopt dirent libusb pthread glew glfw3 nlohmann-json tinyxml2 spdlog)
+vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 glew glfw3 nlohmann-json tinyxml2 spdlog)
+
+set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(NOT EXISTS ${CMAKE_BINARY_DIR}/config.yml)
+	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "${CMAKE_BINARY_DIR}/config.yml")
+	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "${CMAKE_BINARY_DIR}/assets/")
 endif()
 
 if (MSVC)
 set(CPP "${CMAKE_C_COMPILER}" "/EP")
 else()
 set(CPP "${CMAKE_C_COMPILER}" "-E" "-P" "-Wno-trigraphs" "-x" "c")
+endif()
+
+if(IOS)
+set(PLATFORM "OS64")
+include(cmake/ios.toolchain.cmake)
+add_compile_definitions(
+    PLATFORM_IOS=1
+)
+set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
+set(PROJECT_ID "dev.net64.game")
 endif()
 
 ################################################################################
@@ -65,6 +71,7 @@ endif()
 # Set game compilation version
 set(VERSION us)
 set(USE_NETWORKING OFF)
+set(SKIP_XCODE_VERSION_CHECK ON)
 
 # Add compile definitions for the target
 add_compile_definitions(
@@ -112,6 +119,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "lib/src/guPerspectiveF.c"
     "lib/src/guRotateF.c"
     "lib/src/guScaleF.c"
+    "lib/src/guLookAtF.c"
     "lib/src/guTranslateF.c"
     "sound/*.c"
     "src/audio/*.h"
@@ -149,7 +157,27 @@ list(FILTER ALL_FILES EXCLUDE REGEX "bin/eu/.*.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/game/main.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
 
-add_executable(${PROJECT_NAME} ${ALL_FILES} ${GENERATED_SOURCES})
+if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    set(IOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/ios)
+
+    set(STORYBOARD_FILE ${IOS_DIR}/Launch.storyboard)
+    set(IMAGE_FILES ${IOS_DIR}/PoweredBy.png)
+    set(ICON_FILES ${IOS_DIR}/Icon.png)
+
+    list(APPEND ALL_FILES ${STORYBOARD_FILE} ${IMAGE_FILES} ${ICON_FILES})
+
+    add_executable(${PROJECT_NAME} ${ALL_FILES})
+    set_xcode_property(${PROJECT_NAME} PRODUCT_BUNDLE_IDENTIFIER ${PROJECT_ID} All)
+    set_target_properties(
+        ${PROJECT_NAME}
+        PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_INFO_PLIST ${IOS_DIR}/plist.in
+        RESOURCE "${IMAGE_FILES};${STORYBOARD_FILE};${ICON_FILES}"
+    )
+else()
+    add_executable(${PROJECT_NAME} ${ALL_FILES})
+endif()
 
 ################################################################################
 # MSVC runtime library
@@ -183,78 +211,36 @@ if (MSVC)
 endif()
 
 #==============================================================================#
-# Libultraship Integration                                                            #
+# Libultraship Integration                                                     #
 #==============================================================================#
 
-include_directories(
-  ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_BINARY_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/log
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/debug
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/menu
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/utils
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/utils/binarytools
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/config
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource/type
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource/factory
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/audio
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/window
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/window/gui
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/config
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public/libultra
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public/bridge
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/extern
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/extern/tinyxml2
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/libjpeg/include/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/spdlog/include/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/graphic/Fast3D/U64/PR
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/graphic
-  ${SDL2_INCLUDE_DIRS}
-  ${GLEW_INCLUDE_DIRS}
+
+add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
+add_dependencies(${PROJECT_NAME} libultraship)
+target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
 )
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
-	if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
-		target_compile_definitions(${PROJECT_NAME} PRIVATE
-			"$<$<CONFIG:Debug>:"
-				"_DEBUG;"
-				"_CRT_SECURE_NO_WARNINGS;"
-				"ENABLE_DX11;"
-			">"
-			"$<$<CONFIG:Release>:"
-				"NDEBUG"
-			">"
-			"INCLUDE_GAME_PRINTF;"
-			"UNICODE;"
-			"_UNICODE"
-			STORMLIB_NO_AUTO_LINK
-			"_CRT_SECURE_NO_WARNINGS;"
-		)
-	elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
-		target_compile_definitions(${PROJECT_NAME} PRIVATE
-			"$<$<CONFIG:Debug>:"
-				"NOINCLUDE_GAME_PRINTF;"
-				"_DEBUG;"
-				"_CRT_SECURE_NO_WARNINGS;"
-				"ENABLE_OPENGL"
-			">"
-			"$<$<CONFIG:Release>:"
-				"NDEBUG;"
-			">"
-			"INCLUDE_GAME_PRINTF;"
-			"WIN32;"
-			"UNICODE;"
-			"_UNICODE"
-			STORMLIB_NO_AUTO_LINK
-		)
-	endif()
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        "$<$<CONFIG:Debug>:"
+            "_DEBUG;"
+            "_CRT_SECURE_NO_WARNINGS;"
+            "ENABLE_DX11;"
+        ">"
+        "$<$<CONFIG:Release>:"
+            "NDEBUG"
+        ">"
+        "INCLUDE_GAME_PRINTF;"
+        "UNICODE;"
+        "_UNICODE;"
+        "_CRT_SECURE_NO_WARNINGS;"
+        "_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;"
+    )
+    add_compile_definitions(STORMLIB_NO_AUTO_LINK)
+	set(STORMLIB_NO_AUTO_LINK ON)
 elseif (CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
 	target_compile_definitions(${PROJECT_NAME} PRIVATE
 		"$<$<CONFIG:Debug>:"
@@ -280,16 +266,32 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
 		"SPDLOG_ACTIVE_LEVEL=0;"
 		"_CONSOLE;"
 		"_CRT_SECURE_NO_WARNINGS;"
-		"ENABLE_OPENGL;"
 		"UNICODE;"
 		"_UNICODE"
 	)
 endif()
 
-add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 
-add_dependencies(${PROJECT_NAME} libultraship)
-target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+	set(ADDITIONAL_LIBRARY_DEPENDENCIES
+        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net-static>"
+    )
+elseif(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    set(ADDITIONAL_LIBRARY_DEPENDENCIES
+        -lglad
+    )
+elseif(CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+    set(ADDITIONAL_LIBRARY_DEPENDENCIES
+        "$<$<CONFIG:Debug>:-Wl,--wrap=abort>"
+    )
+    target_include_directories(${PROJECT_NAME} PRIVATE
+        ${DEVKITPRO}/portlibs/wiiu/include/
+    )
+else()
+ 	set(ADDITIONAL_LIBRARY_DEPENDENCIES
+        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net>"
+	)
+endif()
 
 if(USE_NETWORKING)
     if(MSVC)
@@ -299,6 +301,30 @@ if(USE_NETWORKING)
     include_directories(${SDL2_NET_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
     target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
+endif()
+
+option(USE_STANDALONE "Build as a standalone executable" OFF)
+option(BUILD_STORMLIB "Build with StormLib support" OFF)
+
+option(BUILD_SM64 "Build with Super Mario 64 support" OFF)
+option(BUILD_MK64 "Build with Mario Kart 64 support" OFF)
+option(BUILD_FZERO "Build with F-Zero X support" OFF)
+add_subdirectory(Torch)
+target_link_libraries(${PROJECT_NAME} PRIVATE torch "${ADDITIONAL_LIBRARY_DEPENDENCIES}")
+
+if(CMAKE_SYSTEM_NAME MATCHES "NintendoSwitch")
+
+nx_generate_nacp(${PROJECT_NAME}.nacp
+   NAME "${PROJECT_NAME}"
+   AUTHOR "${PROJECT_TEAM}"
+   VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
+)
+
+nx_create_nro(${PROJECT_NAME}
+    NACP ${PROJECT_NAME}.nacp
+)
+
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nro DESTINATION . COMPONENT ${PROJECT_NAME})
 endif()
 
 ################################################################################
@@ -324,6 +350,7 @@ if(MSVC)
           ${DEFAULT_CXX_EXCEPTION_HANDLING}
       )
       target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Debug>:/ZI;>)
+      target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Release>:/Zi;>)
   elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
       target_compile_options(${PROJECT_NAME} PRIVATE
           $<$<CONFIG:Debug>:
@@ -384,7 +411,35 @@ if(MSVC)
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
-  if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    if (CMAKE_SYSTEM_NAME STREQUAL "Darwin" OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
+        target_compile_options(${PROJECT_NAME} PRIVATE
+            -Wall -Wextra -Wno-error
+            -Wno-return-type
+            -Wno-unused-parameter
+            -Wno-unused-function
+            -Wno-unused-variable
+            -Wno-missing-field-initializers
+            -Wno-parentheses
+            -Wno-narrowing
+            -Wno-missing-braces
+            -Wno-int-conversion
+            $<$<COMPILE_LANGUAGE:C>:
+                -Werror-implicit-function-declaration
+                -Wno-incompatible-pointer-types
+                -fpermissive
+            >
+            $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
+            $<$<COMPILE_LANGUAGE:CXX>:
+                -Wno-c++11-narrowing
+                -Wno-deprecated-enum-enum-conversion
+            >
+            -pthread
+        )
+
+        target_link_options(${PROJECT_NAME} PRIVATE
+            -pthread
+        )
+    elseif (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
       target_compile_options(${PROJECT_NAME} PRIVATE
           -Wall -Wextra -Wno-error
           -Wno-return-type
@@ -399,32 +454,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
           $<$<COMPILE_LANGUAGE:C>:
               -Werror-implicit-function-declaration
               -Wno-incompatible-pointer-types
-          >
-          $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
-          $<$<COMPILE_LANGUAGE:CXX>:
-              -Wno-c++11-narrowing
-              -Wno-deprecated-enum-enum-conversion
-          >
-          -pthread
-      )
-
-      target_link_options(${PROJECT_NAME} PRIVATE
-          -pthread
-      )
-  elseif (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
-      target_compile_options(${PROJECT_NAME} PRIVATE
-          -Wall -Wextra -Wno-error
-          -Wno-return-type
-          -Wno-unused-parameter
-          -Wno-unused-function
-          -Wno-unused-variable
-          -Wno-missing-field-initializers
-          -Wno-parentheses
-          -Wno-narrowing
-          -Wno-missing-braces
-          $<$<COMPILE_LANGUAGE:C>:
-              -Werror-implicit-function-declaration
-              -Wno-incompatible-pointer-types
+              -fpermissive
           >
           $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
           $<$<COMPILE_LANGUAGE:CXX>:
@@ -459,7 +489,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
       )
   else()
       if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
-  set(CPU_OPTION -msse2 -mfpmath=sse)
+        set(CPU_OPTION -msse2 -mfpmath=sse)
       endif()
 
       target_compile_options(${PROJECT_NAME} PRIVATE
@@ -471,9 +501,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
           -Wno-parentheses
           -Wno-narrowing
           -Wno-missing-braces
+          -Wno-int-conversion
           $<$<COMPILE_LANGUAGE:C>:
               -Werror-implicit-function-declaration
               -Wno-incompatible-pointer-types
+              -fpermissive
           >
           $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
           $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-enum-enum-conversion>
@@ -489,19 +521,72 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
 endif()
 
 include(ExternalProject)
-ExternalProject_Add(Torch
-	PREFIX Torch
+ExternalProject_Add(TorchExternal
+	PREFIX TorchExternal
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/Torch
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/Torch
 )
-ExternalProject_Get_Property(Torch install_dir)
-set(TORCH_EXECUTABLE ${install_dir}/src/Torch-build/$<CONFIGURATION>/torch)
+ExternalProject_Get_Property(TorchExternal install_dir)
+if (MSVC)
+  set(TORCH_EXECUTABLE ${install_dir}/src/TorchExternal-build/$<CONFIGURATION>/torch)
+else()
+  set(TORCH_EXECUTABLE ${install_dir}/src/TorchExternal-build/torch)
+endif()
 add_custom_target(
     ExtractAssets
-    DEPENDS Torch
+    DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND ${TORCH_EXECUTABLE} otr baserom.us.z64
-    COMMAND ${TORCH_EXECUTABLE} pack assets sm64.otr
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/smcube.otr" "${CMAKE_BINARY_DIR}/smcube.otr"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/sm64.otr" "${CMAKE_BINARY_DIR}/sm64.otr"
+    COMMAND ${TORCH_EXECUTABLE} o2r baserom.jp.z64
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/sm64.o2r" "${CMAKE_BINARY_DIR}/sm64.o2r"
 )
+
+add_custom_target(
+    ExtractHeaders
+    DEPENDS TorchExternal
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${TORCH_EXECUTABLE} header -o baserom.jp.z64
+)
+
+add_custom_target(
+    GeneratePortOTR
+    DEPENDS TorchExternal
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${TORCH_EXECUTABLE} pack port ghostship.o2r o2r
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ghostship.o2r" "${CMAKE_BINARY_DIR}/ghostship.o2r"
+)
+
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+add_custom_target(CreateOSXIcons
+    COMMAND mkdir -p ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset
+    COMMAND sips -z 16 16     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_16x16.png
+    COMMAND sips -z 32 32     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_16x16@2x.png
+    COMMAND sips -z 32 32     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_32x32.png
+    COMMAND sips -z 64 64     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_32x32@2x.png
+    COMMAND sips -z 128 128   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_128x128.png
+    COMMAND sips -z 256 256   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_128x128@2x.png
+    COMMAND sips -z 256 256   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_256x256.png
+    COMMAND sips -z 512 512   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_256x256@2x.png
+    COMMAND sips -z 512 512   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_512x512.png
+    COMMAND cp                logo.png ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_512x512@2x.png
+    COMMAND iconutil -c icns -o ${CMAKE_BINARY_DIR}/macosx/ghostship.icns ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Creating OSX icons ..."
+    )
+    add_dependencies(${PROJECT_NAME} CreateOSXIcons)
+    configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
+endif()
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL YES)
+set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.desktop")
+set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_ICON_FILE "${CMAKE_SOURCE_DIR}/logo.png")
+
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    set(CPACK_GENERATOR "External")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Windows|NintendoSwitch|CafeOS")
+    set(CPACK_GENERATOR "ZIP")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(CPACK_GENERATOR "Bundle")
+endif()
+
+set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake)
+include(cmake/packaging.cmake)

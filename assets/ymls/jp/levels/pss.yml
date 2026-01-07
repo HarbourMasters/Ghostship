@@ -3,8 +3,14 @@
   compression:
     offset: 0x4AD8D0
   segments:
-    - [0x07,  0x4AD8D0]
-
+    - [ 0x7, 0x4AD8D0 ]
+  external_files:
+    - "assets/ymls/jp/textures/mountain.yml"
+  header:
+    header:
+      - '#include "pss/geo.h"'
+      - ''
+      - 'extern const LevelScript level_pss_entry[];'
 0:
   type: TEXTURE
   size: 2048

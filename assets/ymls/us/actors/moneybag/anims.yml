@@ -3,7 +3,7 @@
   compression:
     offset: 0x1E51F0
   segments:
-    - [0x06,  0x1E51F0]
+    - [ 0x6, 0x1E51F0 ]
 
 moneybag_seg6_anim_06005AD8:
   type: SM64:ANIM

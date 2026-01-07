@@ -3,7 +3,7 @@
   compression:
     offset: 0x1F0530
   segments:
-    - [0x08,  0x1F0530]
+    - [ 0x8, 0x1F0530 ]
 
 bobomb_seg8_anim_080237FC:
   type: SM64:ANIM

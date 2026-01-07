@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/mushroom_1up.yml"
   autopads: false
   segments:
-    - [0x16,  0x2170D0]
+    - [ 0x16, 0x2170D0 ]
 
 mushroom_1up_geo:
   type: SM64:GEO_LAYOUT

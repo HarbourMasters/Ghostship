@@ -3,7 +3,7 @@
   compression:
     offset: 0x35D2B0
   segments:
-    - [0x09,  0x35D2B0]
+    - [ 0x9, 0x35D2B0 ]
 
 castle_grounds_textures.00000:
   type: TEXTURE
@@ -193,4 +193,3 @@ castle_grounds_textures.0BC00:
   offset: 0xBC00
   format: IA16
   symbol: outside_0900BC00
-

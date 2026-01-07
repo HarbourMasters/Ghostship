@@ -113,7 +113,7 @@ s32 set_pole_position(struct MarioState *m, f32 offsetY) {
 s32 act_holding_pole(struct MarioState *m) {
     struct Object *marioObj = m->marioObj;
 
-    if(ROM_JP){
+    if(ROM_JP) {
         if (m->input & INPUT_A_PRESSED) {
             add_tree_leaf_particles(m);
             m->faceAngle[1] += 0x8000;

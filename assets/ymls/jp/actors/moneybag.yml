@@ -3,7 +3,12 @@
   compression:
     offset: 0x1E3520
   segments:
-    - [0x06,  0x1E3520]
+    - [ 0x6, 0x1E3520 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "moneybag/anims.h"'
+      - '#include "moneybag/geo.h"'
 
 moneybag_mouth:
   type: TEXTURE
@@ -156,4 +161,3 @@ moneybag_seg6_dl_060059F0:
   type: GFX
   offset: 0x59F0
   symbol: moneybag_seg6_dl_060059F0
-

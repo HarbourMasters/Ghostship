@@ -3,7 +3,11 @@
   compression:
     offset: 0x1F2200
   segments:
-    - [0x08,  0x1F2200]
+    - [ 0x8, 0x1F2200 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "metal_box/geo.h"'
 
 metal_box_seg8_lights_08023980:
   type: LIGHTS
@@ -46,4 +50,3 @@ metal_box_seg8_collision_08024C28:
   type: SM64:COLLISION
   offset: 0x24C28
   symbol: metal_box_seg8_collision_08024C28
-

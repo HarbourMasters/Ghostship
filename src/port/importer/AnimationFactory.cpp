@@ -2,13 +2,14 @@
 #include "port/importer/types/Animation.h"
 #include "spdlog/spdlog.h"
 
-std::shared_ptr<Ship::IResource> SM64::AnimationFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
-    if (!FileHasValidFormatAndReader(file)) {
+std::shared_ptr<Ship::IResource> SM64::AnimationFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
+    if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
-    std::shared_ptr<Animation> animation = std::make_shared<Animation>(file->InitData);
-    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
+    std::shared_ptr<Animation> animation = std::make_shared<Animation>(initData);
+    const auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     animation->mData.flags = reader->ReadInt16();
     animation->mData.animYTransDivisor = reader->ReadInt16();
@@ -30,8 +31,8 @@ std::shared_ptr<Ship::IResource> SM64::AnimationFactoryV0::ReadResource(std::sha
         animation->values.push_back(reader->ReadInt16());
     }
 
-    animation->mData.index = (uint16_t*)animation->indices.data();
-    animation->mData.values = (int16_t*)animation->values.data();
+    animation->mData.index  = animation->indices.data();
+    animation->mData.values = animation->values.data();
 
     return animation;
 }

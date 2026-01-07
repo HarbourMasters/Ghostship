@@ -49,6 +49,8 @@ build/*
 *.mio0
 *.z64
 *.otr
+*.sav
+*.o2r
 *.map
 .assets-local.txt
 
@@ -88,3 +90,7 @@ code/
 torch.hash.yml
 merge/
 .vs/
+include/assets/*
+modifications/
+modding/
+*.log

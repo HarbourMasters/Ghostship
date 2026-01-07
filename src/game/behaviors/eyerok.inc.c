@@ -186,7 +186,7 @@ static void eyerok_hand_act_sleep(void) {
         if (cur_obj_check_if_near_animation_end()) {
             o->parentObj->oEyerokBossNumHands++;
             o->oAction = EYEROK_HAND_ACT_IDLE;
-            o->collisionData = segmented_to_virtual(&ssl_seg7_collision_07028274);
+            o->collisionData = segmented_to_virtual(ssl_seg7_collision_07028274);
         } else {
             approach_f32_ptr(&o->oPosX, o->oHomeX, 15.0f);
             o->oPosY = o->oHomeY
@@ -196,9 +196,9 @@ static void eyerok_hand_act_sleep(void) {
         }
     } else {
         if (o->oBehParams2ndByte < 0) {
-            o->collisionData = segmented_to_virtual(&ssl_seg7_collision_070284B0);
+            o->collisionData = segmented_to_virtual(ssl_seg7_collision_070284B0);
         } else {
-            o->collisionData = segmented_to_virtual(&ssl_seg7_collision_07028370);
+            o->collisionData = segmented_to_virtual(ssl_seg7_collision_07028370);
         }
 
         cur_obj_reverse_animation();

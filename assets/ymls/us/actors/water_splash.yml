@@ -3,7 +3,11 @@
   compression:
     offset: 0x114750
   segments:
-    - [0x04,  0x114750]
+    - [ 0x4, 0x114750 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "water_splash/geo.h"'
 
 water_splash_seg4_vertex_0402A588:
   type: VTX
@@ -127,4 +131,3 @@ water_splash_seg4_dl_040326E8:
   type: GFX
   offset: 0x326E8
   symbol: water_splash_seg4_dl_040326E8
-

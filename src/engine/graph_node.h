@@ -121,10 +121,9 @@ struct GraphNodePerspective {
  */
 struct DisplayListNode {
     Mtx *transform;
-    void *transformInterpolated;
     void *displayList;
-    void *displayListInterpolated;
     struct DisplayListNode *next;
+    Mat4 transformMatrix;
 };
 
 /** GraphNode that manages the 8 top-level display lists that will be drawn

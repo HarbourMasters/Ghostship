@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B9CC0
   segments:
-    - [0x06,  0x1B9CC0]
+    - [ 0x6, 0x1B9CC0 ]
 
 water_ring_seg6_anim_06013F64:
   type: SM64:ANIM

@@ -19,6 +19,7 @@
 #include "segment2.h"
 #include "segment_symbols.h"
 #include "rumble_init.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 // First 3 controller slots
 struct Controller gControllers[3];
@@ -270,6 +271,17 @@ void init_rcp(void) {
     select_framebuffer();
 }
 
+void handle_nmi_request(void) {
+    gResetTimer = 1;
+    gNmiResetBarsTimer = 0;
+    stop_sounds_in_continuous_banks();
+    sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_BACKGROUND);
+    fadeout_music(90);
+#ifdef VERSION_SH
+    func_sh_802f69cc();
+#endif
+}
+
 /**
  * End the master display list and initialize the graphics task structure for the next frame to be rendered.
  */
@@ -292,6 +304,8 @@ void draw_reset_bars(void) {
     s32 width, height;
     s32 fbNum;
     u64 *fbPtr;
+
+    return;
 
     if (gResetTimer != 0 && gNmiResetBarsTimer < 15) {
         if (sRenderedFramebuffer == 0) {
@@ -634,12 +648,9 @@ void thread5_game_loop(void) {
 
     setup_game_memory();
 #if ENABLE_RUMBLE
-    init_rumble_pak_scheduler_queue();
+    // init_rumble_pak_scheduler_queue();
 #endif
     init_controllers();
-#if ENABLE_RUMBLE
-    create_thread_6();
-#endif
     save_file_load_all();
 
     // Point address to the entry point into the level script data.
@@ -650,17 +661,33 @@ void thread5_game_loop(void) {
     gGlobalTimer++;
 }
 
+void update_vblank_reset(void) {
+    gNumVblanks++;
+#ifdef VERSION_SH
+    if (gResetTimer > 0 && gResetTimer < 100) {
+        gResetTimer++;
+    }
+#else
+    if (gResetTimer > 0) {
+        gResetTimer++;
+    }
+#endif
+}
+
 void thread5_iteration(void){
     if (GfxDebuggerIsDebugging()) {
         exec_display_list(&gGfxPool->spTask);
         return;
     }
 
+    update_vblank_reset();
+
     // If the reset timer is active, run the process to reset the game.
     if (gResetTimer != 0) {
         draw_reset_bars();
         return;
     }
+    FrameInterpolation_StartRecord();
     profiler_log_thread5_time(THREAD5_START);
 
     // If any controllers are plugged in, start read the data for when
@@ -685,4 +712,9 @@ void thread5_iteration(void){
         // amount of free space remaining.
         print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
     }
+    FrameInterpolation_StopRecord();
+
+#if ENABLE_RUMBLE
+    create_thread_6();
+#endif
 }

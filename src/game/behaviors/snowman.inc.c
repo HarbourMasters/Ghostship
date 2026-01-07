@@ -55,7 +55,7 @@ void snowmans_bottom_act_1(void) {
     UNUSED s16 collisionFlags;
     s32 followStatus = 0;
 
-    o->oPathedStartWaypoint = segmented_to_virtual(&ccm_seg7_trajectory_snowman);
+    o->oPathedStartWaypoint = segmented_to_virtual(ccm_seg7_trajectory_snowman);
     collisionFlags = object_step_without_floor_orient();
     followStatus = cur_obj_follow_path(followStatus);
     o->oSnowmansBottomUnkF8 = o->oPathedTargetYaw;

@@ -3,7 +3,11 @@
   compression:
     offset: 0x188440
   segments:
-    - [0x06,  0x188440]
+    - [ 0x6, 0x188440 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "bomb/geo.h"'
 
 bomb_seg6_lights_06057AA8:
   type: LIGHTS
@@ -104,4 +108,3 @@ bomb_seg6_dl_0605A9C0:
   type: GFX
   offset: 0x5AB10
   symbol: bomb_seg6_dl_0605A9C0
-

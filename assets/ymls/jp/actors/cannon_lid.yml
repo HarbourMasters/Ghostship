@@ -3,7 +3,7 @@
   compression:
     offset: 0x1F0530
   segments:
-    - [0x08,  0x1F0530]
+    - [ 0x8, 0x1F0530 ]
 
 cannon_lid_seg8_lights_08004040:
   type: LIGHTS
@@ -40,4 +40,3 @@ cannon_lid_seg8_collision_08004950:
   type: SM64:COLLISION
   offset: 0x4950
   symbol: cannon_lid_seg8_collision_08004950
-

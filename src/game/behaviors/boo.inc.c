@@ -618,7 +618,7 @@ static void big_boo_act_3(void) {
 }
 
 static void big_boo_act_4(void) {
-    if(!ROM_JP){
+    if(!ROM_JP) {
         boo_stop();
     }
 
@@ -758,7 +758,7 @@ void bhv_merry_go_round_boo_manager_loop(void) {
 
                     o->oAction = 2;
 
-                    if(ROM_JP){
+                    if(ROM_JP) {
                         play_sound(SOUND_GENERAL2_RIGHT_ANSWER, gGlobalSoundSource);
                     } else {
                         play_puzzle_jingle();

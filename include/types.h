@@ -69,6 +69,9 @@ struct VblankHandler {
     OSMesg msg;
 };
 
+typedef u16 Vec3su[3];
+typedef f32 Mat3[3][3];
+
 #define ANIM_FLAG_NOLOOP     (1 << 0) // 0x01
 #define ANIM_FLAG_FORWARD    (1 << 1) // 0x02
 #define ANIM_FLAG_2          (1 << 2) // 0x04
@@ -137,7 +140,6 @@ struct GraphNodeObject {
     u32 prevThrowMatrixTimestamp;
     Mat4 *throwMatrixInterpolated;
     /*0x54*/ Vec3f cameraToObject;
-    u32 skipInterpolationTimestamp;
 };
 
 struct ObjectNode {
@@ -324,5 +326,10 @@ struct MarioState {
     /*0xC0*/ f32 quicksandDepth;
     /*0xC4*/ f32 unkC4;
 };
+
+typedef struct {
+    int index;
+    Gfx instruction;
+} GfxPatch;
 
 #endif // TYPES_H

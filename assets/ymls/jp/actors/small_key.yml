@@ -3,7 +3,11 @@
   compression:
     offset: 0x165060
   segments:
-    - [0x05,  0x165060]
+    - [ 0x5, 0x165060 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "small_key/geo.h"'
 
 small_key_seg5_lights_05005798:
   type: LIGHTS
@@ -149,4 +153,3 @@ small_key_seg5_dl_05006A68:
   type: GFX
   offset: 0x6A68
   symbol: small_key_seg5_dl_05006A68
-

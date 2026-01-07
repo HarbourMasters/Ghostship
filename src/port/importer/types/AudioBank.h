@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 #include "AudioSample.h"
 
 struct AudioBankSound {
@@ -41,15 +41,27 @@ struct CtlEntry {
     struct Drum **drums;
 }; // size = 0xC
 
-
 namespace SM64 {
-
 
 class AudioBank : public Ship::Resource<CtlEntry> {
   public:
     using Resource::Resource;
 
     AudioBank() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    ~AudioBank() {
+        for (auto instrument : instruments) {
+            if (instrument != nullptr) {
+                delete[] instrument->envelope;
+                delete instrument;
+            }
+        }
+        for (auto drum : drums) {
+            if (drum != nullptr) {
+                delete[] drum->envelope;
+                delete drum;
+            }
+        }
+    }
 
     CtlEntry* GetPointer();
     size_t GetPointerSize();

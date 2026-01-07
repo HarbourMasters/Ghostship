@@ -1,0 +1,336 @@
+:config:
+  autopads: false
+  compression:
+    offset: 0x1076D0
+  external_files:
+    - "assets/ymls/jp/textures/segment2.yml"
+  segments:
+    - [ 0x2, 0x1076D0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+
+main_hud_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8250
+  count: 58
+  symbol: main_hud_lut
+
+main_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8338
+  count: 256
+  symbol: main_font_lut
+
+main_credits_font_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x8738
+  count: 37
+  symbol: main_credits_font_lut
+
+main_hud_camera_lut:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x87CC
+  count: 6
+  symbol: main_hud_camera_lut
+
+dl_hud_img_begin:
+  type: GFX
+  offset: 0xEC60
+  symbol: dl_hud_img_begin
+
+dl_hud_img_load_tex_block:
+  type: GFX
+  offset: 0xEC98
+  symbol: dl_hud_img_load_tex_block
+
+dl_hud_img_end:
+  type: GFX
+  offset: 0xECC8
+  symbol: dl_hud_img_end
+
+dl_rgba16_text_begin:
+  type: GFX
+  offset: 0xED00
+  symbol: dl_rgba16_text_begin
+
+dl_rgba16_load_tex_block:
+  type: GFX
+  offset: 0xED38
+  symbol: dl_rgba16_load_tex_block
+
+dl_rgba16_text_end:
+  type: GFX
+  offset: 0xED68
+  symbol: dl_rgba16_text_end
+
+vertex_text_bg_box:
+  type: VTX
+  count: 4
+  offset: 0xEDA8
+  symbol: vertex_text_bg_box
+
+dl_draw_text_bg_box:
+  type: GFX
+  offset: 0xEDE8
+  symbol: dl_draw_text_bg_box
+
+vertex_ia8_char_jp:
+  type: VTX
+  count: 4
+  offset: 0xEE28
+  symbol: vertex_ia8_char_jp
+
+dl_ia_text_begin:
+  type: GFX
+  offset: 0xEE68
+  symbol: dl_ia_text_begin
+
+dl_ia_text_tex_settings:
+  type: GFX
+  offset: 0xEEA8
+  symbol: dl_ia_text_tex_settings
+
+dl_ia_text_end:
+  type: GFX
+  offset: 0xEEF0
+  symbol: dl_ia_text_end
+
+vertex_triangle:
+  type: VTX
+  count: 3
+  offset: 0xEF30
+  symbol: vertex_triangle
+
+dl_draw_triangle:
+  type: GFX
+  offset: 0xEF60
+  symbol: dl_draw_triangle
+
+vertex_billboard_num:
+  type: VTX
+  count: 4
+  offset: 0xEFB0
+  symbol: vertex_billboard_num
+
+dl_billboard_num_begin:
+  type: GFX
+  offset: 0xEFF0
+  symbol: dl_billboard_num_begin
+
+dl_billboard_num_end:
+  type: GFX
+  offset: 0xF038
+  symbol: dl_billboard_num_end
+
+dl_billboard_num_0:
+  type: GFX
+  offset: 0xF078
+  symbol: dl_billboard_num_0
+
+dl_billboard_num_1:
+  type: GFX
+  offset: 0xF0A8
+  symbol: dl_billboard_num_1
+
+dl_billboard_num_2:
+  type: GFX
+  offset: 0xF0D8
+  symbol: dl_billboard_num_2
+
+dl_billboard_num_3:
+  type: GFX
+  offset: 0xF108
+  symbol: dl_billboard_num_3
+
+dl_billboard_num_4:
+  type: GFX
+  offset: 0xF138
+  symbol: dl_billboard_num_4
+
+dl_billboard_num_5:
+  type: GFX
+  offset: 0xF168
+  symbol: dl_billboard_num_5
+
+dl_billboard_num_6:
+  type: GFX
+  offset: 0xF198
+  symbol: dl_billboard_num_6
+
+dl_billboard_num_7:
+  type: GFX
+  offset: 0xF1C8
+  symbol: dl_billboard_num_7
+
+dl_billboard_num_8:
+  type: GFX
+  offset: 0xF1F8
+  symbol: dl_billboard_num_8
+
+dl_billboard_num_9:
+  type: GFX
+  offset: 0xF228
+  symbol: dl_billboard_num_9
+
+segment2_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0x14458
+  symbol: segment2_lights_unused
+
+matrix_identity:
+  type: MTX
+  floats: true
+  offset: 0x14470
+  symbol: matrix_identity
+
+matrix_fullscreen:
+  type: MTX
+  floats: true
+  offset: 0x144B0
+  symbol: matrix_fullscreen
+
+dl_draw_quad_verts_0123:
+  type: GFX
+  offset: 0x144F0
+  symbol: dl_draw_quad_verts_0123
+
+dl_draw_quad_verts_4567:
+  type: GFX
+  offset: 0x14508
+  symbol: dl_draw_quad_verts_4567
+
+dl_shadow_begin:
+  type: GFX
+  offset: 0x14520
+  symbol: dl_shadow_begin
+
+dl_shadow_circle:
+  type: GFX
+  offset: 0x14548
+  symbol: dl_shadow_circle
+
+dl_shadow_square:
+  type: GFX
+  offset: 0x14590
+  symbol: dl_shadow_square
+
+dl_shadow_9_verts:
+  type: GFX
+  offset: 0x145D8
+  symbol: dl_shadow_9_verts
+
+dl_shadow_4_verts:
+  type: GFX
+  offset: 0x14620
+  symbol: dl_shadow_4_verts
+
+dl_shadow_end:
+  type: GFX
+  offset: 0x14638
+  symbol: dl_shadow_end
+
+dl_proj_mtx_fullscreen:
+  type: GFX
+  offset: 0x14660
+  symbol: dl_proj_mtx_fullscreen
+
+dl_screen_transition_end:
+  type: GFX
+  offset: 0x14698
+  symbol: dl_screen_transition_end
+
+dl_transition_draw_filled_region:
+  type: GFX
+  offset: 0x146C0
+  symbol: dl_transition_draw_filled_region
+
+dl_skybox_begin:
+  type: GFX
+  offset: 0x14708
+  symbol: dl_skybox_begin
+
+dl_skybox_tile_tex_settings:
+  type: GFX
+  offset: 0x14738
+  symbol: dl_skybox_tile_tex_settings
+
+dl_skybox_end:
+  type: GFX
+  offset: 0x14768
+  symbol: dl_skybox_end
+
+dl_waterbox_rgba16_begin:
+  type: GFX
+  offset: 0x14790
+  symbol: dl_waterbox_rgba16_begin
+
+dl_waterbox_ia16_begin:
+  type: GFX
+  offset: 0x147D0
+  symbol: dl_waterbox_ia16_begin
+
+dl_waterbox_end:
+  type: GFX
+  offset: 0x14810
+  symbol: dl_waterbox_end
+
+dl_ia8_up_arrow_begin:
+  type: GFX
+  offset: 0x14878
+  symbol: dl_ia8_up_arrow_begin
+
+dl_rgba16_unused:
+  type: GFX
+  offset: 0x148B0
+  symbol: dl_rgba16_unused
+
+dl_ia8_up_arrow_load_texture_block:
+  type: GFX
+  offset: 0x148E0
+  symbol: dl_ia8_up_arrow_load_texture_block
+
+dl_ia8_up_arrow_end:
+  type: GFX
+  offset: 0x14938
+  symbol: dl_ia8_up_arrow_end
+
+seg2_lights_02014958:
+  type: LIGHTS
+  size: 24
+  offset: 0x14958
+  symbol: seg2_lights_02014958
+
+dl_paintings_rippling_begin:
+  type: GFX
+  offset: 0x14970
+  symbol: dl_paintings_rippling_begin
+
+dl_paintings_rippling_end:
+  type: GFX
+  offset: 0x149A8
+  symbol: dl_paintings_rippling_end
+
+dl_paintings_env_mapped_begin:
+  type: GFX
+  offset: 0x149C8
+  symbol: dl_paintings_env_mapped_begin
+
+dl_paintings_env_mapped_end:
+  type: GFX
+  offset: 0x14A00
+  symbol: dl_paintings_env_mapped_end
+
+dl_paintings_draw_ripples:
+  type: GFX
+  offset: 0x14A30
+  symbol: dl_paintings_draw_ripples

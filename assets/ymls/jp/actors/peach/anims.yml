@@ -3,7 +3,7 @@
   compression:
     offset: 0x16BC70
   segments:
-    - [0x05,  0x16BC70]
+    - [ 0x5, 0x16BC70 ]
 
 peach_seg5_anim_0500C638:
   type: SM64:ANIM

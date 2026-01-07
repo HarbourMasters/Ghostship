@@ -5,7 +5,7 @@
   compression:
     offset: 0x145E90
   segments:
-    - [0x05,  0x145E90]
+    - [ 0x5, 0x145E90 ]
 
 tweester_geo:
   type: SM64:GEO_LAYOUT

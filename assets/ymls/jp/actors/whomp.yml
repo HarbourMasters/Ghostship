@@ -3,7 +3,12 @@
   compression:
     offset: 0x1C2580
   segments:
-    - [0x06,  0x1C2580]
+    - [ 0x6, 0x1C2580 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "whomp/anims.h"'
+      - '#include "whomp/geo.h"'
 
 whomp_back:
   type: TEXTURE
@@ -221,4 +226,3 @@ whomp_seg6_collision_06020A0C:
   type: SM64:COLLISION
   offset: 0x20A0C
   symbol: whomp_seg6_collision_06020A0C
-

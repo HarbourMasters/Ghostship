@@ -3,7 +3,7 @@
   compression:
     offset: 0x1B9CC0
   segments:
-    - [0x06,  0x1B9CC0]
+    - [ 0x6, 0x1B9CC0 ]
 
 bub_seg6_anim_0601233C:
   type: SM64:ANIM

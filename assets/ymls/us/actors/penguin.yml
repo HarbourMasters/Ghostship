@@ -3,7 +3,12 @@
   compression:
     offset: 0x160670
   segments:
-    - [0x05,  0x160670]
+    - [ 0x5, 0x160670 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "penguin/anims.h"'
+      - '#include "penguin/geo.h"'
 
 penguin_seg5_lights_05002D80:
   type: LIGHTS
@@ -317,4 +322,3 @@ penguin_seg5_collision_05008B88:
   type: SM64:COLLISION
   offset: 0x8B88
   symbol: penguin_seg5_collision_05008B88
-

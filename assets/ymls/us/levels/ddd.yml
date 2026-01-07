@@ -3,7 +3,14 @@
   compression:
     offset: 0x48D930
   segments:
-    - [0x07,  0x48D930]
+    - [ 0x7, 0x48D930 ]
+  external_files:
+    - "assets/ymls/us/textures/water.yml"
+  header:
+    header:
+      - '#include "ddd/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ddd_entry[];'
 
 0:
   type: TEXTURE

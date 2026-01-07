@@ -3,7 +3,14 @@
   compression:
     offset: 0x404010
   segments:
-    - [0x07,  0x404010]
+    - [ 0x7, 0x404010 ]
+  external_files:
+    - "assets/ymls/jp/textures/snow.yml"
+  header:
+    header:
+      - '#include "sl/geo.h"'
+      - ''
+      - 'extern const LevelScript level_sl_entry[];'
 
 0:
   type: TEXTURE

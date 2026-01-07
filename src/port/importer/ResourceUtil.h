@@ -1,7 +1,8 @@
 #pragma once
 
-#include "resourcebridge.h"
-#include "Context.h"
+#include <bridge/resourcebridge.h>
+#include <ship/resource/ResourceManager.h>
+#include <ship/Context.h>
 
 namespace SM64 {
 template <typename T> T LoadChild(uint64_t crc) {
@@ -9,6 +10,7 @@ template <typename T> T LoadChild(uint64_t crc) {
     if (path == nullptr) {
         return nullptr;
     }
+    printf("LoadChild: %s\n", path);
     auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path);
     return asset ? static_cast<T>(asset->GetRawPointer()) : nullptr;
 }

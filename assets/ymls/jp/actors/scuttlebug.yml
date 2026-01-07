@@ -3,7 +3,12 @@
   compression:
     offset: 0x1E6210
   segments:
-    - [0x06,  0x1E6210]
+    - [ 0x6, 0x1E6210 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "scuttlebug/anims.h"'
+      - '#include "scuttlebug/geo.h"'
 
 scuttlebug_lights_unused1:
   type: LIGHTS
@@ -234,4 +239,3 @@ scuttlebug_seg6_dl_06014378:
   type: GFX
   offset: 0x14378
   symbol: scuttlebug_seg6_dl_06014378
-

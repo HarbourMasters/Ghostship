@@ -1,21 +1,21 @@
 00:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 99
 01:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 100
 02:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 101
 03:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 102
 04_camera_buzz:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 103
 05_camera_shutter:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 104
 06:
-  type: SAMPLE
+  type: NAUDIO:V0:SAMPLE
   id: 105

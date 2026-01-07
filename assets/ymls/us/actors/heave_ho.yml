@@ -3,7 +3,12 @@
   compression:
     offset: 0x12A7E0
   segments:
-    - [0x05,  0x12A7E0]
+    - [ 0x5, 0x12A7E0 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "heave_ho/anims.h"'
+      - '#include "heave_ho/geo.h"'
 
 heave_ho_lights_unused1:
   type: LIGHTS
@@ -497,4 +502,3 @@ heave_ho_seg5_dl_05014D80:
   type: GFX
   offset: 0x14D80
   symbol: heave_ho_seg5_dl_05014D80
-

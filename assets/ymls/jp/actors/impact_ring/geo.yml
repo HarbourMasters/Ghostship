@@ -3,7 +3,7 @@
     - "assets/ymls/jp/actors/impact_ring.yml"
   autopads: false
   segments:
-    - [0x0D,  0x1B7400]
+    - [ 0xD, 0x1B7400 ]
 
 invisible_bowser_accessory_geo:
   type: SM64:GEO_LAYOUT

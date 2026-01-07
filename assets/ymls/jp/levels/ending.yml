@@ -3,9 +3,398 @@
   compression:
     offset: 0x49C6B0
   segments:
-    - [0x07,  0x49C6B0]
+    - [ 0x7, 0x49C6B0 ]
+  header:
+    header:
+      - '#include "ending/geo.h"'
+      - ''
+      - 'extern const LevelScript level_ending_entry[];'
 
-cake:
-  type: BLOB
-  size: 153600
+cake_end_texture_0:
+  type: TEXTURE
+  width: 80
+  height: 20
   offset: 0x0
+  format: RGBA16
+  symbol: dCakeEndTexture0
+
+cake_end_texture_1:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xC80
+  format: RGBA16
+  symbol: dCakeEndTexture1
+
+cake_end_texture_2:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1900
+  format: RGBA16
+  symbol: dCakeEndTexture2
+
+cake_end_texture_3:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x2580
+  format: RGBA16
+  symbol: dCakeEndTexture3
+
+cake_end_texture_4:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x3200
+  format: RGBA16
+  symbol: dCakeEndTexture4
+
+cake_end_texture_5:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x3E80
+  format: RGBA16
+  symbol: dCakeEndTexture5
+
+cake_end_texture_6:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x4B00
+  format: RGBA16
+  symbol: dCakeEndTexture6
+
+cake_end_texture_7:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x5780
+  format: RGBA16
+  symbol: dCakeEndTexture7
+
+cake_end_texture_8:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x6400
+  format: RGBA16
+  symbol: dCakeEndTexture8
+
+cake_end_texture_9:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x7080
+  format: RGBA16
+  symbol: dCakeEndTexture9
+
+cake_end_texture_10:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x7D00
+  format: RGBA16
+  symbol: dCakeEndTexture10
+
+cake_end_texture_11:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x8980
+  format: RGBA16
+  symbol: dCakeEndTexture11
+
+cake_end_texture_12:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x9600
+  format: RGBA16
+  symbol: dCakeEndTexture12
+
+cake_end_texture_13:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xA280
+  format: RGBA16
+  symbol: dCakeEndTexture13
+
+cake_end_texture_14:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xAF00
+  format: RGBA16
+  symbol: dCakeEndTexture14
+
+cake_end_texture_15:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xBB80
+  format: RGBA16
+  symbol: dCakeEndTexture15
+
+cake_end_texture_16:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xC800
+  format: RGBA16
+  symbol: dCakeEndTexture16
+
+cake_end_texture_17:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xD480
+  format: RGBA16
+  symbol: dCakeEndTexture17
+
+cake_end_texture_18:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xE100
+  format: RGBA16
+  symbol: dCakeEndTexture18
+
+cake_end_texture_19:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xED80
+  format: RGBA16
+  symbol: dCakeEndTexture19
+
+cake_end_texture_20:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0xFA00
+  format: RGBA16
+  symbol: dCakeEndTexture20
+
+cake_end_texture_21:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x10680
+  format: RGBA16
+  symbol: dCakeEndTexture21
+
+cake_end_texture_22:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x11300
+  format: RGBA16
+  symbol: dCakeEndTexture22
+
+cake_end_texture_23:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x11F80
+  format: RGBA16
+  symbol: dCakeEndTexture23
+
+cake_end_texture_24:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x12C00
+  format: RGBA16
+  symbol: dCakeEndTexture24
+
+cake_end_texture_25:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x13880
+  format: RGBA16
+  symbol: dCakeEndTexture25
+
+cake_end_texture_26:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x14500
+  format: RGBA16
+  symbol: dCakeEndTexture26
+
+cake_end_texture_27:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x15180
+  format: RGBA16
+  symbol: dCakeEndTexture27
+
+cake_end_texture_28:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x15E00
+  format: RGBA16
+  symbol: dCakeEndTexture28
+
+cake_end_texture_29:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x16A80
+  format: RGBA16
+  symbol: dCakeEndTexture29
+
+cake_end_texture_30:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x17700
+  format: RGBA16
+  symbol: dCakeEndTexture30
+
+cake_end_texture_31:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x18380
+  format: RGBA16
+  symbol: dCakeEndTexture31
+
+cake_end_texture_32:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x19000
+  format: RGBA16
+  symbol: dCakeEndTexture32
+
+cake_end_texture_33:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x19C80
+  format: RGBA16
+  symbol: dCakeEndTexture33
+
+cake_end_texture_34:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1A900
+  format: RGBA16
+  symbol: dCakeEndTexture34
+
+cake_end_texture_35:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1B580
+  format: RGBA16
+  symbol: dCakeEndTexture35
+
+cake_end_texture_36:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1C200
+  format: RGBA16
+  symbol: dCakeEndTexture36
+
+cake_end_texture_37:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1CE80
+  format: RGBA16
+  symbol: dCakeEndTexture37
+
+cake_end_texture_38:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1DB00
+  format: RGBA16
+  symbol: dCakeEndTexture38
+
+cake_end_texture_39:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1E780
+  format: RGBA16
+  symbol: dCakeEndTexture39
+
+cake_end_texture_40:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x1F400
+  format: RGBA16
+  symbol: dCakeEndTexture40
+
+cake_end_texture_41:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x20080
+  format: RGBA16
+  symbol: dCakeEndTexture41
+
+cake_end_texture_42:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x20D00
+  format: RGBA16
+  symbol: dCakeEndTexture42
+
+cake_end_texture_43:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x21980
+  format: RGBA16
+  symbol: dCakeEndTexture43
+
+cake_end_texture_44:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x22600
+  format: RGBA16
+  symbol: dCakeEndTexture44
+
+cake_end_texture_45:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x23280
+  format: RGBA16
+  symbol: dCakeEndTexture45
+
+cake_end_texture_46:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x23F00
+  format: RGBA16
+  symbol: dCakeEndTexture46
+
+cake_end_texture_47:
+  type: TEXTURE
+  width: 80
+  height: 20
+  offset: 0x24B80
+  format: RGBA16
+  symbol: dCakeEndTexture47
+
+dl_cake_end_screen:
+  type: GFX
+  offset: 0x26400
+  symbol: dl_cake_end_screen

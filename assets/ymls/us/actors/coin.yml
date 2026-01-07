@@ -3,7 +3,11 @@
   compression:
     offset: 0x201410
   segments:
-    - [0x03,  0x201410]
+    - [ 0x3, 0x201410 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "coin/geo.h"'
 
 coin_seg3_vertex_030056C0:
   type: VTX
@@ -128,4 +132,3 @@ coin_seg3_dl_030079B8:
   type: GFX
   offset: 0x79B8
   symbol: coin_seg3_dl_030079B8
-

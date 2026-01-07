@@ -3,7 +3,11 @@
   compression:
     offset: 0x112B50
   segments:
-    - [0x04,  0x112B50]
+    - [ 0x4, 0x112B50 ]
+  header:
+    header:
+      - '#include "sm64.h"'
+      - '#include "stomp_smoke/geo.h"'
 
 stomp_smoke_seg4_vertex_040220C8:
   type: VTX
@@ -150,4 +154,3 @@ stomp_smoke_seg4_dl_04025300:
   type: GFX
   offset: 0x25300
   symbol: stomp_smoke_seg4_dl_04025300
-
