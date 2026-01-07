@@ -28,6 +28,7 @@
 #include "paintings.h"
 #include "engine/graph_node.h"
 #include "level_table.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 #define CBUTTON_MASK (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS)
 
@@ -3510,11 +3511,12 @@ void create_camera(struct GraphNodeCamera *gc, struct AllocOnlyPool *pool) {
 void update_graph_node_camera(struct GraphNodeCamera *gc) {
     UNUSED u8 filler[8];
     UNUSED struct Camera *c = gc->config.camera;
-
+    FrameInterpolation_ShouldInterpolateFrame(sFramesPaused == 0);
     gc->rollScreen = gLakituState.roll;
     vec3f_copy(gc->pos, gLakituState.pos);
     vec3f_copy(gc->focus, gLakituState.focus);
     zoom_out_if_paused_and_outside(gc);
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 Gfx *geo_camera_main(s32 callContext, struct GraphNode *g, void *context) {

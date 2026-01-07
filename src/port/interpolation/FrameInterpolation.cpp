@@ -297,6 +297,13 @@ struct InterpolateCtx {
         }
     }
 
+    void translate_mtxf(Mat4 dest, Vec3f b) {
+        mtxf_identity(dest);
+        dest[3][0] = b[0];
+        dest[3][1] = b[1];
+        dest[3][2] = b[2];
+    }
+
     float lerp(f32 o, f32 n) {
         return w * o + step * n;
     }
@@ -436,7 +443,7 @@ struct InterpolateCtx {
                             temp[1] = lerp(old_op.matrix_translate.b.y, new_op.matrix_translate.b.y);
                             temp[2] = lerp(old_op.matrix_translate.b.z, new_op.matrix_translate.b.z);
 
-                            mtxf_translate(*gInterpolationMatrix, temp);
+                            translate_mtxf(*gInterpolationMatrix, temp);
                             break;
                         case Op::MatrixPosRotXYZ: {
                             Vec3f tempF;

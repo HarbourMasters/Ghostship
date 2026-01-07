@@ -364,7 +364,7 @@ static void geo_process_translation_rotation(struct GraphNodeTranslationRotation
     Mat4 mtxf;
     Vec3f translation;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
-    FrameInterpolation_RecordOpenChild("geo_process_translation_rotation", (uintptr_t)node);
+    FrameInterpolation_RecordOpenChild("geo_process_translation_rotation", TAG_OBJECT(node));
 
     vec3s_to_vec3f(translation, node->translation);
     mtxf_rotate_zxy_and_translate(mtxf, translation, node->rotation);
@@ -1102,7 +1102,7 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
     UNUSED s32 unused;
 
     if (node->node.flags & GRAPH_RENDER_ACTIVE) {
-        FrameInterpolation_RecordOpenChild("geo_process_root", (uintptr_t)node);
+        FrameInterpolation_RecordOpenChild("geo_process_root", (uintptr_t)node->nodeId);
         Mtx *initialMatrix;
         Vp *viewport = alloc_display_list(sizeof(*viewport));
 
