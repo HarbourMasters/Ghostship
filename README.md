@@ -1,39 +1,85 @@
-# Ghostship (Name Pending)
-_A Super Mario 64 PC Port_
+# Ghostship
 
-A prior copy of the game is required to extract the assets. We do not condone piracy.
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/HarbourMasters/Ghostship?style=flat-square)](
 
-__The following ROMs are supported:__
-
-* sm64.jp.z64 `sha1: 8a20a5c83d6ceb0f0506cfc9fa20d8f438cafe51`
-* sm64.us.z64 `sha1: 9bef1128717f958171a4afac3ed78ee2bb4e86ce`
-* sm64.eu.z64 `sha1: 4ac5721683d0e0b6bbb561b58a71740845dceea9`
-* sm64.sh.z64 `sha1: 3f319ae697533a255a1003d09202379d78d5a2e0`
+Lead Developers:
+* [Lywx](https://www.github.com/kiritodv)
 
 ## Discord
 
-<!-- TODO: Public discord channel(s) -->
-Currently this project is in the early stages of development, and the relevant discord channels are not yet public. If you would like to contribute, please contact one of the developers on the [HM64 Discord](https://discord.com/invite/shipofharkinian) for more information.
+Official Discord: https://discord.com/invite/shipofharkinian
 
-## Quick Start
-#### 1. Verify your ROM
-Upload your ROM dump to [Hasher-js](https://www.romhacking.net/hash/) and verify that the SHA1 hash matches one of the hashes listed above.
+If you're having any trouble after reading through this `README`, feel free ask for help in the Ghostship Support text channels. Please keep in mind that we do not condone piracy.
 
-#### 2. Create an OTR from your ROM
-<!-- TODO: Integrate CubeOS into port -->
-Eventually this step will be a bit more user friendly and built-in to the port, but for now you will need to clone and use [CubeOS](https://github.com/HarbourMasters/CubeOS) and follow the instructions in the README.
+# Quick Start
 
-#### 3. Download the latest release
-<!-- TODO: Releases & Nightly builds -->
-Currently there are no releases or nightly builds available. You will need to build the project yourself, or check back later.
+Ghostship does not include any copyrighted assets.  You are required to provide a supported copy of the game.
 
-#### 4. Place your OTR next to the executable and launch the game!
+### 1. Verify your ROM dump
+The supported ROMs are US and JP versions. You can verify you have dumped a supported copy of the game by using the SHA-1 File Checksum Online at https://www.romhacking.net/hash/. 
 
-## Development
+* The SHA-1 hash for a US ROM is 9bef1128717f958171a4afac3ed78ee2bb4e86ce.
+* The SHA-1 hash for a JP ROM is 8a20a5c83d6ceb0f0506cfc9fa20d8f438cafe51.
 
+### 2. Verify your ROM is in .z64 format
+Your ROM needs to be in .z64 format. If it's in .n64 format, use the following to convert it to a .z64: https://hack64.net/tools/swapper.php
+
+### 2. Download Ghostship from [Releases](https://github.com/HarbourMasters/Ghostship/releases)
+
+### 3. Generating the OTR from the ROM and Play!
+#### Windows
+* Extract every file from the zip into a folder of your choosing.
+* Run Ghostship.exe and select your US or JP ROM.
+
+#### Linux
+* Extract every file from the zip into a folder of your choosing.
+* Execute Ghostship.appimage. You may have to chmod +x the appimage via terminal.
+
+#### MacOS
+* Extract every file from the zip into a folder of your choosing.
+* Run Ghostship and select your US or JP ROM.
+
+#### Nintendo Switch
+* Run one of the PC releases to generate an `sm64.o2r` file. After launching the game on PC, you will be able to find these files in the same directory as `Ghostship.exe` or `Ghostship.appimage`.
+* Copy the files to your sd card
+
+# Configuration
+
+### Default keyboard configuration
+| N64 | A | B | Z | Start | Analog stick | C buttons | D-Pad |
+| - | - | - | - | - | - | - | - |
+| Keyboard | X | C | Z | Space | WASD | Arrow keys | TFGH |
+
+### Other shortcuts
+| Keys | Action |
+| - | - |
+| F1 | Toggle menubar |
+| F4 | Reset |
+| F11 | Fullscreen |
+| Tab | Toggle Alternate assets |
+
+### Graphics Backends
+Currently, there are three rendering APIs supported: DirectX11 (Windows), OpenGL (all platforms), and Metal (macOS). You can change which API to use in the `Settings` menu of the menubar, which requires a restart.  If you're having an issue with crashing, you can change the API in the `Ghostship.cfg.json` file by finding the line `"Backend":{`... and changing the `id` value to `3` and set the `Name` to `OpenGL`. `DirectX 11` with id `2` is the default on Windows. `Metal` with id `4` is the default on macOS.
+
+# Custom Assets
+Custom assets are packed in `.o2r` or `.otr` files. To use custom assets, place them in the `mods` folder.
+
+If you're interested in creating and/or packing your own custom asset `.o2r`/`.otr` files, check out the following tools:
+* [**retro - OTR and O2R generator**](https://github.com/HarbourMasters64/retro)
+* [**fast64 - Blender plugin**](https://github.com/HarbourMasters/fast64)
+
+# Development
 ### Building
 
-If you want to manually compile this, please consult the [building instructions](docs/building.md).
+If you want to manually compile Ghostship, please consult the [building instructions](https://github.com/HarbourMasters/Ghostship/blob/main/docs/BUILDING.md).
+
+### Playtesting
+If you want to playtest a continuous integration build, you can find them at the links below. Keep in mind that these are for playtesting only, and you will likely encounter bugs and possibly crashes. 
+
+* [Windows](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-windows.zip)
+* [macOS](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-mac-x64.zip)
+* [Linux](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-linux.zip)
+* [Switch](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-switch.zip)
 
 <a href="https://github.com/Kenix3/libultraship/">
   <picture>
@@ -41,3 +87,10 @@ If you want to manually compile this, please consult the [building instructions]
     <img alt="Powered by libultraship" src="./docs/poweredbylus.lightmode.png">
   </picture>
 </a>
+
+# Special Thanks:
+
+* [HM64 Team](https://github.com/harbourMasters) : for creating Libultraship and helping with various issues.
+* [garrettjoecox](https://github.com/garrettjoecox) : for contributing with fixes to this port.
+* [inspectredc](https://github.com/inspectredc) : for contributing to the extraction of the game's assets.
+* [Malkierian](https://github.com/Malkierian) : for contributing to the extraction of the game's assets.
