@@ -525,7 +525,7 @@ static s32 bhv_cmd_load_animations(void) {
     u8 field = BHV_CMD_GET_2ND_U8(0);
 
     void* anims = BHV_CMD_GET_VPTR(1);
-    cur_obj_set_vptr(field, LOAD_ASSET(anims));
+    cur_obj_set_vptr(field, segmented_to_virtual(anims));
 
     gCurBhvCommand += 2;
     return BHV_PROC_CONTINUE;
@@ -731,7 +731,7 @@ static s32 bhv_cmd_set_int_random_from_table(void) {
 // Command 0x2A: Loads collision data for the object.
 // Usage: LOAD_COLLISION_DATA(collisionData)
 static s32 bhv_cmd_load_collision_data(void) {
-    u32 *collisionData = LOAD_ASSET(BHV_CMD_GET_VPTR(1));
+    u32 *collisionData = segmented_to_virtual(BHV_CMD_GET_VPTR(1));
 
     gCurrentObject->collisionData = collisionData;
 

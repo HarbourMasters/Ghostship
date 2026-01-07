@@ -13,6 +13,7 @@
 #include "audio/external.h"
 #include "gfx_dimensions.h"
 #include "game/rendering_graph_node.h"
+#include "assets/bin/title_screen_bg.h"
 
 // frame counts for the zoom in, hold, and zoom out of title model
 #define INTRO_STEPS_ZOOM_IN 20
@@ -153,14 +154,12 @@ static Gfx *intro_backdrop_one_image(s32 index, s8 *backgroundTable) {
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
     Gfx *displayList = alloc_display_list(36 * sizeof(*displayList));
     Gfx *displayListIter = displayList;
-    // TODO: Fix this for gameover screen
-    // TORCH-TODO: Export and fix this
     const u8 *const *vIntroBgTable = segmented_to_virtual(textureTables[backgroundTable[0]]);
     s32 i;
 
     guTranslate(mtx, ((index % num_tiles_h) * 80) + xOffset, (index/num_tiles_h) * 80, 0.0f);
     gSPMatrix(displayListIter++, mtx, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_PUSH);
-    gSPDisplayList(displayListIter++, &title_screen_bg_dl_0A000118);
+    gSPDisplayList(displayListIter++, title_screen_bg_dl_0A000118);
     for (i = 0; i < 4; ++i) {
         gDPLoadTextureBlock(displayListIter++, vIntroBgTable[i], G_IM_FMT_RGBA, G_IM_SIZ_16b, 80, 20, 0,
                             G_TX_CLAMP, G_TX_CLAMP, 7, 6, G_TX_NOLOD, G_TX_NOLOD);
@@ -199,12 +198,11 @@ Gfx *geo_intro_regular_backdrop(s32 state, struct GraphNode *node, UNUSED void *
         dlIter = dl;
         graphNode->node.flags = (graphNode->node.flags & 0xFF) | (LAYER_OPAQUE << 8);
         gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
-        // TORCH-TODO: Export and fix this
-        gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000100);
+        gSPDisplayList(dlIter++, title_screen_bg_dl_0A000100);
         for (i = 0; i < num_tiles_h; ++i) {
             gSPDisplayList(dlIter++, intro_backdrop_one_image(i, backgroundTable));
         }
-        gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000190);
+        gSPDisplayList(dlIter++, title_screen_bg_dl_0A000190);
         gSPEndDisplayList(dlIter);
     }
     return dl;
@@ -258,12 +256,10 @@ Gfx *geo_intro_gameover_backdrop(s32 state, struct GraphNode *node, UNUSED void 
 
         // draw all the tiles
         gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
-        // TORCH-TODO: Export and fix this
-        gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000100);
+        gSPDisplayList(dlIter++, title_screen_bg_dl_0A000100);
         for (j = 0; j < ARRAY_COUNT(gameOverBackgroundTable); ++j)
             gSPDisplayList(dlIter++, intro_backdrop_one_image(j, gameOverBackgroundTable));
-        // TORCH-TODO: Export and fix this
-        gSPDisplayList(dlIter++, &title_screen_bg_dl_0A000190);
+        gSPDisplayList(dlIter++, title_screen_bg_dl_0A000190);
         gSPEndDisplayList(dlIter);
     }
     return dl;
@@ -451,8 +447,7 @@ Gfx *geo_intro_rumble_pak_graphic(s32 state, struct GraphNode *node, UNUSED void
             dl = alloc_display_list(3 * sizeof(*dl));
             if (dl != NULL) {
                 dlIter = dl;
-                // TORCH-TODO: Export and fix this
-                gSPDisplayList(dlIter++, &title_screen_bg_dl_0A007548);
+                gSPDisplayList(dlIter++, title_screen_bg_dl_0A007548);
                 gSPEndDisplayList(dlIter);
             }
         } else {

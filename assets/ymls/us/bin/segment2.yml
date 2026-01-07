@@ -286,3 +286,17 @@ dl_paintings_draw_ripples:
   type: GFX
   offset: 0x17890
   symbol: dl_paintings_draw_ripples
+
+seg2_painting_triangle_mesh:
+  type: ARRAY
+  offset: 0x178C0
+  array_type: s16
+  count: 1265
+  symbol: seg2_painting_triangle_mesh
+
+seg2_painting_mesh_neighbor_tris:
+  type: ARRAY
+  offset: 0x182A4
+  array_type: s16
+  count: 949
+  symbol: seg2_painting_mesh_neighbor_tris

@@ -458,8 +458,7 @@ void envfx_set_bubble_texture(s32 mode, s16 index) {
     }
 
     gDPSetTextureImage(sGfxCursor++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, *(imageArr + frame));
-    // TORCH-TODO: Export and fix this
-    gSPDisplayList(sGfxCursor++, &tiny_bubble_dl_0B006D68);
+    gSPDisplayList(sGfxCursor++, tiny_bubble_dl_0B006D68);
 }
 
 /**
@@ -486,8 +485,7 @@ Gfx *envfx_update_bubble_particles(s32 mode, UNUSED Vec3s marioPos, Vec3s camFro
     envfx_bubbles_update_switch(mode, camTo, vertex1, vertex2, vertex3);
     rotate_triangle_vertices(vertex1, vertex2, vertex3, pitch, yaw);
 
-    // TORCH-TODO: Export and fix this
-    gSPDisplayList(sGfxCursor++, &tiny_bubble_dl_0B006D38);
+    gSPDisplayList(sGfxCursor++, tiny_bubble_dl_0B006D38);
 
     for (i = 0; i < sBubbleParticleMaxCount; i += 5) {
         gDPPipeSync(sGfxCursor++);
@@ -500,8 +498,7 @@ Gfx *envfx_update_bubble_particles(s32 mode, UNUSED Vec3s marioPos, Vec3s camFro
         gSP1Triangle(sGfxCursor++, 12, 13, 14, 0);
     }
 
-    // TORCH-TODO: Export and fix this
-    gSPDisplayList(sGfxCursor++, &tiny_bubble_dl_0B006AB0);
+    gSPDisplayList(sGfxCursor++, tiny_bubble_dl_0B006AB0);
     gSPEndDisplayList(sGfxCursor++);
 
     return gfxStart;

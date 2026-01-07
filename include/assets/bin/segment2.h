@@ -118,3 +118,7 @@ static const ALIGN_ASSET(2) char dl_paintings_env_mapped_end[] = "__OTR__bin/seg
 
 static const ALIGN_ASSET(2) char dl_paintings_draw_ripples[] = "__OTR__bin/segment2/dl_paintings_draw_ripples";
 
+static const ALIGN_ASSET(2) char seg2_painting_triangle_mesh[] = "__OTR__bin/segment2/seg2_painting_triangle_mesh";
+
+static const ALIGN_ASSET(2) char seg2_painting_mesh_neighbor_tris[] = "__OTR__bin/segment2/seg2_painting_mesh_neighbor_tris";
+
