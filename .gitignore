@@ -90,7 +90,7 @@ code/
 torch.hash.yml
 merge/
 .vs/
-include/assets/*
 modifications/
 modding/
 *.log
+node_modules
