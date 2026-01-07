@@ -54,6 +54,10 @@ enum SpecialFontChars {
     GLOBAR_CHAR_TERMINATOR = 0xFF
 };
 
+enum ColoredFontChars {
+    COLOR_CHAR_STAR = 0x35
+};
+
 enum DialogMark {
     DIALOG_MARK_NONE,
     DIALOG_MARK_DAKUTEN,

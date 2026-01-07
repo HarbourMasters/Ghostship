@@ -520,7 +520,8 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
                     }
 
                     if (hudLUT == HUD_LUT_GLOBAL) {
-                        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT2[str[strPos]]);
+                        const u8 *texture = hudLUT2[str[strPos]];
+                        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture == NULL ? hudLUT2[COLOR_CHAR_STAR] : texture);
                     }
 
                     gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
@@ -537,7 +538,8 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
             }
 
             if (hudLUT == HUD_LUT_GLOBAL) {
-                gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hudLUT2[str[strPos]]);
+                const u8 *texture = hudLUT2[str[strPos]];
+                gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture == NULL ? hudLUT2[COLOR_CHAR_STAR] : texture);
             }
 
             gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);

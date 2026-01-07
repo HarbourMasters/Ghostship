@@ -27,9 +27,19 @@
   format: RGBA16
   symbol: intro_seg7_texture_07007EA0
 
-intro_seg7_dl_0700B3A0:
+intro_seg7_dl_07008EA0:
   type: GFX
   offset: 0x8EA0
+  symbol: intro_seg7_dl_07008EA0
+
+intro_seg7_dl_07009E38:
+  type: GFX
+  offset: 0x9E38
+  symbol: intro_seg7_dl_07009E38
+
+intro_seg7_dl_0700B3A0:
+  type: GFX
+  offset: 0xB3A0
   symbol: intro_seg7_dl_0700B3A0
 
 1:

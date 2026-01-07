@@ -7,6 +7,7 @@
 #include "memory.h"
 #include "print.h"
 #include "segment2.h"
+#include "ingame_menu.h"
 
 /**
  * This file handles printing and formatting the colorful text that
@@ -352,9 +353,10 @@ s8 char_to_glyph_index(char c) {
  */
 void add_glyph_texture(s8 glyphIndex) {
     const u8 *const *glyphs = segmented_to_virtual(main_hud_lut);
+    const u8 *texture = glyphs[glyphIndex];
 
     gDPPipeSync(gDisplayListHead++);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, glyphs[glyphIndex]);
+    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture == NULL ? glyphs[COLOR_CHAR_STAR] : texture);
     gSPDisplayList(gDisplayListHead++, dl_hud_img_load_tex_block);
 }
 
