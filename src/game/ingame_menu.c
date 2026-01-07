@@ -1204,6 +1204,7 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
                     break;
                 }
             default:
+                FrameInterpolation_RecordOpenChild("render_dialog_text_and_pages:render_char", TAG_LETTER(strChar));
                 if(ROM_JP) {
                     if (linePos != 0) {
                         create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * xMatrix, 0, 0);
@@ -1232,6 +1233,7 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
                         linePos++;
                     }
                 }
+                FrameInterpolation_RecordCloseChild();
                 break;
         }
 
@@ -1581,7 +1583,10 @@ void render_dialog_entries(void) {
             ensure_nonnegative((240 - dialog->width) + (dialog->linesPerBox * 80 / DIAG_VAL4))
     );
 
+    bool shouldInterpolate = gDialogScrollOffsetY != 0;
+    FrameInterpolation_ShouldInterpolateFrame(shouldInterpolate);
     handle_dialog_text_and_pages(0, dialog, lowerBound);
+    FrameInterpolation_ShouldInterpolateFrame(true);
 
     if (gLastDialogPageStrPos == -1 && gLastDialogResponse == 1) {
         render_dialog_triangle_choice();
