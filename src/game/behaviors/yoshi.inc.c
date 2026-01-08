@@ -11,8 +11,8 @@ void bhv_yoshi_init(void) {
     o->oBuoyancy = 1.3f;
     o->oInteractionSubtype = INT_SUBTYPE_NPC;
 
-    if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) < 120
-        || sYoshiDead == TRUE) {
+    if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) < 120 ||
+        sYoshiDead == TRUE) {
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }
 }
@@ -81,7 +81,7 @@ void yoshi_idle_loop(void) {
 }
 
 void yoshi_talk_loop(void) {
-    if ((s16) o->oMoveAngleYaw == (s16) o->oAngleToMario) {
+    if ((s16)o->oMoveAngleYaw == (s16)o->oAngleToMario) {
         cur_obj_init_animation(0);
         if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT) == MARIO_DIALOG_STATUS_SPEAK) {
             o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;

@@ -12,7 +12,7 @@ struct ObjectHitbox sScuttlebugHitbox = {
     /* hurtboxHeight:     */ 60,
 };
 
-s32 update_angle_from_move_flags(s32 *angle) {
+s32 update_angle_from_move_flags(s32* angle) {
     if (o->oMoveFlags & OBJ_MOVE_HIT_WALL) {
         *angle = o->oWallAngle;
         return 1;
@@ -29,9 +29,8 @@ void bhv_scuttlebug_loop(void) {
 
     cur_obj_update_floor_and_walls();
 
-    if (o->oSubAction != 0
-        && cur_obj_set_hitbox_and_die_if_attacked(&sScuttlebugHitbox, SOUND_OBJ_DYING_ENEMY1,
-                                                  o->oScuttlebugUnkF4)) {
+    if (o->oSubAction != 0 &&
+        cur_obj_set_hitbox_and_die_if_attacked(&sScuttlebugHitbox, SOUND_OBJ_DYING_ENEMY1, o->oScuttlebugUnkF4)) {
         o->oSubAction = 3;
     }
 
@@ -81,7 +80,7 @@ void bhv_scuttlebug_loop(void) {
 
         case 2:
             o->oForwardVel = 5.0f;
-            if ((s16) o->oMoveAngleYaw == (s16) o->oAngleToMario) {
+            if ((s16)o->oMoveAngleYaw == (s16)o->oAngleToMario) {
                 o->oSubAction = 1;
             }
             if (o->oPosY - o->oHomeY < -200.0f) {
@@ -145,7 +144,7 @@ void bhv_scuttlebug_loop(void) {
 void bhv_scuttlebug_spawn_loop(void) {
     if (o->oAction == 0) {
         if (o->oTimer > 30 && 500.0f < o->oDistanceToMario && o->oDistanceToMario < 1500.0f) {
-            struct Object *scuttlebug;
+            struct Object* scuttlebug;
             cur_obj_play_sound_2(SOUND_OBJ2_SCUTTLEBUG_ALERT);
             scuttlebug = spawn_object(o, MODEL_SCUTTLEBUG, bhvScuttlebug);
             scuttlebug->oScuttlebugUnkF4 = o->oScuttlebugSpawnerUnkF4;

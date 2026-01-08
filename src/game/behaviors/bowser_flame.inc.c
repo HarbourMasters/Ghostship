@@ -119,7 +119,7 @@ void bhv_flame_moving_forward_growing_init(void) {
 
 void bhv_flame_moving_forward_growing_loop(void) {
     UNUSED u8 filler[4];
-    UNUSED struct Object *flame;
+    UNUSED struct Object* flame;
 
     obj_set_hitbox(o, &sGrowingBowserFlameHitbox);
     o->oFlameScale = o->oFlameScale + 0.5;
@@ -212,14 +212,11 @@ void bhv_blue_bowser_flame_loop(void) {
     if (o->oTimer > 20) {
         if (o->oBehParams2ndByte == 0) {
             for (i = 0; i < 3; i++) {
-                spawn_object_relative_with_scale(0, 0, 0, 0, 5.0f, o, MODEL_RED_FLAME,
-                                                 bhvFlameFloatingLanding);
+                spawn_object_relative_with_scale(0, 0, 0, 0, 5.0f, o, MODEL_RED_FLAME, bhvFlameFloatingLanding);
             }
         } else {
-            spawn_object_relative_with_scale(1, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME,
-                                             bhvFlameFloatingLanding);
-            spawn_object_relative_with_scale(2, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME,
-                                             bhvFlameFloatingLanding);
+            spawn_object_relative_with_scale(1, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME, bhvFlameFloatingLanding);
+            spawn_object_relative_with_scale(2, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME, bhvFlameFloatingLanding);
         }
         obj_mark_for_deletion(o);
     }
@@ -234,7 +231,7 @@ void bhv_flame_bouncing_init(void) {
 }
 
 void bhv_flame_bouncing_loop(void) {
-    struct Object *bowser;
+    struct Object* bowser;
 
     if (o->oTimer == 0) {
         o->oFlameBowser = cur_obj_nearest_object_with_behavior(bhvBowser);
@@ -262,7 +259,7 @@ void bhv_flame_bouncing_loop(void) {
 }
 
 void bhv_blue_flames_group_loop(void) {
-    struct Object *flame;
+    struct Object* flame;
     s32 i;
 
     if (o->oTimer == 0) {

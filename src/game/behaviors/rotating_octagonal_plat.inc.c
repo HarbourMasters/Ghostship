@@ -1,6 +1,6 @@
 // rotating_octagonal_plat.inc.c
 
-static const Collision *sOctagonalPlatformCollision[] = {
+static const Collision* sOctagonalPlatformCollision[] = {
     bits_seg7_collision_0701AA84,
     rr_seg7_collision_07029508,
 };

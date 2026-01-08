@@ -58,7 +58,7 @@ void bhv_beta_trampoline_top_loop(void) {
 
     // When initialized, spawn the rest of the trampoline
     if (o->oTimer == 0) {
-        struct Object *trampolinePart;
+        struct Object* trampolinePart;
 
         trampolinePart = spawn_object(o, MODEL_TRAMPOLINE_CENTER, bhvBetaTrampolineSpring);
         trampolinePart->oPosY -= 75.0f;

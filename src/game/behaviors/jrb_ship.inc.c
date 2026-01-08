@@ -45,8 +45,8 @@ void bhv_jrb_sliding_box_loop(void) {
     Vec3f sp54;
     Vec3f sp48;
     Vec3s sp40;
-    struct Object *sp3C;
-    struct Surface *sp38;
+    struct Object* sp3C;
+    struct Surface* sp38;
     UNUSED Vec3f sp2C;
     Vec3f sp20;
     s16 sp1E;

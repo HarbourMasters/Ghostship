@@ -23,7 +23,7 @@ void bhv_breakable_box_small_init(void) {
 }
 
 void small_breakable_box_spawn_dust(void) {
-    struct Object *sp24 = spawn_object(o, MODEL_SMOKE, bhvSmoke);
+    struct Object* sp24 = spawn_object(o, MODEL_SMOKE, bhvSmoke);
     sp24->oPosX += (s32)(random_float() * 80.0f) - 40;
     sp24->oPosZ += (s32)(random_float() * 80.0f) - 40;
 }

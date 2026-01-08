@@ -10,7 +10,7 @@
  * By default it starts tangible
  */
 void bowser_tail_anchor_act_default(void) {
-    struct Object *bowser = o->parentObj;
+    struct Object* bowser = o->parentObj;
     cur_obj_become_tangible();
     cur_obj_scale(1.0f);
 
@@ -78,13 +78,13 @@ void bhv_bowser_tail_anchor_loop(void) {
  * Bowser's Flame spawn main loop
  */
 void bhv_bowser_flame_spawn_loop(void) {
-    struct Object *bowser = o->parentObj;
+    struct Object* bowser = o->parentObj;
     s32 animFrame;
     f32 posX;
     f32 posZ;
     f32 cossYaw = coss(bowser->oMoveAngleYaw);
     f32 sinsYaw = sins(bowser->oMoveAngleYaw);
-    s16 *data = segmented_to_virtual(dBowserFlamesOrientationValues);
+    s16* data = segmented_to_virtual(dBowserFlamesOrientationValues);
 
     // Check for Bowser breathing animation
     if (bowser->oSoundStateID == BOWSER_ANIM_BREATH) {
@@ -105,7 +105,7 @@ void bhv_bowser_flame_spawn_loop(void) {
             o->oPosY = bowser->oPosY + data[5 * animFrame + 1];
             o->oPosZ = bowser->oPosZ + (posZ * cossYaw - posX * sinsYaw);
             o->oMoveAnglePitch = data[5 * animFrame + 4] + 0xC00;
-            o->oMoveAngleYaw = data[5 * animFrame + 3] + (s16) bowser->oMoveAngleYaw;
+            o->oMoveAngleYaw = data[5 * animFrame + 3] + (s16)bowser->oMoveAngleYaw;
             // Spawns the flames on a non-odd animFrame value
             if (!(animFrame & 1)) {
                 spawn_object(o, MODEL_RED_FLAME, bhvFlameMovingForwardGrowing);
@@ -157,7 +157,7 @@ void bhv_bowser_body_anchor_loop(void) {
  */
 s32 bowser_spawn_shockwave(void) {
     if (o->oBehParams2ndByte == BOWSER_BP_BITS) {
-        struct Object *wave = spawn_object(o, MODEL_BOWSER_WAVE, bhvBowserShockWave);
+        struct Object* wave = spawn_object(o, MODEL_BOWSER_WAVE, bhvBowserShockWave);
         wave->oPosY = o->oFloorHeight;
         return TRUE;
     }
@@ -168,7 +168,7 @@ s32 bowser_spawn_shockwave(void) {
  * Misc effects that Bowser plays when he lands with drastic actions
  * Plays step sound, spawns particles and changes camera event
  */
-void bowser_bounce_effects(s32 *timer) {
+void bowser_bounce_effects(s32* timer) {
     if (o->oMoveFlags & OBJ_MOVE_LANDED) {
         (*timer)++;
         if (*timer < 4) {
@@ -234,7 +234,7 @@ void bowser_init_camera_actions(void) {
         o->oAction = BOWSER_ACT_WAIT;
     } else if (o->oBowserCamAct == BOWSER_CAM_ACT_WALK) {
         o->oAction = BOWSER_ACT_INTRO_WALK;
-    // Start with a big jump in BitFS to do a platform tilt
+        // Start with a big jump in BitFS to do a platform tilt
     } else if (o->oBehParams2ndByte == BOWSER_BP_BITFS) {
         o->oAction = BOWSER_ACT_BIG_JUMP;
     } else {
@@ -262,12 +262,12 @@ void bowser_act_intro_walk(void) {
         if (bowser_set_anim_look_up_and_walk()) {
             o->oSubAction++;
         }
-    // Then slowly walk
+        // Then slowly walk
     } else if (o->oSubAction == 1) {
         if (bowser_set_anim_slow_gait()) {
             o->oSubAction++;
         }
-    // And finally stop, and set to wait mode
+        // And finally stop, and set to wait mode
     } else if (bowser_set_anim_look_down_stop_walk()) {
         if (o->oBowserCamAct == BOWSER_CAM_ACT_WALK) {
             o->oBowserCamAct = BOWSER_CAM_ACT_IDLE;
@@ -352,16 +352,15 @@ void bowser_bitfs_actions(void) {
     // Set attacks when Bowser Reacts
     if (!o->oBowserIsReacting) {
         if (o->oBowserStatus & BOWSER_STATUS_ANGLE_MARIO) {
-            if (o->oDistanceToMario < 1300.0f) {  // nearby
-                if (rand < 0.5) { // 50% chance
+            if (o->oDistanceToMario < 1300.0f) { // nearby
+                if (rand < 0.5) {                // 50% chance
                     o->oAction = BOWSER_ACT_TELEPORT;
                 } else {
                     o->oAction = BOWSER_ACT_SPIT_FIRE_ONTO_FLOOR;
                 }
             } else { // far away
                 o->oAction = BOWSER_ACT_CHARGE_MARIO;
-                if (500.0f < o->oBowserDistToCenter && o->oBowserDistToCenter < 1500.0f
-                    && rand < 0.5) { // 50% chance
+                if (500.0f < o->oBowserDistToCenter && o->oBowserDistToCenter < 1500.0f && rand < 0.5) { // 50% chance
                     o->oAction = BOWSER_ACT_BIG_JUMP;
                 }
             }
@@ -535,12 +534,12 @@ void bowser_act_walk_to_mario(void) {
                 if (o->oBowserTimer > 4) {
                     o->oBowserStatus &= ~BOWSER_STATUS_FIRE_SKY;
                 }
-            // Do subaction below if angles is less than 0x2000
+                // Do subaction below if angles is less than 0x2000
             } else if (angleFromMario < 0x2000) {
                 o->oSubAction++;
             }
         }
-    // Stop walking and set to default action
+        // Stop walking and set to default action
     } else if (bowser_set_anim_look_down_stop_walk()) {
         o->oAction = BOWSER_ACT_DEFAULT;
     }
@@ -640,7 +639,7 @@ void bowser_act_hit_mine(void) {
         cur_obj_init_animation_with_sound(BOWSER_ANIM_FLIP);
         o->oSubAction++;
         o->oBowserTimer = 0;
-    // Play flip animation again, extend it and play bounce effects
+        // Play flip animation again, extend it and play bounce effects
     } else if (o->oSubAction == BOWSER_SUB_ACT_HIT_MINE_FALL) {
         cur_obj_init_animation_with_sound(BOWSER_ANIM_FLIP);
         cur_obj_extend_animation_if_at_end();
@@ -652,7 +651,7 @@ void bowser_act_hit_mine(void) {
             o->oForwardVel = 0.0f;
             o->oSubAction++;
         }
-    // Play these actions once he is stand up
+        // Play these actions once he is stand up
     } else if (o->oSubAction == BOWSER_SUB_ACT_HIT_MINE_STOP) {
         if (cur_obj_check_if_near_animation_end()) {
             // Makes Bowser dance at one health (in BitS)
@@ -757,7 +756,7 @@ void bowser_act_big_jump(void) {
             }
         } else {
         }
-    // Set to default action when the animation is over
+        // Set to default action when the animation is over
     } else if (cur_obj_check_if_near_animation_end()) {
         o->oAction = BOWSER_ACT_DEFAULT;
     }
@@ -784,7 +783,7 @@ void bowser_act_quick_jump(void) {
             o->oBowserTimer = 0;
             o->oSubAction++;
         }
-    // Lands then quickly returns to default action
+        // Lands then quickly returns to default action
     } else if (o->oSubAction == 1) {
         if (bowser_land()) {
             o->oSubAction++;
@@ -933,8 +932,7 @@ void bowser_act_charge_mario(void) {
             o->oBowserTimer = 0;
             cur_obj_init_animation_with_sound(BOWSER_ANIM_RUN_SLIP);
             spawn_object_relative_with_scale(0, 100, -50, 0, 3.0f, o, MODEL_SMOKE, bhvWhitePuffSmoke2);
-            spawn_object_relative_with_scale(0, -100, -50, 0, 3.0f, o, MODEL_SMOKE,
-                                             bhvWhitePuffSmoke2);
+            spawn_object_relative_with_scale(0, -100, -50, 0, 3.0f, o, MODEL_SMOKE, bhvWhitePuffSmoke2);
             // End Charge once Bowser stops running
             if (approach_f32_signed(&o->oForwardVel, 0, -1.0f)) {
                 o->oSubAction = BOWSER_SUB_ACT_CHARGE_END;
@@ -972,7 +970,7 @@ void bowser_act_charge_mario(void) {
  * Checks if Bowser hits a mine from a distance, returns TRUE if so
  */
 s32 bowser_check_hit_mine(void) {
-    struct Object *mine;
+    struct Object* mine;
     f32 dist;
 
     mine = cur_obj_find_nearest_object_with_behavior(bhvBowserBomb, &dist);
@@ -1003,7 +1001,7 @@ void bowser_act_thrown(void) {
             o->oForwardVel = 0.0f;
             o->oSubAction++; // stops this current subaction
         }
-    // Stand up and after play, set to default act
+        // Stand up and after play, set to default act
     } else if (cur_obj_init_animation_and_check_if_near_end(BOWSER_ANIM_STAND_UP)) {
         o->oAction = BOWSER_ACT_DEFAULT;
     }
@@ -1036,7 +1034,7 @@ void bowser_set_goal_invisible(void) {
 void bowser_act_jump_onto_stage(void) {
     s32 onDynamicFloor;
     UNUSED u8 filler[4];
-    struct Surface *floor = o->oFloor;
+    struct Surface* floor = o->oFloor;
 
     // Set dynamic floor check (Object platforms)
     if (floor != NULL && floor->flags & SURFACE_FLAG_DYNAMIC) {
@@ -1097,8 +1095,8 @@ void bowser_act_jump_onto_stage(void) {
                 // Spawn shockwave (BitS only) if is not on a platform
                 if (onDynamicFloor == FALSE) {
                     bowser_spawn_shockwave();
-                // If is on a dynamic floor in BitS, then jump
-                // because of the falling platform
+                    // If is on a dynamic floor in BitS, then jump
+                    // because of the falling platform
                 } else if (o->oBehParams2ndByte == BOWSER_BP_BITS) {
                     o->oAction = BOWSER_ACT_BIG_JUMP;
                 }
@@ -1205,8 +1203,8 @@ void bowser_dead_bounce(void) {
 s32 bowser_dead_wait_for_mario(void) {
     s32 ret = FALSE;
     cur_obj_become_intangible();
-    if (cur_obj_init_animation_and_check_if_near_end(BOWSER_ANIM_LAY_DOWN) && o->oDistanceToMario < 700.0f
-        && abs_angle_diff(gMarioObject->oMoveAngleYaw, o->oAngleToMario) > 0x6000) {
+    if (cur_obj_init_animation_and_check_if_near_end(BOWSER_ANIM_LAY_DOWN) && o->oDistanceToMario < 700.0f &&
+        abs_angle_diff(gMarioObject->oMoveAngleYaw, o->oAngleToMario) > 0x6000) {
         ret = TRUE;
     }
     cur_obj_extend_animation_if_at_end();
@@ -1278,16 +1276,15 @@ s32 bowser_dead_default_stage_ending(void) {
             o->oBowserTimer++;
         }
         // Play Bowser defeated dialog
-        if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED),
-            sBowserDefeatedDialogText[o->oBehParams2ndByte], 0)) {
+        if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP, (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED),
+                                  sBowserDefeatedDialogText[o->oBehParams2ndByte], 0)) {
             // Dialog is done, fade out music and play explode sound effect
             o->oBowserTimer++;
             cur_obj_play_sound_2(SOUND_GENERAL2_BOWSER_EXPLODE);
             seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
             seq_player_fade_out(SEQ_PLAYER_LEVEL, 1);
         }
-    // Hide Bowser and spawn collectable once done twirling
+        // Hide Bowser and spawn collectable once done twirling
     } else if (bowser_dead_twirl_up()) {
         bowser_dead_hide();
         spawn_triangle_break_particles(20, MODEL_YELLOW_COIN, 1.0f, 0);
@@ -1321,8 +1318,8 @@ s32 bowser_dead_final_stage_ending(void) {
             o->oBowserTimer++;
         }
         // Play Bowser defeated dialog
-        if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED), dialogID, 0)) {
+        if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP, (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED),
+                                  dialogID, 0)) {
             // Dialog is done, fade out music and spawn grand star
             cur_obj_set_model(MODEL_BOWSER_NO_SHADOW);
             seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
@@ -1330,7 +1327,7 @@ s32 bowser_dead_final_stage_ending(void) {
             bowser_spawn_collectable();
             o->oBowserTimer++;
         }
-    // Slowly fade him out
+        // Slowly fade him out
     } else if (o->oOpacity > 4) {
         o->oOpacity -= 4;
     } else {
@@ -1394,7 +1391,7 @@ void bowser_act_dead(void) {
 /**
  * Sets values for the BitFS platform to tilt
  */
-void bowser_tilt_platform(struct Object *platform, s16 angSpeed) {
+void bowser_tilt_platform(struct Object* platform, s16 angSpeed) {
     s16 angle = o->oBowserAngleToCenter + 0x8000;
     platform->oAngleVelPitch = coss(angle) * angSpeed;
     platform->oAngleVelRoll = -sins(angle) * angSpeed;
@@ -1419,18 +1416,8 @@ struct BowserTiltPlatformInfo {
  * Data for the BitFS tilt Platform
  */
 struct BowserTiltPlatformInfo sBowsertiltPlatformData[] = {
-    {  1,   10,  40 },
-    {  0,    0,  74 },
-    { -1,  -10, 114 },
-    {  1,  -20, 134 },
-    { -1,   20, 154 },
-    {  1,   40, 164 },
-    { -1,  -40, 174 },
-    {  1,  -80, 179 },
-    { -1,   80, 184 },
-    {  1,  160, 186 },
-    { -1, -160, 186 },
-    {  1,    0,   0 },
+    { 1, 10, 40 },    { 0, 0, 74 },    { -1, -10, 114 }, { 1, -20, 134 }, { -1, 20, 154 },   { 1, 40, 164 },
+    { -1, -40, 174 }, { 1, -80, 179 }, { -1, 80, 184 },  { 1, 160, 186 }, { -1, -160, 186 }, { 1, 0, 0 },
 };
 
 /**
@@ -1438,7 +1425,7 @@ struct BowserTiltPlatformInfo sBowsertiltPlatformData[] = {
  */
 void bowser_act_tilt_lava_platform(void) {
     // Set platform object
-    struct Object *platform = cur_obj_nearest_object_with_behavior(bhvTiltingBowserLavaPlatform);
+    struct Object* platform = cur_obj_nearest_object_with_behavior(bhvTiltingBowserLavaPlatform);
     UNUSED s16 angle = o->oBowserAngleToCenter + 0x8000;
     s16 angSpeed;
     UNUSED u8 filler[4];
@@ -1581,8 +1568,8 @@ s8 sBowserHealth[] = { 1, 1, 3 };
  * Update Bowser's actions when he's hands free
  */
 void bowser_free_update(void) {
-    struct Surface *floor;
-    struct Object *platform;
+    struct Surface* floor;
+    struct Object* platform;
     UNUSED f32 floorHeight;
 
     // Platform displacement check (for BitFS)
@@ -1738,7 +1725,7 @@ void bhv_bowser_loop(void) {
                 if (o->oOpacity > 255) {
                     o->oOpacity = 255;
                 }
-            // reduce opacity when oBowserTargetOpacity is 0
+                // reduce opacity when oBowserTargetOpacity is 0
             } else {
                 o->oOpacity -= 20;
                 if (o->oOpacity < 0) {
@@ -1781,10 +1768,10 @@ void bhv_bowser_init(void) {
     o->oBowserEyesShut = FALSE;
 }
 
-Gfx *geo_update_body_rot_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx) {
+Gfx* geo_update_body_rot_from_parent(s32 callContext, UNUSED struct GraphNode* node, Mat4 mtx) {
     if (callContext == GEO_CONTEXT_RENDER) {
         Mat4 mtx2;
-        struct Object *obj = (struct Object *) gCurGraphNodeObject;
+        struct Object* obj = (struct Object*)gCurGraphNodeObject;
         if (obj->prevObj != NULL) {
             create_transformation_from_matrices(mtx2, mtx, *gCurGraphNodeCamera->matrixPtr);
             obj_update_pos_from_parent_transformation(mtx2, obj->prevObj);
@@ -1806,15 +1793,15 @@ enum BowserEyesGSCId {
     /*0x04*/ BOWSER_EYES_FAR_LEFT,
     /*0x05*/ BOWSER_EYES_RIGHT,
     /*0x06*/ BOWSER_EYES_FAR_RIGHT,
-    /*0x07*/ BOWSER_EYES_DERP, // unused
+    /*0x07*/ BOWSER_EYES_DERP,  // unused
     /*0x08*/ BOWSER_EYES_CROSS, // unused
-    /*0x08*/ BOWSER_EYES_RESET // set eyes back to open
+    /*0x08*/ BOWSER_EYES_RESET  // set eyes back to open
 };
 
 /**
  * Controls Bowser's eye open stage, including blinking and look directions
  */
-void bowser_open_eye_switch(struct Object *obj, struct GraphNodeSwitchCase *switchCase) {
+void bowser_open_eye_switch(struct Object* obj, struct GraphNodeSwitchCase* switchCase) {
     s32 eyeCase;
     s16 angleFromMario;
 
@@ -1910,11 +1897,11 @@ void bowser_open_eye_switch(struct Object *obj, struct GraphNodeSwitchCase *swit
  * state. Checks whether oBowserEyesShut is TRUE and closes eyes if so and processes
  * direction otherwise.
  */
-Gfx *geo_switch_bowser_eyes(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx) {
+Gfx* geo_switch_bowser_eyes(s32 callContext, struct GraphNode* node, UNUSED Mat4* mtx) {
     UNUSED s16 eyeShut;
     UNUSED u8 filler[4];
-    struct Object *obj = (struct Object *) gCurGraphNodeObject;
-    struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
+    struct Object* obj = (struct Object*)gCurGraphNodeObject;
+    struct GraphNodeSwitchCase* switchCase = (struct GraphNodeSwitchCase*)node;
 
     if (callContext == GEO_CONTEXT_RENDER) {
         if (gCurGraphNodeHeldObject != NULL) {
@@ -1939,13 +1926,13 @@ Gfx *geo_switch_bowser_eyes(s32 callContext, struct GraphNode *node, UNUSED Mat4
 /**
  * Geo switch that sets Bowser's Rainbow coloring (in BitS)
  */
-Gfx *geo_bits_bowser_coloring(s32 callContext, struct GraphNode *node, UNUSED s32 context) {
-    Gfx *gfxHead = NULL;
-    Gfx *gfx;
+Gfx* geo_bits_bowser_coloring(s32 callContext, struct GraphNode* node, UNUSED s32 context) {
+    Gfx* gfxHead = NULL;
+    Gfx* gfx;
 
     if (callContext == GEO_CONTEXT_RENDER) {
-        struct Object *obj = (struct Object *) gCurGraphNodeObject;
-        struct GraphNodeGenerated *graphNode = (struct GraphNodeGenerated *) node;
+        struct Object* obj = (struct Object*)gCurGraphNodeObject;
+        struct GraphNodeGenerated* graphNode = (struct GraphNodeGenerated*)node;
 
         if (gCurGraphNodeHeldObject != NULL) {
             obj = gCurGraphNodeHeldObject->objNode;

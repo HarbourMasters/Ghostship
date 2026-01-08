@@ -27,7 +27,7 @@ void create_transform_from_normals(Mat4 transform, f32 xNorm, f32 yNorm, f32 zNo
  * Initialize the object's transform matrix with Y being up.
  */
 void bhv_platform_normals_init(void) {
-    Mat4 *transform = &o->transform;
+    Mat4* transform = &o->transform;
 
     o->oTiltingPyramidNormalX = 0.0f;
     o->oTiltingPyramidNormalY = 1.0f;
@@ -79,7 +79,7 @@ void bhv_tilting_inverted_pyramid_loop(void) {
 
     s32 marioOnPlatform = FALSE;
     UNUSED u8 filler1[4];
-    Mat4 *transform = &o->transform;
+    Mat4* transform = &o->transform;
     UNUSED u8 filler2[28];
 
     if (gMarioObject->platform == o) {
@@ -94,7 +94,7 @@ void bhv_tilting_inverted_pyramid_loop(void) {
         dy = 500.0f;
         dz = gMarioObject->oPosZ - o->oPosZ;
         d = sqrtf(dx * dx + dy * dy + dz * dz);
-    
+
         //! Always true since dy = 500, making d >= 500.
         if (d != 0.0f) {
             // Normalizing
@@ -120,12 +120,13 @@ void bhv_tilting_inverted_pyramid_loop(void) {
         o->oTiltingPyramidMarioOnPlatform = FALSE;
     }
 
-    // Approach the normals by 0.01f towards the new goal, then create a transform matrix and orient the object. 
+    // Approach the normals by 0.01f towards the new goal, then create a transform matrix and orient the object.
     // Outside of the other conditionals since it needs to tilt regardless of whether Mario is on.
     o->oTiltingPyramidNormalX = approach_by_increment(dx, o->oTiltingPyramidNormalX, 0.01f);
     o->oTiltingPyramidNormalY = approach_by_increment(dy, o->oTiltingPyramidNormalY, 0.01f);
     o->oTiltingPyramidNormalZ = approach_by_increment(dz, o->oTiltingPyramidNormalZ, 0.01f);
-    create_transform_from_normals(*transform, o->oTiltingPyramidNormalX, o->oTiltingPyramidNormalY, o->oTiltingPyramidNormalZ);
+    create_transform_from_normals(*transform, o->oTiltingPyramidNormalX, o->oTiltingPyramidNormalY,
+                                  o->oTiltingPyramidNormalZ);
 
     // If Mario is on the platform, adjust his position for the platform tilt.
     if (marioOnPlatform) {

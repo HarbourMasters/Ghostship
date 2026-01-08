@@ -63,8 +63,7 @@ void unagi_act_1_4(s32 arg0) {
         o->oAction = arg0;
     }
 
-    o->oMoveAnglePitch = o->oFaceAnglePitch =
-        approach_s16_symmetric(o->oMoveAnglePitch, o->oPathedTargetPitch, 50);
+    o->oMoveAnglePitch = o->oFaceAnglePitch = approach_s16_symmetric(o->oMoveAnglePitch, o->oPathedTargetPitch, 50);
 
     cur_obj_rotate_yaw_toward(o->oPathedTargetYaw, 120);
     obj_roll_to_match_yaw_turn(o->oPathedTargetYaw, 0x2000, 100);

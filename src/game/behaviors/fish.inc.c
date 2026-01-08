@@ -13,24 +13,36 @@ static void fish_spawner_act_spawn(void) {
     s32 schoolQuantity;
     s16 model;
     f32 minDistToMario;
-    const struct Animation * const *fishAnimation;
+    const struct Animation* const* fishAnimation;
 
     switch (o->oBehParams2ndByte) {
         // Cases need to be on one line to match with and without optimizations.
         case FISH_SPAWNER_BP_MANY_BLUE:
-            model = MODEL_FISH;      schoolQuantity = 20; minDistToMario = 1500.0f; fishAnimation = blue_fish_seg3_anims_0301C2B0;
+            model = MODEL_FISH;
+            schoolQuantity = 20;
+            minDistToMario = 1500.0f;
+            fishAnimation = blue_fish_seg3_anims_0301C2B0;
             break;
 
         case FISH_SPAWNER_BP_FEW_BLUE:
-            model = MODEL_FISH;      schoolQuantity = 5;  minDistToMario = 1500.0f; fishAnimation = blue_fish_seg3_anims_0301C2B0;
+            model = MODEL_FISH;
+            schoolQuantity = 5;
+            minDistToMario = 1500.0f;
+            fishAnimation = blue_fish_seg3_anims_0301C2B0;
             break;
 
         case FISH_SPAWNER_BP_MANY_CYAN:
-            model = MODEL_CYAN_FISH; schoolQuantity = 20; minDistToMario = 1500.0f; fishAnimation = cyan_fish_seg6_anims_0600E264;
+            model = MODEL_CYAN_FISH;
+            schoolQuantity = 20;
+            minDistToMario = 1500.0f;
+            fishAnimation = cyan_fish_seg6_anims_0600E264;
             break;
 
         case FISH_SPAWNER_BP_FEW_CYAN:
-            model = MODEL_CYAN_FISH; schoolQuantity = 5;  minDistToMario = 1500.0f; fishAnimation = cyan_fish_seg6_anims_0600E264;
+            model = MODEL_CYAN_FISH;
+            schoolQuantity = 5;
+            minDistToMario = 1500.0f;
+            fishAnimation = cyan_fish_seg6_anims_0600E264;
             break;
     }
 
@@ -39,7 +51,7 @@ static void fish_spawner_act_spawn(void) {
     // Fish moves randomly within a range of 700.0f.
     if (o->oDistanceToMario < minDistToMario || gCurrLevelNum == LEVEL_SA) {
         for (i = 0; i < schoolQuantity; i++) {
-            struct Object *fishObject = spawn_object(o, model, bhvFish);
+            struct Object* fishObject = spawn_object(o, model, bhvFish);
             fishObject->oBehParams2ndByte = o->oBehParams2ndByte;
             obj_init_animation_with_sound(fishObject, fishAnimation, 0);
             obj_translate_xyz_random(fishObject, 700.0f);
@@ -81,7 +93,7 @@ void bhv_fish_spawner_loop(void) {
 static void fish_vertical_roam(s32 speed) {
     f32 parentY = o->parentObj->oPosY;
 
-    // If the stage is Secret Aquarium, the fish can 
+    // If the stage is Secret Aquarium, the fish can
     // travel as far vertically as they wish.
     if (gCurrLevelNum == LEVEL_SA) {
         if (500.0f < absf(o->oPosY - o->oFishGoalY)) {
@@ -89,10 +101,10 @@ static void fish_vertical_roam(s32 speed) {
         }
         o->oPosY = approach_f32_symmetric(o->oPosY, o->oFishGoalY, speed);
 
-     // Allow the fish to roam vertically if within
-     // range of the fish spawner.
-     } else if (parentY - 100.0f - o->oFishDepthDistance < o->oPosY
-               && o->oPosY < parentY + 1000.0f + o->oFishDepthDistance) {
+        // Allow the fish to roam vertically if within
+        // range of the fish spawner.
+    } else if (parentY - 100.0f - o->oFishDepthDistance < o->oPosY &&
+               o->oPosY < parentY + 1000.0f + o->oFishDepthDistance) {
         o->oPosY = approach_f32_symmetric(o->oPosY, o->oFishGoalY, speed);
     }
 }
@@ -136,7 +148,7 @@ static void fish_act_roam(void) {
             fish_vertical_roam(4);
         }
 
-    // Don't let the fish leave the water vertically.
+        // Don't let the fish leave the water vertically.
     } else {
         o->oPosY = o->oFishWaterLevel - 50.0f;
         if (fishY > 300.0f) {
@@ -204,7 +216,7 @@ static void fish_act_flee(void) {
             fish_vertical_roam(4);
         }
 
-    // Don't let the fish leave the water vertically.
+        // Don't let the fish leave the water vertically.
     } else {
         o->oPosY = o->oFishWaterLevel - 50.0f;
         if (fishY > 300.0f) {
@@ -260,7 +272,7 @@ void bhv_fish_loop(void) {
             return;
         }
 
-    // Unreachable code, perhaps for debugging or testing.
+        // Unreachable code, perhaps for debugging or testing.
     } else {
         o->oFishWaterLevel = 1000.0f;
     }

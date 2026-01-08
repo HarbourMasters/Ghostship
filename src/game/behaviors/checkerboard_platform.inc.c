@@ -16,7 +16,7 @@ void bhv_checkerboard_elevator_group_init(void) {
     s32 sp38;
     s32 sp34;
     s32 i;
-    struct Object *sp2C;
+    struct Object* sp2C;
 
     if (o->oBehParams2ndByte == 0) {
         o->oBehParams2ndByte = 65;
@@ -32,8 +32,7 @@ void bhv_checkerboard_elevator_group_init(void) {
             sp38 = D_8032F754[sp34].unk0;
         }
 
-        sp2C = spawn_object_relative(i, 0, i * sp3C, sp38, o, MODEL_CHECKERBOARD_PLATFORM,
-                                     bhvCheckerboardPlatformSub);
+        sp2C = spawn_object_relative(i, 0, i * sp3C, sp38, o, MODEL_CHECKERBOARD_PLATFORM, bhvCheckerboardPlatformSub);
         sp2C->oCheckerBoardPlatformUnk1AC = D_8032F754[sp34].unk2;
         vec3f_copy_2(sp2C->header.gfx.scale, D_8032F754[sp34].unk1);
     }

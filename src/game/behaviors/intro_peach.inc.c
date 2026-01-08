@@ -4,15 +4,14 @@
  * Set peach's location relative to the camera focus.
  * If nonzero, make peach's opacity approach targetOpacity by increment
  */
-void intro_peach_set_pos_and_opacity(struct Object *obj, f32 targetOpacity, f32 increment) {
+void intro_peach_set_pos_and_opacity(struct Object* obj, f32 targetOpacity, f32 increment) {
     Vec3f newPos;
     s16 focusPitch, focusYaw;
     f32 UNUSED dist, newOpacity;
 
     vec3f_get_dist_and_angle(gLakituState.pos, gLakituState.focus, &dist, &focusPitch, &focusYaw);
     vec3f_set_dist_and_angle(gLakituState.pos, newPos, obj->oIntroPeachDistToCamera,
-                             obj->oIntroPeachPitchFromFocus + focusPitch,
-                             obj->oIntroPeachYawFromFocus + focusYaw);
+                             obj->oIntroPeachPitchFromFocus + focusPitch, obj->oIntroPeachYawFromFocus + focusYaw);
     vec3f_to_object_pos(obj, newPos);
 
     newOpacity = obj->oOpacity;

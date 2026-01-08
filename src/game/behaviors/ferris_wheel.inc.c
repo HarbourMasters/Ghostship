@@ -9,8 +9,8 @@
  * Properties for the ferris wheel axle and platforms.
  */
 struct FerrisWheelProperties {
-    Collision const *axleCollision;
-    Collision const *platformCollision;
+    Collision const* axleCollision;
+    Collision const* platformCollision;
     s16 platformModel;
 };
 
@@ -28,15 +28,13 @@ static struct FerrisWheelProperties sFerrisWheelProperties[] = {
  * behavior script.
  */
 void bhv_ferris_wheel_axle_init(void) {
-    struct Object *platform;
+    struct Object* platform;
     s32 i;
 
-    o->collisionData =
-        segmented_to_virtual(sFerrisWheelProperties[o->oBehParams2ndByte].axleCollision);
+    o->collisionData = segmented_to_virtual(sFerrisWheelProperties[o->oBehParams2ndByte].axleCollision);
 
     for (i = 0; i < 4; i++) {
-        platform = spawn_object_relative(i, 0, 0, 0, o,
-                                         sFerrisWheelProperties[o->oBehParams2ndByte].platformModel,
+        platform = spawn_object_relative(i, 0, 0, 0, o, sFerrisWheelProperties[o->oBehParams2ndByte].platformModel,
                                          bhvFerrisWheelPlatform);
 
         if (platform != NULL) {
@@ -59,13 +57,13 @@ void bhv_ferris_wheel_platform_update(void) {
     offsetAngle = o->parentObj->oFaceAngleRoll + o->oBehParams2ndByte * 0x4000;
     offsetXZ = 400.0f * coss(offsetAngle);
 
-    o->oPosX = o->parentObj->oPosX + offsetXZ * sins(o->parentObj->oMoveAngleYaw)
-               + 300.0f * coss(o->parentObj->oMoveAngleYaw);
+    o->oPosX =
+        o->parentObj->oPosX + offsetXZ * sins(o->parentObj->oMoveAngleYaw) + 300.0f * coss(o->parentObj->oMoveAngleYaw);
 
     o->oPosY = o->parentObj->oPosY + 400.0f * sins(offsetAngle);
 
-    o->oPosZ = o->parentObj->oPosZ + offsetXZ * coss(o->parentObj->oMoveAngleYaw)
-               + 300.0f * sins(o->parentObj->oMoveAngleYaw);
+    o->oPosZ =
+        o->parentObj->oPosZ + offsetXZ * coss(o->parentObj->oMoveAngleYaw) + 300.0f * sins(o->parentObj->oMoveAngleYaw);
 
     obj_perform_position_op(POS_OP_COMPUTE_VELOCITY);
 }

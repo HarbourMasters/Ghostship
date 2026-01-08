@@ -14,8 +14,7 @@ void bhv_end_birds_1_loop(void) {
             break;
 
         case 1:
-            vec3f_set(sp34, o->oIntroLakituUnk110, o->oIntroLakituUnk10C,
-                      o->oIntroLakituUnk108);
+            vec3f_set(sp34, o->oIntroLakituUnk110, o->oIntroLakituUnk10C, o->oIntroLakituUnk108);
 
             if (o->oTimer < 100) {
                 obj_rotate_towards_point(o, sp34, 0, 0, 0x20, 0x20);

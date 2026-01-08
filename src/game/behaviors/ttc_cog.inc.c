@@ -7,7 +7,7 @@
 /**
  * Collision model for hexagon and triangle, respectively.
  */
-static Collision const *sTTCCogCollisionModels[] = {
+static Collision const* sTTCCogCollisionModels[] = {
     ttc_seg7_collision_07015584,
     ttc_seg7_collision_07015650,
 };
@@ -26,8 +26,8 @@ static s16 sTTCCogNormalSpeeds[] = { 200, 400 };
  * Init function for bhvTTCCog.
  */
 void bhv_ttc_cog_init(void) {
-    o->collisionData = segmented_to_virtual(
-        sTTCCogCollisionModels[(o->oBehParams2ndByte & TTC_COG_BP_SHAPE_MASK) >> 1]);
+    o->collisionData =
+        segmented_to_virtual(sTTCCogCollisionModels[(o->oBehParams2ndByte & TTC_COG_BP_SHAPE_MASK) >> 1]);
     o->oTTCCogDir = sTTCCogDirections[o->oBehParams2ndByte & TTC_COG_BP_DIR_MASK];
 }
 

@@ -43,9 +43,9 @@ s8 gFlyingCarpetState;
  * Texture coordinates are s10.5 fixed-point, which means you should left-shift the actual coordinates by 5.
  */
 #ifndef GBI_FLOATS
-void make_vertex(Vtx *vtx, s32 n, s16 x, s16 y, s16 z, s16 tx, s16 ty, u8 r, u8 g, u8 b, u8 a) {
+void make_vertex(Vtx* vtx, s32 n, s16 x, s16 y, s16 z, s16 tx, s16 ty, u8 r, u8 g, u8 b, u8 a) {
 #else
-void make_vertex(Vtx *vtx, s32 n, f32 x, f32 y, f32 z, s16 tx, s16 ty, u8 r, u8 g, u8 b, u8 a) {
+void make_vertex(Vtx* vtx, s32 n, f32 x, f32 y, f32 z, s16 tx, s16 ty, u8 r, u8 g, u8 b, u8 a) {
 #endif
     vtx[n].v.ob[0] = x;
     vtx[n].v.ob[1] = y;
@@ -78,11 +78,11 @@ s16 round_float(f32 num) {
  * Create a display list for the light in the castle lobby that shows the
  * player where to look to enter Tower of the Wing Cap.
  */
-Gfx *geo_exec_inside_castle_light(s32 callContext, struct GraphNode *node, UNUSED f32 mtx[4][4]) {
+Gfx* geo_exec_inside_castle_light(s32 callContext, struct GraphNode* node, UNUSED f32 mtx[4][4]) {
     s32 flags;
-    struct GraphNodeGenerated *generatedNode;
-    Gfx *displayListHead = NULL;
-    Gfx *displayList = NULL;
+    struct GraphNodeGenerated* generatedNode;
+    Gfx* displayListHead = NULL;
+    Gfx* displayList = NULL;
 
     if (callContext == GEO_CONTEXT_RENDER) {
         flags = save_file_get_flags();
@@ -95,7 +95,7 @@ Gfx *geo_exec_inside_castle_light(s32 callContext, struct GraphNode *node, UNUSE
                 displayListHead = displayList;
             }
 
-            generatedNode = (struct GraphNodeGenerated *) node;
+            generatedNode = (struct GraphNodeGenerated*)node;
             generatedNode->fnNode.node.flags = (generatedNode->fnNode.node.flags & 0xFF) | 0x500;
 
             gSPDisplayList(displayListHead++, dl_castle_lobby_wing_cap_light);
@@ -109,8 +109,7 @@ Gfx *geo_exec_inside_castle_light(s32 callContext, struct GraphNode *node, UNUSE
 /**
  * Update static timer variables that control the flying carpets' ripple effect.
  */
-Gfx *geo_exec_flying_carpet_timer_update(s32 callContext, UNUSED struct GraphNode *node,
-                                         UNUSED f32 mtx[4][4]) {
+Gfx* geo_exec_flying_carpet_timer_update(s32 callContext, UNUSED struct GraphNode* node, UNUSED f32 mtx[4][4]) {
     if (callContext != GEO_CONTEXT_RENDER) {
         sFlyingCarpetRippleTimer = 0;
         sPrevAreaTimer = gAreaUpdateCounter - 1;
@@ -130,16 +129,16 @@ Gfx *geo_exec_flying_carpet_timer_update(s32 callContext, UNUSED struct GraphNod
 /**
  * Create a display list for a flying carpet with dynamic ripples.
  */
-Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUSED f32 mtx[4][4]) {
+Gfx* geo_exec_flying_carpet_create(s32 callContext, struct GraphNode* node, UNUSED f32 mtx[4][4]) {
     f32 x, y, z;
     s16 n, row, col, tx, ty;
-    Vtx *verts;
-    struct GraphNodeGenerated *generatedNode = (struct GraphNodeGenerated *) node;
+    Vtx* verts;
+    struct GraphNodeGenerated* generatedNode = (struct GraphNodeGenerated*)node;
 
-    s16 *sp64 = segmented_to_virtual(flying_carpet_static_vertex_data);
-    Gfx *displayList = NULL;
-    Gfx *displayListHead = NULL;
-    struct Object *curGraphNodeObject;
+    s16* sp64 = segmented_to_virtual(flying_carpet_static_vertex_data);
+    Gfx* displayList = NULL;
+    Gfx* displayListHead = NULL;
+    struct Object* curGraphNodeObject;
 
     if (callContext == GEO_CONTEXT_RENDER) {
         verts = alloc_display_list(NUM_FLYING_CARPET_VERTICES * sizeof(*verts));
@@ -178,7 +177,7 @@ Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUS
         gSPDisplayList(displayListHead++, dl_flying_carpet_end);
         gSPEndDisplayList(displayListHead);
 
-        curGraphNodeObject = (struct Object *) gCurGraphNodeObject;
+        curGraphNodeObject = (struct Object*)gCurGraphNodeObject;
         if (gMarioObject->platform == curGraphNodeObject) {
             gFlyingCarpetState = FLYING_CARPET_MOVING_WITH_MARIO;
         } else if (curGraphNodeObject->oForwardVel != 0.0) {
@@ -196,10 +195,10 @@ static char** gCakeSlices;
 /**
  * Create a display list for the end screen with Peach's delicious cake.
  */
-Gfx *geo_exec_cake_end_screen(s32 callContext, struct GraphNode *node, UNUSED f32 mtx[4][4]) {
-    struct GraphNodeGenerated *generatedNode = (struct GraphNodeGenerated *) node;
-    Gfx *displayList = NULL;
-    Gfx *displayListHead = NULL;
+Gfx* geo_exec_cake_end_screen(s32 callContext, struct GraphNode* node, UNUSED f32 mtx[4][4]) {
+    struct GraphNodeGenerated* generatedNode = (struct GraphNodeGenerated*)node;
+    Gfx* displayList = NULL;
+    Gfx* displayListHead = NULL;
 
     if (callContext == GEO_CONTEXT_RENDER) {
         displayList = alloc_display_list(3 * sizeof(*displayList));

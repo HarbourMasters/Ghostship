@@ -29,7 +29,7 @@ void bhv_lll_drawbridge_loop(void) {
             break;
     }
 
-    if ((s16) o->oFaceAngleRoll < -0x1FFD) {
+    if ((s16)o->oFaceAngleRoll < -0x1FFD) {
         o->oFaceAngleRoll = 0xDFFF;
 
         //! Because the global timer increments when the game is paused, pausing and unpausing
@@ -40,7 +40,7 @@ void bhv_lll_drawbridge_loop(void) {
         }
     }
 
-    if ((s16) o->oFaceAngleRoll >= 0) {
+    if ((s16)o->oFaceAngleRoll >= 0) {
         o->oFaceAngleRoll = 0;
 
         //! Because the global timer increments when the game is paused, pausing and unpausing

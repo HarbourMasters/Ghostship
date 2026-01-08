@@ -18,8 +18,7 @@ struct LateralPosition {
  * Array of positions for all coffins relative to their spawner.
  */
 struct LateralPosition coffinRelativePos[] = {
-    { 412, -150 }, { 762, -150 }, { 1112, -150 },
-    { 412,  150 }, { 762,  150 }, { 1112,  150 },
+    { 412, -150 }, { 762, -150 }, { 1112, -150 }, { 412, 150 }, { 762, 150 }, { 1112, 150 },
 };
 
 /**
@@ -27,7 +26,7 @@ struct LateralPosition coffinRelativePos[] = {
  * Loads the coffins when in the room, they unload themselves.
  */
 void bhv_coffin_spawner_loop(void) {
-    struct Object *coffin;
+    struct Object* coffin;
     s32 i;
     s16 relativeZ;
 
@@ -37,8 +36,8 @@ void bhv_coffin_spawner_loop(void) {
                 relativeZ = coffinRelativePos[i].z;
 
                 // Behavior param of 0 for all even i, 1 for all odd
-                coffin = spawn_object_relative(i & 1, coffinRelativePos[i].x, 0, relativeZ, o,
-                                               MODEL_BBH_WOODEN_TOMB, bhvCoffin);
+                coffin = spawn_object_relative(i & 1, coffinRelativePos[i].x, 0, relativeZ, o, MODEL_BBH_WOODEN_TOMB,
+                                               bhvCoffin);
 
                 // Never true, game would enter a while(1) before it could.
                 // Possible a remnant of days this didn't happen.
@@ -95,10 +94,9 @@ void coffin_act_idle(void) {
 
             // This checks a box around the coffin and if it has been a bit since it stood up.
             // It also checks in the case Mario is squished, so he doesn't get permanently squished.
-            if (o->oTimer > 60
-                && (o->oDistanceToMario > 100.0f || gMarioState->action == ACT_SQUISHED)
-                && gMarioObject->oPosY - o->oPosY < 200.0f && absf(distForwards) < 140.0f
-                && distSideways < 150.0f && distSideways > -450.0f) {
+            if (o->oTimer > 60 && (o->oDistanceToMario > 100.0f || gMarioState->action == ACT_SQUISHED) &&
+                gMarioObject->oPosY - o->oPosY < 200.0f && absf(distForwards) < 140.0f && distSideways < 150.0f &&
+                distSideways > -450.0f) {
                 cur_obj_play_sound_2(SOUND_GENERAL_BUTTON_PRESS_2_LOWPRIO);
                 o->oAction = COFFIN_ACT_STAND_UP;
             }

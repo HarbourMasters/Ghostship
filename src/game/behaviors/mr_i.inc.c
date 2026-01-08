@@ -18,8 +18,8 @@ void mr_i_piranha_particle_act_0(void) {
 
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
         o->oAction = 1;
-    } else if ((o->oTimer > 100) || (o->oMoveFlags & OBJ_MOVE_HIT_WALL)
-               || (o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
+    } else if ((o->oTimer > 100) || (o->oMoveFlags & OBJ_MOVE_HIT_WALL) ||
+               (o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         obj_mark_for_deletion(o);
         spawn_mist_particles();
     }
@@ -43,7 +43,7 @@ void bhv_mr_i_particle_loop(void) {
 }
 
 void spawn_mr_i_particle(void) {
-    struct Object *particle;
+    struct Object* particle;
     f32 sp18 = o->header.gfx.scale[1];
 
     particle = spawn_object(o, MODEL_PURPLE_MARBLE, bhvMrIParticle);

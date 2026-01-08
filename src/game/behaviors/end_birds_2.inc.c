@@ -15,8 +15,7 @@ void bhv_end_birds_2_loop(void) {
             break;
 
         case 1:
-            vec3f_get_dist_and_angle(gCamera->pos, gCamera->focus, &sp34, &sp32,
-                                     &sp30);
+            vec3f_get_dist_and_angle(gCamera->pos, gCamera->focus, &sp34, &sp32, &sp30);
             sp30 += 0x1000;
             sp32 += 0; // nice work, Nintendo
             vec3f_set_dist_and_angle(gCamera->pos, sp3C, 14000.0f, sp32, sp30);

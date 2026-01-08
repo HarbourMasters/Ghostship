@@ -16,7 +16,7 @@
  */
 s8 sPunchingForwardVelocities[8] = { 0, 1, 1, 2, 3, 5, 7, 10 };
 
-void animated_stationary_ground_step(struct MarioState *m, s32 animation, u32 endAction) {
+void animated_stationary_ground_step(struct MarioState* m, s32 animation, u32 endAction) {
     stationary_ground_step(m);
     set_mario_animation(m, animation);
     if (is_anim_at_end(m)) {
@@ -24,7 +24,7 @@ void animated_stationary_ground_step(struct MarioState *m, s32 animation, u32 en
     }
 }
 
-s32 mario_update_punch_sequence(struct MarioState *m) {
+s32 mario_update_punch_sequence(struct MarioState* m) {
     u32 endAction, crouchEndAction;
     s32 animFrame;
 
@@ -144,7 +144,7 @@ s32 mario_update_punch_sequence(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_punching(struct MarioState *m) {
+s32 act_punching(struct MarioState* m) {
     if (m->input & INPUT_STOMPED) {
         return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
@@ -172,7 +172,7 @@ s32 act_punching(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_picking_up(struct MarioState *m) {
+s32 act_picking_up(struct MarioState* m) {
     if (m->input & INPUT_STOMPED) {
         return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
@@ -210,7 +210,7 @@ s32 act_picking_up(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_dive_picking_up(struct MarioState *m) {
+s32 act_dive_picking_up(struct MarioState* m) {
     if (m->input & INPUT_STOMPED) {
         return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
@@ -230,7 +230,7 @@ s32 act_dive_picking_up(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_placing_down(struct MarioState *m) {
+s32 act_placing_down(struct MarioState* m) {
     if (m->input & INPUT_STOMPED) {
         return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
@@ -247,7 +247,7 @@ s32 act_placing_down(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_throwing(struct MarioState *m) {
+s32 act_throwing(struct MarioState* m) {
     if (m->heldObj && (m->heldObj->oInteractionSubtype & INT_SUBTYPE_HOLDABLE_NPC)) {
         return set_mario_action(m, ACT_PLACING_DOWN, 0);
     }
@@ -273,7 +273,7 @@ s32 act_throwing(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_heavy_throw(struct MarioState *m) {
+s32 act_heavy_throw(struct MarioState* m) {
     if (m->input & INPUT_STOMPED) {
         return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
@@ -295,7 +295,7 @@ s32 act_heavy_throw(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_stomach_slide_stop(struct MarioState *m) {
+s32 act_stomach_slide_stop(struct MarioState* m) {
     if (m->input & INPUT_STOMPED) {
         return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
@@ -312,7 +312,7 @@ s32 act_stomach_slide_stop(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_picking_up_bowser(struct MarioState *m) {
+s32 act_picking_up_bowser(struct MarioState* m) {
     if (m->actionState == 0) {
         m->actionState = 1;
         m->angleVel[1] = 0;
@@ -333,12 +333,12 @@ s32 act_picking_up_bowser(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_holding_bowser(struct MarioState *m) {
+s32 act_holding_bowser(struct MarioState* m) {
     s16 spin;
 
     if (m->input & INPUT_B_PRESSED) {
 
-        if(!ROM_JP) {
+        if (!ROM_JP) {
             if (m->angleVel[1] <= -0xE00 || m->angleVel[1] >= 0xE00) {
                 play_sound(SOUND_MARIO_SO_LONGA_BOWSER, m->marioObj->header.gfx.cameraToObject);
             } else {
@@ -420,7 +420,7 @@ s32 act_holding_bowser(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_releasing_bowser(struct MarioState *m) {
+s32 act_releasing_bowser(struct MarioState* m) {
     if (++m->actionTimer == 1) {
         if (m->actionArg == 0) {
 #if ENABLE_RUMBLE
@@ -440,7 +440,7 @@ s32 act_releasing_bowser(struct MarioState *m) {
     return FALSE;
 }
 
-s32 check_common_object_cancels(struct MarioState *m) {
+s32 check_common_object_cancels(struct MarioState* m) {
     f32 waterSurface = m->waterLevel - 100;
     if (m->pos[1] < waterSurface) {
         return set_water_plunge_action(m);
@@ -457,7 +457,7 @@ s32 check_common_object_cancels(struct MarioState *m) {
     return FALSE;
 }
 
-s32 mario_execute_object_action(struct MarioState *m) {
+s32 mario_execute_object_action(struct MarioState* m) {
     s32 cancel;
 
     if (check_common_object_cancels(m)) {
