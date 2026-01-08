@@ -113,6 +113,14 @@ lava_bubble.05820:
   format: RGBA16
   symbol: effect_0B005820
 
+lava_bubble_ptr_0B006020:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x6020
+  count: 10
+  symbol: lava_bubble_ptr_0B006020
+
 bubble.06048:
   type: TEXTURE
   size: 2048
