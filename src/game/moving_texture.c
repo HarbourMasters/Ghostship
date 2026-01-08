@@ -659,7 +659,7 @@ Gfx *geo_movtex_draw_water_regions(s32 callContext, struct GraphNode *node, UNUS
         } else if (asGenerated->parameter == SSL_MOVTEX_TOXBOX_QUICKSAND_MIST) {
             gMovtexVtxColor = MOVTEX_VTX_COLOR_RED;
         }
-        quadCollection = get_quad_collection_from_id(asGenerated->parameter);
+        quadCollection = segmented_to_virtual(get_quad_collection_from_id(asGenerated->parameter));
         if (quadCollection == NULL) {
             return NULL;
         }
@@ -824,7 +824,7 @@ Gfx *movtex_gen_list(s16 *movtexVerts, struct MovtexObject *movtexList, s8 attrL
     }
 
     gSPDisplayList(gfx++, movtexList->beginDl);
-    gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, gMovtexIdToTexture[movtexList->textureId]);
+    gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, segmented_to_virtual(gMovtexIdToTexture[movtexList->textureId]));
     gSPVertex(gfx++, VIRTUAL_TO_PHYSICAL2(verts), movtexList->vtx_count, 0);
     gSPDisplayList(gfx++, movtexList->triDl);
     gSPDisplayList(gfx++, movtexList->endDl);
