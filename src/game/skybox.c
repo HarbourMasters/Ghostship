@@ -267,6 +267,7 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
             memcpy(texture, CalculateDataOffset(data, x, y, blobSize), 2048);
             Vtx *vertices = make_skybox_rect(tileIndex, colorIndex);
 
+            gSPInvalidateTexCache((*dlist)++, texture);
             gLoadBlockTexture((*dlist)++, 32, 32, G_IM_FMT_RGBA, texture);
             gSPVertex((*dlist)++, VIRTUAL_TO_PHYSICAL(vertices), 4, 0);
             gSPDisplayList((*dlist)++, dl_draw_quad_verts_0123);
@@ -322,15 +323,6 @@ Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
         return NULL;
     } else {
         Mtx *ortho = create_skybox_ortho_matrix(player);
-        if(gLastSkybox != background){
-            for(size_t i = 0; i < 80; i++){
-                if (gSkyboxTiles[i] != NULL) {
-                   gSPInvalidateTexCache(dlist++, (uintptr_t) gSkyboxTiles[i]);
-                }
-            }
-            gLastSkybox = background;
-        }
-
         gSPDisplayList(dlist++, dl_skybox_begin);
         gSPMatrix(dlist++, VIRTUAL_TO_PHYSICAL(ortho), G_MTX_PROJECTION | G_MTX_MUL | G_MTX_NOPUSH);
         gSPDisplayList(dlist++, dl_skybox_tile_tex_settings);
