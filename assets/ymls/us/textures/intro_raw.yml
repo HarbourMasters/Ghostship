@@ -1,3 +1,7 @@
+:config:
+  virtual:
+    [0x801A8800, 0x258CC0]
+
 hand_open:
   type: TEXTURE
   size: 2048
@@ -169,6 +173,119 @@ sparkle_0:
   format: RGBA16
   symbol: gd_texture_sparkle_0
 
+gd_vertex_star:
+  type: VTX
+  count: 4
+  offset: 0x261D88
+  symbol: gd_vertex_star
+
+gd_unused_vertex:
+  type: VTX
+  count: 4
+  offset: 0x261DC8
+  symbol: gd_unused_vertex
+
+gd_dl_star_common:
+  type: GFX
+  offset: 0x261E08
+  symbol: gd_dl_star_common
+
+gd_dl_red_star_0:
+  type: GFX
+  offset: 0x261E88
+  symbol: gd_dl_red_star_0
+
+gd_dl_red_star_1:
+  type: GFX
+  offset: 0x261EA0
+  symbol: gd_dl_red_star_1
+
+gd_dl_red_star_2:
+  type: GFX
+  offset: 0x261EB8
+  symbol: gd_dl_red_star_2
+
+gd_dl_red_star_3:
+  type: GFX
+  offset: 0x261ED0
+  symbol: gd_dl_red_star_3
+
+gd_dl_red_star_4:
+  type: GFX
+  offset: 0x261EE8
+  symbol: gd_dl_red_star_4
+
+gd_dl_red_star_5:
+  type: GFX
+  offset: 0x261F00
+  symbol: gd_dl_red_star_5
+
+gd_dl_red_star_6:
+  type: GFX
+  offset: 0x261F18
+  symbol: gd_dl_red_star_6
+
+gd_dl_red_star_7:
+  type: GFX
+  offset: 0x261F30
+  symbol: gd_dl_red_star_7
+
+gd_dl_silver_star_0:
+  type: GFX
+  offset: 0x261F48
+  symbol: gd_dl_silver_star_0
+
+gd_dl_silver_star_1:
+  type: GFX
+  offset: 0x261F60
+  symbol: gd_dl_silver_star_1
+
+gd_dl_silver_star_2:
+  type: GFX
+  offset: 0x261F78
+  symbol: gd_dl_silver_star_2
+
+gd_dl_silver_star_3:
+  type: GFX
+  offset: 0x261F90
+  symbol: gd_dl_silver_star_3
+
+gd_dl_silver_star_4:
+  type: GFX
+  offset: 0x261FA8
+  symbol: gd_dl_silver_star_4
+
+gd_dl_silver_star_5:
+  type: GFX
+  offset: 0x261FC0
+  symbol: gd_dl_silver_star_5
+
+gd_dl_silver_star_6:
+  type: GFX
+  offset: 0x261FD8
+  symbol: gd_dl_silver_star_6
+
+gd_dl_silver_star_7:
+  type: GFX
+  offset: 0x261FF0
+  symbol: gd_dl_silver_star_7
+
+gd_red_star_dl_array:
+  type: ASSET_ARRAY
+  assetType: Gfx
+  factoryType: GFX
+  count: 16
+  offset: 0x262008
+  symbol: gd_red_star_dl_array
+
+gd_silver_star_dl_array:
+  type: ASSET_ARRAY
+  assetType: Gfx
+  factoryType: GFX
+  count: 16
+  offset: 0x262048
+  symbol: gd_silver_star_dl_array
+
 sparkle_1:
   type: TEXTURE
   size: 2048
@@ -214,6 +331,103 @@ sparkle_5:
   format: RGBA16
   symbol: gd_texture_sparkle_5
 
+gd_vertex_sparkle:
+  type: VTX
+  count: 4
+  offset: 0x265088
+  symbol: gd_vertex_sparkle
+
+gd_dl_sparkle:
+  type: GFX
+  offset: 0x2650C8
+  symbol: gd_dl_sparkle
+
+gd_dl_sparkle_red_color:
+  type: GFX
+  offset: 0x265148
+  symbol: gd_dl_sparkle_red_color
+
+gd_dl_sparkle_white_color:
+  type: GFX
+  offset: 0x265158
+  symbol: gd_dl_sparkle_white_color
+
+gd_dl_red_sparkle_0:
+  type: GFX
+  offset: 0x265168
+  symbol: gd_dl_red_sparkle_0
+
+gd_dl_red_sparkle_1:
+  type: GFX
+  offset: 0x265188
+  symbol: gd_dl_red_sparkle_1
+
+gd_dl_red_sparkle_2:
+  type: GFX
+  offset: 0x2651A8
+  symbol: gd_dl_red_sparkle_2
+
+gd_dl_red_sparkle_3:
+  type: GFX
+  offset: 0x2651C8
+  symbol: gd_dl_red_sparkle_3
+
+gd_dl_red_sparkle_4:
+  type: GFX
+  offset: 0x2651E8
+  symbol: gd_dl_red_sparkle_4
+
+gd_dl_red_sparkle_4_dup:
+  type: GFX
+  offset: 0x265208
+  symbol: gd_dl_red_sparkle_4_dup
+
+gd_red_sparkle_dl_array:
+  type: ASSET_ARRAY
+  assetType: Gfx
+  factoryType: GFX
+  count: 12
+  offset: 0x2652E8
+  symbol: gd_red_sparkle_dl_array
+
+gd_dl_silver_sparkle_0:
+  type: GFX
+  offset: 0x265228
+  symbol: gd_dl_silver_sparkle_0
+
+gd_dl_silver_sparkle_1:
+  type: GFX
+  offset: 0x265248
+  symbol: gd_dl_silver_sparkle_1
+
+gd_dl_silver_sparkle_2:
+  type: GFX
+  offset: 0x265268
+  symbol: gd_dl_silver_sparkle_2
+
+gd_dl_silver_sparkle_3:
+  type: GFX
+  offset: 0x265288
+  symbol: gd_dl_silver_sparkle_3
+
+gd_dl_silver_sparkle_4:
+  type: GFX
+  offset: 0x2652A8
+  symbol: gd_dl_silver_sparkle_4
+
+gd_dl_silver_sparkle_4_dup:
+  type: GFX
+  offset: 0x2652C8
+  symbol: gd_dl_silver_sparkle_4_dup
+
+gd_silver_sparkle_dl_array:
+  type: ASSET_ARRAY
+  assetType: Gfx
+  factoryType: GFX
+  count: 12
+  offset: 0x265318
+  symbol: gd_silver_sparkle_dl_array
+
 mario_face_shine:
   type: TEXTURE
   size: 1024
@@ -222,3 +436,28 @@ mario_face_shine:
   offset: 0x265350
   format: IA8
   symbol: gd_texture_mario_face_shine
+
+gd_dl_mario_face_shine:
+  type: GFX
+  offset: 0x265750
+  symbol: gd_dl_mario_face_shine
+
+gd_dl_rsp_init:
+  type: GFX
+  offset: 0x2657C0
+  symbol: gd_dl_rsp_init
+
+gd_dl_rdp_init:
+  type: GFX
+  offset: 0x2657D8
+  symbol: gd_dl_rdp_init
+
+gd_dl_unused_mesh:
+  type: GFX
+  offset: 0x2658D8
+  symbol: gd_dl_unused_mesh
+
+gd_dl_sprite_start_tex_block:
+  type: GFX
+  offset: 0x265928
+  symbol: gd_dl_sprite_start_tex_block
