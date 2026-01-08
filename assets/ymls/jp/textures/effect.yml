@@ -41,6 +41,14 @@ flower.01808:
   format: RGBA16
   symbol: effect_0B001808
 
+flower_bubbles_textures_ptr_0B002008:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x2008
+  count: 5
+  symbol: flower_bubbles_textures_ptr_0B002008
+
 lava_bubble.02020:
   type: TEXTURE
   size: 2048
@@ -129,6 +137,14 @@ bubble.06048:
   offset: 0x6048
   format: RGBA16
   symbol: effect_0B006048
+
+bubble_ptr_0B006848:
+  type: ASSET_ARRAY
+  assetType: TEXTURE
+  factoryType: TEXTURE
+  offset: 0x6848
+  count: 1
+  symbol: bubble_ptr_0B006848
 
 tiny_bubble.0684C:
   type: TEXTURE
