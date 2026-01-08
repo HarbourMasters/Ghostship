@@ -44,9 +44,9 @@ void SetupGuiElements() {
 
     if (gui->GetMenuBar() && !gui->GetMenuBar()->IsVisible()) {
 #if defined(__SWITCH__) || defined(__WIIU__)
-    Notification::Emit({ .message = "Press - to access enhancements menu", .remainingTime = 10.0f });
+        Notification::Emit({ .message = "Press - to access enhancements menu", .remainingTime = 10.0f });
 #else
-    Notification::Emit({ .message = "Press F1 to access enhancements menu", .remainingTime = 10.0f });
+        Notification::Emit({ .message = "Press F1 to access enhancements menu", .remainingTime = 10.0f });
 #endif
     }
 
@@ -71,7 +71,8 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
-    mAdvancedResolutionSettingsWindow = std::make_shared<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow>("gAdvancedResolutionEditorEnabled", "Advanced Resolution Settings");
+    mAdvancedResolutionSettingsWindow = std::make_shared<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow>(
+        "gAdvancedResolutionEditorEnabled", "Advanced Resolution Settings");
     gui->AddGuiWindow(mAdvancedResolutionSettingsWindow);
     mSaveEditorWindow = std::make_shared<SaveEditorWindow>("gSaveEditorEnabled", "Save Editor");
     gui->AddGuiWindow(mSaveEditorWindow);
@@ -91,49 +92,55 @@ std::string GetWindowButtonText(const char* text, bool menuOpen) {
         strcat(buttonText, ICON_FA_CHEVRON_RIGHT " ");
     }
     strcat(buttonText, text);
-    if (!menuOpen) { strcat(buttonText, "  "); }
+    if (!menuOpen) {
+        strcat(buttonText, "  ");
+    }
     return buttonText;
 }
-}
+} // namespace GameUI
 
 static const char* filters[3] = {
 #ifdef __WIIU__
-        "",
+    "",
 #else
-        "Three-Point",
+    "Three-Point",
 #endif
-        "Linear", "None"
+    "Linear", "None"
 };
 
-void DrawSettingsMenu(){
-    if(UIWidgets::BeginMenu("Settings")){
+void DrawSettingsMenu() {
+    if (UIWidgets::BeginMenu("Settings")) {
         if (UIWidgets::BeginMenu("Audio")) {
-            UIWidgets::CVarSliderFloat("Master Volume", "gGameMasterVolume", 0.0f, 1.0f, 1.0f, {
-                .format = "%.0f%%",
-                .isPercentage = true,
-            });
-            if (UIWidgets::CVarSliderFloat("Main Music Volume", "gMainMusicVolume", 0.0f, 1.0f, 1.0f, {
-                .format = "%.0f%%",
-                .isPercentage = true,
-            })) {
+            UIWidgets::CVarSliderFloat("Master Volume", "gGameMasterVolume", 0.0f, 1.0f, 1.0f,
+                                       {
+                                           .format = "%.0f%%",
+                                           .isPercentage = true,
+                                       });
+            if (UIWidgets::CVarSliderFloat("Main Music Volume", "gMainMusicVolume", 0.0f, 1.0f, 1.0f,
+                                           {
+                                               .format = "%.0f%%",
+                                               .isPercentage = true,
+                                           })) {
                 audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f));
             }
-            if (UIWidgets::CVarSliderFloat("Sound Effects Volume", "gSFXMusicVolume", 0.0f, 1.0f, 1.0f, {
-                .format = "%.0f%%",
-                .isPercentage = true,
-            })) {
+            if (UIWidgets::CVarSliderFloat("Sound Effects Volume", "gSFXMusicVolume", 0.0f, 1.0f, 1.0f,
+                                           {
+                                               .format = "%.0f%%",
+                                               .isPercentage = true,
+                                           })) {
                 audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f));
             }
-            if (UIWidgets::CVarSliderFloat("Environment Volume", "gEnvironmentVolume", 0.0f, 1.0f, 1.0f, {
-                .format = "%.0f%%",
-                .isPercentage = true,
-            })) {
+            if (UIWidgets::CVarSliderFloat("Environment Volume", "gEnvironmentVolume", 0.0f, 1.0f, 1.0f,
+                                           {
+                                               .format = "%.0f%%",
+                                               .isPercentage = true,
+                                           })) {
                 audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f));
             }
 
             static std::unordered_map<Ship::AudioBackend, const char*> audioBackendNames = {
-                    { Ship::AudioBackend::WASAPI, "Windows Audio Session API" },
-                    { Ship::AudioBackend::SDL, "SDL" },
+                { Ship::AudioBackend::WASAPI, "Windows Audio Session API" },
+                { Ship::AudioBackend::SDL, "SDL" },
             };
 
             ImGui::Text("Audio API (Needs reload)");
@@ -143,7 +150,8 @@ void DrawSettingsMenu(){
                 UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
             }
             if (ImGui::BeginCombo("##AApi", audioBackendNames[currentAudioBackend])) {
-                for (uint8_t i = 0; i < Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size(); i++) {
+                for (uint8_t i = 0; i < Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size();
+                     i++) {
                     auto backend = Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->data()[i];
                     if (ImGui::Selectable(audioBackendNames[backend], backend == currentAudioBackend)) {
                         Ship::Context::GetInstance()->GetAudio()->SetCurrentAudioBackend(backend);
@@ -166,18 +174,21 @@ void DrawSettingsMenu(){
             UIWidgets::Spacer(0);
 
 #ifndef __SWITCH__
-            UIWidgets::CVarCheckbox("Menubar Controller Navigation", "gControlNav", {
-                .tooltip = "Allows controller navigation of the SOH menu bar (Settings, Enhancements,...)\nCAUTION: This will disable game inputs while the menubar is visible.\n\nD-pad to move between items, A to select, and X to grab focus on the menu bar"
-            });
+            UIWidgets::CVarCheckbox(
+                "Menubar Controller Navigation", "gControlNav",
+                { .tooltip = "Allows controller navigation of the SOH menu bar (Settings, Enhancements,...)\nCAUTION: "
+                             "This will disable game inputs while the menubar is visible.\n\nD-pad to move between "
+                             "items, A to select, and X to grab focus on the menu bar" });
 #endif
-            UIWidgets::CVarCheckbox("Show Inputs", "gInputEnabled", {
-                .tooltip = "Shows currently pressed inputs on the bottom right of the screen"
-            });
+            UIWidgets::CVarCheckbox("Show Inputs", "gInputEnabled",
+                                    { .tooltip = "Shows currently pressed inputs on the bottom right of the screen" });
             if (CVarGetInteger("gInputEnabled", 0)) {
-                UIWidgets::CVarSliderFloat("Input Scale", "gInputScale", 1.0f, 3.0f, 1.0f, {
-                    .tooltip = "Sets the on screen size of the displayed inputs from the Show Inputs setting",
-                    .format = "%.1fx",
-                });
+                UIWidgets::CVarSliderFloat(
+                    "Input Scale", "gInputScale", 1.0f, 3.0f, 1.0f,
+                    {
+                        .tooltip = "Sets the on screen size of the displayed inputs from the Show Inputs setting",
+                        .format = "%.1fx",
+                    });
             }
 
             ImGui::EndMenu();
@@ -188,17 +199,20 @@ void DrawSettingsMenu(){
 
     ImGui::SetCursorPosY(0.0f);
     if (UIWidgets::BeginMenu("Graphics")) {
-        UIWidgets::WindowButton("Resolution Editor", "gAdvancedResolutionEditorEnabled", GameUI::mAdvancedResolutionSettingsWindow);
+        UIWidgets::WindowButton("Resolution Editor", "gAdvancedResolutionEditorEnabled",
+                                GameUI::mAdvancedResolutionSettingsWindow);
 
         UIWidgets::Spacer(0);
 
         // Previously was running every frame, and nothing was setting it? Maybe a bad copy/paste?
         // Ship::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
-        // UIWidgets::Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but effective form of anti-aliasing");
+        // UIWidgets::Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but
+        // effective form of anti-aliasing");
 #ifndef __WIIU__
-        if (UIWidgets::CVarSliderInt("MSAA: %d", "gMSAAValue", 1, 8, 1, {
-            .tooltip = "Activates multi-sample anti-aliasing when above 1x up to 8x for 8 samples for every pixel"
-        })) {
+        if (UIWidgets::CVarSliderInt(
+                "MSAA: %d", "gMSAAValue", 1, 8, 1,
+                { .tooltip =
+                      "Activates multi-sample anti-aliasing when above 1x up to 8x for 8 samples for every pixel" })) {
             Ship::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger("gMSAAValue", 1));
         }
 #endif
@@ -206,13 +220,14 @@ void DrawSettingsMenu(){
         { // FPS Slider
             const int minFps = 30;
             static int maxFps;
-            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
+                Ship::WindowBackend::FAST3D_DXGI_DX11) {
                 maxFps = 360;
             } else {
                 maxFps = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
             }
             int currentFps = fmax(fmin(GameEngine::GetInterpolationFPS(), maxFps), minFps);
-        #ifdef __WIIU__
+#ifdef __WIIU__
             UIWidgets::Spacer(0);
             // only support divisors of 60 on the Wii U
             if (currentFps > 60) {
@@ -272,24 +287,24 @@ void DrawSettingsMenu(){
             }
             CVarSetInteger("gInterpolationFPS", currentFps);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-        #else
+#else
             bool matchingRefreshRate =
-                CVarGetInteger("gMatchRefreshRate", 0) && Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() != Ship::WindowBackend::FAST3D_DXGI_DX11;
-            UIWidgets::CVarSliderInt((currentFps == 20) ? "FPS: Original (20)" : "FPS: %d", "gInterpolationFPS", minFps, maxFps, 1, {
-                .disabled = matchingRefreshRate
-            });
-        #endif
-            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
+                CVarGetInteger("gMatchRefreshRate", 0) &&
+                Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() != Ship::WindowBackend::FAST3D_DXGI_DX11;
+            UIWidgets::CVarSliderInt((currentFps == 20) ? "FPS: Original (20)" : "FPS: %d", "gInterpolationFPS", minFps,
+                                     maxFps, 1, { .disabled = matchingRefreshRate });
+#endif
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
+                Ship::WindowBackend::FAST3D_DXGI_DX11) {
                 UIWidgets::Tooltip(
                     "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
                     "visual and does not impact game logic, execution of glitches etc.\n\n"
-                    "A higher target FPS than your monitor's refresh rate will waste resources, and might give a worse result."
-                );
+                    "A higher target FPS than your monitor's refresh rate will waste resources, and might give a worse "
+                    "result.");
             } else {
                 UIWidgets::Tooltip(
                     "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
-                    "visual and does not impact game logic, execution of glitches etc."
-                );
+                    "visual and does not impact game logic, execution of glitches etc.");
             }
         } // END FPS Slider
 
@@ -309,25 +324,29 @@ void DrawSettingsMenu(){
         UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
 
         if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
-            UIWidgets::PaddedEnhancementSliderInt(CVarGetInteger("gExtraLatencyThreshold", 80) == 0 ? "Jitter fix: Off" : "Jitter fix: >= %d FPS",
-                                                  "##ExtraLatencyThreshold", "gExtraLatencyThreshold", 0, 360, "", 80, true, true, false);
-            UIWidgets::Tooltip("When Interpolation FPS setting is at least this threshold, add one frame of input lag (e.g. 16.6 ms for 60 FPS) in order to avoid jitter. This setting allows the CPU to work on one frame while GPU works on the previous frame.\nThis setting should be used when your computer is too slow to do CPU + GPU work in time.");
+            UIWidgets::PaddedEnhancementSliderInt(
+                CVarGetInteger("gExtraLatencyThreshold", 80) == 0 ? "Jitter fix: Off" : "Jitter fix: >= %d FPS",
+                "##ExtraLatencyThreshold", "gExtraLatencyThreshold", 0, 360, "", 80, true, true, false);
+            UIWidgets::Tooltip("When Interpolation FPS setting is at least this threshold, add one frame of input lag "
+                               "(e.g. 16.6 ms for 60 FPS) in order to avoid jitter. This setting allows the CPU to "
+                               "work on one frame while GPU works on the previous frame.\nThis setting should be used "
+                               "when your computer is too slow to do CPU + GPU work in time.");
         }
 
         UIWidgets::PaddedSeparator(true, true, 3.0f, 3.0f);
 
-
         static std::unordered_map<Ship::WindowBackend, const char*> windowBackendNames = {
-                { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
-                { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL"},
-                { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
+            { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
+            { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
+            { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
         };
 
         ImGui::Text("Renderer API (Needs reload)");
         Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
         Ship::WindowBackend configWindowBackend;
         int configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-        if (configWindowBackendId != -1 && configWindowBackendId < static_cast<int>(Ship::WindowBackend::WINDOW_BACKEND_COUNT)) {
+        if (configWindowBackendId != -1 &&
+            configWindowBackendId < static_cast<int>(Ship::WindowBackend::WINDOW_BACKEND_COUNT)) {
             configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
         } else {
             configWindowBackend = runningWindowBackend;
@@ -337,12 +356,13 @@ void DrawSettingsMenu(){
             UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
         }
         if (ImGui::BeginCombo("##RApi", windowBackendNames[configWindowBackend])) {
-            for (size_t i = 0; i < Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size(); i++) {
+            for (size_t i = 0; i < Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size();
+                 i++) {
                 auto backend = Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->data()[i];
                 if (ImGui::Selectable(windowBackendNames[backend], backend == configWindowBackend)) {
                     Ship::Context::GetInstance()->GetConfig()->SetInt("Window.Backend.Id", static_cast<int>(backend));
                     Ship::Context::GetInstance()->GetConfig()->SetString("Window.Backend.Name",
-                                                                        windowBackendNames[backend]);
+                                                                         windowBackendNames[backend]);
                     Ship::Context::GetInstance()->GetConfig()->Save();
                 }
             }
@@ -361,8 +381,10 @@ void DrawSettingsMenu(){
         }
 
         if (Ship::Context::GetInstance()->GetWindow()->GetGui()->SupportsViewports()) {
-            UIWidgets::PaddedEnhancementCheckbox("Allow multi-windows", "gEnableMultiViewports", true, false, false, "", UIWidgets::CheckboxGraphics::Cross, true);
-            UIWidgets::Tooltip("Allows windows to be able to be dragged off of the main game window. Requires a reload to take effect.");
+            UIWidgets::PaddedEnhancementCheckbox("Allow multi-windows", "gEnableMultiViewports", true, false, false, "",
+                                                 UIWidgets::CheckboxGraphics::Cross, true);
+            UIWidgets::Tooltip("Allows windows to be able to be dragged off of the main game window. Requires a reload "
+                               "to take effect.");
         }
 
         // If more filters are added to LUS, make sure to add them to the filters list here
@@ -381,8 +403,8 @@ void DrawSettingsMenu(){
 void DrawMenuBarIcon() {
     static bool gameIconLoaded = false;
     if (!gameIconLoaded) {
-        // Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Game_Icon", "textures/icons/gIcon.png", ImVec4(1.0f, 1.0f, 1.0f, 1.0f));
-        // gameIconLoaded = true;
+        // Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Game_Icon", "textures/icons/gIcon.png",
+        // ImVec4(1.0f, 1.0f, 1.0f, 1.0f)); gameIconLoaded = true;
     }
 
     if (Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon")) {
@@ -407,12 +429,14 @@ void DrawGameMenu() {
     if (UIWidgets::BeginMenu("Ghostship")) {
         if (UIWidgets::MenuItem("Reset",
 #ifdef __APPLE__
-                "Command-R"
+                                "Command-R"
 #else
-                "Ctrl+R"
+                                "Ctrl+R"
 #endif
-        )) {
-            std::reinterpret_pointer_cast<Ship::ConsoleWindow>(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Console"))->Dispatch("reset");
+                                )) {
+            std::reinterpret_pointer_cast<Ship::ConsoleWindow>(
+                Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Console"))
+                ->Dispatch("reset");
         }
 #if !defined(__SWITCH__) && !defined(__WIIU__)
         if (UIWidgets::MenuItem("Toggle Fullscreen", "F9")) {
@@ -430,25 +454,24 @@ void DrawEnhancementsMenu() {
     if (UIWidgets::BeginMenu("Enhancements")) {
 
         if (UIWidgets::BeginMenu("Gameplay")) {
-            UIWidgets::CVarCheckbox("No Level of Detail (LOD)", "gDisableLOD", {
-                .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance"
-            });
-            UIWidgets::CVarCheckbox("Select any star from menu", "gSelectAllStars", {
-                .tooltip = "Let's you select any star from the menu regardless of the courses completion status."
-            });
-            UIWidgets::CVarCheckbox("Collecting Stars Will Not Exit Level", "gStarNoExit", {
-                .tooltip = "Stars act like the 100 coin star and will not take you out of the level"
-            });
-            UIWidgets::CVarCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene", {
-                .tooltip = "Avoid playing the peach cutscene when starting a new game"
-            });
+            UIWidgets::CVarCheckbox(
+                "No Level of Detail (LOD)", "gDisableLOD",
+                { .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance" });
+            UIWidgets::CVarCheckbox(
+                "Select any star from menu", "gSelectAllStars",
+                { .tooltip = "Let's you select any star from the menu regardless of the courses completion status." });
+            UIWidgets::CVarCheckbox(
+                "Collecting Stars Will Not Exit Level", "gStarNoExit",
+                { .tooltip = "Stars act like the 100 coin star and will not take you out of the level" });
+            UIWidgets::CVarCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene",
+                                    { .tooltip = "Avoid playing the peach cutscene when starting a new game" });
             ImGui::EndMenu();
         }
 
         if (UIWidgets::BeginMenu("Fixes")) {
-            UIWidgets::CVarCheckbox("Fix Koopa race music", "gFixKoopaRaceMusic", {
-                .tooltip = "Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island"
-            });
+            UIWidgets::CVarCheckbox(
+                "Fix Koopa race music", "gFixKoopaRaceMusic",
+                { .tooltip = "Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island" });
 
             ImGui::EndMenu();
         }
@@ -468,12 +491,7 @@ void DrawCheatsMenu() {
 }
 
 const char* debugInfoPages[6] = {
-    "Object",
-    "Check Surface",
-    "Map",
-    "Stage",
-    "Effect",
-    "Enemy",
+    "Object", "Check Surface", "Map", "Stage", "Effect", "Enemy",
 };
 
 static const char* logLevels[] = {
@@ -482,53 +500,57 @@ static const char* logLevels[] = {
 
 void DrawDebugMenu() {
     if (UIWidgets::BeginMenu("Developer")) {
-        if (UIWidgets::CVarCombobox("Log Level", "gDeveloperTools.LogLevel", logLevels, {
-            .tooltip = "The log level determines which messages are printed to the "
-                        "console. This does not affect the log file output",
-            .defaultIndex = 1,
-        })) {
-            Ship::Context::GetInstance()->GetLogger()->set_level((spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
+        if (UIWidgets::CVarCombobox("Log Level", "gDeveloperTools.LogLevel", logLevels,
+                                    {
+                                        .tooltip = "The log level determines which messages are printed to the "
+                                                   "console. This does not affect the log file output",
+                                        .defaultIndex = 1,
+                                    })) {
+            Ship::Context::GetInstance()->GetLogger()->set_level(
+                (spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
         }
-        UIWidgets::WindowButton("Gfx Debugger", "gGfxDebuggerEnabled", GameUI::mGfxDebuggerWindow, {
-            .tooltip = "Enables the Gfx Debugger window, allowing you to input commands, type help for some examples"
-        });
+        UIWidgets::WindowButton(
+            "Gfx Debugger", "gGfxDebuggerEnabled", GameUI::mGfxDebuggerWindow,
+            { .tooltip =
+                  "Enables the Gfx Debugger window, allowing you to input commands, type help for some examples" });
 
-        UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
-            .tooltip = "Various debug features, including a level selector from the main menu"
-        });
+        UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode",
+                                { .tooltip = "Various debug features, including a level selector from the main menu" });
 
 #ifdef USE_GBI_TRACE
-        UIWidgets::CVarCheckbox("GFX trace mode", "gEnableGFXTrace", {
-            .tooltip = "Enables the Gfx trace mode, which will output information about the Gfx commands being run"
-        });
+        UIWidgets::CVarCheckbox(
+            "GFX trace mode", "gEnableGFXTrace",
+            { .tooltip =
+                  "Enables the Gfx trace mode, which will output information about the Gfx commands being run" });
 #endif
 
-        UIWidgets::CVarCheckbox("Better Level Select", "gDeveloper.BetterLevelSelect", {
-            .tooltip = "Tweaks to the level select screen, like naming and allowing C-buttons to be used"
-        });
+        UIWidgets::CVarCheckbox(
+            "Better Level Select", "gDeveloper.BetterLevelSelect",
+            { .tooltip = "Tweaks to the level select screen, like naming and allowing C-buttons to be used" });
 
         UIWidgets::CVarCheckbox("Draw DebugInfo", "gDeveloper.DrawDebugInfo");
         if (CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) {
-            UIWidgets::CVarCombobox("DebugInfo mode", "gDeveloper.DebugInfoPage", debugInfoPages, {
-                .defaultIndex = 0,
-            });
+            UIWidgets::CVarCombobox("DebugInfo mode", "gDeveloper.DebugInfoPage", debugInfoPages,
+                                    {
+                                        .defaultIndex = 0,
+                                    });
         }
         UIWidgets::Spacer(0);
 
         UIWidgets::WindowButton("Save Editor", "gSaveEditorEnabled", GameUI::mSaveEditorWindow);
-        UIWidgets::WindowButton("Stats", "gStatsEnabled", GameUI::mStatsWindow, {
-            .tooltip = "Shows the stats window, with your FPS and frametimes, and the OS you're playing on"
-        });
-        UIWidgets::WindowButton("Console", "gConsoleEnabled", GameUI::mConsoleWindow, {
-            .tooltip = "Enables the console window, allowing you to input commands, type help for some examples"
-        });
+        UIWidgets::WindowButton(
+            "Stats", "gStatsEnabled", GameUI::mStatsWindow,
+            { .tooltip = "Shows the stats window, with your FPS and frametimes, and the OS you're playing on" });
+        UIWidgets::WindowButton(
+            "Console", "gConsoleEnabled", GameUI::mConsoleWindow,
+            { .tooltip = "Enables the console window, allowing you to input commands, type help for some examples" });
 
         ImGui::EndMenu();
     }
 }
 
 void GameMenuBar::DrawElement() {
-    if(ImGui::BeginMenuBar()){
+    if (ImGui::BeginMenuBar()) {
         DrawMenuBarIcon();
 
         DrawGameMenu();

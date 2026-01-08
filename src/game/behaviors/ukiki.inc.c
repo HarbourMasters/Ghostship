@@ -26,8 +26,7 @@ void handle_cap_ukiki_reset(void) {
  * the cap ukiki.
  */
 s32 is_cap_ukiki_and_mario_has_normal_cap_on_head(void) {
-    if (o->oBehParams2ndByte == UKIKI_CAP
-        && does_mario_have_normal_cap_on_head(gMarioState)) {
+    if (o->oBehParams2ndByte == UKIKI_CAP && does_mario_have_normal_cap_on_head(gMarioState)) {
         return TRUE;
     }
 
@@ -37,12 +36,12 @@ s32 is_cap_ukiki_and_mario_has_normal_cap_on_head(void) {
 /**
  * Unused copy of geo_update_projectile_pos_from_parent. Perhaps a copy paste mistake.
  */
-Gfx *geo_update_projectile_pos_from_parent_copy(s32 run,UNUSED struct GraphNode *node, Mat4 mtx) {
+Gfx* geo_update_projectile_pos_from_parent_copy(s32 run, UNUSED struct GraphNode* node, Mat4 mtx) {
     Mat4 mtx2;
 
     if (run == TRUE) {
         // TODO: change global type to Object pointer
-        struct Object *obj = (struct Object *) gCurGraphNodeObject;
+        struct Object* obj = (struct Object*)gCurGraphNodeObject;
 
         if (obj->prevObj != NULL) {
             create_transformation_from_matrices(mtx2, mtx, *gCurGraphNodeCamera->matrixPtr);
@@ -270,12 +269,10 @@ void ukiki_act_run(void) {
     }
 
     if (fleeMario && o->oDistanceToMario < 200.0f) {
-        if ((o->oMoveFlags & OBJ_MOVE_HIT_WALL)
-            && is_mario_moving_fast_or_in_air(10)) {
+        if ((o->oMoveFlags & OBJ_MOVE_HIT_WALL) && is_mario_moving_fast_or_in_air(10)) {
             o->oAction = UKIKI_ACT_JUMP;
             o->oMoveAngleYaw = o->oWallAngle;
-        } else if ((o->oMoveFlags & OBJ_MOVE_HIT_EDGE)
-                   && is_mario_moving_fast_or_in_air(10)) {
+        } else if ((o->oMoveFlags & OBJ_MOVE_HIT_EDGE) && is_mario_moving_fast_or_in_air(10)) {
             o->oAction = UKIKI_ACT_JUMP;
             o->oMoveAngleYaw += 0x8000;
         }
@@ -293,8 +290,8 @@ void ukiki_act_jump(void) {
     if (o->oSubAction == 0) {
         if (o->oTimer == 0) {
             cur_obj_set_y_vel_and_animation(random_float() * 10.0f + 45.0f, UKIKI_ANIM_JUMP);
-        } else if (o->oMoveFlags & (OBJ_MOVE_MASK_ON_GROUND | OBJ_MOVE_AT_WATER_SURFACE
-                                    | OBJ_MOVE_UNDERWATER_ON_GROUND)) {
+        } else if (o->oMoveFlags &
+                   (OBJ_MOVE_MASK_ON_GROUND | OBJ_MOVE_AT_WATER_SURFACE | OBJ_MOVE_UNDERWATER_ON_GROUND)) {
             o->oSubAction++;
             o->oVelY = 0.0f;
         }
@@ -313,18 +310,12 @@ void ukiki_act_jump(void) {
  * Waypoints that lead from the top of the mountain to the cage.
  */
 static Trajectory sCageUkikiPath[] = {
-    TRAJECTORY_POS(0, /*pos*/  1011, 2306,  -285),
-    TRAJECTORY_POS(0, /*pos*/  1151, 2304,  -510),
-    TRAJECTORY_POS(0, /*pos*/  1723, 1861,  -964),
-    TRAJECTORY_POS(0, /*pos*/  2082, 1775, -1128),
-    TRAJECTORY_POS(0, /*pos*/  2489, 1717, -1141),
-    TRAJECTORY_POS(0, /*pos*/  2662, 1694, -1140),
-    TRAJECTORY_POS(0, /*pos*/  2902, 1536,  -947),
-    TRAJECTORY_POS(0, /*pos*/  2946, 1536,  -467),
-    TRAJECTORY_POS(0, /*pos*/  2924, 1536,    72),
-    TRAJECTORY_POS(0, /*pos*/  2908, 1536,   536),
-    TRAJECTORY_POS(0, /*pos*/  2886, 1536,   783),
-    TRAJECTORY_END(),
+    TRAJECTORY_POS(0, /*pos*/ 1011, 2306, -285),  TRAJECTORY_POS(0, /*pos*/ 1151, 2304, -510),
+    TRAJECTORY_POS(0, /*pos*/ 1723, 1861, -964),  TRAJECTORY_POS(0, /*pos*/ 2082, 1775, -1128),
+    TRAJECTORY_POS(0, /*pos*/ 2489, 1717, -1141), TRAJECTORY_POS(0, /*pos*/ 2662, 1694, -1140),
+    TRAJECTORY_POS(0, /*pos*/ 2902, 1536, -947),  TRAJECTORY_POS(0, /*pos*/ 2946, 1536, -467),
+    TRAJECTORY_POS(0, /*pos*/ 2924, 1536, 72),    TRAJECTORY_POS(0, /*pos*/ 2908, 1536, 536),
+    TRAJECTORY_POS(0, /*pos*/ 2886, 1536, 783),   TRAJECTORY_END(),
 };
 
 /**
@@ -332,7 +323,7 @@ static Trajectory sCageUkikiPath[] = {
  * our death. Ukiki is a tad suicidal.
  */
 void ukiki_act_go_to_cage(void) {
-    struct Object *obj;
+    struct Object* obj;
     f32 latDistToCage = 0.0f;
     s16 yawToCage = 0;
     obj = cur_obj_nearest_object_with_behavior(bhvUkikiCageChild);
@@ -352,7 +343,7 @@ void ukiki_act_go_to_cage(void) {
         case UKIKI_SUB_ACT_CAGE_RUN_TO_CAGE:
             cur_obj_init_animation_with_sound(UKIKI_ANIM_RUN);
 
-            o->oPathedStartWaypoint = (struct Waypoint *) sCageUkikiPath;
+            o->oPathedStartWaypoint = (struct Waypoint*)sCageUkikiPath;
 
             if (cur_obj_follow_path(0) != PATH_REACHED_END) {
                 o->oForwardVel = 10.0f;
@@ -377,8 +368,8 @@ void ukiki_act_go_to_cage(void) {
         case UKIKI_SUB_ACT_CAGE_TALK_TO_MARIO:
             cur_obj_init_animation_with_sound(UKIKI_ANIM_HANDSTAND);
 
-            if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_DOWN, 
-                DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_080)) {
+            if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_DOWN, DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG,
+                                                    DIALOG_080)) {
                 o->oSubAction++;
             }
             break;
@@ -436,19 +427,19 @@ void ukiki_act_go_to_cage(void) {
  * SoundState number.
  */
 struct SoundState sUkikiSoundStates[] = {
-    {1, 1, 10, SOUND_OBJ_UKIKI_STEP_DEFAULT},
-    {0, 0, 0,  NO_SOUND},
-    {0, 0, 0,  NO_SOUND},
-    {0, 0, 0,  NO_SOUND},
-    {1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_SHORT},
-    {1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_LONG},
-    {0, 0, 0,  NO_SOUND},
-    {0, 0, 0,  NO_SOUND},
-    {1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_LONG},
-    {1, 0, -1, SOUND_OBJ_UKIKI_STEP_LEAVES},
-    {1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_IDLE},
-    {0, 0, 0,  NO_SOUND},
-    {0, 0, 0,  NO_SOUND},
+    { 1, 1, 10, SOUND_OBJ_UKIKI_STEP_DEFAULT },
+    { 0, 0, 0, NO_SOUND },
+    { 0, 0, 0, NO_SOUND },
+    { 0, 0, 0, NO_SOUND },
+    { 1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_SHORT },
+    { 1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_LONG },
+    { 0, 0, 0, NO_SOUND },
+    { 0, 0, 0, NO_SOUND },
+    { 1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_LONG },
+    { 1, 0, -1, SOUND_OBJ_UKIKI_STEP_LEAVES },
+    { 1, 0, -1, SOUND_OBJ_UKIKI_CHATTER_IDLE },
+    { 0, 0, 0, NO_SOUND },
+    { 0, 0, 0, NO_SOUND },
 };
 
 /**
@@ -456,14 +447,9 @@ struct SoundState sUkikiSoundStates[] = {
  * every frame.
  */
 void (*sUkikiActions[])(void) = {
-    ukiki_act_idle,
-    ukiki_act_run,
-    ukiki_act_turn_to_mario,
-    ukiki_act_jump,
-    ukiki_act_go_to_cage,
-    ukiki_act_wait_to_respawn,
-    ukiki_act_unused_turn,
-    ukiki_act_return_home,
+    ukiki_act_idle,        ukiki_act_run,         ukiki_act_turn_to_mario,
+    ukiki_act_jump,        ukiki_act_go_to_cage,  ukiki_act_wait_to_respawn,
+    ukiki_act_unused_turn, ukiki_act_return_home,
 };
 
 /**
@@ -573,8 +559,8 @@ void cap_ukiki_held_loop(void) {
             break;
 
         case UKIKI_TEXT_HAS_CAP:
-            if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP, 
-                (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED), DIALOG_101, 0)) {
+            if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP, (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED),
+                                      DIALOG_101, 0)) {
                 mario_retrieve_cap();
                 set_mario_npc_dialog(MARIO_DIALOG_STOP);
                 o->oUkikiHasCap &= ~UKIKI_CAP_ON;
@@ -593,8 +579,7 @@ void cap_ukiki_held_loop(void) {
  * Initializatation for ukiki, determines if it has Mario's cap.
  */
 void bhv_ukiki_init(void) {
-    if ((o->oBehParams2ndByte == UKIKI_CAP)
-        && (save_file_get_flags() & SAVE_FLAG_CAP_ON_UKIKI)) {
+    if ((o->oBehParams2ndByte == UKIKI_CAP) && (save_file_get_flags() & SAVE_FLAG_CAP_ON_UKIKI)) {
         o->oUkikiTextState = UKIKI_TEXT_HAS_CAP;
         o->oUkikiHasCap |= UKIKI_CAP_ON;
     }

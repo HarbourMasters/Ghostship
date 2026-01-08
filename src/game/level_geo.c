@@ -13,20 +13,20 @@
  * Geo function that generates a displaylist for environment effects such as
  * snow or jet stream bubbles.
  */
-Gfx *geo_envfx_main(s32 callContext, struct GraphNode *node, Mat4 mtxf) {
+Gfx* geo_envfx_main(s32 callContext, struct GraphNode* node, Mat4 mtxf) {
     Vec3s marioPos;
     Vec3s camFrom;
     Vec3s camTo;
-    void *particleList;
-    Gfx *gfx = NULL;
+    void* particleList;
+    Gfx* gfx = NULL;
 
     if (callContext == GEO_CONTEXT_RENDER && gCurGraphNodeCamera != NULL) {
-        struct GraphNodeGenerated *execNode = (struct GraphNodeGenerated *) node;
-        u32 *params = &execNode->parameter; // accessed a s32 as 2 u16s by pointing to the variable and
+        struct GraphNodeGenerated* execNode = (struct GraphNodeGenerated*)node;
+        u32* params = &execNode->parameter; // accessed a s32 as 2 u16s by pointing to the variable and
                                             // casting to a local struct as necessary.
 
         if (GET_HIGH_U16_OF_32(*params) != gAreaUpdateCounter) {
-            UNUSED struct Camera *sp2C = gCurGraphNodeCamera->config.camera;
+            UNUSED struct Camera* sp2C = gCurGraphNodeCamera->config.camera;
             s32 snowMode = GET_LOW_U16_OF_32(*params);
 
             vec3f_to_vec3s(camTo, gCurGraphNodeCamera->focus);
@@ -35,7 +35,7 @@ Gfx *geo_envfx_main(s32 callContext, struct GraphNode *node, Mat4 mtxf) {
             particleList = envfx_update_particles(snowMode, marioPos, camTo, camFrom);
             if (particleList != NULL) {
 #if FALSE
-                Mtx *mtx = alloc_display_list(sizeof(*mtx));
+                Mtx* mtx = alloc_display_list(sizeof(*mtx));
 
                 gfx = alloc_display_list(2 * sizeof(*gfx));
                 mtxf_to_mtx(mtx, mtxf);
@@ -63,20 +63,19 @@ Gfx *geo_envfx_main(s32 callContext, struct GraphNode *node, Mat4 mtxf) {
  * Geo function that generates a displaylist for the skybox. Can be assigned
  * as the function of a GraphNodeBackground.
  */
-Gfx *geo_skybox_main(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx) {
-    Gfx *gfx = NULL;
-    struct GraphNodeBackground *backgroundNode = (struct GraphNodeBackground *) node;
+Gfx* geo_skybox_main(s32 callContext, struct GraphNode* node, UNUSED Mat4* mtx) {
+    Gfx* gfx = NULL;
+    struct GraphNodeBackground* backgroundNode = (struct GraphNodeBackground*)node;
 
     if (callContext == GEO_CONTEXT_AREA_LOAD) {
         backgroundNode->unused = 0;
     } else if (callContext == GEO_CONTEXT_RENDER) {
-        struct GraphNodeCamera *camNode = (struct GraphNodeCamera *) gCurGraphNodeRoot->views[0];
-        struct GraphNodePerspective *camFrustum =
-            (struct GraphNodePerspective *) camNode->fnNode.node.parent;
+        struct GraphNodeCamera* camNode = (struct GraphNodeCamera*)gCurGraphNodeRoot->views[0];
+        struct GraphNodePerspective* camFrustum = (struct GraphNodePerspective*)camNode->fnNode.node.parent;
 
         gfx = create_skybox_facing_camera(0, backgroundNode->background, camFrustum->fov, gLakituState.pos[0],
-                            gLakituState.pos[1], gLakituState.pos[2], gLakituState.focus[0],
-                            gLakituState.focus[1], gLakituState.focus[2]);
+                                          gLakituState.pos[1], gLakituState.pos[2], gLakituState.focus[0],
+                                          gLakituState.focus[1], gLakituState.focus[2]);
     }
 
     return gfx;

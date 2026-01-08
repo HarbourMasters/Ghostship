@@ -16,7 +16,7 @@ static struct ObjectHitbox sTreasureChestBottomHitbox = {
 };
 
 void bhv_treasure_chest_top_loop(void) {
-    struct Object *sp34 = o->parentObj->parentObj;
+    struct Object* sp34 = o->parentObj->parentObj;
 
     switch (o->oAction) {
         case 0:
@@ -68,9 +68,10 @@ void bhv_treasure_chest_bottom_init(void) {
 void bhv_treasure_chest_bottom_loop(void) {
     switch (o->oAction) {
         case 0:
-            if (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, gMarioObject->header.gfx.angle[1] + 0x8000, 0x3000)
-                && is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 150)
-                && !o->parentObj->oTreasureChestUnkF8) {
+            if (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, gMarioObject->header.gfx.angle[1] + 0x8000,
+                                                 0x3000) &&
+                is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 150) &&
+                !o->parentObj->oTreasureChestUnkF8) {
                 if (o->parentObj->oTreasureChestUnkF4 == o->oBehParams2ndByte) {
                     play_sound(SOUND_GENERAL2_RIGHT_ANSWER, gGlobalSoundSource);
                     o->parentObj->oTreasureChestUnkF4++;
@@ -104,8 +105,8 @@ void bhv_treasure_chest_bottom_loop(void) {
 }
 
 void spawn_treasure_chest(s8 sp3B, s32 x, s32 y, s32 z, s16 yaw) {
-    struct Object *sp34 = spawn_object_abs_with_rot(o, 0, MODEL_TREASURE_CHEST_BASE,
-                                                    bhvTreasureChestBottom, x, y, z, 0, yaw, 0);
+    struct Object* sp34 =
+        spawn_object_abs_with_rot(o, 0, MODEL_TREASURE_CHEST_BASE, bhvTreasureChestBottom, x, y, z, 0, yaw, 0);
     sp34->oBehParams2ndByte = sp3B;
 }
 

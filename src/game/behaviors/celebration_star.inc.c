@@ -51,12 +51,12 @@ void celeb_star_act_face_camera(void) {
     if (o->oTimer < 10) {
 #if BUGFIX_STAR_BOWSER_KEY
         if (o->oCelebStarUnkF4 == 0) {
-            cur_obj_scale((f32) o->oTimer / 10.0);
+            cur_obj_scale((f32)o->oTimer / 10.0);
         } else {
-            cur_obj_scale((f32) o->oTimer / 30.0);
+            cur_obj_scale((f32)o->oTimer / 30.0);
         }
 #else
-        cur_obj_scale((f32) o->oTimer / 10.0);
+        cur_obj_scale((f32)o->oTimer / 10.0);
 #endif
         o->oFaceAngleYaw += 0x1000;
     } else {

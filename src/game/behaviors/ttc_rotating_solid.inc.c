@@ -7,7 +7,7 @@
 /**
  * The collision models for cube and triangular prism, respectively.
  */
-static Collision const *sTTCRotatingSolidCollisionModels[] = {
+static Collision const* sTTCRotatingSolidCollisionModels[] = {
     ttc_seg7_collision_07014F70,
     ttc_seg7_collision_07015008,
 };
@@ -47,8 +47,7 @@ void bhv_ttc_rotating_solid_update(void) {
             }
         } else if (o->oTTCRotatingSolidVelY > 0.0f && o->oPosY >= o->oHomeY) {
             // 4. Rotate
-            s32 targetRoll =
-                (s32)((f32) o->oTTCRotatingSolidNumTurns / o->oTTCRotatingSolidNumSides * 0x10000);
+            s32 targetRoll = (s32)((f32)o->oTTCRotatingSolidNumTurns / o->oTTCRotatingSolidNumSides * 0x10000);
             s32 startRoll = o->oFaceAngleRoll;
 
             obj_face_roll_approach(targetRoll, 1200);
@@ -57,8 +56,7 @@ void bhv_ttc_rotating_solid_update(void) {
             if (o->oAngleVelRoll == 0) {
                 cur_obj_play_sound_2(SOUND_GENERAL2_ROTATING_BLOCK_CLICK);
 
-                o->oTTCRotatingSolidNumTurns =
-                    (o->oTTCRotatingSolidNumTurns + 1) % o->oTTCRotatingSolidNumSides;
+                o->oTTCRotatingSolidNumTurns = (o->oTTCRotatingSolidNumTurns + 1) % o->oTTCRotatingSolidNumSides;
 
                 o->oTimer = 0;
                 if (gTTCSpeedSetting == TTC_SPEED_RANDOM) {

@@ -13,7 +13,7 @@ struct ObjectHitbox sMetalBoxHitbox = {
 };
 
 s32 check_if_moving_over_floor(f32 a0, f32 a1) {
-    struct Surface *sp24;
+    struct Surface* sp24;
     f32 sp20 = o->oPosX + sins(o->oMoveAngleYaw) * a1;
     f32 floorHeight;
     f32 sp18 = o->oPosZ + coss(o->oMoveAngleYaw) * a1;
@@ -33,8 +33,7 @@ void bhv_pushable_loop(void) {
     obj_set_hitbox(o, &sMetalBoxHitbox);
     o->oForwardVel = 0.0f;
 
-    if (obj_check_if_collided_with_object(o, gMarioObject)
-        && (gMarioStates[0].flags & MARIO_UNKNOWN_31)) {
+    if (obj_check_if_collided_with_object(o, gMarioObject) && (gMarioStates[0].flags & MARIO_UNKNOWN_31)) {
         s16 sp1C = obj_angle_to_object(o, gMarioObject);
         if (abs_angle_diff(sp1C, gMarioObject->oMoveAngleYaw) > 0x4000) {
             o->oMoveAngleYaw = (s16)((gMarioObject->oMoveAngleYaw + 0x2000) & 0xC000);

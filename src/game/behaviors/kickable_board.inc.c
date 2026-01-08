@@ -1,8 +1,8 @@
 // kickable_board.inc.c
 
 s32 check_mario_attacking(UNUSED s32 unused) {
-    if (obj_check_if_collided_with_object(o, gMarioObject)
-        && abs_angle_diff(o->oMoveAngleYaw, gMarioObject->oMoveAngleYaw) > 0x6000) {
+    if (obj_check_if_collided_with_object(o, gMarioObject) &&
+        abs_angle_diff(o->oMoveAngleYaw, gMarioObject->oMoveAngleYaw) > 0x6000) {
         if (gMarioStates[0].action == ACT_SLIDE_KICK) {
             return 1;
         }

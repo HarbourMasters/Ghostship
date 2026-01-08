@@ -81,6 +81,6 @@ void bhv_ttc_pendulum_update(void) {
     } else {
     }
 
-    o->oFaceAngleRoll = (s32) o->oTTCPendulumAngle;
+    o->oFaceAngleRoll = (s32)o->oTTCPendulumAngle;
     // Note: no platform displacement
 }

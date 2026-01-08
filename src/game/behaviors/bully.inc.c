@@ -54,9 +54,9 @@ void bhv_big_bully_init(void) {
 void bully_check_mario_collision(void) {
     if (
 #ifdef VERSION_SH
-    o->oAction != BULLY_ACT_LAVA_DEATH && o->oAction != BULLY_ACT_DEATH_PLANE_DEATH &&
+        o->oAction != BULLY_ACT_LAVA_DEATH && o->oAction != BULLY_ACT_DEATH_PLANE_DEATH &&
 #endif
-    o->oInteractStatus & INT_STATUS_INTERACTED) {
+        o->oInteractStatus & INT_STATUS_INTERACTED) {
         if (o->oBehParams2ndByte == BULLY_BP_SIZE_SMALL) {
             cur_obj_play_sound_2(SOUND_OBJ2_BULLY_ATTACKED);
         } else {
@@ -98,7 +98,7 @@ void bully_act_chase_mario(void) {
 }
 
 void bully_act_knockback(void) {
-    if (o->oForwardVel < 10.0 && (s32) o->oVelY == 0) {
+    if (o->oForwardVel < 10.0 && (s32)o->oVelY == 0) {
         o->oForwardVel = 1.0;
         o->oBullyKBTimerAndMinionKOCounter++;
         o->oFlags |= OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW;
@@ -188,7 +188,7 @@ void bully_step(void) {
 }
 
 void bully_spawn_coin(void) {
-    struct Object *coin = spawn_object(o, MODEL_YELLOW_COIN, bhvMovingYellowCoin);
+    struct Object* coin = spawn_object(o, MODEL_YELLOW_COIN, bhvMovingYellowCoin);
 
     cur_obj_play_sound_2(SOUND_GENERAL_COIN_SPURT);
 
@@ -212,8 +212,7 @@ void bully_act_level_death(void) {
                 spawn_default_star(130.0f, 1600.0f, -4335.0f);
             } else {
                 spawn_default_star(0, 950.0f, -6800.0f);
-                spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvLllTumblingBridge,
-                                          0, 154, -5631, 0, 0, 0);
+                spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvLllTumblingBridge, 0, 154, -5631, 0, 0, 0);
             }
         }
     }
@@ -270,8 +269,7 @@ void bhv_bully_loop(void) {
 }
 
 void big_bully_spawn_minion(s32 x, s32 y, s32 z, s16 yaw) {
-    struct Object *bully =
-        spawn_object_abs_with_rot(o, 0, MODEL_BULLY, bhvSmallBully, x, y, z, 0, yaw, 0);
+    struct Object* bully = spawn_object_abs_with_rot(o, 0, MODEL_BULLY, bhvSmallBully, x, y, z, 0, yaw, 0);
     bully->oBullySubtype = BULLY_STYPE_MINION;
     bully->oBehParams2ndByte = BULLY_BP_SIZE_SMALL;
 }

@@ -25,7 +25,7 @@ struct TextLabel {
  * Stores the text to be rendered on screen
  * and how they are to be rendered.
  */
-struct TextLabel *sTextLabels[52];
+struct TextLabel* sTextLabels[52];
 s16 sTextLabelsCount = 0;
 
 /**
@@ -46,7 +46,7 @@ s32 int_pow(s32 n, s32 exponent) {
  * Formats an integer n for print by fitting it to width, prefixing with a negative,
  * and converting the base.
  */
-void format_integer(s32 n, s32 base, char *dest, s32 *totalLength, u8 width, s8 zeroPad) {
+void format_integer(s32 n, s32 base, char* dest, s32* totalLength, u8 width, s8 zeroPad) {
     u32 powBase;
     s32 numDigits = 0;
     s32 i;
@@ -72,7 +72,7 @@ void format_integer(s32 n, s32 base, char *dest, s32 *totalLength, u8 width, s8 
         while (TRUE) {
             powBase = int_pow(base, numDigits);
 
-            if (powBase > (u32) n) {
+            if (powBase > (u32)n) {
                 break;
             }
 
@@ -81,7 +81,8 @@ void format_integer(s32 n, s32 base, char *dest, s32 *totalLength, u8 width, s8 
 
         // Add leading pad to fit width.
         if (width > numDigits) {
-            for (len = 0; len < width - numDigits; len++) dest[len] = pad;
+            for (len = 0; len < width - numDigits; len++)
+                dest[len] = pad;
 
             // Needs 1 length to print negative prefix.
             if (negative == TRUE) {
@@ -112,7 +113,8 @@ void format_integer(s32 n, s32 base, char *dest, s32 *totalLength, u8 width, s8 
     } else { // n is zero.
         numDigits = 1;
         if (width > numDigits) {
-            for (len = 0; len < width - numDigits; len++) dest[len] = pad;
+            for (len = 0; len < width - numDigits; len++)
+                dest[len] = pad;
         }
         dest[len] = '0';
     }
@@ -125,7 +127,7 @@ void format_integer(s32 n, s32 base, char *dest, s32 *totalLength, u8 width, s8 
  * Additionally, this determines if a number should be zero-padded,
  * writing to 'zeroPad'.
  */
-void parse_width_field(const char *str, s32 *srcIndex, u8 *width, s8 *zeroPad) {
+void parse_width_field(const char* str, s32* srcIndex, u8* width, s8* zeroPad) {
     s8 digits[12]; // unknown length
     s8 digitsLen = 0;
     s16 i;
@@ -168,7 +170,7 @@ void parse_width_field(const char *str, s32 *srcIndex, u8 *width, s8 *zeroPad) {
  * Warning: this fails on too large numbers, because format_integer has bugs
  * related to overflow. For romhacks, prefer sprintf + print_text.
  */
-void print_text_fmt_int(s32 x, s32 y, const char *str, s32 n) {
+void print_text_fmt_int(s32 x, s32 y, const char* str, s32 n) {
     char c = 0;
     s8 zeroPad = FALSE;
     u8 width = 0;
@@ -177,8 +179,7 @@ void print_text_fmt_int(s32 x, s32 y, const char *str, s32 n) {
     s32 srcIndex = 0;
 
     // Don't continue if there is no memory to do so.
-    if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool,
-                                                        sizeof(struct TextLabel))) == NULL) {
+    if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool, sizeof(struct TextLabel))) == NULL) {
         return;
     }
 
@@ -221,14 +222,13 @@ void print_text_fmt_int(s32 x, s32 y, const char *str, s32 n) {
 /**
  * Prints text in the colorful lettering at given X, Y coordinates.
  */
-void print_text(s32 x, s32 y, const char *str) {
+void print_text(s32 x, s32 y, const char* str) {
     char c = 0;
     s32 length = 0;
     s32 srcIndex = 0;
 
     // Don't continue if there is no memory to do so.
-    if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool,
-                                                        sizeof(struct TextLabel))) == NULL) {
+    if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool, sizeof(struct TextLabel))) == NULL) {
         return;
     }
 
@@ -252,7 +252,7 @@ void print_text(s32 x, s32 y, const char *str) {
 /**
  * Prints text in the colorful lettering centered at given X, Y coordinates.
  */
-void print_text_centered(s32 x, s32 y, const char *str) {
+void print_text_centered(s32 x, s32 y, const char* str) {
     char c = 0;
     UNUSED s8 unused1 = 0;
     UNUSED s32 unused2 = 0;
@@ -260,8 +260,7 @@ void print_text_centered(s32 x, s32 y, const char *str) {
     s32 srcIndex = 0;
 
     // Don't continue if there is no memory to do so.
-    if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool,
-                                                        sizeof(struct TextLabel))) == NULL) {
+    if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool, sizeof(struct TextLabel))) == NULL) {
         return;
     }
 
@@ -352,11 +351,12 @@ s8 char_to_glyph_index(char c) {
  * Adds an individual glyph to be rendered.
  */
 void add_glyph_texture(s8 glyphIndex) {
-    const u8 *const *glyphs = segmented_to_virtual(main_hud_lut);
-    const u8 *texture = glyphs[glyphIndex];
+    const u8* const* glyphs = segmented_to_virtual(main_hud_lut);
+    const u8* texture = glyphs[glyphIndex];
 
     gDPPipeSync(gDisplayListHead++);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, texture == NULL ? glyphs[COLOR_CHAR_STAR] : texture);
+    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,
+                       texture == NULL ? glyphs[COLOR_CHAR_STAR] : texture);
     gSPDisplayList(gDisplayListHead++, dl_hud_img_load_tex_block);
 }
 
@@ -371,8 +371,8 @@ void render_textrect(s32 x, s32 y, s32 pos) {
 
     rectX = rectBaseX;
     rectY = rectBaseY;
-    gSPWideTextureRectangle(gDisplayListHead++, rectX << 2, rectY << 2, (rectX + 15) << 2,
-                        (rectY + 15) << 2, G_TX_RENDERTILE, 0, 0, 4 << 10, 1 << 10);
+    gSPWideTextureRectangle(gDisplayListHead++, rectX << 2, rectY << 2, (rectX + 15) << 2, (rectY + 15) << 2,
+                            G_TX_RENDERTILE, 0, 0, 4 << 10, 1 << 10);
 }
 
 /**
@@ -383,7 +383,7 @@ void render_text_labels(void) {
     s32 i;
     s32 j;
     s8 glyphIndex;
-    Mtx *mtx;
+    Mtx* mtx;
 
     if (sTextLabelsCount == 0) {
         return;
@@ -397,7 +397,7 @@ void render_text_labels(void) {
     }
 
     guOrtho(mtx, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, -10.0f, 10.0f, 1.0f);
-    gSPPerspNormalize((Gfx *) (gDisplayListHead++), 0xFFFF);
+    gSPPerspNormalize((Gfx*)(gDisplayListHead++), 0xFFFF);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx), G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
     gSPDisplayList(gDisplayListHead++, dl_hud_img_begin);
 

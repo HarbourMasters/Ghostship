@@ -9,13 +9,13 @@ struct SLWalkingPenguinStep {
 
 // The penguin follows a preset list of movements while walking forward.
 struct SLWalkingPenguinStep sSLWalkingPenguinErraticSteps[] = {
-    { 60, PENGUIN_ANIM_WALK, 6.0f,  1.0f }, // Walk forwards for 2 seconds
-    { 30, PENGUIN_ANIM_IDLE, 0.0f,  1.0f }, // Stop for 1 second
+    { 60, PENGUIN_ANIM_WALK, 6.0f, 1.0f },  // Walk forwards for 2 seconds
+    { 30, PENGUIN_ANIM_IDLE, 0.0f, 1.0f },  // Stop for 1 second
     { 30, PENGUIN_ANIM_WALK, 12.0f, 2.0f }, // Walk forwards quickly for 1 second
-    { 30, PENGUIN_ANIM_IDLE, 0.0f,  1.0f }, // Stop for 1 second
+    { 30, PENGUIN_ANIM_IDLE, 0.0f, 1.0f },  // Stop for 1 second
     { 30, PENGUIN_ANIM_WALK, -6.0f, 1.0f }, // Walk backwards for 1 second
-    { 30, PENGUIN_ANIM_IDLE, 0.0f,  1.0f }, // Stop for 1 second
-    { -1, 0, 0.0f,  0.0f }, // Repeat
+    { 30, PENGUIN_ANIM_IDLE, 0.0f, 1.0f },  // Stop for 1 second
+    { -1, 0, 0.0f, 0.0f },                  // Repeat
 };
 
 static s32 sl_walking_penguin_turn(void) {
@@ -71,8 +71,7 @@ void bhv_sl_walking_penguin_loop(void) {
 
                 cur_obj_init_animation_with_accel_and_sound(
                     sSLWalkingPenguinErraticSteps[o->oSLWalkingPenguinCurStep].anim,
-                    sSLWalkingPenguinErraticSteps[o->oSLWalkingPenguinCurStep].animSpeed
-                );
+                    sSLWalkingPenguinErraticSteps[o->oSLWalkingPenguinCurStep].animSpeed);
             }
             break;
 

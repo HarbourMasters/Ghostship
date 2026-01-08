@@ -22,7 +22,7 @@ static void handle_merry_go_round_music(void) {
         }
     } else {
         // Get Mario's floor and floor surface type
-        struct Surface *marioFloor;
+        struct Surface* marioFloor;
         u16 marioFloorType;
 
         find_floor(gMarioObject->oPosX, gMarioObject->oPosY, gMarioObject->oPosZ, &marioFloor);
@@ -53,8 +53,7 @@ static void handle_merry_go_round_music(void) {
         // If he is, play the creaking sound.
         if (
             // The merry-go-round is a dynamic surface.
-            gMarioCurrentRoom != BBH_DYNAMIC_SURFACE_ROOM
-            && gMarioCurrentRoom != BBH_NEAR_MERRY_GO_ROUND_ROOM) {
+            gMarioCurrentRoom != BBH_DYNAMIC_SURFACE_ROOM && gMarioCurrentRoom != BBH_NEAR_MERRY_GO_ROUND_ROOM) {
             func_80321080(300); // Switch to BBH music? FIXME: Audio needs labelling
             o->oMerryGoRoundMusicShouldPlay = FALSE;
         } else {

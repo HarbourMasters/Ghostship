@@ -270,7 +270,7 @@ void bhv_1up_hidden_loop(void) {
 
 void bhv_1up_hidden_trigger_loop(void) {
     if (obj_check_if_collided_with_object(o, gMarioObject) == TRUE) {
-        struct Object *sp1C = cur_obj_nearest_object_with_behavior(bhvHidden1up);
+        struct Object* sp1C = cur_obj_nearest_object_with_behavior(bhvHidden1up);
         if (sp1C != NULL) {
             sp1C->o1UpHiddenUnkF4++;
         }
@@ -317,7 +317,7 @@ void bhv_1up_hidden_in_pole_loop(void) {
 
 void bhv_1up_hidden_in_pole_trigger_loop(void) {
     if (obj_check_if_collided_with_object(o, gMarioObject) == TRUE) {
-        struct Object *sp1C = cur_obj_nearest_object_with_behavior(bhvHidden1upInPole);
+        struct Object* sp1C = cur_obj_nearest_object_with_behavior(bhvHidden1upInPole);
         if (sp1C != NULL) {
             sp1C->o1UpHiddenUnkF4++;
         }

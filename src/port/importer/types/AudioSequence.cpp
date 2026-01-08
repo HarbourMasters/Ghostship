@@ -8,4 +8,4 @@ AudioSequenceData* AudioSequence::GetPointer() {
 size_t AudioSequence::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SM64

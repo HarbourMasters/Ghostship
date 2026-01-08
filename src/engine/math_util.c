@@ -13,7 +13,7 @@ Mat4 sInterpolationMatrixStack[0x1000];
 Mat4* gInterpolationMatrix = &sInterpolationMatrixStack[0];
 
 // Variables for a spline curve animation (used for the flight path in the grand star cutscene)
-Vec4s *gSplineKeyframe;
+Vec4s* gSplineKeyframe;
 float gSplineKeyframeFraction;
 int gSplineState;
 
@@ -23,14 +23,14 @@ int gSplineState;
 
 #ifdef __GNUC__
 #if defined(__clang__)
-  #pragma GCC diagnostic ignored "-Wreturn-stack-address"
+#pragma GCC diagnostic ignored "-Wreturn-stack-address"
 #else
-  #pragma GCC diagnostic ignored "-Wreturn-local-addr"
+#pragma GCC diagnostic ignored "-Wreturn-local-addr"
 #endif
 #endif
 
 /// Copy vector 'src' to 'dest'
-void *vec3f_copy(Vec3f dest, Vec3f src) {
+void* vec3f_copy(Vec3f dest, Vec3f src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];
@@ -38,7 +38,7 @@ void *vec3f_copy(Vec3f dest, Vec3f src) {
 }
 
 /// Set vector 'dest' to (x, y, z)
-void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z) {
+void* vec3f_set(Vec3f dest, f32 x, f32 y, f32 z) {
     dest[0] = x;
     dest[1] = y;
     dest[2] = z;
@@ -46,7 +46,7 @@ void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z) {
 }
 
 /// Add vector 'a' to 'dest'
-void *vec3f_add(Vec3f dest, Vec3f a) {
+void* vec3f_add(Vec3f dest, Vec3f a) {
     dest[0] += a[0];
     dest[1] += a[1];
     dest[2] += a[2];
@@ -54,7 +54,7 @@ void *vec3f_add(Vec3f dest, Vec3f a) {
 }
 
 /// Make 'dest' the sum of vectors a and b.
-void *vec3f_sum(Vec3f dest, Vec3f a, Vec3f b) {
+void* vec3f_sum(Vec3f dest, Vec3f a, Vec3f b) {
     dest[0] = a[0] + b[0];
     dest[1] = a[1] + b[1];
     dest[2] = a[2] + b[2];
@@ -62,7 +62,7 @@ void *vec3f_sum(Vec3f dest, Vec3f a, Vec3f b) {
 }
 
 /// Copy vector src to dest
-void *vec3s_copy(Vec3s dest, Vec3s src) {
+void* vec3s_copy(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];
@@ -70,7 +70,7 @@ void *vec3s_copy(Vec3s dest, Vec3s src) {
 }
 
 /// Set vector 'dest' to (x, y, z)
-void *vec3s_set(Vec3s dest, s16 x, s16 y, s16 z) {
+void* vec3s_set(Vec3s dest, s16 x, s16 y, s16 z) {
     dest[0] = x;
     dest[1] = y;
     dest[2] = z;
@@ -78,7 +78,7 @@ void *vec3s_set(Vec3s dest, s16 x, s16 y, s16 z) {
 }
 
 /// Add vector a to 'dest'
-void *vec3s_add(Vec3s dest, Vec3s a) {
+void* vec3s_add(Vec3s dest, Vec3s a) {
     dest[0] += a[0];
     dest[1] += a[1];
     dest[2] += a[2];
@@ -86,7 +86,7 @@ void *vec3s_add(Vec3s dest, Vec3s a) {
 }
 
 /// Make 'dest' the sum of vectors a and b.
-void *vec3s_sum(Vec3s dest, Vec3s a, Vec3s b) {
+void* vec3s_sum(Vec3s dest, Vec3s a, Vec3s b) {
     dest[0] = a[0] + b[0];
     dest[1] = a[1] + b[1];
     dest[2] = a[2] + b[2];
@@ -94,7 +94,7 @@ void *vec3s_sum(Vec3s dest, Vec3s a, Vec3s b) {
 }
 
 /// Subtract vector a from 'dest'
-void *vec3s_sub(Vec3s dest, Vec3s a) {
+void* vec3s_sub(Vec3s dest, Vec3s a) {
     dest[0] -= a[0];
     dest[1] -= a[1];
     dest[2] -= a[2];
@@ -102,7 +102,7 @@ void *vec3s_sub(Vec3s dest, Vec3s a) {
 }
 
 /// Convert short vector a to float vector 'dest'
-void *vec3s_to_vec3f(Vec3f dest, Vec3s a) {
+void* vec3s_to_vec3f(Vec3f dest, Vec3s a) {
     dest[0] = a[0];
     dest[1] = a[1];
     dest[2] = a[2];
@@ -113,7 +113,7 @@ void *vec3s_to_vec3f(Vec3f dest, Vec3s a) {
  * Convert float vector a to a short vector 'dest' by rounding the components
  * to the nearest integer.
  */
-void *vec3f_to_vec3s(Vec3s dest, Vec3f a) {
+void* vec3f_to_vec3s(Vec3s dest, Vec3f a) {
     // add/subtract 0.5 in order to round to the nearest s32 instead of truncating
     dest[0] = a[0] + ((a[0] > 0) ? 0.5f : -0.5f);
     dest[1] = a[1] + ((a[1] > 0) ? 0.5f : -0.5f);
@@ -126,7 +126,7 @@ void *vec3f_to_vec3s(Vec3s dest, Vec3f a) {
  * It is similar to vec3f_cross, but it calculates the vectors (c-b) and (b-a)
  * at the same time.
  */
-void *find_vector_perpendicular_to_plane(Vec3f dest, Vec3f a, Vec3f b, Vec3f c) {
+void* find_vector_perpendicular_to_plane(Vec3f dest, Vec3f a, Vec3f b, Vec3f c) {
     dest[0] = (b[1] - a[1]) * (c[2] - b[2]) - (c[1] - b[1]) * (b[2] - a[2]);
     dest[1] = (b[2] - a[2]) * (c[0] - b[0]) - (c[2] - b[2]) * (b[0] - a[0]);
     dest[2] = (b[0] - a[0]) * (c[1] - b[1]) - (c[0] - b[0]) * (b[1] - a[1]);
@@ -134,7 +134,7 @@ void *find_vector_perpendicular_to_plane(Vec3f dest, Vec3f a, Vec3f b, Vec3f c) 
 }
 
 /// Make vector 'dest' the cross product of vectors a and b.
-void *vec3f_cross(Vec3f dest, Vec3f a, Vec3f b) {
+void* vec3f_cross(Vec3f dest, Vec3f a, Vec3f b) {
     dest[0] = a[1] * b[2] - b[1] * a[2];
     dest[1] = a[2] * b[0] - b[2] * a[0];
     dest[2] = a[0] * b[1] - b[0] * a[1];
@@ -142,7 +142,7 @@ void *vec3f_cross(Vec3f dest, Vec3f a, Vec3f b) {
 }
 
 /// Scale vector 'dest' so it has length 1
-void *vec3f_normalize(Vec3f dest) {
+void* vec3f_normalize(Vec3f dest) {
     //! Possible division by zero
     f32 invsqrt = 1.0f / sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
 
@@ -157,8 +157,8 @@ void *vec3f_normalize(Vec3f dest) {
 /// Copy matrix 'src' to 'dest'
 void mtxf_copy(Mat4 dest, Mat4 src) {
     register s32 i;
-    register u32 *d = (u32 *) dest;
-    register u32 *s = (u32 *) src;
+    register u32* d = (u32*)dest;
+    register u32* s = (u32*)src;
 
     for (i = 0; i < 16; i++) {
         *d++ = *s++;
@@ -170,14 +170,16 @@ void mtxf_copy(Mat4 dest, Mat4 src) {
  */
 void mtxf_identity(Mat4 mtx) {
     register s32 i;
-    register f32 *dest;
+    register f32* dest;
     // These loops must be one line to match on -O2
 
     // initialize everything except the first and last cells to 0
-    for (dest = (f32 *) mtx + 1, i = 0; i < 14; dest++, i++) *dest = 0;
+    for (dest = (f32*)mtx + 1, i = 0; i < 14; dest++, i++)
+        *dest = 0;
 
     // initialize the diagonal cells to 1
-    for (dest = (f32 *) mtx, i = 0; i < 4; dest += 5, i++) *dest = 1;
+    for (dest = (f32*)mtx, i = 0; i < 4; dest += 5, i++)
+        *dest = 1;
 }
 
 /**
@@ -365,12 +367,9 @@ void mtxf_billboard(Mat4 dest, Mat4 mtx, Vec3f position, s16 angle) {
     dest[2][2] = 1;
     dest[2][3] = 0;
 
-    dest[3][0] =
-        mtx[0][0] * position[0] + mtx[1][0] * position[1] + mtx[2][0] * position[2] + mtx[3][0];
-    dest[3][1] =
-        mtx[0][1] * position[0] + mtx[1][1] * position[1] + mtx[2][1] * position[2] + mtx[3][1];
-    dest[3][2] =
-        mtx[0][2] * position[0] + mtx[1][2] * position[1] + mtx[2][2] * position[2] + mtx[3][2];
+    dest[3][0] = mtx[0][0] * position[0] + mtx[1][0] * position[1] + mtx[2][0] * position[2] + mtx[3][0];
+    dest[3][1] = mtx[0][1] * position[0] + mtx[1][1] * position[1] + mtx[2][1] * position[2] + mtx[3][1];
+    dest[3][2] = mtx[0][2] * position[0] + mtx[1][2] * position[1] + mtx[2][2] * position[2] + mtx[3][2];
     dest[3][3] = 1;
 }
 
@@ -425,7 +424,7 @@ void mtxf_align_terrain_normal(Mat4 dest, Vec3f upDir, Vec3f pos, s16 yaw) {
  * 'radius' is the distance from each triangle vertex to the center
  */
 void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
-    struct Surface *sp74;
+    struct Surface* sp74;
     Vec3f point0;
     Vec3f point1;
     Vec3f point2;
@@ -582,7 +581,7 @@ void mtxf_mul_vec3s(Mat4 mtx, Vec3s b) {
  * exception. On Wii and Wii U Virtual Console the value will simply be clamped
  * and no crashes occur.
  */
-void mtxf_to_mtx(Mtx *dest, Mat4 src) {
+void mtxf_to_mtx(Mtx* dest, Mat4 src) {
     // Avoid type-casting which is technically UB by calling the equivalent
     // guMtxF2L function. This helps little-endian systems, as well.
     FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)src, dest);
@@ -592,7 +591,7 @@ void mtxf_to_mtx(Mtx *dest, Mat4 src) {
 /**
  * Set 'mtx' to a transformation matrix that rotates around the z axis.
  */
-void mtxf_rotate_xy(Mtx *mtx, s16 angle) {
+void mtxf_rotate_xy(Mtx* mtx, s16 angle) {
     Mat4 temp;
 
     mtxf_identity(temp);
@@ -617,12 +616,9 @@ void get_pos_from_transform_mtx(Vec3f dest, Mat4 objMtx, Mat4 camMtx) {
     f32 camY = camMtx[3][0] * camMtx[1][0] + camMtx[3][1] * camMtx[1][1] + camMtx[3][2] * camMtx[1][2];
     f32 camZ = camMtx[3][0] * camMtx[2][0] + camMtx[3][1] * camMtx[2][1] + camMtx[3][2] * camMtx[2][2];
 
-    dest[0] =
-        objMtx[3][0] * camMtx[0][0] + objMtx[3][1] * camMtx[0][1] + objMtx[3][2] * camMtx[0][2] - camX;
-    dest[1] =
-        objMtx[3][0] * camMtx[1][0] + objMtx[3][1] * camMtx[1][1] + objMtx[3][2] * camMtx[1][2] - camY;
-    dest[2] =
-        objMtx[3][0] * camMtx[2][0] + objMtx[3][1] * camMtx[2][1] + objMtx[3][2] * camMtx[2][2] - camZ;
+    dest[0] = objMtx[3][0] * camMtx[0][0] + objMtx[3][1] * camMtx[0][1] + objMtx[3][2] * camMtx[0][2] - camX;
+    dest[1] = objMtx[3][0] * camMtx[1][0] + objMtx[3][1] * camMtx[1][1] + objMtx[3][2] * camMtx[1][2] - camY;
+    dest[2] = objMtx[3][0] * camMtx[2][0] + objMtx[3][1] * camMtx[2][1] + objMtx[3][2] * camMtx[2][2] - camZ;
 }
 
 /**
@@ -630,7 +626,7 @@ void get_pos_from_transform_mtx(Vec3f dest, Mat4 objMtx, Mat4 camMtx) {
  * of that vector, as well as the yaw and pitch angles.
  * Basically it converts the direction to spherical coordinates.
  */
-void vec3f_get_dist_and_angle(Vec3f from, Vec3f to, f32 *dist, s16 *pitch, s16 *yaw) {
+void vec3f_get_dist_and_angle(Vec3f from, Vec3f to, f32* dist, s16* pitch, s16* yaw) {
     register f32 x = to[0] - from[0];
     register f32 y = to[1] - from[1];
     register f32 z = to[2] - from[2];
@@ -753,7 +749,7 @@ s16 atan2s(f32 y, f32 x) {
  * Compute the atan2 in radians by calling atan2s and converting the result.
  */
 f32 atan2f(f32 y, f32 x) {
-    return (f32) atan2s(y, x) * M_PI / 0x8000;
+    return (f32)atan2s(y, x) * M_PI / 0x8000;
 }
 #endif
 
@@ -836,7 +832,7 @@ void spline_get_weights(Vec4f result, f32 t, UNUSED s32 c) {
  * The array should end with three entries with s=0 (infinite keyframe duration).
  * That's because the spline has a 3rd degree polynomial, so it looks 3 points ahead.
  */
-void anim_spline_init(Vec4s *keyFrames) {
+void anim_spline_init(Vec4s* keyFrames) {
     gSplineKeyframe = keyFrames;
     gSplineKeyframeFraction = 0;
     gSplineState = 1;

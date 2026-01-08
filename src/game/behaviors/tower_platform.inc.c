@@ -73,9 +73,9 @@ void bhv_wf_sliding_tower_platform_loop(void) {
     }
 }
 
-void spawn_and_init_wf_platforms(s16 a, const BehaviorScript *bhv) {
+void spawn_and_init_wf_platforms(s16 a, const BehaviorScript* bhv) {
     s16 yaw;
-    struct Object *platform = spawn_object(o, a, bhv);
+    struct Object* platform = spawn_object(o, a, bhv);
 
     yaw = o->oPlatformSpawnerUnkF4 * o->oPlatformSpawnerUnkFC + o->oPlatformSpawnerUnkF8;
 

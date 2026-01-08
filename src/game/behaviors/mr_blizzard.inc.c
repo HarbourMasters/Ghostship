@@ -14,8 +14,7 @@ struct ObjectHitbox sMrBlizzardHitbox = {
 };
 
 // Mr. Blizzard particle spawner.
-void mr_blizzard_spawn_white_particles(s8 count, s8 offsetY, s8 forwardVelBase, s8 velYBase,
-                                       s8 sizeBase) {
+void mr_blizzard_spawn_white_particles(s8 count, s8 offsetY, s8 forwardVelBase, s8 velYBase, s8 sizeBase) {
     static struct SpawnParticlesInfo D_80331A00 = {
         /* behParam:        */ 0,
         /* count:           */ 6,
@@ -51,8 +50,8 @@ void bhv_mr_blizzard_init(void) {
         o->oMrBlizzardTargetMoveYaw = o->oMoveAngleYaw;
     } else {
         // Cap wearing Mr. Blizzard from SL.
-        if ((o->oBehParams2ndByte != MR_BLIZZARD_STYPE_NO_CAP)
-            && (save_file_get_flags() & SAVE_FLAG_CAP_ON_MR_BLIZZARD)) {
+        if ((o->oBehParams2ndByte != MR_BLIZZARD_STYPE_NO_CAP) &&
+            (save_file_get_flags() & SAVE_FLAG_CAP_ON_MR_BLIZZARD)) {
             o->oAnimState = 1;
         }
 
@@ -69,9 +68,8 @@ static void mr_blizzard_act_spawn_snowball(void) {
     // If Mr. Blizzard is not holding a snowball, and the animation reaches 5 frames
     // spawn the Mr. Blizzard snowball.
     if (o->oMrBlizzardHeldObj == NULL && cur_obj_init_anim_check_frame(0, 5)) {
-        o->oMrBlizzardHeldObj =
-            spawn_object_relative(0, -70, (s32)(o->oMrBlizzardGraphYOffset + 153.0f), 0, o,
-                                  MODEL_WHITE_PARTICLE, bhvMrBlizzardSnowball);
+        o->oMrBlizzardHeldObj = spawn_object_relative(0, -70, (s32)(o->oMrBlizzardGraphYOffset + 153.0f), 0, o,
+                                                      MODEL_WHITE_PARTICLE, bhvMrBlizzardSnowball);
     } else if (cur_obj_check_anim_frame(10)) {
         o->prevObj = o->oMrBlizzardHeldObj;
     } else if (cur_obj_check_if_near_animation_end()) {
@@ -204,7 +202,7 @@ static void mr_blizzard_act_death(void) {
             // If Mr. Blizzard is wearing Mario's cap, clear
             // the save flag and spawn Mario's cap.
             if (o->oAnimState != 0) {
-                struct Object *cap;
+                struct Object* cap;
                 save_file_clear_flags(SAVE_FLAG_CAP_ON_MR_BLIZZARD);
 
                 cap = spawn_object_relative(0, 5, 105, 0, o, MODEL_MARIOS_CAP, bhvNormalCap);
@@ -324,7 +322,7 @@ static void mr_blizzard_act_jump(void) {
         // Otherwise, set DistFromHome to 700.
         cur_obj_play_sound_2(SOUND_OBJ_SNOW_SAND1);
         if (o->oMrBlizzardDistFromHome != 0) {
-            o->oMrBlizzardDistFromHome = (s32) cur_obj_lateral_dist_to_home();
+            o->oMrBlizzardDistFromHome = (s32)cur_obj_lateral_dist_to_home();
         } else {
             o->oMrBlizzardDistFromHome = 700;
         }
@@ -372,8 +370,8 @@ void bhv_mr_blizzard_update(void) {
     // slowly fall over.
     o->oFaceAngleRoll = o->oMrBlizzardDizziness;
     // Mr. Blizzard's graphical position changes by changing the Y offset.
-    o->oGraphYOffset = o->oMrBlizzardGraphYOffset + absf(20.0f * sins(o->oFaceAngleRoll))
-                       - 40.0f * (1.0f - o->oMrBlizzardScale);
+    o->oGraphYOffset =
+        o->oMrBlizzardGraphYOffset + absf(20.0f * sins(o->oFaceAngleRoll)) - 40.0f * (1.0f - o->oMrBlizzardScale);
 
     cur_obj_scale(o->oMrBlizzardScale);
     cur_obj_move_standard(78);

@@ -8,4 +8,4 @@ PaintingData* Painting::GetPointer() {
 size_t Painting::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SM64
