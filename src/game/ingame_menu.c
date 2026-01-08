@@ -25,6 +25,8 @@
 #include "types.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include <ship/utils/binarytools/endianness.h>
+#include "port/hooks/impl/EventSystem.h"
+#include "port/hooks/list/EngineEvent.h"
 
 #ifdef VERSION_EU
 #undef LANGUAGE_FUNCTION
@@ -2302,8 +2304,11 @@ s16 render_pause_courses_and_castle(void) {
             render_pause_my_score_coins();
             render_pause_red_coins();
 
-            if (gMarioStates[0].action & ACT_FLAG_PAUSE_EXIT || CVarGetInteger("gPauseExitWhenever", 0)) {
-                render_pause_course_options(99, 93, &gDialogLineNum, 15);
+            bool canPause = gMarioStates[0].action & ACT_FLAG_PAUSE_EXIT;
+            CALL_CANCELLABLE_EVENT(RenderPauseCourseOptions, &canPause) {
+                if (canPause) {
+                    render_pause_course_options(99, 93, &gDialogLineNum, 15);
+                }
             }
 
 #ifdef VERSION_EU
