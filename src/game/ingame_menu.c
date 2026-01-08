@@ -2302,7 +2302,7 @@ s16 render_pause_courses_and_castle(void) {
             render_pause_my_score_coins();
             render_pause_red_coins();
 
-            if (gMarioStates[0].action & ACT_FLAG_PAUSE_EXIT) {
+            if (gMarioStates[0].action & ACT_FLAG_PAUSE_EXIT || CVarGetInteger("gPauseExitWhenever", 0)) {
                 render_pause_course_options(99, 93, &gDialogLineNum, 15);
             }
 
