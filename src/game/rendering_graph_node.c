@@ -288,7 +288,7 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
     Mtx *mtx = gMatStackFixed[gMatStackIndex];
     s16 distanceFromCam = -GET_HIGH_S16_OF_32(mtx->m[1][3]); // z-component of the translation column
 #endif
-    if(CVarGetInteger("gDisableLOD", 0) == 1) {
+    if(CVarGetInteger("gEnhancements.DisableLOD", 0) == 1) {
         distanceFromCam = 0;
     }
 

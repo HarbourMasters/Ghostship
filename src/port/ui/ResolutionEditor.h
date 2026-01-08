@@ -1,19 +1,10 @@
-#pragma once
-#include <libultraship/libultraship.h>
+#ifndef RESOLUTIONEDITOR_H
+#define RESOLUTIONEDITOR_H
 
-namespace AdvancedResolutionSettings {
-    class AdvancedResolutionSettingsWindow : public Ship::GuiWindow {
-    private:
-        bool IsDroppingFrames();
+namespace GhostshipGui {
+bool IsDroppingFrames();
+void RegisterResolutionWidgets();
+void UpdateResolutionVars();
+} // namespace GhostshipGui
 
-    protected:
-        bool IsBoolArrayTrue(bool*);
-
-    public:
-        using Ship::GuiWindow::GuiWindow;
-
-        void InitElement() override;
-        void DrawElement() override;
-        void UpdateElement() override;
-    };
-} // namespace AdvancedResolutionSettings
+#endif // RESOLUTIONEDITOR_H

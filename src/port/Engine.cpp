@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "ui/ImguiUI.h"
+#include "ui/GhostshipGui.hpp"
 #include "GameExtractor.h"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
@@ -26,6 +26,7 @@
 #endif
 
 #include <fast/resource/ResourceType.h>
+#include <ship/window/gui/Fonts.h>
 #include <fast/resource/factory/DisplayListFactory.h>
 #include <fast/resource/factory/TextureFactory.h>
 #include <fast/resource/factory/MatrixFactory.h>
@@ -44,7 +45,13 @@
 #include <port/switch/SwitchImpl.h>
 #endif
 
+const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
+const uint32_t defaultImGuiScale = 1;
+int32_t previousImGuiScaleIndex = -1;
+float previousImGuiScale = defaultImGuiScale;
+
 namespace fs = std::filesystem;
+
 
 extern "C" {
 #include "sm64.h"
@@ -168,6 +175,14 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
     prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
     context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
+
+    fontMono = CreateFontWithSize(16.0f, "fonts/Inconsolata-Regular.ttf");
+    fontMonoLarger = CreateFontWithSize(20.0f, "fonts/Inconsolata-Regular.ttf");
+    fontMonoLargest = CreateFontWithSize(24.0f, "fonts/Inconsolata-Regular.ttf");
+    fontStandard = CreateFontWithSize(16.0f, "fonts/Montserrat-Regular.ttf");
+    fontStandardLarger = CreateFontWithSize(20.0f, "fonts/Montserrat-Regular.ttf");
+    fontStandardLargest = CreateFontWithSize(24.0f, "fonts/Montserrat-Regular.ttf");
+    ImGui::GetIO().FontDefault = fontMono;
 }
 
 bool GameEngine::GenAssetFile(bool exitOnFail) {
@@ -233,9 +248,59 @@ int GameEngine::ShowYesNoBox(const char* title, const char* box) {
     return ret;
 }
 
+ImFont *GameEngine::CreateFontWithSize(float size, std::string fontPath) {
+    auto mImGuiIo = &ImGui::GetIO();
+    ImFont *font;
+    if (fontPath == "") {
+        ImFontConfig fontCfg = ImFontConfig();
+        fontCfg.OversampleH = fontCfg.OversampleV = 1;
+        fontCfg.PixelSnapH = true;
+        fontCfg.SizePixels = size;
+        font = mImGuiIo->Fonts->AddFontDefault(&fontCfg);
+    } else {
+        auto initData = std::make_shared<Ship::ResourceInitData>();
+        ImFontConfig config;
+        config.FontDataOwnedByAtlas = false;
+
+        initData->Format = RESOURCE_FORMAT_BINARY;
+        initData->Type = static_cast<uint32_t>(RESOURCE_TYPE_FONT);
+        initData->ResourceVersion = 0;
+        initData->Path = fontPath;
+        std::shared_ptr<Ship::Font> fontData = std::static_pointer_cast<Ship::Font>(
+            Ship::Context::GetInstance()->GetResourceManager()->LoadResource(fontPath, false,
+                                                                             initData));
+        font = mImGuiIo->Fonts->AddFontFromMemoryTTF(fontData->Data, fontData->DataSize, size, &config);
+    }
+    // FontAwesome fonts need to have their sizes reduced by 2.0f/3.0f in order to align correctly
+    float iconFontSize = size * 2.0f / 3.0f;
+    static const ImWchar sIconsRanges[] = { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
+    ImFontConfig iconsConfig;
+    iconsConfig.MergeMode = true;
+    iconsConfig.PixelSnapH = true;
+    iconsConfig.GlyphMinAdvanceX = iconFontSize;
+    mImGuiIo->Fonts->AddFontFromMemoryCompressedBase85TTF(fontawesome_compressed_data_base85,
+                                                          iconFontSize, &iconsConfig, sIconsRanges);
+
+    return font;
+}
+
+void GameEngine::ScaleImGui() {
+    int32_t imGuiScaleIndex = CVarGetInteger("gSettings.ImGuiScale", defaultImGuiScale);
+    if (imGuiScaleIndex == previousImGuiScaleIndex) {
+        return;
+    }
+
+    float scale = imguiScaleOptionToValue[imGuiScaleIndex];
+    float newScale = scale / previousImGuiScale;
+    ImGui::GetStyle().ScaleAllSizes(newScale);
+    ImGui::GetIO().FontGlobalScale = scale;
+    previousImGuiScale = scale;
+    previousImGuiScaleIndex = imGuiScaleIndex;
+}
+
 void GameEngine::Create(){
     const auto instance = Instance = new GameEngine();
-    GameUI::SetupGuiElements();
+    GhostshipGui::SetupGuiElements();
     instance->AudioInit();
     instance->LoadDictionary();
     instance->LoadPlayerAnims();

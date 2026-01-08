@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 project(Ghostship VERSION 1.0.0 LANGUAGES C CXX ASM)
 include(FetchContent)
 
+include(CMake/ghostship-cvars.cmake)
+include(CMake/lus-cvars.cmake)
+
 set(NATO_PHONETIC_ALPHABET
   "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
   "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
@@ -19,6 +22,41 @@ list(GET NATO_PHONETIC_ALPHABET ${PATCH_INDEX} PROJECT_PATCH_WORD)
 
 set(PROJECT_BUILD_NAME "Barnard ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
 set(PROJECT_TEAM "Lywx" CACHE STRING "" FORCE)
+
+# Get Git Information
+execute_process(
+    COMMAND git branch --show-current
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_BRANCH
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+set(CMAKE_PROJECT_GIT_BRANCH "${GIT_BRANCH}" CACHE STRING "Git branch" FORCE)
+
+execute_process(
+    COMMAND git rev-parse HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_COMMIT_HASH
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+# Get only the first 7 characters of the hash
+string(SUBSTRING "${GIT_COMMIT_HASH}" 0 7 SHORT_COMMIT_HASH)
+
+set(CMAKE_PROJECT_GIT_COMMIT_HASH "${SHORT_COMMIT_HASH}" CACHE STRING "Git commit hash" FORCE)
+
+execute_process(
+    COMMAND git describe --tags --abbrev=0 --exact-match HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_COMMIT_TAG
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+if(NOT GIT_COMMIT_TAG)
+    set(GIT_COMMIT_TAG "" CACHE STRING "Git commit tag" FORCE)
+endif()
+
+set(CMAKE_PROJECT_GIT_COMMIT_TAG "${GIT_COMMIT_TAG}" CACHE STRING "Git commit tag" FORCE)
 
 if(APPLE)
   enable_language(OBJCXX)
@@ -64,6 +102,11 @@ add_compile_definitions(
 set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
 set(PROJECT_ID "dev.net64.game")
 endif()
+
+################################################################################
+# Sources
+################################################################################
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/src/port/build.c.in ${CMAKE_CURRENT_SOURCE_DIR}/src/port/build.c @ONLY)
 
 ################################################################################
 # Set target arch type if empty. Visual studio solution generator provides it.
@@ -154,6 +197,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "lib/src/guScaleF.c"
     "lib/src/guLookAtF.c"
     "lib/src/guTranslateF.c"
+    "include/**/*"
     "sound/*.c"
     "src/audio/*.h"
     "src/audio/*.c"
