@@ -81,6 +81,11 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 endif()
 
 ################################################################################
+# Use solution folders feature
+################################################################################
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+################################################################################
 # Global configuration types
 ################################################################################
 if (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
@@ -184,6 +189,13 @@ list(FILTER ALL_FILES EXCLUDE REGEX ".*.inc.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "bin/eu/.*.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/game/main.c")
 list(FILTER ALL_FILES EXCLUDE REGEX "src/pc/dlmalloc.c")
+
+# Create source groups that match the real file directory paths
+foreach(source IN LISTS ALL_FILES)
+    get_filename_component(source_path "${source}" PATH)
+    string(REPLACE "/" "\\" source_path_adjusted "${source_path}")
+    source_group("${source_path_adjusted}" FILES "${source}")
+endforeach()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(IOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/ios)
