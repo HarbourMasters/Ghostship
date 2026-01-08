@@ -41,6 +41,15 @@ void OnHealthChange(IEvent* event) {
     event->cancelled = true;
 }
 
+void OnRenderPauseCourseOptions(IEvent* event) {
+    if (CVarGetInteger("gPauseExitWhenever", 0) == 0) {
+        return;
+    }
+
+    RenderPauseCourseOptions* ev = (RenderPauseCourseOptions*)event;
+    *ev->render = true;
+}
+
 void PatchSetupDList() {
     Gfx identity = gsSPMatrix(&matrix_patch_identity, G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
     Gfx fullscreen = gsSPMatrix(&matrix_patch_fullscreen, G_MTX_PROJECTION | G_MTX_MUL | G_MTX_NOPUSH);
@@ -87,6 +96,7 @@ void PortEnhancements_Init() {
     // Register event listeners
     REGISTER_LISTENER(PlayerHealthChange, OnHealthChange, EVENT_PRIORITY_NORMAL);
     REGISTER_LISTENER(PlayerLivesChange, OnLivesChange, EVENT_PRIORITY_NORMAL);
+    REGISTER_LISTENER(RenderPauseCourseOptions, OnRenderPauseCourseOptions, EVENT_PRIORITY_NORMAL);
 }
 
 void PortEnhancements_Register() {
@@ -94,6 +104,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(GameFrameUpdate);
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
+    REGISTER_EVENT(RenderPauseCourseOptions);
 }
 
 void PortEnhancements_Exit() {
