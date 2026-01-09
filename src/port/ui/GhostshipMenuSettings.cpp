@@ -227,8 +227,8 @@ void GhostshipMenu::AddMenuSettings() {
                 .Max(8)
                 .DefaultValue(1));
 #endif
-    auto fps = CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 20);
-    const char* fpsFormat = fps == 20 ? "Original (%d)" : "%d";
+    auto fps = CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
+    const char* fpsFormat = fps == 30 ? "Original (%d)" : "%d";
     AddWidget(path, "Current FPS", WIDGET_CVAR_SLIDER_INT)
         .CVar(CVAR_SETTING("InterpolationFPS"))
         .RaceDisable(false)
@@ -245,7 +245,7 @@ void GhostshipMenu::AddMenuSettings() {
             if (mGhostshipMenu->disabledMap.at(DISABLE_FOR_MATCH_REFRESH_RATE_ON).active)
                 info.activeDisables.push_back(DISABLE_FOR_MATCH_REFRESH_RATE_ON);
         })
-        .Options(IntSliderOptions().Tooltip(tooltip).Min(20).Max(maxFps).DefaultValue(20).Format(fpsFormat));
+        .Options(IntSliderOptions().Tooltip(tooltip).Min(30).Max(maxFps).DefaultValue(30).Format(fpsFormat));
     AddWidget(path, "Match Refresh Rate", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_SETTING("MatchRefreshRate"))
         .RaceDisable(false)

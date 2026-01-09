@@ -1,11 +1,13 @@
 #include "PortEnhancements.h"
+
+#define INIT_EVENT_IDS
+
 #include "sm64.h"
 #include "game/level_update.h"
 
-#define INIT_EVENT_IDS
 #include "port/hooks/Events.h"
-
 #include "assets/bin/segment2.h"
+#include "port/ShipInit.hpp"
 
 static const Mtx matrix_patch_identity = {
     { { 1.0f, 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f, 1.0f } }
@@ -16,33 +18,6 @@ static const Mtx matrix_patch_fullscreen = { { { 2.0f / SCREEN_WIDTH, 0.0f, 0.0f
                                                { 0.0f, 2.0f / SCREEN_HEIGHT, 0.0f, 0.0f },
                                                { 0.0f, 0.0f, -1.0f, 0.0f },
                                                { -1.0f, -1.0f, -1.0f, 1.0f } } };
-
-void OnLivesChange(IEvent* event) {
-    PlayerLivesChange* ev = (PlayerLivesChange*)event;
-    if (CVarGetInteger("gCheats.InfiniteLives", 0) == 0 || ev->lives > 0) {
-        return;
-    }
-
-    event->cancelled = true;
-}
-
-void OnHealthChange(IEvent* event) {
-    PlayerHealthChange* ev = (PlayerHealthChange*)event;
-    if (CVarGetInteger("gCheats.InfiniteHealth", 0) == 0 || ev->health > 0) {
-        return;
-    }
-
-    event->cancelled = true;
-}
-
-void OnRenderPauseCourseOptions(IEvent* event) {
-    if (CVarGetInteger("gCheats.PauseExitWhenever", 0) == 0) {
-        return;
-    }
-
-    RenderPauseCourseOptions* ev = (RenderPauseCourseOptions*)event;
-    *ev->render = true;
-}
 
 void PatchSetupDList() {
     Gfx identity = gsSPMatrix(&matrix_patch_identity, G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
@@ -75,9 +50,30 @@ void PortEnhancements_Init() {
     PatchSetupDList();
 
     // Register event listeners
-    REGISTER_LISTENER(PlayerHealthChange, OnHealthChange, EVENT_PRIORITY_NORMAL);
-    REGISTER_LISTENER(PlayerLivesChange, OnLivesChange, EVENT_PRIORITY_NORMAL);
-    REGISTER_LISTENER(RenderPauseCourseOptions, OnRenderPauseCourseOptions, EVENT_PRIORITY_NORMAL);
+    REGISTER_LISTENER(PlayerHealthChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        PlayerHealthChange* ev = (PlayerHealthChange*)event;
+        if (CVarGetInteger("gCheats.InfiniteHealth", 0) == 0 || ev->health > 0) {
+            return;
+        }
+
+        event->cancelled = true;
+    });
+    REGISTER_LISTENER(PlayerLivesChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        PlayerLivesChange* ev = (PlayerLivesChange*)event;
+        if (CVarGetInteger("gCheats.InfiniteLives", 0) == 0 || ev->lives > 0) {
+            return;
+        }
+
+        event->cancelled = true;
+    });
+    REGISTER_LISTENER(RenderPauseCourseOptions, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if (CVarGetInteger("gCheats.PauseExitWhenever", 0) == 0) {
+            return;
+        }
+
+        RenderPauseCourseOptions* ev = (RenderPauseCourseOptions*)event;
+        *ev->render = true;
+    });
 }
 
 void PortEnhancements_Register() {
@@ -88,6 +84,4 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(RenderPauseCourseOptions);
 }
 
-void PortEnhancements_Exit() {
-    // TODO: Unregister event listeners
-}
+static RegisterShipInitFunc initFunc(PortEnhancements_Init);

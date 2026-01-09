@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "ui/GhostshipGui.hpp"
 #include "GameExtractor.h"
+#include "ShipInit.hpp"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
 #include "port/importer/TrajectoryFactory.h"
@@ -15,6 +16,7 @@
 #include "port/interpolation/FrameInterpolation.h"
 #include "audio/GameAudio.h"
 #include "texts_table.h"
+#include "port/ui/cvar_prefixes.h"
 #include "port/mods/PortEnhancements.h"
 #include "port/console/DevConsole.h"
 #include <fast/Fast3dWindow.h>
@@ -327,18 +329,17 @@ void GameEngine::ScaleImGui() {
 void GameEngine::Create() {
     const auto instance = Instance = new GameEngine();
     GhostshipGui::SetupGuiElements();
+    ShipInit::InitAll();
     instance->AudioInit();
     instance->LoadDictionary();
     instance->LoadPlayerAnims();
 #if defined(__SWITCH__) || defined(__WIIU__)
     CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
 #endif
-    PortEnhancements_Init();
     DevConsole_Init();
 }
 
 void GameEngine::Destroy() {
-    PortEnhancements_Exit();
     AudioExit();
 #ifdef __SWITCH__
     Ship::Switch::Exit();
@@ -364,15 +365,15 @@ void GameEngine::StartFrame() const {
 
 uint32_t GameEngine::GetInterpolationFPS() {
     if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
-        return CVarGetInteger("gInterpolationFPS", 30);
+        return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
     }
 
-    if (CVarGetInteger("gMatchRefreshRate", 0)) {
+    if (CVarGetInteger(CVAR_SETTING("MatchRefreshRate"), 0)) {
         return Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
     }
 
     return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(),
-                              CVarGetInteger("gInterpolationFPS", 30));
+                              CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
 }
 
 // Audio
