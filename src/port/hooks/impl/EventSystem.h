@@ -24,12 +24,22 @@ typedef struct {
     EventCallback function;
 } EventListener;
 
+#ifndef __cplusplus
 #ifdef INIT_EVENT_IDS
 #define DECLARE_EVENT(eventName) \
     uint32_t eventName##ID = -1;
 #else
 #define DECLARE_EVENT(eventName) \
     extern uint32_t eventName##ID;
+#endif
+#else
+#ifdef INIT_EVENT_IDS
+#define DECLARE_EVENT(eventName) \
+    extern "C" uint32_t eventName##ID = -1;
+#else
+#define DECLARE_EVENT(eventName) \
+    extern "C" uint32_t eventName##ID;
+#endif
 #endif
 
 #define DEFINE_EVENT(eventName, ...) \
