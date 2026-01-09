@@ -1467,8 +1467,8 @@ void update_mario_health(struct MarioState *m) {
                         CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
                             m->health += amount;
                         }
-                    } else if (!gDebugLevelSelect) {
-                        s32 amount = (terrainIsSnow ? 3 : 1);
+                    } else /* if (!gDebugLevelSelect) */ {
+                        s32 amount = -(terrainIsSnow ? 3 : 1);
                         CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
                             m->health += amount;
                         }
@@ -1481,15 +1481,15 @@ void update_mario_health(struct MarioState *m) {
             s32 amount = 0x40;
             CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
                 m->health += amount;
-                m->healCounter--;
             }
+            m->healCounter--;
         }
         if (m->hurtCounter > 0) {
             s32 amount = -0x40;
             CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
                 m->health += amount;
-                m->hurtCounter--;
             }
+            m->hurtCounter--;
         }
 
         if (m->health > 0x880) {
