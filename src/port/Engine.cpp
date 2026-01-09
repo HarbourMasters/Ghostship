@@ -400,6 +400,12 @@ void GameEngine::HandleAudioThread() {
             create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
         }
 
+        float master_vol = CVarGetInteger("gSettings.Volume.Master", 100) / 100.0f;
+
+        for (u32 i = 0; i < SAMPLES_PER_FRAME; i++) {
+            audio_buffer[i] = static_cast<s16>(audio_buffer[i] * master_vol);
+        }
+
         AudioPlayerPlayFrame((u8*)audio_buffer, 2 * num_audio_samples * 4);
 
         audio.processing = false;
