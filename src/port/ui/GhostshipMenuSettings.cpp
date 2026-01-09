@@ -124,7 +124,7 @@ void GhostshipMenu::AddMenuSettings() {
                      .DefaultIndex(1)
                      .ComponentAlignment(ComponentAlignments::Right)
                      .LabelPosition(LabelPositions::Far))
-                     .Callback([](WidgetInfo& info) { GameEngine::Instance->ScaleImGui(); });
+        .Callback([](WidgetInfo& info) { GameEngine::Instance->ScaleImGui(); });
 
     // General - About
     path.column = SECTION_COLUMN_2;
@@ -171,8 +171,7 @@ void GhostshipMenu::AddMenuSettings() {
         .RaceDisable(false)
         .Options(IntSliderOptions().Min(0).Max(100).DefaultValue(100).ShowButtons(true).Format(""))
         .Callback([](WidgetInfo& info) {
-            audio_set_player_volume(SEQ_PLAYER_SFX,
-                                    ((float) CVarGetInteger(CVAR_SETTING("Volume.SFX"), 100) / 100.0f));
+            audio_set_player_volume(SEQ_PLAYER_SFX, ((float)CVarGetInteger(CVAR_SETTING("Volume.SFX"), 100) / 100.0f));
         });
     AddWidget(path, "Audio API (Needs reload)", WIDGET_AUDIO_BACKEND).RaceDisable(false);
 

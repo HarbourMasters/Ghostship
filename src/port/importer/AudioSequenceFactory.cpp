@@ -4,8 +4,9 @@
 #include "port/Engine.h"
 #include "port/importer/types/AudioBank.h"
 
-std::shared_ptr<Ship::IResource> SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
+std::shared_ptr<Ship::IResource>
+SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                           std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
@@ -15,13 +16,13 @@ std::shared_ptr<Ship::IResource> SM64::AudioSequenceFactoryV0::ReadResource(std:
 
     uint8_t id = reader->ReadUInt32();
     size_t bankCount = reader->ReadUInt32();
-    for(size_t i = 0; i < bankCount; i++){
+    for (size_t i = 0; i < bankCount; i++) {
         std::string bankName = reader->ReadString();
         bank->banks.push_back(GameEngine::GetBankIdByName(bankName));
     }
 
     size_t sampleSize = reader->ReadUInt32();
-    for(size_t i = 0; i < sampleSize; i++){
+    for (size_t i = 0; i < sampleSize; i++) {
         bank->sampleData.push_back(reader->ReadUByte());
     }
 

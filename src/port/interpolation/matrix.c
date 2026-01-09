@@ -3,7 +3,8 @@
 #include "matrix.h"
 #include "FrameInterpolation.h"
 
-Mtx gIdentityMtx = gdSPDefMtx(1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+Mtx gIdentityMtx =
+    gdSPDefMtx(1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
 Matrix gIdentityMatrix = { {
     { 1.0f, 0.0f, 0.0f, 0.0f },
     { 0.0f, 1.0f, 0.0f, 0.0f },
@@ -43,7 +44,6 @@ void Matrix_InitOrtho(Gfx** dList) {
     Matrix_Copy(gGfxMatrix, &gIdentityMatrix);
     FrameInterpolation_RecordCloseChild();
 }
-
 
 // Copies src Matrix into dst
 void Matrix_Copy(Matrix* dst, Matrix* src) {

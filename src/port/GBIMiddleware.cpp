@@ -37,7 +37,7 @@ extern "C" void ResourceMgr_PatchGfxByName(const char* path, const char* patchNa
         return;
     }
 
-    for(int i = 0; i < patchCount; i++) {
+    for (int i = 0; i < patchCount; i++) {
         GfxPatch patch = patches[i];
 
         // Store original gfx if not already stored
@@ -77,7 +77,7 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
 extern "C" void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0) {
 
     if (GameEngine_OTRSigCheck((char*)v) == 1) {
-        v = (uintptr_t) ResourceGetDataByName((char *) v);
+        v = (uintptr_t)ResourceGetDataByName((char*)v);
     }
 
     __gSPVertex(pkt, v, n, v0);
@@ -89,10 +89,10 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
     if (texAddr != 0 && GameEngine_OTRSigCheck(imgData)) {
         auto res = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
 
-        if (res->GetInitData()->Type == (uint32_t) Fast::ResourceType::DisplayList)
-            texAddr = (uintptr_t)&((std::static_pointer_cast<Fast::DisplayList>(res))->Instructions[0]);
+        if (res->GetInitData()->Type == (uint32_t)Fast::ResourceType::DisplayList)
+            texAddr = (uintptr_t) & ((std::static_pointer_cast<Fast::DisplayList>(res))->Instructions[0]);
         else {
-            texAddr = (uintptr_t) res->GetRawPointer();
+            texAddr = (uintptr_t)res->GetRawPointer();
         }
     }
     __gSPInvalidateTexCache(pkt, texAddr);

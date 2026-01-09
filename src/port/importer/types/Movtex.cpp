@@ -8,4 +8,4 @@ int16_t* Movtex::GetPointer() {
 size_t Movtex::GetPointerSize() {
     return mData.size() * sizeof(int16_t);
 }
-}
+} // namespace SM64

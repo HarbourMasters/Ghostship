@@ -10,16 +10,15 @@ extern "C" {
 struct Matrix {
     Mtx Screen2D; // Orthogonal projection for UI, skybox, and such
     Mtx Ortho;
-    std::array<Mtx,5> Persp;
-    std::array<Mtx,5> LookAt;
-    std::array<Mtx, 8 * 4> Karts; // Eight players * four screens
+    std::array<Mtx, 5> Persp;
+    std::array<Mtx, 5> LookAt;
+    std::array<Mtx, 8 * 4> Karts;   // Eight players * four screens
     std::array<Mtx, 8 * 4> Shadows; // Eight players * four screens
     std::deque<Mtx> Hud;
     std::deque<Mtx> Objects;
 
-    Matrix()
-        : Hud(200), Objects(1000)
-    {}
+    Matrix() : Hud(200), Objects(1000) {
+    }
 };
 
 Matrix gMatrix;
@@ -90,7 +89,7 @@ void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector sca
     f32 sine1, cosine1;
     f32 sine2, cosine2;
     f32 sine3, cosine3;
-    //FrameInterpolation_ApplyMatrixTransformations((Mat4*)mtx, pos, rot, scale);
+    // FrameInterpolation_ApplyMatrixTransformations((Mat4*)mtx, pos, rot, scale);
 
     // Compute the sine and cosine of the orientation (Euler angles)
     sine1 = sins(rot.pitch);
@@ -126,7 +125,7 @@ void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector sca
     mtx[0][2] *= scale.z;
     mtx[1][2] *= scale.z;
     mtx[2][2] *= scale.z;
-    
+
     // Set the last row and column for the homogeneous coordinate system
     mtx[0][3] = 0.0f;
     mtx[1][3] = 0.0f;
@@ -134,7 +133,7 @@ void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector sca
     mtx[3][3] = 1.0f;
 }
 
-/* 
+/*
  * Spherical billboarding
  * Rotates the object to face the camera
  * Rotates on all three axis
@@ -196,11 +195,11 @@ void AddLocalRotation(Mat4 mat, IRotator rot) {
     mat[0][0] = (cos_yaw * cos_roll) + (sin_pitch * sin_yaw * sin_roll);
     mat[0][1] = (cos_pitch * sin_roll);
     mat[0][2] = (-sin_yaw * cos_roll) + (sin_pitch * cos_yaw * sin_roll);
-    
+
     mat[1][0] = (-cos_yaw * sin_roll) + (sin_pitch * sin_yaw * cos_roll);
     mat[1][1] = (cos_pitch * cos_roll);
     mat[1][2] = (sin_yaw * sin_roll) + (sin_pitch * cos_yaw * cos_roll);
-    
+
     mat[2][0] = (cos_pitch * sin_yaw);
     mat[2][1] = -sin_pitch;
     mat[2][2] = (cos_pitch * cos_yaw);
@@ -208,69 +207,67 @@ void AddLocalRotation(Mat4 mat, IRotator rot) {
 
 // API
 extern "C" {
-    void AddHudMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gMatrix.Objects, mtx, flags);
-    }
-
-    Mtx* GetScreenMatrix(void) {
-        return &gMatrix.Screen2D;
-    }
-
-    Mtx* GetOrthoMatrix(void) {
-        return &gMatrix.Ortho;
-    }
-
-    Mtx* GetPerspMatrix(size_t cameraId) {
-        return &gMatrix.Persp[cameraId];
-    }
-
-    Mtx* GetLookAtMatrix(size_t cameraId) {
-        return &gMatrix.LookAt[cameraId];
-    }
-
-    void AddObjectMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gMatrix.Objects, mtx, flags);
-    }
-
-    Mtx* GetShadowMatrix(size_t playerId) {
-        return &gMatrix.Shadows[playerId];
-    }
-
-    Mtx* GetKartMatrix(size_t playerId) {
-        return &gMatrix.Karts[playerId];
-    }
-
-    void AddEffectMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gMatrix.Objects, mtx, flags);
-    }
-
-    void AddEffectMatrixOrtho(void) {
-        auto& stack = gMatrix.Objects;
-        stack.emplace_back();
-
-        guOrtho(&stack.back(), 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
-        
-        gSPMatrix(gDisplayListHead++, &stack.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    }
-
-    Mtx* GetEffectMatrix(void) {
-        return GetMatrix(gMatrix.Objects);
-    }
-
-
-    /**
-     * Note that the game doesn't seem to clear all of these at the beginning of a new frame.
-     * We might need to adjust which ones we clear.
-     */
-    void ClearMatrixPools(void) {
-        gMatrix.Objects.clear();
-       // gMatrix.Shadows.clear();
-        //gMatrix.Karts.clear();
-       // gMatrix.Effects.clear();
-    }
-
-    void ClearObjectsMatrixPool(void) {
-        gMatrix.Objects.clear();
-    }
+void AddHudMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gMatrix.Objects, mtx, flags);
 }
 
+Mtx* GetScreenMatrix(void) {
+    return &gMatrix.Screen2D;
+}
+
+Mtx* GetOrthoMatrix(void) {
+    return &gMatrix.Ortho;
+}
+
+Mtx* GetPerspMatrix(size_t cameraId) {
+    return &gMatrix.Persp[cameraId];
+}
+
+Mtx* GetLookAtMatrix(size_t cameraId) {
+    return &gMatrix.LookAt[cameraId];
+}
+
+void AddObjectMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gMatrix.Objects, mtx, flags);
+}
+
+Mtx* GetShadowMatrix(size_t playerId) {
+    return &gMatrix.Shadows[playerId];
+}
+
+Mtx* GetKartMatrix(size_t playerId) {
+    return &gMatrix.Karts[playerId];
+}
+
+void AddEffectMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gMatrix.Objects, mtx, flags);
+}
+
+void AddEffectMatrixOrtho(void) {
+    auto& stack = gMatrix.Objects;
+    stack.emplace_back();
+
+    guOrtho(&stack.back(), 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
+
+    gSPMatrix(gDisplayListHead++, &stack.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+}
+
+Mtx* GetEffectMatrix(void) {
+    return GetMatrix(gMatrix.Objects);
+}
+
+/**
+ * Note that the game doesn't seem to clear all of these at the beginning of a new frame.
+ * We might need to adjust which ones we clear.
+ */
+void ClearMatrixPools(void) {
+    gMatrix.Objects.clear();
+    // gMatrix.Shadows.clear();
+    // gMatrix.Karts.clear();
+    // gMatrix.Effects.clear();
+}
+
+void ClearObjectsMatrixPool(void) {
+    gMatrix.Objects.clear();
+}
+}

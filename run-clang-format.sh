@@ -33,4 +33,4 @@ else
     CLANG_FORMAT="clang-format"
 fi
 
-find src -type f \( -name "*.c" -o -name "*.cpp" -o \( \( -name "*.h" -o -name "*.hpp" \) ! -path "src/port/*" ! -path "include/*" \) \) ! -path "assets/*" -print0 | xargs -0 $CLANG_FORMAT -i --verbose
+find src/port -type f \( -name "*.c" -o -name "*.cpp" -o \( \( -name "*.h" -o -name "*.hpp" \) ! -path "src/*" ! -path "include/*" \) \) ! -path "assets/*" -print0 | xargs -0 $CLANG_FORMAT -i --verbose
