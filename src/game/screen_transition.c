@@ -242,10 +242,10 @@ s32 render_screen_transition(s8 fadeTimer, s8 transType, u8 transTime, struct Wa
     return 0;
 }
 
-Gfx *render_cannon_circle_base(void) {
-    Vtx *verts = alloc_display_list(8 * sizeof(*verts));
-    Gfx *dlist = alloc_display_list(20 * sizeof(*dlist));
-    Gfx *g = dlist;
+Gfx* render_cannon_circle_base(void) {
+    Vtx* verts = alloc_display_list(4 * sizeof(*verts));
+    Gfx* dlist = alloc_display_list(35 * sizeof(*dlist));
+    Gfx* g = dlist;
 
     if (verts != NULL && dlist != NULL) {
         make_vertex(verts, 0, 0, 0, -1, -1152, 1824, 0, 0, 0, 255);
