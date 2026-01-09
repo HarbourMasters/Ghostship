@@ -1,7 +1,7 @@
 // water_pillar.inc.c
 
 void water_level_pillar_undrained(void) {
-    struct Object* otherWaterPillar;
+    struct Object *otherWaterPillar;
 
     switch (o->oAction) {
         case 0:
@@ -42,8 +42,10 @@ void water_level_pillar_undrained(void) {
         case 4:
             cur_obj_play_sound_1(SOUND_ENV_WATER_DRAIN);
             if (o->oTimer < 300) {
-                gEnvironmentLevels[2] = (s32)approach_f32_symmetric(gEnvironmentLevels[2], -2450.0f, 5.0f);
-                gEnvironmentLevels[0] = (s32)approach_f32_symmetric(gEnvironmentLevels[0], -2450.0f, 5.0f);
+                gEnvironmentLevels[2] =
+                    (s32) approach_f32_symmetric(gEnvironmentLevels[2], -2450.0f, 5.0f);
+                gEnvironmentLevels[0] =
+                    (s32) approach_f32_symmetric(gEnvironmentLevels[0], -2450.0f, 5.0f);
 #if ENABLE_RUMBLE
                 reset_rumble_timers_2(2);
 #endif

@@ -47,8 +47,8 @@ u8 unused80339F1C[20];
 /**
  * Checks if Mario's animation has reached its end point.
  */
-s32 is_anim_at_end(struct MarioState* m) {
-    struct Object* o = m->marioObj;
+s32 is_anim_at_end(struct MarioState *m) {
+    struct Object *o = m->marioObj;
 
     return (o->header.gfx.animInfo.animFrame + 1) == o->header.gfx.animInfo.curAnim->loopEnd;
 }
@@ -56,8 +56,8 @@ s32 is_anim_at_end(struct MarioState* m) {
 /**
  * Checks if Mario's animation has surpassed 2 frames before its end point.
  */
-s32 is_anim_past_end(struct MarioState* m) {
-    struct Object* o = m->marioObj;
+s32 is_anim_past_end(struct MarioState *m) {
+    struct Object *o = m->marioObj;
 
     return o->header.gfx.animInfo.animFrame >= (o->header.gfx.animInfo.curAnim->loopEnd - 2);
 }
@@ -65,10 +65,10 @@ s32 is_anim_past_end(struct MarioState* m) {
 /**
  * Sets Mario's animation without any acceleration, running at its default rate.
  */
-s16 set_mario_animation(struct MarioState* m, s32 targetAnimID) {
-    struct Object* o = m->marioObj;
+s16 set_mario_animation(struct MarioState *m, s32 targetAnimID) {
+    struct Object *o = m->marioObj;
 
-    struct Animation* targetAnim = GameEngine_LoadAnimation(targetAnimID);
+    struct Animation *targetAnim = GameEngine_LoadAnimation(targetAnimID);
 
     if (o->header.gfx.animInfo.animID != targetAnimID) {
         o->header.gfx.animInfo.animID = targetAnimID;
@@ -94,9 +94,9 @@ s16 set_mario_animation(struct MarioState* m, s32 targetAnimID) {
  * Sets Mario's animation where the animation is sped up or
  * slowed down via acceleration.
  */
-s16 set_mario_anim_with_accel(struct MarioState* m, s32 targetAnimID, s32 accel) {
-    struct Object* o = m->marioObj;
-    struct Animation* targetAnim = GameEngine_LoadAnimation(targetAnimID);
+s16 set_mario_anim_with_accel(struct MarioState *m, s32 targetAnimID, s32 accel) {
+    struct Object *o = m->marioObj;
+    struct Animation *targetAnim = GameEngine_LoadAnimation(targetAnimID);
 
     if (o->header.gfx.animInfo.animID != targetAnimID) {
         o->header.gfx.animInfo.animID = targetAnimID;
@@ -124,9 +124,9 @@ s16 set_mario_anim_with_accel(struct MarioState* m, s32 targetAnimID, s32 accel)
 /**
  * Sets the animation to a specific "next" frame from the frame given.
  */
-void set_anim_to_frame(struct MarioState* m, s16 animFrame) {
-    struct AnimInfo* animInfo = &m->marioObj->header.gfx.animInfo;
-    struct Animation* curAnim = animInfo->curAnim;
+void set_anim_to_frame(struct MarioState *m, s16 animFrame) {
+    struct AnimInfo *animInfo = &m->marioObj->header.gfx.animInfo;
+    struct Animation *curAnim = animInfo->curAnim;
 
     if (animInfo->animAccel != 0) {
         if (curAnim->flags & ANIM_FLAG_FORWARD) {
@@ -143,19 +143,21 @@ void set_anim_to_frame(struct MarioState* m, s16 animFrame) {
     }
 }
 
-s32 is_anim_past_frame(struct MarioState* m, s16 animFrame) {
+s32 is_anim_past_frame(struct MarioState *m, s16 animFrame) {
     s32 isPastFrame;
     s32 acceleratedFrame = animFrame << 0x10;
-    struct AnimInfo* animInfo = &m->marioObj->header.gfx.animInfo;
-    struct Animation* curAnim = animInfo->curAnim;
+    struct AnimInfo *animInfo = &m->marioObj->header.gfx.animInfo;
+    struct Animation *curAnim = animInfo->curAnim;
 
     if (animInfo->animAccel != 0) {
         if (curAnim->flags & ANIM_FLAG_FORWARD) {
-            isPastFrame = (animInfo->animFrameAccelAssist > acceleratedFrame) &&
-                          (acceleratedFrame >= (animInfo->animFrameAccelAssist - animInfo->animAccel));
+            isPastFrame =
+                (animInfo->animFrameAccelAssist > acceleratedFrame)
+                && (acceleratedFrame >= (animInfo->animFrameAccelAssist - animInfo->animAccel));
         } else {
-            isPastFrame = (animInfo->animFrameAccelAssist < acceleratedFrame) &&
-                          (acceleratedFrame <= (animInfo->animFrameAccelAssist + animInfo->animAccel));
+            isPastFrame =
+                (animInfo->animFrameAccelAssist < acceleratedFrame)
+                && (acceleratedFrame <= (animInfo->animFrameAccelAssist + animInfo->animAccel));
         }
     } else {
         if (curAnim->flags & ANIM_FLAG_FORWARD) {
@@ -172,17 +174,17 @@ s32 is_anim_past_frame(struct MarioState* m, s16 animFrame) {
  * Rotates the animation's translation into the global coordinate system
  * and returns the animation's flags.
  */
-s16 find_mario_anim_flags_and_translation(struct Object* obj, s32 yaw, Vec3s translation) {
+s16 find_mario_anim_flags_and_translation(struct Object *obj, s32 yaw, Vec3s translation) {
     f32 dx;
     f32 dz;
 
-    struct Animation* curAnim = (void*)obj->header.gfx.animInfo.curAnim;
+    struct Animation *curAnim = (void *) obj->header.gfx.animInfo.curAnim;
     s16 animFrame = geo_update_animation_frame(&obj->header.gfx.animInfo, NULL);
-    u16* animIndex = segmented_to_virtual((void*)curAnim->index);
-    s16* animValues = segmented_to_virtual((void*)curAnim->values);
+    u16 *animIndex = segmented_to_virtual((void *) curAnim->index);
+    s16 *animValues = segmented_to_virtual((void *) curAnim->values);
 
-    f32 s = (f32)sins(yaw);
-    f32 c = (f32)coss(yaw);
+    f32 s = (f32) sins(yaw);
+    f32 c = (f32) coss(yaw);
 
     dx = *(animValues + (retrieve_animation_index(animFrame, &animIndex))) / 4.0f;
     translation[1] = *(animValues + (retrieve_animation_index(animFrame, &animIndex))) / 4.0f;
@@ -197,26 +199,26 @@ s16 find_mario_anim_flags_and_translation(struct Object* obj, s32 yaw, Vec3s tra
 /**
  * Updates Mario's position from his animation's translation.
  */
-void update_mario_pos_for_anim(struct MarioState* m) {
+void update_mario_pos_for_anim(struct MarioState *m) {
     Vec3s translation;
     s16 flags;
 
     flags = find_mario_anim_flags_and_translation(m->marioObj, m->faceAngle[1], translation);
 
     if (flags & (ANIM_FLAG_HOR_TRANS | ANIM_FLAG_6)) {
-        m->pos[0] += (f32)translation[0];
-        m->pos[2] += (f32)translation[2];
+        m->pos[0] += (f32) translation[0];
+        m->pos[2] += (f32) translation[2];
     }
 
     if (flags & (ANIM_FLAG_VERT_TRANS | ANIM_FLAG_6)) {
-        m->pos[1] += (f32)translation[1];
+        m->pos[1] += (f32) translation[1];
     }
 }
 
 /**
  * Finds the vertical translation from Mario's animation.
  */
-s16 return_mario_anim_y_translation(struct MarioState* m) {
+s16 return_mario_anim_y_translation(struct MarioState *m) {
     Vec3s translation;
     find_mario_anim_flags_and_translation(m->marioObj, 0, translation);
 
@@ -230,7 +232,7 @@ s16 return_mario_anim_y_translation(struct MarioState* m) {
 /**
  * Plays a sound if if Mario doesn't have the flag being checked.
  */
-void play_sound_if_no_flag(struct MarioState* m, u32 soundBits, u32 flags) {
+void play_sound_if_no_flag(struct MarioState *m, u32 soundBits, u32 flags) {
     if (!(m->flags & flags)) {
         play_sound(soundBits, m->marioObj->header.gfx.cameraToObject);
         m->flags |= flags;
@@ -240,13 +242,14 @@ void play_sound_if_no_flag(struct MarioState* m, u32 soundBits, u32 flags) {
 /**
  * Plays a jump sound if one has not been played since the last action change.
  */
-void play_mario_jump_sound(struct MarioState* m) {
+void play_mario_jump_sound(struct MarioState *m) {
     if (!(m->flags & MARIO_MARIO_SOUND_PLAYED)) {
         if (!ROM_JP && m->action == ACT_TRIPLE_JUMP) {
             play_sound(SOUND_MARIO_YAHOO_WAHA_YIPPEE + ((gAudioRandom % 5) << 16),
                        m->marioObj->header.gfx.cameraToObject);
         } else {
-            play_sound(SOUND_MARIO_YAH_WAH_HOO + ((gAudioRandom % 3) << 16), m->marioObj->header.gfx.cameraToObject);
+            play_sound(SOUND_MARIO_YAH_WAH_HOO + ((gAudioRandom % 3) << 16),
+                       m->marioObj->header.gfx.cameraToObject);
         }
         m->flags |= MARIO_MARIO_SOUND_PLAYED;
     }
@@ -255,7 +258,7 @@ void play_mario_jump_sound(struct MarioState* m) {
 /**
  * Adjusts the volume/pitch of sounds from Mario's speed.
  */
-void adjust_sound_for_speed(struct MarioState* m) {
+void adjust_sound_for_speed(struct MarioState *m) {
     s32 absForwardVel = (m->forwardVel > 0.0f) ? m->forwardVel : -m->forwardVel;
     set_sound_moving_speed(SOUND_BANK_MOVING, (absForwardVel > 100) ? 100 : absForwardVel);
 }
@@ -263,7 +266,7 @@ void adjust_sound_for_speed(struct MarioState* m) {
 /**
  * Spawns particles if the step sound says to, then either plays a step sound or relevant other sound.
  */
-void play_sound_and_spawn_particles(struct MarioState* m, u32 soundBits, u32 waveParticleType) {
+void play_sound_and_spawn_particles(struct MarioState *m, u32 soundBits, u32 waveParticleType) {
     if (m->terrainSoundAddend == (SOUND_TERRAIN_WATER << 16)) {
         if (waveParticleType != 0) {
             m->particleFlags |= PARTICLE_SHALLOW_WATER_SPLASH;
@@ -278,8 +281,8 @@ void play_sound_and_spawn_particles(struct MarioState* m, u32 soundBits, u32 wav
         }
     }
 
-    if ((m->flags & MARIO_METAL_CAP) || soundBits == SOUND_ACTION_UNSTUCK_FROM_GROUND ||
-        soundBits == SOUND_MARIO_PUNCH_HOO) {
+    if ((m->flags & MARIO_METAL_CAP) || soundBits == SOUND_ACTION_UNSTUCK_FROM_GROUND
+        || soundBits == SOUND_MARIO_PUNCH_HOO) {
         play_sound(soundBits, m->marioObj->header.gfx.cameraToObject);
     } else {
         play_sound(m->terrainSoundAddend + soundBits, m->marioObj->header.gfx.cameraToObject);
@@ -289,7 +292,7 @@ void play_sound_and_spawn_particles(struct MarioState* m, u32 soundBits, u32 wav
 /**
  * Plays an environmental sound if one has not been played since the last action change.
  */
-void play_mario_action_sound(struct MarioState* m, u32 soundBits, u32 waveParticleType) {
+void play_mario_action_sound(struct MarioState *m, u32 soundBits, u32 waveParticleType) {
     if (!(m->flags & MARIO_ACTION_SOUND_PLAYED)) {
         play_sound_and_spawn_particles(m, soundBits, waveParticleType);
         m->flags |= MARIO_ACTION_SOUND_PLAYED;
@@ -299,8 +302,9 @@ void play_mario_action_sound(struct MarioState* m, u32 soundBits, u32 wavePartic
 /**
  * Plays a landing sound, accounting for metal cap.
  */
-void play_mario_landing_sound(struct MarioState* m, u32 soundBits) {
-    play_sound_and_spawn_particles(m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_LANDING : soundBits, 1);
+void play_mario_landing_sound(struct MarioState *m, u32 soundBits) {
+    play_sound_and_spawn_particles(
+        m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_LANDING : soundBits, 1);
 }
 
 /**
@@ -308,15 +312,17 @@ void play_mario_landing_sound(struct MarioState* m, u32 soundBits) {
  * this function uses play_mario_action_sound, making sure the sound is only
  * played once per action.
  */
-void play_mario_landing_sound_once(struct MarioState* m, u32 soundBits) {
-    play_mario_action_sound(m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_LANDING : soundBits, 1);
+void play_mario_landing_sound_once(struct MarioState *m, u32 soundBits) {
+    play_mario_action_sound(
+        m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_LANDING : soundBits, 1);
 }
 
 /**
  * Plays a heavy landing (ground pound, etc.) sound, accounting for metal cap.
  */
-void play_mario_heavy_landing_sound(struct MarioState* m, u32 soundBits) {
-    play_sound_and_spawn_particles(m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_HEAVY_LANDING : soundBits, 1);
+void play_mario_heavy_landing_sound(struct MarioState *m, u32 soundBits) {
+    play_sound_and_spawn_particles(
+        m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_HEAVY_LANDING : soundBits, 1);
 }
 
 /**
@@ -324,17 +330,18 @@ void play_mario_heavy_landing_sound(struct MarioState* m, u32 soundBits) {
  * Unlike play_mario_heavy_landing_sound, this function uses play_mario_action_sound,
  * making sure the sound is only played once per action.
  */
-void play_mario_heavy_landing_sound_once(struct MarioState* m, u32 soundBits) {
-    play_mario_action_sound(m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_HEAVY_LANDING : soundBits, 1);
+void play_mario_heavy_landing_sound_once(struct MarioState *m, u32 soundBits) {
+    play_mario_action_sound(
+        m, (m->flags & MARIO_METAL_CAP) ? SOUND_ACTION_METAL_HEAVY_LANDING : soundBits, 1);
 }
 
 /**
  * Plays action and Mario sounds relevant to what was passed into the function.
  */
-void play_mario_sound(struct MarioState* m, s32 actionSound, s32 marioSound) {
+void play_mario_sound(struct MarioState *m, s32 actionSound, s32 marioSound) {
     if (actionSound == SOUND_ACTION_TERRAIN_JUMP) {
-        play_mario_action_sound(
-            m, (m->flags & MARIO_METAL_CAP) ? (s32)SOUND_ACTION_METAL_JUMP : (s32)SOUND_ACTION_TERRAIN_JUMP, 1);
+        play_mario_action_sound(m, (m->flags & MARIO_METAL_CAP) ? (s32) SOUND_ACTION_METAL_JUMP
+                                                                : (s32) SOUND_ACTION_TERRAIN_JUMP, 1);
     } else {
         play_sound_if_no_flag(m, actionSound, MARIO_ACTION_SOUND_PLAYED);
     }
@@ -355,20 +362,20 @@ void play_mario_sound(struct MarioState* m, s32 actionSound, s32 marioSound) {
 /**
  * Sets Mario's other velocities from his forward speed.
  */
-void mario_set_forward_vel(struct MarioState* m, f32 forwardVel) {
+void mario_set_forward_vel(struct MarioState *m, f32 forwardVel) {
     m->forwardVel = forwardVel;
 
     m->slideVelX = sins(m->faceAngle[1]) * m->forwardVel;
     m->slideVelZ = coss(m->faceAngle[1]) * m->forwardVel;
 
-    m->vel[0] = (f32)m->slideVelX;
-    m->vel[2] = (f32)m->slideVelZ;
+    m->vel[0] = (f32) m->slideVelX;
+    m->vel[2] = (f32) m->slideVelZ;
 }
 
 /**
  * Returns the slipperiness class of Mario's floor.
  */
-s32 mario_get_floor_class(struct MarioState* m) {
+s32 mario_get_floor_class(struct MarioState *m) {
     s32 floorClass;
 
     // The slide terrain type defaults to slide slipperiness.
@@ -440,7 +447,7 @@ s8 sTerrainSounds[7][6] = {
  * Computes a value that should be added to terrain sounds before playing them.
  * This depends on surfaces and terrain.
  */
-u32 mario_get_terrain_sound_addend(struct MarioState* m) {
+u32 mario_get_terrain_sound_addend(struct MarioState *m) {
     s16 floorSoundType;
     s16 terrainType = m->area->terrainType & TERRAIN_MASK;
     s32 ret = SOUND_TERRAIN_DEFAULT << 16;
@@ -502,9 +509,9 @@ u32 mario_get_terrain_sound_addend(struct MarioState* m) {
 /**
  * Collides with walls and returns the most recent wall.
  */
-struct Surface* resolve_and_return_wall_collisions(Vec3f pos, f32 offset, f32 radius) {
+struct Surface *resolve_and_return_wall_collisions(Vec3f pos, f32 offset, f32 radius) {
     struct WallCollisionData collisionData;
-    struct Surface* wall = NULL;
+    struct Surface *wall = NULL;
 
     collisionData.x = pos[0];
     collisionData.y = pos[1];
@@ -528,7 +535,7 @@ struct Surface* resolve_and_return_wall_collisions(Vec3f pos, f32 offset, f32 ra
 /**
  * Finds the ceiling from a vec3f horizontally and a height (with 80 vertical buffer).
  */
-f32 vec3f_find_ceil(Vec3f pos, f32 height, struct Surface** ceil) {
+f32 vec3f_find_ceil(Vec3f pos, f32 height, struct Surface **ceil) {
     UNUSED u8 filler[4];
 
     return find_ceil(pos[0], height + 80.0f, pos[2], ceil);
@@ -537,7 +544,7 @@ f32 vec3f_find_ceil(Vec3f pos, f32 height, struct Surface** ceil) {
 /**
  * Determines if Mario is facing "downhill."
  */
-s32 mario_facing_downhill(struct MarioState* m, s32 turnYaw) {
+s32 mario_facing_downhill(struct MarioState *m, s32 turnYaw) {
     s16 faceAngleYaw = m->faceAngle[1];
 
     // This is never used in practice, as turnYaw is
@@ -554,10 +561,11 @@ s32 mario_facing_downhill(struct MarioState* m, s32 turnYaw) {
 /**
  * Determines if a surface is slippery based on the surface class.
  */
-u32 mario_floor_is_slippery(struct MarioState* m) {
+u32 mario_floor_is_slippery(struct MarioState *m) {
     f32 normY;
 
-    if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE && m->floor->normal.y < 0.9998477f //~cos(1 deg)
+    if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE
+        && m->floor->normal.y < 0.9998477f //~cos(1 deg)
     ) {
         return TRUE;
     }
@@ -586,10 +594,11 @@ u32 mario_floor_is_slippery(struct MarioState* m) {
 /**
  * Determines if a surface is a slope based on the surface class.
  */
-s32 mario_floor_is_slope(struct MarioState* m) {
+s32 mario_floor_is_slope(struct MarioState *m) {
     f32 normY;
 
-    if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE && m->floor->normal.y < 0.9998477f) { // ~cos(1 deg)
+    if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE
+        && m->floor->normal.y < 0.9998477f) { // ~cos(1 deg)
         return TRUE;
     }
 
@@ -617,7 +626,7 @@ s32 mario_floor_is_slope(struct MarioState* m) {
 /**
  * Determines if a surface is steep based on the surface class.
  */
-s32 mario_floor_is_steep(struct MarioState* m) {
+s32 mario_floor_is_steep(struct MarioState *m) {
     f32 normY;
     s32 result = FALSE;
 
@@ -653,8 +662,8 @@ s32 mario_floor_is_steep(struct MarioState* m) {
 /**
  * Finds the floor height relative from Mario given polar displacement.
  */
-f32 find_floor_height_relative_polar(struct MarioState* m, s16 angleFromMario, f32 distFromMario) {
-    struct Surface* floor;
+f32 find_floor_height_relative_polar(struct MarioState *m, s16 angleFromMario, f32 distFromMario) {
+    struct Surface *floor;
     f32 floorY;
 
     f32 y = sins(m->faceAngle[1] + angleFromMario) * distFromMario;
@@ -668,8 +677,8 @@ f32 find_floor_height_relative_polar(struct MarioState* m, s16 angleFromMario, f
 /**
  * Returns the slope of the floor based off points around Mario.
  */
-s16 find_floor_slope(struct MarioState* m, s16 yawOffset) {
-    struct Surface* floor;
+s16 find_floor_slope(struct MarioState *m, s16 yawOffset) {
+    struct Surface *floor;
     f32 forwardFloorY, backwardFloorY;
     f32 forwardYDelta, backwardYDelta;
     s16 result;
@@ -697,7 +706,7 @@ s16 find_floor_slope(struct MarioState* m, s16 yawOffset) {
 /**
  * Adjusts Mario's camera and sound based on his action status.
  */
-void update_mario_sound_and_camera(struct MarioState* m) {
+void update_mario_sound_and_camera(struct MarioState *m) {
     u32 action = m->action;
     s32 camPreset = m->area->camera->mode;
 
@@ -720,7 +729,7 @@ void update_mario_sound_and_camera(struct MarioState* m) {
 /**
  * Transitions Mario to a steep jump action.
  */
-void set_steep_jump_action(struct MarioState* m) {
+void set_steep_jump_action(struct MarioState *m) {
     m->marioObj->oMarioSteepJumpYaw = m->faceAngle[1];
 
     if (m->forwardVel > 0.0f) {
@@ -742,7 +751,7 @@ void set_steep_jump_action(struct MarioState* m) {
 /**
  * Sets Mario's vertical speed from his forward speed.
  */
-static void set_mario_y_vel_based_on_fspeed(struct MarioState* m, f32 initialVelY, f32 multiplier) {
+static void set_mario_y_vel_based_on_fspeed(struct MarioState *m, f32 initialVelY, f32 multiplier) {
     // get_additive_y_vel_for_jumps is always 0 and a stubbed function.
     // It was likely trampoline related based on code location.
     m->vel[1] = initialVelY + get_additive_y_vel_for_jumps() + m->forwardVel * multiplier;
@@ -755,10 +764,11 @@ static void set_mario_y_vel_based_on_fspeed(struct MarioState* m, f32 initialVel
 /**
  * Transitions for a variety of airborne actions.
  */
-static u32 set_mario_action_airborne(struct MarioState* m, u32 action, u32 actionArg) {
+static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actionArg) {
     f32 forwardVel;
 
-    if ((m->squishTimer != 0 || m->quicksandDepth >= 1.0f) && (action == ACT_DOUBLE_JUMP || action == ACT_TWIRLING)) {
+    if ((m->squishTimer != 0 || m->quicksandDepth >= 1.0f)
+        && (action == ACT_DOUBLE_JUMP || action == ACT_TWIRLING)) {
         action = ACT_JUMP;
     }
 
@@ -874,7 +884,7 @@ static u32 set_mario_action_airborne(struct MarioState* m, u32 action, u32 actio
 /**
  * Transitions for a variety of moving actions.
  */
-static u32 set_mario_action_moving(struct MarioState* m, u32 action, UNUSED u32 actionArg) {
+static u32 set_mario_action_moving(struct MarioState *m, u32 action, UNUSED u32 actionArg) {
     s16 floorClass = mario_get_floor_class(m);
     f32 forwardVel = m->forwardVel;
     f32 mag = min(m->intendedMag, 8.0f);
@@ -919,7 +929,7 @@ static u32 set_mario_action_moving(struct MarioState* m, u32 action, UNUSED u32 
 /**
  * Transition for certain submerged actions, which is actually just the metal jump actions.
  */
-static u32 set_mario_action_submerged(struct MarioState* m, u32 action, UNUSED u32 actionArg) {
+static u32 set_mario_action_submerged(struct MarioState *m, u32 action, UNUSED u32 actionArg) {
     if (action == ACT_METAL_WATER_JUMP || action == ACT_HOLD_METAL_WATER_JUMP) {
         m->vel[1] = 32.0f;
     }
@@ -930,7 +940,7 @@ static u32 set_mario_action_submerged(struct MarioState* m, u32 action, UNUSED u
 /**
  * Transitions for a variety of cutscene actions.
  */
-static u32 set_mario_action_cutscene(struct MarioState* m, u32 action, UNUSED u32 actionArg) {
+static u32 set_mario_action_cutscene(struct MarioState *m, u32 action, UNUSED u32 actionArg) {
     switch (action) {
         case ACT_EMERGE_FROM_PIPE:
             m->vel[1] = 52.0f;
@@ -957,7 +967,7 @@ static u32 set_mario_action_cutscene(struct MarioState* m, u32 action, UNUSED u3
  * Puts Mario into a given action, putting Mario through the appropriate
  * specific function if needed.
  */
-u32 set_mario_action(struct MarioState* m, u32 action, u32 actionArg) {
+u32 set_mario_action(struct MarioState *m, u32 action, u32 actionArg) {
     switch (action & ACT_GROUP_MASK) {
         case ACT_GROUP_MOVING:
             action = set_mario_action_moving(m, action, actionArg);
@@ -996,7 +1006,7 @@ u32 set_mario_action(struct MarioState* m, u32 action, u32 actionArg) {
 /**
  * Puts Mario into a specific jumping action from a landing action.
  */
-s32 set_jump_from_landing(struct MarioState* m) {
+s32 set_jump_from_landing(struct MarioState *m) {
     if (m->quicksandDepth >= 11.0f) {
         if (m->heldObj == NULL) {
             return set_mario_action(m, ACT_QUICKSAND_JUMP_LAND, 0);
@@ -1052,7 +1062,7 @@ s32 set_jump_from_landing(struct MarioState* m) {
  * Puts Mario in a given action, as long as it is not overruled by
  * either a quicksand or steep jump.
  */
-s32 set_jumping_action(struct MarioState* m, u32 action, u32 actionArg) {
+s32 set_jumping_action(struct MarioState *m, u32 action, u32 actionArg) {
     UNUSED u32 currAction = m->action;
 
     if (m->quicksandDepth >= 11.0f) {
@@ -1076,7 +1086,7 @@ s32 set_jumping_action(struct MarioState* m, u32 action, u32 actionArg) {
 /**
  * Drop anything Mario is holding and set a new action.
  */
-s32 drop_and_set_mario_action(struct MarioState* m, u32 action, u32 actionArg) {
+s32 drop_and_set_mario_action(struct MarioState *m, u32 action, u32 actionArg) {
     mario_stop_riding_and_holding(m);
 
     return set_mario_action(m, action, actionArg);
@@ -1085,7 +1095,7 @@ s32 drop_and_set_mario_action(struct MarioState* m, u32 action, u32 actionArg) {
 /**
  * Increment Mario's hurt counter and set a new action.
  */
-s32 hurt_and_set_mario_action(struct MarioState* m, u32 action, u32 actionArg, s16 hurtCounter) {
+s32 hurt_and_set_mario_action(struct MarioState *m, u32 action, u32 actionArg, s16 hurtCounter) {
     m->hurtCounter = hurtCounter;
 
     return set_mario_action(m, action, actionArg);
@@ -1095,7 +1105,7 @@ s32 hurt_and_set_mario_action(struct MarioState* m, u32 action, u32 actionArg, s
  * Checks a variety of inputs for common transitions between many different
  * actions. A common variant of the below function.
  */
-s32 check_common_action_exits(struct MarioState* m) {
+s32 check_common_action_exits(struct MarioState *m) {
     if (m->input & INPUT_A_PRESSED) {
         return set_mario_action(m, ACT_JUMP, 0);
     }
@@ -1116,7 +1126,7 @@ s32 check_common_action_exits(struct MarioState* m) {
  * Checks a variety of inputs for common transitions between many different
  * object holding actions. A holding variant of the above function.
  */
-s32 check_common_hold_action_exits(struct MarioState* m) {
+s32 check_common_hold_action_exits(struct MarioState *m) {
     if (m->input & INPUT_A_PRESSED) {
         return set_mario_action(m, ACT_HOLD_JUMP, 0);
     }
@@ -1136,7 +1146,7 @@ s32 check_common_hold_action_exits(struct MarioState* m) {
 /**
  * Transitions Mario from a submerged action to a walking action.
  */
-s32 transition_submerged_to_walking(struct MarioState* m) {
+s32 transition_submerged_to_walking(struct MarioState *m) {
     set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
 
     vec3s_set(m->angleVel, 0, 0, 0);
@@ -1152,7 +1162,7 @@ s32 transition_submerged_to_walking(struct MarioState* m) {
  * This is the transition function typically for entering a submerged action for a
  * non-submerged action. This also applies the water surface camera preset.
  */
-s32 set_water_plunge_action(struct MarioState* m) {
+s32 set_water_plunge_action(struct MarioState *m) {
     m->forwardVel = m->forwardVel / 4.0f;
     m->vel[1] = m->vel[1] / 2.0f;
 
@@ -1183,7 +1193,7 @@ u8 sSquishScaleOverTime[16] = { 0x46, 0x32, 0x32, 0x3C, 0x46, 0x50, 0x50, 0x3C,
 /**
  * Applies the squish to Mario's model via scaling.
  */
-void squish_mario_model(struct MarioState* m) {
+void squish_mario_model(struct MarioState *m) {
     if (m->squishTimer != 0xFF) {
         // If no longer squished, scale back to default.
         if (m->squishTimer == 0) {
@@ -1193,8 +1203,10 @@ void squish_mario_model(struct MarioState* m) {
         else if (m->squishTimer <= 16) {
             m->squishTimer -= 1;
 
-            m->marioObj->header.gfx.scale[1] = 1.0f - ((sSquishScaleOverTime[15 - m->squishTimer] * 0.6f) / 100.0f);
-            m->marioObj->header.gfx.scale[0] = ((sSquishScaleOverTime[15 - m->squishTimer] * 0.4f) / 100.0f) + 1.0f;
+            m->marioObj->header.gfx.scale[1] =
+                1.0f - ((sSquishScaleOverTime[15 - m->squishTimer] * 0.6f) / 100.0f);
+            m->marioObj->header.gfx.scale[0] =
+                ((sSquishScaleOverTime[15 - m->squishTimer] * 0.4f) / 100.0f) + 1.0f;
 
             m->marioObj->header.gfx.scale[2] = m->marioObj->header.gfx.scale[0];
         } else {
@@ -1208,12 +1220,13 @@ void squish_mario_model(struct MarioState* m) {
 /**
  * Debug function that prints floor normal, velocity, and action information.
  */
-void debug_print_speed_action_normal(struct MarioState* m) {
+void debug_print_speed_action_normal(struct MarioState *m) {
     f32 steepness;
     f32 floor_nY;
 
     if (gShowDebugText) {
-        steepness = sqrtf(((m->floor->normal.x * m->floor->normal.x) + (m->floor->normal.z * m->floor->normal.z)));
+        steepness = sqrtf(
+            ((m->floor->normal.x * m->floor->normal.x) + (m->floor->normal.z * m->floor->normal.z)));
         floor_nY = m->floor->normal.y;
 
         print_text_fmt_int(210, 88, "ANG %d", (atan2s(floor_nY, steepness) * 180.0f) / 32768.0f);
@@ -1228,7 +1241,7 @@ void debug_print_speed_action_normal(struct MarioState* m) {
 /**
  * Update the button inputs for Mario.
  */
-void update_mario_button_inputs(struct MarioState* m) {
+void update_mario_button_inputs(struct MarioState *m) {
     if (m->controller->buttonPressed & A_BUTTON) {
         m->input |= INPUT_A_PRESSED;
     }
@@ -1268,8 +1281,8 @@ void update_mario_button_inputs(struct MarioState* m) {
 /**
  * Updates the joystick intended magnitude.
  */
-void update_mario_joystick_inputs(struct MarioState* m) {
-    struct Controller* controller = m->controller;
+void update_mario_joystick_inputs(struct MarioState *m) {
+    struct Controller *controller = m->controller;
     f32 mag = ((controller->stickMag / 64.0f) * (controller->stickMag / 64.0f)) * 64.0f;
 
     if (m->squishTimer == 0) {
@@ -1289,7 +1302,7 @@ void update_mario_joystick_inputs(struct MarioState* m) {
 /**
  * Resolves wall collisions, and updates a variety of inputs.
  */
-void update_mario_geometry_inputs(struct MarioState* m) {
+void update_mario_geometry_inputs(struct MarioState *m) {
     f32 gasLevel;
     f32 ceilToFloorDist;
 
@@ -1319,7 +1332,8 @@ void update_mario_geometry_inputs(struct MarioState* m) {
             m->input |= INPUT_ABOVE_SLIDE;
         }
 
-        if ((m->floor->flags & SURFACE_FLAG_DYNAMIC) || (m->ceil && m->ceil->flags & SURFACE_FLAG_DYNAMIC)) {
+        if ((m->floor->flags & SURFACE_FLAG_DYNAMIC)
+            || (m->ceil && m->ceil->flags & SURFACE_FLAG_DYNAMIC)) {
             ceilToFloorDist = m->ceilHeight - m->floorHeight;
 
             if ((0.0f <= ceilToFloorDist) && (ceilToFloorDist <= 150.0f)) {
@@ -1347,7 +1361,7 @@ void update_mario_geometry_inputs(struct MarioState* m) {
 /**
  * Handles Mario's input flags as well as a couple timers.
  */
-void update_mario_inputs(struct MarioState* m) {
+void update_mario_inputs(struct MarioState *m) {
     m->particleFlags = 0;
     m->input = 0;
     m->collidedObjInteractTypes = m->marioObj->collidedObjInteractTypes;
@@ -1372,8 +1386,8 @@ void update_mario_inputs(struct MarioState* m) {
     }
 
     // These 3 flags are defined by Bowser stomping attacks
-    if (m->marioObj->oInteractStatus &
-        (INT_STATUS_MARIO_STUNNED | INT_STATUS_MARIO_KNOCKBACK_DMG | INT_STATUS_MARIO_SHOCKWAVE)) {
+    if (m->marioObj->oInteractStatus
+        & (INT_STATUS_MARIO_STUNNED | INT_STATUS_MARIO_KNOCKBACK_DMG | INT_STATUS_MARIO_SHOCKWAVE)) {
         m->input |= INPUT_STOMPED;
     }
 
@@ -1393,7 +1407,7 @@ void update_mario_inputs(struct MarioState* m) {
 /**
  * Set's the camera preset for submerged action behaviors.
  */
-void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState* m) {
+void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState *m) {
     f32 heightBelowWater;
     s16 camPreset;
 
@@ -1428,12 +1442,12 @@ void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState* m) {
 /**
  * Both increments and decrements Mario's HP.
  */
-void update_mario_health(struct MarioState* m) {
+void update_mario_health(struct MarioState *m) {
     s32 terrainIsSnow;
 
     if (m->health >= 0x100) {
         // When already healing or hurting Mario, Mario's HP is not changed any more here.
-        if (((u32)m->healCounter | (u32)m->hurtCounter) == 0) {
+        if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
                 if (!(m->flags & MARIO_METAL_CAP) && !gDebugLevelSelect) {
                     s32 amount = -4;
@@ -1505,7 +1519,7 @@ void update_mario_health(struct MarioState* m) {
 /**
  * Updates some basic info for camera usage.
  */
-void update_mario_info_for_cam(struct MarioState* m) {
+void update_mario_info_for_cam(struct MarioState *m) {
     m->marioBodyState->action = m->action;
     m->statusForCamera->action = m->action;
 
@@ -1519,8 +1533,8 @@ void update_mario_info_for_cam(struct MarioState* m) {
 /**
  * Resets Mario's model, done every time an action is executed.
  */
-void mario_reset_bodystate(struct MarioState* m) {
-    struct MarioBodyState* bodyState = m->marioBodyState;
+void mario_reset_bodystate(struct MarioState *m) {
+    struct MarioBodyState *bodyState = m->marioBodyState;
 
     bodyState->capState = MARIO_HAS_DEFAULT_CAP_OFF;
     bodyState->eyeState = MARIO_EYES_BLINK;
@@ -1534,8 +1548,8 @@ void mario_reset_bodystate(struct MarioState* m) {
 /**
  * Adjusts Mario's graphical height for quicksand.
  */
-void sink_mario_in_quicksand(struct MarioState* m) {
-    struct Object* o = m->marioObj;
+void sink_mario_in_quicksand(struct MarioState *m) {
+    struct Object *o = m->marioObj;
 
     if (o->header.gfx.throwMatrix) {
         (*o->header.gfx.throwMatrix)[3][1] -= m->quicksandDepth;
@@ -1556,15 +1570,16 @@ u64 sCapFlickerFrames = 0x4444449249255555;
 /**
  * Updates the cap flags mainly based on the cap timer.
  */
-u32 update_and_return_cap_flags(struct MarioState* m) {
+u32 update_and_return_cap_flags(struct MarioState *m) {
     u32 flags = m->flags;
     u32 action;
 
     if (m->capTimer > 0) {
         action = m->action;
 
-        if ((m->capTimer <= 60) || ((action != ACT_READING_AUTOMATIC_DIALOG) && (action != ACT_READING_NPC_DIALOG) &&
-                                    (action != ACT_READING_SIGN) && (action != ACT_IN_CANNON))) {
+        if ((m->capTimer <= 60)
+            || ((action != ACT_READING_AUTOMATIC_DIALOG) && (action != ACT_READING_NPC_DIALOG)
+                && (action != ACT_READING_SIGN) && (action != ACT_IN_CANNON))) {
             m->capTimer -= 1;
         }
 
@@ -1597,8 +1612,8 @@ u32 update_and_return_cap_flags(struct MarioState* m) {
 /**
  * Updates the Mario's cap, rendering, and hitbox.
  */
-void mario_update_hitbox_and_cap_model(struct MarioState* m) {
-    struct MarioBodyState* bodyState = m->marioBodyState;
+void mario_update_hitbox_and_cap_model(struct MarioState *m) {
+    struct MarioBodyState *bodyState = m->marioBodyState;
     s32 flags = update_and_return_cap_flags(m);
 
     if (flags & MARIO_VANISH_CAP) {
@@ -1657,8 +1672,8 @@ UNUSED static void debug_update_mario_cap(u16 button, s32 flags, u16 capTimer, u
     // This checks for Z_TRIG instead of Z_DOWN flag
     // (which is also what other debug functions do),
     // so likely debug behavior rather than unused behavior.
-    if ((gPlayer1Controller->buttonDown & Z_TRIG) && (gPlayer1Controller->buttonPressed & button) &&
-        !(gMarioState->flags & flags)) {
+    if ((gPlayer1Controller->buttonDown & Z_TRIG) && (gPlayer1Controller->buttonPressed & button)
+        && !(gMarioState->flags & flags)) {
         gMarioState->flags |= (flags + MARIO_CAP_ON_HEAD);
 
         if (capTimer > gMarioState->capTimer) {
@@ -1687,7 +1702,7 @@ void func_sh_8025574C(void) {
 /**
  * Main function for executing Mario's behavior.
  */
-s32 execute_mario_action(UNUSED struct Object* o) {
+s32 execute_mario_action(UNUSED struct Object *o) {
     s32 inLoop = TRUE;
 
     if (gMarioState->action) {
@@ -1748,14 +1763,14 @@ s32 execute_mario_action(UNUSED struct Object* o) {
         // non-Japanese releases.
         if (gMarioState->floor->type == SURFACE_HORIZONTAL_WIND) {
             spawn_wind_particles(0, (gMarioState->floor->force << 8));
-            if (!ROM_JP) {
+            if(!ROM_JP) {
                 play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
             }
         }
 
         if (gMarioState->floor->type == SURFACE_VERTICAL_WIND) {
             spawn_wind_particles(1, 0);
-            if (!ROM_JP) {
+            if(!ROM_JP) {
                 play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
             }
         }
@@ -1778,7 +1793,7 @@ s32 execute_mario_action(UNUSED struct Object* o) {
 
 void init_mario(void) {
     Vec3s capPos;
-    struct Object* capObject;
+    struct Object *capObject;
 
     unused80339F10 = 0;
 
@@ -1788,8 +1803,9 @@ void init_mario(void) {
 
     gMarioState->invincTimer = 0;
 
-    if (save_file_get_flags() &
-        (SAVE_FLAG_CAP_ON_GROUND | SAVE_FLAG_CAP_ON_KLEPTO | SAVE_FLAG_CAP_ON_UKIKI | SAVE_FLAG_CAP_ON_MR_BLIZZARD)) {
+    if (save_file_get_flags()
+        & (SAVE_FLAG_CAP_ON_GROUND | SAVE_FLAG_CAP_ON_KLEPTO | SAVE_FLAG_CAP_ON_UKIKI
+           | SAVE_FLAG_CAP_ON_MR_BLIZZARD)) {
         gMarioState->flags = 0;
     } else {
         gMarioState->flags = (MARIO_NORMAL_CAP | MARIO_CAP_ON_HEAD);
@@ -1808,7 +1824,8 @@ void init_mario(void) {
     gMarioState->riddenObj = NULL;
     gMarioState->usedObj = NULL;
 
-    gMarioState->waterLevel = find_water_level(gMarioSpawnInfo->startPos[0], gMarioSpawnInfo->startPos[2]);
+    gMarioState->waterLevel =
+        find_water_level(gMarioSpawnInfo->startPos[0], gMarioSpawnInfo->startPos[2]);
 
     gMarioState->area = gCurrentArea;
     gMarioState->marioObj = gMarioObject;
@@ -1826,7 +1843,8 @@ void init_mario(void) {
 
     gMarioState->marioObj->header.gfx.pos[1] = gMarioState->pos[1];
 
-    gMarioState->action = (gMarioState->pos[1] <= (gMarioState->waterLevel - 100)) ? ACT_WATER_IDLE : ACT_IDLE;
+    gMarioState->action =
+        (gMarioState->pos[1] <= (gMarioState->waterLevel - 100)) ? ACT_WATER_IDLE : ACT_IDLE;
 
     mario_reset_bodystate(gMarioState);
     update_mario_info_for_cam(gMarioState);
@@ -1866,7 +1884,8 @@ void init_mario_from_save_file(void) {
     gMarioState->controller = &gControllers[0];
 
     gMarioState->numCoins = 0;
-    gMarioState->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
+    gMarioState->numStars =
+        save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
     gMarioState->numKeys = 0;
 
     gMarioState->numLives = 4;

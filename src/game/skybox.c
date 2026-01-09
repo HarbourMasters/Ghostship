@@ -63,8 +63,10 @@ struct Skybox sSkyBoxInfo[2];
 static uint8_t** gSkyboxTiles = NULL;
 static s8 gLastSkybox = -1;
 
-static const char* gSkyboxTextures[] = { gSkyboxWater, gSkyboxBitfs, gSkyboxWdw,   gSkyboxCloudFloor, gSkyboxCcm,
-                                         gSkyboxSsl,   gSkyboxBbh,   gSkyboxBitdw, gSkyboxClouds,     gSkyboxBits };
+static const char* gSkyboxTextures[] = {
+    gSkyboxWater, gSkyboxBitfs, gSkyboxWdw, gSkyboxCloudFloor, gSkyboxCcm,
+    gSkyboxSsl, gSkyboxBbh, gSkyboxBitdw, gSkyboxClouds, gSkyboxBits
+};
 
 /**
  * The skybox color mask.
@@ -108,6 +110,7 @@ u8 sSkyboxColors[][3] = {
 #define CHUNK_HEIGHT 32      // Height of each texture chunk in pixels
 #define BYTES_PER_PIXEL 2    // Assuming 2 bytes per pixel
 
+
 /**
  * Convert the camera's yaw into an x position into the scaled skybox image.
  *
@@ -127,7 +130,7 @@ f32 calculate_skybox_scaled_x(s8 player, f32 fov) {
     f32 scaledX = yawScaled;
 
     if (scaledX > SKYBOX_WIDTH) {
-        scaledX -= (s32)scaledX / SKYBOX_WIDTH * SKYBOX_WIDTH;
+        scaledX -= (s32) scaledX / SKYBOX_WIDTH * SKYBOX_WIDTH;
     }
     return SKYBOX_WIDTH - scaledX;
 }
@@ -140,7 +143,7 @@ f32 calculate_skybox_scaled_x(s8 player, f32 fov) {
  */
 f32 calculate_skybox_scaled_y(s8 player, UNUSED f32 fov) {
     // Convert pitch to degrees. Pitch is bounded between -90 (looking down) and 90 (looking up).
-    f32 pitchInDegrees = (f32)sSkyBoxInfo[player].pitch * 360.0 / 65535.0;
+    f32 pitchInDegrees = (f32) sSkyBoxInfo[player].pitch * 360.0 / 65535.0;
 
     // Scale by 360 / fov
     f32 degreesToScale = 360.0f * pitchInDegrees / 90.0;
@@ -175,20 +178,20 @@ static s32 get_top_left_tile_idx(s8 player) {
  *                  into an x and y by modulus and division by SKYBOX_COLS. x and y are then scaled by
  *                  SKYBOX_TILE_WIDTH to get a point in world space.
  */
-Vtx* make_skybox_rect(s32 tileIndex, s8 colorIndex) {
-    Vtx* verts = alloc_display_list(4 * sizeof(*verts));
+Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
+    Vtx *verts = alloc_display_list(4 * sizeof(*verts));
     s16 x = (tileIndex % SKYBOX_COLS) * SKYBOX_TILE_WIDTH;
     s16 y = SKYBOX_HEIGHT - (tileIndex / SKYBOX_COLS) * SKYBOX_TILE_HEIGHT;
 
     if (verts != NULL) {
         make_vertex(verts, 0, x, y, -1, 0, 0, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
                     sSkyboxColors[colorIndex][2], 255);
-        make_vertex(verts, 1, x, y - SKYBOX_TILE_HEIGHT, -1, 0, 31 << 5, sSkyboxColors[colorIndex][0],
+        make_vertex(verts, 1, x, y - SKYBOX_TILE_HEIGHT, -1, 0, 31 << 5, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
+                    sSkyboxColors[colorIndex][2], 255);
+        make_vertex(verts, 2, x + SKYBOX_TILE_WIDTH, y - SKYBOX_TILE_HEIGHT, -1, 31 << 5, 31 << 5, sSkyboxColors[colorIndex][0],
                     sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
-        make_vertex(verts, 2, x + SKYBOX_TILE_WIDTH, y - SKYBOX_TILE_HEIGHT, -1, 31 << 5, 31 << 5,
-                    sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
-        make_vertex(verts, 3, x + SKYBOX_TILE_WIDTH, y, -1, 31 << 5, 0, sSkyboxColors[colorIndex][0],
-                    sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
+        make_vertex(verts, 3, x + SKYBOX_TILE_WIDTH, y, -1, 31 << 5, 0, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
+                    sSkyboxColors[colorIndex][2], 255);
     } else {
     }
     return verts;
@@ -212,7 +215,7 @@ void* CalculateDataOffset(void* data, int x, int y, size_t blobSize) {
     // Calculate the total offset in bytes within the data bin
     uint32_t totalOffset = (chunkOffset * (CHUNK_WIDTH * CHUNK_HEIGHT * BYTES_PER_PIXEL) + chunkDataOffset);
 
-    if (totalOffset + 4096 > blobSize) {
+    if(totalOffset + 4096 > blobSize) {
         totalOffset = 0;
     }
 
@@ -227,7 +230,7 @@ void* CalculateDataOffset(void* data, int x, int y, size_t blobSize) {
  * The row and column are converted into an index into the skybox's tile list, which is then drawn in
  * world space so that the tiles will rotate with the camera.
  */
-void draw_skybox_tile_grid(Gfx** dlist, s8 background, s8 player, s8 colorIndex) {
+void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex) {
     s32 row;
     s32 col;
 
@@ -238,7 +241,7 @@ void draw_skybox_tile_grid(Gfx** dlist, s8 background, s8 player, s8 colorIndex)
         for (col = 0; col < 3; col++) {
             s32 tileRow = (sSkyBoxInfo[player].upperLeftTile / SKYBOX_COLS) + row;
             s32 tileCol = (sSkyBoxInfo[player].upperLeftTile % SKYBOX_COLS) + col;
-
+            
             // Wrap horizontally
             tileCol %= SKYBOX_COLS;
 
@@ -251,8 +254,8 @@ void draw_skybox_tile_grid(Gfx** dlist, s8 background, s8 player, s8 colorIndex)
             // Calculate the x and y coordinates within the skybox image
             int32_t x = skyboxCol * CHUNK_WIDTH;
             int32_t y = skyboxRow * CHUNK_HEIGHT;
-
-            if (x >= 256) {
+        
+            if(x >= 256){
                 y -= CHUNK_HEIGHT;
             }
 
@@ -262,7 +265,7 @@ void draw_skybox_tile_grid(Gfx** dlist, s8 background, s8 player, s8 colorIndex)
 
             // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
             memcpy(texture, CalculateDataOffset(data, x, y, blobSize), 2048);
-            Vtx* vertices = make_skybox_rect(tileIndex, colorIndex);
+            Vtx *vertices = make_skybox_rect(tileIndex, colorIndex);
 
             gSPInvalidateTexCache((*dlist)++, texture);
             gLoadBlockTexture((*dlist)++, 32, 32, G_IM_FMT_RGBA, texture);
@@ -272,12 +275,12 @@ void draw_skybox_tile_grid(Gfx** dlist, s8 background, s8 player, s8 colorIndex)
     }
 }
 
-void* create_skybox_ortho_matrix(s8 player) {
+void *create_skybox_ortho_matrix(s8 player) {
     f32 left = sSkyBoxInfo[player].scaledX;
     f32 right = sSkyBoxInfo[player].scaledX + SCREEN_WIDTH;
     f32 bottom = sSkyBoxInfo[player].scaledY - SCREEN_HEIGHT;
     f32 top = sSkyBoxInfo[player].scaledY;
-    Mtx* mtx = alloc_display_list(sizeof(*mtx));
+    Mtx *mtx = alloc_display_list(sizeof(*mtx));
 
     f32 half_width = (4.0f / 3.0f) / GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_WIDTH / 2;
     f32 center = (sSkyBoxInfo[player].scaledX + SCREEN_WIDTH / 2);
@@ -296,7 +299,7 @@ void* create_skybox_ortho_matrix(s8 player) {
 }
 
 void skybox_init_tiles() {
-    if (gSkyboxTiles != NULL) {
+    if(gSkyboxTiles != NULL) {
         return;
     }
 
@@ -309,17 +312,17 @@ void skybox_init_tiles() {
 /**
  * Creates the skybox's display list, then draws the 3x3 grid of tiles.
  */
-Gfx* init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
+Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
     s32 dlCommandCount = 20 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
-    void* skybox = alloc_display_list(dlCommandCount * sizeof(Gfx));
-    Gfx* dlist = skybox;
+    void *skybox = alloc_display_list(dlCommandCount * sizeof(Gfx));
+    Gfx *dlist = skybox;
 
     skybox_init_tiles();
 
     if (skybox == NULL) {
         return NULL;
     } else {
-        Mtx* ortho = create_skybox_ortho_matrix(player);
+        Mtx *ortho = create_skybox_ortho_matrix(player);
         gSPDisplayList(dlist++, dl_skybox_begin);
         gSPMatrix(dlist++, VIRTUAL_TO_PHYSICAL(ortho), G_MTX_PROJECTION | G_MTX_MUL | G_MTX_NOPUSH);
         gSPDisplayList(dlist++, dl_skybox_tile_tex_settings);
@@ -342,16 +345,17 @@ Gfx* init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
  * @param posX,posY,posZ The camera's position
  * @param focX,focY,focZ The camera's focus.
  */
-Gfx* create_skybox_facing_camera(s8 player, s8 background, f32 fov, f32 posX, f32 posY, f32 posZ, f32 focX, f32 focY,
-                                 f32 focZ) {
+Gfx *create_skybox_facing_camera(s8 player, s8 background, f32 fov,
+                                    f32 posX, f32 posY, f32 posZ,
+                                    f32 focX, f32 focY, f32 focZ) {
     f32 cameraFaceX = focX - posX;
     f32 cameraFaceY = focY - posY;
     f32 cameraFaceZ = focZ - posZ;
     s8 colorIndex = 1;
 
     // If the "Plunder in the Sunken Ship" star in JRB is collected, make the sky darker and slightly green
-    if (background == 8 &&
-        !(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_JRB)) & (1 << 0))) {
+    if (background == 8
+        && !(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_JRB)) & (1 << 0))) {
         colorIndex = 0;
     }
 

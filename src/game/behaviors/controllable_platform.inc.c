@@ -57,19 +57,19 @@ void bhv_controllable_platform_sub_loop(void) {
 }
 
 void bhv_controllable_platform_init(void) {
-    struct Object* sp34;
+    struct Object *sp34;
 
-    sp34 =
-        spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub, 0, 51, 204, 0, 0, 0);
+    sp34 = spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub, 0,
+                                     51, 204, 0, 0, 0);
     sp34->oBehParams2ndByte = 1;
-    sp34 = spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub, 0, 51, -204, 0,
-                                     -0x8000, 0);
+    sp34 = spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub, 0,
+                                     51, -204, 0, -0x8000, 0);
     sp34->oBehParams2ndByte = 2;
-    sp34 = spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub, 204, 51, 0, 0,
-                                     0x4000, 0);
+    sp34 = spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub, 204,
+                                     51, 0, 0, 0x4000, 0);
     sp34->oBehParams2ndByte = 3;
-    sp34 = spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub, -204, 51, 0, 0,
-                                     -0x4000, 0);
+    sp34 = spawn_object_rel_with_rot(o, MODEL_HMC_METAL_ARROW_PLATFORM, bhvControllablePlatformSub,
+                                     -204, 51, 0, 0, -0x4000, 0);
     sp34->oBehParams2ndByte = 4;
 
     D_80331694 = 0;
@@ -93,7 +93,8 @@ void controllable_platform_check_walls(s8 sp1B, s8 sp1C[3], Vec3f sp20, UNUSED V
         controllable_platform_hit_wall(sp1B);
     } else {
         if (sp1C[0] == 1) {
-            if (((sp1B == 1 || sp1B == 2) && (s32)sp20[2] != 0) || ((sp1B == 3 || sp1B == 4) && (s32)sp20[0] != 0)) {
+            if (((sp1B == 1 || sp1B == 2) && (s32) sp20[2] != 0)
+                || ((sp1B == 3 || sp1B == 4) && (s32) sp20[0] != 0)) {
                 controllable_platform_hit_wall(sp1B);
             } else {
                 o->oPosX += sp20[0];
@@ -102,7 +103,8 @@ void controllable_platform_check_walls(s8 sp1B, s8 sp1C[3], Vec3f sp20, UNUSED V
         }
 
         if (sp1C[2] == 1) {
-            if (((sp1B == 1 || sp1B == 2) && (s32)sp28[2] != 0) || ((sp1B == 3 || sp1B == 4) && (s32)sp28[0] != 0)) {
+            if (((sp1B == 1 || sp1B == 2) && (s32) sp28[2] != 0)
+                || ((sp1B == 3 || sp1B == 4) && (s32) sp28[0] != 0)) {
                 controllable_platform_hit_wall(sp1B);
             } else {
                 o->oPosX += sp28[0];
@@ -139,8 +141,8 @@ void controllable_platform_tilt_from_mario(void) {
     s16 sp1E = gMarioObject->header.gfx.pos[0] - o->oPosX;
     s16 sp1C = gMarioObject->header.gfx.pos[2] - o->oPosZ;
 
-    if (gMarioObject->platform == o ||
-        gMarioObject->platform == cur_obj_nearest_object_with_behavior(bhvControllablePlatformSub)) {
+    if (gMarioObject->platform == o
+        || gMarioObject->platform == cur_obj_nearest_object_with_behavior(bhvControllablePlatformSub)) {
         o->oFaceAnglePitch = sp1C * 4;
         o->oFaceAngleRoll = -sp1E * 4;
         if (D_80331694 == 6) {
@@ -212,8 +214,8 @@ void bhv_controllable_platform_loop(void) {
 
         case 6:
             if (obj_flicker_and_disappear(o, 150)) {
-                spawn_object_abs_with_rot(o, 0, MODEL_HMC_METAL_PLATFORM, bhvControllablePlatform, o->oHomeX, o->oHomeY,
-                                          o->oHomeZ, 0, 0, 0);
+                spawn_object_abs_with_rot(o, 0, MODEL_HMC_METAL_PLATFORM, bhvControllablePlatform,
+                                          o->oHomeX, o->oHomeY, o->oHomeZ, 0, 0, 0);
             }
             break;
     }

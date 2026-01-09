@@ -8,4 +8,4 @@ MovtexQuadData* MovtexQuad::GetPointer() {
 size_t MovtexQuad::GetPointerSize() {
     return sizeof(mData.size()) * sizeof(MovtexQuadData);
 }
-} // namespace SM64
+}

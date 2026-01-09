@@ -74,7 +74,8 @@ void bhv_boo_cage_loop(void) {
             // set the action to BOO_CAGE_ACT_ON_GROUND.
             // This is the only use of the OBJ_MOVE_AT_WATER_SURFACE flag in the game.
             // It seems to serve no purpose here.
-            if (o->oMoveFlags & (OBJ_MOVE_UNDERWATER_ON_GROUND | OBJ_MOVE_AT_WATER_SURFACE | OBJ_MOVE_ON_GROUND)) {
+            if (o->oMoveFlags
+                & (OBJ_MOVE_UNDERWATER_ON_GROUND | OBJ_MOVE_AT_WATER_SURFACE | OBJ_MOVE_ON_GROUND)) {
                 o->oAction++;
             }
 

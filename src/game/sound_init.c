@@ -74,7 +74,7 @@ static u32 sMenuSoundsExtra[] = {
 };
 static s8 sPaintingEjectSoundPlayed = FALSE;
 
-void play_menu_sounds_extra(s32 a, void* b);
+void play_menu_sounds_extra(s32 a, void *b);
 
 /**
  * Called from threads: thread5_game_loop
@@ -187,7 +187,8 @@ void play_painting_eject_sound(void) {
     if (gRipplingPainting != NULL && gRipplingPainting->state == PAINTING_ENTERED) {
         // ripple when Mario enters painting
         if (!sPaintingEjectSoundPlayed) {
-            play_sound(SOUND_GENERAL_PAINTING_EJECT, gMarioStates[0].marioObj->header.gfx.cameraToObject);
+            play_sound(SOUND_GENERAL_PAINTING_EJECT,
+                       gMarioStates[0].marioObj->header.gfx.cameraToObject);
         }
         sPaintingEjectSoundPlayed = TRUE;
     } else {
@@ -317,7 +318,7 @@ void stop_cap_music(void) {
 /**
  * Called from threads: thread5_game_loop
  */
-void play_menu_sounds_extra(s32 a, void* b) {
+void play_menu_sounds_extra(s32 a, void *b) {
     play_sound(sMenuSoundsExtra[a], b);
 }
 
@@ -331,7 +332,7 @@ void audio_game_loop_tick(void) {
 /**
  * Sound processing thread. Runs at 60 FPS.
  */
-void thread4_sound(UNUSED void* arg) {
+void thread4_sound(UNUSED void *arg) {
     audio_init();
     sound_init();
 
@@ -345,7 +346,7 @@ void thread4_sound(UNUSED void* arg) {
 
         osRecvMesg(&sSoundMesgQueue, &msg, OS_MESG_BLOCK);
         if (gResetTimer < 25) {
-            struct SPTask* spTask;
+            struct SPTask *spTask;
             profiler_log_thread4_time();
             spTask = create_next_audio_frame_task();
             profiler_log_thread4_time();

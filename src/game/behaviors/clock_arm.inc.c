@@ -4,10 +4,11 @@
  * Main loop of the hour and minute hands of the Tick Tock Clock painting.
  */
 void bhv_rotating_clock_arm_loop(void) {
-    struct Surface* marioSurface;
+    struct Surface *marioSurface;
     u16 rollAngle = o->oFaceAngleRoll;
 
-    o->oFloorHeight = find_floor(gMarioObject->oPosX, gMarioObject->oPosY, gMarioObject->oPosZ, &marioSurface);
+    o->oFloorHeight =
+        find_floor(gMarioObject->oPosX, gMarioObject->oPosY, gMarioObject->oPosZ, &marioSurface);
 
     // Seems to make sure Mario is on a default surface & 4 frames pass before
     //   allowing him to change the Tick Tock Clock speed setting.
@@ -19,9 +20,10 @@ void bhv_rotating_clock_arm_loop(void) {
         }
     } else if (o->oAction == 1) {
         // If Mario is touching the Tick Tock Clock painting...
-        if (marioSurface != NULL &&
-            (marioSurface->type == SURFACE_TTC_PAINTING_1 || marioSurface->type == SURFACE_TTC_PAINTING_2 ||
-             marioSurface->type == SURFACE_TTC_PAINTING_3)) {
+        if (marioSurface != NULL
+            && (marioSurface->type == SURFACE_TTC_PAINTING_1
+                || marioSurface->type == SURFACE_TTC_PAINTING_2
+                || marioSurface->type == SURFACE_TTC_PAINTING_3)) {
             // And this is the minute hand...
             if (cur_obj_has_behavior(bhvClockMinuteHand)) {
                 // Set Tick Tick Clock's speed based on the angle of the hand.

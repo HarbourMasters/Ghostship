@@ -20,6 +20,7 @@
 #include "profiler.h"
 #include "spawn_object.h"
 
+
 /**
  * Flags controlling what debug info is displayed.
  */
@@ -77,7 +78,7 @@ struct Object gMacroObjectDefaultParent;
  * Given an object list index idx, gObjectLists[idx] is the head of a doubly
  * linked list of all currently spawned objects in the list.
  */
-struct ObjectNode* gObjectLists;
+struct ObjectNode *gObjectLists;
 
 /**
  * A singly linked list of available slots in the object pool.
@@ -87,26 +88,26 @@ struct ObjectNode gFreeObjectList;
 /**
  * The object representing Mario.
  */
-struct Object* gMarioObject;
+struct Object *gMarioObject;
 
 /**
  * An object variable that may have been used to represent the planned
  * second player. This is speculation, based on its position and its usage in
  * shadow.c.
  */
-struct Object* gLuigiObject;
+struct Object *gLuigiObject;
 
 /**
  * The object whose behavior script is currently being updated.
  * This object is used frequently in object behavior code, and so is often
  * aliased as "o".
  */
-struct Object* gCurrentObject;
+struct Object *gCurrentObject;
 
 /**
  * The next object behavior command to be executed.
  */
-const BehaviorScript* gCurBhvCommand;
+const BehaviorScript *gCurBhvCommand;
 
 /**
  * The number of objects that were processed last frame, which may miss some
@@ -140,11 +141,12 @@ s32 gNumStaticSurfaces;
 /**
  * A pool used by chain chomp and wiggler to allocate their body parts.
  */
-struct MemoryPool* gObjectMemoryPool;
+struct MemoryPool *gObjectMemoryPool;
+
 
 s16 gCheckingSurfaceCollisionsForCamera;
 s16 gFindFloorIncludeSurfaceIntangible;
-s16* gEnvironmentRegions;
+s16 *gEnvironmentRegions;
 s32 gEnvironmentLevels[20];
 s8 gDoorAdjacentRooms[60][2];
 s16 gMarioCurrentRoom;
@@ -187,31 +189,31 @@ struct ParticleProperties {
     u32 particleFlag;
     u32 activeParticleFlag;
     u8 model;
-    const BehaviorScript* behavior;
+    const BehaviorScript *behavior;
 };
 
 /**
  * A table mapping particle flags to various properties use when spawning a particle.
  */
 struct ParticleProperties sParticleTypes[] = {
-    { PARTICLE_DUST, ACTIVE_PARTICLE_DUST, MODEL_MIST, bhvMistParticleSpawner },
-    { PARTICLE_VERTICAL_STAR, ACTIVE_PARTICLE_V_STAR, MODEL_NONE, bhvVertStarParticleSpawner },
-    { PARTICLE_HORIZONTAL_STAR, ACTIVE_PARTICLE_H_STAR, MODEL_NONE, bhvHorStarParticleSpawner },
-    { PARTICLE_SPARKLES, ACTIVE_PARTICLE_SPARKLES, MODEL_SPARKLES, bhvSparkleParticleSpawner },
-    { PARTICLE_BUBBLE, ACTIVE_PARTICLE_BUBBLE, MODEL_BUBBLE, bhvBubbleParticleSpawner },
-    { PARTICLE_WATER_SPLASH, ACTIVE_PARTICLE_WATER_SPLASH, MODEL_WATER_SPLASH, bhvWaterSplash },
-    { PARTICLE_IDLE_WATER_WAVE, ACTIVE_PARTICLE_IDLE_WATER_WAVE, MODEL_IDLE_WATER_WAVE, bhvIdleWaterWave },
-    { PARTICLE_PLUNGE_BUBBLE, ACTIVE_PARTICLE_PLUNGE_BUBBLE, MODEL_WHITE_PARTICLE_SMALL, bhvPlungeBubble },
-    { PARTICLE_WAVE_TRAIL, ACTIVE_PARTICLE_WAVE_TRAIL, MODEL_WAVE_TRAIL, bhvWaveTrail },
-    { PARTICLE_FIRE, ACTIVE_PARTICLE_FIRE, MODEL_RED_FLAME, bhvFireParticleSpawner },
-    { PARTICLE_SHALLOW_WATER_WAVE, ACTIVE_PARTICLE_SHALLOW_WATER_WAVE, MODEL_NONE, bhvShallowWaterWave },
-    { PARTICLE_SHALLOW_WATER_SPLASH, ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH, MODEL_NONE, bhvShallowWaterSplash },
-    { PARTICLE_LEAF, ACTIVE_PARTICLE_LEAF, MODEL_NONE, bhvLeafParticleSpawner },
-    { PARTICLE_SNOW, ACTIVE_PARTICLE_SNOW, MODEL_NONE, bhvSnowParticleSpawner },
-    { PARTICLE_BREATH, ACTIVE_PARTICLE_BREATH, MODEL_NONE, bhvBreathParticleSpawner },
-    { PARTICLE_DIRT, ACTIVE_PARTICLE_DIRT, MODEL_NONE, bhvDirtParticleSpawner },
-    { PARTICLE_MIST_CIRCLE, ACTIVE_PARTICLE_MIST_CIRCLE, MODEL_NONE, bhvMistCircParticleSpawner },
-    { PARTICLE_TRIANGLE, ACTIVE_PARTICLE_TRIANGLE, MODEL_NONE, bhvTriangleParticleSpawner },
+    { PARTICLE_DUST,                 ACTIVE_PARTICLE_DUST,                 MODEL_MIST,                 bhvMistParticleSpawner },
+    { PARTICLE_VERTICAL_STAR,        ACTIVE_PARTICLE_V_STAR,               MODEL_NONE,                 bhvVertStarParticleSpawner },
+    { PARTICLE_HORIZONTAL_STAR,      ACTIVE_PARTICLE_H_STAR,               MODEL_NONE,                 bhvHorStarParticleSpawner },
+    { PARTICLE_SPARKLES,             ACTIVE_PARTICLE_SPARKLES,             MODEL_SPARKLES,             bhvSparkleParticleSpawner },
+    { PARTICLE_BUBBLE,               ACTIVE_PARTICLE_BUBBLE,               MODEL_BUBBLE,               bhvBubbleParticleSpawner },
+    { PARTICLE_WATER_SPLASH,         ACTIVE_PARTICLE_WATER_SPLASH,         MODEL_WATER_SPLASH,         bhvWaterSplash },
+    { PARTICLE_IDLE_WATER_WAVE,      ACTIVE_PARTICLE_IDLE_WATER_WAVE,      MODEL_IDLE_WATER_WAVE,      bhvIdleWaterWave },
+    { PARTICLE_PLUNGE_BUBBLE,        ACTIVE_PARTICLE_PLUNGE_BUBBLE,        MODEL_WHITE_PARTICLE_SMALL, bhvPlungeBubble },
+    { PARTICLE_WAVE_TRAIL,           ACTIVE_PARTICLE_WAVE_TRAIL,           MODEL_WAVE_TRAIL,           bhvWaveTrail },
+    { PARTICLE_FIRE,                 ACTIVE_PARTICLE_FIRE,                 MODEL_RED_FLAME,            bhvFireParticleSpawner },
+    { PARTICLE_SHALLOW_WATER_WAVE,   ACTIVE_PARTICLE_SHALLOW_WATER_WAVE,   MODEL_NONE,                 bhvShallowWaterWave },
+    { PARTICLE_SHALLOW_WATER_SPLASH, ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH, MODEL_NONE,                 bhvShallowWaterSplash },
+    { PARTICLE_LEAF,                 ACTIVE_PARTICLE_LEAF,                 MODEL_NONE,                 bhvLeafParticleSpawner },
+    { PARTICLE_SNOW,                 ACTIVE_PARTICLE_SNOW,                 MODEL_NONE,                 bhvSnowParticleSpawner },
+    { PARTICLE_BREATH,               ACTIVE_PARTICLE_BREATH,               MODEL_NONE,                 bhvBreathParticleSpawner },
+    { PARTICLE_DIRT,                 ACTIVE_PARTICLE_DIRT,                 MODEL_NONE,                 bhvDirtParticleSpawner },
+    { PARTICLE_MIST_CIRCLE,          ACTIVE_PARTICLE_MIST_CIRCLE,          MODEL_NONE,                 bhvMistCircParticleSpawner },
+    { PARTICLE_TRIANGLE,             ACTIVE_PARTICLE_TRIANGLE,             MODEL_NONE,                 bhvTriangleParticleSpawner },
     { 0, 0, MODEL_NONE, NULL },
 };
 
@@ -250,9 +252,9 @@ void copy_mario_state_to_object(void) {
 /**
  * Spawn a particle at gCurrentObject's location.
  */
-void spawn_particle(u32 activeParticleFlag, s16 model, const BehaviorScript* behavior) {
+void spawn_particle(u32 activeParticleFlag, s16 model, const BehaviorScript *behavior) {
     if (!(gCurrentObject->oActiveParticleFlags & activeParticleFlag)) {
-        struct Object* particle;
+        struct Object *particle;
         gCurrentObject->oActiveParticleFlags |= activeParticleFlag;
         particle = spawn_object_at_origin(gCurrentObject, 0, model, behavior);
         obj_copy_pos_and_angle(particle, gCurrentObject);
@@ -276,7 +278,8 @@ void bhv_mario_update(void) {
     i = 0;
     while (sParticleTypes[i].particleFlag != 0) {
         if (particleFlags & sParticleTypes[i].particleFlag) {
-            spawn_particle(sParticleTypes[i].activeParticleFlag, sParticleTypes[i].model, sParticleTypes[i].behavior);
+            spawn_particle(sParticleTypes[i].activeParticleFlag, sParticleTypes[i].model,
+                           sParticleTypes[i].behavior);
         }
 
         i++;
@@ -287,11 +290,11 @@ void bhv_mario_update(void) {
  * Update every object that occurs after firstObj in the given object list,
  * including firstObj itself. Return the number of objects that were updated.
  */
-s32 update_objects_starting_at(struct ObjectNode* objList, struct ObjectNode* firstObj) {
+s32 update_objects_starting_at(struct ObjectNode *objList, struct ObjectNode *firstObj) {
     s32 count = 0;
 
     while (objList != firstObj) {
-        gCurrentObject = (struct Object*)firstObj;
+        gCurrentObject = (struct Object *) firstObj;
 
         gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_HAS_ANIMATION;
         cur_obj_update();
@@ -312,12 +315,12 @@ s32 update_objects_starting_at(struct ObjectNode* objList, struct ObjectNode* fi
  * Return the total number of objects in the list (including those that weren't
  * updated)
  */
-s32 update_objects_during_time_stop(struct ObjectNode* objList, struct ObjectNode* firstObj) {
+s32 update_objects_during_time_stop(struct ObjectNode *objList, struct ObjectNode *firstObj) {
     s32 count = 0;
     s32 unfrozen;
 
     while (objList != firstObj) {
-        gCurrentObject = (struct Object*)firstObj;
+        gCurrentObject = (struct Object *) firstObj;
 
         unfrozen = FALSE;
 
@@ -327,12 +330,13 @@ s32 update_objects_during_time_stop(struct ObjectNode* objList, struct ObjectNod
                 unfrozen = TRUE;
             }
 
-            if ((gCurrentObject->oInteractType & (INTERACT_DOOR | INTERACT_WARP_DOOR)) &&
-                !(gTimeStopState & TIME_STOP_MARIO_AND_DOORS)) {
+            if ((gCurrentObject->oInteractType & (INTERACT_DOOR | INTERACT_WARP_DOOR))
+                && !(gTimeStopState & TIME_STOP_MARIO_AND_DOORS)) {
                 unfrozen = TRUE;
             }
 
-            if (gCurrentObject->activeFlags & (ACTIVE_FLAG_UNIMPORTANT | ACTIVE_FLAG_INITIATED_TIME_STOP)) {
+            if (gCurrentObject->activeFlags
+                & (ACTIVE_FLAG_UNIMPORTANT | ACTIVE_FLAG_INITIATED_TIME_STOP)) {
                 unfrozen = TRUE;
             }
         }
@@ -356,9 +360,9 @@ s32 update_objects_during_time_stop(struct ObjectNode* objList, struct ObjectNod
  * Update every object in the given list. Return the total number of objects in
  * the list.
  */
-s32 update_objects_in_list(struct ObjectNode* objList) {
+s32 update_objects_in_list(struct ObjectNode *objList) {
     s32 count;
-    struct ObjectNode* firstObj = objList->next;
+    struct ObjectNode *firstObj = objList->next;
 
     if (!(gTimeStopState & TIME_STOP_ACTIVE)) {
         count = update_objects_starting_at(objList, firstObj);
@@ -372,11 +376,11 @@ s32 update_objects_in_list(struct ObjectNode* objList) {
 /**
  * Unload any objects in the list that have been deactivated.
  */
-s32 unload_deactivated_objects_in_list(struct ObjectNode* objList) {
-    struct ObjectNode* obj = objList->next;
+s32 unload_deactivated_objects_in_list(struct ObjectNode *objList) {
+    struct ObjectNode *obj = objList->next;
 
     while (objList != obj) {
-        gCurrentObject = (struct Object*)obj;
+        gCurrentObject = (struct Object *) obj;
 
         obj = obj->next;
 
@@ -401,18 +405,18 @@ s32 unload_deactivated_objects_in_list(struct ObjectNode* objList) {
  * list. For other objects, it points to the 32 bit behaviorArg in the
  * SpawnInfo.
  */
-void set_object_respawn_info_bits(struct Object* obj, u8 bits) {
-    u32* info32;
-    u16* info16;
+void set_object_respawn_info_bits(struct Object *obj, u8 bits) {
+    u32 *info32;
+    u16 *info16;
 
     switch (obj->respawnInfoType) {
         case RESPAWN_INFO_TYPE_32:
-            info32 = (u32*)obj->respawnInfo;
+            info32 = (u32 *) obj->respawnInfo;
             *info32 |= bits << 8;
             break;
 
         case RESPAWN_INFO_TYPE_16:
-            info16 = (u16*)obj->respawnInfo;
+            info16 = (u16 *) obj->respawnInfo;
             *info16 |= bits << 8;
             break;
     }
@@ -422,9 +426,9 @@ void set_object_respawn_info_bits(struct Object* obj, u8 bits) {
  * Unload all objects whose activeAreaIndex is areaIndex.
  */
 void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex) {
-    struct Object* obj;
-    struct ObjectNode* node;
-    struct ObjectNode* list;
+    struct Object *obj;
+    struct ObjectNode *node;
+    struct ObjectNode *list;
     s32 i;
     gObjectLists = gObjectListArray;
 
@@ -433,7 +437,7 @@ void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex) {
         node = list->next;
 
         while (node != list) {
-            obj = (struct Object*)node;
+            obj = (struct Object *) node;
             node = node->next;
 
             if (obj->header.gfx.activeAreaIndex == areaIndex) {
@@ -446,7 +450,7 @@ void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex) {
 /**
  * Spawn objects given a list of SpawnInfos. Called when loading an area.
  */
-void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo* spawnInfo) {
+void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
     gObjectLists = gObjectListArray;
     gTimeStopState = 0;
 
@@ -456,7 +460,7 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo* spawnInfo) {
     //! (Spawning Displacement) On the Japanese version, Mario's platform object
     //  isn't cleared when transitioning between areas. This can cause Mario to
     //  receive displacement after spawning.
-    if (!ROM_JP) {
+    if(!ROM_JP) {
         clear_mario_platform();
     }
 
@@ -465,15 +469,16 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo* spawnInfo) {
     }
 
     while (spawnInfo != NULL) {
-        struct Object* object;
+        struct Object *object;
         UNUSED u8 filler[4];
-        const BehaviorScript* script;
+        const BehaviorScript *script;
         UNUSED s16 arg16 = (s16)(spawnInfo->behaviorArg & 0xFFFF);
 
         script = segmented_to_virtual(spawnInfo->behaviorScript);
 
         // If the object was previously killed/collected, don't respawn it
-        if ((spawnInfo->behaviorArg & (RESPAWN_INFO_DONT_RESPAWN << 8)) != (RESPAWN_INFO_DONT_RESPAWN << 8)) {
+        if ((spawnInfo->behaviorArg & (RESPAWN_INFO_DONT_RESPAWN << 8))
+            != (RESPAWN_INFO_DONT_RESPAWN << 8)) {
             object = create_object(script);
 
             // Behavior parameters are often treated as four separate bytes, but
@@ -597,7 +602,7 @@ void unload_deactivated_objects(void) {
 /**
  * Unused profiling function.
  */
-UNUSED static u16 unused_get_elapsed_time(u64* cycleCounts, s32 index) {
+UNUSED static u16 unused_get_elapsed_time(u64 *cycleCounts, s32 index) {
     u16 time;
     f64 cycles;
 
@@ -606,7 +611,7 @@ UNUSED static u16 unused_get_elapsed_time(u64* cycleCounts, s32 index) {
         cycles = 0;
     }
 
-    time = (u16)(((u64)cycles * 1000000 / osClockRate) / 16667.0 * 1000.0);
+    time = (u16)(((u64) cycles * 1000000 / osClockRate) / 16667.0 * 1000.0);
     if (time > 999) {
         time = 999;
     }

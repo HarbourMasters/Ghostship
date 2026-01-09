@@ -1,7 +1,7 @@
 // floating_platform.inc.c
 
 f32 floating_platform_find_home_y(void) {
-    struct Surface* sp24;
+    struct Surface *sp24;
     f32 sp20 = find_water_level(o->oPosX, o->oPosZ);
     f32 sp1C = find_floor(o->oPosX, o->oPosY, o->oPosZ, &sp24);
 
@@ -15,10 +15,10 @@ f32 floating_platform_find_home_y(void) {
 }
 
 void floating_platform_act_0(void) {
-    s16 sp6 = (gMarioObject->header.gfx.pos[0] - o->oPosX) * coss(-1 * o->oMoveAngleYaw) +
-              (gMarioObject->header.gfx.pos[2] - o->oPosZ) * sins(-1 * o->oMoveAngleYaw);
-    s16 sp4 = (gMarioObject->header.gfx.pos[2] - o->oPosZ) * coss(-1 * o->oMoveAngleYaw) -
-              (gMarioObject->header.gfx.pos[0] - o->oPosX) * sins(-1 * o->oMoveAngleYaw);
+    s16 sp6 = (gMarioObject->header.gfx.pos[0] - o->oPosX) * coss(-1*o->oMoveAngleYaw)
+              + (gMarioObject->header.gfx.pos[2] - o->oPosZ) * sins(-1*o->oMoveAngleYaw);
+    s16 sp4 = (gMarioObject->header.gfx.pos[2] - o->oPosZ) * coss(-1*o->oMoveAngleYaw)
+              - (gMarioObject->header.gfx.pos[0] - o->oPosX) * sins(-1*o->oMoveAngleYaw);
 
     if (gMarioObject->platform == o) {
         o->oFaceAnglePitch = sp4 * 2;
@@ -47,7 +47,8 @@ void floating_platform_act_0(void) {
         }
     }
 
-    o->oPosY = o->oHomeY - 64.0f - o->oFloatingPlatformUnkF8 + sins(o->oFloatingPlatformUnk100 * 0x800) * 10.0f;
+    o->oPosY = o->oHomeY - 64.0f - o->oFloatingPlatformUnkF8
+               + sins(o->oFloatingPlatformUnk100 * 0x800) * 10.0f;
 
     o->oFloatingPlatformUnk100++;
 

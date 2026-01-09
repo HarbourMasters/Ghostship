@@ -1,6 +1,6 @@
 // sliding_platform_2.inc.c
 
-static Collision const* sSlidingPlatform2CollisionData[] = {
+static Collision const *sSlidingPlatform2CollisionData[] = {
     bits_seg7_collision_0701A9A0,
     bits_seg7_collision_0701AA0C,
     bitfs_seg7_collision_07015714,

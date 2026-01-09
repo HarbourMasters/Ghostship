@@ -34,7 +34,7 @@
 #define COIN_STAR_INDEX 6
 
 // Star Selector count models printed in the act selector menu.
-static struct Object* sStarSelectorModels[8];
+static struct Object *sStarSelectorModels[8];
 
 // The act the course is loaded as, affects whether some objects spawn.
 static s8 sLoadedActNum;
@@ -101,8 +101,8 @@ void bhv_act_selector_star_type_loop(void) {
 void render_100_coin_star(u8 stars) {
     if (stars & (1 << COIN_STAR_INDEX)) {
         // If the 100 coin star has been collected, create a new star selector next to the coin score.
-        sStarSelectorModels[COIN_STAR_INDEX] =
-            spawn_object_abs_with_rot(gCurrentObject, 0, MODEL_STAR, bhvActSelectorStarType, 370, 24, -300, 0, 0, 0);
+        sStarSelectorModels[COIN_STAR_INDEX] = spawn_object_abs_with_rot(gCurrentObject, 0, MODEL_STAR,
+                                                        bhvActSelectorStarType, 370, 24, -300, 0, 0, 0);
         sStarSelectorModels[COIN_STAR_INDEX]->oStarSelectorSize = 0.8;
         sStarSelectorModels[COIN_STAR_INDEX]->oStarSelectorType = STAR_SELECTOR_100_COINS;
     }
@@ -286,18 +286,18 @@ void print_course_number(void) {
  */
 void print_act_selector_strings(void) {
 #ifdef VERSION_EU
-    unsigned char myScore[][10] = { { TEXT_MYSCORE }, { TEXT_MY_SCORE_FR }, { TEXT_MY_SCORE_DE } };
+    unsigned char myScore[][10] = { {TEXT_MYSCORE}, {TEXT_MY_SCORE_FR}, {TEXT_MY_SCORE_DE} };
 #else
     unsigned char* myScore = GameEngine_LoadTranslation("TEXT_MYSCORE");
 #endif
     unsigned char* starNumbers = GameEngine_LoadTranslation("TEXT_ZERO");
 
 #ifdef VERSION_EU
-    u8** levelNameTbl;
-    u8* currLevelName;
-    u8** actNameTbl;
+    u8 **levelNameTbl;
+    u8 *currLevelName;
+    u8 **actNameTbl;
 #endif
-    u8* selectedActName;
+    u8 *selectedActName;
     s16 lvlNameX;
     s16 actNameX;
     s8 i;
@@ -359,8 +359,7 @@ void print_act_selector_strings(void) {
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255);
     // Print the name of the selected act.
     if (sVisibleStars != 0) {
-        selectedActName =
-            GameEngine_LoadActName(COURSE_NUM_TO_INDEX(gCurrCourseNum) * LEVEL_STARS_MAX + sSelectedActIndex);
+        selectedActName = GameEngine_LoadActName(COURSE_NUM_TO_INDEX(gCurrCourseNum) * LEVEL_STARS_MAX + sSelectedActIndex);
         actNameX = get_str_x_pos_from_center(ACT_NAME_X, selectedActName, 8.0f);
         print_menu_generic_string(actNameX, 81, selectedActName);
     }
@@ -376,12 +375,12 @@ void print_act_selector_strings(void) {
     }
 
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
-}
+ }
 
 /**
  * Geo function that Print act selector strings.
  */
-Gfx* geo_act_selector_strings(s16 callContext, UNUSED struct GraphNode* node, UNUSED void* context) {
+Gfx *geo_act_selector_strings(s16 callContext, UNUSED struct GraphNode *node, UNUSED void *context) {
     if (callContext == GEO_CONTEXT_RENDER) {
         print_act_selector_strings();
     }
@@ -401,7 +400,8 @@ s32 lvl_init_act_selector_values_and_stars(UNUSED s32 arg, UNUSED s32 unused) {
     sActSelectorMenuTimer = 0;
     sSelectedActIndex = 0;
     sSelectableStarIndex = 0;
-    sObtainedStars = save_file_get_course_star_count(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
+    sObtainedStars =
+        save_file_get_course_star_count(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
     // Don't count 100 coin star
     if (stars & (1 << COIN_STAR_INDEX)) {
@@ -419,8 +419,9 @@ s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused
     if (sActSelectorMenuTimer > 10) {
         // If any of these buttons are pressed, play sound and go to course act
 #ifndef VERSION_EU
-        if ((gPlayer3Controller->buttonPressed & A_BUTTON) || (gPlayer3Controller->buttonPressed & START_BUTTON) ||
-            (gPlayer3Controller->buttonPressed & B_BUTTON)) {
+        if ((gPlayer3Controller->buttonPressed & A_BUTTON)
+         || (gPlayer3Controller->buttonPressed & START_BUTTON)
+         || (gPlayer3Controller->buttonPressed & B_BUTTON)) {
 #else
         if ((gPlayer3Controller->buttonPressed & (A_BUTTON | START_BUTTON | B_BUTTON | Z_TRIG))) {
 #endif

@@ -3,9 +3,8 @@
 #include "spdlog/spdlog.h"
 
 namespace SF64 {
-std::shared_ptr<Ship::IResource>
-ResourceFactoryBinaryGenericArrayV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                                  std::shared_ptr<Ship::ResourceInitData> initData) {
+std::shared_ptr<Ship::IResource> ResourceFactoryBinaryGenericArrayV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
@@ -108,4 +107,4 @@ ResourceFactoryBinaryGenericArrayV0::ReadResource(std::shared_ptr<Ship::File> fi
 
     return arr;
 }
-} // namespace SF64
+} // namespace LUS

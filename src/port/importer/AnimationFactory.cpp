@@ -2,9 +2,8 @@
 #include "port/importer/types/Animation.h"
 #include "spdlog/spdlog.h"
 
-std::shared_ptr<Ship::IResource>
-SM64::AnimationFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                       std::shared_ptr<Ship::ResourceInitData> initData) {
+std::shared_ptr<Ship::IResource> SM64::AnimationFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
@@ -32,7 +31,7 @@ SM64::AnimationFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
         animation->values.push_back(reader->ReadInt16());
     }
 
-    animation->mData.index = animation->indices.data();
+    animation->mData.index  = animation->indices.data();
     animation->mData.values = animation->values.data();
 
     return animation;

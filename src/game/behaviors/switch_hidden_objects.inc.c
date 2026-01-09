@@ -33,7 +33,7 @@ void breakable_box_init(void) {
 }
 
 void hidden_breakable_box_actions(void) {
-    struct Object* sp1C;
+    struct Object *sp1C;
 
     obj_set_hitbox(o, &sBreakableBoxHitbox);
     cur_obj_set_model(MODEL_BREAKABLE_BOX_SMALL);
@@ -79,7 +79,7 @@ void hidden_breakable_box_actions(void) {
 }
 
 void hidden_unbreakable_box_actions(void) {
-    struct Object* sp1C;
+    struct Object *sp1C;
 
     obj_set_collision_data(o, wdw_seg7_collision_07018528);
 

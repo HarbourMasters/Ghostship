@@ -9,7 +9,7 @@
  * The first hole in the list of monty mole holes. The list is a singly linked
  * list using the parentObj field.
  */
-struct Object* sMontyMoleHoleList;
+struct Object *sMontyMoleHoleList;
 
 /**
  * The number of nearby monty moles that have been killed in a row.
@@ -29,20 +29,20 @@ f32 sMontyMoleLastKilledPosZ;
  * The result is a singly linked list in reverse processing order. Return the
  * start of this list.
  */
-static struct Object* link_objects_with_behavior(const BehaviorScript* behavior) {
-    const BehaviorScript* behaviorAddr = segmented_to_virtual(behavior);
-    struct Object* obj;
-    struct Object* lastObject = NULL;
-    struct ObjectNode* listHead = &gObjectLists[get_object_list_from_behavior(behaviorAddr)];
+static struct Object *link_objects_with_behavior(const BehaviorScript *behavior) {
+    const BehaviorScript *behaviorAddr = segmented_to_virtual(behavior);
+    struct Object *obj;
+    struct Object *lastObject = NULL;
+    struct ObjectNode *listHead = &gObjectLists[get_object_list_from_behavior(behaviorAddr)];
 
-    obj = (struct Object*)listHead->next;
-    while (obj != (struct Object*)listHead) {
+    obj = (struct Object *) listHead->next;
+    while (obj != (struct Object *) listHead) {
         if (obj->behavior == behaviorAddr && obj->activeFlags != ACTIVE_FLAG_DEACTIVATED) {
             obj->parentObj = lastObject;
             lastObject = obj;
         }
 
-        obj = (struct Object*)obj->header.next;
+        obj = (struct Object *) obj->header.next;
     }
 
     return lastObject;
@@ -52,8 +52,8 @@ static struct Object* link_objects_with_behavior(const BehaviorScript* behavior)
  * Select a random hole that is within minDistToMario and 1500 of mario, and
  * whose cooldown is zero. Return NULL if no hole is available.
  */
-static struct Object* monty_mole_select_available_hole(f32 minDistToMario) {
-    struct Object* hole = sMontyMoleHoleList;
+static struct Object *monty_mole_select_available_hole(f32 minDistToMario) {
+    struct Object *hole = sMontyMoleHoleList;
     s32 numAvailableHoles = 0;
 
     while (hole != NULL) {
@@ -203,12 +203,12 @@ static void monty_mole_act_rise_from_hole(void) {
  * Otherwise, enter the begin jump into hole action.
  */
 static void monty_mole_act_spawn_rock(void) {
-    struct Object* rock;
+    struct Object *rock;
 
     if (cur_obj_init_anim_and_check_if_end(2)) {
-        if (o->oBehParams2ndByte != MONTY_MOLE_BP_NO_ROCK &&
-            abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x4000 &&
-            (rock = spawn_object(o, MODEL_PEBBLE, bhvMontyMoleRock)) != NULL) {
+        if (o->oBehParams2ndByte != MONTY_MOLE_BP_NO_ROCK
+            && abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x4000
+            && (rock = spawn_object(o, MODEL_PEBBLE, bhvMontyMoleRock)) != NULL) {
             o->prevObj = rock;
             o->oAction = MONTY_MOLE_ACT_THROW_ROCK;
         } else {

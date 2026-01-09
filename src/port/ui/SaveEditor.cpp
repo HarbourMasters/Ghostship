@@ -18,7 +18,7 @@ extern MarioState* gMarioState;
 #define DEFINE_COURSES_END()
 #define DEFINE_BONUS_COURSE(_0, _1, name) name,
 static char courseNames[][31] = {
-#include "levels/course_defines.h"
+    #include "levels/course_defines.h"
 };
 #undef DEFINE_COURSE
 #undef DEFINE_COURSES_END
@@ -28,13 +28,12 @@ void DrawFlagTableArray32(const FlagTable& flagTable, uint16_t row, uint32_t& fl
     ImGui::PushID((std::to_string(row) + flagTable.name).c_str());
     for (int32_t flagIndex = 0; flagIndex < 32; flagIndex++) {
         if ((flagIndex % 8) != 0) {
-            ImGui::SameLine();
+          ImGui::SameLine();
         }
         ImGui::PushID(flagIndex);
         bool hasDescription = !!flagTable.flagDescriptions.contains(flagIndex);
         uint32_t bitMask = 1 << flagIndex;
-        ImGui::PushStyleColor(ImGuiCol_FrameBg,
-                              hasDescription ? ImVec4(0.16f, 0.29f, 0.48f, 0.54f) : ImVec4(0.16f, 0.29f, 0.48f, 0.24f));
+        ImGui::PushStyleColor(ImGuiCol_FrameBg, hasDescription ? ImVec4(0.16f, 0.29f, 0.48f, 0.54f) : ImVec4(0.16f, 0.29f, 0.48f, 0.24f));
         bool flag = (flags & bitMask) != 0;
         if (ImGui::Checkbox("##check", &flag)) {
             if (flag) {

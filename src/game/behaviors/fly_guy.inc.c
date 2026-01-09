@@ -68,8 +68,8 @@ static void fly_guy_act_approach_mario(void) {
 
         // If facing toward mario and we are either near mario laterally or
         // far above him
-        if (abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000 &&
-            (o->oPosY - gMarioObject->oPosY > 400.0f || o->oDistanceToMario < 400.0f)) {
+        if (abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000
+            && (o->oPosY - gMarioObject->oPosY > 400.0f || o->oDistanceToMario < 400.0f)) {
             // Either shoot fire or lunge
             if (o->oBehParams2ndByte != 0 && random_u16() % 2) {
                 o->oAction = FLY_GUY_ACT_SHOOT_FIRE;

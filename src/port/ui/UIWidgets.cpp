@@ -29,12 +29,19 @@ std::string WrappedText(const char* text, unsigned int charactersPerLine) {
             lastSpace = currentCharacter;
         }
 
-        if ((currentLineLength >= charactersPerLine) && (lastSpace >= 0)) {
-            newText[lastSpace] = '\n';
-            currentLineLength = currentCharacter - lastSpace - 1;
-            lastSpace = -1;
+        return strdup(newText.c_str());
+    }
+
+    char* WrappedText(const std::string& text, unsigned int charactersPerLine) {
+        return WrappedText(text.c_str(), charactersPerLine);
+    }
+
+    void SetLastItemHoverText(const std::string& text) {
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("%s", WrappedText(text, 60));
+            ImGui::EndTooltip();
         }
-        currentLineLength++;
     }
 
     return newText;
@@ -597,6 +604,7 @@ bool SliderInt(const char *label, int32_t *value, const IntSliderOptions &option
             }
             dirty = true;
         }
+        return dirty;
     }
 
     if (options.alignment == ComponentAlignments::Left) {
@@ -633,8 +641,6 @@ bool CVarSliderInt(const char *label, const char *cvarName, const IntSliderOptio
         ShipInit::Init(cvarName);
         dirty = true;
     }
-    return dirty;
-}
 
 void ClampFloat(float *value, float min, float max, float step) {
     int factor = 1;
@@ -735,6 +741,7 @@ bool SliderFloat(const char *label, float *value, const FloatSliderOptions &opti
             }
             dirty = true;
         }
+        return dirty;
     }
 
     if (options.alignment == ComponentAlignments::Left) {
@@ -770,7 +777,6 @@ bool CVarSliderFloat(const char *label, const char *cvarName, const FloatSliderO
         ShipInit::Init(cvarName);
         dirty = true;
     }
-    return dirty;
 }
 
 int InputTextResizeCallback(ImGuiInputTextCallbackData *data) {

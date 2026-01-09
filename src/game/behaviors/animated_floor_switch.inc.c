@@ -1,7 +1,7 @@
 // animated_floor_switch.inc.c
 
 struct Struct80331A54 {
-    const Collision* collision;
+    const Collision *collision;
     s16 model;
 };
 
@@ -70,8 +70,8 @@ void bhv_animates_on_floor_switch_press_loop(void) {
         o->oFloorSwitchPressAnimationUnkFC = 1;
     }
 
-    o->collisionData =
-        segmented_to_virtual(D_80331A54[o->oBehParams2ndByte][o->oFloorSwitchPressAnimationUnkF8 / 2].collision);
+    o->collisionData = segmented_to_virtual(
+        D_80331A54[o->oBehParams2ndByte][o->oFloorSwitchPressAnimationUnkF8 / 2].collision);
 
     cur_obj_set_model(D_80331A54[o->oBehParams2ndByte][o->oFloorSwitchPressAnimationUnkF8 / 2].model);
 }

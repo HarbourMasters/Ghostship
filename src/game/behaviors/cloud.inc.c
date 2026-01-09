@@ -18,7 +18,7 @@ static s8 sCloudPartHeights[] = { 11, 8, 12, 8, 9, 9 };
  * Spawn the visual parts of the cloud, including fwoosh's face.
  */
 static void cloud_act_spawn_parts(void) {
-    struct Object* cloudPart;
+    struct Object *cloudPart;
     s32 i;
 
     // Spawn the pieces of the cloud itself
@@ -197,7 +197,8 @@ void bhv_cloud_part_update(void) {
 
         o->oPosX = o->parentObj->oCloudCenterX + cloudRadius * sins(angleFromCenter) + localOffset;
 
-        o->oPosY = o->parentObj->oCloudCenterY + localOffset + scale * sCloudPartHeights[o->oBehParams2ndByte];
+        o->oPosY =
+            o->parentObj->oCloudCenterY + localOffset + scale * sCloudPartHeights[o->oBehParams2ndByte];
 
         o->oPosZ = o->parentObj->oPosZ + cloudRadius * coss(angleFromCenter) + localOffset;
 

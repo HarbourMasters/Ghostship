@@ -109,8 +109,8 @@ void moneybag_act_move_around(void) {
 
     collisionFlags = object_step();
 
-    if (((collisionFlags & OBJ_COL_FLAGS_LANDED) == OBJ_COL_FLAGS_LANDED) &&
-        (o->oMoneybagJumpState == MONEYBAG_JUMP_LANDING)) {
+    if (((collisionFlags & OBJ_COL_FLAGS_LANDED) == OBJ_COL_FLAGS_LANDED)
+        && (o->oMoneybagJumpState == MONEYBAG_JUMP_LANDING)) {
         if ((s32)(random_float() * 6.0f) == 1) {
             o->oMoneybagJumpState = MONEYBAG_JUMP_WALK_AROUND;
             o->oTimer = 0;
@@ -122,8 +122,8 @@ void moneybag_act_move_around(void) {
     moneybag_jump(collisionFlags);
     moneybag_check_mario_collision();
 
-    if (!is_point_within_radius_of_mario(o->oHomeX, o->oHomeY, o->oHomeZ, 800) &&
-        ((collisionFlags & OBJ_COL_FLAGS_LANDED) == OBJ_COL_FLAGS_LANDED)) {
+    if (!is_point_within_radius_of_mario(o->oHomeX, o->oHomeY, o->oHomeZ, 800)
+        && ((collisionFlags & OBJ_COL_FLAGS_LANDED) == OBJ_COL_FLAGS_LANDED)) {
         o->oAction = MONEYBAG_ACT_RETURN_HOME;
     }
 }
@@ -137,8 +137,8 @@ void moneybag_act_return_home(void) {
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, sp22, 0x800);
     collisionFlags = object_step();
 
-    if (((collisionFlags & OBJ_COL_FLAGS_LANDED) == OBJ_COL_FLAGS_LANDED) &&
-        (o->oMoneybagJumpState == MONEYBAG_JUMP_LANDING)) {
+    if (((collisionFlags & OBJ_COL_FLAGS_LANDED) == OBJ_COL_FLAGS_LANDED)
+        && (o->oMoneybagJumpState == MONEYBAG_JUMP_LANDING)) {
         o->oMoneybagJumpState = MONEYBAG_JUMP_WALK_HOME;
     }
 
@@ -147,7 +147,7 @@ void moneybag_act_return_home(void) {
 
     if (is_point_close_to_object(o, o->oHomeX, o->oHomeY, o->oHomeZ, 100)) {
         spawn_object(o, MODEL_YELLOW_COIN, bhvMoneybagHidden);
-        if (!ROM_JP) {
+        if(!ROM_JP) {
             cur_obj_play_sound_2(SOUND_GENERAL_VANISH_SFX);
         }
         cur_obj_init_animation(0);
@@ -218,7 +218,7 @@ void bhv_moneybag_hidden_loop(void) {
         case FAKE_MONEYBAG_COIN_ACT_IDLE:
             if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 400)) {
                 spawn_object(o, MODEL_MONEYBAG, bhvMoneybag);
-                if (!ROM_JP) {
+                if(!ROM_JP) {
                     cur_obj_play_sound_2(SOUND_GENERAL_VANISH_SFX);
                 }
                 o->oAction = FAKE_MONEYBAG_COIN_ACT_TRANSFORM;

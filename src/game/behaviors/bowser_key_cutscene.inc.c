@@ -1,9 +1,9 @@
 // bowser_key_cutscene.inc.c
 
-Gfx* geo_scale_bowser_key(s32 run, struct GraphNode* node, UNUSED f32 mtx[4][4]) {
+Gfx *geo_scale_bowser_key(s32 run, struct GraphNode *node, UNUSED f32 mtx[4][4]) {
     if (run == TRUE) {
-        struct Object* sp4 = (struct Object*)gCurGraphNodeObject;
-        ((struct GraphNodeScale*)node->next)->scale = sp4->oBowserKeyScale;
+        struct Object *sp4 = (struct Object *) gCurGraphNodeObject;
+        ((struct GraphNodeScale *) node->next)->scale = sp4->oBowserKeyScale;
     }
     return NULL;
 }

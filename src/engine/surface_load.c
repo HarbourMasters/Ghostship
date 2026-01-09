@@ -27,8 +27,8 @@ SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
 /**
  * Pools of data to contain either surface nodes or surfaces.
  */
-struct SurfaceNode* sSurfaceNodePool;
-struct Surface* sSurfacePool;
+struct SurfaceNode *sSurfaceNodePool;
+struct Surface *sSurfacePool;
 
 /**
  * The size of the surface pool (2300).
@@ -40,8 +40,8 @@ u8 unused8038EEA8[0x30];
 /**
  * Allocate the part of the surface node pool to contain a surface node.
  */
-static struct SurfaceNode* alloc_surface_node(void) {
-    struct SurfaceNode* node = &sSurfaceNodePool[gSurfaceNodesAllocated];
+static struct SurfaceNode *alloc_surface_node(void) {
+    struct SurfaceNode *node = &sSurfaceNodePool[gSurfaceNodesAllocated];
     gSurfaceNodesAllocated++;
 
     node->next = NULL;
@@ -49,7 +49,8 @@ static struct SurfaceNode* alloc_surface_node(void) {
     //! A bounds check! If there's more surface nodes than 7000 allowed,
     //  we, um...
     // Perhaps originally just debug feedback?
-    if (gSurfaceNodesAllocated >= 7000) {}
+    if (gSurfaceNodesAllocated >= 7000) {
+    }
 
     return node;
 }
@@ -58,15 +59,16 @@ static struct SurfaceNode* alloc_surface_node(void) {
  * Allocate the part of the surface pool to contain a surface and
  * initialize the surface.
  */
-static struct Surface* alloc_surface(void) {
+static struct Surface *alloc_surface(void) {
 
-    struct Surface* surface = &sSurfacePool[gSurfacesAllocated];
+    struct Surface *surface = &sSurfacePool[gSurfacesAllocated];
     gSurfacesAllocated++;
 
     //! A bounds check! If there's more surfaces than the 2300 allowed,
     //  we, um...
     // Perhaps originally just debug feedback?
-    if (gSurfacesAllocated >= sSurfacePoolSize) {}
+    if (gSurfacesAllocated >= sSurfacePoolSize) {
+    }
 
     surface->type = 0;
     surface->force = 0;
@@ -80,7 +82,7 @@ static struct Surface* alloc_surface(void) {
 /**
  * Iterates through the entire partition, clearing the surfaces.
  */
-static void clear_spatial_partition(SpatialPartitionCell* cells) {
+static void clear_spatial_partition(SpatialPartitionCell *cells) {
     register s32 i = NUM_CELLS * NUM_CELLS;
 
     while (i--) {
@@ -106,9 +108,9 @@ static void clear_static_surfaces(void) {
  * @param cellZ The Z position of the cell in which the surface resides
  * @param surface The surface to add
  */
-static void add_surface_to_cell(s16 dynamic, s16 cellX, s16 cellZ, struct Surface* surface) {
-    struct SurfaceNode* newNode = alloc_surface_node();
-    struct SurfaceNode* list;
+static void add_surface_to_cell(s16 dynamic, s16 cellX, s16 cellZ, struct Surface *surface) {
+    struct SurfaceNode *newNode = alloc_surface_node();
+    struct SurfaceNode *list;
     s16 surfacePriority;
     s16 priority;
     s16 sortDir;
@@ -261,7 +263,7 @@ static s16 upper_cell_index(s16 coord) {
  * @param surface The surface to check
  * @param dynamic Boolean determining whether the surface is static or dynamic
  */
-static void add_surface(struct Surface* surface, s32 dynamic) {
+static void add_surface(struct Surface *surface, s32 dynamic) {
     // minY/maxY maybe? s32 instead of s16, though.
     UNUSED s32 unused1, unused2;
     s16 minX, minZ, maxX, maxZ;
@@ -297,8 +299,8 @@ UNUSED static void stub_surface_load_1(void) {
  * @param vertexData The raw data containing vertex positions
  * @param vertexIndices Helper which tells positions in vertexData to start reading vertices
  */
-static struct Surface* read_surface_data(s16* vertexData, s16** vertexIndices) {
-    struct Surface* surface;
+static struct Surface *read_surface_data(s16 *vertexData, s16 **vertexIndices) {
+    struct Surface *surface;
     register s32 x1, y1, z1;
     register s32 x2, y2, z2;
     register s32 x3, y3, z3;
@@ -436,10 +438,10 @@ static s32 surf_has_no_cam_collision(s16 surfaceType) {
  * Load in the surfaces for a given surface type. This includes setting the flags,
  * exertion, and room.
  */
-static void load_static_surfaces(s16** data, s16* vertexData, s16 surfaceType, s8** surfaceRooms) {
+static void load_static_surfaces(s16 **data, s16 *vertexData, s16 surfaceType, s8 **surfaceRooms) {
     s32 i;
     s32 numSurfaces;
-    struct Surface* surface;
+    struct Surface *surface;
     s8 room = 0;
     s16 hasForce = surface_has_force(surfaceType);
     s16 flags = surf_has_no_cam_collision(surfaceType);
@@ -457,7 +459,7 @@ static void load_static_surfaces(s16** data, s16* vertexData, s16 surfaceType, s
         if (surface != NULL) {
             surface->room = room;
             surface->type = surfaceType;
-            surface->flags = (s8)flags;
+            surface->flags = (s8) flags;
 
             if (hasForce) {
                 surface->force = *(*data + 3);
@@ -478,10 +480,10 @@ static void load_static_surfaces(s16** data, s16* vertexData, s16 surfaceType, s
 /**
  * Read the data for vertices for reference by triangles.
  */
-static s16* read_vertex_data(s16** data) {
+static s16 *read_vertex_data(s16 **data) {
     s32 numVertices;
     UNUSED u8 filler[16];
-    s16* vertexData;
+    s16 *vertexData;
 
     numVertices = *(*data);
     (*data)++;
@@ -495,14 +497,15 @@ static s16* read_vertex_data(s16** data) {
 /**
  * Loads in special environmental regions, such as water, poison gas, and JRB fog.
  */
-static void load_environmental_regions(s16** data) {
+static void load_environmental_regions(s16 **data) {
     s32 numRegions;
     s32 i;
 
     gEnvironmentRegions = *data;
     numRegions = *(*data)++;
 
-    if (numRegions > 20) {}
+    if (numRegions > 20) {
+    }
 
     for (i = 0; i < numRegions; i++) {
         UNUSED s16 val, loX, loZ, hiX, hiZ;
@@ -536,8 +539,8 @@ void alloc_surface_pools(void) {
 /**
  * Get the size of the terrain data, to get the correct size when copying later.
  */
-u32 get_area_terrain_size(s16* data) {
-    s16* startPos = data;
+u32 get_area_terrain_size(s16 *data) {
+    s16 *startPos = data;
     s32 end = FALSE;
     s16 terrainLoadType;
     s32 numVertices;
@@ -581,13 +584,14 @@ u32 get_area_terrain_size(s16* data) {
     return data - startPos;
 }
 
+
 /**
  * Process the level file, loading in vertices, surfaces, some objects, and environmental
  * boxes (water, gas, JRB fog).
  */
-void load_area_terrain(s16 index, s16* data, s8* surfaceRooms, s16* macroObjects) {
+void load_area_terrain(s16 index, s16 *data, s8 *surfaceRooms, s16 *macroObjects) {
     s16 terrainLoadType;
-    s16* vertexData;
+    s16 *vertexData;
     UNUSED u8 filler[4];
 
     // Initialize the data for this.
@@ -657,12 +661,12 @@ UNUSED static void unused_80383604(void) {
 /**
  * Applies an object's transformation to the object's vertices.
  */
-void transform_object_vertices(s16** data, s16* vertexData) {
-    register s16* vertices;
+void transform_object_vertices(s16 **data, s16 *vertexData) {
+    register s16 *vertices;
     register f32 vx, vy, vz;
     register s32 numVertices;
 
-    Mat4* objectTransform;
+    Mat4 *objectTransform;
     Mat4 m;
 
     objectTransform = &gCurrentObject->transform;
@@ -697,7 +701,7 @@ void transform_object_vertices(s16** data, s16* vertexData) {
 /**
  * Load in the surfaces for the gCurrentObject. This includes setting the flags, exertion, and room.
  */
-void load_object_surfaces(s16** data, s16* vertexData) {
+void load_object_surfaces(s16 **data, s16 *vertexData) {
     s32 surfaceType;
     s32 i;
     s32 numSurfaces;
@@ -725,7 +729,7 @@ void load_object_surfaces(s16** data, s16* vertexData) {
     }
 
     for (i = 0; i < numSurfaces; i++) {
-        struct Surface* surface = read_surface_data(vertexData, data);
+        struct Surface *surface = read_surface_data(vertexData, data);
 
         if (surface != NULL) {
             surface->object = gCurrentObject;
@@ -738,7 +742,7 @@ void load_object_surfaces(s16** data, s16* vertexData) {
             }
 
             surface->flags |= flags;
-            surface->room = (s8)room;
+            surface->room = (s8) room;
             add_surface(surface, TRUE);
         }
 
@@ -757,7 +761,7 @@ void load_object_collision_model(void) {
     UNUSED u8 filler[4];
     s16 vertexData[600];
 
-    s16* collisionData = segmented_to_virtual(gCurrentObject->collisionData);
+    s16 *collisionData = segmented_to_virtual(gCurrentObject->collisionData);
     f32 marioDist = gCurrentObject->oDistanceToMario;
     f32 tangibleDist = gCurrentObject->oCollisionDistance;
 
@@ -774,8 +778,8 @@ void load_object_collision_model(void) {
     }
 
     // Update if no Time Stop, in range, and in the current room.
-    if (!(gTimeStopState & TIME_STOP_ACTIVE) && marioDist < tangibleDist &&
-        !(gCurrentObject->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
+    if (!(gTimeStopState & TIME_STOP_ACTIVE) && marioDist < tangibleDist
+        && !(gCurrentObject->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         collisionData++;
         transform_object_vertices(&collisionData, vertexData);
 

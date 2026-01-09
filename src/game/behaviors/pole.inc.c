@@ -28,7 +28,7 @@ void bhv_pole_init(void) {
  */
 void bhv_giant_pole_loop(void) {
     if (o->oTimer == 0) {
-        struct Object* topBall = spawn_object(o, MODEL_YELLOW_SPHERE, bhvYellowBall);
+        struct Object *topBall = spawn_object(o, MODEL_YELLOW_SPHERE, bhvYellowBall);
         topBall->oPosY += o->hitboxHeight + 50.0f;
     }
     bhv_pole_base_loop();

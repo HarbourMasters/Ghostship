@@ -2,7 +2,7 @@
 
 struct TripletButterflyActivationData {
     s32 model;
-    const BehaviorScript* behavior;
+    const BehaviorScript *behavior;
     f32 scale;
 };
 
@@ -62,10 +62,10 @@ static void triplet_butterfly_act_wander(void) {
         if (o->oTimer < 60) {
             o->oTripletButterflyTargetYaw = cur_obj_angle_to_home();
         } else {
-            o->oTripletButterflyTargetYaw = (s32)o->oTripletButterflyBaseYaw;
+            o->oTripletButterflyTargetYaw = (s32) o->oTripletButterflyBaseYaw;
 
-            if (o->oTimer > 110 && o->oDistanceToMario < 200.0f &&
-                o->oTripletButterflyType > TRIPLET_BUTTERFLY_TYPE_NORMAL) {
+            if (o->oTimer > 110 && o->oDistanceToMario < 200.0f
+                && o->oTripletButterflyType > TRIPLET_BUTTERFLY_TYPE_NORMAL) {
                 o->oAction = TRIPLET_BUTTERFLY_ACT_ACTIVATE;
                 o->oTripletButterflySpeed = 0.0f;
             }
@@ -95,7 +95,8 @@ static void triplet_butterfly_act_activate(void) {
             obj_set_billboard(o);
             o->oTripletButterflyScale = 0.0f;
             o->oHomeY = o->oPosY;
-        } else if (o->oTripletButterflyScale >= sTripletButterflyActivationData[o->oTripletButterflyType].scale) {
+        } else if (o->oTripletButterflyScale
+                   >= sTripletButterflyActivationData[o->oTripletButterflyType].scale) {
             if (o->oTripletButterflyType != TRIPLET_BUTTERFLY_TYPE_EXPLODES) {
                 spawn_object(o, o->oTripletButterflyModel,
                              sTripletButterflyActivationData[o->oTripletButterflyType].behavior);
@@ -106,7 +107,8 @@ static void triplet_butterfly_act_activate(void) {
             }
         }
 
-        o->oTripletButterflyScale += sTripletButterflyActivationData[o->oTripletButterflyType].scale / 30.0f;
+        o->oTripletButterflyScale +=
+            sTripletButterflyActivationData[o->oTripletButterflyType].scale / 30.0f;
         if (o->oTripletButterflyType == TRIPLET_BUTTERFLY_TYPE_EXPLODES) {
             o->oGraphYOffset = 250.0f * o->oTripletButterflyScale;
             o->oPosY = o->oHomeY - o->oGraphYOffset;

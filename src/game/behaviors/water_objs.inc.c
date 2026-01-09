@@ -43,7 +43,7 @@ void bhv_water_air_bubble_loop(void) {
 }
 
 void bhv_bubble_wave_init(void) {
-    o->oWaterObjUnkFC = 0x800 + (s32)(random_float() * 2048.0f);
+    o->oWaterObjUnkFC  = 0x800 + (s32)(random_float() * 2048.0f);
     o->oWaterObjUnk100 = 0x800 + (s32)(random_float() * 2048.0f);
     cur_obj_play_sound_2(SOUND_GENERAL_QUIET_BUBBLE);
 }
