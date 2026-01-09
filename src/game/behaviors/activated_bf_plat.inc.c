@@ -17,7 +17,7 @@
  * move off of it. To do this, they changed it to a bhvPlatformOnTrack, but
  * forgot to remove its entry in this table.
  */
-static Collision const *sActivatedBackAndForthPlatformCollisionModels[] = {
+static Collision const* sActivatedBackAndForthPlatformCollisionModels[] = {
     /* ACTIVATED_BF_PLAT_TYPE_BITS_ARROW_PLAT */ bits_seg7_collision_0701AD54,
     /* ACTIVATED_BF_PLAT_TYPE_BITFS_MESH_PLAT */ bitfs_seg7_collision_070157E0,
     /* ACTIVATED_BF_PLAT_TYPE_BITFS_ELEVATOR  */ bitfs_seg7_collision_07015124
@@ -38,8 +38,7 @@ void bhv_activated_back_and_forth_platform_init(void) {
         o->oActivatedBackAndForthPlatformFlipRotation = 0x8000;
     }
 
-    o->collisionData =
-        segmented_to_virtual(sActivatedBackAndForthPlatformCollisionModels[platformType]);
+    o->collisionData = segmented_to_virtual(sActivatedBackAndForthPlatformCollisionModels[platformType]);
 
     // Max distance the platform should move.
     // Equivalent to 50 * (oBehParams2ndByte & 0x7F), i.e. 50 * (oBehParams2ndByte % 128).
@@ -88,9 +87,7 @@ void bhv_activated_back_and_forth_platform_update(void) {
             // clamp_f32 returns whether the value needed to be clamped.
             // So if the offset got out of bounds (i.e. platform has reached an end of its path),
             // or Mario is over 3000 units away, the platform will reset the wait timer and flip around.
-            if (clamp_f32(&o->oActivatedBackAndForthPlatformOffset, 0.0f,
-                          o->oActivatedBackAndForthPlatformMaxOffset)
-                ||
+            if (clamp_f32(&o->oActivatedBackAndForthPlatformOffset, 0.0f, o->oActivatedBackAndForthPlatformMaxOffset) ||
                 // The platform will not reset if Mario goes far away and it's travelling backwards
                 (o->oActivatedBackAndForthPlatformVel > 0.0f && o->oDistanceToMario > 3000.0f)) {
                 // Reset the wait timer

@@ -79,11 +79,7 @@ void bullet_bill_act_4(void) {
 }
 
 void (*sBulletBillActions[])(void) = {
-    bullet_bill_act_0,
-    bullet_bill_act_1,
-    bullet_bill_act_2,
-    bullet_bill_act_3,
-    bullet_bill_act_4,
+    bullet_bill_act_0, bullet_bill_act_1, bullet_bill_act_2, bullet_bill_act_3, bullet_bill_act_4,
 };
 
 void bhv_bullet_bill_loop(void) {

@@ -84,8 +84,8 @@ void bubba_act_1(void) {
 
         o->oBubbaUnk1AC = o->oBubbaUnk104;
 
-        if (obj_is_near_to_and_facing_mario(500.0f, 3000)
-            && abs_angle_diff(o->oBubbaUnk1AC, o->oMoveAnglePitch) < 3000) {
+        if (obj_is_near_to_and_facing_mario(500.0f, 3000) &&
+            abs_angle_diff(o->oBubbaUnk1AC, o->oMoveAnglePitch) < 3000) {
             o->oBubbaUnk100 = 30;
             o->oBubbaUnkF4 = 0;
             o->oAnimState = 1;
@@ -101,8 +101,8 @@ void bhv_bubba_loop(void) {
     o->oInteractionSubtype &= ~INT_SUBTYPE_EATS_MARIO;
     o->oBubbaUnk104 = obj_turn_pitch_toward_mario(120.0f, 0);
 
-    if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x1000
-        && abs_angle_diff(o->oBubbaUnk104 + 0x800, o->oMoveAnglePitch) < 0x2000) {
+    if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x1000 &&
+        abs_angle_diff(o->oBubbaUnk104 + 0x800, o->oMoveAnglePitch) < 0x2000) {
         if (o->oAnimState != 0 && o->oDistanceToMario < 250.0f) {
             o->oInteractionSubtype |= INT_SUBTYPE_EATS_MARIO;
         }
@@ -125,7 +125,7 @@ void bhv_bubba_loop(void) {
 
     if (o->oMoveFlags & OBJ_MOVE_MASK_IN_WATER) {
         if (o->oMoveFlags & OBJ_MOVE_ENTERED_WATER) {
-            struct Object *sp38 = spawn_object(o, MODEL_WATER_SPLASH, bhvWaterSplash);
+            struct Object* sp38 = spawn_object(o, MODEL_WATER_SPLASH, bhvWaterSplash);
             if (sp38 != NULL) {
                 obj_scale(sp38, 3.0f);
             }
@@ -137,8 +137,8 @@ void bhv_bubba_loop(void) {
             if ((o->oBubbaUnk10C -= o->oBubbaUnk108) > 1.0f) {
                 s16 sp36 = random_u16();
                 o->oBubbaUnk10C -= 1.0f;
-                spawn_object_relative(0, 150.0f * coss(sp36), 0x64, 150.0f * sins(sp36), o,
-                                      MODEL_WHITE_PARTICLE_SMALL, bhvSmallParticleSnow);
+                spawn_object_relative(0, 150.0f * coss(sp36), 0x64, 150.0f * sins(sp36), o, MODEL_WHITE_PARTICLE_SMALL,
+                                      bhvSmallParticleSnow);
             }
         }
 

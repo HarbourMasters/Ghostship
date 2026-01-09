@@ -2,8 +2,8 @@
 
 #include "sfx.h"
 
-static u32 sCurrSfx;  // bitset of currently playing sound effects
-static u32 sPrevSfx;  // bitset of sound effects that were playing on the previous frame
+static u32 sCurrSfx; // bitset of currently playing sound effects
+static u32 sPrevSfx; // bitset of sound effects that were playing on the previous frame
 
 /**
  * Stops all sound effects

@@ -236,7 +236,7 @@ void func_sh_8024CA04(void) {
     gCurrRumbleSettings.unk0C = 4;
 }
 
-static void thread6_rumble_loop(UNUSED void *a0) {
+static void thread6_rumble_loop(UNUSED void* a0) {
     OSMesg msg;
 
     // cancel_rumble();

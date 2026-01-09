@@ -6,7 +6,7 @@
 struct WFRotatingPlatformData {
     s16 unused;
     s16 scale;
-    const Collision *collisionData;
+    const Collision* collisionData;
     s16 collisionDistance;
 };
 

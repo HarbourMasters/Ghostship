@@ -102,8 +102,7 @@ static void homing_amp_appear_loop(void) {
  */
 static void homing_amp_chase_loop(void) {
     // Lock on to Mario if he ever goes within 11.25 degrees of the amp's line of sight
-    if ((o->oAngleToMario - 0x400 < o->oMoveAngleYaw)
-        && (o->oMoveAngleYaw < o->oAngleToMario + 0x400)) {
+    if ((o->oAngleToMario - 0x400 < o->oMoveAngleYaw) && (o->oMoveAngleYaw < o->oAngleToMario + 0x400)) {
         o->oHomingAmpLockedOn = TRUE;
         o->oTimer = 0;
     }

@@ -15,26 +15,19 @@ struct UnkBufThing {
 
 // data
 static s32 sNumRoutinesInStack = 0; // @ 801A8280
-static s32 sTimerGadgetColours[7] = {
-    COLOUR_RED,
-    COLOUR_WHITE,
-    COLOUR_GREEN,
-    COLOUR_BLUE,
-    COLOUR_GRAY,
-    COLOUR_YELLOW,
-    COLOUR_PINK
-};
+static s32 sTimerGadgetColours[7] = { COLOUR_RED,  COLOUR_WHITE,  COLOUR_GREEN, COLOUR_BLUE,
+                                      COLOUR_GRAY, COLOUR_YELLOW, COLOUR_PINK };
 static s32 sNumActiveMemTrackers = 0;   // @ 801A82A0
 static u32 sPrimarySeed = 0x12345678;   // @ 801A82A4
 static u32 sSecondarySeed = 0x58374895; // @ 801A82A8
 
 // bss
-u8 *gGdStreamBuffer;                                        // @ 801BA190
-static const char *sRoutineNames[64];                       // @ 801BA198
+u8* gGdStreamBuffer;                                        // @ 801BA190
+static const char* sRoutineNames[64];                       // @ 801BA198
 static s32 sTimingActive;                                   // @ 801BA298
 static struct GdTimer sTimers[GD_NUM_TIMERS];               // @ 801BA2A0
 static struct MemTracker sMemTrackers[GD_NUM_MEM_TRACKERS]; // @ 801BA720
-static struct MemTracker *sActiveMemTrackers[16];           // @ 801BA920
+static struct MemTracker* sActiveMemTrackers[16];           // @ 801BA920
 
 /*
  * Memtrackers
@@ -53,9 +46,9 @@ static struct MemTracker *sActiveMemTrackers[16];           // @ 801BA920
 /**
  * Creates a new memtracker with the specified name
  */
-struct MemTracker *new_memtracker(const char *name) {
+struct MemTracker* new_memtracker(const char* name) {
     s32 i;
-    struct MemTracker *tracker = NULL;
+    struct MemTracker* tracker = NULL;
 
     for (i = 0; i < ARRAY_COUNT(sMemTrackers); i++) {
         if (sMemTrackers[i].name == NULL) {
@@ -76,7 +69,7 @@ struct MemTracker *new_memtracker(const char *name) {
  * Returns the memtracker with the specified name, or NULL if it
  * does not exist
  */
-struct MemTracker *get_memtracker(const char *name) {
+struct MemTracker* get_memtracker(const char* name) {
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(sMemTrackers); i++) {
@@ -93,8 +86,8 @@ struct MemTracker *get_memtracker(const char *name) {
 /**
  * Records the amount of heap usage before allocating memory.
  */
-struct MemTracker *start_memtracker(const char *name) {
-    struct MemTracker *tracker = get_memtracker(name);
+struct MemTracker* start_memtracker(const char* name) {
+    struct MemTracker* tracker = get_memtracker(name);
 
     // Create one if it doesn't exist
     if (tracker == NULL) {
@@ -104,7 +97,7 @@ struct MemTracker *start_memtracker(const char *name) {
         }
     }
 
-    tracker->begin = (f32) get_alloc_mem_amt();
+    tracker->begin = (f32)get_alloc_mem_amt();
     if (sNumActiveMemTrackers >= ARRAY_COUNT(sActiveMemTrackers)) {
         fatal_printf("too many memtracker calls");
     }
@@ -122,8 +115,8 @@ void print_most_recent_memtracker_name(void) {
 /**
  * Records the amount of heap usage after allocating memory.
  */
-u32 stop_memtracker(const char *name) {
-    struct MemTracker *tracker;
+u32 stop_memtracker(const char* name) {
+    struct MemTracker* tracker;
 
     if (sNumActiveMemTrackers-- < 0) {
         fatal_printf("bad mem tracker count");
@@ -137,7 +130,7 @@ u32 stop_memtracker(const char *name) {
     tracker->end = get_alloc_mem_amt();
     tracker->total += (tracker->end - tracker->begin);
 
-    return (u32) tracker->total;
+    return (u32)tracker->total;
 }
 
 /**
@@ -159,7 +152,7 @@ void remove_all_memtrackers(void) {
 /**
  * Returns a memtracker by index rather than name
  */
-struct MemTracker *get_memtracker_by_index(s32 index) {
+struct MemTracker* get_memtracker_by_index(s32 index) {
     return &sMemTrackers[index];
 }
 
@@ -193,8 +186,7 @@ void print_all_timers(void) {
     gd_printf("\nTimers:\n");
     for (i = 0; i < ARRAY_COUNT(sTimers); i++) {
         if (sTimers[i].name != NULL) {
-            gd_printf("'%s' = %f (%d)\n", sTimers[i].name, sTimers[i].scaledTotal,
-                      sTimers[i].resetCount);
+            gd_printf("'%s' = %f (%d)\n", sTimers[i].name, sTimers[i].scaledTotal, sTimers[i].resetCount);
         }
     }
 }
@@ -221,7 +213,7 @@ void remove_all_timers(void) {
         sTimers[i].unused = 0.0f;
         sTimers[i].scaledTotal = 0.0f;
         sTimers[i].prevScaledTotal = 0.0f;
-        sTimers[i].gadgetColourNum = sTimerGadgetColours[(u32) i % 7];
+        sTimers[i].gadgetColourNum = sTimerGadgetColours[(u32)i % 7];
         sTimers[i].resetCount = 0;
     }
     activate_timing();
@@ -230,9 +222,9 @@ void remove_all_timers(void) {
 /**
  * Creates a new timer with the specified name
  */
-static struct GdTimer *new_timer(const char *name) {
+static struct GdTimer* new_timer(const char* name) {
     s32 i;
-    struct GdTimer *timer = NULL;
+    struct GdTimer* timer = NULL;
 
     for (i = 0; i < ARRAY_COUNT(sTimers); i++) {
         if (sTimers[i].name == NULL) {
@@ -248,7 +240,7 @@ static struct GdTimer *new_timer(const char *name) {
 /**
  * Returns the timer with the specified name, or NULL if it does not exist.
  */
-struct GdTimer *get_timer(const char *timerName) {
+struct GdTimer* get_timer(const char* timerName) {
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(sTimers); i++) {
@@ -266,8 +258,8 @@ struct GdTimer *get_timer(const char *timerName) {
  * Returns the timer with the specified name, or aborts the program if it does
  * not exist.
  */
-static struct GdTimer *get_timer_checked(const char *timerName) {
-    struct GdTimer *timer;
+static struct GdTimer* get_timer_checked(const char* timerName) {
+    struct GdTimer* timer;
 
     timer = get_timer(timerName);
     if (timer == NULL) {
@@ -280,7 +272,7 @@ static struct GdTimer *get_timer_checked(const char *timerName) {
 /**
  * Returns a timer by index rather than name
  */
-struct GdTimer *get_timernum(s32 index) {
+struct GdTimer* get_timernum(s32 index) {
     if (index >= ARRAY_COUNT(sTimers)) {
         fatal_printf("get_timernum(): Timer number %d out of range (MAX %d)", index, ARRAY_COUNT(sTimers));
     }
@@ -289,7 +281,7 @@ struct GdTimer *get_timernum(s32 index) {
 }
 
 /* 23B350 -> 23B42C; orig name: func_8018CB80 */
-void split_timer_ptr(struct GdTimer *timer) {
+void split_timer_ptr(struct GdTimer* timer) {
     if (!sTimingActive) {
         return;
     }
@@ -301,14 +293,14 @@ void split_timer_ptr(struct GdTimer *timer) {
         timer->total = 0;
     }
 
-    timer->scaledTotal = ((f32) timer->total) / get_time_scale();
+    timer->scaledTotal = ((f32)timer->total) / get_time_scale();
     timer->start = timer->end;
 }
 
 /* 23B42C -> 23B49C; not called; orig name: Unknown8018CC5C */
 void split_all_timers(void) {
     s32 i;
-    struct GdTimer *timer;
+    struct GdTimer* timer;
 
     for (i = 0; i < ARRAY_COUNT(sTimers); i++) {
         timer = get_timernum(i);
@@ -323,7 +315,7 @@ void split_all_timers(void) {
  */
 void start_all_timers(void) {
     s32 i;
-    struct GdTimer *timer;
+    struct GdTimer* timer;
 
     if (!sTimingActive) {
         return;
@@ -341,8 +333,8 @@ void start_all_timers(void) {
 /**
  * Records the current time before performing an operation
  */
-void start_timer(const char *name) {
-    struct GdTimer *timer;
+void start_timer(const char* name) {
+    struct GdTimer* timer;
 
     if (!sTimingActive) {
         return;
@@ -366,8 +358,8 @@ void start_timer(const char *name) {
 /**
  * Records the current time before performing an operation
  */
-void restart_timer(const char *name) {
-    struct GdTimer *timer;
+void restart_timer(const char* name) {
+    struct GdTimer* timer;
 
     if (!sTimingActive) {
         return;
@@ -390,8 +382,8 @@ void restart_timer(const char *name) {
  * Records the current time after performing an operation, adds the elapsed time
  * to the total, then restarts the timer
  */
-void split_timer(const char *name) {
-    struct GdTimer *timer;
+void split_timer(const char* name) {
+    struct GdTimer* timer;
 
     if (!sTimingActive) {
         return;
@@ -404,8 +396,8 @@ void split_timer(const char *name) {
 /**
  * Records the current time after performing an operation
  */
-void stop_timer(const char *name) {
-    struct GdTimer *timer;
+void stop_timer(const char* name) {
+    struct GdTimer* timer;
 
     if (!sTimingActive) {
         return;
@@ -418,14 +410,14 @@ void stop_timer(const char *name) {
         timer->total = 0;
     }
 
-    timer->scaledTotal = ((f32) timer->total) / get_time_scale();
+    timer->scaledTotal = ((f32)timer->total) / get_time_scale();
 }
 
 /**
  * Returns the scaled total for the specified timer
  */
-f32 get_scaled_timer_total(const char *name) {
-    struct GdTimer *timer = get_timer_checked(name);
+f32 get_scaled_timer_total(const char* name) {
+    struct GdTimer* timer = get_timer_checked(name);
 
     return timer->scaledTotal;
 }
@@ -433,22 +425,20 @@ f32 get_scaled_timer_total(const char *name) {
 /**
  * Unused - returns the raw total for the specified timer
  */
-f32 get_timer_total(const char *name) {
-    struct GdTimer *timer = get_timer_checked(name);
+f32 get_timer_total(const char* name) {
+    struct GdTimer* timer = get_timer_checked(name);
 
-    return (f32) timer->total;
+    return (f32)timer->total;
 }
-
 
 /*
  * Miscellaneous debug functions
  */
 
-
 /**
  * Prints the given string, prints the stack trace, and exits the program
  */
-void fatal_print(const char *str) {
+void fatal_print(const char* str) {
     fatal_printf(str);
 }
 
@@ -466,7 +456,7 @@ void print_stack_trace(void) {
 /**
  * Prints the formatted string, prints the stack trace, and exits the program
  */
-void fatal_printf(const char *fmt, ...) {
+void fatal_printf(const char* fmt, ...) {
     char cur;
     UNUSED u8 filler[4];
     va_list vl;
@@ -483,7 +473,7 @@ void fatal_printf(const char *fmt, ...) {
                         gd_printf("%f", va_arg(vl, double));
                         break;
                     case 's':
-                        gd_printf("%s", va_arg(vl, char *));
+                        gd_printf("%s", va_arg(vl, char*));
                         break;
                     case 'c':
                         gd_printf("%c", (char)va_arg(vl, int));
@@ -517,9 +507,9 @@ void fatal_printf(const char *fmt, ...) {
  * "I'm in"
  * Adds the function name to the stack trace
  */
-void imin(const char *routine) {
+void imin(const char* routine) {
     sRoutineNames[sNumRoutinesInStack++] = routine;
-    sRoutineNames[sNumRoutinesInStack] = NULL;  //! array bounds is checked after writing this.
+    sRoutineNames[sNumRoutinesInStack] = NULL; //! array bounds is checked after writing this.
 
     if (sNumRoutinesInStack >= ARRAY_COUNT(sRoutineNames)) {
         fatal_printf("You're in too many routines");
@@ -579,9 +569,9 @@ f32 gd_rand_float(void) {
 /**
  * Reimplementation of the standard "atoi" function
  */
-s32 gd_atoi(const char *str) {
+s32 gd_atoi(const char* str) {
     char cur;
-    const char *origstr = str;
+    const char* origstr = str;
     s32 curval;
     s32 out = 0;
     s32 isNegative = FALSE;
@@ -617,14 +607,14 @@ s32 gd_atoi(const char *str) {
 /**
  * Like the standard "atof" function, but only supports integer values
  */
-f64 gd_lazy_atof(const char *str, UNUSED u32 *unk) {
+f64 gd_lazy_atof(const char* str, UNUSED u32* unk) {
     return gd_atoi(str);
 }
 
-static char sHexNumerals[] = {"0123456789ABCDEF"};
+static char sHexNumerals[] = { "0123456789ABCDEF" };
 
 /* 23C018 -> 23C078; orig name: func_8018D848 */
-char *format_number_hex(char *str, s32 val) {
+char* format_number_hex(char* str, s32 val) {
     s32 shift;
 
     for (shift = 28; shift > -4; shift -= 4) {
@@ -640,7 +630,7 @@ static s32 sPadNumPrint = 0; // @ 801A82C0
 
 /* 23C078 -> 23C174; orig name: func_8018D8A8 */
 /* padnum = a decimal number with the max desired output width */
-char *format_number_decimal(char *str, s32 val, s32 padnum) {
+char* format_number_decimal(char* str, s32 val, s32 padnum) {
     s32 i;
 
     if (val == 0) {
@@ -693,7 +683,7 @@ static s32 int_sci_notation(s32 base, s32 significand) {
 }
 
 /* 23C1C8 -> 23C468; orig name: func_8018D9F8 */
-char *sprint_val_withspecifiers(char *str, union PrintVal val, char *specifiers) {
+char* sprint_val_withspecifiers(char* str, union PrintVal val, char* specifiers) {
     s32 fracPart; // sp3C
     s32 intPart;  // sp38
     s32 intPrec;  // sp34
@@ -712,8 +702,8 @@ char *sprint_val_withspecifiers(char *str, union PrintVal val, char *specifiers)
             sPadNumPrint = TRUE; /* doesn't affect hex printing, though... */
             str = format_number_hex(str, val.i);
         } else if (cur == 'f') {
-            intPart = (s32) val.f;
-            fracPart = (s32)((val.f - (f32) intPart) * (f32) int_sci_notation(10, fracPrec));
+            intPart = (s32)val.f;
+            fracPart = (s32)((val.f - (f32)intPart) * (f32)int_sci_notation(10, fracPrec));
             sPadNumPrint = FALSE;
             str = format_number_decimal(str, intPart, int_sci_notation(10, intPrec));
             *str++ = '.';
@@ -735,14 +725,14 @@ char *sprint_val_withspecifiers(char *str, union PrintVal val, char *specifiers)
 }
 
 /* 23C468 -> 23C4AC; orig name: func_8018DC98 */
-void gd_strcpy(char *dst, const char *src) {
+void gd_strcpy(char* dst, const char* src) {
     while ((*dst++ = *src++)) {
         ;
     }
 }
 
 /* 23C4AC -> 23C52C; not called; orig name: Unknown8018DCDC */
-void ascii_to_uppercase(char *str) {
+void ascii_to_uppercase(char* str) {
     char c;
 
     while ((c = *str)) {
@@ -754,8 +744,8 @@ void ascii_to_uppercase(char *str) {
 }
 
 /* 23C52C -> 23C5A8; orig name: func_8018DD5C */
-char *gd_strdup(const char *src) {
-    char *dst; // sp24
+char* gd_strdup(const char* src) {
+    char* dst; // sp24
 
     dst = gd_malloc_perm((gd_strlen(src) + 1) * sizeof(char));
 
@@ -768,7 +758,7 @@ char *gd_strdup(const char *src) {
 }
 
 /* 23C5A8 -> 23C5FC; orig name: func_8018DDD8 */
-u32 gd_strlen(const char *str) {
+u32 gd_strlen(const char* str) {
     u32 len = 0;
 
     while (*str++) {
@@ -779,7 +769,7 @@ u32 gd_strlen(const char *str) {
 }
 
 /* 23C5FC -> 23C680; orig name: func_8018DE2C */
-char *gd_strcat(char *dst, const char *src) {
+char* gd_strcat(char* dst, const char* src) {
     while (*dst++) {
         ;
     }
@@ -796,7 +786,7 @@ char *gd_strcat(char *dst, const char *src) {
 
 /* 23C67C -> 23C728; orig name: func_8018DEB0 */
 /* Returns a bool, not the position of the mismatch */
-s32 gd_str_not_equal(const char *str1, const char *str2) {
+s32 gd_str_not_equal(const char* str1, const char* str2) {
     while (*str1 && *str2) {
         if (*str1++ != *str2++) {
             return TRUE;
@@ -807,8 +797,8 @@ s32 gd_str_not_equal(const char *str1, const char *str2) {
 }
 
 /* 23C728 -> 23C7B8; orig name; func_8018DF58 */
-s32 gd_str_contains(const char *str1, const char *str2) {
-    const char *startsub = str2;
+s32 gd_str_contains(const char* str1, const char* str2) {
+    const char* startsub = str2;
 
     while (*str1 && *str2) {
         if (*str1++ != *str2++) {
@@ -820,30 +810,30 @@ s32 gd_str_contains(const char *str1, const char *str2) {
 }
 
 /* 23C7B8 -> 23C7DC; orig name: func_8018DFE8 */
-s32 gd_feof(struct GdFile *f) {
+s32 gd_feof(struct GdFile* f) {
     return f->flags & 0x4;
 }
 
 /* 23C7DC -> 23C7FC; orig name: func_8018E00C */
-void gd_set_feof(struct GdFile *f) {
+void gd_set_feof(struct GdFile* f) {
     f->flags |= 0x4;
 }
 
 /* 23C7FC -> 23CA0C */
-struct GdFile *gd_fopen(const char *filename, const char *mode) {
-    struct GdFile *f; // sp74
-    char *loadedname; // sp70
+struct GdFile* gd_fopen(const char* filename, const char* mode) {
+    struct GdFile* f; // sp74
+    char* loadedname; // sp70
     u32 i;            // sp6C
     UNUSED u8 filler[4];
     struct UnkBufThing buf; // sp24
-    u8 *bufbytes;           // sp20
-    u8 *fileposptr;         // sp1C
+    u8* bufbytes;           // sp20
+    u8* fileposptr;         // sp1C
     s32 filecsr;            // sp18
 
     filecsr = 0;
 
     while (TRUE) {
-        bufbytes = (u8 *) &buf;
+        bufbytes = (u8*)&buf;
         for (i = 0; i < sizeof(struct UnkBufThing); i++) {
             *bufbytes++ = gGdStreamBuffer[filecsr++];
         }
@@ -872,7 +862,7 @@ struct GdFile *gd_fopen(const char *filename, const char *mode) {
         return NULL;
     }
 
-    f->stream = (s8 *) fileposptr;
+    f->stream = (s8*)fileposptr;
     f->size = buf.size;
     f->pos = f->flags = 0;
     if (gd_str_contains(mode, "w")) {
@@ -886,7 +876,7 @@ struct GdFile *gd_fopen(const char *filename, const char *mode) {
 }
 
 /* 23CA0C -> 23CB38; orig name: func_8018E23C */
-s32 gd_fread(s8 *buf, s32 bytes, UNUSED s32 count, struct GdFile *f) {
+s32 gd_fread(s8* buf, s32 bytes, UNUSED s32 count, struct GdFile* f) {
     s32 bytesToRead = bytes;
     s32 bytesread;
 
@@ -908,12 +898,12 @@ s32 gd_fread(s8 *buf, s32 bytes, UNUSED s32 count, struct GdFile *f) {
 }
 
 /* 23CB38 -> 23CB54; orig name: func_8018E368 */
-void gd_fclose(UNUSED struct GdFile *f) {
+void gd_fclose(UNUSED struct GdFile* f) {
     return;
 }
 
 /* 23CB54 -> 23CB70; orig name: func_8018E384 */
-u32 gd_get_file_size(struct GdFile *f) {
+u32 gd_get_file_size(struct GdFile* f) {
     return f->size;
 }
 
@@ -923,7 +913,7 @@ s32 is_newline(char c) {
 }
 
 /* 23CBA8 -> 23CCF0; orig name: func_8018E3D8 */
-s32 gd_fread_line(char *buf, u32 size, struct GdFile *f) {
+s32 gd_fread_line(char* buf, u32 size, struct GdFile* f) {
     signed char c;
     u32 pos = 0;
     UNUSED u8 filler[4];

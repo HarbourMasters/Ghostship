@@ -97,9 +97,9 @@ static void enemy_lakitu_sub_act_no_spiny(void) {
 
     if (o->oEnemyLakituSpinyCooldown != 0) {
         o->oEnemyLakituSpinyCooldown--;
-    } else if (o->oEnemyLakituNumSpinies < 3 && o->oDistanceToMario < 800.0f
-               && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x4000) {
-        struct Object *spiny = spawn_object(o, MODEL_SPINY_BALL, bhvSpiny);
+    } else if (o->oEnemyLakituNumSpinies < 3 && o->oDistanceToMario < 800.0f &&
+               abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x4000) {
+        struct Object* spiny = spawn_object(o, MODEL_SPINY_BALL, bhvSpiny);
         if (spiny != NULL) {
             o->prevObj = spiny;
             spiny->oAction = SPINY_ACT_HELD_BY_LAKITU;
@@ -123,9 +123,8 @@ static void enemy_lakitu_sub_act_hold_spiny(void) {
         o->oEnemyLakituSpinyCooldown--;
     }
     // TODO: Check if anything interesting happens if we bypass this with speed
-    else if (o->oDistanceToMario > o->oDrawingDistance - 100.0f
-             || (o->oDistanceToMario < 500.0f
-                 && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000)) {
+    else if (o->oDistanceToMario > o->oDrawingDistance - 100.0f ||
+             (o->oDistanceToMario < 500.0f && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000)) {
         o->oSubAction = ENEMY_LAKITU_SUB_ACT_THROW_SPINY;
         o->oEnemyLakituFaceForwardCountdown = 20;
     }

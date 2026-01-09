@@ -48,15 +48,14 @@ void bhv_flamethrower_flame_loop(void) {
 }
 
 void bhv_flamethrower_loop(void) {
-    struct Object *flame;
+    struct Object* flame;
     f32 flameVel;
     s32 sp34;
     s32 model;
     UNUSED u8 filler[8];
 
     if (o->oAction == 0) {
-        if ((gCurrLevelNum != LEVEL_BBH || gMarioOnMerryGoRound == TRUE)
-            && o->oDistanceToMario < 2000.0f) {
+        if ((gCurrLevelNum != LEVEL_BBH || gMarioOnMerryGoRound == TRUE) && o->oDistanceToMario < 2000.0f) {
             o->oAction++;
         }
     } else if (o->oAction == 1) {

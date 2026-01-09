@@ -1,13 +1,7 @@
 // elevator.inc.c
 
 static s16 sElevatorHeights[] = {
-      -51,    0, 0,
-     -461,    0, 0,
-     -512,    0, 0,
-    -2611,    0, 0,
-    -2360,    0, 0,
-      214,    0, 0,
-      -50, 1945, 1,
+    -51, 0, 0, -461, 0, 0, -512, 0, 0, -2611, 0, 0, -2360, 0, 0, 214, 0, 0, -50, 1945, 1,
 };
 
 void elevator_starting_shake(void) {
@@ -116,11 +110,7 @@ void bhv_elevator_init(void) {
 }
 
 void (*sElevatorActions[])(void) = {
-    elevator_act_0,
-    elevator_act_1,
-    elevator_act_2,
-    elevator_act_3,
-    elevator_act_4,
+    elevator_act_0, elevator_act_1, elevator_act_2, elevator_act_3, elevator_act_4,
 };
 
 void bhv_elevator_loop(void) {

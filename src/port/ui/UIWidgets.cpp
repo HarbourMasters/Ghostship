@@ -15,7 +15,7 @@ namespace UIWidgets {
 // Automatically adds newlines to break up text longer than a specified number of characters
 // Manually included newlines will still be respected and reset the line length
 // If line is midword when it hits the limit, text should break at the last encountered space
-std::string WrappedText(const char *text, unsigned int charactersPerLine) {
+std::string WrappedText(const char* text, unsigned int charactersPerLine) {
     std::string newText(text);
     const size_t tipLength = newText.length();
     int lastSpace = -1;
@@ -79,7 +79,7 @@ void PopStyleMenu() {
     ImGui::PopStyleColor(4);
 }
 
-bool BeginMenu(const char *label, Colors color) {
+bool BeginMenu(const char* label, Colors color) {
     bool dirty = false;
     PushStyleMenu(color);
     ImGui::SetNextWindowSizeConstraints(ImVec2(200.0f, 0.0f), ImVec2(FLT_MAX, FLT_MAX));
@@ -104,7 +104,7 @@ void PopStyleMenuItem() {
     ImGui::PopStyleColor(1);
 }
 
-bool MenuItem(const char *label, const char *shortcut, Colors color) {
+bool MenuItem(const char* label, const char* shortcut, Colors color) {
     bool dirty = false;
     PushStyleMenuItem(color);
     if (ImGui::MenuItem(label, shortcut)) {
@@ -169,7 +169,7 @@ void PopStyleHeader() {
     ImGui::PopStyleColor(3);
 }
 
-bool Button(const char *label, const ButtonOptions &options) {
+bool Button(const char* label, const ButtonOptions &options) {
     ImGui::BeginDisabled(options.disabled);
     PushStyleButton(options.color, options.padding);
     bool dirty = ImGui::Button(label, options.size);
@@ -185,7 +185,7 @@ bool Button(const char *label, const ButtonOptions &options) {
     return dirty;
 }
 
-bool WindowButton(const char *label, const char *cvarName, std::shared_ptr<Ship::GuiWindow> windowPtr,
+bool WindowButton(const char* label, const char* cvarName, std::shared_ptr<Ship::GuiWindow> windowPtr,
                   const WindowButtonOptions &options) {
     ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0, 0));
     std::string buttonText = label;

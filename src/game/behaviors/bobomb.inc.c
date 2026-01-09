@@ -29,9 +29,9 @@ void bobomb_spawn_coin(void) {
 
 void bobomb_act_explode(void) {
     if (o->oTimer < 5) {
-        cur_obj_scale(1.0 + (f32) o->oTimer / 5.0);
+        cur_obj_scale(1.0 + (f32)o->oTimer / 5.0);
     } else {
-        struct Object *explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
+        struct Object* explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
         explosion->oGraphYOffset += 100.0f;
 
         bobomb_spawn_coin();
@@ -72,8 +72,8 @@ void bobomb_act_patrol(void) {
     o->oForwardVel = 5.0f;
     collisionFlags = object_step();
 
-    if ((obj_return_home_if_safe(o, o->oHomeX, o->oHomeY, o->oHomeZ, 400) == TRUE)
-        && (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x2000) == TRUE)) {
+    if ((obj_return_home_if_safe(o, o->oHomeX, o->oHomeY, o->oHomeZ, 400) == TRUE) &&
+        (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x2000) == TRUE)) {
         o->oBobombFuseLit = 1;
         o->oAction = BOBOMB_ACT_CHASE_MARIO;
     }
@@ -83,7 +83,7 @@ void bobomb_act_patrol(void) {
 
 void bobomb_act_chase_mario(void) {
     UNUSED u8 filler[4];
-    s16 animFrame = ++o->header.gfx.animInfo.animFrame; 
+    s16 animFrame = ++o->header.gfx.animInfo.animFrame;
     s16 collisionFlags;
 
     o->oForwardVel = 20.0f;
@@ -215,7 +215,7 @@ void bobomb_thrown_loop(void) {
     o->oAction = BOBOMB_ACT_LAUNCHED;
 }
 
-void curr_obj_random_blink(s32 *blinkTimer) {
+void curr_obj_random_blink(s32* blinkTimer) {
     if (*blinkTimer == 0) {
         if ((s16)(random_float() * 100.0f) == 0) {
             o->oAnimState = 1;
@@ -329,7 +329,7 @@ void bobomb_buddy_act_idle(void) {
  * then tells Mario that is "Ready for blastoff".
  */
 void bobomb_buddy_cannon_dialog(s16 dialogFirstText, s16 dialogSecondText) {
-    struct Object *cannonClosed;
+    struct Object* cannonClosed;
     s16 buddyText, cutscene;
 
     switch (o->oBobombBuddyCannonStatus) {
@@ -379,8 +379,8 @@ void bobomb_buddy_act_talk(void) {
 
         switch (o->oBobombBuddyRole) {
             case BOBOMB_BUDDY_ROLE_ADVICE:
-                if (cutscene_object_with_dialog(CUTSCENE_DIALOG, o, o->oBehParams2ndByte)
-                    != BOBOMB_BUDDY_BP_STYPE_GENERIC) {
+                if (cutscene_object_with_dialog(CUTSCENE_DIALOG, o, o->oBehParams2ndByte) !=
+                    BOBOMB_BUDDY_BP_STYPE_GENERIC) {
                     set_mario_npc_dialog(MARIO_DIALOG_STOP);
 
                     o->activeFlags &= ~ACTIVE_FLAG_INITIATED_TIME_STOP;
@@ -410,7 +410,7 @@ void bobomb_buddy_act_turn_to_talk(void) {
 
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x1000);
 
-    if ((s16) o->oMoveAngleYaw == (s16) o->oAngleToMario) {
+    if ((s16)o->oMoveAngleYaw == (s16)o->oAngleToMario) {
         o->oAction = BOBOMB_BUDDY_ACT_TALK;
     }
 

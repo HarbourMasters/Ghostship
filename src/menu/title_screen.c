@@ -28,7 +28,7 @@
 #define DEFINE_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11) textname,
 
 static char sLevelSelectStageNames[64][16] = {
-    #include "levels/level_defines.h"
+#include "levels/level_defines.h"
 };
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
@@ -37,7 +37,7 @@ static char sLevelSelectStageNames[64][16] = {
 #define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, textname) textname,
 
 static char sBetterLevelSelectStageNames[38][31] = {
-    #include "levels/level_defines.h"
+#include "levels/level_defines.h"
 };
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
@@ -49,9 +49,7 @@ static s16 sPlayMarioGameOver = TRUE;
 #define PRESS_START_DEMO_TIMER 800
 
 static const char* gDemoInputs[8] = {
-    gDemoBitdw, gDemoWf,    gDemoCcm,
-    gDemoBbh,   gDemoJrb,   gDemoHmc,
-    gDemoPss,   gDemoUnused
+    gDemoBitdw, gDemoWf, gDemoCcm, gDemoBbh, gDemoJrb, gDemoHmc, gDemoPss, gDemoUnused
 };
 
 /**
@@ -71,7 +69,7 @@ s32 run_level_id_or_demo(s32 level) {
                 // start the Mario demo animation for the demo list.
                 void* data = ResourceGetDataByName(gDemoInputs[gDemoInputListID]);
 
-                if(data == NULL) {
+                if (data == NULL) {
                     return 0;
                 }
 
@@ -85,8 +83,8 @@ s32 run_level_id_or_demo(s32 level) {
                 // add 1 (+4) to the pointer to skip the first 4 bytes
                 // Use the first 4 bytes to store level ID,
                 // then use the rest of the values for inputs
-                gCurrDemoInput = ((struct DemoInput *) data) + 1;
-                level = (s8)((struct DemoInput *) data)->timer;
+                gCurrDemoInput = ((struct DemoInput*)data) + 1;
+                level = (s8)((struct DemoInput*)data)->timer;
                 gCurrSaveFileNum = 1;
                 gCurrActNum = 1;
             }

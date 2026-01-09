@@ -50,11 +50,7 @@ void grindel_thwomp_act_0(void) {
 }
 
 void (*sGrindelThwompActions[])(void) = {
-    grindel_thwomp_act_0,
-    grindel_thwomp_act_1,
-    grindel_thwomp_act_2,
-    grindel_thwomp_act_3,
-    grindel_thwomp_act_4,
+    grindel_thwomp_act_0, grindel_thwomp_act_1, grindel_thwomp_act_2, grindel_thwomp_act_3, grindel_thwomp_act_4,
 };
 
 void bhv_grindel_thwomp_loop(void) {

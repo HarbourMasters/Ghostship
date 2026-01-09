@@ -5,7 +5,7 @@ void bhv_seaweed_init(void) {
 }
 
 void bhv_seaweed_bundle_init(void) {
-    struct Object *seaweed;
+    struct Object* seaweed;
 
     seaweed = spawn_object(o, MODEL_SEAWEED, bhvSeaweed);
     seaweed->oFaceAngleYaw = 14523;

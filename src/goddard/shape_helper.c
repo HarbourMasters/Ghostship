@@ -17,38 +17,43 @@
 #include "skin.h"
 
 // data
-struct ObjGroup *gMarioFaceGrp = NULL;     // @ 801A82E0; returned by load_dynlist
-struct ObjShape *gSpotShape = NULL;        // Shape used for drawing lights?
-static struct ObjShape *sGrabJointTestShape = NULL; // Test shape for showing grab joints. This isn't rendered due to make_grabber_joint setting the drawFlags to OBJ_INVISIBLE.
-struct ObjShape *gShapeRedSpark = NULL;    // @ 801A82EC
-struct ObjShape *gShapeSilverSpark = NULL;    // @ 801A82F0
-struct ObjShape *gShapeRedStar = NULL;     // @ 801A82F4
-struct ObjShape *gShapeSilverStar = NULL;  // @ 801A82F8
+struct ObjGroup* gMarioFaceGrp = NULL;              // @ 801A82E0; returned by load_dynlist
+struct ObjShape* gSpotShape = NULL;                 // Shape used for drawing lights?
+static struct ObjShape* sGrabJointTestShape = NULL; // Test shape for showing grab joints. This isn't rendered due to
+                                                    // make_grabber_joint setting the drawFlags to OBJ_INVISIBLE.
+struct ObjShape* gShapeRedSpark = NULL;             // @ 801A82EC
+struct ObjShape* gShapeSilverSpark = NULL;          // @ 801A82F0
+struct ObjShape* gShapeRedStar = NULL;              // @ 801A82F4
+struct ObjShape* gShapeSilverStar = NULL;           // @ 801A82F8
 
 // Not sure what this data is, but it looks like stub animation data
 
 static struct GdAnimTransform unusedAnimData1[] = {
-    { {1.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0} },
+    { { 1.0, 1.0, 1.0 }, { 0.0, 0.0, 0.0 }, { 0.0, 0.0, 0.0 } },
 };
 
-UNUSED static struct AnimDataInfo unusedAnim1 = { ARRAY_COUNT(unusedAnimData1), GD_ANIM_SCALE3F_ROT3F_POS3F_2, unusedAnimData1 };
+UNUSED static struct AnimDataInfo unusedAnim1 = { ARRAY_COUNT(unusedAnimData1), GD_ANIM_SCALE3F_ROT3F_POS3F_2,
+                                                  unusedAnimData1 };
 
 static struct GdAnimTransform unusedAnimData2[] = {
-    { {1.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0} },
+    { { 1.0, 1.0, 1.0 }, { 0.0, 0.0, 0.0 }, { 0.0, 0.0, 0.0 } },
 };
 
-UNUSED static struct AnimDataInfo unusedAnim2 = { ARRAY_COUNT(unusedAnimData2), GD_ANIM_SCALE3F_ROT3F_POS3F_2, unusedAnimData2 };
+UNUSED static struct AnimDataInfo unusedAnim2 = { ARRAY_COUNT(unusedAnimData2), GD_ANIM_SCALE3F_ROT3F_POS3F_2,
+                                                  unusedAnimData2 };
 
 static struct GdAnimTransform unusedAnimData3[] = {
-    { {1.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0} },
+    { { 1.0, 1.0, 1.0 }, { 0.0, 0.0, 0.0 }, { 0.0, 0.0, 0.0 } },
 };
 
-UNUSED static struct AnimDataInfo unusedAnim3 = { ARRAY_COUNT(unusedAnimData3), GD_ANIM_SCALE3F_ROT3F_POS3F_2, unusedAnimData3 };
+UNUSED static struct AnimDataInfo unusedAnim3 = { ARRAY_COUNT(unusedAnimData3), GD_ANIM_SCALE3F_ROT3F_POS3F_2,
+                                                  unusedAnimData3 };
 
 UNUSED static s32 sUnref801A838C[6] = { 0 };
-struct ObjShape *sSimpleShape = NULL;
+struct ObjShape* sSimpleShape = NULL;
 UNUSED static s32 sUnref801A83A8[31] = { 0 };
-UNUSED static struct DynList sSimpleDylist[8] = {  // unused
+UNUSED static struct DynList sSimpleDylist[8] = {
+    // unused
     BeginList(),
     StartGroup("simpleg"),
     MakeDynObj(D_NET, "simple"),
@@ -64,8 +69,7 @@ static struct DynList sDynlist801A84E4[3] = {
     EndList(),
 };
 UNUSED static struct DynList sDynlist801A85B3[5] = {
-    BeginList(), CallList(sDynlist801A84E4), SetFlag(0x400), SetFriction(0.04, 0.01, 0.01),
-    EndList(),
+    BeginList(), CallList(sDynlist801A84E4), SetFlag(0x400), SetFriction(0.04, 0.01, 0.01), EndList(),
 };
 UNUSED static struct DynList sDynlist801A85A4[4] = {
     BeginList(),
@@ -83,37 +87,37 @@ static f64 D_801A8668 = 0.0;
 
 // bss
 UNUSED static u8 sUnrefSpaceB00[0x2C];    // @ 801BAB00
-static struct ObjGroup *sCubeShapeGroup;  // @ 801BAB2C
+static struct ObjGroup* sCubeShapeGroup;  // @ 801BAB2C
 UNUSED static u8 sUnrefSpaceB30[0xC];     // @ 801BAB30
-static struct ObjShape *sCubeShape;       // @ 801BAB3C
+static struct ObjShape* sCubeShape;       // @ 801BAB3C
 UNUSED static u8 sUnrefSpaceB40[0x8];     // @ 801BAB40
 static char sGdLineBuf[0x100];            // @ 801BAB48
 static s32 sGdLineBufCsr;                 // @ 801BAC48
-static struct GdFile *sGdShapeFile;       // @ 801BAC4C
-static struct ObjShape *sGdShapeListHead; // @ 801BAC50
+static struct GdFile* sGdShapeFile;       // @ 801BAC4C
+static struct ObjShape* sGdShapeListHead; // @ 801BAC50
 static u32 sGdShapeCount;                 // @ 801BAC54
 UNUSED static u8 sUnrefSpaceC58[0x8];     // @ 801BAC58
 static struct GdVec3f D_801BAC60;
-UNUSED static u32 sUnrefSpaceC6C;         // @ 801BAC6C
-UNUSED static u32 sUnrefSpaceC70;         // @ 801BAC70
-static struct ObjPlane *D_801BAC74;
-static struct ObjPlane *D_801BAC78; // sShapeNetHead?
-UNUSED static u8 sUnrefSpaceC80[0x1C];    // @ 801BAC80
-static struct ObjFace *D_801BAC9C;
-static struct ObjFace *D_801BACA0;
-UNUSED static u8 sUnrefSpaceCA8[0x10];    // @ 801BACA8
+UNUSED static u32 sUnrefSpaceC6C; // @ 801BAC6C
+UNUSED static u32 sUnrefSpaceC70; // @ 801BAC70
+static struct ObjPlane* D_801BAC74;
+static struct ObjPlane* D_801BAC78;    // sShapeNetHead?
+UNUSED static u8 sUnrefSpaceC80[0x1C]; // @ 801BAC80
+static struct ObjFace* D_801BAC9C;
+static struct ObjFace* D_801BACA0;
+UNUSED static u8 sUnrefSpaceCA8[0x10]; // @ 801BACA8
 /// factor for scaling vertices in an `ObjShape` when calling `scale_verts_in_shape()`
 static struct GdVec3f sVertexScaleFactor;
 /// factor for translating vertices in an `ObjShape` when calling `translate_verts_in_shape()`
 static struct GdVec3f sVertexTranslateOffset;
-UNUSED static u8 sUnrefSpaceCD8[0x30];    // @ 801BACD8
-static struct ObjGroup *D_801BAD08; // group of planes from make_netfromshape
-UNUSED static u8 sUnrefSpaceD10[0x20];    // @ 801BAD10
-static struct GdVec3f sShapeCenter;   // printed with "c="
-UNUSED static u8 sUnrefSpaceD40[0x120];   // @ 801BAD40
+UNUSED static u8 sUnrefSpaceCD8[0x30];  // @ 801BACD8
+static struct ObjGroup* D_801BAD08;     // group of planes from make_netfromshape
+UNUSED static u8 sUnrefSpaceD10[0x20];  // @ 801BAD10
+static struct GdVec3f sShapeCenter;     // printed with "c="
+UNUSED static u8 sUnrefSpaceD40[0x120]; // @ 801BAD40
 
 // Forward Declarations
-struct ObjMaterial *find_or_add_new_mtl(struct ObjGroup *, s32, f32, f32, f32);
+struct ObjMaterial* find_or_add_new_mtl(struct ObjGroup*, s32, f32, f32, f32);
 
 /* @ 245A50 for 0x40 */
 /* Something to do with shape list/group initialization? */
@@ -126,21 +130,21 @@ void func_80197280(void) {
 /**
  * Computes the normal vector for a face based on three of its vertices.
  */
-void calc_face_normal(struct ObjFace *face) {
+void calc_face_normal(struct ObjFace* face) {
     UNUSED u8 filler1[4];
     struct GdVec3f p1;
     struct GdVec3f p2;
     struct GdVec3f p3;
     struct GdVec3f normal;
-    struct ObjVertex *vtx1;
-    struct ObjVertex *vtx2;
-    struct ObjVertex *vtx3;
+    struct ObjVertex* vtx1;
+    struct ObjVertex* vtx2;
+    struct ObjVertex* vtx3;
     UNUSED u8 filler2[4];
     f32 mul = 1000.0f;
 
     imin("calc_facenormal");
 
-    if (face->vtxCount >= 3) {  // need at least three points to compute a normal
+    if (face->vtxCount >= 3) { // need at least three points to compute a normal
         vtx1 = face->vertices[0];
         p1.x = vtx1->pos.x;
         p1.y = vtx1->pos.y;
@@ -172,10 +176,10 @@ void calc_face_normal(struct ObjFace *face) {
 }
 
 /* @ 245CDC for 0x118 */
-struct ObjVertex *gd_make_vertex(f32 x, f32 y, f32 z) {
-    struct ObjVertex *vtx;
+struct ObjVertex* gd_make_vertex(f32 x, f32 y, f32 z) {
+    struct ObjVertex* vtx;
 
-    vtx = (struct ObjVertex *) make_object(OBJ_TYPE_VERTICES);
+    vtx = (struct ObjVertex*)make_object(OBJ_TYPE_VERTICES);
     vtx->id = 0xD1D4;
 
     vtx->pos.x = x;
@@ -198,11 +202,11 @@ struct ObjVertex *gd_make_vertex(f32 x, f32 y, f32 z) {
 }
 
 /* @ 245DF4 for 0xAC */
-struct ObjFace *make_face_with_colour(f32 r, f32 g, f32 b) {
-    struct ObjFace *newFace;
+struct ObjFace* make_face_with_colour(f32 r, f32 g, f32 b) {
+    struct ObjFace* newFace;
 
     imin("make_face");
-    newFace = (struct ObjFace *) make_object(OBJ_TYPE_FACES);
+    newFace = (struct ObjFace*)make_object(OBJ_TYPE_FACES);
 
     newFace->colour.r = r;
     newFace->colour.g = g;
@@ -217,10 +221,10 @@ struct ObjFace *make_face_with_colour(f32 r, f32 g, f32 b) {
 }
 
 /* @ 245EA0 for 0x6C */
-struct ObjFace *make_face_with_material(struct ObjMaterial *mtl) {
-    struct ObjFace *newFace;
+struct ObjFace* make_face_with_material(struct ObjMaterial* mtl) {
+    struct ObjFace* newFace;
 
-    newFace = (struct ObjFace *) make_object(OBJ_TYPE_FACES);
+    newFace = (struct ObjFace*)make_object(OBJ_TYPE_FACES);
 
     newFace->vtxCount = 0;
     newFace->mtlId = mtl->id;
@@ -230,8 +234,8 @@ struct ObjFace *make_face_with_material(struct ObjMaterial *mtl) {
 }
 
 /* @ 245F0C for 0x88 */
-void add_4_vertices_to_face(struct ObjFace *face, struct ObjVertex *vtx1, struct ObjVertex *vtx2,
-                     struct ObjVertex *vtx3, struct ObjVertex *vtx4) {
+void add_4_vertices_to_face(struct ObjFace* face, struct ObjVertex* vtx1, struct ObjVertex* vtx2,
+                            struct ObjVertex* vtx3, struct ObjVertex* vtx4) {
     face->vertices[0] = vtx1;
     face->vertices[1] = vtx2;
     face->vertices[2] = vtx3;
@@ -241,8 +245,7 @@ void add_4_vertices_to_face(struct ObjFace *face, struct ObjVertex *vtx1, struct
 }
 
 /* @ 245F94 for 0x78; orig name: func_801977C4 */
-void add_3_vtx_to_face(struct ObjFace *face, struct ObjVertex *vtx1, struct ObjVertex *vtx2,
-                       struct ObjVertex *vtx3) {
+void add_3_vtx_to_face(struct ObjFace* face, struct ObjVertex* vtx1, struct ObjVertex* vtx2, struct ObjVertex* vtx3) {
     face->vertices[0] = vtx1;
     face->vertices[1] = vtx2;
     face->vertices[2] = vtx3;
@@ -253,12 +256,12 @@ void add_3_vtx_to_face(struct ObjFace *face, struct ObjVertex *vtx1, struct ObjV
 /**
  * Creates an `ObjShape` object
  */
-struct ObjShape *make_shape(s32 flag, const char *name) {
-    struct ObjShape *newShape;
-    struct ObjShape *curShapeHead;
+struct ObjShape* make_shape(s32 flag, const char* name) {
+    struct ObjShape* newShape;
+    struct ObjShape* curShapeHead;
     UNUSED u8 filler[4];
 
-    newShape = (struct ObjShape *) make_object(OBJ_TYPE_SHAPES);
+    newShape = (struct ObjShape*)make_object(OBJ_TYPE_SHAPES);
 
     if (name != NULL) {
         gd_strcpy(newShape->name, name);
@@ -370,7 +373,7 @@ s32 scan_to_next_non_whitespace(void) {
 }
 
 /* @ 246440 for 0xE0; orig name: func_80197C70 */
-s32 is_next_buf_word(char *a0) {
+s32 is_next_buf_word(char* a0) {
     char curChar;
     char wordBuf[0xfc];
     u32 bufLength;
@@ -391,7 +394,7 @@ s32 is_next_buf_word(char *a0) {
 }
 
 /* @ 246520 for 0x198; orig name: func_80197D50 */
-s32 getfloat(f32 *floatPtr) {
+s32 getfloat(f32* floatPtr) {
     char charBuf[0x100];
     u32 bufCsr;
     char curChar;
@@ -422,14 +425,14 @@ s32 getfloat(f32 *floatPtr) {
     charBuf[bufCsr] = '\0';
 
     parsedDouble = gd_lazy_atof(charBuf, &sp34);
-    *floatPtr = (f32) parsedDouble;
+    *floatPtr = (f32)parsedDouble;
 
     imout();
     return !!bufCsr;
 }
 
 /* @ 2466B8 for 0x180; orig name: func_80197EE8 */
-s32 getint(s32 *intPtr) {
+s32 getint(s32* intPtr) {
     char charBuf[0x100];
     u32 bufCsr;
     char curChar;
@@ -467,14 +470,14 @@ void Unknown80198068(UNUSED f32 a0) {
 }
 
 /* @ 24684C for 0x6C */
-void func_8019807C(struct ObjVertex *vtx) {
+void func_8019807C(struct ObjVertex* vtx) {
     gd_rot_2d_vec(D_801BAC60.x, &vtx->pos.y, &vtx->pos.z);
     gd_rot_2d_vec(D_801BAC60.y, &vtx->pos.x, &vtx->pos.z);
     gd_rot_2d_vec(D_801BAC60.z, &vtx->pos.x, &vtx->pos.y);
 }
 
 /* @ 2468B8 for 0x6C */
-void func_801980E8(f32 *a0) {
+void func_801980E8(f32* a0) {
     gd_rot_2d_vec(D_801BAC60.x, &a0[1], &a0[2]);
     gd_rot_2d_vec(D_801BAC60.y, &a0[0], &a0[2]);
     gd_rot_2d_vec(D_801BAC60.z, &a0[0], &a0[1]);
@@ -488,17 +491,17 @@ void Unknown80198154(f32 x, f32 y, f32 z) {
 }
 
 /* @ 246954 for 0x6c */
-void Unknown80198184(struct ObjShape *shape, f32 x, f32 y, f32 z) {
+void Unknown80198184(struct ObjShape* shape, f32 x, f32 y, f32 z) {
     UNUSED struct GdVec3f unusedVec;
     unusedVec.x = x;
     unusedVec.y = y;
     unusedVec.z = z;
 
-    apply_to_obj_types_in_group(OBJ_TYPE_VERTICES, (applyproc_t) func_8019807C, shape->vtxGroup);
+    apply_to_obj_types_in_group(OBJ_TYPE_VERTICES, (applyproc_t)func_8019807C, shape->vtxGroup);
 }
 
 /* @ 2469C0 for 0xc8 */
-void scale_obj_position(struct GdObj *obj) {
+void scale_obj_position(struct GdObj* obj) {
     struct GdVec3f pos;
 
     if (obj->type == OBJ_TYPE_GROUPS) {
@@ -517,7 +520,7 @@ void scale_obj_position(struct GdObj *obj) {
 }
 
 /* @ 246A88 for 0x94 */
-void translate_obj_position(struct GdObj *obj) {
+void translate_obj_position(struct GdObj* obj) {
     struct GdVec3f pos;
 
     set_cur_dynobj(obj);
@@ -531,28 +534,28 @@ void translate_obj_position(struct GdObj *obj) {
 }
 
 /* @ 246B1C for 0x88 */
-void scale_verts_in_shape(struct ObjShape *shape, f32 x, f32 y, f32 z) {
+void scale_verts_in_shape(struct ObjShape* shape, f32 x, f32 y, f32 z) {
     sVertexScaleFactor.x = x;
     sVertexScaleFactor.y = y;
     sVertexScaleFactor.z = z;
 
     if (shape->vtxGroup != NULL) {
-        apply_to_obj_types_in_group(OBJ_TYPE_ALL, (applyproc_t) scale_obj_position, shape->vtxGroup);
+        apply_to_obj_types_in_group(OBJ_TYPE_ALL, (applyproc_t)scale_obj_position, shape->vtxGroup);
     }
 }
 
 /* @ 246BA4 for 0x70; not called */
 // Guessing on the type of a0
-void translate_verts_in_shape(struct ObjShape *shape, f32 x, f32 y, f32 z) {
+void translate_verts_in_shape(struct ObjShape* shape, f32 x, f32 y, f32 z) {
     sVertexTranslateOffset.x = x;
     sVertexTranslateOffset.y = y;
     sVertexTranslateOffset.z = z;
 
-    apply_to_obj_types_in_group(OBJ_TYPE_ALL, (applyproc_t) translate_obj_position, shape->vtxGroup);
+    apply_to_obj_types_in_group(OBJ_TYPE_ALL, (applyproc_t)translate_obj_position, shape->vtxGroup);
 }
 
 /* @ 246C14 for 0xe0 */
-void Unknown80198444(struct ObjVertex *vtx) {
+void Unknown80198444(struct ObjVertex* vtx) {
     f64 distance;
 
     add_obj_pos_to_bounding_box(&vtx->header);
@@ -569,7 +572,7 @@ void Unknown80198444(struct ObjVertex *vtx) {
 }
 
 /* @ 246CF4 for 0xc4 */
-void Unknown80198524(struct ObjVertex *vtx) {
+void Unknown80198524(struct ObjVertex* vtx) {
     vtx->pos.x -= sShapeCenter.x;
     vtx->pos.y -= sShapeCenter.y;
     vtx->pos.z -= sShapeCenter.z;
@@ -580,12 +583,12 @@ void Unknown80198524(struct ObjVertex *vtx) {
 }
 
 /* @ 246DB8 for 0x11c */
-void Unknown801985E8(struct ObjShape *shape) {
+void Unknown801985E8(struct ObjShape* shape) {
     struct GdBoundingBox bbox;
 
     D_801A8668 = 0.0;
     reset_bounding_box();
-    apply_to_obj_types_in_group(OBJ_TYPE_VERTICES, (applyproc_t) Unknown80198444, shape->vtxGroup);
+    apply_to_obj_types_in_group(OBJ_TYPE_VERTICES, (applyproc_t)Unknown80198444, shape->vtxGroup);
 
     get_some_bounding_box(&bbox);
 
@@ -595,11 +598,11 @@ void Unknown801985E8(struct ObjShape *shape) {
 
     gd_print_vec("c=", &sShapeCenter);
 
-    apply_to_obj_types_in_group(OBJ_TYPE_VERTICES, (applyproc_t) Unknown80198524, shape->vtxGroup);
+    apply_to_obj_types_in_group(OBJ_TYPE_VERTICES, (applyproc_t)Unknown80198524, shape->vtxGroup);
 }
 
 /* @ 246ED4 for 0x4FC; orig name: func_80198704 */
-void get_3DG1_shape(struct ObjShape *shape) {
+void get_3DG1_shape(struct ObjShape* shape) {
     UNUSED u8 filler[8];
     struct GdVec3f tempNormal; /* maybe? */
     s32 curFaceVtx;
@@ -607,20 +610,20 @@ void get_3DG1_shape(struct ObjShape *shape) {
     s32 totalVtx;
     s32 totalFacePoints;
     struct GdVec3f tempVec;
-    struct ObjFace *newFace;
-    struct ObjVertex *vtxHead = NULL; // ptr to first made ObjVertex in the Obj* list
+    struct ObjFace* newFace;
+    struct ObjVertex* vtxHead = NULL; // ptr to first made ObjVertex in the Obj* list
     s32 vtxCount = 0;
-    struct ObjFace *faceHead = NULL; // ptr to first made OBjFace in the Obj* list
+    struct ObjFace* faceHead = NULL; // ptr to first made OBjFace in the Obj* list
     s32 faceCount = 0;
-    struct ObjFace **facePtrArr;
-    struct ObjVertex **vtxPtrArr;
-    struct ObjMaterial *mtl;
+    struct ObjFace** facePtrArr;
+    struct ObjVertex** vtxPtrArr;
+    struct ObjMaterial* mtl;
 
     shape->mtlGroup = make_group(0);
     imin("get_3DG1_shape");
 
-    vtxPtrArr = gd_malloc_perm(72000 * sizeof(struct ObjVertex *)); // 288,000 = 72,000 * 4
-    facePtrArr = gd_malloc_perm(76000 * sizeof(struct ObjFace *));  // 304,000 = 76,000 * 4
+    vtxPtrArr = gd_malloc_perm(72000 * sizeof(struct ObjVertex*)); // 288,000 = 72,000 * 4
+    facePtrArr = gd_malloc_perm(76000 * sizeof(struct ObjFace*));  // 304,000 = 76,000 * 4
 
     tempNormal.x = 0.0f;
     tempNormal.y = 0.0f;
@@ -711,22 +714,22 @@ void get_3DG1_shape(struct ObjShape *shape) {
     gd_free(vtxPtrArr);
     gd_free(facePtrArr);
 
-    shape->vtxGroup = make_group_of_type(OBJ_TYPE_VERTICES, (struct GdObj *) vtxHead, NULL);
-    shape->faceGroup = make_group_of_type(OBJ_TYPE_FACES, (struct GdObj *) faceHead, NULL);
+    shape->vtxGroup = make_group_of_type(OBJ_TYPE_VERTICES, (struct GdObj*)vtxHead, NULL);
+    shape->faceGroup = make_group_of_type(OBJ_TYPE_FACES, (struct GdObj*)faceHead, NULL);
 
     imout();
 }
 
 /* @ 2473D0 for 0x390; orig name: func_80198C00 */
-void get_OBJ_shape(struct ObjShape *shape) {
+void get_OBJ_shape(struct ObjShape* shape) {
     UNUSED u8 filler[4];
     struct GdColour faceClr;
     s32 curFaceVtx;
     s32 faceVtxIndex;
     struct GdVec3f tempVec;
-    struct ObjFace *newFace;
-    struct ObjVertex *vtxArr[4000];
-    struct ObjFace *faceArr[4000];
+    struct ObjFace* newFace;
+    struct ObjVertex* vtxArr[4000];
+    struct ObjFace* faceArr[4000];
     s32 faceCount = 0;
     s32 vtxCount = 0;
 
@@ -807,24 +810,23 @@ void get_OBJ_shape(struct ObjShape *shape) {
         clear_buf_to_cr();
     }
 
-    shape->vtxGroup = make_group_of_type(OBJ_TYPE_VERTICES, (struct GdObj *) vtxArr[0], NULL);
-    shape->faceGroup = make_group_of_type(OBJ_TYPE_FACES, (struct GdObj *) faceArr[0], NULL);
+    shape->vtxGroup = make_group_of_type(OBJ_TYPE_VERTICES, (struct GdObj*)vtxArr[0], NULL);
+    shape->faceGroup = make_group_of_type(OBJ_TYPE_FACES, (struct GdObj*)faceArr[0], NULL);
 }
 
 /* @ 247760 for 0x124; orig name: func_80198F90 */
-struct ObjGroup *group_faces_in_mtl_grp(struct ObjGroup *mtlGroup, struct GdObj *fromObj,
-                                        struct GdObj *toObj) {
-    struct ObjMaterial *curObjAsMtl;
-    struct ObjGroup *newGroup;
-    struct GdObj *curObj;
-    register struct ListNode *node;
-    struct GdObj *curLinkedObj;
+struct ObjGroup* group_faces_in_mtl_grp(struct ObjGroup* mtlGroup, struct GdObj* fromObj, struct GdObj* toObj) {
+    struct ObjMaterial* curObjAsMtl;
+    struct ObjGroup* newGroup;
+    struct GdObj* curObj;
+    register struct ListNode* node;
+    struct GdObj* curLinkedObj;
 
     newGroup = make_group(0);
 
     for (node = mtlGroup->firstMember; node != NULL; node = node->next) {
         curLinkedObj = node->obj;
-        curObjAsMtl = (struct ObjMaterial *) curLinkedObj;
+        curObjAsMtl = (struct ObjMaterial*)curLinkedObj;
 
         curObj = fromObj;
         while (curObj != NULL) {
@@ -833,7 +835,7 @@ struct ObjGroup *group_faces_in_mtl_grp(struct ObjGroup *mtlGroup, struct GdObj 
             }
 
             if (curObj->type == OBJ_TYPE_FACES) {
-                if (((struct ObjFace *) curObj)->mtl == curObjAsMtl) {
+                if (((struct ObjFace*)curObj)->mtl == curObjAsMtl) {
                     addto_group(newGroup, curObj);
                 }
             }
@@ -845,13 +847,13 @@ struct ObjGroup *group_faces_in_mtl_grp(struct ObjGroup *mtlGroup, struct GdObj 
 }
 
 /* @ 247884 for 0x13c; orig name: func_801990B4 */
-struct ObjMaterial *find_or_add_new_mtl(struct ObjGroup *group, UNUSED s32 a1, f32 r, f32 g, f32 b) {
-    struct ObjMaterial *newMtl;
-    register struct ListNode *node;
-    struct ObjMaterial *foundMtl;
+struct ObjMaterial* find_or_add_new_mtl(struct ObjGroup* group, UNUSED s32 a1, f32 r, f32 g, f32 b) {
+    struct ObjMaterial* newMtl;
+    register struct ListNode* node;
+    struct ObjMaterial* foundMtl;
 
     for (node = group->firstMember; node != NULL; node = node->next) {
-        foundMtl = (struct ObjMaterial *) node->obj;
+        foundMtl = (struct ObjMaterial*)node->obj;
 
         if (foundMtl->header.type == OBJ_TYPE_MATERIALS) {
             if (foundMtl->Kd.r == r) {
@@ -865,15 +867,15 @@ struct ObjMaterial *find_or_add_new_mtl(struct ObjGroup *group, UNUSED s32 a1, f
     }
 
     newMtl = make_material(0, NULL, 1);
-    set_cur_dynobj((struct GdObj *)newMtl);
+    set_cur_dynobj((struct GdObj*)newMtl);
     d_set_diffuse(r, g, b);
-    addto_group(group, (struct GdObj *) newMtl);
+    addto_group(group, (struct GdObj*)newMtl);
 
     return newMtl;
 }
 
 /* @ 2479C0 for 0x470; orig name: func_801991F0 */
-void read_ARK_shape(struct ObjShape *shape, char *fileName) {
+void read_ARK_shape(struct ObjShape* shape, char* fileName) {
     union {
         s8 bytes[0x48];
         struct {
@@ -909,11 +911,11 @@ void read_ARK_shape(struct ObjShape *shape, char *fileName) {
 
     UNUSED u8 filler[4];
     struct GdVec3f sp48;
-    struct ObjFace *sp44;          // newly made face with mtl sp34;
-    struct ObjFace *sp40 = NULL;   // first made face
-    struct ObjVertex *sp3C;        // newly made vtx
-    struct ObjVertex *sp38 = NULL; // first made vtx
-    struct ObjMaterial *sp34;      // found or new mtl for face
+    struct ObjFace* sp44;          // newly made face with mtl sp34;
+    struct ObjFace* sp40 = NULL;   // first made face
+    struct ObjVertex* sp3C;        // newly made vtx
+    struct ObjVertex* sp38 = NULL; // first made vtx
+    struct ObjMaterial* sp34;      // found or new mtl for face
     UNUSED s32 sp30 = 0;
     UNUSED s32 sp2C = 0;
 
@@ -998,13 +1000,13 @@ void read_ARK_shape(struct ObjShape *shape, char *fileName) {
         }
     }
 
-    shape->vtxGroup = make_group_of_type(OBJ_TYPE_VERTICES, (struct GdObj *) sp38, NULL);
-    shape->faceGroup = group_faces_in_mtl_grp(shape->mtlGroup, (struct GdObj *) sp40, NULL);
+    shape->vtxGroup = make_group_of_type(OBJ_TYPE_VERTICES, (struct GdObj*)sp38, NULL);
+    shape->faceGroup = group_faces_in_mtl_grp(shape->mtlGroup, (struct GdObj*)sp40, NULL);
     gd_fclose(sGdShapeFile);
 }
 
 /* @ 247E30 for 0x148; orig name: Unknown80199660 */
-struct GdFile *get_shape_from_file(struct ObjShape *shape, char *fileName) {
+struct GdFile* get_shape_from_file(struct ObjShape* shape, char* fileName) {
     printf("Loading %s...\n", fileName);
     start_memtracker(fileName);
     shape->unk3C = 0;
@@ -1043,9 +1045,9 @@ struct GdFile *get_shape_from_file(struct ObjShape *shape, char *fileName) {
 }
 
 /* @ 247F78 for 0x69c; orig name: Unknown801997A8 */
-struct ObjShape *make_grid_shape(enum ObjTypeFlag gridType, s32 a1, s32 a2, s32 a3, s32 a4) {
+struct ObjShape* make_grid_shape(enum ObjTypeFlag gridType, s32 a1, s32 a2, s32 a3, s32 a4) {
     UNUSED u8 filler1[4];
-    void *objBuf[32][32]; // vertex or particle depending on gridType
+    void* objBuf[32][32]; // vertex or particle depending on gridType
     f32 sp70;
     f32 sp6C;
     f32 sp68;
@@ -1055,28 +1057,28 @@ struct ObjShape *make_grid_shape(enum ObjTypeFlag gridType, s32 a1, s32 a2, s32 
     s32 row;
     s32 col;
     UNUSED s32 sp4C = 0;
-    struct ObjShape *gridShape;
+    struct ObjShape* gridShape;
     f32 sp44;
-    struct ObjFace *sp40 = NULL;  // first made shape?
-    struct ObjGroup *parOrVtxGrp; // group of made particles or vertices (based on gridType)
+    struct ObjFace* sp40 = NULL;  // first made shape?
+    struct ObjGroup* parOrVtxGrp; // group of made particles or vertices (based on gridType)
     UNUSED u8 filler3[4];
-    struct ObjGroup *mtlGroup;
-    struct GdVec3f *sp30;     // GdVec3f* ? from gd_get_colour
-    struct GdVec3f *sp2C;     //^
-    struct ObjMaterial *mtl1; // first made material
-    struct ObjMaterial *mtl2; // second made material
+    struct ObjGroup* mtlGroup;
+    struct GdVec3f* sp30;     // GdVec3f* ? from gd_get_colour
+    struct GdVec3f* sp2C;     //^
+    struct ObjMaterial* mtl1; // first made material
+    struct ObjMaterial* mtl2; // second made material
     UNUSED u8 filler4[4];
 
-    sp30 = (struct GdVec3f *) gd_get_colour(a1);
-    sp2C = (struct GdVec3f *) gd_get_colour(a2);
+    sp30 = (struct GdVec3f*)gd_get_colour(a1);
+    sp2C = (struct GdVec3f*)gd_get_colour(a2);
 
     mtl1 = make_material(0, NULL, 1);
-    set_cur_dynobj((struct GdObj *) mtl1);
+    set_cur_dynobj((struct GdObj*)mtl1);
     d_set_diffuse(sp30->x, sp30->y, sp30->z);
     mtl1->type = 0x40;
 
     mtl2 = make_material(0, NULL, 2);
-    set_cur_dynobj((struct GdObj *) mtl2);
+    set_cur_dynobj((struct GdObj*)mtl2);
     d_set_diffuse(sp2C->x, sp2C->y, sp2C->z);
     mtl2->type = 0x40;
 
@@ -1098,8 +1100,8 @@ struct ObjShape *make_grid_shape(enum ObjTypeFlag gridType, s32 a1, s32 a2, s32 
                 objBuf[row][col] = gd_make_vertex(sp68, sp6C, sp70);
             } else if (gridType == OBJ_TYPE_PARTICLES) {
                 objBuf[row][col] = make_particle(0, 0, sp68, sp6C + 2.0f, sp70);
-                ((struct ObjParticle *) objBuf[row][col])->unk44 = (1.0 + sp68) / 2.0;
-                ((struct ObjParticle *) objBuf[row][col])->unk48 = (1.0 + sp70) / 2.0;
+                ((struct ObjParticle*)objBuf[row][col])->unk44 = (1.0 + sp68) / 2.0;
+                ((struct ObjParticle*)objBuf[row][col])->unk48 = (1.0 + sp70) / 2.0;
             }
             sp68 += sp44;
         }
@@ -1126,42 +1128,40 @@ struct ObjShape *make_grid_shape(enum ObjTypeFlag gridType, s32 a1, s32 a2, s32 
                 sp40 = D_801BAC9C;
             }
 
-            add_3_vtx_to_face(D_801BAC9C, objBuf[row][col + 1], objBuf[row + 1][col + 1],
-                              objBuf[row][col]);
-            add_3_vtx_to_face(D_801BACA0, objBuf[row + 1][col + 1], objBuf[row + 1][col],
-                              objBuf[row][col]);
+            add_3_vtx_to_face(D_801BAC9C, objBuf[row][col + 1], objBuf[row + 1][col + 1], objBuf[row][col]);
+            add_3_vtx_to_face(D_801BACA0, objBuf[row + 1][col + 1], objBuf[row + 1][col], objBuf[row][col]);
         }
     }
 
     if (gridType == OBJ_TYPE_PARTICLES) {
         for (parI = 0; parI <= a3; parI++) {
-            ((struct ObjParticle *) objBuf[parI][0])->flags |= 2;
-            ((struct ObjParticle *) objBuf[parI][a4])->flags |= 2;
+            ((struct ObjParticle*)objBuf[parI][0])->flags |= 2;
+            ((struct ObjParticle*)objBuf[parI][a4])->flags |= 2;
         }
 
         for (parI = 0; parI <= a4; parI++) {
-            ((struct ObjParticle *) objBuf[0][parI])->flags |= 2;
-            ((struct ObjParticle *) objBuf[a3][parI])->flags |= 2;
+            ((struct ObjParticle*)objBuf[0][parI])->flags |= 2;
+            ((struct ObjParticle*)objBuf[a3][parI])->flags |= 2;
         }
     }
 
-    parOrVtxGrp = make_group_of_type(gridType, (struct GdObj *) objBuf[0][0], NULL);
+    parOrVtxGrp = make_group_of_type(gridType, (struct GdObj*)objBuf[0][0], NULL);
     gridShape->vtxGroup = parOrVtxGrp;
     gridShape->mtlGroup = mtlGroup;
 
-    gridShape->faceGroup = group_faces_in_mtl_grp(gridShape->mtlGroup, (struct GdObj *) sp40, NULL);
+    gridShape->faceGroup = group_faces_in_mtl_grp(gridShape->mtlGroup, (struct GdObj*)sp40, NULL);
 
     printf("grid: points=%d, faces=%d\n", gridShape->vtxGroup->id, gridShape->faceGroup->id);
     return gridShape;
 }
 
 /* @ 248614 for 0x44 */
-void Unknown80199E44(UNUSED s32 a0, struct GdObj *a1, struct GdObj *a2, UNUSED s32 a3) {
-    UNUSED struct ObjGroup *sp1C = make_group(2, a1, a2);
+void Unknown80199E44(UNUSED s32 a0, struct GdObj* a1, struct GdObj* a2, UNUSED s32 a3) {
+    UNUSED struct ObjGroup* sp1C = make_group(2, a1, a2);
 }
 
 /* @ 248658 for 0x5c */
-void Unknown80199E88(struct ObjFace *face) {
+void Unknown80199E88(struct ObjFace* face) {
     D_801BAC74 = make_plane(FALSE, face);
 
     if (D_801BAC78 == NULL) {
@@ -1170,16 +1170,16 @@ void Unknown80199E88(struct ObjFace *face) {
 }
 
 /* @ 2486B4 for 0xbc; orig name: func_80199EE4 */
-struct ObjNet *make_netfromshape(struct ObjShape *shape) {
-    struct ObjNet *newNet;
+struct ObjNet* make_netfromshape(struct ObjShape* shape) {
+    struct ObjNet* newNet;
 
     if (shape == NULL) {
         fatal_printf("make_netfromshape(): null shape ptr");
     }
 
     D_801BAC78 = NULL;
-    apply_to_obj_types_in_group(OBJ_TYPE_FACES, (applyproc_t) Unknown80199E88, shape->faceGroup);
-    D_801BAD08 = make_group_of_type(OBJ_TYPE_PLANES, (struct GdObj *) D_801BAC78, NULL);
+    apply_to_obj_types_in_group(OBJ_TYPE_FACES, (applyproc_t)Unknown80199E88, shape->faceGroup);
+    D_801BAD08 = make_group_of_type(OBJ_TYPE_PLANES, (struct GdObj*)D_801BAC78, NULL);
     newNet = make_net(0, shape, NULL, D_801BAD08, shape->vtxGroup);
     newNet->netType = 1;
 
@@ -1189,11 +1189,11 @@ struct ObjNet *make_netfromshape(struct ObjShape *shape) {
 /**
  * Controls the dizzy (game over) animation of Mario's head.
  */
-void animate_mario_head_gameover(struct ObjAnimator *self) {
+void animate_mario_head_gameover(struct ObjAnimator* self) {
     switch (self->state) {
         case 0:
             self->frame = 1.0f;
-            self->animSeqNum = 1;  // game over anim sequence
+            self->animSeqNum = 1; // game over anim sequence
             self->state = 1;
             break;
         case 1:
@@ -1203,7 +1203,7 @@ void animate_mario_head_gameover(struct ObjAnimator *self) {
                 self->frame = 69.0f;
                 self->state = 4;
                 self->controlFunc = animate_mario_head_normal;
-                self->animSeqNum = 0;  // normal anim sequence
+                self->animSeqNum = 0; // normal anim sequence
             }
             break;
     }
@@ -1212,7 +1212,7 @@ void animate_mario_head_gameover(struct ObjAnimator *self) {
 /**
  * Controls the normal animation of Mario's head. This functions like a state machine.
  */
-void animate_mario_head_normal(struct ObjAnimator *self) {
+void animate_mario_head_normal(struct ObjAnimator* self) {
     s32 state = 0; // TODO: label these states
     s32 aBtnPressed = gGdCtrl.dragging;
 
@@ -1220,7 +1220,7 @@ void animate_mario_head_normal(struct ObjAnimator *self) {
         case 0:
             // initialize?
             self->frame = 1.0f;
-            self->animSeqNum = 0;  // normal anim sequence
+            self->animSeqNum = 0; // normal anim sequence
             state = 2;
             self->nods = 5;
             break;
@@ -1267,7 +1267,7 @@ void animate_mario_head_normal(struct ObjAnimator *self) {
 
             self->stillTimer = 150;
             break;
-        case 7:  // Mario is staying still while his eyes follow the cursor
+        case 7: // Mario is staying still while his eyes follow the cursor
             if (aBtnPressed) {
                 self->stillTimer = 300;
             } else {
@@ -1293,35 +1293,35 @@ void animate_mario_head_normal(struct ObjAnimator *self) {
  * Loads the Mario head from `dynlist_mario_master`, sets up grabbers, and makes
  * sparkle particles
  */
-s32 load_mario_head(void (*aniFn)(struct ObjAnimator *)) {
-    struct ObjNet *sp54; // net made with sp48 group
+s32 load_mario_head(void (*aniFn)(struct ObjAnimator*)) {
+    struct ObjNet* sp54; // net made with sp48 group
     UNUSED u8 filler1[8];
-    struct ObjGroup *sp48; // Joint group
+    struct ObjGroup* sp48; // Joint group
     UNUSED u8 filler2[8];
-    struct ObjGroup *mainShapesGrp;
-    struct GdObj *sp38;       // object list head before making a bunch of joints
-    struct GdObj *faceJoint;        // joint on the face that `grabberJoint` pulls
-    struct ObjJoint *grabberJoint;  // joint that's dragged by the cursor
-    struct ObjCamera *camera;
-    struct ObjAnimator *animator;
-    struct ObjParticle *particle;
+    struct ObjGroup* mainShapesGrp;
+    struct GdObj* sp38;            // object list head before making a bunch of joints
+    struct GdObj* faceJoint;       // joint on the face that `grabberJoint` pulls
+    struct ObjJoint* grabberJoint; // joint that's dragged by the cursor
+    struct ObjCamera* camera;
+    struct ObjAnimator* animator;
+    struct ObjParticle* particle;
 
     // Load Mario head from the dynlist
 
     start_memtracker("mario face");
-    d_set_name_suffix("l");  // add "l" to the end of all dynobj names generated by the dynlist, for some reason
+    d_set_name_suffix("l"); // add "l" to the end of all dynobj names generated by the dynlist, for some reason
 
     d_use_integer_names(TRUE);
-    animator = (struct ObjAnimator *) d_makeobj(D_ANIMATOR, AsDynName(DYNOBJ_MARIO_MAIN_ANIMATOR));
+    animator = (struct ObjAnimator*)d_makeobj(D_ANIMATOR, AsDynName(DYNOBJ_MARIO_MAIN_ANIMATOR));
     animator->controlFunc = aniFn;
     d_use_integer_names(FALSE);
     // FIXME: make segment address work once seg4 is disassembled
-    gMarioFaceGrp = (struct ObjGroup *) load_dynlist(dynlist_mario_master);
+    gMarioFaceGrp = (struct ObjGroup*)load_dynlist(dynlist_mario_master);
     stop_memtracker("mario face");
 
     // Make camera
 
-    camera = (struct ObjCamera *) d_makeobj(D_CAMERA, NULL);
+    camera = (struct ObjCamera*)d_makeobj(D_CAMERA, NULL);
     d_set_rel_pos(0.0f, 200.0f, 2000.0f);
     d_set_world_pos(0.0f, 200.0f, 2000.0f);
     d_set_flags(4);
@@ -1332,7 +1332,7 @@ s32 load_mario_head(void (*aniFn)(struct ObjAnimator *)) {
     addto_group(gMarioFaceGrp, &camera->header);
     addto_group(gMarioFaceGrp, &animator->header);
 
-    d_set_name_suffix(NULL);  // stop adding "l" to generated dynobj names
+    d_set_name_suffix(NULL); // stop adding "l" to generated dynobj names
 
     // Make sparkle particles
 
@@ -1357,59 +1357,59 @@ s32 load_mario_head(void (*aniFn)(struct ObjAnimator *)) {
     particle->shapePtr = gShapeRedSpark;
     addto_group(gGdLightGroup, &particle->header);
 
-    mainShapesGrp = (struct ObjGroup *) d_use_obj("N1000l");  // DYNOBJ_MARIO_MAIN_SHAPES_GROUP
+    mainShapesGrp = (struct ObjGroup*)d_use_obj("N1000l"); // DYNOBJ_MARIO_MAIN_SHAPES_GROUP
     create_gddl_for_shapes(mainShapesGrp);
     sp38 = gGdObjectList;
 
     // Make grabbers to move the face with the cursor
 
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, -500.0f, 0.0f, -150.0f);
-    faceJoint = d_use_obj("N167l");  // DYNOBJ_MARIO_LEFT_EAR_JOINT_1
+    faceJoint = d_use_obj("N167l"); // DYNOBJ_MARIO_LEFT_EAR_JOINT_1
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
 
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, 500.0f, 0.0f, -150.0f);
-    faceJoint = d_use_obj("N176l");  // DYNOBJ_MARIO_RIGHT_EAR_JOINT_1
+    faceJoint = d_use_obj("N176l"); // DYNOBJ_MARIO_RIGHT_EAR_JOINT_1
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
 
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, 0.0f, 700.0f, 300.0f);
-    faceJoint = d_use_obj("N131l");  // DYNOBJ_MARIO_CAP_JOINT_1
+    faceJoint = d_use_obj("N131l"); // DYNOBJ_MARIO_CAP_JOINT_1
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
 
     // drag eyelids and eyebrows along with cap?
-    faceJoint = d_use_obj("N206l");  // DYNOBJ_LEFT_EYELID_JOINT_1
+    faceJoint = d_use_obj("N206l"); // DYNOBJ_LEFT_EYELID_JOINT_1
     addto_group(grabberJoint->attachedObjsGrp, faceJoint);
-    faceJoint = d_use_obj("N215l");  // DYNOBJ_RIGHT_EYELID_JOINT_1
+    faceJoint = d_use_obj("N215l"); // DYNOBJ_RIGHT_EYELID_JOINT_1
     addto_group(grabberJoint->attachedObjsGrp, faceJoint);
-    faceJoint = d_use_obj("N31l");  // DYNOBJ_MARIO_LEFT_EYEBROW_MPART_JOINT_1
+    faceJoint = d_use_obj("N31l"); // DYNOBJ_MARIO_LEFT_EYEBROW_MPART_JOINT_1
     addto_group(grabberJoint->attachedObjsGrp, faceJoint);
-    faceJoint = d_use_obj("N65l");  // DYNOBJ_MARIO_RIGHT_EYEBROW_MPART_JOINT_1
+    faceJoint = d_use_obj("N65l"); // DYNOBJ_MARIO_RIGHT_EYEBROW_MPART_JOINT_1
     addto_group(grabberJoint->attachedObjsGrp, faceJoint);
 
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, 0.0f, 0.0f, 600.0f);
-    faceJoint = d_use_obj("N185l");  // DYNOBJ_MARIO_NOSE_JOINT_1
+    faceJoint = d_use_obj("N185l"); // DYNOBJ_MARIO_NOSE_JOINT_1
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
 
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, 0.0f, -300.0f, 300.0f);
-    faceJoint = d_use_obj("N194l");  // DYNOBJ_MARIO_LEFT_JAW_JOINT
+    faceJoint = d_use_obj("N194l"); // DYNOBJ_MARIO_LEFT_JAW_JOINT
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
 
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, 250.0f, -150.0f, 300.0f);
-    faceJoint = d_use_obj("N158l");  // DYNOBJ_MARIO_RIGHT_LIP_CORNER_JOINT_1
+    faceJoint = d_use_obj("N158l"); // DYNOBJ_MARIO_RIGHT_LIP_CORNER_JOINT_1
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
 
-    faceJoint = d_use_obj("N15l");  // DYNOBJ_MARIO_LEFT_MUSTACHE_JOINT_1
+    faceJoint = d_use_obj("N15l"); // DYNOBJ_MARIO_LEFT_MUSTACHE_JOINT_1
     addto_group(grabberJoint->attachedObjsGrp, faceJoint);
 
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, -250.0f, -150.0f, 300.0f);
-    faceJoint = d_use_obj("N149l");  // DYNOBJ_MARIO_LEFT_LIP_CORNER_JOINT_1
+    faceJoint = d_use_obj("N149l"); // DYNOBJ_MARIO_LEFT_LIP_CORNER_JOINT_1
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
 
-    faceJoint = d_use_obj("N6l");  // DYNOBJ_MARIO_RIGHT_MUSTACHE_JOINT_1
+    faceJoint = d_use_obj("N6l"); // DYNOBJ_MARIO_RIGHT_MUSTACHE_JOINT_1
     addto_group(grabberJoint->attachedObjsGrp, faceJoint);
 
     // make the left eye follow cursor
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, 100.0f, 200.0f, 400.0f);
-    faceJoint = d_use_obj("N112l");  // DYNOBJ_MARIO_RIGHT_EYE_UNKNOWN_NET
+    faceJoint = d_use_obj("N112l"); // DYNOBJ_MARIO_RIGHT_EYE_UNKNOWN_NET
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
     grabberJoint->updateFunc = eye_joint_update_func;
     grabberJoint->rootAnimator = animator;
@@ -1417,7 +1417,7 @@ s32 load_mario_head(void (*aniFn)(struct ObjAnimator *)) {
 
     // make the right eye follow cursor
     grabberJoint = make_grabber_joint(sGrabJointTestShape, 0, -100.0f, 200.0f, 400.0f);
-    faceJoint = d_use_obj("N96l");  // DYNOBJ_MARIO_LEFT_EYE_UNKNOWN_NET
+    faceJoint = d_use_obj("N96l"); // DYNOBJ_MARIO_LEFT_EYE_UNKNOWN_NET
     grabberJoint->attachedObjsGrp = make_group(1, faceJoint);
     grabberJoint->updateFunc = eye_joint_update_func;
     grabberJoint->rootAnimator = animator;
@@ -1440,10 +1440,10 @@ void load_shapes2(void) {
 
     sCubeShape = make_shape(0, "cube");
 
-    gSpotShape = (struct ObjShape *) load_dynlist(dynlist_spot_shape);
+    gSpotShape = (struct ObjShape*)load_dynlist(dynlist_spot_shape);
     scale_verts_in_shape(gSpotShape, 200.0f, 200.0f, 200.0f);
 
-    sGrabJointTestShape = (struct ObjShape *) load_dynlist(dynlist_test_cube);
+    sGrabJointTestShape = (struct ObjShape*)load_dynlist(dynlist_test_cube);
     scale_verts_in_shape(sGrabJointTestShape, 30.0f, 30.0f, 30.0f);
 
     sCubeShapeGroup = make_group_of_type(OBJ_TYPE_SHAPES, &sCubeShape->header, NULL);
@@ -1453,10 +1453,10 @@ void load_shapes2(void) {
 }
 
 /* @ 249368 -> 249594 */
-struct ObjGroup *Unknown8019AB98(UNUSED u32 a0) {
-    struct ObjLight *light1;
-    struct ObjLight *light2;
-    struct GdObj *oldObjHead = gGdObjectList; // obj head node before making lights
+struct ObjGroup* Unknown8019AB98(UNUSED u32 a0) {
+    struct ObjLight* light1;
+    struct ObjLight* light2;
+    struct GdObj* oldObjHead = gGdObjectList; // obj head node before making lights
 
     light1 = make_light(0, NULL, 0);
     light1->position.x = 100.0f;
@@ -1497,10 +1497,10 @@ struct ObjGroup *Unknown8019AB98(UNUSED u32 a0) {
 }
 
 /* @ 249594 for 0x100 */
-struct ObjGroup *Unknown8019ADC4(UNUSED u32 a0) {
-    UNUSED struct ObjLight *unusedLight;
-    struct ObjLight *newLight;
-    struct GdObj *oldObjHead;
+struct ObjGroup* Unknown8019ADC4(UNUSED u32 a0) {
+    UNUSED struct ObjLight* unusedLight;
+    struct ObjLight* newLight;
+    struct GdObj* oldObjHead;
 
     unusedLight = make_light(0, NULL, 0);
     oldObjHead = gGdObjectList;
@@ -1522,9 +1522,9 @@ struct ObjGroup *Unknown8019ADC4(UNUSED u32 a0) {
 }
 
 /* @ 249694 for 0x5c */
-struct ObjGroup *Unknown8019AEC4(UNUSED u32 a0) {
+struct ObjGroup* Unknown8019AEC4(UNUSED u32 a0) {
     UNUSED u8 filler[8];
-    UNUSED struct GdObj *sp1C = gGdObjectList;
+    UNUSED struct GdObj* sp1C = gGdObjectList;
 
     gGdLightGroup = make_group(0);
 

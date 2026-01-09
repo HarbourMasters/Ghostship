@@ -261,7 +261,7 @@ void bhv_normal_cap_loop(void) {
             break;
     }
 
-    if ((s32) o->oForwardVel != 0) {
+    if ((s32)o->oForwardVel != 0) {
         save_file_set_cap_pos(o->oPosX, o->oPosY, o->oPosZ);
     }
 

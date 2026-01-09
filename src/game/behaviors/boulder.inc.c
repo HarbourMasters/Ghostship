@@ -49,14 +49,13 @@ void bhv_big_boulder_loop(void) {
 }
 
 void bhv_big_boulder_generator_loop(void) {
-    struct Object *sp1C;
+    struct Object* sp1C;
 
     if (o->oTimer >= 256) {
         o->oTimer = 0;
     }
 
-    if (!current_mario_room_check(4)
-        || is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 1500)) {
+    if (!current_mario_room_check(4) || is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 1500)) {
         return;
     }
 

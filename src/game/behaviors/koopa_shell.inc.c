@@ -18,8 +18,7 @@ void koopa_shell_spawn_water_drop(void) {
     spawn_object(o, MODEL_WAVE_TRAIL, bhvObjectWaveTrail);
 
     if (gMarioStates[0].forwardVel > 10.0f) {
-        struct Object *drop = spawn_object_with_scale(o, MODEL_WHITE_PARTICLE_SMALL,
-                                                      bhvWaterDroplet, 1.5f);
+        struct Object* drop = spawn_object_with_scale(o, MODEL_WHITE_PARTICLE_SMALL, bhvWaterDroplet, 1.5f);
         drop->oVelY = random_float() * 30.0f;
         obj_translate_xz_random(drop, 110.0f);
     }
@@ -54,12 +53,12 @@ void bhv_koopa_shell_flame_spawn(void) {
 }
 
 void koopa_shell_spawn_sparkles(f32 a) {
-    struct Object *sp1C = spawn_object(o, MODEL_NONE, bhvSparkleSpawn);
+    struct Object* sp1C = spawn_object(o, MODEL_NONE, bhvSparkleSpawn);
     sp1C->oPosY += a;
 }
 
 void bhv_koopa_shell_loop(void) {
-    struct Surface *sp34;
+    struct Surface* sp34;
 
     obj_set_hitbox(o, &sKoopaShellHitbox);
     cur_obj_scale(1.0f);

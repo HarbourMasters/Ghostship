@@ -7,11 +7,7 @@ struct UnusedChuckyaData {
 };
 
 struct UnusedChuckyaData sUnusedChuckyaData[] = {
-    { 2, 0.f,  1.f },
-    { 2, 10.f, 1.f },
-    { 2, 20.f, 1.f },
-    { 2, 20.f, 1.f },
-    { 8, 10.f, 1.f },
+    { 2, 0.f, 1.f }, { 2, 10.f, 1.f }, { 2, 20.f, 1.f }, { 2, 20.f, 1.f }, { 8, 10.f, 1.f },
 };
 
 void common_anchor_mario_behavior(f32 sp28, f32 sp2C, s32 sp30) {
@@ -80,7 +76,7 @@ s32 unknown_chuckya_function(s32 sp20, f32 sp24, f32 sp28, s16 sp2C) {
     return sp1C;
 }
 
-s32 approach_forward_vel(f32 *forwardVel, f32 spC, f32 sp10) {
+s32 approach_forward_vel(f32* forwardVel, f32 spC, f32 sp10) {
     s32 sp4 = 0;
 
     if (*forwardVel > spC) {
@@ -116,8 +112,7 @@ void chuckya_act_0(void) {
             o->oForwardVel = 0.0f;
             if (cur_obj_lateral_dist_from_mario_to_home() < 2000.0f) {
                 cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
-                if (o->oChuckyaUnkFC > 40
-                    || abs_angle_diff(o->oMoveAngleYaw, o->oAngleToMario) < 0x1000) {
+                if (o->oChuckyaUnkFC > 40 || abs_angle_diff(o->oMoveAngleYaw, o->oAngleToMario) < 0x1000) {
                     o->oSubAction = 1;
                 }
             } else {
@@ -191,8 +186,7 @@ void chuckya_act_1(void) {
             } else {
                 cur_obj_init_animation_with_sound(1);
                 o->oMoveAngleYaw += INT_STATUS_GRABBED_MARIO;
-                if (o->oChuckyaUnkFC-- < 0
-                    && (check_if_moving_over_floor(50.0f, 150.0f) || o->oChuckyaUnkFC < -16)) {
+                if (o->oChuckyaUnkFC-- < 0 && (check_if_moving_over_floor(50.0f, 150.0f) || o->oChuckyaUnkFC < -16)) {
                     o->oSubAction++;
                 }
             }

@@ -25,10 +25,10 @@
 struct Controller gControllers[3];
 
 // Gfx handlers
-struct SPTask *gGfxSPTask;
-Gfx *gDisplayListHead;
-u8 *gGfxPoolEnd;
-struct GfxPool *gGfxPool;
+struct SPTask* gGfxSPTask;
+Gfx* gDisplayListHead;
+u8* gGfxPoolEnd;
+struct GfxPool* gGfxPool;
 
 // OS Controllers
 OSContStatus gControllerStatuses[4];
@@ -50,7 +50,7 @@ uintptr_t gPhysicalFramebuffers[3];
 uintptr_t gPhysicalZBuffer;
 
 // Mario Anims and Demo allocation
-void *gMarioAnimsMemAlloc;
+void* gMarioAnimsMemAlloc;
 struct DmaHandlerList gMarioAnimsBuf;
 
 // fillers
@@ -68,12 +68,12 @@ u16 sRenderingFramebuffer = 0;
 void (*gGoddardVblankCallback)(void) = NULL;
 
 // Defined controller slots
-struct Controller *gPlayer1Controller = &gControllers[0];
-struct Controller *gPlayer2Controller = &gControllers[1];
-struct Controller *gPlayer3Controller = &gControllers[2]; // Probably debug only, see note below
+struct Controller* gPlayer1Controller = &gControllers[0];
+struct Controller* gPlayer2Controller = &gControllers[1];
+struct Controller* gPlayer3Controller = &gControllers[2]; // Probably debug only, see note below
 
 // Title Screen Demo Handler
-struct DemoInput *gCurrDemoInput = NULL;
+struct DemoInput* gCurrDemoInput = NULL;
 u16 gDemoInputListID = 0;
 struct DemoInput gRecordedDemoInput = { 0 };
 
@@ -113,8 +113,8 @@ void init_rdp(void) {
  * Sets the initial RSP (Reality Signal Processor) settings.
  */
 void init_rsp(void) {
-    gSPClearGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CULL_BOTH | G_FOG
-                        | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD);
+    gSPClearGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CULL_BOTH | G_FOG | G_LIGHTING |
+                                                 G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CULL_BACK | G_LIGHTING);
 
@@ -138,11 +138,9 @@ void init_z_buffer(void) {
     gDPSetDepthImage(gDisplayListHead++, gPhysicalZBuffer);
 
     gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
-    gDPSetFillColor(gDisplayListHead++,
-                    GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
+    gDPSetFillColor(gDisplayListHead++, GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
 
-    gDPFillRectangle(gDisplayListHead++, 0, BORDER_HEIGHT, SCREEN_WIDTH - 1,
-                     SCREEN_HEIGHT - 1 - BORDER_HEIGHT);
+    gDPFillRectangle(gDisplayListHead++, 0, BORDER_HEIGHT, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1 - BORDER_HEIGHT);
 }
 
 /**
@@ -169,8 +167,7 @@ void clear_framebuffer(s32 color) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
     gDPSetFillColor(gDisplayListHead++, color);
-    gDPFillRectangle(gDisplayListHead++,
-                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
+    gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
                      GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
 
     gDPPipeSync(gDisplayListHead++);
@@ -181,7 +178,7 @@ void clear_framebuffer(s32 color) {
 /**
  * Resets the viewport, readying it for the final image.
  */
-void clear_viewport(Vp *viewport, s32 color) {
+void clear_viewport(Vp* viewport, s32 color) {
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     s16 vpUly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
@@ -218,8 +215,7 @@ void draw_screen_borders(void) {
 #if BORDER_HEIGHT != 0
     gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
                      GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, BORDER_HEIGHT - 1);
-    gDPFillRectangle(gDisplayListHead++,
-                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), SCREEN_HEIGHT - BORDER_HEIGHT,
+    gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), SCREEN_HEIGHT - BORDER_HEIGHT,
                      GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 1);
 #endif
 }
@@ -228,7 +224,7 @@ void draw_screen_borders(void) {
  * Defines the viewport scissoring rectangle.
  * Scissoring: https://jrra.zone/n64/doc/pro-man/pro12/12-03.htm#01
  */
-void make_viewport_clip_rect(Vp *viewport) {
+void make_viewport_clip_rect(Vp* viewport) {
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     s16 vpPly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 1;
@@ -249,14 +245,13 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.type = M_GFXTASK;
     gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE; // (this size is ignored)
     gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
-    gGfxSPTask->task.t.dram_stack = (u64 *) gGfxSPTaskStack;
+    gGfxSPTask->task.t.dram_stack = (u64*)gGfxSPTaskStack;
     gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
     gGfxSPTask->task.t.output_buff = gGfxSPTaskOutputBuffer;
-    gGfxSPTask->task.t.output_buff_size =
-        (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    gGfxSPTask->task.t.data_ptr = (u64 *) &gGfxPool->buffer;
+    gGfxSPTask->task.t.output_buff_size = (u64*)((u8*)gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
+    gGfxSPTask->task.t.data_ptr = (u64*)&gGfxPool->buffer;
     gGfxSPTask->task.t.data_size = entries * sizeof(Gfx);
-    gGfxSPTask->task.t.yield_data_ptr = (u64 *) gGfxSPTaskYieldBuffer;
+    gGfxSPTask->task.t.yield_data_ptr = (u64*)gGfxSPTaskYieldBuffer;
     gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
 }
 
@@ -303,7 +298,7 @@ void end_master_display_list(void) {
 void draw_reset_bars(void) {
     s32 width, height;
     s32 fbNum;
-    u64 *fbPtr;
+    u64* fbPtr;
 
     return;
 
@@ -314,12 +309,13 @@ void draw_reset_bars(void) {
             fbNum = sRenderedFramebuffer - 1;
         }
 
-        fbPtr = (u64 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[fbNum]);
+        fbPtr = (u64*)PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[fbNum]);
         fbPtr += gNmiResetBarsTimer++ * (SCREEN_WIDTH / 4);
 
         for (width = 0; width < ((SCREEN_HEIGHT / 16) + 1); width++) {
             // Loop must be one line to match on -O2
-            for (height = 0; height < (SCREEN_WIDTH / 4); height++) *fbPtr++ = 0;
+            for (height = 0; height < (SCREEN_WIDTH / 4); height++)
+                *fbPtr++ = 0;
             fbPtr += ((SCREEN_WIDTH / 4) * 14);
         }
     }
@@ -337,7 +333,7 @@ void render_init(void) {
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->buffer;
-    gGfxPoolEnd = (u8 *)(gGfxPool->buffer + GFX_POOL_SIZE);
+    gGfxPoolEnd = (u8*)(gGfxPool->buffer + GFX_POOL_SIZE);
     init_rcp();
     clear_framebuffer(0);
     end_master_display_list();
@@ -356,7 +352,7 @@ void select_gfx_pool(void) {
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->buffer;
-    gGfxPoolEnd = (u8 *) (gGfxPool->buffer + GFX_POOL_SIZE);
+    gGfxPoolEnd = (u8*)(gGfxPool->buffer + GFX_POOL_SIZE);
 }
 
 /**
@@ -373,13 +369,13 @@ void display_and_vsync(void) {
         gGoddardVblankCallback();
         gGoddardVblankCallback = NULL;
     }
-    if(GfxDebuggerIsDebuggingRequested()) {
+    if (GfxDebuggerIsDebuggingRequested()) {
         GfxDebuggerDebugDisplayList(gGfxPool->spTask.task.t.data_ptr);
     }
     exec_display_list(&gGfxPool->spTask);
     profiler_log_thread5_time(AFTER_DISPLAY_LISTS);
     osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
-    osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
+    osViSwapBuffer((void*)PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(THREAD5_END);
     osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
     if (++sRenderedFramebuffer == 3) {
@@ -400,9 +396,8 @@ void display_and_vsync(void) {
  */
 UNUSED static void record_demo(void) {
     // Record the player's button mask and current rawStickX and rawStickY.
-    u8 buttonMask =
-        ((gPlayer1Controller->buttonDown & (A_BUTTON | B_BUTTON | Z_TRIG | START_BUTTON)) >> 8)
-        | (gPlayer1Controller->buttonDown & (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS));
+    u8 buttonMask = ((gPlayer1Controller->buttonDown & (A_BUTTON | B_BUTTON | Z_TRIG | START_BUTTON)) >> 8) |
+                    (gPlayer1Controller->buttonDown & (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS));
     s8 rawStickX = gPlayer1Controller->rawStickX;
     s8 rawStickY = gPlayer1Controller->rawStickY;
 
@@ -418,8 +413,8 @@ UNUSED static void record_demo(void) {
 
     // Rrecord the distinct input and timer so long as they are unique.
     // If the timer hits 0xFF, reset the timer for the next demo input.
-    if (gRecordedDemoInput.timer == 0xFF || buttonMask != gRecordedDemoInput.buttonMask
-        || rawStickX != gRecordedDemoInput.rawStickX || rawStickY != gRecordedDemoInput.rawStickY) {
+    if (gRecordedDemoInput.timer == 0xFF || buttonMask != gRecordedDemoInput.buttonMask ||
+        rawStickX != gRecordedDemoInput.rawStickX || rawStickY != gRecordedDemoInput.rawStickY) {
         gRecordedDemoInput.timer = 0;
         gRecordedDemoInput.buttonMask = buttonMask;
         gRecordedDemoInput.rawStickX = rawStickX;
@@ -431,7 +426,7 @@ UNUSED static void record_demo(void) {
 /**
  * Take the updated controller struct and calculate the new x, y, and distance floats.
  */
-void adjust_analog_stick(struct Controller *controller) {
+void adjust_analog_stick(struct Controller* controller) {
     UNUSED u8 filler[8];
 
     // Reset the controller's x and y floats.
@@ -456,8 +451,7 @@ void adjust_analog_stick(struct Controller *controller) {
     }
 
     // Calculate f32 magnitude from the center by vector length.
-    controller->stickMag =
-        sqrtf(controller->stickX * controller->stickX + controller->stickY * controller->stickY);
+    controller->stickMag = sqrtf(controller->stickX * controller->stickX + controller->stickY * controller->stickY);
 
     // Magnitude cannot exceed 64.0f: if it does, modify the values
     // appropriately to flatten the values down to the allowed maximum value.
@@ -542,14 +536,14 @@ void read_controller_inputs(void) {
     run_demo_inputs();
 
     for (i = 0; i < 2; i++) {
-        struct Controller *controller = &gControllers[i];
+        struct Controller* controller = &gControllers[i];
 
         // if we're receiving inputs, update the controller struct with the new button info.
         if (controller->controllerData != NULL) {
             controller->rawStickX = controller->controllerData->stick_x;
             controller->rawStickY = controller->controllerData->stick_y;
-            controller->buttonPressed = controller->controllerData->button
-                                        & (controller->controllerData->button ^ controller->buttonDown);
+            controller->buttonPressed =
+                controller->controllerData->button & (controller->controllerData->button ^ controller->buttonDown);
             // 0.5x A presses are a good meme
             controller->buttonDown = controller->controllerData->button;
             adjust_analog_stick(controller);
@@ -623,7 +617,7 @@ void setup_game_memory(void) {
     UNUSED u8 filler[8];
 
     // Setup general Segment 0
-    set_segment_base_addr(0, (void *) (uintptr_t) 0x80000000);
+    set_segment_base_addr(0, (void*)(uintptr_t)0x80000000);
     // Create Mesg Queues
     osCreateMesgQueue(&gGfxVblankQueue, gGfxMesgBuf, ARRAY_COUNT(gGfxMesgBuf));
     osCreateMesgQueue(&gGameVblankQueue, gGameMesgBuf, ARRAY_COUNT(gGameMesgBuf));
@@ -642,7 +636,7 @@ void setup_game_memory(void) {
  * Main game loop thread. Runs forever as long as the game continues.
  */
 
-static struct LevelCommand *addr;
+static struct LevelCommand* addr;
 
 void thread5_game_loop(void) {
 
@@ -674,7 +668,7 @@ void update_vblank_reset(void) {
 #endif
 }
 
-void thread5_iteration(void){
+void thread5_iteration(void) {
     if (GfxDebuggerIsDebugging()) {
         exec_display_list(&gGfxPool->spTask);
         return;
@@ -710,7 +704,7 @@ void thread5_iteration(void){
     if (gShowDebugText) {
         // subtract the end of the gfx pool with the display list to obtain the
         // amount of free space remaining.
-        print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
+        print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8*)gDisplayListHead);
     }
     FrameInterpolation_StopRecord();
 

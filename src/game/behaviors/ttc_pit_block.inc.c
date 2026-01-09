@@ -7,7 +7,7 @@
 /**
  * Collision models. The second one is unused.
  */
-static Collision const *sTTCPitBlockCollisionModels[] = {
+static Collision const* sTTCPitBlockCollisionModels[] = {
     ttc_seg7_collision_07015754,
     ttc_seg7_collision_070157D8,
 };
@@ -59,8 +59,7 @@ void bhv_ttc_pit_block_update(void) {
             o->oTTCPitBlockDir = o->oTTCPitBlockDir ^ 0x01;
 
             if ((o->oTTCPitBlockWaitTime =
-                     sTTCPitBlockProperties[gTTCSpeedSetting][o->oTTCPitBlockDir & 0x01].waitTime)
-                < 0) {
+                     sTTCPitBlockProperties[gTTCSpeedSetting][o->oTTCPitBlockDir & 0x01].waitTime) < 0) {
                 o->oTTCPitBlockWaitTime = random_mod_offset(10, 20, 6);
             }
 

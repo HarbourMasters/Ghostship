@@ -15,15 +15,15 @@
  */
 
 /* bss */
-static struct GMemBlock *sFreeBlockListHead;
-static struct GMemBlock *sUsedBlockListHead;
-static struct GMemBlock *sEmptyBlockListHead;
+static struct GMemBlock* sFreeBlockListHead;
+static struct GMemBlock* sUsedBlockListHead;
+static struct GMemBlock* sEmptyBlockListHead;
 
 /* Forward Declarations */
-void empty_mem_block(struct GMemBlock *);
-struct GMemBlock *into_free_memblock(struct GMemBlock *);
-struct GMemBlock *make_mem_block(u32, u8);
-u32 print_list_stats(struct GMemBlock *, s32, s32);
+void empty_mem_block(struct GMemBlock*);
+struct GMemBlock* into_free_memblock(struct GMemBlock*);
+struct GMemBlock* make_mem_block(u32, u8);
+u32 print_list_stats(struct GMemBlock*, s32, s32);
 
 /**
  * Empty a `GMemBlock` into a default state. This empty block
@@ -31,7 +31,7 @@ u32 print_list_stats(struct GMemBlock *, s32, s32);
  * block is removed from whatever list is was in, and is added
  * to the empty block list.
  */
-void empty_mem_block(struct GMemBlock *block) {
+void empty_mem_block(struct GMemBlock* block) {
     if (block->next != NULL) {
         block->next->prev = block->prev;
     }
@@ -69,9 +69,9 @@ void empty_mem_block(struct GMemBlock *block) {
  * for allocation.
  *
  * @returns pointer to the free `GMemBlock` */
-struct GMemBlock *into_free_memblock(struct GMemBlock *block) {
-    struct GMemBlock *freeBlock;
-    void *ptr;
+struct GMemBlock* into_free_memblock(struct GMemBlock* block) {
+    struct GMemBlock* freeBlock;
+    void* ptr;
     u8 permanence;
     u32 space;
 
@@ -98,11 +98,11 @@ struct GMemBlock *into_free_memblock(struct GMemBlock *block) {
  *                  four bits imply a temporary block
  * @returns a pointer to the new `GMemBlock`
  */
-struct GMemBlock *make_mem_block(u32 blockType, u8 permFlag) {
-    struct GMemBlock *newMemBlock;
+struct GMemBlock* make_mem_block(u32 blockType, u8 permFlag) {
+    struct GMemBlock* newMemBlock;
 
     if (sEmptyBlockListHead == NULL) {
-        sEmptyBlockListHead = (struct GMemBlock *) gd_allocblock(sizeof(struct GMemBlock));
+        sEmptyBlockListHead = (struct GMemBlock*)gd_allocblock(sizeof(struct GMemBlock));
 
         if (sEmptyBlockListHead == NULL) {
             fatal_printf("MakeMemBlock() unable to allocate");
@@ -136,7 +136,7 @@ struct GMemBlock *make_mem_block(u32 blockType, u8 permFlag) {
             fatal_printf("unkown memblock type");
     }
     newMemBlock->prev = NULL;
-    newMemBlock->blockType = (u8) blockType;
+    newMemBlock->blockType = (u8)blockType;
     newMemBlock->permFlag = permFlag;
 
     return newMemBlock;
@@ -149,10 +149,10 @@ struct GMemBlock *make_mem_block(u32 blockType, u8 permFlag) {
  * @returns size of memory freed
  * @retval  0    `ptr` did not point to a valid memory block
  */
-u32 gd_free_mem(void *ptr) {
-    register struct GMemBlock *curBlock;
+u32 gd_free_mem(void* ptr) {
+    register struct GMemBlock* curBlock;
     u32 bytesFreed;
-    register u8 *targetBlock = ptr;
+    register u8* targetBlock = ptr;
 
     for (curBlock = sUsedBlockListHead; curBlock != NULL; curBlock = curBlock->next) {
         if (targetBlock == curBlock->ptr) {
@@ -173,10 +173,10 @@ u32 gd_free_mem(void *ptr) {
  * @return pointer to heap
  * @retval NULL could not fulfill the request
  */
-void *gd_request_mem(u32 size, u8 permanence) {
-    struct GMemBlock *foundBlock = NULL;
-    struct GMemBlock *curBlock;
-    struct GMemBlock *newBlock;
+void* gd_request_mem(u32 size, u8 permanence) {
+    struct GMemBlock* foundBlock = NULL;
+    struct GMemBlock* curBlock;
+    struct GMemBlock* newBlock;
 
     newBlock = make_mem_block(G_MEM_BLOCK_USED, permanence);
     curBlock = sFreeBlockListHead;
@@ -225,11 +225,11 @@ void *gd_request_mem(u32 size, u8 permanence) {
  *
  * @returns `GMemBlock` that contains info about the new heap memory
  */
-struct GMemBlock *gd_add_mem_to_heap(u32 size, void *addr, u8 permanence) {
-    struct GMemBlock *newBlock;
+struct GMemBlock* gd_add_mem_to_heap(u32 size, void* addr, u8 permanence) {
+    struct GMemBlock* newBlock;
     /* eight-byte align the new block's data stats */
     size = (size - 8) & ~7;
-    addr = (void *)(((uintptr_t) addr + 8) & ~7);
+    addr = (void*)(((uintptr_t)addr + 8) & ~7);
 
     newBlock = make_mem_block(G_MEM_BLOCK_FREE, permanence);
     newBlock->ptr = addr;
@@ -257,7 +257,7 @@ void init_mem_block_lists(void) {
  * @param permanence     Limit info printed to blocks with this permanence
  * @returns number of entries
  */
-u32 print_list_stats(struct GMemBlock *block, s32 printBlockInfo, s32 permanence) {
+u32 print_list_stats(struct GMemBlock* block, s32 printBlockInfo, s32 permanence) {
     u32 entries = 0;
     u32 totalSize = 0;
 
@@ -266,7 +266,7 @@ u32 print_list_stats(struct GMemBlock *block, s32 printBlockInfo, s32 permanence
             entries++;
             if (printBlockInfo) {
                 gd_printf("     %6.2fk (%d bytes)\n",
-                          (f32) block->size / 1024.0, //? 1024.0f
+                          (f32)block->size / 1024.0, //? 1024.0f
                           block->size);
             }
             totalSize += block->size;
@@ -275,7 +275,7 @@ u32 print_list_stats(struct GMemBlock *block, s32 printBlockInfo, s32 permanence
     }
 
     gd_printf("Total %6.2fk (%d bytes) in %d entries\n",
-              (f32) totalSize / 1024.0, //? 1024.0f
+              (f32)totalSize / 1024.0, //? 1024.0f
               totalSize, entries);
 
     return entries;
@@ -286,7 +286,7 @@ u32 print_list_stats(struct GMemBlock *block, s32 printBlockInfo, s32 permanence
  * `GMemBlock`s.
  */
 void mem_stats(void) {
-    struct GMemBlock *list;
+    struct GMemBlock* list;
 
     gd_printf("Perm Used blocks:\n");
     list = sUsedBlockListHead;

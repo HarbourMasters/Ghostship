@@ -44,7 +44,7 @@ void bhv_tree_snow_or_leaf_loop(void) {
 }
 
 void bhv_snow_leaf_particle_spawn_init(void) {
-    struct Object *obj; // Either snow or leaf
+    struct Object* obj; // Either snow or leaf
     UNUSED u8 filler1[4];
     s32 isSnow;
     f32 scale;

@@ -32,13 +32,13 @@ enum DebugPrintStateInfo {
 };
 
 // DEBUG_SYS_EFFECTINFO
-const char *sDebugEffectStringInfo[] = {
+const char* sDebugEffectStringInfo[] = {
     "  a0 %d", "  a1 %d", "  a2 %d", "  a3 %d", "  a4 %d", "  a5 %d", "  a6 %d", "  a7 %d",
     "A" // cursor
 };
 
 // DEBUG_SYS_ENEMYINFO
-const char *sDebugEnemyStringInfo[] = {
+const char* sDebugEnemyStringInfo[] = {
     "  b0 %d", "  b1 %d", "  b2 %d", "  b3 %d", "  b4 %d", "  b5 %d", "  b6 %d", "  b7 %d",
     "B" // cursor
 };
@@ -95,8 +95,7 @@ s64 get_clock_difference(UNUSED s64 cycles) {
  * information. Note the reset of the printing boolean. For all intenses and
  * purposes this creates/formats a new print state.
  */
-void set_print_state_info(s16 *printState, s16 xCursor, s16 yCursor, s16 minYCursor, s16 maxXCursor,
-                          s16 lineYOffset) {
+void set_print_state_info(s16* printState, s16 xCursor, s16 yCursor, s16 minYCursor, s16 maxXCursor, s16 lineYOffset) {
     printState[DEBUG_PSTATE_DISABLED] = FALSE;
     printState[DEBUG_PSTATE_X_CURSOR] = xCursor;
     printState[DEBUG_PSTATE_Y_CURSOR] = yCursor;
@@ -110,23 +109,21 @@ void set_print_state_info(s16 *printState, s16 xCursor, s16 yCursor, s16 minYCur
  * the next entry in the list. If the current print state array is too far down the list, this
  * will print "DPRINT OVER" instead, signaling that the print state overflowed.
  */
-void print_text_array_info(s16 *printState, const char *str, s32 number) {
+void print_text_array_info(s16* printState, const char* str, s32 number) {
     if (!printState[DEBUG_PSTATE_DISABLED]) {
-        if ((printState[DEBUG_PSTATE_Y_CURSOR] < printState[DEBUG_PSTATE_MIN_Y_CURSOR])
-            || (printState[DEBUG_PSTATE_MAX_X_CURSOR] < printState[DEBUG_PSTATE_Y_CURSOR])) {
-            print_text(printState[DEBUG_PSTATE_X_CURSOR], printState[DEBUG_PSTATE_Y_CURSOR],
-                       "DPRINT OVER");
+        if ((printState[DEBUG_PSTATE_Y_CURSOR] < printState[DEBUG_PSTATE_MIN_Y_CURSOR]) ||
+            (printState[DEBUG_PSTATE_MAX_X_CURSOR] < printState[DEBUG_PSTATE_Y_CURSOR])) {
+            print_text(printState[DEBUG_PSTATE_X_CURSOR], printState[DEBUG_PSTATE_Y_CURSOR], "DPRINT OVER");
             printState[DEBUG_PSTATE_DISABLED]++; // why not just = TRUE...
         } else {
-            print_text_fmt_int(printState[DEBUG_PSTATE_X_CURSOR], printState[DEBUG_PSTATE_Y_CURSOR],
-                               str, number);
+            print_text_fmt_int(printState[DEBUG_PSTATE_X_CURSOR], printState[DEBUG_PSTATE_Y_CURSOR], str, number);
             printState[DEBUG_PSTATE_Y_CURSOR] += printState[DEBUG_PSTATE_LINE_Y_OFFSET];
         }
     }
 }
 
 void set_text_array_x_y(s32 xOffset, s32 yOffset) {
-    s16 *printState = gDebugPrintState1;
+    s16* printState = gDebugPrintState1;
 
     printState[DEBUG_PSTATE_X_CURSOR] += xOffset;
     printState[DEBUG_PSTATE_Y_CURSOR] =
@@ -137,19 +134,19 @@ void set_text_array_x_y(s32 xOffset, s32 yOffset) {
  * These series of dprint functions print methods depending on the context of the
  * current debug mode as well as the printer array (down to up vs up to down).
  */
-void print_debug_bottom_up(const char *str, s32 number) {
+void print_debug_bottom_up(const char* str, s32 number) {
     if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) {
         print_text_array_info(gDebugPrintState2, str, number);
     }
 }
 
-void print_debug_top_down_objectinfo(const char *str, s32 number) {
+void print_debug_top_down_objectinfo(const char* str, s32 number) {
     if ((gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) && sDebugPage == DEBUG_PAGE_OBJECTINFO) {
         print_text_array_info(gDebugPrintState1, str, number);
     }
 }
 
-void print_debug_top_down_mapinfo(const char *str, s32 number) {
+void print_debug_top_down_mapinfo(const char* str, s32 number) {
     if (sNoExtraDebug && !CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) { // how come this is the only instance of the sNoExtraDebug check?
         return;
     }
@@ -159,7 +156,7 @@ void print_debug_top_down_mapinfo(const char *str, s32 number) {
     }
 }
 
-void print_debug_top_down_normal(const char *str, s32 number) {
+void print_debug_top_down_normal(const char* str, s32 number) {
     if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) {
         print_text_array_info(gDebugPrintState1, str, number);
     }
@@ -167,15 +164,14 @@ void print_debug_top_down_normal(const char *str, s32 number) {
 
 void print_mapinfo(void) {
     // EU mostly stubbed this function out.
-    struct Surface *pfloor;
+    struct Surface* pfloor;
     UNUSED f32 bgY;   // unused in EU
     UNUSED f32 water; // unused in EU
     UNUSED s32 area;  // unused in EU
     UNUSED s32 angY;  // unused in EU
 
     angY = gCurrentObject->oMoveAngleYaw / 182.044000;
-    area = ((s32) gCurrentObject->oPosX + 0x2000) / 1024
-           + ((s32) gCurrentObject->oPosZ + 0x2000) / 1024 * 16;
+    area = ((s32)gCurrentObject->oPosX + 0x2000) / 1024 + ((s32)gCurrentObject->oPosZ + 0x2000) / 1024 * 16;
 
     bgY = find_floor(gCurrentObject->oPosX, gCurrentObject->oPosY, gCurrentObject->oPosZ, &pfloor);
     water = find_water_level(gCurrentObject->oPosX, gCurrentObject->oPosZ);
@@ -222,7 +218,7 @@ void print_stageinfo(void) {
  * also prints the cursor functionality intended to be used with modifying
  * gDebugInfo to set enemy/effect behaviors.
  */
-void print_string_array_info(const char **strArr) {
+void print_string_array_info(const char** strArr) {
     s32 i;
 
     if (!sDebugStringArrPrinted) {
@@ -307,7 +303,7 @@ void reset_debug_objectinfo(void) {
  * despite so this has no effect, being called. (unused)
  */
 UNUSED static void check_debug_button_seq(void) {
-    s16 *buttonArr = sDebugInfoButtonSeq;
+    s16* buttonArr = sDebugInfoButtonSeq;
     s16 cButtonMask;
 
     if (!(gPlayer1Controller->buttonDown & L_TRIG)) {
@@ -362,7 +358,7 @@ UNUSED static void try_change_debug_page(void) {
 #ifdef VERSION_EU
 UNUSED static
 #endif
-void try_modify_debug_controls(void) {
+    void try_modify_debug_controls(void) {
     s32 sp4;
 
     if (gPlayer1Controller->buttonPressed & Z_TRIG) {
@@ -393,8 +389,7 @@ void try_modify_debug_controls(void) {
             // so the playtester can adjust enemy behavior and parameters on the fly, since
             // various behaviors try to update their behaviors from gDebugInfo[4] and [5].
             if (gPlayer1Controller->buttonDown & A_BUTTON) {
-                gDebugInfo[sDebugPage][sDebugSysCursor] =
-                    gDebugInfoOverwrite[sDebugPage][sDebugSysCursor];
+                gDebugInfo[sDebugPage][sDebugSysCursor] = gDebugInfoOverwrite[sDebugPage][sDebugSysCursor];
             } else {
                 gDebugInfo[sDebugPage][sDebugSysCursor] = gDebugInfo[sDebugPage][sDebugSysCursor] - sp4;
             }
@@ -481,12 +476,10 @@ void try_do_mario_debug_object_spawn(void) {
             spawn_object_relative(0, 0, 100, 200, gCurrentObject, MODEL_KOOPA_SHELL, bhvKoopaShell);
         }
         if (gPlayer1Controller->buttonPressed & L_JPAD) {
-            spawn_object_relative(0, 0, 100, 200, gCurrentObject, MODEL_BREAKABLE_BOX_SMALL,
-                                  bhvJumpingBox);
+            spawn_object_relative(0, 0, 100, 200, gCurrentObject, MODEL_BREAKABLE_BOX_SMALL, bhvJumpingBox);
         }
         if (gPlayer1Controller->buttonPressed & D_JPAD) {
-            spawn_object_relative(0, 0, 100, 200, gCurrentObject, MODEL_KOOPA_SHELL,
-                                  bhvKoopaShellUnderwater);
+            spawn_object_relative(0, 0, 100, 200, gCurrentObject, MODEL_KOOPA_SHELL, bhvKoopaShellUnderwater);
         }
     }
 }
@@ -525,7 +518,7 @@ void debug_print_obj_move_flags(void) {
 }
 
 // unused, what is this?
-void debug_enemy_unknown(s16 *enemyArr) {
+void debug_enemy_unknown(s16* enemyArr) {
     // copy b1-b4 over to an unknown s16 array
     enemyArr[4] = gDebugInfo[DEBUG_PAGE_ENEMYINFO][1];
     enemyArr[5] = gDebugInfo[DEBUG_PAGE_ENEMYINFO][2];

@@ -24,7 +24,7 @@
 #include "dialog_ids.h"
 
 struct SpawnInfo gPlayerSpawnInfos[1];
-struct GraphNode *D_8033A160[0x100];
+struct GraphNode* D_8033A160[0x100];
 struct Area gAreaData[8];
 
 struct WarpTransition gWarpTransition;
@@ -36,13 +36,13 @@ s16 gSavedCourseNum;
 s16 gMenuOptSelectIndex;
 s16 gSaveOptSelectIndex;
 
-struct SpawnInfo *gMarioSpawnInfo = &gPlayerSpawnInfos[0];
-struct GraphNode **gLoadedGraphNodes = D_8033A160;
-struct Area *gAreas = gAreaData;
-struct Area *gCurrentArea = NULL;
-struct CreditsEntry *gCurrCreditsEntry = NULL;
-Vp *D_8032CE74 = NULL;
-Vp *D_8032CE78 = NULL;
+struct SpawnInfo* gMarioSpawnInfo = &gPlayerSpawnInfos[0];
+struct GraphNode** gLoadedGraphNodes = D_8033A160;
+struct Area* gAreas = gAreaData;
+struct Area* gCurrentArea = NULL;
+struct CreditsEntry* gCurrCreditsEntry = NULL;
+Vp* D_8032CE74 = NULL;
+Vp* D_8032CE78 = NULL;
 s16 gWarpTransDelay = 0;
 u32 gFBSetColor = 0;
 u32 gWarpTransFBSetColor = 0;
@@ -57,22 +57,52 @@ s16 gCurrLevelNum = LEVEL_MIN;
  * from warp behavior.
  * When looping through sWarpBhvSpawnTable, if the behavior function in the table matches
  * the spawn behavior executed, the index of that behavior is used with sSpawnTypeFromWarpBhv
-*/
+ */
 
-const BehaviorScript *sWarpBhvSpawnTable[] = {
-    bhvDoorWarp,                bhvStar,                   bhvExitPodiumWarp,          bhvWarp,
-    bhvWarpPipe,                bhvFadingWarp,             bhvInstantActiveWarp,       bhvAirborneWarp,
-    bhvHardAirKnockBackWarp,    bhvSpinAirborneCircleWarp, bhvDeathWarp,               bhvSpinAirborneWarp,
-    bhvFlyingWarp,              bhvSwimmingWarp,           bhvPaintingStarCollectWarp, bhvPaintingDeathWarp,
-    bhvAirborneStarCollectWarp, bhvAirborneDeathWarp,      bhvLaunchStarCollectWarp,   bhvLaunchDeathWarp,
+const BehaviorScript* sWarpBhvSpawnTable[] = {
+    bhvDoorWarp,
+    bhvStar,
+    bhvExitPodiumWarp,
+    bhvWarp,
+    bhvWarpPipe,
+    bhvFadingWarp,
+    bhvInstantActiveWarp,
+    bhvAirborneWarp,
+    bhvHardAirKnockBackWarp,
+    bhvSpinAirborneCircleWarp,
+    bhvDeathWarp,
+    bhvSpinAirborneWarp,
+    bhvFlyingWarp,
+    bhvSwimmingWarp,
+    bhvPaintingStarCollectWarp,
+    bhvPaintingDeathWarp,
+    bhvAirborneStarCollectWarp,
+    bhvAirborneDeathWarp,
+    bhvLaunchStarCollectWarp,
+    bhvLaunchDeathWarp,
 };
 
 u8 sSpawnTypeFromWarpBhv[] = {
-    MARIO_SPAWN_DOOR_WARP,             MARIO_SPAWN_UNKNOWN_02,           MARIO_SPAWN_UNKNOWN_03,            MARIO_SPAWN_UNKNOWN_03,
-    MARIO_SPAWN_UNKNOWN_03,            MARIO_SPAWN_TELEPORT,             MARIO_SPAWN_INSTANT_ACTIVE,        MARIO_SPAWN_AIRBORNE,
-    MARIO_SPAWN_HARD_AIR_KNOCKBACK,    MARIO_SPAWN_SPIN_AIRBORNE_CIRCLE, MARIO_SPAWN_DEATH,                 MARIO_SPAWN_SPIN_AIRBORNE,
-    MARIO_SPAWN_FLYING,                MARIO_SPAWN_SWIMMING,             MARIO_SPAWN_PAINTING_STAR_COLLECT, MARIO_SPAWN_PAINTING_DEATH,
-    MARIO_SPAWN_AIRBORNE_STAR_COLLECT, MARIO_SPAWN_AIRBORNE_DEATH,       MARIO_SPAWN_LAUNCH_STAR_COLLECT,   MARIO_SPAWN_LAUNCH_DEATH,
+    MARIO_SPAWN_DOOR_WARP,
+    MARIO_SPAWN_UNKNOWN_02,
+    MARIO_SPAWN_UNKNOWN_03,
+    MARIO_SPAWN_UNKNOWN_03,
+    MARIO_SPAWN_UNKNOWN_03,
+    MARIO_SPAWN_TELEPORT,
+    MARIO_SPAWN_INSTANT_ACTIVE,
+    MARIO_SPAWN_AIRBORNE,
+    MARIO_SPAWN_HARD_AIR_KNOCKBACK,
+    MARIO_SPAWN_SPIN_AIRBORNE_CIRCLE,
+    MARIO_SPAWN_DEATH,
+    MARIO_SPAWN_SPIN_AIRBORNE,
+    MARIO_SPAWN_FLYING,
+    MARIO_SPAWN_SWIMMING,
+    MARIO_SPAWN_PAINTING_STAR_COLLECT,
+    MARIO_SPAWN_PAINTING_DEATH,
+    MARIO_SPAWN_AIRBORNE_STAR_COLLECT,
+    MARIO_SPAWN_AIRBORNE_DEATH,
+    MARIO_SPAWN_LAUNCH_STAR_COLLECT,
+    MARIO_SPAWN_LAUNCH_DEATH,
 };
 
 Vp D_8032CF00 = { {
@@ -81,14 +111,14 @@ Vp D_8032CF00 = { {
 } };
 
 #ifdef VERSION_EU
-const char *gNoControllerMsg[] = {
+const char* gNoControllerMsg[] = {
     "NO CONTROLLER",
     "MANETTE DEBRANCHEE",
     "CONTROLLER FEHLT",
 };
 #endif
 
-void override_viewport_and_clip(Vp *a, Vp *b, u8 c, u8 d, u8 e) {
+void override_viewport_and_clip(Vp* a, Vp* b, u8 c, u8 d, u8 e) {
     u16 sp6 = ((c >> 3) << 11) | ((d >> 3) << 6) | ((e >> 3) << 1) | 1;
 
     gFBSetColor = (sp6 << 16) | sp6;
@@ -127,9 +157,9 @@ void print_intro_text(void) {
     }
 }
 
-u32 get_mario_spawn_type(struct Object *o) {
+u32 get_mario_spawn_type(struct Object* o) {
     s32 i;
-    const BehaviorScript *behavior = virtual_to_segmented(0x13, o->behavior);
+    const BehaviorScript* behavior = virtual_to_segmented(0x13, o->behavior);
 
     for (i = 0; i < 20; i++) {
         if (sWarpBhvSpawnTable[i] == behavior) {
@@ -139,8 +169,8 @@ u32 get_mario_spawn_type(struct Object *o) {
     return 0;
 }
 
-struct ObjectWarpNode *area_get_warp_node(u8 id) {
-    struct ObjectWarpNode *node = NULL;
+struct ObjectWarpNode* area_get_warp_node(u8 id) {
+    struct ObjectWarpNode* node = NULL;
 
     for (node = gCurrentArea->warpNodes; node != NULL; node = node->next) {
         if (node->node.id == id) {
@@ -150,18 +180,18 @@ struct ObjectWarpNode *area_get_warp_node(u8 id) {
     return node;
 }
 
-struct ObjectWarpNode *area_get_warp_node_from_params(struct Object *o) {
+struct ObjectWarpNode* area_get_warp_node_from_params(struct Object* o) {
     u8 sp1F = (o->oBehParams & 0x00FF0000) >> 16;
 
     return area_get_warp_node(sp1F);
 }
 
 void load_obj_warp_nodes(void) {
-    struct ObjectWarpNode *sp24;
-    struct Object *sp20 = (struct Object *) gObjParentGraphNode.children;
+    struct ObjectWarpNode* sp24;
+    struct Object* sp20 = (struct Object*)gObjParentGraphNode.children;
 
     do {
-        struct Object *sp1C = sp20;
+        struct Object* sp1C = sp20;
 
         if (sp1C->activeFlags != ACTIVE_FLAG_DEACTIVATED && get_mario_spawn_type(sp1C) != 0) {
             sp24 = area_get_warp_node_from_params(sp1C);
@@ -169,8 +199,7 @@ void load_obj_warp_nodes(void) {
                 sp24->object = sp1C;
             }
         }
-    } while ((sp20 = (struct Object *) sp20->header.gfx.node.next)
-             != (struct Object *) gObjParentGraphNode.children);
+    } while ((sp20 = (struct Object*)sp20->header.gfx.node.next) != (struct Object*)gObjParentGraphNode.children);
 }
 
 void clear_areas(void) {
@@ -227,8 +256,7 @@ void load_area(s32 index) {
         gCurrAreaIndex = gCurrentArea->index;
 
         if (gCurrentArea->terrainData != NULL) {
-            load_area_terrain(index, gCurrentArea->terrainData, gCurrentArea->surfaceRooms,
-                              gCurrentArea->macroObjects);
+            load_area_terrain(index, gCurrentArea->terrainData, gCurrentArea->surfaceRooms, gCurrentArea->macroObjects);
         }
 
         if (gCurrentArea->objectSpawnInfos != NULL) {
@@ -389,8 +417,8 @@ void render_game(void) {
 
         if (gWarpTransition.isActive) {
             if (gWarpTransDelay == 0) {
-                gWarpTransition.isActive = !render_screen_transition(0, gWarpTransition.type, gWarpTransition.time,
-                                                                     &gWarpTransition.data);
+                gWarpTransition.isActive =
+                    !render_screen_transition(0, gWarpTransition.type, gWarpTransition.time, &gWarpTransition.data);
                 if (!gWarpTransition.isActive) {
                     if (gWarpTransition.type & 1) {
                         gWarpTransition.pauseRendering = TRUE;

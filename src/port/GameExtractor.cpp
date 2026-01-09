@@ -43,7 +43,8 @@ bool GameExtractor::SelectGameFromUI() {
 
     // Auto detect first baserom with valid hash
     for (const auto& rom : roms) {
-        if (!std::filesystem::exists(rom)) continue;
+        if (!std::filesystem::exists(rom))
+            continue;
 
         std::ifstream inFile(rom, std::ios::binary);
         if (!inFile.is_open()) {
@@ -76,14 +77,13 @@ bool GameExtractor::SelectGameFromUI() {
     // Desktop: fallback to file dialogue if no baserom found
     if (!foundGame) {
         if (!pfd::settings::available()) {
-            SPDLOG_ERROR(
-                "portable-file-dialogs is not available on this system."
-            );
+            SPDLOG_ERROR("portable-file-dialogs is not available on this system.");
             return false;
         }
 
         auto selection = pfd::open_file("Select a file", ".", { "N64 Roms", "*.z64" }).result();
-        if (selection.empty()) return false;
+        if (selection.empty())
+            return false;
 
         romPath = selection[0];
     }
@@ -107,7 +107,8 @@ bool GameExtractor::SelectGameFromUI() {
         }
 
         std::ifstream inFile(romPath, std::ios::binary);
-        if (!inFile.is_open()) return false;
+        if (!inFile.is_open())
+            return false;
 
         romData = std::vector<uint8_t>(std::istreambuf_iterator<char>(inFile), {});
         inFile.close();
@@ -178,7 +179,7 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
     const auto rom = new N64::Cartridge(this->mGameData);
     rom->Initialize();
     auto hash = rom->GetHash();
-    
+
     if (mGameList.find(hash) == mGameList.end()) {
         return std::nullopt;
     }

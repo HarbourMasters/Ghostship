@@ -135,7 +135,7 @@ void bhv_flying_bookend_loop(void) {
 void bhv_bookend_spawn_loop(void) {
     if (!(o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         if (o->oTimer > 40 && obj_is_near_to_and_facing_mario(600.0f, 0x2000)) {
-            struct Object *sp1C = spawn_object(o, MODEL_BOOKEND, bhvFlyingBookend);
+            struct Object* sp1C = spawn_object(o, MODEL_BOOKEND, bhvFlyingBookend);
 
             if (sp1C != NULL) {
                 sp1C->oAction = 3;
@@ -152,8 +152,7 @@ void bookshelf_manager_act_0(void) {
 
     if (!(o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         for (i = 0; i < 3; i++) {
-            spawn_object_relative(i, D_80331B30[i].unk00, D_80331B30[i].unk02, 0, o,
-                                  MODEL_BOOKEND, bhvBookSwitch);
+            spawn_object_relative(i, D_80331B30[i].unk00, D_80331B30[i].unk02, 0, o, MODEL_BOOKEND, bhvBookSwitch);
         }
 
         o->oAction = 1;
@@ -258,9 +257,9 @@ void bhv_book_switch_loop(void) {
             }
 
             if (approach_f32_ptr(&o->oBookSwitchUnkF4, 50.0f, 20.0f)) {
-                if (o->parentObj->oBookSwitchManagerUnkF4 >= 0 && o->oTimer > 60
-                    && (attackType == ATTACK_PUNCH || attackType == ATTACK_KICK_OR_TRIP
-                        || attackType == ATTACK_FROM_BELOW)) {
+                if (o->parentObj->oBookSwitchManagerUnkF4 >= 0 && o->oTimer > 60 &&
+                    (attackType == ATTACK_PUNCH || attackType == ATTACK_KICK_OR_TRIP ||
+                     attackType == ATTACK_FROM_BELOW)) {
                     o->oAction = 2;
                 }
             } else {
@@ -274,7 +273,7 @@ void bhv_book_switch_loop(void) {
                     play_sound(SOUND_GENERAL2_RIGHT_ANSWER, gGlobalSoundSource);
                     o->parentObj->oBookSwitchManagerUnkF4++;
                 } else {
-                    struct Object *sp38;
+                    struct Object* sp38;
                     s16 sp36 = random_u16() & 0x1;
                     s16 sp34 = gMarioObject->oPosZ + 1.5f * gMarioStates[0].vel[2];
 
@@ -284,9 +283,8 @@ void bhv_book_switch_loop(void) {
                         sp34 = 0;
                     }
 
-                    sp38 = spawn_object_abs_with_rot(o, 0, MODEL_BOOKEND, bhvFlyingBookend,
-                                                     0x1FC * sp36 - 0x8CA, 890, sp34, 0,
-                                                     0x8000 * sp36 + 0x4000, 0);
+                    sp38 = spawn_object_abs_with_rot(o, 0, MODEL_BOOKEND, bhvFlyingBookend, 0x1FC * sp36 - 0x8CA, 890,
+                                                     sp34, 0, 0x8000 * sp36 + 0x4000, 0);
 
                     if (sp38 != NULL) {
                         sp38->oAction = 3;

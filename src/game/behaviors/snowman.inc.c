@@ -13,7 +13,7 @@ static struct ObjectHitbox sRollingSphereHitbox = {
 };
 
 void bhv_snowmans_bottom_init(void) {
-    struct Object *snowmansHead;
+    struct Object* snowmansHead;
 
     o->oHomeX = o->oPosX;
     o->oHomeY = o->oPosY;
@@ -66,9 +66,9 @@ void snowmans_bottom_act_1(void) {
     }
 
     if (followStatus == PATH_REACHED_END) {
-        UNUSED s16 sp1E = (u16) o->oAngleToMario - (u16) o->oMoveAngleYaw;
-        if (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x2000) == TRUE
-            && o->oSnowmansBottomUnk1AC == 1) {
+        UNUSED s16 sp1E = (u16)o->oAngleToMario - (u16)o->oMoveAngleYaw;
+        if (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x2000) == TRUE &&
+            o->oSnowmansBottomUnk1AC == 1) {
             o->oSnowmansBottomUnkF8 = o->oAngleToMario;
         } else {
             o->oSnowmansBottomUnkF8 = o->oMoveAngleYaw;
@@ -122,8 +122,8 @@ void snowmans_bottom_act_3(void) {
 void bhv_snowmans_bottom_loop(void) {
     switch (o->oAction) {
         case 0:
-            if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 400) == 1
-                && set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT) == MARIO_DIALOG_STATUS_SPEAK) {
+            if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 400) == 1 &&
+                set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT) == MARIO_DIALOG_STATUS_SPEAK) {
                 s16 response = cutscene_object_with_dialog(CUTSCENE_DIALOG, o, DIALOG_110);
                 if (response != DIALOG_RESPONSE_NONE) {
                     o->oForwardVel = 10.0f;
@@ -171,8 +171,7 @@ void bhv_snowmans_head_init(void) {
     o->oBuoyancy = 2.0f;
 
     if ((starFlags & (1 << sp36)) && gCurrActNum != sp36 + 1) {
-        spawn_object_abs_with_rot(o, 0, MODEL_CCM_SNOWMAN_BASE, bhvBigSnowmanWhole, -4230, -1344, 1813,
-                                  0, 0, 0);
+        spawn_object_abs_with_rot(o, 0, MODEL_CCM_SNOWMAN_BASE, bhvBigSnowmanWhole, -4230, -1344, 1813, 0, 0, 0);
         o->oPosX = -4230.0f;
         o->oPosY = -994.0f;
         o->oPosZ = 1813.0f;
@@ -186,7 +185,8 @@ void bhv_snowmans_head_loop(void) {
 
     switch (o->oAction) {
         case 0:
-            if (trigger_obj_dialog_when_facing(&o->oSnowmansHeadDialogActive, DIALOG_109, 400.0f, MARIO_DIALOG_LOOK_FRONT)) {
+            if (trigger_obj_dialog_when_facing(&o->oSnowmansHeadDialogActive, DIALOG_109, 400.0f,
+                                               MARIO_DIALOG_LOOK_FRONT)) {
                 o->oAction = 1;
             }
             break;
@@ -212,7 +212,8 @@ void bhv_snowmans_head_loop(void) {
             break;
 
         case 4:
-            if (trigger_obj_dialog_when_facing(&o->oSnowmansHeadDialogActive, DIALOG_111, 700.0f, MARIO_DIALOG_LOOK_UP)) {
+            if (trigger_obj_dialog_when_facing(&o->oSnowmansHeadDialogActive, DIALOG_111, 700.0f,
+                                               MARIO_DIALOG_LOOK_UP)) {
                 spawn_mist_particles();
                 spawn_default_star(-4700.0f, -1024.0f, 1890.0f);
                 o->oAction = 1;

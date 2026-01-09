@@ -10,7 +10,7 @@ struct Struct8032F34C {
     s16 bridgeRelativeStartingXorZ;
     s16 platformWidth;
     s16 model;
-    const Collision *collision;
+    const Collision* collision;
 };
 
 struct Struct8032F34C sTumblingBridgeParams[] = {
@@ -62,7 +62,7 @@ void bhv_tumbling_bridge_platform_loop(void) {
 }
 
 void tumbling_bridge_act_1(void) {
-    struct Object *platformObj;
+    struct Object* platformObj;
     s32 i;
     s32 bridgeID = o->oBehParams2ndByte;
     s32 relativePlatformX;
@@ -75,11 +75,11 @@ void tumbling_bridge_act_1(void) {
         relativePlatformZ = 0;
 
         if (bridgeID == 3) {
-            relativePlatformX = sTumblingBridgeParams[bridgeID].bridgeRelativeStartingXorZ
-                                + sTumblingBridgeParams[bridgeID].platformWidth * i;
+            relativePlatformX = sTumblingBridgeParams[bridgeID].bridgeRelativeStartingXorZ +
+                                sTumblingBridgeParams[bridgeID].platformWidth * i;
         } else {
-            relativePlatformZ = sTumblingBridgeParams[bridgeID].bridgeRelativeStartingXorZ
-                                + sTumblingBridgeParams[bridgeID].platformWidth * i;
+            relativePlatformZ = sTumblingBridgeParams[bridgeID].bridgeRelativeStartingXorZ +
+                                sTumblingBridgeParams[bridgeID].platformWidth * i;
         }
 
         if (cur_obj_has_behavior(bhvLllTumblingBridge)) {
@@ -89,9 +89,9 @@ void tumbling_bridge_act_1(void) {
             relativeInitialPlatformY = 450;
         }
 
-        platformObj = spawn_object_relative(
-            0, relativePlatformX, relativePlatformY + relativeInitialPlatformY, relativePlatformZ, o,
-            sTumblingBridgeParams[bridgeID].model, bhvTumblingBridgePlatform);
+        platformObj =
+            spawn_object_relative(0, relativePlatformX, relativePlatformY + relativeInitialPlatformY, relativePlatformZ,
+                                  o, sTumblingBridgeParams[bridgeID].model, bhvTumblingBridgePlatform);
 
         obj_set_collision_data(platformObj, sTumblingBridgeParams[bridgeID].collision);
     }

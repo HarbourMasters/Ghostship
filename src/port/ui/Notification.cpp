@@ -86,7 +86,7 @@ void Window::Draw() {
         if (notification.itemIcon != nullptr) {
             ImGui::Image(
                 Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(notification.itemIcon),
-                ImVec2(22 * CVarGetFloat("gSettings.Notifications.Size", 1.8f), 22 * CVarGetFloat("gSettings.Notifications.Size", 1.8f)));
+                ImVec2(24 * CVarGetFloat("gSettings.Notifications.Size", 1.8f), 24 * CVarGetFloat("gSettings.Notifications.Size", 1.8f)));
             ImGui::SameLine();
         }
         if (!notification.prefix.empty()) {

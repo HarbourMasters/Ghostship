@@ -35,7 +35,7 @@ namespace GhostshipGui {
 extern std::shared_ptr<GhostshipMenu> mGhostshipMenu;
 enum setting { UPDATE_aspectRatioX, UPDATE_aspectRatioY, UPDATE_verticalPixelCount };
 
-std::unordered_map<int32_t, const char *> aspectRatioPresetLabels = { { 0, "Off" },
+std::unordered_map<int32_t, const char*> aspectRatioPresetLabels = {  { 0, "Off" },
                                                                       { 1, "Custom" },
                                                                       { 2, "Original (4:3)" },
                                                                       { 3, "Widescreen (16:9)" },

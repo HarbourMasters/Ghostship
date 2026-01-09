@@ -4,8 +4,8 @@ void bhv_hidden_star_init(void) {
     s16 count = count_objects_with_behavior(bhvHiddenStarTrigger);
 
     if (count == 0) {
-        struct Object *star = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStar,
-                                                        o->oPosX, o->oPosY, o->oPosZ, 0, 0, 0);
+        struct Object* star =
+            spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStar, o->oPosX, o->oPosY, o->oPosZ, 0, 0, 0);
         star->oBehParams = o->oBehParams;
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }
@@ -33,7 +33,7 @@ void bhv_hidden_star_loop(void) {
 
 void bhv_hidden_star_trigger_loop(void) {
     if (obj_check_if_collided_with_object(o, gMarioObject) == TRUE) {
-        struct Object *hiddenStar = cur_obj_nearest_object_with_behavior(bhvHiddenStar);
+        struct Object* hiddenStar = cur_obj_nearest_object_with_behavior(bhvHiddenStar);
 
         if (hiddenStar != NULL) {
             hiddenStar->oHiddenStarTriggerCounter++;
@@ -42,11 +42,11 @@ void bhv_hidden_star_trigger_loop(void) {
                 spawn_orange_number(hiddenStar->oHiddenStarTriggerCounter, 0, 0, 0);
             }
 
-            if(ROM_JP) {
+            if (ROM_JP) {
                 play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
             } else {
-                play_sound(SOUND_MENU_COLLECT_SECRET
-                       + (((u8) hiddenStar->oHiddenStarTriggerCounter - 1) << 16), gGlobalSoundSource);
+                play_sound(SOUND_MENU_COLLECT_SECRET + (((u8)hiddenStar->oHiddenStarTriggerCounter - 1) << 16),
+                           gGlobalSoundSource);
             }
         }
 
