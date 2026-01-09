@@ -11,15 +11,15 @@ void bhv_butterfly_init(void) {
 }
 
 void butterfly_step(s32 speed) {
-    struct FloorGeometry* sp24;
+    struct FloorGeometry *sp24;
     s16 yaw = o->oMoveAngleYaw;
     s16 pitch = o->oMoveAnglePitch;
     s16 yPhase = o->oButterflyYPhase;
     f32 floorY;
 
-    o->oVelX = sins(yaw) * (f32)speed;
-    o->oVelY = sins(pitch) * (f32)speed;
-    o->oVelZ = coss(yaw) * (f32)speed;
+    o->oVelX = sins(yaw) * (f32) speed;
+    o->oVelY = sins(pitch) * (f32) speed;
+    o->oVelZ = coss(yaw) * (f32) speed;
 
     o->oPosX += o->oVelX;
     o->oPosZ += o->oVelZ;

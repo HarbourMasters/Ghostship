@@ -31,7 +31,7 @@ void bhv_chain_chomp_chain_part_update(void) {
     if (o->parentObj->oAction == CHAIN_CHOMP_ACT_UNLOAD_CHAIN) {
         obj_mark_for_deletion(o);
     } else if (o->oBehParams2ndByte != CHAIN_CHOMP_CHAIN_PART_BP_PIVOT) {
-        struct ChainSegment* segment = &o->parentObj->oChainChompSegments[o->oBehParams2ndByte];
+        struct ChainSegment *segment = &o->parentObj->oChainChompSegments[o->oBehParams2ndByte];
 
         // Set position relative to the pivot
         o->oPosX = o->parentObj->parentObj->oPosX + segment->posX;
@@ -47,7 +47,7 @@ void bhv_chain_chomp_chain_part_update(void) {
  * When mario gets close enough, allocate chain segments and spawn their objects.
  */
 static void chain_chomp_act_uninitialized(void) {
-    struct ChainSegment* segments;
+    struct ChainSegment *segments;
     s32 i;
 
     if (o->oDistanceToMario < 3000.0f) {
@@ -65,7 +65,9 @@ static void chain_chomp_act_uninitialized(void) {
             cur_obj_set_pos_to_home();
 
             // Spawn the pivot and set to parent
-            if ((o->parentObj = spawn_object(o, CHAIN_CHOMP_CHAIN_PART_BP_PIVOT, bhvChainChompChainPart)) != NULL) {
+            if ((o->parentObj =
+                     spawn_object(o, CHAIN_CHOMP_CHAIN_PART_BP_PIVOT, bhvChainChompChainPart))
+                != NULL) {
                 // Spawn the non-pivot chain parts, starting from the chain
                 // chomp and moving toward the pivot
                 for (i = 1; i <= 4; i++) {
@@ -84,8 +86,8 @@ static void chain_chomp_act_uninitialized(void) {
  * part as well as from the pivot.
  */
 static void chain_chomp_update_chain_segments(void) {
-    struct ChainSegment* prevSegment;
-    struct ChainSegment* segment;
+    struct ChainSegment *prevSegment;
+    struct ChainSegment *segment;
     f32 offsetX;
     f32 offsetY;
     f32 offsetZ;
@@ -220,11 +222,13 @@ static void chain_chomp_sub_act_lunge(void) {
             val04 = 220.0f;
         }
 
-        o->oChainChompMaxDistBetweenChainParts = val04 / 220.0f * o->oChainChompMaxDistFromPivotPerChainPart;
+        o->oChainChompMaxDistBetweenChainParts =
+            val04 / 220.0f * o->oChainChompMaxDistFromPivotPerChainPart;
         o->oTimer = 0;
     } else {
         // Turn toward pivot
-        cur_obj_rotate_yaw_toward(atan2s(o->oChainChompSegments[0].posZ, o->oChainChompSegments[0].posX), 0x1000);
+        cur_obj_rotate_yaw_toward(atan2s(o->oChainChompSegments[0].posZ, o->oChainChompSegments[0].posX),
+                                  0x1000);
 
         if (o->oChainChompUnk104 != 0.0f) {
             approach_f32_ptr(&o->oChainChompUnk104, 0.0f, 0.8f);
@@ -252,8 +256,8 @@ static void chain_chomp_released_trigger_cutscene(void) {
 
     //! Can delay this if we get into a cutscene-unfriendly action after the
     //  last post ground pound and before this
-    if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK &&
-        (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) && cutscene_object(CUTSCENE_STAR_SPAWN, o) == 1) {
+    if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK 
+        && (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) && cutscene_object(CUTSCENE_STAR_SPAWN, o) == 1) {
         o->oChainChompReleaseStatus = CHAIN_CHOMP_RELEASED_LUNGE_AROUND;
         o->oTimer = 0;
     }
@@ -392,9 +396,10 @@ static void chain_chomp_act_move(void) {
         o->oChainChompSegments[0].posY = o->oPosY - o->parentObj->oPosY;
         o->oChainChompSegments[0].posZ = o->oPosZ - o->parentObj->oPosZ;
 
-        o->oChainChompDistToPivot = sqrtf(o->oChainChompSegments[0].posX * o->oChainChompSegments[0].posX +
-                                          o->oChainChompSegments[0].posY * o->oChainChompSegments[0].posY +
-                                          o->oChainChompSegments[0].posZ * o->oChainChompSegments[0].posZ);
+        o->oChainChompDistToPivot =
+            sqrtf(o->oChainChompSegments[0].posX * o->oChainChompSegments[0].posX
+                  + o->oChainChompSegments[0].posY * o->oChainChompSegments[0].posY
+                  + o->oChainChompSegments[0].posZ * o->oChainChompSegments[0].posZ);
 
         // If the chain is fully stretched
         maxDistToPivot = o->oChainChompMaxDistFromPivotPerChainPart * 5;

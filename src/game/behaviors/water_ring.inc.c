@@ -4,8 +4,8 @@ f32 water_ring_calc_mario_dist(void) {
     f32 marioDistX = o->oPosX - gMarioObject->header.gfx.pos[0];
     f32 marioDistY = o->oPosY - (gMarioObject->header.gfx.pos[1] + 80.0f);
     f32 marioDistZ = o->oPosZ - gMarioObject->header.gfx.pos[2];
-    f32 marioDistInFront =
-        marioDistX * o->oWaterRingNormalX + marioDistY * o->oWaterRingNormalY + marioDistZ * o->oWaterRingNormalZ;
+    f32 marioDistInFront = marioDistX * o->oWaterRingNormalX + marioDistY * o->oWaterRingNormalY
+                           + marioDistZ * o->oWaterRingNormalZ;
 
     return marioDistInFront;
 }
@@ -41,28 +41,26 @@ void bhv_jet_stream_water_ring_init(void) {
     o->oFaceAnglePitch = 0x8000;
 }
 
-void water_ring_check_collection(f32 avgScale, struct Object* ringManager) {
+void water_ring_check_collection(f32 avgScale, struct Object *ringManager) {
     f32 marioDistInFront = water_ring_calc_mario_dist();
 
-    if (!is_point_close_to_object(o, gMarioObject->header.gfx.pos[0], gMarioObject->header.gfx.pos[1] + 80.0f,
+    if (!is_point_close_to_object(o, gMarioObject->header.gfx.pos[0],
+                                  gMarioObject->header.gfx.pos[1] + 80.0f,
                                   gMarioObject->header.gfx.pos[2], (avgScale + 0.2) * 120.0)) {
         o->oWaterRingMarioDistInFront = marioDistInFront;
         return;
     }
 
     if (o->oWaterRingMarioDistInFront * marioDistInFront < 0.0f) {
-        struct Object* ringSpawner = o->parentObj;
+        struct Object *ringSpawner = o->parentObj;
 
         if (ringSpawner != NULL) {
-            if ((o->oWaterRingIndex == ringManager->oWaterRingMgrLastRingCollected + 1) ||
-                (ringSpawner->oWaterRingSpawnerRingsCollected == 0)) {
+            if ((o->oWaterRingIndex == ringManager->oWaterRingMgrLastRingCollected + 1)
+                || (ringSpawner->oWaterRingSpawnerRingsCollected == 0)) {
                 ringSpawner->oWaterRingSpawnerRingsCollected++;
                 if (ringSpawner->oWaterRingSpawnerRingsCollected < 6) {
                     spawn_orange_number(ringSpawner->oWaterRingSpawnerRingsCollected, 0, -40, 0);
-                    play_sound(ROM_JP ? SOUND_MENU_STAR_SOUND
-                                      : SOUND_MENU_COLLECT_SECRET +
-                                            (((u8)ringSpawner->oWaterRingSpawnerRingsCollected - 1) << 16),
-                               gGlobalSoundSource);
+                    play_sound(ROM_JP ? SOUND_MENU_STAR_SOUND : SOUND_MENU_COLLECT_SECRET + (((u8) ringSpawner->oWaterRingSpawnerRingsCollected - 1) << 16), gGlobalSoundSource);
                 }
                 ringManager->oWaterRingMgrLastRingCollected = o->oWaterRingIndex;
             } else {
@@ -86,7 +84,7 @@ void water_ring_set_scale(f32 avgScale) {
 }
 
 void water_ring_act_collected(void) {
-    f32 avgScale = (f32)o->oTimer * 0.2 + o->oWaterRingAvgScale;
+    f32 avgScale = (f32) o->oTimer * 0.2 + o->oWaterRingAvgScale;
 
     if (o->oTimer > 20) {
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
@@ -101,12 +99,12 @@ void water_ring_act_collected(void) {
 }
 
 void water_ring_act_not_collected(void) {
-    f32 avgScale = (f32)o->oTimer / 225.0 * 3.0 + 0.5;
+    f32 avgScale = (f32) o->oTimer / 225.0 * 3.0 + 0.5;
 
     //! In this case ringSpawner and ringManager are the same object,
     //  because the Jet Stream Ring Spawner is its own parent object.
-    struct Object* ringSpawner = o->parentObj;
-    struct Object* ringManager = ringSpawner->parentObj;
+    struct Object *ringSpawner = o->parentObj;
+    struct Object *ringManager = ringSpawner->parentObj;
 
     if (o->oTimer > 225) {
         o->oOpacity -= 2;
@@ -122,8 +120,8 @@ void water_ring_act_not_collected(void) {
     o->oFaceAngleYaw += 0x100;
     set_object_visibility(o, 5000);
 
-    if (ringSpawner->oWaterRingSpawnerRingsCollected == 4 &&
-        o->oWaterRingIndex == ringManager->oWaterRingMgrLastRingCollected + 1) {
+    if (ringSpawner->oWaterRingSpawnerRingsCollected == 4
+        && o->oWaterRingIndex == ringManager->oWaterRingMgrLastRingCollected + 1) {
         o->oOpacity = sins(o->oTimer * 0x1000) * 200.0f + 50.0f;
     }
 
@@ -143,7 +141,7 @@ void bhv_jet_stream_water_ring_loop(void) {
 }
 
 void spawn_manta_ray_ring_manager(void) {
-    struct Object* ringManager = spawn_object(o, MODEL_NONE, bhvMantaRayRingManager);
+    struct Object *ringManager = spawn_object(o, MODEL_NONE, bhvMantaRayRingManager);
     o->parentObj = ringManager;
 }
 
@@ -151,7 +149,7 @@ void water_ring_spawner_act_inactive(void) {
     //! The Jet Stream Ring Spawner is its own parent object. The code may have been copied
     //  from the Manta Ray, which spawns rings but also has a Ring Manager object as its
     //  parent. The Jet Stream Ring Spawner functions as both a spawner and a Ring Manager.
-    struct Object* currentObj = o->parentObj;
+    struct Object *currentObj = o->parentObj;
 
     //! Because the index counter overflows at 10000, it's possible to wait
     //  for about 4 hours and 38 minutes if you miss a ring, and the index will
@@ -160,8 +158,9 @@ void water_ring_spawner_act_inactive(void) {
         o->oTimer = 0;
     }
 
-    if ((o->oTimer == 0) || (o->oTimer == 50) || (o->oTimer == 150) || (o->oTimer == 200) || (o->oTimer == 250)) {
-        struct Object* waterRing = spawn_object(o, MODEL_WATER_RING, bhvJetStreamWaterRing);
+    if ((o->oTimer == 0) || (o->oTimer == 50) || (o->oTimer == 150) || (o->oTimer == 200)
+        || (o->oTimer == 250)) {
+        struct Object *waterRing = spawn_object(o, MODEL_WATER_RING, bhvJetStreamWaterRing);
         waterRing->oWaterRingIndex = currentObj->oWaterRingMgrNextRingIndex;
         currentObj->oWaterRingMgrNextRingIndex++;
         if (currentObj->oWaterRingMgrNextRingIndex > 10000) {
@@ -193,9 +192,9 @@ void bhv_manta_ray_water_ring_init(void) {
 }
 
 void manta_water_ring_act_not_collected(void) {
-    f32 avgScale = (f32)o->oTimer / 50 * 1.3 + 0.1;
-    struct Object* ringSpawner = o->parentObj;
-    struct Object* ringManager = ringSpawner->parentObj;
+    f32 avgScale = (f32) o->oTimer / 50 * 1.3 + 0.1;
+    struct Object *ringSpawner = o->parentObj;
+    struct Object *ringManager = ringSpawner->parentObj;
 
     if (avgScale > 1.3) {
         avgScale = 1.3;
@@ -212,8 +211,8 @@ void manta_water_ring_act_not_collected(void) {
     water_ring_set_scale(avgScale);
     set_object_visibility(o, 5000);
 
-    if (ringSpawner->oWaterRingSpawnerRingsCollected == 4 &&
-        o->oWaterRingIndex == ringManager->oWaterRingMgrLastRingCollected + 1) {
+    if (ringSpawner->oWaterRingSpawnerRingsCollected == 4
+        && o->oWaterRingIndex == ringManager->oWaterRingMgrLastRingCollected + 1) {
         o->oOpacity = sins(o->oTimer * 0x1000) * 200.0f + 50.0f;
     }
 

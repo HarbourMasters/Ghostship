@@ -14,7 +14,7 @@ void bhv_orange_number_loop(void) {
     }
 
     if (o->oTimer == 35) {
-        struct Object* sp1C = spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
+        struct Object *sp1C = spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
         sp1C->oPosY -= 30.0f;
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }

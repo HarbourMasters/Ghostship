@@ -8,4 +8,4 @@ TrajectoryData* Trajectory::GetPointer() {
 size_t Trajectory::GetPointerSize() {
     return sizeof(mData.size()) * sizeof(TrajectoryData);
 }
-} // namespace SM64
+}

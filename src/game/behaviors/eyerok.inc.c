@@ -22,8 +22,9 @@ static s32 eyerok_check_mario_relative_z(s32 arg0) {
     }
 }
 
-static void eyerok_spawn_hand(s16 side, s32 model, const BehaviorScript* behavior) {
-    struct Object* hand = spawn_object_relative_with_scale(side, -500 * side, 0, 300, 1.5f, o, model, behavior);
+static void eyerok_spawn_hand(s16 side, s32 model, const BehaviorScript *behavior) {
+    struct Object *hand = spawn_object_relative_with_scale(side, -500 * side, 0, 300, 1.5f,
+                                                           o, model, behavior);
     if (hand != NULL) {
         hand->oFaceAngleYaw -= 0x4000 * side;
     }
@@ -180,15 +181,17 @@ static void eyerok_hand_pound_ground(void) {
 }
 
 static void eyerok_hand_act_sleep(void) {
-    if (o->parentObj->oAction != EYEROK_BOSS_ACT_SLEEP && ++o->oEyerokHandWakeUpTimer > -3 * o->oBehParams2ndByte) {
+    if (o->parentObj->oAction != EYEROK_BOSS_ACT_SLEEP
+        && ++o->oEyerokHandWakeUpTimer > -3 * o->oBehParams2ndByte) {
         if (cur_obj_check_if_near_animation_end()) {
             o->parentObj->oEyerokBossNumHands++;
             o->oAction = EYEROK_HAND_ACT_IDLE;
             o->collisionData = segmented_to_virtual(ssl_seg7_collision_07028274);
         } else {
             approach_f32_ptr(&o->oPosX, o->oHomeX, 15.0f);
-            o->oPosY = o->oHomeY +
-                       (200 * o->oBehParams2ndByte + 400) * sins((s16)(absf(o->oPosX - o->oHomeX) / 724.0f * 0x8000));
+            o->oPosY = o->oHomeY
+                       + (200 * o->oBehParams2ndByte + 400)
+                             * sins((s16)(absf(o->oPosX - o->oHomeX) / 724.0f * 0x8000));
             obj_face_yaw_approach(o->oMoveAngleYaw, 400);
         }
     } else {
@@ -284,7 +287,8 @@ static void eyerok_hand_act_show_eye(void) {
 
             if (o->parentObj->oEyerokBossNumHands != 2) {
                 obj_face_yaw_approach(o->oMoveAngleYaw, 0x800);
-                if (o->oTimer > 10 && (o->oPosZ - gMarioObject->oPosZ > 0.0f || (o->oMoveFlags & OBJ_MOVE_HIT_EDGE))) {
+                if (o->oTimer > 10
+                    && (o->oPosZ - gMarioObject->oPosZ > 0.0f || (o->oMoveFlags & OBJ_MOVE_HIT_EDGE))) {
                     o->parentObj->oEyerokBossActiveHand = 0;
                     o->oForwardVel = 0.0f;
                 }
@@ -368,9 +372,9 @@ static void eyerok_hand_act_retreat(void) {
 }
 
 static void eyerok_hand_act_target_mario(void) {
-    if (eyerok_check_mario_relative_z(400) || o->oPosZ - gMarioObject->oPosZ > 0.0f ||
-        o->oPosZ - o->parentObj->oPosZ > 1700.0f || absf(o->oPosX - o->parentObj->oPosX) > 900.0f ||
-        (o->oMoveFlags & OBJ_MOVE_HIT_WALL)) {
+    if (eyerok_check_mario_relative_z(400) || o->oPosZ - gMarioObject->oPosZ > 0.0f
+        || o->oPosZ - o->parentObj->oPosZ > 1700.0f || absf(o->oPosX - o->parentObj->oPosX) > 900.0f
+        || (o->oMoveFlags & OBJ_MOVE_HIT_WALL)) {
         o->oForwardVel = 0.0f;
         if (approach_f32_ptr(&o->oPosY, o->oHomeY + 300.0f, 20.0f)) {
             o->oAction = EYEROK_HAND_ACT_SMASH;
@@ -434,15 +438,18 @@ static void eyerok_hand_act_fist_sweep(void) {
 }
 
 static void eyerok_hand_act_begin_double_pound(void) {
-    if (o->parentObj->oEyerokBossUnk104 < 0 || o->parentObj->oEyerokBossActiveHand == o->oBehParams2ndByte) {
+    if (o->parentObj->oEyerokBossUnk104 < 0
+        || o->parentObj->oEyerokBossActiveHand == o->oBehParams2ndByte) {
         o->oAction = EYEROK_HAND_ACT_DOUBLE_POUND;
         o->oMoveAngleYaw = (s32)(o->oFaceAngleYaw - 0x4000 * o->parentObj->oEyerokBossUnk108);
     } else {
-        f32 sp4 = o->parentObj->oPosX + 400.0f * o->parentObj->oEyerokBossUnk108 - 180.0f * o->oBehParams2ndByte;
+        f32 sp4 = o->parentObj->oPosX + 400.0f * o->parentObj->oEyerokBossUnk108
+                  - 180.0f * o->oBehParams2ndByte;
 
         o->oPosX = o->oHomeX + (sp4 - o->oHomeX) * o->parentObj->oEyerokBossUnk110;
         o->oPosY = o->oHomeY + 300.0f * o->parentObj->oEyerokBossUnk110;
-        o->oPosZ = o->oHomeZ + (o->parentObj->oEyerokBossUnk10C - o->oHomeZ) * o->parentObj->oEyerokBossUnk110;
+        o->oPosZ =
+            o->oHomeZ + (o->parentObj->oEyerokBossUnk10C - o->oHomeZ) * o->parentObj->oEyerokBossUnk110;
     }
 }
 

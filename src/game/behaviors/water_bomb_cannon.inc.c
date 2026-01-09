@@ -18,7 +18,7 @@ void bhv_bubble_cannon_barrel_loop(void) {
             // check this
             if (o->parentObj->oWaterCannonUnkF4 != 0) {
                 if (o->oForwardVel == 0.0f) {
-                    struct Object* waterBomb;
+                    struct Object *waterBomb;
 
                     o->oForwardVel = 35.0f;
 
@@ -57,7 +57,7 @@ void water_bomb_cannon_act_1(void) {
             obj_move_pitch_approach(o->oWaterCannonUnkFC, 0x80);
             obj_face_yaw_approach(o->oWaterCannonUnk100, 0x100);
 
-            if ((s16)o->oFaceAngleYaw == (s16)o->oWaterCannonUnk100) {
+            if ((s16) o->oFaceAngleYaw == (s16) o->oWaterCannonUnk100) {
                 if (o->oWaterCannonUnkF8 != 0) {
                     o->oWaterCannonUnkF8--;
                 } else {

@@ -5,7 +5,7 @@ void dorrie_raise_head(void) {
     f32 xzDisp;
     f32 yDisp;
 
-    o->oDorrieNeckAngle -= (s16)absf(370.0f * sins(o->oDorrieHeadRaiseSpeed));
+    o->oDorrieNeckAngle -= (s16) absf(370.0f * sins(o->oDorrieHeadRaiseSpeed));
 
     xzDisp = 440.0f * (coss(o->oDorrieNeckAngle) - coss(startAngle));
     yDisp = 440.0f * (sins(o->oDorrieNeckAngle) - sins(startAngle));
@@ -43,7 +43,8 @@ void dorrie_act_move(void) {
         }
 
         obj_forward_vel_approach(targetSpeed, 0.5f);
-        o->oDorrieYawVel = approach_s16_symmetric(o->oDorrieYawVel, (s16)(targetYaw - o->oMoveAngleYaw) / 50, 5);
+        o->oDorrieYawVel =
+            approach_s16_symmetric(o->oDorrieYawVel, (s16)(targetYaw - o->oMoveAngleYaw) / 50, 5);
         o->oMoveAngleYaw += o->oDorrieYawVel;
     }
 
@@ -60,12 +61,12 @@ void dorrie_act_lower_head(void) {
     if (cur_obj_init_anim_check_frame(2, 35)) {
         cur_obj_reverse_animation();
 
-        if (ROM_JP) {
+        if(ROM_JP) {
             if (o->oTimer > 150) {
                 dorrie_begin_head_raise(FALSE);
             } else if (gMarioObject->platform == o) {
-                if (o->oDorrieForwardDistToMario > 830.0f &&
-                    set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
+                if (o->oDorrieForwardDistToMario > 830.0f
+                    && set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
                     dorrie_begin_head_raise(TRUE);
                 } else if (o->oDorrieForwardDistToMario > 320.0f) {
                     o->oTimer = 0;
@@ -73,8 +74,8 @@ void dorrie_act_lower_head(void) {
             }
         } else {
             if (gMarioObject->platform == o) {
-                if (o->oDorrieOffsetY == -17.0f && o->oDorrieForwardDistToMario > 780.0f &&
-                    set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
+                if (o->oDorrieOffsetY == -17.0f && o->oDorrieForwardDistToMario > 780.0f
+                    && set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
                     dorrie_begin_head_raise(TRUE);
                 } else if (o->oDorrieForwardDistToMario > 320.0f) {
                     o->oTimer = 0;
@@ -120,7 +121,8 @@ void bhv_dorrie_update(void) {
         o->oDorrieDistToHome = cur_obj_lateral_dist_to_home();
 
         // Shift dorrie's bounds to account for her neck
-        boundsShift = 440.0f * coss(o->oDorrieNeckAngle) * coss(o->oMoveAngleYaw - o->oDorrieAngleToHome);
+        boundsShift =
+            440.0f * coss(o->oDorrieNeckAngle) * coss(o->oMoveAngleYaw - o->oDorrieAngleToHome);
 
         if (clamp_f32(&o->oDorrieDistToHome, 1650.0f + boundsShift, 2300.0f + boundsShift)) {
             o->oPosX = o->oHomeX - o->oDorrieDistToHome * sins(o->oDorrieAngleToHome);

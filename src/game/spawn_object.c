@@ -18,8 +18,8 @@
  * An unused linked list struct that seems to have been replaced by ObjectNode.
  */
 struct LinkedList {
-    struct LinkedList* next;
-    struct LinkedList* prev;
+    struct LinkedList *next;
+    struct LinkedList *prev;
 };
 
 /**
@@ -27,10 +27,10 @@ struct LinkedList {
  * a list, and return this list in pFreeList.
  * Appears to have been replaced by init_free_object_list.
  */
-void unused_init_free_list(struct LinkedList* usedList, struct LinkedList** pFreeList, struct LinkedList* pool,
-                           s32 itemSize, s32 poolLength) {
+void unused_init_free_list(struct LinkedList *usedList, struct LinkedList **pFreeList,
+                           struct LinkedList *pool, s32 itemSize, s32 poolLength) {
     s32 i;
-    struct LinkedList* node = pool;
+    struct LinkedList *node = pool;
 
     usedList->next = usedList;
     usedList->prev = usedList;
@@ -39,7 +39,7 @@ void unused_init_free_list(struct LinkedList* usedList, struct LinkedList** pFre
 
     for (i = 0; i < poolLength - 1; i++) {
         // Add next node to free list
-        node = (struct LinkedList*)((u8*)node + itemSize);
+        node = (struct LinkedList *) ((u8 *) node + itemSize);
         pool->next = node;
         pool = node;
     }
@@ -54,8 +54,9 @@ void unused_init_free_list(struct LinkedList* usedList, struct LinkedList** pFre
  * freeList is empty.
  * Appears to have been replaced by try_allocate_object.
  */
-struct LinkedList* unused_try_allocate(struct LinkedList* destList, struct LinkedList* freeList) {
-    struct LinkedList* node = freeList->next;
+struct LinkedList *unused_try_allocate(struct LinkedList *destList,
+                                       struct LinkedList *freeList) {
+    struct LinkedList *node = freeList->next;
 
     if (node != NULL) {
         // Remove from free list
@@ -76,8 +77,8 @@ struct LinkedList* unused_try_allocate(struct LinkedList* destList, struct Linke
  * to the end of destList (doubly linked). Return the object, or NULL if
  * freeList is empty.
  */
-struct Object* try_allocate_object(struct ObjectNode* destList, struct ObjectNode* freeList) {
-    struct ObjectNode* nextObj;
+struct Object *try_allocate_object(struct ObjectNode *destList, struct ObjectNode *freeList) {
+    struct ObjectNode *nextObj;
 
     if ((nextObj = freeList->next) != NULL) {
         // Remove from free list
@@ -95,7 +96,7 @@ struct Object* try_allocate_object(struct ObjectNode* destList, struct ObjectNod
     geo_remove_child(&nextObj->gfx.node);
     geo_add_child(&gObjParentGraphNode, &nextObj->gfx.node);
 
-    return (struct Object*)nextObj;
+    return (struct Object *) nextObj;
 }
 
 /**
@@ -103,7 +104,7 @@ struct Object* try_allocate_object(struct ObjectNode* destList, struct ObjectNod
  * singly linked freeList.
  * This function seems to have been replaced by deallocate_object.
  */
-void unused_deallocate(struct LinkedList* freeList, struct LinkedList* node) {
+void unused_deallocate(struct LinkedList *freeList, struct LinkedList *node) {
     // Remove from doubly linked list
     node->next->prev = node->prev;
     node->prev->next = node->next;
@@ -116,7 +117,7 @@ void unused_deallocate(struct LinkedList* freeList, struct LinkedList* node) {
  * Remove the given object from the object list that it's currently in, and
  * insert it at the beginning of the free list (singly linked).
  */
-static void deallocate_object(struct ObjectNode* freeList, struct ObjectNode* obj) {
+static void deallocate_object(struct ObjectNode *freeList, struct ObjectNode *obj) {
     // Remove from object list
     obj->next->prev = obj->prev;
     obj->prev->next = obj->next;
@@ -134,8 +135,8 @@ void init_free_object_list(void) {
     s32 poolLength = OBJECT_POOL_CAPACITY;
 
     // Add the first object in the pool to the free list
-    struct Object* obj = &gObjectPool[0];
-    gFreeObjectList.next = (struct ObjectNode*)obj;
+    struct Object *obj = &gObjectPool[0];
+    gFreeObjectList.next = (struct ObjectNode *) obj;
 
     // Link each object in the pool to the following object
     for (i = 0; i < poolLength - 1; i++) {
@@ -150,7 +151,7 @@ void init_free_object_list(void) {
 /**
  * Clear each object list, without adding the objects back to the free list.
  */
-void clear_object_lists(struct ObjectNode* objLists) {
+void clear_object_lists(struct ObjectNode *objLists) {
     s32 i;
 
     for (i = 0; i < NUM_OBJ_LISTS; i++) {
@@ -163,12 +164,12 @@ void clear_object_lists(struct ObjectNode* objLists) {
  * This function looks broken, but it appears to attempt to delete the leaf
  * graph nodes under obj and obj's siblings.
  */
-UNUSED static void unused_delete_leaf_nodes(struct Object* obj) {
-    struct Object* children;
-    struct Object* sibling;
-    struct Object* obj0 = obj;
+UNUSED static void unused_delete_leaf_nodes(struct Object *obj) {
+    struct Object *children;
+    struct Object *sibling;
+    struct Object *obj0 = obj;
 
-    if ((children = (struct Object*)obj->header.gfx.node.children) != NULL) {
+    if ((children = (struct Object *) obj->header.gfx.node.children) != NULL) {
         unused_delete_leaf_nodes(children);
     } else {
         // No children
@@ -176,16 +177,16 @@ UNUSED static void unused_delete_leaf_nodes(struct Object* obj) {
     }
 
     // Probably meant to be !=
-    while ((sibling = (struct Object*)obj->header.gfx.node.next) == obj0) {
+    while ((sibling = (struct Object *) obj->header.gfx.node.next) == obj0) {
         unused_delete_leaf_nodes(sibling);
-        obj = (struct Object*)sibling->header.gfx.node.next;
+        obj = (struct Object *) sibling->header.gfx.node.next;
     }
 }
 
 /**
  * Free the given object.
  */
-void unload_object(struct Object* obj) {
+void unload_object(struct Object *obj) {
     obj->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     obj->prevObj = NULL;
 
@@ -205,21 +206,22 @@ void unload_object(struct Object* obj) {
  * an unimportant object if necessary. If this is not possible, hang using an
  * infinite loop.
  */
-struct Object* allocate_object(struct ObjectNode* objList) {
+struct Object *allocate_object(struct ObjectNode *objList) {
     s32 i;
-    struct Object* obj = try_allocate_object(objList, &gFreeObjectList);
+    struct Object *obj = try_allocate_object(objList, &gFreeObjectList);
 
     // The object list is full if the newly created pointer is NULL.
     // If this happens, we first attempt to unload unimportant objects
     // in order to finish allocating the object.
     if (obj == NULL) {
         // Look for an unimportant object to kick out.
-        struct Object* unimportantObj = find_unimportant_object();
+        struct Object *unimportantObj = find_unimportant_object();
 
         // If no unimportant object exists, then the object pool is exhausted.
         if (unimportantObj == NULL) {
             // We've met with a terrible fate.
-            while (TRUE) {}
+            while (TRUE) {
+            }
         } else {
             // If an unimportant object does exist, unload it and take its slot.
             unload_object(unimportantObj);
@@ -248,8 +250,7 @@ struct Object* allocate_object(struct ObjectNode* objList) {
     }
 #else
     // -O2 needs everything until = on the same line
-    for (i = 0; i < 0x50; i++)
-        obj->rawData.asS32[i] = 0;
+    for (i = 0; i < 0x50; i++) obj->rawData.asS32[i] = 0;
 #endif
 
     obj->unused1 = 0;
@@ -296,8 +297,8 @@ struct Object* allocate_object(struct ObjectNode* objList) {
 /**
  * If the object is close to being on the floor, move it to be exactly on the floor.
  */
-static void snap_object_to_floor(struct Object* obj) {
-    struct Surface* surface;
+static void snap_object_to_floor(struct Object *obj) {
+    struct Surface *surface;
 
     obj->oFloorHeight = find_floor(obj->oPosX, obj->oPosY, obj->oPosZ, &surface);
 
@@ -310,11 +311,11 @@ static void snap_object_to_floor(struct Object* obj) {
 /**
  * Spawn an object at the origin with the behavior script at virtual address bhvScript.
  */
-struct Object* create_object(const BehaviorScript* bhvScript) {
+struct Object *create_object(const BehaviorScript *bhvScript) {
     s32 objListIndex;
-    struct Object* obj;
-    struct ObjectNode* objList;
-    const BehaviorScript* behavior = bhvScript;
+    struct Object *obj;
+    struct ObjectNode *objList;
+    const BehaviorScript *behavior = bhvScript;
 
     // If the first behavior script command is "begin <object list>", then
     // extract the object list from it
@@ -355,7 +356,7 @@ struct Object* create_object(const BehaviorScript* bhvScript) {
 /**
  * Mark an object to be unloaded at the end of the frame.
  */
-void mark_obj_for_deletion(struct Object* obj) {
+void mark_obj_for_deletion(struct Object *obj) {
     //! Same issue as obj_mark_for_deletion
     obj->activeFlags = ACTIVE_FLAG_DEACTIVATED;
 }

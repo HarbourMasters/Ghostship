@@ -11,7 +11,7 @@ void bhv_hoot_init(void) {
     cur_obj_become_intangible();
 }
 
-f32 hoot_find_next_floor(struct FloorGeometry** floorGeo, f32 arg1) {
+f32 hoot_find_next_floor(struct FloorGeometry **floorGeo, f32 arg1) {
     f32 sp24 = arg1 * sins(o->oMoveAngleYaw) + o->oPosX;
     UNUSED f32 sp20 = o->oPosY;
     f32 sp1c = arg1 * coss(o->oMoveAngleYaw) + o->oPosZ;
@@ -21,7 +21,7 @@ f32 hoot_find_next_floor(struct FloorGeometry** floorGeo, f32 arg1) {
 }
 
 void hoot_floor_bounce(void) {
-    struct FloorGeometry* floorGeo;
+    struct FloorGeometry *floorGeo;
     f32 floorY;
 
     floorY = hoot_find_next_floor(&floorGeo, 375.0f);
@@ -45,7 +45,7 @@ void hoot_floor_bounce(void) {
 }
 
 void hoot_free_step(s16 fastOscY, s32 speed) {
-    struct FloorGeometry* floorGeo;
+    struct FloorGeometry *floorGeo;
     s16 yaw = o->oMoveAngleYaw;
     s16 pitch = o->oMoveAnglePitch;
     s16 animFrame = o->header.gfx.animInfo.animFrame;
@@ -114,7 +114,7 @@ void hoot_carry_step(s32 speed, UNUSED f32 xPrev, UNUSED f32 zPrev) {
 }
 
 void hoot_surface_collision(f32 xPrev, UNUSED f32 yPrev, f32 zPrev) {
-    struct FloorGeometry* floorGeo;
+    struct FloorGeometry *floorGeo;
     struct WallCollisionData hitbox;
     f32 floorY;
 
@@ -255,8 +255,8 @@ void bhv_hoot_loop(void) {
         case HOOT_AVAIL_WANTS_TO_TALK:
             hoot_awake_loop();
 
-            if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK &&
-                cutscene_object_with_dialog(CUTSCENE_DIALOG, o, DIALOG_044)) {
+            if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK 
+                && cutscene_object_with_dialog(CUTSCENE_DIALOG, o, DIALOG_044)) {
                 set_mario_npc_dialog(MARIO_DIALOG_STOP);
 
                 cur_obj_become_tangible();

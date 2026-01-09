@@ -14,7 +14,8 @@ void bhv_pyramid_elevator_init(void) {
     s32 i;
 
     for (i = 0; i < 10; i++) {
-        struct Object* ball = spawn_object(o, MODEL_TRAJECTORY_MARKER_BALL, bhvPyramidElevatorTrajectoryMarkerBall);
+        struct Object *ball = spawn_object(o, MODEL_TRAJECTORY_MARKER_BALL,
+                                           bhvPyramidElevatorTrajectoryMarkerBall);
         ball->oPosY = 4600 - i * 460;
     }
 }
@@ -74,7 +75,7 @@ void bhv_pyramid_elevator_loop(void) {
  * Otherwise, set their scale.
  */
 void bhv_pyramid_elevator_trajectory_marker_ball_loop(void) {
-    struct Object* elevator;
+    struct Object *elevator;
 
     cur_obj_scale(0.15f);
     elevator = cur_obj_nearest_object_with_behavior(bhvPyramidElevator);

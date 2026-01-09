@@ -14,14 +14,14 @@ u16 D_8032FEC0 = 0;
 
 u32 unused_8032FEC4[4] = { 0 };
 
-struct Object* gMarioPlatform = NULL;
+struct Object *gMarioPlatform = NULL;
 
 /**
  * Determine if Mario is standing on a platform object, meaning that he is
  * within 4 units of the floor. Set his referenced platform object accordingly.
  */
 void update_mario_platform(void) {
-    struct Surface* floor;
+    struct Surface *floor;
     UNUSED u8 filler[4];
     f32 marioX;
     f32 marioY;
@@ -70,7 +70,7 @@ void update_mario_platform(void) {
 /**
  * Get Mario's position and store it in x, y, and z.
  */
-void get_mario_pos(f32* x, f32* y, f32* z) {
+void get_mario_pos(f32 *x, f32 *y, f32 *z) {
     *x = gMarioStates[0].pos[0];
     *y = gMarioStates[0].pos[1];
     *z = gMarioStates[0].pos[2];
@@ -89,7 +89,7 @@ void set_mario_pos(f32 x, f32 y, f32 z) {
  * Apply one frame of platform rotation to Mario or an object using the given
  * platform. If isMario is false, use gCurrentObject.
  */
-void apply_platform_displacement(u32 isMario, struct Object* platform) {
+void apply_platform_displacement(u32 isMario, struct Object *platform) {
     f32 x;
     f32 y;
     f32 z;
@@ -123,8 +123,8 @@ void apply_platform_displacement(u32 isMario, struct Object* platform) {
 
     if (rotation[0] != 0 || rotation[1] != 0 || rotation[2] != 0) {
         unusedPitch = rotation[0];
-        unusedRoll = rotation[2];
-        unusedYaw = platform->oFaceAngleYaw;
+        unusedRoll  = rotation[2];
+        unusedYaw   = platform->oFaceAngleYaw;
 
         if (isMario) {
             gMarioStates[0].faceAngle[1] += rotation[1];
@@ -170,7 +170,7 @@ void apply_platform_displacement(u32 isMario, struct Object* platform) {
  * If Mario's platform is not null, apply platform displacement.
  */
 void apply_mario_platform_displacement(void) {
-    struct Object* platform = gMarioPlatform;
+    struct Object *platform = gMarioPlatform;
 
     if (!(gTimeStopState & TIME_STOP_ACTIVE) && gMarioObject != NULL && platform != NULL) {
         apply_platform_displacement(TRUE, platform);

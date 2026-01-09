@@ -5,14 +5,10 @@ struct WaterDropletParams sWaterSplashDropletParams = {
     /* Flags */ WATER_DROPLET_FLAG_RAND_ANGLE,
     /* Model */ MODEL_WHITE_PARTICLE_SMALL,
     /* Behavior */ bhvWaterDroplet,
-    /* Unused (flag-specific) */ 0,
-    0,
-    /* Random fvel offset, scale */ 5.0f,
-    3.0f,
-    /* Random yvel offset, scale */ 30.0f,
-    20.0f,
-    /* Random size offset, scale */ 0.5f,
-    1.0f
+    /* Unused (flag-specific) */ 0, 0,
+    /* Random fvel offset, scale */ 5.0f, 3.0f,
+    /* Random yvel offset, scale */ 30.0f, 20.0f,
+    /* Random size offset, scale */ 0.5f, 1.0f
 };
 
 // Water droplets from Mario jumping in shallow water.
@@ -20,14 +16,10 @@ struct WaterDropletParams gShallowWaterSplashDropletParams = {
     /* Flags */ WATER_DROPLET_FLAG_RAND_ANGLE | WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL,
     /* Model */ MODEL_WHITE_PARTICLE_SMALL,
     /* Behavior */ bhvWaterDroplet,
-    /* Unused (flag-specific) */ 0,
-    0,
-    /* Random fvel offset, scale */ 2.0f,
-    3.0f,
-    /* Random yvel offset, scale */ 20.0f,
-    20.0f,
-    /* Random size offset, scale */ 0.5f,
-    1.0f
+    /* Unused (flag-specific) */ 0, 0,
+    /* Random fvel offset, scale */ 2.0f, 3.0f,
+    /* Random yvel offset, scale */ 20.0f, 20.0f,
+    /* Random size offset, scale */ 0.5f, 1.0f
 };
 
 // The fish particle easter egg from Mario jumping in shallow water.
@@ -35,31 +27,24 @@ struct WaterDropletParams sWaterDropletFishParams = {
     /* Flags */ WATER_DROPLET_FLAG_RAND_ANGLE | WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL,
     /* Model */ MODEL_FISH,
     /* Behavior */ bhvWaterDroplet,
-    /* Unused (flag-specific) */ 0,
-    0,
-    /* Random fvel offset, scale */ 2.0f,
-    3.0f,
-    /* Random yvel offset, scale */ 20.0f,
-    20.0f,
-    /* Random size offset, scale */ 1.0f,
-    0.0f
+    /* Unused (flag-specific) */ 0, 0,
+    /* Random fvel offset, scale */ 2.0f, 3.0f,
+    /* Random yvel offset, scale */ 20.0f, 20.0f,
+    /* Random size offset, scale */ 1.0f, 0.0f
 };
 
 // Water droplets from Mario running in shallow water.
 struct WaterDropletParams gShallowWaterWaveDropletParams = {
-    /* Flags */ WATER_DROPLET_FLAG_RAND_ANGLE_INCR_PLUS_8000 | WATER_DROPLET_FLAG_RAND_ANGLE |
-        WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL,
+    /* Flags */ WATER_DROPLET_FLAG_RAND_ANGLE_INCR_PLUS_8000 | WATER_DROPLET_FLAG_RAND_ANGLE | WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL,
     /* Model */ MODEL_WHITE_PARTICLE_SMALL,
     /* Behavior */ bhvWaterDroplet,
     /* Move angle range */ 0x6000,
     /* Unused (flag-specific) */ 0,
-    /* Random fvel offset, scale */ 2.0f,
-    8.0f,
-    /* Random yvel offset, scale */ 10.0f,
-    10.0f,
-    /* Random size offset, scale */ 0.5f,
-    1.0f
+    /* Random fvel offset, scale */ 2.0f, 8.0f,
+    /* Random yvel offset, scale */ 10.0f, 10.0f,
+    /* Random size offset, scale */ 0.5f, 1.0f
 };
+
 
 void bhv_water_splash_spawn_droplets(void) {
     s32 i;
@@ -108,7 +93,7 @@ void bhv_idle_water_wave_loop(void) {
     obj_copy_pos(o, gMarioObject);
     o->oPosY = gMarioStates[0].waterLevel + 5;
     if (!(gMarioObject->oMarioParticleFlags & ACTIVE_PARTICLE_IDLE_WATER_WAVE)) {
-        gMarioObject->oActiveParticleFlags &= (u16)~ACTIVE_PARTICLE_IDLE_WATER_WAVE;
+        gMarioObject->oActiveParticleFlags &= (u16) ~ACTIVE_PARTICLE_IDLE_WATER_WAVE;
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }
 }
@@ -126,7 +111,7 @@ void bhv_bubble_splash_init(void) {
 void bhv_shallow_water_splash_init(void) {
     // Have a 1 in 256 chance to spawn the fish particle easter egg.
     if ((random_u16() & 0xFF) <= 0) { // Strange
-        struct Object* fishObj = spawn_water_droplet(o, &sWaterDropletFishParams);
+        struct Object *fishObj = spawn_water_droplet(o, &sWaterDropletFishParams);
         obj_init_animation_with_sound(fishObj, blue_fish_seg3_anims_0301C2B0, 0);
     }
 }

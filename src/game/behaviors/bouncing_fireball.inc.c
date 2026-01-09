@@ -23,8 +23,9 @@ void bhv_bouncing_fireball_flame_loop(void) {
                 o->oForwardVel = 30.0f;
             }
 
-            if (o->oMoveFlags & (OBJ_MOVE_ON_GROUND | OBJ_MOVE_AT_WATER_SURFACE | OBJ_MOVE_UNDERWATER_ON_GROUND) &&
-                o->oTimer > 100) {
+            if (o->oMoveFlags
+                & (OBJ_MOVE_ON_GROUND | OBJ_MOVE_AT_WATER_SURFACE | OBJ_MOVE_UNDERWATER_ON_GROUND)
+                && o->oTimer > 100) {
                 obj_mark_for_deletion(o);
             }
             break;
@@ -40,7 +41,7 @@ void bhv_bouncing_fireball_flame_loop(void) {
 }
 
 void bhv_bouncing_fireball_loop(void) {
-    struct Object* sp2C;
+    struct Object *sp2C;
     f32 sp28;
 
     switch (o->oAction) {

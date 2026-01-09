@@ -35,11 +35,13 @@ void bhv_water_bomb_spawner_update(void) {
     latDistToMario = lateral_dist_between_objects(o, gMarioObject);
 
     // When mario is in range and a water bomb isn't already active
-    if (!o->oWaterBombSpawnerBombActive && latDistToMario < spawnerRadius && gMarioObject->oPosY - o->oPosY < 1000.0f) {
+    if (!o->oWaterBombSpawnerBombActive && latDistToMario < spawnerRadius
+        && gMarioObject->oPosY - o->oPosY < 1000.0f) {
         if (o->oWaterBombSpawnerTimeToSpawn != 0) {
             o->oWaterBombSpawnerTimeToSpawn--;
         } else {
-            struct Object* waterBomb = spawn_object_relative(0, 0, 2000, 0, o, MODEL_WATER_BOMB, bhvWaterBomb);
+            struct Object *waterBomb =
+                spawn_object_relative(0, 0, 2000, 0, o, MODEL_WATER_BOMB, bhvWaterBomb);
 
             if (waterBomb != NULL) {
                 // Drop farther ahead of mario when he is moving faster
@@ -47,8 +49,10 @@ void bhv_water_bomb_spawner_update(void) {
 
                 waterBomb->oAction = WATER_BOMB_ACT_INIT;
 
-                waterBomb->oPosX = gMarioObject->oPosX + waterBombDistToMario * sins(gMarioObject->oMoveAngleYaw);
-                waterBomb->oPosZ = gMarioObject->oPosZ + waterBombDistToMario * coss(gMarioObject->oMoveAngleYaw);
+                waterBomb->oPosX =
+                    gMarioObject->oPosX + waterBombDistToMario * sins(gMarioObject->oMoveAngleYaw);
+                waterBomb->oPosZ =
+                    gMarioObject->oPosZ + waterBombDistToMario * coss(gMarioObject->oMoveAngleYaw);
 
                 spawn_object(waterBomb, MODEL_WATER_BOMB_SHADOW, bhvWaterBombShadow);
 

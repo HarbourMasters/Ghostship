@@ -13,11 +13,19 @@ struct ObjectHitbox sYellowCoinHitbox = {
 };
 
 s16 sCoinArrowPositions[][2] = {
-    { 0, -150 }, { 0, -50 }, { 0, 50 }, { 0, 150 }, { -50, 100 }, { -100, 50 }, { 50, 100 }, { 100, 50 },
+    { 0, -150 },
+    { 0, -50 },
+    { 0, 50 },
+    { 0, 150 },
+    { -50, 100 },
+    { -100, 50 },
+    { 50, 100 },
+    { 100, 50 },
 };
 
 s32 bhv_coin_sparkles_init(void) {
-    if (o->oInteractStatus & INT_STATUS_INTERACTED && !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) {
+    if (o->oInteractStatus & INT_STATUS_INTERACTED
+        && !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) {
         spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
         obj_mark_for_deletion(o);
         return TRUE;
@@ -69,7 +77,7 @@ void bhv_coin_init(void) {
 }
 
 void bhv_coin_loop(void) {
-    struct Surface* sp1C;
+    struct Surface *sp1C;
 
     cur_obj_update_floor_and_walls();
     cur_obj_if_hit_wall_bounce_away();
@@ -152,7 +160,7 @@ void bhv_coin_formation_spawn_loop(void) {
 }
 
 void spawn_coin_in_formation(s32 sp50, s32 sp54) {
-    struct Object* sp4C;
+    struct Object *sp4C;
     Vec3i sp40;
     s32 sp3C = 1;
     s32 sp38 = 1;
@@ -193,7 +201,8 @@ void spawn_coin_in_formation(s32 sp50, s32 sp54) {
     }
 
     if (sp3C) {
-        sp4C = spawn_object_relative(sp50, sp40[0], sp40[1], sp40[2], o, MODEL_YELLOW_COIN, bhvCoinFormationSpawn);
+        sp4C = spawn_object_relative(sp50, sp40[0], sp40[1], sp40[2], o, MODEL_YELLOW_COIN,
+                                     bhvCoinFormationSpawn);
         sp4C->oCoinUnkF8 = sp38;
     }
 }
@@ -259,7 +268,7 @@ void coin_inside_boo_act_1(void) {
 void coin_inside_boo_act_0(void) {
     s16 sp26;
     f32 sp20;
-    struct Object* parent = o->parentObj;
+    struct Object *parent = o->parentObj;
 
     cur_obj_become_intangible();
 
@@ -294,7 +303,7 @@ void bhv_coin_sparkles_loop(void) {
 }
 
 void bhv_golden_coin_sparkles_loop(void) {
-    struct Object* sp2C;
+    struct Object *sp2C;
     UNUSED u8 filler[4];
     f32 sp24 = 30.0f;
 

@@ -8,4 +8,4 @@ GameDictionary* Dictionary::GetPointer() {
 size_t Dictionary::GetPointerSize() {
     return sizeof(mData);
 }
-} // namespace SM64
+}

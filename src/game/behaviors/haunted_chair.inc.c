@@ -13,7 +13,7 @@ struct ObjectHitbox sHauntedChairHitbox = {
 };
 
 void bhv_haunted_chair_init(void) {
-    struct Object* val04;
+    struct Object *val04;
     f32 val00;
 
     val04 = cur_obj_find_nearest_object_with_behavior(bhvMadPiano, &val00);
@@ -56,8 +56,8 @@ void haunted_chair_act_0(void) {
                 }
             }
         } else {
-            oscillate_toward(o->oHauntedChairUnk100, &o->oHauntedChairUnkF8, o->oHauntedChairUnk104, 4000.0f, 20.0f,
-                             2.0f);
+            oscillate_toward(o->oHauntedChairUnk100, &o->oHauntedChairUnkF8, o->oHauntedChairUnk104,
+                             4000.0f, 20.0f, 2.0f);
         }
     } else if (o->oHauntedChairUnkF4 != 0) {
         if (o->oDistanceToMario < 500.0f) {

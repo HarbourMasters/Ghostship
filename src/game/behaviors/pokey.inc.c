@@ -58,8 +58,8 @@ void bhv_pokey_body_part_update(void) {
             //  index by killing two body parts on the frame before a new part
             //  spawns, but one of the body parts shifts upward immediately,
             //  so not very interesting
-            if (o->oBehParams2ndByte > 1 &&
-                !(o->parentObj->oPokeyAliveBodyPartFlags & (1 << (o->oBehParams2ndByte - 1)))) {
+            if (o->oBehParams2ndByte > 1
+                && !(o->parentObj->oPokeyAliveBodyPartFlags & (1 << (o->oBehParams2ndByte - 1)))) {
                 o->parentObj->oPokeyAliveBodyPartFlags =
                     o->parentObj->oPokeyAliveBodyPartFlags | 1 << (o->oBehParams2ndByte - 1);
 
@@ -75,8 +75,8 @@ void bhv_pokey_body_part_update(void) {
             //! If you kill a body part as it's expanding, the body part that
             //  was above it will instantly shrink and begin expanding in its
             //  place.
-            else if (o->parentObj->oPokeyBottomBodyPartSize < 1.0f &&
-                     o->oBehParams2ndByte + 1 == o->parentObj->oPokeyNumAliveBodyParts) {
+            else if (o->parentObj->oPokeyBottomBodyPartSize < 1.0f
+                     && o->oBehParams2ndByte + 1 == o->parentObj->oPokeyNumAliveBodyParts) {
                 approach_f32_ptr(&o->parentObj->oPokeyBottomBodyPartSize, 1.0f, 0.1f);
                 cur_obj_scale(o->parentObj->oPokeyBottomBodyPartSize * 3.0f);
             }
@@ -87,9 +87,9 @@ void bhv_pokey_body_part_update(void) {
             o->oPosZ = o->parentObj->oPosZ + sins(offsetAngle) * 6.0f;
 
             // This is the height of the tower beneath the body part
-            baseHeight = o->parentObj->oPosY +
-                         (120 * (o->parentObj->oPokeyNumAliveBodyParts - o->oBehParams2ndByte) - 240) +
-                         120.0f * o->parentObj->oPokeyBottomBodyPartSize;
+            baseHeight = o->parentObj->oPosY
+                         + (120 * (o->parentObj->oPokeyNumAliveBodyParts - o->oBehParams2ndByte) - 240)
+                         + 120.0f * o->parentObj->oPokeyBottomBodyPartSize;
 
             // We treat the base height as a minimum height, allowing the body
             // part to briefly stay in the air after a part below it dies
@@ -147,7 +147,7 @@ void bhv_pokey_body_part_update(void) {
  * action.
  */
 static void pokey_act_uninitialized(void) {
-    struct Object* bodyPart;
+    struct Object *bodyPart;
     s32 i;
     s16 partModel;
 
@@ -203,11 +203,13 @@ static void pokey_act_wander(void) {
                     // is killed, the new part's index is equal to the number
                     // of living body parts
 
-                    struct Object* bodyPart = spawn_object_relative(o->oPokeyNumAliveBodyParts, 0, 0, 0, o,
-                                                                    MODEL_POKEY_BODY_PART, bhvPokeyBodyPart);
+                    struct Object *bodyPart
+                        = spawn_object_relative(o->oPokeyNumAliveBodyParts, 0, 0, 0, o,
+                                                MODEL_POKEY_BODY_PART, bhvPokeyBodyPart);
 
                     if (bodyPart != NULL) {
-                        o->oPokeyAliveBodyPartFlags = o->oPokeyAliveBodyPartFlags | (1 << o->oPokeyNumAliveBodyParts);
+                        o->oPokeyAliveBodyPartFlags =
+                            o->oPokeyAliveBodyPartFlags | (1 << o->oPokeyNumAliveBodyParts);
                         o->oPokeyNumAliveBodyParts++;
                         o->oPokeyBottomBodyPartSize = 0.0f;
 
@@ -221,14 +223,16 @@ static void pokey_act_wander(void) {
             }
 
             if (o->oPokeyTurningAwayFromWall) {
-                o->oPokeyTurningAwayFromWall = obj_resolve_collisions_and_turn(o->oPokeyTargetYaw, 0x200);
+                o->oPokeyTurningAwayFromWall =
+                    obj_resolve_collisions_and_turn(o->oPokeyTargetYaw, 0x200);
             } else {
                 // If far from home, turn back toward home
                 if (o->oDistanceToMario >= 25000.0f) {
                     o->oPokeyTargetYaw = o->oAngleToMario;
                 }
 
-                if (!(o->oPokeyTurningAwayFromWall = obj_bounce_off_walls_edges_objects(&o->oPokeyTargetYaw))) {
+                if (!(o->oPokeyTurningAwayFromWall =
+                          obj_bounce_off_walls_edges_objects(&o->oPokeyTargetYaw))) {
                     if (o->oPokeyChangeTargetTimer != 0) {
                         o->oPokeyChangeTargetTimer--;
                     } else if (o->oDistanceToMario > 2000.0f) {

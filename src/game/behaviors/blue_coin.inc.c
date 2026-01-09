@@ -9,7 +9,7 @@
  * Update function for bhvHiddenBlueCoin.
  */
 void bhv_hidden_blue_coin_loop(void) {
-    struct Object* blueCoinSwitch;
+    struct Object *blueCoinSwitch;
 
     switch (o->oAction) {
         case HIDDEN_BLUE_COIN_ACT_INACTIVE:

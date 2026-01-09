@@ -36,12 +36,13 @@ u8 gSpecialTripleJump = FALSE;
 #define DEFINE_LEVEL(_0, _1, courseenum, _3, _4, _5, _6, _7, _8, _9, _10, _11) courseenum,
 
 s8 gLevelToCourseNumTable[] = {
-#include "levels/level_defines.h"
+    #include "levels/level_defines.h"
 };
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
 
-STATIC_ASSERT(ARRAY_COUNT(gLevelToCourseNumTable) == LEVEL_COUNT - 1, "change this array if you are adding levels");
+STATIC_ASSERT(ARRAY_COUNT(gLevelToCourseNumTable) == LEVEL_COUNT - 1,
+              "change this array if you are adding levels");
 
 // This was probably used to set progress to 100% for debugging, but
 // it was removed from the release ROM.
@@ -55,12 +56,12 @@ static void stub_save_file_1(void) {
  * Try at most 4 times, and return 0 on success. On failure, return the status returned from
  * osEepromLongRead. It also returns 0 if EEPROM isn't loaded correctly in the system.
  */
-static s32 read_eeprom_data(void* buffer, s32 size) {
+static s32 read_eeprom_data(void *buffer, s32 size) {
     s32 status = 0;
 
     if (gEepromProbe != 0) {
         s32 triesLeft = 4;
-        u32 offset = (u32)((u8*)buffer - (u8*)&gSaveBuffer) / 8;
+        u32 offset = (u32)((u8 *) buffer - (u8 *) &gSaveBuffer) / 8;
 
         do {
 #if ENABLE_RUMBLE
@@ -83,12 +84,12 @@ static s32 read_eeprom_data(void* buffer, s32 size) {
  * Try at most 4 times, and return 0 on success. On failure, return the status returned from
  * osEepromLongWrite. Unlike read_eeprom_data, return 1 if EEPROM isn't loaded.
  */
-static s32 write_eeprom_data(void* buffer, s32 size) {
+static s32 write_eeprom_data(void *buffer, s32 size) {
     s32 status = 1;
 
     if (gEepromProbe != 0) {
         s32 triesLeft = 4;
-        u32 offset = (u32)((u8*)buffer - (u8*)&gSaveBuffer) >> 3;
+        u32 offset = (u32)((u8 *) buffer - (u8 *) &gSaveBuffer) >> 3;
 
         do {
 #if ENABLE_RUMBLE
@@ -109,7 +110,7 @@ static s32 write_eeprom_data(void* buffer, s32 size) {
  * Sum the bytes in data to data + size - 2. The last two bytes are ignored
  * because that is where the checksum is stored.
  */
-static u16 calc_checksum(u8* data, s32 size) {
+static u16 calc_checksum(u8 *data, s32 size) {
     u16 chksum = 0;
 
     while (size-- > 2) {
@@ -121,8 +122,8 @@ static u16 calc_checksum(u8* data, s32 size) {
 /**
  * Verify the signature at the end of the block to check if the data is valid.
  */
-static s32 verify_save_block_signature(void* buffer, s32 size, u16 magic) {
-    struct SaveBlockSignature* sig = (struct SaveBlockSignature*)((size - 4) + (u8*)buffer);
+static s32 verify_save_block_signature(void *buffer, s32 size, u16 magic) {
+    struct SaveBlockSignature *sig = (struct SaveBlockSignature *) ((size - 4) + (u8 *) buffer);
 
     if (sig->magic != magic) {
         return FALSE;
@@ -136,8 +137,8 @@ static s32 verify_save_block_signature(void* buffer, s32 size, u16 magic) {
 /**
  * Write a signature at the end of the block to make sure the data is valid
  */
-static void add_save_block_signature(void* buffer, s32 size, u16 magic) {
-    struct SaveBlockSignature* sig = (struct SaveBlockSignature*)((size - 4) + (u8*)buffer);
+static void add_save_block_signature(void *buffer, s32 size, u16 magic) {
+    struct SaveBlockSignature *sig = (struct SaveBlockSignature *) ((size - 4) + (u8 *) buffer);
 
     sig->magic = magic;
     sig->chksum = calc_checksum(buffer, size);
@@ -236,22 +237,23 @@ static void restore_save_file_data(s32 fileIndex, s32 srcSlot) {
     s32 destSlot = srcSlot ^ 1;
 
     // Compute checksum on source data
-    add_save_block_signature(&gSaveBuffer.files[fileIndex][srcSlot], sizeof(gSaveBuffer.files[fileIndex][srcSlot]),
-                             SAVE_FILE_MAGIC);
+    add_save_block_signature(&gSaveBuffer.files[fileIndex][srcSlot],
+                             sizeof(gSaveBuffer.files[fileIndex][srcSlot]), SAVE_FILE_MAGIC);
 
     // Copy source data to destination slot
     bcopy(&gSaveBuffer.files[fileIndex][srcSlot], &gSaveBuffer.files[fileIndex][destSlot],
           sizeof(gSaveBuffer.files[fileIndex][destSlot]));
 
     // Write destination data to EEPROM
-    write_eeprom_data(&gSaveBuffer.files[fileIndex][destSlot], sizeof(gSaveBuffer.files[fileIndex][destSlot]));
+    write_eeprom_data(&gSaveBuffer.files[fileIndex][destSlot],
+                      sizeof(gSaveBuffer.files[fileIndex][destSlot]));
 }
 
 void save_file_do_save(s32 fileIndex) {
     if (gSaveFileModified) {
         // Compute checksum
-        add_save_block_signature(&gSaveBuffer.files[fileIndex][0], sizeof(gSaveBuffer.files[fileIndex][0]),
-                                 SAVE_FILE_MAGIC);
+        add_save_block_signature(&gSaveBuffer.files[fileIndex][0],
+                                 sizeof(gSaveBuffer.files[fileIndex][0]), SAVE_FILE_MAGIC);
 
         // Copy to backup slot
         bcopy(&gSaveBuffer.files[fileIndex][0], &gSaveBuffer.files[fileIndex][1],
@@ -297,10 +299,8 @@ void save_file_load_all(void) {
     read_eeprom_data(&gSaveBuffer, sizeof(gSaveBuffer));
 
     // Verify the main menu data and create a backup copy if only one of the slots is valid.
-    validSlots =
-        verify_save_block_signature(&gSaveBuffer.menuData[0], sizeof(gSaveBuffer.menuData[0]), MENU_DATA_MAGIC);
-    validSlots |=
-        verify_save_block_signature(&gSaveBuffer.menuData[1], sizeof(gSaveBuffer.menuData[1]), MENU_DATA_MAGIC) << 1;
+    validSlots = verify_save_block_signature(&gSaveBuffer.menuData[0], sizeof(gSaveBuffer.menuData[0]), MENU_DATA_MAGIC);
+    validSlots |= verify_save_block_signature(&gSaveBuffer.menuData[1], sizeof(gSaveBuffer.menuData[1]),MENU_DATA_MAGIC) << 1;
     switch (validSlots) {
         case 0: // Neither copy is correct
             wipe_main_menu_data();
@@ -315,11 +315,8 @@ void save_file_load_all(void) {
 
     for (file = 0; file < NUM_SAVE_FILES; file++) {
         // Verify the save file and create a backup copy if only one of the slots is valid.
-        validSlots = verify_save_block_signature(&gSaveBuffer.files[file][0], sizeof(gSaveBuffer.files[file][0]),
-                                                 SAVE_FILE_MAGIC);
-        validSlots |= verify_save_block_signature(&gSaveBuffer.files[file][1], sizeof(gSaveBuffer.files[file][1]),
-                                                  SAVE_FILE_MAGIC)
-                      << 1;
+        validSlots = verify_save_block_signature(&gSaveBuffer.files[file][0], sizeof(gSaveBuffer.files[file][0]), SAVE_FILE_MAGIC);
+        validSlots |= verify_save_block_signature(&gSaveBuffer.files[file][1], sizeof(gSaveBuffer.files[file][1]), SAVE_FILE_MAGIC) << 1;
         switch (validSlots) {
             case 0: // Neither copy is correct
                 save_file_erase(file);
@@ -369,11 +366,12 @@ void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
     sUnusedGotGlobalCoinHiScore = FALSE;
     gGotFileCoinHiScore = FALSE;
 
-    if (courseIndex >= COURSE_NUM_TO_INDEX(COURSE_MIN) && courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) {
+    if (courseIndex >= COURSE_NUM_TO_INDEX(COURSE_MIN)
+        && courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) {
         //! Compares the coin score as a 16 bit value, but only writes the 8 bit
         // truncation. This can allow a high score to decrease.
 
-        if (coinScore > ((u16)save_file_get_max_coin_score(courseIndex) & 0xFFFF)) {
+        if (coinScore > ((u16) save_file_get_max_coin_score(courseIndex) & 0xFFFF)) {
             sUnusedGotGlobalCoinHiScore = TRUE;
         }
 
@@ -536,7 +534,7 @@ void save_file_set_cannon_unlocked(void) {
 }
 
 void save_file_set_cap_pos(s16 x, s16 y, s16 z) {
-    struct SaveFile* saveFile = &gSaveBuffer.files[gCurrSaveFileNum - 1][0];
+    struct SaveFile *saveFile = &gSaveBuffer.files[gCurrSaveFileNum - 1][0];
 
     saveFile->capLevel = gCurrLevelNum;
     saveFile->capArea = gCurrAreaIndex;
@@ -545,11 +543,11 @@ void save_file_set_cap_pos(s16 x, s16 y, s16 z) {
 }
 
 s32 save_file_get_cap_pos(Vec3s capPos) {
-    struct SaveFile* saveFile = &gSaveBuffer.files[gCurrSaveFileNum - 1][0];
+    struct SaveFile *saveFile = &gSaveBuffer.files[gCurrSaveFileNum - 1][0];
     s32 flags = save_file_get_flags();
 
-    if (saveFile->capLevel == gCurrLevelNum && saveFile->capArea == gCurrAreaIndex &&
-        (flags & SAVE_FLAG_CAP_ON_GROUND)) {
+    if (saveFile->capLevel == gCurrLevelNum && saveFile->capArea == gCurrAreaIndex
+        && (flags & SAVE_FLAG_CAP_ON_GROUND)) {
         vec3s_copy(capPos, saveFile->capPos);
         return TRUE;
     }
@@ -606,7 +604,7 @@ void disable_warp_checkpoint(void) {
  * Checks the upper bit of the WarpNode->destLevel byte to see if the
  * game should set a warp checkpoint.
  */
-void check_if_should_set_warp_checkpoint(struct WarpNode* warpNode) {
+void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode) {
     if (warpNode->destLevel & 0x80) {
         // Overwrite the warp checkpoint variables.
         gWarpCheckpoint.actNum = gCurrActNum;
@@ -622,13 +620,13 @@ void check_if_should_set_warp_checkpoint(struct WarpNode* warpNode) {
  * also update the level, area, and destination node of the input WarpNode.
  * returns TRUE if input WarpNode was updated, and FALSE if not.
  */
-s32 check_warp_checkpoint(struct WarpNode* warpNode) {
+s32 check_warp_checkpoint(struct WarpNode *warpNode) {
     s16 warpCheckpointActive = FALSE;
     s16 currCourseNum = gLevelToCourseNumTable[(warpNode->destLevel & 0x7F) - 1];
 
     // gSavedCourseNum is only used in this function.
-    if (gWarpCheckpoint.courseNum != COURSE_NONE && gSavedCourseNum == currCourseNum &&
-        gWarpCheckpoint.actNum == gCurrActNum) {
+    if (gWarpCheckpoint.courseNum != COURSE_NONE && gSavedCourseNum == currCourseNum
+        && gWarpCheckpoint.actNum == gCurrActNum) {
         warpNode->destLevel = gWarpCheckpoint.levelID;
         warpNode->destArea = gWarpCheckpoint.areaNum;
         warpNode->destNode = gWarpCheckpoint.warpNode;

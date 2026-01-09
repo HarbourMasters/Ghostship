@@ -35,10 +35,7 @@ struct GraphNodeEntry {
     GraphNodeFunc function;
 };
 
-#define FUNC(f)                                \
-    GraphNodeEntry {                           \
-        #f, reinterpret_cast<GraphNodeFunc>(f) \
-    }
+#define FUNC(f) GraphNodeEntry { #f, reinterpret_cast<GraphNodeFunc>(f) }
 
 std::unordered_map<uint32_t, GraphNodeEntry> mUSFunctionTable = {
     { 0x8016f670, FUNC(geo_intro_super_mario_64_logo) },
@@ -155,18 +152,19 @@ std::unordered_map<uint32_t, GraphNodeEntry> mJPFunctionTable = {
 };
 
 std::unordered_map<uint32_t, std::unordered_map<uint32_t, GraphNodeEntry>> mFunctionTable = {
-    { 0xFF2B5A63, mUSFunctionTable }, { 0xE3DAA4E, mJPFunctionTable }
+    { 0xFF2B5A63, mUSFunctionTable },
+    { 0xE3DAA4E, mJPFunctionTable }
 };
 
 GraphNodeFunc GetFunctionByAddr(const uint32_t addr, std::string opcode) {
     const auto version = GameEngine::Instance->GetGameVersion();
     auto table = mFunctionTable[version];
 
-    if (addr == 0) {
+    if(addr == 0){
         return nullptr;
     }
 
-    if (!table.contains(addr)) {
+    if(!table.contains(addr)) {
         SPDLOG_ERROR("Function table does not contain address: 0x{:X} on {}", addr, opcode);
         return nullptr;
     }
@@ -305,7 +303,7 @@ void process_cmd_node_root() {
 
     GraphNodeRoot* graphNode = init_graph_node_root(gGraphNodePool, nullptr, 0, x, y, width, height);
 
-    gGeoViews = static_cast<GraphNode**>(alloc_only_pool_alloc(gGraphNodePool, gGeoNumViews * sizeof(GraphNode*)));
+    gGeoViews = static_cast<GraphNode**>(alloc_only_pool_alloc(gGraphNodePool, gGeoNumViews * sizeof(GraphNode *)));
 
     graphNode->nodeId = generate_uuid64();
     graphNode->views = gGeoViews;
@@ -339,8 +337,7 @@ void process_cmd_node_perspective() {
         frustumFunc = GetFunctionByAddr(func, "NODE_PERSPECTIVE");
     }
 
-    GraphNodePerspective* graphNode =
-        init_graph_node_perspective(gGraphNodePool, nullptr, (f32)fov, _near, _far, frustumFunc, 0);
+    GraphNodePerspective* graphNode = init_graph_node_perspective(gGraphNodePool, nullptr, (f32) fov, _near, _far, frustumFunc, 0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 }
@@ -375,10 +372,11 @@ void process_cmd_node_switch_case() {
     const auto cs = GeoLayoutParser::mReader->ReadInt16();
     const auto func = GeoLayoutParser::mReader->ReadUInt32();
 
-    GraphNodeSwitchCase* graphNode =
+    GraphNodeSwitchCase *graphNode =
         init_graph_node_switch_case(gGraphNodePool, nullptr,
-                                    cs,                                             // case which is initially selected
-                                    0, GetFunctionByAddr(func, "NODE_SWITCH_CASE"), // case update function
+                                    cs, // case which is initially selected
+                                    0,
+                                    GetFunctionByAddr(func, "NODE_SWITCH_CASE"), // case update function
                                     0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
@@ -394,8 +392,8 @@ void process_cmd_node_camera() {
 
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
-    GraphNodeCamera* graphNode =
-        init_graph_node_camera(gGraphNodePool, nullptr, pos, focus, GetFunctionByAddr(addr, "NODE_CAMERA"), type);
+    GraphNodeCamera* graphNode = init_graph_node_camera(gGraphNodePool, nullptr, pos, focus,
+                                        GetFunctionByAddr(addr, "NODE_CAMERA"), type);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 
@@ -435,8 +433,11 @@ void process_cmd_node_translation_rotation() {
         drawingLayer = params & 0x0F;
     }
 
-    GraphNodeTranslationRotation* graphNode =
-        init_graph_node_translation_rotation(gGraphNodePool, nullptr, drawingLayer, displayList, translation, rotation);
+    GraphNodeTranslationRotation* graphNode = init_graph_node_translation_rotation(
+        gGraphNodePool, nullptr,
+        drawingLayer, displayList,
+        translation, rotation
+    );
 
     register_scene_graph_node(&graphNode->node);
 }
@@ -446,7 +447,7 @@ void process_cmd_node_translation() {
 
     const auto params = GeoLayoutParser::mReader->ReadUByte();
     s16 drawingLayer = 0;
-    void* displayList = nullptr;
+    void *displayList = nullptr;
 
     ReadVec3s(translation);
 
@@ -467,7 +468,7 @@ void process_cmd_node_rotation() {
 
     const auto params = GeoLayoutParser::mReader->ReadUByte();
     s16 drawingLayer = 0;
-    void* displayList = nullptr;
+    void *displayList = nullptr;
 
     ReadVec3sAngle(rotation);
 
@@ -486,7 +487,7 @@ void process_cmd_node_scale() {
     s16 drawingLayer = 0;
     const auto params = GeoLayoutParser::mReader->ReadUByte();
     const auto scale = GeoLayoutParser::mReader->ReadUInt32() / 65536.0f;
-    void* displayList = nullptr;
+    void *displayList = nullptr;
 
     if (params & 0x80) {
         displayList = ResourceGetDataByCrc(ReadSafeCrc());
@@ -498,8 +499,7 @@ void process_cmd_node_scale() {
     register_scene_graph_node(&graphNode->node);
 }
 
-void process_cmd_nop2() {
-}
+void process_cmd_nop2() {}
 
 void process_cmd_node_animated_part() {
     Vec3s translation;
@@ -529,15 +529,14 @@ void process_cmd_node_billboard() {
         drawingLayer = params & 0x0F;
     }
 
-    GraphNodeBillboard* graphNode =
-        init_graph_node_billboard(gGraphNodePool, nullptr, drawingLayer, displayList, translation);
+    GraphNodeBillboard* graphNode = init_graph_node_billboard(gGraphNodePool, nullptr, drawingLayer, displayList, translation);
 
     register_scene_graph_node(&graphNode->node);
 }
 
 void process_cmd_node_display_list() {
     const auto drawingLayer = GeoLayoutParser::mReader->ReadUByte();
-    void* displayList = ResourceGetDataByCrc(ReadSafeCrc());
+    void *displayList = ResourceGetDataByCrc(ReadSafeCrc());
 
     GraphNodeDisplayList* graphNode = init_graph_node_display_list(gGraphNodePool, nullptr, drawingLayer, displayList);
 
@@ -564,9 +563,9 @@ void process_cmd_node_generated() {
     const auto param = GeoLayoutParser::mReader->ReadInt16();
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
-    GraphNodeGenerated* graphNode =
-        init_graph_node_generated(gGraphNodePool, nullptr, GetFunctionByAddr(addr, "NODE_ASM"), // asm function
-                                  param);                                                       // parameter
+    GraphNodeGenerated* graphNode = init_graph_node_generated(gGraphNodePool, nullptr,
+                                          GetFunctionByAddr(addr, "NODE_ASM"), // asm function
+                                          param);                  // parameter
 
     register_scene_graph_node(&graphNode->fnNode.node);
 }
@@ -575,27 +574,26 @@ void process_cmd_node_background() {
     const auto param = GeoLayoutParser::mReader->ReadInt16();
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
-    GraphNodeBackground* graphNode =
-        init_graph_node_background(gGraphNodePool, nullptr,
-                                   param, // background ID, or RGBA5551 color if asm function is null
-                                   GetFunctionByAddr(addr, "NODE_BACKGROUND"), // asm function
-                                   0);
+    GraphNodeBackground* graphNode = init_graph_node_background(
+        gGraphNodePool, nullptr,
+        param, // background ID, or RGBA5551 color if asm function is null
+        GetFunctionByAddr(addr, "NODE_BACKGROUND"), // asm function
+        0);
 
     register_scene_graph_node(&graphNode->fnNode.node);
 }
 
-void process_cmd_nop() {
-}
+void process_cmd_nop() {}
 
 void process_cmd_copy_view() {
-    GraphNode* node = nullptr;
+    GraphNode *node = nullptr;
     const auto index = GeoLayoutParser::mReader->ReadInt16();
 
     if (index >= 0) {
         node = gGeoViews[index];
 
         if (node->type == GRAPH_NODE_TYPE_OBJECT_PARENT) {
-            node = reinterpret_cast<GraphNodeObjectParent*>(node)->sharedChild;
+            node = reinterpret_cast<GraphNodeObjectParent *>(node)->sharedChild;
         } else {
             node = nullptr;
         }
@@ -614,8 +612,12 @@ void process_cmd_node_held_obj() {
 
     ReadVec3s(offset);
 
-    GraphNodeHeldObject* graphNode = init_graph_node_held_object(gGraphNodePool, nullptr, nullptr, offset,
-                                                                 GetFunctionByAddr(addr, "NODE_HELD_OBJ"), player);
+    GraphNodeHeldObject *graphNode = init_graph_node_held_object(
+        gGraphNodePool, nullptr, nullptr,
+        offset,
+        GetFunctionByAddr(addr, "NODE_HELD_OBJ"),
+        player
+    );
 
     register_scene_graph_node(&graphNode->fnNode.node);
 }
@@ -662,6 +664,7 @@ GeoCommandFunction GeoLayoutFunctionTable[] = {
     process_cmd_node_culling_radius,
 };
 
+
 void GeoLayoutParser::execute(const char* path) {
     const auto data = static_cast<char*>(ResourceGetDataByName(path));
     const auto size = ResourceGetSizeByName(path);
@@ -676,7 +679,7 @@ void GeoLayoutParser::execute(const char* path) {
     }
 
     delete mReader;
-    mReader = nullptr;
+    mReader = nullptr; 
 }
 
 extern "C" void GeoLayoutExecute(char const* path) {

@@ -56,7 +56,7 @@ const int default_pixelCount = 0; // Default combo list option
 const uint32_t minVerticalPixelCount = SCREEN_HEIGHT;
 const uint32_t maxVerticalPixelCount = 4320; // 18x native, or 8K TV resolution
 
-const unsigned short default_maxIntegerScaleFactor = 6; // Default size of Integer scale factor slider.
+    const unsigned short default_maxIntegerScaleFactor = 6; // Default size of Integer scale factor slider.
 
 enum messageType { MESSAGE_ERROR, MESSAGE_WARNING, MESSAGE_QUESTION, MESSAGE_INFO, MESSAGE_GRAY_75 };
 const ImVec4 messageColor[]{
@@ -367,7 +367,95 @@ void ResolutionCustomWidget(WidgetInfo &info) {
                             ->GetGui()
                             ->SaveConsoleVariablesNextFrame();
                     }
+                    UIWidgets::Spacer(2);
                 }
+#endif
+
+                if (ImGui::Checkbox("Show a horizontal resolution field.", &showHorizontalResField)) {
+                    if (!showHorizontalResField && (aspectRatioX > 0.0f)) { // when turning this setting off
+                        // Refresh relevant values
+                        aspectRatioX = aspectRatioY * horizontalPixelCount / verticalPixelCount;
+                        horizontalPixelCount = (verticalPixelCount / aspectRatioY) * aspectRatioX;
+                    } else { // when turning this setting on
+                        item_aspectRatio = default_aspectRatio;
+                        if (aspectRatioX > 0.0f) {
+                            // Refresh relevant values in the opposite order
+                            horizontalPixelCount = (verticalPixelCount / aspectRatioY) * aspectRatioX;
+                            aspectRatioX = aspectRatioY * horizontalPixelCount / verticalPixelCount;
+                        }
+                    }
+                    update[UPDATE_aspectRatioX] = true;
+                }
+
+                UIWidgets::PaddedEnhancementCheckbox(
+                        "Don't allow integer scaling to exceed screen bounds.\n"
+                        "(Makes screen bounds take priority over specified factor.)",
+                        "gAdvancedResolution.IntegerScale.NeverExceedBounds", true, false,
+                        !CVarGetInteger("gAdvancedResolution.PixelPerfectMode", 0) ||
+                        CVarGetInteger("gAdvancedResolution.IntegerScale.FitAutomatically", 0),
+                        "", UIWidgets::CheckboxGraphics::Cross, true);
+
+                if (!CVarGetInteger("gAdvancedResolution.IntegerScale.NeverExceedBounds", 1) ||
+                    CVarGetInteger("gAdvancedResolution.IntegerScale.ExceedBoundsBy", 0)) {
+                    ImGui::TextColored({ 0.0f, 0.85f, 0.85f, 1.0f },
+                                       " " ICON_FA_QUESTION_CIRCLE
+                                       " A scroll bar may become visible if screen bounds are exceeded.");
+                    // Another helpful button for an unused CVar.
+                    if (CVarGetInteger("gAdvancedResolution.IntegerScale.ExceedBoundsBy", 0)) {
+                        if (ImGui::Button("Click to reset an unused CVar that may be causing this.")) {
+                            CVarSetInteger("gAdvancedResolution.IntegerScale.ExceedBoundsBy", 0);
+                            CVarSave();
+                        }
+                    }
+                } else {
+                    UIWidgets::Spacer(enhancementSpacerHeight);
+                }
+
+                // I've ended up dummying this one out because it doesn't function in a satisfactory way.
+                // Consider this idea on the table, but I don't deem it an important enough feature to push for.
+                /*
+                UIWidgets::PaddedEnhancementCheckbox("Allow integer scale factor to go 1x above maximum screen bounds.",
+                                                     "gAdvancedResolution.IntegerScale.ExceedBoundsBy", false, false,
+                                                     !CVarGetInteger("gAdvancedResolution.PixelPerfectMode", 0), "",
+                                                     UIWidgets::CheckboxGraphics::Cross, false);
+                if (CVarGetInteger("gAdvancedResolution.IntegerScale.ExceedBoundsBy", 0)) {
+                    ImGui::TextColored({ 0.0f, 0.85f, 0.85f, 1.0f },
+                                       " " ICON_FA_QUESTION_CIRCLE
+                                       " A scroll bar may become visible if screen bounds are exceeded.");
+                }*/
+
+            } // end of Additional Settings
+
+            // Clamp and update the CVars that don't use UIWidgets
+            if (IsBoolArrayTrue(update)) {
+                if (update[UPDATE_aspectRatioX]) {
+                    if (aspectRatioX < 0.0f) {
+                        aspectRatioX = 0.0f;
+                    }
+                    CVarSetFloat("gAdvancedResolution.AspectRatioX", aspectRatioX);
+                }
+                if (update[UPDATE_aspectRatioY]) {
+                    if (aspectRatioY < 0.0f) {
+                        aspectRatioY = 0.0f;
+                    }
+                    CVarSetFloat("gAdvancedResolution.AspectRatioY", aspectRatioY);
+                }
+                if (update[UPDATE_verticalPixelCount]) {
+                    // There's a upper and lower clamp on the Libultraship side too,
+                    // so clamping it here is purely visual, so the vertical resolution field reflects it.
+                    if (verticalPixelCount < minVerticalPixelCount) {
+                        verticalPixelCount = minVerticalPixelCount;
+                    }
+                    if (verticalPixelCount > maxVerticalPixelCount) {
+                        verticalPixelCount = maxVerticalPixelCount;
+                    }
+                    CVarSetInteger("gAdvancedResolution.VerticalPixelCount", verticalPixelCount);
+                }
+                // Delay saving this set of CVars by a predetermined length of time, in frames.
+                updateCountdown = countdownStartingValue;
+            }
+            if (updateCountdown > 0) {
+                updateCountdown--;
             } else {
                 ImGui::Text(" ");
             }

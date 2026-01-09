@@ -13,27 +13,41 @@
  *
  * Note that pieces 11 and 14 do not move.
  */
-static s8 sPieceActions01[] = { 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, -1 };
-static s8 sPieceActions02[] = { 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, -1 };
-static s8 sPieceActions05[] = { 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2, 2, -1 };
-static s8 sPieceActions06[] = { 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, -1 };
-static s8 sPieceActions10[] = { 2, 2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions09[] = { 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions13[] = { 2, 2, 2, 2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions12[] = { 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions08[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2, 2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions07[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions03[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions04[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions11[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
-static s8 sPieceActions14[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions01[] = { 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, -1 };
+static s8 sPieceActions02[] = { 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, -1 };
+static s8 sPieceActions05[] = { 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2, 2, -1 };
+static s8 sPieceActions06[] = { 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, -1 };
+static s8 sPieceActions10[] = { 2, 2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 2, 6, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions09[] = { 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions13[] = { 2, 2, 2, 2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 6, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions12[] = { 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2,
+                                2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions08[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2, 2, 2,
+                                2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions07[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2,
+                                2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions03[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 2,
+                                5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions04[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4,
+                                2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions11[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
+static s8 sPieceActions14[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                                2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, -1 };
 
 struct BowserPuzzlePiece {
     u8 model;
     s8 xOffset;
     s8 zOffset;
     s8 initialAction;
-    s8* actionList;
+    s8 *actionList;
 };
 
 /*
@@ -51,27 +65,30 @@ struct BowserPuzzlePiece {
  *
  * (* = star platform)
  */
-static struct BowserPuzzlePiece sBowserPuzzlePieces[] = { { MODEL_LLL_BOWSER_PIECE_1, -5, -15, 1, sPieceActions01 },
-                                                          { MODEL_LLL_BOWSER_PIECE_2, 5, -15, 0, sPieceActions02 },
-                                                          { MODEL_LLL_BOWSER_PIECE_3, -15, -5, 0, sPieceActions03 },
-                                                          { MODEL_LLL_BOWSER_PIECE_4, -5, -5, 0, sPieceActions04 },
-                                                          { MODEL_LLL_BOWSER_PIECE_5, 5, -5, 0, sPieceActions05 },
-                                                          { MODEL_LLL_BOWSER_PIECE_6, 15, -5, 0, sPieceActions06 },
-                                                          { MODEL_LLL_BOWSER_PIECE_7, -15, 5, 0, sPieceActions07 },
-                                                          { MODEL_LLL_BOWSER_PIECE_8, -5, 5, 0, sPieceActions08 },
-                                                          { MODEL_LLL_BOWSER_PIECE_9, 5, 5, 0, sPieceActions09 },
-                                                          { MODEL_LLL_BOWSER_PIECE_10, 15, 5, 0, sPieceActions10 },
-                                                          { MODEL_LLL_BOWSER_PIECE_11, -15, 15, 0, sPieceActions11 },
-                                                          { MODEL_LLL_BOWSER_PIECE_12, -5, 15, 0, sPieceActions12 },
-                                                          { MODEL_LLL_BOWSER_PIECE_13, 5, 15, 0, sPieceActions13 },
-                                                          { MODEL_LLL_BOWSER_PIECE_14, 15, 15, 0, sPieceActions14 } };
+static struct BowserPuzzlePiece sBowserPuzzlePieces[] = {
+    { MODEL_LLL_BOWSER_PIECE_1, -5, -15, 1, sPieceActions01 },
+    { MODEL_LLL_BOWSER_PIECE_2, 5, -15, 0, sPieceActions02 },
+    { MODEL_LLL_BOWSER_PIECE_3, -15, -5, 0, sPieceActions03 },
+    { MODEL_LLL_BOWSER_PIECE_4, -5, -5, 0, sPieceActions04 },
+    { MODEL_LLL_BOWSER_PIECE_5, 5, -5, 0, sPieceActions05 },
+    { MODEL_LLL_BOWSER_PIECE_6, 15, -5, 0, sPieceActions06 },
+    { MODEL_LLL_BOWSER_PIECE_7, -15, 5, 0, sPieceActions07 },
+    { MODEL_LLL_BOWSER_PIECE_8, -5, 5, 0, sPieceActions08 },
+    { MODEL_LLL_BOWSER_PIECE_9, 5, 5, 0, sPieceActions09 },
+    { MODEL_LLL_BOWSER_PIECE_10, 15, 5, 0, sPieceActions10 },
+    { MODEL_LLL_BOWSER_PIECE_11, -15, 15, 0, sPieceActions11 },
+    { MODEL_LLL_BOWSER_PIECE_12, -5, 15, 0, sPieceActions12 },
+    { MODEL_LLL_BOWSER_PIECE_13, 5, 15, 0, sPieceActions13 },
+    { MODEL_LLL_BOWSER_PIECE_14, 15, 15, 0, sPieceActions14 }
+};
 
 /**
  * Spawn a single puzzle piece.
  */
-void bhv_lll_bowser_puzzle_spawn_piece(s16 model, const BehaviorScript* behavior, f32 xOffset, f32 zOffset,
-                                       s8 initialAction, s8* actionList) {
-    struct Object* puzzlePiece = spawn_object(o, model, behavior);
+void bhv_lll_bowser_puzzle_spawn_piece(s16 model, const BehaviorScript *behavior,
+                                       f32 xOffset, f32 zOffset,
+                                       s8 initialAction, s8 *actionList) {
+    struct Object *puzzlePiece = spawn_object(o, model, behavior);
     puzzlePiece->oPosX += xOffset;
     puzzlePiece->oPosY += 50.0f;
     puzzlePiece->oPosZ += zOffset;
@@ -91,7 +108,8 @@ void bhv_lll_bowser_puzzle_spawn_pieces(f32 pieceWidth) {
         bhv_lll_bowser_puzzle_spawn_piece(sBowserPuzzlePieces[i].model, bhvLllBowserPuzzlePiece,
                                           sBowserPuzzlePieces[i].xOffset * pieceWidth / 10.0f,
                                           sBowserPuzzlePieces[i].zOffset * pieceWidth / 10.0f,
-                                          sBowserPuzzlePieces[i].initialAction, sBowserPuzzlePieces[i].actionList);
+                                          sBowserPuzzlePieces[i].initialAction,
+                                          sBowserPuzzlePieces[i].actionList);
     }
 
     // The pieces should only be spawned once so go to the next action.
@@ -114,7 +132,8 @@ void bhv_lll_bowser_puzzle_loop(void) {
             if (o->oBowserPuzzleCompletionFlags == 3 && o->oDistanceToMario < 1000.0f) {
                 // Spawn 5 coins.
                 for (i = 0; i < 5; i++) {
-                    UNUSED struct Object* coin = spawn_object(o, MODEL_YELLOW_COIN, bhvSingleCoinGetsSpawned);
+                    UNUSED struct Object *coin =
+                        spawn_object(o, MODEL_YELLOW_COIN, bhvSingleCoinGetsSpawned);
                 }
 
                 // Reset completion flags (even though they never get checked again).
@@ -148,7 +167,7 @@ void bhv_lll_bowser_puzzle_piece_action_1(void) {
  * Update the puzzle piece.
  */
 void bhv_lll_bowser_puzzle_piece_update(void) {
-    s8* nextAction = o->oBowserPuzzlePieceNextAction;
+    s8 *nextAction = o->oBowserPuzzlePieceNextAction;
 
     // If Mario is standing on this puzzle piece, set a flag in the parent.
     if (gMarioObject->platform == o) {
@@ -237,8 +256,12 @@ void bhv_lll_bowser_puzzle_piece_move_down(void) {
 }
 
 void (*sBowserPuzzlePieceActions[])(void) = {
-    bhv_lll_bowser_puzzle_piece_action_0,  bhv_lll_bowser_puzzle_piece_action_1,   bhv_lll_bowser_puzzle_piece_idle,
-    bhv_lll_bowser_puzzle_piece_move_left, bhv_lll_bowser_puzzle_piece_move_right, bhv_lll_bowser_puzzle_piece_move_up,
+    bhv_lll_bowser_puzzle_piece_action_0,
+    bhv_lll_bowser_puzzle_piece_action_1,
+    bhv_lll_bowser_puzzle_piece_idle,
+    bhv_lll_bowser_puzzle_piece_move_left,
+    bhv_lll_bowser_puzzle_piece_move_right,
+    bhv_lll_bowser_puzzle_piece_move_up,
     bhv_lll_bowser_puzzle_piece_move_down,
 };
 

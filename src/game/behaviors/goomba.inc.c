@@ -78,7 +78,9 @@ void bhv_goomba_triplet_spawner_update(void) {
         if (o->oDistanceToMario < 3000.0f) {
             // The spawner is capable of spawning more than 3 goombas, but this
             // is not used in the game
-            s32 dAngle = 0x10000 / (((o->oBehParams2ndByte & GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS_MASK) >> 2) + 3);
+            s32 dAngle =
+                0x10000
+                / (((o->oBehParams2ndByte & GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS_MASK) >> 2) + 3);
 
             for (angle = 0, goombaFlag = 1 << 8; angle < 0xFFFF; angle += dAngle, goombaFlag <<= 1) {
                 // Only spawn goombas which haven't been killed yet
@@ -86,9 +88,8 @@ void bhv_goomba_triplet_spawner_update(void) {
                     s16 dx = 500.0f * coss(angle);
                     s16 dz = 500.0f * sins(angle);
 
-                    spawn_object_relative((o->oBehParams2ndByte & GOOMBA_TRIPLET_SPAWNER_BP_SIZE_MASK) |
-                                              (goombaFlag >> 6),
-                                          dx, 0, dz, o, MODEL_GOOMBA, bhvGoomba);
+                    spawn_object_relative((o->oBehParams2ndByte & GOOMBA_TRIPLET_SPAWNER_BP_SIZE_MASK)
+                                           | (goombaFlag >> 6), dx, 0, dz, o, MODEL_GOOMBA, bhvGoomba);
                 }
             }
 
@@ -136,9 +137,11 @@ static void goomba_begin_jump(void) {
  */
 static void mark_goomba_as_dead(void) {
     if (o->parentObj != o) {
-        set_object_respawn_info_bits(o->parentObj, (o->oBehParams2ndByte & GOOMBA_BP_TRIPLET_FLAG_MASK) >> 2);
+        set_object_respawn_info_bits(
+            o->parentObj, (o->oBehParams2ndByte & GOOMBA_BP_TRIPLET_FLAG_MASK) >> 2);
 
-        o->parentObj->oBehParams = o->parentObj->oBehParams | (o->oBehParams2ndByte & GOOMBA_BP_TRIPLET_FLAG_MASK) << 6;
+        o->parentObj->oBehParams =
+            o->parentObj->oBehParams | (o->oBehParams2ndByte & GOOMBA_BP_TRIPLET_FLAG_MASK) << 6;
     }
 }
 
@@ -172,7 +175,8 @@ static void goomba_act_walk(void) {
             o->oGoombaWalkTimer = random_linear_offset(20, 30);
         }
 
-        if (!(o->oGoombaTurningAwayFromWall = obj_bounce_off_walls_edges_objects(&o->oGoombaTargetYaw))) {
+        if (!(o->oGoombaTurningAwayFromWall =
+                  obj_bounce_off_walls_edges_objects(&o->oGoombaTargetYaw))) {
             if (o->oDistanceToMario < 500.0f) {
                 // If close to mario, begin chasing him. If not already chasing
                 // him, jump first
@@ -299,7 +303,8 @@ void bhv_goomba_update(void) {
         // without harming it (e.g. by punching it), the goomba will be marked as dead
         // and will not respawn if Mario leaves and re-enters the spawner's radius
         // even though the goomba isn't actually dead.
-        if (obj_handle_attacks(&sGoombaHitbox, GOOMBA_ACT_ATTACKED_MARIO, sGoombaAttackHandlers[o->oGoombaSize & 1])) {
+        if (obj_handle_attacks(&sGoombaHitbox, GOOMBA_ACT_ATTACKED_MARIO,
+                               sGoombaAttackHandlers[o->oGoombaSize & 1])) {
             mark_goomba_as_dead();
         }
 

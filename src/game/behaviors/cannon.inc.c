@@ -21,8 +21,8 @@ void opened_cannon_act_0(void) {
     if (o->oDistanceToMario < 500.0f) {
         cur_obj_become_tangible();
         cur_obj_enable_rendering();
-        if (o->oInteractStatus & INT_STATUS_INTERACTED &&
-            !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) { // bob-omb explodes when it gets into a cannon
+        if (o->oInteractStatus & INT_STATUS_INTERACTED
+            && !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) { // bob-omb explodes when it gets into a cannon
             o->oAction = 4;
             o->oCannonUnk10C = 1;
             o->oCannonUnkF8 = 1;
@@ -64,7 +64,8 @@ void opened_cannon_act_6(void) {
         if (o->oTimer < 6) {
         } else {
             if (o->oTimer < 22) {
-                o->oMoveAngleYaw = sins(o->oCannonUnkF4) * 0x4000 + ((s16)(o->oBehParams2ndByte << 8));
+                o->oMoveAngleYaw =
+                    sins(o->oCannonUnkF4) * 0x4000 + ((s16)(o->oBehParams2ndByte << 8));
                 o->oCannonUnkF4 += 0x400;
             } else if (o->oTimer < 26) {
             } else {
@@ -114,8 +115,13 @@ void opened_cannon_act_3(void) {
 }
 
 void (*sOpenedCannonActions[])(void) = {
-    opened_cannon_act_0, opened_cannon_act_1, opened_cannon_act_2, opened_cannon_act_3,
-    opened_cannon_act_4, opened_cannon_act_5, opened_cannon_act_6,
+    opened_cannon_act_0,
+    opened_cannon_act_1,
+    opened_cannon_act_2,
+    opened_cannon_act_3,
+    opened_cannon_act_4,
+    opened_cannon_act_5,
+    opened_cannon_act_6,
 };
 
 void bhv_cannon_base_loop(void) {
@@ -129,7 +135,7 @@ void bhv_cannon_base_loop(void) {
 }
 
 void bhv_cannon_barrel_loop(void) {
-    struct Object* parent = o->parentObj;
+    struct Object *parent = o->parentObj;
 
     if (parent->header.gfx.node.flags & GRAPH_RENDER_ACTIVE) {
         cur_obj_enable_rendering();

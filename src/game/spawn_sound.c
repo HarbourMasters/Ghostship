@@ -15,7 +15,7 @@
  * of sound states. Used for the stepping sounds of various
  * objects. (King Bobomb, Bowser, King Whomp)
  */
-void exec_anim_sound_state(struct SoundState* soundStates) {
+void exec_anim_sound_state(struct SoundState *soundStates) {
     s32 stateIdx = gCurrentObject->oSoundStateID;
 
     switch (soundStates[stateIdx].playSound) {
@@ -49,7 +49,7 @@ void exec_anim_sound_state(struct SoundState* soundStates) {
  * (Breakable walls, King Bobomb exploding, etc)
  */
 void create_sound_spawner(s32 soundMagic) {
-    struct Object* obj = spawn_object(gCurrentObject, 0, bhvSoundSpawner);
+    struct Object *obj = spawn_object(gCurrentObject, 0, bhvSoundSpawner);
 
     obj->oSoundEffectUnkF4 = soundMagic;
 }

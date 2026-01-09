@@ -15,10 +15,14 @@
  * Spawn the four pillars' touch detectors.
  */
 void bhv_pyramid_top_init(void) {
-    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector, 1789, 1024, 764, 0, 0, 0);
-    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector, 1789, 896, -2579, 0, 0, 0);
-    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector, -5883, 1024, -2579, 0, 0, 0);
-    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector, -5883, 1024, 764, 0, 0, 0);
+    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector,
+                              1789, 1024, 764, 0, 0, 0);
+    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector,
+                              1789, 896, -2579, 0, 0, 0);
+    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector,
+                              -5883, 1024, -2579, 0, 0, 0);
+    spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvPyramidPillarTouchDetector,
+                              -5883, 1024, 764, 0, 0, 0);
 }
 
 /**
@@ -47,7 +51,7 @@ void bhv_pyramid_top_spinning(void) {
     // Every frame until 90 frames have passed, generate a pyramid fragment
     // with a random velocity and angle.
     if (o->oTimer < 90) {
-        struct Object* pyramidFragment = spawn_object(o, MODEL_DIRT_ANIMATION, bhvPyramidTopFragment);
+        struct Object *pyramidFragment = spawn_object(o, MODEL_DIRT_ANIMATION, bhvPyramidTopFragment);
         pyramidFragment->oForwardVel = random_float() * 10.0f + 20.0f;
         pyramidFragment->oMoveAngleYaw = random_u16();
         pyramidFragment->oPyramidTopFragmentsScale = 0.8f;
@@ -64,7 +68,7 @@ void bhv_pyramid_top_spinning(void) {
  * Explode the pyramid top, generating dust and pyramid fragments.
  */
 void bhv_pyramid_top_explode(void) {
-    struct Object* pyramidFragment;
+    struct Object *pyramidFragment;
     s16 i;
 
     spawn_mist_particles_variable(0, 0, 690);

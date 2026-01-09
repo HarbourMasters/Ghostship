@@ -113,7 +113,7 @@ static void beta_boo_key_drop(void) {
     f32 velocityMagnitude;
 
     // Update the key to be inside the boo
-    struct Object* parent = o->parentObj;
+    struct Object *parent = o->parentObj;
     obj_copy_pos(o, parent);
 
     // This if statement to only run this code on the first frame
@@ -147,7 +147,7 @@ static void beta_boo_key_drop(void) {
  */
 static void beta_boo_key_inside_boo_loop(void) {
     // Update the key to be inside the boo at all times
-    struct Object* parent = o->parentObj;
+    struct Object *parent = o->parentObj;
     obj_copy_pos(o, parent);
 
     // Use a Y offset of 40 to make the key model aligned correctly.

@@ -15,8 +15,9 @@ void alloc_pool() {
     gEffectsMemoryPool = mem_pool_init(0x4000, MEMORY_POOL_LEFT);
 }
 
-extern "C" void exec_display_list(SPTask* spTask) {
-    GameEngine::ProcessGfxCommands((Gfx*)spTask->task.t.data_ptr);
+extern "C"
+void exec_display_list(SPTask *spTask) {
+    GameEngine::ProcessGfxCommands((Gfx *) spTask->task.t.data_ptr);
 }
 
 void push_frame() {
@@ -27,9 +28,9 @@ void push_frame() {
 }
 
 #ifdef _WIN32
-int SDL_main(int argc, char** argv) {
+int SDL_main(int argc, char **argv) {
 #else
-int main() {
+int main(){
 #endif
     GameEngine::Create();
     alloc_pool();

@@ -28,8 +28,8 @@ static void skeeter_spawn_waves(void) {
     s32 i;
 
     for (i = 0; i < 4; i++) {
-        spawn_object_relative_with_scale(0, D_80331C38[i].unk00, 0, D_80331C38[i].unk02, 0.8f, o, MODEL_IDLE_WATER_WAVE,
-                                         bhvSkeeterWave);
+        spawn_object_relative_with_scale(0, D_80331C38[i].unk00, 0, D_80331C38[i].unk02, 0.8f, o,
+                                         MODEL_IDLE_WATER_WAVE, bhvSkeeterWave);
     }
 }
 
@@ -46,8 +46,9 @@ static void skeeter_act_idle(void) {
 
         if (o->oMoveFlags & OBJ_MOVE_AT_WATER_SURFACE) {
             skeeter_spawn_waves();
-            if (o->oTimer > 60 &&
-                obj_smooth_turn(&o->oSkeeterUnk1AC, &o->oMoveAngleYaw, o->oSkeeterTargetAngle, 0.02f, 5, 50, 200)) {
+            if (o->oTimer > 60
+                && obj_smooth_turn(&o->oSkeeterUnk1AC, &o->oMoveAngleYaw, o->oSkeeterTargetAngle,
+                                   0.02f, 5, 50, 200)) {
                 if (o->oSkeeterWaitTime != 0) {
                     o->oSkeeterWaitTime--;
                 } else if (cur_obj_check_if_near_animation_end()) {

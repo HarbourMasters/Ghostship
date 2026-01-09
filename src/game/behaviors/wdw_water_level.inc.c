@@ -19,7 +19,7 @@ void bhv_water_level_diamond_loop(void) {
         switch (o->oAction) {
             case WATER_LEVEL_DIAMOND_ACT_INIT:
                 o->oFaceAngleYaw = 0;
-                o->oWaterLevelTriggerTargetWaterLevel = (s32)o->oPosY;
+                o->oWaterLevelTriggerTargetWaterLevel = (s32) o->oPosY;
                 if (o->oTimer > 10) {
                     o->oAction++; // Sets to WATER_LEVEL_DIAMOND_ACT_IDLE
                 }
@@ -34,10 +34,10 @@ void bhv_water_level_diamond_loop(void) {
 
             case WATER_LEVEL_DIAMOND_ACT_CHANGE_WATER_LEVEL:
                 o->oAngleVelYaw = 0;
-                gEnvironmentLevels[0] = (s32)approach_f32_symmetric((f32)gEnvironmentLevels[0],
-                                                                    (f32)o->oWaterLevelTriggerTargetWaterLevel, 10.0f);
+                gEnvironmentLevels[0] = (s32) approach_f32_symmetric(
+                    (f32) gEnvironmentLevels[0], (f32) o->oWaterLevelTriggerTargetWaterLevel, 10.0f);
                 if (gEnvironmentLevels[0] == o->oWaterLevelTriggerTargetWaterLevel) {
-                    if ((s16)o->oFaceAngleYaw == 0) {
+                    if ((s16) o->oFaceAngleYaw == 0) {
                         o->oAction++; // Sets to WATER_LEVEL_DIAMOND_ACT_IDLE_SPINNING
                     } else {
                         o->oAngleVelYaw = 0x800;
