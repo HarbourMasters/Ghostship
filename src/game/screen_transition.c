@@ -253,8 +253,8 @@ s32 render_screen_transition(s8 fadeTimer, s8 transType, u8 transTime, struct Wa
 }
 
 Gfx* render_cannon_circle_base(void) {
-    Vtx* verts = alloc_display_list(8 * sizeof(*verts));
-    Gfx* dlist = alloc_display_list(20 * sizeof(*dlist));
+    Vtx* verts = alloc_display_list(4 * sizeof(*verts));
+    Gfx* dlist = alloc_display_list(35 * sizeof(*dlist));
     Gfx* g = dlist;
 
     if (verts != NULL && dlist != NULL) {
@@ -263,11 +263,16 @@ Gfx* render_cannon_circle_base(void) {
         make_vertex(verts, 2, SCREEN_WIDTH, SCREEN_HEIGHT, -1, 1152, 192, 0, 0, 0, 255);
         make_vertex(verts, 3, 0, SCREEN_HEIGHT, -1, -1152, 192, 0, 0, 0, 255);
 
-        // Render black rectangles outside the 4:3 area.
-        make_vertex(verts, 4, GFX_DIMENSIONS_FROM_LEFT_EDGE(0), 0, -1, 0, 0, 0, 0, 0, 255);
-        make_vertex(verts, 5, GFX_DIMENSIONS_FROM_RIGHT_EDGE(0), 0, -1, 0, 0, 0, 0, 0, 255);
-        make_vertex(verts, 6, GFX_DIMENSIONS_FROM_RIGHT_EDGE(0), SCREEN_HEIGHT, -1, 0, 0, 0, 0, 0, 255);
-        make_vertex(verts, 7, GFX_DIMENSIONS_FROM_LEFT_EDGE(0), SCREEN_HEIGHT, -1, 0, 0, 0, 0, 0, 255);
+        gDPPipeSync(g++);
+        gDPSetPrimColor(g++, 0, 0, 0, 0, 0, 255);
+        gDPSetColorDither(g++, G_CD_NOISE);
+        gDPSetAlphaDither(g++, G_AD_NOISE);
+        gDPSetCycleType(g++, G_CYC_1CYCLE);
+        gDPSetCombineMode(g++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+        gDPSetRenderMode(g++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+        gDPFillWideRectangle(g++, OTRGetRectDimensionFromLeftEdge(0), 0, 0, SCREEN_HEIGHT);
+        gDPFillWideRectangle(g++, SCREEN_WIDTH, 0, 
+                                OTRGetRectDimensionFromRightEdge(0), SCREEN_HEIGHT);
 
         gSPDisplayList(g++, dl_proj_mtx_fullscreen);
         gDPSetCombineMode(g++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
@@ -278,10 +283,6 @@ Gfx* render_cannon_circle_base(void) {
         gSPVertex(g++, VIRTUAL_TO_PHYSICAL(verts), 4, 0);
         gSPDisplayList(g++, dl_draw_quad_verts_0123);
         gSPTexture(g++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF);
-        gDPSetCombineMode(g++, G_CC_SHADE, G_CC_SHADE);
-        gSPVertex(g++, VIRTUAL_TO_PHYSICAL(verts + 4), 4, 4);
-        gSP2Triangles(g++, 4, 0, 3, 0, 4, 3, 7, 0);
-        gSP2Triangles(g++, 1, 5, 6, 0, 1, 6, 2, 0);
         gSPDisplayList(g++, dl_screen_transition_end);
         gSPEndDisplayList(g);
     } else {

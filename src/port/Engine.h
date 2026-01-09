@@ -75,11 +75,32 @@ Fast::Interpreter* GameEngine_GetInterpreter();
 
 extern "C" {
 #endif
+// HUD and Rendering related
+float GameEngine_GetAspectRatio();
+uint32_t OTRGetCurrentWidth(void);
+uint32_t OTRGetCurrentHeight(void);
+float OTRGetHUDAspectRatio();
+int32_t OTRConvertHUDXToScreenX(int32_t v);
+float OTRGetDimensionFromLeftEdge(float v);
+float OTRGetDimensionFromRightEdge(float v);
+int16_t OTRGetRectDimensionFromLeftEdge(float v);
+int16_t OTRGetRectDimensionFromRightEdge(float v);
+float OTRGetDimensionFromLeftEdgeForcedAspect(float v, float aspectRatio);
+float OTRGetDimensionFromRightEdgeForcedAspect(float v, float aspectRatio);
+int16_t OTRGetRectDimensionFromLeftEdgeForcedAspect(float v, float aspectRatio);
+int16_t OTRGetRectDimensionFromRightEdgeForcedAspect(float v, float aspectRatio);
+float OTRGetDimensionFromLeftEdgeOverride(float v);
+float OTRGetDimensionFromRightEdgeOverride(float v);
+int16_t OTRGetRectDimensionFromLeftEdgeOverride(float v);
+int16_t OTRGetRectDimensionFromRightEdgeOverride(float v);
+uint32_t OTRGetGameRenderWidth();
+uint32_t OTRGetGameRenderHeight();
+
+// Engine related
 void GameEngine_ProcessGfxCommands(Gfx* commands);
 uint32_t GameEngine_GetInterpolatedFPS();
 uint32_t GameEngine_GetSampleRate();
 uint32_t GameEngine_GetSamplesPerFrame();
-float GameEngine_GetAspectRatio();
 struct CtlEntry* GameEngine_LoadBank(uint8_t bankId);
 uint8_t GameEngine_IsBankLoaded(uint8_t bankId);
 void GameEngine_UnloadBank(uint8_t bankId);
