@@ -750,10 +750,10 @@ void Menu::DrawElement() {
     UIWidgets::ButtonOptions options3 = {};
     options3.color = UIWidgets::Colors::Red;
     options3.size = UIWidgets::Sizes::Inline;
-    options3.tooltip = "Quit SoH";
+    options3.tooltip = "Quit Ghostship";
     if (UIWidgets::Button(ICON_FA_POWER_OFF, options3)) {
         GhostshipGui::mModalWindow->RegisterPopup(
-            "Quit SoH", "Are you sure you want to quit SoH?", "Quit", "Cancel",
+            "Quit Ghostship", "Are you sure you want to quit Ghostship?", "Quit", "Cancel",
             []() {
                 std::shared_ptr<Menu> menu =
                     static_pointer_cast<Menu>(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetMenu());

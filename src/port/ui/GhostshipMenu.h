@@ -21,6 +21,7 @@ class GhostshipMenu : public Ship::Menu {
     WidgetInfo& AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType);
     void AddMenuSettings();
     void AddMenuEnhancements();
+    void AddMenuDevTools();
 
   private:
     char mGitCommitHashTruncated[8];

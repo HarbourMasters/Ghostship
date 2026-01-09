@@ -67,7 +67,7 @@ extern s8 D_8032C650;
 extern s8 gShowProfiler;
 extern s8 gShowDebugText;
 
-#define gDebugLevelSelect (CVarGetInteger("gEnableDebugMode", 0) == 1)
+#define gDebugLevelSelect (CVarGetInteger("gDeveloperTools.DebugMode", 0) == 1)
 
 void exec_display_list(struct SPTask *spTask);
 

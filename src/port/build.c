@@ -7,7 +7,7 @@ const u16 gBuildVersionMinor = 0;
 const u16 gBuildVersionPatch = 0;
 
 const char gGitBranch[] = "develop-modernui";
-const char gGitCommitHash[] = "8648248";
+const char gGitCommitHash[] = "e386ccc";
 const char gGitCommitTag[] = "";
 
 const char gBuildTeam[] = "Lywx";

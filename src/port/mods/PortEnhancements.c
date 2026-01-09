@@ -25,7 +25,7 @@ static const Mtx matrix_patch_fullscreen = {{
 
 void OnLivesChange(IEvent* event) {
     PlayerLivesChange* ev = (PlayerLivesChange*) event;
-    if (CVarGetInteger("gInfiniteLives", 0) == 0 || ev->lives > 0) {
+    if (CVarGetInteger("gCheats.InfiniteLives", 0) == 0 || ev->lives > 0) {
         return;
     }
 
@@ -34,7 +34,7 @@ void OnLivesChange(IEvent* event) {
 
 void OnHealthChange(IEvent* event) {
     PlayerHealthChange* ev = (PlayerHealthChange*) event;
-    if (CVarGetInteger("gInfiniteHealth", 0) == 0 || ev->health > 0) {
+    if (CVarGetInteger("gCheats.InfiniteHealth", 0) == 0 || ev->health > 0) {
         return;
     }
 

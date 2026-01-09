@@ -52,7 +52,7 @@ s8 sDebugLvSelectCheckFlag = FALSE;
 
 // #region [PU] Replace variable with CVar so we have better control from the UI and it can be persisted
 // s8 sDebugPage = DEBUG_PAGE_MIN;
-#define sDebugPage CVarGetInteger("gDeveloper.DebugInfoPage", DEBUG_PAGE_MIN)
+#define sDebugPage CVarGetInteger("gDeveloperTools.DebugInfoPage", DEBUG_PAGE_MIN)
 // #endregion
 s8 sNoExtraDebug = FALSE;
 s8 sDebugStringArrPrinted = FALSE;
@@ -138,29 +138,29 @@ void set_text_array_x_y(s32 xOffset, s32 yOffset) {
  * current debug mode as well as the printer array (down to up vs up to down).
  */
 void print_debug_bottom_up(const char *str, s32 number) {
-    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) {
+    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) {
         print_text_array_info(gDebugPrintState2, str, number);
     }
 }
 
 void print_debug_top_down_objectinfo(const char *str, s32 number) {
-    if ((gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) && sDebugPage == DEBUG_PAGE_OBJECTINFO) {
+    if ((gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) && sDebugPage == DEBUG_PAGE_OBJECTINFO) {
         print_text_array_info(gDebugPrintState1, str, number);
     }
 }
 
 void print_debug_top_down_mapinfo(const char *str, s32 number) {
-    if (sNoExtraDebug && !CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) { // how come this is the only instance of the sNoExtraDebug check?
+    if (sNoExtraDebug && !CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) { // how come this is the only instance of the sNoExtraDebug check?
         return;
     }
 
-    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) {
+    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) {
         print_text_array_info(gDebugPrintState1, str, number);
     }
 }
 
 void print_debug_top_down_normal(const char *str, s32 number) {
-    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) {
+    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) {
         print_text_array_info(gDebugPrintState1, str, number);
     }
 }
@@ -335,20 +335,20 @@ UNUSED static void check_debug_button_seq(void) {
  * control sDebugPage's range. (unused)
  */
 UNUSED static void try_change_debug_page(void) {
-    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloper.DrawDebugInfo", 0)) {
+    if (gDebugInfoFlags & DEBUG_INFO_FLAG_DPRINT || CVarGetInteger("gDeveloperTools.DrawDebugInfo", 0)) {
         if ((gPlayer1Controller->buttonPressed & L_JPAD)
             && (gPlayer1Controller->buttonDown & (L_TRIG | R_TRIG))) {
-            CVarSetInteger("gDeveloper.DebugInfoPage", sDebugPage + 1);
+            CVarSetInteger("gDeveloperTools.DebugInfoPage", sDebugPage + 1);
         }
         if ((gPlayer1Controller->buttonPressed & R_JPAD)
             && (gPlayer1Controller->buttonDown & (L_TRIG | R_TRIG))) {
-            CVarSetInteger("gDeveloper.DebugInfoPage", sDebugPage - 1);
+            CVarSetInteger("gDeveloperTools.DebugInfoPage", sDebugPage - 1);
         }
         if (sDebugPage >= (DEBUG_PAGE_MAX + 1)) {
-            CVarSetInteger("gDeveloper.DebugInfoPage", DEBUG_PAGE_MIN);
+            CVarSetInteger("gDeveloperTools.DebugInfoPage", DEBUG_PAGE_MIN);
         }
         if (sDebugPage < DEBUG_PAGE_MIN) {
-            CVarSetInteger("gDeveloper.DebugInfoPage", DEBUG_PAGE_MAX);
+            CVarSetInteger("gDeveloperTools.DebugInfoPage", DEBUG_PAGE_MAX);
         }
     }
 }

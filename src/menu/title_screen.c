@@ -116,18 +116,18 @@ s16 intro_level_select(void) {
         --gCurrLevelNum, stageChanged = TRUE;
         direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & U_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & U_CBUTTONS)) {
+    if (gPlayer1Controller->buttonPressed & U_JPAD || (CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & U_CBUTTONS)) {
         --gCurrLevelNum, stageChanged = TRUE;
         direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & D_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & D_CBUTTONS)) {
+    if (gPlayer1Controller->buttonPressed & D_JPAD || (CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & D_CBUTTONS)) {
         ++gCurrLevelNum, stageChanged = TRUE;
     }
-    if (gPlayer1Controller->buttonPressed & L_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & L_CBUTTONS)) {
+    if (gPlayer1Controller->buttonPressed & L_JPAD || (CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & L_CBUTTONS)) {
         gCurrLevelNum -= 10, stageChanged = TRUE;
         direction = -1;
     }
-    if (gPlayer1Controller->buttonPressed & R_JPAD || (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & R_CBUTTONS)) {
+    if (gPlayer1Controller->buttonPressed & R_JPAD || (CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) && gPlayer1Controller->buttonPressed & R_CBUTTONS)) {
         gCurrLevelNum += 10, stageChanged = TRUE;
     }
 
@@ -145,7 +145,7 @@ s16 intro_level_select(void) {
     }
 
     // This block will ensure that the level select menu skips over the levels that are not in the game.
-    if (CVarGetInteger("gDeveloper.BetterLevelSelect", 0) && (stageChanged || gCurrLevelNum == 1)) {
+    if (CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) && (stageChanged || gCurrLevelNum == 1)) {
         while (sBetterLevelSelectStageNames[gCurrLevelNum - 1][0] == '\0') {
             gCurrLevelNum += direction;
             if (gCurrLevelNum > LEVEL_MAX) {
@@ -163,7 +163,7 @@ s16 intro_level_select(void) {
 
     print_text_centered(160, 80, "SELECT STAGE");
     print_text_centered(160, 30, "PRESS START BUTTON");
-    if (CVarGetInteger("gDeveloper.BetterLevelSelect", 0)) {
+    if (CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0)) {
         print_text_fmt_int(240, 80, "%2d", gCurrLevelNum);
         print_text_centered(160, 60, sBetterLevelSelectStageNames[gCurrLevelNum - 1]);
     } else {
@@ -178,7 +178,7 @@ s16 intro_level_select(void) {
         // ... the level select quit combo is being pressed, which uses START. If this
         // is the case, quit the menu instead.
         if (gPlayer1Controller->buttonDown == QUIT_LEVEL_SELECT_COMBO) {
-            // CVarSetInteger("gEnableDebugMode", 0);
+            // CVarSetInteger("gDeveloperTools.DebugMode", 0);
             return -1;
         }
         play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);

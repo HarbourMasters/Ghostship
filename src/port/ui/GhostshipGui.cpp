@@ -16,14 +16,13 @@
 #include "Notification.h"
 #include "GhostshipMenu.h"
 #include "GhostshipInputEditorWindow.h"
+#include "SaveEditor.h"
 
 namespace GhostshipGui {
 // MARK: - Delegates
-std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
-std::shared_ptr<Ship::GuiWindow> mStatsWindow;
-std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<GhostshipMenu> mGhostshipMenu;
+std::shared_ptr<SaveEditorWindow> mSaveEditorWindow;
 std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
@@ -44,20 +43,8 @@ void SetupGuiElements() {
     mGhostshipMenu = std::make_shared<GhostshipMenu>(CVAR_WINDOW("Menu"), "Settings Menu");
     gui->SetMenu(mGhostshipMenu);
 
-    mStatsWindow = gui->GetGuiWindow("Stats");
-    if (mStatsWindow == nullptr) {
-        SPDLOG_ERROR("Could not find stats window");
-    }
-
-    mConsoleWindow = gui->GetGuiWindow("Console");
-    if (mConsoleWindow == nullptr) {
-        SPDLOG_ERROR("Could not find console window");
-    }
-
-    mGfxDebuggerWindow = gui->GetGuiWindow("GfxDebuggerWindow");
-    if (mGfxDebuggerWindow == nullptr) {
-        SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
-    }
+    mSaveEditorWindow = std::make_shared<SaveEditorWindow>(CVAR_WINDOW("SaveEditor"), "Save Editor");
+    gui->AddGuiWindow(mSaveEditorWindow);
 
     mInputEditorWindow = std::make_shared<GhostshipInputEditorWindow>(
         CVAR_WINDOW("ControllerConfiguration"), "Configure Controller");
@@ -83,9 +70,7 @@ void Destroy() {
     gui->RemoveAllGuiWindows();
     mGhostshipMenu = nullptr;
     mModalWindow = nullptr;
-    mStatsWindow = nullptr;
-    mConsoleWindow = nullptr;
-    mGfxDebuggerWindow = nullptr;
+    mSaveEditorWindow = nullptr;
     mInputEditorWindow = nullptr;
     mNotificationWindow = nullptr;
     mInputViewer = nullptr;

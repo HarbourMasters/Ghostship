@@ -48,6 +48,22 @@ void GhostshipMenu::AddMenuEnhancements() {
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island."));
 
+    path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", path.sidebarName, 1);
+    path.column = SECTION_COLUMN_1;
+
+    AddWidget(path, "Infinite Health", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("InfiniteHealth"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Impervious to Damage."));
+    AddWidget(path, "Infinite Lives", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("InfiniteLives"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Never run of out Lives."));
+    AddWidget(path, "Pause Exit Whenever", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("PauseExitWhenever"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Exit from anywhere using the Pause Menu."));
 }
 
 } // namespace GhostshipGui
