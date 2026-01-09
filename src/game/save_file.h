@@ -8,12 +8,20 @@
 
 #include "course_table.h"
 
-#define EEPROM_SIZE 0x200
+#define EEPROM_SIZE 0x400
 #define NUM_SAVE_FILES 4
 
 struct SaveBlockSignature {
     u16 magic;
     u16 chksum;
+};
+
+struct RandoSaveData {
+    bool isRando;
+};
+
+struct ShipSaveData {
+    struct RandoSaveData randoSaveData;
 };
 
 struct SaveFile {
@@ -34,6 +42,7 @@ struct SaveFile {
     u8 courseCoinScores[COURSE_STAGES_COUNT];
 
     struct SaveBlockSignature signature;
+    struct ShipSaveData shipSaveData;
 };
 
 enum SaveFileIndex {
