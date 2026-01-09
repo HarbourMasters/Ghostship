@@ -62,7 +62,7 @@ typedef struct {
 #define REGISTER_EVENT(eventType) \
     eventType##ID = EventSystem_RegisterEvent();
 
-#define REGISTER_LISTENER(eventType, callback, priority) \
+#define REGISTER_LISTENER(eventType, priority, callback) \
     EventSystem_RegisterListener(eventType##ID, callback, priority);
 
 #ifdef __cplusplus
@@ -81,9 +81,13 @@ private:
     std::unordered_map<EventID, std::vector<EventListener>> mEventListeners;
     EventID mInternalEventID = 0;
 };
-#else
+
+extern "C" {
+#endif
 extern EventID EventSystem_RegisterEvent();
 extern ListenerID EventSystem_RegisterListener(EventID id, EventCallback callback, EventPriority priority);
 extern void EventSystem_UnregisterListener(EventID ev, ListenerID id);
 extern void EventSystem_CallEvent(EventID id, void* event);
+#ifdef __cplusplus
+}
 #endif
