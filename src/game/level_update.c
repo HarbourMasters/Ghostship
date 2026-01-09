@@ -442,8 +442,8 @@ void init_mario_after_warp(void) {
             play_cap_music(SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP));
         }
 
-        if (CVarGetInteger("gFixKoopaRaceMusic", 0) == 1 && gCurrLevelNum == LEVEL_BOB &&
-            get_current_background_music() != SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE) && sTimerRunning) {
+        if (CVarGetInteger("gEnhancements.FixKoopaRaceMusic", 0) == 1 && gCurrLevelNum == LEVEL_BOB
+            && get_current_background_music() != SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE) && sTimerRunning) {
             play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE), 0);
         }
 
@@ -568,7 +568,7 @@ s16 music_changed_through_warp(s16 arg) {
     struct ObjectWarpNode* warpNode = area_get_warp_node(arg);
     s16 levelNum = warpNode->node.destLevel & 0x7F;
 
-    if (CVarGetInteger("gFixKoopaRaceMusic", 0) == 1) {
+    if(CVarGetInteger("gEnhancements.FixKoopaRaceMusic", 0) == 1) {
         s16 destArea = warpNode->node.destArea;
         s16 val4 = TRUE;
         s16 sp2C;
@@ -1184,7 +1184,7 @@ s32 init_level(void) {
                 if (gMarioState->action != ACT_UNINITIALIZED) {
                     if (save_file_exists(gCurrSaveFileNum - 1)) {
                         set_mario_action(gMarioState, ACT_IDLE, 0);
-                    } else if (CVarGetInteger("gDisablePeachCutscene", 0) == 0) {
+                    } else if (CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0) {
                         set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
                         val4 = TRUE;
                     }
@@ -1250,7 +1250,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 #endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
-    gNeverEnteredCastle = !save_file_exists(gCurrSaveFileNum - 1) || CVarGetInteger("gDisablePeachCutscene", 0) == 0;
+    gNeverEnteredCastle = !save_file_exists(gCurrSaveFileNum - 1) || CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0;
 
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;

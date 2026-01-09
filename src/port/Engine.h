@@ -31,6 +31,13 @@ class GameEngine {
   public:
     static GameEngine* Instance;
 
+    ImFont *fontStandard;
+    ImFont *fontStandardLarger;
+    ImFont *fontStandardLargest;
+    ImFont *fontMono;
+    ImFont *fontMonoLarger;
+    ImFont *fontMonoLargest;
+
     std::shared_ptr<Ship::Context> context;
     std::vector<Animation*> animationsTable;
 
@@ -55,6 +62,8 @@ class GameEngine {
     static void ProcessGfxCommands(Gfx* commands);
     static uint8_t GetBankIdByName(const std::string& name);
     static int ShowYesNoBox(const char* title, const char* box);
+    static ImFont *CreateFontWithSize(float size, std::string fontPath);
+    static void ScaleImGui();
     static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
     void LoadDictionary();
     void LoadPlayerAnims();
@@ -85,6 +94,7 @@ struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 uint8_t* GameEngine_LoadTranslation(const char* key);
 int GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
+
 #ifdef __cplusplus
 }
 #endif
