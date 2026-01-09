@@ -9,24 +9,22 @@ EventID EventSystem::RegisterEvent() {
 }
 
 ListenerID EventSystem::RegisterListener(EventID id, EventCallback callback, EventPriority priority) {
-    if(id == -1) {
+    if (id == -1) {
         throw std::runtime_error("Trying to register listener for unregistered event");
     }
 
     auto& listeners = this->mEventListeners[id];
 
-    if(std::find_if(listeners.begin(), listeners.end(), [callback](EventListener listener) {
-        return listener.function == callback;
-    }) != listeners.end()) {
+    if (std::find_if(listeners.begin(), listeners.end(),
+                     [callback](EventListener listener) { return listener.function == callback; }) != listeners.end()) {
         throw std::runtime_error("Listener already registered");
     }
 
     listeners.push_back({ priority, callback });
 
     // Sort by priority
-    std::sort(listeners.begin(), listeners.end(), [](EventListener a, EventListener b) {
-        return a.priority < b.priority;
-    });
+    std::sort(listeners.begin(), listeners.end(),
+              [](EventListener a, EventListener b) { return a.priority < b.priority; });
 
     return listeners.size() - 1;
 }

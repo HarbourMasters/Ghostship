@@ -46,8 +46,8 @@ void SetupGuiElements() {
     mSaveEditorWindow = std::make_shared<SaveEditorWindow>(CVAR_WINDOW("SaveEditor"), "Save Editor");
     gui->AddGuiWindow(mSaveEditorWindow);
 
-    mInputEditorWindow = std::make_shared<GhostshipInputEditorWindow>(
-        CVAR_WINDOW("ControllerConfiguration"), "Configure Controller");
+    mInputEditorWindow =
+        std::make_shared<GhostshipInputEditorWindow>(CVAR_WINDOW("ControllerConfiguration"), "Configure Controller");
     gui->AddGuiWindow(mInputEditorWindow);
 
     mNotificationWindow = std::make_shared<Notification::Window>(CVAR_WINDOW("Notifications"), "Notifications Window");

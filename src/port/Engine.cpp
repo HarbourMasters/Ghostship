@@ -53,7 +53,6 @@ float previousImGuiScale = defaultImGuiScale;
 
 namespace fs = std::filesystem;
 
-
 extern "C" {
 #include "sm64.h"
 #include "audio/external.h"
@@ -64,7 +63,7 @@ bool prevAltAssets = false;
 
 GameEngine* GameEngine::Instance;
 
-GameEngine::GameEngine(): dictionary(nullptr) {
+GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
 
 #ifdef __SWITCH__
@@ -83,8 +82,10 @@ GameEngine::GameEngine(): dictionary(nullptr) {
     if (std::filesystem::exists(main_path)) {
         archiveFiles.push_back(main_path);
     } else {
-        if (ShowYesNoBox("Ghostship - Asset Extraction", "Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\nAssets will be extracted into an O2R file.") == IDYES) {
-            if(!GenAssetFile()){
+        if (ShowYesNoBox("Ghostship - Asset Extraction",
+                         "Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\nAssets will be "
+                         "extracted into an O2R file.") == IDYES) {
+            if (!GenAssetFile()) {
                 ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
                 exit(1);
             } else {
@@ -99,8 +100,7 @@ GameEngine::GameEngine(): dictionary(nullptr) {
         archiveFiles.push_back(assets_path);
     }
 
-    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
-        !patches_path.empty()) {
+    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty()) {
         if (!std::filesystem::exists(patches_path)) {
             std::filesystem::create_directories(patches_path);
         }
@@ -135,12 +135,12 @@ GameEngine::GameEngine(): dictionary(nullptr) {
 
 #ifndef __SWITCH__
     Ship::Context::GetInstance()->GetLogger()->set_level(
-        (spdlog::level::level_enum) CVarGetInteger("gDeveloperTools.LogLevel", 1));
+        (spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
     Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
 #endif
 
     Ship::Context::GetInstance()->GetLogger()->set_level(
-        (spdlog::level::level_enum) CVarGetInteger("gDeveloperTools.LogLevel", 1));
+        (spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
     Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
 
     window->SetTargetFps(60);
@@ -149,31 +149,55 @@ GameEngine::GameEngine(): dictionary(nullptr) {
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
     auto blobFactory = std::make_shared<Ship::ResourceFactoryBinaryBlobV0>();
-    loader->RegisterResourceFactory(std::make_shared<SM64::AnimationFactoryV0>(), RESOURCE_FORMAT_BINARY, "Animation", static_cast<uint32_t>(SM64::ResourceType::Anim), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank", static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::DialogFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dialog", static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary", static_cast<uint32_t>(SM64::ResourceType::Dictionary), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY, "Vertex", static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY, "DisplayList", static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(Fast::ResourceType::Matrix), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryLightV0>(), RESOURCE_FORMAT_BINARY, "Light", static_cast<uint32_t>(Fast::ResourceType::Light), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::ResourceFactoryBinaryAssetArrayV0>(), RESOURCE_FORMAT_BINARY, "AssetArray", static_cast<uint32_t>(SM64::ResourceType::AssetArray), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::TrajectoryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Trajectory", static_cast<uint32_t>(SM64::ResourceType::Trajectory), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Movtex", static_cast<uint32_t>(SM64::ResourceType::Movtex), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AnimationFactoryV0>(), RESOURCE_FORMAT_BINARY, "Animation",
+                                    static_cast<uint32_t>(SM64::ResourceType::Anim), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank",
+                                    static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY,
+                                    "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY,
+                                    "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::DialogFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dialog",
+                                    static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary",
+                                    static_cast<uint32_t>(SM64::ResourceType::Dictionary), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
+                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Vertex", static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(),
+                                    RESOURCE_FORMAT_BINARY, "DisplayList",
+                                    static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Matrix", static_cast<uint32_t>(Fast::ResourceType::Matrix), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryLightV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Light", static_cast<uint32_t>(Fast::ResourceType::Light), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::ResourceFactoryBinaryAssetArrayV0>(), RESOURCE_FORMAT_BINARY,
+                                    "AssetArray", static_cast<uint32_t>(SM64::ResourceType::AssetArray), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::TrajectoryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Trajectory",
+                                    static_cast<uint32_t>(SM64::ResourceType::Trajectory), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Movtex",
+                                    static_cast<uint32_t>(SM64::ResourceType::Movtex), 0);
     // TODO: This shit needs to change, i mean why i have 5 factories doing the same thing xD
-    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryGenericArrayV0>(), RESOURCE_FORMAT_BINARY, "GenericArray", static_cast<uint32_t>(SM64::ResourceType::GenericArray), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Collision", static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "PaintingData", static_cast<uint32_t>(SM64::ResourceType::PaintingData), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "MacroObject", static_cast<uint32_t>(SM64::ResourceType::MacroObject), 0);
+    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryGenericArrayV0>(),
+                                    RESOURCE_FORMAT_BINARY, "GenericArray",
+                                    static_cast<uint32_t>(SM64::ResourceType::GenericArray), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "Collision",
+                                    static_cast<uint32_t>(SM64::ResourceType::Collision), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "PaintingData",
+                                    static_cast<uint32_t>(SM64::ResourceType::PaintingData), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexFactoryV0>(), RESOURCE_FORMAT_BINARY, "MacroObject",
+                                    static_cast<uint32_t>(SM64::ResourceType::MacroObject), 0);
 
-    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexQuadFactoryV0>(), RESOURCE_FORMAT_BINARY, "MovtexQuad", static_cast<uint32_t>(SM64::ResourceType::MovtexQuad), 0);
-    loader->RegisterResourceFactory(std::make_shared<SM64::PaintingFactoryV0>(), RESOURCE_FORMAT_BINARY, "Painting", static_cast<uint32_t>(SM64::ResourceType::Painting), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::MovtexQuadFactoryV0>(), RESOURCE_FORMAT_BINARY, "MovtexQuad",
+                                    static_cast<uint32_t>(SM64::ResourceType::MovtexQuad), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::PaintingFactoryV0>(), RESOURCE_FORMAT_BINARY, "Painting",
+                                    static_cast<uint32_t>(SM64::ResourceType::Painting), 0);
 
-    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
+    loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
+                                    static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
     prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
     context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 
@@ -200,7 +224,8 @@ bool GameEngine::GenAssetFile(bool exitOnFail) {
 
     auto game = extractor->ValidateChecksum();
     if (!game.has_value()) {
-        ShowMessage("Unsupported ROM", "The provided ROM is not supported.\n\nCheck the readme for a list of supported versions.");
+        ShowMessage("Unsupported ROM",
+                    "The provided ROM is not supported.\n\nCheck the readme for a list of supported versions.");
         if (exitOnFail) {
             exit(1);
         } else {
@@ -208,7 +233,8 @@ bool GameEngine::GenAssetFile(bool exitOnFail) {
         }
     }
 
-    ShowMessage(("Ghostship - Extraction - Found " + game.value()).c_str(), "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
+    ShowMessage(("Ghostship - Extraction - Found " + game.value()).c_str(),
+                "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
 
     return extractor->GenerateOTR();
 }
@@ -249,9 +275,9 @@ int GameEngine::ShowYesNoBox(const char* title, const char* box) {
     return ret;
 }
 
-ImFont *GameEngine::CreateFontWithSize(float size, std::string fontPath) {
+ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     auto mImGuiIo = &ImGui::GetIO();
-    ImFont *font;
+    ImFont* font;
     if (fontPath == "") {
         ImFontConfig fontCfg = ImFontConfig();
         fontCfg.OversampleH = fontCfg.OversampleV = 1;
@@ -268,8 +294,7 @@ ImFont *GameEngine::CreateFontWithSize(float size, std::string fontPath) {
         initData->ResourceVersion = 0;
         initData->Path = fontPath;
         std::shared_ptr<Ship::Font> fontData = std::static_pointer_cast<Ship::Font>(
-            Ship::Context::GetInstance()->GetResourceManager()->LoadResource(fontPath, false,
-                                                                             initData));
+            Ship::Context::GetInstance()->GetResourceManager()->LoadResource(fontPath, false, initData));
         font = mImGuiIo->Fonts->AddFontFromMemoryTTF(fontData->Data, fontData->DataSize, size, &config);
     }
     // FontAwesome fonts need to have their sizes reduced by 2.0f/3.0f in order to align correctly
@@ -279,8 +304,8 @@ ImFont *GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     iconsConfig.MergeMode = true;
     iconsConfig.PixelSnapH = true;
     iconsConfig.GlyphMinAdvanceX = iconFontSize;
-    mImGuiIo->Fonts->AddFontFromMemoryCompressedBase85TTF(fontawesome_compressed_data_base85,
-                                                          iconFontSize, &iconsConfig, sIconsRanges);
+    mImGuiIo->Fonts->AddFontFromMemoryCompressedBase85TTF(fontawesome_compressed_data_base85, iconFontSize,
+                                                          &iconsConfig, sIconsRanges);
 
     return font;
 }
@@ -299,7 +324,7 @@ void GameEngine::ScaleImGui() {
     previousImGuiScaleIndex = imGuiScaleIndex;
 }
 
-void GameEngine::Create(){
+void GameEngine::Create() {
     const auto instance = Instance = new GameEngine();
     GhostshipGui::SetupGuiElements();
     instance->AudioInit();
@@ -312,7 +337,7 @@ void GameEngine::Create(){
     DevConsole_Init();
 }
 
-void GameEngine::Destroy(){
+void GameEngine::Destroy() {
     PortEnhancements_Exit();
     AudioExit();
 #ifdef __SWITCH__
@@ -328,7 +353,8 @@ void GameEngine::StartFrame() const {
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
-            CVarSetInteger("gEnhancements.Mods.AlternateAssets", !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
+            CVarSetInteger("gEnhancements.Mods.AlternateAssets",
+                           !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
             break;
         }
         default:
@@ -345,12 +371,13 @@ uint32_t GameEngine::GetInterpolationFPS() {
         return Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
     }
 
-    return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(), CVarGetInteger("gInterpolationFPS", 30));
+    return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(),
+                              CVarGetInteger("gInterpolationFPS", 30));
 }
 
 // Audio
 
-void GameEngine::HandleAudioThread(){
+void GameEngine::HandleAudioThread() {
     while (audio.running) {
         {
             std::unique_lock<std::mutex> Lock(audio.mutex);
@@ -372,14 +399,14 @@ void GameEngine::HandleAudioThread(){
             create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
         }
 
-        AudioPlayerPlayFrame((u8 *) audio_buffer, 2 * num_audio_samples * 4);
+        AudioPlayerPlayFrame((u8*)audio_buffer, 2 * num_audio_samples * 4);
 
         audio.processing = false;
         audio.cv_from_thread.notify_one();
     }
 }
 
-void GameEngine::StartAudioFrame(){
+void GameEngine::StartAudioFrame() {
     {
         std::unique_lock<std::mutex> Lock(audio.mutex);
         audio.processing = true;
@@ -388,7 +415,7 @@ void GameEngine::StartAudioFrame(){
     audio.cv_to_thread.notify_one();
 }
 
-void GameEngine::EndAudioFrame(){
+void GameEngine::EndAudioFrame() {
     {
         std::unique_lock<std::mutex> Lock(audio.mutex);
         while (audio.processing) {
@@ -407,15 +434,15 @@ void GameEngine::AudioInit() {
     Instance->audioSequenceTable.resize(512);
     Instance->banksTable.resize(512);
 
-    for(auto& bank : *banksFiles){
+    for (auto& bank : *banksFiles) {
         auto path = "__OTR__" + bank;
-        const auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(path.c_str()));
+        const auto ctl = static_cast<CtlEntry*>(ResourceGetDataByName(path.c_str()));
         this->bankMapTable[bank] = ctl->bankId;
     }
 
-    for( auto& sequence : *sequences_files){
+    for (auto& sequence : *sequences_files) {
         auto path = "__OTR__" + sequence;
-        auto seq = static_cast<AudioSequenceData *>(ResourceGetDataByName(path.c_str()));
+        auto seq = static_cast<AudioSequenceData*>(ResourceGetDataByName(path.c_str()));
         Instance->sequenceTable[seq->id] = path;
     }
 
@@ -437,7 +464,8 @@ void GameEngine::AudioExit() {
 }
 
 void GameEngine::LoadDictionary() {
-    this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>> *>(ResourceGetDataByName("__OTR__texts/strings/global"));
+    this->dictionary = static_cast<std::unordered_map<std::string, std::vector<uint8_t>>*>(
+        ResourceGetDataByName("__OTR__texts/strings/global"));
 }
 
 void GameEngine::LoadPlayerAnims() {
@@ -446,14 +474,14 @@ void GameEngine::LoadPlayerAnims() {
     auto anims = archiveMgr->ListFiles("assets/anims/*");
     this->animationsTable.resize(anims->size());
 
-    for(auto& anim : *anims){
+    for (auto& anim : *anims) {
         const auto id = std::stoi(anim.substr(anim.find('_') + 1, anim.length()), nullptr, 16);
-        this->animationsTable[id] = static_cast<Animation *>(ResourceGetDataByName(anim.c_str()));
+        this->animationsTable[id] = static_cast<Animation*>(ResourceGetDataByName(anim.c_str()));
     }
 }
 
 uint8_t GameEngine::GetBankIdByName(const std::string& name) {
-    if(Instance->bankMapTable.contains(name)){
+    if (Instance->bankMapTable.contains(name)) {
         return Instance->bankMapTable[name];
     }
     return 0;
@@ -511,7 +539,7 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
     while (time + original_fps <= next_original_frame) {
         time += original_fps;
         if (time != next_original_frame) {
-            mtx_replacements.push_back(FrameInterpolation_Interpolate((float) time / next_original_frame));
+            mtx_replacements.push_back(FrameInterpolation_Interpolate((float)time / next_original_frame));
         } else {
             mtx_replacements.emplace_back(); // No interpolation for key frames
         }
@@ -545,7 +573,7 @@ extern "C" uint32_t GameEngine_GetSampleRate() {
     return player->GetSampleRate();
 }
 
-extern "C" uint32_t GameEngine_GetSamplesPerFrame(){
+extern "C" uint32_t GameEngine_GetSamplesPerFrame() {
     return SAMPLES_PER_FRAME;
 }
 
@@ -553,9 +581,9 @@ extern "C" uint32_t GameEngine_GetSamplesPerFrame(){
 
 Fast::Interpreter* GameEngine_GetInterpreter() {
     return static_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow())
-             ->GetInterpreterWeak()
-             .lock()
-             .get();
+        ->GetInterpreterWeak()
+        .lock()
+        .get();
 }
 
 extern "C" float GameEngine_GetAspectRatio() {
@@ -566,17 +594,17 @@ extern "C" float GameEngine_GetAspectRatio() {
 extern "C" CtlEntry* GameEngine_LoadBank(const uint8_t bankId) {
     const auto engine = GameEngine::Instance;
 
-    if(bankId >= engine->bankMapTable.size()){
+    if (bankId >= engine->bankMapTable.size()) {
         return nullptr;
     }
 
-    if(engine->banksTable[bankId] != nullptr){
+    if (engine->banksTable[bankId] != nullptr) {
         return engine->banksTable[bankId];
     }
 
-    for(auto& bank : engine->bankMapTable){
-        if(bank.second == bankId){
-            const auto ctl = static_cast<CtlEntry *>(ResourceGetDataByName(("__OTR__" + bank.first).c_str()));
+    for (auto& bank : engine->bankMapTable) {
+        if (bank.second == bankId) {
+            const auto ctl = static_cast<CtlEntry*>(ResourceGetDataByName(("__OTR__" + bank.first).c_str()));
             engine->banksTable[bankId] = ctl;
             return ctl;
         }
@@ -598,20 +626,20 @@ extern "C" void GameEngine_UnloadBank(const uint8_t bankId) {
 extern "C" AudioSequenceData* GameEngine_LoadSequence(const uint8_t seqId) {
     auto engine = GameEngine::Instance;
 
-    if(engine->sequenceTable[seqId].empty()){
+    if (engine->sequenceTable[seqId].empty()) {
         return nullptr;
     }
 
-    if(engine->audioSequenceTable[seqId] != nullptr){
+    if (engine->audioSequenceTable[seqId] != nullptr) {
         return engine->audioSequenceTable[seqId];
     }
 
-    auto sequences = static_cast<AudioSequenceData *>(ResourceGetDataByName(engine->sequenceTable[seqId].c_str()));
+    auto sequences = static_cast<AudioSequenceData*>(ResourceGetDataByName(engine->sequenceTable[seqId].c_str()));
     engine->audioSequenceTable[seqId] = sequences;
     return sequences;
 }
 
-extern "C" uint32_t GameEngine_GetSequenceCount(){
+extern "C" uint32_t GameEngine_GetSequenceCount() {
     auto engine = GameEngine::Instance;
     return engine->sequenceTable.size();
 }
@@ -629,16 +657,17 @@ extern "C" uint32_t GameEngine_GetGameVersion() {
     return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
-extern "C" uint8_t* GameEngine_LoadActName(const uint32_t actId){
-    return static_cast<uint8_t *>(ResourceGetDataByName(StringHelper::Sprintf(gActRoot, actId).c_str()));
+extern "C" uint8_t* GameEngine_LoadActName(const uint32_t actId) {
+    return static_cast<uint8_t*>(ResourceGetDataByName(StringHelper::Sprintf(gActRoot, actId).c_str()));
 }
 
-extern "C" uint8_t* GameEngine_LoadLevelName(const uint32_t courseId){
-    return static_cast<uint8_t *>(ResourceGetDataByName(StringHelper::Sprintf(gCourseRoot, courseId).c_str()));
+extern "C" uint8_t* GameEngine_LoadLevelName(const uint32_t courseId) {
+    return static_cast<uint8_t*>(ResourceGetDataByName(StringHelper::Sprintf(gCourseRoot, courseId).c_str()));
 }
 
-extern "C" DialogEntry* GameEngine_LoadDialog(const uint32_t dialogId){
-    auto dialog = static_cast<DialogEntry *>(ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str()));
+extern "C" DialogEntry* GameEngine_LoadDialog(const uint32_t dialogId) {
+    auto dialog =
+        static_cast<DialogEntry*>(ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str()));
     return dialog;
 }
 
@@ -658,7 +687,7 @@ extern "C" int GameEngine_OTRSigCheck(const char* data) {
 
 extern "C" Animation* GameEngine_LoadAnimation(const uint32_t animId) {
     auto engine = GameEngine::Instance;
-    if(animId >= engine->animationsTable.size()){
+    if (animId >= engine->animationsTable.size()) {
         return nullptr;
     }
     return engine->animationsTable[animId];
@@ -675,7 +704,8 @@ extern "C" uint32_t OTRGetCurrentHeight() {
 }
 
 extern "C" float OTRGetHUDAspectRatio() {
-    if (CVarGetInteger("gHUDAspectRatio.Enabled", 0) == 0 || CVarGetInteger("gHUDAspectRatio.X", 0) == 0 || CVarGetInteger("gHUDAspectRatio.Y", 0) == 0) {
+    if (CVarGetInteger("gHUDAspectRatio.Enabled", 0) == 0 || CVarGetInteger("gHUDAspectRatio.X", 0) == 0 ||
+        CVarGetInteger("gHUDAspectRatio.Y", 0) == 0) {
         return GameEngine_GetAspectRatio();
     }
     return ((float)CVarGetInteger("gHUDAspectRatio.X", 1) / (float)CVarGetInteger("gHUDAspectRatio.Y", 1));
@@ -683,22 +713,30 @@ extern "C" float OTRGetHUDAspectRatio() {
 
 extern "C" float OTRGetDimensionFromLeftEdge(float v) {
     auto interpreter = GameEngine_GetInterpreter();
-    return (interpreter->mNativeDimensions.width / 2 - interpreter->mNativeDimensions.height / 2 * interpreter->mCurDimensions.aspect_ratio + (v));
+    return (interpreter->mNativeDimensions.width / 2 -
+            interpreter->mNativeDimensions.height / 2 * interpreter->mCurDimensions.aspect_ratio + (v));
 }
 
 extern "C" float OTRGetDimensionFromRightEdge(float v) {
     auto interpreter = GameEngine_GetInterpreter();
-    return (interpreter->mNativeDimensions.width / 2 + interpreter->mNativeDimensions.height / 2 * interpreter->mCurDimensions.aspect_ratio - (v));
+    return (interpreter->mNativeDimensions.width / 2 +
+            interpreter->mNativeDimensions.height / 2 * interpreter->mCurDimensions.aspect_ratio - (v));
 }
 
 extern "C" float OTRGetDimensionFromLeftEdgeForcedAspect(float v, float aspectRatio) {
     auto interpreter = GameEngine_GetInterpreter();
-    return (interpreter->mNativeDimensions.width / 2 - interpreter->mNativeDimensions.height / 2 * (aspectRatio > 0 ? aspectRatio : interpreter->mCurDimensions.aspect_ratio) + (v));
+    return (interpreter->mNativeDimensions.width / 2 -
+            interpreter->mNativeDimensions.height / 2 *
+                (aspectRatio > 0 ? aspectRatio : interpreter->mCurDimensions.aspect_ratio) +
+            (v));
 }
 
 extern "C" float OTRGetDimensionFromRightEdgeForcedAspect(float v, float aspectRatio) {
     auto interpreter = GameEngine_GetInterpreter();
-    return (interpreter->mNativeDimensions.width / 2 + interpreter->mNativeDimensions.height / 2 * (aspectRatio > 0 ? aspectRatio : interpreter->mCurDimensions.aspect_ratio) - (v));
+    return (interpreter->mNativeDimensions.width / 2 +
+            interpreter->mNativeDimensions.height / 2 *
+                (aspectRatio > 0 ? aspectRatio : interpreter->mCurDimensions.aspect_ratio) -
+            (v));
 }
 
 extern "C" float OTRGetDimensionFromLeftEdgeOverride(float v) {
@@ -722,19 +760,19 @@ extern "C" uint32_t OTRGetGameRenderHeight() {
 }
 
 extern "C" int16_t OTRGetRectDimensionFromLeftEdge(float v) {
-    return ((int) floorf(OTRGetDimensionFromLeftEdge(v)));
+    return ((int)floorf(OTRGetDimensionFromLeftEdge(v)));
 }
 
 extern "C" int16_t OTRGetRectDimensionFromRightEdge(float v) {
-    return ((int) ceilf(OTRGetDimensionFromRightEdge(v)));
+    return ((int)ceilf(OTRGetDimensionFromRightEdge(v)));
 }
 
 extern "C" int16_t OTRGetRectDimensionFromLeftEdgeForcedAspect(float v, float aspectRatio) {
-    return ((int) floorf(OTRGetDimensionFromLeftEdgeForcedAspect(v, aspectRatio)));
+    return ((int)floorf(OTRGetDimensionFromLeftEdgeForcedAspect(v, aspectRatio)));
 }
 
 extern "C" int16_t OTRGetRectDimensionFromRightEdgeForcedAspect(float v, float aspectRatio) {
-    return ((int) ceilf(OTRGetDimensionFromRightEdgeForcedAspect(v, aspectRatio)));
+    return ((int)ceilf(OTRGetDimensionFromRightEdgeForcedAspect(v, aspectRatio)));
 }
 
 extern "C" int16_t OTRGetRectDimensionFromLeftEdgeOverride(float v) {

@@ -8,4 +8,4 @@ int16_t* MacroObject::GetPointer() {
 size_t MacroObject::GetPointerSize() {
     return sizeof(mData.size()) * sizeof(int16_t);
 }
-}
+} // namespace SM64

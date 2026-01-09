@@ -35,20 +35,19 @@ namespace GhostshipGui {
 extern std::shared_ptr<GhostshipMenu> mGhostshipMenu;
 enum setting { UPDATE_aspectRatioX, UPDATE_aspectRatioY, UPDATE_verticalPixelCount };
 
-std::unordered_map<int32_t, const char*> aspectRatioPresetLabels = {  { 0, "Off" },
-                                                                      { 1, "Custom" },
-                                                                      { 2, "Original (4:3)" },
-                                                                      { 3, "Widescreen (16:9)" },
-                                                                      { 4, "Nintendo 3DS (5:3)" },
-                                                                      { 5, "16:10 (8:5)" },
-                                                                      { 6, "Ultrawide (21:9)" } };
+std::unordered_map<int32_t, const char*> aspectRatioPresetLabels = { { 0, "Off" },
+                                                                     { 1, "Custom" },
+                                                                     { 2, "Original (4:3)" },
+                                                                     { 3, "Widescreen (16:9)" },
+                                                                     { 4, "Nintendo 3DS (5:3)" },
+                                                                     { 5, "16:10 (8:5)" },
+                                                                     { 6, "Ultrawide (21:9)" } };
 const float aspectRatioPresetsX[] = { 0.0f, 16.0f, 4.0f, 16.0f, 5.0f, 16.0f, 21.0f };
 const float aspectRatioPresetsY[] = { 0.0f, 9.0f, 3.0f, 9.0f, 3.0f, 10.0f, 9.0f };
 const int default_aspectRatio = 1; // Default combo list option
 
-const char *pixelCountPresetLabels[] = { "Custom",     "Native N64 (240p)", "2x (480p)",
-                                         "3x (720p)",  "4x (960p)",         "5x (1200p)",
-                                         "6x (1440p)", "Full HD (1080p)",   "4K (2160p)" };
+const char* pixelCountPresetLabels[] = { "Custom",     "Native N64 (240p)", "2x (480p)",       "3x (720p)", "4x (960p)",
+                                         "5x (1200p)", "6x (1440p)",        "Full HD (1080p)", "4K (2160p)" };
 const int pixelCountPresets[] = { 480, 240, 480, 720, 960, 1200, 1440, 1080, 2160 };
 const int default_pixelCount = 0; // Default combo list option
 
@@ -56,7 +55,7 @@ const int default_pixelCount = 0; // Default combo list option
 const uint32_t minVerticalPixelCount = SCREEN_HEIGHT;
 const uint32_t maxVerticalPixelCount = 4320; // 18x native, or 8K TV resolution
 
-    const unsigned short default_maxIntegerScaleFactor = 6; // Default size of Integer scale factor slider.
+const unsigned short default_maxIntegerScaleFactor = 6; // Default size of Integer scale factor slider.
 
 enum messageType { MESSAGE_ERROR, MESSAGE_WARNING, MESSAGE_QUESTION, MESSAGE_INFO, MESSAGE_GRAY_75 };
 const ImVec4 messageColor[]{
@@ -71,9 +70,8 @@ static const float enhancementSpacerHeight = 19.0f;
 static bool update[3];
 
 // Initialise integer scale bounds.
-static short max_integerScaleFactor =
-    default_maxIntegerScaleFactor; // default value, which may or may not get
-                                   // overridden depending on viewport res
+static short max_integerScaleFactor = default_maxIntegerScaleFactor; // default value, which may or may not get
+                                                                     // overridden depending on viewport res
 
 static short integerScale_maximumBounds = 1; // can change when window is resized
 
@@ -103,7 +101,7 @@ std::shared_ptr<Fast::Interpreter> GetInterpreter() {
     return intP;
 }
 
-void ResolutionCustomWidget(WidgetInfo &info) {
+void ResolutionCustomWidget(WidgetInfo& info) {
     ImGui::BeginDisabled(disabled_everything);
     // Vertical Resolution
     UIWidgets::CVarCheckbox("Set fixed vertical resolution (disables resolution slider)",
@@ -117,8 +115,8 @@ void ResolutionCustomWidget(WidgetInfo &info) {
     // }
     UIWidgets::PushStyleCombobox(THEME_COLOR);
     if (ImGui::Combo("Pixel Count Presets", &item_pixelCount, pixelCountPresetLabels,
-                     IM_ARRAYSIZE(pixelCountPresetLabels))
-        && item_pixelCount != default_pixelCount) { // don't change anything if "Custom" is selected.
+                     IM_ARRAYSIZE(pixelCountPresetLabels)) &&
+        item_pixelCount != default_pixelCount) { // don't change anything if "Custom" is selected.
         verticalPixelCount = pixelCountPresets[item_pixelCount];
 
         if (showHorizontalResField) {
@@ -183,22 +181,19 @@ void ResolutionCustomWidget(WidgetInfo &info) {
 
     // Integer scaling settings group (Pixel Perfect Mode)
     static const ImGuiTreeNodeFlags IntegerScalingResolvedImGuiFlag =
-        CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0)
-            ? ImGuiTreeNodeFlags_DefaultOpen
-            : ImGuiTreeNodeFlags_None;
+        CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0) ? ImGuiTreeNodeFlags_DefaultOpen
+                                                                               : ImGuiTreeNodeFlags_None;
     UIWidgets::PushStyleHeader(THEME_COLOR);
     if (ImGui::CollapsingHeader("Integer Scaling Settings", IntegerScalingResolvedImGuiFlag)) {
         const bool disabled_pixelPerfectMode =
-            !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0)
-            || disabled_everything;
+            !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0) || disabled_everything;
         // Pixel Perfect Mode
         UIWidgets::CVarCheckbox(
             "Pixel Perfect Mode", CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode",
             UIWidgets::CheckboxOptions({ { .disabled = disabled_pixelCount || disabled_everything } })
                 .Tooltip("Don't scale image to fill window.")
                 .Color(THEME_COLOR));
-        if (disabled_pixelCount
-            && CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0)) {
+        if (disabled_pixelCount && CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0)) {
             CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         }
@@ -208,38 +203,32 @@ void ResolutionCustomWidget(WidgetInfo &info) {
             fmt::format("Integer scale factor: {}", max_integerScaleFactor).c_str(),
             CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.Factor",
             UIWidgets::IntSliderOptions(
-                { { .disabled = disabled_pixelPerfectMode
-                                || CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION
-                                                  ".IntegerScale.FitAutomatically",
-                                                  0) } })
+                { { .disabled = disabled_pixelPerfectMode ||
+                                CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.FitAutomatically", 0) } })
                 .Min(1)
                 .Max(max_integerScaleFactor)
                 .DefaultValue(1)
                 .Tooltip("Integer scales the image. Only available in Pixel Perfect Mode.")
                 .Color(THEME_COLOR));
         // Display warning if size is being clamped or if framebuffer is larger than viewport.
-        if (!disabled_pixelPerfectMode
-            && (CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.NeverExceedBounds", 1)
-                && CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.Factor", 1)
-                       > integerScale_maximumBounds)) {
+        if (!disabled_pixelPerfectMode &&
+            (CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.NeverExceedBounds", 1) &&
+             CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.Factor", 1) > integerScale_maximumBounds)) {
             ImGui::SameLine();
-            ImGui::TextColored(messageColor[MESSAGE_WARNING],
-                               ICON_FA_EXCLAMATION_TRIANGLE " Window exceeded.");
+            ImGui::TextColored(messageColor[MESSAGE_WARNING], ICON_FA_EXCLAMATION_TRIANGLE " Window exceeded.");
         }
 
-        UIWidgets::CVarCheckbox(
-            "Automatically scale image to fit viewport",
-            CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.FitAutomatically",
-            UIWidgets::CheckboxOptions({ { .disabled = disabled_pixelPerfectMode } })
-                .DefaultValue(true)
-                .Color(THEME_COLOR)
-                .Tooltip("Automatically sets scale factor to fit window. Only available in Pixel "
-                         "Perfect Mode."));
+        UIWidgets::CVarCheckbox("Automatically scale image to fit viewport",
+                                CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.FitAutomatically",
+                                UIWidgets::CheckboxOptions({ { .disabled = disabled_pixelPerfectMode } })
+                                    .DefaultValue(true)
+                                    .Color(THEME_COLOR)
+                                    .Tooltip("Automatically sets scale factor to fit window. Only available in Pixel "
+                                             "Perfect Mode."));
         if (CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.FitAutomatically", 0)) {
             // This is just here to update the value shown on the slider.
             // The function in LUS to handle this setting will ignore IntegerScaleFactor while active.
-            CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.Factor",
-                           integerScale_maximumBounds);
+            CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.Factor", integerScale_maximumBounds);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         }
     } // End of integer scaling settings
@@ -259,8 +248,8 @@ void ResolutionCustomWidget(WidgetInfo &info) {
             "Not available in Pixel Perfect Mode.",
             CVAR_PREFIX_ADVANCED_RESOLUTION ".IgnoreAspectCorrection",
             UIWidgets::CheckboxOptions(
-                { { .disabled = CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0)
-                                || disabled_everything } })
+                { { .disabled = CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0) ||
+                                disabled_everything } })
                 .Color(THEME_COLOR));
 #else
         if (CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IgnoreAspectCorrection", 0)) {
@@ -278,8 +267,7 @@ void ResolutionCustomWidget(WidgetInfo &info) {
 #endif
 
         // A requested addition; an alternative way of displaying the resolution field.
-        if (UIWidgets::Checkbox("Show a horizontal resolution field, instead of aspect ratio.",
-                                &showHorizontalResField,
+        if (UIWidgets::Checkbox("Show a horizontal resolution field, instead of aspect ratio.", &showHorizontalResField,
                                 UIWidgets::CheckboxOptions().Color(THEME_COLOR))) {
             if (!showHorizontalResField && (aspectRatioX > 0.0f)) { // when turning this setting off
                 // Refresh relevant values
@@ -302,9 +290,9 @@ void ResolutionCustomWidget(WidgetInfo &info) {
 
             // Integer Scaling - Never Exceed Bounds.
             const bool disabled_neverExceedBounds =
-                !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0)
-                || CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.FitAutomatically", 0)
-                || disabled_everything;
+                !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0) ||
+                CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.FitAutomatically", 0) ||
+                disabled_everything;
             if (UIWidgets::CVarCheckbox(
                     "Prevent integer scaling from exceeding screen bounds.\n"
                     "(Makes screen bounds take priority over specified factor.)",
@@ -318,17 +306,14 @@ void ResolutionCustomWidget(WidgetInfo &info) {
                                  "want to crop "
                                  "overscan.\n\n"
                                  " " ICON_FA_INFO_CIRCLE " Please note that exceeding screen bounds "
-                                                         "may show a scroll bar on-screen.")
+                                 "may show a scroll bar on-screen.")
                         .Color(THEME_COLOR)
                         .DefaultValue(true))) {
 
                 // Initialise the (currently unused) "Exceed Bounds By" cvar if it's been changed.
                 if (CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0)) {
                     CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0);
-                    Ship::Context::GetInstance()
-                        ->GetWindow()
-                        ->GetGui()
-                        ->SaveConsoleVariablesNextFrame();
+                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 }
             }
 
@@ -339,9 +324,8 @@ void ResolutionCustomWidget(WidgetInfo &info) {
                 "Allow integer scale factor to go +1 above maximum screen bounds.",
                 CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy",
                 UIWidgets::CheckboxOptions(
-                    { { .disabled =
-                            !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0)
-                            || disabled_everything } })
+                    { { .disabled = !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".PixelPerfectMode", 0) ||
+                                    disabled_everything } })
                     .Color(THEME_COLOR));
 
             // It does actually function as expected, but exceeding the bottom of the screen shows a
@@ -349,8 +333,8 @@ void ResolutionCustomWidget(WidgetInfo &info) {
             // simplicity.
 
             // Display an info message about the scroll bar.
-            if (!CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.NeverExceedBounds", 1)
-                || CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0)) {
+            if (!CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.NeverExceedBounds", 1) ||
+                CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0)) {
                 ImGui::TextColored(messageColor[MESSAGE_INFO],
                                    " " ICON_FA_INFO_CIRCLE
                                    " A scroll bar may become visible if screen bounds are exceeded.");
@@ -360,12 +344,8 @@ void ResolutionCustomWidget(WidgetInfo &info) {
                 if (CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0)) {
                     if (UIWidgets::Button("Click to reset a console variable that may be causing this.",
                                           UIWidgets::ButtonOptions().Color(THEME_COLOR))) {
-                        CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy",
-                                       0);
-                        Ship::Context::GetInstance()
-                            ->GetWindow()
-                            ->GetGui()
-                            ->SaveConsoleVariablesNextFrame();
+                        CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0);
+                        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                     }
                     UIWidgets::Spacer(2);
                 }
@@ -388,12 +368,12 @@ void ResolutionCustomWidget(WidgetInfo &info) {
                 }
 
                 UIWidgets::PaddedEnhancementCheckbox(
-                        "Don't allow integer scaling to exceed screen bounds.\n"
-                        "(Makes screen bounds take priority over specified factor.)",
-                        "gAdvancedResolution.IntegerScale.NeverExceedBounds", true, false,
-                        !CVarGetInteger("gAdvancedResolution.PixelPerfectMode", 0) ||
+                    "Don't allow integer scaling to exceed screen bounds.\n"
+                    "(Makes screen bounds take priority over specified factor.)",
+                    "gAdvancedResolution.IntegerScale.NeverExceedBounds", true, false,
+                    !CVarGetInteger("gAdvancedResolution.PixelPerfectMode", 0) ||
                         CVarGetInteger("gAdvancedResolution.IntegerScale.FitAutomatically", 0),
-                        "", UIWidgets::CheckboxGraphics::Cross, true);
+                    "", UIWidgets::CheckboxGraphics::Cross, true);
 
                 if (!CVarGetInteger("gAdvancedResolution.IntegerScale.NeverExceedBounds", 1) ||
                     CVarGetInteger("gAdvancedResolution.IntegerScale.ExceedBoundsBy", 0)) {
@@ -465,8 +445,7 @@ void ResolutionCustomWidget(WidgetInfo &info) {
     UIWidgets::PopStyleHeader();
 
     // Clamp and update the cvars that don't use UIWidgets
-    if (update[UPDATE_aspectRatioX] || update[UPDATE_aspectRatioY]
-        || update[UPDATE_verticalPixelCount]) {
+    if (update[UPDATE_aspectRatioX] || update[UPDATE_aspectRatioY] || update[UPDATE_verticalPixelCount]) {
         if (update[UPDATE_aspectRatioX]) {
             if (aspectRatioX < 0.0f) {
                 aspectRatioX = 0.0f;
@@ -505,15 +484,14 @@ void RegisterResolutionWidgets() {
     // Resolution visualiser
     mGhostshipMenu->AddWidget(path, "Viewport dimensions: {} x {}", WIDGET_TEXT)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) {
+        .PreFunc([](WidgetInfo& info) {
             auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
-            info.name =
-                fmt::format("Viewport dimensions: {} x {}", gfx_current_game_window_viewport.width,
-                            gfx_current_game_window_viewport.height);
+            info.name = fmt::format("Viewport dimensions: {} x {}", gfx_current_game_window_viewport.width,
+                                    gfx_current_game_window_viewport.height);
         });
     mGhostshipMenu->AddWidget(path, "Internal resolution: {} x {}", WIDGET_TEXT)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) {
+        .PreFunc([](WidgetInfo& info) {
             auto gfx_current_dimensions = GetInterpreter().get()->mCurDimensions;
             info.name = fmt::format("Internal resolution: {} x {}", gfx_current_dimensions.width,
                                     gfx_current_dimensions.height);
@@ -525,46 +503,40 @@ void RegisterResolutionWidgets() {
         .RaceDisable(false);
     // Error/Warning display
     mGhostshipMenu
-        ->AddWidget(path,
-                    ICON_FA_EXCLAMATION_TRIANGLE " Significant frame rate (FPS) drops may be occuring.",
+        ->AddWidget(path, ICON_FA_EXCLAMATION_TRIANGLE " Significant frame rate (FPS) drops may be occuring.",
                     WIDGET_TEXT)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) {
-            info.isHidden = !(!CVarGetInteger(CVAR_LOW_RES_MODE, 0) && IsDroppingFrames());
-        })
+        .PreFunc(
+            [](WidgetInfo& info) { info.isHidden = !(!CVarGetInteger(CVAR_LOW_RES_MODE, 0) && IsDroppingFrames()); })
         .Options(TextOptions().Color(Colors::Orange));
-    mGhostshipMenu
-        ->AddWidget(path, ICON_FA_QUESTION_CIRCLE " \"N64 Mode\" is overriding these settings.",
-                    WIDGET_TEXT)
+    mGhostshipMenu->AddWidget(path, ICON_FA_QUESTION_CIRCLE " \"N64 Mode\" is overriding these settings.", WIDGET_TEXT)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) { info.isHidden = !CVarGetInteger(CVAR_LOW_RES_MODE, 0); })
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger(CVAR_LOW_RES_MODE, 0); })
         .Options(TextOptions().Color(Colors::LightBlue));
     mGhostshipMenu->AddWidget(path, "Click to disable N64 mode", WIDGET_BUTTON)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) { info.isHidden = !CVarGetInteger(CVAR_LOW_RES_MODE, 0); })
-        .Callback([](WidgetInfo &info) {
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger(CVAR_LOW_RES_MODE, 0); })
+        .Callback([](WidgetInfo& info) {
             CVarSetInteger(CVAR_LOW_RES_MODE, 0);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         });
 
     // Aspect Ratio
-    mGhostshipMenu->AddWidget(path, "AspectSep", WIDGET_SEPARATOR)
-        .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) {
-            if (mGhostshipMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_OFF).active) {
-                info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
-            }
-        });
+    mGhostshipMenu->AddWidget(path, "AspectSep", WIDGET_SEPARATOR).RaceDisable(false).PreFunc([](WidgetInfo& info) {
+        if (mGhostshipMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_OFF).active) {
+            info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
+        }
+    });
     mGhostshipMenu->AddWidget(path, "Force aspect ratio:", WIDGET_TEXT)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) {
+        .PreFunc([](WidgetInfo& info) {
             if (mGhostshipMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_OFF).active) {
                 info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
             }
         });
     mGhostshipMenu->AddWidget(path, "(Select \"Off\" to disable.)", WIDGET_TEXT)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) {
+        .PreFunc([](WidgetInfo& info) {
             if (mGhostshipMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_OFF).active) {
                 info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
             }
@@ -575,14 +547,13 @@ void RegisterResolutionWidgets() {
     mGhostshipMenu->AddWidget(path, "Aspect Ratio", WIDGET_COMBOBOX)
         .ValuePointer(&item_aspectRatio)
         .RaceDisable(false)
-        .PreFunc([](WidgetInfo &info) {
+        .PreFunc([](WidgetInfo& info) {
             if (mGhostshipMenu->GetDisabledMap().at(DISABLE_FOR_ADVANCED_RESOLUTION_OFF).active) {
                 info.activeDisables.push_back(DISABLE_FOR_ADVANCED_RESOLUTION_OFF);
             }
         })
-        .Callback([](WidgetInfo &info) {
-            if (item_aspectRatio
-                != default_aspectRatio) { // don't change anything if "Custom" is selected.
+        .Callback([](WidgetInfo& info) {
+            if (item_aspectRatio != default_aspectRatio) { // don't change anything if "Custom" is selected.
                 aspectRatioX = aspectRatioPresetsX[item_aspectRatio];
                 aspectRatioY = aspectRatioPresetsY[item_aspectRatio];
 
@@ -593,38 +564,37 @@ void RegisterResolutionWidgets() {
                 CVarSetFloat(CVAR_PREFIX_ADVANCED_RESOLUTION ".AspectRatioX", aspectRatioX);
                 CVarSetFloat(CVAR_PREFIX_ADVANCED_RESOLUTION ".AspectRatioY", aspectRatioY);
             }
-            CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".UIComboItem.AspectRatio",
-                           item_aspectRatio);
+            CVarSetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".UIComboItem.AspectRatio", item_aspectRatio);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         })
         .Options(ComboboxOptions().ComboMap(aspectRatioPresetLabels));
     mGhostshipMenu->AddWidget(path, "AspectRatioCustom", WIDGET_CUSTOM)
         .RaceDisable(false)
-        .CustomFunction([](WidgetInfo &info) {
+        .CustomFunction([](WidgetInfo& info) {
             // Hide aspect ratio input fields if using one of the presets.
             if (item_aspectRatio == default_aspectRatio && !showHorizontalResField) {
                 // Declare input interaction bools outside of IF statement to prevent Y field from
                 // disappearing.
-                const bool input_X = UIWidgets::SliderFloat(
-                    "X", &aspectRatioX,
-                    UIWidgets::FloatSliderOptions({ { .disabled = disabled_everything } })
-                        .Min(0.1f)
-                        .Max(32.0f)
-                        .Step(0.001f)
-                        .Format("%3f")
-                        .Color(THEME_COLOR)
-                        .LabelPosition(UIWidgets::LabelPositions::Near)
-                        .ComponentAlignment(UIWidgets::ComponentAlignments::Right));
-                const bool input_Y = UIWidgets::SliderFloat(
-                    "Y", &aspectRatioY,
-                    UIWidgets::FloatSliderOptions({ { .disabled = disabled_everything } })
-                        .Min(0.1f)
-                        .Max(24.0f)
-                        .Step(0.001f)
-                        .Format("%3f")
-                        .Color(THEME_COLOR)
-                        .LabelPosition(UIWidgets::LabelPositions::Near)
-                        .ComponentAlignment(UIWidgets::ComponentAlignments::Right));
+                const bool input_X =
+                    UIWidgets::SliderFloat("X", &aspectRatioX,
+                                           UIWidgets::FloatSliderOptions({ { .disabled = disabled_everything } })
+                                               .Min(0.1f)
+                                               .Max(32.0f)
+                                               .Step(0.001f)
+                                               .Format("%3f")
+                                               .Color(THEME_COLOR)
+                                               .LabelPosition(UIWidgets::LabelPositions::Near)
+                                               .ComponentAlignment(UIWidgets::ComponentAlignments::Right));
+                const bool input_Y =
+                    UIWidgets::SliderFloat("Y", &aspectRatioY,
+                                           UIWidgets::FloatSliderOptions({ { .disabled = disabled_everything } })
+                                               .Min(0.1f)
+                                               .Max(24.0f)
+                                               .Step(0.001f)
+                                               .Format("%3f")
+                                               .Color(THEME_COLOR)
+                                               .LabelPosition(UIWidgets::LabelPositions::Near)
+                                               .ComponentAlignment(UIWidgets::ComponentAlignments::Right));
                 if (input_X || input_Y) {
                     item_aspectRatio = default_aspectRatio;
                     update[UPDATE_aspectRatioX] = true;
@@ -635,7 +605,7 @@ void RegisterResolutionWidgets() {
                     auto gfx_current_dimensions = GetInterpreter().get()->mCurDimensions;
                     ImGui::Dummy({ 0, 2 });
                     const float resolvedAspectRatio =
-                        (float) gfx_current_dimensions.width / gfx_current_dimensions.height;
+                        (float)gfx_current_dimensions.width / gfx_current_dimensions.height;
                     ImGui::Text("Aspect ratio: %.2f:1", resolvedAspectRatio);
                 }
             }
@@ -647,8 +617,7 @@ void RegisterResolutionWidgets() {
 
 void UpdateResolutionVars() {
     // Clamp and update the cvars that don't use UIWidgets
-    if (update[UPDATE_aspectRatioX] || update[UPDATE_aspectRatioY]
-        || update[UPDATE_verticalPixelCount]) {
+    if (update[UPDATE_aspectRatioX] || update[UPDATE_aspectRatioY] || update[UPDATE_verticalPixelCount]) {
         if (update[UPDATE_aspectRatioX]) {
             if (aspectRatioX < 0.0f) {
                 aspectRatioX = 0.0f;
@@ -682,50 +651,42 @@ void UpdateResolutionVars() {
     }
 
     // Initialise integer scale bounds.
-    short max_integerScaleFactor =
-        default_maxIntegerScaleFactor; // default value, which may or may not get
+    short max_integerScaleFactor = default_maxIntegerScaleFactor; // default value, which may or may not get
     // overridden depending on viewport res
 
     short integerScale_maximumBounds = 1; // can change when window is resized
     // This is mostly just for UX purposes, as Fit Automatically logic is part of LUS.
     auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
     auto gfx_current_dimensions = GetInterpreter().get()->mCurDimensions;
-    if (((float) gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.height)
-        > ((float) gfx_current_dimensions.width / gfx_current_dimensions.height)) {
+    if (((float)gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.height) >
+        ((float)gfx_current_dimensions.width / gfx_current_dimensions.height)) {
         // Scale to window height
-        integerScale_maximumBounds =
-            gfx_current_game_window_viewport.height / gfx_current_dimensions.height;
+        integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_dimensions.height;
     } else {
         // Scale to window width
-        integerScale_maximumBounds =
-            gfx_current_game_window_viewport.width / gfx_current_dimensions.width;
+        integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_dimensions.width;
     }
     // Lower-clamping maximum bounds value to 1 is no-longer necessary as that's accounted for in LUS.
     // Letting it go below 1 in this Editor will even allow for checking if screen bounds are being
     // exceeded.
     if (default_maxIntegerScaleFactor < integerScale_maximumBounds) {
-        max_integerScaleFactor =
-            integerScale_maximumBounds
-            + CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0);
+        max_integerScaleFactor = integerScale_maximumBounds +
+                                 CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IntegerScale.ExceedBoundsBy", 0);
     }
 
     // Combo List defaults
     item_aspectRatio = CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".UIComboItem.AspectRatio", 3);
-    item_pixelCount =
-        CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".UIComboItem.PixelCount", default_pixelCount);
+    item_pixelCount = CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".UIComboItem.PixelCount", default_pixelCount);
     // Stored Values for non-UIWidgets elements
-    aspectRatioX = CVarGetFloat(CVAR_PREFIX_ADVANCED_RESOLUTION ".AspectRatioX",
-                                aspectRatioPresetsX[item_aspectRatio]);
-    aspectRatioY = CVarGetFloat(CVAR_PREFIX_ADVANCED_RESOLUTION ".AspectRatioY",
-                                aspectRatioPresetsY[item_aspectRatio]);
-    verticalPixelCount = CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".VerticalPixelCount",
-                                        pixelCountPresets[item_pixelCount]);
+    aspectRatioX = CVarGetFloat(CVAR_PREFIX_ADVANCED_RESOLUTION ".AspectRatioX", aspectRatioPresetsX[item_aspectRatio]);
+    aspectRatioY = CVarGetFloat(CVAR_PREFIX_ADVANCED_RESOLUTION ".AspectRatioY", aspectRatioPresetsY[item_aspectRatio]);
+    verticalPixelCount =
+        CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".VerticalPixelCount", pixelCountPresets[item_pixelCount]);
     // Additional settings
     horizontalPixelCount = (verticalPixelCount / aspectRatioY) * aspectRatioX;
     // Disabling flags
     disabled_everything = !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".Enabled", 0);
-    disabled_pixelCount =
-        !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".VerticalResolutionToggle", 0);
+    disabled_pixelCount = !CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".VerticalResolutionToggle", 0);
 }
 
 bool IsDroppingFrames() {

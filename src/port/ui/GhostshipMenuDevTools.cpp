@@ -41,38 +41,36 @@ void GhostshipMenu::AddMenuDevTools() {
                               " This does not affect the log file output")
                      .ComboMap(logLevels)
                      .DefaultIndex(defaultLogLevel))
-        .Callback([](WidgetInfo &info) {
+        .Callback([](WidgetInfo& info) {
             Ship::Context::GetInstance()->GetLogger()->set_level(
-                (spdlog::level::level_enum) CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"),
-                                                           defaultLogLevel));
+                (spdlog::level::level_enum)CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
         })
-        .PreFunc([](WidgetInfo &info) {
+        .PreFunc([](WidgetInfo& info) {
             info.isHidden = mGhostshipMenu->disabledMap.at(DISABLE_FOR_DEBUG_MODE_OFF).active;
         });
 #ifdef USE_GBI_TRACE
     AddWidget(path, "GFX Trace Mode", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("GFXTrace"))
-        .Options(CheckboxOptions().Tooltip("Enables the Gfx trace mode, which will output information about the Gfx commands being run."));
+        .Options(CheckboxOptions().Tooltip(
+            "Enables the Gfx trace mode, which will output information about the Gfx commands being run."));
 #endif
     AddWidget(path, "Debug Mode", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("DebugMode"))
         .Options(CheckboxOptions().Tooltip("Various debug features, including a level selector from the main menu."));
     AddWidget(path, "Better Level Select", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"))
-        .Options(CheckboxOptions().Tooltip("Tweaks to the level select screen, like naming and allowing C-buttons to be used."))
-        .PreFunc([](WidgetInfo &info) {
-            info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0));
-        });
+        .Options(CheckboxOptions().Tooltip(
+            "Tweaks to the level select screen, like naming and allowing C-buttons to be used."))
+        .PreFunc(
+            [](WidgetInfo& info) { info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0)); });
     AddWidget(path, "Draw Debug Info", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("DrawDebugInfo"))
         .Options(CheckboxOptions().Tooltip("Draws Debug Related Information"));
     AddWidget(path, "Debug Info Mode", WIDGET_CVAR_COMBOBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("DebugInfoPage"))
-        .Options(ComboboxOptions()
-                     .Tooltip("Select Debug Page")
-                     .ComboMap(debugInfoPages)
-                     .DefaultIndex(DEBUG_PAGE_OBJECTINFO))
-        .PreFunc([](WidgetInfo &info) {
+        .Options(
+            ComboboxOptions().Tooltip("Select Debug Page").ComboMap(debugInfoPages).DefaultIndex(DEBUG_PAGE_OBJECTINFO))
+        .PreFunc([](WidgetInfo& info) {
             info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DrawDebugInfo"), 0));
         });
 
@@ -84,7 +82,6 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Save Editor")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Save Editor Window."));
-    
 }
 
 } // namespace GhostshipGui

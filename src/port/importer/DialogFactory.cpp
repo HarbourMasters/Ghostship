@@ -3,7 +3,7 @@
 #include "spdlog/spdlog.h"
 
 std::shared_ptr<Ship::IResource> SM64::DialogFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
+                                                                     std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
@@ -17,7 +17,7 @@ std::shared_ptr<Ship::IResource> SM64::DialogFactoryV0::ReadResource(std::shared
     dialog->mData.width = reader->ReadInt16();
 
     size_t textSize = reader->ReadUInt32();
-    for(size_t i = 0; i < textSize; i++){
+    for (size_t i = 0; i < textSize; i++) {
         dialog->mText.push_back(reader->ReadUByte());
     }
 

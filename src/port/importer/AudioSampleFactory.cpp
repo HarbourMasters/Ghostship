@@ -3,8 +3,9 @@
 #include "port/importer/types/AudioSample.h"
 #include "spdlog/spdlog.h"
 
-std::shared_ptr<Ship::IResource> SM64::AudioSampleFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                                                           std::shared_ptr<Ship::ResourceInitData> initData) {
+std::shared_ptr<Ship::IResource>
+SM64::AudioSampleFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                         std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
@@ -19,9 +20,9 @@ std::shared_ptr<Ship::IResource> SM64::AudioSampleFactoryV0::ReadResource(std::s
 
     uint32_t stateSize = reader->ReadUInt32();
     std::vector<int16_t> state;
-    if(stateSize > 0){
+    if (stateSize > 0) {
         bank->loop.state = new int16_t[stateSize];
-        reader->Read((char*) bank->loop.state, stateSize * sizeof(int16_t));
+        reader->Read((char*)bank->loop.state, stateSize * sizeof(int16_t));
     } else {
         bank->loop.state = nullptr;
     }
@@ -31,7 +32,7 @@ std::shared_ptr<Ship::IResource> SM64::AudioSampleFactoryV0::ReadResource(std::s
 
     uint32_t tableSize = reader->ReadUInt32();
     bank->book.book = new int16_t[tableSize];
-    reader->Read((char*) bank->book.book, tableSize * sizeof(int16_t));
+    reader->Read((char*)bank->book.book, tableSize * sizeof(int16_t));
 
     int32_t sampleSize = reader->ReadInt32();
     char* sampleData = new char[sampleSize];
@@ -41,7 +42,7 @@ std::shared_ptr<Ship::IResource> SM64::AudioSampleFactoryV0::ReadResource(std::s
     bank->mData.loaded = 1;
     bank->mData.loop = &bank->loop;
     bank->mData.book = &bank->book;
-    bank->mData.sampleAddr = (uint8_t*) sampleData;
+    bank->mData.sampleAddr = (uint8_t*)sampleData;
     bank->mData.sampleSize = sampleSize;
 
     return bank;

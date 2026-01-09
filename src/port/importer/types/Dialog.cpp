@@ -8,4 +8,4 @@ DialogEntry* Dialog::GetPointer() {
 size_t Dialog::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SM64

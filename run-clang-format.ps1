@@ -34,11 +34,11 @@ if (-not (Test-Path $clangFormatFilePath) -or ($currentVersion -ne $requiredVers
     Remove-Item $llvmInstallerPath -Force
 }
 
-$basePath = (Resolve-Path .).Path
+$basePath = Join-Path (Get-Location).Path "src/port"
 $files = Get-ChildItem -Path $basePath -Recurse -File `
     | Where-Object { ($_.Extension -eq '.c' -or $_.Extension -eq '.cpp' -or `
                       (($_.Extension -eq '.h' -or $_.Extension -eq '.hpp') -and `
-                       (-not ($_.FullName -like "*\src/port\*" -or $_.FullName -like "*\include\*")))) -and `
+                       (-not ($_.FullName -like "*\src\*" -or $_.FullName -like "*\include\*")))) -and `
                      (-not ($_.FullName -like "*\assets\*" -or $_.FullName -like "*\build\*")) }
 
 for ($i = 0; $i -lt $files.Length; $i++) {
