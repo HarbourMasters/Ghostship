@@ -18,8 +18,8 @@ static const Mtx matrix_patch_fullscreen = { { { 2.0f / SCREEN_WIDTH, 0.0f, 0.0f
                                                { -1.0f, -1.0f, -1.0f, 1.0f } } };
 
 void OnLivesChange(IEvent* event) {
-    PlayerLivesChange* ev = (PlayerLivesChange*)event;
-    if (CVarGetInteger("gInfiniteLives", 0) == 0 || ev->lives > 0) {
+    PlayerLivesChange* ev = (PlayerLivesChange*) event;
+    if (CVarGetInteger("gCheats.InfiniteLives", 0) == 0 || ev->lives > 0) {
         return;
     }
 
@@ -27,8 +27,8 @@ void OnLivesChange(IEvent* event) {
 }
 
 void OnHealthChange(IEvent* event) {
-    PlayerHealthChange* ev = (PlayerHealthChange*)event;
-    if (CVarGetInteger("gInfiniteHealth", 0) == 0 || ev->health > 0) {
+    PlayerHealthChange* ev = (PlayerHealthChange*) event;
+    if (CVarGetInteger("gCheats.InfiniteHealth", 0) == 0 || ev->health > 0) {
         return;
     }
 
@@ -36,7 +36,7 @@ void OnHealthChange(IEvent* event) {
 }
 
 void OnRenderPauseCourseOptions(IEvent* event) {
-    if (CVarGetInteger("gPauseExitWhenever", 0) == 0) {
+    if (CVarGetInteger("gCheats.PauseExitWhenever", 0) == 0) {
         return;
     }
 

@@ -1,9 +1,11 @@
 #include "SaveEditor.h"
-#include "UIWidgets.h"
+#include "UIWidgets.hpp"
 
 #include <string>
 #include <imgui.h>
 #include <libultraship/libultraship.h>
+#include "GhostshipGui.hpp"
+#include "port/ui/cvar_prefixes.h"
 
 extern "C" {
 #include "game/save_file.h"
@@ -52,47 +54,45 @@ void DrawFlagTableArray32(const FlagTable& flagTable, uint16_t row, uint32_t& fl
     ImGui::PopID();
 }
 
-void SaveEditorWindow::InitElement() {
-}
-
 void SaveEditorWindow::DrawElement() {
-    ImGui::SetNextWindowSize(ImVec2(497, 532), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin("Save Editor", &mIsVisible)) {
+    if (CVarGetInteger(CVAR_WINDOW("SaveEditor"), 0)) {
+        ImGui::SetNextWindowSize(ImVec2(497, 532), ImGuiCond_FirstUseEver);
+        if (ImGui::Begin("Save Editor")) {
 
-        ImGui::BeginTabBar("##saveEditorTabs");
-        if (ImGui::BeginTabItem("Main Save & Mario Flags")) {
-            ImGui::Text("Mario Flags");
-            DrawFlagTableArray32(flagTables[1], 0, gMarioState->flags);
-            ImGui::Text("Save File Flags");
-            DrawFlagTableArray32(flagTables[0], 0, gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags);
-            ImGui::EndTabItem();
-        }
-
-        if (ImGui::BeginTabItem("Course Stars & Coins")) {
-            for (int i = 0; i < COURSE_COUNT; i++) {
-                ImGui::Text("%s", courseNames[i]);
-                std::string invisibleLabelStr = "##courseStars" + std::string(courseNames[i]);
-                const char* invisibleLabel = invisibleLabelStr.c_str();
-                UIWidgets::DrawFlagArray8(
-                    invisibleLabel, gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[COURSE_NUM_TO_INDEX(i)]);
-                if (i < COURSE_STAGES_COUNT) {
-                    ImGui::SameLine();
-                    std::string invisibleLabelStr2 = "##courseCoins" + std::string(courseNames[i]);
-                    const char* invisibleLabel2 = invisibleLabelStr2.c_str();
-                    ImGui::SetNextItemWidth(ImGui::GetFontSize() * 4);
-                    ImGui::InputScalar(
-                        invisibleLabel2, ImGuiDataType_U8,
-                        &gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseCoinScores[COURSE_NUM_TO_INDEX(i)], NULL,
-                        NULL, "%u");
-                }
+            ImGui::BeginTabBar("##saveEditorTabs");
+            if (ImGui::BeginTabItem("Main Save & Mario Flags")) {
+                ImGui::Text("Mario Flags");
+                DrawFlagTableArray32(flagTables[1], 0, gMarioState->flags);
+                ImGui::Text("Save File Flags");
+                DrawFlagTableArray32(flagTables[0], 0,
+                                     gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags);
+                ImGui::EndTabItem();
             }
-            ImGui::EndTabItem();
+
+            if (ImGui::BeginTabItem("Course Stars & Coins")) {
+                for (int i = 0; i < COURSE_COUNT; i++) {
+                    ImGui::Text("%s", courseNames[i]);
+                    std::string invisibleLabelStr = "##courseStars" + std::string(courseNames[i]);
+                    const char *invisibleLabel = invisibleLabelStr.c_str();
+                    UIWidgets::DrawFlagArray8(
+                        invisibleLabel,
+                        gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[COURSE_NUM_TO_INDEX(i)]);
+                    if (i < COURSE_STAGES_COUNT) {
+                        ImGui::SameLine();
+                        std::string invisibleLabelStr2 = "##courseCoins" + std::string(courseNames[i]);
+                        const char *invisibleLabel2 = invisibleLabelStr2.c_str();
+                        ImGui::SetNextItemWidth(ImGui::GetFontSize() * 4);
+                        ImGui::InputScalar(invisibleLabel2, ImGuiDataType_U8,
+                                           &gSaveBuffer.files[gCurrSaveFileNum - 1][0]
+                                                .courseCoinScores[COURSE_NUM_TO_INDEX(i)],
+                                           NULL, NULL, "%u");
+                    }
+                }
+                ImGui::EndTabItem();
+            }
+
+            ImGui::EndTabBar();
         }
-
-        ImGui::EndTabBar();
+        ImGui::End();
     }
-    ImGui::End();
-}
-
-void SaveEditorWindow::UpdateElement() {
 }

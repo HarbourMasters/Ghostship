@@ -1512,7 +1512,8 @@ void note_set_vel_pan_reverb(struct Note* note, f32 velocity, f32 pan, u8 reverb
         velocity = 0;
     }
 
-    float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
+
+    float master_vol = CVarGetFloat("gSettings.Volume.Master", 1.0f);
     volLeft *= master_vol;
     volRight *= master_vol;
 
