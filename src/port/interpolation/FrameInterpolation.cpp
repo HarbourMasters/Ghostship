@@ -12,6 +12,7 @@
 
 extern "C" {
 extern Mat4* gInterpolationMatrix;
+void guOrtho(Mtx* dest, float left, float right, float bottom, float top, float near, float far, float scale);
 }
 /*
 Frame interpolation.
@@ -61,6 +62,7 @@ enum class Op {
     MatrixPut,
     MatrixMult,
     MatrixTranslate,
+    Ortho,
     MatrixScale,
     MatrixRotate1Coord,
     MatrixRotateXYCoords,
@@ -113,6 +115,17 @@ union Data {
         Mat4* matrix;
         Vec3fInterp b;
     } matrix_translate;
+
+    struct {
+        Mtx* m;
+        float left;
+        float right;
+        float bottom;
+        float top;
+        float near;
+        float far;
+        float scale;
+    } ortho;
 
     struct {
         Mat4* matrix;
@@ -444,6 +457,28 @@ struct InterpolateCtx {
 
                             translate_mtxf(*gInterpolationMatrix, temp);
                             break;
+                        case Op::Ortho: {
+                            // Only interpolate if the difference is significant to avoid jitter
+                            constexpr float THRESHOLD = 2.0f;
+                            if (fabsf(old_op.ortho.left - new_op.ortho.left) < THRESHOLD &&
+                                fabsf(old_op.ortho.right - new_op.ortho.right) < THRESHOLD &&
+                                fabsf(old_op.ortho.bottom - new_op.ortho.bottom) < THRESHOLD &&
+                                fabsf(old_op.ortho.top - new_op.ortho.top) < THRESHOLD &&
+                                fabsf(old_op.ortho.near - new_op.ortho.near) < THRESHOLD &&
+                                fabsf(old_op.ortho.far - new_op.ortho.far) < THRESHOLD &&
+                                fabsf(old_op.ortho.scale - new_op.ortho.scale) < THRESHOLD) {
+                                break;
+                            }
+                            float left = lerp(old_op.ortho.left, new_op.ortho.left);
+                            float right = lerp(old_op.ortho.right, new_op.ortho.right);
+                            float bottom = lerp(old_op.ortho.bottom, new_op.ortho.bottom);
+                            float top = lerp(old_op.ortho.top, new_op.ortho.top);
+                            float near = lerp(old_op.ortho.near, new_op.ortho.near);
+                            float far = lerp(old_op.ortho.far, new_op.ortho.far);
+                            float scale = lerp(old_op.ortho.scale, new_op.ortho.scale);
+                            guOrtho(new_replacement(new_op.ortho.m), left, right, bottom, top, near, far, scale);
+                            break;
+                        }
                         case Op::MatrixPosRotXYZ: {
                             Vec3f tempF;
                             Vec3s tempS;
@@ -756,6 +791,14 @@ void FrameInterpolation_RecordMatrixTranslate(Mat4* matrix, Vec3f b) {
     }
     // Note: Vec3f decays to pointer when passed as parameter. Cast directly, not &b.
     append(Op::MatrixTranslate).matrix_translate = { matrix, *((Vec3fInterp*)b) };
+}
+
+void FrameInterpolation_RecordOrtho(Mtx* m, f32 left, f32 right, f32 bottom, f32 top, f32 near, f32 far,
+                                    f32 scale) {
+    if (!check_if_recording()) {
+        return;
+    }
+    append(Op::Ortho).ortho = { m, left, right, bottom, top, near, far, scale };
 }
 
 void FrameInterpolation_RecordMatrixScale(Mat4* matrix, f32 scale) {
