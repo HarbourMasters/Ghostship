@@ -11,6 +11,7 @@
 #include "segment2.h"
 #include "sm64.h"
 #include "skybox_table.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 /**
  * @file skybox.c
@@ -291,7 +292,7 @@ void *create_skybox_ortho_matrix(s8 player) {
     }
 
     if (mtx != NULL) {
-        guOrtho(mtx, left, right, bottom, top, 0.0f, 3.0f, 1.0f);
+        guOrthoInterp(mtx, left, right, bottom, top, 0.0f, 3.0f, 1.0f);
     } else {
     }
 
