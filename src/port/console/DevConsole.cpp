@@ -21,12 +21,13 @@ extern int16_t sCurrPlayMode; // level_update.h
 
 static bool ResetHandler(std::shared_ptr<Ship::Console> Console, std::vector<std::string> args, std::string* output) {
     // Do not reset unless currently playing a level
-    if (sCurrPlayMode == 0) { // PLAY_MODE_NORMAL
-        warp_special(-8);
-        return 0;
+    if (sCurrPlayMode != 0) { // PLAY_MODE_NORMAL
+        ERROR_MESSAGE("sCurrPlayMode != PLAY_MODE_NORMAL");
+        return 1;
     }
-    *output = "Cannot reset: sCurrPlayMode must be 0 but is " + std::to_string(sCurrPlayMode);
-    return 1;
+
+    warp_special(-8);
+    return 0;
 }
 
 void DevConsole_Init(void) {
