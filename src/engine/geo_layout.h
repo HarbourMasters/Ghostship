@@ -29,6 +29,10 @@
 #define cur_geo_cmd_ptr(offset) \
     (*(void **) &gGeoLayoutCommand[CMD_PROCESS_OFFSET(offset)])
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern struct AllocOnlyPool *gGraphNodePool;
 extern struct GraphNode *gCurRootGraphNode;
 extern UNUSED s32 D_8038BCA8;
@@ -83,5 +87,9 @@ void geo_layout_cmd_node_held_obj(void);
 void geo_layout_cmd_node_culling_radius(void);
 
 struct GraphNode *process_geo_layout(struct AllocOnlyPool *a0, void *segptr);
+
+#ifdef __cplusplus
+};
+#endif
 
 #endif // GEO_LAYOUT_H

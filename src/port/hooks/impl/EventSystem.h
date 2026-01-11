@@ -70,10 +70,10 @@ typedef struct {
     }
 
 #define REGISTER_EVENT(eventType) \
-    eventType##ID = EventSystem_RegisterEvent();
+    eventType##ID = EventSystem_RegisterEvent()
 
 #define REGISTER_LISTENER(eventType, priority, callback) \
-    EventSystem_RegisterListener(eventType##ID, callback, priority);
+    EventSystem_RegisterListener(eventType##ID, callback, priority)
 
 #ifdef __cplusplus
 #include <array>

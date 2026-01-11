@@ -12,6 +12,12 @@ enum LevelScriptIntroArgs {
     LVL_INTRO_LEVEL_SELECT
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 s32 lvl_intro_update(s16 arg, UNUSED s32 unusedArg);
+#ifdef __cplusplus
+}
+#endif
 
 #endif // TITLE_SCREEN_H

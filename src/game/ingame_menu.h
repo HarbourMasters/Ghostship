@@ -123,6 +123,10 @@ enum DialogResponseDefines {
     DIALOG_RESPONSE_NOT_DEFINED
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern s32 gDialogResponse;
 extern u16 gDialogColorFadeTimer;
 extern s8 gLastDialogLineNum;
@@ -159,5 +163,9 @@ void do_cutscene_handler(void);
 void render_hud_cannon_reticle(void);
 void reset_red_coins_collected(void);
 s16 render_menus_and_dialogs(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // INGAME_MENU_H
