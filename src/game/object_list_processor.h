@@ -57,6 +57,15 @@ enum ObjectList {
     NUM_OBJ_LISTS
 };
 
+struct NumTimesCalled {
+    /*0x00*/ s16 floor;
+    /*0x02*/ s16 ceil;
+    /*0x04*/ s16 wall;
+};
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 extern struct ObjectNode gObjectListArray[];
 
@@ -65,12 +74,6 @@ extern s32 gNumFindFloorMisses;
 extern UNUSED s32 unused_8033BEF8;
 extern s32 gUnknownWallCount;
 extern u32 gObjectCounter;
-
-struct NumTimesCalled {
-    /*0x00*/ s16 floor;
-    /*0x02*/ s16 ceil;
-    /*0x04*/ s16 wall;
-};
 
 extern struct NumTimesCalled gNumCalls;
 
@@ -122,5 +125,8 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo);
 void clear_objects(void);
 void update_objects(UNUSED s32 unused);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif // OBJECT_LIST_PROCESSOR_H
