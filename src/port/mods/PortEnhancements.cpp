@@ -7,6 +7,7 @@
 #include "port/hooks/Events.h"
 #include "assets/bin/segment2.h"
 #include "port/ShipInit.hpp"
+#include "port/Rando/Rando.h"
 
 static const Mtx matrix_patch_identity = {
     { { 1.0f, 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f, 1.0f } }
@@ -85,4 +86,10 @@ void PortEnhancements_Register() {
 
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
+    REGISTER_EVENT(RenderPauseCourseOptions);
+    REGISTER_EVENT(SpawnMacroObject);
+
+    Rando::Init();
 }
+
+static RegisterShipInitFunc initFunc(PortEnhancements_Init);
