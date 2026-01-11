@@ -340,6 +340,8 @@ void GameEngine::Create() {
 }
 
 void GameEngine::Destroy() {
+    GhostshipGui::Destroy();
+    Instance->context = nullptr;
     AudioExit();
 #ifdef __SWITCH__
     Ship::Switch::Exit();
