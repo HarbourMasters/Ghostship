@@ -18,6 +18,10 @@
 #define SEQ_PLAYER_ENV              1  // Misc music like the puzzle jingle
 #define SEQ_PLAYER_SFX              2  // Sound effects
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern s32 gAudioErrorFlags;
 extern f32 gGlobalSoundSource[3];
 
@@ -67,6 +71,10 @@ void audio_init(void); // in load.c
 #if defined(VERSION_EU) || defined(VERSION_SH)
 struct SPTask *unused_80321460();
 struct SPTask *unused_80321460(void);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // AUDIO_EXTERNAL_H

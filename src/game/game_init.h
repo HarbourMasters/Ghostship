@@ -20,6 +20,10 @@ struct DemoInput {
     u8 buttonMask;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern struct Controller gControllers[3];
 extern OSContStatus gControllerStatuses[4];
 extern OSContPad gControllerPads[4];
@@ -61,4 +65,7 @@ void select_gfx_pool(void);
 void display_and_vsync(void);
 void thread5_iteration(void);
 
+#ifdef __cplusplus
+}
+#endif
 #endif // GAME_INIT_H

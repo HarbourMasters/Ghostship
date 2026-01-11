@@ -1,12 +1,15 @@
 #include "GeoLayoutParser.h"
 
 #include <unordered_map>
-#include "port/Engine.h"
 #include <libultraship.h>
+
+#include "port/Engine.h"
+#include "port/hooks/Events.h"
 #include "port/interpolation/FrameInterpolation.h"
 
-extern "C" {
 #include "engine/geo_layout.h"
+
+extern "C" {
 #include "engine/graph_node.h"
 #include "engine/math_util.h"
 
@@ -561,14 +564,18 @@ void process_cmd_node_object_parent() {
 }
 
 void process_cmd_node_generated() {
-    const auto param = GeoLayoutParser::mReader->ReadInt16();
+    auto param = GeoLayoutParser::mReader->ReadInt16();
     const auto addr = GeoLayoutParser::mReader->ReadUInt32();
 
-    GraphNodeGenerated* graphNode =
-        init_graph_node_generated(gGraphNodePool, nullptr, GetFunctionByAddr(addr, "NODE_ASM"), // asm function
-                                  param);                                                       // parameter
+    GraphNodeFunc func = GetFunctionByAddr(addr, "NODE_ASM");
 
-    register_scene_graph_node(&graphNode->fnNode.node);
+    CALL_CANCELLABLE_EVENT(GeoLayoutCallASM, &func, &param) {
+        GraphNodeGenerated* graphNode =
+        init_graph_node_generated(gGraphNodePool, nullptr, func,   // asm function
+                                                           param); // parameter
+
+        register_scene_graph_node(&graphNode->fnNode.node);
+    }
 }
 
 void process_cmd_node_background() {
