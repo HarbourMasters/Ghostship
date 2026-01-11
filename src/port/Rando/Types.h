@@ -3,20 +3,28 @@
 
 typedef enum {
     RCTYPE_UNKNOWN,
+    RCTYPE_MAJOR,
     RCTYPE_MAX,
 } RandoCheckType;
 
 typedef enum {
     RC_UNKNOWN,
+    RC_CASTLE_GROUNDS_YELLOW_COIN_01,
+    RC_CASTLE_GROUNDS_SIGNPOST_01,
     RC_MAX,
 } RandoCheckId;
 
 typedef enum {
+    RITYPE_UNKNOWN,
+    RITYPE_COIN,
+    RITYPE_SIGNPOST,
     RITYPE_MAX,
 } RandoItemType;
 
 typedef enum {
     RI_UNKNOWN,
+    RI_COIN_YELLOW,
+    RI_SIGNPOST,
     RI_MAX,
 } RandoItemId;
 
