@@ -5,10 +5,6 @@
 
 #include "types.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define TIMER_CONTROL_SHOW  0
 #define TIMER_CONTROL_START 1
 #define TIMER_CONTROL_STOP  2
@@ -61,6 +57,10 @@ struct CreditsEntry {
     /*0x04*/ Vec3s marioPos;
     /*0x0C*/ const char **unk0C;
 };
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 extern struct CreditsEntry *gCurrCreditsEntry;
 
