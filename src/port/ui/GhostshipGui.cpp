@@ -3,7 +3,6 @@
 #include <spdlog/spdlog.h>
 #include <imgui.h>
 #include <imgui_internal.h>
-#include "UIWidgets.hpp"
 
 #ifdef __APPLE__
 #include <fast/backends/gfx_metal.h>
@@ -14,7 +13,6 @@
 #endif
 
 #include "Notification.h"
-#include "GhostshipMenu.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
 
