@@ -8,12 +8,28 @@
 
 #include "course_table.h"
 
-#define EEPROM_SIZE 0x200
+#include "port/Rando/Types.h"
+
+#define EEPROM_SIZE 0x800
 #define NUM_SAVE_FILES 4
 
 struct SaveBlockSignature {
     u16 magic;
     u16 chksum;
+};
+
+struct RandoSaveCheck {
+    RandoItemId randoItemId;
+    bool obtained;
+};
+
+struct RandoSaveData {
+    bool isRando;
+    struct RandoSaveCheck randoSaveChecks[RC_MAX];
+};
+
+struct ShipSaveData {
+    struct RandoSaveData randoSaveData;
 };
 
 struct SaveFile {
