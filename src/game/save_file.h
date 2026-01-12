@@ -25,7 +25,7 @@ struct RandoSaveCheck {
 
 struct RandoSaveData {
     bool isRando;
-    struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    //struct RandoSaveCheck randoSaveChecks[RC_MAX];
 };
 
 struct ShipSaveData {
