@@ -354,10 +354,16 @@ Gfx* GfxPrint_Close(GfxPrint* this) {
 }
 
 s32 _Printf(PrintCallback a, void* arg, const char* fmt, va_list ap) {
-    unsigned char buffer[4096];
+    char buffer[0x1024];
+    int result = vsnprintf(buffer, sizeof(buffer), fmt, ap);
 
-    vsnprintf(buffer, sizeof(buffer), fmt, ap);
-    a(arg, buffer, strlen(buffer));
+    if (result < 0) {
+        return result;
+    }
+
+    size_t len = (result < (int)sizeof(buffer)) ? (size_t)result : (sizeof(buffer) - 1);
+    a(arg, buffer, len);
+    return (s32)len;
 }
 
 s32 PrintUtils_VPrintf(PrintCallback* pfn, const char* fmt, va_list args) {
