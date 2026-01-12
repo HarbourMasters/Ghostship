@@ -4,6 +4,14 @@
 #include "port/hooks/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
+// TODO: Need to possibly set behaviorArg to fix Star on Red Coin spawn behavior.
+// - Star will spin on an alternate axis and be uncollectable.
+
+void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
+    std::string locationStr = std::to_string(posX) + ", " + std::to_string(posY) + ", " + std::to_string(posZ);
+    SPDLOG_INFO("Type: {} | Model: {} | Position: {}", type, model, locationStr);
+}
+
 // Entry point for the module, run once on game boot
 void Rando::ActorBehavior::Init() {
     REGISTER_LISTENER(SpawnMacroObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -12,20 +20,12 @@ void Rando::ActorBehavior::Init() {
 			return;
 		}
 		int16_t model = *(ev->model);
-        int16_t posX = ev->posX;
-		int16_t posY = ev->posY;
-        int16_t posZ = ev->posZ;
         
-		//SPDLOG_INFO("ID: {} | posX: {} | posY: {} | posZ: {}", model, posX, posY, posZ);
+		LogOutSpawns("Macro", model, ev->posX, ev->posY, ev->posZ);
 
-		Vec3s location;
-        location[0] = ev->posX;
-        location[1] = ev->posY;
-        location[2] = ev->posZ;
-        
 		RandoCheckId randoCheckId = Rando::StaticData::GetCheckByLocation(ev->posX, ev->posY, ev->posZ);
 		if (randoCheckId != RC_UNKNOWN) {
-            RandoItemId randoItemId = Rando::StaticData::Checks[randoCheckId].randoItemId;
+            RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
 			if (randoItemId != RI_UNKNOWN) {
                 int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
                 *(ev->model) = modelId;
@@ -33,5 +33,30 @@ void Rando::ActorBehavior::Init() {
 			}
 		}
 	});
+
+	REGISTER_LISTENER(SpawnObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        SpawnObject* ev = (SpawnObject*)event;
+        struct SpawnInfo* info = *(ev->spawnInfo);
+
+        uint32_t model = *(ev->model);
+       
+        LogOutSpawns("Spawn", model, info->startPos[0], info->startPos[1], info->startPos[2]);
+        
+        RandoCheckId randoCheckId =
+            Rando::StaticData::GetCheckByLocation(info->startPos[0], info->startPos[1], info->startPos[2]);
+        if (randoCheckId != RC_UNKNOWN) {
+            RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
+            if (randoItemId != RI_UNKNOWN) {
+                int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
+                *(ev->model) = modelId;
+                info->behaviorScript = (void*)Rando::StaticData::GetBehaviorByModel(modelId);
+                *(ev->spawnInfo) = info;
+                event->cancelled = true;
+            }
+        }
+
+        
+    });
+
 }
 

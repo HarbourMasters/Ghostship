@@ -7,6 +7,7 @@
 #include "include/behavior_data.h"
 #include "include/object_fields.h"
 #include "include/object_constants.h"
+#include "game/save_file.h"
 
 extern "C" {
 #include "game/object_list_processor.h"
