@@ -1141,7 +1141,7 @@ void load_main_menu_save_file(struct Object *fileButton, s32 fileNum) {
     if (fileButton->oMenuButtonState == MENU_BUTTON_STATE_FULLSCREEN) {
         sSelectedFileNum = fileNum;
     }
-    CALL_EVENT(OnLoadSave, fileNum);
+    CALL_EVENT(OnGameFileLoad, fileNum);
 }
 
 /**

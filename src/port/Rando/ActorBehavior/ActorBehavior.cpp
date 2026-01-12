@@ -8,6 +8,10 @@
 // - Star will spin on an alternate axis and be uncollectable.
 
 void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
+    if (model != MODEL_STAR && model != MODEL_RED_COIN && model != MODEL_RED_COIN_NO_SHADOW 
+        && model != MODEL_BLUE_COIN && model != MODEL_BLUE_COIN_NO_SHADOW) {
+        return;
+    }
     std::string locationStr = std::to_string(posX) + ", " + std::to_string(posY) + ", " + std::to_string(posZ);
     SPDLOG_INFO("Type: {} | Model: {} | Position: {}", type, model, locationStr);
 }
@@ -23,15 +27,15 @@ void Rando::ActorBehavior::Init() {
         
 		LogOutSpawns("Macro", model, ev->posX, ev->posY, ev->posZ);
 
-		RandoCheckId randoCheckId = Rando::StaticData::GetCheckByLocation(ev->posX, ev->posY, ev->posZ);
-		if (randoCheckId != RC_UNKNOWN) {
-            RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
-			if (randoItemId != RI_UNKNOWN) {
-                int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
-                *(ev->model) = modelId;
-                *(ev->behavior) = Rando::StaticData::GetBehaviorByModel(modelId);
-			}
-		}
+		// RandoCheckId randoCheckId = Rando::StaticData::GetCheckByLocation(ev->posX, ev->posY, ev->posZ);
+		// if (randoCheckId != RC_UNKNOWN) {
+        //     RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
+		// 	if (randoItemId != RI_UNKNOWN) {
+        //         int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
+        //         *(ev->model) = modelId;
+        //         *(ev->behavior) = Rando::StaticData::GetBehaviorByModel(modelId);
+		// 	}
+		// }
 	});
 
 	REGISTER_LISTENER(SpawnObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -42,21 +46,18 @@ void Rando::ActorBehavior::Init() {
        
         LogOutSpawns("Spawn", model, info->startPos[0], info->startPos[1], info->startPos[2]);
         
-        RandoCheckId randoCheckId =
-            Rando::StaticData::GetCheckByLocation(info->startPos[0], info->startPos[1], info->startPos[2]);
-        if (randoCheckId != RC_UNKNOWN) {
-            RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
-            if (randoItemId != RI_UNKNOWN) {
-                int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
-                *(ev->model) = modelId;
-                info->behaviorScript = (void*)Rando::StaticData::GetBehaviorByModel(modelId);
-                *(ev->spawnInfo) = info;
-                event->cancelled = true;
-            }
-        }
-
-        
+        // RandoCheckId randoCheckId =
+        //     Rando::StaticData::GetCheckByLocation(info->startPos[0], info->startPos[1], info->startPos[2]);
+        // if (randoCheckId != RC_UNKNOWN) {
+        //     RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
+        //     if (randoItemId != RI_UNKNOWN) {
+        //         int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
+        //         *(ev->model) = modelId;
+        //         info->behaviorScript = (void*)Rando::StaticData::GetBehaviorByModel(modelId);
+        //         *(ev->spawnInfo) = info;
+        //         event->cancelled = true;
+        //     }
+        // }
     });
-
 }
 

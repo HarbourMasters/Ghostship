@@ -85,7 +85,8 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(RenderPauseCourseOptions);
     REGISTER_EVENT(SpawnMacroObject);
     REGISTER_EVENT(SpawnObject);
-    REGISTER_EVENT(OnLoadSave);
+    REGISTER_EVENT(OnGameFileLoad);
+    REGISTER_EVENT(OnGameFileSave);
 
     Rando::Init();
 }

@@ -20,6 +20,14 @@ typedef enum {
     RC_BOB_RED_COIN_06,
     RC_BOB_RED_COIN_07,
     RC_BOB_RED_COIN_08,
+    RC_WHF_RED_COIN_01,
+    RC_WHF_RED_COIN_02,
+    RC_WHF_RED_COIN_03,
+    RC_WHF_RED_COIN_04,
+    RC_WHF_RED_COIN_05,
+    RC_WHF_RED_COIN_06,
+    RC_WHF_RED_COIN_07,
+    RC_WHF_RED_COIN_08,
     RC_MAX,
 } RandoCheckId;
 

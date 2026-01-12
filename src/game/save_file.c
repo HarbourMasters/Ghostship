@@ -12,6 +12,9 @@
 #include "course_table.h"
 #include "rumble_init.h"
 
+#include "port/hooks/list/PlayerEvent.h"
+#include "port/mods/PortEnhancements.h"
+
 #define MENU_DATA_MAGIC 0x4849
 #define SAVE_FILE_MAGIC 0x4441
 
@@ -250,6 +253,7 @@ static void restore_save_file_data(s32 fileIndex, s32 srcSlot) {
 }
 
 void save_file_do_save(s32 fileIndex) {
+    CALL_EVENT(OnGameFileSave, fileIndex);
     if (gSaveFileModified) {
         // Compute checksum
         add_save_block_signature(&gSaveBuffer.files[fileIndex][0],

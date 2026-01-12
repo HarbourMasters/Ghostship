@@ -27,6 +27,10 @@ DEFINE_EVENT(SpawnObject,
     struct SpawnInfo** spawnInfo;
 );
 
-DEFINE_EVENT(OnLoadSave,
+DEFINE_EVENT(OnGameFileLoad,
+    s32 fileNum;
+);
+
+DEFINE_EVENT(OnGameFileSave,
     s32 fileNum;
 );
