@@ -244,7 +244,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
         return 1;
     }
 
-    if(arg != LVL_INTRO_LEVEL_SELECT || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) == 0){
+    if(arg != LVL_INTRO_LEVEL_SELECT || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) == 0){
         return lvl_intro_update(arg, b);
     }
 
@@ -401,7 +401,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
 }
 
 Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *context) {
-    if(state != 1 || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) != 1) {
+    if(state != 1 || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) != 1) {
         return NULL;
     }
 
@@ -501,7 +501,7 @@ static void Init() {
             return;
         }
 
-        if(CVarGetInteger("gDeveloperTools.BetterLevelSelect", 0) == 0){
+        if(CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) == 0){
             *ev->geoLayoutAddr = (void*) intro_geo_000414;
         } else {
             *ev->geoLayoutAddr = (void*) BetterLevelSelect_GeoWrapper;
