@@ -511,16 +511,19 @@ static void Init() {
     REGISTER_LISTENER(LevelScriptCallLoop, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         LevelScriptCallLoop* ev = (LevelScriptCallLoop*) event;
 
-        self.loaded = false;
-
         if(*ev->func == lvl_intro_update) {
+            if(*ev->arg == LVL_INTRO_LEVEL_SELECT) {
+                self.loaded = true;
+            }
             *ev->func = BetterLevelSelect_UpdateMenu;
             return;
         }
 
+        self.loaded = false;
+
         if(*ev->func == lvl_init_or_update) {
             *ev->func = BetterLevelSelect_UpdateArea;
-            self.loaded = true;
+            return;
         }
     });
 }
