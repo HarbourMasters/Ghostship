@@ -6359,8 +6359,8 @@ struct CameraTrigger sCamBBH[] = {
 };
 
 #define _ NULL
-#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, cameratable, _9) cameratable,
-#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, cameratable, _11) cameratable,
+#define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, cameratable) cameratable,
+#define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, cameratable) cameratable,
 
 /*
  * This table has an extra 2 levels after the last unknown_38 stub level. What I think

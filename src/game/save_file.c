@@ -32,8 +32,8 @@ u8 gCurrCourseStarFlags = 0;
 
 u8 gSpecialTripleJump = FALSE;
 
-#define STUB_LEVEL(_0, _1, courseenum, _3, _4, _5, _6, _7, _8, _9) courseenum,
-#define DEFINE_LEVEL(_0, _1, courseenum, _3, _4, _5, _6, _7, _8, _9, _10, _11) courseenum,
+#define STUB_LEVEL(_0, _1, courseenum, _3, _4, _5, _6, _7, _8) courseenum,
+#define DEFINE_LEVEL(_0, _1, courseenum, _3, _4, _5, _6, _7, _8, _9, _10) courseenum,
 
 s8 gLevelToCourseNumTable[] = {
     #include "levels/level_defines.h"
