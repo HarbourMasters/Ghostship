@@ -357,6 +357,14 @@ void select_gfx_pool(void) {
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->buffer;
     gGfxPoolEnd = (u8 *) (gGfxPool->buffer + GFX_POOL_SIZE);
+
+    gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+    gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
+    gDPSetFillColor(gDisplayListHead++, 0x0001);
+    gDPFillWideRectangle(gDisplayListHead++,
+                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
+                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
+    gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
 
 /**

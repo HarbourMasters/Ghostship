@@ -527,7 +527,7 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
                     }
 
                     gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
-                    gSPTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 16) << 2,
+                    gSPWideTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 16) << 2,
                                         (curY + 16) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
                     curX += xStride;
@@ -545,7 +545,7 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
             }
 
             gSPDisplayList(gDisplayListHead++, dl_rgba16_load_tex_block);
-            gSPTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 16) << 2,
+            gSPWideTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 16) << 2,
                                 (curY + 16) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
             curX += xStride;
@@ -607,7 +607,7 @@ void print_menu_generic_string(s16 x, s16 y, const u8 *str) {
                 gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, fontLUT[str[strPos]]);
                 gDPLoadSync(gDisplayListHead++);
                 gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 8 * 8 - 1, CALC_DXT(8, G_IM_SIZ_8b_BYTES));
-                gSPTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 8) << 2,
+                gSPWideTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 8) << 2,
                                     (curY + 8) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
 #ifndef VERSION_EU
@@ -615,7 +615,7 @@ void print_menu_generic_string(s16 x, s16 y, const u8 *str) {
                     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, fontLUT[DIALOG_CHAR_MARK_START + mark]);
                     gDPLoadSync(gDisplayListHead++);
                     gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 8 * 8 - 1, CALC_DXT(8, G_IM_SIZ_8b_BYTES));
-                    gSPTextureRectangle(gDisplayListHead++, (curX + 6) << 2, (curY - 7) << 2,
+                    gSPWideTextureRectangle(gDisplayListHead++, (curX + 6) << 2, (curY - 7) << 2,
                                         (curX + 6 + 8) << 2, (curY - 7 + 8) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
                     mark = DIALOG_MARK_NONE;
@@ -651,7 +651,7 @@ void print_credits_string(s16 x, s16 y, const u8 *str) {
                 gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fontLUT[str[strPos]]);
                 gDPLoadSync(gDisplayListHead++);
                 gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 8 * 8 - 1, CALC_DXT(8, G_IM_SIZ_16b_BYTES));
-                gSPTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 8) << 2,
+                gSPWideTextureRectangle(gDisplayListHead++, curX << 2, curY << 2, (curX + 8) << 2,
                                     (curY + 8) << 2, G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
                 curX += 7;
                 break;
