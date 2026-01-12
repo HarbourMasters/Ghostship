@@ -59,5 +59,11 @@ void Rando::ActorBehavior::Init() {
         //     }
         // }
     });
+
+    REGISTER_LISTENER(SpawnStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        SpawnStar* ev = (SpawnStar*)event;
+
+        LogOutSpawns("Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
+    });
 }
 
