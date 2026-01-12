@@ -1,5 +1,7 @@
 :config:
   autopads: false
+  external_files:
+    - "assets/ymls/us/actors/wiggler_body.yml"
   compression:
     offset: 0x180BB0
   segments:
