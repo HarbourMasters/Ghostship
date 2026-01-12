@@ -1,6 +1,7 @@
 #include "BetterLevelSelect.h"
 
 #include "sm64.h"
+#include "port/ui/cvar_prefixes.h"
 #include "game/area.h"
 #include "audio/external.h"
 #include "game/game_init.h"
@@ -244,7 +245,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
         return 1;
     }
 
-    if(arg != LVL_INTRO_LEVEL_SELECT || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) == 0){
+    if(arg != LVL_INTRO_LEVEL_SELECT || CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) == 0){
         return lvl_intro_update(arg, b);
     }
 
@@ -397,10 +398,11 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
 }
 
 Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *context) {
-    if(state != 1 || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) != 1) {
+    if (state != 1 || CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) != 1) {
         return NULL;
     }
 
+    int language = CVarGetInteger(CVAR_DEVELOPER_TOOLS("BLSLanguage"), ROM_JP);
     int32_t count = ARRAY_COUNT(entries);
     GfxPrint printer;
     Gfx* head = &self.pool[0];
@@ -430,10 +432,10 @@ Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *
                 GfxPrint_SetColor(&printer, 175, 175, 175, 255);
             }
 
-            GfxPrint_Printf(&printer, "%3d %s", idx, ROM_JP ? entry.japaneseName : entry.englishName);
+            GfxPrint_Printf(&printer, "%3d %s", idx, language ? entry.japaneseName : entry.englishName);
         }
 
-        std::vector<const char*> acts = ROM_JP ? entries[self.currentLevelIndex].actsJp : entries[self.currentLevelIndex].actsEn;
+        std::vector<const char*> acts = language ? entries[self.currentLevelIndex].actsJp : entries[self.currentLevelIndex].actsEn;
 
         if(!acts.empty()) {
             GfxPrint_SetPos(&printer, 2, 25);
@@ -497,7 +499,7 @@ static void Init() {
             return;
         }
 
-        if(CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) == 0){
+        if(CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) == 0){
             *ev->geoLayoutAddr = (void*) intro_geo_000414;
         } else {
             *ev->geoLayoutAddr = (void*) BetterLevelSelect_GeoWrapper;
