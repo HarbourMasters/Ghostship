@@ -2,7 +2,7 @@
 #include "port/mods/PortEnhancements.h"
 // #include "2s2h/GameInteractor/GameInteractor.h"
 #include "ActorBehavior/ActorBehavior.h"
-// #include "Rando/MiscBehavior/MiscBehavior.h"
+#include "MiscBehavior/MiscBehavior.h"
 // #include "Rando/Spoiler/Spoiler.h"
 // #include "Rando/CheckTracker/CheckTracker.h"
 #include "port/ShipInit.hpp"
@@ -22,7 +22,7 @@
 // Entry point for the module, run once on game boot
 void Rando::Init() {
     // Rando::Spoiler::RefreshOptions();
-    // Rando::MiscBehavior::Init();
+    Rando::MiscBehavior::Init();
     Rando::ActorBehavior::Init();
     // Rando::CheckTracker::Init();
     // Ship::Context::GetInstance()->GetFileDropMgr()->RegisterDropHandler(Rando::Spoiler::HandleFileDropped);

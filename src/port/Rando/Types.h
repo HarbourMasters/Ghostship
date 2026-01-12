@@ -9,22 +9,31 @@ typedef enum {
 
 typedef enum {
     RC_UNKNOWN,
-    RC_CASTLE_GROUNDS_YELLOW_COIN_01,
-    RC_CASTLE_GROUNDS_SIGNPOST_01,
+    RC_BOB_STAR_CHAIN_CHOMP,
+    RC_BOB_STAR_KING_BOB,
+    RC_BOB_STAR_RED_COIN,
+    RC_BOB_RED_COIN_01,
+    RC_BOB_RED_COIN_02,
+    RC_BOB_RED_COIN_03,
+    RC_BOB_RED_COIN_04,
+    RC_BOB_RED_COIN_05,
+    RC_BOB_RED_COIN_06,
+    RC_BOB_RED_COIN_07,
+    RC_BOB_RED_COIN_08,
     RC_MAX,
 } RandoCheckId;
 
 typedef enum {
     RITYPE_UNKNOWN,
     RITYPE_COIN,
-    RITYPE_SIGNPOST,
+    RITYPE_STAR,
     RITYPE_MAX,
 } RandoItemType;
 
 typedef enum {
     RI_UNKNOWN,
-    RI_COIN_YELLOW,
-    RI_SIGNPOST,
+    RI_COIN_RED,
+    RI_STAR,
     RI_MAX,
 } RandoItemId;
 

@@ -151,7 +151,7 @@ void spawn_macro_objects(s16 areaIndex, s16 *macroObjList) {
             != RESPAWN_INFO_DONT_RESPAWN) {
             // Spawn the new macro object.
             CALL_EVENT(SpawnMacroObject, &preset.behavior, &preset.model, macroObject[MACRO_OBJ_X],
-                       macroObject[MACRO_OBJ_Y], macroObject[MACRO_OBJ_Z]) {
+                       macroObject[MACRO_OBJ_Y], macroObject[MACRO_OBJ_Z], &macroObject[MACRO_OBJ_PARAMS]) {
                 newObj = spawn_object_abs_with_rot(
                              &gMacroObjectDefaultParent, // Parent object
                              0,                          // Unused

@@ -27,7 +27,6 @@ struct RandoStaticCheck {
 extern std::map<RandoCheckId, RandoStaticCheck> Checks;
 
 RandoCheckId GetCheckIdFromName(const char* name);
-// void PopulateCheckNames();
 
 struct RandoStaticItem {
     RandoItemId randoItemId;
@@ -39,19 +38,15 @@ struct RandoStaticItem {
 };
 
 extern std::map<RandoItemId, RandoStaticItem> Items;
+extern std::map<RandoCheckId, RandoItemId> shuffledList;
 
 RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ);
 int16_t GetModelByRandoItem(RandoItemId randoItem);
 const BehaviorScript *GetBehaviorByModel(int16_t modelId);
-// extern std::unordered_map<StartingItemCategory, std::vector<RandoItemId>> StartingItemsMap;
+RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId);
+void ShuffleItemList();
 
-// RandoItemId GetItemIdFromName(const char* name);
-// u8 GetIconForZMessage(RandoItemId itemId);
-// const char* GetIconTexturePath(RandoItemId itemId);
-// bool ShouldShowGetItemCutscene(RandoItemId itemId);
-// std::string GetItemName(RandoItemId randoItemId, bool includeArticle = true);
-// std::string GetTrapMessage();
-
+//  TODO: Add RandoStaticOptions
 // struct RandoStaticOption {
 //     RandoOptionId randoOptionId;
 //     const char* name;
@@ -63,6 +58,7 @@ const BehaviorScript *GetBehaviorByModel(int16_t modelId);
 
 // RandoOptionId GetOptionIdFromName(const char* name);
 
+// TODO: Add Logic and Regions
 // struct RandoStaticRegion {
 //     RandoRegionId randoRegionId;
 //     const char* name;

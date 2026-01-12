@@ -7,6 +7,10 @@
 #include "camera.h"
 #include "engine/graph_node.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct WarpNode {
     /*00*/ u8 id;
     /*01*/ u8 destLevel;
