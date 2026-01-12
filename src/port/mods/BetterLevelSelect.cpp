@@ -270,15 +270,10 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
             self.timerUp = 0;
         }
         if (self.timerUp == 0) {
-            self.timerUp = 20;
+            self.timerUp = 40;
             self.lockUp = true;
-            play_sound(SOUND_GENERAL_LEVEL_SELECT_CHANGE, gGlobalSoundSource);
             self.verticalInput = self.update_rate;
         }
-    }
-
-    if(gPlayer1Controller->buttonDown & U_JPAD && self.timerUp == 0) {
-        self.verticalInput = self.update_rate * 3;
     }
 
     if(gPlayer1Controller->buttonDown & D_JPAD) {
@@ -286,11 +281,14 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
             self.timerDown = 0;
         }
         if (self.timerDown == 0) {
-            self.timerDown = 20;
+            self.timerDown = 40;
             self.lockDown = true;
-            play_sound(SOUND_GENERAL_LEVEL_SELECT_CHANGE, gGlobalSoundSource);
             self.verticalInput = -self.update_rate;
         }
+    }
+    
+    if (self.verticalInput == 0) {
+        self.verticalInputAccumulator = 0;
     }
 
     if(gPlayer1Controller->buttonPressed & BTN_Z) {
@@ -338,10 +336,6 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
         self.areaChanged = true;
     }
 
-    if(gPlayer1Controller->buttonDown & D_JPAD && self.timerDown == 0) {
-        self.verticalInput = -self.update_rate * 3;
-    }
-
     self.verticalInputAccumulator += self.verticalInput;
 
     if(self.verticalInputAccumulator < -7) {
@@ -352,6 +346,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
         self.currentActIndex = 0;
         self.currentLevelIndex++;
         self.currentLevelIndex = (self.currentLevelIndex + count) % count;
+        play_sound(SOUND_GENERAL_LEVEL_SELECT_CHANGE, gGlobalSoundSource);
 
         if (self.currentLevelIndex == ((self.topDisplayedLevel + count + 19) % count)) {
             self.topDisplayedLevel++;
@@ -372,6 +367,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
         self.currentActIndex = 0;
         self.currentLevelIndex--;
         self.currentLevelIndex = (self.currentLevelIndex + count) % count;
+        play_sound(SOUND_GENERAL_LEVEL_SELECT_CHANGE, gGlobalSoundSource);
 
         if (self.currentLevelIndex == ((self.topDisplayedLevel + count) % count)) {
             self.topDisplayedLevel--;
