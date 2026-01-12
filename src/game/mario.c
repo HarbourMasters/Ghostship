@@ -1449,7 +1449,7 @@ void update_mario_health(struct MarioState *m) {
         // When already healing or hurting Mario, Mario's HP is not changed any more here.
         if (((u32) m->healCounter | (u32) m->hurtCounter) == 0) {
             if ((m->input & INPUT_IN_POISON_GAS) && !(m->action & ACT_FLAG_INTANGIBLE)) {
-                if (!(m->flags & MARIO_METAL_CAP) && !gDebugLevelSelect) {
+                if (!(m->flags & MARIO_METAL_CAP) /* && !gDebugLevelSelect */) {
                     s32 amount = -4;
                     CALL_CANCELLABLE_EVENT(PlayerHealthChange, m, amount) {
                         m->health += amount;
