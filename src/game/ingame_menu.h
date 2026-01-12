@@ -31,8 +31,16 @@ enum MenuMode {
     MENU_MODE_UNUSED_3
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern s8 gDialogCourseActNum;
 extern s8 gHudFlash;
+
+#ifdef __cplusplus
+}
+#endif
 
 struct DialogEntry {
     /*0x00*/ u32 unused;
