@@ -457,12 +457,12 @@ Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *
             GfxPrint_SetColor(&printer, 100, 100, 100, 255);
 
             switch (entries[self.currentLevelIndex].levelId) {
-                case LEVEL_WDW: {
-                    GfxPrint_Printf(&printer, "Water Level:");
-                    GfxPrint_SetColor(&printer, 55, 200, 50, 255);
-                    GfxPrint_Printf(&printer, "%s", ttcSpeeds[self.ttcSpeedIndex]);
-                    break;
-                }
+                // case LEVEL_WDW: {
+                //     GfxPrint_Printf(&printer, "Water Level:");
+                //     GfxPrint_SetColor(&printer, 55, 200, 50, 255);
+                //     GfxPrint_Printf(&printer, "%s", ttcSpeeds[self.ttcSpeedIndex]);
+                //     break;
+                // }
                 case LEVEL_TTC: {
                     GfxPrint_Printf(&printer, "Speed:");
                     GfxPrint_SetColor(&printer, 55, 200, 50, 255);
