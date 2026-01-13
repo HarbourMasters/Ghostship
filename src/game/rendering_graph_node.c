@@ -232,7 +232,7 @@ static void geo_process_ortho_projection(struct GraphNodeOrthoProjection *node) 
         f32 bottom = (gCurGraphNodeRoot->y + gCurGraphNodeRoot->height) / 2.0f * node->scale;
 
         FrameInterpolation_RecordOpenChild("geo_process_ortho_projection", (uintptr_t)node);
-        guOrtho(mtx, left, right, bottom, top, -2.0f, 2.0f, 1.0f);
+        guOrthoInterp(mtx, left, right, bottom, top, -2.0f, 2.0f, 1.0f);
         gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx), G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
 

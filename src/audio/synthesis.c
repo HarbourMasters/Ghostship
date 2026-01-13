@@ -1496,11 +1496,6 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
         velocity = 0;
     }
 
-
-    float master_vol = CVarGetInteger("gSettings.Volume.Master", 100) / 100.0f;
-    volLeft *= master_vol;
-    volRight *= master_vol;
-
 #ifdef VERSION_JP
     note->targetVolLeft = (u16)(velocity * volLeft) & ~0x80FF; // 0x7F00, but that doesn't match
     note->targetVolRight = (u16)(velocity * volRight) & ~0x80FF;

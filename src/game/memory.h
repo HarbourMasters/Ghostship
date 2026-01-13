@@ -34,6 +34,10 @@ struct DmaHandlerList {
     void *bufTarget;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef INCLUDED_FROM_MEMORY_C
 // Declaring this variable extern puts it in the wrong place in the bss order
 // when this file is included from memory.c (first instead of last). Hence,
@@ -72,5 +76,9 @@ void mem_pool_free(struct MemoryPool *pool, void *addr);
 void *alloc_display_list(u32 size);
 void setup_dma_table_list(struct DmaHandlerList *list, void *srcAddr, void *buffer);
 s32 load_patchable_table(struct DmaHandlerList *list, s32 index);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // MEMORY_H

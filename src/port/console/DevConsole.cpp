@@ -15,11 +15,18 @@
         ->SendInfoMessage
 
 extern "C" {
-void handle_nmi_request(void);
+void warp_special(int32_t arg);
+extern int16_t sCurrPlayMode; // level_update.h
 }
 
 static bool ResetHandler(std::shared_ptr<Ship::Console> Console, std::vector<std::string> args, std::string* output) {
-    handle_nmi_request();
+    // Do not reset unless currently playing a level
+    if (sCurrPlayMode != 0) { // PLAY_MODE_NORMAL
+        ERROR_MESSAGE("sCurrPlayMode != PLAY_MODE_NORMAL");
+        return 1;
+    }
+
+    warp_special(-8);
     return 0;
 }
 

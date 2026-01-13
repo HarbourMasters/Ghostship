@@ -22,6 +22,7 @@
 #include "math_util.h"
 #include "surface_collision.h"
 #include "surface_load.h"
+#include "port/hooks/Events.h"
 
 #include "port/hooks/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
@@ -240,7 +241,11 @@ static void level_cmd_call(void) {
 static void level_cmd_call_loop(void) {
     typedef s32 (*Func)(s16, s32);
     Func func = CMD_GET(Func, 4);
-    sRegister = func(CMD_GET(s16, 2), sRegister);
+    s16 arg = CMD_GET(s16, 2);
+
+    CALL_CANCELLABLE_EVENT(LevelScriptCallLoop, &func, &arg) {
+        sRegister = func(arg, sRegister);
+    }
 
     if (sRegister == 0) {
         sScriptStatus = SCRIPT_PAUSED;
@@ -348,19 +353,21 @@ static void level_cmd_begin_area(void) {
     u8 areaIndex = CMD_GET(u8, 2);
     void *geoLayoutAddr = CMD_GET(void *, 4);
 
-    if (areaIndex < 8) {
-        struct GraphNodeRoot *screenArea =
-            (struct GraphNodeRoot *) process_geo_layout(sLevelPool, geoLayoutAddr);
-        struct GraphNodeCamera *node = (struct GraphNodeCamera *) screenArea->views[0];
+    CALL_CANCELLABLE_EVENT(LevelScriptBeginArea, &areaIndex, &geoLayoutAddr) {
+        if (areaIndex < 8) {
+            struct GraphNodeRoot *screenArea =
+                (struct GraphNodeRoot *) process_geo_layout(sLevelPool, geoLayoutAddr);
+            struct GraphNodeCamera *node = (struct GraphNodeCamera *) screenArea->views[0];
 
-        sCurrAreaIndex = areaIndex;
-        screenArea->areaIndex = areaIndex;
-        gAreas[areaIndex].unk04 = screenArea;
+            sCurrAreaIndex = areaIndex;
+            screenArea->areaIndex = areaIndex;
+            gAreas[areaIndex].unk04 = screenArea;
 
-        if (node != NULL) {
-            gAreas[areaIndex].camera = (struct Camera *) node->config.camera;
-        } else {
-            gAreas[areaIndex].camera = NULL;
+            if (node != NULL) {
+                gAreas[areaIndex].camera = (struct Camera *) node->config.camera;
+            } else {
+                gAreas[areaIndex].camera = NULL;
+            }
         }
     }
 

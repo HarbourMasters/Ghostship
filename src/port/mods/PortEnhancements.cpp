@@ -3,8 +3,7 @@
 #define INIT_EVENT_IDS
 
 #include "sm64.h"
-#include "game/level_update.h"
-
+#include "menu/title_screen.h"
 #include "port/hooks/Events.h"
 #include "assets/bin/segment2.h"
 #include "port/ShipInit.hpp"
@@ -80,9 +79,13 @@ void PortEnhancements_Init() {
 void PortEnhancements_Register() {
     // Register engine events
     REGISTER_EVENT(GameFrameUpdate);
+    REGISTER_EVENT(GeoLayoutCallASM);
+    REGISTER_EVENT(LevelScriptCallLoop);
+    REGISTER_EVENT(LevelScriptBeginArea);
+    REGISTER_EVENT(RenderPauseCourseOptions);
+
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
-    REGISTER_EVENT(RenderPauseCourseOptions);
     REGISTER_EVENT(SpawnMacroObject);
     REGISTER_EVENT(SpawnObject);
     REGISTER_EVENT(SpawnStar);

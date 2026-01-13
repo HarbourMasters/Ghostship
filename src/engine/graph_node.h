@@ -344,6 +344,10 @@ struct GraphNodeCullingRadius {
     u8 filler[2];
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern struct GraphNodeMasterList *gCurGraphNodeMasterList;
 extern struct GraphNodePerspective *gCurGraphNodeCamFrustum;
 extern struct GraphNodeCamera *gCurGraphNodeCamera;
@@ -428,5 +432,9 @@ s16 *read_vec3s_to_vec3f(Vec3f, s16 *src);
 s16 *read_vec3s(Vec3s dst, s16 *src);
 s16 *read_vec3s_angle(Vec3s dst, s16 *src);
 void register_scene_graph_node(struct GraphNode *graphNode);
+
+#ifdef __cplusplus
+};
+#endif
 
 #endif // GRAPH_NODE_H

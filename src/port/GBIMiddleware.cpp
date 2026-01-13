@@ -97,3 +97,13 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
     }
     __gSPInvalidateTexCache(pkt, texAddr);
 }
+
+extern "C" uint8_t ResourceMgr_FileExists(const char* filePath) {
+    std::string path = filePath;
+    if (path.substr(0, 7) == "__OTR__") {
+        path = path.substr(7);
+    }
+
+    // return ExtensionCache.contains(path);
+    return 1;
+}

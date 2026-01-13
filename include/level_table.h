@@ -4,8 +4,8 @@
 // For LEVEL_NAME defines, see level_defines.h.
 // Please include this file if you want to use them.
 
-#define STUB_LEVEL(_0, levelenum, _2, _3, _4, _5, _6, _7, _8, _9) levelenum,
-#define DEFINE_LEVEL(_0, levelenum, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11) levelenum,
+#define STUB_LEVEL(_0, levelenum, _2, _3, _4, _5, _6, _7, _8) levelenum,
+#define DEFINE_LEVEL(_0, levelenum, _2, _3, _4, _5, _6, _7, _8, _9, _10) levelenum,
 
 enum LevelNum {
     LEVEL_NONE,
