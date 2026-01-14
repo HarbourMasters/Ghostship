@@ -38,9 +38,9 @@ struct GraphNodeEntry {
     GraphNodeFunc function;
 };
 
-#define FUNC(f)                                \
-    GraphNodeEntry {                           \
-        #f, reinterpret_cast<GraphNodeFunc>(f) \
+#define FUNC(f)                                  \
+    GraphNodeEntry {                             \
+#f, reinterpret_cast < GraphNodeFunc>(f) \
     }
 
 std::unordered_map<uint32_t, GraphNodeEntry> mUSFunctionTable = {
@@ -570,9 +570,8 @@ void process_cmd_node_generated() {
     GraphNodeFunc func = GetFunctionByAddr(addr, "NODE_ASM");
 
     CALL_CANCELLABLE_EVENT(GeoLayoutCallASM, &func, &param) {
-        GraphNodeGenerated* graphNode =
-        init_graph_node_generated(gGraphNodePool, nullptr, func,   // asm function
-                                                           param); // parameter
+        GraphNodeGenerated* graphNode = init_graph_node_generated(gGraphNodePool, nullptr, func, // asm function
+                                                                  param);                        // parameter
 
         register_scene_graph_node(&graphNode->fnNode.node);
     }

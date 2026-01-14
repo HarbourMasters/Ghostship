@@ -22,8 +22,8 @@ bool sHasArchiveTexture = false;
 
 // Checks if we have a gfx font as a resource in an archive, which needs to be rendered differently
 bool GfxPrint_HasArchiveTexture() {
-//    return ResourceMgr_FileExists(rGfxPrintFontData) ||
-//           (ResourceMgr_IsAltAssetsEnabled() && ResourceMgr_FileExists(rGfxPrintFontDataAlt));
+    //    return ResourceMgr_FileExists(rGfxPrintFontData) ||
+    //           (ResourceMgr_IsAltAssetsEnabled() && ResourceMgr_FileExists(rGfxPrintFontDataAlt));
     return false;
 }
 // #endregion

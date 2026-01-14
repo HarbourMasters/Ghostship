@@ -23,12 +23,19 @@ struct RandoSaveCheck {
     bool obtained;
 };
 
+typedef enum {
+    SAVETYPE_VANILLA,
+    SAVETYPE_RANDO,
+} SaveType;
+
 struct RandoSaveData {
-    bool isRando;
-    //struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    bool placeHolder;
+    // struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    // u32 randoSaveOptions[RO_MAX];
 };
 
 struct ShipSaveData {
+    SaveType saveType;
     struct RandoSaveData randoSaveData;
 };
 
