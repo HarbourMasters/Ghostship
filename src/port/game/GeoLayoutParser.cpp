@@ -243,7 +243,7 @@ void process_cmd_branch() {
 
     if (param == 1) {
         gGeoLayoutStack[gGeoLayoutStackIndex++] = reinterpret_cast<uintptr_t>(GeoLayoutParser::mReader);
-        SPDLOG_INFO("Branching and returning to {}:{}", name, gGeoLayoutStackIndex);
+        SPDLOG_TRACE("Branching and returning to {}:{}", name, gGeoLayoutStackIndex);
     } else {
         delete GeoLayoutParser::mReader;
     }
@@ -254,7 +254,7 @@ void process_cmd_branch() {
 void process_cmd_return() {
     delete GeoLayoutParser::mReader;
     GeoLayoutParser::mReader = reinterpret_cast<Ship::BinaryReader*>(gGeoLayoutStack[--gGeoLayoutStackIndex]);
-    SPDLOG_INFO("Returning to {}", gGeoLayoutStackIndex);
+    SPDLOG_TRACE("Returning to {}", gGeoLayoutStackIndex);
 }
 
 void process_cmd_open_node() {
@@ -456,7 +456,7 @@ void process_cmd_node_translation() {
     if (params & 0x80) {
         displayList = ResourceGetDataByCrc(ReadSafeCrc());
         drawingLayer = params & 0x0F;
-        SPDLOG_INFO("Current Offset {}", GeoLayoutParser::mReader->GetBaseAddress());
+        SPDLOG_TRACE("Current Offset {}", GeoLayoutParser::mReader->GetBaseAddress());
     }
 
     GraphNodeTranslation* graphNode =
