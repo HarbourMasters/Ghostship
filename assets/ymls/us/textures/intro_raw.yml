@@ -164,15 +164,6 @@ white_star_7:
   format: RGBA16
   symbol: gd_texture_white_star_7
 
-sparkle_0:
-  type: TEXTURE
-  size: 2048
-  width: 32
-  height: 32
-  offset: 0x262088
-  format: RGBA16
-  symbol: gd_texture_sparkle_0
-
 gd_vertex_star:
   type: VTX
   count: 4
@@ -286,6 +277,15 @@ gd_silver_star_dl_array:
   offset: 0x262048
   symbol: gd_silver_star_dl_array
 
+sparkle_0:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x262088
+  format: RGBA16
+  symbol: gd_texture_sparkle_0
+
 sparkle_1:
   type: TEXTURE
   size: 2048
@@ -382,14 +382,6 @@ gd_dl_red_sparkle_4_dup:
   offset: 0x265208
   symbol: gd_dl_red_sparkle_4_dup
 
-gd_red_sparkle_dl_array:
-  type: ASSET_ARRAY
-  assetType: Gfx
-  factoryType: GFX
-  count: 12
-  offset: 0x2652E8
-  symbol: gd_red_sparkle_dl_array
-
 gd_dl_silver_sparkle_0:
   type: GFX
   offset: 0x265228
@@ -419,6 +411,14 @@ gd_dl_silver_sparkle_4_dup:
   type: GFX
   offset: 0x2652C8
   symbol: gd_dl_silver_sparkle_4_dup
+
+gd_red_sparkle_dl_array:
+  type: ASSET_ARRAY
+  assetType: Gfx
+  factoryType: GFX
+  count: 12
+  offset: 0x2652E8
+  symbol: gd_red_sparkle_dl_array
 
 gd_silver_sparkle_dl_array:
   type: ASSET_ARRAY
