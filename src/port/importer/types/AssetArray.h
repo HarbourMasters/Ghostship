@@ -13,5 +13,6 @@ namespace SM64 {
         size_t GetPointerSize();
 
         std::vector<uintptr_t> mPtrs;
+        std::vector<std::string> mPaths;
     };
 }
