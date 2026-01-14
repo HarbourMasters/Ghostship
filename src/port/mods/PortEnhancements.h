@@ -6,7 +6,6 @@ extern "C" {
 
 void PortEnhancements_Register();
 void PortEnhancements_Init();
-void PortEnhancements_Exit();
 
 #ifdef __cplusplus
 };
