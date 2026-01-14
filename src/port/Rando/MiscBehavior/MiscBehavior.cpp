@@ -5,4 +5,3 @@ void Rando::MiscBehavior::Init() {
     Rando::MiscBehavior::OnFileLoad();
     Rando::MiscBehavior::OnFileSave();
 }
-

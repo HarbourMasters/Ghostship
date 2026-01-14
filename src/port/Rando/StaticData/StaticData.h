@@ -4,6 +4,7 @@
 #include <map>
 #include <array>
 #include "port/Rando/Types.h"
+#include "port/Rando/Logic/Logic.h"
 
 #include "include/level_table.h"
 #include "include/model_ids.h"
@@ -26,8 +27,6 @@ struct RandoStaticCheck {
 
 extern std::map<RandoCheckId, RandoStaticCheck> Checks;
 
-RandoCheckId GetCheckIdFromName(const char* name);
-
 struct RandoStaticItem {
     RandoItemId randoItemId;
     const char* spoilerName;
@@ -38,25 +37,23 @@ struct RandoStaticItem {
 };
 
 extern std::map<RandoItemId, RandoStaticItem> Items;
-extern std::map<RandoCheckId, RandoItemId> shuffledList;
 
 RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ);
 int16_t GetModelByRandoItem(RandoItemId randoItem);
 const BehaviorScript *GetBehaviorByModel(int16_t modelId);
 RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId);
-void ShuffleItemList();
 
-//  TODO: Add RandoStaticOptions
-// struct RandoStaticOption {
-//     RandoOptionId randoOptionId;
-//     const char* name;
-//     const char* cvar;
-//     s32 defaultValue;
-// };
+struct RandoStaticOption {
+    RandoOptionId randoOptionId;
+    const char* name;
+    const char* cvar;
+    s32 defaultValue;
+};
 
-// extern std::map<RandoOptionId, RandoStaticOption> Options;
+extern std::map<RandoOptionId, RandoStaticOption> Options;
+extern std::unordered_map<int32_t, const char*> logicOptions;
 
-// RandoOptionId GetOptionIdFromName(const char* name);
+RandoOptionId GetOptionIdFromName(const char* name);
 
 // TODO: Add Logic and Regions
 // struct RandoStaticRegion {

@@ -17,13 +17,16 @@ extern "C" {
 #include "game/object_list_processor.h"
 #include "game/macro_special_objects.h"
 #include "game/object_helpers.h"
+extern struct SaveBuffer gSaveBuffer;
 }
 
-#define IS_RANDO CVarGetInteger("gRandoSettings.Enabled", 0)
+#define IS_RANDO(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.saveType
 #define RANDO_SAVE_CHECKS(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.randoSaveData.randoSaveChecks
-// #define RANDO_SAVE_OPTIONS gSaveContext.save.shipSaveInfo.rando.randoSaveOptions
+#define RANDO_SAVE_OPTIONS(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.randoSaveData.randoSaveOptions
 // #define RANDO_EVENTS gSaveContext.save.shipSaveInfo.rando.randoEvents
 // #define RANDO_STARTING_ITEMS gSaveContext.save.shipSaveInfo.rando.randoStartingItems
+
+extern int16_t selectedFileNum;
 
 namespace Rando {
 

@@ -62,9 +62,7 @@ void GhostshipMenu::AddMenuDevTools() {
         .CVar(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"))
         .Options(CheckboxOptions().Tooltip(
             "Tweaks to the level select screen, like naming and allowing C-buttons to be used."))
-        .Callback([](WidgetInfo& info) {
-            BetterLevelSelect_HandleReload();
-        })
+        .Callback([](WidgetInfo& info) { BetterLevelSelect_HandleReload(); })
         .PreFunc(
             [](WidgetInfo& info) { info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0)); });
     AddWidget(path, "Draw Debug Info", WIDGET_CVAR_CHECKBOX)
