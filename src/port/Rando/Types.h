@@ -169,7 +169,7 @@ typedef enum {
 
 typedef enum {
     RITYPE_UNKNOWN,
-    RITYPE_COIN,
+    RITYPE_COIN_RED,
     RITYPE_STAR,
     RITYPE_MAX,
 } RandoItemType;
@@ -186,6 +186,9 @@ typedef enum {
 } RandoRegionId;
 
 typedef enum {
+    RO_LOGIC,
+    RO_SHUFFLE_STARS,
+    RO_SHUFFLE_COINS_RED,
     RO_MAX,
 } RandoOptionId;
 

@@ -793,8 +793,7 @@ void FrameInterpolation_RecordMatrixTranslate(Mat4* matrix, Vec3f b) {
     append(Op::MatrixTranslate).matrix_translate = { matrix, *((Vec3fInterp*)b) };
 }
 
-void FrameInterpolation_RecordOrtho(Mtx* m, f32 left, f32 right, f32 bottom, f32 oTop, f32 oNear, f32 oFar,
-                                    f32 scale) {
+void FrameInterpolation_RecordOrtho(Mtx* m, f32 left, f32 right, f32 bottom, f32 oTop, f32 oNear, f32 oFar, f32 scale) {
     if (!check_if_recording()) {
         return;
     }
