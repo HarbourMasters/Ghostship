@@ -112,6 +112,7 @@ void bhv_star_spawn_loop(void) {
 }
 
 struct Object *spawn_star(struct Object *sp30, f32 sp34, f32 sp38, f32 sp3C) {
+    CALL_EVENT(SpawnStar, sp34, sp38, sp3C);
     sp30 = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY,
                                      o->oPosZ, 0, 0, 0);
     sp30->oBehParams = o->oBehParams;

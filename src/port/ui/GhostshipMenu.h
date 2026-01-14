@@ -22,6 +22,7 @@ class GhostshipMenu : public Ship::Menu {
     void AddMenuSettings();
     void AddMenuEnhancements();
     void AddMenuDevTools();
+    void AddMenuRando();
 
   private:
     char mGitCommitHashTruncated[8];
