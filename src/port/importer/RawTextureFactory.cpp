@@ -7,7 +7,6 @@
 #include "ship/resource/ResourceManager.h"
 
 namespace MK64 {
-
 std::shared_ptr<Ship::IResource> loadPngTexture(std::shared_ptr<Ship::File> filePng, std::shared_ptr<Ship::ResourceInitData> initData) {
     auto texture = std::make_shared<Fast::Texture>(initData);
 
@@ -28,14 +27,14 @@ std::vector<std::string> extension = {".png", ".PNG", ".jpg", ".JPG", ".jpeg", "
 
 std::shared_ptr<Ship::IResource>
 ResourceFactoryBinaryTextureV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                             std::shared_ptr<Ship::ResourceInitData> initData) {
+                                                std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
     for (const auto& ext : extension) {
         auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
-        initData->Path + ext);
+            initData->Path + ext);
 
         if (filePng != nullptr) {
             return loadPngTexture(filePng, initData);
@@ -64,11 +63,16 @@ ResourceFactoryBinaryTextureV1::ReadResource(std::shared_ptr<Ship::File> file,
     }
 
     for (const auto& ext : extension) {
-        auto filePng = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(
-        initData->Path + ext);
+        std::shared_ptr<Ship::File> texture;
 
-        if (filePng != nullptr) {
-            return loadPngTexture(filePng, initData);
+        if(initData->Path.find(ext) != std::string::npos) {
+            texture = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(initData->Path);
+        } else {
+            texture = Ship::Context::GetInstance()->GetResourceManager()->LoadFileProcess(initData->Path + ext);
+        }
+
+        if (texture != nullptr) {
+            return loadPngTexture(texture, initData);
         }
     }
 

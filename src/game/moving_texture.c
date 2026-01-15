@@ -449,10 +449,10 @@ Gfx *movtex_gen_from_quad(s16 y, struct MovtexQuad *quad) {
     if (textureId != gMovetexLastTextureId) {
         switch (textureId) {
             case TEXTURE_MIST: // an ia16 texture
-                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_IA, segmented_to_virtual(gMovtexIdToTexture[textureId]));
+                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_IA, gMovtexIdToTexture[textureId]);
                 break;
             default: // any rgba16 texture
-                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, segmented_to_virtual(gMovtexIdToTexture[textureId]));
+                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, gMovtexIdToTexture[textureId]);
                 break;
         }
         gMovetexLastTextureId = textureId;
@@ -824,7 +824,7 @@ Gfx *movtex_gen_list(s16 *movtexVerts, struct MovtexObject *movtexList, s8 attrL
     }
 
     gSPDisplayList(gfx++, movtexList->beginDl);
-    gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, segmented_to_virtual(gMovtexIdToTexture[movtexList->textureId]));
+    gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, gMovtexIdToTexture[movtexList->textureId]);
     gSPVertex(gfx++, VIRTUAL_TO_PHYSICAL2(verts), movtexList->vtx_count, 0);
     gSPDisplayList(gfx++, movtexList->triDl);
     gSPDisplayList(gfx++, movtexList->endDl);
