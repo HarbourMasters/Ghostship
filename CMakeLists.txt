@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 project(Ghostship VERSION 1.0.0 LANGUAGES C CXX ASM)
 include(FetchContent)
 
-include(CMake/ghostship-cvars.cmake)
-include(CMake/lus-cvars.cmake)
+include(cmake/ghostship-cvars.cmake)
+include(cmake/lus-cvars.cmake)
 
 set(NATO_PHONETIC_ALPHABET
   "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
