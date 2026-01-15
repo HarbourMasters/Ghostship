@@ -1,8 +1,8 @@
 #include "include/types.h"
+#include "game/area.h"
 
 extern "C" {
 #include "sm64.h"
-#include "game/area.h"
 }
 
 namespace CustomItem {

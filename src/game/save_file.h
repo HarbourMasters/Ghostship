@@ -57,6 +57,7 @@ struct SaveFile {
     u8 courseCoinScores[COURSE_STAGES_COUNT];
 
     struct SaveBlockSignature signature;
+    struct ShipSaveData shipSaveData;
 };
 
 enum SaveFileIndex {

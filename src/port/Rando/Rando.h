@@ -42,4 +42,4 @@ void Init();
 // RandoCheckId FindItemPlacement(RandoItemId randoItemId);
 } // namespace Rando
 
-#endif
+#endif // RANDO_H
