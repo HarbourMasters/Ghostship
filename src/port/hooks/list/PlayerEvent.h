@@ -13,18 +13,9 @@ DEFINE_EVENT(PlayerLivesChange,
     struct MarioState* m;
     s32 lives;
 );
-DEFINE_EVENT(SpawnMacroObject,
-    const BehaviorScript** behavior;
-    s16* model;
-    s16 posX;
-    s16 posY;
-    s16 posZ;
-    s32* params;
-);
 
 DEFINE_EVENT(SpawnObject,
-    u32* model;
-    struct SpawnInfo** spawnInfo;
+    struct SpawnInfo *spawnInfo;
 );
 
 DEFINE_EVENT(SpawnStar,

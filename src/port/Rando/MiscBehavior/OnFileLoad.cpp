@@ -7,13 +7,15 @@ extern struct SaveBuffer gSaveBuffer;
 void Rando::MiscBehavior::OnFileLoad() {
     REGISTER_LISTENER(OnGameFileLoad, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         OnGameFileLoad* ev = (OnGameFileLoad*)event;
-        SPDLOG_INFO("File Loaded: {}", std::to_string(ev->fileNum));
         if (!CVarGetInteger("gRandoSettings.Enabled", 0)) {
+            gSaveBuffer.files[ev->fileNum - 1]->shipSaveData.saveType = SAVETYPE_VANILLA;
             return;
         }
+
+        selectedFileNum = ev->fileNum - 1;
+
         if (!IS_RANDO(selectedFileNum)) {
-            SPDLOG_INFO("isRando = false");
-            gSaveBuffer.files[ev->fileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
+            gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
             Rando::Logic::GenerateShuffleList();
         }
 

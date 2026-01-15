@@ -86,8 +86,6 @@ void PortEnhancements_Register() {
 
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
-    REGISTER_EVENT(RenderPauseCourseOptions);
-    REGISTER_EVENT(SpawnMacroObject);
     REGISTER_EVENT(SpawnObject);
     REGISTER_EVENT(SpawnStar);
     REGISTER_EVENT(OnGameFileLoad);

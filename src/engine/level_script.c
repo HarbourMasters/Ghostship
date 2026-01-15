@@ -446,7 +446,6 @@ static void level_cmd_place_object(void) {
 
     if (sCurrAreaIndex != -1 && ((CMD_GET(u8, 2) & val7) || CMD_GET(u8, 2) == 0x1F)) {
         model = CMD_GET(u8, 3);
-
         spawnInfo = alloc_only_pool_alloc(sLevelPool, sizeof(struct SpawnInfo));
 
         spawnInfo->startPos[0] = CMD_GET(s16, 4);
@@ -461,15 +460,12 @@ static void level_cmd_place_object(void) {
         spawnInfo->activeAreaIndex = sCurrAreaIndex;
 
         spawnInfo->behaviorArg = CMD_GET(u32, 16);
-
-        CALL_CANCELLABLE_EVENT(SpawnObject, &model, &spawnInfo) {
-            spawnInfo->behaviorScript = CMD_GET(void*, 20);
-        }
+        spawnInfo->behaviorScript = CMD_GET(void*, 20);
 
         spawnInfo->model = gLoadedGraphNodes[model];
         
         spawnInfo->next = gAreas[sCurrAreaIndex].objectSpawnInfos;
-
+        
         gAreas[sCurrAreaIndex].objectSpawnInfos = spawnInfo;
     }
 
@@ -839,4 +835,13 @@ struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
     alloc_display_list(0);
 
     return sCurrentCmd;
+}
+
+// TODO: Move these elsewhere
+s16 get_current_area_index(void) {
+    return sCurrAreaIndex;
+}
+
+struct AllocOnlyPool* get_level_pool(void) {
+    return sLevelPool;
 }

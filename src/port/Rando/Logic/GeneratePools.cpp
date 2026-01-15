@@ -25,11 +25,17 @@ void shuffleRandoItems(std::vector<RandoItemId>& shuffledItems) {
 void GenerateShuffleList() {
     Rando::Logic::shuffledList.clear();
 
-    for (auto& [randoCheckId, randoStaticItem] : Rando::StaticData::Checks) {
+    for (auto& [randoCheckId, randoCheckData] : Rando::StaticData::Checks) {
         if (randoCheckId == RC_UNKNOWN) {
             continue;
         }
-        RandoItemType randoItemType = Rando::StaticData::Items[randoStaticItem.randoItemId].randoItemType;
+
+        // TODO: Temporary for testing Stars.
+        if (randoCheckData.levelId != LEVEL_BOB) {
+            continue;
+        }
+
+        RandoItemType randoItemType = Rando::StaticData::Items[randoCheckData.randoItemId].randoItemType;
 
         // TODO: Swap to RANDO_SAVE_OPTIONS once Save File is converted to JSON
         if (randoItemType == RITYPE_STAR &&
@@ -43,7 +49,7 @@ void GenerateShuffleList() {
         }
 
         shuffledChecks.push_back(randoCheckId);
-        shuffledItems.push_back(randoStaticItem.randoItemId);
+        shuffledItems.push_back(randoCheckData.randoItemId);
     }
 
     shuffleRandoItems(shuffledItems);

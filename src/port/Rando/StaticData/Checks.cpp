@@ -65,7 +65,7 @@ std::map<RandoCheckId, RandoStaticCheck> Checks = {
     RC(RC_BITS_RED_COIN_08,     RCTYPE_MAJOR,   LEVEL_BITS,         RI_COIN_RED,    348, 5921, -4585),
     RC(RC_BOB_STAR_CHAIN_CHOMP, RCTYPE_MAJOR,   LEVEL_BOB,          RI_STAR,        1550, 1200, 300),
     RC(RC_BOB_STAR_KING_BOB,    RCTYPE_MAJOR,   LEVEL_BOB,          RI_STAR,        2000, 4500, -4500),
-    RC(RC_BOB_STAR_RED_COIN,    RCTYPE_MAJOR,   LEVEL_BOB,          RI_STAR,        -6000, 1000, 2400),
+    // RC(RC_BOB_STAR_RED_COIN,    RCTYPE_MAJOR,   LEVEL_BOB,          RI_STAR,        -6000, 1000, 2400),
     RC(RC_BOB_RED_COIN_01,      RCTYPE_MAJOR,   LEVEL_BOB,          RI_COIN_RED,    -5500, 768, 2400),
     RC(RC_BOB_RED_COIN_02,      RCTYPE_MAJOR,   LEVEL_BOB,          RI_COIN_RED,    -6500, 768, 2400),
     RC(RC_BOB_RED_COIN_03,      RCTYPE_MAJOR,   LEVEL_BOB,          RI_COIN_RED,    1135, 1920, -7161),
@@ -191,6 +191,15 @@ RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ) {
         }
     }
     return RC_UNKNOWN;
+}
+
+bool IsCheckShuffled(RandoCheckId randocheckId) {
+    for (auto& check : Rando::Logic::shuffledChecks) {
+        if (randocheckId == check) {
+            return true;
+        }
+    }
+    return false;
 }
 
 } // namespace StaticData

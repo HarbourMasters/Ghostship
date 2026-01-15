@@ -6,7 +6,6 @@ void Rando::MiscBehavior::OnFileSave() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        SPDLOG_INFO("File Saved");
 
         // TODO: Inject Save File with spoiler data
         // gSaveBuffer.files[ev->fileNum]->shipSaveData.randoSaveData.isRando = true;
