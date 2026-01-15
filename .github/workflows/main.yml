@@ -194,6 +194,7 @@ jobs:
             gamecontrollerdb.txt
 
   build-switch:
+    if: false
     needs: generate-port-o2r
     runs-on: ubuntu-latest
     container:
