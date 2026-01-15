@@ -64,6 +64,12 @@ static const ALIGN_ASSET(2) char dl_billboard_num_8[] = "__OTR__bin/segment2/dl_
 
 static const ALIGN_ASSET(2) char dl_billboard_num_9[] = "__OTR__bin/segment2/dl_billboard_num_9";
 
+static const ALIGN_ASSET(2) char segment2_lights_unused[] = "__OTR__bin/segment2/segment2_lights_unused";
+
+static const ALIGN_ASSET(2) char matrix_identity[] = "__OTR__bin/segment2/matrix_identity";
+
+static const ALIGN_ASSET(2) char matrix_fullscreen[] = "__OTR__bin/segment2/matrix_fullscreen";
+
 static const ALIGN_ASSET(2) char dl_draw_quad_verts_0123[] = "__OTR__bin/segment2/dl_draw_quad_verts_0123";
 
 static const ALIGN_ASSET(2) char dl_draw_quad_verts_4567[] = "__OTR__bin/segment2/dl_draw_quad_verts_4567";

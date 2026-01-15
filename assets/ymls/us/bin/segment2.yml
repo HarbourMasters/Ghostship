@@ -157,6 +157,24 @@ dl_billboard_num_9:
   offset: 0x12088
   symbol: dl_billboard_num_9
 
+segment2_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0x172B8
+  symbol: segment2_lights_unused
+
+matrix_identity:
+  type: MTX
+  floats: true
+  offset: 0x172D0
+  symbol: matrix_identity
+
+matrix_fullscreen:
+  type: MTX
+  floats: true
+  offset: 0x17310
+  symbol: matrix_fullscreen
+
 dl_draw_quad_verts_0123:
   type: GFX
   offset: 0x17350
