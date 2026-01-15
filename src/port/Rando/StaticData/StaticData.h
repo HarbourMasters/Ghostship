@@ -36,9 +36,12 @@ struct RandoStaticItem {
     int16_t modelId;
 };
 
+RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ);
+bool IsCheckShuffled(RandoCheckId randocheckId);
+
 extern std::map<RandoItemId, RandoStaticItem> Items;
 
-RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ);
+struct GraphNode* GetGraphNodeByRandoItem(RandoItemId randoItem);
 int16_t GetModelByRandoItem(RandoItemId randoItem);
 const BehaviorScript *GetBehaviorByModel(int16_t modelId);
 RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId);

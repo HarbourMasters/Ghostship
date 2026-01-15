@@ -8,9 +8,11 @@
 #include "include/object_fields.h"
 #include "include/object_constants.h"
 #include "game/save_file.h"
+#include "port/Rando/CustomItem/CustomItem.h"
 
 #include "port/hooks/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
+#include "include/types.h"
 
 extern "C" {
 #include "sm64.h"
@@ -20,7 +22,7 @@ extern "C" {
 extern struct SaveBuffer gSaveBuffer;
 }
 
-#define IS_RANDO(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.saveType
+#define IS_RANDO(fileNum) (gSaveBuffer.files[fileNum]->shipSaveData.saveType == SAVETYPE_RANDO)
 #define RANDO_SAVE_CHECKS(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.randoSaveData.randoSaveChecks
 #define RANDO_SAVE_OPTIONS(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.randoSaveData.randoSaveOptions
 // #define RANDO_EVENTS gSaveContext.save.shipSaveInfo.rando.randoEvents

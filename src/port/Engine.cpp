@@ -171,10 +171,12 @@ GameEngine::GameEngine() : dictionary(nullptr) {
                                     static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary",
                                     static_cast<uint32_t>(SM64::ResourceType::Dictionary), 0);
-//    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
-//                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
-//    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
-//                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
+    //    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(),
+    //    RESOURCE_FORMAT_BINARY,
+    //                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
+    //    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(),
+    //    RESOURCE_FORMAT_BINARY,
+    //                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY,
                                     "Vertex", static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(),
