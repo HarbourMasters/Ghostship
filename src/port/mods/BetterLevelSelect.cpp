@@ -211,27 +211,20 @@ static const LevelSelectEntry entries[] = {
     },
 };
 
-static const char* ttcSpeeds[] = {
-    "Slow",
-    "Fast",
-    "Random",
-    "Stopped"
-};
+static const char* ttcSpeeds[] = { "Slow", "Fast", "Random", "Stopped" };
 
-static const char* thiSizes[] = {
-    "Tiny", "Huge"
-};
+static const char* thiSizes[] = { "Tiny", "Huge" };
 
 extern "C" void initiate_warp(s16 destLevel, s16 destArea, s16 destWarpNode, s32 arg3);
 
 s32 BetterLevelSelect_UpdateArea(s16 a, s32 b) {
-    if(self.areaChanged && self.currentAreaIndex > 0) {
+    if (self.areaChanged && self.currentAreaIndex > 0) {
         LevelSelectEntry entry = entries[self.currentLevelIndex];
         LevelArea area = entry.areas[self.currentAreaIndex - 1];
         change_area(area.areaId);
         ObjectWarpNode* warpNode = area_get_warp_node(area.warpId);
-        initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea,
-                      warpNode->node.destNode, sDelayedWarpArg);
+        initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea, warpNode->node.destNode,
+                      sDelayedWarpArg);
         level_set_transition(2, NULL);
         self.areaChanged = false;
     }
@@ -240,12 +233,12 @@ s32 BetterLevelSelect_UpdateArea(s16 a, s32 b) {
 }
 
 s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
-    if(self.forceReload) {
+    if (self.forceReload) {
         self.forceReload = false;
         return 1;
     }
 
-    if(arg != LVL_INTRO_LEVEL_SELECT || CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) == 0){
+    if(arg != LVL_INTRO_LEVEL_SELECT || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) == 0){
         return lvl_intro_update(arg, b);
     }
 
@@ -253,7 +246,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
 
     gCurrSaveFileNum = 4;
 
-    if(gPlayer1Controller->buttonPressed & BTN_A) {
+    if (gPlayer1Controller->buttonPressed & BTN_A) {
         play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
         gCurrActNum = self.currentActIndex + 1;
         gDialogCourseActNum = gCurrActNum;
@@ -261,12 +254,13 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
             case LEVEL_TTC:
                 gTTCSpeedSetting = self.ttcSpeedIndex;
                 break;
-            default: break;
+            default:
+                break;
         }
         return entries[self.currentLevelIndex].levelId;
     }
 
-    if(gPlayer1Controller->buttonDown & U_JPAD) {
+    if (gPlayer1Controller->buttonDown & U_JPAD) {
         if (self.lockUp) {
             self.timerUp = 0;
         }
@@ -275,6 +269,10 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
             self.lockUp = true;
             self.verticalInput = self.update_rate;
         }
+    }
+
+    if(gPlayer1Controller->buttonDown & U_JPAD && self.timerUp == 0) {
+        self.verticalInput = self.update_rate * 3;
     }
 
     if(gPlayer1Controller->buttonDown & D_JPAD) {
@@ -287,59 +285,60 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
             self.verticalInput = -self.update_rate;
         }
     }
-    
-    if (self.verticalInput == 0) {
-        self.verticalInputAccumulator = 0;
-    }
 
     if(gPlayer1Controller->buttonPressed & BTN_Z) {
         self.currentActIndex--;
-        if(self.currentActIndex < 0) {
+        if (self.currentActIndex < 0) {
             self.currentActIndex = 5;
         }
     }
 
-    if(gPlayer1Controller->buttonPressed & BTN_R) {
+    if (gPlayer1Controller->buttonPressed & BTN_R) {
         self.currentActIndex++;
         self.currentActIndex %= 6;
     }
 
     switch (entries[self.currentLevelIndex].levelId) {
         case LEVEL_TTC: {
-            if(gPlayer1Controller->buttonPressed & L_JPAD) {
+            if (gPlayer1Controller->buttonPressed & L_JPAD) {
                 self.ttcSpeedIndex--;
-                if(self.ttcSpeedIndex < 0) {
+                if (self.ttcSpeedIndex < 0) {
                     self.ttcSpeedIndex = 3;
                 }
             }
 
-            if(gPlayer1Controller->buttonPressed & R_JPAD) {
+            if (gPlayer1Controller->buttonPressed & R_JPAD) {
                 self.ttcSpeedIndex++;
                 self.ttcSpeedIndex %= 4;
             }
             break;
         }
 
-        default: break;
+        default:
+            break;
     }
 
-    if(gPlayer1Controller->buttonPressed & BTN_CLEFT) {
+    if (gPlayer1Controller->buttonPressed & BTN_CLEFT) {
         self.currentAreaIndex--;
-        if(self.currentAreaIndex < 0) {
+        if (self.currentAreaIndex < 0) {
             self.currentAreaIndex = 0;
         }
         self.areaChanged = true;
     }
 
-    if(gPlayer1Controller->buttonPressed & BTN_CRIGHT) {
+    if (gPlayer1Controller->buttonPressed & BTN_CRIGHT) {
         self.currentAreaIndex++;
         self.currentAreaIndex %= entries[self.currentLevelIndex].areas.size() + 1;
         self.areaChanged = true;
     }
 
+    if(gPlayer1Controller->buttonDown & D_JPAD && self.timerDown == 0) {
+        self.verticalInput = -self.update_rate * 3;
+    }
+
     self.verticalInputAccumulator += self.verticalInput;
 
-    if(self.verticalInputAccumulator < -7) {
+    if (self.verticalInputAccumulator < -7) {
         self.verticalInput = 0;
         self.verticalInputAccumulator = 0;
 
@@ -355,7 +354,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
         }
     }
 
-    if(self.verticalInputAccumulator > 7) {
+    if (self.verticalInputAccumulator > 7) {
         self.verticalInput = 0;
         self.verticalInputAccumulator = 0;
 
@@ -379,26 +378,26 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
     self.currentLevelIndex = (self.currentLevelIndex + count) % count;
     self.topDisplayedLevel = (self.topDisplayedLevel + count) % count;
 
-    if(self.timerUp != 0) {
+    if (self.timerUp != 0) {
         self.timerUp--;
     }
 
-    if(self.timerUp == 0){
+    if (self.timerUp == 0) {
         self.lockUp = false;
     }
 
-    if(self.timerDown != 0) {
+    if (self.timerDown != 0) {
         self.timerDown--;
     }
 
-    if(self.timerDown == 0){
+    if (self.timerDown == 0) {
         self.lockDown = false;
     }
     return 0;
 }
 
 Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *context) {
-    if (state != 1 || CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) != 1) {
+    if(state != 1 || CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) != 1) {
         return NULL;
     }
 
@@ -409,54 +408,48 @@ Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *
     gDPSetRenderMode(head++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCycleType(head++, G_CYC_FILL);
     gDPSetFillColor(head++, 0x0001);
-    gDPFillWideRectangle(head++,
-                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
+    gDPFillWideRectangle(head++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
+                         GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 
     GfxPrint_Init(&printer);
 
     GfxPrint_Open(&printer, head);
-        GfxPrint_SetColor(&printer, 255, 255, 255, 255);
-        GfxPrint_SetPos(&printer, 12, 2);
-        GfxPrint_Printf(&printer, "Scene Selection");
+    GfxPrint_SetColor(&printer, 255, 255, 255, 255);
+    GfxPrint_SetPos(&printer, 12, 2);
+    GfxPrint_Printf(&printer, "Scene Selection");
 
-        for(int i = 0; i < 20; i++) {
-            int idx = (self.topDisplayedLevel + i + count) % count;
-            LevelSelectEntry entry = entries[idx];
-            GfxPrint_SetPos(&printer, 3, i + 4);
+    for (int i = 0; i < 20; i++) {
+        int idx = (self.topDisplayedLevel + i + count) % count;
+        LevelSelectEntry entry = entries[idx];
+        GfxPrint_SetPos(&printer, 3, i + 4);
 
-            if(idx == self.currentLevelIndex) {
-                GfxPrint_SetColor(&printer, 255, 100, 100, 255);
-            } else {
-                GfxPrint_SetColor(&printer, 175, 175, 175, 255);
-            }
-
-            GfxPrint_Printf(&printer, "%3d %s", idx, language ? entry.japaneseName : entry.englishName);
+        if (idx == self.currentLevelIndex) {
+            GfxPrint_SetColor(&printer, 255, 100, 100, 255);
+        } else {
+            GfxPrint_SetColor(&printer, 175, 175, 175, 255);
         }
 
-        std::vector<const char*> acts = language ? entries[self.currentLevelIndex].actsJp : entries[self.currentLevelIndex].actsEn;
+            GfxPrint_Printf(&printer, "%3d %s", idx, ROM_JP ? entry.japaneseName : entry.englishName);
+        }
+
+        std::vector<const char*> acts = ROM_JP ? entries[self.currentLevelIndex].actsJp : entries[self.currentLevelIndex].actsEn;
 
         if(!acts.empty()) {
-            int y = 25;
-            GfxPrint_SetPos(&printer, 2, y);
+            GfxPrint_SetPos(&printer, 2, 25);
             GfxPrint_SetColor(&printer, 100, 100, 100, 255);
-            GfxPrint_Printf(&printer, "(Z/R) Act:");
+            GfxPrint_Printf(&printer, "(Z/R)Act:");
             GfxPrint_SetColor(&printer, 200, 200, 50, 255);
             GfxPrint_Printf(&printer, "%s", acts[self.currentActIndex]);
 
+            GfxPrint_SetPos(&printer, 2, 26);
             auto areas = entries[self.currentLevelIndex].areas;
-            if (entries[self.currentLevelIndex].levelId == LEVEL_THI) {
-                y++;
-                GfxPrint_SetPos(&printer, 2, y);
-                GfxPrint_SetColor(&printer, 100, 100, 100, 255);
-                GfxPrint_Printf(&printer, "(C L/R) Area:");
-                GfxPrint_SetColor(&printer, 200, 50, 50, 255);
-                GfxPrint_Printf(&printer, "%s", self.currentAreaIndex == 0 ? "Default" : areas[self.currentAreaIndex - 1].name);
-            }
+            GfxPrint_SetColor(&printer, 100, 100, 100, 255);
+            GfxPrint_Printf(&printer, "Area:");
+            GfxPrint_SetColor(&printer, 200, 50, 50, 255);
+            GfxPrint_Printf(&printer, "%s", self.currentAreaIndex == 0 ? "Default" : areas[self.currentAreaIndex - 1].name);
 
-            y++;
-            GfxPrint_SetPos(&printer, 2, y);
+            GfxPrint_SetPos(&printer, 2, 27);
             GfxPrint_SetColor(&printer, 100, 100, 100, 255);
 
             switch (entries[self.currentLevelIndex].levelId) {
@@ -467,7 +460,7 @@ Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *
                 //     break;
                 // }
                 case LEVEL_TTC: {
-                    GfxPrint_Printf(&printer, "(Dpad L/R) Speed:");
+                    GfxPrint_Printf(&printer, "Speed:");
                     GfxPrint_SetColor(&printer, 55, 200, 50, 255);
                     GfxPrint_Printf(&printer, "%s", ttcSpeeds[self.ttcSpeedIndex]);
                     break;
@@ -483,39 +476,39 @@ Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *
 }
 
 static const GeoLayout BetterLevelSelect_GeoWrapper[] = {
-    GEO_NODE_SCREEN_AREA(0, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH/2, SCREEN_HEIGHT/2),
+    GEO_NODE_SCREEN_AREA(0, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2),
     GEO_OPEN_NODE(),
-        GEO_ZBUFFER(0),
-        GEO_OPEN_NODE(),
-            GEO_NODE_ORTHO(100),
-            GEO_OPEN_NODE(),
-                GEO_ASM(0, BetterLevelSelect_DrawMenu),
-            GEO_CLOSE_NODE(),
-        GEO_CLOSE_NODE(),
+    GEO_ZBUFFER(0),
+    GEO_OPEN_NODE(),
+    GEO_NODE_ORTHO(100),
+    GEO_OPEN_NODE(),
+    GEO_ASM(0, BetterLevelSelect_DrawMenu),
+    GEO_CLOSE_NODE(),
+    GEO_CLOSE_NODE(),
     GEO_CLOSE_NODE(),
     GEO_END(),
 };
 
 static void Init() {
     REGISTER_LISTENER(LevelScriptBeginArea, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        LevelScriptBeginArea* ev = (LevelScriptBeginArea*) event;
+        LevelScriptBeginArea* ev = (LevelScriptBeginArea*)event;
 
-        if (strcmp((char*) *ev->geoLayoutAddr, intro_geo_000414) != 0) {
+        if (strcmp((char*)*ev->geoLayoutAddr, intro_geo_000414) != 0) {
             return;
         }
 
-        if(CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) == 0){
+        if(CVarGetInteger("gDeveloperTools.BetterLevelSelect", 1) == 0){
             *ev->geoLayoutAddr = (void*) intro_geo_000414;
         } else {
-            *ev->geoLayoutAddr = (void*) BetterLevelSelect_GeoWrapper;
+            *ev->geoLayoutAddr = (void*)BetterLevelSelect_GeoWrapper;
         }
     });
 
     REGISTER_LISTENER(LevelScriptCallLoop, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        LevelScriptCallLoop* ev = (LevelScriptCallLoop*) event;
+        LevelScriptCallLoop* ev = (LevelScriptCallLoop*)event;
 
-        if(*ev->func == lvl_intro_update) {
-            if(*ev->arg == LVL_INTRO_LEVEL_SELECT) {
+        if (*ev->func == lvl_intro_update) {
+            if (*ev->arg == LVL_INTRO_LEVEL_SELECT) {
                 self.loaded = true;
             }
             *ev->func = BetterLevelSelect_UpdateMenu;
@@ -524,7 +517,7 @@ static void Init() {
 
         self.loaded = false;
 
-        if(*ev->func == lvl_init_or_update) {
+        if (*ev->func == lvl_init_or_update) {
             *ev->func = BetterLevelSelect_UpdateArea;
             return;
         }
@@ -532,7 +525,7 @@ static void Init() {
 }
 
 void BetterLevelSelect_HandleReload() {
-    if(!self.loaded){
+    if (!self.loaded) {
         return;
     }
     self.forceReload = true;
