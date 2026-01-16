@@ -1,4 +1,5 @@
 #include "Rando.h"
+#include <ship/Context.h>
 #include "port/mods/PortEnhancements.h"
 // #include "2s2h/GameInteractor/GameInteractor.h"
 #include "ActorBehavior/ActorBehavior.h"
@@ -6,8 +7,7 @@
 // #include "Rando/Spoiler/Spoiler.h"
 // #include "Rando/CheckTracker/CheckTracker.h"
 #include "port/ShipInit.hpp"
-// #include <ship/window/FileDropMgr.h>
-#include <ship/Context.h>
+
 
 int16_t selectedFileNum = 0;
 

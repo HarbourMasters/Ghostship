@@ -18,6 +18,13 @@ DEFINE_EVENT(SpawnObject,
     struct SpawnInfo *spawnInfo;
 );
 
+DEFINE_EVENT(SpawnMacroObject,
+    int16_t model;
+    int16_t posX;
+    int16_t posY;
+    int16_t posZ;
+);
+
 DEFINE_EVENT(SpawnStar,
     f32 posX;
     f32 posY;

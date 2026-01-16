@@ -82,11 +82,13 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(GeoLayoutCallASM);
     REGISTER_EVENT(LevelScriptCallLoop);
     REGISTER_EVENT(LevelScriptBeginArea);
+    REGISTER_EVENT(LevelScriptExecute);
     REGISTER_EVENT(RenderPauseCourseOptions);
 
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
     REGISTER_EVENT(SpawnObject);
+    REGISTER_EVENT(SpawnMacroObject);
     REGISTER_EVENT(SpawnStar);
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);

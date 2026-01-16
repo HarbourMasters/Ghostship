@@ -25,3 +25,8 @@ DEFINE_EVENT(GeoLayoutCallASM,
     GraphNodeFunc* func;
     int16_t* parameter;
 );
+
+// new
+DEFINE_EVENT(LevelScriptExecute,
+    u8 command;
+);

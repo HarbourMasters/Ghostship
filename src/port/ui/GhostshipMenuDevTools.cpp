@@ -1,5 +1,14 @@
 #include "GhostshipMenu.h"
 #include "port/mods/BetterLevelSelect.h"
+#include "game/object_list_processor.h"
+#include "include/behavior_data.h"
+#include "game/level_update.h"
+
+extern "C" {
+struct Object* spawn_object_abs_with_rot(struct Object* parent, s16 uselessArg, u32 model,
+                                         const BehaviorScript* behavior, s16 x, s16 y, s16 z, s16 pitch, s16 yaw,
+                                         s16 roll);
+}
 
 namespace GhostshipGui {
 
@@ -96,6 +105,21 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Save Editor")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Save Editor Window."));
+
+    path.sidebarName = "Model Spawn";
+    AddSidebarEntry("Dev Tools", path.sidebarName, 1);
+    AddWidget(path, "Spawn Red Coin", WIDGET_BUTTON)
+        .Callback([](WidgetInfo& info) {
+            spawn_object_abs_with_rot(&gMacroObjectDefaultParent, 0, 215, bhvRedCoin, 
+                (int16_t)gMarioStates->pos[0], (int16_t)gMarioStates->pos[1] + 250, (int16_t)gMarioStates->pos[2], 0, 0, 0);
+        })
+        .Options(ButtonOptions().Tooltip("Spawns a Red Coin."));
+    AddWidget(path, "Spawn Star", WIDGET_BUTTON)
+        .Callback([](WidgetInfo& info) {
+            spawn_object_abs_with_rot(&gMacroObjectDefaultParent, 0, 122, bhvStar, (int16_t)gMarioStates->pos[0],
+                                      (int16_t)gMarioStates->pos[1] + 250, (int16_t)gMarioStates->pos[2], 0, 0, 0);
+        })
+        .Options(ButtonOptions().Tooltip("Spawns a Star."));
 }
 
 } // namespace GhostshipGui

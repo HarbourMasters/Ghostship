@@ -7,5 +7,5 @@ extern "C" {
 
 namespace CustomItem {
 
-void Spawn(struct ::SpawnInfo* spawnInfo);
+void Spawn(u32 modelId, const BehaviorScript* behavior, s16 x, s16 y, s16 z);
 }; // namespace CustomItem

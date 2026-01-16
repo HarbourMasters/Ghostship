@@ -463,9 +463,9 @@ static void level_cmd_place_object(void) {
         spawnInfo->behaviorScript = CMD_GET(void*, 20);
 
         spawnInfo->model = gLoadedGraphNodes[model];
-        
+
         spawnInfo->next = gAreas[sCurrAreaIndex].objectSpawnInfos;
-        
+
         gAreas[sCurrAreaIndex].objectSpawnInfos = spawnInfo;
     }
 
@@ -826,6 +826,7 @@ struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
 
     while (sScriptStatus == SCRIPT_RUNNING) {
         LevelScriptJumpTable[sCurrentCmd->type]();
+        CALL_EVENT(LevelScriptExecute, sCurrentCmd->type);
     }
 
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);

@@ -150,26 +150,29 @@ void spawn_macro_objects(s16 areaIndex, s16 *macroObjList) {
         if (((macroObject[MACRO_OBJ_PARAMS] >> 8) & RESPAWN_INFO_DONT_RESPAWN)
             != RESPAWN_INFO_DONT_RESPAWN) {
             // Spawn the new macro object.
-            newObj = spawn_object_abs_with_rot(
-                         &gMacroObjectDefaultParent, // Parent object
-                         0,                          // Unused
-                         preset.model,               // Model ID
-                         preset.behavior,            // Behavior address
-                         macroObject[MACRO_OBJ_X],   // X-position
-                         macroObject[MACRO_OBJ_Y],   // Y-position
-                         macroObject[MACRO_OBJ_Z],   // Z-position
-                         0,                          // X-rotation
-                         convert_rotation(macroObject[MACRO_OBJ_Y_ROT]), // Y-rotation
-                         0                                               // Z-rotation
-                     );
+            CALL_CANCELLABLE_EVENT(SpawnMacroObject, preset.model, macroObject[MACRO_OBJ_X], macroObject[MACRO_OBJ_Y],
+                                   macroObject[MACRO_OBJ_Z]) {
+                newObj = spawn_object_abs_with_rot(
+                             &gMacroObjectDefaultParent, // Parent object
+                             0,                          // Unused
+                             preset.model,               // Model ID
+                             preset.behavior,            // Behavior address
+                             macroObject[MACRO_OBJ_X],   // X-position
+                             macroObject[MACRO_OBJ_Y],   // Y-position
+                             macroObject[MACRO_OBJ_Z],   // Z-position
+                             0,                          // X-rotation
+                             convert_rotation(macroObject[MACRO_OBJ_Y_ROT]), // Y-rotation
+                             0                                               // Z-rotation
+                         );
 
-            newObj->oUnk1A8 = macroObject[MACRO_OBJ_PARAMS];
-            newObj->oBehParams = ((macroObject[MACRO_OBJ_PARAMS] & 0x00FF) << 16)
-                                 + (macroObject[MACRO_OBJ_PARAMS] & 0xFF00);
-            newObj->oBehParams2ndByte = macroObject[MACRO_OBJ_PARAMS] & 0x00FF;
-            newObj->respawnInfoType = RESPAWN_INFO_TYPE_16;
-            newObj->respawnInfo = macroObjList - 1;
-            newObj->parentObj = newObj;
+                newObj->oUnk1A8 = macroObject[MACRO_OBJ_PARAMS];
+                newObj->oBehParams = ((macroObject[MACRO_OBJ_PARAMS] & 0x00FF) << 16)
+                                     + (macroObject[MACRO_OBJ_PARAMS] & 0xFF00);
+                newObj->oBehParams2ndByte = macroObject[MACRO_OBJ_PARAMS] & 0x00FF;
+                newObj->respawnInfoType = RESPAWN_INFO_TYPE_16;
+                newObj->respawnInfo = macroObjList - 1;
+                newObj->parentObj = newObj;
+            }
         }
     }
 }
