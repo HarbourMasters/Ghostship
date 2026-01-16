@@ -503,6 +503,7 @@ void run_demo_inputs(void) {
             gControllers[0].controllerData->stick_x = 0;
             gControllers[0].controllerData->stick_y = 0;
             gControllers[0].controllerData->button = END_DEMO;
+            gCurrDemoInput = NULL;
         } else {
             // Backup the start button if it is pressed, since we don't want the
             // demo input to override the mask where start may have been pressed.
