@@ -82,6 +82,7 @@ s32 run_level_id_or_demo(s32 level) {
             }
         } else { // activity was detected, so reset the demo countdown.
             sDemoCountdown = 0;
+            gCurrDemoInput = NULL;
         }
     }
     return level;

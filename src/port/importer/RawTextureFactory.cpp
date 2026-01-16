@@ -7,8 +7,21 @@
 #include "ship/resource/ResourceManager.h"
 
 namespace MK64 {
+std::unordered_map<Fast::TextureType, float> TexturePixelMultipliers = {
+    { Fast::TextureType::RGBA32bpp, 4.0f },
+    { Fast::TextureType::RGBA16bpp, 2.0f },
+    { Fast::TextureType::Palette4bpp, 0.5f },
+    { Fast::TextureType::Palette8bpp, 1.0f },
+    { Fast::TextureType::Grayscale4bpp, 0.5f },
+    { Fast::TextureType::Grayscale8bpp, 1.0f },
+    { Fast::TextureType::GrayscaleAlpha4bpp, 0.5f },
+    { Fast::TextureType::GrayscaleAlpha8bpp, 1.0f },
+    { Fast::TextureType::GrayscaleAlpha16bpp, 2.0f },
+};
+
 std::shared_ptr<Ship::IResource> loadPngTexture(std::shared_ptr<Ship::File> filePng, std::shared_ptr<Ship::ResourceInitData> initData) {
     auto texture = std::make_shared<Fast::Texture>(initData);
+    const auto res = std::static_pointer_cast<Fast::Texture>(Ship::Context::GetInstance()->GetResourceManager()->LoadResource(initData->Path, true));
 
     int height, width = 0;
     texture->ImageData = stbi_load_from_memory((const stbi_uc*)filePng->Buffer.get()->data(),
@@ -18,8 +31,13 @@ std::shared_ptr<Ship::IResource> loadPngTexture(std::shared_ptr<Ship::File> file
     texture->Type = Fast::TextureType::RGBA32bpp;
     texture->ImageDataSize = texture->Width * texture->Height * 4;
     texture->Flags = TEX_FLAG_LOAD_AS_IMG;
-    texture->VPixelScale = 1.0f;
-    texture->HByteScale = 1.0f;
+    if(res != nullptr) {
+        texture->HByteScale = (res->Width / texture->Width) * (TexturePixelMultipliers[texture->Type] / TexturePixelMultipliers[res->Type]);
+        texture->VPixelScale = res->Height / texture->Height;
+    } else {
+        texture->VPixelScale = 1.0f;
+        texture->HByteScale = 1.0f;
+    }
     return texture;
 }
 

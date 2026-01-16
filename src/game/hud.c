@@ -13,6 +13,7 @@
 #include "area.h"
 #include "save_file.h"
 #include "print.h"
+#include "port/ui/cvar_prefixes.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 /* @file hud.c
@@ -226,12 +227,16 @@ void handle_power_meter_actions(s16 numHealthWedges) {
  */
 void render_hud_power_meter(void) {
     s16 shownHealthWedges = gHudDisplay.wedges;
-
+    bool alwaysShow = CVarGetInteger(CVAR_ENHANCEMENT("AlwaysShowPowerMeter"), 0) != 0;
+    
     if (sPowerMeterHUD.animation != POWER_METER_HIDING) {
         handle_power_meter_actions(shownHealthWedges);
     }
 
-    if (sPowerMeterHUD.animation == POWER_METER_HIDDEN) {
+    if (alwaysShow) {
+        sPowerMeterHUD.animation = POWER_METER_VISIBLE;
+        sPowerMeterHUD.y = 200;
+    } else if (sPowerMeterHUD.animation == POWER_METER_HIDDEN) {
         return;
     }
 
@@ -260,18 +265,18 @@ void render_hud_power_meter(void) {
  * Renders the amount of lives Mario has.
  */
 void render_hud_mario_lives(void) {
-    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(22), HUD_TOP_Y, ","); // 'Mario Head' glyph
-    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(38), HUD_TOP_Y, "*"); // 'X' glyph
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(54), HUD_TOP_Y, "%d", gHudDisplay.lives);
+    print_text(OTRGetDimensionFromLeftEdgeOverride(22), HUD_TOP_Y, ","); // 'Mario Head' glyph
+    print_text(OTRGetDimensionFromLeftEdgeOverride(38), HUD_TOP_Y, "*"); // 'X' glyph
+    print_text_fmt_int(OTRGetDimensionFromLeftEdgeOverride(54), HUD_TOP_Y, "%d", gHudDisplay.lives);
 }
 
 /**
  * Renders the amount of coins collected.
  */
 void render_hud_coins(void) {
-    print_text(168, HUD_TOP_Y, "+"); // 'Coin' glyph
-    print_text(184, HUD_TOP_Y, "*"); // 'X' glyph
-    print_text_fmt_int(198, HUD_TOP_Y, "%d", gHudDisplay.coins);
+    print_text(OTRGetDimensionFromRightEdgeOverride(152), HUD_TOP_Y, "+"); // 'Coin' glyph
+    print_text(OTRGetDimensionFromRightEdgeOverride(136), HUD_TOP_Y, "*"); // 'X' glyph
+    print_text_fmt_int(OTRGetDimensionFromRightEdgeOverride(122), HUD_TOP_Y, "%d", gHudDisplay.coins);
 }
 
 #define HUD_STARS_X (ROM_JP ? 73 : 78)
@@ -291,11 +296,11 @@ void render_hud_stars(void) {
         showX = 1;
     }
 
-    print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X), HUD_TOP_Y, "-"); // 'Star' glyph
+    print_text(OTRGetDimensionFromRightEdgeOverride(HUD_STARS_X), HUD_TOP_Y, "-"); // 'Star' glyph
     if (showX == 1) {
-        print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X) + 16, HUD_TOP_Y, "*"); // 'X' glyph
+        print_text(OTRGetDimensionFromRightEdgeOverride(HUD_STARS_X) + 16, HUD_TOP_Y, "*"); // 'X' glyph
     }
-    print_text_fmt_int((showX * 14) + GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X - 16),
+    print_text_fmt_int((showX * 14) + OTRGetDimensionFromRightEdgeOverride(HUD_STARS_X - 16),
                        HUD_TOP_Y, "%d", gHudDisplay.stars);
 }
 
