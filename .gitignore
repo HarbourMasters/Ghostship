@@ -95,3 +95,4 @@ modding/
 *.log
 node_modules
 /src/port/build.c
+/properties.h

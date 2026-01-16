@@ -438,20 +438,25 @@ Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *
         std::vector<const char*> acts = language ? entries[self.currentLevelIndex].actsJp : entries[self.currentLevelIndex].actsEn;
 
         if(!acts.empty()) {
-            GfxPrint_SetPos(&printer, 2, 25);
+            int y = 25;
+            GfxPrint_SetPos(&printer, 2, y);
             GfxPrint_SetColor(&printer, 100, 100, 100, 255);
-            GfxPrint_Printf(&printer, "(Z/R)Act:");
+            GfxPrint_Printf(&printer, "(Z/R) Act:");
             GfxPrint_SetColor(&printer, 200, 200, 50, 255);
             GfxPrint_Printf(&printer, "%s", acts[self.currentActIndex]);
 
-            GfxPrint_SetPos(&printer, 2, 26);
             auto areas = entries[self.currentLevelIndex].areas;
-            GfxPrint_SetColor(&printer, 100, 100, 100, 255);
-            GfxPrint_Printf(&printer, "Area:");
-            GfxPrint_SetColor(&printer, 200, 50, 50, 255);
-            GfxPrint_Printf(&printer, "%s", self.currentAreaIndex == 0 ? "Default" : areas[self.currentAreaIndex - 1].name);
+            if (entries[self.currentLevelIndex].levelId == LEVEL_THI) {
+                y++;
+                GfxPrint_SetPos(&printer, 2, y);
+                GfxPrint_SetColor(&printer, 100, 100, 100, 255);
+                GfxPrint_Printf(&printer, "(C L/R) Area:");
+                GfxPrint_SetColor(&printer, 200, 50, 50, 255);
+                GfxPrint_Printf(&printer, "%s", self.currentAreaIndex == 0 ? "Default" : areas[self.currentAreaIndex - 1].name);
+            }
 
-            GfxPrint_SetPos(&printer, 2, 27);
+            y++;
+            GfxPrint_SetPos(&printer, 2, y);
             GfxPrint_SetColor(&printer, 100, 100, 100, 255);
 
             switch (entries[self.currentLevelIndex].levelId) {
@@ -462,7 +467,7 @@ Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode *node, UNUSED void *
                 //     break;
                 // }
                 case LEVEL_TTC: {
-                    GfxPrint_Printf(&printer, "Speed:");
+                    GfxPrint_Printf(&printer, "(Dpad L/R) Speed:");
                     GfxPrint_SetColor(&printer, 55, 200, 50, 255);
                     GfxPrint_Printf(&printer, "%s", ttcSpeeds[self.ttcSpeedIndex]);
                     break;
