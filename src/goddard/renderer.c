@@ -19,6 +19,7 @@
 #include "skin.h"
 #include "types.h"
 #include "sm64.h"
+#include "game/memory.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 #define MAX_GD_DLS 1000
