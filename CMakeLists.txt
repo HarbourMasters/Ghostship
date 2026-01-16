@@ -226,6 +226,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "text/*.c"
     "textures/*.h"
     "textures/*.c"
+    "Resource.rc"
 )
 
 # Exclude specific files from the ALL_FILES list

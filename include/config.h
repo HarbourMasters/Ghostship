@@ -32,11 +32,7 @@
 #define BUGFIX_BOWSER_FADING_OUT (0 || VERSION_US || VERSION_EU || VERSION_SH)
 
 // Support Rumble Pak
-#ifdef _WIN32
-#define ENABLE_RUMBLE 0
-#else
 #define ENABLE_RUMBLE 1
-#endif
 
 // Screen Size Defines
 #define SCREEN_WIDTH 320
