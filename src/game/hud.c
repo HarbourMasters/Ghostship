@@ -329,26 +329,26 @@ void render_hud_timer(void) {
 #ifdef VERSION_EU
     switch (eu_get_language()) {
         case LANGUAGE_ENGLISH:
-            print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(150), 185, "TIME");
+            print_text(OTRGetDimensionFromRightEdgeOverride(150), 185, "TIME");
             break;
         case LANGUAGE_FRENCH:
-            print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(155), 185, "TEMPS");
+            print_text(OTRGetDimensionFromRightEdgeOverride(155), 185, "TEMPS");
             break;
         case LANGUAGE_GERMAN:
-            print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(150), 185, "ZEIT");
+            print_text(OTRGetDimensionFromRightEdgeOverride(150), 185, "ZEIT");
             break;
     }
 #else
-    print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(150), 185, "TIME");
+    print_text(OTRGetDimensionFromRightEdgeOverride(150), 185, "TIME");
 #endif
 
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(91), 185, "%0d", timerMins);
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(71), 185, "%02d", timerSecs);
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(37), 185, "%d", timerFracSecs);
+    print_text_fmt_int(OTRGetDimensionFromRightEdgeOverride(91), 185, "%0d", timerMins);
+    print_text_fmt_int(OTRGetDimensionFromRightEdgeOverride(71), 185, "%02d", timerSecs);
+    print_text_fmt_int(OTRGetDimensionFromRightEdgeOverride(37), 185, "%d", timerFracSecs);
 
     gSPDisplayList(gDisplayListHead++, dl_hud_img_begin);
-    render_hud_tex_lut(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(81), 32, (*hudLUT)[GLYPH_APOSTROPHE]);
-    render_hud_tex_lut(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(46), 32, (*hudLUT)[GLYPH_DOUBLE_QUOTE]);
+    render_hud_tex_lut(OTRGetDimensionFromRightEdgeOverride(81), 32, (*hudLUT)[GLYPH_APOSTROPHE]);
+    render_hud_tex_lut(OTRGetDimensionFromRightEdgeOverride(46), 32, (*hudLUT)[GLYPH_DOUBLE_QUOTE]);
     gSPDisplayList(gDisplayListHead++, dl_hud_img_end);
 }
 
@@ -366,7 +366,7 @@ void set_hud_camera_status(s16 status) {
  */
 void render_hud_camera_status(void) {
     u8 *(*cameraLUT)[6] = segmented_to_virtual(main_hud_camera_lut);
-    s32 x = GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(54);
+    s32 x = OTRGetDimensionFromRightEdgeOverride(54);
     s32 y = 205;
 
     if (sCameraHUD.status == CAM_STATUS_NONE) {

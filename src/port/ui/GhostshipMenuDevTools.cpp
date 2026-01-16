@@ -18,6 +18,10 @@ static const std::unordered_map<int32_t, const char*> debugInfoPages = {
     { DEBUG_PAGE_EFFECTINFO, "Effect" }, { DEBUG_PAGE_ENEMYINFO, "Enemy" },
 };
 
+static const std::unordered_map<int32_t, const char*> language = {
+    { 0, "English" }, { 1, "Japanese" },
+};
+
 #ifdef _DEBUG
 DebugLogOption defaultLogLevel = DEBUG_LOG_TRACE;
 #else
@@ -65,6 +69,14 @@ void GhostshipMenu::AddMenuDevTools() {
         .Callback([](WidgetInfo& info) { BetterLevelSelect_HandleReload(); })
         .PreFunc(
             [](WidgetInfo& info) { info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0)); });
+    AddWidget(path, "Level Select Language", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_DEVELOPER_TOOLS("BLSLanguage"))
+        .Options(ComboboxOptions()
+            .Tooltip("Language used in Better Level Select")
+            .ComboMap(language))
+        .PreFunc(
+            [](WidgetInfo& info) { info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0) ||
+                                                          !CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 0)); });
     AddWidget(path, "Draw Debug Info", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("DrawDebugInfo"))
         .Options(CheckboxOptions().Tooltip("Draws Debug Related Information"));
