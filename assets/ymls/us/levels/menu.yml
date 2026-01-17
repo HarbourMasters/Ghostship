@@ -931,7 +931,7 @@ main_menu_seg7.0D1A8:
   size: 4096
   width: 64
   height: 32
-  offset: 0xBCD8
+  offset: 0xBCE0
   format: RGBA16
   symbol: texture_menu_course_upper
 
@@ -940,7 +940,7 @@ main_menu_seg7.0E1A8:
   size: 4096
   width: 64
   height: 32
-  offset: 0xCCD8
+  offset: 0xCCE0
   format: RGBA16
   symbol: texture_menu_course_lower
 
