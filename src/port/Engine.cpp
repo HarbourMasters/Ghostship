@@ -130,8 +130,8 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
 
-    this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
-    this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
+    this->context->InitResourceManager(archiveFiles, {}, 3);
+    this->context->InitConsole();
 
     auto window = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
 
