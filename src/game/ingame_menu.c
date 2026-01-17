@@ -245,7 +245,7 @@ static u8 *alloc_ia8_text_from_i1(u16 *in, s16 width, s16 height) {
 }
 
 void render_generic_char(u8 c) {
-    void **fontLUT = segmented_to_virtual(main_font_lut);
+    char **fontLUT = segmented_to_virtual(main_font_lut);
     char* packedTexture = fontLUT[c];
 
     if (packedTexture == NULL) {
@@ -254,9 +254,9 @@ void render_generic_char(u8 c) {
 
     gDPPipeSync(gDisplayListHead++);
     if(ROM_JP) {
-        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
+        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, (packedTexture));
     } else {
-        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
+        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, (packedTexture));
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
