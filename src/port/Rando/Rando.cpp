@@ -8,7 +8,6 @@
 // #include "Rando/CheckTracker/CheckTracker.h"
 #include "port/ShipInit.hpp"
 
-
 int16_t selectedFileNum = 0;
 
 // When a save is loaded, we want to unregister all hooks and re-register them if it's a rando save

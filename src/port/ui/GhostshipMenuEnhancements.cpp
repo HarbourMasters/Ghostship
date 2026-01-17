@@ -49,7 +49,7 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar(CVAR_ENHANCEMENT("DisablePeachCutscene"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Skips the Peach cutscene when starting a new game."));
-    
+
     path = { "Enhancements", "HUD", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
@@ -58,16 +58,16 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar(CVAR_ENHANCEMENT("AlwaysShowPowerMeter"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("The power meter will always be visible on screen."));
-    
+
     AddWidget(path, "HUD Aspect Ratio", WIDGET_CVAR_COMBOBOX)
         .CVar("gHUDAspectRatio.Selection")
         .RaceDisable(false)
         .Options(ComboboxOptions()
-            .ComboMap(hudAspects)
-            .Tooltip("Changes the aspect ratio of the HUD elements.")
-            .DefaultIndex(0)
-            .ComponentAlignment(ComponentAlignments::Right)
-            .LabelPosition(LabelPositions::Far))
+                     .ComboMap(hudAspects)
+                     .Tooltip("Changes the aspect ratio of the HUD elements.")
+                     .DefaultIndex(0)
+                     .ComponentAlignment(ComponentAlignments::Right)
+                     .LabelPosition(LabelPositions::Far))
         .Callback([](WidgetInfo& info) {
             CVarSetInteger("gHUDAspectRatio.Enabled", 1);
             switch (CVarGetInteger("gHUDAspectRatio.Selection", 0)) {
@@ -77,10 +77,10 @@ void GhostshipMenu::AddMenuEnhancements() {
                     CVarSetInteger("gHUDAspectRatio.Y", 0);
                     break;
                 case 1:
-                    if (CVarGetInteger("gHUDAspectRatio.X", 0) <= 0){
+                    if (CVarGetInteger("gHUDAspectRatio.X", 0) <= 0) {
                         CVarSetInteger("gHUDAspectRatio.X", 1);
                     }
-                    if (CVarGetInteger("gHUDAspectRatio.Y", 0) <= 0){
+                    if (CVarGetInteger("gHUDAspectRatio.Y", 0) <= 0) {
                         CVarSetInteger("gHUDAspectRatio.Y", 1);
                     }
                     break;
@@ -104,9 +104,9 @@ void GhostshipMenu::AddMenuEnhancements() {
                     CVarSetInteger("gHUDAspectRatio.X", 21);
                     CVarSetInteger("gHUDAspectRatio.Y", 9);
                     break;
-                }
+            }
         });
-    
+
     AddWidget(path, "Custom HUD Aspect Ratio X", WIDGET_CVAR_SLIDER_INT)
         .CVar("gHUDAspectRatio.X")
         .RaceDisable(false)

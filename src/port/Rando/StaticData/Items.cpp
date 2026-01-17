@@ -24,17 +24,6 @@ std::map<RandoItemId, RandoStaticItem> Items = {
 };
 // clang-format on
 
-struct GraphNode* GetGraphNodeByRandoItem(RandoItemId randoItem) {
-    struct GraphNode* node;
-
-    for (auto& [randoItemId, randoStaticItem] : Rando::StaticData::Items) {
-        if (randoItemId == randoItem) {
-            node = gLoadedGraphNodes[randoStaticItem.modelId];
-        }
-    }
-    return NULL;
-}
-
 int16_t GetModelByRandoItem(RandoItemId randoItem) {
     for (auto& [randoItemId, randoStaticItem] : Rando::StaticData::Items) {
         if (randoItemId == randoItem) {
@@ -55,6 +44,7 @@ const BehaviorScript* GetBehaviorByModel(int16_t modelId) {
     }
     return nullptr;
 }
+
 RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId) {
     for (auto& [randoCheck, randoItem] : Rando::Logic::shuffledList) {
         if (randoCheck == randoCheckId) {

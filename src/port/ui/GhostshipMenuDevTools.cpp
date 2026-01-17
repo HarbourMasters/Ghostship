@@ -28,7 +28,8 @@ static const std::unordered_map<int32_t, const char*> debugInfoPages = {
 };
 
 static const std::unordered_map<int32_t, const char*> language = {
-    { 0, "English" }, { 1, "Japanese" },
+    { 0, "English" },
+    { 1, "Japanese" },
 };
 
 #ifdef _DEBUG
@@ -80,12 +81,11 @@ void GhostshipMenu::AddMenuDevTools() {
             [](WidgetInfo& info) { info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0)); });
     AddWidget(path, "Level Select Language", WIDGET_CVAR_COMBOBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("BLSLanguage"))
-        .Options(ComboboxOptions()
-            .Tooltip("Language used in Better Level Select")
-            .ComboMap(language))
-        .PreFunc(
-            [](WidgetInfo& info) { info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0) ||
-                                                          !CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 0)); });
+        .Options(ComboboxOptions().Tooltip("Language used in Better Level Select").ComboMap(language))
+        .PreFunc([](WidgetInfo& info) {
+            info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DebugMode"), 0) ||
+                                   !CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 0));
+        });
     AddWidget(path, "Draw Debug Info", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_DEVELOPER_TOOLS("DrawDebugInfo"))
         .Options(CheckboxOptions().Tooltip("Draws Debug Related Information"));
@@ -110,8 +110,8 @@ void GhostshipMenu::AddMenuDevTools() {
     AddSidebarEntry("Dev Tools", path.sidebarName, 1);
     AddWidget(path, "Spawn Red Coin", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
-            spawn_object_abs_with_rot(&gMacroObjectDefaultParent, 0, 215, bhvRedCoin, 
-                (int16_t)gMarioStates->pos[0], (int16_t)gMarioStates->pos[1] + 250, (int16_t)gMarioStates->pos[2], 0, 0, 0);
+            spawn_object_abs_with_rot(&gMacroObjectDefaultParent, 0, 215, bhvRedCoin, (int16_t)gMarioStates->pos[0],
+                                      (int16_t)gMarioStates->pos[1] + 250, (int16_t)gMarioStates->pos[2], 0, 0, 0);
         })
         .Options(ButtonOptions().Tooltip("Spawns a Red Coin."));
     AddWidget(path, "Spawn Star", WIDGET_BUTTON)

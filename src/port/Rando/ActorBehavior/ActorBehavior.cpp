@@ -1,17 +1,17 @@
 #include "ActorBehavior.h"
 #include <libultraship/bridge/consolevariablebridge.h>
-
 #include "port/hooks/list/PlayerEvent.h"
-#include "port/mods/PortEnhancements.h"
-#include "include/behavior_data.h"
 #include "port/hooks/list/EngineEvent.h"
+
+extern "C" {
+#include "game/spawn_object.h"
+#include "include/behavior_data.h"
 #include "include/level_commands.h"
 #include "assets/actors/star/geo.h"
 #include "assets/actors/coin/geo.h"
-static bool isInitialized = false;
+}
 
-// TODO: Need to possibly set behaviorArg to fix Star on Red Coin spawn behavior.
-// - Star will spin on an alternate axis and be uncollectable.
+static bool isInitialized = false;
 
 void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
     if (model != MODEL_STAR && model != MODEL_RED_COIN && model != MODEL_RED_COIN_NO_SHADOW &&
@@ -22,65 +22,39 @@ void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, i
     SPDLOG_INFO("Type: {} | Model: {} | Position: {}", type, model, locationStr);
 }
 
-// void ModifySpawnedObject(bool* shouldCancel, struct SpawnInfo* spawnInfo) {
-//     RandoCheckId randoCheckId =
-//         Rando::StaticData::GetCheckByLocation(spawnInfo->startPos[0], spawnInfo->startPos[1], spawnInfo->startPos[2]);
-//     if (randoCheckId == RC_UNKNOWN || !Rando::StaticData::IsCheckShuffled(randoCheckId)) {
-//         *(shouldCancel) = false;
-//         return;
-//     }
-// 
-//     RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
-//     if (randoItemId == RI_UNKNOWN) {
-//         return;
-//     }
-// 
-//     int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
-//     const BehaviorScript* behavior = Rando::StaticData::GetBehaviorByModel(modelId);
-// 
-//     CustomItem::Spawn(modelId, behavior, spawnInfo->startPos[0], spawnInfo->startPos[1], spawnInfo->startPos[2]);
-//     *(shouldCancel) = true;
-// }
+Rando::StaticData::RandoCustomData GetRandoData(s16 x, s16 y, s16 z) {
+    Rando::StaticData::RandoCustomData randoCustomData;
+    randoCustomData.randoCheckId = Rando::StaticData::GetCheckByLocation(x, y, z);
+    randoCustomData.randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCustomData.randoCheckId);
+    randoCustomData.isShuffled = Rando::StaticData::IsCheckShuffled(randoCustomData.randoCheckId);
 
-void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z) {
-    RandoCheckId randoCheckId =
-        Rando::StaticData::GetCheckByLocation(x, y, z);
-    if (randoCheckId == RC_UNKNOWN || !Rando::StaticData::IsCheckShuffled(randoCheckId)) {
+    return randoCustomData;
+}
+
+void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
+    Rando::StaticData::RandoCustomData randoCustomData = GetRandoData(x, y, z);
+    if (!randoCustomData.isShuffled || randoCustomData.randoCheckId == RC_UNKNOWN ||
+        randoCustomData.randoItemId == RI_UNKNOWN) {
         *(shouldCancel) = false;
         return;
     }
 
-    RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
-    if (randoItemId == RI_UNKNOWN) {
-        return;
-    }
-
-    int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoItemId);
+    int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoCustomData.randoItemId);
     const BehaviorScript* behavior = Rando::StaticData::GetBehaviorByModel(modelId);
 
-    CustomItem::Spawn(modelId, behavior, x, y, z);
+    CustomItem::SpawnObject(modelId, behavior, x, y, z, param);
     *(shouldCancel) = true;
 }
 
 // Entry point for the module, run once on game boot
 void Rando::ActorBehavior::Init() {
-    // REGISTER_LISTENER(SpawnObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-    //     SpawnObject* ev = (SpawnObject*)event;
-    //     if (!IS_RANDO(selectedFileNum)) {
-    //         return;
-    //     }
-    //     LogOutSpawns("Object", (int16_t)ev->spawnInfo->model, ev->spawnInfo->startPos[0], ev->spawnInfo->startPos[1],
-    //                  ev->spawnInfo->startPos[2]);
-    //     ModifySpawnedObject(&event->cancelled, ev->spawnInfo);
-    // });
-
-    REGISTER_LISTENER(SpawnMacroObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        SpawnMacroObject* ev = (SpawnMacroObject*)event;
+    REGISTER_LISTENER(SpawnObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        SpawnObject* ev = (SpawnObject*)event;
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
         LogOutSpawns("Object", (int16_t)ev->model, ev->posX, ev->posY, ev->posZ);
-        ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ);
+        ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
     REGISTER_LISTENER(SpawnStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -88,8 +62,21 @@ void Rando::ActorBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
+        if (*(ev->model) != MODEL_STAR) {
+            return;
+        }
 
         LogOutSpawns("Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
+        ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
+    });
+
+    REGISTER_LISTENER(ModifyDefaultStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        ModifyDefaultStar* ev = (ModifyDefaultStar*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+        LogOutSpawns("Default Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
+        ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, ev->param);
     });
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {

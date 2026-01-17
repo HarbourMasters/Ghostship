@@ -15,10 +15,6 @@ DEFINE_EVENT(PlayerLivesChange,
 );
 
 DEFINE_EVENT(SpawnObject,
-    struct SpawnInfo *spawnInfo;
-);
-
-DEFINE_EVENT(SpawnMacroObject,
     int16_t model;
     int16_t posX;
     int16_t posY;
@@ -26,9 +22,17 @@ DEFINE_EVENT(SpawnMacroObject,
 );
 
 DEFINE_EVENT(SpawnStar,
+    int16_t* model;
     f32 posX;
     f32 posY;
     f32 posZ;
+);
+
+DEFINE_EVENT(ModifyDefaultStar,
+    f32 posX;
+    f32 posY;
+    f32 posZ;
+    int32_t param;
 );
 
 DEFINE_EVENT(OnGameFileLoad,

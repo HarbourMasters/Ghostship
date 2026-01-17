@@ -112,9 +112,7 @@ void bhv_star_spawn_loop(void) {
 }
 
 struct Object *spawn_star(struct Object *sp30, f32 sp34, f32 sp38, f32 sp3C) {
-    CALL_EVENT(SpawnStar, sp34, sp38, sp3C);
-    sp30 = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY,
-                                     o->oPosZ, 0, 0, 0);
+    sp30 = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY, o->oPosZ, 0, 0, 0);
     sp30->oBehParams = o->oBehParams;
     sp30->oHomeX = sp34;
     sp30->oHomeY = sp38;
@@ -125,19 +123,25 @@ struct Object *spawn_star(struct Object *sp30, f32 sp34, f32 sp38, f32 sp3C) {
 }
 
 void spawn_default_star(f32 sp20, f32 sp24, f32 sp28) {
-    struct Object *sp1C = spawn_star(sp1C, sp20, sp24, sp28);
-    sp1C->oBehParams2ndByte = 0;
+    CALL_CANCELLABLE_EVENT(ModifyDefaultStar, sp20, sp24, sp28) {
+        struct Object* sp1C = spawn_star(sp1C, sp20, sp24, sp28);
+        sp1C->oBehParams2ndByte = 0;
+    }
 }
 
 void spawn_red_coin_cutscene_star(f32 sp20, f32 sp24, f32 sp28) {
-    struct Object *sp1C = spawn_star(sp1C, sp20, sp24, sp28);
-    sp1C->oBehParams2ndByte = 1;
+    CALL_CANCELLABLE_EVENT(ModifyDefaultStar, sp20, sp24, sp28) {
+        struct Object* sp1C = spawn_star(sp1C, sp20, sp24, sp28);
+        sp1C->oBehParams2ndByte = 1;
+    }
 }
 
 void spawn_no_exit_star(f32 sp20, f32 sp24, f32 sp28) {
-    struct Object *sp1C = spawn_star(sp1C, sp20, sp24, sp28);
-    sp1C->oBehParams2ndByte = 1;
-    sp1C->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
+    CALL_CANCELLABLE_EVENT(ModifyDefaultStar, sp20, sp24, sp28) {
+        struct Object* sp1C = spawn_star(sp1C, sp20, sp24, sp28);
+        sp1C->oBehParams2ndByte = 1;
+        sp1C->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
+    }
 }
 
 void bhv_hidden_red_coin_star_init(void) {

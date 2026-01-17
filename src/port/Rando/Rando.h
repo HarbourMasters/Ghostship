@@ -16,9 +16,6 @@
 
 extern "C" {
 #include "sm64.h"
-#include "game/object_list_processor.h"
-#include "game/macro_special_objects.h"
-#include "game/object_helpers.h"
 extern struct SaveBuffer gSaveBuffer;
 }
 
@@ -33,13 +30,7 @@ extern int16_t selectedFileNum;
 namespace Rando {
 
 void Init();
-// void DrawItem(RandoItemId randoItemId, Actor* actor = nullptr);
-// void GiveItem(RandoItemId randoItemId);
-// void RemoveItem(RandoItemId randoItemId);
-// RandoItemId CurrentJunkItem();
 // bool IsItemObtainable(RandoItemId randoItemId, RandoCheckId randoCheckId = RC_UNKNOWN);
-// RandoItemId ConvertItem(RandoItemId randoItemId, RandoCheckId randoCheckId = RC_UNKNOWN);
-// RandoCheckId FindItemPlacement(RandoItemId randoItemId);
 } // namespace Rando
 
 #endif // RANDO_H

@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <string.h>
+#include "port/hooks/list/PlayerEvent.h"
 
 #include "sm64.h"
 #include "audio/external.h"
@@ -23,9 +24,6 @@
 #include "surface_collision.h"
 #include "surface_load.h"
 #include "port/hooks/Events.h"
-
-#include "port/hooks/list/PlayerEvent.h"
-#include "port/mods/PortEnhancements.h"
 
 #define CMD_GET(type, offset) (*(type *) (CMD_PROCESS_OFFSET(offset) + (u8 *) sCurrentCmd))
 
@@ -446,6 +444,9 @@ static void level_cmd_place_object(void) {
 
     if (sCurrAreaIndex != -1 && ((CMD_GET(u8, 2) & val7) || CMD_GET(u8, 2) == 0x1F)) {
         model = CMD_GET(u8, 3);
+        if (model == MODEL_STAR) {
+            int hi = 122;
+        }
         spawnInfo = alloc_only_pool_alloc(sLevelPool, sizeof(struct SpawnInfo));
 
         spawnInfo->startPos[0] = CMD_GET(s16, 4);
@@ -461,12 +462,15 @@ static void level_cmd_place_object(void) {
 
         spawnInfo->behaviorArg = CMD_GET(u32, 16);
         spawnInfo->behaviorScript = CMD_GET(void*, 20);
-
+    
         spawnInfo->model = gLoadedGraphNodes[model];
 
         spawnInfo->next = gAreas[sCurrAreaIndex].objectSpawnInfos;
 
-        gAreas[sCurrAreaIndex].objectSpawnInfos = spawnInfo;
+        CALL_CANCELLABLE_EVENT(SpawnStar, &model, spawnInfo->startPos[0], spawnInfo->startPos[1],
+                               spawnInfo->startPos[2]) {
+            gAreas[sCurrAreaIndex].objectSpawnInfos = spawnInfo;
+        }
     }
 
     sCurrentCmd = CMD_NEXT;

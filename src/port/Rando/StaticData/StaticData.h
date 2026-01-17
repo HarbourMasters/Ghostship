@@ -14,6 +14,12 @@ namespace Rando {
 
 namespace StaticData {
 
+struct RandoCustomData {
+    RandoCheckId randoCheckId;
+    RandoItemId randoItemId;
+    bool isShuffled;
+};
+
 struct RandoStaticCheck {
     RandoCheckId randoCheckId;
     const char* name;
@@ -41,7 +47,6 @@ bool IsCheckShuffled(RandoCheckId randocheckId);
 
 extern std::map<RandoItemId, RandoStaticItem> Items;
 
-struct GraphNode* GetGraphNodeByRandoItem(RandoItemId randoItem);
 int16_t GetModelByRandoItem(RandoItemId randoItem);
 const BehaviorScript *GetBehaviorByModel(int16_t modelId);
 RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId);
