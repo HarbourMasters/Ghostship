@@ -670,6 +670,13 @@ add_custom_target(CreateOSXIcons
     )
     add_dependencies(${PROJECT_NAME} CreateOSXIcons)
     configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
+INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ../MacOS COMPONENT Ghostship)
+# Rename the installed soh binary to drop the macos suffix
+# INSTALL(CODE "FILE(RENAME \${CMAKE_INSTALL_PREFIX}/../MacOS/Ghostship-macos \${CMAKE_INSTALL_PREFIX}/../MacOS/Ghostship)")
+# install(CODE "
+#    include(BundleUtilities)
+#   fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/../MacOS/Ghostship\" \"\" \"${dirs}\")
+#    ")
 endif()
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL YES)
