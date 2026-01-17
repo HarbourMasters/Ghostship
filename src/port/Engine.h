@@ -117,6 +117,7 @@ uint8_t* GameEngine_LoadTranslation(const char* key);
 int GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
 void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, char));
+void* GameEngine_GetExactDataByName(const char* path);
 
 #ifdef __cplusplus
 }

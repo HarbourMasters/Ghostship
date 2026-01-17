@@ -935,3 +935,8 @@ extern "C" void GameEngine_GfxPrint(const char* str, void* printer, void (*print
         }
     }
 }
+
+extern "C" void* GameEngine_GetExactDataByName(const char* path) {
+    auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path, true);
+    return asset ? static_cast<void*>(asset->GetRawPointer()) : nullptr;
+}
