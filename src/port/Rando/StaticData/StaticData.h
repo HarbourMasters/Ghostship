@@ -64,7 +64,7 @@ extern std::unordered_map<int32_t, const char*> logicOptions;
 RandoOptionId GetOptionIdFromName(const char* name);
 
 // TODO: Import Object Extension
-std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
+extern std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
 
 // TODO: Add Logic and Regions
 // struct RandoStaticRegion {
