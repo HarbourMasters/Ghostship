@@ -7031,9 +7031,8 @@ BAD_RETURN(s32) cutscene_intro_peach_start_letter_music(UNUSED struct Camera *c)
 BAD_RETURN(s32) cutscene_intro_peach_start_flying_music(UNUSED struct Camera *c) {\
     if(!ROM_JP) {
         seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
-    } else {
-        cutscene_intro_peach_play_lakitu_flying_music();
     }
+    cutscene_intro_peach_play_lakitu_flying_music();
 }
 
 #ifdef VERSION_EU
