@@ -12,11 +12,11 @@ struct TrajectoryData {
 
 namespace SM64 {
 
-class Trajectory : public Ship::Resource<TrajectoryData> {
+class TrajectoryResource : public Ship::Resource<TrajectoryData> {
   public:
     using Resource::Resource;
 
-    Trajectory() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    TrajectoryResource() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     TrajectoryData* GetPointer();
     size_t GetPointerSize();
