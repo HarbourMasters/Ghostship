@@ -1259,7 +1259,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 #endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
-    gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE || CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0;
+    gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE && CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0;
 
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;
