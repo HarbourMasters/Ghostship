@@ -65,6 +65,7 @@ class GameEngine {
     static ImFont *CreateFontWithSize(float size, std::string fontPath);
     static void ScaleImGui();
     static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
+    static bool IsAltAssetsEnabled();
     void LoadDictionary();
     void LoadPlayerAnims();
     static uint32_t GetGameVersion();
@@ -116,6 +117,7 @@ uint8_t* GameEngine_LoadTranslation(const char* key);
 int GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
 void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, char));
+void* GameEngine_GetExactDataByName(const char* path);
 
 #ifdef __cplusplus
 }

@@ -27,32 +27,17 @@ void GhostshipMenu::AddMenuEnhancements() {
     AddMenuEntry("Enhancements", CVAR_SETTING("Menu.EnhancementsSidebarSection"));
 
     // Quality of Life
-    WidgetPath path = { "Enhancements", "Gameplay", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", path.sidebarName, 1);
-    path.column = SECTION_COLUMN_1;
+    WidgetPath path = { "Enhancements", "Graphics", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Graphics", 3);
 
-    AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("DisableLOD"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Disable Level of Detail (LOD) to avoid models using "
-                                           "lower poly versions at a distance"));
-    AddWidget(path, "Select Any Star", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("SelectAllStars"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Let's you select any star from the menu regardless "
-                                           "of the courses completion status."));
-    AddWidget(path, "Collecting Stars Will Not Exit Level", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("StarNoExit"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Collecting Stars will not take you out of the level."));
-    AddWidget(path, "Skip Intro Peach Cutscene", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("DisablePeachCutscene"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Skips the Peach cutscene when starting a new game."));
+    AddWidget(path, "Mods", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Use Alternate Assets", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Mods.AlternateAssets")
+        .Options(CheckboxOptions().Tooltip(
+            "Toggle between standard assets and alternate assets. Usually mods will indicate if "
+            "this setting has to be used or not."));
 
-    path = { "Enhancements", "HUD", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", path.sidebarName, 1);
-    path.column = SECTION_COLUMN_1;
+    AddWidget(path, "Game", WIDGET_SEPARATOR_TEXT);
 
     AddWidget(path, "Show Power Meter Always", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("AlwaysShowPowerMeter"))
@@ -130,6 +115,29 @@ void GhostshipMenu::AddMenuEnhancements() {
         })
         .Options(IntSliderOptions().Min(1).Max(100).DefaultValue(9).ShowButtons(true).Format("%d"));
 
+    path = { "Enhancements", "Gameplay", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", path.sidebarName, 1);
+    path.column = SECTION_COLUMN_1;
+
+    AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisableLOD"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Disable Level of Detail (LOD) to avoid models using "
+                                           "lower poly versions at a distance"));
+    AddWidget(path, "Select Any Star", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("SelectAllStars"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Let's you select any star from the menu regardless "
+                                           "of the courses completion status."));
+    AddWidget(path, "Collecting Stars Will Not Exit Level", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("StarNoExit"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Collecting Stars will not take you out of the level."));
+    AddWidget(path, "Skip Intro Peach Cutscene", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisablePeachCutscene"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Skips the Peach cutscene when starting a new game."));
+
     path = { "Enhancements", "Fixes", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
@@ -155,6 +163,10 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar(CVAR_CHEAT("PauseExitWhenever"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Exit from anywhere using the Pause Menu."));
+    AddWidget(path, "Play In Demo", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("PlayInDemo"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Allows normal gameplay when a demo is playing."));
 }
 
 } // namespace GhostshipGui

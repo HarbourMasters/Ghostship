@@ -19,6 +19,8 @@
 #include "skin.h"
 #include "types.h"
 #include "sm64.h"
+#include "game/memory.h"
+#include "assets/textures/intro_raw.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 #define MAX_GD_DLS 1000
@@ -221,45 +223,9 @@ UNUSED static Gfx gd_texture1_dummy_aligner1[] = { // @ 801A8728
     gsSPEndDisplayList(),
 };
 
-ALIGNED8 static Texture gd_texture_hand_open[] = "__OTR__textures/intro_raw/hand_open";
-
 UNUSED static Gfx gd_texture2_dummy_aligner1[] = {
     gsSPEndDisplayList()
 };
-
-ALIGNED8 static Texture gd_texture_hand_closed[] = "__OTR__textures/intro_raw/hand_closed";
-
-ALIGNED8 static Texture gd_texture_red_star_0[] = "__OTR__textures/intro_raw/red_star_0";
-
-ALIGNED8 static Texture gd_texture_red_star_1[] = "__OTR__textures/intro_raw/red_star_1";
-
-ALIGNED8 static Texture gd_texture_red_star_2[] = "__OTR__textures/intro_raw/red_star_2";
-
-ALIGNED8 static Texture gd_texture_red_star_3[] = "__OTR__textures/intro_raw/red_star_3";
-
-ALIGNED8 static Texture gd_texture_red_star_4[] = "__OTR__textures/intro_raw/red_star_4";
-
-ALIGNED8 static Texture gd_texture_red_star_5[] = "__OTR__textures/intro_raw/red_star_5";
-
-ALIGNED8 static Texture gd_texture_red_star_6[] = "__OTR__textures/intro_raw/red_star_6";
-
-ALIGNED8 static Texture gd_texture_red_star_7[] = "__OTR__textures/intro_raw/red_star_7";
-
-ALIGNED8 static Texture gd_texture_white_star_0[] = "__OTR__textures/intro_raw/white_star_0";
-
-ALIGNED8 static Texture gd_texture_white_star_1[] = "__OTR__textures/intro_raw/white_star_1";
-
-ALIGNED8 static Texture gd_texture_white_star_2[] = "__OTR__textures/intro_raw/white_star_2";
-
-ALIGNED8 static Texture gd_texture_white_star_3[] = "__OTR__textures/intro_raw/white_star_3";
-
-ALIGNED8 static Texture gd_texture_white_star_4[] = "__OTR__textures/intro_raw/white_star_4";
-
-ALIGNED8 static Texture gd_texture_white_star_5[] = "__OTR__textures/intro_raw/white_star_5";
-
-ALIGNED8 static Texture gd_texture_white_star_6[] = "__OTR__textures/intro_raw/white_star_6";
-
-ALIGNED8 static Texture gd_texture_white_star_7[] = "__OTR__textures/intro_raw/white_star_7";
 
 static Vtx_t gd_vertex_star[] = {
     {{-64,   0, 0}, 0, {  0, 992}, {0x00, 0x00, 0x7F}},
@@ -428,16 +394,6 @@ static Gfx *gd_silver_star_dl_array[] = {
     gd_dl_silver_star_7,
 };
 
-ALIGNED8 static Texture gd_texture_sparkle_0[] = "__OTR__textures/intro_raw/sparkle_0";
-
-ALIGNED8 static Texture gd_texture_sparkle_1[] = "__OTR__textures/intro_raw/sparkle_1";
-
-ALIGNED8 static Texture gd_texture_sparkle_2[] = "__OTR__textures/intro_raw/sparkle_2";
-
-ALIGNED8 static Texture gd_texture_sparkle_3[] = "__OTR__textures/intro_raw/sparkle_3";
-
-ALIGNED8 static Texture gd_texture_sparkle_4[] = "__OTR__textures/intro_raw/sparkle_4";
-
 static Vtx_t gd_vertex_sparkle[] = {
     {{   -32,      0,      0}, 0, {      0,   1984}, {  0x00, 0x00, 0x7F, 0x00}},
     {{    32,      0,      0}, 0, {   1984,   1984}, {  0x00, 0x00, 0x7F, 0x00}},
@@ -592,8 +548,6 @@ static Gfx *gd_silver_sparkle_dl_array[] = {
 UNUSED static Gfx gd_texture3_dummy_aligner1[] = {
     gsSPEndDisplayList(),
 };
-
-ALIGNED8 static Texture gd_texture_mario_face_shine[] = "__OTR__textures/intro_raw/mario_face_shine";
 
 static Gfx gd_dl_mario_face_shine[] = {
     gsSPSetGeometryMode(G_TEXTURE_GEN),
@@ -3467,7 +3421,7 @@ void gd_put_sprite(u16 *sprite, s32 x, s32 y, s32 wx, s32 wy) {
     gSPDisplayList(next_gfx(), osVirtualToPhysical(gd_dl_sprite_start_tex_block));
     for (r = 0; r < wy; r += 32) {
         for (c = 0; c < wx; c += 32) {
-             gDPLoadTextureBlock(next_gfx(), (r * 32) + (u8)segmented_to_virtual(sprite) + c, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0,
+             gDPLoadTextureBlock(next_gfx(), (r * 32) + (u8*)segmented_to_virtual(sprite) + c, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0,
                 G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
              gSPTextureRectangle(next_gfx(), x << 2, (y + r) << 2, (x + 32) << 2, (y + r + 32) << 2,
                 G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);

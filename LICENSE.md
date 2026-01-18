@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023 Lywx ghostship@undervolt.dev
+Copyright (c) 2026 Lywx admin@undervolt.dev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -19,6 +19,7 @@
 #include "segment2.h"
 #include "segment_symbols.h"
 #include "rumble_init.h"
+#include "port/ui/cvar_prefixes.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 // First 3 controller slots
@@ -503,28 +504,29 @@ void run_demo_inputs(void) {
             gControllers[0].controllerData->stick_x = 0;
             gControllers[0].controllerData->stick_y = 0;
             gControllers[0].controllerData->button = END_DEMO;
-            gCurrDemoInput = NULL;
         } else {
             // Backup the start button if it is pressed, since we don't want the
             // demo input to override the mask where start may have been pressed.
             u16 startPushed = gControllers[0].controllerData->button & START_BUTTON;
 
-            // Perform the demo inputs by assigning the current button mask and the stick inputs.
-            gControllers[0].controllerData->stick_x = gCurrDemoInput->rawStickX;
-            gControllers[0].controllerData->stick_y = gCurrDemoInput->rawStickY;
+            if(CVarGetInteger(CVAR_CHEAT("PlayInDemo"), 0) == 0) {
+                // Perform the demo inputs by assigning the current button mask and the stick inputs.
+                gControllers[0].controllerData->stick_x = gCurrDemoInput->rawStickX;
+                gControllers[0].controllerData->stick_y = gCurrDemoInput->rawStickY;
 
-            // To assign the demo input, the button information is stored in
-            // an 8-bit mask rather than a 16-bit mask. this is because only
-            // A, B, Z, Start, and the C-Buttons are used in a demo, as bits
-            // in that order. In order to assign the mask, we need to take the
-            // upper 4 bits (A, B, Z, and Start) and shift then left by 8 to
-            // match the correct input mask. We then add this to the masked
-            // lower 4 bits to get the correct button mask.
-            gControllers[0].controllerData->button =
-                ((gCurrDemoInput->buttonMask & 0xF0) << 8) + ((gCurrDemoInput->buttonMask & 0xF));
+                // To assign the demo input, the button information is stored in
+                // an 8-bit mask rather than a 16-bit mask. this is because only
+                // A, B, Z, Start, and the C-Buttons are used in a demo, as bits
+                // in that order. In order to assign the mask, we need to take the
+                // upper 4 bits (A, B, Z, and Start) and shift then left by 8 to
+                // match the correct input mask. We then add this to the masked
+                // lower 4 bits to get the correct button mask.
+                gControllers[0].controllerData->button =
+                    ((gCurrDemoInput->buttonMask & 0xF0) << 8) + ((gCurrDemoInput->buttonMask & 0xF));
 
-            // If start was pushed, put it into the demo sequence being input to end the demo.
-            gControllers[0].controllerData->button |= startPushed;
+                // If start was pushed, put it into the demo sequence being input to end the demo.
+                gControllers[0].controllerData->button |= startPushed;
+            }
 
             // Run the current demo input's timer down. if it hits 0, advance the demo input list.
             if (--gCurrDemoInput->timer == 0) {

@@ -3307,7 +3307,7 @@ hmc_seg7_rooms:
 
 hmc_seg7_macro_objs:
   type: SM64:MACRO
-  offset: 0x2ADC4
+  offset: 0x2AA78
   symbol: hmc_seg7_macro_objs
 
 hmc_seg7_collision_elevator:

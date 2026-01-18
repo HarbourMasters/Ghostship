@@ -92,17 +92,16 @@ jobs:
           path: ./build-cmake
       - name: Create Package
         run: |
-          mkdir ghostship-release
-          mv build-cmake/Ghostship ghostship-release/
-          mv build-cmake/ghostship.o2r ghostship-release/
-          mv config.yml ghostship-release/
-          mv assets ghostship-release/
-          curl -o ghostship-release/gamecontrollerdb.txt -sSL 'https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt'
+          (cd build-cmake && cpack)
+          mv _packages/*.dmg Ghostship.dmg
+          mv README.md readme.txt
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-            name: ghostship-mac-x64
-            path: ghostship-release
+          name: ghostship-mac
+          path: |
+            Ghostship.dmg
+            readme.txt
 
   build-linux:
     needs: generate-port-o2r
@@ -189,8 +188,6 @@ jobs:
           name: Ghostship-linux
           path: |
             ghostship.appimage
-            config.yml
-            assets
             gamecontrollerdb.txt
 
   build-switch:

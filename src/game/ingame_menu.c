@@ -254,9 +254,9 @@ void render_generic_char(u8 c) {
 
     gDPPipeSync(gDisplayListHead++);
     if(ROM_JP) {
-        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
+        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, GameEngine_GetExactDataByName(packedTexture));
     } else {
-        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, VIRTUAL_TO_PHYSICAL(packedTexture));
+        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, GameEngine_GetExactDataByName(packedTexture));
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
@@ -2577,17 +2577,17 @@ void render_course_complete_lvl_info_and_hud_str(void) {
 #define TXT_SAVEOPTIONS_X xOffset
 #else
 #define X_VAL9 x
-#define TXT_SAVEOPTIONS_X x + 12
+#define TXT_SAVEOPTIONS_X x + (ROM_JP ? 10 : 12)
 #endif
-#define TXT_SAVECONT_Y 0
-#define TXT_SAVEQUIT_Y 20
-#define TXT_CONTNOSAVE_Y 40
+#define TXT_SAVECONT_Y (ROM_JP ? 2 : 0)
+#define TXT_SAVEQUIT_Y (ROM_JP ? 18 : 20)
+#define TXT_CONTNOSAVE_Y (ROM_JP ? 38 : 40)
 #endif
 
 #ifdef VERSION_EU
-void render_save_confirmation(s16 y, s8 *index, s16 sp6e)
+void render_save_confirmation(s16 y, s8 *index, s16 yOffset)
 #else
-void render_save_confirmation(s16 x, s16 y, s8 *index, s16 sp6e)
+void render_save_confirmation(s16 x, s16 y, s8 *index, s16 yOffset)
 #endif
 {
 #ifdef VERSION_EU
@@ -2620,7 +2620,7 @@ void render_save_confirmation(s16 x, s16 y, s8 *index, s16 sp6e)
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 
-    create_dl_translation_matrix(MENU_MTX_PUSH, X_VAL9, y - ((*index - 1) * sp6e), 0);
+    create_dl_translation_matrix(MENU_MTX_PUSH, X_VAL9, y - ((*index - 1) * yOffset), 0);
 
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
