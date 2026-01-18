@@ -48,11 +48,11 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar("gHUDAspectRatio.Selection")
         .RaceDisable(false)
         .Options(ComboboxOptions()
-            .ComboMap(hudAspects)
-            .Tooltip("Changes the aspect ratio of the HUD elements.")
-            .DefaultIndex(0)
-            .ComponentAlignment(ComponentAlignments::Right)
-            .LabelPosition(LabelPositions::Far))
+                     .ComboMap(hudAspects)
+                     .Tooltip("Changes the aspect ratio of the HUD elements.")
+                     .DefaultIndex(0)
+                     .ComponentAlignment(ComponentAlignments::Right)
+                     .LabelPosition(LabelPositions::Far))
         .Callback([](WidgetInfo& info) {
             CVarSetInteger("gHUDAspectRatio.Enabled", 1);
             switch (CVarGetInteger("gHUDAspectRatio.Selection", 0)) {
@@ -62,10 +62,10 @@ void GhostshipMenu::AddMenuEnhancements() {
                     CVarSetInteger("gHUDAspectRatio.Y", 0);
                     break;
                 case 1:
-                    if (CVarGetInteger("gHUDAspectRatio.X", 0) <= 0){
+                    if (CVarGetInteger("gHUDAspectRatio.X", 0) <= 0) {
                         CVarSetInteger("gHUDAspectRatio.X", 1);
                     }
-                    if (CVarGetInteger("gHUDAspectRatio.Y", 0) <= 0){
+                    if (CVarGetInteger("gHUDAspectRatio.Y", 0) <= 0) {
                         CVarSetInteger("gHUDAspectRatio.Y", 1);
                     }
                     break;
@@ -89,9 +89,9 @@ void GhostshipMenu::AddMenuEnhancements() {
                     CVarSetInteger("gHUDAspectRatio.X", 21);
                     CVarSetInteger("gHUDAspectRatio.Y", 9);
                     break;
-                }
+            }
         });
-    
+
     AddWidget(path, "Custom HUD Aspect Ratio X", WIDGET_CVAR_SLIDER_INT)
         .CVar("gHUDAspectRatio.X")
         .RaceDisable(false)
