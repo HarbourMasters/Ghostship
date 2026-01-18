@@ -54,7 +54,6 @@ const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
 const uint32_t defaultImGuiScale = 1;
 int32_t previousImGuiScaleIndex = -1;
 float previousImGuiScale = defaultImGuiScale;
-const std::string appShortName = "warp";
 
 namespace fs = std::filesystem;
 
@@ -69,7 +68,7 @@ bool prevAltAssets = false;
 GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() : dictionary(nullptr) {
-    this->context = Ship::Context::CreateUninitializedInstance("Ghostship", appShortName, "ghostship.cfg.json");
+    this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
 
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
@@ -77,7 +76,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 #endif
 
     std::vector<std::string> archiveFiles;
-    const std::string main_path = Ship::Context::GetAppDirectoryPath(appShortName) + "/sm64.o2r";
+    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r");
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
 
 #ifdef _WIN32
@@ -105,21 +104,22 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         archiveFiles.push_back(assets_path);
     }
 
-    std::string modsPath = Ship::Context::LocateFileAcrossAppDirs("mods", appShortName);
-    if (!std::filesystem::exists(modsPath)) {
-        std::filesystem::create_directories(modsPath);
-    }
+    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty()) {
+        if (!std::filesystem::exists(patches_path)) {
+            std::filesystem::create_directories(patches_path);
+        }
 
-    if (std::filesystem::is_directory(modsPath)) {
-        for (const auto& p : std::filesystem::recursive_directory_iterator(modsPath)) {
-            const auto ext = p.path().extension().string();
-            if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
-                archiveFiles.push_back(p.path().generic_string());
-            }
+        if (std::filesystem::is_directory(patches_path)) {
+            for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
+                const auto ext = p.path().extension().string();
+                if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
+                    archiveFiles.push_back(p.path().generic_string());
+                }
 
-            if (StringHelper::IEquals(ext, ".zip")) {
-                SPDLOG_WARN("Zip files should be only used for development purposes, not for distribution");
-                archiveFiles.push_back(p.path().generic_string());
+                if (StringHelper::IEquals(ext, ".zip")) {
+                    SPDLOG_WARN("Zip files should be only used for development purposes, not for distribution");
+                    archiveFiles.push_back(p.path().generic_string());
+                }
             }
         }
     }

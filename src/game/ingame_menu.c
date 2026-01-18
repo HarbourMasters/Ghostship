@@ -245,7 +245,7 @@ static u8 *alloc_ia8_text_from_i1(u16 *in, s16 width, s16 height) {
 }
 
 void render_generic_char(u8 c) {
-    char **fontLUT = segmented_to_virtual(main_font_lut);
+    void **fontLUT = segmented_to_virtual(main_font_lut);
     char* packedTexture = fontLUT[c];
 
     if (packedTexture == NULL) {
