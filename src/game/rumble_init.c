@@ -11,7 +11,7 @@
 
 OSThread gRumblePakThread;
 
-s32 gRumblePakPfs; // Actually an OSPfs but we don't have that header yet
+OSPfs gRumblePakPfs; // Actually an OSPfs but we don't have that header yet
 
 s8 D_SH_8031D8F8[0x60];
 

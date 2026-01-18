@@ -30,7 +30,7 @@ extern OSThread gSoundThread;
 #if ENABLE_RUMBLE
 extern OSThread gRumblePakThread;
 
-extern s32 gRumblePakPfs; // Actually an OSPfs but we don't have that header yet
+extern OSPfs gRumblePakPfs; // Actually an OSPfs but we don't have that header yet
 #endif
 
 extern OSMesgQueue gPIMesgQueue;
