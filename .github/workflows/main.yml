@@ -189,8 +189,6 @@ jobs:
           name: Ghostship-linux
           path: |
             ghostship.appimage
-            config.yml
-            assets
             gamecontrollerdb.txt
 
   build-switch:

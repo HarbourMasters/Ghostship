@@ -649,6 +649,8 @@ add_custom_target(
 
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
   install(FILES "${CMAKE_BINARY_DIR}/ghostship.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
+  install(DIRECTORY "${CMAKE_SOURCE_DIR}/assets/" DESTINATION ./assets COMPONENT ${PROJECT_NAME})
+  install(FILES "${CMAKE_BINARY_DIR}/config.yml" DESTINATION . COMPONENT ${PROJECT_NAME})
 endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
