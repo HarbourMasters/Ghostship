@@ -53,8 +53,8 @@ Your ROM needs to be in .z64 format. If it's in .n64 format, use the following t
 ### Other shortcuts
 | Keys | Action |
 | - | - |
-| F1 | Toggle menubar |
-| F4 | Reset |
+| Esc | Toggle menu |
+| Ctrl+R | Reset (inside levels) |
 | F11 | Fullscreen |
 | Tab | Toggle Alternate assets |
 
