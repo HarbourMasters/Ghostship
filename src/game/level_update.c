@@ -29,6 +29,7 @@
 #include "course_table.h"
 #include "rumble_init.h"
 
+#include "port/ui/cvar_prefixes.h"
 #include "port/hooks/list/EngineEvent.h"
 #include "port/mods/PortEnhancements.h"
 
@@ -957,7 +958,7 @@ void basic_update(UNUSED s16 *arg) {
 }
 
 s32 play_mode_normal(void) {
-    if (gCurrDemoInput != NULL) {
+    if (gCurrDemoInput != NULL && CVarGetInteger(CVAR_CHEAT("PlayInDemo"), 0) == 0) {
         print_intro_text();
         if (gPlayer1Controller->buttonPressed & END_DEMO) {
             level_trigger_warp(gMarioState,

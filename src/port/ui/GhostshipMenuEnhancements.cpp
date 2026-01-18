@@ -163,6 +163,10 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar(CVAR_CHEAT("PauseExitWhenever"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Exit from anywhere using the Pause Menu."));
+    AddWidget(path, "Play In Demo", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("PlayInDemo"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Allows normal gameplay when a demo is playing."));
 }
 
 } // namespace GhostshipGui

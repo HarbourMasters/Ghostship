@@ -53,23 +53,22 @@ static const char* gDemoInputs[8] = {
 s32 run_level_id_or_demo(s32 level) {
     gCurrDemoInput = NULL;
 
-    if (level == LEVEL_NONE) {
+    if (level == LEVEL_NONE && !gDebugLevelSelect) {
         if (!gPlayer1Controller->buttonDown && !gPlayer1Controller->stickMag) {
             // start the demo. 800 frames has passed while
             // player is idle on PRESS START screen.
             if ((++sDemoCountdown) == PRESS_START_DEMO_TIMER) {
+                // if the next demo sequence ID is the count limit, reset it back to
+                // the first sequence.
+                if (gDemoInputListID >= ARRAY_COUNT(gDemoInputs) - 1) {
+                    gDemoInputListID = 0;
+                }
 
                 // start the Mario demo animation for the demo list.
                 void* data = segmented_to_virtual(gDemoInputs[gDemoInputListID]);
 
                 if(data == NULL) {
-                    return 0;
-                }
-
-                // if the next demo sequence ID is the count limit, reset it back to
-                // the first sequence.
-                if (++gDemoInputListID == ARRAY_COUNT(gDemoInputs)) {
-                    gDemoInputListID = 0;
+                    return level;
                 }
 
                 // add 1 (+4) to the pointer to skip the first 4 bytes
@@ -79,6 +78,7 @@ s32 run_level_id_or_demo(s32 level) {
                 level = (s8)((struct DemoInput *) data)->timer;
                 gCurrSaveFileNum = 1;
                 gCurrActNum = 1;
+                gDemoInputListID++;
             }
         } else { // activity was detected, so reset the demo countdown.
             sDemoCountdown = 0;
