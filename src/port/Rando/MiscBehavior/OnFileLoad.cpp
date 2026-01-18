@@ -16,7 +16,7 @@ void Rando::MiscBehavior::OnFileLoad() {
 
         if (!IS_RANDO(selectedFileNum)) {
             gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
-            //Rando::Logic::GenerateShuffleList();
+            // Rando::Logic::GenerateShuffleList();
         }
         Rando::Logic::GenerateShuffleList();
 

@@ -1,12 +1,9 @@
-#include "ActorBehavior.h"
+#include "ObjectBehavior.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 #include "port/hooks/list/PlayerEvent.h"
 #include "port/hooks/list/EngineEvent.h"
 
 extern "C" {
-#include "game/spawn_object.h"
-#include "include/behavior_data.h"
-#include "include/level_commands.h"
 #include "assets/actors/star/geo.h"
 #include "assets/actors/coin/geo.h"
 }
@@ -42,12 +39,12 @@ void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
     const BehaviorScript* behavior =
         modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin : Rando::StaticData::GetBehaviorByModel(modelId);
 
-    CustomItem::SpawnObject(modelId, behavior, x, y, z, param);
+    CustomItem::SpawnObject(modelId, behavior, x, y, z, param, randoCustomData.randoCheckId);
     *(shouldCancel) = true;
 }
 
 // Entry point for the module, run once on game boot
-void Rando::ActorBehavior::Init() {
+void Rando::ObjectBehavior::Init() {
     REGISTER_LISTENER(SpawnObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         SpawnObject* ev = (SpawnObject*)event;
         if (!IS_RANDO(selectedFileNum)) {
@@ -91,12 +88,16 @@ void Rando::ActorBehavior::Init() {
             case MODEL_BLUE_COIN:
                 // Simply here for Skipping the 200 Frame timeout.
                 break;
+            case MODEL_BLUE_COIN_SWITCH:
+                Rando::ObjectBehavior::ModifyBlueCoinSwitchBehavior();
+                break;
+            case MODEL_RED_COIN:
+                Rando::ObjectBehavior::ModifyRedCoinBehavior();
+                break;
             default:
                 event->cancelled = false;
                 break;
         }
-
-        
     });
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {

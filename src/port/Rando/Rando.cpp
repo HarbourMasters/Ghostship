@@ -2,7 +2,7 @@
 #include <ship/Context.h>
 #include "port/mods/PortEnhancements.h"
 // #include "2s2h/GameInteractor/GameInteractor.h"
-#include "ActorBehavior/ActorBehavior.h"
+#include "ObjectBehavior/ObjectBehavior.h"
 #include "MiscBehavior/MiscBehavior.h"
 // #include "Rando/Spoiler/Spoiler.h"
 // #include "Rando/CheckTracker/CheckTracker.h"
@@ -24,7 +24,7 @@ int16_t selectedFileNum = 0;
 void Rando::Init() {
     // Rando::Spoiler::RefreshOptions();
     Rando::MiscBehavior::Init();
-    Rando::ActorBehavior::Init();
+    Rando::ObjectBehavior::Init();
     // Rando::CheckTracker::Init();
     // Ship::Context::GetInstance()->GetFileDropMgr()->RegisterDropHandler(Rando::Spoiler::HandleFileDropped);
 

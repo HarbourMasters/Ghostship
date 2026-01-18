@@ -115,19 +115,20 @@ void bhv_blue_coin_switch_loop(void) {
             break;
 
         case BLUE_COIN_SWITCH_ACT_TICKING:
-            // Tick faster when the blue coins start blinking
-            if (o->oTimer < 200) {
-                play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);
-            } else {
-                play_sound(SOUND_GENERAL2_SWITCH_TICK_SLOW, gGlobalSoundSource);
-            }
+            CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, MODEL_BLUE_COIN_SWITCH) {
+                // Tick faster when the blue coins start blinking
+                if (o->oTimer < 200) {
+                    play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);
+                } else {
+                    play_sound(SOUND_GENERAL2_SWITCH_TICK_SLOW, gGlobalSoundSource);
+                }
 
-            // Delete the switch (which stops the sound) after the last coin is collected,
-            // or after the coins unload after the 240-frame timer expires.
-            if (cur_obj_nearest_object_with_behavior(bhvHiddenBlueCoin) == NULL || o->oTimer > 240) {
-                obj_mark_for_deletion(o);
+                // Delete the switch (which stops the sound) after the last coin is collected,
+                // or after the coins unload after the 240-frame timer expires.
+                if (cur_obj_nearest_object_with_behavior(bhvHiddenBlueCoin) == NULL || o->oTimer > 240) {
+                    obj_mark_for_deletion(o);
+                }
             }
-
             break;
     }
 }
