@@ -35,6 +35,10 @@ DEFINE_EVENT(ModifyDefaultStar,
     int32_t param;
 );
 
+DEFINE_EVENT(ModifyObjectBehavior,
+    int16_t model;
+);
+
 DEFINE_EVENT(OnGameFileLoad,
     s32 fileNum;
 );

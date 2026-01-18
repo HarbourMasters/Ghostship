@@ -8,10 +8,13 @@ extern "C" {
 }
 
 void CustomItem::SpawnObject(u32 modelId, const BehaviorScript* behavior, s16 x, s16 y, s16 z, s32 param) {
-    struct Object* starObject =
+    struct Object* object =
         spawn_object_abs_with_rot(&gMacroObjectDefaultParent, 0, modelId, behavior, x, y, z, 0, 0, 0);
 
     if (param != NULL) {
-        starObject->oBehParams2ndByte = param;
+        object->oBehParams2ndByte = param;
+    }
+    if (modelId == MODEL_BLUE_COIN) {
+        object->oAction = HIDDEN_BLUE_COIN_ACT_ACTIVE;
     }
 }

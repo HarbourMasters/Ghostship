@@ -31,7 +31,7 @@ void GenerateShuffleList() {
         }
 
         // TODO: Temporary for testing Stars.
-        if (randoCheckData.levelId != LEVEL_BOB) {
+        if (randoCheckData.levelId != LEVEL_WF) {
             continue;
         }
 
@@ -40,6 +40,11 @@ void GenerateShuffleList() {
         // TODO: Swap to RANDO_SAVE_OPTIONS once Save File is converted to JSON
         if (randoItemType == RITYPE_STAR &&
             CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_STARS].cvar, 0) == RO_GENERIC_OFF) {
+            continue;
+        }
+
+        if (randoItemType == RITYPE_COIN_BLUE &&
+            CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_COINS_BLUE].cvar, 0) == RO_GENERIC_OFF) {
             continue;
         }
 

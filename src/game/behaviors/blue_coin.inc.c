@@ -1,9 +1,9 @@
-
 /**
  * Behavior for bhvHiddenBlueCoin and bhvBlueCoinSwitch.
  * bhvHiddenBlueCoin are the stationary blue coins that appear when
  * you press a blue coin switch (a.k.a. bhvBlueCoinSwitch).
  */
+#include "port/hooks/list/PlayerEvent.h"
 
 /**
  * Update function for bhvHiddenBlueCoin.
@@ -46,11 +46,12 @@ void bhv_hidden_blue_coin_loop(void) {
                 spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
                 obj_mark_for_deletion(o);
             }
-
-            // After 200 frames of waiting and 20 2-frame blinks (for 240 frames total),
-            // delete the object.
-            if (cur_obj_wait_then_blink(200, 20)) {
-                obj_mark_for_deletion(o);
+            CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, MODEL_BLUE_COIN) {
+                // After 200 frames of waiting and 20 2-frame blinks (for 240 frames total),
+                // delete the object.
+                if (cur_obj_wait_then_blink(200, 20)) {
+                    obj_mark_for_deletion(o);
+                }
             }
 
             break;

@@ -14,6 +14,7 @@ void GhostshipMenu::AddMenuRando() {
     AddSidebarEntry("Rando", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
 
+    AddWidget(path, "Randomizer Options", WIDGET_SEPARATOR_TEXT);
     AddWidget(path, "Enable Rando", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_RANDOMIZER_SETTING("Enabled"))
         .RaceDisable(false)
@@ -30,6 +31,7 @@ void GhostshipMenu::AddMenuRando() {
     AddSidebarEntry("Rando", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
 
+    AddWidget(path, "Item Options", WIDGET_SEPARATOR_TEXT);
     AddWidget(path, "Shuffle Stars", WIDGET_CVAR_CHECKBOX)
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_STARS].cvar)
         .RaceDisable(false)
@@ -38,6 +40,10 @@ void GhostshipMenu::AddMenuRando() {
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_COINS_RED].cvar)
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Shuffles Red Coins into the Item Pool."));
+    AddWidget(path, "Shuffle Blue Coins", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_COINS_BLUE].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Blue Coins into the Item Pool."));
 }
 
 } // namespace GhostshipGui

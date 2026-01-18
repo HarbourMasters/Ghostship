@@ -90,6 +90,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(SpawnObject);
     REGISTER_EVENT(SpawnStar);
     REGISTER_EVENT(ModifyDefaultStar);
+    REGISTER_EVENT(ModifyObjectBehavior);
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);
 

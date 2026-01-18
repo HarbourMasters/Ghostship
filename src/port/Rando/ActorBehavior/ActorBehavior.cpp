@@ -35,12 +35,12 @@ void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
     Rando::StaticData::RandoCustomData randoCustomData = GetRandoData(x, y, z);
     if (!randoCustomData.isShuffled || randoCustomData.randoCheckId == RC_UNKNOWN ||
         randoCustomData.randoItemId == RI_UNKNOWN) {
-        *(shouldCancel) = false;
         return;
     }
 
     int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoCustomData.randoItemId);
-    const BehaviorScript* behavior = Rando::StaticData::GetBehaviorByModel(modelId);
+    const BehaviorScript* behavior =
+        modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin : Rando::StaticData::GetBehaviorByModel(modelId);
 
     CustomItem::SpawnObject(modelId, behavior, x, y, z, param);
     *(shouldCancel) = true;
@@ -77,6 +77,26 @@ void Rando::ActorBehavior::Init() {
         }
         LogOutSpawns("Default Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, ev->param);
+    });
+
+    REGISTER_LISTENER(ModifyObjectBehavior, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        ModifyObjectBehavior* ev = (ModifyObjectBehavior*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+
+        event->cancelled = true;
+
+        switch (ev->model) {
+            case MODEL_BLUE_COIN:
+                // Simply here for Skipping the 200 Frame timeout.
+                break;
+            default:
+                event->cancelled = false;
+                break;
+        }
+
+        
     });
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {

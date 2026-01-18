@@ -19,6 +19,7 @@ namespace StaticData {
 // clang-format off
 std::map<RandoItemId, RandoStaticItem> Items = {
     RI(RI_UNKNOWN,      "", "Unknown",      RITYPE_UNKNOWN,     MODEL_NONE),
+    RI(RI_COIN_BLUE,    "", "Blue Coin",    RITYPE_COIN_BLUE,   MODEL_BLUE_COIN),
     RI(RI_COIN_RED,     "", "Red Coin",     RITYPE_COIN_RED,    MODEL_RED_COIN),
     RI(RI_STAR,         "", "Star",         RITYPE_STAR,        MODEL_STAR),
 };
