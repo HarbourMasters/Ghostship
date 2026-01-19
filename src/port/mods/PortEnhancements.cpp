@@ -3,6 +3,7 @@
 #define INIT_EVENT_IDS
 
 #include "sm64.h"
+#include "game/level_update.h"
 #include "menu/title_screen.h"
 #include "port/hooks/Events.h"
 #include "assets/bin/segment2.h"
@@ -73,11 +74,18 @@ void PortEnhancements_Init() {
         RenderPauseCourseOptions* ev = (RenderPauseCourseOptions*)event;
         *ev->render = true;
     });
+
+    REGISTER_LISTENER(LevelInitFromSaveFile, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if (CVarGetInteger("gEnhancements.DisableLakituCutscene", 0)) {
+            gNeverEnteredCastle = false;
+        }
+    });
 }
 
 void PortEnhancements_Register() {
     // Register engine events
     REGISTER_EVENT(GameFrameUpdate);
+    REGISTER_EVENT(LevelInitFromSaveFile);
     REGISTER_EVENT(GeoLayoutCallASM);
     REGISTER_EVENT(LevelScriptCallLoop);
     REGISTER_EVENT(LevelScriptBeginArea);

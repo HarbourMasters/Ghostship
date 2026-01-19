@@ -29,6 +29,7 @@
 #include "course_table.h"
 #include "rumble_init.h"
 
+#include "port/ui/cvar_prefixes.h"
 #include "port/hooks/list/EngineEvent.h"
 #include "port/mods/PortEnhancements.h"
 
@@ -177,7 +178,7 @@ s32 sDelayedWarpArg;
 s16 unusedEULevelUpdateBss1;
 #endif
 s8 sTimerRunning;
-s8 gNeverEnteredCastle;
+bool gNeverEnteredCastle;
 
 struct MarioState *gMarioState = &gMarioStates[0];
 u8 unused1[4] = { 0 };
@@ -957,7 +958,7 @@ void basic_update(UNUSED s16 *arg) {
 }
 
 s32 play_mode_normal(void) {
-    if (gCurrDemoInput != NULL) {
+    if (gCurrDemoInput != NULL && CVarGetInteger(CVAR_CHEAT("PlayInDemo"), 0) == 0) {
         print_intro_text();
         if (gPlayer1Controller->buttonPressed & END_DEMO) {
             level_trigger_warp(gMarioState,
@@ -1188,7 +1189,7 @@ s32 init_level(void) {
                 set_mario_action(gMarioState, ACT_IDLE, 0);
             } else if (!gDebugLevelSelect) {
                 if (gMarioState->action != ACT_UNINITIALIZED) {
-                    if (save_file_exists(gCurrSaveFileNum - 1)) {
+                    if (save_file_exists(gCurrSaveFileNum - 1) == TRUE) {
                         set_mario_action(gMarioState, ACT_IDLE, 0);
                     } else if (CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0) {
                         set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
@@ -1259,7 +1260,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 #endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
-    gNeverEnteredCastle = !save_file_exists(gCurrSaveFileNum - 1) || CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0;
+    gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE;
 
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;
@@ -1272,6 +1273,8 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
     save_file_move_cap_to_default_location();
     select_mario_cam_mode();
     set_yoshi_as_not_dead();
+
+    CALL_EVENT(LevelInitFromSaveFile);
 
     return levelNum;
 }

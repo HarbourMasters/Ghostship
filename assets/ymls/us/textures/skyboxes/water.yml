@@ -5,7 +5,522 @@
   segments:
     - [ 0xA, 0x2AC6B0 ]
 
-water:
-  type: BLOB
-  size: 131392
+water.0:
+  type: TEXTURE
+  width: 32
+  height: 32
   offset: 0x0
+  format: RGBA16
+  symbol: water_skybox_texture_00000
+
+water.1:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x800
+  format: RGBA16
+  symbol: water_skybox_texture_00001
+
+water.2:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1000
+  format: RGBA16
+  symbol: water_skybox_texture_00002
+
+water.3:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1800
+  format: RGBA16
+  symbol: water_skybox_texture_00003
+
+water.4:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2000
+  format: RGBA16
+  symbol: water_skybox_texture_00004
+
+water.5:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2800
+  format: RGBA16
+  symbol: water_skybox_texture_00005
+
+water.6:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3000
+  format: RGBA16
+  symbol: water_skybox_texture_00006
+
+water.7:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3800
+  format: RGBA16
+  symbol: water_skybox_texture_00007
+
+water.8:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4000
+  format: RGBA16
+  symbol: water_skybox_texture_00008
+
+water.9:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4800
+  format: RGBA16
+  symbol: water_skybox_texture_00009
+
+water.10:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5000
+  format: RGBA16
+  symbol: water_skybox_texture_00010
+
+water.11:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5800
+  format: RGBA16
+  symbol: water_skybox_texture_00011
+
+water.12:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6000
+  format: RGBA16
+  symbol: water_skybox_texture_00012
+
+water.13:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6800
+  format: RGBA16
+  symbol: water_skybox_texture_00013
+
+water.14:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7000
+  format: RGBA16
+  symbol: water_skybox_texture_00014
+
+water.15:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7800
+  format: RGBA16
+  symbol: water_skybox_texture_00015
+
+water.16:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8000
+  format: RGBA16
+  symbol: water_skybox_texture_00016
+
+water.17:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8800
+  format: RGBA16
+  symbol: water_skybox_texture_00017
+
+water.18:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9000
+  format: RGBA16
+  symbol: water_skybox_texture_00018
+
+water.19:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9800
+  format: RGBA16
+  symbol: water_skybox_texture_00019
+
+water.20:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA000
+  format: RGBA16
+  symbol: water_skybox_texture_00020
+
+water.21:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA800
+  format: RGBA16
+  symbol: water_skybox_texture_00021
+
+water.22:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB000
+  format: RGBA16
+  symbol: water_skybox_texture_00022
+
+water.23:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB800
+  format: RGBA16
+  symbol: water_skybox_texture_00023
+
+water.24:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC000
+  format: RGBA16
+  symbol: water_skybox_texture_00024
+
+water.25:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC800
+  format: RGBA16
+  symbol: water_skybox_texture_00025
+
+water.26:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD000
+  format: RGBA16
+  symbol: water_skybox_texture_00026
+
+water.27:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD800
+  format: RGBA16
+  symbol: water_skybox_texture_00027
+
+water.28:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE000
+  format: RGBA16
+  symbol: water_skybox_texture_00028
+
+water.29:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE800
+  format: RGBA16
+  symbol: water_skybox_texture_00029
+
+water.30:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF000
+  format: RGBA16
+  symbol: water_skybox_texture_00030
+
+water.31:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF800
+  format: RGBA16
+  symbol: water_skybox_texture_00031
+
+water.32:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10000
+  format: RGBA16
+  symbol: water_skybox_texture_00032
+
+water.33:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10800
+  format: RGBA16
+  symbol: water_skybox_texture_00033
+
+water.34:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11000
+  format: RGBA16
+  symbol: water_skybox_texture_00034
+
+water.35:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11800
+  format: RGBA16
+  symbol: water_skybox_texture_00035
+
+water.36:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12000
+  format: RGBA16
+  symbol: water_skybox_texture_00036
+
+water.37:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12800
+  format: RGBA16
+  symbol: water_skybox_texture_00037
+
+water.38:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13000
+  format: RGBA16
+  symbol: water_skybox_texture_00038
+
+water.39:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13800
+  format: RGBA16
+  symbol: water_skybox_texture_00039
+
+water.40:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x14000
+  format: RGBA16
+  symbol: water_skybox_texture_00040
+
+water.41:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x14800
+  format: RGBA16
+  symbol: water_skybox_texture_00041
+
+water.42:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x15000
+  format: RGBA16
+  symbol: water_skybox_texture_00042
+
+water.43:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x15800
+  format: RGBA16
+  symbol: water_skybox_texture_00043
+
+water.44:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x16000
+  format: RGBA16
+  symbol: water_skybox_texture_00044
+
+water.45:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x16800
+  format: RGBA16
+  symbol: water_skybox_texture_00045
+
+water.46:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x17000
+  format: RGBA16
+  symbol: water_skybox_texture_00046
+
+water.47:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x17800
+  format: RGBA16
+  symbol: water_skybox_texture_00047
+
+water.48:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x18000
+  format: RGBA16
+  symbol: water_skybox_texture_00048
+
+water.49:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x18800
+  format: RGBA16
+  symbol: water_skybox_texture_00049
+
+water.50:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x19000
+  format: RGBA16
+  symbol: water_skybox_texture_00050
+
+water.51:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x19800
+  format: RGBA16
+  symbol: water_skybox_texture_00051
+
+water.52:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1A000
+  format: RGBA16
+  symbol: water_skybox_texture_00052
+
+water.53:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1A800
+  format: RGBA16
+  symbol: water_skybox_texture_00053
+
+water.54:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1B000
+  format: RGBA16
+  symbol: water_skybox_texture_00054
+
+water.55:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1B800
+  format: RGBA16
+  symbol: water_skybox_texture_00055
+
+water.56:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1C000
+  format: RGBA16
+  symbol: water_skybox_texture_00056
+
+water.57:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1C800
+  format: RGBA16
+  symbol: water_skybox_texture_00057
+
+water.58:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1D000
+  format: RGBA16
+  symbol: water_skybox_texture_00058
+
+water.59:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1D800
+  format: RGBA16
+  symbol: water_skybox_texture_00059
+
+water.60:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1E000
+  format: RGBA16
+  symbol: water_skybox_texture_00060
+
+water.61:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1E800
+  format: RGBA16
+  symbol: water_skybox_texture_00061
+
+water.62:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1F000
+  format: RGBA16
+  symbol: water_skybox_texture_00062
+
+water.63:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1F800
+  format: RGBA16
+  symbol: water_skybox_texture_00063
+
+water_skybox_ptrlist:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 80
+  offset: 0x20000
+  symbol: water_skybox_ptrlist

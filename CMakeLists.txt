@@ -94,13 +94,13 @@ set(CPP "${CMAKE_C_COMPILER}" "-E" "-P" "-Wno-trigraphs" "-x" "c")
 endif()
 
 if(IOS)
-set(PLATFORM "OS64")
-include(cmake/ios.toolchain.cmake)
-add_compile_definitions(
-    PLATFORM_IOS=1
-)
-set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
-set(PROJECT_ID "dev.net64.game")
+    set(PLATFORM "OS64")
+    include(cmake/ios.toolchain.cmake)
+    add_compile_definitions(
+        PLATFORM_IOS=1
+    )
+    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
+    set(PROJECT_ID "${BUNDLE_ID}")
 endif()
 
 ################################################################################
@@ -243,7 +243,7 @@ foreach(source IN LISTS ALL_FILES)
 endforeach()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
-    set(IOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/ios)
+    set(IOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ios)
 
     set(STORYBOARD_FILE ${IOS_DIR}/Launch.storyboard)
     set(IMAGE_FILES ${IOS_DIR}/PoweredBy.png)
@@ -252,7 +252,6 @@ if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
     list(APPEND ALL_FILES ${STORYBOARD_FILE} ${IMAGE_FILES} ${ICON_FILES})
 
     add_executable(${PROJECT_NAME} ${ALL_FILES})
-    set_xcode_property(${PROJECT_NAME} PRODUCT_BUNDLE_IDENTIFIER ${PROJECT_ID} All)
     set_target_properties(
         ${PROJECT_NAME}
         PROPERTIES
@@ -306,6 +305,13 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
     ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
 )
+
+if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
+    get_property(IOS_TOOLCHAIN_FILE GLOBAL PROPERTY IOS_TOOLCHAIN_FILE)
+    include(${IOS_TOOLCHAIN_FILE})
+    set(BUNDLE_ID "dev.hm64.soh")
+    set(SIGN_LIBRARY ON)
+endif()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     target_compile_definitions(${PROJECT_NAME} PRIVATE

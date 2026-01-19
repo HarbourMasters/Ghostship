@@ -10,7 +10,7 @@ SM64::MacroObjectFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
         return nullptr;
     }
 
-    std::shared_ptr<MacroObject> macro = std::make_shared<MacroObject>(initData);
+    std::shared_ptr<MacroObjectResource> macro = std::make_shared<MacroObjectResource>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     uint32_t count = reader->ReadUInt32();

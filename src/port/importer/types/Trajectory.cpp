@@ -1,11 +1,11 @@
 #include "Trajectory.h"
 
 namespace SM64 {
-TrajectoryData* Trajectory::GetPointer() {
+TrajectoryData* TrajectoryResource::GetPointer() {
     return mData.data();
 }
 
-size_t Trajectory::GetPointerSize() {
+size_t TrajectoryResource::GetPointerSize() {
     return sizeof(mData.size()) * sizeof(TrajectoryData);
 }
 } // namespace SM64

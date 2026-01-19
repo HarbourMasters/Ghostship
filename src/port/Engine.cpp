@@ -166,10 +166,10 @@ GameEngine::GameEngine() : dictionary(nullptr) {
                                     static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary",
                                     static_cast<uint32_t>(SM64::ResourceType::Dictionary), 0);
-   loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
-                                   "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
-   loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
-                                   "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
+                                    "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY,
                                     "Vertex", static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(),
@@ -203,7 +203,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
-    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
     context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 
     fontMono = CreateFontWithSize(16.0f, "fonts/Inconsolata-Regular.ttf");
@@ -361,7 +361,7 @@ void GameEngine::StartFrame() const {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
             CVarSetInteger("gEnhancements.Mods.AlternateAssets",
-                           !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
+                           !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1));
             break;
         }
         default:
@@ -522,7 +522,7 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
         interpreter->mInterpolationIndex++;
     }
 
-    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
         Ship::Context::GetInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);

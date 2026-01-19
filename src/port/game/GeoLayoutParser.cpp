@@ -570,9 +570,8 @@ void process_cmd_node_generated() {
     GraphNodeFunc func = GetFunctionByAddr(addr, "NODE_ASM");
 
     CALL_CANCELLABLE_EVENT(GeoLayoutCallASM, &func, &param) {
-        GraphNodeGenerated* graphNode =
-        init_graph_node_generated(gGraphNodePool, nullptr, func,   // asm function
-                                                           param); // parameter
+        GraphNodeGenerated* graphNode = init_graph_node_generated(gGraphNodePool, nullptr, func, // asm function
+                                                                  param);                        // parameter
 
         register_scene_graph_node(&graphNode->fnNode.node);
     }

@@ -5,7 +5,338 @@
   segments:
     - [ 0xA, 0x2C73D0 ]
 
-clouds:
-  type: BLOB
-  size: 84288
+clouds.0:
+  type: TEXTURE
+  width: 32
+  height: 32
   offset: 0x0
+  format: RGBA16
+  symbol: clouds_skybox_texture_00000
+
+clouds.1:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00001
+
+clouds.2:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00002
+
+clouds.3:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00003
+
+clouds.4:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00004
+
+clouds.5:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00005
+
+clouds.6:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00006
+
+clouds.7:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00007
+
+clouds.8:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00008
+
+clouds.9:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00009
+
+clouds.10:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00010
+
+clouds.11:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00011
+
+clouds.12:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00012
+
+clouds.13:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00013
+
+clouds.14:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00014
+
+clouds.15:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00015
+
+clouds.16:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00016
+
+clouds.17:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00017
+
+clouds.18:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00018
+
+clouds.19:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00019
+
+clouds.20:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00020
+
+clouds.21:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00021
+
+clouds.22:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00022
+
+clouds.23:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00023
+
+clouds.24:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00024
+
+clouds.25:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00025
+
+clouds.26:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00026
+
+clouds.27:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00027
+
+clouds.28:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00028
+
+clouds.29:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00029
+
+clouds.30:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00030
+
+clouds.31:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00031
+
+clouds.32:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00032
+
+clouds.33:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00033
+
+clouds.34:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00034
+
+clouds.35:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00035
+
+clouds.36:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00036
+
+clouds.37:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00037
+
+clouds.38:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00038
+
+clouds.39:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13800
+  format: RGBA16
+  symbol: clouds_skybox_texture_00039
+
+clouds.40:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x14000
+  format: RGBA16
+  symbol: clouds_skybox_texture_00040
+
+clouds_skybox_ptrlist:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 80
+  offset: 0x14800
+  symbol: clouds_skybox_ptrlist

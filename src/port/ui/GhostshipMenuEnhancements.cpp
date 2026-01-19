@@ -27,47 +27,32 @@ void GhostshipMenu::AddMenuEnhancements() {
     AddMenuEntry("Enhancements", CVAR_SETTING("Menu.EnhancementsSidebarSection"));
 
     // Quality of Life
-    WidgetPath path = { "Enhancements", "Gameplay", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", path.sidebarName, 1);
-    path.column = SECTION_COLUMN_1;
+    WidgetPath path = { "Enhancements", "Graphics", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Graphics", 3);
 
-    AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("DisableLOD"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Disable Level of Detail (LOD) to avoid models using "
-                                           "lower poly versions at a distance"));
-    AddWidget(path, "Select Any Star", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("SelectAllStars"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Let's you select any star from the menu regardless "
-                                           "of the courses completion status."));
-    AddWidget(path, "Collecting Stars Will Not Exit Level", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("StarNoExit"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Collecting Stars will not take you out of the level."));
-    AddWidget(path, "Skip Intro Peach Cutscene", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("DisablePeachCutscene"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Skips the Peach cutscene when starting a new game."));
-    
-    path = { "Enhancements", "HUD", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", path.sidebarName, 1);
-    path.column = SECTION_COLUMN_1;
+    AddWidget(path, "Mods", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Use Alternate Assets", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Mods.AlternateAssets")
+        .Options(CheckboxOptions().Tooltip(
+            "Toggle between standard assets and alternate assets. Usually mods will indicate if "
+            "this setting has to be used or not."));
+
+    AddWidget(path, "Game", WIDGET_SEPARATOR_TEXT);
 
     AddWidget(path, "Show Power Meter Always", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("AlwaysShowPowerMeter"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("The power meter will always be visible on screen."));
-    
+
     AddWidget(path, "HUD Aspect Ratio", WIDGET_CVAR_COMBOBOX)
         .CVar("gHUDAspectRatio.Selection")
         .RaceDisable(false)
         .Options(ComboboxOptions()
-            .ComboMap(hudAspects)
-            .Tooltip("Changes the aspect ratio of the HUD elements.")
-            .DefaultIndex(0)
-            .ComponentAlignment(ComponentAlignments::Right)
-            .LabelPosition(LabelPositions::Far))
+                     .ComboMap(hudAspects)
+                     .Tooltip("Changes the aspect ratio of the HUD elements.")
+                     .DefaultIndex(0)
+                     .ComponentAlignment(ComponentAlignments::Right)
+                     .LabelPosition(LabelPositions::Far))
         .Callback([](WidgetInfo& info) {
             CVarSetInteger("gHUDAspectRatio.Enabled", 1);
             switch (CVarGetInteger("gHUDAspectRatio.Selection", 0)) {
@@ -77,10 +62,10 @@ void GhostshipMenu::AddMenuEnhancements() {
                     CVarSetInteger("gHUDAspectRatio.Y", 0);
                     break;
                 case 1:
-                    if (CVarGetInteger("gHUDAspectRatio.X", 0) <= 0){
+                    if (CVarGetInteger("gHUDAspectRatio.X", 0) <= 0) {
                         CVarSetInteger("gHUDAspectRatio.X", 1);
                     }
-                    if (CVarGetInteger("gHUDAspectRatio.Y", 0) <= 0){
+                    if (CVarGetInteger("gHUDAspectRatio.Y", 0) <= 0) {
                         CVarSetInteger("gHUDAspectRatio.Y", 1);
                     }
                     break;
@@ -104,9 +89,9 @@ void GhostshipMenu::AddMenuEnhancements() {
                     CVarSetInteger("gHUDAspectRatio.X", 21);
                     CVarSetInteger("gHUDAspectRatio.Y", 9);
                     break;
-                }
+            }
         });
-    
+
     AddWidget(path, "Custom HUD Aspect Ratio X", WIDGET_CVAR_SLIDER_INT)
         .CVar("gHUDAspectRatio.X")
         .RaceDisable(false)
@@ -129,6 +114,34 @@ void GhostshipMenu::AddMenuEnhancements() {
             }
         })
         .Options(IntSliderOptions().Min(1).Max(100).DefaultValue(9).ShowButtons(true).Format("%d"));
+
+    path = { "Enhancements", "Gameplay", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", path.sidebarName, 1);
+    path.column = SECTION_COLUMN_1;
+
+    AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisableLOD"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Disable Level of Detail (LOD) to avoid models using "
+                                           "lower poly versions at a distance"));
+    AddWidget(path, "Select Any Star", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("SelectAllStars"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Let's you select any star from the menu regardless "
+                                           "of the courses completion status."));
+    AddWidget(path, "Collecting Stars Will Not Exit Level", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("StarNoExit"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Collecting Stars will not take you out of the level."));
+    AddWidget(path, "Skip Intro Peach Cutscene", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisablePeachCutscene"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Skips the Peach cutscene when starting a new game."));
+    AddWidget(path, "Skip Intro Lakitu", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisableLakituCutscene"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("The Lakitu will not appear when Mario reaches the bridge outside Peach's \n"
+                                           "Castle. Also skips Bowser's message when Mario first enters the castle."));
 
     path = { "Enhancements", "Fixes", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
@@ -155,6 +168,10 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar(CVAR_CHEAT("PauseExitWhenever"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Exit from anywhere using the Pause Menu."));
+    AddWidget(path, "Play In Demo", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("PlayInDemo"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Allows normal gameplay when a demo is playing."));
 }
 
 } // namespace GhostshipGui

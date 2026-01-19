@@ -10,7 +10,16 @@
 #include "save_file.h"
 #include "segment2.h"
 #include "sm64.h"
-#include "skybox_table.h"
+#include "assets/textures/skyboxes/bbh.h"
+#include "assets/textures/skyboxes/bidw.h"
+#include "assets/textures/skyboxes/bitfs.h"
+#include "assets/textures/skyboxes/bits.h"
+#include "assets/textures/skyboxes/ccm.h"
+#include "assets/textures/skyboxes/clouds.h"
+#include "assets/textures/skyboxes/cloud_floor.h"
+#include "assets/textures/skyboxes/ssl.h"
+#include "assets/textures/skyboxes/water.h"
+#include "assets/textures/skyboxes/wdw.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 /**
@@ -61,12 +70,20 @@ struct Skybox {
 };
 
 struct Skybox sSkyBoxInfo[2];
-static uint8_t** gSkyboxTiles = NULL;
-static s8 gLastSkybox = -1;
 
-static const char* gSkyboxTextures[] = {
-    gSkyboxWater, gSkyboxBitfs, gSkyboxWdw, gSkyboxCloudFloor, gSkyboxCcm,
-    gSkyboxSsl, gSkyboxBbh, gSkyboxBitdw, gSkyboxClouds, gSkyboxBits
+typedef const u8 *const SkyboxTexture;
+
+u8* sSkyboxTextures[10] = {
+    water_skybox_ptrlist,
+    bitfs_skybox_ptrlist,
+    wdw_skybox_ptrlist,
+    cloud_floor_skybox_ptrlist,
+    ccm_skybox_ptrlist,
+    ssl_skybox_ptrlist,
+    bbh_skybox_ptrlist,
+    bidw_skybox_ptrlist,
+    clouds_skybox_ptrlist,
+    bits_skybox_ptrlist,
 };
 
 /**
@@ -105,11 +122,7 @@ u8 sSkyboxColors[][3] = {
 /**
  * The vertical length of the skybox tilemap in tiles.
  */
-
-#define NUM_CHUNKS_PER_ROW 8 // Number of chunks per row in the grid
-#define CHUNK_WIDTH 32       // Width of each texture chunk in pixels
-#define CHUNK_HEIGHT 32      // Height of each texture chunk in pixels
-#define BYTES_PER_PIXEL 2    // Assuming 2 bytes per pixel
+#define SKYBOX_ROWS (8)
 
 
 /**
@@ -181,8 +194,8 @@ static s32 get_top_left_tile_idx(s8 player) {
  */
 Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
     Vtx *verts = alloc_display_list(4 * sizeof(*verts));
-    s16 x = (tileIndex % SKYBOX_COLS) * SKYBOX_TILE_WIDTH;
-    s16 y = SKYBOX_HEIGHT - (tileIndex / SKYBOX_COLS) * SKYBOX_TILE_HEIGHT;
+    s16 x = tileIndex % SKYBOX_COLS * SKYBOX_TILE_WIDTH;
+    s16 y = SKYBOX_HEIGHT - tileIndex / SKYBOX_COLS * SKYBOX_TILE_HEIGHT;
 
     if (verts != NULL) {
         make_vertex(verts, 0, x, y, -1, 0, 0, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
@@ -198,34 +211,6 @@ Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
     return verts;
 }
 
-void* CalculateDataOffset(void* data, int x, int y, size_t blobSize) {
-    // Calculate the chunk index based on x and y coordinates
-    int chunkX = x / CHUNK_WIDTH;
-    int chunkY = y / CHUNK_HEIGHT;
-
-    // Calculate the offset within the chunk for the remaining x and y coordinates
-    int xOffset = x % CHUNK_WIDTH;
-    int yOffset = y % CHUNK_HEIGHT;
-
-    // Calculate the offset for the chunk within the data bin
-    int chunkOffset = chunkY * NUM_CHUNKS_PER_ROW + chunkX;
-
-    // Calculate the offset within the chunk's data
-    int chunkDataOffset = (yOffset * CHUNK_WIDTH + xOffset) * BYTES_PER_PIXEL;
-
-    // Calculate the total offset in bytes within the data bin
-    uint32_t totalOffset = (chunkOffset * (CHUNK_WIDTH * CHUNK_HEIGHT * BYTES_PER_PIXEL) + chunkDataOffset);
-
-    if(totalOffset + 4096 > blobSize) {
-        totalOffset = 0;
-    }
-
-    // Calculate the pointer to the correct location within the data bin
-    void* textureData = (void*)((uint8_t*)data + totalOffset);
-
-    return textureData;
-}
-
 /**
  * Draws a 3x3 grid of 32x32 sections of the original skybox image.
  * The row and column are converted into an index into the skybox's tile list, which is then drawn in
@@ -235,40 +220,12 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
     s32 row;
     s32 col;
 
-    void* data = ResourceGetDataByName(gSkyboxTextures[background]);
-    size_t blobSize = ResourceGetSizeByName(gSkyboxTextures[background]);
-
     for (row = 0; row < 3; row++) {
         for (col = 0; col < 3; col++) {
-            s32 tileRow = (sSkyBoxInfo[player].upperLeftTile / SKYBOX_COLS) + row;
-            s32 tileCol = (sSkyBoxInfo[player].upperLeftTile % SKYBOX_COLS) + col;
-            
-            // Wrap horizontally
-            tileCol %= SKYBOX_COLS;
-
-            s32 tileIndex = (tileRow * SKYBOX_COLS) + tileCol;
-
-            // Calculate the column and row of the tile in the whole skybox image
-            int32_t skyboxCol = tileIndex % SKYBOX_COLS;
-            int32_t skyboxRow = tileIndex / SKYBOX_COLS;
-
-            // Calculate the x and y coordinates within the skybox image
-            int32_t x = skyboxCol * CHUNK_WIDTH;
-            int32_t y = skyboxRow * CHUNK_HEIGHT;
-        
-            if(x >= 256){
-                y -= CHUNK_HEIGHT;
-            }
-
-            assert((tileIndex >= 0 && tileIndex <= 80) && "Panic");
-
-            uint8_t* texture = gSkyboxTiles[tileIndex];
-
-            // Memcpy texture with calculated offset from x and y using the fact that every tile is 2048 bytes
-            memcpy(texture, CalculateDataOffset(data, x, y, blobSize), 2048);
+            s32 tileIndex = sSkyBoxInfo[player].upperLeftTile + row * SKYBOX_COLS + col;
+            u8* texture = ((u8**)segmented_to_virtual(sSkyboxTextures[background]))[tileIndex];
             Vtx *vertices = make_skybox_rect(tileIndex, colorIndex);
 
-            gSPInvalidateTexCache((*dlist)++, texture);
             gLoadBlockTexture((*dlist)++, 32, 32, G_IM_FMT_RGBA, texture);
             gSPVertex((*dlist)++, VIRTUAL_TO_PHYSICAL(vertices), 4, 0);
             gSPDisplayList((*dlist)++, dl_draw_quad_verts_0123);
@@ -299,31 +256,19 @@ void *create_skybox_ortho_matrix(s8 player) {
     return mtx;
 }
 
-void skybox_init_tiles() {
-    if(gSkyboxTiles != NULL) {
-        return;
-    }
-
-    gSkyboxTiles = malloc(80 * sizeof(uint8_t*));
-    for (size_t idx = 0; idx < 80; idx++) {
-        gSkyboxTiles[idx] = malloc(4096);
-    }
-}
-
 /**
  * Creates the skybox's display list, then draws the 3x3 grid of tiles.
  */
 Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
-    s32 dlCommandCount = 20 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
+    s32 dlCommandCount = 5 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
     void *skybox = alloc_display_list(dlCommandCount * sizeof(Gfx));
     Gfx *dlist = skybox;
-
-    skybox_init_tiles();
 
     if (skybox == NULL) {
         return NULL;
     } else {
         Mtx *ortho = create_skybox_ortho_matrix(player);
+
         gSPDisplayList(dlist++, dl_skybox_begin);
         gSPMatrix(dlist++, VIRTUAL_TO_PHYSICAL(ortho), G_MTX_PROJECTION | G_MTX_MUL | G_MTX_NOPUSH);
         gSPDisplayList(dlist++, dl_skybox_tile_tex_settings);
@@ -331,7 +276,6 @@ Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
         gSPDisplayList(dlist++, dl_skybox_end);
         gSPEndDisplayList(dlist);
     }
-
     return skybox;
 }
 

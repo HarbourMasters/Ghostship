@@ -8,7 +8,7 @@ SM64::TrajectoryFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
         return nullptr;
     }
 
-    std::shared_ptr<Trajectory> trajectory = std::make_shared<Trajectory>(initData);
+    std::shared_ptr<TrajectoryResource> trajectory = std::make_shared<TrajectoryResource>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     uint32_t count = reader->ReadUInt32();
