@@ -137,6 +137,11 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar(CVAR_ENHANCEMENT("DisablePeachCutscene"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Skips the Peach cutscene when starting a new game."));
+    AddWidget(path, "Skip Intro Lakitu", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisableLakituCutscene"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("The Lakitu will not appear when Mario reaches the bridge outside Peach's \n"
+                                           "Castle. Also skips Bowser's message when Mario first enters the castle."));
 
     path = { "Enhancements", "Fixes", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
