@@ -69,7 +69,7 @@ If you're interested in creating and/or packing your own custom asset `.o2r`/`.o
 # Development
 ### Building
 
-If you want to manually compile Ghostship, please consult the [building instructions](https://github.com/HarbourMasters/Ghostship/blob/main/docs/building.md).
+If you want to manually compile Ghostship, please consult the [building instructions](https://github.com/HarbourMasters/Ghostship/blob/develop/docs/building.md).
 
 ### Playtesting
 If you want to playtest a continuous integration build, you can find them at the links below. Keep in mind that these are for playtesting only, and you will likely encounter bugs and possibly crashes. 
