@@ -74,10 +74,9 @@ If you want to manually compile Ghostship, please consult the [building instruct
 ### Playtesting
 If you want to playtest a continuous integration build, you can find them at the links below. Keep in mind that these are for playtesting only, and you will likely encounter bugs and possibly crashes. 
 
-* [Windows](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/Ghostship-windows.zip)
-* [macOS](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/Ghostship-mac-x64.zip)
+* [Windows](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/ghostship-windows.zip)
+* [macOS](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/ghostship-mac.zip)
 * [Linux](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/Ghostship-linux.zip)
-* [Switch](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/Ghostship-switch.zip)
 
 <a href="https://github.com/Kenix3/libultraship/">
   <picture>
