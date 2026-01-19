@@ -1259,7 +1259,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 #endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
-    gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE && CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0;
+    gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE;
 
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;
@@ -1272,6 +1272,8 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
     save_file_move_cap_to_default_location();
     select_mario_cam_mode();
     set_yoshi_as_not_dead();
+
+    CALL_EVENT(LevelInitFromSaveFile);
 
     return levelNum;
 }

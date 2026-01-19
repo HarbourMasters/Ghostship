@@ -25,3 +25,5 @@ DEFINE_EVENT(GeoLayoutCallASM,
     GraphNodeFunc* func;
     int16_t* parameter;
 );
+
+DEFINE_EVENT(LevelInitFromSaveFile);
