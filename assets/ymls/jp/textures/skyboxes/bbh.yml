@@ -5,7 +5,338 @@
   segments:
     - [ 0xA, 0x2F9750 ]
 
-bbh:
-  type: BLOB
-  size: 84288
+bbh.0:
+  type: TEXTURE
+  width: 32
+  height: 32
   offset: 0x0
+  format: RGBA16
+  symbol: bbh_skybox_texture_00000
+
+bbh.1:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00001
+
+bbh.2:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00002
+
+bbh.3:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00003
+
+bbh.4:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00004
+
+bbh.5:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00005
+
+bbh.6:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00006
+
+bbh.7:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00007
+
+bbh.8:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00008
+
+bbh.9:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00009
+
+bbh.10:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00010
+
+bbh.11:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00011
+
+bbh.12:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00012
+
+bbh.13:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00013
+
+bbh.14:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00014
+
+bbh.15:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00015
+
+bbh.16:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00016
+
+bbh.17:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00017
+
+bbh.18:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00018
+
+bbh.19:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00019
+
+bbh.20:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00020
+
+bbh.21:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00021
+
+bbh.22:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00022
+
+bbh.23:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00023
+
+bbh.24:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00024
+
+bbh.25:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00025
+
+bbh.26:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00026
+
+bbh.27:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00027
+
+bbh.28:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00028
+
+bbh.29:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00029
+
+bbh.30:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00030
+
+bbh.31:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00031
+
+bbh.32:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00032
+
+bbh.33:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00033
+
+bbh.34:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00034
+
+bbh.35:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00035
+
+bbh.36:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00036
+
+bbh.37:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00037
+
+bbh.38:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00038
+
+bbh.39:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13800
+  format: RGBA16
+  symbol: bbh_skybox_texture_00039
+
+bbh.40:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x14000
+  format: RGBA16
+  symbol: bbh_skybox_texture_00040
+
+bbh_skybox_ptrlist:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 80
+  offset: 0x14800
+  symbol: bbh_skybox_ptrlist
