@@ -87,6 +87,9 @@ void PortEnhancements_Register() {
 
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
+
+    // Register Rando Events
+    REGISTER_EVENT(ItemCollected);
     REGISTER_EVENT(SpawnObject);
     REGISTER_EVENT(SpawnStar);
     REGISTER_EVENT(ModifyDefaultStar);

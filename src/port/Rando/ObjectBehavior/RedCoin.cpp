@@ -3,12 +3,14 @@
 
 extern std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
 
-void Rando::ObjectBehavior::ModifyRedCoinBehavior() {
-    for (auto& [randoCheckId, object] : spawnedRandoObjects) {
-        if (randoCheckId >= RC_WF_BLUE_COIN_01 && randoCheckId <= RC_WF_BLUE_COIN_04) {
-            object->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
-            object->oIntangibleTimer = -1;
-            break;
+void Rando::ObjectBehavior::ModifyRedCoinBehavior(bool* shouldCancel, struct Object* obj) {
+    if (obj->unused1 != RC_UNKNOWN) {
+        if (obj->unused1 >= RC_WF_BLUE_COIN_01 && obj->unused1 <= RC_WF_BLUE_COIN_04) {
+            spawnedRandoObjects.at((RandoCheckId)obj->unused1)->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
+            spawnedRandoObjects.at((RandoCheckId)obj->unused1)->oIntangibleTimer = -1;
+            *(shouldCancel) = true;
+            return;
         }
     }
+    *(shouldCancel) = false;
 }

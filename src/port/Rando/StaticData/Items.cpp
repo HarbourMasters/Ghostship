@@ -46,13 +46,30 @@ const BehaviorScript* GetBehaviorByModel(int16_t modelId) {
     return nullptr;
 }
 
-RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId) {
-    for (auto& [randoCheck, randoItem] : Rando::Logic::shuffledList) {
-        if (randoCheck == randoCheckId) {
-            return randoItem;
+RandoItemId GetShuffledRandoItem(int16_t levelId, RandoCheckId randoCheckId) {
+    if (levelId < 0 || levelId >= Rando::Logic::shuffledList.size()) {
+        return RI_UNKNOWN;
+    }
+
+    for (auto& entry : Rando::Logic::shuffledList[levelId]) {
+        if (entry.randoCheckId == randoCheckId) {
+            return entry.randoItemId;
         }
     }
     return RI_UNKNOWN;
+}
+
+RandoAct GetShuffledRandoAct(int16_t levelId, RandoCheckId randoCheckId) {
+    if (levelId < 0 || levelId >= Rando::Logic::shuffledList.size()) {
+        return RA_ACT_NONE;
+    }
+
+    for (auto& entry : Rando::Logic::shuffledList[levelId]) {
+        if (entry.randoCheckId == randoCheckId) {
+            return entry.randoAct;
+        }
+    }
+    return RA_ACT_NONE;
 }
 
 } // namespace StaticData

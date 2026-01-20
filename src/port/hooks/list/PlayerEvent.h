@@ -14,6 +14,12 @@ DEFINE_EVENT(PlayerLivesChange,
     s32 lives;
 );
 
+DEFINE_EVENT(ItemCollected,
+    int16_t type;
+    struct MarioState* marioState;
+    struct Object* object;
+);
+
 DEFINE_EVENT(SpawnObject,
     int16_t model;
     int16_t posX;
@@ -36,6 +42,7 @@ DEFINE_EVENT(ModifyDefaultStar,
 );
 
 DEFINE_EVENT(ModifyObjectBehavior,
+    struct Object* object;
     int16_t model;
 );
 

@@ -257,7 +257,19 @@ typedef enum {
 } RandoInf;
 
 typedef enum {
-    RE_MAX,
-} RandoEvent;
+    RA_ACT_NONE = -1,
+    RA_ACT_01,
+    RA_ACT_02,
+    RA_ACT_03,
+    RA_ACT_04,
+    RA_ACT_05,
+    RA_ACT_06,
+    RA_ACT_MAX,
+} RandoAct;
+
+typedef enum {
+    TYPE_COIN,
+    TYPE_STAR,
+} RandoObjectType;
 
 #endif // RANDO_TYPES_H

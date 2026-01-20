@@ -43,10 +43,12 @@ void bhv_hidden_blue_coin_loop(void) {
 
             // Delete the coin once collected
             if (o->oInteractStatus & INT_STATUS_INTERACTED) {
-                spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
-                obj_mark_for_deletion(o);
+                //CALL_CANCELLABLE_EVENT(CoinCollected, o) {
+                    spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
+                    obj_mark_for_deletion(o);
+                //}
             }
-            CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, MODEL_BLUE_COIN) {
+            CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_BLUE_COIN) {
                 // After 200 frames of waiting and 20 2-frame blinks (for 240 frames total),
                 // delete the object.
                 if (cur_obj_wait_then_blink(200, 20)) {
@@ -115,7 +117,7 @@ void bhv_blue_coin_switch_loop(void) {
             break;
 
         case BLUE_COIN_SWITCH_ACT_TICKING:
-            CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, MODEL_BLUE_COIN_SWITCH) {
+            CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_BLUE_COIN_SWITCH) {
                 // Tick faster when the blue coins start blinking
                 if (o->oTimer < 200) {
                     play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);

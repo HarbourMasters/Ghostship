@@ -17,6 +17,7 @@ namespace StaticData {
 struct RandoCustomData {
     RandoCheckId randoCheckId;
     RandoItemId randoItemId;
+    RandoAct randoActNum;
     bool isShuffled;
 };
 
@@ -25,6 +26,7 @@ struct RandoStaticCheck {
     const char* name;
     RandoCheckType randoCheckType;
     LevelNum levelId;
+    RandoAct actData;
     RandoItemId randoItemId;
     int16_t posX;
     int16_t posY;
@@ -43,13 +45,14 @@ struct RandoStaticItem {
 };
 
 RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ);
-bool IsCheckShuffled(RandoCheckId randocheckId);
+bool IsCheckShuffled(int16_t levelId, RandoCheckId randocheckId);
 
 extern std::map<RandoItemId, RandoStaticItem> Items;
 
 int16_t GetModelByRandoItem(RandoItemId randoItem);
 const BehaviorScript *GetBehaviorByModel(int16_t modelId);
-RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId);
+RandoItemId GetShuffledRandoItem(int16_t currentCourse, RandoCheckId randoCheckId);
+RandoAct GetShuffledRandoAct(int16_t currentCourse, RandoCheckId randoCheckId);
 
 struct RandoStaticOption {
     RandoOptionId randoOptionId;

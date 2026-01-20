@@ -19,32 +19,47 @@ void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, i
     SPDLOG_INFO("Type: {} | Model: {} | Position: {}", type, model, locationStr);
 }
 
-Rando::StaticData::RandoCustomData GetRandoData(s16 x, s16 y, s16 z) {
-    Rando::StaticData::RandoCustomData randoCustomData;
-    randoCustomData.randoCheckId = Rando::StaticData::GetCheckByLocation(x, y, z);
-    randoCustomData.randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCustomData.randoCheckId);
-    randoCustomData.isShuffled = Rando::StaticData::IsCheckShuffled(randoCustomData.randoCheckId);
+Rando::StaticData::RandoStaticCheck GetShuffledRandoStaticCheck(s16 x, s16 y, s16 z) {
+    Rando::StaticData::RandoStaticCheck randoStaticCheck;
+    RandoCheckId randoCheckId = Rando::StaticData::GetCheckByLocation(x, y, z);
+    int16_t levelId = Rando::StaticData::Checks[randoCheckId].levelId;
 
-    return randoCustomData;
+    randoStaticCheck = Rando::StaticData::Checks[randoCheckId];
+    randoStaticCheck.randoItemId = Rando::StaticData::GetShuffledRandoItem(levelId - 1, randoCheckId);
+    randoStaticCheck.actData = Rando::StaticData::GetShuffledRandoAct(levelId - 1, randoCheckId);
+
+    return randoStaticCheck;
 }
 
 void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
-    Rando::StaticData::RandoCustomData randoCustomData = GetRandoData(x, y, z);
-    if (!randoCustomData.isShuffled || randoCustomData.randoCheckId == RC_UNKNOWN ||
-        randoCustomData.randoItemId == RI_UNKNOWN) {
+    Rando::StaticData::RandoStaticCheck randoStaticCheck = GetShuffledRandoStaticCheck(x, y, z);
+    if (!Rando::StaticData::IsCheckShuffled(Rando::StaticData::Checks[randoStaticCheck.randoCheckId].levelId - 1,
+                                            randoStaticCheck.randoCheckId) ||
+        randoStaticCheck.randoCheckId == RC_UNKNOWN || randoStaticCheck.randoItemId == RI_UNKNOWN) {
         return;
     }
 
-    int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoCustomData.randoItemId);
+    int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
     const BehaviorScript* behavior =
         modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin : Rando::StaticData::GetBehaviorByModel(modelId);
 
-    CustomItem::SpawnObject(modelId, behavior, x, y, z, param, randoCustomData.randoCheckId);
+    CustomItem::SpawnObject(modelId, behavior, x, y, z, param, randoStaticCheck.randoCheckId, randoStaticCheck.actData);
     *(shouldCancel) = true;
 }
 
 // Entry point for the module, run once on game boot
 void Rando::ObjectBehavior::Init() {
+    REGISTER_LISTENER(ItemCollected, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        ItemCollected* ev = (ItemCollected*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+        if (ev->object->unused1 != RC_UNKNOWN) {
+            event->cancelled = true;
+            CustomItem::ObjectCollected(ev->type, ev->marioState, ev->object);
+        }
+    });
+
     REGISTER_LISTENER(SpawnObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         SpawnObject* ev = (SpawnObject*)event;
         if (!IS_RANDO(selectedFileNum)) {
@@ -92,7 +107,7 @@ void Rando::ObjectBehavior::Init() {
                 Rando::ObjectBehavior::ModifyBlueCoinSwitchBehavior();
                 break;
             case MODEL_RED_COIN:
-                Rando::ObjectBehavior::ModifyRedCoinBehavior();
+                Rando::ObjectBehavior::ModifyRedCoinBehavior(&event->cancelled, ev->object);
                 break;
             default:
                 event->cancelled = false;
@@ -109,6 +124,7 @@ void Rando::ObjectBehavior::Init() {
         if (!isInitialized) {
             LOAD_MODEL_FROM_GEO(MODEL_STAR, star_geo);
             LOAD_MODEL_FROM_GEO(MODEL_RED_COIN, red_coin_geo);
+            LOAD_MODEL_FROM_GEO(MODEL_BLUE_COIN, blue_coin_geo);
             isInitialized = true;
         }
     });

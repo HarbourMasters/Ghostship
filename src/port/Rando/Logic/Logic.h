@@ -4,15 +4,22 @@
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
 
+struct LevelShuffleEntry {
+    RandoCheckId randoCheckId;
+    RandoItemId randoItemId;
+    RandoAct randoAct;
+};
+
 namespace Rando {
 
 namespace Logic {
 
-extern std::map<RandoCheckId, RandoItemId> shuffledList;
+extern std::vector<std::vector<LevelShuffleEntry>> shuffledList;
+extern std::vector<LevelShuffleEntry> shuffledLevelList;
 extern std::vector<RandoCheckId> shuffledChecks;
-extern std::vector<RandoItemId> shuffledItems;
+extern std::vector<std::pair<RandoItemId, RandoAct>> shuffledItems;
 
-void shuffleRandoItems(std::vector<RandoItemId>& shuffledItems);
+void shuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledItems);
 void GenerateShuffleList();
 
 // Logic Operators

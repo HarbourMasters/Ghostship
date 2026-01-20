@@ -149,6 +149,11 @@ extern struct WarpCheckpoint gWarpCheckpoint;
 extern s8 gMainMenuDataModified;
 extern s8 gSaveFileModified;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 void save_file_do_save(s32 fileIndex);
 void save_file_erase(s32 fileIndex);
 BAD_RETURN(s32) save_file_copy(s32 srcFileIndex, s32 destFileIndex);
@@ -176,6 +181,10 @@ void save_file_move_cap_to_default_location(void);
 void disable_warp_checkpoint(void);
 void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode);
 s32 check_warp_checkpoint(struct WarpNode *warpNode);
+
+#ifdef __cplusplus
+}
+#endif
 
 #ifdef VERSION_EU
 enum EuLanguages {
