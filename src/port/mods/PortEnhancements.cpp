@@ -96,6 +96,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(ModifyObjectBehavior);
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);
+    REGISTER_EVENT(LogOutSpawnData);
 
     Rando::Init();
 }

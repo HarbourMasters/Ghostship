@@ -27,6 +27,7 @@ DEFINE_EVENT(SpawnObject,
     int16_t posZ;
 );
 
+// TODO: Remove this and only use SpawnObject
 DEFINE_EVENT(SpawnStar,
     int16_t* model;
     f32 posX;
@@ -52,4 +53,8 @@ DEFINE_EVENT(OnGameFileLoad,
 
 DEFINE_EVENT(OnGameFileSave,
     s32 fileNum;
+);
+
+DEFINE_EVENT(LogOutSpawnData,
+    struct Object* object;
 );

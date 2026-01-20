@@ -66,6 +66,9 @@ void Rando::ObjectBehavior::Init() {
             return;
         }
         LogOutSpawns("Object", (int16_t)ev->model, ev->posX, ev->posY, ev->posZ);
+        if (ev->model == MODEL_EXCLAMATION_BOX) {
+            return;
+        }
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
@@ -127,5 +130,18 @@ void Rando::ObjectBehavior::Init() {
             LOAD_MODEL_FROM_GEO(MODEL_BLUE_COIN, blue_coin_geo);
             isInitialized = true;
         }
+    });
+
+    REGISTER_LISTENER(LogOutSpawnData, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        LogOutSpawnData* ev = (LogOutSpawnData*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+        int16_t posX = ev->object->rawData.asF32[0x37];
+        int16_t posY = ev->object->rawData.asF32[0x38];
+        int16_t posZ = ev->object->rawData.asF32[0x39];
+
+        std::string locationStr = std::to_string(posX) + ", " + std::to_string(posY) + ", " + std::to_string(posZ);
+        SPDLOG_INFO("Type: {} | Position: {}", "Box", locationStr);
     });
 }
