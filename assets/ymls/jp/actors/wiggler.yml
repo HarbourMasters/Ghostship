@@ -1,7 +1,5 @@
 :config:
   autopads: false
-  external_files:
-    - "assets/ymls/jp/actors/wiggler_body.yml"
   compression:
     offset: 0x17EF80
   segments:
@@ -9,8 +7,224 @@
   header:
     header:
       - '#include "sm64.h"'
+      - '#include "wiggler_body/anims.h"'
       - '#include "wiggler_head/anims.h"'
       - '#include "wiggler_head/geo.h"'
+
+wiggler_segment_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x5A30
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05005A30
+
+wiggler_segment_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x6A30
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05006A30
+
+wiggler_eye:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x7A30
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05007A30
+
+wiggler_flower:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8230
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05008230
+
+wiggler_frown:
+  type: TEXTURE
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x8A30
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05008A30
+
+wiggler_nose_left_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0x9230
+  format: RGBA16
+  symbol: wiggler_seg5_texture_05009230
+
+wiggler_nose_right_side:
+  type: TEXTURE
+  size: 4096
+  width: 32
+  height: 64
+  offset: 0xA230
+  format: RGBA16
+  symbol: wiggler_seg5_texture_0500A230
+
+wiggler_seg5_lights_0500B230:
+  type: LIGHTS
+  size: 24
+  offset: 0xB230
+  symbol: wiggler_seg5_lights_0500B230
+
+wiggler_seg5_lights_0500B248:
+  type: LIGHTS
+  size: 24
+  offset: 0xB248
+  symbol: wiggler_seg5_lights_0500B248
+
+wiggler_body_lights_unused:
+  type: LIGHTS
+  size: 24
+  offset: 0xB248
+  symbol: wiggler_body_lights_unused
+
+wiggler_seg5_vertex_0500B278:
+  type: VTX
+  count: 16
+  offset: 0xB278
+  symbol: wiggler_seg5_vertex_0500B278
+
+wiggler_seg5_vertex_0500B378:
+  type: VTX
+  count: 16
+  offset: 0xB378
+  symbol: wiggler_seg5_vertex_0500B378
+
+wiggler_seg5_vertex_0500B478:
+  type: VTX
+  count: 16
+  offset: 0xB478
+  symbol: wiggler_seg5_vertex_0500B478
+
+wiggler_seg5_vertex_0500B578:
+  type: VTX
+  count: 4
+  offset: 0xB578
+  symbol: wiggler_seg5_vertex_0500B578
+
+wiggler_seg5_vertex_0500B5B8:
+  type: VTX
+  count: 15
+  offset: 0xB5B8
+  symbol: wiggler_seg5_vertex_0500B5B8
+
+wiggler_seg5_vertex_0500B6A8:
+  type: VTX
+  count: 15
+  offset: 0xB6A8
+  symbol: wiggler_seg5_vertex_0500B6A8
+
+wiggler_seg5_vertex_0500B798:
+  type: VTX
+  count: 16
+  offset: 0xB798
+  symbol: wiggler_seg5_vertex_0500B798
+
+wiggler_seg5_vertex_0500B898:
+  type: VTX
+  count: 16
+  offset: 0xB898
+  symbol: wiggler_seg5_vertex_0500B898
+
+wiggler_seg5_vertex_0500B998:
+  type: VTX
+  count: 16
+  offset: 0xB998
+  symbol: wiggler_seg5_vertex_0500B998
+
+wiggler_seg5_vertex_0500BA98:
+  type: VTX
+  count: 4
+  offset: 0xBA98
+  symbol: wiggler_seg5_vertex_0500BA98
+
+wiggler_seg5_vertex_0500BAD8:
+  type: VTX
+  count: 15
+  offset: 0xBAD8
+  symbol: wiggler_seg5_vertex_0500BAD8
+
+wiggler_seg5_vertex_0500BBC8:
+  type: VTX
+  count: 15
+  offset: 0xBBC8
+  symbol: wiggler_seg5_vertex_0500BBC8
+
+wiggler_seg5_dl_0500BCB8:
+  type: GFX
+  offset: 0xBCB8
+  symbol: wiggler_seg5_dl_0500BCB8
+
+wiggler_seg5_dl_0500BE10:
+  type: GFX
+  offset: 0xBE10
+  symbol: wiggler_seg5_dl_0500BE10
+
+wiggler_seg5_dl_0500BE98:
+  type: GFX
+  offset: 0xBE98
+  symbol: wiggler_seg5_dl_0500BE98
+
+wiggler_seg5_dl_0500BF20:
+  type: GFX
+  offset: 0xBF20
+  symbol: wiggler_seg5_dl_0500BF20
+
+wiggler_seg5_dl_0500C078:
+  type: GFX
+  offset: 0xC078
+  symbol: wiggler_seg5_dl_0500C078
+
+wiggler_seg5_dl_0500C100:
+  type: GFX
+  offset: 0xC100
+  symbol: wiggler_seg5_dl_0500C100
+
+wiggler_seg5_vertex_0500C188:
+  type: VTX
+  count: 4
+  offset: 0xC188
+  symbol: wiggler_seg5_vertex_0500C188
+
+wiggler_seg5_vertex_0500C1C8:
+  type: VTX
+  count: 4
+  offset: 0xC1C8
+  symbol: wiggler_seg5_vertex_0500C1C8
+
+wiggler_seg5_dl_0500C208:
+  type: GFX
+  offset: 0xC208
+  symbol: wiggler_seg5_dl_0500C208
+
+wiggler_seg5_dl_0500C240:
+  type: GFX
+  offset: 0xC240
+  symbol: wiggler_seg5_dl_0500C240
+
+wiggler_seg5_dl_0500C278:
+  type: GFX
+  offset: 0xC278
+  symbol: wiggler_seg5_dl_0500C278
+
+wiggler_body_geo:
+  type: SM64:GEO_LAYOUT
+  offset: 0xC778
+  symbol: wiggler_body_geo
 
 wiggler_seg5_lights_0500C878:
   type: LIGHTS

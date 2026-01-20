@@ -1,7 +1,6 @@
 :config:
   external_files:
-    - "assets/ymls/us/actors/wiggler_head.yml"
-    - "assets/ymls/us/actors/wiggler_body.yml"
+    - "assets/ymls/us/actors/wiggler.yml"
   autopads: false
   segments:
     - [ 0xC, 0x187FA0 ]
