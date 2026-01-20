@@ -7,6 +7,7 @@ extern "C" {
 #include "assets/actors/star/geo.h"
 #include "assets/actors/coin/geo.h"
 #include "include/behavior_data.h"
+extern MarioState* gMarioState;
 }
 
 static bool isInitialized = false;
@@ -20,20 +21,20 @@ void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, i
     SPDLOG_INFO("Type: {} | Model: {} | Position: {}", type, model, locationStr);
 }
 
-Rando::StaticData::RandoStaticCheck GetShuffledRandoStaticCheck(s16 x, s16 y, s16 z) {
-    Rando::StaticData::RandoStaticCheck randoStaticCheck;
-    RandoCheckId randoCheckId = Rando::StaticData::GetCheckByLocation(x, y, z);
-    int16_t levelId = Rando::StaticData::Checks[randoCheckId].levelId;
-
-    randoStaticCheck = Rando::StaticData::Checks[randoCheckId];
-    randoStaticCheck.randoItemId = Rando::StaticData::GetShuffledRandoItem(levelId - 1, randoCheckId);
-    randoStaticCheck.actData = Rando::StaticData::GetShuffledRandoAct(levelId - 1, randoCheckId);
-
-    return randoStaticCheck;
-}
+// Rando::StaticData::RandoStaticCheck Rando::StaticData::GetShuffledRandoStaticCheck(s16 x, s16 y, s16 z) {
+//     Rando::StaticData::RandoStaticCheck randoStaticCheck;
+//     RandoCheckId randoCheckId = Rando::StaticData::GetCheckByLocation(x, y, z);
+//     int16_t levelId = Rando::StaticData::Checks[randoCheckId].levelId;
+//
+//     randoStaticCheck = Rando::StaticData::Checks[randoCheckId];
+//     randoStaticCheck.randoItemId = Rando::StaticData::GetShuffledRandoItem(levelId - 1, randoCheckId);
+//     randoStaticCheck.actData = Rando::StaticData::GetShuffledRandoAct(levelId - 1, randoCheckId);
+//
+//     return randoStaticCheck;
+// }
 
 void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
-    Rando::StaticData::RandoStaticCheck randoStaticCheck = GetShuffledRandoStaticCheck(x, y, z);
+    Rando::StaticData::RandoStaticCheck randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(x, y, z);
     if (!Rando::StaticData::IsCheckShuffled(Rando::StaticData::Checks[randoStaticCheck.randoCheckId].levelId - 1,
                                             randoStaticCheck.randoCheckId) ||
         randoStaticCheck.randoCheckId == RC_UNKNOWN || randoStaticCheck.randoItemId == RI_UNKNOWN) {
@@ -45,6 +46,24 @@ void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
         modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin : Rando::StaticData::GetBehaviorByModel(modelId);
 
     CustomItem::SpawnObject(modelId, behavior, x, y, z, param, randoStaticCheck.randoCheckId, randoStaticCheck.actData);
+    *(shouldCancel) = true;
+}
+
+void ModifyCoinStarObject(bool* shouldCancel, s16 x, s16 y, s16 z) {
+    Rando::StaticData::RandoStaticCheck randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
+    if (!Rando::StaticData::IsCheckShuffled(Rando::StaticData::Checks[randoStaticCheck.randoCheckId].levelId - 1,
+                                            randoStaticCheck.randoCheckId) ||
+        randoStaticCheck.randoCheckId == RC_UNKNOWN || randoStaticCheck.randoItemId == RI_UNKNOWN) {
+        return;
+    }
+
+    int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
+    const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
+                                     : modelId == MODEL_STAR    ? bhvSpawnedStarNoLevelExit
+                                                                : Rando::StaticData::GetBehaviorByModel(modelId);
+
+    CustomItem::SpawnObject(modelId, behavior, x, y + 250, z, NULL, randoStaticCheck.randoCheckId,
+                            randoStaticCheck.actData);
     *(shouldCancel) = true;
 }
 
@@ -73,6 +92,16 @@ void Rando::ObjectBehavior::Init() {
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
+    REGISTER_LISTENER(SpawnCoinStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        SpawnCoinStar* ev = (SpawnCoinStar*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+        LogOutSpawns("Coin Star", 122, ev->posX, ev->posY, ev->posZ);
+        ModifyCoinStarObject(&event->cancelled, ev->posX, ev->posY, ev->posZ);
+    });
+
+    // TODO: Remove these.
     REGISTER_LISTENER(SpawnStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         SpawnStar* ev = (SpawnStar*)event;
         if (!IS_RANDO(selectedFileNum)) {

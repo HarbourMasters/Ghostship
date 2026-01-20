@@ -34,6 +34,7 @@ struct RandoStaticCheck {
 };
 
 extern std::map<RandoCheckId, RandoStaticCheck> Checks;
+extern RandoStaticCheck GetShuffledRandoStaticCheck(s16 x, s16 y, s16 z);
 
 struct RandoStaticItem {
     RandoItemId randoItemId;

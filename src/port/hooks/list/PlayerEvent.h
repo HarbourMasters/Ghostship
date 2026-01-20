@@ -27,6 +27,12 @@ DEFINE_EVENT(SpawnObject,
     int16_t posZ;
 );
 
+DEFINE_EVENT(SpawnCoinStar,
+    int16_t posX;
+    int16_t posY;
+    int16_t posZ;
+);
+
 // TODO: Remove this and only use SpawnObject
 DEFINE_EVENT(SpawnStar,
     int16_t* model;

@@ -3,7 +3,10 @@
 
 typedef enum {
     RCTYPE_UNKNOWN,
-    RCTYPE_MAJOR,
+    RCTYPE_COIN_BLUE,
+    RCTYPE_COIN_RED,
+    RCTYPE_STAR_DEFAULT,
+    RCTYPE_STAR_RED_COIN,
     RCTYPE_MAX,
 } RandoCheckType;
 
@@ -59,6 +62,7 @@ typedef enum {
     RC_BOB_STAR_04_RED_COIN,
     RC_BOB_STAR_05_WINGS,
     RC_BOB_STAR_06_CHAIN_CHOMP,
+    RC_BOB_STAR_07_100_COIN,
     RC_BOB_RED_COIN_01,
     RC_BOB_RED_COIN_02,
     RC_BOB_RED_COIN_03,
@@ -267,6 +271,7 @@ typedef enum {
     RA_ACT_04,
     RA_ACT_05,
     RA_ACT_06,
+    RA_ACT_COIN,
     RA_ACT_MAX,
 } RandoAct;
 

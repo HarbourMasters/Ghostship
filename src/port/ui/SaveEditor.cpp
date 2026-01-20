@@ -100,6 +100,10 @@ void SaveEditorWindow::DrawElement() {
                     ImGui::Text("Z: %.2f", gMarioState->pos[2]);
                     ImGui::EndTable();
                 }
+                ImGui::SeparatorText("Set Data");
+                if (UIWidgets::Button("Set Coins to x99")) {
+                    gMarioState->numCoins = 99;
+                }
                 ImGui::EndTabItem();
             }
 

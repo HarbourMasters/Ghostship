@@ -42,7 +42,19 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && mario->numCoins - object->oDamageOrCoinValue < 100 &&
                 mario->numCoins >= 100) {
                 // TODO: Replace with CustomItem::SpawnObject for 100 Coin Star
-                // bhv_spawn_star_no_level_exit(6);
+                Rando::StaticData::RandoStaticCheck randoStaticCheck =
+                    Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
+                if (randoStaticCheck.randoCheckId != RC_UNKNOWN) {
+                    int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
+                    const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
+                                                     : modelId == MODEL_STAR
+                                                         ? bhvSpawnedStarNoLevelExit
+                                                         : Rando::StaticData::GetBehaviorByModel(modelId);
+
+                    CustomItem::SpawnObject(modelId, behavior, object->rawData.asF32[0x6],
+                                            object->rawData.asF32[0x7] + 250, object->rawData.asF32[0x8], NULL,
+                                            randoStaticCheck.randoCheckId, randoStaticCheck.actData);
+                }
             }
             break;
         case TYPE_STAR: {
