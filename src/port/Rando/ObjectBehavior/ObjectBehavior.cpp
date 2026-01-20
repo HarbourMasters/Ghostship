@@ -6,6 +6,7 @@
 extern "C" {
 #include "assets/actors/star/geo.h"
 #include "assets/actors/coin/geo.h"
+#include "include/behavior_data.h"
 }
 
 static bool isInitialized = false;
@@ -120,6 +121,22 @@ void Rando::ObjectBehavior::Init() {
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         LevelScriptExecute* ev = (LevelScriptExecute*)event;
+        bool shouldResetRedCoins = false;
+
+        switch (ev->command) {
+            case 17:
+                shouldResetRedCoins = true;
+                break;
+            case 18:
+                if (shouldResetRedCoins) {
+                    CustomItem::redCoinsCollected = 0;
+                    shouldResetRedCoins = false;
+                }
+                break;
+            default:
+                break;
+        }
+
         if (isInitialized || ev->command != 36) {
             return;
         }

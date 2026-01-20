@@ -12,6 +12,7 @@ extern "C" {
 }
 
 std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
+int16_t CustomItem::redCoinsCollected;
 
 std::vector<int32_t> starActParams = {
     0, 16777216, 33554432, 50331648, 67108864, 83886080, 100663296,
@@ -24,14 +25,16 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
         case TYPE_COIN:
             spawn_object(object, MODEL_SPARKLES, bhvGoldenCoinSparkles);
             if (object->behavior == bhvRedCoin) {
-                object->parentObj->oHiddenStarTriggerCounter++;
-                if (object->parentObj->oHiddenStarTriggerCounter != 8) {
+                CustomItem::redCoinsCollected++;
+                if (CustomItem::redCoinsCollected != 8) {
                     struct Object* spawnNumber;
-                    spawnNumber = spawn_object_relative(object->parentObj->oHiddenStarTriggerCounter, 0, 0, 0, object,
-                                                        MODEL_NUMBER, bhvOrangeNumber);
+                    spawnNumber = spawn_object_relative(CustomItem::redCoinsCollected, 0, 0, 0, object, MODEL_NUMBER,
+                                                        bhvOrangeNumber);
                     spawnNumber->oPosY += 25.0f;
+                } else {
+                    object->parentObj->oHiddenStarTriggerCounter = 8;
                 }
-                play_sound(SOUND_MENU_COLLECT_RED_COIN + (((u8)object->parentObj->oHiddenStarTriggerCounter - 1) << 16),
+                play_sound(SOUND_MENU_COLLECT_RED_COIN + ((CustomItem::redCoinsCollected - 1) << 16),
                            gGlobalSoundSource);
             }
             mario->numCoins += object->oDamageOrCoinValue;
