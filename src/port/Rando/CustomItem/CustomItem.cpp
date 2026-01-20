@@ -13,6 +13,10 @@ extern "C" {
 
 std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
 
+std::vector<int32_t> starActParams = {
+    0, 16777216, 33554432, 50331648, 67108864, 83886080, 100663296,
+};
+
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
     // TODO: Implement Check Tracker functionality using this.
     SPDLOG_INFO("Check ID: {} - Collected", std::to_string(object->unused1));
@@ -111,15 +115,7 @@ void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId ra
             case MODEL_RED_COIN:
                 break;
             case MODEL_STAR:
-                u8 currentLevelStarFlags;
-                currentLevelStarFlags =
-                    save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
-
-                if (currentLevelStarFlags & (1 << randoAct)) {
-                    object->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_TRANSPARENT_STAR];
-                } else {
-                    object->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_STAR];
-                }
+                object->oBehParams = starActParams[randoAct];
                 break;
             default:
                 break;
