@@ -254,9 +254,9 @@ void render_generic_char(u8 c) {
 
     gDPPipeSync(gDisplayListHead++);
     if(ROM_JP) {
-        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, GameEngine_GetExactDataByName(packedTexture));
+        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, (packedTexture));
     } else {
-        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, GameEngine_GetExactDataByName(packedTexture));
+        gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, (packedTexture));
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_tex_settings);
