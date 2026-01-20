@@ -69,7 +69,7 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
-          name: ghostship-windows
+          name: Ghostship-windows
           path: ghostship-release
 
   build-macos:
@@ -98,7 +98,7 @@ jobs:
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ghostship-mac
+          name: Ghostship-mac
           path: |
             Ghostship.dmg
             readme.txt
@@ -176,8 +176,8 @@ jobs:
           path: ./build-cmake
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
-          cmake --build build-cmake --config Release -j3
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug
+          cmake --build build-cmake --config Debug -j3
           (cd build-cmake && cpack -G External)
           wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
           mv README.md readme.txt
