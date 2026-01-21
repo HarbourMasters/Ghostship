@@ -51,6 +51,7 @@
 #endif
 
 const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
+std::shared_ptr<Fast::Fast3dWindow> gsFast3dWindow;
 const uint32_t defaultImGuiScale = 1;
 int32_t previousImGuiScaleIndex = -1;
 float previousImGuiScale = defaultImGuiScale;
@@ -129,27 +130,32 @@ GameEngine::GameEngine() : dictionary(nullptr) {
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
+    this->context->InitControlDeck(controlDeck);
 
     this->context->InitResourceManager(archiveFiles, {}, 3);
     this->context->InitConsole();
 
-    auto window = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
-
-    this->context->Init(archiveFiles, {}, 3, { 32000, 512, 1100 }, window, controlDeck);
-
-#ifndef __SWITCH__
-    Ship::Context::GetInstance()->GetLogger()->set_level(
-        (spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
-    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
+#if (_DEBUG)
+    auto defaultLogLevel = spdlog::level::trace;
+#else
+    auto defaultLogLevel = spdlog::level::info;
 #endif
-
-    Ship::Context::GetInstance()->GetLogger()->set_level(
-        (spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
+    auto logLevel =
+        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
+    context->InitLogging(logLevel, logLevel);
     Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
 
-    window->SetTargetFps(60);
-    window->SetMaximumFrameLatency(1);
-    window->SetRendererUCode(ucode_f3d);
+    gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
+    this->context->InitWindow(gsFast3dWindow);
+
+    context->InitGfxDebugger();
+    context->InitFileDropMgr();
+
+    this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
+
+    gsFast3dWindow->SetTargetFps(60);
+    gsFast3dWindow->SetMaximumFrameLatency(1);
+    gsFast3dWindow->SetRendererUCode(ucode_f3d);
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
     auto blobFactory = std::make_shared<Ship::ResourceFactoryBinaryBlobV0>();
