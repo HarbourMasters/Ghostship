@@ -88,7 +88,7 @@ Gfx *geo_draw_mario_head_goddard(s32 callContext, struct GraphNode *node, Mat4 *
     s16 sfx = 0;
     struct GraphNodeGenerated *asGenerated = (struct GraphNodeGenerated *) node;
     UNUSED Mat4 *transform = c;
-
+    FrameInterpolation_ShouldInterpolateFrame(false);
     if (callContext == GEO_CONTEXT_RENDER) {
         if (gPlayer1Controller->controllerData != NULL && !gWarpTransition.isActive) {
             gd_copy_p1_contpad(gPlayer1Controller->controllerData);
@@ -100,6 +100,7 @@ Gfx *geo_draw_mario_head_goddard(s32 callContext, struct GraphNode *node, Mat4 *
         FrameInterpolation_RecordCloseChild();
         play_menu_sounds(sfx);
     }
+    FrameInterpolation_ShouldInterpolateFrame(true);
     return gfx;
 }
 
