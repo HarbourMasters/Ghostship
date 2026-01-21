@@ -426,75 +426,44 @@ endif()
 # Compile and link options
 ################################################################################
 if(MSVC)
-  if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
-      target_compile_options(${PROJECT_NAME} PRIVATE
-          $<$<CONFIG:Debug>:
-              /w;
-              /Od;
-              /MTd
-          >
-          $<$<CONFIG:Release>:
-              /Oi;
-              /Gy;
-              /W3;
-              /MT
-          >
-          /permissive-;
-          /MP;
-          ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
-          ${DEFAULT_CXX_EXCEPTION_HANDLING}
-      )
-      target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Debug>:/ZI;>)
-      target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Release>:/Zi;>)
-  elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
-      target_compile_options(${PROJECT_NAME} PRIVATE
-          $<$<CONFIG:Debug>:
-              /MTd
-          >
-          $<$<CONFIG:Release>:
-              /O2;
-              /Oi;
-              /Gy;
-              /MT
-          >
-          /permissive-;
-          /MP;
-          /w;
-          ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
-          ${DEFAULT_CXX_EXCEPTION_HANDLING}
-      )
-  endif()
-  if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
-      target_link_options(${PROJECT_NAME} PRIVATE
-          $<$<CONFIG:Debug>:
-              /INCREMENTAL
-          >
-          $<$<CONFIG:Release>:
-              /OPT:REF;
-              /OPT:ICF;
-              /INCREMENTAL:NO;
-              /FORCE:MULTIPLE
-          >
-          /MANIFEST:NO;
-          /DEBUG;
-          /SUBSYSTEM:WINDOWS
-      )
-  elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
-      target_link_options(${PROJECT_NAME} PRIVATE
-          $<$<CONFIG:Debug>:
-              /STACK:8777216
-          >
-          $<$<CONFIG:Release>:
-              /OPT:REF;
-              /OPT:ICF;
-              /INCREMENTAL:NO;
-              /FORCE:MULTIPLE
-          >
-          /MANIFEST:NO;
-          /DEBUG;
-          /SUBSYSTEM:WINDOWS
-      )
-  endif()
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        $<$<CONFIG:Debug>:
+            /w;
+            /Od
+        >
+        $<$<CONFIG:Release>:
+            /Oi;
+            /Gy;
+            /W3
+        >
+
+        /wd4024 #different types for formal and actual parameter [x]. Usually seen along side 4047.
+        /wd4047 #'uintptr_t' differs in levels of indirection from 'Gfx *'. Usually caused by passing a uintptr_t into a function expecting a pointer-types
+        /wd4090 #'initializing': different 'const' qualifiers. Caused when initializing a non const struct member with a const char*.		
+        /wd4101 # unreferenced local variable. Things like stack pads.
+        /wd4133 #incompatible types. Usually caused by passing a c string into a function that takes a pointer.
+        /wd4244 #conversion from [a] to [b]. Used to warn when copying to smaller type without a cast.
+        /sdl-;
+        /permissive-;
+        /MP;
+        ${DEFAULT_CXX_DEBUG_INFORMATION_FORMAT};
+        ${DEFAULT_CXX_EXCEPTION_HANDLING}
+    )
+  target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Debug>:/ZI;>)
+  target_link_options(${PROJECT_NAME} PRIVATE
+        $<$<CONFIG:Debug>:
+            /INCREMENTAL
+        >
+        $<$<CONFIG:Release>:
+            /OPT:REF;
+            /OPT:ICF;
+            /INCREMENTAL:NO;
+            /FORCE:MULTIPLE
+        >
+        /MANIFEST:NO;
+        /DEBUG;
+        /SUBSYSTEM:WINDOWS
+    )
 
   # Remove /RTC from msvc flags
   foreach (fentry
