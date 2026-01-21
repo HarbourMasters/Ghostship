@@ -12,7 +12,7 @@ extern "C" {
 }
 
 std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
-int16_t CustomItem::redCoinsCollected;
+int16_t CustomItem::redCoinsCollected = 7;
 
 std::vector<int32_t> starActParams = {
     0, 16777216, 33554432, 50331648, 67108864, 83886080, 100663296,

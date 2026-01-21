@@ -21,18 +21,6 @@ void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, i
     SPDLOG_INFO("Type: {} | Model: {} | Position: {}", type, model, locationStr);
 }
 
-// Rando::StaticData::RandoStaticCheck Rando::StaticData::GetShuffledRandoStaticCheck(s16 x, s16 y, s16 z) {
-//     Rando::StaticData::RandoStaticCheck randoStaticCheck;
-//     RandoCheckId randoCheckId = Rando::StaticData::GetCheckByLocation(x, y, z);
-//     int16_t levelId = Rando::StaticData::Checks[randoCheckId].levelId;
-//
-//     randoStaticCheck = Rando::StaticData::Checks[randoCheckId];
-//     randoStaticCheck.randoItemId = Rando::StaticData::GetShuffledRandoItem(levelId - 1, randoCheckId);
-//     randoStaticCheck.actData = Rando::StaticData::GetShuffledRandoAct(levelId - 1, randoCheckId);
-//
-//     return randoStaticCheck;
-// }
-
 void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
     Rando::StaticData::RandoStaticCheck randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(x, y, z);
     if (!Rando::StaticData::IsCheckShuffled(Rando::StaticData::Checks[randoStaticCheck.randoCheckId].levelId - 1,
@@ -158,7 +146,7 @@ void Rando::ObjectBehavior::Init() {
                 break;
             case 18:
                 if (shouldResetRedCoins) {
-                    CustomItem::redCoinsCollected = 0;
+                    //CustomItem::redCoinsCollected = 0;
                     shouldResetRedCoins = false;
                 }
                 break;
