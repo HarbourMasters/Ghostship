@@ -146,7 +146,7 @@ void Rando::ObjectBehavior::Init() {
                 break;
             case 18:
                 if (shouldResetRedCoins) {
-                    //CustomItem::redCoinsCollected = 0;
+                    // CustomItem::redCoinsCollected = 0;
                     shouldResetRedCoins = false;
                 }
                 break;
