@@ -9,7 +9,7 @@
       - '#include "sm64.h"'
       - '#include "bowser_flame/geo.h"'
 
-flame_seg6_texture_06000000:
+bowser_flame_0:
   type: TEXTURE
   size: 8192
   width: 64
@@ -18,7 +18,7 @@ flame_seg6_texture_06000000:
   format: RGBA16
   symbol: flame_seg6_texture_06000000
 
-flame_seg6_texture_06001000:
+bowser_flame_1:
   type: TEXTURE
   size: 8192
   width: 64
@@ -27,7 +27,7 @@ flame_seg6_texture_06001000:
   format: RGBA16
   symbol: flame_seg6_texture_06001000
 
-flame_seg6_texture_06002000:
+bowser_flame_2:
   type: TEXTURE
   size: 8192
   width: 64
@@ -36,7 +36,7 @@ flame_seg6_texture_06002000:
   format: RGBA16
   symbol: flame_seg6_texture_06002000
 
-flame_seg6_texture_06003000:
+bowser_flame_3:
   type: TEXTURE
   size: 8192
   width: 64
@@ -45,7 +45,7 @@ flame_seg6_texture_06003000:
   format: RGBA16
   symbol: flame_seg6_texture_06003000
 
-flame_seg6_texture_06004000:
+bowser_flame_4:
   type: TEXTURE
   size: 8192
   width: 64
@@ -54,7 +54,7 @@ flame_seg6_texture_06004000:
   format: RGBA16
   symbol: flame_seg6_texture_06004000
 
-flame_seg6_texture_06005000:
+bowser_flame_5:
   type: TEXTURE
   size: 8192
   width: 64
@@ -63,7 +63,7 @@ flame_seg6_texture_06005000:
   format: RGBA16
   symbol: flame_seg6_texture_06005000
 
-flame_seg6_texture_06006000:
+bowser_flame_6:
   type: TEXTURE
   size: 8192
   width: 64
@@ -72,7 +72,7 @@ flame_seg6_texture_06006000:
   format: RGBA16
   symbol: flame_seg6_texture_06006000
 
-flame_seg6_texture_06007000:
+bowser_flame_7:
   type: TEXTURE
   size: 8192
   width: 64
@@ -81,7 +81,7 @@ flame_seg6_texture_06007000:
   format: RGBA16
   symbol: flame_seg6_texture_06007000
 
-flame_seg6_texture_06008000:
+bowser_flame_8:
   type: TEXTURE
   size: 8192
   width: 64
@@ -90,7 +90,7 @@ flame_seg6_texture_06008000:
   format: RGBA16
   symbol: flame_seg6_texture_06008000
 
-flame_seg6_texture_06009000:
+bowser_flame_9:
   type: TEXTURE
   size: 8192
   width: 64
@@ -99,7 +99,7 @@ flame_seg6_texture_06009000:
   format: RGBA16
   symbol: flame_seg6_texture_06009000
 
-flame_seg6_texture_0600A000:
+bowser_flame_10:
   type: TEXTURE
   size: 8192
   width: 64
@@ -108,7 +108,7 @@ flame_seg6_texture_0600A000:
   format: RGBA16
   symbol: flame_seg6_texture_0600A000
 
-flame_seg6_texture_0600B000:
+bowser_flame_11:
   type: TEXTURE
   size: 8192
   width: 64
@@ -117,7 +117,7 @@ flame_seg6_texture_0600B000:
   format: RGBA16
   symbol: flame_seg6_texture_0600B000
 
-flame_seg6_texture_0600C000:
+bowser_flame_12:
   type: TEXTURE
   size: 8192
   width: 64
@@ -126,7 +126,7 @@ flame_seg6_texture_0600C000:
   format: RGBA16
   symbol: flame_seg6_texture_0600C000
 
-flame_seg6_texture_0600D000:
+bowser_flame_13:
   type: TEXTURE
   size: 8192
   width: 64
@@ -135,7 +135,7 @@ flame_seg6_texture_0600D000:
   format: RGBA16
   symbol: flame_seg6_texture_0600D000
 
-flame_seg6_texture_0600E000:
+bowser_flame_14:
   type: TEXTURE
   size: 8192
   width: 64
@@ -144,7 +144,7 @@ flame_seg6_texture_0600E000:
   format: RGBA16
   symbol: flame_seg6_texture_0600E000
 
-flame_seg6_texture_0600F000:
+bowser_flame_15:
   type: TEXTURE
   size: 8192
   width: 64
@@ -153,7 +153,7 @@ flame_seg6_texture_0600F000:
   format: RGBA16
   symbol: flame_seg6_texture_0600F000
 
-flame_seg6_texture_06010000:
+bowser_flame_16:
   type: TEXTURE
   size: 8192
   width: 64
@@ -162,7 +162,7 @@ flame_seg6_texture_06010000:
   format: RGBA16
   symbol: flame_seg6_texture_06010000
 
-flame_seg6_texture_06011000:
+bowser_flame_17:
   type: TEXTURE
   size: 8192
   width: 64
@@ -171,7 +171,7 @@ flame_seg6_texture_06011000:
   format: RGBA16
   symbol: flame_seg6_texture_06011000
 
-flame_seg6_texture_06012000:
+bowser_flame_18:
   type: TEXTURE
   size: 8192
   width: 64
@@ -180,7 +180,7 @@ flame_seg6_texture_06012000:
   format: RGBA16
   symbol: flame_seg6_texture_06012000
 
-flame_seg6_texture_06013000:
+bowser_flame_19:
   type: TEXTURE
   size: 8192
   width: 64
@@ -189,7 +189,7 @@ flame_seg6_texture_06013000:
   format: RGBA16
   symbol: flame_seg6_texture_06013000
 
-flame_seg6_texture_06014000:
+bowser_flame_20:
   type: TEXTURE
   size: 8192
   width: 64
@@ -198,7 +198,7 @@ flame_seg6_texture_06014000:
   format: RGBA16
   symbol: flame_seg6_texture_06014000
 
-flame_seg6_texture_06015000:
+bowser_flame_21:
   type: TEXTURE
   size: 8192
   width: 64
@@ -207,7 +207,7 @@ flame_seg6_texture_06015000:
   format: RGBA16
   symbol: flame_seg6_texture_06015000
 
-flame_seg6_texture_06016000:
+bowser_flame_22:
   type: TEXTURE
   size: 8192
   width: 64
@@ -216,7 +216,7 @@ flame_seg6_texture_06016000:
   format: RGBA16
   symbol: flame_seg6_texture_06016000
 
-flame_seg6_texture_06017000:
+bowser_flame_23:
   type: TEXTURE
   size: 8192
   width: 64
@@ -225,7 +225,7 @@ flame_seg6_texture_06017000:
   format: RGBA16
   symbol: flame_seg6_texture_06017000
 
-flame_seg6_texture_06018000:
+bowser_flame_24:
   type: TEXTURE
   size: 8192
   width: 64
@@ -234,7 +234,7 @@ flame_seg6_texture_06018000:
   format: RGBA16
   symbol: flame_seg6_texture_06018000
 
-flame_seg6_texture_06019000:
+bowser_flame_25:
   type: TEXTURE
   size: 8192
   width: 64
@@ -243,7 +243,7 @@ flame_seg6_texture_06019000:
   format: RGBA16
   symbol: flame_seg6_texture_06019000
 
-flame_seg6_texture_0601A000:
+bowser_flame_26:
   type: TEXTURE
   size: 8192
   width: 64
@@ -252,7 +252,7 @@ flame_seg6_texture_0601A000:
   format: RGBA16
   symbol: flame_seg6_texture_0601A000
 
-flame_seg6_texture_0601B000:
+bowser_flame_27:
   type: TEXTURE
   size: 8192
   width: 64

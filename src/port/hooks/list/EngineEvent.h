@@ -26,6 +26,9 @@ DEFINE_EVENT(GeoLayoutCallASM,
     int16_t* parameter;
 );
 
+DEFINE_EVENT(LevelInitFromSaveFile);
+);
+
 DEFINE_EVENT(LevelScriptExecute,
     u8 command;
 );

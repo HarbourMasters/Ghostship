@@ -5,7 +5,522 @@
   segments:
     - [ 0xA, 0x30CEC0 ]
 
-bits:
-  type: BLOB
-  size: 131392
+bits.0:
+  type: TEXTURE
+  width: 32
+  height: 32
   offset: 0x0
+  format: RGBA16
+  symbol: bits_skybox_texture_00000
+
+bits.1:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x800
+  format: RGBA16
+  symbol: bits_skybox_texture_00001
+
+bits.2:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1000
+  format: RGBA16
+  symbol: bits_skybox_texture_00002
+
+bits.3:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1800
+  format: RGBA16
+  symbol: bits_skybox_texture_00003
+
+bits.4:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2000
+  format: RGBA16
+  symbol: bits_skybox_texture_00004
+
+bits.5:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x2800
+  format: RGBA16
+  symbol: bits_skybox_texture_00005
+
+bits.6:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3000
+  format: RGBA16
+  symbol: bits_skybox_texture_00006
+
+bits.7:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x3800
+  format: RGBA16
+  symbol: bits_skybox_texture_00007
+
+bits.8:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4000
+  format: RGBA16
+  symbol: bits_skybox_texture_00008
+
+bits.9:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x4800
+  format: RGBA16
+  symbol: bits_skybox_texture_00009
+
+bits.10:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5000
+  format: RGBA16
+  symbol: bits_skybox_texture_00010
+
+bits.11:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x5800
+  format: RGBA16
+  symbol: bits_skybox_texture_00011
+
+bits.12:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6000
+  format: RGBA16
+  symbol: bits_skybox_texture_00012
+
+bits.13:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x6800
+  format: RGBA16
+  symbol: bits_skybox_texture_00013
+
+bits.14:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7000
+  format: RGBA16
+  symbol: bits_skybox_texture_00014
+
+bits.15:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x7800
+  format: RGBA16
+  symbol: bits_skybox_texture_00015
+
+bits.16:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8000
+  format: RGBA16
+  symbol: bits_skybox_texture_00016
+
+bits.17:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x8800
+  format: RGBA16
+  symbol: bits_skybox_texture_00017
+
+bits.18:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9000
+  format: RGBA16
+  symbol: bits_skybox_texture_00018
+
+bits.19:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x9800
+  format: RGBA16
+  symbol: bits_skybox_texture_00019
+
+bits.20:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA000
+  format: RGBA16
+  symbol: bits_skybox_texture_00020
+
+bits.21:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xA800
+  format: RGBA16
+  symbol: bits_skybox_texture_00021
+
+bits.22:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB000
+  format: RGBA16
+  symbol: bits_skybox_texture_00022
+
+bits.23:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xB800
+  format: RGBA16
+  symbol: bits_skybox_texture_00023
+
+bits.24:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC000
+  format: RGBA16
+  symbol: bits_skybox_texture_00024
+
+bits.25:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xC800
+  format: RGBA16
+  symbol: bits_skybox_texture_00025
+
+bits.26:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD000
+  format: RGBA16
+  symbol: bits_skybox_texture_00026
+
+bits.27:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xD800
+  format: RGBA16
+  symbol: bits_skybox_texture_00027
+
+bits.28:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE000
+  format: RGBA16
+  symbol: bits_skybox_texture_00028
+
+bits.29:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xE800
+  format: RGBA16
+  symbol: bits_skybox_texture_00029
+
+bits.30:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF000
+  format: RGBA16
+  symbol: bits_skybox_texture_00030
+
+bits.31:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0xF800
+  format: RGBA16
+  symbol: bits_skybox_texture_00031
+
+bits.32:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10000
+  format: RGBA16
+  symbol: bits_skybox_texture_00032
+
+bits.33:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x10800
+  format: RGBA16
+  symbol: bits_skybox_texture_00033
+
+bits.34:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11000
+  format: RGBA16
+  symbol: bits_skybox_texture_00034
+
+bits.35:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x11800
+  format: RGBA16
+  symbol: bits_skybox_texture_00035
+
+bits.36:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12000
+  format: RGBA16
+  symbol: bits_skybox_texture_00036
+
+bits.37:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x12800
+  format: RGBA16
+  symbol: bits_skybox_texture_00037
+
+bits.38:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13000
+  format: RGBA16
+  symbol: bits_skybox_texture_00038
+
+bits.39:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x13800
+  format: RGBA16
+  symbol: bits_skybox_texture_00039
+
+bits.40:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x14000
+  format: RGBA16
+  symbol: bits_skybox_texture_00040
+
+bits.41:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x14800
+  format: RGBA16
+  symbol: bits_skybox_texture_00041
+
+bits.42:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x15000
+  format: RGBA16
+  symbol: bits_skybox_texture_00042
+
+bits.43:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x15800
+  format: RGBA16
+  symbol: bits_skybox_texture_00043
+
+bits.44:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x16000
+  format: RGBA16
+  symbol: bits_skybox_texture_00044
+
+bits.45:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x16800
+  format: RGBA16
+  symbol: bits_skybox_texture_00045
+
+bits.46:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x17000
+  format: RGBA16
+  symbol: bits_skybox_texture_00046
+
+bits.47:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x17800
+  format: RGBA16
+  symbol: bits_skybox_texture_00047
+
+bits.48:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x18000
+  format: RGBA16
+  symbol: bits_skybox_texture_00048
+
+bits.49:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x18800
+  format: RGBA16
+  symbol: bits_skybox_texture_00049
+
+bits.50:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x19000
+  format: RGBA16
+  symbol: bits_skybox_texture_00050
+
+bits.51:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x19800
+  format: RGBA16
+  symbol: bits_skybox_texture_00051
+
+bits.52:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1A000
+  format: RGBA16
+  symbol: bits_skybox_texture_00052
+
+bits.53:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1A800
+  format: RGBA16
+  symbol: bits_skybox_texture_00053
+
+bits.54:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1B000
+  format: RGBA16
+  symbol: bits_skybox_texture_00054
+
+bits.55:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1B800
+  format: RGBA16
+  symbol: bits_skybox_texture_00055
+
+bits.56:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1C000
+  format: RGBA16
+  symbol: bits_skybox_texture_00056
+
+bits.57:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1C800
+  format: RGBA16
+  symbol: bits_skybox_texture_00057
+
+bits.58:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1D000
+  format: RGBA16
+  symbol: bits_skybox_texture_00058
+
+bits.59:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1D800
+  format: RGBA16
+  symbol: bits_skybox_texture_00059
+
+bits.60:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1E000
+  format: RGBA16
+  symbol: bits_skybox_texture_00060
+
+bits.61:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1E800
+  format: RGBA16
+  symbol: bits_skybox_texture_00061
+
+bits.62:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1F000
+  format: RGBA16
+  symbol: bits_skybox_texture_00062
+
+bits.63:
+  type: TEXTURE
+  width: 32
+  height: 32
+  offset: 0x1F800
+  format: RGBA16
+  symbol: bits_skybox_texture_00063
+
+bits_skybox_ptrlist:
+  type: ASSET_ARRAY
+  assetType: Texture
+  factoryType: TEXTURE
+  count: 80
+  offset: 0x20000
+  symbol: bits_skybox_ptrlist

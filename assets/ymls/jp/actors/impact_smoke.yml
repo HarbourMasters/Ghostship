@@ -11,39 +11,67 @@
 
 impact_smoke_0:
   type: TEXTURE
-  size: 8192
   width: 64
-  height: 64
+  height: 32
   offset: 0x5AA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605AA28
 
 impact_smoke_1:
   type: TEXTURE
-  size: 8192
   width: 64
-  height: 64
+  height: 32
+  offset: 0x5BA28
+  format: IA16
+  symbol: impact_smoke_seg6_texture_0605BA28
+
+impact_smoke_2:
+  type: TEXTURE
+  width: 64
+  height: 32
   offset: 0x5CA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605CA28
 
-impact_smoke_2:
+impact_smoke_3:
   type: TEXTURE
-  size: 8192
   width: 64
-  height: 64
+  height: 32
+  offset: 0x5DA28
+  format: IA16
+  symbol: impact_smoke_seg6_texture_0605DA28
+
+impact_smoke_4:
+  type: TEXTURE
+  width: 64
+  height: 32
   offset: 0x5EA28
   format: IA16
   symbol: impact_smoke_seg6_texture_0605EA28
 
-impact_smoke_3:
+impact_smoke_5:
   type: TEXTURE
-  size: 8192
   width: 64
-  height: 64
+  height: 32
+  offset: 0x5FA28
+  format: IA16
+  symbol: impact_smoke_seg6_texture_0605FA28
+
+impact_smoke_6:
+  type: TEXTURE
+  width: 64
+  height: 32
   offset: 0x60A28
   format: IA16
   symbol: impact_smoke_seg6_texture_06060A28
+
+impact_smoke_7:
+  type: TEXTURE
+  width: 64
+  height: 32
+  offset: 0x61A28
+  format: IA16
+  symbol: impact_smoke_seg6_texture_06061A28
 
 impact_smoke_seg6_vertex_06062A28:
   type: VTX

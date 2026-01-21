@@ -34,15 +34,15 @@ jobs:
           sudo make install
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug
           cmake --build build-cmake -j
       - name: Create Package
         run: |
-          mkdir ghostship-release
-          mv build-cmake/Ghostship ghostship-release/
+          mkdir Ghostship-release
+          mv build-cmake/Ghostship Ghostship-release/
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ghostship-linux-x64
-          path: ghostship-release
+          name: Ghostship-linux-x64
+          path: Ghostship-release
           retention-days: 1

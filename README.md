@@ -1,7 +1,5 @@
 # Ghostship
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/HarbourMasters/Ghostship?style=flat-square)](
-
 Lead Developers:
 * [Lywx](https://www.github.com/kiritodv)
 
@@ -71,15 +69,14 @@ If you're interested in creating and/or packing your own custom asset `.o2r`/`.o
 # Development
 ### Building
 
-If you want to manually compile Ghostship, please consult the [building instructions](https://github.com/HarbourMasters/Ghostship/blob/main/docs/BUILDING.md).
+If you want to manually compile Ghostship, please consult the [building instructions](https://github.com/HarbourMasters/Ghostship/blob/develop/docs/building.md).
 
 ### Playtesting
 If you want to playtest a continuous integration build, you can find them at the links below. Keep in mind that these are for playtesting only, and you will likely encounter bugs and possibly crashes. 
 
-* [Windows](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-windows.zip)
-* [macOS](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-mac-x64.zip)
-* [Linux](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-linux.zip)
-* [Switch](https://nightly.link/HarbourMasters/Ghostship/workflows/main/main/Ghostship-switch.zip)
+* [Windows](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/Ghostship-windows.zip)
+* [macOS](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/Ghostship-mac.zip)
+* [Linux](https://nightly.link/HarbourMasters/Ghostship/workflows/main/develop/Ghostship-linux.zip)
 
 <a href="https://github.com/Kenix3/libultraship/">
   <picture>
