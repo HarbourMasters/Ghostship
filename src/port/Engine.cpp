@@ -63,6 +63,7 @@ extern "C" {
 #include "audio/external.h"
 #include "audio/internal.h"
 #include "game/ingame_menu.h"
+#include "variables.h"
 bool prevAltAssets = false;
 }
 
@@ -136,7 +137,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitConsole();
 
 #if (_DEBUG)
-    auto defaultLogLevel = spdlog::level::trace;
+    auto defaultLogLevel = spdlog::level::debug;
 #else
     auto defaultLogLevel = spdlog::level::info;
 #endif
@@ -144,6 +145,8 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
     context->InitLogging(logLevel, logLevel);
     Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
+    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
+                (char*)gGitCommitHash);
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     this->context->InitWindow(gsFast3dWindow);
