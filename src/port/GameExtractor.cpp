@@ -4,10 +4,10 @@
 #include <shlwapi.h>
 #pragma comment(lib, "Shlwapi.lib")
 #endif
+#include "port/build.h"
 #include "GameExtractor.h"
 #include <cstdio>
 #include <unordered_map>
-
 #include <fstream>
 
 #include "Companion.h"
@@ -187,12 +187,18 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
     return mGameList[hash];
 }
 
-bool GameExtractor::GenerateOTR() const {
+void GameExtractor::WritePortVersion() {
+    char portVersion[18];
+    snprintf(portVersion, 18, "%d.%d.%d", gBuildVersionMajor, gBuildVersionMinor, gBuildVersionPatch);
+    Companion::Instance->RegisterCompanionFile("port_version", std::vector<char>(portVersion, portVersion + strlen(portVersion)) );
+}
+
+bool GameExtractor::GenerateOTR() {
     const std::string assets_path = Ship::Context::GetAppBundlePath();
     const std::string game_path = Ship::Context::GetAppDirectoryPath();
 
     Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path);
-
+    this->WritePortVersion();
     try {
         Companion::Instance->Init(ExportType::Binary);
     } catch (const std::exception& e) {
