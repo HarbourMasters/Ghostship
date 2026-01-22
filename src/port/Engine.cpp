@@ -124,11 +124,27 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     Ship::Switch::Init(Ship::PostInitPhase);
 #endif
 
+    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
+    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
+    // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
+
+#if (_DEBUG)
+    auto defaultLogLevel = spdlog::level::debug;
+#else
+    auto defaultLogLevel = spdlog::level::info;
+#endif
+    auto logLevel =
+        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
+    context->InitLogging(logLevel, logLevel);
+    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
+    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
+                (char*)gGitCommitHash);
+
     std::vector<std::string> archiveFiles;
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r");
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
 
-    bool shouldRegen = VerifyArchiveVersion(DetectOTRVersion("sm64.o2r"));
+    bool shouldRegen = !VerifyArchiveVersion(DetectOTRVersion("sm64.o2r"));
 
 #ifdef _WIN32
     AllocConsole();
@@ -137,6 +153,9 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     if (std::filesystem::exists(main_path) && !shouldRegen) {
         archiveFiles.push_back(main_path);
     } else {
+        if (shouldRegen && std::filesystem::exists(main_path)) {
+            std::filesystem::remove(main_path);
+        }
         std::string msg = (shouldRegen ? "Your ROM O2R is outdated, and needs to be re-extracted.\n\n" : "") +
                           std::string("Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\n"
                                       "Assets will be extracted into an O2R file.");
@@ -176,27 +195,11 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         }
     }
 
-    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
-    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
-                                           // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
-
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
     this->context->InitControlDeck(controlDeck);
 
     this->context->InitResourceManager(archiveFiles, {}, 3);
     this->context->InitConsole();
-
-#if (_DEBUG)
-    auto defaultLogLevel = spdlog::level::debug;
-#else
-    auto defaultLogLevel = spdlog::level::info;
-#endif
-    auto logLevel =
-        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
-    context->InitLogging(logLevel, logLevel);
-    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
-    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
-                (char*)gGitCommitHash);
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     this->context->InitWindow(gsFast3dWindow);
