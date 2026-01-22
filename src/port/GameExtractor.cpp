@@ -190,7 +190,8 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
 void GameExtractor::WritePortVersion() {
     char portVersion[18];
     snprintf(portVersion, 18, "%d.%d.%d", gBuildVersionMajor, gBuildVersionMinor, gBuildVersionPatch);
-    Companion::Instance->RegisterCompanionFile("port_version", std::vector<char>(portVersion, portVersion + strlen(portVersion)) );
+    Companion::Instance->RegisterCompanionFile("port_version",
+                                               std::vector<char>(portVersion, portVersion + strlen(portVersion)));
 }
 
 bool GameExtractor::GenerateOTR() {
