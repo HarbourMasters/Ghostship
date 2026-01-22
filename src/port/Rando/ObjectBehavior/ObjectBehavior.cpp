@@ -131,16 +131,17 @@ void Rando::ObjectBehavior::Init() {
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         LevelScriptExecute* ev = (LevelScriptExecute*)event;
-        bool shouldResetRedCoins = false;
+        bool isLevelInitializing = false;
 
         switch (ev->command) {
             case 17:
-                shouldResetRedCoins = true;
+                isLevelInitializing = true;
                 break;
             case 18:
-                if (shouldResetRedCoins) {
+                if (isLevelInitializing) {
                     CustomItem::redCoinsCollected = 0;
-                    shouldResetRedCoins = false;
+                    CustomItem::ClearSpawnedObjects();
+                    isLevelInitializing = false;
                 }
                 break;
             default:
@@ -157,18 +158,5 @@ void Rando::ObjectBehavior::Init() {
             LOAD_MODEL_FROM_GEO(MODEL_BLUE_COIN, blue_coin_geo);
             isInitialized = true;
         }
-    });
-
-    REGISTER_LISTENER(LogOutSpawnData, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        LogOutSpawnData* ev = (LogOutSpawnData*)event;
-        if (!IS_RANDO(selectedFileNum)) {
-            return;
-        }
-        int16_t posX = ev->object->rawData.asF32[0x37];
-        int16_t posY = ev->object->rawData.asF32[0x38];
-        int16_t posZ = ev->object->rawData.asF32[0x39];
-
-        std::string locationStr = std::to_string(posX) + ", " + std::to_string(posY) + ", " + std::to_string(posZ);
-        SPDLOG_INFO("Type: {} | Position: {}", "Box", locationStr);
     });
 }

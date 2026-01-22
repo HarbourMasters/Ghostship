@@ -18,6 +18,10 @@ std::vector<int32_t> starActParams = {
     0, 16777216, 33554432, 50331648, 67108864, 83886080, 100663296,
 };
 
+void CustomItem::ClearSpawnedObjects() {
+    spawnedRandoObjects.clear();
+}
+
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
     // TODO: Implement Check Tracker functionality using this.
     SPDLOG_INFO("Check ID: {} - Collected", std::to_string(object->unused1));
@@ -117,7 +121,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
 }
 
 void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId randoCheckId, RandoAct randoAct) {
-    if (randoCheckId >= RC_WF_BLUE_COIN_01 && randoCheckId <= RC_WF_BLUE_COIN_04) {
+    if (Rando::Logic::IsBlueSwitchActivated(randoCheckId)) {
         object->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
         object->oIntangibleTimer = -1;
     } else {

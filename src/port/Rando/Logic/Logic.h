@@ -23,6 +23,13 @@ void shuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledIt
 void GenerateShuffleList();
 
 // Logic Operators
+inline bool IsBlueSwitchActivated(RandoCheckId randoCheckId) {
+    if (Rando::StaticData::Checks[randoCheckId].randoItemId == RI_COIN_BLUE) {
+        return true;
+    }
+    return false;
+};
+
 
 } // namespace Logic
 

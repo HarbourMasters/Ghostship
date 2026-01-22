@@ -59,7 +59,3 @@ DEFINE_EVENT(OnGameFileLoad,
 DEFINE_EVENT(OnGameFileSave,
     s32 fileNum;
 );
-
-DEFINE_EVENT(LogOutSpawnData,
-    struct Object* object;
-);
