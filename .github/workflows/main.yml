@@ -61,7 +61,13 @@ jobs:
       - name: Create Package
         run: |
           mkdir ghostship-release
-          mv build/x64/Release ghostship-release/
+          mkdir ghostship-release/debug
+          mv build/x64/Release/Ghostship.exe ghostship-release/
+          mv build/x64/Release/ghostship.o2r ghostship-release/
+          mv build/x64/Release/*.pdb ghostship-release/debug/
+          mv README.md ghostship-release/readme.txt
+          mv config.yml ghostship-release/
+          mv assets ghostship-release/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "ghostship-release/gamecontrollerdb.txt"
       - name: Upload build
         uses: actions/upload-artifact@v4
@@ -176,7 +182,7 @@ jobs:
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug
           cmake --build build-cmake --config Debug -j3
           (cd build-cmake && cpack -G External)
-          wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage ghostship.appimage
       - name: Upload build
@@ -209,7 +215,7 @@ jobs:
           sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
           cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake
           cmake --build build-switch --config Release -j3
-          wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-switch/*.nro Ghostship.nro
       - name: Upload build
