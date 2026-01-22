@@ -188,10 +188,15 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
 }
 
 void GameExtractor::WritePortVersion() {
-    char portVersion[18];
-    snprintf(portVersion, 18, "%d.%d.%d", gBuildVersionMajor, gBuildVersionMinor, gBuildVersionPatch);
-    Companion::Instance->RegisterCompanionFile("port_version",
-                                               std::vector<char>(portVersion, portVersion + strlen(portVersion)));
+    auto writer = LUS::BinaryWriter();
+    writer.SetEndianness(Torch::Endianness::Big);
+    writer.Write((uint8_t) 1);
+    writer.Write((uint16_t) gBuildVersionMajor);
+    writer.Write((uint16_t) gBuildVersionMinor);
+    writer.Write((uint16_t) gBuildVersionPatch);
+    writer.Close();
+
+    Companion::Instance->RegisterCompanionFile("port_version", writer.ToVector());
 }
 
 bool GameExtractor::GenerateOTR() {
