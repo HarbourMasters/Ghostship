@@ -196,7 +196,7 @@ void GameExtractor::WritePortVersion() {
     writer.Write((uint16_t) gBuildVersionPatch);
     writer.Close();
 
-    Companion::Instance->RegisterCompanionFile("port_version", writer.ToVector());
+    Companion::Instance->RegisterCompanionFile("portVersion", writer.ToVector());
 }
 
 bool GameExtractor::GenerateOTR() {
