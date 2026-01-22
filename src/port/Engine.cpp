@@ -67,7 +67,54 @@ extern "C" {
 bool prevAltAssets = false;
 }
 
+typedef struct {
+    uint16_t major;
+    uint16_t minor;
+    uint16_t patch;
+} OTRVersion;
+
 GameEngine* GameEngine::Instance;
+
+// Read the port version from an OTR file
+OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
+    OTRVersion version = {};
+
+    // Use a temporary archive instance to load the otr and read the version file
+    auto archive = std::make_shared<Ship::O2rArchive>(otrPath);
+    if (archive->Open()) {
+        auto t = archive->LoadFile("portVersion");
+        if (t != nullptr && t->IsLoaded) {
+            auto stream = std::make_shared<Ship::MemoryStream>(t->Buffer->data(), t->Buffer->size());
+            auto reader = std::make_shared<Ship::BinaryReader>(stream);
+            Ship::Endianness endianness = (Ship::Endianness)reader->ReadUByte();
+            reader->SetEndianness(endianness);
+            version.major = reader->ReadUInt16();
+            version.minor = reader->ReadUInt16();
+            version.patch = reader->ReadUInt16();
+        }
+    }
+
+    return version;
+}
+
+// Checks the program version stored in the otr and compares the major value to soh
+// For Windows/Mac/Linux if the version doesn't match, offer to
+OTRVersion DetectOTRVersion(std::string fileName) {
+    bool isOtrOld = false;
+    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName, "sm64");
+
+    // Doesn't exist so nothing to do here
+    if (!std::filesystem::exists(otrPath)) {
+        return { INT16_MAX, INT16_MAX, INT16_MAX };
+    }
+
+    return ReadPortVersionFromOTR(otrPath);
+}
+
+bool VerifyArchiveVersion(OTRVersion version) {
+    return version.major != INT16_MAX && version.minor != INT16_MAX &&
+           (version.major == gBuildVersionMajor || version.minor == gBuildVersionMinor);
+}
 
 GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
@@ -81,16 +128,19 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r");
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
 
+    bool shouldRegen = VerifyArchiveVersion(DetectOTRVersion("sm64.o2r"));
+
 #ifdef _WIN32
     AllocConsole();
 #endif
 
-    if (std::filesystem::exists(main_path)) {
+    if (std::filesystem::exists(main_path) && !shouldRegen) {
         archiveFiles.push_back(main_path);
     } else {
-        if (ShowYesNoBox("Ghostship - Asset Extraction",
-                         "Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\nAssets will be "
-                         "extracted into an O2R file.") == IDYES) {
+        std::string msg = (shouldRegen ? "Your ROM O2R is outdated, and needs to be re-extracted.\n\n" : "") +
+                          std::string("Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\n"
+                                      "Assets will be extracted into an O2R file.");
+        if (ShowYesNoBox("Ghostship - Asset Extraction", msg.c_str()) == IDYES) {
             if (!GenAssetFile()) {
                 ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
                 exit(1);
