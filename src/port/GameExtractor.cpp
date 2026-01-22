@@ -4,10 +4,10 @@
 #include <shlwapi.h>
 #pragma comment(lib, "Shlwapi.lib")
 #endif
+#include "port/build.h"
 #include "GameExtractor.h"
 #include <cstdio>
 #include <unordered_map>
-
 #include <fstream>
 
 #include "Companion.h"
@@ -187,12 +187,24 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
     return mGameList[hash];
 }
 
-bool GameExtractor::GenerateOTR() const {
+void GameExtractor::WritePortVersion() {
+    auto writer = LUS::BinaryWriter();
+    writer.SetEndianness(Torch::Endianness::Big);
+    writer.Write((uint8_t) 1);
+    writer.Write((uint16_t) gBuildVersionMajor);
+    writer.Write((uint16_t) gBuildVersionMinor);
+    writer.Write((uint16_t) gBuildVersionPatch);
+    writer.Close();
+
+    Companion::Instance->RegisterCompanionFile("portVersion", writer.ToVector());
+}
+
+bool GameExtractor::GenerateOTR() {
     const std::string assets_path = Ship::Context::GetAppBundlePath();
     const std::string game_path = Ship::Context::GetAppDirectoryPath();
 
     Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path);
-
+    this->WritePortVersion();
     try {
         Companion::Instance->Init(ExportType::Binary);
     } catch (const std::exception& e) {

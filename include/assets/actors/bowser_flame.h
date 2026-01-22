@@ -5,31 +5,59 @@
 
 static const ALIGN_ASSET(2) char flame_seg6_texture_06000000[] = "__OTR__actors/bowser_flame/bowser_flame_0";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06002000[] = "__OTR__actors/bowser_flame/bowser_flame_1";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06001000[] = "__OTR__actors/bowser_flame/bowser_flame_1";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06004000[] = "__OTR__actors/bowser_flame/bowser_flame_2";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06002000[] = "__OTR__actors/bowser_flame/bowser_flame_2";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06006000[] = "__OTR__actors/bowser_flame/bowser_flame_3";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06003000[] = "__OTR__actors/bowser_flame/bowser_flame_3";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06008000[] = "__OTR__actors/bowser_flame/bowser_flame_4";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06004000[] = "__OTR__actors/bowser_flame/bowser_flame_4";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_0600A000[] = "__OTR__actors/bowser_flame/bowser_flame_5";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06005000[] = "__OTR__actors/bowser_flame/bowser_flame_5";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_0600C000[] = "__OTR__actors/bowser_flame/bowser_flame_6";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06006000[] = "__OTR__actors/bowser_flame/bowser_flame_6";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_0600E000[] = "__OTR__actors/bowser_flame/bowser_flame_7";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06007000[] = "__OTR__actors/bowser_flame/bowser_flame_7";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06010000[] = "__OTR__actors/bowser_flame/bowser_flame_8";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06008000[] = "__OTR__actors/bowser_flame/bowser_flame_8";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06012000[] = "__OTR__actors/bowser_flame/bowser_flame_9";
+static const ALIGN_ASSET(2) char flame_seg6_texture_06009000[] = "__OTR__actors/bowser_flame/bowser_flame_9";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06014000[] = "__OTR__actors/bowser_flame/bowser_flame_10";
+static const ALIGN_ASSET(2) char flame_seg6_texture_0600A000[] = "__OTR__actors/bowser_flame/bowser_flame_10";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06016000[] = "__OTR__actors/bowser_flame/bowser_flame_11";
+static const ALIGN_ASSET(2) char flame_seg6_texture_0600B000[] = "__OTR__actors/bowser_flame/bowser_flame_11";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_06018000[] = "__OTR__actors/bowser_flame/bowser_flame_12";
+static const ALIGN_ASSET(2) char flame_seg6_texture_0600C000[] = "__OTR__actors/bowser_flame/bowser_flame_12";
 
-static const ALIGN_ASSET(2) char flame_seg6_texture_0601A000[] = "__OTR__actors/bowser_flame/bowser_flame_13";
+static const ALIGN_ASSET(2) char flame_seg6_texture_0600D000[] = "__OTR__actors/bowser_flame/bowser_flame_13";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_0600E000[] = "__OTR__actors/bowser_flame/bowser_flame_14";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_0600F000[] = "__OTR__actors/bowser_flame/bowser_flame_15";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06010000[] = "__OTR__actors/bowser_flame/bowser_flame_16";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06011000[] = "__OTR__actors/bowser_flame/bowser_flame_17";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06012000[] = "__OTR__actors/bowser_flame/bowser_flame_18";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06013000[] = "__OTR__actors/bowser_flame/bowser_flame_19";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06014000[] = "__OTR__actors/bowser_flame/bowser_flame_20";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06015000[] = "__OTR__actors/bowser_flame/bowser_flame_21";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06016000[] = "__OTR__actors/bowser_flame/bowser_flame_22";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06017000[] = "__OTR__actors/bowser_flame/bowser_flame_23";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06018000[] = "__OTR__actors/bowser_flame/bowser_flame_24";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_06019000[] = "__OTR__actors/bowser_flame/bowser_flame_25";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_0601A000[] = "__OTR__actors/bowser_flame/bowser_flame_26";
+
+static const ALIGN_ASSET(2) char flame_seg6_texture_0601B000[] = "__OTR__actors/bowser_flame/bowser_flame_27";
 
 static const ALIGN_ASSET(2) char flame_seg6_vertex_0601C000[] = "__OTR__actors/bowser_flame/flame_seg6_vertex_0601C000";
 

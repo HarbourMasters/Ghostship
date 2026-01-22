@@ -33,7 +33,7 @@ static const std::unordered_map<int32_t, const char*> language = {
 };
 
 #ifdef _DEBUG
-DebugLogOption defaultLogLevel = DEBUG_LOG_TRACE;
+DebugLogOption defaultLogLevel = DEBUG_LOG_DEBUG;
 #else
 DebugLogOption defaultLogLevel = DEBUG_LOG_INFO;
 #endif
