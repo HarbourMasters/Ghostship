@@ -57,6 +57,10 @@ void bhv_red_coin_loop(void) {
             // ...increment the star's counter.
             o->parentObj->oHiddenStarTriggerCounter++;
 
+            if (o->parentObj->oHiddenStarTriggerCounter < 7) {
+                o->parentObj->oHiddenStarTriggerCounter = 7;
+            }
+
             // Spawn the orange number counter, as long as it isn't the last coin.
             if (o->parentObj->oHiddenStarTriggerCounter != 8) {
                 spawn_orange_number(o->parentObj->oHiddenStarTriggerCounter, 0, 0, 0);

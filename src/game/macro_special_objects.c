@@ -150,7 +150,7 @@ void spawn_macro_objects(s16 areaIndex, s16 *macroObjList) {
         if (((macroObject[MACRO_OBJ_PARAMS] >> 8) & RESPAWN_INFO_DONT_RESPAWN)
             != RESPAWN_INFO_DONT_RESPAWN) {
             // Spawn the new macro object.
-            CALL_CANCELLABLE_EVENT(SpawnObject, preset.model, macroObject[MACRO_OBJ_X], macroObject[MACRO_OBJ_Y],
+            CALL_CANCELLABLE_EVENT(MacroObjectOverride, preset.model, macroObject[MACRO_OBJ_X], macroObject[MACRO_OBJ_Y],
                                    macroObject[MACRO_OBJ_Z]) {
                 newObj = spawn_object_abs_with_rot(
                              &gMacroObjectDefaultParent, // Parent object

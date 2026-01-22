@@ -121,7 +121,7 @@ void exclamation_box_spawn_contents(struct Struct802C0DF0 *a0, u8 a1) {
 
     while (a0->unk0 != 99) {
         if (a1 == a0->unk0) {
-            CALL_CANCELLABLE_EVENT(SpawnObject, a0->model, o->rawData.asF32[0x37], o->rawData.asF32[0x38],
+            CALL_CANCELLABLE_EVENT(MacroObjectOverride, a0->model, o->rawData.asF32[0x37], o->rawData.asF32[0x38],
                                    o->rawData.asF32[0x39]) {
                 sp1C = spawn_object(o, a0->model, a0->behavior);
                 sp1C->oVelY = 20.0f;

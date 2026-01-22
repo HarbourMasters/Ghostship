@@ -12,7 +12,7 @@ extern "C" {
 }
 
 std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
-int16_t CustomItem::redCoinsCollected = 7;
+int16_t CustomItem::redCoinsCollected = 0;
 
 std::vector<int32_t> starActParams = {
     0, 16777216, 33554432, 50331648, 67108864, 83886080, 100663296,
@@ -41,7 +41,6 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             mario->healCounter += 4 * object->oDamageOrCoinValue;
             if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && mario->numCoins - object->oDamageOrCoinValue < 100 &&
                 mario->numCoins >= 100) {
-                // TODO: Replace with CustomItem::SpawnObject for 100 Coin Star
                 Rando::StaticData::RandoStaticCheck randoStaticCheck =
                     Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
                 if (randoStaticCheck.randoCheckId != RC_UNKNOWN) {
@@ -118,8 +117,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
 }
 
 void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId randoCheckId, RandoAct randoAct) {
-    // TODO: Change this to use the Rando::StaticData::Checks and look for RI_COIN_BLUE
-    if (Rando::StaticData::Checks[randoCheckId].randoItemId == RI_COIN_BLUE) {
+    if (randoCheckId >= RC_WF_BLUE_COIN_01 && randoCheckId <= RC_WF_BLUE_COIN_04) {
         object->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
         object->oIntangibleTimer = -1;
     } else {
@@ -131,6 +129,9 @@ void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId ra
                 break;
             case MODEL_STAR:
                 object->oBehParams = starActParams[randoAct];
+                if (!CVarGetInteger("gEnhancements.StarNoExit", 0)) {
+                    object->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
+                }
                 break;
             default:
                 break;

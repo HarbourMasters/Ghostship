@@ -20,7 +20,7 @@ DEFINE_EVENT(ItemCollected,
     struct Object* object;
 );
 
-DEFINE_EVENT(SpawnObject,
+DEFINE_EVENT(MacroObjectOverride,
     int16_t model;
     int16_t posX;
     int16_t posY;
@@ -33,7 +33,6 @@ DEFINE_EVENT(SpawnCoinStar,
     int16_t posZ;
 );
 
-// TODO: Remove this and only use SpawnObject
 DEFINE_EVENT(SpawnStar,
     int16_t* model;
     f32 posX;

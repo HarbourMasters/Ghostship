@@ -46,6 +46,19 @@ const BehaviorScript* GetBehaviorByModel(int16_t modelId) {
     return nullptr;
 }
 
+int16_t GetModelByBehavior(const BehaviorScript* behavior) {
+    if (behavior == bhvStar) {
+        return MODEL_STAR;
+    }
+
+    for (auto& macro : MacroObjectPresets) {
+        if (macro.behavior == behavior) {
+            return macro.model;
+        }
+    }
+    return NULL;
+}
+
 RandoItemId GetShuffledRandoItem(int16_t levelId, RandoCheckId randoCheckId) {
     if (levelId < 0 || levelId >= Rando::Logic::shuffledList.size()) {
         return RI_UNKNOWN;

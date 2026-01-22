@@ -15,6 +15,18 @@ struct ObjectHitbox randoRedCoinHitbox = {
     /* hurtboxHeight:     */ 0,
 };
 
+static struct ObjectHitbox randoCollectStarHitbox = {
+    /* interactType:      */ (1 << 12),
+    /* downOffset:        */ 0,
+    /* damageOrCoinValue: */ 0,
+    /* health:            */ 0,
+    /* numLootCoins:      */ 0,
+    /* radius:            */ 80,
+    /* height:            */ 50,
+    /* hurtboxRadius:     */ 0,
+    /* hurtboxHeight:     */ 0,
+};
+
 void Rando::ObjectBehavior::ModifyBlueCoinSwitchBehavior() {
     for (auto& [randoCheckId, object] : spawnedRandoObjects) {
         if (randoCheckId >= RC_WF_BLUE_COIN_01 && randoCheckId <= RC_WF_BLUE_COIN_04) {
@@ -24,6 +36,9 @@ void Rando::ObjectBehavior::ModifyBlueCoinSwitchBehavior() {
 
             if (object->behavior == bhvRedCoin) {
                 obj_set_hitbox(object, &randoRedCoinHitbox);
+            }
+            if (object->behavior == bhvStar) {
+                obj_set_hitbox(object, &randoCollectStarHitbox);
             }
         }
     }

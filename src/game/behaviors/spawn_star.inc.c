@@ -22,7 +22,9 @@ void bhv_collect_star_init(void) {
         o->header.gfx.sharedChild = gLoadedGraphNodes[MODEL_STAR];
     }
 
-    obj_set_hitbox(o, &sCollectStarHitbox);
+    CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_STAR) {
+        obj_set_hitbox(o, &sCollectStarHitbox);
+    }
 }
 
 void bhv_collect_star_loop(void) {
@@ -182,4 +184,5 @@ void bhv_hidden_red_coin_star_loop(void) {
             }
             break;
     }
+    //CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_STAR);
 }

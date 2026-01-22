@@ -43,10 +43,8 @@ void bhv_hidden_blue_coin_loop(void) {
 
             // Delete the coin once collected
             if (o->oInteractStatus & INT_STATUS_INTERACTED) {
-                //CALL_CANCELLABLE_EVENT(CoinCollected, o) {
-                    spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
-                    obj_mark_for_deletion(o);
-                //}
+                spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
+                obj_mark_for_deletion(o);
             }
             CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_BLUE_COIN) {
                 // After 200 frames of waiting and 20 2-frame blinks (for 240 frames total),

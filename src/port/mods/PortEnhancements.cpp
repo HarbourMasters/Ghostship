@@ -98,9 +98,9 @@ void PortEnhancements_Register() {
 
     // Register Rando Events
     REGISTER_EVENT(ItemCollected);
-    REGISTER_EVENT(SpawnObject);
-    REGISTER_EVENT(SpawnCoinStar);
+    REGISTER_EVENT(MacroObjectOverride);
     REGISTER_EVENT(SpawnStar);
+    REGISTER_EVENT(SpawnCoinStar);
     REGISTER_EVENT(ModifyDefaultStar);
     REGISTER_EVENT(ModifyObjectBehavior);
     REGISTER_EVENT(OnGameFileLoad);

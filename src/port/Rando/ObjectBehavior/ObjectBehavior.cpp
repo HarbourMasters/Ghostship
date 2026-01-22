@@ -68,8 +68,8 @@ void Rando::ObjectBehavior::Init() {
         }
     });
 
-    REGISTER_LISTENER(SpawnObject, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        SpawnObject* ev = (SpawnObject*)event;
+    REGISTER_LISTENER(MacroObjectOverride, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        MacroObjectOverride* ev = (MacroObjectOverride*)event;
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
@@ -80,16 +80,6 @@ void Rando::ObjectBehavior::Init() {
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
-    REGISTER_LISTENER(SpawnCoinStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        SpawnCoinStar* ev = (SpawnCoinStar*)event;
-        if (!IS_RANDO(selectedFileNum)) {
-            return;
-        }
-        LogOutSpawns("Coin Star", 122, ev->posX, ev->posY, ev->posZ);
-        ModifyCoinStarObject(&event->cancelled, ev->posX, ev->posY, ev->posZ);
-    });
-
-    // TODO: Remove these.
     REGISTER_LISTENER(SpawnStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         SpawnStar* ev = (SpawnStar*)event;
         if (!IS_RANDO(selectedFileNum)) {
@@ -130,6 +120,9 @@ void Rando::ObjectBehavior::Init() {
             case MODEL_RED_COIN:
                 Rando::ObjectBehavior::ModifyRedCoinBehavior(&event->cancelled, ev->object);
                 break;
+            case MODEL_STAR:
+                Rando::ObjectBehavior::ModifyStarBehavior(&event->cancelled, ev->object);
+                break;
             default:
                 event->cancelled = false;
                 break;
@@ -146,7 +139,7 @@ void Rando::ObjectBehavior::Init() {
                 break;
             case 18:
                 if (shouldResetRedCoins) {
-                    // CustomItem::redCoinsCollected = 0;
+                    CustomItem::redCoinsCollected = 0;
                     shouldResetRedCoins = false;
                 }
                 break;

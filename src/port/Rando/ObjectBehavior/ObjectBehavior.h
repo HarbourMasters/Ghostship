@@ -15,6 +15,7 @@ namespace ObjectBehavior {
 void Init();
 void ModifyBlueCoinSwitchBehavior();
 void ModifyRedCoinBehavior(bool* shouldCancel, struct Object* obj);
+void ModifyStarBehavior(bool* shouldCancel, struct Object* obj);
 
 } // namespace ObjectBehavior
 

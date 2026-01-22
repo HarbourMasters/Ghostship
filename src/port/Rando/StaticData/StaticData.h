@@ -52,6 +52,7 @@ extern std::map<RandoItemId, RandoStaticItem> Items;
 
 int16_t GetModelByRandoItem(RandoItemId randoItem);
 const BehaviorScript *GetBehaviorByModel(int16_t modelId);
+int16_t GetModelByBehavior(const BehaviorScript* behavior);
 RandoItemId GetShuffledRandoItem(int16_t currentCourse, RandoCheckId randoCheckId);
 RandoAct GetShuffledRandoAct(int16_t currentCourse, RandoCheckId randoCheckId);
 
