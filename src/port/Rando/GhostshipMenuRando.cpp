@@ -39,6 +39,12 @@ void GhostshipMenu::AddMenuRando() {
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_STARS].cvar)
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Shuffles Stars into the Item Pool."));
+    AddWidget(path, "Shuffle Red Coin Stars", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_RED_COIN_STARS].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Stars spawned from collecting 8 Red Coins into the Item Pool."))
+        .PreFunc(
+            [](WidgetInfo& info) { info.options->Disabled(Rando::StaticData::Options[RO_SHUFFLE_STARS].cvar == 0); });
     AddWidget(path, "Shuffle Red Coins", WIDGET_CVAR_CHECKBOX)
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_COINS_RED].cvar)
         .RaceDisable(false)

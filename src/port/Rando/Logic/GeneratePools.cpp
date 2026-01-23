@@ -38,6 +38,11 @@ void GenerateShuffleList() {
                 continue;
             }
 
+            if (randoCheckData.randoCheckType == RCTYPE_STAR_RED_COIN &&
+                CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_RED_COIN_STARS].cvar, 0) == RO_GENERIC_OFF) {
+                continue;
+            }
+
             RandoItemType randoItemType = Rando::StaticData::Items[randoCheckData.randoItemId].randoItemType;
 
             // TODO: Swap to RANDO_SAVE_OPTIONS once Save File is converted to JSON
