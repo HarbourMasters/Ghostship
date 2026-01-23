@@ -16,11 +16,15 @@ namespace Logic {
 
 extern std::vector<std::vector<LevelShuffleEntry>> shuffledList;
 extern std::vector<LevelShuffleEntry> shuffledLevelList;
+
+extern std::vector<LevelShuffleEntry> shuffledPool;
 extern std::vector<RandoCheckId> shuffledChecks;
 extern std::vector<std::pair<RandoItemId, RandoAct>> shuffledItems;
 
-void shuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledItems);
+void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledItems);
 void GenerateShuffleList();
+
+void ApplyNoLogicToSaveContext(std::vector<std::vector<LevelShuffleEntry>>& initialPool);
 
 // Logic Operators
 inline bool IsBlueSwitchActivated(RandoCheckId randoCheckId) {
@@ -30,12 +34,8 @@ inline bool IsBlueSwitchActivated(RandoCheckId randoCheckId) {
     return false;
 };
 
-inline bool IsCheckShuffled(int16_t levelId, RandoCheckId randoCheckId) {
-    if (levelId < 0 || levelId >= shuffledList.size()) {
-        return false;
-    }
-
-    for (auto& entry : shuffledList[levelId]) {
+inline bool IsCheckShuffled(RandoCheckId randoCheckId) {
+    for (auto& entry : shuffledPool) {
         if (entry.randoCheckId == randoCheckId) {
             return true;
         }

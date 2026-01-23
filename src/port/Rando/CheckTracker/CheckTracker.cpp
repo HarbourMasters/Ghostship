@@ -1,4 +1,5 @@
 #include "CheckTracker.h"
+#include "port/Rando/Logic/Logic.h"
 #include "port/ShipUtils.h"
 #include "port/ui/UIWidgets.hpp"
 #include <cstring>
@@ -91,6 +92,26 @@ namespace Rando {
 
 namespace CheckTracker {
 
+void SetCheckTrackerList() {
+    for (auto& [id, name] : levelIdList) {
+        CheckTrackerObject entry;
+        entry.levelId = id;
+        entry.levelName = name;
+
+        for (auto& [randoCheckId, randoStaticCheck] : Rando::StaticData::Checks) {
+            if (entry.levelId == randoStaticCheck.levelId) {
+                if (!Rando::Logic::IsCheckShuffled(randoCheckId)) {
+                    continue;
+                }
+
+                entry.randoCheckNameList.push_back(
+                    { randoCheckId, convertEnumToReadableName(randoStaticCheck.name), false });
+            }
+        }
+        checkTrackerList.push_back(entry);
+    }
+}
+
 void CheckTrackerWindow::Draw() {
     if (!CVAR_SHOW_CHECK_TRACKER) {
         return;
@@ -107,10 +128,8 @@ void CheckTrackerWindow::Draw() {
     if (ImGui::Begin("Check Tracker", nullptr, ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoFocusOnAppearing)) {
         trackerBG.w = ImGui::IsWindowDocked() ? 1.0f : CVAR_TRACKER_OPACITY;
         ImGui::SetWindowFontScale(trackerScale);
-        if (!IS_RANDO(selectedFileNum)) {
-            ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("No Rando Save Loaded").x) / 2);
-            ImGui::SetCursorPosY(ImGui::GetWindowHeight() / 2 - 10.0f);
-            ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Gray), "No Rando Save Loaded");
+        if (checkTrackerList.empty()) {
+            ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Orange), "No Rando Save Loaded");
             ImGui::End();
             ImGui::PopStyleColor(4);
             ImGui::PopStyleVar(1);
@@ -187,23 +206,6 @@ void SettingsWindow::DrawElement() {
 
 bool isInitialized = false;
 void Init() {
-    if (!isInitialized) {
-        for (auto& [id, name] : levelIdList) {
-            CheckTrackerObject entry;
-            entry.levelId = id;
-            entry.levelName = name;
-
-            for (auto& [randoCheckId, randoStaticCheck] : Rando::StaticData::Checks) {
-                if (entry.levelId == randoStaticCheck.levelId) {
-                    entry.randoCheckNameList.push_back(
-                        { randoCheckId, convertEnumToReadableName(randoStaticCheck.name), false });
-                }
-            }
-            checkTrackerList.push_back(entry);
-        }
-        isInitialized = true;
-    }
-
     trackerBG = { 0, 0, 0, CVAR_TRACKER_OPACITY };
     trackerScale = CVAR_TRACKER_SCALE;
 }

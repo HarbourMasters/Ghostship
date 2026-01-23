@@ -13,10 +13,11 @@ namespace StaticData {
 
 // clang-format off
 std::map<RandoOptionId, RandoStaticOption> Options = {
-    RO(RO_LOGIC,                RO_LOGIC_NO_LOGIC),
-    RO(RO_SHUFFLE_COINS_BLUE,   RO_GENERIC_OFF),
-    RO(RO_SHUFFLE_COINS_RED,    RO_GENERIC_OFF),
-    RO(RO_SHUFFLE_STARS,        RO_GENERIC_OFF),
+    RO(RO_LOGIC,                    RO_LOGIC_NO_LOGIC),
+    RO(RO_SHUFFLE_COINS_BLUE,       RO_GENERIC_OFF),
+    RO(RO_SHUFFLE_COINS_RED,        RO_GENERIC_OFF),
+    RO(RO_SHUFFLE_RED_COIN_STARS,   RO_GENERIC_OFF),
+    RO(RO_SHUFFLE_STARS,            RO_GENERIC_OFF),
 };
 
 std::unordered_map<int32_t, const char*> logicOptions = {

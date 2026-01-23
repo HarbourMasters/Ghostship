@@ -24,9 +24,8 @@ void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, i
 
 void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
     Rando::StaticData::RandoStaticCheck randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(x, y, z);
-    if (!Rando::Logic::IsCheckShuffled(Rando::StaticData::Checks[randoStaticCheck.randoCheckId].levelId - 1,
-                                       randoStaticCheck.randoCheckId) ||
-        randoStaticCheck.randoCheckId == RC_UNKNOWN || randoStaticCheck.randoItemId == RI_UNKNOWN) {
+    if (!Rando::Logic::IsCheckShuffled(randoStaticCheck.randoCheckId) || randoStaticCheck.randoCheckId == RC_UNKNOWN ||
+        randoStaticCheck.randoItemId == RI_UNKNOWN) {
         return;
     }
 
@@ -40,9 +39,8 @@ void ModifySpawnedObject(bool* shouldCancel, s16 x, s16 y, s16 z, s32 param) {
 
 void ModifyCoinStarObject(bool* shouldCancel, s16 x, s16 y, s16 z) {
     Rando::StaticData::RandoStaticCheck randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
-    if (!Rando::Logic::IsCheckShuffled(Rando::StaticData::Checks[randoStaticCheck.randoCheckId].levelId - 1,
-                                       randoStaticCheck.randoCheckId) ||
-        randoStaticCheck.randoCheckId == RC_UNKNOWN || randoStaticCheck.randoItemId == RI_UNKNOWN) {
+    if (!Rando::Logic::IsCheckShuffled(randoStaticCheck.randoCheckId) || randoStaticCheck.randoCheckId == RC_UNKNOWN ||
+        randoStaticCheck.randoItemId == RI_UNKNOWN) {
         return;
     }
 

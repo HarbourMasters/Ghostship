@@ -17,7 +17,8 @@ namespace Rando {
 namespace CheckTracker {
 
 void Init();
-void OnFileLoad();
+//void OnFileLoad();
+void SetCheckTrackerList();
 
 class CheckTrackerWindow : public Ship::GuiWindow {
   public:
