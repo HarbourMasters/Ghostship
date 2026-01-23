@@ -105,6 +105,8 @@ void CheckTrackerWindow::Draw() {
     ImGui::SetNextWindowSize(ImVec2(485.0f, 500.0f), ImGuiCond_FirstUseEver);
 
     if (ImGui::Begin("Check Tracker", nullptr, ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoFocusOnAppearing)) {
+        trackerBG.w = ImGui::IsWindowDocked() ? 1.0f : CVAR_TRACKER_OPACITY;
+        ImGui::SetWindowFontScale(trackerScale);
         if (!IS_RANDO(selectedFileNum)) {
             ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("No Rando Save Loaded").x) / 2);
             ImGui::SetCursorPosY(ImGui::GetWindowHeight() / 2 - 10.0f);
