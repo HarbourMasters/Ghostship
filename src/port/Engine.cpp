@@ -86,8 +86,7 @@ OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
         if (t != nullptr && t->IsLoaded) {
             auto stream = std::make_shared<Ship::MemoryStream>(t->Buffer->data(), t->Buffer->size());
             auto reader = std::make_shared<Ship::BinaryReader>(stream);
-            Ship::Endianness endianness = (Ship::Endianness)reader->ReadUByte();
-            reader->SetEndianness(endianness);
+            reader->SetEndianness(Ship::Endianness::Big);
             version.major = reader->ReadUInt16();
             version.minor = reader->ReadUInt16();
             version.patch = reader->ReadUInt16();
@@ -101,7 +100,7 @@ OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
 // For Windows/Mac/Linux if the version doesn't match, offer to
 OTRVersion DetectOTRVersion(std::string fileName) {
     bool isOtrOld = false;
-    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName, "sm64.o2r");
+    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName);
 
     // Doesn't exist so nothing to do here
     if (!std::filesystem::exists(otrPath)) {
