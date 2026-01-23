@@ -1,11 +1,8 @@
 #include "port/Rando/StaticData/StaticData.h"
-
-extern "C" {
 #include "sm64.h"
 #include "include/types.h"
 #include "game/area.h"
 #include "game/save_file.h"
-}
 
 namespace CustomItem {
 extern int16_t redCoinsCollected;
