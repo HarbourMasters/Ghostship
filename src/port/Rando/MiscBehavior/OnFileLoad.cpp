@@ -1,4 +1,5 @@
 #include "MiscBehavior.h"
+#include "port/Rando/Logic/Logic.h"
 
 extern "C" {
 extern struct SaveBuffer gSaveBuffer;

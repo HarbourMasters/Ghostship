@@ -15,6 +15,7 @@
 #include "Notification.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
+#include "port/Rando/CheckTracker/CheckTracker.h"
 
 namespace GhostshipGui {
 // MARK: - Delegates
@@ -25,6 +26,9 @@ std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
 std::shared_ptr<GhostshipModalWindow> mModalWindow;
+
+std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
+std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
 
 UIWidgets::Colors GetMenuThemeColor() {
     return mGhostshipMenu->GetMenuThemeColor();
@@ -60,6 +64,14 @@ void SetupGuiElements() {
     mModalWindow = std::make_shared<GhostshipModalWindow>(CVAR_WINDOW("ModalWindow"), "Modal Window");
     gui->AddGuiWindow(mModalWindow);
     mModalWindow->Show();
+
+    mRandoCheckTrackerWindow = std::make_shared<Rando::CheckTracker::CheckTrackerWindow>(
+        "gWindows.CheckTracker", "Check Tracker", ImVec2(375, 460));
+    gui->AddGuiWindow(mRandoCheckTrackerWindow);
+
+    mRandoCheckTrackerSettingsWindow = std::make_shared<Rando::CheckTracker::SettingsWindow>(
+        "gWindows.CheckTrackerSettings", "Check Tracker Settings");
+    gui->AddGuiWindow(mRandoCheckTrackerSettingsWindow);
 }
 
 void Destroy() {
@@ -73,6 +85,8 @@ void Destroy() {
     mNotificationWindow = nullptr;
     mInputViewer = nullptr;
     mInputViewerSettings = nullptr;
+    mRandoCheckTrackerWindow = nullptr;
+    mRandoCheckTrackerSettingsWindow = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

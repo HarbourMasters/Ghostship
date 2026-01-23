@@ -5,7 +5,7 @@
 #include "ObjectBehavior/ObjectBehavior.h"
 #include "MiscBehavior/MiscBehavior.h"
 // #include "Rando/Spoiler/Spoiler.h"
-// #include "Rando/CheckTracker/CheckTracker.h"
+#include "port/Rando/CheckTracker/CheckTracker.h"
 #include "port/ShipInit.hpp"
 
 int16_t selectedFileNum = 0;
@@ -25,7 +25,7 @@ void Rando::Init() {
     // Rando::Spoiler::RefreshOptions();
     Rando::MiscBehavior::Init();
     Rando::ObjectBehavior::Init();
-    // Rando::CheckTracker::Init();
+    Rando::CheckTracker::Init();
     // Ship::Context::GetInstance()->GetFileDropMgr()->RegisterDropHandler(Rando::Spoiler::HandleFileDropped);
 
     // GameInteractor::Instance->RegisterGameHook<GameInteractor::OnSaveLoad>(OnSaveLoadHandler);

@@ -1,4 +1,5 @@
 #include "ObjectBehavior.h"
+#include "port/Rando/Logic/Logic.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 
 extern "C" {

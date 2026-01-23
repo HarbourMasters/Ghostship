@@ -4,7 +4,6 @@
 #include <map>
 #include <array>
 #include "port/Rando/Types.h"
-#include "port/Rando/Logic/Logic.h"
 
 #include "include/level_table.h"
 #include "include/model_ids.h"
@@ -46,7 +45,6 @@ struct RandoStaticItem {
 };
 
 RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ);
-bool IsCheckShuffled(int16_t levelId, RandoCheckId randocheckId);
 
 extern std::map<RandoItemId, RandoStaticItem> Items;
 

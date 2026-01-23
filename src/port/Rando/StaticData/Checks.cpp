@@ -140,21 +140,21 @@ std::map<RandoCheckId, RandoStaticCheck> Checks = {
     RC(RC_DDD_STAR_05_MANTA_RAY,        RCTYPE_STAR_DEFAULT,    LEVEL_DDD,          RA_ACT_05,      RI_STAR,        -3180, -3600, 120),
     RC(RC_DDD_STAR_06_CAPS,             RCTYPE_STAR_DEFAULT,    LEVEL_DDD,          RA_ACT_06,      RI_STAR,        2030, -3700, -2780),
     RC(RC_DDD_STAR_07_100_COIN,         RCTYPE_STAR_DEFAULT,    LEVEL_DDD,          RA_ACT_COIN,    RI_STAR,        0, 0, 0),
-    RC(RC_HMC_BLUE_COIN_01,             RCTYPE_COIN_BLUE,       LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_BLUE,   3945, -1023, -2918),
-    RC(RC_HMC_BLUE_COIN_02,             RCTYPE_COIN_BLUE,       LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_BLUE,   3800, -1023, -4009),
-    RC(RC_HMC_BLUE_COIN_03,             RCTYPE_COIN_BLUE,       LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_BLUE,   3036, -858, -4118),
-    RC(RC_HMC_BLUE_COIN_04,             RCTYPE_COIN_BLUE,       LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_BLUE,   2018, -921, -4154),
-    RC(RC_HMC_BLUE_COIN_05,             RCTYPE_COIN_BLUE,       LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_BLUE,   1836, -921, -4700),
-    RC(RC_HMC_BLUE_COIN_06,             RCTYPE_COIN_BLUE,       LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_BLUE,   1836, -721, -4700),
-    RC(RC_HMC_BLUE_COIN_07,             RCTYPE_COIN_BLUE,       LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_BLUE,   1836, -521, -4700),
-    RC(RC_HMC_RED_COIN_01,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    2140, 2048, 6540),
-    RC(RC_HMC_RED_COIN_02,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    2900, 2048, 6500),
-    RC(RC_HMC_RED_COIN_03,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    6400, 2090, 5320),
-    RC(RC_HMC_RED_COIN_04,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    6820, 1024, 3300),
-    RC(RC_HMC_RED_COIN_05,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    6260, 1124, 4960),
-    RC(RC_HMC_RED_COIN_06,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    4080, 1124, 5760),
-    RC(RC_HMC_RED_COIN_07,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    4640, 2250, 3980),
-    RC(RC_HMC_RED_COIN_08,              RCTYPE_COIN_RED,        LEVEL_DDD,          RA_ACT_NONE,    RI_COIN_RED,    2960, 1124, 5140),
+    RC(RC_HMC_BLUE_COIN_01,             RCTYPE_COIN_BLUE,       LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_BLUE,   3945, -1023, -2918),
+    RC(RC_HMC_BLUE_COIN_02,             RCTYPE_COIN_BLUE,       LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_BLUE,   3800, -1023, -4009),
+    RC(RC_HMC_BLUE_COIN_03,             RCTYPE_COIN_BLUE,       LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_BLUE,   3036, -858, -4118),
+    RC(RC_HMC_BLUE_COIN_04,             RCTYPE_COIN_BLUE,       LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_BLUE,   2018, -921, -4154),
+    RC(RC_HMC_BLUE_COIN_05,             RCTYPE_COIN_BLUE,       LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_BLUE,   1836, -921, -4700),
+    RC(RC_HMC_BLUE_COIN_06,             RCTYPE_COIN_BLUE,       LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_BLUE,   1836, -721, -4700),
+    RC(RC_HMC_BLUE_COIN_07,             RCTYPE_COIN_BLUE,       LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_BLUE,   1836, -521, -4700),
+    RC(RC_HMC_RED_COIN_01,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    2140, 2048, 6540),
+    RC(RC_HMC_RED_COIN_02,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    2900, 2048, 6500),
+    RC(RC_HMC_RED_COIN_03,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    6400, 2090, 5320),
+    RC(RC_HMC_RED_COIN_04,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    6820, 1024, 3300),
+    RC(RC_HMC_RED_COIN_05,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    6260, 1124, 4960),
+    RC(RC_HMC_RED_COIN_06,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    4080, 1124, 5760),
+    RC(RC_HMC_RED_COIN_07,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    4640, 2250, 3980),
+    RC(RC_HMC_RED_COIN_08,              RCTYPE_COIN_RED,        LEVEL_HMC,          RA_ACT_NONE,    RI_COIN_RED,    2960, 1124, 5140),
     RC(RC_HMC_STAR_01_BEAST,            RCTYPE_STAR_DEFAULT,    LEVEL_DDD,          RA_ACT_01,      RI_STAR,        -3600, -4000, 3600),
     RC(RC_HMC_STAR_02_RED_COINS,        RCTYPE_STAR_RED_COIN,   LEVEL_DDD,          RA_ACT_02,      RI_STAR,        4000, 300, 5000),
     RC(RC_HMC_STAR_03_METAL_HEAD,       RCTYPE_STAR_DEFAULT,    LEVEL_DDD,          RA_ACT_03,      RI_STAR,        6200, -4400, 2300),
@@ -406,19 +406,6 @@ RandoStaticCheck GetShuffledRandoStaticCheck(s16 x, s16 y, s16 z) {
     randoStaticCheck.actData = Rando::StaticData::GetShuffledRandoAct(levelId - 1, randoCheckId);
 
     return randoStaticCheck;
-}
-
-bool IsCheckShuffled(int16_t levelId, RandoCheckId randoCheckId) {
-    if (levelId < 0 || levelId >= Rando::Logic::shuffledList.size()) {
-        return false;
-    }
-
-    for (auto& entry : Rando::Logic::shuffledList[levelId]) {
-        if (entry.randoCheckId == randoCheckId) {
-            return true;
-        }
-    }
-    return false;
 }
 
 } // namespace StaticData

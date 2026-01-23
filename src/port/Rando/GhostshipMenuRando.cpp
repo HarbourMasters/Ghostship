@@ -1,9 +1,12 @@
 #include "port/ui/GhostshipMenu.h"
-#include "port/Rando/Rando.h"
+//#include "port/Rando/Rando.h"
+#include "port/Rando/CheckTracker/CheckTracker.h"
 
 namespace GhostshipGui {
 
 extern std::shared_ptr<GhostshipMenu> mGhostshipMenu;
+extern std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
+extern std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
 using namespace UIWidgets;
 
 void GhostshipMenu::AddMenuRando() {
@@ -44,6 +47,14 @@ void GhostshipMenu::AddMenuRando() {
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_COINS_BLUE].cvar)
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Shuffles Blue Coins into the Item Pool."));
+
+    path = { "Rando", "Check Tracker", SECTION_COLUMN_1 };
+    AddSidebarEntry("Rando", path.sidebarName, 1);
+    path.column = SECTION_COLUMN_1;
+
+    AddWidget(path, "Popout Settings", WIDGET_WINDOW_BUTTON)
+        .CVar("gWindows.CheckTrackerSettings")
+        .WindowName("Check Tracker Settings");
 }
 
 } // namespace GhostshipGui

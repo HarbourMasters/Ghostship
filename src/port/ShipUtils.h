@@ -11,6 +11,7 @@ extern "C" {
 #endif
 
 bool Ship_IsCStringEmpty(const char* str);
+std::string convertEnumToReadableName(const std::string& input);
 
 #ifdef __cplusplus
 }

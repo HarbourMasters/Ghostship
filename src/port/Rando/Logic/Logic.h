@@ -30,6 +30,19 @@ inline bool IsBlueSwitchActivated(RandoCheckId randoCheckId) {
     return false;
 };
 
+inline bool IsCheckShuffled(int16_t levelId, RandoCheckId randoCheckId) {
+    if (levelId < 0 || levelId >= shuffledList.size()) {
+        return false;
+    }
+
+    for (auto& entry : shuffledList[levelId]) {
+        if (entry.randoCheckId == randoCheckId) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 } // namespace Logic
 

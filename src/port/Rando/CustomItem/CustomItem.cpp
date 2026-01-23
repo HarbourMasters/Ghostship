@@ -1,4 +1,6 @@
 #include "CustomItem.h"
+#include "port/Rando/Logic/Logic.h"
+#include "port/Rando/CheckTracker/CheckTracker.h"
 
 extern "C" {
 #include "game/object_list_processor.h"
@@ -25,6 +27,20 @@ void CustomItem::ClearSpawnedObjects() {
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
     // TODO: Implement Check Tracker functionality using this.
     SPDLOG_INFO("Check ID: {} - Collected", std::to_string(object->unused1));
+    for (auto& level : checkTrackerList) {
+        bool checkFound = false;
+        for (auto& [checkId, checkName, obtained] : level.randoCheckNameList) {
+            if (checkId == object->unused1) {
+                obtained = true;
+                checkFound = true;
+                break;
+            }
+        }
+        if (checkFound) {
+            break;
+        }
+    }
+
     switch (type) {
         case TYPE_COIN:
             spawn_object(object, MODEL_SPARKLES, bhvGoldenCoinSparkles);

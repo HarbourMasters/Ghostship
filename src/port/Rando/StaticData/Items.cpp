@@ -2,6 +2,7 @@
 #include <libultraship/bridge/consolevariablebridge.h>
 #include "port/ShipUtils.h"
 #include "port/Rando/Rando.h"
+#include "port/Rando/Logic/Logic.h"
 
 #include "include/macro_presets.h"
 
