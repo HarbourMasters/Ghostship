@@ -111,8 +111,7 @@ OTRVersion DetectOTRVersion(std::string fileName) {
 }
 
 bool VerifyArchiveVersion(OTRVersion version) {
-    return version.major != INT16_MAX && version.minor != INT16_MAX &&
-           (version.major == gBuildVersionMajor || version.minor == gBuildVersionMinor);
+    return version.major == gBuildVersionMajor && version.minor == gBuildVersionMinor;
 }
 
 GameEngine::GameEngine() : dictionary(nullptr) {
@@ -127,42 +126,36 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
     // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-#if (_DEBUG)
-    auto defaultLogLevel = spdlog::level::debug;
-#else
-    auto defaultLogLevel = spdlog::level::info;
-#endif
-    auto logLevel =
-        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
-    context->InitLogging(logLevel, logLevel);
-    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
-    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
-                (char*)gGitCommitHash);
-
     std::vector<std::string> archiveFiles;
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r");
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
 
-    bool shouldRegen = !VerifyArchiveVersion(DetectOTRVersion("sm64.o2r"));
-
-#ifdef _WIN32
-    AllocConsole();
-#endif
+    OTRVersion curVer = DetectOTRVersion("sm64.o2r");
+    bool shouldRegen = !VerifyArchiveVersion(curVer) && curVer.major != INT16_MAX;
 
     if (std::filesystem::exists(main_path) && !shouldRegen) {
         archiveFiles.push_back(main_path);
     } else {
-        if (shouldRegen && std::filesystem::exists(main_path)) {
-            std::filesystem::remove(main_path);
-        }
         std::string msg = (shouldRegen ? "Your ROM O2R is outdated, and needs to be re-extracted.\n\n" : "") +
                           std::string("Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\n"
                                       "Assets will be extracted into an O2R file.");
         if (ShowYesNoBox("Ghostship - Asset Extraction", msg.c_str()) == IDYES) {
+            if (shouldRegen && std::filesystem::exists(main_path)) {
+                std::filesystem::remove(main_path);
+            }
+#ifdef _WIN32
+            AllocConsole();
+#endif
             if (!GenAssetFile()) {
+#if defined(_WIN32) && !defined(_DEBUG)
+                FreeConsole();
+#endif
                 ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
                 exit(1);
             } else {
+#if defined(_WIN32) && !defined(_DEBUG)
+                FreeConsole();
+#endif
                 archiveFiles.push_back(main_path);
             }
         } else {
@@ -193,6 +186,18 @@ GameEngine::GameEngine() : dictionary(nullptr) {
             }
         }
     }
+
+#if (_DEBUG)
+    auto defaultLogLevel = spdlog::level::debug;
+#else
+    auto defaultLogLevel = spdlog::level::info;
+#endif
+    auto logLevel =
+        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
+    context->InitLogging(logLevel, logLevel);
+    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
+    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
+        (char*)gGitCommitHash);
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
     this->context->InitControlDeck(controlDeck);
