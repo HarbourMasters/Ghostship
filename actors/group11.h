@@ -16,9 +16,6 @@
 #include "assets/actors/spiny_egg.h"
 
 // wiggler_body
-#include "assets/actors/wiggler_body.h"
-
-// wiggler_head
-#include "assets/actors/wiggler_head.h"
+#include "assets/actors/wiggler.h"
 
 #endif

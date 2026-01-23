@@ -8,12 +8,35 @@
 
 #include "course_table.h"
 
-#define EEPROM_SIZE 0x200
+#include "port/Rando/Types.h"
+
+#define EEPROM_SIZE 0x800
 #define NUM_SAVE_FILES 4
 
 struct SaveBlockSignature {
     u16 magic;
     u16 chksum;
+};
+
+struct RandoSaveCheck {
+    RandoItemId randoItemId;
+    bool obtained;
+};
+
+typedef enum {
+    SAVETYPE_VANILLA,
+    SAVETYPE_RANDO,
+} SaveType;
+
+struct RandoSaveData {
+    bool placeHolder;
+    // struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    // u32 randoSaveOptions[RO_MAX];
+};
+
+struct ShipSaveData {
+    SaveType saveType;
+    struct RandoSaveData randoSaveData;
 };
 
 struct SaveFile {
@@ -34,6 +57,7 @@ struct SaveFile {
     u8 courseCoinScores[COURSE_STAGES_COUNT];
 
     struct SaveBlockSignature signature;
+    struct ShipSaveData shipSaveData;
 };
 
 enum SaveFileIndex {
@@ -125,6 +149,11 @@ extern struct WarpCheckpoint gWarpCheckpoint;
 extern s8 gMainMenuDataModified;
 extern s8 gSaveFileModified;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 void save_file_do_save(s32 fileIndex);
 void save_file_erase(s32 fileIndex);
 BAD_RETURN(s32) save_file_copy(s32 srcFileIndex, s32 destFileIndex);
@@ -152,6 +181,10 @@ void save_file_move_cap_to_default_location(void);
 void disable_warp_checkpoint(void);
 void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode);
 s32 check_warp_checkpoint(struct WarpNode *warpNode);
+
+#ifdef __cplusplus
+}
+#endif
 
 #ifdef VERSION_EU
 enum EuLanguages {

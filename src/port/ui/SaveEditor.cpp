@@ -89,6 +89,24 @@ void SaveEditorWindow::DrawElement() {
                 ImGui::EndTabItem();
             }
 
+            if (ImGui::BeginTabItem("Rando Helpers")) {
+                ImGui::SeparatorText("Mario's Position");
+                if (ImGui::BeginTable("PosTable", 3, ImGuiTableFlags_SizingFixedFit)) {
+                    ImGui::TableNextColumn();
+                    ImGui::Text("X: %.2f", gMarioState->pos[0]);
+                    ImGui::TableNextColumn();
+                    ImGui::Text("Y: %.2f", gMarioState->pos[1]);
+                    ImGui::TableNextColumn();
+                    ImGui::Text("Z: %.2f", gMarioState->pos[2]);
+                    ImGui::EndTable();
+                }
+                ImGui::SeparatorText("Set Data");
+                if (UIWidgets::Button("Set Coins to x99")) {
+                    gMarioState->numCoins = 99;
+                }
+                ImGui::EndTabItem();
+            }
+
             ImGui::EndTabBar();
         }
         ImGui::End();

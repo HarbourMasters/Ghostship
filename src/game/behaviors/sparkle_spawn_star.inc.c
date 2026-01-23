@@ -1,4 +1,5 @@
 // sparkle_spawn_star.inc.c
+#include "port/hooks/list/PlayerEvent.h"
 
 struct ObjectHitbox sSparkleSpawnStarHitbox = {
     /* interactType:      */ INTERACT_STAR_OR_KEY,
@@ -120,8 +121,10 @@ void bhv_spawned_star_loop(void) {
 }
 
 void bhv_spawn_star_no_level_exit(u32 sp20) {
-    struct Object *sp1C = spawn_object(o, MODEL_STAR, bhvSpawnedStarNoLevelExit);
-    sp1C->oBehParams = sp20 << 24;
-    sp1C->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
-    obj_set_angle(sp1C, 0, 0, 0);
+    CALL_CANCELLABLE_EVENT(SpawnCoinStar, o->oPosX, o->oPosY, o->oPosZ) {
+        struct Object* sp1C = spawn_object(o, MODEL_STAR, bhvSpawnedStarNoLevelExit);
+        sp1C->oBehParams = sp20 << 24;
+        sp1C->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
+        obj_set_angle(sp1C, 0, 0, 0);
+    }
 }

@@ -27,6 +27,9 @@
 #define LANGUAGE_FUNCTION sLanguageMode
 #endif
 
+#include "port/hooks/list/PlayerEvent.h"
+#include "port/mods/PortEnhancements.h"
+
 /**
  * @file file_select.c
  * This file implements how the file select and it's menus render and function.
@@ -1138,6 +1141,7 @@ void load_main_menu_save_file(struct Object *fileButton, s32 fileNum) {
     if (fileButton->oMenuButtonState == MENU_BUTTON_STATE_FULLSCREEN) {
         sSelectedFileNum = fileNum;
     }
+    CALL_EVENT(OnGameFileLoad, fileNum);
 }
 
 /**
