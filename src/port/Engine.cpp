@@ -759,7 +759,7 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
     return dictionary->at(key).data();
 }
 
-extern "C" int GameEngine_OTRSigCheck(const char* data) {
+extern "C" bool GameEngine_OTRSigCheck(const char* data) {
     return Ship::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
 }
 
