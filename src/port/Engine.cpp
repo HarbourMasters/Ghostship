@@ -101,7 +101,7 @@ OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
 // For Windows/Mac/Linux if the version doesn't match, offer to
 OTRVersion DetectOTRVersion(std::string fileName) {
     bool isOtrOld = false;
-    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName, "sm64");
+    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName, "sm64.o2r");
 
     // Doesn't exist so nothing to do here
     if (!std::filesystem::exists(otrPath)) {
