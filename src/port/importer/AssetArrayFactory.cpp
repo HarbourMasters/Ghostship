@@ -18,7 +18,12 @@ ResourceFactoryBinaryAssetArrayV0::ReadResource(std::shared_ptr<Ship::File> file
 
     auto count = reader->ReadUInt32();
     for (size_t i = 0; i < count; i++) {
-        auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(reader->ReadUInt64());
+        auto path = ResourceGetNameByCrc(reader->ReadUInt64());
+        if (path == nullptr) {
+            array->mPtrs.push_back(0);
+            continue;
+        }
+        auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path);
         if (asset != nullptr) {
             auto data = asset->GetInitData();
             if (data->Type == (uint32_t)Fast::ResourceType::Texture) {

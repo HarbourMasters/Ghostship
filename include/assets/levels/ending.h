@@ -4,101 +4,101 @@
 
 extern const LevelScript level_ending_entry[];
 
-static const ALIGN_ASSET(2) char dCakeEndTexture0[] = "__OTR__levels/ending/cake_end_texture_0";
+static const ALIGN_ASSET(2) char dCakeEndTexture0[] = "__OTR__levels/ending/cake.0";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture1[] = "__OTR__levels/ending/cake_end_texture_1";
+static const ALIGN_ASSET(2) char dCakeEndTexture1[] = "__OTR__levels/ending/cake.1";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture2[] = "__OTR__levels/ending/cake_end_texture_2";
+static const ALIGN_ASSET(2) char dCakeEndTexture2[] = "__OTR__levels/ending/cake.2";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture3[] = "__OTR__levels/ending/cake_end_texture_3";
+static const ALIGN_ASSET(2) char dCakeEndTexture3[] = "__OTR__levels/ending/cake.3";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture4[] = "__OTR__levels/ending/cake_end_texture_4";
+static const ALIGN_ASSET(2) char dCakeEndTexture4[] = "__OTR__levels/ending/cake.4";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture5[] = "__OTR__levels/ending/cake_end_texture_5";
+static const ALIGN_ASSET(2) char dCakeEndTexture5[] = "__OTR__levels/ending/cake.5";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture6[] = "__OTR__levels/ending/cake_end_texture_6";
+static const ALIGN_ASSET(2) char dCakeEndTexture6[] = "__OTR__levels/ending/cake.6";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture7[] = "__OTR__levels/ending/cake_end_texture_7";
+static const ALIGN_ASSET(2) char dCakeEndTexture7[] = "__OTR__levels/ending/cake.7";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture8[] = "__OTR__levels/ending/cake_end_texture_8";
+static const ALIGN_ASSET(2) char dCakeEndTexture8[] = "__OTR__levels/ending/cake.8";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture9[] = "__OTR__levels/ending/cake_end_texture_9";
+static const ALIGN_ASSET(2) char dCakeEndTexture9[] = "__OTR__levels/ending/cake.9";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture10[] = "__OTR__levels/ending/cake_end_texture_10";
+static const ALIGN_ASSET(2) char dCakeEndTexture10[] = "__OTR__levels/ending/cake.10";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture11[] = "__OTR__levels/ending/cake_end_texture_11";
+static const ALIGN_ASSET(2) char dCakeEndTexture11[] = "__OTR__levels/ending/cake.11";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture12[] = "__OTR__levels/ending/cake_end_texture_12";
+static const ALIGN_ASSET(2) char dCakeEndTexture12[] = "__OTR__levels/ending/cake.12";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture13[] = "__OTR__levels/ending/cake_end_texture_13";
+static const ALIGN_ASSET(2) char dCakeEndTexture13[] = "__OTR__levels/ending/cake.13";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture14[] = "__OTR__levels/ending/cake_end_texture_14";
+static const ALIGN_ASSET(2) char dCakeEndTexture14[] = "__OTR__levels/ending/cake.14";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture15[] = "__OTR__levels/ending/cake_end_texture_15";
+static const ALIGN_ASSET(2) char dCakeEndTexture15[] = "__OTR__levels/ending/cake.15";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture16[] = "__OTR__levels/ending/cake_end_texture_16";
+static const ALIGN_ASSET(2) char dCakeEndTexture16[] = "__OTR__levels/ending/cake.16";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture17[] = "__OTR__levels/ending/cake_end_texture_17";
+static const ALIGN_ASSET(2) char dCakeEndTexture17[] = "__OTR__levels/ending/cake.17";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture18[] = "__OTR__levels/ending/cake_end_texture_18";
+static const ALIGN_ASSET(2) char dCakeEndTexture18[] = "__OTR__levels/ending/cake.18";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture19[] = "__OTR__levels/ending/cake_end_texture_19";
+static const ALIGN_ASSET(2) char dCakeEndTexture19[] = "__OTR__levels/ending/cake.19";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture20[] = "__OTR__levels/ending/cake_end_texture_20";
+static const ALIGN_ASSET(2) char dCakeEndTexture20[] = "__OTR__levels/ending/cake.20";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture21[] = "__OTR__levels/ending/cake_end_texture_21";
+static const ALIGN_ASSET(2) char dCakeEndTexture21[] = "__OTR__levels/ending/cake.21";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture22[] = "__OTR__levels/ending/cake_end_texture_22";
+static const ALIGN_ASSET(2) char dCakeEndTexture22[] = "__OTR__levels/ending/cake.22";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture23[] = "__OTR__levels/ending/cake_end_texture_23";
+static const ALIGN_ASSET(2) char dCakeEndTexture23[] = "__OTR__levels/ending/cake.23";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture24[] = "__OTR__levels/ending/cake_end_texture_24";
+static const ALIGN_ASSET(2) char dCakeEndTexture24[] = "__OTR__levels/ending/cake.24";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture25[] = "__OTR__levels/ending/cake_end_texture_25";
+static const ALIGN_ASSET(2) char dCakeEndTexture25[] = "__OTR__levels/ending/cake.25";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture26[] = "__OTR__levels/ending/cake_end_texture_26";
+static const ALIGN_ASSET(2) char dCakeEndTexture26[] = "__OTR__levels/ending/cake.26";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture27[] = "__OTR__levels/ending/cake_end_texture_27";
+static const ALIGN_ASSET(2) char dCakeEndTexture27[] = "__OTR__levels/ending/cake.27";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture28[] = "__OTR__levels/ending/cake_end_texture_28";
+static const ALIGN_ASSET(2) char dCakeEndTexture28[] = "__OTR__levels/ending/cake.28";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture29[] = "__OTR__levels/ending/cake_end_texture_29";
+static const ALIGN_ASSET(2) char dCakeEndTexture29[] = "__OTR__levels/ending/cake.29";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture30[] = "__OTR__levels/ending/cake_end_texture_30";
+static const ALIGN_ASSET(2) char dCakeEndTexture30[] = "__OTR__levels/ending/cake.30";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture31[] = "__OTR__levels/ending/cake_end_texture_31";
+static const ALIGN_ASSET(2) char dCakeEndTexture31[] = "__OTR__levels/ending/cake.31";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture32[] = "__OTR__levels/ending/cake_end_texture_32";
+static const ALIGN_ASSET(2) char dCakeEndTexture32[] = "__OTR__levels/ending/cake.32";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture33[] = "__OTR__levels/ending/cake_end_texture_33";
+static const ALIGN_ASSET(2) char dCakeEndTexture33[] = "__OTR__levels/ending/cake.33";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture34[] = "__OTR__levels/ending/cake_end_texture_34";
+static const ALIGN_ASSET(2) char dCakeEndTexture34[] = "__OTR__levels/ending/cake.34";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture35[] = "__OTR__levels/ending/cake_end_texture_35";
+static const ALIGN_ASSET(2) char dCakeEndTexture35[] = "__OTR__levels/ending/cake.35";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture36[] = "__OTR__levels/ending/cake_end_texture_36";
+static const ALIGN_ASSET(2) char dCakeEndTexture36[] = "__OTR__levels/ending/cake.36";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture37[] = "__OTR__levels/ending/cake_end_texture_37";
+static const ALIGN_ASSET(2) char dCakeEndTexture37[] = "__OTR__levels/ending/cake.37";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture38[] = "__OTR__levels/ending/cake_end_texture_38";
+static const ALIGN_ASSET(2) char dCakeEndTexture38[] = "__OTR__levels/ending/cake.38";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture39[] = "__OTR__levels/ending/cake_end_texture_39";
+static const ALIGN_ASSET(2) char dCakeEndTexture39[] = "__OTR__levels/ending/cake.39";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture40[] = "__OTR__levels/ending/cake_end_texture_40";
+static const ALIGN_ASSET(2) char dCakeEndTexture40[] = "__OTR__levels/ending/cake.40";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture41[] = "__OTR__levels/ending/cake_end_texture_41";
+static const ALIGN_ASSET(2) char dCakeEndTexture41[] = "__OTR__levels/ending/cake.41";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture42[] = "__OTR__levels/ending/cake_end_texture_42";
+static const ALIGN_ASSET(2) char dCakeEndTexture42[] = "__OTR__levels/ending/cake.42";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture43[] = "__OTR__levels/ending/cake_end_texture_43";
+static const ALIGN_ASSET(2) char dCakeEndTexture43[] = "__OTR__levels/ending/cake.43";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture44[] = "__OTR__levels/ending/cake_end_texture_44";
+static const ALIGN_ASSET(2) char dCakeEndTexture44[] = "__OTR__levels/ending/cake.44";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture45[] = "__OTR__levels/ending/cake_end_texture_45";
+static const ALIGN_ASSET(2) char dCakeEndTexture45[] = "__OTR__levels/ending/cake.45";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture46[] = "__OTR__levels/ending/cake_end_texture_46";
+static const ALIGN_ASSET(2) char dCakeEndTexture46[] = "__OTR__levels/ending/cake.46";
 
-static const ALIGN_ASSET(2) char dCakeEndTexture47[] = "__OTR__levels/ending/cake_end_texture_47";
+static const ALIGN_ASSET(2) char dCakeEndTexture47[] = "__OTR__levels/ending/cake.47";
 
 static const ALIGN_ASSET(2) char ending_seg7_vtx_25800[] = "__OTR__levels/ending/ending_seg7_vtx_25800";
 
