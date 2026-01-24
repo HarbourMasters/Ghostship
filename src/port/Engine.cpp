@@ -51,6 +51,7 @@
 #endif
 
 const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
+std::shared_ptr<Fast::Fast3dWindow> gsFast3dWindow;
 const uint32_t defaultImGuiScale = 1;
 int32_t previousImGuiScaleIndex = -1;
 float previousImGuiScale = defaultImGuiScale;
@@ -62,10 +63,56 @@ extern "C" {
 #include "audio/external.h"
 #include "audio/internal.h"
 #include "game/ingame_menu.h"
+#include "variables.h"
 bool prevAltAssets = false;
 }
 
+typedef struct {
+    uint16_t major;
+    uint16_t minor;
+    uint16_t patch;
+} OTRVersion;
+
 GameEngine* GameEngine::Instance;
+
+// Read the port version from an OTR file
+OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
+    OTRVersion version = {};
+
+    // Use a temporary archive instance to load the otr and read the version file
+    auto archive = std::make_shared<Ship::O2rArchive>(otrPath);
+    if (archive->Open()) {
+        auto t = archive->LoadFile("portVersion");
+        if (t != nullptr && t->IsLoaded) {
+            auto stream = std::make_shared<Ship::MemoryStream>(t->Buffer->data(), t->Buffer->size());
+            auto reader = std::make_shared<Ship::BinaryReader>(stream);
+            reader->SetEndianness(Ship::Endianness::Big);
+            version.major = reader->ReadUInt16();
+            version.minor = reader->ReadUInt16();
+            version.patch = reader->ReadUInt16();
+        }
+    }
+
+    return version;
+}
+
+// Checks the program version stored in the otr and compares the major value to soh
+// For Windows/Mac/Linux if the version doesn't match, offer to
+OTRVersion DetectOTRVersion(std::string fileName) {
+    bool isOtrOld = false;
+    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName);
+
+    // Doesn't exist so nothing to do here
+    if (!std::filesystem::exists(otrPath)) {
+        return { INT16_MAX, INT16_MAX, INT16_MAX };
+    }
+
+    return ReadPortVersionFromOTR(otrPath);
+}
+
+bool VerifyArchiveVersion(OTRVersion version) {
+    return version.major == gBuildVersionMajor && version.minor == gBuildVersionMinor;
+}
 
 GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
@@ -75,24 +122,40 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     Ship::Switch::Init(Ship::PostInitPhase);
 #endif
 
+    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
+    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
+    // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
+
     std::vector<std::string> archiveFiles;
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r");
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
 
-#ifdef _WIN32
-    AllocConsole();
-#endif
+    OTRVersion curVer = DetectOTRVersion("sm64.o2r");
+    bool shouldRegen = !VerifyArchiveVersion(curVer) && curVer.major != INT16_MAX;
 
-    if (std::filesystem::exists(main_path)) {
+    if (std::filesystem::exists(main_path) && !shouldRegen) {
         archiveFiles.push_back(main_path);
     } else {
-        if (ShowYesNoBox("Ghostship - Asset Extraction",
-                         "Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\nAssets will be "
-                         "extracted into an O2R file.") == IDYES) {
+        std::string msg = (shouldRegen ? "Your ROM O2R is outdated, and needs to be re-extracted.\n\n" : "") +
+                          std::string("Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\n"
+                                      "Assets will be extracted into an O2R file.");
+        if (ShowYesNoBox("Ghostship - Asset Extraction", msg.c_str()) == IDYES) {
+            if (shouldRegen && std::filesystem::exists(main_path)) {
+                std::filesystem::remove(main_path);
+            }
+#ifdef _WIN32
+            AllocConsole();
+#endif
             if (!GenAssetFile()) {
+#if defined(_WIN32) && !defined(_DEBUG)
+                FreeConsole();
+#endif
                 ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
                 exit(1);
             } else {
+#if defined(_WIN32) && !defined(_DEBUG)
+                FreeConsole();
+#endif
                 archiveFiles.push_back(main_path);
             }
         } else {
@@ -124,32 +187,35 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         }
     }
 
-    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
-    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
-                                           // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
+#if (_DEBUG)
+    auto defaultLogLevel = spdlog::level::debug;
+#else
+    auto defaultLogLevel = spdlog::level::info;
+#endif
+    auto logLevel =
+        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
+    context->InitLogging(logLevel, logLevel);
+    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
+    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
+                (char*)gGitCommitHash);
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
+    this->context->InitControlDeck(controlDeck);
 
     this->context->InitResourceManager(archiveFiles, {}, 3);
     this->context->InitConsole();
 
-    auto window = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
+    gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
+    this->context->InitWindow(gsFast3dWindow);
 
-    this->context->Init(archiveFiles, {}, 3, { 32000, 512, 1100 }, window, controlDeck);
+    context->InitGfxDebugger();
+    context->InitFileDropMgr();
 
-#ifndef __SWITCH__
-    Ship::Context::GetInstance()->GetLogger()->set_level(
-        (spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
-    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
-#endif
+    this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
-    Ship::Context::GetInstance()->GetLogger()->set_level(
-        (spdlog::level::level_enum)CVarGetInteger("gDeveloperTools.LogLevel", 1));
-    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
-
-    window->SetTargetFps(60);
-    window->SetMaximumFrameLatency(1);
-    window->SetRendererUCode(ucode_f3d);
+    gsFast3dWindow->SetTargetFps(60);
+    gsFast3dWindow->SetMaximumFrameLatency(1);
+    gsFast3dWindow->SetRendererUCode(ucode_f3d);
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
     auto blobFactory = std::make_shared<Ship::ResourceFactoryBinaryBlobV0>();
@@ -698,7 +764,7 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
     return dictionary->at(key).data();
 }
 
-extern "C" int GameEngine_OTRSigCheck(const char* data) {
+extern "C" bool GameEngine_OTRSigCheck(const char* data) {
     return Ship::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
 }
 
