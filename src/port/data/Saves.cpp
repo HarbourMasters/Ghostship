@@ -1,5 +1,6 @@
 #include "Saves.h"
 
+#include "sm64.h"
 #include "port/ShipInit.hpp"
 #include "port/data/SaveConversion.h"
 
