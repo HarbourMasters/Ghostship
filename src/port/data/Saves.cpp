@@ -27,7 +27,8 @@ void RestoreMainMenuData(int32_t srcSlot) {
 void RestoreSaveFileData(int32_t fileIndex, int32_t srcSlot) {
     int32_t destSlot = srcSlot ^ 1;
 
-    bcopy(&gSaveBuffer.files[fileIndex][srcSlot], &gSaveBuffer.files[fileIndex][destSlot], sizeof(gSaveBuffer.files[fileIndex][destSlot]));
+    bcopy(&gSaveBuffer.files[fileIndex][srcSlot], &gSaveBuffer.files[fileIndex][destSlot],
+          sizeof(gSaveBuffer.files[fileIndex][destSlot]));
 }
 
 void SaveFileDoSave(int32_t fileIndex) {
@@ -98,7 +99,6 @@ void SaveMainMenuData(void) {
     file << j.dump(4);
     file.close();
 }
-
 }
 
 static RegisterShipInitFunc initFunc(Init);
