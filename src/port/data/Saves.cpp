@@ -38,7 +38,7 @@ void SaveFileDoSave(int32_t fileIndex) {
     }
 
     json j = gSaveBuffer.files[fileIndex][0];
-    file << j.dump(4);
+    file << j.dump(1);
     file.close();
 }
 
@@ -96,7 +96,7 @@ void SaveMainMenuData(void) {
     }
 
     json j = gSaveBuffer.menuData[0];
-    file << j.dump(4);
+    file << j.dump(1);
     file.close();
 }
 }
