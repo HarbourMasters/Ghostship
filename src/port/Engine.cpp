@@ -90,7 +90,11 @@ OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
             version.major = reader->ReadUInt16();
             version.minor = reader->ReadUInt16();
             version.patch = reader->ReadUInt16();
+        } else {
+            SPDLOG_WARN("Failed to read portVersion file from O2R: {}", otrPath);
         }
+    } else {
+        SPDLOG_WARN("Failed to open O2R for version reading: {}", otrPath);
     }
 
     return version;
@@ -104,6 +108,7 @@ OTRVersion DetectOTRVersion(std::string fileName) {
 
     // Doesn't exist so nothing to do here
     if (!std::filesystem::exists(otrPath)) {
+        SPDLOG_WARN("O2R file not found at path: {}", otrPath);
         return { INT16_MAX, INT16_MAX, INT16_MAX };
     }
 
@@ -136,6 +141,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     if (std::filesystem::exists(main_path) && !shouldRegen) {
         archiveFiles.push_back(main_path);
     } else {
+        SPDLOG_WARN("Your ROM O2R is outdated, and needs to be re-extracted.");
         std::string msg = (shouldRegen ? "Your ROM O2R is outdated, and needs to be re-extracted.\n\n" : "") +
                           std::string("Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\n"
                                       "Assets will be extracted into an O2R file.");
