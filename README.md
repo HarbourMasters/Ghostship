@@ -87,6 +87,7 @@ If you want to playtest a continuous integration build, you can find them at the
 
 # Special Thanks:
 
+* [Kenix3](https://github.com/Kenix3/libultraship/) : for helping with the Engine development that were brought into other ports.
 * [HM64 Team](https://github.com/harbourMasters) : for creating Libultraship and helping with various issues.
 * [garrettjoecox](https://github.com/garrettjoecox) : for contributing with fixes to this port.
 * [inspectredc](https://github.com/inspectredc) : for contributing to the extraction of the game's assets.
