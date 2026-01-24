@@ -375,6 +375,10 @@ void GhostshipMenu::AddMenuSettings() {
             });
         })
         .Options(ButtonOptions().Tooltip("Displays a test notification."));
+    AddWidget(path, "Test Achievement Notification", WIDGET_BUTTON)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) { Notification::EmitAchievement(nullptr, "Harbour Mastery", 0); })
+        .Options(ButtonOptions().Tooltip("Displays a test notification."));
 }
 
 } // namespace GhostshipGui
