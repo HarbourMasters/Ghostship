@@ -73,7 +73,8 @@ void GenerateShuffleList() {
         }
         if (!shuffledItems.empty()) {
             for (int v = 0; v < shuffledChecks.size(); v++) {
-                shuffledLevelList.push_back({ shuffledChecks[v], shuffledItems[v].first, shuffledItems[v].second });
+                shuffledLevelList.push_back(
+                    { shuffledChecks[v], shuffledItems[v].first, shuffledItems[v].second, false });
             }
             shuffledList.push_back(shuffledLevelList);
         }

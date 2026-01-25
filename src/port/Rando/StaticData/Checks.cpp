@@ -103,13 +103,13 @@ std::map<RandoCheckId, RandoStaticCheck> Checks = {
     RC(RC_CCM_RED_COIN_06,              RCTYPE_COIN_RED,        LEVEL_CCM,          RA_ACT_NONE,    RI_COIN_RED,    2700, -4600, 1230),
     RC(RC_CCM_RED_COIN_07,              RCTYPE_COIN_RED,        LEVEL_CCM,          RA_ACT_NONE,    RI_COIN_RED,    1990, -4040, 4950),
     RC(RC_CCM_RED_COIN_08,              RCTYPE_COIN_RED,        LEVEL_CCM,          RA_ACT_NONE,    RI_COIN_RED,    4408, -4550, -1534),
-    RC(RC_CCM_STAR_01_SLIDING_AWAY,     RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_NONE,    RI_STAR,        2500, -4350, 5750),
-    RC(RC_CCM_STAR_02_LOST_PENGUIN,     RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_NONE,    RI_STAR,        3167, -4300, 5108),
-    RC(RC_CCM_STAR_03_PENGUIN_RACE,     RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_NONE,    RI_STAR,        -7339, -5700, -6774),
-    RC(RC_CCM_STAR_04_RED_COINS,        RCTYPE_STAR_RED_COIN,   LEVEL_CCM,          RA_ACT_NONE,    RI_STAR,        4200, -927, 400),
-    RC(RC_CCM_STAR_05_LOST_HEAD,        RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_NONE,    RI_STAR,        -4700, -1024, 1890),
-    RC(RC_CCM_STAR_06_WALL_KICKS,       RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_NONE,    RI_STAR,        -2000, -2200, -3000),
-    RC(RC_CCM_STAR_07_100_COIN,         RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_NONE,    RI_STAR,        0, 0, 0),
+    RC(RC_CCM_STAR_01_SLIDING_AWAY,     RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_01,      RI_STAR,        2500, -4350, 5750),
+    RC(RC_CCM_STAR_02_LOST_PENGUIN,     RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_02,      RI_STAR,        3167, -4300, 5108),
+    RC(RC_CCM_STAR_03_PENGUIN_RACE,     RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_03,      RI_STAR,        -7339, -5700, -6774),
+    RC(RC_CCM_STAR_04_RED_COINS,        RCTYPE_STAR_RED_COIN,   LEVEL_CCM,          RA_ACT_04,      RI_STAR,        4200, -927, 400),
+    RC(RC_CCM_STAR_05_LOST_HEAD,        RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_05,      RI_STAR,        -4700, -1024, 1890),
+    RC(RC_CCM_STAR_06_WALL_KICKS,       RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_06,      RI_STAR,        -2000, -2200, -3000),
+    RC(RC_CCM_STAR_07_100_COIN,         RCTYPE_STAR_DEFAULT,    LEVEL_CCM,          RA_ACT_COIN,    RI_STAR,        0, 0, 0),
     RC(RC_COTMC_RED_COIN_01,            RCTYPE_COIN_RED,        LEVEL_COTMC,        RA_ACT_NONE,    RI_COIN_RED,    200, -291, -5600),
     RC(RC_COTMC_RED_COIN_02,            RCTYPE_COIN_RED,        LEVEL_COTMC,        RA_ACT_NONE,    RI_COIN_RED,    980, 260, -3430),
     RC(RC_COTMC_RED_COIN_03,            RCTYPE_COIN_RED,        LEVEL_COTMC,        RA_ACT_NONE,    RI_COIN_RED,    -540, -352, -5940),
@@ -402,8 +402,8 @@ RandoStaticCheck GetShuffledRandoStaticCheck(s16 x, s16 y, s16 z) {
     int16_t levelId = Rando::StaticData::Checks[randoCheckId].levelId;
 
     randoStaticCheck = Rando::StaticData::Checks[randoCheckId];
-    randoStaticCheck.randoItemId = Rando::StaticData::GetShuffledRandoItem(levelId - 1, randoCheckId);
-    randoStaticCheck.actData = Rando::StaticData::GetShuffledRandoAct(levelId - 1, randoCheckId);
+    randoStaticCheck.randoItemId = Rando::StaticData::GetShuffledRandoItem(randoCheckId);
+    randoStaticCheck.actData = Rando::StaticData::GetShuffledRandoAct(randoCheckId);
 
     return randoStaticCheck;
 }

@@ -1,7 +1,10 @@
 #include "Spoiler.h"
+#include "port/ui/Notification.h"
 #include <fstream>
+#include <filesystem>
 
 const std::string appShortName = "sm64";
+namespace fs = std::filesystem;
 
 namespace Rando {
 
@@ -18,13 +21,20 @@ void SaveToFile(const std::string& fileName, nlohmann::json spoiler) {
 }
 
 nlohmann::json LoadFromFile(const std::string& fileName) {
+    nlohmann::json spoiler;
     std::string spoilerFilePath = Ship::Context::GetPathRelativeToAppDirectory("randomizer/" + fileName, appShortName);
     std::ifstream fileStream(spoilerFilePath);
-    if (!fileStream.is_open()) {
-        throw std::runtime_error("Failed to open spoiler file");
+
+    if (!fs::exists(spoilerFilePath)) {
+        return spoiler;
     }
 
-    nlohmann::json spoiler;
+    if (!fileStream.is_open()) {
+        Notification::Emit(
+            { .message = "Error: Failed to open spoiler file.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });
+        return spoiler;
+    }
+
     try {
         fileStream >> spoiler;
     } catch (nlohmann::json::exception& e) {

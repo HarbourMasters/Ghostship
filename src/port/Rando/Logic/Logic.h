@@ -8,6 +8,7 @@ struct LevelShuffleEntry {
     RandoCheckId randoCheckId;
     RandoItemId randoItemId;
     RandoAct randoAct;
+    bool obtained;
 };
 
 namespace Rando {

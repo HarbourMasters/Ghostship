@@ -60,12 +60,8 @@ int16_t GetModelByBehavior(const BehaviorScript* behavior) {
     return NULL;
 }
 
-RandoItemId GetShuffledRandoItem(int16_t levelId, RandoCheckId randoCheckId) {
-    if (levelId < 0 || levelId >= Rando::Logic::shuffledList.size()) {
-        return RI_UNKNOWN;
-    }
-
-    for (auto& entry : Rando::Logic::shuffledList[levelId]) {
+RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId) {
+    for (auto& entry : Rando::Logic::shuffledPool) {
         if (entry.randoCheckId == randoCheckId) {
             return entry.randoItemId;
         }
@@ -73,12 +69,8 @@ RandoItemId GetShuffledRandoItem(int16_t levelId, RandoCheckId randoCheckId) {
     return RI_UNKNOWN;
 }
 
-RandoAct GetShuffledRandoAct(int16_t levelId, RandoCheckId randoCheckId) {
-    if (levelId < 0 || levelId >= Rando::Logic::shuffledList.size()) {
-        return RA_ACT_NONE;
-    }
-
-    for (auto& entry : Rando::Logic::shuffledList[levelId]) {
+RandoAct GetShuffledRandoAct(RandoCheckId randoCheckId) {
+    for (auto& entry : Rando::Logic::shuffledPool) {
         if (entry.randoCheckId == randoCheckId) {
             return entry.randoAct;
         }

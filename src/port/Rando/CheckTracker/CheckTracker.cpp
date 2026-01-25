@@ -52,28 +52,29 @@ std::map<int16_t, std::string> levelIdList = {
 ImVec4 trackerBG = ImVec4{ 0, 0, 0, 0.5f };
 float trackerScale = 1.0f;
 
-std::vector<CheckTrackerObject> checkTrackerList;
-
 void DrawCheckTrackerList() {
-    for (auto& level : checkTrackerList) {
-        if (CVAR_SHOW_CURRENT_LEVEL && level.levelId != gCurrLevelNum) {
+    for (auto& [id, name] : levelIdList) {
+        if (CVAR_SHOW_CURRENT_LEVEL && id != gCurrLevelNum) {
             continue;
         }
-        ImGui::PushID(level.levelId);
+
+        ImGui::PushID(id);
         ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0, 0, 0, 0));
         ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0, 0, 0, 0.5f));
-        if (ImGui::CollapsingHeader(level.levelName.c_str(),
-                                    ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Leaf)) {
+        if (ImGui::CollapsingHeader(name.c_str(), ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Leaf)) {
             ImGui::Indent(20.0f);
             if (ImGui::BeginTable("CheckList", 1)) {
                 ImGui::TableNextColumn();
-                for (auto& [checkId, checkName, obtained] : level.randoCheckNameList) {
-                    ImVec4 textColor = obtained ? VecFromRGBA8(CVAR_COLLECTED_COLOR)
-                                                : UIWidgets::ColorValues.at(UIWidgets::Colors::White);
-                    ImGui::TextColored(textColor, checkName.c_str());
-                    if (obtained) {
+                for (auto& entry : Rando::Logic::shuffledPool) {
+                    if (Rando::StaticData::Checks[entry.randoCheckId].levelId != id) {
+                        continue;
+                    }
+                    ImVec4 textColor = entry.obtained ? VecFromRGBA8(CVAR_COLLECTED_COLOR)
+                                                      : UIWidgets::ColorValues.at(UIWidgets::Colors::White);
+                    ImGui::TextColored(textColor, Rando::StaticData::Checks[entry.randoCheckId].name);
+                    if (entry.obtained) {
                         ImGui::SameLine();
-                        RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(level.levelId - 1, checkId);
+                        RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(entry.randoCheckId);
                         ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::LightBlue), "(%s)",
                                            Rando::StaticData::Items[randoItemId].name);
                     }
@@ -92,26 +93,6 @@ namespace Rando {
 
 namespace CheckTracker {
 
-void SetCheckTrackerList() {
-    for (auto& [id, name] : levelIdList) {
-        CheckTrackerObject entry;
-        entry.levelId = id;
-        entry.levelName = name;
-
-        for (auto& [randoCheckId, randoStaticCheck] : Rando::StaticData::Checks) {
-            if (entry.levelId == randoStaticCheck.levelId) {
-                if (!Rando::Logic::IsCheckShuffled(randoCheckId)) {
-                    continue;
-                }
-
-                entry.randoCheckNameList.push_back(
-                    { randoCheckId, convertEnumToReadableName(randoStaticCheck.name), false });
-            }
-        }
-        checkTrackerList.push_back(entry);
-    }
-}
-
 void CheckTrackerWindow::Draw() {
     if (!CVAR_SHOW_CHECK_TRACKER) {
         return;
@@ -128,7 +109,7 @@ void CheckTrackerWindow::Draw() {
     if (ImGui::Begin("Check Tracker", nullptr, ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoFocusOnAppearing)) {
         trackerBG.w = ImGui::IsWindowDocked() ? 1.0f : CVAR_TRACKER_OPACITY;
         ImGui::SetWindowFontScale(trackerScale);
-        if (checkTrackerList.empty()) {
+        if (Rando::Logic::shuffledPool.empty()) {
             ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Orange), "No Rando Save Loaded");
             ImGui::End();
             ImGui::PopStyleColor(4);

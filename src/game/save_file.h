@@ -2,6 +2,7 @@
 #define SAVE_FILE_H
 
 #include <libultra/types.h>
+#include "port/Rando/Types.h"
 
 #include "types.h"
 #include "area.h"
@@ -20,6 +21,7 @@ struct SaveBlockSignature {
 
 struct RandoSaveCheck {
     RandoItemId randoItemId;
+    RandoAct randoAct;
     bool obtained;
 };
 
@@ -29,8 +31,7 @@ typedef enum {
 } SaveType;
 
 struct RandoSaveData {
-    bool placeHolder;
-    // struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    struct RandoSaveCheck randoSaveChecks[RC_MAX];
     // u32 randoSaveOptions[RO_MAX];
 };
 
@@ -84,11 +85,12 @@ struct MainMenuSaveData {
 #endif
 
     // Pad to match the EEPROM size of 0x200 (10 bytes on JP/US, 8 bytes on EU)
-    u8 filler[EEPROM_SIZE / 2 - SUBTRAHEND - NUM_SAVE_FILES * (4 + sizeof(struct SaveFile))];
+    u8 filler[EEPROM_SIZE / 2 - SUBTRAHEND - NUM_SAVE_FILES * (4 + SAVE_FILE_SIZE)];
 
     struct SaveBlockSignature signature;
 
     // @port: Custom data needs to go after this point
+    struct ShipSaveData shipSaveData;
 };
 
 struct SaveBuffer {

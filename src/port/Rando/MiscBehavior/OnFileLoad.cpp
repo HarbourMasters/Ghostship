@@ -1,7 +1,6 @@
 #include "MiscBehavior.h"
 #include "port/Rando/Logic/Logic.h"
 #include "port/Rando/Spoiler/Spoiler.h"
-#include "port/Rando/CheckTracker/CheckTracker.h"
 #include "port/ui/Notification.h"
 
 extern "C" {
@@ -21,12 +20,13 @@ bool SpoilerExistsForFileNum(std::string fileName) {
 void Rando::MiscBehavior::OnFileLoad() {
     REGISTER_LISTENER(OnGameFileLoad, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         OnGameFileLoad* ev = (OnGameFileLoad*)event;
+        selectedFileNum = ev->fileNum - 1;
+
         if (!CVarGetInteger("gRandoSettings.Enabled", 0)) {
-            gSaveBuffer.files[ev->fileNum - 1]->shipSaveData.saveType = SAVETYPE_VANILLA;
+            gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_VANILLA;
             return;
         }
 
-        selectedFileNum = ev->fileNum - 1;
         std::string fileName = std::to_string(selectedFileNum) + ".json";
         bool logExists = SpoilerExistsForFileNum(fileName);
 
@@ -38,15 +38,27 @@ void Rando::MiscBehavior::OnFileLoad() {
                 nlohmann::json loadedSpoiler = Rando::Spoiler::LoadFromFile(fileName);
                 Rando::Logic::shuffledPool = Rando::Spoiler::GenerateFromSpoilerLog(loadedSpoiler);
             }
-            Rando::CheckTracker::SetCheckTrackerList();
+            for (auto& pool : Rando::Logic::shuffledPool) {
+                RandoSaveCheck randoSaveCheck;
+                randoSaveCheck.randoItemId = pool.randoItemId;
+                randoSaveCheck.randoAct = pool.randoAct;
+                randoSaveCheck.obtained = pool.obtained;
+
+                RANDO_SAVE_CHECKS(selectedFileNum)[pool.randoCheckId] = randoSaveCheck;
+            }
+            Notification::Emit(
+                { .message = "Spoiler written to Save File.", .messageColor = ImVec4(0, 0.85f, 0.3f, 1) });
+        } else {
+            Rando::Logic::shuffledPool.clear();
+            for (size_t i = 0; i < RC_MAX; i++) {
+                RandoSaveCheck randoSaveCheck = RANDO_SAVE_CHECKS(selectedFileNum)[i];
+                LevelShuffleEntry entry;
+                entry.randoCheckId = (RandoCheckId)i;
+                entry.randoItemId = randoSaveCheck.randoItemId;
+                entry.randoAct = randoSaveCheck.randoAct;
+                entry.obtained = randoSaveCheck.obtained;
+                Rando::Logic::shuffledPool.push_back(entry);
+            }
         }
-
-        // TODO: Inject Save File with spoiler data
-        // gSaveBuffer.files[ev->fileNum]->shipSaveData.randoSaveData.isRando = true;
-
-        // bcopy(&gSaveBuffer.files[ev->fileNum][0], &gSaveBuffer.files[ev->fileNum][1],
-        //       sizeof(gSaveBuffer.files[ev->fileNum][1]));
-
-        // write_eeprom_data(&gSaveBuffer.menuData[ev->fileNum], sizeof(gSaveBuffer.menuData[ev->fileNum]));
     });
 }

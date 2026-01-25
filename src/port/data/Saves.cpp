@@ -8,7 +8,9 @@
 #include <filesystem>
 namespace fs = std::filesystem;
 
+extern "C" {
 extern struct SaveBuffer gSaveBuffer;
+}
 
 static void Init() {
     // Create saves directory if it doesn't exist
@@ -73,6 +75,12 @@ void SaveFileLoadAll(void) {
 
         json j;
         file >> j;
+        // Migrate Existing Saves to Include Vanilla ShipSaveData.
+        if (!j.contains("shipSaveData")) {
+            j["shipSaveData"] = json::object();
+            j["shipSaveData"]["saveType"] = SAVETYPE_VANILLA;
+        }
+
         gSaveBuffer.files[fileIndex][0] = j.get<struct SaveFile>();
         file.close();
     }

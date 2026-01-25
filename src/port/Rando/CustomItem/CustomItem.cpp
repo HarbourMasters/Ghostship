@@ -27,17 +27,10 @@ void CustomItem::ClearSpawnedObjects() {
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
     // TODO: Implement Check Tracker functionality using this.
     SPDLOG_INFO("Check ID: {} - Collected", std::to_string(object->unused1));
-    for (auto& level : checkTrackerList) {
-        bool checkFound = false;
-        for (auto& [checkId, checkName, obtained] : level.randoCheckNameList) {
-            if (checkId == object->unused1) {
-                obtained = true;
-                checkFound = true;
-                break;
-            }
-        }
-        if (checkFound) {
-            break;
+    for (auto& shuffled : Rando::Logic::shuffledPool) {
+        if (shuffled.randoCheckId == object->unused1) {
+            shuffled.obtained = true;
+            RANDO_SAVE_CHECKS(selectedFileNum)[shuffled.randoCheckId].obtained = true;
         }
     }
 

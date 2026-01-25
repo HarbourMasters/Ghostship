@@ -1,8 +1,12 @@
 #pragma once
 
 #include "game/save_file.h"
+#include "port/Rando/Rando.h"
+#include "port/Rando/Spoiler/Spoiler.h"
 
 #include <nlohmann/json.hpp>
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveCheck, randoItemId, randoAct, obtained)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveData, randoSaveChecks)
 
 using json = nlohmann::json;
 
@@ -33,6 +37,22 @@ T GetSafeEntry(const json& node, const std::string& key, const T& def) {
     return node.at(key).get<T>();
 }
 
+inline void from_json(const json& j, ShipSaveData& save) {
+    save.saveType = j.value("saveType", SAVETYPE_VANILLA);
+
+    if (save.saveType == SAVETYPE_RANDO) {
+        j["randoSaveData"].get_to(save.randoSaveData);
+    }
+}
+
+inline void to_json(json& j, const ShipSaveData& save) {
+    j = json{ { "saveType", save.saveType } };
+
+    if (save.saveType == SAVETYPE_RANDO) {
+        j["randoSaveData"] = save.randoSaveData;
+    }
+}
+
 inline void to_json(json& j, const SaveFile& save) {
     json stars = {};
     json coins = {};
@@ -41,6 +61,7 @@ inline void to_json(json& j, const SaveFile& save) {
         { "y", save.capPos[1] },
         { "z", save.capPos[2] },
     };
+
     for (size_t i = 0; i < COURSE_COUNT; i++) {
         stars[entries[i]] = save.courseStars[i];
     }
@@ -56,7 +77,8 @@ inline void to_json(json& j, const SaveFile& save) {
         { "capPos", cap },
         { "flags", save.flags },
         { "courseStars", stars },
-        { "courseCoinScores", coins }
+        { "courseCoinScores", coins },
+        { "shipSaveData", save.shipSaveData }
     };
 }
 
@@ -77,6 +99,10 @@ inline void LoadSaveFileV1(const json& j, SaveFile& save) {
     json coinsJson = GetSafeEntry<json>(j, "courseCoinScores");
     for (size_t i = 0; i < COURSE_STAGES_COUNT; i++) {
         save.courseCoinScores[i] = GetSafeEntry<u8>(coinsJson, entries[i]);
+    }
+
+    if (j.contains("shipSaveData")) {
+        j["shipSaveData"].get_to(save.shipSaveData);
     }
 }
 

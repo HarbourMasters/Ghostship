@@ -67,6 +67,7 @@ std::vector<LevelShuffleEntry> GenerateFromSpoilerLog(nlohmann::json spoiler) {
                     levelEntry.randoItemId = itemId;
                 }
             }
+            levelEntry.obtained = false;
             spoilerChecks.push_back(levelEntry);
         }
     }
