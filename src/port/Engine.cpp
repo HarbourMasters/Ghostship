@@ -442,16 +442,14 @@ void GameEngine::StartFrame() const {
 }
 
 uint32_t GameEngine::GetInterpolationFPS() {
-    if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
-        return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
-    }
-
     if (CVarGetInteger(CVAR_SETTING("MatchRefreshRate"), 0)) {
         return Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+    } else if (CVarGetInteger(CVAR_VSYNC_ENABLED, 1) ||
+               !Ship::Context::GetInstance()->GetWindow()->CanDisableVerticalSync()) {
+        return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(),
+                                  CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
     }
-
-    return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(),
-                              CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
+    return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
 }
 
 // Audio
