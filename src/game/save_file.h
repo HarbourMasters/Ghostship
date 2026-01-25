@@ -8,9 +8,9 @@
 
 #include "course_table.h"
 
-#include "port/Rando/Types.h"
-
-#define EEPROM_SIZE 0x800
+#define EEPROM_SIZE 0x200
+#define SAVE_FILE_SIZE 0x38
+#define MENU_SAVE_DATA_SIZE 0x20
 #define NUM_SAVE_FILES 4
 
 struct SaveBlockSignature {
@@ -57,6 +57,8 @@ struct SaveFile {
     u8 courseCoinScores[COURSE_STAGES_COUNT];
 
     struct SaveBlockSignature signature;
+
+    // @port: Custom data needs to go after this point
     struct ShipSaveData shipSaveData;
 };
 
@@ -85,6 +87,8 @@ struct MainMenuSaveData {
     u8 filler[EEPROM_SIZE / 2 - SUBTRAHEND - NUM_SAVE_FILES * (4 + sizeof(struct SaveFile))];
 
     struct SaveBlockSignature signature;
+
+    // @port: Custom data needs to go after this point
 };
 
 struct SaveBuffer {
@@ -144,6 +148,10 @@ struct WarpCheckpoint {
     /*0x04*/ u8 warpNode;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern struct WarpCheckpoint gWarpCheckpoint;
 
 extern s8 gMainMenuDataModified;
@@ -195,6 +203,10 @@ enum EuLanguages {
 
 void eu_set_language(u16 language);
 u16 eu_get_language(void);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // SAVE_FILE_H

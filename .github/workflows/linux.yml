@@ -34,7 +34,7 @@ jobs:
           sudo make install
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
           cmake --build build-cmake -j
       - name: Create Package
         run: |

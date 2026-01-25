@@ -114,7 +114,7 @@ uint8_t* GameEngine_LoadActName(uint32_t actId);
 uint8_t* GameEngine_LoadLevelName(uint32_t levelId);
 struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 uint8_t* GameEngine_LoadTranslation(const char* key);
-int GameEngine_OTRSigCheck(const char* imgData);
+bool GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
 void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, char));
 void* GameEngine_GetExactDataByName(const char* path);
