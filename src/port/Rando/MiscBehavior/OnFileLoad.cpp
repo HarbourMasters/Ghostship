@@ -24,20 +24,25 @@ void Rando::MiscBehavior::OnFileLoad() {
 
         if (!CVarGetInteger("gRandoSettings.Enabled", 0)) {
             gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_VANILLA;
+            Rando::Logic::shuffledPool.clear();
             return;
         }
 
-        std::string fileName = std::to_string(selectedFileNum) + ".json";
-        bool logExists = SpoilerExistsForFileNum(fileName);
-
         if (!IS_RANDO(selectedFileNum)) {
             gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
-            if (!logExists) {
-                Rando::Logic::GenerateShuffleList();
+            if (CVarGetInteger("gRandoSettings.UseExistingLog", 0)) {
+                std::string fileName = std::to_string(selectedFileNum) + ".json";
+                bool logExists = SpoilerExistsForFileNum(fileName);
+                if (!logExists) {
+                    Rando::Logic::GenerateShuffleList();
+                } else {
+                    nlohmann::json loadedSpoiler = Rando::Spoiler::LoadFromFile(fileName);
+                    Rando::Logic::shuffledPool = Rando::Spoiler::GenerateFromSpoilerLog(loadedSpoiler);
+                }
             } else {
-                nlohmann::json loadedSpoiler = Rando::Spoiler::LoadFromFile(fileName);
-                Rando::Logic::shuffledPool = Rando::Spoiler::GenerateFromSpoilerLog(loadedSpoiler);
+                Rando::Logic::GenerateShuffleList();
             }
+
             for (auto& pool : Rando::Logic::shuffledPool) {
                 RandoSaveCheck randoSaveCheck;
                 randoSaveCheck.randoItemId = pool.randoItemId;

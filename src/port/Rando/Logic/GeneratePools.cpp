@@ -90,15 +90,18 @@ void GenerateShuffleList() {
             break;
     }
 
-    nlohmann::json spoilerLog = Rando::Spoiler::GenerateFromPoolGeneration(shuffledPool);
-    if (spoilerLog.empty()) {
-        Notification::Emit(
-            { .message = "Error: No Spoiler Log was created.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });
-    } else {
-        std::string fileName = spoilerLog["fileNum"].get<std::string>() + ".json";
-        Rando::Spoiler::SaveToFile(fileName, spoilerLog);
-        Notification::Emit(
-            { .prefix = fileName + " ", .message = "Spoiler Log created.", .messageColor = ImVec4(0, 0.3f, 0.85f, 1) });
+    if (CVarGetInteger("gRandoSettings.GenerateLog", 0)) {
+        nlohmann::json spoilerLog = Rando::Spoiler::GenerateFromPoolGeneration(shuffledPool);
+        if (spoilerLog.empty()) {
+            Notification::Emit(
+                { .message = "Error: No Spoiler Log was created.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });
+        } else {
+            std::string fileName = spoilerLog["fileNum"].get<std::string>() + ".json";
+            Rando::Spoiler::SaveToFile(fileName, spoilerLog);
+            Notification::Emit({ .prefix = fileName + " ",
+                                 .message = "Spoiler Log created.",
+                                 .messageColor = ImVec4(0, 0.3f, 0.85f, 1) });
+        }
     }
 }
 

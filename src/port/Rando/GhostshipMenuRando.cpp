@@ -1,6 +1,7 @@
 #include "port/ui/GhostshipMenu.h"
-//#include "port/Rando/Rando.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/Rando/Spoiler/Spoiler.h"
+#include "port/ui/Notification.h"
 
 namespace GhostshipGui {
 
@@ -28,7 +29,33 @@ void GhostshipMenu::AddMenuRando() {
         .Options(ComboboxOptions()
                      .Tooltip("Sets the Logic type for the seed.")
                      .ComboMap(Rando::StaticData::logicOptions)
-                     .DefaultIndex(RO_LOGIC_GLITCHLESS));
+                     .DefaultIndex(RO_LOGIC_GLITCHLESS)
+                     .ComponentAlignment(ComponentAlignments::Right)
+                     .LabelPosition(LabelPositions::Near));
+
+    AddWidget(path, "SeperatorBar", WIDGET_SEPARATOR);
+    AddWidget(path, "Generate Spoiler Log", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_RANDOMIZER_SETTING("GenerateLog"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Generates a Spoiler Log in the randomizer folder.").DefaultValue(true));
+    // TODO: populate combobox with existing spoiler logs
+    AddWidget(path, "Load Existing Spoiler Log", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_RANDOMIZER_SETTING("UseExistingLog"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Uses a Spoiler Log in the randomizer folder."));
+    AddWidget(path, "Create Spoiler Log", WIDGET_BUTTON)
+        .Callback([](WidgetInfo& info) {
+            nlohmann::json spoiler = Rando::Spoiler::GenerateFromPoolGeneration(Rando::Logic::shuffledPool);
+            std::string fileName = spoiler["fileNum"].get<std::string>() + ".json";
+            Rando::Spoiler::SaveToFile(fileName, spoiler);
+            Notification::Emit({ .prefix = fileName + " ",
+                                 .message = "Spoiler Log created.",
+                                 .messageColor = ImVec4(0, 0.3f, 0.85f, 1) });
+        })
+        .Options(ButtonOptions().Tooltip("Creates a Spoiler Log from the current SaveFile."))
+        .PreFunc([](WidgetInfo& info) { info.options->Disabled(Rando::Logic::shuffledPool.empty()); });
+
+    AddWidget(path, "SeperatorBar", WIDGET_SEPARATOR);
 
     path = { "Rando", "Shuffle Options", SECTION_COLUMN_1 };
     AddSidebarEntry("Rando", path.sidebarName, 1);
