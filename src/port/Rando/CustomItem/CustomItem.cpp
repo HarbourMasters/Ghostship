@@ -40,6 +40,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             if (object->behavior == bhvRedCoin) {
                 CustomItem::redCoinsCollected++;
                 if (CustomItem::redCoinsCollected != 8) {
+                    object->parentObj->oHiddenStarTriggerCounter = redCoinsCollected;
                     struct Object* spawnNumber;
                     spawnNumber = spawn_object_relative(CustomItem::redCoinsCollected, 0, 0, 0, object, MODEL_NUMBER,
                                                         bhvOrangeNumber);
@@ -142,7 +143,7 @@ void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId ra
                 break;
             case MODEL_STAR:
                 object->oBehParams = starActParams[randoAct];
-                if (!CVarGetInteger("gEnhancements.StarNoExit", 0)) {
+                if (CVarGetInteger("gEnhancements.StarNoExit", 0)) {
                     object->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
                 }
                 break;
