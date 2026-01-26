@@ -1,4 +1,9 @@
 #include "MiscBehavior.h"
+#include "port/hooks/list/EngineEvent.h"
+
+extern "C" {
+#include "game/ingame_menu.h"
+}
 
 // Entry point for the module, run once on game boot
 void Rando::MiscBehavior::Init() {
@@ -13,5 +18,14 @@ void Rando::MiscBehavior::Init() {
 
         *(ev->redCoinsCollected) = CustomItem::redCoinsCollected;
         event->cancelled = true;
+    });
+
+    REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        LevelScriptExecute* ev = (LevelScriptExecute*)event;
+        if (ev->command == 17) {
+            gRedCoinsCollected = 0;
+            CustomItem::redCoinsCollected = 0;
+            CustomItem::ClearSpawnedObjects();
+        }
     });
 }

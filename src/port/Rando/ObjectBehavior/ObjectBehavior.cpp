@@ -8,10 +8,8 @@ extern "C" {
 #include "assets/actors/star/geo.h"
 #include "assets/actors/coin/geo.h"
 #include "include/behavior_data.h"
-#include "game/ingame_menu.h"
 extern MarioState* gMarioState;
 }
-
 
 void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
     if (model != MODEL_STAR && model != MODEL_RED_COIN && model != MODEL_RED_COIN_NO_SHADOW &&
@@ -72,7 +70,6 @@ void Rando::ObjectBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        LogOutSpawns("Object", (int16_t)ev->model, ev->posX, ev->posY, ev->posZ);
         if (ev->model == MODEL_EXCLAMATION_BOX) {
             return;
         }
@@ -88,7 +85,6 @@ void Rando::ObjectBehavior::Init() {
             return;
         }
 
-        LogOutSpawns("Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
@@ -97,7 +93,6 @@ void Rando::ObjectBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        LogOutSpawns("Default Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, ev->param);
     });
 
@@ -125,16 +120,6 @@ void Rando::ObjectBehavior::Init() {
             default:
                 event->cancelled = false;
                 break;
-        }
-    });
-
-    REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        LevelScriptExecute* ev = (LevelScriptExecute*)event;
-        if (ev->command == 17) {
-            SPDLOG_INFO("Cleared Red Coins");
-            gRedCoinsCollected = 0;
-            CustomItem::redCoinsCollected = 0;
-            CustomItem::ClearSpawnedObjects();
         }
     });
 }

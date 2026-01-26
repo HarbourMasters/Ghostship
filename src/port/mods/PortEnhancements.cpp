@@ -9,6 +9,7 @@
 #include "assets/bin/segment2.h"
 #include "port/ShipInit.hpp"
 #include "port/Rando/Rando.h"
+#include "port/ShipUtils.h"
 
 static const Mtx matrix_patch_identity = {
     { { 1.0f, 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f, 1.0f } }
@@ -108,6 +109,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(OnGameFileSave);
 
     Rando::Init();
+    LoadGuiTextures();
 }
 
 static RegisterShipInitFunc initFunc(PortEnhancements_Init);

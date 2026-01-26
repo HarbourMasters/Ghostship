@@ -1,6 +1,7 @@
 #include "CustomItem.h"
 #include "port/Rando/Logic/Logic.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/ui/Notification.h"
 
 extern "C" {
 #include "game/object_list_processor.h"
@@ -11,6 +12,9 @@ extern "C" {
 #include "audio/external.h"
 #include "game/sound_init.h"
 #include "game/mario.h"
+
+// Asset Headers
+#include "include/assets/textures/segment2.h"
 }
 
 std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
@@ -24,9 +28,19 @@ void CustomItem::ClearSpawnedObjects() {
     spawnedRandoObjects.clear();
 }
 
+void CreateCollectNotification(const char* texture, std::string text, ImVec4 textColor) {
+    if (texture == texture_hud_char_coin && CustomItem::redCoinsCollected > 1) {
+        text += "'s";
+    }
+
+    text += " collected!";
+
+    Notification::Emit({ .itemIcon = texture, .message = text, .messageColor = textColor });
+}
+
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
-    // TODO: Implement Check Tracker functionality using this.
     SPDLOG_INFO("Check ID: {} - Collected", std::to_string(object->unused1));
+
     for (auto& shuffled : Rando::Logic::shuffledPool) {
         if (shuffled.randoCheckId == object->unused1) {
             shuffled.obtained = true;
@@ -39,6 +53,10 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             spawn_object(object, MODEL_SPARKLES, bhvGoldenCoinSparkles);
             if (object->behavior == bhvRedCoin) {
                 CustomItem::redCoinsCollected++;
+                CreateCollectNotification("Red Coin Icon",
+                                          std::to_string(CustomItem::redCoinsCollected) + "x Red Coin",
+                                          ImVec4(1, 0, 0, 1));
+
                 if (CustomItem::redCoinsCollected != 8) {
                     object->parentObj->oHiddenStarTriggerCounter = redCoinsCollected;
                     struct Object* spawnNumber;
@@ -71,56 +89,15 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             }
             break;
         case TYPE_STAR: {
+            CreateCollectNotification(texture_hud_char_star, "Course " + std::to_string(object->unused2) + " Star",
+                                      ImVec4(1, 1, 0, 1));
             spawn_object(object, MODEL_NONE, bhvStarKeyCollectionPuffSpawner);
-            bool shouldExitLevel = (object->oInteractionSubtype & INT_SUBTYPE_NO_EXIT) == 0 ||
-                                   !CVarGetInteger("gEnhancements.StarNoExit", 0);
-            bool isGrandStar = (object->oInteractionSubtype & INT_SUBTYPE_GRAND_STAR) != 0;
-            u32 starGrabAction = ACT_STAR_DANCE_EXIT;
             int16_t starAct = object->unused2;
 
-            if (shouldExitLevel) {
-                mario->hurtCounter = 0;
-                mario->healCounter = 0;
-                if (mario->capTimer > 1) {
-                    mario->capTimer = 1;
-                }
-            }
-
-            if (!shouldExitLevel) {
-                starGrabAction = ACT_STAR_DANCE_NO_EXIT;
-            }
-
-            if (mario->action & ACT_FLAG_SWIMMING) {
-                starGrabAction = ACT_STAR_DANCE_WATER;
-            }
-
-            if (mario->action & ACT_FLAG_METAL_WATER) {
-                starGrabAction = ACT_STAR_DANCE_WATER;
-            }
-
-            if (mario->action & ACT_FLAG_AIR) {
-                starGrabAction = ACT_FALL_AFTER_STAR_GRAB;
-            }
-
-            // TODO: Save to file once JSON Saves are implemented.
             save_file_collect_star_or_key(mario->numCoins, starAct);
             mario->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
+            save_file_do_save(selectedFileNum);
 
-            if (shouldExitLevel) {
-                drop_queued_background_music();
-                fadeout_level_music(126);
-            }
-
-            play_sound(SOUND_MENU_STAR_SOUND, mario->marioObj->header.gfx.cameraToObject);
-            if (!ROM_JP) {
-                update_mario_sound_and_camera(mario);
-            }
-
-            if (isGrandStar) {
-                set_mario_action(mario, ACT_JUMBO_STAR_CUTSCENE, 0);
-            } else {
-                set_mario_action(mario, starGrabAction, !shouldExitLevel + 2 * isGrandStar);
-            }
             break;
         }
         default:

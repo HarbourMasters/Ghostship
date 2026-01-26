@@ -3,6 +3,7 @@
 
 extern "C" {
 #include "macros.h"
+#include "include/assets/textures/segment2.h"
 }
 
 constexpr f32 fourByThree = 4.0f / 3.0f;
@@ -89,4 +90,18 @@ std::string convertEnumToReadableName(const std::string& input) {
     }
 
     return result;
+}
+
+std::array<const char*, 3> miscellaneousTextures = {
+    texture_hud_char_star,
+    texture_hud_char_mario_head,
+    texture_hud_char_coin,
+};
+
+void LoadGuiTextures() {
+    for (const auto entry : miscellaneousTextures) {
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
+    }
+    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Red Coin Icon", texture_hud_char_coin,
+                                                                        ImVec4(1, 0, 0, 1));
 }
