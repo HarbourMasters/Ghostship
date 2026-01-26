@@ -15,12 +15,14 @@ extern std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrack
 #define CVAR_NAME_TRACKER_SCALE "gRando.CheckTracker.Scale"
 #define CVAR_NAME_SHOW_CURRENT_LEVEL "gRando.CheckTracker.ShowCurrentLevel"
 #define CVAR_NAME_COLLECTED_COLOR "gRando.CheckTracker.CollectedColor"
+#define CVAR_NAME_ITEM_COLOR "gRando.CheckTracker.ItemColor"
 
 #define CVAR_SHOW_CHECK_TRACKER CVarGetInteger(CVAR_NAME_SHOW_CHECK_TRACKER, 0)
 #define CVAR_TRACKER_OPACITY CVarGetFloat(CVAR_NAME_TRACKER_OPACITY, 0.5f)
 #define CVAR_TRACKER_SCALE CVarGetFloat(CVAR_NAME_TRACKER_SCALE, 1.0f)
 #define CVAR_SHOW_CURRENT_LEVEL CVarGetInteger(CVAR_NAME_SHOW_CURRENT_LEVEL, 0)
 #define CVAR_COLLECTED_COLOR CVarGetColor(CVAR_NAME_COLLECTED_COLOR ".Value", { 100, 255, 100, 255 })
+#define CVAR_ITEM_COLOR CVarGetColor(CVAR_NAME_ITEM_COLOR ".Value", { 79, 0, 221, 255 })
 
 std::map<int16_t, std::string> levelIdList = {
     { LEVEL_BOB, "Bob Omb Battlefield" },
@@ -69,13 +71,15 @@ void DrawCheckTrackerList() {
                     if (Rando::StaticData::Checks[entry.randoCheckId].levelId != id) {
                         continue;
                     }
-                    ImVec4 textColor = entry.obtained ? VecFromRGBA8(CVAR_COLLECTED_COLOR)
+                    ImVec4 checkTextColor = entry.obtained ? VecFromRGBA8(CVAR_COLLECTED_COLOR)
                                                       : UIWidgets::ColorValues.at(UIWidgets::Colors::White);
-                    ImGui::TextColored(textColor, Rando::StaticData::Checks[entry.randoCheckId].name);
+                    ImVec4 itemTextColor = entry.obtained ? VecFromRGBA8(CVAR_ITEM_COLOR)
+                                                           : UIWidgets::ColorValues.at(UIWidgets::Colors::Indigo);
+                    ImGui::TextColored(checkTextColor, Rando::StaticData::Checks[entry.randoCheckId].name);
                     if (entry.obtained) {
                         ImGui::SameLine();
                         RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(entry.randoCheckId);
-                        ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::LightBlue), "(%s)",
+                        ImGui::TextColored(itemTextColor, "(%s)",
                                            Rando::StaticData::Items[randoItemId].name);
                     }
                     ImGui::TableNextColumn();
@@ -180,6 +184,9 @@ void SettingsWindow::DrawElement() {
         UIWidgets::CVarColorPicker("##CollectedColor", CVAR_NAME_COLLECTED_COLOR, { 100, 255, 100, 255 }, true);
         ImGui::SameLine();
         ImGui::Text("Check Obtained Color");
+        UIWidgets::CVarColorPicker("##ItemColor", CVAR_NAME_ITEM_COLOR, { 79, 0, 221, 255 }, true);
+        ImGui::SameLine();
+        ImGui::Text("Obtained Item Color");
 
         ImGui::EndTable();
     }
