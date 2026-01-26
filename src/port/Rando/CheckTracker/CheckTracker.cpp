@@ -72,15 +72,14 @@ void DrawCheckTrackerList() {
                         continue;
                     }
                     ImVec4 checkTextColor = entry.obtained ? VecFromRGBA8(CVAR_COLLECTED_COLOR)
-                                                      : UIWidgets::ColorValues.at(UIWidgets::Colors::White);
+                                                           : UIWidgets::ColorValues.at(UIWidgets::Colors::White);
                     ImVec4 itemTextColor = entry.obtained ? VecFromRGBA8(CVAR_ITEM_COLOR)
-                                                           : UIWidgets::ColorValues.at(UIWidgets::Colors::Indigo);
+                                                          : UIWidgets::ColorValues.at(UIWidgets::Colors::Indigo);
                     ImGui::TextColored(checkTextColor, Rando::StaticData::Checks[entry.randoCheckId].name);
                     if (entry.obtained) {
                         ImGui::SameLine();
                         RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(entry.randoCheckId);
-                        ImGui::TextColored(itemTextColor, "(%s)",
-                                           Rando::StaticData::Items[randoItemId].name);
+                        ImGui::TextColored(itemTextColor, "(%s)", Rando::StaticData::Items[randoItemId].name);
                     }
                     ImGui::TableNextColumn();
                 }

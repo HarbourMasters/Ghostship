@@ -53,8 +53,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             spawn_object(object, MODEL_SPARKLES, bhvGoldenCoinSparkles);
             if (object->behavior == bhvRedCoin) {
                 CustomItem::redCoinsCollected++;
-                CreateCollectNotification("Red Coin Icon",
-                                          std::to_string(CustomItem::redCoinsCollected) + "x Red Coin",
+                CreateCollectNotification("Red Coin Icon", std::to_string(CustomItem::redCoinsCollected) + "x Red Coin",
                                           ImVec4(1, 0, 0, 1));
 
                 if (CustomItem::redCoinsCollected != 8) {
@@ -68,25 +67,11 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
                 }
                 play_sound(SOUND_MENU_COLLECT_RED_COIN + ((CustomItem::redCoinsCollected - 1) << 16),
                            gGlobalSoundSource);
+            } else {
+                CreateCollectNotification("Blue Coin Icon", "Blue Coin", ImVec4(0, 0, 1, 1));
             }
             mario->numCoins += object->oDamageOrCoinValue;
             mario->healCounter += 4 * object->oDamageOrCoinValue;
-            // if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && mario->numCoins - object->oDamageOrCoinValue < 100 &&
-            //     mario->numCoins >= 100) {
-            //     Rando::StaticData::RandoStaticCheck randoStaticCheck =
-            //         Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
-            //     if (randoStaticCheck.randoCheckId != RC_UNKNOWN) {
-            //         int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
-            //         const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
-            //                                          : modelId == MODEL_STAR
-            //                                              ? bhvStar
-            //                                              : Rando::StaticData::GetBehaviorByModel(modelId);
-            // 
-            //         CustomItem::SpawnObject(modelId, behavior, object->rawData.asF32[0x6],
-            //                                 object->rawData.asF32[0x7] + 250, object->rawData.asF32[0x8], NULL,
-            //                                 randoStaticCheck.randoCheckId, randoStaticCheck.actData);
-            //     }
-            // }
             break;
         case TYPE_STAR: {
             CreateCollectNotification(texture_hud_char_star, "Course " + std::to_string(object->unused2) + " Star",
