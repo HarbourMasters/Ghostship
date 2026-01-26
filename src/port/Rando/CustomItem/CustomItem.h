@@ -4,6 +4,8 @@
 #include "game/area.h"
 #include "game/save_file.h"
 
+extern std::vector<int32_t> starActParams;
+
 namespace CustomItem {
 extern int16_t redCoinsCollected;
 

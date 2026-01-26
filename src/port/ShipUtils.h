@@ -12,6 +12,7 @@ extern "C" {
 
 bool Ship_IsCStringEmpty(const char* str);
 std::string convertEnumToReadableName(const std::string& input);
+int16_t Ship_GetCourseByLevel(int16_t levelId);
 
 #ifdef __cplusplus
 }

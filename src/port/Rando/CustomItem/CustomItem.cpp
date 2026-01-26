@@ -71,22 +71,22 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             }
             mario->numCoins += object->oDamageOrCoinValue;
             mario->healCounter += 4 * object->oDamageOrCoinValue;
-            if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && mario->numCoins - object->oDamageOrCoinValue < 100 &&
-                mario->numCoins >= 100) {
-                Rando::StaticData::RandoStaticCheck randoStaticCheck =
-                    Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
-                if (randoStaticCheck.randoCheckId != RC_UNKNOWN) {
-                    int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
-                    const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
-                                                     : modelId == MODEL_STAR
-                                                         ? bhvSpawnedStarNoLevelExit
-                                                         : Rando::StaticData::GetBehaviorByModel(modelId);
-
-                    CustomItem::SpawnObject(modelId, behavior, object->rawData.asF32[0x6],
-                                            object->rawData.asF32[0x7] + 250, object->rawData.asF32[0x8], NULL,
-                                            randoStaticCheck.randoCheckId, randoStaticCheck.actData);
-                }
-            }
+            // if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && mario->numCoins - object->oDamageOrCoinValue < 100 &&
+            //     mario->numCoins >= 100) {
+            //     Rando::StaticData::RandoStaticCheck randoStaticCheck =
+            //         Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
+            //     if (randoStaticCheck.randoCheckId != RC_UNKNOWN) {
+            //         int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
+            //         const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
+            //                                          : modelId == MODEL_STAR
+            //                                              ? bhvStar
+            //                                              : Rando::StaticData::GetBehaviorByModel(modelId);
+            // 
+            //         CustomItem::SpawnObject(modelId, behavior, object->rawData.asF32[0x6],
+            //                                 object->rawData.asF32[0x7] + 250, object->rawData.asF32[0x8], NULL,
+            //                                 randoStaticCheck.randoCheckId, randoStaticCheck.actData);
+            //     }
+            // }
             break;
         case TYPE_STAR: {
             CreateCollectNotification(texture_hud_char_star, "Course " + std::to_string(object->unused2) + " Star",
@@ -111,6 +111,9 @@ void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId ra
     if (Rando::Logic::IsBlueSwitchActivated(randoCheckId)) {
         object->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
         object->oIntangibleTimer = -1;
+        if (modelId == MODEL_STAR) {
+            object->oBehParams = starActParams[randoAct];
+        }
     } else {
         switch (modelId) {
             case MODEL_BLUE_COIN:

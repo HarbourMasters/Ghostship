@@ -88,6 +88,15 @@ void Rando::ObjectBehavior::Init() {
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
+    REGISTER_LISTENER(SpawnCoinStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        SpawnCoinStar* ev = (SpawnCoinStar*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+
+        ModifyCoinStarObject(&event->cancelled, ev->posX, ev->posY, ev->posZ);
+    });
+
     REGISTER_LISTENER(ModifyDefaultStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         ModifyDefaultStar* ev = (ModifyDefaultStar*)event;
         if (!IS_RANDO(selectedFileNum)) {

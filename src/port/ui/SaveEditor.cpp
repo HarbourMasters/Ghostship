@@ -1,5 +1,10 @@
 #include "SaveEditor.h"
 #include "UIWidgets.hpp"
+#include "port/ShipUtils.h"
+#include "port/Rando/Rando.h"
+#include "port/Rando/Logic/Logic.h"
+#include "port/Rando/CustomItem/CustomItem.h"
+#include "port/Rando/StaticData/StaticData.h"
 
 #include <string>
 #include <imgui.h>
@@ -89,22 +94,63 @@ void SaveEditorWindow::DrawElement() {
                 ImGui::EndTabItem();
             }
 
-            if (ImGui::BeginTabItem("Rando Helpers")) {
-                ImGui::SeparatorText("Mario's Position");
-                if (ImGui::BeginTable("PosTable", 3, ImGuiTableFlags_SizingFixedFit)) {
-                    ImGui::TableNextColumn();
-                    ImGui::Text("X: %.2f", gMarioState->pos[0]);
-                    ImGui::TableNextColumn();
-                    ImGui::Text("Y: %.2f", gMarioState->pos[1]);
-                    ImGui::TableNextColumn();
-                    ImGui::Text("Z: %.2f", gMarioState->pos[2]);
-                    ImGui::EndTable();
+            
+            if (!Rando::Logic::shuffledPool.empty()) {
+                if (ImGui::BeginTabItem("Rando")) {
+                    if (ImGui::BeginTable("Rando Save Editor", 3)) {
+                        ImGui::TableSetupColumn("Obtained", ImGuiTableColumnFlags_WidthFixed, 32.0f);
+                        ImGui::TableSetupColumn("Check Name", ImGuiTableColumnFlags_WidthStretch);
+                        ImGui::TableSetupColumn("Item Name");
+
+                        ImGui::TableNextColumn();
+                        for (auto& entry : Rando::Logic::shuffledPool) {
+                            ImGui::PushID(entry.randoCheckId);
+                            if (UIWidgets::Checkbox("##obtained", &entry.obtained)) {
+                                bool toggleTo = entry.obtained;
+                                
+                                Rando::StaticData::RandoStaticCheck randoStaticCheck =
+                                    Rando::StaticData::Checks[entry.randoCheckId];
+                                int16_t courseNumber = Ship_GetCourseByLevel(randoStaticCheck.levelId);
+
+                                RANDO_SAVE_CHECKS(selectedFileNum)[entry.randoCheckId].obtained = toggleTo;
+                                if (entry.randoItemId == RI_STAR) {
+                                    if (courseNumber == COURSE_NONE) {
+
+                                    }
+                                    if (toggleTo) {
+                                        if (courseNumber == COURSE_NONE) {
+                                            gSaveBuffer.files[selectedFileNum][0].flags |= 1 << entry.randoAct;
+                                        } else {
+                                            gSaveBuffer.files[selectedFileNum][0].courseStars[courseNumber] |=
+                                                1 << entry.randoAct;
+                                        }
+                                    } else {
+                                        if (courseNumber == COURSE_NONE) {
+                                            gSaveBuffer.files[selectedFileNum][0].flags &= ~1 << entry.randoAct;
+                                        } else {
+                                            gSaveBuffer.files[selectedFileNum][0].courseStars[courseNumber] &=
+                                                ~1 << entry.randoAct;
+                                        }
+                                    }
+                                }
+                                gMarioState->numStars =
+                                    save_file_get_total_star_count(selectedFileNum, COURSE_MIN - 1, COURSE_MAX - 1);
+                                gSaveFileModified = true;
+                                save_file_do_save(selectedFileNum);
+                            }
+                            ImGui::TableNextColumn();
+                            ImGui::TextColored(entry.obtained ? UIWidgets::ColorValues.at(UIWidgets::Colors::Green)
+                                                              : UIWidgets::ColorValues.at(UIWidgets::Colors::White),
+                                               Rando::StaticData::Checks[entry.randoCheckId].name);
+                            ImGui::TableNextColumn();
+                            ImGui::Text(Rando::StaticData::Items[entry.randoItemId].name);
+                            ImGui::PopID();
+                            ImGui::TableNextColumn();
+                        }
+                        ImGui::EndTable();
+                    }
+                    ImGui::EndTabItem();
                 }
-                ImGui::SeparatorText("Set Data");
-                if (UIWidgets::Button("Set Coins to x99")) {
-                    gMarioState->numCoins = 99;
-                }
-                ImGui::EndTabItem();
             }
 
             ImGui::EndTabBar();
