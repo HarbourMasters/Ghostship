@@ -60,14 +60,13 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
         auto resource = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
         auto res = std::static_pointer_cast<Fast::DisplayList>(resource);
         dl = &res->Instructions[0];
-#ifdef USE_GBI_TRACE
+
         for (int i = 0; i < res->Instructions.size(); i++) {
             auto gfx = &res->Instructions[i];
             gfx->words.trace.file = imgData;
             gfx->words.trace.idx = i;
             gfx->words.trace.valid = 0xB00B;
         }
-#endif
     }
 
     __gSPDisplayList(pkt, dl);
