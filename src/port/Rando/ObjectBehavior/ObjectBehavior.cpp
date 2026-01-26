@@ -8,10 +8,10 @@ extern "C" {
 #include "assets/actors/star/geo.h"
 #include "assets/actors/coin/geo.h"
 #include "include/behavior_data.h"
+#include "game/ingame_menu.h"
 extern MarioState* gMarioState;
 }
 
-static bool isInitialized = false;
 
 void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
     if (model != MODEL_STAR && model != MODEL_RED_COIN && model != MODEL_RED_COIN_NO_SHADOW &&
@@ -130,32 +130,11 @@ void Rando::ObjectBehavior::Init() {
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         LevelScriptExecute* ev = (LevelScriptExecute*)event;
-        bool isLevelInitializing = false;
-
-        switch (ev->command) {
-            case 17:
-                isLevelInitializing = true;
-                break;
-            case 18:
-                if (isLevelInitializing) {
-                    CustomItem::redCoinsCollected = 0;
-                    CustomItem::ClearSpawnedObjects();
-                    isLevelInitializing = false;
-                }
-                break;
-            default:
-                break;
-        }
-
-        if (isInitialized || ev->command != 36) {
-            return;
-        }
-
-        if (!isInitialized) {
-            LOAD_MODEL_FROM_GEO(MODEL_STAR, star_geo);
-            LOAD_MODEL_FROM_GEO(MODEL_RED_COIN, red_coin_geo);
-            LOAD_MODEL_FROM_GEO(MODEL_BLUE_COIN, blue_coin_geo);
-            isInitialized = true;
+        if (ev->command == 17) {
+            SPDLOG_INFO("Cleared Red Coins");
+            gRedCoinsCollected = 0;
+            CustomItem::redCoinsCollected = 0;
+            CustomItem::ClearSpawnedObjects();
         }
     });
 }
