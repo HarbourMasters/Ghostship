@@ -167,7 +167,9 @@ void bhv_hidden_red_coin_star_init(void) {
 }
 
 void bhv_hidden_red_coin_star_loop(void) {
-    gRedCoinsCollected = o->oHiddenStarTriggerCounter;
+    CALL_CANCELLABLE_EVENT(ModifyRedCoinCount, &gRedCoinsCollected) {
+        gRedCoinsCollected = o->oHiddenStarTriggerCounter;
+    }
 
     switch (o->oAction) {
         case 0:

@@ -52,6 +52,10 @@ DEFINE_EVENT(ModifyObjectBehavior,
     int16_t model;
 );
 
+DEFINE_EVENT(ModifyRedCoinCount,
+    int8_t* redCoinsCollected;
+);
+
 DEFINE_EVENT(OnGameFileLoad,
     s32 fileNum;
 );
