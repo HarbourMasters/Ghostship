@@ -34,8 +34,8 @@ jobs:
     - name: Generate ghostship.o2r
       run: |
         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
-        make -C Torch type=release -j3
-        Torch/cmake-build-release/torch pack port ghostship.o2r o2r
+        cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+        cmake --build build-cmake -j --target GeneratePortO2R
     - uses: actions/upload-artifact@v4
       with:
         name: ghostship.o2r
