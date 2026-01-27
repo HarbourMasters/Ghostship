@@ -30,9 +30,11 @@ void bhv_collect_star_init(void) {
 void bhv_collect_star_loop(void) {
     o->oFaceAngleYaw += 0x800;
 
-    if (o->oInteractStatus & INT_STATUS_INTERACTED) {
-        mark_obj_for_deletion(o);
-        o->oInteractStatus = 0;
+    CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_STAR) {
+        if (o->oInteractStatus & INT_STATUS_INTERACTED) {
+            mark_obj_for_deletion(o);
+            o->oInteractStatus = 0;
+        }
     }
 }
 
@@ -186,5 +188,4 @@ void bhv_hidden_red_coin_star_loop(void) {
             }
             break;
     }
-    //CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_STAR);
 }

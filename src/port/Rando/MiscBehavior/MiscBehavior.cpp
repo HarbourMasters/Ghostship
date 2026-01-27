@@ -23,9 +23,12 @@ void Rando::MiscBehavior::Init() {
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         LevelScriptExecute* ev = (LevelScriptExecute*)event;
         if (ev->command == 17) {
-            gRedCoinsCollected = 0;
-            CustomItem::redCoinsCollected = 0;
-            CustomItem::ClearSpawnedObjects();
+            if (gCurrLevelNum == LEVEL_CASTLE || gCurrLevelNum == LEVEL_CASTLE_COURTYARD ||
+                gCurrLevelNum == LEVEL_CASTLE_GROUNDS) {
+                gRedCoinsCollected = 0;
+                CustomItem::redCoinsCollected = 0;
+                CustomItem::ClearSpawnedObjects();
+            }
         }
     });
 }

@@ -24,8 +24,13 @@ std::vector<int32_t> starActParams = {
     0, 16777216, 33554432, 50331648, 67108864, 83886080, 100663296,
 };
 
-void CustomItem::ClearSpawnedObjects() {
-    spawnedRandoObjects.clear();
+struct Object* AssignParentObject() {
+    for (auto& [randoCheck, spawnedObj] : spawnedRandoObjects) {
+        if (Rando::StaticData::Checks[randoCheck].randoCheckType == RCTYPE_STAR_RED_COIN) {
+            return spawnedObj;
+        }
+    }
+    return NULL;
 }
 
 void CreateCollectNotification(const char* texture, std::string text, ImVec4 textColor) {
@@ -36,6 +41,10 @@ void CreateCollectNotification(const char* texture, std::string text, ImVec4 tex
     text += " collected!";
 
     Notification::Emit({ .itemIcon = texture, .message = text, .messageColor = textColor });
+}
+
+void CustomItem::ClearSpawnedObjects() {
+    spawnedRandoObjects.clear();
 }
 
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
@@ -57,7 +66,11 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
                                           ImVec4(1, 0, 0, 1));
 
                 if (CustomItem::redCoinsCollected != 8) {
+                    if (object->parentObj == nullptr) {
+                        object->parentObj = object;
+                    }
                     object->parentObj->oHiddenStarTriggerCounter = redCoinsCollected;
+
                     struct Object* spawnNumber;
                     spawnNumber = spawn_object_relative(CustomItem::redCoinsCollected, 0, 0, 0, object, MODEL_NUMBER,
                                                         bhvOrangeNumber);
@@ -76,6 +89,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
         case TYPE_STAR: {
             CreateCollectNotification(texture_hud_char_star, "Course " + std::to_string(object->unused2) + " Star",
                                       ImVec4(1, 1, 0, 1));
+            play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
             spawn_object(object, MODEL_NONE, bhvStarKeyCollectionPuffSpawner);
             int16_t starAct = object->unused2;
 
@@ -89,12 +103,17 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             break;
     }
 
-    object->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+    if (spawnedRandoObjects.find((RandoCheckId)object->unused1) == spawnedRandoObjects.end()) {
+        spawnedRandoObjects.insert({ (RandoCheckId)object->unused1, object });
+    }
+
+    spawnedRandoObjects.at((RandoCheckId)object->unused1)->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+    spawnedRandoObjects.at((RandoCheckId)object->unused1)->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
 }
 
 void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId randoCheckId, RandoAct randoAct) {
     if (Rando::Logic::IsBlueSwitchActivated(randoCheckId)) {
-        object->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
+        object->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
         object->oIntangibleTimer = -1;
         if (modelId == MODEL_STAR) {
             object->oBehParams = starActParams[randoAct];

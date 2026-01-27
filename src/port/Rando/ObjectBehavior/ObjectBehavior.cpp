@@ -11,6 +11,8 @@ extern "C" {
 extern MarioState* gMarioState;
 }
 
+extern std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
+
 void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
     if (model != MODEL_STAR && model != MODEL_RED_COIN && model != MODEL_RED_COIN_NO_SHADOW &&
         model != MODEL_BLUE_COIN && model != MODEL_BLUE_COIN_NO_SHADOW) {
@@ -124,11 +126,22 @@ void Rando::ObjectBehavior::Init() {
                 Rando::ObjectBehavior::ModifyRedCoinBehavior(&event->cancelled, ev->object);
                 break;
             case MODEL_STAR:
+            case MODEL_TRANSPARENT_STAR:
                 Rando::ObjectBehavior::ModifyStarBehavior(&event->cancelled, ev->object);
                 break;
             default:
                 event->cancelled = false;
                 break;
+        }
+    });
+
+    REGISTER_LISTENER(ModifyObjectVisibility, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        ModifyObjectVisibility* ev = (ModifyObjectVisibility*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+        if (ev->object->unused1 != RC_UNKNOWN) {
+            event->cancelled = true;
         }
     });
 }

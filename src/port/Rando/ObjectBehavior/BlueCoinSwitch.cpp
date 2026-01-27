@@ -31,8 +31,8 @@ static struct ObjectHitbox randoCollectStarHitbox = {
 void Rando::ObjectBehavior::ModifyBlueCoinSwitchBehavior() {
     for (auto& [randoCheckId, object] : spawnedRandoObjects) {
         if (Rando::Logic::IsBlueSwitchActivated(randoCheckId)) {
-            object->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
             object->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+            object->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
             object->oIntangibleTimer = 0;
 
             if (object->behavior == bhvRedCoin) {

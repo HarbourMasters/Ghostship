@@ -56,6 +56,10 @@ DEFINE_EVENT(ModifyRedCoinCount,
     int8_t* redCoinsCollected;
 );
 
+DEFINE_EVENT(ModifyObjectVisibility,
+    struct Object* object;
+);
+
 DEFINE_EVENT(OnGameFileLoad,
     s32 fileNum;
 );
