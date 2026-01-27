@@ -124,10 +124,10 @@ void SaveEditorWindow::DrawElement() {
                                 }
                             } else {
                                 if (courseNumber == COURSE_NONE) {
-                                    gSaveBuffer.files[selectedFileNum][0].flags &= ~1 << entry.randoAct;
+                                    gSaveBuffer.files[selectedFileNum][0].flags &= ~(1 << entry.randoAct);
                                 } else {
                                     gSaveBuffer.files[selectedFileNum][0].courseStars[courseNumber] &=
-                                        ~1 << entry.randoAct;
+                                        ~(1 << entry.randoAct);
                                 }
                             }
                         }
@@ -143,10 +143,11 @@ void SaveEditorWindow::DrawElement() {
                                 }
                             }
                         }
-                        gMarioState->numStars =
-                            save_file_get_total_star_count(selectedFileNum, COURSE_MIN - 1, COURSE_MAX - 1);
                         gSaveFileModified = true;
                         save_file_do_save(selectedFileNum);
+                        gMarioState->numStars =
+                            save_file_get_total_star_count(selectedFileNum, COURSE_MIN - 1, COURSE_MAX - 1);
+                        
 
                         Notification::Emit({ .itemIcon = entry.randoItemId == RI_STAR       ? texture_hud_char_star
                                                          : entry.randoItemId == RI_COIN_RED ? "Red Coin Icon"
