@@ -32,7 +32,9 @@ jobs:
           ${{ runner.os }}-o2r-build-${{ github.ref }}
           ${{ runner.os }}-o2r-build-
         path: |
-          Torch/cmake-build-release
+          SDL2-2.30.3
+          tinyxml2-10.0.0
+          libzip-1.10.1
     - name: Generate ghostship.o2r
       run: |
         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
