@@ -15,5 +15,6 @@ class GhostshipModalWindow final : public Ship::GuiWindow {
                        std::function<void()> button1callback = nullptr,
                        std::function<void()> button2callback = nullptr);
     bool IsPopupOpen(std::string title);
+    size_t PopupsQueued();
     void DismissPopup();
 };

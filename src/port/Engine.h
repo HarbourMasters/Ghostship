@@ -49,9 +49,11 @@ class GameEngine {
     std::unordered_map<std::string, std::vector<uint8_t>>* dictionary;
 
     GameEngine();
-    static void Create();
+    static void Create(int argc, char* argv[]);
     static bool GenAssetFile(bool exitOnFail = true);
+    void RunExtract(int argc, char* argv[]);
     void AudioInit();
+    void FinishInit();
     void StartFrame() const;
     static void RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);
     static uint32_t GetInterpolationFPS();

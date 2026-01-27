@@ -31,7 +31,7 @@ int SDL_main(int argc, char** argv) {
 #else
 int main() {
 #endif
-    GameEngine::Create();
+    GameEngine::Create(argc, argv);
     alloc_pool();
     audio_init();
     sound_init();
