@@ -13,8 +13,10 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: true
+    - name: Update machine
+      run: sudo apt update
     - name: Install dependencies
-      run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release
+      run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
     - name: ccache
       uses: hendrikmuhs/ccache-action@v1.2.13
       with:
