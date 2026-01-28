@@ -210,6 +210,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     context->InitGfxDebugger();
     context->InitFileDropMgr();
+    context->InitCrashHandler();
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
