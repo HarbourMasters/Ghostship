@@ -94,16 +94,16 @@ void DrawCheckTrackerList() {
                     }
                     ImVec4 checkTextColor = randoSaveCheck.obtained
                                                 ? VecFromRGBA8(CVAR_COLLECTED_COLOR)
-                                                           : UIWidgets::ColorValues.at(UIWidgets::Colors::White);
+                                                : UIWidgets::ColorValues.at(UIWidgets::Colors::White);
                     ImVec4 itemTextColor = randoSaveCheck.obtained
                                                ? VecFromRGBA8(CVAR_ITEM_COLOR)
-                                                          : UIWidgets::ColorValues.at(UIWidgets::Colors::Indigo);
+                                               : UIWidgets::ColorValues.at(UIWidgets::Colors::Indigo);
                     if (randoSaveCheck.skipped) {
                         checkTextColor = itemTextColor = VecFromRGBA8(CVAR_SKIPPED_COLOR);
                     }
-                    const char* texture = randoSaveCheck.randoItemId == RI_STAR ? texture_hud_char_star
+                    const char* texture = randoSaveCheck.randoItemId == RI_STAR       ? texture_hud_char_star
                                           : randoSaveCheck.randoItemId == RI_COIN_RED ? "Red Coin Icon"
-                                                                             : "Blue Coin Icon";
+                                                                                      : "Blue Coin Icon";
                     ImTextureID textureId =
                         Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(texture);
 
@@ -181,8 +181,7 @@ void CheckTrackerWindow::Draw() {
 void SettingsWindow::DrawElement() {
     if (CVarGetInteger("gWindows.CheckTracker", 0)) {
         trackerPopoutState = true;
-        UIWidgets::WindowButton("Return Check Tracker", "gWindows.CheckTracker",
-                                GhostshipGui::mRandoCheckTrackerWindow,
+        UIWidgets::WindowButton("Return Check Tracker", "gWindows.CheckTracker", GhostshipGui::mRandoCheckTrackerWindow,
                                 { .size = UIWidgets::Sizes::Inline, .color = UIWidgets::Colors::Red });
     } else {
         trackerPopoutState = false;
@@ -193,7 +192,7 @@ void SettingsWindow::DrawElement() {
         ImGui::TableSetupColumn("col1", ImGuiTableColumnFlags_WidthStretch);
         ImGui::TableSetupColumn("col2", ImGuiTableColumnFlags_WidthStretch);
         ImGui::TableNextColumn();
-        
+
         if (!trackerPopoutState) {
             if (ImGui::BeginChild("Checks", ImVec2(ImGui::GetContentRegionAvail().x, 0))) {
                 DrawCheckTrackerList();
