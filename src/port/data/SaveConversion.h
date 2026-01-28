@@ -5,7 +5,7 @@
 #include "port/Rando/Spoiler/Spoiler.h"
 
 #include <nlohmann/json.hpp>
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveCheck, randoItemId, randoAct, obtained)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveCheck, randoItemId, randoAct, obtained, skipped)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveData, randoSaveChecks)
 
 using json = nlohmann::json;

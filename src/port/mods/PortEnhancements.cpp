@@ -11,6 +11,9 @@
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
 
+int8_t textRand[] = { 0x1B, 0x0A, 0x17, 0x0D, 0xFF };
+int8_t textMarioRando[] = { 0x16, 0x0A, 0x1B, 0x12, 0x18, 0x9E, 0x1B, 0x0A, 0x17, 0x0D, 0x18, 0xFF };
+
 static const Mtx matrix_patch_identity = {
     { { 1.0f, 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f, 1.0f } }
 };

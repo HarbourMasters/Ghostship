@@ -23,6 +23,7 @@ struct RandoSaveCheck {
     RandoItemId randoItemId;
     RandoAct randoAct;
     bool obtained;
+    bool skipped;
 };
 
 typedef enum {

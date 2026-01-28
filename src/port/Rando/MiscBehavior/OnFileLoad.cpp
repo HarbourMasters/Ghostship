@@ -50,11 +50,13 @@ void Rando::MiscBehavior::OnFileLoad() {
                 randoSaveCheck.randoItemId = pool.randoItemId;
                 randoSaveCheck.randoAct = pool.randoAct;
                 randoSaveCheck.obtained = pool.obtained;
+                randoSaveCheck.skipped = pool.skipped;
 
                 RANDO_SAVE_CHECKS(selectedFileNum)[pool.randoCheckId] = randoSaveCheck;
             }
             Notification::Emit(
                 { .message = "Spoiler written to Save File.", .messageColor = ImVec4(0, 0.85f, 0.3f, 1) });
+            save_file_do_save(selectedFileNum);
         } else {
             Rando::Logic::shuffledPool.clear();
             for (size_t i = 0; i < RC_MAX; i++) {

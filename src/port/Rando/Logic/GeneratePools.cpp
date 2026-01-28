@@ -32,7 +32,8 @@ void InitializeSaveChecks() {
     for (auto& [randoCheckId, randoStaticCheck] : Rando::StaticData::Checks) {
         RandoSaveCheck randoSaveCheck = { .randoItemId = randoStaticCheck.randoItemId,
                                           .randoAct = randoStaticCheck.actData,
-                                          .obtained = false };
+                                          .obtained = false,
+                                          .skipped = false };
         RANDO_SAVE_CHECKS(selectedFileNum)[randoCheckId] = randoSaveCheck;
     }
 }
@@ -83,7 +84,7 @@ void GenerateShuffleList() {
         if (!shuffledItems.empty()) {
             for (int v = 0; v < shuffledChecks.size(); v++) {
                 shuffledLevelList.push_back(
-                    { shuffledChecks[v], shuffledItems[v].first, shuffledItems[v].second, false });
+                    { shuffledChecks[v], shuffledItems[v].first, shuffledItems[v].second, false, false });
             }
             shuffledList.push_back(shuffledLevelList);
         }
