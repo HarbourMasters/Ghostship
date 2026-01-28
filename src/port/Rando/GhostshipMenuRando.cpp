@@ -67,8 +67,6 @@ void GhostshipMenu::AddMenuRando() {
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Skips the cutscene when collecting a Star."));
 
-    AddWidget(path, "SeperatorBar", WIDGET_SEPARATOR);
-
     path = { "Rando", "Shuffle Options", SECTION_COLUMN_1 };
     AddSidebarEntry("Rando", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;

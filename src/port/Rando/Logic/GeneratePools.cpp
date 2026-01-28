@@ -28,6 +28,15 @@ void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledIt
     std::shuffle(shuffledItems.begin(), shuffledItems.end(), g);
 }
 
+void InitializeSaveChecks() {
+    for (auto& [randoCheckId, randoStaticCheck] : Rando::StaticData::Checks) {
+        RandoSaveCheck randoSaveCheck = { .randoItemId = randoStaticCheck.randoItemId,
+                                          .randoAct = randoStaticCheck.actData,
+                                          .obtained = false };
+        RANDO_SAVE_CHECKS(selectedFileNum)[randoCheckId] = randoSaveCheck;
+    }
+}
+
 void GenerateShuffleList() {
     shuffledPool.clear();
 

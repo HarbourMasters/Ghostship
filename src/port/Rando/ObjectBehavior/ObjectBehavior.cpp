@@ -15,7 +15,7 @@ extern std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
 
 void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
     if (model != MODEL_STAR && model != MODEL_RED_COIN && model != MODEL_RED_COIN_NO_SHADOW &&
-        model != MODEL_BLUE_COIN && model != MODEL_BLUE_COIN_NO_SHADOW) {
+        model != MODEL_BLUE_COIN && model != MODEL_BLUE_COIN_NO_SHADOW && model != MODEL_BOWSER_KEY) {
         return;
     }
     std::string locationStr = std::to_string(posX) + ", " + std::to_string(posY) + ", " + std::to_string(posZ);
@@ -92,11 +92,33 @@ void Rando::ObjectBehavior::Init() {
 
     REGISTER_LISTENER(SpawnCoinStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         SpawnCoinStar* ev = (SpawnCoinStar*)event;
+        LogOutSpawns("?", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
 
-        ModifyCoinStarObject(&event->cancelled, ev->posX, ev->posY, ev->posZ);
+        Rando::StaticData::RandoStaticCheck randoStaticCheck;
+
+        if (gCurrLevelNum == LEVEL_CASTLE) {
+            randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(ev->posX, ev->posY, ev->posZ);
+        } else {
+            randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
+        }
+
+        if (!Rando::Logic::IsCheckShuffled(randoStaticCheck.randoCheckId) ||
+            randoStaticCheck.randoCheckId == RC_UNKNOWN || randoStaticCheck.randoItemId == RI_UNKNOWN) {
+            return;
+        }
+
+        int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
+        const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
+                                         : modelId == MODEL_STAR    ? bhvSpawnedStarNoLevelExit
+                                                                    : Rando::StaticData::GetBehaviorByModel(modelId);
+
+        CustomItem::SpawnObject(modelId, behavior, randoStaticCheck.posX, randoStaticCheck.posY, randoStaticCheck.posZ,
+                                NULL, randoStaticCheck.randoCheckId, randoStaticCheck.actData);
+
+        event->cancelled = true;
     });
 
     REGISTER_LISTENER(ModifyDefaultStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {

@@ -28,6 +28,7 @@ std::map<int16_t, std::string> levelIdList = {
     { LEVEL_BOB, "Bob Omb Battlefield" },
     { LEVEL_WF, "Whomp's Fortress" },
     { LEVEL_JRB, "Jolly Rodger's Bay" },
+    { LEVEL_CASTLE, "Castle Interior" },
     { LEVEL_CCM, "Cool Cool Mountain" },
     { LEVEL_BBH, "Big Boo's Haunt" },
     { LEVEL_HMC, "Hazy Maze Cave" },

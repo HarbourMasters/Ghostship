@@ -1,4 +1,5 @@
 #include <libultra/types.h>
+#include "port/hooks/list/PlayerEvent.h"
 
 #include "sm64.h"
 #include "area.h"
@@ -2317,7 +2318,7 @@ void cur_obj_call_action_function(void (*actionFunctions[])(void)) {
 }
 
 static struct Object *spawn_star_with_no_lvl_exit(s32 sp20, s32 sp24) {
-    struct Object *sp1C = spawn_object(o, MODEL_STAR, bhvSpawnedStarNoLevelExit);
+    struct Object* sp1C = spawn_object(o, MODEL_STAR, bhvSpawnedStarNoLevelExit);
     sp1C->oSparkleSpawnUnk1B0 = sp24;
     sp1C->oBehParams = o->oBehParams;
     sp1C->oBehParams2ndByte = sp20;

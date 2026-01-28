@@ -92,6 +92,7 @@ std::map<RandoCheckId, RandoStaticCheck> Checks = {
     RC(RC_BOB_STAR_05_WINGS,            RCTYPE_STAR_DEFAULT,    LEVEL_BOB,          RA_ACT_05,      RI_STAR,        -6600, 1000, 1250),
     RC(RC_BOB_STAR_06_CHAIN_CHOMP,      RCTYPE_STAR_DEFAULT,    LEVEL_BOB,          RA_ACT_06,      RI_STAR,        1550, 1200, 300),
     RC(RC_BOB_STAR_07_100_COIN,         RCTYPE_STAR_DEFAULT,    LEVEL_BOB,          RA_ACT_COIN,    RI_STAR,        0, 0, 0),
+    RC(RC_CASTLE_STAR_01_TOAD_BASEMENT, RCTYPE_STAR_DEFAULT,    LEVEL_CASTLE,       RA_ACT_01,      RI_STAR,        1787, -1381, -1957),
     RC(RC_CCM_BLUE_COIN_01,             RCTYPE_COIN_BLUE,       LEVEL_CCM,          RA_ACT_NONE,    RI_COIN_BLUE,   3400, -640, -740),
     RC(RC_CCM_BLUE_COIN_02,             RCTYPE_COIN_BLUE,       LEVEL_CCM,          RA_ACT_NONE,    RI_COIN_BLUE,   3400, -320, -1740),
     RC(RC_CCM_BLUE_COIN_03,             RCTYPE_COIN_BLUE,       LEVEL_CCM,          RA_ACT_NONE,    RI_COIN_BLUE,   -3160, 6267, -6120),
