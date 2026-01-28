@@ -182,13 +182,12 @@ void SaveEditorWindow::DrawElement() {
 
                             RANDO_SAVE_CHECKS(selectedFileNum)[entry.randoCheckId].obtained = toggleTo;
                             if (entry.randoItemId == RI_STAR) {
-                                if (courseNumber == COURSE_NONE) {}
                                 if (toggleTo) {
                                     if (courseNumber == COURSE_NONE) {
-                                        gSaveBuffer.files[selectedFileNum][0].flags |= 1 << entry.randoAct;
+                                        gSaveBuffer.files[selectedFileNum][0].flags |= (1 << entry.randoAct);
                                     } else {
                                         gSaveBuffer.files[selectedFileNum][0].courseStars[courseNumber] |=
-                                            1 << entry.randoAct;
+                                            (1 << entry.randoAct);
                                     }
                                 } else {
                                     if (courseNumber == COURSE_NONE) {

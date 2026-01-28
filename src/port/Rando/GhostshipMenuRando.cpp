@@ -34,6 +34,7 @@ void GhostshipMenu::AddMenuRando() {
                      .LabelPosition(LabelPositions::Near));
 
     AddWidget(path, "SeperatorBar", WIDGET_SEPARATOR);
+
     AddWidget(path, "Generate Spoiler Log", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_RANDOMIZER_SETTING("GenerateLog"))
         .RaceDisable(false)
@@ -54,6 +55,17 @@ void GhostshipMenu::AddMenuRando() {
         })
         .Options(ButtonOptions().Tooltip("Creates a Spoiler Log from the current SaveFile."))
         .PreFunc([](WidgetInfo& info) { info.options->Disabled(Rando::Logic::shuffledPool.empty()); });
+
+    AddWidget(path, "SeperatorBar", WIDGET_SEPARATOR);
+
+    path = { "Rando", "Enhancements", SECTION_COLUMN_1 };
+    AddSidebarEntry("Rando", path.sidebarName, 1);
+    path.column = SECTION_COLUMN_1;
+
+    AddWidget(path, "Skip Get Item Cutscene", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_RANDOMIZER_SETTING("SkipRandoGI"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Skips the cutscene when collecting a Star."));
 
     AddWidget(path, "SeperatorBar", WIDGET_SEPARATOR);
 

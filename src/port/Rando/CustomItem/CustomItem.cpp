@@ -48,10 +48,10 @@ void CustomItem::ClearSpawnedObjects() {
 }
 
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
-    SPDLOG_INFO("Check ID: {} - Collected", std::to_string(object->unused1));
-
+    bool previousCheckState = false;
     for (auto& shuffled : Rando::Logic::shuffledPool) {
         if (shuffled.randoCheckId == object->unused1) {
+            previousCheckState = shuffled.obtained;
             shuffled.obtained = true;
             RANDO_SAVE_CHECKS(selectedFileNum)[shuffled.randoCheckId].obtained = true;
         }
@@ -91,9 +91,26 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
                                       ImVec4(1, 1, 0, 1));
             play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
             spawn_object(object, MODEL_NONE, bhvStarKeyCollectionPuffSpawner);
-            int16_t starAct = object->unused2;
 
-            save_file_collect_star_or_key(mario->numCoins, starAct);
+            if (!previousCheckState && !CVarGetInteger("gRandoSettings.SkipRandoGI", 0)) {
+                uint32_t marioAction = ACT_STAR_DANCE_NO_EXIT;
+                switch (gMarioState->action) {
+                    case ACT_FLAG_SWIMMING:
+                    case ACT_FLAG_METAL_WATER:
+                        marioAction = ACT_STAR_DANCE_WATER;
+                        break;
+                    case ACT_FLAG_AIR:
+                        marioAction = ACT_FALL_AFTER_STAR_GRAB;
+                        break;
+                    default:
+                        marioAction = ACT_STAR_DANCE_NO_EXIT;
+                        break;
+                }
+
+                set_mario_action(gMarioState, marioAction, 1);
+            }
+
+            save_file_collect_star_or_key(mario->numCoins, object->unused2);
             mario->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
             save_file_do_save(selectedFileNum);
 
@@ -103,12 +120,13 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             break;
     }
 
-    if (spawnedRandoObjects.find((RandoCheckId)object->unused1) == spawnedRandoObjects.end()) {
-        spawnedRandoObjects.insert({ (RandoCheckId)object->unused1, object });
+    if (spawnedRandoObjects.find((RandoCheckId)object->unused1) != spawnedRandoObjects.end()) {
+        spawnedRandoObjects.erase((RandoCheckId)object->unused1);
     }
 
-    spawnedRandoObjects.at((RandoCheckId)object->unused1)->activeFlags = ACTIVE_FLAG_DEACTIVATED;
-    spawnedRandoObjects.at((RandoCheckId)object->unused1)->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+    object->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+    object->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+    obj_mark_for_deletion(object);
 }
 
 void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId randoCheckId, RandoAct randoAct) {
@@ -127,9 +145,6 @@ void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId ra
                 break;
             case MODEL_STAR:
                 object->oBehParams = starActParams[randoAct];
-                if (CVarGetInteger("gEnhancements.StarNoExit", 0)) {
-                    object->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
-                }
                 break;
             default:
                 break;
@@ -147,6 +162,9 @@ void CustomItem::SpawnObject(u32 modelId, const BehaviorScript* behavior, s16 x,
 
     if (param != NULL) {
         object->oBehParams2ndByte = param;
+    }
+    if (modelId == MODEL_STAR) {
+        object->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
     }
 
     spawnedRandoObjects.insert({ randoCheckId, object });
