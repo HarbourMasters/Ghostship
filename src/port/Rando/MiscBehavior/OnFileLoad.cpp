@@ -57,6 +57,7 @@ void Rando::MiscBehavior::OnFileLoad() {
 
                 RANDO_SAVE_CHECKS(selectedFileNum)[pool.randoCheckId] = randoSaveCheck;
             }
+
             Notification::Emit(
                 { .message = "Spoiler written to Save File.", .messageColor = ImVec4(0, 0.85f, 0.3f, 1) });
             save_file_do_save(selectedFileNum);

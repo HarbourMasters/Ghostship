@@ -7,6 +7,7 @@
 
 #define MAX_SEED_STRING_SIZE 1024
 extern char seedString[MAX_SEED_STRING_SIZE];
+extern u32 finalSeed;
 
 uint32_t Ship_Hash(std::string str);
 

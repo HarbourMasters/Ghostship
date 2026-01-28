@@ -33,6 +33,7 @@ typedef enum {
 
 struct RandoSaveData {
     struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    u32 finalSeed;
     // u32 randoSaveOptions[RO_MAX];
 };
 

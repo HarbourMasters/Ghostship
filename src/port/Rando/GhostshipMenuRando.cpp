@@ -77,7 +77,8 @@ void GhostshipMenu::AddMenuRando() {
     AddWidget(path, "Create Spoiler Log", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
             nlohmann::json spoiler = Rando::Spoiler::GenerateFromPoolGeneration(Rando::Logic::shuffledPool);
-            std::string fileName = spoiler["fileNum"].get<std::string>() + ".json";
+            std::string fileName = std::to_string(spoiler["finalSeed"].get<u32>()).c_str();
+            fileName += ".json";
             Rando::Spoiler::SaveToFile(fileName, spoiler);
             Notification::Emit({ .prefix = fileName + " ",
                                  .message = "Spoiler Log created.",

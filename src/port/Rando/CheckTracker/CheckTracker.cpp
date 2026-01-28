@@ -72,6 +72,9 @@ ImVec4 trackerBG = ImVec4{ 0, 0, 0, 0.5f };
 float trackerScale = 1.0f;
 
 void DrawCheckTrackerList() {
+    if (Rando::Logic::shuffledPool.empty()) {
+        return;
+    }
     for (auto& [id, name] : levelIdList) {
         if (CVAR_SHOW_CURRENT_LEVEL && id != gCurrLevelNum) {
             continue;

@@ -37,6 +37,7 @@ void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledIt
 
     std::mt19937 g(seed);
     std::shuffle(shuffledItems.begin(), shuffledItems.end(), g);
+    finalSeed = seed;
 }
 
 void InitializeSaveChecks() {
@@ -110,6 +111,7 @@ void GenerateShuffleList() {
         default:
             break;
     }
+    gSaveBuffer.files[selectedFileNum][0].shipSaveData.randoSaveData.finalSeed = finalSeed;
 
     if (CVarGetInteger("gRandoSettings.GenerateLog", 0)) {
         nlohmann::json spoilerLog = Rando::Spoiler::GenerateFromPoolGeneration(shuffledPool);
@@ -117,7 +119,8 @@ void GenerateShuffleList() {
             Notification::Emit(
                 { .message = "Error: No Spoiler Log was created.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });
         } else {
-            std::string fileName = spoilerLog["fileNum"].get<std::string>() + ".json";
+            std::string fileName = std::to_string(spoilerLog["finalSeed"].get<u32>()).c_str();
+            fileName += ".json";
             Rando::Spoiler::SaveToFile(fileName, spoilerLog);
             Notification::Emit({ .prefix = fileName + " ",
                                  .message = "Spoiler Log created.",
