@@ -119,10 +119,24 @@ std::array<const char*, 3> miscellaneousTextures = {
     texture_hud_char_coin,
 };
 
+std::array<const char*, 10> digitList = { texture_hud_char_0, texture_hud_char_1, texture_hud_char_2,
+                                          texture_hud_char_3, texture_hud_char_4, texture_hud_char_5,
+                                          texture_hud_char_6, texture_hud_char_7, texture_hud_char_8,
+                                          texture_hud_char_9 };
+
+// std::array<const char*, 10> digitList = { texture_font_char_us_0, texture_font_char_us_1, texture_font_char_us_2,
+//                                           texture_font_char_us_3, texture_font_char_us_4, texture_font_char_us_5,
+//                                           texture_font_char_us_6, texture_font_char_us_7, texture_font_char_us_8,
+//                                           texture_font_char_us_9 };
+
 void LoadGuiTextures() {
     for (const auto entry : miscellaneousTextures) {
         Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
     }
+    for (const auto entry : digitList) {
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
+    }
+
     Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Red Coin Icon", texture_hud_char_coin,
                                                                         ImVec4(1, 0, 0, 1));
     Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Blue Coin Icon", texture_hud_char_coin,

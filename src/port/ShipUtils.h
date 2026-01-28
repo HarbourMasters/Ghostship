@@ -6,6 +6,7 @@
 #ifdef __cplusplus
 
 void LoadGuiTextures();
+extern std::array<const char*, 10> digitList;
 
 extern "C" {
 #endif
