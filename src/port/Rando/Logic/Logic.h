@@ -23,7 +23,7 @@ extern std::vector<LevelShuffleEntry> shuffledPool;
 extern std::vector<RandoCheckId> shuffledChecks;
 extern std::vector<std::pair<RandoItemId, RandoAct>> shuffledItems;
 
-void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledItems);
+void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledItems, const std::string& seedString);
 void InitializeSaveChecks();
 void GenerateShuffleList();
 

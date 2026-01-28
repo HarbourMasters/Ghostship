@@ -3,6 +3,8 @@
 #include "port/Rando/Spoiler/Spoiler.h"
 #include "port/ui/Notification.h"
 
+#define WIDGET_COLOR UIWidgets::Colors(CVarGetInteger("gSettings.Menu.Theme", 5))
+
 namespace GhostshipGui {
 
 extern std::shared_ptr<GhostshipMenu> mGhostshipMenu;
@@ -43,7 +45,35 @@ void GhostshipMenu::AddMenuRando() {
     AddWidget(path, "Load Existing Spoiler Log", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_RANDOMIZER_SETTING("UseExistingLog"))
         .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Uses a Spoiler Log in the randomizer folder."));
+        .Options(CheckboxOptions().Tooltip("Uses a Spoiler Log in the randomizer folder."))
+        .PreFunc([](WidgetInfo& info) {
+            info.options->Disabled(CVarGetInteger(CVAR_RANDOMIZER_SETTING("ManualSeedEntry"), 0));
+        });
+    AddWidget(path, "Manual Seed Entry", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_RANDOMIZER_SETTING("ManualSeedEntry"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Generates a seed using the provided input."));
+    AddWidget(path, "Seed", WIDGET_CUSTOM).CustomFunction([](WidgetInfo& info) {
+        ImGui::BeginDisabled(!CVarGetInteger(CVAR_RANDOMIZER_SETTING("ManualSeedEntry"), 0));
+        UIWidgets::PushStyleInput(WIDGET_COLOR);
+        ImGui::InputText("##ManualSeed", seedString, MAX_SEED_STRING_SIZE, ImGuiInputTextFlags_CallbackCharFilter,
+                         UIWidgets::TextFilters::FilterAlphaNum);
+        UIWidgets::Tooltip("Characters from a-z, A-Z, and 0-9 are supported.\n"
+                           "Character limit is 1023, after which the seed will be truncated.\n");
+        ImGui::SameLine();
+        if (UIWidgets::Button(ICON_FA_ERASER, UIWidgets::ButtonOptions()
+                                                  .Size(UIWidgets::Sizes::Inline)
+                                                  .Color(WIDGET_COLOR)
+                                                  .Padding(ImVec2(10.f, 6.f)))) {
+            memset(seedString, 0, MAX_SEED_STRING_SIZE);
+        }
+        if (strnlen(seedString, MAX_SEED_STRING_SIZE) == 0) {
+            ImGui::SameLine(17.0f);
+            ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 0.4f), "Leave blank for random seed");
+        }
+        UIWidgets::PopStyleInput();
+        ImGui::EndDisabled();
+    });
     AddWidget(path, "Create Spoiler Log", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
             nlohmann::json spoiler = Rando::Spoiler::GenerateFromPoolGeneration(Rando::Logic::shuffledPool);

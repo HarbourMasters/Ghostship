@@ -23,7 +23,7 @@ void ApplyNoLogicToSaveContext(std::vector<std::vector<LevelShuffleEntry>>& init
         }
 
         if (!itemPool.empty()) {
-            ShuffleRandoItems(itemPool);
+            ShuffleRandoItems(itemPool, seedString);
             for (int v = 0; v < checkPool.size(); v++) {
                 pool.push_back({ checkPool[v], itemPool[v].first, itemPool[v].second, false });
             }

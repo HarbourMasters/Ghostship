@@ -21,10 +21,21 @@ std::vector<std::pair<RandoItemId, RandoAct>> shuffledItems;
 // Final Shuffle List
 std::vector<LevelShuffleEntry> shuffledPool;
 
-void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledItems) {
+void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledItems, const std::string& input) {
+    uint32_t seed;
     std::random_device rd;
-    std::mt19937 g(rd());
 
+    if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
+        if (input.empty()) {
+            seed = rd();
+        } else {
+            seed = Ship_Hash(input);
+        }
+    } else {
+        seed = rd();
+    }
+
+    std::mt19937 g(seed);
     std::shuffle(shuffledItems.begin(), shuffledItems.end(), g);
 }
 

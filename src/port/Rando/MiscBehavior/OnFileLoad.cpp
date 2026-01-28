@@ -32,7 +32,10 @@ void Rando::MiscBehavior::OnFileLoad() {
             gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
             Rando::Logic::InitializeSaveChecks();
 
-            if (CVarGetInteger("gRandoSettings.UseExistingLog", 0)) {
+            if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
+                SPDLOG_INFO("Manual");
+                Rando::Logic::GenerateShuffleList();
+            } else if (CVarGetInteger("gRandoSettings.UseExistingLog", 0)) {
                 std::string fileName = std::to_string(selectedFileNum) + ".json";
                 bool logExists = SpoilerExistsForFileNum(fileName);
                 if (!logExists) {

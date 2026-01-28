@@ -9,7 +9,6 @@
 namespace Rando {
 
 namespace Spoiler {
-
 // extern std::vector<std::string> spoilerOptions;
 // void RefreshOptions();
 

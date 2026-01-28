@@ -15,6 +15,19 @@ extern "C" bool Ship_IsCStringEmpty(const char* str) {
     return str == NULL || str[0] == '\0';
 }
 
+char seedString[MAX_SEED_STRING_SIZE];
+
+extern uint32_t Ship_Hash(std::string str) {
+    // FNV-1a
+    const size_t len = str.size();
+    uint32_t hval = 0x811c9dc5;
+    for (size_t pos = 0; pos < len; pos++) {
+        hval ^= (uint32_t)str[pos];
+        hval *= 0x01000193;
+    }
+    return hval;
+}
+
 std::vector<std::string> levelAbbreviations = {
     "BOB", "WF",  "JRB", "CCM",   "BBH",   "HMC",  "LLL", "SSL",   "DDD",   "SL",    "WDW",   "TTM",
     "THI", "TTC", "RR",  "BITDW", "BITFS", "BITS", "PSS", "COTMC", "TOTWC", "VCUTM", "WMOTR", "SA",
@@ -124,11 +137,6 @@ std::array<const char*, 10> digitList = { texture_hud_char_0, texture_hud_char_1
                                           texture_hud_char_3, texture_hud_char_4, texture_hud_char_5,
                                           texture_hud_char_6, texture_hud_char_7, texture_hud_char_8,
                                           texture_hud_char_9 };
-
-// std::array<const char*, 10> digitList = { texture_font_char_us_0, texture_font_char_us_1, texture_font_char_us_2,
-//                                           texture_font_char_us_3, texture_font_char_us_4, texture_font_char_us_5,
-//                                           texture_font_char_us_6, texture_font_char_us_7, texture_font_char_us_8,
-//                                           texture_font_char_us_9 };
 
 void LoadGuiTextures() {
     for (const auto entry : miscellaneousTextures) {
