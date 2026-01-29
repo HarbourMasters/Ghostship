@@ -212,9 +212,9 @@ void SettingsWindow::DrawElement() {
         ImGui::TableNextColumn();
         ImGui::SeparatorText("Check Settings");
         UIWidgets::CVarCheckbox("Only Show Current Level", CVAR_NAME_SHOW_CURRENT_LEVEL);
-        if (UIWidgets::Button("Expand All", UIWidgets::ButtonOptions{}
-            .Color(WIDGET_COLOR)
-            .Size(ImVec2(ImGui::GetContentRegionAvail().x / 2, 0)))) {
+        if (UIWidgets::Button(
+                "Expand All",
+                UIWidgets::ButtonOptions{}.Color(WIDGET_COLOR).Size(ImVec2(ImGui::GetContentRegionAvail().x / 2, 0)))) {
             expandState = true;
         }
         ImGui::SameLine();
