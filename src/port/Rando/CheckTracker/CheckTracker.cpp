@@ -71,6 +71,8 @@ bool trackerPopoutState = false;
 ImVec4 trackerBG = ImVec4{ 0, 0, 0, 0.5f };
 float trackerScale = 1.0f;
 
+bool expandState = true;
+
 void DrawCheckTrackerList() {
     if (Rando::Logic::shuffledPool.empty()) {
         return;
@@ -83,6 +85,7 @@ void DrawCheckTrackerList() {
         ImGui::PushID(id);
         ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0, 0, 0, 0));
         ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0, 0, 0, 0.5f));
+        ImGui::SetNextItemOpen(expandState, ImGuiCond_Always);
         if (ImGui::CollapsingHeader(name.c_str(), ImGuiTreeNodeFlags_DefaultOpen)) {
             ImGui::Indent(20.0f);
             if (ImGui::BeginTable("CheckList", 2)) {
@@ -196,16 +199,28 @@ void SettingsWindow::DrawElement() {
         ImGui::TableSetupColumn("col2", ImGuiTableColumnFlags_WidthStretch);
         ImGui::TableNextColumn();
 
+        ImGui::SeparatorText("Check Tracker");
         if (!trackerPopoutState) {
             if (ImGui::BeginChild("Checks", ImVec2(ImGui::GetContentRegionAvail().x, 0))) {
                 DrawCheckTrackerList();
                 ImGui::EndChild();
             }
+        } else {
+            ImGui::TextColored(UIWidgets::ColorValues.at(WIDGET_COLOR), "Tracker popped out");
         }
 
         ImGui::TableNextColumn();
         ImGui::SeparatorText("Check Settings");
         UIWidgets::CVarCheckbox("Only Show Current Level", CVAR_NAME_SHOW_CURRENT_LEVEL);
+        if (UIWidgets::Button("Expand All", UIWidgets::ButtonOptions{}
+            .Color(WIDGET_COLOR)
+            .Size(ImVec2(ImGui::GetContentRegionAvail().x / 2, 0)))) {
+            expandState = true;
+        }
+        ImGui::SameLine();
+        if (UIWidgets::Button("Collapse All", UIWidgets::ButtonOptions{}.Color(WIDGET_COLOR))) {
+            expandState = false;
+        }
 
         ImGui::SeparatorText("Window Settings");
         // UIWidgets::CVarCheckbox("Show Search", CVAR_NAME_SHOW_SEARCH,
