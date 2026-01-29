@@ -150,5 +150,5 @@ void LoadGuiTextures() {
     Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Red Coin Icon", texture_hud_char_coin,
                                                                         ImVec4(1, 0, 0, 1));
     Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Blue Coin Icon", texture_hud_char_coin,
-                                                                        ImVec4(0.15f, 0.15f, 1, 1));
+                                                                        ImVec4(0.20f, 0.20f, 1, 1));
 }

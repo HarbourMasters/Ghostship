@@ -33,7 +33,6 @@ void Rando::MiscBehavior::OnFileLoad() {
             Rando::Logic::InitializeSaveChecks();
 
             if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
-                SPDLOG_INFO("Manual");
                 Rando::Logic::GenerateShuffleList();
             } else if (CVarGetInteger("gRandoSettings.UseExistingLog", 0)) {
                 std::string fileName = std::to_string(selectedFileNum) + ".json";

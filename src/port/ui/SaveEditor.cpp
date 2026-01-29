@@ -22,6 +22,8 @@ extern SaveBuffer gSaveBuffer;
 extern MarioState* gMarioState;
 }
 
+#define WIDGET_COLOR UIWidgets::Colors(CVarGetInteger("gSettings.Menu.Theme", 5))
+
 #define DEFINE_COURSE(_0, _1, name) name,
 #define DEFINE_COURSES_END()
 #define DEFINE_BONUS_COURSE(_0, _1, name) name,
@@ -40,6 +42,24 @@ std::map<RandoItemId, const char*> objectMap = {
     { RI_STAR, texture_hud_char_star },
 };
 
+void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_t fileNum) {
+    if (isObtained) {
+        if (courseNum == COURSE_NONE) {
+            gSaveBuffer.files[fileNum][0].flags |= (1 << starAct);
+        } else {
+            gSaveBuffer.files[fileNum][0].courseStars[courseNum] |= (1 << starAct);
+        }
+    } else {
+        if (courseNum == COURSE_NONE) {
+            gSaveBuffer.files[fileNum][0].flags &= ~(1 << starAct);
+        } else {
+            gSaveBuffer.files[fileNum][0].courseStars[courseNum] &= ~(1 << starAct);
+        }
+    }
+    gMarioState->numStars = save_file_get_total_star_count(fileNum, COURSE_MIN - 1, COURSE_MAX - 1);
+    save_file_do_save(fileNum);
+}
+
 void DrawFlagTableArray32(const FlagTable& flagTable, uint16_t row, uint32_t& flags) {
     ImGui::PushID((std::to_string(row) + flagTable.name).c_str());
     for (int32_t flagIndex = 0; flagIndex < 32; flagIndex++) {
@@ -49,22 +69,24 @@ void DrawFlagTableArray32(const FlagTable& flagTable, uint16_t row, uint32_t& fl
         ImGui::PushID(flagIndex);
         bool hasDescription = !!flagTable.flagDescriptions.contains(flagIndex);
         uint32_t bitMask = 1 << flagIndex;
-        ImGui::PushStyleColor(ImGuiCol_FrameBg,
-                              hasDescription ? ImVec4(0.16f, 0.29f, 0.48f, 0.54f) : ImVec4(0.16f, 0.29f, 0.48f, 0.24f));
+
+        ImGui::BeginDisabled(!hasDescription);
+        UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
         bool flag = (flags & bitMask) != 0;
-        if (ImGui::Checkbox("##check", &flag)) {
+        if (UIWidgets::Checkbox("##check", &flag)) {
             if (flag) {
                 flags |= bitMask;
             } else {
                 flags &= ~bitMask;
             }
         }
-        ImGui::PopStyleColor();
         if (ImGui::IsItemHovered() && hasDescription) {
             ImGui::BeginTooltip();
             ImGui::Text("%s", UIWidgets::WrappedText(flagTable.flagDescriptions.at(flagIndex), 60).c_str());
             ImGui::EndTooltip();
         }
+        UIWidgets::PopStyleCheckbox();
+        ImGui::EndDisabled();
         ImGui::PopID();
     }
     ImGui::PopID();
@@ -123,9 +145,15 @@ void HandlePopUpContext(RandoCheckId randoCheckId) {
 }
 
 void SaveEditorWindow::DrawElement() {
+    if (gMarioSpawnInfo->model == NULL) {
+        ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Orange), "No Save File Loaded");
+        return;
+    }
+
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1.0f, 1.0f, 1.0f, 0.0f));
     ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(1.0f, 1.0f, 1.0f, 0.2f));
     ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(1.0f, 1.0f, 1.0f, 0.1f));
+    UIWidgets::PushStyleTabs(WIDGET_COLOR);
     ImGui::BeginTabBar("##saveEditorTabs");
     if (ImGui::BeginTabItem("Main Save & Mario Flags")) {
         ImGui::Text("Mario Flags");
@@ -137,20 +165,38 @@ void SaveEditorWindow::DrawElement() {
 
     if (ImGui::BeginTabItem("Course Stars & Coins")) {
         for (int i = 0; i < COURSE_COUNT; i++) {
+            ImGui::PushID(i);
             ImGui::Text("%s", courseNames[i]);
-            std::string invisibleLabelStr = "##courseStars" + std::string(courseNames[i]);
-            const char* invisibleLabel = invisibleLabelStr.c_str();
-            UIWidgets::DrawFlagArray8(invisibleLabel,
-                                      gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[COURSE_NUM_TO_INDEX(i)]);
-            if (i < COURSE_STAGES_COUNT) {
-                ImGui::SameLine();
-                std::string invisibleLabelStr2 = "##courseCoins" + std::string(courseNames[i]);
-                const char* invisibleLabel2 = invisibleLabelStr2.c_str();
-                ImGui::SetNextItemWidth(ImGui::GetFontSize() * 4);
-                ImGui::InputScalar(invisibleLabel2, ImGuiDataType_U8,
-                                   &gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseCoinScores[COURSE_NUM_TO_INDEX(i)],
-                                   NULL, NULL, "%u");
+            if (ImGui::BeginTable("Course Stars", 8, ImGuiTableFlags_SizingFixedFit)) {
+                ImGui::TableNextColumn();
+                for (int s = 0; s < 8; s++) {
+                    if (s <= 6) {
+                        std::string labelStr = "##courseStars" + std::to_string(s);
+                        const char* label = labelStr.c_str();
+                        bool isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] & (1 << s);
+
+                        UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
+                        if (UIWidgets::Checkbox(label, &isChecked)) {
+                            ModifyStarFlags(isChecked, i, s, gCurrSaveFileNum - 1);
+                        }
+                        UIWidgets::PopStyleCheckbox();
+                    } else {
+                        std::string labelStr2 = "##courseCoins" + std::to_string(s);
+                        const char* label2 = labelStr2.c_str();
+                        int32_t coinCount = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseCoinScores[i];
+
+                        UIWidgets::PushStyleInput(WIDGET_COLOR);
+                        if (UIWidgets::InputInt(label2, &coinCount,
+                                                UIWidgets::InputOptions{}
+                                                    .Size(ImVec2(50.0f, 0))
+                                                    .LabelPosition(UIWidgets::LabelPositions::None))) {}
+                        UIWidgets::PopStyleInput();
+                    }
+                    ImGui::TableNextColumn();
+                }
+                ImGui::EndTable();
             }
+            ImGui::PopID();
         }
         ImGui::EndTabItem();
     }
@@ -181,22 +227,9 @@ void SaveEditorWindow::DrawElement() {
                             int16_t courseNumber = Ship_GetCourseByLevel(randoStaticCheck.levelId);
 
                             RANDO_SAVE_CHECKS(selectedFileNum)[entry.randoCheckId].obtained = toggleTo;
+
                             if (entry.randoItemId == RI_STAR) {
-                                if (toggleTo) {
-                                    if (courseNumber == COURSE_NONE) {
-                                        gSaveBuffer.files[selectedFileNum][0].flags |= (1 << entry.randoAct);
-                                    } else {
-                                        gSaveBuffer.files[selectedFileNum][0].courseStars[courseNumber] |=
-                                            (1 << entry.randoAct);
-                                    }
-                                } else {
-                                    if (courseNumber == COURSE_NONE) {
-                                        gSaveBuffer.files[selectedFileNum][0].flags &= ~(1 << entry.randoAct);
-                                    } else {
-                                        gSaveBuffer.files[selectedFileNum][0].courseStars[courseNumber] &=
-                                            ~(1 << entry.randoAct);
-                                    }
-                                }
+                                ModifyStarFlags(toggleTo, courseNumber, entry.randoAct, selectedFileNum);
                             }
                             if ((entry.randoItemId == RI_COIN_BLUE || entry.randoItemId == RI_COIN_RED) &&
                                 randoStaticCheck.levelId == gCurrLevelNum) {
@@ -244,7 +277,6 @@ void SaveEditorWindow::DrawElement() {
                                 shouldPopUpOpen = true;
                                 ImGui::OpenPopup("ActSubMenu");
                             }
-                            // ImGui::Text(std::to_string(entry.randoAct).c_str());
                         }
                         ImGui::PopID();
                         ImGui::TableNextColumn();
@@ -258,5 +290,6 @@ void SaveEditorWindow::DrawElement() {
     }
 
     ImGui::EndTabBar();
+    UIWidgets::PopStyleTabs();
     ImGui::PopStyleColor(3);
 }
