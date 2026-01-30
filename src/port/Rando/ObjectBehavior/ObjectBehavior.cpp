@@ -98,9 +98,14 @@ void Rando::ObjectBehavior::Init() {
         }
 
         Rando::StaticData::RandoStaticCheck randoStaticCheck;
+        RandoCheckId randoCheckId = RC_UNKNOWN;
 
         if (gCurrLevelNum == LEVEL_CASTLE) {
-            randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(ev->posX, ev->posY, ev->posZ);
+            randoCheckId = Rando::StaticData::GetCheckByLocation(ev->posX, ev->posY, ev->posZ);
+            if (randoCheckId == RC_UNKNOWN) {
+                randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(
+                    0, 0, RANDO_SAVE_CHECKS(selectedFileNum)[RC_CASTLE_STAR_04_MIPS_FIRST].obtained);
+            }
         } else {
             randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
         }
@@ -114,6 +119,12 @@ void Rando::ObjectBehavior::Init() {
         const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
                                          : modelId == MODEL_STAR    ? bhvSpawnedStarNoLevelExit
                                                                     : Rando::StaticData::GetBehaviorByModel(modelId);
+
+        if (randoStaticCheck.posX == 0 && randoStaticCheck.posY == 0 && randoStaticCheck.posZ == 0) {
+            randoStaticCheck.posX = ev->posX;
+            randoStaticCheck.posY = ev->posY;
+            randoStaticCheck.posZ = ev->posZ;
+        }
 
         CustomItem::SpawnObject(modelId, behavior, randoStaticCheck.posX, randoStaticCheck.posY, randoStaticCheck.posZ,
                                 NULL, randoStaticCheck.randoCheckId, randoStaticCheck.actData);

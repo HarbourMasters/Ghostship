@@ -164,6 +164,10 @@ void SaveEditorWindow::DrawElement() {
     }
 
     if (ImGui::BeginTabItem("Course Stars & Coins")) {
+        if (IS_RANDO(gCurrSaveFileNum - 1)) {
+            ImGui::SeparatorText("Rando Save Loaded, use the Rando Tab to make changes");
+        }
+        ImGui::BeginDisabled(IS_RANDO(gCurrSaveFileNum - 1));
         for (int i = 0; i < COURSE_COUNT; i++) {
             ImGui::PushID(i);
             ImGui::Text("%s", courseNames[i]);
@@ -198,6 +202,7 @@ void SaveEditorWindow::DrawElement() {
             }
             ImGui::PopID();
         }
+        ImGui::EndDisabled();
         ImGui::EndTabItem();
     }
 
@@ -230,9 +235,8 @@ void SaveEditorWindow::DrawElement() {
 
                             if (entry.randoItemId == RI_STAR) {
                                 ModifyStarFlags(toggleTo, courseNumber, entry.randoAct, selectedFileNum);
-                            }
-                            if ((entry.randoItemId == RI_COIN_BLUE || entry.randoItemId == RI_COIN_RED) &&
-                                randoStaticCheck.levelId == gCurrLevelNum) {
+                            } else if ((entry.randoItemId == RI_COIN_BLUE || entry.randoItemId == RI_COIN_RED) &&
+                                       randoStaticCheck.levelId == gCurrLevelNum) {
                                 int16_t coinChange = entry.randoItemId == RI_COIN_BLUE ? 5 : 2;
                                 if (toggleTo) {
                                     gMarioState->numCoins += coinChange;

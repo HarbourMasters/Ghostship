@@ -82,6 +82,10 @@ typedef enum {
     RC_BOB_STAR_06_CHAIN_CHOMP,
     RC_BOB_STAR_07_100_COIN,
     RC_CASTLE_STAR_01_TOAD_BASEMENT,
+    RC_CASTLE_STAR_02_TOAD_2ND_FLOOR,
+    RC_CASTLE_STAR_03_TOAD_3RD_FLOOR,
+    RC_CASTLE_STAR_04_MIPS_FIRST,
+    RC_CASTLE_STAR_05_MIPS_SECOND,
     RC_CCM_BLUE_COIN_01,
     RC_CCM_BLUE_COIN_02,
     RC_CCM_BLUE_COIN_03,
@@ -373,6 +377,26 @@ typedef enum {
     RC_WMOTR_STAR_RED_COINS,
     RC_MAX,
 } RandoCheckId;
+
+typedef enum {
+    RE_UNKNOWN,
+    RE_BOB,
+    RE_CCM,
+    RE_WF,
+    RE_JRB,
+    RE_WDW,
+    RE_THI_LARGE,
+    RE_TTM,
+    RE_TTC,
+    RE_SL,
+    RE_THI_SMALL,
+    RE_RR,
+    RE_LLL,
+    RE_SSL,
+    RE_HMC,
+    RE_DDD,
+    RE_MAX,
+} RandoEntranceId;
 
 typedef enum {
     RITYPE_UNKNOWN,

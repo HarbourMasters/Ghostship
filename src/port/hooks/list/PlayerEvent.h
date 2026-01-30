@@ -60,6 +60,10 @@ DEFINE_EVENT(ModifyObjectVisibility,
     struct Object* object;
 );
 
+DEFINE_EVENT(EnterPainting,
+    struct WarpNode* warpNode;
+);
+
 DEFINE_EVENT(OnGameFileLoad,
     s32 fileNum;
 );

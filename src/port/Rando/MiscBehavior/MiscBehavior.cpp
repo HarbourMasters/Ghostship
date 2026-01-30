@@ -31,4 +31,14 @@ void Rando::MiscBehavior::Init() {
             }
         }
     });
+
+    REGISTER_LISTENER(EnterPainting, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        EnterPainting* ev = (EnterPainting*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+        int16_t roll = (rand() % RE_DDD) + 1;
+
+        ev->warpNode->destLevel = Rando::StaticData::Entrances[(RandoEntranceId)roll].destinationId;
+    });
 }
