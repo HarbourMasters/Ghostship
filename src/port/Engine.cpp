@@ -411,6 +411,7 @@ void GameEngine::Create() {
 
 void GameEngine::Destroy() {
     GhostshipGui::Destroy();
+    gsFast3dWindow = nullptr;
     Instance->context = nullptr;
     AudioExit();
 #ifdef __SWITCH__
