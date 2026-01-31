@@ -13,6 +13,7 @@ public:
     bool SelectGameFromUI();
     void SetSearchPath(const std::string& path);
     void GetRoms(std::vector<std::string>& roms);
+    std::string GetRomPath();
     bool GenerateOTR(std::string appShortName = "");
     void WritePortVersion();
 private:

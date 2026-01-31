@@ -135,10 +135,6 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
     portArchiveVersionMatch = std::filesystem::exists(assets_path);
-    /*OTRVersion portArchiveVersion = DetectOTRVersion("soh.o2r", false);
-    portArchiveVersionMatch = portArchiveVersion.major == gBuildVersionMajor &&
-    portArchiveVersion.minor == gBuildVersionMinor &&
-    portArchiveVersion.patch == gBuildVersionPatch;*/
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
 
@@ -164,9 +160,6 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     previousImGuiScaleIndex = -1;
     previousImGuiScale = defaultImGuiScale;
     ScaleImGui();
-
-    OTRVersion curVer = DetectOTRVersion("sm64.o2r");
-    bool shouldRegen = !VerifyArchiveVersion(curVer) && curVer.major != INT16_MAX;
 }
 
 typedef enum ExtractSteps {
@@ -226,7 +219,7 @@ void CheckAndCreateModFolder() {
 }
 
 void GameEngine::FinishInit() {
-    std::string romPath = Ship::Context::LocateFileAcrossAppDirs("oot.o2r", "sm64");
+    std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
         context->GetResourceManager()->GetArchiveManager()->AddArchive(romPath);
     }
@@ -617,7 +610,10 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     GhostshipGui::RegisterPopup(
                         "ROMs found", "ROMs found in application directory. Would you like to process them?",
                         "Yes", "No", [&]() { extractStep = ES_EXTRACT_ARGS; },
-                        [&]() { promptStep = PS_FIRST; });
+                        [&]() {
+                            args.clear();
+                            promptStep = PS_FIRST;
+                        });
                 } else {
                     promptStep = PS_FIRST;
                 }
@@ -629,13 +625,14 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     continue;
                 }
                 extracting = true;
+                file = extract.GetRomPath();
                 threadPool->submit_task([&]() -> void {
-                    extract.GenerateOTR(/*&extractCount, &totalExtract*/); // TODO progress reporting
+                    extract.GenerateOTR("sm64"/*, &extractCount, &totalExtract*/); // TODO progress reporting
                     extracting = false;
                     extractStep = ES_VERIFY;
                     extractCount = 0;
                     totalExtract = 0;
-                    });
+                });
                 continue;
             }
             default:
@@ -713,6 +710,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         gsFast3dWindow->EndFrame();
         ImGui::PopStyleColor(2);
     }
+    threadPool = nullptr;
 
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
@@ -727,35 +725,6 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         gui->GetMenu()->Show();
     }
 }
-
-//bool GameEngine::GenAssetFile(bool exitOnFail) {
-//    auto extractor = new GameExtractor();
-//
-//    if (!extractor->SelectGameFromUI()) {
-//        ShowMessage("Error", "No ROM selected.\n\nExiting...");
-//        if (exitOnFail) {
-//            exit(1);
-//        } else {
-//            return false;
-//        }
-//    }
-//
-//    auto game = extractor->ValidateChecksum();
-//    if (!game.has_value()) {
-//        ShowMessage("Unsupported ROM",
-//                    "The provided ROM is not supported.\n\nCheck the readme for a list of supported versions.");
-//        if (exitOnFail) {
-//            exit(1);
-//        } else {
-//            return false;
-//        }
-//    }
-//
-//    ShowMessage(("Ghostship - Extraction - Found " + game.value()).c_str(),
-//                "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
-//
-//    return extractor->GenerateOTR();
-//}
 
 ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     auto mImGuiIo = &ImGui::GetIO();

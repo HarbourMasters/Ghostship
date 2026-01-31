@@ -82,51 +82,13 @@ bool GameExtractor::RunStandalone(std::string rom) {
 }
 
 bool GameExtractor::SelectGameFromUI() {
-    std::vector<std::string> roms;
-    GetRoms(roms);
-
-    bool foundGame = false;
-
-    // Store both path and already-read data
+    //// Store both path and already-read data
     std::string romPath;
     std::vector<uint8_t> romData;
 
-    // Auto detect first baserom with valid hash
-    for (const auto& rom : roms) {
-        if (!std::filesystem::exists(rom)) {
-            continue;
-        }
-
-        std::ifstream inFile(rom, std::ios::binary);
-        if (!inFile.is_open()) {
-            SPDLOG_INFO("Failed to open ROM at path: {}, continuing", rom);
-            continue;
-        }
-
-        inFile.seekg(0, std::ios::end);
-        size_t fileSize = inFile.tellg();
-        inFile.seekg(0, std::ios::beg);
-
-        std::vector<uint8_t> data(fileSize);
-        if (!inFile.read(reinterpret_cast<char*>(data.data()), fileSize)) {
-            SPDLOG_INFO("Failed to read ROM at path: {}, continuing", rom);
-            continue;
-        }
-
-        inFile.close();
-        std::string hash = Companion::CalculateHash(data);
-
-        if (mGameList.find(hash) != mGameList.end()) {
-            romPath = rom;
-            romData = std::move(data);
-            foundGame = true;
-            break;
-        }
-    }
-
 #if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
     // Desktop: fallback to file dialogue if no baserom found
-    if (!foundGame) {
+    //if (!foundGame) {
         if (!pfd::settings::available()) {
             SPDLOG_ERROR("portable-file-dialogs is not available on this system.");
             return false;
@@ -138,17 +100,17 @@ bool GameExtractor::SelectGameFromUI() {
         }
 
         romPath = selection[0];
-    }
+    //}
 #else
     // Mobile: fallback to baserom.us.z64
-    if (!foundGame && !std::filesystem::exists(Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64"))) {
+    if (/*!foundGame && */!std::filesystem::exists(Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64"))) {
         SPDLOG_ERROR("baserom not found");
         return false;
     }
 
-    if (!foundGame) {
+    //if (!foundGame) {
         romPath = Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64");
-    }
+    //}
 #endif
 
     // Load file if it is not already open
@@ -252,6 +214,10 @@ void GameExtractor::WritePortVersion() {
     writer.Close();
 
     Companion::Instance->RegisterCompanionFile("portVersion", writer.ToVector());
+}
+
+std::string GameExtractor::GetRomPath() {
+    return mGamePath.generic_string();
 }
 
 bool GameExtractor::GenerateOTR(std::string appShortName) {
