@@ -216,6 +216,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     context->InitGfxDebugger();
     context->InitFileDropMgr();
+    context->InitCrashHandler();
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
@@ -417,6 +418,7 @@ void GameEngine::Create() {
 
 void GameEngine::Destroy() {
     GhostshipGui::Destroy();
+    gsFast3dWindow = nullptr;
     Instance->context = nullptr;
     AudioExit();
 #ifdef __SWITCH__
