@@ -66,7 +66,7 @@ class GameEngine {
     static int ShowYesNoBox(const char* title, const char* box);
     static ImFont *CreateFontWithSize(float size, std::string fontPath);
     static void ScaleImGui();
-    static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
+    // static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
     static bool IsAltAssetsEnabled();
     void LoadDictionary();
     void LoadPlayerAnims();

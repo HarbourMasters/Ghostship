@@ -226,7 +226,10 @@ void CheckAndCreateModFolder() {
 }
 
 void GameEngine::FinishInit() {
-
+    std::string romPath = Ship::Context::LocateFileAcrossAppDirs("oot.o2r", "sm64");
+    if (std::filesystem::exists(romPath)) {
+        context->GetResourceManager()->GetArchiveManager()->AddArchive(romPath);
+    }
 
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty()) {
         if (!std::filesystem::exists(patches_path)) {
@@ -343,10 +346,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     WindowsSteps windowsStep = WS_TEMP;
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(context->GetWindow());
     auto gui = wnd->GetGui();
+    bool menuWasVisible = false;
+    if (gui->GetMenu()->IsVisible()) {
+        menuWasVisible = true;
+        gui->GetMenu()->Hide();
+    }
 
     OTRVersion romArchiveVersion = DetectOTRVersion("sm64.o2r");
 
-    bool shouldRegen = VerifyArchiveVersion(romArchiveVersion);
+    bool shouldRegen = !VerifyArchiveVersion(romArchiveVersion) && romArchiveVersion.major != INT16_MAX;
 
     std::filesystem::path ownPath;
     std::vector<std::string> args;
@@ -382,13 +390,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         GhostshipGui::RegisterPopup("Extractor assets not found",
             "No O2R files found. Missing 'assets/' folder needed to generate OTR file.\nPlease "
             "re-extract them from the download or.\n\nExiting...",
-            "OK", "", [&]() { exit(1); });
+            "OK", "", [&]() {
+                gsFast3dWindow = nullptr;
+                context = nullptr;
+                exit(1);
+            });
     } else if (shouldRegen) {
         GhostshipGui::RegisterPopup("Outdated ROM Archives",
-            "Your oot.o2r or oot-mq.o2r were created with incompatible versions of SoH.\nYou will "
+            "Your sm64.o2r was created with incompatible versions of Ghostship.\nYou will "
             "now be redirected to re-extract them.");
-        std::filesystem::remove("oot.o2r");
-        std::filesystem::remove("oot-mq.o2r");
+        std::filesystem::remove("sm64.o2r");
     }
 
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
@@ -398,7 +409,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         }
         switch (extractStep) {
         case ES_PORT_ARCHIVE: {
-            if (portArchiveVersionMatch) {
+            //if (portArchiveVersionMatch) {
 #ifdef _WIN32
                 extractStep = ES_WINDOWS;
 #elif (defined(__WIIU__) || defined(__SWITCH__))
@@ -406,7 +417,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #else
                 extractStep = ES_EXTRACT;
 #endif
-            } else {
+            /*} else {
                 std::string msg;
 
 #if defined(__SWITCH__)
@@ -421,10 +432,10 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     "Please extract the soh.o2r from the Ship of Harkinian download to your folder.\n\nExiting...";
 #endif
                 std::string title =
-                    !std::filesystem::exists(assets_path) ? "Missing soh.o2r" : "soh.o2r is outdated";
+                    !std::filesystem::exists(assets_path) ? "Missing ghostship.o2r" : "ghostship.o2r is outdated";
                 GhostshipGui::RegisterPopup(title, msg, "OK", "", [&]() { exit(1); });
             }
-            continue;
+            continue;*/
         }
         case ES_WINDOWS: {
             switch (windowsStep) {
@@ -443,9 +454,14 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 GetModuleFileName(NULL, buffer, _countof(buffer));
                 ownPath = std::filesystem::canonical(buffer).parent_path();
                 if (IsSubpath(ownPath, tempPath)) {
-                    GhostshipGui::RegisterPopup("SoH Path Error",
-                        "SoH is running in a temp folder.\nExtract the .zip and run again.",
-                        "OK", "", [&]() { exit(0); });
+                    GhostshipGui::RegisterPopup("Ghostship Path Error",
+                        "Ghostship is running in a temp folder.\nExtract the .zip and run again.",
+                        "OK", "", [&]() {
+                            threadPool = nullptr;
+                            gsFast3dWindow = nullptr;
+                            context = nullptr;
+                            exit(0);
+                        });
                 } else {
                     windowsStep = WS_PERMS;
                 }
@@ -460,21 +476,29 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     create_directories(tfolder);
                 } catch (std::filesystem::filesystem_error const& ex) { error = true; }
                 if (tfile == NULL || error) {
-                    GhostshipGui::RegisterPopup("SoH Permissions Error",
-                        "SoH does not have proper file permissions.\nPlease move it to a "
+                    GhostshipGui::RegisterPopup("Ghostship Permissions Error",
+                        "Ghostship does not have proper file permissions.\nPlease move it to a "
                         "folder that does and run again.",
                         "OK", "", [&]() {
                             fclose(tfile);
                             PathTestCleanup(tfile);
+                            threadPool = nullptr;
+                            gsFast3dWindow = nullptr;
+                            context = nullptr;
                             exit(0);
                         });
                 } else {
                     fclose(tfile);
                     if (!PathTestCleanup(tfile)) {
-                        GhostshipGui::RegisterPopup("SoH Permissions Error",
-                            "SoH does not have proper file permissions.\nPlease move it to a "
+                        GhostshipGui::RegisterPopup("Ghostship Permissions Error",
+                            "Ghostship does not have proper file permissions.\nPlease move it to a "
                             "folder that does and run again.",
-                            "OK", "", [&]() { exit(0); });
+                            "OK", "", [&]() {
+                                threadPool = nullptr;
+                                gsFast3dWindow = nullptr;
+                                context = nullptr;
+                                exit(0);
+                            });
                     }
                     windowsStep = WS_ONEDRIVE;
                 }
@@ -482,11 +506,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             }
             case WS_ONEDRIVE: {
                 if (ownPath.string().find("OneDrive") != std::string::npos) {
-                    GhostshipGui::RegisterPopup("SoH Path Error",
-                        "SoH appears to be in a OneDrive folder, which will cause issues.\n"
+                    GhostshipGui::RegisterPopup("Ghostship Path Error",
+                        "Ghostship appears to be in a OneDrive folder, which will cause issues.\n"
                         "Please move it to a folder outside of OneDrive, like the root of a\n"
-                        "drive (e.g. \"C:\\Games\\SoH\").",
-                        "OK", "", [&]() { exit(0); });
+                        "drive (e.g. \"C:\\Games\\Ghostship\").",
+                        "OK", "", [&]() {
+                            threadPool = nullptr;
+                            gsFast3dWindow = nullptr;
+                            context = nullptr;
+                            exit(0);
+                        });
                 } else {
                     windowsStep = WS_DONE;
                     if (args.size() > 0) {
@@ -506,25 +535,28 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #if !defined(__SWITCH__) && !defined(__WIIU__)
             if (args.size() == 0) {
                 GhostshipGui::RegisterPopup(
-                    "Run Ship of Harkinian", "All files have been processed. Run SoH?", "Yes", "No",
+                    "Run Ghostship", "All files have been processed. Run Ghostship?", "Yes", "No",
                     [&]() {
                         if (!std::filesystem::exists(Ship::Context::GetAppDirectoryPath("sm64") +
-                            "/oot.o2r") &&
-                            !std::filesystem::exists(Ship::Context::GetAppDirectoryPath("sm64") +
-                                "/oot-mq.o2r")) {
+                            "/sm64.o2r")) {
                             extractStep = ES_EXTRACT;
                             promptStep = PS_FILE_CHECK;
                         } else {
                             extractStep = ES_VERIFY;
                         }
                     },
-                    [&]() { exit(0); });
+                    [&]() {
+                        threadPool = nullptr;
+                        gsFast3dWindow = nullptr;
+                        context = nullptr;
+                        exit(0);
+                    });
                 break;
             }
             file = args.at(0);
             args.erase(args.begin());
             extract = GameExtractor();
-            if (extract.SelectGameFromUI.RunFileStandalone(file)) {
+            if (extract.RunStandalone(file)) {
                 bool doExtract = true;
                 std::string archive = "sm64.o2r";
                 if (std::filesystem::exists(Ship::Context::GetAppDirectoryPath("sm64") + "/" + archive)) {
@@ -532,8 +564,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     GhostshipGui::RegisterPopup("Confirm Re-extract", msg.c_str(), "Yes", "No", [&]() {
                         extracting = true;
                         threadPool->submit_task([&]() -> void {
-                            extract.CallZapd(installPath, Ship::Context::GetAppDirectoryPath("sm64"),
-                                &extractCount, &totalExtract);
+                            extract.GenerateOTR("sm64"/*, &extractCount, &totalExtract*/); // TODO progress reporting
                             extracting = false;
                             extractCount = totalExtract = 0;
                             });
@@ -541,8 +572,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 } else {
                     extracting = true;
                     threadPool->submit_task([&]() -> void {
-                        extract.CallZapd(installPath, Ship::Context::GetAppDirectoryPath("sm64"),
-                            &extractCount, &totalExtract);
+                        extract.GenerateOTR("sm64"/*, &extractCount, &totalExtract*/); // TODO progress reporting
                         extracting = false;
                         extractCount = totalExtract = 0;
                         });
@@ -550,7 +580,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             } else {
                 bool open = true;
                 std::string msg = "File\n" + std::string(file) + "\nis not a ROM or does not match supported ROMs.";
-                GhostshipGui::RegisterPopup("SoH ROM Error", msg.c_str());
+                GhostshipGui::RegisterPopup("Ghostship ROM Error", msg.c_str());
             }
 #else
             extractStep = ES_VERIFY;
@@ -560,23 +590,27 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         case ES_EXTRACT: {
             switch (promptStep) {
             case PS_FILE_CHECK: {
-                const bool ootO2RExists =
-                    std::filesystem::exists(
-                        Ship::Context::LocateFileAcrossAppDirs("oot-mq.o2r", "sm64")) ||
-                    std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("oot.o2r", "sm64"));
+                const bool romO2RExists = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
 
-                if (!ootO2RExists) {
+                if (!romO2RExists) {
                     GhostshipGui::RegisterPopup(
                         "No O2R Files", "No O2R files found. Generate one now?", "Yes", "No",
-                        [&]() { promptStep = PS_LOCAL; }, [&]() { exit(0); });
+                        [&]() { promptStep = PS_LOCAL; }, [&]() {
+                            threadPool = nullptr;
+                            gsFast3dWindow = nullptr;
+                            context = nullptr;
+                            exit(0);
+                        });
                 } else {
                     extractStep = ES_VERIFY;
                 }
                 continue;
             }
             case PS_LOCAL: {
-                extract = Extractor();
+                extract = GameExtractor();
                 extract.SetSearchPath(installPath);
+                extract.GetRoms(args);
+                extract.SetSearchPath(Ship::Context::GetAppDirectoryPath("sm64"));
                 extract.GetRoms(args);
                 if (!args.empty()) {
                     promptStep = PS_WAIT;
@@ -590,14 +624,13 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 continue;
             }
             case PS_FIRST: {
-                if (!extract.ManuallySearchForRomMatchingType()) {
+                if (args.empty() && !extract.SelectGameFromUI()) {
                     promptStep = PS_FILE_CHECK;
                     continue;
                 }
                 extracting = true;
                 threadPool->submit_task([&]() -> void {
-                    extract.CallZapd(installPath, Ship::Context::GetAppDirectoryPath("sm64"),
-                        &extractCount, &totalExtract);
+                    extract.GenerateOTR(/*&extractCount, &totalExtract*/); // TODO progress reporting
                     extracting = false;
                     extractStep = ES_VERIFY;
                     extractCount = 0;
@@ -611,13 +644,17 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             break;
         }
         case ES_VERIFY: {
-            const bool ootO2RExists =
-                std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
+            const bool romO2RExists = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
 
-            if (!ootO2RExists) {
+            if (!romO2RExists) {
                 GhostshipGui::RegisterPopup("No ROM Archive",
                     "No ROM O2R file detected. Please generate a ROM O2R and relaunch.", "OK",
-                    "", [&]() { exit(0); });
+                    "", [&]() {
+                        threadPool = nullptr;
+                        gsFast3dWindow = nullptr;
+                        context = nullptr;
+                        exit(0);
+                    });
             }
             extractDone = true;
             continue;
@@ -628,6 +665,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     render:
         if (!WindowIsRunning()) {
+            threadPool = nullptr;
+            gsFast3dWindow = nullptr;
+            context = nullptr;
             exit(0);
         }
         // Process window events for resize, mouse, keyboard events
@@ -683,36 +723,39 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #if not defined(__SWITCH__) && not defined(__WIIU__)
     CheckAndCreateModFolder();
 #endif
+    if (menuWasVisible) {
+        gui->GetMenu()->Show();
+    }
 }
 
-bool GameEngine::GenAssetFile(bool exitOnFail) {
-    auto extractor = new GameExtractor();
-
-    if (!extractor->SelectGameFromUI()) {
-        ShowMessage("Error", "No ROM selected.\n\nExiting...");
-        if (exitOnFail) {
-            exit(1);
-        } else {
-            return false;
-        }
-    }
-
-    auto game = extractor->ValidateChecksum();
-    if (!game.has_value()) {
-        ShowMessage("Unsupported ROM",
-                    "The provided ROM is not supported.\n\nCheck the readme for a list of supported versions.");
-        if (exitOnFail) {
-            exit(1);
-        } else {
-            return false;
-        }
-    }
-
-    ShowMessage(("Ghostship - Extraction - Found " + game.value()).c_str(),
-                "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
-
-    return extractor->GenerateOTR();
-}
+//bool GameEngine::GenAssetFile(bool exitOnFail) {
+//    auto extractor = new GameExtractor();
+//
+//    if (!extractor->SelectGameFromUI()) {
+//        ShowMessage("Error", "No ROM selected.\n\nExiting...");
+//        if (exitOnFail) {
+//            exit(1);
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//    auto game = extractor->ValidateChecksum();
+//    if (!game.has_value()) {
+//        ShowMessage("Unsupported ROM",
+//                    "The provided ROM is not supported.\n\nCheck the readme for a list of supported versions.");
+//        if (exitOnFail) {
+//            exit(1);
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//    ShowMessage(("Ghostship - Extraction - Found " + game.value()).c_str(),
+//                "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
+//
+//    return extractor->GenerateOTR();
+//}
 
 ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     auto mImGuiIo = &ImGui::GetIO();
