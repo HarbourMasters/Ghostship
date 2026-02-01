@@ -167,7 +167,6 @@ void GenerateShuffleList() {
 
     switch (CVarGetInteger(Rando::StaticData::Options[RO_LOGIC].cvar, 0)) {
         case RO_LOGIC_GLITCHLESS:
-            break;
         case RO_LOGIC_NO_LOGIC:
             ApplyNoLogicToSaveContext(shuffledList, levelIds);
             break;
