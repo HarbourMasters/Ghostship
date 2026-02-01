@@ -62,6 +62,7 @@ u64 *process_envelope_inner(u64 *cmd, struct Note *note, s32 nSamples, u16 inBuf
                             s32 headsetPanSettings, struct VolumeChange *vol);
 u64 *note_apply_headset_pan_effects(u64 *cmd, struct Note *note, s32 bufLen, s32 flags, s32 leftRight);
 #endif
+u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen);
 
 #ifdef VERSION_EU
 struct SynthesisReverb gSynthesisReverbs[4];
@@ -1088,6 +1089,17 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                 cmd = note_apply_headset_pan_effects(cmd, note, bufLen * 2, flags, leftRight);
             }
 #endif
+
+            // Apply surround effect when in surround mode
+#ifdef VERSION_EU
+            if (gSoundMode == SOUND_MODE_SURROUND && noteSubEu->stereoHeadsetEffects) {
+                cmd = note_apply_surround_effect(cmd, note, bufLen * 2);
+            }
+#else
+            if (gSoundMode == SOUND_MODE_SURROUND && note->stereoHeadsetEffects) {
+                cmd = note_apply_surround_effect(cmd, note, bufLen * 2);
+            }
+#endif
         }
 #ifndef VERSION_EU
     }
@@ -1424,6 +1436,60 @@ u64 *note_apply_headset_pan_effects(u64 *cmd, struct Note *note, s32 bufLen, s32
     return cmd;
 }
 
+/**
+ * Apply surround sound effect using matrix encoding.
+ * This creates a rear channel effect by phase-inverting and mixing based on pan position.
+ * Uses a stateless approach - applies the effect directly without persistent state.
+ */
+u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen) {
+    s16 dryGain;
+    s32 wetGain;
+
+    // Calculate base gain from current volume
+    dryGain = note->curVolLeft > note->curVolRight ? note->curVolLeft : note->curVolRight;
+    dryGain = dryGain >> 2; // Scale down for subtle effect
+    if (dryGain > 0x1800) {
+        dryGain = 0x1800; // Limit surround intensity
+    }
+
+    // Calculate pan position: 0.0 = full left, 0.5 = center, 1.0 = full right
+    f32 sumVol = note->targetVolLeft + note->targetVolRight;
+    f32 panPosition = 0.5f; // default: center
+    if (sumVol > 0.0f) {
+        panPosition = (f32)note->targetVolRight / sumVol;
+    }
+
+    // Matrix surround encoding: steer surround based on pan
+    // The idea: add out-of-phase content to create width/depth
+    // Left-panned sounds get positive left, negative right (spreads to rear left)
+    // Right-panned sounds get negative left, positive right (spreads to rear right)
+    s16 leftGain = (s16)(dryGain * (1.0f - panPosition));
+    s16 rightGain = (s16)(dryGain * panPosition);
+
+    // Mix surround contribution into channels
+    // Left channel gets positive surround from left-panned content
+    aSetBuffer(cmd++, 0, 0, 0, bufLen);
+    aMix(cmd++, 0, leftGain, DMEM_ADDR_LEFT_CH, DMEM_ADDR_LEFT_CH);
+
+    // Right channel gets phase-inverted surround contribution for matrix encoding
+    aMix(cmd++, 0, (s16)(rightGain ^ 0xFFFF), DMEM_ADDR_RIGHT_CH, DMEM_ADDR_RIGHT_CH);
+
+    // Apply to wet (reverb) channels for consistent spatialization
+    wetGain = (dryGain * note->reverbVol) >> 7;
+    if (wetGain > 0) {
+        s16 wetLeftGain = (s16)(wetGain * (1.0f - panPosition));
+        s16 wetRightGain = (s16)(wetGain * panPosition);
+
+        aMix(cmd++, 0, wetLeftGain, DMEM_ADDR_WET_LEFT_CH, DMEM_ADDR_WET_LEFT_CH);
+        aMix(cmd++, 0, (s16)(wetRightGain ^ 0xFFFF), DMEM_ADDR_WET_RIGHT_CH, DMEM_ADDR_WET_RIGHT_CH);
+    }
+
+    // Update surround effect index based on current pan for tracking
+    note->surroundEffectIndex = (u8)((note->targetVolRight * 127) / (note->targetVolLeft + note->targetVolRight + 1));
+
+    return cmd;
+}
+
 #ifndef VERSION_EU
 // Moved to playback.c in EU
 
@@ -1436,6 +1502,7 @@ void note_init_volume(struct Note *note) {
     note->curVolLeft = 1;
     note->curVolRight = 1;
     note->frequency = 0.0f;
+    note->surroundEffectIndex = 64; // Center pan
 }
 
 void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverbVol) {
