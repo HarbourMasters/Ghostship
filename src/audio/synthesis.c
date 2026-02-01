@@ -1092,11 +1092,11 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
 
             // Apply surround effect when in surround mode
 #ifdef VERSION_EU
-            if (gSoundMode == SOUND_MODE_SURROUND && noteSubEu->stereoHeadsetEffects) {
+            if (gSoundMode == SOUND_MODE_SURROUND) {
                 cmd = note_apply_surround_effect(cmd, note, bufLen * 2);
             }
 #else
-            if (gSoundMode == SOUND_MODE_SURROUND && note->stereoHeadsetEffects) {
+            if (gSoundMode == SOUND_MODE_SURROUND) {
                 cmd = note_apply_surround_effect(cmd, note, bufLen * 2);
             }
 #endif
