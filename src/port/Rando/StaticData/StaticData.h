@@ -61,6 +61,7 @@ struct RandoStaticEntrance {
     int16_t destinationId;
     RandoEntranceType randoEntranceType;
     WarpNodes deathWarpId;
+    int16_t deathArea;
 };
 
 extern std::map<RandoEntranceId, RandoStaticEntrance> Entrances;

@@ -7,6 +7,8 @@ extern "C" {
 void initiate_warp(s16 destLevel, s16 destArea, s16 destWarpNode, s32 arg3);
 }
 
+static RandoEntranceId currentEntrance = RE_UNKNOWN;
+
 // Entry point for the module, run once on game boot
 void Rando::MiscBehavior::Init() {
     Rando::MiscBehavior::OnFileLoad();
@@ -39,24 +41,40 @@ void Rando::MiscBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-
+        SPDLOG_INFO("currentLevel: {}", std::to_string(currentEntrance));
         SPDLOG_INFO("Source: {}", std::to_string(ev->sourceWarpNode));
         SPDLOG_INFO("Current Destination: {}", std::to_string(ev->warpNode->destLevel));
-        SPDLOG_INFO("Current Level: {}", std::to_string(ev->warpNode->destLevel));
 
-        RandoEntranceId randoEntranceId;
-        for (auto& [randoEntranceId, randoStaticEntrance] : Rando::StaticData::Entrances) {
-            if (randoStaticEntrance.destinationId == ev->warpNode->destLevel) {
-                // TODO: Death Exits
-                if (ev->sourceWarpNode > 0) {
-                    return;
-                } else {
+        // TODO: Death Exits
+        if (ev->sourceWarpNode > 0 && currentEntrance != RE_UNKNOWN) {
+            Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
+
+            ev->warpNode->destNode = randoStaticEntrance.deathWarpId;
+            ev->warpNode->destArea = randoStaticEntrance.deathArea;
+
+            switch (currentEntrance) {
+                case RE_BBH:
+                    ev->warpNode->destLevel = LEVEL_CASTLE_COURTYARD;
+                    break;
+                case RE_VCUTM:
+                    ev->warpNode->destLevel = LEVEL_CASTLE_GROUNDS;
+                    break;
+                default:
+                    ev->warpNode->destLevel = LEVEL_CASTLE;
+                    break;
+            }
+
+            currentEntrance = RE_UNKNOWN;
+        } else {
+            RandoEntranceId randoEntranceId;
+            for (auto& [randoEntranceId, randoStaticEntrance] : Rando::StaticData::Entrances) {
+                if (randoStaticEntrance.destinationId == ev->warpNode->destLevel) {
                     // TODO: Handle Tiny Huge Islands size changes, Wet Dry World water level, and Tick Tock Clocks
                     // clock.
                     ev->warpNode->destLevel = RANDO_SAVE_ENTRANCES(selectedFileNum)[randoEntranceId].destinationId;
-                    SPDLOG_INFO("New Level: {}", std::to_string(ev->warpNode->destLevel));
+                    currentEntrance = randoEntranceId;
+                    break;
                 }
-                break;
             }
         }
     });

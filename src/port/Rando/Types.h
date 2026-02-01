@@ -387,6 +387,13 @@ typedef enum {
 } RandoEntranceType;
 
 typedef enum {
+    REAREA_NONE,
+    REAREA_01,
+    REAREA_02,
+    REAREA_03,
+} RandoEntranceDeathArea;
+
+typedef enum {
     RE_UNKNOWN,
     RE_BBH,
     RE_BITDW,

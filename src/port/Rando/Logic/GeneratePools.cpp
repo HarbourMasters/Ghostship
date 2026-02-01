@@ -77,7 +77,8 @@ void InitializeSaveEntrances() {
         RandoSaveEntrance randoSaveEntrance = { .randoEntranceId = randoEntranceId,
                                                 .destinationId = randoStaticEntrance.destinationId,
                                                 .randoEntranceType = randoStaticEntrance.randoEntranceType,
-                                                .deathWarpId = randoStaticEntrance.deathWarpId };
+                                                .deathWarpId = randoStaticEntrance.deathWarpId,
+                                                .deathArea = randoStaticEntrance.deathArea };
         RANDO_SAVE_ENTRANCES(selectedFileNum)[randoEntranceId] = randoSaveEntrance;
     }
 }

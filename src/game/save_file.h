@@ -31,6 +31,7 @@ struct RandoSaveEntrance {
     int16_t destinationId;
     RandoEntranceType randoEntranceType;
     WarpNodes deathWarpId;
+    int16_t deathArea;
 };
 
 typedef enum {
