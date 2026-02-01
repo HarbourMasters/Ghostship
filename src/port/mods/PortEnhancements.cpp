@@ -109,7 +109,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(ModifyObjectBehavior);
     REGISTER_EVENT(ModifyRedCoinCount);
     REGISTER_EVENT(ModifyObjectVisibility);
-    REGISTER_EVENT(EnterPainting);
+    REGISTER_EVENT(ChangeLevel);
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);
 

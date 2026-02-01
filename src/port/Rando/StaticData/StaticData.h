@@ -58,7 +58,9 @@ RandoAct GetShuffledRandoAct(RandoCheckId randoCheckId);
 struct RandoStaticEntrance {
     RandoEntranceId randoEntranceId;
     const char* name;
-    LevelNum destinationId;
+    int16_t destinationId;
+    RandoEntranceType randoEntranceType;
+    WarpNodes deathWarpId;
 };
 
 extern std::map<RandoEntranceId, RandoStaticEntrance> Entrances;

@@ -60,8 +60,10 @@ DEFINE_EVENT(ModifyObjectVisibility,
     struct Object* object;
 );
 
-DEFINE_EVENT(EnterPainting,
+DEFINE_EVENT(ChangeLevel,
+    int16_t sourceWarpNode;
     struct WarpNode* warpNode;
+    int32_t* delayedWarpArg;
 );
 
 DEFINE_EVENT(OnGameFileLoad,

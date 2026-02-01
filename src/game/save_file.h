@@ -26,6 +26,13 @@ struct RandoSaveCheck {
     bool skipped;
 };
 
+struct RandoSaveEntrance {
+    RandoEntranceId randoEntranceId;
+    int16_t destinationId;
+    RandoEntranceType randoEntranceType;
+    WarpNodes deathWarpId;
+};
+
 typedef enum {
     SAVETYPE_VANILLA,
     SAVETYPE_RANDO,
@@ -33,6 +40,7 @@ typedef enum {
 
 struct RandoSaveData {
     struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    struct RandoSaveEntrance randoSaveEntrances[RE_MAX];
     u32 finalSeed;
     // u32 randoSaveOptions[RO_MAX];
 };

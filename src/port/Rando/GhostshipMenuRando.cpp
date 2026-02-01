@@ -99,7 +99,7 @@ void GhostshipMenu::AddMenuRando() {
         .Options(CheckboxOptions().Tooltip("Skips the cutscene when collecting a Star."));
 
     path = { "Rando", "Shuffle Options", SECTION_COLUMN_1 };
-    AddSidebarEntry("Rando", path.sidebarName, 1);
+    AddSidebarEntry("Rando", path.sidebarName, 2);
     path.column = SECTION_COLUMN_1;
 
     AddWidget(path, "Item Options", WIDGET_SEPARATOR_TEXT);
@@ -121,6 +121,26 @@ void GhostshipMenu::AddMenuRando() {
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_COINS_BLUE].cvar)
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Shuffles Blue Coins into the Item Pool."));
+
+    path.column = SECTION_COLUMN_2;
+
+    AddWidget(path, "Entrance Options", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Shuffle Bowser Levels", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_BOWSER].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Bowser Entrances."));
+    AddWidget(path, "Shuffle Cap Unlock Levels", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_CAP].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Cap Unlock Entrances."));
+    AddWidget(path, "Shuffle Paintings", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_PAINTING].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Painting Entrances including Rainbow Ride."));
+    AddWidget(path, "Shuffle Secret Levels", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_SECRET].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Castle Secret Entrances."));
 
     path = { "Rando", "Check Tracker", SECTION_COLUMN_1 };
     AddSidebarEntry("Rando", path.sidebarName, 1);

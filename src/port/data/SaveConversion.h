@@ -6,7 +6,8 @@
 
 #include <nlohmann/json.hpp>
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveCheck, randoItemId, randoAct, obtained, skipped)
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveData, randoSaveChecks, finalSeed)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveEntrance, randoEntranceId, destinationId, randoEntranceType, deathWarpId)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveData, randoSaveChecks, randoSaveEntrances, finalSeed)
 
 using json = nlohmann::json;
 

@@ -31,6 +31,7 @@ void Rando::MiscBehavior::OnFileLoad() {
         if (!IS_RANDO(selectedFileNum)) {
             gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
             Rando::Logic::InitializeSaveChecks();
+            Rando::Logic::InitializeSaveEntrances();
 
             if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
                 Rando::Logic::GenerateShuffleList();
@@ -57,6 +58,18 @@ void Rando::MiscBehavior::OnFileLoad() {
                 RANDO_SAVE_CHECKS(selectedFileNum)[pool.randoCheckId] = randoSaveCheck;
             }
 
+            if (!Rando::Logic::shuffledEntrances.empty()) {
+                for (auto& entrance : Rando::Logic::shuffledEntrances) {
+                    RandoSaveEntrance randoSaveEntrance;
+                    randoSaveEntrance.randoEntranceId = entrance.randoEntranceId;
+                    randoSaveEntrance.destinationId = entrance.destinationId;
+                    randoSaveEntrance.randoEntranceType = entrance.randoEntranceType;
+                    randoSaveEntrance.deathWarpId = entrance.deathWarpId;
+
+                    RANDO_SAVE_ENTRANCES(selectedFileNum)[entrance.randoEntranceId] = randoSaveEntrance;
+                }
+            }
+
             Notification::Emit(
                 { .message = "Spoiler written to Save File.", .messageColor = ImVec4(0, 0.85f, 0.3f, 1) });
             save_file_do_save(selectedFileNum);
@@ -69,7 +82,14 @@ void Rando::MiscBehavior::OnFileLoad() {
                 entry.randoItemId = randoSaveCheck.randoItemId;
                 entry.randoAct = randoSaveCheck.randoAct;
                 entry.obtained = randoSaveCheck.obtained;
+                entry.skipped = randoSaveCheck.skipped;
                 Rando::Logic::shuffledPool.push_back(entry);
+            }
+
+            Rando::Logic::shuffledEntrances.clear();
+            for (size_t e = 0; e < RE_MAX; e++) {
+                RandoSaveEntrance randoSaveEntrance = RANDO_SAVE_ENTRANCES(selectedFileNum)[e];
+                Rando::Logic::shuffledEntrances.push_back(randoSaveEntrance);
             }
         }
     });

@@ -16,7 +16,7 @@ extern "C" bool Ship_IsCStringEmpty(const char* str) {
 }
 
 char seedString[MAX_SEED_STRING_SIZE];
-u32 finalSeed;
+u32 finalSeed = 0;
 
 extern uint32_t Ship_Hash(std::string str) {
     // FNV-1a
