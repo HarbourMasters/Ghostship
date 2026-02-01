@@ -10,8 +10,6 @@ namespace Rando {
 
 namespace Spoiler {
 
-// extern std::vector<std::string> spoilerOptions;
-// void RefreshOptions();
 nlohmann::json GenerateFromPoolGeneration(std::vector<LevelShuffleEntry>& shuffledPool);
 std::vector<LevelShuffleEntry> GenerateFromSpoilerLog(nlohmann::json spoiler);
 void SaveToFile(const std::string& fileName, nlohmann::json spoiler);

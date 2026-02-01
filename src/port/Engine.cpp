@@ -86,12 +86,15 @@ OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
         if (t != nullptr && t->IsLoaded) {
             auto stream = std::make_shared<Ship::MemoryStream>(t->Buffer->data(), t->Buffer->size());
             auto reader = std::make_shared<Ship::BinaryReader>(stream);
-            Ship::Endianness endianness = (Ship::Endianness)reader->ReadUByte();
-            reader->SetEndianness(endianness);
+            reader->SetEndianness(Ship::Endianness::Big);
             version.major = reader->ReadUInt16();
             version.minor = reader->ReadUInt16();
             version.patch = reader->ReadUInt16();
+        } else {
+            SPDLOG_WARN("Failed to read portVersion file from O2R: {}", otrPath);
         }
+    } else {
+        SPDLOG_WARN("Failed to open O2R for version reading: {}", otrPath);
     }
 
     return version;
@@ -101,10 +104,11 @@ OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
 // For Windows/Mac/Linux if the version doesn't match, offer to
 OTRVersion DetectOTRVersion(std::string fileName) {
     bool isOtrOld = false;
-    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName, "sm64");
+    std::string otrPath = Ship::Context::LocateFileAcrossAppDirs(fileName);
 
     // Doesn't exist so nothing to do here
     if (!std::filesystem::exists(otrPath)) {
+        SPDLOG_WARN("O2R file not found at path: {}", otrPath);
         return { INT16_MAX, INT16_MAX, INT16_MAX };
     }
 
@@ -112,8 +116,7 @@ OTRVersion DetectOTRVersion(std::string fileName) {
 }
 
 bool VerifyArchiveVersion(OTRVersion version) {
-    return version.major != INT16_MAX && version.minor != INT16_MAX &&
-           (version.major == gBuildVersionMajor || version.minor == gBuildVersionMinor);
+    return version.major == gBuildVersionMajor && version.minor == gBuildVersionMinor;
 }
 
 GameEngine::GameEngine() : dictionary(nullptr) {
@@ -128,42 +131,37 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
     // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-#if (_DEBUG)
-    auto defaultLogLevel = spdlog::level::debug;
-#else
-    auto defaultLogLevel = spdlog::level::info;
-#endif
-    auto logLevel =
-        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
-    context->InitLogging(logLevel, logLevel);
-    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
-    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
-                (char*)gGitCommitHash);
-
     std::vector<std::string> archiveFiles;
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("sm64.o2r");
     const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
 
-    bool shouldRegen = !VerifyArchiveVersion(DetectOTRVersion("sm64.o2r"));
-
-#ifdef _WIN32
-    AllocConsole();
-#endif
+    OTRVersion curVer = DetectOTRVersion("sm64.o2r");
+    bool shouldRegen = !VerifyArchiveVersion(curVer) && curVer.major != INT16_MAX;
 
     if (std::filesystem::exists(main_path) && !shouldRegen) {
         archiveFiles.push_back(main_path);
     } else {
-        if (shouldRegen && std::filesystem::exists(main_path)) {
-            std::filesystem::remove(main_path);
-        }
+        SPDLOG_WARN("Your ROM O2R is outdated, and needs to be re-extracted.");
         std::string msg = (shouldRegen ? "Your ROM O2R is outdated, and needs to be re-extracted.\n\n" : "") +
                           std::string("Please provide a Super Mario 64 ROM.\n\nSupported Versions:\nUS\nJP\n\n"
                                       "Assets will be extracted into an O2R file.");
         if (ShowYesNoBox("Ghostship - Asset Extraction", msg.c_str()) == IDYES) {
+            if (shouldRegen && std::filesystem::exists(main_path)) {
+                std::filesystem::remove(main_path);
+            }
+#ifdef _WIN32
+            AllocConsole();
+#endif
             if (!GenAssetFile()) {
+#if defined(_WIN32) && !defined(_DEBUG)
+                FreeConsole();
+#endif
                 ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
                 exit(1);
             } else {
+#if defined(_WIN32) && !defined(_DEBUG)
+                FreeConsole();
+#endif
                 archiveFiles.push_back(main_path);
             }
         } else {
@@ -195,6 +193,18 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         }
     }
 
+#if (_DEBUG)
+    auto defaultLogLevel = spdlog::level::debug;
+#else
+    auto defaultLogLevel = spdlog::level::info;
+#endif
+    auto logLevel =
+        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
+    context->InitLogging(logLevel, logLevel);
+    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
+    SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
+                (char*)gGitCommitHash);
+
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
     this->context->InitControlDeck(controlDeck);
 
@@ -206,6 +216,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     context->InitGfxDebugger();
     context->InitFileDropMgr();
+    context->InitCrashHandler();
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
@@ -407,6 +418,7 @@ void GameEngine::Create() {
 
 void GameEngine::Destroy() {
     GhostshipGui::Destroy();
+    gsFast3dWindow = nullptr;
     Instance->context = nullptr;
     AudioExit();
 #ifdef __SWITCH__
@@ -432,16 +444,14 @@ void GameEngine::StartFrame() const {
 }
 
 uint32_t GameEngine::GetInterpolationFPS() {
-    if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
-        return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
-    }
-
     if (CVarGetInteger(CVAR_SETTING("MatchRefreshRate"), 0)) {
         return Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+    } else if (CVarGetInteger(CVAR_VSYNC_ENABLED, 1) ||
+               !Ship::Context::GetInstance()->GetWindow()->CanDisableVerticalSync()) {
+        return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(),
+                                  CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
     }
-
-    return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(),
-                              CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
+    return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
 }
 
 // Audio
@@ -760,7 +770,7 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
     return dictionary->at(key).data();
 }
 
-extern "C" int GameEngine_OTRSigCheck(const char* data) {
+extern "C" bool GameEngine_OTRSigCheck(const char* data) {
     return Ship::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
 }
 

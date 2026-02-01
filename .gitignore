@@ -52,6 +52,7 @@ build/*
 *.sav
 *.o2r
 *.map
+default.sav.bak
 .assets-local.txt
 
 build/
@@ -96,3 +97,6 @@ modding/
 node_modules
 /src/port/build.c
 /properties.h
+!/src/port/mods/
+mods/
+saves/

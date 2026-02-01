@@ -11,11 +11,11 @@ extern "C" {
 extern MarioState* gMarioState;
 }
 
-static bool isInitialized = false;
+extern std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
 
 void LogOutSpawns(std::string type, int16_t model, int16_t posX, int16_t posY, int16_t posZ) {
     if (model != MODEL_STAR && model != MODEL_RED_COIN && model != MODEL_RED_COIN_NO_SHADOW &&
-        model != MODEL_BLUE_COIN && model != MODEL_BLUE_COIN_NO_SHADOW) {
+        model != MODEL_BLUE_COIN && model != MODEL_BLUE_COIN_NO_SHADOW && model != MODEL_BOWSER_KEY) {
         return;
     }
     std::string locationStr = std::to_string(posX) + ", " + std::to_string(posY) + ", " + std::to_string(posZ);
@@ -72,7 +72,6 @@ void Rando::ObjectBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        LogOutSpawns("Object", (int16_t)ev->model, ev->posX, ev->posY, ev->posZ);
         if (ev->model == MODEL_EXCLAMATION_BOX) {
             return;
         }
@@ -88,8 +87,49 @@ void Rando::ObjectBehavior::Init() {
             return;
         }
 
-        LogOutSpawns("Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
+    });
+
+    REGISTER_LISTENER(SpawnCoinStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        SpawnCoinStar* ev = (SpawnCoinStar*)event;
+        LogOutSpawns("?", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+
+        Rando::StaticData::RandoStaticCheck randoStaticCheck;
+        RandoCheckId randoCheckId = RC_UNKNOWN;
+
+        if (gCurrLevelNum == LEVEL_CASTLE) {
+            randoCheckId = Rando::StaticData::GetCheckByLocation(ev->posX, ev->posY, ev->posZ);
+            if (randoCheckId == RC_UNKNOWN) {
+                randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(
+                    0, 0, RANDO_SAVE_CHECKS(selectedFileNum)[RC_CASTLE_STAR_04_MIPS_FIRST].obtained);
+            }
+        } else {
+            randoStaticCheck = Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
+        }
+
+        if (!Rando::Logic::IsCheckShuffled(randoStaticCheck.randoCheckId) ||
+            randoStaticCheck.randoCheckId == RC_UNKNOWN || randoStaticCheck.randoItemId == RI_UNKNOWN) {
+            return;
+        }
+
+        int32_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
+        const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
+                                         : modelId == MODEL_STAR    ? bhvSpawnedStarNoLevelExit
+                                                                    : Rando::StaticData::GetBehaviorByModel(modelId);
+
+        if (randoStaticCheck.posX == 0 && randoStaticCheck.posY == 0 && randoStaticCheck.posZ == 0) {
+            randoStaticCheck.posX = ev->posX;
+            randoStaticCheck.posY = ev->posY;
+            randoStaticCheck.posZ = ev->posZ;
+        }
+
+        CustomItem::SpawnObject(modelId, behavior, randoStaticCheck.posX, randoStaticCheck.posY, randoStaticCheck.posZ,
+                                NULL, randoStaticCheck.randoCheckId, randoStaticCheck.actData);
+
+        event->cancelled = true;
     });
 
     REGISTER_LISTENER(ModifyDefaultStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -97,7 +137,6 @@ void Rando::ObjectBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        LogOutSpawns("Default Star", MODEL_STAR, ev->posX, ev->posY, ev->posZ);
         ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, ev->param);
     });
 
@@ -120,6 +159,7 @@ void Rando::ObjectBehavior::Init() {
                 Rando::ObjectBehavior::ModifyRedCoinBehavior(&event->cancelled, ev->object);
                 break;
             case MODEL_STAR:
+            case MODEL_TRANSPARENT_STAR:
                 Rando::ObjectBehavior::ModifyStarBehavior(&event->cancelled, ev->object);
                 break;
             default:
@@ -128,34 +168,13 @@ void Rando::ObjectBehavior::Init() {
         }
     });
 
-    REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        LevelScriptExecute* ev = (LevelScriptExecute*)event;
-        bool isLevelInitializing = false;
-
-        switch (ev->command) {
-            case 17:
-                isLevelInitializing = true;
-                break;
-            case 18:
-                if (isLevelInitializing) {
-                    CustomItem::redCoinsCollected = 0;
-                    CustomItem::ClearSpawnedObjects();
-                    isLevelInitializing = false;
-                }
-                break;
-            default:
-                break;
-        }
-
-        if (isInitialized || ev->command != 36) {
+    REGISTER_LISTENER(ModifyObjectVisibility, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        ModifyObjectVisibility* ev = (ModifyObjectVisibility*)event;
+        if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-
-        if (!isInitialized) {
-            LOAD_MODEL_FROM_GEO(MODEL_STAR, star_geo);
-            LOAD_MODEL_FROM_GEO(MODEL_RED_COIN, red_coin_geo);
-            LOAD_MODEL_FROM_GEO(MODEL_BLUE_COIN, blue_coin_geo);
-            isInitialized = true;
+        if (ev->object->unused1 != RC_UNKNOWN) {
+            event->cancelled = true;
         }
     });
 }

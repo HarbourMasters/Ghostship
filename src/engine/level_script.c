@@ -444,9 +444,7 @@ static void level_cmd_place_object(void) {
 
     if (sCurrAreaIndex != -1 && ((CMD_GET(u8, 2) & val7) || CMD_GET(u8, 2) == 0x1F)) {
         model = CMD_GET(u8, 3);
-        if (model == MODEL_STAR) {
-            int hi = 122;
-        }
+
         spawnInfo = alloc_only_pool_alloc(sLevelPool, sizeof(struct SpawnInfo));
 
         spawnInfo->startPos[0] = CMD_GET(s16, 4);

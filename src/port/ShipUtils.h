@@ -5,13 +5,21 @@
 
 #ifdef __cplusplus
 
+#define MAX_SEED_STRING_SIZE 1024
+extern char seedString[MAX_SEED_STRING_SIZE];
+extern u32 finalSeed;
+
+uint32_t Ship_Hash(std::string str);
+
 void LoadGuiTextures();
+extern std::array<const char*, 10> digitList;
 
 extern "C" {
 #endif
 
 bool Ship_IsCStringEmpty(const char* str);
 std::string convertEnumToReadableName(const std::string& input);
+int16_t Ship_GetCourseByLevel(int16_t levelId);
 
 #ifdef __cplusplus
 }

@@ -52,6 +52,20 @@ DEFINE_EVENT(ModifyObjectBehavior,
     int16_t model;
 );
 
+DEFINE_EVENT(ModifyRedCoinCount,
+    int8_t* redCoinsCollected;
+);
+
+DEFINE_EVENT(ModifyObjectVisibility,
+    struct Object* object;
+);
+
+DEFINE_EVENT(ChangeLevel,
+    int16_t sourceWarpNode;
+    struct WarpNode* warpNode;
+    int32_t* delayedWarpArg;
+);
+
 DEFINE_EVENT(OnGameFileLoad,
     s32 fileNum;
 );

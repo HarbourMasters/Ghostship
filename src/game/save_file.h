@@ -2,15 +2,16 @@
 #define SAVE_FILE_H
 
 #include <libultra/types.h>
+#include "port/Rando/Types.h"
 
 #include "types.h"
 #include "area.h"
 
 #include "course_table.h"
 
-#include "port/Rando/Types.h"
-
-#define EEPROM_SIZE 0x800
+#define EEPROM_SIZE 0x200
+#define SAVE_FILE_SIZE 0x38
+#define MENU_SAVE_DATA_SIZE 0x20
 #define NUM_SAVE_FILES 4
 
 struct SaveBlockSignature {
@@ -20,7 +21,17 @@ struct SaveBlockSignature {
 
 struct RandoSaveCheck {
     RandoItemId randoItemId;
+    RandoAct randoAct;
     bool obtained;
+    bool skipped;
+};
+
+struct RandoSaveEntrance {
+    RandoEntranceId randoEntranceId;
+    int16_t destinationId;
+    RandoEntranceType randoEntranceType;
+    WarpNodes deathWarpId;
+    int16_t deathArea;
 };
 
 typedef enum {
@@ -29,8 +40,9 @@ typedef enum {
 } SaveType;
 
 struct RandoSaveData {
-    bool placeHolder;
-    // struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    struct RandoSaveEntrance randoSaveEntrances[RE_MAX];
+    u32 finalSeed;
     // u32 randoSaveOptions[RO_MAX];
 };
 
@@ -57,6 +69,8 @@ struct SaveFile {
     u8 courseCoinScores[COURSE_STAGES_COUNT];
 
     struct SaveBlockSignature signature;
+
+    // @port: Custom data needs to go after this point
     struct ShipSaveData shipSaveData;
 };
 
@@ -82,9 +96,12 @@ struct MainMenuSaveData {
 #endif
 
     // Pad to match the EEPROM size of 0x200 (10 bytes on JP/US, 8 bytes on EU)
-    u8 filler[EEPROM_SIZE / 2 - SUBTRAHEND - NUM_SAVE_FILES * (4 + sizeof(struct SaveFile))];
+    u8 filler[EEPROM_SIZE / 2 - SUBTRAHEND - NUM_SAVE_FILES * (4 + SAVE_FILE_SIZE)];
 
     struct SaveBlockSignature signature;
+
+    // @port: Custom data needs to go after this point
+    struct ShipSaveData shipSaveData;
 };
 
 struct SaveBuffer {
@@ -144,6 +161,10 @@ struct WarpCheckpoint {
     /*0x04*/ u8 warpNode;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern struct WarpCheckpoint gWarpCheckpoint;
 
 extern s8 gMainMenuDataModified;
@@ -195,6 +216,10 @@ enum EuLanguages {
 
 void eu_set_language(u16 language);
 u16 eu_get_language(void);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // SAVE_FILE_H

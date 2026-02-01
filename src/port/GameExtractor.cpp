@@ -190,7 +190,6 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
 void GameExtractor::WritePortVersion() {
     auto writer = LUS::BinaryWriter();
     writer.SetEndianness(Torch::Endianness::Big);
-    writer.Write((uint8_t)1);
     writer.Write((uint16_t)gBuildVersionMajor);
     writer.Write((uint16_t)gBuildVersionMinor);
     writer.Write((uint16_t)gBuildVersionPatch);

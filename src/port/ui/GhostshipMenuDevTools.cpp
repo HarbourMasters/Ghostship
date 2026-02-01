@@ -105,21 +105,6 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Save Editor")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Save Editor Window."));
-
-    path.sidebarName = "Model Spawn";
-    AddSidebarEntry("Dev Tools", path.sidebarName, 1);
-    AddWidget(path, "Spawn Red Coin", WIDGET_BUTTON)
-        .Callback([](WidgetInfo& info) {
-            spawn_object_abs_with_rot(&gMacroObjectDefaultParent, 0, 215, bhvRedCoin, (int16_t)gMarioStates->pos[0],
-                                      (int16_t)gMarioStates->pos[1] + 250, (int16_t)gMarioStates->pos[2], 0, 0, 0);
-        })
-        .Options(ButtonOptions().Tooltip("Spawns a Red Coin."));
-    AddWidget(path, "Spawn Star", WIDGET_BUTTON)
-        .Callback([](WidgetInfo& info) {
-            spawn_object_abs_with_rot(&gMacroObjectDefaultParent, 0, 122, bhvStar, (int16_t)gMarioStates->pos[0],
-                                      (int16_t)gMarioStates->pos[1] + 250, (int16_t)gMarioStates->pos[2], 0, 0, 0);
-        })
-        .Options(ButtonOptions().Tooltip("Spawns a Star."));
 }
 
 } // namespace GhostshipGui

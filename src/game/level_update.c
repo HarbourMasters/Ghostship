@@ -31,6 +31,7 @@
 
 #include "port/ui/cvar_prefixes.h"
 #include "port/hooks/list/EngineEvent.h"
+#include "port/hooks/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 #define PLAY_MODE_NORMAL 0
@@ -662,6 +663,7 @@ void initiate_painting_warp(void) {
             if (gMarioState->action & ACT_FLAG_INTANGIBLE) {
                 play_painting_eject_sound();
             } else if (pWarpNode->id != 0) {
+                CALL_EVENT(ChangeLevel, 0, pWarpNode, 0);
                 warpNode = *pWarpNode;
 
                 if (!(warpNode.destLevel & 0x80)) {
@@ -869,11 +871,13 @@ void initiate_delayed_warp(void) {
 
                 default:
                     warpNode = area_get_warp_node(sSourceWarpNodeId);
-
-                    initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea,
-                                  warpNode->node.destNode, sDelayedWarpArg);
+                    
+                    CALL_EVENT(ChangeLevel, sSourceWarpNodeId, &warpNode->node, &sDelayedWarpArg);
+                    initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea, warpNode->node.destNode,
+                                      sDelayedWarpArg);
 
                     check_if_should_set_warp_checkpoint(&warpNode->node);
+
                     if (sWarpDest.type != WARP_TYPE_CHANGE_LEVEL) {
                         level_set_transition(2, NULL);
                     }

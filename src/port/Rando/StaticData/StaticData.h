@@ -45,14 +45,27 @@ struct RandoStaticItem {
 };
 
 RandoCheckId GetCheckByLocation(int16_t posX, int16_t posY, int16_t posZ);
+RandoCheckId GetCheckByLevelAct(int16_t levelId, int16_t randoAct);
 
 extern std::map<RandoItemId, RandoStaticItem> Items;
 
 int16_t GetModelByRandoItem(RandoItemId randoItem);
 const BehaviorScript *GetBehaviorByModel(int16_t modelId);
 int16_t GetModelByBehavior(const BehaviorScript* behavior);
-RandoItemId GetShuffledRandoItem(int16_t currentCourse, RandoCheckId randoCheckId);
-RandoAct GetShuffledRandoAct(int16_t currentCourse, RandoCheckId randoCheckId);
+RandoItemId GetShuffledRandoItem(RandoCheckId randoCheckId);
+RandoAct GetShuffledRandoAct(RandoCheckId randoCheckId);
+
+struct RandoStaticEntrance {
+    RandoEntranceId randoEntranceId;
+    const char* name;
+    int16_t destinationId;
+    RandoEntranceType randoEntranceType;
+    WarpNodes deathWarpId;
+    int16_t deathArea;
+};
+
+extern std::map<RandoEntranceId, RandoStaticEntrance> Entrances;
+
 
 struct RandoStaticOption {
     RandoOptionId randoOptionId;

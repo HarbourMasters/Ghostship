@@ -9,6 +9,10 @@
 #include "assets/bin/segment2.h"
 #include "port/ShipInit.hpp"
 #include "port/Rando/Rando.h"
+#include "port/ShipUtils.h"
+
+int8_t textRand[] = { 0x1B, 0x0A, 0x17, 0x0D, 0xFF };
+int8_t textMarioRando[] = { 0x1B, 0x0A, 0x17, 0x0D, 0x18, 0x16, 0x12, 0x23, 0x0E, 0x1B, 0xFF };
 
 static const Mtx matrix_patch_identity = {
     { { 1.0f, 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f, 1.0f } }
@@ -103,10 +107,14 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(SpawnCoinStar);
     REGISTER_EVENT(ModifyDefaultStar);
     REGISTER_EVENT(ModifyObjectBehavior);
+    REGISTER_EVENT(ModifyRedCoinCount);
+    REGISTER_EVENT(ModifyObjectVisibility);
+    REGISTER_EVENT(ChangeLevel);
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);
 
     Rando::Init();
+    LoadGuiTextures();
 }
 
 static RegisterShipInitFunc initFunc(PortEnhancements_Init);

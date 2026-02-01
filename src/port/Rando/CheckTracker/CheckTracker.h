@@ -4,21 +4,12 @@
 #include "port/Rando/Rando.h"
 #include <ship/window/gui/GuiWindow.h>
 
-typedef struct {
-    int16_t levelId;
-    std::string levelName;
-    std::vector<std::tuple<RandoCheckId, std::string, bool>> randoCheckNameList;
-} CheckTrackerObject;
-
-extern std::vector<CheckTrackerObject> checkTrackerList;
-
 namespace Rando {
 
 namespace CheckTracker {
 
 void Init();
 //void OnFileLoad();
-void SetCheckTrackerList();
 
 class CheckTrackerWindow : public Ship::GuiWindow {
   public:

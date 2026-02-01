@@ -1,6 +1,7 @@
 #include "CustomItem.h"
 #include "port/Rando/Logic/Logic.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/ui/Notification.h"
 
 extern "C" {
 #include "game/object_list_processor.h"
@@ -11,6 +12,9 @@ extern "C" {
 #include "audio/external.h"
 #include "game/sound_init.h"
 #include "game/mario.h"
+
+// Asset Headers
+#include "include/assets/textures/segment2.h"
 }
 
 std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
@@ -20,24 +24,36 @@ std::vector<int32_t> starActParams = {
     0, 16777216, 33554432, 50331648, 67108864, 83886080, 100663296,
 };
 
+struct Object* AssignParentObject() {
+    for (auto& [randoCheck, spawnedObj] : spawnedRandoObjects) {
+        if (Rando::StaticData::Checks[randoCheck].randoCheckType == RCTYPE_STAR_RED_COIN) {
+            return spawnedObj;
+        }
+    }
+    return NULL;
+}
+
+void CreateCollectNotification(const char* texture, std::string text, ImVec4 textColor) {
+    if (texture == texture_hud_char_coin && CustomItem::redCoinsCollected > 1) {
+        text += "'s";
+    }
+
+    text += " collected!";
+
+    Notification::Emit({ .itemIcon = texture, .message = text, .messageColor = textColor });
+}
+
 void CustomItem::ClearSpawnedObjects() {
     spawnedRandoObjects.clear();
 }
 
 void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct Object* object) {
-    // TODO: Implement Check Tracker functionality using this.
-    SPDLOG_INFO("Check ID: {} - Collected", std::to_string(object->unused1));
-    for (auto& level : checkTrackerList) {
-        bool checkFound = false;
-        for (auto& [checkId, checkName, obtained] : level.randoCheckNameList) {
-            if (checkId == object->unused1) {
-                obtained = true;
-                checkFound = true;
-                break;
-            }
-        }
-        if (checkFound) {
-            break;
+    bool previousCheckState = false;
+    for (auto& shuffled : Rando::Logic::shuffledPool) {
+        if (shuffled.randoCheckId == object->unused1) {
+            previousCheckState = shuffled.obtained;
+            shuffled.obtained = true;
+            RANDO_SAVE_CHECKS(selectedFileNum)[shuffled.randoCheckId].obtained = true;
         }
     }
 
@@ -46,7 +62,15 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
             spawn_object(object, MODEL_SPARKLES, bhvGoldenCoinSparkles);
             if (object->behavior == bhvRedCoin) {
                 CustomItem::redCoinsCollected++;
+                CreateCollectNotification("Red Coin Icon", std::to_string(CustomItem::redCoinsCollected) + "x Red Coin",
+                                          ImVec4(1, 0, 0, 1));
+
                 if (CustomItem::redCoinsCollected != 8) {
+                    if (object->parentObj == nullptr) {
+                        object->parentObj = object;
+                    }
+                    object->parentObj->oHiddenStarTriggerCounter = redCoinsCollected;
+
                     struct Object* spawnNumber;
                     spawnNumber = spawn_object_relative(CustomItem::redCoinsCollected, 0, 0, 0, object, MODEL_NUMBER,
                                                         bhvOrangeNumber);
@@ -56,90 +80,62 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
                 }
                 play_sound(SOUND_MENU_COLLECT_RED_COIN + ((CustomItem::redCoinsCollected - 1) << 16),
                            gGlobalSoundSource);
+            } else {
+                CreateCollectNotification("Blue Coin Icon", "Blue Coin", ImVec4(0, 0, 1, 1));
             }
             mario->numCoins += object->oDamageOrCoinValue;
             mario->healCounter += 4 * object->oDamageOrCoinValue;
-            if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && mario->numCoins - object->oDamageOrCoinValue < 100 &&
-                mario->numCoins >= 100) {
-                Rando::StaticData::RandoStaticCheck randoStaticCheck =
-                    Rando::StaticData::GetShuffledRandoStaticCheck(0, 0, 0);
-                if (randoStaticCheck.randoCheckId != RC_UNKNOWN) {
-                    int16_t modelId = Rando::StaticData::GetModelByRandoItem(randoStaticCheck.randoItemId);
-                    const BehaviorScript* behavior = modelId == MODEL_BLUE_COIN ? bhvHiddenBlueCoin
-                                                     : modelId == MODEL_STAR
-                                                         ? bhvSpawnedStarNoLevelExit
-                                                         : Rando::StaticData::GetBehaviorByModel(modelId);
-
-                    CustomItem::SpawnObject(modelId, behavior, object->rawData.asF32[0x6],
-                                            object->rawData.asF32[0x7] + 250, object->rawData.asF32[0x8], NULL,
-                                            randoStaticCheck.randoCheckId, randoStaticCheck.actData);
-                }
-            }
             break;
         case TYPE_STAR: {
+            CreateCollectNotification(texture_hud_char_star, "Course " + std::to_string(object->unused2) + " Star",
+                                      ImVec4(1, 1, 0, 1));
+            play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
             spawn_object(object, MODEL_NONE, bhvStarKeyCollectionPuffSpawner);
-            bool shouldExitLevel = (object->oInteractionSubtype & INT_SUBTYPE_NO_EXIT) == 0 ||
-                                   !CVarGetInteger("gEnhancements.StarNoExit", 0);
-            bool isGrandStar = (object->oInteractionSubtype & INT_SUBTYPE_GRAND_STAR) != 0;
-            u32 starGrabAction = ACT_STAR_DANCE_EXIT;
-            int16_t starAct = object->unused2;
 
-            if (shouldExitLevel) {
-                mario->hurtCounter = 0;
-                mario->healCounter = 0;
-                if (mario->capTimer > 1) {
-                    mario->capTimer = 1;
+            if (!previousCheckState && !CVarGetInteger("gRandoSettings.SkipRandoGI", 0)) {
+                uint32_t marioAction = ACT_STAR_DANCE_NO_EXIT;
+                switch (gMarioState->action) {
+                    case ACT_FLAG_SWIMMING:
+                    case ACT_FLAG_METAL_WATER:
+                        marioAction = ACT_STAR_DANCE_WATER;
+                        break;
+                    case ACT_FLAG_AIR:
+                        marioAction = ACT_FALL_AFTER_STAR_GRAB;
+                        break;
+                    default:
+                        marioAction = ACT_STAR_DANCE_NO_EXIT;
+                        break;
                 }
+
+                set_mario_action(gMarioState, marioAction, 1);
             }
 
-            if (!shouldExitLevel) {
-                starGrabAction = ACT_STAR_DANCE_NO_EXIT;
-            }
-
-            if (mario->action & ACT_FLAG_SWIMMING) {
-                starGrabAction = ACT_STAR_DANCE_WATER;
-            }
-
-            if (mario->action & ACT_FLAG_METAL_WATER) {
-                starGrabAction = ACT_STAR_DANCE_WATER;
-            }
-
-            if (mario->action & ACT_FLAG_AIR) {
-                starGrabAction = ACT_FALL_AFTER_STAR_GRAB;
-            }
-
-            // TODO: Save to file once JSON Saves are implemented.
-            save_file_collect_star_or_key(mario->numCoins, starAct);
+            save_file_collect_star_or_key(mario->numCoins, object->unused2);
             mario->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
+            save_file_do_save(selectedFileNum);
 
-            if (shouldExitLevel) {
-                drop_queued_background_music();
-                fadeout_level_music(126);
-            }
-
-            play_sound(SOUND_MENU_STAR_SOUND, mario->marioObj->header.gfx.cameraToObject);
-            if (!ROM_JP) {
-                update_mario_sound_and_camera(mario);
-            }
-
-            if (isGrandStar) {
-                set_mario_action(mario, ACT_JUMBO_STAR_CUTSCENE, 0);
-            } else {
-                set_mario_action(mario, starGrabAction, !shouldExitLevel + 2 * isGrandStar);
-            }
             break;
         }
         default:
             break;
     }
 
+    if (spawnedRandoObjects.find((RandoCheckId)object->unused1) != spawnedRandoObjects.end()) {
+        spawnedRandoObjects.erase((RandoCheckId)object->unused1);
+    }
+
     object->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+    object->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+    obj_mark_for_deletion(object);
 }
 
 void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId randoCheckId, RandoAct randoAct) {
     if (Rando::Logic::IsBlueSwitchActivated(randoCheckId)) {
-        object->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
+        object->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
         object->oIntangibleTimer = -1;
+        if (modelId == MODEL_STAR) {
+            object->oBehParams = starActParams[randoAct];
+        }
     } else {
         switch (modelId) {
             case MODEL_BLUE_COIN:
@@ -149,9 +145,6 @@ void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId ra
                 break;
             case MODEL_STAR:
                 object->oBehParams = starActParams[randoAct];
-                if (!CVarGetInteger("gEnhancements.StarNoExit", 0)) {
-                    object->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
-                }
                 break;
             default:
                 break;
@@ -169,6 +162,9 @@ void CustomItem::SpawnObject(u32 modelId, const BehaviorScript* behavior, s16 x,
 
     if (param != NULL) {
         object->oBehParams2ndByte = param;
+    }
+    if (modelId == MODEL_STAR) {
+        object->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
     }
 
     spawnedRandoObjects.insert({ randoCheckId, object });

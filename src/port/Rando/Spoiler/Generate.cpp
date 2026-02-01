@@ -11,8 +11,12 @@ nlohmann::json GenerateFromPoolGeneration(std::vector<LevelShuffleEntry>& shuffl
     nlohmann::json spoiler;
     spoiler["type"] = "GHOSTSHIP_RANDO_SPOILER";
     spoiler["fileNum"] = std::to_string(selectedFileNum);
-    // spoiler["commitHash"] = gSaveContext.save.shipSaveInfo.commitHash;
-    // spoiler["finalSeed"] = gSaveContext.save.shipSaveInfo.rando.finalSeed;
+    if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
+        spoiler["seed"] = seedString;
+    } else {
+        spoiler["seed"] = "";
+    }
+    spoiler["finalSeed"] = gSaveBuffer.files[selectedFileNum][0].shipSaveData.randoSaveData.finalSeed;
 
     // TODO: Add once JSON Saves are in.
     // spoiler["options"] = nlohmann::json::object();
@@ -67,6 +71,7 @@ std::vector<LevelShuffleEntry> GenerateFromSpoilerLog(nlohmann::json spoiler) {
                     levelEntry.randoItemId = itemId;
                 }
             }
+            levelEntry.obtained = false;
             spoilerChecks.push_back(levelEntry);
         }
     }

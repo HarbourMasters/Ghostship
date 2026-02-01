@@ -1,6 +1,12 @@
 #include "Notification.h"
 #include <libultraship/libultraship.h>
 
+extern "C" {
+#include "audio/external.h"
+#include "game/sound_init.h"
+#include "include/sounds.h"
+}
+
 namespace Notification {
 
 static uint32_t nextId = 0;
@@ -131,7 +137,7 @@ void Emit(Options notification) {
     }
     notifications.push_back(notification);
     if (!notification.mute) {
-        // TODO: play game notification sound
+        play_sound(SOUND_MENU_READ_A_SIGN, gGlobalSoundSource);
     }
 }
 

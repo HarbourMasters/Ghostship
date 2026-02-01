@@ -11,6 +11,7 @@
 #include "level_table.h"
 #include "course_table.h"
 #include "rumble_init.h"
+#include "port/data/Saves.h"
 
 #include "port/hooks/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
@@ -18,7 +19,8 @@
 #define MENU_DATA_MAGIC 0x4849
 #define SAVE_FILE_MAGIC 0x4441
 
-STATIC_ASSERT(sizeof(struct SaveBuffer) == EEPROM_SIZE, "eeprom buffer size must match");
+// @port: Disabled because save files are gonna be bigger soon
+// STATIC_ASSERT(sizeof(struct SaveBuffer) == EEPROM_SIZE, "eeprom buffer size must match");
 
 extern struct SaveBuffer gSaveBuffer;
 
@@ -151,6 +153,8 @@ static void add_save_block_signature(void *buffer, s32 size, u16 magic) {
  * Copy main menu data from one backup slot to the other slot.
  */
 static void restore_main_menu_data(s32 srcSlot) {
+    CALL(RestoreMainMenuData, srcSlot);
+
     s32 destSlot = srcSlot ^ 1;
 
     // Compute checksum on source data
@@ -164,6 +168,8 @@ static void restore_main_menu_data(s32 srcSlot) {
 }
 
 static void save_main_menu_data(void) {
+    CALL(SaveMainMenuData);
+
     if (gMainMenuDataModified) {
         // Compute checksum
         add_save_block_signature(&gSaveBuffer.menuData[0], sizeof(gSaveBuffer.menuData[0]), MENU_DATA_MAGIC);
@@ -237,6 +243,8 @@ static void touch_high_score_ages(s32 fileIndex) {
  * Copy save file data from one backup slot to the other slot.
  */
 static void restore_save_file_data(s32 fileIndex, s32 srcSlot) {
+    CALL(RestoreSaveFileData, fileIndex, srcSlot);
+
     s32 destSlot = srcSlot ^ 1;
 
     // Compute checksum on source data
@@ -253,6 +261,8 @@ static void restore_save_file_data(s32 fileIndex, s32 srcSlot) {
 }
 
 void save_file_do_save(s32 fileIndex) {
+    CALL(SaveFileDoSave, fileIndex);
+
     CALL_EVENT(OnGameFileSave, fileIndex);
     if (gSaveFileModified) {
         // Compute checksum
@@ -300,39 +310,44 @@ void save_file_load_all(void) {
     gSaveFileModified = FALSE;
 
     bzero(&gSaveBuffer, sizeof(gSaveBuffer));
-    read_eeprom_data(&gSaveBuffer, sizeof(gSaveBuffer));
 
-    // Verify the main menu data and create a backup copy if only one of the slots is valid.
-    validSlots = verify_save_block_signature(&gSaveBuffer.menuData[0], sizeof(gSaveBuffer.menuData[0]), MENU_DATA_MAGIC);
-    validSlots |= verify_save_block_signature(&gSaveBuffer.menuData[1], sizeof(gSaveBuffer.menuData[1]),MENU_DATA_MAGIC) << 1;
-    switch (validSlots) {
-        case 0: // Neither copy is correct
-            wipe_main_menu_data();
-            break;
-        case 1: // Slot 0 is correct and slot 1 is incorrect
-            restore_main_menu_data(0);
-            break;
-        case 2: // Slot 1 is correct and slot 0 is incorrect
-            restore_main_menu_data(1);
-            break;
-    }
+    if(ShouldLoadOldSaveFile()) {
+        read_eeprom_data(&gSaveBuffer, EEPROM_SIZE);
 
-    for (file = 0; file < NUM_SAVE_FILES; file++) {
-        // Verify the save file and create a backup copy if only one of the slots is valid.
-        validSlots = verify_save_block_signature(&gSaveBuffer.files[file][0], sizeof(gSaveBuffer.files[file][0]), SAVE_FILE_MAGIC);
-        validSlots |= verify_save_block_signature(&gSaveBuffer.files[file][1], sizeof(gSaveBuffer.files[file][1]), SAVE_FILE_MAGIC) << 1;
+        // Verify the main menu data and create a backup copy if only one of the slots is valid.
+        validSlots = verify_save_block_signature(&gSaveBuffer.menuData[0], MENU_SAVE_DATA_SIZE, MENU_DATA_MAGIC);
+        validSlots |= verify_save_block_signature(&gSaveBuffer.menuData[1], MENU_SAVE_DATA_SIZE, MENU_DATA_MAGIC) << 1;
         switch (validSlots) {
             case 0: // Neither copy is correct
-                save_file_erase(file);
+                wipe_main_menu_data();
                 break;
             case 1: // Slot 0 is correct and slot 1 is incorrect
-                restore_save_file_data(file, 0);
+                restore_main_menu_data(0);
                 break;
             case 2: // Slot 1 is correct and slot 0 is incorrect
-                restore_save_file_data(file, 1);
+                restore_main_menu_data(1);
                 break;
         }
+
+        for (file = 0; file < NUM_SAVE_FILES; file++) {
+            // Verify the save file and create a backup copy if only one of the slots is valid.
+            validSlots = verify_save_block_signature(&gSaveBuffer.files[file][0], SAVE_FILE_SIZE, SAVE_FILE_MAGIC);
+            validSlots |= verify_save_block_signature(&gSaveBuffer.files[file][1], SAVE_FILE_SIZE, SAVE_FILE_MAGIC) << 1;
+            switch (validSlots) {
+                case 0: // Neither copy is correct
+                    save_file_erase(file);
+                    break;
+                case 1: // Slot 0 is correct and slot 1 is incorrect
+                    restore_save_file_data(file, 0);
+                    break;
+                case 2: // Slot 1 is correct and slot 0 is incorrect
+                    restore_save_file_data(file, 1);
+                    break;
+            }
+        }
     }
+
+    CALL(SaveFileLoadAll);
 
     stub_save_file_1();
 }

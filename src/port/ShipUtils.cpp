@@ -2,7 +2,11 @@
 #include <libultraship/libultraship.h>
 
 extern "C" {
+#include "sm64.h"
 #include "macros.h"
+#include "include/assets/textures/segment2.h"
+#include "include/level_table.h"
+#include "include/course_table.h"
 }
 
 constexpr f32 fourByThree = 4.0f / 3.0f;
@@ -11,10 +15,43 @@ extern "C" bool Ship_IsCStringEmpty(const char* str) {
     return str == NULL || str[0] == '\0';
 }
 
+char seedString[MAX_SEED_STRING_SIZE];
+u32 finalSeed = 0;
+
+extern uint32_t Ship_Hash(std::string str) {
+    // FNV-1a
+    const size_t len = str.size();
+    uint32_t hval = 0x811c9dc5;
+    for (size_t pos = 0; pos < len; pos++) {
+        hval ^= (uint32_t)str[pos];
+        hval *= 0x01000193;
+    }
+    return hval;
+}
+
 std::vector<std::string> levelAbbreviations = {
     "BOB", "WF",  "JRB", "CCM",   "BBH",   "HMC",  "LLL", "SSL",   "DDD",   "SL",    "WDW",   "TTM",
     "THI", "TTC", "RR",  "BITDW", "BITFS", "BITS", "PSS", "COTMC", "TOTWC", "VCUTM", "WMOTR", "SA",
 };
+
+std::map<int16_t, int16_t> levelToCourseMap = {
+    { LEVEL_BBH, COURSE_BBH },     { LEVEL_CASTLE, COURSE_NONE }, { LEVEL_CCM, COURSE_CCM },
+    { LEVEL_HMC, COURSE_HMC },     { LEVEL_SSL, COURSE_SSL },     { LEVEL_BOB, COURSE_BOB },
+    { LEVEL_SL, COURSE_SL },       { LEVEL_WDW, COURSE_WDW },     { LEVEL_JRB, COURSE_JRB },
+    { LEVEL_THI, COURSE_THI },     { LEVEL_TTC, COURSE_TTC },     { LEVEL_RR, COURSE_RR },
+    { LEVEL_BITDW, COURSE_BITDW }, { LEVEL_VCUTM, COURSE_VCUTM }, { LEVEL_BITFS, COURSE_BITFS },
+    { LEVEL_SA, COURSE_SA },       { LEVEL_BITS, COURSE_BITS },   { LEVEL_LLL, COURSE_LLL },
+    { LEVEL_DDD, COURSE_DDD },     { LEVEL_WF, COURSE_WF },       { LEVEL_PSS, COURSE_PSS },
+    { LEVEL_COTMC, COURSE_COTMC }, { LEVEL_TOTWC, COURSE_TOTWC }, { LEVEL_WMOTR, COURSE_WMOTR },
+    { LEVEL_TTM, COURSE_TTM },
+};
+
+int16_t Ship_GetCourseByLevel(int16_t levelId) {
+    if (levelToCourseMap.find(levelId) != levelToCourseMap.end()) {
+        return levelToCourseMap.at(levelId);
+    }
+    return COURSE_NONE;
+}
 
 // Build vertex coordinates for a quad command
 // In order of top left, top right, bottom left, then bottom right
@@ -89,4 +126,29 @@ std::string convertEnumToReadableName(const std::string& input) {
     }
 
     return result;
+}
+
+std::array<const char*, 3> miscellaneousTextures = {
+    texture_hud_char_star,
+    texture_hud_char_mario_head,
+    texture_hud_char_coin,
+};
+
+std::array<const char*, 10> digitList = { texture_hud_char_0, texture_hud_char_1, texture_hud_char_2,
+                                          texture_hud_char_3, texture_hud_char_4, texture_hud_char_5,
+                                          texture_hud_char_6, texture_hud_char_7, texture_hud_char_8,
+                                          texture_hud_char_9 };
+
+void LoadGuiTextures() {
+    for (const auto entry : miscellaneousTextures) {
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
+    }
+    for (const auto entry : digitList) {
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
+    }
+
+    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Red Coin Icon", texture_hud_char_coin,
+                                                                        ImVec4(1, 0, 0, 1));
+    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Blue Coin Icon", texture_hud_char_coin,
+                                                                        ImVec4(0.20f, 0.20f, 1, 1));
 }

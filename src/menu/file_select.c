@@ -29,6 +29,7 @@
 
 #include "port/hooks/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
+extern struct SaveBuffer gSaveBuffer;
 
 /**
  * @file file_select.c
@@ -1766,8 +1767,13 @@ void print_save_file_star_count(s8 fileIndex, s16 x, s16 y) {
         int_to_str(starCount, starCountText);
         print_hud_lut_string(HUD_LUT_GLOBAL, x + offset + 16, y, starCountText);
     } else {
-        // Print "new" text
-        print_hud_lut_string(HUD_LUT_GLOBAL, x, y, GameEngine_LoadTranslation("TEXT_NEW"));
+        if (gSaveBuffer.files[fileIndex][0].shipSaveData.saveType == SAVETYPE_RANDO) {
+            // Print "rando" text
+            print_hud_lut_string(HUD_LUT_GLOBAL, x, y, textRand);
+        } else {
+            // Print "new" text
+            print_hud_lut_string(HUD_LUT_GLOBAL, x, y, GameEngine_LoadTranslation("TEXT_NEW"));
+        }
     }
 }
 
@@ -1831,10 +1837,22 @@ void print_main_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(MARIOTEXT_X1, 65, GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"));
-    print_menu_generic_string(MARIOTEXT_X2, 65, GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"));
-    print_menu_generic_string(MARIOTEXT_X1, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"));
-    print_menu_generic_string(MARIOTEXT_X2, 105, GameEngine_LoadTranslation("TEXT_FILE_MARIO_D"));
+    print_menu_generic_string(MARIOTEXT_X1, 65,
+                              gSaveBuffer.files[SAVE_FILE_A][0].shipSaveData.saveType == SAVETYPE_RANDO
+                                  ? textMarioRando
+                                  : GameEngine_LoadTranslation("TEXT_FILE_MARIO_A"));
+    print_menu_generic_string(MARIOTEXT_X2, 65,
+                              gSaveBuffer.files[SAVE_FILE_B][0].shipSaveData.saveType == SAVETYPE_RANDO
+                                  ? textMarioRando
+                                  : GameEngine_LoadTranslation("TEXT_FILE_MARIO_B"));
+    print_menu_generic_string(MARIOTEXT_X1, 105,
+                              gSaveBuffer.files[SAVE_FILE_C][0].shipSaveData.saveType == SAVETYPE_RANDO
+                                  ? textMarioRando
+                                  : GameEngine_LoadTranslation("TEXT_FILE_MARIO_C"));
+    print_menu_generic_string(MARIOTEXT_X2, 105,
+                              gSaveBuffer.files[SAVE_FILE_D][0].shipSaveData.saveType == SAVETYPE_RANDO
+                                  ? textMarioRando
+                                  : GameEngine_LoadTranslation("TEXT_FILE_MARIO_D"));
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 }
 
