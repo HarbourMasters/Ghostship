@@ -17,6 +17,7 @@
 #define SOUND_MENU_MODE_STEREO       0
 #define SOUND_MENU_MODE_MONO         1
 #define SOUND_MENU_MODE_HEADSET      2
+#define SOUND_MENU_MODE_SURROUND     3
 
 void reset_volume(void);
 void raise_background_noise(s32 a);

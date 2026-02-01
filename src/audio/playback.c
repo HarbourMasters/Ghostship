@@ -114,6 +114,27 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, u8 pan, u8 reverbV
     } else if (gSoundMode == SOUND_MODE_MONO) {
         volLeft = 0.707f;
         volRight = 0.707f;
+    } else if (gSoundMode == SOUND_MODE_SURROUND) {
+        // Surround mode: wider stereo separation with enhanced panning
+        sub->headsetPanLeft = 0;
+        sub->headsetPanRight = 0;
+        sub->usesHeadsetPanEffects = FALSE;
+
+        // Use stereo volumes with more extreme separation
+        volLeft = gStereoPanVolume[pan];
+        volRight = gStereoPanVolume[127 - pan];
+
+        // Apply stronger left/right effects with a wider threshold
+        if (pan < 0x30) {
+            sub->stereoStrongLeft = TRUE;
+            sub->stereoStrongRight = FALSE;
+        } else if (pan > 0x50) {
+            sub->stereoStrongRight = TRUE;
+            sub->stereoStrongLeft = FALSE;
+        } else {
+            sub->stereoStrongLeft = FALSE;
+            sub->stereoStrongRight = FALSE;
+        }
     } else {
         volLeft = gDefaultPanVolume[pan];
         volRight = gDefaultPanVolume[127 - pan];

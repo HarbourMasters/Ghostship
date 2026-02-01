@@ -77,6 +77,7 @@ enum MenuButtonTypes {
     MENU_BUTTON_STEREO = MENU_BUTTON_OPTION_MIN,
     MENU_BUTTON_MONO,
     MENU_BUTTON_HEADSET,
+    MENU_BUTTON_SURROUND,
 
 #ifdef VERSION_EU
     // Language Menu
