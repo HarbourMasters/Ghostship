@@ -10,6 +10,7 @@
 #include "external.h"
 #include "sm64.h"
 #include "mixer.h"
+#include "stdio.h"
 
 #define DMEM_ADDR_TEMP 0x0
 #define DMEM_ADDR_RESAMPLED 0x20
@@ -1437,19 +1438,38 @@ u64 *note_apply_headset_pan_effects(u64 *cmd, struct Note *note, s32 bufLen, s32
 }
 
 /**
- * Apply surround sound effect using matrix encoding.
- * This creates a rear channel effect by phase-inverting and mixing based on pan position.
- * Uses a stateless approach - applies the effect directly without persistent state.
+ * Apply surround sound effect using matrix encoding based on depth position.
+ * Uses surroundEffectIndex (0x00-0x7F) calculated from Z position:
+ *   0x00-0x3F: Sound in front (0 = far front, 0x3F = at camera) - less rear effect
+ *   0x40-0x7F: Sound behind (0x40 = at camera, 0x7F = far behind) - more rear effect
+ * 
+ * This creates a rear channel effect by phase-inverting and mixing based on pan and depth.
+ * Based on Majora's Mask Audio_SetSequenceProperties surround calculation.
  */
 u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen) {
     s16 dryGain;
     s32 wetGain;
+    f32 depthFactor;
+    u8 surroundIdx = note->surroundEffectIndex;
 
-    // Calculate base gain from current volume
+    // Calculate depth factor: how much rear channel to add
+    // surroundEffectIndex: 0 = front, 0x3F = at camera, 0x7F = far behind
+    // We want sounds behind the camera to have stronger rear channel effect
+    depthFactor = (f32)surroundIdx / 127.0f;
+
+    // printf("Audio: note_apply_surround_effect: surroundIdx = %d\n", surroundIdx);
+
+    // Calculate base gain from current volume and depth
     dryGain = note->curVolLeft > note->curVolRight ? note->curVolLeft : note->curVolRight;
+    dryGain = (s16)(dryGain * depthFactor); // Scale by depth
     dryGain = dryGain >> 2; // Scale down for subtle effect
     if (dryGain > 0x1800) {
         dryGain = 0x1800; // Limit surround intensity
+    }
+
+    // Skip if gain is too low
+    if (dryGain < 0x100) {
+        return cmd;
     }
 
     // Calculate pan position: 0.0 = full left, 0.5 = center, 1.0 = full right
@@ -1458,6 +1478,8 @@ u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen) {
     if (sumVol > 0.0f) {
         panPosition = (f32)note->targetVolRight / sumVol;
     }
+
+    // printf("Audio: note_apply_surround_effect: panPosition = %f\n", panPosition);
 
     // Matrix surround encoding: steer surround based on pan
     // The idea: add out-of-phase content to create width/depth
@@ -1484,9 +1506,6 @@ u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen) {
         aMix(cmd++, 0, (s16)(wetRightGain ^ 0xFFFF), DMEM_ADDR_WET_RIGHT_CH, DMEM_ADDR_WET_RIGHT_CH);
     }
 
-    // Update surround effect index based on current pan for tracking
-    note->surroundEffectIndex = (u8)((note->targetVolRight * 127) / (note->targetVolLeft + note->targetVolRight + 1));
-
     return cmd;
 }
 
@@ -1502,7 +1521,7 @@ void note_init_volume(struct Note *note) {
     note->curVolLeft = 1;
     note->curVolRight = 1;
     note->frequency = 0.0f;
-    note->surroundEffectIndex = 64; // Center pan
+    note->surroundEffectIndex = 0;
 }
 
 void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverbVol) {
@@ -1554,7 +1573,7 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
     } else if (gSoundMode == SOUND_MODE_MONO) {
         volLeft = .707f;
         volRight = .707f;
-    } else if (gSoundMode == SOUND_MODE_SURROUND) {
+    } else if (note->stereoHeadsetEffects && gSoundMode == SOUND_MODE_SURROUND) {
         // Surround mode: wider stereo separation with enhanced panning
         u8 strongLeft;
         u8 strongRight;

@@ -114,7 +114,7 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, u8 pan, u8 reverbV
     } else if (gSoundMode == SOUND_MODE_MONO) {
         volLeft = 0.707f;
         volRight = 0.707f;
-    } else if (gSoundMode == SOUND_MODE_SURROUND) {
+    } else if (sub->stereoHeadsetEffects && gSoundMode == SOUND_MODE_SURROUND) {
         // Surround mode: wider stereo separation with enhanced panning
         sub->headsetPanLeft = 0;
         sub->headsetPanRight = 0;
@@ -1172,6 +1172,7 @@ void note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLaye
 #endif
     sub->stereoHeadsetEffects = seqLayer->seqChannel->stereoHeadsetEffects;
     sub->reverbIndex = seqLayer->seqChannel->reverbIndex & 3;
+    note->surroundEffectIndex = seqLayer->seqChannel->surroundEffectIndex;
 }
 #else
 s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer) {
@@ -1193,6 +1194,8 @@ s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer
         build_synthetic_wave(note, seqLayer);
     }
     note_init(note);
+    // Copy surround index after note_init to avoid being reset by note_init_volume
+    note->surroundEffectIndex = seqLayer->seqChannel->surroundEffectIndex;
     return FALSE;
 }
 #endif
@@ -1458,7 +1461,7 @@ void note_init_all(void) {
         note->targetVolLeft = 0;
         note->targetVolRight = 0;
         note->frequency = 0.0f;
-        note->surroundEffectIndex = 64; // Center pan for surround effect
+        note->surroundEffectIndex = 0;
 #endif
         note->attributes.velocity = 0.0f;
         note->adsrVolScale = 0;

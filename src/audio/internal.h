@@ -446,6 +446,7 @@ struct SequenceChannel {
                    u8 unkSH06; // some priority
 #endif
     /*0x05, 0x06*/ u8 bankId;
+    /*          */ u8 surroundEffectIndex; // Surround depth: 0 = front, 0x7F = behind
 #if defined(VERSION_EU) || defined(VERSION_SH)
     /*    , 0x07*/ u8 reverbIndex;
     /*    , 0x08, 0x09*/ u8 bookOffset;
@@ -641,6 +642,7 @@ struct Note {
     /*0x04, 0x30, 0x30*/ u8 priority;
     /*      0x31, 0x31*/ u8 waveId;
     /*      0x32, 0x32*/ u8 sampleCountIndex;
+    /*                */ u8 surroundEffectIndex; // Index for surround effect pan position
 #ifdef VERSION_SH
     /*            0x33*/ u8 bankId;
     /*            0x34*/ u8 unkSH34;

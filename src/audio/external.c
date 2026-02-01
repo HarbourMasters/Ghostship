@@ -13,6 +13,7 @@
 #include "seq_ids.h"
 #include "dialog_ids.h"
 #include <lib/src/osAi.h>
+#include <stdio.h>
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
 #define EU_FLOAT(x) x##f
@@ -1046,6 +1047,46 @@ static f32 get_sound_pan(f32 x, f32 z) {
 }
 
 /**
+ * Calculate surround effect index from Z position (depth relative to camera).
+ * In SM64's coordinate system, positive Z is behind the camera, negative Z is in front.
+ * Uses AUDIO_MAX_DISTANCE for scaling, matching pan and volume distance calculations.
+ * 
+ * Returns:
+ *   0x00 - 0x3F: Sound is in front of camera (0 = far front, 0x3F = at camera)
+ *   0x40 - 0x7F: Sound is behind camera (0x40 = at camera, 0x7F = far behind)
+ *
+ * Called from threads: thread4_sound, thread5_game_loop (EU only)
+ */
+static u8 get_sound_surround_effect_index(f32 z) {
+    f32 absZ;
+    s32 surroundEffectIndex;
+    
+    // Clamp z to AUDIO_MAX_DISTANCE, same as pan calculation
+    absZ = (z < 0 ? -z : z);
+    if (absZ > AUDIO_MAX_DISTANCE) {
+        absZ = AUDIO_MAX_DISTANCE;
+    }
+    
+    // In SM64, positive z means behind the camera
+    if (z > 0.0f) {
+        // Behind camera - surround effect index 0x3F (at camera) to 0x7F (far behind)
+        surroundEffectIndex = (s32)((absZ / AUDIO_MAX_DISTANCE) * 64.0f) + 0x3F;
+        if (surroundEffectIndex > 0x7F) {
+            surroundEffectIndex = 0x7F;
+        }
+    } else {
+        // In front of camera - surround effect index 0x3F (at camera) to 0x00 (far front)
+        surroundEffectIndex = 0x3F - (s32)((absZ / AUDIO_MAX_DISTANCE) * 63.0f);
+        if (surroundEffectIndex < 0) {
+            surroundEffectIndex = 0;
+        }
+    }
+    
+    printf("Audio: get_sound_surround_effect_index: surroundEffectIndex = %d\n", surroundEffectIndex);
+    return (u8)surroundEffectIndex;
+}
+
+/**
  * Called from threads: thread4_sound, thread5_game_loop (EU only)
  */
 static f32 get_sound_volume(u8 bank, u8 soundIndex, f32 volumeRange) {
@@ -1224,6 +1265,12 @@ static void update_game_sound(void) {
                     // Begin playing the sound
                     gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->soundScriptIO[4] = soundId;
                     gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->soundScriptIO[0] = 1;
+
+                    // Set surround effect index based on Z depth when starting sound
+                    if (gSoundMode == SOUND_MODE_SURROUND) {
+                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->surroundEffectIndex =
+                            get_sound_surround_effect_index(*sSoundBanks[bank][soundIndex].z);
+                    }
 
                     switch (bank) {
                         case SOUND_BANK_MOVING:
@@ -1409,6 +1456,13 @@ static void update_game_sound(void) {
                     // on the same line after preprocessing, and the compiler,
                     // somehow caring about line numbers, makes it not match (it
                     // computes function arguments in the wrong order).
+                    
+                    // Update surround effect index based on Z depth during playback
+                    if (gSoundMode == SOUND_MODE_SURROUND) {
+                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->surroundEffectIndex =
+                            get_sound_surround_effect_index(*sSoundBanks[bank][soundIndex].z);
+                    }
+
                     switch (bank) {
                         case SOUND_BANK_MOVING:
                             if (!(sSoundBanks[bank][soundIndex].soundBits & SOUND_CONSTANT_FREQUENCY)) {
