@@ -7,7 +7,7 @@ extern "C" {
 extern struct SaveBuffer gSaveBuffer;
 }
 
-bool SpoilerExistsForFileNum(std::string fileName) {
+bool SpoilerExistsForFileName(std::string fileName) {
     nlohmann::json spoilerCheck = Rando::Spoiler::LoadFromFile(fileName);
     if (spoilerCheck.empty()) {
         Notification::Emit({ .message = "Error: No Spoiler Log found.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });
@@ -22,6 +22,8 @@ void Rando::MiscBehavior::OnFileLoad() {
         OnGameFileLoad* ev = (OnGameFileLoad*)event;
         selectedFileNum = ev->fileNum - 1;
 
+        bool loadedFromSpoiler = false;
+
         if (!CVarGetInteger("gRandoSettings.Enabled", 0)) {
             gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_VANILLA;
             Rando::Logic::shuffledPool.clear();
@@ -32,17 +34,20 @@ void Rando::MiscBehavior::OnFileLoad() {
             gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
             Rando::Logic::InitializeSaveChecks();
             Rando::Logic::InitializeSaveEntrances();
+            Rando::Logic::InitializeSaveOptions();
 
             if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
                 Rando::Logic::GenerateShuffleList();
             } else if (CVarGetInteger("gRandoSettings.UseExistingLog", 0)) {
-                std::string fileName = std::to_string(selectedFileNum) + ".json";
-                bool logExists = SpoilerExistsForFileNum(fileName);
+                std::string fileName =
+                    Rando::Spoiler::spoilerLogs.at(CVarGetInteger("gRandoSettings.SpoilerFileIndex", 0));
+                bool logExists = SpoilerExistsForFileName(fileName);
                 if (!logExists) {
                     Rando::Logic::GenerateShuffleList();
                 } else {
                     nlohmann::json loadedSpoiler = Rando::Spoiler::LoadFromFile(fileName);
-                    Rando::Logic::shuffledPool = Rando::Spoiler::GenerateFromSpoilerLog(loadedSpoiler);
+                    Rando::Spoiler::GenerateFromSpoiler(loadedSpoiler);
+                    loadedFromSpoiler = true;
                 }
             } else {
                 Rando::Logic::GenerateShuffleList();
@@ -63,11 +68,15 @@ void Rando::MiscBehavior::OnFileLoad() {
                     RandoSaveEntrance randoSaveEntrance;
                     randoSaveEntrance.randoEntranceId = entrance.randoEntranceId;
                     randoSaveEntrance.destinationId = entrance.destinationId;
-                    randoSaveEntrance.randoEntranceType = entrance.randoEntranceType;
-                    randoSaveEntrance.deathWarpId = entrance.deathWarpId;
-                    randoSaveEntrance.deathArea = entrance.deathArea;
 
                     RANDO_SAVE_ENTRANCES(selectedFileNum)[entrance.randoEntranceId] = randoSaveEntrance;
+                }
+            }
+
+            if (!loadedFromSpoiler) {
+                for (auto& [randoOptionId, optionData] : Rando::StaticData::Options) {
+                    RANDO_SAVE_OPTIONS(selectedFileNum)
+                    [randoOptionId] = CVarGetInteger(optionData.cvar, optionData.defaultValue);
                 }
             }
 

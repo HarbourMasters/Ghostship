@@ -1,9 +1,7 @@
 #include "Spoiler.h"
 #include "port/ui/Notification.h"
 #include <fstream>
-#include <filesystem>
 
-const std::string appShortName = "sm64";
 namespace fs = std::filesystem;
 
 namespace Rando {

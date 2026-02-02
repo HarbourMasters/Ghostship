@@ -34,6 +34,7 @@ void ShuffleRandoItems(std::vector<std::pair<RandoItemId, RandoAct>>& shuffledIt
 void ShuffleRandoEntrances(std::vector<int16_t>& shuffledLevels, const std::string& input);
 void InitializeSaveChecks();
 void InitializeSaveEntrances();
+void InitializeSaveOptions();
 void GenerateShuffleList();
 
 void ApplyNoLogicToSaveContext(std::vector<std::vector<LevelShuffleEntry>>& initialPool,

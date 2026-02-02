@@ -75,11 +75,14 @@ void InitializeSaveChecks() {
 void InitializeSaveEntrances() {
     for (auto& [randoEntranceId, randoStaticEntrance] : Rando::StaticData::Entrances) {
         RandoSaveEntrance randoSaveEntrance = { .randoEntranceId = randoEntranceId,
-                                                .destinationId = randoStaticEntrance.destinationId,
-                                                .randoEntranceType = randoStaticEntrance.randoEntranceType,
-                                                .deathWarpId = randoStaticEntrance.deathWarpId,
-                                                .deathArea = randoStaticEntrance.deathArea };
+                                                .destinationId = randoStaticEntrance.destinationId };
         RANDO_SAVE_ENTRANCES(selectedFileNum)[randoEntranceId] = randoSaveEntrance;
+    }
+}
+
+void InitializeSaveOptions() {
+    for (auto& [randoOptionId, optionData] : Rando::StaticData::Options) {
+        RANDO_SAVE_OPTIONS(selectedFileNum)[randoOptionId] = optionData.defaultValue;
     }
 }
 
@@ -146,6 +149,11 @@ void GenerateShuffleList() {
             continue;
         }
 
+        if (randoStaticEntrance.randoEntranceType == RETYPE_BOWSER_FINAL &&
+            CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_BOWSER_FINAL].cvar, 0) == RO_GENERIC_OFF) {
+            continue;
+        }
+
         if (randoStaticEntrance.randoEntranceType == RETYPE_CAP &&
             CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_CAP].cvar, 0) == RO_GENERIC_OFF) {
             continue;
@@ -176,7 +184,7 @@ void GenerateShuffleList() {
     gSaveBuffer.files[selectedFileNum][0].shipSaveData.randoSaveData.finalSeed = finalSeed;
 
     if (CVarGetInteger("gRandoSettings.GenerateLog", 0)) {
-        nlohmann::json spoilerLog = Rando::Spoiler::GenerateFromPoolGeneration(shuffledPool);
+        nlohmann::json spoilerLog = Rando::Spoiler::GenerateFromPoolGeneration(shuffledPool, shuffledEntrances);
         if (spoilerLog.empty()) {
             Notification::Emit(
                 { .message = "Error: No Spoiler Log was created.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });

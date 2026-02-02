@@ -49,6 +49,20 @@ void GhostshipMenu::AddMenuRando() {
         .PreFunc([](WidgetInfo& info) {
             info.options->Disabled(CVarGetInteger(CVAR_RANDOMIZER_SETTING("ManualSeedEntry"), 0));
         });
+    AddWidget(path, "Available Spoiler Logs", WIDGET_CUSTOM).CustomFunction([](WidgetInfo& info) {
+        ImGui::BeginDisabled(!CVarGetInteger(CVAR_RANDOMIZER_SETTING("UseExistingLog"), 0));
+        if (UIWidgets::CVarCombobox("Seed", CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), Rando::Spoiler::spoilerLogs)) {
+            if (CVarGetInteger(CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), 0) == 0) {
+                CVarSetString(CVAR_RANDOMIZER_SETTING("SpoilerFile"), "");
+            } else {
+                CVarSetString(
+                    "gRandoSettings.SpoilerFile",
+                    Rando::Spoiler::spoilerLogs[CVarGetInteger(CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), 0)]
+                        .c_str());
+            }
+        }
+        ImGui::EndDisabled();
+    });
     AddWidget(path, "Manual Seed Entry", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_RANDOMIZER_SETTING("ManualSeedEntry"))
         .RaceDisable(false)
@@ -76,7 +90,8 @@ void GhostshipMenu::AddMenuRando() {
     });
     AddWidget(path, "Create Spoiler Log", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
-            nlohmann::json spoiler = Rando::Spoiler::GenerateFromPoolGeneration(Rando::Logic::shuffledPool);
+            nlohmann::json spoiler =
+                Rando::Spoiler::GenerateFromPoolGeneration(Rando::Logic::shuffledPool, Rando::Logic::shuffledEntrances);
             std::string fileName = std::to_string(spoiler["finalSeed"].get<u32>()).c_str();
             fileName += ".json";
             Rando::Spoiler::SaveToFile(fileName, spoiler);
@@ -128,7 +143,11 @@ void GhostshipMenu::AddMenuRando() {
     AddWidget(path, "Shuffle Bowser Levels", WIDGET_CVAR_CHECKBOX)
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_BOWSER].cvar)
         .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Shuffles Bowser Entrances."));
+        .Options(CheckboxOptions().Tooltip("Shuffles Bowser in the Dark World and Fire Sea Entrances."));
+    AddWidget(path, "Shuffle Bowser in the Sky Level", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_BOWSER_FINAL].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Bowser in the Sky Entrance."));
     AddWidget(path, "Shuffle Cap Unlock Levels", WIDGET_CVAR_CHECKBOX)
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_CAP].cvar)
         .RaceDisable(false)

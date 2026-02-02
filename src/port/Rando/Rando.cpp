@@ -3,6 +3,7 @@
 #include "ObjectBehavior/ObjectBehavior.h"
 #include "MiscBehavior/MiscBehavior.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/Rando/Spoiler/Spoiler.h"
 #include "port/ShipInit.hpp"
 
 #include <fstream>
@@ -18,7 +19,7 @@ void Rando::Init() {
         fs::create_directory(dir);
     }
 
-    // Rando::Spoiler::RefreshOptions();
+    Rando::Spoiler::RefreshSpoilerLogs();
     Rando::MiscBehavior::Init();
     Rando::ObjectBehavior::Init();
     Rando::CheckTracker::Init();
