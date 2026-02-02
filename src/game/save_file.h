@@ -29,6 +29,7 @@ struct RandoSaveCheck {
 struct RandoSaveEntrance {
     RandoEntranceId randoEntranceId;
     int16_t destinationId;
+    bool found;
 };
 
 struct RandoSaveOption {

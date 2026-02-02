@@ -3,6 +3,7 @@
 #include "ObjectBehavior/ObjectBehavior.h"
 #include "MiscBehavior/MiscBehavior.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/Rando/EntranceTracker/EntranceTracker.h"
 #include "port/Rando/Spoiler/Spoiler.h"
 #include "port/ShipInit.hpp"
 
@@ -23,6 +24,7 @@ void Rando::Init() {
     Rando::MiscBehavior::Init();
     Rando::ObjectBehavior::Init();
     Rando::CheckTracker::Init();
+    Rando::EntranceTracker::Init();
     // Ship::Context::GetInstance()->GetFileDropMgr()->RegisterDropHandler(Rando::Spoiler::HandleFileDropped);
 }
 

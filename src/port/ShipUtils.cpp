@@ -34,6 +34,34 @@ std::vector<std::string> levelAbbreviations = {
     "THI", "TTC", "RR",  "BITDW", "BITFS", "BITS", "PSS", "COTMC", "TOTWC", "VCUTM", "WMOTR", "SA",
 };
 
+std::map<int16_t, std::string> levelIdList = {
+    { LEVEL_BOB, "Bob Omb Battlefield" },
+    { LEVEL_WF, "Whomp's Fortress" },
+    { LEVEL_JRB, "Jolly Roger's Bay" },
+    { LEVEL_CASTLE, "Castle Interior" },
+    { LEVEL_CCM, "Cool Cool Mountain" },
+    { LEVEL_BBH, "Big Boo's Haunt" },
+    { LEVEL_HMC, "Hazy Maze Cave" },
+    { LEVEL_LLL, "Lethal Lava Land" },
+    { LEVEL_SSL, "Shifting Sand Land" },
+    { LEVEL_DDD, "Dire Dire Docks" },
+    { LEVEL_SL, "Snowman's Land" },
+    { LEVEL_WDW, "Wet Dry World" },
+    { LEVEL_TTM, "Tall Tall Mountain" },
+    { LEVEL_THI, "Tiny Huge Island" },
+    { LEVEL_TTC, "Tick Tock Clock" },
+    { LEVEL_RR, "Rainbow Ride" },
+    { LEVEL_BITDW, "Bowser in the Dark World" },
+    { LEVEL_BITFS, "Bowser in the Fire Sea" },
+    { LEVEL_BITS, "Bowser in the Sky" },
+    { LEVEL_PSS, "Princess's Secret Slide" },
+    { LEVEL_COTMC, "Cavern of the Metal Cap" },
+    { LEVEL_TOTWC, "Tower of the Wing Cap" },
+    { LEVEL_VCUTM, "Vanish Cap Under the Moat" },
+    { LEVEL_WMOTR, "Winged Mario over the Rainbow" },
+    { LEVEL_SA, "Secret Aquarium" },
+};
+
 std::map<int16_t, int16_t> levelToCourseMap = {
     { LEVEL_BBH, COURSE_BBH },     { LEVEL_CASTLE, COURSE_NONE }, { LEVEL_CCM, COURSE_CCM },
     { LEVEL_HMC, COURSE_HMC },     { LEVEL_SSL, COURSE_SSL },     { LEVEL_BOB, COURSE_BOB },

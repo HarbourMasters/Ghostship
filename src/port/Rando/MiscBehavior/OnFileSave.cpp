@@ -11,21 +11,17 @@ void Rando::MiscBehavior::OnFileSave() {
             return;
         }
 
-        for (auto& pool : Rando::Logic::shuffledPool) {
+        for (auto& check : Rando::Logic::shuffledPool) {
             RandoSaveCheck randoSaveCheck;
-            randoSaveCheck.randoItemId = pool.randoItemId;
-            randoSaveCheck.randoAct = pool.randoAct;
-            randoSaveCheck.obtained = pool.obtained;
+            randoSaveCheck.randoItemId = check.randoItemId;
+            randoSaveCheck.randoAct = check.randoAct;
+            randoSaveCheck.obtained = check.obtained;
 
-            RANDO_SAVE_CHECKS(selectedFileNum)[pool.randoCheckId] = randoSaveCheck;
+            RANDO_SAVE_CHECKS(selectedFileNum)[check.randoCheckId] = randoSaveCheck;
         }
 
-        // TODO: Inject Save File with spoiler data
-        // gSaveBuffer.files[ev->fileNum]->shipSaveData.randoSaveData.isRando = true;
-
-        // bcopy(&gSaveBuffer.files[ev->fileNum][0], &gSaveBuffer.files[ev->fileNum][1],
-        //       sizeof(gSaveBuffer.files[ev->fileNum][1]));
-
-        // write_eeprom_data(&gSaveBuffer.menuData[ev->fileNum], sizeof(gSaveBuffer.menuData[ev->fileNum]));
+        for (auto& entrance : Rando::Logic::shuffledEntrances) {
+            RANDO_SAVE_ENTRANCES(selectedFileNum)[entrance.randoEntranceId].found = entrance.found;
+        }
     });
 }

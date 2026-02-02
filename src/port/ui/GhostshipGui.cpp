@@ -16,6 +16,7 @@
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/Rando/EntranceTracker/EntranceTracker.h"
 
 namespace GhostshipGui {
 // MARK: - Delegates
@@ -29,6 +30,9 @@ std::shared_ptr<GhostshipModalWindow> mModalWindow;
 
 std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
+
+std::shared_ptr<Rando::EntranceTracker::EntranceTrackerWindow> mRandoEntranceTrackerWindow;
+std::shared_ptr<Rando::EntranceTracker::SettingsWindow> mRandoEntranceTrackerSettingsWindow;
 
 UIWidgets::Colors GetMenuThemeColor() {
     return mGhostshipMenu->GetMenuThemeColor();
@@ -72,6 +76,14 @@ void SetupGuiElements() {
     mRandoCheckTrackerSettingsWindow = std::make_shared<Rando::CheckTracker::SettingsWindow>(
         "gWindows.CheckTrackerSettings", "Check Tracker Settings");
     gui->AddGuiWindow(mRandoCheckTrackerSettingsWindow);
+
+    mRandoEntranceTrackerWindow = std::make_shared<Rando::EntranceTracker::EntranceTrackerWindow>(
+        "gWindows.EntranceTracker", "Entrance Tracker", ImVec2(375, 460));
+    gui->AddGuiWindow(mRandoEntranceTrackerWindow);
+
+    mRandoEntranceTrackerSettingsWindow = std::make_shared<Rando::EntranceTracker::SettingsWindow>(
+        "gWindows.EntranceTrackerSettings", "Entrance Tracker Settings");
+    gui->AddGuiWindow(mRandoEntranceTrackerSettingsWindow);
 }
 
 void Destroy() {
@@ -87,6 +99,8 @@ void Destroy() {
     mInputViewerSettings = nullptr;
     mRandoCheckTrackerWindow = nullptr;
     mRandoCheckTrackerSettingsWindow = nullptr;
+    mRandoEntranceTrackerWindow = nullptr;
+    mRandoEntranceTrackerSettingsWindow = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

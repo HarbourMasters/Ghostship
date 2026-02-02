@@ -1,4 +1,5 @@
 #include "MiscBehavior.h"
+#include "port/Rando/Logic/Logic.h"
 #include "port/hooks/list/EngineEvent.h"
 
 extern "C" {
@@ -72,6 +73,11 @@ void Rando::MiscBehavior::Init() {
                     // TODO: Handle Tiny Huge Islands size changes, Wet Dry World water level, and Tick Tock Clocks
                     // clock.
                     ev->warpNode->destLevel = RANDO_SAVE_ENTRANCES(selectedFileNum)[randoEntranceId].destinationId;
+                    for (auto& entrance : Rando::Logic::shuffledEntrances) {
+                        if (entrance.randoEntranceId == randoEntranceId) {
+                            entrance.found = true;
+                        }
+                    }
                     currentEntrance = randoEntranceId;
                     break;
                 }
