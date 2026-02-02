@@ -58,7 +58,7 @@ std::map<int16_t, std::string> levelIdList = {
     { LEVEL_COTMC, "Cavern of the Metal Cap" },
     { LEVEL_TOTWC, "Tower of the Wing Cap" },
     { LEVEL_VCUTM, "Vanish Cap Under the Moat" },
-    { LEVEL_WMOTR, "Winged Mario over the Rainbow" },
+    { LEVEL_WMOTR, "Wing Mario over the Rainbow" },
     { LEVEL_SA, "Secret Aquarium" },
 };
 

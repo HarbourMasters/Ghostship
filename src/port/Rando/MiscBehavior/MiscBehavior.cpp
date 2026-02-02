@@ -42,11 +42,7 @@ void Rando::MiscBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        SPDLOG_INFO("currentLevel: {}", std::to_string(currentEntrance));
-        SPDLOG_INFO("Source: {}", std::to_string(ev->sourceWarpNode));
-        SPDLOG_INFO("Current Destination: {}", std::to_string(ev->warpNode->destLevel));
 
-        // TODO: Death Exits
         if (ev->sourceWarpNode > 0 && currentEntrance != RE_UNKNOWN) {
             Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
 
