@@ -8,7 +8,7 @@
 #include <filesystem>
 namespace fs = std::filesystem;
 
-extern struct SaveBuffer gSaveBuffer;
+extern "C" struct SaveBuffer gSaveBuffer;
 
 static void Init() {
     // Create saves directory if it doesn't exist
