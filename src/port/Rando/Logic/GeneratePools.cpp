@@ -146,6 +146,11 @@ void GenerateShuffleList() {
             continue;
         }
 
+        if (randoStaticEntrance.randoEntranceType == RETYPE_BOWSER_FINAL &&
+            CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_BOWSER_FINAL].cvar, 0) == RO_GENERIC_OFF) {
+            continue;
+        }
+
         if (randoStaticEntrance.randoEntranceType == RETYPE_CAP &&
             CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_CAP].cvar, 0) == RO_GENERIC_OFF) {
             continue;

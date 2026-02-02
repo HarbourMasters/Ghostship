@@ -128,7 +128,11 @@ void GhostshipMenu::AddMenuRando() {
     AddWidget(path, "Shuffle Bowser Levels", WIDGET_CVAR_CHECKBOX)
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_BOWSER].cvar)
         .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Shuffles Bowser Entrances."));
+        .Options(CheckboxOptions().Tooltip("Shuffles Bowser in the Dark World and Fire Sea Entrances."));
+    AddWidget(path, "Shuffle Bowser in the Sky Level", WIDGET_CVAR_CHECKBOX)
+        .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_BOWSER_FINAL].cvar)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Shuffles Bowser in the Sky Entrance."));
     AddWidget(path, "Shuffle Cap Unlock Levels", WIDGET_CVAR_CHECKBOX)
         .CVar(Rando::StaticData::Options[RO_SHUFFLE_ENTRANCES_CAP].cvar)
         .RaceDisable(false)
