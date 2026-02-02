@@ -198,6 +198,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "lib/src/guScaleF.c"
     "lib/src/guLookAtF.c"
     "lib/src/guTranslateF.c"
+    "lib/src/osAiSetFrequency.c"
     "include/**/*"
     "sound/*.c"
     "src/audio/*.h"

@@ -2551,7 +2551,8 @@ void sound_reset(u8 presetId) {
     func_802ad74c(0xF2000000, 0);
 #endif
 #if defined(VERSION_JP) || defined(VERSION_US)
-    audio_reset_session(/*ROM_JP ? &gAudioSessionPresetsJP[presetId] : */&gAudioSessionPresetsUS[presetId]);
+    struct AudioSessionSettings* settings = ROM_JP ? &gAudioSessionPresetsJP[presetId] : &gAudioSessionPresetsUS[presetId];
+    audio_reset_session(settings);
 #else
     audio_reset_session_eu(presetId);
 #endif
@@ -2577,7 +2578,7 @@ void audio_set_sound_mode(u8 soundMode) {
 
 void audio_set_player_volume(u8 player, f32 volume) {
     gSequencePlayers[player].gameVolume = volume;
-    gSequencePlayers[player].recalculateVolume = TRUE;
+    // gSequencePlayers[player].recalculateVolume = TRUE;
 }
 
 #if defined(VERSION_JP) || defined(VERSION_US)

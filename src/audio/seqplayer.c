@@ -315,7 +315,8 @@ void sequence_player_disable(struct SequencePlayer *seqPlayer) {
         && gSeqLoadStatus[seqPlayer->seqId] != 5
 #endif
     ) {
-        GameEngine_UnloadSequence(seqPlayer->seqId);
+        // This thing seems to not fully handle unload correctly
+        // GameEngine_UnloadSequence(seqPlayer->seqId);
     }
 
     if (IS_BANK_LOAD_COMPLETE(seqPlayer->defaultBank[0])
@@ -326,7 +327,8 @@ void sequence_player_disable(struct SequencePlayer *seqPlayer) {
 #ifdef VERSION_SH
         gBankLoadStatus[seqPlayer->defaultBank[0]] = 4;
 #else
-        GameEngine_UnloadBank(seqPlayer->defaultBank[0]);
+        // This thing seems to not fully handle unload correctly
+        // GameEngine_UnloadBank(seqPlayer->defaultBank[0]);
 #endif
     }
 }
@@ -2220,7 +2222,11 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
                     sequence_player_disable(seqPlayer);
                     break;
                 }
+#if defined(VERSION_EU) || defined(VERSION_SH)
                 state->pc = state->stack[--state->depth];
+#else
+                state->depth--, state->pc = state->stack[state->depth];
+#endif
             }
 
             if (cmd == 0xfd) { // seq_delay
@@ -2240,13 +2246,27 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
 
                     case 0xfc: // seq_call
                         u16v = m64_read_s16(state);
+                        if (0 && state->depth >= 4) {
+                            eu_stubbed_printf_0("Macro Level Over Error!\n");
+                        }
+#if defined(VERSION_EU) || defined(VERSION_SH)
                         state->stack[state->depth++] = state->pc;
+#else
+                        state->depth++, state->stack[state->depth - 1] = state->pc;
+#endif
                         state->pc = seqPlayer->seqData + u16v;
                         break;
 
                     case 0xf8: // seq_loop; loop start, N iterations (or 256 if N = 0)
+                        if (0 && state->depth >= 4) {
+                            eu_stubbed_printf_0("Macro Level Over Error!\n");
+                        }
                         state->remLoopIters[state->depth] = m64_read_u8(state);
+#if defined(VERSION_EU) || defined(VERSION_SH)
                         state->stack[state->depth++] = state->pc;
+#else
+                        state->depth++, state->stack[state->depth - 1] = state->pc;
+#endif
                         break;
 
                     case 0xf7: // seq_loopend
@@ -2577,7 +2597,9 @@ void process_sequences(UNUSED s32 iterationsRemaining) {
             sequence_player_process_sound(&gSequencePlayers[i]);
         }
     }
+#if defined(VERSION_JP) || defined(VERSION_US)
     reclaim_notes();
+#endif
     process_notes();
 }
 
@@ -2629,7 +2651,20 @@ void init_sequence_players(void) {
     for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
         gSequenceChannels[i].seqPlayer = NULL;
         gSequenceChannels[i].enabled = FALSE;
-        for (j = 0; j < LAYERS_MAX; j++) {
+#if defined(VERSION_JP) || defined(VERSION_US)
+    }
+
+    for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
+#endif
+        // @bug Size of wrong array. Zeroes out second half of gSequenceChannels[0],
+        // all of gSequenceChannels[1..31], and part of gSequenceLayers[0].
+        // However, this is only called at startup, so it's harmless.
+#ifdef AVOID_UB
+#define LAYERS_SIZE LAYERS_MAX
+#else
+#define LAYERS_SIZE ARRAY_COUNT(gSequenceLayers)
+#endif
+        for (j = 0; j < LAYERS_SIZE; j++) {
             gSequenceChannels[i].layers[j] = NULL;
         }
     }
