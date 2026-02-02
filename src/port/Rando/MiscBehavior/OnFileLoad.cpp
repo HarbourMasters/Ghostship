@@ -68,6 +68,7 @@ void Rando::MiscBehavior::OnFileLoad() {
                     RandoSaveEntrance randoSaveEntrance;
                     randoSaveEntrance.randoEntranceId = entrance.randoEntranceId;
                     randoSaveEntrance.destinationId = entrance.destinationId;
+                    randoSaveEntrance.found = entrance.found;
 
                     RANDO_SAVE_ENTRANCES(selectedFileNum)[entrance.randoEntranceId] = randoSaveEntrance;
                 }

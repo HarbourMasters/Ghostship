@@ -41,6 +41,7 @@ void ApplyNoLogicToSaveContext(std::vector<std::vector<LevelShuffleEntry>>& init
             RandoSaveEntrance randoSaveEntrance;
             randoSaveEntrance.randoEntranceId = entranceIds[e];
             randoSaveEntrance.destinationId = initialLevelPool[e];
+            randoSaveEntrance.found = false;
             entrancePool.push_back(randoSaveEntrance);
         }
     }

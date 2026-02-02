@@ -1,16 +1,16 @@
-#ifndef RANDO_CHECK_TRACKER_H
-#define RANDO_CHECK_TRACKER_H
+#ifndef RANDO_ENTRANCE_TRACKER_H
+#define RANDO_ENTRANCE_TRACKER_H
 
 #include "port/Rando/Rando.h"
 #include <ship/window/gui/GuiWindow.h>
 
 namespace Rando {
 
-namespace CheckTracker {
+namespace EntranceTracker {
 
 void Init();
 
-class CheckTrackerWindow : public Ship::GuiWindow {
+class EntranceTrackerWindow : public Ship::GuiWindow {
   public:
     using GuiWindow::GuiWindow;
 
@@ -29,8 +29,8 @@ class SettingsWindow : public Ship::GuiWindow {
     void UpdateElement() override{};
 };
 
-} // namespace CheckTracker
+} // namespace EntranceTracker
 
 } // namespace Rando
 
-#endif // RANDO_CHECK_TRACKER_H
+#endif // RANDO_ENTRANCE_TRACKER_H

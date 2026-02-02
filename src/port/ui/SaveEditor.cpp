@@ -22,8 +22,6 @@ extern SaveBuffer gSaveBuffer;
 extern MarioState* gMarioState;
 }
 
-#define WIDGET_COLOR UIWidgets::Colors(CVarGetInteger("gSettings.Menu.Theme", 5))
-
 #define DEFINE_COURSE(_0, _1, name) name,
 #define DEFINE_COURSES_END()
 #define DEFINE_BONUS_COURSE(_0, _1, name) name,

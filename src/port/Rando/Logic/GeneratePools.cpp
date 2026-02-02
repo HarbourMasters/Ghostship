@@ -75,7 +75,8 @@ void InitializeSaveChecks() {
 void InitializeSaveEntrances() {
     for (auto& [randoEntranceId, randoStaticEntrance] : Rando::StaticData::Entrances) {
         RandoSaveEntrance randoSaveEntrance = { .randoEntranceId = randoEntranceId,
-                                                .destinationId = randoStaticEntrance.destinationId };
+                                                .destinationId = randoStaticEntrance.destinationId,
+                                                .found = false };
         RANDO_SAVE_ENTRANCES(selectedFileNum)[randoEntranceId] = randoSaveEntrance;
     }
 }

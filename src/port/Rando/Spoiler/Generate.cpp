@@ -90,6 +90,7 @@ void GenerateFromSpoiler(nlohmann::json spoiler) {
             for (auto& [entranceId, staticEntrance] : Rando::StaticData::Entrances) {
                 if (staticEntrance.name == data.key()) {
                     randoSaveEntrance.randoEntranceId = entranceId;
+                    randoSaveEntrance.found = false;
                 }
                 if (staticEntrance.name == data.value()) {
                     randoSaveEntrance.destinationId = staticEntrance.destinationId;

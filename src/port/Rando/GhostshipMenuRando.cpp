@@ -1,15 +1,16 @@
 #include "port/ui/GhostshipMenu.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/Rando/EntranceTracker/EntranceTracker.h"
 #include "port/Rando/Spoiler/Spoiler.h"
 #include "port/ui/Notification.h"
-
-#define WIDGET_COLOR UIWidgets::Colors(CVarGetInteger("gSettings.Menu.Theme", 5))
 
 namespace GhostshipGui {
 
 extern std::shared_ptr<GhostshipMenu> mGhostshipMenu;
 extern std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 extern std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
+extern std::shared_ptr<Rando::EntranceTracker::EntranceTrackerWindow> mRandoEntranceTrackerWindow;
+extern std::shared_ptr<Rando::EntranceTracker::SettingsWindow> mRandoEntranceTrackerSettingsWindow;
 using namespace UIWidgets;
 
 void GhostshipMenu::AddMenuRando() {
@@ -168,6 +169,14 @@ void GhostshipMenu::AddMenuRando() {
     AddWidget(path, "Popout Settings", WIDGET_WINDOW_BUTTON)
         .CVar("gWindows.CheckTrackerSettings")
         .WindowName("Check Tracker Settings");
+
+    path = { "Rando", "Entrance Tracker", SECTION_COLUMN_1 };
+    AddSidebarEntry("Rando", path.sidebarName, 1);
+    path.column = SECTION_COLUMN_1;
+
+    AddWidget(path, "Popout Settings", WIDGET_WINDOW_BUTTON)
+        .CVar("gWindows.EntranceTrackerSettings")
+        .WindowName("Entrance Tracker Settings");
 }
 
 } // namespace GhostshipGui
