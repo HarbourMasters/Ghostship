@@ -41,9 +41,6 @@ void ApplyNoLogicToSaveContext(std::vector<std::vector<LevelShuffleEntry>>& init
             RandoSaveEntrance randoSaveEntrance;
             randoSaveEntrance.randoEntranceId = entranceIds[e];
             randoSaveEntrance.destinationId = initialLevelPool[e];
-            randoSaveEntrance.randoEntranceType =
-                Rando::StaticData::Entrances[randoSaveEntrance.randoEntranceId].randoEntranceType;
-            randoSaveEntrance.deathWarpId = Rando::StaticData::Entrances[randoSaveEntrance.randoEntranceId].deathWarpId;
             entrancePool.push_back(randoSaveEntrance);
         }
     }

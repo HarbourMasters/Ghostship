@@ -66,6 +66,7 @@ struct RandoStaticEntrance {
 
 extern std::map<RandoEntranceId, RandoStaticEntrance> Entrances;
 
+RandoEntranceId GetEntranceIdFromDestination(int16_t destinationId);
 
 struct RandoStaticOption {
     RandoOptionId randoOptionId;

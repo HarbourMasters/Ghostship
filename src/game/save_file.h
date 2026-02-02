@@ -29,9 +29,11 @@ struct RandoSaveCheck {
 struct RandoSaveEntrance {
     RandoEntranceId randoEntranceId;
     int16_t destinationId;
-    RandoEntranceType randoEntranceType;
-    WarpNodes deathWarpId;
-    int16_t deathArea;
+};
+
+struct RandoSaveOption {
+    const char* randoOptionName;
+    int32_t randoOptionValue;
 };
 
 typedef enum {
@@ -42,8 +44,8 @@ typedef enum {
 struct RandoSaveData {
     struct RandoSaveCheck randoSaveChecks[RC_MAX];
     struct RandoSaveEntrance randoSaveEntrances[RE_MAX];
+    u32 randoSaveOptions[RO_MAX];
     u32 finalSeed;
-    // u32 randoSaveOptions[RO_MAX];
 };
 
 struct ShipSaveData {

@@ -48,8 +48,16 @@ std::map<RandoEntranceId, RandoStaticEntrance> Entrances = {
     RE(RE_WF,           LEVEL_WF,           RETYPE_PAINTING,        WARP_NODE_66,   REAREA_01),
     RE(RE_WMOTR,        LEVEL_WMOTR,        RETYPE_SECRET,          WARP_NODE_0A,   REAREA_02),
 };
-
 // clang-format on
+
+RandoEntranceId GetEntranceIdFromDestination(int16_t destinationId) {
+    for (auto& [randoEntranceId, randoStaticEntrance] : Entrances) {
+        if (randoStaticEntrance.destinationId == destinationId) {
+            return randoEntranceId;
+        }
+    }
+    return RE_MAX;
+}
 
 } // namespace StaticData
 } // namespace Rando

@@ -1,16 +1,14 @@
 #include "Spoiler.h"
 #include "port/Rando/Logic/Logic.h"
-#include "port/Rando/Rando.h"
 #include "port/ui/Notification.h"
 
 namespace Rando {
 
 namespace Spoiler {
-
-nlohmann::json GenerateFromPoolGeneration(std::vector<LevelShuffleEntry>& shuffledPool) {
+nlohmann::json GenerateFromPoolGeneration(std::vector<LevelShuffleEntry>& shuffledPool,
+                                          std::vector<RandoSaveEntrance>& shuffledEntrances) {
     nlohmann::json spoiler;
     spoiler["type"] = "GHOSTSHIP_RANDO_SPOILER";
-    spoiler["fileNum"] = std::to_string(selectedFileNum);
     if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
         spoiler["seed"] = seedString;
     } else {
@@ -18,11 +16,10 @@ nlohmann::json GenerateFromPoolGeneration(std::vector<LevelShuffleEntry>& shuffl
     }
     spoiler["finalSeed"] = gSaveBuffer.files[selectedFileNum][0].shipSaveData.randoSaveData.finalSeed;
 
-    // TODO: Add once JSON Saves are in.
-    // spoiler["options"] = nlohmann::json::object();
-    // for (auto& [randoOptionId, randoStaticOption] : Rando::StaticData::Options) {
-    //     spoiler["options"][randoStaticOption.name] = RANDO_SAVE_OPTIONS[randoOptionId];
-    // }
+    spoiler["options"] = nlohmann::json::object();
+    for (auto& [randoOptionId, randoStaticOption] : Rando::StaticData::Options) {
+        spoiler["options"][randoStaticOption.name] = RANDO_SAVE_OPTIONS(selectedFileNum)[randoOptionId];
+    }
 
     spoiler["checks"] = nlohmann::json::object();
     for (auto& entry : shuffledPool) {
@@ -37,46 +34,83 @@ nlohmann::json GenerateFromPoolGeneration(std::vector<LevelShuffleEntry>& shuffl
         }
     }
 
+    if (!shuffledEntrances.empty()) {
+        spoiler["entrances"] = nlohmann::json::object();
+        for (auto& entrance : shuffledEntrances) {
+            spoiler["entrances"][Rando::StaticData::Entrances[entrance.randoEntranceId].name] =
+                Rando::StaticData::Entrances[Rando::StaticData::GetEntranceIdFromDestination(entrance.destinationId)]
+                    .name;
+        }
+    }
+
     return spoiler;
 }
-std::vector<LevelShuffleEntry> GenerateFromSpoilerLog(nlohmann::json spoiler) {
-    std::vector<LevelShuffleEntry> spoilerChecks;
+
+void GenerateFromSpoiler(nlohmann::json spoiler) {
+    Rando::Logic::shuffledPool.clear();
+    Rando::Logic::shuffledEntrances.clear();
 
     if (!spoiler.contains("type") || spoiler["type"] != "GHOSTSHIP_RANDO_SPOILER") {
         Notification::Emit({ .message = "Error: Invalid Spoiler Log.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });
-        return spoilerChecks;
     }
 
     if (spoiler.contains("checks") && !spoiler["checks"].empty()) {
         for (auto& data : spoiler["checks"].items()) {
-            struct LevelShuffleEntry levelEntry;
+            struct LevelShuffleEntry checkEntry;
             for (auto& [checkId, staticCheck] : Rando::StaticData::Checks) {
                 if (staticCheck.name == data.key()) {
-                    levelEntry.randoCheckId = checkId;
+                    checkEntry.randoCheckId = checkId;
                     break;
                 }
             }
 
             std::string randoItemStr = "";
             if (data.value().contains("randoAct")) {
-                levelEntry.randoAct = data.value()["randoAct"];
+                checkEntry.randoAct = data.value()["randoAct"];
                 randoItemStr = data.value()["randoItemId"];
             } else {
-                levelEntry.randoAct = RA_ACT_NONE;
+                checkEntry.randoAct = RA_ACT_NONE;
                 randoItemStr = data.value();
             }
 
             for (auto& [itemId, staticItem] : Rando::StaticData::Items) {
                 if (staticItem.spoilerName == randoItemStr) {
-                    levelEntry.randoItemId = itemId;
+                    checkEntry.randoItemId = itemId;
                 }
             }
-            levelEntry.obtained = false;
-            spoilerChecks.push_back(levelEntry);
+            checkEntry.obtained = false;
+            checkEntry.skipped = false;
+            Rando::Logic::shuffledPool.push_back(checkEntry);
         }
     }
 
-    return spoilerChecks;
+    if (spoiler.contains("entrances") && !spoiler["entrances"].empty()) {
+        for (auto& data : spoiler["entrances"].items()) {
+            RandoSaveEntrance randoSaveEntrance;
+            for (auto& [entranceId, staticEntrance] : Rando::StaticData::Entrances) {
+                if (staticEntrance.name == data.key()) {
+                    randoSaveEntrance.randoEntranceId = entranceId;
+                }
+                if (staticEntrance.name == data.value()) {
+                    randoSaveEntrance.destinationId = staticEntrance.destinationId;
+                }
+            }
+
+            Rando::Logic::shuffledEntrances.push_back(randoSaveEntrance);
+        }
+    }
+
+    if (spoiler.contains("options") && !spoiler["options"].empty()) {
+        for (auto& data : spoiler["options"].items()) {
+            for (auto& [optionId, staticOption] : Rando::StaticData::Options) {
+                RandoSaveOption randoSaveOption;
+                if (staticOption.name == data.key()) {
+                    RANDO_SAVE_OPTIONS(selectedFileNum)[optionId] = data.value().get<int32_t>();
+                    break;
+                }
+            }
+        }
+    }
 }
 
 } // namespace Spoiler

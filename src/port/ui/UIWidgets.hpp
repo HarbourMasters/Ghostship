@@ -1009,6 +1009,20 @@ bool CVarCombobox(const char* label, const char* cvarName, const std::vector<con
     return dirty;
 }
 
+template <typename T = int32_t>
+bool CVarCombobox(const char* label, const char* cvarName, const std::vector<std::string>& comboVector,
+                  const ComboboxOptions& options = {}) {
+    bool dirty = false;
+    int32_t value = CVarGetInteger(cvarName, options.defaultIndex);
+    if (Combobox<T>(label, &value, comboVector, options)) {
+        CVarSetInteger(cvarName, value);
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+        ShipInit::Init(cvarName);
+        dirty = true;
+    }
+    return dirty;
+}
+
 template <typename T = int32_t, size_t N>
 bool CVarCombobox(const char* label, const char* cvarName, const char* (&comboArray)[N],
                   const ComboboxOptions& options = {}) {
