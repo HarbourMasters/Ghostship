@@ -43,6 +43,12 @@ void Rando::MiscBehavior::Init() {
             return;
         }
 
+        if (ev->warpNode->destLevel == LEVEL_BOWSER_1 || ev->warpNode->destLevel == LEVEL_BOWSER_2 ||
+            ev->warpNode->destLevel == LEVEL_BOWSER_3) {
+            currentEntrance = RE_UNKNOWN;
+            return;
+        }
+
         if (ev->sourceWarpNode > 0 && currentEntrance != RE_UNKNOWN) {
             Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
 

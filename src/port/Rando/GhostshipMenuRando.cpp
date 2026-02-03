@@ -52,7 +52,8 @@ void GhostshipMenu::AddMenuRando() {
         });
     AddWidget(path, "Available Spoiler Logs", WIDGET_CUSTOM).CustomFunction([](WidgetInfo& info) {
         ImGui::BeginDisabled(!CVarGetInteger(CVAR_RANDOMIZER_SETTING("UseExistingLog"), 0));
-        if (UIWidgets::CVarCombobox("Seed", CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), Rando::Spoiler::spoilerLogs)) {
+        if (UIWidgets::CVarCombobox("Seed", CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), Rando::Spoiler::spoilerLogs,
+                                    {.color = WIDGET_COLOR })) {
             if (CVarGetInteger(CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), 0) == 0) {
                 CVarSetString(CVAR_RANDOMIZER_SETTING("SpoilerFile"), "");
             } else {
