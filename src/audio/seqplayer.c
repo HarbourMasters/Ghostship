@@ -38,6 +38,8 @@ void sequence_channel_init(struct SequenceChannel *seqChannel) {
     seqChannel->hasInstrument = FALSE;
     seqChannel->stereoHeadsetEffects = FALSE;
     seqChannel->surroundEffectIndex = 0;
+    seqChannel->combFilterGain = 0;
+    seqChannel->combFilterSize = 0;
     seqChannel->transposition = 0;
     seqChannel->largeNotes = FALSE;
 #if defined(VERSION_EU) || defined(VERSION_SH)

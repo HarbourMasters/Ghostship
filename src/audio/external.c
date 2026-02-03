@@ -7,6 +7,7 @@
 #include "external.h"
 #include "playback.h"
 #include "synthesis.h"
+#include "effects.h"
 #include "game/level_update.h"
 #include "game/object_list_processor.h"
 #include "game/camera.h"
@@ -1269,6 +1270,10 @@ static void update_game_sound(void) {
                     if (gSoundMode == SOUND_MODE_SURROUND) {
                         gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->surroundEffectIndex =
                             get_sound_surround_effect_index(*sSoundBanks[bank][soundIndex].z);
+                        // Set comb filter gain based on Y height for vertical positioning
+                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->combFilterGain =
+                            audio_compute_comb_filter(*sSoundBanks[bank][soundIndex].y);
+                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->combFilterSize = 0x28;
                     }
 
                     switch (bank) {
@@ -1460,6 +1465,10 @@ static void update_game_sound(void) {
                     if (gSoundMode == SOUND_MODE_SURROUND) {
                         gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->surroundEffectIndex =
                             get_sound_surround_effect_index(*sSoundBanks[bank][soundIndex].z);
+                        // Update comb filter gain based on Y height for vertical positioning
+                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->combFilterGain =
+                            audio_compute_comb_filter(*sSoundBanks[bank][soundIndex].y);
+                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->combFilterSize = 0x28;
                     }
 
                     switch (bank) {

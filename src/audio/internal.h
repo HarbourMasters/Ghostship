@@ -447,6 +447,8 @@ struct SequenceChannel {
 #endif
     /*0x05, 0x06*/ u8 bankId;
     /*          */ u8 surroundEffectIndex; // Surround depth: 0 = front, 0x7F = behind
+    /*          */ s8 combFilterGain;      // Comb filter gain for surround height effect (-32 to 127)
+    /*          */ u8 combFilterSize;      // Comb filter size (delay in bytes, typically 0x28)
 #if defined(VERSION_EU) || defined(VERSION_SH)
     /*    , 0x07*/ u8 reverbIndex;
     /*    , 0x08, 0x09*/ u8 bookOffset;
@@ -568,6 +570,7 @@ struct NoteSynthesisState {
     /*      0x04*/ u8 reverbVol;
     /*      0x05*/ u8 unk5;
 #endif
+    /*    */ u8 combFilterNeedsInit; // TRUE if comb filter state needs to be cleared
     /*0x04, 0x06*/ u16 samplePosFrac;
     /*0x08*/ s32 samplePosInt;
     /*0x0C*/ struct NoteSynthesisBuffers *synthesisBuffers;
@@ -643,6 +646,9 @@ struct Note {
     /*      0x31, 0x31*/ u8 waveId;
     /*      0x32, 0x32*/ u8 sampleCountIndex;
     /*                */ u8 surroundEffectIndex; // Index for surround effect pan position
+    /*                */ u8 pan;                 // Pan position: 0 = left, 128 = center, 255 = right
+    /*                */ s8 combFilterGain;      // Comb filter gain for surround height effect
+    /*                */ u8 combFilterSize;      // Comb filter size (delay in bytes)
 #ifdef VERSION_SH
     /*            0x33*/ u8 bankId;
     /*            0x34*/ u8 unkSH34;
@@ -705,6 +711,9 @@ struct Note {
     /*0x40*/ u8 reverbVol; // Q1.7
     /*0x41*/ u8 surroundEffectIndex; // Index for surround effect pan position
     /*0x42*/ u8 pan; // Pan position: 0 = left, 128 = center, 255 = right
+    /*    */ s8 combFilterGain;      // Comb filter gain for surround height effect (-32 to 127)
+    /*    */ u8 combFilterSize;      // Comb filter size (delay in bytes, typically 0x28)
+    /*    */ u8 combFilterNeedsInit; // TRUE if comb filter state needs to be cleared
     /*0x44*/ struct NoteAttributes attributes;
     /*0x54, 0x58*/ struct AdsrState adsr;
     /*0x74, 0x7C*/ struct Portamento portamento;
@@ -734,6 +743,7 @@ struct NoteSynthesisBuffers {
     s16 samples[0x40];
 #endif
 #endif
+    s16 combFilterState[0x40]; // State buffer for comb filter (stores previous samples for delay)
 };
 
 #ifdef VERSION_EU

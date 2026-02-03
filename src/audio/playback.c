@@ -1175,6 +1175,8 @@ void note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLaye
     sub->stereoHeadsetEffects = seqLayer->seqChannel->stereoHeadsetEffects;
     sub->reverbIndex = seqLayer->seqChannel->reverbIndex & 3;
     note->surroundEffectIndex = seqLayer->seqChannel->surroundEffectIndex;
+    note->combFilterGain = seqLayer->seqChannel->combFilterGain;
+    note->combFilterSize = seqLayer->seqChannel->combFilterSize;
     // EU pan is s32 0-127, scale to u8 0-254
     note->pan = (u8)(seqLayer->seqChannel->pan * 2);
 }
@@ -1200,11 +1202,11 @@ s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer
     note_init(note);
     // Copy surround index after note_init to avoid being reset by note_init_volume
     note->surroundEffectIndex = seqLayer->seqChannel->surroundEffectIndex;
+    // Copy comb filter settings for height-based surround effect
+    note->combFilterGain = seqLayer->seqChannel->combFilterGain;
+    note->combFilterSize = seqLayer->seqChannel->combFilterSize;
     // Non-EU pan is f32 0.0-1.0, scale to u8 0-255
     note->pan = (u8)(seqLayer->seqChannel->pan * 255.0f);
-    if (note->stereoHeadsetEffects) {
-        printf("note_init_for_layer with effects pan, surroundEffectIndex: %d, %d\n", note->pan, note->surroundEffectIndex);
-    }
     return FALSE;
 }
 #endif
@@ -1447,6 +1449,9 @@ void note_init_all(void) {
         note = &gNotes[i];
 #if defined(VERSION_EU) || defined(VERSION_SH)
         note->noteSubEu = gZeroNoteSub;
+        note->combFilterGain = 0;
+        note->combFilterSize = 0;
+        note->synthesisState.combFilterNeedsInit = TRUE;
 #else
         note->enabled = FALSE;
         note->stereoStrongRight = FALSE;
@@ -1471,6 +1476,9 @@ void note_init_all(void) {
         note->targetVolRight = 0;
         note->frequency = 0.0f;
         note->surroundEffectIndex = 0;
+        note->combFilterGain = 0;
+        note->combFilterSize = 0;
+        note->combFilterNeedsInit = TRUE;
 #endif
         note->attributes.velocity = 0.0f;
         note->adsrVolScale = 0;

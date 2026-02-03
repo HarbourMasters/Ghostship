@@ -24,6 +24,7 @@
 #define DMEM_ADDR_RIGHT_CH 0x600
 #define DMEM_ADDR_WET_LEFT_CH 0x740
 #define DMEM_ADDR_WET_RIGHT_CH 0x880
+#define DMEM_ADDR_COMB_TEMP 0x9C0
 
 #define aSetLoadBufferPair(pkt, c, off)                                                                \
     aSetBuffer(pkt, 0, c + DMEM_ADDR_WET_LEFT_CH, 0, DEFAULT_LEN_1CH - c);                             \
@@ -1060,6 +1061,61 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                                  noteSamplesDmemAddrBeforeResampling, flags);
 #endif
 
+            // Apply comb filter for surround height effect (after resampling, before envelope)
+            // Only applies to stereoHeadsetEffects notes in surround mode
+#ifdef VERSION_EU
+            if (noteSubEu->stereoHeadsetEffects && (note->combFilterSize != 0) && (note->combFilterGain != 0) && gSoundMode == SOUND_MODE_SURROUND) {
+                s16 *combFilterState = synthesisState->synthesisBuffers->combFilterState;
+                u16 combFilterDmem;
+                // Copy mono signal to comb temp buffer
+                aDMEMMove(cmd++, DMEM_ADDR_TEMP, DMEM_ADDR_COMB_TEMP, bufLen * 2);
+                combFilterDmem = DMEM_ADDR_COMB_TEMP - note->combFilterSize;
+                if (synthesisState->combFilterNeedsInit) {
+                    aClearBuffer(cmd++, combFilterDmem, note->combFilterSize);
+                    synthesisState->combFilterNeedsInit = FALSE;
+                } else {
+                    aSetBuffer(cmd++, 0, combFilterDmem, 0, note->combFilterSize);
+                    aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(combFilterState));
+                }
+                // Save current tail samples as new state for next iteration
+                aSetBuffer(cmd++, 0, 0, DMEM_ADDR_TEMP + (bufLen * 2) - note->combFilterSize, note->combFilterSize);
+                aSaveBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(combFilterState));
+                // Mix delayed signal back (creates comb filter effect)
+                aSetBuffer(cmd++, 0, 0, 0, bufLen * 2);
+                aMix(cmd++, 0, note->combFilterGain, DMEM_ADDR_COMB_TEMP, combFilterDmem);
+                // Copy result back to temp buffer
+                aDMEMMove(cmd++, combFilterDmem, DMEM_ADDR_TEMP, bufLen * 2);
+            } else {
+                synthesisState->combFilterNeedsInit = TRUE;
+            }
+#else
+            if (note->stereoHeadsetEffects && note->combFilterSize != 0 && note->combFilterGain != 0 && gSoundMode == SOUND_MODE_SURROUND) {
+                printf("combFilterSize: %d, combFilterGain: %d\n", note->combFilterSize, note->combFilterGain);
+                s16 *combFilterState = note->synthesisBuffers->combFilterState;
+                u16 combFilterDmem;
+                // Copy mono signal to comb temp buffer
+                aDMEMMove(cmd++, DMEM_ADDR_TEMP, DMEM_ADDR_COMB_TEMP, bufLen * 2);
+                combFilterDmem = DMEM_ADDR_COMB_TEMP - note->combFilterSize;
+                if (note->combFilterNeedsInit) {
+                    aClearBuffer(cmd++, combFilterDmem, note->combFilterSize);
+                    note->combFilterNeedsInit = FALSE;
+                } else {
+                    aSetBuffer(cmd++, 0, combFilterDmem, 0, note->combFilterSize);
+                    aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(combFilterState));
+                }
+                // Save current tail samples as new state for next iteration
+                aSetBuffer(cmd++, 0, 0, DMEM_ADDR_TEMP + (bufLen * 2) - note->combFilterSize, note->combFilterSize);
+                aSaveBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(combFilterState));
+                // Mix delayed signal back (creates comb filter effect)
+                aSetBuffer(cmd++, 0, 0, 0, bufLen * 2);
+                aMix(cmd++, 0, note->combFilterGain, DMEM_ADDR_COMB_TEMP, combFilterDmem);
+                // Copy result back to temp buffer
+                aDMEMMove(cmd++, combFilterDmem, DMEM_ADDR_TEMP, bufLen * 2);
+            } else {
+                note->combFilterNeedsInit = TRUE;
+            }
+#endif
+
 #ifdef VERSION_EU
             if (noteSubEu->headsetPanRight != 0 || synthesisState->prevHeadsetPanRight != 0) {
                 leftRight = 1;
@@ -1515,6 +1571,9 @@ void note_init_volume(struct Note *note) {
     note->frequency = 0.0f;
     note->surroundEffectIndex = 0;
     note->pan = 128; // Center pan
+    note->combFilterGain = 0;
+    note->combFilterSize = 0;
+    note->combFilterNeedsInit = TRUE;
 }
 
 void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverbVol) {
