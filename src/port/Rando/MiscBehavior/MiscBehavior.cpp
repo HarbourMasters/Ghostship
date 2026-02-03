@@ -43,6 +43,11 @@ void Rando::MiscBehavior::Init() {
             return;
         }
 
+        SPDLOG_INFO("Source Warp:   {}", std::to_string(ev->sourceWarpNode));
+        SPDLOG_INFO("Prev Entrance: {}", std::to_string(currentEntrance));
+        SPDLOG_INFO("Current Level: {}", std::to_string(gCurrLevelNum));
+        SPDLOG_INFO("Destination:   {}", std::to_string(ev->warpNode->destLevel));
+
         // Skip inter-level area changes.
         if (gCurrLevelNum == ev->warpNode->destLevel) {
             return;
@@ -89,12 +94,24 @@ void Rando::MiscBehavior::Init() {
                     for (auto& entrance : Rando::Logic::shuffledEntrances) {
                         if (entrance.randoEntranceId == randoEntranceId) {
                             entrance.found = true;
+                            save_file_do_save(selectedFileNum);
                         }
                     }
                     currentEntrance = randoEntranceId;
                     break;
                 }
             }
+        }
+    });
+
+    REGISTER_LISTENER(ExitLevel, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        ExitLevel* ev = (ExitLevel*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+
+        if (ev->menuOption == MENU_OPT_EXIT_COURSE) {
+            currentEntrance = RE_UNKNOWN;
         }
     });
 }
