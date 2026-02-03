@@ -43,12 +43,19 @@ void Rando::MiscBehavior::Init() {
             return;
         }
 
+        // Skip inter-level area changes.
+        if (gCurrLevelNum == ev->warpNode->destLevel) {
+            return;
+        }
+
+        // Skip Bowser Arena entrances for now, plan on adding these in later.
         if (ev->warpNode->destLevel == LEVEL_BOWSER_1 || ev->warpNode->destLevel == LEVEL_BOWSER_2 ||
             ev->warpNode->destLevel == LEVEL_BOWSER_3) {
             currentEntrance = RE_UNKNOWN;
             return;
         }
 
+        // Skip entering the Castle Courtyard from the Castle Interior.
         if (currentEntrance == RE_UNKNOWN && ev->warpNode->destLevel == LEVEL_CASTLE_COURTYARD) {
             return;
         }
