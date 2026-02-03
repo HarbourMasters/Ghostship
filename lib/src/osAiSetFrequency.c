@@ -1,17 +1,21 @@
-#include "libultra_internal.h"
+#include <libultra/types.h>
 #include "osAi.h"
-#include "hardware.h"
 #include "macros.h"
 
 extern s32 osViClock;
 
 s32 osAiSetFrequency(u32 freq) {
-    register u32 a1;
-    register s32 a2;
-    register float ftmp;
-    ftmp = osViClock / (float) freq + .5f;
+    u32 a1;
+    s32 a2;
+    u32 D_8033491C;
 
-    a1 = ftmp;
+#ifdef VERSION_EU
+    D_8033491C = 0x02E6025C;
+#else
+    D_8033491C = 0x02E6D354;
+#endif
+
+    a1 = D_8033491C / (float) freq + .5f;
 
     if (a1 < 0x84) {
         return -1;
@@ -22,11 +26,9 @@ s32 osAiSetFrequency(u32 freq) {
         a2 = 16;
     }
 
-    HW_REG(AI_DACRATE_REG, u32) = a1 - 1;
-    HW_REG(AI_BITRATE_REG, u32) = a2 - 1;
-    HW_REG(AI_CONTROL_REG, u32) = 1; // enable dma
-    return osViClock / (s32) a1;
+    return D_8033491C / (s32) a1;
 }
+
 
 #ifndef VERSION_SH
 // put some extra jr $ra's down there please

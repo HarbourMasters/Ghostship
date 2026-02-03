@@ -85,6 +85,10 @@ struct UnkPool {
     /*0x514*/ u32 unk514;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern u8 gAudioHeap[];
 extern s16 gVolume;
 extern s8 gReverbDownsampleRate;
@@ -129,6 +133,10 @@ u8 *func_sh_802f1d40(u32 size, s32 bank, u8 *arg2, s8 medium);
 u8 *func_sh_802f1d90(u32 size, s32 bank, u8 *arg2, s8 medium);
 void *unk_pool1_lookup(s32 poolIdx, s32 id);
 void *unk_pool1_alloc(s32 poolIndex, s32 arg1, u32 size);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // AUDIO_HEAP_H

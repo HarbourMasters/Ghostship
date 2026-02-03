@@ -1131,7 +1131,8 @@ void audio_reset_session(void) {
         remainingDmas = gCurrAudioFrameDmaCount;
         while (remainingDmas > 0) {
             for (i = 0; i < gCurrAudioFrameDmaCount; i++) {
-                remainingDmas--;
+                if (true /*&& osRecvMesg(&gCurrAudioFrameDmaQueue, NULL, OS_MESG_NOBLOCK) == 0*/)
+                    remainingDmas--;
             }
         }
         gCurrAudioFrameDmaCount = 0;
@@ -1188,8 +1189,9 @@ void audio_reset_session(void) {
 #endif
 #else
     reverbWindowSize = preset->reverbWindowSize;
+    gAiFrequency = osAiSetFrequency(preset->frequency);
     gMaxSimultaneousNotes = preset->maxSimultaneousNotes;
-    gSamplesPerFrameTarget = ALIGN16(GameEngine_GetSampleRate() / 60);
+    gSamplesPerFrameTarget = ALIGN16(gAiFrequency / 60);
     gReverbDownsampleRate = preset->reverbDownsampleRate;
 
     switch (gReverbDownsampleRate) {

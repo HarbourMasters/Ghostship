@@ -12,6 +12,10 @@
 
 #define NUMAIBUFFERS 3
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // constant .data
 #if defined(VERSION_EU) || defined(VERSION_SH)
 extern struct AudioSessionSettingsEU gAudioSessionPresets[];
@@ -150,6 +154,10 @@ extern u32 D_SH_80315EF0;
 extern u16 D_SH_80315EF4;
 extern u16 D_SH_80315EF8;
 extern u16 D_SH_80315EFC;
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // AUDIO_DATA_H

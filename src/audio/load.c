@@ -82,6 +82,7 @@ s8 gAudioUpdatesPerFrame;
 #endif
 
 s8 gSoundMode;
+s32 gAiFrequency;
 
 #if defined(VERSION_EU)
 s8 gAudioUpdatesPerFrame;
@@ -92,7 +93,6 @@ extern u64 gAudioGlobalsEndMarker;
 
 ALSeqFile *get_audio_file_header(s32 arg0);
 
-#include <stdio.h>
 /**
  * Performs an immediate DMA copy
  */
@@ -197,7 +197,11 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
 
     if (arg2 != 0 || *dmaIndexRef >= sSampleDmaListSize1) {
         for (i = sSampleDmaListSize1; i < gSampleDmaNumListItems; i++) {
+#ifdef VERSION_EU
             dma = &sSampleDmas[i];
+#else
+            dma = sSampleDmas + i;
+#endif
             bufferPos = devAddr - dma->source;
             if (0 <= bufferPos && (size_t) bufferPos <= dma->bufSize - size) {
                 // We already have a DMA request for this memory range.
@@ -214,7 +218,11 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
                 }
                 dma->ttl = 60;
                 *dmaIndexRef = (u8) i;
+#ifdef VERSION_EU
                 return &dma->buffer[(devAddr - dma->source)];
+#else
+                return (devAddr - dma->source) + dma->buffer;
+#endif
             }
         }
 
@@ -283,10 +291,10 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
     return (devAddr - dmaDevAddr) + dma->buffer;
 #else
     gCurrAudioFrameDmaCount++;
-    // osPiStartDma(&gCurrAudioFrameDmaIoMesgBufs[gCurrAudioFrameDmaCount - 1], OS_MESG_PRI_NORMAL,
-    //              OS_READ, dmaDevAddr, dma->buffer, transfer, &gCurrAudioFrameDmaQueue);
+    osPiStartDma(&gCurrAudioFrameDmaIoMesgBufs[gCurrAudioFrameDmaCount - 1], OS_MESG_PRI_NORMAL,
+                 OS_READ, dmaDevAddr, dma->buffer, transfer, &gCurrAudioFrameDmaQueue);
     *dmaIndexRef = dmaIndex;
-    return (devAddr - dmaDevAddr) + dma->buffer;
+    return dma->buffer + (devAddr - dmaDevAddr);
 #endif
 }
 
@@ -346,7 +354,7 @@ out1:
 #if defined(VERSION_EU)
     sDmaBufSize = 0x200;
 #else
-    sDmaBufSize = 0x200;
+    sDmaBufSize = 0x5A0;
 #endif
     for (i = 0; i < gMaxSimultaneousNotes; i++) {
         sSampleDmas[gSampleDmaNumListItems].buffer = soundAlloc(&gNotesAndBuffersPool, sDmaBufSize);
@@ -410,7 +418,6 @@ void preload_sequence(u32 seqId, u8 preloadMask) {
 
     gAudioLoadLock = AUDIO_LOCK_LOADING;
     if (preloadMask & PRELOAD_BANKS) {
-        // TODO: Bank is loaded on demand
         load_banks_immediate(seqId, &temp);
     }
 
