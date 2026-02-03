@@ -49,6 +49,10 @@ void Rando::MiscBehavior::Init() {
             return;
         }
 
+        if (currentEntrance == RE_UNKNOWN && ev->warpNode->destLevel == LEVEL_CASTLE_COURTYARD) {
+            return;
+        }
+
         if (ev->sourceWarpNode > 0 && currentEntrance != RE_UNKNOWN) {
             Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
 
