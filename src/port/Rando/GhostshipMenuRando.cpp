@@ -42,7 +42,6 @@ void GhostshipMenu::AddMenuRando() {
         .CVar(CVAR_RANDOMIZER_SETTING("GenerateLog"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Generates a Spoiler Log in the randomizer folder.").DefaultValue(true));
-    // TODO: populate combobox with existing spoiler logs
     AddWidget(path, "Load Existing Spoiler Log", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_RANDOMIZER_SETTING("UseExistingLog"))
         .RaceDisable(false)
