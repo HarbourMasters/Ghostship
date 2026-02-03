@@ -704,6 +704,7 @@ struct Note {
     /*0x3E*/ u16 targetVolRight; // Q1.15, but will always be non-negative
     /*0x40*/ u8 reverbVol; // Q1.7
     /*0x41*/ u8 surroundEffectIndex; // Index for surround effect pan position
+    /*0x42*/ u8 pan; // Pan position: 0 = left, 128 = center, 255 = right
     /*0x44*/ struct NoteAttributes attributes;
     /*0x54, 0x58*/ struct AdsrState adsr;
     /*0x74, 0x7C*/ struct Portamento portamento;

@@ -9,6 +9,7 @@
 #include "synthesis.h"
 #include "effects.h"
 #include "external.h"
+#include <stdio.h>
 
 void note_set_resampling_rate(struct Note *note, f32 resamplingRateInput);
 
@@ -45,6 +46,10 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, u8 pan, u8 reverbV
 #else
     pan &= unkMask;
 #endif
+
+    // Store pan as u8 (0=left, 128=center, 255=right) for surround effect
+    // EU pan is 0-127, scale to 0-255
+    note->pan = pan * 2;
 
     if (note->noteSubEu.stereoHeadsetEffects && gSoundMode == SOUND_MODE_HEADSET) {
 #ifdef VERSION_SH
@@ -115,20 +120,17 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, u8 pan, u8 reverbV
         volLeft = 0.707f;
         volRight = 0.707f;
     } else if (sub->stereoHeadsetEffects && gSoundMode == SOUND_MODE_SURROUND) {
-        // Surround mode: wider stereo separation with enhanced panning
+        // TEMPORARY: Surround mode behaves like stereo to test if glitch persists
         sub->headsetPanLeft = 0;
         sub->headsetPanRight = 0;
         sub->usesHeadsetPanEffects = FALSE;
-
-        // Use stereo volumes with more extreme separation
         volLeft = gStereoPanVolume[pan];
         volRight = gStereoPanVolume[127 - pan];
-
-        // Apply stronger left/right effects with a wider threshold
-        if (pan < 0x30) {
+        // Use same thresholds as stereo (0x20/0x60)
+        if (pan < 0x20) {
             sub->stereoStrongLeft = TRUE;
             sub->stereoStrongRight = FALSE;
-        } else if (pan > 0x50) {
+        } else if (pan > 0x60) {
             sub->stereoStrongRight = TRUE;
             sub->stereoStrongLeft = FALSE;
         } else {
@@ -1173,6 +1175,8 @@ void note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLaye
     sub->stereoHeadsetEffects = seqLayer->seqChannel->stereoHeadsetEffects;
     sub->reverbIndex = seqLayer->seqChannel->reverbIndex & 3;
     note->surroundEffectIndex = seqLayer->seqChannel->surroundEffectIndex;
+    // EU pan is s32 0-127, scale to u8 0-254
+    note->pan = (u8)(seqLayer->seqChannel->pan * 2);
 }
 #else
 s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer) {
@@ -1196,6 +1200,11 @@ s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer
     note_init(note);
     // Copy surround index after note_init to avoid being reset by note_init_volume
     note->surroundEffectIndex = seqLayer->seqChannel->surroundEffectIndex;
+    // Non-EU pan is f32 0.0-1.0, scale to u8 0-255
+    note->pan = (u8)(seqLayer->seqChannel->pan * 255.0f);
+    if (note->stereoHeadsetEffects) {
+        printf("note_init_for_layer with effects pan, surroundEffectIndex: %d, %d\n", note->pan, note->surroundEffectIndex);
+    }
     return FALSE;
 }
 #endif

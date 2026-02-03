@@ -1060,29 +1060,28 @@ static f32 get_sound_pan(f32 x, f32 z) {
 static u8 get_sound_surround_effect_index(f32 z) {
     f32 absZ;
     s32 surroundEffectIndex;
-    
-    // Clamp z to AUDIO_MAX_DISTANCE, same as pan calculation
+    f32 maxZ = 1000.f;
+
     absZ = (z < 0 ? -z : z);
-    if (absZ > AUDIO_MAX_DISTANCE) {
-        absZ = AUDIO_MAX_DISTANCE;
+    if (absZ > maxZ) {
+        absZ = maxZ;
     }
     
     // In SM64, positive z means behind the camera
     if (z > 0.0f) {
         // Behind camera - surround effect index 0x3F (at camera) to 0x7F (far behind)
-        surroundEffectIndex = (s32)((absZ / AUDIO_MAX_DISTANCE) * 64.0f) + 0x3F;
+        surroundEffectIndex = (s32)((absZ / maxZ) * 64.0f) + 0x3F;
         if (surroundEffectIndex > 0x7F) {
             surroundEffectIndex = 0x7F;
         }
     } else {
         // In front of camera - surround effect index 0x3F (at camera) to 0x00 (far front)
-        surroundEffectIndex = 0x3F - (s32)((absZ / AUDIO_MAX_DISTANCE) * 63.0f);
+        surroundEffectIndex = 0x3F - (s32)((absZ / maxZ) * 63.0f);
         if (surroundEffectIndex < 0) {
             surroundEffectIndex = 0;
         }
     }
     
-    printf("Audio: get_sound_surround_effect_index: surroundEffectIndex = %d\n", surroundEffectIndex);
     return (u8)surroundEffectIndex;
 }
 

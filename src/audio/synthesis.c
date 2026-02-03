@@ -1457,7 +1457,8 @@ u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen) {
     // We want sounds behind the camera to have stronger rear channel effect
     depthFactor = (f32)surroundIdx / 127.0f;
 
-    // printf("Audio: note_apply_surround_effect: surroundIdx = %d\n", surroundIdx);
+    // Convert u8 pan (0=left, 128=center, 255=right) to float (0.0-1.0)
+    f32 panPosition = (f32)note->pan / 255.0f;
 
     // Calculate base gain from current volume and depth
     dryGain = note->curVolLeft > note->curVolRight ? note->curVolLeft : note->curVolRight;
@@ -1471,15 +1472,6 @@ u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen) {
     if (dryGain < 0x100) {
         return cmd;
     }
-
-    // Calculate pan position: 0.0 = full left, 0.5 = center, 1.0 = full right
-    f32 sumVol = note->targetVolLeft + note->targetVolRight;
-    f32 panPosition = 0.5f; // default: center
-    if (sumVol > 0.0f) {
-        panPosition = (f32)note->targetVolRight / sumVol;
-    }
-
-    // printf("Audio: note_apply_surround_effect: panPosition = %f\n", panPosition);
 
     // Matrix surround encoding: steer surround based on pan
     // The idea: add out-of-phase content to create width/depth
@@ -1522,12 +1514,17 @@ void note_init_volume(struct Note *note) {
     note->curVolRight = 1;
     note->frequency = 0.0f;
     note->surroundEffectIndex = 0;
+    note->pan = 128; // Center pan
 }
 
 void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverbVol) {
     s32 panIndex;
     f32 volLeft;
     f32 volRight;
+    
+    // Store pan as u8 (0=left, 128=center, 255=right) for surround effect
+    note->pan = (u8)(pan * 255.0f);
+    
     // Anding with 127 avoids out-of-bounds reads when pan is outside of [0, 1].
     // This can occur during PU movement -- see the bug comment in get_sound_pan
     // in external.c. An out-of-bounds read by itself doesn't crash, but if the
@@ -1574,7 +1571,7 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
         volLeft = .707f;
         volRight = .707f;
     } else if (note->stereoHeadsetEffects && gSoundMode == SOUND_MODE_SURROUND) {
-        // Surround mode: wider stereo separation with enhanced panning
+        // TEMPORARY: Surround mode behaves like stereo to test if glitch persists
         u8 strongLeft;
         u8 strongRight;
         strongLeft = FALSE;
@@ -1582,15 +1579,12 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, f32 pan, u8 reverb
         note->headsetPanLeft = 0;
         note->headsetPanRight = 0;
         note->usesHeadsetPanEffects = FALSE;
-
-        // Use stereo volumes for wide separation
         volLeft = gStereoPanVolume[panIndex];
         volRight = gStereoPanVolume[127 - panIndex];
-
-        // Apply stronger left/right effects with a wider threshold
-        if (panIndex < 0x30) {
+        // Use same thresholds as stereo (0x20/0x60)
+        if (panIndex < 0x20) {
             strongLeft = TRUE;
-        } else if (panIndex > 0x50) {
+        } else if (panIndex > 0x60) {
             strongRight = TRUE;
         }
         note->stereoStrongRight = strongRight;
