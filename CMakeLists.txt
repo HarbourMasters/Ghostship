@@ -298,6 +298,8 @@ endif()
 #==============================================================================#
 # Libultraship Integration                                                     #
 #==============================================================================#
+find_package(SDL2)
+include_directories(${SDL2_INCLUDE_DIRS})
 
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
