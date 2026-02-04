@@ -1090,7 +1090,6 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
             }
 #else
             if (note->stereoHeadsetEffects && note->combFilterSize != 0 && note->combFilterGain != 0 && gSoundMode == SOUND_MODE_SURROUND) {
-                printf("combFilterSize: %d, combFilterGain: %d\n", note->combFilterSize, note->combFilterGain);
                 s16 *combFilterState = note->synthesisBuffers->combFilterState;
                 u16 combFilterDmem;
                 // Copy mono signal to comb temp buffer
@@ -1500,7 +1499,6 @@ u64 *note_apply_headset_pan_effects(u64 *cmd, struct Note *note, s32 bufLen, s32
  *   0x40-0x7F: Sound behind (0x40 = at camera, 0x7F = far behind) - more rear effect
  * 
  * This creates a rear channel effect by phase-inverting and mixing based on pan and depth.
- * Based on Majora's Mask Audio_SetSequenceProperties surround calculation.
  */
 u64 *note_apply_surround_effect(u64 *cmd, struct Note *note, s32 bufLen) {
     s16 dryGain;

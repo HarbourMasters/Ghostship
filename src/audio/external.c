@@ -1273,7 +1273,7 @@ static void update_game_sound(void) {
                         // Set comb filter gain based on Y height for vertical positioning
                         gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->combFilterGain =
                             audio_compute_comb_filter(*sSoundBanks[bank][soundIndex].y);
-                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->combFilterSize = 0x28;
+                        gSequencePlayers[SEQ_PLAYER_SFX].channels[channelIndex]->combFilterSize = 16;
                     }
 
                     switch (bank) {

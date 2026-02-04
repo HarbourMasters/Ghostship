@@ -551,8 +551,6 @@ s32 adsr_update(struct AdsrState *adsr) {
  *   -32 to -1 (0xE0-0xFF): Sound is below camera (negative Y)
  *   0 to 127: Sound is above camera (positive Y)
  *   Bit 0 is always set (odd number)
- *
- * Based on Majora's Mask AudioSfx_ComputeCombFilter.
  */
 s8 audio_compute_comb_filter(f32 posY) {
     s8 combFilterGain;
