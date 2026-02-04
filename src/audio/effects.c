@@ -542,3 +542,30 @@ s32 adsr_update(struct AdsrState *adsr) {
     return 0;
 #endif
 }
+
+/**
+ * Compute comb filter gain based on Y position (height relative to camera).
+ * Used for creating height-based audio effects in surround sound.
+ * 
+ * Returns:
+ *   -32 to -1 (0xE0-0xFF): Sound is below camera (negative Y)
+ *   0 to 127: Sound is above camera (positive Y)
+ *   Bit 0 is always set (odd number)
+ */
+s8 audio_compute_comb_filter(f32 posY) {
+    s8 combFilterGain;
+
+    if (posY < 0.0f) {
+        // Below camera
+        if (posY < -625.0f) {
+            combFilterGain = -32; // Very far below
+        } else {
+            combFilterGain = (s8)(((625.0f + posY) / 625.0f) * 31.0f) + 0xE0;
+        }
+    } else if (posY > 1250.0f) {
+        combFilterGain = 127; // Very far above
+    } else {
+        combFilterGain = (s8)((posY / 1250.0f) * 126.0f);
+    }
+    return combFilterGain | 1;
+}
