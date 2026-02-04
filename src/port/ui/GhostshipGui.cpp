@@ -8,10 +8,6 @@
 #include <fast/backends/gfx_metal.h>
 #endif
 
-#ifdef __SWITCH__
-#include <port/switch/SwitchImpl.h>
-#endif
-
 #include "Notification.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"

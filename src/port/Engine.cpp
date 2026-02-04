@@ -46,10 +46,6 @@
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
 
-#ifdef __SWITCH__
-#include <port/switch/SwitchImpl.h>
-#endif
-
 const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
 std::shared_ptr<Fast::Fast3dWindow> gsFast3dWindow;
 const uint32_t defaultImGuiScale = 1;
@@ -122,11 +118,6 @@ bool VerifyArchiveVersion(OTRVersion version) {
 GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
 
-#ifdef __SWITCH__
-    Ship::Switch::Init(Ship::PreInitPhase);
-    Ship::Switch::Init(Ship::PostInitPhase);
-#endif
-
     this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
     // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
@@ -173,7 +164,9 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         archiveFiles.push_back(assets_path);
     }
 
-    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty()) {
+    const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
+
+    if (!patches_path.empty()) {
         if (!std::filesystem::exists(patches_path)) {
             std::filesystem::create_directories(patches_path);
         }
@@ -187,6 +180,13 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
                 if (StringHelper::IEquals(ext, ".zip")) {
                     SPDLOG_WARN("Zip files should be only used for development purposes, not for distribution");
+                    archiveFiles.push_back(p.path().generic_string());
+                }
+            }
+
+            for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
+                if(p.is_directory()){
+                    SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
                     archiveFiles.push_back(p.path().generic_string());
                 }
             }
@@ -421,9 +421,6 @@ void GameEngine::Destroy() {
     gsFast3dWindow = nullptr;
     Instance->context = nullptr;
     AudioExit();
-#ifdef __SWITCH__
-    Ship::Switch::Exit();
-#endif
 }
 
 void GameEngine::StartFrame() const {
