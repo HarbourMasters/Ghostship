@@ -1,7 +1,7 @@
 #include <libultraship.h>
 
 #include "buffers.h"
-#include "config.h"
+#include "sm64_config.h"
 
 ALIGNED8 u8 gDecompressionHeap[0xD000];
 #if defined(VERSION_EU)

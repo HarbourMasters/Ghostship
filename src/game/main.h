@@ -2,7 +2,7 @@
 #define MAIN_H
 
 #include <libultraship.h>
-#include "config.h"
+#include "sm64_config.h"
 
 struct RumbleData {
     u8 unk00;

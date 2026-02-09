@@ -3,7 +3,7 @@
 
 #include <libultra/types.h>
 
-#include "config.h"
+#include "sm64_config.h"
 
 #if ENABLE_RUMBLE
 

@@ -4,7 +4,7 @@
 #include "buffers/buffers.h"
 #include "main.h"
 #include "rumble_init.h"
-#include "config.h"
+#include "sm64_config.h"
 #include "sm64.h"
 
 #if ENABLE_RUMBLE

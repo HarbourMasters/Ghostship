@@ -1,9 +1,11 @@
 #pragma once
 
-#include "Companion.h"
 #include <filesystem>
 #include <vector>
 #include <cstdint>
+#include <optional>
+
+namespace fs = std::filesystem;
 
 class GameExtractor {
 public:

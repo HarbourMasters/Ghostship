@@ -46,6 +46,10 @@
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
 
+#ifdef __SWITCH__
+#include <ship/port/switch/SwitchImpl.h>
+#endif
+
 const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
 std::shared_ptr<Fast::Fast3dWindow> gsFast3dWindow;
 const uint32_t defaultImGuiScale = 1;
@@ -117,6 +121,11 @@ bool VerifyArchiveVersion(OTRVersion version) {
 
 GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
+
+#ifdef __SWITCH__
+    Ship::Switch::Init(Ship::PreInitPhase);
+    Ship::Switch::Init(Ship::PostInitPhase);
+#endif
 
     this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
@@ -421,6 +430,9 @@ void GameEngine::Destroy() {
     gsFast3dWindow = nullptr;
     Instance->context = nullptr;
     AudioExit();
+#ifdef __SWITCH__
+    Ship::Switch::Exit();
+#endif
 }
 
 void GameEngine::StartFrame() const {

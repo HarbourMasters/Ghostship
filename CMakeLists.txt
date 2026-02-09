@@ -136,6 +136,10 @@ set(CMAKE_C_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
 set(CMAKE_C_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
+add_compile_definitions(
+    _LARGEFILE64_SOURCE=1
+    _POSIX_C_SOURCE=200809L
+)
 else()
 set(CMAKE_C_FLAGS_RELEASE "-O1 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O1 -DNDEBUG")
@@ -298,16 +302,28 @@ endif()
 #==============================================================================#
 # Libultraship Integration                                                     #
 #==============================================================================#
-find_package(SDL2)
-include_directories(${SDL2_INCLUDE_DIRS})
+
+# Removes MPQ/OTR support
+set(EXCLUDE_MPQ_SUPPORT TRUE CACHE BOOL "")
+set(ENABLE_EXP_AUTO_CONFIGURE_CONTROLLERS ON CACHE BOOL "")
+add_compile_definitions(EXCLUDE_MPQ_SUPPORT)
+
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    find_package(SDL2)
+endif()
+
+include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
+  ${SDL2_INCLUDE_DIRS}
+  ${GLEW_INCLUDE_DIRS}
+  ${dr_libs_SOURCE_DIR}
+)
 
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
 target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
-target_include_directories(${PROJECT_NAME} PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
-)
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
     get_property(IOS_TOOLCHAIN_FILE GLOBAL PROPERTY IOS_TOOLCHAIN_FILE)
@@ -398,19 +414,7 @@ if(USE_NETWORKING)
     target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
 endif()
 
-option(USE_STANDALONE "Build as a standalone executable" OFF)
-option(BUILD_STORMLIB "Build with StormLib support" OFF)
-
-option(BUILD_SM64 "Build with Super Mario 64 support" ON)
-option(BUILD_MK64 "Build with Mario Kart 64 support" OFF)
-option(BUILD_SF64 "Build with Star Fox 64 support" OFF)
-option(BUILD_FZERO "Build with F-Zero X support" OFF)
-option(BUILD_MARIO_ARTIST "Build with Mario Artist support" OFF)
-add_subdirectory(Torch)
-target_link_libraries(${PROJECT_NAME} PRIVATE torch "${ADDITIONAL_LIBRARY_DEPENDENCIES}")
-
 if(CMAKE_SYSTEM_NAME MATCHES "NintendoSwitch")
-
 nx_generate_nacp(${PROJECT_NAME}.nacp
    NAME "${PROJECT_NAME}"
    AUTHOR "${PROJECT_TEAM}"
@@ -423,8 +427,20 @@ nx_create_nro(${PROJECT_NAME}
 )
 
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nro DESTINATION . COMPONENT ${PROJECT_NAME})
+else()
+option(USE_STANDALONE "Build as a standalone executable" OFF)
+option(BUILD_STORMLIB "Build with StormLib support" OFF)
+
+option(BUILD_SM64 "Build with Super Mario 64 support" ON)
+option(BUILD_MK64 "Build with Mario Kart 64 support" OFF)
+option(BUILD_SF64 "Build with Star Fox 64 support" OFF)
+option(BUILD_FZERO "Build with F-Zero X support" OFF)
+option(BUILD_MARIO_ARTIST "Build with Mario Artist support" OFF)
+add_subdirectory(Torch)
+list(APPEND ADDITIONAL_LIBRARY_DEPENDENCIES torch)
 endif()
 
+target_link_libraries(${PROJECT_NAME} PRIVATE "${ADDITIONAL_LIBRARY_DEPENDENCIES}")
 ################################################################################
 # Compile and link options
 ################################################################################
@@ -519,7 +535,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
           -Wno-missing-braces
           -Wno-int-conversion
           $<$<COMPILE_LANGUAGE:C>:
-              -Werror-implicit-function-declaration
+              -Wno-implicit-function-declaration
               -Wno-incompatible-pointer-types
               -fpermissive
           >
