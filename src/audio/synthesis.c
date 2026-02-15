@@ -676,12 +676,12 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
 #ifdef VERSION_US
         //! This function requires note->enabled to be volatile, but it breaks other functions like note_enable.
         //! Casting to a struct with just the volatile bitfield works, but there may be a better way to match.
-        if (((struct vNote *)note)->enabled && IS_BANK_LOAD_COMPLETE(note->bankId) == FALSE) {
+        if (note->enabled == TRUE && IS_BANK_LOAD_COMPLETE(note->bankId) == FALSE) {
 #else
         if (IS_BANK_LOAD_COMPLETE(note->bankId) == FALSE) {
 #endif
             gAudioErrorFlags = (note->bankId << 8) + noteIndex + 0x1000000;
-        } else if (((struct vNote *)note)->enabled) {
+        } else if (note->enabled == TRUE) {
 #else
         if (note->noteSubEu.enabled == FALSE) {
             return cmd;
@@ -965,7 +965,7 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
 #else
                             note->samplePosInt = 0;
                             note->finished = 1;
-                            ((struct vNote *)note)->enabled = 0;
+                            note->enabled = 0;
 #endif
                             break;
                         }
