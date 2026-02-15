@@ -170,7 +170,7 @@ void clear_framebuffer(s32 color) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
     gDPSetFillColor(gDisplayListHead++, color);
-    gDPFillRectangle(gDisplayListHead++,
+    gDPFillWideRectangle(gDisplayListHead++,
                      GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
                      GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
 
@@ -358,14 +358,6 @@ void select_gfx_pool(void) {
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->buffer;
     gGfxPoolEnd = (u8 *) (gGfxPool->buffer + GFX_POOL_SIZE);
-
-    gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
-    gDPSetFillColor(gDisplayListHead++, 0x0001);
-    gDPFillWideRectangle(gDisplayListHead++,
-                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
-    gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
 
 /**
@@ -656,7 +648,6 @@ void setup_game_memory(void) {
 static struct LevelCommand *addr;
 
 void thread5_game_loop(void) {
-
     setup_game_memory();
 #if ENABLE_RUMBLE
     // init_rumble_pak_scheduler_queue();
@@ -669,7 +660,6 @@ void thread5_game_loop(void) {
 
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
     set_sound_mode(save_file_get_sound_mode());
-    gGlobalTimer++;
 }
 
 void update_vblank_reset(void) {
@@ -713,7 +703,15 @@ void thread5_iteration(void){
     audio_game_loop_tick();
     select_gfx_pool();
     read_controller_inputs();
-    addr = level_script_execute(addr);
+    if (CVarGetInteger("gFrameAdvance", 0) == 1) {
+        bool shouldTick = CVarGetInteger("gFrameAdvanceTick", 0);
+        if (shouldTick) {
+            addr = level_script_execute(addr);
+            CVarSetInteger("gFrameAdvanceTick", 0);
+        }
+    } else {
+        addr = level_script_execute(addr);
+    }
 
     display_and_vsync();
 
