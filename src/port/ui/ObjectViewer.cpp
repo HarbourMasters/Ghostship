@@ -1,6 +1,7 @@
 #include "ObjectViewer.h"
 
 #ifndef __APPLE__
+#include <windows.h>
 #include <dbghelp.h>
 #else
 #include <dlfcn.h>
@@ -38,9 +39,9 @@ const char* GetFunctionName(const uintptr_t addr) {
 
     DWORD64 displacement = 0;
 
-    if (SymFromAddr(GetCurrentProcess(), dwAddress, &displacement, pSymbol)) {
+    if (SymFromAddr(GetCurrentProcess(), addr, &displacement, pSymbol)) {
         functionNameCache[addr] = pSymbol->Name;
-        return functionNameCache[addr]; 
+        return functionNameCache[addr].c_str(); 
     }
 #else
     Dl_info info;
