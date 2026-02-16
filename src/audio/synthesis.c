@@ -1196,14 +1196,16 @@ u64 *load_wave_samples(u64 *cmd, struct NoteSubEu *noteSubEu, struct NoteSynthes
 u64 *load_wave_samples(u64 *cmd, struct Note *note, s32 nSamplesToLoad) {
     s32 a3;
     s32 i;
-    aSetBuffer(cmd++, /*flags*/ 0, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ 0,
+    if (note->synthesisBuffers != NULL) {
+        aSetBuffer(cmd++, /*flags*/ 0, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ 0,
                /*count*/ sizeof(note->synthesisBuffers->samples));
-    aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->samples));
-    note->samplePosInt &= (note->sampleCount - 1);
-    a3 = 64 - note->samplePosInt;
-    if (a3 < nSamplesToLoad) {
-        for (i = 0; i <= (nSamplesToLoad - a3 + 63) / 64 - 1; i++) {
-            aDMEMMove(cmd++, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ DMEM_ADDR_UNCOMPRESSED_NOTE + (1 + i) * sizeof(note->synthesisBuffers->samples), /*count*/ sizeof(note->synthesisBuffers->samples));
+        aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->samples));
+        note->samplePosInt &= (note->sampleCount - 1);
+        a3 = 64 - note->samplePosInt;
+        if (a3 < nSamplesToLoad) {
+            for (i = 0; i <= (nSamplesToLoad - a3 + 63) / 64 - 1; i++) {
+                aDMEMMove(cmd++, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ DMEM_ADDR_UNCOMPRESSED_NOTE + (1 + i) * sizeof(note->synthesisBuffers->samples), /*count*/ sizeof(note->synthesisBuffers->samples));
+            }
         }
     }
     return cmd;
