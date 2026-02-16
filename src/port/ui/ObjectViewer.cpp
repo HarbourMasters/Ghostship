@@ -1,6 +1,6 @@
 #include "ObjectViewer.h"
 
-#ifndef __APPLE__
+#ifdef _WIN32
 #include <windows.h>
 #include <dbghelp.h>
 #else
