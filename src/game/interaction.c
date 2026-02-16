@@ -809,7 +809,6 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
             m->interactObj = o;
             m->usedObj = o;
 
-            // TODO: Set starIndex data in RandoStaticCheck.
             starIndex = (o->oBehParams >> 24) & 0x1F;
             save_file_collect_star_or_key(m->numCoins, starIndex);
 

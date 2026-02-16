@@ -12,12 +12,8 @@ void Rando::MiscBehavior::OnFileSave() {
         }
 
         for (auto& check : Rando::Logic::shuffledPool) {
-            RandoSaveCheck randoSaveCheck;
-            randoSaveCheck.randoItemId = check.randoItemId;
-            randoSaveCheck.randoAct = check.randoAct;
-            randoSaveCheck.obtained = check.obtained;
-
-            RANDO_SAVE_CHECKS(selectedFileNum)[check.randoCheckId] = randoSaveCheck;
+            RANDO_SAVE_CHECKS(selectedFileNum)[check.randoCheckId].obtained = check.obtained;
+            RANDO_SAVE_CHECKS(selectedFileNum)[check.randoCheckId].skipped = check.skipped;
         }
 
         for (auto& entrance : Rando::Logic::shuffledEntrances) {

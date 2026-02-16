@@ -261,9 +261,9 @@ static void restore_save_file_data(s32 fileIndex, s32 srcSlot) {
 }
 
 void save_file_do_save(s32 fileIndex) {
-    CALL(SaveFileDoSave, fileIndex);
-
     CALL_EVENT(OnGameFileSave, fileIndex);
+    CALL(SaveFileDoSave, fileIndex);
+    
     if (gSaveFileModified) {
         // Compute checksum
         add_save_block_signature(&gSaveBuffer.files[fileIndex][0],

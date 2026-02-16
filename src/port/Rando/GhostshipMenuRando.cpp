@@ -42,7 +42,6 @@ void GhostshipMenu::AddMenuRando() {
         .CVar(CVAR_RANDOMIZER_SETTING("GenerateLog"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Generates a Spoiler Log in the randomizer folder.").DefaultValue(true));
-    // TODO: populate combobox with existing spoiler logs
     AddWidget(path, "Load Existing Spoiler Log", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_RANDOMIZER_SETTING("UseExistingLog"))
         .RaceDisable(false)
@@ -52,7 +51,8 @@ void GhostshipMenu::AddMenuRando() {
         });
     AddWidget(path, "Available Spoiler Logs", WIDGET_CUSTOM).CustomFunction([](WidgetInfo& info) {
         ImGui::BeginDisabled(!CVarGetInteger(CVAR_RANDOMIZER_SETTING("UseExistingLog"), 0));
-        if (UIWidgets::CVarCombobox("Seed", CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), Rando::Spoiler::spoilerLogs)) {
+        if (UIWidgets::CVarCombobox("Seed", CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), Rando::Spoiler::spoilerLogs,
+                                    { .color = WIDGET_COLOR })) {
             if (CVarGetInteger(CVAR_RANDOMIZER_SETTING("SpoilerFileIndex"), 0) == 0) {
                 CVarSetString(CVAR_RANDOMIZER_SETTING("SpoilerFile"), "");
             } else {

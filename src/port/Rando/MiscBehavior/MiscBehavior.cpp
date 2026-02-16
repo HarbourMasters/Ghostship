@@ -42,11 +42,29 @@ void Rando::MiscBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        SPDLOG_INFO("currentLevel: {}", std::to_string(currentEntrance));
-        SPDLOG_INFO("Source: {}", std::to_string(ev->sourceWarpNode));
-        SPDLOG_INFO("Current Destination: {}", std::to_string(ev->warpNode->destLevel));
 
-        // TODO: Death Exits
+        SPDLOG_INFO("Source Warp:   {}", std::to_string(ev->sourceWarpNode));
+        SPDLOG_INFO("Prev Entrance: {}", std::to_string(currentEntrance));
+        SPDLOG_INFO("Current Level: {}", std::to_string(gCurrLevelNum));
+        SPDLOG_INFO("Destination:   {}", std::to_string(ev->warpNode->destLevel));
+
+        // Skip inter-level area changes.
+        if (gCurrLevelNum == ev->warpNode->destLevel) {
+            return;
+        }
+
+        // Skip Bowser Arena entrances for now, plan on adding these in later.
+        if (ev->warpNode->destLevel == LEVEL_BOWSER_1 || ev->warpNode->destLevel == LEVEL_BOWSER_2 ||
+            ev->warpNode->destLevel == LEVEL_BOWSER_3) {
+            currentEntrance = RE_UNKNOWN;
+            return;
+        }
+
+        // Skip entering the Castle Courtyard from the Castle Interior.
+        if (currentEntrance == RE_UNKNOWN && ev->warpNode->destLevel == LEVEL_CASTLE_COURTYARD) {
+            return;
+        }
+
         if (ev->sourceWarpNode > 0 && currentEntrance != RE_UNKNOWN) {
             Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
 
@@ -76,12 +94,24 @@ void Rando::MiscBehavior::Init() {
                     for (auto& entrance : Rando::Logic::shuffledEntrances) {
                         if (entrance.randoEntranceId == randoEntranceId) {
                             entrance.found = true;
+                            save_file_do_save(selectedFileNum);
                         }
                     }
                     currentEntrance = randoEntranceId;
                     break;
                 }
             }
+        }
+    });
+
+    REGISTER_LISTENER(ExitLevel, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        ExitLevel* ev = (ExitLevel*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
+
+        if (ev->menuOption == MENU_OPT_EXIT_COURSE) {
+            currentEntrance = RE_UNKNOWN;
         }
     });
 }

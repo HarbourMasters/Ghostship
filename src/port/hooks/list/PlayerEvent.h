@@ -66,6 +66,10 @@ DEFINE_EVENT(ChangeLevel,
     int32_t* delayedWarpArg;
 );
 
+DEFINE_EVENT(ExitLevel,
+    int16_t menuOption;
+);
+
 DEFINE_EVENT(OnGameFileLoad,
     s32 fileNum;
 );

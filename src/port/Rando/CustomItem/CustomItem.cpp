@@ -53,7 +53,6 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
         if (shuffled.randoCheckId == object->unused1) {
             previousCheckState = shuffled.obtained;
             shuffled.obtained = true;
-            RANDO_SAVE_CHECKS(selectedFileNum)[shuffled.randoCheckId].obtained = true;
         }
     }
 
@@ -127,6 +126,8 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
     object->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     object->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
     obj_mark_for_deletion(object);
+
+    save_file_do_save(selectedFileNum);
 }
 
 void CustomItem::SetBehavior(struct Object* object, u32 modelId, RandoCheckId randoCheckId, RandoAct randoAct) {

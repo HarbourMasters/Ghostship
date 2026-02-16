@@ -111,8 +111,6 @@ void GenerateShuffleList() {
             }
 
             RandoItemType randoItemType = Rando::StaticData::Items[randoCheckData.randoItemId].randoItemType;
-
-            // TODO: Swap to RANDO_SAVE_OPTIONS once Save File is converted to JSON
             if (randoItemType == RITYPE_COIN_BLUE &&
                 CVarGetInteger(Rando::StaticData::Options[RO_SHUFFLE_COINS_BLUE].cvar, 0) == RO_GENERIC_OFF) {
                 continue;
