@@ -41,7 +41,7 @@ const char* GetFunctionName(const uintptr_t addr) {
 
     if (SymFromAddr(GetCurrentProcess(), addr, &displacement, pSymbol)) {
         functionNameCache[addr] = pSymbol->Name;
-        return functionNameCache[addr].c_str(); 
+        return functionNameCache[addr].c_str();
     }
 #else
     Dl_info info;

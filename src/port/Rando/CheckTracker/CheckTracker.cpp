@@ -87,8 +87,9 @@ void DrawCheckTrackerList() {
                     ImGui::BeginGroup();
                     ImGui::Image(textureId, ImVec2(16.0f * checkTrackerScale, 16.0f * checkTrackerScale));
                     ImGui::TableNextColumn();
-                    ImGui::TextColored(checkTextColor,
-                                       convertEnumToReadableName(Rando::StaticData::Checks[entry.randoCheckId].name).c_str());
+                    ImGui::TextColored(
+                        checkTextColor,
+                        convertEnumToReadableName(Rando::StaticData::Checks[entry.randoCheckId].name).c_str());
                     if (randoSaveCheck.obtained) {
                         ImGui::SameLine();
                         RandoItemId randoItemId = Rando::StaticData::GetShuffledRandoItem(entry.randoCheckId);
