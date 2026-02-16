@@ -13,8 +13,26 @@
 #include "game/level_update.h"
 #include "game/object_list_processor.h"
 
+#include "ObjectList.inc.c"
+
 std::unordered_map<uintptr_t, std::string> functionNameCache;
 extern "C" struct CameraFOVStatus sFOVState;
+
+const char* ObjectListNames[] = {
+    "Mario",
+    "Unused 1",
+    "Destructive",
+    "Unused 3",
+    "General Actor",
+    "Pushable",
+    "Level",
+    "Unused 7",
+    "Default",
+    "Surface",
+    "Pole-like",
+    "Spawner",
+    "Unimportant"
+};
 
 void ObjectViewer::InitElement() {
 #ifndef __APPLE__
@@ -188,7 +206,7 @@ void ObjectViewer::DrawElement() {
                     ImGui::TextDisabled("Model ID");
                     ImGui::TableNextColumn();
                     ImGui::SetNextItemWidth(150.0f);
-                    ImGui::Text("%d", obj->modelId);
+                    ImGui::Text("%d (%s)", obj->modelId, modelIdName.at(obj->modelId));
 
                     ImGui::TableNextRow();
                     ImGui::TableNextColumn();
@@ -331,7 +349,7 @@ void ObjectViewer::DrawElement() {
         if (!listHasMatches)
             continue;
 
-        if (ImGui::TreeNode(reinterpret_cast<void*>(static_cast<intptr_t>(i)), "Object List %d", i)) {
+        if (ImGui::TreeNode(reinterpret_cast<void*>(static_cast<intptr_t>(i)), "Object List [%s]", ObjectListNames[i])) {
             ObjectNode* node = list->next;
             int objIndex = 0;
 
@@ -346,7 +364,7 @@ void ObjectViewer::DrawElement() {
 
                 ImGui::PushID(obj);
 
-                bool nodeOpen = ImGui::TreeNode(obj, "Object %02d (Model: %d)", objIndex++, obj->modelId);
+                bool nodeOpen = ImGui::TreeNode(obj, "Object %02d [Model: %s (%d)]", objIndex++, modelIdName.at(obj->modelId), obj->modelId);
                 // OTRTODO: Implement this later
                 // if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenBlockedByActiveItem)) {
                 //     obj->header.gfx.node.flags |= GRAPH_RENDER_DRAW_DEBUG;

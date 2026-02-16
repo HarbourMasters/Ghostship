@@ -1,13 +1,11 @@
 #include "ShipUtils.h"
 #include <libultraship/libultraship.h>
 
-extern "C" {
 #include "sm64.h"
 #include "macros.h"
 #include "include/assets/textures/segment2.h"
 #include "include/level_table.h"
 #include "include/course_table.h"
-}
 
 constexpr f32 fourByThree = 4.0f / 3.0f;
 

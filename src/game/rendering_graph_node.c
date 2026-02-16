@@ -945,7 +945,6 @@ static void geo_process_object(struct Object *node) {
                     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
                 }
             }
-            // ====================================================================
 
             if (node->header.gfx.sharedChild != NULL) {
                 gCurGraphNodeObject = (struct GraphNodeObject *) node;
