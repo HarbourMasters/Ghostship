@@ -188,7 +188,7 @@ void ObjectViewer::DrawElement() {
                     ImGui::TextDisabled("Model ID");
                     ImGui::TableNextColumn();
                     ImGui::SetNextItemWidth(150.0f);
-                    ImGui::Text("Model: %d", obj->modelId);
+                    ImGui::Text("%d", obj->modelId);
 
                     ImGui::TableNextRow();
                     ImGui::TableNextColumn();
@@ -196,6 +196,24 @@ void ObjectViewer::DrawElement() {
                     ImGui::TableNextColumn();
                     ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "%s",
                                        GetFunctionName(reinterpret_cast<uintptr_t>(obj->behavior)));
+
+                    ImGui::TableNextRow();
+                    ImGui::TableNextColumn();
+                    ImGui::TextDisabled("Area");
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%d", obj->header.gfx.areaIndex);
+
+                    ImGui::TableNextRow();
+                    ImGui::TableNextColumn();
+                    ImGui::TextDisabled("Active Area");
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%d", obj->header.gfx.activeAreaIndex);
+
+                    ImGui::TableNextRow();
+                    ImGui::TableNextColumn();
+                    ImGui::TextDisabled("Custom/Rando");
+                    ImGui::TableNextColumn();
+                    ImGui::TextColored(obj->custom ? ImVec4(0.4f, 0.8f, 1.0f, 1.0f) : ImVec4(1.0f, 0.4f, 0.4f, 1.0f), "%s", obj->custom ? "Yes" : "No");
 
                     ImGui::TableNextRow();
                     ImGui::TableNextColumn();
