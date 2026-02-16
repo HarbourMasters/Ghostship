@@ -913,9 +913,6 @@ static void geo_process_object(struct Object *node) {
             mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
             gMatStackFixed[gMatStackIndex] = mtx;
 
-            // ====================================================================
-            // === INJECT DEBUG BOX: DRAW TRUE HITBOX ===
-            // ====================================================================
             if ((node->header.gfx.node.flags & GRAPH_RENDER_DRAW_DEBUG) != 0) {
                 Mtx *debugMtx = alloc_display_list(sizeof(Mtx));
                 if (debugMtx != NULL) {
@@ -924,11 +921,8 @@ static void geo_process_object(struct Object *node) {
                     Mat4 translateMat;
                     Mat4 tempMat;
 
-                    // 1. Copy the current world matrix (which has visual scale baked in)
                     mtxf_copy(debugMat, gMatStack[gMatStackIndex]);
 
-                    // 2. Calculate Inverse Scale to counteract visual scaling and enforce true hitbox size
-                    // (Avoid divide-by-zero crashes if a scale happens to be 0)
                     Vec3f inverseScale = {
                         (node->header.gfx.scale[0] > 0.001f) ? (node->hitboxRadius / node->header.gfx.scale[0]) : 0.0f,
                         (node->header.gfx.scale[1] > 0.001f) ? (node->hitboxHeight / node->header.gfx.scale[1]) : 0.0f,
@@ -938,18 +932,14 @@ static void geo_process_object(struct Object *node) {
                     mtxf_identity(scaleMat);
                     mtxf_scale_vec3f(scaleMat, scaleMat, inverseScale);
 
-                    // 3. Apply the hitbox down offset (also inversely scaled by Y)
                     float yOffset = (node->header.gfx.scale[1] > 0.001f) ? (-node->hitboxDownOffset / node->header.gfx.scale[1]) : 0.0f;
                     mtxf_translate(translateMat, (Vec3f){0.0f, yOffset, 0.0f});
 
-                    // 4. Combine: tempMat = Translation * Scale
                     mtxf_mul(tempMat, translateMat, scaleMat);
 
-                    // 5. Apply it to the main debug matrix
                     mtxf_mul(debugMat, tempMat, debugMat);
                     mtxf_to_mtx(debugMtx, debugMat);
 
-                    // 6. Push directly to the RDP!
                     gSPMatrix(gDisplayListHead++, debugMtx, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
                     gSPDisplayList(gDisplayListHead++, dl_debug_box);
                     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
