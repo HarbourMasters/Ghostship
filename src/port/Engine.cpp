@@ -194,7 +194,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
             }
 
             for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
-                if(p.is_directory()){
+                if (p.is_directory()) {
                     SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
                     archiveFiles.push_back(p.path().generic_string());
                 }

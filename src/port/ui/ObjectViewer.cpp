@@ -4,10 +4,13 @@
 
 #include "types.h"
 #include "sm64.h"
+#include "game/camera.h"
+#include "engine/math_util.h"
 #include "game/level_update.h"
 #include "game/object_list_processor.h"
 
 std::unordered_map<uintptr_t, std::string> functionNameCache;
+extern "C" struct CameraFOVStatus sFOVState;
 
 const char* GetFunctionName(const uintptr_t addr) {
     if (functionNameCache.contains(addr)) {
@@ -36,87 +39,109 @@ void ObjectViewer::UpdateElement() {
 }
 
 void ObjectViewer::DrawElement() {
-    // --- 1. FILTER & SEARCH STATE ---
     static char searchBehavior[128] = "";
     static bool filterModelId = false;
     static int searchModelId = 0;
     static bool filterDistance = false;
     static float distanceRange = 2000.0f;
 
-    // Helper: Case-insensitive substring search
     auto strContainsCaseInsensitive = [](const char* haystack, const char* needle) -> bool {
-        if (!haystack || !needle) return false;
-        if (needle[0] == '\0') return true;
+        if (!haystack || !needle)
+            return false;
+        if (needle[0] == '\0')
+            return true;
         for (int i = 0; haystack[i] != '\0'; i++) {
             int j = 0;
-            while (needle[j] != '\0' && tolower(haystack[i + j]) == tolower(needle[j])) { j++; }
-            if (needle[j] == '\0') return true;
+            while (needle[j] != '\0' && tolower(haystack[i + j]) == tolower(needle[j])) {
+                j++;
+            }
+            if (needle[j] == '\0')
+                return true;
         }
         return false;
     };
 
-    // Helper: Filter Logic
     auto passesFilters = [&](Object* obj) -> bool {
-        if (filterModelId && obj->modelId != searchModelId) return false;
-        
+        if (filterModelId && obj->modelId != searchModelId)
+            return false;
+
         if (searchBehavior[0] != '\0') {
             const char* bhvName = GetFunctionName(reinterpret_cast<uintptr_t>(obj->behavior));
-            if (!strContainsCaseInsensitive(bhvName, searchBehavior)) return false;
+            if (!strContainsCaseInsensitive(bhvName, searchBehavior))
+                return false;
         }
 
         if (filterDistance) {
-            // Note: Ensure gMarioState matches your codebase's player struct
             float dx = obj->oPosX - gMarioState->pos[0];
             float dy = obj->oPosY - gMarioState->pos[1];
             float dz = obj->oPosZ - gMarioState->pos[2];
-            if (sqrtf(dx*dx + dy*dy + dz*dz) > distanceRange) return false;
+            if (sqrtf(dx * dx + dy * dy + dz * dz) > distanceRange)
+                return false;
         }
         return true;
     };
 
-    // --- 2. TOP PANEL: UTILITIES & SEARCH ---
     if (ImGui::CollapsingHeader("Filters & Utilities", ImGuiTreeNodeFlags_DefaultOpen)) {
         ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.12f, 0.12f, 0.15f, 1.0f));
-        
+
         ImGui::TextDisabled("Behavior Search:");
         ImGui::InputText("##searchBhv", searchBehavior, IM_ARRAYSIZE(searchBehavior));
 
         ImGui::Spacing();
         ImGui::Checkbox("Filter by Model ID", &filterModelId);
         if (filterModelId) {
-            ImGui::SameLine(); ImGui::SetNextItemWidth(100.0f);
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(100.0f);
             ImGui::InputInt("##searchModelId", &searchModelId);
         }
 
         ImGui::Checkbox("Only list objects near Mario", &filterDistance);
         if (filterDistance) {
-            ImGui::SameLine(); ImGui::SetNextItemWidth(200.0f);
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(200.0f);
             ImGui::DragFloat("Range##distRange", &distanceRange, 10.0f, 0.0f, 30000.0f, "%.0f units");
         }
-        
+
         ImGui::PopStyleColor();
     }
-    
+
     ImGui::Separator();
     ImGui::Spacing();
 
-    // --- 3. OBJECT UI RENDERER (LAMBDA) ---
-    // Encapsulating this cleanly so the main loop doesn't become a nested nightmare
     auto drawObjectUI = [](Object* obj) {
-        // Quick Actions
-        if (ImGui::Button("Despawn")) { obj->activeFlags = ACTIVE_FLAG_DEACTIVATED; }
+        bool showHitbox = (obj->header.gfx.node.flags & GRAPH_RENDER_DRAW_DEBUG) != 0;
+
+        if (ImGui::Checkbox("Show 3D Hitbox", &showHitbox)) {
+            if (showHitbox)
+                obj->header.gfx.node.flags |= GRAPH_RENDER_DRAW_DEBUG;
+            else
+                obj->header.gfx.node.flags &= ~GRAPH_RENDER_DRAW_DEBUG;
+        }
+
+        // OTRTODO: Implement this later
+        // if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenBlockedByActiveItem)) {
+        // obj->header.gfx.node.flags |= GRAPH_RENDER_DRAW_DEBUG;
+        // }
+
         ImGui::SameLine();
-        if (ImGui::Button("Teleport to Mario")) {
+        if (ImGui::Button("Despawn")) {
+            obj->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+        }
+
+        ImGui::SameLine();
+        if (ImGui::Button("Teleport")) {
             obj->oPosX = gMarioState->pos[0];
-            obj->oPosY = gMarioState->pos[1] + 200.0f; 
+            obj->oPosY = gMarioState->pos[1] + 200.0f;
             obj->oPosZ = gMarioState->pos[2];
         }
+
         ImGui::SameLine();
-        if (ImGui::Button("Toggle Visibility")) {
+        if (ImGui::Button("Visibility")) {
             obj->header.gfx.node.flags ^= GRAPH_RENDER_INVISIBLE;
         }
+
         ImGui::SameLine();
-        if (ImGui::Button("Copy Address")) {
+        if (ImGui::Button("Copy Addr")) {
             char addrStr[32];
             snprintf(addrStr, sizeof(addrStr), "%p", obj);
             ImGui::SetClipboardText(addrStr);
@@ -124,40 +149,47 @@ void ObjectViewer::DrawElement() {
 
         ImGui::Spacing();
 
-        // TAB BAR FOR CLEAN ORGANIZATION
         if (ImGui::BeginTabBar("ObjectTabs")) {
-            
+
             // TAB 1: BASIC PROPERTIES
             if (ImGui::BeginTabItem("Basic Properties")) {
                 if (ImGui::BeginTable("ObjProps", 2, ImGuiTableFlags_BordersInnerH | ImGuiTableFlags_SizingFixedFit)) {
                     ImGui::TableNextRow();
-                    ImGui::TableNextColumn(); ImGui::TextDisabled("Address");
-                    ImGui::TableNextColumn(); ImGui::Text("%p", obj);
+                    ImGui::TableNextColumn();
+                    ImGui::TextDisabled("Address");
+                    ImGui::TableNextColumn();
+                    ImGui::Text("%p", obj);
 
                     ImGui::TableNextRow();
-                    ImGui::TableNextColumn(); ImGui::TextDisabled("Model ID");
-                    ImGui::TableNextColumn(); ImGui::SetNextItemWidth(150.0f);
-                    ImGui::Text("Model ID: %d", obj->modelId);
+                    ImGui::TableNextColumn();
+                    ImGui::TextDisabled("Model ID");
+                    ImGui::TableNextColumn();
+                    ImGui::SetNextItemWidth(150.0f);
+                    ImGui::Text("Model: %d", obj->modelId);
 
                     ImGui::TableNextRow();
-                    ImGui::TableNextColumn(); ImGui::TextDisabled("Behavior");
-                    ImGui::TableNextColumn(); 
-                    ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "%s", GetFunctionName(reinterpret_cast<uintptr_t>(obj->behavior)));
+                    ImGui::TableNextColumn();
+                    ImGui::TextDisabled("Behavior");
+                    ImGui::TableNextColumn();
+                    ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "%s",
+                                       GetFunctionName(reinterpret_cast<uintptr_t>(obj->behavior)));
 
                     ImGui::TableNextRow();
-                    ImGui::TableNextColumn(); ImGui::TextDisabled("Position");
-                    ImGui::TableNextColumn(); 
+                    ImGui::TableNextColumn();
+                    ImGui::TextDisabled("Position");
+                    ImGui::TableNextColumn();
                     float pos[3] = { obj->oPosX, obj->oPosY, obj->oPosZ };
                     ImGui::SetNextItemWidth(250.0f);
                     if (ImGui::DragFloat3("##pos", pos, 1.0f)) {
-                        obj->oPosX = pos[0]; obj->oPosY = pos[1]; obj->oPosZ = pos[2];
+                        obj->oPosX = pos[0];
+                        obj->oPosY = pos[1];
+                        obj->oPosZ = pos[2];
                     }
                     ImGui::EndTable();
                 }
                 ImGui::EndTabItem();
             }
 
-            // TAB 2: FLAGS
             if (ImGui::BeginTabItem("Flags")) {
                 uint32_t activeFlags32 = static_cast<uint32_t>(obj->activeFlags);
                 uint32_t gfxFlags32 = static_cast<uint32_t>(obj->header.gfx.node.flags);
@@ -194,9 +226,9 @@ void ObjectViewer::DrawElement() {
                 ImGui::EndTabItem();
             }
 
-            // TAB 3: RAW DATA MEMORY MAP
             if (ImGui::BeginTabItem("Raw Data (0x00-0x4F)")) {
-                int tableFlags = ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingFixedFit | ImGuiTableFlags_ScrollY;
+                int tableFlags = ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingFixedFit |
+                                 ImGuiTableFlags_ScrollY;
                 if (ImGui::BeginTable("RawDataTable", 6, tableFlags, ImVec2(0.0f, 300.0f))) {
                     ImGui::TableSetupScrollFreeze(0, 1);
                     ImGui::TableSetupColumn("Idx");
@@ -210,21 +242,28 @@ void ObjectViewer::DrawElement() {
                     for (int j = 0; j < 0x50; j++) {
                         ImGui::PushID(j);
                         ImGui::TableNextRow();
-                        ImGui::TableNextColumn(); ImGui::TextDisabled("[%02X]", j);
-                        
-                        ImGui::TableNextColumn(); ImGui::SetNextItemWidth(-FLT_MIN);
-                        ImGui::InputScalar("##u32", ImGuiDataType_U32, &obj->rawData.asU32[j], NULL, NULL, "%08X", ImGuiInputTextFlags_CharsHexadecimal);
-                        
-                        ImGui::TableNextColumn(); ImGui::SetNextItemWidth(-FLT_MIN);
+                        ImGui::TableNextColumn();
+                        ImGui::TextDisabled("[%02X]", j);
+
+                        ImGui::TableNextColumn();
+                        ImGui::SetNextItemWidth(-FLT_MIN);
+                        ImGui::InputScalar("##u32", ImGuiDataType_U32, &obj->rawData.asU32[j], NULL, NULL, "%08X",
+                                           ImGuiInputTextFlags_CharsHexadecimal);
+
+                        ImGui::TableNextColumn();
+                        ImGui::SetNextItemWidth(-FLT_MIN);
                         ImGui::InputScalar("##s32", ImGuiDataType_S32, &obj->rawData.asS32[j]);
-                        
-                        ImGui::TableNextColumn(); ImGui::SetNextItemWidth(-FLT_MIN);
+
+                        ImGui::TableNextColumn();
+                        ImGui::SetNextItemWidth(-FLT_MIN);
                         ImGui::InputScalar("##f32", ImGuiDataType_Float, &obj->rawData.asF32[j]);
-                        
-                        ImGui::TableNextColumn(); ImGui::SetNextItemWidth(-FLT_MIN);
+
+                        ImGui::TableNextColumn();
+                        ImGui::SetNextItemWidth(-FLT_MIN);
                         ImGui::InputScalar("##s16_0", ImGuiDataType_S16, &obj->rawData.asS16[j][0]);
-                        
-                        ImGui::TableNextColumn(); ImGui::SetNextItemWidth(-FLT_MIN);
+
+                        ImGui::TableNextColumn();
+                        ImGui::SetNextItemWidth(-FLT_MIN);
                         ImGui::InputScalar("##s16_1", ImGuiDataType_S16, &obj->rawData.asS16[j][1]);
                         ImGui::PopID();
                     }
@@ -236,21 +275,21 @@ void ObjectViewer::DrawElement() {
         }
     };
 
-    // --- 4. MAIN LOOP ---
     for (int i = 0; i < NUM_OBJ_LISTS; i++) {
         const ObjectNode* list = gObjectLists + i;
-        if (list->next == list) continue;
+        if (list->next == list)
+            continue;
 
-        // Pre-pass: Does this list have ANY matching objects?
         bool listHasMatches = false;
         for (ObjectNode* tempNode = list->next; tempNode != list; tempNode = tempNode->next) {
             if (passesFilters(reinterpret_cast<Object*>(tempNode))) {
-                listHasMatches = true; break;
+                listHasMatches = true;
+                break;
             }
         }
-        if (!listHasMatches) continue; 
+        if (!listHasMatches)
+            continue;
 
-        // Draw List
         if (ImGui::TreeNode(reinterpret_cast<void*>(static_cast<intptr_t>(i)), "Object List %d", i)) {
             ObjectNode* node = list->next;
             int objIndex = 0;
@@ -260,19 +299,27 @@ void ObjectViewer::DrawElement() {
                 node = node->next;
 
                 if (!passesFilters(obj)) {
-                    objIndex++; 
+                    objIndex++;
                     continue;
                 }
 
-                // Push an ID so tab bars don't conflict between different open objects
                 ImGui::PushID(obj);
-                if (ImGui::TreeNode(obj, "Object %02d (Model: %d)", objIndex++, obj->modelId)) {
+
+                bool nodeOpen = ImGui::TreeNode(obj, "Object %02d (Model: %d)", objIndex++, obj->modelId);
+                // OTRTODO: Implement this later
+                // if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenBlockedByActiveItem)) {
+                //     obj->header.gfx.node.flags |= GRAPH_RENDER_DRAW_DEBUG;
+                // } else {
+                //     obj->header.gfx.node.flags &= ~GRAPH_RENDER_DRAW_DEBUG;
+                // }
+
+                if (nodeOpen) {
                     drawObjectUI(obj);
-                    ImGui::TreePop(); 
+                    ImGui::TreePop();
                 }
                 ImGui::PopID();
             }
-            ImGui::TreePop(); 
+            ImGui::TreePop();
         }
     }
 }

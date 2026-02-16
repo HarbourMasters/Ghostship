@@ -522,6 +522,7 @@ struct Object *spawn_object_at_origin(struct Object *parent, UNUSED s32 unusedAr
     behaviorAddr = segmented_to_virtual(behavior);
     obj = create_object(behaviorAddr);
 
+    obj->modelId = model;
     obj->parentObj = parent;
     obj->header.gfx.areaIndex = parent->header.gfx.areaIndex;
     obj->header.gfx.activeAreaIndex = parent->header.gfx.areaIndex;

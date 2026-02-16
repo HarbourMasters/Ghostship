@@ -105,7 +105,7 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Save Editor")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Save Editor Window."));
-    
+
     // Console
     path.sidebarName = "Console";
     AddSidebarEntry("Dev Tools", path.sidebarName, 1);
@@ -114,6 +114,14 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Console##Dev")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Console Window."));
+
+    path.sidebarName = "Object Viewer";
+    AddSidebarEntry("Dev Tools", path.sidebarName, 1);
+    AddWidget(path, "Popout Object Viewer", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("ObjectViewer"))
+        .WindowName("Object Viewer##Dev")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Enables the separate Object Viewer Window."));
 }
 
 } // namespace GhostshipGui

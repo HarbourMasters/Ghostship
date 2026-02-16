@@ -216,7 +216,7 @@ bool GameExtractor::GenerateOTR() {
     return true;
 }
 #else
-static bool GameExtractor::GenAssetFile(){
+static bool GameExtractor::GenAssetFile() {
     return false;
 }
 
@@ -224,19 +224,19 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
     return std::nullopt;
 }
 
-bool GameExtractor::SelectGameFromUI(){
+bool GameExtractor::SelectGameFromUI() {
     return false;
 }
 
-void GameExtractor::GetRoms(std::vector<std::string>& roms){
+void GameExtractor::GetRoms(std::vector<std::string>& roms) {
     // None
 }
 
-bool GameExtractor::GenerateOTR(){
+bool GameExtractor::GenerateOTR() {
     return false;
 }
 
-void GameExtractor::WritePortVersion(){
+void GameExtractor::WritePortVersion() {
     // None
 }
 #endif

@@ -4,10 +4,8 @@
 
 #include "sm64.h"
 #include "game/level_update.h"
-#include "menu/title_screen.h"
 #include "port/hooks/Events.h"
 #include "assets/bin/segment2.h"
-#include "port/ShipInit.hpp"
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
 
@@ -116,5 +114,3 @@ void PortEnhancements_Register() {
     Rando::Init();
     LoadGuiTextures();
 }
-
-static RegisterShipInitFunc initFunc(PortEnhancements_Init);
