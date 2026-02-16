@@ -1,6 +1,10 @@
 #include "ObjectViewer.h"
 
+#ifndef __APPLE__
+#include <dbghelp.h>
+#else
 #include <dlfcn.h>
+#endif
 
 #include "types.h"
 #include "sm64.h"
@@ -12,17 +16,39 @@
 std::unordered_map<uintptr_t, std::string> functionNameCache;
 extern "C" struct CameraFOVStatus sFOVState;
 
+void ObjectViewer::InitElement() {
+#ifndef __APPLE__
+    HANDLE hProcess = GetCurrentProcess();
+    SymSetOptions(SYMOPT_NO_IMAGE_SEARCH | SYMOPT_IGNORE_IMAGEDIR);
+    SymInitialize(hProcess, "debug", true);
+#endif
+}
+
 const char* GetFunctionName(const uintptr_t addr) {
     if (functionNameCache.contains(addr)) {
         return functionNameCache[addr].c_str();
     }
 
+#ifndef __APPLE__
+    char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
+    PSYMBOL_INFO pSymbol = reinterpret_cast<PSYMBOL_INFO>(buffer);
+
+    pSymbol->SizeOfStruct = sizeof(SYMBOL_INFO);
+    pSymbol->MaxNameLen = MAX_SYM_NAME;
+
+    DWORD64 displacement = 0;
+
+    if (SymFromAddr(GetCurrentProcess(), dwAddress, &displacement, pSymbol)) {
+        functionNameCache[addr] = pSymbol->Name;
+        return functionNameCache[addr]; 
+    }
+#else
     Dl_info info;
     if (dladdr(reinterpret_cast<void*>(addr), &info) && info.dli_sname) {
         functionNameCache[addr] = info.dli_sname;
         return info.dli_sname;
     }
-
+#endif
     // Fallback
     const auto hexString = new char[20];
     snprintf(hexString, 20, "0x%lX", addr);
@@ -30,9 +56,6 @@ const char* GetFunctionName(const uintptr_t addr) {
     delete[] hexString;
 
     return functionNameCache[addr].c_str();
-}
-
-void ObjectViewer::InitElement() {
 }
 
 void ObjectViewer::UpdateElement() {
