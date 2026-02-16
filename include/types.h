@@ -7,7 +7,7 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "macros.h"
-#include "config.h"
+#include "sm64_config.h"
 
 // Certain functions are marked as having return values, but do not
 // actually return a value. This causes undefined behavior, which we'd rather
@@ -208,6 +208,8 @@ struct Object {
     /*0x218*/ void *collisionData;
     /*0x21C*/ Mat4 transform;
     /*0x25C*/ void *respawnInfo;
+    /*0x260*/ u32 modelId;
+    /*0x264*/ bool custom;
 };
 
 struct ObjectHitbox {

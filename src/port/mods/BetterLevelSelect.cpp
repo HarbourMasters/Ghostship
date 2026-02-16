@@ -257,6 +257,8 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
             default:
                 break;
         }
+
+        CALL_EVENT(OnGameFileLoad, gCurrSaveFileNum);
         return entries[self.currentLevelIndex].levelId;
     }
 

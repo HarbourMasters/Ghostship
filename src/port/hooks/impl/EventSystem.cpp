@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include <algorithm>
 
+#include "port/hooks/list/EngineEvent.h"
+
 EventSystem* EventSystem::Instance = new EventSystem();
 
 EventID EventSystem::RegisterEvent() {
@@ -38,8 +40,8 @@ void EventSystem::UnregisterListener(EventID id, ListenerID listenerId) {
 void EventSystem::CallEvent(EventID id, IEvent* event) {
     auto& listeners = this->mEventListeners[id];
 
-    for (auto& listener : listeners) {
-        listener.function(event);
+    for (auto& [priority, function] : listeners) {
+        function(event);
     }
 }
 

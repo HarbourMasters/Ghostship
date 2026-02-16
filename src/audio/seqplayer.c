@@ -37,6 +37,9 @@ void sequence_channel_init(struct SequenceChannel *seqChannel) {
     seqChannel->stopSomething2 = FALSE;
     seqChannel->hasInstrument = FALSE;
     seqChannel->stereoHeadsetEffects = FALSE;
+    seqChannel->surroundEffectIndex = 0;
+    seqChannel->combFilterGain = 0;
+    seqChannel->combFilterSize = 0;
     seqChannel->transposition = 0;
     seqChannel->largeNotes = FALSE;
 #if defined(VERSION_EU) || defined(VERSION_SH)
@@ -316,7 +319,7 @@ void sequence_player_disable(struct SequencePlayer *seqPlayer) {
 #endif
     ) {
         // This thing seems to not fully handle unload correctly
-        // GameEngine_UnloadSequence(seqPlayer->seqId);
+        GameEngine_UnloadSequence(seqPlayer->seqId);
     }
 
     if (IS_BANK_LOAD_COMPLETE(seqPlayer->defaultBank[0])
@@ -328,7 +331,7 @@ void sequence_player_disable(struct SequencePlayer *seqPlayer) {
         gBankLoadStatus[seqPlayer->defaultBank[0]] = 4;
 #else
         // This thing seems to not fully handle unload correctly
-        // GameEngine_UnloadBank(seqPlayer->defaultBank[0]);
+        GameEngine_UnloadBank(seqPlayer->defaultBank[0]);
 #endif
     }
 }
@@ -1388,15 +1391,28 @@ s32 seq_channel_layer_process_script_part3(struct SequenceChannelLayer *layer, s
 
 u8 get_instrument(struct SequenceChannel *seqChannel, u8 instId, struct Instrument **instOut, struct AdsrSettings *adsr) {
     struct CtlEntry *bank = GameEngine_LoadBank(seqChannel->bankId);
+    struct Instrument* inst;
     if(instId >= bank->numInstruments) {
-        *instOut = NULL;
-        return 0;
+        instId = bank->numInstruments;
+        if(instId == 0) {
+            return 0;
+        }
+        instId--;
     }
-    struct Instrument* inst = bank->instruments[instId];
+    
+    inst = bank->instruments[instId];
     if(inst == NULL) {
-        *instOut = NULL;
-        return 0;
+        struct SequenceChannel seqChannelCpy = *seqChannel;
+
+        while (instId != 0xff) {
+            inst = GameEngine_LoadBank(seqChannelCpy.bankId)->instruments[instId];
+            if (inst != NULL) {
+                break;
+            }
+            instId--;
+        }
     }
+
     adsr->envelope = inst->envelope;
     adsr->releaseRate = inst->releaseRate;
     *instOut = inst;
@@ -1791,7 +1807,7 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
 #ifdef VERSION_SH
                         if (get_bank_or_seq(1, 2, cmd) != NULL)
 #else
-                        if(IS_BANK_LOAD_COMPLETE(cmd))
+                        if (IS_BANK_LOAD_COMPLETE(cmd))
 #endif
                         {
                             seqChannel->bankId = cmd;

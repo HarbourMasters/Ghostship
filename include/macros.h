@@ -47,6 +47,12 @@
 #define ALIGNED16
 #endif
 
+#define ROUND_UP_64(v) (((v) + 63) & ~63)
+#define ROUND_UP_32(v) (((v) + 31) & ~31)
+#define ROUND_UP_16(v) (((v) + 15) & ~15)
+#define ROUND_UP_8(v) (((v) + 7) & ~7)
+#define ROUND_DOWN_16(v) ((v) & ~0xf)
+
 // no conversion needed other than cast
 #define VIRTUAL_TO_PHYSICAL(addr)   ((uintptr_t)(addr))
 #define PHYSICAL_TO_VIRTUAL(addr)   ((uintptr_t)(addr))

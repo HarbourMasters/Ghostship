@@ -47,7 +47,7 @@
 #include "port/mods/utils/GfxPrint.h"
 
 #ifdef __SWITCH__
-#include <port/switch/SwitchImpl.h>
+#include <ship/port/switch/SwitchImpl.h>
 #endif
 
 const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
@@ -173,7 +173,9 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         archiveFiles.push_back(assets_path);
     }
 
-    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty()) {
+    const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
+
+    if (!patches_path.empty()) {
         if (!std::filesystem::exists(patches_path)) {
             std::filesystem::create_directories(patches_path);
         }
@@ -187,6 +189,13 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
                 if (StringHelper::IEquals(ext, ".zip")) {
                     SPDLOG_WARN("Zip files should be only used for development purposes, not for distribution");
+                    archiveFiles.push_back(p.path().generic_string());
+                }
+            }
+
+            for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
+                if (p.is_directory()) {
+                    SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
                     archiveFiles.push_back(p.path().generic_string());
                 }
             }

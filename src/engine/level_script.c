@@ -462,6 +462,7 @@ static void level_cmd_place_object(void) {
         spawnInfo->behaviorScript = CMD_GET(void*, 20);
     
         spawnInfo->model = gLoadedGraphNodes[model];
+        spawnInfo->modelId = model;
 
         spawnInfo->next = gAreas[sCurrAreaIndex].objectSpawnInfos;
 

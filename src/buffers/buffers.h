@@ -5,7 +5,7 @@
 
 #include "game/save_file.h"
 #include "game/game_init.h"
-#include "config.h"
+#include "sm64_config.h"
 
 #define SP_DRAM_STACK_SIZE8 0x400
 

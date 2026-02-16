@@ -10,7 +10,6 @@
 #include <unordered_map>
 #include <fstream>
 
-#include "Companion.h"
 #include "ship/Context.h"
 #include "spdlog/spdlog.h"
 #include <port/Engine.h>
@@ -21,6 +20,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #endif
+
+#ifndef __SWITCH__
+#include "Companion.h"
 
 #if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
 #include "portable-file-dialogs.h"
@@ -213,3 +215,28 @@ bool GameExtractor::GenerateOTR() {
 
     return true;
 }
+#else
+static bool GameExtractor::GenAssetFile() {
+    return false;
+}
+
+std::optional<std::string> GameExtractor::ValidateChecksum() const {
+    return std::nullopt;
+}
+
+bool GameExtractor::SelectGameFromUI() {
+    return false;
+}
+
+void GameExtractor::GetRoms(std::vector<std::string>& roms) {
+    // None
+}
+
+bool GameExtractor::GenerateOTR() {
+    return false;
+}
+
+void GameExtractor::WritePortVersion() {
+    // None
+}
+#endif

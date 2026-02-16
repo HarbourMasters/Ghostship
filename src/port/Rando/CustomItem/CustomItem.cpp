@@ -160,10 +160,10 @@ void CustomItem::SpawnObject(u32 modelId, const BehaviorScript* behavior, s16 x,
     CustomItem::SetBehavior(object, modelId, randoCheckId, randoAct);
     object->unused1 = randoCheckId;
     object->unused2 = randoAct;
+    object->custom = true;
 
-    if (param != NULL) {
-        object->oBehParams2ndByte = param;
-    }
+    object->oBehParams2ndByte = 0x0;
+
     if (modelId == MODEL_STAR) {
         object->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
     }
