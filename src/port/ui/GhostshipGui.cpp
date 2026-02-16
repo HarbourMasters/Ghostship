@@ -8,15 +8,13 @@
 #include <fast/backends/gfx_metal.h>
 #endif
 
-#ifdef __SWITCH__
-#include <port/switch/SwitchImpl.h>
-#endif
-
 #include "Notification.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
 #include "port/Rando/EntranceTracker/EntranceTracker.h"
+
+#include <ship/window/gui/ConsoleWindow.h>
 
 namespace GhostshipGui {
 // MARK: - Delegates
@@ -27,6 +25,7 @@ std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
 std::shared_ptr<GhostshipModalWindow> mModalWindow;
+std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 
 std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
@@ -45,6 +44,9 @@ void SetupGuiElements() {
     style.FramePadding = ImVec2(4.0f, 6.0f);
     style.ItemSpacing = ImVec2(8.0f, 6.0f);
     style.Colors[ImGuiCol_MenuBarBg] = UIWidgets::ColorValues.at(UIWidgets::Colors::DarkGray);
+
+    mConsoleWindow = std::make_shared<Ship::ConsoleWindow>(CVAR_WINDOW("DevConsole"), "Console##Dev", ImVec2(820, 630));
+    gui->AddGuiWindow(mConsoleWindow);
 
     mGhostshipMenu = std::make_shared<GhostshipMenu>(CVAR_WINDOW("Menu"), "Settings Menu");
     gui->SetMenu(mGhostshipMenu);
@@ -101,6 +103,7 @@ void Destroy() {
     mRandoCheckTrackerSettingsWindow = nullptr;
     mRandoEntranceTrackerWindow = nullptr;
     mRandoEntranceTrackerSettingsWindow = nullptr;
+    mConsoleWindow = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

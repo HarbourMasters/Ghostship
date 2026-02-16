@@ -3,7 +3,7 @@
 #include <libultraship/bridge/consolevariablebridge.h>
 #include <ship/controller/controldevice/controller/mapping/ControllerRumbleMapping.h>
 #include <ship/controller/controldeck/ControlDeck.h>
-#include <utils/StringHelper.h>
+#include <ship/utils/StringHelper.h>
 #ifndef __WIIU__
 #include <ship/controller/controldevice/controller/mapping/sdl/SDLAxisDirectionToButtonMapping.h>
 #endif

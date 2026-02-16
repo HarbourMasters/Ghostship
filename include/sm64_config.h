@@ -2,7 +2,7 @@
 #define CONFIG_H
 
 /**
- * @file config.h
+ * @file sm64_config.h
  * A catch-all file for configuring various bugfixes and other settings
  * (maybe eventually) in SM64
  */

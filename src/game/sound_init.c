@@ -32,7 +32,7 @@ static u16 sCurrentShellMusic = MUSIC_NONE;
 static u16 sCurrentCapMusic = MUSIC_NONE;
 static u8 sPlayingInfiniteStairs = FALSE;
 UNUSED static u8 unused8032C6D8[16] = { 0 };
-static s16 sSoundMenuModeToSoundMode[] = { SOUND_MODE_STEREO, SOUND_MODE_MONO, SOUND_MODE_HEADSET };
+static s16 sSoundMenuModeToSoundMode[] = { SOUND_MODE_STEREO, SOUND_MODE_MONO, SOUND_MODE_HEADSET, SOUND_MODE_SURROUND };
 // Only the 20th array element is used.
 static u32 sMenuSoundsExtra[] = {
     SOUND_MOVING_TERRAIN_SLIDE + (0 << 16),
@@ -139,8 +139,14 @@ void enable_background_sound(void) {
  * Called from threads: thread5_game_loop
  */
 void set_sound_mode(u16 soundMode) {
-    if (soundMode < 3) {
+    if (soundMode < 4) {
         audio_set_sound_mode(sSoundMenuModeToSoundMode[soundMode]);
+        // Set audio channels: surround mode uses 5.1, others use stereo
+        if (soundMode == SOUND_MENU_MODE_SURROUND) {
+            SetAudioChannels(audioMatrix51);
+        } else {
+            SetAudioChannels(audioStereo);
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 #include <libultraship.h>
 
 #include "buffers.h"
-#include "config.h"
+#include "sm64_config.h"
 
 ALIGNED8 u8 gDecompressionHeap[0xD000];
 #if defined(VERSION_EU)
@@ -26,7 +26,7 @@ ALIGNED8 u8 gGfxSPTaskYieldBuffer[OS_YIELD_DATA_SIZE];
 // 0x200 bytes
 ALIGNED8 struct SaveBuffer gSaveBuffer;
 // 0x190a0 bytes
-struct GfxPool gGfxPools[2];
+struct GfxPool gGfxPools[1];
 
 
 // Yield buffer for audio, 0x400 bytes. Stubbed out post-JP since the audio
