@@ -6,6 +6,7 @@
 #include <PR/gu.h>
 #include <PR/ucode.h>
 #include "port/Engine.h"
+#include "port/hooks/Events.h"
 #include <libultra/os.h>
 #include "variables.h"
 

@@ -174,10 +174,14 @@ void bhv_snufit_loop(void) {
  */
 void bhv_snufit_balls_loop(void) {
     // If far from Mario or in a different room, despawn.
-    if ((o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)
-        || (o->oTimer != 0 && o->oDistanceToMario > 1500.0f)) {
-        obj_mark_for_deletion(o);
-    }
+    bool visible = o->oDistanceToMario <= 1500.0f;
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+        if ((o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)
+            || (o->oTimer != 0 && !visible)) {
+            obj_mark_for_deletion(o);
+        }
+    };
 
     // Gravity =/= 0 after it has hit Mario while metal.
     if (o->oGravity == 0.0f) {

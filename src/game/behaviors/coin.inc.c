@@ -215,21 +215,31 @@ void bhv_coin_formation_loop(void) {
     s32 bitIndex;
 
     switch (o->oAction) {
-        case 0:
-            if (o->oDistanceToMario < 2000.0f) {
-                for (bitIndex = 0; bitIndex < 8; bitIndex++) {
-                    if (!(o->oCoinUnkF4 & (1 << bitIndex))) {
-                        spawn_coin_in_formation(bitIndex, o->oBehParams2ndByte);
+        case 0: {
+            bool visible = o->oDistanceToMario < 2000.0f;
+
+            CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+                if (visible) {
+                    for (bitIndex = 0; bitIndex < 8; bitIndex++) {
+                        if (!(o->oCoinUnkF4 & (1 << bitIndex))) {
+                            spawn_coin_in_formation(bitIndex, o->oBehParams2ndByte);
+                        }
                     }
+                    o->oAction++;
                 }
-                o->oAction++;
-            }
+            };
             break;
-        case 1:
-            if (o->oDistanceToMario > 2100.0f) {
-                o->oAction++;
-            }
+        }
+        case 1: {
+            bool visible = o->oDistanceToMario <= 2100.0f;
+
+            CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+                if (!visible) {
+                    o->oAction++;
+                }
+            };
             break;
+        }
         case 2:
             o->oAction = 0;
             break;

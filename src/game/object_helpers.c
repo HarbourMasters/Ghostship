@@ -2476,13 +2476,19 @@ void cur_obj_if_hit_wall_bounce_away(void) {
 }
 
 s32 cur_obj_hide_if_mario_far_away_y(f32 distY) {
-    if (absf(o->oPosY - gMarioObject->oPosY) < distY) {
-        cur_obj_unhide();
-        return FALSE;
-    } else {
-        cur_obj_hide();
-        return TRUE;
+    bool visible = absf(o->oPosY - gMarioObject->oPosY) < distY;
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceRender, &visible) {
+        if (visible) {
+            cur_obj_unhide();
+            return FALSE;
+        } else {
+            cur_obj_hide();
+            return TRUE;
+        }
     }
+
+    return !visible;
 }
 
 Gfx *geo_offset_klepto_held_object(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
