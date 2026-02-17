@@ -19,24 +19,12 @@
 std::unordered_map<uintptr_t, std::string> functionNameCache;
 extern "C" struct CameraFOVStatus sFOVState;
 
-const char* ObjectListNames[] = {
-    "Mario",
-    "Unused 1",
-    "Destructive",
-    "Unused 3",
-    "General Actor",
-    "Pushable",
-    "Level",
-    "Unused 7",
-    "Default",
-    "Surface",
-    "Pole-like",
-    "Spawner",
-    "Unimportant"
-};
+const char* ObjectListNames[] = { "Mario",     "Unused 1", "Destructive", "Unused 3", "General Actor",
+                                  "Pushable",  "Level",    "Unused 7",    "Default",  "Surface",
+                                  "Pole-like", "Spawner",  "Unimportant" };
 
 void ObjectViewer::InitElement() {
-#ifndef __APPLE__
+#ifndef __unix__
     HANDLE hProcess = GetCurrentProcess();
     SymSetOptions(SYMOPT_NO_IMAGE_SEARCH | SYMOPT_IGNORE_IMAGEDIR);
     SymInitialize(hProcess, "debug", true);
@@ -48,7 +36,7 @@ const char* GetFunctionName(const uintptr_t addr) {
         return functionNameCache[addr].c_str();
     }
 
-#ifndef __APPLE__
+#ifndef __unix__
     char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
     PSYMBOL_INFO pSymbol = reinterpret_cast<PSYMBOL_INFO>(buffer);
 
@@ -232,7 +220,8 @@ void ObjectViewer::DrawElement() {
                     ImGui::TableNextColumn();
                     ImGui::TextDisabled("Custom/Rando");
                     ImGui::TableNextColumn();
-                    ImGui::TextColored(obj->custom ? ImVec4(0.4f, 0.8f, 1.0f, 1.0f) : ImVec4(1.0f, 0.4f, 0.4f, 1.0f), "%s", obj->custom ? "Yes" : "No");
+                    ImGui::TextColored(obj->custom ? ImVec4(0.4f, 0.8f, 1.0f, 1.0f) : ImVec4(1.0f, 0.4f, 0.4f, 1.0f),
+                                       "%s", obj->custom ? "Yes" : "No");
 
                     ImGui::TableNextRow();
                     ImGui::TableNextColumn();
@@ -350,7 +339,8 @@ void ObjectViewer::DrawElement() {
         if (!listHasMatches)
             continue;
 
-        if (ImGui::TreeNode(reinterpret_cast<void*>(static_cast<intptr_t>(i)), "Object List [%s]", ObjectListNames[i])) {
+        if (ImGui::TreeNode(reinterpret_cast<void*>(static_cast<intptr_t>(i)), "Object List [%s]",
+                            ObjectListNames[i])) {
             ObjectNode* node = list->next;
             int objIndex = 0;
 
@@ -365,7 +355,8 @@ void ObjectViewer::DrawElement() {
 
                 ImGui::PushID(obj);
 
-                bool nodeOpen = ImGui::TreeNode(obj, "Object %02d [Model: %s (%d)]", objIndex++, modelIdName.at(obj->modelId), obj->modelId);
+                bool nodeOpen = ImGui::TreeNode(obj, "Object %02d [Model: %s (%d)]", objIndex++,
+                                                modelIdName.at(obj->modelId), obj->modelId);
                 // OTRTODO: Implement this later
                 // if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenBlockedByActiveItem)) {
                 //     obj->header.gfx.node.flags |= GRAPH_RENDER_DRAW_DEBUG;
