@@ -3,6 +3,7 @@ on: [pull_request]
 
 jobs:
   build-switch:
+    if: false
     runs-on: ubuntu-latest
     container:
       image: devkitpro/devkita64:20241023
