@@ -150,27 +150,30 @@ static void pokey_act_uninitialized(void) {
     struct Object *bodyPart;
     s32 i;
     s16 partModel;
+    bool visible = o->oDistanceToMario < 2000.0f;
 
-    if (o->oDistanceToMario < 2000.0f) {
-        partModel = MODEL_POKEY_HEAD;
+    CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+        if (visible) {
+            partModel = MODEL_POKEY_HEAD;
 
-        for (i = 0; i < 5; i++) {
-            // Spawn body parts at y offsets 480, 360, 240, 120, 0
-            // behavior param 0 = head, 4 = lowest body part
-            bodyPart = spawn_object_relative(i, 0, -i * 120 + 480, 0, o, partModel, bhvPokeyBodyPart);
+            for (i = 0; i < 5; i++) {
+                // Spawn body parts at y offsets 480, 360, 240, 120, 0
+                // behavior param 0 = head, 4 = lowest body part
+                bodyPart = spawn_object_relative(i, 0, -i * 120 + 480, 0, o, partModel, bhvPokeyBodyPart);
 
-            if (bodyPart != NULL) {
-                obj_scale(bodyPart, 3.0f);
+                if (bodyPart != NULL) {
+                    obj_scale(bodyPart, 3.0f);
+                }
+
+                partModel = MODEL_POKEY_BODY_PART;
             }
 
-            partModel = MODEL_POKEY_BODY_PART;
+            o->oPokeyAliveBodyPartFlags = 0x1F;
+            o->oPokeyNumAliveBodyParts = 5;
+            o->oPokeyBottomBodyPartSize = 1.0f;
+            o->oAction = POKEY_ACT_WANDER;
         }
-
-        o->oPokeyAliveBodyPartFlags = 0x1F;
-        o->oPokeyNumAliveBodyParts = 5;
-        o->oPokeyBottomBodyPartSize = 1.0f;
-        o->oAction = POKEY_ACT_WANDER;
-    }
+    };
 }
 
 /**
@@ -184,94 +187,101 @@ static void pokey_act_wander(void) {
 
     if (o->oPokeyNumAliveBodyParts == 0) {
         obj_mark_for_deletion(o);
-    } else if (o->oDistanceToMario > 2500.0f) {
-        o->oAction = POKEY_ACT_UNLOAD_PARTS;
-        o->oForwardVel = 0.0f;
-    } else {
-        treat_far_home_as_mario(1000.0f);
-        cur_obj_update_floor_and_walls();
+        return;
+    } 
 
-        if (o->oPokeyHeadWasKilled) {
+    bool visible = o->oDistanceToMario <= 2500.0f;
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+        if (!visible) {
+            o->oAction = POKEY_ACT_UNLOAD_PARTS;
             o->oForwardVel = 0.0f;
         } else {
-            o->oForwardVel = 5.0f;
+            treat_far_home_as_mario(1000.0f);
+            cur_obj_update_floor_and_walls();
 
-            // If a body part is missing, replenish it after 100 frames
-            if (o->oPokeyNumAliveBodyParts < 5) {
-                if (o->oTimer > 100) {
-                    // Because the body parts shift index whenever a body part
-                    // is killed, the new part's index is equal to the number
-                    // of living body parts
+            if (o->oPokeyHeadWasKilled) {
+                o->oForwardVel = 0.0f;
+            } else {
+                o->oForwardVel = 5.0f;
 
-                    struct Object *bodyPart
-                        = spawn_object_relative(o->oPokeyNumAliveBodyParts, 0, 0, 0, o,
-                                                MODEL_POKEY_BODY_PART, bhvPokeyBodyPart);
+                // If a body part is missing, replenish it after 100 frames
+                if (o->oPokeyNumAliveBodyParts < 5) {
+                    if (o->oTimer > 100) {
+                        // Because the body parts shift index whenever a body part
+                        // is killed, the new part's index is equal to the number
+                        // of living body parts
 
-                    if (bodyPart != NULL) {
-                        o->oPokeyAliveBodyPartFlags =
-                            o->oPokeyAliveBodyPartFlags | (1 << o->oPokeyNumAliveBodyParts);
-                        o->oPokeyNumAliveBodyParts++;
-                        o->oPokeyBottomBodyPartSize = 0.0f;
+                        struct Object *bodyPart
+                            = spawn_object_relative(o->oPokeyNumAliveBodyParts, 0, 0, 0, o,
+                                                    MODEL_POKEY_BODY_PART, bhvPokeyBodyPart);
 
-                        obj_scale(bodyPart, 0.0f);
+                        if (bodyPart != NULL) {
+                            o->oPokeyAliveBodyPartFlags =
+                                o->oPokeyAliveBodyPartFlags | (1 << o->oPokeyNumAliveBodyParts);
+                            o->oPokeyNumAliveBodyParts++;
+                            o->oPokeyBottomBodyPartSize = 0.0f;
+
+                            obj_scale(bodyPart, 0.0f);
+                        }
+
+                        o->oTimer = 0;
                     }
-
+                } else {
                     o->oTimer = 0;
                 }
-            } else {
-                o->oTimer = 0;
-            }
 
-            if (o->oPokeyTurningAwayFromWall) {
-                o->oPokeyTurningAwayFromWall =
-                    obj_resolve_collisions_and_turn(o->oPokeyTargetYaw, 0x200);
-            } else {
-                // If far from home, turn back toward home
-                if (o->oDistanceToMario >= 25000.0f) {
-                    o->oPokeyTargetYaw = o->oAngleToMario;
-                }
-
-                if (!(o->oPokeyTurningAwayFromWall =
-                          obj_bounce_off_walls_edges_objects(&o->oPokeyTargetYaw))) {
-                    if (o->oPokeyChangeTargetTimer != 0) {
-                        o->oPokeyChangeTargetTimer--;
-                    } else if (o->oDistanceToMario > 2000.0f) {
-                        o->oPokeyTargetYaw = obj_random_fixed_turn(0x2000);
-                        o->oPokeyChangeTargetTimer = random_linear_offset(30, 50);
-                    } else {
-                        // The goal of this computation is to make pokey approach
-                        // mario directly if he is far away, but to shy away from
-                        // him when he is nearby
-
-                        // targetAngleOffset is 0 when distance to mario is >= 1838.4
-                        // and 0x4000 when distance to mario is <= 200
-                        targetAngleOffset = (s32)(0x4000 - (o->oDistanceToMario - 200.0f) * 10.0f);
-                        if (targetAngleOffset < 0) {
-                            targetAngleOffset = 0;
-                        } else if (targetAngleOffset > 0x4000) {
-                            targetAngleOffset = 0x4000;
-                        }
-
-                        // If we need to rotate CCW to get to mario, then negate
-                        // the target angle offset
-                        if ((s16)(o->oAngleToMario - o->oMoveAngleYaw) > 0) {
-                            targetAngleOffset = -targetAngleOffset;
-                        }
-
-                        // When mario is far, targetAngleOffset is 0, so he moves
-                        // toward him directly. When mario is close,
-                        // targetAngleOffset is 0x4000, so he turns 90 degrees
-                        // away from mario
-                        o->oPokeyTargetYaw = o->oAngleToMario + targetAngleOffset;
+                if (o->oPokeyTurningAwayFromWall) {
+                    o->oPokeyTurningAwayFromWall =
+                        obj_resolve_collisions_and_turn(o->oPokeyTargetYaw, 0x200);
+                } else {
+                    // If far from home, turn back toward home
+                    if (o->oDistanceToMario >= 25000.0f) {
+                        o->oPokeyTargetYaw = o->oAngleToMario;
                     }
+
+                    if (!(o->oPokeyTurningAwayFromWall =
+                            obj_bounce_off_walls_edges_objects(&o->oPokeyTargetYaw))) {
+                        if (o->oPokeyChangeTargetTimer != 0) {
+                            o->oPokeyChangeTargetTimer--;
+                        } else if (o->oDistanceToMario > 2000.0f) {
+                            o->oPokeyTargetYaw = obj_random_fixed_turn(0x2000);
+                            o->oPokeyChangeTargetTimer = random_linear_offset(30, 50);
+                        } else {
+                            // The goal of this computation is to make pokey approach
+                            // mario directly if he is far away, but to shy away from
+                            // him when he is nearby
+
+                            // targetAngleOffset is 0 when distance to mario is >= 1838.4
+                            // and 0x4000 when distance to mario is <= 200
+                            targetAngleOffset = (s32)(0x4000 - (o->oDistanceToMario - 200.0f) * 10.0f);
+                            if (targetAngleOffset < 0) {
+                                targetAngleOffset = 0;
+                            } else if (targetAngleOffset > 0x4000) {
+                                targetAngleOffset = 0x4000;
+                            }
+
+                            // If we need to rotate CCW to get to mario, then negate
+                            // the target angle offset
+                            if ((s16)(o->oAngleToMario - o->oMoveAngleYaw) > 0) {
+                                targetAngleOffset = -targetAngleOffset;
+                            }
+
+                            // When mario is far, targetAngleOffset is 0, so he moves
+                            // toward him directly. When mario is close,
+                            // targetAngleOffset is 0x4000, so he turns 90 degrees
+                            // away from mario
+                            o->oPokeyTargetYaw = o->oAngleToMario + targetAngleOffset;
+                        }
+                    }
+
+                    cur_obj_rotate_yaw_toward(o->oPokeyTargetYaw, 0x200);
                 }
-
-                cur_obj_rotate_yaw_toward(o->oPokeyTargetYaw, 0x200);
             }
-        }
 
-        cur_obj_move_standard(-78);
-    }
+            cur_obj_move_standard(-78);
+        }
+    };
 }
 
 /**

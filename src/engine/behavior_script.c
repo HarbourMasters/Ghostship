@@ -991,15 +991,19 @@ void cur_obj_update(void) {
             cur_obj_enable_rendering_if_mario_in_room();
         } else if ((objFlags & OBJ_FLAG_COMPUTE_DIST_TO_MARIO) && gCurrentObject->collisionData == NULL) {
             if (!(objFlags & OBJ_FLAG_ACTIVE_FROM_AFAR)) {
-                // If the object has a render distance, check if it should be shown.
-                if (distanceFromMario > gCurrentObject->oDrawingDistance) {
-                    // Out of render distance, hide the object.
-                    gCurrentObject->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
-                    gCurrentObject->activeFlags |= ACTIVE_FLAG_FAR_AWAY;
-                } else if (gCurrentObject->oHeldState == HELD_FREE) {
-                    // In render distance (and not being held), show the object.
-                    gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
-                    gCurrentObject->activeFlags &= ~ACTIVE_FLAG_FAR_AWAY;
+                bool visible = distanceFromMario <= gCurrentObject->oDrawingDistance;
+
+                CALL_CANCELLABLE_EVENT(EntityDistanceRender, &visible) {
+                    // If the object has a render distance, check if it should be shown.
+                    if (!visible) {
+                        // Out of render distance, hide the object.
+                        gCurrentObject->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
+                        gCurrentObject->activeFlags |= ACTIVE_FLAG_FAR_AWAY;
+                    } else if (gCurrentObject->oHeldState == HELD_FREE) {
+                        // In render distance (and not being held), show the object.
+                        gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
+                        gCurrentObject->activeFlags &= ~ACTIVE_FLAG_FAR_AWAY;
+                    }
                 }
             }
         }

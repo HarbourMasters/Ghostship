@@ -35,27 +35,31 @@ void whirpool_orient_graph(void) {
 }
 
 void bhv_whirlpool_loop(void) {
-    if (o->oDistanceToMario < 5000.0f) {
-        o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+    bool visible = o->oDistanceToMario < 5000.0f;
 
-        // not sure if actually an array
-        gEnvFxBubbleConfig[ENVFX_STATE_PARTICLECOUNT] = 60;
-        gEnvFxBubbleConfig[ENVFX_STATE_SRC_X] = o->oPosX;
-        gEnvFxBubbleConfig[ENVFX_STATE_SRC_Z] = o->oPosZ;
-        gEnvFxBubbleConfig[ENVFX_STATE_DEST_X] = o->oPosX;
-        gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y] = o->oPosY;
-        gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z] = o->oPosZ;
-        gEnvFxBubbleConfig[ENVFX_STATE_SRC_Y] = o->oPosY + 800.0f;
-        gEnvFxBubbleConfig[ENVFX_STATE_PITCH] = o->oWhirlpoolInitFacePitch;
-        gEnvFxBubbleConfig[ENVFX_STATE_YAW] = o->oWhirlpoolInitFaceRoll;
+    CALL_CANCELLABLE_EVENT(EntityDistanceRender, &visible) {
+        if (visible) {
+            o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
 
-        whirpool_orient_graph();
+            // not sure if actually an array
+            gEnvFxBubbleConfig[ENVFX_STATE_PARTICLECOUNT] = 60;
+            gEnvFxBubbleConfig[ENVFX_STATE_SRC_X] = o->oPosX;
+            gEnvFxBubbleConfig[ENVFX_STATE_SRC_Z] = o->oPosZ;
+            gEnvFxBubbleConfig[ENVFX_STATE_DEST_X] = o->oPosX;
+            gEnvFxBubbleConfig[ENVFX_STATE_DEST_Y] = o->oPosY;
+            gEnvFxBubbleConfig[ENVFX_STATE_DEST_Z] = o->oPosZ;
+            gEnvFxBubbleConfig[ENVFX_STATE_SRC_Y] = o->oPosY + 800.0f;
+            gEnvFxBubbleConfig[ENVFX_STATE_PITCH] = o->oWhirlpoolInitFacePitch;
+            gEnvFxBubbleConfig[ENVFX_STATE_YAW] = o->oWhirlpoolInitFaceRoll;
 
-        o->oFaceAngleYaw += 8000;
-    } else {
-        o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
-        gEnvFxBubbleConfig[ENVFX_STATE_PARTICLECOUNT] = 0;
-    }
+            whirpool_orient_graph();
+
+            o->oFaceAngleYaw += 8000;
+        } else {
+            o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+            gEnvFxBubbleConfig[ENVFX_STATE_PARTICLECOUNT] = 0;
+        }
+    };
 
     cur_obj_play_sound_1(SOUND_ENV_WATER);
 

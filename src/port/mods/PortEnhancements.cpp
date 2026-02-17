@@ -83,6 +83,18 @@ void PortEnhancements_Init() {
             gNeverEnteredCastle = false;
         }
     });
+
+    auto OnDistanceFunc = [](IEvent* event) {
+        if (CVarGetInteger("gEnhancements.DisableDrawDistance", 0) == 0) {
+            return;
+        }
+
+        EntityDistanceRender* ev = (EntityDistanceRender*)event;
+        *ev->visible = true;
+    };
+
+    REGISTER_LISTENER(EntityDistanceLoad, EVENT_PRIORITY_NORMAL, OnDistanceFunc);
+    REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDistanceFunc);
 }
 
 void PortEnhancements_Register() {
@@ -93,6 +105,9 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(LevelScriptCallLoop);
     REGISTER_EVENT(LevelScriptBeginArea);
     REGISTER_EVENT(LevelScriptExecute);
+    REGISTER_EVENT(EntityDistanceRender);
+    REGISTER_EVENT(EntityDistanceLoad);
+
     REGISTER_EVENT(RenderPauseCourseOptions);
 
     REGISTER_EVENT(PlayerHealthChange);
