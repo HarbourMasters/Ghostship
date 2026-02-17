@@ -24,7 +24,7 @@ const char* ObjectListNames[] = { "Mario",     "Unused 1", "Destructive", "Unuse
                                   "Pole-like", "Spawner",  "Unimportant" };
 
 void ObjectViewer::InitElement() {
-#ifndef __unix__
+#ifdef _WIN32
     HANDLE hProcess = GetCurrentProcess();
     SymSetOptions(SYMOPT_NO_IMAGE_SEARCH | SYMOPT_IGNORE_IMAGEDIR);
     SymInitialize(hProcess, "debug", true);
@@ -36,7 +36,7 @@ const char* GetFunctionName(const uintptr_t addr) {
         return functionNameCache[addr].c_str();
     }
 
-#ifndef __unix__
+#ifdef _WIN32
     char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
     PSYMBOL_INFO pSymbol = reinterpret_cast<PSYMBOL_INFO>(buffer);
 
