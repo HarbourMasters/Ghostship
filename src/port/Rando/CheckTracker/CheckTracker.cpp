@@ -149,9 +149,9 @@ void CheckTrackerWindow::Draw() {
             DrawCheckTrackerList();
             ImGui::EndChild();
         }
-
-        ImGui::End();
     }
+
+    ImGui::End();
 
     ImGui::PopStyleColor(4);
     ImGui::PopStyleVar(1);
