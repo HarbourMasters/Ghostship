@@ -90,28 +90,28 @@ bool GameExtractor::SelectGameFromUI() {
 
 #if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
     // Desktop: fallback to file dialogue if no baserom found
-    //if (!foundGame) {
-        if (!pfd::settings::available()) {
-            SPDLOG_ERROR("portable-file-dialogs is not available on this system.");
-            return false;
-        }
+    // if (!foundGame) {
+    if (!pfd::settings::available()) {
+        SPDLOG_ERROR("portable-file-dialogs is not available on this system.");
+        return false;
+    }
 
-        auto selection = pfd::open_file("Select a file", ".", { "N64 Roms", "*.z64" }).result();
-        if (selection.empty()) {
-            return false;
-        }
+    auto selection = pfd::open_file("Select a file", ".", { "N64 Roms", "*.z64" }).result();
+    if (selection.empty()) {
+        return false;
+    }
 
-        romPath = selection[0];
+    romPath = selection[0];
     //}
 #else
     // Mobile: fallback to baserom.us.z64
-    if (/*!foundGame && */!std::filesystem::exists(Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64"))) {
+    if (/*!foundGame && */ !std::filesystem::exists(Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64"))) {
         SPDLOG_ERROR("baserom not found");
         return false;
     }
 
-    //if (!foundGame) {
-        romPath = Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64");
+    // if (!foundGame) {
+    romPath = Ship::Context::GetPathRelativeToAppDirectory("baserom.us.z64");
     //}
 #endif
 
@@ -152,7 +152,8 @@ void GameExtractor::GetRoms(std::vector<std::string>& roms) {
             char* ext = PathFindExtensionA(ffd.cFileName);
 
             // Check for any standard N64 rom file extensions.
-            if (ext != NULL && (strcmp(ext, ".z64") == 0)/* || (strcmp(ext, ".n64") == 0) || (strcmp(ext, ".v64") == 0)*/)
+            if (ext != NULL &&
+                (strcmp(ext, ".z64") == 0) /* || (strcmp(ext, ".n64") == 0) || (strcmp(ext, ".v64") == 0)*/)
                 roms.push_back(ffd.cFileName);
         }
     } while (FindNextFileA(h, &ffd) != 0);
@@ -175,7 +176,8 @@ void GameExtractor::GetRoms(std::vector<std::string>& roms) {
 
                 // Get the position of the extension character.
                 char* ext = strrchr(dir->d_name, '.');
-                if (ext != NULL && (strcmp(ext, ".z64") == 0/* || strcmp(ext, ".n64") == 0 || strcmp(ext, ".v64") == 0*/)) {
+                if (ext != NULL &&
+                    (strcmp(ext, ".z64") == 0 /* || strcmp(ext, ".n64") == 0 || strcmp(ext, ".v64") == 0*/)) {
                     roms.push_back(dir->d_name);
                 }
             }
@@ -259,7 +261,7 @@ bool GameExtractor::GenerateOTR(std::atomic_ref<size_t> assetCount, std::string 
     return true;
 }
 #else
-static bool GameExtractor::GenAssetFile(){
+static bool GameExtractor::GenAssetFile() {
     return false;
 }
 
@@ -267,19 +269,19 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
     return std::nullopt;
 }
 
-bool GameExtractor::SelectGameFromUI(){
+bool GameExtractor::SelectGameFromUI() {
     return false;
 }
 
-void GameExtractor::GetRoms(std::vector<std::string>& roms){
+void GameExtractor::GetRoms(std::vector<std::string>& roms) {
     // None
 }
 
-bool GameExtractor::GenerateOTR(){
+bool GameExtractor::GenerateOTR() {
     return false;
 }
 
-void GameExtractor::WritePortVersion(){
+void GameExtractor::WritePortVersion() {
     // None
 }
 #endif
