@@ -29,7 +29,7 @@ void push_frame() {
 #ifdef _WIN32
 int SDL_main(int argc, char** argv) {
 #else
-int main() {
+int main(int argc, char* argv[]) {
 #endif
     GameEngine::Create(argc, argv);
     alloc_pool();
