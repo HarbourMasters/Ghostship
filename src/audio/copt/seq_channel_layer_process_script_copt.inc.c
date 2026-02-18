@@ -19,6 +19,101 @@
 #define PORTAMENTO_MODE_4 4
 #define PORTAMENTO_MODE_5 5
 
+#define COPT 1
+#if COPT
+#define M64_READ_U8(state, dst) \
+    dst = m64_read_u8(state);
+#else
+#define M64_READ_U8(state, dst) \
+{                               \
+    u8 * _ptr_pc;               \
+    u8  _pc;                    \
+    _ptr_pc = (*state).pc;      \
+    ((*state).pc)++;            \
+    _pc = *_ptr_pc;             \
+    dst = _pc;                  \
+}
+#endif
+
+
+#if COPT
+#define M64_READ_S16(state, dst) \
+    dst = m64_read_s16(state);
+#else
+#define M64_READ_S16(state, dst)    \
+{                                   \
+    s16 _ret;                       \
+    _ret = *(*state).pc << 8;       \
+    ((*state).pc)++;                \
+    _ret = *(*state).pc | _ret;     \
+    ((*state).pc)++;                \
+    dst = _ret;                     \
+}
+#endif
+#if COPT
+#define M64_READ_COMPRESSED_U16(state, dst) \
+    dst = m64_read_compressed_u16(state);
+#else
+#define M64_READ_COMPRESSED_U16(state, dst) \
+{                                           \
+    u16 ret = *(state->pc++);               \
+    if (ret & 0x80) {                       \
+        ret = (ret << 8) & 0x7f00;          \
+        ret = *(state->pc++) | ret;         \
+    }                                       \
+    dst = ret;                              \
+}
+#endif
+
+#if COPT
+#define GET_INSTRUMENT(seqChannel, instId, _instOut, _adsr, dst, l) \
+    dst = get_instrument(seqChannel, instId, _instOut, _adsr);
+#else
+#define GET_INSTRUMENT(seqChannel, instId, _instOut, _adsr, dst, l) \
+{ \
+struct AdsrSettings *adsr = _adsr; \
+struct Instrument **instOut = _instOut;\
+    u8 _instId = instId; \
+    struct Instrument *inst; \
+    UNUSED u32 pad; \
+        /* copt inlines instId here  */ \
+    if (instId >= gCtlEntries[(*seqChannel).bankId].numInstruments) { \
+        _instId = gCtlEntries[(*seqChannel).bankId].numInstruments; \
+        if (_instId == 0) { \
+            dst = 0; \
+            goto ret ## l; \
+        } \
+        _instId--; \
+    } \
+    inst = gCtlEntries[(*seqChannel).bankId].instruments[_instId]; \
+    if (inst == NULL) { \
+        while (_instId != 0xff) { \
+            inst = gCtlEntries[(*seqChannel).bankId].instruments[_instId]; \
+            if (inst != NULL) { \
+                goto gi ## l; \
+            } \
+            _instId--; \
+        } \
+        gi ## l:; \
+    } \
+    if (((uintptr_t) gBankLoadedPool.persistent.pool.start <= (uintptr_t) inst \
+         && (uintptr_t) inst <= (uintptr_t)(gBankLoadedPool.persistent.pool.start \
+                                          + gBankLoadedPool.persistent.pool.size)) \
+        || ((uintptr_t) gBankLoadedPool.temporary.pool.start <= (uintptr_t) inst \
+            && (uintptr_t) inst <= (uintptr_t)(gBankLoadedPool.temporary.pool.start \
+                                             + gBankLoadedPool.temporary.pool.size))) { \
+        (*adsr).envelope = (*inst).envelope; \
+        (*adsr).releaseRate = (*inst).releaseRate; \
+        *instOut = inst; \
+        _instId++; \
+        goto ret ## l; \
+    } \
+    gAudioErrorFlags = _instId + 0x20000; \
+    *instOut = NULL; \
+    ret ## l: ; \
+}
+#endif
+
 void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     struct SequencePlayer *seqPlayer;   // sp5C, t4
     struct SequenceChannel *seqChannel; // sp58, t5
@@ -49,11 +144,6 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
 #endif
 
     sameSound = TRUE;
-
-    if(layer == NULL) {
-        return;
-    }
-
     if ((*layer).enabled == FALSE) {
         return;
     }
@@ -80,8 +170,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     seqPlayer = (*seqChannel).seqPlayer;
     for (;;) {
         state = &layer->scriptState;
-//        M64_READ_U8(state, cmd);
-//        cmd = m64_read_u8(state);
+        //M64_READ_U8(state, cmd);
         {
             u8 *_ptr_pc;
             _ptr_pc = (*state).pc++;
@@ -104,13 +193,13 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 break;
 
             case 0xfc: // layer_call
-                sp3A = m64_read_s16(state);
+                M64_READ_S16(state, sp3A);
                 state->depth++, state->stack[state->depth - 1] = state->pc;
                 state->pc = seqPlayer->seqData + sp3A;
                 break;
 
             case 0xf8: // layer_loop; loop start, N iterations (or 256 if N = 0)
-                state->remLoopIters[state->depth] = m64_read_u8(state);
+                M64_READ_U8(state, state->remLoopIters[state->depth]);
                 state->depth++, state->stack[state->depth - 1] = state->pc;
                 break;
 
@@ -123,7 +212,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 break;
 
             case 0xfb: // layer_jump
-                sp3A = m64_read_s16(state);
+                M64_READ_S16(state, sp3A);
                 state->pc = seqPlayer->seqData + sp3A;
                 break;
 
@@ -164,21 +253,21 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 break;
 
             case 0xc3: // layer_setshortnotedefaultplaypercentage
-                sp3A = m64_read_compressed_u16(state);
+                M64_READ_COMPRESSED_U16(state, sp3A);
                 layer->shortNoteDefaultPlayPercentage = sp3A;
                 break;
 
             case 0xc6: // layer_setinstr
-                cmdSemitone = m64_read_u8(state);
+                M64_READ_U8(state, cmdSemitone);
 
                 if (cmdSemitone < 127) {
-                    get_instrument(seqChannel, cmdSemitone, &(*layer).instrument, &(*layer).adsr);
+                    GET_INSTRUMENT(seqChannel, cmdSemitone, &(*layer).instrument, &(*layer).adsr, cmdSemitone, 1);
                 }
                 break;
 
             case 0xc7: // layer_portamento
-                (*layer).portamento.mode = m64_read_u8(state);
-                cmdSemitone = m64_read_u8(state);
+                M64_READ_U8(state, (*layer).portamento.mode);
+                M64_READ_U8(state, cmdSemitone);
 
                 cmdSemitone = cmdSemitone + (*seqChannel).transposition;
                 cmdSemitone += (*layer).transposition;
@@ -195,7 +284,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                     break;
                 }
 
-                sp3A = m64_read_compressed_u16(state);
+                M64_READ_COMPRESSED_U16(state, sp3A);
                 layer->portamentoTime = sp3A;
                 break;
 
@@ -217,7 +306,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     }
 
     if (cmd == 0xc0) { // layer_delay
-        layer->delay = m64_read_compressed_u16(state);
+        M64_READ_COMPRESSED_U16(state, layer->delay);
         layer->stopSomething = TRUE;
     } else {
         layer->stopSomething = FALSE;
@@ -225,14 +314,14 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
         if (seqChannel->largeNotes == TRUE) {
             switch (cmd & 0xc0) {
                 case 0x00: // layer_note0 (play percentage, velocity, duration)
-                    sp3A = m64_read_compressed_u16(state);
+                    M64_READ_COMPRESSED_U16(state, sp3A);
                     vel = *((*state).pc++);
                     layer->noteDuration = *((*state).pc++);
                     layer->playPercentage = sp3A;
                     goto l1090;
 
                 case 0x40: // layer_note1 (play percentage, velocity)
-                    sp3A = m64_read_compressed_u16(state);
+                    M64_READ_COMPRESSED_U16(state, sp3A);
                     vel = *((*state).pc++);
                     layer->noteDuration = 0;
                     layer->playPercentage = sp3A;
@@ -250,7 +339,7 @@ l1090:
         } else {
             switch (cmd & 0xc0) {
                 case 0x00: // play note, type 0 (play percentage)
-                    sp3A = m64_read_compressed_u16(state);
+                    M64_READ_COMPRESSED_U16(state, sp3A);
                     layer->playPercentage = sp3A;
                     goto l1138;
 
@@ -312,6 +401,8 @@ l1138:
                     }
 
                     if (layer->portamento.mode != 0) {
+                        //! copt needs a ternary:
+                        //usedSemitone = (layer->portamentoTargetNote < cmdSemitone) ? cmdSemitone : layer->portamentoTargetNote;
                         if (layer->portamentoTargetNote < cmdSemitone) {
                             usedSemitone = cmdSemitone;
                         } else {

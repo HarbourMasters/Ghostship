@@ -3,7 +3,7 @@
 
 #include <libultra/types.h>
 
-#include "config.h"
+#include "sm64_config.h"
 #include "macros.h"
 
 extern u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];

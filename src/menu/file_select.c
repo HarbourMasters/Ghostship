@@ -154,6 +154,8 @@ static s8 sOpenLangSettings = FALSE;
 //static unsigned char textNew[] = { TEXT_NEW };
 static unsigned char starIcon[] = { GLYPH_STAR, GLYPH_SPACE };
 static unsigned char xIcon[] = { GLYPH_MULTIPLY, GLYPH_SPACE };
+// "SURROUND" text for sound mode menu (S=0x1C, U=0x1E, R=0x1B, O=0x18, N=0x17, D=0x0D)
+static unsigned char textSurround[] = { 0x1C, 0x1E, 0x1B, 0x1B, 0x18, 0x1E, 0x17, 0x0D, 0xFF };
 //#endif
 //
 //#ifndef VERSION_EU
@@ -1036,16 +1038,20 @@ void check_erase_menu_clicked_buttons(struct Object *eraseButton) {
 void render_sound_mode_menu_buttons(struct Object *soundModeButton) {
     // Stereo option button
     sMainMenuButtons[MENU_BUTTON_STEREO] = spawn_object_rel_with_rot(
-        soundModeButton, MODEL_MAIN_MENU_GENERIC_BUTTON, bhvMenuButton, 533, SOUND_BUTTON_Y, -100, 0, -0x8000, 0);
+        soundModeButton, MODEL_MAIN_MENU_GENERIC_BUTTON, bhvMenuButton, 600, SOUND_BUTTON_Y, -100, 0, -0x8000, 0);
     sMainMenuButtons[MENU_BUTTON_STEREO]->oMenuButtonScale = 0.11111111f;
     // Mono option button
     sMainMenuButtons[MENU_BUTTON_MONO] = spawn_object_rel_with_rot(
-        soundModeButton, MODEL_MAIN_MENU_GENERIC_BUTTON, bhvMenuButton, 0, SOUND_BUTTON_Y, -100, 0, -0x8000, 0);
+        soundModeButton, MODEL_MAIN_MENU_GENERIC_BUTTON, bhvMenuButton, 200, SOUND_BUTTON_Y, -100, 0, -0x8000, 0);
     sMainMenuButtons[MENU_BUTTON_MONO]->oMenuButtonScale = 0.11111111f;
     // Headset option button
     sMainMenuButtons[MENU_BUTTON_HEADSET] = spawn_object_rel_with_rot(
-        soundModeButton, MODEL_MAIN_MENU_GENERIC_BUTTON, bhvMenuButton, -533, SOUND_BUTTON_Y, -100, 0, -0x8000, 0);
+        soundModeButton, MODEL_MAIN_MENU_GENERIC_BUTTON, bhvMenuButton, -200, SOUND_BUTTON_Y, -100, 0, -0x8000, 0);
     sMainMenuButtons[MENU_BUTTON_HEADSET]->oMenuButtonScale = 0.11111111f;
+    // Surround option button
+    sMainMenuButtons[MENU_BUTTON_SURROUND] = spawn_object_rel_with_rot(
+        soundModeButton, MODEL_MAIN_MENU_GENERIC_BUTTON, bhvMenuButton, -600, SOUND_BUTTON_Y, -100, 0, -0x8000, 0);
+    sMainMenuButtons[MENU_BUTTON_SURROUND]->oMenuButtonScale = 0.11111111f;
 
 #ifdef VERSION_EU
     // English option button
@@ -1088,7 +1094,7 @@ void check_sound_mode_menu_clicked_buttons(struct Object *soundModeButton) {
                 // If sound mode button clicked, select it and define sound mode
                 // The check will always be true because of the group configured above (In JP & US)
                 if (buttonID == MENU_BUTTON_STEREO || buttonID == MENU_BUTTON_MONO
-                    || buttonID == MENU_BUTTON_HEADSET) {
+                    || buttonID == MENU_BUTTON_HEADSET || buttonID == MENU_BUTTON_SURROUND) {
                     if (soundModeButton->oMenuButtonActionPhase == SOUND_MODE_PHASE_MAIN) {
                         play_sound(SOUND_MENU_CLICK_FILE_SELECT, gGlobalSoundSource);
 #if ENABLE_RUMBLE
@@ -1593,6 +1599,9 @@ void bhv_menu_button_manager_loop(void) {
         case MENU_BUTTON_HEADSET:
             return_to_main_menu(MENU_BUTTON_SOUND_MODE, sMainMenuButtons[MENU_BUTTON_HEADSET]);
             break;
+        case MENU_BUTTON_SURROUND:
+            return_to_main_menu(MENU_BUTTON_SOUND_MODE, sMainMenuButtons[MENU_BUTTON_SURROUND]);
+            break;
 #endif
     }
 
@@ -1818,7 +1827,8 @@ void print_main_menu_strings(void) {
     unsigned char* textSoundModes[] = {
         GameEngine_LoadTranslation("TEXT_STEREO"),
         GameEngine_LoadTranslation("TEXT_MONO"),
-        GameEngine_LoadTranslation("TEXT_HEADSET")
+        GameEngine_LoadTranslation("TEXT_HEADSET"),
+        textSurround
     };
     sSoundTextX = get_str_x_pos_from_center(254, textSoundModes[sSoundMode], 10.0f);
     print_generic_string(SOUNDMODE_X1, 39, textSoundModes[sSoundMode]);
@@ -2463,17 +2473,18 @@ void print_sound_mode_menu_strings(void) {
     unsigned char* textSoundModes[] = {
         GameEngine_LoadTranslation("TEXT_STEREO"),
         GameEngine_LoadTranslation("TEXT_MONO"),
-        GameEngine_LoadTranslation("TEXT_HEADSET")
+        GameEngine_LoadTranslation("TEXT_HEADSET"),
+        textSurround
     };
     // Print sound mode names
-    for (mode = 0; mode < 3; mode++) {
+    for (mode = 0; mode < 4; mode++) {
         if (mode == sSoundMode) {
             gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
         } else {
             gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, sTextBaseAlpha);
         }
-        // Mode names are centered correctly on US and Shindou
-        textX = get_str_x_pos_from_center(mode * 74 + 87, textSoundModes[mode], 10.0f);
+        // Mode names centered for 4 sound options (mapped to button positions 600, 200, -200, -600)
+        textX = get_str_x_pos_from_center(mode * 55 + 77, textSoundModes[mode], 10.0f);
         print_generic_string(textX, 87, textSoundModes[mode]);
     }
 #endif

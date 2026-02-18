@@ -43,4 +43,6 @@ f32 adsr_update(struct AdsrState *adsr);
 s32 adsr_update(struct AdsrState *adsr);
 #endif
 
+s8 audio_compute_comb_filter(f32 posY);
+
 #endif // AUDIO_EFFECTS_H

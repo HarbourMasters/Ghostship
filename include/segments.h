@@ -1,7 +1,7 @@
 #ifndef SEGMENTS_H
 #define SEGMENTS_H
 
-#include "config.h"
+#include "sm64_config.h"
 
 /*
  * Memory addresses for segments. Ideally, this header file would not be

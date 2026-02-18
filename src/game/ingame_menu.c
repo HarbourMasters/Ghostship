@@ -1161,6 +1161,7 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
         switch (strChar) {
             case DIALOG_CHAR_TERMINATOR:
                 pageState = DIALOG_PAGE_STATE_END;
+                gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
                 break;
             case DIALOG_CHAR_NEWLINE:
                 lineNum++;
@@ -1187,25 +1188,30 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
                     adjust_pos_and_print_period_char(&xMatrix, &linePos);
                     break;
                 }
+                goto skip;
             case DIALOG_CHAR_SLASH:
                 if(!ROM_JP) {
                     xMatrix += 2;
                     linePos += 2;
                     break;
                 }
+                goto skip;
             case DIALOG_CHAR_MULTI_THE:
                 if(!ROM_JP) {
                     render_multi_text_string_lines(STRING_THE, lineNum, &linePos, linesPerBox, xMatrix, lowerBound);
                     xMatrix = 1;
                     break;
                 }
+                goto skip;
             case DIALOG_CHAR_MULTI_YOU:
                 if(!ROM_JP) {
                     render_multi_text_string_lines(STRING_YOU, lineNum, &linePos, linesPerBox, xMatrix, lowerBound);
                     xMatrix = 1;
                     break;
                 }
+                goto skip;
             default:
+            skip:
                 FrameInterpolation_RecordOpenChild("render_dialog_text_and_pages:render_char", TAG_LETTER(strChar));
                 if(ROM_JP) {
                     if (linePos != 0) {
@@ -1588,7 +1594,6 @@ void render_dialog_entries(void) {
     bool shouldInterpolate = gDialogScrollOffsetY != 0;
     FrameInterpolation_ShouldInterpolateFrame(shouldInterpolate);
     handle_dialog_text_and_pages(0, dialog, lowerBound);
-    FrameInterpolation_ShouldInterpolateFrame(true);
 
     if (gLastDialogPageStrPos == -1 && gLastDialogResponse == 1) {
         render_dialog_triangle_choice();
@@ -1607,6 +1612,8 @@ void render_dialog_entries(void) {
     if (gLastDialogPageStrPos != -1 && gDialogBoxState == DIALOG_STATE_VERTICAL) {
         render_dialog_triangle_next(dialog->linesPerBox);
     }
+
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 // Calls a gMenuMode value defined by render_menus_and_dialogs cases

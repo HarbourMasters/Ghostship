@@ -8,13 +8,11 @@
 #include <fast/backends/gfx_metal.h>
 #endif
 
-#ifdef __SWITCH__
-#include <port/switch/SwitchImpl.h>
-#endif
-
 #include "Notification.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
+
+#include <ship/window/gui/ConsoleWindow.h>
 
 namespace GhostshipGui {
 // MARK: - Delegates
@@ -25,6 +23,7 @@ std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
 std::shared_ptr<GhostshipModalWindow> mModalWindow;
+std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 
 UIWidgets::Colors GetMenuThemeColor() {
     return mGhostshipMenu->GetMenuThemeColor();
@@ -47,6 +46,9 @@ void SetupGuiElements() {
     style.FramePadding = ImVec2(4.0f, 6.0f);
     style.ItemSpacing = ImVec2(8.0f, 6.0f);
     style.Colors[ImGuiCol_MenuBarBg] = UIWidgets::ColorValues.at(UIWidgets::Colors::DarkGray);
+
+    mConsoleWindow = std::make_shared<Ship::ConsoleWindow>(CVAR_WINDOW("DevConsole"), "Console##Dev", ImVec2(820, 630));
+    gui->AddGuiWindow(mConsoleWindow);
 
     mSaveEditorWindow = std::make_shared<SaveEditorWindow>(CVAR_WINDOW("SaveEditor"), "Save Editor");
     gui->AddGuiWindow(mSaveEditorWindow);
@@ -77,6 +79,7 @@ void Destroy() {
     mNotificationWindow = nullptr;
     mInputViewer = nullptr;
     mInputViewerSettings = nullptr;
+    mConsoleWindow = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

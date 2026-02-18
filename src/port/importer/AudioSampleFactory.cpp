@@ -1,7 +1,8 @@
 #include "AudioSampleFactory.h"
 #include <iostream>
+
+#include "macros.h"
 #include "port/importer/types/AudioSample.h"
-#include "spdlog/spdlog.h"
 
 std::shared_ptr<Ship::IResource>
 SM64::AudioSampleFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
@@ -35,7 +36,7 @@ SM64::AudioSampleFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     reader->Read((char*)bank->book.book, tableSize * sizeof(int16_t));
 
     int32_t sampleSize = reader->ReadInt32();
-    char* sampleData = new char[sampleSize];
+    char* sampleData = new char[ROUND_UP_8(sampleSize)];
     reader->Read(sampleData, sampleSize);
 
     bank->mData.unused = 0;

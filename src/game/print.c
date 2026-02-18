@@ -2,7 +2,7 @@
 #include <libultra/gbi.h>
 
 #include "sm64.h"
-#include "config.h"
+#include "sm64_config.h"
 #include "game_init.h"
 #include "memory.h"
 #include "print.h"
