@@ -96,7 +96,7 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Save Editor")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Save Editor Window."));
-    
+
     // Console
     path.sidebarName = "Console";
     AddSidebarEntry("Dev Tools", path.sidebarName, 1);

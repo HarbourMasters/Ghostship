@@ -74,6 +74,10 @@ void GhostshipModalWindow::RegisterPopup(std::string title, std::string message,
     modals.push_back({ title, message, button1, button2, button1callback, button2callback });
 }
 
+size_t GhostshipModalWindow::PopupsQueued() {
+    return modals.size();
+}
+
 bool GhostshipModalWindow::IsPopupOpen(std::string title) {
     return !modals.empty() && modals.at(0).title_ == title;
 }
