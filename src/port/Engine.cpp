@@ -359,7 +359,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     GameExtractor extract;
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;
-    std::atomic<size_t> extractCount = 0, totalExtract = 0;
+    size_t extractCount = 0, totalExtract = 0;
 
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
@@ -557,7 +557,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     GhostshipGui::RegisterPopup("Confirm Re-extract", msg.c_str(), "Yes", "No", [&]() {
                         extracting = true;
                         threadPool->submit_task([&]() -> void {
-                            extract.GenerateOTR("sm64"/*, &extractCount, &totalExtract*/); // TODO progress reporting
+                            extract.Parse(std::atomic_ref<size_t>(totalExtract), "sm64");
+                            extract.GenerateOTR(std::atomic_ref<size_t>(extractCount), "sm64");
                             extracting = false;
                             extractCount = totalExtract = 0;
                             });
@@ -565,7 +566,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 } else {
                     extracting = true;
                     threadPool->submit_task([&]() -> void {
-                        extract.GenerateOTR("sm64"/*, &extractCount, &totalExtract*/); // TODO progress reporting
+                        extract.Parse(std::atomic_ref<size_t>(totalExtract), "sm64");
+                        extract.GenerateOTR(std::atomic_ref<size_t>(extractCount), "sm64");
                         extracting = false;
                         extractCount = totalExtract = 0;
                         });
@@ -627,7 +629,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 extracting = true;
                 file = extract.GetRomPath();
                 threadPool->submit_task([&]() -> void {
-                    extract.GenerateOTR("sm64"/*, &extractCount, &totalExtract*/); // TODO progress reporting
+                    extract.Parse(std::atomic_ref<size_t>(totalExtract), "sm64");
+                    extract.GenerateOTR(std::atomic_ref<size_t>(extractCount), "sm64");
                     extracting = false;
                     extractStep = ES_VERIFY;
                     extractCount = 0;
