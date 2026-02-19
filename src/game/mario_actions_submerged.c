@@ -920,13 +920,16 @@ static s32 act_drowning(struct MarioState *m) {
             }
             break;
 
-        case 1:
-            set_mario_animation(m, MARIO_ANIM_DROWNING_PART2);
-            m->marioBodyState->eyeState = MARIO_EYES_DEAD;
-            if (m->marioObj->header.gfx.animInfo.animFrame == 30) {
-                level_trigger_warp(m, WARP_OP_DEATH);
-            }
+        case 1: {
+            CALL_CANCELLABLE_EVENT(PlayerDeath, m, DEATH_TYPE_DROWNING) {
+                set_mario_animation(m, MARIO_ANIM_DROWNING_PART2);
+                m->marioBodyState->eyeState = MARIO_EYES_DEAD;
+                if (m->marioObj->header.gfx.animInfo.animFrame == 30) {
+                    level_trigger_warp(m, WARP_OP_DEATH);
+                }
+            };
             break;
+        }
     }
 
     play_sound_if_no_flag(m, SOUND_MARIO_DROWNING, MARIO_ACTION_SOUND_PLAYED);
@@ -940,12 +943,14 @@ static s32 act_water_death(struct MarioState *m) {
     stationary_slow_down(m);
     perform_water_step(m);
 
-    m->marioBodyState->eyeState = MARIO_EYES_DEAD;
+    CALL_CANCELLABLE_EVENT(PlayerDeath, m, DEATH_TYPE_DEFAULT) {
+        m->marioBodyState->eyeState = MARIO_EYES_DEAD;
 
-    set_mario_animation(m, MARIO_ANIM_WATER_DYING);
-    if (set_mario_animation(m, MARIO_ANIM_WATER_DYING) == 35) {
-        level_trigger_warp(m, WARP_OP_DEATH);
-    }
+        set_mario_animation(m, MARIO_ANIM_WATER_DYING);
+        if (set_mario_animation(m, MARIO_ANIM_WATER_DYING) == 35) {
+            level_trigger_warp(m, WARP_OP_DEATH);
+        }
+    };
 
     return FALSE;
 }
@@ -1053,7 +1058,9 @@ static s32 act_caught_in_whirlpool(struct MarioState *m) {
     if ((marioObj->oMarioWhirlpoolPosY += m->vel[1]) < 0.0f) {
         marioObj->oMarioWhirlpoolPosY = 0.0f;
         if (distance < 16.1f && m->actionTimer++ == 16) {
-            level_trigger_warp(m, WARP_OP_DEATH);
+            CALL_CANCELLABLE_EVENT(PlayerDeath, m, DEATH_TYPE_WHIRLPOOL) {
+                level_trigger_warp(m, WARP_OP_DEATH);
+            };
         }
     }
 

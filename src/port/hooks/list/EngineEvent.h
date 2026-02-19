@@ -15,11 +15,11 @@ DEFINE_EVENT(LevelScriptCallLoop,
     LevelScriptFunction* func;
     int16_t* arg;
 )
+
 DEFINE_EVENT(LevelScriptBeginArea,
     uint8_t* areaIndex;
     void** geoLayoutAddr;
 );
-
 
 DEFINE_EVENT(GeoLayoutCallASM, 
     GraphNodeFunc* func;
@@ -27,6 +27,14 @@ DEFINE_EVENT(GeoLayoutCallASM,
 );
 
 DEFINE_EVENT(LevelInitFromSaveFile);
+
+DEFINE_EVENT(OnGameFileLoad,
+    s32 fileNum;
+);
+
+DEFINE_EVENT(OnGameFileSave,
+    s32 fileNum;
+);
 
 DEFINE_EVENT(LevelScriptExecute,
     u8 command;

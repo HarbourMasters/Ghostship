@@ -1340,7 +1340,9 @@ s32 act_burning_ground(struct MarioState *m) {
 
     m->health -= 10;
     if (m->health < 0x100) {
-        set_mario_action(m, ACT_STANDING_DEATH, 0);
+        CALL_CANCELLABLE_EVENT(PlayerDeath, m, DEATH_TYPE_FIRE) {
+            set_mario_action(m, ACT_STANDING_DEATH, 0);
+        };
     }
 
     m->marioBodyState->eyeState = MARIO_EYES_DEAD;

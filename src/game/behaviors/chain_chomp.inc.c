@@ -345,10 +345,12 @@ static void chain_chomp_released_jump_away(void) {
  * Release mario and transition to the unload chain action.
  */
 static void chain_chomp_released_end_cutscene(void) {
-    if (cutscene_object(CUTSCENE_STAR_SPAWN, o) == -1) {
-        set_mario_npc_dialog(MARIO_DIALOG_STOP);
-        o->oAction = CHAIN_CHOMP_ACT_UNLOAD_CHAIN;
-    }
+    CALL_CANCELLABLE_EVENT(ChainChompRelease, o) {
+        if (cutscene_object(CUTSCENE_STAR_SPAWN, o) == -1) {
+            set_mario_npc_dialog(MARIO_DIALOG_STOP);
+            o->oAction = CHAIN_CHOMP_ACT_UNLOAD_CHAIN;
+        }
+    };
 }
 
 /**

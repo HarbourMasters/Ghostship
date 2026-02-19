@@ -1,0 +1,52 @@
+#pragma once
+
+#include "port/hooks/impl/EventSystem.h"
+#include "include/types.h"
+#include "game/area.h"
+
+typedef enum CapSwitchType {
+    CAP_SWITCH_WING,
+    CAP_SWITCH_METAL,
+    CAP_SWITCH_VANISH,
+} CapSwitchType;
+
+typedef enum BossType {
+    BOSS_TYPE_KING_BOBOMB,
+    BOSS_TYPE_KING_WHOMP,
+    BOSS_TYPE_BIG_BOO_HUNT,
+    BOSS_TYPE_BIG_BOO_MERRY_GO_ROUND,
+    BOSS_TYPE_BIG_BOO_BALCONY,
+    BOSS_TYPE_BIG_BULLY,
+    BOSS_TYPE_EYEROK,
+    BOSS_TYPE_WIGGLER,
+    BOSS_TYPE_CHILL_BULLY,
+    BOSS_TYPE_MR_I,
+    BOSS_TYPE_BOWSER_BITDW,
+    BOSS_TYPE_BOWSER_BITFS,
+    BOSS_TYPE_BOWSER_BITS,
+} BossType;
+
+typedef enum CollectibleType {
+    COLLECTIBLE_TYPE_GRAND_STAR,
+    COLLECTIBLE_TYPE_KEY,
+} CollectibleType;
+
+DEFINE_EVENT(CapSwitchActivated,
+    CapSwitchType type;
+);
+
+DEFINE_EVENT(ChainChompRelease,
+    struct Object* entity;
+);
+
+DEFINE_EVENT(BossDefeated,
+    struct Object* boss;
+    BossType type;
+);
+
+DEFINE_EVENT(SpawnCollectible,
+    CollectibleType itemType;
+    struct Object* spawnedFrom;
+);
+
+DEFINE_EVENT(G)

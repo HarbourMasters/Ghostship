@@ -968,37 +968,41 @@ static u32 set_mario_action_cutscene(struct MarioState *m, u32 action, UNUSED u3
  * specific function if needed.
  */
 u32 set_mario_action(struct MarioState *m, u32 action, u32 actionArg) {
-    switch (action & ACT_GROUP_MASK) {
-        case ACT_GROUP_MOVING:
-            action = set_mario_action_moving(m, action, actionArg);
-            break;
+    CALL_CANCELLABLE_EVENT(PlayerExecuteAction, m, action, actionArg) {
+        switch (action & ACT_GROUP_MASK) {
+            case ACT_GROUP_MOVING:
+                action = set_mario_action_moving(m, action, actionArg);
+                break;
 
-        case ACT_GROUP_AIRBORNE:
-            action = set_mario_action_airborne(m, action, actionArg);
-            break;
+            case ACT_GROUP_AIRBORNE:
+                action = set_mario_action_airborne(m, action, actionArg);
+                break;
 
-        case ACT_GROUP_SUBMERGED:
-            action = set_mario_action_submerged(m, action, actionArg);
-            break;
+            case ACT_GROUP_SUBMERGED:
+                action = set_mario_action_submerged(m, action, actionArg);
+                break;
 
-        case ACT_GROUP_CUTSCENE:
-            action = set_mario_action_cutscene(m, action, actionArg);
-            break;
+            case ACT_GROUP_CUTSCENE:
+                action = set_mario_action_cutscene(m, action, actionArg);
+                break;
+        }
+
+        // Resets the sound played flags, meaning Mario can play those sound types again.
+        m->flags &= ~(MARIO_ACTION_SOUND_PLAYED | MARIO_MARIO_SOUND_PLAYED);
+
+        if (!(m->action & ACT_FLAG_AIR)) {
+            m->flags &= ~MARIO_UNKNOWN_18;
+        }
+
+        // Initialize the action information.
+        m->prevAction = m->action;
+        m->action = action;
+        m->actionArg = actionArg;
+        m->actionState = 0;
+        m->actionTimer = 0;
+    } else {
+        return FALSE;
     }
-
-    // Resets the sound played flags, meaning Mario can play those sound types again.
-    m->flags &= ~(MARIO_ACTION_SOUND_PLAYED | MARIO_MARIO_SOUND_PLAYED);
-
-    if (!(m->action & ACT_FLAG_AIR)) {
-        m->flags &= ~MARIO_UNKNOWN_18;
-    }
-
-    // Initialize the action information.
-    m->prevAction = m->action;
-    m->action = action;
-    m->actionArg = actionArg;
-    m->actionState = 0;
-    m->actionTimer = 0;
 
     return TRUE;
 }
@@ -1354,7 +1358,9 @@ void update_mario_geometry_inputs(struct MarioState *m) {
         }
 
     } else {
-        level_trigger_warp(m, WARP_OP_DEATH);
+        CALL_CANCELLABLE_EVENT(PlayerDeath, m, DEATH_TYPE_OUT_OF_BOUNDS) {
+            level_trigger_warp(m, WARP_OP_DEATH);
+        }
     }
 }
 

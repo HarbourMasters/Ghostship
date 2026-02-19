@@ -745,6 +745,7 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                         sDelayedWarpOp = WARP_OP_GAME_OVER;
                     } else {
                         sSourceWarpNodeId = WARP_NODE_DEATH;
+                        CALL_EVENT(PlayerDeath, gMarioState, DEATH_TYPE_FALL);
                     }
                 }
                 sDelayedWarpTimer = 20;

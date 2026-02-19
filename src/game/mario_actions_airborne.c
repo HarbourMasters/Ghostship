@@ -1539,7 +1539,9 @@ s32 act_lava_boost(struct MarioState *m) {
     }
 
     if (m->health < 0x100) {
-        level_trigger_warp(m, WARP_OP_DEATH);
+        CALL_CANCELLABLE_EVENT(PlayerDeath, m, DEATH_TYPE_LAVA) {
+            level_trigger_warp(m, WARP_OP_DEATH);
+        };
     }
 
     m->marioBodyState->eyeState = MARIO_EYES_DEAD;
