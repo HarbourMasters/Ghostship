@@ -182,7 +182,7 @@ void GenerateShuffleList() {
     }
     gSaveBuffer.files[selectedFileNum][0].shipSaveData.randoSaveData.finalSeed = finalSeed;
 
-    if (CVarGetInteger("gRandoSettings.GenerateLog", 0)) {
+    if (CVarGetInteger("gRandoSettings.GenerateLog", 1)) {
         nlohmann::json spoilerLog = Rando::Spoiler::GenerateFromPoolGeneration(shuffledPool, shuffledEntrances);
         if (spoilerLog.empty()) {
             Notification::Emit(
