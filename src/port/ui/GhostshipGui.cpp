@@ -39,6 +39,16 @@ UIWidgets::Colors GetMenuThemeColor() {
     return mGhostshipMenu->GetMenuThemeColor();
 }
 
+void SetupMenu() {
+    auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
+    mGhostshipMenu = std::make_shared<GhostshipGui::GhostshipMenu>(CVAR_WINDOW("Menu"), "Port Menu");
+    gui->SetMenu(mGhostshipMenu);
+
+    mModalWindow = std::make_shared<GhostshipModalWindow>(CVAR_WINDOW("ModalWindow"), "Modal Window");
+    gui->AddGuiWindow(mModalWindow);
+    mModalWindow->Show();
+}
+
 void SetupGuiElements() {
     auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
 
@@ -72,6 +82,7 @@ void SetupGuiElements() {
     mInputViewerSettings = std::make_shared<InputViewerSettingsWindow>(CVAR_WINDOW("InputViewerSettings"),
                                                                        "Input Viewer Settings", ImVec2(500, 525));
     gui->AddGuiWindow(mInputViewerSettings);
+
     mModalWindow = std::make_shared<GhostshipModalWindow>(CVAR_WINDOW("ModalWindow"), "Modal Window");
     gui->AddGuiWindow(mModalWindow);
     mModalWindow->Show();
@@ -115,6 +126,10 @@ void Destroy() {
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,
                    std::function<void()> button1callback, std::function<void()> button2callback) {
     mModalWindow->RegisterPopup(title, message, button1, button2, button1callback, button2callback);
+}
+
+size_t PopupsQueued() {
+    return mModalWindow->PopupsQueued();
 }
 
 } // namespace GhostshipGui
