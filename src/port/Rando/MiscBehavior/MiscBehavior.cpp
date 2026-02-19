@@ -50,7 +50,9 @@ void Rando::MiscBehavior::Init() {
         }
 
         if (gCurrLevelNum == Rando::StaticData::Entrances[shuffledEntrance].destinationId) {
-            return;
+            if (ev->sourceWarpNode != 241) {
+                return;
+            }
         }
 
         // Skip Bowser Arena entrances for now, plan on adding these in later.
