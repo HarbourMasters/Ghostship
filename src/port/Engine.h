@@ -49,9 +49,11 @@ class GameEngine {
     std::unordered_map<std::string, std::vector<uint8_t>>* dictionary;
 
     GameEngine();
-    static void Create();
+    static void Create(int argc, char* argv[]);
     static bool GenAssetFile(bool exitOnFail = true);
+    void RunExtract(int argc, char* argv[]);
     void AudioInit();
+    void FinishInit();
     void StartFrame() const;
     static void RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);
     static uint32_t GetInterpolationFPS();
@@ -64,7 +66,7 @@ class GameEngine {
     static int ShowYesNoBox(const char* title, const char* box);
     static ImFont *CreateFontWithSize(float size, std::string fontPath);
     static void ScaleImGui();
-    static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
+    // static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);
     static bool IsAltAssetsEnabled();
     void LoadDictionary();
     void LoadPlayerAnims();
