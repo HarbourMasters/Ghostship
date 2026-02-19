@@ -40,13 +40,11 @@ DEFINE_EVENT(ChainChompRelease,
 );
 
 DEFINE_EVENT(BossDefeated,
-    struct Object* boss;
+    struct Object* entity;
     BossType type;
 );
 
 DEFINE_EVENT(SpawnCollectible,
+    struct Object* entity;
     CollectibleType itemType;
-    struct Object* spawnedFrom;
 );
-
-DEFINE_EVENT(G)
