@@ -44,31 +44,7 @@ void Rando::MiscBehavior::Init() {
             return;
         }
 
-        // Skip inter-level area changes.
-        if (gCurrLevelNum == ev->warpNode->destLevel) {
-            return;
-        }
-
-        if (gCurrLevelNum == Rando::StaticData::Entrances[shuffledEntrance].destinationId) {
-            if (ev->sourceWarpNode != 241) {
-                return;
-            }
-        }
-
-        // Skip Bowser Arena entrances for now, plan on adding these in later.
-        if (ev->warpNode->destLevel == LEVEL_BOWSER_1 || ev->warpNode->destLevel == LEVEL_BOWSER_2 ||
-            ev->warpNode->destLevel == LEVEL_BOWSER_3) {
-            currentEntrance = RE_UNKNOWN;
-            shuffledEntrance = RE_UNKNOWN;
-            return;
-        }
-
-        // Skip entering the Castle Courtyard from the Castle Interior.
-        if (currentEntrance == RE_UNKNOWN && ev->warpNode->destLevel == LEVEL_CASTLE_COURTYARD) {
-            return;
-        }
-
-        if (ev->sourceWarpNode > 0 && currentEntrance != RE_UNKNOWN) {
+        if (ev->sourceWarpNode >= 241 && currentEntrance != RE_UNKNOWN) {
             Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
 
             ev->warpNode->destNode = randoStaticEntrance.deathWarpId;
