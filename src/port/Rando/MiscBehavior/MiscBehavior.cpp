@@ -9,6 +9,7 @@ void initiate_warp(s16 destLevel, s16 destArea, s16 destWarpNode, s32 arg3);
 }
 
 static RandoEntranceId currentEntrance = RE_UNKNOWN;
+static RandoEntranceId shuffledEntrance = RE_UNKNOWN;
 
 // Entry point for the module, run once on game boot
 void Rando::MiscBehavior::Init() {
@@ -43,13 +44,12 @@ void Rando::MiscBehavior::Init() {
             return;
         }
 
-        SPDLOG_INFO("Source Warp:   {}", std::to_string(ev->sourceWarpNode));
-        SPDLOG_INFO("Prev Entrance: {}", std::to_string(currentEntrance));
-        SPDLOG_INFO("Current Level: {}", std::to_string(gCurrLevelNum));
-        SPDLOG_INFO("Destination:   {}", std::to_string(ev->warpNode->destLevel));
-
         // Skip inter-level area changes.
         if (gCurrLevelNum == ev->warpNode->destLevel) {
+            return;
+        }
+
+        if (gCurrLevelNum == Rando::StaticData::Entrances[shuffledEntrance].destinationId) {
             return;
         }
 
@@ -84,6 +84,7 @@ void Rando::MiscBehavior::Init() {
             }
 
             currentEntrance = RE_UNKNOWN;
+            shuffledEntrance = RE_UNKNOWN;
         } else {
             RandoEntranceId randoEntranceId;
             for (auto& [randoEntranceId, randoStaticEntrance] : Rando::StaticData::Entrances) {
@@ -98,6 +99,7 @@ void Rando::MiscBehavior::Init() {
                         }
                     }
                     currentEntrance = randoEntranceId;
+                    shuffledEntrance = Rando::StaticData::GetEntranceIdFromDestination(ev->warpNode->destLevel);
                     break;
                 }
             }
