@@ -4,10 +4,13 @@
 
 #include "sm64.h"
 #include "game/level_update.h"
-#include "menu/title_screen.h"
 #include "port/hooks/Events.h"
 #include "assets/bin/segment2.h"
-#include "port/ShipInit.hpp"
+#include "port/Rando/Rando.h"
+#include "port/ShipUtils.h"
+
+int8_t textRand[] = { 0x1B, 0x0A, 0x17, 0x0D, 0xFF };
+int8_t textMarioRando[] = { 0x1B, 0x0A, 0x17, 0x0D, 0x18, 0x16, 0x12, 0x23, 0x0E, 0x1B, 0xFF };
 
 static const Mtx matrix_patch_identity = {
     { { 1.0f, 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f, 1.0f } }
@@ -80,6 +83,18 @@ void PortEnhancements_Init() {
             gNeverEnteredCastle = false;
         }
     });
+
+    auto OnDistanceFunc = [](IEvent* event) {
+        if (CVarGetInteger("gEnhancements.DisableDrawDistance", 0) == 0) {
+            return;
+        }
+
+        EntityDistanceRender* ev = (EntityDistanceRender*)event;
+        *ev->visible = true;
+    };
+
+    REGISTER_LISTENER(EntityDistanceLoad, EVENT_PRIORITY_NORMAL, OnDistanceFunc);
+    REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDistanceFunc);
 }
 
 void PortEnhancements_Register() {
@@ -89,8 +104,29 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(GeoLayoutCallASM);
     REGISTER_EVENT(LevelScriptCallLoop);
     REGISTER_EVENT(LevelScriptBeginArea);
+    REGISTER_EVENT(LevelScriptExecute);
+    REGISTER_EVENT(EntityDistanceRender);
+    REGISTER_EVENT(EntityDistanceLoad);
+
     REGISTER_EVENT(RenderPauseCourseOptions);
 
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
+
+    // Register Rando Events
+    REGISTER_EVENT(ItemCollected);
+    REGISTER_EVENT(MacroObjectOverride);
+    REGISTER_EVENT(SpawnStar);
+    REGISTER_EVENT(SpawnCoinStar);
+    REGISTER_EVENT(ModifyDefaultStar);
+    REGISTER_EVENT(ModifyObjectBehavior);
+    REGISTER_EVENT(ModifyRedCoinCount);
+    REGISTER_EVENT(ModifyObjectVisibility);
+    REGISTER_EVENT(ChangeLevel);
+    REGISTER_EVENT(ExitLevel);
+    REGISTER_EVENT(OnGameFileLoad);
+    REGISTER_EVENT(OnGameFileSave);
+
+    Rando::Init();
+    LoadGuiTextures();
 }

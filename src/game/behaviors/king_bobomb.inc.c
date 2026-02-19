@@ -366,11 +366,15 @@ void king_bobomb_move(void) {
     cur_obj_call_action_function(sKingBobombActions);
     exec_anim_sound_state(sKingBobombSoundStates);
 
-    if (o->oDistanceToMario < 5000.0f) {
-        cur_obj_enable_rendering();
-    } else {
-        cur_obj_disable_rendering();
-    }
+    bool visible = o->oDistanceToMario < 5000.0f;
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceRender, &visible) {
+        if (visible) {
+            cur_obj_enable_rendering();
+        } else {
+            cur_obj_disable_rendering();
+        }
+    };
 }
 
 void bhv_king_bobomb_loop(void) {

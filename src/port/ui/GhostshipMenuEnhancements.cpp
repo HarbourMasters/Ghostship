@@ -39,6 +39,11 @@ void GhostshipMenu::AddMenuEnhancements() {
 
     AddWidget(path, "Game", WIDGET_SEPARATOR_TEXT);
 
+    AddWidget(path, "Disable Draw Distance", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisableDrawDistance"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Disables the draw distance, rendering all objects immediately."));
+
     AddWidget(path, "Show Power Meter Always", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("AlwaysShowPowerMeter"))
         .RaceDisable(false)

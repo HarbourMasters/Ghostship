@@ -1,4 +1,5 @@
 #include <libultra/types.h>
+#include "port/hooks/list/PlayerEvent.h"
 
 #include "sm64.h"
 #include "area.h"
@@ -521,6 +522,7 @@ struct Object *spawn_object_at_origin(struct Object *parent, UNUSED s32 unusedAr
     behaviorAddr = segmented_to_virtual(behavior);
     obj = create_object(behaviorAddr);
 
+    obj->modelId = model;
     obj->parentObj = parent;
     obj->header.gfx.areaIndex = parent->header.gfx.areaIndex;
     obj->header.gfx.activeAreaIndex = parent->header.gfx.areaIndex;
@@ -2317,7 +2319,7 @@ void cur_obj_call_action_function(void (*actionFunctions[])(void)) {
 }
 
 static struct Object *spawn_star_with_no_lvl_exit(s32 sp20, s32 sp24) {
-    struct Object *sp1C = spawn_object(o, MODEL_STAR, bhvSpawnedStarNoLevelExit);
+    struct Object* sp1C = spawn_object(o, MODEL_STAR, bhvSpawnedStarNoLevelExit);
     sp1C->oSparkleSpawnUnk1B0 = sp24;
     sp1C->oBehParams = o->oBehParams;
     sp1C->oBehParams2ndByte = sp20;
@@ -2474,13 +2476,19 @@ void cur_obj_if_hit_wall_bounce_away(void) {
 }
 
 s32 cur_obj_hide_if_mario_far_away_y(f32 distY) {
-    if (absf(o->oPosY - gMarioObject->oPosY) < distY) {
-        cur_obj_unhide();
-        return FALSE;
-    } else {
-        cur_obj_hide();
-        return TRUE;
+    bool visible = absf(o->oPosY - gMarioObject->oPosY) < distY;
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceRender, &visible) {
+        if (visible) {
+            cur_obj_unhide();
+            return FALSE;
+        } else {
+            cur_obj_hide();
+            return TRUE;
+        }
     }
+
+    return !visible;
 }
 
 Gfx *geo_offset_klepto_held_object(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {

@@ -40,8 +40,9 @@ void bhv_red_coin_init(void) {
     } else {
         o->parentObj = NULL;
     }
-
-    obj_set_hitbox(o, &sRedCoinHitbox);
+    CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_RED_COIN) {
+        obj_set_hitbox(o, &sRedCoinHitbox);
+    }
 }
 
 /**
@@ -55,6 +56,10 @@ void bhv_red_coin_loop(void) {
         if (o->parentObj != NULL) {
             // ...increment the star's counter.
             o->parentObj->oHiddenStarTriggerCounter++;
+
+            if (o->parentObj->oHiddenStarTriggerCounter < 7) {
+                o->parentObj->oHiddenStarTriggerCounter = 7;
+            }
 
             // Spawn the orange number counter, as long as it isn't the last coin.
             if (o->parentObj->oHiddenStarTriggerCounter != 8) {

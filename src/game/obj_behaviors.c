@@ -533,11 +533,15 @@ void set_object_visibility(struct Object *obj, s32 dist) {
     f32 objY = obj->oPosY;
     f32 objZ = obj->oPosZ;
 
-    if (is_point_within_radius_of_mario(objX, objY, objZ, dist) == TRUE) {
-        obj->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
-    } else {
-        obj->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
-    }
+    bool visible = is_point_within_radius_of_mario(objX, objY, objZ, dist) == TRUE;
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceRender, &visible) {
+        if (visible) {
+            obj->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+        } else {
+            obj->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+        }
+    };
 }
 
 /**

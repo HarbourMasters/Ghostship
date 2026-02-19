@@ -11,6 +11,9 @@
 #include "Notification.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
+#include "port/ui/ObjectViewer.h"
+#include "port/Rando/CheckTracker/CheckTracker.h"
+#include "port/Rando/EntranceTracker/EntranceTracker.h"
 
 #include <ship/window/gui/ConsoleWindow.h>
 
@@ -23,7 +26,14 @@ std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
 std::shared_ptr<GhostshipModalWindow> mModalWindow;
+std::shared_ptr<ObjectViewer> mObjectViewer;
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
+
+std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
+std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
+
+std::shared_ptr<Rando::EntranceTracker::EntranceTrackerWindow> mRandoEntranceTrackerWindow;
+std::shared_ptr<Rando::EntranceTracker::SettingsWindow> mRandoEntranceTrackerSettingsWindow;
 
 UIWidgets::Colors GetMenuThemeColor() {
     return mGhostshipMenu->GetMenuThemeColor();
@@ -50,6 +60,12 @@ void SetupGuiElements() {
     mConsoleWindow = std::make_shared<Ship::ConsoleWindow>(CVAR_WINDOW("DevConsole"), "Console##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mConsoleWindow);
 
+    mObjectViewer = std::make_shared<ObjectViewer>(CVAR_WINDOW("ObjectViewer"), "Object Viewer##Dev", ImVec2(820, 630));
+    gui->AddGuiWindow(mObjectViewer);
+
+    mGhostshipMenu = std::make_shared<GhostshipMenu>(CVAR_WINDOW("Menu"), "Settings Menu");
+    gui->SetMenu(mGhostshipMenu);
+
     mSaveEditorWindow = std::make_shared<SaveEditorWindow>(CVAR_WINDOW("SaveEditor"), "Save Editor");
     gui->AddGuiWindow(mSaveEditorWindow);
 
@@ -66,6 +82,26 @@ void SetupGuiElements() {
     mInputViewerSettings = std::make_shared<InputViewerSettingsWindow>(CVAR_WINDOW("InputViewerSettings"),
                                                                        "Input Viewer Settings", ImVec2(500, 525));
     gui->AddGuiWindow(mInputViewerSettings);
+
+    mModalWindow = std::make_shared<GhostshipModalWindow>(CVAR_WINDOW("ModalWindow"), "Modal Window");
+    gui->AddGuiWindow(mModalWindow);
+    mModalWindow->Show();
+
+    mRandoCheckTrackerWindow = std::make_shared<Rando::CheckTracker::CheckTrackerWindow>(
+        "gWindows.CheckTracker", "Check Tracker", ImVec2(375, 460));
+    gui->AddGuiWindow(mRandoCheckTrackerWindow);
+
+    mRandoCheckTrackerSettingsWindow = std::make_shared<Rando::CheckTracker::SettingsWindow>(
+        "gWindows.CheckTrackerSettings", "Check Tracker Settings");
+    gui->AddGuiWindow(mRandoCheckTrackerSettingsWindow);
+
+    mRandoEntranceTrackerWindow = std::make_shared<Rando::EntranceTracker::EntranceTrackerWindow>(
+        "gWindows.EntranceTracker", "Entrance Tracker", ImVec2(375, 460));
+    gui->AddGuiWindow(mRandoEntranceTrackerWindow);
+
+    mRandoEntranceTrackerSettingsWindow = std::make_shared<Rando::EntranceTracker::SettingsWindow>(
+        "gWindows.EntranceTrackerSettings", "Entrance Tracker Settings");
+    gui->AddGuiWindow(mRandoEntranceTrackerSettingsWindow);
 }
 
 void Destroy() {
@@ -79,7 +115,12 @@ void Destroy() {
     mNotificationWindow = nullptr;
     mInputViewer = nullptr;
     mInputViewerSettings = nullptr;
+    mRandoCheckTrackerWindow = nullptr;
+    mRandoCheckTrackerSettingsWindow = nullptr;
+    mRandoEntranceTrackerWindow = nullptr;
+    mRandoEntranceTrackerSettingsWindow = nullptr;
     mConsoleWindow = nullptr;
+    mObjectViewer = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

@@ -1,0 +1,107 @@
+#include "MiscBehavior.h"
+#include "port/Rando/Logic/Logic.h"
+#include "port/Rando/Spoiler/Spoiler.h"
+#include "port/ui/Notification.h"
+
+extern "C" {
+extern struct SaveBuffer gSaveBuffer;
+}
+
+bool SpoilerExistsForFileName(std::string fileName) {
+    nlohmann::json spoilerCheck = Rando::Spoiler::LoadFromFile(fileName);
+    if (spoilerCheck.empty()) {
+        Notification::Emit({ .message = "Error: No Spoiler Log found.", .messageColor = ImVec4(0.85f, 0.3f, 0, 1) });
+        return false;
+    } else {
+        return true;
+    }
+}
+
+void Rando::MiscBehavior::OnFileLoad() {
+    REGISTER_LISTENER(OnGameFileLoad, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        OnGameFileLoad* ev = (OnGameFileLoad*)event;
+        selectedFileNum = ev->fileNum - 1;
+
+        bool loadedFromSpoiler = false;
+
+        if (!CVarGetInteger("gRandoSettings.Enabled", 0)) {
+            gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_VANILLA;
+            Rando::Logic::shuffledPool.clear();
+            return;
+        }
+
+        if (!IS_RANDO(selectedFileNum)) {
+            gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
+            Rando::Logic::InitializeSaveChecks();
+            Rando::Logic::InitializeSaveEntrances();
+            Rando::Logic::InitializeSaveOptions();
+
+            if (CVarGetInteger("gRandoSettings.ManualSeedEntry", 0)) {
+                Rando::Logic::GenerateShuffleList();
+            } else if (CVarGetInteger("gRandoSettings.UseExistingLog", 0)) {
+                std::string fileName =
+                    Rando::Spoiler::spoilerLogs.at(CVarGetInteger("gRandoSettings.SpoilerFileIndex", 0));
+                bool logExists = SpoilerExistsForFileName(fileName);
+                if (!logExists) {
+                    Rando::Logic::GenerateShuffleList();
+                } else {
+                    nlohmann::json loadedSpoiler = Rando::Spoiler::LoadFromFile(fileName);
+                    Rando::Spoiler::GenerateFromSpoiler(loadedSpoiler);
+                    loadedFromSpoiler = true;
+                }
+            } else {
+                Rando::Logic::GenerateShuffleList();
+            }
+
+            for (auto& pool : Rando::Logic::shuffledPool) {
+                RandoSaveCheck randoSaveCheck;
+                randoSaveCheck.randoItemId = pool.randoItemId;
+                randoSaveCheck.randoAct = pool.randoAct;
+                randoSaveCheck.obtained = pool.obtained;
+                randoSaveCheck.skipped = pool.skipped;
+
+                RANDO_SAVE_CHECKS(selectedFileNum)[pool.randoCheckId] = randoSaveCheck;
+            }
+
+            if (!Rando::Logic::shuffledEntrances.empty()) {
+                for (auto& entrance : Rando::Logic::shuffledEntrances) {
+                    RandoSaveEntrance randoSaveEntrance;
+                    randoSaveEntrance.randoEntranceId = entrance.randoEntranceId;
+                    randoSaveEntrance.destinationId = entrance.destinationId;
+                    randoSaveEntrance.found = entrance.found;
+
+                    RANDO_SAVE_ENTRANCES(selectedFileNum)[entrance.randoEntranceId] = randoSaveEntrance;
+                }
+            }
+
+            if (!loadedFromSpoiler) {
+                for (auto& [randoOptionId, optionData] : Rando::StaticData::Options) {
+                    RANDO_SAVE_OPTIONS(selectedFileNum)
+                    [randoOptionId] = CVarGetInteger(optionData.cvar, optionData.defaultValue);
+                }
+            }
+
+            Notification::Emit(
+                { .message = "Spoiler written to Save File.", .messageColor = ImVec4(0, 0.85f, 0.3f, 1) });
+            save_file_do_save(selectedFileNum);
+        } else {
+            Rando::Logic::shuffledPool.clear();
+            for (size_t i = 0; i < RC_MAX; i++) {
+                RandoSaveCheck randoSaveCheck = RANDO_SAVE_CHECKS(selectedFileNum)[i];
+                LevelShuffleEntry entry;
+                entry.randoCheckId = (RandoCheckId)i;
+                entry.randoItemId = randoSaveCheck.randoItemId;
+                entry.randoAct = randoSaveCheck.randoAct;
+                entry.obtained = randoSaveCheck.obtained;
+                entry.skipped = randoSaveCheck.skipped;
+                Rando::Logic::shuffledPool.push_back(entry);
+            }
+
+            Rando::Logic::shuffledEntrances.clear();
+            for (size_t e = 0; e < RE_MAX; e++) {
+                RandoSaveEntrance randoSaveEntrance = RANDO_SAVE_ENTRANCES(selectedFileNum)[e];
+                Rando::Logic::shuffledEntrances.push_back(randoSaveEntrance);
+            }
+        }
+    });
+}

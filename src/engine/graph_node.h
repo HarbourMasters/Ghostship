@@ -20,6 +20,7 @@
 #define GRAPH_RENDER_Z_BUFFER       (1 << 3)
 #define GRAPH_RENDER_INVISIBLE      (1 << 4)
 #define GRAPH_RENDER_HAS_ANIMATION  (1 << 5)
+#define GRAPH_RENDER_DRAW_DEBUG     (1 << 6)
 
 // Whether the node type has a function pointer of type GraphNodeFunc
 #define GRAPH_NODE_TYPE_FUNCTIONAL            0x100

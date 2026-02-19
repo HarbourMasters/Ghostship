@@ -2,6 +2,7 @@
 #define SAVE_FILE_H
 
 #include <libultra/types.h>
+#include "port/Rando/Types.h"
 
 #include "types.h"
 #include "area.h"
@@ -16,6 +17,41 @@
 struct SaveBlockSignature {
     u16 magic;
     u16 chksum;
+};
+
+struct RandoSaveCheck {
+    RandoItemId randoItemId;
+    RandoAct randoAct;
+    bool obtained;
+    bool skipped;
+};
+
+struct RandoSaveEntrance {
+    RandoEntranceId randoEntranceId;
+    int16_t destinationId;
+    bool found;
+};
+
+struct RandoSaveOption {
+    const char* randoOptionName;
+    int32_t randoOptionValue;
+};
+
+typedef enum {
+    SAVETYPE_VANILLA,
+    SAVETYPE_RANDO,
+} SaveType;
+
+struct RandoSaveData {
+    struct RandoSaveCheck randoSaveChecks[RC_MAX];
+    struct RandoSaveEntrance randoSaveEntrances[RE_MAX];
+    u32 randoSaveOptions[RO_MAX];
+    u32 finalSeed;
+};
+
+struct ShipSaveData {
+    SaveType saveType;
+    struct RandoSaveData randoSaveData;
 };
 
 struct SaveFile {
@@ -38,6 +74,7 @@ struct SaveFile {
     struct SaveBlockSignature signature;
 
     // @port: Custom data needs to go after this point
+    struct ShipSaveData shipSaveData;
 };
 
 enum SaveFileIndex {
@@ -62,11 +99,12 @@ struct MainMenuSaveData {
 #endif
 
     // Pad to match the EEPROM size of 0x200 (10 bytes on JP/US, 8 bytes on EU)
-    u8 filler[EEPROM_SIZE / 2 - SUBTRAHEND - NUM_SAVE_FILES * (4 + sizeof(struct SaveFile))];
+    u8 filler[EEPROM_SIZE / 2 - SUBTRAHEND - NUM_SAVE_FILES * (4 + SAVE_FILE_SIZE)];
 
     struct SaveBlockSignature signature;
 
     // @port: Custom data needs to go after this point
+    struct ShipSaveData shipSaveData;
 };
 
 struct SaveBuffer {
@@ -135,6 +173,11 @@ extern struct WarpCheckpoint gWarpCheckpoint;
 extern s8 gMainMenuDataModified;
 extern s8 gSaveFileModified;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 void save_file_do_save(s32 fileIndex);
 void save_file_erase(s32 fileIndex);
 BAD_RETURN(s32) save_file_copy(s32 srcFileIndex, s32 destFileIndex);
@@ -162,6 +205,10 @@ void save_file_move_cap_to_default_location(void);
 void disable_warp_checkpoint(void);
 void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode);
 s32 check_warp_checkpoint(struct WarpNode *warpNode);
+
+#ifdef __cplusplus
+}
+#endif
 
 #ifdef VERSION_EU
 enum EuLanguages {

@@ -35,9 +35,13 @@ void fire_bar_spawn_flames(s16 a0) {
 }
 
 void fire_bar_act_0(void) {
-    if (o->oDistanceToMario < 3000.0f) {
-        o->oAction = 1;
-    }
+    bool visible = o->oDistanceToMario < 3000.0f;
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+        if (visible) {
+            o->oAction = 1;
+        }
+    };
 }
 
 void fire_bar_act_1(void) {
@@ -49,11 +53,15 @@ void fire_bar_act_1(void) {
 }
 
 void fire_bar_act_2(void) {
+    bool visible = o->oDistanceToMario <= 3200.0f;
     o->oAngleVelYaw = -0x100;
     o->oMoveAngleYaw += o->oAngleVelYaw;
-    if (o->oDistanceToMario > 3200.0f) {
-        o->oAction = 3;
-    }
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+        if (!visible) {
+            o->oAction = 3;
+        }
+    };
 }
 
 void fire_bar_act_3(void) {

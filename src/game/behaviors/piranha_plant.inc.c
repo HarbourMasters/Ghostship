@@ -337,11 +337,15 @@ void bhv_piranha_plant_loop(void) {
 
     // In WF, hide all Piranha Plants once high enough up.
     if (gCurrLevelNum == LEVEL_WF) {
-        if (gMarioObject->oPosY > 3400.0f) {
-            cur_obj_hide();
-        } else {
-            cur_obj_unhide();
-        }
+        bool visible = gMarioObject->oPosY <= 3400.0f;
+
+        CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+            if (!visible) {
+                cur_obj_hide();
+            } else {
+                cur_obj_unhide();
+            }
+        };
     }
 
     o->oInteractStatus = 0;

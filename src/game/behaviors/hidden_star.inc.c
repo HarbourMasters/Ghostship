@@ -55,7 +55,9 @@ void bhv_hidden_star_trigger_loop(void) {
 }
 
 void bhv_bowser_course_red_coin_star_loop(void) {
-    gRedCoinsCollected = o->oHiddenStarTriggerCounter;
+    CALL_CANCELLABLE_EVENT(ModifyRedCoinCount, &gRedCoinsCollected) {
+        gRedCoinsCollected = o->oHiddenStarTriggerCounter;
+    }
 
     switch (o->oAction) {
         case 0:

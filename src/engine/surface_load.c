@@ -789,9 +789,13 @@ void load_object_collision_model(void) {
         }
     }
 
-    if (marioDist < gCurrentObject->oDrawingDistance) {
-        gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
-    } else {
-        gCurrentObject->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
-    }
+    bool visible = (marioDist < gCurrentObject->oDrawingDistance);
+
+    CALL_CANCELLABLE_EVENT(EntityDistanceLoad, &visible) {
+        if (visible) {
+            gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
+        } else {
+            gCurrentObject->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
+        }
+    };
 }

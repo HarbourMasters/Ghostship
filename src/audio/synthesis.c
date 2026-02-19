@@ -681,7 +681,7 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
         if (IS_BANK_LOAD_COMPLETE(note->bankId) == FALSE) {
 #endif
             gAudioErrorFlags = (note->bankId << 8) + noteIndex + 0x1000000;
-        } else if (note->enabled == TRUE) {
+        } else if (note->enabled == TRUE && note->synthesisBuffers != NULL) {
 #else
         if (note->noteSubEu.enabled == FALSE) {
             return cmd;
@@ -1196,14 +1196,16 @@ u64 *load_wave_samples(u64 *cmd, struct NoteSubEu *noteSubEu, struct NoteSynthes
 u64 *load_wave_samples(u64 *cmd, struct Note *note, s32 nSamplesToLoad) {
     s32 a3;
     s32 i;
-    aSetBuffer(cmd++, /*flags*/ 0, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ 0,
+    if (note->synthesisBuffers != NULL) {
+        aSetBuffer(cmd++, /*flags*/ 0, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ 0,
                /*count*/ sizeof(note->synthesisBuffers->samples));
-    aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->samples));
-    note->samplePosInt &= (note->sampleCount - 1);
-    a3 = 64 - note->samplePosInt;
-    if (a3 < nSamplesToLoad) {
-        for (i = 0; i <= (nSamplesToLoad - a3 + 63) / 64 - 1; i++) {
-            aDMEMMove(cmd++, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ DMEM_ADDR_UNCOMPRESSED_NOTE + (1 + i) * sizeof(note->synthesisBuffers->samples), /*count*/ sizeof(note->synthesisBuffers->samples));
+        aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->samples));
+        note->samplePosInt &= (note->sampleCount - 1);
+        a3 = 64 - note->samplePosInt;
+        if (a3 < nSamplesToLoad) {
+            for (i = 0; i <= (nSamplesToLoad - a3 + 63) / 64 - 1; i++) {
+                aDMEMMove(cmd++, /*dmemin*/ DMEM_ADDR_UNCOMPRESSED_NOTE, /*dmemout*/ DMEM_ADDR_UNCOMPRESSED_NOTE + (1 + i) * sizeof(note->synthesisBuffers->samples), /*count*/ sizeof(note->synthesisBuffers->samples));
+            }
         }
     }
     return cmd;

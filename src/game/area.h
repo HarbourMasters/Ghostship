@@ -7,6 +7,10 @@
 #include "camera.h"
 #include "engine/graph_node.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct WarpNode {
     /*00*/ u8 id;
     /*01*/ u8 destLevel;
@@ -39,6 +43,7 @@ struct SpawnInfo {
     /*0x14*/ void *behaviorScript;
     /*0x18*/ struct GraphNode *model;
     /*0x1C*/ struct SpawnInfo *next;
+    /*0x20*/ u32 modelId;
 };
 
 struct UnusedArea28 {
@@ -126,10 +131,6 @@ enum MenuOption {
     MENU_OPT_SAVE_AND_QUIT = MENU_OPT_2,
     MENU_OPT_CONTINUE_DONT_SAVE = MENU_OPT_3
 };
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 extern struct GraphNode **gLoadedGraphNodes;
 extern struct SpawnInfo gPlayerSpawnInfos[];

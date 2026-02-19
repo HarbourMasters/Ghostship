@@ -27,3 +27,16 @@ DEFINE_EVENT(GeoLayoutCallASM,
 );
 
 DEFINE_EVENT(LevelInitFromSaveFile);
+
+DEFINE_EVENT(LevelScriptExecute,
+    u8 command;
+);
+
+// TODO: These could probably have better names, but for now they are fine.
+DEFINE_EVENT(EntityDistanceRender,
+    bool* visible;
+);
+
+DEFINE_EVENT(EntityDistanceLoad,
+    bool* visible;
+);

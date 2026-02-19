@@ -1,5 +1,14 @@
 #include "GhostshipMenu.h"
 #include "port/mods/BetterLevelSelect.h"
+#include "game/object_list_processor.h"
+#include "include/behavior_data.h"
+#include "game/level_update.h"
+
+extern "C" {
+struct Object* spawn_object_abs_with_rot(struct Object* parent, s16 uselessArg, u32 model,
+                                         const BehaviorScript* behavior, s16 x, s16 y, s16 z, s16 pitch, s16 yaw,
+                                         s16 roll);
+}
 
 namespace GhostshipGui {
 
@@ -105,6 +114,14 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Console##Dev")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Console Window."));
+
+    path.sidebarName = "Object Viewer";
+    AddSidebarEntry("Dev Tools", path.sidebarName, 1);
+    AddWidget(path, "Popout Object Viewer", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("ObjectViewer"))
+        .WindowName("Object Viewer##Dev")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Enables the separate Object Viewer Window."));
 }
 
 } // namespace GhostshipGui
