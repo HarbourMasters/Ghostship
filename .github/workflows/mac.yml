@@ -3,16 +3,19 @@ on: [pull_request]
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Install dependencies
-        run: brew install sdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools
-      - name: Build
+      - name: Setup MacPorts
+        uses: melusina-org/setup-macports@v1
+      - name: Install dependencies (Universal)
+        run: sudo port install libsdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools +universal
+      - name: Build (Universal)
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          # CMAKE_OSX_ARCHITECTURES triggers the dual-architecture build
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64"
           cmake --build build-cmake -j
       - name: Create Package
         run: |
@@ -21,6 +24,6 @@ jobs:
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-            name: ghostship-mac-x64
+            name: ghostship-mac-universal
             path: ghostship-release
             retention-days: 1
