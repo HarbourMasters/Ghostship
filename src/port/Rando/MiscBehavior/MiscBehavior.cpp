@@ -57,6 +57,7 @@ void Rando::MiscBehavior::Init() {
         if (ev->warpNode->destLevel == LEVEL_BOWSER_1 || ev->warpNode->destLevel == LEVEL_BOWSER_2 ||
             ev->warpNode->destLevel == LEVEL_BOWSER_3) {
             currentEntrance = RE_UNKNOWN;
+            shuffledEntrance = RE_UNKNOWN;
             return;
         }
 
