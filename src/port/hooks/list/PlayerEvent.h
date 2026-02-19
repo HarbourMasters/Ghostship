@@ -4,6 +4,19 @@
 #include "include/types.h"
 #include "game/area.h"
 
+typedef enum PlayerDeathType {
+    DEATH_TYPE_DEFAULT,
+    DEATH_TYPE_FALL,
+    DEATH_TYPE_LAVA,
+    DEATH_TYPE_FIRE,
+    DEATH_TYPE_QUICKSAND,
+    DEATH_TYPE_EATEN,
+    DEATH_TYPE_SQUISHED,
+    DEATH_TYPE_DROWNING,
+    DEATH_TYPE_WHIRLPOOL,
+    DEATH_TYPE_OUT_OF_BOUNDS,
+} PlayerDeathType;
+
 DEFINE_EVENT(PlayerHealthChange,
     struct MarioState* m;
     s32 health;
@@ -12,6 +25,22 @@ DEFINE_EVENT(PlayerHealthChange,
 DEFINE_EVENT(PlayerLivesChange,
     struct MarioState* m;
     s32 lives;
+);
+
+DEFINE_EVENT(PlayerStartedDialog,
+    struct MarioState* m;
+    int32_t dialogId;
+);
+
+DEFINE_EVENT(PlayerDeath,
+    struct MarioState* m;
+    PlayerDeathType type;
+);
+
+DEFINE_EVENT(PlayerExecuteAction,
+    struct MarioState* m;
+    u32 action;
+    u32 arg;
 );
 
 DEFINE_EVENT(ItemCollected,
@@ -68,12 +97,4 @@ DEFINE_EVENT(ChangeLevel,
 
 DEFINE_EVENT(ExitLevel,
     int16_t menuOption;
-);
-
-DEFINE_EVENT(OnGameFileLoad,
-    s32 fileNum;
-);
-
-DEFINE_EVENT(OnGameFileSave,
-    s32 fileNum;
 );

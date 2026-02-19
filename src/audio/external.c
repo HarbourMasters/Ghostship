@@ -2265,6 +2265,16 @@ void play_dialog_sound(u8 dialogID) {
 #endif
 }
 
+u8 is_sequence_playing(u16 seqId) {
+    int i;
+    for (i = 0; i < sBackgroundMusicQueueSize; i++) {
+        if (sBackgroundMusicQueue[i].seqId == seqId) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 /**
  * Called from threads: thread5_game_loop
  */

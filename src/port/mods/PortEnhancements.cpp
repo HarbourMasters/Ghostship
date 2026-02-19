@@ -99,19 +99,24 @@ void PortEnhancements_Init() {
 
 void PortEnhancements_Register() {
     // Register engine events
+    REGISTER_EVENT(OnGameFileLoad);
+    REGISTER_EVENT(OnGameFileSave);
     REGISTER_EVENT(GameFrameUpdate);
-    REGISTER_EVENT(LevelInitFromSaveFile);
     REGISTER_EVENT(GeoLayoutCallASM);
+    REGISTER_EVENT(LevelScriptExecute);
+    REGISTER_EVENT(EntityDistanceLoad);
     REGISTER_EVENT(LevelScriptCallLoop);
     REGISTER_EVENT(LevelScriptBeginArea);
-    REGISTER_EVENT(LevelScriptExecute);
     REGISTER_EVENT(EntityDistanceRender);
-    REGISTER_EVENT(EntityDistanceLoad);
-
+    REGISTER_EVENT(LevelInitFromSaveFile);
     REGISTER_EVENT(RenderPauseCourseOptions);
 
+    // Register player events
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
+    REGISTER_EVENT(PlayerStartedDialog);
+    REGISTER_EVENT(PlayerDeath);
+    REGISTER_EVENT(PlayerExecuteAction);
 
     // Register Rando Events
     REGISTER_EVENT(ItemCollected);
@@ -124,8 +129,12 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(ModifyObjectVisibility);
     REGISTER_EVENT(ChangeLevel);
     REGISTER_EVENT(ExitLevel);
-    REGISTER_EVENT(OnGameFileLoad);
-    REGISTER_EVENT(OnGameFileSave);
+
+    // Register game events
+    REGISTER_EVENT(CapSwitchActivated);
+    REGISTER_EVENT(ChainChompRelease);
+    REGISTER_EVENT(BossDefeated);
+    REGISTER_EVENT(SpawnCollectible);
 
     Rando::Init();
     LoadGuiTextures();

@@ -1158,11 +1158,16 @@ void bowser_act_dance(void) {
  */
 void bowser_spawn_collectable(void) {
     if (o->oBehParams2ndByte == BOWSER_BP_BITS) {
-        gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
+        CALL_CANCELLABLE_EVENT(SpawnCollectible, o, COLLECTIBLE_TYPE_GRAND_STAR) {
+            gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
+        };
     } else {
-        gSecondCameraFocus = spawn_object(o, MODEL_BOWSER_KEY, bhvBowserKey);
-        cur_obj_play_sound_2(SOUND_GENERAL2_BOWSER_KEY);
+        CALL_CANCELLABLE_EVENT(SpawnCollectible, o, COLLECTIBLE_TYPE_KEY) {
+            gSecondCameraFocus = spawn_object(o, MODEL_BOWSER_KEY, bhvBowserKey);
+            cur_obj_play_sound_2(SOUND_GENERAL2_BOWSER_KEY);
+        };
     }
+
     gSecondCameraFocus->oAngleVelYaw = o->oAngleVelYaw;
 }
 
@@ -1272,21 +1277,23 @@ s32 bowser_dead_default_stage_ending(void) {
     s32 ret = FALSE;
 
     if (o->oBowserTimer < 2) {
-        // Lower music volume
-        if (o->oBowserTimer == 0) {
-            seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
-            o->oBowserTimer++;
-        }
-        // Play Bowser defeated dialog
-        if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED),
-            sBowserDefeatedDialogText[o->oBehParams2ndByte], 0)) {
-            // Dialog is done, fade out music and play explode sound effect
-            o->oBowserTimer++;
-            cur_obj_play_sound_2(SOUND_GENERAL2_BOWSER_EXPLODE);
-            seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
-            seq_player_fade_out(SEQ_PLAYER_LEVEL, 1);
-        }
+        CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_BOWSER_BITDW + o->oBehParams2ndByte) {
+            // Lower music volume
+            if (o->oBowserTimer == 0) {
+                seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
+                o->oBowserTimer++;
+            }
+            // Play Bowser defeated dialog
+            if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
+                (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED),
+                sBowserDefeatedDialogText[o->oBehParams2ndByte], 0)) {
+                // Dialog is done, fade out music and play explode sound effect
+                o->oBowserTimer++;
+                cur_obj_play_sound_2(SOUND_GENERAL2_BOWSER_EXPLODE);
+                seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
+                seq_player_fade_out(SEQ_PLAYER_LEVEL, 1);
+            }
+        };
     // Hide Bowser and spawn collectable once done twirling
     } else if (bowser_dead_twirl_up()) {
         bowser_dead_hide();

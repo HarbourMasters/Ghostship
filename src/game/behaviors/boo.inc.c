@@ -597,13 +597,15 @@ static void big_boo_act_3(void) {
 
             obj_set_angle(o, 0, 0, 0);
 
-            if (o->oBehParams2ndByte == 0) {
-                big_boo_spawn_ghost_hunt_star();
-            } else if (o->oBehParams2ndByte == 1) {
-                big_boo_spawn_merry_go_round_star();
-            } else {
-                big_boo_spawn_balcony_star();
-            }
+            CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_BIG_BOO_HUNT + o->oBehParams2ndByte) {
+                if (o->oBehParams2ndByte == 0) {
+                    big_boo_spawn_ghost_hunt_star();
+                } else if (o->oBehParams2ndByte == 1) {
+                    big_boo_spawn_merry_go_round_star();
+                } else {
+                    big_boo_spawn_balcony_star();
+                }
+            };
         }
     } else {
         if (o->oTimer == 0) {
