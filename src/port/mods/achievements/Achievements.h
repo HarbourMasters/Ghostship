@@ -18,7 +18,6 @@ struct AchievementProgress {
 };
 
 struct Achievement {
-    std::string id;
     AchievementCategory category;
     std::string name;
     const char* icon;
@@ -32,6 +31,6 @@ struct AchievementSaveData {
     bool cheated;
 };
 
-extern std::vector<Achievement> gAchievementList;
+extern std::unordered_map<std::string, Achievement> gAchievementList;
 
 extern AchievementProgress* Achievement_GetProgress(const std::string& id);

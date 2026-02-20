@@ -29,16 +29,17 @@ void AchievementsWindow::UpdateElement() {
     // No dynamic updates needed for now
 }
 
-void DrawAchievementCard(const Achievement& ach, float cardWidth) {
+void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPair, float cardWidth) {
+    const Achievement& ach = achPair.second;
     const float cardHeight = 100.0f;
-    const auto data = Achievement_GetProgress(ach.id);
+    const auto data = Achievement_GetProgress(achPair.first);
     const float progress = static_cast<float>(data->progress) / static_cast<float>(ach.maxProgress);
 
-    ImGui::PushID(ach.id.c_str());
+    ImGui::PushID(achPair.first.c_str());
 
-    ImGui::BeginChild(ach.id.c_str(), ImVec2(cardWidth, cardHeight), false, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoBackground);
+    ImGui::BeginChild(achPair.first.c_str(), ImVec2(cardWidth, cardHeight), false, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoBackground);
 
-    ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(ach.icon),
+    ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(data->achieved ? ach.icon : std::string(ach.icon) + ".locked"),
                     ImVec2(cardHeight - 10, cardHeight - 10), ImVec2(0, 0), ImVec2(1.0f, 1.0f));
 
     ImGui::SameLine();
@@ -97,7 +98,7 @@ void AchievementsWindow::DrawElement() {
 
     ImGui::BeginGroup();
     for (size_t i = 0; i < gAchievementList.size(); i++) {
-        DrawAchievementCard(gAchievementList[i], cardWidth);
+        DrawAchievementCard(*std::next(gAchievementList.begin(), i), cardWidth);
 
         if ((i + 1) % cols != 0 && (i + 1) < gAchievementList.size()) {
             ImGui::SameLine();

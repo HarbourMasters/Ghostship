@@ -19,16 +19,12 @@
 std::unordered_map<std::string, AchievementProgress> gAchievementProgress;
 
 #define R(id, cat, name, description, icon, ...) \
-    {                                            \
-        #id, cat, name, icon, description, {     \
-            __VA_ARGS__                          \
-        }                                        \
-    }
+    { id, { cat, name, icon, description, { __VA_ARGS__ } } }
 
 #define P(id, cat, name, description, icon, maxProgress, ...) \
-    { #id, cat, name, icon, description, { __VA_ARGS__ }, maxProgress }
+    { id, { cat, name, icon, description, { __VA_ARGS__ }, maxProgress } }
 
-std::vector<Achievement> gAchievementList = {
+std::unordered_map<std::string, Achievement> gAchievementList = {
     // Star Achievements
     P("Get1Star", AchievementCategory::Stars, "Your Journey Begins", "Get a Star", "stars.1", 1),
     P("Get8Stars", AchievementCategory::Stars, "You feel a strong power", "Get 8 Stars", "stars.8", 8, "Get1Star"),
@@ -85,7 +81,7 @@ std::vector<Achievement> gAchievementList = {
     R("DeathByBowser", AchievementCategory::Deaths, "Bad Ending", "Get Defeated by Bowser", "deaths.bowser"),
     R("DeathByEnemy", AchievementCategory::Deaths, "Watch Your Step", "Die by an Enemy", "deaths.standard"),
     R("DeathByDrowning", AchievementCategory::Deaths, "Under The Sea", "Die by Drowning", "deaths.drowning"),
-    R("DeathByFire", AchievementCategory::Deaths, "Roasted Mario", "Die by Fire or Lava", "extras.carpet-burn"),
+    R("DeathByFire", AchievementCategory::Deaths, "Roasted Mario", "Die by Fire or Lava", "deaths.fire"),
 
     // Extra Achievements
     R("TalkWithYoshi", AchievementCategory::Extras, "It Is You?", "Talk with Yoshi on the Roof", "extras.yoshi"),
@@ -104,26 +100,27 @@ std::vector<Achievement> gAchievementList = {
 int Achievement_GetObjectCount(std::vector<int32_t> models) {
     int count = 0;
     for (int i = 0; i < NUM_OBJ_LISTS; i++) {
-        struct ObjectNode* listHead = &gObjectLists[i];
-        struct Object* next = (struct Object*)listHead->next;
-        while (next != (struct Object*)listHead) {
+        ObjectNode* listHead = &gObjectLists[i];
+
+        const Object* next = reinterpret_cast<Object*>(listHead->next);
+        while (next != reinterpret_cast<Object*>(listHead)) {
             GraphNodeID model = GraphNodeManager::GetNodeID(next->header.gfx.sharedChild);
             if (std::find(models.begin(), models.end(), model) != models.end()) {
                 count++;
             }
-            next = (struct Object*)next->header.next;
+            next = reinterpret_cast<Object *>(next->header.next);
         }
     }
     return count;
 }
 
 Achievement* Achievement_FindByID(const std::string& id) {
-    for (auto& achievement : gAchievementList) {
-        if (achievement.id == id) {
-            return &achievement;
-        }
+    if (!gAchievementList.contains(id)) {
+        SPDLOG_ERROR("Trying to find non-existent achievement with id {}", id);
+        return nullptr;
     }
-    return nullptr;
+
+    return &gAchievementList[id];
 }
 
 void Achievement_Progress(const std::string& id, const int32_t amount = 1) {
@@ -136,17 +133,23 @@ void Achievement_Progress(const std::string& id, const int32_t amount = 1) {
             if (progress >= achievement->maxProgress) {
                 achieved = true;
                 Notification::EmitAchievement(achievement->icon, achievement->name, 0);
+            } else {
+                SPDLOG_INFO("Progressed achievement {}: {}/{}", achievement->name, progress, achievement->maxProgress);
             }
 
             // Save after each achievement progress update to prevent loss of progress on crash
+        } else {
+            SPDLOG_WARN("Trying to progress achievement {} that is already achieved", achievement->name);
         }
+    } else {
+        SPDLOG_ERROR("Trying to progress non-existent achievement with id {}", id);
     }
 }
 
 void Achievement_ProgressByCategory(AchievementCategory category, int32_t amount) {
-    for (auto& achievement : gAchievementList) {
+    for (auto& [id, achievement] : gAchievementList) {
         if (static_cast<int32_t>(achievement.category) & static_cast<int32_t>(category)) {
-            auto& [progress, achieved] = gAchievementProgress[achievement.id];
+            auto& [progress, achieved] = gAchievementProgress[id];
 
             if (!achieved) {
                 progress += amount;
@@ -165,14 +168,40 @@ AchievementProgress* Achievement_GetProgress(const std::string& id) {
     return &gAchievementProgress[id];
 }
 
-void Achievements_Init() {
-    for (auto& achievement : gAchievementList) {
-        // Set default progress to 0 and not achieved for each achievement
-        gAchievementProgress[achievement.id] = { 0, false };
+void Achievement_LoadTexture(const std::string& id) {
+    const Achievement& achievement = gAchievementList[id];
 
-        // Load achievement icons as ImGui textures
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromRawImage(
-            achievement.icon, "textures/achievements/" + std::string(achievement.icon) + ".png");
+    auto initData = std::make_shared<Ship::ResourceInitData>();
+    initData->Format = RESOURCE_FORMAT_BINARY;
+    initData->Type = static_cast<uint32_t>(RESOURCE_TYPE_GUI_TEXTURE);
+    initData->ResourceVersion = 0;
+    initData->Path = "textures/achievements/" + std::string(achievement.icon) + ".png";
+    auto texture = std::static_pointer_cast<Ship::GuiTexture>(
+        Ship::Context::GetInstance()->GetResourceManager()->LoadResource(initData->Path, false, initData));
+
+    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(
+            achievement.icon, texture);
+
+    for (size_t i = 0; i < texture->Metadata.Width * texture->Metadata.Height * 4; i += 4) {
+        const uint8_t r = texture->Data[i];
+        const uint8_t g = texture->Data[i + 1];
+        const uint8_t b = texture->Data[i + 2];
+
+        const uint8_t gray = static_cast<uint8_t>(0.21f * r + 0.72f * g + 0.07f * b);
+
+        texture->Data[i] = gray;
+        texture->Data[i + 1] = gray;
+        texture->Data[i + 2] = gray;
+    }
+
+    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(
+            std::string(achievement.icon) + ".locked", texture);
+}
+
+void Achievements_Init() {
+    for (auto& [id, achievement] : gAchievementList) {
+        gAchievementProgress[id] = { 0, false };
+        Achievement_LoadTexture(id);
     }
 
     // Register event listeners
@@ -203,6 +232,8 @@ void Achievements_Init() {
 
     REGISTER_LISTENER(CapSwitchActivated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const CapSwitchActivated* ev = reinterpret_cast<CapSwitchActivated*>(event);
+        SPDLOG_INFO("Cap Switch Activated: {}", (int) ev->type);
+
         switch (ev->type) {
             case CAP_SWITCH_WING:
                 Achievement_Progress("UnlockWingCap");

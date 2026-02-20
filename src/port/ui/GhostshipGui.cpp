@@ -13,6 +13,7 @@
 #include "SaveEditor.h"
 #include "port/ui/ObjectViewer.h"
 #include "port/ui/AchievementsWindow.h"
+#include "port/hooks/ui/EventDebugger.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
 #include "port/Rando/EntranceTracker/EntranceTracker.h"
 
@@ -30,6 +31,7 @@ std::shared_ptr<GhostshipModalWindow> mModalWindow;
 std::shared_ptr<ObjectViewer> mObjectViewer;
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<AchievementsWindow> mAchievementsWindow;
+std::shared_ptr<EventDebuggerWindow> mEventDebuggerWindow;
 
 std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
@@ -64,6 +66,9 @@ void SetupGuiElements() {
 
     mAchievementsWindow = std::make_shared<AchievementsWindow>(CVAR_WINDOW("Achievements"), "Achievements");
     gui->AddGuiWindow(mAchievementsWindow);
+
+    mEventDebuggerWindow = std::make_shared<EventDebuggerWindow>(CVAR_WINDOW("EventDebugger"), "Event Debugger");
+    gui->AddGuiWindow(mEventDebuggerWindow);
 
     mObjectViewer = std::make_shared<ObjectViewer>(CVAR_WINDOW("ObjectViewer"), "Object Viewer##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mObjectViewer);
