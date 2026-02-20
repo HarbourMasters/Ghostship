@@ -40,7 +40,42 @@ void GenerateShuffleList();
 void ApplyNoLogicToSaveContext(std::vector<std::vector<LevelShuffleEntry>>& initialPool,
                                std::vector<int16_t>& initialLevelPool);
 
+// Regions
+struct RandoRegion {
+    const char* regionName;
+    int16_t levelId;
+    std::map<RandoCheckId, std::pair<std::function<bool()>, std::string>> checks;
+};
+
+extern std::map<RandoRegionId, RandoRegion> Regions;
+
+#define CHECK(check, condition)                               \
+    {                                                         \
+        check, {                                              \
+            [] { return condition; }, LogicString(#condition) \
+        }                                                     \
+    }
+
 // Logic Operators
+#define HAS_COURSE_STAR(course, act) (HasCourseActStar(course, act))
+#define HAS_UNLOCKED_CAP(type) (HasCapUnlock(TYPE_##type##_CAP))
+
+inline bool HasCourseActStar(int16_t courseNum, int16_t starAct) {
+    return courseNum == COURSE_NONE ? gSaveBuffer.files[selectedFileNum][0].flags & (1 << starAct)
+                                    : gSaveBuffer.files[selectedFileNum][0].courseStars[courseNum] & (1 << starAct);
+}
+
+inline bool HasCapUnlock(int16_t capType) {
+    return gSaveBuffer.files[selectedFileNum][0].flags & (1 << (capType + 1));
+}
+
+inline std::string LogicString(std::string condition) {
+    if (condition == "true")
+        return "";
+
+    return condition;
+}
+
 inline bool IsBlueSwitchActivated(RandoCheckId randoCheckId) {
     if (Rando::StaticData::Checks[randoCheckId].randoItemId == RI_COIN_BLUE) {
         return true;

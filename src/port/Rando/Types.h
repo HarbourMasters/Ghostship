@@ -440,6 +440,31 @@ typedef enum {
 } RandoItemId;
 
 typedef enum {
+    RR_LEVEL_CASTLE,
+    RR_LEVEL_BOB,
+    RR_LEVEL_WF,
+    RR_LEVEL_JRB,
+    RR_LEVEL_CCM,
+    RR_LEVEL_BBH,
+    RR_LEVEL_HMC,
+    RR_LEVEL_LLL,
+    RR_LEVEL_SSL,
+    RR_LEVEL_DDD,
+    RR_LEVEL_SL,
+    RR_LEVEL_WDW,
+    RR_LEVEL_TTM,
+    RR_LEVEL_THI,
+    RR_LEVEL_TTC,
+    RR_LEVEL_RR,
+    RR_LEVEL_BITDW,
+    RR_LEVEL_BITFS,
+    RR_LEVEL_BITS,
+    RR_LEVEL_PSS,
+    RR_LEVEL_COTMC,
+    RR_LEVEL_TOTWC,
+    RR_LEVEL_VCUTM,
+    RR_LEVEL_WMOTR,
+    RR_LEVEL_SA,
     RR_MAX,
 } RandoRegionId;
 
@@ -487,6 +512,12 @@ typedef enum {
     TYPE_COIN,
     TYPE_STAR,
 } RandoObjectType;
+
+typedef enum {
+    TYPE_WING_CAP,
+    TYPE_METAL_CAP,
+    TYPE_VANISH_CAP,
+} RandoCapType;
 
 // TODO: Remove once Decomp Update is done, this lives in level_update.h
 
