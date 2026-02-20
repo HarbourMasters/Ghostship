@@ -24,7 +24,7 @@ struct Achievement {
     const char* icon;
     std::string description;
     std::vector<std::string> dependencies;
-    int32_t maxProgress = 0;
+    int32_t maxProgress = 1;
 };
 
 struct AchievementSaveData {
@@ -33,3 +33,5 @@ struct AchievementSaveData {
 };
 
 extern std::vector<Achievement> gAchievementList;
+
+extern AchievementProgress* Achievement_GetProgress(const std::string& id);

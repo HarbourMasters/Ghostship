@@ -8,16 +8,22 @@
 #include "course_table.h"
 #include "game/save_file.h"
 #include "audio/external.h"
+#include "port/ShipInit.hpp"
 #include "port/Rando/Types.h"
 #include "port/hooks/Events.h"
 #include "game/level_update.h"
 #include "port/util/GraphNode.h"
+#include "port/ui/Notification.h"
 #include "game/object_list_processor.h"
 
 std::unordered_map<std::string, AchievementProgress> gAchievementProgress;
 
 #define R(id, cat, name, description, icon, ...) \
-    { #id, cat, name, icon, description, { __VA_ARGS__ } }
+    {                                            \
+        #id, cat, name, icon, description, {     \
+            __VA_ARGS__                          \
+        }                                        \
+    }
 
 #define P(id, cat, name, description, icon, maxProgress, ...) \
     { #id, cat, name, icon, description, { __VA_ARGS__ }, maxProgress }
@@ -40,59 +46,72 @@ std::vector<Achievement> gAchievementList = {
     // Level Achievements
     R("Get6MainStars", AchievementCategory::Levels, "F Rank", "Get all 6 Main Stars in One Level", "ranks.f"),
     R("Get100CoinStar", AchievementCategory::Levels, "E Rank", "Get a 100-Coin Star", "ranks.e", "Get6MainStars"),
-    R("GetAll100CoinStars", AchievementCategory::Levels, "D Rank", "Get all Coins in One Level", "ranks.d", "Get100CoinStar"),
-    R("GetAllStarsInBasement", AchievementCategory::Levels, "C Rank", "Get all Main Stars in the Basement", "ranks.c", "GetAll100CoinStars"),
-    R("GetAllStarsInFloor1", AchievementCategory::Levels, "B Rank", "Get all Main Stars on Floor 1", "ranks.b", "GetAllStarsInBasement"),
-    R("GetAllStarsInFloor2", AchievementCategory::Levels, "A Rank", "Get all Main Stars on Floor 2", "ranks.a", "GetAllStarsInFloor1"),
-    R("GetAllStarsInGame", AchievementCategory::Levels, "S Rank", "Get all Main Stars on Floor 3", "ranks.s", "GetAllStarsInFloor2"),
-    R("GetAllCastleStars", AchievementCategory::Levels, "S+ Rank", "Get all Castle Main Stars", "ranks.splus", "GetAllStarsInGame"),
+    R("GetAll100CoinStars", AchievementCategory::Levels, "D Rank", "Get all Coins in One Level", "ranks.d",
+      "Get100CoinStar"),
+    R("GetAllStarsInBasement", AchievementCategory::Levels, "C Rank", "Get all Main Stars in the Basement", "ranks.c",
+      "GetAll100CoinStars"),
+    R("GetAllStarsInFloor1", AchievementCategory::Levels, "B Rank", "Get all Main Stars on Floor 1", "ranks.b",
+      "GetAllStarsInBasement"),
+    R("GetAllStarsInFloor2", AchievementCategory::Levels, "A Rank", "Get all Main Stars on Floor 2", "ranks.a",
+      "GetAllStarsInFloor1"),
+    R("GetAllStarsInGame", AchievementCategory::Levels, "S Rank", "Get all Main Stars on Floor 3", "ranks.s",
+      "GetAllStarsInFloor2"),
+    R("GetAllCastleStars", AchievementCategory::Levels, "S+ Rank", "Get all Castle Main Stars", "ranks.splus",
+      "GetAllStarsInGame"),
 
     // Boss Achievements
-    R("DefeatKingBobomb", AchievementCategory::Bosses, "Explosive Test", "Defeat King Bob-omb", "bosses.king-bob"),
+    R("DefeatKingBobomb", AchievementCategory::Bosses, "Explosive Test", "Defeat King Bob-omb", "bosses.big-bob"),
     R("DefeatMrI", AchievementCategory::Bosses, "I vs Eye", "Defeat Mr. I", "bosses.mr-i"),
     R("DefeatWiggler", AchievementCategory::Bosses, "Insecticide", "Defeat Wiggler", "bosses.wiggler"),
-    R("DefeatAllBooses", AchievementCategory::Bosses, "Boo Who?", "Defeat All Boos in the Haunted House", "bosses.big-boo"),
-    R("DefeatAllBigBullies", AchievementCategory::Bosses, "The Real Bully", "Defeat All Big Bullies From LLL", "bosses.big-bully"),
+    R("DefeatAllBooses", AchievementCategory::Bosses, "Boo Who?", "Defeat All Boos in the Haunted House",
+      "bosses.big-boo"),
+    R("DefeatAllBigBullies", AchievementCategory::Bosses, "The Real Bully", "Defeat All Big Bullies From LLL",
+      "bosses.big-bully"),
     R("DefeatEyerok", AchievementCategory::Bosses, "Welcome To The Jam", "Defeat Eyerok", "bosses.eyerok"),
     R("DefeatKingWhomp", AchievementCategory::Bosses, "Come On And Slam", "Defeat King Whomp", "bosses.king-whomp"),
-    R("DefeatBowser1", AchievementCategory::Bosses, "Bowser Trapped In The Dark", "Defeat Bowser in the Dark World", "bosses.bowser1"),
-    R("DefeatBowser2", AchievementCategory::Bosses, "Bowser Burned By The Lava", "Defeat Bowser in the Fire Sea", "bosses.bowser2"),
-    R("DefeatBowser3", AchievementCategory::Bosses, "Final Showdown", "Defeat Bowser in the Sky", "bosses.bowser3"),
-    R("DefeatBowser3WithAllStars", AchievementCategory::Bosses, "True Ending", "Defeat Bowser in the Sky with 120 Stars",
-      "bosses.bowser3-with-120-stars", "The Completionist"),
+    R("DefeatBowser1", AchievementCategory::Bosses, "Bowser Trapped In The Dark", "Defeat Bowser in the Dark World",
+      "bosses.bowser-1"),
+    R("DefeatBowser2", AchievementCategory::Bosses, "Bowser Burned By The Lava", "Defeat Bowser in the Fire Sea",
+      "bosses.bowser-2"),
+    R("DefeatBowser3", AchievementCategory::Bosses, "Final Showdown", "Defeat Bowser in the Sky", "bosses.bowser-3"),
+    R("DefeatBowser3WithAllStars", AchievementCategory::Bosses, "True Ending",
+      "Defeat Bowser in the Sky with 120 Stars", "bosses.bowser-3-with-120-stars", "The Completionist"),
 
     // Death Achievements
     R("DeathByBoss", AchievementCategory::Deaths, "Git Gud", "Get Defeated by a Boss", "deaths.boss"),
     R("DeathByFalling", AchievementCategory::Deaths, "Gravity Is A Myth", "Die by Falling", "deaths.falling"),
     R("DeathByQuickSand", AchievementCategory::Deaths, "Sink Or Swim", "Die in Quick Sand", "deaths.quicksand"),
-    R("DeathByCrushing", AchievementCategory::Deaths, "Space Jam", "Die by Being Crushed", "deaths.crushing"),
+    R("DeathByCrushing", AchievementCategory::Deaths, "Space Jam", "Die by Being Crushed", "deaths.crushed"),
     R("DeathByBowser", AchievementCategory::Deaths, "Bad Ending", "Get Defeated by Bowser", "deaths.bowser"),
-    R("DeathByEnemy", AchievementCategory::Deaths, "Watch Your Step", "Die by an Enemy", "deaths.enemy"),
+    R("DeathByEnemy", AchievementCategory::Deaths, "Watch Your Step", "Die by an Enemy", "deaths.standard"),
     R("DeathByDrowning", AchievementCategory::Deaths, "Under The Sea", "Die by Drowning", "deaths.drowning"),
     R("DeathByFire", AchievementCategory::Deaths, "Roasted Mario", "Die by Fire or Lava", "extras.carpet-burn"),
 
     // Extra Achievements
     R("TalkWithYoshi", AchievementCategory::Extras, "It Is You?", "Talk with Yoshi on the Roof", "extras.yoshi"),
-    P("Slide20Times", AchievementCategory::Extras, "Burned Ass", "Go Down The Slide 20 Times", "extras.carpet-burn", 20),
+    P("Slide20Times", AchievementCategory::Extras, "Burned Ass", "Go Down The Slide 20 Times", "extras.carpet-burn",
+      20),
     R("BeatEveryRace", AchievementCategory::Extras, "Olympic Runner", "Beat Every Racing Challenge", "extras.runner"),
     P("Talk25Times", AchievementCategory::Extras, "Olympic Talker", "Talk to NPCs 25 Times", "extras.talker", 25),
     P("Jump1000Times", AchievementCategory::Extras, "Olympic Jumper", "Jump 1000 Times", "extras.jumper", 1000),
-    R("GrabSwimmingStars", AchievementCategory::Extras, "Olympic Swimmer", "Grab every star that needs Metal Cap without it", "extras.swimmer"),
+    R("GrabSwimmingStars", AchievementCategory::Extras, "Olympic Swimmer",
+      "Grab every star that needs Metal Cap without it", "extras.swimmer"),
     R("WatchEnding", AchievementCategory::Extras, "The Cake Is A Lie?!", "Watch the game ending", "extras.cake"),
-    R("ReleaseChainChomp", AchievementCategory::Extras, "Chomp-Chomp!", "Release the Chain Chomp", "extras.chain-chomp"),
+    R("ReleaseChainChomp", AchievementCategory::Extras, "Chomp-Chomp!", "Release the Chain Chomp",
+      "extras.chain-chomp"),
 };
 
 int Achievement_GetObjectCount(std::vector<int32_t> models) {
     int count = 0;
     for (int i = 0; i < NUM_OBJ_LISTS; i++) {
-        struct ObjectNode *listHead = &gObjectLists[i];
-        struct Object *next = (struct Object *) listHead->next;
-        while (next != (struct Object *) listHead) {
+        struct ObjectNode* listHead = &gObjectLists[i];
+        struct Object* next = (struct Object*)listHead->next;
+        while (next != (struct Object*)listHead) {
             GraphNodeID model = GraphNodeManager::GetNodeID(next->header.gfx.sharedChild);
             if (std::find(models.begin(), models.end(), model) != models.end()) {
                 count++;
             }
-            next = (struct Object *) next->header.next;
+            next = (struct Object*)next->header.next;
         }
     }
     return count;
@@ -110,12 +129,13 @@ Achievement* Achievement_FindByID(const std::string& id) {
 void Achievement_Progress(const std::string& id, const int32_t amount = 1) {
     const Achievement* achievement = Achievement_FindByID(id);
     if (achievement) {
-        auto&[progress, achieved] = gAchievementProgress[id];
+        auto& [progress, achieved] = gAchievementProgress[id];
 
         if (!achieved) {
             progress += amount;
             if (progress >= achievement->maxProgress) {
                 achieved = true;
+                Notification::EmitAchievement(achievement->icon, achievement->name, 0);
             }
 
             // Save after each achievement progress update to prevent loss of progress on crash
@@ -126,12 +146,13 @@ void Achievement_Progress(const std::string& id, const int32_t amount = 1) {
 void Achievement_ProgressByCategory(AchievementCategory category, int32_t amount) {
     for (auto& achievement : gAchievementList) {
         if (static_cast<int32_t>(achievement.category) & static_cast<int32_t>(category)) {
-            auto&[progress, achieved] = gAchievementProgress[achievement.id];
+            auto& [progress, achieved] = gAchievementProgress[achievement.id];
 
             if (!achieved) {
                 progress += amount;
                 if (progress >= achievement.maxProgress) {
                     achieved = true;
+                    Notification::EmitAchievement(achievement.icon, achievement.name, 0);
                 }
 
                 // Save after each achievement progress update to prevent loss of progress on crash
@@ -140,10 +161,23 @@ void Achievement_ProgressByCategory(AchievementCategory category, int32_t amount
     }
 }
 
+AchievementProgress* Achievement_GetProgress(const std::string& id) {
+    return &gAchievementProgress[id];
+}
+
 void Achievements_Init() {
+    for (auto& achievement : gAchievementList) {
+        // Set default progress to 0 and not achieved for each achievement
+        gAchievementProgress[achievement.id] = { 0, false };
+
+        // Load achievement icons as ImGui textures
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromRawImage(
+            achievement.icon, "textures/achievements/" + std::string(achievement.icon) + ".png");
+    }
+
     // Register event listeners
     REGISTER_LISTENER(ItemCollected, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        const ItemCollected* ev = reinterpret_cast<ItemCollected *>(event);
+        const ItemCollected* ev = reinterpret_cast<ItemCollected*>(event);
         if (ev->type == TYPE_STAR) {
             const int16_t slot = gCurrSaveFileNum - 1;
             const uint32_t starFlags = save_file_get_star_flags(slot, gCurrCourseNum - 1);
@@ -212,7 +246,8 @@ void Achievements_Init() {
                 } else {
                     Achievement_Progress("DefeatBowser3");
                 }
-            default: break;
+            default:
+                break;
         }
     });
 
@@ -260,9 +295,10 @@ void Achievements_Init() {
                 Achievement_Progress("DeathByFire");
                 break;
             default: {
-                if(is_sequence_playing(SEQ_EVENT_BOSS)) {
+                if (is_sequence_playing(SEQ_EVENT_BOSS)) {
                     Achievement_Progress("DeathByBoss");
-                } else if (is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA) || is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA_FINAL)) {
+                } else if (is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA) ||
+                           is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA_FINAL)) {
                     Achievement_Progress("DeathByBowser");
                 } else {
                     Achievement_Progress("DeathByEnemy");
@@ -289,11 +325,13 @@ void Achievements_Init() {
             case ACT_READING_NPC_DIALOG:
                 Achievement_Progress("Talk25Times");
                 break;
-            default: break;
+            default:
+                break;
         }
     });
 
-    REGISTER_LISTENER(ChainChompRelease, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        Achievement_Progress("ReleaseChainChomp");
-    });
+    REGISTER_LISTENER(ChainChompRelease, EVENT_PRIORITY_NORMAL,
+                      [](IEvent* event) { Achievement_Progress("ReleaseChainChomp"); });
 }
+
+static RegisterShipInitFunc initFunc(Achievements_Init);
