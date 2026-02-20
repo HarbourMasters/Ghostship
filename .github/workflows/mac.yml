@@ -21,10 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           brew uninstall --ignore-dependencies libpng
-          sudo port install libsdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools +universal
+          libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal
           brew install ninja
       - name: Build (Universal)
         run: |
+          export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
           cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
           cmake --build build-cmake --config Release --parallel 10
       - name: Create Package
