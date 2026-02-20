@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           brew uninstall --ignore-dependencies libpng
-          libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal
+          sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal
           brew install ninja
       - name: Build (Universal)
         run: |
