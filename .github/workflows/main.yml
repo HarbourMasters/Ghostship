@@ -23,7 +23,7 @@ jobs:
           ${{ runner.os }}-o2r-ccache-${{ github.ref }}
           ${{ runner.os }}-o2r-ccache-
     - name: Cache build folders
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         key: ${{ runner.os }}-o2r-build-${{ github.ref }}-${{ github.sha }}
         restore-keys: |
@@ -143,6 +143,12 @@ jobs:
           path: |
             Ghostship.dmg
             readme.txt
+      - name: Save Cache MacPorts
+        if: ${{ github.ref_name == github.event.repository.default_branch }}
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ steps.restore-cache-macports.outputs.cache-primary-key }}
+          path: /opt/local/
 
   build-linux:
     needs: generate-port-o2r
@@ -163,7 +169,7 @@ jobs:
             linux-ccache-${{ github.ref }}
             linux-ccache-
       - name: Cache build folders
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           key: linux-build-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
