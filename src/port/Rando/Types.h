@@ -514,10 +514,12 @@ typedef enum {
 } RandoObjectType;
 
 typedef enum {
-    TYPE_WING_CAP,
-    TYPE_METAL_CAP,
-    TYPE_VANISH_CAP,
-} RandoCapType;
+    RF_WING,
+    RF_METAL,
+    RF_VANISH,
+    RF_KEY_1,
+    RF_KEY_2,
+} RandoFlag;
 
 // TODO: Remove once Decomp Update is done, this lives in level_update.h
 

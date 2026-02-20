@@ -95,6 +95,7 @@ void Rando::MiscBehavior::Init() {
                         if (entrance.randoEntranceId == randoEntranceId) {
                             entrance.found = true;
                             save_file_do_save(selectedFileNum);
+                            RefreshChecksInLogic();
                         }
                     }
                     currentEntrance = randoEntranceId;

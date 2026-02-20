@@ -53,6 +53,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
         if (shuffled.randoCheckId == object->unused1) {
             previousCheckState = shuffled.obtained;
             shuffled.obtained = true;
+            RefreshChecksInLogic();
         }
     }
 

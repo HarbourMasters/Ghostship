@@ -12,6 +12,8 @@ struct LevelShuffleEntry {
     bool skipped;
 };
 
+extern void RefreshChecksInLogic();
+
 namespace Rando {
 
 namespace Logic {
@@ -57,16 +59,21 @@ extern std::map<RandoRegionId, RandoRegion> Regions;
     }
 
 // Logic Operators
-#define HAS_COURSE_STAR(course, act) (HasCourseActStar(course, act))
-#define HAS_UNLOCKED_CAP(type) (HasCapUnlock(TYPE_##type##_CAP))
+#define HAS_COURSE_STAR(course, act) (CheckCourseActStar(course, act))
+#define HAS_TARGET_STARS(count) (CheckTotalStars() >= count)
+#define CAN_USE(item) (CheckFlagUnlock(RF_##item))
 
-inline bool HasCourseActStar(int16_t courseNum, int16_t starAct) {
+inline bool CheckCourseActStar(int16_t courseNum, int16_t starAct) {
     return courseNum == COURSE_NONE ? gSaveBuffer.files[selectedFileNum][0].flags & (1 << starAct)
                                     : gSaveBuffer.files[selectedFileNum][0].courseStars[courseNum] & (1 << starAct);
 }
 
-inline bool HasCapUnlock(int16_t capType) {
-    return gSaveBuffer.files[selectedFileNum][0].flags & (1 << (capType + 1));
+inline int32_t CheckTotalStars() {
+    return save_file_get_total_star_count(selectedFileNum, COURSE_MIN - 1, COURSE_MAX - 1);
+}
+
+inline bool CheckFlagUnlock(int16_t flagType) {
+    return gSaveBuffer.files[selectedFileNum][0].flags & (1 << (flagType + 1));
 }
 
 inline std::string LogicString(std::string condition) {

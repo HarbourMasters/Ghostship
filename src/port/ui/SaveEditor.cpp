@@ -40,6 +40,14 @@ std::map<RandoItemId, const char*> objectMap = {
     { RI_STAR, texture_hud_char_star },
 };
 
+std::map<std::string, int32_t> randoFlagList = {
+    { "Unlock Wing Cap", SAVE_FLAG_HAVE_WING_CAP },
+    { "Unlock Metal Cap", SAVE_FLAG_HAVE_METAL_CAP },
+    { "Unlock Vanish Cap", SAVE_FLAG_HAVE_VANISH_CAP },
+    { "Unlock Bowser Key 1", SAVE_FLAG_HAVE_KEY_1 },
+    { "Unlock Bowser Key 2", SAVE_FLAG_HAVE_KEY_2 },
+};
+
 void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_t fileNum) {
     if (isObtained) {
         if (courseNum == COURSE_NONE) {
@@ -94,6 +102,7 @@ void RandoSaveFile() {
     gSaveFileModified = true;
     save_file_do_save(selectedFileNum);
     gMarioState->numStars = save_file_get_total_star_count(selectedFileNum, COURSE_MIN - 1, COURSE_MAX - 1);
+    RefreshChecksInLogic();
 }
 
 void HandlePopUpContext(RandoCheckId randoCheckId) {
@@ -207,84 +216,112 @@ void SaveEditorWindow::DrawElement() {
     if (!Rando::Logic::shuffledPool.empty()) {
         if (ImGui::BeginTabItem("Rando")) {
             if (ImGui::BeginChild("RandoChild")) {
-                if (ImGui::BeginTable("Rando Save Editor", 4, ImGuiTableFlags_SizingFixedFit)) {
-                    ImGui::TableSetupColumn("Obtained", ImGuiTableColumnFlags_WidthFixed, 32.0f);
-                    ImGui::TableSetupColumn("Check Name");
-                    ImGui::TableSetupColumn("Item Name");
-                    ImGui::TableSetupColumn("Course Num", ImGuiTableColumnFlags_WidthFixed, 32.0f);
+                if (ImGui::BeginTabBar("RandoTabBar")) {
+                    if (ImGui::BeginTabItem("Check Editor")) {
+                        if (ImGui::BeginChild("RandoEditorChild")) {
+                            if (ImGui::BeginTable("Rando Save Editor", 4, ImGuiTableFlags_SizingFixedFit)) {
+                                ImGui::TableSetupColumn("Obtained", ImGuiTableColumnFlags_WidthFixed, 32.0f);
+                                ImGui::TableSetupColumn("Check Name");
+                                ImGui::TableSetupColumn("Item Name");
+                                ImGui::TableSetupColumn("Course Num", ImGuiTableColumnFlags_WidthFixed, 32.0f);
 
-                    ImGui::TableNextColumn();
-                    for (auto& entry : Rando::Logic::shuffledPool) {
-                        if (entry.randoCheckId == RC_UNKNOWN) {
-                            continue;
-                        }
-                        Rando::StaticData::RandoStaticCheck randoStaticCheck =
-                            Rando::StaticData::Checks[entry.randoCheckId];
-                        const char* texture = entry.randoItemId == RI_STAR       ? texture_hud_char_star
-                                              : entry.randoItemId == RI_COIN_RED ? "Red Coin Icon"
-                                                                                 : "Blue Coin Icon";
-
-                        ImGui::PushID(entry.randoCheckId);
-                        if (UIWidgets::Checkbox("##obtained", &entry.obtained)) {
-                            bool toggleTo = entry.obtained;
-                            int16_t courseNumber = Ship_GetCourseByLevel(randoStaticCheck.levelId);
-
-                            RANDO_SAVE_CHECKS(selectedFileNum)[entry.randoCheckId].obtained = toggleTo;
-
-                            if (entry.randoItemId == RI_STAR) {
-                                ModifyStarFlags(toggleTo, courseNumber, entry.randoAct, selectedFileNum);
-                            } else if ((entry.randoItemId == RI_COIN_BLUE || entry.randoItemId == RI_COIN_RED) &&
-                                       randoStaticCheck.levelId == gCurrLevelNum) {
-                                int16_t coinChange = entry.randoItemId == RI_COIN_BLUE ? 5 : 2;
-                                if (toggleTo) {
-                                    gMarioState->numCoins += coinChange;
-                                } else {
-                                    gMarioState->numCoins -= coinChange;
-                                    if (gMarioState->numCoins < 0) {
-                                        gMarioState->numCoins = 0;
+                                ImGui::TableNextColumn();
+                                for (auto& entry : Rando::Logic::shuffledPool) {
+                                    if (entry.randoCheckId == RC_UNKNOWN) {
+                                        continue;
                                     }
+                                    Rando::StaticData::RandoStaticCheck randoStaticCheck =
+                                        Rando::StaticData::Checks[entry.randoCheckId];
+                                    const char* texture = entry.randoItemId == RI_STAR       ? texture_hud_char_star
+                                                          : entry.randoItemId == RI_COIN_RED ? "Red Coin Icon"
+                                                                                             : "Blue Coin Icon";
+
+                                    ImGui::PushID(entry.randoCheckId);
+                                    if (UIWidgets::Checkbox("##obtained", &entry.obtained)) {
+                                        bool toggleTo = entry.obtained;
+                                        int16_t courseNumber = Ship_GetCourseByLevel(randoStaticCheck.levelId);
+
+                                        RANDO_SAVE_CHECKS(selectedFileNum)[entry.randoCheckId].obtained = toggleTo;
+
+                                        if (entry.randoItemId == RI_STAR) {
+                                            ModifyStarFlags(toggleTo, courseNumber, entry.randoAct, selectedFileNum);
+                                        } else if ((entry.randoItemId == RI_COIN_BLUE ||
+                                                    entry.randoItemId == RI_COIN_RED) &&
+                                                   randoStaticCheck.levelId == gCurrLevelNum) {
+                                            int16_t coinChange = entry.randoItemId == RI_COIN_BLUE ? 5 : 2;
+                                            if (toggleTo) {
+                                                gMarioState->numCoins += coinChange;
+                                            } else {
+                                                gMarioState->numCoins -= coinChange;
+                                                if (gMarioState->numCoins < 0) {
+                                                    gMarioState->numCoins = 0;
+                                                }
+                                            }
+                                        }
+                                        RandoSaveFile();
+
+                                        Notification::Emit(
+                                            { .itemIcon = texture,
+                                              .message = Rando::StaticData::Items[entry.randoItemId].name,
+                                              .suffix = toggleTo ? "obtained." : "removed." });
+                                    }
+
+                                    ImGui::TableNextColumn();
+                                    ImGui::TextColored(entry.obtained
+                                                           ? UIWidgets::ColorValues.at(UIWidgets::Colors::Green)
+                                                           : UIWidgets::ColorValues.at(UIWidgets::Colors::White),
+                                                       Rando::StaticData::Checks[entry.randoCheckId].name);
+
+                                    ImGui::TableNextColumn();
+                                    if (ImGui::ImageButton(
+                                            randoStaticCheck.name,
+                                            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(
+                                                texture),
+                                            ImVec2(32.0f, 32.0f))) {
+                                        popUpId = randoStaticCheck.randoCheckId;
+                                        shouldPopUpOpen = true;
+                                        ImGui::OpenPopup("ObjectSubMenu");
+                                    }
+                                    HandlePopUpContext(popUpId);
+
+                                    ImGui::TableNextColumn();
+                                    if (entry.randoItemId == RI_STAR) {
+                                        if (ImGui::ImageButton(
+                                                std::to_string(entry.randoAct).c_str(),
+                                                Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(
+                                                    digitList[entry.randoAct + 1]),
+                                                ImVec2(32.0f, 32.0f))) {
+                                            popUpId = randoStaticCheck.randoCheckId;
+                                            shouldPopUpOpen = true;
+                                            ImGui::OpenPopup("ActSubMenu");
+                                        }
+                                    }
+                                    ImGui::PopID();
+                                    ImGui::TableNextColumn();
                                 }
+                                ImGui::EndTable();
                             }
-                            RandoSaveFile();
-
-                            Notification::Emit({ .itemIcon = texture,
-                                                 .message = Rando::StaticData::Items[entry.randoItemId].name,
-                                                 .suffix = toggleTo ? "obtained." : "removed." });
+                            ImGui::EndChild();
                         }
-
-                        ImGui::TableNextColumn();
-                        ImGui::TextColored(entry.obtained ? UIWidgets::ColorValues.at(UIWidgets::Colors::Green)
-                                                          : UIWidgets::ColorValues.at(UIWidgets::Colors::White),
-                                           Rando::StaticData::Checks[entry.randoCheckId].name);
-
-                        ImGui::TableNextColumn();
-                        if (ImGui::ImageButton(
-                                randoStaticCheck.name,
-                                Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(texture),
-                                ImVec2(32.0f, 32.0f))) {
-                            popUpId = randoStaticCheck.randoCheckId;
-                            shouldPopUpOpen = true;
-                            ImGui::OpenPopup("ObjectSubMenu");
-                        }
-                        HandlePopUpContext(popUpId);
-
-                        ImGui::TableNextColumn();
-                        if (entry.randoItemId == RI_STAR) {
-                            if (ImGui::ImageButton(
-                                    std::to_string(entry.randoAct).c_str(),
-                                    Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(
-                                        digitList[entry.randoAct + 1]),
-                                    ImVec2(32.0f, 32.0f))) {
-                                popUpId = randoStaticCheck.randoCheckId;
-                                shouldPopUpOpen = true;
-                                ImGui::OpenPopup("ActSubMenu");
-                            }
-                        }
-                        ImGui::PopID();
-                        ImGui::TableNextColumn();
+                        ImGui::EndTabItem();
                     }
-                    ImGui::EndTable();
+                    if (ImGui::BeginTabItem("Flag Editor")) {
+                        for (auto& [label, flag] : randoFlagList) {
+                            bool isUnlocked = (save_file_get_flags() & flag) != 0;
+                            if (UIWidgets::Checkbox(label.c_str(), &isUnlocked)) {
+                                if (isUnlocked) {
+                                    gSaveBuffer.files[selectedFileNum][0].flags |= flag;
+                                } else {
+                                    gSaveBuffer.files[selectedFileNum][0].flags &= ~flag;
+                                }
+                                RandoSaveFile();
+                            }
+                        }
+                        ImGui::EndTabItem();
+                    }
+                    ImGui::EndTabBar();
                 }
+                
                 ImGui::EndChild();
             }
             ImGui::EndTabItem();
