@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-typedef uint32_t EventID;
+typedef int32_t EventID;
 typedef uint32_t ListenerID;
 
 typedef enum {
@@ -19,9 +19,16 @@ typedef struct {
 
 typedef void (*EventCallback)(IEvent*);
 
-typedef struct {
+typedef struct EventMetadata {
+    const char* path;
+    int line;
+    uint64_t count;
+} EventMetadata;
+
+typedef struct EventListener {
     EventPriority priority;
     EventCallback function;
+    EventMetadata metadata;
 } EventListener;
 
 #ifndef __cplusplus
@@ -42,6 +49,11 @@ typedef struct {
 #endif
 #endif
 
+#define STRINGIFY_DETAIL(x) #x 
+#define TOSTRING(x) STRINGIFY_DETAIL(x)
+
+#define FILE_AND_LINE __FILE__ ":" TOSTRING(__LINE__)
+
 #define DEFINE_EVENT(eventName, ...) \
     typedef struct { \
         IEvent event; \
@@ -52,11 +64,11 @@ typedef struct {
 
 #define CALL_EVENT(eventType, ...) \
     eventType eventType##_ = { {false}, __VA_ARGS__ }; \
-    EventSystem_CallEvent(eventType##ID, &eventType##_);
+    EventSystem_CallEvent(eventType##ID, &eventType##_, __FILE__, __LINE__, FILE_AND_LINE);
 
 #define CALL_CANCELLABLE_EVENT(eventType, ...) \
     eventType eventType##_ = { {false}, __VA_ARGS__ }; \
-    EventSystem_CallEvent(eventType##ID, &eventType##_); \
+    EventSystem_CallEvent(eventType##ID, &eventType##_, __FILE__, __LINE__, FILE_AND_LINE); \
     if (!eventType##_.event.cancelled)
 
 #define CHECK_IF_NOT_CANCELLED(eventType) \
@@ -64,40 +76,56 @@ typedef struct {
 
 #define CALL_CANCELLABLE_RETURN_EVENT(eventType, ...) \
     eventType eventType##_ = { {false}, __VA_ARGS__ }; \
-    EventSystem_CallEvent(eventType##ID, &eventType##_); \
+    EventSystem_CallEvent(eventType##ID, &eventType##_, __FILE__, __LINE__, FILE_AND_LINE); \
     if (eventType##_.event.cancelled) { \
         return; \
     }
 
 #define REGISTER_EVENT(eventType) \
-    eventType##ID = EventSystem_RegisterEvent()
+    eventType##ID = EventSystem_RegisterEvent(#eventType);
 
 #define REGISTER_LISTENER(eventType, priority, callback) \
-    EventSystem_RegisterListener(eventType##ID, callback, priority)
+    EventSystem_RegisterListener(eventType##ID, callback, priority, __FILE__, __LINE__);
 
 #ifdef __cplusplus
-#include <array>
 #include <vector>
 #include <unordered_map>
+
+struct EventRegistration {
+    const char* name;
+    std::unordered_map<const char*, EventMetadata> callers;
+    std::vector<EventListener> listeners;
+};
 
 class EventSystem {
 public:
     static EventSystem* Instance;
-    EventID RegisterEvent();
-    ListenerID RegisterListener(EventID id, EventCallback callback, EventPriority priority = EVENT_PRIORITY_NORMAL);
+    EventID RegisterEvent(const char* name = nullptr);
+    ListenerID RegisterListener(EventID id, EventCallback callback, EventPriority priority = EVENT_PRIORITY_NORMAL, const char* file = nullptr, int line = 0);
     void UnregisterListener(EventID ev, ListenerID id);
-    void CallEvent(EventID id, IEvent* event);
+    void CallEvent(EventID id, IEvent* event, const char* file = nullptr, int line = 0, const char* key = nullptr);
+
+    EventRegistration* GetEventRegistration(EventID id) {
+        if (mEventRegistry.contains(id)) {
+            return &mEventRegistry.at(id);
+        }
+        return nullptr;
+    }
+
+    std::unordered_map<EventID, EventRegistration>& GetEventRegistrations() {
+        return this->mEventRegistry;
+    }
 private:
-    std::unordered_map<EventID, std::vector<EventListener>> mEventListeners;
+    std::unordered_map<EventID, EventRegistration> mEventRegistry;
     EventID mInternalEventID = 0;
 };
 
 extern "C" {
 #endif
-extern EventID EventSystem_RegisterEvent();
-extern ListenerID EventSystem_RegisterListener(EventID id, EventCallback callback, EventPriority priority);
+extern EventID EventSystem_RegisterEvent(const char* name);
+extern ListenerID EventSystem_RegisterListener(EventID id, EventCallback callback, EventPriority priority, const char* file, int line);
 extern void EventSystem_UnregisterListener(EventID ev, ListenerID id);
-extern void EventSystem_CallEvent(EventID id, void* event);
+extern void EventSystem_CallEvent(EventID id, void* event, const char* file, int line, const char* key);
 #ifdef __cplusplus
 }
 #endif
