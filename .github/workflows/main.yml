@@ -92,11 +92,11 @@ jobs:
             ${{ runner.os }}-15-ccache-${{ github.ref }}
             ${{ runner.os }}-15-ccache
       # Needed to apply sudo for macports cache restore
-      - name: Install gtar wrapper
-        run: |
-          sudo mv /opt/homebrew/bin/gtar /opt/homebrew/bin/gtar.orig
-          sudo cp .github/workflows/gtar /opt/homebrew/bin/gtar
-          sudo chmod +x /opt/homebrew/bin/gtar
+      # - name: Install gtar wrapper
+      #   run: |
+      #     sudo mv /opt/homebrew/bin/gtar /opt/homebrew/bin/gtar.orig
+      #     sudo cp .github/workflows/gtar /opt/homebrew/bin/gtar
+      #     sudo chmod +x /opt/homebrew/bin/gtar
       - name: Restore Cached MacPorts
         id: restore-cache-macports
         uses: actions/cache/restore@v4
