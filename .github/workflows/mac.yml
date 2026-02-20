@@ -3,15 +3,21 @@ on: [pull_request]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Setup MacPorts
-        uses: melusina-org/setup-macports@v1
-      - name: Fix MacPorts permissions
-        run: sudo chown -R macports:macports /opt/local/var/macports/
+      - name: Install MacPorts (if necessary)
+        run: |
+          if command -v /opt/local/bin/port 2>&1 >/dev/null; then
+            echo "MacPorts already installed"
+          else
+            echo "Installing MacPorts"
+            wget https://github.com/macports/macports-base/releases/download/v2.11.5/MacPorts-2.11.5-14-Sonoma.pkg
+            sudo installer -pkg ./MacPorts-2.11.5-14-Sonoma.pkg -target /
+          fi
+          echo "/opt/local/bin:/opt/local/sbin" >> "$GITHUB_PATH"
       - name: Install dependencies (Universal)
         run: sudo port install libsdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools +universal
       - name: Build (Universal)
