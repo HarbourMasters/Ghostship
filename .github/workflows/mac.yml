@@ -3,7 +3,7 @@ on: [pull_request]
 
 jobs:
   build:
-    runs-on: macos-15
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
         with:
@@ -13,10 +13,10 @@ jobs:
         with:
           create-symlink: true
           save: ${{ github.ref_name == github.event.repository.default_branch }}
-          key: ${{ runner.os }}-15-ccache-${{ github.ref }}-${{ github.sha }}
+          key: ${{ runner.os }}-14-ccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-15-ccache-${{ github.ref }}
-            ${{ runner.os }}-15-ccache
+            ${{ runner.os }}-14-ccache-${{ github.ref }}
+            ${{ runner.os }}-14-ccache
       # Needed to apply sudo for macports cache restore
       # - name: Install gtar wrapper
       #   run: |
@@ -27,10 +27,10 @@ jobs:
         id: restore-cache-macports
         uses: actions/cache/restore@v4
         with:
-          key: ${{ runner.os }}-15-macports-${{ github.ref }}-${{ github.sha }}
+          key: ${{ runner.os }}-14-macports-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-15-macports-${{ github.ref }}
-            ${{ runner.os }}-15-macports-
+            ${{ runner.os }}-14-macports-${{ github.ref }}
+            ${{ runner.os }}-14-macports-
           path: /opt/local/
       - name: Install MacPorts (if necessary)
         run: |
@@ -38,8 +38,8 @@ jobs:
             echo "MacPorts already installed"
           else
             echo "Installing MacPorts"
-            wget https://github.com/macports/macports-base/releases/download/v2.11.5/MacPorts-2.11.5-15-Sequoia.pkg
-            sudo installer -pkg ./MacPorts-2.11.5-15-Sequoia.pkg -target /
+            wget https://github.com/macports/macports-base/releases/download/v2.11.5/MacPorts-2.11.5-14-Sonoma.pkg
+            sudo installer -pkg ./MacPorts-2.11.5-14-Sonoma.pkg -target /
           fi
           echo "/opt/local/bin:/opt/local/sbin" >> "$GITHUB_PATH"
       - name: Install dependencies
