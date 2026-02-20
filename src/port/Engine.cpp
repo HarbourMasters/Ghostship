@@ -372,7 +372,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     GameExtractor extract;
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;
-    std::atomic<size_t> extractCount{0}, totalExtract{0};
+    std::atomic<size_t> extractCount{ 0 }, totalExtract{ 0 };
 
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;

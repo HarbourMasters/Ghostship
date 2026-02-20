@@ -241,7 +241,7 @@ bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShort
 }
 
 bool GameExtractor::GenerateOTR(std::string appShortName) {
-    std::atomic<size_t> assetCount{0};
+    std::atomic<size_t> assetCount{ 0 };
     return GenerateOTR(assetCount, appShortName);
 }
 
