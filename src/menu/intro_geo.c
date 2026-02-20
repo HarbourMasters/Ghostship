@@ -106,8 +106,9 @@ Gfx *geo_intro_tm_copyright(s32 state, struct GraphNode *node, UNUSED void *cont
     if (state != 1) {  // reset
         sTmCopyrightAlpha = 0;
     } else if (state == 1) {  // draw
-        dl = alloc_display_list(5 * sizeof(*dl));
+        dl = alloc_display_list(6 * sizeof(*dl));
         dlIter = dl;
+        gDPSetTextureFilter(dlIter++, G_TF_POINT);
         gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
         gDPSetEnvColor(dlIter++, 255, 255, 255, sTmCopyrightAlpha);
         switch (sTmCopyrightAlpha) {
