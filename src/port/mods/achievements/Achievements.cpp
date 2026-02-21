@@ -1,5 +1,6 @@
 #include "Achievements.h"
 
+#include <map>
 #include <unordered_map>
 
 #include "behavior_data.h"
@@ -16,32 +17,69 @@
 #include "port/ui/Notification.h"
 #include "game/object_list_processor.h"
 
+static size_t order = 0;
 std::unordered_map<std::string, AchievementProgress> gAchievementProgress;
 
-#define R(id, cat, name, description, icon, ...) \
-    { id, { cat, name, icon, description, { __VA_ARGS__ } } }
+#define R(id, cat, name, description, icon, ...)     \
+    {                                                \
+        id, {                                        \
+            cat, name, icon, description, order++, { \
+                __VA_ARGS__                          \
+            }                                        \
+        }                                            \
+    }
 
-#define P(id, cat, name, description, icon, maxProgress, ...) \
-    { id, { cat, name, icon, description, { __VA_ARGS__ }, maxProgress } }
+#define P(id, cat, name, description, icon, maxProgress, ...)                   \
+    {                                                                           \
+        id, {                                                                   \
+            cat, name, icon, description, order++, { __VA_ARGS__ }, maxProgress \
+        }                                                                       \
+    }
 
 std::unordered_map<std::string, Achievement> gAchievementList = {
-    // Star Achievements
     P("Get1Star", AchievementCategory::Stars, "Your Journey Begins", "Get a Star", "stars.1", 1),
-    P("Get8Stars", AchievementCategory::Stars, "You feel a strong power", "Get 8 Stars", "stars.8", 8, "Get1Star"),
-    P("Get30Stars", AchievementCategory::Stars, "Earning a Quarter", "Get 30 Stars", "stars.30", 30, "Get8Stars"),
-    P("Get31Stars", AchievementCategory::Stars, "Extra Cent", "Get 31 Stars", "stars.31", 31, "Get30Stars"),
-    P("Get50Stars", AchievementCategory::Stars, "Lucky Eight", "Get 50 Stars", "stars.50", 50, "Get31Stars"),
-    P("Get70Stars", AchievementCategory::Stars, "Halfway There", "Get 70 Stars", "stars.70", 70, "Get50Stars"),
-    P("Get120Stars", AchievementCategory::Stars, "The Completionist", "Get 120 Stars", "stars.120", 120, "Get70Stars"),
-
-    // Cap Achievements
-    R("UnlockWingCap", AchievementCategory::Caps, "Super Man-rio", "Unlock the Wing Cap", "cap.wing"),
-    R("UnlockMetalCap", AchievementCategory::Caps, "Heavy-Headed", "Unlock the Metal Cap", "cap.metal"),
-    R("UnlockVanishCap", AchievementCategory::Caps, "Wait, Where Is He?", "Unlock the Vanish Cap", "cap.vanish"),
-
-    // Level Achievements
+    P("Talk25Times", AchievementCategory::Extras, "Olympic Talker", "Talk to NPCs 25 Times", "extras.talker", 25),
+    P("Jump1000Times", AchievementCategory::Extras, "Olympic Jumper", "Jump 1000 Times", "extras.jumper", 1000),
+    P("Slide20Times", AchievementCategory::Extras, "Burned Ass", "Go Down The Slide 20 Times", "extras.carpet-burn",
+      20),
+    R("DeathByEnemy", AchievementCategory::Deaths, "Watch Your Step", "Die by an Enemy", "deaths.standard"),
+    R("DeathByFalling", AchievementCategory::Deaths, "Gravity Is A Myth", "Die by Falling", "deaths.falling"),
+    R("DeathByCrushing", AchievementCategory::Deaths, "Space Jam", "Die by Being Crushed", "deaths.crushed"),
+    R("DeathByDrowning", AchievementCategory::Deaths, "Under The Sea", "Die by Drowning", "deaths.drowning"),
+    R("DeathByFire", AchievementCategory::Deaths, "Roasted Mario", "Die by Fire or Lava", "deaths.fire"),
+    R("DeathByQuickSand", AchievementCategory::Deaths, "Sink Or Swim", "Die in Quick Sand", "deaths.quicksand"),
+    R("DeathByBoss", AchievementCategory::Deaths, "Git Gud", "Get Defeated by a Boss", "deaths.boss"),
+    R("DeathByBowser", AchievementCategory::Deaths, "Bad Ending", "Get Defeated by Bowser", "deaths.bowser"),
+    R("DefeatKingBobomb", AchievementCategory::Bosses, "Explosive Test", "Defeat King Bob-omb", "bosses.big-bob"),
+    R("ReleaseChainChomp", AchievementCategory::Extras, "Chomp-Chomp!", "Release the Chain Chomp",
+      "extras.chain-chomp"),
+    R("DefeatKingWhomp", AchievementCategory::Bosses, "Come On And Slam", "Defeat King Whomp", "bosses.king-whomp"),
     R("Get6MainStars", AchievementCategory::Levels, "F Rank", "Get all 6 Main Stars in One Level", "ranks.f"),
     R("Get100CoinStar", AchievementCategory::Levels, "E Rank", "Get a 100-Coin Star", "ranks.e", "Get6MainStars"),
+    P("Get8Stars", AchievementCategory::Stars, "You feel a strong power", "Get 8 Stars", "stars.8", 8, "Get1Star"),
+    R("DefeatBowser1", AchievementCategory::Bosses, "Bowser Trapped In The Dark", "Defeat Bowser in the Dark World",
+      "bosses.bowser-1"),
+    R("UnlockWingCap", AchievementCategory::Caps, "Super Man-rio", "Unlock the Wing Cap", "cap.wing"),
+    R("DefeatAllBooses", AchievementCategory::Bosses, "Boo Who?", "Defeat All Boos in the Haunted House",
+      "bosses.big-boo"),
+    R("DefeatMrI", AchievementCategory::Bosses, "I vs Eye", "Defeat Mr. I", "bosses.mr-i"),
+    R("UnlockMetalCap", AchievementCategory::Caps, "Heavy-Headed", "Unlock the Metal Cap", "cap.metal"),
+    R("UnlockVanishCap", AchievementCategory::Caps, "Wait, Where Is He?", "Unlock the Vanish Cap", "cap.vanish"),
+    R("DefeatAllBigBullies", AchievementCategory::Bosses, "The Real Bully", "Defeat All Big Bullies From LLL",
+      "bosses.big-bully"),
+    R("DefeatEyerok", AchievementCategory::Bosses, "Welcome To The Jam", "Defeat Eyerok", "bosses.eyerok"),
+    P("Get30Stars", AchievementCategory::Stars, "Earning a Quarter", "Get 30 Stars", "stars.30", 30, "Get8Stars"),
+    P("Get31Stars", AchievementCategory::Stars, "Extra Cent", "Get 31 Stars", "stars.31", 31, "Get30Stars"),
+    R("DefeatBowser2", AchievementCategory::Bosses, "Bowser Burned By The Lava", "Defeat Bowser in the Fire Sea",
+      "bosses.bowser-2"),
+    P("Get50Stars", AchievementCategory::Stars, "Lucky Eight", "Get 50 Stars", "stars.50", 50, "Get31Stars"),
+    R("DefeatWiggler", AchievementCategory::Bosses, "Insecticide", "Defeat Wiggler", "bosses.wiggler"),
+    P("Get70Stars", AchievementCategory::Stars, "Halfway There", "Get 70 Stars", "stars.70", 70, "Get50Stars"),
+    R("DefeatBowser3", AchievementCategory::Bosses, "Final Showdown", "Defeat Bowser in the Sky", "bosses.bowser-3"),
+    R("WatchEnding", AchievementCategory::Extras, "The Cake Is A Lie?!", "Watch the game ending", "extras.cake"),
+    R("BeatEveryRace", AchievementCategory::Extras, "Olympic Runner", "Beat Every Racing Challenge", "extras.runner"),
+    R("GrabSwimmingStars", AchievementCategory::Extras, "Olympic Swimmer",
+      "Grab every star that needs Metal Cap without it", "extras.swimmer"),
     R("GetAll100CoinStars", AchievementCategory::Levels, "D Rank", "Get all Coins in One Level", "ranks.d",
       "Get100CoinStar"),
     R("GetAllStarsInBasement", AchievementCategory::Levels, "C Rank", "Get all Main Stars in the Basement", "ranks.c",
@@ -54,47 +92,10 @@ std::unordered_map<std::string, Achievement> gAchievementList = {
       "GetAllStarsInFloor2"),
     R("GetAllCastleStars", AchievementCategory::Levels, "S+ Rank", "Get all Castle Main Stars", "ranks.splus",
       "GetAllStarsInGame"),
-
-    // Boss Achievements
-    R("DefeatKingBobomb", AchievementCategory::Bosses, "Explosive Test", "Defeat King Bob-omb", "bosses.big-bob"),
-    R("DefeatMrI", AchievementCategory::Bosses, "I vs Eye", "Defeat Mr. I", "bosses.mr-i"),
-    R("DefeatWiggler", AchievementCategory::Bosses, "Insecticide", "Defeat Wiggler", "bosses.wiggler"),
-    R("DefeatAllBooses", AchievementCategory::Bosses, "Boo Who?", "Defeat All Boos in the Haunted House",
-      "bosses.big-boo"),
-    R("DefeatAllBigBullies", AchievementCategory::Bosses, "The Real Bully", "Defeat All Big Bullies From LLL",
-      "bosses.big-bully"),
-    R("DefeatEyerok", AchievementCategory::Bosses, "Welcome To The Jam", "Defeat Eyerok", "bosses.eyerok"),
-    R("DefeatKingWhomp", AchievementCategory::Bosses, "Come On And Slam", "Defeat King Whomp", "bosses.king-whomp"),
-    R("DefeatBowser1", AchievementCategory::Bosses, "Bowser Trapped In The Dark", "Defeat Bowser in the Dark World",
-      "bosses.bowser-1"),
-    R("DefeatBowser2", AchievementCategory::Bosses, "Bowser Burned By The Lava", "Defeat Bowser in the Fire Sea",
-      "bosses.bowser-2"),
-    R("DefeatBowser3", AchievementCategory::Bosses, "Final Showdown", "Defeat Bowser in the Sky", "bosses.bowser-3"),
+    P("Get120Stars", AchievementCategory::Stars, "The Completionist", "Get 120 Stars", "stars.120", 120, "Get70Stars"),
+    R("TalkWithYoshi", AchievementCategory::Extras, "It Is You?", "Talk with Yoshi on the Roof", "extras.yoshi"),
     R("DefeatBowser3WithAllStars", AchievementCategory::Bosses, "True Ending",
       "Defeat Bowser in the Sky with 120 Stars", "bosses.bowser-3-with-120-stars", "The Completionist"),
-
-    // Death Achievements
-    R("DeathByBoss", AchievementCategory::Deaths, "Git Gud", "Get Defeated by a Boss", "deaths.boss"),
-    R("DeathByFalling", AchievementCategory::Deaths, "Gravity Is A Myth", "Die by Falling", "deaths.falling"),
-    R("DeathByQuickSand", AchievementCategory::Deaths, "Sink Or Swim", "Die in Quick Sand", "deaths.quicksand"),
-    R("DeathByCrushing", AchievementCategory::Deaths, "Space Jam", "Die by Being Crushed", "deaths.crushed"),
-    R("DeathByBowser", AchievementCategory::Deaths, "Bad Ending", "Get Defeated by Bowser", "deaths.bowser"),
-    R("DeathByEnemy", AchievementCategory::Deaths, "Watch Your Step", "Die by an Enemy", "deaths.standard"),
-    R("DeathByDrowning", AchievementCategory::Deaths, "Under The Sea", "Die by Drowning", "deaths.drowning"),
-    R("DeathByFire", AchievementCategory::Deaths, "Roasted Mario", "Die by Fire or Lava", "deaths.fire"),
-
-    // Extra Achievements
-    R("TalkWithYoshi", AchievementCategory::Extras, "It Is You?", "Talk with Yoshi on the Roof", "extras.yoshi"),
-    P("Slide20Times", AchievementCategory::Extras, "Burned Ass", "Go Down The Slide 20 Times", "extras.carpet-burn",
-      20),
-    R("BeatEveryRace", AchievementCategory::Extras, "Olympic Runner", "Beat Every Racing Challenge", "extras.runner"),
-    P("Talk25Times", AchievementCategory::Extras, "Olympic Talker", "Talk to NPCs 25 Times", "extras.talker", 25),
-    P("Jump1000Times", AchievementCategory::Extras, "Olympic Jumper", "Jump 1000 Times", "extras.jumper", 1000),
-    R("GrabSwimmingStars", AchievementCategory::Extras, "Olympic Swimmer",
-      "Grab every star that needs Metal Cap without it", "extras.swimmer"),
-    R("WatchEnding", AchievementCategory::Extras, "The Cake Is A Lie?!", "Watch the game ending", "extras.cake"),
-    R("ReleaseChainChomp", AchievementCategory::Extras, "Chomp-Chomp!", "Release the Chain Chomp",
-      "extras.chain-chomp"),
 };
 
 int Achievement_GetObjectCount(std::vector<int32_t> models) {
@@ -108,7 +109,7 @@ int Achievement_GetObjectCount(std::vector<int32_t> models) {
             if (std::find(models.begin(), models.end(), model) != models.end()) {
                 count++;
             }
-            next = reinterpret_cast<Object *>(next->header.next);
+            next = reinterpret_cast<Object*>(next->header.next);
         }
     }
     return count;
@@ -179,8 +180,7 @@ void Achievement_LoadTexture(const std::string& id) {
     auto texture = std::static_pointer_cast<Ship::GuiTexture>(
         Ship::Context::GetInstance()->GetResourceManager()->LoadResource(initData->Path, false, initData));
 
-    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(
-            achievement.icon, texture);
+    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(achievement.icon, texture);
 
     for (size_t i = 0; i < texture->Metadata.Width * texture->Metadata.Height * 4; i += 4) {
         const uint8_t r = texture->Data[i];
@@ -195,7 +195,7 @@ void Achievement_LoadTexture(const std::string& id) {
     }
 
     Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(
-            std::string(achievement.icon) + ".locked", texture);
+        std::string(achievement.icon) + ".locked", texture);
 }
 
 void Achievements_Init() {
@@ -232,7 +232,7 @@ void Achievements_Init() {
 
     REGISTER_LISTENER(CapSwitchActivated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const CapSwitchActivated* ev = reinterpret_cast<CapSwitchActivated*>(event);
-        SPDLOG_INFO("Cap Switch Activated: {}", (int) ev->type);
+        SPDLOG_INFO("Cap Switch Activated: {}", (int)ev->type);
 
         switch (ev->type) {
             case CAP_SWITCH_WING:

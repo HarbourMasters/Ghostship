@@ -37,10 +37,12 @@ void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPai
 
     ImGui::PushID(achPair.first.c_str());
 
-    ImGui::BeginChild(achPair.first.c_str(), ImVec2(cardWidth, cardHeight), false, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoBackground);
+    ImGui::BeginChild(achPair.first.c_str(), ImVec2(cardWidth, cardHeight), false,
+                      ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoBackground);
 
-    ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(data->achieved ? ach.icon : std::string(ach.icon) + ".locked"),
-                    ImVec2(cardHeight - 10, cardHeight - 10), ImVec2(0, 0), ImVec2(1.0f, 1.0f));
+    ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(
+                     data->achieved ? ach.icon : std::string(ach.icon) + ".locked"),
+                 ImVec2(cardHeight - 10, cardHeight - 10), ImVec2(0, 0), ImVec2(1.0f, 1.0f));
 
     ImGui::SameLine();
 
@@ -64,7 +66,7 @@ void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPai
 
     ImGui::PushStyleColor(ImGuiCol_PlotHistogram, ImVec4(1.0f, 0.8f, 0.0f, 1.0f));
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
-    
+
     // 3. This now stretches to the edge of the card, leaving a perfect 10px margin
     ImGui::ProgressBar(progress, ImVec2(-10.0f, 21.0f), progBuf);
     ImGui::PopStyleColor(2);
@@ -97,10 +99,21 @@ void AchievementsWindow::DrawElement() {
     float cardWidth = (ImGui::GetContentRegionAvail().x / cols) - (spacing * 0.5f);
 
     ImGui::BeginGroup();
-    for (size_t i = 0; i < gAchievementList.size(); i++) {
-        DrawAchievementCard(*std::next(gAchievementList.begin(), i), cardWidth);
+    std::vector<std::string> sorted;
+    for (const auto& achPair : gAchievementList) {
+        sorted.push_back(achPair.first);
+    }
 
-        if ((i + 1) % cols != 0 && (i + 1) < gAchievementList.size()) {
+    std::sort(sorted.begin(), sorted.end(), [](const std::string& a, const std::string& b) {
+        return gAchievementList[a].order < gAchievementList[b].order;
+    });
+
+    for (const auto& achId : sorted) {
+        auto& ach = gAchievementList[achId];
+
+        DrawAchievementCard({ achId, ach }, cardWidth);
+
+        if ((ach.order + 1) % cols != 0 && (ach.order + 1) < gAchievementList.size()) {
             ImGui::SameLine();
         }
     }

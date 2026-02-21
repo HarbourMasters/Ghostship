@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include "types.h"
 
 enum class AchievementCategory {
@@ -22,6 +23,7 @@ struct Achievement {
     std::string name;
     const char* icon;
     std::string description;
+    size_t order;
     std::vector<std::string> dependencies;
     int32_t maxProgress = 1;
 };
