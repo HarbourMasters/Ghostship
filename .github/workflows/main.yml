@@ -13,10 +13,14 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: true
-    - name: Update machine
-      run: sudo apt update
+    - name: Extract Project Version
+      id: extract_version
+      run: |
+        VERSION=$(grep -oP '^\s*project\s*\([^)]*VERSION\s+\K[0-9\.]+' CMakeLists.txt)
+        echo "Found version: $VERSION"
+        echo "version=$VERSION" >> "$GITHUB_OUTPUT"
     - name: Install dependencies
-      run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
+      run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release
     - name: ccache
       uses: hendrikmuhs/ccache-action@v1.2.13
       with:
@@ -32,14 +36,12 @@ jobs:
           ${{ runner.os }}-o2r-build-${{ github.ref }}
           ${{ runner.os }}-o2r-build-
         path: |
-          SDL2-2.30.3
-          tinyxml2-10.0.0
-          libzip-1.10.1
+          Torch/cmake-build-release
     - name: Generate ghostship.o2r
       run: |
         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
-        cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
-        cmake --build build-cmake -j --target GeneratePortO2R
+        make -C Torch type=release -j3
+        Torch/cmake-build-release/torch pack port ghostship.o2r o2r -u ${{ steps.extract_version.outputs.version }}
     - uses: actions/upload-artifact@v4
       with:
         name: ghostship.o2r
