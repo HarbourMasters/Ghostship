@@ -8,6 +8,8 @@
 #include "sounds.h"
 #include "audio/external.h"
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
 namespace Notification {
 
 static uint32_t nextId = 0;
@@ -173,7 +175,7 @@ void Window::DrawEnhancedNotification(const Options& notification, ImVec2 basePo
 
         // Calculate vertical offset to center icon with text content
         float contentStartY = ImGui::GetCursorPosY();
-        float iconOffsetY = std::max(0.0f, (totalTextHeight - iconSize) * 0.5f);
+        float iconOffsetY = MAX(0.0f, (totalTextHeight - iconSize) * 0.5f);
 
         // Position and draw icon
         ImGui::SetCursorPos(ImVec2(ImGui::GetCursorPosX(), contentStartY + iconOffsetY));
