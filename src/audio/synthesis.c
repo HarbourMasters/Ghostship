@@ -754,7 +754,7 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                 flags = 0;
             }
 #endif
-            else {
+            else if (note->synthesisBuffers != NULL) {
                 // ADPCM note
 
 #ifdef VERSION_EU
