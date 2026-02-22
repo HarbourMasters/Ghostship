@@ -126,7 +126,8 @@ void GhostshipMenu::AddMenuEnhancements() {
     AddWidget(path, "Enable Achievements", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("Achievements"))
         .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Enables the achievement system, which tracks various accomplishments and milestones in the game."));
+        .Options(CheckboxOptions().Tooltip(
+            "Enables the achievement system, which tracks various accomplishments and milestones in the game."));
 
     AddWidget(path, "Popout Achievements", WIDGET_WINDOW_BUTTON)
         .CVar(CVAR_WINDOW("Achievements"))
