@@ -799,6 +799,10 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
 #endif
 
                     while (nAdpcmSamplesProcessed != samplesLenAdjusted) {
+
+                        if (note->synthesisBuffers == NULL) {
+                            continue;
+                        }
                         s32 samplesRemaining; // v1
                         s32 s0;
 

@@ -23,6 +23,7 @@
 #include "math_util.h"
 #include "surface_collision.h"
 #include "surface_load.h"
+#include "seq_ids.h"
 #include "port/hooks/Events.h"
 
 #define CMD_GET(type, offset) (*(type *) (CMD_PROCESS_OFFSET(offset) + (u8 *) sCurrentCmd))
@@ -708,7 +709,11 @@ static void level_cmd_set_music(void) {
 }
 
 static void level_cmd_set_menu_music(void) {
-    set_background_music(0, CMD_GET(s16, 2), 0);
+    s16 seqId = CMD_GET(s16, 2);
+    if(seqId == SEQ_LEVEL_BOSS_KOOPA || seqId == SEQ_LEVEL_BOSS_KOOPA_FINAL) {
+        CALL_EVENT(BossBattleStarted, seqId == SEQ_LEVEL_BOSS_KOOPA ? BOSS_BATTLE_KOOPA : BOSS_BATTLE_KOOPA_FINAL);
+    }
+    set_background_music(0, seqId, 0);
     sCurrentCmd = CMD_NEXT;
 }
 

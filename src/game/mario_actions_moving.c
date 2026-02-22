@@ -12,6 +12,7 @@
 #include "memory.h"
 #include "behavior_data.h"
 #include "rumble_init.h"
+#include "seq_ids.h"
 
 struct LandingAction {
     s16 numFrames;
@@ -1343,6 +1344,9 @@ s32 act_burning_ground(struct MarioState *m) {
         CALL_CANCELLABLE_EVENT(PlayerDeath, m, DEATH_TYPE_FIRE) {
             set_mario_action(m, ACT_STANDING_DEATH, 0);
         };
+        if(is_sequence_playing(SEQ_EVENT_BOSS) || is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA) || is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA_FINAL)) {
+            CALL_EVENT(BossBattleEnded);
+        }
     }
 
     m->marioBodyState->eyeState = MARIO_EYES_DEAD;

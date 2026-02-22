@@ -2304,7 +2304,11 @@ void play_music(u8 player, u16 seqArgs, u16 fadeTimer) {
             if (i == 0) {
                 seq_player_play_sequence(SEQ_PLAYER_LEVEL, seqId, fadeTimer);
             } else if (!gSequencePlayers[SEQ_PLAYER_LEVEL].enabled) {
-                stop_background_music(sBackgroundMusicQueue[0].seqId);
+                s16 seqId = sBackgroundMusicQueue[0].seqId;
+                stop_background_music(seqId);
+                if (seqId == SEQ_LEVEL_BOSS_KOOPA || seqId == SEQ_LEVEL_BOSS_KOOPA_FINAL) {
+                    CALL_EVENT(BossBattleEnded);
+                }
             }
             return;
         }

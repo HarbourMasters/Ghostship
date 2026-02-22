@@ -1,14 +1,13 @@
 #include "Achievements.h"
 
-#include <map>
 #include <unordered_map>
 
 #include "behavior_data.h"
 #include "sm64.h"
-#include "seq_ids.h"
 #include "course_table.h"
+#include "port/ui/cvar_prefixes.h"
 #include "game/save_file.h"
-#include "audio/external.h"
+#include "buffers/buffers.h"
 #include "port/ShipInit.hpp"
 #include "port/Rando/Types.h"
 #include "port/hooks/Events.h"
@@ -18,6 +17,9 @@
 #include "game/object_list_processor.h"
 
 static size_t order = 0;
+static int16_t selectedFile = 0;
+static BossBattleType bossBattleType = BOSS_BATTLE_NONE;
+
 std::unordered_map<std::string, AchievementProgress> gAchievementProgress;
 
 #define R(id, cat, name, description, icon, ...)     \
@@ -182,7 +184,7 @@ void Achievement_LoadTexture(const std::string& id) {
 
     Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(achievement.icon, texture);
 
-    for (size_t i = 0; i < texture->Metadata.Width * texture->Metadata.Height * 4; i += 4) {
+    for (int32_t i = 0; i < texture->Metadata.Width * texture->Metadata.Height * 4; i += 4) {
         const uint8_t r = texture->Data[i];
         const uint8_t g = texture->Data[i + 1];
         const uint8_t b = texture->Data[i + 2];
@@ -198,6 +200,52 @@ void Achievement_LoadTexture(const std::string& id) {
         std::string(achievement.icon) + ".locked", texture);
 }
 
+void Achievements_Load(IEvent* event) {
+    const OnGameFileLoad* ev = reinterpret_cast<OnGameFileLoad *>(event);
+    selectedFile = ev->fileNum - 1;
+
+    AchievementSaveData* saveData = &gSaveBuffer.files[selectedFile]->shipSaveData.achievementSaveData;
+
+    if (!CVarGetInteger(CVAR_ENHANCEMENT("Achievements"), 0) && !HAS_ACHIEVEMENTS(selectedFile)) {
+        memset(saveData, 0, sizeof(AchievementSaveData));
+        return;
+    }
+
+    if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        size_t idx = 0;
+        for (const auto& [id, achievement] : gAchievementList) {
+            saveData->entries[idx++].id = id.c_str();
+        }
+
+        gSaveBuffer.files[selectedFile]->shipSaveData.features.achievements = true;
+        save_file_do_save(selectedFile);
+    } else {
+        for (size_t i = 0; i < gAchievementList.size(); i++) {
+            auto& [id, progress] = saveData->entries[i];
+
+            gAchievementProgress[id].progress = progress;
+            gAchievementProgress[id].achieved = progress >= gAchievementList[id].maxProgress;
+        }
+    }
+}
+
+void Achievements_Save(IEvent* event) {
+    if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        return;
+    }
+
+    AchievementSaveData* saveData = &gSaveBuffer.files[selectedFile]->shipSaveData.achievementSaveData;
+
+    saveData->cheated = false; // TODO: Implement cheat detection
+
+    size_t index = 0;
+    for (const auto& [id, progress] : gAchievementProgress) {
+        saveData->entries[index].id = id.c_str();
+        saveData->entries[index].progress = progress.progress;
+        index++;
+    }
+}
+
 void Achievements_Init() {
     for (auto& [id, achievement] : gAchievementList) {
         gAchievementProgress[id] = { 0, false };
@@ -205,7 +253,14 @@ void Achievements_Init() {
     }
 
     // Register event listeners
+    REGISTER_LISTENER(OnGameFileLoad, EVENT_PRIORITY_NORMAL, Achievements_Load);
+    REGISTER_LISTENER(OnGameFileSave, EVENT_PRIORITY_NORMAL, Achievements_Save);
+
     REGISTER_LISTENER(ItemCollected, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
         const ItemCollected* ev = reinterpret_cast<ItemCollected*>(event);
         if (ev->type == TYPE_STAR) {
             const int16_t slot = gCurrSaveFileNum - 1;
@@ -231,8 +286,13 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(CapSwitchActivated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
         const CapSwitchActivated* ev = reinterpret_cast<CapSwitchActivated*>(event);
-        SPDLOG_INFO("Cap Switch Activated: {}", (int)ev->type);
+
+        SPDLOG_INFO("Cap Switch Activated: {}", static_cast<int>(ev->type));
 
         switch (ev->type) {
             case CAP_SWITCH_WING:
@@ -248,7 +308,12 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(BossDefeated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
         const BossDefeated* ev = reinterpret_cast<BossDefeated*>(event);
+
         switch (ev->type) {
             case BOSS_TYPE_KING_BOBOMB:
                 Achievement_Progress("DefeatKingBobomb");
@@ -283,6 +348,10 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(GameFrameUpdate, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
         const Object* interactObj = gMarioState->interactObj;
 
         if (interactObj != nullptr) {
@@ -292,22 +361,57 @@ void Achievements_Init() {
         }
 
         if (gCurrLevelNum == LEVEL_LLL && gCurrAreaIndex != 2) {
-            int count = Achievement_GetObjectCount({ MODEL_BULLY, MODEL_BULLY_BOSS });
+            const int count = Achievement_GetObjectCount({ MODEL_BULLY, MODEL_BULLY_BOSS });
             if (count == 0) {
                 Achievement_Progress("DefeatAllBigBullies");
             }
         }
 
         if (gCurrLevelNum == LEVEL_BBH) {
-            int count = Achievement_GetObjectCount({ MODEL_BOO });
+            const int count = Achievement_GetObjectCount({ MODEL_BOO });
             if (count == 0) {
                 Achievement_Progress("DefeatAllBooses");
             }
         }
     });
 
+    REGISTER_LISTENER(BossBattleStarted, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
+        bossBattleType = reinterpret_cast<BossBattleStarted*>(event)->type;
+        SPDLOG_INFO("Boss battle started: {}", static_cast<int>(bossBattleType));
+    });
+
+    REGISTER_LISTENER(BossBattleEnded, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
+        bossBattleType = BOSS_BATTLE_NONE;
+        SPDLOG_INFO("Boss battle ended");
+    });
+
     REGISTER_LISTENER(PlayerDeath, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const PlayerDeath* ev = reinterpret_cast<PlayerDeath*>(event);
+
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
+        switch (bossBattleType) {
+            case BOSS_BATTLE_KOOPA:
+            case BOSS_BATTLE_KOOPA_FINAL:
+                Achievement_Progress("DeathByBowser");
+                break;
+            case BOSS_BATTLE_GENERIC:
+                Achievement_Progress("DeathByBoss");
+                break;
+            default:
+                break;
+        }
+
         switch (ev->type) {
             case DEATH_TYPE_FALL:
                 Achievement_Progress("DeathByFalling");
@@ -326,14 +430,7 @@ void Achievements_Init() {
                 Achievement_Progress("DeathByFire");
                 break;
             default: {
-                if (is_sequence_playing(SEQ_EVENT_BOSS)) {
-                    Achievement_Progress("DeathByBoss");
-                } else if (is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA) ||
-                           is_sequence_playing(SEQ_LEVEL_BOSS_KOOPA_FINAL)) {
-                    Achievement_Progress("DeathByBowser");
-                } else {
-                    Achievement_Progress("DeathByEnemy");
-                }
+                Achievement_Progress("DeathByEnemy");
                 break;
             }
         }
@@ -341,16 +438,23 @@ void Achievements_Init() {
 
     REGISTER_LISTENER(PlayerExecuteAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const PlayerExecuteAction* ev = reinterpret_cast<PlayerExecuteAction*>(event);
+
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
+        SPDLOG_INFO("ExecuteAction {:X}", ev->action);
+
         switch (ev->action) {
-            case ACT_BUTT_SLIDE:
+            case ACT_BEGIN_SLIDING:
                 Achievement_Progress("Slide20Times");
                 break;
             case ACT_JUMP:
+            case ACT_BACKFLIP:
             case ACT_JUMP_KICK:
             case ACT_DOUBLE_JUMP:
             case ACT_TRIPLE_JUMP:
             case ACT_LONG_JUMP:
-            case ACT_JUMP_LAND:
                 Achievement_Progress("Jump1000Times");
                 break;
             case ACT_READING_NPC_DIALOG:
@@ -361,8 +465,13 @@ void Achievements_Init() {
         }
     });
 
-    REGISTER_LISTENER(ChainChompRelease, EVENT_PRIORITY_NORMAL,
-                      [](IEvent* event) { Achievement_Progress("ReleaseChainChomp"); });
+    REGISTER_LISTENER(ChainChompRelease, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+            return;
+        }
+
+        Achievement_Progress("ReleaseChainChomp");
+    });
 }
 
 static RegisterShipInitFunc initFunc(Achievements_Init);

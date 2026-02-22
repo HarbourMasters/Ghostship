@@ -5,8 +5,8 @@
 extern "C" {
 #endif
 
-extern int8_t textRand[];
-extern int8_t textMarioRando[];
+extern uint8_t textRand[];
+extern uint8_t textMarioRando[];
 
 
 void PortEnhancements_Register();

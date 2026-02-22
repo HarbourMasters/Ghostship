@@ -91,6 +91,7 @@ void king_bobomb_act_2(void) {
     if (mario_is_far_below_object(1200.0f)) {
         o->oAction = 0;
         stop_background_music(SEQUENCE_ARGS(4, SEQ_EVENT_BOSS));
+        CALL_EVENT(BossBattleEnded);
     }
 }
 
@@ -157,6 +158,7 @@ void king_bobomb_act_1(void) {
     if (mario_is_far_below_object(1200.0f)) {
         o->oAction = 0;
         stop_background_music(SEQUENCE_ARGS(4, SEQ_EVENT_BOSS));
+        CALL_EVENT(BossBattleEnded);
     }
 }
 
@@ -227,6 +229,7 @@ void king_bobomb_act_7(void) {
 void king_bobomb_act_8(void) {
     if (o->oTimer == 60) {
         stop_background_music(SEQUENCE_ARGS(4, SEQ_EVENT_BOSS));
+        CALL_EVENT(BossBattleEnded);
     }
 }
 
@@ -313,6 +316,7 @@ void king_bobomb_act_5(void) { // bobomb returns home
             if (mario_is_far_below_object(1200.0f)) {
                 o->oAction = 0;
                 stop_background_music(SEQUENCE_ARGS(4, SEQ_EVENT_BOSS));
+                CALL_EVENT(BossBattleEnded);
             }
 
             if (cur_obj_can_mario_activate_textbox_2(500.0f, 100.0f)) {

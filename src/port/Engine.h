@@ -27,6 +27,11 @@ struct CtlEntry;
 struct AudioBankSample;
 struct AudioSequenceData;
 
+struct AllocationEntry {
+  uint8_t* addr;
+  size_t size;
+};
+
 class GameEngine {
   public:
     static GameEngine* Instance;
@@ -44,6 +49,8 @@ class GameEngine {
     std::vector<CtlEntry*> banksTable;
     std::vector<std::string> sequenceTable;
     std::vector<AudioSequenceData*> audioSequenceTable;
+
+    std::vector<AllocationEntry> memoryPool;
 
     std::unordered_map<std::string, uint8_t> bankMapTable;
     std::unordered_map<std::string, std::vector<uint8_t>>* dictionary;
@@ -120,6 +127,8 @@ bool GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
 void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, char));
 void* GameEngine_GetExactDataByName(const char* path);
+void* GameEngine_Malloc(size_t size);
+void GameEngine_Free(void* ptr);
 
 #ifdef __cplusplus
 }

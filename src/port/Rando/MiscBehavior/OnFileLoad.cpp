@@ -24,14 +24,13 @@ void Rando::MiscBehavior::OnFileLoad() {
 
         bool loadedFromSpoiler = false;
 
-        if (!CVarGetInteger("gRandoSettings.Enabled", 0)) {
-            gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_VANILLA;
+        if (!CVarGetInteger("gRandoSettings.Enabled", 0) && !IS_RANDO(selectedFileNum)) {
             Rando::Logic::shuffledPool.clear();
             return;
         }
 
         if (!IS_RANDO(selectedFileNum)) {
-            gSaveBuffer.files[selectedFileNum]->shipSaveData.saveType = SAVETYPE_RANDO;
+            gSaveBuffer.files[selectedFileNum]->shipSaveData.features.rando = true;
             Rando::Logic::InitializeSaveChecks();
             Rando::Logic::InitializeSaveEntrances();
             Rando::Logic::InitializeSaveOptions();

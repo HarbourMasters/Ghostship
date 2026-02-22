@@ -18,7 +18,7 @@ extern "C" {
 extern struct SaveBuffer gSaveBuffer;
 }
 
-#define IS_RANDO(fileNum) (gSaveBuffer.files[fileNum]->shipSaveData.saveType == SAVETYPE_RANDO)
+#define IS_RANDO(fileNum) (gSaveBuffer.files[fileNum]->shipSaveData.features.rando)
 #define RANDO_SAVE_CHECKS(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.randoSaveData.randoSaveChecks
 #define RANDO_SAVE_ENTRANCES(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.randoSaveData.randoSaveEntrances
 #define RANDO_SAVE_OPTIONS(fileNum) gSaveBuffer.files[fileNum]->shipSaveData.randoSaveData.randoSaveOptions
