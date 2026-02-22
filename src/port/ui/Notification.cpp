@@ -106,8 +106,7 @@ void Window::DrawRegularNotification(const Options& notification, ImVec2 basePos
             notificationPos = ImVec2(basePosition.x, basePosition.y - currentWinSize.y);
             break;
         case 3: // Bottom Right
-            notificationPos =
-                ImVec2(basePosition.x - currentWinSize.x, basePosition.y - currentWinSize.y);
+            notificationPos = ImVec2(basePosition.x - currentWinSize.x, basePosition.y - currentWinSize.y);
             break;
     }
 
@@ -251,8 +250,7 @@ void Window::DrawEnhancedNotification(const Options& notification, ImVec2 basePo
             notificationPos = ImVec2(basePosition.x, basePosition.y - currentWinSize.y);
             break;
         case 3: // Bottom Right
-            notificationPos =
-                ImVec2(basePosition.x - currentWinSize.x, basePosition.y - currentWinSize.y);
+            notificationPos = ImVec2(basePosition.x - currentWinSize.x, basePosition.y - currentWinSize.y);
             break;
     }
 
