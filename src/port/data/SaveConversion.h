@@ -1,10 +1,14 @@
 #pragma once
 
+#include "port/Engine.h"
 #include "game/save_file.h"
 #include "port/Rando/Rando.h"
 #include "port/Rando/Spoiler/Spoiler.h"
+#include "port/mods/achievements/Achievements.h"
 
 #include <nlohmann/json.hpp>
+
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(ShipSaveFeatures, achievements, rando)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveCheck, randoItemId, randoAct, obtained, skipped)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveEntrance, randoEntranceId, destinationId, found)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveData, randoSaveChecks, randoSaveEntrances, randoSaveOptions, finalSeed)
@@ -38,19 +42,65 @@ T GetSafeEntry(const json& node, const std::string& key, const T& def) {
     return node.at(key).get<T>();
 }
 
-inline void from_json(const json& j, ShipSaveData& save) {
-    save.saveType = j.value("saveType", SAVETYPE_VANILLA);
+inline void from_json(const json& j, AchievementSaveEntry& entry) {
+    const auto id = GetSafeEntry<std::string>(j, "id");
+    const auto progress = GetSafeEntry<int32_t>(j, "progress");
 
-    if (save.saveType == SAVETYPE_RANDO) {
+    entry.id = (char*) GameEngine_Malloc(id.length() + 1);
+    std::strcpy(const_cast<char *>(entry.id), id.c_str());
+
+    entry.progress = progress;
+}
+
+inline void to_json(json& j, const AchievementSaveEntry& entry) {
+    j = json{
+        { "id", std::string(entry.id) },
+        { "progress", entry.progress }
+    };
+}
+
+inline void from_json(const json& j, AchievementSaveData& data) {
+    data.cheated = j.at("cheated").get<bool>();
+
+    auto entriesJson = j.at("entries");
+    for (size_t i = 0; i < entriesJson.size(); i++) {
+        data.entries[i] = entriesJson.at(i).get<AchievementSaveEntry>();
+    }
+}
+
+inline void to_json(json& j, const AchievementSaveData& data) {
+    json entriesJson = json::array();
+    for (size_t i = 0; i < gAchievementList.size(); i++) {
+        entriesJson.push_back(data.entries[i]);
+    }
+
+    j = json{
+        { "cheated", data.cheated },
+        { "entries", entriesJson }
+    };
+}
+
+inline void from_json(const json& j, ShipSaveData& save) {
+    save.features = j.at("features").get<ShipSaveFeatures>();
+
+    if (save.features.rando) {
         j["randoSaveData"].get_to(save.randoSaveData);
+    }
+
+    if (save.features.achievements) {
+        j["achievementSaveData"].get_to(save.achievementSaveData);
     }
 }
 
 inline void to_json(json& j, const ShipSaveData& save) {
-    j = json{ { "saveType", save.saveType } };
+    j = json{ { "features", save.features } };
 
-    if (save.saveType == SAVETYPE_RANDO) {
+    if (save.features.rando) {
         j["randoSaveData"] = save.randoSaveData;
+    }
+
+    if (save.features.achievements) {
+        j["achievementSaveData"] = save.achievementSaveData;
     }
 }
 

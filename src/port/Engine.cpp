@@ -811,6 +811,9 @@ void GameEngine::Destroy() {
 #ifdef __SWITCH__
     Ship::Switch::Exit();
 #endif
+    for(auto& entry : Instance->memoryPool) {
+        delete[] entry.addr;
+    }
 }
 
 void GameEngine::StartFrame() const {
@@ -1398,4 +1401,23 @@ extern "C" void GameEngine_GfxPrint(const char* str, void* printer, void (*print
 extern "C" void* GameEngine_GetExactDataByName(const char* path) {
     auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path, true);
     return asset ? static_cast<void*>(asset->GetRawPointer()) : nullptr;
+}
+
+extern "C" void* GameEngine_Malloc(size_t size) {
+    auto& pool = GameEngine::Instance->memoryPool;
+
+    pool.push_back({ new uint8_t[size], size });
+    return (void*) pool.back().addr;
+}
+
+extern "C" void GameEngine_Free(void* ptr) {
+    auto& pool = GameEngine::Instance->memoryPool;
+
+    for (auto it = pool.begin(); it != pool.end(); ++it) {
+        if (it->addr == ptr) {
+            delete[] it->addr;
+            pool.erase(it);
+            break;
+        }
+    }
 }

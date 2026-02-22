@@ -370,6 +370,7 @@ static void wiggler_act_fall_through_floor(void) {
     if (o->oTimer == 60) {
         stop_background_music(SEQUENCE_ARGS(4, SEQ_EVENT_BOSS));
         o->oWigglerFallThroughFloorsHeight = 1700.0f;
+        CALL_EVENT(BossBattleEnded);
     } else if (o->oTimer > 60) {
         if (o->oPosY < o->oWigglerFallThroughFloorsHeight) {
             o->oAction = WIGGLER_ACT_WALK;

@@ -76,7 +76,7 @@ void SaveFileLoadAll(void) {
         // Migrate Existing Saves to Include Vanilla ShipSaveData.
         if (!j.contains("shipSaveData")) {
             j["shipSaveData"] = json::object();
-            j["shipSaveData"]["saveType"] = SAVETYPE_VANILLA;
+            j["shipSaveData"]["features"] = ShipSaveFeatures { .achievements = false, .rando = false };
         }
 
         gSaveBuffer.files[fileIndex][0] = j.get<struct SaveFile>();

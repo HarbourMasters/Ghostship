@@ -3,6 +3,7 @@
 
 #include <libultra/types.h>
 #include "port/Rando/Types.h"
+#include "port/mods/achievements/Achievements.h"
 
 #include "types.h"
 #include "area.h"
@@ -37,11 +38,6 @@ struct RandoSaveOption {
     int32_t randoOptionValue;
 };
 
-typedef enum {
-    SAVETYPE_VANILLA,
-    SAVETYPE_RANDO,
-} SaveType;
-
 struct RandoSaveData {
     struct RandoSaveCheck randoSaveChecks[RC_MAX];
     struct RandoSaveEntrance randoSaveEntrances[RE_MAX];
@@ -49,8 +45,14 @@ struct RandoSaveData {
     u32 finalSeed;
 };
 
+typedef struct ShipSaveFeatures {
+    bool achievements;
+    bool rando;
+} ShipSaveFeatures;
+
 struct ShipSaveData {
-    SaveType saveType;
+    struct ShipSaveFeatures features;
+    struct AchievementSaveData achievementSaveData;
     struct RandoSaveData randoSaveData;
 };
 

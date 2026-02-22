@@ -9,8 +9,8 @@
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
 
-int8_t textRand[] = { 0x1B, 0x0A, 0x17, 0x0D, 0xFF };
-int8_t textMarioRando[] = { 0x1B, 0x0A, 0x17, 0x0D, 0x18, 0x16, 0x12, 0x23, 0x0E, 0x1B, 0xFF };
+uint8_t textRand[] = { 0x1B, 0x0A, 0x17, 0x0D, 0xFF };
+uint8_t textMarioRando[] = { 0x1B, 0x0A, 0x17, 0x0D, 0x18, 0x16, 0x12, 0x23, 0x0E, 0x1B, 0xFF };
 
 static const Mtx matrix_patch_identity = {
     { { 1.0f, 0.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 0.0f, 1.0f } }
@@ -135,6 +135,8 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(ChainChompRelease);
     REGISTER_EVENT(BossDefeated);
     REGISTER_EVENT(SpawnCollectible);
+    REGISTER_EVENT(BossBattleStarted);
+    REGISTER_EVENT(BossBattleEnded);
 
     Rando::Init();
     LoadGuiTextures();

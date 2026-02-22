@@ -26,6 +26,13 @@ typedef enum BossType {
     BOSS_TYPE_BOWSER_BITS,
 } BossType;
 
+typedef enum BossBattleType {
+    BOSS_BATTLE_NONE,
+    BOSS_BATTLE_KOOPA,
+    BOSS_BATTLE_KOOPA_FINAL,
+    BOSS_BATTLE_GENERIC,
+} BossBattleType;
+
 typedef enum CollectibleType {
     COLLECTIBLE_TYPE_GRAND_STAR,
     COLLECTIBLE_TYPE_KEY,
@@ -48,3 +55,8 @@ DEFINE_EVENT(SpawnCollectible,
     struct Object* entity;
     CollectibleType itemType;
 );
+
+DEFINE_EVENT(BossBattleStarted, 
+    BossBattleType type;
+);
+DEFINE_EVENT(BossBattleEnded);
