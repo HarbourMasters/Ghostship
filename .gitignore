@@ -97,6 +97,7 @@ modding/
 node_modules
 /src/port/build.c
 /properties.h
-!/src/port/mods/
 mods/
+randomizer/
+!/src/port/mods/
 saves/
