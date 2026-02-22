@@ -32,7 +32,7 @@ class Window : public Ship::GuiWindow {
 
   private:
     void DrawRegularNotification(const Options& notification, ImVec2 basePosition, int inverseIndex, int position,
-                                 float padding, ImGuiViewport* vp);
+                                 float padding, ImGuiViewport* vp, int index);
     void DrawEnhancedNotification(const Options& notification, ImVec2 basePosition, int position, float padding,
                                   int index);
 };

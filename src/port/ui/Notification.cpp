@@ -49,18 +49,27 @@ void Window::Draw() {
         int count = static_cast<int>(notifications.size());
         int inverseIndex = -(count - 1 - index);
 
+        if (index != 0) {
+            auto it = notificationHeights.find(notification.id);
+            if (it != notificationHeights.end()) {
+                basePosition.y -= it->second + padding;
+            } else {
+                basePosition.y -= (notification.isAchievement ? 100.0f : 60.0f) + padding;
+            }
+        }
+
         if (notification.isAchievement) {
             // Enhanced layout for achievements
             DrawEnhancedNotification(notification, basePosition, position, padding, index);
         } else {
             // Original simple layout for regular notifications
-            DrawRegularNotification(notification, basePosition, inverseIndex, position, padding, vp);
+            DrawRegularNotification(notification, basePosition, inverseIndex, position, padding, vp, index);
         }
     }
 }
 
 void Window::DrawRegularNotification(const Options& notification, ImVec2 basePosition, int inverseIndex, int position,
-                                     float padding, ImGuiViewport* vp) {
+                                     float padding, ImGuiViewport* vp, int index) {
     ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0, 0, 0, CVarGetFloat("gNotifications.BgOpacity", 0.5f)));
     ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 4.0f);
@@ -85,21 +94,20 @@ void Window::DrawRegularNotification(const Options& notification, ImVec2 basePos
 
     ImVec2 currentWinSize = ImGui::GetWindowSize();
     ImVec2 notificationPos;
+
     switch (position) {
         case 0: // Top Left
-            notificationPos = ImVec2(basePosition.x, basePosition.y + ((currentWinSize.y + padding) * inverseIndex));
+            notificationPos = ImVec2(basePosition.x, basePosition.y);
             break;
         case 1: // Top Right
-            notificationPos = ImVec2(basePosition.x - currentWinSize.x,
-                                     basePosition.y + ((currentWinSize.y + padding) * inverseIndex));
+            notificationPos = ImVec2(basePosition.x - currentWinSize.x, basePosition.y);
             break;
         case 2: // Bottom Left
-            notificationPos =
-                ImVec2(basePosition.x, basePosition.y - ((currentWinSize.y + padding) * (inverseIndex + 1)));
+            notificationPos = ImVec2(basePosition.x, basePosition.y - currentWinSize.y);
             break;
         case 3: // Bottom Right
-            notificationPos = ImVec2(basePosition.x - currentWinSize.x,
-                                     basePosition.y - ((currentWinSize.y + padding) * (inverseIndex + 1)));
+            notificationPos =
+                ImVec2(basePosition.x - currentWinSize.x, basePosition.y - currentWinSize.y);
             break;
     }
 
@@ -121,6 +129,9 @@ void Window::DrawRegularNotification(const Options& notification, ImVec2 basePos
         ImGui::SameLine();
         ImGui::TextColored(notification.suffixColor, "%s", notification.suffix.c_str());
     }
+
+    // Store actual height in cache for future positioning calculations
+    notificationHeights[notification.id] = currentWinSize.y;
 
     ImGui::End();
     ImGui::PopStyleVar(4);
@@ -225,65 +236,30 @@ void Window::DrawEnhancedNotification(const Options& notification, ImVec2 basePo
     }
 
     // Get actual window size after content layout
-    ImVec2 actualWinSize = ImGui::GetWindowSize();
-
-    // Calculate position using accumulated heights from cache
-    float accumulatedHeight = 0.0f;
-    if (position == 0 || position == 1) {
-        // Top positions: accumulate heights of notifications before this one
-        for (int i = 0; i < index; ++i) {
-            if (notifications[i].isAchievement) {
-                auto it = notificationHeights.find(notifications[i].id);
-                if (it != notificationHeights.end()) {
-                    accumulatedHeight += it->second + padding;
-                } else {
-                    // Fallback estimate if height not yet cached
-                    accumulatedHeight += 100.0f + padding;
-                }
-            } else {
-                // Regular notifications use smaller estimate
-                accumulatedHeight += 50.0f + padding;
-            }
-        }
-    } else {
-        // Bottom positions: accumulate heights of notifications after this one
-        for (int i = index + 1; i < static_cast<int>(notifications.size()); ++i) {
-            if (notifications[i].isAchievement) {
-                auto it = notificationHeights.find(notifications[i].id);
-                if (it != notificationHeights.end()) {
-                    accumulatedHeight += it->second + padding;
-                } else {
-                    // Fallback estimate if height not yet cached
-                    accumulatedHeight += 100.0f + padding;
-                }
-            } else {
-                // Regular notifications use smaller estimate
-                accumulatedHeight += 50.0f + padding;
-            }
-        }
-    }
+    ImVec2 currentWinSize = ImGui::GetWindowSize();
 
     ImVec2 notificationPos;
+
     switch (position) {
         case 0: // Top Left
-            notificationPos = ImVec2(basePosition.x, basePosition.y + accumulatedHeight);
+            notificationPos = ImVec2(basePosition.x, basePosition.y);
             break;
         case 1: // Top Right
-            notificationPos = ImVec2(basePosition.x - enhancedWidth, basePosition.y + accumulatedHeight);
+            notificationPos = ImVec2(basePosition.x - currentWinSize.x, basePosition.y);
             break;
         case 2: // Bottom Left
-            notificationPos = ImVec2(basePosition.x, basePosition.y - actualWinSize.y - accumulatedHeight);
+            notificationPos = ImVec2(basePosition.x, basePosition.y - currentWinSize.y);
             break;
         case 3: // Bottom Right
             notificationPos =
-                ImVec2(basePosition.x - enhancedWidth, basePosition.y - actualWinSize.y - accumulatedHeight);
+                ImVec2(basePosition.x - currentWinSize.x, basePosition.y - currentWinSize.y);
             break;
     }
 
     ImGui::SetWindowPos(notificationPos);
 
     // Store actual height in cache for future positioning calculations
-    notificationHeights[notification.id] = actualWinSize.y;
+    notificationHeights[notification.id] = currentWinSize.y;
 
     ImGui::End();
 
