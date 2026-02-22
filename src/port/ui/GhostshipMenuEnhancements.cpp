@@ -120,21 +120,6 @@ void GhostshipMenu::AddMenuEnhancements() {
         })
         .Options(IntSliderOptions().Min(1).Max(100).DefaultValue(9).ShowButtons(true).Format("%d"));
 
-    path = { "Enhancements", "Achievements", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", path.sidebarName, 1);
-
-    AddWidget(path, "Enable Achievements", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("Achievements"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip(
-            "Enables the achievement system, which tracks various accomplishments and milestones in the game."));
-
-    AddWidget(path, "Popout Achievements", WIDGET_WINDOW_BUTTON)
-        .CVar(CVAR_WINDOW("Achievements"))
-        .WindowName("Achievements")
-        .HideInSearch(true)
-        .Options(WindowButtonOptions().Tooltip("Enables the separate Achievements Window."));
-
     path = { "Enhancements", "Gameplay", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
