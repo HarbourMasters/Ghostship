@@ -9,6 +9,10 @@
 
 #define SP_DRAM_STACK_SIZE8 0x400
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern u8 gDecompressionHeap[];
 
 extern u8 gAudioHeap[];
@@ -32,5 +36,9 @@ extern struct SaveBuffer gSaveBuffer;
 extern u8 gGfxSPTaskStack[];
 
 extern struct GfxPool gGfxPools[1];
+
+#ifdef __cplusplus
+};
+#endif
 
 #endif // BUFFERS_H
