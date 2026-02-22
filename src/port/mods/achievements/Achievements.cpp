@@ -201,7 +201,7 @@ void Achievement_LoadTexture(const std::string& id) {
 }
 
 void Achievements_Load(IEvent* event) {
-    const OnGameFileLoad* ev = reinterpret_cast<OnGameFileLoad *>(event);
+    const OnGameFileLoad* ev = reinterpret_cast<OnGameFileLoad*>(event);
     selectedFile = ev->fileNum - 1;
 
     AchievementSaveData* saveData = &gSaveBuffer.files[selectedFile]->shipSaveData.achievementSaveData;
@@ -211,7 +211,7 @@ void Achievements_Load(IEvent* event) {
         return;
     }
 
-    if(!HAS_ACHIEVEMENTS(selectedFile)) {
+    if (!HAS_ACHIEVEMENTS(selectedFile)) {
         size_t idx = 0;
         for (const auto& [id, achievement] : gAchievementList) {
             saveData->entries[idx++].id = id.c_str();
@@ -230,7 +230,7 @@ void Achievements_Load(IEvent* event) {
 }
 
 void Achievements_Save(IEvent* event) {
-    if(!HAS_ACHIEVEMENTS(selectedFile)) {
+    if (!HAS_ACHIEVEMENTS(selectedFile)) {
         return;
     }
 
@@ -257,7 +257,7 @@ void Achievements_Init() {
     REGISTER_LISTENER(OnGameFileSave, EVENT_PRIORITY_NORMAL, Achievements_Save);
 
     REGISTER_LISTENER(ItemCollected, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -286,7 +286,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(CapSwitchActivated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -308,7 +308,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(BossDefeated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -348,7 +348,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(GameFrameUpdate, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -376,7 +376,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(BossBattleStarted, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -385,7 +385,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(BossBattleEnded, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -396,7 +396,7 @@ void Achievements_Init() {
     REGISTER_LISTENER(PlayerDeath, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const PlayerDeath* ev = reinterpret_cast<PlayerDeath*>(event);
 
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -439,7 +439,7 @@ void Achievements_Init() {
     REGISTER_LISTENER(PlayerExecuteAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const PlayerExecuteAction* ev = reinterpret_cast<PlayerExecuteAction*>(event);
 
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 
@@ -466,7 +466,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(ChainChompRelease, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if(!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;
         }
 

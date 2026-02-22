@@ -811,7 +811,7 @@ void GameEngine::Destroy() {
 #ifdef __SWITCH__
     Ship::Switch::Exit();
 #endif
-    for(auto& entry : Instance->memoryPool) {
+    for (auto& entry : Instance->memoryPool) {
         delete[] entry.addr;
     }
 }
@@ -1407,7 +1407,7 @@ extern "C" void* GameEngine_Malloc(size_t size) {
     auto& pool = GameEngine::Instance->memoryPool;
 
     pool.push_back({ new uint8_t[size], size });
-    return (void*) pool.back().addr;
+    return (void*)pool.back().addr;
 }
 
 extern "C" void GameEngine_Free(void* ptr) {
