@@ -290,6 +290,8 @@ void GameEngine::FinishInit() {
                                     "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY,
                                     "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceXMLFactoryV0>(), RESOURCE_FORMAT_XML,
+                                    "Sequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DialogFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dialog",
                                     static_cast<uint32_t>(SM64::ResourceType::SDialog), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::DictionaryFactoryV0>(), RESOURCE_FORMAT_BINARY, "Dictionary",
@@ -916,6 +918,9 @@ void GameEngine::AudioInit() {
     }
 
     for (auto& sequence : *sequences_files) {
+        if(sequence.find(".m64") != std::string::npos) {
+            continue;
+        }
         auto path = "__OTR__" + sequence;
         auto seq = static_cast<AudioSequenceData*>(ResourceGetDataByName(path.c_str()));
         Instance->sequenceTable[seq->id] = path;
