@@ -12,6 +12,7 @@
       binary: sm64.o2r
       code: code/jp
       headers: include/assets
+      modding: mods/assets
   segments:
     - 0x000000
     - 0x000000
@@ -48,6 +49,7 @@
     output:
       binary: sm64.o2r
       code: code/us
+      modding: mods/assets
       headers: include/assets
   segments:
     - 0x000000
