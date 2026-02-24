@@ -102,6 +102,7 @@ void DrawFlagTableArray32(const FlagTable& flagTable, uint16_t row, uint32_t& fl
 
 void RandoSaveFile() {
     gSaveFileModified = true;
+    gSaveBuffer.files[selectedFileNum][0].flags |= SAVE_FLAG_FILE_EXISTS;
     save_file_do_save(selectedFileNum);
     gMarioState->numStars = save_file_get_total_star_count(selectedFileNum, COURSE_MIN - 1, COURSE_MAX - 1);
     RefreshChecksInLogic();
