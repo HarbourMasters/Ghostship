@@ -57,6 +57,9 @@ void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_
             gSaveBuffer.files[fileNum][0].flags |= STAR_FLAG_TO_SAVE_FLAG(1 << starAct);
         } else {
             gSaveBuffer.files[fileNum][0].courseStars[courseNum] |= (1 << starAct);
+            if (courseNum == COURSE_DDD && starAct == 0) {
+                gSaveBuffer.files[fileNum][0].flags |= SAVE_FLAG_DDD_MOVED_BACK;
+            }
         }
     } else {
         if (courseNum == COURSE_NONE) {
@@ -211,7 +214,15 @@ void SaveEditorWindow::DrawElement() {
                     if (s <= 6) {
                         std::string labelStr = "##courseStars" + std::to_string(s);
                         const char* label = labelStr.c_str();
-                        bool isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] & (1 << s);
+                        bool isChecked = false;
+                        if (i == COURSE_NONE) {
+                            int16_t starCount =
+                                save_file_get_course_star_count(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_NONE));
+                            isChecked = starCount > s ? true : false;
+                        } else {
+                            isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] & (1 << s);
+                        }
+                        
 
                         UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
                         if (UIWidgets::Checkbox(label, &isChecked)) {
