@@ -24,9 +24,9 @@ static RegisterShipInitFunc initFunc([]() {
             CHECK(RC_DDD_STAR_01_BOWSERS_SUB, true),
             CHECK(RC_DDD_STAR_02_CHESTS, true),
             CHECK(RC_DDD_STAR_03_RED_COINS, true),
-            CHECK(RC_DDD_STAR_04_JET_STREAM, true),
+            CHECK(RC_DDD_STAR_04_JET_STREAM, CAN_USE(METAL)),
             CHECK(RC_DDD_STAR_05_MANTA_RAY, true),
-            CHECK(RC_DDD_STAR_06_CAPS, true),
+            CHECK(RC_DDD_STAR_06_CAPS, CAN_USE(VANISH)),
             CHECK(RC_DDD_STAR_07_100_COIN, true),
         },
     };

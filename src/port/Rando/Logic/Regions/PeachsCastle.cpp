@@ -13,6 +13,9 @@ static RegisterShipInitFunc initFunc([]() {
             CHECK(RC_CASTLE_STAR_04_MIPS_FIRST,     CAN_USE(KEY_1) && HAS_TARGET_STARS(15)),
             CHECK(RC_CASTLE_STAR_05_MIPS_SECOND,    CAN_USE(KEY_1) && HAS_TARGET_STARS(50)),
         },
+        .connections = {
+            CONNECTION(RR_LEVEL_BOB, CAN_ACCESS_ENTRANCE(RR_LEVEL_BOB)),
+        },
     };
 }, {});
 // clang-format on

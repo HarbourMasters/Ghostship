@@ -51,17 +51,19 @@ std::map<std::string, int32_t> randoFlagList = {
 void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_t fileNum) {
     if (isObtained) {
         if (courseNum == COURSE_NONE) {
-            gSaveBuffer.files[fileNum][0].flags |= (1 << starAct);
+            gSaveBuffer.files[fileNum][0].flags |= STAR_FLAG_TO_SAVE_FLAG(1 << starAct);
         } else {
             gSaveBuffer.files[fileNum][0].courseStars[courseNum] |= (1 << starAct);
         }
     } else {
         if (courseNum == COURSE_NONE) {
-            gSaveBuffer.files[fileNum][0].flags &= ~(1 << starAct);
+            gSaveBuffer.files[fileNum][0].flags &= ~STAR_FLAG_TO_SAVE_FLAG(1 << starAct);
         } else {
             gSaveBuffer.files[fileNum][0].courseStars[courseNum] &= ~(1 << starAct);
         }
     }
+
+    gSaveFileModified = true;
     gMarioState->numStars = save_file_get_total_star_count(fileNum, COURSE_MIN - 1, COURSE_MAX - 1);
     save_file_do_save(fileNum);
 }
@@ -163,10 +165,31 @@ void SaveEditorWindow::DrawElement() {
     UIWidgets::PushStyleTabs(WIDGET_COLOR);
     ImGui::BeginTabBar("##saveEditorTabs");
     if (ImGui::BeginTabItem("Main Save & Mario Flags")) {
+        if (IS_RANDO(gCurrSaveFileNum - 1)) {
+            ImGui::SeparatorText("Rando Save Loaded, use the Rando Tab to make changes");
+        }
+        ImGui::BeginDisabled(IS_RANDO(gCurrSaveFileNum - 1));
         ImGui::Text("Mario Flags");
         DrawFlagTableArray32(flagTables[1], 0, gMarioState->flags);
         ImGui::Text("Save File Flags");
         DrawFlagTableArray32(flagTables[0], 0, gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags);
+        ImGui::SeparatorText("Positionals");
+        std::string posX = std::to_string(gMarioState->pos[0]);
+        std::string posY = std::to_string(gMarioState->pos[1]);
+        std::string posZ = std::to_string(gMarioState->pos[2]);
+        ImGui::Text("Pos X:");
+        ImGui::SameLine();
+        ImGui::Text(posX.c_str());
+        
+        ImGui::Text("Pos Y:");
+        ImGui::SameLine();
+        ImGui::Text(posY.c_str());
+
+        ImGui::Text("Pos Z:");
+        ImGui::SameLine();
+        ImGui::Text(posZ.c_str());
+
+        ImGui::EndDisabled();
         ImGui::EndTabItem();
     }
 
