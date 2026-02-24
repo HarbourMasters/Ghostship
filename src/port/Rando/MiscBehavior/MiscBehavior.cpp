@@ -48,6 +48,10 @@ void Rando::MiscBehavior::Init() {
         }
 
         if (ev->sourceWarpNode >= 241 && currentEntrance != RE_UNKNOWN) {
+            if (Rando::StaticData::GetEntranceIdFromDestination(gCurrLevelNum) == shuffledEntrance) {
+                return;
+            }
+
             Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
 
             ev->warpNode->destNode = randoStaticEntrance.deathWarpId;

@@ -73,6 +73,7 @@ extern std::map<RandoRegionId, RandoRegion> Regions;
 
 // Logic Operators
 #define HAS_COURSE_STAR(course, act) (CheckCourseActStar(course, act))
+#define CAN_ACCESS_ACT(course, act) (CheckCourseActAccess(course, act))
 #define HAS_TARGET_STARS(count) (CheckTotalStars() >= count)
 #define CAN_USE(item) (CheckFlagUnlock(RF_##item))
 
@@ -82,6 +83,32 @@ extern std::map<RandoRegionId, RandoRegion> Regions;
 inline bool CheckCourseActStar(int16_t courseNum, int16_t starAct) {
     return courseNum == COURSE_NONE ? gSaveBuffer.files[selectedFileNum][0].flags & (1 << starAct)
                                     : gSaveBuffer.files[selectedFileNum][0].courseStars[courseNum] & (1 << starAct);
+}
+
+inline bool CheckCourseActAccess(int16_t courseNum, int16_t starAct) {
+    bool canAccessAct = false;
+    int8_t courseStars = 0;
+
+    if (courseNum != COURSE_NONE && starAct < RA_ACT_06) {
+        for (int s = (starAct + 1); s < RA_ACT_COIN; s++) {
+            if ((gSaveBuffer.files[selectedFileNum][0].courseStars[COURSE_NUM_TO_INDEX(courseNum)] & (1 << s)) != 0) {
+                return true;
+            }
+        }
+    }
+
+    for (int i = 0; i < starAct; i++) {
+        bool checkStar =
+            (gSaveBuffer.files[selectedFileNum][0].courseStars[COURSE_NUM_TO_INDEX(courseNum)] & (1 << i)) != 0;
+        // int16_t checkStar = courseNum == COURSE_NONE
+        //                         ? gSaveBuffer.files[selectedFileNum][0].flags & (1 << i)
+        //         : gSaveBuffer.files[selectedFileNum][0].courseStars[COURSE_NUM_TO_INDEX(courseNum)] & (1 << i);
+        if (checkStar == true) {
+            courseStars++;
+        }
+    }
+
+    return courseStars == starAct ? true : false;
 }
 
 inline int32_t CheckTotalStars() {

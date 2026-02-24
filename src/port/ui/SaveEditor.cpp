@@ -46,9 +46,9 @@ std::map<std::string, int32_t> randoFlagList = {
     { "Unlock Vanish Cap", SAVE_FLAG_HAVE_VANISH_CAP },
     { "Grant Bowser Key 1", SAVE_FLAG_HAVE_KEY_1 },
     { "Grant Bowser Key 2", SAVE_FLAG_HAVE_KEY_2 },
-    { "Unlock 8 Star Door", SAVE_FLAG_UNLOCKED_BITDW_DOOR },
-    { "Unlock 30 Star Door", SAVE_FLAG_UNLOCKED_BITFS_DOOR },
-    { "Unlock 50 Star Door", SAVE_FLAG_UNLOCKED_50_STAR_DOOR },
+    // { "Unlock 8 Star Door", SAVE_FLAG_UNLOCKED_BITDW_DOOR },
+    // { "Unlock 30 Star Door", SAVE_FLAG_UNLOCKED_BITFS_DOOR },
+    // { "Unlock 50 Star Door", SAVE_FLAG_UNLOCKED_50_STAR_DOOR },
 };
 
 void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_t fileNum) {
@@ -58,7 +58,7 @@ void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_
         if (courseNum == COURSE_NONE) {
             gSaveBuffer.files[fileNum][0].flags &= ~STAR_FLAG_TO_SAVE_FLAG(1 << starAct);
         } else {
-            gSaveBuffer.files[fileNum][0].courseStars[courseNum] &= ~(1 << starAct);
+            gSaveBuffer.files[fileNum][0].courseStars[COURSE_NUM_TO_INDEX(courseNum)] &= ~(1 << starAct);
         }
     }
 
