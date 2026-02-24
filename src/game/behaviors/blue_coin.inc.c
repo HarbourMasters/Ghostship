@@ -36,7 +36,7 @@ void bhv_hidden_blue_coin_loop(void) {
 
             break;
 
-        case HIDDEN_BLUE_COIN_ACT_ACTIVE:
+        case HIDDEN_BLUE_COIN_ACT_ACTIVE: {
             // Become tangible
             cur_obj_enable_rendering();
             cur_obj_become_tangible();
@@ -55,6 +55,7 @@ void bhv_hidden_blue_coin_loop(void) {
             }
 
             break;
+        }
     }
 
     o->oInteractStatus = 0;
@@ -114,7 +115,7 @@ void bhv_blue_coin_switch_loop(void) {
 
             break;
 
-        case BLUE_COIN_SWITCH_ACT_TICKING:
+        case BLUE_COIN_SWITCH_ACT_TICKING: {
             CALL_CANCELLABLE_EVENT(ModifyObjectBehavior, o, MODEL_BLUE_COIN_SWITCH) {
                 // Tick faster when the blue coins start blinking
                 if (o->oTimer < 200) {
@@ -130,5 +131,6 @@ void bhv_blue_coin_switch_loop(void) {
                 }
             }
             break;
+        }
     }
 }

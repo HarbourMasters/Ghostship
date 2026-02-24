@@ -8,7 +8,10 @@ namespace GhostshipGui {
 extern std::shared_ptr<Rando::EntranceTracker::EntranceTrackerWindow> mRandoEntranceTrackerWindow;
 }
 
-#define DEFAULT_FOUND_COLOR Color_RGBA8(100, 255, 100, 255)
+#define DEFAULT_FOUND_COLOR \
+    Color_RGBA8 {           \
+        100, 255, 100, 255  \
+    }
 
 #define CVAR_NAME_SHOW_ENTRANCE_TRACKER "gWindows.EntranceTracker"
 #define CVAR_NAME_ENTRANCE_TRACKER_OPACITY "gRando.EntranceTracker.Opacity"

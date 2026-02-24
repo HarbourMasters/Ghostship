@@ -9,6 +9,7 @@ void initiate_warp(s16 destLevel, s16 destArea, s16 destWarpNode, s32 arg3);
 }
 
 static RandoEntranceId currentEntrance = RE_UNKNOWN;
+static RandoEntranceId shuffledEntrance = RE_UNKNOWN;
 
 // Entry point for the module, run once on game boot
 void Rando::MiscBehavior::Init() {
@@ -27,6 +28,9 @@ void Rando::MiscBehavior::Init() {
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         LevelScriptExecute* ev = (LevelScriptExecute*)event;
+        if (!IS_RANDO(selectedFileNum)) {
+            return;
+        }
         if (ev->command == 17) {
             if (gCurrLevelNum == LEVEL_CASTLE || gCurrLevelNum == LEVEL_CASTLE_COURTYARD ||
                 gCurrLevelNum == LEVEL_CASTLE_GROUNDS) {
@@ -43,29 +47,7 @@ void Rando::MiscBehavior::Init() {
             return;
         }
 
-        SPDLOG_INFO("Source Warp:   {}", std::to_string(ev->sourceWarpNode));
-        SPDLOG_INFO("Prev Entrance: {}", std::to_string(currentEntrance));
-        SPDLOG_INFO("Current Level: {}", std::to_string(gCurrLevelNum));
-        SPDLOG_INFO("Destination:   {}", std::to_string(ev->warpNode->destLevel));
-
-        // Skip inter-level area changes.
-        if (gCurrLevelNum == ev->warpNode->destLevel) {
-            return;
-        }
-
-        // Skip Bowser Arena entrances for now, plan on adding these in later.
-        if (ev->warpNode->destLevel == LEVEL_BOWSER_1 || ev->warpNode->destLevel == LEVEL_BOWSER_2 ||
-            ev->warpNode->destLevel == LEVEL_BOWSER_3) {
-            currentEntrance = RE_UNKNOWN;
-            return;
-        }
-
-        // Skip entering the Castle Courtyard from the Castle Interior.
-        if (currentEntrance == RE_UNKNOWN && ev->warpNode->destLevel == LEVEL_CASTLE_COURTYARD) {
-            return;
-        }
-
-        if (ev->sourceWarpNode > 0 && currentEntrance != RE_UNKNOWN) {
+        if (ev->sourceWarpNode >= 241 && currentEntrance != RE_UNKNOWN) {
             Rando::StaticData::RandoStaticEntrance randoStaticEntrance = Rando::StaticData::Entrances[currentEntrance];
 
             ev->warpNode->destNode = randoStaticEntrance.deathWarpId;
@@ -84,6 +66,7 @@ void Rando::MiscBehavior::Init() {
             }
 
             currentEntrance = RE_UNKNOWN;
+            shuffledEntrance = RE_UNKNOWN;
         } else {
             RandoEntranceId randoEntranceId;
             for (auto& [randoEntranceId, randoStaticEntrance] : Rando::StaticData::Entrances) {
@@ -99,6 +82,7 @@ void Rando::MiscBehavior::Init() {
                         }
                     }
                     currentEntrance = randoEntranceId;
+                    shuffledEntrance = Rando::StaticData::GetEntranceIdFromDestination(ev->warpNode->destLevel);
                     break;
                 }
             }

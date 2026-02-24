@@ -13,6 +13,12 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: true
+    - name: Extract Project Version
+      id: extract_version
+      run: |
+        VERSION=$(grep -oP '^\s*project\s*\([^)]*VERSION\s+\K[0-9\.]+' CMakeLists.txt)
+        echo "Found version: $VERSION"
+        echo "version=$VERSION" >> "$GITHUB_OUTPUT"
     - name: Install dependencies
       run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release
     - name: ccache
@@ -23,7 +29,7 @@ jobs:
           ${{ runner.os }}-o2r-ccache-${{ github.ref }}
           ${{ runner.os }}-o2r-ccache-
     - name: Cache build folders
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         key: ${{ runner.os }}-o2r-build-${{ github.ref }}-${{ github.sha }}
         restore-keys: |
@@ -35,7 +41,7 @@ jobs:
       run: |
         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
         make -C Torch type=release -j3
-        Torch/cmake-build-release/torch pack port ghostship.o2r o2r
+        Torch/cmake-build-release/torch pack port ghostship.o2r o2r -u ${{ steps.extract_version.outputs.version }}
     - uses: actions/upload-artifact@v4
       with:
         name: ghostship.o2r
@@ -77,22 +83,55 @@ jobs:
 
   build-macos:
     needs: generate-port-o2r
-    runs-on: macOS-latest
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Setup MacPorts
-        uses: melusina-org/setup-macports@v1
-      - name: Fix MacPorts permissions
-        run: sudo chown -R macports:macports /opt/local/var/macports/
-      - name: Install dependencies (Universal)
-        run: sudo port install libsdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools +universal
+      - name: Configure ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          create-symlink: true
+          save: ${{ github.ref_name == github.event.repository.default_branch }}
+          key: ${{ runner.os }}-14-ccache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-14-ccache-${{ github.ref }}
+            ${{ runner.os }}-14-ccache
+      # Needed to apply sudo for macports cache restore
+      # - name: Install gtar wrapper
+      #   run: |
+      #     sudo mv /opt/homebrew/bin/gtar /opt/homebrew/bin/gtar.orig
+      #     sudo cp .github/workflows/gtar /opt/homebrew/bin/gtar
+      #     sudo chmod +x /opt/homebrew/bin/gtar
+      - name: Restore Cached MacPorts
+        id: restore-cache-macports
+        uses: actions/cache/restore@v4
+        with:
+          key: ${{ runner.os }}-14-macports-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-14-macports-${{ github.ref }}
+            ${{ runner.os }}-14-macports-
+          path: /opt/local/
+      - name: Install MacPorts (if necessary)
+        run: |
+          if command -v /opt/local/bin/port 2>&1 >/dev/null; then
+            echo "MacPorts already installed"
+          else
+            echo "Installing MacPorts"
+            wget https://github.com/macports/macports-base/releases/download/v2.11.5/MacPorts-2.11.5-14-Sonoma.pkg
+            sudo installer -pkg ./MacPorts-2.11.5-14-Sonoma.pkg -target /
+          fi
+          echo "/opt/local/bin:/opt/local/sbin" >> "$GITHUB_PATH"
+      - name: Install dependencies
+        run: |
+          brew uninstall --ignore-dependencies libpng
+          sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal
+          brew install ninja
       - name: Build (Universal)
         run: |
-          # Added MacPorts path and the dual-architecture flag
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/local -Dfmt_DIR=/opt/local/lib/libfmt10/cmake/fmt "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64"
-          cmake --build build-cmake --config Release -j3
+          export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
+          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+          cmake --build build-cmake --config Release --parallel 10
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
         with:
@@ -110,6 +149,12 @@ jobs:
           path: |
             Ghostship.dmg
             readme.txt
+      - name: Save Cache MacPorts
+        if: ${{ github.ref_name == github.event.repository.default_branch }}
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ steps.restore-cache-macports.outputs.cache-primary-key }}
+          path: /opt/local/
 
   build-linux:
     needs: generate-port-o2r
@@ -130,7 +175,7 @@ jobs:
             linux-ccache-${{ github.ref }}
             linux-ccache-
       - name: Cache build folders
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           key: linux-build-${{ github.ref }}-${{ github.sha }}
           restore-keys: |

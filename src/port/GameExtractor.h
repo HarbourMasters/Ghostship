@@ -17,9 +17,9 @@ public:
     void SetSearchPath(const std::string& path);
     void GetRoms(std::vector<std::string>& roms);
     std::string GetRomPath();
-    bool Parse(std::atomic_ref<size_t> assetCount, std::string appShortName = "");
+    bool Parse(std::atomic<size_t>& assetCount, std::string appShortName = "");
     bool GenerateOTR(std::string appShortName = "");
-    bool GenerateOTR(std::atomic_ref<size_t> assetCount, std::string appShortName = "");
+    bool GenerateOTR(std::atomic<size_t>& assetCount, std::string appShortName = "");
     void WritePortVersion();
 private:
     fs::path mGamePath;
