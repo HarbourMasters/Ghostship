@@ -53,14 +53,7 @@ std::map<std::string, int32_t> randoFlagList = {
 
 void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_t fileNum) {
     if (isObtained) {
-        if (courseNum == COURSE_NONE) {
-            gSaveBuffer.files[fileNum][0].flags |= STAR_FLAG_TO_SAVE_FLAG(1 << starAct);
-        } else {
-            gSaveBuffer.files[fileNum][0].courseStars[courseNum] |= (1 << starAct);
-            if (courseNum == COURSE_DDD && starAct == 0) {
-                gSaveBuffer.files[fileNum][0].flags |= SAVE_FLAG_DDD_MOVED_BACK;
-            }
-        }
+        save_file_set_star_flags(fileNum, COURSE_NUM_TO_INDEX(courseNum), (1 << starAct));
     } else {
         if (courseNum == COURSE_NONE) {
             gSaveBuffer.files[fileNum][0].flags &= ~STAR_FLAG_TO_SAVE_FLAG(1 << starAct);
