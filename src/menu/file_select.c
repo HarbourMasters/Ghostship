@@ -27,7 +27,7 @@
 #define LANGUAGE_FUNCTION sLanguageMode
 #endif
 
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/hooks/list/RandoEvent.h"
 #include "port/mods/PortEnhancements.h"
 extern struct SaveBuffer gSaveBuffer;
 

@@ -44,8 +44,11 @@ std::map<std::string, int32_t> randoFlagList = {
     { "Unlock Wing Cap", SAVE_FLAG_HAVE_WING_CAP },
     { "Unlock Metal Cap", SAVE_FLAG_HAVE_METAL_CAP },
     { "Unlock Vanish Cap", SAVE_FLAG_HAVE_VANISH_CAP },
-    { "Unlock Bowser Key 1", SAVE_FLAG_HAVE_KEY_1 },
-    { "Unlock Bowser Key 2", SAVE_FLAG_HAVE_KEY_2 },
+    { "Grant Bowser Key 1", SAVE_FLAG_HAVE_KEY_1 },
+    { "Grant Bowser Key 2", SAVE_FLAG_HAVE_KEY_2 },
+    { "Unlock 8 Star Door", SAVE_FLAG_UNLOCKED_BITDW_DOOR },
+    { "Unlock 30 Star Door", SAVE_FLAG_UNLOCKED_BITFS_DOOR },
+    { "Unlock 50 Star Door", SAVE_FLAG_UNLOCKED_50_STAR_DOOR },
 };
 
 void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_t fileNum) {

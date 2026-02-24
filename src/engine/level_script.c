@@ -1,6 +1,6 @@
 #include <libultraship.h>
 #include <string.h>
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/hooks/list/RandoEvent.h"
 
 #include "sm64.h"
 #include "audio/external.h"

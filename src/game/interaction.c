@@ -1,5 +1,5 @@
 #include <libultra/types.h>
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/hooks/list/RandoEvent.h"
 
 #include "area.h"
 #include "actors/common1.h"

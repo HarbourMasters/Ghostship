@@ -1,9 +1,6 @@
 #include "StaticData.h"
 #include "port/ShipUtils.h"
 
-#include "port/hooks/list/PlayerEvent.h"
-#include "port/mods/PortEnhancements.h"
-
 extern "C" {
 #include "game/area.h"
 }

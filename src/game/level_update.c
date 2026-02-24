@@ -31,7 +31,7 @@
 
 #include "port/ui/cvar_prefixes.h"
 #include "port/hooks/list/EngineEvent.h"
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/hooks/list/RandoEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 #define PLAY_MODE_NORMAL 0
