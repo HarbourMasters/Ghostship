@@ -41,10 +41,8 @@ std::map<RandoItemId, const char*> objectMap = {
 };
 
 std::map<std::string, int32_t> randoFlagList = {
-    { "Unlock Wing Cap", SAVE_FLAG_HAVE_WING_CAP },
-    { "Unlock Metal Cap", SAVE_FLAG_HAVE_METAL_CAP },
-    { "Unlock Vanish Cap", SAVE_FLAG_HAVE_VANISH_CAP },
-    { "Grant Bowser Key 1", SAVE_FLAG_HAVE_KEY_1 },
+    { "Unlock Wing Cap", SAVE_FLAG_HAVE_WING_CAP },     { "Unlock Metal Cap", SAVE_FLAG_HAVE_METAL_CAP },
+    { "Unlock Vanish Cap", SAVE_FLAG_HAVE_VANISH_CAP }, { "Grant Bowser Key 1", SAVE_FLAG_HAVE_KEY_1 },
     { "Grant Bowser Key 2", SAVE_FLAG_HAVE_KEY_2 },
     // { "Unlock 8 Star Door", SAVE_FLAG_UNLOCKED_BITDW_DOOR },
     // { "Unlock 30 Star Door", SAVE_FLAG_UNLOCKED_BITFS_DOOR },
@@ -180,7 +178,7 @@ void SaveEditorWindow::DrawElement() {
         ImGui::Text("Pos X:");
         ImGui::SameLine();
         ImGui::Text(posX.c_str());
-        
+
         ImGui::Text("Pos Y:");
         ImGui::SameLine();
         ImGui::Text(posY.c_str());
@@ -215,7 +213,6 @@ void SaveEditorWindow::DrawElement() {
                         } else {
                             isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] & (1 << s);
                         }
-                        
 
                         UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
                         if (UIWidgets::Checkbox(label, &isChecked)) {
@@ -352,7 +349,7 @@ void SaveEditorWindow::DrawElement() {
                     }
                     ImGui::EndTabBar();
                 }
-                
+
                 ImGui::EndChild();
             }
             ImGui::EndTabItem();
