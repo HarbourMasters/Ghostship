@@ -20,7 +20,7 @@ static RegisterShipInitFunc initFunc([]() {
             CHECK(RC_SL_STAR_03_DEEP_FREEZE,    true),
             CHECK(RC_SL_STAR_04_FREEZING_POND,  true),
             CHECK(RC_SL_STAR_05_RED_COINS,      true),
-            CHECK(RC_SL_STAR_06_IGLOO,          true),
+            CHECK(RC_SL_STAR_06_IGLOO,          CAN_USE(VANISH)),
             CHECK(RC_SL_STAR_07_100_COIN,       true),
         },
     };
