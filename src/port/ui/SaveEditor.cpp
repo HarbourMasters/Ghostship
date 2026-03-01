@@ -43,18 +43,23 @@ std::map<RandoItemId, const char*> objectMap = {
 void ModifyStarFlags(bool isObtained, int16_t courseNum, int16_t starAct, int16_t fileNum) {
     if (isObtained) {
         if (courseNum == COURSE_NONE) {
-            gSaveBuffer.files[fileNum][0].flags |= (1 << starAct);
+            gSaveBuffer.files[fileNum][0].flags |= (1 << 24 << starAct);
         } else {
-            gSaveBuffer.files[fileNum][0].courseStars[courseNum] |= (1 << starAct);
+            gSaveBuffer.files[fileNum][0].courseStars[courseNum - 1] |= (1 << starAct);
         }
     } else {
         if (courseNum == COURSE_NONE) {
-            gSaveBuffer.files[fileNum][0].flags &= ~(1 << starAct);
+            gSaveBuffer.files[fileNum][0].flags &= ~(1 << 24 << starAct);
         } else {
-            gSaveBuffer.files[fileNum][0].courseStars[courseNum] &= ~(1 << starAct);
+            gSaveBuffer.files[fileNum][0].courseStars[courseNum - 1] &= ~(1 << starAct);
         }
     }
     gMarioState->numStars = save_file_get_total_star_count(fileNum, COURSE_MIN - 1, COURSE_MAX - 1);
+    save_file_do_save(fileNum);
+}
+
+void ModifyCoinScore(int16_t score, int16_t courseNum, int16_t fileNum) {
+    gSaveBuffer.files[fileNum][0].courseCoinScores[courseNum - 1] = score;
     save_file_do_save(fileNum);
 }
 
@@ -124,7 +129,6 @@ void HandlePopUpContext(RandoCheckId randoCheckId) {
                     std::to_string(i).c_str(),
                     Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(digitList[i + 1]),
                     ImVec2(32.0f, 32.0f))) {
-                // randoStaticCheck.randoItemId = randoItemId;
                 auto findIt =
                     std::find_if(Rando::Logic::shuffledPool.begin(), Rando::Logic::shuffledPool.end(),
                                  [&](const LevelShuffleEntry& entry) { return entry.randoCheckId == randoCheckId; });
@@ -154,6 +158,7 @@ void SaveEditorWindow::DrawElement() {
     UIWidgets::PushStyleTabs(WIDGET_COLOR);
     ImGui::BeginTabBar("##saveEditorTabs");
     if (ImGui::BeginTabItem("Main Save & Mario Flags")) {
+        ImGui::Text("Current Save #: %d", gCurrSaveFileNum);
         ImGui::Text("Mario Flags");
         DrawFlagTableArray32(flagTables[1], 0, gMarioState->flags);
         ImGui::Text("Save File Flags");
@@ -166,33 +171,54 @@ void SaveEditorWindow::DrawElement() {
             ImGui::SeparatorText("Rando Save Loaded, use the Rando Tab to make changes");
         }
         ImGui::BeginDisabled(IS_RANDO(gCurrSaveFileNum - 1));
-        for (int i = 0; i < COURSE_COUNT; i++) {
-            ImGui::PushID(i);
+        for (int i = 1; i < COURSE_COUNT; i++) {
+            ImGui::PushID(i - 1);
+            u8 courseStarFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, i - 1);
             ImGui::Text("%s", courseNames[i]);
-            if (ImGui::BeginTable("Course Stars", 8, ImGuiTableFlags_SizingFixedFit)) {
+            if (ImGui::BeginTable("Course Stars", 9, ImGuiTableFlags_SizingFixedFit)) {
                 ImGui::TableNextColumn();
-                for (int s = 0; s < 8; s++) {
+                for (int s = 0; s < 9; s++) {
                     if (s <= 6) {
                         std::string labelStr = "##courseStars" + std::to_string(s);
                         const char* label = labelStr.c_str();
-                        bool isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] & (1 << s);
+                        bool isChecked = courseStarFlags & (1 << s);
 
                         UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
                         if (UIWidgets::Checkbox(label, &isChecked)) {
                             ModifyStarFlags(isChecked, i, s, gCurrSaveFileNum - 1);
                         }
                         UIWidgets::PopStyleCheckbox();
-                    } else {
-                        std::string labelStr2 = "##courseCoins" + std::to_string(s);
-                        const char* label2 = labelStr2.c_str();
-                        int32_t coinCount = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseCoinScores[i];
+                    } else if (s == 7 && i < COURSE_BONUS_STAGES) {
+                        std::string labelStr = "##courseCannon" + std::to_string(s);
+                        const char* label = labelStr.c_str();
+                        bool isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] & (1 << 7);
 
-                        UIWidgets::PushStyleInput(WIDGET_COLOR);
-                        if (UIWidgets::InputInt(label2, &coinCount,
-                                                UIWidgets::InputOptions{}
-                                                    .Size(ImVec2(50.0f, 0))
-                                                    .LabelPosition(UIWidgets::LabelPositions::None))) {}
-                        UIWidgets::PopStyleInput();
+                        UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
+                        if (UIWidgets::Checkbox(label, &isChecked,
+                                                UIWidgets::CheckboxOptions{}.Tooltip("Course Cannon"))) {
+                            if (isChecked) {
+                                gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] |= (1 << 7);
+                            } else {
+                                gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] &= ~(1 << 7);
+                            }
+                        }
+                        UIWidgets::PopStyleCheckbox();
+
+                    } else {
+                        if (i < COURSE_BONUS_STAGES) {
+                            std::string labelStr2 = "##courseCoins" + std::to_string(s);
+                            const char* label2 = labelStr2.c_str();
+                            int32_t coinCount = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseCoinScores[i - 1];
+
+                            UIWidgets::PushStyleInput(WIDGET_COLOR);
+                            if (UIWidgets::InputInt(label2, &coinCount,
+                                                    UIWidgets::InputOptions{}
+                                                        .Size(ImVec2(50.0f, 0))
+                                                        .LabelPosition(UIWidgets::LabelPositions::None))) {
+                                ModifyCoinScore(coinCount, i, gCurrSaveFileNum - 1);
+                            }
+                            UIWidgets::PopStyleInput();
+                        }
                     }
                     ImGui::TableNextColumn();
                 }
@@ -200,6 +226,28 @@ void SaveEditorWindow::DrawElement() {
             }
             ImGui::PopID();
         }
+        // Separate Table for Castle Grounds since including it in the loop above messes things up.
+        // Castle cannon strictly requires 120 stars, so it's not included here.
+        ImGui::PushID(COURSE_NONE);
+        ImGui::Text("%s", courseNames[COURSE_NONE]);
+        if (ImGui::BeginTable("Castle Stars", 8, ImGuiTableFlags_SizingFixedFit)) {
+            ImGui::TableNextColumn();
+            for (int s = 0; s < 7; s++) {
+                std::string labelStr = "##castleStars" + std::to_string(s);
+                const char* label = labelStr.c_str();
+                bool isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags & (1 << (24 + s));
+                UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
+                if (UIWidgets::Checkbox(label, &isChecked)) {
+                    ModifyStarFlags(isChecked, COURSE_NONE, s, gCurrSaveFileNum - 1);
+                }
+                UIWidgets::PopStyleCheckbox();
+
+                ImGui::TableNextColumn();
+            }
+            ImGui::EndTable();
+        }
+        ImGui::PopID();
+
         ImGui::EndDisabled();
         ImGui::EndTabItem();
     }
