@@ -192,7 +192,6 @@ void SaveEditorWindow::DrawElement() {
         ImGui::SameLine();
         ImGui::Text(posZ.c_str());
 
-        ImGui::EndDisabled();
         ImGui::EndTabItem();
     }
 
