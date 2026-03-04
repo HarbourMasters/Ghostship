@@ -1,7 +1,7 @@
 #include "ObjectBehavior.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 #include "port/Rando/Logic/Logic.h"
-#include "port/hooks/list/RandoEvent.h"
+#include "port/hooks/list/PlayerEvent.h"
 #include "port/hooks/list/EngineEvent.h"
 
 extern "C" {
