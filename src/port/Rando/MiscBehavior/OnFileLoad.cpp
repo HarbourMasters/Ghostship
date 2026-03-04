@@ -22,8 +22,6 @@ void Rando::MiscBehavior::OnFileLoad() {
         OnGameFileLoad* ev = (OnGameFileLoad*)event;
         selectedFileNum = ev->fileNum - 1;
 
-        Rando::Logic::Regions;
-
         bool loadedFromSpoiler = false;
 
         if (!CVarGetInteger("gRandoSettings.Enabled", 0)) {
