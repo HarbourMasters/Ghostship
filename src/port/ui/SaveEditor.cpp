@@ -32,7 +32,37 @@ static char courseNames[][31] = {
 #undef DEFINE_COURSES_END
 #undef DEFINE_BONUS_COURSE
 
+std::unordered_map<int16_t, std::pair<u8, bool>> allowedStarFlags = {
+    { COURSE_BOB,   {0x7F, true } },
+    { COURSE_WF,    {0x7F, true } },
+    { COURSE_JRB,   {0x7F, true } },
+    { COURSE_CCM,   {0x7F, true } },
+    { COURSE_BBH,   {0x7F, false} },
+    { COURSE_HMC,   {0x7F, false} },
+    { COURSE_LLL,   {0x7F, false} },
+    { COURSE_SSL,   {0x7F, true} },
+    { COURSE_DDD,   {0xFF, false} },
+    { COURSE_SL,    {0x7F, true } },
+    { COURSE_WDW,   {0x7F, true } },
+    { COURSE_TTM,   {0x7F, true } },
+    { COURSE_THI,   {0x7F, true } },
+    { COURSE_TTC,   {0x7F, false} },
+    { COURSE_RR,    {0x7F, true } },
+    { COURSE_BITDW, {0x01, false} },
+    { COURSE_BITFS, {0x01, false} },
+    { COURSE_BITS,  {0x01, false} },
+    { COURSE_PSS,   {0x03, false} },
+    { COURSE_COTMC, {0x01, false} },
+    { COURSE_TOTWC, {0x01, false} },
+    { COURSE_VCUTM, {0x01, false} },
+    { COURSE_WMOTR, {0x01, true } },
+    { COURSE_SA,    {0x01, false} },
+    { COURSE_NONE,  {0x1F, false} }
+};
+
 bool shouldPopUpOpen = false;
+bool shouldAllowAllStars = false;
+bool shouldAllowEdit = false;
 RandoCheckId popUpId = RC_UNKNOWN;
 std::map<RandoItemId, const char*> objectMap = {
     { RI_COIN_BLUE, "Blue Coin Icon" },
@@ -171,6 +201,7 @@ void SaveEditorWindow::DrawElement() {
             ImGui::SeparatorText("Rando Save Loaded, use the Rando Tab to make changes");
         }
         ImGui::BeginDisabled(IS_RANDO(gCurrSaveFileNum - 1));
+        if (ImGui::Checkbox("Allow all stars", &shouldAllowAllStars)) {}
         for (int i = 1; i < COURSE_COUNT; i++) {
             ImGui::PushID(i - 1);
             u8 courseStarFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, i - 1);
@@ -182,17 +213,23 @@ void SaveEditorWindow::DrawElement() {
                         std::string labelStr = "##courseStars" + std::to_string(s);
                         const char* label = labelStr.c_str();
                         bool isChecked = courseStarFlags & (1 << s);
-
+                        shouldAllowEdit = (allowedStarFlags.contains(i) && (allowedStarFlags[i].first & (1 << s))) ||
+                                               (shouldAllowAllStars);
+                        ImGui::BeginDisabled(!shouldAllowEdit);
                         UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
                         if (UIWidgets::Checkbox(label, &isChecked)) {
                             ModifyStarFlags(isChecked, i, s, gCurrSaveFileNum - 1);
                         }
                         UIWidgets::PopStyleCheckbox();
-                    } else if (s == 7 && i < COURSE_BONUS_STAGES) {
+                        ImGui::EndDisabled();
+                    } else if (s == 7 && (i < COURSE_BONUS_STAGES || i == COURSE_WMOTR)) {
                         std::string labelStr = "##courseCannon" + std::to_string(s);
                         const char* label = labelStr.c_str();
                         bool isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[i] & (1 << 7);
+                        shouldAllowEdit = (allowedStarFlags.contains(i) && (allowedStarFlags[i].second)) ||
+                                       (shouldAllowAllStars);
 
+                        ImGui::BeginDisabled(!shouldAllowEdit);
                         UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
                         if (UIWidgets::Checkbox(label, &isChecked,
                                                 UIWidgets::CheckboxOptions{}.Tooltip("Course Cannon"))) {
@@ -203,6 +240,7 @@ void SaveEditorWindow::DrawElement() {
                             }
                         }
                         UIWidgets::PopStyleCheckbox();
+                        ImGui::EndDisabled();
 
                     } else {
                         if (i < COURSE_BONUS_STAGES) {
@@ -236,11 +274,15 @@ void SaveEditorWindow::DrawElement() {
                 std::string labelStr = "##castleStars" + std::to_string(s);
                 const char* label = labelStr.c_str();
                 bool isChecked = gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags & (1 << (24 + s));
+                shouldAllowEdit = (allowedStarFlags.contains(COURSE_NONE) && (allowedStarFlags[COURSE_NONE].first & (1 << s))) ||
+                                   (shouldAllowAllStars);
+                ImGui::BeginDisabled(!shouldAllowEdit);
                 UIWidgets::PushStyleCheckbox(WIDGET_COLOR);
                 if (UIWidgets::Checkbox(label, &isChecked)) {
                     ModifyStarFlags(isChecked, COURSE_NONE, s, gCurrSaveFileNum - 1);
                 }
                 UIWidgets::PopStyleCheckbox();
+                ImGui::EndDisabled();
 
                 ImGui::TableNextColumn();
             }
