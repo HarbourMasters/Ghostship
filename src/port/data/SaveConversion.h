@@ -14,9 +14,9 @@ using json = nlohmann::json;
 #define SAVE_FILE_VERSION 1
 
 static std::string entries[] = {
-    "CG", "BOB", "WF", "JRB", "CCM", "BBH", "HMC", "LLL", "SSL", "DDD", "SL",
+    "BOB", "WF", "JRB", "CCM", "BBH", "HMC", "LLL", "SSL", "DDD", "SL",
     "WDW", "TTM", "THI", "TTC", "RR", "BITDW", "BITFS", "BITS", "PSS", "COTMC",
-    "TOTWC", "VCUTM", "WMOTR", "SA", "CAKE_END"
+    "TOTWC", "VCUTM", "WMOTR", "SA", "CG", "CAKE_END"
 };
 
 template<typename T>
