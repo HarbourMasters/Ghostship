@@ -53,6 +53,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
         if (shuffled.randoCheckId == object->unused1) {
             previousCheckState = shuffled.obtained;
             shuffled.obtained = true;
+            RefreshChecksInLogic();
         }
     }
 
@@ -127,6 +128,7 @@ void CustomItem::ObjectCollected(int16_t type, struct MarioState* mario, struct 
     object->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
     obj_mark_for_deletion(object);
 
+    gSaveBuffer.files[selectedFileNum][0].flags |= SAVE_FLAG_FILE_EXISTS;
     save_file_do_save(selectedFileNum);
 }
 

@@ -12,23 +12,17 @@ namespace GhostshipGui {
 extern std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 }
 
-#define DEFAULT_COLLECTED_COLOR \
-    Color_RGBA8 {               \
-        100, 255, 100, 255      \
-    }
-#define DEFAULT_SKIPPED_COLOR \
-    Color_RGBA8 {             \
-        255, 100, 255, 255    \
-    }
-#define DEFAULT_ITEM_COLOR \
-    Color_RGBA8 {          \
-        79, 0, 221, 255    \
-    }
+#define DEFAULT_LOGIC_COLOR Color_RGBA8(200, 200, 200, 255)
+#define DEFAULT_COLLECTED_COLOR Color_RGBA8(100, 255, 100, 255)
+#define DEFAULT_SKIPPED_COLOR Color_RGBA8(255, 100, 255, 255)
+#define DEFAULT_ITEM_COLOR Color_RGBA8(79, 0, 221, 255)
 
 #define CVAR_NAME_SHOW_CHECK_TRACKER "gWindows.CheckTracker"
 #define CVAR_NAME_CHECK_TRACKER_OPACITY "gRando.CheckTracker.Opacity"
 #define CVAR_NAME_CHECK_TRACKER_SCALE "gRando.CheckTracker.Scale"
+#define CVAR_NAME_CHECK_TRACKER_SHOW_LOGIC "gRando.CheckTracker.ShowLogic"
 #define CVAR_NAME_SHOW_CURRENT_LEVEL "gRando.CheckTracker.ShowCurrentLevel"
+#define CVAR_NAME_LOGIC_COLOR "gRando.CheckTracker.LogicColor"
 #define CVAR_NAME_COLLECTED_COLOR "gRando.CheckTracker.CollectedColor"
 #define CVAR_NAME_SKIPPED_COLOR "gRando.CheckTracker.SkippedColor"
 #define CVAR_NAME_ITEM_COLOR "gRando.CheckTracker.ItemColor"
@@ -36,12 +30,15 @@ extern std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrack
 #define CVAR_SHOW_CHECK_TRACKER CVarGetInteger(CVAR_NAME_SHOW_CHECK_TRACKER, 0)
 #define CVAR_CHECK_TRACKER_OPACITY CVarGetFloat(CVAR_NAME_CHECK_TRACKER_OPACITY, 0.5f)
 #define CVAR_CHECK_TRACKER_SCALE CVarGetFloat(CVAR_NAME_CHECK_TRACKER_SCALE, 1.0f)
+#define CVAR_SHOW_LOGIC CVarGetInteger(CVAR_NAME_CHECK_TRACKER_SHOW_LOGIC, 0)
 #define CVAR_SHOW_CURRENT_LEVEL CVarGetInteger(CVAR_NAME_SHOW_CURRENT_LEVEL, 0)
+#define CVAR_LOGIC_COLOR CVarGetColor(CVAR_NAME_LOGIC_COLOR ".Value", DEFAULT_LOGIC_COLOR)
 #define CVAR_COLLECTED_COLOR CVarGetColor(CVAR_NAME_COLLECTED_COLOR ".Value", DEFAULT_COLLECTED_COLOR)
 #define CVAR_SKIPPED_COLOR CVarGetColor(CVAR_NAME_SKIPPED_COLOR ".Value", DEFAULT_SKIPPED_COLOR)
 #define CVAR_ITEM_COLOR CVarGetColor(CVAR_NAME_ITEM_COLOR ".Value", DEFAULT_ITEM_COLOR)
 
 std::vector<std::tuple<const char*, Color_RGBA8, const char*>> defaultCheckColorList = {
+    { CVAR_NAME_LOGIC_COLOR, DEFAULT_LOGIC_COLOR, "Out of Logic" },
     { CVAR_NAME_COLLECTED_COLOR, DEFAULT_COLLECTED_COLOR, "Check Obtained" },
     { CVAR_NAME_SKIPPED_COLOR, DEFAULT_SKIPPED_COLOR, "Check Skipped" },
     { CVAR_NAME_ITEM_COLOR, DEFAULT_ITEM_COLOR, "Obtained Item" },
@@ -52,11 +49,30 @@ ImVec4 checkTrackerBG = ImVec4{ 0, 0, 0, 0.5f };
 float checkTrackerScale = 1.0f;
 
 bool expandState = true;
+std::unordered_map<RandoCheckId, bool> checksInLogic;
+bool logicInit = false;
+
+void RefreshChecksInLogic() {
+    checksInLogic.clear();
+
+    for (auto& [regionId, randoRegion] : Rando::Logic::Regions) {
+        for (auto& [randoCheckId, logicFunc] : randoRegion.checks) {
+            if (logicFunc.first()) {
+                checksInLogic.emplace(randoCheckId, true);
+            }
+        }
+    }
+}
 
 void DrawCheckTrackerList() {
     if (Rando::Logic::shuffledPool.empty()) {
         return;
     }
+    if (!logicInit) {
+        RefreshChecksInLogic();
+        logicInit = true;
+    }
+
     for (auto& [id, name] : levelIdList) {
         if (CVAR_SHOW_CURRENT_LEVEL && id != gCurrLevelNum) {
             continue;
@@ -86,6 +102,10 @@ void DrawCheckTrackerList() {
                                                : UIWidgets::ColorValues.at(UIWidgets::Colors::Indigo);
                     if (randoSaveCheck.skipped) {
                         checkTextColor = itemTextColor = VecFromRGBA8(CVAR_SKIPPED_COLOR);
+                    } else if (CVAR_SHOW_LOGIC && !randoSaveCheck.obtained) {
+                        if (!checksInLogic.contains(entry.randoCheckId)) {
+                            checkTextColor = itemTextColor = VecFromRGBA8(CVAR_LOGIC_COLOR);
+                        }
                     }
                     const char* texture = randoSaveCheck.randoItemId == RI_STAR       ? texture_hud_char_star
                                           : randoSaveCheck.randoItemId == RI_COIN_RED ? "Red Coin Icon"
@@ -194,6 +214,7 @@ void SettingsWindow::DrawElement() {
         ImGui::TableNextColumn();
         ImGui::SeparatorText("Check Settings");
         UIWidgets::CVarCheckbox("Only Show Current Level", CVAR_NAME_SHOW_CURRENT_LEVEL);
+        UIWidgets::CVarCheckbox("Dim Out of Logic Checks", CVAR_NAME_CHECK_TRACKER_SHOW_LOGIC);
         if (UIWidgets::Button(
                 "Expand All",
                 UIWidgets::ButtonOptions{}.Color(WIDGET_COLOR).Size(ImVec2(ImGui::GetContentRegionAvail().x / 2, 0)))) {

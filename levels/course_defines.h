@@ -17,7 +17,7 @@
 DEFINE_COURSE(      COURSE_NONE,     0x44444440, "Course Hub (Castle Grounds)") // (0)
 DEFINE_COURSE(      COURSE_BOB,      0x00022240, "Bob Omb Battlefield") // (1)
 DEFINE_COURSE(      COURSE_WF,       0x00002040, "Whomp's Fortress") // (2)
-DEFINE_COURSE(      COURSE_JRB,      0x22222240, "Jolly Rodger's Bay") // (3)
+DEFINE_COURSE(      COURSE_JRB,      0x22222240, "Jolly Roger Bay") // (3)
 DEFINE_COURSE(      COURSE_CCM,      0x00220040, "Cool Cool Mountain") // (4)
 DEFINE_COURSE(      COURSE_BBH,      0x22222240, "Big Boo's Haunt") // (5)
 DEFINE_COURSE(      COURSE_HMC,      0x22222240, "Hazy Maze Cave") // (6)
