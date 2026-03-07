@@ -17,7 +17,7 @@ typedef struct AchievementProgress {
     bool achieved;
 } AchievementProgress;
 
-#define HAS_ACHIEVEMENTS(fileNum) (gSaveBuffer.files[fileNum]->shipSaveData.features.achievements)
+#define HAS_ACHIEVEMENTS(fileNum) (gSaveBuffer.files[fileNum]->shipSaveData.features.achievements && gCurrDemoInput == NULL)
 
 #ifdef __cplusplus
 #include <map>
