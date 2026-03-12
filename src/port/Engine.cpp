@@ -430,27 +430,6 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
 
-// #ifdef __APPLE__
-//     // Set working directory to the app's MacOS folder for file dialogs
-//     CFBundleRef mainBundle = CFBundleGetMainBundle();
-//     if (mainBundle) {
-//         CFURLRef executableURL = CFBundleCopyExecutableURL(mainBundle);
-//         if (executableURL) {
-//             char path[PATH_MAX];
-//             if (CFURLGetFileSystemRepresentation(executableURL, true, (UInt8*)path, sizeof(path))) {
-//                 std::string execPath(path);
-//                 size_t pos = execPath.find_last_of('/');
-//                 if (pos != std::string::npos) {
-//                     std::string macosDir = execPath.substr(0, pos + 1);
-//                     chdir(macosDir.c_str());
-// 					installPath = macosDir; // the installPath as well
-//                 }
-//             }
-//             CFRelease(executableURL);
-//         }
-//     }
-// #endif
-
 #if defined(__SWITCH__)
     GhostshipGui::RegisterPopup("Outdated ROM Archives",
                                 "\x1b[2;2HYou've launched the Ship with an old ROM O2R file."
