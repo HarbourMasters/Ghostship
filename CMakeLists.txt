@@ -1,7 +1,20 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
+if(POLICY CMP0177)
+    cmake_policy(SET CMP0177 NEW)
+endif()
+
 # Set the project version and language
 project(Ghostship VERSION 1.0.2 LANGUAGES C CXX ASM)
+
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    # Disable installation for dependencies
+    set(TINYXML2_INSTALL OFF CACHE BOOL "Disable tinyxml2 install" FORCE)
+    set(YAML_CPP_INSTALL OFF CACHE BOOL "Disable yaml-cpp install" FORCE)
+    set(SPDLOG_INSTALL OFF CACHE BOOL "Disable spdlog install" FORCE)
+    set(INSTALL_GTEST OFF CACHE BOOL "Disable gtest install" FORCE)
+    set(INSTALL_GMOCK OFF CACHE BOOL "Disable gmock install" FORCE)
+endif()
 include(FetchContent)
 
 include(cmake/ghostship-cvars.cmake)
@@ -605,12 +618,14 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
   endif()
 endif()
 
-add_custom_command(
-	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMENT "Copying asset yamls..."
-	COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "$<TARGET_FILE_DIR:Ghostship>/config.yml"
-	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
+if(NOT CMAKE_SYSTEM_NAME MATCHES "Darwin")
+	add_custom_command(
+		TARGET ${PROJECT_NAME} POST_BUILD
+		COMMENT "Copying asset yamls..."
+		COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "$<TARGET_FILE_DIR:Ghostship>/config.yml"
+		COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
 )
+endif()
 
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 include(ExternalProject)
@@ -656,35 +671,164 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-add_custom_target(CreateOSXIcons
-    COMMAND mkdir -p ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset
-    COMMAND sips -z 16 16     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_16x16.png
-    COMMAND sips -z 32 32     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_16x16@2x.png
-    COMMAND sips -z 32 32     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_32x32.png
-    COMMAND sips -z 64 64     logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_32x32@2x.png
-    COMMAND sips -z 128 128   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_128x128.png
-    COMMAND sips -z 256 256   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_128x128@2x.png
-    COMMAND sips -z 256 256   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_256x256.png
-    COMMAND sips -z 512 512   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_256x256@2x.png
-    COMMAND sips -z 512 512   logo.png --out ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_512x512.png
-    COMMAND cp                logo.png ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset/icon_512x512@2x.png
-    COMMAND iconutil -c icns -o ${CMAKE_BINARY_DIR}/macosx/ghostship.icns ${CMAKE_BINARY_DIR}/macosx/ghostship.iconset
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Creating OSX icons ..."
-    )
-    add_dependencies(${PROJECT_NAME} CreateOSXIcons)
-    configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
-INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ../MacOS COMPONENT Ghostship)
-INSTALL(FILES ${CMAKE_BINARY_DIR}/gamecontrollerdb.txt DESTINATION ../MacOS COMPONENT Ghostship)
-INSTALL(FILES ${CMAKE_BINARY_DIR}/ghostship.o2r DESTINATION ../Resources COMPONENT Ghostship)
-INSTALL(FILES ${CMAKE_BINARY_DIR}/config.yml DESTINATION ../Resources COMPONENT Ghostship)
-INSTALL(DIRECTORY ${CMAKE_BINARY_DIR}/assets/ DESTINATION ../Resources/assets COMPONENT Ghostship)
 
-# Fix bundle to include and relink all dependencies
-install(CODE "
-    include(BundleUtilities)
-    fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/../MacOS/Ghostship\" \"\" \"${dirs}\")
-")
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    	set_target_properties(${PROJECT_NAME} PROPERTIES
+    	    MACOSX_BUNDLE TRUE
+    	    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist"
+    	)
+        find_library(SDL2_LIBRARY
+            NAMES SDL2
+            PATHS
+                ~/Library/Frameworks
+                /Library/Frameworks
+                /opt/homebrew/lib
+                /usr/local/lib
+            PATH_SUFFIXES Frameworks
+        )
+        if(NOT SDL2_LIBRARY)
+            message(FATAL_ERROR "SDL2.framework not found")
+        endif()
+        message(STATUS "Found SDL2 at: ${SDL2_LIBRARY}")
+    
+        set(ICON_DIR "${CMAKE_BINARY_DIR}/macosx")
+        set(ICON_FILE "${ICON_DIR}/Ghostship.icns")
+    
+        add_custom_command(
+            OUTPUT ${ICON_FILE}
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${ICON_DIR}/ghostship.iconset"
+            COMMAND sips -z 16 16     logo.png --out ${ICON_DIR}/ghostship.iconset/icon_16x16.png
+            COMMAND sips -z 32 32     logo.png --out ${ICON_DIR}/ghostship.iconset/icon_16x16@2x.png
+            COMMAND sips -z 32 32     logo.png --out ${ICON_DIR}/ghostship.iconset/icon_32x32.png
+            COMMAND sips -z 64 64     logo.png --out ${ICON_DIR}/ghostship.iconset/icon_32x32@2x.png
+            COMMAND sips -z 128 128   logo.png --out ${ICON_DIR}/ghostship.iconset/icon_128x128.png
+            COMMAND sips -z 256 256   logo.png --out ${ICON_DIR}/ghostship.iconset/icon_128x128@2x.png
+            COMMAND sips -z 256 256   logo.png --out ${ICON_DIR}/ghostship.iconset/icon_256x256.png
+            COMMAND sips -z 512 512   logo.png --out ${ICON_DIR}/ghostship.iconset/icon_256x256@2x.png
+            COMMAND sips -z 512 512   logo.png --out ${ICON_DIR}/ghostship.iconset/icon_512x512.png
+            COMMAND cp                logo.png ${ICON_DIR}/ghostship.iconset/icon_512x512@2x.png
+            COMMAND iconutil -c icns -o "${ICON_FILE}" "${ICON_DIR}/ghostship.iconset"
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            COMMENT "Creating OSX icons ..."
+            DEPENDS "${CMAKE_SOURCE_DIR}/logo.png"
+        )
+    
+        add_custom_target(CreateOSXIcons DEPENDS ${ICON_FILE})
+        add_dependencies(${PROJECT_NAME} CreateOSXIcons)
+    
+        add_custom_command(
+            OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/gamecontrollerdb.txt"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_BINARY_DIR}/gamecontrollerdb.txt"
+                "${CMAKE_CURRENT_BINARY_DIR}/gamecontrollerdb.txt"
+            DEPENDS
+            COMMENT "Copying gamecontrollerdb.txt to build directory"
+        )
+    
+        add_custom_command(
+            OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/ghostship.o2r"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/ghostship.o2r"
+                "${CMAKE_CURRENT_BINARY_DIR}/ghostship.o2r"
+            DEPENDS
+            COMMENT "Copying ghostship.o2r to build directory"
+        )
+    
+        add_custom_command(
+            OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/config.yml"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/config.yml"
+                "${CMAKE_CURRENT_BINARY_DIR}/config.yml"
+            DEPENDS
+            COMMENT "Copying config.yml to build directory"
+        )
+    
+        target_sources(${PROJECT_NAME} PRIVATE
+            ${ICON_FILE}
+            "${CMAKE_CURRENT_BINARY_DIR}/gamecontrollerdb.txt"
+            "${CMAKE_CURRENT_BINARY_DIR}/ghostship.o2r"
+            "${CMAKE_CURRENT_BINARY_DIR}/config.yml"
+        )
+    
+        set_source_files_properties(
+            ${ICON_FILE}
+            PROPERTIES
+            MACOSX_PACKAGE_LOCATION "Resources"
+        )
+    
+        set_source_files_properties(
+            "${CMAKE_CURRENT_BINARY_DIR}/gamecontrollerdb.txt"
+            "${CMAKE_CURRENT_BINARY_DIR}/ghostship.o2r"
+            "${CMAKE_CURRENT_BINARY_DIR}/config.yml"
+            PROPERTIES
+            MACOSX_PACKAGE_LOCATION "Resources"
+            GENERATED TRUE
+        )
+    
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "${CMAKE_SOURCE_DIR}/assets"
+                "$<TARGET_BUNDLE_CONTENT_DIR:${PROJECT_NAME}>/Resources/assets"
+            COMMENT "Copying assets to app bundle"
+        )
+    
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory
+                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/../Frameworks"
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "${SDL2_LIBRARY}"
+                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/../Frameworks/SDL2.framework"
+            COMMENT "Copying SDL2.framework into app bundle"
+        )
+    
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E echo "=== Resources directory contents ==="
+            COMMAND ls -la "$<TARGET_BUNDLE_CONTENT_DIR:${PROJECT_NAME}>/Resources/"
+            COMMAND ${CMAKE_COMMAND} -E echo "=== Assets directory contents ==="
+            COMMAND ls -la "$<TARGET_BUNDLE_CONTENT_DIR:${PROJECT_NAME}>/Resources/assets/" || echo "No assets directory"
+            COMMAND ${CMAKE_COMMAND} -E echo "=== MacOS directory contents ==="
+            COMMAND ls -la "$<TARGET_FILE_DIR:${PROJECT_NAME}>/"
+            VERBATIM
+        )
+    
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            BUILD_WITH_INSTALL_RPATH TRUE
+            INSTALL_RPATH "@executable_path/../Frameworks"
+        )
+    
+        configure_file(
+            "${CMAKE_SOURCE_DIR}/Info.plist"
+            "${CMAKE_BINARY_DIR}/Info.plist"
+            COPYONLY
+        )
+    
+        add_custom_target(create_dmg ALL
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_SOURCE_DIR}/_packages"
+            COMMAND ${CMAKE_COMMAND} -E echo "Creating DMG from working app bundle..."
+            COMMAND ${CMAKE_COMMAND} -E copy_directory 
+                "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.app" 
+                "${CMAKE_BINARY_DIR}/dmg_temp/${PROJECT_NAME}.app"
+            COMMAND hdiutil create -volname "${PROJECT_NAME}" 
+                -srcfolder "${CMAKE_BINARY_DIR}/dmg_temp" 
+                -ov -format UDZO -fs HFS+
+                "${CMAKE_SOURCE_DIR}/_packages/${PROJECT_NAME}-${PROJECT_VERSION}.dmg"
+            COMMAND ${CMAKE_COMMAND} -E remove_directory
+                "${CMAKE_BINARY_DIR}/dmg_temp"
+            COMMAND ${CMAKE_COMMAND} -E echo "DMG created: ${CMAKE_SOURCE_DIR}/_packages/${PROJECT_NAME}-${PROJECT_VERSION}.dmg"
+            COMMENT "Creating DMG package from working .app"
+            DEPENDS ${PROJECT_NAME}
+            VERBATIM
+        )
+    
+    	add_custom_target(dmg DEPENDS create_dmg)
+    
+        set(CPACK_GENERATOR "Bundle")
+        set(CPACK_BUNDLE_NAME "${PROJECT_NAME}")
+        set(CPACK_BUNDLE_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist")
+        set(CPACK_BUNDLE_ICON "${ICON_FILE}")
+        set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
+        set(CPACK_BUNDLE_APPLE_CERT_APP "Developer ID Application: Your Name (TEAMID)")
+    endif()
 endif()
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL YES)
@@ -696,8 +840,8 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
     set(CPACK_GENERATOR "External")
 elseif(CMAKE_SYSTEM_NAME MATCHES "Windows|NintendoSwitch|CafeOS")
     set(CPACK_GENERATOR "ZIP")
-elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    set(CPACK_GENERATOR "Bundle")
+# elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+#     set(CPACK_GENERATOR "Bundle")
 endif()
 
 set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake)

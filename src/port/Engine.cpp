@@ -51,6 +51,11 @@
 #include <ship/port/switch/SwitchImpl.h>
 #endif
 
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#include <sys/param.h> // for MAXPATHLEN
+#endif
+
 const float imguiScaleOptionToValue[4] = { 0.75f, 1.0f, 1.5f, 2.0f };
 std::shared_ptr<Fast::Fast3dWindow> gsFast3dWindow;
 const uint32_t defaultImGuiScale = 1;
@@ -77,6 +82,45 @@ typedef struct {
 } OTRVersion;
 
 GameEngine* GameEngine::Instance;
+
+#ifdef __APPLE__
+std::string GetMacOSBundlePath(const std::string& filename, bool inResources = true) {
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    if (!mainBundle) {
+        return "";
+    }
+    
+    char path[MAXPATHLEN];
+    
+    if (inResources) {
+        // Look in Resources directory (for config.yml and assets)
+        CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+        if (resourcesURL) {
+            if (CFURLGetFileSystemRepresentation(resourcesURL, true, (UInt8*)path, sizeof(path))) {
+                CFRelease(resourcesURL);
+                return std::string(path) + "/" + filename;
+            }
+            CFRelease(resourcesURL);
+        }
+    } else {
+        // Look in MacOS directory (for .o2r and gamecontrollerdb.txt)
+        CFURLRef executableURL = CFBundleCopyExecutableURL(mainBundle);
+        if (executableURL) {
+            if (CFURLGetFileSystemRepresentation(executableURL, true, (UInt8*)path, sizeof(path))) {
+                CFRelease(executableURL);
+                std::string execPath(path);
+                size_t pos = execPath.find_last_of('/');
+                if (pos != std::string::npos) {
+                    return execPath.substr(0, pos + 1) + filename;
+                }
+            }
+            CFRelease(executableURL);
+        }
+    }
+    
+    return "";
+}
+#endif
 
 // Read the port version from an OTR file
 OTRVersion ReadPortVersionFromOTR(std::string otrPath) {
@@ -134,7 +178,16 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
     // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-    assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
+    #ifdef __APPLE__
+    	std::string macOtrPath = GetMacOSBundlePath("ghostship.o2r", false);
+    	if (!macOtrPath.empty() && std::filesystem::exists(macOtrPath)) {
+    	    assets_path = macOtrPath;
+    	} else {
+    	    assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
+    	}
+	#else
+    	assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
+	#endif
     portArchiveVersionMatch = std::filesystem::exists(assets_path);
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
@@ -347,7 +400,7 @@ void GameEngine::FinishInit() {
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
-    bool extractDone = false;
+	bool extractDone = false;
     ExtractSteps extractStep = ES_PORT_ARCHIVE;
     WindowsSteps windowsStep = WS_TEMP;
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(context->GetWindow());
@@ -377,6 +430,27 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
 
+// #ifdef __APPLE__
+//     // Set working directory to the app's MacOS folder for file dialogs
+//     CFBundleRef mainBundle = CFBundleGetMainBundle();
+//     if (mainBundle) {
+//         CFURLRef executableURL = CFBundleCopyExecutableURL(mainBundle);
+//         if (executableURL) {
+//             char path[PATH_MAX];
+//             if (CFURLGetFileSystemRepresentation(executableURL, true, (UInt8*)path, sizeof(path))) {
+//                 std::string execPath(path);
+//                 size_t pos = execPath.find_last_of('/');
+//                 if (pos != std::string::npos) {
+//                     std::string macosDir = execPath.substr(0, pos + 1);
+//                     chdir(macosDir.c_str());
+// 					installPath = macosDir; // the installPath as well
+//                 }
+//             }
+//             CFRelease(executableURL);
+//         }
+//     }
+// #endif
+
 #if defined(__SWITCH__)
     GhostshipGui::RegisterPopup("Outdated ROM Archives",
                                 "\x1b[2;2HYou've launched the Ship with an old ROM O2R file."
@@ -392,6 +466,60 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     OSFatal();
 #endif
 
+#ifdef __APPLE__
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    if (mainBundle) {
+        // Set working directory and installPath
+        CFURLRef executableURL = CFBundleCopyExecutableURL(mainBundle);
+        if (executableURL) {
+            char path[PATH_MAX];
+            if (CFURLGetFileSystemRepresentation(executableURL, true, (UInt8*)path, sizeof(path))) {
+                std::string execPath(path);
+                size_t pos = execPath.find_last_of('/');
+                if (pos != std::string::npos) {
+                    std::string macosDir = execPath.substr(0, pos + 1);
+                    chdir(macosDir.c_str());
+                    installPath = macosDir;
+					SPDLOG_INFO("macOS installPath set to: {}", installPath);
+                }
+            }
+            CFRelease(executableURL);
+        }
+
+        // Check assets in Resources directory
+        CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+        if (resourcesURL) {
+            char path[PATH_MAX];
+            if (CFURLGetFileSystemRepresentation(resourcesURL, true, (UInt8*)path, sizeof(path))) {
+                std::string assetsPath = std::string(path) + "/assets";
+                if (!std::filesystem::exists(assetsPath)) {
+                    GhostshipGui::RegisterPopup("Extractor assets not found",
+                                                "No O2R files found. Missing 'assets/' folder needed to generate OTR file.\nPlease "
+                                                "re-extract them from the download or.\n\nExiting...",
+                                                "OK", "", [&]() {
+                                                    gsFast3dWindow = nullptr;
+                                                    context = nullptr;
+                                                    exit(1);
+                                                });
+                }
+            }
+            CFRelease(resourcesURL);
+
+			// Create Application Support directory if it doesn't exist
+        std::string appSupportPath = std::string(getenv("HOME")) + "/Library/Application Support/com.ghostship";
+        try {
+            if (!std::filesystem::exists(appSupportPath)) {
+                std::filesystem::create_directories(appSupportPath);
+                SPDLOG_INFO("Created Application Support directory: {}", appSupportPath);
+            }
+        } catch (const std::filesystem::filesystem_error& e) {
+            SPDLOG_ERROR("Failed to create Application Support directory: {}", e.what());
+
+        }
+    }
+}
+#else
+    // Non-macOS assets check
     if (!std::filesystem::exists(installPath + "/assets")) {
         GhostshipGui::RegisterPopup("Extractor assets not found",
                                     "No O2R files found. Missing 'assets/' folder needed to generate OTR file.\nPlease "
@@ -401,7 +529,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                         context = nullptr;
                                         exit(1);
                                     });
-    } else if (shouldRegen) {
+    }
+#endif
+    else if (shouldRegen) {
         GhostshipGui::RegisterPopup("Outdated ROM Archives",
                                     "Your sm64.o2r was created with incompatible versions of Ghostship.\nYou will "
                                     "now be redirected to re-extract them.");
@@ -621,10 +751,23 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     }
                     case PS_LOCAL: {
                         extract = GameExtractor();
+
+						    SPDLOG_INFO("PS_LOCAL: Searching for ROMs in installPath: {}", installPath);
+
                         extract.SetSearchPath(installPath);
-                        extract.GetRoms(args);
-                        extract.SetSearchPath(Ship::Context::GetAppDirectoryPath("sm64"));
-                        extract.GetRoms(args);
+                        // extract.GetRoms(args);
+                        // extract.SetSearchPath(Ship::Context::GetAppDirectoryPath("sm64"));
+                        // extract.GetRoms(args);
+							extract.GetRoms(args);
+    						SPDLOG_INFO("Found {} ROMs in installPath", args.size());
+
+    						std::string sm64Path = Ship::Context::GetAppDirectoryPath("sm64");
+    						SPDLOG_INFO("PS_LOCAL: Searching for ROMs in sm64Path: {}", sm64Path);
+
+    						extract.SetSearchPath(sm64Path);
+    						extract.GetRoms(args);
+    						SPDLOG_INFO("Total ROMs found: {}", args.size());
+
                         if (!args.empty()) {
                             promptStep = PS_WAIT;
                             GhostshipGui::RegisterPopup(
