@@ -12,12 +12,12 @@
 namespace fs = std::filesystem;
 
 int16_t selectedFileNum = 0;
+const fs::path randomizerFolderPath(Ship::Context::GetPathRelativeToAppDirectory("randomizer", "sm64"));
 
 // Entry point for the module, run once on game boot
 void Rando::Init() {
-    fs::path dir("randomizer");
-    if (!fs::exists(dir)) {
-        fs::create_directory(dir);
+    if (!fs::exists(randomizerFolderPath)) {
+        fs::create_directory(randomizerFolderPath);
     }
 
     Rando::Spoiler::RefreshSpoilerLogs();
