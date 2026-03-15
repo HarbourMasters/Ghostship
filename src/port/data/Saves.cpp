@@ -10,11 +10,12 @@ namespace fs = std::filesystem;
 
 extern "C" struct SaveBuffer gSaveBuffer;
 
+const fs::path savesPath(Ship::Context::GetPathRelativeToAppDirectory("saves", "sm64"));
+
 static void Init() {
     // Create saves directory if it doesn't exist
-    fs::path dir("saves");
-    if (!fs::exists(dir)) {
-        fs::create_directory(dir);
+    if (!fs::exists(savesPath)) {
+        fs::create_directory(savesPath);
     }
 }
 
@@ -33,7 +34,7 @@ void RestoreSaveFileData(int32_t fileIndex, int32_t srcSlot) {
 }
 
 void SaveFileDoSave(int32_t fileIndex) {
-    std::ofstream file(fs::path("saves/save_" + std::to_string(fileIndex) + ".json"), std::ios::out);
+    std::ofstream file(savesPath / ("save_" + std::to_string(fileIndex) + ".json"), std::ios::out);
     if (!file.is_open()) {
         return;
     }
@@ -44,24 +45,23 @@ void SaveFileDoSave(int32_t fileIndex) {
 }
 
 bool ShouldLoadOldSaveFile(void) {
-    fs::path save("default.sav");
-    return fs::exists(save);
+    return fs::exists(Ship::Context::GetPathRelativeToAppDirectory("default.sav"));
 }
 
 void SaveFileLoadAll(void) {
-    fs::path save("default.sav");
-    if (fs::exists(save)) {
+    auto oldSave = Ship::Context::GetPathRelativeToAppDirectory("default.sav");
+    if (fs::exists(oldSave)) {
         for (int32_t fileIndex = 0; fileIndex < NUM_SAVE_FILES; fileIndex++) {
             SaveFileDoSave(fileIndex);
         }
         // Move old save files to backup
-        fs::rename(save, "default.sav.bak");
+        fs::rename(oldSave, Ship::Context::GetPathRelativeToAppDirectory("default.sav.bak"));
         return;
     }
 
     // Read save files
     for (int32_t fileIndex = 0; fileIndex < NUM_SAVE_FILES; fileIndex++) {
-        fs::path filepath = fs::path("saves/save_" + std::to_string(fileIndex) + ".json");
+        fs::path filepath = savesPath / ("save_" + std::to_string(fileIndex) + ".json");
         if (!fs::exists(filepath)) {
             continue;
         }
@@ -84,7 +84,7 @@ void SaveFileLoadAll(void) {
     }
 
     // Read global save file
-    fs::path globalpath = fs::path("saves/global.json");
+    fs::path globalpath = savesPath / "global.json";
     if (fs::exists(globalpath)) {
         std::ifstream file(globalpath, std::ios::in);
         if (file.is_open()) {
@@ -97,7 +97,7 @@ void SaveFileLoadAll(void) {
 }
 
 void SaveMainMenuData(void) {
-    std::ofstream file(fs::path("saves/global.json"), std::ios::out);
+    std::ofstream file(savesPath / "global.json", std::ios::out);
     if (!file.is_open()) {
         return;
     }
