@@ -705,6 +705,7 @@ static void level_cmd_set_music(void) {
         gAreas[sCurrAreaIndex].musicParam = CMD_GET(s16, 2);
         gAreas[sCurrAreaIndex].musicParam2 = CMD_GET(s16, 4);
     }
+    CALL_EVENT(MusicChanged, gAreas[sCurrAreaIndex].musicParam2);
     sCurrentCmd = CMD_NEXT;
 }
 

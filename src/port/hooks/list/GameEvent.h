@@ -60,3 +60,9 @@ DEFINE_EVENT(BossBattleStarted,
     BossBattleType type;
 );
 DEFINE_EVENT(BossBattleEnded);
+
+DEFINE_EVENT(MusicChanged,
+    s16 seqId;
+);
+
+DEFINE_EVENT(GameEnded);

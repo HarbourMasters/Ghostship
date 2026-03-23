@@ -9,6 +9,8 @@ typedef struct AchievementSaveEntry {
 
 struct AchievementSaveData {
     bool cheated;
+    int32_t capStars;
+    int32_t coins;
     AchievementSaveEntry entries[100];
 };
 

@@ -1,5 +1,6 @@
 // Local includes
 #include "AchievementsWindow.h"
+#include "UIWidgets.hpp"
 
 #include <map>
 #include <string>
@@ -13,12 +14,17 @@ struct CategoryStyle {
 };
 
 std::map<AchievementCategory, CategoryStyle> gCatStyles = {
-    { AchievementCategory::Stars, { "Stars", ImVec4(1.0f, 0.84f, 0.0f, 1.0f) } },  // Gold
-    { AchievementCategory::Caps, { "Caps", ImVec4(0.8f, 0.8f, 0.8f, 1.0f) } },     // Silver
-    { AchievementCategory::Bosses, { "Bosses", ImVec4(1.0f, 0.2f, 0.2f, 1.0f) } }, // Red
-    { AchievementCategory::Levels, { "Ranks", ImVec4(0.4f, 0.7f, 1.0f, 1.0f) } },  // Blue
-    { AchievementCategory::Extras, { "Extras", ImVec4(0.6f, 1.0f, 0.6f, 1.0f) } }, // Green
-    { AchievementCategory::Deaths, { "Death", ImVec4(0.5f, 0.5f, 0.5f, 1.0f) } }   // Gray
+    { AchievementCategory::Stars, { "Stars", VecFromRGBA8(Color_RGBA8{ 255, 214, 0, 255 }) } }, // Gold
+
+    { AchievementCategory::Caps, { "Caps", VecFromRGBA8(Color_RGBA8{ 204, 204, 204, 255 }) } }, // Silver
+
+    { AchievementCategory::Bosses, { "Bosses", VecFromRGBA8(Color_RGBA8{ 255, 51, 51, 255 }) } }, // Red
+
+    { AchievementCategory::Levels, { "Ranks", VecFromRGBA8(Color_RGBA8{ 102, 179, 255, 255 }) } }, // Blue
+
+    { AchievementCategory::Extras, { "Extras", VecFromRGBA8(Color_RGBA8{ 153, 255, 153, 255 }) } }, // Green
+
+    { AchievementCategory::Deaths, { "Death", VecFromRGBA8(Color_RGBA8{ 128, 128, 128, 255 }) } } // Gray
 };
 
 void AchievementsWindow::InitElement() {
@@ -64,7 +70,8 @@ void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPai
     char progBuf[32];
     snprintf(progBuf, sizeof(progBuf), "%d / %d", data->progress, ach.maxProgress);
 
-    ImGui::PushStyleColor(ImGuiCol_PlotHistogram, ImVec4(1.0f, 0.8f, 0.0f, 1.0f));
+    ImGui::PushStyleColor(ImGuiCol_PlotHistogram, /*ImVec4(1.0f, 0.8f, 0.0f, 1.0f)*/
+                          gCatStyles[ach.category].color);
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
 
     // 3. This now stretches to the edge of the card, leaving a perfect 10px margin

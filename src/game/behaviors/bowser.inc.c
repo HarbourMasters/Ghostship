@@ -1322,20 +1322,22 @@ s32 bowser_dead_final_stage_ending(void) {
         } else {
             dialogID = DIALOG_163;
         }
-        // Lower music volume
-        if (o->oBowserTimer == 0) {
-            seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
-            o->oBowserTimer++;
-        }
-        // Play Bowser defeated dialog
-        if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED), dialogID, 0)) {
-            // Dialog is done, fade out music and spawn grand star
-            cur_obj_set_model(MODEL_BOWSER_NO_SHADOW);
-            seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
-            seq_player_fade_out(SEQ_PLAYER_LEVEL, 1);
-            bowser_spawn_collectable();
-            o->oBowserTimer++;
+        CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_BOWSER_BITS) {
+            // Lower music volume
+            if (o->oBowserTimer == 0) {
+                seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
+                o->oBowserTimer++;
+            }
+            // Play Bowser defeated dialog
+            if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
+                (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED), dialogID, 0)) {
+                // Dialog is done, fade out music and spawn grand star
+                cur_obj_set_model(MODEL_BOWSER_NO_SHADOW);
+                seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
+                seq_player_fade_out(SEQ_PLAYER_LEVEL, 1);
+                bowser_spawn_collectable();
+                o->oBowserTimer++;
+            }
         }
     // Slowly fade him out
     } else if (o->oOpacity > 4) {

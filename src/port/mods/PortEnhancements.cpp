@@ -137,6 +137,8 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(SpawnCollectible);
     REGISTER_EVENT(BossBattleStarted);
     REGISTER_EVENT(BossBattleEnded);
+    REGISTER_EVENT(MusicChanged);
+    REGISTER_EVENT(GameEnded);
 
     Rando::Init();
     LoadGuiTextures();

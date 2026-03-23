@@ -35,19 +35,18 @@ SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     return bank;
 }
 
-
 std::shared_ptr<Ship::IResource>
 SM64::AudioSequenceXMLFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                           std::shared_ptr<Ship::ResourceInitData> initData) {
+                                              std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
     std::shared_ptr<AudioSequence> seq = std::make_shared<AudioSequence>(initData);
-    auto child =
-        std::get<std::shared_ptr<tinyxml2::XMLDocument>>(file->Reader)->FirstChildElement();
+    auto child = std::get<std::shared_ptr<tinyxml2::XMLDocument>>(file->Reader)->FirstChildElement();
 
-    auto m64File = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->LoadFile(child->Attribute("Path"));
+    auto m64File =
+        Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->LoadFile(child->Attribute("Path"));
 
     tinyxml2::XMLElement* banksRoot = child->FirstChildElement("Banks");
     tinyxml2::XMLElement* banks = banksRoot->FirstChildElement();
@@ -58,8 +57,8 @@ SM64::AudioSequenceXMLFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     }
 
     // Copy m64 to sampleData
-    for(size_t i = 0; i < m64File->Buffer->size(); i++) {
-        seq->sampleData.push_back((uint8_t) m64File->Buffer->at(i));
+    for (size_t i = 0; i < m64File->Buffer->size(); i++) {
+        seq->sampleData.push_back((uint8_t)m64File->Buffer->at(i));
     }
 
     seq->mData.id = child->IntAttribute("ID");
