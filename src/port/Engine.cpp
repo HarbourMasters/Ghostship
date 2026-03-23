@@ -918,7 +918,7 @@ void GameEngine::AudioInit() {
     }
 
     for (auto& sequence : *sequences_files) {
-        if(sequence.find(".m64") != std::string::npos) {
+        if (sequence.find(".m64") != std::string::npos) {
             continue;
         }
         auto path = "__OTR__" + sequence;

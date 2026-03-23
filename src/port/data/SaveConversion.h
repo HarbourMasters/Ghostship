@@ -61,6 +61,8 @@ inline void to_json(json& j, const AchievementSaveEntry& entry) {
 
 inline void from_json(const json& j, AchievementSaveData& data) {
     data.cheated = j.at("cheated").get<bool>();
+    data.capStars = j.at("capStars").get<int>();
+    data.coins = j.at("coins").get<int>();
 
     auto entriesJson = j.at("entries");
     for (size_t i = 0; i < entriesJson.size(); i++) {
@@ -76,6 +78,8 @@ inline void to_json(json& j, const AchievementSaveData& data) {
 
     j = json{
         { "cheated", data.cheated },
+        { "capStars",data.capStars },
+        { "coins", data.coins },
         { "entries", entriesJson }
     };
 }
