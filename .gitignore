@@ -101,3 +101,4 @@ mods/
 randomizer/
 !/src/port/mods/
 saves/
+mod-src/output/*.c

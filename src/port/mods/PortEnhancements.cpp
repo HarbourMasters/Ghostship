@@ -102,6 +102,10 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);
     REGISTER_EVENT(GameFrameUpdate);
+    REGISTER_EVENT(RenderHud);
+    REGISTER_EVENT(RenderTextLabels);
+    REGISTER_EVENT(RenderGamePre);
+    REGISTER_EVENT(RenderGamePost);
     REGISTER_EVENT(GeoLayoutCallASM);
     REGISTER_EVENT(LevelScriptExecute);
     REGISTER_EVENT(EntityDistanceLoad);

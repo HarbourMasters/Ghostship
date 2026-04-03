@@ -840,7 +840,9 @@ struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
 
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
     init_rcp();
+    CALL_EVENT(RenderGamePre);
     render_game();
+    CALL_EVENT(RenderGamePost);
     end_master_display_list();
     alloc_display_list(0);
 

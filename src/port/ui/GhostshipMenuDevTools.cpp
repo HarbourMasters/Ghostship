@@ -3,6 +3,8 @@
 #include "game/object_list_processor.h"
 #include "include/behavior_data.h"
 #include "game/level_update.h"
+#include "port/Engine.h"
+#include "port/scripting/scripting.h"
 
 extern "C" {
 struct Object* spawn_object_abs_with_rot(struct Object* parent, s16 uselessArg, u32 model,
@@ -105,6 +107,15 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Save Editor")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Save Editor Window."));
+
+    path.sidebarName = "Script Manager";
+    AddSidebarEntry("Dev Tools", path.sidebarName, 2);
+    AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
+        .Options(ButtonOptions().Tooltip("Reloads all scripts from disk.").Color(Colors::Orange))
+        .Callback([](WidgetInfo& info) {
+            ScriptingLayer::Instance->Reload();
+            GameEngine::LoadManifest();
+        });
 
     // Console
     path.sidebarName = "Console";

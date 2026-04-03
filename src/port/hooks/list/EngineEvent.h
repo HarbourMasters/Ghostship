@@ -7,6 +7,11 @@ typedef s32 (*LevelScriptFunction)(s16, s32);
 
 DEFINE_EVENT(GameFrameUpdate);
 
+DEFINE_EVENT(RenderHud);
+DEFINE_EVENT(RenderTextLabels);
+DEFINE_EVENT(RenderGamePre);
+DEFINE_EVENT(RenderGamePost);
+
 DEFINE_EVENT(RenderPauseCourseOptions,
     bool* render;
 );

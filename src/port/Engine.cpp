@@ -29,6 +29,7 @@
 #include <SDL2/SDL_net.h>
 #endif
 
+#include "ship/resource/type/Json.h"
 #include <fast/resource/ResourceType.h>
 #include <ship/window/gui/Fonts.h>
 #include <fast/resource/factory/DisplayListFactory.h>
@@ -37,15 +38,19 @@
 #include <fast/resource/factory/VertexFactory.h>
 #include <fast/resource/factory/LightFactory.h>
 #include <ship/resource/factory/BlobFactory.h>
+#include <ship/resource/factory/JsonFactory.h>
 #include <ship/utils/StringHelper.h>
 #include <ship/resource/ResourceType.h>
 #include <ship/window/gui/resource/Font.h>
 
 #include "importer/AssetArrayFactory.h"
 #include "importer/RawTextureFactory.h"
+#include "importer/TextFactory.h"
+#include "port/ui/Notification.h"
 #include "port/importer/GenericArrayFactory.h"
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
+#include "scripting/scripting.h"
 
 #ifdef __SWITCH__
 #include <ship/port/switch/SwitchImpl.h>
@@ -346,6 +351,7 @@ void GameEngine::FinishInit() {
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
+    LoadManifest();
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
@@ -797,6 +803,68 @@ void GameEngine::ScaleImGui() {
     ImGui::GetIO().FontGlobalScale = scale;
     previousImGuiScale = scale;
     previousImGuiScaleIndex = imGuiScaleIndex;
+}
+
+void GameEngine::LoadManifest() {
+    auto archive = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager();
+    auto loader = Ship::Context::GetInstance()->GetResourceManager()->GetResourceLoader();
+    auto list = archive->GetArchives();
+    auto init = std::make_shared<Ship::ResourceInitData>();
+    init->Type = (uint32_t)Ship::ResourceType::Json;
+    init->ByteOrder = Ship::Endianness::Native;
+    init->Format = RESOURCE_FORMAT_BINARY;
+
+    for (auto& entry : *list) {
+        const auto path = "manifest.json";
+        if (!entry->HasFile(path)) {
+            continue;
+        }
+
+        auto file = entry->LoadFile(path);
+
+        if (file == nullptr) {
+            continue;
+        }
+
+        auto raw = loader->LoadResource(path, file, init);
+        auto res = std::static_pointer_cast<Ship::Json>(raw);
+        if (res == nullptr) {
+            continue;
+        }
+
+        auto json = res->Data;
+
+        try {
+            auto name = json["name"].get<std::string>();
+            auto main = json["main"].get<std::string>();
+            auto version = json.value("version", "1.0");
+            auto website = json.value("website", "https://github.com/HarbourMasters/Ghostship");
+            auto description = json.value("description", "");
+            auto author = json.value("author", "unknown");
+            auto license = json.value("license", "MIT");
+            auto dependencies = json.value("dependencies", std::vector<std::string>());
+
+            SPDLOG_INFO("Name: {}", name);
+            SPDLOG_INFO("Version: {}", version);
+            SPDLOG_INFO("License: {}", license);
+            SPDLOG_INFO("Author: {}", author);
+
+            ScriptingLayer::Instance->Load(main, entry);
+            Notification::Emit({ .message = "Loaded " + name, .remainingTime = 7.0f });
+        } catch (nlohmann::json::exception& e) {
+            SPDLOG_ERROR("Invalid manifest.json, skipping {}", entry->GetPath());
+            Notification::Emit({ .message = "Failed to load mod, check log for details",
+                                 .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                                 .remainingTime = 7.0f });
+            continue;
+        } catch (std::exception& e) {
+            SPDLOG_ERROR("Failed to load manifest.json, skipping {}: {}", entry->GetPath(), e.what());
+            Notification::Emit({ .message = "Failed to load mod, check log for details",
+                                 .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                                 .remainingTime = 7.0f });
+            continue;
+        }
+    }
 }
 
 void GameEngine::Create(int argc, char* argv[]) {
