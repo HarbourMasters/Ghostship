@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(ModTemplate)
 
-# Find Python instead of tcc
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 
 set(PARENT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
