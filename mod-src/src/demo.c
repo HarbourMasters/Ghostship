@@ -1,6 +1,6 @@
 #include "mod.h"
 
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 #include "game/level_update.h"
 #include "sm64.h"
 #include "game/print.h"

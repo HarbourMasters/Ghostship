@@ -1,6 +1,5 @@
 #pragma once
 
-#include "port/hooks/impl/EventSystem.h"
 #include "include/types.h"
 #include "game/area.h"
 

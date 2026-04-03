@@ -44,7 +44,7 @@
 #include "spawn_object.h"
 #include "spawn_sound.h"
 #include "rumble_init.h"
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 
 #define o gCurrentObject
 

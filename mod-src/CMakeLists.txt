@@ -11,6 +11,7 @@ set(INCLUDE_DIRS
     ${PARENT_DIR}
     ${PARENT_DIR}/include
     ${PARENT_DIR}/src
+    ${PARENT_DIR}/libultraship/src
     ${PARENT_DIR}/libultraship/include
     ${PARENT_DIR}/libultraship/include/libultraship
 )

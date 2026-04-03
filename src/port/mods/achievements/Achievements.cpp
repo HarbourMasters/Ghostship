@@ -11,7 +11,7 @@
 #include "buffers/buffers.h"
 #include "port/ShipInit.hpp"
 #include "port/Rando/Types.h"
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 #include "game/level_update.h"
 #include "port/util/GraphNode.h"
 #include "port/ui/Notification.h"

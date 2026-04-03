@@ -13,7 +13,7 @@
 #include "rumble_init.h"
 #include "port/data/Saves.h"
 
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 #define MENU_DATA_MAGIC 0x4849

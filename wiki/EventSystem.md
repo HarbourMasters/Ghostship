@@ -7,7 +7,7 @@ This guide explains how to define, register, call, and listen to new events, bas
 ## 1. Define the Event Structure
 Events must be defined in a header file so the system knows what data they carry.
 
-**File:** `src/port/hooks/list/EngineEvent.h`
+**File:** `src/port/events/list/EngineEvent.h`
 
 Use the `DEFINE_EVENT` macro. If the event needs to pass data to listeners (like a pointer to a boolean), define those fields inside the macro.
 

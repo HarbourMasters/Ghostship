@@ -150,6 +150,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     this->context->InitWindow(gsFast3dWindow);
+    this->context->InitEventSystem();
 
     GhostshipGui::SetupMenu();
 

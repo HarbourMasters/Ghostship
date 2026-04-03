@@ -7,7 +7,7 @@
 #include "game/game_init.h"
 #include "menu/title_screen.h"
 #include "utils/GfxPrint.h"
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 #include "port/ShipInit.hpp"
 #include "geo_commands.h"
 #include "gfx_dimensions.h"

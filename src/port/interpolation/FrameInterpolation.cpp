@@ -302,6 +302,17 @@ struct InterpolateCtx {
     }
 
     void interpolate_mtxf(MtxF* res, MtxF* o, MtxF* n) {
+        const float threshold = 1500.0f;
+
+        float dx = fabsf(o->mf[3][0] - n->mf[3][0]);
+        float dy = fabsf(o->mf[3][1] - n->mf[3][1]);
+        float dz = fabsf(o->mf[3][2] - n->mf[3][2]);
+
+        if (dx > threshold || dy > threshold || dz > threshold) {
+            *res = *n;
+            return;
+        }
+
         for (size_t i = 0; i < 4; i++) {
             for (size_t j = 0; j < 4; j++) {
                 res->mf[i][j] = w * o->mf[i][j] + step * n->mf[i][j];

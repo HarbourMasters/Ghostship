@@ -1,6 +1,6 @@
 #include <libultraship.h>
 #include <string.h>
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 
 #include "sm64.h"
 #include "audio/external.h"
@@ -24,7 +24,7 @@
 #include "surface_collision.h"
 #include "surface_load.h"
 #include "seq_ids.h"
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 
 #define CMD_GET(type, offset) (*(type *) (CMD_PROCESS_OFFSET(offset) + (u8 *) sCurrentCmd))
 

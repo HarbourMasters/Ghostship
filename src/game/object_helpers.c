@@ -1,5 +1,5 @@
 #include <libultra/types.h>
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 
 #include "sm64.h"
 #include "area.h"

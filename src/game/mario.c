@@ -34,7 +34,7 @@
 #include "sound_init.h"
 #include "rumble_init.h"
 
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 u32 unused80339F10;

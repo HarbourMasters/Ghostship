@@ -9,7 +9,7 @@
 #include "game/save_file.h"
 #include "port/Rando/CustomItem/CustomItem.h"
 
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 #include "include/types.h"
 

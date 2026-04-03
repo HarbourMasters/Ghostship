@@ -1,6 +1,5 @@
 #pragma once
 
-#include "port/hooks/impl/EventSystem.h"
 #include "engine/graph_node.h"
 
 typedef s32 (*LevelScriptFunction)(s16, s32);

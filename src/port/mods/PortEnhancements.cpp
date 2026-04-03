@@ -4,7 +4,7 @@
 
 #include "sm64.h"
 #include "game/level_update.h"
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 #include "assets/bin/segment2.h"
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
@@ -59,7 +59,7 @@ void PortEnhancements_Init() {
             return;
         }
 
-        event->cancelled = true;
+        event->Cancelled = true;
     });
     REGISTER_LISTENER(PlayerLivesChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         PlayerLivesChange* ev = (PlayerLivesChange*)event;
@@ -67,7 +67,7 @@ void PortEnhancements_Init() {
             return;
         }
 
-        event->cancelled = true;
+        event->Cancelled = true;
     });
     REGISTER_LISTENER(RenderPauseCourseOptions, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         if (CVarGetInteger("gCheats.PauseExitWhenever", 0) == 0) {

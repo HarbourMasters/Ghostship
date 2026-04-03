@@ -1,6 +1,6 @@
 #include "MiscBehavior.h"
 #include "port/Rando/Logic/Logic.h"
-#include "port/hooks/list/EngineEvent.h"
+#include "port/events/list/EngineEvent.h"
 
 extern "C" {
 #include "game/ingame_menu.h"
@@ -23,7 +23,7 @@ void Rando::MiscBehavior::Init() {
         }
 
         *(ev->redCoinsCollected) = CustomItem::redCoinsCollected;
-        event->cancelled = true;
+        event->Cancelled = true;
     });
 
     REGISTER_LISTENER(LevelScriptExecute, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
