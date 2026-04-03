@@ -342,13 +342,13 @@ void GameEngine::FinishInit() {
     prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
     context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 
-    GhostshipGui::SetupGuiElements();
     Instance->AudioInit();
     Instance->LoadDictionary();
     Instance->LoadPlayerAnims();
 #if defined(__SWITCH__) || defined(__WIIU__)
     CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
 #endif
+    GhostshipGui::SetupGuiElements();
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
