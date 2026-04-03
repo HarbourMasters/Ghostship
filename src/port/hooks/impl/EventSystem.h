@@ -87,6 +87,9 @@ typedef struct EventListener {
 #define REGISTER_LISTENER(eventType, priority, callback) \
     EventSystem_RegisterListener(eventType##ID, callback, priority, __FILE__, __LINE__);
 
+#define UNREGISTER_LISTENER(eventType, listenerID) \
+    EventSystem_UnregisterListener(eventType##ID, listenerID);
+
 #ifdef __cplusplus
 #include <vector>
 #include <unordered_map>

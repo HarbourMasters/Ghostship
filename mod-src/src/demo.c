@@ -6,6 +6,9 @@
 #include "game/print.h"
 #include <stdio.h>
 
+ListenerID gFrameUpdateListenerID;
+ListenerID gRenderGamePostListenerID;
+
 void OnFrameUpdate(IEvent* event) {
     gMarioState->numCoins = 99;
 }
@@ -15,6 +18,11 @@ void OnGameRenderHud(IEvent* event) {
 }
 
 MOD_INIT() {
-    REGISTER_LISTENER(GameFrameUpdate, EVENT_PRIORITY_NORMAL, OnFrameUpdate);
-    REGISTER_LISTENER(RenderGamePost, EVENT_PRIORITY_NORMAL, OnGameRenderHud);
+    gFrameUpdateListenerID = REGISTER_LISTENER(GameFrameUpdate, EVENT_PRIORITY_NORMAL, OnFrameUpdate);
+    gRenderGamePostListenerID = REGISTER_LISTENER(RenderGamePost, EVENT_PRIORITY_NORMAL, OnGameRenderHud);
+}
+
+MOD_EXIT() {
+    UNREGISTER_LISTENER(GameFrameUpdate, gFrameUpdateListenerID);
+    UNREGISTER_LISTENER(RenderGamePost, gRenderGamePostListenerID);
 }
