@@ -12,7 +12,7 @@ class ScriptingLayer {
     static ScriptingLayer* Instance;
 
     void Load(std::string file);
-    void Load(const std::string& path, const std::shared_ptr<Ship::Archive>& archive);
+    void Load(const std::string& path, const std::shared_ptr<Ship::Archive>& archive, int codeVersion);
     void Clean();
     void Reload();
 private:

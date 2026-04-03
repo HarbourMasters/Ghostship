@@ -11,6 +11,8 @@
 
 #include "loader.h"
 
+#define CODE_VERSION 1
+
 namespace fs = std::filesystem;
 
 ScriptingLayer* ScriptingLayer::Instance = new ScriptingLayer();
@@ -26,11 +28,15 @@ std::optional<std::vector<uint8_t>> LoadFromO2R(const std::string& path,
     return std::vector<uint8_t>(file->Buffer->begin(), file->Buffer->end());
 }
 
-void ScriptingLayer::Load(const std::string& path, const std::shared_ptr<Ship::Archive>& archive) {
+void ScriptingLayer::Load(const std::string& path, const std::shared_ptr<Ship::Archive>& archive, int codeVersion) {
     const auto result = LoadFromO2R(path, archive);
 
     if (!result.has_value()) {
         throw std::runtime_error("Failed to load script file: " + path);
+    }
+
+    if (codeVersion != CODE_VERSION) {
+        throw std::runtime_error("Unsupported code version " + std::to_string(codeVersion) + " in mod: " + path);
     }
 
     const std::vector<uint8_t>& raw = result.value();

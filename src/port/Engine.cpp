@@ -842,6 +842,7 @@ void GameEngine::LoadManifest() {
             auto description = json.value("description", "");
             auto author = json.value("author", "unknown");
             auto license = json.value("license", "MIT");
+            auto code_version = json.value("code-version", 1);
             auto dependencies = json.value("dependencies", std::vector<std::string>());
 
             SPDLOG_INFO("Name: {}", name);
@@ -849,7 +850,7 @@ void GameEngine::LoadManifest() {
             SPDLOG_INFO("License: {}", license);
             SPDLOG_INFO("Author: {}", author);
 
-            ScriptingLayer::Instance->Load(main, entry);
+            ScriptingLayer::Instance->Load(main, entry, code_version);
             Notification::Emit({ .message = "Loaded " + name, .remainingTime = 7.0f });
         } catch (nlohmann::json::exception& e) {
             SPDLOG_ERROR("Invalid manifest.json, skipping {}", entry->GetPath());
