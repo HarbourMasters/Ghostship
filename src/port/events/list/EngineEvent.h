@@ -5,6 +5,7 @@
 typedef s32 (*LevelScriptFunction)(s16, s32);
 
 DEFINE_EVENT(GameFrameUpdate);
+DEFINE_EVENT(GameLoopTick);
 
 DEFINE_EVENT(RenderHud);
 DEFINE_EVENT(RenderTextLabels);
@@ -51,4 +52,8 @@ DEFINE_EVENT(EntityDistanceRender,
 
 DEFINE_EVENT(EntityDistanceLoad,
     bool* visible;
+);
+
+DEFINE_EVENT(BehaviorCallNative,
+    void (*function)(void);
 );

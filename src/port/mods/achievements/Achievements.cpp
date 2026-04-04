@@ -604,8 +604,8 @@ void Achievements_Init() {
         }
     });
 
-    REGISTER_LISTENER(PlayerExecuteAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        const PlayerExecuteAction* ev = reinterpret_cast<PlayerExecuteAction*>(event);
+    REGISTER_LISTENER(PlayerSetAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        const PlayerSetAction* ev = reinterpret_cast<PlayerSetAction*>(event);
 
         if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;

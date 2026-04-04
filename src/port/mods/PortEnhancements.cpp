@@ -102,6 +102,8 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);
     REGISTER_EVENT(GameFrameUpdate);
+    REGISTER_EVENT(GameLoopTick);
+    REGISTER_EVENT(BehaviorCallNative);
     REGISTER_EVENT(RenderHud);
     REGISTER_EVENT(RenderTextLabels);
     REGISTER_EVENT(RenderGamePre);
@@ -120,7 +122,9 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(PlayerLivesChange);
     REGISTER_EVENT(PlayerStartedDialog);
     REGISTER_EVENT(PlayerDeath);
+    REGISTER_EVENT(PlayerSetAction);
     REGISTER_EVENT(PlayerExecuteAction);
+    REGISTER_EVENT(PlayerCheckCommonAirborneCancels);
 
     // Register Rando Events
     REGISTER_EVENT(ItemCollected);

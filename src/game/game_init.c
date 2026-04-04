@@ -326,8 +326,8 @@ void draw_reset_bars(void) {
     }
 
     osWritebackDCacheAll();
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    // osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    // osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 }
 
 /**
@@ -369,7 +369,7 @@ void select_gfx_pool(void) {
  */
 void display_and_vsync(void) {
     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
-    osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
+    // osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
     if (gGoddardVblankCallback != NULL) {
         gGoddardVblankCallback();
         gGoddardVblankCallback = NULL;
@@ -379,10 +379,10 @@ void display_and_vsync(void) {
     }
     exec_display_list(&gGfxPool->spTask);
     profiler_log_thread5_time(AFTER_DISPLAY_LISTS);
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
-    osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
+    // osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
+    // osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(THREAD5_END);
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
+    // osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_NOBLOCK);
     if (++sRenderedFramebuffer == 3) {
         sRenderedFramebuffer = 0;
     }
@@ -536,7 +536,7 @@ void read_controller_inputs(void) {
 
     // If any controllers are plugged in, update the controller information.
     if (gControllerBits) {
-        osRecvMesg(&gSIEventMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+        // osRecvMesg(&gSIEventMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         osContGetReadData(&gControllerPads[0]);
 #if ENABLE_RUMBLE
         release_rumble_pak_control();
@@ -685,7 +685,7 @@ void thread5_iteration(void){
 
     // If the reset timer is active, run the process to reset the game.
     if (gResetTimer != 0) {
-        draw_reset_bars();
+        // draw_reset_bars();
         return;
     }
     FrameInterpolation_StartRecord();
@@ -713,6 +713,7 @@ void thread5_iteration(void){
         addr = level_script_execute(addr);
     }
 
+    CALL_EVENT(GameLoopTick);
     display_and_vsync();
 
     // when debug info is enabled, print the "BUF %d" information.
