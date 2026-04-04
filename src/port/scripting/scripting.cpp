@@ -46,6 +46,15 @@ void ScriptingLayer::Load(const std::string& path, const std::shared_ptr<Ship::A
         throw std::runtime_error("Failed to create tcc state");
     }
 
+    tcc_define_symbol(s, "VERSION_US", "1");
+    tcc_define_symbol(s, "ENABLE_RUMBLE", "1");
+    tcc_define_symbol(s, "F3D_OLD", "1");
+    tcc_define_symbol(s, "F3D_GBI", "1");
+    tcc_define_symbol(s, "GBI_FLOATS", "1");
+    tcc_define_symbol(s, "_LANGUAGE_C", "1");
+    tcc_define_symbol(s, "_USE_MATH_DEFINES", "1");
+    tcc_define_symbol(s, "AVOID_UB", "1");
+
     tcc_set_output_type(s, TCC_OUTPUT_DLL);
 
     if (tcc_compile_string(s, reinterpret_cast<const char*>(raw.data())) == -1) {
