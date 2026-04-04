@@ -3,17 +3,7 @@
 #include <stdint.h>
 
 #ifdef __cplusplus
-#define EXTERN_C extern "C"
-#else
-#define EXTERN_C
-#endif
-
-#if defined(__clang__)
-    #define HM_API __attribute__((optnone))
-#elif defined(__GNUC__)
-    #define HM_API __attribute__((optimize("O0")))
-#else
-    #define HM_API
+extern "C" {
 #endif
 
 // ---------------------------------------------------------
@@ -121,6 +111,12 @@ typedef struct {
 // ---------------------------------------------------------
 // 4. The Wrapper Function
 // ---------------------------------------------------------
-EXTERN_C void C_AddMenuEntry(const char* label, const char* cvar);
-EXTERN_C void C_AddSidebarEntry(const char* menu, const char* label, int column);
-EXTERN_C void C_AddWidget(const char* section, const char* sidebar, int column, const char* label, C_WidgetConfig* config);
+// void C_AddMenuEntry(const char* label, const char* cvar);
+void C_AddSidebarEntry(const char* label, int column);
+void C_AddWidget(const char* sidebar, int column, const char* label, C_WidgetConfig* config);
+
+// void C_RemoveMenuEntry(const char* entryName);
+void C_RemoveSidebarEntry(const char* sidebarName);
+#ifdef __cplusplus
+}
+#endif

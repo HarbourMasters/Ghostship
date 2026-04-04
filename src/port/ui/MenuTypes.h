@@ -256,6 +256,7 @@ struct disabledInfo {
 struct SidebarEntry {
     uint32_t columnCount;
     std::vector<std::vector<WidgetInfo>> columnWidgets;
+    bool markForDelete = false;
 };
 
 // Contains entries for what's listed in the header at the top, including the name displayed on the top bar (label),
@@ -266,6 +267,7 @@ struct MainMenuEntry {
     const char* sidebarCvar;
     std::unordered_map<std::string, SidebarEntry> sidebars = {};
     std::vector<std::string> sidebarOrder = {};
+    bool markForDelete = false;
 };
 
 static const std::unordered_map<Ship::AudioBackend, const char*> audioBackendsMap = {

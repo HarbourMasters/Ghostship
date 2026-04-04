@@ -818,6 +818,11 @@ void Menu::DrawElement() {
     const char* sidebarCvar = menuEntries.at(headerIndex).sidebarCvar;
 
     std::string sectionIndex = CVarGetString(sidebarCvar, "");
+
+    if (sectionIndex.empty()) {
+        sectionIndex = menuEntries.at("Settings").sidebarOrder.at(0);
+    }
+
     if (!sidebar->contains(sectionIndex)) {
         sectionIndex = menuEntries.at(headerIndex).sidebarOrder.at(0);
     }
@@ -937,5 +942,19 @@ void Menu::DrawElement() {
         freshOpen = false;
     }
     ImGui::End();
+
+    if(menuEntries.contains(headerIndex) && menuEntries.at(headerIndex).markForDelete) {
+        menuEntries.erase(headerIndex);
+        std::erase(menuOrder, headerIndex);
+        return;
+    }
+
+    if(sidebar->contains(sectionIndex) && sidebar->at(sectionIndex).markForDelete) {
+        sidebar->erase(sectionIndex);
+        menuEntries.at(headerIndex).sidebarOrder.erase(
+            std::remove(menuEntries.at(headerIndex).sidebarOrder.begin(), menuEntries.at(headerIndex).sidebarOrder.end(),
+                        sectionIndex),
+            menuEntries.at(headerIndex).sidebarOrder.end());
+    }
 }
 } // namespace Ship

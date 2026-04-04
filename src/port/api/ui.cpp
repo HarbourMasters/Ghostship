@@ -17,18 +17,26 @@ static UIWidgets::LabelPositions MapLabel(C_LabelPos pos) {
     return UIWidgets::LabelPositions::Near;
 }
 
-extern "C" HM_API void C_AddMenuEntry(const char* label, const char* cvar) {
-    GhostshipGui::mGhostshipMenu->AddMenuEntry(label, cvar);
+// extern "C" void C_AddMenuEntry(const char* label, const char* cvar) {
+//     GhostshipGui::mGhostshipMenu->AddMenuEntry(label, cvar);
+// }
+
+extern "C" void C_AddSidebarEntry(const char* label, int column) {
+    GhostshipGui::mGhostshipMenu->AddSidebarEntry("Mods", label, column);
 }
 
-extern "C" HM_API void C_AddSidebarEntry(const char* menu, const char* label, int column) {
-    GhostshipGui::mGhostshipMenu->AddSidebarEntry(menu, label, column);
+// extern "C" void C_RemoveMenuEntry(const char* entryName) {
+//     GhostshipGui::mGhostshipMenu->RemoveMenuEntry(entryName);
+// }
+
+extern "C" void C_RemoveSidebarEntry(const char* sidebarName) {
+    GhostshipGui::mGhostshipMenu->RemoveSidebarEntry("Mods", sidebarName);
 }
 
-extern "C" HM_API void C_AddWidget(const char* section, const char* sidebar, int column, const char* label, C_WidgetConfig* config) {
+extern "C" void C_AddWidget(const char* sidebar, int column, const char* label, C_WidgetConfig* config) {
     if (!config) return;
 
-    WidgetPath path = { section, sidebar, static_cast<SectionColumns>(column) };
+    WidgetPath path = { "Mods", sidebar, static_cast<SectionColumns>(column) };
 
     // 1. Begin the Widget Builder Chain
     WidgetInfo& widget = GhostshipGui::mGhostshipMenu->AddWidget(path, label, static_cast<WidgetType>(config->type))

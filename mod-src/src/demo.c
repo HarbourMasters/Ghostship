@@ -16,9 +16,8 @@ void SetupUI() {
     chk.cvar = "gSkipIntro";
     chk.opts.checkbox.tooltip = "Skip the intro cutscene.";
     chk.opts.checkbox.default_val = true;
-    C_AddMenuEntry("My Mod", "gMyModSidebar");
-    C_AddSidebarEntry("My Mod", "General", 1);
-    C_AddWidget("My Mod", "General", 1, "Draw Mod Hi", &chk);
+    C_AddSidebarEntry("My Mod", 1);
+    C_AddWidget("My Mod", 1, "Draw Mod Hi", &chk);
 }
 
 void OnFrameUpdate(IEvent* event) {
@@ -40,6 +39,8 @@ MOD_INIT() {
 }
 
 MOD_EXIT() {
+    C_RemoveSidebarEntry("My Mod");
+
     UNREGISTER_LISTENER(GameFrameUpdate, gFrameUpdateListenerID);
     UNREGISTER_LISTENER(RenderGamePost, gRenderGamePostListenerID);
 }
