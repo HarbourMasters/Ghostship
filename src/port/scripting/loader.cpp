@@ -66,20 +66,23 @@ std::string ModInstance::GenerateTempFile() {
 void FixELFHeader(const std::string& path) {
     // 1. Read the file into a buffer
     std::ifstream in(path, std::ios::binary | std::ios::ate);
-    if (!in.is_open()) return;
+    if (!in.is_open())
+        return;
 
     std::streamsize size = in.tellg();
     in.seekg(0, std::ios::beg);
 
     std::vector<uint8_t> buffer(size);
-    if (!in.read(reinterpret_cast<char*>(buffer.data()), size)) return;
+    if (!in.read(reinterpret_cast<char*>(buffer.data()), size))
+        return;
     in.close();
 
-    if (buffer.size() < sizeof(Elf64_Ehdr)) return;
+    if (buffer.size() < sizeof(Elf64_Ehdr))
+        return;
 
     // 2. ELF Surgery
     Elf64_Ehdr* header = reinterpret_cast<Elf64_Ehdr*>(buffer.data());
-    
+
     if (header->e_ident[EI_CLASS] == ELFCLASS64) {
         Elf64_Phdr* phdr = reinterpret_cast<Elf64_Phdr*>(buffer.data() + header->e_phoff);
 
@@ -92,12 +95,12 @@ void FixELFHeader(const std::string& path) {
                 phdr[i].p_flags = PF_R | PF_W; // Set to RW (No Execute)
                 phdr[i].p_align = 0x10;
                 patched = true;
-                break; 
+                break;
             }
         }
 
         if (!patched) {
-            // Last resort: if we can't find either, we'll try to find any 
+            // Last resort: if we can't find either, we'll try to find any
             // non-critical segment that isn't LOAD (1) or DYNAMIC (2).
             for (int i = 0; i < header->e_phnum; i++) {
                 if (phdr[i].p_type != PT_LOAD && phdr[i].p_type != PT_DYNAMIC) {
@@ -111,7 +114,8 @@ void FixELFHeader(const std::string& path) {
 
     // 3. Write it back
     std::ofstream out(path, std::ios::binary | std::ios::trunc);
-    if (!out.is_open()) return;
+    if (!out.is_open())
+        return;
     out.write(reinterpret_cast<const char*>(buffer.data()), buffer.size());
     out.close();
 

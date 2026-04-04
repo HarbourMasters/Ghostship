@@ -6,7 +6,7 @@ import argparse
 def amalgamate(file_path, include_dirs, processed, out_file):
     abs_path = os.path.abspath(file_path)
     
-    # Inclusion guard: prevents circular dependencies AND acts as a global #pragma once
+    # Inclusion guard prevents infinite loops within a single .c file's tree
     if abs_path in processed:
         return
     processed.add(abs_path)
@@ -43,20 +43,18 @@ def amalgamate(file_path, include_dirs, processed, out_file):
         print(f"Warning: Could not process {abs_path}: {e}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate a Unity Build amalgamation.")
-    parser.add_argument('--out', required=True, help="The single output .c file")
+    parser = argparse.ArgumentParser(description="Inject local headers into a single C file.")
+    parser.add_argument('--out', required=True, help="The output .c file")
     parser.add_argument('--includes', nargs='*', default=[], help="Include directories")
-    parser.add_argument('--srcs', nargs='+', required=True, help="Input .c files")
+    
+    # Changed from --srcs (list) to --src (single file)
+    parser.add_argument('--src', required=True, help="Input .c file")
     
     args = parser.parse_args()
 
-    # The processed set is maintained globally across ALL input files
-    global_processed = set()
+    # The processed set is only maintained for this specific .c file
+    local_processed = set()
     
     with open(args.out, 'w', encoding='utf-8') as out_file:
-        for src_file in args.srcs:
-            out_file.write(f"\n/* ========================================= */\n")
-            out_file.write(f"/* === Start of Source: {os.path.basename(src_file)} === */\n")
-            out_file.write(f"/* ========================================= */\n\n")
-            
-            amalgamate(src_file, args.includes, global_processed, out_file)
+        out_file.write(f"/* === Processed Source: {os.path.basename(args.src)} === */\n\n")
+        amalgamate(args.src, args.includes, local_processed, out_file)

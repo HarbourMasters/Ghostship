@@ -28,6 +28,17 @@ std::optional<std::vector<uint8_t>> LoadFromO2R(const std::string& path,
     return std::vector<uint8_t>(file->Buffer->begin(), file->Buffer->end());
 }
 
+std::string_view trim(std::string_view v) {
+    v.remove_prefix(std::min(v.find_first_not_of(" \t\r\n"), v.size()));
+    auto last = v.find_last_not_of(" \t\r\n");
+    if (last != std::string_view::npos) {
+        v.remove_suffix(v.size() - last - 1);
+    } else {
+        v = "";
+    }
+    return v;
+}
+
 void ScriptingLayer::Load(const std::string& path, const std::shared_ptr<Ship::Archive>& archive, int codeVersion) {
     const auto result = LoadFromO2R(path, archive);
 
@@ -57,9 +68,35 @@ void ScriptingLayer::Load(const std::string& path, const std::shared_ptr<Ship::A
 
     tcc_set_output_type(s, TCC_OUTPUT_DLL);
 
-    if (tcc_compile_string(s, reinterpret_cast<const char*>(raw.data())) == -1) {
-        tcc_delete(s);
-        throw std::runtime_error("Failed to compile " + path);
+    std::string gen_content(raw.begin(), raw.end());
+    std::istringstream stream(gen_content);
+    std::string line;
+
+    while (std::getline(stream, line)) {
+        if (line.empty()) {
+            continue;
+        }
+
+        line.erase(line.find_last_not_of(" \r\n\t") + 1);
+        line.erase(0, line.find_first_not_of(" \r\n\t"));
+
+        if (line.empty() || line[0] == '#') {
+            continue;
+        }
+
+        std::string safe_path = line;
+
+        auto buf = LoadFromO2R(safe_path, archive);
+        if (!buf.has_value()) {
+            tcc_delete(s);
+            throw std::runtime_error("Failed to load script file: '" + safe_path + "'");
+        }
+
+        std::string sourceCode(reinterpret_cast<const char*>(buf->data()), buf->size());
+        if (tcc_compile_string(s, sourceCode.c_str()) == -1) {
+            tcc_delete(s);
+            throw std::runtime_error("TCC Error in " + safe_path);
+        }
     }
 
     ModInstance instance;

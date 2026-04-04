@@ -143,4 +143,13 @@ void GhostshipMenu::AddMenuDevTools() {
         .Options(WindowButtonOptions().Tooltip("Enables the separate Object Viewer Window."));
 }
 
+void GhostshipMenu::AddModMenu() {
+    AddMenuEntry("Mods", CVAR_SETTING("Menu.ModsSidebarSection"));
+
+    WidgetPath path = { "Mods", "General", SECTION_COLUMN_1 };
+
+    AddSidebarEntry(path.sectionName, path.sidebarName, 1);
+    AddWidget(path, "Mod Settings", WIDGET_TEXT);
+};
+
 } // namespace GhostshipGui

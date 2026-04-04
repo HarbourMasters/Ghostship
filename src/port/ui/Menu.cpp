@@ -943,18 +943,18 @@ void Menu::DrawElement() {
     }
     ImGui::End();
 
-    if(menuEntries.contains(headerIndex) && menuEntries.at(headerIndex).markForDelete) {
+    if (menuEntries.contains(headerIndex) && menuEntries.at(headerIndex).markForDelete) {
         menuEntries.erase(headerIndex);
         std::erase(menuOrder, headerIndex);
         return;
     }
 
-    if(sidebar->contains(sectionIndex) && sidebar->at(sectionIndex).markForDelete) {
+    if (sidebar->contains(sectionIndex) && sidebar->at(sectionIndex).markForDelete) {
         sidebar->erase(sectionIndex);
-        menuEntries.at(headerIndex).sidebarOrder.erase(
-            std::remove(menuEntries.at(headerIndex).sidebarOrder.begin(), menuEntries.at(headerIndex).sidebarOrder.end(),
-                        sectionIndex),
-            menuEntries.at(headerIndex).sidebarOrder.end());
+        menuEntries.at(headerIndex)
+            .sidebarOrder.erase(std::remove(menuEntries.at(headerIndex).sidebarOrder.begin(),
+                                            menuEntries.at(headerIndex).sidebarOrder.end(), sectionIndex),
+                                menuEntries.at(headerIndex).sidebarOrder.end());
     }
 }
 } // namespace Ship
