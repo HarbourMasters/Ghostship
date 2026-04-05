@@ -101,5 +101,8 @@ mods/
 randomizer/
 !/src/port/mods/
 saves/
-mod-src/output/*.c
+workspace/*
+!workspace/template
+workspace/template/output/*
+!workspace/template/output/manifest.json
 *.pem

@@ -3,7 +3,7 @@ project(ModTemplate)
 
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 
-set(PARENT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
+set(PARENT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../..)
 
 set(INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/src

@@ -14,14 +14,13 @@ This template utilizes a Unity Build (amalgamation) pipeline. It allows you to w
 
 ```
 ├── CMakeLists.txt        # The build configuration  
-├── tools/  
-│   └── merge.py           # The Python script that amalgamates the source code  
 ├── include/  
 │   └── mod.h              # Core macros (MOD_INIT, MOD_EXIT, HM_API)  
 ├── src/  
 │   └── demo.c             # Your actual mod logic and event listeners  
 └── output/  
-    ├── mod.c             # (Generated) The final, single-file amalgamated mod  
+    ├── dist/             # The final c files goes here after building
+    ├── build.gen         # The list of how to build the mod (auto-generated)
     └── manifest.json      # Metadata for the mod loader
 ```
 
