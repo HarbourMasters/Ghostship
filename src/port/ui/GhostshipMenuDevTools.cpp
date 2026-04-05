@@ -4,7 +4,7 @@
 #include "include/behavior_data.h"
 #include "game/level_update.h"
 #include "port/Engine.h"
-#include "port/scripting/scripting.h"
+#include "ship/scripting/ScriptSystem.h"
 
 extern "C" {
 struct Object* spawn_object_abs_with_rot(struct Object* parent, s16 uselessArg, u32 model,
@@ -113,8 +113,8 @@ void GhostshipMenu::AddMenuDevTools() {
     AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
         .Options(ButtonOptions().Tooltip("Reloads all scripts from disk.").Color(Colors::Orange))
         .Callback([](WidgetInfo& info) {
-            ScriptingLayer::Instance->Reload();
-            GameEngine::LoadManifest();
+            Ship::Context::GetInstance()->GetScriptSystem()->UnloadAll();
+            GameEngine::LoadScripts();
         });
 
     // Console

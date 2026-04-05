@@ -303,20 +303,6 @@ endif()
 # Libultraship Integration                                                     #
 #==============================================================================#
 
-find_package(libtcc QUIET)
-
-if (NOT libtcc_FOUND)
-    FetchContent_Declare(
-        libtcc
-        GIT_REPOSITORY https://github.com/fwsGonzo/libtcc-cmake.git
-        GIT_TAG        master
-    )
-    set(LIBTCC_BUILD_STATIC TRUE CACHE BOOL "" FORCE)
-    FetchContent_MakeAvailable(libtcc)
-endif()
-
-target_link_libraries(${PROJECT_NAME} PRIVATE libtcc)
-
 # Removes MPQ/OTR support
 set(EXCLUDE_MPQ_SUPPORT TRUE CACHE BOOL "")
 set(ENABLE_EXP_AUTO_CONFIGURE_CONTROLLERS ON CACHE BOOL "")
