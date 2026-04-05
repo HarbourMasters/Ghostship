@@ -42,7 +42,7 @@ enum ScriptStatus { SCRIPT_RUNNING = 1, SCRIPT_PAUSED = 0, SCRIPT_PAUSED2 = -1 }
 
 static uintptr_t sStack[32];
 
-static struct AllocOnlyPool *sLevelPool = NULL;
+struct AllocOnlyPool *sLevelPool = NULL;
 
 static u16 sDelayFrames = 0;
 static u16 sDelayFrames2 = 0;
