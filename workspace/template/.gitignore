@@ -1,0 +1,5 @@
+build/
+output/*
+!output/models
+!output/manifest.json
+.DS_Store
