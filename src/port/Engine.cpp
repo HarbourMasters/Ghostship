@@ -227,16 +227,10 @@ void CheckAndCreateModFolder() {
 }
 
 void GameEngine::LoadResourceFiles() {
-    std::unordered_map<std::string, std::string> defines = {
-        { "VERSION_US", "1" },
-        { "ENABLE_RUMBLE", "1" },
-        { "F3D_OLD", "1" },
-        { "F3D_GBI", "1" },
-        { "GBI_FLOATS", "1" },
-        { "_LANGUAGE_C", "1" },
-        { "_USE_MATH_DEFINES", "1" },
-        { "AVOID_UB", "1" }
-    };
+    std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
+                                                             { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
+                                                             { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
+                                                             { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
 
     context->InitScriptSystem(defines, 1);
 
@@ -306,16 +300,10 @@ void GameEngine::FinishInit() {
     context->InitGfxDebugger();
     context->InitFileDropMgr();
     context->InitCrashHandler();
-    std::unordered_map<std::string, std::string> defines = {
-        { "VERSION_US", "1" },
-        { "ENABLE_RUMBLE", "1" },
-        { "F3D_OLD", "1" },
-        { "F3D_GBI", "1" },
-        { "GBI_FLOATS", "1" },
-        { "_LANGUAGE_C", "1" },
-        { "_USE_MATH_DEFINES", "1" },
-        { "AVOID_UB", "1" }
-    };
+    std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
+                                                             { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
+                                                             { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
+                                                             { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
 
     context->InitScriptSystem(defines, 1);
 
@@ -353,9 +341,8 @@ void GameEngine::FinishInit() {
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(),
                                     RESOURCE_FORMAT_BINARY, "DisplayList",
                                     static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryXMLDisplayListV0>(),
-                                    RESOURCE_FORMAT_XML, "DisplayList",
-                                    static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryXMLDisplayListV0>(), RESOURCE_FORMAT_XML,
+                                    "DisplayList", static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY,
                                     "Matrix", static_cast<uint32_t>(Fast::ResourceType::Matrix), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryLightV0>(), RESOURCE_FORMAT_BINARY,
@@ -741,9 +728,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         auto& info = archive->GetManifest();
                         file = info.Name;
                     };
-                    auto post = [&]() {
-                        compileCount++;
-                    };
+                    auto post = [&]() { compileCount++; };
                     scripting->CompileAll(pre, post);
                     extractDone = true;
                 });
@@ -800,11 +785,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             ImGui::PopStyleVar(2);
         }
 
-        if(totalScripts > 0 && !ImGui::IsPopupOpen("Ghostship")) {
+        if (totalScripts > 0 && !ImGui::IsPopupOpen("Ghostship")) {
             ImGui::OpenPopup("Ghostship");
         }
 
-        if(totalScripts > 0) {
+        if (totalScripts > 0) {
             ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
             ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 8.0f));
             auto color = UIWidgets::ColorValues.at(THEME_COLOR);
@@ -816,8 +801,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                            ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
                                            ImGuiWindowFlags_NoSavedSettings)) {
                 float progress = (totalScripts > 0.0f ? (float)compileCount / (float)totalScripts : 0) * 100.0f;
-                ImGui::Text("Loading %s...%s", file.c_str(),
-                            roundf(progress) == 100.0f ? " Done. Finishing up." : "");
+                ImGui::Text("Loading %s...%s", file.c_str(), roundf(progress) == 100.0f ? " Done. Finishing up." : "");
                 std::string overlay = compileCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
                 ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
                 ImGui::EndPopup();
@@ -896,7 +880,8 @@ void GameEngine::ScaleImGui() {
 
 void GameEngine::LoadScripts() {
     auto scripting = Ship::Context::GetInstance()->GetScriptSystem();
-    Notification::Emit({ .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
+    Notification::Emit(
+        { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
     static std::shared_ptr<BS::thread_pool> mThreadPool = std::make_shared<BS::thread_pool>(1);
     mThreadPool->submit_task([&]() -> void {
         auto currentScriptName = std::make_shared<std::string>("");
@@ -906,18 +891,21 @@ void GameEngine::LoadScripts() {
         notification->remainingTime = 7.0f;
         try {
             scripting->CompileAll([&](const std::shared_ptr<Ship::Archive>& archive) {
-                if (!archive) return;
+                if (!archive)
+                    return;
 
                 auto& info = archive->GetManifest();
                 *currentScriptName = info.Name;
                 int scriptNum = ++(*currentScript);
 
-                notification->message = fmt::format("Loading {} ({}/{})", *currentScriptName, scriptNum, this->totalScripts);
+                notification->message =
+                    fmt::format("Loading {} ({}/{})", *currentScriptName, scriptNum, this->totalScripts);
 
                 Notification::Emit(*notification);
             });
         } catch (std::exception& e) {
-            notification->message = fmt::format("Failed to build {} ({}/{})", *currentScriptName, (*currentScript + 1), this->totalScripts);
+            notification->message =
+                fmt::format("Failed to build {} ({}/{})", *currentScriptName, (*currentScript + 1), this->totalScripts);
             SPDLOG_ERROR("Failed to build script {}: {}", *currentScriptName, e.what());
             Notification::Emit(*notification);
         }
@@ -928,8 +916,9 @@ void GameEngine::LoadScripts() {
         } catch (std::exception& e) {
             SPDLOG_ERROR("Failed to load scripts: {}", e.what());
             Notification::Emit({ .message = "Failed to load some mods, check logs for details.",
-                                .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
-                                .remainingTime = 5.0f, .mute = true });
+                                 .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                                 .remainingTime = 5.0f,
+                                 .mute = true });
         }
     });
 }
