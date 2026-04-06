@@ -67,8 +67,26 @@ extern "C" void C_AddWidget(const char* sidebar, int column, const char* label, 
     // 4. Unpack the Options Variant based on the type
     switch (config->type) {
         // --- COMBOBOXES ---
-        case C_WIDGET_COMBOBOX:
         case C_WIDGET_CVAR_COMBOBOX:
+        case C_WIDGET_COMBOBOX: {
+            auto opt = UIWidgets::ComboboxOptions()
+                           .Tooltip(config->opts.combo.tooltip ? config->opts.combo.tooltip : "")
+                           .DefaultIndex(config->opts.combo.default_index)
+                           .ComponentAlignment(MapAlign(config->opts.combo.alignment))
+                           .LabelPosition(MapLabel(config->opts.combo.label_pos));
+            if (config->opts.combo.map) {
+                // Assuming the map is an array of C_ComboboxOption with a known size (e.g., 10)
+                std::unordered_map<int32_t, const char*> comboMap;
+                C_ComboboxOption* iter = config->opts.combo.map;
+                while (iter->value) { // Assuming null-terminated array
+                    comboMap[iter->id] = iter->value;
+                    iter++;
+                }
+                opt.ComboMap(comboMap);
+            }
+            widget.Options(opt);
+            break;
+        }
         case C_WIDGET_AUDIO_BACKEND:
         case C_WIDGET_VIDEO_BACKEND: {
             auto opt = UIWidgets::ComboboxOptions()

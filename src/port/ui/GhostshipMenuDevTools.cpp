@@ -108,15 +108,6 @@ void GhostshipMenu::AddMenuDevTools() {
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Save Editor Window."));
 
-    path.sidebarName = "Script Manager";
-    AddSidebarEntry("Dev Tools", path.sidebarName, 2);
-    AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
-        .Options(ButtonOptions().Tooltip("Reloads all scripts from disk.").Color(Colors::Orange))
-        .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetScriptSystem()->UnloadAll();
-            GameEngine::LoadScripts();
-        });
-
     // Console
     path.sidebarName = "Console";
     AddSidebarEntry("Dev Tools", path.sidebarName, 1);
@@ -149,7 +140,12 @@ void GhostshipMenu::AddModMenu() {
     WidgetPath path = { "Mods", "General", SECTION_COLUMN_1 };
 
     AddSidebarEntry(path.sectionName, path.sidebarName, 1);
-    AddWidget(path, "Mod Settings", WIDGET_TEXT);
+    AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
+        .Options(ButtonOptions().Tooltip("Reloads all scripts from disk.").Color(Colors::Orange))
+        .Callback([](WidgetInfo& info) {
+            Ship::Context::GetInstance()->GetScriptSystem()->UnloadAll();
+            GameEngine::Instance->LoadScripts();
+        });
 };
 
 } // namespace GhostshipGui

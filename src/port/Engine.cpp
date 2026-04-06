@@ -175,6 +175,7 @@ typedef enum ExtractSteps {
     ES_EXTRACT_ARGS,
     ES_EXTRACT,
     ES_VERIFY,
+    GS_COMPILE
 } ExtractSteps;
 
 typedef enum PromptSteps {
@@ -225,7 +226,20 @@ void CheckAndCreateModFolder() {
     }
 }
 
-void GameEngine::FinishInit() {
+void GameEngine::LoadResourceFiles() {
+    std::unordered_map<std::string, std::string> defines = {
+        { "VERSION_US", "1" },
+        { "ENABLE_RUMBLE", "1" },
+        { "F3D_OLD", "1" },
+        { "F3D_GBI", "1" },
+        { "GBI_FLOATS", "1" },
+        { "_LANGUAGE_C", "1" },
+        { "_USE_MATH_DEFINES", "1" },
+        { "AVOID_UB", "1" }
+    };
+
+    context->InitScriptSystem(defines, 1);
+
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
         context->GetResourceManager()->GetArchiveManager()->AddArchive(romPath);
@@ -263,6 +277,20 @@ void GameEngine::FinishInit() {
         }
     }
 
+    auto archive = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager();
+    auto list = archive->GetArchives();
+
+    for (const auto& entry : *list) {
+        const auto& info = entry->GetManifest();
+        if (info.Main.empty()) {
+            continue;
+        }
+
+        this->totalScripts++;
+    }
+}
+
+void GameEngine::FinishInit() {
 #if (_DEBUG)
     auto defaultLogLevel = spdlog::level::debug;
 #else
@@ -369,7 +397,7 @@ void GameEngine::FinishInit() {
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
-    LoadScripts();
+    context->GetScriptSystem()->LoadAll();
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
@@ -399,7 +427,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;
     std::atomic<size_t> extractCount{ 0 }, totalExtract{ 0 };
-
+    std::atomic<size_t> compileCount{ 0 };
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
 
@@ -436,7 +464,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
     while (!extractDone) {
-        if (GhostshipGui::PopupsQueued() > 0 || extracting) {
+        if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0) {
             goto render;
         }
         switch (extractStep) {
@@ -701,7 +729,24 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                                     exit(0);
                                                 });
                 }
-                extractDone = true;
+
+                extractStep = GS_COMPILE;
+                continue;
+            }
+            case GS_COMPILE: {
+                LoadResourceFiles();
+                threadPool->submit_task([&]() -> void {
+                    auto scripting = Ship::Context::GetInstance()->GetScriptSystem();
+                    auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
+                        auto& info = archive->GetManifest();
+                        file = info.Name;
+                    };
+                    auto post = [&]() {
+                        compileCount++;
+                    };
+                    scripting->CompileAll(pre, post);
+                    extractDone = true;
+                });
                 continue;
             }
             default:
@@ -748,6 +793,32 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 ImGui::Text("Extracting %s...%s", filename.c_str(),
                             roundf(progress) == 100.0f ? " Done. Finishing up." : "");
                 std::string overlay = extractCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
+                ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
+                ImGui::EndPopup();
+            }
+            ImGui::PopStyleColor(3);
+            ImGui::PopStyleVar(2);
+        }
+
+        if(totalScripts > 0 && !ImGui::IsPopupOpen("Ghostship")) {
+            ImGui::OpenPopup("Ghostship");
+        }
+
+        if(totalScripts > 0) {
+            ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 8.0f));
+            auto color = UIWidgets::ColorValues.at(THEME_COLOR);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(color.x, color.y, color.z, 0.6f));
+            ImGui::PushStyleColor(ImGuiCol_PlotHistogram, ImVec4(color.x, color.y, color.z, 1.0f));
+            ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
+            if (ImGui::BeginPopupModal("Ghostship", NULL,
+                                       ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
+                                           ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
+                                           ImGuiWindowFlags_NoSavedSettings)) {
+                float progress = (totalScripts > 0.0f ? (float)compileCount / (float)totalScripts : 0) * 100.0f;
+                ImGui::Text("Loading %s...%s", file.c_str(),
+                            roundf(progress) == 100.0f ? " Done. Finishing up." : "");
+                std::string overlay = compileCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
                 ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
                 ImGui::EndPopup();
             }
@@ -825,16 +896,42 @@ void GameEngine::ScaleImGui() {
 
 void GameEngine::LoadScripts() {
     auto scripting = Ship::Context::GetInstance()->GetScriptSystem();
+    Notification::Emit({ .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
+    static std::shared_ptr<BS::thread_pool> mThreadPool = std::make_shared<BS::thread_pool>(1);
+    mThreadPool->submit_task([&]() -> void {
+        auto currentScriptName = std::make_shared<std::string>("");
+        auto currentScript = std::make_shared<std::atomic<int>>(0);
+        auto notification = std::make_shared<Notification::Options>();
+        notification->mute = true;
+        notification->remainingTime = 7.0f;
+        try {
+            scripting->CompileAll([&](const std::shared_ptr<Ship::Archive>& archive) {
+                if (!archive) return;
 
-    try {
-        scripting->LoadAll();
-        Notification::Emit({ .message = "Loaded all scripts", .remainingTime = 7.0f });
-    } catch (std::exception& e) {
-        SPDLOG_ERROR("Failed to load scripts: {}", e.what());
-        Notification::Emit({ .message = "Failed to load scripts, check log for details",
+                auto& info = archive->GetManifest();
+                *currentScriptName = info.Name;
+                int scriptNum = ++(*currentScript);
+
+                notification->message = fmt::format("Loading {} ({}/{})", *currentScriptName, scriptNum, this->totalScripts);
+
+                Notification::Emit(*notification);
+            });
+        } catch (std::exception& e) {
+            notification->message = fmt::format("Failed to build {} ({}/{})", *currentScriptName, (*currentScript + 1), this->totalScripts);
+            SPDLOG_ERROR("Failed to build script {}: {}", *currentScriptName, e.what());
+            Notification::Emit(*notification);
+        }
+
+        try {
+            context->GetScriptSystem()->LoadAll();
+            Notification::Emit({ .message = "Finished loading mods!", .remainingTime = 5.0f, .mute = true });
+        } catch (std::exception& e) {
+            SPDLOG_ERROR("Failed to load scripts: {}", e.what());
+            Notification::Emit({ .message = "Failed to load some mods, check logs for details.",
                                 .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
-                                .remainingTime = 7.0f });
-    }
+                                .remainingTime = 5.0f, .mute = true });
+        }
+    });
 }
 
 void GameEngine::Create(int argc, char* argv[]) {

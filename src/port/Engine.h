@@ -36,6 +36,8 @@ class GameEngine {
   public:
     static GameEngine* Instance;
 
+    int totalScripts = 0;
+
     ImFont *fontStandard;
     ImFont *fontStandardLarger;
     ImFont *fontStandardLargest;
@@ -56,9 +58,10 @@ class GameEngine {
     std::unordered_map<std::string, std::vector<uint8_t>>* dictionary;
 
     GameEngine();
-    static void LoadScripts();
     static void Create(int argc, char* argv[]);
     static bool GenAssetFile(bool exitOnFail = true);
+    void LoadScripts();
+    void LoadResourceFiles();
     void RunExtract(int argc, char* argv[]);
     void AudioInit();
     void FinishInit();

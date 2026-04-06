@@ -39,12 +39,19 @@ typedef enum { C_LABEL_NEAR, C_LABEL_FAR } C_LabelPos;
 // ---------------------------------------------------------
 // 2. Specific Options Structs
 // ---------------------------------------------------------
+
+typedef struct {
+    int id; // ID to identify which combo map to use in C++
+    const char* value;
+} C_ComboboxOption;
+
 typedef struct {
     const char* tooltip;
     int default_index;
     int combo_map_id; // Pass an ID so C++ knows which std::map to inject
     C_ComponentAlign alignment;
     C_LabelPos label_pos;
+    C_ComboboxOption* map;
 } C_ComboboxOpts;
 
 typedef struct {

@@ -8,3 +8,7 @@
 
 #define MOD_INIT HM_API void ModInit
 #define MOD_EXIT HM_API void ModExit
+
+extern void* ScriptGetFunction(const char* module, const char* function);
+
+#define CALL_FUNC(mod, func, ...) ((func##Func)ScriptGetFunction(mod, func##Symbol))(__VA_ARGS__)
