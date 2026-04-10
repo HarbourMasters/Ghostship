@@ -12,44 +12,44 @@
 
 #define IS_SEQUENCE_CHANNEL_VALID(ptr) ((uintptr_t)(ptr) != (uintptr_t)&gSequenceChannelNone)
 
-extern struct Note *gNotes;
+extern_s struct Note *gNotes;
 
 // Music in SM64 is played using 3 players:
 // gSequencePlayers[0] is level background music
 // gSequencePlayers[1] is misc music, like the puzzle jingle
 // gSequencePlayers[2] is sound
-extern struct SequencePlayer gSequencePlayers[SEQUENCE_PLAYERS];
+extern_s struct SequencePlayer gSequencePlayers[SEQUENCE_PLAYERS];
 
-extern struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS];
-extern struct SequenceChannelLayer gSequenceLayers[SEQUENCE_LAYERS];
+extern_s struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS];
+extern_s struct SequenceChannelLayer gSequenceLayers[SEQUENCE_LAYERS];
 
-extern struct SequenceChannel gSequenceChannelNone;
+extern_s struct SequenceChannel gSequenceChannelNone;
 
-extern struct AudioListItem gLayerFreeList;
-extern struct NotePool gNoteFreeLists;
+extern_s struct AudioListItem gLayerFreeList;
+extern_s struct NotePool gNoteFreeLists;
 
-extern OSMesgQueue gCurrAudioFrameDmaQueue;
-extern u32 gSampleDmaNumListItems;
-extern s32 gAiFrequency;
+extern_s OSMesgQueue gCurrAudioFrameDmaQueue;
+extern_s u32 gSampleDmaNumListItems;
+extern_s s32 gAiFrequency;
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern struct AudioBufferParametersEU gAudioBufferParameters;
+extern_s struct AudioBufferParametersEU gAudioBufferParameters;
 #endif
 #ifdef VERSION_SH
-extern s16 gCurrAiBufferLength;
-extern s32 D_SH_8034F68C;
+extern_s s16 gCurrAiBufferLength;
+extern_s s32 D_SH_8034F68C;
 #endif
-extern s32 gMaxAudioCmds;
+extern_s s32 gMaxAudioCmds;
 
-extern s32 gMaxSimultaneousNotes;
-extern s32 gSamplesPerFrameTarget;
-extern s32 gMinAiBufferLength;
-extern s16 gTempoInternalToExternal;
-extern s8 gAudioUpdatesPerFrame; // = 4
-extern s8 gSoundMode;
+extern_s s32 gMaxSimultaneousNotes;
+extern_s s32 gSamplesPerFrameTarget;
+extern_s s32 gMinAiBufferLength;
+extern_s s16 gTempoInternalToExternal;
+extern_s s8 gAudioUpdatesPerFrame; // = 4
+extern_s s8 gSoundMode;
 
 #ifdef VERSION_SH
-extern OSMesgQueue gUnkQueue1;
+extern_s OSMesgQueue gUnkQueue1;
 
 struct UnkStructSH8034EC88 {
     u8 *endAndMediumIdentification;
@@ -68,7 +68,7 @@ struct PatchStruct {
     s32 medium2;
 };
 
-extern struct UnkStructSH8034EC88 D_SH_8034EC88[0x80];
+extern_s struct UnkStructSH8034EC88 D_SH_8034EC88[0x80];
 #endif
 
 void audio_dma_partial_copy_async(uintptr_t *devAddr, u8 **vAddr, ssize_t *remaining, OSMesgQueue *queue, OSIoMesg *mesg);

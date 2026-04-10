@@ -2,7 +2,7 @@
 
 #include "pss/geo.h"
 
-extern const LevelScript level_pss_entry[];
+extern_s const LevelScript level_pss_entry[];
 
 static const ALIGN_ASSET(2) char pss_seg7_texture_07000000[] = "__OTR__levels/pss/0";
 

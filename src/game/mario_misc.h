@@ -6,8 +6,8 @@
 #include "macros.h"
 #include "types.h"
 
-extern struct GraphNodeObject gMirrorMario;
-extern struct MarioBodyState gBodyStates[2];
+extern_s struct GraphNodeObject gMirrorMario;
+extern_s struct MarioBodyState gBodyStates[2];
 
 Gfx *geo_draw_mario_head_goddard(s32 callContext, struct GraphNode *node, Mat4 *c);
 void bhv_toad_message_loop(void);

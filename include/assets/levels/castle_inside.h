@@ -2,7 +2,7 @@
 
 #include "castle_inside/geo.h"
 
-extern const LevelScript level_castle_inside_entry[];
+extern_s const LevelScript level_castle_inside_entry[];
 
 static const ALIGN_ASSET(2) char texture_castle_light[] = "__OTR__levels/castle_inside/castle_light";
 

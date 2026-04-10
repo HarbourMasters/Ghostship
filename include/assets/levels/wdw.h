@@ -2,7 +2,7 @@
 
 #include "wdw/geo.h"
 
-extern const LevelScript level_wdw_entry[];
+extern_s const LevelScript level_wdw_entry[];
 
 static const ALIGN_ASSET(2) char wdw_seg7_texture_07000000[] = "__OTR__levels/wdw/0";
 

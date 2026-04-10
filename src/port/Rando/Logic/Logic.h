@@ -1,6 +1,7 @@
 #ifndef RANDO_LOGIC_H
 #define RANDO_LOGIC_H
 
+#include "game/level_update.h"
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
 #include "include/types.h"
@@ -15,9 +16,9 @@ struct LevelShuffleEntry {
 
 extern void RefreshChecksInLogic();
 
-extern "C" {
-extern MarioState* gMarioState;
-}
+// extern "C" {
+// EXPORT_API extern MarioState* gMarioState;
+// }
 
 namespace Rando {
 

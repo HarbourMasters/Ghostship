@@ -22,50 +22,50 @@ struct StructSH8031D9B0 {
     s16 unk0E;
 };
 
-extern OSThread D_80339210;
-extern OSThread gIdleThread;
-extern OSThread gMainThread;
-extern OSThread gGameLoopThread;
-extern OSThread gSoundThread;
+extern_s OSThread D_80339210;
+extern_s OSThread gIdleThread;
+extern_s OSThread gMainThread;
+extern_s OSThread gGameLoopThread;
+extern_s OSThread gSoundThread;
 #if ENABLE_RUMBLE
-extern OSThread gRumblePakThread;
+extern_s OSThread gRumblePakThread;
 
-extern OSPfs gRumblePakPfs; // Actually an OSPfs but we don't have that header yet
+extern_s OSPfs gRumblePakPfs; // Actually an OSPfs but we don't have that header yet
 #endif
 
-extern OSMesgQueue gPIMesgQueue;
-extern OSMesgQueue gIntrMesgQueue;
-extern OSMesgQueue gSPTaskMesgQueue;
+extern_s OSMesgQueue gPIMesgQueue;
+extern_s OSMesgQueue gIntrMesgQueue;
+extern_s OSMesgQueue gSPTaskMesgQueue;
 #if ENABLE_RUMBLE
-extern OSMesgQueue gRumblePakSchedulerMesgQueue;
-extern OSMesgQueue gRumbleThreadVIMesgQueue;
+extern_s OSMesgQueue gRumblePakSchedulerMesgQueue;
+extern_s OSMesgQueue gRumbleThreadVIMesgQueue;
 #endif
-extern OSMesg gDmaMesgBuf[1];
-extern OSMesg gPIMesgBuf[32];
-extern OSMesg gSIEventMesgBuf[1];
-extern OSMesg gIntrMesgBuf[16];
-extern OSMesg gUnknownMesgBuf[16];
-extern OSIoMesg gDmaIoMesg;
-extern OSMesg gMainReceivedMesg;
-extern OSMesgQueue gDmaMesgQueue;
-extern OSMesgQueue gSIEventMesgQueue;
+extern_s OSMesg gDmaMesgBuf[1];
+extern_s OSMesg gPIMesgBuf[32];
+extern_s OSMesg gSIEventMesgBuf[1];
+extern_s OSMesg gIntrMesgBuf[16];
+extern_s OSMesg gUnknownMesgBuf[16];
+extern_s OSIoMesg gDmaIoMesg;
+extern_s OSMesg gMainReceivedMesg;
+extern_s OSMesgQueue gDmaMesgQueue;
+extern_s OSMesgQueue gSIEventMesgQueue;
 #if ENABLE_RUMBLE
-extern OSMesg gRumblePakSchedulerMesgBuf[1];
-extern OSMesg gRumbleThreadVIMesgBuf[1];
+extern_s OSMesg gRumblePakSchedulerMesgBuf[1];
+extern_s OSMesg gRumbleThreadVIMesgBuf[1];
 
-extern struct RumbleData gRumbleDataQueue[3];
-extern struct StructSH8031D9B0 gCurrRumbleSettings;
+extern_s struct RumbleData gRumbleDataQueue[3];
+extern_s struct StructSH8031D9B0 gCurrRumbleSettings;
 #endif
 
-extern struct VblankHandler *gVblankHandler1;
-extern struct VblankHandler *gVblankHandler2;
-extern struct SPTask *gActiveSPTask;
-extern u32 gNumVblanks;
-extern s8 gResetTimer;
-extern s8 gNmiResetBarsTimer;
-extern s8 D_8032C650;
-extern s8 gShowProfiler;
-extern s8 gShowDebugText;
+extern_s struct VblankHandler *gVblankHandler1;
+extern_s struct VblankHandler *gVblankHandler2;
+extern_s struct SPTask *gActiveSPTask;
+extern_s u32 gNumVblanks;
+extern_s s8 gResetTimer;
+extern_s s8 gNmiResetBarsTimer;
+extern_s s8 D_8032C650;
+extern_s s8 gShowProfiler;
+extern_s s8 gShowDebugText;
 
 #define gDebugLevelSelect (CVarGetInteger("gDeveloperTools.DebugMode", 0) == 1)
 

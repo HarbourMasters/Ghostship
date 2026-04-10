@@ -39,20 +39,12 @@ typedef struct {
         _g->words.w0 = _SHIFTL(G_LOAD_UCODE, 24, 8) | _SHIFTL(uc_index, 0, 16); \
     })
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void GfxPrint_SetColor(GfxPrint* self, u32 r, u32 g, u32 b, u32 a);
-void GfxPrint_SetPosPx(GfxPrint* self, s32 x, s32 y);
-void GfxPrint_SetPos(GfxPrint* self, s32 x, s32 y);
-void GfxPrint_SetBasePosPx(GfxPrint* self, s32 x, s32 y);
-void GfxPrint_Init(GfxPrint* self);
-void GfxPrint_Destroy(GfxPrint* self);
-void GfxPrint_Open(GfxPrint* self, Gfx* dList);
-Gfx* GfxPrint_Close(GfxPrint* self);
-s32 GfxPrint_Printf(GfxPrint* self, const char* fmt, ...);
-
-#ifdef __cplusplus
-}
-#endif
+extern_s void GfxPrint_SetColor(GfxPrint* self, u32 r, u32 g, u32 b, u32 a);
+extern_s void GfxPrint_SetPosPx(GfxPrint* self, s32 x, s32 y);
+extern_s void GfxPrint_SetPos(GfxPrint* self, s32 x, s32 y);
+extern_s void GfxPrint_SetBasePosPx(GfxPrint* self, s32 x, s32 y);
+extern_s void GfxPrint_Init(GfxPrint* self);
+extern_s void GfxPrint_Destroy(GfxPrint* self);
+extern_s void GfxPrint_Open(GfxPrint* self, Gfx* dList);
+extern_s Gfx* GfxPrint_Close(GfxPrint* self);
+extern_s s32 GfxPrint_Printf(GfxPrint* self, const char* fmt, ...);

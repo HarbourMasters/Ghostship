@@ -2,9 +2,9 @@
 
 #include "menu/geo.h"
 
-extern const LevelScript level_menu_entry[];
-extern const LevelScript level_main_menu_entry_1[];
-extern const LevelScript level_main_menu_entry_2[];
+extern_s const LevelScript level_menu_entry[];
+extern_s const LevelScript level_main_menu_entry_1[];
+extern_s const LevelScript level_main_menu_entry_2[];
 
 static const ALIGN_ASSET(2) char menu_seg7_lights_0[] = "__OTR__levels/menu/menu_seg7_lights_0";
 

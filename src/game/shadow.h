@@ -26,22 +26,22 @@ enum ShadowType {
 /**
  * Flag for if Mario is on a flying carpet.
  */
-extern s8 sMarioOnFlyingCarpet;
+extern_s s8 sMarioOnFlyingCarpet;
 
 /**
  * The surface type below the current shadow.
  */
-extern s16 sSurfaceTypeBelowShadow;
+extern_s s16 sSurfaceTypeBelowShadow;
 
 /**
  * Flag for if the current shadow is above water or lava.
  */
-extern s8 gShadowAboveWaterOrLava;
+extern_s s8 gShadowAboveWaterOrLava;
 
 /**
  * Flag for if Mario is on ice or a flying carpet.
  */
-extern s8 gMarioOnIceOrCarpet;
+extern_s s8 gMarioOnIceOrCarpet;
 
 /**
  * Given the (x, y, z) location of an object, create a shadow below that object

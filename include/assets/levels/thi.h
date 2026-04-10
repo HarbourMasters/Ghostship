@@ -2,7 +2,7 @@
 
 #include "thi/geo.h"
 
-extern const LevelScript level_thi_entry[];
+extern_s const LevelScript level_thi_entry[];
 
 static const ALIGN_ASSET(2) char thi_seg7_texture_07000000[] = "__OTR__levels/thi/0";
 

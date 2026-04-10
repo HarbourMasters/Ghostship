@@ -2,7 +2,7 @@
 
 #include "castle_courtyard/geo.h"
 
-extern const LevelScript level_castle_courtyard_entry[];
+extern_s const LevelScript level_castle_courtyard_entry[];
 
 static const ALIGN_ASSET(2) char castle_courtyard_seg7_vertex_07000000[] = "__OTR__levels/castle_courtyard/castle_courtyard_seg7_vertex_07000000";
 

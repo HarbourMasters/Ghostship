@@ -129,7 +129,7 @@ struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 uint8_t* GameEngine_LoadTranslation(const char* key);
 bool GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
-void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, char));
+void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, uint8_t));
 void* GameEngine_GetExactDataByName(const char* path);
 void* GameEngine_Malloc(size_t size);
 void GameEngine_Free(void* ptr);

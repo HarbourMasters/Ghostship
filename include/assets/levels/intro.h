@@ -2,15 +2,15 @@
 
 #include "intro/geo.h"
 
-extern const LevelScript script_intro_L1[];
-extern const LevelScript script_intro_L2[];
-extern const LevelScript script_intro_L3[];
-extern const LevelScript script_intro_L4[];
-extern const LevelScript script_intro_L5[];
-extern const LevelScript level_intro_entry_4[];
-extern const LevelScript level_intro_splash_screen[];
-extern const LevelScript level_intro_mario_head_regular[];
-extern const LevelScript level_intro_mario_head_dizzy[];
+extern_s const LevelScript script_intro_L1[];
+extern_s const LevelScript script_intro_L2[];
+extern_s const LevelScript script_intro_L3[];
+extern_s const LevelScript script_intro_L4[];
+extern_s const LevelScript script_intro_L5[];
+extern_s const LevelScript level_intro_entry_4[];
+extern_s const LevelScript level_intro_splash_screen[];
+extern_s const LevelScript level_intro_mario_head_regular[];
+extern_s const LevelScript level_intro_mario_head_dizzy[];
 
 static const ALIGN_ASSET(2) char intro_seg7_vtx_0[] = "__OTR__levels/intro/intro_seg7_vtx_0";
 

@@ -124,15 +124,15 @@ struct PaintingMeshVertex {
     /*0x06*/ s8 norm[3];
 };
 
-extern s16 gPaintingMarioFloorType;
-extern f32 gPaintingMarioXPos;
-extern f32 gPaintingMarioYPos;
-extern f32 gPaintingMarioZPos;
+extern_s s16 gPaintingMarioFloorType;
+extern_s f32 gPaintingMarioXPos;
+extern_s f32 gPaintingMarioYPos;
+extern_s f32 gPaintingMarioZPos;
 
-extern struct PaintingMeshVertex *gPaintingMesh;
-extern Vec3f *gPaintingTriNorms;
-extern struct Painting *gRipplingPainting;
-extern s8 gDddPaintingStatus;
+extern_s struct PaintingMeshVertex *gPaintingMesh;
+extern_s Vec3f *gPaintingTriNorms;
+extern_s struct Painting *gRipplingPainting;
+extern_s s8 gDddPaintingStatus;
 
 Gfx *geo_painting_draw(s32 callContext, struct GraphNode *node, UNUSED void *context);
 Gfx *geo_painting_update(s32 callContext, UNUSED struct GraphNode *node, UNUSED Mat4 c);

@@ -2,7 +2,7 @@
 
 #include "bowser_1/geo.h"
 
-extern const LevelScript level_bowser_1_entry[];
+extern_s const LevelScript level_bowser_1_entry[];
 
 static const ALIGN_ASSET(2) char bowser_1_seg7_texture_07000000[] = "__OTR__levels/bowser_1/0";
 

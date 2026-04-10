@@ -5,7 +5,7 @@
 
 #include "types.h"
 
-extern u64 osClockRate;
+extern_s u64 osClockRate;
 
 struct ProfilerFrameData {
     /* 0x00 */ s16 numSoundTimes;

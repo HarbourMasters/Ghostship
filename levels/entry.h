@@ -4,6 +4,6 @@
 #include "types.h"
 
 // script
-extern const LevelScript level_script_entry[];
+extern_s const LevelScript level_script_entry[];
 
 #endif

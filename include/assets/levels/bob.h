@@ -2,7 +2,7 @@
 
 #include "bob/geo.h"
 
-extern const LevelScript level_bob_entry[];
+extern_s const LevelScript level_bob_entry[];
 
 static const ALIGN_ASSET(2) char bob_seg7_texture_07000000[] = "__OTR__levels/bob/0";
 

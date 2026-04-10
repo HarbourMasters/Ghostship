@@ -1,10 +1,7 @@
 #pragma once
 #include <stdbool.h>
 #include <stdint.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "macros.h"
 
 // ---------------------------------------------------------
 // 1. Enums mirroring the C++ Engine (libultraship)
@@ -119,11 +116,8 @@ typedef struct {
 // 4. The Wrapper Function
 // ---------------------------------------------------------
 // void C_AddMenuEntry(const char* label, const char* cvar);
-void C_AddSidebarEntry(const char* label, int column);
-void C_AddWidget(const char* sidebar, int column, const char* label, C_WidgetConfig* config);
+extern_s void C_AddSidebarEntry(const char* label, int column);
+extern_s void C_AddWidget(const char* sidebar, int column, const char* label, C_WidgetConfig* config);
 
 // void C_RemoveMenuEntry(const char* entryName);
-void C_RemoveSidebarEntry(const char* sidebarName);
-#ifdef __cplusplus
-}
-#endif
+extern_s void C_RemoveSidebarEntry(const char* sidebarName);

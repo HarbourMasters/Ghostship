@@ -139,6 +139,15 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
     // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
+    #if (_DEBUG)
+    auto defaultLogLevel = spdlog::level::debug;
+#else
+    auto defaultLogLevel = spdlog::level::info;
+#endif
+    auto logLevel =
+        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
+    this->context->InitLogging(logLevel, logLevel);
+
     assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
     portArchiveVersionMatch = std::filesystem::exists(assets_path);
 
@@ -227,12 +236,31 @@ void CheckAndCreateModFolder() {
 }
 
 void GameEngine::LoadResourceFiles() {
+    constexpr int codeVersion = 1;
     std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
                                                              { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
                                                              { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
                                                              { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
+    std::vector<std::string> includePaths = {
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include"),
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/tcc"),
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/winapi"),
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/sys"),
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/sec_api"),
+    };
 
-    context->InitScriptSystem(defines, 1);
+    std::vector<std::string> libraryPaths = {
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/lib"),
+    };
+
+    std::vector<std::string> libraries = {
+        "Ghostship.def",
+    };
+
+    context->InitScriptSystem(defines, codeVersion, "-g -Wl", includePaths, libraryPaths, libraries);
+    // auto script = context->GetScriptSystem();
+    // script->SetGameLibrary("F:\\HM64\\Ghostship\\build\\Debug\\Ghostship.sdk");
+    // system("setup_x64.bat");
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
@@ -285,14 +313,6 @@ void GameEngine::LoadResourceFiles() {
 }
 
 void GameEngine::FinishInit() {
-#if (_DEBUG)
-    auto defaultLogLevel = spdlog::level::debug;
-#else
-    auto defaultLogLevel = spdlog::level::info;
-#endif
-    auto logLevel =
-        static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
-    context->InitLogging(logLevel, logLevel);
     Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
     SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
                 (char*)gGitCommitHash);
@@ -1462,7 +1482,7 @@ std::wstring StringToU16(const std::string& s) {
     return utf16;
 }
 
-extern "C" void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, char)) {
+extern "C" void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, uint8_t)) {
     const std::vector<uint32_t> hira1 = {
         u'を', u'ぁ', u'ぃ', u'ぅ', u'ぇ', u'ぉ', u'ゃ', u'ゅ', u'ょ', u'っ', u'-',  u'あ', u'い',
         u'う', u'え', u'お', u'か', u'き', u'く', u'け', u'こ', u'さ', u'し', u'す', u'せ', u'そ',
