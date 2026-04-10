@@ -139,7 +139,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
     // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-    #if (_DEBUG)
+#if (_DEBUG)
     auto defaultLogLevel = spdlog::level::debug;
 #else
     auto defaultLogLevel = spdlog::level::info;

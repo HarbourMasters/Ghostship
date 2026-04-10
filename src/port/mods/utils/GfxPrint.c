@@ -290,12 +290,12 @@ void GfxPrint_PrintStringWithSize(GfxPrint* this, const void* buffer, u32 charSi
     u32 count = charSize * charCount;
 
     // SOH [Port] Process the string with our wrapper that converts Japanese UTF8 characters for the print system
-    GameEngine_GfxPrint(str, this, (void (*)(void*, uint8_t)) GfxPrint_PrintCharImpl);
+    GameEngine_GfxPrint(str, this, (void (*)(void*, uint8_t))GfxPrint_PrintCharImpl);
 }
 
 void GfxPrint_PrintString(GfxPrint* this, const char* str) {
     // SOH [Port] Process the string with our wrapper that converts Japanese UTF8 characters for the print system
-    GameEngine_GfxPrint(str, this, (void (*)(void*, uint8_t)) GfxPrint_PrintCharImpl);
+    GameEngine_GfxPrint(str, this, (void (*)(void*, uint8_t))GfxPrint_PrintCharImpl);
 }
 
 void* GfxPrint_Callback(void* arg, const char* str, u32 size) {
