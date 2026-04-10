@@ -13,10 +13,14 @@
 #define GLUE(a, b) a ## b
 #define GLUE2(a, b) GLUE(a, b)
 
+#ifdef _WIN32
 #ifndef __DLL__
 #define extern_s API_EXTERN __declspec(dllexport)
 #else
 #define extern_s API_EXTERN __declspec(dllimport)
+#endif
+#else
+#define extern_s API_EXTERN
 #endif
 
 // Avoid compiler warnings for unused variables
