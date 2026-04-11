@@ -172,30 +172,26 @@ GameEngine::GameEngine() : dictionary(nullptr) {
                 { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 0, "No" },
             };
 
-            const SDL_MessageBoxColorScheme colorScheme = {
-                {
-                    /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
-                    { 35, 35, 35 },     // Dark Grey
-                    /* [SDL_MESSAGEBOX_COLOR_TEXT] */
-                    { 240, 240, 240 },  // Off-White
-                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
-                    { 255, 100, 100 },  // Warning Red/Orange
-                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
-                    { 60, 60, 60 },     // Lighter Grey
-                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
-                    { 200, 60, 60 }     // Dark Red/Orange when hovered/selected
-                }
-            };
+            const SDL_MessageBoxColorScheme colorScheme = { {
+                /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+                { 35, 35, 35 }, // Dark Grey
+                /* [SDL_MESSAGEBOX_COLOR_TEXT] */
+                { 240, 240, 240 }, // Off-White
+                /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+                { 255, 100, 100 }, // Warning Red/Orange
+                /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+                { 60, 60, 60 }, // Lighter Grey
+                /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+                { 200, 60, 60 } // Dark Red/Orange when hovered/selected
+            } };
 
-            const SDL_MessageBoxData messageboxdata = {
-                SDL_MESSAGEBOX_WARNING,
-                nullptr,
-                "Security Warning: Untrusted Author",
-                message.c_str(),
-                SDL_arraysize(buttons),
-                buttons,
-                &colorScheme
-            };
+            const SDL_MessageBoxData messageboxdata = { SDL_MESSAGEBOX_WARNING,
+                                                        nullptr,
+                                                        "Security Warning: Untrusted Author",
+                                                        message.c_str(),
+                                                        SDL_arraysize(buttons),
+                                                        buttons,
+                                                        &colorScheme };
 
             int buttonid;
             if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
@@ -203,8 +199,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
             }
 
             return buttonid == 1;
-        }
-    );
+        });
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     this->context->InitWindow(gsFast3dWindow);
@@ -955,45 +950,42 @@ void GameEngine::LoadScripts() {
     auto scripting = Ship::Context::GetInstance()->GetScriptSystem();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
-    static std::shared_ptr<BS::thread_pool> mThreadPool = std::make_shared<BS::thread_pool>(1);
-    mThreadPool->submit_task([&]() -> void {
-        auto currentScriptName = std::make_shared<std::string>("");
-        auto currentScript = std::make_shared<std::atomic<int>>(0);
-        auto notification = std::make_shared<Notification::Options>();
-        notification->mute = true;
-        notification->remainingTime = 7.0f;
-        try {
-            scripting->CompileAll([&](const std::shared_ptr<Ship::Archive>& archive) {
-                if (!archive)
-                    return;
+    auto currentScriptName = std::make_shared<std::string>("");
+    auto currentScript = std::make_shared<std::atomic<int>>(0);
+    auto notification = std::make_shared<Notification::Options>();
+    notification->mute = true;
+    notification->remainingTime = 7.0f;
+    try {
+        scripting->CompileAll([&](const std::shared_ptr<Ship::Archive>& archive) {
+            if (!archive)
+                return;
 
-                auto& info = archive->GetManifest();
-                *currentScriptName = info.Name;
-                int scriptNum = ++(*currentScript);
+            auto& info = archive->GetManifest();
+            *currentScriptName = info.Name;
+            int scriptNum = ++(*currentScript);
 
-                notification->message =
-                    fmt::format("Loading {} ({}/{})", *currentScriptName, scriptNum, this->totalScripts);
-
-                Notification::Emit(*notification);
-            });
-        } catch (std::exception& e) {
             notification->message =
-                fmt::format("Failed to build {} ({}/{})", *currentScriptName, (*currentScript + 1), this->totalScripts);
-            SPDLOG_ERROR("Failed to build script {}: {}", *currentScriptName, e.what());
-            Notification::Emit(*notification);
-        }
+                fmt::format("Loading {} ({}/{})", *currentScriptName, scriptNum, this->totalScripts);
 
-        try {
-            context->GetScriptSystem()->LoadAll();
-            Notification::Emit({ .message = "Finished loading mods!", .remainingTime = 5.0f, .mute = true });
-        } catch (std::exception& e) {
-            SPDLOG_ERROR("Failed to load scripts: {}", e.what());
-            Notification::Emit({ .message = "Failed to load some mods, check logs for details.",
-                                 .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
-                                 .remainingTime = 5.0f,
-                                 .mute = true });
-        }
-    });
+            Notification::Emit(*notification);
+        });
+    } catch (std::exception& e) {
+        notification->message =
+            fmt::format("Failed to build {} ({}/{})", *currentScriptName, (*currentScript + 1), this->totalScripts);
+        SPDLOG_ERROR("Failed to build script {}: {}", *currentScriptName, e.what());
+        Notification::Emit(*notification);
+    }
+
+    try {
+        context->GetScriptSystem()->LoadAll();
+        Notification::Emit({ .message = "Finished loading mods!", .remainingTime = 5.0f, .mute = true });
+    } catch (std::exception& e) {
+        SPDLOG_ERROR("Failed to load scripts: {}", e.what());
+        Notification::Emit({ .message = "Failed to load some mods, check logs for details.",
+                             .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                             .remainingTime = 5.0f,
+                             .mute = true });
+    }
 }
 
 void GameEngine::Create(int argc, char* argv[]) {

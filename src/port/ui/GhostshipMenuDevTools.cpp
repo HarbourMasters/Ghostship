@@ -135,6 +135,7 @@ void GhostshipMenu::AddMenuDevTools() {
 }
 
 void GhostshipMenu::AddModMenu() {
+    auto mods = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetArchives();
     AddMenuEntry("Mods", CVAR_SETTING("Menu.ModsSidebarSection"));
 
     WidgetPath path = { "Mods", "General", SECTION_COLUMN_1 };
@@ -146,6 +147,54 @@ void GhostshipMenu::AddModMenu() {
             Ship::Context::GetInstance()->GetScriptSystem()->UnloadAll();
             GameEngine::Instance->LoadScripts();
         });
+
+    // Assuming you have defined the path where these cards should go
+    // WidgetPath path = { "Mods", "Installed Mods", SECTION_COLUMN_1 };
+
+    for (const auto& entry : *mods) {
+        const auto& info = entry->GetManifest();
+        if (info.Name.empty()) {
+            continue;
+        }
+
+        const bool isCodeMod = !info.Main.empty() || !info.Binaries.empty();
+
+        std::string modCardName = info.Name;
+        if (isCodeMod) {
+            modCardName += " (Code Mod)";
+        }
+
+        AddWidget(path, modCardName, WIDGET_SEPARATOR_TEXT).Options(UIWidgets::TextOptions{});
+
+        AddWidget(path, "Author: " + info.Author + "  |  Version: " + info.Version, WIDGET_TEXT)
+            .Options(UIWidgets::TextOptions{});
+
+        std::string securityText = entry->IsSigned() ? "Security: Signed (Trusted)" : "Security: Untrusted";
+        AddWidget(path, securityText, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
+
+        if (!info.Dependencies.empty()) {
+            std::string depsString = "Dependencies: ";
+            for (size_t i = 0; i < info.Dependencies.size(); ++i) {
+                depsString += info.Dependencies[i];
+                if (i < info.Dependencies.size() - 1)
+                    depsString += ", ";
+            }
+
+            AddWidget(path, depsString, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
+        }
+
+        if (!info.Description.empty()) {
+            AddWidget(path, info.Description, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
+        }
+
+        if (!info.Website.empty()) {
+            AddWidget(path, "Open Webpage##" + info.Name, WIDGET_BUTTON)
+                .Options(UIWidgets::ButtonOptions{})
+                .Callback([info](WidgetInfo&) { SDL_OpenURL(info.Website.c_str()); });
+        }
+
+        AddWidget(path, "##Spacer_" + info.Name, WIDGET_SEPARATOR).Options(UIWidgets::WidgetOptions{});
+    }
 };
 
 } // namespace GhostshipGui
