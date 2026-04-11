@@ -25,6 +25,9 @@
 #include <filesystem>
 #include <fstream>
 
+#include <cstdlib>
+#include <algorithm>
+
 #ifdef USE_NETWORKING
 #include <SDL2/SDL_net.h>
 #endif
@@ -997,14 +1000,19 @@ void GameEngine::Create(int argc, char* argv[]) {
 void GameEngine::Destroy() {
     GhostshipGui::Destroy();
     gsFast3dWindow = nullptr;
-    Instance->context = nullptr;
     AudioExit();
 #ifdef __SWITCH__
     Ship::Switch::Exit();
 #endif
-    for (auto& entry : Instance->memoryPool) {
-        delete[] entry.addr;
+    auto& pool = GameEngine::Instance->memoryPool;
+
+    for (auto& entry : pool) {
+        if (entry.addr != nullptr) {
+            std::free(entry.addr);
+        }
     }
+
+    pool.clear();
 }
 
 void GameEngine::StartFrame() const {
@@ -1600,18 +1608,32 @@ extern "C" void* GameEngine_GetExactDataByName(const char* path) {
 extern "C" void* GameEngine_Malloc(size_t size) {
     auto& pool = GameEngine::Instance->memoryPool;
 
-    pool.push_back({ new uint8_t[size], size });
-    return (void*)pool.back().addr;
+    uint8_t* ptr = static_cast<uint8_t*>(std::malloc(size));
+
+    if (ptr) {
+        pool.push_back({ ptr, size });
+    }
+
+    return ptr;
 }
 
 extern "C" void GameEngine_Free(void* ptr) {
+    if (!ptr) {
+        return;
+    }
+
     auto& pool = GameEngine::Instance->memoryPool;
 
-    for (auto it = pool.begin(); it != pool.end(); ++it) {
-        if (it->addr == ptr) {
-            delete[] it->addr;
-            pool.erase(it);
-            break;
+    for (size_t i = 0; i < pool.size(); ++i) {
+        if (pool[i].addr == ptr) {
+            std::free(pool[i].addr);
+
+            if (i != pool.size() - 1) {
+                std::swap(pool[i], pool.back());
+            }
+
+            pool.pop_back();
+            return;
         }
     }
 }
