@@ -51,6 +51,7 @@
 #include "port/importer/GenericArrayFactory.h"
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
+#include <ship/resource/archive/Archive.h>
 
 #ifdef __SWITCH__
 #include <ship/port/switch/SwitchImpl.h>
@@ -156,6 +157,53 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitControlDeck(controlDeck);
     this->context->InitResourceManager({ assets_path }, {}, 3);
     this->context->InitConsole();
+
+    this->context->GetResourceManager()->GetArchiveManager()->SetUntrustedArchiveHandler(
+        [](Ship::Archive& archive) -> bool {
+            const auto info = archive.GetManifest();
+
+            std::string message = "An archive from an unknown author was detected.\n\n";
+            message += "Mod Name: " + info.Name + "\n";
+            message += "Author: " + info.Author + "\n\n";
+            message += "Do you want to trust this author and load the mod?";
+
+            constexpr SDL_MessageBoxButtonData buttons[] = {
+                { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "Yes" },
+                { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 0, "No" },
+            };
+
+            const SDL_MessageBoxColorScheme colorScheme = {
+                    /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+                    { 35, 35, 35 },     // Dark Grey
+                    /* [SDL_MESSAGEBOX_COLOR_TEXT] */
+                    { 240, 240, 240 },  // Off-White
+                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+                    { 255, 100, 100 },  // Warning Red/Orange
+                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+                    { 60, 60, 60 },     // Lighter Grey
+                    /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+                    { 200, 60, 60 }     // Dark Red/Orange when hovered/selected
+                }
+            };
+
+            const SDL_MessageBoxData messageboxdata = {
+                SDL_MESSAGEBOX_WARNING,
+                nullptr,
+                "Security Warning: Untrusted Author",
+                message.c_str(),
+                SDL_arraysize(buttons),
+                buttons,
+                &colorScheme
+            };
+
+            int buttonid;
+            if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
+                return false;
+            }
+
+            return buttonid == 1;
+        }
+    );
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     this->context->InitWindow(gsFast3dWindow);
