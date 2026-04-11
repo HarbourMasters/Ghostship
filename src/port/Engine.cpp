@@ -173,6 +173,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
             };
 
             const SDL_MessageBoxColorScheme colorScheme = {
+                {
                     /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
                     { 35, 35, 35 },     // Dark Grey
                     /* [SDL_MESSAGEBOX_COLOR_TEXT] */
