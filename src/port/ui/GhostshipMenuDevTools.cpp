@@ -148,29 +148,46 @@ void GhostshipMenu::AddModMenu() {
             GameEngine::Instance->LoadScripts();
         });
 
-    // Assuming you have defined the path where these cards should go
-    // WidgetPath path = { "Mods", "Installed Mods", SECTION_COLUMN_1 };
-
     for (const auto& entry : *mods) {
         const auto& info = entry->GetManifest();
         if (info.Name.empty()) {
             continue;
         }
 
-        const bool isCodeMod = !info.Main.empty() || !info.Binaries.empty();
+        std::string cardTitle = info.Name;
 
-        std::string modCardName = info.Name;
-        if (isCodeMod) {
-            modCardName += " (Code Mod)";
+        if (!info.Icon.empty()) {
+            cardTitle = info.Icon + " " + cardTitle;
         }
 
-        AddWidget(path, modCardName, WIDGET_SEPARATOR_TEXT).Options(UIWidgets::TextOptions{});
+        if (!info.Main.empty() || !info.Binaries.empty()) {
+            cardTitle += " (Code Mod)";
+        }
 
-        AddWidget(path, "Author: " + info.Author + "  |  Version: " + info.Version, WIDGET_TEXT)
-            .Options(UIWidgets::TextOptions{});
+        AddWidget(path, cardTitle, WIDGET_SEPARATOR_TEXT).Options(UIWidgets::TextOptions{});
 
-        std::string securityText = entry->IsSigned() ? "Security: Signed (Trusted)" : "Security: Untrusted";
-        AddWidget(path, securityText, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
+        std::string metadata = "Author: " + (info.Author.empty() ? "Unknown" : info.Author);
+
+        if (!info.Version.empty()) {
+            metadata += "  |  Version: " + info.Version;
+        }
+        if (!info.License.empty()) {
+            metadata += "  |  License: " + info.License;
+        }
+
+        AddWidget(path, metadata, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
+
+        std::string securityText;
+        if (entry->IsSigned()) {
+            securityText = std::string(ICON_FA_CHECK_CIRCLE) + " Security: Signed (Trusted)";
+            AddWidget(path, securityText, WIDGET_TEXT).Options(UIWidgets::TextOptions{ .color = Colors::Green });
+        } else if (entry->IsChecksumValid()) {
+            securityText = std::string(ICON_FA_EXCLAMATION_TRIANGLE) + " Security: Unsigned (Caution)";
+            AddWidget(path, securityText, WIDGET_TEXT).Options(UIWidgets::TextOptions{ .color = Colors::Orange });
+        } else {
+            securityText = std::string(ICON_FA_EXCLAMATION_TRIANGLE) + " Security: Untrusted";
+            AddWidget(path, securityText, WIDGET_TEXT).Options(UIWidgets::TextOptions{ .color = Colors::Red });
+        }
 
         if (!info.Dependencies.empty()) {
             std::string depsString = "Dependencies: ";
