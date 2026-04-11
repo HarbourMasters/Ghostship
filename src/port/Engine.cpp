@@ -306,7 +306,11 @@ void GameEngine::LoadResourceFiles() {
         "Ghostship.def",
     };
 
+#ifdef _WIN32
     context->InitScriptSystem(defines, codeVersion, "-g -Wl", includePaths, libraryPaths, libraries);
+#else
+    context->InitScriptSystem(defines, codeVersion, "-g -Wl", {}, {}, {});
+#endif
     // auto script = context->GetScriptSystem();
     // script->SetGameLibrary("F:\\HM64\\Ghostship\\build\\Debug\\Ghostship.sdk");
     // system("setup_x64.bat");
