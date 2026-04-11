@@ -628,7 +628,7 @@ if (MSVC)
         COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/lib/libtcc1.a" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
+        COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/lib/libtcc1.a" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1.a"
         VERBATIM
     )
     add_custom_command(
