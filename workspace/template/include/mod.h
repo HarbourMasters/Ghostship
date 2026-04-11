@@ -12,3 +12,7 @@
 extern void* ScriptGetFunction(const char* module, const char* function);
 
 #define CALL_FUNC(mod, func, ...) ((func##Func)ScriptGetFunction(mod, func##Symbol))(__VA_ARGS__)
+
+// STD-Replacements
+#define malloc(size) GameEngine_Malloc(size)
+#define free(ptr) GameEngine_Free(ptr)
