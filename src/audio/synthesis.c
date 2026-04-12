@@ -1016,21 +1016,23 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                                     break;
 
                                 case 1:
-                                    aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE + sp130,
-                                               DMEM_ADDR_RESAMPLED2,
-                                               samplesLenAdjusted + 8);
 #ifdef VERSION_EU
                                     aResample(cmd++, A_INIT, 0xff60,
                                               VIRTUAL_TO_PHYSICAL2(
                                                   synthesisState->synthesisBuffers->dummyResampleState));
 #else
-                                    aResample(cmd++, A_INIT, 0xff60,
+                                    if (note->synthesisBuffers != NULL) {
+                                        aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE + sp130,
+                                               DMEM_ADDR_RESAMPLED2,
+                                               samplesLenAdjusted + 8);
+                                        aResample(cmd++, A_INIT, 0xff60,
                                               VIRTUAL_TO_PHYSICAL2(
                                                   note->synthesisBuffers->dummyResampleState));
-#endif
-                                    aDMEMMove(cmd++, DMEM_ADDR_RESAMPLED2 + 4,
+                                        aDMEMMove(cmd++, DMEM_ADDR_RESAMPLED2 + 4,
                                               DMEM_ADDR_RESAMPLED + resampledTempLen,
                                               samplesLenAdjusted + 4);
+                                    }
+#endif
                                     break;
                             }
                     }
