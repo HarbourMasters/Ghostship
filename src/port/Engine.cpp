@@ -162,7 +162,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitConsole();
 
     this->context->GetResourceManager()->GetArchiveManager()->SetUntrustedArchiveHandler(
-        [](Ship::Archive& archive) -> bool {
+        [](Ship::Archive& archive, Ship::KeystoreEntry& key) {
             const auto info = archive.GetManifest();
 
             std::string message = "An archive from an unknown author was detected.\n\n";
