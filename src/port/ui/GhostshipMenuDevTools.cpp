@@ -4,6 +4,7 @@
 #include "include/behavior_data.h"
 #include "game/level_update.h"
 #include "port/Engine.h"
+#include "ship/utils/StringHelper.h"
 #include "ship/scripting/ScriptSystem.h"
 
 extern "C" {
@@ -147,6 +148,9 @@ void GhostshipMenu::AddModMenu() {
             Ship::Context::GetInstance()->GetScriptSystem()->UnloadAll();
             GameEngine::Instance->LoadScripts();
         });
+    
+    auto keystore = Ship::Context::GetInstance()->GetKeystore();
+    auto allKeys = keystore->GetAllKeys();
 
     for (const auto& entry : *mods) {
         const auto& info = entry->GetManifest();
@@ -176,11 +180,36 @@ void GhostshipMenu::AddModMenu() {
         }
 
         AddWidget(path, metadata, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
+        Ship::KeyOrigin origin = Ship::KeyOrigin::User;
+        for (const auto& key : allKeys) {
+            if (key.Data == StringHelper::HexToBytes(info.PublicKey)) {
+                origin = key.Origin;
+                break;
+            }
+        }
 
         std::string securityText;
         if (entry->IsSigned()) {
             securityText = std::string(ICON_FA_CHECK_CIRCLE) + " Security: Signed (Trusted)";
+            std::string originText;
+            Colors color = Colors::Green;
+            switch (origin) {
+                case Ship::KeyOrigin::User:
+                    originText = "[User Approved]";
+                    color = Colors::Yellow;
+                    break;
+                case Ship::KeyOrigin::Game:
+                    originText = "[Game]";
+                    color = Colors::Purple;
+                    break;
+                case Ship::KeyOrigin::System:
+                    originText = "[System]";
+                    color = Colors::Red;
+                    break;
+            }
+
             AddWidget(path, securityText, WIDGET_TEXT).Options(UIWidgets::TextOptions{ .color = Colors::Green });
+            AddWidget(path, originText, WIDGET_TEXT).SameLine(true).Options(UIWidgets::TextOptions{ .color = color });
         } else if (entry->IsChecksumValid()) {
             securityText = std::string(ICON_FA_EXCLAMATION_TRIANGLE) + " Security: Unsigned (Caution)";
             AddWidget(path, securityText, WIDGET_TEXT).Options(UIWidgets::TextOptions{ .color = Colors::Orange });
