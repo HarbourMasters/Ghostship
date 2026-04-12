@@ -32,7 +32,7 @@
 #include <SDL2/SDL_net.h>
 #endif
 
-#include "ship/scripting/ScriptSystem.h"
+#include "ship/scripting/ScriptLoader.h"
 #include "ship/resource/type/Json.h"
 #include <fast/resource/ResourceType.h>
 #include <ship/window/gui/Fonts.h>
@@ -305,11 +305,11 @@ void GameEngine::LoadResourceFiles() {
     };
 
 #ifdef _WIN32
-    context->InitScriptSystem(defines, codeVersion, "-g -Wl", includePaths, libraryPaths, libraries);
+    context->InitScriptLoader(defines, codeVersion, "-g -Wl", includePaths, libraryPaths, libraries);
 #else
-    context->InitScriptSystem(defines, codeVersion, "-g -Wl", {}, {}, {});
+    context->InitScriptLoader(defines, codeVersion, "-g -Wl", {}, {}, {});
 #endif
-    // auto script = context->GetScriptSystem();
+    // auto script = context->GetScriptLoader();
     // script->SetGameLibrary("F:\\HM64\\Ghostship\\build\\Debug\\Ghostship.sdk");
     // system("setup_x64.bat");
 
@@ -376,7 +376,7 @@ void GameEngine::FinishInit() {
                                                              { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
                                                              { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
 
-    context->InitScriptSystem(defines, 1);
+    context->InitScriptLoader(defines, 1);
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
@@ -455,7 +455,7 @@ void GameEngine::FinishInit() {
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
-    context->GetScriptSystem()->LoadAll();
+    context->GetScriptLoader()->LoadAll();
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
@@ -794,7 +794,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             case GS_COMPILE: {
                 LoadResourceFiles();
                 threadPool->submit_task([&]() -> void {
-                    auto scripting = Ship::Context::GetInstance()->GetScriptSystem();
+                    auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
                     auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
                         auto& info = archive->GetManifest();
                         file = info.Name;
@@ -950,7 +950,7 @@ void GameEngine::ScaleImGui() {
 }
 
 void GameEngine::LoadScripts() {
-    auto scripting = Ship::Context::GetInstance()->GetScriptSystem();
+    auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
     auto currentScriptName = std::make_shared<std::string>("");
@@ -980,7 +980,7 @@ void GameEngine::LoadScripts() {
     }
 
     try {
-        context->GetScriptSystem()->LoadAll();
+        context->GetScriptLoader()->LoadAll();
         Notification::Emit({ .message = "Finished loading mods!", .remainingTime = 5.0f, .mute = true });
     } catch (std::exception& e) {
         SPDLOG_ERROR("Failed to load scripts: {}", e.what());

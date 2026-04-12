@@ -1,8 +1,7 @@
-import sys
 import os
 import re
 import argparse
-import math
+import struct
 from enum import Enum
 from io import BytesIO
 from typing import Optional, Dict
@@ -81,7 +80,7 @@ class TextureTypeUtils:
         elif tex_type in (TextureType.Palette8bpp, TextureType.Grayscale8bpp, TextureType.GrayscaleAlpha8bpp):
             return pixels
         elif tex_type in (TextureType.Palette4bpp, TextureType.Grayscale4bpp, TextureType.GrayscaleAlpha4bpp):
-            return (pixels + 1) // 2  # Equivalent to Math.ceil
+            return (pixels + 1) // 2
         return 0
 
 
@@ -117,7 +116,6 @@ class N64Graphics:
 
     @staticmethod
     def pixels_to_png(texture: Texture, data: bytes) -> bytes:
-        """Converts raw generic RGBA bytes directly to PNG"""
         img = Image.frombytes("RGBA", (texture.width, texture.height), data)
         out_buffer = BytesIO()
         img.save(out_buffer, format="PNG")
@@ -125,7 +123,6 @@ class N64Graphics:
 
     @staticmethod
     def convert_raw_to_n64(texture: Texture, img: Image.Image) -> None:
-        """Converts a standard PIL Image into raw N64 byte sequences"""
         texture.width = img.width
         texture.height = img.height
         texture.tex_data_size = TextureTypeUtils.get_buffer_size(texture.texture_type, texture.width, texture.height)
@@ -235,7 +232,6 @@ class N64Graphics:
 
     @staticmethod
     def convert_n64_to_png(texture: Texture) -> Optional[bytes]:
-        """Converts raw N64 byte sequences to PNG bytes"""
         w, h = texture.width, texture.height
         tex_data = texture.tex_data
         tex_type = texture.texture_type
@@ -262,7 +258,7 @@ class N64Graphics:
         elif tex_type == TextureType.Palette4bpp:
             img = Image.new("P", (w, h))
             pixels = img.load()
-            palette = [0] * (256 * 4)  # RGBA palette buffer
+            palette = [0] * (256 * 4) 
             for y in range(h):
                 for x in range(0, w, 2):
                     pos = ((y * w) + x) // 2
@@ -273,7 +269,6 @@ class N64Graphics:
                     if x + 1 < w:
                         pixels[x + 1, y] = idx2
 
-                    # default fallback grayscale palette colors if no TLUT
                     palette[idx1*4 : idx1*4+4] = [idx1*16, idx1*16, idx1*16, 255]
                     palette[idx2*4 : idx2*4+4] = [idx2*16, idx2*16, idx2*16, 255]
 
@@ -351,14 +346,12 @@ class N64Graphics:
         else:
             return None
 
-        # --- Palette Handling (TLUT) ---
         if is_palette:
             if texture.tlut:
                 pal_bytes = texture.tlut.to_png_bytes()
                 pal_img = Image.open(BytesIO(pal_bytes)).convert("RGBA")
                 pal_pixels = pal_img.load()
                 
-                # Update the RGBA buffer using the TLUT image data
                 for y in range(pal_img.height):
                     for x in range(pal_img.width):
                         index = y * pal_img.width + x
@@ -367,133 +360,230 @@ class N64Graphics:
                         r, g, b, a = pal_pixels[x, y]
                         palette[index*4 : index*4+4] = [r, g, b, a]
             
-            # Apply the raw RGBA buffer to the PIL 'P' mode image
             img.putpalette(bytearray(palette), rawmode='RGBA')
 
-        # Serialize resulting PIL Image to PNG bytes
         out_buffer = BytesIO()
         img.save(out_buffer, format="PNG")
         return out_buffer.getvalue()
 
-def preprocess_embed(bytes_data: bytes, filename: str) -> bytes:
-    if not filename.lower().endswith('.png'):
-        return bytes_data
+def convert_png_to_n64_texture(png_bytes: bytes, texture_type: TextureType) -> Texture:
+    img = Image.open(BytesIO(png_bytes))
+    texture = Texture(0, 0, texture_type)
+    N64Graphics.convert_raw_to_n64(texture, img)
+    return texture
 
-    filename_lower = filename.lower()
+def write_header(resource_type: int, version: int) -> bytes:
+    endianness = 0x00
+    game_version = 0
+    rom_crc = 0
+    rom_enum = 0
+    magic = 0xDEADBEEFDEADBEEF
 
-    if 'rgba16' in filename_lower:
-        tex_type = TextureType.RGBA16bpp
-    elif 'rgba32' in filename_lower:
-        tex_type = TextureType.RGBA32bpp
-    elif 'ci4' in filename_lower:
-        tex_type = TextureType.Palette4bpp
-    elif 'ci8' in filename_lower:
-        tex_type = TextureType.Palette8bpp
-    else:
-        raise ValueError(f"Unknown texture format in filename: {filename}")
-
-    try:
-        img = Image.open(BytesIO(bytes_data))
-    except Exception as e:
-        raise ValueError(f"Failed to read PNG data for {filename}: {e}")
-
-    texture = Texture(
-        width=img.width,
-        height=img.height,
-        texture_type=tex_type
+    # Struct format characters (assuming Little-Endian '<'):
+    # I = unsigned int (4 bytes)
+    # Q = unsigned long long (8 bytes)
+    #
+    # Order: Endianness(I), Type(I), Version(I), Magic(Q), GameVer(I), CRC(Q), Enum(I)
+    header_data = struct.pack(
+        '<IIIQIQI',
+        endianness,     # [0x00] 4 bytes
+        resource_type,  # [0x04] 4 bytes
+        version,        # [0x08] 4 bytes
+        magic,          # [0x0C] 8 bytes
+        game_version,   # [0x14] 4 bytes
+        rom_crc,        # [0x18] 8 bytes
+        rom_enum        # [0x20] 4 bytes
     )
 
-    N64Graphics.convert_raw_to_n64(texture, img)
-    return bytes(texture.tex_data)
+    # Pad with null bytes until we reach 0x40 (64 bytes)
+    padding_needed = 0x40 - len(header_data)
+    if padding_needed > 0:
+        header_data += b'\x00' * padding_needed
 
-def amalgamate(file_path, include_dirs, processed, out_file):
+    return header_data
+
+def preprocess_asset(bytes_data: bytes, filename: str) -> bytes:
+    file = filename.lower()
+
+    if file.lower().endswith('.bin'):
+        return bytes_data
+
+    elif file.endswith('.png'):
+        if 'rgba16' in file:
+            tex_type = TextureType.RGBA16bpp
+        elif 'rgba32' in file:
+            tex_type = TextureType.RGBA32bpp
+        elif 'ci4' in file:
+            tex_type = TextureType.Palette4bpp
+        elif 'ci8' in file:
+            tex_type = TextureType.Palette8bpp
+        else:
+            raise ValueError(f"Unknown texture format in filename: {filename}")
+
+        data = convert_png_to_n64_texture(bytes_data, tex_type)
+
+        texture_type = 1
+        width = data.width
+        height = data.height
+        tex_data_size = len(data.tex_data)
+
+        otr_header = write_header(resource_type=0x4F544558, version=0x0)
+        tex_header = struct.pack(
+            '<IIII',
+            texture_type,   # [0x40] 4 bytes
+            width,          # [0x44] 4 bytes
+            height,         # [0x48] 4 bytes
+            tex_data_size   # [0x58] 4 bytes
+        )
+
+        return otr_header + tex_header + data.tex_data
+    else:
+        raise ValueError(f"Unsupported asset file type for {filename}")
+
+def preprocess_embed(bytes_data: bytes, filename: str) -> bytes:
+    # If you want bytes to be embedded directly into the C file, you can preprocess them here.
+    return bytes_data
+
+def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
     abs_path = os.path.abspath(file_path)
 
-    # Inclusion guard: prevents circular dependencies AND acts as a global #pragma once
     if abs_path in processed:
         return
     processed.add(abs_path)
 
     try:
         with open(abs_path, 'r', encoding='utf-8') as f:
-            for line in f:
-                embed = re.match(r'^\s*#\s*embed\s+([<"])([^>"]+)[>"]', line)
-                if embed:
-                    delimiter = embed.group(1)
-                    target_name = embed.group(2)
-                    target_path = None
+            content = f.read()
 
-                    search_paths = list(include_dirs)
-                    if delimiter == '"':
-                        local_dir = os.path.dirname(abs_path)
-                        search_paths.insert(0, local_dir)
+        # Step 1: Find and process `#asset` blocks ONLY
+        # Replaces `u8 array[] = { #asset ... };` with ALIGN_ASSET macro and extracts .bin
+        asset_block_pattern = re.compile(
+            r'(?:(?:static|const|ALIGNED8|extern)\s+)*u8\s+([a-zA-Z0-9_]+)\s*\[\]\s*=\s*\{\s*#asset\s+([<"])([^>"]+)[>"]\s*\};',
+            re.MULTILINE
+        )
 
-                    for path in search_paths:
-                        potential_path = os.path.join(path, target_name)
-                        if os.path.exists(potential_path):
-                            target_path = potential_path
-                            break
+        def repl_asset_block(match):
+            var_name = match.group(1)
+            delimiter = match.group(2)
+            target_name = match.group(3)
 
-                    if target_path:
-                        out_file.write(f"/* --- Start Embedded Bytes: {target_name} --- */\n")
-                        try:
-                            with open(target_path, 'rb') as bin_file:
-                                raw_bytes = bin_file.read()
+            target_path = None
+            search_paths = list(include_dirs)
+            if delimiter == '"':
+                search_paths.insert(0, os.path.dirname(abs_path))
 
-                            # Preprocess the embedded bytes based on the file type
-                            raw_bytes = preprocess_embed(raw_bytes, target_name)
+            for path in search_paths:
+                potential_path = os.path.join(path, target_name)
+                if os.path.exists(potential_path):
+                    target_path = potential_path
+                    break
 
-                            # Convert bytes to C hex format (e.g., "0xff")
-                            hex_array = [f"0x{b:02x}" for b in raw_bytes]
-                            # Write in chunks of 16 bytes per line for readability
-                            for i in range(0, len(hex_array), 16):
-                                chunk = hex_array[i:i+16]
-                                # Add a trailing comma to all lines, C allows trailing commas in arrays
-                                out_file.write("    " + ", ".join(chunk) + ",\n")
-                        except Exception as e:
-                            print(f"Warning: Failed to read embedded file {target_path}: {e}")
-                            out_file.write(f"/* ERROR: Failed to read {target_name} */\n")
-                        out_file.write(f"/* --- End Embedded Bytes: {target_name} --- */\n")
-                        continue
-                    else:
-                        print(f"Warning: Could not find embedded file {target_name} requested from {abs_path}")
-                        out_file.write(f"/* ERROR: Could not find {target_name} */\n")
-                include = re.match(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', line)
-                if include:
-                    delimiter = include.group(1)
-                    header_name = include.group(2)
-                    header_path = None
-                    search_paths = list(include_dirs)
-                    if delimiter == '"':
-                        local_dir = os.path.dirname(abs_path)
-                        search_paths.insert(0, local_dir)
+            if target_path:
+                try:
+                    with open(target_path, 'rb') as bin_file:
+                        raw_bytes = bin_file.read()
 
-                    for path in search_paths:
-                        potential_path = os.path.join(path, header_name)
-                        if os.path.exists(potential_path):
-                            header_path = potential_path
-                            break
+                    resource_name = target_name
+                    if resource_name.lower().endswith('.png'):
+                        resource_name = resource_name[:-4]
 
-                    if header_path:
-                        out_file.write(f"/* --- Start: {header_name} --- */\n")
-                        amalgamate(header_path, include_dirs, processed, out_file)
-                        out_file.write(f"/* --- End: {header_name} --- */\n")
-                    else:
-                        out_file.write(line) 
+                    # Write the .bin companion file mirroring directory tree
+                    if assets_dir:
+                        companion_path = os.path.join(assets_dir, resource_name)
+                        os.makedirs(os.path.dirname(companion_path), exist_ok=True)
+                        with open(companion_path, 'wb') as cf:
+                            cf.write(preprocess_asset(raw_bytes, target_name))
+
+                    # Return formatted string literal block for C
+                    return f'static const ALIGN_ASSET(2) char {var_name}[] = "__OTR__{resource_name}";'
+
+                except Exception as e:
+                    print(f"Warning: Failed to read asset file {target_path}: {e}")
+                    return f"/* ERROR: Failed to process {target_name} */"
+            else:
+                print(f"Warning: Could not find asset file {target_name} requested from {abs_path}")
+                return f"/* ERROR: Could not find {target_name} */"
+
+        # Apply the #asset replacement over the whole text file
+        content = asset_block_pattern.sub(repl_asset_block, content)
+
+        # Step 2: Process the remaining lines one by one for standard #embeds and #includes
+        for line in content.splitlines(keepends=True):
+            
+            # Look for legacy #embed (leaves the surrounding u8 array intact, just injects hex)
+            embed = re.match(r'^\s*#\s*embed\s+([<"])([^>"]+)[>"]', line)
+            if embed:
+                delimiter = embed.group(1)
+                target_name = embed.group(2)
+                target_path = None
+
+                search_paths = list(include_dirs)
+                if delimiter == '"':
+                    search_paths.insert(0, os.path.dirname(abs_path))
+
+                for path in search_paths:
+                    potential_path = os.path.join(path, target_name)
+                    if os.path.exists(potential_path):
+                        target_path = potential_path
+                        break
+
+                if target_path:
+                    out_file.write(f"/* --- Start Embedded Bytes: {target_name} --- */\n")
+                    try:
+                        with open(target_path, 'rb') as bin_file:
+                            raw_bytes = bin_file.read()
+
+                        raw_bytes = preprocess_embed(raw_bytes, target_name)
+                            
+                        # Write out raw hex array right into the C file
+                        hex_array = [f"0x{b:02x}" for b in raw_bytes]
+                        for i in range(0, len(hex_array), 16):
+                            chunk = hex_array[i:i+16]
+                            out_file.write("    " + ", ".join(chunk) + ",\n")
+                    except Exception as e:
+                        print(f"Warning: Failed to read embedded file {target_path}: {e}")
+                        out_file.write(f"/* ERROR: Failed to read {target_name} */\n")
+                    out_file.write(f"/* --- End Embedded Bytes: {target_name} --- */\n")
                 else:
-                    out_file.write(line)
+                    out_file.write(f"/* ERROR: Could not find {target_name} */\n")
+                continue
+
+            # Standard #include amalgamation
+            include = re.match(r'^\s*#\s*include\s+([<"])([^>"]+)[>"]', line)
+            if include:
+                delimiter = include.group(1)
+                header_name = include.group(2)
+                header_path = None
+                search_paths = list(include_dirs)
+                if delimiter == '"':
+                    search_paths.insert(0, os.path.dirname(abs_path))
+
+                for path in search_paths:
+                    potential_path = os.path.join(path, header_name)
+                    if os.path.exists(potential_path):
+                        header_path = potential_path
+                        break
+
+                if header_path:
+                    out_file.write(f"/* --- Start: {header_name} --- */\n")
+                    amalgamate(header_path, include_dirs, processed, out_file, assets_dir)
+                    out_file.write(f"/* --- End: {header_name} --- */\n")
+                else:
+                    out_file.write(line) 
+            else:
+                out_file.write(line)
     except Exception as e:
         print(f"Warning: Could not process {abs_path}: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a Unity Build amalgamation.")
     parser.add_argument('--out', required=True, help="The single output .c file")
+    parser.add_argument('--assets-dir', default=None, help="Root output directory for companion .bin files")
     parser.add_argument('--includes', nargs='*', default=[], help="Include directories")
     parser.add_argument('--srcs', nargs='+', required=True, help="Input .c files")
 
     args = parser.parse_args()
 
-    # The processed set is maintained globally across ALL input files
     global_processed = set()
 
     with open(args.out, 'w', encoding='utf-8') as out_file:
@@ -502,4 +592,4 @@ if __name__ == "__main__":
             out_file.write(f"/* === Start of Source: {os.path.basename(src_file)} === */\n")
             out_file.write(f"/* ========================================= */\n\n")
 
-            amalgamate(src_file, args.includes, global_processed, out_file)
+            amalgamate(src_file, args.includes, global_processed, out_file, args.assets_dir)
