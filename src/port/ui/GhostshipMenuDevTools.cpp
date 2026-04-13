@@ -148,7 +148,7 @@ void GhostshipMenu::AddModMenu() {
             Ship::Context::GetInstance()->GetScriptLoader()->UnloadAll();
             GameEngine::Instance->LoadScripts();
         });
-    
+
     auto keystore = Ship::Context::GetInstance()->GetKeystore();
     auto allKeys = keystore->GetAllKeys();
 
