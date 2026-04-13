@@ -47,6 +47,7 @@ jobs:
           brew uninstall --ignore-dependencies libpng
           sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal
           brew install ninja
+          pip3 install cryptography --break-system-packages
       - name: Build (Universal)
         run: |
           export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
