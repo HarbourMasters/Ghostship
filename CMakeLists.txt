@@ -622,6 +622,18 @@ if (MSVC)
     )
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
+        COMMENT "DEBUG: Checking what is inside the tinycc-src lib folder..."
+        COMMAND cmd /c "dir \"${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/lib/\""
+        VERBATIM
+    )
+    add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
+        COMMENT "DEBUG: Checking what is inside the tinycc-src lib folder..."
+        COMMAND cmd /c "dir \"${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/\""
+        VERBATIM
+    )
+    add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
         COMMENT "Copying libtcc headers and libs..."
         COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/"
         COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
