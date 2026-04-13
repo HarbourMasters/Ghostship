@@ -8,12 +8,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Enable MSVC Developer Command Prompt
+        uses: ilammy/msvc-dev-cmd@v1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Enable MSVC Developer Command Prompt
-        uses: ilammy/msvc-dev-cmd@v1
       - name: Install python dependencies
         run: python -m pip install cryptography
       - name: Build
