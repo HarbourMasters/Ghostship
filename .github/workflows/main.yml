@@ -55,14 +55,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Enable MSVC Developer Command Prompt
+      - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Install python dependencies
-        run: python -m pip install cryptography
+      - name: Install Python dependencies
+        run: python -m pip install -r libultraship/requirements.txt
       - name: Build
         run: |
           $env:VCPKG_ROOT=""
@@ -131,12 +127,13 @@ jobs:
             sudo installer -pkg ./MacPorts-2.11.5-14-Sonoma.pkg -target /
           fi
           echo "/opt/local/bin:/opt/local/sbin" >> "$GITHUB_PATH"
+      - name: Install Python dependencies
+        run: python3 -m pip install -r libultraship/requirements.txt --break-system-packages || python3 -m pip install -r libultraship/requirements.txt
       - name: Install dependencies
         run: |
           brew uninstall --ignore-dependencies libpng
           sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal
           brew install ninja
-          pip3 install cryptography --break-system-packages
       - name: Build (Universal)
         run: |
           export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
