@@ -1,4 +1,5 @@
 name: GenerateBuilds
+
 on:
   push:
 
@@ -57,12 +58,16 @@ jobs:
           submodules: recursive
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Install Python dependencies
-        run: python -m pip install -r libultraship/requirements.txt
+        run: pip install -r libultraship/requirements.txt
       - name: Build
         run: |
           $env:VCPKG_ROOT=""
-          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release
+          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
           cmake --build ./build/x64 --config Release --parallel 10
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
@@ -174,8 +179,6 @@ jobs:
         run: sudo apt update
       - name: Install dependencies
         run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
-      - name: Install python dependencies
-        run: pip3 install cryptography --break-system-packages
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
@@ -231,6 +234,12 @@ jobs:
           make
           sudo make install
           sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: pip install -r libultraship/requirements.txt
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
         with:
@@ -238,10 +247,10 @@ jobs:
           path: ./build-cmake
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE=$(which python3)
           cmake --build build-cmake --config Release -j3
           (cd build-cmake && cpack -G External)
-          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage ghostship.appimage
       - name: Upload build
@@ -249,7 +258,10 @@ jobs:
         with:
           name: Ghostship-linux
           path: |
+            .tcc
             ghostship.appimage
+            config.yml
+            assets
             gamecontrollerdb.txt
 
   build-switch:

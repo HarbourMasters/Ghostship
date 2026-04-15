@@ -7,6 +7,49 @@ include(FetchContent)
 include(cmake/ghostship-cvars.cmake)
 include(cmake/lus-cvars.cmake)
 
+set(VENV_PATH "${CMAKE_CURRENT_BINARY_DIR}/venv")
+
+if(WIN32)
+    set(VENV_PYTHON "${VENV_PATH}/Scripts/python.exe")
+else()
+    set(VENV_PYTHON "${VENV_PATH}/bin/python")
+endif()
+
+if(NOT EXISTS "${VENV_PYTHON}")
+    message(STATUS "Creating Python virtual environment...")
+    find_package(Python3 COMPONENTS Interpreter REQUIRED)
+    execute_process(
+        COMMAND ${Python3_EXECUTABLE} -m venv ${VENV_PATH}
+        RESULT_VARIABLE VENV_RET
+    )
+    if(NOT VENV_RET EQUAL 0)
+        message(FATAL_ERROR "Failed to create virtual environment")
+    endif()
+endif()
+
+message(STATUS "Ensuring cryptography is installed in venv...")
+execute_process(
+    COMMAND "${VENV_PYTHON}" -m pip install cryptography
+    RESULT_VARIABLE PIP_RET
+)
+
+if(NOT PIP_RET EQUAL 0)
+    message(FATAL_ERROR "Failed to install cryptography in venv")
+endif()
+
+set(Python3_EXECUTABLE ${VENV_PYTHON} CACHE FILEPATH "Path to venv python" FORCE)
+set(Python_EXECUTABLE ${VENV_PYTHON} CACHE FILEPATH "Path to venv python" FORCE)
+set(Python3_ROOT_DIR "${VENV_PATH}" CACHE PATH "Root dir of venv python" FORCE)
+set(Python3_FIND_VIRTUALENV FIRST CACHE STRING "Prefer venv python" FORCE)
+
+unset(Python3_FOUND CACHE)
+unset(Python3_Interpreter_FOUND CACHE)
+unset(Python3_INTERPRETER_ID CACHE)
+
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
+message(STATUS "Using Python from venv: ${Python3_EXECUTABLE}")
+
 set(NATO_PHONETIC_ALPHABET
   "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
   "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
@@ -327,6 +370,32 @@ target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,libu
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS TRUE)
 set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
+#=================== cimgui ===================
+FetchContent_Declare(
+    cimgui
+    GIT_REPOSITORY https://github.com/cimgui/cimgui.git
+    GIT_TAG        1.91.9bdock
+    GIT_SUBMODULES ""
+)
+FetchContent_Populate(cimgui)
+FetchContent_GetProperties(ImGui)
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/_deps")
+file(CREATE_LINK "${imgui_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/_deps/imgui" SYMBOLIC)
+
+add_library(cimgui STATIC ${cimgui_SOURCE_DIR}/cimgui.cpp)
+
+target_include_directories(cimgui
+    PRIVATE "${CMAKE_BINARY_DIR}/_deps"
+    PUBLIC  "${cimgui_SOURCE_DIR}"
+)
+
+target_compile_definitions(cimgui
+    INTERFACE CIMGUI_DEFINE_ENUMS_AND_STRUCTS
+)
+
+target_link_libraries(cimgui PUBLIC ImGui)
+target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,cimgui>")
+
 if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
     get_property(IOS_TOOLCHAIN_FILE GLOBAL PROPERTY IOS_TOOLCHAIN_FILE)
     include(${IOS_TOOLCHAIN_FILE})
@@ -622,16 +691,22 @@ if (MSVC)
     )
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "DEBUG: Checking what is inside the tinycc-src lib folder..."
-        COMMAND cmd /c "dir \"${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/lib/\""
+        COMMENT "Copying libtcc headers and libs..."
+        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
+        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:libtcc1>" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1$<TARGET_FILE_SUFFIX:libtcc1>"
         VERBATIM
     )
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "DEBUG: Checking what is inside the tinycc-src lib folder..."
-        COMMAND cmd /c "dir \"${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/\""
+        COMMENT "Generating .def file..."
+        COMMAND "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/tcc.exe" -impdef "$<TARGET_FILE:Ghostship>" -o "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/Ghostship.def"
         VERBATIM
     )
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMENT "Copying libtcc headers and libs..."
@@ -639,14 +714,18 @@ if (MSVC)
         COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
         COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/lib/libtcc1.a" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1.a"
+        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:libtcc1>" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1.a"
         VERBATIM
     )
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "Generating .def file..."
-        COMMAND "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/tcc.exe" -impdef "$<TARGET_FILE:Ghostship>" -o "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/Ghostship.def"
+        COMMENT "Copying libtcc headers and libs..."
+        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
+        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:libtcc1>" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1.a"
         VERBATIM
     )
 endif()
