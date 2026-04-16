@@ -90,6 +90,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-windows
+          include-hidden-files: true
           path: ghostship-release
 
   build-macos:
@@ -143,7 +144,7 @@ jobs:
       - name: Build (Universal)
         run: |
           export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
-          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DPython3_EXECUTABLE=$(which python3)
           cmake --build build-cmake --config Release --parallel 10
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
@@ -160,6 +161,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-mac
+          include-hidden-files: true
           path: |
             .tcc
             Ghostship.dmg
@@ -261,6 +263,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-linux
+          include-hidden-files: true
           path: |
             .tcc
             ghostship.appimage

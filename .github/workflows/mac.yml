@@ -52,7 +52,7 @@ jobs:
       - name: Build (Universal)
         run: |
           export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
-          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DPython3_EXECUTABLE=$(which python3)
           cmake --build build-cmake --config Release --parallel 10
       - name: Create Package
         run: |
