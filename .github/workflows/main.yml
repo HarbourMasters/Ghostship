@@ -78,7 +78,6 @@ jobs:
         run: |
           mkdir ghostship-release
           mkdir ghostship-release/debug
-          mv build/x64/Release/.tcc ghostship-release
           mv build/x64/Release/Ghostship.exe ghostship-release/
           mv build/x64/Release/ghostship.o2r ghostship-release/
           mv build/x64/Release/*.pdb ghostship-release/debug/
@@ -155,13 +154,11 @@ jobs:
           (cd build-cmake && cpack)
           mv _packages/*.dmg Ghostship.dmg
           mv README.md readme.txt
-          mv build-cmake/.tcc .
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-mac
           path: |
-            .tcc
             Ghostship.dmg
             readme.txt
       - name: Save Cache MacPorts
@@ -256,7 +253,6 @@ jobs:
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage ghostship.appimage
-          mv build-cmake/.tcc .
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
