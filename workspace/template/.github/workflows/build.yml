@@ -46,9 +46,19 @@ jobs:
           cd Ghostship/workspace/mod-source
           cmake --build build -j$(nproc)
 
+      - name: Package and Sign Mod
+        run: |
+          cd Ghostship/workspace/mod-source
+          cd output
+          zip -r ../mod.zip .
+          cd ..
+        # echo "${{ secrets.PRIVATE_KEY }}" > private_key.pem
+        # python3 ../../libultraship/tools/sign.py mod.zip private_key.pem
+        # rm private_key.pem
+
       - name: Upload Mod Artifact
         uses: actions/upload-artifact@v4
         with:
           name: mod
-          path: Ghostship/workspace/mod-source/output/
+          path: Ghostship/workspace/mod-source/mod.zip
           retention-days: 7
