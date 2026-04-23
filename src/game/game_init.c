@@ -702,7 +702,9 @@ void thread5_iteration(void){
 
     audio_game_loop_tick();
     select_gfx_pool();
-    read_controller_inputs();
+    CALL_CANCELLABLE_EVENT(GameReadInput) {
+        read_controller_inputs();
+    };
     if (CVarGetInteger("gFrameAdvance", 0) == 1) {
         bool shouldTick = CVarGetInteger("gFrameAdvanceTick", 0);
         if (shouldTick) {

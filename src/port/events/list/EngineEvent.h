@@ -6,6 +6,7 @@ typedef s32 (*LevelScriptFunction)(s16, s32);
 
 DEFINE_EVENT(GameFrameUpdate);
 DEFINE_EVENT(GameLoopTick);
+DEFINE_EVENT(GameReadInput);
 
 DEFINE_EVENT(RenderHud);
 DEFINE_EVENT(RenderTextLabels);

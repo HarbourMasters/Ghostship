@@ -103,6 +103,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(OnGameFileSave);
     REGISTER_EVENT(GameFrameUpdate);
     REGISTER_EVENT(GameLoopTick);
+    REGISTER_EVENT(GameReadInput);
     REGISTER_EVENT(BehaviorCallNative);
     REGISTER_EVENT(RenderHud);
     REGISTER_EVENT(RenderTextLabels);
