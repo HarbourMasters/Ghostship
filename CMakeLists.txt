@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 # Set the project version and language
 project(Ghostship VERSION 1.0.2 LANGUAGES C CXX ASM)
@@ -705,18 +705,7 @@ if (MSVC)
         COMMAND "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/tcc.exe" -impdef "$<TARGET_FILE:Ghostship>" -o "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/Ghostship.def"
         VERBATIM
     )
-elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    add_custom_command(
-        TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "Copying libtcc headers and libs..."
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:libtcc1>" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1.a"
-        VERBATIM
-    )
-elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+else()
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMENT "Copying libtcc headers and libs..."
