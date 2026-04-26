@@ -789,9 +789,12 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
             m->forwardVel *= 0.8f;
             break;
 
-        case ACT_FLYING_TRIPLE_JUMP:
-            set_mario_y_vel_based_on_fspeed(m, 82.0f, 0.0f);
+        case ACT_FLYING_TRIPLE_JUMP: {
+            f32 launchVelocity = 82.0f;
+            CALL_EVENT(FlyingTripleJumpLaunch, m, &launchVelocity);
+            set_mario_y_vel_based_on_fspeed(m, launchVelocity, 0.0f);
             break;
+        }
 
         case ACT_WATER_JUMP:
         case ACT_HOLD_WATER_JUMP:

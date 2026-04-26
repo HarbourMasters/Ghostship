@@ -177,6 +177,14 @@ void GhostshipMenu::AddMenuEnhancements() {
         .CVar(CVAR_CHEAT("PlayInDemo"))
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Allows normal gameplay when a demo is playing."));
+    AddWidget(path, "Always Fly on Triple Jump", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("AlwaysFlyTripleJump"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Triple jumping always starts flying, as if you always have the Wing Cap."));
+    AddWidget(path, "Triple Jump High Launch", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_CHEAT("FlyingTripleJumpHighLaunch"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Flying triple jump launches 3x higher than normal."));
 }
 
 } // namespace GhostshipGui
