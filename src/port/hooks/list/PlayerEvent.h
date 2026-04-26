@@ -43,6 +43,21 @@ DEFINE_EVENT(PlayerExecuteAction,
     u32 arg;
 );
 
+DEFINE_EVENT(SetTripleJumpAction,
+    struct MarioState* m;
+    bool* useFlyingVariant;
+);
+
+DEFINE_EVENT(FlyingActionUpdate,
+    struct MarioState* m;
+    bool* canFly;
+);
+
+DEFINE_EVENT(FlyingTripleJumpLaunch,
+    struct MarioState* m;
+    f32* launchVelocity;
+);
+
 DEFINE_EVENT(ItemCollected,
     int16_t type;
     struct MarioState* marioState;

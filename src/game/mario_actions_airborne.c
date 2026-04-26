@@ -14,6 +14,7 @@
 #include "save_file.h"
 #include "rumble_init.h"
 #include "seq_ids.h"
+#include "port/hooks/list/PlayerEvent.h"
 
 void play_flip_sounds(struct MarioState *m, s16 frame1, s16 frame2, s16 frame3) {
     s32 animFrame = m->marioObj->header.gfx.animInfo.animFrame;
@@ -1708,7 +1709,9 @@ s32 act_flying(struct MarioState *m) {
         return set_mario_action(m, ACT_GROUND_POUND, 1);
     }
 
-    if (!(m->flags & MARIO_WING_CAP)) {
+    bool canFly = (m->flags & MARIO_WING_CAP) != 0;
+    CALL_EVENT(FlyingActionUpdate, m, &canFly);
+    if (!canFly) {
         if (m->area->camera->mode == CAMERA_MODE_BEHIND_MARIO) {
             set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
         }
