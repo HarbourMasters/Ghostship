@@ -1,4 +1,5 @@
 #include <libultra/types.h>
+#include <libultraship/bridge/consolevariablebridge.h>
 
 #include "sm64.h"
 #include "mario.h"
@@ -146,7 +147,7 @@ void slide_bonk(struct MarioState *m, u32 fastAction, u32 slowAction) {
 }
 
 s32 set_triple_jump_action(struct MarioState *m, UNUSED u32 action, UNUSED u32 actionArg) {
-    if (m->flags & MARIO_WING_CAP) {
+    if ((m->flags & MARIO_WING_CAP) || CVarGetInteger("gCheats.AlwaysFlyTripleJump", 0)) {
         return set_mario_action(m, ACT_FLYING_TRIPLE_JUMP, 0);
     } else if (m->forwardVel > 20.0f) {
         return set_mario_action(m, ACT_TRIPLE_JUMP, 0);

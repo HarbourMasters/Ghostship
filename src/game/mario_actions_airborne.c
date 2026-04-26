@@ -1,4 +1,5 @@
 #include <libultra/types.h>
+#include <libultraship/bridge/consolevariablebridge.h>
 
 #include "sm64.h"
 #include "area.h"
@@ -1708,7 +1709,7 @@ s32 act_flying(struct MarioState *m) {
         return set_mario_action(m, ACT_GROUND_POUND, 1);
     }
 
-    if (!(m->flags & MARIO_WING_CAP)) {
+    if (!(m->flags & MARIO_WING_CAP) && !CVarGetInteger("gCheats.AlwaysFlyTripleJump", 0)) {
         if (m->area->camera->mode == CAMERA_MODE_BEHIND_MARIO) {
             set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
         }
