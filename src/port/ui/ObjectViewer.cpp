@@ -3,7 +3,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <dbghelp.h>
-#else
+#elif !defined(__SWITCH__)
 #include <dlfcn.h>
 #endif
 
@@ -49,7 +49,7 @@ const char* GetFunctionName(const uintptr_t addr) {
         functionNameCache[addr] = pSymbol->Name;
         return functionNameCache[addr].c_str();
     }
-#else
+#elif !defined(__SWITCH__)
     Dl_info info;
     if (dladdr(reinterpret_cast<void*>(addr), &info) && info.dli_sname) {
         functionNameCache[addr] = info.dli_sname;

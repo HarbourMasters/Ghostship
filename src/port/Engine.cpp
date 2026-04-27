@@ -304,10 +304,12 @@ void GameEngine::LoadResourceFiles() {
         "Ghostship.def",
     };
 
+#ifndef DISABLE_SCRIPTING
 #ifdef _WIN32
     context->InitScriptLoader(defines, codeVersion, "-g -Wl", includePaths, libraryPaths, libraries);
 #else
     context->InitScriptLoader(defines, codeVersion, "-g -Wl", {}, {}, {});
+#endif
 #endif
     // auto script = context->GetScriptLoader();
     // script->SetGameLibrary("F:\\HM64\\Ghostship\\build\\Debug\\Ghostship.sdk");
@@ -376,7 +378,9 @@ void GameEngine::FinishInit() {
                                                              { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
                                                              { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
 
+#ifndef DISABLE_SCRIPTING
     context->InitScriptLoader(defines, 1);
+#endif
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
@@ -455,7 +459,9 @@ void GameEngine::FinishInit() {
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
+#ifndef DISABLE_SCRIPTING
     context->GetScriptLoader()->LoadAll();
+#endif
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
@@ -793,6 +799,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             }
             case GS_COMPILE: {
                 LoadResourceFiles();
+#ifdef DISABLE_SCRIPTING
+                extractDone = true;
+#else
                 threadPool->submit_task([&]() -> void {
                     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
                     auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
@@ -803,6 +812,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     scripting->CompileAll(pre, post);
                     extractDone = true;
                 });
+#endif
                 continue;
             }
             default:
@@ -950,6 +960,9 @@ void GameEngine::ScaleImGui() {
 }
 
 void GameEngine::LoadScripts() {
+#ifdef DISABLE_SCRIPTING
+    Notification::Emit({ .message = "Scripting is disabled on this platform.", .remainingTime = 5.0f, .mute = true });
+#else
     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
@@ -989,6 +1002,7 @@ void GameEngine::LoadScripts() {
                              .remainingTime = 5.0f,
                              .mute = true });
     }
+#endif
 }
 
 void GameEngine::Create(int argc, char* argv[]) {
