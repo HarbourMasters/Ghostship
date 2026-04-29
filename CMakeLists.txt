@@ -363,9 +363,23 @@ include_directories(
   ${dr_libs_SOURCE_DIR}
 )
 
+# Force-link every object from a static library in a portable way.
+function(link_whole_archive target lib)
+    # Keep a normal link edge so PUBLIC usage requirements propagate.
+    target_link_libraries(${target} PUBLIC ${lib})
+    add_dependencies(${target} ${lib})
+    if(MSVC)
+        target_link_options(${target} PRIVATE "/WHOLEARCHIVE:$<TARGET_FILE:${lib}>")
+    elseif(APPLE)
+        target_link_options(${target} PRIVATE "-Wl,-force_load,$<TARGET_FILE:${lib}>")
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
+        target_link_options(${target} PRIVATE "SHELL:-Wl,--whole-archive $<TARGET_FILE:${lib}> -Wl,--no-whole-archive")
+    endif()
+endfunction()
+
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
-target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,libultraship>")
+link_whole_archive(${PROJECT_NAME} libultraship)
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS TRUE)
 set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
@@ -393,7 +407,7 @@ target_compile_definitions(cimgui
 )
 
 target_link_libraries(cimgui PUBLIC ImGui)
-target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,cimgui>")
+link_whole_archive(${PROJECT_NAME} cimgui)
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
     get_property(IOS_TOOLCHAIN_FILE GLOBAL PROPERTY IOS_TOOLCHAIN_FILE)
@@ -705,7 +719,7 @@ if (MSVC)
         COMMAND "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/tcc.exe" -impdef "$<TARGET_FILE:Ghostship>" -o "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/Ghostship.def"
         VERBATIM
     )
-else()
+elseif(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMENT "Copying libtcc headers and libs..."

@@ -136,7 +136,6 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
-    Ship::Switch::Init(Ship::PostInitPhase);
 #endif
 
     this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
@@ -478,6 +477,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     OTRVersion romArchiveVersion = DetectOTRVersion("sm64.o2r");
 
+    bool found = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r"));
     bool shouldRegen = !VerifyArchiveVersion(romArchiveVersion) && romArchiveVersion.major != INT16_MAX;
 
     std::filesystem::path ownPath;
@@ -496,20 +496,17 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::string file;
 
 #if defined(__SWITCH__)
-    GhostshipGui::RegisterPopup("Outdated ROM Archives",
-                                "\x1b[2;2HYou've launched the Ship with an old ROM O2R file."
-                                "\x1b[4;2HPlease regenerate a new ROM O2R and relaunch."
-                                "\x1b[6;2HPress the Home button to exit...",
-                                "OK", "", [&]() { exit(1); });
-#elif defined(__WIIU__)
-    GhostshipGui::RegisterPopup("Outdated ROM Archives",
-                                "You've launched the Ship with an old a ROM O2R file.\n\n"
-                                "Please generate a ROM O2R and relaunch.\n\n"
-                                "Press and hold the Power button to shutdown...",
-                                "OK", "", [&]() { exit(1); });
-    OSFatal();
-#endif
-
+    if (!found) {
+        Ship::Switch::ShowErrorApplet("Missing O2R ROM Archives\n\n"
+                  "The sm64.o2r file is missing.\n"
+                  "Please generate a ROM O2R using the PC version, place it on the SD card and relaunch.");
+    }
+    else if (shouldRegen) {
+        Ship::Switch::ShowErrorApplet("Outdated ROM Archives\n\n"
+                              "Your sm64.o2r were created with incompatible versions of SoH.\n"
+                              "Please regenerate a new ROM O2R using the PC version, place it on the SD card and relaunch.");
+    }
+#else
     if (!std::filesystem::exists(installPath + "/assets")) {
         GhostshipGui::RegisterPopup("Extractor assets not found",
                                     "No O2R files found. Missing 'assets/' folder needed to generate OTR file.\nPlease "
@@ -525,7 +522,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                     "now be redirected to re-extract them.");
         std::filesystem::remove("sm64.o2r");
     }
-
+#endif
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
     while (!extractDone) {
         if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0) {
@@ -896,11 +893,6 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     }
     threadPool = nullptr;
 
-#ifdef __SWITCH__
-    Ship::Switch::Init(Ship::PreInitPhase);
-#elif defined(__WIIU__)
-    Ship::WiiU::Init(appShortName);
-#endif
 
 #if not defined(__SWITCH__) && not defined(__WIIU__)
     CheckAndCreateModFolder();
