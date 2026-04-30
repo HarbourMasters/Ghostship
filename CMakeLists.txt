@@ -206,7 +206,6 @@ add_compile_definitions(
     GBI_FLOATS=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
-    IMGUI_DEFINE_MATH_OPERATORS
     AVOID_UB=1
     ENABLE_OPENGL=1
 )
