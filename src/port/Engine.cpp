@@ -452,7 +452,7 @@ void GameEngine::FinishInit() {
     Instance->LoadDictionary();
     Instance->LoadPlayerAnims();
 #if defined(__SWITCH__) || defined(__WIIU__)
-    CVarRegisterInteger("gControlNav", 1); // always enable controller nav on switch/wii u
+    CVarRegisterInteger(CVAR_IMGUI_CONTROLLER_NAV, 1); // always enable controller nav on switch/wii u
 #endif
     GhostshipGui::SetupGuiElements();
     DevConsole_Init();
