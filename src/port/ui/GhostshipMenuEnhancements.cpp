@@ -20,6 +20,12 @@ static std::unordered_map<int32_t, const char*> hudAspects = {
     { 6, "Ultrawide (21:9)" },
 };
 
+static std::unordered_map<int32_t, const char*> cameraModes = {
+    { 0, "Lakitu" },
+    { 1, "Mario" },
+    { 2, "Manual" },
+};
+
 using namespace UIWidgets;
 
 void GhostshipMenu::AddMenuEnhancements() {
@@ -124,6 +130,71 @@ void GhostshipMenu::AddMenuEnhancements() {
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
 
+    AddWidget(path, "Camera", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Default Camera Mode", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.DefaultMode"))
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .Tooltip("Primary camera mode.")
+                     .ComboMap(cameraModes)
+                     .DefaultIndex(0));
+    AddWidget(path, "Alternate Camera Mode", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.AlternateMode"))
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .Tooltip("Alternate camera (R-trigger toggle)")
+                     .ComboMap(cameraModes)
+                     .DefaultIndex(0));
+    AddWidget(path, "Horizontal Analog Camera", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.HorizontalAnalog"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Enable horizontal analog camera"));
+    AddWidget(path, "Vertical analog camera", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.VerticalAnalog"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Enable vertical analog camera"));
+    AddWidget(path, "Improved C-button Camera", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.ImprovedCButtonCamera"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Enables smooth C-button rotation (hold = continuous)"));
+    AddWidget(path, "Center camera button", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.CenterCameraButton"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("L-trigger centers camera behind Mario"));
+    AddWidget(path, "Inverted horizontal camera", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.InvertedHorizontalCamera"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Invert horizontal camera"));
+    AddWidget(path, "Inverted vertical camera", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.InvertedVerticalCamera"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Invert vertical camera"));
+    AddWidget(path, "Camera Speed", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_ENHANCEMENT("Camera.CameraSpeed"))
+        .RaceDisable(false)
+        .Options(
+          FloatSliderOptions().Min(1.0).Max(100.0).DefaultValue(32.0).ShowButtons(true)
+          .Tooltip("Analog camera sensitivity multiplier"));
+    AddWidget(path, "Camera distance", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_ENHANCEMENT("Camera.CameraDistance"))
+        .RaceDisable(false)
+        .Options(
+          FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(100.0).ShowButtons(true)
+          .Tooltip("Normal zoom distance"));
+    AddWidget(path, "Camera distance zoomed out", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_ENHANCEMENT("Camera.CameraDistanceZoomedOut"))
+        .RaceDisable(false)
+        .Options(
+          FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(150.0).ShowButtons(true)
+          .Tooltip("Zoomed-out distance"));
+    AddWidget(path, "Additional camera distance", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar(CVAR_ENHANCEMENT("Camera.AdditionalCameraDistance"))
+        .RaceDisable(false)
+        .Options(
+          FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(0.0).ShowButtons(true)
+          .Tooltip("Extra uniform distance offset"));
+
+    AddWidget(path, "Miscellaneous", WIDGET_SEPARATOR_TEXT);
     AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("DisableLOD"))
         .RaceDisable(false)
