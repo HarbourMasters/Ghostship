@@ -1234,30 +1234,38 @@ void mode_custom_camera(struct Camera *c, f32 yOff, f32 additionalDistance, s8 l
     s16 oldAreaYaw = sAreaYaw;
     s16 avoidYaw;
 
-    if (IMPROVED_C_BUTTON_CAMERA) {
-        if (MANUAL_CAMERA_SOUNDS && (gPlayer1Controller->buttonPressed & L_CBUTTONS || gPlayer1Controller->buttonPressed & R_CBUTTONS)) {
-            play_sound_cbutton_side();
-        }
-        if (gPlayer1Controller->buttonDown & L_CBUTTONS) {
-            sModeOffsetYaw -= ANALOG_AMOUNT * CAMERA_SPEED * 2.0f;
-        }
-        if (gPlayer1Controller->buttonDown & R_CBUTTONS) {
-            sModeOffsetYaw += ANALOG_AMOUNT * CAMERA_SPEED * 2.0f;
-        }
-    } else {
-        if (gPlayer1Controller->buttonPressed & R_CBUTTONS) {
-            sModeOffsetYaw += DEGREES(22.5);
-            if (MANUAL_CAMERA_SOUNDS) play_sound_cbutton_side();
-        }
-        if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
-            sModeOffsetYaw -= DEGREES(22.5);
-            if (MANUAL_CAMERA_SOUNDS) play_sound_cbutton_side();
-        }
-    }
+    // Right stick is often mapped to C-buttons at the controller config level.
+    // To avoid double-processing, only handle C-button L/R rotation when the
+    // right stick is idle (allows keyboard C-buttons to still work).
+    s8 rightStickActive = (gPlayer1Controller->stick2X != 0 || gPlayer1Controller->stick2Y != 0);
 
-    // Right analog stick horizontal rotation
+    // Right analog stick horizontal rotation (primary input)
     if (gPlayer1Controller->stick2X != 0 && gCurrDemoInput == NULL) {
         sModeOffsetYaw -= ANALOG_AMOUNT * (gPlayer1Controller->stick2X / 32.0f) * CAMERA_SPEED;
+    }
+
+    // C-button L/R rotation (fallback for keyboard users, skipped when right stick is active)
+    if (!rightStickActive) {
+        if (IMPROVED_C_BUTTON_CAMERA) {
+            if (MANUAL_CAMERA_SOUNDS && (gPlayer1Controller->buttonPressed & (L_CBUTTONS | R_CBUTTONS))) {
+                play_sound_cbutton_side();
+            }
+            if (gPlayer1Controller->buttonDown & L_CBUTTONS) {
+                sModeOffsetYaw -= ANALOG_AMOUNT * CAMERA_SPEED * 2.0f;
+            }
+            if (gPlayer1Controller->buttonDown & R_CBUTTONS) {
+                sModeOffsetYaw += ANALOG_AMOUNT * CAMERA_SPEED * 2.0f;
+            }
+        } else {
+            if (gPlayer1Controller->buttonPressed & R_CBUTTONS) {
+                sModeOffsetYaw += DEGREES(22.5);
+                if (MANUAL_CAMERA_SOUNDS) play_sound_cbutton_side();
+            }
+            if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
+                sModeOffsetYaw -= DEGREES(22.5);
+                if (MANUAL_CAMERA_SOUNDS) play_sound_cbutton_side();
+            }
+        }
     }
 
     // L-trigger centers camera behind Mario
