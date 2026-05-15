@@ -13,6 +13,7 @@
 #define CAMERA_DISTANCE CVarGetFloat("gEnhancements.Camera.CameraDistance", 100)
 #define CAMERA_DISTANCE_ZOOMED_OUT CVarGetFloat("gEnhancements.Camera.CameraDistanceZoomedOut", 150)
 #define ADDITIONAL_CAMERA_DISTANCE CVarGetFloat("gEnhancements.Camera.AdditionalCameraDistance", 0)
+#define MANUAL_CAMERA_SOUNDS CVarGetInteger("gEnhancements.Camera.ManualCameraSounds", 1)
 
 #define ANALOG_AMOUNT (12 * (1 - INVERTED_HORIZONTAL_CAMERA * 2))
 #define ANALOG_AMOUNT_VERTICAL (12 * (1 - INVERTED_VERTICAL_CAMERA * 2))

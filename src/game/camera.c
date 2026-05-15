@@ -1234,10 +1234,8 @@ void mode_custom_camera(struct Camera *c, f32 yOff, f32 additionalDistance, s8 l
     s16 oldAreaYaw = sAreaYaw;
     s16 avoidYaw;
 
-    radial_camera_input(c, 0.f);
-
     if (IMPROVED_C_BUTTON_CAMERA) {
-        if (gPlayer1Controller->buttonPressed & L_CBUTTONS || gPlayer1Controller->buttonPressed & R_CBUTTONS) {
+        if (MANUAL_CAMERA_SOUNDS && (gPlayer1Controller->buttonPressed & L_CBUTTONS || gPlayer1Controller->buttonPressed & R_CBUTTONS)) {
             play_sound_cbutton_side();
         }
         if (gPlayer1Controller->buttonDown & L_CBUTTONS) {
@@ -1249,11 +1247,11 @@ void mode_custom_camera(struct Camera *c, f32 yOff, f32 additionalDistance, s8 l
     } else {
         if (gPlayer1Controller->buttonPressed & R_CBUTTONS) {
             sModeOffsetYaw += DEGREES(22.5);
-            play_sound_cbutton_side();
+            if (MANUAL_CAMERA_SOUNDS) play_sound_cbutton_side();
         }
         if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
             sModeOffsetYaw -= DEGREES(22.5);
-            play_sound_cbutton_side();
+            if (MANUAL_CAMERA_SOUNDS) play_sound_cbutton_side();
         }
     }
 
@@ -1266,7 +1264,7 @@ void mode_custom_camera(struct Camera *c, f32 yOff, f32 additionalDistance, s8 l
     if (CENTER_CAMERA_BUTTON) {
         if (gPlayer1Controller->buttonPressed & L_TRIG) {
             sModeOffsetYaw = sMarioCamState->faceAngle[1] + DEGREES(180);
-            play_sound_rbutton_changed();
+            if (MANUAL_CAMERA_SOUNDS) play_sound_rbutton_changed();
         }
         if (gPlayer1Controller->buttonDown & L_TRIG) {
             camera_approach_s16_symmetric_bool(&sModeOffsetYaw, sMarioCamState->faceAngle[1] + DEGREES(180), LROTATE_SPEED);

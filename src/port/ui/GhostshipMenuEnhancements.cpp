@@ -193,6 +193,10 @@ void GhostshipMenu::AddMenuEnhancements() {
         .Options(
           FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(0.0).ShowButtons(true)
           .Tooltip("Extra uniform distance offset"));
+    AddWidget(path, "Manual camera sounds", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Camera.ManualCameraSounds"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Play sounds when using manual camera controls (C-buttons, L-trigger)"));
 
     AddWidget(path, "Miscellaneous", WIDGET_SEPARATOR_TEXT);
     AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
