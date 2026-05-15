@@ -948,12 +948,15 @@ s32 update_8_directions_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
 /**
  * Update the camera position/focus for manual (custom) camera mode.
  * Computes distance based on zoom state and pitch angle, then focuses on Mario.
+ * Steps the camera closer to Mario if walls obstruct the view.
  */
 s32 update_custom_camera(struct Camera *c, Vec3f focus, Vec3f pos, f32 yOff, f32 additionalDistance, s8 dynamic) {
     s16 camYaw = sModeOffsetYaw;
     s16 pitch = 0.0f;
     f32 posY;
     f32 focusY;
+    struct WallCollisionData colData;
+    s32 i;
 
     f32 dist = (sLakituDist + (((gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) ? CAMERA_DISTANCE_ZOOMED_OUT : CAMERA_DISTANCE) + ADDITIONAL_CAMERA_DISTANCE) * 10.0f + additionalDistance)
         * (((MIN(sLakituPitch, VERTICAL_MAX_PITCH) + VERTICAL_MIN) / (VERTICAL_MIN + VERTICAL_MAX_PITCH)) * 1.25f + 0.5f);
@@ -962,6 +965,27 @@ s32 update_custom_camera(struct Camera *c, Vec3f focus, Vec3f pos, f32 yOff, f32
 
     calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
     focus_on_mario(focus, pos, posY + yOff, focusY + yOff, dist, pitch, camYaw);
+
+    // Walk from camera toward Mario checking for walls. If a wall is found,
+    // pull the camera closer to avoid clipping through geometry.
+    for (i = 0; i < 5; i++) {
+        f32 checkDist = dist * (1.0f - (f32)i / 5.0f);
+        colData.x = sMarioCamState->pos[0] + (pos[0] - sMarioCamState->pos[0]) * (checkDist / dist);
+        colData.y = sMarioCamState->pos[1] + (pos[1] - sMarioCamState->pos[1]) * (checkDist / dist);
+        colData.z = sMarioCamState->pos[2] + (pos[2] - sMarioCamState->pos[2]) * (checkDist / dist);
+        colData.radius = 150.0f;
+        colData.offsetY = 100.0f;
+
+        if (find_wall_collisions(&colData) != 0) {
+            // Found a wall — pull camera to just before the collision point
+            f32 pullDist = checkDist * 0.85f;
+            if (pullDist < dist) {
+                dist = pullDist;
+                focus_on_mario(focus, pos, posY + yOff, focusY + yOff, dist, pitch, camYaw);
+            }
+            break;
+        }
+    }
 
     if (dynamic) {
         pan_ahead_of_player(c, TRUE);
@@ -1302,8 +1326,15 @@ void mode_custom_camera(struct Camera *c, f32 yOff, f32 additionalDistance, s8 l
     sAreaYawChange = sAreaYaw - oldAreaYaw;
     set_camera_height(c, pos[1]);
 
-    if (dynamic && rotate_camera_around_walls(c, c->pos, &avoidYaw, 0x400) > 0) {
-        camera_approach_s16_symmetric_bool(&sModeOffsetYaw, avoidYaw, 0x400);
+    if (dynamic) {
+        s32 wallStatus = rotate_camera_around_walls(c, c->pos, &avoidYaw, 0x600);
+        if (wallStatus == 3) {
+            // Wall is directly blocking Mario — rotate aggressively
+            approach_s16_asymptotic_bool(&sModeOffsetYaw, avoidYaw, 10);
+        } else if (wallStatus > 0) {
+            // Wall is nearby — rotate gently
+            camera_approach_s16_symmetric_bool(&sModeOffsetYaw, avoidYaw, 0x600);
+        }
     }
 }
 
@@ -3117,6 +3148,7 @@ void update_lakitu(struct Camera *c) {
 /**
  * Dispatcher for manual camera mode.
  * Routes to mode_custom_camera with per-context parameters.
+ * Clamps pitch in enclosed/indoor areas to prevent wall clipping.
  */
 void manual_cam_modes(struct Camera *c) {
     switch (c->mode) {
@@ -3134,6 +3166,14 @@ void manual_cam_modes(struct Camera *c) {
             break;
         case CAMERA_MODE_INSIDE_CANNON:
             mode_cannon_camera(c);
+            break;
+        // Indoor/enclosed area modes — limit pitch to prevent excessive zoom
+        case CAMERA_MODE_CLOSE:
+        case CAMERA_MODE_FIXED:
+        case CAMERA_MODE_SPIRAL_STAIRS:
+        case CAMERA_MODE_PARALLEL_TRACKING:
+            sLakituPitch = MIN(MAX(sLakituPitch, -VERTICAL_MIN), VERTICAL_MAX_LIMITED);
+            mode_custom_camera(c, 150.0f, 0.0f, TRUE, TRUE, TRUE);
             break;
         default:
             mode_custom_camera(c, 150.0f, 0.0f, FALSE, TRUE, TRUE);
