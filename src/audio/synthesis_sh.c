@@ -558,6 +558,25 @@ u64 *synthesis_process_note(s32 noteIndex, struct NoteSubEu *noteSubEu, struct N
                         sp84 = 0;
                         break;
                     case CODEC_SKIP: goto skip;
+                    case CODEC_S16: {
+                        // [Port] [Custom audio] raw 16-bit PCM — load directly, bypass ADPCM decode
+                        size_t totalFrames = (size_t)audioBookSample->numFrames;
+                        size_t bytePos = (size_t)synthesisState->samplePosInt * 2;
+                        aClearBuffer(cmd++, DMEM_ADDR_UNCOMPRESSED_NOTE + s5,
+                                     (samplesLenAdjusted - nAdpcmSamplesProcessed + 0x10) * 2);
+                        if (sampleAddr != NULL && totalFrames > 0 &&
+                            synthesisState->samplePosInt < (s32)totalFrames) {
+                            size_t availBytes = totalFrames * 2 - bytePos;
+                            size_t bytesToLoad = (size_t)nSamplesToProcess * 2;
+                            if (bytesToLoad > availBytes) bytesToLoad = availBytes;
+                            aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(sampleAddr + bytePos),
+                                        DMEM_ADDR_UNCOMPRESSED_NOTE + s5, (u32)bytesToLoad);
+                        }
+                        sp130 = 0;
+                        nAdpcmSamplesProcessed += nSamplesToProcess;
+                        s5 += nSamplesToProcess * 2;
+                        goto skip;
+                    }
                 }
                 if (t0 != 0) {
                     temp = (synthesisState->samplePosInt + sp88 - s2) / 16;

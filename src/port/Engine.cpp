@@ -368,7 +368,6 @@ void GameEngine::FinishInit() {
     SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
                 (char*)gGitCommitHash);
 
-    context->InitGfxDebugger();
     context->InitFileDropMgr();
     context->InitCrashHandler();
     std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
@@ -392,6 +391,8 @@ void GameEngine::FinishInit() {
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank",
                                     static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY,
+                                    "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleXMLFactoryV0>(), RESOURCE_FORMAT_XML,
                                     "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY,
                                     "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
@@ -1115,7 +1116,7 @@ void GameEngine::AudioInit() {
     }
 
     for (auto& sequence : *sequences_files) {
-        if (sequence.find(".m64") != std::string::npos) {
+        if (sequence.find(".") != std::string::npos) {
             continue;
         }
         auto path = "__OTR__" + sequence;
@@ -1275,12 +1276,12 @@ extern "C" float GameEngine_GetAspectRatio() {
 extern "C" CtlEntry* GameEngine_LoadBank(const uint8_t bankId) {
     const auto engine = GameEngine::Instance;
 
-    if (bankId >= engine->bankMapTable.size()) {
-        return nullptr;
+    if ((size_t)bankId < engine->banksTable.size() && engine->banksTable[bankId] != nullptr) {
+        return engine->banksTable[bankId];
     }
 
-    if (engine->banksTable[bankId] != nullptr) {
-        return engine->banksTable[bankId];
+    if (bankId >= engine->bankMapTable.size()) {
+        return nullptr;
     }
 
     for (auto& bank : engine->bankMapTable) {

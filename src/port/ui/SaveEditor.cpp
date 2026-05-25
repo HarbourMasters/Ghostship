@@ -11,6 +11,7 @@
 #include <string>
 #include <imgui.h>
 #include <libultraship/libultraship.h>
+#include "fast/Fast3dGui.h"
 #include "GhostshipGui.hpp"
 #include "port/ui/cvar_prefixes.h"
 
@@ -131,9 +132,11 @@ void RandoSaveFile() {
 void HandlePopUpContext(RandoCheckId randoCheckId) {
     if (shouldPopUpOpen && ImGui::BeginPopup("ObjectSubMenu")) {
         for (auto& [randoItemId, textureId] : objectMap) {
-            if (ImGui::ImageButton(std::to_string(randoItemId).c_str(),
-                                   Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(textureId),
-                                   ImVec2(32.0f, 32.0f))) {
+            if (ImGui::ImageButton(
+                    std::to_string(randoItemId).c_str(),
+                    std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                        ->GetTextureByName(textureId),
+                    ImVec2(32.0f, 32.0f))) {
                 // randoStaticCheck.randoItemId = randoItemId;
                 auto findIt =
                     std::find_if(Rando::Logic::shuffledPool.begin(), Rando::Logic::shuffledPool.end(),
@@ -154,7 +157,8 @@ void HandlePopUpContext(RandoCheckId randoCheckId) {
         for (int i = 0; i < RA_ACT_MAX; i++) {
             if (ImGui::ImageButton(
                     std::to_string(i).c_str(),
-                    Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(digitList[i + 1]),
+                    std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                        ->GetTextureByName(digitList[i + 1]),
                     ImVec2(32.0f, 32.0f))) {
                 auto findIt =
                     std::find_if(Rando::Logic::shuffledPool.begin(), Rando::Logic::shuffledPool.end(),
@@ -368,11 +372,11 @@ void SaveEditorWindow::DrawElement() {
                                                        Rando::StaticData::Checks[entry.randoCheckId].name);
 
                                     ImGui::TableNextColumn();
-                                    if (ImGui::ImageButton(
-                                            randoStaticCheck.name,
-                                            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(
-                                                texture),
-                                            ImVec2(32.0f, 32.0f))) {
+                                    if (ImGui::ImageButton(randoStaticCheck.name,
+                                                           std::static_pointer_cast<Fast::Fast3dGui>(
+                                                               Ship::Context::GetInstance()->GetWindow()->GetGui())
+                                                               ->GetTextureByName(texture),
+                                                           ImVec2(32.0f, 32.0f))) {
                                         popUpId = randoStaticCheck.randoCheckId;
                                         shouldPopUpOpen = true;
                                         ImGui::OpenPopup("ObjectSubMenu");
@@ -381,11 +385,11 @@ void SaveEditorWindow::DrawElement() {
 
                                     ImGui::TableNextColumn();
                                     if (entry.randoItemId == RI_STAR) {
-                                        if (ImGui::ImageButton(
-                                                std::to_string(entry.randoAct).c_str(),
-                                                Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(
-                                                    digitList[entry.randoAct + 1]),
-                                                ImVec2(32.0f, 32.0f))) {
+                                        if (ImGui::ImageButton(std::to_string(entry.randoAct).c_str(),
+                                                               std::static_pointer_cast<Fast::Fast3dGui>(
+                                                                   Ship::Context::GetInstance()->GetWindow()->GetGui())
+                                                                   ->GetTextureByName(digitList[entry.randoAct + 1]),
+                                                               ImVec2(32.0f, 32.0f))) {
                                             popUpId = randoStaticCheck.randoCheckId;
                                             shouldPopUpOpen = true;
                                             ImGui::OpenPopup("ActSubMenu");

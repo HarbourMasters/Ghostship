@@ -7,49 +7,6 @@ include(FetchContent)
 include(cmake/ghostship-cvars.cmake)
 include(cmake/lus-cvars.cmake)
 
-set(VENV_PATH "${CMAKE_CURRENT_BINARY_DIR}/venv")
-
-if(WIN32)
-    set(VENV_PYTHON "${VENV_PATH}/Scripts/python.exe")
-else()
-    set(VENV_PYTHON "${VENV_PATH}/bin/python")
-endif()
-
-if(NOT EXISTS "${VENV_PYTHON}")
-    message(STATUS "Creating Python virtual environment...")
-    find_package(Python3 COMPONENTS Interpreter REQUIRED)
-    execute_process(
-        COMMAND ${Python3_EXECUTABLE} -m venv ${VENV_PATH}
-        RESULT_VARIABLE VENV_RET
-    )
-    if(NOT VENV_RET EQUAL 0)
-        message(FATAL_ERROR "Failed to create virtual environment")
-    endif()
-endif()
-
-message(STATUS "Ensuring cryptography is installed in venv...")
-execute_process(
-    COMMAND "${VENV_PYTHON}" -m pip install cryptography
-    RESULT_VARIABLE PIP_RET
-)
-
-if(NOT PIP_RET EQUAL 0)
-    message(FATAL_ERROR "Failed to install cryptography in venv")
-endif()
-
-set(Python3_EXECUTABLE ${VENV_PYTHON} CACHE FILEPATH "Path to venv python" FORCE)
-set(Python_EXECUTABLE ${VENV_PYTHON} CACHE FILEPATH "Path to venv python" FORCE)
-set(Python3_ROOT_DIR "${VENV_PATH}" CACHE PATH "Root dir of venv python" FORCE)
-set(Python3_FIND_VIRTUALENV FIRST CACHE STRING "Prefer venv python" FORCE)
-
-unset(Python3_FOUND CACHE)
-unset(Python3_Interpreter_FOUND CACHE)
-unset(Python3_INTERPRETER_ID CACHE)
-
-find_package(Python3 REQUIRED COMPONENTS Interpreter)
-
-message(STATUS "Using Python from venv: ${Python3_EXECUTABLE}")
-
 set(NATO_PHONETIC_ALPHABET
   "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
   "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
@@ -341,6 +298,13 @@ if (MSVC)
   endif()
 endif()
 
+FetchContent_Declare(
+    dr_libs
+    GIT_REPOSITORY https://github.com/mackron/dr_libs.git
+    GIT_TAG da35f9d6c7374a95353fd1df1d394d44ab66cf01
+)
+FetchContent_MakeAvailable(dr_libs)
+
 #==============================================================================#
 # Libultraship Integration                                                     #
 #==============================================================================#
@@ -363,9 +327,29 @@ include_directories(
   ${dr_libs_SOURCE_DIR}
 )
 
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    set(ENABLE_SCRIPTING ON CACHE BOOL "" FORCE)
+else()
+    #=================== tinyxml2 ===================
+    # devkitPro portlibs may have tinyxml2 headers/lib but no CMake config that
+    # exports tinyxml2::tinyxml2. Always fetch from source so both this project
+    # and libultraship's find_package(tinyxml2 REQUIRED) get a proper target.
+    set(tinyxml2_BUILD_TESTING OFF)
+    FetchContent_Declare(
+        tinyxml2
+        GIT_REPOSITORY https://github.com/leethomason/tinyxml2.git
+        GIT_TAG 10.0.0
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_MakeAvailable(tinyxml2)
+endif()
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
-target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,libultraship>")
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
+else()
+    target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,libultraship>")
+endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS TRUE)
 set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
@@ -376,6 +360,9 @@ FetchContent_Declare(
     GIT_TAG        1.91.9bdock
     GIT_SUBMODULES ""
 )
+if(POLICY CMP0169)
+    cmake_policy(SET CMP0169 OLD)
+endif()
 FetchContent_Populate(cimgui)
 FetchContent_GetProperties(ImGui)
 file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/_deps")
@@ -393,7 +380,11 @@ target_compile_definitions(cimgui
 )
 
 target_link_libraries(cimgui PUBLIC ImGui)
-target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,cimgui>")
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    target_link_libraries(${PROJECT_NAME} PRIVATE cimgui)
+else()
+    target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,cimgui>")
+endif()
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
     get_property(IOS_TOOLCHAIN_FILE GLOBAL PROPERTY IOS_TOOLCHAIN_FILE)
@@ -682,41 +673,15 @@ add_custom_command(
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
 )
 
-if (MSVC)
-    add_custom_command(
-        TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "Packaging all generated .lib files into Ghostship.sdk..."
-        COMMAND cmd /c "lib.exe /NOLOGO /OUT:\"$<TARGET_FILE_DIR:Ghostship>/Ghostship.sdk\" \"$<TARGET_FILE_DIR:Ghostship>/*.lib\""
-    )
-    add_custom_command(
-        TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "Copying libtcc headers and libs..."
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:libtcc1>" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1$<TARGET_FILE_SUFFIX:libtcc1>"
-        VERBATIM
-    )
-    add_custom_command(
-        TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "Generating .def file..."
-        COMMAND "${CMAKE_BINARY_DIR}/_deps/tinycc-src/win32/tcc.exe" -impdef "$<TARGET_FILE:Ghostship>" -o "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/Ghostship.def"
-        VERBATIM
-    )
+include(${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupTccRuntime.cmake)
+
+set(PROPERTY_READER_GUARD_DISABLED TRUE)
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    lus_setup_tcc_runtime(${PROJECT_NAME} RESOURCES_DIR "../Resources/.tcc")
 else()
-    add_custom_command(
-        TARGET ${PROJECT_NAME} POST_BUILD
-        COMMENT "Copying libtcc headers and libs..."
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/_deps/tinycc-src/include/" "$<TARGET_FILE_DIR:Ghostship>/.tcc/include/"
-        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:libtcc1>" "$<TARGET_FILE_DIR:Ghostship>/.tcc/lib/libtcc1.a"
-        VERBATIM
-    )
+    lus_setup_tcc_runtime(${PROJECT_NAME})
 endif()
+unset(PROPERTY_READER_GUARD_DISABLED)
 
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 include(ExternalProject)
@@ -754,13 +719,11 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
   install(FILES "${CMAKE_BINARY_DIR}/ghostship.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
   install(DIRECTORY "${CMAKE_SOURCE_DIR}/assets/" DESTINATION ./assets COMPONENT ${PROJECT_NAME})
   install(FILES "${CMAKE_BINARY_DIR}/config.yml" DESTINATION . COMPONENT ${PROJECT_NAME})
-  install(DIRECTORY "${CMAKE_BINARY_DIR}/.tcc/" DESTINATION ./.tcc COMPONENT ${PROJECT_NAME})
 endif()
 
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
   install(FILES $<TARGET_PDB_FILE:${PROJECT_NAME}> DESTINATION ./debug COMPONENT ${PROJECT_NAME})
   install(FILES "${CMAKE_BINARY_DIR}/ghostship.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
-  install(DIRECTORY "${CMAKE_BINARY_DIR}/.tcc/" DESTINATION ./.tcc COMPONENT ${PROJECT_NAME})
 endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
@@ -783,12 +746,13 @@ add_custom_target(CreateOSXIcons
     add_dependencies(${PROJECT_NAME} CreateOSXIcons)
     configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ../MacOS COMPONENT Ghostship)
-INSTALL(TARGETS libtcc DESTINATION ../MacOS COMPONENT Ghostship)
+if(ENABLE_SCRIPTING)
+    INSTALL(FILES "$<TARGET_FILE:libtcc>" DESTINATION ../MacOS COMPONENT Ghostship)
+endif()
 INSTALL(FILES ${CMAKE_BINARY_DIR}/gamecontrollerdb.txt DESTINATION ../MacOS COMPONENT Ghostship)
 INSTALL(FILES ${CMAKE_BINARY_DIR}/ghostship.o2r DESTINATION ../Resources COMPONENT Ghostship)
 INSTALL(FILES ${CMAKE_BINARY_DIR}/config.yml DESTINATION ../Resources COMPONENT Ghostship)
 INSTALL(DIRECTORY ${CMAKE_BINARY_DIR}/assets/ DESTINATION ../Resources/assets COMPONENT Ghostship)
-INSTALL(DIRECTORY ${CMAKE_BINARY_DIR}/.tcc/ DESTINATION ../Resources/.tcc COMPONENT Ghostship)
 
 # Fix bundle to include and relink all dependencies
 install(CODE "

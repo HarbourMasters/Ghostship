@@ -163,4 +163,18 @@
 	gsSPSetGeometryMode(s),						\
 	gsSPClearGeometryMode(c)
 
+#define gDPLoadTextureBlockWide(pkt, timg, fmt, siz, width, height, pal, cms, cmt, masks, maskt, shifts, shiftt)          \
+    _DW({                                                                                                             \
+        gDPSetTextureImage(pkt, fmt, siz##_LOAD_BLOCK, 1, timg);                                                      \
+        gDPSetTile(pkt, fmt, siz##_LOAD_BLOCK, 0, 0, G_TX_LOADTILE, 0, cmt, maskt, shiftt, cms, masks, shifts);       \
+        gDPLoadSync(pkt);                                                                                             \
+        gDPLoadBlockWide(pkt, G_TX_LOADTILE, 0, 0, (((width) * (height) + siz##_INCR) >> siz##_SHIFT) - 1,                \
+                     CALC_DXT(width, siz##_BYTES));                                                                   \
+        gDPPipeSync(pkt);                                                                                             \
+        gDPSetTile(pkt, fmt, siz, (((width)*siz##_LINE_BYTES) + 7) >> 3, 0, G_TX_RENDERTILE, pal, cmt, maskt, shiftt, \
+                   cms, masks, shifts);                                                                               \
+        gDPSetTileSize(pkt, G_TX_RENDERTILE, 0, 0, ((width)-1) << G_TEXTURE_IMAGE_FRAC,                               \
+                       ((height)-1) << G_TEXTURE_IMAGE_FRAC);                                                         \
+    })
+
 #endif // MACROS_H

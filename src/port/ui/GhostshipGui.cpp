@@ -18,6 +18,7 @@
 
 #include <ship/window/gui/ConsoleWindow.h>
 #include <ship/window/gui/EventDebuggerWindow.h>
+#include <libultraship/window/gui/GfxDebuggerWindow.h>
 
 namespace GhostshipGui {
 // MARK: - Delegates
@@ -32,6 +33,7 @@ std::shared_ptr<ObjectViewer> mObjectViewer;
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<AchievementsWindow> mAchievementsWindow;
 std::shared_ptr<Ship::EventDebuggerWindow> mEventDebuggerWindow;
+std::shared_ptr<LUS::GfxDebuggerWindow> mGfxDebuggerWindow;
 
 std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
@@ -69,6 +71,9 @@ void SetupGuiElements() {
 
     mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(CVAR_WINDOW("EventDebugger"), "Event Debugger");
     gui->AddGuiWindow(mEventDebuggerWindow);
+
+    mGfxDebuggerWindow = std::make_shared<LUS::GfxDebuggerWindow>(CVAR_WINDOW("GfxDebugger"), "Gfx Debugger");
+    gui->AddGuiWindow(mGfxDebuggerWindow);
 
     mObjectViewer = std::make_shared<ObjectViewer>(CVAR_WINDOW("ObjectViewer"), "Object Viewer##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mObjectViewer);
@@ -131,6 +136,7 @@ void Destroy() {
     mRandoEntranceTrackerSettingsWindow = nullptr;
     mConsoleWindow = nullptr;
     mObjectViewer = nullptr;
+    mGfxDebuggerWindow = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

@@ -149,6 +149,17 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(MusicChanged);
     REGISTER_EVENT(GameEnded);
 
+    // Register audio events
+    REGISTER_EVENT(PlayMusicEvent);
+    REGISTER_EVENT(StopMusicEvent);
+    REGISTER_EVENT(FadeoutMusicEvent);
+    REGISTER_EVENT(PlaySecondaryMusicEvent);
+    REGISTER_EVENT(PlaySfxEvent);
+    REGISTER_EVENT(PlayDialogSoundEvent);
+    REGISTER_EVENT(AudioUpdateEvent);
+    REGISTER_EVENT(SeqLayerPreNoteEvent);
+    REGISTER_EVENT(SeqLayerPostNoteEvent);
+
     Rando::Init();
     LoadGuiTextures();
 }
