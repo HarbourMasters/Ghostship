@@ -1,6 +1,6 @@
 #include "Engine.h"
 #include "ui/GhostshipGui.hpp"
-#ifndef __SWITCH__
+#if !defined(__SWITCH__) && !defined(__WIIU__)
 #include "GameExtractor.h"
 #endif
 #include "ShipInit.hpp"
@@ -165,6 +165,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitResourceManager({ assets_path }, {}, 3);
     this->context->InitConsole();
 
+#ifdef __SWITCH__
     this->context->GetResourceManager()->GetArchiveManager()->SetUntrustedArchiveHandler(
         [](Ship::Archive& archive, Ship::KeystoreEntry& key) {
             const auto info = archive.GetManifest();
@@ -207,6 +208,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
             return buttonid == 1;
         });
+#endif
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     this->context->InitWindow(gsFast3dWindow);
@@ -486,6 +488,23 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     bool shouldRegen = !VerifyArchiveVersion(romArchiveVersion) && romArchiveVersion.major != INT16_MAX;
 
+#ifdef __SWITCH__
+    {
+        const bool romO2RExists =
+            std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
+        if (shouldRegen || !romO2RExists) {
+            SPDLOG_ERROR("ROM archive missing or outdated on Switch, please regenerate and relaunch.");
+            exit(1);
+        }
+        LoadResourceFiles();
+        Ship::Switch::Init(Ship::PreInitPhase);
+        if (menuWasVisible) {
+            gui->GetMenu()->Show();
+        }
+        return;
+    }
+#endif
+
     std::filesystem::path ownPath;
     std::vector<std::string> args;
     if (argc > 1) {
@@ -493,7 +512,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             args.push_back(argv[argc]);
         }
     }
+#if !defined(__SWITCH__) && !defined(__WIIU__)
     GameExtractor extract;
+#endif
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;
     std::atomic<size_t> extractCount{ 0 }, totalExtract{ 0 };
@@ -501,13 +522,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
 
-#if defined(__SWITCH__)
-    GhostshipGui::RegisterPopup("Outdated ROM Archives",
-                                "\x1b[2;2HYou've launched the Ship with an old ROM O2R file."
-                                "\x1b[4;2HPlease regenerate a new ROM O2R and relaunch."
-                                "\x1b[6;2HPress the Home button to exit...",
-                                "OK", "", [&]() { exit(1); });
-#elif defined(__WIIU__)
+#if defined(__WIIU__)
     GhostshipGui::RegisterPopup("Outdated ROM Archives",
                                 "You've launched the Ship with an old a ROM O2R file.\n\n"
                                 "Please generate a ROM O2R and relaunch.\n\n"
@@ -723,6 +738,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 break;
             }
             case ES_EXTRACT: {
+#if !defined(__SWITCH__) && !defined(__WIIU__)
                 switch (promptStep) {
                     case PS_FILE_CHECK: {
                         const bool romO2RExists =
@@ -783,6 +799,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     default:
                         break;
                 }
+#endif
                 break;
             }
             case ES_VERIFY: {
@@ -900,9 +917,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     }
     threadPool = nullptr;
 
-#ifdef __SWITCH__
-    Ship::Switch::Init(Ship::PreInitPhase);
-#elif defined(__WIIU__)
+#if defined(__WIIU__)
     Ship::WiiU::Init(appShortName);
 #endif
 
