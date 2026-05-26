@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include "ui/GhostshipGui.hpp"
+#ifndef __SWITCH__
 #include "GameExtractor.h"
+#endif
 #include "ShipInit.hpp"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
@@ -32,7 +34,9 @@
 #include <SDL2/SDL_net.h>
 #endif
 
+#ifndef __SWITCH__
 #include "ship/scripting/ScriptLoader.h"
+#endif
 #include "ship/resource/type/Json.h"
 #include <fast/resource/ResourceType.h>
 #include <ship/window/gui/Fonts.h>
@@ -283,6 +287,7 @@ void CheckAndCreateModFolder() {
 }
 
 void GameEngine::LoadResourceFiles() {
+#ifndef __SWITCH__
     constexpr int codeVersion = 1;
     std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
                                                              { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
@@ -312,6 +317,7 @@ void GameEngine::LoadResourceFiles() {
     // auto script = context->GetScriptLoader();
     // script->SetGameLibrary("F:\\HM64\\Ghostship\\build\\Debug\\Ghostship.sdk");
     // system("setup_x64.bat");
+#endif // __SWITCH__
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
@@ -358,8 +364,9 @@ void GameEngine::LoadResourceFiles() {
         if (info.Main.empty()) {
             continue;
         }
-
+#ifndef __SWITCH__
         this->totalScripts++;
+#endif
     }
 }
 
@@ -370,12 +377,14 @@ void GameEngine::FinishInit() {
 
     context->InitFileDropMgr();
     context->InitCrashHandler();
+#ifndef __SWITCH__
     std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
                                                              { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
                                                              { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
                                                              { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
 
     context->InitScriptLoader(defines, 1);
+#endif
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
@@ -456,7 +465,9 @@ void GameEngine::FinishInit() {
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
+#ifndef __SWITCH__
     context->GetScriptLoader()->LoadAll();
+#endif
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
@@ -795,6 +806,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             case GS_COMPILE: {
                 LoadResourceFiles();
                 threadPool->submit_task([&]() -> void {
+#ifndef __SWITCH__
                     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
                     auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
                         auto& info = archive->GetManifest();
@@ -802,6 +814,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     };
                     auto post = [&]() { compileCount++; };
                     scripting->CompileAll(pre, post);
+#endif
                     extractDone = true;
                 });
                 continue;
@@ -951,6 +964,7 @@ void GameEngine::ScaleImGui() {
 }
 
 void GameEngine::LoadScripts() {
+#ifndef __SWITCH__
     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
@@ -990,6 +1004,7 @@ void GameEngine::LoadScripts() {
                              .remainingTime = 5.0f,
                              .mute = true });
     }
+#endif // __SWITCH__
 }
 
 void GameEngine::Create(int argc, char* argv[]) {

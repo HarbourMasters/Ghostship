@@ -148,7 +148,9 @@ void GhostshipMenu::InitElement() {
     AddMenuRando();
     AddMenuAchievements();
     AddMenuDevTools();
+#ifndef __SWITCH__
     AddModMenu();
+#endif
 
     if (CVarGetInteger(CVAR_SETTING("Menu.SidebarSearch"), 0)) {
         InsertSidebarSearch();

@@ -143,6 +143,7 @@ void GhostshipMenu::AddMenuDevTools() {
         .Options(WindowButtonOptions().Tooltip("Enables the separate Gfx Debugger Window."));
 }
 
+#ifndef __SWITCH__
 void GhostshipMenu::AddModMenu() {
     auto mods = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetArchives();
     AddMenuEntry("Mods", CVAR_SETTING("Menu.ModsSidebarSection"));
@@ -250,5 +251,6 @@ void GhostshipMenu::AddModMenu() {
         AddWidget(path, "##Spacer_" + info.Name, WIDGET_SEPARATOR).Options(UIWidgets::WidgetOptions{});
     }
 };
+#endif // __SWITCH__
 
 } // namespace GhostshipGui
