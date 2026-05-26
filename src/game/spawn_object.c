@@ -236,6 +236,7 @@ struct Object *allocate_object(struct ObjectNode *objList) {
     }
 
     // Initialize object fields
+    geo_node_assign_new_uid(&obj->header.gfx.node);
 
     obj->activeFlags = ACTIVE_FLAG_ACTIVE | ACTIVE_FLAG_UNK8;
     obj->parentObj = obj;

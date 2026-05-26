@@ -362,6 +362,7 @@ extern_s Vec3f gVec3fOne;
 extern_s Vec3s gVec3sOne;
 
 extern_s void init_scene_graph_node_links(struct GraphNode *graphNode, s32 type);
+extern_s void geo_node_assign_new_uid(struct GraphNode *graphNode);
 
 extern_s struct GraphNodeRoot *init_graph_node_root(struct AllocOnlyPool *pool, struct GraphNodeRoot *graphNode,
                                            s16 areaIndex, s16 x, s16 y, s16 width, s16 height);

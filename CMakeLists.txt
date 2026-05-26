@@ -134,14 +134,14 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 if (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 set(CMAKE_C_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
-set(CMAKE_C_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -fno-strict-aliasing -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
 add_compile_definitions(
     _LARGEFILE64_SOURCE=1
     _POSIX_C_SOURCE=200809L
 )
 else()
-set(CMAKE_C_FLAGS_RELEASE "-O1 -DNDEBUG")
+set(CMAKE_C_FLAGS_RELEASE "-O1 -fno-strict-aliasing -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O1 -DNDEBUG")
 set(CMAKE_OBJCXX_FLAGS_RELEASE "-O1 -DNDEBUG")
 endif()
@@ -160,7 +160,6 @@ add_compile_definitions(
     GBI_FLOATS=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
-    IMGUI_DEFINE_MATH_OPERATORS
     AVOID_UB=1
     ENABLE_OPENGL=1
 )

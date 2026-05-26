@@ -7,11 +7,25 @@
 #ifdef __cplusplus
 #include <unordered_map>
 #include "port/CoreMath.h"
-std::unordered_map<Mtx*, MtxF> FrameInterpolation_Interpolate(float step);
+
+union Gfx;
+
+struct FrameInterpolationResult {
+    std::unordered_map<Mtx*, MtxF> mtx;
+    std::unordered_map<Gfx*, Gfx*> dl;
+};
+
+FrameInterpolationResult FrameInterpolation_Interpolate(float step);
 void FrameInterpolation_ApplyMatrixTransformations(Mat4* matrix, FVector pos, IRotator rot, FVector scale);
 
 extern "C" {
 #endif
+
+void FrameInterpolation_RecordSnowParticles(Gfx* dl,
+    f32 v1x, f32 v1y, f32 v1z,
+    f32 v2x, f32 v2y, f32 v2z,
+    f32 v3x, f32 v3y, f32 v3z,
+    s32 mode, s16 count, const f32* positions3f);
 
 #define TAG_ITEM_ADDR(x) ((u32) 0x10000000 | (u32)x)
 #define TAG_SMOKE_DUST(x) ((u32) 0x20000000 | (u32) (x))
@@ -66,6 +80,12 @@ void FrameInterpolation_RecordMatrixRotate1Coord(Mat4* matrix, u32 coord, s16 va
 void FrameInterpolation_RecordMatrixRotateXYCoords(Mat4* matrix, s16 x, s16 y);
 
 void FrameInterpolation_RecordMatrixMtxFToMtx(MtxF* src, Mtx* dest);
+
+void FrameInterpolation_RecordBillboardMatrix(MtxF* parent, float tx, float ty, float tz,
+                                              float sx, float sy, float sz, s16 roll, Mtx* dest);
+
+void FrameInterpolation_RecordAnimatedPartMatrix(MtxF* parent, float tx, float ty, float tz,
+                                                 s16 rx, s16 ry, s16 rz, Mtx* dest);
 
 void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line);
 

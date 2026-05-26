@@ -44,6 +44,13 @@ extern_s s8 gShadowAboveWaterOrLava;
 extern_s s8 gMarioOnIceOrCarpet;
 
 /**
+ * Floor height of the most recently computed shadow. Used by the interpolation
+ * system to anchor the shadow matrix at floor level so sub-frame renders keep
+ * the shadow on the ground even when the object Y is being interpolated.
+ */
+extern_s f32 gShadowFloorHeight;
+
+/**
  * Given the (x, y, z) location of an object, create a shadow below that object
  * with the given initial solidity and "shadowType" (described above).
  */

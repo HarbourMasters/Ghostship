@@ -136,7 +136,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
-    Ship::Switch::Init(Ship::PostInitPhase);
+    // Ship::Switch::Init(Ship::PostInitPhase); // TODO: Search why
 #endif
 
     this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
@@ -1169,7 +1169,7 @@ uint32_t GameEngine::GetGameVersion() {
     return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
-void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements) {
+void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolationResult>& replacements) {
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     if (wnd == nullptr) {
@@ -1182,8 +1182,8 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
     wnd->HandleEvents();
 
     interpreter->mInterpolationIndex = 0;
-    for (const auto& mtxStack : mtx_replacements) {
-        wnd->DrawAndRunGraphicsCommands(Commands, mtxStack);
+    for (const auto& r : replacements) {
+        wnd->DrawAndRunGraphicsCommands(Commands, r.mtx, r.dl);
         interpreter->mInterpolationIndex++;
     }
 
@@ -1196,7 +1196,7 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
 }
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
-    std::vector<std::unordered_map<Mtx*, MtxF>> mtx_replacements;
+    std::vector<FrameInterpolationResult> mtx_replacements;
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     int target_fps = GetInterpolationFPS();
@@ -1301,6 +1301,10 @@ extern "C" uint8_t GameEngine_IsBankLoaded(const uint8_t bankId) {
 }
 
 extern "C" void GameEngine_UnloadBank(const uint8_t bankId) {
+    if (bankId == SM64::AudioSequenceFactoryV0::kStreamedBankId) {
+        return;
+    }
+
     const auto engine = GameEngine::Instance;
     engine->banksTable[bankId] = nullptr;
 }
@@ -1314,6 +1318,13 @@ extern "C" AudioSequenceData* GameEngine_LoadSequence(const uint8_t seqId) {
 
     if (engine->audioSequenceTable[seqId] != nullptr) {
         return engine->audioSequenceTable[seqId];
+    }
+
+    // Restore streamed sequences that were evicted by GameEngine_UnloadSequence.
+    auto* streamed = SM64::AudioSequenceFactoryV0::GetStreamedSeqData(seqId);
+    if (streamed) {
+        engine->audioSequenceTable[seqId] = streamed;
+        return streamed;
     }
 
     auto sequences = static_cast<AudioSequenceData*>(ResourceGetDataByName(engine->sequenceTable[seqId].c_str()));

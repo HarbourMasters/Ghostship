@@ -777,8 +777,17 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                     s32 samplePos = note->samplePosInt;
 #endif
                     samplesLenAdjusted = samplesLenFixedPoint >> 0x10;
+                    u8 s16Muted = 0;
+#ifndef VERSION_EU
+                    if (note->parentLayer != NO_LAYER) {
+                        struct SequenceChannel *s16Ch = note->parentLayer->seqChannel;
+                        if (s16Ch != NULL && s16Ch->seqPlayer != NULL) {
+                            s16Muted = s16Ch->seqPlayer->muted;
+                        }
+                    }
+#endif
                     aClearBuffer(cmd++, DMEM_ADDR_UNCOMPRESSED_NOTE, (samplesLenAdjusted + 0x10) * 2);
-                    if (sampleAddr != NULL && totalFrames > 0 && samplePos < (s32)totalFrames) {
+                    if (!s16Muted && sampleAddr != NULL && totalFrames > 0 && samplePos < (s32)totalFrames) {
                         s32 samplesRemaining = (s32)totalFrames - samplePos;
                         s32 toLoad = samplesRemaining < samplesLenAdjusted ? samplesRemaining : samplesLenAdjusted;
                         aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE, 0, (u32)toLoad * 2);
@@ -799,12 +808,12 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
 #endif
                             }
                         }
-                    }
 #ifdef VERSION_EU
-                    synthesisState->samplePosInt = samplePos;
+                        synthesisState->samplePosInt = samplePos;
 #else
-                    note->samplePosInt = samplePos;
+                        note->samplePosInt = samplePos;
 #endif
+                    }
                     noteSamplesDmemAddrBeforeResampling = DMEM_ADDR_UNCOMPRESSED_NOTE;
                     goto s16_done;
                 }

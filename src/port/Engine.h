@@ -8,6 +8,7 @@
 #include <ship/controller/controldeck/ControlDeck.h>
 #include <ship/Context.h>
 #include <fast/interpreter.h>
+#include "interpolation/FrameInterpolation.h"
 
 #ifndef IDYES
 #define IDYES 6
@@ -66,7 +67,7 @@ class GameEngine {
     void AudioInit();
     void FinishInit();
     void StartFrame() const;
-    static void RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);
+    static void RunCommands(Gfx* Commands, const std::vector<FrameInterpolationResult>& replacements);
     static uint32_t GetInterpolationFPS();
     static void HandleAudioThread();
     static void StartAudioFrame();
