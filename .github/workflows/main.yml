@@ -80,7 +80,7 @@ jobs:
           if (-Not (Test-Path "build/x64/Release/.tcc")) { Write-Error "ERROR: .tcc not found in build/x64/Release/"; exit 1 }
           mv build/x64/Release/.tcc .tcc
           mv build/x64/Release/Ghostship.exe .
-          mv build/x64/Release/libtcc.dll .
+          mv build/x64/Release/tcc.dll .
           mv build/x64/Release/ghostship.o2r .
           mv build/x64/Release/*.pdb debug/
           mv README.md readme.txt
@@ -93,7 +93,7 @@ jobs:
           path: |
             .tcc
             Ghostship.exe
-            libtcc.dll
+            tcc.dll
             ghostship.o2r
             debug
             readme.txt
