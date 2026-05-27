@@ -165,7 +165,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitResourceManager({ assets_path }, {}, 3);
     this->context->InitConsole();
 
-#ifdef __SWITCH__
+#ifndef __SWITCH__
     this->context->GetResourceManager()->GetArchiveManager()->SetUntrustedArchiveHandler(
         [](Ship::Archive& archive, Ship::KeystoreEntry& key) {
             const auto info = archive.GetManifest();
