@@ -9,6 +9,7 @@
 #define MOD_AUDIO_MAX_SOURCES 8
 #define MOD_AUDIO_RING_SIZE 16384
 #define MOD_AUDIO_RING_MASK (MOD_AUDIO_RING_SIZE - 1)
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 struct ModAudioSource {
     std::atomic<bool> active{ false };
@@ -55,7 +56,7 @@ void ModAudio_SubmitSamples(ModAudioHandle handle, const int16_t* samples, uint3
 
     std::lock_guard<std::mutex> lock(src.mutex);
     uint32_t available_space = MOD_AUDIO_RING_SIZE - (src.write_pos - src.read_pos);
-    uint32_t to_write = std::min(stereo_count, available_space);
+    uint32_t to_write = MIN(stereo_count, available_space);
     for (uint32_t i = 0; i < to_write; i++) {
         uint32_t pos = src.write_pos & MOD_AUDIO_RING_MASK;
         src.ring[pos * 2] = samples[i * 2];
@@ -94,7 +95,7 @@ void ModAudio_MixInto(int16_t* buf, uint32_t stereo_count) {
 
         std::lock_guard<std::mutex> lock(src.mutex);
         uint32_t available = src.write_pos - src.read_pos;
-        uint32_t to_read = std::min(available, stereo_count);
+        uint32_t to_read = MIN(available, stereo_count);
 
         for (uint32_t i = 0; i < to_read; i++) {
             uint32_t pos = src.read_pos & MOD_AUDIO_RING_MASK;
