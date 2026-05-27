@@ -5,6 +5,11 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+
+#ifdef __SWITCH__
+#define fopen64 fopen
+#endif
+
 #include <dr_mp3.h>
 #include <dr_wav.h>
 #include <dr_flac.h>

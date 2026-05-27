@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "ModAudio.h"
 #include "ui/GhostshipGui.hpp"
 #if !defined(__SWITCH__) && !defined(__WIIU__)
 #include "GameExtractor.h"
@@ -1147,6 +1148,8 @@ void GameEngine::HandleAudioThread() {
         for (u32 i = 0; i < SAMPLES_PER_FRAME; i++) {
             audio_buffer[i] = static_cast<s16>(audio_buffer[i] * master_vol);
         }
+
+        ModAudio_MixInto(audio_buffer, num_audio_samples * 2);
 
         AudioPlayerPlayFrame((u8*)audio_buffer, 2 * num_audio_samples * 4);
 
