@@ -84,7 +84,8 @@ static void OnSeqLayerPreNote(IEvent* ev) {
     }
 
     AudioBankSound* sound = SM64::AudioSequenceFactoryV0::GetStreamedSound(seqId, chanIdx);
-    if (!sound) return;
+    if (!sound)
+        return;
 
     event->layer->sound = sound;
 }

@@ -298,11 +298,8 @@ void GameEngine::LoadResourceFiles() {
 #ifdef _WIN32
     const std::string tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
     std::vector<std::string> includePaths = {
-        tccBase + "/include",
-        tccBase + "/include/tcc",
-        tccBase + "/include/winapi",
-        tccBase + "/include/sys",
-        tccBase + "/include/sec_api",
+        tccBase + "/include",     tccBase + "/include/tcc",     tccBase + "/include/winapi",
+        tccBase + "/include/sys", tccBase + "/include/sec_api",
     };
     std::vector<std::string> libraryPaths = { tccBase + "/lib" };
     context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Starship" });
@@ -394,13 +391,47 @@ void GameEngine::FinishInit() {
     context->InitFileDropMgr();
     context->InitCrashHandler();
 #ifndef __SWITCH__
+    constexpr int codeVersion = 1;
     std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
                                                              { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
                                                              { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
                                                              { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
+#ifdef _WIN32
+    const std::string tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    std::vector<std::string> includePaths = {
+        tccBase + "/include",     tccBase + "/include/tcc",     tccBase + "/include/winapi",
+        tccBase + "/include/sys", tccBase + "/include/sec_api",
+    };
+    std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Starship" });
+#else
+    std::vector<std::string> includePaths = {
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include"),
+    };
 
-    context->InitScriptLoader(defines, 1);
+#ifdef __APPLE__
+    {
+        FILE* fp = popen("xcrun --show-sdk-path 2>/dev/null", "r");
+        if (fp) {
+            char buf[4096] = {};
+            if (fgets(buf, sizeof(buf), fp)) {
+                std::string sdkPath(buf);
+                sdkPath.erase(sdkPath.find_last_not_of("\n\r \t") + 1);
+                if (!sdkPath.empty()) {
+                    includePaths.push_back(sdkPath + "/usr/include");
+                }
+            }
+            pclose(fp);
+        }
+    }
 #endif
+
+    std::vector<std::string> libraryPaths = {
+        Ship::Context::GetPathRelativeToAppDirectory(".tcc/lib"),
+    };
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
+#endif
+#endif // __SWITCH__
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
@@ -504,8 +535,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
 #ifdef __SWITCH__
     {
-        const bool romO2RExists =
-            std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
+        const bool romO2RExists = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
         if (shouldRegen || !romO2RExists) {
             SPDLOG_ERROR("ROM archive missing or outdated on Switch, please regenerate and relaunch.");
             exit(1);

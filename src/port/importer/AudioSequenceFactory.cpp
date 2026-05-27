@@ -110,8 +110,8 @@ static std::vector<uint8_t> BuildLoopM64() {
     w.SetEndianness(Ship::Endianness::Big);
 
     // == Sequence header ========================================================
-    M64_InitChan(w, 0x0001);      // initchannels ch=0
-    M64_SeqSetMuteBhv(w, 0x00);   // clear all seq-level mute flags; mute silenced via synthesis.c
+    M64_InitChan(w, 0x0001);    // initchannels ch=0
+    M64_SeqSetMuteBhv(w, 0x00); // clear all seq-level mute flags; mute silenced via synthesis.c
 
     uint16_t seqChanOff = (uint16_t)w.GetBaseAddress();
     M64_LdOff(w, 0, 0x0000);                           // startchannel ch=0 (placeholder)
@@ -123,10 +123,10 @@ static std::vector<uint8_t> BuildLoopM64() {
     uint16_t chanStart = (uint16_t)w.GetBaseAddress();
     M64_Legato(w);               // largenoteson
     M64_ChanSetMuteBhv(w, 0x00); // no mute flags: reclaim_notes must NOT kill this note;
-                                  // mute silencing is handled in synthesis.c instead
-    M64_VolChan(w, 0x7F);  // setvol 127
-    M64_SetBank(w, 0x00);  // setbank 0 (→ STREAMED_BANK_ID)
-    M64_SetInstr(w, 0x00); // instrument 0 (non-drum path)
+                                 // mute silencing is handled in synthesis.c instead
+    M64_VolChan(w, 0x7F);        // setvol 127
+    M64_SetBank(w, 0x00);        // setbank 0 (→ STREAMED_BANK_ID)
+    M64_SetInstr(w, 0x00);       // instrument 0 (non-drum path)
 
     // chan_setlayer runs ONCE; loop starts after it so we don't call
     // seq_channel_set_layer every tick (which would decay the note each tick).
@@ -146,10 +146,10 @@ static std::vector<uint8_t> BuildLoopM64() {
     // gate=0x00 → layer->duration=0 → early-decay check (delay<=duration)
     // is never true, so the note is never force-decayed mid-cycle.
     uint16_t layerLegatoOff = (uint16_t)w.GetBaseAddress();
-    M64_Legato(w);                           // 0xC4: continuousNotes=TRUE (first run only)
+    M64_Legato(w);                                      // 0xC4: continuousNotes=TRUE (first run only)
     uint16_t layerStart = (uint16_t)w.GetBaseAddress(); // jump target: note opcode
-    M64_NoteDVG(w, 39, 0x7FFE, 0x7F, 0x00); // note G#3, max delay, vel 127, gate 0
-    M64_Jump(w, layerStart);                 // loop back — skips the 0xC4
+    M64_NoteDVG(w, 39, 0x7FFE, 0x7F, 0x00);             // note G#3, max delay, vel 127, gate 0
+    M64_Jump(w, layerStart);                            // loop back — skips the 0xC4
 
     // == Back-patch offsets ====================================================
     w.Seek((int32_t)seqChanOff, Ship::SeekOffsetType::Start);
@@ -166,8 +166,8 @@ static std::vector<uint8_t> BuildStereoM64() {
     w.SetEndianness(Ship::Endianness::Big);
 
     // == Sequence header ========================================================
-    M64_InitChan(w, 0x0003);      // initchannels ch0+ch1
-    M64_SeqSetMuteBhv(w, 0x00);   // clear all seq-level mute flags; mute silenced via synthesis.c
+    M64_InitChan(w, 0x0003);    // initchannels ch0+ch1
+    M64_SeqSetMuteBhv(w, 0x00); // clear all seq-level mute flags; mute silenced via synthesis.c
 
     // Both startchannel calls run ONCE; loop starts after them.
     uint16_t seqCh0Off = (uint16_t)w.GetBaseAddress();
@@ -182,10 +182,10 @@ static std::vector<uint8_t> BuildStereoM64() {
     uint16_t ch0Start = (uint16_t)w.GetBaseAddress();
     M64_Legato(w);               // largenoteson
     M64_ChanSetMuteBhv(w, 0x00); // no mute flags: reclaim_notes must NOT kill this note
-    M64_VolChan(w, 0x7F);  // setvol 127
-    M64_Pan(w, 0x00);      // pan full-left
-    M64_SetBank(w, 0x00);  // setbank 0 (→ STREAMED_BANK_ID)
-    M64_SetInstr(w, 0x00); // instrument 0 = L sample
+    M64_VolChan(w, 0x7F);        // setvol 127
+    M64_Pan(w, 0x00);            // pan full-left
+    M64_SetBank(w, 0x00);        // setbank 0 (→ STREAMED_BANK_ID)
+    M64_SetInstr(w, 0x00);       // instrument 0 = L sample
     uint16_t ch0LayOff = (uint16_t)w.GetBaseAddress();
     M64_LdOff(w, 0, 0x0000);                           // setlayer 0 (placeholder)
     uint16_t ch0LoopPt = (uint16_t)w.GetBaseAddress(); // loop point AFTER setlayer
@@ -196,10 +196,10 @@ static std::vector<uint8_t> BuildStereoM64() {
     uint16_t ch1Start = (uint16_t)w.GetBaseAddress();
     M64_Legato(w);               // largenoteson
     M64_ChanSetMuteBhv(w, 0x00); // no mute flags: reclaim_notes must NOT kill this note
-    M64_VolChan(w, 0x7F);  // setvol 127
-    M64_Pan(w, 0x7F);      // pan full-right
-    M64_SetBank(w, 0x00);  // setbank 0 (→ STREAMED_BANK_ID)
-    M64_SetInstr(w, 0x01); // instrument 1 = R sample
+    M64_VolChan(w, 0x7F);        // setvol 127
+    M64_Pan(w, 0x7F);            // pan full-right
+    M64_SetBank(w, 0x00);        // setbank 0 (→ STREAMED_BANK_ID)
+    M64_SetInstr(w, 0x01);       // instrument 1 = R sample
     uint16_t ch1LayOff = (uint16_t)w.GetBaseAddress();
     M64_LdOff(w, 0, 0x0000);                           // setlayer 0 (placeholder)
     uint16_t ch1LoopPt = (uint16_t)w.GetBaseAddress(); // loop point AFTER setlayer
@@ -211,14 +211,14 @@ static std::vector<uint8_t> BuildStereoM64() {
     // The jump target l0Start is AFTER 0xC4, so loops skip it: same note object
     // continues across the 32766-tick boundary, preserving samplePosInt.
     uint16_t l0LegatoOff = (uint16_t)w.GetBaseAddress();
-    M64_Legato(w);                           // 0xC4: continuousNotes=TRUE (first run only)
+    M64_Legato(w); // 0xC4: continuousNotes=TRUE (first run only)
     uint16_t l0Start = (uint16_t)w.GetBaseAddress();
     M64_NoteDVG(w, 39, 0x7FFE, 0x7F, 0x00); // gate=0 → never early-decay
     M64_Jump(w, l0Start);
 
     // == Layer 1  (R note) =====================================================
     uint16_t l1LegatoOff = (uint16_t)w.GetBaseAddress();
-    M64_Legato(w);                           // 0xC4: continuousNotes=TRUE (first run only)
+    M64_Legato(w); // 0xC4: continuousNotes=TRUE (first run only)
     uint16_t l1Start = (uint16_t)w.GetBaseAddress();
     M64_NoteDVG(w, 39, 0x7FFE, 0x7F, 0x00);
     M64_Jump(w, l1Start);
@@ -267,8 +267,8 @@ static std::unordered_map<uint8_t, std::unique_ptr<CustomSeqState>> sMp3States;
 
 } // namespace
 
-static std::atomic<AudioBankSound*>    sStreamSounds[256];
-static std::atomic<AudioBankSound*>    sStreamSoundsR[256];
+static std::atomic<AudioBankSound*> sStreamSounds[256];
+static std::atomic<AudioBankSound*> sStreamSoundsR[256];
 static std::atomic<AudioSequenceData*> sStreamSeqData[256];
 
 void SM64::AudioSequenceFactoryV0::RegisterSample(uint8_t seqId, std::shared_ptr<SM64::AudioSample> sample) {
@@ -371,12 +371,9 @@ void SM64::AudioSequenceFactoryV0::RegisterSample(uint8_t seqId, std::shared_ptr
         engine->sequenceTable[seqId] = "__STREAMED__";
 
     bool isStereo = (sample->mData.channels == 2);
-    sStreamSounds[seqId].store(
-        isStereo ? &state->lSound : &state->bankSound, std::memory_order_release);
-    sStreamSoundsR[seqId].store(
-        isStereo ? &state->rSound : nullptr, std::memory_order_release);
-    sStreamSeqData[seqId].store(
-        reinterpret_cast<AudioSequenceData*>(&state->seqData), std::memory_order_release);
+    sStreamSounds[seqId].store(isStereo ? &state->lSound : &state->bankSound, std::memory_order_release);
+    sStreamSoundsR[seqId].store(isStereo ? &state->rSound : nullptr, std::memory_order_release);
+    sStreamSeqData[seqId].store(reinterpret_cast<AudioSequenceData*>(&state->seqData), std::memory_order_release);
 
     std::lock_guard<std::mutex> lk(sMp3Mtx);
     sMp3States[seqId] = std::move(state);
