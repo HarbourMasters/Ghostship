@@ -60,6 +60,7 @@
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
 #include <ship/resource/archive/Archive.h>
+#include "port/net/SatellaClient.h"
 
 #ifdef __SWITCH__
 #include <ship/port/switch/SwitchImpl.h>
@@ -333,6 +334,8 @@ void GameEngine::LoadResourceFiles() {
     context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
     context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #endif
+
+    Satella::Client::Instance().Execute();
 #endif // __SWITCH__
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");

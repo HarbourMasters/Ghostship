@@ -148,7 +148,7 @@ endif()
 
 # Set game compilation version
 set(VERSION us)
-set(USE_NETWORKING OFF)
+set(USE_NETWORKING ON)
 set(SKIP_XCODE_VERSION_CHECK ON)
 
 # Add compile definitions for the target
@@ -226,6 +226,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/Enhancements/game-interactor/*.cpp"
     "src/port/importer/*.cpp"
     "src/port/importer/types/*.cpp"
+    "src/port/net/*.h"
+    "src/port/net/*.cpp"
     "text/*.c"
     "textures/*.h"
     "textures/*.c"
@@ -442,9 +444,7 @@ endif()
 
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
-	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net-static>"
-    )
+	set(ADDITIONAL_LIBRARY_DEPENDENCIES)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
     find_package(SDL2)
     set(ADDITIONAL_LIBRARY_DEPENDENCIES
@@ -459,18 +459,19 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
         ${DEVKITPRO}/portlibs/wiiu/include/
     )
 else()
- 	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net>"
-	)
+ 	set(ADDITIONAL_LIBRARY_DEPENDENCIES)
 endif()
 
-if(USE_NETWORKING)
-    if(MSVC)
-        vcpkg_install_packages(sdl2-net)
-    endif()
-    find_package(SDL2_net REQUIRED)
-    include_directories(${SDL2_NET_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
+if(USE_NETWORKING AND NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+    FetchContent_Declare(
+        ixwebsocket
+        GIT_REPOSITORY https://github.com/machinezone/IXWebSocket.git
+        GIT_TAG        v11.4.5
+    )
+    set(USE_TLS ON CACHE BOOL "" FORCE)
+    set(IXWEBSOCKET_INSTALL OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(ixwebsocket)
+    target_link_libraries(${PROJECT_NAME} PRIVATE ixwebsocket)
     target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
 endif()
 
