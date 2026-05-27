@@ -304,6 +304,7 @@ void GameEngine::LoadResourceFiles() {
     };
     std::vector<std::string> libraryPaths = { tccBase + "/lib" };
     context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Starship" });
+    context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #else
     std::vector<std::string> includePaths = {
         Ship::Context::GetPathRelativeToAppDirectory(".tcc/include"),
@@ -330,6 +331,7 @@ void GameEngine::LoadResourceFiles() {
         Ship::Context::GetPathRelativeToAppDirectory(".tcc/lib"),
     };
     context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
+    context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #endif
 #endif // __SWITCH__
 
@@ -405,6 +407,7 @@ void GameEngine::FinishInit() {
     };
     std::vector<std::string> libraryPaths = { tccBase + "/lib" };
     context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Starship" });
+    context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #else
     std::vector<std::string> includePaths = {
         Ship::Context::GetPathRelativeToAppDirectory(".tcc/include"),
@@ -431,6 +434,7 @@ void GameEngine::FinishInit() {
         Ship::Context::GetPathRelativeToAppDirectory(".tcc/lib"),
     };
     context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
+    context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #endif
 #endif // __SWITCH__
 
