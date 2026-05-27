@@ -20,6 +20,8 @@ public:
     virtual const char* GetRoute() const = 0;
     virtual void OnResponse(int16_t status, const std::string& body) = 0;
     virtual bool IsBlocking() const { return false; }
+    virtual bool IsSubscription() const { return false; }
+    virtual void OnPush(int16_t status, const std::string& body) {}
 };
 
 class Client {
@@ -38,6 +40,7 @@ private:
     void OnMessage(const ix::WebSocketMessagePtr& msg);
 
     std::vector<std::unique_ptr<IPacket>> mPackets;
+    std::vector<IPacket*>                 mSubscriptions;
 
     ix::WebSocket mWs;
     std::string   mUrl;
@@ -45,10 +48,11 @@ private:
     std::mutex              mMtx;
     std::condition_variable mCv;
 
-    bool    mConnected     = false;
-    bool    mResponseReady = false;
-    bool    mResponseValid = false;
-    int16_t mResponseStatus = 0;
+    bool    mConnected          = false;
+    bool    mWaitingForResponse = false;
+    bool    mResponseReady      = false;
+    bool    mResponseValid      = false;
+    int16_t mResponseStatus     = 0;
     std::string mResponseBody;
 };
 

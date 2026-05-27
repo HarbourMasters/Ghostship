@@ -4,6 +4,7 @@
 #include "ship/Context.h"
 #include "ship/security/Keystore.h"
 #include "ship/utils/StringHelper.h"
+#include "port/ui/Notification.h"
 #include "spdlog/spdlog.h"
 
 #include <nlohmann/json.hpp>
@@ -75,18 +76,36 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
             const size_t size = msg->str.size();
             constexpr size_t kHeaderSize = 5;
 
-            std::lock_guard<std::mutex> lock(mMtx);
-            if (size >= kHeaderSize && data[0] == 'H' && data[1] == 'M' && data[2] == 0x02) {
-                mResponseStatus = readI16LE(data + 3);
-                mResponseBody = std::string(msg->str.begin() + kHeaderSize, msg->str.end());
-                mResponseValid = true;
-            } else {
-                SPDLOG_WARN("SatellaClient: malformed response (size={}, magic={:.2s})", size,
+            if (size < kHeaderSize || data[0] != 'H' || data[1] != 'M') {
+                SPDLOG_WARN("SatellaClient: malformed message (size={}, magic={:.2s})", size,
                             size >= 2 ? msg->str.data() : "??");
-                mResponseValid = false;
+                break;
             }
-            mResponseReady = true;
-            mCv.notify_all();
+
+            const int16_t  status = readI16LE(data + 3);
+            const uint8_t  type   = data[2];
+            const std::string body = (type != 0x01 && size > kHeaderSize)
+                ? std::string(msg->str.begin() + kHeaderSize, msg->str.end())
+                : std::string{};
+
+            bool isResponse;
+            {
+                std::lock_guard<std::mutex> lock(mMtx);
+                isResponse = mWaitingForResponse;
+                if (isResponse) {
+                    mResponseStatus = status;
+                    mResponseBody   = body;
+                    mResponseValid  = true;
+                    mResponseReady  = true;
+                    mCv.notify_all();
+                }
+            }
+
+            if (!isResponse) {
+                for (auto* sub : mSubscriptions) {
+                    sub->OnPush(status, body);
+                }
+            }
             break;
         }
         case ix::WebSocketMessageType::Error:
@@ -143,14 +162,16 @@ void Client::SendAndReceive(IPacket& packet) {
 
     {
         std::unique_lock<std::mutex> lock(mMtx);
-        mResponseReady = false;
-        mResponseValid = false;
+        mResponseReady      = false;
+        mResponseValid      = false;
+        mWaitingForResponse = true;
     }
 
     mWs.sendBinary(payload);
 
     std::unique_lock<std::mutex> lock(mMtx);
     mCv.wait_for(lock, std::chrono::seconds(10), [this] { return mResponseReady; });
+    mWaitingForResponse = false;
 
     if (!mResponseValid) {
         SPDLOG_WARN("SatellaClient: no valid response for '{}'", packet.GetRoute());
@@ -180,6 +201,12 @@ void Client::Execute(const std::string& url) {
     for (auto& packet : mPackets) {
         if (!packet->IsBlocking()) {
             SendAndReceive(*packet);
+        }
+    }
+
+    for (auto& packet : mPackets) {
+        if (packet->IsSubscription()) {
+            mSubscriptions.push_back(packet.get());
         }
     }
 }
@@ -247,6 +274,50 @@ class PublicKeysPacket : public IPacket {
 };
 
 SATELLA_REGISTER_PACKET(PublicKeysPacket);
+
+// ---------------------------------------------------------------------------
+
+class NotificationsPacket : public IPacket {
+  public:
+    const char* GetRoute() const override {
+        return "/v1/notifications/subscribe";
+    }
+    bool IsSubscription() const override {
+        return true;
+    }
+    void OnResponse(int16_t status, const std::string&) override {
+        if (status != 200) {
+            SPDLOG_WARN("SatellaClient: notifications subscribe returned status {}", status);
+            return;
+        }
+        SPDLOG_INFO("SatellaClient: subscribed to notifications");
+    }
+    void OnPush(int16_t status, const std::string& body) override {
+        if (status != 200 || body.empty()) return;
+
+        nlohmann::json data;
+        try {
+            data = nlohmann::json::parse(body);
+        } catch (const std::exception& e) {
+            SPDLOG_WARN("SatellaClient: failed to parse notification push: {}", e.what());
+            return;
+        }
+
+        Notification::Options opts;
+        if (data.contains("prefix") && data["prefix"].is_string())
+            opts.prefix = data["prefix"].get<std::string>();
+        if (data.contains("message") && data["message"].is_string())
+            opts.message = data["message"].get<std::string>();
+        if (data.contains("suffix") && data["suffix"].is_string())
+            opts.suffix = data["suffix"].get<std::string>();
+        if (data.contains("duration") && data["duration"].is_number())
+            opts.remainingTime = data["duration"].get<float>();
+
+        Notification::Emit(opts);
+    }
+};
+
+SATELLA_REGISTER_PACKET(NotificationsPacket);
 
 } // namespace Satella
 #endif
