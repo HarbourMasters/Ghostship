@@ -295,30 +295,44 @@ void GameEngine::LoadResourceFiles() {
                                                              { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
                                                              { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
                                                              { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
+#ifdef _WIN32
+    const std::string tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    std::vector<std::string> includePaths = {
+        tccBase + "/include",
+        tccBase + "/include/tcc",
+        tccBase + "/include/winapi",
+        tccBase + "/include/sys",
+        tccBase + "/include/sec_api",
+    };
+    std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Starship" });
+#else
     std::vector<std::string> includePaths = {
         Ship::Context::GetPathRelativeToAppDirectory(".tcc/include"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/tcc"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/winapi"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/sys"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/sec_api"),
     };
+
+#ifdef __APPLE__
+    {
+        FILE* fp = popen("xcrun --show-sdk-path 2>/dev/null", "r");
+        if (fp) {
+            char buf[4096] = {};
+            if (fgets(buf, sizeof(buf), fp)) {
+                std::string sdkPath(buf);
+                sdkPath.erase(sdkPath.find_last_not_of("\n\r \t") + 1);
+                if (!sdkPath.empty()) {
+                    includePaths.push_back(sdkPath + "/usr/include");
+                }
+            }
+            pclose(fp);
+        }
+    }
+#endif
 
     std::vector<std::string> libraryPaths = {
         Ship::Context::GetPathRelativeToAppDirectory(".tcc/lib"),
     };
-
-    std::vector<std::string> libraries = {
-        "Ghostship.def",
-    };
-
-#ifdef _WIN32
-    context->InitScriptLoader(defines, codeVersion, "-g -Wl", includePaths, libraryPaths, libraries);
-#else
-    context->InitScriptLoader(defines, codeVersion, "-g -Wl", {}, {}, {});
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
 #endif
-    // auto script = context->GetScriptLoader();
-    // script->SetGameLibrary("F:\\HM64\\Ghostship\\build\\Debug\\Ghostship.sdk");
-    // system("setup_x64.bat");
 #endif // __SWITCH__
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
