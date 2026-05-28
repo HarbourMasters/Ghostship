@@ -13,7 +13,7 @@
 #include "behavior_data.h"
 #include "rumble_init.h"
 #include "seq_ids.h"
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 
 struct LandingAction {
     s16 numFrames;
