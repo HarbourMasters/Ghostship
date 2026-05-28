@@ -241,7 +241,9 @@ typedef enum ExtractSteps {
     ES_EXTRACT_ARGS,
     ES_EXTRACT,
     ES_VERIFY,
-    GS_COMPILE
+    GS_COMPILE,
+    GS_LOAD,
+    GS_WAIT
 } ExtractSteps;
 
 typedef enum PromptSteps {
@@ -602,7 +604,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     }
 
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
-    while (!extractDone) {
+    while (true) {
 #ifndef __SWITCH__
         auto satellaPhase = Satella::Client::Instance().GetPhase();
         bool satellaActive = satellaPhase == Satella::Phase::Connecting ||
@@ -610,6 +612,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #else
         bool satellaActive = false;
 #endif
+        if (extractDone && !satellaActive) {
+            break;
+        }
         if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0 || satellaActive) {
             goto render;
         }
@@ -882,10 +887,20 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 continue;
             }
             case GS_COMPILE: {
-                LoadResourceFiles();
 #ifndef __SWITCH__
-                std::thread([]() { Satella::Client::Instance().Execute(); }).detach();
+                threadPool->submit_task([&]() -> void {
+                    Satella::Client::Instance().Execute();
+                    extractStep = GS_LOAD;
+                });
+                extractStep = GS_WAIT;
 #endif
+                continue;
+            }
+            case GS_WAIT:
+                SPDLOG_INFO("Waiting for satella...");
+                break;
+            case GS_LOAD: {
+                LoadResourceFiles();
                 threadPool->submit_task([&]() -> void {
 #ifndef __SWITCH__
                     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
