@@ -64,6 +64,16 @@ jobs:
           python-version: '3.12'
       - name: Install Python dependencies
         run: pip install -r libultraship/requirements.txt
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-vcpkg-x64-static-${{ hashFiles('CMakeLists.txt', 'cmake/automate-vcpkg.cmake') }}
+          restore-keys: |
+            ${{ runner.os }}-vcpkg-x64-static-
+          path: |
+            build/x64/vcpkg
+            build/x64/vcpkg_installed
+            build/x64/vcpkg/downloads
       - name: Build
         run: |
           $env:VCPKG_ROOT=""
