@@ -343,8 +343,6 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
 void GameEngine::LoadResourceFiles() {
     SetupScriptLoader(context);
 
-#ifndef __SWITCH__
-
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
         context->GetResourceManager()->GetArchiveManager()->AddArchive(romPath);
@@ -382,6 +380,7 @@ void GameEngine::LoadResourceFiles() {
         }
     }
 
+#ifndef __SWITCH__
     auto archive = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager();
     auto list = archive->GetArchives();
 
@@ -813,6 +812,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     default:
                         break;
                 }
+#else
+                extractStep = ES_VERIFY;
 #endif
                 break;
             }
@@ -841,6 +842,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     extractStep = GS_LOAD;
                 });
                 extractStep = GS_WAIT;
+#else
+                extractStep = GS_LOAD;
 #endif
                 continue;
             }
