@@ -1,5 +1,5 @@
 #include <libultra/types.h>
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 
 #include "area.h"
 #include "actors/common1.h"
@@ -611,6 +611,9 @@ u32 determine_knockback_action(struct MarioState *m, UNUSED s32 arg) {
         bonkAction = sForwardKnockbackActions[terrainIndex][strengthIndex];
     }
 
+    CALL_CANCELLABLE_EVENT(PlayerKnockback, m, &bonkAction) {
+        return m->action;
+    }
     return bonkAction;
 }
 
@@ -699,6 +702,7 @@ u32 take_damage_from_interact_object(struct MarioState *m) {
     }
 
     m->hurtCounter += 4 * damage;
+    CALL_EVENT(PlayerHit, m, m->interactObj, damage);
 
 #if ENABLE_RUMBLE
     queue_rumble_data(5, 80);

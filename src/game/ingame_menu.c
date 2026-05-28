@@ -25,8 +25,7 @@
 #include "types.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include <ship/utils/binarytools/endianness.h>
-#include "port/hooks/impl/EventSystem.h"
-#include "port/hooks/list/EngineEvent.h"
+#include "port/events/list/EngineEvent.h"
 
 #ifdef VERSION_EU
 #undef LANGUAGE_FUNCTION

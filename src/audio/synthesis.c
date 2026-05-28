@@ -767,6 +767,57 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                 endPos = loopInfo->end;
                 sampleAddr = audioBookSample->sampleAddr;
                 resampledTempLen = 0;
+
+                // [Port] [Custom audio] CODEC_S16: raw 16-bit PCM — bypass ADPCM machinery
+                if (audioBookSample->codec == CODEC_S16) {
+                    size_t totalFrames = (size_t)audioBookSample->numFrames;
+#ifdef VERSION_EU
+                    s32 samplePos = synthesisState->samplePosInt;
+#else
+                    s32 samplePos = note->samplePosInt;
+#endif
+                    samplesLenAdjusted = samplesLenFixedPoint >> 0x10;
+                    u8 s16Muted = 0;
+#ifndef VERSION_EU
+                    if (note->parentLayer != NO_LAYER) {
+                        struct SequenceChannel *s16Ch = note->parentLayer->seqChannel;
+                        if (s16Ch != NULL && s16Ch->seqPlayer != NULL) {
+                            s16Muted = s16Ch->seqPlayer->muted;
+                        }
+                    }
+#endif
+                    aClearBuffer(cmd++, DMEM_ADDR_UNCOMPRESSED_NOTE, (samplesLenAdjusted + 0x10) * 2);
+                    if (!s16Muted && sampleAddr != NULL && totalFrames > 0 && samplePos < (s32)totalFrames) {
+                        s32 samplesRemaining = (s32)totalFrames - samplePos;
+                        s32 toLoad = samplesRemaining < samplesLenAdjusted ? samplesRemaining : samplesLenAdjusted;
+                        aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE, 0, (u32)toLoad * 2);
+                        aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(sampleAddr + (size_t)samplePos * 2));
+                        samplePos += toLoad;
+                        if (samplePos >= (s32)totalFrames) {
+                            if (loopInfo->count != 0) {
+                                samplePos = loopInfo->start;
+                            } else {
+#ifdef VERSION_EU
+                                noteSubEu->finished = 1;
+                                note->noteSubEu.finished = 1;
+                                note->noteSubEu.enabled = 0;
+#else
+                                note->samplePosInt = 0;
+                                note->finished = 1;
+                                note->enabled = 0;
+#endif
+                            }
+                        }
+#ifdef VERSION_EU
+                        synthesisState->samplePosInt = samplePos;
+#else
+                        note->samplePosInt = samplePos;
+#endif
+                    }
+                    noteSamplesDmemAddrBeforeResampling = DMEM_ADDR_UNCOMPRESSED_NOTE;
+                    goto s16_done;
+                }
+
                 for (curPart = 0; curPart < nParts; curPart++) {
                     nAdpcmSamplesProcessed = 0; // s8
                     s5 = 0;                     // s4
@@ -1016,21 +1067,23 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                                     break;
 
                                 case 1:
-                                    aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE + sp130,
-                                               DMEM_ADDR_RESAMPLED2,
-                                               samplesLenAdjusted + 8);
 #ifdef VERSION_EU
                                     aResample(cmd++, A_INIT, 0xff60,
                                               VIRTUAL_TO_PHYSICAL2(
                                                   synthesisState->synthesisBuffers->dummyResampleState));
 #else
-                                    aResample(cmd++, A_INIT, 0xff60,
+                                    if (note->synthesisBuffers != NULL) {
+                                        aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE + sp130,
+                                               DMEM_ADDR_RESAMPLED2,
+                                               samplesLenAdjusted + 8);
+                                        aResample(cmd++, A_INIT, 0xff60,
                                               VIRTUAL_TO_PHYSICAL2(
                                                   note->synthesisBuffers->dummyResampleState));
-#endif
-                                    aDMEMMove(cmd++, DMEM_ADDR_RESAMPLED2 + 4,
+                                        aDMEMMove(cmd++, DMEM_ADDR_RESAMPLED2 + 4,
                                               DMEM_ADDR_RESAMPLED + resampledTempLen,
                                               samplesLenAdjusted + 4);
+                                    }
+#endif
                                     break;
                             }
                     }
@@ -1044,6 +1097,7 @@ u64 *synthesis_process_notes(s16 *aiBuf, s32 bufLen, u64 *cmd) {
                     }
                 }
             }
+            s16_done:;
 
             flags = 0;
 

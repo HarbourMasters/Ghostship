@@ -2,7 +2,7 @@
 
 #include "sa/geo.h"
 
-extern const LevelScript level_sa_entry[];
+extern_s const LevelScript level_sa_entry[];
 
 static const ALIGN_ASSET(2) char sa_lights[] = "__OTR__levels/sa/sa_lights";
 

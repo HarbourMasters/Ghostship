@@ -35,7 +35,7 @@
 #include "assets/levels/castle_inside.h"
 #include "assets/levels/ccm.h"
 
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 /**

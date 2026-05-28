@@ -29,67 +29,59 @@
 #define cur_geo_cmd_ptr(offset) \
     (*(void **) &gGeoLayoutCommand[CMD_PROCESS_OFFSET(offset)])
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+extern_s struct AllocOnlyPool *gGraphNodePool;
+extern_s struct GraphNode *gCurRootGraphNode;
+extern_s UNUSED s32 D_8038BCA8;
+extern_s struct GraphNode **gGeoViews;
+extern_s u16 gGeoNumViews;
+extern_s uintptr_t gGeoLayoutStack[];
+extern_s struct GraphNode *gCurGraphNodeList[];
+extern_s s16 gCurGraphNodeIndex;
+extern_s s16 gGeoLayoutStackIndex;
+extern_s UNUSED s16 D_8038BD7C;
+extern_s s16 gGeoLayoutReturnIndex;
+extern_s u8 *gGeoLayoutCommand;
+extern_s struct GraphNode gObjParentGraphNode;
 
-extern struct AllocOnlyPool *gGraphNodePool;
-extern struct GraphNode *gCurRootGraphNode;
-extern UNUSED s32 D_8038BCA8;
-extern struct GraphNode **gGeoViews;
-extern u16 gGeoNumViews;
-extern uintptr_t gGeoLayoutStack[];
-extern struct GraphNode *gCurGraphNodeList[];
-extern s16 gCurGraphNodeIndex;
-extern s16 gGeoLayoutStackIndex;
-extern UNUSED s16 D_8038BD7C;
-extern s16 gGeoLayoutReturnIndex;
-extern u8 *gGeoLayoutCommand;
-extern struct GraphNode gObjParentGraphNode;
+extern_s struct AllocOnlyPool *D_8038BCA0;
+extern_s struct GraphNode *D_8038BCA4;
+extern_s s16 D_8038BD78;
+extern_s struct GraphNode *D_8038BCF8[];
 
-extern struct AllocOnlyPool *D_8038BCA0;
-extern struct GraphNode *D_8038BCA4;
-extern s16 D_8038BD78;
-extern struct GraphNode *D_8038BCF8[];
+extern_s void geo_layout_cmd_branch_and_link(void);
+extern_s void geo_layout_cmd_end(void);
+extern_s void geo_layout_cmd_branch(void);
+extern_s void geo_layout_cmd_return(void);
+extern_s void geo_layout_cmd_open_node(void);
+extern_s void geo_layout_cmd_close_node(void);
+extern_s void geo_layout_cmd_assign_as_view(void);
+extern_s void geo_layout_cmd_update_node_flags(void);
+extern_s void geo_layout_cmd_node_root(void);
+extern_s void geo_layout_cmd_node_ortho_projection(void);
+extern_s void geo_layout_cmd_node_perspective(void);
+extern_s void geo_layout_cmd_node_start(void);
+extern_s void geo_layout_cmd_nop3(void);
+extern_s void geo_layout_cmd_node_master_list(void);
+extern_s void geo_layout_cmd_node_level_of_detail(void);
+extern_s void geo_layout_cmd_node_switch_case(void);
+extern_s void geo_layout_cmd_node_camera(void);
+extern_s void geo_layout_cmd_node_translation_rotation(void);
+extern_s void geo_layout_cmd_node_translation(void);
+extern_s void geo_layout_cmd_node_rotation(void);
+extern_s void geo_layout_cmd_node_scale(void);
+extern_s void geo_layout_cmd_nop2(void);
+extern_s void geo_layout_cmd_node_animated_part(void);
+extern_s void geo_layout_cmd_node_billboard(void);
+extern_s void geo_layout_cmd_node_display_list(void);
+extern_s void geo_layout_cmd_node_shadow(void);
+extern_s void geo_layout_cmd_node_object_parent(void);
+extern_s void geo_layout_cmd_node_generated(void);
+extern_s void geo_layout_cmd_node_background(void);
+extern_s void geo_layout_cmd_nop(void);
+extern_s void geo_layout_cmd_copy_view(void);
+extern_s void geo_layout_cmd_node_held_obj(void);
+extern_s void geo_layout_cmd_node_culling_radius(void);
 
-void geo_layout_cmd_branch_and_link(void);
-void geo_layout_cmd_end(void);
-void geo_layout_cmd_branch(void);
-void geo_layout_cmd_return(void);
-void geo_layout_cmd_open_node(void);
-void geo_layout_cmd_close_node(void);
-void geo_layout_cmd_assign_as_view(void);
-void geo_layout_cmd_update_node_flags(void);
-void geo_layout_cmd_node_root(void);
-void geo_layout_cmd_node_ortho_projection(void);
-void geo_layout_cmd_node_perspective(void);
-void geo_layout_cmd_node_start(void);
-void geo_layout_cmd_nop3(void);
-void geo_layout_cmd_node_master_list(void);
-void geo_layout_cmd_node_level_of_detail(void);
-void geo_layout_cmd_node_switch_case(void);
-void geo_layout_cmd_node_camera(void);
-void geo_layout_cmd_node_translation_rotation(void);
-void geo_layout_cmd_node_translation(void);
-void geo_layout_cmd_node_rotation(void);
-void geo_layout_cmd_node_scale(void);
-void geo_layout_cmd_nop2(void);
-void geo_layout_cmd_node_animated_part(void);
-void geo_layout_cmd_node_billboard(void);
-void geo_layout_cmd_node_display_list(void);
-void geo_layout_cmd_node_shadow(void);
-void geo_layout_cmd_node_object_parent(void);
-void geo_layout_cmd_node_generated(void);
-void geo_layout_cmd_node_background(void);
-void geo_layout_cmd_nop(void);
-void geo_layout_cmd_copy_view(void);
-void geo_layout_cmd_node_held_obj(void);
-void geo_layout_cmd_node_culling_radius(void);
-
-struct GraphNode *process_geo_layout(struct AllocOnlyPool *a0, void *segptr);
-
-#ifdef __cplusplus
-};
-#endif
+extern_s struct GraphNode *process_geo_layout(struct AllocOnlyPool *a0, void *segptr);
 
 #endif // GEO_LAYOUT_H

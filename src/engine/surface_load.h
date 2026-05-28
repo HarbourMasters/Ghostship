@@ -23,13 +23,13 @@ enum {
 typedef struct SurfaceNode SpatialPartitionCell[3];
 
 // Needed for bs bss reordering memes.
-extern s32 unused8038BE90;
+extern_s s32 unused8038BE90;
 
-extern SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
-extern SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
-extern struct SurfaceNode *sSurfaceNodePool;
-extern struct Surface *sSurfacePool;
-extern s16 sSurfacePoolSize;
+extern_s SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
+extern_s SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+extern_s struct SurfaceNode *sSurfaceNodePool;
+extern_s struct Surface *sSurfacePool;
+extern_s s16 sSurfacePoolSize;
 
 void alloc_surface_pools(void);
 u32 get_area_terrain_size(s16 *data);

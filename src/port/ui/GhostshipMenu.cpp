@@ -60,6 +60,28 @@ void GhostshipMenu::AddSidebarEntry(std::string sectionName, std::string sidebar
     menuEntries.at(sectionName).sidebarOrder.push_back(sidebarName);
 }
 
+void GhostshipMenu::RemoveMenuEntry(std::string entryName) {
+    assert(!entryName.empty());
+    if (menuEntries.contains(entryName)) {
+        menuEntries.at(entryName).markForDelete = true;
+    }
+}
+
+void GhostshipMenu::RemoveSidebarEntry(std::string sectionName, std::string sidebarName) {
+    assert(!sectionName.empty());
+    assert(!sidebarName.empty());
+    auto& sidebars = menuEntries.at(sectionName).sidebars;
+    // Delete directly
+    if (sidebars.contains(sidebarName)) {
+        sidebars.erase(sidebarName);
+        auto& sidebarOrder = menuEntries.at(sectionName).sidebarOrder;
+        sidebarOrder.erase(std::remove(sidebarOrder.begin(), sidebarOrder.end(), sidebarName), sidebarOrder.end());
+    } else {
+        // Mark for deletion if not found, will be deleted when encountered in Draw()
+        menuEntries.at(sectionName).sidebars.at(sidebarName).markForDelete = true;
+    }
+}
+
 WidgetInfo& GhostshipMenu::AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType) {
     assert(!widgetName.empty());                        // Must be unique
     assert(menuEntries.contains(pathInfo.sectionName)); // Section/header must already exist
@@ -126,6 +148,9 @@ void GhostshipMenu::InitElement() {
     AddMenuRando();
     AddMenuAchievements();
     AddMenuDevTools();
+#ifndef __SWITCH__
+    AddModMenu();
+#endif
 
     if (CVarGetInteger(CVAR_SETTING("Menu.SidebarSearch"), 0)) {
         InsertSidebarSearch();
@@ -154,13 +179,13 @@ void GhostshipMenu::InitElement() {
         { DISABLE_FOR_NOT_DIRECTX,
           { [](disabledInfo& info) -> bool {
                return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() !=
-                      Ship::WindowBackend::FAST3D_DXGI_DX11;
+                      Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Available Only on DirectX" } },
         { DISABLE_FOR_DIRECTX,
           { [](disabledInfo& info) -> bool {
                return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
-                      Ship::WindowBackend::FAST3D_DXGI_DX11;
+                      Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Not Available on DirectX" } },
         { DISABLE_FOR_MATCH_REFRESH_RATE_ON,

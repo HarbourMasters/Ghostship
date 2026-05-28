@@ -2,7 +2,7 @@
 
 #include "bits/geo.h"
 
-extern const LevelScript level_bits_entry[];
+extern_s const LevelScript level_bits_entry[];
 
 static const ALIGN_ASSET(2) char bits_seg7_texture_07000000[] = "__OTR__levels/bits/0";
 

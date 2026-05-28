@@ -1,8 +1,8 @@
 #include "ObjectBehavior.h"
 #include <libultraship/bridge/consolevariablebridge.h>
 #include "port/Rando/Logic/Logic.h"
-#include "port/hooks/list/PlayerEvent.h"
-#include "port/hooks/list/EngineEvent.h"
+#include "port/events/list/PlayerEvent.h"
+#include "port/events/list/EngineEvent.h"
 
 extern "C" {
 #include "assets/actors/star/geo.h"
@@ -62,7 +62,7 @@ void Rando::ObjectBehavior::Init() {
             return;
         }
         if (ev->object->unused1 != RC_UNKNOWN) {
-            event->cancelled = true;
+            event->Cancelled = true;
             CustomItem::ObjectCollected(ev->type, ev->marioState, ev->object);
         }
     });
@@ -75,7 +75,7 @@ void Rando::ObjectBehavior::Init() {
         if (ev->model == MODEL_EXCLAMATION_BOX) {
             return;
         }
-        ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
+        ModifySpawnedObject(&event->Cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
     REGISTER_LISTENER(SpawnStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -87,7 +87,7 @@ void Rando::ObjectBehavior::Init() {
             return;
         }
 
-        ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, NULL);
+        ModifySpawnedObject(&event->Cancelled, ev->posX, ev->posY, ev->posZ, NULL);
     });
 
     REGISTER_LISTENER(SpawnCoinStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -129,7 +129,7 @@ void Rando::ObjectBehavior::Init() {
         CustomItem::SpawnObject(modelId, behavior, randoStaticCheck.posX, randoStaticCheck.posY, randoStaticCheck.posZ,
                                 NULL, randoStaticCheck.randoCheckId, randoStaticCheck.actData);
 
-        event->cancelled = true;
+        event->Cancelled = true;
     });
 
     REGISTER_LISTENER(ModifyDefaultStar, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -137,7 +137,7 @@ void Rando::ObjectBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        ModifySpawnedObject(&event->cancelled, ev->posX, ev->posY, ev->posZ, ev->param);
+        ModifySpawnedObject(&event->Cancelled, ev->posX, ev->posY, ev->posZ, ev->param);
     });
 
     REGISTER_LISTENER(ModifyObjectBehavior, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
@@ -146,7 +146,7 @@ void Rando::ObjectBehavior::Init() {
             return;
         }
 
-        event->cancelled = true;
+        event->Cancelled = true;
 
         switch (ev->model) {
             case MODEL_BLUE_COIN:
@@ -156,14 +156,14 @@ void Rando::ObjectBehavior::Init() {
                 Rando::ObjectBehavior::ModifyBlueCoinSwitchBehavior();
                 break;
             case MODEL_RED_COIN:
-                Rando::ObjectBehavior::ModifyRedCoinBehavior(&event->cancelled, ev->object);
+                Rando::ObjectBehavior::ModifyRedCoinBehavior(&event->Cancelled, ev->object);
                 break;
             case MODEL_STAR:
             case MODEL_TRANSPARENT_STAR:
-                Rando::ObjectBehavior::ModifyStarBehavior(&event->cancelled, ev->object);
+                Rando::ObjectBehavior::ModifyStarBehavior(&event->Cancelled, ev->object);
                 break;
             default:
-                event->cancelled = false;
+                event->Cancelled = false;
                 break;
         }
     });
@@ -174,7 +174,7 @@ void Rando::ObjectBehavior::Init() {
             return;
         }
         if (ev->object->unused1 != RC_UNKNOWN) {
-            event->cancelled = true;
+            event->Cancelled = true;
         }
     });
 }

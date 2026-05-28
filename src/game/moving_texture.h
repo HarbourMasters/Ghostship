@@ -31,7 +31,7 @@ struct MovtexQuadCollection {
     Movtex *quadArraySegmented;
 };
 
-extern f32 gPaintingMarioYEntry;
+extern_s f32 gPaintingMarioYEntry;
 
 // Moving texture mesh ids have for bits 8-16 a course identifier.
 // This corresponds to the numbers used in debug level select, except they are

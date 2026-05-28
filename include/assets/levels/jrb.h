@@ -2,7 +2,7 @@
 
 #include "jrb/geo.h"
 
-extern const LevelScript level_jrb_entry[];
+extern_s const LevelScript level_jrb_entry[];
 
 static const ALIGN_ASSET(2) char jrb_seg7_texture_07000000[] = "__OTR__levels/jrb/0";
 

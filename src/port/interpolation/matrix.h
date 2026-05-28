@@ -52,44 +52,36 @@ typedef struct {
 
 typedef MtxF Matrix;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+extern_s Mtx gIdentityMtx;
+extern_s Matrix gIdentityMatrix;
 
-extern Mtx gIdentityMtx;
-extern Matrix gIdentityMatrix;
+extern_s Matrix* gGfxMatrix;
+extern_s Matrix sGfxMatrixStack[];
+extern_s Matrix* gCalcMatrix;
+extern_s Matrix sCalcMatrixStack[];
 
-extern Matrix* gGfxMatrix;
-extern Matrix sGfxMatrixStack[];
-extern Matrix* gCalcMatrix;
-extern Matrix sCalcMatrixStack[];
+extern_s Mtx gMainMatrixStack[];
+extern_s Mtx* gGfxMtx;
 
-extern Mtx gMainMatrixStack[];
-extern Mtx* gGfxMtx;
-
-void Matrix_InitPerspective(Gfx** dList);
-void Matrix_InitOrtho(Gfx** dList);
-void Matrix_Copy(Matrix* dst, Matrix* src);
-void Matrix_Push(Matrix** mtxStack);
-void Matrix_Pop(Matrix** mtxStack);
-void Matrix_Mult(Matrix* mtx, Matrix* tf, u8 mode);
-void Matrix_Translate(Matrix* mtx, f32 x, f32 y, f32 z, u8 mode);
-void Matrix_Scale(Matrix* mtx, f32 xScale, f32 yScale, f32 zScale, u8 mode);
-void Matrix_RotateX(Matrix* mtx, f32 angle, u8 mode);
-void Matrix_RotateY(Matrix* mtx, f32 angle, u8 mode);
-void Matrix_RotateZ(Matrix* mtx, f32 angle, u8 mode);
-void Matrix_RotateAxis(Matrix* mtx, f32 angle, f32 axisX, f32 axisY, f32 axisZ, u8 mode);
-void Matrix_ToMtx(Mtx* dest);
-void Matrix_FromMtx(Mtx* src, Matrix* dest);
-void Matrix_MultVec3f(Matrix* mtx, Vec3f* src, Vec3f* dest);
-void Matrix_MultVec3fNoTranslate(Matrix* mtx, Vec3f* src, Vec3f* dest);
-void Matrix_GetYRPAngles(Matrix* mtx, Vec3f* rot);
-void Matrix_GetXYZAngles(Matrix* mtx, Vec3f* rot);
-void Matrix_LookAt(Matrix* mtx, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp, f32 yUp, f32 zUp,
+extern_s void Matrix_InitPerspective(Gfx** dList);
+extern_s void Matrix_InitOrtho(Gfx** dList);
+extern_s void Matrix_Copy(Matrix* dst, Matrix* src);
+extern_s void Matrix_Push(Matrix** mtxStack);
+extern_s void Matrix_Pop(Matrix** mtxStack);
+extern_s void Matrix_Mult(Matrix* mtx, Matrix* tf, u8 mode);
+extern_s void Matrix_Translate(Matrix* mtx, f32 x, f32 y, f32 z, u8 mode);
+extern_s void Matrix_Scale(Matrix* mtx, f32 xScale, f32 yScale, f32 zScale, u8 mode);
+extern_s void Matrix_RotateX(Matrix* mtx, f32 angle, u8 mode);
+extern_s void Matrix_RotateY(Matrix* mtx, f32 angle, u8 mode);
+extern_s void Matrix_RotateZ(Matrix* mtx, f32 angle, u8 mode);
+extern_s void Matrix_RotateAxis(Matrix* mtx, f32 angle, f32 axisX, f32 axisY, f32 axisZ, u8 mode);
+extern_s void Matrix_ToMtx(Mtx* dest);
+extern_s void Matrix_FromMtx(Mtx* src, Matrix* dest);
+extern_s void Matrix_MultVec3f(Matrix* mtx, Vec3f* src, Vec3f* dest);
+extern_s void Matrix_MultVec3fNoTranslate(Matrix* mtx, Vec3f* src, Vec3f* dest);
+extern_s void Matrix_GetYRPAngles(Matrix* mtx, Vec3f* rot);
+extern_s void Matrix_GetXYZAngles(Matrix* mtx, Vec3f* rot);
+extern_s void Matrix_LookAt(Matrix* mtx, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp, f32 yUp, f32 zUp,
                    u8 mode);
-void Matrix_SetGfxMtx(Gfx** gfx);
-void Lights_SetOneLight(Gfx** dList, s32 dirX, s32 dirY, s32 dirZ, s32 colR, s32 colG, s32 colB, s32 ambR, s32 ambG, s32 ambB);
-
-#ifdef __cplusplus
-}
-#endif
+extern_s void Matrix_SetGfxMtx(Gfx** gfx);
+extern_s void Lights_SetOneLight(Gfx** dList, s32 dirX, s32 dirY, s32 dirZ, s32 colR, s32 colG, s32 colB, s32 ambR, s32 ambG, s32 ambB);

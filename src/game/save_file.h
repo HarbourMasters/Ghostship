@@ -116,13 +116,13 @@ struct SaveBuffer {
     struct MainMenuSaveData menuData[2];
 };
 
-extern u8 gLastCompletedCourseNum;
-extern u8 gLastCompletedStarNum;
-extern s8 sUnusedGotGlobalCoinHiScore;
-extern u8 gGotFileCoinHiScore;
-extern u8 gCurrCourseStarFlags;
-extern u8 gSpecialTripleJump;
-extern s8 gLevelToCourseNumTable[];
+extern_s u8 gLastCompletedCourseNum;
+extern_s u8 gLastCompletedStarNum;
+extern_s s8 sUnusedGotGlobalCoinHiScore;
+extern_s u8 gGotFileCoinHiScore;
+extern_s u8 gCurrCourseStarFlags;
+extern_s u8 gSpecialTripleJump;
+extern_s s8 gLevelToCourseNumTable[];
 
 // game progress flags
 #define SAVE_FLAG_FILE_EXISTS            /* 0x00000001 */ (1 << 0)
@@ -166,51 +166,38 @@ struct WarpCheckpoint {
     /*0x04*/ u8 warpNode;
 };
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+extern_s struct WarpCheckpoint gWarpCheckpoint;
 
-extern struct WarpCheckpoint gWarpCheckpoint;
+extern_s s8 gMainMenuDataModified;
+extern_s s8 gSaveFileModified;
 
-extern s8 gMainMenuDataModified;
-extern s8 gSaveFileModified;
+extern_s void save_file_do_save(s32 fileIndex);
+extern_s void save_file_erase(s32 fileIndex);
+extern_s BAD_RETURN(s32) save_file_copy(s32 srcFileIndex, s32 destFileIndex);
+extern_s void save_file_load_all(void);
+extern_s void save_file_reload(void);
+extern_s void save_file_collect_star_or_key(s16 coinScore, s16 starIndex);
+extern_s s32 save_file_exists(s32 fileIndex);
+extern_s u32 save_file_get_max_coin_score(s32 courseIndex);
+extern_s s32 save_file_get_course_star_count(s32 fileIndex, s32 courseIndex);
+extern_s s32 save_file_get_total_star_count(s32 fileIndex, s32 minCourse, s32 maxCourse);
+extern_s void save_file_set_flags(u32 flags);
+extern_s void save_file_clear_flags(u32 flags);
+extern_s u32 save_file_get_flags(void);
+extern_s u32 save_file_get_star_flags(s32 fileIndex, s32 courseIndex);
+extern_s void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u32 starFlags);
+extern_s s32 save_file_get_course_coin_score(s32 fileIndex, s32 courseIndex);
+extern_s s32 save_file_is_cannon_unlocked(void);
+extern_s void save_file_set_cannon_unlocked(void);
+extern_s void save_file_set_cap_pos(s16 x, s16 y, s16 z);
+extern_s s32 save_file_get_cap_pos(Vec3s capPos);
+extern_s void save_file_set_sound_mode(u16 mode);
+extern_s u16 save_file_get_sound_mode(void);
+extern_s void save_file_move_cap_to_default_location(void);
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-void save_file_do_save(s32 fileIndex);
-void save_file_erase(s32 fileIndex);
-BAD_RETURN(s32) save_file_copy(s32 srcFileIndex, s32 destFileIndex);
-void save_file_load_all(void);
-void save_file_reload(void);
-void save_file_collect_star_or_key(s16 coinScore, s16 starIndex);
-s32 save_file_exists(s32 fileIndex);
-u32 save_file_get_max_coin_score(s32 courseIndex);
-s32 save_file_get_course_star_count(s32 fileIndex, s32 courseIndex);
-s32 save_file_get_total_star_count(s32 fileIndex, s32 minCourse, s32 maxCourse);
-void save_file_set_flags(u32 flags);
-void save_file_clear_flags(u32 flags);
-u32 save_file_get_flags(void);
-u32 save_file_get_star_flags(s32 fileIndex, s32 courseIndex);
-void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u32 starFlags);
-s32 save_file_get_course_coin_score(s32 fileIndex, s32 courseIndex);
-s32 save_file_is_cannon_unlocked(void);
-void save_file_set_cannon_unlocked(void);
-void save_file_set_cap_pos(s16 x, s16 y, s16 z);
-s32 save_file_get_cap_pos(Vec3s capPos);
-void save_file_set_sound_mode(u16 mode);
-u16 save_file_get_sound_mode(void);
-void save_file_move_cap_to_default_location(void);
-
-void disable_warp_checkpoint(void);
-void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode);
-s32 check_warp_checkpoint(struct WarpNode *warpNode);
-
-#ifdef __cplusplus
-}
-#endif
+extern_s void disable_warp_checkpoint(void);
+extern_s void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode);
+extern_s s32 check_warp_checkpoint(struct WarpNode *warpNode);
 
 #ifdef VERSION_EU
 enum EuLanguages {
@@ -221,10 +208,6 @@ enum EuLanguages {
 
 void eu_set_language(u16 language);
 u16 eu_get_language(void);
-#endif
-
-#ifdef __cplusplus
-}
 #endif
 
 #endif // SAVE_FILE_H

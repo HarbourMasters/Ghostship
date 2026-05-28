@@ -12,95 +12,91 @@
 
 #define NUMAIBUFFERS 3
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // constant .data
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern struct AudioSessionSettingsEU gAudioSessionPresets[];
+extern_s struct AudioSessionSettingsEU gAudioSessionPresets[];
 #else
-extern struct AudioSessionSettings gAudioSessionPresetsJP[];
-extern struct AudioSessionSettings gAudioSessionPresetsUS[];
+extern_s struct AudioSessionSettings gAudioSessionPresetsJP[];
+extern_s struct AudioSessionSettings gAudioSessionPresetsUS[];
 #endif
-extern u16 D_80332388[128]; // unused
+extern_s u16 D_80332388[128]; // unused
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern f32 gPitchBendFrequencyScale[256];
+extern_s f32 gPitchBendFrequencyScale[256];
 #else
-extern f32 gPitchBendFrequencyScale[255];
+extern_s f32 gPitchBendFrequencyScale[255];
 #endif
-extern f32 gNoteFrequencies[128];
+extern_s f32 gNoteFrequencies[128];
 
-extern u8 gDefaultShortNoteVelocityTable[16];
-extern u8 gDefaultShortNoteDurationTable[16];
-extern s8 gVibratoCurve[16];
-extern struct AdsrEnvelope gDefaultEnvelope[3];
+extern_s u8 gDefaultShortNoteVelocityTable[16];
+extern_s u8 gDefaultShortNoteDurationTable[16];
+extern_s s8 gVibratoCurve[16];
+extern_s struct AdsrEnvelope gDefaultEnvelope[3];
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern s16 gEuUnknownWave7[256];
-extern s16 *gWaveSamples[6];
+extern_s s16 gEuUnknownWave7[256];
+extern_s s16 *gWaveSamples[6];
 #else
-extern s16 *gWaveSamples[4];
+extern_s s16 *gWaveSamples[4];
 #endif
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern u8 euUnknownData_8030194c[4];
+extern_s u8 euUnknownData_8030194c[4];
 #ifdef VERSION_EU
-extern u16 gHeadsetPanQuantization[0x10];
+extern_s u16 gHeadsetPanQuantization[0x10];
 #else
-extern u16 gHeadsetPanQuantization[0x40];
+extern_s u16 gHeadsetPanQuantization[0x40];
 #endif
-extern s16 euUnknownData_80301950[64];
-extern struct NoteSubEu gZeroNoteSub;
-extern struct NoteSubEu gDefaultNoteSub;
+extern_s s16 euUnknownData_80301950[64];
+extern_s struct NoteSubEu gZeroNoteSub;
+extern_s struct NoteSubEu gDefaultNoteSub;
 #else
-extern u16 gHeadsetPanQuantization[10];
+extern_s u16 gHeadsetPanQuantization[10];
 #endif
-extern f32 gHeadsetPanVolume[128];
-extern f32 gStereoPanVolume[128];
-extern f32 gDefaultPanVolume[128];
+extern_s f32 gHeadsetPanVolume[128];
+extern_s f32 gStereoPanVolume[128];
+extern_s f32 gDefaultPanVolume[128];
 
-extern f32 gVolRampingLhs136[128];
-extern f32 gVolRampingRhs136[128];
-extern f32 gVolRampingLhs144[128];
-extern f32 gVolRampingRhs144[128];
-extern f32 gVolRampingLhs128[128];
-extern f32 gVolRampingRhs128[128];
+extern_s f32 gVolRampingLhs136[128];
+extern_s f32 gVolRampingRhs136[128];
+extern_s f32 gVolRampingLhs144[128];
+extern_s f32 gVolRampingRhs144[128];
+extern_s f32 gVolRampingLhs128[128];
+extern_s f32 gVolRampingRhs128[128];
 
 // non-constant .data
-extern s16 gTatumsPerBeat;
-extern s8 gUnusedCount80333EE8;
-extern s32 gAudioHeapSize; // AUDIO_HEAP_SIZE
-extern s32 gAudioInitPoolSize; // AUDIO_INIT_POOL_SIZE
-extern volatile s32 gAudioLoadLock;
+extern_s s16 gTatumsPerBeat;
+extern_s s8 gUnusedCount80333EE8;
+extern_s s32 gAudioHeapSize; // AUDIO_HEAP_SIZE
+extern_s s32 gAudioInitPoolSize; // AUDIO_INIT_POOL_SIZE
+extern_s volatile s32 gAudioLoadLock;
 
 // .bss
-extern volatile s32 gAudioFrameCount;
+extern_s volatile s32 gAudioFrameCount;
 
 // number of DMAs performed during this frame
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern s32 gCurrAudioFrameDmaCount;
+extern_s s32 gCurrAudioFrameDmaCount;
 #else
-extern volatile s32 gCurrAudioFrameDmaCount;
+extern_s volatile s32 gCurrAudioFrameDmaCount;
 #endif
 
-extern s32 gAudioTaskIndex;
-extern s32 gCurrAiBufferIndex;
+extern_s s32 gAudioTaskIndex;
+extern_s s32 gCurrAiBufferIndex;
 
-extern u64 *gAudioCmdBuffers[2];
-extern u64 *gAudioCmd;
+extern_s u64 *gAudioCmdBuffers[2];
+extern_s u64 *gAudioCmd;
 
-extern struct SPTask *gAudioTask;
-extern struct SPTask gAudioTasks[2];
+extern_s struct SPTask *gAudioTask;
+extern_s struct SPTask gAudioTasks[2];
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern f32 D_EU_802298D0;
-extern s32 gRefreshRate;
+extern_s f32 D_EU_802298D0;
+extern_s s32 gRefreshRate;
 #endif
 
-extern s16 *gAiBuffers[NUMAIBUFFERS];
-extern s16 gAiBufferLengths[NUMAIBUFFERS];
+extern_s s16 *gAiBuffers[NUMAIBUFFERS];
+extern_s s16 gAiBufferLengths[NUMAIBUFFERS];
 #if defined(VERSION_SH)
 #define AIBUFFER_LEN 0xb00
 #elif defined(VERSION_EU)
@@ -109,34 +105,34 @@ extern s16 gAiBufferLengths[NUMAIBUFFERS];
 #define AIBUFFER_LEN (0xa0 * 16)
 #endif
 
-extern u32 gUnused80226E58[0x10];
-extern u16 gUnused80226E98[0x10];
+extern_s u32 gUnused80226E58[0x10];
+extern_s u16 gUnused80226E98[0x10];
 
-extern u32 gAudioRandom;
+extern_s u32 gAudioRandom;
 
 #ifdef VERSION_SH
-extern f32 unk_sh_data_1[];
+extern_s f32 unk_sh_data_1[];
 
-extern volatile u32 gAudioLoadLockSH;
+extern_s volatile u32 gAudioLoadLockSH;
 
-extern u8 D_SH_80350F18;
-extern u8 D_SH_80350F19;
+extern_s u8 D_SH_80350F18;
+extern_s u8 D_SH_80350F19;
 
-extern OSMesg D_SH_80350F1C[1];
-extern OSMesgQueue D_SH_80350F20; // address written to D_SH_80350F38
-extern OSMesgQueue *D_SH_80350F38;
+extern_s OSMesg D_SH_80350F1C[1];
+extern_s OSMesgQueue D_SH_80350F20; // address written to D_SH_80350F38
+extern_s OSMesgQueue *D_SH_80350F38;
 
-extern OSMesg D_SH_80350F40[4];
-extern OSMesgQueue D_SH_80350F50; // address written to D_SH_80350F68
-extern OSMesgQueue *D_SH_80350F68;
+extern_s OSMesg D_SH_80350F40[4];
+extern_s OSMesgQueue D_SH_80350F50; // address written to D_SH_80350F68
+extern_s OSMesgQueue *D_SH_80350F68;
 
-extern OSMesg D_SH_80350F6C[1];
-extern OSMesgQueue D_SH_80350F70; // address written to D_SH_80350F88
-extern OSMesgQueue *D_SH_80350F88;
+extern_s OSMesg D_SH_80350F6C[1];
+extern_s OSMesgQueue D_SH_80350F70; // address written to D_SH_80350F88
+extern_s OSMesgQueue *D_SH_80350F88;
 
-extern OSMesg D_SH_80350F8C[1];
-extern OSMesgQueue D_SH_80350F90; // address written to D_SH_80350F90
-extern OSMesgQueue *D_SH_80350FA8;
+extern_s OSMesg D_SH_80350F8C[1];
+extern_s OSMesgQueue D_SH_80350F90; // address written to D_SH_80350F90
+extern_s OSMesgQueue *D_SH_80350FA8;
 #endif
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
@@ -150,14 +146,10 @@ extern OSMesgQueue *D_SH_80350FA8;
 #endif
 
 #ifdef VERSION_SH
-extern u32 D_SH_80315EF0;
-extern u16 D_SH_80315EF4;
-extern u16 D_SH_80315EF8;
-extern u16 D_SH_80315EFC;
-#endif
-
-#ifdef __cplusplus
-}
+extern_s u32 D_SH_80315EF0;
+extern_s u16 D_SH_80315EF4;
+extern_s u16 D_SH_80315EF8;
+extern_s u16 D_SH_80315EFC;
 #endif
 
 #endif // AUDIO_DATA_H

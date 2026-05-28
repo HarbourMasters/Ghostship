@@ -9,16 +9,16 @@
     #define LANGUAGE_ARRAY(cmd) cmd
 #endif
 
-extern void *dialog_table_eu_en[];
-extern void *course_name_table_eu_en[];
-extern void *act_name_table_eu_en[];
+extern_s void *dialog_table_eu_en[];
+extern_s void *course_name_table_eu_en[];
+extern_s void *act_name_table_eu_en[];
 
-extern void *dialog_table_eu_fr[];
-extern void *course_name_table_eu_fr[];
-extern void *act_name_table_eu_fr[];
+extern_s void *dialog_table_eu_fr[];
+extern_s void *course_name_table_eu_fr[];
+extern_s void *act_name_table_eu_fr[];
 
-extern void *dialog_table_eu_de[];
-extern void *course_name_table_eu_de[];
-extern void *act_name_table_eu_de[];
+extern_s void *dialog_table_eu_de[];
+extern_s void *course_name_table_eu_de[];
+extern_s void *act_name_table_eu_de[];
 
 #endif // EU_TRANSLATION_H

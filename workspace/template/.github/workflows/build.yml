@@ -1,0 +1,64 @@
+name: Build Mod
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Mod Repository
+        uses: actions/checkout@v4
+        with:
+          path: 'mod-source'
+
+      - name: Checkout Ghostship Repository
+        uses: actions/checkout@v4
+        with:
+          repository: 'KiritoDv/Ghostship'
+          ref: 'impl/c-mods'
+          submodules: 'recursive'
+          path: 'Ghostship'
+
+      - name: Prepare Workspace
+        run: |
+          mkdir -p Ghostship/workspace
+          mv mod-source Ghostship/workspace
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip cmake
+          python3 -m pip install Pillow --break-system-packages
+
+      - name: Configure CMake
+        run: |
+          cd Ghostship/workspace/mod-source
+          cmake -B build -S .
+
+      - name: Build Mod
+        run: |
+          cd Ghostship/workspace/mod-source
+          cmake --build build -j$(nproc)
+
+      - name: Package and Sign Mod
+        run: |
+          cd Ghostship/workspace/mod-source
+          cd output
+          zip -r ../mod.zip .
+          cd ..
+        # echo "${{ secrets.PRIVATE_KEY }}" > private_key.pem
+        # python3 ../../libultraship/tools/sign.py mod.zip private_key.pem
+        # rm private_key.pem
+
+      - name: Upload Mod Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod
+          path: Ghostship/workspace/mod-source/mod.zip
+          retention-days: 7

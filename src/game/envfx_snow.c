@@ -13,6 +13,7 @@
 #include "audio/external.h"
 #include "obj_behaviors.h"
 #include "assets/bin/effect.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 /**
  * This file contains the function that handles 'environment effects',
@@ -456,6 +457,21 @@ Gfx *envfx_update_snow(s32 snowMode, Vec3s marioPos, Vec3s camFrom, Vec3s camTo)
 
     gSPDisplayList(gfx++, tiny_bubble_dl_0B006AB0);
     gSPEndDisplayList(gfx++);
+
+    // Record particle positions for frame interpolation on sub-frames.
+    if (gSnowParticleCount > 0) {
+        f32 positions[140 * 3];
+        for (s32 pi = 0; pi < gSnowParticleCount; pi++) {
+            positions[pi * 3 + 0] = gEnvFxBuffer[pi].xPos;
+            positions[pi * 3 + 1] = gEnvFxBuffer[pi].yPos;
+            positions[pi * 3 + 2] = gEnvFxBuffer[pi].zPos;
+        }
+        FrameInterpolation_RecordSnowParticles(gfxStart,
+            vertex1.x, vertex1.y, vertex1.z,
+            vertex2.x, vertex2.y, vertex2.z,
+            vertex3.x, vertex3.y, vertex3.z,
+            snowMode, gSnowParticleCount, positions);
+    }
 
     return gfxStart;
 }

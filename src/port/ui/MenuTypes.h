@@ -2,6 +2,7 @@
 
 #include <libultraship/libultraship.h>
 #include "UIWidgets.hpp"
+#include "fast/Fast3dWindow.h"
 
 typedef enum {
     DISABLE_FOR_NO_VSYNC,
@@ -256,6 +257,7 @@ struct disabledInfo {
 struct SidebarEntry {
     uint32_t columnCount;
     std::vector<std::vector<WidgetInfo>> columnWidgets;
+    bool markForDelete = false;
 };
 
 // Contains entries for what's listed in the header at the top, including the name displayed on the top bar (label),
@@ -266,6 +268,7 @@ struct MainMenuEntry {
     const char* sidebarCvar;
     std::unordered_map<std::string, SidebarEntry> sidebars = {};
     std::vector<std::string> sidebarOrder = {};
+    bool markForDelete = false;
 };
 
 static const std::unordered_map<Ship::AudioBackend, const char*> audioBackendsMap = {
@@ -275,10 +278,10 @@ static const std::unordered_map<Ship::AudioBackend, const char*> audioBackendsMa
     { Ship::AudioBackend::NUL, "Null" },
 };
 
-static const std::unordered_map<Ship::WindowBackend, const char*> windowBackendsMap = {
-    { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
-    { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
-    { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
+static const std::unordered_map<Fast::WindowBackend, const char*> windowBackendsMap = {
+    { Fast::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
+    { Fast::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
+    { Fast::WindowBackend::FAST3D_SDL_METAL, "Metal" },
 };
 
 struct MenuInit {

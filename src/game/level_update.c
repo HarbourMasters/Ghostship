@@ -30,8 +30,8 @@
 #include "rumble_init.h"
 
 #include "port/ui/cvar_prefixes.h"
-#include "port/hooks/list/EngineEvent.h"
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/EngineEvent.h"
+#include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 #define PLAY_MODE_NORMAL 0
@@ -405,6 +405,7 @@ void init_mario_after_warp(void) {
     }
 
     reset_camera(gCurrentArea->camera);
+    CALL_EVENT(WarpEnd, gCurrLevelNum, gCurrAreaIndex);
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
 
@@ -626,6 +627,7 @@ void initiate_warp(s16 destLevel, s16 destArea, s16 destWarpNode, s32 arg3) {
     sWarpDest.areaIdx = destArea;
     sWarpDest.nodeId = destWarpNode;
     sWarpDest.arg = arg3;
+    CALL_EVENT(WarpStart, destLevel, destArea, destWarpNode);
 }
 
 // From Surface 0xD3 to 0xFC

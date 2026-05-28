@@ -63,70 +63,62 @@ struct NumTimesCalled {
     /*0x04*/ s16 wall;
 };
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+extern_s struct ObjectNode gObjectListArray[];
 
-extern struct ObjectNode gObjectListArray[];
+extern_s s32 gDebugInfoFlags;
+extern_s s32 gNumFindFloorMisses;
+extern_s UNUSED s32 unused_8033BEF8;
+extern_s s32 gUnknownWallCount;
+extern_s u32 gObjectCounter;
 
-extern s32 gDebugInfoFlags;
-extern s32 gNumFindFloorMisses;
-extern UNUSED s32 unused_8033BEF8;
-extern s32 gUnknownWallCount;
-extern u32 gObjectCounter;
+extern_s struct NumTimesCalled gNumCalls;
 
-extern struct NumTimesCalled gNumCalls;
+extern_s s16 gDebugInfo[][8];
+extern_s s16 gDebugInfoOverwrite[][8];
 
-extern s16 gDebugInfo[][8];
-extern s16 gDebugInfoOverwrite[][8];
+extern_s u32 gTimeStopState;
+extern_s struct Object gObjectPool[];
+extern_s struct Object gMacroObjectDefaultParent;
+extern_s struct ObjectNode *gObjectLists;
+extern_s struct ObjectNode gFreeObjectList;
 
-extern u32 gTimeStopState;
-extern struct Object gObjectPool[];
-extern struct Object gMacroObjectDefaultParent;
-extern struct ObjectNode *gObjectLists;
-extern struct ObjectNode gFreeObjectList;
+extern_s struct Object *gMarioObject;
+extern_s struct Object *gLuigiObject;
+extern_s struct Object *gCurrentObject;
 
-extern struct Object *gMarioObject;
-extern struct Object *gLuigiObject;
-extern struct Object *gCurrentObject;
+extern_s const BehaviorScript *gCurBhvCommand;
+extern_s s16 gPrevFrameObjectCount;
 
-extern const BehaviorScript *gCurBhvCommand;
-extern s16 gPrevFrameObjectCount;
+extern_s s32 gSurfaceNodesAllocated;
+extern_s s32 gSurfacesAllocated;
+extern_s s32 gNumStaticSurfaceNodes;
+extern_s s32 gNumStaticSurfaces;
 
-extern s32 gSurfaceNodesAllocated;
-extern s32 gSurfacesAllocated;
-extern s32 gNumStaticSurfaceNodes;
-extern s32 gNumStaticSurfaces;
+extern_s struct MemoryPool *gObjectMemoryPool;
 
-extern struct MemoryPool *gObjectMemoryPool;
-
-extern s16 gCheckingSurfaceCollisionsForCamera;
-extern s16 gFindFloorIncludeSurfaceIntangible;
-extern s16 *gEnvironmentRegions;
-extern s32 gEnvironmentLevels[20];
-extern s8 gDoorAdjacentRooms[60][2];
-extern s16 gMarioCurrentRoom;
-extern s16 D_8035FEE2;
-extern s16 D_8035FEE4;
-extern s16 gTHIWaterDrained;
-extern s16 gTTCSpeedSetting;
-extern s16 gMarioShotFromCannon;
-extern s16 gCCMEnteredSlide;
-extern s16 gNumRoomedObjectsInMarioRoom;
-extern s16 gNumRoomedObjectsNotInMarioRoom;
-extern s16 gWDWWaterLevelChanging;
-extern s16 gMarioOnMerryGoRound;
+extern_s s16 gCheckingSurfaceCollisionsForCamera;
+extern_s s16 gFindFloorIncludeSurfaceIntangible;
+extern_s s16 *gEnvironmentRegions;
+extern_s s32 gEnvironmentLevels[20];
+extern_s s8 gDoorAdjacentRooms[60][2];
+extern_s s16 gMarioCurrentRoom;
+extern_s s16 D_8035FEE2;
+extern_s s16 D_8035FEE4;
+extern_s s16 gTHIWaterDrained;
+extern_s s16 gTTCSpeedSetting;
+extern_s s16 gMarioShotFromCannon;
+extern_s s16 gCCMEnteredSlide;
+extern_s s16 gNumRoomedObjectsInMarioRoom;
+extern_s s16 gNumRoomedObjectsNotInMarioRoom;
+extern_s s16 gWDWWaterLevelChanging;
+extern_s s16 gMarioOnMerryGoRound;
 
 
-void bhv_mario_update(void);
-void set_object_respawn_info_bits(struct Object *obj, u8 bits);
-void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex);
-void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo);
-void clear_objects(void);
-void update_objects(UNUSED s32 unused);
-
-#ifdef __cplusplus
-}
-#endif
+extern_s void bhv_mario_update(void);
+extern_s void set_object_respawn_info_bits(struct Object *obj, u8 bits);
+extern_s void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex);
+extern_s void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo);
+extern_s void clear_objects(void);
+extern_s void update_objects(UNUSED s32 unused);
 
 #endif // OBJECT_LIST_PROCESSOR_H

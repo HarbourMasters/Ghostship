@@ -1,4 +1,5 @@
 name: GenerateBuilds
+
 on:
   push:
 
@@ -55,9 +56,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: pip install -r libultraship/requirements.txt
       - name: Build
         run: |
-          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release
+          $env:VCPKG_ROOT=""
+          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
           cmake --build ./build/x64 --config Release --parallel 10
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
@@ -66,20 +76,30 @@ jobs:
           path: ./build/x64/Release
       - name: Create Package
         run: |
-          mkdir ghostship-release
-          mkdir ghostship-release/debug
-          mv build/x64/Release/Ghostship.exe ghostship-release/
-          mv build/x64/Release/ghostship.o2r ghostship-release/
-          mv build/x64/Release/*.pdb ghostship-release/debug/
-          mv README.md ghostship-release/readme.txt
-          mv config.yml ghostship-release/
-          mv assets ghostship-release/
-          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "ghostship-release/gamecontrollerdb.txt"
+          mkdir debug
+          if (-Not (Test-Path "build/x64/Release/.tcc")) { Write-Error "ERROR: .tcc not found in build/x64/Release/"; exit 1 }
+          mv build/x64/Release/.tcc .tcc
+          mv build/x64/Release/Ghostship.exe .
+          mv build/x64/Release/tcc.dll .
+          mv build/x64/Release/ghostship.o2r .
+          mv build/x64/Release/*.pdb debug/
+          mv README.md readme.txt
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "gamecontrollerdb.txt"
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-windows
-          path: ghostship-release
+          include-hidden-files: true
+          path: |
+            .tcc
+            Ghostship.exe
+            tcc.dll
+            ghostship.o2r
+            debug
+            readme.txt
+            config.yml
+            assets
+            gamecontrollerdb.txt
 
   build-macos:
     needs: generate-port-o2r
@@ -122,6 +142,8 @@ jobs:
             sudo installer -pkg ./MacPorts-2.11.5-14-Sonoma.pkg -target /
           fi
           echo "/opt/local/bin:/opt/local/sbin" >> "$GITHUB_PATH"
+      - name: Install Python dependencies
+        run: python3 -m pip install -r libultraship/requirements.txt --break-system-packages || python3 -m pip install -r libultraship/requirements.txt
       - name: Install dependencies
         run: |
           brew uninstall --ignore-dependencies libpng
@@ -130,7 +152,7 @@ jobs:
       - name: Build (Universal)
         run: |
           export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
-          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DPython3_EXECUTABLE=$(which python3)
           cmake --build build-cmake --config Release --parallel 10
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
@@ -141,12 +163,16 @@ jobs:
         run: |
           (cd build-cmake && cpack)
           mv _packages/*.dmg Ghostship.dmg
+          ls -la build-cmake/.tcc || (echo "ERROR: .tcc not found in build-cmake/" && exit 1)
+          cp -r build-cmake/.tcc .tcc
           mv README.md readme.txt
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-mac
+          include-hidden-files: true
           path: |
+            .tcc
             Ghostship.dmg
             readme.txt
       - name: Save Cache MacPorts
@@ -222,6 +248,12 @@ jobs:
           make
           sudo make install
           sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: pip install -r libultraship/requirements.txt
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
         with:
@@ -229,18 +261,25 @@ jobs:
           path: ./build-cmake
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE=$(which python3)
           cmake --build build-cmake --config Release -j3
           (cd build-cmake && cpack -G External)
-          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage ghostship.appimage
+          ls -la build-cmake/.tcc || (echo "ERROR: .tcc not found in build-cmake/" && exit 1)
+          cp -r build-cmake/.tcc .tcc
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-linux
+          include-hidden-files: true
           path: |
+            .tcc
             ghostship.appimage
+            config.yml
+            readme.txt
+            assets
             gamecontrollerdb.txt
 
   build-switch:
@@ -248,7 +287,7 @@ jobs:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
     container:
-      image: devkitpro/devkita64:20241023
+      image: devkitpro/devkita64:20260219
     steps:
       - uses: actions/checkout@v4
         with:
@@ -258,9 +297,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ninja-build
           sudo apt-get remove -y cmake
-          git -C libultraship remote add nx https://github.com/YoshiCrystal9/libultraship.git
+          git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
           git -C libultraship fetch nx
-          git -C libultraship checkout nx/main-nx
+          git -C libultraship checkout nx/main-nx-nightly
           wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.sh -O /tmp/cmake.sh
           sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
           cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake

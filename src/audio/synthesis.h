@@ -69,19 +69,19 @@ struct SynthesisReverb {
 #endif
 }; // 0xCC <= size <= 0x100
 #if defined(VERSION_EU) || defined(VERSION_SH)
-extern struct SynthesisReverb gSynthesisReverbs[4];
-extern s8 gNumSynthesisReverbs;
-extern struct NoteSubEu *gNoteSubsEu;
-extern f32 gLeftVolRampings[3][1024];
-extern f32 gRightVolRampings[3][1024];
-extern f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
-extern f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
+extern_s struct SynthesisReverb gSynthesisReverbs[4];
+extern_s s8 gNumSynthesisReverbs;
+extern_s struct NoteSubEu *gNoteSubsEu;
+extern_s f32 gLeftVolRampings[3][1024];
+extern_s f32 gRightVolRampings[3][1024];
+extern_s f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
+extern_s f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
 #else
-extern struct SynthesisReverb gSynthesisReverb;
+extern_s struct SynthesisReverb gSynthesisReverb;
 #endif
 
 #ifdef VERSION_SH
-extern s16 D_SH_803479B4;
+extern_s s16 D_SH_803479B4;
 #endif
 
 u64 *synthesis_execute(u64 *cmdBuf, s32 *writtenCmds, s16 *aiBuf, s32 bufLen);

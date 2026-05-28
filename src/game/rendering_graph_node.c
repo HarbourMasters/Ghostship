@@ -183,7 +183,7 @@ static void geo_append_display_list(void *displayList, s16 layer) {
     gSPLookAt(gDisplayListHead++, &lookAt);
 #endif
     if (gCurGraphNodeMasterList != 0) {
-        FrameInterpolation_RecordOpenChild("geo_append_display_list", displayList);
+        FrameInterpolation_RecordOpenChild("geo_append_display_list", (uintptr_t)layer);
         struct DisplayListNode *listNode =
             alloc_only_pool_alloc(gDisplayListHeap, sizeof(struct DisplayListNode));
 
@@ -364,7 +364,7 @@ static void geo_process_translation_rotation(struct GraphNodeTranslationRotation
     Mat4 mtxf;
     Vec3f translation;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
-    FrameInterpolation_RecordOpenChild("geo_process_translation_rotation", TAG_OBJECT(node));
+    FrameInterpolation_RecordOpenChild("geo_process_translation_rotation", (uintptr_t)node);
 
     vec3s_to_vec3f(translation, node->translation);
     mtxf_rotate_zxy_and_translate(mtxf, translation, node->rotation);
@@ -479,16 +479,30 @@ static void geo_process_billboard(struct GraphNodeBillboard *node) {
     vec3s_to_vec3f(translation, node->translation);
     mtxf_billboard(gMatStack[gMatStackIndex], gMatStack[gMatStackIndex - 1], translation,
                    gCurGraphNodeCamera->roll);
+
+    Vec3f billboardScale = { 1.0f, 1.0f, 1.0f };
     if (gCurGraphNodeHeldObject != NULL) {
+        vec3f_copy(billboardScale, gCurGraphNodeHeldObject->objNode->header.gfx.scale);
         mtxf_scale_vec3f(gMatStack[gMatStackIndex], gMatStack[gMatStackIndex],
                          gCurGraphNodeHeldObject->objNode->header.gfx.scale);
     } else if (gCurGraphNodeObject != NULL) {
+        vec3f_copy(billboardScale, gCurGraphNodeObject->scale);
         mtxf_scale_vec3f(gMatStack[gMatStackIndex], gMatStack[gMatStackIndex],
                          gCurGraphNodeObject->scale);
     }
 
     mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
     gMatStackFixed[gMatStackIndex] = mtx;
+
+    // Record the parent matrix + parameters so interpolation can re-derive the billboard
+    // matrix at any sub-frame by calling mtxf_billboard(interpolated_parent, ...) rather
+    // than element-wise lerping the camera-space final matrix.
+    FrameInterpolation_RecordBillboardMatrix(
+        (MtxF *) gMatStack[gMatStackIndex - 1],
+        translation[0], translation[1], translation[2],
+        billboardScale[0], billboardScale[1], billboardScale[2],
+        gCurGraphNodeCamera->roll, mtx);
+
     if (node->displayList != NULL) {
         geo_append_display_list(node->displayList, node->node.flags >> 8);
     }
@@ -630,6 +644,11 @@ static void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
     gMatStackIndex++;
     mtxf_to_mtx(matrixPtr, gMatStack[gMatStackIndex]);
     gMatStackFixed[gMatStackIndex] = matrixPtr;
+    FrameInterpolation_RecordAnimatedPartMatrix(
+        (MtxF*)gMatStack[gMatStackIndex - 1],
+        translation[0], translation[1], translation[2],
+        rotation[0], rotation[1], rotation[2],
+        matrixPtr);
     if (node->displayList != NULL) {
         geo_append_display_list(node->displayList, node->node.flags >> 8);
     }
@@ -736,7 +755,8 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
         if (shadowList != NULL) {
             mtx = alloc_display_list(sizeof(*mtx));
             gMatStackIndex++;
-            mtxf_translate(mtxf, shadowPos);
+            Vec3f shadowMatPos = { shadowPos[0], gShadowFloorHeight, shadowPos[2] };
+            mtxf_translate(mtxf, shadowMatPos);
             mtxf_mul(gMatStack[gMatStackIndex], mtxf, *gCurGraphNodeCamera->matrixPtr);
             mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
             gMatStackFixed[gMatStackIndex] = mtx;
@@ -880,7 +900,7 @@ static void geo_process_object(struct Object *node) {
     Mat4 mtxf;
     s32 hasAnimation = (node->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0;
 
-    FrameInterpolation_RecordOpenChild("geo_process_object", (uintptr_t)node);
+    FrameInterpolation_RecordOpenChild("geo_process_object", (uintptr_t)node->header.gfx.node.uid);
 
     // OTRTODO: This is not a fix Cal, just warning
     if (node->header.gfx.areaIndex == gCurGraphNodeRoot->areaIndex || node->custom) {

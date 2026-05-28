@@ -1,5 +1,5 @@
 #include <libultraship.h>
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 
 #include "sm64.h"
 #include "behavior_data.h"
@@ -362,7 +362,9 @@ typedef void (*NativeBhvFunc)(void);
 static s32 bhv_cmd_call_native(void) {
     NativeBhvFunc behaviorFunc = BHV_CMD_GET_VPTR(1);
 
-    behaviorFunc();
+    CALL_CANCELLABLE_EVENT(BehaviorCallNative, behaviorFunc) {
+        behaviorFunc();
+    }
 
     gCurBhvCommand += 2;
     return BHV_PROC_CONTINUE;

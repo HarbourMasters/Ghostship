@@ -18,12 +18,17 @@ class GhostshipMenu : public Ship::Menu {
     void Draw() override;
 
     void AddSidebarEntry(std::string sectionName, std::string sidbarName, uint32_t columnCount);
+    void RemoveMenuEntry(std::string entryName);
+    void RemoveSidebarEntry(std::string sectionName, std::string sidebarName);
     WidgetInfo& AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType);
     void AddMenuSettings();
     void AddMenuEnhancements();
     void AddMenuDevTools();
     void AddMenuRando();
     void AddMenuAchievements();
+#ifndef __SWITCH__
+    void AddModMenu();
+#endif
 
   private:
     char mGitCommitHashTruncated[8];

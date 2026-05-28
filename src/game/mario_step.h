@@ -14,7 +14,7 @@ struct BullyCollisionData {
   /*0x14*/ f32 velZ;
 };
 
-extern struct Surface gWaterSurfacePseudoFloor;
+extern_s struct Surface gWaterSurfacePseudoFloor;
 
 f32 get_additive_y_vel_for_jumps(void);
 void stub_mario_step_1(struct MarioState *);

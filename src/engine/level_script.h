@@ -5,16 +5,9 @@
 
 struct LevelCommand;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+extern_s u8 level_script_entry[];
+extern_s struct AllocOnlyPool *sLevelPool;
 
-extern u8 level_script_entry[];
-
-struct LevelCommand *level_script_execute(struct LevelCommand *cmd);
-
-#ifdef __cplusplus
-};
-#endif
+extern_s struct LevelCommand *level_script_execute(struct LevelCommand *cmd);
 
 #endif // LEVEL_SCRIPT_H
