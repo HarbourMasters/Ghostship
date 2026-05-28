@@ -308,7 +308,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ninja-build python3-venv python3-pip
           sudo apt-get remove -y cmake
-          git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
           sudo dkp-pacman -R --noconfirm switch-tinyxml2 # devkitPro's tinyxml2 is too old and causes build issues
           pip install --break-system-packages cryptography # libultraship
           export CFLAGS="${CFLAGS} -include strings.h" # weird libzip error (pulled in by LUS) that only happens in CI and not for SoH        
