@@ -292,7 +292,7 @@ void CheckAndCreateModFolder() {
 static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
 #ifdef __SWITCH__
     return;
-#endif
+#else
     constexpr int codeVersion = 1;
     const std::unordered_map<std::string, std::string> defines = {
         { "VERSION_US", "1" }, { "ENABLE_RUMBLE", "1" }, { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
@@ -337,6 +337,7 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
 #endif
 
     context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
+#endif
 }
 
 void GameEngine::LoadResourceFiles() {
