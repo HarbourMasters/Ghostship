@@ -134,17 +134,12 @@ void GhostshipMenu::AddMenuEnhancements() {
     AddWidget(path, "Default Camera Mode", WIDGET_CVAR_COMBOBOX)
         .CVar(CVAR_ENHANCEMENT("Camera.DefaultMode"))
         .RaceDisable(false)
-        .Options(ComboboxOptions()
-                     .Tooltip("Primary camera mode.")
-                     .ComboMap(cameraModes)
-                     .DefaultIndex(0));
+        .Options(ComboboxOptions().Tooltip("Primary camera mode.").ComboMap(cameraModes).DefaultIndex(0));
     AddWidget(path, "Alternate Camera Mode", WIDGET_CVAR_COMBOBOX)
         .CVar(CVAR_ENHANCEMENT("Camera.AlternateMode"))
         .RaceDisable(false)
-        .Options(ComboboxOptions()
-                     .Tooltip("Alternate camera (R-trigger toggle)")
-                     .ComboMap(cameraModes)
-                     .DefaultIndex(0));
+        .Options(
+            ComboboxOptions().Tooltip("Alternate camera (R-trigger toggle)").ComboMap(cameraModes).DefaultIndex(0));
     AddWidget(path, "Horizontal Analog Camera", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("Camera.HorizontalAnalog"))
         .RaceDisable(false)
@@ -172,27 +167,23 @@ void GhostshipMenu::AddMenuEnhancements() {
     AddWidget(path, "Camera Speed", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_ENHANCEMENT("Camera.CameraSpeed"))
         .RaceDisable(false)
-        .Options(
-          FloatSliderOptions().Min(1.0).Max(100.0).DefaultValue(32.0).ShowButtons(true)
-          .Tooltip("Analog camera sensitivity multiplier"));
+        .Options(FloatSliderOptions().Min(1.0).Max(100.0).DefaultValue(32.0).ShowButtons(true).Tooltip(
+            "Analog camera sensitivity multiplier"));
     AddWidget(path, "Camera distance", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_ENHANCEMENT("Camera.CameraDistance"))
         .RaceDisable(false)
-        .Options(
-          FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(100.0).ShowButtons(true)
-          .Tooltip("Normal zoom distance"));
+        .Options(FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(100.0).ShowButtons(true).Tooltip(
+            "Normal zoom distance"));
     AddWidget(path, "Camera distance zoomed out", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_ENHANCEMENT("Camera.CameraDistanceZoomedOut"))
         .RaceDisable(false)
-        .Options(
-          FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(150.0).ShowButtons(true)
-          .Tooltip("Zoomed-out distance"));
+        .Options(FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(150.0).ShowButtons(true).Tooltip(
+            "Zoomed-out distance"));
     AddWidget(path, "Additional camera distance", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_ENHANCEMENT("Camera.AdditionalCameraDistance"))
         .RaceDisable(false)
-        .Options(
-          FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(0.0).ShowButtons(true)
-          .Tooltip("Extra uniform distance offset"));
+        .Options(FloatSliderOptions().Min(1.0).Max(1000.0).DefaultValue(0.0).ShowButtons(true).Tooltip(
+            "Extra uniform distance offset"));
     AddWidget(path, "Manual camera sounds", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("Camera.ManualCameraSounds"))
         .RaceDisable(false)
