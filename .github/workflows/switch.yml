@@ -1,8 +1,5 @@
 name: Switch Validation
-on:
-  push:
-    branches: ["*"]
-  pull_request:
+on: [pull_request]
 
 jobs:
   build-switch:
@@ -19,7 +16,7 @@ jobs:
           sudo apt-get install -y ninja-build
           sudo apt-get remove -y cmake
           sudo dkp-pacman -R --noconfirm switch-tinyxml2 # devkitPro's tinyxml2 is too old and causes build issues
-          #export CFLAGS="${CFLAGS} -include strings.h" # weird libzip error (pulled in by LUS) that only happens in CI and not for SoH
+          export CFLAGS="${CFLAGS} -include strings.h" # weird libzip error (pulled in by LUS) that only happens in CI and not for SoH
           git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
           git -C libultraship fetch nx
           git -C libultraship checkout nx/main-nx-nightly
