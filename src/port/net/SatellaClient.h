@@ -8,11 +8,14 @@
 #include <string>
 #include <vector>
 
+#include <atomic>
 #include <ixwebsocket/IXWebSocket.h>
 
 #define SATELLA_HOST "wss://satella.net64.dev"
 
 namespace Satella {
+
+enum class Phase { Idle, Connecting, FetchingKeys, Done };
 
 class IPacket {
 public:
@@ -30,6 +33,7 @@ public:
 
     void Register(std::unique_ptr<IPacket> packet);
     void Execute(const std::string& url = SATELLA_HOST);
+    Phase GetPhase() const { return mPhase.load(std::memory_order_relaxed); }
 
 private:
     Client() = default;
@@ -47,6 +51,8 @@ private:
 
     std::mutex              mMtx;
     std::condition_variable mCv;
+
+    std::atomic<Phase> mPhase{ Phase::Idle };
 
     bool    mConnected          = false;
     bool    mWaitingForResponse = false;

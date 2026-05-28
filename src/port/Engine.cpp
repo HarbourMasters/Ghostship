@@ -30,6 +30,7 @@
 
 #include <cstdlib>
 #include <algorithm>
+#include <thread>
 
 #ifdef USE_NETWORKING
 #include <SDL2/SDL_net.h>
@@ -335,7 +336,6 @@ void GameEngine::LoadResourceFiles() {
     context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #endif
 
-    Satella::Client::Instance().Execute();
 #endif // __SWITCH__
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
@@ -601,7 +601,14 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
     while (!extractDone) {
-        if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0) {
+#ifndef __SWITCH__
+        auto satellaPhase = Satella::Client::Instance().GetPhase();
+        bool satellaActive = satellaPhase == Satella::Phase::Connecting ||
+                             satellaPhase == Satella::Phase::FetchingKeys;
+#else
+        bool satellaActive = false;
+#endif
+        if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0 || satellaActive) {
             goto render;
         }
         switch (extractStep) {
@@ -874,6 +881,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             }
             case GS_COMPILE: {
                 LoadResourceFiles();
+#ifndef __SWITCH__
+                std::thread([]() { Satella::Client::Instance().Execute(); }).detach();
+#endif
                 threadPool->submit_task([&]() -> void {
 #ifndef __SWITCH__
                     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
@@ -939,11 +949,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             ImGui::PopStyleVar(2);
         }
 
-        if (totalScripts > 0 && !ImGui::IsPopupOpen("Ghostship")) {
+#ifndef __SWITCH__
+        bool ghostshipPopupActive = totalScripts > 0 || satellaActive;
+#else
+        bool ghostshipPopupActive = totalScripts > 0;
+#endif
+        if (ghostshipPopupActive && !ImGui::IsPopupOpen("Ghostship")) {
             ImGui::OpenPopup("Ghostship");
         }
-
-        if (totalScripts > 0) {
+        if (ghostshipPopupActive) {
             ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
             ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 8.0f));
             auto color = UIWidgets::ColorValues.at(THEME_COLOR);
@@ -954,10 +968,25 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                        ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
                                            ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
                                            ImGuiWindowFlags_NoSavedSettings)) {
-                float progress = (totalScripts > 0.0f ? (float)compileCount / (float)totalScripts : 0) * 100.0f;
-                ImGui::Text("Loading %s...%s", file.c_str(), roundf(progress) == 100.0f ? " Done. Finishing up." : "");
-                std::string overlay = compileCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
-                ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
+#ifndef __SWITCH__
+                if (satellaActive) {
+                    const char* msg = satellaPhase == Satella::Phase::Connecting
+                                          ? "Connecting to Satella..."
+                                          : "Retrieving public keys...";
+                    ImGui::Text("%s", msg);
+                    ImGui::ProgressBar(-1.0f * (float)ImGui::GetTime(), ImVec2(600.0f, 20.0f), "");
+                    if (totalScripts > 0) {
+                        ImGui::Spacing();
+                    }
+                }
+#endif
+                if (totalScripts > 0) {
+                    float progress = (float)compileCount / (float)totalScripts * 100.0f;
+                    ImGui::Text("Loading %s...%s", file.c_str(),
+                                roundf(progress) == 100.0f ? " Done. Finishing up." : "");
+                    std::string overlay = compileCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
+                    ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
+                }
                 ImGui::EndPopup();
             }
             ImGui::PopStyleColor(3);

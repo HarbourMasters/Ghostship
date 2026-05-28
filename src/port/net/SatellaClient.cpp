@@ -187,17 +187,23 @@ void Client::Execute(const std::string& url) {
     }
 
     ix::initNetSystem();
+    mPhase = Phase::Connecting;
     Connect(url);
 
     if (!mConnected) {
+        mPhase = Phase::Done;
         return;
     }
 
+    mPhase = Phase::FetchingKeys;
     for (auto& packet : mPackets) {
         if (packet->IsBlocking()) {
             SendAndReceive(*packet);
         }
     }
+
+    mPhase = Phase::Done;
+
     for (auto& packet : mPackets) {
         if (!packet->IsBlocking()) {
             SendAndReceive(*packet);
@@ -209,6 +215,8 @@ void Client::Execute(const std::string& url) {
             mSubscriptions.push_back(packet.get());
         }
     }
+
+    mPhase = Phase::Done;
 }
 
 // ---------------------------------------------------------------------------
