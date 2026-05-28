@@ -58,3 +58,9 @@ DEFINE_EVENT(EntityDistanceLoad,
 DEFINE_EVENT(BehaviorCallNative,
     void (*function)(void);
 );
+
+DEFINE_EVENT(EngineReady);
+
+DEFINE_EVENT(CameraUpdate,
+    struct Camera* c;
+);

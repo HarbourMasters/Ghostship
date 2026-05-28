@@ -106,3 +106,19 @@ DEFINE_EVENT(ChangeLevel,
 DEFINE_EVENT(ExitLevel,
     int16_t menuOption;
 );
+
+DEFINE_EVENT(PlayerLanded,
+    struct MarioState* m;
+    f32 fallHeight;
+);
+
+DEFINE_EVENT(PlayerHit,
+    struct MarioState* m;
+    struct Object* source;
+    s32 damage;
+);
+
+DEFINE_EVENT(PlayerKnockback,
+    struct MarioState* m;
+    u32* action;
+);

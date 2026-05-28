@@ -351,6 +351,7 @@ struct Object *create_object(const BehaviorScript *bhvScript) {
             break;
     }
 
+    CALL_EVENT(ObjectSpawned, obj);
     return obj;
 }
 
@@ -358,6 +359,7 @@ struct Object *create_object(const BehaviorScript *bhvScript) {
  * Mark an object to be unloaded at the end of the frame.
  */
 void mark_obj_for_deletion(struct Object *obj) {
+    CALL_EVENT(ObjectDestroyed, obj);
     //! Same issue as obj_mark_for_deletion
     obj->activeFlags = ACTIVE_FLAG_DEACTIVATED;
 }

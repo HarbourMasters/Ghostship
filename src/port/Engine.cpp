@@ -21,6 +21,7 @@
 #include "texts_table.h"
 #include "port/ui/cvar_prefixes.h"
 #include "port/mods/PortEnhancements.h"
+#include "port/events/Events.h"
 #include "port/console/DevConsole.h"
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
@@ -523,6 +524,7 @@ void GameEngine::FinishInit() {
 #ifndef __SWITCH__
     context->GetScriptLoader()->LoadAll();
 #endif
+    CALL_EVENT(EngineReady);
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {

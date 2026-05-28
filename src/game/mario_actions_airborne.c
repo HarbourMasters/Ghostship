@@ -62,6 +62,7 @@ s32 check_fall_damage(struct MarioState *m, u32 hardFallAction) {
     f32 damageHeight;
 
     fallHeight = m->peakHeight - m->pos[1];
+    CALL_EVENT(PlayerLanded, m, fallHeight);
 
 #pragma GCC diagnostic push
 #if defined(__clang__)

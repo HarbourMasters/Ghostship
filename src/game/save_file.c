@@ -422,6 +422,7 @@ void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
         default:
             if (!(save_file_get_star_flags(fileIndex, courseIndex) & starFlag)) {
                 save_file_set_star_flags(fileIndex, courseIndex, starFlag);
+                CALL_EVENT(StarCollected, courseIndex, starIndex);
             }
             break;
     }

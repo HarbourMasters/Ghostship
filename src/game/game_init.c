@@ -555,6 +555,9 @@ void read_controller_inputs(void) {
                                         & (controller->controllerData->button ^ controller->buttonDown);
             // 0.5x A presses are a good meme
             controller->buttonDown = controller->controllerData->button;
+            if (controller->buttonPressed) {
+                CALL_EVENT(ButtonPressed, controller, controller->buttonPressed);
+            }
             adjust_analog_stick(controller);
         } else { // otherwise, if the controllerData is NULL, 0 out all of the inputs.
             controller->rawStickX = 0;
