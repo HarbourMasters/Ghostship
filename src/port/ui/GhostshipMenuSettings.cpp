@@ -51,6 +51,18 @@ static const std::unordered_map<int32_t, const char*> notificationPosition = {
     { 0, "Top Left" }, { 1, "Top Right" }, { 2, "Bottom Left" }, { 3, "Bottom Right" }, { 4, "Hidden" },
 };
 
+#ifdef __SWITCH__
+static const std::unordered_map<int32_t, const char*> switchPerformanceProfiles = {
+    { Ship::MAXIMUM, SWITCH_CPU_PROFILES[Ship::MAXIMUM] },
+    { Ship::HIGH, SWITCH_CPU_PROFILES[Ship::HIGH] },
+    { Ship::BOOST, SWITCH_CPU_PROFILES[Ship::BOOST] },
+    { Ship::STOCK, SWITCH_CPU_PROFILES[Ship::STOCK] },
+    { Ship::POWERSAVINGM1, SWITCH_CPU_PROFILES[Ship::POWERSAVINGM1] },
+    { Ship::POWERSAVINGM2, SWITCH_CPU_PROFILES[Ship::POWERSAVINGM2] },
+    { Ship::POWERSAVINGM3, SWITCH_CPU_PROFILES[Ship::POWERSAVINGM3] }
+};
+#endif
+
 void GhostshipMenu::AddMenuSettings() {
     // Add Settings Menu
     AddMenuEntry("Settings", CVAR_SETTING("Menu.SettingsSidebarSection"));
@@ -66,14 +78,17 @@ void GhostshipMenu::AddMenuSettings() {
                      .Tooltip("Changes the Theme of the Menu Widgets.")
                      .ComboMap(menuThemeOptions)
                      .DefaultIndex(Colors::LightBlue));
-#if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_IMGUI_CONTROLLER_NAV)
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip(
             "Allows controller navigation of the port menu (Settings, Enhancements,...)\nCAUTION: "
             "This will disable game inputs while the menu is visible.\n\nD-pad to move between "
-            "items, A to select, B to move up in scope."));
+            "items, A to select, B to move up in scope.")
+#ifdef __SWITCH__
+                .DefaultValue(true)
+#endif
+            );
     AddWidget(path, "Menu Background Opacity", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_SETTING("Menu.BackgroundOpacity"))
         .RaceDisable(false)
@@ -81,6 +96,7 @@ void GhostshipMenu::AddMenuSettings() {
             "Sets the opacity of the background of the port menu."));
 
     AddWidget(path, "General Settings", WIDGET_SEPARATOR_TEXT);
+#if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Cursor Always Visible", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_SETTING("CursorVisibility"))
         .RaceDisable(false)
@@ -107,6 +123,20 @@ void GhostshipMenu::AddMenuSettings() {
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip(
             "Search input box gets autofocus when visible. Does not affect using other widgets."));
+#ifdef __SWITCH__
+    AddWidget(path, "Hardware", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Switch performance mode", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_SWITCH_PERF_MODE)
+        .RaceDisable(false)
+        .Callback([](WidgetInfo& info) {
+            Ship::Switch::ApplyOverclock();
+        })
+        .Options(ComboboxOptions()
+                     .DefaultIndex(Ship::MAXIMUM)
+                     .ComboMap(switchPerformanceProfiles)
+                     .Tooltip("Sets the Nintendo Switch CPU performance profile."));
+#endif
+#if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Open App Files Folder", WIDGET_BUTTON)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
@@ -114,6 +144,7 @@ void GhostshipMenu::AddMenuSettings() {
             SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
         })
         .Options(ButtonOptions().Tooltip("Opens the folder that contains the save and mods folders, etc."));
+#endif
     AddWidget(path, "EXPERIMENTAL", WIDGET_SEPARATOR_TEXT).Options(TextOptions().Color(Colors::Orange));
     AddWidget(path, "ImGui Menu Scaling", WIDGET_CVAR_COMBOBOX)
         .CVar(CVAR_SETTING("ImGuiScale"))
@@ -183,10 +214,12 @@ void GhostshipMenu::AddMenuSettings() {
     path.sidebarName = "Graphics";
     AddSidebarEntry("Settings", "Graphics", 3);
     AddWidget(path, "Graphics Options", WIDGET_SEPARATOR_TEXT);
+#ifndef __SWITCH__
     AddWidget(path, "Toggle Fullscreen", WIDGET_BUTTON)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
         .Options(ButtonOptions().Tooltip("Toggles Fullscreen On/Off."));
+#endif
     AddWidget(path, "Internal Resolution", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_INTERNAL_RESOLUTION)
         .RaceDisable(false)

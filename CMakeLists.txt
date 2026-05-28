@@ -137,6 +137,8 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 if (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 set(CMAKE_C_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
+# Optimization level -O2 and higher cause graphical 3D glitches due to undefined behavior in some of the C code (on both PC and Switch).
+# The optimization that causes this issue is -fstrict-aliasing. The camera is locked in place, often out-of-bounds, and renders the game unplayable.
 set(CMAKE_C_FLAGS_RELEASE "-O3 -fno-strict-aliasing -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
 add_compile_definitions(
