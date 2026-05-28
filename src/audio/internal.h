@@ -46,6 +46,7 @@
 #define CODEC_ADPCM 0
 #define CODEC_S8 1
 #define CODEC_SKIP 2
+#define CODEC_S16 5  // raw 16-bit PCM for custom audio injection
 
 #ifdef VERSION_JP
 #define TEMPO_SCALE 1
@@ -193,6 +194,8 @@ struct AudioBankSample {
     struct AdpcmBook *book;
 #ifndef VERSION_SH
     u32 sampleSize; // never read. either 0 or 1 mod 9, depending on padding
+    u8 codec;       // sample codec (CODEC_ADPCM=0, CODEC_S8=1, CODEC_SKIP=2, CODEC_S16=5)
+    u32 numFrames;  // total PCM frames; used by CODEC_S16 path
 #endif
 };
 

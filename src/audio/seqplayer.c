@@ -994,10 +994,12 @@ s32 seq_channel_layer_process_script_part5(struct SequenceChannelLayer *layer, s
         if (cmd == 0) {
             seq_channel_layer_note_decay(layer);
         }
+        CALL_EVENT(SeqLayerPreNoteEvent, layer, layer->seqChannel);
         layer->note = alloc_note(layer);
     }
     if (layer->note != NULL && layer->note->parentLayer == layer) {
         note_vibrato_init(layer->note);
+        CALL_EVENT(SeqLayerPostNoteEvent, layer);
     }
     return 0;
 }

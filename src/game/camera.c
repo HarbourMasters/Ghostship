@@ -3055,17 +3055,28 @@ void update_camera(struct Camera *c) {
     sCButtonsPressed = find_c_buttons_pressed(sCButtonsPressed, gPlayer1Controller->buttonPressed,
                                               gPlayer1Controller->buttonDown);
 
-    if (c->cutscene != 0) {
-        sYawSpeed = 0;
-        play_cutscene(c);
-        sFramesSinceCutsceneEnded = 0;
-    } else {
-        // Clear the recent cutscene after 8 frames
-        if (gRecentCutscene != 0 && sFramesSinceCutsceneEnded < 8) {
-            sFramesSinceCutsceneEnded++;
-            if (sFramesSinceCutsceneEnded >= 8) {
-                gRecentCutscene = 0;
-                sFramesSinceCutsceneEnded = 0;
+    {
+        static s16 sPrevCutscene = 0;
+        if (c->cutscene != 0) {
+            sYawSpeed = 0;
+            if (sPrevCutscene != c->cutscene) {
+                CALL_EVENT(CutsceneStart, c, c->cutscene);
+                sPrevCutscene = c->cutscene;
+            }
+            play_cutscene(c);
+            sFramesSinceCutsceneEnded = 0;
+        } else {
+            if (sPrevCutscene != 0) {
+                CALL_EVENT(CutsceneEnd, sPrevCutscene);
+                sPrevCutscene = 0;
+            }
+            // Clear the recent cutscene after 8 frames
+            if (gRecentCutscene != 0 && sFramesSinceCutsceneEnded < 8) {
+                sFramesSinceCutsceneEnded++;
+                if (sFramesSinceCutsceneEnded >= 8) {
+                    gRecentCutscene = 0;
+                    sFramesSinceCutsceneEnded = 0;
+                }
             }
         }
     }
@@ -3196,6 +3207,7 @@ void update_camera(struct Camera *c) {
     update_lakitu(c);
 
     gLakituState.lastFrameAction = sMarioCamState->action;
+    CALL_EVENT(CameraUpdate, c);
 }
 
 /**

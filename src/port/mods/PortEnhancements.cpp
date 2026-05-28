@@ -117,6 +117,8 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(EntityDistanceRender);
     REGISTER_EVENT(LevelInitFromSaveFile);
     REGISTER_EVENT(RenderPauseCourseOptions);
+    REGISTER_EVENT(EngineReady);
+    REGISTER_EVENT(CameraUpdate);
 
     // Register player events
     REGISTER_EVENT(PlayerHealthChange);
@@ -126,6 +128,9 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(PlayerSetAction);
     REGISTER_EVENT(PlayerExecuteAction);
     REGISTER_EVENT(PlayerCheckCommonAirborneCancels);
+    REGISTER_EVENT(PlayerLanded);
+    REGISTER_EVENT(PlayerHit);
+    REGISTER_EVENT(PlayerKnockback);
 
     // Register Rando Events
     REGISTER_EVENT(ItemCollected);
@@ -148,6 +153,25 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(BossBattleEnded);
     REGISTER_EVENT(MusicChanged);
     REGISTER_EVENT(GameEnded);
+    REGISTER_EVENT(ObjectSpawned);
+    REGISTER_EVENT(ObjectDestroyed);
+    REGISTER_EVENT(StarCollected);
+    REGISTER_EVENT(CutsceneStart);
+    REGISTER_EVENT(CutsceneEnd);
+    REGISTER_EVENT(WarpStart);
+    REGISTER_EVENT(WarpEnd);
+    REGISTER_EVENT(ButtonPressed);
+
+    // Register audio events
+    REGISTER_EVENT(PlayMusicEvent);
+    REGISTER_EVENT(StopMusicEvent);
+    REGISTER_EVENT(FadeoutMusicEvent);
+    REGISTER_EVENT(PlaySecondaryMusicEvent);
+    REGISTER_EVENT(PlaySfxEvent);
+    REGISTER_EVENT(PlayDialogSoundEvent);
+    REGISTER_EVENT(AudioUpdateEvent);
+    REGISTER_EVENT(SeqLayerPreNoteEvent);
+    REGISTER_EVENT(SeqLayerPostNoteEvent);
 
     Rando::Init();
     LoadGuiTextures();

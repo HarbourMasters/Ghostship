@@ -4,6 +4,7 @@
 #include <map>
 #include <unordered_map>
 #include <math.h>
+#include <string.h>
 #include "port/Engine.h"
 #include "FrameInterpolation.h"
 #include "matrix.h"
@@ -50,6 +51,26 @@ static bool invert_matrix(const float m[16], float invOut[16]);
 
 using namespace std;
 
+#define SNOW_INTERP_RING 8
+#define SNOW_MAX_PARTICLES 140
+#define SNOW_MAX_GROUPS (SNOW_MAX_PARTICLES / 5)
+#define SNOW_MAX_GFX (1 + SNOW_MAX_GROUPS * 6 + 2)
+#define SNOW_MAX_VTX (SNOW_MAX_GROUPS * 15)
+
+struct SnowRecord {
+    Gfx* dl = nullptr;
+    float v1[3], v2[3], v3[3];
+    s32 mode;
+    s16 count;
+    float positions[SNOW_MAX_PARTICLES * 3];
+};
+
+static SnowRecord sCurSnow;
+static SnowRecord sPrevSnow;
+static Gfx sSnowGfxBuf[SNOW_INTERP_RING][SNOW_MAX_GFX];
+static Vtx sSnowVtxBuf[SNOW_INTERP_RING][SNOW_MAX_VTX];
+static int sSnowRingIdx = 0;
+
 namespace {
 
 enum class Op {
@@ -72,6 +93,8 @@ enum class Op {
     MatrixMultVec3fNoTranslate,
     MatrixMultVec3f,
     MatrixMtxFToMtx,
+    BillboardMatrix,
+    AnimatedPartMatrix,
     MatrixToMtx,
     MatrixRotateAxis,
     SkinMatrixMtxFToMtx,
@@ -196,6 +219,21 @@ union Data {
     } matrix_mtxf_to_mtx;
 
     struct {
+        MtxF parent_mf;
+        float translation[3];
+        float scale[3];
+        s16 roll;
+        Mtx* dest;
+    } billboard_matrix;
+
+    struct {
+        MtxF parent_mf;
+        float translation[3];
+        s16 rotation[3];
+        Mtx* dest;
+    } animated_part_matrix;
+
+    struct {
         Mtx* dest;
         MtxF src;
         bool has_adjusted;
@@ -290,6 +328,7 @@ struct InterpolateCtx {
     float step;
     float w;
     unordered_map<Mtx*, MtxF> mtx_replacements;
+    unordered_map<Gfx*, Gfx*> dl_replacements;
     MtxF tmp_mtxf, tmp_mtxf2;
     Mat3 tmp_mat3;
     Vec3f tmp_vec3f, tmp_vec3f2;
@@ -310,6 +349,16 @@ struct InterpolateCtx {
 
         if (dx > threshold || dy > threshold || dz > threshold) {
             *res = *n;
+            return;
+        }
+
+        float col_dot = o->mf[0][0] * n->mf[0][0] + o->mf[1][0] * n->mf[1][0] + o->mf[2][0] * n->mf[2][0];
+
+        if (col_dot < 0.0f) {
+            *res = *n;
+            res->mf[3][0] = w * o->mf[3][0] + step * n->mf[3][0];
+            res->mf[3][1] = w * o->mf[3][1] + step * n->mf[3][1];
+            res->mf[3][2] = w * o->mf[3][2] + step * n->mf[3][2];
             return;
         }
 
@@ -471,8 +520,12 @@ struct InterpolateCtx {
                         case Op::Ortho: {
                             // Only interpolate if the difference is significant to avoid jitter
                             constexpr float THRESHOLD = 2.0f;
-                            if (fabsf(old_op.ortho.oLeft - new_op.ortho.oLeft) < THRESHOLD &&
-                                fabsf(old_op.ortho.oRight - new_op.ortho.oRight) < THRESHOLD &&
+                            constexpr float LARGE_JUMP = 500.0f;
+                            float leftDiff = fabsf(old_op.ortho.oLeft - new_op.ortho.oLeft);
+                            if (leftDiff > LARGE_JUMP) {
+                                break;
+                            }
+                            if (leftDiff < THRESHOLD && fabsf(old_op.ortho.oRight - new_op.ortho.oRight) < THRESHOLD &&
                                 fabsf(old_op.ortho.oBottom - new_op.ortho.oBottom) < THRESHOLD &&
                                 fabsf(old_op.ortho.oTop - new_op.ortho.oTop) < THRESHOLD &&
                                 fabsf(old_op.ortho.oNear - new_op.ortho.oNear) < THRESHOLD &&
@@ -580,6 +633,111 @@ struct InterpolateCtx {
                                              &old_op.matrix_mtxf_to_mtx.src, &new_op.matrix_mtxf_to_mtx.src);
                             break;
 
+                        case Op::BillboardMatrix: {
+                            // Re-derive the billboard matrix from the interpolated parent rather than
+                            // element-wise lerping the final matrix. This correctly handles camera
+                            // roll changes and avoids any drift caused by interpolating a camera-
+                            // dependent view-space matrix directly.
+                            MtxF interp_parent;
+                            interpolate_mtxf(&interp_parent, &old_op.billboard_matrix.parent_mf,
+                                             &new_op.billboard_matrix.parent_mf);
+                            s16 interp_roll = lerp_s16(old_op.billboard_matrix.roll, new_op.billboard_matrix.roll);
+                            float sx = w * old_op.billboard_matrix.scale[0] + step * new_op.billboard_matrix.scale[0];
+                            float sy = w * old_op.billboard_matrix.scale[1] + step * new_op.billboard_matrix.scale[1];
+                            float sz = w * old_op.billboard_matrix.scale[2] + step * new_op.billboard_matrix.scale[2];
+                            const float* t = new_op.billboard_matrix.translation;
+                            const float(*p)[4] = interp_parent.mf;
+                            MtxF* result = new_replacement(new_op.billboard_matrix.dest);
+                            float(*r)[4] = result->mf;
+                            // Billboard rotation uses the camera roll angle; columns are screen-aligned
+                            // basis vectors scaled by the object's visual scale.
+                            float cs = cosf((float)interp_roll * (float)M_PI / 32768.0f);
+                            float sn = sinf((float)interp_roll * (float)M_PI / 32768.0f);
+                            r[0][0] = cs * sx;
+                            r[0][1] = sn * sx;
+                            r[0][2] = 0.0f;
+                            r[0][3] = 0.0f;
+                            r[1][0] = -sn * sy;
+                            r[1][1] = cs * sy;
+                            r[1][2] = 0.0f;
+                            r[1][3] = 0.0f;
+                            r[2][0] = 0.0f;
+                            r[2][1] = 0.0f;
+                            r[2][2] = sz;
+                            r[2][3] = 0.0f;
+                            // Translation = parent_matrix × billboard_local_offset + parent_translation
+                            r[3][0] = p[0][0] * t[0] + p[1][0] * t[1] + p[2][0] * t[2] + p[3][0];
+                            r[3][1] = p[0][1] * t[0] + p[1][1] * t[1] + p[2][1] * t[2] + p[3][1];
+                            r[3][2] = p[0][2] * t[0] + p[1][2] * t[1] + p[2][2] * t[2] + p[3][2];
+                            r[3][3] = 1.0f;
+                            break;
+                        }
+
+                        case Op::AnimatedPartMatrix: {
+                            MtxF interp_parent;
+                            interpolate_mtxf(&interp_parent, &old_op.animated_part_matrix.parent_mf,
+                                             &new_op.animated_part_matrix.parent_mf);
+
+                            // Lerp local translation
+                            float tx = lerp(old_op.animated_part_matrix.translation[0],
+                                            new_op.animated_part_matrix.translation[0]);
+                            float ty = lerp(old_op.animated_part_matrix.translation[1],
+                                            new_op.animated_part_matrix.translation[1]);
+                            float tz = lerp(old_op.animated_part_matrix.translation[2],
+                                            new_op.animated_part_matrix.translation[2]);
+
+                            // Lerp local rotation (s16 angles, short-path)
+                            s16 rx = interpolate_angle(old_op.animated_part_matrix.rotation[0],
+                                                       new_op.animated_part_matrix.rotation[0]);
+                            s16 ry = interpolate_angle(old_op.animated_part_matrix.rotation[1],
+                                                       new_op.animated_part_matrix.rotation[1]);
+                            s16 rz = interpolate_angle(old_op.animated_part_matrix.rotation[2],
+                                                       new_op.animated_part_matrix.rotation[2]);
+
+                            // Rebuild local bone matrix: rotate XYZ then translate
+                            float cx = cosf((float)(u16)rx * (float)M_PI / 32768.0f);
+                            float sx_ = sinf((float)(u16)rx * (float)M_PI / 32768.0f);
+                            float cy = cosf((float)(u16)ry * (float)M_PI / 32768.0f);
+                            float sy_ = sinf((float)(u16)ry * (float)M_PI / 32768.0f);
+                            float cz = cosf((float)(u16)rz * (float)M_PI / 32768.0f);
+                            float sz_ = sinf((float)(u16)rz * (float)M_PI / 32768.0f);
+
+                            // mtxf_rotate_xyz_and_translate: R = Rx * Ry * Rz (XYZ order)
+                            // Same convention used by the game's math_util.c
+                            float m00 = cy * cz;
+                            float m01 = cy * sz_;
+                            float m02 = -sy_;
+                            float m10 = sx_ * sy_ * cz - cx * sz_;
+                            float m11 = sx_ * sy_ * sz_ + cx * cz;
+                            float m12 = sx_ * cy;
+                            float m20 = cx * sy_ * cz + sx_ * sz_;
+                            float m21 = cx * sy_ * sz_ - sx_ * cz;
+                            float m22 = cx * cy;
+
+                            // Combined = parent × local  (local columns into parent space)
+                            const float(*p)[4] = interp_parent.mf;
+                            MtxF* result = new_replacement(new_op.animated_part_matrix.dest);
+                            float(*r2)[4] = result->mf;
+
+                            r2[0][0] = p[0][0] * m00 + p[1][0] * m01 + p[2][0] * m02;
+                            r2[0][1] = p[0][1] * m00 + p[1][1] * m01 + p[2][1] * m02;
+                            r2[0][2] = p[0][2] * m00 + p[1][2] * m01 + p[2][2] * m02;
+                            r2[0][3] = 0.0f;
+                            r2[1][0] = p[0][0] * m10 + p[1][0] * m11 + p[2][0] * m12;
+                            r2[1][1] = p[0][1] * m10 + p[1][1] * m11 + p[2][1] * m12;
+                            r2[1][2] = p[0][2] * m10 + p[1][2] * m11 + p[2][2] * m12;
+                            r2[1][3] = 0.0f;
+                            r2[2][0] = p[0][0] * m20 + p[1][0] * m21 + p[2][0] * m22;
+                            r2[2][1] = p[0][1] * m20 + p[1][1] * m21 + p[2][1] * m22;
+                            r2[2][2] = p[0][2] * m20 + p[1][2] * m21 + p[2][2] * m22;
+                            r2[2][3] = 0.0f;
+                            r2[3][0] = p[0][0] * tx + p[1][0] * ty + p[2][0] * tz + p[3][0];
+                            r2[3][1] = p[0][1] * tx + p[1][1] * ty + p[2][1] * tz + p[3][1];
+                            r2[3][2] = p[0][2] * tx + p[1][2] * ty + p[2][2] * tz + p[3][2];
+                            r2[3][3] = 1.0f;
+                            break;
+                        }
+
                         case Op::MatrixToMtx: {
                             //*new_replacement(new_op.matrix_to_mtx.dest) = *Matrix_GetCurrent();
                             if (old_op.matrix_to_mtx.has_adjusted && new_op.matrix_to_mtx.has_adjusted) {
@@ -669,12 +827,75 @@ struct InterpolateCtx {
 
 } // anonymous namespace
 
-unordered_map<Mtx*, MtxF> FrameInterpolation_Interpolate(float step) {
+FrameInterpolationResult FrameInterpolation_Interpolate(float step) {
     InterpolateCtx ctx;
     ctx.step = step;
     ctx.w = 1.0f - step;
     ctx.interpolate_branch(&previous_recording.root_path, &current_recording.root_path);
-    return ctx.mtx_replacements;
+
+    // Snow particle interpolation: build a patched DL with lerped vertex positions.
+    if (sPrevSnow.dl && sCurSnow.dl && sCurSnow.count > 0) {
+        int ring = sSnowRingIdx;
+        sSnowRingIdx = (sSnowRingIdx + 1) % SNOW_INTERP_RING;
+
+        int groups = sCurSnow.count / 5;
+        int dl_size = 1 + groups * 6 + 2;
+        int min_count = (sPrevSnow.count < sCurSnow.count) ? sPrevSnow.count : sCurSnow.count;
+
+        Gfx* out_dl = sSnowGfxBuf[ring];
+        Vtx* out_vtx = sSnowVtxBuf[ring];
+
+        memcpy(out_dl, sCurSnow.dl, (size_t)dl_size * sizeof(Gfx));
+
+        // Texture-coordinate layout for the 3 snowflake triangle vertices (from gSnowTempVtx).
+        static const short kTC[3][2] = { { 0, 0 }, { 0, 960 }, { 960, 0 } };
+
+        int vtx_off = 0;
+        for (int g = 0; g < groups; g++) {
+            for (int k = 0; k < 15; k++) {
+                int pidx = g * 5 + k / 3;
+                int vt = k % 3;
+
+                float px, py, pz;
+                if (pidx < min_count) {
+                    float ox = sPrevSnow.positions[pidx * 3 + 0];
+                    float oy = sPrevSnow.positions[pidx * 3 + 1];
+                    float oz = sPrevSnow.positions[pidx * 3 + 2];
+                    float nx = sCurSnow.positions[pidx * 3 + 0];
+                    float ny = sCurSnow.positions[pidx * 3 + 1];
+                    float nz = sCurSnow.positions[pidx * 3 + 2];
+                    px = ox * ctx.w + nx * step;
+                    py = oy * ctx.w + ny * step;
+                    pz = oz * ctx.w + nz * step;
+                } else {
+                    px = sCurSnow.positions[pidx * 3 + 0];
+                    py = sCurSnow.positions[pidx * 3 + 1];
+                    pz = sCurSnow.positions[pidx * 3 + 2];
+                }
+
+                const float* voff = (vt == 0) ? sCurSnow.v1 : (vt == 1) ? sCurSnow.v2 : sCurSnow.v3;
+
+                Vtx& ov = out_vtx[vtx_off + k];
+                ov.v.ob[0] = px + voff[0];
+                ov.v.ob[1] = py + voff[1];
+                ov.v.ob[2] = pz + voff[2];
+                ov.v.flag = 0;
+                ov.v.tc[0] = kTC[vt][0];
+                ov.v.tc[1] = kTC[vt][1];
+                ov.v.cn[0] = 0x7F;
+                ov.v.cn[1] = 0x7F;
+                ov.v.cn[2] = 0x7F;
+                ov.v.cn[3] = 0xFF;
+            }
+            // Patch the gSPVertex command's vertex pointer (words.w1 is uintptr_t on PC).
+            out_dl[1 + g * 6].words.w1 = (uintptr_t)(&out_vtx[vtx_off]);
+            vtx_off += 15;
+        }
+
+        ctx.dl_replacements[sCurSnow.dl] = out_dl;
+    }
+
+    return { ctx.mtx_replacements, ctx.dl_replacements };
 }
 
 bool camera_interpolation = true;
@@ -691,6 +912,9 @@ bool check_if_recording() {
 void FrameInterpolation_StartRecord(void) {
     previous_recording = move(current_recording);
     current_recording = {};
+    sPrevSnow = sCurSnow;
+    sCurSnow.dl = nullptr;
+    sCurSnow.count = 0;
     current_path.clear();
     current_path.push_back(&current_recording.root_path);
     if (!camera_interpolation) {
@@ -921,6 +1145,39 @@ void FrameInterpolation_RecordMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
     append(Op::MatrixMtxFToMtx).matrix_mtxf_to_mtx = { .src = *src, .dest = dest };
 }
 
+void FrameInterpolation_RecordBillboardMatrix(MtxF* parent, float tx, float ty, float tz, float sx, float sy, float sz,
+                                              s16 roll, Mtx* dest) {
+    if (!check_if_recording()) {
+        return;
+    }
+    auto& d = append(Op::BillboardMatrix).billboard_matrix;
+    d.parent_mf = *parent;
+    d.translation[0] = tx;
+    d.translation[1] = ty;
+    d.translation[2] = tz;
+    d.scale[0] = sx;
+    d.scale[1] = sy;
+    d.scale[2] = sz;
+    d.roll = roll;
+    d.dest = dest;
+}
+
+void FrameInterpolation_RecordAnimatedPartMatrix(MtxF* parent, float tx, float ty, float tz, s16 rx, s16 ry, s16 rz,
+                                                 Mtx* dest) {
+    if (!check_if_recording()) {
+        return;
+    }
+    auto& d = append(Op::AnimatedPartMatrix).animated_part_matrix;
+    d.parent_mf = *parent;
+    d.translation[0] = tx;
+    d.translation[1] = ty;
+    d.translation[2] = tz;
+    d.rotation[0] = rx;
+    d.rotation[1] = ry;
+    d.rotation[2] = rz;
+    d.dest = dest;
+}
+
 void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line) {
     if (!check_if_recording()) {
         return;
@@ -946,6 +1203,30 @@ void FrameInterpolation_RecordSkinMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
         return;
     }
     FrameInterpolation_RecordMatrixMtxFToMtx(src, dest);
+}
+
+void FrameInterpolation_RecordSnowParticles(Gfx* dl, f32 v1x, f32 v1y, f32 v1z, f32 v2x, f32 v2y, f32 v2z, f32 v3x,
+                                            f32 v3y, f32 v3z, s32 mode, s16 count, const f32* positions3f) {
+    if (!check_if_recording() || count <= 0 || count > SNOW_MAX_PARTICLES) {
+        return;
+    }
+    sCurSnow.dl = dl;
+    sCurSnow.v1[0] = v1x;
+    sCurSnow.v1[1] = v1y;
+    sCurSnow.v1[2] = v1z;
+    sCurSnow.v2[0] = v2x;
+    sCurSnow.v2[1] = v2y;
+    sCurSnow.v2[2] = v2z;
+    sCurSnow.v3[0] = v3x;
+    sCurSnow.v3[1] = v3y;
+    sCurSnow.v3[2] = v3z;
+    sCurSnow.mode = mode;
+    sCurSnow.count = count;
+    for (int i = 0; i < count; i++) {
+        sCurSnow.positions[i * 3 + 0] = positions3f[i * 3 + 0];
+        sCurSnow.positions[i * 3 + 1] = positions3f[i * 3 + 1];
+        sCurSnow.positions[i * 3 + 2] = positions3f[i * 3 + 2];
+    }
 }
 
 // https://stackoverflow.com/questions/1148309/inverting-a-4x4-matrix

@@ -19,11 +19,21 @@ jobs:
           python-version: '3.12'
       - name: Install Python dependencies
         run: pip install -r libultraship/requirements.txt
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-vcpkg-x64-static-${{ hashFiles('CMakeLists.txt', 'cmake/automate-vcpkg.cmake') }}
+          restore-keys: |
+            ${{ runner.os }}-vcpkg-x64-static-
+          path: |
+            build/x64/vcpkg
+            build/x64/vcpkg_installed
+            build/x64/vcpkg/downloads
       - name: Build
         run: |
           $env:VCPKG_ROOT=""
           cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
-          cmake --build ./build/x64
+          cmake --build ./build/x64 --config Release --parallel 10
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:

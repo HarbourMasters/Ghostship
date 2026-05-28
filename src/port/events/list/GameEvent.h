@@ -65,3 +65,41 @@ DEFINE_EVENT(MusicChanged,
 );
 
 DEFINE_EVENT(GameEnded);
+
+DEFINE_EVENT(ObjectSpawned,
+    struct Object* object;
+);
+
+DEFINE_EVENT(ObjectDestroyed,
+    struct Object* object;
+);
+
+DEFINE_EVENT(StarCollected,
+    s32 courseNum;
+    s32 starIndex;
+);
+
+DEFINE_EVENT(CutsceneStart,
+    struct Camera* c;
+    s16 cutsceneId;
+);
+
+DEFINE_EVENT(CutsceneEnd,
+    s16 cutsceneId;
+);
+
+DEFINE_EVENT(WarpStart,
+    s16 destLevel;
+    s16 destArea;
+    s16 warpNode;
+);
+
+DEFINE_EVENT(WarpEnd,
+    s16 level;
+    s16 area;
+);
+
+DEFINE_EVENT(ButtonPressed,
+    struct Controller* controller;
+    u16 button;
+);

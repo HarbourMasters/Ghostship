@@ -261,7 +261,7 @@ bool GameExtractor::GenerateOTR(std::atomic<size_t>& assetCount, std::string app
     return true;
 }
 #else
-bool GameExtractor::GenAssetFile() {
+static bool GameExtractor::GenAssetFile() {
     return false;
 }
 
@@ -273,24 +273,8 @@ bool GameExtractor::SelectGameFromUI() {
     return false;
 }
 
-bool GameExtractor::RunStandalone(std::string rom) {
-    return false;
-}
-
-void GameExtractor::SetSearchPath(const std::string& path) {
-    // None
-}
-
 void GameExtractor::GetRoms(std::vector<std::string>& roms) {
     // None
-}
-
-std::string GameExtractor::GetRomPath() {
-    return "";
-}
-
-bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShortName) {
-    return false;
 }
 
 bool GameExtractor::GenerateOTR(std::string appShortName) {

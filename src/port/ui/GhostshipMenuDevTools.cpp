@@ -133,8 +133,17 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Object Viewer##Dev")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Object Viewer Window."));
+
+    path.sidebarName = "Gfx Debugger";
+    AddSidebarEntry("Dev Tools", path.sidebarName, 1);
+    AddWidget(path, "Popout Gfx Debugger", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("GfxDebugger"))
+        .WindowName("Gfx Debugger")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Enables the separate Gfx Debugger Window."));
 }
 
+#ifndef __SWITCH__
 void GhostshipMenu::AddModMenu() {
 #ifndef DISABLE_SCRIPTING
     auto mods = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetArchives();
@@ -244,5 +253,6 @@ void GhostshipMenu::AddModMenu() {
     }
 #endif
 };
+#endif // __SWITCH__
 
 } // namespace GhostshipGui

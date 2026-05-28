@@ -186,45 +186,46 @@ static s32 get_top_left_tile_idx(s8 player) {
 }
 
 /**
- * Generates vertices for the skybox tile.
- *
- * @param tileIndex The index into the 32x32 sections of the whole skybox image. The index is converted
- *                  into an x and y by modulus and division by SKYBOX_COLS. x and y are then scaled by
- *                  SKYBOX_TILE_WIDTH to get a point in world space.
+ * Generates vertices for the skybox tile at explicit world-space column and row.
+ * absCol and absRow may extend one position outside the normal [0, SKYBOX_COLS) /
+ * [0, SKYBOX_ROWS) range to provide an interpolation buffer on each side of the
+ * visible screen — the tile texture is looked up with wrapping separately.
  */
-Vtx *make_skybox_rect(s32 tileIndex, s8 colorIndex) {
+static Vtx *make_skybox_rect_ext(s32 absRow, s32 absCol, s8 colorIndex) {
     Vtx *verts = alloc_display_list(4 * sizeof(*verts));
-    s16 x = tileIndex % SKYBOX_COLS * SKYBOX_TILE_WIDTH;
-    s16 y = SKYBOX_HEIGHT - tileIndex / SKYBOX_COLS * SKYBOX_TILE_HEIGHT;
+    s16 x = (s16)(absCol * SKYBOX_TILE_WIDTH);
+    s16 y = (s16)(SKYBOX_HEIGHT - absRow * SKYBOX_TILE_HEIGHT);
 
     if (verts != NULL) {
-        make_vertex(verts, 0, x, y, -1, 0, 0, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
-                    sSkyboxColors[colorIndex][2], 255);
-        make_vertex(verts, 1, x, y - SKYBOX_TILE_HEIGHT, -1, 0, 31 << 5, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
-                    sSkyboxColors[colorIndex][2], 255);
-        make_vertex(verts, 2, x + SKYBOX_TILE_WIDTH, y - SKYBOX_TILE_HEIGHT, -1, 31 << 5, 31 << 5, sSkyboxColors[colorIndex][0],
-                    sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
-        make_vertex(verts, 3, x + SKYBOX_TILE_WIDTH, y, -1, 31 << 5, 0, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1],
-                    sSkyboxColors[colorIndex][2], 255);
-    } else {
+        make_vertex(verts, 0, x,                     y,                     -1, 0,       0,       sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
+        make_vertex(verts, 1, x,                     y - SKYBOX_TILE_HEIGHT, -1, 0,       31 << 5, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
+        make_vertex(verts, 2, x + SKYBOX_TILE_WIDTH,  y - SKYBOX_TILE_HEIGHT, -1, 31 << 5, 31 << 5, sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
+        make_vertex(verts, 3, x + SKYBOX_TILE_WIDTH,  y,                     -1, 31 << 5, 0,       sSkyboxColors[colorIndex][0], sSkyboxColors[colorIndex][1], sSkyboxColors[colorIndex][2], 255);
     }
     return verts;
 }
 
 /**
- * Draws a 3x3 grid of 32x32 sections of the original skybox image.
- * The row and column are converted into an index into the skybox's tile list, which is then drawn in
- * world space so that the tiles will rotate with the camera.
+ * Draws a 5x3 grid of 32x32 sections of the original skybox image.
+ * The grid is 5 columns wide (one extra on each side of the 3-column visible area)
+ * so the interpolated ortho viewport never extends past the drawn tiles, preventing
+ * the skybox from flashing black when the camera rotates between game frames.
+ * Texture column indices wrap with SKYBOX_COLS; world-space x positions do not.
  */
 void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex) {
-    s32 row;
-    s32 col;
+    s32 row, col;
+    s32 upperLeftRow = sSkyBoxInfo[player].upperLeftTile / SKYBOX_COLS;
+    s32 upperLeftCol = sSkyBoxInfo[player].upperLeftTile % SKYBOX_COLS;
 
     for (row = 0; row < 3; row++) {
-        for (col = 0; col < 3; col++) {
-            s32 tileIndex = sSkyBoxInfo[player].upperLeftTile + row * SKYBOX_COLS + col;
-            u8* texture = ((u8**)segmented_to_virtual(sSkyboxTextures[background]))[tileIndex];
-            Vtx *vertices = make_skybox_rect(tileIndex, colorIndex);
+        for (col = -1; col < 4; col++) {
+            s32 absCol   = upperLeftCol + col;
+            // Wrap texture column into [0, SKYBOX_COLS) without affecting world x.
+            s32 texCol   = ((absCol % SKYBOX_COLS) + SKYBOX_COLS) % SKYBOX_COLS;
+            s32 tileIndex = (upperLeftRow + row) * SKYBOX_COLS + texCol;
+
+            u8 *texture = ((u8 **) segmented_to_virtual(sSkyboxTextures[background]))[tileIndex];
+            Vtx *vertices = make_skybox_rect_ext(upperLeftRow + row, absCol, colorIndex);
 
             gLoadBlockTexture((*dlist)++, 32, 32, G_IM_FMT_RGBA, texture);
             gSPVertex((*dlist)++, VIRTUAL_TO_PHYSICAL(vertices), 4, 0);
@@ -260,7 +261,7 @@ void *create_skybox_ortho_matrix(s8 player) {
  * Creates the skybox's display list, then draws the 3x3 grid of tiles.
  */
 Gfx *init_skybox_display_list(s8 player, s8 background, s8 colorIndex) {
-    s32 dlCommandCount = 5 + (3 * 3) * 7; // 5 for the start and end, plus 9 skybox tiles
+    s32 dlCommandCount = 5 + (5 * 3) * 7; // 5 for start/end, plus 15 tiles (5-wide grid)
     void *skybox = alloc_display_list(dlCommandCount * sizeof(Gfx));
     Gfx *dlist = skybox;
 

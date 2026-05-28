@@ -66,6 +66,16 @@ jobs:
           python-version: '3.12'
       - name: Install Python dependencies
         run: pip install -r libultraship/requirements.txt
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-vcpkg-x64-static-${{ hashFiles('CMakeLists.txt', 'cmake/automate-vcpkg.cmake') }}
+          restore-keys: |
+            ${{ runner.os }}-vcpkg-x64-static-
+          path: |
+            build/x64/vcpkg
+            build/x64/vcpkg_installed
+            build/x64/vcpkg/downloads
       - name: Build
         run: |
           $env:VCPKG_ROOT=""
@@ -78,23 +88,30 @@ jobs:
           path: ./build/x64/Release
       - name: Create Package
         run: |
-          mkdir ghostship-release
-          mkdir ghostship-release/debug
+          mkdir debug
           if (-Not (Test-Path "build/x64/Release/.tcc")) { Write-Error "ERROR: .tcc not found in build/x64/Release/"; exit 1 }
-          mv build/x64/Release/.tcc ghostship-release/
-          mv build/x64/Release/Ghostship.exe ghostship-release/
-          mv build/x64/Release/ghostship.o2r ghostship-release/
-          mv build/x64/Release/*.pdb ghostship-release/debug/
-          mv README.md ghostship-release/readme.txt
-          mv config.yml ghostship-release/
-          mv assets ghostship-release/
-          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "ghostship-release/gamecontrollerdb.txt"
+          mv build/x64/Release/.tcc .tcc
+          mv build/x64/Release/Ghostship.exe .
+          mv build/x64/Release/tcc.dll .
+          mv build/x64/Release/ghostship.o2r .
+          mv build/x64/Release/*.pdb debug/
+          mv README.md readme.txt
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "gamecontrollerdb.txt"
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-windows
           include-hidden-files: true
-          path: ghostship-release
+          path: |
+            .tcc
+            Ghostship.exe
+            tcc.dll
+            ghostship.o2r
+            debug
+            readme.txt
+            config.yml
+            assets
+            gamecontrollerdb.txt
 
   build-macos:
     needs: generate-port-o2r
@@ -291,16 +308,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ninja-build python3-venv python3-pip
           sudo apt-get remove -y cmake
+          git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
           sudo dkp-pacman -R --noconfirm switch-tinyxml2 # devkitPro's tinyxml2 is too old and causes build issues
           pip install --break-system-packages cryptography # libultraship
           export CFLAGS="${CFLAGS} -include strings.h" # weird libzip error (pulled in by LUS) that only happens in CI and not for SoH        
           git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
           git -C libultraship fetch nx
-          git -C libultraship checkout nx/main-nx
+          git -C libultraship checkout nx/main-nx-nightly
           wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.sh -O /tmp/cmake.sh
           sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
-          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake -DCMAKE_BUILD_TYPE:STRING=Release -DDISABLE_SCRIPTING=1
+          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake -DCMAKE_BUILD_TYPE:STRING=Release
           cmake --build build-switch --config Release -j3
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-switch/*.nro Ghostship.nro
       - name: Download ghostship.o2r
@@ -314,4 +333,6 @@ jobs:
           path: |
             Ghostship.nro
             ghostship.o2r
-            readme.txt
+            config.yml
+            assets
+            gamecontrollerdb.txt

@@ -34,31 +34,38 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3 python3-pip cmake
-          python3 -m pip install Pillow --break-system-packages
+          python3 -m pip install Pillow cryptography --break-system-packages
 
       - name: Configure CMake
         run: |
           cd Ghostship/workspace/mod-source
           cmake -B build -S .
 
+      - name: Read Project Name
+        id: meta
+        run: |
+          PROJECT_NAME=$(grep "^CMAKE_PROJECT_NAME:" Ghostship/workspace/mod-source/build/CMakeCache.txt | sed 's/.*=//')
+          echo "project_name=$PROJECT_NAME" >> $GITHUB_OUTPUT
+
       - name: Build Mod
         run: |
           cd Ghostship/workspace/mod-source
           cmake --build build -j$(nproc)
 
-      - name: Package and Sign Mod
+      - name: Sign Mod
         run: |
-          cd Ghostship/workspace/mod-source
-          cd output
-          zip -r ../mod.zip .
+          cd Ghostship/workspace/mod-source/output
+          zip -r ../${{ steps.meta.outputs.project_name }}.zip .
           cd ..
-        # echo "${{ secrets.PRIVATE_KEY }}" > private_key.pem
-        # python3 ../../libultraship/tools/sign.py mod.zip private_key.pem
-        # rm private_key.pem
+          # echo "${{ secrets.LYWX_PRIVATE_KEY }}" > private_key.pem
+          # python3 ../../libultraship/tools/sign.py ${{ steps.meta.outputs.project_name }}.zip private_key.pem
+          # rm private_key.pem
+          unzip ${{ steps.meta.outputs.project_name }}.zip -d signed-output
+          rm ${{ steps.meta.outputs.project_name }}.zip
 
       - name: Upload Mod Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mod
-          path: Ghostship/workspace/mod-source/mod.zip
+          name: ${{ steps.meta.outputs.project_name }}
+          path: Ghostship/workspace/mod-source/signed-output/
           retention-days: 7

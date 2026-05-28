@@ -102,6 +102,7 @@ struct GraphNode {
     /*0x08*/ struct GraphNode *next;
     /*0x0C*/ struct GraphNode *parent;
     /*0x10*/ struct GraphNode *children;
+    u32 uid;
 };
 
 struct AnimInfo {

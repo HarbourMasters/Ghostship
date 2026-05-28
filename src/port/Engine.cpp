@@ -1,6 +1,9 @@
 #include "Engine.h"
+#include "ModAudio.h"
 #include "ui/GhostshipGui.hpp"
+#if !defined(__SWITCH__) && !defined(__WIIU__)
 #include "GameExtractor.h"
+#endif
 #include "ShipInit.hpp"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
@@ -18,6 +21,7 @@
 #include "texts_table.h"
 #include "port/ui/cvar_prefixes.h"
 #include "port/mods/PortEnhancements.h"
+#include "port/events/Events.h"
 #include "port/console/DevConsole.h"
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
@@ -27,12 +31,11 @@
 
 #include <cstdlib>
 #include <algorithm>
+#include <thread>
 
-#ifdef USE_NETWORKING
-#include <SDL2/SDL_net.h>
-#endif
-
+#ifndef __SWITCH__
 #include "ship/scripting/ScriptLoader.h"
+#endif
 #include "ship/resource/type/Json.h"
 #include <fast/resource/ResourceType.h>
 #include <ship/window/gui/Fonts.h>
@@ -55,6 +58,7 @@
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
 #include <ship/resource/archive/Archive.h>
+#include "port/net/SatellaClient.h"
 
 #ifdef __SWITCH__
 #include <ship/port/switch/SwitchImpl.h>
@@ -160,6 +164,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitResourceManager({ assets_path }, {}, 3);
     this->context->InitConsole();
 
+#ifndef __SWITCH__
     this->context->GetResourceManager()->GetArchiveManager()->SetUntrustedArchiveHandler(
         [](Ship::Archive& archive, Ship::KeystoreEntry& key) {
             const auto info = archive.GetManifest();
@@ -202,6 +207,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
             return buttonid == 1;
         });
+#endif
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     this->context->InitWindow(gsFast3dWindow);
@@ -230,7 +236,9 @@ typedef enum ExtractSteps {
     ES_EXTRACT_ARGS,
     ES_EXTRACT,
     ES_VERIFY,
-    GS_COMPILE
+    GS_COMPILE,
+    GS_LOAD,
+    GS_WAIT
 } ExtractSteps;
 
 typedef enum PromptSteps {
@@ -281,38 +289,60 @@ void CheckAndCreateModFolder() {
     }
 }
 
-void GameEngine::LoadResourceFiles() {
+static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
+#ifdef __SWITCH__
+    return;
+#endif
     constexpr int codeVersion = 1;
-    std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
-                                                             { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
-                                                             { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
-                                                             { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
-    std::vector<std::string> includePaths = {
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/tcc"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/winapi"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/sys"),
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/include/sec_api"),
+    const std::unordered_map<std::string, std::string> defines = {
+        { "VERSION_US", "1" }, { "ENABLE_RUMBLE", "1" }, { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
+        { "GBI_FLOATS", "1" }, { "_LANGUAGE_C", "1" },   { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" },
     };
 
-    std::vector<std::string> libraryPaths = {
-        Ship::Context::GetPathRelativeToAppDirectory(".tcc/lib"),
-    };
-
-    std::vector<std::string> libraries = {
-        "Ghostship.def",
-    };
-
-#ifndef DISABLE_SCRIPTING
 #ifdef _WIN32
-    context->InitScriptLoader(defines, codeVersion, "-g -Wl", includePaths, libraryPaths, libraries);
+    const std::string tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    const std::vector<std::string> includePaths = {
+        tccBase + "/include",     tccBase + "/include/tcc",     tccBase + "/include/winapi",
+        tccBase + "/include/sys", tccBase + "/include/sec_api",
+    };
+    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Ghostship" });
 #else
-    context->InitScriptLoader(defines, codeVersion, "-g -Wl", {}, {}, {});
+    std::string tccBase = Ship::Context::GetPathRelativeToAppDirectory(".tcc");
+    if (!std::filesystem::exists(tccBase)) {
+        tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    }
+
+    std::vector<std::string> includePaths = { tccBase + "/include" };
+
+#ifdef __APPLE__
+    {
+        FILE* fp = popen("xcrun --show-sdk-path 2>/dev/null", "r");
+        if (fp) {
+            char buf[4096] = {};
+            if (fgets(buf, sizeof(buf), fp)) {
+                std::string sdkPath(buf);
+                sdkPath.erase(sdkPath.find_last_not_of("\n\r \t") + 1);
+                if (!sdkPath.empty()) {
+                    includePaths.push_back(sdkPath + "/usr/include");
+                }
+            }
+            pclose(fp);
+        }
+    }
 #endif
+
+    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
 #endif
-    // auto script = context->GetScriptLoader();
-    // script->SetGameLibrary("F:\\HM64\\Ghostship\\build\\Debug\\Ghostship.sdk");
-    // system("setup_x64.bat");
+
+    context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
+}
+
+void GameEngine::LoadResourceFiles() {
+    SetupScriptLoader(context);
+
+#ifndef __SWITCH__
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
@@ -362,6 +392,7 @@ void GameEngine::LoadResourceFiles() {
 
         this->totalScripts++;
     }
+#endif // __SWITCH__
 }
 
 void GameEngine::FinishInit() {
@@ -369,17 +400,9 @@ void GameEngine::FinishInit() {
     SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
                 (char*)gGitCommitHash);
 
-    context->InitGfxDebugger();
     context->InitFileDropMgr();
     context->InitCrashHandler();
-    std::unordered_map<std::string, std::string> defines = { { "VERSION_US", "1" },        { "ENABLE_RUMBLE", "1" },
-                                                             { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
-                                                             { "GBI_FLOATS", "1" },        { "_LANGUAGE_C", "1" },
-                                                             { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" } };
-
-#ifndef DISABLE_SCRIPTING
-    context->InitScriptLoader(defines, 1);
-#endif
+    SetupScriptLoader(context);
 
     this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
 
@@ -395,6 +418,8 @@ void GameEngine::FinishInit() {
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioBankFactoryV0>(), RESOURCE_FORMAT_BINARY, "AudioBank",
                                     static_cast<uint32_t>(SM64::ResourceType::Bank), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleFactoryV0>(), RESOURCE_FORMAT_BINARY,
+                                    "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
+    loader->RegisterResourceFactory(std::make_shared<SM64::AudioSampleXMLFactoryV0>(), RESOURCE_FORMAT_XML,
                                     "AudioSample", static_cast<uint32_t>(SM64::ResourceType::Sample), 0);
     loader->RegisterResourceFactory(std::make_shared<SM64::AudioSequenceFactoryV0>(), RESOURCE_FORMAT_BINARY,
                                     "AudioSequence", static_cast<uint32_t>(SM64::ResourceType::Sequence), 0);
@@ -458,9 +483,10 @@ void GameEngine::FinishInit() {
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
-#ifndef DISABLE_SCRIPTING
+#ifndef __SWITCH__
     context->GetScriptLoader()->LoadAll();
 #endif
+    CALL_EVENT(EngineReady);
 }
 
 void GameEngine::RunExtract(int argc, char* argv[]) {
@@ -487,7 +513,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             args.push_back(argv[argc]);
         }
     }
+#if !defined(__SWITCH__) && !defined(__WIIU__)
     GameExtractor extract;
+#endif
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;
     std::atomic<size_t> extractCount{ 0 }, totalExtract{ 0 };
@@ -524,8 +552,17 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     }
 #endif
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
-    while (!extractDone) {
-        if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0) {
+    while (true) {
+#ifndef __SWITCH__
+        auto satellaPhase = Satella::Client::Instance().GetPhase();
+        bool satellaActive = satellaPhase == Satella::Phase::Connecting || satellaPhase == Satella::Phase::FetchingKeys;
+#else
+        bool satellaActive = false;
+#endif
+        if (extractDone && !satellaActive) {
+            break;
+        }
+        if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0 || satellaActive) {
             goto render;
         }
         switch (extractStep) {
@@ -714,6 +751,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 break;
             }
             case ES_EXTRACT: {
+#if !defined(__SWITCH__) && !defined(__WIIU__)
                 switch (promptStep) {
                     case PS_FILE_CHECK: {
                         const bool romO2RExists =
@@ -774,6 +812,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     default:
                         break;
                 }
+#endif
                 break;
             }
             case ES_VERIFY: {
@@ -795,11 +834,22 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 continue;
             }
             case GS_COMPILE: {
-                LoadResourceFiles();
-#ifdef DISABLE_SCRIPTING
-                extractDone = true;
-#else
+#ifndef __SWITCH__
                 threadPool->submit_task([&]() -> void {
+                    Satella::Client::Instance().Execute();
+                    extractStep = GS_LOAD;
+                });
+                extractStep = GS_WAIT;
+#endif
+                continue;
+            }
+            case GS_WAIT:
+                SPDLOG_INFO("Waiting for satella...");
+                break;
+            case GS_LOAD: {
+                LoadResourceFiles();
+                threadPool->submit_task([&]() -> void {
+#ifndef __SWITCH__
                     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
                     auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
                         auto& info = archive->GetManifest();
@@ -807,9 +857,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     };
                     auto post = [&]() { compileCount++; };
                     scripting->CompileAll(pre, post);
+#endif
                     extractDone = true;
                 });
-#endif
                 continue;
             }
             default:
@@ -863,11 +913,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             ImGui::PopStyleVar(2);
         }
 
-        if (totalScripts > 0 && !ImGui::IsPopupOpen("Ghostship")) {
+#ifndef __SWITCH__
+        bool ghostshipPopupActive = totalScripts > 0 || satellaActive;
+#else
+        bool ghostshipPopupActive = totalScripts > 0;
+#endif
+        if (ghostshipPopupActive && !ImGui::IsPopupOpen("Ghostship")) {
             ImGui::OpenPopup("Ghostship");
         }
-
-        if (totalScripts > 0) {
+        if (ghostshipPopupActive) {
             ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
             ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 8.0f));
             auto color = UIWidgets::ColorValues.at(THEME_COLOR);
@@ -878,10 +932,24 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                        ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
                                            ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
                                            ImGuiWindowFlags_NoSavedSettings)) {
-                float progress = (totalScripts > 0.0f ? (float)compileCount / (float)totalScripts : 0) * 100.0f;
-                ImGui::Text("Loading %s...%s", file.c_str(), roundf(progress) == 100.0f ? " Done. Finishing up." : "");
-                std::string overlay = compileCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
-                ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
+#ifndef __SWITCH__
+                if (satellaActive) {
+                    const char* msg = satellaPhase == Satella::Phase::Connecting ? "Connecting to Satella..."
+                                                                                 : "Retrieving public keys...";
+                    ImGui::Text("%s", msg);
+                    ImGui::ProgressBar(-1.0f * (float)ImGui::GetTime(), ImVec2(600.0f, 20.0f), "");
+                    if (totalScripts > 0) {
+                        ImGui::Spacing();
+                    }
+                }
+#endif
+                if (totalScripts > 0) {
+                    float progress = (float)compileCount / (float)totalScripts * 100.0f;
+                    ImGui::Text("Loading %s...%s", file.c_str(),
+                                roundf(progress) == 100.0f ? " Done. Finishing up." : "");
+                    std::string overlay = compileCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
+                    ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
+                }
                 ImGui::EndPopup();
             }
             ImGui::PopStyleColor(3);
@@ -893,6 +961,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     }
     threadPool = nullptr;
 
+#if defined(__WIIU__)
+    Ship::WiiU::Init(appShortName);
+#endif
 
 #if not defined(__SWITCH__) && not defined(__WIIU__)
     CheckAndCreateModFolder();
@@ -952,9 +1023,7 @@ void GameEngine::ScaleImGui() {
 }
 
 void GameEngine::LoadScripts() {
-#ifdef DISABLE_SCRIPTING
-    Notification::Emit({ .message = "Scripting is disabled on this platform.", .remainingTime = 5.0f, .mute = true });
-#else
+#ifndef __SWITCH__
     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
@@ -994,7 +1063,7 @@ void GameEngine::LoadScripts() {
                              .remainingTime = 5.0f,
                              .mute = true });
     }
-#endif
+#endif // __SWITCH__
 }
 
 void GameEngine::Create(int argc, char* argv[]) {
@@ -1079,6 +1148,8 @@ void GameEngine::HandleAudioThread() {
             audio_buffer[i] = static_cast<s16>(audio_buffer[i] * master_vol);
         }
 
+        ModAudio_MixInto(audio_buffer, num_audio_samples * 2);
+
         AudioPlayerPlayFrame((u8*)audio_buffer, 2 * num_audio_samples * 4);
 
         audio.processing = false;
@@ -1121,7 +1192,7 @@ void GameEngine::AudioInit() {
     }
 
     for (auto& sequence : *sequences_files) {
-        if (sequence.find(".m64") != std::string::npos) {
+        if (sequence.find(".") != std::string::npos) {
             continue;
         }
         auto path = "__OTR__" + sequence;
@@ -1174,7 +1245,7 @@ uint32_t GameEngine::GetGameVersion() {
     return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
-void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements) {
+void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolationResult>& replacements) {
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     if (wnd == nullptr) {
@@ -1187,8 +1258,12 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
     wnd->HandleEvents();
 
     interpreter->mInterpolationIndex = 0;
-    for (const auto& mtxStack : mtx_replacements) {
-        wnd->DrawAndRunGraphicsCommands(Commands, mtxStack);
+    for (const auto& r : replacements) {
+#ifdef __SWITCH__ // Switch LUS Needs to be updated, so for now lets keep it simple
+        wnd->DrawAndRunGraphicsCommands(Commands, r.mtx);
+#else
+        wnd->DrawAndRunGraphicsCommands(Commands, r.mtx, r.dl);
+#endif
         interpreter->mInterpolationIndex++;
     }
 
@@ -1201,7 +1276,7 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
 }
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
-    std::vector<std::unordered_map<Mtx*, MtxF>> mtx_replacements;
+    std::vector<FrameInterpolationResult> mtx_replacements;
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     int target_fps = GetInterpolationFPS();
@@ -1281,12 +1356,12 @@ extern "C" float GameEngine_GetAspectRatio() {
 extern "C" CtlEntry* GameEngine_LoadBank(const uint8_t bankId) {
     const auto engine = GameEngine::Instance;
 
-    if (bankId >= engine->bankMapTable.size()) {
-        return nullptr;
+    if ((size_t)bankId < engine->banksTable.size() && engine->banksTable[bankId] != nullptr) {
+        return engine->banksTable[bankId];
     }
 
-    if (engine->banksTable[bankId] != nullptr) {
-        return engine->banksTable[bankId];
+    if (bankId >= engine->bankMapTable.size()) {
+        return nullptr;
     }
 
     for (auto& bank : engine->bankMapTable) {
@@ -1306,6 +1381,10 @@ extern "C" uint8_t GameEngine_IsBankLoaded(const uint8_t bankId) {
 }
 
 extern "C" void GameEngine_UnloadBank(const uint8_t bankId) {
+    if (bankId == SM64::AudioSequenceFactoryV0::kStreamedBankId) {
+        return;
+    }
+
     const auto engine = GameEngine::Instance;
     engine->banksTable[bankId] = nullptr;
 }
@@ -1319,6 +1398,13 @@ extern "C" AudioSequenceData* GameEngine_LoadSequence(const uint8_t seqId) {
 
     if (engine->audioSequenceTable[seqId] != nullptr) {
         return engine->audioSequenceTable[seqId];
+    }
+
+    // Restore streamed sequences that were evicted by GameEngine_UnloadSequence.
+    auto* streamed = SM64::AudioSequenceFactoryV0::GetStreamedSeqData(seqId);
+    if (streamed) {
+        engine->audioSequenceTable[seqId] = streamed;
+        return streamed;
     }
 
     auto sequences = static_cast<AudioSequenceData*>(ResourceGetDataByName(engine->sequenceTable[seqId].c_str()));

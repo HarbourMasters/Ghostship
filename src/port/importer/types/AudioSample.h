@@ -25,6 +25,13 @@ struct AudioBankSample {
     AdpcmLoop *loop;
     AdpcmBook *book;
     uint32_t sampleSize; // never read. either 0 or 1 mod 9, depending on padding
+    // Fields below mirror the C struct layout in internal.h (non-SH), then extend it.
+    // codec and numFrames must stay in this order and position — C synthesis code reads them.
+    uint8_t codec = 0;      // CODEC_ADPCM=0, CODEC_S8=1, CODEC_SKIP=2, CODEC_S16=5
+    uint32_t numFrames = 0; // total PCM sample frames; used by CODEC_S16 path
+    // C++ only — not accessed from C synthesis code, safe to append after numFrames.
+    uint32_t channels = 1;
+    uint32_t sampleRate = 32000;
 };
 
 namespace SM64 {
