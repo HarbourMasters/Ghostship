@@ -86,11 +86,11 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
                 break;
             }
 
-            const int16_t  status = readI16LE(data + 3);
-            const uint8_t  type   = data[2];
+            const int16_t status = readI16LE(data + 3);
+            const uint8_t type = data[2];
             const std::string body = (type != 0x01 && size > kHeaderSize)
-                ? std::string(msg->str.begin() + kHeaderSize, msg->str.end())
-                : std::string{};
+                                         ? std::string(msg->str.begin() + kHeaderSize, msg->str.end())
+                                         : std::string{};
 
             bool isResponse;
             {
@@ -98,9 +98,9 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
                 isResponse = mWaitingForResponse;
                 if (isResponse) {
                     mResponseStatus = status;
-                    mResponseBody   = body;
-                    mResponseValid  = true;
-                    mResponseReady  = true;
+                    mResponseBody = body;
+                    mResponseValid = true;
+                    mResponseReady = true;
                     mCv.notify_all();
                 }
             }
@@ -166,8 +166,8 @@ void Client::SendAndReceive(IPacket& packet) {
 
     {
         std::unique_lock<std::mutex> lock(mMtx);
-        mResponseReady      = false;
-        mResponseValid      = false;
+        mResponseReady = false;
+        mResponseValid = false;
         mWaitingForResponse = true;
     }
 
@@ -305,7 +305,8 @@ class NotificationsPacket : public IPacket {
         SPDLOG_INFO("SatellaClient: subscribed to notifications");
     }
     void OnPush(int16_t status, const std::string& body) override {
-        if (status != 200 || body.empty()) return;
+        if (status != 200 || body.empty())
+            return;
 
         nlohmann::json data;
         try {
