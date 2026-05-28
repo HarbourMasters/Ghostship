@@ -7,9 +7,9 @@
 #include <mutex>
 #include <string>
 #include <vector>
-
 #include <atomic>
-#include <ixwebsocket/IXWebSocket.h>
+
+#include <ixwebsocket/IXWebSocketMessage.h>
 
 #define SATELLA_HOST "wss://satella.net64.dev"
 
@@ -46,7 +46,6 @@ private:
     std::vector<std::unique_ptr<IPacket>> mPackets;
     std::vector<IPacket*>                 mSubscriptions;
 
-    ix::WebSocket mWs;
     std::string   mUrl;
 
     std::mutex              mMtx;
