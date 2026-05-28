@@ -33,10 +33,6 @@
 #include <algorithm>
 #include <thread>
 
-#ifdef USE_NETWORKING
-#include <SDL2/SDL_net.h>
-#endif
-
 #ifndef __SWITCH__
 #include "ship/scripting/ScriptLoader.h"
 #endif
