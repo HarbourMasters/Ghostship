@@ -129,7 +129,6 @@ void GhostshipMenu::AddMenuSettings() {
         .CVar(CVAR_SWITCH_PERF_MODE)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
-            SPDLOG_INFO("----> GUI widget onChange");
             Ship::Switch::ApplyOverclock();
         })
         .Options(ComboboxOptions()
