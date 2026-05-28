@@ -304,7 +304,7 @@ void GameEngine::LoadResourceFiles() {
         tccBase + "/include/sys", tccBase + "/include/sec_api",
     };
     std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Starship" });
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Ghostship" });
     context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #else
     std::vector<std::string> includePaths = {
@@ -408,7 +408,7 @@ void GameEngine::FinishInit() {
         tccBase + "/include/sys", tccBase + "/include/sec_api",
     };
     std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Starship" });
+    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Ghostship" });
     context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #else
     std::vector<std::string> includePaths = {
