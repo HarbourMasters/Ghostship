@@ -13,6 +13,7 @@
 #include "behavior_data.h"
 #include "rumble_init.h"
 #include "seq_ids.h"
+#include "port/events/list/PlayerEvent.h"
 
 struct LandingAction {
     s16 numFrames;
@@ -146,7 +147,10 @@ void slide_bonk(struct MarioState *m, u32 fastAction, u32 slowAction) {
 }
 
 s32 set_triple_jump_action(struct MarioState *m, UNUSED u32 action, UNUSED u32 actionArg) {
-    if (m->flags & MARIO_WING_CAP) {
+    bool useFlyingVariant = (m->flags & MARIO_WING_CAP) != 0;
+    CALL_EVENT(SetTripleJumpAction, m, &useFlyingVariant);
+
+    if (useFlyingVariant) {
         return set_mario_action(m, ACT_FLYING_TRIPLE_JUMP, 0);
     } else if (m->forwardVel > 20.0f) {
         return set_mario_action(m, ACT_TRIPLE_JUMP, 0);

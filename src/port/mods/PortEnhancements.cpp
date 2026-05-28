@@ -84,6 +84,28 @@ void PortEnhancements_Init() {
         }
     });
 
+    REGISTER_LISTENER(SetTripleJumpAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if (CVarGetInteger("gCheats.AlwaysFlyTripleJump", 0) == 0) {
+            return;
+        }
+        SetTripleJumpAction* ev = (SetTripleJumpAction*)event;
+        *ev->useFlyingVariant = true;
+    });
+    REGISTER_LISTENER(FlyingActionUpdate, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if (CVarGetInteger("gCheats.AlwaysFlyTripleJump", 0) == 0) {
+            return;
+        }
+        FlyingActionUpdate* ev = (FlyingActionUpdate*)event;
+        *ev->canFly = true;
+    });
+    REGISTER_LISTENER(FlyingTripleJumpLaunch, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        if (CVarGetInteger("gCheats.FlyingTripleJumpHighLaunch", 0) == 0) {
+            return;
+        }
+        FlyingTripleJumpLaunch* ev = (FlyingTripleJumpLaunch*)event;
+        *ev->launchVelocity = 246.0f;
+    });
+
     auto OnDistanceFunc = [](IEvent* event) {
         if (CVarGetInteger("gEnhancements.DisableDrawDistance", 0) == 0) {
             return;
@@ -127,6 +149,9 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(PlayerDeath);
     REGISTER_EVENT(PlayerSetAction);
     REGISTER_EVENT(PlayerExecuteAction);
+    REGISTER_EVENT(SetTripleJumpAction);
+    REGISTER_EVENT(FlyingActionUpdate);
+    REGISTER_EVENT(FlyingTripleJumpLaunch);
     REGISTER_EVENT(PlayerCheckCommonAirborneCancels);
     REGISTER_EVENT(PlayerLanded);
     REGISTER_EVENT(PlayerHit);

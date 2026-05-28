@@ -438,8 +438,10 @@ void adjust_analog_stick(struct Controller *controller) {
     // Reset the controller's x and y floats.
     controller->stickX = 0;
     controller->stickY = 0;
+    controller->stick2X = 0;
+    controller->stick2Y = 0;
 
-    // Modulate the rawStickX and rawStickY to be the new f32 values by adding/subtracting 6.
+    // Modulate the rawStickX, rawStickY, rawStick2X and rawStick2Y to be the new f32 values by adding/subtracting 6.
     if (controller->rawStickX <= -8) {
         controller->stickX = controller->rawStickX + 6;
     }
@@ -456,9 +458,28 @@ void adjust_analog_stick(struct Controller *controller) {
         controller->stickY = controller->rawStickY - 6;
     }
 
+    if (controller->rawStick2X <= -8) {
+        controller->stick2X = controller->rawStick2X + 6;
+    }
+
+    if (controller->rawStick2X >= 8) {
+        controller->stick2X = controller->rawStick2X - 6;
+    }
+
+    if (controller->rawStick2Y <= -8) {
+        controller->stick2Y = controller->rawStick2Y + 6;
+    }
+
+    if (controller->rawStick2Y >= 8) {
+        controller->stick2Y = controller->rawStick2Y - 6;
+    }
+
     // Calculate f32 magnitude from the center by vector length.
     controller->stickMag =
         sqrtf(controller->stickX * controller->stickX + controller->stickY * controller->stickY);
+
+    controller->stick2Mag =
+        sqrtf(controller->stick2X * controller->stick2X + controller->stick2Y * controller->stick2Y);
 
     // Magnitude cannot exceed 64.0f: if it does, modify the values
     // appropriately to flatten the values down to the allowed maximum value.
@@ -466,6 +487,12 @@ void adjust_analog_stick(struct Controller *controller) {
         controller->stickX *= 64 / controller->stickMag;
         controller->stickY *= 64 / controller->stickMag;
         controller->stickMag = 64;
+    }
+
+    if (controller->stick2Mag > 64) {
+        controller->stick2X *= 64 / controller->stick2Mag;
+        controller->stick2Y *= 64 / controller->stick2Mag;
+        controller->stick2Mag = 64;
     }
 }
 
@@ -551,6 +578,8 @@ void read_controller_inputs(void) {
         if (controller->controllerData != NULL) {
             controller->rawStickX = controller->controllerData->stick_x;
             controller->rawStickY = controller->controllerData->stick_y;
+            controller->rawStick2X = controller->controllerData->right_stick_x;
+            controller->rawStick2Y = controller->controllerData->right_stick_y;
             controller->buttonPressed = controller->controllerData->button
                                         & (controller->controllerData->button ^ controller->buttonDown);
             // 0.5x A presses are a good meme
@@ -562,11 +591,16 @@ void read_controller_inputs(void) {
         } else { // otherwise, if the controllerData is NULL, 0 out all of the inputs.
             controller->rawStickX = 0;
             controller->rawStickY = 0;
+            controller->rawStick2X = 0;
+            controller->rawStick2Y = 0;
             controller->buttonPressed = 0;
             controller->buttonDown = 0;
             controller->stickX = 0;
             controller->stickY = 0;
             controller->stickMag = 0;
+            controller->stick2X = 0;
+            controller->stick2Y = 0;
+            controller->stick2Mag = 0;
         }
     }
 
@@ -578,6 +612,11 @@ void read_controller_inputs(void) {
     gPlayer3Controller->stickX = gPlayer1Controller->stickX;
     gPlayer3Controller->stickY = gPlayer1Controller->stickY;
     gPlayer3Controller->stickMag = gPlayer1Controller->stickMag;
+    gPlayer3Controller->rawStick2X = gPlayer1Controller->rawStick2X;
+    gPlayer3Controller->rawStick2Y = gPlayer1Controller->rawStick2Y;
+    gPlayer3Controller->stick2X = gPlayer1Controller->stick2X;
+    gPlayer3Controller->stick2Y = gPlayer1Controller->stick2Y;
+    gPlayer3Controller->stick2Mag = gPlayer1Controller->stick2Mag;
     gPlayer3Controller->buttonPressed = gPlayer1Controller->buttonPressed;
     gPlayer3Controller->buttonDown = gPlayer1Controller->buttonDown;
 }

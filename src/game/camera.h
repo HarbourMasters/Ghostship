@@ -9,6 +9,7 @@
 #include "engine/graph_node.h"
 
 #include "level_table.h"
+#include "camera_settings.h"
 
 /**
  * @file camera.h

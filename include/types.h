@@ -28,6 +28,11 @@ struct Controller {
 #if ENABLE_RUMBLE
   /*0x1C*/ s32 port;
 #endif
+  /*0x20*/ s16 rawStick2X;
+  /*0x22*/ s16 rawStick2Y;
+  /*0x24*/ float stick2X;        // [-64, 64] positive is right
+  /*0x28*/ float stick2Y;        // [-64, 64] positive is up
+  /*0x2C*/ float stick2Mag;      // distance from center [0, 64]
 };
 
 typedef f32 Vec2f[2];
