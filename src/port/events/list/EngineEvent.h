@@ -1,11 +1,17 @@
 #pragma once
 
-#include "port/hooks/impl/EventSystem.h"
 #include "engine/graph_node.h"
 
 typedef s32 (*LevelScriptFunction)(s16, s32);
 
 DEFINE_EVENT(GameFrameUpdate);
+DEFINE_EVENT(GameLoopTick);
+DEFINE_EVENT(GameReadInput);
+
+DEFINE_EVENT(RenderHud);
+DEFINE_EVENT(RenderTextLabels);
+DEFINE_EVENT(RenderGamePre);
+DEFINE_EVENT(RenderGamePost);
 
 DEFINE_EVENT(RenderPauseCourseOptions,
     bool* render;
@@ -47,4 +53,14 @@ DEFINE_EVENT(EntityDistanceRender,
 
 DEFINE_EVENT(EntityDistanceLoad,
     bool* visible;
+);
+
+DEFINE_EVENT(BehaviorCallNative,
+    void (*function)(void);
+);
+
+DEFINE_EVENT(EngineReady);
+
+DEFINE_EVENT(CameraUpdate,
+    struct Camera* c;
 );

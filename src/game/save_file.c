@@ -13,7 +13,7 @@
 #include "rumble_init.h"
 #include "port/data/Saves.h"
 
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 #define MENU_DATA_MAGIC 0x4849
@@ -422,6 +422,7 @@ void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
         default:
             if (!(save_file_get_star_flags(fileIndex, courseIndex) & starFlag)) {
                 save_file_set_star_flags(fileIndex, courseIndex, starFlag);
+                CALL_EVENT(StarCollected, courseIndex, starIndex);
             }
             break;
     }

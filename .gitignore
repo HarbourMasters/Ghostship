@@ -101,3 +101,10 @@ mods/
 randomizer/
 !/src/port/mods/
 saves/
+workspace/*
+!workspace/template
+workspace/template/output/*
+!workspace/template/output/manifest.json
+*.pem
+.tcc
+mods-*

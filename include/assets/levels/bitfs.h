@@ -2,7 +2,7 @@
 
 #include "bitfs/geo.h"
 
-extern const LevelScript level_bitfs_entry[];
+extern_s const LevelScript level_bitfs_entry[];
 
 static const ALIGN_ASSET(2) char bitfs_seg7_texture_07000000[] = "__OTR__levels/bitfs/0";
 

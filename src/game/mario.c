@@ -34,7 +34,7 @@
 #include "sound_init.h"
 #include "rumble_init.h"
 
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
 
 u32 unused80339F10;
@@ -971,7 +971,7 @@ static u32 set_mario_action_cutscene(struct MarioState *m, u32 action, UNUSED u3
  * specific function if needed.
  */
 u32 set_mario_action(struct MarioState *m, u32 action, u32 actionArg) {
-    CALL_CANCELLABLE_EVENT(PlayerExecuteAction, m, action, actionArg) {
+    CALL_CANCELLABLE_EVENT(PlayerSetAction, m, action, actionArg) {
         switch (action & ACT_GROUP_MASK) {
             case ACT_GROUP_MOVING:
                 action = set_mario_action_moving(m, action, actionArg);
@@ -1730,34 +1730,36 @@ s32 execute_mario_action(UNUSED struct Object *o) {
         // which can lead to unexpected sub-frame behavior. Could potentially hang
         // if a loop of actions were found, but there has not been a situation found.
         while (inLoop) {
-            switch (gMarioState->action & ACT_GROUP_MASK) {
-                case ACT_GROUP_STATIONARY:
-                    inLoop = mario_execute_stationary_action(gMarioState);
-                    break;
+            CALL_CANCELLABLE_EVENT(PlayerExecuteAction, &inLoop) {
+                switch (gMarioState->action & ACT_GROUP_MASK) {
+                    case ACT_GROUP_STATIONARY:
+                        inLoop = mario_execute_stationary_action(gMarioState);
+                        break;
 
-                case ACT_GROUP_MOVING:
-                    inLoop = mario_execute_moving_action(gMarioState);
-                    break;
+                    case ACT_GROUP_MOVING:
+                        inLoop = mario_execute_moving_action(gMarioState);
+                        break;
 
-                case ACT_GROUP_AIRBORNE:
-                    inLoop = mario_execute_airborne_action(gMarioState);
-                    break;
+                    case ACT_GROUP_AIRBORNE:
+                        inLoop = mario_execute_airborne_action(gMarioState);
+                        break;
 
-                case ACT_GROUP_SUBMERGED:
-                    inLoop = mario_execute_submerged_action(gMarioState);
-                    break;
+                    case ACT_GROUP_SUBMERGED:
+                        inLoop = mario_execute_submerged_action(gMarioState);
+                        break;
 
-                case ACT_GROUP_CUTSCENE:
-                    inLoop = mario_execute_cutscene_action(gMarioState);
-                    break;
+                    case ACT_GROUP_CUTSCENE:
+                        inLoop = mario_execute_cutscene_action(gMarioState);
+                        break;
 
-                case ACT_GROUP_AUTOMATIC:
-                    inLoop = mario_execute_automatic_action(gMarioState);
-                    break;
+                    case ACT_GROUP_AUTOMATIC:
+                        inLoop = mario_execute_automatic_action(gMarioState);
+                        break;
 
-                case ACT_GROUP_OBJECT:
-                    inLoop = mario_execute_object_action(gMarioState);
-                    break;
+                    case ACT_GROUP_OBJECT:
+                        inLoop = mario_execute_object_action(gMarioState);
+                        break;
+                }
             }
         }
 

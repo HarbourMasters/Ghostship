@@ -3,7 +3,7 @@
  * bhvHiddenBlueCoin are the stationary blue coins that appear when
  * you press a blue coin switch (a.k.a. bhvBlueCoinSwitch).
  */
-#include "port/hooks/list/PlayerEvent.h"
+#include "port/events/list/PlayerEvent.h"
 
 /**
  * Update function for bhvHiddenBlueCoin.

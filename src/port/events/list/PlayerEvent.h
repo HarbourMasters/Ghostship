@@ -1,6 +1,5 @@
 #pragma once
 
-#include "port/hooks/impl/EventSystem.h"
 #include "include/types.h"
 #include "game/area.h"
 
@@ -16,6 +15,15 @@ typedef enum PlayerDeathType {
     DEATH_TYPE_WHIRLPOOL,
     DEATH_TYPE_OUT_OF_BOUNDS,
 } PlayerDeathType;
+
+DEFINE_EVENT(PlayerExecuteAction,
+    s32* result;
+);
+
+DEFINE_EVENT(PlayerCheckCommonAirborneCancels,
+    struct MarioState* m;
+    s32* result;
+);
 
 DEFINE_EVENT(PlayerHealthChange,
     struct MarioState* m;
@@ -37,7 +45,7 @@ DEFINE_EVENT(PlayerDeath,
     PlayerDeathType type;
 );
 
-DEFINE_EVENT(PlayerExecuteAction,
+DEFINE_EVENT(PlayerSetAction,
     struct MarioState* m;
     u32 action;
     u32 arg;
@@ -112,4 +120,20 @@ DEFINE_EVENT(ChangeLevel,
 
 DEFINE_EVENT(ExitLevel,
     int16_t menuOption;
+);
+
+DEFINE_EVENT(PlayerLanded,
+    struct MarioState* m;
+    f32 fallHeight;
+);
+
+DEFINE_EVENT(PlayerHit,
+    struct MarioState* m;
+    struct Object* source;
+    s32 damage;
+);
+
+DEFINE_EVENT(PlayerKnockback,
+    struct MarioState* m;
+    u32* action;
 );

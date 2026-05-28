@@ -2,7 +2,7 @@
 
 #include "ssl/geo.h"
 
-extern const LevelScript level_ssl_entry[];
+extern_s const LevelScript level_ssl_entry[];
 
 static const ALIGN_ASSET(2) char ssl_seg7_texture_07000000[] = "__OTR__levels/ssl/0";
 

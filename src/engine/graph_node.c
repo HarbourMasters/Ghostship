@@ -18,6 +18,8 @@ Vec3s gVec3sZero = { 0, 0, 0 };
 Vec3f gVec3fOne = { 1.0f, 1.0f, 1.0f };
 UNUSED Vec3s gVec3sOne = { 1, 1, 1 };
 
+static u32 sGeoNodeNextUid = 1;
+
 /**
  * Initialize a geo node with a given type. Sets all links such that there
  * are no siblings, parent or children for this node.
@@ -29,6 +31,11 @@ void init_scene_graph_node_links(struct GraphNode *graphNode, s32 type) {
     graphNode->next = graphNode;
     graphNode->parent = NULL;
     graphNode->children = NULL;
+    graphNode->uid = sGeoNodeNextUid++;
+}
+
+void geo_node_assign_new_uid(struct GraphNode *graphNode) {
+    graphNode->uid = sGeoNodeNextUid++;
 }
 
 /**
@@ -691,6 +698,8 @@ void geo_reset_object_node(struct GraphNodeObject *graphNode) {
  * Initialize an object node using the given parameters
  */
 void geo_obj_init(struct GraphNodeObject *graphNode, void *sharedChild, Vec3f pos, Vec3s angle) {
+    graphNode->node.uid = sGeoNodeNextUid++;
+
     vec3f_set(graphNode->scale, 1.0f, 1.0f, 1.0f);
     vec3f_copy(graphNode->pos, pos);
     vec3s_copy(graphNode->angle, angle);

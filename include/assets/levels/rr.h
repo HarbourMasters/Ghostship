@@ -2,7 +2,7 @@
 
 #include "rr/geo.h"
 
-extern const LevelScript level_rr_entry[];
+extern_s const LevelScript level_rr_entry[];
 
 static const ALIGN_ASSET(2) char texture_quarter_flying_carpet[] = "__OTR__levels/rr/quarter_flying_carpet";
 

@@ -4,6 +4,8 @@
 #include "port/ui/UIWidgets.hpp"
 #include <cstring>
 
+#include "fast/Fast3dGui.h"
+
 extern "C" {
 #include "include/assets/textures/segment2.h"
 }
@@ -123,7 +125,8 @@ void DrawCheckTrackerList() {
                                           : randoSaveCheck.randoItemId == RI_COIN_RED ? "Red Coin Icon"
                                                                                       : "Blue Coin Icon";
                     ImTextureID textureId =
-                        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(texture);
+                        std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                            ->GetTextureByName(texture);
 
                     ImGui::BeginGroup();
                     ImGui::Image(textureId, ImVec2(16.0f * checkTrackerScale, 16.0f * checkTrackerScale));

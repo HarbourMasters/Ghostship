@@ -650,3 +650,101 @@ Gfx *geo_mirror_mario_backface_culling(s32 callContext, struct GraphNode *node, 
     }
     return gfx;
 }
+
+// @port: We can make this dynamic like on coop
+#define PLAYER_PART_MAX 8
+
+struct PlayerColor {
+    Lights1 parts[PLAYER_PART_MAX];
+};
+
+u8 gDefaultMarioColors[][3] = { 
+    { 0x00, 0x00, 0xff },
+    { 0xff, 0x00, 0x00 },
+    { 0xff, 0xff, 0xff },
+    { 0x72, 0x1c, 0x0e },
+    { 0x73, 0x06, 0x00 },
+    { 0xfe, 0xc1, 0x79 },
+    { 0xff, 0x00, 0x00 },
+    { 0xff, 0x00, 0x00 }
+};
+
+static struct PlayerColor geo_mario_get_player_color(const u8 (*palette)[3]) {
+    struct PlayerColor color = { 0 };
+    u8 index = 0;
+    struct MarioBodyState* bodyState = &gBodyStates[index];
+
+    u8 shadeR = 127;
+    u8 shadeG = 127;
+    u8 shadeB = 127;
+    u8 lightR = 127;
+    u8 lightG = 127;
+    u8 lightB = 127;
+    f32 lightingDirX = 0.0f;
+    f32 lightingDirY = 0.0f;
+    f32 lightingDirZ = 0.0f;
+
+    for (s32 part = 0; part != PLAYER_PART_MAX; ++part) {
+        color.parts[part] = (Lights1) gdSPDefLights1(
+            // Shadow
+            palette[part][0] * shadeR / 255.0f,
+            palette[part][1] * shadeG / 255.0f,
+            palette[part][2] * shadeB / 255.0f,
+            // Light
+            palette[part][0] * lightR / 255.0f,
+            palette[part][1] * lightG / 255.0f,
+            palette[part][2] * lightB / 255.0f,
+            0x28 + lightingDirX * 127.0f, 0x28 + lightingDirY * 127.0f, 0x28 + lightingDirZ * 127.0f
+        );
+    }
+    return color;
+}
+
+static Gfx *geo_mario_create_player_colors_dl(s32 index, Gfx *capEnemyGfx, Gfx *capEnemyDecalGfx) {
+    s32 size = ((PLAYER_PART_MAX * 2) + 1) + (capEnemyGfx != NULL) + (capEnemyDecalGfx != NULL);
+    Gfx *gfx = alloc_display_list(size * sizeof(Gfx));
+    if (gfx) {
+        Gfx *gfxp = gfx;
+        static struct PlayerColor playerColor;
+        playerColor = geo_mario_get_player_color(gDefaultMarioColors);
+        for (s32 part = 0; part != PLAYER_PART_MAX; ++part) {
+            Lights1 *light = alloc_display_list(sizeof(Lights1));
+            if (!light) { return NULL; }
+            *light = playerColor.parts[part];
+            gSPLight(gfxp++, &light->l, (2 * (part + 1)) + 1);
+            gSPLight(gfxp++, &light->a, (2 * (part + 1)) + 2);
+        }
+        if (capEnemyGfx) { gSPDisplayList(gfxp++, capEnemyGfx); }
+        if (capEnemyDecalGfx) { gSPDisplayList(gfxp++, capEnemyDecalGfx); }
+        gSPEndDisplayList(gfxp);
+    }
+    return gfx;
+}
+
+/**
+ * Generate DL that sets player color depending on player number.
+ */
+Gfx* geo_mario_set_player_colors(s32 callContext, struct GraphNode* node, UNUSED Mat4* c) {
+    struct GraphNodeGenerated* asGenerated = (struct GraphNodeGenerated*) node;
+    Gfx* gfx = NULL;
+    u8 index = 0;
+
+    struct MarioBodyState* bodyState = &gBodyStates[index];
+
+    if (callContext == GEO_CONTEXT_RENDER) {
+        gfx = geo_mario_create_player_colors_dl(index, NULL, NULL);
+        u32 layer = LAYER_OPAQUE;
+        if (asGenerated->parameter == 0) {
+            // put on transparent layer if vanish effect, opaque otherwise
+            layer = ((bodyState->modelState >> 8) & 1) ? LAYER_TRANSPARENT : LAYER_OPAQUE;
+        } else if (asGenerated->parameter == 1) {
+            layer = LAYER_OPAQUE;
+        } else if (asGenerated->parameter == 2) {
+            layer = LAYER_TRANSPARENT;
+        } else if (asGenerated->parameter >= 3) {
+            layer = asGenerated->parameter - 3;
+        }
+        asGenerated->fnNode.node.flags = (asGenerated->fnNode.node.flags & 0xFF) | (layer << 8);
+    }
+    return NULL;
+}

@@ -277,7 +277,11 @@ void GameExtractor::GetRoms(std::vector<std::string>& roms) {
     // None
 }
 
-bool GameExtractor::GenerateOTR() {
+bool GameExtractor::GenerateOTR(std::string appShortName) {
+    return false;
+}
+
+bool GameExtractor::GenerateOTR(std::atomic<size_t>& assetCount, std::string appShortName) {
     return false;
 }
 

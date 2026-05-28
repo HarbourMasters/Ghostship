@@ -2,7 +2,7 @@
 
 #include "ending/geo.h"
 
-extern const LevelScript level_ending_entry[];
+extern_s const LevelScript level_ending_entry[];
 
 static const ALIGN_ASSET(2) char dCakeEndTexture0[] = "__OTR__levels/ending/cake.0";
 

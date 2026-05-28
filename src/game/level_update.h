@@ -58,20 +58,16 @@ struct CreditsEntry {
     /*0x0C*/ const char **unk0C;
 };
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+extern_s struct CreditsEntry *gCurrCreditsEntry;
 
-extern struct CreditsEntry *gCurrCreditsEntry;
+extern_s struct MarioState gMarioStates[];
+extern_s struct MarioState *gMarioState;
 
-extern struct MarioState gMarioStates[];
-extern struct MarioState *gMarioState;
-
-extern s16 sCurrPlayMode;
-extern u16 D_80339ECA;
-extern s16 sTransitionTimer;
-extern void (*sTransitionUpdate)(s16 *);
-extern u8 unused2[4];
+extern_s s16 sCurrPlayMode;
+extern_s u16 D_80339ECA;
+extern_s s16 sTransitionTimer;
+extern_s void (*sTransitionUpdate)(s16 *);
+extern_s u8 unused2[4];
 
 struct WarpDest {
     u8 type;
@@ -81,15 +77,15 @@ struct WarpDest {
     u32 arg;
 };
 
-extern struct WarpDest sWarpDest;
+extern_s struct WarpDest sWarpDest;
 
-extern s16 D_80339EE0;
-extern s16 sDelayedWarpOp;
-extern s16 sDelayedWarpTimer;
-extern s16 sSourceWarpNodeId;
-extern s32 sDelayedWarpArg;
-extern u8 unused3[2];
-extern s8 sTimerRunning;
+extern_s s16 D_80339EE0;
+extern_s s16 sDelayedWarpOp;
+extern_s s16 sDelayedWarpTimer;
+extern_s s16 sSourceWarpNodeId;
+extern_s s32 sDelayedWarpArg;
+extern_s u8 unused3[2];
+extern_s s8 sTimerRunning;
 
 struct HudDisplay {
     /*0x00*/ s16 lives;
@@ -101,8 +97,8 @@ struct HudDisplay {
     /*0x0C*/ u16 timer;
 };
 
-extern struct HudDisplay gHudDisplay;
-extern bool gNeverEnteredCastle;
+extern_s struct HudDisplay gHudDisplay;
+extern_s bool gNeverEnteredCastle;
 
 enum HUDDisplayFlag {
     HUD_DISPLAY_FLAG_LIVES = 0x0001,
@@ -118,21 +114,16 @@ enum HUDDisplayFlag {
     HUD_DISPLAY_DEFAULT = HUD_DISPLAY_FLAG_LIVES | HUD_DISPLAY_FLAG_COIN_COUNT | HUD_DISPLAY_FLAG_STAR_COUNT | HUD_DISPLAY_FLAG_CAMERA_AND_POWER | HUD_DISPLAY_FLAG_KEYS | HUD_DISPLAY_FLAG_UNKNOWN_0020
 };
 
+extern_s u16 level_control_timer(s32 timerOp);
+extern_s void fade_into_special_warp(u32 arg, u32 color);
+extern_s void load_level_init_text(u32 arg);
+extern_s s16 level_trigger_warp(struct MarioState *m, s32 warpOp);
+extern_s void level_set_transition(s16 length, void (*updateFunction)(s16 *));
 
-u16 level_control_timer(s32 timerOp);
-void fade_into_special_warp(u32 arg, u32 color);
-void load_level_init_text(u32 arg);
-s16 level_trigger_warp(struct MarioState *m, s32 warpOp);
-void level_set_transition(s16 length, void (*updateFunction)(s16 *));
-
-s32 lvl_init_or_update(s16 initOrUpdate, UNUSED s32 unused);
-s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum);
-s32 lvl_set_current_level(UNUSED s16 arg0, s32 levelNum);
-s32 lvl_play_the_end_screen_sound(UNUSED s16 arg0, UNUSED s32 arg1);
-void basic_update(UNUSED s16 *arg);
-
-#ifdef __cplusplus
-}
-#endif
+extern_s s32 lvl_init_or_update(s16 initOrUpdate, UNUSED s32 unused);
+extern_s s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum);
+extern_s s32 lvl_set_current_level(UNUSED s16 arg0, s32 levelNum);
+extern_s s32 lvl_play_the_end_screen_sound(UNUSED s16 arg0, UNUSED s32 arg1);
+extern_s void basic_update(UNUSED s16 *arg);
 
 #endif // LEVEL_UPDATE_H

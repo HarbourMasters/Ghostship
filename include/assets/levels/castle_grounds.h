@@ -2,7 +2,7 @@
 
 #include "castle_grounds/geo.h"
 
-extern const LevelScript level_castle_grounds_entry[];
+extern_s const LevelScript level_castle_grounds_entry[];
 
 static const ALIGN_ASSET(2) char castle_grounds_seg7_texture_07000000[] = "__OTR__levels/castle_grounds/0";
 

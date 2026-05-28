@@ -2,7 +2,7 @@
 
 #include "vcutm/geo.h"
 
-extern const LevelScript level_vcutm_entry[];
+extern_s const LevelScript level_vcutm_entry[];
 
 static const ALIGN_ASSET(2) char vcutm_seg7_texture_07000000[] = "__OTR__levels/vcutm/0";
 

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 # Set the project version and language
 project(Ghostship VERSION 1.0.2 LANGUAGES C CXX ASM)
@@ -81,7 +81,10 @@ include(cmake/automate-vcpkg.cmake)
 set(VCPKG_TRIPLET x64-windows-static)
 set(VCPKG_TARGET_TRIPLET x64-windows-static)
 vcpkg_bootstrap()
-vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 glew glfw3 nlohmann-json tinyxml2 spdlog)
+vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 glew glfw3 nlohmann-json tinyxml2 spdlog mbedtls)
+
+add_compile_definitions(WIN32_LEAN_AND_MEAN NOMINMAX)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
@@ -134,21 +137,21 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 if (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 set(CMAKE_C_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
-set(CMAKE_C_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -fno-strict-aliasing -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
 add_compile_definitions(
     _LARGEFILE64_SOURCE=1
     _POSIX_C_SOURCE=200809L
 )
 else()
-set(CMAKE_C_FLAGS_RELEASE "-O1 -DNDEBUG")
+set(CMAKE_C_FLAGS_RELEASE "-O1 -fno-strict-aliasing -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O1 -DNDEBUG")
 set(CMAKE_OBJCXX_FLAGS_RELEASE "-O1 -DNDEBUG")
 endif()
 
 # Set game compilation version
 set(VERSION us)
-set(USE_NETWORKING OFF)
+set(USE_NETWORKING ON)
 set(SKIP_XCODE_VERSION_CHECK ON)
 
 # Add compile definitions for the target
@@ -160,8 +163,6 @@ add_compile_definitions(
     GBI_FLOATS=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
-    CIMGUI_DEFINE_ENUMS_AND_STRUCTS
-    IMGUI_DEFINE_MATH_OPERATORS
     AVOID_UB=1
     ENABLE_OPENGL=1
 )
@@ -228,6 +229,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/Enhancements/game-interactor/*.cpp"
     "src/port/importer/*.cpp"
     "src/port/importer/types/*.cpp"
+    "src/port/net/*.h"
+    "src/port/net/*.cpp"
     "text/*.c"
     "textures/*.h"
     "textures/*.c"
@@ -299,6 +302,13 @@ if (MSVC)
   endif()
 endif()
 
+FetchContent_Declare(
+    dr_libs
+    GIT_REPOSITORY https://github.com/mackron/dr_libs.git
+    GIT_TAG da35f9d6c7374a95353fd1df1d394d44ab66cf01
+)
+FetchContent_MakeAvailable(dr_libs)
+
 #==============================================================================#
 # Libultraship Integration                                                     #
 #==============================================================================#
@@ -321,9 +331,64 @@ include_directories(
   ${dr_libs_SOURCE_DIR}
 )
 
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    set(ENABLE_SCRIPTING ON CACHE BOOL "" FORCE)
+else()
+    #=================== tinyxml2 ===================
+    # devkitPro portlibs may have tinyxml2 headers/lib but no CMake config that
+    # exports tinyxml2::tinyxml2. Always fetch from source so both this project
+    # and libultraship's find_package(tinyxml2 REQUIRED) get a proper target.
+    set(tinyxml2_BUILD_TESTING OFF)
+    FetchContent_Declare(
+        tinyxml2
+        GIT_REPOSITORY https://github.com/leethomason/tinyxml2.git
+        GIT_TAG 10.0.0
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_MakeAvailable(tinyxml2)
+endif()
 add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
-target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
+else()
+    target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,libultraship>")
+endif()
+set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS TRUE)
+set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+
+#=================== cimgui ===================
+FetchContent_Declare(
+    cimgui
+    GIT_REPOSITORY https://github.com/cimgui/cimgui.git
+    GIT_TAG        1.91.9bdock
+    GIT_SUBMODULES ""
+)
+if(POLICY CMP0169)
+    cmake_policy(SET CMP0169 OLD)
+endif()
+FetchContent_Populate(cimgui)
+FetchContent_GetProperties(ImGui)
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/_deps")
+file(CREATE_LINK "${imgui_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/_deps/imgui" SYMBOLIC)
+
+add_library(cimgui STATIC ${cimgui_SOURCE_DIR}/cimgui.cpp)
+
+target_include_directories(cimgui
+    PRIVATE "${CMAKE_BINARY_DIR}/_deps"
+    PUBLIC  "${cimgui_SOURCE_DIR}"
+)
+
+target_compile_definitions(cimgui
+    INTERFACE CIMGUI_DEFINE_ENUMS_AND_STRUCTS
+)
+
+target_link_libraries(cimgui PUBLIC ImGui)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    target_link_libraries(${PROJECT_NAME} PRIVATE cimgui)
+else()
+    target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,cimgui>")
+endif()
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "iOS")
     get_property(IOS_TOOLCHAIN_FILE GLOBAL PROPERTY IOS_TOOLCHAIN_FILE)
@@ -382,9 +447,7 @@ endif()
 
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
-	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net-static>"
-    )
+	set(ADDITIONAL_LIBRARY_DEPENDENCIES)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
     find_package(SDL2)
     set(ADDITIONAL_LIBRARY_DEPENDENCIES
@@ -399,18 +462,19 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
         ${DEVKITPRO}/portlibs/wiiu/include/
     )
 else()
- 	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net>"
-	)
+ 	set(ADDITIONAL_LIBRARY_DEPENDENCIES)
 endif()
 
-if(USE_NETWORKING)
-    if(MSVC)
-        vcpkg_install_packages(sdl2-net)
-    endif()
-    find_package(SDL2_net REQUIRED)
-    include_directories(${SDL2_NET_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
+if(USE_NETWORKING AND NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+    FetchContent_Declare(
+        ixwebsocket
+        GIT_REPOSITORY https://github.com/machinezone/IXWebSocket.git
+        GIT_TAG        v11.4.5
+    )
+    set(USE_TLS ON CACHE BOOL "" FORCE)
+    set(IXWEBSOCKET_INSTALL OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(ixwebsocket)
+    target_link_libraries(${PROJECT_NAME} PRIVATE ixwebsocket)
     target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
 endif()
 
@@ -612,6 +676,16 @@ add_custom_command(
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
 )
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupTccRuntime.cmake)
+
+set(PROPERTY_READER_GUARD_DISABLED TRUE)
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    lus_setup_tcc_runtime(${PROJECT_NAME} RESOURCES_DIR "../Resources/.tcc")
+else()
+    lus_setup_tcc_runtime(${PROJECT_NAME})
+endif()
+unset(PROPERTY_READER_GUARD_DISABLED)
+
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 include(ExternalProject)
 ExternalProject_Add(TorchExternal
@@ -675,6 +749,9 @@ add_custom_target(CreateOSXIcons
     add_dependencies(${PROJECT_NAME} CreateOSXIcons)
     configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ../MacOS COMPONENT Ghostship)
+if(ENABLE_SCRIPTING)
+    INSTALL(FILES "$<TARGET_FILE:libtcc>" DESTINATION ../MacOS COMPONENT Ghostship)
+endif()
 INSTALL(FILES ${CMAKE_BINARY_DIR}/gamecontrollerdb.txt DESTINATION ../MacOS COMPONENT Ghostship)
 INSTALL(FILES ${CMAKE_BINARY_DIR}/ghostship.o2r DESTINATION ../Resources COMPONENT Ghostship)
 INSTALL(FILES ${CMAKE_BINARY_DIR}/config.yml DESTINATION ../Resources COMPONENT Ghostship)

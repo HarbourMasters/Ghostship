@@ -9,36 +9,28 @@
 
 #define SP_DRAM_STACK_SIZE8 0x400
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+extern_s u8 gDecompressionHeap[];
 
-extern u8 gDecompressionHeap[];
+extern_s u8 gAudioHeap[];
 
-extern u8 gAudioHeap[];
+extern_s u8 gAudioSPTaskYieldBuffer[];
 
-extern u8 gAudioSPTaskYieldBuffer[];
+extern_s u8 gUnusedThread2Stack[];
 
-extern u8 gUnusedThread2Stack[];
-
-extern u8 gIdleThreadStack[];
-extern u8 gThread3Stack[];
-extern u8 gThread4Stack[];
-extern u8 gThread5Stack[];
+extern_s u8 gIdleThreadStack[];
+extern_s u8 gThread3Stack[];
+extern_s u8 gThread4Stack[];
+extern_s u8 gThread5Stack[];
 #if ENABLE_RUMBLE
-extern u8 gThread6Stack[];
+extern_s u8 gThread6Stack[];
 #endif
 
-extern u8 gGfxSPTaskYieldBuffer[];
+extern_s u8 gGfxSPTaskYieldBuffer[];
 
-extern struct SaveBuffer gSaveBuffer;
+extern_s struct SaveBuffer gSaveBuffer;
 
-extern u8 gGfxSPTaskStack[];
+extern_s u8 gGfxSPTaskStack[];
 
-extern struct GfxPool gGfxPools[1];
-
-#ifdef __cplusplus
-};
-#endif
+extern_s struct GfxPool gGfxPools[1];
 
 #endif // BUFFERS_H

@@ -8,6 +8,7 @@
 #include <ship/controller/controldeck/ControlDeck.h>
 #include <ship/Context.h>
 #include <fast/interpreter.h>
+#include "interpolation/FrameInterpolation.h"
 
 #ifndef IDYES
 #define IDYES 6
@@ -36,6 +37,8 @@ class GameEngine {
   public:
     static GameEngine* Instance;
 
+    int totalScripts = 0;
+
     ImFont *fontStandard;
     ImFont *fontStandardLarger;
     ImFont *fontStandardLargest;
@@ -58,11 +61,13 @@ class GameEngine {
     GameEngine();
     static void Create(int argc, char* argv[]);
     static bool GenAssetFile(bool exitOnFail = true);
+    void LoadScripts();
+    void LoadResourceFiles();
     void RunExtract(int argc, char* argv[]);
     void AudioInit();
     void FinishInit();
     void StartFrame() const;
-    static void RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);
+    static void RunCommands(Gfx* Commands, const std::vector<FrameInterpolationResult>& replacements);
     static uint32_t GetInterpolationFPS();
     static void HandleAudioThread();
     static void StartAudioFrame();
@@ -125,7 +130,7 @@ struct DialogEntry* GameEngine_LoadDialog(uint32_t dialogId);
 uint8_t* GameEngine_LoadTranslation(const char* key);
 bool GameEngine_OTRSigCheck(const char* imgData);
 struct Animation* GameEngine_LoadAnimation(uint32_t animId);
-void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, char));
+void GameEngine_GfxPrint(const char* str, void* printer, void (*printImpl)(void*, uint8_t));
 void* GameEngine_GetExactDataByName(const char* path);
 void* GameEngine_Malloc(size_t size);
 void GameEngine_Free(void* ptr);

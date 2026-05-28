@@ -1,5 +1,6 @@
 #include "ShipUtils.h"
 #include <libultraship/libultraship.h>
+#include "fast/Fast3dGui.h"
 
 #include "sm64.h"
 #include "macros.h"
@@ -166,15 +167,14 @@ std::array<const char*, 10> digitList = { texture_hud_char_0, texture_hud_char_1
                                           texture_hud_char_9 };
 
 void LoadGuiTextures() {
+    auto gui = std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui());
     for (const auto entry : miscellaneousTextures) {
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
+        gui->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
     }
     for (const auto entry : digitList) {
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
+        gui->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
     }
 
-    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Red Coin Icon", texture_hud_char_coin,
-                                                                        ImVec4(1, 0, 0, 1));
-    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadGuiTexture("Blue Coin Icon", texture_hud_char_coin,
-                                                                        ImVec4(0.20f, 0.20f, 1, 1));
+    gui->LoadGuiTexture("Red Coin Icon", texture_hud_char_coin, ImVec4(1, 0, 0, 1));
+    gui->LoadGuiTexture("Blue Coin Icon", texture_hud_char_coin, ImVec4(0.20f, 0.20f, 1, 1));
 }

@@ -5,13 +5,13 @@
 
 #include "engine/graph_node.h"
 
-extern struct GraphNodeRoot *gCurGraphNodeRoot;
-extern struct GraphNodeMasterList *gCurGraphNodeMasterList;
-extern struct GraphNodePerspective *gCurGraphNodeCamFrustum;
-extern struct GraphNodeCamera *gCurGraphNodeCamera;
-extern struct GraphNodeObject *gCurGraphNodeObject;
-extern struct GraphNodeHeldObject *gCurGraphNodeHeldObject;
-extern u16 gAreaUpdateCounter;
+extern_s struct GraphNodeRoot *gCurGraphNodeRoot;
+extern_s struct GraphNodeMasterList *gCurGraphNodeMasterList;
+extern_s struct GraphNodePerspective *gCurGraphNodeCamFrustum;
+extern_s struct GraphNodeCamera *gCurGraphNodeCamera;
+extern_s struct GraphNodeObject *gCurGraphNodeObject;
+extern_s struct GraphNodeHeldObject *gCurGraphNodeHeldObject;
+extern_s u16 gAreaUpdateCounter;
 
 // after processing an object, the type is reset to this
 #define ANIM_TYPE_NONE                  0

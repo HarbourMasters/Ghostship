@@ -25,17 +25,9 @@
 #define GLYPH_DOUBLE_QUOTE    57
 #define GLYPH_UMLAUT          58
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void print_text_fmt_int(s32 x, s32 y, const char *str, s32 n);
-void print_text(s32 x, s32 y, const char *str);
-void print_text_centered(s32 x, s32 y, const char *str);
-void render_text_labels(void);
-
-#ifdef __cplusplus
-}
-#endif
+extern_s void print_text_fmt_int(s32 x, s32 y, const char *str, s32 n);
+extern_s void print_text(s32 x, s32 y, const char *str);
+extern_s void print_text_centered(s32 x, s32 y, const char *str);
+extern_s void render_text_labels(void);
 
 #endif // PRINT_H

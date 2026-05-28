@@ -1,6 +1,7 @@
 // Local includes
 #include "AchievementsWindow.h"
 #include "UIWidgets.hpp"
+#include "fast/Fast3dGui.h"
 
 #include <map>
 #include <string>
@@ -46,8 +47,8 @@ void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPai
     ImGui::BeginChild(achPair.first.c_str(), ImVec2(cardWidth, cardHeight), false,
                       ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoBackground);
 
-    ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(
-                     data->achieved ? ach.icon : std::string(ach.icon) + ".locked"),
+    ImGui::Image(std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                     ->GetTextureByName(data->achieved ? ach.icon : std::string(ach.icon) + ".locked"),
                  ImVec2(cardHeight - 10, cardHeight - 10), ImVec2(0, 0), ImVec2(1.0f, 1.0f));
 
     ImGui::SameLine();

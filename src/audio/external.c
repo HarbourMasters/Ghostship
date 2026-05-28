@@ -658,6 +658,7 @@ void create_next_audio_buffer(s16 *samples, u32 num_samples) {
  * Called from threads: thread5_game_loop
  */
 void play_sound(s32 soundBits, f32 *pos) {
+    CALL_CANCELLABLE_RETURN_EVENT(PlaySfxEvent, &soundBits, pos);
     sSoundRequests[sSoundRequestCount].soundBits = soundBits;
     sSoundRequests[sSoundRequestCount].position = pos;
     sSoundRequestCount++;
@@ -1216,6 +1217,7 @@ void audio_signal_game_loop_tick(void) {
     maybe_tick_game_sound();
 #endif
     noop_8031EEC8();
+    CALL_EVENT(AudioUpdateEvent);
 }
 
 /**
@@ -2242,6 +2244,8 @@ void set_sound_moving_speed(u8 bank, u8 speed) {
 void play_dialog_sound(u8 dialogID) {
     u8 speaker;
 
+    CALL_CANCELLABLE_RETURN_EVENT(PlayDialogSoundEvent, &dialogID);
+
     if (dialogID >= DIALOG_COUNT) {
         dialogID = 0;
     }
@@ -2279,6 +2283,7 @@ u8 is_sequence_playing(u16 seqId) {
  * Called from threads: thread5_game_loop
  */
 void play_music(u8 player, u16 seqArgs, u16 fadeTimer) {
+    CALL_CANCELLABLE_RETURN_EVENT(PlayMusicEvent, player, &seqArgs, &fadeTimer);
     u8 seqId = seqArgs & 0xff;
     u8 priority = seqArgs >> 8;
     u8 i;
@@ -2348,6 +2353,8 @@ void stop_background_music(u16 seqId) {
     u8 foundIndex;
     u8 i;
 
+    CALL_CANCELLABLE_RETURN_EVENT(StopMusicEvent, &seqId);
+
     if (sBackgroundMusicQueueSize == 0) {
         return;
     }
@@ -2389,6 +2396,7 @@ void stop_background_music(u16 seqId) {
  * Called from threads: thread5_game_loop
  */
 void fadeout_background_music(u16 seqId, u16 fadeOut) {
+    CALL_CANCELLABLE_RETURN_EVENT(FadeoutMusicEvent, &seqId, &fadeOut);
     if (sBackgroundMusicQueueSize != 0 && sBackgroundMusicQueue[0].seqId == (u8)(seqId & 0xff)) {
         seq_player_fade_out(SEQ_PLAYER_LEVEL, fadeOut);
     }
@@ -2449,6 +2457,7 @@ void func_80320ED8(void) {
 void play_secondary_music(u8 seqId, u8 bgMusicVolume, u8 volume, u16 fadeTimer) {
     UNUSED u32 dummy;
 
+    CALL_CANCELLABLE_RETURN_EVENT(PlaySecondaryMusicEvent, &seqId, &bgMusicVolume, &volume, &fadeTimer);
     sUnused80332118 = 0;
     if (sCurrentBackgroundMusicSeqId == 0xff || sCurrentBackgroundMusicSeqId == SEQ_MENU_TITLE_SCREEN) {
         return;

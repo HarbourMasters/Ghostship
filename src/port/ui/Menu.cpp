@@ -98,17 +98,19 @@ void Menu::RemoveSidebarSearch() {
 }
 
 void Menu::UpdateWindowBackendObjects() {
-    Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
+    Fast::WindowBackend runningWindowBackend =
+        static_cast<Fast::WindowBackend>(Ship::Context::GetInstance()->GetWindow()->GetWindowBackend());
     int32_t configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
     if (Ship::Context::GetInstance()->GetWindow()->IsAvailableWindowBackend(configWindowBackendId)) {
-        configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
+        configWindowBackend = static_cast<Fast::WindowBackend>(configWindowBackendId);
     } else {
         configWindowBackend = runningWindowBackend;
     }
 
     availableWindowBackends = Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends();
     for (auto& backend : *availableWindowBackends) {
-        availableWindowBackendsMap[backend] = windowBackendsMap.at(backend);
+        auto fb = static_cast<Fast::WindowBackend>(backend);
+        availableWindowBackendsMap[fb] = windowBackendsMap.at(fb);
     }
 }
 
@@ -818,6 +820,11 @@ void Menu::DrawElement() {
     const char* sidebarCvar = menuEntries.at(headerIndex).sidebarCvar;
 
     std::string sectionIndex = CVarGetString(sidebarCvar, "");
+
+    if (sectionIndex.empty()) {
+        sectionIndex = menuEntries.at("Settings").sidebarOrder.at(0);
+    }
+
     if (!sidebar->contains(sectionIndex)) {
         sectionIndex = menuEntries.at(headerIndex).sidebarOrder.at(0);
     }
@@ -937,5 +944,19 @@ void Menu::DrawElement() {
         freshOpen = false;
     }
     ImGui::End();
+
+    if (menuEntries.contains(headerIndex) && menuEntries.at(headerIndex).markForDelete) {
+        menuEntries.erase(headerIndex);
+        std::erase(menuOrder, headerIndex);
+        return;
+    }
+
+    if (sidebar->contains(sectionIndex) && sidebar->at(sectionIndex).markForDelete) {
+        sidebar->erase(sectionIndex);
+        menuEntries.at(headerIndex)
+            .sidebarOrder.erase(std::remove(menuEntries.at(headerIndex).sidebarOrder.begin(),
+                                            menuEntries.at(headerIndex).sidebarOrder.end(), sectionIndex),
+                                menuEntries.at(headerIndex).sidebarOrder.end());
+    }
 }
 } // namespace Ship

@@ -4,6 +4,7 @@
 #include <map>
 
 #include <libultraship/libultraship.h>
+#include "fast/Fast3dGui.h"
 
 #include "sounds.h"
 #include "audio/external.h"
@@ -115,7 +116,8 @@ void Window::DrawRegularNotification(const Options& notification, ImVec2 basePos
 
     if (notification.itemIcon != nullptr) {
         float iconSize = 22 * CVarGetFloat("gNotifications.Size", 1.8f);
-        ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(notification.itemIcon),
+        ImGui::Image(std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                         ->GetTextureByName(notification.itemIcon),
                      ImVec2(iconSize, iconSize));
         ImGui::SameLine();
     }
@@ -189,7 +191,8 @@ void Window::DrawEnhancedNotification(const Options& notification, ImVec2 basePo
 
         // Position and draw icon
         ImGui::SetCursorPos(ImVec2(ImGui::GetCursorPosX(), contentStartY + iconOffsetY));
-        ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName(notification.itemIcon),
+        ImGui::Image(std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                         ->GetTextureByName(notification.itemIcon),
                      ImVec2(iconSize, iconSize));
 
         // Position text content next to icon

@@ -9,14 +9,17 @@
 #include "port/ui/cvar_prefixes.h"
 #include "game/save_file.h"
 #include "buffers/buffers.h"
+#include "fast/Fast3dGui.h"
+#include "fast/Fast3dWindow.h"
 #include "port/ShipInit.hpp"
 #include "port/Rando/Types.h"
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 #include "game/level_update.h"
 #include "port/util/GraphNode.h"
 #include "port/ui/Notification.h"
 #include "game/object_list_processor.h"
 #include "game/main.h"
+#include "ship/window/gui/resource/GuiTexture.h"
 
 static size_t order = 0;
 static int16_t selectedFile = 0;
@@ -220,7 +223,8 @@ void Achievement_LoadTexture(const std::string& id) {
     auto texture = std::static_pointer_cast<Ship::GuiTexture>(
         Ship::Context::GetInstance()->GetResourceManager()->LoadResource(initData->Path, false, initData));
 
-    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(achievement.icon, texture);
+    std::dynamic_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+        ->LoadTextureFromResource(achievement.icon, texture);
 
     for (int32_t i = 0; i < texture->Metadata.Width * texture->Metadata.Height * 4; i += 4) {
         const uint8_t r = texture->Data[i];
@@ -234,8 +238,8 @@ void Achievement_LoadTexture(const std::string& id) {
         texture->Data[i + 2] = gray;
     }
 
-    Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTextureFromResource(
-        std::string(achievement.icon) + ".locked", texture);
+    std::dynamic_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+        ->LoadTextureFromResource(std::string(achievement.icon) + ".locked", texture);
 }
 
 void Achievements_Load(IEvent* event) {
@@ -604,8 +608,8 @@ void Achievements_Init() {
         }
     });
 
-    REGISTER_LISTENER(PlayerExecuteAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        const PlayerExecuteAction* ev = reinterpret_cast<PlayerExecuteAction*>(event);
+    REGISTER_LISTENER(PlayerSetAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        const PlayerSetAction* ev = reinterpret_cast<PlayerSetAction*>(event);
 
         if (!HAS_ACHIEVEMENTS(selectedFile)) {
             return;

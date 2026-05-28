@@ -6,6 +6,6 @@
 #include "sm64_config.h"
 #include "macros.h"
 
-extern u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
+extern_s u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 
 #endif // ZBUFFER_H

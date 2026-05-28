@@ -4,7 +4,7 @@
 
 #include "sm64.h"
 #include "game/level_update.h"
-#include "port/hooks/Events.h"
+#include "port/events/Events.h"
 #include "assets/bin/segment2.h"
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
@@ -59,7 +59,7 @@ void PortEnhancements_Init() {
             return;
         }
 
-        event->cancelled = true;
+        event->Cancelled = true;
     });
     REGISTER_LISTENER(PlayerLivesChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         PlayerLivesChange* ev = (PlayerLivesChange*)event;
@@ -67,7 +67,7 @@ void PortEnhancements_Init() {
             return;
         }
 
-        event->cancelled = true;
+        event->Cancelled = true;
     });
     REGISTER_LISTENER(RenderPauseCourseOptions, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         if (CVarGetInteger("gCheats.PauseExitWhenever", 0) == 0) {
@@ -124,6 +124,13 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(OnGameFileLoad);
     REGISTER_EVENT(OnGameFileSave);
     REGISTER_EVENT(GameFrameUpdate);
+    REGISTER_EVENT(GameLoopTick);
+    REGISTER_EVENT(GameReadInput);
+    REGISTER_EVENT(BehaviorCallNative);
+    REGISTER_EVENT(RenderHud);
+    REGISTER_EVENT(RenderTextLabels);
+    REGISTER_EVENT(RenderGamePre);
+    REGISTER_EVENT(RenderGamePost);
     REGISTER_EVENT(GeoLayoutCallASM);
     REGISTER_EVENT(LevelScriptExecute);
     REGISTER_EVENT(EntityDistanceLoad);
@@ -132,16 +139,23 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(EntityDistanceRender);
     REGISTER_EVENT(LevelInitFromSaveFile);
     REGISTER_EVENT(RenderPauseCourseOptions);
+    REGISTER_EVENT(EngineReady);
+    REGISTER_EVENT(CameraUpdate);
 
     // Register player events
     REGISTER_EVENT(PlayerHealthChange);
     REGISTER_EVENT(PlayerLivesChange);
     REGISTER_EVENT(PlayerStartedDialog);
     REGISTER_EVENT(PlayerDeath);
+    REGISTER_EVENT(PlayerSetAction);
     REGISTER_EVENT(PlayerExecuteAction);
     REGISTER_EVENT(SetTripleJumpAction);
     REGISTER_EVENT(FlyingActionUpdate);
     REGISTER_EVENT(FlyingTripleJumpLaunch);
+    REGISTER_EVENT(PlayerCheckCommonAirborneCancels);
+    REGISTER_EVENT(PlayerLanded);
+    REGISTER_EVENT(PlayerHit);
+    REGISTER_EVENT(PlayerKnockback);
 
     // Register Rando Events
     REGISTER_EVENT(ItemCollected);
@@ -164,6 +178,25 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(BossBattleEnded);
     REGISTER_EVENT(MusicChanged);
     REGISTER_EVENT(GameEnded);
+    REGISTER_EVENT(ObjectSpawned);
+    REGISTER_EVENT(ObjectDestroyed);
+    REGISTER_EVENT(StarCollected);
+    REGISTER_EVENT(CutsceneStart);
+    REGISTER_EVENT(CutsceneEnd);
+    REGISTER_EVENT(WarpStart);
+    REGISTER_EVENT(WarpEnd);
+    REGISTER_EVENT(ButtonPressed);
+
+    // Register audio events
+    REGISTER_EVENT(PlayMusicEvent);
+    REGISTER_EVENT(StopMusicEvent);
+    REGISTER_EVENT(FadeoutMusicEvent);
+    REGISTER_EVENT(PlaySecondaryMusicEvent);
+    REGISTER_EVENT(PlaySfxEvent);
+    REGISTER_EVENT(PlayDialogSoundEvent);
+    REGISTER_EVENT(AudioUpdateEvent);
+    REGISTER_EVENT(SeqLayerPreNoteEvent);
+    REGISTER_EVENT(SeqLayerPostNoteEvent);
 
     Rando::Init();
     LoadGuiTextures();

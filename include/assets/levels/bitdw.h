@@ -2,7 +2,7 @@
 
 #include "bitdw/geo.h"
 
-extern const LevelScript level_bitdw_entry[];
+extern_s const LevelScript level_bitdw_entry[];
 
 static const ALIGN_ASSET(2) char bitdw_seg7_texture_07000000[] = "__OTR__levels/bitdw/0";
 
