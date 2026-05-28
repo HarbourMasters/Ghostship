@@ -145,7 +145,6 @@ void GhostshipMenu::AddMenuDevTools() {
 
 #ifndef __SWITCH__
 void GhostshipMenu::AddModMenu() {
-#ifndef DISABLE_SCRIPTING
     auto mods = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetArchives();
     AddMenuEntry("Mods", CVAR_SETTING("Menu.ModsSidebarSection"));
 
@@ -251,7 +250,6 @@ void GhostshipMenu::AddModMenu() {
 
         AddWidget(path, "##Spacer_" + info.Name, WIDGET_SEPARATOR).Options(UIWidgets::WidgetOptions{});
     }
-#endif
 };
 #endif // __SWITCH__
 
