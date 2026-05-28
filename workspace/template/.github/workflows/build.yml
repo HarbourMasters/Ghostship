@@ -54,8 +54,9 @@ jobs:
 
       - name: Sign Mod
         run: |
-          cd Ghostship/workspace/mod-source
-          zip -r ${{ steps.meta.outputs.project_name }}.zip output/
+          cd Ghostship/workspace/mod-source/output
+          zip -r ../${{ steps.meta.outputs.project_name }}.zip .
+          cd ..
           # echo "${{ secrets.LYWX_PRIVATE_KEY }}" > private_key.pem
           # python3 ../../libultraship/tools/sign.py ${{ steps.meta.outputs.project_name }}.zip private_key.pem
           # rm private_key.pem
