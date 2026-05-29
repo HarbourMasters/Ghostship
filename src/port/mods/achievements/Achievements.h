@@ -44,7 +44,9 @@ struct Achievement {
     int32_t maxProgress = 1;
 };
 
-extern std::unordered_map<std::string, Achievement> gAchievementList;
+extern std::unordered_map<std::string, Achievement>         gAchievementList;
+extern std::unordered_map<std::string, AchievementProgress> gAchievementProgress;
 
 extern AchievementProgress* Achievement_GetProgress(const std::string& id);
+extern void                 Achievement_Progress(const std::string& id, int32_t amount = 1);
 #endif

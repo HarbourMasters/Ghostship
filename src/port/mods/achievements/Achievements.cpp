@@ -154,7 +154,7 @@ Achievement* Achievement_FindByID(const std::string& id) {
     return &gAchievementList[id];
 }
 
-void Achievement_Progress(const std::string& id, const int32_t amount = 1) {
+void Achievement_Progress(const std::string& id, const int32_t amount) {
     const Achievement* achievement = Achievement_FindByID(id);
     if (achievement) {
         auto& [progress, achieved] = gAchievementProgress[id];

@@ -81,14 +81,14 @@ void GhostshipMenu::AddMenuSettings() {
     AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_IMGUI_CONTROLLER_NAV)
         .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip(
-            "Allows controller navigation of the port menu (Settings, Enhancements,...)\nCAUTION: "
-            "This will disable game inputs while the menu is visible.\n\nD-pad to move between "
-            "items, A to select, B to move up in scope.")
+        .Options(CheckboxOptions()
+                     .Tooltip("Allows controller navigation of the port menu (Settings, Enhancements,...)\nCAUTION: "
+                              "This will disable game inputs while the menu is visible.\n\nD-pad to move between "
+                              "items, A to select, B to move up in scope.")
 #ifdef __SWITCH__
-                .DefaultValue(true)
+                     .DefaultValue(true)
 #endif
-            );
+        );
     AddWidget(path, "Menu Background Opacity", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_SETTING("Menu.BackgroundOpacity"))
         .RaceDisable(false)
@@ -128,9 +128,7 @@ void GhostshipMenu::AddMenuSettings() {
     AddWidget(path, "Switch performance mode", WIDGET_CVAR_COMBOBOX)
         .CVar(CVAR_SWITCH_PERF_MODE)
         .RaceDisable(false)
-        .Callback([](WidgetInfo& info) {
-            Ship::Switch::ApplyOverclock();
-        })
+        .Callback([](WidgetInfo& info) { Ship::Switch::ApplyOverclock(); })
         .Options(ComboboxOptions()
                      .DefaultIndex(Ship::MAXIMUM)
                      .ComboMap(switchPerformanceProfiles)

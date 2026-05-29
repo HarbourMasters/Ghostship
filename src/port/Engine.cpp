@@ -525,14 +525,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
 #if defined(__SWITCH__)
     if (!found) {
-        Ship::Switch::ShowErrorApplet("Missing O2R ROM Archives\n\n"
-                  "The sm64.o2r file is missing.\n"
-                  "Please generate a ROM O2R using the PC version, place it on the SD card and relaunch.");
-    }
-    else if (shouldRegen) {
-        Ship::Switch::ShowErrorApplet("Outdated ROM Archives\n\n"
-                              "Your sm64.o2r were created with incompatible versions of SoH.\n"
-                              "Please regenerate a new ROM O2R using the PC version, place it on the SD card and relaunch.");
+        Ship::Switch::ShowErrorApplet(
+            "Missing O2R ROM Archives\n\n"
+            "The sm64.o2r file is missing.\n"
+            "Please generate a ROM O2R using the PC version, place it on the SD card and relaunch.");
+    } else if (shouldRegen) {
+        Ship::Switch::ShowErrorApplet(
+            "Outdated ROM Archives\n\n"
+            "Your sm64.o2r were created with incompatible versions of SoH.\n"
+            "Please regenerate a new ROM O2R using the PC version, place it on the SD card and relaunch.");
     }
 #else
     if (!std::filesystem::exists(installPath + "/assets")) {
