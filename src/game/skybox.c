@@ -141,6 +141,7 @@ f32 calculate_skybox_scaled_x(s8 player, f32 fov) {
 
     //! double literals are used instead of floats
     f32 yawScaled = SCREEN_WIDTH * 360.0 * yaw / (fov * 65536.0);
+    // Round the scaled yaw. Since yaw is a u16, it doesn't need to check for < 0
     f32 scaledX = yawScaled;
 
     if (scaledX > SKYBOX_WIDTH) {

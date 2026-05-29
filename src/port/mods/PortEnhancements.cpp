@@ -58,9 +58,7 @@ void PortEnhancements_Init() {
     mirror_mode_init();
 
     // Register event listeners
-    REGISTER_LISTENER(RenderHud, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        mirror_mode_undo_projection();
-    });
+    REGISTER_LISTENER(RenderHud, EVENT_PRIORITY_NORMAL, [](IEvent* event) { mirror_mode_undo_projection(); });
 
     // Register event listeners
     REGISTER_LISTENER(PlayerHealthChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {

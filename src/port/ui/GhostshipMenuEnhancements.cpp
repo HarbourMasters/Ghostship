@@ -230,8 +230,7 @@ void GhostshipMenu::AddMenuEnhancements() {
     AddWidget(path, "Mirrored World", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("Modes.MirroredWorld.Mode"))
         .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip(
-            "Mirrors the world horizontally. Inverts left/right controls to match."));
+        .Options(CheckboxOptions().Tooltip("Mirrors the world horizontally. Inverts left/right controls to match."));
 
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
