@@ -21,6 +21,7 @@
 #include "assets/textures/skyboxes/water.h"
 #include "assets/textures/skyboxes/wdw.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/mods/mirror/MirrorMode.h"
 
 /**
  * @file skybox.c
@@ -146,6 +147,17 @@ f32 calculate_skybox_scaled_x(s8 player, f32 fov) {
     if (scaledX > SKYBOX_WIDTH) {
         scaledX -= (s32) scaledX / SKYBOX_WIDTH * SKYBOX_WIDTH;
     }
+
+    // Apply mirror mode AFTER the wrap calculation
+    scaledX = SKYBOX_WIDTH - scaledX;
+
+    if (mirror_mode_is_enabled()) {
+        // In mirror mode, invert the skybox position
+        scaledX = SKYBOX_WIDTH - scaledX;
+    }
+
+    return scaledX;
+
     return SKYBOX_WIDTH - scaledX;
 }
 

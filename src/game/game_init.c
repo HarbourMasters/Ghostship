@@ -22,6 +22,8 @@
 #include "port/ui/cvar_prefixes.h"
 #include "port/interpolation/FrameInterpolation.h"
 
+extern void mirror_mode_invert_input(void);
+
 // First 3 controller slots
 struct Controller gControllers[3];
 
@@ -746,7 +748,8 @@ void thread5_iteration(void){
     select_gfx_pool();
     CALL_CANCELLABLE_EVENT(GameReadInput) {
         read_controller_inputs();
-    };
+    }
+    mirror_mode_invert_input();
     if (CVarGetInteger("gFrameAdvance", 0) == 1) {
         bool shouldTick = CVarGetInteger("gFrameAdvanceTick", 0);
         if (shouldTick) {

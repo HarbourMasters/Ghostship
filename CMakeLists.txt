@@ -231,6 +231,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/Enhancements/game-interactor/*.cpp"
     "src/port/importer/*.cpp"
     "src/port/importer/types/*.cpp"
+    "src/port/mods/mirror/*.h"
+    "src/port/mods/mirror/*.cpp"
     "src/port/net/*.h"
     "src/port/net/*.cpp"
     "text/*.c"
