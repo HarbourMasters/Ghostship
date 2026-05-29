@@ -88,7 +88,7 @@ void Client::SendRaw(const std::string& route, const void* data, size_t size) {
 
     for (const char c : { 'H', 'M', '6', '4' }) {
         frame.push_back(static_cast<uint8_t>(c));
-    }        
+    }
 
     frame.push_back(0x03);
 

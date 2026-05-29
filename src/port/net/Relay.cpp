@@ -80,11 +80,17 @@ void RegisterChannel(const std::string& channelId, ChannelDef def) {
                                                     channelId + "\n\n" + def.description + "\n\n" +
                                                     "Allow this mod to send and receive data over the network?" });
 
-    std::lock_guard<std::mutex> lock(gMtx);
-    if (gChannels.contains(channelId)) {
-        return;
+    {
+        std::lock_guard<std::mutex> lock(gMtx);
+        if (gChannels.contains(channelId)) {
+            return;
+        }
+        gChannels[channelId] = { std::move(def), false };
     }
-    gChannels[channelId] = { std::move(def), false };
+
+    if (GetPermission(channelId) == Permission::Allowed) {
+        ActivateChannel(channelId);
+    }
 }
 
 bool Send(const std::string& channelId, const char* data, uint32_t size) {
