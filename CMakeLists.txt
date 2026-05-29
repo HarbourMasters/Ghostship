@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 # Set the project version and language
-project(Ghostship VERSION 2.0.0 LANGUAGES C CXX ASM)
+project(Ghostship VERSION 2.0.1 LANGUAGES C CXX ASM)
 include(FetchContent)
 
 include(cmake/ghostship-cvars.cmake)

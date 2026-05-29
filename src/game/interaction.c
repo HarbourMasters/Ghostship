@@ -611,9 +611,8 @@ u32 determine_knockback_action(struct MarioState *m, UNUSED s32 arg) {
         bonkAction = sForwardKnockbackActions[terrainIndex][strengthIndex];
     }
 
-    CALL_CANCELLABLE_EVENT(PlayerKnockback, m, &bonkAction) {
-        return m->action;
-    }
+    CALL_EVENT(PlayerKnockback, m, &bonkAction);
+
     return bonkAction;
 }
 
