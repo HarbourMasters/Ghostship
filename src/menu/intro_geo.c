@@ -11,6 +11,7 @@
 #include "buffers/framebuffers.h"
 #include "game/game_init.h"
 #include "audio/external.h"
+#include "port/mods/mirror/MirrorMode.h"
 #include "gfx_dimensions.h"
 #include "game/rendering_graph_node.h"
 #include "assets/bin/title_screen_bg.h"

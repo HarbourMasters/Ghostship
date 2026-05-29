@@ -1,9 +1,11 @@
 #include "PortEnhancements.h"
+#include "mirror/MirrorMode.h"
 
 #define INIT_EVENT_IDS
 
 #include "sm64.h"
 #include "game/level_update.h"
+#include "game/game_init.h"
 #include "port/events/Events.h"
 #include "assets/bin/segment2.h"
 #include "port/Rando/Rando.h"
@@ -51,6 +53,14 @@ void PatchSetupDList() {
 void PortEnhancements_Init() {
     PortEnhancements_Register();
     PatchSetupDList();
+
+    // Initialize mirror mode
+    mirror_mode_init();
+
+    // Register event listeners
+    REGISTER_LISTENER(RenderHud, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
+        mirror_mode_undo_projection();
+    });
 
     // Register event listeners
     REGISTER_LISTENER(PlayerHealthChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {

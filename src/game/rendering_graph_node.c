@@ -6,12 +6,24 @@
 #include "gfx_dimensions.h"
 #include "main.h"
 #include "memory.h"
+#include "model_ids.h"
 #include "print.h"
 #include "rendering_graph_node.h"
 #include "shadow.h"
 #include "sm64.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "port/Matrix.h"
+
+extern void mirror_mode_apply_projection(void);
+extern int mirror_mode_is_enabled(void);
+extern void mirror_mode_undo_projection(void);
+extern int mirror_mode_is_active(void);
+extern s16 gCurrLevelNum;
+extern s16 sCurrPlayMode;
+extern s32 gCurrCreditsEntry;
+extern struct MarioState *gMarioState;
+
+#define PLAY_MODE_NORMAL 0
 
 /**
  * This file contains the code that processes the scene graph for rendering.
@@ -264,6 +276,12 @@ static void geo_process_perspective(struct GraphNodePerspective *node) {
         gSPPerspNormalize(gDisplayListHead++, perspNorm);
 
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx), G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
+
+        // Apply mirror mode transform after perspective projection
+        // Mirror during: normal gameplay, ending cutscenes, but NOT during credits text rendering
+        if (sCurrPlayMode == PLAY_MODE_NORMAL && gMarioState != NULL && gMarioState->action != 0 && gCurrCreditsEntry == NULL) {
+            mirror_mode_apply_projection();
+        }
 
         gCurGraphNodeCamFrustum = node;
         geo_process_node_and_siblings(node->fnNode.node.children);
@@ -917,6 +935,7 @@ static void geo_process_object(struct Object *node) {
 
         mtxf_scale_vec3f(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex + 1],
                          node->header.gfx.scale);
+
         node->header.gfx.throwMatrix = &gMatStack[++gMatStackIndex];
         node->header.gfx.cameraToObject[0] = gMatStack[gMatStackIndex][3][0];
         node->header.gfx.cameraToObject[1] = gMatStack[gMatStackIndex][3][1];

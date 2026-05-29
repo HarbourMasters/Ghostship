@@ -223,6 +223,16 @@ void GhostshipMenu::AddMenuEnhancements() {
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island."));
 
+    path = { "Enhancements", "Modes", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", path.sidebarName, 1);
+    path.column = SECTION_COLUMN_1;
+
+    AddWidget(path, "Mirrored World", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("Modes.MirroredWorld.Mode"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip(
+            "Mirrors the world horizontally. Inverts left/right controls to match."));
+
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
