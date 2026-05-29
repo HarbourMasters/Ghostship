@@ -143,7 +143,7 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
 
             if (!isResponse) {
                 for (auto* sub : mSubscriptions) {
-                    sub->OnPush(status, body);
+                    sub->OnPush(status, type, body);
                 }
             }
             break;
@@ -340,9 +340,10 @@ class NotificationsPacket : public IPacket {
         }
         SPDLOG_INFO("SatellaClient: subscribed to notifications");
     }
-    void OnPush(int16_t status, const std::string& body) override {
-        if (status != 200 || body.empty())
+    void OnPush(int16_t status, uint8_t packetType, const std::string& body) override {
+        if (status != 200 || packetType != 0x02 || body.empty()) {
             return;
+        }
 
         nlohmann::json data;
         try {

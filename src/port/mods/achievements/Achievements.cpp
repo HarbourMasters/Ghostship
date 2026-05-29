@@ -167,10 +167,6 @@ void Achievement_Progress(const std::string& id, const int32_t amount) {
             } else {
                 SPDLOG_INFO("Progressed achievement {}: {}/{}", achievement->name, progress, achievement->maxProgress);
             }
-
-            // Save after each achievement progress update to prevent loss of progress on crash
-        } else {
-            SPDLOG_WARN("Trying to progress achievement {} that is already achieved", achievement->name);
         }
     } else {
         SPDLOG_ERROR("Trying to progress non-existent achievement with id {}", id);

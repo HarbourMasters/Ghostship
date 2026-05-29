@@ -46,8 +46,8 @@ class RelaySubscriptionPacket : public Satella::IPacket {
         }
     }
 
-    void OnPush(int16_t status, const std::string& body) override {
-        if (status == 200 && mCallback) {
+    void OnPush(int16_t status, uint8_t packetType, const std::string& body) override {
+        if (status == 200 && packetType == 0x03 && mCallback) {
             mCallback(mChannelId, body.data(), static_cast<uint32_t>(body.size()));
         }
     }

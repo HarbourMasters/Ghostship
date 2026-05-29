@@ -24,7 +24,7 @@ public:
     virtual void OnResponse(int16_t status, const std::string& body) = 0;
     virtual bool IsBlocking() const { return false; }
     virtual bool IsSubscription() const { return false; }
-    virtual void OnPush(int16_t status, const std::string& body) {}
+    virtual void OnPush(int16_t status, uint8_t packetType, const std::string& body) {}
 };
 
 class Client {
