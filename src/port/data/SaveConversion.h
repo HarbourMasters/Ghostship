@@ -138,7 +138,7 @@ inline void to_json(json& j, const SaveFile& save) {
 }
 
 inline void LoadSaveFileV1(const json& j, SaveFile& save) {
-    json capPosJson = GetSafeEntry<json>(j, "capPos");
+    json capPosJson = GetSafeEntry<json>(j, "capPos", json::object());
     save.capLevel = GetSafeEntry(j, "capLevel", 0);
     save.capArea = GetSafeEntry(j, "capArea", 0);
     save.capPos[0] = GetSafeEntry(capPosJson, "x", 0);
@@ -146,14 +146,14 @@ inline void LoadSaveFileV1(const json& j, SaveFile& save) {
     save.capPos[2] = GetSafeEntry(capPosJson, "z", 0);
     save.flags = GetSafeEntry(j, "flags", 0);
 
-    json starsJson = GetSafeEntry<json>(j, "courseStars");
+    json starsJson = GetSafeEntry<json>(j, "courseStars", json::object());
     for (size_t i = 0; i < COURSE_COUNT; i++) {
-        save.courseStars[i] = GetSafeEntry<u8>(starsJson, entries[i]);
+        save.courseStars[i] = GetSafeEntry<u8>(starsJson, entries[i], static_cast<u8>(0));
     }
 
-    json coinsJson = GetSafeEntry<json>(j, "courseCoinScores");
+    json coinsJson = GetSafeEntry<json>(j, "courseCoinScores", json::object());
     for (size_t i = 0; i < COURSE_STAGES_COUNT; i++) {
-        save.courseCoinScores[i] = GetSafeEntry<u8>(coinsJson, entries[i]);
+        save.courseCoinScores[i] = GetSafeEntry<u8>(coinsJson, entries[i], static_cast<u8>(0));
     }
 
     if (j.contains("shipSaveData")) {
@@ -162,8 +162,8 @@ inline void LoadSaveFileV1(const json& j, SaveFile& save) {
 }
 
 inline void from_json(const json& j, SaveFile& save) {
-    uint32_t version = GetSafeEntry<uint32_t>(j, "version");
-    if(version == 1) {
+    uint32_t version = GetSafeEntry<uint32_t>(j, "version", 1u);
+    if (version == 1) {
         LoadSaveFileV1(j, save);
     }
 }
