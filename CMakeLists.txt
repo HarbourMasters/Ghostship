@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 # Set the project version and language
-project(Ghostship VERSION 1.0.2 LANGUAGES C CXX ASM)
+project(Ghostship VERSION 2.0.0 LANGUAGES C CXX ASM)
 include(FetchContent)
 
 include(cmake/ghostship-cvars.cmake)
@@ -20,7 +20,7 @@ math(EXPR PATCH_INDEX "${PROJECT_VERSION_PATCH}")
 # Use the patch number to select the correct word
 list(GET NATO_PHONETIC_ALPHABET ${PATCH_INDEX} PROJECT_PATCH_WORD)
 
-set(PROJECT_BUILD_NAME "Dutchman ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
+set(PROJECT_BUILD_NAME "Mary Celeste ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
 set(PROJECT_TEAM "Lywx" CACHE STRING "" FORCE)
 
 # Get Git Information
