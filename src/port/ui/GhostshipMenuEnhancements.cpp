@@ -36,6 +36,12 @@ void GhostshipMenu::AddMenuEnhancements() {
     WidgetPath path = { "Enhancements", "Graphics", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "Graphics", 3);
 
+    AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("DisableLOD"))
+        .RaceDisable(false)
+        .Options(CheckboxOptions().Tooltip("Disable Level of Detail (LOD) to avoid models using "
+                                           "lower poly versions at a distance"));
+
     AddWidget(path, "Mods", WIDGET_SEPARATOR_TEXT);
     AddWidget(path, "Use Alternate Assets", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnhancements.Mods.AlternateAssets")
@@ -190,11 +196,6 @@ void GhostshipMenu::AddMenuEnhancements() {
         .Options(CheckboxOptions().Tooltip("Play sounds when using manual camera controls (C-buttons, L-trigger)"));
 
     AddWidget(path, "Miscellaneous", WIDGET_SEPARATOR_TEXT);
-    AddWidget(path, "Disable LoD", WIDGET_CVAR_CHECKBOX)
-        .CVar(CVAR_ENHANCEMENT("DisableLOD"))
-        .RaceDisable(false)
-        .Options(CheckboxOptions().Tooltip("Disable Level of Detail (LOD) to avoid models using "
-                                           "lower poly versions at a distance"));
     AddWidget(path, "Select Any Star", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("SelectAllStars"))
         .RaceDisable(false)
