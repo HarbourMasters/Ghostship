@@ -35,6 +35,14 @@ public:
     void Execute(const std::string& url = SATELLA_HOST);
     Phase GetPhase() const { return mPhase.load(std::memory_order_relaxed); }
 
+    // Register a subscription packet onto an already-running connection.
+    // If not yet connected, the packet is queued for the next Execute() call.
+    void RegisterLive(std::unique_ptr<IPacket> packet);
+
+    // Send a raw binary frame: HM64 header + route + 4-byte body length + body.
+    // No-op if the socket is not open.
+    void SendRaw(const std::string& route, const void* data, size_t size);
+
 private:
     Client() = default;
     ~Client();

@@ -40,7 +40,7 @@ static std::vector<uint8_t> buildRequest(const char* route) {
         packet.push_back(static_cast<uint8_t>(magic[i]));
     }
 
-    packet.push_back(0x02); // PacketType::JSON
+    packet.push_back(0x02);
 
     const uint32_t routeLen = static_cast<uint32_t>(std::strlen(route));
     writeU32LE(packet, routeLen);
@@ -65,6 +65,42 @@ Client::~Client() {
 
 void Client::Register(std::unique_ptr<IPacket> packet) {
     mPackets.push_back(std::move(packet));
+}
+
+void Client::RegisterLive(std::unique_ptr<IPacket> packet) {
+    if (mWs.getReadyState() == ix::ReadyState::Open) {
+        SendAndReceive(*packet);
+        if (packet->IsSubscription()) {
+            std::lock_guard<std::mutex> lock(mMtx);
+            mSubscriptions.push_back(packet.get());
+            mPackets.push_back(std::move(packet));
+        }
+    } else {
+        mPackets.push_back(std::move(packet));
+    }
+}
+
+void Client::SendRaw(const std::string& route, const void* data, size_t size) {
+    if (mWs.getReadyState() != ix::ReadyState::Open)
+        return;
+
+    std::vector<uint8_t> frame;
+
+    for (const char c : { 'H', 'M', '6', '4' }) {
+        frame.push_back(static_cast<uint8_t>(c));
+    }        
+
+    frame.push_back(0x03);
+
+    writeU32LE(frame, static_cast<uint32_t>(route.size()));
+    for (const char c : route) {
+        frame.push_back(static_cast<uint8_t>(c));
+    }
+
+    const auto* bytes = static_cast<const uint8_t*>(data);
+    frame.insert(frame.end(), bytes, bytes + size);
+
+    mWs.sendBinary(std::string(frame.begin(), frame.end()));
 }
 
 void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
@@ -118,7 +154,7 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
         case ix::WebSocketMessageType::Close: {
             std::lock_guard<std::mutex> lock(mMtx);
             mConnected = false;
-            mResponseReady = true; // unblock any pending SendAndReceive
+            mResponseReady = true;
             mResponseValid = false;
             mCv.notify_all();
             break;
