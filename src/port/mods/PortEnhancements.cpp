@@ -149,6 +149,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(RenderPauseCourseOptions);
     REGISTER_EVENT(EngineReady);
     REGISTER_EVENT(CameraUpdate);
+    REGISTER_EVENT(KeyboardInput);
 
     // Register player events
     REGISTER_EVENT(PlayerHealthChange);

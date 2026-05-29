@@ -64,3 +64,7 @@ DEFINE_EVENT(EngineReady);
 DEFINE_EVENT(CameraUpdate,
     struct Camera* c;
 );
+
+DEFINE_EVENT(KeyboardInput,
+    uint32_t scancode;
+);

@@ -1100,6 +1100,8 @@ void GameEngine::StartFrame() const {
     const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
     this->context->GetWindow()->SetLastScancode(-1);
 
+    CALL_EVENT(KeyboardInput, dwScancode);
+
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
