@@ -36,9 +36,7 @@ class CGuiCallbackWindow : public Ship::GuiWindow {
     void DrawElement() override {
     }
     void Draw() override {
-        if (IsVisible()) {
-            C_RunGuiDrawCallbacks();
-        }
+        C_RunGuiDrawCallbacks();
     }
 };
 
