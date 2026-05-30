@@ -2622,7 +2622,11 @@ void play_toads_jingle(void) {
 /**
  * Called from threads: thread5_game_loop
  */
+void GameEngine_LockAudioThread(void);
+void GameEngine_UnlockAudioThread(void);
+
 void sound_reset(u8 presetId) {
+    GameEngine_LockAudioThread();
 #ifndef VERSION_JP
     if (presetId >= 8) {
         presetId = 0;
@@ -2651,6 +2655,7 @@ void sound_reset(u8 presetId) {
     D_80332108 = (D_80332108 & 0xf0) + presetId;
     gSoundMode = D_80332108 >> 4;
     sHasStartedFadeOut = FALSE;
+    GameEngine_UnlockAudioThread();
 }
 
 /**
