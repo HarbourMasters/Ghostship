@@ -18,13 +18,14 @@ void C_RunGuiDrawCallbacks() {
 }
 
 extern "C" void C_AddGuiDraw(C_GuiDrawFunc cb) {
-    if (cb) gGuiDrawCallbacks.push_back(cb);
+    if (cb) {
+        gGuiDrawCallbacks.push_back(cb);
+    }
 }
 
 extern "C" void C_RemoveGuiDraw(C_GuiDrawFunc cb) {
-    gGuiDrawCallbacks.erase(
-        std::remove(gGuiDrawCallbacks.begin(), gGuiDrawCallbacks.end(), cb),
-        gGuiDrawCallbacks.end());
+    gGuiDrawCallbacks.erase(std::remove(gGuiDrawCallbacks.begin(), gGuiDrawCallbacks.end(), cb),
+                            gGuiDrawCallbacks.end());
 }
 
 // Helper function to map C Enums to C++ Enums safely

@@ -27,11 +27,14 @@ void C_RunGuiDrawCallbacks();
 // Overrides Draw() so it never calls ImGui::Begin()/End() itself; the C
 // callbacks are free to open any number of their own igBegin/igEnd windows.
 class CGuiCallbackWindow : public Ship::GuiWindow {
-public:
+  public:
     using GuiWindow::GuiWindow;
-    void InitElement()   override {}
-    void UpdateElement() override {}
-    void DrawElement()   override {}
+    void InitElement() override {
+    }
+    void UpdateElement() override {
+    }
+    void DrawElement() override {
+    }
     void Draw() override {
         if (IsVisible()) {
             C_RunGuiDrawCallbacks();
