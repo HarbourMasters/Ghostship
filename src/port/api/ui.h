@@ -121,3 +121,12 @@ extern_s void C_AddWidget(const char* sidebar, int column, const char* label, C_
 
 // void C_RemoveMenuEntry(const char* entryName);
 extern_s void C_RemoveSidebarEntry(const char* sidebarName);
+
+// ---------------------------------------------------------
+// 5. Per-frame ImGui draw callbacks
+//    Registered functions are called once per ImGui frame,
+//    inside NewFrame … Render, safe to call igBegin/igEnd.
+// ---------------------------------------------------------
+typedef void (*C_GuiDrawFunc)(void);
+extern_s void C_AddGuiDraw(C_GuiDrawFunc callback);
+extern_s void C_RemoveGuiDraw(C_GuiDrawFunc callback);

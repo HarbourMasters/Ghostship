@@ -6,6 +6,27 @@
 #include "port/ui/MenuTypes.h"
 // Include any mod-specific header that holds your maps (e.g. Rando::StaticData)
 
+#include <vector>
+#include <algorithm>
+
+static std::vector<C_GuiDrawFunc> gGuiDrawCallbacks;
+
+void C_RunGuiDrawCallbacks() {
+    for (auto& cb : gGuiDrawCallbacks) {
+        cb();
+    }
+}
+
+extern "C" void C_AddGuiDraw(C_GuiDrawFunc cb) {
+    if (cb) gGuiDrawCallbacks.push_back(cb);
+}
+
+extern "C" void C_RemoveGuiDraw(C_GuiDrawFunc cb) {
+    gGuiDrawCallbacks.erase(
+        std::remove(gGuiDrawCallbacks.begin(), gGuiDrawCallbacks.end(), cb),
+        gGuiDrawCallbacks.end());
+}
+
 // Helper function to map C Enums to C++ Enums safely
 static UIWidgets::ComponentAlignments MapAlign(C_ComponentAlign align) {
     if (align == C_ALIGN_RIGHT)

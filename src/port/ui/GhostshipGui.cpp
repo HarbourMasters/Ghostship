@@ -3,6 +3,9 @@
 #include <spdlog/spdlog.h>
 #include <imgui.h>
 #include <imgui_internal.h>
+#include "port/api/ui.h"
+
+void C_RunGuiDrawCallbacks();
 
 #ifdef __APPLE__
 #include <fast/backends/gfx_metal.h>
@@ -19,6 +22,22 @@
 #include <ship/window/gui/ConsoleWindow.h>
 #include <ship/window/gui/EventDebuggerWindow.h>
 #include <libultraship/window/gui/GfxDebuggerWindow.h>
+
+// Invisible host window that fires C mod ImGui callbacks each frame.
+// Overrides Draw() so it never calls ImGui::Begin()/End() itself; the C
+// callbacks are free to open any number of their own igBegin/igEnd windows.
+class CGuiCallbackWindow : public Ship::GuiWindow {
+public:
+    using GuiWindow::GuiWindow;
+    void InitElement()   override {}
+    void UpdateElement() override {}
+    void DrawElement()   override {}
+    void Draw() override {
+        if (IsVisible()) {
+            C_RunGuiDrawCallbacks();
+        }
+    }
+};
 
 namespace GhostshipGui {
 // MARK: - Delegates
@@ -77,6 +96,10 @@ void SetupGuiElements() {
 
     mObjectViewer = std::make_shared<ObjectViewer>(CVAR_WINDOW("ObjectViewer"), "Object Viewer##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mObjectViewer);
+
+    auto cGuiWindow = std::make_shared<CGuiCallbackWindow>("gWindows.CGuiCallbacks", "##cguicallbacks");
+    cGuiWindow->Show();
+    gui->AddGuiWindow(cGuiWindow);
 
     mGhostshipMenu = std::make_shared<GhostshipMenu>(CVAR_WINDOW("Menu"), "Settings Menu");
     gui->SetMenu(mGhostshipMenu);
