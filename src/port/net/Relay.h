@@ -1,5 +1,5 @@
 #pragma once
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
 
 #include <cstdint>
 #include <functional>

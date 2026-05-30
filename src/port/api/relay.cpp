@@ -1,4 +1,4 @@
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
 #include "relay.h"
 #include "port/net/Relay.h"
 #include "spdlog/spdlog.h"

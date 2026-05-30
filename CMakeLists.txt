@@ -153,7 +153,12 @@ endif()
 
 # Set game compilation version
 set(VERSION us)
-set(USE_NETWORKING ON)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+    set(USE_NETWORKING_DEFAULT OFF)
+else()
+    set(USE_NETWORKING_DEFAULT ON)
+endif()
+option(USE_NETWORKING "Enable the Satella online relay / networking features" ${USE_NETWORKING_DEFAULT})
 set(SKIP_XCODE_VERSION_CHECK ON)
 
 # Add compile definitions for the target

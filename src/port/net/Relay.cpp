@@ -1,4 +1,4 @@
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
 #include "Relay.h"
 #include "SatellaClient.h"
 

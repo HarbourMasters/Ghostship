@@ -554,7 +554,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #endif
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
     while (true) {
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
         auto satellaPhase = Satella::Client::Instance().GetPhase();
         bool satellaActive = satellaPhase == Satella::Phase::Connecting || satellaPhase == Satella::Phase::FetchingKeys;
 #else
@@ -837,7 +837,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 continue;
             }
             case GS_COMPILE: {
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
                 threadPool->submit_task([&]() -> void {
                     Satella::Client::Instance().Execute();
                     extractStep = GS_LOAD;
@@ -937,7 +937,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                        ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
                                            ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
                                            ImGuiWindowFlags_NoSavedSettings)) {
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
                 if (satellaActive) {
                     const char* msg = satellaPhase == Satella::Phase::Connecting ? "Connecting to Satella..."
                                                                                  : "Retrieving public keys...";

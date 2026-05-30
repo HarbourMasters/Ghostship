@@ -1,4 +1,4 @@
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
 #include "port/net/SatellaClient.h"
 
 #include "ship/Context.h"

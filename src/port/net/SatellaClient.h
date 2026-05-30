@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef __SWITCH__
+#ifdef USE_NETWORKING
 #include <condition_variable>
 #include <cstdint>
 #include <memory>
