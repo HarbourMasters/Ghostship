@@ -29,6 +29,10 @@
 #include <filesystem>
 #include <fstream>
 
+#if defined(__linux__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+#include <dlfcn.h>
+#endif
+
 #include <cstdlib>
 #include <algorithm>
 #include <thread>
@@ -328,6 +332,29 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
                 }
             }
             pclose(fp);
+        }
+    }
+#endif
+
+#if defined(__linux__) && !defined(__ANDROID__)
+    // On systems without libc6-dev (AppImage targets), libc.so doesn't exist — only
+    // libc.so.6 does. TCC needs libc.so to link mods. Create a symlink in .tcc/lib/
+    // pointing to the real libc that's already loaded in the running process.
+    {
+        auto libcStub = std::filesystem::path(tccBase) / "lib" / "libc.so";
+        std::error_code ec;
+        bool isStale = std::filesystem::is_symlink(libcStub) &&
+                       !std::filesystem::exists(libcStub, ec);
+        if (!std::filesystem::exists(libcStub) || isStale) {
+            Dl_info info = {};
+            void* libcFunc = dlsym(RTLD_DEFAULT, "printf");
+            if (libcFunc && dladdr(libcFunc, &info) && info.dli_fname && *info.dli_fname) {
+                std::filesystem::remove(libcStub, ec);
+                std::filesystem::create_symlink(info.dli_fname, libcStub, ec);
+                if (ec) {
+                    SPDLOG_WARN("ScriptLoader: failed to create libc.so symlink: {}", ec.message());
+                }
+            }
         }
     }
 #endif
