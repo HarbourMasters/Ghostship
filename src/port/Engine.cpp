@@ -1182,6 +1182,14 @@ void GameEngine::EndAudioFrame() {
     }
 }
 
+extern "C" void GameEngine_LockAudioThread() {
+    audio.mutex.lock();
+}
+
+extern "C" void GameEngine_UnlockAudioThread() {
+    audio.mutex.unlock();
+}
+
 void GameEngine::AudioInit() {
     const auto resourceMgr = Ship::Context::GetInstance()->GetResourceManager();
     resourceMgr->LoadResources("sound");
