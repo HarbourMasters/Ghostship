@@ -510,7 +510,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::vector<std::string> args;
     if (argc > 1) {
         for (int i = 1; i < argc; i++) {
-            args.push_back(argv[argc]);
+            args.push_back(argv[i]);
         }
     }
 #if !defined(__SWITCH__) && !defined(__WIIU__)
