@@ -33,6 +33,10 @@ std::unordered_map<std::string, std::string> mGameList = {
     { "9bef1128717f958171a4afac3ed78ee2bb4e86ce", "Super Mario 64 (US)" },
 };
 
+static std::filesystem::path Utf8ToFsPath(const std::string& utf8) {
+    return std::filesystem::path(reinterpret_cast<const char8_t*>(utf8.c_str()));
+}
+
 bool GameExtractor::RunStandalone(std::string rom) {
     // Store both path and already-read data
     std::string romPath;
@@ -117,12 +121,13 @@ bool GameExtractor::SelectGameFromUI() {
 
     // Load file if it is not already open
     if (romData.empty()) {
-        if (!std::filesystem::exists(romPath)) {
+        const std::filesystem::path romFsPath = Utf8ToFsPath(romPath);
+        if (!std::filesystem::exists(romFsPath)) {
             SPDLOG_ERROR("Failed to find ROM at path: {}", romPath);
             return false;
         }
 
-        std::ifstream inFile(romPath, std::ios::binary);
+        std::ifstream inFile(romFsPath, std::ios::binary);
         if (!inFile.is_open()) {
             return false;
         }
