@@ -508,7 +508,39 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
         content = asset_block_pattern.sub(repl_asset_block, content)
 
         # Step 2: Process the remaining lines one by one for standard #embeds and #includes
+        active_stack = [True]
+
         for line in content.splitlines(keepends=True):
+            stripped = line.strip()
+
+            if re.match(r'#\s*ifdef\s+__cplusplus\b', stripped) or \
+               re.match(r'#\s*if\s+defined\s*\(\s*__cplusplus\s*\)', stripped):
+                active_stack.append(False)
+                out_file.write(line)
+                continue
+            elif re.match(r'#\s*ifndef\s+__cplusplus\b', stripped):
+                active_stack.append(all(active_stack))
+                out_file.write(line)
+                continue
+            elif re.match(r'#\s*(ifdef|ifndef|if)\b', stripped):
+                active_stack.append(all(active_stack))
+                out_file.write(line)
+                continue
+            elif re.match(r'#\s*(else|elif)\b', stripped):
+                if len(active_stack) > 1:
+                    parent_active = all(active_stack[:-1])
+                    active_stack[-1] = parent_active and not active_stack[-1]
+                out_file.write(line)
+                continue
+            elif re.match(r'#\s*endif\b', stripped):
+                if len(active_stack) > 1:
+                    active_stack.pop()
+                out_file.write(line)
+                continue
+
+            if not all(active_stack):
+                out_file.write(line)
+                continue
             
             # Look for legacy #embed (leaves the surrounding u8 array intact, just injects hex)
             embed = re.match(r'^\s*#\s*embed\s+([<"])([^>"]+)[>"]', line)
