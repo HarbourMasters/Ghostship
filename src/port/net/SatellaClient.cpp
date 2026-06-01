@@ -197,7 +197,7 @@ void Client::Connect(const std::string& url) {
     }
 
     mUrl = url;
-    mWs.setUrl(url + "/ws");
+    mWs.setUrl(url + "/ws?v=" GHOSTSHIP_VERSION);
 #if defined(__linux__)
     mWs.setTLSOptions(BuildTLSOptions());
 #endif

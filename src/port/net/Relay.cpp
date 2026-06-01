@@ -17,6 +17,17 @@ std::string PermKey(const std::string& channelId) {
     return "relay." + channelId;
 }
 
+// Builds the wire channel ID: channelId@gameVersion[-modVersion]
+// e.g. "mymod@2.0.1" or "mymod@2.0.1-1.2.0"
+static std::string VersionedChannelId(const std::string& channelId, const std::string& modVersion) {
+    std::string id = channelId + "@" GHOSTSHIP_VERSION;
+    if (!modVersion.empty()) {
+        id += '-';
+        id += modVersion;
+    }
+    return id;
+}
+
 struct ChannelState {
     Relay::ChannelDef def;
     bool liveRegistered = false;
@@ -27,8 +38,9 @@ std::unordered_map<std::string, ChannelState> gChannels;
 
 class RelaySubscriptionPacket : public Satella::IPacket {
   public:
-    RelaySubscriptionPacket(std::string channelId, Relay::MessageCallback cb)
-        : mChannelId(std::move(channelId)), mCallback(std::move(cb)), mRoute("/v1/relay/" + mChannelId + "/subscribe") {
+    RelaySubscriptionPacket(std::string channelId, std::string modVersion, Relay::MessageCallback cb)
+        : mChannelId(std::move(channelId)), mCallback(std::move(cb)),
+          mRoute("/v1/relay/" + VersionedChannelId(mChannelId, modVersion) + "/subscribe") {
     }
 
     const char* GetRoute() const override {
@@ -66,7 +78,7 @@ void ActivateChannel(const std::string& channelId) {
     }
 
     it->second.liveRegistered = true;
-    auto packet = std::make_unique<RelaySubscriptionPacket>(channelId, it->second.def.onMessage);
+    auto packet = std::make_unique<RelaySubscriptionPacket>(channelId, it->second.def.modVersion, it->second.def.onMessage);
     Satella::Client::Instance().RegisterLive(std::move(packet));
 }
 
@@ -97,7 +109,10 @@ bool Send(const std::string& channelId, const char* data, uint32_t size) {
     if (GetPermission(channelId) != Permission::Allowed) {
         return false;
     }
-    Satella::Client::Instance().SendRaw("/v1/relay/" + channelId + "/send", data, size);
+    std::lock_guard<std::mutex> lock(gMtx);
+    auto it = gChannels.find(channelId);
+    const std::string modVersion = (it != gChannels.end()) ? it->second.def.modVersion : std::string{};
+    Satella::Client::Instance().SendRaw("/v1/relay/" + VersionedChannelId(channelId, modVersion) + "/send", data, size);
     return true;
 }
 

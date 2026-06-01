@@ -16,6 +16,7 @@ using MessageCallback = std::function<void(const std::string& channelId,
 struct ChannelDef {
     std::string     modName;     // shown in the permission prompt
     std::string     description; // shown below the mod name
+    std::string     modVersion;  // optional: isolates channel by mod version (e.g. "1.2.0")
     MessageCallback onMessage;
 };
 
