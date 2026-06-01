@@ -481,6 +481,7 @@ if(USE_NETWORKING AND NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT CM
         GIT_TAG        v11.4.5
     )
     set(USE_TLS ON CACHE BOOL "" FORCE)
+    set(USE_MBED_TLS ON CACHE BOOL "" FORCE)
     set(IXWEBSOCKET_INSTALL OFF CACHE BOOL "" FORCE)
     FetchContent_MakeAvailable(ixwebsocket)
     target_link_libraries(${PROJECT_NAME} PRIVATE ixwebsocket)
