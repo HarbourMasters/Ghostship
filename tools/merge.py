@@ -409,10 +409,10 @@ def preprocess_asset(bytes_data: bytes, filename: str) -> bytes:
         return bytes_data
 
     elif file.endswith('.png'):
-        img = Image.open(BytesIO(bytes_data)).convert('RGBA')
+        img = Image.open(BytesIO(bytes_data))
         width, height = img.size
         texture_type = TextureType.RGBA32bpp.value
-        raw = img.tobytes()
+        raw = bytes_data
         resource_type = 0x52544558  # RTEX
 
         tex_data_size = len(raw)
