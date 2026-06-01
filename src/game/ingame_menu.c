@@ -1296,6 +1296,7 @@ void render_dialog_triangle_choice(void) {
         handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, &gDialogLineNum, 1, 2);
     }
 
+    FrameInterpolation_RecordOpenChild("render_dialog_triangle_choice", 0);
     create_dl_translation_matrix(MENU_MTX_NOPUSH, (gDialogLineNum * X_VAL4_1) - X_VAL4_2, Y_VAL4_1 - (gLastDialogLineNum * Y_VAL4_2), 0);
 
     if (gDialogBoxType == DIALOG_TYPE_ROTATE) {
@@ -1305,6 +1306,7 @@ void render_dialog_triangle_choice(void) {
     }
 
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
+    FrameInterpolation_RecordCloseChild();
 }
 
 #if defined(VERSION_US)
@@ -2088,11 +2090,13 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
         print_generic_string(x + 10, y - 33, GameEngine_LoadTranslation("TEXT_CAMERA_ANGLE_R"));
         gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 
+        FrameInterpolation_RecordOpenChild("render_pause_course_options:cursor", 0);
         create_dl_translation_matrix(MENU_MTX_PUSH, x - X_VAL8, (y - ((*index - 1) * yIndex)) - Y_VAL8, 0);
 
         gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
         gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
         gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+        FrameInterpolation_RecordCloseChild();
     }
 
     if (*index == MENU_OPT_CAMERA_ANGLE_R) {
@@ -2627,12 +2631,14 @@ void render_save_confirmation(s16 x, s16 y, s8 *index, s16 yOffset)
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 
+    FrameInterpolation_RecordOpenChild("render_save_and_continue_options:cursor", 0);
     create_dl_translation_matrix(MENU_MTX_PUSH, X_VAL9, y - ((*index - 1) * yOffset), 0);
 
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
 
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 }
 
 s16 render_course_complete_screen(void) {

@@ -22,6 +22,7 @@
 #include "sm64.h"
 
 #include "eu_translation.h"
+#include "port/interpolation/FrameInterpolation.h"
 #ifdef VERSION_EU
 #undef LANGUAGE_FUNCTION
 #define LANGUAGE_FUNCTION sLanguageMode
@@ -1697,15 +1698,14 @@ void handle_controller_cursor_input(void) {
  */
 void print_menu_cursor(void) {
     handle_controller_cursor_input();
+    FrameInterpolation_RecordOpenChild("print_menu_cursor", 0);
     create_dl_translation_matrix(MENU_MTX_PUSH, sCursorPos[0] + 160.0f - 5.0, sCursorPos[1] + 120.0f - 25.0, 0.0f);
-    // Get the right graphic to use for the cursor.
     if (sCursorClickingTimer == 0)
-        // Idle
         gSPDisplayList(gDisplayListHead++, dl_menu_idle_hand);
     if (sCursorClickingTimer != 0)
-        // Grabbing
         gSPDisplayList(gDisplayListHead++, dl_menu_grabbing_hand);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
     if (sCursorClickingTimer != 0) {
         sCursorClickingTimer++; // This is a very strange way to implement a timer? It counts up and
                                 // then resets to 0 instead of just counting down to 0.
