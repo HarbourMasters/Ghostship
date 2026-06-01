@@ -262,8 +262,9 @@ void *create_skybox_ortho_matrix(s8 player) {
     }
 
     if (mtx != NULL) {
+        FrameInterpolation_RecordOpenChild("skybox_ortho", (uintptr_t)player);
         guOrthoInterp(mtx, left, right, bottom, top, 0.0f, 3.0f, 1.0f);
-    } else {
+        FrameInterpolation_RecordCloseChild();
     }
 
     return mtx;

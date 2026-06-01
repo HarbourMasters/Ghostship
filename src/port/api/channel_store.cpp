@@ -1,5 +1,6 @@
-#ifdef USE_NETWORKING
 #include "channel_store.h"
+
+#ifdef USE_NETWORKING
 #include "port/net/SatellaClient.h"
 #include "port/net/PlayerIdentity.h"
 #include "port/permissions/Permissions.h"
