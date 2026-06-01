@@ -343,8 +343,7 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
     {
         auto libcStub = std::filesystem::path(tccBase) / "lib" / "libc.so";
         std::error_code ec;
-        bool isStale = std::filesystem::is_symlink(libcStub) &&
-                       !std::filesystem::exists(libcStub, ec);
+        bool isStale = std::filesystem::is_symlink(libcStub) && !std::filesystem::exists(libcStub, ec);
         if (!std::filesystem::exists(libcStub) || isStale) {
             Dl_info info = {};
             void* libcFunc = dlsym(RTLD_DEFAULT, "printf");

@@ -78,7 +78,8 @@ void ActivateChannel(const std::string& channelId) {
     }
 
     it->second.liveRegistered = true;
-    auto packet = std::make_unique<RelaySubscriptionPacket>(channelId, it->second.def.modVersion, it->second.def.onMessage);
+    auto packet =
+        std::make_unique<RelaySubscriptionPacket>(channelId, it->second.def.modVersion, it->second.def.onMessage);
     Satella::Client::Instance().RegisterLive(std::move(packet));
 }
 

@@ -12,6 +12,8 @@
 #include <ixwebsocket/IXNetSystem.h>
 #include <ixwebsocket/IXWebSocket.h>
 
+#include "port/net/PlayerIdentity.h"
+
 #include <chrono>
 #include <cstring>
 #include <string>
@@ -288,6 +290,33 @@ void Client::Execute(const std::string& url) {
 // ---------------------------------------------------------------------------
 // Built-in packets
 // ---------------------------------------------------------------------------
+
+class RegisterPlayerPacket : public IPacket {
+    mutable std::string mRoute;
+
+  public:
+    const char* GetRoute() const override {
+        if (mRoute.empty()) {
+            auto pub = PlayerIdentity::GetPublicKey();
+            mRoute = "/v1/player/" + StringHelper::BytesToHex({ pub.begin(), pub.end() }) + "/register";
+        }
+        return mRoute.c_str();
+    }
+
+    bool IsBlocking() const override {
+        return true;
+    }
+
+    void OnResponse(int16_t status, const std::string&) override {
+        if (status != 200) {
+            SPDLOG_WARN("SatellaClient: player registration returned status {}", status);
+        } else {
+            SPDLOG_INFO("SatellaClient: player registered");
+        }
+    }
+};
+
+SATELLA_REGISTER_PACKET(RegisterPlayerPacket);
 
 class PublicKeysPacket : public IPacket {
   public:
