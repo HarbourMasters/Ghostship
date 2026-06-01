@@ -17,6 +17,10 @@
 #include <string>
 #include <vector>
 
+#if !defined(_WIN32)
+#include <unistd.h>
+#endif
+
 static ix::WebSocket mWs;
 
 namespace Satella {
@@ -164,6 +168,25 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
     }
 }
 
+static ix::SocketTLSOptions BuildTLSOptions() {
+    ix::SocketTLSOptions opts;
+#if defined(__linux__)
+    static constexpr const char* kCAPaths[] = {
+        "/etc/ssl/certs/ca-certificates.crt",
+        "/etc/pki/tls/certs/ca-bundle.crt",
+        "/etc/ssl/ca-bundle.pem",
+        "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem",
+    };
+    for (const char* path : kCAPaths) {
+        if (access(path, R_OK) == 0) {
+            opts.caFile = path;
+            break;
+        }
+    }
+#endif
+    return opts;
+}
+
 void Client::Connect(const std::string& url) {
     if (mUrl == url && mWs.getReadyState() == ix::ReadyState::Open) {
         return;
@@ -175,6 +198,9 @@ void Client::Connect(const std::string& url) {
 
     mUrl = url;
     mWs.setUrl(url + "/ws");
+#if defined(__linux__)
+    mWs.setTLSOptions(BuildTLSOptions());
+#endif
     mWs.setOnMessageCallback([this](const ix::WebSocketMessagePtr& msg) { OnMessage(msg); });
 
     {
