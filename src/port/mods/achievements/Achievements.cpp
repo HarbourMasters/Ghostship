@@ -244,7 +244,7 @@ void Achievements_Load(IEvent* event) {
 
     AchievementSaveData* saveData = &gSaveBuffer.files[selectedFile]->shipSaveData.achievementSaveData;
 
-    if ((!CVarGetInteger(CVAR_ENHANCEMENT("Achievements"), 0) && !HAS_ACHIEVEMENTS(selectedFile)) ||
+    if ((!CVarGetInteger(CVAR_ENHANCEMENT("Achievements"), 1) == 1 && !HAS_ACHIEVEMENTS(selectedFile)) ||
         gDebugLevelSelect) {
         memset(saveData, 0, sizeof(AchievementSaveData));
         return;
