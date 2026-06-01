@@ -409,34 +409,27 @@ def preprocess_asset(bytes_data: bytes, filename: str) -> bytes:
         return bytes_data
 
     elif file.endswith('.png'):
-        if 'rgba16' in file:
-            tex_type = TextureType.RGBA16bpp
-        elif 'rgba32' in file:
-            tex_type = TextureType.RGBA32bpp
-        elif 'ci4' in file:
-            tex_type = TextureType.Palette4bpp
-        elif 'ci8' in file:
-            tex_type = TextureType.Palette8bpp
-        else:
-            raise ValueError(f"Unknown texture format in filename: {filename}")
+        img = Image.open(BytesIO(bytes_data)).convert('RGBA')
+        width, height = img.size
+        texture_type = TextureType.RGBA32bpp.value
+        raw = img.tobytes()
+        resource_type = 0x52544558  # RTEX
 
-        data = convert_png_to_n64_texture(bytes_data, tex_type)
+        tex_data_size = len(raw)
 
-        texture_type = 1
-        width = data.width
-        height = data.height
-        tex_data_size = len(data.tex_data)
-
-        otr_header = write_header(resource_type=0x4F544558, version=0x0)
+        otr_header = write_header(resource_type=resource_type, version=0x1)
         tex_header = struct.pack(
-            '<IIII',
-            texture_type,   # [0x40] 4 bytes
-            width,          # [0x44] 4 bytes
-            height,         # [0x48] 4 bytes
-            tex_data_size   # [0x58] 4 bytes
+            '<IIIIffI',
+            texture_type,   # type
+            width,          # width
+            height,         # height
+            1 << 1,         # flags: TEX_FLAG_LOAD_AS_IMG
+            1.0,            # h_byte_scale
+            1.0,            # v_pixel_scale
+            tex_data_size   # image_data_size
         )
 
-        return otr_header + tex_header + data.tex_data
+        return otr_header + tex_header + raw
     else:
         raise ValueError(f"Unsupported asset file type for {filename}")
 

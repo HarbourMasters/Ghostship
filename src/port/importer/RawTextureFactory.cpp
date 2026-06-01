@@ -43,8 +43,8 @@ std::shared_ptr<Ship::IResource> loadPngTexture(std::shared_ptr<Ship::File> file
 std::vector<std::string> extension = { ".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG", ".bmp", ".BMP" };
 
 std::shared_ptr<Ship::IResource>
-ResourceFactoryBinaryTextureV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                             std::shared_ptr<Ship::ResourceInitData> initData) {
+ResourceFactoryBinaryRawTextureV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                                std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
@@ -72,8 +72,8 @@ ResourceFactoryBinaryTextureV0::ReadResource(std::shared_ptr<Ship::File> file,
 }
 
 std::shared_ptr<Ship::IResource>
-ResourceFactoryBinaryTextureV1::ReadResource(std::shared_ptr<Ship::File> file,
-                                             std::shared_ptr<Ship::ResourceInitData> initData) {
+ResourceFactoryBinaryRawTextureV1::ReadResource(std::shared_ptr<Ship::File> file,
+                                                std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }

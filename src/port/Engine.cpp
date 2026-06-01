@@ -459,6 +459,10 @@ void GameEngine::FinishInit() {
                                     "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
                                     "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryRawTextureV0>(), RESOURCE_FORMAT_BINARY,
+                                    "RawTexture", static_cast<uint32_t>(SM64::ResourceType::RawTexture), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryRawTextureV1>(), RESOURCE_FORMAT_BINARY,
+                                    "RawTexture", static_cast<uint32_t>(SM64::ResourceType::RawTexture), 1);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY,
                                     "Vertex", static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryXMLVertexV0>(), RESOURCE_FORMAT_XML, "Vertex",
@@ -895,9 +899,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     auto post = [&]() { compileCount++; };
                     try {
                         scripting->CompileAll(pre, post);
-                    } catch (std::exception& e) {
-                        compileError = e.what();
-                    }
+                    } catch (std::exception& e) { compileError = e.what(); }
 #endif
                     extractDone = true;
                 });
@@ -997,11 +999,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         ImGui::PopStyleColor();
                         ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.08f, 0.08f, 0.08f, 1.0f));
                         ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.45f, 0.45f, 1.0f));
-                        ImGui::InputTextMultiline("##compileError",
-                            const_cast<char*>(compileError.c_str()),
-                            compileError.size() + 1,
-                            ImVec2(600.0f, 110.0f),
-                            ImGuiInputTextFlags_ReadOnly);
+                        ImGui::InputTextMultiline("##compileError", const_cast<char*>(compileError.c_str()),
+                                                  compileError.size() + 1, ImVec2(600.0f, 110.0f),
+                                                  ImGuiInputTextFlags_ReadOnly);
                         ImGui::PopStyleColor(2);
                         ImGui::Spacing();
                         if (ImGui::Button("Close", ImVec2(600.0f, 0.0f))) {
