@@ -546,6 +546,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::atomic<bool> extracting = false;
     std::atomic<size_t> extractCount{ 0 }, totalExtract{ 0 };
     std::atomic<size_t> compileCount{ 0 };
+    std::string compileError;
+    bool compileErrorDismissed = false;
     std::string installPath = Ship::Context::GetAppBundlePath();
     std::string file;
 
@@ -586,7 +588,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #else
         bool satellaActive = false;
 #endif
-        if (extractDone && !satellaActive) {
+        if (extractDone && !satellaActive && (compileError.empty() || compileErrorDismissed)) {
             break;
         }
         if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0 || satellaActive) {
@@ -891,7 +893,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         file = info.Name;
                     };
                     auto post = [&]() { compileCount++; };
-                    scripting->CompileAll(pre, post);
+                    try {
+                        scripting->CompileAll(pre, post);
+                    } catch (std::exception& e) {
+                        compileError = e.what();
+                    }
 #endif
                     extractDone = true;
                 });
@@ -984,6 +990,24 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                 roundf(progress) == 100.0f ? " Done. Finishing up." : "");
                     std::string overlay = compileCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
                     ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
+                    if (!compileError.empty()) {
+                        ImGui::Spacing();
+                        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.4f, 0.4f, 1.0f));
+                        ImGui::Text(ICON_FA_EXCLAMATION_TRIANGLE " Build failed:");
+                        ImGui::PopStyleColor();
+                        ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.08f, 0.08f, 0.08f, 1.0f));
+                        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.45f, 0.45f, 1.0f));
+                        ImGui::InputTextMultiline("##compileError",
+                            const_cast<char*>(compileError.c_str()),
+                            compileError.size() + 1,
+                            ImVec2(600.0f, 110.0f),
+                            ImGuiInputTextFlags_ReadOnly);
+                        ImGui::PopStyleColor(2);
+                        ImGui::Spacing();
+                        if (ImGui::Button("Close", ImVec2(600.0f, 0.0f))) {
+                            compileErrorDismissed = true;
+                        }
+                    }
                 }
                 ImGui::EndPopup();
             }
