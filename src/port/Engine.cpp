@@ -865,11 +865,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             }
             case GS_COMPILE: {
 #ifdef USE_NETWORKING
-                threadPool->submit_task([&]() -> void {
-                    Satella::Client::Instance().Execute();
+                if (CVarGetInteger(CVAR_DEVELOPER_TOOLS("Satella"), 1) == 1) {
+                    threadPool->submit_task([&]() -> void {
+                        Satella::Client::Instance().Execute();
+                        extractStep = GS_LOAD;
+                    });
+                    extractStep = GS_WAIT;
+                } else {
                     extractStep = GS_LOAD;
-                });
-                extractStep = GS_WAIT;
+                }
 #else
                 extractStep = GS_LOAD;
 #endif

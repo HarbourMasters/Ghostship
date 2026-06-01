@@ -153,12 +153,31 @@ endif()
 
 # Set game compilation version
 set(VERSION us)
-if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+
+option(USE_SATELLA "Connect to Satella at startup for mod signing and online relay features" ON)
+
+if(NOT USE_SATELLA)
+    message(WARNING
+        "\n"
+        "  USE_SATELLA is OFF — Satella relay connection disabled.\n"
+        "  The following features will NOT work:\n"
+        "    * Mod signature verification (public keys are fetched from Satella)\n"
+        "    * Online / relay features in mods (Relay API becomes a no-op)\n"
+        "  Mods that depend on networking will fail silently at runtime.\n"
+    )
+endif()
+
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR NOT USE_SATELLA)
     set(USE_NETWORKING_DEFAULT OFF)
 else()
     set(USE_NETWORKING_DEFAULT ON)
 endif()
 option(USE_NETWORKING "Enable the Satella online relay / networking features" ${USE_NETWORKING_DEFAULT})
+
+if(NOT USE_SATELLA AND USE_NETWORKING)
+    set(USE_NETWORKING OFF CACHE BOOL "Disabled because USE_SATELLA=OFF" FORCE)
+endif()
+
 set(SKIP_XCODE_VERSION_CHECK ON)
 
 # Add compile definitions for the target

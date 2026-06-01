@@ -100,6 +100,20 @@ void GhostshipMenu::AddMenuDevTools() {
             info.options->Disabled(!CVarGetInteger(CVAR_DEVELOPER_TOOLS("DrawDebugInfo"), 0));
         });
 
+#ifdef USE_NETWORKING
+    AddWidget(path, "Enable Satella", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_DEVELOPER_TOOLS("Satella"))
+        .Options(CheckboxOptions()
+                     .DefaultValue(true)
+                     .Tooltip("Connect to the Satella relay server on startup. "
+                              "Disabling this prevents mod signature verification and online relay features in mods."));
+    AddWidget(path, std::string(ICON_FA_EXCLAMATION_TRIANGLE) + " Mod signing and online relay features are disabled.", WIDGET_TEXT)
+        .Options(UIWidgets::TextOptions{ .color = Colors::Orange })
+        .PreFunc([](WidgetInfo& info) {
+            info.isHidden = (bool)CVarGetInteger(CVAR_DEVELOPER_TOOLS("Satella"), 1);
+        });
+#endif
+
     // Save Editor
     path.sidebarName = "Save Editor";
     AddSidebarEntry("Dev Tools", path.sidebarName, 1);
