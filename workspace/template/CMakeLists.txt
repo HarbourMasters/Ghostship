@@ -40,6 +40,7 @@ foreach(SOURCE_FILE ${SRC_FILES})
         COMMAND Python3::Interpreter ${PARENT_DIR}/tools/merge.py 
                 --out ${OUTPUT_FILE} 
                 --includes ${INCLUDE_DIRS}
+                --assets-dir ${CMAKE_CURRENT_SOURCE_DIR}/output
                 --src ${SOURCE_FILE}
         DEPENDS ${SOURCE_FILE} ${PARENT_DIR}/tools/merge.py
         VERBATIM
