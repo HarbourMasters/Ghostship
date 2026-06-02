@@ -29,6 +29,7 @@
 #endif
 
 #include "port/events/list/PlayerEvent.h"
+#include "port/events/Events.h"
 #include "port/mods/PortEnhancements.h"
 extern struct SaveBuffer gSaveBuffer;
 
@@ -2757,6 +2758,7 @@ void print_file_select_strings(void) {
     if (sMainMenuTimer < 1000) {
         sMainMenuTimer++;
     }
+    CALL_EVENT(FileSelectRender);
 }
 
 /**

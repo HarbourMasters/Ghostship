@@ -150,6 +150,8 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(EngineReady);
     REGISTER_EVENT(CameraUpdate);
     REGISTER_EVENT(KeyboardInput);
+    REGISTER_EVENT(LevelScriptOverride);
+    REGISTER_EVENT(FileSelectRender);
 
     // Register player events
     REGISTER_EVENT(PlayerHealthChange);

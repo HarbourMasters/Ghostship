@@ -68,3 +68,10 @@ DEFINE_EVENT(CameraUpdate,
 DEFINE_EVENT(KeyboardInput,
     uint32_t scancode;
 );
+
+DEFINE_EVENT(LevelScriptOverride,
+    s16 levelNum;
+    const void** newScript;
+);
+
+DEFINE_EVENT(FileSelectRender);

@@ -97,7 +97,9 @@ void level_cmd_load_and_execute(void) {
     *sStackTop++ = (uintptr_t) sStackBase;
     sStackBase = sStackTop;
 
-    sCurrentCmd = segmented_to_virtual(CMD_GET(void *, 12));
+    const void* targetScript = segmented_to_virtual(CMD_GET(void *, 12));
+    CALL_EVENT(LevelScriptOverride, gCurrLevelNum, &targetScript);
+    sCurrentCmd = (struct LevelCommand *) targetScript;
 }
 
 void level_cmd_exit_and_execute(void) {
