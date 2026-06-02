@@ -5,7 +5,7 @@
 #include "graph_node.h"
 
 #if IS_64_BIT
-static s16 next_s16_in_geo_script(s16 **src) {
+s16 next_s16_in_geo_script(s16 **src) {
     s16 ret;
     if (((uintptr_t)(*src) & 7) == 4) {
          *src += 2; // skip 32 bits

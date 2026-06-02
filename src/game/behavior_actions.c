@@ -48,14 +48,14 @@
 
 #define o gCurrentObject
 
-static s32 sCapSaveFlags[] = {
+s32 sCapSaveFlags[] = {
     SAVE_FLAG_HAVE_WING_CAP,
     SAVE_FLAG_HAVE_METAL_CAP,
     SAVE_FLAG_HAVE_VANISH_CAP,
 };
 
 // Boo Roll
-static s16 sBooHitRotations[] = {
+s16 sBooHitRotations[] = {
     6047, 5664, 5292, 4934, 4587, 4254, 3933, 3624, 3329, 3046, 2775,
     2517, 2271, 2039, 1818, 1611, 1416, 1233, 1063, 906,  761,  629,
     509,  402,  308,  226,  157,  100,  56,   25,   4,    0,
@@ -80,7 +80,7 @@ static s16 sBooHitRotations[] = {
 #include "behaviors/white_puff_explode.inc.c"
 
 // not in behavior file
-static struct SpawnParticlesInfo sMistParticles = {
+struct SpawnParticlesInfo sMistParticles = {
     /* behParam:        */ 2,
     /* count:           */ 20,
     /* model:           */ MODEL_MIST,
@@ -169,7 +169,7 @@ Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat
 // not in behavior file
 // n is the number of objects to spawn, r if the rate of change of phase (frequency?)
 void spawn_sparkle_particles(s32 n, s32 a1, s32 a2, s32 r) {
-    static s16 D_8035FF10;
+    s16 D_8035FF10;
     s32 i;
     s16 separation = 0x10000 / n; // Evenly spread around a circle
 

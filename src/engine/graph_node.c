@@ -18,7 +18,7 @@ Vec3s gVec3sZero = { 0, 0, 0 };
 Vec3f gVec3fOne = { 1.0f, 1.0f, 1.0f };
 UNUSED Vec3s gVec3sOne = { 1, 1, 1 };
 
-static u32 sGeoNodeNextUid = 1;
+u32 sGeoNodeNextUid = 1;
 
 /**
  * Initialize a geo node with a given type. Sets all links such that there

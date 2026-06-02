@@ -44,7 +44,7 @@ void release_rumble_pak_control(void) {
     osSendMesg(&gRumblePakSchedulerMesgQueue, OS_MESG_PTR(NULL), OS_MESG_NOBLOCK);
 }
 
-static void start_rumble(void) {
+void start_rumble(void) {
     if (!sRumblePakActive) {
         return;
     }
@@ -60,7 +60,7 @@ static void start_rumble(void) {
     release_rumble_pak_control();
 }
 
-static void stop_rumble(void) {
+void stop_rumble(void) {
     if (!sRumblePakActive) {
         return;
     }
@@ -76,7 +76,7 @@ static void stop_rumble(void) {
     release_rumble_pak_control();
 }
 
-static void update_rumble_pak(void) {
+void update_rumble_pak(void) {
     if (gResetTimer > 0) {
         stop_rumble();
         return;
@@ -121,7 +121,7 @@ static void update_rumble_pak(void) {
     }
 }
 
-static void update_rumble_data_queue(void) {
+void update_rumble_data_queue(void) {
     if (gRumbleDataQueue[0].unk00) {
         gCurrRumbleSettings.unk06 = 0;
         gCurrRumbleSettings.unk08 = 4;
@@ -236,7 +236,7 @@ void func_sh_8024CA04(void) {
     gCurrRumbleSettings.unk0C = 4;
 }
 
-static void thread6_rumble_loop(UNUSED void *a0) {
+void thread6_rumble_loop(UNUSED void *a0) {
     OSMesg msg;
 
     // cancel_rumble();

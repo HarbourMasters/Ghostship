@@ -41,9 +41,9 @@ struct CameraHUD {
 
 // Stores health segmented value defined by numHealthWedges
 // When the HUD is rendered this value is 8, full health.
-static s16 sPowerMeterStoredHealth;
+s16 sPowerMeterStoredHealth;
 
-static struct PowerMeterHUD sPowerMeterHUD = {
+struct PowerMeterHUD sPowerMeterHUD = {
     POWER_METER_HIDDEN,
     140,
     166,
@@ -55,9 +55,9 @@ static struct PowerMeterHUD sPowerMeterHUD = {
 // when the power meter is hidden.
 s32 sPowerMeterVisibleTimer = 0;
 
-UNUSED static struct UnusedHUDStruct sUnusedHUDValues = { 0x00, 0x0A, 0x00 };
+UNUSED struct UnusedHUDStruct sUnusedHUDValues = { 0x00, 0x0A, 0x00 };
 
-static struct CameraHUD sCameraHUD = { CAM_STATUS_NONE };
+struct CameraHUD sCameraHUD = { CAM_STATUS_NONE };
 
 /**
  * Renders a rgba16 16x16 glyph texture from a table list.
@@ -150,7 +150,7 @@ void animate_power_meter_emphasized(void) {
  * Power meter animation called after emphasized mode.
  * Moves power meter y pos speed until it's at 200 to be visible.
  */
-static void animate_power_meter_deemphasizing(void) {
+void animate_power_meter_deemphasizing(void) {
     s16 speed = 5;
 
     if (sPowerMeterHUD.y >= 181) {
@@ -177,7 +177,7 @@ static void animate_power_meter_deemphasizing(void) {
  * Power meter animation called when there's 8 health segments.
  * Moves power meter y pos quickly until it's at 301 to be hidden.
  */
-static void animate_power_meter_hiding(void) {
+void animate_power_meter_hiding(void) {
     sPowerMeterHUD.y += 20;
     if (sPowerMeterHUD.y >= 301) {
         sPowerMeterHUD.animation = POWER_METER_HIDDEN;

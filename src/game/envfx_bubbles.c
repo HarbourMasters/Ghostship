@@ -22,9 +22,9 @@
  */
 
 s16 gEnvFxBubbleConfig[10];
-static Gfx *sGfxCursor; // points to end of display list for bubble particles
-static s32 sBubbleParticleCount;
-static s32 sBubbleParticleMaxCount;
+Gfx *sGfxCursor; // points to end of display list for bubble particles
+s32 sBubbleParticleCount;
+s32 sBubbleParticleMaxCount;
 
 UNUSED s32 D_80330690 = 0;
 UNUSED s32 D_80330694 = 0;

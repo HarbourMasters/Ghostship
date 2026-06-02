@@ -27,19 +27,19 @@
 #define STUB_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8) textname,
 #define DEFINE_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) textname,
 
-static char sLevelSelectStageNames[64][16] = {
+char sLevelSelectStageNames[64][16] = {
     #include "levels/level_defines.h"
 };
 #undef STUB_LEVEL
 #undef DEFINE_LEVEL
 
-static u16 sDemoCountdown = 0;
-static s16 sPlayMarioGreeting = TRUE;
-static s16 sPlayMarioGameOver = TRUE;
+u16 sDemoCountdown = 0;
+s16 sPlayMarioGreeting = TRUE;
+s16 sPlayMarioGameOver = TRUE;
 
 #define PRESS_START_DEMO_TIMER 800
 
-static const char* gDemoInputs[8] = {
+const char* gDemoInputs[8] = {
     gDemoBitdw, gDemoWf,    gDemoCcm,
     gDemoBbh,   gDemoJrb,   gDemoHmc,
     gDemoPss,   gDemoUnused

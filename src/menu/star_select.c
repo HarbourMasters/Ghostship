@@ -34,33 +34,33 @@
 #define COIN_STAR_INDEX 6
 
 // Star Selector count models printed in the act selector menu.
-static struct Object *sStarSelectorModels[8];
+struct Object *sStarSelectorModels[8];
 
 // The act the course is loaded as, affects whether some objects spawn.
-static s8 sLoadedActNum;
+s8 sLoadedActNum;
 
 // Number of obtained stars, excluding the coin star.
-static u8 sObtainedStars;
+u8 sObtainedStars;
 
 // Total number of stars that appear in the act selector menu.
-static s8 sVisibleStars;
+s8 sVisibleStars;
 
 // Act selected when the act menu is first opened.
-static u8 sInitSelectedActNum;
+u8 sInitSelectedActNum;
 
 // Index value of the act selected in the act menu.
-static s8 sSelectedActIndex = 0;
+s8 sSelectedActIndex = 0;
 
 // Index value of the star that is selectable in the act menu.
 // Excluding the next star, it doesn't count other transparent stars.
-static s8 sSelectableStarIndex = 0;
+s8 sSelectableStarIndex = 0;
 
 // Act Selector menu timer that keeps counting until you choose an act.
-static s32 sActSelectorMenuTimer = 0;
+s32 sActSelectorMenuTimer = 0;
 
 // Helper check for the previous star selection enhancment state
 // This is used to tell if the star selection enhancment has just changed
-static bool sStarSelectState = false;
+bool sStarSelectState = false;
 
 /**
  * Act Selector Star Type Loop Action

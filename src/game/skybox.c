@@ -190,7 +190,7 @@ f32 calculate_skybox_scaled_y(s8 player, UNUSED f32 fov) {
 /**
  * Converts the upper left xPos and yPos to the index of the upper left tile in the skybox.
  */
-static s32 get_top_left_tile_idx(s8 player) {
+s32 get_top_left_tile_idx(s8 player) {
     s32 tileCol = sSkyBoxInfo[player].scaledX / SKYBOX_TILE_WIDTH;
     s32 tileRow = (SKYBOX_HEIGHT - sSkyBoxInfo[player].scaledY) / SKYBOX_TILE_HEIGHT;
 
@@ -203,7 +203,7 @@ static s32 get_top_left_tile_idx(s8 player) {
  * [0, SKYBOX_ROWS) range to provide an interpolation buffer on each side of the
  * visible screen — the tile texture is looked up with wrapping separately.
  */
-static Vtx *make_skybox_rect_ext(s32 absRow, s32 absCol, s8 colorIndex) {
+Vtx *make_skybox_rect_ext(s32 absRow, s32 absCol, s8 colorIndex) {
     Vtx *verts = alloc_display_list(4 * sizeof(*verts));
     s16 x = (s16)(absCol * SKYBOX_TILE_WIDTH);
     s16 y = (s16)(SKYBOX_HEIGHT - absRow * SKYBOX_TILE_HEIGHT);

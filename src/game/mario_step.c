@@ -9,7 +9,7 @@
 #include "interaction.h"
 #include "mario_step.h"
 
-static s16 sMovingSandSpeeds[] = { 12, 8, 4, 0 };
+s16 sMovingSandSpeeds[] = { 12, 8, 4, 0 };
 
 struct Surface gWaterSurfacePseudoFloor = {
     SURFACE_VERY_SLIPPERY, 0,    0,    0, 0, 0, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 },
@@ -255,7 +255,7 @@ s32 stationary_ground_step(struct MarioState *m) {
     return stepResult;
 }
 
-static s32 perform_ground_quarter_step(struct MarioState *m, Vec3f nextPos) {
+s32 perform_ground_quarter_step(struct MarioState *m, Vec3f nextPos) {
     UNUSED struct Surface *lowerWall;
     struct Surface *upperWall;
     struct Surface *ceil;

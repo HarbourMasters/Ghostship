@@ -117,7 +117,7 @@ void unused_deallocate(struct LinkedList *freeList, struct LinkedList *node) {
  * Remove the given object from the object list that it's currently in, and
  * insert it at the beginning of the free list (singly linked).
  */
-static void deallocate_object(struct ObjectNode *freeList, struct ObjectNode *obj) {
+void deallocate_object(struct ObjectNode *freeList, struct ObjectNode *obj) {
     // Remove from object list
     obj->next->prev = obj->prev;
     obj->prev->next = obj->next;
@@ -164,7 +164,7 @@ void clear_object_lists(struct ObjectNode *objLists) {
  * This function looks broken, but it appears to attempt to delete the leaf
  * graph nodes under obj and obj's siblings.
  */
-UNUSED static void unused_delete_leaf_nodes(struct Object *obj) {
+UNUSED void unused_delete_leaf_nodes(struct Object *obj) {
     struct Object *children;
     struct Object *sibling;
     struct Object *obj0 = obj;
@@ -298,7 +298,7 @@ struct Object *allocate_object(struct ObjectNode *objList) {
 /**
  * If the object is close to being on the floor, move it to be exactly on the floor.
  */
-static void snap_object_to_floor(struct Object *obj) {
+void snap_object_to_floor(struct Object *obj) {
     struct Surface *surface;
 
     obj->oFloorHeight = find_floor(obj->oPosX, obj->oPosY, obj->oPosZ, &surface);

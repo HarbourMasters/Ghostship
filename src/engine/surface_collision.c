@@ -17,7 +17,7 @@
  * Iterate through the list of walls until all walls are checked and
  * have given their wall push.
  */
-static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode,
+s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode,
                                           struct WallCollisionData *data) {
     register struct Surface *surf;
     register f32 offset;
@@ -224,7 +224,7 @@ s32 find_wall_collisions(struct WallCollisionData *colData) {
 /**
  * Iterate through the list of ceilings and find the first ceiling over a given point.
  */
-static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
+struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
     register struct Surface *surf;
     register s32 x1, z1, x2, z2, x3, z3;
     struct Surface *ceil = NULL;
@@ -372,7 +372,7 @@ f32 unused_obj_find_floor_height(struct Object *obj) {
  */
 struct FloorGeometry sFloorGeo;
 
-UNUSED static u8 unused8038BE50[0x40];
+UNUSED u8 unused8038BE50[0x40];
 
 /**
  * Return the floor height underneath (xPos, yPos, zPos) and populate `floorGeo`
@@ -401,7 +401,7 @@ u8 gInterpolatingSurfaces;
 /**
  * Iterate through the list of floors and find the first floor under a given point.
  */
-static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
+struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
     register struct Surface *surf;
     register f32 x1, z1, x2, z2, x3, z3;
     f32 nx, ny, nz;
@@ -505,7 +505,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
 
         *pheight = height;
         if (interpolate) {
-            static struct Surface s;
+            struct Surface s;
             s.type = surf->type;
             s.normal.x = nx;
             s.normal.y = ny;
@@ -719,7 +719,7 @@ f32 find_poison_gas_level(f32 x, f32 z) {
 /**
  * Finds the length of a surface list for debug purposes.
  */
-static s32 surface_list_length(struct SurfaceNode *list) {
+s32 surface_list_length(struct SurfaceNode *list) {
     s32 count = 0;
 
     while (list != NULL) {
@@ -776,7 +776,7 @@ void debug_surface_list_info(f32 xPos, f32 zPos) {
 
     set_text_array_x_y(-80, 0);
 
-    // listal- List Allocated?, statbg- Static Background?, movebg- Moving Background?
+    // listal- List Allocated?, statbg- Background?, movebg- Moving Background?
     print_debug_top_down_mapinfo("listal %d", gSurfaceNodesAllocated);
     print_debug_top_down_mapinfo("statbg %d", gNumStaticSurfaces);
     print_debug_top_down_mapinfo("movebg %d", gSurfacesAllocated - gNumStaticSurfaces);

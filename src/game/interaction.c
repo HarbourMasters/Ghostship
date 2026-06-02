@@ -82,7 +82,7 @@ struct InteractionHandler {
     u32 (*handler)(struct MarioState *, u32, struct Object *);
 };
 
-static struct InteractionHandler sInteractionHandlers[] = {
+struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_COIN,           interact_coin },
     { INTERACT_WATER_RING,     interact_water_ring },
     { INTERACT_STAR_OR_KEY,    interact_star_or_key },
@@ -116,21 +116,21 @@ static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_TEXT,           interact_text },
 };
 
-static u32 sForwardKnockbackActions[][3] = {
+u32 sForwardKnockbackActions[][3] = {
     { ACT_SOFT_FORWARD_GROUND_KB, ACT_FORWARD_GROUND_KB, ACT_HARD_FORWARD_GROUND_KB },
     { ACT_FORWARD_AIR_KB,         ACT_FORWARD_AIR_KB,    ACT_HARD_FORWARD_AIR_KB },
     { ACT_FORWARD_WATER_KB,       ACT_FORWARD_WATER_KB,  ACT_FORWARD_WATER_KB },
 };
 
-static u32 sBackwardKnockbackActions[][3] = {
+u32 sBackwardKnockbackActions[][3] = {
     { ACT_SOFT_BACKWARD_GROUND_KB, ACT_BACKWARD_GROUND_KB, ACT_HARD_BACKWARD_GROUND_KB },
     { ACT_BACKWARD_AIR_KB,         ACT_BACKWARD_AIR_KB,    ACT_HARD_BACKWARD_AIR_KB },
     { ACT_BACKWARD_WATER_KB,       ACT_BACKWARD_WATER_KB,  ACT_BACKWARD_WATER_KB },
 };
 
-static u8 sDisplayingDoorText = FALSE;
-static u8 sJustTeleported = FALSE;
-static u8 sPssSlideStarted = FALSE;
+u8 sDisplayingDoorText = FALSE;
+u8 sJustTeleported = FALSE;
+u8 sPssSlideStarted = FALSE;
 
 /**
  * Returns the type of cap Mario is wearing.
@@ -527,7 +527,7 @@ void hit_object_from_below(struct MarioState *m, UNUSED struct Object *o) {
     set_camera_shake_from_hit(SHAKE_HIT_FROM_BELOW);
 }
 
-UNUSED static u32 unused_determine_knockback_action(struct MarioState *m) {
+UNUSED u32 unused_determine_knockback_action(struct MarioState *m) {
     u32 bonkAction;
     s16 angleToObject = mario_obj_angle_to_object(m, m->interactObj);
     s16 facingDYaw = angleToObject - m->faceAngle[1];
@@ -1306,7 +1306,7 @@ u32 interact_shock(struct MarioState *m, UNUSED u32 interactType, struct Object 
     return FALSE;
 }
 
-UNUSED static u32 interact_stub(UNUSED struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
+UNUSED u32 interact_stub(UNUSED struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
     if (!(o->oInteractionSubtype & INT_SUBTYPE_DELAY_INVINCIBILITY)) {
         sDelayInvincTimer = TRUE;
     }
