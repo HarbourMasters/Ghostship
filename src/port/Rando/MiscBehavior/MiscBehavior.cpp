@@ -31,7 +31,7 @@ void Rando::MiscBehavior::Init() {
         if (!IS_RANDO(selectedFileNum)) {
             return;
         }
-        if (ev->command == 17) {
+        if ((*ev->cmd)->type == 17) {
             if (gCurrLevelNum == LEVEL_CASTLE || gCurrLevelNum == LEVEL_CASTLE_COURTYARD ||
                 gCurrLevelNum == LEVEL_CASTLE_GROUNDS) {
                 gRedCoinsCollected = 0;

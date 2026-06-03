@@ -32,12 +32,6 @@
 #define CMD_NEXT ((struct LevelCommand *) ((u8 *) sCurrentCmd + (sCurrentCmd->size << CMD_SIZE_SHIFT)))
 #define NEXT_CMD ((struct LevelCommand *) ((sCurrentCmd->size << CMD_SIZE_SHIFT) + (u8 *) sCurrentCmd))
 
-struct LevelCommand {
-    /*00*/ u8 type;
-    /*01*/ u8 size;
-    /*02*/ // variable sized argument data
-};
-
 enum ScriptStatus { SCRIPT_RUNNING = 1, SCRIPT_PAUSED = 0, SCRIPT_PAUSED2 = -1 };
 
 uintptr_t sStack[32];

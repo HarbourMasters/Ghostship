@@ -1,6 +1,7 @@
 #pragma once
 
 #include "engine/graph_node.h"
+#include "engine/level_script.h"
 
 typedef s32 (*LevelScriptFunction)(s16, s32);
 
@@ -62,16 +63,17 @@ DEFINE_EVENT(CameraUpdate,
 // Level script
 // ────────────────────────────────────────────────────────────────────────────
 
-// Fires when a level script entry point is about to execute.
-// Write *addr to redirect to a different script address.
+// Fires when a level script entry point is about to execute. Cancellable.
+// Write *cmd to redirect to a different script. Cancel — skips default entry point.
 DEFINE_EVENT(LevelScriptEntry,
-    uintptr_t* addr;  // mutable virtual address of the entry script
+    struct LevelCommand** cmd;  // mutable pointer to the entry command
 );
 
-// Fires for every level script command dispatched.
-// Write *currentCmd to skip or redirect the command stream.
+// Fires for every level script command dispatched. Cancellable.
+// Read (*cmd)->type for the opcode and (*cmd)->size for the command length.
+// Write *cmd to redirect or skip commands. Cancel — skips executing this command.
 DEFINE_EVENT(LevelScriptExecute,
-    void** currentCmd;  // mutable pointer to the current command pointer
+    struct LevelCommand** cmd;  // mutable pointer to sCurrentCmd
 );
 
 // Fires inside the level script loop handler.

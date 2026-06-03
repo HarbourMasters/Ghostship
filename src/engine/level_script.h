@@ -3,7 +3,11 @@
 
 #include <libultra/types.h>
 
-struct LevelCommand;
+struct LevelCommand {
+    /*00*/ uint8_t type;
+    /*01*/ uint8_t size;
+    /*02*/ // variable sized argument data
+};
 
 extern_s u8 level_script_entry[];
 extern_s struct AllocOnlyPool *sLevelPool;
