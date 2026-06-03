@@ -74,9 +74,12 @@ Gfx *geo_skybox_main(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx) 
         struct GraphNodePerspective *camFrustum =
             (struct GraphNodePerspective *) camNode->fnNode.node.parent;
 
-        gfx = create_skybox_facing_camera(0, backgroundNode->background, camFrustum->fov, gLakituState.pos[0],
-                            gLakituState.pos[1], gLakituState.pos[2], gLakituState.focus[0],
-                            gLakituState.focus[1], gLakituState.focus[2]);
+        s8 bg = backgroundNode->background;
+        CALL_CANCELLABLE_EVENT(SkyboxRender, &bg) {
+            gfx = create_skybox_facing_camera(0, bg, camFrustum->fov, gLakituState.pos[0],
+                                gLakituState.pos[1], gLakituState.pos[2], gLakituState.focus[0],
+                                gLakituState.focus[1], gLakituState.focus[2]);
+        }
     }
 
     return gfx;

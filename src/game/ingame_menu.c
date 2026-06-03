@@ -1471,6 +1471,11 @@ s8 gDialogCourseActNum = 1;
 #define DIAG_VAL4 (ROM_JP ? 4 : 5)
 
 void render_dialog_entries(void) {
+    CALL_CANCELLABLE_EVENT(DialogOverride, gDialogID) {}
+    if (DialogOverride_.Event.Cancelled) {
+        return;
+    }
+
 #ifdef VERSION_EU
     s8 lowerBound;
 #endif
@@ -2290,6 +2295,11 @@ s8 gHudFlash = 0;
 s16 render_pause_courses_and_castle(void) {
     s16 index;
 
+    CALL_CANCELLABLE_EVENT(PauseMenuOverride, gMenuMode) {}
+    if (PauseMenuOverride_.Event.Cancelled) {
+        return MENU_OPT_NONE;
+    }
+
 #ifdef VERSION_EU
     gInGameLanguage = eu_get_language();
 #endif
@@ -2643,6 +2653,12 @@ void render_save_confirmation(s16 x, s16 y, s8 *index, s16 yOffset)
 
 s16 render_course_complete_screen(void) {
     s16 index;
+
+    CALL_CANCELLABLE_EVENT(CourseCompleteOverride, gCurrCourseNum) {}
+    if (CourseCompleteOverride_.Event.Cancelled) {
+        return MENU_OPT_NONE;
+    }
+
 #ifdef VERSION_EU
     gInGameLanguage = eu_get_language();
 #endif

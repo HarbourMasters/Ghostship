@@ -700,7 +700,9 @@ void thread5_game_loop(void) {
     save_file_load_all();
 
     // Point address to the entry point into the level script data.
-    addr = segmented_to_virtual(level_script_entry);
+    CALL_CANCELLABLE_EVENT(LevelScriptEntry, &addr) {
+        addr = segmented_to_virtual(level_script_entry);
+    }
 
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
     set_sound_mode(save_file_get_sound_mode());

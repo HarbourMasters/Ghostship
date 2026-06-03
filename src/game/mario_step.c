@@ -108,47 +108,49 @@ u32 mario_update_quicksand(struct MarioState *m, f32 sinkingSpeed) {
     if (m->action & ACT_FLAG_RIDING_SHELL) {
         m->quicksandDepth = 0.0f;
     } else {
-        if (m->quicksandDepth < 1.1f) {
-            m->quicksandDepth = 1.1f;
-        }
+        CALL_CANCELLABLE_EVENT(PlayerQuicksandSink, m, &m->quicksandDepth) {
+            if (m->quicksandDepth < 1.1f) {
+                m->quicksandDepth = 1.1f;
+            }
 
-        switch (m->floor->type) {
-            case SURFACE_SHALLOW_QUICKSAND:
-                if ((m->quicksandDepth += sinkingSpeed) >= 10.0f) {
-                    m->quicksandDepth = 10.0f;
-                }
-                break;
+            switch (m->floor->type) {
+                case SURFACE_SHALLOW_QUICKSAND:
+                    if ((m->quicksandDepth += sinkingSpeed) >= 10.0f) {
+                        m->quicksandDepth = 10.0f;
+                    }
+                    break;
 
-            case SURFACE_SHALLOW_MOVING_QUICKSAND:
-                if ((m->quicksandDepth += sinkingSpeed) >= 25.0f) {
-                    m->quicksandDepth = 25.0f;
-                }
-                break;
+                case SURFACE_SHALLOW_MOVING_QUICKSAND:
+                    if ((m->quicksandDepth += sinkingSpeed) >= 25.0f) {
+                        m->quicksandDepth = 25.0f;
+                    }
+                    break;
 
-            case SURFACE_QUICKSAND:
-            case SURFACE_MOVING_QUICKSAND:
-                if ((m->quicksandDepth += sinkingSpeed) >= 60.0f) {
-                    m->quicksandDepth = 60.0f;
-                }
-                break;
+                case SURFACE_QUICKSAND:
+                case SURFACE_MOVING_QUICKSAND:
+                    if ((m->quicksandDepth += sinkingSpeed) >= 60.0f) {
+                        m->quicksandDepth = 60.0f;
+                    }
+                    break;
 
-            case SURFACE_DEEP_QUICKSAND:
-            case SURFACE_DEEP_MOVING_QUICKSAND:
-                if ((m->quicksandDepth += sinkingSpeed) >= 160.0f) {
+                case SURFACE_DEEP_QUICKSAND:
+                case SURFACE_DEEP_MOVING_QUICKSAND:
+                    if ((m->quicksandDepth += sinkingSpeed) >= 160.0f) {
+                        update_mario_sound_and_camera(m);
+                        return drop_and_set_mario_action(m, ACT_QUICKSAND_DEATH, 0);
+                    }
+                    break;
+
+                case SURFACE_INSTANT_QUICKSAND:
+                case SURFACE_INSTANT_MOVING_QUICKSAND:
                     update_mario_sound_and_camera(m);
                     return drop_and_set_mario_action(m, ACT_QUICKSAND_DEATH, 0);
-                }
-                break;
+                    break;
 
-            case SURFACE_INSTANT_QUICKSAND:
-            case SURFACE_INSTANT_MOVING_QUICKSAND:
-                update_mario_sound_and_camera(m);
-                return drop_and_set_mario_action(m, ACT_QUICKSAND_DEATH, 0);
-                break;
-
-            default:
-                m->quicksandDepth = 0.0f;
-                break;
+                default:
+                    m->quicksandDepth = 0.0f;
+                    break;
+            }
         }
     }
 
@@ -208,8 +210,12 @@ u32 mario_update_windy_ground(struct MarioState *m) {
             pushSpeed = 3.2f + (gGlobalTimer % 4);
         }
 
-        m->vel[0] += pushSpeed * sins(pushAngle);
-        m->vel[2] += pushSpeed * coss(pushAngle);
+        f32 pushX = pushSpeed * sins(pushAngle);
+        f32 pushZ = pushSpeed * coss(pushAngle);
+        CALL_CANCELLABLE_EVENT(PlayerWindForce, m, &pushX, &pushZ) {
+            m->vel[0] += pushX;
+            m->vel[2] += pushZ;
+        }
 
         if(ROM_JP) {
             play_sound(SOUND_ENV_WIND2, m->marioObj->header.gfx.cameraToObject);
@@ -338,6 +344,17 @@ s32 perform_ground_step(struct MarioState *m) {
     m->terrainSoundAddend = mario_get_terrain_sound_addend(m);
     vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
+
+    {
+        static s16 sPrevFloorType = 0;
+        if (m->floor != NULL) {
+            s16 newType = m->floor->type;
+            if (sPrevFloorType != newType) {
+                CALL_EVENT(PlayerFloorTypeChange, m, sPrevFloorType, &newType);
+                sPrevFloorType = newType;
+            }
+        }
+    }
 
     if (stepResult == GROUND_STEP_HIT_WALL_CONTINUE_QSTEPS) {
         stepResult = GROUND_STEP_HIT_WALL;

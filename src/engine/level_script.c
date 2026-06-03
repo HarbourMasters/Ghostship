@@ -836,8 +836,9 @@ struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
     sCurrentCmd = cmd;
 
     while (sScriptStatus == SCRIPT_RUNNING) {
-        LevelScriptJumpTable[sCurrentCmd->type]();
-        CALL_EVENT(LevelScriptExecute, sCurrentCmd->type);
+        CALL_CANCELLABLE_EVENT(LevelScriptExecute, &sCurrentCmd) {
+            LevelScriptJumpTable[sCurrentCmd->type]();
+        }
     }
 
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);

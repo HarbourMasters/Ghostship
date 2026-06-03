@@ -475,6 +475,10 @@ s32 act_double_jump(struct MarioState *m) {
 }
 
 s32 act_triple_jump(struct MarioState *m) {
+    if (m->actionTimer == 0) {
+        CALL_EVENT(PlayerTripleJump, m);
+    }
+
     if (gSpecialTripleJump) {
         return set_mario_action(m, ACT_SPECIAL_TRIPLE_JUMP, 0);
     }
@@ -500,6 +504,10 @@ s32 act_triple_jump(struct MarioState *m) {
 }
 
 s32 act_backflip(struct MarioState *m) {
+    if (m->actionTimer == 0) {
+        CALL_EVENT(PlayerBackflip, m);
+    }
+
     if (m->input & INPUT_Z_PRESSED) {
         return set_mario_action(m, ACT_GROUND_POUND, 0);
     }
@@ -609,6 +617,10 @@ s32 act_side_flip(struct MarioState *m) {
 }
 
 s32 act_wall_kick_air(struct MarioState *m) {
+    if (m->actionTimer == 0) {
+        CALL_EVENT(PlayerWallJump, m);
+    }
+
     if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_DIVE, 0);
     }
@@ -624,6 +636,10 @@ s32 act_wall_kick_air(struct MarioState *m) {
 
 s32 act_long_jump(struct MarioState *m) {
     s32 animation;
+    if (m->actionTimer == 0) {
+        CALL_EVENT(PlayerLongJump, m, &m->forwardVel);
+    }
+
     if (!m->marioObj->oMarioLongJumpIsSlow) {
         animation = MARIO_ANIM_FAST_LONGJUMP;
     } else {
@@ -911,6 +927,10 @@ s32 act_ground_pound(struct MarioState *m) {
     play_sound_if_no_flag(m, SOUND_ACTION_THROW, MARIO_ACTION_SOUND_PLAYED);
 
     if (m->actionState == 0) {
+        if (m->actionTimer == 0) {
+            CALL_EVENT(PlayerGroundPoundStart, m);
+        }
+
         if (m->actionTimer < 10) {
             yOffset = 20 - 2 * m->actionTimer;
             if (m->pos[1] + yOffset + 160.0f < m->ceilHeight) {
@@ -939,6 +959,7 @@ s32 act_ground_pound(struct MarioState *m) {
 
         stepResult = perform_air_step(m, 0);
         if (stepResult == AIR_STEP_LANDED) {
+            CALL_EVENT(PlayerGroundPoundLand, m, m->peakHeight - m->pos[1]);
             if (should_get_stuck_in_ground(m)) {
 #if ENABLE_RUMBLE
                 queue_rumble_data(5, 80);

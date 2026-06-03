@@ -184,6 +184,8 @@ void bhv_act_selector_loop(void) {
     u8 starIndexCounter;
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
+    CALL_EVENT(StarSelectRender, gCurrCourseNum, stars, sSelectedActIndex);
+
     if (!sStarSelectState && !CVarGetInteger("gEnhancements.SelectAllStars", 0)) {
         // If the option is toggled after stars have been drawn, then we want to set the star index to a valid index
         starIndexCounter = 0;
@@ -382,7 +384,10 @@ void print_act_selector_strings(void) {
  */
 Gfx *geo_act_selector_strings(s16 callContext, UNUSED struct GraphNode *node, UNUSED void *context) {
     if (callContext == GEO_CONTEXT_RENDER) {
-        print_act_selector_strings();
+        u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
+        CALL_CANCELLABLE_EVENT(StarSelectOverride, gCurrCourseNum, stars, sSelectedActIndex) {
+            print_act_selector_strings();
+        }
     }
     return NULL;
 }

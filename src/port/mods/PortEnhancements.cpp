@@ -140,6 +140,32 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(RenderGamePre);
     REGISTER_EVENT(RenderGamePost);
     REGISTER_EVENT(GeoLayoutCallASM);
+    REGISTER_EVENT(RenderHudLives);
+    REGISTER_EVENT(RenderHudCoins);
+    REGISTER_EVENT(RenderHudStars);
+    REGISTER_EVENT(RenderHudPowerMeter);
+    REGISTER_EVENT(RenderHudCameraStatus);
+    REGISTER_EVENT(RenderHudTimer);
+    REGISTER_EVENT(SkyboxRender);
+    REGISTER_EVENT(MovingTextureRender);
+    REGISTER_EVENT(ScreenTransitionFadeOut);
+    REGISTER_EVENT(ScreenTransitionFadeIn);
+    REGISTER_EVENT(ScreenTransitionTexture);
+    REGISTER_EVENT(StarSelectRender);
+    REGISTER_EVENT(FileSelectOverride);
+    REGISTER_EVENT(StarSelectOverride);
+    REGISTER_EVENT(PauseMenuOverride);
+    REGISTER_EVENT(CourseCompleteOverride);
+    REGISTER_EVENT(DialogOverride);
+    REGISTER_EVENT(GeoLayoutBegin);
+    REGISTER_EVENT(GeoLayoutEnd);
+    REGISTER_EVENT(GeoLayoutNodePerspective);
+    REGISTER_EVENT(GeoLayoutNodeCamera);
+    REGISTER_EVENT(GeoLayoutNodeSwitchCase);
+    REGISTER_EVENT(GeoLayoutNodeScale);
+    REGISTER_EVENT(GeoLayoutNodeShadow);
+    REGISTER_EVENT(GeoLayoutNodeDisplayList);
+    REGISTER_EVENT(LevelScriptEntry);
     REGISTER_EVENT(LevelScriptExecute);
     REGISTER_EVENT(EntityDistanceLoad);
     REGISTER_EVENT(LevelScriptCallLoop);
@@ -167,6 +193,29 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(PlayerLanded);
     REGISTER_EVENT(PlayerHit);
     REGISTER_EVENT(PlayerKnockback);
+    REGISTER_EVENT(CannonEntered);
+    REGISTER_EVENT(PoleGrabbed);
+    REGISTER_EVENT(HootGrabbed);
+    REGISTER_EVENT(ShellMounted);
+    REGISTER_EVENT(FlameHit);
+    REGISTER_EVENT(ShockHit);
+    REGISTER_EVENT(BreakableHit);
+    REGISTER_EVENT(PlayerCapGained);
+    REGISTER_EVENT(PlayerObjectGrabbed);
+    REGISTER_EVENT(PlayerObjectThrown);
+    REGISTER_EVENT(PlayerObjectDropped);
+    REGISTER_EVENT(PlayerBounceOnEnemy);
+    REGISTER_EVENT(PlayerTripleJump);
+    REGISTER_EVENT(PlayerWallJump);
+    REGISTER_EVENT(PlayerLongJump);
+    REGISTER_EVENT(PlayerBackflip);
+    REGISTER_EVENT(PlayerGroundPoundStart);
+    REGISTER_EVENT(PlayerGroundPoundLand);
+    REGISTER_EVENT(PlayerWaterEntry);
+    REGISTER_EVENT(PlayerWaterExit);
+    REGISTER_EVENT(PlayerFloorTypeChange);
+    REGISTER_EVENT(PlayerQuicksandSink);
+    REGISTER_EVENT(PlayerWindForce);
 
     // Register Rando Events
     REGISTER_EVENT(ItemCollected);
@@ -197,6 +246,12 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(WarpStart);
     REGISTER_EVENT(WarpEnd);
     REGISTER_EVENT(ButtonPressed);
+    REGISTER_EVENT(PaintingEntered);
+    REGISTER_EVENT(PaintingRipple);
+    REGISTER_EVENT(WaterRingPickup);
+    REGISTER_EVENT(TornadoInteraction);
+    REGISTER_EVENT(WarpDoorInteraction);
+    REGISTER_EVENT(BehaviorTick);
 
     // Register audio events
     REGISTER_EVENT(PlayMusicEvent);

@@ -436,21 +436,27 @@ void render_hud(void) {
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_LIVES) {
-            FrameInterpolation_RecordOpenChild("render_hud_mario_lives", (uintptr_t)&gHudDisplay.lives);
-            render_hud_mario_lives();
-            FrameInterpolation_RecordCloseChild();
+            CALL_CANCELLABLE_EVENT(RenderHudLives, gHudDisplay.lives) {
+                FrameInterpolation_RecordOpenChild("render_hud_mario_lives", (uintptr_t)&gHudDisplay.lives);
+                render_hud_mario_lives();
+                FrameInterpolation_RecordCloseChild();
+            }
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_COIN_COUNT) {
-            FrameInterpolation_RecordOpenChild("render_hud_coins", (uintptr_t)&gHudDisplay.coins);
-            render_hud_coins();
-            FrameInterpolation_RecordCloseChild();
+            CALL_CANCELLABLE_EVENT(RenderHudCoins, gHudDisplay.coins) {
+                FrameInterpolation_RecordOpenChild("render_hud_coins", (uintptr_t)&gHudDisplay.coins);
+                render_hud_coins();
+                FrameInterpolation_RecordCloseChild();
+            }
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_STAR_COUNT) {
-            FrameInterpolation_RecordOpenChild("render_hud_stars", (uintptr_t)&gHudDisplay.stars);
-            render_hud_stars();
-            FrameInterpolation_RecordCloseChild();
+            CALL_CANCELLABLE_EVENT(RenderHudStars, gHudDisplay.stars) {
+                FrameInterpolation_RecordOpenChild("render_hud_stars", (uintptr_t)&gHudDisplay.stars);
+                render_hud_stars();
+                FrameInterpolation_RecordCloseChild();
+            }
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_KEYS) {
@@ -460,18 +466,24 @@ void render_hud(void) {
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_CAMERA_AND_POWER) {
-            FrameInterpolation_RecordOpenChild("render_hud_power_meter", (uintptr_t)&sPowerMeterHUD.animation);
-            render_hud_power_meter();
-            FrameInterpolation_RecordCloseChild();
-            FrameInterpolation_RecordOpenChild("render_hud_camera_status", (uintptr_t)&sCameraHUD.status);
-            render_hud_camera_status();
-            FrameInterpolation_RecordCloseChild();
+            CALL_CANCELLABLE_EVENT(RenderHudPowerMeter, gHudDisplay.wedges) {
+                FrameInterpolation_RecordOpenChild("render_hud_power_meter", (uintptr_t)&sPowerMeterHUD.animation);
+                render_hud_power_meter();
+                FrameInterpolation_RecordCloseChild();
+            }
+            CALL_CANCELLABLE_EVENT(RenderHudCameraStatus, sCameraHUD.status) {
+                FrameInterpolation_RecordOpenChild("render_hud_camera_status", (uintptr_t)&sCameraHUD.status);
+                render_hud_camera_status();
+                FrameInterpolation_RecordCloseChild();
+            }
         }
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_TIMER) {
-            FrameInterpolation_RecordOpenChild("render_hud_timer", (uintptr_t)&gHudDisplay.timer);
-            render_hud_timer();
-            FrameInterpolation_RecordCloseChild();
+            CALL_CANCELLABLE_EVENT(RenderHudTimer, gHudDisplay.timer) {
+                FrameInterpolation_RecordOpenChild("render_hud_timer", (uintptr_t)&gHudDisplay.timer);
+                render_hud_timer();
+                FrameInterpolation_RecordCloseChild();
+            }
         }
         FrameInterpolation_RecordCloseChild();
     }

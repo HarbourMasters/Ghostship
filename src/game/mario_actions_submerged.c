@@ -570,6 +570,10 @@ s32 act_breaststroke(struct MarioState *m) {
 }
 
 s32 act_swimming_end(struct MarioState *m) {
+    if (m->actionTimer == 0) {
+        CALL_EVENT(PlayerWaterExit, m);
+    }
+
     if (m->flags & MARIO_METAL_CAP) {
         return set_mario_action(m, ACT_METAL_WATER_FALLING, 1);
     }
@@ -956,6 +960,10 @@ s32 act_water_death(struct MarioState *m) {
 }
 
 s32 act_water_plunge(struct MarioState *m) {
+    if (m->actionState == 0 && m->actionTimer == 0) {
+        CALL_EVENT(PlayerWaterEntry, m);
+    }
+
     u32 stepResult;
     s32 stateFlags = m->heldObj != NULL;
 

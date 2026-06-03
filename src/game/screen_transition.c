@@ -76,13 +76,19 @@ s32 dl_transition_color(s8 fadeTimer, u8 transTime, struct WarpTransitionData *t
 s32 render_fade_transition_from_color(s8 fadeTimer, u8 transTime, struct WarpTransitionData *transData) {
     u8 alpha = set_transition_color_fade_alpha(1, fadeTimer, transTime);
 
-    return dl_transition_color(fadeTimer, transTime, transData, alpha);
+    CALL_CANCELLABLE_EVENT(ScreenTransitionFadeOut, transData, alpha) {
+        return dl_transition_color(fadeTimer, transTime, transData, alpha);
+    }
+    return set_and_reset_transition_fade_timer(fadeTimer, transTime);
 }
 
 s32 render_fade_transition_into_color(s8 fadeTimer, u8 transTime, struct WarpTransitionData *transData) {
     u8 alpha = set_transition_color_fade_alpha(0, fadeTimer, transTime);
 
-    return dl_transition_color(fadeTimer, transTime, transData, alpha);
+    CALL_CANCELLABLE_EVENT(ScreenTransitionFadeIn, transData, alpha) {
+        return dl_transition_color(fadeTimer, transTime, transData, alpha);
+    }
+    return set_and_reset_transition_fade_timer(fadeTimer, transTime);
 }
 
 s16 calc_tex_transition_radius(s8 fadeTimer, s8 transTime, struct WarpTransitionData *transData) {
@@ -167,6 +173,10 @@ void *sTextureTransitionID[] = {
 };
 
 s32 render_textured_transition(s8 fadeTimer, s8 transTime, struct WarpTransitionData *transData, s8 texID, s8 transTexType) {
+    CALL_CANCELLABLE_EVENT(ScreenTransitionTexture, transData, &texID) {}
+    if (ScreenTransitionTexture_.Event.Cancelled) {
+        return set_and_reset_transition_fade_timer(fadeTimer, transTime);
+    }
     f32 texTransTime = calc_tex_transition_time(fadeTimer, transTime, transData);
     u16 texTransPos = convert_tex_transition_angle_to_pos(transData);
     s16 centerTransX = center_tex_transition_x(transData, texTransTime, texTransPos);

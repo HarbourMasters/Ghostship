@@ -268,9 +268,13 @@ void geo_layout_cmd_node_perspective(void) {
         gGeoLayoutCommand += 4 << CMD_SIZE_SHIFT;
     }
 
-    graphNode = init_graph_node_perspective(gGraphNodePool, NULL, (f32) fov, near, far, frustumFunc, 0);
-
-    register_scene_graph_node(&graphNode->fnNode.node);
+    {
+        f32 fovF = (f32) fov;
+        CALL_CANCELLABLE_EVENT(GeoLayoutNodePerspective, &fovF, &near, &far, &frustumFunc) {
+            graphNode = init_graph_node_perspective(gGraphNodePool, NULL, fovF, near, far, frustumFunc, 0);
+            register_scene_graph_node(&graphNode->fnNode.node);
+        }
+    }
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
@@ -335,16 +339,14 @@ void geo_layout_cmd_node_level_of_detail(void) {
   Used for animating coins, blinking, color selection, etc.
 */
 void geo_layout_cmd_node_switch_case(void) {
-    struct GraphNodeSwitchCase *graphNode;
+    s16 initialCase = cur_geo_cmd_s16(0x02);
+    GraphNodeFunc func = (GraphNodeFunc) cur_geo_cmd_ptr(0x04);
 
-    graphNode =
-        init_graph_node_switch_case(gGraphNodePool, NULL,
-                                    cur_geo_cmd_s16(0x02), // case which is initially selected
-                                    0,
-                                    (GraphNodeFunc) cur_geo_cmd_ptr(0x04), // case update function
-                                    0);
-
-    register_scene_graph_node(&graphNode->fnNode.node);
+    CALL_CANCELLABLE_EVENT(GeoLayoutNodeSwitchCase, &initialCase, &func) {
+        struct GraphNodeSwitchCase *graphNode =
+            init_graph_node_switch_case(gGraphNodePool, NULL, initialCase, 0, func, 0);
+        register_scene_graph_node(&graphNode->fnNode.node);
+    }
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
@@ -361,20 +363,21 @@ void geo_layout_cmd_node_switch_case(void) {
   cmd+0x10: GraphNodeFunc func
 */
 void geo_layout_cmd_node_camera(void) {
-    struct GraphNodeCamera *graphNode;
-    s16 *cmdPos = (s16 *) &gGeoLayoutCommand[4];
-
+    s16 type = cur_geo_cmd_s16(0x02);
     Vec3f pos, focus;
+    s16 *cmdPos = (s16 *) &gGeoLayoutCommand[4];
 
     cmdPos = read_vec3s_to_vec3f(pos, cmdPos);
     cmdPos = read_vec3s_to_vec3f(focus, cmdPos);
 
-    graphNode = init_graph_node_camera(gGraphNodePool, NULL, pos, focus,
-                                       (GraphNodeFunc) cur_geo_cmd_ptr(0x10), cur_geo_cmd_s16(0x02));
+    GraphNodeFunc func = (GraphNodeFunc) cur_geo_cmd_ptr(0x10);
 
-    register_scene_graph_node(&graphNode->fnNode.node);
-
-    gGeoViews[0] = &graphNode->fnNode.node;
+    CALL_CANCELLABLE_EVENT(GeoLayoutNodeCamera, &type, pos, focus, &func) {
+        struct GraphNodeCamera *graphNode =
+            init_graph_node_camera(gGraphNodePool, NULL, pos, focus, func, type);
+        register_scene_graph_node(&graphNode->fnNode.node);
+        gGeoViews[0] = &graphNode->fnNode.node;
+    }
 
     gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;
 }
@@ -537,8 +540,6 @@ void geo_layout_cmd_node_rotation(void) {
   [cmd+0x08: void *displayList]
 */
 void geo_layout_cmd_node_scale(void) {
-    struct GraphNodeScale *graphNode;
-
     s16 drawingLayer = 0;
     s16 params = cur_geo_cmd_u8(0x01);
     f32 scale = cur_geo_cmd_u32(0x04) / 65536.0f;
@@ -550,9 +551,11 @@ void geo_layout_cmd_node_scale(void) {
         gGeoLayoutCommand += 4 << CMD_SIZE_SHIFT;
     }
 
-    graphNode = init_graph_node_scale(gGraphNodePool, NULL, drawingLayer, displayList, scale);
-
-    register_scene_graph_node(&graphNode->node);
+    CALL_CANCELLABLE_EVENT(GeoLayoutNodeScale, &drawingLayer, &scale, &displayList) {
+        struct GraphNodeScale *graphNode =
+            init_graph_node_scale(gGraphNodePool, NULL, drawingLayer, displayList, scale);
+        register_scene_graph_node(&graphNode->node);
+    }
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
@@ -626,13 +629,14 @@ void geo_layout_cmd_node_billboard(void) {
    cmd+0x04: void *displayList
 */
 void geo_layout_cmd_node_display_list(void) {
-    struct GraphNodeDisplayList *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
 
-    graphNode = init_graph_node_display_list(gGraphNodePool, NULL, drawingLayer, displayList);
-
-    register_scene_graph_node(&graphNode->node);
+    CALL_CANCELLABLE_EVENT(GeoLayoutNodeDisplayList, &drawingLayer, &displayList) {
+        struct GraphNodeDisplayList *graphNode =
+            init_graph_node_display_list(gGraphNodePool, NULL, drawingLayer, displayList);
+        register_scene_graph_node(&graphNode->node);
+    }
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
@@ -644,14 +648,15 @@ void geo_layout_cmd_node_display_list(void) {
    cmd+0x06: s16 shadowScale
 */
 void geo_layout_cmd_node_shadow(void) {
-    struct GraphNodeShadow *graphNode;
-    u8 shadowType = cur_geo_cmd_s16(0x02);
-    u8 shadowSolidity = cur_geo_cmd_s16(0x04);
+    u8 shadowType = (u8) cur_geo_cmd_s16(0x02);
+    u8 shadowSolidity = (u8) cur_geo_cmd_s16(0x04);
     s16 shadowScale = cur_geo_cmd_s16(0x06);
 
-    graphNode = init_graph_node_shadow(gGraphNodePool, NULL, shadowScale, shadowSolidity, shadowType);
-
-    register_scene_graph_node(&graphNode->node);
+    CALL_CANCELLABLE_EVENT(GeoLayoutNodeShadow, &shadowType, &shadowSolidity, &shadowScale) {
+        struct GraphNodeShadow *graphNode =
+            init_graph_node_shadow(gGraphNodePool, NULL, shadowScale, shadowSolidity, shadowType);
+        register_scene_graph_node(&graphNode->node);
+    }
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
@@ -673,13 +678,13 @@ void geo_layout_cmd_node_object_parent(void) {
    cmd+0x04: GraphNodeFunc func
 */
 void geo_layout_cmd_node_generated(void) {
-    struct GraphNodeGenerated *graphNode;
+    GraphNodeFunc func = (GraphNodeFunc) cur_geo_cmd_ptr(0x04);
+    s16 param = cur_geo_cmd_s16(0x02);
 
-    graphNode = init_graph_node_generated(gGraphNodePool, NULL,
-                                          (GraphNodeFunc) cur_geo_cmd_ptr(0x04), // asm function
-                                          cur_geo_cmd_s16(0x02));                // parameter
-
-    register_scene_graph_node(&graphNode->fnNode.node);
+    CALL_CANCELLABLE_EVENT(GeoLayoutCallASM, &func, &param) {
+        struct GraphNodeGenerated *graphNode = init_graph_node_generated(gGraphNodePool, NULL, func, param);
+        register_scene_graph_node(&graphNode->fnNode.node);
+    }
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
@@ -690,15 +695,14 @@ void geo_layout_cmd_node_generated(void) {
    cmd+0x04: GraphNodeFunc backgroundFunc
 */
 void geo_layout_cmd_node_background(void) {
-    struct GraphNodeBackground *graphNode;
+    GraphNodeFunc func = (GraphNodeFunc) cur_geo_cmd_ptr(0x04);
+    s16 param = cur_geo_cmd_s16(0x02);
 
-    graphNode = init_graph_node_background(
-        gGraphNodePool, NULL,
-        cur_geo_cmd_s16(0x02), // background ID, or RGBA5551 color if asm function is null
-        (GraphNodeFunc) cur_geo_cmd_ptr(0x04), // asm function
-        0);
-
-    register_scene_graph_node(&graphNode->fnNode.node);
+    CALL_CANCELLABLE_EVENT(GeoLayoutCallASM, &func, &param) {
+        struct GraphNodeBackground *graphNode = init_graph_node_background(
+            gGraphNodePool, NULL, param, func, 0);
+        register_scene_graph_node(&graphNode->fnNode.node);
+    }
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
@@ -787,6 +791,8 @@ struct GraphNode *process_geo_layout(struct AllocOnlyPool *pool, void *segptr) {
     gGeoLayoutStack[0] = 0;
     gGeoLayoutStack[1] = 0;
 
+    CALL_EVENT(GeoLayoutBegin, segptr);
+
     if(GameEngine_OTRSigCheck(segptr) == 1){
         GeoLayoutExecute(segptr);
     } else {
@@ -798,5 +804,6 @@ struct GraphNode *process_geo_layout(struct AllocOnlyPool *pool, void *segptr) {
         }
     }
 
+    CALL_EVENT(GeoLayoutEnd, gCurRootGraphNode);
     return gCurRootGraphNode;
 }

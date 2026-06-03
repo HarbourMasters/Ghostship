@@ -844,17 +844,20 @@ Gfx *geo_movtex_draw_nocolor(s32 callContext, struct GraphNode *node, UNUSED Mat
     if (callContext == GEO_CONTEXT_RENDER) {
         i = 0;
         asGenerated = (struct GraphNodeGenerated *) node;
-        while (gMovtexNonColored[i].movtexVerts != 0) {
-            if (gMovtexNonColored[i].geoId == asGenerated->parameter) {
-                asGenerated->fnNode.node.flags =
-                    (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexNonColored[i].layer << 8);
-                movtexVerts = segmented_to_virtual(gMovtexNonColored[i].movtexVerts);
-                update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_NOCOLOR_S);
-                gfx = movtex_gen_list(movtexVerts, &gMovtexNonColored[i],
-                                      MOVTEX_LAYOUT_NOCOLOR); // no perVertex colors
-                break;
+        s16 movtexId = asGenerated->parameter;
+        CALL_CANCELLABLE_EVENT(MovingTextureRender, &movtexId) {
+            while (gMovtexNonColored[i].movtexVerts != 0) {
+                if (gMovtexNonColored[i].geoId == movtexId) {
+                    asGenerated->fnNode.node.flags =
+                        (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexNonColored[i].layer << 8);
+                    movtexVerts = segmented_to_virtual(gMovtexNonColored[i].movtexVerts);
+                    update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_NOCOLOR_S);
+                    gfx = movtex_gen_list(movtexVerts, &gMovtexNonColored[i],
+                                          MOVTEX_LAYOUT_NOCOLOR);
+                    break;
+                }
+                i++;
             }
-            i++;
         }
     }
     return gfx;
@@ -872,16 +875,19 @@ Gfx *geo_movtex_draw_colored(s32 callContext, struct GraphNode *node, UNUSED Mat
     if (callContext == GEO_CONTEXT_RENDER) {
         i = 0;
         asGenerated = (struct GraphNodeGenerated *) node;
-        while (gMovtexColored[i].movtexVerts != 0) {
-            if (gMovtexColored[i].geoId == asGenerated->parameter) {
-                asGenerated->fnNode.node.flags =
-                    (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexColored[i].layer << 8);
-                movtexVerts = segmented_to_virtual(gMovtexColored[i].movtexVerts);
-                update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_COLORED_S);
-                gfx = movtex_gen_list(movtexVerts, &gMovtexColored[i], MOVTEX_LAYOUT_COLORED);
-                break;
+        s16 movtexId = asGenerated->parameter;
+        CALL_CANCELLABLE_EVENT(MovingTextureRender, &movtexId) {
+            while (gMovtexColored[i].movtexVerts != 0) {
+                if (gMovtexColored[i].geoId == movtexId) {
+                    asGenerated->fnNode.node.flags =
+                        (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexColored[i].layer << 8);
+                    movtexVerts = segmented_to_virtual(gMovtexColored[i].movtexVerts);
+                    update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_COLORED_S);
+                    gfx = movtex_gen_list(movtexVerts, &gMovtexColored[i], MOVTEX_LAYOUT_COLORED);
+                    break;
+                }
+                i++;
             }
-            i++;
         }
     }
     return gfx;

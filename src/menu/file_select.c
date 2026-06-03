@@ -2766,8 +2766,10 @@ void print_file_select_strings(void) {
  */
 Gfx *geo_file_select_strings_and_menu_cursor(s32 callContext, UNUSED struct GraphNode *node, UNUSED Mat4 mtx) {
     if (callContext == GEO_CONTEXT_RENDER) {
-        print_file_select_strings();
-        print_menu_cursor();
+        CALL_CANCELLABLE_EVENT(FileSelectOverride) {
+            print_file_select_strings();
+            print_menu_cursor();
+        }
     }
     return NULL;
 }

@@ -910,6 +910,8 @@ BhvCommandProc BehaviorCmdTable[] = {
 void cur_obj_update(void) {
     UNUSED u8 filler[4];
 
+    CALL_EVENT(BehaviorTick, gCurrentObject);
+
     s16 objFlags = gCurrentObject->oFlags;
     f32 distanceFromMario;
     BhvCommandProc bhvCmdProc;

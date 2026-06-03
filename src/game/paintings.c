@@ -335,6 +335,7 @@ void painting_state(s8 state, struct Painting *painting, struct Painting *painti
             painting->rippleDecay      = painting->passiveRippleDecay;
             painting->currRippleRate   = painting->passiveRippleRate;
             painting->dispersionFactor = painting->passiveDispersionFactor;
+            CALL_EVENT(PaintingRipple, painting);
             break;
 
         case PAINTING_ENTERED:
@@ -342,6 +343,7 @@ void painting_state(s8 state, struct Painting *painting, struct Painting *painti
             painting->rippleDecay      = painting->entryRippleDecay;
             painting->currRippleRate   = painting->entryRippleRate;
             painting->dispersionFactor = painting->entryDispersionFactor;
+            CALL_EVENT(PaintingEntered, painting);
             break;
     }
     painting->state = state;
