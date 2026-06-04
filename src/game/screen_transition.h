@@ -19,7 +19,7 @@ enum TextureTransitionType {
     TRANS_TYPE_CLAMP
 };
 
-s32 render_screen_transition(s8 fadeTimer, s8 transType, u8 transTime, struct WarpTransitionData *transData);
-Gfx *geo_cannon_circle_base(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx);
+extern_s s32 render_screen_transition(s8 fadeTimer, s8 transType, u8 transTime, struct WarpTransitionData *transData);
+extern_s Gfx *geo_cannon_circle_base(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx);
 
 #endif // SCREEN_TRANSITION_H

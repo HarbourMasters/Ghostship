@@ -8,26 +8,22 @@
 #include "port/interpolation/FrameInterpolation.h"
 
 #include "engine/geo_layout.h"
-
-extern "C" {
-#include "engine/graph_node.h"
-#include "engine/math_util.h"
-
-// Function Table
+#include "game/paintings.h"
 #include "menu/intro_geo.h"
+#include "engine/graph_node.h"
+#include "game/camera.h"
+#include "game/geo_misc.h"
+#include "engine/math_util.h"
+#include "menu/file_select.h"
+#include "menu/star_select.h"
 #include "game/object_helpers.h"
 #include "game/behavior_actions.h"
 #include "game/mario_misc.h"
-#include "game/camera.h"
 #include "game/mario_actions_cutscene.h"
 #include "game/level_geo.h"
 #include "game/moving_texture.h"
 #include "game/screen_transition.h"
-#include "game/paintings.h"
-#include "game/geo_misc.h"
-#include "menu/star_select.h"
-#include "menu/file_select.h"
-}
+
 Ship::BinaryReader* GeoLayoutParser::mReader = nullptr;
 
 typedef void (*GeoCommandFunction)();

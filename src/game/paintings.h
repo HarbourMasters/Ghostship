@@ -134,7 +134,7 @@ extern_s Vec3f *gPaintingTriNorms;
 extern_s struct Painting *gRipplingPainting;
 extern_s s8 gDddPaintingStatus;
 
-Gfx *geo_painting_draw(s32 callContext, struct GraphNode *node, UNUSED void *context);
-Gfx *geo_painting_update(s32 callContext, UNUSED struct GraphNode *node, UNUSED Mat4 c);
+extern_s Gfx *geo_painting_draw(s32 callContext, struct GraphNode *node, UNUSED void *context);
+extern_s Gfx *geo_painting_update(s32 callContext, UNUSED struct GraphNode *node, UNUSED Mat4 c);
 
 #endif // PAINTINGS_H
