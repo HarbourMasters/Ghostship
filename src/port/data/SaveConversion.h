@@ -45,12 +45,10 @@ T GetSafeEntry(const json& node, const std::string& key, const T& def) {
     return node.at(key).get<T>();
 }
 
-// Reconstruct achievement data from legacy save file state
 inline void ReconstructAchievementData(const SaveFile& save, AchievementSaveData& achievementData) {
     achievementData.cheated = false;
     achievementData.capStars = 0;
 
-    // Infer coins from highest coin score across all courses
     int32_t maxCoins = 0;
     for (size_t i = 0; i < COURSE_STAGES_COUNT; i++) {
         if (save.courseCoinScores[i] > maxCoins) {
@@ -58,9 +56,6 @@ inline void ReconstructAchievementData(const SaveFile& save, AchievementSaveData
         }
     }
     achievementData.coins = maxCoins;
-
-    // Note: capStars cannot be reliably reconstructed without knowing HOW each star was obtained
-    // (metal cap vs no metal cap), so we leave it at 0 and let players re-earn if needed
 }
 
 inline void from_json(const json& j, AchievementSaveEntry& entry) {
