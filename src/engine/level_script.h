@@ -9,7 +9,7 @@ struct LevelCommand {
     /*02*/ // variable sized argument data
 };
 
-extern_s LevelScript level_script_entry[];
+extern_s const LevelScript level_script_entry[];
 extern_s struct AllocOnlyPool *sLevelPool;
 
 extern_s struct LevelCommand *level_script_execute(struct LevelCommand *cmd);

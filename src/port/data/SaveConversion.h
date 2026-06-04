@@ -7,6 +7,7 @@
 #include "port/mods/achievements/Achievements.h"
 
 #include <nlohmann/json.hpp>
+#include <cstring>
 
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(ShipSaveFeatures, achievements, rando)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveCheck, randoItemId, randoAct, obtained, skipped)
@@ -15,7 +16,9 @@ NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(RandoSaveData, randoSaveChecks, randoSaveEntr
 
 using json = nlohmann::json;
 
-#define SAVE_FILE_VERSION 1
+#define SAVE_FILE_VERSION 2
+#define SAVE_FILE_VERSION_LEGACY 1
+#define SAVE_FILE_VERSION_ACHIEVEMENT_MIGRATION 2
 
 static std::string entries[] = {
     "BOB", "WF", "JRB", "CCM", "BBH", "HMC", "LLL", "SSL", "DDD", "SL",
@@ -42,6 +45,24 @@ T GetSafeEntry(const json& node, const std::string& key, const T& def) {
     return node.at(key).get<T>();
 }
 
+// Reconstruct achievement data from legacy save file state
+inline void ReconstructAchievementData(const SaveFile& save, AchievementSaveData& achievementData) {
+    achievementData.cheated = false;
+    achievementData.capStars = 0;
+
+    // Infer coins from highest coin score across all courses
+    int32_t maxCoins = 0;
+    for (size_t i = 0; i < COURSE_STAGES_COUNT; i++) {
+        if (save.courseCoinScores[i] > maxCoins) {
+            maxCoins = save.courseCoinScores[i];
+        }
+    }
+    achievementData.coins = maxCoins;
+
+    // Note: capStars cannot be reliably reconstructed without knowing HOW each star was obtained
+    // (metal cap vs no metal cap), so we leave it at 0 and let players re-earn if needed
+}
+
 inline void from_json(const json& j, AchievementSaveEntry& entry) {
     const auto id = GetSafeEntry<std::string>(j, "id");
     const auto progress = GetSafeEntry<int32_t>(j, "progress");
@@ -61,12 +82,14 @@ inline void to_json(json& j, const AchievementSaveEntry& entry) {
 
 inline void from_json(const json& j, AchievementSaveData& data) {
     data.cheated = j.at("cheated").get<bool>();
-    data.capStars = j.at("capStars").get<int>();
-    data.coins = j.at("coins").get<int>();
+    data.capStars = GetSafeEntry(j, "capStars", 0);
+    data.coins = GetSafeEntry(j, "coins", 0);
 
-    auto entriesJson = j.at("entries");
-    for (size_t i = 0; i < entriesJson.size(); i++) {
-        data.entries[i] = entriesJson.at(i).get<AchievementSaveEntry>();
+    if (j.contains("entries")) {
+        auto entriesJson = j.at("entries");
+        for (size_t i = 0; i < entriesJson.size(); i++) {
+            data.entries[i] = entriesJson.at(i).get<AchievementSaveEntry>();
+        }
     }
 }
 
@@ -91,8 +114,13 @@ inline void from_json(const json& j, ShipSaveData& save) {
         j["randoSaveData"].get_to(save.randoSaveData);
     }
 
-    if (save.features.achievements) {
+    if (j.contains("achievementSaveData")) {
         j["achievementSaveData"].get_to(save.achievementSaveData);
+    } else if (save.features.achievements) {
+        memset(&save.achievementSaveData, 0, sizeof(AchievementSaveData));
+        save.achievementSaveData.cheated = false;
+        save.achievementSaveData.capStars = 0;
+        save.achievementSaveData.coins = 0;
     }
 }
 
@@ -137,7 +165,7 @@ inline void to_json(json& j, const SaveFile& save) {
     };
 }
 
-inline void LoadSaveFileV1(const json& j, SaveFile& save) {
+inline void LoadSaveFileLegacy(const json& j, SaveFile& save) {
     json capPosJson = GetSafeEntry<json>(j, "capPos", json::object());
     save.capLevel = GetSafeEntry(j, "capLevel", 0);
     save.capArea = GetSafeEntry(j, "capArea", 0);
@@ -156,6 +184,39 @@ inline void LoadSaveFileV1(const json& j, SaveFile& save) {
         save.courseCoinScores[i] = GetSafeEntry<u8>(coinsJson, entries[i], static_cast<u8>(0));
     }
 
+    memset(&save.shipSaveData, 0, sizeof(ShipSaveData));
+    if (j.contains("shipSaveData")) {
+        j["shipSaveData"].get_to(save.shipSaveData);
+
+        // Migrate old saves that don't have achievement data
+        bool hasMissingAchievementData = save.shipSaveData.features.achievements &&
+                                         !j["shipSaveData"].contains("achievementSaveData");
+        if (hasMissingAchievementData) {
+            ReconstructAchievementData(save, save.shipSaveData.achievementSaveData);
+        }
+    }
+}
+
+inline void LoadSaveFileV2(const json& j, SaveFile& save) {
+    json capPosJson = GetSafeEntry<json>(j, "capPos", json::object());
+    save.capLevel = GetSafeEntry(j, "capLevel", 0);
+    save.capArea = GetSafeEntry(j, "capArea", 0);
+    save.capPos[0] = GetSafeEntry(capPosJson, "x", 0);
+    save.capPos[1] = GetSafeEntry(capPosJson, "y", 0);
+    save.capPos[2] = GetSafeEntry(capPosJson, "z", 0);
+    save.flags = GetSafeEntry(j, "flags", 0);
+
+    json starsJson = GetSafeEntry<json>(j, "courseStars", json::object());
+    for (size_t i = 0; i < COURSE_COUNT; i++) {
+        save.courseStars[i] = GetSafeEntry<u8>(starsJson, entries[i], static_cast<u8>(0));
+    }
+
+    json coinsJson = GetSafeEntry<json>(j, "courseCoinScores", json::object());
+    for (size_t i = 0; i < COURSE_STAGES_COUNT; i++) {
+        save.courseCoinScores[i] = GetSafeEntry<u8>(coinsJson, entries[i], static_cast<u8>(0));
+    }
+
+    memset(&save.shipSaveData, 0, sizeof(ShipSaveData));
     if (j.contains("shipSaveData")) {
         j["shipSaveData"].get_to(save.shipSaveData);
     }
@@ -164,7 +225,9 @@ inline void LoadSaveFileV1(const json& j, SaveFile& save) {
 inline void from_json(const json& j, SaveFile& save) {
     uint32_t version = GetSafeEntry<uint32_t>(j, "version", 1u);
     if (version == 1) {
-        LoadSaveFileV1(j, save);
+        LoadSaveFileLegacy(j, save);
+    } else if (version == 2) {
+        LoadSaveFileV2(j, save);
     }
 }
 
