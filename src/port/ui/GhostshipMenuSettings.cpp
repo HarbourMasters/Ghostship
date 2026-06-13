@@ -312,6 +312,20 @@ void GhostshipMenu::AddMenuSettings() {
 
     path.column = SECTION_COLUMN_2;
     AddWidget(path, "Advanced Graphics Options", WIDGET_SEPARATOR_TEXT);
+    
+    path.sidebarName = "Shaders";
+    path.column = SECTION_COLUMN_1;
+    AddSidebarEntry("Settings", "Shaders", 1);
+
+    AddWidget(path, "Shader Settings", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Popout Shader Settings", WIDGET_WINDOW_BUTTON)
+      .CVar(CVAR_WINDOW("ShaderSettings"))
+      .RaceDisable(false)
+      .WindowName("Shader Settings")
+      .HideInSearch(true)
+      .Options(WindowButtonOptions().Tooltip(
+          "Tweakables for shader packs: post-processing passes and @setting "
+          "values declared by custom shaders."));
 
     // Controls
     path.sidebarName = "Controls";
