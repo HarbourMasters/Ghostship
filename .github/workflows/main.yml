@@ -74,6 +74,17 @@ jobs:
             build/x64/vcpkg
             build/x64/vcpkg_installed
             build/x64/vcpkg/downloads
+      - name: Cache LLVM prebuilt (Windows FetchContent)
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-llvm-prebuilt-18.1.8-x64
+          path: build/x64/_deps/llvm_prebuilt-src
+      - name: Prepare Vulkan SDK
+        uses: humbletim/setup-vulkan-sdk@v1.2.1
+        with:
+          vulkan-query-version: 1.4.304.1
+          vulkan-components: Vulkan-Headers, Vulkan-Loader
+          vulkan-use-cache: true
       - name: Build
         run: |
           $env:VCPKG_ROOT=""
@@ -87,12 +98,12 @@ jobs:
       - name: Create Package
         run: |
           mkdir debug
-          if (-Not (Test-Path "build/x64/Release/.tcc")) { Write-Error "ERROR: .tcc not found in build/x64/Release/"; exit 1 }
-          mv build/x64/Release/.tcc .tcc
+          if (-Not (Test-Path "build/x64/Release/.clang")) { Write-Error "ERROR: .clang not found in build/x64/Release/"; exit 1 }
+          mv build/x64/Release/.clang .clang
           mv build/x64/Release/Ghostship.exe .
-          mv build/x64/Release/tcc.dll .
           mv build/x64/Release/ghostship.o2r .
           mv build/x64/Release/*.pdb debug/
+          if (Test-Path "$env:VULKAN_SDK/Bin/shaderc_shared.dll") { Copy-Item "$env:VULKAN_SDK/Bin/shaderc_shared.dll" . }
           mv README.md readme.txt
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "gamecontrollerdb.txt"
       - name: Upload build
@@ -101,9 +112,9 @@ jobs:
           name: Ghostship-windows
           include-hidden-files: true
           path: |
-            .tcc
+            .clang
             Ghostship.exe
-            tcc.dll
+            shaderc_shared.dll
             ghostship.o2r
             debug
             readme.txt
@@ -157,12 +168,12 @@ jobs:
       - name: Install dependencies
         run: |
           brew uninstall --ignore-dependencies libpng
-          sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal mbedtls +universal
+          sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal mbedtls +universal llvm-18 +universal MoltenVK +universal vulkan-headers +universal vulkan-loader +universal shaderc +universal
           brew install ninja
-      - name: Build (Universal)
+      - name: Build
         run: |
           export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
-          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DPython3_EXECUTABLE=$(which python3)
+          cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DPython3_EXECUTABLE=$(which python3) -DLLVM_DIR=/opt/local/libexec/llvm-18/lib/cmake/llvm -DClang_DIR=/opt/local/libexec/llvm-18/lib/cmake/clang
           cmake --build build-cmake --config Release --parallel 10
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
@@ -173,8 +184,8 @@ jobs:
         run: |
           (cd build-cmake && cpack)
           mv _packages/*.dmg Ghostship.dmg
-          ls -la build-cmake/.tcc || (echo "ERROR: .tcc not found in build-cmake/" && exit 1)
-          cp -r build-cmake/.tcc .tcc
+          ls -la build-cmake/.clang || (echo "ERROR: .clang not found in build-cmake/" && exit 1)
+          cp -r build-cmake/.clang .clang
           mv README.md readme.txt
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
@@ -182,7 +193,7 @@ jobs:
           name: Ghostship-mac
           include-hidden-files: true
           path: |
-            .tcc
+            .clang
             Ghostship.dmg
             readme.txt
       - name: Save Cache MacPorts
@@ -202,7 +213,7 @@ jobs:
       - name: Update machine
         run: sudo apt update
       - name: Install dependencies
-        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev libmbedtls-dev
+        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev libmbedtls-dev llvm-dev libclang-dev clang libvulkan-dev libshaderc-dev
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
@@ -277,15 +288,15 @@ jobs:
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage ghostship.appimage
-          ls -la build-cmake/.tcc || (echo "ERROR: .tcc not found in build-cmake/" && exit 1)
-          cp -r build-cmake/.tcc .tcc
+          ls -la build-cmake/.clang || (echo "ERROR: .clang not found in build-cmake/" && exit 1)
+          cp -r build-cmake/.clang .clang
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: Ghostship-linux
           include-hidden-files: true
           path: |
-            .tcc
+            .clang
             ghostship.appimage
             config.yml
             readme.txt
