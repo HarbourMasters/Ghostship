@@ -44,13 +44,6 @@
         return fract(sin(random) * 143758.5453);
     }
 
-    vec4 fromLinear(vec4 linearRGB){
-        bvec3 cutoff = lessThan(linearRGB.rgb, vec3(0.0031308));
-        vec3 higher = vec3(1.055)*pow(linearRGB.rgb, vec3(1.0/2.4)) - vec3(0.055);
-        vec3 lower = linearRGB.rgb * vec3(12.92);
-        return vec4(mix(higher, lower, cutoff), linearRGB.a);
-    }
-
     vec4 filter3point(in sampler2D tex, in vec2 texCoord, in vec2 texSize) {
         vec2 offset = fract(texCoord*texSize - vec2(0.5));
         offset -= step(1.0, offset.x + offset.y);
@@ -124,6 +117,14 @@
                         }
                         float lodTile0 = clamp(lodTileBase, 0.0, drawU.misc.y);
                         float lodTile1 = clamp(lodTileBase + 1.0, 0.0, drawU.misc.y);
+                        // No real LOD level beyond the base (max level 0): the N64
+                        // never blends a second tile. Small EXTRA_TILE_MIPMAPS
+                        // textures degenerate to one level yet still emit
+                        // G_TL_LOD+TRILERP; without this the combiner blends a stale
+                        // TEXEL1 by distance.
+                        if (drawU.misc.y < 0.5) {
+                            lodFrac = 0.0;
+                        }
                     @end
                 @end
 
@@ -249,10 +250,6 @@
             vOutColor = texel;
         @else
             vOutColor = vec4(texel, 1.0);
-        @end
-
-        @if(srgb_mode)
-            vOutColor = fromLinear(vOutColor);
         @end
 
         @if(o_prim_depth)

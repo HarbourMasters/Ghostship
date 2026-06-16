@@ -301,15 +301,6 @@ PSInput VSMain(
     [RootSignature(RS)]
 @end
 
-@if(srgb_mode)
-    float4 fromLinear(float4 linearRGB){
-        bool3 cutoff = linearRGB.rgb < float3(0.0031308, 0.0031308, 0.0031308);
-        float3 higher = 1.055 * pow(linearRGB.rgb, float3(1.0 / 2.4, 1.0 / 2.4, 1.0 / 2.4)) - float3(0.055, 0.055, 0.055);
-        float3 lower = linearRGB.rgb * float3(12.92, 12.92, 12.92);
-        return float4(lerp(higher, lower, cutoff), linearRGB.a);
-    }
-@end
-
 #define MOD(x, y) ((x) - (y) * floor((x)/(y)))
 #define WRAP(x, low, high) MOD((x)-(low), (high)-(low)) + (low)
 
@@ -375,6 +366,13 @@ PSOutput PSMain(PSInput input, float4 screenSpace : SV_Position) {
                     }
                     float lodTile0 = clamp(lodTileBase, 0.0, lod_max);
                     float lodTile1 = clamp(lodTileBase + 1.0, 0.0, lod_max);
+                    // No real LOD level beyond the base (max level 0): the N64 never
+                    // blends a second tile. Small EXTRA_TILE_MIPMAPS textures
+                    // degenerate to one level yet still emit G_TL_LOD+TRILERP; without
+                    // this the combiner blends a stale TEXEL1 by distance.
+                    if (lod_max < 0.5) {
+                        lodFrac = 0.0;
+                    }
                 @end
             @end
 
@@ -533,17 +531,9 @@ PSOutput PSMain(PSInput input, float4 screenSpace : SV_Position) {
 
     PSOutput output;
     @if(o_alpha)
-        @if(srgb_mode)
-            output.color = fromLinear(texel);
-        @else
-            output.color = texel;
-        @end
+        output.color = texel;
     @else
-        @if(srgb_mode)
-            output.color = fromLinear(float4(texel, 1.0));
-        @else
-            output.color = float4(texel, 1.0);
-        @end
+        output.color = float4(texel, 1.0);
     @end
     @if(o_prim_depth)
         output.depth = prim_depth;

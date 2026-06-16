@@ -710,13 +710,13 @@ add_custom_command(
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
 )
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupTccRuntime.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupClangRuntime.cmake)
 
 set(PROPERTY_READER_GUARD_DISABLED TRUE)
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    lus_setup_tcc_runtime(${PROJECT_NAME} RESOURCES_DIR "../Resources/.tcc")
+    lus_setup_clang_runtime(${PROJECT_NAME} RESOURCES_DIR "../Resources/.clang")
 else()
-    lus_setup_tcc_runtime(${PROJECT_NAME})
+    lus_setup_clang_runtime(${PROJECT_NAME})
 endif()
 unset(PROPERTY_READER_GUARD_DISABLED)
 
@@ -785,7 +785,9 @@ add_custom_target(CreateOSXIcons
     configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ../MacOS COMPONENT Ghostship)
 if(ENABLE_SCRIPTING)
-    INSTALL(FILES "$<TARGET_FILE:libtcc>" DESTINATION ../MacOS COMPONENT Ghostship)
+    # Clang built-in headers are staged by lus_setup_clang_runtime() above.
+    # No separate shared library needs to be installed (Clang is statically
+    # linked into the game binary via the LLVM component libs).
 endif()
 INSTALL(FILES ${CMAKE_BINARY_DIR}/gamecontrollerdb.txt DESTINATION ../MacOS COMPONENT Ghostship)
 INSTALL(FILES ${CMAKE_BINARY_DIR}/ghostship.o2r DESTINATION ../Resources COMPONENT Ghostship)

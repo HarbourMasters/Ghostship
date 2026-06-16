@@ -29,9 +29,6 @@
 #include <filesystem>
 #include <fstream>
 
-#if defined(__linux__) && !defined(__ANDROID__) && !defined(__SWITCH__)
-#include <dlfcn.h>
-#endif
 
 #include <cstdlib>
 #include <algorithm>
@@ -303,62 +300,28 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         { "GBI_FLOATS", "1" }, { "_LANGUAGE_C", "1" },   { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" },
     };
 
+    // .clang/ mirrors the old .tcc/ layout but only needs the built-in headers
+    // (stddef.h, stdarg.h, etc.) staged by SetupClangRuntime.cmake.
+    // System headers (stdio.h, etc.) are found automatically by Clang via the
+    // host SDK; no libc.so symlink hack is needed.
 #ifdef _WIN32
-    const std::string tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    const std::string clangBase = Ship::Context::GetAppBundlePath() + "/.clang";
     const std::vector<std::string> includePaths = {
-        tccBase + "/include",     tccBase + "/include/tcc",     tccBase + "/include/winapi",
-        tccBase + "/include/sys", tccBase + "/include/sec_api",
+        clangBase + "/include",
     };
-    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Ghostship" });
+    const std::vector<std::string> libraryPaths = { clangBase + "/lib" };
+    // On Windows mods link against the game's import library.
+    context->InitScriptLoader(defines, codeVersion, "-g", includePaths, libraryPaths, { "Ghostship" });
 #else
-    std::string tccBase = Ship::Context::GetPathRelativeToAppDirectory(".tcc");
-    if (!std::filesystem::exists(tccBase)) {
-        tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
+    std::string clangBase = Ship::Context::GetPathRelativeToAppDirectory(".clang");
+    if (!std::filesystem::exists(clangBase)) {
+        clangBase = Ship::Context::GetAppBundlePath() + "/.clang";
     }
 
-    std::vector<std::string> includePaths = { tccBase + "/include" };
-
-#ifdef __APPLE__
-    {
-        FILE* fp = popen("xcrun --show-sdk-path 2>/dev/null", "r");
-        if (fp) {
-            char buf[4096] = {};
-            if (fgets(buf, sizeof(buf), fp)) {
-                std::string sdkPath(buf);
-                sdkPath.erase(sdkPath.find_last_not_of("\n\r \t") + 1);
-                if (!sdkPath.empty()) {
-                    includePaths.push_back(sdkPath + "/usr/include");
-                }
-            }
-            pclose(fp);
-        }
-    }
-#endif
-
-#if defined(__linux__) && !defined(__ANDROID__)
-    // On systems without libc6-dev (AppImage targets), libc.so doesn't exist — only
-    // libc.so.6 does. TCC needs libc.so to link mods. Create a symlink in .tcc/lib/
-    // pointing to the real libc that's already loaded in the running process.
-    {
-        auto libcStub = std::filesystem::path(tccBase) / "lib" / "libc.so";
-        std::error_code ec;
-        bool isStale = std::filesystem::is_symlink(libcStub) && !std::filesystem::exists(libcStub, ec);
-        if (!std::filesystem::exists(libcStub) || isStale) {
-            Dl_info info = {};
-            void* libcFunc = dlsym(RTLD_DEFAULT, "printf");
-            if (libcFunc && dladdr(libcFunc, &info) && info.dli_fname && *info.dli_fname) {
-                std::filesystem::remove(libcStub, ec);
-                std::filesystem::create_symlink(info.dli_fname, libcStub, ec);
-                if (ec) {
-                    SPDLOG_WARN("ScriptLoader: failed to create libc.so symlink: {}", ec.message());
-                }
-            }
-        }
-    }
-#endif
-
-    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+    const std::vector<std::string> includePaths = { clangBase + "/include" };
+    const std::vector<std::string> libraryPaths = { clangBase + "/lib" };
+    // -g enables debug info; -rdynamic lets the mod resolve game symbols that
+    // were exported by the main executable at link time.
     context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
 #endif
 
