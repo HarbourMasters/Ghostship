@@ -37,7 +37,7 @@ jobs:
       - name: Install Vulkan SDK
         shell: powershell
         run: |
-          Invoke-WebRequest -Uri "https://lunarg.com" -OutFile VulkanSDK.exe
+          Invoke-WebRequest -Uri "https://sdk.lunarg.com/sdk/download/1.4.350.0/windows/vulkansdk-windows-X64-1.4.350.0.exe" -OutFile VulkanSDK.exe
           Start-Process -FilePath VulkanSDK.exe -Wait -ArgumentList "/S"
           Remove-Item VulkanSDK.exe
       - name: Build
