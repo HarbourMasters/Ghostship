@@ -312,7 +312,33 @@ void GhostshipMenu::AddMenuSettings() {
 
     path.column = SECTION_COLUMN_2;
     AddWidget(path, "Advanced Graphics Options", WIDGET_SEPARATOR_TEXT);
-    
+    AddWidget(path, "HD Texture Upload Budget", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gEnhancements.Graphics.TextureUploadBudget")
+        .RaceDisable(false)
+        .Options(IntSliderOptions()
+                     .Tooltip("Max new HD-pack texture uploads per frame (0 = unlimited). Lower values spread big "
+                              "4K uploads across frames so entering a new area doesn't hitch; the base texture "
+                              "shows until each HD replacement is ready.")
+                     .Min(0)
+                     .Max(8)
+                     .DefaultValue(1));
+    AddWidget(path, "Async Texture Loading", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Graphics.AsyncTextureLoad")
+        .RaceDisable(false)
+        .Options(CheckboxOptions()
+                     .Tooltip("Decodes HD/replacement textures on a background thread instead of blocking the "
+                              "render thread, so loading a level doesn't hitch. The vanilla texture shows until "
+                              "its HD version finishes loading, then swaps in. Only active with Alternative "
+                              "Assets enabled.")
+                     .DefaultValue(false));
+    AddWidget(path, "Debug HD Replacement", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnhancements.Graphics.TextureReplacementDebug")
+        .RaceDisable(false)
+        .Options(CheckboxOptions()
+                     .Tooltip("Tints draws by HD-replacement state: blue = HD active, green flash = just "
+                              "uploaded, red = base shown while the HD upload is still pending.")
+                     .DefaultValue(false));
+
     path.sidebarName = "Shaders";
     path.column = SECTION_COLUMN_1;
     AddSidebarEntry("Settings", "Shaders", 1);

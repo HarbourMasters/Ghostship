@@ -3,6 +3,10 @@ name: GenerateBuilds
 on:
   push:
 
+env:
+  # Allow actions still pinned to the deprecated Node 16 runtime to keep running.
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -11,9 +15,10 @@ jobs:
   generate-port-o2r:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         submodules: true
+        fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
     - name: Extract Project Version
       id: extract_version
       run: |
@@ -30,7 +35,7 @@ jobs:
           ${{ runner.os }}-o2r-ccache-${{ github.ref }}
           ${{ runner.os }}-o2r-ccache-
     - name: Cache build folders
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         key: ${{ runner.os }}-o2r-build-${{ github.ref }}-${{ github.sha }}
         restore-keys: |
@@ -53,9 +58,10 @@ jobs:
     needs: generate-port-o2r
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
+          fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
       - name: Setup Python
@@ -64,35 +70,63 @@ jobs:
           python-version: '3.12'
       - name: Install Python dependencies
         run: pip install -r libultraship/requirements.txt
-      - name: Cache vcpkg
-        uses: actions/cache@v4
+      - name: Cache Vulkan SDK
+        uses: actions/cache@v6
         with:
-          key: ${{ runner.os }}-vcpkg-x64-static-${{ hashFiles('CMakeLists.txt', 'cmake/automate-vcpkg.cmake') }}
+          key: windows-vulkan-sdk-v1
+          path: C:\VulkanSDK
+      - name: Install Vulkan SDK
+        shell: pwsh
+        run: |
+          # Skip the (large) download+install when the cache already restored the SDK.
+          if (-not (Test-Path "C:\VulkanSDK\Lib")) {
+            $url = "https://sdk.lunarg.com/sdk/download/latest/windows/vulkan_sdk.exe"
+            Invoke-WebRequest -Uri $url -OutFile "$env:RUNNER_TEMP\vulkan_sdk.exe"
+            $p = Start-Process -FilePath "$env:RUNNER_TEMP\vulkan_sdk.exe" -ArgumentList "--root","C:\VulkanSDK","--accept-licenses","--default-answer","--confirm-command","install" -Wait -PassThru
+            if ($p.ExitCode -ne 0) { throw "Vulkan SDK install failed with exit code $($p.ExitCode)" }
+          }
+          "VULKAN_SDK=C:\VulkanSDK" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: Cache vcpkg binaries
+        uses: actions/cache@v6
+        with:
+          key: windows-vcpkg-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-vcpkg-x64-static-
+            windows-vcpkg-${{ github.ref }}
+            windows-vcpkg-
           path: |
-            build/x64/vcpkg
-            build/x64/vcpkg_installed
-            build/x64/vcpkg/downloads
+            ~\AppData\Local\vcpkg\archives
+      - name: sccache
+        uses: hendrikmuhs/ccache-action@v1.2.14
+        with:
+          variant: sccache
+          key: windows-sccache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            windows-sccache-${{ github.ref }}
+            windows-sccache-
       - name: Build
         run: |
-          $env:VCPKG_ROOT=""
-          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
-          cmake --build ./build/x64 --config Release --parallel 10
+          # Use the runner's preinstalled vcpkg (blanking VCPKG_ROOT made automate-vcpkg
+          # try to clone into an empty path and fail).
+          $env:VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT
+          # Ninja (single-config) so the compiler launcher works; sccache caches MSVC objects.
+          # msvc-dev-cmd (arch x64) puts cl.exe on PATH; the x64-windows-static triplet is
+          # set unconditionally in CMakeLists, so dropping -A x64 doesn't change it.
+          cmake -S . -B "build/x64" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache -DPython3_EXECUTABLE="$(python -c 'import sys; print(sys.executable)')"
+          cmake --build ./build/x64 --parallel 10
       - name: Download ghostship.o2r
         uses: actions/download-artifact@v4
         with:
           name: ghostship.o2r
-          path: ./build/x64/Release
+          path: ./build/x64
       - name: Create Package
         run: |
           mkdir debug
-          if (-Not (Test-Path "build/x64/Release/.tcc")) { Write-Error "ERROR: .tcc not found in build/x64/Release/"; exit 1 }
-          mv build/x64/Release/.tcc .tcc
-          mv build/x64/Release/Ghostship.exe .
-          mv build/x64/Release/tcc.dll .
-          mv build/x64/Release/ghostship.o2r .
-          mv build/x64/Release/*.pdb debug/
+          if (-Not (Test-Path "build/x64/.tcc")) { Write-Error "ERROR: .tcc not found in build/x64/"; exit 1 }
+          mv build/x64/.tcc .tcc
+          mv build/x64/Ghostship.exe .
+          mv build/x64/tcc.dll .
+          mv build/x64/ghostship.o2r .
+          mv build/x64/*.pdb debug/
           mv README.md readme.txt
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "gamecontrollerdb.txt"
       - name: Upload build
@@ -115,9 +149,10 @@ jobs:
     needs: generate-port-o2r
     runs-on: macos-14
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
+          fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
       - name: Configure ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
@@ -157,11 +192,14 @@ jobs:
       - name: Install dependencies
         run: |
           brew uninstall --ignore-dependencies libpng
-          sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal mbedtls +universal
+          sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal mbedtls +universal vulkan-headers +universal vulkan-loader +universal MoltenVK +universal shaderc +universal
           brew install ninja
       - name: Build (Universal)
         run: |
           export PATH="/usr/lib/ccache:/opt/homebrew/opt/ccache/libexec:/usr/local/opt/ccache/libexec:$PATH"
+          # MacPorts installs the (universal) Vulkan SDK under /opt/local; point the build
+          # at it so find_package(Vulkan) + shaderc resolve and the Vulkan backend is built.
+          export VULKAN_SDK=/opt/local
           cmake --no-warn-unused-cli -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DPython3_EXECUTABLE=$(which python3)
           cmake --build build-cmake --config Release --parallel 10
       - name: Download ghostship.o2r
@@ -196,13 +234,14 @@ jobs:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
+          fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
       - name: Update machine
         run: sudo apt update
       - name: Install dependencies
-        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev libmbedtls-dev
+        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev libmbedtls-dev libvulkan-dev libshaderc-dev glslang-dev spirv-tools
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
@@ -211,7 +250,7 @@ jobs:
             linux-ccache-${{ github.ref }}
             linux-ccache-
       - name: Cache build folders
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           key: linux-build-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
@@ -236,8 +275,10 @@ jobs:
       - name: Install latest tinyxml2
         run: |
           export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
-          wget https://github.com/leethomason/tinyxml2/archive/refs/tags/10.0.0.tar.gz
-          tar -xzf 10.0.0.tar.gz
+          if [ ! -d "tinyxml2-10.0.0" ]; then
+            wget https://github.com/leethomason/tinyxml2/archive/refs/tags/10.0.0.tar.gz
+            tar -xzf 10.0.0.tar.gz
+          fi
           cd tinyxml2-10.0.0
           mkdir -p build
           cd build
@@ -271,7 +312,8 @@ jobs:
           path: ./build-cmake
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE=$(which python3)
+          # Route the compiler through ccache so the linux-ccache cache is actually used.
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -D CMAKE_C_COMPILER_LAUNCHER=ccache -D CMAKE_CXX_COMPILER_LAUNCHER=ccache -DPython3_EXECUTABLE=$(which python3)
           cmake --build build-cmake --config Release -j3
           (cd build-cmake && cpack -G External)
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
@@ -298,22 +340,37 @@ jobs:
     container:
       image: devkitpro/devkita64:20260219
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
+          fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
+      # ccache-action doesn't run cleanly inside the devkitpro container, so cache the
+      # ccache dir directly (workspace-relative so host and container share it).
+      - name: Cache ccache
+        uses: actions/cache@v6
+        with:
+          key: switch-ccache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            switch-ccache-${{ github.ref }}
+            switch-ccache-
+          path: |
+            .ccache
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build
+          sudo apt-get install -y ninja-build ccache
           sudo apt-get remove -y cmake
           sudo dkp-pacman -R --noconfirm switch-tinyxml2 # devkitPro's tinyxml2 is too old and causes build issues
-          export CFLAGS="${CFLAGS} -include strings.h" # weird libzip error (pulled in by LUS) that only happens in CI and not for SoH        
+          export CFLAGS="${CFLAGS} -include strings.h" # weird libzip error (pulled in by LUS) that only happens in CI and not for SoH
           git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
           git -C libultraship fetch nx
           git -C libultraship checkout nx/main-nx-nightly
           wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.sh -O /tmp/cmake.sh
           sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
-          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake -DCMAKE_BUILD_TYPE:STRING=Release
+          # Route the devkitA64 cross-compiler through ccache; CCACHE_DIR is workspace-relative
+          # so the cached dir restored on the host is visible inside the container.
+          export CCACHE_DIR="$GITHUB_WORKSPACE/.ccache"
+          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake -DCMAKE_BUILD_TYPE:STRING=Release -D CMAKE_C_COMPILER_LAUNCHER=ccache -D CMAKE_CXX_COMPILER_LAUNCHER=ccache
           cmake --build build-switch --config Release -j3
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/refs/heads/master/gamecontrollerdb.txt
           mv README.md readme.txt

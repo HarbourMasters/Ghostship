@@ -500,7 +500,7 @@ void GameEngine::FinishInit() {
 
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
-    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
+    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
     context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 
     Instance->AudioInit();
@@ -1160,7 +1160,7 @@ void GameEngine::StartFrame() const {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
             CVarSetInteger("gEnhancements.Mods.AlternateAssets",
-                           !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1));
+                           !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
             break;
         }
         default:
@@ -1336,10 +1336,15 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolation
         interpreter->mInterpolationIndex++;
     }
 
-    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 1);
+    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
         Ship::Context::GetInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
+        // Vanilla and HD are cached under distinct explicit paths (see AcquireDrawTexture), so
+        // toggling needs no resource-cache purge — purging here freed/dirtied audio/soundfont
+        // resources the engine holds raw pointers into and crashed. Just drop the GPU texture
+        // cache + the interpreter's texture futures (via gfx_texture_cache_clear ->
+        // TextureCacheClear) so the next frame re-resolves which path to draw.
         gfx_texture_cache_clear();
     }
 }

@@ -1,19 +1,35 @@
 name: Switch Validation
 on: [pull_request]
 
+env:
+  # Allow actions still pinned to the deprecated Node 16 runtime to keep running.
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
+
 jobs:
   build-switch:
     runs-on: ubuntu-latest
     container:
       image: devkitpro/devkita64:20260219
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
+          fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
+      # ccache-action doesn't run cleanly inside the devkitpro container, so cache the
+      # ccache dir directly (workspace-relative so host and container share it).
+      - name: Cache ccache
+        uses: actions/cache@v6
+        with:
+          key: switch-validation-ccache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            switch-validation-ccache-${{ github.ref }}
+            switch-validation-ccache-
+          path: |
+            .ccache
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build
+          sudo apt-get install -y ninja-build ccache
           sudo apt-get remove -y cmake
           sudo dkp-pacman -R --noconfirm switch-tinyxml2 # devkitPro's tinyxml2 is too old and causes build issues
           export CFLAGS="${CFLAGS} -include strings.h" # weird libzip error (pulled in by LUS) that only happens in CI and not for SoH
@@ -22,7 +38,10 @@ jobs:
           git -C libultraship checkout nx/main-nx-nightly
           wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.sh -O /tmp/cmake.sh
           sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
-          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake -DCMAKE_BUILD_TYPE:STRING=Release
+          # Route the devkitA64 cross-compiler through ccache; CCACHE_DIR is workspace-relative
+          # so the cached dir restored on the host is visible inside the container.
+          export CCACHE_DIR="$GITHUB_WORKSPACE/.ccache"
+          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake -DCMAKE_BUILD_TYPE:STRING=Release -D CMAKE_C_COMPILER_LAUNCHER=ccache -D CMAKE_CXX_COMPILER_LAUNCHER=ccache
           cmake --build build-switch --config Release -j3
           wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
           mv README.md readme.txt

@@ -44,11 +44,40 @@
         return fract(sin(random) * 143758.5453);
     }
 
-    vec4 fromLinear(vec4 linearRGB){
-        bvec3 cutoff = lessThan(linearRGB.rgb, vec3(0.0031308));
-        vec3 higher = vec3(1.055)*pow(linearRGB.rgb, vec3(1.0/2.4)) - vec3(0.055);
-        vec3 lower = linearRGB.rgb * vec3(12.92);
-        return vec4(mix(higher, lower, cutoff), linearRGB.a);
+    // N64 RDP ordered-dither matrices (values 0..7); see applyRdpDither.
+    const int kDitherMagic[16] = int[16](0, 6, 1, 7, 4, 2, 5, 3, 3, 5, 2, 4, 7, 1, 6, 0);
+    const int kDitherBayer[16] = int[16](0, 4, 1, 5, 6, 2, 7, 3, 1, 5, 0, 4, 7, 3, 6, 2);
+
+    // Integer hash for the G_CD_NOISE dither: robust per-pixel + per-frame value 0..7
+    // (a sin-based hash aliases to near-constant on some GPUs, washing the noise out).
+    int ditherNoise(ivec2 p, int frame) {
+        uint h = uint(p.x) * 1597334677u ^ uint(p.y) * 3812015801u ^ uint(frame) * 2654435761u;
+        h ^= h >> 16u; h *= 2246822519u;
+        h ^= h >> 13u; h *= 3266489917u;
+        h ^= h >> 16u;
+        return int(h & 7u);
+    }
+
+    // RDP RGB dither + RGBA5551 quantization. mode: 0=magic square, 1=bayer,
+    // 2=noise (temporal), 3=disable (truncate only), >=4 = off (full precision).
+    vec3 applyRdpDither(vec3 color, float modeF, vec2 fragCoord, float noiseScale, int frameCount) {
+        int mode = int(modeF + 0.5);
+        if (mode >= 4) {
+            return color;
+        }
+        vec2 nativeCoord = floor(fragCoord * noiseScale);
+        float d = 0.0;
+        if (mode == 0) {
+            ivec2 cell = ivec2(nativeCoord) & 3;
+            d = float(kDitherMagic[cell.y * 4 + cell.x]);
+        } else if (mode == 1) {
+            ivec2 cell = ivec2(nativeCoord) & 3;
+            d = float(kDitherBayer[cell.y * 4 + cell.x]);
+        } else if (mode == 2) {
+            d = float(ditherNoise(ivec2(nativeCoord), frameCount));
+        }
+        vec3 q = min(floor(clamp(color * 255.0 + d, 0.0, 255.0) / 8.0), 31.0);
+        return (q * 8.0 + floor(q / 4.0)) / 255.0;
     }
 
     vec4 filter3point(in sampler2D tex, in vec2 texCoord, in vec2 texSize) {
@@ -124,6 +153,14 @@
                         }
                         float lodTile0 = clamp(lodTileBase, 0.0, drawU.misc.y);
                         float lodTile1 = clamp(lodTileBase + 1.0, 0.0, drawU.misc.y);
+                        // No real LOD level beyond the base (max level 0): the N64
+                        // never blends a second tile. Small EXTRA_TILE_MIPMAPS
+                        // textures degenerate to one level yet still emit
+                        // G_TL_LOD+TRILERP; without this the combiner blends a stale
+                        // TEXEL1 by distance.
+                        if (drawU.misc.y < 0.5) {
+                            lodFrac = 0.0;
+                        }
                     @end
                 @end
 
@@ -239,6 +276,20 @@
             texel.rgb = mix(texel.rgb, new_texel, drawU.grayscale_color.a);
         @end
 
+        // N64 RGB framebuffer dither (per-primitive G_CD_* mode in lod_params.w)
+        @if(o_alpha)
+            texel.rgb = applyRdpDither(texel.rgb, drawU.lod_params.w, gl_FragCoord.xy, frameU.noise_scale, frameU.frame_count);
+        @else
+            texel = applyRdpDither(texel, drawU.lod_params.w, gl_FragCoord.xy, frameU.noise_scale, frameU.frame_count);
+        @end
+
+        // HD-replacement debug tint (no-op when debug_tint.a == 0)
+        @if(o_alpha)
+            texel.rgb = mix(texel.rgb, drawU.debug_tint.rgb, drawU.debug_tint.a);
+        @else
+            texel = mix(texel, drawU.debug_tint.rgb, drawU.debug_tint.a);
+        @end
+
         @if(o_alpha)
             @if(o_alpha_threshold)
                 if (texel.a < 8.0 / 256.0) discard;
@@ -249,10 +300,6 @@
             vOutColor = texel;
         @else
             vOutColor = vec4(texel, 1.0);
-        @end
-
-        @if(srgb_mode)
-            vOutColor = fromLinear(vOutColor);
         @end
 
         @if(o_prim_depth)
