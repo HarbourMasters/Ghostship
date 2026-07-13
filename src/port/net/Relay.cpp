@@ -132,8 +132,7 @@ Permission GetPermission(const std::string& channelId) {
 }
 
 void RequestPermission(const std::string& channelId) {
-    Permissions::Request(
-        PermKey(channelId), [channelId]() { ActivateChannel(channelId); }, nullptr);
+    Permissions::Request(PermKey(channelId), [channelId]() { ActivateChannel(channelId); }, nullptr);
 }
 
 void Init() {

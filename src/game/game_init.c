@@ -20,6 +20,7 @@
 #include "segment_symbols.h"
 #include "rumble_init.h"
 #include "port/ui/cvar_prefixes.h"
+#include "port/ui/TouchControls.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 extern void mirror_mode_invert_input(void);
@@ -567,6 +568,7 @@ void read_controller_inputs(void) {
     if (gControllerBits) {
         // osRecvMesg(&gSIEventMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         osContGetReadData(&gControllerPads[0]);
+        TouchControls_ApplyPad(&gControllerPads[0]);
 #if ENABLE_RUMBLE
         release_rumble_pak_control();
 #endif

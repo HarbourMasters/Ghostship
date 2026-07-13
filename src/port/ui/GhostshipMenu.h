@@ -26,7 +26,7 @@ class GhostshipMenu : public Ship::Menu {
     void AddMenuDevTools();
     void AddMenuRando();
     void AddMenuAchievements();
-#ifndef __SWITCH__
+#ifdef ENABLE_SCRIPTING
     void AddModMenu();
 #endif
 

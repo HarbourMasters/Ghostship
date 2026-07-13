@@ -97,12 +97,17 @@ set(CPP "${CMAKE_C_COMPILER}" "-E" "-P" "-Wno-trigraphs" "-x" "c")
 endif()
 
 if(IOS)
-    set(PLATFORM "OS64")
+    if(NOT DEFINED PLATFORM)
+        set(PLATFORM "OS64")
+    endif()
     include(cmake/ios.toolchain.cmake)
     add_compile_definitions(
         PLATFORM_IOS=1
+        __IOS__
     )
     set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
+    set(BUNDLE_ID "dev.net64.ghostship")
+    set(SIGN_LIBRARY ON)
     set(PROJECT_ID "${BUNDLE_ID}")
 endif()
 
@@ -167,7 +172,7 @@ if(NOT USE_SATELLA)
     )
 endif()
 
-if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR NOT USE_SATELLA)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR NOT USE_SATELLA)
     set(USE_NETWORKING_DEFAULT OFF)
 else()
     set(USE_NETWORKING_DEFAULT ON)
@@ -190,8 +195,11 @@ add_compile_definitions(
     _LANGUAGE_C
     _USE_MATH_DEFINES
     AVOID_UB=1
-    ENABLE_OPENGL=1
 )
+
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    add_compile_definitions(ENABLE_OPENGL=1)
+endif()
 
 # Find necessary libraries
 if (UNIX AND NOT APPLE)
@@ -296,7 +304,23 @@ if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
         MACOSX_BUNDLE TRUE
         MACOSX_BUNDLE_INFO_PLIST ${IOS_DIR}/plist.in
         RESOURCE "${IMAGE_FILES};${STORYBOARD_FILE};${ICON_FILES}"
+        XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${BUNDLE_ID}"
+        XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic"
+        XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "YES"
+        XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
+        XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "Apple Development"
     )
+
+    if(EXISTS ${CMAKE_SOURCE_DIR}/ghostship.o2r)
+        add_custom_command(
+            TARGET ${PROJECT_NAME} POST_BUILD
+            COMMENT "Bundling ghostship.o2r..."
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ghostship.o2r"
+                    "$<TARGET_FILE_DIR:${PROJECT_NAME}>/ghostship.o2r"
+        )
+    else()
+        message(WARNING "ghostship.o2r not found in the source tree; generate it (GeneratePortO2R) and rebuild so it gets bundled into the iOS app.")
+    endif()
 else()
     add_executable(${PROJECT_NAME} ${ALL_FILES})
 endif()
@@ -361,7 +385,10 @@ include_directories(
   ${dr_libs_SOURCE_DIR}
 )
 
-if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    set(ENABLE_SCRIPTING OFF CACHE BOOL "" FORCE)
+    set(DISABLE_DLL_LOADER ON CACHE BOOL "" FORCE)
+elseif(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
     set(ENABLE_SCRIPTING ON CACHE BOOL "" FORCE)
 else()
     #=================== tinyxml2 ===================

@@ -12,6 +12,7 @@ void C_RunGuiDrawCallbacks();
 #endif
 
 #include "Notification.h"
+#include "TouchControls.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
 #include "port/ui/ObjectViewer.h"
@@ -48,6 +49,7 @@ std::shared_ptr<GhostshipMenu> mGhostshipMenu;
 std::shared_ptr<SaveEditorWindow> mSaveEditorWindow;
 std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
+std::shared_ptr<TouchControlsOverlay> mTouchControlsOverlay;
 std::shared_ptr<InputViewerSettingsWindow> mInputViewerSettings;
 std::shared_ptr<GhostshipModalWindow> mModalWindow;
 std::shared_ptr<ObjectViewer> mObjectViewer;
@@ -120,12 +122,16 @@ void SetupGuiElements() {
 
     mInputViewer = std::make_shared<InputViewer>(CVAR_WINDOW("InputViewer"), "Input Viewer");
     gui->AddGuiWindow(mInputViewer);
+
+    mTouchControlsOverlay = std::make_shared<TouchControlsOverlay>(CVAR_WINDOW("TouchControls"), "##TouchControls");
+    mTouchControlsOverlay->Show();
+    gui->AddGuiWindow(mTouchControlsOverlay);
     mInputViewerSettings = std::make_shared<InputViewerSettingsWindow>(CVAR_WINDOW("InputViewerSettings"),
                                                                        "Input Viewer Settings", ImVec2(500, 525));
     gui->AddGuiWindow(mInputViewerSettings);
 
-    mShaderSettingsWindow = std::make_shared<Ship::ShaderSettingsWindow>(
-      CVAR_WINDOW("ShaderSettings"), "Shader Settings", ImVec2(420, 520));
+    mShaderSettingsWindow = std::make_shared<Ship::ShaderSettingsWindow>(CVAR_WINDOW("ShaderSettings"),
+                                                                         "Shader Settings", ImVec2(420, 520));
     gui->AddGuiWindow(mShaderSettingsWindow);
 
     mModalWindow = std::make_shared<GhostshipModalWindow>(CVAR_WINDOW("ModalWindow"), "Modal Window");

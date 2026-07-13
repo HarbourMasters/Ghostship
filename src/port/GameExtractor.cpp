@@ -236,7 +236,7 @@ bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShort
     Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path);
     Companion::Instance->SetProcess(false);
     try {
-        Companion::Instance->Init(ExportType::Binary, totalAssets);
+        Companion::Instance->Init(ExportType::Binary, totalAssets, false);
     } catch (const std::exception& e) {
         SPDLOG_INFO("Failed to process O2R {}", e.what());
         return false;
@@ -257,7 +257,7 @@ bool GameExtractor::GenerateOTR(std::atomic<size_t>& assetCount, std::string app
     Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path);
     this->WritePortVersion();
     try {
-        Companion::Instance->Init(ExportType::Binary, assetCount);
+        Companion::Instance->Init(ExportType::Binary, assetCount, true);
     } catch (const std::exception& e) {
         SPDLOG_INFO("Failed to process O2R {}", e.what());
         return false;

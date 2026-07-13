@@ -168,7 +168,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     this->context->InitResourceManager({ assets_path }, {}, 3);
     this->context->InitConsole();
 
-#ifndef __SWITCH__
+#ifdef ENABLE_SCRIPTING
     this->context->GetResourceManager()->GetArchiveManager()->SetUntrustedArchiveHandler(
         [](Ship::Archive& archive, Ship::KeystoreEntry& key) {
             const auto info = archive.GetManifest();
@@ -294,7 +294,7 @@ void CheckAndCreateModFolder() {
 }
 
 static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
-#ifdef __SWITCH__
+#ifndef ENABLE_SCRIPTING
     return;
 #else
     constexpr int codeVersion = 1;
@@ -406,7 +406,7 @@ void GameEngine::LoadResourceFiles() {
         }
     }
 
-#ifndef __SWITCH__
+#ifdef ENABLE_SCRIPTING
     auto archive = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager();
     auto list = archive->GetArchives();
 
@@ -418,7 +418,7 @@ void GameEngine::LoadResourceFiles() {
 
         this->totalScripts++;
     }
-#endif // __SWITCH__
+#endif // ENABLE_SCRIPTING
 }
 
 void GameEngine::FinishInit() {
@@ -513,7 +513,7 @@ void GameEngine::FinishInit() {
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
-#ifndef __SWITCH__
+#ifdef ENABLE_SCRIPTING
     context->GetScriptLoader()->LoadAll();
 #endif
     CALL_EVENT(EngineReady);
@@ -890,7 +890,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             case GS_LOAD: {
                 LoadResourceFiles();
                 threadPool->submit_task([&]() -> void {
-#ifndef __SWITCH__
+#ifdef ENABLE_SCRIPTING
                     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
                     auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
                         auto& info = archive->GetManifest();
@@ -1082,7 +1082,7 @@ void GameEngine::ScaleImGui() {
 }
 
 void GameEngine::LoadScripts() {
-#ifndef __SWITCH__
+#ifdef ENABLE_SCRIPTING
     auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
@@ -1122,7 +1122,7 @@ void GameEngine::LoadScripts() {
                              .remainingTime = 5.0f,
                              .mute = true });
     }
-#endif // __SWITCH__
+#endif // ENABLE_SCRIPTING
 }
 
 void GameEngine::Create(int argc, char* argv[]) {
