@@ -353,6 +353,7 @@ if(EMSCRIPTEN)
         -sEXPORTED_FUNCTIONS=_main,_malloc,_free
         -sEXPORTED_RUNTIME_METHODS=FS,ccall,cwrap,UTF8ToString,stringToUTF8
         -lembind
+        -lidbfs.js
         "SHELL:--shell-file ${CMAKE_SOURCE_DIR}/src/port/web/shell.html"
         "SHELL:--preload-file ${CMAKE_SOURCE_DIR}/assets@/assets"
         "SHELL:--preload-file ${CMAKE_SOURCE_DIR}/config.yml@/config.yml"
