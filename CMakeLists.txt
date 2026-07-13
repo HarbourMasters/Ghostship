@@ -747,6 +747,25 @@ else()
 endif()
 unset(PROPERTY_READER_GUARD_DISABLED)
 
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+  add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "$<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>"
+            "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+    COMMAND_EXPAND_LISTS
+    COMMENT "Copying runtime DLL dependencies next to ${PROJECT_NAME}.exe..."
+  )
+  find_file(GHOSTSHIP_SHADERC_DLL NAMES shaderc_shared.dll
+            HINTS "$ENV{VULKAN_SDK}/Bin" "$ENV{VULKAN_SDK}/bin")
+  if (GHOSTSHIP_SHADERC_DLL)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "${GHOSTSHIP_SHADERC_DLL}" "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+      COMMENT "Copying shaderc_shared.dll next to ${PROJECT_NAME}.exe..."
+    )
+  endif()
+endif()
+
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 include(ExternalProject)
 ExternalProject_Add(TorchExternal
@@ -789,6 +808,7 @@ endif()
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
   install(FILES $<TARGET_PDB_FILE:${PROJECT_NAME}> DESTINATION ./debug COMPONENT ${PROJECT_NAME})
   install(FILES "${CMAKE_BINARY_DIR}/ghostship.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
+  install(FILES "$<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>" DESTINATION . COMPONENT ${PROJECT_NAME})
 endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")

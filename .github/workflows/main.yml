@@ -3,10 +3,6 @@ name: GenerateBuilds
 on:
   push:
 
-env:
-  # Allow actions still pinned to the deprecated Node 16 runtime to keep running.
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -57,6 +53,8 @@ jobs:
   build-windows:
     needs: generate-port-o2r
     runs-on: windows-2022
+    env:
+      WINDOWS_CERT_PFX_BASE64: ${{ secrets.WINDOWS_CERT_PFX_BASE64 }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -119,16 +117,38 @@ jobs:
           name: ghostship.o2r
           path: ./build/x64
       - name: Create Package
+        shell: pwsh
         run: |
+          Write-Host "=== build/x64 contents ==="
+          Get-ChildItem build/x64 -Force | Format-Table Name, Length, Mode
           mkdir debug
           if (-Not (Test-Path "build/x64/.tcc")) { Write-Error "ERROR: .tcc not found in build/x64/"; exit 1 }
-          mv build/x64/.tcc .tcc
-          mv build/x64/Ghostship.exe .
-          mv build/x64/tcc.dll .
-          mv build/x64/ghostship.o2r .
-          mv build/x64/*.pdb debug/
-          mv README.md readme.txt
+          Move-Item build/x64/.tcc .tcc
+          Move-Item build/x64/Ghostship.exe .
+          Move-Item build/x64/ghostship.o2r .
+          # Runtime DLLs the CMake POST_BUILD staged next to the exe (tcc.dll, shaderc_shared.dll, ...).
+          Get-ChildItem build/x64 -Filter *.dll | Move-Item -Destination .
+          # Belt-and-suspenders: shaderc ships straight from the SDK even if it wasn't staged.
+          if ((Test-Path "$env:VULKAN_SDK/Bin/shaderc_shared.dll") -and -not (Test-Path "shaderc_shared.dll")) {
+            Copy-Item "$env:VULKAN_SDK/Bin/shaderc_shared.dll" . -Force
+          }
+          Move-Item build/x64/*.pdb debug/
+          Move-Item README.md readme.txt
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "gamecontrollerdb.txt"
+      - name: Sign binaries
+        if: ${{ env.WINDOWS_CERT_PFX_BASE64 != '' }}
+        env:
+          WINDOWS_CERT_PASSWORD: ${{ secrets.WINDOWS_CERT_PASSWORD }}
+        shell: pwsh
+        run: |
+          $pfx = "$env:RUNNER_TEMP\codesign.pfx"
+          [IO.File]::WriteAllBytes($pfx, [Convert]::FromBase64String($env:WINDOWS_CERT_PFX_BASE64))
+          $signtool = (Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin\*\x64\signtool.exe" | Sort-Object FullName -Descending | Select-Object -First 1).FullName
+          Get-ChildItem -Path Ghostship.exe, *.dll | ForEach-Object {
+            & $signtool sign /f $pfx /p $env:WINDOWS_CERT_PASSWORD /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 $_.FullName
+            if ($LASTEXITCODE -ne 0) { throw "signtool failed for $($_.FullName)" }
+          }
+          Remove-Item $pfx -Force
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
@@ -137,7 +157,7 @@ jobs:
           path: |
             .tcc
             Ghostship.exe
-            tcc.dll
+            *.dll
             ghostship.o2r
             debug
             readme.txt
