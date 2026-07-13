@@ -4,6 +4,9 @@
 #if !defined(__SWITCH__) && !defined(__WIIU__)
 #include "GameExtractor.h"
 #endif
+#ifdef __EMSCRIPTEN__
+#include "port/web/WebUtils.h"
+#endif
 #include "ShipInit.hpp"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
@@ -252,6 +255,8 @@ typedef enum PromptSteps {
     PS_DUPE,
     PS_WAIT,
     PS_NONE,
+    PS_WEB_CHOICE,
+    PS_WEB_UPLOAD,
 } PromptSteps;
 
 typedef enum WindowsSteps {
@@ -435,6 +440,10 @@ void GameEngine::FinishInit() {
     gsFast3dWindow->SetTargetFps(60);
     gsFast3dWindow->SetMaximumFrameLatency(1);
     gsFast3dWindow->SetRendererUCode(ucode_f3d);
+
+#ifdef __EMSCRIPTEN__
+    CVarRegisterInteger(CVAR_SETTING("InterpolationFPS"), 60);
+#endif
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
     auto blobFactory = std::make_shared<Ship::ResourceFactoryBinaryBlobV0>();
@@ -790,21 +799,47 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                         const bool romO2RExists =
                             std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
 
-                        if (!romO2RExists) {
-                            GhostshipGui::RegisterPopup(
-                                "No O2R Files", "No O2R files found. Generate one now?", "Yes", "No",
-                                [&]() { promptStep = PS_LOCAL; },
-                                [&]() {
-                                    threadPool = nullptr;
-                                    gsFast3dWindow = nullptr;
-                                    context = nullptr;
-                                    exit(0);
-                                });
-                        } else {
+                        if (romO2RExists) {
                             extractStep = ES_VERIFY;
+                            continue;
+                        }
+#ifdef __EMSCRIPTEN__
+                        promptStep = PS_WEB_CHOICE;
+#else
+                        GhostshipGui::RegisterPopup(
+                            "No O2R Files", "No O2R files found. Generate one now?", "Yes", "No",
+                            [&]() { promptStep = PS_LOCAL; },
+                            [&]() {
+                                threadPool = nullptr;
+                                gsFast3dWindow = nullptr;
+                                context = nullptr;
+                                exit(0);
+                            });
+#endif
+                        continue;
+                    }
+#ifdef __EMSCRIPTEN__
+                    case PS_WEB_CHOICE: {
+                        promptStep = PS_WAIT;
+                        GhostshipGui::RegisterPopup(
+                            "Set Up Game Files",
+                            "No game archive found.\n\nGenerate one from a Super Mario 64 ROM, or load an existing "
+                            "sm64.o2r you generated earlier?",
+                            "Generate from ROM", "Use existing O2R", [&]() { promptStep = PS_FIRST; },
+                            [&]() { promptStep = PS_WEB_UPLOAD; });
+                        continue;
+                    }
+                    case PS_WEB_UPLOAD: {
+                        // Blocks (ASYNCIFY) until the user picks a file or cancels.
+                        const std::string dest = Ship::Context::GetAppDirectoryPath("sm64") + "/sm64.o2r";
+                        if (WebFilePicker_PickInto(".o2r", dest.c_str())) {
+                            extractStep = ES_VERIFY;
+                        } else {
+                            promptStep = PS_WEB_CHOICE;
                         }
                         continue;
                     }
+#endif
                     case PS_LOCAL: {
                         extract = GameExtractor();
                         extract.SetSearchPath(installPath);

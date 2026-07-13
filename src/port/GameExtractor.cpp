@@ -24,7 +24,9 @@
 #ifndef __SWITCH__
 #include "Companion.h"
 
-#if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+#ifdef __EMSCRIPTEN__
+#include "port/web/WebUtils.h"
+#elif !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
 #include "portable-file-dialogs.h"
 #endif
 
@@ -92,7 +94,12 @@ bool GameExtractor::SelectGameFromUI() {
     std::string romPath;
     std::vector<uint8_t> romData;
 
-#if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+#if defined(__EMSCRIPTEN__)
+    romPath = WebFilePicker_PickROM();
+    if (romPath.empty()) {
+        return false;
+    }
+#elif !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
     // Desktop: fallback to file dialogue if no baserom found
     // if (!foundGame) {
     if (!pfd::settings::available()) {
@@ -237,6 +244,9 @@ bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShort
     Companion::Instance->SetProcess(false);
     try {
         Companion::Instance->Init(ExportType::Binary, totalAssets, false);
+#ifdef __EMSCRIPTEN__
+        Companion::Instance->Process(totalAssets);
+#endif
     } catch (const std::exception& e) {
         SPDLOG_INFO("Failed to process O2R {}", e.what());
         return false;

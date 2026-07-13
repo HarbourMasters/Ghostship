@@ -1,0 +1,86 @@
+name: Web (GitHub Pages)
+
+on:
+  push:
+    branches: [ develop ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: Extract Project Version
+        id: extract_version
+        run: |
+          VERSION=$(grep -oP '^\s*project\s*\([^)]*VERSION\s+\K[0-9\.]+' CMakeLists.txt)
+          echo "Found version: $VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Install dependencies
+        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.14
+        with:
+          key: web-ccache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            web-ccache-${{ github.ref }}
+            web-ccache-
+      - name: Cache Torch build
+        uses: actions/cache@v6
+        with:
+          key: web-torch-build-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            web-torch-build-${{ github.ref }}
+            web-torch-build-
+          path: |
+            Torch/cmake-build-release
+      - name: Generate ghostship.o2r
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          make -C Torch type=release -j3
+          Torch/cmake-build-release/torch pack port ghostship.o2r o2r -u ${{ steps.extract_version.outputs.version }}
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 4.0.12
+          actions-cache-folder: emsdk-cache
+      - name: Build zlib port
+        run: embuilder build zlib
+      - name: Build
+        run: |
+          emcmake cmake -B build-web -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+          cmake --build build-web -j4
+      - name: Stage site
+        run: |
+          mkdir site
+          cp build-web/ghostship.html site/index.html
+          cp build-web/ghostship.html site/
+          cp build-web/ghostship.js build-web/ghostship.wasm build-web/ghostship.data site/
+          cp build-web/coi-serviceworker.js site/
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

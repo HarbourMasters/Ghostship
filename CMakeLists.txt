@@ -111,6 +111,12 @@ if(IOS)
     set(PROJECT_ID "${BUNDLE_ID}")
 endif()
 
+if(EMSCRIPTEN)
+    add_compile_definitions(USE_OPENGLES=1)
+    add_compile_options(-pthread -sUSE_SDL=2 -fexceptions)
+    add_link_options(-pthread -sUSE_SDL=2)
+endif()
+
 ################################################################################
 # Sources
 ################################################################################
@@ -172,7 +178,7 @@ if(NOT USE_SATELLA)
     )
 endif()
 
-if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR NOT USE_SATELLA)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR EMSCRIPTEN OR NOT USE_SATELLA)
     set(USE_NETWORKING_DEFAULT OFF)
 else()
     set(USE_NETWORKING_DEFAULT ON)
@@ -269,6 +275,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/mods/mirror/*.cpp"
     "src/port/net/*.h"
     "src/port/net/*.cpp"
+    "src/port/web/*.h"
+    "src/port/web/*.cpp"
     "text/*.c"
     "textures/*.h"
     "textures/*.c"
@@ -323,6 +331,46 @@ if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
     endif()
 else()
     add_executable(${PROJECT_NAME} ${ALL_FILES})
+endif()
+
+if(EMSCRIPTEN)
+    set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "ghostship" SUFFIX ".html")
+    target_link_options(${PROJECT_NAME} PRIVATE
+        -sUSE_SDL=2
+        -sUSE_WEBGL2=1
+        -sMAX_WEBGL_VERSION=2
+        -sMIN_WEBGL_VERSION=2
+        -sFULL_ES3=1
+        -sINITIAL_MEMORY=268435456
+        -sALLOW_MEMORY_GROWTH=1
+        -sEXIT_RUNTIME=1
+        -sSTACK_SIZE=5242880
+        -sPTHREAD_POOL_SIZE=8
+        -sASYNCIFY=1
+        -sASSERTIONS=1
+        -sASYNCIFY_STACK_SIZE=8388608
+        -sFORCE_FILESYSTEM=1
+        -sEXPORTED_FUNCTIONS=_main,_malloc,_free
+        -sEXPORTED_RUNTIME_METHODS=FS,ccall,cwrap,UTF8ToString,stringToUTF8
+        -lembind
+        "SHELL:--shell-file ${CMAKE_SOURCE_DIR}/src/port/web/shell.html"
+        "SHELL:--preload-file ${CMAKE_SOURCE_DIR}/assets@/assets"
+        "SHELL:--preload-file ${CMAKE_SOURCE_DIR}/config.yml@/config.yml"
+        "SHELL:--preload-file ${CMAKE_SOURCE_DIR}/ghostship.o2r@/ghostship.o2r"
+    )
+    set(GHOSTSHIP_WEB_PRELOAD_ROM "" CACHE FILEPATH "Path to an sm64.o2r to embed (debug only)")
+    if(GHOSTSHIP_WEB_PRELOAD_ROM)
+        target_link_options(${PROJECT_NAME} PRIVATE
+            "SHELL:--preload-file ${GHOSTSHIP_WEB_PRELOAD_ROM}@/sm64.o2r")
+    endif()
+    set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY LINK_DEPENDS
+        "${CMAKE_SOURCE_DIR}/src/port/web/shell.html")
+    add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/src/port/web/coi-serviceworker.js"
+                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/coi-serviceworker.js"
+    )
 endif()
 
 ################################################################################
@@ -388,6 +436,66 @@ include_directories(
 if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(ENABLE_SCRIPTING OFF CACHE BOOL "" FORCE)
     set(DISABLE_DLL_LOADER ON CACHE BOOL "" FORCE)
+elseif(EMSCRIPTEN)
+    set(ENABLE_SCRIPTING OFF CACHE BOOL "" FORCE)
+    set(DISABLE_DLL_LOADER ON CACHE BOOL "" FORCE)
+
+    set(tinyxml2_BUILD_TESTING OFF)
+    FetchContent_Declare(
+        tinyxml2
+        GIT_REPOSITORY https://github.com/leethomason/tinyxml2.git
+        GIT_TAG 10.0.0
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_Declare(
+        nlohmann_json
+        GIT_REPOSITORY https://github.com/nlohmann/json.git
+        GIT_TAG v3.12.0
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_Declare(
+        spdlog
+        GIT_REPOSITORY https://github.com/gabime/spdlog.git
+        GIT_TAG v1.16.0
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+    set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+    set(BUILD_TOOLS OFF)
+    set(BUILD_REGRESS OFF)
+    set(BUILD_EXAMPLES OFF)
+    set(BUILD_DOC OFF)
+    set(BUILD_OSSFUZZ OFF)
+    set(BUILD_SHARED_LIBS OFF)
+    file(REMOVE
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlib-config.cmake"
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlib-config-version.cmake"
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlibConfig.cmake"
+        "${CMAKE_FIND_PACKAGE_REDIRECTS_DIR}/zlibConfigVersion.cmake")
+    set(_emsysroot "${EMSCRIPTEN_SYSROOT}")
+    if(NOT _emsysroot)
+        set(_emsysroot "${CMAKE_SYSROOT}")
+    endif()
+    if(NOT _emsysroot)
+        message(FATAL_ERROR "Could not determine the Emscripten sysroot for zlib")
+    endif()
+    set(ZLIB_INCLUDE_DIR "${_emsysroot}/include" CACHE PATH "" FORCE)
+    set(ZLIB_LIBRARY "${_emsysroot}/lib/wasm32-emscripten/libz.a" CACHE FILEPATH "" FORCE)
+    set(ENABLE_BZIP2 OFF)
+    set(ENABLE_LZMA OFF)
+    set(ENABLE_ZSTD OFF)
+    FetchContent_Declare(
+        libzip
+        GIT_REPOSITORY https://github.com/nih-at/libzip.git
+        GIT_TAG v1.11.4
+        GIT_SHALLOW TRUE
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_MakeAvailable(tinyxml2 nlohmann_json spdlog libzip)
+    # zip.h/zipconf.h for libultraship headers included by game code.
+    target_include_directories(${PROJECT_NAME} PRIVATE ${libzip_SOURCE_DIR}/lib ${libzip_BINARY_DIR})
 elseif(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
     set(ENABLE_SCRIPTING ON CACHE BOOL "" FORCE)
 else()

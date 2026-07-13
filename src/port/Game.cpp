@@ -2,6 +2,10 @@
 
 #include <fast/interpreter.h>
 #include "Engine.h"
+#ifdef __EMSCRIPTEN__
+#include <SDL2/SDL.h>
+#include "port/web/WebUtils.h"
+#endif
 
 extern "C" {
 #include "audio/external.h"
@@ -24,12 +28,24 @@ void push_frame() {
     GameEngine::Instance->StartFrame();
     thread5_iteration();
     GameEngine::EndAudioFrame();
+#ifdef __EMSCRIPTEN__
+    static uint32_t lastSync = 0;
+    const uint32_t now = SDL_GetTicks();
+    if (now - lastSync > 5000) {
+        lastSync = now;
+        WebCache_Save();
+    }
+#endif
 }
 
 #ifdef _WIN32
 int SDL_main(int argc, char** argv) {
 #else
 int main(int argc, char* argv[]) {
+#endif
+#ifdef __EMSCRIPTEN__
+    WebCache_Mount("/storage");
+    WebCache_Load();
 #endif
     GameEngine::Create(argc, argv);
     alloc_pool();
