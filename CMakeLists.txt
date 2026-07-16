@@ -100,12 +100,15 @@ if(IOS)
     if(NOT DEFINED PLATFORM)
         set(PLATFORM "OS64")
     endif()
+    option(IOS_SIGNING "Code sign the iOS app (OFF produces an unsigned bundle for sideloading)" ON)
     include(cmake/ios.toolchain.cmake)
     add_compile_definitions(
         PLATFORM_IOS=1
         __IOS__
     )
-    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
+    if(IOS_SIGNING)
+        set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
+    endif()
     set(BUNDLE_ID "dev.net64.ghostship")
     set(SIGN_LIBRARY ON)
     set(PROJECT_ID "${BUNDLE_ID}")
@@ -313,11 +316,27 @@ if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
         MACOSX_BUNDLE_INFO_PLIST ${IOS_DIR}/plist.in
         RESOURCE "${IMAGE_FILES};${STORYBOARD_FILE};${ICON_FILES}"
         XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${BUNDLE_ID}"
-        XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic"
-        XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "YES"
-        XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
-        XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "Apple Development"
     )
+
+    if(IOS_SIGNING)
+        set_target_properties(
+            ${PROJECT_NAME}
+            PROPERTIES
+            XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Automatic"
+            XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "YES"
+            XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "YES"
+            XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "Apple Development"
+        )
+    else()
+        set_target_properties(
+            ${PROJECT_NAME}
+            PROPERTIES
+            XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Manual"
+            XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "NO"
+            XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "NO"
+            XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ""
+        )
+    endif()
 
     if(EXISTS ${CMAKE_SOURCE_DIR}/ghostship.o2r)
         add_custom_command(

@@ -250,6 +250,58 @@ jobs:
           key: ${{ steps.restore-cache-macports.outputs.cache-primary-key }}
           path: /opt/local/
 
+  build-ios:
+    needs: generate-port-o2r
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
+      - name: Install Python dependencies
+        run: python3 -m pip install -r libultraship/requirements.txt --break-system-packages || python3 -m pip install -r libultraship/requirements.txt
+      - name: Download ghostship.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: ghostship.o2r
+          path: .
+      - name: Cache build folder
+        uses: actions/cache@v6
+        with:
+          key: ios-build-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            ios-build-${{ github.ref }}
+            ios-build-
+          path: build-ios
+      - name: Build (unsigned, device arm64)
+        run: |
+          cmake -S . -B build-ios -G Xcode -DIOS=ON -DPLATFORM=OS64 -DCMAKE_BUILD_TYPE=Release -DIOS_SIGNING=OFF -DPython3_EXECUTABLE=$(which python3)
+          # Belt-and-suspenders: command-line xcodebuild settings override any
+          # target-level signing attributes.
+          cmake --build build-ios --config Release -- CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+      - name: Package unsigned IPA
+        run: |
+          APP="build-ios/Release-iphoneos/Ghostship.app"
+          ls -la "$APP" || (echo "ERROR: $APP not found" && exit 1)
+          ls -la "$APP/ghostship.o2r" || (echo "ERROR: ghostship.o2r missing from app bundle" && exit 1)
+          rm -rf Payload && mkdir Payload
+          cp -R "$APP" Payload/
+          zip -qry Ghostship-unsigned.ipa Payload
+          cat > SIDELOADING.txt <<'EOF'
+          This IPA is UNSIGNED. Install it with a sideloading tool that re-signs
+          with your own Apple ID, e.g. AltStore, SideStore, or Sideloadly.
+          After installing, open the Files app and drop your SM64 ROM (.z64) or a
+          prebuilt sm64.o2r into "On My iPhone > Ghostship" (the app extracts the
+          ROM on first launch).
+          EOF
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ghostship-ios
+          path: |
+            Ghostship-unsigned.ipa
+            SIDELOADING.txt
+
   build-linux:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
@@ -355,6 +407,7 @@ jobs:
             gamecontrollerdb.txt
 
   build-switch:
+    if: false # Disabled until i update lus with the new renderer and fix the build issues
     needs: generate-port-o2r
     runs-on: ubuntu-latest
     container:
