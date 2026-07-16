@@ -1,4 +1,4 @@
-name: Web (GitHub Pages)
+name: GenerateBuilds / build-web
 
 on:
   push:
