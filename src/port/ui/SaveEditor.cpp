@@ -200,15 +200,15 @@ void SaveEditorWindow::DrawElement() {
         std::string posZ = std::to_string(gMarioState->pos[2]);
         ImGui::Text("Pos X:");
         ImGui::SameLine();
-        ImGui::Text(posX.c_str());
+        ImGui::Text("%s", posX.c_str());
 
         ImGui::Text("Pos Y:");
         ImGui::SameLine();
-        ImGui::Text(posY.c_str());
+        ImGui::Text("%s", posY.c_str());
 
         ImGui::Text("Pos Z:");
         ImGui::SameLine();
-        ImGui::Text(posZ.c_str());
+        ImGui::Text("%s", posZ.c_str());
 
         ImGui::EndTabItem();
     }
@@ -369,7 +369,7 @@ void SaveEditorWindow::DrawElement() {
                                     ImGui::TextColored(entry.obtained
                                                            ? UIWidgets::ColorValues.at(UIWidgets::Colors::Green)
                                                            : UIWidgets::ColorValues.at(UIWidgets::Colors::White),
-                                                       Rando::StaticData::Checks[entry.randoCheckId].name);
+                                                       "%s", Rando::StaticData::Checks[entry.randoCheckId].name);
 
                                     ImGui::TableNextColumn();
                                     if (ImGui::ImageButton(randoStaticCheck.name,

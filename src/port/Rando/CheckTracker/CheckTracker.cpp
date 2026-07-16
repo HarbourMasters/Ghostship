@@ -132,7 +132,7 @@ void DrawCheckTrackerList() {
                     ImGui::Image(textureId, ImVec2(16.0f * checkTrackerScale, 16.0f * checkTrackerScale));
                     ImGui::TableNextColumn();
                     ImGui::TextColored(
-                        checkTextColor,
+                        checkTextColor, "%s",
                         convertEnumToReadableName(Rando::StaticData::Checks[entry.randoCheckId].name).c_str());
                     if (randoSaveCheck.obtained) {
                         ImGui::SameLine();
@@ -288,7 +288,7 @@ void SettingsWindow::DrawElement() {
                 Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
             ImGui::SameLine();
-            ImGui::Text(colorText.c_str());
+            ImGui::Text("%s", colorText.c_str());
             ImGui::PopID();
             checkColorIndex++;
         }

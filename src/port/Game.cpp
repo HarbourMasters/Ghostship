@@ -6,6 +6,10 @@
 #include <SDL2/SDL.h>
 #include "port/web/WebUtils.h"
 #endif
+#ifdef __ANDROID__
+#include <SDL2/SDL_main.h>
+#include "port/android/AndroidUtils.h"
+#endif
 
 extern "C" {
 #include "audio/external.h"
@@ -46,6 +50,9 @@ int main(int argc, char* argv[]) {
 #ifdef __EMSCRIPTEN__
     WebCache_Mount("/storage");
     WebCache_Load();
+#endif
+#ifdef __ANDROID__
+    Android_SyncPackagedData();
 #endif
     GameEngine::Create(argc, argv);
     alloc_pool();

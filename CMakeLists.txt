@@ -120,6 +120,10 @@ if(EMSCRIPTEN)
     add_link_options(-pthread -sUSE_SDL=2)
 endif()
 
+if(ANDROID)
+    add_compile_definitions(USE_OPENGLES=1)
+endif()
+
 ################################################################################
 # Sources
 ################################################################################
@@ -181,7 +185,7 @@ if(NOT USE_SATELLA)
     )
 endif()
 
-if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR EMSCRIPTEN OR NOT USE_SATELLA)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR CMAKE_SYSTEM_NAME STREQUAL "Android" OR EMSCRIPTEN OR NOT USE_SATELLA)
     set(USE_NETWORKING_DEFAULT OFF)
 else()
     set(USE_NETWORKING_DEFAULT ON)
@@ -211,7 +215,7 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
 endif()
 
 # Find necessary libraries
-if (UNIX AND NOT APPLE)
+if (UNIX AND NOT APPLE AND NOT ANDROID)
 find_package(OpenGL REQUIRED)
 endif()
 
@@ -348,6 +352,9 @@ if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
     else()
         message(WARNING "ghostship.o2r not found in the source tree; generate it (GeneratePortO2R) and rebuild so it gets bundled into the iOS app.")
     endif()
+elseif(ANDROID)
+    add_library(${PROJECT_NAME} SHARED ${ALL_FILES})
+    set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "main")
 else()
     add_executable(${PROJECT_NAME} ${ALL_FILES})
 endif()
@@ -453,7 +460,7 @@ include_directories(
   ${dr_libs_SOURCE_DIR}
 )
 
-if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS" OR ANDROID)
     set(ENABLE_SCRIPTING OFF CACHE BOOL "" FORCE)
     set(DISABLE_DLL_LOADER ON CACHE BOOL "" FORCE)
 elseif(EMSCRIPTEN)
@@ -539,6 +546,15 @@ if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
 else()
     target_link_libraries(${PROJECT_NAME} PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,libultraship>")
 endif()
+
+if(ANDROID)
+    FetchContent_GetProperties(libzip)
+    if(libzip_SOURCE_DIR)
+        target_include_directories(${PROJECT_NAME} PRIVATE ${libzip_SOURCE_DIR}/lib ${libzip_BINARY_DIR})
+    endif()
+    target_link_libraries(${PROJECT_NAME} PRIVATE libzip::zip GLESv3 EGL android log)
+endif()
+
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS TRUE)
 set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
@@ -747,7 +763,7 @@ if(MSVC)
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
-    if (CMAKE_SYSTEM_NAME STREQUAL "Darwin" OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
+    if (CMAKE_SYSTEM_NAME STREQUAL "Darwin" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR ANDROID)
         target_compile_options(${PROJECT_NAME} PRIVATE
             -Wall -Wextra -Wno-error
             -Wno-return-type
@@ -858,12 +874,14 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
   endif()
 endif()
 
+if(NOT ANDROID)
 add_custom_command(
 	TARGET ${PROJECT_NAME} POST_BUILD
 	COMMENT "Copying asset yamls..."
 	COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "$<TARGET_FILE_DIR:Ghostship>/config.yml"
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
 )
+endif()
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupTccRuntime.cmake)
 
@@ -894,7 +912,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   endif()
 endif()
 
-if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT ANDROID)
 include(ExternalProject)
 ExternalProject_Add(TorchExternal
 	PREFIX TorchExternal

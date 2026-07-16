@@ -47,7 +47,7 @@ void DrawEntranceTrackerList() {
             const char* destinationName = levelIdList.at(destinationId).c_str();
             ImVec4 foundTextColor = VecFromRGBA8(CVAR_FOUND_COLOR);
 
-            ImGui::Text(entranceName);
+            ImGui::Text("%s", entranceName);
             ImGui::TableNextColumn();
             if (isFound) {
                 ImGui::TextColored(foundTextColor, "(%s)", destinationName);
@@ -171,7 +171,7 @@ void SettingsWindow::DrawElement() {
                 Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
             ImGui::SameLine();
-            ImGui::Text(colorText.c_str());
+            ImGui::Text("%s", colorText.c_str());
             ImGui::PopID();
             entranceColorIndex++;
         }

@@ -302,6 +302,47 @@ jobs:
             Ghostship-unsigned.ipa
             SIDELOADING.txt
 
+  build-android:
+    needs: generate-port-o2r
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
+      - name: Install Android SDK components
+        # LUS needs CMake >= 3.24; NDK version matches android/app/build.gradle
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "cmake;3.30.3" "ndk;27.2.12479018" "platforms;android-34" "build-tools;34.0.0" > /dev/null
+      - name: Install Python dependencies
+        run: pip install -r libultraship/requirements.txt
+      # gamedata.zip is packed from the repo root, so the o2r must land there first
+      - name: Download ghostship.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: ghostship.o2r
+          path: .
+      - name: Build APK (arm64, debug-signed for sideloading)
+        run: gradle -p android assembleRelease
+      - name: Collect APK
+        run: |
+          APK=android/app/build/outputs/apk/release/app-release.apk
+          ls -la "$APK" || (echo "ERROR: APK not found" && exit 1)
+          cp "$APK" Ghostship.apk
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ghostship-android
+          path: Ghostship.apk
+
   build-linux:
     needs: generate-port-o2r
     runs-on: ubuntu-latest

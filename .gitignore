@@ -108,3 +108,9 @@ workspace/template/output/*
 *.pem
 .tcc
 mods-*
+# Android build outputs
+android/.gradle/
+android/local.properties
+android/app/build/
+android/app/.cxx/
+build-android/
