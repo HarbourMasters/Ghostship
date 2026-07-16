@@ -1,4 +1,5 @@
 #include "Achievements.h"
+#include "port/ShipCompat.h"
 
 #include <unordered_map>
 
@@ -217,9 +218,9 @@ void Achievement_LoadTexture(const std::string& id) {
     initData->ResourceVersion = 0;
     initData->Path = "textures/achievements/" + std::string(achievement.icon) + ".png";
     auto texture = std::static_pointer_cast<Ship::GuiTexture>(
-        Ship::Context::GetInstance()->GetResourceManager()->LoadResource(initData->Path, false, initData));
+        ShipCompat::GetResourceManager()->LoadResource(initData->Path, false, initData));
 
-    std::dynamic_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+    std::dynamic_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
         ->LoadTextureFromResource(achievement.icon, texture);
 
     for (int32_t i = 0; i < texture->Metadata.Width * texture->Metadata.Height * 4; i += 4) {
@@ -234,7 +235,7 @@ void Achievement_LoadTexture(const std::string& id) {
         texture->Data[i + 2] = gray;
     }
 
-    std::dynamic_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+    std::dynamic_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
         ->LoadTextureFromResource(std::string(achievement.icon) + ".locked", texture);
 }
 

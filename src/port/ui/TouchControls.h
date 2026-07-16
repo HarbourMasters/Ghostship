@@ -22,7 +22,7 @@ class TouchControlsOverlay final : public Ship::GuiWindow {
     using GuiWindow::GuiWindow;
 
     void Draw() override;
-    void InitElement() override;
+    void OnInit(const nlohmann::json& initArgs = nlohmann::json::object()) override;
     void DrawElement() override {};
     void UpdateElement() override {};
 };

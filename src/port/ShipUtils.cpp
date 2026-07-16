@@ -1,4 +1,5 @@
 #include "ShipUtils.h"
+#include "port/ShipCompat.h"
 #include <libultraship/libultraship.h>
 #include "fast/Fast3dGui.h"
 
@@ -167,7 +168,7 @@ std::array<const char*, 10> digitList = { texture_hud_char_0, texture_hud_char_1
                                           texture_hud_char_9 };
 
 void LoadGuiTextures() {
-    auto gui = std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui());
+    auto gui = std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui());
     for (const auto entry : miscellaneousTextures) {
         gui->LoadGuiTexture(entry, entry, ImVec4(1, 1, 1, 1));
     }

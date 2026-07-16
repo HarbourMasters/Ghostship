@@ -3,8 +3,81 @@
 @{GLSL_VERSION}
 
 @if(VERTEX_SHADER)
-    @include("shaders/opengl/include/fast3d_vs.glsli")
+    @{attr} vec4 aVtxPos;
 
+    @for(i in 0..2)
+        @if(o_textures[i])
+            @{attr} vec2 aTexCoord@{i};
+            @{out} vec2 vTexCoord@{i};
+            @{update_floats(2)}
+            @for(j in 0..2)
+                @if(o_clamp[i][j])
+                    @if(j == 0)
+                        @{attr} float aTexClampS@{i};
+                        @{out} float vTexClampS@{i};
+                    @else
+                        @{attr} float aTexClampT@{i};
+                        @{out} float vTexClampT@{i};
+                    @end
+                    @{update_floats(1)}
+                @end
+            @end
+        @end
+    @end
+
+    @if(o_fog)
+        @{attr} vec4 aFog;
+        @{out} vec4 vFog;
+        @{update_floats(4)}
+    @end
+
+    @if(o_grayscale)
+        @{attr} vec4 aGrayscaleColor;
+        @{out} vec4 vGrayscaleColor;
+        @{update_floats(4)}
+    @end
+
+    @for(i in 0..o_inputs)
+        @if(o_alpha)
+            @{attr} vec4 aInput@{i + 1};
+            @{out} vec4 vInput@{i + 1};
+            @{update_floats(4)}
+        @else
+            @{attr} vec3 aInput@{i + 1};
+            @{out} vec3 vInput@{i + 1};
+            @{update_floats(3)}
+        @end
+    @end
+
+    void main() {
+        @for(i in 0..2)
+            @if(o_textures[i])
+                vTexCoord@{i} = aTexCoord@{i};
+                @for(j in 0..2)
+                    @if(o_clamp[i][j])
+                        @if(j == 0)
+                            vTexClampS@{i} = aTexClampS@{i};
+                        @else
+                            vTexClampT@{i} = aTexClampT@{i};
+                        @end
+                    @end
+                @end
+            @end
+        @end
+        @if(o_fog)
+            vFog = aFog;
+        @end
+        @if(o_grayscale)
+            vGrayscaleColor = aGrayscaleColor;
+        @end
+        @for(i in 0..o_inputs)
+            vInput@{i + 1} = aInput@{i + 1};
+        @end
+        gl_Position = aVtxPos;
+        @if(opengles)
+            gl_Position.z *= 0.3f;
+        @end
+    }
 @else
     @if(core_opengl || opengles)
     out vec4 vOutColor;
@@ -13,31 +86,27 @@
     @for(i in 0..2)
         @if(o_textures[i])
             @{attr} vec2 vTexCoord@{i};
+            @for(j in 0..2)
+                @if(o_clamp[i][j])
+                    @if(j == 0)
+                        @{attr} float vTexClampS@{i};
+                    @else
+                        @{attr} float vTexClampT@{i};
+                    @end
+                @end
+            @end
         @end
     @end
 
-    @if(o_textures[0] || o_textures[1])
-        uniform vec4 uTexClamp[2];
-    @end
+    @if(o_fog) @{attr} vec4 vFog;
+    @if(o_grayscale) @{attr} vec4 vGrayscaleColor;
 
-    @if(o_fog) @{attr} float vFogFactor;
-
-    @if(o_shade)
+    @for(i in 0..o_inputs)
         @if(o_alpha)
-            @{attr} vec4 vShade;
+            @{attr} vec4 vInput@{i + 1};
         @else
-            @{attr} vec3 vShade;
+            @{attr} vec3 vInput@{i + 1};
         @end
-    @end
-
-    @if(o_has_inputs)
-        uniform vec4 uInputs[@{o_inputs}];
-    @end
-    @if(o_fog)
-        uniform vec4 uFogColor;
-    @end
-    @if(o_grayscale)
-        uniform vec4 uGrayscaleColor;
     @end
 
     @if(o_textures[0]) uniform sampler2D uTex0;
@@ -52,72 +121,50 @@
     uniform int frame_count;
     uniform float noise_scale;
 
-    // Game-bindable custom uniform registers; [0]-[1] are engine built-ins
-    // (frame/time/delta, resolution). See CustomUniforms in gfx_rendering_api.h.
-    uniform vec4 uCustom[32];
-
     @if(o_prim_depth)
     uniform float prim_depth;
     @end
-
-    @if(o_uses_lod)
-    uniform float lod_max;
-    @end
-    // Declared unconditionally: .w carries the RGB dither mode used by every draw.
-    uniform vec4 uLodParams; // x=res scale, y=prim_lod_min, z=G_TD mode, w=RGB dither mode
-    uniform vec4 uDebugTint;  // HD-replacement debug tint: rgb = color, a = mix amount
 
     uniform int texture_width[2];
     uniform int texture_height[2];
     uniform int texture_filtering[2];
 
-    @include("shaders/opengl/include/filter.glsli")
+    #define TEX_OFFSET(off) @{texture}(tex, texCoord - off / texSize)
+    #define WRAP(x, low, high) mod((x)-(low), (high)-(low)) + (low)
 
-    @include("shaders/opengl/include/palette.glsli")
-
-    // N64 RDP ordered-dither matrices (values 0..7); see applyRdpDither.
-    const int kDitherMagic[16] = int[16](0, 6, 1, 7, 4, 2, 5, 3, 3, 5, 2, 4, 7, 1, 6, 0);
-    const int kDitherBayer[16] = int[16](0, 4, 1, 5, 6, 2, 7, 3, 1, 5, 0, 4, 7, 3, 6, 2);
-
-    // Integer hash for the G_CD_NOISE dither: robust per-pixel + per-frame value 0..7
-    // (a sin-based hash aliases to near-constant on some GPUs, washing the noise out).
-    int ditherNoise(ivec2 p, int frame) {
-        uint h = uint(p.x) * 1597334677u ^ uint(p.y) * 3812015801u ^ uint(frame) * 2654435761u;
-        h ^= h >> 16u; h *= 2246822519u;
-        h ^= h >> 13u; h *= 3266489917u;
-        h ^= h >> 16u;
-        return int(h & 7u);
+    float random(in vec3 value) {
+        float random = dot(sin(value), vec3(12.9898, 78.233, 37.719));
+        return fract(sin(random) * 143758.5453);
     }
 
-    // RDP RGB dither + RGBA5551 quantization. mode: 0=magic square, 1=bayer,
-    // 2=noise (temporal), 3=disable (truncate only), >=4 = off (full precision).
-    // Hash inlined (this shader doesn't pull in noise.glsli's random()).
-    vec3 applyRdpDither(vec3 color, float modeF, vec2 fragCoord, float noiseScaleV, int frameCountV) {
-        int mode = int(modeF + 0.5);
-        if (mode >= 4) {
-            return color;
+    vec4 fromLinear(vec4 linearRGB){
+        bvec3 cutoff = lessThan(linearRGB.rgb, vec3(0.0031308));
+        vec3 higher = vec3(1.055)*pow(linearRGB.rgb, vec3(1.0/2.4)) - vec3(0.055);
+        vec3 lower = linearRGB.rgb * vec3(12.92);
+        return vec4(mix(higher, lower, cutoff), linearRGB.a);
+    }
+
+    vec4 filter3point(in sampler2D tex, in vec2 texCoord, in vec2 texSize) {
+        vec2 offset = fract(texCoord*texSize - vec2(0.5));
+        offset -= step(1.0, offset.x + offset.y);
+        vec4 c0 = TEX_OFFSET(offset);
+        vec4 c1 = TEX_OFFSET(vec2(offset.x - sign(offset.x), offset.y));
+        vec4 c2 = TEX_OFFSET(vec2(offset.x, offset.y - sign(offset.y)));
+        return c0 + abs(offset.x)*(c1-c0) + abs(offset.y)*(c2-c0);
+    }
+
+    vec4 hookTexture2D(in int id, sampler2D tex, in vec2 uv, in vec2 texSize) {
+    @if(o_three_point_filtering)
+        if(texture_filtering[id] == @{FILTER_THREE_POINT}) {
+            return filter3point(tex, uv, texSize);
         }
-        vec2 nativeCoord = floor(fragCoord * noiseScaleV);
-        float d = 0.0;
-        if (mode == 0) {
-            ivec2 cell = ivec2(nativeCoord) & 3;
-            d = float(kDitherMagic[cell.y * 4 + cell.x]);
-        } else if (mode == 1) {
-            ivec2 cell = ivec2(nativeCoord) & 3;
-            d = float(kDitherBayer[cell.y * 4 + cell.x]);
-        } else if (mode == 2) {
-            d = float(ditherNoise(ivec2(nativeCoord), frameCountV));
-        }
-        vec3 q = min(floor(clamp(color * 255.0 + d, 0.0, 255.0) / 8.0), 31.0);
-        return (q * 8.0 + floor(q / 4.0)) / 255.0;
+    @end
+        return @{texture}(tex, uv);
     }
 
     #define TEX_SIZE(tex) vec2(texture_width[tex], texture_height[tex])
 
     void main() {
-        @if(o_uses_lod)
-            float lodFrac = 0.0;
-        @end
         @for(i in 0..2)
             @if(o_textures[i])
                 @{s = o_clamp[i][0]}
@@ -129,70 +176,15 @@
                     vec2 vTexCoordAdj@{i} = vTexCoord@{i};
                 @else
                     @if(s && t)
-                        vec2 vTexCoordAdj@{i} = clamp(vTexCoord@{i}, 0.5 / texSize@{i}, uTexClamp[@{i}].xy);
+                        vec2 vTexCoordAdj@{i} = clamp(vTexCoord@{i}, 0.5 / texSize@{i}, vec2(vTexClampS@{i}, vTexClampT@{i}));
                     @elseif(s)
-                        vec2 vTexCoordAdj@{i} = vec2(clamp(vTexCoord@{i}.s, 0.5 / texSize@{i}.s, uTexClamp[@{i}].x), vTexCoord@{i}.t);
+                        vec2 vTexCoordAdj@{i} = vec2(clamp(vTexCoord@{i}.s, 0.5 / texSize@{i}.s, vTexClampS@{i}), vTexCoord@{i}.t);
                     @else
-                        vec2 vTexCoordAdj@{i} = vec2(vTexCoord@{i}.s, clamp(vTexCoord@{i}.t, 0.5 / texSize@{i}.t, uTexClamp[@{i}].y));
+                        vec2 vTexCoordAdj@{i} = vec2(vTexCoord@{i}.s, clamp(vTexCoord@{i}.t, 0.5 / texSize@{i}.t, vTexClampT@{i}));
                     @end
                 @end
 
-                @if(i == 0)
-                    @if(o_uses_lod)
-                        // N64 texture LOD (RDP-accurate): max absolute UV derivative,
-                        // linear fraction between tiles, sharpen/detail handling
-                        vec2 lodScaled = vTexCoordAdj0 * texSize0;
-                        vec2 lodMaxD = max(abs(dFdx(lodScaled)), abs(dFdy(lodScaled)));
-                        float lodMaxDst = max(max(lodMaxD.x, lodMaxD.y) * uLodParams.x, 0.000001);
-                        if (uLodParams.z > 0.5) { // sharpen or detail
-                            lodMaxDst = max(lodMaxDst, uLodParams.y);
-                        }
-                        float lodTileBase = floor(log2(lodMaxDst));
-                        lodFrac = lodMaxDst / exp2(max(lodTileBase, 0.0)) - 1.0;
-                        if (uLodParams.z > 0.5 && uLodParams.z < 1.5 && lodMaxDst < 1.0) { // sharpen
-                            lodFrac = lodMaxDst - 1.0;
-                        }
-                        if (uLodParams.z > 1.5) { // detail: tile 0 is the detail texture
-                            if (lodFrac < 0.0) {
-                                lodFrac = lodMaxDst;
-                            }
-                            lodTileBase += 1.0;
-                        } else if (lodTileBase >= lod_max) {
-                            lodFrac = 1.0;
-                        }
-                        if (uLodParams.z > 0.5) {
-                            lodTileBase = max(lodTileBase, 0.0);
-                        } else {
-                            lodFrac = max(lodFrac, 0.0);
-                        }
-                        float lodTile0 = clamp(lodTileBase, 0.0, lod_max);
-                        float lodTile1 = clamp(lodTileBase + 1.0, 0.0, lod_max);
-                        // No real LOD level beyond the base (max level 0): the N64
-                        // never blends a second tile, so kill the LOD fraction.
-                        // Small EXTRA_TILE_MIPMAPS textures degenerate to one
-                        // level yet still emit G_TL_LOD+TRILERP; without this the
-                        // combiner blends a stale TEXEL1 by distance.
-                        if (lod_max < 0.5) {
-                            lodFrac = 0.0;
-                        }
-                    @end
-                @end
-
-                @if(i == 0)
-                    @if(o_mip_lod)
-                        vec4 texVal0 = textureLod(uTex0, vTexCoordAdj0, lodTile0);
-                    @elseif(o_palette[0])
-                        vec4 texVal0 = paletteSample(uTex0, vTexCoordAdj0, texSize0, uPaletteParams[0]);
-                    @else
-                        vec4 texVal@{i} = hookTexture2D(@{i}, uTex@{i}, vTexCoordAdj@{i}, texSize@{i});
-                    @end
-                @else
-                    @if(o_palette[1])
-                        vec4 texVal1 = paletteSample(uTex1, vTexCoordAdj1, texSize1, uPaletteParams[1]);
-                    @else
-                        vec4 texVal@{i} = hookTexture2D(@{i}, uTex@{i}, vTexCoordAdj@{i}, texSize@{i});
-                    @end
-                @end
+                vec4 texVal@{i} = hookTexture2D(@{i}, uTex@{i}, vTexCoordAdj@{i}, texSize@{i});
 
                 @if(o_masks[i])
                     @if(opengles) 
@@ -214,22 +206,9 @@
             @end
         @end
 
-        @if(o_mip_lod)
-            // TEXEL1 reads the next mip level of texture 0
-            vec4 texVal1 = textureLod(uTex0, vTexCoordAdj0, lodTile1);
-        @end
-
-        @if(o_two_tile_lod)
-            // N64 LOD tile selection: TEXEL0's tile is clamped to the max level,
-            // but the hardware's second texel is always lod_tile + 1 — at
-            // magnification TEXEL1 still reads the real tile 1 (Paper Mario's
-            // sprite shading relies on this with a stale G_TL_LOD).
-            texVal0 = lodTile0 < 0.5 ? texVal0 : texVal1;
-        @end
-
-        @if(o_alpha)
+        @if(o_alpha) 
             vec4 texel;
-        @else
+        @else 
             vec3 texel;
         @end
 
@@ -275,9 +254,9 @@
         // TODO discard if alpha is 0?
         @if(o_fog)
             @if(o_alpha)
-                texel = vec4(mix(texel.rgb, uFogColor.rgb, vFogFactor), texel.a);
+                texel = vec4(mix(texel.rgb, vFog.rgb, vFog.a), texel.a);
             @else
-                texel = mix(texel, uFogColor.rgb, vFogFactor);
+                texel = mix(texel, vFog.rgb, vFog.a);
             @end
         @end
 
@@ -291,22 +270,8 @@
 
         @if(o_grayscale)
             float intensity = (texel.r + texel.g + texel.b) / 3.0;
-            vec3 new_texel = uGrayscaleColor.rgb * intensity;
-            texel.rgb = mix(texel.rgb, new_texel, uGrayscaleColor.a);
-        @end
-
-        // N64 RGB framebuffer dither (per-primitive G_CD_* mode in uLodParams.w)
-        @if(o_alpha)
-            texel.rgb = applyRdpDither(texel.rgb, uLodParams.w, gl_FragCoord.xy, noise_scale, frame_count);
-        @else
-            texel = applyRdpDither(texel, uLodParams.w, gl_FragCoord.xy, noise_scale, frame_count);
-        @end
-
-        // HD-replacement debug tint (no-op when uDebugTint.a == 0)
-        @if(o_alpha)
-            texel.rgb = mix(texel.rgb, uDebugTint.rgb, uDebugTint.a);
-        @else
-            texel = mix(texel, uDebugTint.rgb, uDebugTint.a);
+            vec3 new_texel = vGrayscaleColor.rgb * intensity;
+            texel.rgb = mix(texel.rgb, new_texel, vGrayscaleColor.a);
         @end
 
         @if(o_alpha)
@@ -319,6 +284,10 @@
             @{vOutColor} = texel;
         @else
             @{vOutColor} = vec4(texel, 1.0);
+        @end
+
+        @if(srgb_mode)
+            @{vOutColor} = fromLinear(@{vOutColor});
         @end
 
         @if(o_prim_depth)

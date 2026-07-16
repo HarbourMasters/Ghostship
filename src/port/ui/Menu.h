@@ -13,7 +13,7 @@ class Menu : public GuiWindow {
     Menu(const std::string& cVar, const std::string& name, uint8_t searchSidebarIndex_ = 0,
          UIWidgets::Colors menuThemeIndex_ = UIWidgets::Colors::LightBlue);
 
-    void InitElement() override;
+    void OnInit(const nlohmann::json& initArgs = nlohmann::json::object()) override;
     void DrawElement() override;
     void UpdateElement() override;
     void Draw() override;

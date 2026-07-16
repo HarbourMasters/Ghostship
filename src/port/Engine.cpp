@@ -1,5 +1,7 @@
 #include "Engine.h"
+#include <ship/window/gui/IconsFontAwesome4.h>
 #include "ModAudio.h"
+#include "ShipCompat.h"
 #include "ui/GhostshipGui.hpp"
 #if !defined(__SWITCH__) && !defined(__WIIU__)
 #include "GameExtractor.h"
@@ -66,6 +68,32 @@
 #include "port/mods/utils/GfxPrint.h"
 #include <ship/resource/archive/Archive.h>
 #include "port/net/SatellaClient.h"
+
+#include <ship/log/Logger.h>
+#include <ship/config/Config.h>
+#include <ship/config/ConsoleVariable.h>
+#include <ship/thread/ThreadPool.h>
+#include <ship/debug/Console.h>
+#include <ship/debug/CrashHandler.h>
+#include <ship/events/Events.h>
+#include <ship/window/FileDrop.h>
+#include <ship/audio/Audio.h>
+#include <fast/debug/GfxDebugger.h>
+#ifdef ENABLE_SCRIPTING
+#include <ship/security/Keystore.h>
+#endif
+#include <libultraship/bridge/consolevariablebridge.h>
+#include <libultraship/bridge/resourcebridge.h>
+#include <libultraship/bridge/windowbridge.h>
+#include <libultraship/bridge/controllerbridge.h>
+#include <libultraship/bridge/eventsbridge.h>
+#include <libultraship/bridge/audiobridge.h>
+#include <libultraship/bridge/crashhandlerbridge.h>
+#include <libultraship/bridge/gfxdebuggerbridge.h>
+#include <libultraship/bridge/gfxbridge.h>
+#ifdef ENABLE_SCRIPTING
+#include <libultraship/bridge/scriptingbridge.h>
+#endif
 
 #ifdef __SWITCH__
 #include <ship/port/switch/SwitchImpl.h>
@@ -143,15 +171,29 @@ bool VerifyArchiveVersion(OTRVersion version) {
 }
 
 GameEngine::GameEngine() : dictionary(nullptr) {
-    this->context = Ship::Context::CreateUninitializedInstance("Ghostship", "sm64", "ghostship.cfg.json");
+    this->context = Ship::Context::CreateInstance("Ghostship", "sm64");
+    this->context->Init();
+    ShipCompat::SetContext(this->context);
 
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
 #endif
 
-    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
-    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
-    // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
+    auto logger = std::make_shared<Ship::Logger>(
+        "Ghostship", Ship::Context::GetPathRelativeToAppDirectory("logs/Ghostship.log"));
+    context->GetChildren().Add(logger);
+    logger->Init();
+
+    auto config = std::make_shared<Ship::Config>(Ship::Context::GetPathRelativeToAppDirectory("ghostship.cfg.json"),
+                                                 nullptr);
+    context->GetChildren().Add(config);
+
+    auto consoleVariables = std::make_shared<Ship::ConsoleVariable>(config);
+    context->GetChildren().Add(consoleVariables);
+    CVarSetConsoleVariable(consoleVariables);
+
+    gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}), config,
+                                                          consoleVariables);
 
 #if (_DEBUG)
     auto defaultLogLevel = spdlog::level::debug;
@@ -160,19 +202,45 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 #endif
     auto logLevel =
         static_cast<spdlog::level::level_enum>(CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
-    this->context->InitLogging(logLevel, logLevel);
+    spdlog::set_level(logLevel);
+    spdlog::flush_on(logLevel);
 
     assets_path = Ship::Context::LocateFileAcrossAppDirs("ghostship.o2r");
     portArchiveVersionMatch = std::filesystem::exists(assets_path);
 
-    auto controlDeck = std::make_shared<LUS::ControlDeck>();
-
-    this->context->InitControlDeck(controlDeck);
-    this->context->InitResourceManager({ assets_path }, {}, 3);
-    this->context->InitConsole();
+    auto threadPool =
+        std::make_shared<Ship::ThreadPool>(std::max(1, (int32_t)(std::thread::hardware_concurrency() - 3 - 1)));
+    context->GetChildren().Add(threadPool);
 
 #ifdef ENABLE_SCRIPTING
-    this->context->GetResourceManager()->GetArchiveManager()->SetUntrustedArchiveHandler(
+    auto keystore = std::make_shared<Ship::Keystore>(config);
+    context->GetChildren().Add(keystore);
+    auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool, keystore);
+#else
+    auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool);
+#endif
+    context->GetChildren().Add(resourceManager);
+    ResourceSetResourceManager(resourceManager);
+
+    auto controlDeck = std::make_shared<LUS::ControlDeck>(gsFast3dWindow, consoleVariables);
+    context->GetChildren().Add(controlDeck);
+    ControllerSetControlDeck(controlDeck);
+
+    try {
+        nlohmann::json rmArgs;
+        rmArgs["archivePaths"] = std::vector<std::string>{ assets_path };
+        rmArgs["validHashes"] = std::vector<uint32_t>{};
+        resourceManager->Init(rmArgs);
+    } catch (const std::exception& e) {
+        SPDLOG_WARN("ResourceManager init deferred: {}", e.what());
+    }
+
+    auto console = std::make_shared<Ship::Console>();
+    context->GetChildren().Add(console);
+    console->Init();
+
+#ifdef ENABLE_SCRIPTING
+    resourceManager->GetArchiveManager()->SetUntrustedArchiveHandler(
         [](Ship::Archive& archive, Ship::KeystoreEntry& key) {
             const auto info = archive.GetManifest();
 
@@ -216,9 +284,23 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         });
 #endif
 
-    gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
-    this->context->InitWindow(gsFast3dWindow);
-    this->context->InitEventSystem();
+    auto crashHandler = std::make_shared<Ship::CrashHandler>();
+    context->GetChildren().Add(crashHandler);
+    CrashHandlerSetComponent(crashHandler);
+
+    context->GetChildren().Add(gsFast3dWindow);
+    WindowSetWindowComponent(gsFast3dWindow);
+    GfxSetFast3dWindow(gsFast3dWindow);
+
+    auto gfxDebugger = std::make_shared<Fast::GfxDebugger>();
+    context->GetChildren().Add(gfxDebugger);
+    GfxDebuggerSetComponent(gfxDebugger);
+
+    gsFast3dWindow->Init();
+
+    auto events = std::make_shared<Ship::Events>();
+    context->GetChildren().Add(events);
+    EventSystemSetEvents(events);
 
     GhostshipGui::SetupMenu();
 
@@ -302,6 +384,9 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
 #ifndef ENABLE_SCRIPTING
     return;
 #else
+    if (ShipCompat::GetScriptLoader() != nullptr) {
+        return;
+    }
     constexpr int codeVersion = 1;
     const std::unordered_map<std::string, std::string> defines = {
         { "VERSION_US", "1" }, { "ENABLE_RUMBLE", "1" }, { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
@@ -315,7 +400,11 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         tccBase + "/include/sys", tccBase + "/include/sec_api",
     };
     const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, { "Ghostship" });
+    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, codeVersion, "-g -rdynamic", includePaths,
+                                                             libraryPaths, std::vector<std::string>{ "Ghostship" },
+                                                             ShipCompat::GetResourceManager());
+    context->GetChildren().Add(scriptLoader);
+    ScriptSetLoader(scriptLoader);
 #else
     std::string tccBase = Ship::Context::GetPathRelativeToAppDirectory(".tcc");
     if (!std::filesystem::exists(tccBase)) {
@@ -364,10 +453,13 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
 #endif
 
     const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    context->InitScriptLoader(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths, {});
+    auto scriptLoader =
+        std::make_shared<Ship::ScriptLoader>(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths,
+                                             std::vector<std::string>{}, ShipCompat::GetResourceManager());
+    context->GetChildren().Add(scriptLoader);
+    ScriptSetLoader(scriptLoader);
 #endif
 
-    context->GetScriptLoader()->SetCacheDir(Ship::Context::GetPathRelativeToAppDirectory("mods_cache"));
 #endif
 }
 
@@ -376,7 +468,7 @@ void GameEngine::LoadResourceFiles() {
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
-        context->GetResourceManager()->GetArchiveManager()->AddArchive(romPath);
+        ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(romPath);
     }
 
     const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
@@ -390,13 +482,13 @@ void GameEngine::LoadResourceFiles() {
             for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
                 const auto ext = p.path().extension().string();
                 if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
-                    Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->AddArchive(
+                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(
                         p.path().generic_string());
                 }
 
                 if (StringHelper::IEquals(ext, ".zip")) {
                     SPDLOG_WARN("Zip files should be only used for development purposes, not for distribution");
-                    Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->AddArchive(
+                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(
                         p.path().generic_string());
                 }
             }
@@ -404,7 +496,7 @@ void GameEngine::LoadResourceFiles() {
             for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
                 if (p.is_directory()) {
                     SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
-                    Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->AddArchive(
+                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(
                         p.path().generic_string());
                 }
             }
@@ -412,7 +504,7 @@ void GameEngine::LoadResourceFiles() {
     }
 
 #ifdef ENABLE_SCRIPTING
-    auto archive = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager();
+    auto archive = ShipCompat::GetResourceManager()->GetArchiveManager();
     auto list = archive->GetArchives();
 
     for (const auto& entry : *list) {
@@ -427,15 +519,22 @@ void GameEngine::LoadResourceFiles() {
 }
 
 void GameEngine::FinishInit() {
-    Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
+    spdlog::set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
     SPDLOG_INFO("Starting Ghostship version {} (Branch: {} | Commit: {})", (char*)gBuildVersion, (char*)gGitBranch,
                 (char*)gGitCommitHash);
 
-    context->InitFileDropMgr();
-    context->InitCrashHandler();
+    auto fileDropMgr = std::make_shared<Ship::FileDrop>(gsFast3dWindow);
+    context->GetChildren().Add(fileDropMgr);
+    fileDropMgr->Init();
+
     SetupScriptLoader(context);
 
-    this->context->InitAudio({ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 });
+    auto audio = std::make_shared<Ship::Audio>(
+        Ship::AudioSettings{ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 },
+        ShipCompat::GetConfig());
+    context->GetChildren().Add(audio);
+    AudioSetAudioComponent(audio);
+    audio->Init();
 
     gsFast3dWindow->SetTargetFps(60);
     gsFast3dWindow->SetMaximumFrameLatency(1);
@@ -445,7 +544,7 @@ void GameEngine::FinishInit() {
     CVarRegisterInteger(CVAR_SETTING("InterpolationFPS"), 60);
 #endif
 
-    auto loader = context->GetResourceManager()->GetResourceLoader();
+    auto loader = ShipCompat::GetResourceManager()->GetResourceLoader();
     auto blobFactory = std::make_shared<Ship::ResourceFactoryBinaryBlobV0>();
 
     loader->RegisterResourceFactory(std::make_shared<SM64::AnimationFactoryV0>(), RESOURCE_FORMAT_BINARY, "Animation",
@@ -510,7 +609,7 @@ void GameEngine::FinishInit() {
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
     prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
-    context->GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
+    ShipCompat::GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 
     Instance->AudioInit();
     Instance->LoadDictionary();
@@ -523,7 +622,7 @@ void GameEngine::FinishInit() {
     PortEnhancements_Init();
     ShipInit::InitAll();
 #ifdef ENABLE_SCRIPTING
-    context->GetScriptLoader()->LoadAll();
+    ShipCompat::GetScriptLoader()->LoadAll();
 #endif
     CALL_EVENT(EngineReady);
 }
@@ -532,7 +631,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     bool extractDone = false;
     ExtractSteps extractStep = ES_PORT_ARCHIVE;
     WindowsSteps windowsStep = WS_TEMP;
-    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(context->GetWindow());
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow());
     auto gui = wnd->GetGui();
     bool menuWasVisible = false;
     if (gui->GetMenu()->IsVisible()) {
@@ -543,7 +642,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     OTRVersion romArchiveVersion = DetectOTRVersion("sm64.o2r");
 
     bool found = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r"));
-    bool shouldRegen = !VerifyArchiveVersion(romArchiveVersion) && romArchiveVersion.major != INT16_MAX;
+    bool shouldRegen = !VerifyArchiveVersion(romArchiveVersion) && romArchiveVersion.major != INT16_MAX &&
+                       !(romArchiveVersion.major == 0 && romArchiveVersion.minor == 0 && romArchiveVersion.patch == 0);
 
     std::filesystem::path ownPath;
     std::vector<std::string> args;
@@ -926,7 +1026,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 LoadResourceFiles();
                 threadPool->submit_task([&]() -> void {
 #ifdef ENABLE_SCRIPTING
-                    auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
+                    auto scripting = ShipCompat::GetScriptLoader();
                     auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
                         auto& info = archive->GetManifest();
                         file = info.Name;
@@ -1086,7 +1186,7 @@ ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
         initData->ResourceVersion = 0;
         initData->Path = fontPath;
         std::shared_ptr<Ship::Font> fontData = std::static_pointer_cast<Ship::Font>(
-            Ship::Context::GetInstance()->GetResourceManager()->LoadResource(fontPath, false, initData));
+            ShipCompat::GetResourceManager()->LoadResource(fontPath, false, initData));
         font = mImGuiIo->Fonts->AddFontFromMemoryTTF(fontData->Data, fontData->DataSize, size, &config);
     }
     // FontAwesome fonts need to have their sizes reduced by 2.0f/3.0f in order to align correctly
@@ -1118,7 +1218,7 @@ void GameEngine::ScaleImGui() {
 
 void GameEngine::LoadScripts() {
 #ifdef ENABLE_SCRIPTING
-    auto scripting = Ship::Context::GetInstance()->GetScriptLoader();
+    auto scripting = ShipCompat::GetScriptLoader();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
     auto currentScriptName = std::make_shared<std::string>("");
@@ -1148,7 +1248,7 @@ void GameEngine::LoadScripts() {
     }
 
     try {
-        context->GetScriptLoader()->LoadAll();
+        ShipCompat::GetScriptLoader()->LoadAll();
         Notification::Emit({ .message = "Finished loading mods!", .remainingTime = 5.0f, .mute = true });
     } catch (std::exception& e) {
         SPDLOG_ERROR("Failed to load scripts: {}", e.what());
@@ -1186,8 +1286,8 @@ void GameEngine::Destroy() {
 
 void GameEngine::StartFrame() const {
     using Ship::KbScancode;
-    const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
-    this->context->GetWindow()->SetLastScancode(-1);
+    const int32_t dwScancode = ShipCompat::GetWindow()->GetLastScancode();
+    ShipCompat::GetWindow()->SetLastScancode(-1);
 
     CALL_EVENT(KeyboardInput, dwScancode);
 
@@ -1205,10 +1305,10 @@ void GameEngine::StartFrame() const {
 
 uint32_t GameEngine::GetInterpolationFPS() {
     if (CVarGetInteger(CVAR_SETTING("MatchRefreshRate"), 0)) {
-        return Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+        return ShipCompat::GetWindow()->GetCurrentRefreshRate();
     } else if (CVarGetInteger(CVAR_VSYNC_ENABLED, 1) ||
-               !Ship::Context::GetInstance()->GetWindow()->CanDisableVerticalSync()) {
-        return std::min<uint32_t>(Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate(),
+               !ShipCompat::GetWindow()->CanDisableVerticalSync()) {
+        return std::min<uint32_t>(ShipCompat::GetWindow()->GetCurrentRefreshRate(),
                                   CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
     }
     return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
@@ -1280,7 +1380,7 @@ extern "C" void GameEngine_UnlockAudioThread() {
 }
 
 void GameEngine::AudioInit() {
-    const auto resourceMgr = Ship::Context::GetInstance()->GetResourceManager();
+    const auto resourceMgr = ShipCompat::GetResourceManager();
     resourceMgr->LoadResources("sound");
     const auto banksFiles = resourceMgr->GetArchiveManager()->ListFiles("sound/banks/*");
     const auto sequences_files = resourceMgr->GetArchiveManager()->ListFiles("sound/sequences/*");
@@ -1327,7 +1427,7 @@ void GameEngine::LoadDictionary() {
 }
 
 void GameEngine::LoadPlayerAnims() {
-    auto resourceMgr = Ship::Context::GetInstance()->GetResourceManager();
+    auto resourceMgr = ShipCompat::GetResourceManager();
     auto archiveMgr = resourceMgr->GetArchiveManager();
     auto anims = archiveMgr->ListFiles("assets/anims/*");
     this->animationsTable.resize(anims->size());
@@ -1346,11 +1446,11 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
 }
 
 uint32_t GameEngine::GetGameVersion() {
-    return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
+    return ShipCompat::GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
 void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolationResult>& replacements) {
-    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow());
 
     if (wnd == nullptr) {
         return;
@@ -1363,18 +1463,14 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolation
 
     interpreter->mInterpolationIndex = 0;
     for (const auto& r : replacements) {
-#ifdef __SWITCH__ // Switch LUS Needs to be updated, so for now lets keep it simple
         wnd->DrawAndRunGraphicsCommands(Commands, r.mtx);
-#else
-        wnd->DrawAndRunGraphicsCommands(Commands, r.mtx, r.dl);
-#endif
         interpreter->mInterpolationIndex++;
     }
 
     bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
-        Ship::Context::GetInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
+        ShipCompat::GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
         // Vanilla and HD are cached under distinct explicit paths (see AcquireDrawTexture), so
         // toggling needs no resource-cache purge — purging here freed/dirtied audio/soundfont
         // resources the engine holds raw pointers into and crashed. Just drop the GPU texture
@@ -1386,7 +1482,7 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolation
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
     std::vector<FrameInterpolationResult> mtx_replacements;
-    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow());
 
     int target_fps = GetInterpolationFPS();
     static int last_fps;
@@ -1432,7 +1528,7 @@ extern "C" uint32_t GameEngine_GetInterpolatedFPS() {
 }
 
 extern "C" uint32_t GameEngine_GetSampleRate() {
-    auto player = Ship::Context::GetInstance()->GetAudio()->GetAudioPlayer();
+    auto player = ShipCompat::GetAudio()->GetAudioPlayer();
     if (player == nullptr) {
         return 0;
     }
@@ -1451,7 +1547,7 @@ extern "C" uint32_t GameEngine_GetSamplesPerFrame() {
 // End
 
 Fast::Interpreter* GameEngine_GetInterpreter() {
-    return static_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow())
+    return static_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow())
         ->GetInterpreterWeak()
         .lock()
         .get();
@@ -1536,7 +1632,7 @@ extern "C" void GameEngine_UnloadSequence(const uint8_t seqId) {
 }
 
 extern "C" uint32_t GameEngine_GetGameVersion() {
-    return Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
+    return ShipCompat::GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
 }
 
 extern "C" uint8_t* GameEngine_LoadActName(const uint32_t actId) {
@@ -1564,7 +1660,7 @@ extern "C" uint8_t* GameEngine_LoadTranslation(const char* key) {
 }
 
 extern "C" bool GameEngine_OTRSigCheck(const char* data) {
-    return Ship::Context::GetInstance()->GetResourceManager()->OtrSignatureCheck(data);
+    return ShipCompat::GetResourceManager()->OtrSignatureCheck(data);
 }
 
 extern "C" Animation* GameEngine_LoadAnimation(const uint32_t animId) {
@@ -1577,12 +1673,12 @@ extern "C" Animation* GameEngine_LoadAnimation(const uint32_t animId) {
 
 // Gets the width of the main ImGui window
 extern "C" uint32_t OTRGetCurrentWidth() {
-    return GameEngine::Instance->context->GetWindow()->GetWidth();
+    return ShipCompat::GetWindow()->GetWidth();
 }
 
 // Gets the height of the main ImGui window
 extern "C" uint32_t OTRGetCurrentHeight() {
-    return GameEngine::Instance->context->GetWindow()->GetHeight();
+    return ShipCompat::GetWindow()->GetHeight();
 }
 
 extern "C" float OTRGetHUDAspectRatio() {
@@ -1802,7 +1898,7 @@ extern "C" void GameEngine_GfxPrint(const char* str, void* printer, void (*print
 }
 
 extern "C" void* GameEngine_GetExactDataByName(const char* path) {
-    auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path, true);
+    auto asset = ShipCompat::GetResourceManager()->LoadResourceProcess(path, true);
     return asset ? static_cast<void*>(asset->GetRawPointer()) : nullptr;
 }
 

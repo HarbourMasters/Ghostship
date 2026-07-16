@@ -1,4 +1,5 @@
 #include "AudioSequenceFactory.h"
+#include "port/ShipCompat.h"
 #include "port/importer/types/AudioSequence.h"
 #include "port/importer/types/AudioSample.h"
 #include "spdlog/spdlog.h"
@@ -440,7 +441,7 @@ SM64::AudioSequenceXMLFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     int seqId = child->IntAttribute("ID", -1);
 
     if (customFormat != nullptr && audioPath != nullptr && seqId >= 0) {
-        auto audioFile = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->LoadFile(audioPath);
+        auto audioFile = ShipCompat::GetResourceManager()->GetArchiveManager()->LoadFile(audioPath);
         if (!audioFile || !audioFile->Buffer) {
             SPDLOG_ERROR("AudioSequenceFactory: could not load '{}'", audioPath);
             return nullptr;
@@ -542,7 +543,7 @@ SM64::AudioSequenceXMLFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     std::shared_ptr<AudioSequence> seq = std::make_shared<AudioSequence>(initData);
 
     auto m64File =
-        Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->LoadFile(child->Attribute("Path"));
+        ShipCompat::GetResourceManager()->GetArchiveManager()->LoadFile(child->Attribute("Path"));
 
     tinyxml2::XMLElement* banksRoot = child->FirstChildElement("Banks");
     tinyxml2::XMLElement* banks = banksRoot->FirstChildElement();

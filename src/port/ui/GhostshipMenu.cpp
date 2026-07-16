@@ -1,4 +1,5 @@
 #include "GhostshipMenu.h"
+#include "port/ShipCompat.h"
 #include "GhostshipInputEditorWindow.h"
 #include <ship/window/gui/GuiMenuBar.h>
 #include <ship/window/gui/GuiElement.h>
@@ -141,8 +142,8 @@ GhostshipMenu::GhostshipMenu(const std::string& consoleVariable, const std::stri
     : Menu(consoleVariable, name, 0, UIWidgets::Colors::LightBlue) {
 }
 
-void GhostshipMenu::InitElement() {
-    Ship::Menu::InitElement();
+void GhostshipMenu::OnInit(const nlohmann::json& initArgs) {
+    Ship::Menu::OnInit(initArgs);
     AddMenuSettings();
     AddMenuEnhancements();
     AddMenuRando();
@@ -163,28 +164,28 @@ void GhostshipMenu::InitElement() {
     disabledMap = {
         { DISABLE_FOR_NO_VSYNC,
           { [](disabledInfo& info) -> bool {
-               return !Ship::Context::GetInstance()->GetWindow()->CanDisableVerticalSync();
+               return !ShipCompat::GetWindow()->CanDisableVerticalSync();
            },
             "Disabling VSync not supported" } },
         { DISABLE_FOR_NO_WINDOWED_FULLSCREEN,
           { [](disabledInfo& info) -> bool {
-               return !Ship::Context::GetInstance()->GetWindow()->SupportsWindowedFullscreen();
+               return !ShipCompat::GetWindow()->SupportsWindowedFullscreen();
            },
             "Windowed Fullscreen not supported" } },
         { DISABLE_FOR_NO_MULTI_VIEWPORT,
           { [](disabledInfo& info) -> bool {
-               return !Ship::Context::GetInstance()->GetWindow()->GetGui()->SupportsViewports();
+               return !ShipCompat::GetWindow()->GetGui()->SupportsViewports();
            },
             "Multi-viewports not supported" } },
         { DISABLE_FOR_NOT_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() !=
+               return ShipCompat::GetWindow()->GetWindowBackend() !=
                       Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Available Only on DirectX" } },
         { DISABLE_FOR_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
+               return ShipCompat::GetWindow()->GetWindowBackend() ==
                       Fast::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Not Available on DirectX" } },

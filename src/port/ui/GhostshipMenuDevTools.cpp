@@ -1,4 +1,6 @@
 #include "GhostshipMenu.h"
+#include <ship/window/gui/IconsFontAwesome4.h>
+#include "port/ShipCompat.h"
 #include "port/mods/BetterLevelSelect.h"
 #include "game/object_list_processor.h"
 #include "include/behavior_data.h"
@@ -60,7 +62,7 @@ void GhostshipMenu::AddMenuDevTools() {
                      .ComboMap(logLevels)
                      .DefaultIndex(defaultLogLevel))
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetLogger()->set_level(
+            spdlog::set_level(
                 (spdlog::level::level_enum)CVarGetInteger(CVAR_DEVELOPER_TOOLS("LogLevel"), defaultLogLevel));
         })
         .PreFunc([](WidgetInfo& info) {
@@ -157,7 +159,7 @@ void GhostshipMenu::AddMenuDevTools() {
 
 #ifdef ENABLE_SCRIPTING
 void GhostshipMenu::AddModMenu() {
-    auto mods = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->GetArchives();
+    auto mods = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
     AddMenuEntry("Mods", CVAR_SETTING("Menu.ModsSidebarSection"));
 
     WidgetPath path = { "Mods", "General", SECTION_COLUMN_1 };
@@ -166,11 +168,11 @@ void GhostshipMenu::AddModMenu() {
     AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
         .Options(ButtonOptions().Tooltip("Reloads all scripts from disk.").Color(Colors::Orange))
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetScriptLoader()->UnloadAll();
+            ShipCompat::GetScriptLoader()->UnloadAll();
             GameEngine::Instance->LoadScripts();
         });
 
-    auto keystore = Ship::Context::GetInstance()->GetKeystore();
+    auto keystore = ShipCompat::GetKeystore();
     auto allKeys = keystore->GetAllKeys();
 
     for (const auto& entry : *mods) {

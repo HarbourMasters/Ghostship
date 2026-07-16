@@ -632,6 +632,9 @@ else()
 endif()
 
 if(USE_NETWORKING AND NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
+    if(APPLE AND EXISTS "/opt/homebrew/opt/mbedtls@3")
+        list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/mbedtls@3")
+    endif()
     FetchContent_Declare(
         ixwebsocket
         GIT_REPOSITORY https://github.com/machinezone/IXWebSocket.git
@@ -846,15 +849,23 @@ add_custom_command(
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
 )
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupTccRuntime.cmake)
-
-set(PROPERTY_READER_GUARD_DISABLED TRUE)
-if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    lus_setup_tcc_runtime(${PROJECT_NAME} RESOURCES_DIR "../Resources/.tcc")
-else()
-    lus_setup_tcc_runtime(${PROJECT_NAME})
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/fast/interpreter.h" GHOSTSHIP_HAS_CUSTOM_UNIFORMS
+     REGEX "gfx_set_custom_uniform")
+if(GHOSTSHIP_HAS_CUSTOM_UNIFORMS)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE HAVE_GFX_CUSTOM_UNIFORMS=1)
 endif()
-unset(PROPERTY_READER_GUARD_DISABLED)
+
+if(ENABLE_SCRIPTING AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupTccRuntime.cmake")
+    include(${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/SetupTccRuntime.cmake)
+
+    set(PROPERTY_READER_GUARD_DISABLED TRUE)
+    if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+        lus_setup_tcc_runtime(${PROJECT_NAME} RESOURCES_DIR "../Resources/.tcc")
+    else()
+        lus_setup_tcc_runtime(${PROJECT_NAME})
+    endif()
+    unset(PROPERTY_READER_GUARD_DISABLED)
+endif()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
@@ -901,6 +912,7 @@ add_custom_target(
     GeneratePortO2R
     DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/libultraship/src/fast/shaders" "${CMAKE_SOURCE_DIR}/port/shaders"
     COMMAND ${TORCH_EXECUTABLE} pack port ghostship.o2r o2r -u ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ghostship.o2r" "${CMAKE_BINARY_DIR}/ghostship.o2r"
 )
