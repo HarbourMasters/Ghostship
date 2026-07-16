@@ -276,9 +276,8 @@ jobs:
       - name: Build (unsigned, device arm64)
         run: |
           cmake -S . -B build-ios -G Xcode -DIOS=ON -DPLATFORM=OS64 -DCMAKE_BUILD_TYPE=Release -DIOS_SIGNING=OFF -DPython3_EXECUTABLE=$(which python3)
-          # Belt-and-suspenders: command-line xcodebuild settings override any
-          # target-level signing attributes.
-          cmake --build build-ios --config Release -- CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+          # --target Ghostship skips dependency side-targets (zlib examples, TorchExternal)
+          cmake --build build-ios --config Release --target Ghostship -- CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
       - name: Package unsigned IPA
         run: |
           APP="build-ios/Release-iphoneos/Ghostship.app"
