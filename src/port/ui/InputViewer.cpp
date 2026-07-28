@@ -3,7 +3,7 @@
 
 #include <libultraship/bridge/consolevariablebridge.h>
 #include <libultraship/libultra/controller.h>
-#include <ship/Context.h>
+#include <ship/core/Context.h>
 #include <libultraship/controller/controldeck/ControlDeck.h>
 #include "port/ui/cvar_prefixes.h"
 #include <imgui.h>

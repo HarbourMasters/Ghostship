@@ -1,6 +1,6 @@
 #include "ShipCompat.h"
 
-#include "ship/Context.h"
+#include "ship/core/Context.h"
 #include "ship/window/Window.h"
 #include "ship/resource/ResourceManager.h"
 #include "ship/controller/controldeck/ControlDeck.h"

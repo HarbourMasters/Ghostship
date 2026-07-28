@@ -1,6 +1,6 @@
 #include "Rando.h"
 #include "port/ShipCompat.h"
-#include <ship/Context.h>
+#include <ship/core/Context.h>
 #include "ObjectBehavior/ObjectBehavior.h"
 #include "MiscBehavior/MiscBehavior.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"

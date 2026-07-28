@@ -2,7 +2,7 @@
 #include "PlayerIdentity.h"
 #include "port/ShipCompat.h"
 
-#include "ship/Context.h"
+#include "ship/core/Context.h"
 #include "ship/config/Config.h"
 #include "ship/utils/StringHelper.h"
 

@@ -23,7 +23,7 @@
 #endif
 
 #include <spdlog/spdlog.h>
-#include <ship/Context.h>
+#include <ship/core/Context.h>
 #include <ship/resource/ResourceManager.h>
 
 #include "macros.h"

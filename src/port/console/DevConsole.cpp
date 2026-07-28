@@ -1,7 +1,7 @@
 #include "DevConsole.h"
 #include "port/ShipCompat.h"
 
-#include <ship/Context.h>
+#include <ship/core/Context.h>
 #include <ship/window/Window.h>
 #include <ship/window/gui/Gui.h>
 #include <ship/window/gui/ConsoleWindow.h>

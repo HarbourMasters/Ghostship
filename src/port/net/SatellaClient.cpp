@@ -2,7 +2,7 @@
 #include "port/net/SatellaClient.h"
 #include "port/ShipCompat.h"
 
-#include "ship/Context.h"
+#include "ship/core/Context.h"
 #include "ship/security/Keystore.h"
 #include "ship/utils/StringHelper.h"
 #include "port/ui/Notification.h"

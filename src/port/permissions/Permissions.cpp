@@ -2,7 +2,7 @@
 #include "Permissions.h"
 
 #include "port/ui/GhostshipGui.hpp"
-#include "ship/Context.h"
+#include "ship/core/Context.h"
 #include "spdlog/spdlog.h"
 
 #include <nlohmann/json.hpp>

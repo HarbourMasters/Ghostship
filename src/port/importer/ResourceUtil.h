@@ -3,7 +3,7 @@
 #include <bridge/resourcebridge.h>
 #include "port/ShipCompat.h"
 #include <ship/resource/ResourceManager.h>
-#include <ship/Context.h>
+#include <ship/core/Context.h>
 
 namespace SM64 {
 template <typename T> T LoadChild(uint64_t crc) {

@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 #include <vector>
 #include <ship/controller/controldeck/ControlDeck.h>
-#include <ship/Context.h>
+#include <ship/core/Context.h>
 #include <fast/interpreter.h>
 #include "interpolation/FrameInterpolation.h"
 

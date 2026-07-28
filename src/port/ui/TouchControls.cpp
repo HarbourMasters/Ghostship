@@ -5,7 +5,7 @@
 #include <imgui.h>
 #include <libultraship/bridge/consolevariablebridge.h>
 #include <libultraship/libultra/controller.h>
-#include <ship/Context.h>
+#include <ship/core/Context.h>
 #include <fast/Fast3dGui.h>
 #include <spdlog/spdlog.h>
 
