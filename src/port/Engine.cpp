@@ -47,6 +47,7 @@
 #endif
 #include "ship/resource/type/Json.h"
 #include <fast/resource/ResourceType.h>
+#include <libultraship/bridge/contextbridge.h>
 #include <ship/window/gui/Fonts.h>
 #include <fast/resource/factory/DisplayListFactory.h>
 #include <fast/resource/factory/TextureFactory.h>
@@ -172,6 +173,7 @@ bool VerifyArchiveVersion(OTRVersion version) {
 
 GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateInstance("Ghostship", "sm64");
+    ContextBridgeRegisterCallbacks();
     this->context->Init();
     ShipCompat::SetContext(this->context);
 
