@@ -27,7 +27,8 @@ ResourceFactoryBinaryRawTextureV0::ReadResource(std::shared_ptr<Ship::File> file
     texture->ImageData = stbi_load_from_memory(buf.data(), static_cast<int>(buf.size()), &w, &h, nullptr, 4);
 
     if (!texture->ImageData) {
-        SPDLOG_ERROR("RawTextureFactory V0: stbi failed for {}: {}", initData->Path, stbi_failure_reason());
+        SPDLOG_ERROR("RawTextureFactory V0: stbi failed for {}: {}", initData->Identifier.GetPath(),
+                     stbi_failure_reason());
         return nullptr;
     }
 
@@ -67,7 +68,8 @@ ResourceFactoryBinaryRawTextureV1::ReadResource(std::shared_ptr<Ship::File> file
     texture->ImageData = stbi_load_from_memory(buf.data(), static_cast<int>(buf.size()), &w, &h, nullptr, 4);
 
     if (!texture->ImageData) {
-        SPDLOG_ERROR("RawTextureFactory V1: stbi failed for {}: {}", initData->Path, stbi_failure_reason());
+        SPDLOG_ERROR("RawTextureFactory V1: stbi failed for {}: {}", initData->Identifier.GetPath(),
+                     stbi_failure_reason());
         return nullptr;
     }
 

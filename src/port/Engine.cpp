@@ -1190,7 +1190,7 @@ ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->Type = static_cast<uint32_t>(RESOURCE_TYPE_FONT);
         initData->ResourceVersion = 0;
-        initData->Path = fontPath;
+        initData->Identifier = Ship::ResourceIdentifier(fontPath, 0, nullptr);
         std::shared_ptr<Ship::Font> fontData = std::static_pointer_cast<Ship::Font>(
             ShipCompat::GetResourceManager()->LoadResource(fontPath, false, initData));
         font = mImGuiIo->Fonts->AddFontFromMemoryTTF(fontData->Data, fontData->DataSize, size, &config);

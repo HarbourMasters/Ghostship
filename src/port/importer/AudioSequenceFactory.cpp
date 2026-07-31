@@ -401,7 +401,7 @@ SM64::AudioSequenceFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
         return nullptr;
     }
 
-    SPDLOG_INFO("Path: '{}'", initData->Path);
+    SPDLOG_INFO("Path: '{}'", initData->Identifier.GetPath());
 
     std::shared_ptr<AudioSequence> bank = std::make_shared<AudioSequence>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);

@@ -28,7 +28,7 @@ ResourceFactoryBinaryAssetArrayV0::ReadResource(std::shared_ptr<Ship::File> file
         if (asset != nullptr) {
             auto data = asset->GetInitData();
             if (data->Type == (uint32_t)Fast::ResourceType::Texture) {
-                array->mPaths.push_back("__OTR__" + data->Path);
+                array->mPaths.push_back("__OTR__" + data->Identifier.GetPath());
                 array->mPtrs.push_back(reinterpret_cast<uintptr_t>(array->mPaths.back().c_str()));
             } else {
                 array->mPtrs.push_back(reinterpret_cast<uintptr_t>(asset->GetRawPointer()));
