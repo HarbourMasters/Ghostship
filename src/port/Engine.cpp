@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include <ship/window/gui/IconsFontAwesome4.h>
+#include <libultraship/bridge/UltraBridge.h>
 #include "ModAudio.h"
 #include "ShipCompat.h"
 #include "ui/GhostshipGui.hpp"
@@ -47,8 +48,9 @@
 #endif
 #include "ship/resource/type/Json.h"
 #include <fast/resource/ResourceType.h>
-#include <libultraship/bridge/contextbridge.h>
 #include <ship/window/gui/Fonts.h>
+#include <ship/window/gui/resource/Font.h>
+#include <ship/window/gui/resource/FontFactory.h>
 #include <fast/resource/factory/DisplayListFactory.h>
 #include <fast/resource/factory/TextureFactory.h>
 #include <fast/resource/factory/MatrixFactory.h>
@@ -58,8 +60,6 @@
 #include <ship/resource/factory/JsonFactory.h>
 #include <ship/utils/StringHelper.h>
 #include <ship/resource/ResourceType.h>
-#include <ship/window/gui/resource/Font.h>
-
 #include "importer/AssetArrayFactory.h"
 #include "importer/RawTextureFactory.h"
 #include "importer/TextFactory.h"
@@ -67,7 +67,7 @@
 #include "port/importer/GenericArrayFactory.h"
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
-#include <ship/resource/archive/Archive.h>
+
 #include "port/net/SatellaClient.h"
 
 #include <ship/log/Logger.h>
@@ -173,7 +173,6 @@ bool VerifyArchiveVersion(OTRVersion version) {
 
 GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateInstance("Ghostship", "sm64");
-    ContextBridgeRegisterCallbacks();
     this->context->Init();
     ShipCompat::SetContext(this->context);
 
@@ -193,6 +192,9 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     auto consoleVariables = std::make_shared<Ship::ConsoleVariable>(config);
     context->GetChildren().Add(consoleVariables);
     CVarSetConsoleVariable(consoleVariables);
+
+    auto ultraBridge = std::make_shared<LUS::UltraBridge>();
+    context->GetChildren().Add(ultraBridge);
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}), config,
                                                           consoleVariables);
@@ -222,11 +224,9 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     auto resourceManager = std::make_shared<Ship::ResourceManager>(threadPool);
 #endif
     context->GetChildren().Add(resourceManager);
-    ResourceSetResourceManager(resourceManager);
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>(gsFast3dWindow, consoleVariables);
     context->GetChildren().Add(controlDeck);
-    ControllerSetControlDeck(controlDeck);
 
     try {
         nlohmann::json rmArgs;
@@ -288,21 +288,19 @@ GameEngine::GameEngine() : dictionary(nullptr) {
 
     auto crashHandler = std::make_shared<Ship::CrashHandler>();
     context->GetChildren().Add(crashHandler);
-    CrashHandlerSetComponent(crashHandler);
-
-    context->GetChildren().Add(gsFast3dWindow);
-    WindowSetWindowComponent(gsFast3dWindow);
-    GfxSetFast3dWindow(gsFast3dWindow);
 
     auto gfxDebugger = std::make_shared<Fast::GfxDebugger>();
     context->GetChildren().Add(gfxDebugger);
-    GfxDebuggerSetComponent(gfxDebugger);
 
-    gsFast3dWindow->Init();
+    context->GetChildren().Add(gsFast3dWindow);
 
     auto events = std::make_shared<Ship::Events>();
     context->GetChildren().Add(events);
-    EventSystemSetEvents(events);
+
+    ultraBridge->Init();
+    ultraBridge->UpdateCaches(context);
+
+    gsFast3dWindow->Init();
 
     GhostshipGui::SetupMenu();
 
@@ -406,8 +404,8 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
                                                              libraryPaths, std::vector<std::string>{ "Ghostship" },
                                                              ShipCompat::GetResourceManager());
     context->GetChildren().Add(scriptLoader);
-    ScriptSetLoader(scriptLoader);
 #else
+
     std::string tccBase = Ship::Context::GetPathRelativeToAppDirectory(".tcc");
     if (!std::filesystem::exists(tccBase)) {
         tccBase = Ship::Context::GetAppBundlePath() + "/.tcc";
@@ -459,8 +457,11 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         std::make_shared<Ship::ScriptLoader>(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths,
                                              std::vector<std::string>{}, ShipCompat::GetResourceManager());
     context->GetChildren().Add(scriptLoader);
-    ScriptSetLoader(scriptLoader);
 #endif
+
+    if (auto ultraBridge = context->GetChildren().GetFirst<LUS::UltraBridge>()) {
+        ultraBridge->UpdateCaches(context);
+    }
 
 #endif
 }
@@ -535,8 +536,11 @@ void GameEngine::FinishInit() {
         Ship::AudioSettings{ .SampleRate = 32000, .SampleLength = 512, .DesiredBuffered = 1100 },
         ShipCompat::GetConfig());
     context->GetChildren().Add(audio);
-    AudioSetAudioComponent(audio);
     audio->Init();
+
+    if (auto ultraBridge = context->GetChildren().GetFirst<LUS::UltraBridge>()) {
+        ultraBridge->UpdateCaches(context);
+    }
 
     gsFast3dWindow->SetTargetFps(60);
     gsFast3dWindow->SetMaximumFrameLatency(1);
@@ -735,7 +739,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     #endif
                     std::string title =
                         !std::filesystem::exists(assets_path) ? "Missing ghostship.o2r" : "ghostship.o2r is outdated";
-                    GhostshipGui::RegisterPopup(title, msg, "OK", "", [&]() { exit(1); });
+                    GhostshipGui::RegisterPopup(title, msg, "OK", "", [&] { exit(1); });
                 }
                 continue;*/
             }
@@ -1936,3 +1940,4 @@ extern "C" void GameEngine_Free(void* ptr) {
         }
     }
 }
+
