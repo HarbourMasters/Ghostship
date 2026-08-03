@@ -230,7 +230,7 @@ static const ALIGN_ASSET(2) char vcutm_seg7_dl_070096E0[] = "__OTR__levels/vcutm
 
 static const ALIGN_ASSET(2) char vcutm_seg7_collision[] = "__OTR__levels/vcutm/vcutm_seg7_collision";
 
-static const char vcutm_seg7_macro_objs[] = "__OTR__levels/vcutm/vcutm_seg7_macro_objs";
+static const ALIGN_ASSET(2) char vcutm_seg7_macro_objs[] = "__OTR__levels/vcutm/vcutm_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char vcutm_seg7_collision_0700AC44[] = "__OTR__levels/vcutm/vcutm_seg7_collision_0700AC44";
 

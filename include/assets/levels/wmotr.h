@@ -392,5 +392,5 @@ static const ALIGN_ASSET(2) char wmotr_seg7_dl_07010608[] = "__OTR__levels/wmotr
 
 static const ALIGN_ASSET(2) char wmotr_seg7_collision[] = "__OTR__levels/wmotr/wmotr_seg7_collision";
 
-static const char wmotr_seg7_macro_objs[] = "__OTR__levels/wmotr/wmotr_seg7_macro_objs";
+static const ALIGN_ASSET(2) char wmotr_seg7_macro_objs[] = "__OTR__levels/wmotr/wmotr_seg7_macro_objs";
 

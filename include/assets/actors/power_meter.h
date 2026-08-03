@@ -24,7 +24,7 @@ static const ALIGN_ASSET(2) char texture_power_meter_two_segments[] = "__OTR__ac
 
 static const ALIGN_ASSET(2) char texture_power_meter_one_segments[] = "__OTR__actors/power_meter/power_meter_one_segment";
 
-static const char power_meter_health_segments_lut[] = "__OTR__actors/power_meter/power_meter_health_segments_lut";
+static const ALIGN_ASSET(2) char power_meter_health_segments_lut[] = "__OTR__actors/power_meter/power_meter_health_segments_lut";
 
 static const ALIGN_ASSET(2) char vertex_power_meter_base[] = "__OTR__actors/power_meter/vertex_power_meter_base";
 

@@ -254,13 +254,13 @@ static const ALIGN_ASSET(2) char cotmc_seg7_dl_0700A4B8[] = "__OTR__levels/cotmc
 
 static const ALIGN_ASSET(2) char cotmc_seg7_collision_level[] = "__OTR__levels/cotmc/cotmc_seg7_collision_level";
 
-static const char cotmc_seg7_macro_objs[] = "__OTR__levels/cotmc/cotmc_seg7_macro_objs";
+static const ALIGN_ASSET(2) char cotmc_seg7_macro_objs[] = "__OTR__levels/cotmc/cotmc_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char cotmc_dl_water_begin[] = "__OTR__levels/cotmc/cotmc_dl_water_begin";
 
 static const ALIGN_ASSET(2) char cotmc_dl_water_end[] = "__OTR__levels/cotmc/cotmc_dl_water_end";
 
-static const char cotmc_movtex_tris_water[] = "__OTR__levels/cotmc/cotmc_movtex_tris_water";
+static const ALIGN_ASSET(2) char cotmc_movtex_tris_water[] = "__OTR__levels/cotmc/cotmc_movtex_tris_water";
 
 static const ALIGN_ASSET(2) char cotmc_dl_water[] = "__OTR__levels/cotmc/cotmc_dl_water";
 

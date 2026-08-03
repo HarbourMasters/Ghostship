@@ -2,13 +2,13 @@
 
 #include "sm64.h"
 
-static const char main_hud_lut[] = "__OTR__bin/segment2/main_hud_lut";
+static const ALIGN_ASSET(2) char main_hud_lut[] = "__OTR__bin/segment2/main_hud_lut";
 
-static const char main_font_lut[] = "__OTR__bin/segment2/main_font_lut";
+static const ALIGN_ASSET(2) char main_font_lut[] = "__OTR__bin/segment2/main_font_lut";
 
-static const char main_credits_font_lut[] = "__OTR__bin/segment2/main_credits_font_lut";
+static const ALIGN_ASSET(2) char main_credits_font_lut[] = "__OTR__bin/segment2/main_credits_font_lut";
 
-static const char main_hud_camera_lut[] = "__OTR__bin/segment2/main_hud_camera_lut";
+static const ALIGN_ASSET(2) char main_hud_camera_lut[] = "__OTR__bin/segment2/main_hud_camera_lut";
 
 static const ALIGN_ASSET(2) char dl_hud_img_begin[] = "__OTR__bin/segment2/dl_hud_img_begin";
 

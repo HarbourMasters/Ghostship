@@ -30,9 +30,9 @@ static const ALIGN_ASSET(2) char ssl_dl_pyramid_quicksand_pit_begin[] = "__OTR__
 
 static const ALIGN_ASSET(2) char ssl_dl_pyramid_quicksand_pit_end[] = "__OTR__levels/ssl/ssl_dl_pyramid_quicksand_pit_end";
 
-static const char ssl_movtex_tris_quicksand_pit[] = "__OTR__levels/ssl/ssl_movtex_tris_quicksand_pit";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_quicksand_pit[] = "__OTR__levels/ssl/ssl_movtex_tris_quicksand_pit";
 
-static const char ssl_movtex_tris_pyramid_quicksand_pit[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_quicksand_pit";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_pyramid_quicksand_pit[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_quicksand_pit";
 
 static const ALIGN_ASSET(2) char ssl_dl_quicksand_pit[] = "__OTR__levels/ssl/ssl_dl_quicksand_pit";
 
@@ -316,35 +316,35 @@ static const ALIGN_ASSET(2) char ssl_seg7_dl_0700FCE0[] = "__OTR__levels/ssl/ssl
 
 static const ALIGN_ASSET(2) char ssl_seg7_area_1_collision[] = "__OTR__levels/ssl/ssl_seg7_area_1_collision";
 
-static const char ssl_seg7_area_1_macro_objs[] = "__OTR__levels/ssl/ssl_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char ssl_seg7_area_1_macro_objs[] = "__OTR__levels/ssl/ssl_seg7_area_1_macro_objs";
 
 static const ALIGN_ASSET(2) char ssl_seg7_collision_pyramid_top[] = "__OTR__levels/ssl/ssl_seg7_collision_pyramid_top";
 
 static const ALIGN_ASSET(2) char ssl_seg7_collision_tox_box[] = "__OTR__levels/ssl/ssl_seg7_collision_tox_box";
 
-static const char ssl_movtex_puddle_water_data[] = "__OTR__levels/ssl/ssl_movtex_puddle_water_data";
+static const ALIGN_ASSET(2) char ssl_movtex_puddle_water_data[] = "__OTR__levels/ssl/ssl_movtex_puddle_water_data";
 
-static const char ssl_movtex_puddle_water[] = "__OTR__levels/ssl/ssl_movtex_puddle_water";
+static const ALIGN_ASSET(2) char ssl_movtex_puddle_water[] = "__OTR__levels/ssl/ssl_movtex_puddle_water";
 
-static const char ssl_movtex_toxbox_quicksand_large_mist[] = "__OTR__levels/ssl/ssl_movtex_toxbox_quicksand_large_mist";
+static const ALIGN_ASSET(2) char ssl_movtex_toxbox_quicksand_large_mist[] = "__OTR__levels/ssl/ssl_movtex_toxbox_quicksand_large_mist";
 
-static const char ssl_movtex_toxbox_quicksand_short_mist[] = "__OTR__levels/ssl/ssl_movtex_toxbox_quicksand_short_mist";
+static const ALIGN_ASSET(2) char ssl_movtex_toxbox_quicksand_short_mist[] = "__OTR__levels/ssl/ssl_movtex_toxbox_quicksand_short_mist";
 
-static const char ssl_movtex_toxbox_quicksand_mist[] = "__OTR__levels/ssl/ssl_movtex_toxbox_quicksand_mist";
+static const ALIGN_ASSET(2) char ssl_movtex_toxbox_quicksand_mist[] = "__OTR__levels/ssl/ssl_movtex_toxbox_quicksand_mist";
 
 static const ALIGN_ASSET(2) char ssl_dl_quicksand_begin[] = "__OTR__levels/ssl/ssl_dl_quicksand_begin";
 
 static const ALIGN_ASSET(2) char ssl_dl_quicksand_end[] = "__OTR__levels/ssl/ssl_dl_quicksand_end";
 
-static const char ssl_movtex_tris_pyramid_quicksand[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_quicksand";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_pyramid_quicksand[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_quicksand";
 
 static const ALIGN_ASSET(2) char ssl_dl_pyramid_quicksand[] = "__OTR__levels/ssl/ssl_dl_pyramid_quicksand";
 
-static const char ssl_movtex_tris_pyramid_corners_quicksand[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_corners_quicksand";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_pyramid_corners_quicksand[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_corners_quicksand";
 
 static const ALIGN_ASSET(2) char ssl_dl_pyramid_corners_quicksand[] = "__OTR__levels/ssl/ssl_dl_pyramid_corners_quicksand";
 
-static const char ssl_movtex_tris_sides_quicksand[] = "__OTR__levels/ssl/ssl_movtex_tris_sides_quicksand";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_sides_quicksand[] = "__OTR__levels/ssl/ssl_movtex_tris_sides_quicksand";
 
 static const ALIGN_ASSET(2) char ssl_dl_sides_quicksand[] = "__OTR__levels/ssl/ssl_dl_sides_quicksand";
 
@@ -896,9 +896,9 @@ static const ALIGN_ASSET(2) char ssl_seg7_area_2_collision[] = "__OTR__levels/ss
 
 static const ALIGN_ASSET(2) char ssl_seg7_area_3_collision[] = "__OTR__levels/ssl/ssl_seg7_area_3_collision";
 
-static const char ssl_seg7_area_2_macro_objs[] = "__OTR__levels/ssl/ssl_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char ssl_seg7_area_2_macro_objs[] = "__OTR__levels/ssl/ssl_seg7_area_2_macro_objs";
 
-static const char ssl_seg7_area_3_macro_objs[] = "__OTR__levels/ssl/ssl_seg7_area_3_macro_objs";
+static const ALIGN_ASSET(2) char ssl_seg7_area_3_macro_objs[] = "__OTR__levels/ssl/ssl_seg7_area_3_macro_objs";
 
 static const ALIGN_ASSET(2) char ssl_seg7_collision_grindel[] = "__OTR__levels/ssl/ssl_seg7_collision_grindel";
 
@@ -924,13 +924,13 @@ static const ALIGN_ASSET(2) char ssl_dl_pyramid_sand_pathway_begin[] = "__OTR__l
 
 static const ALIGN_ASSET(2) char ssl_dl_pyramid_sand_pathway_end[] = "__OTR__levels/ssl/ssl_dl_pyramid_sand_pathway_end";
 
-static const char ssl_movtex_tris_pyramid_sand_pathway_front[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_sand_pathway_front";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_pyramid_sand_pathway_front[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_sand_pathway_front";
 
 static const ALIGN_ASSET(2) char ssl_dl_pyramid_sand_pathway_front_end[] = "__OTR__levels/ssl/ssl_dl_pyramid_sand_pathway_front_end";
 
-static const char ssl_movtex_tris_pyramid_sand_pathway_floor[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_sand_pathway_floor";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_pyramid_sand_pathway_floor[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_sand_pathway_floor";
 
-static const char ssl_movtex_tris_pyramid_sand_pathway_side[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_sand_pathway_side";
+static const ALIGN_ASSET(2) char ssl_movtex_tris_pyramid_sand_pathway_side[] = "__OTR__levels/ssl/ssl_movtex_tris_pyramid_sand_pathway_side";
 
 static const ALIGN_ASSET(2) char ssl_dl_pyramid_sand_pathway_side_end[] = "__OTR__levels/ssl/ssl_dl_pyramid_sand_pathway_side_end";
 

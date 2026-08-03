@@ -404,19 +404,19 @@ static const ALIGN_ASSET(2) char ddd_seg7_area_1_collision[] = "__OTR__levels/dd
 
 static const ALIGN_ASSET(2) char ddd_seg7_area_2_collision[] = "__OTR__levels/ddd/ddd_seg7_area_2_collision";
 
-static const char ddd_seg7_area_1_macro_objs[] = "__OTR__levels/ddd/ddd_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char ddd_seg7_area_1_macro_objs[] = "__OTR__levels/ddd/ddd_seg7_area_1_macro_objs";
 
-static const char ddd_seg7_area_2_macro_objs[] = "__OTR__levels/ddd/ddd_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char ddd_seg7_area_2_macro_objs[] = "__OTR__levels/ddd/ddd_seg7_area_2_macro_objs";
 
 static const ALIGN_ASSET(2) char ddd_seg7_collision_submarine[] = "__OTR__levels/ddd/ddd_seg7_collision_submarine";
 
 static const ALIGN_ASSET(2) char ddd_seg7_collision_bowser_sub_door[] = "__OTR__levels/ddd/ddd_seg7_collision_bowser_sub_door";
 
-static const char ddd_movtex_area1_water_data[] = "__OTR__levels/ddd/ddd_movtex_area1_water_data";
+static const ALIGN_ASSET(2) char ddd_movtex_area1_water_data[] = "__OTR__levels/ddd/ddd_movtex_area1_water_data";
 
-static const char ddd_movtex_area1_water[] = "__OTR__levels/ddd/ddd_movtex_area1_water";
+static const ALIGN_ASSET(2) char ddd_movtex_area1_water[] = "__OTR__levels/ddd/ddd_movtex_area1_water";
 
-static const char ddd_movtex_area2_water_data[] = "__OTR__levels/ddd/ddd_movtex_area2_water_data";
+static const ALIGN_ASSET(2) char ddd_movtex_area2_water_data[] = "__OTR__levels/ddd/ddd_movtex_area2_water_data";
 
-static const char ddd_movtex_area2_water[] = "__OTR__levels/ddd/ddd_movtex_area2_water";
+static const ALIGN_ASSET(2) char ddd_movtex_area2_water[] = "__OTR__levels/ddd/ddd_movtex_area2_water";
 
