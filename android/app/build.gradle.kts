@@ -1,6 +1,8 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.security.MessageDigest
 import java.util.Properties
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
 
 plugins {
     id("com.android.application")
@@ -33,48 +35,88 @@ val hasReleaseKeystore =
 // Torch runs on the device to turn the user's ROM into sm64.o2r, and it reads
 // its extraction recipes off the filesystem. They ride into the APK in one zip
 // alongside the engine archive; the launcher unpacks it into the app's external
-// files directory on first run (see GameAssets.kt).
-val gamedataDir = layout.buildDirectory.dir("generated/gamedata")
+// files directory on first run (see GameAssets.kt). The digest beside it is what
+// the launcher compares against to decide whether to unpack again.
+abstract class PackGameData : DefaultTask() {
 
-val packGameData = tasks.register<Zip>("packGameData") {
-    description = "Bundles the Torch recipes and the engine archive into the APK."
-    val engineArchive = File(repositoryRoot, "ghostship.o2r")
-    doFirst {
-        if (!engineArchive.exists()) {
-            throw GradleException(
-                "ghostship.o2r not found at $engineArchive — build the GeneratePortO2R target " +
-                    "on a desktop platform (or download the CI artifact) before building the APK."
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val recipes: DirectoryProperty
+
+    @get:InputFile
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val config: RegularFileProperty
+
+    // A collection rather than an InputFile so that a missing archive reaches
+    // the explanation below instead of Gradle's own input-validation failure.
+    @get:InputFiles
+    @get:PathSensitive(PathSensitivity.NONE)
+    abstract val engineArchive: ConfigurableFileCollection
+
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun pack() {
+        val engine = engineArchive.files.singleOrNull()?.takeIf(File::isFile)
+            ?: throw GradleException(
+                "ghostship.o2r not found at ${engineArchive.asPath} — build the GeneratePortO2R " +
+                    "target on a desktop platform (or download the CI artifact) before building the APK."
             )
+
+        val recipesRoot = recipes.get().asFile
+        val entries = buildList {
+            add("config.yml" to config.get().asFile)
+            add(engine.name to engine)
+            recipesRoot.walkTopDown().filter(File::isFile).forEach {
+                add("assets/${it.relativeTo(recipesRoot).invariantSeparatorsPath}" to it)
+            }
+        }.sortedBy { it.first }
+
+        val target = outputDir.get().asFile
+        target.mkdirs()
+        val zipFile = File(target, "gamedata.zip")
+
+        // Sorted, at a fixed timestamp: a reproducible zip means a stable
+        // digest, which means an app update only re-unpacks on the device when
+        // the contents actually changed.
+        ZipOutputStream(zipFile.outputStream().buffered()).use { zip ->
+            entries.forEach { (name, file) ->
+                zip.putNextEntry(ZipEntry(name).apply { time = FIXED_ENTRY_TIME })
+                file.inputStream().use { it.copyTo(zip) }
+                zip.closeEntry()
+            }
         }
-    }
-    from(File(repositoryRoot, "assets")) { into("assets") }
-    from(File(repositoryRoot, "config.yml"))
-    from(engineArchive)
-    archiveFileName.set("gamedata.zip")
-    destinationDirectory.set(gamedataDir)
-    // A reproducible zip means a stable digest, which means an app update only
-    // re-unpacks when the contents actually changed.
-    isPreserveFileTimestamps = false
-    isReproducibleFileOrder = true
-}
 
-val stampGameData = tasks.register("stampGameData") {
-    description = "Writes the digest the launcher compares against to decide whether to unpack."
-    dependsOn(packGameData)
-    val stampFile = gamedataDir.get().file("gamedata.version").asFile
-    outputs.file(stampFile)
-    doLast {
-        val zipFile = gamedataDir.get().file("gamedata.zip").asFile
         val digest = MessageDigest.getInstance("MD5").digest(zipFile.readBytes())
-        stampFile.writeText(digest.joinToString("") { "%02x".format(it) })
+        File(target, "gamedata.version").writeText(digest.joinToString("") { "%02x".format(it) })
+    }
+
+    private companion object {
+        // 1980-02-01T00:00:00Z, the same instant Gradle's own archive tasks use
+        // for this. Anything earlier risks falling before the 1980 floor that a
+        // zip entry's DOS timestamp can represent.
+        const val FIXED_ENTRY_TIME = 318211200000L
     }
 }
 
-// Derived from the task rather than named as a plain path, so every consumer
-// picks up the dependency. Naming the directory directly only looks fine until
-// something other than the asset merge reads it — release builds run lint-vital
-// over the source sets, and that fails on the missing dependency.
-val stagedGameData: Provider<File> = stampGameData.map { gamedataDir.get().asFile }
+// Wired through the variant API rather than added as a source-set srcDir. The
+// srcDir form looks equivalent and is not: the asset merge takes the path but
+// not the dependency on the task that fills it, so a clean checkout silently
+// packages an APK whose assets are missing everything below — and the
+// missing-archive check above never runs to say so.
+androidComponents {
+    onVariants { variant ->
+        val packGameData =
+            tasks.register<PackGameData>("pack${variant.name.replaceFirstChar(Char::titlecase)}GameData") {
+                description = "Bundles the Torch recipes and the engine archive into the APK."
+                recipes.set(File(repositoryRoot, "assets"))
+                config.set(File(repositoryRoot, "config.yml"))
+                engineArchive.from(File(repositoryRoot, "ghostship.o2r"))
+            }
+        variant.sources.assets?.addGeneratedSourceDirectory(packGameData, PackGameData::outputDir)
+    }
+}
 
 android {
     namespace = "dev.net64.ghostship"
@@ -161,10 +203,6 @@ android {
             // libultraship needs CMake >= 3.24; the NDK-bundled 3.22.1 is too old.
             version = "3.30.3+"
         }
-    }
-
-    sourceSets.named("main") {
-        assets.srcDir(stagedGameData)
     }
 
     compileOptions {
