@@ -7,8 +7,10 @@
 #include "port/web/WebUtils.h"
 #endif
 #ifdef __ANDROID__
+// The packaged game data is unpacked before this process starts rather than
+// from here: extracting the ROM needs config.yml and assets/ymls already on
+// disk. See android/app/src/main/java/com/ghostship/android/GameAssets.kt.
 #include <SDL2/SDL_main.h>
-#include "port/android/AndroidUtils.h"
 #endif
 
 extern "C" {
@@ -50,9 +52,6 @@ int main(int argc, char* argv[]) {
 #ifdef __EMSCRIPTEN__
     WebCache_Mount("/storage");
     WebCache_Load();
-#endif
-#ifdef __ANDROID__
-    Android_SyncPackagedData();
 #endif
     GameEngine::Create(argc, argv);
     alloc_pool();
