@@ -32,6 +32,10 @@ public:
     bool Parse(std::atomic<size_t>& assetCount, std::string appShortName = "");
     bool GenerateOTR(std::string appShortName = "");
     bool GenerateOTR(std::atomic<size_t>& assetCount, std::string appShortName = "");
+    // Same as GenerateOTR, but with the two directories named outright instead of
+    // asked of Ship::Context. The Android launcher extracts before SDL is up, so
+    // Context cannot resolve a path there yet.
+    bool GenerateOTRTo(std::atomic<size_t>& assetCount, const std::string& assetsPath, const std::string& gamePath);
     void WritePortVersion();
 private:
     fs::path mGamePath;

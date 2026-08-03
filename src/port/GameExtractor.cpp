@@ -318,10 +318,13 @@ bool GameExtractor::GenerateOTR(std::string appShortName) {
 }
 
 bool GameExtractor::GenerateOTR(std::atomic<size_t>& assetCount, std::string appShortName) {
-    const std::string assets_path = Ship::Context::GetAppBundlePath();
-    const std::string game_path = Ship::Context::GetAppDirectoryPath(appShortName);
+    return GenerateOTRTo(assetCount, Ship::Context::GetAppBundlePath(),
+                         Ship::Context::GetAppDirectoryPath(appShortName));
+}
 
-    Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path);
+bool GameExtractor::GenerateOTRTo(std::atomic<size_t>& assetCount, const std::string& assetsPath,
+                                  const std::string& gamePath) {
+    Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assetsPath, gamePath);
     this->WritePortVersion();
     try {
         Companion::Instance->Init(ExportType::Binary, assetCount, true);
@@ -363,6 +366,11 @@ bool GameExtractor::GenerateOTR(std::string appShortName) {
 }
 
 bool GameExtractor::GenerateOTR(std::atomic<size_t>& assetCount, std::string appShortName) {
+    return false;
+}
+
+bool GameExtractor::GenerateOTRTo(std::atomic<size_t>& assetCount, const std::string& assetsPath,
+                                  const std::string& gamePath) {
     return false;
 }
 
