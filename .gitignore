@@ -100,6 +100,9 @@ node_modules
 mods/
 randomizer/
 !/src/port/mods/
+# The APK ships a placeholder that tells the player where their mods go, so
+# this one is a source file rather than somewhere mods land.
+!/android/app/src/main/assets/mods/
 saves/
 workspace/*
 !workspace/template

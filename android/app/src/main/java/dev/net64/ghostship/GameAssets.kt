@@ -110,7 +110,14 @@ object GameAssets {
             val mods = modsDir(context)
             mods.mkdirs()
             if (mods.list().isNullOrEmpty()) {
-                copyAsset(context, "mods/place_mods_here.txt", File(mods, "place_mods_here.txt"))
+                // Only a hint for the player, and nothing reads it back, so it
+                // must not fail an extraction that has otherwise succeeded —
+                // which is what a missing placeholder used to do.
+                try {
+                    copyAsset(context, "mods/place_mods_here.txt", File(mods, "place_mods_here.txt"))
+                } catch (error: IOException) {
+                    Log.w(TAG, "Could not write the mods placeholder", error)
+                }
             }
 
             // New recipes mean the previous archive is stale, and Torch skips
