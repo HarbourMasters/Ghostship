@@ -422,7 +422,7 @@ static const ALIGN_ASSET(2) char bob_seg7_dl_0700E8A0[] = "__OTR__levels/bob/bob
 
 static const ALIGN_ASSET(2) char bob_seg7_collision_level[] = "__OTR__levels/bob/bob_seg7_collision_level";
 
-static const char bob_seg7_macro_objs[] = "__OTR__levels/bob/bob_seg7_macro_objs";
+static const ALIGN_ASSET(2) char bob_seg7_macro_objs[] = "__OTR__levels/bob/bob_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char bob_seg7_collision_chain_chomp_gate[] = "__OTR__levels/bob/bob_seg7_collision_chain_chomp_gate";
 
@@ -430,9 +430,9 @@ static const ALIGN_ASSET(2) char bob_seg7_collision_bridge[] = "__OTR__levels/bo
 
 static const ALIGN_ASSET(2) char bob_seg7_collision_gate[] = "__OTR__levels/bob/bob_seg7_collision_gate";
 
-static const char bob_seg7_metal_ball_path0[] = "__OTR__levels/bob/bob_seg7_metal_ball_path0";
+static const ALIGN_ASSET(2) char bob_seg7_metal_ball_path0[] = "__OTR__levels/bob/bob_seg7_metal_ball_path0";
 
-static const char bob_seg7_metal_ball_path1[] = "__OTR__levels/bob/bob_seg7_metal_ball_path1";
+static const ALIGN_ASSET(2) char bob_seg7_metal_ball_path1[] = "__OTR__levels/bob/bob_seg7_metal_ball_path1";
 
-static const char bob_seg7_trajectory_koopa[] = "__OTR__levels/bob/bob_seg7_trajectory_koopa";
+static const ALIGN_ASSET(2) char bob_seg7_trajectory_koopa[] = "__OTR__levels/bob/bob_seg7_trajectory_koopa";
 

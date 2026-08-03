@@ -106,11 +106,11 @@ static const ALIGN_ASSET(2) char inside_castle_seg7_dl_07021AA0[] = "__OTR__leve
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_painting_dl_07021AC0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_dl_07021AC0";
 
-static const char inside_castle_seg7_painting_texture_map_bottom_07021AE0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_texture_map_bottom_07021AE0";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_texture_map_bottom_07021AE0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_texture_map_bottom_07021AE0";
 
-static const char inside_castle_seg7_painting_texture_map_top_07021FFC[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_texture_map_top_07021FFC";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_texture_map_top_07021FFC[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_texture_map_top_07021FFC";
 
-static const char inside_castle_seg7_painting_texture_maps_07022518[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_texture_maps_07022518";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_texture_maps_07022518[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_texture_maps_07022518";
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_lights_07022528[] = "__OTR__levels/castle_inside/inside_castle_seg7_lights_07022528";
 
@@ -126,9 +126,9 @@ static const ALIGN_ASSET(2) char inside_castle_seg7_dl_07022610[] = "__OTR__leve
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_painting_dl_07022640[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_dl_07022640";
 
-static const char inside_castle_seg7_painting_env_map_texture_map_07022660[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_env_map_texture_map_07022660";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_env_map_texture_map_07022660[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_env_map_texture_map_07022660";
 
-static const char inside_castle_seg7_painting_env_map_texture_maps_07023044[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_env_map_texture_maps_07023044";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_env_map_texture_maps_07023044[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_env_map_texture_maps_07023044";
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_painting_dl_07023050[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_dl_07023050";
 
@@ -160,59 +160,59 @@ static const ALIGN_ASSET(2) char inside_castle_seg7_painting_dl_07023580[] = "__
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_painting_dl_070235B8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_dl_070235B8";
 
-static const char inside_castle_seg7_painting_textures_070235C0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235C0";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235C0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235C0";
 
-static const char inside_castle_seg7_painting_textures_070235C8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235C8";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235C8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235C8";
 
-static const char inside_castle_seg7_painting_textures_070235D0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235D0";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235D0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235D0";
 
-static const char inside_castle_seg7_painting_textures_070235D8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235D8";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235D8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235D8";
 
-static const char inside_castle_seg7_painting_textures_070235E0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235E0";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235E0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235E0";
 
-static const char inside_castle_seg7_painting_textures_070235E8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235E8";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235E8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235E8";
 
-static const char inside_castle_seg7_painting_textures_070235F0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235F0";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235F0[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235F0";
 
-static const char inside_castle_seg7_painting_textures_070235F4[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235F4";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235F4[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235F4";
 
-static const char inside_castle_seg7_painting_textures_070235F8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235F8";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_070235F8[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_070235F8";
 
-static const char inside_castle_seg7_painting_textures_07023600[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023600";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_07023600[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023600";
 
-static const char inside_castle_seg7_painting_textures_07023608[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023608";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_07023608[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023608";
 
-static const char inside_castle_seg7_painting_textures_07023610[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023610";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_07023610[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023610";
 
-static const char inside_castle_seg7_painting_textures_07023618[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023618";
+static const ALIGN_ASSET(2) char inside_castle_seg7_painting_textures_07023618[] = "__OTR__levels/castle_inside/inside_castle_seg7_painting_textures_07023618";
 
-static const char bob_painting[] = "__OTR__levels/castle_inside/bob_painting";
+static const ALIGN_ASSET(2) char bob_painting[] = "__OTR__levels/castle_inside/bob_painting";
 
-static const char ccm_painting[] = "__OTR__levels/castle_inside/ccm_painting";
+static const ALIGN_ASSET(2) char ccm_painting[] = "__OTR__levels/castle_inside/ccm_painting";
 
-static const char wf_painting[] = "__OTR__levels/castle_inside/wf_painting";
+static const ALIGN_ASSET(2) char wf_painting[] = "__OTR__levels/castle_inside/wf_painting";
 
-static const char jrb_painting[] = "__OTR__levels/castle_inside/jrb_painting";
+static const ALIGN_ASSET(2) char jrb_painting[] = "__OTR__levels/castle_inside/jrb_painting";
 
-static const char lll_painting[] = "__OTR__levels/castle_inside/lll_painting";
+static const ALIGN_ASSET(2) char lll_painting[] = "__OTR__levels/castle_inside/lll_painting";
 
-static const char ssl_painting[] = "__OTR__levels/castle_inside/ssl_painting";
+static const ALIGN_ASSET(2) char ssl_painting[] = "__OTR__levels/castle_inside/ssl_painting";
 
-static const char hmc_painting[] = "__OTR__levels/castle_inside/hmc_painting";
+static const ALIGN_ASSET(2) char hmc_painting[] = "__OTR__levels/castle_inside/hmc_painting";
 
-static const char ddd_painting[] = "__OTR__levels/castle_inside/ddd_painting";
+static const ALIGN_ASSET(2) char ddd_painting[] = "__OTR__levels/castle_inside/ddd_painting";
 
-static const char wdw_painting[] = "__OTR__levels/castle_inside/wdw_painting";
+static const ALIGN_ASSET(2) char wdw_painting[] = "__OTR__levels/castle_inside/wdw_painting";
 
-static const char thi_tiny_painting[] = "__OTR__levels/castle_inside/thi_tiny_painting";
+static const ALIGN_ASSET(2) char thi_tiny_painting[] = "__OTR__levels/castle_inside/thi_tiny_painting";
 
-static const char ttm_painting[] = "__OTR__levels/castle_inside/ttm_painting";
+static const ALIGN_ASSET(2) char ttm_painting[] = "__OTR__levels/castle_inside/ttm_painting";
 
-static const char ttc_painting[] = "__OTR__levels/castle_inside/ttc_painting";
+static const ALIGN_ASSET(2) char ttc_painting[] = "__OTR__levels/castle_inside/ttc_painting";
 
-static const char sl_painting[] = "__OTR__levels/castle_inside/sl_painting";
+static const ALIGN_ASSET(2) char sl_painting[] = "__OTR__levels/castle_inside/sl_painting";
 
-static const char thi_huge_painting[] = "__OTR__levels/castle_inside/thi_huge_painting";
+static const ALIGN_ASSET(2) char thi_huge_painting[] = "__OTR__levels/castle_inside/thi_huge_painting";
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_vertex_07023CB0[] = "__OTR__levels/castle_inside/inside_castle_seg7_vertex_07023CB0";
 
@@ -2820,11 +2820,11 @@ static const ALIGN_ASSET(2) char inside_castle_seg7_collision_ddd_warp[] = "__OT
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_collision_ddd_warp_2[] = "__OTR__levels/castle_inside/inside_castle_seg7_collision_ddd_warp_2";
 
-static const char inside_castle_seg7_area_1_macro_objs[] = "__OTR__levels/castle_inside/inside_castle_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char inside_castle_seg7_area_1_macro_objs[] = "__OTR__levels/castle_inside/inside_castle_seg7_area_1_macro_objs";
 
-static const char inside_castle_seg7_area_2_macro_objs[] = "__OTR__levels/castle_inside/inside_castle_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char inside_castle_seg7_area_2_macro_objs[] = "__OTR__levels/castle_inside/inside_castle_seg7_area_2_macro_objs";
 
-static const char inside_castle_seg7_area_3_macro_objs[] = "__OTR__levels/castle_inside/inside_castle_seg7_area_3_macro_objs";
+static const ALIGN_ASSET(2) char inside_castle_seg7_area_3_macro_objs[] = "__OTR__levels/castle_inside/inside_castle_seg7_area_3_macro_objs";
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_area_1_rooms[] = "__OTR__levels/castle_inside/inside_castle_seg7_area_1_rooms";
 
@@ -2838,35 +2838,35 @@ static const ALIGN_ASSET(2) char inside_castle_seg7_collision_star_door[] = "__O
 
 static const ALIGN_ASSET(2) char inside_castle_seg7_collision_water_level_pillar[] = "__OTR__levels/castle_inside/inside_castle_seg7_collision_water_level_pillar";
 
-static const char inside_castle_seg7_trajectory_mips_0[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_0";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_0[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_0";
 
-static const char inside_castle_seg7_trajectory_mips_1[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_1";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_1[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_1";
 
-static const char inside_castle_seg7_trajectory_mips_2[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_2";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_2[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_2";
 
-static const char inside_castle_seg7_trajectory_mips_3[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_3";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_3[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_3";
 
-static const char inside_castle_seg7_trajectory_mips_4[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_4";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_4[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_4";
 
-static const char inside_castle_seg7_trajectory_mips_5[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_5";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_5[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_5";
 
-static const char inside_castle_seg7_trajectory_mips_6[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_6";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_6[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_6";
 
-static const char inside_castle_seg7_trajectory_mips_7[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_7";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_7[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_7";
 
-static const char inside_castle_seg7_trajectory_mips_8[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_8";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_8[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_8";
 
-static const char inside_castle_seg7_trajectory_mips_9[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_9";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips_9[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips_9";
 
-static const char inside_castle_seg7_trajectory_mips[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips";
+static const ALIGN_ASSET(2) char inside_castle_seg7_trajectory_mips[] = "__OTR__levels/castle_inside/inside_castle_seg7_trajectory_mips";
 
-static const char inside_castle_movtex_green_room_water_data[] = "__OTR__levels/castle_inside/inside_castle_movtex_green_room_water_data";
+static const ALIGN_ASSET(2) char inside_castle_movtex_green_room_water_data[] = "__OTR__levels/castle_inside/inside_castle_movtex_green_room_water_data";
 
-static const char inside_castle_movtex_moat_leftover_water_data[] = "__OTR__levels/castle_inside/inside_castle_movtex_moat_leftover_water_data";
+static const ALIGN_ASSET(2) char inside_castle_movtex_moat_leftover_water_data[] = "__OTR__levels/castle_inside/inside_castle_movtex_moat_leftover_water_data";
 
-static const char inside_castle_movtex_moat_water_data[] = "__OTR__levels/castle_inside/inside_castle_movtex_moat_water_data";
+static const ALIGN_ASSET(2) char inside_castle_movtex_moat_water_data[] = "__OTR__levels/castle_inside/inside_castle_movtex_moat_water_data";
 
-static const char inside_castle_movtex_green_room_water[] = "__OTR__levels/castle_inside/inside_castle_movtex_green_room_water";
+static const ALIGN_ASSET(2) char inside_castle_movtex_green_room_water[] = "__OTR__levels/castle_inside/inside_castle_movtex_green_room_water";
 
-static const char inside_castle_movtex_moat_water[] = "__OTR__levels/castle_inside/inside_castle_movtex_moat_water";
+static const ALIGN_ASSET(2) char inside_castle_movtex_moat_water[] = "__OTR__levels/castle_inside/inside_castle_movtex_moat_water";
 

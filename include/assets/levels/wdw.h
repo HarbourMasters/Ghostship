@@ -652,11 +652,11 @@ static const ALIGN_ASSET(2) char wdw_seg7_dl_070140E0[] = "__OTR__levels/wdw/wdw
 
 static const ALIGN_ASSET(2) char wdw_seg7_area_1_collision[] = "__OTR__levels/wdw/wdw_seg7_area_1_collision";
 
-static const char wdw_seg7_area_1_macro_objs[] = "__OTR__levels/wdw/wdw_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char wdw_seg7_area_1_macro_objs[] = "__OTR__levels/wdw/wdw_seg7_area_1_macro_objs";
 
 static const ALIGN_ASSET(2) char wdw_seg7_area_2_collision[] = "__OTR__levels/wdw/wdw_seg7_area_2_collision";
 
-static const char wdw_seg7_area_2_macro_objs[] = "__OTR__levels/wdw/wdw_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char wdw_seg7_area_2_macro_objs[] = "__OTR__levels/wdw/wdw_seg7_area_2_macro_objs";
 
 static const ALIGN_ASSET(2) char wdw_seg7_collision_square_floating_platform[] = "__OTR__levels/wdw/wdw_seg7_collision_square_floating_platform";
 
@@ -672,11 +672,11 @@ static const ALIGN_ASSET(2) char wdw_seg7_collision_rect_floating_platform[] = "
 
 static const ALIGN_ASSET(2) char wdw_seg7_collision_070186B4[] = "__OTR__levels/wdw/wdw_seg7_collision_070186B4";
 
-static const char wdw_movtex_area1_water_data[] = "__OTR__levels/wdw/wdw_movtex_area1_water_data";
+static const ALIGN_ASSET(2) char wdw_movtex_area1_water_data[] = "__OTR__levels/wdw/wdw_movtex_area1_water_data";
 
-static const char wdw_movtex_area1_water[] = "__OTR__levels/wdw/wdw_movtex_area1_water";
+static const ALIGN_ASSET(2) char wdw_movtex_area1_water[] = "__OTR__levels/wdw/wdw_movtex_area1_water";
 
-static const char wdw_movtex_area2_water_data[] = "__OTR__levels/wdw/wdw_movtex_area2_water_data";
+static const ALIGN_ASSET(2) char wdw_movtex_area2_water_data[] = "__OTR__levels/wdw/wdw_movtex_area2_water_data";
 
-static const char wdw_movtex_area2_water[] = "__OTR__levels/wdw/wdw_movtex_area2_water";
+static const ALIGN_ASSET(2) char wdw_movtex_area2_water[] = "__OTR__levels/wdw/wdw_movtex_area2_water";
 

@@ -392,5 +392,5 @@ static const ALIGN_ASSET(2) char pss_seg7_dl_0700E3E8[] = "__OTR__levels/pss/pss
 
 static const ALIGN_ASSET(2) char pss_seg7_collision[] = "__OTR__levels/pss/pss_seg7_collision";
 
-static const char pss_seg7_macro_objs[] = "__OTR__levels/pss/pss_seg7_macro_objs";
+static const ALIGN_ASSET(2) char pss_seg7_macro_objs[] = "__OTR__levels/pss/pss_seg7_macro_objs";
 

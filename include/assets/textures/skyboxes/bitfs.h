@@ -98,5 +98,5 @@ static const ALIGN_ASSET(2) char bitfs_skybox_texture_00047[] = "__OTR__textures
 
 static const ALIGN_ASSET(2) char bitfs_skybox_texture_00048[] = "__OTR__textures/skyboxes/bitfs/bitfs.48";
 
-static const char bitfs_skybox_ptrlist[] = "__OTR__textures/skyboxes/bitfs/bitfs_skybox_ptrlist";
+static const ALIGN_ASSET(2) char bitfs_skybox_ptrlist[] = "__OTR__textures/skyboxes/bitfs/bitfs_skybox_ptrlist";
 

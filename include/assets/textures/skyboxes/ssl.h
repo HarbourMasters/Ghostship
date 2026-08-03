@@ -128,5 +128,5 @@ static const ALIGN_ASSET(2) char ssl_skybox_texture_00062[] = "__OTR__textures/s
 
 static const ALIGN_ASSET(2) char ssl_skybox_texture_00063[] = "__OTR__textures/skyboxes/ssl/ssl.63";
 
-static const char ssl_skybox_ptrlist[] = "__OTR__textures/skyboxes/ssl/ssl_skybox_ptrlist";
+static const ALIGN_ASSET(2) char ssl_skybox_ptrlist[] = "__OTR__textures/skyboxes/ssl/ssl_skybox_ptrlist";
 

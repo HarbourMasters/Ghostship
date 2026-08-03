@@ -764,7 +764,7 @@ static const ALIGN_ASSET(2) char bits_seg7_dl_07016DA0[] = "__OTR__levels/bits/b
 
 static const ALIGN_ASSET(2) char bits_seg7_collision_level[] = "__OTR__levels/bits/bits_seg7_collision_level";
 
-static const char bits_seg7_macro_objs[] = "__OTR__levels/bits/bits_seg7_macro_objs";
+static const ALIGN_ASSET(2) char bits_seg7_macro_objs[] = "__OTR__levels/bits/bits_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char bits_seg7_collision_0701A9A0[] = "__OTR__levels/bits/bits_seg7_collision_0701A9A0";
 

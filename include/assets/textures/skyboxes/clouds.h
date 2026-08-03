@@ -82,5 +82,5 @@ static const ALIGN_ASSET(2) char clouds_skybox_texture_00039[] = "__OTR__texture
 
 static const ALIGN_ASSET(2) char clouds_skybox_texture_00040[] = "__OTR__textures/skyboxes/clouds/clouds.40";
 
-static const char clouds_skybox_ptrlist[] = "__OTR__textures/skyboxes/clouds/clouds_skybox_ptrlist";
+static const ALIGN_ASSET(2) char clouds_skybox_ptrlist[] = "__OTR__textures/skyboxes/clouds/clouds_skybox_ptrlist";
 

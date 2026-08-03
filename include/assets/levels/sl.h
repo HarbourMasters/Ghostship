@@ -408,7 +408,7 @@ static const ALIGN_ASSET(2) char sl_seg7_dl_0700CB58[] = "__OTR__levels/sl/sl_se
 
 static const ALIGN_ASSET(2) char sl_seg7_area_1_collision[] = "__OTR__levels/sl/sl_seg7_area_1_collision";
 
-static const char sl_seg7_area_1_macro_objs[] = "__OTR__levels/sl/sl_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char sl_seg7_area_1_macro_objs[] = "__OTR__levels/sl/sl_seg7_area_1_macro_objs";
 
 static const ALIGN_ASSET(2) char sl_seg7_collision_sliding_snow_mound[] = "__OTR__levels/sl/sl_seg7_collision_sliding_snow_mound";
 
@@ -416,11 +416,11 @@ static const ALIGN_ASSET(2) char sl_seg7_collision_pound_explodes[] = "__OTR__le
 
 static const ALIGN_ASSET(2) char sl_seg7_area_2_collision[] = "__OTR__levels/sl/sl_seg7_area_2_collision";
 
-static const char sl_seg7_area_2_macro_objs[] = "__OTR__levels/sl/sl_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char sl_seg7_area_2_macro_objs[] = "__OTR__levels/sl/sl_seg7_area_2_macro_objs";
 
-static const char sl_movtex_snowman_water_data[] = "__OTR__levels/sl/sl_movtex_snowman_water_data";
+static const ALIGN_ASSET(2) char sl_movtex_snowman_water_data[] = "__OTR__levels/sl/sl_movtex_snowman_water_data";
 
-static const char sl_movtex_ice_bully_water_data[] = "__OTR__levels/sl/sl_movtex_ice_bully_water_data";
+static const ALIGN_ASSET(2) char sl_movtex_ice_bully_water_data[] = "__OTR__levels/sl/sl_movtex_ice_bully_water_data";
 
-static const char sl_movtex_water[] = "__OTR__levels/sl/sl_movtex_water";
+static const ALIGN_ASSET(2) char sl_movtex_water[] = "__OTR__levels/sl/sl_movtex_water";
 

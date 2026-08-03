@@ -98,5 +98,5 @@ static const ALIGN_ASSET(2) char sa_seg7_dl_07002FD0[] = "__OTR__levels/sa/sa_se
 
 static const ALIGN_ASSET(2) char sa_seg7_collision[] = "__OTR__levels/sa/sa_seg7_collision";
 
-static const char sa_seg7_macro_objs[] = "__OTR__levels/sa/sa_seg7_macro_objs";
+static const ALIGN_ASSET(2) char sa_seg7_macro_objs[] = "__OTR__levels/sa/sa_seg7_macro_objs";
 

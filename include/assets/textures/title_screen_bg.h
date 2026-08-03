@@ -16,7 +16,7 @@ static const ALIGN_ASSET(2) char title_texture_0A004CC0[] = "__OTR__textures/tit
 
 static const ALIGN_ASSET(2) char title_texture_0A005940[] = "__OTR__textures/title_screen_bg/title_screen_bg.05940";
 
-static const char mario_title_texture_table[] = "__OTR__textures/title_screen_bg/mario_title_texture_table";
+static const ALIGN_ASSET(2) char mario_title_texture_table[] = "__OTR__textures/title_screen_bg/mario_title_texture_table";
 
-static const char game_over_texture_table[] = "__OTR__textures/title_screen_bg/game_over_texture_table";
+static const ALIGN_ASSET(2) char game_over_texture_table[] = "__OTR__textures/title_screen_bg/game_over_texture_table";
 

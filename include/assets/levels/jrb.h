@@ -392,7 +392,7 @@ static const ALIGN_ASSET(2) char jrb_seg7_dl_0700AFB0[] = "__OTR__levels/jrb/jrb
 
 static const ALIGN_ASSET(2) char jrb_seg7_area_1_collision[] = "__OTR__levels/jrb/jrb_seg7_area_1_collision";
 
-static const char jrb_seg7_area_1_macro_objs[] = "__OTR__levels/jrb/jrb_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char jrb_seg7_area_1_macro_objs[] = "__OTR__levels/jrb/jrb_seg7_area_1_macro_objs";
 
 static const ALIGN_ASSET(2) char jrb_seg7_collision_rock_solid[] = "__OTR__levels/jrb/jrb_seg7_collision_rock_solid";
 
@@ -412,19 +412,19 @@ static const ALIGN_ASSET(2) char jrb_seg7_collision_pillar_base[] = "__OTR__leve
 
 static const ALIGN_ASSET(2) char jrb_seg7_collision_0700D1DC[] = "__OTR__levels/jrb/jrb_seg7_collision_0700D1DC";
 
-static const char jrb_seg7_trajectory_unagi_1[] = "__OTR__levels/jrb/jrb_seg7_trajectory_unagi_1";
+static const ALIGN_ASSET(2) char jrb_seg7_trajectory_unagi_1[] = "__OTR__levels/jrb/jrb_seg7_trajectory_unagi_1";
 
-static const char jrb_seg7_trajectory_unagi_2[] = "__OTR__levels/jrb/jrb_seg7_trajectory_unagi_2";
+static const ALIGN_ASSET(2) char jrb_seg7_trajectory_unagi_2[] = "__OTR__levels/jrb/jrb_seg7_trajectory_unagi_2";
 
-static const char jrb_movtex_water_data[] = "__OTR__levels/jrb/jrb_movtex_water_data";
+static const ALIGN_ASSET(2) char jrb_movtex_water_data[] = "__OTR__levels/jrb/jrb_movtex_water_data";
 
-static const char jrb_movtex_ocean_cave_water_data[] = "__OTR__levels/jrb/jrb_movtex_ocean_cave_water_data";
+static const ALIGN_ASSET(2) char jrb_movtex_ocean_cave_water_data[] = "__OTR__levels/jrb/jrb_movtex_ocean_cave_water_data";
 
-static const char jrb_movtex_water[] = "__OTR__levels/jrb/jrb_movtex_water";
+static const ALIGN_ASSET(2) char jrb_movtex_water[] = "__OTR__levels/jrb/jrb_movtex_water";
 
-static const char jrb_movtex_initial_mist_data[] = "__OTR__levels/jrb/jrb_movtex_initial_mist_data";
+static const ALIGN_ASSET(2) char jrb_movtex_initial_mist_data[] = "__OTR__levels/jrb/jrb_movtex_initial_mist_data";
 
-static const char jrb_movtex_initial_mist[] = "__OTR__levels/jrb/jrb_movtex_initial_mist";
+static const ALIGN_ASSET(2) char jrb_movtex_initial_mist[] = "__OTR__levels/jrb/jrb_movtex_initial_mist";
 
 static const ALIGN_ASSET(2) char jrb_seg7_lights_0700D318[] = "__OTR__levels/jrb/jrb_seg7_lights_0700D318";
 
@@ -544,9 +544,9 @@ static const ALIGN_ASSET(2) char jrb_seg7_dl_07010548[] = "__OTR__levels/jrb/jrb
 
 static const ALIGN_ASSET(2) char jrb_seg7_area_2_collision[] = "__OTR__levels/jrb/jrb_seg7_area_2_collision";
 
-static const char jrb_seg7_area_2_macro_objs[] = "__OTR__levels/jrb/jrb_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char jrb_seg7_area_2_macro_objs[] = "__OTR__levels/jrb/jrb_seg7_area_2_macro_objs";
 
-static const char jrb_movtex_sunken_ship_water_data[] = "__OTR__levels/jrb/jrb_movtex_sunken_ship_water_data";
+static const ALIGN_ASSET(2) char jrb_movtex_sunken_ship_water_data[] = "__OTR__levels/jrb/jrb_movtex_sunken_ship_water_data";
 
-static const char jrb_movtex_sunken_ship_water[] = "__OTR__levels/jrb/jrb_movtex_sunken_ship_water";
+static const ALIGN_ASSET(2) char jrb_movtex_sunken_ship_water[] = "__OTR__levels/jrb/jrb_movtex_sunken_ship_water";
 

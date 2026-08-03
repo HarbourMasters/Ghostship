@@ -1,4 +1,4 @@
 #pragma once
 
-static const char spiny_seg5_anims_05016EAC[] = "__OTR__actors/spiny/anims/spiny_seg5_anims_05016EAC";
+static const ALIGN_ASSET(2) char spiny_seg5_anims_05016EAC[] = "__OTR__actors/spiny/anims/spiny_seg5_anims_05016EAC";
 

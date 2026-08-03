@@ -1328,13 +1328,13 @@ static const ALIGN_ASSET(2) char rr_seg7_collision_0702A6B4[] = "__OTR__levels/r
 
 static const ALIGN_ASSET(2) char rr_seg7_collision_level[] = "__OTR__levels/rr/rr_seg7_collision_level";
 
-static const char rr_seg7_macro_objs[] = "__OTR__levels/rr/rr_seg7_macro_objs";
+static const ALIGN_ASSET(2) char rr_seg7_macro_objs[] = "__OTR__levels/rr/rr_seg7_macro_objs";
 
-static const char rr_seg7_trajectory_0702EC3C[] = "__OTR__levels/rr/rr_seg7_trajectory_0702EC3C";
+static const ALIGN_ASSET(2) char rr_seg7_trajectory_0702EC3C[] = "__OTR__levels/rr/rr_seg7_trajectory_0702EC3C";
 
-static const char rr_seg7_trajectory_0702ECC0[] = "__OTR__levels/rr/rr_seg7_trajectory_0702ECC0";
+static const ALIGN_ASSET(2) char rr_seg7_trajectory_0702ECC0[] = "__OTR__levels/rr/rr_seg7_trajectory_0702ECC0";
 
-static const char rr_seg7_trajectory_0702ED9C[] = "__OTR__levels/rr/rr_seg7_trajectory_0702ED9C";
+static const ALIGN_ASSET(2) char rr_seg7_trajectory_0702ED9C[] = "__OTR__levels/rr/rr_seg7_trajectory_0702ED9C";
 
-static const char rr_seg7_trajectory_0702EEE0[] = "__OTR__levels/rr/rr_seg7_trajectory_0702EEE0";
+static const ALIGN_ASSET(2) char rr_seg7_trajectory_0702EEE0[] = "__OTR__levels/rr/rr_seg7_trajectory_0702EEE0";
 

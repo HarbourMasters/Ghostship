@@ -82,5 +82,5 @@ static const ALIGN_ASSET(2) char bbh_skybox_texture_00039[] = "__OTR__textures/s
 
 static const ALIGN_ASSET(2) char bbh_skybox_texture_00040[] = "__OTR__textures/skyboxes/bbh/bbh.40";
 
-static const char bbh_skybox_ptrlist[] = "__OTR__textures/skyboxes/bbh/bbh_skybox_ptrlist";
+static const ALIGN_ASSET(2) char bbh_skybox_ptrlist[] = "__OTR__textures/skyboxes/bbh/bbh_skybox_ptrlist";
 

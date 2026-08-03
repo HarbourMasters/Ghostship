@@ -616,7 +616,7 @@ static const ALIGN_ASSET(2) char lll_seg7_dl_0701AD70[] = "__OTR__levels/lll/lll
 
 static const ALIGN_ASSET(2) char lll_seg7_area_1_collision[] = "__OTR__levels/lll/lll_seg7_area_1_collision";
 
-static const char lll_seg7_area_1_macro_objs[] = "__OTR__levels/lll/lll_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char lll_seg7_area_1_macro_objs[] = "__OTR__levels/lll/lll_seg7_area_1_macro_objs";
 
 static const ALIGN_ASSET(2) char lll_seg7_collision_octagonal_moving_platform[] = "__OTR__levels/lll/lll_seg7_collision_octagonal_moving_platform";
 
@@ -902,23 +902,23 @@ static const ALIGN_ASSET(2) char lll_seg7_dl_07025EC0[] = "__OTR__levels/lll/lll
 
 static const ALIGN_ASSET(2) char lll_seg7_area_2_collision[] = "__OTR__levels/lll/lll_seg7_area_2_collision";
 
-static const char lll_seg7_area_2_macro_objs[] = "__OTR__levels/lll/lll_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char lll_seg7_area_2_macro_objs[] = "__OTR__levels/lll/lll_seg7_area_2_macro_objs";
 
 static const ALIGN_ASSET(2) char lll_seg7_collision_falling_wall[] = "__OTR__levels/lll/lll_seg7_collision_falling_wall";
 
-static const char lll_seg7_trajectory_0702856C[] = "__OTR__levels/lll/lll_seg7_trajectory_0702856C";
+static const ALIGN_ASSET(2) char lll_seg7_trajectory_0702856C[] = "__OTR__levels/lll/lll_seg7_trajectory_0702856C";
 
-static const char lll_seg7_trajectory_07028660[] = "__OTR__levels/lll/lll_seg7_trajectory_07028660";
+static const ALIGN_ASSET(2) char lll_seg7_trajectory_07028660[] = "__OTR__levels/lll/lll_seg7_trajectory_07028660";
 
-static const char lll_movtex_tris_lava_floor[] = "__OTR__levels/lll/lll_movtex_tris_lava_floor";
+static const ALIGN_ASSET(2) char lll_movtex_tris_lava_floor[] = "__OTR__levels/lll/lll_movtex_tris_lava_floor";
 
 static const ALIGN_ASSET(2) char lll_dl_lava_floor[] = "__OTR__levels/lll/lll_dl_lava_floor";
 
-static const char lll_movtex_volcano_floor_lava_data[] = "__OTR__levels/lll/lll_movtex_volcano_floor_lava_data";
+static const ALIGN_ASSET(2) char lll_movtex_volcano_floor_lava_data[] = "__OTR__levels/lll/lll_movtex_volcano_floor_lava_data";
 
-static const char lll_movtex_volcano_floor_lava[] = "__OTR__levels/lll/lll_movtex_volcano_floor_lava";
+static const ALIGN_ASSET(2) char lll_movtex_volcano_floor_lava[] = "__OTR__levels/lll/lll_movtex_volcano_floor_lava";
 
-static const char lll_movtex_tris_lavafall_volcano[] = "__OTR__levels/lll/lll_movtex_tris_lavafall_volcano";
+static const ALIGN_ASSET(2) char lll_movtex_tris_lavafall_volcano[] = "__OTR__levels/lll/lll_movtex_tris_lavafall_volcano";
 
 static const ALIGN_ASSET(2) char lll_dl_lavafall_volcano[] = "__OTR__levels/lll/lll_dl_lavafall_volcano";
 

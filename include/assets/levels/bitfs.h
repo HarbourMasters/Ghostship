@@ -648,7 +648,7 @@ static const ALIGN_ASSET(2) char bitfs_seg7_dl_07011E28[] = "__OTR__levels/bitfs
 
 static const ALIGN_ASSET(2) char bitfs_seg7_collision_level[] = "__OTR__levels/bitfs/bitfs_seg7_collision_level";
 
-static const char bitfs_seg7_macro_objs[] = "__OTR__levels/bitfs/bitfs_seg7_macro_objs";
+static const ALIGN_ASSET(2) char bitfs_seg7_macro_objs[] = "__OTR__levels/bitfs/bitfs_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char bitfs_seg7_collision_07015124[] = "__OTR__levels/bitfs/bitfs_seg7_collision_07015124";
 
@@ -670,13 +670,13 @@ static const ALIGN_ASSET(2) char bitfs_seg7_collision_sinking_platform[] = "__OT
 
 static const ALIGN_ASSET(2) char bitfs_seg7_collision_07015928[] = "__OTR__levels/bitfs/bitfs_seg7_collision_07015928";
 
-static const char bitfs_seg7_trajectory_070159AC[] = "__OTR__levels/bitfs/bitfs_seg7_trajectory_070159AC";
+static const ALIGN_ASSET(2) char bitfs_seg7_trajectory_070159AC[] = "__OTR__levels/bitfs/bitfs_seg7_trajectory_070159AC";
 
-static const char bitfs_movtex_tris_lava_first_section[] = "__OTR__levels/bitfs/bitfs_movtex_tris_lava_first_section";
+static const ALIGN_ASSET(2) char bitfs_movtex_tris_lava_first_section[] = "__OTR__levels/bitfs/bitfs_movtex_tris_lava_first_section";
 
-static const char bitfs_movtex_tris_lava_second_section[] = "__OTR__levels/bitfs/bitfs_movtex_tris_lava_second_section";
+static const ALIGN_ASSET(2) char bitfs_movtex_tris_lava_second_section[] = "__OTR__levels/bitfs/bitfs_movtex_tris_lava_second_section";
 
-static const char bitfs_movtex_tris_lava_floor[] = "__OTR__levels/bitfs/bitfs_movtex_tris_lava_floor";
+static const ALIGN_ASSET(2) char bitfs_movtex_tris_lava_floor[] = "__OTR__levels/bitfs/bitfs_movtex_tris_lava_floor";
 
 static const ALIGN_ASSET(2) char bitfs_dl_lava_sections[] = "__OTR__levels/bitfs/bitfs_dl_lava_sections";
 
