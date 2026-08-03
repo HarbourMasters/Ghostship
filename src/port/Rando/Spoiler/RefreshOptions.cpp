@@ -5,8 +5,16 @@
 #include <libultraship/libultra/types.h>
 
 std::vector<std::string> Rando::Spoiler::spoilerLogs;
-const std::filesystem::path randomizerFolderPath(Ship::Context::GetPathRelativeToAppDirectory("randomizer",
-                                                                                              appShortName));
+
+// Resolved on first use rather than at load time. On Android the app directory
+// comes from SDL_AndroidGetExternalStoragePath(), which calls into Java — and a
+// global constructor runs at dlopen, before SDL's JNI is set up, so asking then
+// aborts the process with "CallStaticObjectMethod received NULL jclass".
+static const std::filesystem::path& RandomizerFolderPath() {
+    static const std::filesystem::path path(
+        Ship::Context::GetPathRelativeToAppDirectory("randomizer", appShortName));
+    return path;
+}
 
 void Rando::Spoiler::RefreshSpoilerLogs() {
     Rando::Spoiler::spoilerLogs.clear();
@@ -14,11 +22,11 @@ void Rando::Spoiler::RefreshSpoilerLogs() {
     Rando::Spoiler::spoilerLogs.push_back("Generate New Seed");
     s32 spoilerFileIndex = -1;
 
-    if (!std::filesystem::exists(randomizerFolderPath)) {
-        std::filesystem::create_directory(randomizerFolderPath);
+    if (!std::filesystem::exists(RandomizerFolderPath())) {
+        std::filesystem::create_directory(RandomizerFolderPath());
     }
 
-    for (const auto& entry : std::filesystem::directory_iterator(randomizerFolderPath)) {
+    for (const auto& entry : std::filesystem::directory_iterator(RandomizerFolderPath())) {
         if (entry.is_regular_file()) {
             std::string fileName = entry.path().filename().string();
 
