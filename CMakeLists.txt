@@ -539,7 +539,11 @@ else()
     )
     FetchContent_MakeAvailable(tinyxml2)
 endif()
-add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
+# Build into the binary tree, not the submodule's own source directory. Android
+# configures once per ABI, and an in-source build dir has them all writing the
+# same libImGui.a/libstb.a/libmonocypher.a — whichever ABI ran last wins and the
+# other fails to link with "is incompatible with aarch64linux".
+add_subdirectory(libultraship ${CMAKE_BINARY_DIR}/libultraship)
 add_dependencies(${PROJECT_NAME} libultraship)
 if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
     target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
