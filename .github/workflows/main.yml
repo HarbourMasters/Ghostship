@@ -328,6 +328,13 @@ jobs:
         run: |
           APK=android/app/build/outputs/apk/release/app-release.apk
           ls -la "$APK" || (echo "ERROR: APK not found" && exit 1)
+          # Every asset GameAssets.kt opens by name. An APK missing one of them
+          # installs and launches fine, then fails on the device during staging,
+          # so check it here rather than after the release goes out.
+          for entry in assets/gamedata.zip assets/gamedata.version \
+                       assets/gamecontrollerdb.txt assets/mods/place_mods_here.txt; do
+            unzip -Z1 "$APK" | grep -qx "$entry" || (echo "ERROR: $entry missing from the APK" && exit 1)
+          done
           cp "$APK" Ghostship.apk
       - name: Clean up keystore
         if: always()
