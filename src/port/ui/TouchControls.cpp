@@ -420,17 +420,27 @@ std::vector<Finger> GatherFingers() {
     std::vector<Finger> fingers;
     const ImVec2 display = ImGui::GetIO().DisplaySize;
 
-    for (int d = 0; d < SDL_GetNumTouchDevices(); d++) {
-        const SDL_TouchID device = SDL_GetTouchDevice(d);
-        if (device == 0) {
-            continue;
-        }
-        for (int f = 0; f < SDL_GetNumTouchFingers(device); f++) {
-            const SDL_Finger* finger = SDL_GetTouchFinger(device, f);
-            if (finger != nullptr) {
-                fingers.push_back({ ImVec2(finger->x * display.x, finger->y * display.y), finger->id });
+    int deviceCount = 0;
+    SDL_TouchID* devices = SDL_GetTouchDevices(&deviceCount);
+    if (devices != nullptr) {
+        for (int d = 0; d < deviceCount; d++) {
+            const SDL_TouchID device = devices[d];
+            if (device == 0) {
+                continue;
+            }
+            int fingerCount = 0;
+            SDL_Finger** touchFingers = SDL_GetTouchFingers(device, &fingerCount);
+            if (touchFingers != nullptr) {
+                for (int f = 0; f < fingerCount; f++) {
+                    const SDL_Finger* finger = touchFingers[f];
+                    if (finger != nullptr) {
+                        fingers.push_back({ ImVec2(finger->x * display.x, finger->y * display.y), (int64_t)finger->id });
+                    }
+                }
+                SDL_free(touchFingers);
             }
         }
+        SDL_free(devices);
     }
 
 #if !defined(PLATFORM_IOS) && !defined(__IOS__) && !defined(__ANDROID__)

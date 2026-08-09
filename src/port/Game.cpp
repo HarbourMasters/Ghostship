@@ -6,6 +6,9 @@
 #include <SDL2/SDL.h>
 #include "port/web/WebUtils.h"
 #endif
+#ifdef _WIN32
+#include <SDL3/SDL_main.h>
+#endif
 
 extern "C" {
 #include "audio/external.h"
