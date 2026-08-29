@@ -42,10 +42,25 @@ void push_frame() {
 #endif
 }
 
+#if defined(__APPLE__) && !defined(__IOS__)
+#include <execinfo.h>
+#include <csignal>
+static void GhostshipCrashTrace(int sig) {
+    void* frames[64];
+    int n = backtrace(frames, 64);
+    backtrace_symbols_fd(frames, n, 2);
+    _exit(128 + sig);
+}
+#endif
+
 #ifdef _WIN32
 int SDL_main(int argc, char** argv) {
 #else
 int main(int argc, char* argv[]) {
+#endif
+#if defined(__APPLE__) && !defined(__IOS__)
+    signal(SIGSEGV, GhostshipCrashTrace);
+    signal(SIGBUS, GhostshipCrashTrace);
 #endif
 #ifdef __EMSCRIPTEN__
     WebCache_Mount("/storage");

@@ -1,4 +1,5 @@
 #include "GhostshipMenu.h"
+#include "port/ShipCompat.h"
 #include "port/Engine.h"
 #include "Notification.h"
 #include "GhostshipInputEditorWindow.h"
@@ -102,7 +103,7 @@ void GhostshipMenu::AddMenuSettings() {
         .CVar(CVAR_SETTING("CursorVisibility"))
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetWindow()->SetForceCursorVisibility(
+            ShipCompat::GetWindow()->SetForceCursorVisibility(
                 CVarGetInteger(CVAR_SETTING("CursorVisibility"), 0));
         })
         .Options(CheckboxOptions().Tooltip("Makes the cursor always visible, even in full screen."));
@@ -139,7 +140,7 @@ void GhostshipMenu::AddMenuSettings() {
     AddWidget(path, "Open App Files Folder", WIDGET_BUTTON)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
-            std::string filesPath = Ship::Context::GetInstance()->GetAppDirectoryPath();
+            std::string filesPath = Ship::Context::GetAppDirectoryPath();
             SDL_OpenURL(std::string("file:///" + std::filesystem::absolute(filesPath).string()).c_str());
         })
         .Options(ButtonOptions().Tooltip("Opens the folder that contains the save and mods folders, etc."));
@@ -216,14 +217,14 @@ void GhostshipMenu::AddMenuSettings() {
 #ifndef __SWITCH__
     AddWidget(path, "Toggle Fullscreen", WIDGET_BUTTON)
         .RaceDisable(false)
-        .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
+        .Callback([](WidgetInfo& info) { ShipCompat::GetWindow()->ToggleFullscreen(); })
         .Options(ButtonOptions().Tooltip("Toggles Fullscreen On/Off."));
 #endif
     AddWidget(path, "Internal Resolution", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_INTERNAL_RESOLUTION)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(
+            ShipCompat::GetWindow()->SetResolutionMultiplier(
                 CVarGetFloat(CVAR_INTERNAL_RESOLUTION, 1));
         })
         .PreFunc([](WidgetInfo& info) {
@@ -248,7 +249,7 @@ void GhostshipMenu::AddMenuSettings() {
         .CVar(CVAR_MSAA_VALUE)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1));
+            ShipCompat::GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1));
         })
         .Options(
             IntSliderOptions()
@@ -364,9 +365,9 @@ void GhostshipMenu::AddMenuSettings() {
                 "This will completely erase the controls config, including registered devices.\nContinue?", "Clear",
                 "Cancel",
                 []() {
-                    Ship::Context::GetInstance()->GetConsoleVariables()->ClearBlock(CVAR_PREFIX_SETTING ".Controllers");
+                    ShipCompat::GetConsoleVariables()->ClearBlock(CVAR_PREFIX_SETTING ".Controllers");
                     uint8_t bits = 0;
-                    Ship::Context::GetInstance()->GetControlDeck()->Init(&bits);
+                    ShipCompat::GetControlDeck()->Init(&bits);
                 },
                 nullptr);
         })
@@ -403,7 +404,7 @@ void GhostshipMenu::AddMenuSettings() {
         .Callback([](WidgetInfo& info) {
             CVarSetInteger(CVAR_TOUCH("Enabled"), 1);
             CVarSetInteger(CVAR_TOUCH("EditMode"), 1);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetMenu()->Hide();
+            ShipCompat::GetWindow()->GetGui()->GetMenu()->Hide();
         });
 
     // Input Viewer

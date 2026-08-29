@@ -1,4 +1,5 @@
 #include "SaveEditor.h"
+#include "port/ShipCompat.h"
 #include "UIWidgets.hpp"
 #include "port/ui/Notification.h"
 #include "port/ShipUtils.h"
@@ -134,7 +135,7 @@ void HandlePopUpContext(RandoCheckId randoCheckId) {
         for (auto& [randoItemId, textureId] : objectMap) {
             if (ImGui::ImageButton(
                     std::to_string(randoItemId).c_str(),
-                    std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                    std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
                         ->GetTextureByName(textureId),
                     ImVec2(32.0f, 32.0f))) {
                 // randoStaticCheck.randoItemId = randoItemId;
@@ -157,7 +158,7 @@ void HandlePopUpContext(RandoCheckId randoCheckId) {
         for (int i = 0; i < RA_ACT_MAX; i++) {
             if (ImGui::ImageButton(
                     std::to_string(i).c_str(),
-                    std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                    std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
                         ->GetTextureByName(digitList[i + 1]),
                     ImVec2(32.0f, 32.0f))) {
                 auto findIt =
@@ -374,7 +375,7 @@ void SaveEditorWindow::DrawElement() {
                                     ImGui::TableNextColumn();
                                     if (ImGui::ImageButton(randoStaticCheck.name,
                                                            std::static_pointer_cast<Fast::Fast3dGui>(
-                                                               Ship::Context::GetInstance()->GetWindow()->GetGui())
+                                                               ShipCompat::GetWindow()->GetGui())
                                                                ->GetTextureByName(texture),
                                                            ImVec2(32.0f, 32.0f))) {
                                         popUpId = randoStaticCheck.randoCheckId;
@@ -387,7 +388,7 @@ void SaveEditorWindow::DrawElement() {
                                     if (entry.randoItemId == RI_STAR) {
                                         if (ImGui::ImageButton(std::to_string(entry.randoAct).c_str(),
                                                                std::static_pointer_cast<Fast::Fast3dGui>(
-                                                                   Ship::Context::GetInstance()->GetWindow()->GetGui())
+                                                                   ShipCompat::GetWindow()->GetGui())
                                                                    ->GetTextureByName(digitList[entry.randoAct + 1]),
                                                                ImVec2(32.0f, 32.0f))) {
                                             popUpId = randoStaticCheck.randoCheckId;

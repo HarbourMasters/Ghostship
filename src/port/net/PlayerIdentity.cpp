@@ -1,5 +1,6 @@
 #ifdef USE_NETWORKING
 #include "PlayerIdentity.h"
+#include "port/ShipCompat.h"
 
 #include "ship/Context.h"
 #include "ship/config/Config.h"
@@ -47,7 +48,7 @@ static void EnsureInitialized() {
         return;
     }
 
-    auto config = Ship::Context::GetInstance()->GetConfig();
+    auto config = ShipCompat::GetConfig();
     std::string stored = config->GetString("Satella.PlayerSeed");
 
     uint8_t seed[32] = {};

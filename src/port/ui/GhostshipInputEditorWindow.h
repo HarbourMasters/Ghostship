@@ -39,7 +39,7 @@ class GhostshipInputEditorWindow : public Ship::GuiWindow {
     void DrawPortTabContents(uint8_t portIndex);
 
   protected:
-    void InitElement() override;
+    void OnInit(const nlohmann::json& initArgs = nlohmann::json::object()) override;
     void DrawElement() override;
     void UpdateElement() override;
 

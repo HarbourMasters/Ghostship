@@ -1,4 +1,5 @@
 #include "Rando.h"
+#include "port/ShipCompat.h"
 #include <ship/Context.h>
 #include "ObjectBehavior/ObjectBehavior.h"
 #include "MiscBehavior/MiscBehavior.h"
@@ -25,7 +26,7 @@ void Rando::Init() {
     Rando::ObjectBehavior::Init();
     Rando::CheckTracker::Init();
     Rando::EntranceTracker::Init();
-    // Ship::Context::GetInstance()->GetFileDropMgr()->RegisterDropHandler(Rando::Spoiler::HandleFileDropped);
+    // ShipCompat::GetFileDropMgr()->RegisterDropHandler(Rando::Spoiler::HandleFileDropped);
 }
 
 // RandoCheckId Rando::FindItemPlacement(RandoItemId randoItemId) {

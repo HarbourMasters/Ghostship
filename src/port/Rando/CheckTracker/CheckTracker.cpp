@@ -1,4 +1,6 @@
 #include "CheckTracker.h"
+#include <ship/window/gui/IconsFontAwesome4.h>
+#include "port/ShipCompat.h"
 #include "port/Rando/Logic/Logic.h"
 #include "port/ShipUtils.h"
 #include "port/ui/UIWidgets.hpp"
@@ -125,7 +127,7 @@ void DrawCheckTrackerList() {
                                           : randoSaveCheck.randoItemId == RI_COIN_RED ? "Red Coin Icon"
                                                                                       : "Blue Coin Icon";
                     ImTextureID textureId =
-                        std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
+                        std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
                             ->GetTextureByName(texture);
 
                     ImGui::BeginGroup();
@@ -285,7 +287,7 @@ void SettingsWindow::DrawElement() {
             ImGui::SameLine();
             if (UIWidgets::Button(ICON_FA_REFRESH, { .size = ImVec2(32.0f, 32.0f), .color = WIDGET_COLOR })) {
                 CVarSetColor(cvarText.c_str(), color);
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+                ShipCompat::GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
             ImGui::SameLine();
             ImGui::Text("%s", colorText.c_str());

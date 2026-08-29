@@ -1,4 +1,5 @@
 #include "TouchControls.h"
+#include "port/ShipCompat.h"
 
 #include <SDL2/SDL.h>
 #include <imgui.h>
@@ -460,13 +461,13 @@ extern "C" void TouchControls_ApplyPad(void* pads) {
         return;
     }
 
-    const auto context = Ship::Context::GetInstance();
-    if (context == nullptr || context->GetWindow() == nullptr || context->GetWindow()->GetGui() == nullptr) {
+    const auto window = ShipCompat::GetWindow();
+    if (window == nullptr || window->GetGui() == nullptr) {
         sStickFinger = -1;
         return;
     }
 
-    const auto gui = context->GetWindow()->GetGui();
+    const auto gui = window->GetGui();
     const auto menu = gui->GetMenu();
     sState.menuOpen = menu != nullptr && menu->IsVisible();
     sState.active = true;
@@ -562,8 +563,8 @@ extern "C" void TouchControls_ApplyPad(void* pads) {
                                  sState.stickAnchor.y + dy * sState.stickTravel * std::min(len, 1.0f));
     }
 
-    if (pads == nullptr || context->GetControlDeck() == nullptr ||
-        context->GetControlDeck()->GamepadGameInputBlocked()) {
+    if (pads == nullptr || ShipCompat::GetControlDeck() == nullptr ||
+        ShipCompat::GetControlDeck()->GamepadGameInputBlocked()) {
         return;
     }
 
@@ -577,7 +578,8 @@ extern "C" void TouchControls_ApplyPad(void* pads) {
 
 namespace GhostshipGui {
 
-void TouchControlsOverlay::InitElement() {
+void TouchControlsOverlay::OnInit(const nlohmann::json& initArgs) {
+    Ship::GuiWindow::OnInit(initArgs);
     RegisterCVars();
 }
 
@@ -588,7 +590,7 @@ void TouchControlsOverlay::Draw() {
 
     const float opacity = std::clamp(CVarGetFloat(CVAR_TOUCH("Opacity"), 0.8f), 0.1f, 1.0f);
     ImDrawList* drawList = ImGui::GetForegroundDrawList();
-    const auto gui = std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui());
+    const auto gui = std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui());
 
     // Registry names shared with InputViewer; retry while archives settle.
     static int textureAttempts = 120;

@@ -7,7 +7,7 @@ class ObjectViewer : public Ship::GuiWindow {
     using GuiWindow::GuiWindow;
     virtual ~ObjectViewer() = default;
 
-    void InitElement() override;
+    void OnInit(const nlohmann::json& initArgs = nlohmann::json::object()) override;
     void UpdateElement() override;
     void DrawElement() override;
 };

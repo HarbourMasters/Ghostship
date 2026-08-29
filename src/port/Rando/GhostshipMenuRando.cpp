@@ -1,4 +1,5 @@
 #include "port/ui/GhostshipMenu.h"
+#include <ship/window/gui/IconsFontAwesome4.h>
 #include "port/Rando/CheckTracker/CheckTracker.h"
 #include "port/Rando/EntranceTracker/EntranceTracker.h"
 #include "port/Rando/Spoiler/Spoiler.h"

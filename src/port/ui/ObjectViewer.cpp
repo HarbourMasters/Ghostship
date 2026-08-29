@@ -23,7 +23,8 @@ const char* ObjectListNames[] = { "Mario",     "Unused 1", "Destructive", "Unuse
                                   "Pushable",  "Level",    "Unused 7",    "Default",  "Surface",
                                   "Pole-like", "Spawner",  "Unimportant" };
 
-void ObjectViewer::InitElement() {
+void ObjectViewer::OnInit(const nlohmann::json& initArgs) {
+    Ship::GuiWindow::OnInit(initArgs);
 #ifdef _WIN32
     HANDLE hProcess = GetCurrentProcess();
     SymSetOptions(SYMOPT_NO_IMAGE_SEARCH | SYMOPT_IGNORE_IMAGEDIR);

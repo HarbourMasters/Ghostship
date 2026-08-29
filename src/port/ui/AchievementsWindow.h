@@ -8,7 +8,7 @@ class AchievementsWindow : public Ship::GuiWindow {
     virtual ~AchievementsWindow() = default;
 
   protected:
-    void InitElement() override;
+    void OnInit(const nlohmann::json& initArgs = nlohmann::json::object()) override;
     void DrawElement() override;
     void UpdateElement() override;
 };

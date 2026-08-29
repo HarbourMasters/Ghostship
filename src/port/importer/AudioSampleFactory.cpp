@@ -2,6 +2,7 @@
 #define DR_WAV_IMPLEMENTATION
 #define DR_FLAC_IMPLEMENTATION
 #include "AudioSampleFactory.h"
+#include "port/ShipCompat.h"
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -244,7 +245,7 @@ SM64::AudioSampleXMLFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     }
 
     if (customFormat != nullptr && path != nullptr) {
-        auto audioFile = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->LoadFile(path);
+        auto audioFile = ShipCompat::GetResourceManager()->GetArchiveManager()->LoadFile(path);
         if (!audioFile || !audioFile->Buffer) {
             SPDLOG_ERROR("AudioSampleFactory: could not load '{}'", path);
             return nullptr;
@@ -346,7 +347,7 @@ SM64::AudioSampleXMLFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     }
 
     if (path != nullptr) {
-        auto audioFile = Ship::Context::GetInstance()->GetResourceManager()->GetArchiveManager()->LoadFile(path);
+        auto audioFile = ShipCompat::GetResourceManager()->GetArchiveManager()->LoadFile(path);
         if (audioFile && audioFile->Buffer) {
             uint32_t size = (uint32_t)audioFile->Buffer->size();
             char* data = new char[ROUND_UP_8(size)];
