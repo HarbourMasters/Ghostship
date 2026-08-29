@@ -103,8 +103,7 @@ void GhostshipMenu::AddMenuSettings() {
         .CVar(CVAR_SETTING("CursorVisibility"))
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
-            ShipCompat::GetWindow()->SetForceCursorVisibility(
-                CVarGetInteger(CVAR_SETTING("CursorVisibility"), 0));
+            ShipCompat::GetWindow()->SetForceCursorVisibility(CVarGetInteger(CVAR_SETTING("CursorVisibility"), 0));
         })
         .Options(CheckboxOptions().Tooltip("Makes the cursor always visible, even in full screen."));
 #endif
@@ -224,8 +223,7 @@ void GhostshipMenu::AddMenuSettings() {
         .CVar(CVAR_INTERNAL_RESOLUTION)
         .RaceDisable(false)
         .Callback([](WidgetInfo& info) {
-            ShipCompat::GetWindow()->SetResolutionMultiplier(
-                CVarGetFloat(CVAR_INTERNAL_RESOLUTION, 1));
+            ShipCompat::GetWindow()->SetResolutionMultiplier(CVarGetFloat(CVAR_INTERNAL_RESOLUTION, 1));
         })
         .PreFunc([](WidgetInfo& info) {
             if (mGhostshipMenu->disabledMap.at(DISABLE_FOR_ADVANCED_RESOLUTION_ON).active &&
@@ -248,9 +246,7 @@ void GhostshipMenu::AddMenuSettings() {
     AddWidget(path, "Anti-aliasing (MSAA)", WIDGET_CVAR_SLIDER_INT)
         .CVar(CVAR_MSAA_VALUE)
         .RaceDisable(false)
-        .Callback([](WidgetInfo& info) {
-            ShipCompat::GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1));
-        })
+        .Callback([](WidgetInfo& info) { ShipCompat::GetWindow()->SetMsaaLevel(CVarGetInteger(CVAR_MSAA_VALUE, 1)); })
         .Options(
             IntSliderOptions()
                 .Tooltip("Activates MSAA (multi-sample anti-aliasing) from 2x up to 8x, to smooth the edges of "

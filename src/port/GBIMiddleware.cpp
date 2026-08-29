@@ -11,8 +11,7 @@ std::unordered_map<std::string, std::unordered_map<std::string, std::vector<GfxP
 // Attention! This is primarily for cosmetics & bug fixes. For things like mods and model replacement you should be
 // using OTRs instead (When that is available). Index can be found using the commented out section below.
 extern "C" void ResourceMgr_PatchGfxByName(const char* path, const char* patchName, GfxPatch* patches, int patchCount) {
-    auto res = std::static_pointer_cast<Fast::DisplayList>(
-        ShipCompat::GetResourceManager()->LoadResource(path));
+    auto res = std::static_pointer_cast<Fast::DisplayList>(ShipCompat::GetResourceManager()->LoadResource(path));
 
     // Leaving this here for people attempting to find the correct Dlist index to patch
     /*SPDLOG_INFO("Patching DList: {}", path);

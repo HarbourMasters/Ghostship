@@ -179,13 +179,13 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     Ship::Switch::Init(Ship::PreInitPhase);
 #endif
 
-    auto logger = std::make_shared<Ship::Logger>(
-        "Ghostship", Ship::Context::GetPathRelativeToAppDirectory("logs/Ghostship.log"));
+    auto logger =
+        std::make_shared<Ship::Logger>("Ghostship", Ship::Context::GetPathRelativeToAppDirectory("logs/Ghostship.log"));
     context->GetChildren().Add(logger);
     logger->Init();
 
-    auto config = std::make_shared<Ship::Config>(Ship::Context::GetPathRelativeToAppDirectory("ghostship.cfg.json"),
-                                                 nullptr);
+    auto config =
+        std::make_shared<Ship::Config>(Ship::Context::GetPathRelativeToAppDirectory("ghostship.cfg.json"), nullptr);
     context->GetChildren().Add(config);
 
     auto consoleVariables = std::make_shared<Ship::ConsoleVariable>(config);
@@ -231,9 +231,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         rmArgs["archivePaths"] = std::vector<std::string>{ assets_path };
         rmArgs["validHashes"] = std::vector<uint32_t>{};
         resourceManager->Init(rmArgs);
-    } catch (const std::exception& e) {
-        SPDLOG_WARN("ResourceManager init deferred: {}", e.what());
-    }
+    } catch (const std::exception& e) { SPDLOG_WARN("ResourceManager init deferred: {}", e.what()); }
 
     auto console = std::make_shared<Ship::Console>();
     context->GetChildren().Add(console);
@@ -400,9 +398,9 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         tccBase + "/include/sys", tccBase + "/include/sec_api",
     };
     const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, codeVersion, "-g -rdynamic", includePaths,
-                                                             libraryPaths, std::vector<std::string>{ "Ghostship" },
-                                                             ShipCompat::GetResourceManager());
+    auto scriptLoader =
+        std::make_shared<Ship::ScriptLoader>(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths,
+                                             std::vector<std::string>{ "Ghostship" }, ShipCompat::GetResourceManager());
     context->GetChildren().Add(scriptLoader);
     ScriptSetLoader(scriptLoader);
 #else
@@ -482,22 +480,19 @@ void GameEngine::LoadResourceFiles() {
             for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
                 const auto ext = p.path().extension().string();
                 if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
-                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(
-                        p.path().generic_string());
+                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
                 }
 
                 if (StringHelper::IEquals(ext, ".zip")) {
                     SPDLOG_WARN("Zip files should be only used for development purposes, not for distribution");
-                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(
-                        p.path().generic_string());
+                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
                 }
             }
 
             for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
                 if (p.is_directory()) {
                     SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
-                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(
-                        p.path().generic_string());
+                    ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
                 }
             }
         }
@@ -1306,8 +1301,7 @@ void GameEngine::StartFrame() const {
 uint32_t GameEngine::GetInterpolationFPS() {
     if (CVarGetInteger(CVAR_SETTING("MatchRefreshRate"), 0)) {
         return ShipCompat::GetWindow()->GetCurrentRefreshRate();
-    } else if (CVarGetInteger(CVAR_VSYNC_ENABLED, 1) ||
-               !ShipCompat::GetWindow()->CanDisableVerticalSync()) {
+    } else if (CVarGetInteger(CVAR_VSYNC_ENABLED, 1) || !ShipCompat::GetWindow()->CanDisableVerticalSync()) {
         return std::min<uint32_t>(ShipCompat::GetWindow()->GetCurrentRefreshRate(),
                                   CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
     }
@@ -1547,10 +1541,7 @@ extern "C" uint32_t GameEngine_GetSamplesPerFrame() {
 // End
 
 Fast::Interpreter* GameEngine_GetInterpreter() {
-    return static_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow())
-        ->GetInterpreterWeak()
-        .lock()
-        .get();
+    return static_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow())->GetInterpreterWeak().lock().get();
 }
 
 extern "C" float GameEngine_GetAspectRatio() {

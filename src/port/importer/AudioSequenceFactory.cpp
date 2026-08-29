@@ -542,8 +542,7 @@ SM64::AudioSequenceXMLFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     // == Standard M64 + banks XML ==============================================
     std::shared_ptr<AudioSequence> seq = std::make_shared<AudioSequence>(initData);
 
-    auto m64File =
-        ShipCompat::GetResourceManager()->GetArchiveManager()->LoadFile(child->Attribute("Path"));
+    auto m64File = ShipCompat::GetResourceManager()->GetArchiveManager()->LoadFile(child->Attribute("Path"));
 
     tinyxml2::XMLElement* banksRoot = child->FirstChildElement("Banks");
     tinyxml2::XMLElement* banks = banksRoot->FirstChildElement();

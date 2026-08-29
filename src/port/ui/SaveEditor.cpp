@@ -133,11 +133,10 @@ void RandoSaveFile() {
 void HandlePopUpContext(RandoCheckId randoCheckId) {
     if (shouldPopUpOpen && ImGui::BeginPopup("ObjectSubMenu")) {
         for (auto& [randoItemId, textureId] : objectMap) {
-            if (ImGui::ImageButton(
-                    std::to_string(randoItemId).c_str(),
-                    std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
-                        ->GetTextureByName(textureId),
-                    ImVec2(32.0f, 32.0f))) {
+            if (ImGui::ImageButton(std::to_string(randoItemId).c_str(),
+                                   std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
+                                       ->GetTextureByName(textureId),
+                                   ImVec2(32.0f, 32.0f))) {
                 // randoStaticCheck.randoItemId = randoItemId;
                 auto findIt =
                     std::find_if(Rando::Logic::shuffledPool.begin(), Rando::Logic::shuffledPool.end(),
@@ -156,11 +155,10 @@ void HandlePopUpContext(RandoCheckId randoCheckId) {
     }
     if (shouldPopUpOpen && ImGui::BeginPopup("ActSubMenu")) {
         for (int i = 0; i < RA_ACT_MAX; i++) {
-            if (ImGui::ImageButton(
-                    std::to_string(i).c_str(),
-                    std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
-                        ->GetTextureByName(digitList[i + 1]),
-                    ImVec2(32.0f, 32.0f))) {
+            if (ImGui::ImageButton(std::to_string(i).c_str(),
+                                   std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
+                                       ->GetTextureByName(digitList[i + 1]),
+                                   ImVec2(32.0f, 32.0f))) {
                 auto findIt =
                     std::find_if(Rando::Logic::shuffledPool.begin(), Rando::Logic::shuffledPool.end(),
                                  [&](const LevelShuffleEntry& entry) { return entry.randoCheckId == randoCheckId; });
@@ -373,11 +371,11 @@ void SaveEditorWindow::DrawElement() {
                                                        "%s", Rando::StaticData::Checks[entry.randoCheckId].name);
 
                                     ImGui::TableNextColumn();
-                                    if (ImGui::ImageButton(randoStaticCheck.name,
-                                                           std::static_pointer_cast<Fast::Fast3dGui>(
-                                                               ShipCompat::GetWindow()->GetGui())
-                                                               ->GetTextureByName(texture),
-                                                           ImVec2(32.0f, 32.0f))) {
+                                    if (ImGui::ImageButton(
+                                            randoStaticCheck.name,
+                                            std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
+                                                ->GetTextureByName(texture),
+                                            ImVec2(32.0f, 32.0f))) {
                                         popUpId = randoStaticCheck.randoCheckId;
                                         shouldPopUpOpen = true;
                                         ImGui::OpenPopup("ObjectSubMenu");

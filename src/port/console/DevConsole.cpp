@@ -9,13 +9,11 @@
 
 #define CMD_REGISTER ShipCompat::GetConsole()->AddCommand
 // TODO: Commands should be using the output passed in.
-#define ERROR_MESSAGE                                                                 \
-    std::reinterpret_pointer_cast<Ship::ConsoleWindow>(                               \
-        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console")) \
+#define ERROR_MESSAGE                                                                                              \
+    std::reinterpret_pointer_cast<Ship::ConsoleWindow>(ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console")) \
         ->SendErrorMessage
-#define INFO_MESSAGE                                                                  \
-    std::reinterpret_pointer_cast<Ship::ConsoleWindow>(                               \
-        ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console")) \
+#define INFO_MESSAGE                                                                                               \
+    std::reinterpret_pointer_cast<Ship::ConsoleWindow>(ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console")) \
         ->SendInfoMessage
 
 extern "C" {

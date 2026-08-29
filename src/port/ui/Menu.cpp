@@ -359,10 +359,9 @@ void Menu::MenuDrawItem(WidgetInfo& widget, uint32_t width, UIWidgets::Colors me
                 options.disabledTooltip = "Only one renderer API is available on this platform.";
                 if (UIWidgets::Combobox("Renderer API (Needs reload)", &configWindowBackend, availableWindowBackendsMap,
                                         options)) {
-                    ShipCompat::GetConfig()->SetInt("Window.Backend.Id",
-                                                                      (int32_t)(configWindowBackend));
+                    ShipCompat::GetConfig()->SetInt("Window.Backend.Id", (int32_t)(configWindowBackend));
                     ShipCompat::GetConfig()->SetString("Window.Backend.Name",
-                                                                         windowBackendsMap.at(configWindowBackend));
+                                                       windowBackendsMap.at(configWindowBackend));
                     ShipCompat::GetConfig()->Save();
                     UpdateWindowBackendObjects();
                 }
@@ -760,8 +759,7 @@ void Menu::DrawElement() {
         GhostshipGui::mModalWindow->RegisterPopup(
             "Quit Ghostship", "Are you sure you want to quit Ghostship?", "Quit", "Cancel",
             []() {
-                std::shared_ptr<Menu> menu =
-                    static_pointer_cast<Menu>(ShipCompat::GetWindow()->GetGui()->GetMenu());
+                std::shared_ptr<Menu> menu = static_pointer_cast<Menu>(ShipCompat::GetWindow()->GetGui()->GetMenu());
                 if (!menu->IsMenuPopped()) {
                     menu->ToggleVisibility();
                 }
@@ -784,8 +782,7 @@ void Menu::DrawElement() {
 #endif
         ;
     if (UIWidgets::Button(ICON_FA_UNDO, options2)) {
-        std::reinterpret_pointer_cast<Ship::ConsoleWindow>(
-            ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console"))
+        std::reinterpret_pointer_cast<Ship::ConsoleWindow>(ShipCompat::GetWindow()->GetGui()->GetGuiWindow("Console"))
             ->Dispatch("reset");
     }
     ImGui::SameLine();

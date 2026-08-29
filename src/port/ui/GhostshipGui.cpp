@@ -100,10 +100,10 @@ void SetupGuiElements() {
     mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(CVAR_WINDOW("EventDebugger"), "Event Debugger");
     gui->AddGuiWindow(mEventDebuggerWindow);
 
-    mGfxDebuggerWindow = std::make_shared<LUS::GfxDebuggerWindow>(
-        CVAR_WINDOW("GfxDebugger"), "Gfx Debugger",
-        std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow()), ShipCompat::GetGfxDebugger(),
-        ShipCompat::GetResourceManager());
+    mGfxDebuggerWindow =
+        std::make_shared<LUS::GfxDebuggerWindow>(CVAR_WINDOW("GfxDebugger"), "Gfx Debugger",
+                                                 std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow()),
+                                                 ShipCompat::GetGfxDebugger(), ShipCompat::GetResourceManager());
     gui->AddGuiWindow(mGfxDebuggerWindow);
 
     mObjectViewer = std::make_shared<ObjectViewer>(CVAR_WINDOW("ObjectViewer"), "Object Viewer##Dev", ImVec2(820, 630));
