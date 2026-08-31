@@ -156,10 +156,21 @@ Gfx *intro_backdrop_one_image(s32 index, s8 *backgroundTable) {
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
     Gfx *displayList = alloc_display_list(36 * sizeof(*displayList));
     Gfx *displayListIter = displayList;
-    const u8 *const *vIntroBgTable = segmented_to_virtual(textureTables[backgroundTable[0]]);
+    s32 col = index % num_tiles_h;
+    s32 row = index / num_tiles_h;
+
+    // Map the on-screen tile back onto the original 4x3 grid so each tile reads
+    // its own table entry; extra widescreen columns reuse the nearest edge tile.
+    s32 logicalCol = (s32)((col * 80 + 40 + xOffset) / 80);
+    if (logicalCol < 0) {
+        logicalCol = 0;
+    } else if (logicalCol > 3) {
+        logicalCol = 3;
+    }
+    const u8 *const *vIntroBgTable = segmented_to_virtual(textureTables[backgroundTable[(2 - row) * 4 + logicalCol]]);
     s32 i;
 
-    guTranslate(mtx, ((index % num_tiles_h) * 80) + xOffset, (index/num_tiles_h) * 80, 0.0f);
+    guTranslate(mtx, (col * 80) + xOffset, row * 80, 0.0f);
     gSPMatrix(displayListIter++, mtx, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_PUSH);
     gSPDisplayList(displayListIter++, title_screen_bg_dl_0A000118);
     for (i = 0; i < 4; ++i) {
@@ -227,13 +238,15 @@ Gfx *geo_intro_gameover_backdrop(s32 state, struct GraphNode *node, UNUSED void 
     s32 j;
     s32 i;
 
+    s32 num_tiles_h = (s32)((GFX_DIMENSIONS_ASPECT_RATIO * SCREEN_HEIGHT + 80 ) / 80) * 3;
+
     if (state != 1) {  // reset
         sGameOverFrameCounter = 0;
         sGameOverTableIndex = -2;
         for (i = 0; i < ARRAY_COUNT(gameOverBackgroundTable); ++i)
             gameOverBackgroundTable[i] = INTRO_BACKGROUND_GAME_OVER;
     } else {  // draw
-        dl = alloc_display_list(16 * sizeof(*dl));
+        dl = alloc_display_list((num_tiles_h + 4) * sizeof(*dl));
         dlIter = dl;
         if (sGameOverTableIndex == -2) {
             if (sGameOverFrameCounter == 180) {
@@ -259,7 +272,7 @@ Gfx *geo_intro_gameover_backdrop(s32 state, struct GraphNode *node, UNUSED void 
         // draw all the tiles
         gSPDisplayList(dlIter++, dl_proj_mtx_fullscreen);
         gSPDisplayList(dlIter++, title_screen_bg_dl_0A000100);
-        for (j = 0; j < ARRAY_COUNT(gameOverBackgroundTable); ++j)
+        for (j = 0; j < num_tiles_h; ++j)
             gSPDisplayList(dlIter++, intro_backdrop_one_image(j, gameOverBackgroundTable));
         gSPDisplayList(dlIter++, title_screen_bg_dl_0A000190);
         gSPEndDisplayList(dlIter);
