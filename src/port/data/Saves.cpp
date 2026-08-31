@@ -48,6 +48,18 @@ bool ShouldLoadOldSaveFile(void) {
     return fs::exists(Ship::Context::GetPathRelativeToAppDirectory("default.sav"));
 }
 
+// save_file_reload() (the game-over path) restores each save from its in-memory
+// backup slot [1], but this loader only fills slot [0], leaving the backups
+// zeroed. A game over then copies zeros over the live save, which shows as a
+// wiped file until restart and becomes permanent once anything saves. Mirror
+// the loaded data into the backup slots so reload restores what was loaded.
+static void MirrorSavesToBackupSlots(void) {
+    for (int32_t fileIndex = 0; fileIndex < NUM_SAVE_FILES; fileIndex++) {
+        gSaveBuffer.files[fileIndex][1] = gSaveBuffer.files[fileIndex][0];
+    }
+    gSaveBuffer.menuData[1] = gSaveBuffer.menuData[0];
+}
+
 void SaveFileLoadAll(void) {
     auto oldSave = Ship::Context::GetPathRelativeToAppDirectory("default.sav");
     if (fs::exists(oldSave)) {
@@ -56,6 +68,7 @@ void SaveFileLoadAll(void) {
         }
         // Move old save files to backup
         fs::rename(oldSave, Ship::Context::GetPathRelativeToAppDirectory("default.sav.bak"));
+        MirrorSavesToBackupSlots();
         return;
     }
 
@@ -94,6 +107,8 @@ void SaveFileLoadAll(void) {
             file.close();
         }
     }
+
+    MirrorSavesToBackupSlots();
 }
 
 void SaveMainMenuData(void) {
