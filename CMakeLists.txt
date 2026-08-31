@@ -685,6 +685,11 @@ if(USE_NETWORKING AND NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT CM
             execute_process(COMMAND ${BREW_EXECUTABLE} --prefix mbedtls@3
                             OUTPUT_VARIABLE MBEDTLS3_PREFIX OUTPUT_STRIP_TRAILING_WHITESPACE
                             ERROR_QUIET)
+            # brew --prefix answers even when the formula isn't installed (e.g. runners that
+            # get mbedtls from MacPorts instead), so only trust a prefix that really exists.
+            if (NOT EXISTS "${MBEDTLS3_PREFIX}/lib")
+                set(MBEDTLS3_PREFIX "")
+            endif()
             if (MBEDTLS3_PREFIX)
                 list(APPEND CMAKE_PREFIX_PATH "${MBEDTLS3_PREFIX}")
             endif()
@@ -698,11 +703,19 @@ if(USE_NETWORKING AND NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT CM
     )
     # ixwebsocket links MbedTLS PRIVATE on a static lib, so the symbols don't propagate to this target;
     # PlayerIdentity.cpp uses mbedtls directly, so find and link it (and its headers) explicitly.
-    if (APPLE AND MBEDTLS3_PREFIX)
-        find_library(MBEDTLS_LIB     mbedtls     PATHS "${MBEDTLS3_PREFIX}/lib" NO_DEFAULT_PATH)
-        find_library(MBEDX509_LIB    mbedx509    PATHS "${MBEDTLS3_PREFIX}/lib" NO_DEFAULT_PATH)
-        find_library(MBEDCRYPTO_LIB  mbedcrypto  PATHS "${MBEDTLS3_PREFIX}/lib" NO_DEFAULT_PATH)
-        target_include_directories(${PROJECT_NAME} PRIVATE "${MBEDTLS3_PREFIX}/include")
+    # Anchor the search on ctr_drbg.h (present in 2.x/3.x, gone in 4.x) so the libraries always
+    # come from the same install as the headers: Homebrew's mbedtls@3 keg when present, otherwise
+    # the default search paths (which cover MacPorts' /opt/local used by CI).
+    if (APPLE)
+        find_path(MBEDTLS_INCLUDE_DIR NAMES mbedtls/ctr_drbg.h HINTS "${MBEDTLS3_PREFIX}/include")
+        if (NOT MBEDTLS_INCLUDE_DIR)
+            message(FATAL_ERROR "mbedtls 2.x/3.x headers not found; install Homebrew's mbedtls@3 or MacPorts' mbedtls.")
+        endif()
+        get_filename_component(MBEDTLS_ROOT "${MBEDTLS_INCLUDE_DIR}" DIRECTORY)
+        find_library(MBEDTLS_LIB     mbedtls     PATHS "${MBEDTLS_ROOT}/lib" NO_DEFAULT_PATH)
+        find_library(MBEDX509_LIB    mbedx509    PATHS "${MBEDTLS_ROOT}/lib" NO_DEFAULT_PATH)
+        find_library(MBEDCRYPTO_LIB  mbedcrypto  PATHS "${MBEDTLS_ROOT}/lib" NO_DEFAULT_PATH)
+        target_include_directories(${PROJECT_NAME} PRIVATE "${MBEDTLS_INCLUDE_DIR}")
         target_link_libraries(${PROJECT_NAME} PRIVATE ${MBEDTLS_LIB} ${MBEDX509_LIB} ${MBEDCRYPTO_LIB})
     endif()
 endif()
