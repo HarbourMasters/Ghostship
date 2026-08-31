@@ -172,13 +172,21 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
 
 static ix::SocketTLSOptions BuildTLSOptions() {
     ix::SocketTLSOptions opts;
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
+    // ixwebsocket's mbedtls backend has no system certificate store outside
+    // Windows, so point it at the platform's CA bundle file explicitly.
+#if defined(__APPLE__)
+    static constexpr const char* kCAPaths[] = {
+        "/etc/ssl/cert.pem",
+    };
+#else
     static constexpr const char* kCAPaths[] = {
         "/etc/ssl/certs/ca-certificates.crt",
         "/etc/pki/tls/certs/ca-bundle.crt",
         "/etc/ssl/ca-bundle.pem",
         "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem",
     };
+#endif
     for (const char* path : kCAPaths) {
         if (access(path, R_OK) == 0) {
             opts.caFile = path;
@@ -200,7 +208,7 @@ void Client::Connect(const std::string& url) {
 
     mUrl = url;
     mWs.setUrl(url + "/ws?v=" GHOSTSHIP_VERSION);
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
     mWs.setTLSOptions(BuildTLSOptions());
 #endif
     mWs.setOnMessageCallback([this](const ix::WebSocketMessagePtr& msg) { OnMessage(msg); });
