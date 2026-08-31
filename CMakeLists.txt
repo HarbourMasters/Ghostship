@@ -990,6 +990,20 @@ install(CODE "
     include(BundleUtilities)
     fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/../MacOS/Ghostship\" \"\" \"${dirs}\")
 ")
+# Homebrew's sdl2 is sdl2-compat, a shim that dlopens the real SDL3 at runtime;
+# fixup_bundle cannot follow a dlopen, so the app aborts at launch with
+# "Failed loading SDL3 library." unless SDL3 sits next to the shim in Frameworks
+# (sdl2-compat checks @loader_path). No-op when building against real SDL2.
+find_program(BREW_EXECUTABLE brew)
+if (BREW_EXECUTABLE)
+    execute_process(COMMAND ${BREW_EXECUTABLE} --prefix sdl3
+                    OUTPUT_VARIABLE SDL3_PREFIX OUTPUT_STRIP_TRAILING_WHITESPACE
+                    ERROR_QUIET)
+    if (SDL3_PREFIX AND EXISTS "${SDL3_PREFIX}/lib/libSDL3.0.dylib")
+        install(PROGRAMS "${SDL3_PREFIX}/lib/libSDL3.0.dylib"
+                DESTINATION ../Frameworks RENAME libSDL3.dylib COMPONENT Ghostship)
+    endif()
+endif()
 endif()
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL YES)
