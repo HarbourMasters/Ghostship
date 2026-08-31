@@ -975,7 +975,7 @@ add_custom_target(CreateOSXIcons
     COMMENT "Creating OSX icons ..."
     )
     add_dependencies(${PROJECT_NAME} CreateOSXIcons)
-    configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
+    configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" @ONLY)
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ../MacOS COMPONENT Ghostship)
 if(ENABLE_SCRIPTING)
     INSTALL(FILES "$<TARGET_FILE:libtcc>" DESTINATION ../MacOS COMPONENT Ghostship)
