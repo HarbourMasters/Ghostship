@@ -25,7 +25,7 @@ extern "C" void C_RegisterAchievement(const char* id, const C_AchievementDef* de
 }
 
 extern "C" void C_AchievementProgress(const char* id, int32_t amount) {
-    if (!id) {
+    if (!id || !Achievement_SystemActive()) {
         return;
     }
     Achievement_Progress(id, amount);
