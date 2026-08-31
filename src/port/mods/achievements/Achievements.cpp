@@ -238,6 +238,12 @@ void Achievement_LoadTexture(const std::string& id) {
         ->LoadTextureFromResource(std::string(achievement.icon) + ".locked", texture);
 }
 
+// A file's achievements flag marks it as participating in the achievement
+// system; the menu toggle must also be on for anything to track or pop.
+bool Achievement_SystemActive() {
+    return HAS_ACHIEVEMENTS(selectedFile) && CVarGetInteger(CVAR_ENHANCEMENT("Achievements"), 1) == 1;
+}
+
 void Achievements_Load(IEvent* event) {
     const OnGameFileLoad* ev = reinterpret_cast<OnGameFileLoad*>(event);
     selectedFile = ev->fileNum - 1;
@@ -302,7 +308,7 @@ void Achievements_Init() {
     REGISTER_LISTENER(OnGameFileSave, EVENT_PRIORITY_NORMAL, Achievements_Save);
 
     REGISTER_LISTENER(ItemCollected, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -430,7 +436,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(CapSwitchActivated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -452,7 +458,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(BossDefeated, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -493,7 +499,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(GameFrameUpdate, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -523,7 +529,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(MusicChanged, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -539,7 +545,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(BossBattleStarted, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -549,7 +555,7 @@ void Achievements_Init() {
 
     //! This isn't triggering for koopa fights, since the music doesn't mute
     REGISTER_LISTENER(BossBattleEnded, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -560,7 +566,7 @@ void Achievements_Init() {
     REGISTER_LISTENER(PlayerDeath, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const PlayerDeath* ev = reinterpret_cast<PlayerDeath*>(event);
 
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -607,7 +613,7 @@ void Achievements_Init() {
     REGISTER_LISTENER(PlayerSetAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         const PlayerSetAction* ev = reinterpret_cast<PlayerSetAction*>(event);
 
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -635,7 +641,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(ChainChompRelease, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
@@ -643,7 +649,7 @@ void Achievements_Init() {
     });
 
     REGISTER_LISTENER(GameEnded, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (!HAS_ACHIEVEMENTS(selectedFile)) {
+        if (!Achievement_SystemActive()) {
             return;
         }
 
