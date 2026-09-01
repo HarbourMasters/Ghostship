@@ -1452,7 +1452,7 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
 }
 
 uint32_t GameEngine::GetGameVersion() {
-    return ShipCompat::GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
+    return BSWAP32(ShipCompat::GetResourceManager()->GetArchiveManager()->GetGameVersions()[0]);
 }
 
 void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolationResult>& replacements) {
