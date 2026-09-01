@@ -5,11 +5,16 @@
 #include <cstdint>
 #include <optional>
 #include <atomic>
+#include <string>
 
 namespace fs = std::filesystem;
 
 class GameExtractor {
 public:
+    // Message from the most recent failed extraction (empty on success). Surfaced
+    // in the extraction-failure popup so the user sees the real cause.
+    static std::string sLastError;
+
     static bool GenAssetFile();
     std::optional<std::string> ValidateChecksum() const;
     bool RunStandalone(std::string rom);

@@ -21,6 +21,9 @@
 #include <unistd.h>
 #endif
 
+// Defined unconditionally (declared in the header for all platforms).
+std::string GameExtractor::sLastError;
+
 #ifndef __SWITCH__
 #include "Companion.h"
 
@@ -240,6 +243,7 @@ bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShort
     const std::string assets_path = Ship::Context::GetAppBundlePath();
     const std::string game_path = Ship::Context::GetAppDirectoryPath(appShortName);
 
+    sLastError.clear();
     Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path);
     Companion::Instance->SetProcess(false);
     try {
@@ -248,7 +252,8 @@ bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShort
         Companion::Instance->Process(totalAssets);
 #endif
     } catch (const std::exception& e) {
-        SPDLOG_INFO("Failed to process O2R {}", e.what());
+        sLastError = e.what();
+        SPDLOG_ERROR("Failed to process O2R: {}", e.what());
         return false;
     }
 

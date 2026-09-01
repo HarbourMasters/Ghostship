@@ -5,6 +5,7 @@
 #include "ui/GhostshipGui.hpp"
 #if !defined(__SWITCH__) && !defined(__WIIU__)
 #include "GameExtractor.h"
+#include "Companion.h"
 #endif
 #ifdef __EMSCRIPTEN__
 #include "port/web/WebUtils.h"
@@ -859,15 +860,27 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     std::string archive = "sm64.o2r";
                     if (std::filesystem::exists(Ship::Context::GetAppDirectoryPath("sm64") + "/" + archive)) {
                         std::string msg = "Archive for current ROM, " + archive + ", already exists.\nExtract again?";
-                        GhostshipGui::RegisterPopup("Confirm Re-extract", msg.c_str(), "Yes", "No", [&]() {
-                            extracting = true;
-                            threadPool->submit_task([&]() -> void {
-                                extract.Parse(totalExtract, "sm64");
-                                extract.GenerateOTR(extractCount, "sm64");
-                                extracting = false;
-                                extractCount = totalExtract = 0;
+                        GhostshipGui::RegisterPopup(
+                            "Confirm Re-extract", msg.c_str(), "Yes", "No",
+                            [&]() {
+                                extracting = true;
+                                threadPool->submit_task([&]() -> void {
+                                    extract.Parse(totalExtract, "sm64");
+                                    extract.GenerateOTR(extractCount, "sm64");
+                                    extracting = false;
+                                    extractCount = totalExtract = 0;
+                                    // Ghostship consumes a single sm64.o2r, so one archive is all we
+                                    // generate — stop here instead of looping over the remaining ROMs
+                                    // (which would just overwrite this o2r with another version).
+                                    args.clear();
+                                    extractStep = ES_VERIFY;
+                                });
+                            },
+                            // Declined re-extract: keep the existing o2r and stop, don't process more ROMs.
+                            [&]() {
+                                args.clear();
+                                extractStep = ES_VERIFY;
                             });
-                        });
                     } else {
                         extracting = true;
                         threadPool->submit_task([&]() -> void {
@@ -875,6 +888,9 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                             extract.GenerateOTR(extractCount, "sm64");
                             extracting = false;
                             extractCount = totalExtract = 0;
+                            // One sm64.o2r generated — done. Don't overwrite it with other ROM versions.
+                            args.clear();
+                            extractStep = ES_VERIFY;
                         });
                     }
                 } else {
@@ -985,14 +1001,35 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"));
 
                 if (!romO2RExists) {
-                    GhostshipGui::RegisterPopup("No ROM Archive",
-                                                "No ROM O2R file detected. Please generate a ROM O2R and relaunch.",
-                                                "OK", "", [&]() {
-                                                    threadPool = nullptr;
-                                                    gsFast3dWindow = nullptr;
-                                                    context = nullptr;
-                                                    exit(0);
-                                                });
+                    if (GhostshipGui::PopupsQueued() == 0) {
+                        std::string errorMsg;
+                        if (!GameExtractor::sLastError.empty()) {
+                            // Word-wrap the raw Torch error so the popup stays readable.
+                            std::string wrapped = GameExtractor::sLastError;
+                            const size_t wrapCol = 80;
+                            size_t pos = 0;
+                            while (pos + wrapCol < wrapped.size()) {
+                                size_t breakAt = wrapped.rfind(' ', pos + wrapCol);
+                                if (breakAt == std::string::npos || breakAt <= pos) {
+                                    breakAt = pos + wrapCol;
+                                }
+                                wrapped.insert(breakAt, "\n");
+                                pos = breakAt + 1;
+                            }
+                            errorMsg = "ROM extraction failed:\n\n" + wrapped +
+                                       "\n\nCheck the logs for full details.";
+                        } else {
+                            errorMsg = "No ROM O2R file detected.\nPlease generate a ROM O2R and relaunch.";
+                        }
+                        GhostshipGui::RegisterPopup("Extraction Error", errorMsg.c_str(), "OK", "", [&]() {
+                            threadPool = nullptr;
+                            gsFast3dWindow = nullptr;
+                            context = nullptr;
+                            exit(0);
+                        });
+                    }
+                    // Extraction didn't produce an o2r — do not fall through to compile.
+                    continue;
                 }
 
                 extractStep = GS_COMPILE;
@@ -1074,12 +1111,46 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                        ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
                                            ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
                                            ImGuiWindowFlags_NoSavedSettings)) {
-                float progress = (totalExtract > 0.0f ? (float)extractCount / (float)totalExtract : 0) * 100.0f;
+                float progress = (totalExtract > 0 ? (float)extractCount / (float)totalExtract : 0.0f) * 100.0f;
+                if (progress > 100.0f) {
+                    progress = 100.0f;
+                }
+                const bool counting = totalExtract > 0 && extractCount > 0;
+                const bool done = counting && roundf(progress) == 100.0f;
                 auto filename = std::filesystem::path(file).filename().string();
-                ImGui::Text("Extracting %s...%s", filename.c_str(),
-                            roundf(progress) == 100.0f ? " Done. Finishing up." : "");
-                std::string overlay = extractCount > 0 ? fmt::format("{:.0f}%", progress) : "Starting Up";
-                ImGui::ProgressBar(progress / 100.0f, ImVec2(600.0f, 50.0f), overlay.c_str());
+
+                // Status line
+                if (done) {
+                    ImGui::Text("Done! Finishing up...");
+                } else if (counting) {
+                    ImGui::Text("Extracting %s...", filename.c_str());
+                    // Live per-asset feedback (truncated to fit), like Lighthouse.
+                    if (Companion::Instance != nullptr && !Companion::Instance->GetCurrentAssetName().empty()) {
+                        std::string assetName = Companion::Instance->GetCurrentAssetName();
+                        const float maxWidth = 600.0f - ImGui::GetStyle().WindowPadding.x * 2.0f;
+                        if (ImGui::CalcTextSize(assetName.c_str()).x > maxWidth) {
+                            const std::string ellipsis = "...";
+                            const float ellipsisWidth = ImGui::CalcTextSize(ellipsis.c_str()).x;
+                            while (assetName.size() > 3 &&
+                                   ImGui::CalcTextSize(assetName.c_str()).x > maxWidth - ellipsisWidth) {
+                                assetName.pop_back();
+                            }
+                            assetName += ellipsis;
+                        }
+                        ImGui::TextDisabled("%s", assetName.c_str());
+                    } else {
+                        ImGui::TextDisabled(" ");
+                    }
+                } else {
+                    ImGui::Text("Reading %s...", filename.c_str());
+                    ImGui::TextDisabled("Please wait, this can take a moment.");
+                }
+
+                // Progress bar
+                std::string overlay =
+                    counting ? fmt::format("{:.0f}%", progress) : (std::string) "Reading ROM, please wait...";
+                ImGui::ProgressBar(counting ? progress / 100.0f : -1.0f * (float)ImGui::GetTime(),
+                                   ImVec2(600.0f, 50.0f), overlay.c_str());
                 ImGui::EndPopup();
             }
             ImGui::PopStyleColor(3);
