@@ -1457,7 +1457,11 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolation
 
     interpreter->mInterpolationIndex = 0;
     for (const auto& r : replacements) {
+#ifdef __SWITCH__ // Switch LUS Needs to be updated, so for now lets keep it simple
         wnd->DrawAndRunGraphicsCommands(Commands, r.mtx);
+#else
+        wnd->DrawAndRunGraphicsCommands(Commands, r.mtx, r.dl);
+#endif
         interpreter->mInterpolationIndex++;
     }
 
