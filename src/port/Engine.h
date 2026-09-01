@@ -39,6 +39,10 @@ class GameEngine {
 
     int totalScripts = 0;
 
+    // Empty when the last code-mod build succeeded; else the full compiler output.
+    std::string mLastCompileError;
+    std::string mLastCompileScript;
+
     ImFont *fontStandard;
     ImFont *fontStandardLarger;
     ImFont *fontStandardLargest;

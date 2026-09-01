@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <unordered_map>
 #include <fstream>
+#include <algorithm>
 
 #include "ship/Context.h"
 #include "spdlog/spdlog.h"
@@ -224,6 +225,57 @@ std::optional<std::string> GameExtractor::ValidateChecksum() const {
     return mGameList[hash];
 }
 
+std::optional<std::string> GameExtractor::DetectVersion(const std::string& romPath) {
+    std::error_code ec;
+    if (!std::filesystem::exists(Utf8ToFsPath(romPath), ec)) {
+        return std::nullopt;
+    }
+    std::ifstream in(Utf8ToFsPath(romPath), std::ios::binary);
+    if (!in.is_open()) {
+        return std::nullopt;
+    }
+    std::vector<uint8_t> data((std::istreambuf_iterator<char>(in)), {});
+    in.close();
+    if (data.empty()) {
+        return std::nullopt;
+    }
+    const std::string hash = Companion::CalculateHash(data);
+    const auto it = mGameList.find(hash);
+    if (it == mGameList.end()) {
+        return std::nullopt;
+    }
+    return it->second;
+}
+
+std::vector<std::pair<std::string, std::string>>
+GameExtractor::FindSupportedRoms(const std::vector<std::string>& searchPaths) {
+    std::vector<std::pair<std::string, std::string>> out;
+    std::vector<std::string> seenVersions;
+    for (const auto& dir : searchPaths) {
+        std::error_code ec;
+        if (dir.empty() || !std::filesystem::is_directory(Utf8ToFsPath(dir), ec)) {
+            continue;
+        }
+        for (const auto& entry : std::filesystem::directory_iterator(Utf8ToFsPath(dir), ec)) {
+            if (entry.is_directory() || entry.path().extension() != ".z64") {
+                continue;
+            }
+            const std::string full = entry.path().generic_string();
+            const auto version = DetectVersion(full);
+            if (!version.has_value()) {
+                continue; // Only offer recognized ROMs.
+            }
+            // One entry per version so the user isn't shown duplicate copies of the same ROM.
+            if (std::find(seenVersions.begin(), seenVersions.end(), *version) != seenVersions.end()) {
+                continue;
+            }
+            seenVersions.push_back(*version);
+            out.emplace_back(full, *version);
+        }
+    }
+    return out;
+}
+
 void GameExtractor::WritePortVersion() {
     auto writer = LUS::BinaryWriter();
     writer.SetEndianness(Torch::Endianness::Big);
@@ -295,6 +347,15 @@ bool GameExtractor::SelectGameFromUI() {
 
 void GameExtractor::GetRoms(std::vector<std::string>& roms) {
     // None
+}
+
+std::optional<std::string> GameExtractor::DetectVersion(const std::string& romPath) {
+    return std::nullopt;
+}
+
+std::vector<std::pair<std::string, std::string>>
+GameExtractor::FindSupportedRoms(const std::vector<std::string>& searchPaths) {
+    return {};
 }
 
 bool GameExtractor::GenerateOTR(std::string appShortName) {

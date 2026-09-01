@@ -6,6 +6,7 @@
 #include <optional>
 #include <atomic>
 #include <string>
+#include <utility>
 
 namespace fs = std::filesystem;
 
@@ -21,6 +22,12 @@ public:
     bool SelectGameFromUI();
     void SetSearchPath(const std::string& path);
     void GetRoms(std::vector<std::string>& roms);
+    // Returns the human-readable version name for a ROM file (e.g. "Super Mario 64 (US)"),
+    // or nullopt if the file isn't a recognized/supported ROM.
+    static std::optional<std::string> DetectVersion(const std::string& romPath);
+    // Scans the given directories for supported .z64 ROMs, returning (full path, version
+    // name) pairs deduplicated by version so the user is offered one entry per version.
+    std::vector<std::pair<std::string, std::string>> FindSupportedRoms(const std::vector<std::string>& searchPaths);
     std::string GetRomPath();
     bool Parse(std::atomic<size_t>& assetCount, std::string appShortName = "");
     bool GenerateOTR(std::string appShortName = "");

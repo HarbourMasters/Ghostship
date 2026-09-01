@@ -635,6 +635,21 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         gui->GetMenu()->Hide();
     }
 
+    // "Regenerate Game Assets" (menu) drops a marker instead of deleting sm64.o2r at
+    // runtime, because the archive is held open (and can't be removed on Windows).
+    // Honor it here on the next launch, before the archive is read or mounted.
+    {
+        std::error_code ec;
+        const std::string marker = Ship::Context::GetPathRelativeToAppDirectory("regenerate_o2r", "sm64");
+        if (std::filesystem::exists(marker, ec)) {
+            const std::string o2r = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
+            if (!o2r.empty()) {
+                std::filesystem::remove(o2r, ec);
+            }
+            std::filesystem::remove(marker, ec);
+        }
+    }
+
     OTRVersion romArchiveVersion = DetectOTRVersion("sm64.o2r");
 
     bool found = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r"));
@@ -653,6 +668,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #endif
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;
+    // Multiple supported ROM versions detected: (full path, version name). When more
+    // than one is present the user picks exactly one, since all versions produce the
+    // single sm64.o2r and generating several would just overwrite it.
+    std::vector<std::pair<std::string, std::string>> romChoices;
+    bool showRomPicker = false;
     std::atomic<size_t> extractCount{ 0 }, totalExtract{ 0 };
     std::atomic<size_t> compileCount{ 0 };
     std::string compileError;
@@ -700,7 +720,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         if (extractDone && !satellaActive && (compileError.empty() || compileErrorDismissed)) {
             break;
         }
-        if (GhostshipGui::PopupsQueued() > 0 || extracting || totalScripts > 0 || satellaActive) {
+        if (GhostshipGui::PopupsQueued() > 0 || extracting || showRomPicker || totalScripts > 0 || satellaActive) {
             goto render;
         }
         switch (extractStep) {
@@ -953,19 +973,31 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #endif
                     case PS_LOCAL: {
                         extract = GameExtractor();
-                        extract.SetSearchPath(installPath);
-                        extract.GetRoms(args);
-                        extract.SetSearchPath(Ship::Context::GetAppDirectoryPath("sm64"));
-                        extract.GetRoms(args);
-                        if (!args.empty()) {
+                        romChoices =
+                            extract.FindSupportedRoms({ installPath, Ship::Context::GetAppDirectoryPath("sm64") });
+                        if (romChoices.size() > 1) {
+                            // Several versions found — show a picker so the user chooses which
+                            // one to extract (see romChoices note above).
                             promptStep = PS_WAIT;
+                            showRomPicker = true;
+                        } else if (romChoices.size() == 1) {
+                            promptStep = PS_WAIT;
+                            std::string msg = "Found " + romChoices[0].second + ".\nGenerate game files from it?";
                             GhostshipGui::RegisterPopup(
-                                "ROMs found", "ROMs found in application directory. Would you like to process them?",
-                                "Yes", "No", [&]() { extractStep = ES_EXTRACT_ARGS; },
+                                "ROM found", msg.c_str(), "Yes", "No",
                                 [&]() {
-                                    args.clear();
-                                    promptStep = PS_FIRST;
-                                });
+                                    file = romChoices[0].first;
+                                    extract.RunStandalone(file);
+                                    extracting = true;
+                                    threadPool->submit_task([&]() -> void {
+                                        extract.Parse(totalExtract, "sm64");
+                                        extract.GenerateOTR(extractCount, "sm64");
+                                        extracting = false;
+                                        extractCount = totalExtract = 0;
+                                        extractStep = ES_VERIFY;
+                                    });
+                                },
+                                [&]() { promptStep = PS_FIRST; });
                         } else {
                             promptStep = PS_FIRST;
                         }
@@ -1066,7 +1098,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     auto post = [&]() { compileCount++; };
                     try {
                         scripting->CompileAll(pre, post);
-                    } catch (std::exception& e) { compileError = e.what(); }
+                    } catch (std::exception& e) {
+                        compileError = e.what();
+                        mLastCompileError = e.what();
+                        mLastCompileScript = file;
+                    }
 #endif
                     extractDone = true;
                 });
@@ -1097,6 +1133,60 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         gui->StartDraw();
         gsFast3dWindow->StartFrame();
         gsFast3dWindow->RunGuiOnly();
+
+        // Version picker: shown when multiple supported ROMs are present so the user
+        // chooses which single version to extract into sm64.o2r.
+        if (showRomPicker && !ImGui::IsPopupOpen("Select ROM Version")) {
+            ImGui::OpenPopup("Select ROM Version");
+        }
+        if (showRomPicker) {
+            ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 8.0f));
+            auto pickerColor = UIWidgets::ColorValues.at(THEME_COLOR);
+            ImGui::PushStyleColor(ImGuiCol_TitleBgActive, pickerColor);
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(pickerColor.x, pickerColor.y, pickerColor.z, 0.6f));
+            ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.0f, 0.0f, 0.0f, 0.3f));
+            if (ImGui::BeginPopupModal("Select ROM Version", NULL,
+                                       ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
+                                           ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
+                                           ImGuiWindowFlags_NoSavedSettings)) {
+                ImGui::Text("Multiple game versions were found.");
+                ImGui::TextDisabled("Only one sm64.o2r is generated, so pick the version to use:");
+                ImGui::Spacing();
+                for (size_t i = 0; i < romChoices.size(); i++) {
+                    const auto& choice = romChoices[i];
+                    std::string label =
+                        choice.second + "##rom" + std::to_string(i); // version name; path shown as tooltip
+                    if (ImGui::Button(label.c_str(), ImVec2(420.0f, 0.0f))) {
+                        file = choice.first;
+                        extract.RunStandalone(file);
+                        showRomPicker = false;
+                        extracting = true;
+                        threadPool->submit_task([&]() -> void {
+                            extract.Parse(totalExtract, "sm64");
+                            extract.GenerateOTR(extractCount, "sm64");
+                            extracting = false;
+                            extractCount = totalExtract = 0;
+                            extractStep = ES_VERIFY;
+                        });
+                        ImGui::CloseCurrentPopup();
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("%s", choice.first.c_str());
+                    }
+                }
+                ImGui::Spacing();
+                if (ImGui::Button("Browse for a different ROM...", ImVec2(420.0f, 0.0f))) {
+                    showRomPicker = false;
+                    promptStep = PS_FIRST; // falls through to the file dialog
+                    ImGui::CloseCurrentPopup();
+                }
+                ImGui::EndPopup();
+            }
+            ImGui::PopStyleColor(3);
+            ImGui::PopStyleVar(2);
+        }
+
         if (extracting && !ImGui::IsPopupOpen("ROM Extraction")) {
             ImGui::OpenPopup("ROM Extraction");
         }
@@ -1304,6 +1394,8 @@ void GameEngine::LoadScripts() {
     auto notification = std::make_shared<Notification::Options>();
     notification->mute = true;
     notification->remainingTime = 7.0f;
+    this->mLastCompileError.clear();
+    this->mLastCompileScript.clear();
     try {
         scripting->CompileAll([&](const std::shared_ptr<Ship::Archive>& archive) {
             if (!archive)
@@ -1323,6 +1415,10 @@ void GameEngine::LoadScripts() {
             fmt::format("Failed to build {} ({}/{})", *currentScriptName, (*currentScript + 1), this->totalScripts);
         SPDLOG_ERROR("Failed to build script {}: {}", *currentScriptName, e.what());
         Notification::Emit(*notification);
+        this->mLastCompileScript = *currentScriptName;
+        this->mLastCompileError = e.what();
+        CVarSetInteger(CVAR_WINDOW("ModBuildLog"), 1);
+        CVarSave();
     }
 
     try {
