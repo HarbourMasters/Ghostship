@@ -45,18 +45,31 @@ void push_frame() {
 #endif
 }
 
+#if defined(__APPLE__) && !defined(__IOS__)
+#include <execinfo.h>
+#include <csignal>
+static void GhostshipCrashTrace(int sig) {
+    void* frames[64];
+    int n = backtrace(frames, 64);
+    backtrace_symbols_fd(frames, n, 2);
+    _exit(128 + sig);
+}
+#endif
+
 #ifdef _WIN32
 int SDL_main(int argc, char** argv) {
 #else
 int main(int argc, char* argv[]) {
 #endif
-#ifdef __APPLE__
+#if defined(__APPLE__) && !defined(__IOS__)
     // Disable the macOS "press and hold" accent/diacritic popup for this app. SDL keeps a Cocoa text
     // input context active, so holding a movement key is interpreted as holding a letter key in a text
     // field, and macOS shows the accent picker instead of repeating it. Per-app equivalent of
     // `defaults write -app <App> ApplePressAndHoldEnabled -bool false`; key repeat still works.
     CFPreferencesSetAppValue(CFSTR("ApplePressAndHoldEnabled"), kCFBooleanFalse, kCFPreferencesCurrentApplication);
     CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
+    signal(SIGSEGV, GhostshipCrashTrace);
+    signal(SIGBUS, GhostshipCrashTrace);
 #endif
 #ifdef __EMSCRIPTEN__
     WebCache_Mount("/storage");

@@ -1,4 +1,6 @@
 #include "CheckTracker.h"
+#include <ship/window/gui/IconsFontAwesome4.h>
+#include "port/ShipCompat.h"
 #include "port/Rando/Logic/Logic.h"
 #include "port/ShipUtils.h"
 #include "port/ui/UIWidgets.hpp"
@@ -14,22 +16,10 @@ namespace GhostshipGui {
 extern std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 }
 
-#define DEFAULT_LOGIC_COLOR \
-    Color_RGBA8 {           \
-        200, 200, 200, 255  \
-    }
-#define DEFAULT_COLLECTED_COLOR \
-    Color_RGBA8 {               \
-        100, 255, 100, 255      \
-    }
-#define DEFAULT_SKIPPED_COLOR \
-    Color_RGBA8 {             \
-        255, 100, 255, 255    \
-    }
-#define DEFAULT_ITEM_COLOR \
-    Color_RGBA8 {          \
-        79, 0, 221, 255    \
-    }
+#define DEFAULT_LOGIC_COLOR Color_RGBA8{ 200, 200, 200, 255 }
+#define DEFAULT_COLLECTED_COLOR Color_RGBA8{ 100, 255, 100, 255 }
+#define DEFAULT_SKIPPED_COLOR Color_RGBA8{ 255, 100, 255, 255 }
+#define DEFAULT_ITEM_COLOR Color_RGBA8{ 79, 0, 221, 255 }
 
 #define CVAR_NAME_SHOW_CHECK_TRACKER "gWindows.CheckTracker"
 #define CVAR_NAME_CHECK_TRACKER_OPACITY "gRando.CheckTracker.Opacity"
@@ -124,9 +114,8 @@ void DrawCheckTrackerList() {
                     const char* texture = randoSaveCheck.randoItemId == RI_STAR       ? texture_hud_char_star
                                           : randoSaveCheck.randoItemId == RI_COIN_RED ? "Red Coin Icon"
                                                                                       : "Blue Coin Icon";
-                    ImTextureID textureId =
-                        std::static_pointer_cast<Fast::Fast3dGui>(Ship::Context::GetInstance()->GetWindow()->GetGui())
-                            ->GetTextureByName(texture);
+                    ImTextureID textureId = std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
+                                                ->GetTextureByName(texture);
 
                     ImGui::BeginGroup();
                     ImGui::Image(textureId, ImVec2(16.0f * checkTrackerScale, 16.0f * checkTrackerScale));
@@ -285,7 +274,7 @@ void SettingsWindow::DrawElement() {
             ImGui::SameLine();
             if (UIWidgets::Button(ICON_FA_REFRESH, { .size = ImVec2(32.0f, 32.0f), .color = WIDGET_COLOR })) {
                 CVarSetColor(cvarText.c_str(), color);
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+                ShipCompat::GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
             ImGui::SameLine();
             ImGui::Text("%s", colorText.c_str());

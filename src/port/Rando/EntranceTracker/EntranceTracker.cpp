@@ -1,4 +1,6 @@
 #include "EntranceTracker.h"
+#include <ship/window/gui/IconsFontAwesome4.h>
+#include "port/ShipCompat.h"
 #include "port/Rando/Logic/Logic.h"
 #include "port/ShipUtils.h"
 #include "port/ui/UIWidgets.hpp"
@@ -8,10 +10,7 @@ namespace GhostshipGui {
 extern std::shared_ptr<Rando::EntranceTracker::EntranceTrackerWindow> mRandoEntranceTrackerWindow;
 }
 
-#define DEFAULT_FOUND_COLOR \
-    Color_RGBA8 {           \
-        100, 255, 100, 255  \
-    }
+#define DEFAULT_FOUND_COLOR Color_RGBA8{ 100, 255, 100, 255 }
 
 #define CVAR_NAME_SHOW_ENTRANCE_TRACKER "gWindows.EntranceTracker"
 #define CVAR_NAME_ENTRANCE_TRACKER_OPACITY "gRando.EntranceTracker.Opacity"
@@ -168,7 +167,7 @@ void SettingsWindow::DrawElement() {
             ImGui::SameLine();
             if (UIWidgets::Button(ICON_FA_REFRESH, { .size = ImVec2(32.0f, 32.0f), .color = WIDGET_COLOR })) {
                 CVarSetColor(cvarText.c_str(), color);
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+                ShipCompat::GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
             ImGui::SameLine();
             ImGui::Text("%s", colorText.c_str());

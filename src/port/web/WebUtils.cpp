@@ -121,35 +121,40 @@ EM_ASYNC_JS(int, js_pick_into, (const char* caccept, const char* cdest), {
         input.type = 'file';
         input.accept = accept;
 
-        input.addEventListener('change', function(evt) {
-            var file = evt.target.files[0];
-            if (!file) {
-                resolve(0);
-                return;
-            }
-            var reader = new FileReader();
-            reader.onload = function(re) {
-                var data = new Uint8Array(re.target.result);
-                try {
-                    FS.writeFile(dest, data);
-                    resolve(1);
-                } catch (e) {
-                    console.error('[WebFilePicker] write failed:', e);
+        input.addEventListener(
+            'change', function(evt) {
+                var file = evt.target.files[0];
+                if (!file) {
                     resolve(0);
+                    return;
                 }
-            };
-            reader.onerror = function() { resolve(0); };
-            reader.readAsArrayBuffer(file);
-        });
+                var reader = new FileReader();
+                reader.onload = function(re) {
+                    var data = new Uint8Array(re.target.result);
+                    try {
+                        FS.writeFile(dest, data);
+                        resolve(1);
+                    } catch (e) {
+                        console.error('[WebFilePicker] write failed:', e);
+                        resolve(0);
+                    }
+                };
+                reader.onerror = function() {
+                    resolve(0);
+                };
+                reader.readAsArrayBuffer(file);
+            });
         input.addEventListener('cancel', function() { resolve(0); });
 
         input.style.display = 'none';
         document.body.appendChild(input);
         input.click();
-        setTimeout(function() {
-            if (input.parentNode)
-                input.parentNode.removeChild(input);
-        }, 500);
+        setTimeout(
+            function() {
+                if (input.parentNode)
+                    input.parentNode.removeChild(input);
+            },
+            500);
     });
 });
 

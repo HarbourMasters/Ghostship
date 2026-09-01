@@ -1,4 +1,7 @@
 #include "GhostshipInputEditorWindow.h"
+#include <ship/window/gui/Gui.h>
+#include <ship/window/gui/IconsFontAwesome4.h>
+#include "port/ShipCompat.h"
 #include <ship/Context.h>
 #include <libultraship/bridge/consolevariablebridge.h>
 #include <ship/controller/controldevice/controller/mapping/ControllerRumbleMapping.h>
@@ -13,7 +16,8 @@
 GhostshipInputEditorWindow::~GhostshipInputEditorWindow() {
 }
 
-void GhostshipInputEditorWindow::InitElement() {
+void GhostshipInputEditorWindow::OnInit(const nlohmann::json& initArgs) {
+    Ship::GuiWindow::OnInit(initArgs);
     mGameInputBlockTimer = INT32_MAX;
     mMappingInputBlockTimer = INT32_MAX;
     mRumbleTimer = INT32_MAX;
@@ -57,7 +61,7 @@ void GhostshipInputEditorWindow::UpdateElement() {
     }
 
     if (mInputEditorPopupOpen && ImGui::IsPopupOpen("", ImGuiPopupFlags_AnyPopupId)) {
-        Ship::Context::GetInstance()->GetControlDeck()->BlockGameInput(INPUT_EDITOR_WINDOW_GAME_INPUT_BLOCK_ID);
+        ShipCompat::GetControlDeck()->BlockGameInput(INPUT_EDITOR_WINDOW_GAME_INPUT_BLOCK_ID);
 
         // continue to block input for a third of a second after getting the mapping
         mGameInputBlockTimer = ImGui::GetIO().Framerate / 3;
@@ -69,24 +73,23 @@ void GhostshipInputEditorWindow::UpdateElement() {
             }
         }
 
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->BlockGamepadNavigation();
+        ShipCompat::GetWindow()->GetGui()->BlockGamepadNavigation();
     } else {
         if (mGameInputBlockTimer != INT32_MAX) {
             mGameInputBlockTimer--;
             if (mGameInputBlockTimer <= 0) {
-                Ship::Context::GetInstance()->GetControlDeck()->UnblockGameInput(
-                    INPUT_EDITOR_WINDOW_GAME_INPUT_BLOCK_ID);
+                ShipCompat::GetControlDeck()->UnblockGameInput(INPUT_EDITOR_WINDOW_GAME_INPUT_BLOCK_ID);
                 mGameInputBlockTimer = INT32_MAX;
             }
         }
 
-        if (Ship::Context::GetInstance()->GetWindow()->GetGui()->GamepadNavigationEnabled()) {
+        if (ShipCompat::GetWindow()->GetGui()->GamepadNavigationEnabled()) {
             mMappingInputBlockTimer = ImGui::GetIO().Framerate / 3;
         } else {
             mMappingInputBlockTimer = INT32_MAX;
         }
 
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->UnblockGamepadNavigation();
+        ShipCompat::GetWindow()->GetGui()->UnblockGamepadNavigation();
     }
 }
 
@@ -226,8 +229,7 @@ void GhostshipInputEditorWindow::DrawButtonLineAddMappingButton(uint8_t port, N6
             ImGui::CloseCurrentPopup();
         }
         // todo: figure out why optional params (using id = "" in the definition) wasn't working
-        if (mMappingInputBlockTimer == INT32_MAX && Ship::Context::GetInstance()
-                                                        ->GetControlDeck()
+        if (mMappingInputBlockTimer == INT32_MAX && ShipCompat::GetControlDeck()
                                                         ->GetControllerByPort(port)
                                                         ->GetButton(bitmask)
                                                         ->AddOrEditButtonMappingFromRawPress(bitmask, "")) {
@@ -239,11 +241,8 @@ void GhostshipInputEditorWindow::DrawButtonLineAddMappingButton(uint8_t port, N6
 }
 
 void GhostshipInputEditorWindow::DrawButtonLineEditMappingButton(uint8_t port, N64ButtonMask bitmask, std::string id) {
-    auto mapping = Ship::Context::GetInstance()
-                       ->GetControlDeck()
-                       ->GetControllerByPort(port)
-                       ->GetButton(bitmask)
-                       ->GetButtonMappingById(id);
+    auto mapping =
+        ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetButton(bitmask)->GetButtonMappingById(id);
     if (mapping == nullptr) {
         return;
     }
@@ -289,8 +288,7 @@ void GhostshipInputEditorWindow::DrawButtonLineEditMappingButton(uint8_t port, N
             mInputEditorPopupOpen = false;
             ImGui::CloseCurrentPopup();
         }
-        if (mMappingInputBlockTimer == INT32_MAX && Ship::Context::GetInstance()
-                                                        ->GetControlDeck()
+        if (mMappingInputBlockTimer == INT32_MAX && ShipCompat::GetControlDeck()
                                                         ->GetControllerByPort(port)
                                                         ->GetButton(bitmask)
                                                         ->AddOrEditButtonMappingFromRawPress(bitmask, id)) {
@@ -330,7 +328,7 @@ void GhostshipInputEditorWindow::DrawButtonLineEditMappingButton(uint8_t port, N
             ImGui::Text("Axis Threshold\n\nThe extent to which the joystick\nmust be moved or the trigger\npressed to "
                         "initiate the assigned\nbutton action.\n\n");
 
-            auto globalSettings = Ship::Context::GetInstance()->GetControlDeck()->GetGlobalSDLDeviceSettings();
+            auto globalSettings = ShipCompat::GetControlDeck()->GetGlobalSDLDeviceSettings();
 
             if (sdlAxisDirectionToButtonMapping->AxisIsStick()) {
                 ImGui::Text("Stick axis threshold:");
@@ -425,11 +423,7 @@ void GhostshipInputEditorWindow::DrawButtonLineEditMappingButton(uint8_t port, N
     ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(1.0f, 0.5f));
     if (ImGui::Button(StringHelper::Sprintf("%s###removeButtonMappingButton%s", ICON_FA_TIMES, id.c_str()).c_str(),
                       ImVec2(ImGui::CalcTextSize(ICON_FA_TIMES).x + SCALE_IMGUI_SIZE(10.0f), 0.0f))) {
-        Ship::Context::GetInstance()
-            ->GetControlDeck()
-            ->GetControllerByPort(port)
-            ->GetButton(bitmask)
-            ->ClearButtonMapping(id);
+        ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetButton(bitmask)->ClearButtonMapping(id);
     };
     ImGui::PopStyleColor();
     ImGui::PopStyleColor();
@@ -472,8 +466,7 @@ void GhostshipInputEditorWindow::DrawStickDirectionLineAddMappingButton(uint8_t 
         }
         if (stick == Ship::LEFT) {
             if (mMappingInputBlockTimer == INT32_MAX &&
-                Ship::Context::GetInstance()
-                    ->GetControlDeck()
+                ShipCompat::GetControlDeck()
                     ->GetControllerByPort(port)
                     ->GetLeftStick()
                     ->AddOrEditAxisDirectionMappingFromRawPress(direction, "")) {
@@ -482,8 +475,7 @@ void GhostshipInputEditorWindow::DrawStickDirectionLineAddMappingButton(uint8_t 
             }
         } else {
             if (mMappingInputBlockTimer == INT32_MAX &&
-                Ship::Context::GetInstance()
-                    ->GetControlDeck()
+                ShipCompat::GetControlDeck()
                     ->GetControllerByPort(port)
                     ->GetRightStick()
                     ->AddOrEditAxisDirectionMappingFromRawPress(direction, "")) {
@@ -498,17 +490,11 @@ void GhostshipInputEditorWindow::DrawStickDirectionLineEditMappingButton(uint8_t
                                                                          Ship::Direction direction, std::string id) {
     std::shared_ptr<Ship::ControllerAxisDirectionMapping> mapping = nullptr;
     if (stick == Ship::LEFT) {
-        mapping = Ship::Context::GetInstance()
-                      ->GetControlDeck()
-                      ->GetControllerByPort(port)
-                      ->GetLeftStick()
-                      ->GetAxisDirectionMappingById(direction, id);
+        mapping = ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLeftStick()->GetAxisDirectionMappingById(
+            direction, id);
     } else {
-        mapping = Ship::Context::GetInstance()
-                      ->GetControlDeck()
-                      ->GetControllerByPort(port)
-                      ->GetRightStick()
-                      ->GetAxisDirectionMappingById(direction, id);
+        mapping = ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetRightStick()->GetAxisDirectionMappingById(
+            direction, id);
     }
 
     if (mapping == nullptr) {
@@ -560,8 +546,7 @@ void GhostshipInputEditorWindow::DrawStickDirectionLineEditMappingButton(uint8_t
 
         if (stick == Ship::LEFT) {
             if (mMappingInputBlockTimer == INT32_MAX &&
-                Ship::Context::GetInstance()
-                    ->GetControlDeck()
+                ShipCompat::GetControlDeck()
                     ->GetControllerByPort(port)
                     ->GetLeftStick()
                     ->AddOrEditAxisDirectionMappingFromRawPress(direction, id)) {
@@ -570,8 +555,7 @@ void GhostshipInputEditorWindow::DrawStickDirectionLineEditMappingButton(uint8_t
             }
         } else {
             if (mMappingInputBlockTimer == INT32_MAX &&
-                Ship::Context::GetInstance()
-                    ->GetControlDeck()
+                ShipCompat::GetControlDeck()
                     ->GetControllerByPort(port)
                     ->GetRightStick()
                     ->AddOrEditAxisDirectionMappingFromRawPress(direction, id)) {
@@ -590,17 +574,11 @@ void GhostshipInputEditorWindow::DrawStickDirectionLineEditMappingButton(uint8_t
             StringHelper::Sprintf("%s###removeStickDirectionMappingButton%s", ICON_FA_TIMES, id.c_str()).c_str(),
             ImVec2(ImGui::CalcTextSize(ICON_FA_TIMES).x + SCALE_IMGUI_SIZE(10.0f), 0.0f))) {
         if (stick == Ship::LEFT) {
-            Ship::Context::GetInstance()
-                ->GetControlDeck()
-                ->GetControllerByPort(port)
-                ->GetLeftStick()
-                ->ClearAxisDirectionMapping(direction, id);
+            ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLeftStick()->ClearAxisDirectionMapping(
+                direction, id);
         } else {
-            Ship::Context::GetInstance()
-                ->GetControlDeck()
-                ->GetControllerByPort(port)
-                ->GetRightStick()
-                ->ClearAxisDirectionMapping(direction, id);
+            ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetRightStick()->ClearAxisDirectionMapping(
+                direction, id);
         }
     };
     ImGui::PopStyleColor();
@@ -629,9 +607,9 @@ void GhostshipInputEditorWindow::DrawStickSection(uint8_t port, uint8_t stick, I
     static int8_t sX, sY;
     std::shared_ptr<Ship::ControllerStick> controllerStick = nullptr;
     if (stick == Ship::LEFT) {
-        controllerStick = Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetLeftStick();
+        controllerStick = ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLeftStick();
     } else {
-        controllerStick = Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetRightStick();
+        controllerStick = ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetRightStick();
     }
     controllerStick->Process(sX, sY);
     DrawAnalogPreview(StringHelper::Sprintf("##AnalogPreview%d", stick).c_str(), ImVec2(sX, sY));
@@ -772,8 +750,7 @@ void GhostshipInputEditorWindow::DrawStickSection(uint8_t port, uint8_t stick, I
 void GhostshipInputEditorWindow::UpdateBitmaskToMappingIds(uint8_t port) {
     // todo: do we need this now that ControllerButton exists?
 
-    for (auto [bitmask, button] :
-         Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetAllButtons()) {
+    for (auto [bitmask, button] : ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetAllButtons()) {
         for (auto [id, mapping] : button->GetAllButtonMappings()) {
             // using a vector here instead of a set because i want newly added mappings
             // to go to the end of the list instead of autosorting
@@ -787,12 +764,10 @@ void GhostshipInputEditorWindow::UpdateBitmaskToMappingIds(uint8_t port) {
 
 void GhostshipInputEditorWindow::UpdateStickDirectionToMappingIds(uint8_t port) {
     // todo: do we need this?
-    for (auto stick :
-         { std::make_pair<uint8_t, std::shared_ptr<Ship::ControllerStick>>(
-               Ship::LEFT, Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetLeftStick()),
-           std::make_pair<uint8_t, std::shared_ptr<Ship::ControllerStick>>(
-               Ship::RIGHT,
-               Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetRightStick()) }) {
+    for (auto stick : { std::make_pair<uint8_t, std::shared_ptr<Ship::ControllerStick>>(
+                            Ship::LEFT, ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLeftStick()),
+                        std::make_pair<uint8_t, std::shared_ptr<Ship::ControllerStick>>(
+                            Ship::RIGHT, ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetRightStick()) }) {
         for (auto direction : { Ship::LEFT, Ship::RIGHT, Ship::UP, Ship::DOWN }) {
             for (auto [id, mapping] : stick.second->GetAllAxisDirectionMappingByDirection(direction)) {
                 // using a vector here instead of a set because i want newly added mappings
@@ -812,7 +787,7 @@ void GhostshipInputEditorWindow::DrawRemoveRumbleMappingButton(uint8_t port, std
     ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(1.0f, 0.5f));
     if (ImGui::Button(StringHelper::Sprintf("%s###removeRumbleMapping%s", ICON_FA_TIMES, id.c_str()).c_str(),
                       ImVec2(SCALE_IMGUI_SIZE(20.0f), SCALE_IMGUI_SIZE(20.0f)))) {
-        Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetRumble()->ClearRumbleMapping(id);
+        ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetRumble()->ClearRumbleMapping(id);
     }
     ImGui::PopStyleVar();
 }
@@ -836,11 +811,8 @@ void GhostshipInputEditorWindow::DrawAddRumbleMappingButton(uint8_t port) {
             ImGui::CloseCurrentPopup();
         }
 
-        if (mMappingInputBlockTimer == INT32_MAX && Ship::Context::GetInstance()
-                                                        ->GetControlDeck()
-                                                        ->GetControllerByPort(port)
-                                                        ->GetRumble()
-                                                        ->AddRumbleMappingFromRawPress()) {
+        if (mMappingInputBlockTimer == INT32_MAX &&
+            ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetRumble()->AddRumbleMappingFromRawPress()) {
             mInputEditorPopupOpen = false;
             ImGui::CloseCurrentPopup();
         }
@@ -853,11 +825,8 @@ bool GhostshipInputEditorWindow::TestingRumble() {
 }
 
 void GhostshipInputEditorWindow::DrawRumbleSection(uint8_t port) {
-    for (auto [id, mapping] : Ship::Context::GetInstance()
-                                  ->GetControlDeck()
-                                  ->GetControllerByPort(port)
-                                  ->GetRumble()
-                                  ->GetAllRumbleMappings()) {
+    for (auto [id, mapping] :
+         ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetRumble()->GetAllRumbleMappings()) {
         ImGui::AlignTextToFramePadding();
         ImGui::SetNextItemOpen(true, ImGuiCond_Once);
         auto buttonColor = ImGui::GetStyleColorVec4(ImGuiCol_Button);
@@ -996,7 +965,7 @@ void GhostshipInputEditorWindow::DrawRemoveLEDMappingButton(uint8_t port, std::s
     ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(1.0f, 0.5f));
     if (ImGui::Button(StringHelper::Sprintf("%s###removeLEDMapping%s", ICON_FA_TIMES, id.c_str()).c_str(),
                       ImVec2(SCALE_IMGUI_SIZE(20.0f), SCALE_IMGUI_SIZE(20.0f)))) {
-        Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetLED()->ClearLEDMapping(id);
+        ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLED()->ClearLEDMapping(id);
     }
     ImGui::PopStyleVar();
 }
@@ -1020,11 +989,8 @@ void GhostshipInputEditorWindow::DrawAddLEDMappingButton(uint8_t port) {
             ImGui::CloseCurrentPopup();
         }
 
-        if (mMappingInputBlockTimer == INT32_MAX && Ship::Context::GetInstance()
-                                                        ->GetControlDeck()
-                                                        ->GetControllerByPort(port)
-                                                        ->GetLED()
-                                                        ->AddLEDMappingFromRawPress()) {
+        if (mMappingInputBlockTimer == INT32_MAX &&
+            ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLED()->AddLEDMappingFromRawPress()) {
             mInputEditorPopupOpen = false;
             ImGui::CloseCurrentPopup();
         }
@@ -1033,8 +999,7 @@ void GhostshipInputEditorWindow::DrawAddLEDMappingButton(uint8_t port) {
 }
 
 void GhostshipInputEditorWindow::DrawLEDSection(uint8_t port) {
-    for (auto [id, mapping] :
-         Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetLED()->GetAllLEDMappings()) {
+    for (auto [id, mapping] : ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetLED()->GetAllLEDMappings()) {
         ImGui::AlignTextToFramePadding();
         ImGui::SetNextItemOpen(true, ImGuiCond_Once);
         auto open = ImGui::TreeNode(
@@ -1076,7 +1041,7 @@ void GhostshipInputEditorWindow::DrawRemoveGyroMappingButton(uint8_t port, std::
     ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(1.0f, 0.5f));
     if (ImGui::Button(StringHelper::Sprintf("%s###removeGyroMapping%s", ICON_FA_TIMES, id.c_str()).c_str(),
                       ImVec2(SCALE_IMGUI_SIZE(20.0f), SCALE_IMGUI_SIZE(20.0f)))) {
-        Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetGyro()->ClearGyroMapping();
+        ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetGyro()->ClearGyroMapping();
     }
     ImGui::PopStyleVar();
 }
@@ -1100,11 +1065,8 @@ void GhostshipInputEditorWindow::DrawAddGyroMappingButton(uint8_t port) {
             ImGui::CloseCurrentPopup();
         }
 
-        if (mMappingInputBlockTimer == INT32_MAX && Ship::Context::GetInstance()
-                                                        ->GetControlDeck()
-                                                        ->GetControllerByPort(port)
-                                                        ->GetGyro()
-                                                        ->SetGyroMappingFromRawPress()) {
+        if (mMappingInputBlockTimer == INT32_MAX &&
+            ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetGyro()->SetGyroMappingFromRawPress()) {
             mInputEditorPopupOpen = false;
             ImGui::CloseCurrentPopup();
         }
@@ -1113,8 +1075,7 @@ void GhostshipInputEditorWindow::DrawAddGyroMappingButton(uint8_t port) {
 }
 
 void GhostshipInputEditorWindow::DrawGyroSection(uint8_t port) {
-    auto mapping =
-        Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(port)->GetGyro()->GetGyroMapping();
+    auto mapping = ShipCompat::GetControlDeck()->GetControllerByPort(port)->GetGyro()->GetGyroMapping();
     if (mapping != nullptr) {
         auto id = mapping->GetGyroMappingId();
         ImGui::AlignTextToFramePadding();
@@ -1260,7 +1221,7 @@ void GhostshipInputEditorWindow::DrawMapping(CustomButtonMap& mapping, float lab
             }
             if (ImGui::Selectable(i->second, i->first == currentButton)) {
                 CVarSetInteger(mapping.cVarName, i->first);
-                Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
+                ShipCompat::GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
         }
         ImGui::EndCombo();
@@ -1291,7 +1252,7 @@ void GhostshipInputEditorWindow::DrawDeviceToggles(uint8_t portIndex) {
 
     ImGui::PopItemFlag();
 
-    auto connectedDeviceManager = Ship::Context::GetInstance()->GetControlDeck()->GetConnectedPhysicalDeviceManager();
+    auto connectedDeviceManager = ShipCompat::GetControlDeck()->GetConnectedPhysicalDeviceManager();
     for (const auto& [instanceId, name] : connectedDeviceManager->GetConnectedSDLGamepadNames()) {
         ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
         auto buttonColor = ImGui::GetStyleColorVec4(ImGuiCol_Button);
@@ -1327,7 +1288,7 @@ void GhostshipInputEditorWindow::DrawClearAllButton(uint8_t portIndex) {
             ImGui::CloseCurrentPopup();
         }
         if (ImGui::Button("Clear All")) {
-            Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(portIndex)->ClearAllMappings();
+            ShipCompat::GetControlDeck()->GetControllerByPort(portIndex)->ClearAllMappings();
             ImGui::CloseCurrentPopup();
         }
         ImGui::EndPopup();
@@ -1426,11 +1387,9 @@ void GhostshipInputEditorWindow::DrawSetDefaultsButton(uint8_t portIndex) {
                 ImGui::CloseCurrentPopup();
             }
             if (ImGui::Button("Set defaults")) {
-                Ship::Context::GetInstance()
-                    ->GetControlDeck()
-                    ->GetControllerByPort(portIndex)
-                    ->ClearAllMappingsForDeviceType(Ship::PhysicalDeviceType::Keyboard);
-                Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(portIndex)->AddDefaultMappings(
+                ShipCompat::GetControlDeck()->GetControllerByPort(portIndex)->ClearAllMappingsForDeviceType(
+                    Ship::PhysicalDeviceType::Keyboard);
+                ShipCompat::GetControlDeck()->GetControllerByPort(portIndex)->AddDefaultMappings(
                     Ship::PhysicalDeviceType::Keyboard);
                 shouldClose = true;
                 ImGui::CloseCurrentPopup();
@@ -1456,11 +1415,9 @@ void GhostshipInputEditorWindow::DrawSetDefaultsButton(uint8_t portIndex) {
                 ImGui::CloseCurrentPopup();
             }
             if (ImGui::Button("Set defaults")) {
-                Ship::Context::GetInstance()
-                    ->GetControlDeck()
-                    ->GetControllerByPort(portIndex)
-                    ->ClearAllMappingsForDeviceType(Ship::PhysicalDeviceType::SDLGamepad);
-                Ship::Context::GetInstance()->GetControlDeck()->GetControllerByPort(portIndex)->AddDefaultMappings(
+                ShipCompat::GetControlDeck()->GetControllerByPort(portIndex)->ClearAllMappingsForDeviceType(
+                    Ship::PhysicalDeviceType::SDLGamepad);
+                ShipCompat::GetControlDeck()->GetControllerByPort(portIndex)->AddDefaultMappings(
                     Ship::PhysicalDeviceType::SDLGamepad);
                 shouldClose = true;
                 ImGui::CloseCurrentPopup();

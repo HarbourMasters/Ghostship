@@ -1,4 +1,5 @@
 #include "GhostshipGui.hpp"
+#include "port/ShipCompat.h"
 
 #include <spdlog/spdlog.h>
 #include <imgui.h>
@@ -22,7 +23,10 @@ void C_RunGuiDrawCallbacks();
 
 #include <ship/window/gui/ConsoleWindow.h>
 #include <ship/window/gui/EventDebuggerWindow.h>
+#if __has_include(<ship/window/gui/ShaderSettingsWindow.h>)
 #include <ship/window/gui/ShaderSettingsWindow.h>
+#define GHOSTSHIP_HAS_SHADER_SETTINGS 1
+#endif
 #include <libultraship/window/gui/GfxDebuggerWindow.h>
 
 // Invisible host window that fires C mod ImGui callbacks each frame.
@@ -31,8 +35,6 @@ void C_RunGuiDrawCallbacks();
 class CGuiCallbackWindow : public Ship::GuiWindow {
   public:
     using GuiWindow::GuiWindow;
-    void InitElement() override {
-    }
     void UpdateElement() override {
     }
     void DrawElement() override {
@@ -57,7 +59,9 @@ std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<AchievementsWindow> mAchievementsWindow;
 std::shared_ptr<Ship::EventDebuggerWindow> mEventDebuggerWindow;
 std::shared_ptr<LUS::GfxDebuggerWindow> mGfxDebuggerWindow;
+#ifdef GHOSTSHIP_HAS_SHADER_SETTINGS
 std::shared_ptr<Ship::ShaderSettingsWindow> mShaderSettingsWindow;
+#endif
 
 std::shared_ptr<Rando::CheckTracker::CheckTrackerWindow> mRandoCheckTrackerWindow;
 std::shared_ptr<Rando::CheckTracker::SettingsWindow> mRandoCheckTrackerSettingsWindow;
@@ -70,7 +74,7 @@ UIWidgets::Colors GetMenuThemeColor() {
 }
 
 void SetupMenu() {
-    auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
+    auto gui = ShipCompat::GetWindow()->GetGui();
     mGhostshipMenu = std::make_shared<GhostshipGui::GhostshipMenu>(CVAR_WINDOW("Menu"), "Port Menu");
     gui->SetMenu(mGhostshipMenu);
 
@@ -80,7 +84,7 @@ void SetupMenu() {
 }
 
 void SetupGuiElements() {
-    auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
+    auto gui = ShipCompat::GetWindow()->GetGui();
 
     auto& style = ImGui::GetStyle();
     style.FramePadding = ImVec2(4.0f, 6.0f);
@@ -96,7 +100,10 @@ void SetupGuiElements() {
     mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(CVAR_WINDOW("EventDebugger"), "Event Debugger");
     gui->AddGuiWindow(mEventDebuggerWindow);
 
-    mGfxDebuggerWindow = std::make_shared<LUS::GfxDebuggerWindow>(CVAR_WINDOW("GfxDebugger"), "Gfx Debugger");
+    mGfxDebuggerWindow =
+        std::make_shared<LUS::GfxDebuggerWindow>(CVAR_WINDOW("GfxDebugger"), "Gfx Debugger",
+                                                 std::dynamic_pointer_cast<Fast::Fast3dWindow>(ShipCompat::GetWindow()),
+                                                 ShipCompat::GetGfxDebugger(), ShipCompat::GetResourceManager());
     gui->AddGuiWindow(mGfxDebuggerWindow);
 
     mObjectViewer = std::make_shared<ObjectViewer>(CVAR_WINDOW("ObjectViewer"), "Object Viewer##Dev", ImVec2(820, 630));
@@ -130,9 +137,11 @@ void SetupGuiElements() {
                                                                        "Input Viewer Settings", ImVec2(500, 525));
     gui->AddGuiWindow(mInputViewerSettings);
 
+#ifdef GHOSTSHIP_HAS_SHADER_SETTINGS
     mShaderSettingsWindow = std::make_shared<Ship::ShaderSettingsWindow>(CVAR_WINDOW("ShaderSettings"),
                                                                          "Shader Settings", ImVec2(420, 520));
     gui->AddGuiWindow(mShaderSettingsWindow);
+#endif
 
     mModalWindow = std::make_shared<GhostshipModalWindow>(CVAR_WINDOW("ModalWindow"), "Modal Window");
     gui->AddGuiWindow(mModalWindow);
@@ -156,7 +165,7 @@ void SetupGuiElements() {
 }
 
 void Destroy() {
-    auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
+    auto gui = ShipCompat::GetWindow()->GetGui();
 
     gui->RemoveAllGuiWindows();
     mGhostshipMenu = nullptr;
@@ -172,7 +181,9 @@ void Destroy() {
     mRandoEntranceTrackerSettingsWindow = nullptr;
     mConsoleWindow = nullptr;
     mObjectViewer = nullptr;
+#ifdef GHOSTSHIP_HAS_SHADER_SETTINGS
     mShaderSettingsWindow = nullptr;
+#endif
     mGfxDebuggerWindow = nullptr;
 }
 

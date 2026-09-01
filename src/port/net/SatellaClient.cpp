@@ -1,5 +1,6 @@
 #ifdef USE_NETWORKING
 #include "port/net/SatellaClient.h"
+#include "port/ShipCompat.h"
 
 #include "ship/Context.h"
 #include "ship/security/Keystore.h"
@@ -346,7 +347,7 @@ class PublicKeysPacket : public IPacket {
             return;
         }
 
-        auto keystore = Ship::Context::GetInstance()->GetKeystore();
+        auto keystore = ShipCompat::GetKeystore();
         if (!keystore) {
             SPDLOG_WARN("SatellaClient: keystore not initialised yet");
             return;

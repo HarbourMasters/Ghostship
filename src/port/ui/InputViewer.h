@@ -22,7 +22,6 @@ class InputViewer final : public Ship::GuiWindow {
     using GuiWindow::GuiWindow;
 
     void Draw() override;
-    void InitElement() override{};
     void DrawElement() override;
     void UpdateElement() override{};
 
@@ -37,7 +36,6 @@ class InputViewerSettingsWindow final : public Ship::GuiWindow {
   public:
     using GuiWindow::GuiWindow;
 
-    void InitElement() override{};
     void DrawElement() override;
     void UpdateElement() override{};
 

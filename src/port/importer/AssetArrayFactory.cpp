@@ -1,4 +1,5 @@
 #include "AssetArrayFactory.h"
+#include "port/ShipCompat.h"
 
 #include "./types/AssetArray.h"
 #include "spdlog/spdlog.h"
@@ -23,7 +24,7 @@ ResourceFactoryBinaryAssetArrayV0::ReadResource(std::shared_ptr<Ship::File> file
             array->mPtrs.push_back(0);
             continue;
         }
-        auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path);
+        auto asset = ShipCompat::GetResourceManager()->LoadResourceProcess(path);
         if (asset != nullptr) {
             auto data = asset->GetInitData();
             if (data->Type == (uint32_t)Fast::ResourceType::Texture) {

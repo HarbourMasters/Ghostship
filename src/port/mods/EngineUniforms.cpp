@@ -1,3 +1,4 @@
+#ifdef HAVE_GFX_CUSTOM_UNIFORMS
 #include <libultraship.h>
 #include <fast/interpreter.h>
 
@@ -78,3 +79,5 @@ static void Init() {
 }
 
 static RegisterShipInitFunc initFunc(Init);
+
+#endif // HAVE_GFX_CUSTOM_UNIFORMS

@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include "port/ShipCompat.h"
 
 #include "types.h"
 #include "Engine.h"
@@ -10,8 +11,7 @@ std::unordered_map<std::string, std::unordered_map<std::string, std::vector<GfxP
 // Attention! This is primarily for cosmetics & bug fixes. For things like mods and model replacement you should be
 // using OTRs instead (When that is available). Index can be found using the commented out section below.
 extern "C" void ResourceMgr_PatchGfxByName(const char* path, const char* patchName, GfxPatch* patches, int patchCount) {
-    auto res = std::static_pointer_cast<Fast::DisplayList>(
-        Ship::Context::GetInstance()->GetResourceManager()->LoadResource(path));
+    auto res = std::static_pointer_cast<Fast::DisplayList>(ShipCompat::GetResourceManager()->LoadResource(path));
 
     // Leaving this here for people attempting to find the correct Dlist index to patch
     /*SPDLOG_INFO("Patching DList: {}", path);
@@ -57,7 +57,7 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
     char* imgData = (char*)dl;
 
     if (GameEngine_OTRSigCheck(imgData) == 1) {
-        auto resource = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
+        auto resource = ShipCompat::GetResourceManager()->LoadResource(imgData);
         auto res = std::static_pointer_cast<Fast::DisplayList>(resource);
         dl = &res->Instructions[0];
 #ifdef USE_GBI_TRACE
@@ -87,7 +87,7 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
     char* imgData = (char*)texAddr;
 
     if (texAddr != 0 && GameEngine_OTRSigCheck(imgData)) {
-        auto res = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
+        auto res = ShipCompat::GetResourceManager()->LoadResource(imgData);
 
         if (res->GetInitData()->Type == (uint32_t)Fast::ResourceType::DisplayList)
             texAddr = (uintptr_t)&((std::static_pointer_cast<Fast::DisplayList>(res))->Instructions[0]);
