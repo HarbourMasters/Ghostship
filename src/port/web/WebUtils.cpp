@@ -89,7 +89,8 @@ EM_ASYNC_JS(char*, js_pick_rom, (), {
 
         // If the dialog is closed without a selection the Promise never fires
         // otherwise, so also listen on the body focus-return as a heuristic.
-        input.addEventListener('cancel', function() { resolve(0); });
+        input.addEventListener(
+            'cancel', function() { resolve(0); });
 
         input.style.display = 'none';
         document.body.appendChild(input);
@@ -144,7 +145,8 @@ EM_ASYNC_JS(int, js_pick_into, (const char* caccept, const char* cdest), {
                 };
                 reader.readAsArrayBuffer(file);
             });
-        input.addEventListener('cancel', function() { resolve(0); });
+        input.addEventListener(
+            'cancel', function() { resolve(0); });
 
         input.style.display = 'none';
         document.body.appendChild(input);

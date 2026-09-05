@@ -646,9 +646,9 @@ struct InterpolateCtx {
                             float sy = w * old_op.billboard_matrix.scale[1] + step * new_op.billboard_matrix.scale[1];
                             float sz = w * old_op.billboard_matrix.scale[2] + step * new_op.billboard_matrix.scale[2];
                             const float* t = new_op.billboard_matrix.translation;
-                            const float (*p)[4] = interp_parent.mf;
+                            const float(*p)[4] = interp_parent.mf;
                             MtxF* result = new_replacement(new_op.billboard_matrix.dest);
-                            float (*r)[4] = result->mf;
+                            float(*r)[4] = result->mf;
                             // Billboard rotation uses the camera roll angle; columns are screen-aligned
                             // basis vectors scaled by the object's visual scale.
                             float cs = cosf((float)interp_roll * (float)M_PI / 32768.0f);
@@ -715,9 +715,9 @@ struct InterpolateCtx {
                             float m22 = cx * cy;
 
                             // Combined = parent × local  (local columns into parent space)
-                            const float (*p)[4] = interp_parent.mf;
+                            const float(*p)[4] = interp_parent.mf;
                             MtxF* result = new_replacement(new_op.animated_part_matrix.dest);
-                            float (*r2)[4] = result->mf;
+                            float(*r2)[4] = result->mf;
 
                             r2[0][0] = p[0][0] * m00 + p[1][0] * m01 + p[2][0] * m02;
                             r2[0][1] = p[0][1] * m00 + p[1][1] * m01 + p[2][1] * m02;

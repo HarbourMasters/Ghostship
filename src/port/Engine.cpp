@@ -1048,8 +1048,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                 wrapped.insert(breakAt, "\n");
                                 pos = breakAt + 1;
                             }
-                            errorMsg = "ROM extraction failed:\n\n" + wrapped +
-                                       "\n\nCheck the logs for full details.";
+                            errorMsg = "ROM extraction failed:\n\n" + wrapped + "\n\nCheck the logs for full details.";
                         } else {
                             errorMsg = "No ROM O2R file detected.\nPlease generate a ROM O2R and relaunch.";
                         }

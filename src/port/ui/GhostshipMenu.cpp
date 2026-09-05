@@ -146,6 +146,7 @@ void GhostshipMenu::OnInit(const nlohmann::json& initArgs) {
     Ship::Menu::OnInit(initArgs);
     AddMenuSettings();
     AddMenuEnhancements();
+    AddMenuShaderSettings();
     AddMenuRando();
     AddMenuAchievements();
     AddMenuDevTools();

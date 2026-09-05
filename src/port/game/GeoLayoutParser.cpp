@@ -34,9 +34,9 @@ struct GraphNodeEntry {
     GraphNodeFunc function;
 };
 
-#define FUNC(f)                                \
-    GraphNodeEntry {                           \
-        #f, reinterpret_cast<GraphNodeFunc>(f) \
+#define FUNC(f)                                  \
+    GraphNodeEntry {                             \
+#f, reinterpret_cast < GraphNodeFunc>(f) \
     }
 
 std::unordered_map<uint32_t, GraphNodeEntry> mUSFunctionTable = {
