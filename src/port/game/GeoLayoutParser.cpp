@@ -4,6 +4,9 @@
 #include <libultraship.h>
 
 #include "port/Engine.h"
+extern "C" {
+#include "sm64.h"
+}
 #include "port/events/Events.h"
 #include "port/interpolation/FrameInterpolation.h"
 
@@ -154,7 +157,7 @@ std::unordered_map<uint32_t, GraphNodeEntry> mJPFunctionTable = {
 };
 
 std::unordered_map<uint32_t, std::unordered_map<uint32_t, GraphNodeEntry>> mFunctionTable = {
-    { 0xFF2B5A63, mUSFunctionTable }, { 0xE3DAA4E, mJPFunctionTable }
+    { GAME_VERSION_US, mUSFunctionTable }, { GAME_VERSION_JP, mJPFunctionTable }
 };
 
 GraphNodeFunc GetFunctionByAddr(const uint32_t addr, std::string opcode) {

@@ -171,6 +171,26 @@ bool VerifyArchiveVersion(OTRVersion version) {
     return version.major == gBuildVersionMajor && version.minor == gBuildVersionMinor;
 }
 
+// True when the archive's "version" file holds a ROM CRC we do not recognize in either byte
+// order. A missing or unreadable file is not treated as unknown, so only a real mismatch
+// sends the user back through extraction.
+static bool IsArchiveGameVersionUnknown(const std::string& otrPath) {
+    auto archive = std::make_shared<Ship::O2rArchive>(otrPath);
+    if (!archive->Open()) {
+        return false;
+    }
+    auto t = archive->LoadFile("version");
+    if (t == nullptr || !t->IsLoaded || t->Buffer->size() < 5) {
+        return false;
+    }
+    auto stream = std::make_shared<Ship::MemoryStream>(t->Buffer->data(), t->Buffer->size());
+    auto reader = std::make_shared<Ship::BinaryReader>(stream);
+    reader->SetEndianness(static_cast<Ship::Endianness>(reader->ReadUByte()));
+    const uint32_t raw = reader->ReadUInt32();
+    const uint32_t swapped = BSWAP32(raw);
+    return raw != GAME_VERSION_US && raw != GAME_VERSION_JP && swapped != GAME_VERSION_US && swapped != GAME_VERSION_JP;
+}
+
 GameEngine::GameEngine() : dictionary(nullptr) {
     this->context = Ship::Context::CreateInstance("Ghostship", "sm64");
     this->context->Init();
@@ -652,9 +672,13 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     OTRVersion romArchiveVersion = DetectOTRVersion("sm64.o2r");
 
-    bool found = std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r"));
+    const std::string romO2RPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
+    bool found = std::filesystem::exists(romO2RPath);
     bool shouldRegen = !VerifyArchiveVersion(romArchiveVersion) && romArchiveVersion.major != INT16_MAX &&
                        !(romArchiveVersion.major == 0 && romArchiveVersion.minor == 0 && romArchiveVersion.patch == 0);
+    if (found && IsArchiveGameVersionUnknown(romO2RPath)) {
+        shouldRegen = true;
+    }
 
     std::filesystem::path ownPath;
     std::vector<std::string> args;
@@ -706,7 +730,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         GhostshipGui::RegisterPopup("Outdated ROM Archives",
                                     "Your sm64.o2r was created with incompatible versions of Ghostship.\nYou will "
                                     "now be redirected to re-extract them.");
-        std::filesystem::remove("sm64.o2r");
+        std::error_code ec;
+        std::filesystem::remove(romO2RPath, ec);
     }
 #endif
     std::shared_ptr<BS::thread_pool> threadPool = std::make_shared<BS::thread_pool>(1);
@@ -1617,8 +1642,23 @@ uint8_t GameEngine::GetBankIdByName(const std::string& name) {
     return 0;
 }
 
+// The ROM CRC in the sm64.o2r "version" file is byte-swapped in archives from older Torch
+// builds and stored as-is in newer ones, so both orders exist in the wild. Accept either so
+// an existing archive keeps working after an update.
+static uint32_t ResolveGameVersion() {
+    const auto versions = ShipCompat::GetResourceManager()->GetArchiveManager()->GetGameVersions();
+    if (versions.empty()) {
+        return 0;
+    }
+    const uint32_t raw = versions[0];
+    if (raw == GAME_VERSION_US || raw == GAME_VERSION_JP) {
+        return raw;
+    }
+    return BSWAP32(raw);
+}
+
 uint32_t GameEngine::GetGameVersion() {
-    return BSWAP32(ShipCompat::GetResourceManager()->GetArchiveManager()->GetGameVersions()[0]);
+    return ResolveGameVersion();
 }
 
 void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolationResult>& replacements) {
@@ -1805,7 +1845,7 @@ extern "C" void GameEngine_UnloadSequence(const uint8_t seqId) {
 }
 
 extern "C" uint32_t GameEngine_GetGameVersion() {
-    return ShipCompat::GetResourceManager()->GetArchiveManager()->GetGameVersions()[0];
+    return ResolveGameVersion();
 }
 
 extern "C" uint8_t* GameEngine_LoadActName(const uint32_t actId) {
