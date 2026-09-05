@@ -185,6 +185,9 @@ void Destroy() {
     mShaderSettingsWindow = nullptr;
 #endif
     mGfxDebuggerWindow = nullptr;
+    mTouchControlsOverlay = nullptr;
+    mAchievementsWindow = nullptr;
+    mEventDebuggerWindow = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,
