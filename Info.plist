@@ -12,6 +12,8 @@
     <string>@PROJECT_VERSION@</string>
     <key>CFBundleIconFile</key>
     <string>Ghostship.icns</string>
+    <key>CFBundleIconName</key>
+    <string>GhostshipIcon</string>
     <key>CFBundleIdentifier</key>
     <string>com.ghostship</string>
     <key>CFBundleDocumentTypes</key>
