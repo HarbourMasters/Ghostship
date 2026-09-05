@@ -23,7 +23,10 @@
 #include "align_asset_macro.h"
 
 #define GAME_VERSION GameEngine_GetGameVersion()
-#define ROM_JP (GAME_VERSION == 0xE3DAA4E)
+// ROM CRCs of the supported versions, as returned by GAME_VERSION.
+#define GAME_VERSION_US 0xFF2B5A63
+#define GAME_VERSION_JP 0x0E3DAA4E
+#define ROM_JP (GAME_VERSION == GAME_VERSION_JP)
 
 #if defined(_WIN32) || defined(__SWITCH__) || defined(__ANDROID__)
 #define bzero(b,len) (memset((b), '\0', (len)), (void) 0)
