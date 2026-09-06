@@ -11,8 +11,7 @@ std::vector<std::string> Rando::Spoiler::spoilerLogs;
 // global constructor runs at dlopen, before SDL's JNI is set up, so asking then
 // aborts the process with "CallStaticObjectMethod received NULL jclass".
 static const std::filesystem::path& RandomizerFolderPath() {
-    static const std::filesystem::path path(
-        Ship::Context::GetPathRelativeToAppDirectory("randomizer", appShortName));
+    static const std::filesystem::path path(Ship::Context::GetPathRelativeToAppDirectory("randomizer", appShortName));
     return path;
 }
 

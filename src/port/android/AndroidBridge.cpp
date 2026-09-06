@@ -23,6 +23,7 @@
 #include <string>
 
 #include "port/GameExtractor.h"
+#include "port/ShipCompat.h"
 #include "ship/Context.h"
 #include "ship/window/Window.h"
 #include "ship/window/gui/Gui.h"
@@ -61,12 +62,7 @@ extern "C" {
  * next poll.
  */
 JNIEXPORT jboolean JNICALL Java_dev_net64_ghostship_MainActivity_isMenuOpen(JNIEnv*, jobject) {
-    auto context = Ship::Context::GetInstance();
-    if (context == nullptr) {
-        return JNI_FALSE;
-    }
-
-    auto window = context->GetWindow();
+    auto window = ShipCompat::GetWindow();
     if (window == nullptr) {
         return JNI_FALSE;
     }
@@ -87,9 +83,9 @@ JNIEXPORT jboolean JNICALL Java_dev_net64_ghostship_MainActivity_isMenuOpen(JNIE
  * what went wrong.
  */
 JNIEXPORT jstring JNICALL Java_dev_net64_ghostship_GameAssets_nativeGenerateGameArchive(JNIEnv* env, jobject,
-                                                                                         jstring jRomPath,
-                                                                                         jstring jSourceDir,
-                                                                                         jstring jDestDir) {
+                                                                                        jstring jRomPath,
+                                                                                        jstring jSourceDir,
+                                                                                        jstring jDestDir) {
     const std::string romPath = ToStdString(env, jRomPath);
     const std::string sourceDir = ToStdString(env, jSourceDir);
     const std::string destDir = ToStdString(env, jDestDir);
@@ -114,9 +110,7 @@ JNIEXPORT jstring JNICALL Java_dev_net64_ghostship_GameAssets_nativeGenerateGame
         }
     } catch (const std::exception& error) {
         extractError = std::string("Torch could not extract the ROM: ") + error.what();
-    } catch (...) {
-        extractError = "Torch could not extract the ROM.";
-    }
+    } catch (...) { extractError = "Torch could not extract the ROM."; }
 
     // Companion is deliberately left alive, holding the ROM and every decoded
     // asset. Every other platform leaks it the same way, so ~Companion is dead
