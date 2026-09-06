@@ -650,18 +650,22 @@ void Menu::DrawElement() {
     ImVec2 pos = window->DC.CursorPos;
     float centerX = pos.x + windowWidth / 2 - (style.ItemSpacing.x * (menuEntries.size() + 1));
     std::vector<ImVec2> headerSizes;
-    float headerWidth = style.ItemSpacing.x + 20;
+    // headerWidth caps the header child, so it has to cover the whole row: every tab
+    // (text plus frame padding), the item spacing between each pair of items, and the
+    // search box. Undercounting it clamps the child narrower than its content and the
+    // horizontal scrollbar appears even when the row would fit.
+    float headerWidth = 20;
     bool headerSearch = !CVarGetInteger(CVAR_SETTING("Menu.SidebarSearch"), 0);
     if (headerSearch) {
-        headerWidth += 200.0f + style.ItemSpacing.x + style.FramePadding.x;
+        headerWidth += style.ItemSpacing.x + 200.0f + style.FramePadding.x;
     }
     for (auto& label : menuOrder) {
         ImVec2 size = ImGui::CalcTextSize(label.c_str());
-        headerSizes.push_back(size);
-        headerWidth += size.x + style.FramePadding.x * 2;
-        if (label == headerIndex) {
+        if (!headerSizes.empty()) {
             headerWidth += style.ItemSpacing.x;
         }
+        headerSizes.push_back(size);
+        headerWidth += size.x + style.FramePadding.x * 2;
     }
 
     // Full screen menu with widths below 1280, heights below 800.
@@ -739,11 +743,13 @@ void Menu::DrawElement() {
         color.w = 0.6f;
         ImGui::PushStyleColor(ImGuiCol_FrameBg, color);
         ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
+        // Anchor the placeholder to the search box itself rather than to headerWidth.
+        float searchBoxX = ImGui::GetCursorPosX();
         menuSearch.Draw("##search", 200.0f);
         menuSearchText = menuSearch.InputBuf;
         menuSearchText.erase(std::remove(menuSearchText.begin(), menuSearchText.end(), ' '), menuSearchText.end());
         if (menuSearchText.length() < 1) {
-            ImGui::SameLine(headerWidth - 200.0f + style.ItemSpacing.x);
+            ImGui::SameLine(searchBoxX + style.FramePadding.x);
             ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 0.4f), "Search...");
         }
         ImGui::PopStyleVar();
