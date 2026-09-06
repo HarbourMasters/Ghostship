@@ -9,6 +9,10 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0 # full history so the libultraship submodule gitlink resolves
+      - name: Setup MacPorts
+        uses: melusina-org/setup-macports@v1
+        with:
+          parameters: '.github/macports.yml'
       - name: Configure ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
@@ -18,37 +22,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-14-ccache-${{ github.ref }}
             ${{ runner.os }}-14-ccache
-      # Needed to apply sudo for macports cache restore
-      # - name: Install gtar wrapper
-      #   run: |
-      #     sudo mv /opt/homebrew/bin/gtar /opt/homebrew/bin/gtar.orig
-      #     sudo cp .github/workflows/gtar /opt/homebrew/bin/gtar
-      #     sudo chmod +x /opt/homebrew/bin/gtar
-      - name: Restore Cached MacPorts
-        id: restore-cache-macports
-        uses: actions/cache/restore@v4
-        with:
-          key: ${{ runner.os }}-14-macports-${{ github.ref }}-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-14-macports-${{ github.ref }}
-            ${{ runner.os }}-14-macports-
-          path: /opt/local/
-      - name: Install MacPorts (if necessary)
-        run: |
-          if command -v /opt/local/bin/port 2>&1 >/dev/null; then
-            echo "MacPorts already installed"
-          else
-            echo "Installing MacPorts"
-            wget https://github.com/macports/macports-base/releases/download/v2.11.5/MacPorts-2.11.5-14-Sonoma.pkg
-            sudo installer -pkg ./MacPorts-2.11.5-14-Sonoma.pkg -target /
-          fi
-          echo "/opt/local/bin:/opt/local/sbin" >> "$GITHUB_PATH"
       - name: Install Python dependencies
         run: python3 -m pip install -r libultraship/requirements.txt --break-system-packages || python3 -m pip install -r libultraship/requirements.txt
       - name: Install dependencies
         run: |
           brew uninstall --ignore-dependencies libpng
-          sudo port install libsdl2 +universal libsdl2_net +universal libpng +universal glew +universal libzip +universal nlohmann-json +universal tinyxml2 +universal libogg +universal libopus +universal opusfile +universal libvorbis +universal mbedtls +universal vulkan-headers +universal vulkan-loader +universal MoltenVK +universal shaderc +universal
           brew install ninja
       - name: Build (Universal)
         run: |
@@ -68,9 +46,3 @@ jobs:
             name: ghostship-mac-universal
             path: ghostship-release
             retention-days: 1
-      - name: Save Cache MacPorts
-        if: ${{ github.ref_name == github.event.repository.default_branch }}
-        uses: actions/cache/save@v4
-        with:
-          key: ${{ steps.restore-cache-macports.outputs.cache-primary-key }}
-          path: /opt/local/
