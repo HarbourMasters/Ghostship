@@ -1218,7 +1218,7 @@ static const ALIGN_ASSET(2) char bbh_seg7_collision_level[] = "__OTR__levels/bbh
 
 static const ALIGN_ASSET(2) char bbh_seg7_rooms[] = "__OTR__levels/bbh/bbh_seg7_rooms";
 
-static const char bbh_seg7_macro_objs[] = "__OTR__levels/bbh/bbh_seg7_macro_objs";
+static const ALIGN_ASSET(2) char bbh_seg7_macro_objs[] = "__OTR__levels/bbh/bbh_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char bbh_seg7_collision_staircase_step[] = "__OTR__levels/bbh/bbh_seg7_collision_staircase_step";
 
@@ -1234,11 +1234,11 @@ static const ALIGN_ASSET(2) char bbh_seg7_collision_merry_go_round[] = "__OTR__l
 
 static const ALIGN_ASSET(2) char bbh_seg7_collision_coffin[] = "__OTR__levels/bbh/bbh_seg7_collision_coffin";
 
-static const char bbh_movtex_merry_go_round_water_entrance_data[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_entrance_data";
+static const ALIGN_ASSET(2) char bbh_movtex_merry_go_round_water_entrance_data[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_entrance_data";
 
-static const char bbh_movtex_merry_go_round_water_side_data[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_side_data";
+static const ALIGN_ASSET(2) char bbh_movtex_merry_go_round_water_side_data[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_side_data";
 
-static const char bbh_movtex_merry_go_round_water_entrance[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_entrance";
+static const ALIGN_ASSET(2) char bbh_movtex_merry_go_round_water_entrance[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_entrance";
 
-static const char bbh_movtex_merry_go_round_water_side[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_side";
+static const ALIGN_ASSET(2) char bbh_movtex_merry_go_round_water_side[] = "__OTR__levels/bbh/bbh_movtex_merry_go_round_water_side";
 

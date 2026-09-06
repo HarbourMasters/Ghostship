@@ -170,5 +170,5 @@ static const ALIGN_ASSET(2) char totwc_seg7_dl_070079A8[] = "__OTR__levels/totwc
 
 static const ALIGN_ASSET(2) char totwc_seg7_collision[] = "__OTR__levels/totwc/totwc_seg7_collision";
 
-static const char totwc_seg7_macro_objs[] = "__OTR__levels/totwc/totwc_seg7_macro_objs";
+static const ALIGN_ASSET(2) char totwc_seg7_macro_objs[] = "__OTR__levels/totwc/totwc_seg7_macro_objs";
 

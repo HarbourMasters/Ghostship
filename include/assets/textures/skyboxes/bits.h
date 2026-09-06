@@ -128,5 +128,5 @@ static const ALIGN_ASSET(2) char bits_skybox_texture_00062[] = "__OTR__textures/
 
 static const ALIGN_ASSET(2) char bits_skybox_texture_00063[] = "__OTR__textures/skyboxes/bits/bits.63";
 
-static const char bits_skybox_ptrlist[] = "__OTR__textures/skyboxes/bits/bits_skybox_ptrlist";
+static const ALIGN_ASSET(2) char bits_skybox_ptrlist[] = "__OTR__textures/skyboxes/bits/bits_skybox_ptrlist";
 

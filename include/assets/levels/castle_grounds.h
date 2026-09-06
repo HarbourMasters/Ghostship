@@ -418,7 +418,7 @@ static const ALIGN_ASSET(2) char castle_grounds_seg7_dl_0700C728[] = "__OTR__lev
 
 static const ALIGN_ASSET(2) char castle_grounds_seg7_dl_0700C768[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_dl_0700C768";
 
-static const char castle_grounds_seg7_anims_flags[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_anims_flags";
+static const ALIGN_ASSET(2) char castle_grounds_seg7_anims_flags[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_anims_flags";
 
 static const ALIGN_ASSET(2) char castle_grounds_seg7_vertex_0700C968[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_vertex_0700C968";
 
@@ -440,19 +440,19 @@ static const ALIGN_ASSET(2) char castle_grounds_seg7_us_dl_0700F2E8[] = "__OTR__
 
 static const ALIGN_ASSET(2) char castle_grounds_seg7_collision_level[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_collision_level";
 
-static const char castle_grounds_seg7_macro_objs[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_macro_objs";
+static const ALIGN_ASSET(2) char castle_grounds_seg7_macro_objs[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char castle_grounds_seg7_moat_grills[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_moat_grills";
 
 static const ALIGN_ASSET(2) char castle_grounds_seg7_cannon_grill[] = "__OTR__levels/castle_grounds/castle_grounds_seg7_cannon_grill";
 
-static const char castle_grounds_movtex_moat_water_data[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_moat_water_data";
+static const ALIGN_ASSET(2) char castle_grounds_movtex_moat_water_data[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_moat_water_data";
 
-static const char castle_grounds_movtex_lake_water_data[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_lake_water_data";
+static const ALIGN_ASSET(2) char castle_grounds_movtex_lake_water_data[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_lake_water_data";
 
-static const char castle_grounds_movtex_water[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_water";
+static const ALIGN_ASSET(2) char castle_grounds_movtex_water[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_water";
 
-static const char castle_grounds_movtex_tris_waterfall[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_tris_waterfall";
+static const ALIGN_ASSET(2) char castle_grounds_movtex_tris_waterfall[] = "__OTR__levels/castle_grounds/castle_grounds_movtex_tris_waterfall";
 
 static const ALIGN_ASSET(2) char castle_grounds_dl_waterfall[] = "__OTR__levels/castle_grounds/castle_grounds_dl_waterfall";
 

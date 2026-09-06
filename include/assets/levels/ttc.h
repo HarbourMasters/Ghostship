@@ -666,7 +666,7 @@ static const ALIGN_ASSET(2) char ttc_seg7_collision_clock_main_rotation[] = "__O
 
 static const ALIGN_ASSET(2) char ttc_seg7_collision_rotating_clock_platform2[] = "__OTR__levels/ttc/ttc_seg7_collision_rotating_clock_platform2";
 
-static const char ttc_seg7_macro_objs[] = "__OTR__levels/ttc/ttc_seg7_macro_objs";
+static const ALIGN_ASSET(2) char ttc_seg7_macro_objs[] = "__OTR__levels/ttc/ttc_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char ttc_lights_surface_treadmill[] = "__OTR__levels/ttc/ttc_lights_surface_treadmill";
 
@@ -676,9 +676,9 @@ static const ALIGN_ASSET(2) char ttc_dl_surface_treadmill_begin[] = "__OTR__leve
 
 static const ALIGN_ASSET(2) char ttc_dl_surface_treadmill_end[] = "__OTR__levels/ttc/ttc_dl_surface_treadmill_end";
 
-static const char ttc_movtex_tris_big_surface_treadmill[] = "__OTR__levels/ttc/ttc_movtex_tris_big_surface_treadmill";
+static const ALIGN_ASSET(2) char ttc_movtex_tris_big_surface_treadmill[] = "__OTR__levels/ttc/ttc_movtex_tris_big_surface_treadmill";
 
-static const char ttc_movtex_tris_small_surface_treadmill[] = "__OTR__levels/ttc/ttc_movtex_tris_small_surface_treadmill";
+static const ALIGN_ASSET(2) char ttc_movtex_tris_small_surface_treadmill[] = "__OTR__levels/ttc/ttc_movtex_tris_small_surface_treadmill";
 
 static const ALIGN_ASSET(2) char ttc_dl_surface_treadmill[] = "__OTR__levels/ttc/ttc_dl_surface_treadmill";
 

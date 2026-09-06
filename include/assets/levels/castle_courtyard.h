@@ -200,9 +200,9 @@ static const ALIGN_ASSET(2) char castle_courtyard_seg7_dl_07005938[] = "__OTR__l
 
 static const ALIGN_ASSET(2) char castle_courtyard_seg7_collision[] = "__OTR__levels/castle_courtyard/castle_courtyard_seg7_collision";
 
-static const char castle_courtyard_seg7_macro_objs[] = "__OTR__levels/castle_courtyard/castle_courtyard_seg7_macro_objs";
+static const ALIGN_ASSET(2) char castle_courtyard_seg7_macro_objs[] = "__OTR__levels/castle_courtyard/castle_courtyard_seg7_macro_objs";
 
-static const char castle_courtyard_movtex_star_statue_water_data[] = "__OTR__levels/castle_courtyard/castle_courtyard_movtex_star_statue_water_data";
+static const ALIGN_ASSET(2) char castle_courtyard_movtex_star_statue_water_data[] = "__OTR__levels/castle_courtyard/castle_courtyard_movtex_star_statue_water_data";
 
-static const char castle_courtyard_movtex_star_statue_water[] = "__OTR__levels/castle_courtyard/castle_courtyard_movtex_star_statue_water";
+static const ALIGN_ASSET(2) char castle_courtyard_movtex_star_statue_water[] = "__OTR__levels/castle_courtyard/castle_courtyard_movtex_star_statue_water";
 

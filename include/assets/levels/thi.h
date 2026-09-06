@@ -392,29 +392,29 @@ static const ALIGN_ASSET(2) char thi_seg7_area_2_collision[] = "__OTR__levels/th
 
 static const ALIGN_ASSET(2) char thi_seg7_area_3_collision[] = "__OTR__levels/thi/thi_seg7_area_3_collision";
 
-static const char thi_seg7_area_1_macro_objs[] = "__OTR__levels/thi/thi_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char thi_seg7_area_1_macro_objs[] = "__OTR__levels/thi/thi_seg7_area_1_macro_objs";
 
-static const char thi_seg7_area_2_macro_objs[] = "__OTR__levels/thi/thi_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char thi_seg7_area_2_macro_objs[] = "__OTR__levels/thi/thi_seg7_area_2_macro_objs";
 
-static const char thi_seg7_area_3_macro_objs[] = "__OTR__levels/thi/thi_seg7_area_3_macro_objs";
+static const ALIGN_ASSET(2) char thi_seg7_area_3_macro_objs[] = "__OTR__levels/thi/thi_seg7_area_3_macro_objs";
 
 static const ALIGN_ASSET(2) char thi_seg7_collision_top_trap[] = "__OTR__levels/thi/thi_seg7_collision_top_trap";
 
-static const char thi_seg7_trajectory_koopa[] = "__OTR__levels/thi/thi_seg7_trajectory_koopa";
+static const ALIGN_ASSET(2) char thi_seg7_trajectory_koopa[] = "__OTR__levels/thi/thi_seg7_trajectory_koopa";
 
-static const char thi_movtex_area1_short_side_water_data[] = "__OTR__levels/thi/thi_movtex_area1_short_side_water_data";
+static const ALIGN_ASSET(2) char thi_movtex_area1_short_side_water_data[] = "__OTR__levels/thi/thi_movtex_area1_short_side_water_data";
 
-static const char thi_movtex_area1_large_side_water_data[] = "__OTR__levels/thi/thi_movtex_area1_large_side_water_data";
+static const ALIGN_ASSET(2) char thi_movtex_area1_large_side_water_data[] = "__OTR__levels/thi/thi_movtex_area1_large_side_water_data";
 
-static const char thi_movtex_area1_mountain_top_water_data[] = "__OTR__levels/thi/thi_movtex_area1_mountain_top_water_data";
+static const ALIGN_ASSET(2) char thi_movtex_area1_mountain_top_water_data[] = "__OTR__levels/thi/thi_movtex_area1_mountain_top_water_data";
 
-static const char thi_movtex_area1_water[] = "__OTR__levels/thi/thi_movtex_area1_water";
+static const ALIGN_ASSET(2) char thi_movtex_area1_water[] = "__OTR__levels/thi/thi_movtex_area1_water";
 
-static const char thi_movtex_area2_short_side_water_data[] = "__OTR__levels/thi/thi_movtex_area2_short_side_water_data";
+static const ALIGN_ASSET(2) char thi_movtex_area2_short_side_water_data[] = "__OTR__levels/thi/thi_movtex_area2_short_side_water_data";
 
-static const char thi_movtex_area2_large_side_water_data[] = "__OTR__levels/thi/thi_movtex_area2_large_side_water_data";
+static const ALIGN_ASSET(2) char thi_movtex_area2_large_side_water_data[] = "__OTR__levels/thi/thi_movtex_area2_large_side_water_data";
 
-static const char thi_movtex_area2_mountain_top_water_data[] = "__OTR__levels/thi/thi_movtex_area2_mountain_top_water_data";
+static const ALIGN_ASSET(2) char thi_movtex_area2_mountain_top_water_data[] = "__OTR__levels/thi/thi_movtex_area2_mountain_top_water_data";
 
-static const char thi_movtex_area2_water[] = "__OTR__levels/thi/thi_movtex_area2_water";
+static const ALIGN_ASSET(2) char thi_movtex_area2_water[] = "__OTR__levels/thi/thi_movtex_area2_water";
 

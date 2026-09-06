@@ -1,4 +1,4 @@
 #pragma once
 
-static const char dAmpAnimsList[] = "__OTR__actors/amp/anims/amp_anims_list";
+static const ALIGN_ASSET(2) char dAmpAnimsList[] = "__OTR__actors/amp/anims/amp_anims_list";
 

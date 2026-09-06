@@ -480,7 +480,7 @@ static const ALIGN_ASSET(2) char bitdw_seg7_dl_0700D3E8[] = "__OTR__levels/bitdw
 
 static const ALIGN_ASSET(2) char bitdw_seg7_collision_level[] = "__OTR__levels/bitdw/bitdw_seg7_collision_level";
 
-static const char bitdw_seg7_macro_objs[] = "__OTR__levels/bitdw/bitdw_seg7_macro_objs";
+static const ALIGN_ASSET(2) char bitdw_seg7_macro_objs[] = "__OTR__levels/bitdw/bitdw_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char bitdw_seg7_collision_0700F688[] = "__OTR__levels/bitdw/bitdw_seg7_collision_0700F688";
 

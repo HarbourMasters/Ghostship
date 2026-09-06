@@ -276,6 +276,10 @@ jobs:
   build-android:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
+    env:
+      # Job-level so the signing steps can test it; a step's own `env` is not
+      # visible to that step's `if`.
+      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -286,13 +290,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      # The wrapper pins the Gradle version the build was written against; AGP
+      # refuses to run on an older one.
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.10.2'
       - name: Install Android SDK components
-        # LUS needs CMake >= 3.24; NDK version matches android/app/build.gradle
-        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "cmake;3.30.3" "ndk;27.2.12479018" "platforms;android-34" "build-tools;34.0.0" > /dev/null
+        # LUS needs CMake >= 3.24; NDK and SDK versions match android/app/build.gradle.kts
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "cmake;3.30.3" "ndk;30.0.15729638" "platforms;android-36" "build-tools;36.0.0" > /dev/null
       - name: Install Python dependencies
         run: pip install -r libultraship/requirements.txt
       # gamedata.zip is packed from the repo root, so the o2r must land there first
@@ -301,13 +305,40 @@ jobs:
         with:
           name: ghostship.o2r
           path: .
-      - name: Build APK (arm64, debug-signed for sideloading)
-        run: gradle -p android assembleRelease
+      # Signed with the release key when the secrets are set. Without them the
+      # Gradle build falls back to the debug key, so forks still get an
+      # installable APK.
+      - name: Write release keystore
+        if: env.KEYSTORE_BASE64 != ''
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > android/app/release.keystore
+          test -s android/app/release.keystore || (echo "ERROR: empty keystore" && exit 1)
+      - name: Build APK (arm64 + armeabi-v7a)
+        if: env.KEYSTORE_BASE64 != ''
+        run: android/gradlew -p android assembleRelease
+        env:
+          KEYSTORE_FILE: release.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      - name: Build APK (arm64 + armeabi-v7a, debug-signed)
+        if: env.KEYSTORE_BASE64 == ''
+        run: android/gradlew -p android assembleRelease
       - name: Collect APK
         run: |
           APK=android/app/build/outputs/apk/release/app-release.apk
           ls -la "$APK" || (echo "ERROR: APK not found" && exit 1)
+          # Every asset GameAssets.kt opens by name. An APK missing one of them
+          # installs and launches fine, then fails on the device during staging,
+          # so check it here rather than after the release goes out.
+          for entry in assets/gamedata.zip assets/gamedata.version \
+                       assets/gamecontrollerdb.txt assets/mods/place_mods_here.txt; do
+            unzip -Z1 "$APK" | grep -qx "$entry" || (echo "ERROR: $entry missing from the APK" && exit 1)
+          done
           cp "$APK" Ghostship.apk
+      - name: Clean up keystore
+        if: always()
+        run: rm -f android/app/release.keystore
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:

@@ -598,17 +598,17 @@ static const ALIGN_ASSET(2) char ccm_seg7_dl_07013870[] = "__OTR__levels/ccm/ccm
 
 static const ALIGN_ASSET(2) char ccm_seg7_area_1_collision[] = "__OTR__levels/ccm/ccm_seg7_area_1_collision";
 
-static const char ccm_seg7_area_1_macro_objs[] = "__OTR__levels/ccm/ccm_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char ccm_seg7_area_1_macro_objs[] = "__OTR__levels/ccm/ccm_seg7_area_1_macro_objs";
 
 static const ALIGN_ASSET(2) char ccm_seg7_collision_070163F8[] = "__OTR__levels/ccm/ccm_seg7_collision_070163F8";
 
-static const char ccm_seg7_trajectory_snowman[] = "__OTR__levels/ccm/ccm_seg7_trajectory_snowman";
+static const ALIGN_ASSET(2) char ccm_seg7_trajectory_snowman[] = "__OTR__levels/ccm/ccm_seg7_trajectory_snowman";
 
-static const char ccm_seg7_trajectory_0701669C[] = "__OTR__levels/ccm/ccm_seg7_trajectory_0701669C";
+static const ALIGN_ASSET(2) char ccm_seg7_trajectory_0701669C[] = "__OTR__levels/ccm/ccm_seg7_trajectory_0701669C";
 
-static const char ccm_movtex_penguin_puddle_water_data[] = "__OTR__levels/ccm/ccm_movtex_penguin_puddle_water_data";
+static const ALIGN_ASSET(2) char ccm_movtex_penguin_puddle_water_data[] = "__OTR__levels/ccm/ccm_movtex_penguin_puddle_water_data";
 
-static const char ccm_movtex_penguin_puddle_water[] = "__OTR__levels/ccm/ccm_movtex_penguin_puddle_water";
+static const ALIGN_ASSET(2) char ccm_movtex_penguin_puddle_water[] = "__OTR__levels/ccm/ccm_movtex_penguin_puddle_water";
 
 static const ALIGN_ASSET(2) char ccm_seg7_lights_07016718[] = "__OTR__levels/ccm/ccm_seg7_lights_07016718";
 
@@ -928,7 +928,7 @@ static const ALIGN_ASSET(2) char ccm_seg7_dl_070207F0[] = "__OTR__levels/ccm/ccm
 
 static const ALIGN_ASSET(2) char ccm_seg7_area_2_collision[] = "__OTR__levels/ccm/ccm_seg7_area_2_collision";
 
-static const char ccm_seg7_area_2_macro_objs[] = "__OTR__levels/ccm/ccm_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char ccm_seg7_area_2_macro_objs[] = "__OTR__levels/ccm/ccm_seg7_area_2_macro_objs";
 
-static const char ccm_seg7_trajectory_penguin_race[] = "__OTR__levels/ccm/ccm_seg7_trajectory_penguin_race";
+static const ALIGN_ASSET(2) char ccm_seg7_trajectory_penguin_race[] = "__OTR__levels/ccm/ccm_seg7_trajectory_penguin_race";
 

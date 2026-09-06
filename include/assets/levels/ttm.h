@@ -690,17 +690,17 @@ static const ALIGN_ASSET(2) char ttm_seg7_dl_07012410[] = "__OTR__levels/ttm/ttm
 
 static const ALIGN_ASSET(2) char ttm_seg7_painting_dl_07012430[] = "__OTR__levels/ttm/ttm_seg7_painting_dl_07012430";
 
-static const char ttm_seg7_painting_texture_map_bottom_07012450[] = "__OTR__levels/ttm/ttm_seg7_painting_texture_map_bottom_07012450";
+static const ALIGN_ASSET(2) char ttm_seg7_painting_texture_map_bottom_07012450[] = "__OTR__levels/ttm/ttm_seg7_painting_texture_map_bottom_07012450";
 
-static const char ttm_seg7_painting_top_0701296C[] = "__OTR__levels/ttm/ttm_seg7_painting_top_0701296C";
+static const ALIGN_ASSET(2) char ttm_seg7_painting_top_0701296C[] = "__OTR__levels/ttm/ttm_seg7_painting_top_0701296C";
 
-static const char ttm_seg7_painting_texture_maps_07012E88[] = "__OTR__levels/ttm/ttm_seg7_painting_texture_maps_07012E88";
+static const ALIGN_ASSET(2) char ttm_seg7_painting_texture_maps_07012E88[] = "__OTR__levels/ttm/ttm_seg7_painting_texture_maps_07012E88";
 
 static const ALIGN_ASSET(2) char ttm_seg7_painting_dl_07012E98[] = "__OTR__levels/ttm/ttm_seg7_painting_dl_07012E98";
 
-static const char ttm_seg7_painting_textures_07012EF8[] = "__OTR__levels/ttm/ttm_seg7_painting_textures_07012EF8";
+static const ALIGN_ASSET(2) char ttm_seg7_painting_textures_07012EF8[] = "__OTR__levels/ttm/ttm_seg7_painting_textures_07012EF8";
 
-static const char ttm_slide_painting[] = "__OTR__levels/ttm/ttm_slide_painting";
+static const ALIGN_ASSET(2) char ttm_slide_painting[] = "__OTR__levels/ttm/ttm_slide_painting";
 
 static const ALIGN_ASSET(2) char ttm_seg7_lights_07012F78[] = "__OTR__levels/ttm/ttm_seg7_lights_07012F78";
 
@@ -732,23 +732,23 @@ static const ALIGN_ASSET(2) char ttm_seg7_collision_ukiki_cage[] = "__OTR__level
 
 static const ALIGN_ASSET(2) char ttm_seg7_area_1_collision[] = "__OTR__levels/ttm/ttm_seg7_area_1_collision";
 
-static const char ttm_seg7_area_1_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_1_macro_objs";
+static const ALIGN_ASSET(2) char ttm_seg7_area_1_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_1_macro_objs";
 
-static const char ttm_seg7_trajectory_070170A0[] = "__OTR__levels/ttm/ttm_seg7_trajectory_070170A0";
+static const ALIGN_ASSET(2) char ttm_seg7_trajectory_070170A0[] = "__OTR__levels/ttm/ttm_seg7_trajectory_070170A0";
 
-static const char ttm_movtex_puddle_data[] = "__OTR__levels/ttm/ttm_movtex_puddle_data";
+static const ALIGN_ASSET(2) char ttm_movtex_puddle_data[] = "__OTR__levels/ttm/ttm_movtex_puddle_data";
 
-static const char ttm_movtex_puddle[] = "__OTR__levels/ttm/ttm_movtex_puddle";
+static const ALIGN_ASSET(2) char ttm_movtex_puddle[] = "__OTR__levels/ttm/ttm_movtex_puddle";
 
-static const char ttm_movtex_tris_begin_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_begin_waterfall";
+static const ALIGN_ASSET(2) char ttm_movtex_tris_begin_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_begin_waterfall";
 
-static const char ttm_movtex_tris_begin_puddle_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_begin_puddle_waterfall";
+static const ALIGN_ASSET(2) char ttm_movtex_tris_begin_puddle_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_begin_puddle_waterfall";
 
-static const char ttm_movtex_tris_end_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_end_waterfall";
+static const ALIGN_ASSET(2) char ttm_movtex_tris_end_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_end_waterfall";
 
-static const char ttm_movtex_tris_end_puddle_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_end_puddle_waterfall";
+static const ALIGN_ASSET(2) char ttm_movtex_tris_end_puddle_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_end_puddle_waterfall";
 
-static const char ttm_movtex_tris_puddle_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_puddle_waterfall";
+static const ALIGN_ASSET(2) char ttm_movtex_tris_puddle_waterfall[] = "__OTR__levels/ttm/ttm_movtex_tris_puddle_waterfall";
 
 static const ALIGN_ASSET(2) char ttm_dl_waterfall[] = "__OTR__levels/ttm/ttm_dl_waterfall";
 
@@ -1490,9 +1490,9 @@ static const ALIGN_ASSET(2) char ttm_seg7_area_4_collision[] = "__OTR__levels/tt
 
 static const ALIGN_ASSET(2) char ttm_seg7_collision_podium_warp[] = "__OTR__levels/ttm/ttm_seg7_collision_podium_warp";
 
-static const char ttm_seg7_area_2_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_2_macro_objs";
+static const ALIGN_ASSET(2) char ttm_seg7_area_2_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_2_macro_objs";
 
-static const char ttm_seg7_area_3_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_3_macro_objs";
+static const ALIGN_ASSET(2) char ttm_seg7_area_3_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_3_macro_objs";
 
-static const char ttm_seg7_area_4_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_4_macro_objs";
+static const ALIGN_ASSET(2) char ttm_seg7_area_4_macro_objs[] = "__OTR__levels/ttm/ttm_seg7_area_4_macro_objs";
 

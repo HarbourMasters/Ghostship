@@ -13,12 +13,20 @@
 namespace fs = std::filesystem;
 
 int16_t selectedFileNum = 0;
-const fs::path randomizerFolderPath(Ship::Context::GetPathRelativeToAppDirectory("randomizer", "sm64"));
+
+// Resolved on first use rather than at load time. On Android the app directory
+// comes from SDL_AndroidGetExternalStoragePath(), which calls into Java — and a
+// global constructor runs at dlopen, before SDL's JNI is set up, so asking then
+// aborts the process with "CallStaticObjectMethod received NULL jclass".
+static const fs::path& RandomizerFolderPath() {
+    static const fs::path path(Ship::Context::GetPathRelativeToAppDirectory("randomizer", "sm64"));
+    return path;
+}
 
 // Entry point for the module, run once on game boot
 void Rando::Init() {
-    if (!fs::exists(randomizerFolderPath)) {
-        fs::create_directory(randomizerFolderPath);
+    if (!fs::exists(RandomizerFolderPath())) {
+        fs::create_directory(RandomizerFolderPath());
     }
 
     Rando::Spoiler::RefreshSpoilerLogs();

@@ -128,5 +128,5 @@ static const ALIGN_ASSET(2) char bidw_skybox_texture_00062[] = "__OTR__textures/
 
 static const ALIGN_ASSET(2) char bidw_skybox_texture_00063[] = "__OTR__textures/skyboxes/bidw/bidw.63";
 
-static const char bidw_skybox_ptrlist[] = "__OTR__textures/skyboxes/bidw/bidw_skybox_ptrlist";
+static const ALIGN_ASSET(2) char bidw_skybox_ptrlist[] = "__OTR__textures/skyboxes/bidw/bidw_skybox_ptrlist";
 

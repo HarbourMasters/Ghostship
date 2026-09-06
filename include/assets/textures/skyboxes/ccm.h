@@ -128,5 +128,5 @@ static const ALIGN_ASSET(2) char ccm_skybox_texture_00062[] = "__OTR__textures/s
 
 static const ALIGN_ASSET(2) char ccm_skybox_texture_00063[] = "__OTR__textures/skyboxes/ccm/ccm.63";
 
-static const char ccm_skybox_ptrlist[] = "__OTR__textures/skyboxes/ccm/ccm_skybox_ptrlist";
+static const ALIGN_ASSET(2) char ccm_skybox_ptrlist[] = "__OTR__textures/skyboxes/ccm/ccm_skybox_ptrlist";
 

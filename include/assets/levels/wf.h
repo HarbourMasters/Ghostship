@@ -718,9 +718,9 @@ static const ALIGN_ASSET(2) char wf_seg7_collision_bullet_bill_cannon[] = "__OTR
 
 static const ALIGN_ASSET(2) char wf_seg7_collision_070102D8[] = "__OTR__levels/wf/wf_seg7_collision_070102D8";
 
-static const char wf_seg7_macro_objs[] = "__OTR__levels/wf/wf_seg7_macro_objs";
+static const ALIGN_ASSET(2) char wf_seg7_macro_objs[] = "__OTR__levels/wf/wf_seg7_macro_objs";
 
-static const char wf_movtex_water_data[] = "__OTR__levels/wf/wf_movtex_water_data";
+static const ALIGN_ASSET(2) char wf_movtex_water_data[] = "__OTR__levels/wf/wf_movtex_water_data";
 
-static const char wf_movtex_water[] = "__OTR__levels/wf/wf_movtex_water";
+static const ALIGN_ASSET(2) char wf_movtex_water[] = "__OTR__levels/wf/wf_movtex_water";
 

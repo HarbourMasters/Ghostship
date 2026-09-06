@@ -1122,21 +1122,21 @@ static const ALIGN_ASSET(2) char hmc_seg7_dl_070242A0[] = "__OTR__levels/hmc/hmc
 
 static const ALIGN_ASSET(2) char hmc_seg7_painting_dl_070242D0[] = "__OTR__levels/hmc/hmc_seg7_painting_dl_070242D0";
 
-static const char hmc_seg7_pool_texture_map_070242F0[] = "__OTR__levels/hmc/hmc_seg7_pool_texture_map_070242F0";
+static const ALIGN_ASSET(2) char hmc_seg7_pool_texture_map_070242F0[] = "__OTR__levels/hmc/hmc_seg7_pool_texture_map_070242F0";
 
-static const char hmc_seg7_painting_texture_maps_07024CD4[] = "__OTR__levels/hmc/hmc_seg7_painting_texture_maps_07024CD4";
+static const ALIGN_ASSET(2) char hmc_seg7_painting_texture_maps_07024CD4[] = "__OTR__levels/hmc/hmc_seg7_painting_texture_maps_07024CD4";
 
 static const ALIGN_ASSET(2) char hmc_seg7_texture_07024CE0[] = "__OTR__levels/hmc/7";
 
 static const ALIGN_ASSET(2) char hmc_seg7_painting_dl_070254E0[] = "__OTR__levels/hmc/hmc_seg7_painting_dl_070254E0";
 
-static const char hmc_seg7_painting_textures_07025518[] = "__OTR__levels/hmc/hmc_seg7_painting_textures_07025518";
+static const ALIGN_ASSET(2) char hmc_seg7_painting_textures_07025518[] = "__OTR__levels/hmc/hmc_seg7_painting_textures_07025518";
 
-static const char cotmc_painting[] = "__OTR__levels/hmc/cotmc_painting";
+static const ALIGN_ASSET(2) char cotmc_painting[] = "__OTR__levels/hmc/cotmc_painting";
 
 static const ALIGN_ASSET(2) char hmc_seg7_collision_level[] = "__OTR__levels/hmc/hmc_seg7_collision_level";
 
-static const char hmc_seg7_macro_objs[] = "__OTR__levels/hmc/hmc_seg7_macro_objs";
+static const ALIGN_ASSET(2) char hmc_seg7_macro_objs[] = "__OTR__levels/hmc/hmc_seg7_macro_objs";
 
 static const ALIGN_ASSET(2) char hmc_seg7_rooms[] = "__OTR__levels/hmc/hmc_seg7_rooms";
 
@@ -1148,15 +1148,15 @@ static const ALIGN_ASSET(2) char hmc_seg7_collision_controllable_platform[] = "_
 
 static const ALIGN_ASSET(2) char hmc_seg7_collision_controllable_platform_sub[] = "__OTR__levels/hmc/hmc_seg7_collision_controllable_platform_sub";
 
-static const char hmc_seg7_trajectory_0702B86C[] = "__OTR__levels/hmc/hmc_seg7_trajectory_0702B86C";
+static const ALIGN_ASSET(2) char hmc_seg7_trajectory_0702B86C[] = "__OTR__levels/hmc/hmc_seg7_trajectory_0702B86C";
 
-static const char hmc_movtex_dorrie_pool_water_data[] = "__OTR__levels/hmc/hmc_movtex_dorrie_pool_water_data";
+static const ALIGN_ASSET(2) char hmc_movtex_dorrie_pool_water_data[] = "__OTR__levels/hmc/hmc_movtex_dorrie_pool_water_data";
 
-static const char hmc_movtex_dorrie_pool_water[] = "__OTR__levels/hmc/hmc_movtex_dorrie_pool_water";
+static const ALIGN_ASSET(2) char hmc_movtex_dorrie_pool_water[] = "__OTR__levels/hmc/hmc_movtex_dorrie_pool_water";
 
-static const char hmc_movtex_toxic_maze_rot_count_clock_mist_data[] = "__OTR__levels/hmc/hmc_movtex_toxic_maze_rot_count_clock_mist_data";
+static const ALIGN_ASSET(2) char hmc_movtex_toxic_maze_rot_count_clock_mist_data[] = "__OTR__levels/hmc/hmc_movtex_toxic_maze_rot_count_clock_mist_data";
 
-static const char hmc_movtex_toxic_maze_rot_clock_mist_data[] = "__OTR__levels/hmc/hmc_movtex_toxic_maze_rot_clock_mist_data";
+static const ALIGN_ASSET(2) char hmc_movtex_toxic_maze_rot_clock_mist_data[] = "__OTR__levels/hmc/hmc_movtex_toxic_maze_rot_clock_mist_data";
 
-static const char hmc_movtex_toxic_maze_mist[] = "__OTR__levels/hmc/hmc_movtex_toxic_maze_mist";
+static const ALIGN_ASSET(2) char hmc_movtex_toxic_maze_mist[] = "__OTR__levels/hmc/hmc_movtex_toxic_maze_mist";
 

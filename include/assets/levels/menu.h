@@ -146,7 +146,7 @@ static const ALIGN_ASSET(2) char texture_menu_hud_char_katakana_n[] = "__OTR__le
 
 static const ALIGN_ASSET(2) char texture_menu_hud_char_kana_dakuten_do[] = "__OTR__levels/menu/main_menu_seg7.0A9D0";
 
-static const char menu_hud_lut[] = "__OTR__levels/menu/menu_hud_lut";
+static const ALIGN_ASSET(2) char menu_hud_lut[] = "__OTR__levels/menu/menu_hud_lut";
 
 static const ALIGN_ASSET(2) char texture_menu_font_char_0[] = "__OTR__levels/menu/main_menu_seg7.0AC40";
 
@@ -244,7 +244,7 @@ static const ALIGN_ASSET(2) char texture_menu_font_char_period[] = "__OTR__level
 
 static const ALIGN_ASSET(2) char texture_menu_font_char_ampersand[] = "__OTR__levels/menu/main_menu_seg7.0B800";
 
-static const char menu_font_lut[] = "__OTR__levels/menu/menu_font_lut";
+static const ALIGN_ASSET(2) char menu_font_lut[] = "__OTR__levels/menu/menu_font_lut";
 
 static const ALIGN_ASSET(2) char dl_menu_ia8_text_begin[] = "__OTR__levels/menu/dl_menu_ia8_text_begin";
 

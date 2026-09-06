@@ -128,5 +128,5 @@ static const ALIGN_ASSET(2) char cloud_floor_skybox_texture_00062[] = "__OTR__te
 
 static const ALIGN_ASSET(2) char cloud_floor_skybox_texture_00063[] = "__OTR__textures/skyboxes/cloud_floor/cloud_floor.63";
 
-static const char cloud_floor_skybox_ptrlist[] = "__OTR__textures/skyboxes/cloud_floor/cloud_floor_skybox_ptrlist";
+static const ALIGN_ASSET(2) char cloud_floor_skybox_ptrlist[] = "__OTR__textures/skyboxes/cloud_floor/cloud_floor_skybox_ptrlist";
 

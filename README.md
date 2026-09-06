@@ -41,6 +41,12 @@ Your ROM needs to be in .z64 format. If it's in .n64 format, use the following t
 * Run one of the PC releases to generate an `sm64.o2r` file. After launching the game on PC, you will be able to find these files in the same directory as `Ghostship.exe` or `Ghostship.appimage`.
 * Copy the files to your sd card
 
+#### Android
+* Install the APK and launch it.
+* Tap **Choose Super Mario 64 ROM** and pick your own US or JP `.z64`. It is checked against the supported hashes, kept in the app's own storage, and converted into `sm64.o2r` on the device — no PC step, and no game data ships with the app.
+* Extraction runs once and takes a few minutes; the game starts by itself when it finishes.
+* Mods and saves are managed from the **Mods** button, which appears next to **Menu** while the in-game menu is open. Everything also lives on disk under `Android/data/dev.net64.ghostship/files/`, so mods can be dropped into `mods/` with a file manager instead.
+
 # Configuration
 
 ### Default keyboard configuration
