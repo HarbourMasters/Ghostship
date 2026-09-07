@@ -9,6 +9,7 @@
 #include "seq_ids.h"
 #include "port/ui/cvar_prefixes.h"
 #include "game/save_file.h"
+#include "port/data/Saves.h"
 #include "buffers/buffers.h"
 #include "fast/Fast3dGui.h"
 #include "fast/Fast3dWindow.h"
@@ -165,6 +166,31 @@ Achievement* Achievement_FindByID(const std::string& id) {
     return &gAchievementList[id];
 }
 
+static void Achievement_SyncSaveData(AchievementSaveData* saveData) {
+    saveData->cheated = false; // TODO: Implement cheat detection
+
+    if (!saveData->cheated) {
+        size_t index = 0;
+        for (const auto& [id, progress] : gAchievementProgress) {
+            saveData->entries[index].id = id.c_str();
+            saveData->entries[index].progress = progress.progress;
+            index++;
+        }
+        saveData->capStars = gMetalCapStars;
+        saveData->coins = gCoinsCollected;
+    }
+}
+
+// Write an unlock straight into the save file's achievement block so it survives
+// quitting before the next game save. The ending achievements never get one otherwise.
+static void Achievement_PersistUnlock() {
+    if (!HAS_ACHIEVEMENTS(selectedFile) || gDebugLevelSelect) {
+        return;
+    }
+    Achievement_SyncSaveData(&gSaveBuffer.files[selectedFile]->shipSaveData.achievementSaveData);
+    SaveFileSaveAchievements(selectedFile);
+}
+
 void Achievement_Progress(const std::string& id, const int32_t amount) {
     const Achievement* achievement = Achievement_FindByID(id);
     if (achievement) {
@@ -175,6 +201,7 @@ void Achievement_Progress(const std::string& id, const int32_t amount) {
             if (progress >= achievement->maxProgress) {
                 achieved = true;
                 Notification::EmitAchievement(achievement->icon, achievement->name, 0);
+                Achievement_PersistUnlock();
             } else {
                 SPDLOG_INFO("Progressed achievement {}: {}/{}", achievement->name, progress, achievement->maxProgress);
             }
@@ -207,9 +234,8 @@ void Achievement_ProgressByCategory(AchievementCategory category, int32_t amount
                 if (progress >= achievement.maxProgress) {
                     achieved = true;
                     Notification::EmitAchievement(achievement.icon, achievement.name, 0);
+                    Achievement_PersistUnlock();
                 }
-
-                // Save after each achievement progress update to prevent loss of progress on crash
             }
         }
     }
@@ -292,20 +318,7 @@ void Achievements_Save(IEvent* event) {
         return;
     }
 
-    AchievementSaveData* saveData = &gSaveBuffer.files[selectedFile]->shipSaveData.achievementSaveData;
-
-    saveData->cheated = false; // TODO: Implement cheat detection
-
-    if (!saveData->cheated) {
-        size_t index = 0;
-        for (const auto& [id, progress] : gAchievementProgress) {
-            saveData->entries[index].id = id.c_str();
-            saveData->entries[index].progress = progress.progress;
-            index++;
-        }
-        saveData->capStars = gMetalCapStars;
-        saveData->coins = gCoinsCollected;
-    }
+    Achievement_SyncSaveData(&gSaveBuffer.files[selectedFile]->shipSaveData.achievementSaveData);
 }
 
 void Achievements_Init() {
