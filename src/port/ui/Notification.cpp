@@ -9,6 +9,7 @@
 
 #include "sounds.h"
 #include "audio/external.h"
+#include "port/ui/cvar_prefixes.h"
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
@@ -24,7 +25,7 @@ void Window::Draw() {
     const float margin = 30.0f;
     const float padding = 10.0f;
 
-    int position = CVarGetInteger("gNotifications.Position", 3);
+    int position = CVarGetInteger(CVAR_SETTING("Notifications.Position"), 3);
 
     // Calculate base position exactly as in legacy code.
     ImVec2 basePosition;
@@ -72,11 +73,14 @@ void Window::Draw() {
 
 void Window::DrawRegularNotification(const Options& notification, ImVec2 basePosition, int inverseIndex, int position,
                                      float padding, ImGuiViewport* vp, int index) {
-    ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0, 0, 0, CVarGetFloat("gNotifications.BgOpacity", 0.5f)));
+    ImGui::PushStyleColor(ImGuiCol_WindowBg,
+                          ImVec4(0, 0, 0, CVarGetFloat(CVAR_SETTING("Notifications.BgOpacity"), 0.5f)));
     ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 4.0f);
-    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(8.0f * CVarGetFloat("gNotifications.Size", 1.8f), 6.0f));
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8.0f * CVarGetFloat("gNotifications.Size", 1.8f), 8.0f));
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing,
+                        ImVec2(8.0f * CVarGetFloat(CVAR_SETTING("Notifications.Size"), 1.8f), 6.0f));
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding,
+                        ImVec2(8.0f * CVarGetFloat(CVAR_SETTING("Notifications.Size"), 1.8f), 8.0f));
 
     ImGui::SetNextWindowViewport(vp->ID);
     if (notification.remainingTime < 4.0f) {
@@ -92,7 +96,7 @@ void Window::DrawRegularNotification(const Options& notification, ImVec2 basePos
                      ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoMove |
                      ImGuiWindowFlags_NoScrollbar);
 
-    ImGui::SetWindowFontScale(CVarGetFloat("gNotifications.Size", 1.8f));
+    ImGui::SetWindowFontScale(CVarGetFloat(CVAR_SETTING("Notifications.Size"), 1.8f));
 
     ImVec2 currentWinSize = ImGui::GetWindowSize();
     ImVec2 notificationPos;
@@ -116,7 +120,7 @@ void Window::DrawRegularNotification(const Options& notification, ImVec2 basePos
     ImGui::AlignTextToFramePadding();
 
     if (notification.itemIcon != nullptr) {
-        float iconSize = 22 * CVarGetFloat("gNotifications.Size", 1.8f);
+        float iconSize = 22 * CVarGetFloat(CVAR_SETTING("Notifications.Size"), 1.8f);
         ImGui::Image(std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
                          ->GetTextureByName(notification.itemIcon),
                      ImVec2(iconSize, iconSize));
@@ -292,7 +296,7 @@ void Window::UpdateElement() {
 void Emit(Options notification) {
     notification.id = nextId++;
     if (notification.remainingTime == 0.0f) {
-        notification.remainingTime = CVarGetFloat("gNotifications.Duration", 10.0f);
+        notification.remainingTime = CVarGetFloat(CVAR_SETTING("Notifications.Duration"), 10.0f);
     }
     notifications.push_back(notification);
     if (!notification.mute) {
@@ -314,7 +318,7 @@ void EmitAchievement(const char* iconPath, const std::string& achievementName, i
         notification.suffixColor = ImVec4(1.0f, 0.85f, 0.0f, 1.0f); // Gold
     }
 
-    notification.remainingTime = CVarGetFloat("gNotifications.Duration", 10.0f);
+    notification.remainingTime = CVarGetFloat(CVAR_SETTING("Notifications.Duration"), 10.0f);
     notification.isAchievement = true;
 
     notifications.push_back(notification);
@@ -332,7 +336,7 @@ void EmitAchievementProgress(const char* iconPath, const char* name, int current
     notification.prefixColor = ImVec4(0.8f, 0.8f, 0.8f, 1.0f); // Gray
     notification.message = progressText;
     notification.messageColor = ImVec4(0.8f, 0.8f, 0.8f, 1.0f); // Gray
-    notification.remainingTime = CVarGetFloat("gNotifications.Duration", 10.0f);
+    notification.remainingTime = CVarGetFloat(CVAR_SETTING("Notifications.Duration"), 10.0f);
     notification.isAchievement = true; // Get achievement styling
 
     notifications.push_back(notification);
@@ -351,7 +355,7 @@ void EmitAchievementProgressWithEvent(const char* iconPath, const char* eventNam
     notification.prefixColor = ImVec4(0.4f, 0.8f, 1.0f, 1.0f); // Light blue
     notification.message = progressText;
     notification.messageColor = ImVec4(0.9f, 0.9f, 0.9f, 1.0f); // Light gray
-    notification.remainingTime = CVarGetFloat("gNotifications.Duration", 10.0f);
+    notification.remainingTime = CVarGetFloat(CVAR_SETTING("Notifications.Duration"), 10.0f);
     notification.isAchievement = true; // Get achievement styling
 
     notifications.push_back(notification);
