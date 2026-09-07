@@ -329,7 +329,8 @@ bool GameExtractor::GenerateOTRTo(std::atomic<size_t>& assetCount, const std::st
     try {
         Companion::Instance->Init(ExportType::Binary, assetCount, true);
     } catch (const std::exception& e) {
-        SPDLOG_INFO("Failed to process O2R {}", e.what());
+        sLastError = e.what();
+        SPDLOG_ERROR("Failed to process O2R: {}", e.what());
         return false;
     }
 
