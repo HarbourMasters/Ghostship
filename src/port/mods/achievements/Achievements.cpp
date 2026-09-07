@@ -438,8 +438,9 @@ void Achievements_Init() {
             SPDLOG_INFO("Coin Collected: {}", ev->marioState->numCoins + 1);
             gCoinsCollected += ev->object->oDamageOrCoinValue;
 
+            // The event fires before the coin is added, and red/blue coins are worth more than one.
             if (gCourseCoinLimits.contains(gCurrCourseNum) &&
-                ev->marioState->numCoins + 1 >= gCourseCoinLimits[gCurrCourseNum]) {
+                ev->marioState->numCoins + ev->object->oDamageOrCoinValue >= gCourseCoinLimits[gCurrCourseNum]) {
                 Achievement_Progress("GetAllCoinsOneLevel");
             }
         }
