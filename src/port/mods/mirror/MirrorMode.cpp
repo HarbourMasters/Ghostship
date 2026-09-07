@@ -120,6 +120,13 @@ void mirror_mode_invert_input(void) {
         return;
     }
 
+    // Demo inputs were recorded against the unmirrored world, so inverting them
+    // sends demo Mario the wrong way. Leave them alone unless the player is
+    // controlling the demo.
+    if (gCurrDemoInput != NULL && CVarGetInteger(CVAR_CHEAT("PlayInDemo"), 0) == 0) {
+        return;
+    }
+
     struct Controller* ctrl = gPlayer1Controller;
     if (ctrl == NULL) {
         return;
