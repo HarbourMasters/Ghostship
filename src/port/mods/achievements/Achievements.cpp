@@ -129,6 +129,16 @@ std::unordered_map<int16_t, int16_t> gCourseCoinLimits = {
     { COURSE_WDW, 152 }, { COURSE_TTM, 137 }, { COURSE_THI, 192 }, { COURSE_TTC, 128 }, { COURSE_RR, 146 },
 };
 
+// Stars held in a range of main courses only. save_file_get_total_star_count adds the
+// castle secret star slot to every range, which is not what the floor ranks want.
+static int32_t Achievement_CountCourseStars(int32_t slot, int32_t minCourse, int32_t maxCourse) {
+    int32_t count = 0;
+    for (int32_t course = minCourse; course <= maxCourse; course++) {
+        count += save_file_get_course_star_count(slot, COURSE_NUM_TO_INDEX(course));
+    }
+    return count;
+}
+
 int Achievement_GetObjectCount(std::vector<int32_t> models) {
     int count = 0;
     for (int i = 0; i < NUM_OBJ_LISTS; i++) {
@@ -323,7 +333,8 @@ void Achievements_Init() {
                         starIndex, gCurrActNum, starFlags);
             SPDLOG_INFO("Collected already? {}\nGrand Star? {}", (starFlags & (1 << starIndex)) != 0, grandStar);
 
-            if (!(starFlags & (1 << starIndex)) && !grandStar) {
+            const bool newStar = !(starFlags & (1 << starIndex)) && !grandStar;
+            if (newStar) {
                 Achievement_ProgressByCategory(AchievementCategory::Stars, 1);
             }
 
@@ -331,16 +342,13 @@ void Achievements_Init() {
                 Achievement_Progress("Get100CoinStar");
             }
 
-            // If we only rely on the save's star flags, this won't trigger until we collect
-            // an already collected star. Instead, we need to check whether the not-collected
-            // star *would* complete the set and progress the achievement.
-            if ((starFlags | (1 << starIndex)) == 0x3F) {
+            // Star save flags are not updated yet at this point, so the star being collected
+            // has to be counted by hand: only when it is new, and only toward the range it
+            // belongs to. Bit 6 is the 100 coin star, which is not one of the six main stars.
+            if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && ((starFlags | (1 << starIndex)) & 0x3F) == 0x3F) {
                 Achievement_Progress("Get6MainStars");
             }
 
-            // For these, we have to factor in the star that was just collected,
-            // since star save flags aren't updated by this point.
-            // BOB, WF, JRB, CCM, BBH
             SPDLOG_INFO(
                 "TOTAL STARS:\nFLOOR 1: {}\nBASEMENT: {}\nFLOOR 2: {}\nCOURSE STARS: {}\nCASTLE STARS: {}\nALL "
                 "STARS: {}",
@@ -350,41 +358,42 @@ void Achievements_Init() {
                 save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_BOB), COURSE_NUM_TO_INDEX(COURSE_RR)),
                 save_file_get_course_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_NONE)),
                 save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_MIN), COURSE_NUM_TO_INDEX(COURSE_MAX)));
-            if (save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_BOB), COURSE_NUM_TO_INDEX(COURSE_BBH)) +
-                    1 >=
-                35) {
+            const bool newMainCourseStar = newStar && COURSE_IS_MAIN_COURSE(gCurrCourseNum);
+            const bool newCastleStar = newStar && !COURSE_IS_MAIN_COURSE(gCurrCourseNum);
+            auto newStarIn = [&](int16_t minCourse, int16_t maxCourse) {
+                return newMainCourseStar && gCurrCourseNum >= minCourse && gCurrCourseNum <= maxCourse ? 1 : 0;
+            };
+
+            // BOB, WF, JRB, CCM, BBH
+            if (Achievement_CountCourseStars(slot, COURSE_BOB, COURSE_BBH) + newStarIn(COURSE_BOB, COURSE_BBH) >= 35) {
                 Achievement_Progress("GetAllStarsInFloor1");
             }
 
             // HMC, LLL, SSL, DDD
-            if (save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_HMC), COURSE_NUM_TO_INDEX(COURSE_DDD)) +
-                    1 >=
-                28) {
+            if (Achievement_CountCourseStars(slot, COURSE_HMC, COURSE_DDD) + newStarIn(COURSE_HMC, COURSE_DDD) >= 28) {
                 Achievement_Progress("GetAllStarsInBasement");
             }
 
             // SL, WDW, TTM, THI, TTC, RR
-            if (save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_SL), COURSE_NUM_TO_INDEX(COURSE_RR)) +
-                    1 >=
-                42) {
+            if (Achievement_CountCourseStars(slot, COURSE_SL, COURSE_RR) + newStarIn(COURSE_SL, COURSE_RR) >= 42) {
                 Achievement_Progress("GetAllStarsInFloor2");
             }
 
-            if (save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_BOB), COURSE_NUM_TO_INDEX(COURSE_RR)) +
-                    1 >=
-                105) {
+            if (Achievement_CountCourseStars(slot, COURSE_BOB, COURSE_RR) + newStarIn(COURSE_BOB, COURSE_RR) >= 105) {
                 Achievement_Progress("GetAllCourseStars");
             }
 
+            // Castle stars live in the secret course slots plus the toad/MIPS file flags,
+            // which is exactly what the bonus-stage range of the total helper adds up.
             if (save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_BONUS_STAGES),
                                                COURSE_NUM_TO_INDEX(COURSE_MAX)) +
-                    1 >=
+                    (newCastleStar ? 1 : 0) >=
                 15) {
                 Achievement_Progress("GetAllCastleStars");
             }
 
             if (save_file_get_total_star_count(slot, COURSE_NUM_TO_INDEX(COURSE_MIN), COURSE_NUM_TO_INDEX(COURSE_MAX)) +
-                    1 >=
+                    (newStar ? 1 : 0) >=
                 120) {
                 Achievement_Progress("Get120Stars");
             }
