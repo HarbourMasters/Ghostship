@@ -63,7 +63,7 @@ Your ROM needs to be in .z64 format. If it's in .n64 format, use the following t
 | Tab | Toggle Alternate assets |
 
 ### Graphics Backends
-Currently, there are three rendering APIs supported: DirectX11 (Windows), OpenGL (all platforms), and Metal (macOS). You can change which API to use in the `Settings` menu of the menubar, which requires a restart.  If you're having an issue with crashing, you can change the API in the `Ghostship.cfg.json` file by finding the line `"Backend":{`... and changing the `id` value to `3` and set the `Name` to `OpenGL`. `DirectX 11` with id `2` is the default on Windows. `Metal` with id `4` is the default on macOS.
+Currently, there are four rendering APIs supported: DirectX 11 (Windows), OpenGL (all platforms), Metal (macOS), and Vulkan (only offered when your graphics driver supports it). You can change which API to use in the `Settings` menu of the menubar, which requires a restart. If you're having an issue with crashing, you can change the API in the `Ghostship.cfg.json` file by finding the `"Backend": {` block and changing the `Id` value; the game fills in the matching `Name` on the next launch. The IDs are `1` for `DirectX 11`, `2` for `OpenGL`, `3` for `Metal`, and `4` for `Vulkan`. `DirectX 11` is the default on Windows and `Metal` is the default on macOS.
 
 # Custom Assets
 Custom assets are packed in `.o2r` or `.otr` files. To use custom assets, place them in the `mods` folder.
