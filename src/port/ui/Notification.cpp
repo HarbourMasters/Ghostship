@@ -46,19 +46,20 @@ void Window::Draw() {
             return;
     }
 
-    // Process each notification
-    for (int index = 0; index < notifications.size(); ++index) {
+    // Newest notification sits in the chosen corner; older ones stack away from it,
+    // downward for the top corners and upward for the bottom ones.
+    const bool stackDownward = position == 0 || position == 1;
+    const int count = static_cast<int>(notifications.size());
+    float previousHeight = 0.0f;
+
+    for (int n = 0; n < count; ++n) {
+        int index = count - 1 - n;
         auto& notification = notifications[index];
-        int count = static_cast<int>(notifications.size());
         int inverseIndex = -(count - 1 - index);
 
-        if (index != 0) {
-            auto it = notificationHeights.find(notification.id);
-            if (it != notificationHeights.end()) {
-                basePosition.y -= it->second + padding;
-            } else {
-                basePosition.y -= (notification.isAchievement ? 100.0f : 60.0f) + padding;
-            }
+        if (n != 0) {
+            float step = previousHeight + padding;
+            basePosition.y += stackDownward ? step : -step;
         }
 
         if (notification.isAchievement) {
@@ -68,6 +69,9 @@ void Window::Draw() {
             // Original simple layout for regular notifications
             DrawRegularNotification(notification, basePosition, inverseIndex, position, padding, vp, index);
         }
+
+        auto it = notificationHeights.find(notification.id);
+        previousHeight = it != notificationHeights.end() ? it->second : (notification.isAchievement ? 100.0f : 60.0f);
     }
 }
 
