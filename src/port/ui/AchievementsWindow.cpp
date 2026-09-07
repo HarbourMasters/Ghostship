@@ -55,7 +55,14 @@ void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPai
 
     ImGui::SameLine();
 
-    ImGui::BeginGroup();
+    // Reserve the score column on the right before laying out the text, so long titles
+    // and descriptions clip at the column instead of running underneath the score.
+    const float scoreWidth = ImGui::CalcTextSize("1000 (G)").x + 20.0f;
+    const float textWidth = ImGui::GetContentRegionAvail().x - scoreWidth - ImGui::GetStyle().ItemSpacing.x;
+
+    ImGui::BeginChild("text", ImVec2(textWidth, cardHeight - 10), false,
+                      ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse |
+                          ImGuiWindowFlags_NoBackground);
 
     // Title
     ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32_WHITE);
@@ -77,18 +84,13 @@ void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPai
                           gCatStyles[ach.category].color);
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.2f, 0.2f, 0.2f, 1.0f));
 
-    // 3. This now stretches to the edge of the card, leaving a perfect 10px margin
-    ImGui::ProgressBar(progress, ImVec2(-10.0f, 21.0f), progBuf);
+    ImGui::ProgressBar(progress, ImVec2(-1.0f, 21.0f), progBuf);
     ImGui::PopStyleColor(2);
 
-    ImGui::EndGroup();
+    ImGui::EndChild();
 
     // Satella Score
     ImGui::SameLine();
-
-    float contentRegionMaxX = ImGui::GetWindowContentRegionMax().x;
-    float scoreWidth = ImGui::CalcTextSize("1000 G").x + 30.0f;
-    ImGui::SetCursorPosX(contentRegionMaxX - scoreWidth);
 
     ImGui::BeginGroup();
     ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32_WHITE);
