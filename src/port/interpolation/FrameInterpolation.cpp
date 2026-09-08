@@ -96,6 +96,7 @@ enum class Op {
     MatrixMtxFToMtx,
     BillboardMatrix,
     AnimatedPartMatrix,
+    ScaleMatrix,
     MatrixToMtx,
     RotateMtx,
     MatrixRotateAxis,
@@ -222,6 +223,7 @@ union Data {
 
     struct {
         MtxF parent_mf;
+        Mtx* parent;
         float translation[3];
         float scale[3];
         s16 roll;
@@ -230,10 +232,19 @@ union Data {
 
     struct {
         MtxF parent_mf;
+        Mtx* parent;
         float translation[3];
         s16 rotation[3];
+        u8 order; // 0 = XYZ (animated part), 1 = ZXY (transform nodes)
         Mtx* dest;
     } animated_part_matrix;
+
+    struct {
+        MtxF parent_mf;
+        Mtx* parent;
+        float scale;
+        Mtx* dest;
+    } scale_matrix;
 
     struct {
         Mtx* dest;
@@ -472,6 +483,153 @@ struct InterpolateCtx {
         (*res)[2] = interpolate_angle((*o)[2], (*n)[2]);
     }
 
+    // The parent's interpolated matrix if it has one this sub-frame, else what the DL draws for it (the new one).
+    const MtxF* parent_matrix(Mtx* parentMtx, const MtxF* fallback) {
+        if (parentMtx != nullptr) {
+            auto it = mtx_replacements.find(parentMtx);
+            if (it != mtx_replacements.end()) {
+                return &it->second;
+            }
+        }
+        return fallback;
+    }
+
+    // mtxf_rotate_xyz_and_translate / mtxf_rotate_zxy_and_translate (math_util.c), same trig tables.
+    void rotate_and_translate(float dest[4][4], const float t[3], const s16 r[3], u8 order) {
+        float sx = sins(r[0]), cx = coss(r[0]);
+        float sy = sins(r[1]), cy = coss(r[1]);
+        float sz = sins(r[2]), cz = coss(r[2]);
+        if (order == 0) {
+            dest[0][0] = cy * cz;
+            dest[0][1] = cy * sz;
+            dest[0][2] = -sy;
+            dest[1][0] = sx * sy * cz - cx * sz;
+            dest[1][1] = sx * sy * sz + cx * cz;
+            dest[1][2] = sx * cy;
+            dest[2][0] = cx * sy * cz + sx * sz;
+            dest[2][1] = cx * sy * sz - sx * cz;
+            dest[2][2] = cx * cy;
+        } else {
+            dest[0][0] = cy * cz + sx * sy * sz;
+            dest[1][0] = -cy * sz + sx * sy * cz;
+            dest[2][0] = cx * sy;
+            dest[0][1] = cx * sz;
+            dest[1][1] = cx * cz;
+            dest[2][1] = -sx;
+            dest[0][2] = -sy * cz + sx * cy * sz;
+            dest[1][2] = sy * sz + sx * cy * cz;
+            dest[2][2] = cx * cy;
+        }
+        dest[0][3] = dest[1][3] = dest[2][3] = 0.0f;
+        dest[3][0] = t[0];
+        dest[3][1] = t[1];
+        dest[3][2] = t[2];
+        dest[3][3] = 1.0f;
+    }
+
+    // dest = a * b with mtxf_mul() semantics (row vectors: a is applied first).
+    void mul(float dest[4][4], const float a[4][4], const float b[4][4]) {
+        float tmp[4][4];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                tmp[i][j] = a[i][0] * b[0][j] + a[i][1] * b[1][j] + a[i][2] * b[2][j];
+            }
+            tmp[i][3] = 0.0f;
+        }
+        for (int j = 0; j < 3; j++) {
+            tmp[3][j] = a[3][0] * b[0][j] + a[3][1] * b[1][j] + a[3][2] * b[2][j] + b[3][j];
+        }
+        tmp[3][3] = 1.0f;
+        memcpy(dest, tmp, sizeof(tmp));
+    }
+
+    // Runs even without an old counterpart: a node that just (re)appeared still has to follow its parent.
+    void interpolate_parent_relative(Op op, Data* old_op, Data& new_op) {
+        switch (op) {
+            case Op::AnimatedPartMatrix: {
+                auto& n = new_op.animated_part_matrix;
+                const MtxF* parent = parent_matrix(n.parent, &n.parent_mf);
+                if (old_op == nullptr && parent == &n.parent_mf) {
+                    break; // identical to the recorded matrix
+                }
+                float t[3];
+                s16 r[3];
+                for (int i = 0; i < 3; i++) {
+                    if (old_op != nullptr) {
+                        auto& o = old_op->animated_part_matrix;
+                        t[i] = lerp(o.translation[i], n.translation[i]);
+                        r[i] = interpolate_angle(o.rotation[i], n.rotation[i]);
+                    } else {
+                        t[i] = n.translation[i];
+                        r[i] = n.rotation[i];
+                    }
+                }
+                float local[4][4];
+                rotate_and_translate(local, t, r, n.order);
+                mul(new_replacement(n.dest)->mf, local, parent->mf);
+                break;
+            }
+            case Op::ScaleMatrix: {
+                auto& n = new_op.scale_matrix;
+                const MtxF* parent = parent_matrix(n.parent, &n.parent_mf);
+                if (old_op == nullptr && parent == &n.parent_mf) {
+                    break;
+                }
+                float sc = old_op != nullptr ? lerp(old_op->scale_matrix.scale, n.scale) : n.scale;
+                const float(*p)[4] = parent->mf;
+                MtxF* result = new_replacement(n.dest);
+                for (int j = 0; j < 4; j++) {
+                    result->mf[0][j] = p[0][j] * sc;
+                    result->mf[1][j] = p[1][j] * sc;
+                    result->mf[2][j] = p[2][j] * sc;
+                    result->mf[3][j] = p[3][j];
+                }
+                break;
+            }
+            case Op::BillboardMatrix: {
+                auto& n = new_op.billboard_matrix;
+                const MtxF* parent = parent_matrix(n.parent, &n.parent_mf);
+                if (old_op == nullptr && parent == &n.parent_mf) {
+                    break;
+                }
+                s16 roll = n.roll;
+                float sx = n.scale[0], sy = n.scale[1], sz = n.scale[2];
+                if (old_op != nullptr) {
+                    auto& o = old_op->billboard_matrix;
+                    roll = interpolate_angle(o.roll, n.roll);
+                    sx = lerp(o.scale[0], n.scale[0]);
+                    sy = lerp(o.scale[1], n.scale[1]);
+                    sz = lerp(o.scale[2], n.scale[2]);
+                }
+                // mtxf_billboard() followed by mtxf_scale_vec3f(), as in geo_process_billboard().
+                const float* t = n.translation;
+                const float(*p)[4] = parent->mf;
+                float(*r)[4] = new_replacement(n.dest)->mf;
+                float cs = coss(roll);
+                float sn = sins(roll);
+                r[0][0] = cs * sx;
+                r[0][1] = sn * sx;
+                r[0][2] = 0.0f;
+                r[0][3] = 0.0f;
+                r[1][0] = -sn * sy;
+                r[1][1] = cs * sy;
+                r[1][2] = 0.0f;
+                r[1][3] = 0.0f;
+                r[2][0] = 0.0f;
+                r[2][1] = 0.0f;
+                r[2][2] = sz;
+                r[2][3] = 0.0f;
+                r[3][0] = p[0][0] * t[0] + p[1][0] * t[1] + p[2][0] * t[2] + p[3][0];
+                r[3][1] = p[0][1] * t[0] + p[1][1] * t[1] + p[2][1] * t[2] + p[3][1];
+                r[3][2] = p[0][2] * t[0] + p[1][2] * t[1] + p[2][2] * t[2] + p[3][2];
+                r[3][3] = 1.0f;
+                break;
+            }
+            default:
+                break;
+        }
+    }
+
     void interpolate_branch(Path* old_path, Path* new_path) {
         for (auto& item : new_path->items) {
             Data& new_op = new_path->ops[item.first][item.second];
@@ -485,6 +643,17 @@ struct InterpolateCtx {
                     interpolate_branch(&new_path->children.find(new_op.open_child.key)->second[new_op.open_child.idx],
                                        &new_path->children.find(new_op.open_child.key)->second[new_op.open_child.idx]);
                 }
+                continue;
+            }
+
+            if (item.first == Op::AnimatedPartMatrix || item.first == Op::BillboardMatrix ||
+                item.first == Op::ScaleMatrix) {
+                Data* old_op = nullptr;
+                if (auto it = old_path->ops.find(item.first);
+                    it != old_path->ops.end() && item.second < it->second.size()) {
+                    old_op = &it->second[item.second];
+                }
+                interpolate_parent_relative(item.first, old_op, new_op);
                 continue;
             }
 
@@ -641,111 +810,6 @@ struct InterpolateCtx {
                             interpolate_mtxf(new_replacement(new_op.matrix_mtxf_to_mtx.dest),
                                              &old_op.matrix_mtxf_to_mtx.src, &new_op.matrix_mtxf_to_mtx.src);
                             break;
-
-                        case Op::BillboardMatrix: {
-                            // Re-derive the billboard matrix from the interpolated parent rather than
-                            // element-wise lerping the final matrix. This correctly handles camera
-                            // roll changes and avoids any drift caused by interpolating a camera-
-                            // dependent view-space matrix directly.
-                            MtxF interp_parent;
-                            interpolate_mtxf(&interp_parent, &old_op.billboard_matrix.parent_mf,
-                                             &new_op.billboard_matrix.parent_mf);
-                            s16 interp_roll = lerp_s16(old_op.billboard_matrix.roll, new_op.billboard_matrix.roll);
-                            float sx = w * old_op.billboard_matrix.scale[0] + step * new_op.billboard_matrix.scale[0];
-                            float sy = w * old_op.billboard_matrix.scale[1] + step * new_op.billboard_matrix.scale[1];
-                            float sz = w * old_op.billboard_matrix.scale[2] + step * new_op.billboard_matrix.scale[2];
-                            const float* t = new_op.billboard_matrix.translation;
-                            const float(*p)[4] = interp_parent.mf;
-                            MtxF* result = new_replacement(new_op.billboard_matrix.dest);
-                            float(*r)[4] = result->mf;
-                            // Billboard rotation uses the camera roll angle; columns are screen-aligned
-                            // basis vectors scaled by the object's visual scale.
-                            float cs = cosf((float)interp_roll * (float)M_PI / 32768.0f);
-                            float sn = sinf((float)interp_roll * (float)M_PI / 32768.0f);
-                            r[0][0] = cs * sx;
-                            r[0][1] = sn * sx;
-                            r[0][2] = 0.0f;
-                            r[0][3] = 0.0f;
-                            r[1][0] = -sn * sy;
-                            r[1][1] = cs * sy;
-                            r[1][2] = 0.0f;
-                            r[1][3] = 0.0f;
-                            r[2][0] = 0.0f;
-                            r[2][1] = 0.0f;
-                            r[2][2] = sz;
-                            r[2][3] = 0.0f;
-                            // Translation = parent_matrix × billboard_local_offset + parent_translation
-                            r[3][0] = p[0][0] * t[0] + p[1][0] * t[1] + p[2][0] * t[2] + p[3][0];
-                            r[3][1] = p[0][1] * t[0] + p[1][1] * t[1] + p[2][1] * t[2] + p[3][1];
-                            r[3][2] = p[0][2] * t[0] + p[1][2] * t[1] + p[2][2] * t[2] + p[3][2];
-                            r[3][3] = 1.0f;
-                            break;
-                        }
-
-                        case Op::AnimatedPartMatrix: {
-                            MtxF interp_parent;
-                            interpolate_mtxf(&interp_parent, &old_op.animated_part_matrix.parent_mf,
-                                             &new_op.animated_part_matrix.parent_mf);
-
-                            // Lerp local translation
-                            float tx = lerp(old_op.animated_part_matrix.translation[0],
-                                            new_op.animated_part_matrix.translation[0]);
-                            float ty = lerp(old_op.animated_part_matrix.translation[1],
-                                            new_op.animated_part_matrix.translation[1]);
-                            float tz = lerp(old_op.animated_part_matrix.translation[2],
-                                            new_op.animated_part_matrix.translation[2]);
-
-                            // Lerp local rotation (s16 angles, short-path)
-                            s16 rx = interpolate_angle(old_op.animated_part_matrix.rotation[0],
-                                                       new_op.animated_part_matrix.rotation[0]);
-                            s16 ry = interpolate_angle(old_op.animated_part_matrix.rotation[1],
-                                                       new_op.animated_part_matrix.rotation[1]);
-                            s16 rz = interpolate_angle(old_op.animated_part_matrix.rotation[2],
-                                                       new_op.animated_part_matrix.rotation[2]);
-
-                            // Rebuild local bone matrix: rotate XYZ then translate
-                            float cx = cosf((float)(u16)rx * (float)M_PI / 32768.0f);
-                            float sx_ = sinf((float)(u16)rx * (float)M_PI / 32768.0f);
-                            float cy = cosf((float)(u16)ry * (float)M_PI / 32768.0f);
-                            float sy_ = sinf((float)(u16)ry * (float)M_PI / 32768.0f);
-                            float cz = cosf((float)(u16)rz * (float)M_PI / 32768.0f);
-                            float sz_ = sinf((float)(u16)rz * (float)M_PI / 32768.0f);
-
-                            // mtxf_rotate_xyz_and_translate: R = Rx * Ry * Rz (XYZ order)
-                            // Same convention used by the game's math_util.c
-                            float m00 = cy * cz;
-                            float m01 = cy * sz_;
-                            float m02 = -sy_;
-                            float m10 = sx_ * sy_ * cz - cx * sz_;
-                            float m11 = sx_ * sy_ * sz_ + cx * cz;
-                            float m12 = sx_ * cy;
-                            float m20 = cx * sy_ * cz + sx_ * sz_;
-                            float m21 = cx * sy_ * sz_ - sx_ * cz;
-                            float m22 = cx * cy;
-
-                            // Combined = parent × local  (local columns into parent space)
-                            const float(*p)[4] = interp_parent.mf;
-                            MtxF* result = new_replacement(new_op.animated_part_matrix.dest);
-                            float(*r2)[4] = result->mf;
-
-                            r2[0][0] = p[0][0] * m00 + p[1][0] * m01 + p[2][0] * m02;
-                            r2[0][1] = p[0][1] * m00 + p[1][1] * m01 + p[2][1] * m02;
-                            r2[0][2] = p[0][2] * m00 + p[1][2] * m01 + p[2][2] * m02;
-                            r2[0][3] = 0.0f;
-                            r2[1][0] = p[0][0] * m10 + p[1][0] * m11 + p[2][0] * m12;
-                            r2[1][1] = p[0][1] * m10 + p[1][1] * m11 + p[2][1] * m12;
-                            r2[1][2] = p[0][2] * m10 + p[1][2] * m11 + p[2][2] * m12;
-                            r2[1][3] = 0.0f;
-                            r2[2][0] = p[0][0] * m20 + p[1][0] * m21 + p[2][0] * m22;
-                            r2[2][1] = p[0][1] * m20 + p[1][1] * m21 + p[2][1] * m22;
-                            r2[2][2] = p[0][2] * m20 + p[1][2] * m21 + p[2][2] * m22;
-                            r2[2][3] = 0.0f;
-                            r2[3][0] = p[0][0] * tx + p[1][0] * ty + p[2][0] * tz + p[3][0];
-                            r2[3][1] = p[0][1] * tx + p[1][1] * ty + p[2][1] * tz + p[3][1];
-                            r2[3][2] = p[0][2] * tx + p[1][2] * ty + p[2][2] * tz + p[3][2];
-                            r2[3][3] = 1.0f;
-                            break;
-                        }
 
                         case Op::MatrixToMtx: {
                             //*new_replacement(new_op.matrix_to_mtx.dest) = *Matrix_GetCurrent();
@@ -1203,13 +1267,14 @@ void FrameInterpolation_RecordMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
     append(Op::MatrixMtxFToMtx).matrix_mtxf_to_mtx = { .src = *src, .dest = dest };
 }
 
-void FrameInterpolation_RecordBillboardMatrix(MtxF* parent, float tx, float ty, float tz, float sx, float sy, float sz,
-                                              s16 roll, Mtx* dest) {
+void FrameInterpolation_RecordBillboardMatrix(MtxF* parent, Mtx* parentMtx, float tx, float ty, float tz, float sx,
+                                              float sy, float sz, s16 roll, Mtx* dest) {
     if (!check_if_recording()) {
         return;
     }
     auto& d = append(Op::BillboardMatrix).billboard_matrix;
     d.parent_mf = *parent;
+    d.parent = parentMtx;
     d.translation[0] = tx;
     d.translation[1] = ty;
     d.translation[2] = tz;
@@ -1220,19 +1285,42 @@ void FrameInterpolation_RecordBillboardMatrix(MtxF* parent, float tx, float ty, 
     d.dest = dest;
 }
 
-void FrameInterpolation_RecordAnimatedPartMatrix(MtxF* parent, float tx, float ty, float tz, s16 rx, s16 ry, s16 rz,
-                                                 Mtx* dest) {
+static void RecordRotateTranslateNode(u8 order, MtxF* parent, Mtx* parentMtx, float tx, float ty, float tz, s16 rx,
+                                      s16 ry, s16 rz, Mtx* dest) {
     if (!check_if_recording()) {
         return;
     }
     auto& d = append(Op::AnimatedPartMatrix).animated_part_matrix;
     d.parent_mf = *parent;
+    d.parent = parentMtx;
     d.translation[0] = tx;
     d.translation[1] = ty;
     d.translation[2] = tz;
     d.rotation[0] = rx;
     d.rotation[1] = ry;
     d.rotation[2] = rz;
+    d.order = order;
+    d.dest = dest;
+}
+
+void FrameInterpolation_RecordAnimatedPartMatrix(MtxF* parent, Mtx* parentMtx, float tx, float ty, float tz, s16 rx,
+                                                 s16 ry, s16 rz, Mtx* dest) {
+    RecordRotateTranslateNode(0, parent, parentMtx, tx, ty, tz, rx, ry, rz, dest);
+}
+
+void FrameInterpolation_RecordTransformNodeMatrix(MtxF* parent, Mtx* parentMtx, float tx, float ty, float tz, s16 rx,
+                                                  s16 ry, s16 rz, Mtx* dest) {
+    RecordRotateTranslateNode(1, parent, parentMtx, tx, ty, tz, rx, ry, rz, dest);
+}
+
+void FrameInterpolation_RecordScaleMatrix(MtxF* parent, Mtx* parentMtx, float scale, Mtx* dest) {
+    if (!check_if_recording()) {
+        return;
+    }
+    auto& d = append(Op::ScaleMatrix).scale_matrix;
+    d.parent_mf = *parent;
+    d.parent = parentMtx;
+    d.scale = scale;
     d.dest = dest;
 }
 

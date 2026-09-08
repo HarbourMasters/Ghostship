@@ -387,8 +387,11 @@ void geo_process_translation_rotation(struct GraphNodeTranslationRotation *node)
     mtxf_rotate_zxy_and_translate(mtxf, translation, node->rotation);
     mtxf_mul(gMatStack[gMatStackIndex + 1], mtxf, gMatStack[gMatStackIndex]);
     gMatStackIndex++;
-    mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
+    guMtxF2L(gMatStack[gMatStackIndex], mtx);
     gMatStackFixed[gMatStackIndex] = mtx;
+    FrameInterpolation_RecordTransformNodeMatrix((MtxF *) gMatStack[gMatStackIndex - 1], gMatStackFixed[gMatStackIndex - 1], translation[0], translation[1],
+                                                  translation[2], node->rotation[0], node->rotation[1],
+                                                  node->rotation[2], mtx);
     if (node->displayList != NULL) {
         geo_append_display_list(node->displayList, node->node.flags >> 8);
     }
@@ -415,8 +418,10 @@ void geo_process_translation(struct GraphNodeTranslation *node) {
     mtxf_rotate_zxy_and_translate(mtxf, translation, gVec3sZero);
     mtxf_mul(gMatStack[gMatStackIndex + 1], mtxf, gMatStack[gMatStackIndex]);
     gMatStackIndex++;
-    mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
+    guMtxF2L(gMatStack[gMatStackIndex], mtx);
     gMatStackFixed[gMatStackIndex] = mtx;
+    FrameInterpolation_RecordTransformNodeMatrix((MtxF *) gMatStack[gMatStackIndex - 1], gMatStackFixed[gMatStackIndex - 1], translation[0], translation[1],
+                                                  translation[2], 0, 0, 0, mtx);
     if (node->displayList != NULL) {
         geo_append_display_list(node->displayList, node->node.flags >> 8);
     }
@@ -441,8 +446,10 @@ void geo_process_rotation(struct GraphNodeRotation *node) {
     mtxf_rotate_zxy_and_translate(mtxf, gVec3fZero, node->rotation);
     mtxf_mul(gMatStack[gMatStackIndex + 1], mtxf, gMatStack[gMatStackIndex]);
     gMatStackIndex++;
-    mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
+    guMtxF2L(gMatStack[gMatStackIndex], mtx);
     gMatStackFixed[gMatStackIndex] = mtx;
+    FrameInterpolation_RecordTransformNodeMatrix((MtxF *) gMatStack[gMatStackIndex - 1], gMatStackFixed[gMatStackIndex - 1], 0.0f, 0.0f, 0.0f, node->rotation[0],
+                                                  node->rotation[1], node->rotation[2], mtx);
     if (node->displayList != NULL) {
         geo_append_display_list(node->displayList, node->node.flags >> 8);
     }
@@ -468,8 +475,9 @@ void geo_process_scale(struct GraphNodeScale *node) {
     vec3f_set(scaleVec, node->scale, node->scale, node->scale);
     mtxf_scale_vec3f(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], scaleVec);
     gMatStackIndex++;
-    mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
+    guMtxF2L(gMatStack[gMatStackIndex], mtx);
     gMatStackFixed[gMatStackIndex] = mtx;
+    FrameInterpolation_RecordScaleMatrix((MtxF *) gMatStack[gMatStackIndex - 1], gMatStackFixed[gMatStackIndex - 1], node->scale, mtx);
     if (node->displayList != NULL) {
         geo_append_display_list(node->displayList, node->node.flags >> 8);
     }
@@ -508,14 +516,14 @@ void geo_process_billboard(struct GraphNodeBillboard *node) {
                          gCurGraphNodeObject->scale);
     }
 
-    mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
+    guMtxF2L(gMatStack[gMatStackIndex], mtx);
     gMatStackFixed[gMatStackIndex] = mtx;
 
     // Record the parent matrix + parameters so interpolation can re-derive the billboard
     // matrix at any sub-frame by calling mtxf_billboard(interpolated_parent, ...) rather
     // than element-wise lerping the camera-space final matrix.
     FrameInterpolation_RecordBillboardMatrix(
-        (MtxF *) gMatStack[gMatStackIndex - 1],
+        (MtxF *) gMatStack[gMatStackIndex - 1], gMatStackFixed[gMatStackIndex - 1],
         translation[0], translation[1], translation[2],
         billboardScale[0], billboardScale[1], billboardScale[2],
         gCurGraphNodeCamera->roll, mtx);
@@ -614,7 +622,9 @@ void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
     Vec3s rotation;
     Vec3f translation;
     Mtx *matrixPtr = alloc_display_list(sizeof(*matrixPtr));
-    FrameInterpolation_RecordOpenChild("geo_process_animated_part", (uintptr_t)node);
+    // Key by animation slot so the same bone pairs across GEO_SWITCH_CASE duplicates (eye states).
+    FrameInterpolation_RecordOpenChild("geo_process_animated_part",
+                                       gCurrAnimType != ANIM_TYPE_NONE ? (uintptr_t) gCurrAnimAttribute : (uintptr_t) node);
 
     vec3s_copy(rotation, gVec3sZero);
     vec3f_set(translation, node->translation[0], node->translation[1], node->translation[2]);
@@ -659,10 +669,10 @@ void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
     mtxf_rotate_xyz_and_translate(matrix, translation, rotation);
     mtxf_mul(gMatStack[gMatStackIndex + 1], matrix, gMatStack[gMatStackIndex]);
     gMatStackIndex++;
-    mtxf_to_mtx(matrixPtr, gMatStack[gMatStackIndex]);
+    guMtxF2L(gMatStack[gMatStackIndex], matrixPtr);
     gMatStackFixed[gMatStackIndex] = matrixPtr;
     FrameInterpolation_RecordAnimatedPartMatrix(
-        (MtxF*)gMatStack[gMatStackIndex - 1],
+        (MtxF*)gMatStack[gMatStackIndex - 1], gMatStackFixed[gMatStackIndex - 1],
         translation[0], translation[1], translation[2],
         rotation[0], rotation[1], rotation[2],
         matrixPtr);

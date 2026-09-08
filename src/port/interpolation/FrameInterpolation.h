@@ -81,11 +81,20 @@ void FrameInterpolation_RecordMatrixRotateXYCoords(Mat4* matrix, s16 x, s16 y);
 
 void FrameInterpolation_RecordMatrixMtxFToMtx(MtxF* src, Mtx* dest);
 
-void FrameInterpolation_RecordBillboardMatrix(MtxF* parent, float tx, float ty, float tz,
-                                              float sx, float sy, float sz, s16 roll, Mtx* dest);
+// Parent-relative nodes: rebuilt at each sub-frame from the parent's interpolated matrix (parentMtx's
+// replacement, else the current frame's parent) so a skeleton stays rigid while camera and bones move.
+void FrameInterpolation_RecordBillboardMatrix(MtxF* parent, Mtx* parentMtx, float tx, float ty, float tz, float sx,
+                                              float sy, float sz, s16 roll, Mtx* dest);
 
-void FrameInterpolation_RecordAnimatedPartMatrix(MtxF* parent, float tx, float ty, float tz,
-                                                 s16 rx, s16 ry, s16 rz, Mtx* dest);
+// XYZ rotation order (GEO_ANIMATED_PART).
+void FrameInterpolation_RecordAnimatedPartMatrix(MtxF* parent, Mtx* parentMtx, float tx, float ty, float tz, s16 rx,
+                                                 s16 ry, s16 rz, Mtx* dest);
+
+// ZXY rotation order (GEO_TRANSLATION_ROTATION / GEO_TRANSLATION / GEO_ROTATION).
+void FrameInterpolation_RecordTransformNodeMatrix(MtxF* parent, Mtx* parentMtx, float tx, float ty, float tz, s16 rx,
+                                                  s16 ry, s16 rz, Mtx* dest);
+
+void FrameInterpolation_RecordScaleMatrix(MtxF* parent, Mtx* parentMtx, float scale, Mtx* dest);
 
 void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line);
 
