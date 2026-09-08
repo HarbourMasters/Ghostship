@@ -121,6 +121,38 @@ u8 gMenuHoldKeyIndex = 0;
 u8 gMenuHoldKeyTimer = 0;
 s32 gDialogResponse = DIALOG_RESPONSE_NONE;
 
+extern s16 gMenuMode;
+extern s16 gCutsceneMsgIndex;
+extern s16 gCutsceneMsgDuration;
+extern s8 gDialogCameraAngleIndex;
+extern s8 gCourseCompleteCoinsEqual;
+
+void ingame_menu_reset_state(void) {
+    gDialogBoxState = DIALOG_STATE_OPENING;
+    gDialogBoxOpenTimer = DEFAULT_DIALOG_BOX_ANGLE;
+    gDialogBoxScale = DEFAULT_DIALOG_BOX_SCALE;
+    gDialogScrollOffsetY = 0;
+    gDialogBoxType = DIALOG_TYPE_ROTATE;
+    gDialogID = DIALOG_NONE;
+    gLastDialogPageStrPos = 0;
+    gDialogTextPos = 0;
+    gDialogLineNum = 1;
+    gLastDialogResponse = 0;
+    gMenuHoldKeyIndex = 0;
+    gMenuHoldKeyTimer = 0;
+    gDialogResponse = DIALOG_RESPONSE_NONE;
+    gDialogTextAlpha = 0;
+    gLastDialogLineNum = 0;
+    gRedCoinsCollected = 0;
+    gHudFlash = 0;
+    gMenuMode = MENU_MODE_NONE;
+    gCutsceneMsgIndex = -1;
+    gCutsceneMsgDuration = -1;
+    gDialogCameraAngleIndex = CAM_SELECTION_MARIO;
+    gDialogCourseActNum = 1;
+    gCourseCompleteCoinsEqual = FALSE;
+}
+
 void create_dl_identity_matrix(void) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
 

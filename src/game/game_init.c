@@ -13,6 +13,10 @@
 #include "memory.h"
 #include "profiler.h"
 #include "save_file.h"
+#include "area.h"
+#include "ingame_menu.h"
+#include "level_update.h"
+#include "port/events/list/EngineEvent.h"
 #include "seq_ids.h"
 #include "sound_init.h"
 #include "print.h"
@@ -693,12 +697,14 @@ void setup_game_memory(void) {
 
 struct LevelCommand *addr;
 
-void thread5_game_loop(void) {
+static void game_boot(s32 isReboot) {
     setup_game_memory();
 #if ENABLE_RUMBLE
     // init_rumble_pak_scheduler_queue();
 #endif
-    init_controllers();
+    if (!isReboot) {
+        init_controllers();
+    }
     save_file_load_all();
 
     // Point address to the entry point into the level script data.
@@ -708,6 +714,41 @@ void thread5_game_loop(void) {
 
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
     set_sound_mode(save_file_get_sound_mode());
+}
+
+void thread5_game_loop(void) {
+    game_boot(FALSE);
+}
+
+void game_request_reset(void) {
+    gResetTimer = 1;
+}
+
+void game_reboot(void) {
+    sound_reset(0);
+    sound_init_reset_state();
+    ingame_menu_reset_state();
+    level_script_reset();
+
+    gResetTimer = 0;
+    gNmiResetBarsTimer = 0;
+    gGlobalTimer = 0;
+    // Intro areas have no camera; render_hud() must stay off until init_level().
+    bzero(&gHudDisplay, sizeof(gHudDisplay));
+    gCurrDemoInput = NULL;
+    gDemoInputListID = 0;
+    gCurrSaveFileNum = 1;
+    gCurrLevelNum = LEVEL_MIN;
+    gCurrCourseNum = COURSE_NONE;
+    gSavedCourseNum = COURSE_NONE;
+    gLastCompletedCourseNum = COURSE_NONE;
+    gLastCompletedStarNum = 0;
+    gGotFileCoinHiScore = FALSE;
+    gSpecialTripleJump = FALSE;
+
+    gMainPoolState = NULL;
+    alloc_pool();
+    game_boot(TRUE);
 }
 
 void update_vblank_reset(void) {
@@ -731,10 +772,9 @@ void thread5_iteration(void){
 
     update_vblank_reset();
 
-    // If the reset timer is active, run the process to reset the game.
     if (gResetTimer != 0) {
-        // draw_reset_bars();
-        return;
+        CALL_EVENT(GameReset);
+        game_reboot();
     }
     FrameInterpolation_StartRecord();
     profiler_log_thread5_time(THREAD5_START);

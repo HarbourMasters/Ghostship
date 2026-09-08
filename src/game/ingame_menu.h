@@ -160,4 +160,6 @@ extern_s void render_hud_cannon_reticle(void);
 extern_s void reset_red_coins_collected(void);
 extern_s s16 render_menus_and_dialogs(void);
 
+extern_s void ingame_menu_reset_state(void);
+
 #endif // INGAME_MENU_H

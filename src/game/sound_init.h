@@ -20,6 +20,7 @@
 #define SOUND_MENU_MODE_SURROUND     3
 
 void reset_volume(void);
+void sound_init_reset_state(void);
 void raise_background_noise(s32 a);
 void lower_background_noise(s32 a);
 void disable_background_sound(void);

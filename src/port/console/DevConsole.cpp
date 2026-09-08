@@ -18,20 +18,26 @@
 
 extern "C" {
 void warp_special(int32_t arg);
+void game_request_reset(void);
 extern int16_t sCurrPlayMode; // level_update.h
 }
 
 static bool ResetHandler(std::shared_ptr<Ship::Console> Console, std::vector<std::string> args, std::string* output) {
-    // Do not reset unless currently playing a level
-    if (sCurrPlayMode != 0) { // PLAY_MODE_NORMAL
-        ERROR_MESSAGE("sCurrPlayMode != PLAY_MODE_NORMAL");
-        return 1;
+    if (args.size() > 1 && args[1] == "soft") {
+        // Do not reset unless currently playing a level
+        if (sCurrPlayMode != 0) { // PLAY_MODE_NORMAL
+            ERROR_MESSAGE("sCurrPlayMode != PLAY_MODE_NORMAL");
+            return 1;
+        }
+        warp_special(-8);
+        return 0;
     }
 
-    warp_special(-8);
+    game_request_reset();
     return 0;
 }
 
 void DevConsole_Init(void) {
-    CMD_REGISTER("reset", { ResetHandler, "Resets the game." });
+    CMD_REGISTER("reset", { ResetHandler,
+                            "Reboots the game like a console reset. `reset soft` only returns to the title screen." });
 }

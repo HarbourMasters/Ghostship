@@ -16,6 +16,8 @@ struct AllocOnlyPool {
 };
 
 struct MemoryPool;
+struct MainPoolState;
+extern_s struct MainPoolState *gMainPoolState;
 
 struct OffsetSizePair {
     u32 offset;

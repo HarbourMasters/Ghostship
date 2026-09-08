@@ -174,6 +174,7 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(LevelInitFromSaveFile);
     REGISTER_EVENT(RenderPauseCourseOptions);
     REGISTER_EVENT(EngineReady);
+    REGISTER_EVENT(GameReset);
     REGISTER_EVENT(CameraUpdate);
     REGISTER_EVENT(KeyboardInput);
     REGISTER_EVENT(LevelScriptOverride);

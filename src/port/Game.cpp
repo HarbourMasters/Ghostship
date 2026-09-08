@@ -22,7 +22,7 @@ extern "C" {
 #include "sm64.h"
 }
 
-void alloc_pool() {
+extern "C" void alloc_pool(void) {
     static u64 pool[1024 * 1024 * 4];
     main_pool_init(pool, pool + sizeof(pool) / sizeof(pool[0]));
     gEffectsMemoryPool = mem_pool_init(0x4000, MEMORY_POOL_LEFT);

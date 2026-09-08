@@ -12,6 +12,9 @@ typedef s32 (*LevelScriptFunction)(s16, s32);
 // Fires once at the end of GameEngine::FinishInit(), after all scripts are loaded.
 DEFINE_EVENT(EngineReady);
 
+// Fires before a console reset reboots the game; pointers into game memory become invalid.
+DEFINE_EVENT(GameReset);
+
 // Fires each main-loop iteration before game logic runs.
 DEFINE_EVENT(GameLoopTick);
 

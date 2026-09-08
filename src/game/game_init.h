@@ -60,5 +60,8 @@ extern_s void render_init(void);
 extern_s void select_gfx_pool(void);
 extern_s void display_and_vsync(void);
 extern_s void thread5_iteration(void);
+extern_s void game_request_reset(void);
+extern_s void game_reboot(void);
+extern_s void alloc_pool(void); // src/port/Game.cpp
 
 #endif // GAME_INIT_H

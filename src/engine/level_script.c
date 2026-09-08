@@ -825,6 +825,18 @@ void (*LevelScriptJumpTable[])(void) = {
     /*3C*/ level_cmd_get_or_set_var,
 };
 
+void level_script_reset(void) {
+    sStackTop = sStack;
+    sStackBase = NULL;
+    sLevelPool = NULL;
+    sDelayFrames = 0;
+    sDelayFrames2 = 0;
+    sCurrAreaIndex = -1;
+    sScriptStatus = SCRIPT_PAUSED;
+    sRegister = 0;
+    sCurrentCmd = NULL;
+}
+
 struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
     sScriptStatus = SCRIPT_RUNNING;
     sCurrentCmd = cmd;

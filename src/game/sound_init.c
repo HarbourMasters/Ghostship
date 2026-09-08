@@ -79,6 +79,16 @@ void play_menu_sounds_extra(s32 a, void *b);
 /**
  * Called from threads: thread5_game_loop
  */
+void sound_init_reset_state(void) {
+    sMusicVolume = 0;
+    sBgMusicDisabled = FALSE;
+    sCurrentMusic = MUSIC_NONE;
+    sCurrentShellMusic = MUSIC_NONE;
+    sCurrentCapMusic = MUSIC_NONE;
+    sPlayingInfiniteStairs = FALSE;
+    sPaintingEjectSoundPlayed = FALSE;
+}
+
 void reset_volume(void) {
     sMusicVolume = 0;
 }
