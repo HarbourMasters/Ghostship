@@ -1,3 +1,4 @@
+#include <libultraship.h>
 #include <libultra/types.h>
 #include "port/events/list/PlayerEvent.h"
 
@@ -1351,7 +1352,11 @@ void cur_obj_move_y(f32 gravity, f32 bounciness, f32 buoyancy) {
         if (o->oPosY < waterLevel) {
             cur_obj_move_update_underwater_flags();
         } else {
-            if (o->oPosY < o->oFloorHeight) {
+            // A buoyant object above the surface is placed onto it, even when the surface has
+            // dropped below the object's floor, which drags it through that floor (Wet-Dry World
+            // Heave-Hos while the water drains). With the fix on, land it on the floor instead.
+            if (o->oPosY < o->oFloorHeight ||
+                (waterLevel < o->oFloorHeight && CVarGetInteger("gEnhancements.FixHeaveHoSinkingThroughFloor", 0) == 1)) {
                 o->oPosY = o->oFloorHeight;
                 o->oMoveFlags &= ~OBJ_MOVE_MASK_IN_WATER;
             } else {

@@ -224,6 +224,12 @@ void GhostshipMenu::AddMenuEnhancements() {
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island."));
 
+    AddWidget(path, "Fix Heave-Hos Sinking Through Floor", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("FixHeaveHoSinkingThroughFloor"))
+        .Options(CheckboxOptions().Tooltip(
+            "Stops Wet-Dry World Heave-Hos from sinking through the floor when water drains past it. "
+            "(Takes effect immediately.)"));
+  
     AddWidget(path, "Fix File Select Button Tilt", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_ENHANCEMENT("FixFileSelectButtonTilt"))
         .Options(CheckboxOptions().Tooltip(
