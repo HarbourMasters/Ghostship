@@ -13,5 +13,6 @@ enum LevelScriptIntroArgs {
 };
 
 extern_s s32 lvl_intro_update(s16 arg, UNUSED s32 unusedArg);
+extern_s s32 lvl_init_title_screen_values(UNUSED s16 arg0, UNUSED s32 arg1);
 
 #endif // TITLE_SCREEN_H

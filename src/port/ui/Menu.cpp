@@ -347,7 +347,14 @@ void Menu::MenuDrawItem(WidgetInfo& widget, uint32_t width, UIWidgets::Colors me
                 options.tooltip = "Sets the audio API used by the game. Requires a relaunch to take effect.";
                 options.disabled = ShipCompat::GetAudio()->GetAvailableAudioBackends()->size() <= 1;
                 options.disabledTooltip = "Only one audio API is available on this platform.";
-                if (UIWidgets::Combobox("Audio API", &currentAudioBackend, audioBackendsMap, options)) {
+                // audioBackendsMap names every platform's backend; only offer the ones lus reports for this one.
+                std::unordered_map<Ship::AudioBackend, const char*> availableBackends;
+                for (const auto backend : *ShipCompat::GetAudio()->GetAvailableAudioBackends()) {
+                    if (auto it = audioBackendsMap.find(backend); it != audioBackendsMap.end()) {
+                        availableBackends.emplace(*it);
+                    }
+                }
+                if (UIWidgets::Combobox("Audio API", &currentAudioBackend, availableBackends, options)) {
                     ShipCompat::GetAudio()->SetCurrentAudioBackend(currentAudioBackend);
                 }
             } break;

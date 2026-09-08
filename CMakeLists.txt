@@ -373,6 +373,7 @@ if(EMSCRIPTEN)
         -sSTACK_SIZE=5242880
         -sPTHREAD_POOL_SIZE=8
         -sASYNCIFY=1
+        "-sASYNCIFY_REMOVE=@${CMAKE_SOURCE_DIR}/src/port/web/asyncify-remove.txt"
         -sASSERTIONS=1
         -sASYNCIFY_STACK_SIZE=8388608
         -sFORCE_FILESYSTEM=1
@@ -391,7 +392,8 @@ if(EMSCRIPTEN)
             "SHELL:--preload-file ${GHOSTSHIP_WEB_PRELOAD_ROM}@/sm64.o2r")
     endif()
     set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY LINK_DEPENDS
-        "${CMAKE_SOURCE_DIR}/src/port/web/shell.html")
+        "${CMAKE_SOURCE_DIR}/src/port/web/shell.html"
+        "${CMAKE_SOURCE_DIR}/src/port/web/asyncify-remove.txt")
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different

@@ -51,6 +51,36 @@ void SaveFileDoSave(int32_t fileIndex) {
     file.close();
 }
 
+// Rewrite only the achievement block of an existing save file. Used when an
+// achievement unlocks, so it is kept without committing game progress the
+// player has not chosen to save yet.
+void SaveFileSaveAchievements(int32_t fileIndex) {
+    fs::path filepath = SavesPath() / ("save_" + std::to_string(fileIndex) + ".json");
+    if (!fs::exists(filepath)) {
+        return;
+    }
+
+    json j;
+    try {
+        std::ifstream in(filepath, std::ios::in);
+        if (!in.is_open()) {
+            return;
+        }
+        in >> j;
+    } catch (const std::exception& e) {
+        SPDLOG_ERROR("Failed to read save file {} for achievement update: {}", filepath.string(), e.what());
+        return;
+    }
+
+    j["shipSaveData"]["achievementSaveData"] = gSaveBuffer.files[fileIndex][0].shipSaveData.achievementSaveData;
+
+    std::ofstream out(filepath, std::ios::out);
+    if (!out.is_open()) {
+        return;
+    }
+    out << j.dump(1);
+}
+
 bool ShouldLoadOldSaveFile(void) {
     return fs::exists(Ship::Context::GetPathRelativeToAppDirectory("default.sav"));
 }

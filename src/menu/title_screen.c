@@ -157,6 +157,19 @@ s16 intro_level_select(void) {
 }
 
 /**
+ * On the N64 this file is part of the goddard overlay, which FIXED_LOAD copies fresh
+ * from ROM each time the title screen is entered, so the greeting re-arms and the
+ * demo countdown restarts after every demo. Without segmented memory the statics
+ * persist, so reset them at the point the reload would have happened.
+ */
+s32 lvl_init_title_screen_values(UNUSED s16 arg0, UNUSED s32 arg1) {
+    sPlayMarioGreeting = TRUE;
+    sPlayMarioGameOver = TRUE;
+    sDemoCountdown = 0;
+    return 0;
+}
+
+/**
  * Regular intro function that handles Mario's greeting voice and game start.
  */
 s32 intro_regular(void) {

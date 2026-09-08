@@ -94,7 +94,8 @@ void SetupGuiElements() {
     mConsoleWindow = std::make_shared<Ship::ConsoleWindow>(CVAR_WINDOW("DevConsole"), "Console##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mConsoleWindow);
 
-    mAchievementsWindow = std::make_shared<AchievementsWindow>(CVAR_WINDOW("Achievements"), "Achievements");
+    mAchievementsWindow =
+        std::make_shared<AchievementsWindow>(CVAR_WINDOW("Achievements"), "Achievements", ImVec2(960, 720));
     gui->AddGuiWindow(mAchievementsWindow);
 
     mEventDebuggerWindow = std::make_shared<Ship::EventDebuggerWindow>(CVAR_WINDOW("EventDebugger"), "Event Debugger");

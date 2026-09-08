@@ -1,3 +1,4 @@
+#include <libultraship.h>
 #include <libultra/types.h>
 #include <libultra/gbi.h>
 
@@ -490,6 +491,12 @@ void bhv_menu_button_zoom_out(struct Object *button) {
 void bhv_menu_button_init(void) {
     gCurrentObject->oMenuButtonOrigPosX = gCurrentObject->oParentRelativePosX;
     gCurrentObject->oMenuButtonOrigPosY = gCurrentObject->oParentRelativePosY;
+
+    // spawn_object_rel_with_rot passes the z offset in as the roll, so the buttons inside
+    // the Score/Copy/Erase/Sound screens (z offset -100) sit rolled by about half a degree.
+    if (CVarGetInteger("gEnhancements.FixFileSelectButtonTilt", 0) == 1) {
+        gCurrentObject->oFaceAngleRoll = 0;
+    }
 }
 
 /**
