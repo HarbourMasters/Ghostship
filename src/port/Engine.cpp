@@ -1378,15 +1378,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     auto mImGuiIo = &ImGui::GetIO();
     ImFont* font;
-    // Rasterize the glyph atlas at higher density so menu text stays sharp on HiDPI/Retina
-    // displays. Bake at retinaScale * maxMenuScale so the runtime ImGui Menu Scaling setting
-    // (FontGlobalScale) only ever downsamples the atlas rather than stretching it blurry.
+    // Rasterize the glyph atlas at higher density so menu text stays sharp on HiDPI displays
+    // (Retina, and browsers on such displays). Bake at backingScale * maxMenuScale so the runtime
+    // ImGui Menu Scaling setting (FontGlobalScale) only ever downsamples the atlas rather than
+    // stretching it blurry. lus reports 1 on standard-DPI displays, which keeps this a no-op there.
     float rasterDensity = 1.0f;
-#if defined(__APPLE__)
-    constexpr float kRetinaScale = 2.0f;  // Retina backing scale
     constexpr float kMaxMenuScale = 2.0f; // keep in sync with imguiScaleOptionToValue's max
-    rasterDensity = kRetinaScale * kMaxMenuScale;
-#endif
+    const float backingScale = ShipCompat::GetWindow()->GetGui()->GetDpiScale();
+    if (backingScale > 1.0f) {
+        rasterDensity = backingScale * kMaxMenuScale;
+    }
     if (fontPath == "") {
         ImFontConfig fontCfg = ImFontConfig();
         fontCfg.OversampleH = fontCfg.OversampleV = 1;
