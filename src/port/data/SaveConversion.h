@@ -250,7 +250,9 @@ inline void LoadMainMenuSaveDataV1(const json& j, MainMenuSaveData& menu) {
 
 inline void from_json(const json& j, MainMenuSaveData& menu) {
     uint32_t version = GetSafeEntry<uint32_t>(j, "version");
-    if(version == 1) {
+    // global.json is written with SAVE_FILE_VERSION, which moved to 2 with the achievement
+    // migration, but only 1 was accepted here, so sound mode and coin score ages never loaded back.
+    if (version == SAVE_FILE_VERSION_LEGACY || version == SAVE_FILE_VERSION) {
         LoadMainMenuSaveDataV1(j, menu);
     }
 }
