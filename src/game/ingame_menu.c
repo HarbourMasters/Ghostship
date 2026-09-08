@@ -409,6 +409,7 @@ void print_generic_string(s16 x, s16 y, const u8 *str) {
     s16 yCoord = 240 - y;
 #endif
 
+    FrameInterpolation_RecordSkipBegin();
 #ifndef VERSION_EU
     create_dl_translation_matrix(MENU_MTX_PUSH, x, y, 0.0f);
 #endif
@@ -486,6 +487,7 @@ void print_generic_string(s16 x, s16 y, const u8 *str) {
 #ifndef VERSION_EU
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 #endif
+    FrameInterpolation_RecordSkipEnd();
 }
 
 #ifdef VERSION_EU
@@ -921,22 +923,27 @@ void reset_dialog_render_state(void) {
 void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
     UNUSED s32 unused;
 
+    FrameInterpolation_RecordOpenChild("render_dialog_box_type", 0);
     create_dl_translation_matrix(MENU_MTX_NOPUSH, dialog->leftOffset, dialog->width, 0);
 
     switch (gDialogBoxType) {
         case DIALOG_TYPE_ROTATE: // Renders a dialog black box with zoom and rotation
             if (gDialogBoxState == DIALOG_STATE_OPENING || gDialogBoxState == DIALOG_STATE_CLOSING) {
+                FrameInterpolation_RecordOpenChild("render_dialog_box_type:zoom", 0);
                 create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.0 / gDialogBoxScale, 1.0 / gDialogBoxScale, 1.0f);
                 // convert the speed into angle
                 create_dl_rotation_matrix(MENU_MTX_NOPUSH, gDialogBoxOpenTimer * 4.0f, 0, 0, 1.0f);
+                FrameInterpolation_RecordCloseChild();
             }
             gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 150);
             break;
         case DIALOG_TYPE_ZOOM: // Renders a dialog white box with zoom
             if (gDialogBoxState == DIALOG_STATE_OPENING || gDialogBoxState == DIALOG_STATE_CLOSING) {
+                FrameInterpolation_RecordOpenChild("render_dialog_box_type:zoom", 0);
                 create_dl_translation_matrix(MENU_MTX_NOPUSH, 65.0 - (65.0 / gDialogBoxScale),
                                               (40.0 / gDialogBoxScale) - 40, 0);
                 create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.0 / gDialogBoxScale, 1.0 / gDialogBoxScale, 1.0f);
+                FrameInterpolation_RecordCloseChild();
             }
             gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, 150);
             break;
@@ -947,6 +954,7 @@ void render_dialog_box_type(struct DialogEntry *dialog, s8 linesPerBox) {
 
     gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void change_and_flash_dialog_text_color_lines(s8 colorMode, s8 lineNum) {
@@ -1000,11 +1008,13 @@ void render_generic_dialog_char_at_pos(struct DialogEntry *dialog, s16 x, s16 y,
 #ifdef VERSION_EU
 void handle_dialog_scroll_page_state(s8 lineNum, s8 totalLines, s8 *pageState, s8 *xMatrix)
 #else
-void handle_dialog_scroll_page_state(s8 lineNum, s8 totalLines, s8 *pageState, s8 *xMatrix, s16 *linePos)
+void handle_dialog_scroll_page_state(s8 lineNum, s8 totalLines, s8 *pageState, s8 *xMatrix, s16 *linePos,
+                                     s16 nextLineStrIdx)
 #endif
 {
 #ifndef VERSION_EU
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 #endif
 
     if (lineNum == totalLines) {
@@ -1014,6 +1024,7 @@ void handle_dialog_scroll_page_state(s8 lineNum, s8 totalLines, s8 *pageState, s
 #ifdef VERSION_EU
     gDialogY += 16;
 #else
+    FrameInterpolation_RecordOpenChild("dialog_line", nextLineStrIdx);
     create_dl_translation_matrix(MENU_MTX_PUSH, X_VAL3, 2 - (lineNum * Y_VAL3), 0);
 
     *linePos = 0;
@@ -1179,10 +1190,12 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
 
     strIdx = gDialogTextPos;
 
-    if (gDialogBoxState == DIALOG_STATE_HORIZONTAL) {
-        create_dl_translation_matrix(MENU_MTX_NOPUSH, 0, (f32) gDialogScrollOffsetY, 0);
-    }
+    FrameInterpolation_RecordOpenChild("dialog_text", 0);
+    // Always emitted (identity when not scrolling) so scroll start/end pair with the previous frame.
+    create_dl_translation_matrix(MENU_MTX_NOPUSH, 0,
+                                 gDialogBoxState == DIALOG_STATE_HORIZONTAL ? (f32) gDialogScrollOffsetY : 0.0f, 0);
 
+    FrameInterpolation_RecordOpenChild("dialog_line", strIdx);
     create_dl_translation_matrix(MENU_MTX_PUSH, X_VAL3, 2 - lineNum * Y_VAL3, 0);
 
     while (pageState == DIALOG_PAGE_STATE_NONE) {
@@ -1193,10 +1206,11 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
             case DIALOG_CHAR_TERMINATOR:
                 pageState = DIALOG_PAGE_STATE_END;
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+                FrameInterpolation_RecordCloseChild();
                 break;
             case DIALOG_CHAR_NEWLINE:
                 lineNum++;
-                handle_dialog_scroll_page_state(lineNum, totalLines, &pageState, &xMatrix, &linePos);
+                handle_dialog_scroll_page_state(lineNum, totalLines, &pageState, &xMatrix, &linePos, strIdx + 1);
                 break;
             case DIALOG_CHAR_DAKUTEN:
                 mark = DIALOG_MARK_DAKUTEN;
@@ -1243,7 +1257,7 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
                 goto skip;
             default:
             skip:
-                FrameInterpolation_RecordOpenChild("render_dialog_text_and_pages:render_char", TAG_LETTER(strChar));
+                FrameInterpolation_RecordOpenChild("render_dialog_text_and_pages:render_char", TAG_LETTER(strIdx));
                 if(ROM_JP) {
                     if (linePos != 0) {
                         create_dl_translation_matrix(MENU_MTX_NOPUSH, 10 * xMatrix, 0, 0);
@@ -1295,16 +1309,18 @@ void handle_dialog_text_and_pages(s8 colorMode, struct DialogEntry *dialog, s8 l
             if (str[strIdx + 1] == DIALOG_CHAR_TERMINATOR) {
                 pageState = DIALOG_PAGE_STATE_END;
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+                FrameInterpolation_RecordCloseChild();
                 break; // exit loop
             } else {
                 lineNum++;
-                handle_dialog_scroll_page_state(lineNum, totalLines, &pageState, &xMatrix, &linePos);
+                handle_dialog_scroll_page_state(lineNum, totalLines, &pageState, &xMatrix, &linePos, strIdx + 1);
             }
         }
 
         strIdx++;
     }
 
+    FrameInterpolation_RecordCloseChild();
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 
     if (gDialogBoxState == DIALOG_STATE_VERTICAL) {
@@ -1360,6 +1376,7 @@ void render_dialog_triangle_next(s8 linesPerBox) {
         return;
     }
 
+    FrameInterpolation_RecordOpenChild("render_dialog_triangle_next", 0);
     create_dl_translation_matrix(MENU_MTX_PUSH, X_VAL5, (linesPerBox * Y_VAL5_1) + Y_VAL5_2, 0);
     create_dl_scale_matrix(MENU_MTX_NOPUSH, X_Y_VAL6, X_Y_VAL6, 1.0f);
     create_dl_rotation_matrix(MENU_MTX_NOPUSH, -DEFAULT_DIALOG_BOX_ANGLE, 0, 0, 1.0f);
@@ -1372,6 +1389,7 @@ void render_dialog_triangle_next(s8 linesPerBox) {
 
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void handle_special_dialog_text(s16 dialogID) { // dialog ID tables, in order
@@ -1630,8 +1648,6 @@ void render_dialog_entries(void) {
             ensure_nonnegative((240 - dialog->width) + (dialog->linesPerBox * 80 / DIAG_VAL4))
     );
 
-    bool shouldInterpolate = gDialogScrollOffsetY != 0;
-    FrameInterpolation_ShouldInterpolateFrame(shouldInterpolate);
     handle_dialog_text_and_pages(0, dialog, lowerBound);
 
     if (gLastDialogPageStrPos == -1 && gLastDialogResponse == 1) {
@@ -1652,7 +1668,6 @@ void render_dialog_entries(void) {
         render_dialog_triangle_next(dialog->linesPerBox);
     }
 
-    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 // Calls a gMenuMode value defined by render_menus_and_dialogs cases
@@ -1832,11 +1847,13 @@ void print_peach_letter_message(void) {
     dialog = GameEngine_LoadDialog(gDialogID);
     str = segmented_to_virtual(dialog->str);
 
+    FrameInterpolation_RecordOpenChild("print_peach_letter_message", 0);
     create_dl_translation_matrix(MENU_MTX_PUSH, 97.0f, 118.0f, 0);
 
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gCutsceneMsgFade);
     gSPDisplayList(gDisplayListHead++, castle_grounds_seg7_dl_0700EA58);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 20, 20, 20, gCutsceneMsgFade);
 
@@ -1922,6 +1939,7 @@ void change_dialog_camera_angle(void) {
 }
 
 void shade_screen(void) {
+    FrameInterpolation_RecordOpenChild("shade_screen", 0);
     create_dl_translation_matrix(MENU_MTX_PUSH, GFX_DIMENSIONS_FROM_LEFT_EDGE(0), SCREEN_HEIGHT, 0);
 
     // This is a bit weird. It reuses the dialog text box (width 130, height -80),
@@ -1932,11 +1950,13 @@ void shade_screen(void) {
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 110);
     gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void print_animated_red_coin(s16 x, s16 y) {
     s32 globalTimer = gGlobalTimer;
 
+    FrameInterpolation_RecordOpenChild("print_animated_red_coin", (uintptr_t) (u16) x);
     create_dl_translation_matrix(MENU_MTX_PUSH, x, y, 0);
     create_dl_scale_matrix(MENU_MTX_NOPUSH, 0.2f, 0.2f, 1.0f);
     gDPSetRenderMode(gDisplayListHead++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
@@ -1958,6 +1978,7 @@ void print_animated_red_coin(s16 x, s16 y) {
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void render_pause_red_coins(void) {
@@ -2095,10 +2116,12 @@ void render_pause_camera_options(s16 x, s16 y, s8 *index, s16 xIndex) {
     print_generic_string(x + TXT2_X, y - 13, GameEngine_LoadTranslation("TEXT_NORMAL_FIXED"));
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+    FrameInterpolation_RecordOpenChild("render_pause_camera_options:cursor", 0);
     create_dl_translation_matrix(MENU_MTX_PUSH, ((*index - 1) * xIndex) + x, y + Y_VAL7, 0);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 
     switch (*index) {
         case CAM_SELECTION_MARIO:
@@ -2142,6 +2165,7 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
 }
 
 void render_pause_castle_menu_box(s16 x, s16 y) {
+    FrameInterpolation_RecordOpenChild("render_pause_castle_menu_box", 0);
     create_dl_translation_matrix(MENU_MTX_PUSH, x - 78, y - 32, 0);
     create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.2f, 0.8f, 1.0f);
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 105);
@@ -2158,6 +2182,7 @@ void render_pause_castle_menu_box(s16 x, s16 y) {
     create_dl_rotation_matrix(MENU_MTX_NOPUSH, 270.0f, 0, 0, 1.0f);
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void highlight_last_course_complete_stars(void) {

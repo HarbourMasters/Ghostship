@@ -110,6 +110,13 @@ void FrameInterpolation_RecordTranslateRotate(Mat4* dest, Vec3f pos, Vec3s rotat
 
 void FrameInterpolation_RecordOrtho(Mtx* m, f32 left, f32 right, f32 bottom, f32 top, f32 near, f32 far, f32 scale);
 
+// guRotate: interpolated by angle, not element-wise (element-wise lerp of a rotation shrinks mid-step).
+void FrameInterpolation_RecordRotateMtx(Mtx* dest, f32 a, f32 x, f32 y, f32 z);
+
+// Matrices recorded between these draw at the current frame's value (no pairing by index).
+void FrameInterpolation_RecordSkipBegin(void);
+void FrameInterpolation_RecordSkipEnd(void);
+
 //void FrameInterpolation_func_80062B18(f32* arg0, f32* arg1, f32* arg2, arg3, arg4, arg5, arg6, arg7);
 
 #ifdef __cplusplus

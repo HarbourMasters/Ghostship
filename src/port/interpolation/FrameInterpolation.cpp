@@ -14,6 +14,7 @@
 extern "C" {
 extern Mat4* gInterpolationMatrix;
 void guOrtho(Mtx* dest, float left, float right, float bottom, float oTop, float oNear, float oFar, float oScale);
+void guRotateF(float mf[4][4], float a, float x, float y, float z);
 }
 /*
 Frame interpolation.
@@ -96,6 +97,7 @@ enum class Op {
     BillboardMatrix,
     AnimatedPartMatrix,
     MatrixToMtx,
+    RotateMtx,
     MatrixRotateAxis,
     SkinMatrixMtxFToMtx,
     SetTransformMatrix,
@@ -287,6 +289,12 @@ union Data {
     } matrix_text;
 
     struct {
+        Mtx* dest;
+        float angle;
+        float axis[3];
+    } rotate_mtx;
+
+    struct {
         label key;
         size_t idx;
     } open_child;
@@ -303,6 +311,7 @@ struct Recording {
 };
 
 bool is_recording;
+int skip_depth = 0;
 vector<Path*> current_path;
 uint32_t camera_epoch;
 uint32_t previous_camera_epoch;
@@ -751,6 +760,30 @@ struct InterpolateCtx {
                             break;
                         }
 
+                        case Op::RotateMtx: {
+                            const auto& o = old_op.rotate_mtx;
+                            const auto& n = new_op.rotate_mtx;
+                            float angle = n.angle;
+                            float ol = sqrtf(o.axis[0] * o.axis[0] + o.axis[1] * o.axis[1] + o.axis[2] * o.axis[2]);
+                            float nl = sqrtf(n.axis[0] * n.axis[0] + n.axis[1] * n.axis[1] + n.axis[2] * n.axis[2]);
+                            float dot = (o.axis[0] * n.axis[0] + o.axis[1] * n.axis[1] + o.axis[2] * n.axis[2]) /
+                                        ((ol > 0.0f && nl > 0.0f) ? (ol * nl) : 1.0f);
+                            if (dot > 0.999f) {
+                                float diff = fmodf(n.angle - o.angle, 360.0f);
+                                if (diff > 180.0f) {
+                                    diff -= 360.0f;
+                                } else if (diff < -180.0f) {
+                                    diff += 360.0f;
+                                }
+                                // A jump past a quarter turn is a different element, not motion.
+                                if (fabsf(diff) <= 90.0f) {
+                                    angle = o.angle + step * diff;
+                                }
+                            }
+                            guRotateF(new_replacement(n.dest)->mf, angle, n.axis[0], n.axis[1], n.axis[2]);
+                            break;
+                        }
+
                         case Op::MatrixRotateAxis: {
                             lerp_vec3f(&tmp_vec3f, &old_op.matrix_rotate_axis.axis, &new_op.matrix_rotate_axis.axis);
                             auto tmp =
@@ -906,7 +939,7 @@ void FrameInterpolation_ShouldInterpolateFrame(bool shouldInterpolate) {
 }
 
 bool check_if_recording() {
-    return (is_recording && GameEngine::GetInterpolationFPS() != 30);
+    return (is_recording && skip_depth == 0 && GameEngine::GetInterpolationFPS() != 30);
 }
 
 void FrameInterpolation_StartRecord(void) {
@@ -916,6 +949,7 @@ void FrameInterpolation_StartRecord(void) {
     sCurSnow.dl = nullptr;
     sCurSnow.count = 0;
     current_path.clear();
+    skip_depth = 0;
     current_path.push_back(&current_recording.root_path);
     if (!camera_interpolation) {
         // default to interpolating
@@ -951,7 +985,9 @@ void FrameInterpolation_RecordCloseChild(void) {
     if (has_inv_actor_mtx && current_path.size() == inv_actor_mtx_path_index) {
         has_inv_actor_mtx = false;
     }
-    current_path.pop_back();
+    if (current_path.size() > 1) {
+        current_path.pop_back();
+    }
 }
 
 void FrameInterpolation_DontInterpolateCamera(void) {
@@ -1033,6 +1069,28 @@ void FrameInterpolation_RecordOrtho(Mtx* m, f32 left, f32 right, f32 bottom, f32
         return;
     }
     append(Op::Ortho).ortho = { m, left, right, bottom, oTop, oNear, oFar, scale };
+}
+
+void FrameInterpolation_RecordRotateMtx(Mtx* dest, f32 a, f32 x, f32 y, f32 z) {
+    if (!check_if_recording()) {
+        return;
+    }
+    auto& d = append(Op::RotateMtx).rotate_mtx;
+    d.dest = dest;
+    d.angle = a;
+    d.axis[0] = x;
+    d.axis[1] = y;
+    d.axis[2] = z;
+}
+
+void FrameInterpolation_RecordSkipBegin(void) {
+    skip_depth++;
+}
+
+void FrameInterpolation_RecordSkipEnd(void) {
+    if (skip_depth > 0) {
+        skip_depth--;
+    }
 }
 
 void FrameInterpolation_RecordMatrixScale(Mat4* matrix, f32 scale) {
