@@ -66,6 +66,7 @@ EM_JS(void, js_idbfs_save_nowait, (), {
             }
         });
 });
+// clang-format on
 
 void WebCache_SaveNoWait() {
     js_idbfs_save_nowait();

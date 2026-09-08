@@ -1495,6 +1495,14 @@ void GameEngine::Create(int argc, char* argv[]) {
 
 void GameEngine::Destroy() {
     GhostshipGui::Destroy();
+    // Persist the window state (fullscreen, size, position) here. GameEngine::Instance is never deleted, so the
+    // Ship::Context it holds is never destroyed and the save in Context::~Context never runs on quit.
+    if (auto window = ShipCompat::GetWindow()) {
+        window->SaveWindowToConfig();
+    }
+    if (auto config = ShipCompat::GetConfig()) {
+        config->Save();
+    }
     gsFast3dWindow = nullptr;
     AudioExit();
 #ifdef __SWITCH__
