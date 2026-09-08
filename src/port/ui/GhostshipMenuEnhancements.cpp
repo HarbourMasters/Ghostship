@@ -224,6 +224,13 @@ void GhostshipMenu::AddMenuEnhancements() {
         .RaceDisable(false)
         .Options(CheckboxOptions().Tooltip("Fixes the Koopa race music on Bob-omb Battlefield and Tiny-Huge Island."));
 
+    AddWidget(path, "Fix File Select Button Tilt", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("FixFileSelectButtonTilt"))
+        .Options(CheckboxOptions().Tooltip(
+            "Straightens the file and menu buttons inside the Score, Copy, Erase, and Sound screens of the file select. "
+            "The original game rolls them by about half a degree. "
+            "(Takes effect the next time one of those screens is opened.)"));
+
     path = { "Enhancements", "Modes", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;
