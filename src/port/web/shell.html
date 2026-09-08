@@ -91,7 +91,12 @@
     var Module = {
       canvas: (function() { return document.getElementById('canvas'); })(),
 
-      print: function(text) { console.log('[WASM]', text); },
+      // Torch logs every asset at info level, and console.log is slow enough that it
+      // dominated extraction time. Info and below still go to the log file in /storage/logs.
+      print: function(text) {
+        if (/\] \[(info|debug|trace)\] /.test(text)) return;
+        console.log('[WASM]', text);
+      },
       printErr: function(text) { console.warn('[WASM]', text); },
 
       setStatus: function(text) {
