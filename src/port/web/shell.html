@@ -170,6 +170,14 @@
         // Keep the first message: a late callback can still abort after a clean exit.
         if (Module.exitScreenShown) return;
         Module.exitScreenShown = true;
+        // In fullscreen only the canvas is visible, so the exit screen behind it could not be clicked.
+        if (document.fullscreenElement) document.exitFullscreen();
+        // SDL's audio callbacks keep firing into the dead runtime otherwise, once per audio buffer.
+        if (Module.SDL2) {
+          if (Module.SDL2.audio && Module.SDL2.audio.silenceTimer !== undefined) clearInterval(Module.SDL2.audio.silenceTimer);
+          if (Module.SDL2.audio && Module.SDL2.audio.scriptProcessorNode) Module.SDL2.audio.scriptProcessorNode.onaudioprocess = null;
+          if (Module.SDL2.audioContext) Module.SDL2.audioContext.close();
+        }
         document.getElementById('canvas-container').style.display = 'none';
         document.getElementById('loading-screen').style.display = 'none';
         document.getElementById('exit-message').textContent = message;
