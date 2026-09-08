@@ -86,5 +86,11 @@ int main(int argc, char* argv[]) {
         push_frame();
     }
     GameEngine::Instance->Destroy();
+#ifdef __EMSCRIPTEN__
+    // Destroy() wrote the config; the periodic sync in push_frame() has stopped, so push it to
+    // browser storage now or the last fullscreen/window state is lost on the next visit. Not
+    // awaited: the write finishes in the page after the runtime exits.
+    WebCache_SaveNoWait();
+#endif
     return 0;
 }

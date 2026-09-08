@@ -56,6 +56,22 @@ void WebCache_Save() {
     js_idbfs_save();
 }
 
+// Same sync without waiting for it: the IndexedDB write keeps going in the page after the
+// runtime exits, which is what the quit path needs (waiting there froze Safari).
+EM_JS(void, js_idbfs_save_nowait, (), {
+    FS.syncfs(
+        false, function(err) {
+            if (err) {
+                console.error('[WebCache] save error:', err);
+            }
+        });
+});
+// clang-format on
+
+void WebCache_SaveNoWait() {
+    js_idbfs_save_nowait();
+}
+
 // Shows an in-page prompt with a real button and opens the file dialog from that
 // button's click handler. Safari only opens a file dialog from inside a user
 // gesture, and the game loop is not one, so a programmatic click issued from a

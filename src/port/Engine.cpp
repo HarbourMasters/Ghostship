@@ -346,8 +346,12 @@ typedef enum ExtractSteps {
     ES_VERIFY,
     GS_COMPILE,
     GS_LOAD,
+    GS_LOADING,
     GS_WAIT
 } ExtractSteps;
+
+// Set when the saved ROM archive exists but cannot be opened (see LoadResourceFiles).
+static bool sRomArchiveFailed = false;
 
 typedef enum PromptSteps {
     PS_FILE_CHECK,
@@ -487,7 +491,7 @@ void GameEngine::LoadResourceFiles() {
 
     std::string romPath = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
     if (std::filesystem::exists(romPath)) {
-        ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(romPath);
+        sRomArchiveFailed = ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(romPath) == nullptr;
     }
 
     const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
@@ -742,6 +746,26 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #else
         bool satellaActive = false;
 #endif
+        if (extractDone && sRomArchiveFailed) {
+            // The archive is present but unreadable. Loading it again every frame only leaks, so set it
+            // aside and go back to the setup prompt instead.
+            if (GhostshipGui::PopupsQueued() == 0) {
+                GhostshipGui::RegisterPopup(
+                    "Game Archive Error",
+                    "The saved game archive could not be opened.\nIt will be set aside so you can generate it again "
+                    "from your ROM.\n\nCheck the logs for details.",
+                    "OK", "", [&]() {
+                        const std::string o2r = Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64");
+                        std::error_code ec;
+                        std::filesystem::rename(o2r, o2r + ".unreadable", ec);
+                        sRomArchiveFailed = false;
+                        extractDone = false;
+                        extractStep = ES_EXTRACT;
+                        promptStep = PS_FILE_CHECK;
+                    });
+            }
+            goto render;
+        }
         if (extractDone && !satellaActive && (compileError.empty() || compileErrorDismissed)) {
             break;
         }
@@ -1130,8 +1154,12 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #endif
                     extractDone = true;
                 });
+                extractStep = GS_LOADING;
                 continue;
             }
+            case GS_LOADING:
+                // Resources are loading on the pool; keep rendering until extractDone flips.
+                break;
             default:
                 break;
         }
@@ -1350,15 +1378,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 ImFont* GameEngine::CreateFontWithSize(float size, std::string fontPath) {
     auto mImGuiIo = &ImGui::GetIO();
     ImFont* font;
-    // Rasterize the glyph atlas at higher density so menu text stays sharp on HiDPI/Retina
-    // displays. Bake at retinaScale * maxMenuScale so the runtime ImGui Menu Scaling setting
-    // (FontGlobalScale) only ever downsamples the atlas rather than stretching it blurry.
+    // Rasterize the glyph atlas at higher density so menu text stays sharp on HiDPI displays
+    // (Retina, and browsers on such displays). Bake at backingScale * maxMenuScale so the runtime
+    // ImGui Menu Scaling setting (FontGlobalScale) only ever downsamples the atlas rather than
+    // stretching it blurry. lus reports 1 on standard-DPI displays, which keeps this a no-op there.
     float rasterDensity = 1.0f;
-#if defined(__APPLE__)
-    constexpr float kRetinaScale = 2.0f;  // Retina backing scale
     constexpr float kMaxMenuScale = 2.0f; // keep in sync with imguiScaleOptionToValue's max
-    rasterDensity = kRetinaScale * kMaxMenuScale;
-#endif
+    const float backingScale = ShipCompat::GetWindow()->GetGui()->GetDpiScale();
+    if (backingScale > 1.0f) {
+        rasterDensity = backingScale * kMaxMenuScale;
+    }
     if (fontPath == "") {
         ImFontConfig fontCfg = ImFontConfig();
         fontCfg.OversampleH = fontCfg.OversampleV = 1;

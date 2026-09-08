@@ -54,6 +54,21 @@
       transition: width 0.2s ease;
     }
     #status { font-size: 0.8rem; color: #666; min-height: 1.2em; }
+    #exit-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 32px;
+      max-width: 480px;
+      text-align: center;
+    }
+    #exit-screen p { color: #aaa; font-size: 0.9rem; line-height: 1.5; }
+    #exit-screen button {
+      font-size: 1rem;
+      padding: 8px 18px;
+      cursor: pointer;
+    }
     #spinner {
       width: 40px; height: 40px;
       border: 3px solid #222;
@@ -71,10 +86,17 @@
     <div id="spinner"></div>
     <p id="status">Initialising…</p>
     <div id="progress-wrap"><div id="progress-bar"></div></div>
+    <button id="start-button" style="display:none;font-size:1.1rem;padding:10px 28px;cursor:pointer">Start</button>
     <p style="color:#555;font-size:0.75rem">
       Your ROM file is processed entirely in your browser.<br/>
       Nothing is uploaded to any server.
     </p>
+  </div>
+
+  <!-- Shown after the game quits or crashes; the canvas would otherwise keep its last frame -->
+  <div id="exit-screen">
+    <p id="exit-message"></p>
+    <button onclick="location.reload()">Start again</button>
   </div>
 
   <!-- Game canvas (shown once the game starts) -->
@@ -106,13 +128,66 @@
 
       monitorRunDependencies: function(left) {
         if (left > 0) {
-          document.getElementById('spinner').style.display = 'block';
+          // Keep the spinner hidden while the game is waiting on the Start button.
+          var waitingForStart = document.getElementById('start-button').style.display !== 'none';
+          document.getElementById('spinner').style.display = waitingForStart ? 'none' : 'block';
         } else {
           document.getElementById('spinner').style.display = 'none';
           // Switch from loading screen to canvas when everything is ready.
           document.getElementById('loading-screen').style.display = 'none';
           document.getElementById('canvas-container').style.display = 'block';
         }
+      },
+
+      // Browsers keep audio muted until the page gets a click or key press, so hold the game
+      // until the Start button is clicked; that click also gives the canvas keyboard focus.
+      preRun: [function() {
+        addRunDependency('user-start');
+        // The wasm finished loading a moment ago, which already swapped the loading screen for
+        // the canvas; bring the loading screen back until the click.
+        document.getElementById('loading-screen').style.display = 'flex';
+        document.getElementById('canvas-container').style.display = 'none';
+        var button = document.getElementById('start-button');
+        button.style.display = 'inline-block';
+        document.getElementById('spinner').style.display = 'none';
+        Module.setStatus('Ready.');
+        button.addEventListener('click', function() {
+          button.style.display = 'none';
+          // Create the audio context inside this click so it starts running; SDL adopts
+          // Module.SDL2.audioContext instead of creating its own (suspended) one later.
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass && !(Module.SDL2 && Module.SDL2.audioContext)) {
+            Module.SDL2 = Module.SDL2 || {};
+            Module.SDL2.audioContext = new AudioContextClass();
+            Module.SDL2.audioContext.resume();
+          }
+          removeRunDependency('user-start');
+        });
+      }],
+
+      // A browser tab cannot close itself, so replace the frozen canvas with a message instead.
+      showExitScreen: function(message) {
+        // Keep the first message: a late callback can still abort after a clean exit.
+        if (Module.exitScreenShown) return;
+        Module.exitScreenShown = true;
+        // In fullscreen only the canvas is visible, so the exit screen behind it could not be clicked.
+        if (document.fullscreenElement) document.exitFullscreen();
+        // SDL's audio callbacks keep firing into the dead runtime otherwise, once per audio buffer.
+        if (Module.SDL2) {
+          if (Module.SDL2.audio && Module.SDL2.audio.silenceTimer !== undefined) clearInterval(Module.SDL2.audio.silenceTimer);
+          if (Module.SDL2.audio && Module.SDL2.audio.scriptProcessorNode) Module.SDL2.audio.scriptProcessorNode.onaudioprocess = null;
+          if (Module.SDL2.audioContext) Module.SDL2.audioContext.close();
+        }
+        document.getElementById('canvas-container').style.display = 'none';
+        document.getElementById('loading-screen').style.display = 'none';
+        document.getElementById('exit-message').textContent = message;
+        document.getElementById('exit-screen').style.display = 'flex';
+      },
+      onExit: function(status) {
+        Module.showExitScreen('Ghostship has closed. You can close this tab, or start it again.');
+      },
+      onAbort: function(what) {
+        Module.showExitScreen('Ghostship stopped unexpectedly (' + what + '). You can close this tab, or start it again.');
       },
 
       // Report file-download / preload progress.
@@ -134,6 +209,14 @@
     // Emscripten injects Module.onProgress via its own progress handler;
     // wire it up here so the bar updates during WASM + data download.
     Module.downloadProgress = Module.onProgress;
+
+    // Browsers keep audio suspended until a click or key press; resume SDL's context on the first one.
+    function resumeGameAudio() {
+      var context = Module.SDL2 && Module.SDL2.audioContext;
+      if (context && context.state !== 'running') context.resume();
+    }
+    window.addEventListener('pointerdown', resumeGameAudio, true);
+    window.addEventListener('keydown', resumeGameAudio, true);
 
     window.onerror = function(msg, src, line) {
       Module.setStatus('Fatal error: ' + msg + ' (' + src + ':' + line + ')');
