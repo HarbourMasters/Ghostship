@@ -47,6 +47,9 @@ const LevelScript level_intro_mario_head_regular[] = {
     INIT_LEVEL(),
     BLACKOUT(/*active*/ TRUE),
     FIXED_LOAD(/*loadAddr*/ _goddardSegmentStart, /*romStart*/ _goddardSegmentRomStart, /*romEnd*/ _goddardSegmentRomEnd),
+           // The N64 reloads the title screen code and data during FIXED_LOAD above; reset its statics
+           // the same way so Mario greets the player again after a demo.
+           CALL(/*arg*/ 0, /*func*/ lvl_init_title_screen_values),
     LOAD_MARIO_HEAD(/*loadHeadID*/ REGULAR_FACE),
     LOAD_RAW(/*seg*/ 0x13, _behaviorSegmentRomStart, _behaviorSegmentRomEnd),
     LOAD_MIO0_TEXTURE(/*seg*/ 0x0A, _title_screen_bg_mio0SegmentRomStart, _title_screen_bg_mio0SegmentRomEnd),
@@ -72,6 +75,9 @@ const LevelScript level_intro_mario_head_dizzy[] = {
     INIT_LEVEL(),
     BLACKOUT(/*active*/ TRUE),
     FIXED_LOAD(/*loadAddr*/ _goddardSegmentStart, /*romStart*/ _goddardSegmentRomStart, /*romEnd*/ _goddardSegmentRomEnd),
+           // The N64 reloads the title screen code and data during FIXED_LOAD above; reset its statics
+           // the same way so Mario greets the player again after a demo.
+           CALL(/*arg*/ 0, /*func*/ lvl_init_title_screen_values),
     LOAD_MARIO_HEAD(/*loadHeadID*/ DIZZY_FACE),
     LOAD_RAW(/*seg*/ 0x13, _behaviorSegmentRomStart, _behaviorSegmentRomEnd),
     LOAD_MIO0_TEXTURE(/*seg*/ 0x0A, _title_screen_bg_mio0SegmentRomStart, _title_screen_bg_mio0SegmentRomEnd),
