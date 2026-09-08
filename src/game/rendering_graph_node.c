@@ -19,11 +19,9 @@ extern int mirror_mode_is_enabled(void);
 extern void mirror_mode_undo_projection(void);
 extern int mirror_mode_is_active(void);
 extern s16 gCurrLevelNum;
-extern s16 sCurrPlayMode;
 extern s32 gCurrCreditsEntry;
 extern struct MarioState *gMarioState;
-
-#define PLAY_MODE_NORMAL 0
+extern struct Object *gMarioObject;
 
 /**
  * This file contains the code that processes the scene graph for rendering.
@@ -277,9 +275,10 @@ void geo_process_perspective(struct GraphNodePerspective *node) {
 
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx), G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
 
-        // Apply mirror mode transform after perspective projection
-        // Mirror during: normal gameplay, ending cutscenes, but NOT during credits text rendering
-        if (sCurrPlayMode == PLAY_MODE_NORMAL && gMarioState != NULL && gMarioState->action != 0 && gCurrCreditsEntry == NULL) {
+        // Apply mirror mode transform after perspective projection.
+        // Key on Mario's object rather than the play mode so the world stays mirrored
+        // while paused and during warp fades, but not on the title/file select or credits.
+        if (gMarioObject != NULL && gMarioState != NULL && gMarioState->action != 0 && gCurrCreditsEntry == NULL) {
             mirror_mode_apply_projection();
         }
 
