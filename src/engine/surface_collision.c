@@ -505,7 +505,7 @@ struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32
 
         *pheight = height;
         if (interpolate) {
-            struct Surface s;
+            static struct Surface s;
             s.type = surf->type;
             s.normal.x = nx;
             s.normal.y = ny;
