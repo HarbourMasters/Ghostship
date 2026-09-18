@@ -780,7 +780,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #elif (defined(__WIIU__) || defined(__SWITCH__))
                 extractStep = ES_VERIFY;
 #else
-                extractStep = ES_EXTRACT;
+                extractStep = args.empty() ? ES_EXTRACT : ES_EXTRACT_ARGS;
 #endif
                 /*} else {
                     std::string msg;
