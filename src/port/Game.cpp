@@ -9,6 +9,9 @@
 #include <SDL2/SDL.h>
 #include "port/web/WebUtils.h"
 #endif
+#ifdef _WIN32
+#include <locale.h>
+#endif
 #ifdef __ANDROID__
 // The packaged game data is unpacked before this process starts rather than
 // from here: extracting the ROM needs config.yml and assets/ymls already on
@@ -62,6 +65,10 @@ static void GhostshipCrashTrace(int sig) {
 int SDL_main(int argc, char** argv) {
 #else
 int main(int argc, char* argv[]) {
+#endif
+#ifdef _WIN32
+    // Allow non-ascii characters in paths on Windows.
+    setlocale(LC_CTYPE, ".UTF8");
 #endif
 #if defined(__APPLE__) && !defined(__IOS__)
     // Disable the macOS "press and hold" accent/diacritic popup for this app. SDL keeps a Cocoa text
