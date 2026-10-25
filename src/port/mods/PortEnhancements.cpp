@@ -10,6 +10,7 @@
 #include "assets/bin/segment2.h"
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
+#include "port/ShipInit.hpp"
 
 uint8_t textRand[] = { 0x1B, 0x0A, 0x17, 0x0D, 0xFF };
 uint8_t textMarioRando[] = { 0x1B, 0x0A, 0x17, 0x0D, 0x18, 0x16, 0x12, 0x23, 0x0E, 0x1B, 0xFF };
@@ -113,19 +114,29 @@ void PortEnhancements_Init() {
         FlyingTripleJumpLaunch* ev = (FlyingTripleJumpLaunch*)event;
         *ev->launchVelocity = 246.0f;
     });
-
-    auto OnDistanceFunc = [](IEvent* event) {
-        if (CVarGetInteger("gEnhancements.DisableDrawDistance", 0) == 0) {
-            return;
-        }
-
-        EntityDistanceRender* ev = (EntityDistanceRender*)event;
-        *ev->visible = true;
-    };
-
-    REGISTER_LISTENER(EntityDistanceLoad, EVENT_PRIORITY_NORMAL, OnDistanceFunc);
-    REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDistanceFunc);
 }
+
+static ListenerID sDistanceLoadListener = -1;
+static ListenerID sDistanceRenderListener = -1;
+
+static void OnDisableDrawDistance(IEvent* event) {
+    *((EntityDistanceRender*)event)->visible = true;
+}
+
+static void UpdateDrawDistanceHooks() {
+    const bool enabled = CVarGetInteger("gEnhancements.DisableDrawDistance", 0) != 0;
+    if (enabled && sDistanceRenderListener == -1) {
+        sDistanceLoadListener = REGISTER_LISTENER(EntityDistanceLoad, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
+        sDistanceRenderListener =
+            REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
+    } else if (!enabled && sDistanceRenderListener != -1) {
+        UNREGISTER_LISTENER(EntityDistanceLoad, sDistanceLoadListener);
+        UNREGISTER_LISTENER(EntityDistanceRender, sDistanceRenderListener);
+        sDistanceLoadListener = sDistanceRenderListener = -1;
+    }
+}
+
+static RegisterShipInitFunc sDrawDistanceInit(UpdateDrawDistanceHooks, { "gEnhancements.DisableDrawDistance" });
 
 void PortEnhancements_Register() {
     // Register engine events

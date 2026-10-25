@@ -51,7 +51,7 @@ void DrawAchievementCard(const std::pair<const std::string, Achievement>& achPai
 
     const std::string icon = ach.icon != nullptr ? ach.icon : "";
     ImTextureID texture = std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
-                                    ->GetTextureByName(data->achieved ? icon : icon + ".locked");
+                              ->GetTextureByName(data->achieved ? icon : icon + ".locked");
     if (texture != nullptr) {
         ImGui::Image(texture, ImVec2(cardHeight - 10, cardHeight - 10), ImVec2(0, 0), ImVec2(1.0f, 1.0f));
     } else {
