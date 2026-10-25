@@ -237,6 +237,11 @@ void GhostshipMenu::AddMenuEnhancements() {
                                            "The original game rolls them by about half a degree. "
                                            "(Takes effect the next time one of those screens is opened.)"));
 
+    AddWidget(path, "Fix Yoshi Dialogue Typo", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_ENHANCEMENT("FixYoshiDialogueTypo"))
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Fixes Yoshi's \"It that really you???\" line to read \"Is that really you???\"."));
+
     path = { "Enhancements", "Modes", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", path.sidebarName, 1);
     path.column = SECTION_COLUMN_1;

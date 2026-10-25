@@ -1984,9 +1984,36 @@ extern "C" uint8_t* GameEngine_LoadLevelName(const uint32_t courseId) {
     return static_cast<uint8_t*>(ResourceGetDataByName(StringHelper::Sprintf(gCourseRoot, courseId).c_str()));
 }
 
+// Yoshi's "It that really you???" typo from the original US text, in the game's charset. Index 1 is the 't'/'s'.
+static const uint8_t sYoshiTypo[] = { 0x12, 0x37, 0x9E, 0x37, 0x2B, 0x24, 0x37, 0x9E, 0x35,
+                                      0x28, 0x24, 0x2F, 0x2F, 0x3C, 0x9E, 0x3C, 0x32, 0x38 };
+
+static void FixYoshiTypo(DialogEntry* dialog) {
+    if (dialog == nullptr || dialog->str == nullptr) {
+        return;
+    }
+
+    const uint8_t from = CVarGetInteger(CVAR_ENHANCEMENT("FixYoshiDialogueTypo"), 1) ? 0x37 : 0x36;
+    uint8_t pattern[sizeof(sYoshiTypo)];
+    memcpy(pattern, sYoshiTypo, sizeof(pattern));
+    pattern[1] = from;
+
+    auto str = const_cast<uint8_t*>(dialog->str);
+    size_t len = 0;
+    while (str[len] != 0xFF) { // DIALOG_CHAR_TERMINATOR
+        len++;
+    }
+
+    auto it = std::search(str, str + len, pattern, pattern + sizeof(pattern));
+    if (it != str + len) {
+        it[1] = from == 0x37 ? 0x36 : 0x37;
+    }
+}
+
 extern "C" DialogEntry* GameEngine_LoadDialog(const uint32_t dialogId) {
     auto dialog =
         static_cast<DialogEntry*>(ResourceGetDataByName(StringHelper::Sprintf(gDialogRoot, dialogId).c_str()));
+    FixYoshiTypo(dialog);
     return dialog;
 }
 
