@@ -113,6 +113,12 @@ class Client {
     // Sends a request and waits up to 10 seconds for its reply. Only from the worker thread or Execute.
     void SendAndReceive(IPacket& packet);
 
+    // RegisterLive for a request where only the newest body matters: while one for the same route is still queued,
+    // its body is replaced instead of queueing another.
+    void SendLatest(const std::string& route, std::vector<uint8_t> body, RequestPacket::ResponseFunc onResponse);
+    // The next SendLatest for the route queues behind what is queued now, e.g. before deleting the same key.
+    void ClosePending(const std::string& route);
+
     // Sends a frame that gets no reply: the route and the body. Does nothing when not connected.
     void SendRaw(const std::string& route, const void* data, size_t size);
 
@@ -121,7 +127,8 @@ class Client {
     // Runs on the worker thread after a reconnect, once the key is proven and the subscriptions are sent again.
     void AddReconnectHandler(std::function<void()> handler);
 
-    // Queues work for the game thread, run by Poll once per main loop iteration.
+    // Queues work for the game thread, run by Poll once per main loop iteration. Poll stops after a couple of
+    // milliseconds and leaves the rest for the next iteration, so a backlog can't stall a frame.
     void RunOnGameThread(std::function<void()> work);
     void Poll();
 
@@ -166,7 +173,7 @@ class Client {
     std::vector<std::function<void()>> mReconnectHandlers;
 
     std::mutex mGameMtx;
-    std::vector<std::function<void()>> mGameWork;
+    std::deque<std::function<void()>> mGameWork;
 };
 
 template <typename T> struct PacketAutoReg {

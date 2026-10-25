@@ -101,13 +101,12 @@ extern "C" int C_ChannelStoreSet(const char* channel_id, const char* key, const 
     const auto* bytes = reinterpret_cast<const uint8_t*>(data);
     std::vector<uint8_t> body = PlayerIdentity::Sign(bytes, size);
     body.insert(body.end(), bytes, bytes + size);
-    Satella::Client::Instance().RegisterLive(std::make_unique<Satella::RequestPacket>(
-        "/v1/channel-store/" + pub + "/" + channel_id + "/" + key + "/set", std::move(body),
-        [](int16_t status, const std::string&) {
-            if (status != 200) {
-                SPDLOG_WARN("C_ChannelStoreSet: Satella returned status {}", status);
-            }
-        }));
+    Satella::Client::Instance().SendLatest("/v1/channel-store/" + pub + "/" + channel_id + "/" + key + "/set",
+                                           std::move(body), [](int16_t status, const std::string&) {
+                                               if (status != 200) {
+                                                   SPDLOG_WARN("C_ChannelStoreSet: Satella returned status {}", status);
+                                               }
+                                           });
     return 1;
 }
 
@@ -131,6 +130,8 @@ extern "C" int C_ChannelStoreDelete(const char* channel_id, const char* key) {
     }
     const std::string signedPart = std::string(channel_id) + "/" + key;
     const auto sig = PlayerIdentity::Sign(reinterpret_cast<const uint8_t*>(signedPart.data()), signedPart.size());
+    // A set queued before this delete must not take the value of one made after it.
+    Satella::Client::Instance().ClosePending("/v1/channel-store/" + pub + "/" + channel_id + "/" + key + "/set");
     Satella::Client::Instance().RegisterLive(std::make_unique<Satella::RequestPacket>(
         "/v1/channel-store/" + pub + "/" + channel_id + "/" + key + "/delete", sig));
     return 1;

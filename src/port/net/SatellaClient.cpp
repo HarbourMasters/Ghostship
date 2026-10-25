@@ -23,6 +23,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iterator>
+#include <unordered_map>
 
 #if !defined(_WIN32)
 #include <unistd.h>
@@ -37,6 +38,17 @@ static constexpr uint8_t kFrameRaw = 0x03;
 static constexpr uint8_t kFramePush = 0x04;
 // Signed with the nonce from /v1/player/challenge, so the signature can't be reused as anything else.
 static constexpr const char* kAuthTag = "satella-player-auth-v1:";
+// Keeps proxies from closing the socket while nothing is sent; a reconnect stops relay pushes until Resume is done.
+static constexpr int kPingIntervalSecs = 30;
+static constexpr auto kPollBudget = std::chrono::milliseconds(2);
+static constexpr auto kSlowGameWork = std::chrono::milliseconds(4);
+static constexpr auto kSlowSend = std::chrono::milliseconds(1);
+
+using Clock = std::chrono::steady_clock;
+
+static double Millis(Clock::duration d) {
+    return std::chrono::duration<double, std::milli>(d).count();
+}
 
 static void WriteU32LE(std::vector<uint8_t>& buf, uint32_t value) {
     buf.push_back(static_cast<uint8_t>(value & 0xFF));
@@ -157,14 +169,85 @@ void Client::WorkerLoop() {
     }
 }
 
+// The body of the queued SendLatest request for each route, until the worker sends it.
+static std::mutex sLatestMtx;
+static std::unordered_map<std::string, std::shared_ptr<std::vector<uint8_t>>> sLatest;
+
+// Takes the route out of sLatest if it still holds this body. sLatestMtx must be held.
+static void ReleaseLatest(const std::string& route, const std::shared_ptr<std::vector<uint8_t>>& body) {
+    const auto it = sLatest.find(route);
+    if (it != sLatest.end() && it->second == body) {
+        sLatest.erase(it);
+    }
+}
+
+class LatestPacket : public IPacket {
+  public:
+    LatestPacket(std::string route, std::shared_ptr<std::vector<uint8_t>> body, RequestPacket::ResponseFunc onResponse)
+        : mRoute(std::move(route)), mBody(std::move(body)), mOnResponse(std::move(onResponse)) {
+    }
+
+    ~LatestPacket() override {
+        std::lock_guard<std::mutex> lock(sLatestMtx);
+        ReleaseLatest(mRoute, mBody);
+    }
+
+    const char* GetRoute() const override {
+        return mRoute.c_str();
+    }
+
+    // Once sent, a newer body queues a new request.
+    std::vector<uint8_t> GetBody() const override {
+        std::lock_guard<std::mutex> lock(sLatestMtx);
+        ReleaseLatest(mRoute, mBody);
+        return *mBody;
+    }
+
+    void OnResponse(int16_t status, const std::string& body) override {
+        if (mOnResponse) {
+            mOnResponse(status, body);
+        }
+    }
+
+  private:
+    std::string mRoute;
+    std::shared_ptr<std::vector<uint8_t>> mBody;
+    RequestPacket::ResponseFunc mOnResponse;
+};
+
+void Client::SendLatest(const std::string& route, std::vector<uint8_t> body, RequestPacket::ResponseFunc onResponse) {
+    std::shared_ptr<std::vector<uint8_t>> slot;
+    {
+        std::lock_guard<std::mutex> lock(sLatestMtx);
+        const auto it = sLatest.find(route);
+        if (it != sLatest.end()) {
+            *it->second = std::move(body);
+            return;
+        }
+        slot = std::make_shared<std::vector<uint8_t>>(std::move(body));
+        sLatest[route] = slot;
+    }
+    RegisterLive(std::make_unique<LatestPacket>(route, std::move(slot), std::move(onResponse)));
+}
+
+void Client::ClosePending(const std::string& route) {
+    std::lock_guard<std::mutex> lock(sLatestMtx);
+    sLatest.erase(route);
+}
+
 void Client::SendRaw(const std::string& route, const void* data, size_t size) {
     if (!IsConnected()) {
         return;
     }
+    const auto start = Clock::now();
     std::vector<uint8_t> frame = BuildFrame(kFrameRaw, route);
     const auto* bytes = static_cast<const uint8_t*>(data);
     frame.insert(frame.end(), bytes, bytes + size);
     sWs.sendBinary(std::string(frame.begin(), frame.end()));
+    const auto elapsed = Clock::now() - start;
+    if (elapsed >= kSlowSend) {
+        SPDLOG_WARN("Satella: sending {} bytes to '{}' took {:.2f} ms", size, route, Millis(elapsed));
+    }
 }
 
 void Client::AddPushHandler(std::function<void(const Push& push)> handler) {
@@ -183,13 +266,36 @@ void Client::RunOnGameThread(std::function<void()> work) {
 }
 
 void Client::Poll() {
-    std::vector<std::function<void()>> work;
+    std::deque<std::function<void()>> work;
     {
         std::lock_guard<std::mutex> lock(mGameMtx);
         work.swap(mGameWork);
     }
-    for (auto& fn : work) {
-        fn();
+    if (work.empty()) {
+        return;
+    }
+
+    const auto start = Clock::now();
+    const size_t queued = work.size();
+    // At least one item runs each time, so a slow callback can't hold the queue up.
+    while (!work.empty()) {
+        work.front()();
+        work.pop_front();
+        if (Clock::now() - start >= kPollBudget) {
+            break;
+        }
+    }
+    const auto elapsed = Clock::now() - start;
+
+    if (!work.empty()) {
+        std::lock_guard<std::mutex> lock(mGameMtx);
+        // Work queued while this ran goes after what was left over.
+        work.insert(work.end(), std::make_move_iterator(mGameWork.begin()), std::make_move_iterator(mGameWork.end()));
+        mGameWork.swap(work);
+    }
+    if (elapsed >= kSlowGameWork) {
+        SPDLOG_WARN("Satella: game thread work took {:.2f} ms ({} of {} items ran)", Millis(elapsed),
+                    queued - work.size(), queued);
     }
 }
 
@@ -286,6 +392,7 @@ void Client::OnMessage(const ix::WebSocketMessagePtr& msg) {
             }
             mVerified = false;
             if (wasConnected) {
+                SPDLOG_INFO("Satella: disconnected ({} {})", msg->closeInfo.code, msg->closeInfo.reason);
                 RunOnGameThread([] { CALL_EVENT(SatellaDisconnected); });
             }
             break;
@@ -354,6 +461,7 @@ void Client::Connect(const std::string& url) {
 
     mUrl = url;
     sWs.setUrl(url + "/ws?v=" GHOSTSHIP_VERSION);
+    sWs.setPingInterval(kPingIntervalSecs);
 #if defined(__linux__) || defined(__APPLE__)
     sWs.setTLSOptions(BuildTLSOptions());
 #endif
@@ -473,6 +581,7 @@ void Client::Authenticate() {
 
 // After a reconnect: the new socket has no key and no subscriptions.
 void Client::Resume() {
+    const auto start = Clock::now();
     Authenticate();
     std::vector<std::shared_ptr<IPacket>> subscriptions;
     std::vector<std::function<void()>> handlers;
@@ -490,6 +599,7 @@ void Client::Resume() {
     for (const auto& handler : handlers) {
         handler();
     }
+    SPDLOG_INFO("Satella: resumed {} subscription(s) in {:.0f} ms", subscriptions.size(), Millis(Clock::now() - start));
     RunOnGameThread([] { CALL_EVENT(SatellaConnected); });
 }
 
