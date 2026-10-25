@@ -1,4 +1,4 @@
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__WINRT__)
 #include <Windows.h>
 #include <winuser.h>
 #include <shlwapi.h>
@@ -30,7 +30,7 @@ std::string GameExtractor::sLastError;
 
 #ifdef __EMSCRIPTEN__
 #include "port/web/WebUtils.h"
-#elif !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+#elif !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__) && !defined(__WINRT__)
 #include "portable-file-dialogs.h"
 #endif
 
@@ -103,7 +103,7 @@ bool GameExtractor::SelectGameFromUI() {
     if (romPath.empty()) {
         return false;
     }
-#elif !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+#elif !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__) && !defined(__WINRT__)
     // Desktop: fallback to file dialogue if no baserom found
     // if (!foundGame) {
     if (!pfd::settings::available()) {
@@ -158,7 +158,7 @@ void GameExtractor::SetSearchPath(const std::string& path) {
 }
 
 void GameExtractor::GetRoms(std::vector<std::string>& roms) {
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__WINRT__)
     WIN32_FIND_DATAA ffd;
     std::string search = std::string(mSearchPath + "\\*");
     HANDLE h = FindFirstFileA(search.c_str(), &ffd);

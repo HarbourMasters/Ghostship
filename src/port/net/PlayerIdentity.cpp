@@ -1,15 +1,15 @@
 #ifdef USE_NETWORKING
-#include "PlayerIdentity.h"
+#include "port/net/PlayerIdentity.h"
 #include "port/ShipCompat.h"
 
-#include "ship/Context.h"
-#include "ship/config/Config.h"
-#include "ship/utils/StringHelper.h"
+#include <ship/config/Config.h>
+#include <ship/utils/StringHelper.h>
 
 #include <mbedtls/ctr_drbg.h>
 #include <mbedtls/entropy.h>
 #include <monocypher-ed25519.h>
 
+#include <algorithm>
 #include <atomic>
 #include <cstring>
 #include <mutex>
@@ -28,9 +28,9 @@ static bool FillRandom(uint8_t* buf, size_t size) {
     mbedtls_ctr_drbg_init(&drbg);
 
     const char* pers = "ghostship_player_identity";
-    bool ok = mbedtls_ctr_drbg_seed(&drbg, mbedtls_entropy_func, &entropy, reinterpret_cast<const unsigned char*>(pers),
-                                    std::strlen(pers)) == 0 &&
-              mbedtls_ctr_drbg_random(&drbg, buf, size) == 0;
+    const bool ok = mbedtls_ctr_drbg_seed(&drbg, mbedtls_entropy_func, &entropy,
+                                          reinterpret_cast<const unsigned char*>(pers), std::strlen(pers)) == 0 &&
+                    mbedtls_ctr_drbg_random(&drbg, buf, size) == 0;
 
     mbedtls_ctr_drbg_free(&drbg);
     mbedtls_entropy_free(&entropy);
@@ -43,30 +43,23 @@ static void EnsureInitialized() {
     }
 
     std::lock_guard<std::mutex> lock(sMtx);
-
     if (sInitialized.load(std::memory_order_relaxed)) {
         return;
     }
 
     auto config = ShipCompat::GetConfig();
-    std::string stored = config->GetString("Satella.PlayerSeed");
-
-    uint8_t seed[32] = {};
-
-    if (stored.size() == 64) {
-        auto bytes = StringHelper::HexToBytes(stored);
-        if (bytes.size() == 32) {
-            std::copy(bytes.begin(), bytes.end(), seed);
-        } else {
-            stored.clear();
-        }
+    if (config == nullptr) {
+        return;
     }
 
-    if (stored.size() != 64) {
+    uint8_t seed[32] = {};
+    const auto stored = StringHelper::HexToBytes(config->GetString("Satella.PlayerSeed"));
+    if (stored.size() == sizeof(seed)) {
+        std::copy(stored.begin(), stored.end(), seed);
+    } else {
         if (!FillRandom(seed, sizeof(seed))) {
             return;
         }
-
         config->SetString("Satella.PlayerSeed", StringHelper::BytesToHex({ seed, seed + sizeof(seed) }));
         config->Save();
     }
@@ -78,21 +71,17 @@ static void EnsureInitialized() {
 
 std::vector<uint8_t> GetPublicKey() {
     EnsureInitialized();
-
     if (!sInitialized.load(std::memory_order_relaxed)) {
         return {};
     }
-
-    return { sPublicKey, sPublicKey + 32 };
+    return { sPublicKey, sPublicKey + sizeof(sPublicKey) };
 }
 
 std::vector<uint8_t> Sign(const uint8_t* data, size_t size) {
     EnsureInitialized();
-
     if (!sInitialized.load(std::memory_order_relaxed)) {
         return {};
     }
-
     std::vector<uint8_t> sig(64);
     crypto_ed25519_sign(sig.data(), sSecretKey, data, size);
     return sig;

@@ -902,3 +902,15 @@ Fires in `interact_warp_door` before the door action is set. Write `*doorAction`
 struct Object* object;
 ```
 Fires at the start of `cur_obj_update` for every active object, every frame — before the behavior script executes. Use for per-object per-frame injection. High-frequency event; keep listeners fast.
+
+---
+
+## Net Events (`list/NetEvent.h`)
+
+### `SatellaConnected`
+Fires on the game thread once Satella is connected and has accepted the player key: at startup, and again after the connection drops and comes back. Relay channels are subscribed again by then.
+
+---
+
+### `SatellaDisconnected`
+Fires on the game thread when the connection to Satella drops. It reconnects on its own.

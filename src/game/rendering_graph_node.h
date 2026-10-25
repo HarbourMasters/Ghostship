@@ -29,5 +29,6 @@ extern_s u16 gAreaUpdateCounter;
 
 void geo_process_node_and_siblings(struct GraphNode *firstNode);
 void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor);
+s32 geo_project_to_viewport(f32 x, f32 y, f32 z, f32 *outX, f32 *outY);
 
 #endif // RENDERING_GRAPH_NODE_H

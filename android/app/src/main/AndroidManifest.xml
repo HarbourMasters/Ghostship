@@ -43,6 +43,7 @@
 
     <application
         android:allowBackup="false"
+        android:allowNativeHeapPointerTagging="false"
         android:appCategory="game"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

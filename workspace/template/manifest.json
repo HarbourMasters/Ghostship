@@ -5,6 +5,5 @@
     "website": "https://example.com",
     "description": "A simple demo mod for testing purposes.",
     "author": "Your Name",
-    "license": "MIT",
-    "code-version": 1
+    "license": "MIT"
 }

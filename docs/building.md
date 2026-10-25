@@ -81,6 +81,55 @@ cd "build/x64"
 C:\Program Files\CMake\bin\cmake.exe --build build-cmake --target clean
 ```
 
+## Xbox (Developer Mode)
+
+Builds an x64 UWP app package for a retail Xbox in [Developer Mode](https://learn.microsoft.com/en-us/windows/uwp/xbox-apps/devkit-activation).
+
+Needs Visual Studio 2022 with the **Universal Windows Platform development** workload and its C++ component, which are separate from the desktop C++ workload:
+
+```sh
+"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vs_installer.exe" modify ^
+  --installPath "C:\Program Files\Microsoft Visual Studio\2022\Community" ^
+  --add Microsoft.VisualStudio.Workload.Universal ^
+  --add Microsoft.VisualStudio.ComponentGroup.UWP.VC --passive --norestart
+```
+
+The package has to be signed with a certificate whose subject matches the manifest's `Publisher` (`CN=Lywx` by default). Create one once; it stays in your certificate store:
+
+```powershell
+$cert = New-SelfSignedCertificate -Type Custom -Subject "CN=Lywx" -KeyUsage DigitalSignature `
+  -FriendlyName "Ghostship Xbox Dev Signing" -CertStoreLocation "Cert:\CurrentUser\My" `
+  -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3", "2.5.29.19={text}") `
+  -NotAfter (Get-Date).AddYears(3)
+$cert.Thumbprint
+```
+
+Build with Ninja from a shell where `vcvars64.bat` has been run, so `WindowsApp.lib` and the app container CRT are found:
+
+```sh
+"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+cmake -S . -B build-uwp -G Ninja -DCMAKE_BUILD_TYPE=Release -DXBOX_UWP=ON ^
+  -DUWP_PACKAGE_CERT_THUMBPRINT=<thumbprint from above>
+cmake --build build-uwp --target ghostship_uwp_package
+```
+
+That produces a signed `build-uwp/Ghostship.msix`. Visual Studio's remote deploy is not available for this target: CMake links the executable with `/APPCONTAINER`, packs it with `MakeAppx` and signs it with `SignTool` itself.
+
+Use `-DUWP_PACKAGE_CERT=<path to .pfx>` (plus `-DUWP_PACKAGE_CERT_PASSWORD=`) instead of a thumbprint where there is no certificate store, and `-DUWP_PACKAGE_PUBLISHER="CN=..."` for a certificate with a different subject.
+
+The console has to trust the certificate. Export its public half and pass it on the first deploy, which uploads through the Device Portal and waits for the install:
+
+```powershell
+Export-Certificate -Cert "Cert:\CurrentUser\My\<thumbprint>" -FilePath ghostship-public.cer
+tools\deploy-xbox.ps1 -Console <console ip> -Package build-uwp\Ghostship.msix -Certificate ghostship-public.cer
+```
+
+The console also needs the VCLibs framework package once, `Microsoft.VCLibs.x64.14.00.appx` from `Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs`; without it the app fails to activate with `0x8027025B`.
+
+Repeat deploys install over the top, which keeps the app's LocalState (the game archive, saves and mods). `-Clean` uninstalls first and **deletes** all of it.
+
+The Xbox target renders with DirectX 11 only, and has no Satella connection, so online mod features are unavailable there. Mods and scripting work as on the desktop.
+
 ## Linux
 ### Install dependencies
 #### Debian/Ubuntu

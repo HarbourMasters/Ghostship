@@ -1,204 +1,243 @@
-#include "ui.h"
-#include <libultraship/libultraship.h>
+#ifdef ENABLE_SCRIPTING
 
+#include "ui.h"
+
+#include "port/ShipInit.hpp"
+#include "port/api/ModOwner.hpp"
+#include "port/api/SizedDef.hpp"
+#include "port/ui/MenuTypes.h"
 #include "port/ui/GhostshipGui.hpp"
 #include "port/ui/UIWidgets.hpp"
-#include "port/ui/MenuTypes.h"
-// Include any mod-specific header that holds your maps (e.g. Rando::StaticData)
 
-#include <vector>
+#include <imgui.h>
+#include <imgui_internal.h>
+
 #include <algorithm>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
-static std::vector<C_GuiDrawFunc> gGuiDrawCallbacks;
+namespace {
+
+struct GuiDraw {
+    C_GuiDrawFunc callback;
+    std::string owner;
+};
+
+struct OwnedSidebar {
+    std::string name;
+    std::string owner;
+};
+
+struct OwnedWidget {
+    WidgetPath path;
+    std::string label;
+    std::string owner;
+};
+
+std::vector<GuiDraw> sGuiDrawCallbacks;
+std::vector<OwnedSidebar> sSidebars;
+std::vector<OwnedWidget> sWidgets;
+
+UIWidgets::ComponentAlignments MapAlign(C_ComponentAlign align) {
+    return align == C_ALIGN_RIGHT ? UIWidgets::ComponentAlignments::Right : UIWidgets::ComponentAlignments::Left;
+}
+
+UIWidgets::LabelPositions MapLabel(C_LabelPos pos) {
+    return pos == C_LABEL_FAR ? UIWidgets::LabelPositions::Far : UIWidgets::LabelPositions::Near;
+}
+
+const char* Tooltip(const char* tooltip) {
+    return tooltip != nullptr ? tooltip : "";
+}
+
+WidgetFunc InOwner(void (*func)(void), const std::string& owner) {
+    return [func, owner](WidgetInfo&) {
+        ModOwner::Scope scope(owner);
+        func();
+    };
+}
+
+void RemoveSidebar(const std::string& name) {
+    if (GhostshipGui::mGhostshipMenu != nullptr) {
+        GhostshipGui::mGhostshipMenu->RemoveSidebarEntry("Mods", name);
+    }
+    std::erase_if(sSidebars, [&](const OwnedSidebar& sidebar) { return sidebar.name == name; });
+    std::erase_if(sWidgets, [&](const OwnedWidget& widget) { return widget.path.sidebarName == name; });
+}
+
+void ReleaseUi(const std::string& mod) {
+    std::erase_if(sGuiDrawCallbacks, [&](const GuiDraw& draw) { return draw.owner == mod; });
+    for (const OwnedWidget& widget : sWidgets) {
+        if (widget.owner == mod && GhostshipGui::mGhostshipMenu != nullptr) {
+            GhostshipGui::mGhostshipMenu->RemoveWidget(widget.path, widget.label);
+        }
+    }
+    std::erase_if(sWidgets, [&](const OwnedWidget& widget) { return widget.owner == mod; });
+    std::vector<std::string> sidebars;
+    for (const OwnedSidebar& sidebar : sSidebars) {
+        if (sidebar.owner == mod) {
+            sidebars.push_back(sidebar.name);
+        }
+    }
+    for (const std::string& name : sidebars) {
+        RemoveSidebar(name);
+    }
+}
+
+void InitUiApi() {
+    ModOwner::AddReleaser(ReleaseUi);
+}
+
+RegisterShipInitFunc sInitUiApi(InitUiApi);
+
+} // namespace
 
 void C_RunGuiDrawCallbacks() {
-    for (auto& cb : gGuiDrawCallbacks) {
-        cb();
+    for (const GuiDraw& draw : sGuiDrawCallbacks) {
+        ModOwner::Scope scope(draw.owner);
+        ImGuiErrorRecoveryState state;
+        ImGui::ErrorRecoveryStoreState(&state);
+        draw.callback();
+        ImGui::ErrorRecoveryTryToRecoverState(&state);
     }
 }
 
-extern "C" void C_AddGuiDraw(C_GuiDrawFunc cb) {
-    if (cb) {
-        gGuiDrawCallbacks.push_back(cb);
+extern "C" void C_AddGuiDraw(C_GuiDrawFunc callback) {
+    if (callback != nullptr) {
+        sGuiDrawCallbacks.push_back({ callback, ModOwner::Current() });
     }
 }
 
-extern "C" void C_RemoveGuiDraw(C_GuiDrawFunc cb) {
-    gGuiDrawCallbacks.erase(std::remove(gGuiDrawCallbacks.begin(), gGuiDrawCallbacks.end(), cb),
-                            gGuiDrawCallbacks.end());
+extern "C" void C_RemoveGuiDraw(C_GuiDrawFunc callback) {
+    std::erase_if(sGuiDrawCallbacks, [callback](const GuiDraw& draw) { return draw.callback == callback; });
 }
-
-// Helper function to map C Enums to C++ Enums safely
-static UIWidgets::ComponentAlignments MapAlign(C_ComponentAlign align) {
-    if (align == C_ALIGN_RIGHT)
-        return UIWidgets::ComponentAlignments::Right;
-    return UIWidgets::ComponentAlignments::Left;
-}
-
-static UIWidgets::LabelPositions MapLabel(C_LabelPos pos) {
-    if (pos == C_LABEL_FAR)
-        return UIWidgets::LabelPositions::Far;
-    return UIWidgets::LabelPositions::Near;
-}
-
-// extern "C" void C_AddMenuEntry(const char* label, const char* cvar) {
-//     GhostshipGui::mGhostshipMenu->AddMenuEntry(label, cvar);
-// }
 
 extern "C" void C_AddSidebarEntry(const char* label, int column) {
+    if (GhostshipGui::mGhostshipMenu == nullptr || label == nullptr) {
+        return;
+    }
     GhostshipGui::mGhostshipMenu->AddSidebarEntry("Mods", label, column);
+    sSidebars.push_back({ label, ModOwner::Current() });
 }
-
-// extern "C" void C_RemoveMenuEntry(const char* entryName) {
-//     GhostshipGui::mGhostshipMenu->RemoveMenuEntry(entryName);
-// }
 
 extern "C" void C_RemoveSidebarEntry(const char* sidebarName) {
-    GhostshipGui::mGhostshipMenu->RemoveSidebarEntry("Mods", sidebarName);
+    if (GhostshipGui::mGhostshipMenu == nullptr || sidebarName == nullptr) {
+        return;
+    }
+    RemoveSidebar(sidebarName);
 }
 
-extern "C" void C_AddWidget(const char* sidebar, int column, const char* label, C_WidgetConfig* config) {
-    if (!config)
+extern "C" void C_AddWidgetSized(const char* sidebar, int column, const char* label, C_WidgetConfig* widget_config,
+                                 uint32_t size) {
+    const SizedDef<C_WidgetConfig> sized(widget_config, size);
+    const C_WidgetConfig* config = sized.get();
+    if (GhostshipGui::mGhostshipMenu == nullptr || sidebar == nullptr || label == nullptr || config == nullptr) {
         return;
+    }
 
+    const std::string owner = ModOwner::Current();
     WidgetPath path = { "Mods", sidebar, static_cast<SectionColumns>(column) };
-
-    // 1. Begin the Widget Builder Chain
+    sWidgets.push_back({ path, label, owner });
     WidgetInfo& widget = GhostshipGui::mGhostshipMenu->AddWidget(path, label, static_cast<WidgetType>(config->type))
                              .RaceDisable(config->race_disable)
                              .SameLine(config->same_line)
                              .HideInSearch(config->hide_in_search);
 
-    // 2. Apply Base Attributes
-    if (config->cvar)
+    if (config->cvar != nullptr) {
         widget.CVar(config->cvar);
-    if (config->window_name)
+    }
+    if (config->window_name != nullptr) {
         widget.WindowName(config->window_name);
+    }
+    if (config->callback != nullptr) {
+        widget.Callback(InOwner(config->callback, owner));
+    }
+    if (config->pre_func != nullptr) {
+        widget.PreFunc(InOwner(config->pre_func, owner));
+    }
+    if (config->post_func != nullptr) {
+        widget.PostFunc(InOwner(config->post_func, owner));
+    }
 
-    // 3. Apply Callbacks
-    if (config->callback) {
-        widget.Callback([config](WidgetInfo& info) { config->callback(); });
-    }
-    if (config->pre_func) {
-        widget.PreFunc([config](WidgetInfo& info) { config->pre_func(); });
-    }
-    if (config->post_func) {
-        widget.PostFunc([config](WidgetInfo& info) { config->post_func(); });
-    }
-
-    // 4. Unpack the Options Variant based on the type
     switch (config->type) {
-        // --- COMBOBOXES ---
         case C_WIDGET_CVAR_COMBOBOX:
         case C_WIDGET_COMBOBOX: {
-            auto opt = UIWidgets::ComboboxOptions()
-                           .Tooltip(config->opts.combo.tooltip ? config->opts.combo.tooltip : "")
-                           .DefaultIndex(config->opts.combo.default_index)
-                           .ComponentAlignment(MapAlign(config->opts.combo.alignment))
-                           .LabelPosition(MapLabel(config->opts.combo.label_pos));
-            if (config->opts.combo.map) {
-                // Assuming the map is an array of C_ComboboxOption with a known size (e.g., 10)
+            auto options = UIWidgets::ComboboxOptions()
+                               .Tooltip(Tooltip(config->opts.combo.tooltip))
+                               .DefaultIndex(config->opts.combo.default_index)
+                               .ComponentAlignment(MapAlign(config->opts.combo.alignment))
+                               .LabelPosition(MapLabel(config->opts.combo.label_pos));
+            if (config->opts.combo.map != nullptr) {
                 std::unordered_map<int32_t, const char*> comboMap;
-                C_ComboboxOption* iter = config->opts.combo.map;
-                while (iter->value) { // Assuming null-terminated array
-                    comboMap[iter->id] = iter->value;
-                    iter++;
+                for (C_ComboboxOption* it = config->opts.combo.map; it->value != nullptr; it++) {
+                    comboMap[it->id] = it->value;
                 }
-                opt.ComboMap(comboMap);
+                options.ComboMap(comboMap);
             }
-            widget.Options(opt);
+            widget.Options(options);
             break;
         }
         case C_WIDGET_AUDIO_BACKEND:
-        case C_WIDGET_VIDEO_BACKEND: {
-            auto opt = UIWidgets::ComboboxOptions()
-                           .Tooltip(config->opts.combo.tooltip ? config->opts.combo.tooltip : "")
-                           .DefaultIndex(config->opts.combo.default_index)
-                           .ComponentAlignment(MapAlign(config->opts.combo.alignment))
-                           .LabelPosition(MapLabel(config->opts.combo.label_pos));
-            widget.Options(opt);
+        case C_WIDGET_VIDEO_BACKEND:
+            widget.Options(UIWidgets::ComboboxOptions()
+                               .Tooltip(Tooltip(config->opts.combo.tooltip))
+                               .DefaultIndex(config->opts.combo.default_index)
+                               .ComponentAlignment(MapAlign(config->opts.combo.alignment))
+                               .LabelPosition(MapLabel(config->opts.combo.label_pos)));
             break;
-        }
-
-        // --- INTEGER SLIDERS ---
         case C_WIDGET_SLIDER_INT:
         case C_WIDGET_CVAR_SLIDER_INT: {
-            auto opt = UIWidgets::IntSliderOptions()
-                           .Tooltip(config->opts.slider_int.tooltip ? config->opts.slider_int.tooltip : "")
-                           .Min(config->opts.slider_int.min)
-                           .Max(config->opts.slider_int.max)
-                           .DefaultValue(config->opts.slider_int.default_val)
-                           .Step(config->opts.slider_int.step);
-
-            if (config->opts.slider_int.format)
-                opt.Format(config->opts.slider_int.format);
-            widget.Options(opt);
+            auto options = UIWidgets::IntSliderOptions()
+                               .Tooltip(Tooltip(config->opts.slider_int.tooltip))
+                               .Min(config->opts.slider_int.min)
+                               .Max(config->opts.slider_int.max)
+                               .DefaultValue(config->opts.slider_int.default_val)
+                               .Step(config->opts.slider_int.step);
+            if (config->opts.slider_int.format != nullptr) {
+                options.Format(config->opts.slider_int.format);
+            }
+            widget.Options(options);
             break;
         }
-
-        // --- FLOAT SLIDERS ---
         case C_WIDGET_SLIDER_FLOAT:
         case C_WIDGET_CVAR_SLIDER_FLOAT: {
-            auto opt = UIWidgets::FloatSliderOptions()
-                           .Tooltip(config->opts.slider_float.tooltip ? config->opts.slider_float.tooltip : "")
-                           .Min(config->opts.slider_float.min)
-                           .Max(config->opts.slider_float.max)
-                           .DefaultValue(config->opts.slider_float.default_val)
-                           .Step(config->opts.slider_float.step);
-
-            if (config->opts.slider_float.format)
-                opt.Format(config->opts.slider_float.format);
-            widget.Options(opt);
+            auto options = UIWidgets::FloatSliderOptions()
+                               .Tooltip(Tooltip(config->opts.slider_float.tooltip))
+                               .Min(config->opts.slider_float.min)
+                               .Max(config->opts.slider_float.max)
+                               .DefaultValue(config->opts.slider_float.default_val)
+                               .Step(config->opts.slider_float.step);
+            if (config->opts.slider_float.format != nullptr) {
+                options.Format(config->opts.slider_float.format);
+            }
+            widget.Options(options);
             break;
         }
-
-        // --- CHECKBOXES ---
         case C_WIDGET_CHECKBOX:
-        case C_WIDGET_CVAR_CHECKBOX: {
+        case C_WIDGET_CVAR_CHECKBOX:
             widget.Options(UIWidgets::CheckboxOptions()
-                               .Tooltip(config->opts.checkbox.tooltip ? config->opts.checkbox.tooltip : "")
+                               .Tooltip(Tooltip(config->opts.checkbox.tooltip))
                                .DefaultValue(config->opts.checkbox.default_val));
             break;
-        }
-
-        // --- TEXT ---
         case C_WIDGET_TEXT:
-        case C_WIDGET_SEPARATOR_TEXT: {
-            widget.Options(UIWidgets::TextOptions()
-                           // .Center() or whatever alignment method your UIWidgets uses
-            );
+        case C_WIDGET_SEPARATOR_TEXT:
+            widget.Options(UIWidgets::TextOptions());
             break;
-        }
-
-        // --- COLOR PICKERS ---
         case C_WIDGET_COLOR_PICKER:
-        case C_WIDGET_CVAR_COLOR_PICKER: {
-            // Assuming Color_RGBA8 or similar constructor for default color
-            widget.Options(UIWidgets::ColorPickerOptions().Tooltip(
-                config->opts.color_picker.tooltip ? config->opts.color_picker.tooltip : "")
-                           // .DefaultColor(Color_RGBA8(config->opts.color_picker.default_r, ...))
-            );
+        case C_WIDGET_CVAR_COLOR_PICKER:
+            widget.Options(UIWidgets::ColorPickerOptions().Tooltip(Tooltip(config->opts.color_picker.tooltip)));
             break;
-        }
-
-        // --- BUTTONS / WINDOWS / SEPARATORS ---
-        case C_WIDGET_WINDOW_BUTTON: {
-            widget.Options(UIWidgets::WindowButtonOptions().Tooltip(
-                config->opts.generic.tooltip ? config->opts.generic.tooltip : ""));
+        case C_WIDGET_WINDOW_BUTTON:
+            widget.Options(UIWidgets::WindowButtonOptions().Tooltip(Tooltip(config->opts.generic.tooltip)));
             break;
-        }
-
-        case C_WIDGET_BUTTON: {
-            widget.Options(
-                UIWidgets::ButtonOptions().Tooltip(config->opts.generic.tooltip ? config->opts.generic.tooltip : ""));
+        case C_WIDGET_BUTTON:
+            widget.Options(UIWidgets::ButtonOptions().Tooltip(Tooltip(config->opts.generic.tooltip)));
             break;
-        }
-
-        // --- DEFAULT FALLBACK ---
-        default: {
-            widget.Options(
-                UIWidgets::WidgetOptions().Tooltip(config->opts.generic.tooltip ? config->opts.generic.tooltip : ""));
+        default:
+            widget.Options(UIWidgets::WidgetOptions().Tooltip(Tooltip(config->opts.generic.tooltip)));
             break;
-        }
     }
 }
+
+#endif

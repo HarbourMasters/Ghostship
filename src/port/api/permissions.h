@@ -1,25 +1,23 @@
 #pragma once
-#include <stdbool.h>
+
 #include <stdint.h>
-#include "macros.h"
+
+#include "api.h"
+
+// Things the player allows or denies once, such as a mod going online. The game asks with an Allow / Deny prompt and
+// remembers the answer.
 
 typedef enum {
-    PERM_PENDING = 0,
-    PERM_ALLOWED = 1,
-    PERM_DENIED  = 2,
+    C_PERM_PENDING, // not asked yet
+    C_PERM_ALLOWED,
+    C_PERM_DENIED,
 } C_PermissionState;
 
 typedef void (*C_PermissionCallback)(void);
 
-// Register a permission key and the text shown to the user.
-// Idempotent: safe to call multiple times with the same key.
-extern_s void C_RegisterPermission(const char* key, const char* title, const char* message);
-
-// Returns the current persisted state for the key.
-extern_s C_PermissionState C_GetPermission(const char* key);
-
-// Shows the permission dialog if state is still Pending.
-// on_allow / on_deny may be NULL.
-extern_s void C_RequestPermission(const char* key,
-                                  C_PermissionCallback on_allow,
-                                  C_PermissionCallback on_deny);
+// Sets the title and text of the prompt for key, e.g. "mymod.camera". Registering a key again replaces its prompt.
+GS_API void C_RegisterPermission(const char* key, const char* title, const char* message);
+GS_API C_PermissionState C_GetPermission(const char* key);
+// Asks the player when the key is still pending. The callback for their answer runs after they choose; either may be
+// NULL.
+GS_API void C_RequestPermission(const char* key, C_PermissionCallback on_allow, C_PermissionCallback on_deny);

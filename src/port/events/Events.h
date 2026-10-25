@@ -5,3 +5,4 @@
 #include "list/GameEvent.h"
 #include "list/AudioEvent.h"
 #include "list/RenderEvent.h"
+#include "list/NetEvent.h"

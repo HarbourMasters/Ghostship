@@ -1,0 +1,22 @@
+if(NOT UWP_COUNTER_FILE OR NOT UWP_MANIFEST_TEMPLATE OR NOT UWP_MANIFEST_OUT)
+    message(FATAL_ERROR "uwp-stamp-manifest.cmake needs UWP_COUNTER_FILE, UWP_MANIFEST_TEMPLATE and UWP_MANIFEST_OUT")
+endif()
+
+set(_build 0)
+if(EXISTS "${UWP_COUNTER_FILE}")
+    file(READ "${UWP_COUNTER_FILE}" _build)
+    string(STRIP "${_build}" _build)
+    if(NOT _build MATCHES "^[0-9]+$")
+        set(_build 0)
+    endif()
+endif()
+
+math(EXPR _build "${_build} + 1")
+if(_build GREATER 65535)
+    set(_build 1)
+endif()
+file(WRITE "${UWP_COUNTER_FILE}" "${_build}")
+
+set(UWP_PACKAGE_VERSION "${UWP_PACKAGE_VERSION_BASE}.${_build}")
+configure_file("${UWP_MANIFEST_TEMPLATE}" "${UWP_MANIFEST_OUT}" @ONLY)
+message(STATUS "Package version ${UWP_PACKAGE_VERSION}")

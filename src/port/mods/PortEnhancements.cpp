@@ -265,6 +265,9 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(SeqLayerPreNoteEvent);
     REGISTER_EVENT(SeqLayerPostNoteEvent);
 
+    REGISTER_EVENT(SatellaConnected);
+    REGISTER_EVENT(SatellaDisconnected);
+
     Rando::Init();
     LoadGuiTextures();
 }
