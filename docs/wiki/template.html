@@ -1,0 +1,598 @@
+<title>Ghostship Modding Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap">
+<style>
+/* Layout: sticky night-sky sidebar with search on the left, a single reading column on the right. */
+:root {
+  --bg: #f4f5fa;
+  --surface: #ffffff;
+  --ink: #1a1d2e;
+  --muted: #5d6378;
+  --line: #dcdfeb;
+  --mast: #c8323c;
+  --mast-soft: #fbe6e7;
+  --sky: #2f62c9;
+  --coin: #946500;
+  --coin-soft: #f8eccc;
+  --code-bg: #eceef6;
+  --side: #141a33;
+  --side-ink: #e7eaf7;
+  --side-muted: #9aa3c7;
+  --side-hover: #222b4f;
+  --font-display: "Space Grotesk", "Source Sans 3", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Fira Code", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --step--1: 0.84rem;
+  --step-0: 1.02rem;
+  --step-1: 1.2rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1020; --surface: #151a2e; --ink: #e4e7f3; --muted: #9aa1bd; --line: #262d48;
+    --mast: #ff6b6b; --mast-soft: #3a1a22; --sky: #7fa8ff; --coin: #f2c14e; --coin-soft: #3a2f12;
+    --code-bg: #1a2038; --side: #090c18; --side-ink: #e2e6f5; --side-muted: #8e97bd; --side-hover: #1a2140;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1020; --surface: #151a2e; --ink: #e4e7f3; --muted: #9aa1bd; --line: #262d48;
+  --mast: #ff6b6b; --mast-soft: #3a1a22; --sky: #7fa8ff; --coin: #f2c14e; --coin-soft: #3a2f12;
+  --code-bg: #1a2038; --side: #090c18; --side-ink: #e2e6f5; --side-muted: #8e97bd; --side-hover: #1a2140;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 16px); }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; }
+a { color: var(--sky); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--mast); outline-offset: 2px; border-radius: 4px; }
+code, pre { font-family: var(--font-mono); font-size: 0.85em; }
+:not(pre) > code { background: var(--code-bg); padding: 0.08em 0.36em; border-radius: 4px; overflow-wrap: anywhere; }
+pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow-x: auto; line-height: 1.5; margin: 0; }
+
+.shell { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 100vh; }
+.side {
+  background: radial-gradient(1px 1px at 30px 40px, #ffffff55 50%, transparent 51%),
+              radial-gradient(1px 1px at 190px 90px, #ffffff40 50%, transparent 51%),
+              radial-gradient(1.5px 1.5px at 250px 22px, #ffffff55 50%, transparent 51%),
+              radial-gradient(1px 1px at 120px 130px, #ffffff33 50%, transparent 51%),
+              var(--side);
+  background-repeat: no-repeat;
+  color: var(--side-ink); position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  padding-block: calc(env(safe-area-inset-top, 0px) + 22px) 28px;
+  padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: 18px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand svg { flex: none; }
+.brand b { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.01em; }
+.brand small { display: block; color: var(--side-muted); font-size: var(--step--1); font-family: var(--font-mono); }
+.search input {
+  width: 100%; border: 1px solid #ffffff1f; border-radius: 6px; padding: 9px 12px; font: inherit; font-size: 0.95rem;
+  background: var(--side-hover); color: var(--side-ink);
+}
+.search input::placeholder { color: var(--side-muted); }
+.search .hint { color: var(--side-muted); font-size: 0.78rem; margin-top: 6px; }
+.nav { display: flex; flex-direction: column; gap: 16px; }
+.nav h4 { margin: 0 0 4px; font-family: var(--font-display); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--side-muted); }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+.nav a, .results a { display: block; color: var(--side-ink); text-decoration: none; padding: 4px 10px; border-radius: 5px; font-size: 0.94rem; }
+.nav a:hover, .results a:hover { background: var(--side-hover); }
+.nav a.on { background: var(--side-hover); color: #fff; box-shadow: inset 2px 0 0 var(--coin); }
+.nav .file { color: var(--side-muted); font-family: var(--font-mono); font-size: 0.7rem; margin-left: 6px; }
+.results { display: flex; flex-direction: column; gap: 1px; }
+.results a { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.results a span:first-child { font-family: var(--font-mono); font-size: 0.82rem; overflow-wrap: anywhere; }
+.results .kind { color: var(--side-muted); font-size: 0.72rem; flex: none; }
+.results .none { color: var(--side-muted); font-size: 0.9rem; padding: 4px 10px; }
+.theme { margin-top: auto; display: flex; border: 1px solid #ffffff1f; border-radius: 6px; overflow: hidden; }
+.theme button { flex: 1; font: inherit; font-size: 0.8rem; background: transparent; color: var(--side-muted); border: none; padding: 6px; cursor: pointer; }
+.theme button[aria-pressed="true"] { background: var(--side-hover); color: var(--side-ink); }
+
+main {
+  padding-block: calc(env(safe-area-inset-top, 0px) + 44px) 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.col { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+.prose { max-width: 68ch; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > * { margin: 0; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.015em; text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+.eyebrow { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; color: var(--mast); }
+.lede { font-size: 1.1rem; color: var(--muted); max-width: 64ch; }
+.head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+.head .path { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.part { display: flex; flex-direction: column; gap: 40px; }
+.part-title { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.part-title h2 { font-size: var(--step-3); }
+.part-title .star { color: var(--coin); }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.fact { padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--line); }
+.fact:last-child { border-right: none; }
+.fact b { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; }
+.fact span { color: var(--muted); font-size: 0.9rem; }
+
+.steps { display: flex; flex-direction: column; gap: 14px; counter-reset: step; padding: 0; margin: 0; list-style: none; }
+.steps li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps li::before {
+  counter-increment: step; content: counter(step); width: 28px; height: 28px; border-radius: 6px;
+  background: var(--mast); color: #fff; font-family: var(--font-display); font-weight: 700;
+  display: grid; place-items: center;
+}
+.steps li > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+th { font-family: var(--font-display); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); background: var(--code-bg); }
+td.decl { font-family: var(--font-mono); font-size: 0.8rem; white-space: nowrap; }
+td.num { font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-size: 0.8rem; white-space: nowrap; }
+
+.note { border: 1px solid var(--coin); background: var(--coin-soft); padding: 10px 14px; border-radius: 8px; max-width: 68ch; }
+.note b { color: var(--coin); }
+
+.api { display: flex; flex-direction: column; gap: 12px; }
+.sym { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--line); border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.sym:target { border-left-color: var(--mast); box-shadow: 0 0 0 3px var(--mast-soft); }
+.sym .top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.sym .name { font-family: var(--font-mono); font-weight: 500; font-size: 0.96rem; overflow-wrap: anywhere; }
+.sym .doc { max-width: 68ch; }
+.sym .doc:empty { display: none; }
+.sym pre { font-size: 0.8rem; }
+.badge { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; border: 1px solid currentColor; border-radius: 4px; padding: 0 6px; }
+.b-func, .b-macro { color: var(--mast); }
+.b-helper { color: var(--muted); }
+.b-struct, .b-enum, .b-typedef { color: var(--sky); }
+.b-cancellable { color: var(--coin); background: var(--coin-soft); }
+.consts td:first-child { font-family: var(--font-mono); font-size: 0.8rem; }
+.sub { font-family: var(--font-display); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.event-group { display: flex; flex-direction: column; gap: 12px; }
+.cancel { font-size: 0.93rem; max-width: 68ch; }
+.cancel b { color: var(--coin); }
+
+.mobile-bar { display: none; }
+
+@media (max-width: 900px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .side { position: static; height: auto; padding-block: calc(env(safe-area-inset-top, 0px) + 16px) 16px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .side .nav { display: none; }
+  .side.open .nav { display: flex; }
+  .mobile-bar { display: flex; }
+  .mobile-bar button { font: inherit; font-size: 0.88rem; background: var(--side-hover); color: var(--side-ink); border: none; border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+  .theme { margin-top: 0; }
+  main { padding-block: 28px 64px; }
+  .col { gap: 44px; }
+  h1 { font-size: 1.75rem; }
+  .part-title h2 { font-size: 1.6rem; }
+  .fact { border-right: none; border-bottom: 1px solid var(--line); }
+  .fact:last-child { border-bottom: none; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <div class="brand">
+      <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4v20" stroke="#e7eaf7" stroke-width="2" stroke-linecap="round"/><path d="M19 6c6 2 9 7 9 14H19z" fill="#e7eaf7" opacity="0.9"/><path d="M17 9c-4 2-7 6-7 11h7z" fill="#e7eaf7" opacity="0.55"/><path d="M5 24h26l-4 7H9z" fill="#c8323c"/><circle cx="23" cy="13" r="1.4" fill="#141a33"/><circle cx="26" cy="13" r="1.4" fill="#141a33"/></svg>
+      <div><b>Ghostship</b><small>mod API 1 · code 2</small></div>
+    </div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search functions, structs, events" autocomplete="off" aria-label="Search the API">
+      <div class="hint" id="qhint"></div>
+    </div>
+    <div class="mobile-bar"><button type="button" id="navtoggle" aria-expanded="false">Show contents</button></div>
+    <div class="results" id="results" hidden></div>
+    <nav class="nav" id="nav" aria-label="Contents"></nav>
+    <div class="theme" role="group" aria-label="Theme">
+      <button type="button" data-t="system">System</button><button type="button" data-t="light">Light</button><button type="button" data-t="dark">Dark</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="col" id="col">
+
+      <section id="intro">
+        <span class="eyebrow">// Ghostship mod API, version 1</span>
+        <h1>Writing code mods for Ghostship</h1>
+        <p class="lede">Ghostship mods are C source files packed into an <code>.o2r</code> archive. The game compiles them with TinyCC when it loads them, so a mod is plain text you can read, and the same archive works on every platform that runs code mods. This wiki covers how to build one and every function, structure and event a mod can use.</p>
+        <div class="facts">
+          <div class="fact"><b id="nheaders"></b><span>under <code>port/api/</code></span></div>
+          <div class="fact"><b id="nevents"></b><span>to listen to and change the game</span></div>
+          <div class="fact"><b>C11</b><span>compiled at load time by TinyCC</span></div>
+          <div class="fact"><b>PC, Android, Xbox</b><span>run code mods today</span></div>
+        </div>
+      </section>
+
+      <div class="part" id="guide">
+        <div class="part-title"><svg class="star" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z" fill="currentColor"/></svg><h2>Guide</h2></div>
+
+        <section id="start">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Your first mod</h2></div>
+          <p class="prose">Start from <code>workspace/template</code>, inside a Ghostship checkout or the mod SDK zip. The SDK has the same layout and holds only what mods are built against: the headers, the mod tools and the template. A Ghostship checkout writes it with <code>cmake --build build --target mod_sdk</code>.</p>
+          <ol class="steps">
+            <li><div><b>Copy the template</b><p class="prose" style="margin:0">Copy <code>workspace/template</code> to <code>workspace/my-mod</code> and change <code>project()</code> in its <code>CMakeLists.txt</code>; the archive is named after it. Fill in <code>manifest.json</code>.</p></div></li>
+            <li><div><b>Write the entry points</b>
+<pre>#include "mod.h"
+#include "port/events/Events.h"
+#include "game/level_update.h"
+
+static void OnFrame(IEvent* event) {
+    if (gMarioState-&gt;numCoins &lt; 50) {
+        gMarioState-&gt;numCoins = 50;
+    }
+}
+
+MOD_INIT() {
+    REGISTER_LISTENER(GameFrameUpdate, EVENT_PRIORITY_NORMAL, OnFrame);
+}
+
+MOD_EXIT() {
+}</pre></div></li>
+            <li><div><b>Build it</b><pre>cmake -B build -S .
+cmake --build build</pre><p class="prose" style="margin:0">You need CMake 3.10 or newer, Python 3 and Pillow. The build fills <code>output/</code> with the merged sources, <code>build.gen</code>, the stamped <code>manifest.json</code> and everything under <code>assets/</code>.</p></div></li>
+            <li><div><b>Package and install it</b><p class="prose" style="margin:0">Zip the contents of <code>output/</code> (not the folder itself) and rename the zip to <code>my-mod.o2r</code>. Copy it into Ghostship's <code>mods/</code> folder and start the game. Compiler errors appear under <b>Mods › General</b>. <b>Reload Scripts</b> on the same page rebuilds every mod without restarting.</p></div></li>
+          </ol>
+          <h3>How the build packages a mod</h3>
+          <p class="prose">The build merges each <code>.c</code> file in <code>src/</code> with every Ghostship and libultraship header it includes into one self-contained file under <code>output/dist/</code>, and lists those files in <code>build.gen</code>. The game compiles exactly those files, so a mod never depends on headers being present on the player's machine. Everything from one source file ends up in one translation unit: mark helpers <code>static</code> so they don't collide with the game or other mods.</p>
+          <p class="prose"><code>mod.h</code> defines <code>MOD_INIT</code> and <code>MOD_EXIT</code>, routes <code>malloc</code> and <code>free</code> through the engine's allocator, and provides <code>CALL_FUNC</code> for calling into another mod.</p>
+        </section>
+
+        <section id="manifest">
+          <div class="head"><span class="eyebrow">guide/</span><h2>manifest.json</h2></div>
+          <pre>{
+    "name": "Coin Floor",
+    "main": "build.gen",
+    "version": "1.2.0",
+    "author": "Your Name",
+    "description": "Mario never has fewer than 50 coins.",
+    "website": "https://example.com",
+    "license": "MIT",
+    "dependencies": ["Other Mod", { "name": "Core Library", "version": "&gt;=1.2 &lt;2" }]
+}</pre>
+          <div class="tbl"><table>
+            <thead><tr><th>Key</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td class="decl">name</td><td>The mod's name. Other mods use it to depend on this one, and the Mods menu shows it.</td></tr>
+              <tr><td class="decl">main</td><td>The list of C files to compile, one archive path per line. The template writes <code>build.gen</code>.</td></tr>
+              <tr><td class="decl">version</td><td>Dotted version, compared against dependents' version ranges. Defaults to <code>1.0</code>.</td></tr>
+              <tr><td class="decl">dependencies</td><td>Names, or <code>{ "name", "version" }</code> objects with a range. See <a href="#deps">Dependencies</a>.</td></tr>
+              <tr><td class="decl">code_version</td><td>Written by the build from <code>GS_CODE_VERSION</code>. The game only loads mods built with its own code version.</td></tr>
+              <tr><td class="decl">api_version</td><td>Written by the build from <code>GS_API_VERSION</code>. The game skips mods that need a newer API than it has.</td></tr>
+              <tr><td class="decl">binaries</td><td>Optional prebuilt libraries by platform (<code>windows_x64</code>, <code>darwin</code>, <code>linux_x64</code>, …), used instead of compiling <code>main</code> on that platform.</td></tr>
+              <tr><td class="decl">author, description, website, license, icon</td><td>Shown in the Mods menu.</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+
+        <section id="lifecycle">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Loading, reloading and cleanup</h2></div>
+          <p class="prose">At startup the game mounts every enabled mod archive, compiles each mod's sources, then calls <code>ModInit</code> in dependency order. When a mod unloads, on exit or on <b>Reload Scripts</b>, the game calls its <code>ModExit</code> and then releases everything the mod registered:</p>
+          <ul class="prose">
+            <li>content from the <code>port/api</code> headers, such as achievements, relay channels and stores;</li>
+            <li>event listeners, Mods menu pages and widgets, and GUI draw callbacks.</li>
+          </ul>
+          <p class="prose">So <code>MOD_EXIT</code> is optional. Use it only to undo what the mod set up some other way, such as a game variable like <code>gMarioState</code> it changed directly.</p>
+          <h3 id="modsmenu">The Mods menu</h3>
+          <p class="prose"><b>Mods › General</b> lists every archive with a manifest and its state: loaded, failed to build (with the compiler's message), skipped (with the reason) or disabled. Each mod has an <b>Enabled</b> switch and a <b>Priority</b>. Mods with a higher priority are mounted later, so their files replace those of mods before them, and their code initializes later; dependencies always initialize first. Both settings take effect on the next start. A disabled mod isn't mounted at all.</p>
+          <h3 id="deps">Dependencies</h3>
+          <p class="prose">A version range is a list of comparisons separated by spaces or commas: <code>&gt;=</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code> and <code>=</code>. A version without an operator is a minimum. A mod whose dependency is missing, failed to build or falls outside the range is skipped with a notification, along with every mod that depends on it. Call into a dependency with <code>CALL_FUNC(mod, func, ...)</code> from <code>mod.h</code>.</p>
+        </section>
+
+        <section id="versions">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Versions and compatibility</h2></div>
+          <div class="tbl"><table>
+            <thead><tr><th>Number</th><th>Now</th><th>Goes up when</th><th>Effect on mods</th></tr></thead>
+            <tbody>
+              <tr><td class="decl">GS_API_VERSION</td><td class="num">1</td><td>Something is added to the headers</td><td>Older mods keep loading. A mod that needs a newer API is skipped.</td></tr>
+              <tr><td class="decl">GS_CODE_VERSION</td><td class="num">2</td><td>A change breaks mods built with older headers</td><td>Every mod must be rebuilt.</td></tr>
+            </tbody>
+          </table></div>
+          <p class="prose">Definition structs only grow at the end. Each <code>C_Register*</code> macro, and <code>C_AddWidget</code>, passes <code>sizeof</code> the definition the mod was built with to the <code>*Sized</code> function behind it, so fields added in later versions read as zero for older mods. Always call the macro, not the <code>*Sized</code> function. The <code>port/api</code> headers keep their signatures across API versions; the game's own functions and structs, such as <code>struct MarioState</code>, may change with a new code version.</p>
+        </section>
+
+        <section id="achievements-guide">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Achievements</h2></div>
+          <p class="prose">Mods can add achievements next to the built-in ones. They show in the Achievements window with their icon and progress, and progress is kept in the save file. Use an <code>id</code> prefixed with the mod's name, such as <code>"coinfloor.rich"</code>, and never reuse an id for a different achievement.</p>
+<pre>#include "port/api/achievements.h"
+
+static const C_AchievementDef sRich = {
+    .category = C_ACH_CATEGORY_EXTRAS,
+    .name = "Deep Pockets",
+    .icon = "extras.coinfloor-rich",
+    .description = "Collect 500 coins.",
+    .maxProgress = 500,
+};
+
+MOD_INIT() {
+    C_RegisterAchievement("coinfloor.rich", &amp;sRich);
+}
+
+// Later, whenever Mario picks up a coin:
+//     C_AchievementProgress("coinfloor.rich", 1);</pre>
+          <div class="note"><b>Keep ids stable.</b> Progress is stored by id. Renaming an id loses every player's progress on it.</div>
+        </section>
+
+        <section id="assets">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Assets: textures and models</h2></div>
+          <p class="prose"><code>C_ASSET(name, path)</code> declares one of the game's own assets by its path in the game archive, to use as a <code>Gfx*</code>, texture or geo layout. The paths match the ones in the game's <code>include/assets</code> headers.</p>
+          <pre>C_ASSET(sMarioHand, "actors/mario/geo/mario_geo_left_hand");</pre>
+          <p class="prose"><code>#asset</code> copies a file next to the source into the mod archive when the mod is built, and turns the array into a reference to it that the game resolves at load time:</p>
+          <pre>static const u8 sIcon[] = { #asset "textures/icon.png" };
+static const u8 sBlob[] = { #asset "data/table.bin" };</pre>
+          <div class="tbl"><table>
+            <thead><tr><th>Source</th><th>Stored as</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="decl">.png</td><td>RGBA32 texture</td><td>Always full colour. To replace a texture of the game's that is smaller per texel, put its format in the file name (<code>rgba16</code>, <code>ci8</code>, <code>ci4</code>) so the renderer scales it to the original's size.</td></tr>
+              <tr><td class="decl">.bin</td><td>As is</td><td>Raw bytes, for data the mod reads itself.</td></tr>
+            </tbody>
+          </table></div>
+          <p class="prose">Files under the mod's <code>assets/</code> folder are copied into the archive as they are. A file at the same path as one of the game's replaces it, so a mod can also swap built-in textures, models and sounds without any code. Mods with a higher priority win.</p>
+        </section>
+
+        <section id="platforms">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Platforms</h2></div>
+          <div class="tbl"><table>
+            <thead><tr><th>Platform</th><th>Code mods</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Windows, macOS, Linux</td><td>Yes</td><td>Sources are compiled at load time; a mod may also ship prebuilt <code>binaries</code>.</td></tr>
+              <tr><td>Android, Xbox</td><td>Yes</td><td>Sources only: prebuilt binaries are never loaded. Mods compile on the device.</td></tr>
+              <tr><td>Online features</td><td>Where code mods run</td><td>The relay and the stores go through Satella. Without it their calls return FALSE and nothing arrives.</td></tr>
+              <tr><td>iOS, Switch, Web</td><td>Not yet</td><td>Code mods are skipped on these platforms for now. Archives that only replace files still work.</td></tr>
+            </tbody>
+          </table></div>
+          <p class="prose">On Windows a mod can only read or write a game variable whose declaration uses <code>extern_s</code>, which becomes <code>__declspec(dllimport)</code> when TinyCC builds a mod. Core globals such as <code>gMarioState</code> and the behavior scripts already do; functions don't need it. Include <code>port/api/cvar.h</code> instead of libultraship's console variable bridge. Unsigned mods load with a warning; archives can be signed with <code>libultraship/tools/sign.py</code>.</p>
+        </section>
+
+        <section id="online">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Online features with Satella</h2></div>
+          <p class="prose">Satella is the online service Ghostship connects to when it starts, at <code>wss://satella.net64.dev</code>. It gives the game the keys trusted mods are signed with. Each install has a player key it proves to Satella on every connection, so every message says which player sent it (<a href="#mod-online">online.h</a>). Mods go online through <a href="#mod-relay">relay channels</a> for messages between players, the <a href="#mod-player_store">player store</a> for values kept for one player, and the <a href="#mod-channel_store">channel store</a> for values shared by everyone on a channel.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Feature</th><th>Who reads</th><th>Who writes</th><th>Limit</th></tr></thead>
+            <tbody>
+              <tr><td><a href="#mod-relay">Relay channel</a></td><td>Every player subscribed to the channel</td><td>Any of them</td><td class="num">64 KB per message</td></tr>
+              <tr><td><a href="#mod-player_store">Player store</a>, private</td><td>The player</td><td>The player, signed with their key</td><td class="num">4 KB per value</td></tr>
+              <tr><td><a href="#mod-player_store">Player store</a>, public</td><td>Anyone with the player's key</td><td>The player, signed with their key</td><td class="num">4 KB per value</td></tr>
+              <tr><td><a href="#mod-channel_store">Channel store</a></td><td>Anyone</td><td>Any player, signed with their key</td><td class="num">4 KB per value</td></tr>
+            </tbody>
+          </table></div>
+          <h3>Permission comes first</h3>
+          <p class="prose">A mod registers each channel with a name and one sentence about what it is for. The player is asked once per channel with an Allow / Deny prompt, and the answer is remembered in <code>permissions.json</code>. Until they allow it, sending and writing return FALSE. Reading the channel store and public player values needs no permission. Relay channels registered while mods load are asked about once the game is up; for the stores, call <code>C_PlayerStoreRequestPermission</code> or <code>C_ChannelStoreRequestPermission</code> when the player first uses the feature. <a href="#mod-permissions">permissions.h</a> gives a mod the same prompt for its own needs.</p>
+          <h3>A chat channel</h3>
+<pre>#include "mod.h"
+#include "port/api/relay.h"
+#include &lt;string.h&gt;
+
+static void OnChat(const char* channel_id, const char* sender, const char* data, uint32_t size) {
+    // Runs on the game thread for every message; sender is the key of the player who sent it.
+}
+
+static C_RelayChannelDef sChat = {
+    .mod_name = "Castle Chat",
+    .description = "Sends what you type to other players in castle chat.",
+    .on_message = OnChat,
+    .mod_version = "1.0",
+};
+
+void SayHello(void) {
+    const char* text = "Let's-a go!";
+    if (!C_RelaySend("castle.chat", text, strlen(text))) {
+        // Not allowed yet, or Satella isn't connected.
+    }
+}
+
+MOD_INIT() {
+    C_RegisterRelayChannel("castle.chat", &amp;sChat);
+}</pre>
+          <h3>Reading stored values</h3>
+<pre>static void OnBest(const char* key, const char* data, uint32_t size) {
+    if (data == NULL) {
+        return; // nothing stored yet
+    }
+}
+
+static C_PlayerStoreDef sTimes = {
+    .mod_name = "Speedrun Times",
+    .description = "Keeps your best time on each course.",
+};
+
+MOD_INIT() {
+    C_RegisterPlayerStore("speedrun.times", &amp;sTimes);
+    C_PlayerStoreGet(NULL, "speedrun.times", C_PLAYER_STORE_PUBLIC, "bob", OnBest);
+}</pre>
+          <p class="prose">Reads answer later, through the callback. Every callback runs on the game thread, as the mod that asked, and is skipped if the mod has unloaded by then. Writes and deletes are sent without waiting for an answer.</p>
+          <h3>Where it works</h3>
+          <p class="prose">Satella is in every build that runs code mods, and players can turn it off under <b>Dev Tools › General › Enable Satella</b>. Without it these calls return FALSE or a denied permission and nothing arrives, so a mod should treat online features as optional. Relay channels are kept apart by game version, and by <code>mod_version</code> when the mod gives one, so players on different versions don't receive each other's messages.</p>
+        </section>
+
+        <section id="events-guide">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Listening to events</h2></div>
+          <p class="prose">The game fires events at the points mods are likely to care about. A listener receives an <code>IEvent*</code> to cast to the event's own struct.</p>
+          <pre>static ListenerID sAction;
+
+static void OnSetAction(IEvent* event) {
+    PlayerSetAction* ev = (PlayerSetAction*)event;
+    if (ev-&gt;action == ACT_LONG_JUMP) {
+        event-&gt;Cancelled = true;   // no more long jumps
+    }
+}
+
+MOD_INIT() {
+    sAction = REGISTER_LISTENER(PlayerSetAction, EVENT_PRIORITY_NORMAL, OnSetAction);
+}</pre>
+          <div class="tbl"><table>
+            <thead><tr><th>Kind</th><th>What a listener can do</th></tr></thead>
+            <tbody>
+              <tr><td><span class="badge b-cancellable">cancellable</span></td><td>Set <code>event-&gt;Cancelled = true</code> to stop the game's default behaviour. Each event says what cancelling does.</td></tr>
+              <tr><td>Pointer fields</td><td>Fields typed as pointers, like <code>s8* background</code>, let a listener change what the game uses by writing through them, without cancelling.</td></tr>
+              <tr><td>Priority</td><td>Listeners run from <code>EVENT_PRIORITY_HIGH</code> to <code>EVENT_PRIORITY_LOW</code>. Later listeners still run after a cancel and can check <code>event-&gt;Cancelled</code>.</td></tr>
+            </tbody>
+          </table></div>
+          <p class="prose"><code>UNREGISTER_LISTENER(Event, id)</code> removes a listener while the mod runs; listeners still registered when it unloads are removed for it. Most events fire on the game thread; the few that fire on the audio thread say so, and their listeners must not touch game state.</p>
+        </section>
+      </div>
+
+      <div class="part" id="reference">
+        <div class="part-title"><svg class="star" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z" fill="currentColor"/></svg><h2>API reference</h2></div>
+        <p class="lede" style="margin-top:-24px">Generated from the headers in <code>src/port/api/</code>. Include a header as <code>#include "port/api/ui.h"</code>.</p>
+        <div id="modules" class="part"></div>
+      </div>
+
+      <div class="part" id="events">
+        <div class="part-title"><svg class="star" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z" fill="currentColor"/></svg><h2>Events</h2></div>
+        <p class="lede" style="margin-top:-24px">From <code>src/port/events/EVENTS.md</code>. Declared in <code>src/port/events/list/*.h</code>; include <code>port/events/Events.h</code>.</p>
+        <div id="eventlist" class="part"></div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+const DATA = /*DATA*/;
+
+const MODULES = [
+  { group: "Core", items: [
+    ["api", "Versions and assets", "The version numbers mods are built against and C_ASSET for using the game's own assets."],
+    ["cvar", "Settings", "Read and write console variables. Keep a mod's settings under gMods.<mod>.; C_MOD_CVAR spells the name out."],
+    ["ui", "Mods menu and GUI", "Add pages and widgets under the Mods menu, and draw ImGui windows of your own every frame. Pass string literals for labels, tooltips and CVar names: they are kept as pointers."],
+  ]},
+  { group: "Game", items: [
+    ["achievements", "Achievements", "Achievements of your own, shown in the Achievements window and saved with the game."],
+  ]},
+  { group: "Online", items: [
+    ["permissions", "Permissions", ""],
+    ["online", "Player identity", ""],
+    ["relay", "Relay channels", ""],
+    ["player_store", "Player store", ""],
+    ["channel_store", "Channel store", ""],
+  ]},
+];
+
+const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const inline = s => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+const index = [];
+
+function symCard(it, mod) {
+  let sig = "", badge = it.kind, doc = it.doc;
+  if (it.kind === "func") sig = `${it.ret} ${it.name}(${it.args});`;
+  else if (it.kind === "helper") { sig = `static inline ${it.ret} ${it.name}(${it.args});`; badge = "inline"; }
+  else if (it.kind === "macro") sig = `#define ${it.name}${it.args} ${it.value}`;
+  else if (it.kind === "typedef") sig = it.decl;
+  let body = "";
+  if (it.kind === "struct" || it.kind === "enum") {
+    const rows = it.fields.map(f => `<tr><td class="decl">${esc(f.decl)}</td><td>${inline(f.doc)}</td></tr>`).join("");
+    body = `<div class="tbl"><table><thead><tr><th>${it.kind === "enum" ? "Value" : "Field"}</th><th>Meaning</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+  const label = it.kind === "typedef" ? (sig.match(/\(\*(\w+)\)/) || [0, it.name])[1] : it.name;
+  const id = "sym-" + label;
+  index.push({ name: label, kind: badge === "inline" ? "inline" : it.kind, href: "#" + id, where: mod });
+  return `<article class="sym" id="${id}"><div class="top"><span class="name">${esc(label)}</span><span class="badge b-${it.kind}">${badge}</span></div>`
+    + (sig ? `<pre>${esc(sig)}</pre>` : "") + `<div class="doc">${inline(doc)}</div>${body}</article>`;
+}
+
+function renderModule([key, title, blurb]) {
+  const h = DATA.headers[key];
+  const consts = h.items.filter(i => i.kind === "const");
+  const types = h.items.filter(i => i.kind === "struct" || i.kind === "enum" || i.kind === "typedef");
+  const funcs = h.items.filter(i => i.kind === "func" || i.kind === "macro");
+  const helpers = h.items.filter(i => i.kind === "helper");
+  const intro = [blurb, h.intro].filter(Boolean).join(" ");
+  let out = `<section id="mod-${key}"><div class="head"><span class="eyebrow">api/</span><h2>${esc(title)}</h2><span class="path">#include "port/api/${key}.h"</span></div>`;
+  if (intro) out += `<p class="prose">${inline(intro)}</p>`;
+  if (funcs.length) out += `<div class="sub">Functions</div><div class="api">${funcs.map(i => symCard(i, key)).join("")}</div>`;
+  if (types.length) out += `<div class="sub">Types</div><div class="api">${types.map(i => symCard(i, key)).join("")}</div>`;
+  if (consts.length) {
+    out += `<div class="sub">Constants</div><div class="tbl consts"><table><thead><tr><th>Name</th><th>Value</th><th>Meaning</th></tr></thead><tbody>`
+      + consts.map(c => { index.push({ name: c.name, kind: "const", href: "#mod-" + key, where: key });
+        return `<tr><td>${esc(c.name)}</td><td class="num">${esc(c.value)}</td><td>${inline(c.doc)}</td></tr>`; }).join("")
+      + `</tbody></table></div>`;
+  }
+  if (helpers.length) out += `<div class="sub">Inline helpers</div><div class="api">${helpers.map(i => symCard(i, key)).join("")}</div>`;
+  return out + `</section>`;
+}
+
+const groupId = title => "evg-" + title.toLowerCase().replace(/\W+/g, "-");
+
+function renderEvents() {
+  return DATA.events.map(g => {
+    return `<section id="${groupId(g.title)}" class="event-group"><div class="head"><span class="eyebrow">events/</span><h2>${esc(g.title)}</h2></div>`
+      + `<div class="api">` + g.events.map(e => {
+        index.push({ name: e.name, kind: "event", href: "#ev-" + e.name, where: g.title });
+        return `<article class="sym" id="ev-${e.name}"><div class="top"><span class="name">${esc(e.name)}</span>${e.flag ? `<span class="badge b-${e.flag}">${e.flag}</span>` : ""}</div>`
+          + (e.fields ? `<pre>${esc(e.fields)}</pre>` : "")
+          + `<div class="doc">${inline(e.doc)}</div>`
+          + (e.cancel ? `<div class="cancel"><b>If cancelled:</b> ${inline(e.cancel)}</div>` : "")
+          + `</article>`;
+      }).join("") + `</div></section>`;
+  }).join("");
+}
+
+function renderNav() {
+  const guide = [["start", "Your first mod"], ["manifest", "manifest.json"], ["lifecycle", "Loading and cleanup"], ["versions", "Versions"],
+    ["achievements-guide", "Achievements"], ["assets", "Assets"], ["platforms", "Platforms"], ["online", "Online with Satella"], ["events-guide", "Listening to events"]];
+  let html = `<div><h4>Guide</h4><ul>${guide.map(([id, t]) => `<li><a href="#${id}">${t}</a></li>`).join("")}</ul></div>`;
+  for (const g of MODULES) {
+    html += `<div><h4>${g.group} API</h4><ul>${g.items.map(([k, t]) => `<li><a href="#mod-${k}">${t}<span class="file">${k}.h</span></a></li>`).join("")}</ul></div>`;
+  }
+  html += `<div><h4>Events</h4><ul>${DATA.events.map(g => `<li><a href="#${groupId(g.title)}">${esc(g.title.replace(/ Events$/, ""))}</a></li>`).join("")}</ul></div>`;
+  document.getElementById("nav").innerHTML = html;
+}
+
+document.getElementById("modules").innerHTML = MODULES.flatMap(g => g.items).map(renderModule).join("");
+document.getElementById("eventlist").innerHTML = renderEvents();
+renderNav();
+const nHeaders = Object.keys(DATA.headers).length, nEvents = DATA.events.reduce((n, g) => n + g.events.length, 0);
+document.getElementById("nheaders").textContent = nHeaders + " headers";
+document.getElementById("nevents").textContent = nEvents + " events";
+document.getElementById("qhint").textContent = index.length + " symbols and events";
+
+const q = document.getElementById("q"), results = document.getElementById("results"), nav = document.getElementById("nav");
+q.addEventListener("input", () => {
+  const term = q.value.trim().toLowerCase();
+  if (!term) { results.hidden = true; nav.style.display = ""; return; }
+  const hits = index.filter(e => e.name.toLowerCase().includes(term))
+    .sort((a, b) => (a.name.toLowerCase().indexOf(term) - b.name.toLowerCase().indexOf(term)) || a.name.length - b.name.length).slice(0, 40);
+  results.innerHTML = hits.length ? hits.map(h => `<a href="${h.href}"><span>${esc(h.name)}</span><span class="kind">${esc(h.kind)}</span></a>`).join("")
+    : `<div class="none">Nothing matches “${esc(q.value)}”.</div>`;
+  results.hidden = false; nav.style.display = "none";
+});
+results.addEventListener("click", e => { if (e.target.closest("a")) closeMobile(); });
+
+const side = document.getElementById("side"), toggle = document.getElementById("navtoggle");
+function closeMobile() { side.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); toggle.textContent = "Show contents"; }
+toggle.addEventListener("click", () => {
+  const open = side.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", String(open)); toggle.textContent = open ? "Hide contents" : "Show contents";
+});
+nav.addEventListener("click", e => { if (e.target.closest("a")) closeMobile(); });
+
+const links = [...nav.querySelectorAll("a")];
+const targets = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+const spy = new IntersectionObserver(entries => {
+  for (const en of entries) if (en.isIntersecting) {
+    links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id));
+  }
+}, { rootMargin: "-10% 0px -80% 0px" });
+targets.forEach(t => spy.observe(t));
+
+const root = document.documentElement, themeButtons = document.querySelectorAll(".theme button");
+function setTheme(t) {
+  if (t === "system") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", t);
+  themeButtons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t === t)));
+  try { localStorage.setItem("gs-theme", t); } catch (e) {}
+}
+let saved = "system";
+try { saved = localStorage.getItem("gs-theme") || "system"; } catch (e) {}
+setTheme(saved);
+themeButtons.forEach(b => b.addEventListener("click", () => setTheme(b.dataset.t)));
+
+if (location.hash) { const t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
+</script>

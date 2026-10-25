@@ -69,6 +69,8 @@ jobs:
           cp build-web/ghostship.html site/
           cp build-web/ghostship.js build-web/ghostship.wasm build-web/ghostship.data site/
           cp build-web/coi-serviceworker.js site/
+      - name: Build the modding wiki
+        run: python3 docs/wiki/build_wiki.py . site/wiki/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
