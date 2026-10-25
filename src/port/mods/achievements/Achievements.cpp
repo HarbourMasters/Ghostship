@@ -171,10 +171,17 @@ static void Achievement_SyncSaveData(AchievementSaveData* saveData) {
 
     if (!saveData->cheated) {
         size_t index = 0;
-        for (const auto& [id, progress] : gAchievementProgress) {
+        for (const auto& [id, achievement] : gAchievementList) {
+            if (index >= std::size(saveData->entries)) {
+                SPDLOG_WARN("More achievements than save slots, {} not saved", gAchievementList.size() - index);
+                break;
+            }
             saveData->entries[index].id = id.c_str();
-            saveData->entries[index].progress = progress.progress;
+            saveData->entries[index].progress = gAchievementProgress[id].progress;
             index++;
+        }
+        for (; index < std::size(saveData->entries); index++) {
+            saveData->entries[index] = {};
         }
         saveData->capStars = gMetalCapStars;
         saveData->coins = gCoinsCollected;
@@ -296,17 +303,25 @@ void Achievements_Load(IEvent* event) {
     if (!HAS_ACHIEVEMENTS(selectedFile)) {
         size_t idx = 0;
         for (const auto& [id, achievement] : gAchievementList) {
+            if (idx >= std::size(saveData->entries)) {
+                break;
+            }
             saveData->entries[idx++].id = id.c_str();
         }
 
         gSaveBuffer.files[selectedFile]->shipSaveData.features.achievements = true;
         save_file_do_save(selectedFile);
     } else {
-        for (size_t i = 0; i < gAchievementList.size(); i++) {
-            auto& [id, progress] = saveData->entries[i];
-
+        for (const auto& [id, progress] : saveData->entries) {
+            if (id == nullptr) {
+                continue;
+            }
+            const auto achievement = gAchievementList.find(id);
+            if (achievement == gAchievementList.end()) {
+                continue;
+            }
             gAchievementProgress[id].progress = progress;
-            gAchievementProgress[id].achieved = progress >= gAchievementList[id].maxProgress;
+            gAchievementProgress[id].achieved = progress >= achievement->second.maxProgress;
         }
         gMetalCapStars = saveData->capStars;
         gCoinsCollected = saveData->coins;

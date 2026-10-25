@@ -23,6 +23,9 @@ import java.util.zip.ZipInputStream
  *       sm64.o2r             generated on-device from the ROM
  *       mods/                user mods (.o2r, .zip or plain folders)
  *
+ * Saves are the exception: they live in Android/media/dev.net64.ghostship/saves/
+ * so sync apps can reach them (see SaveStore.savesDir).
+ *
  * The unpacking happens here rather than inside the engine because Torch needs
  * config.yml and assets/ on disk before the game process starts, not after.
  * The zip itself is assembled by android/app/build.gradle.kts.

@@ -1,4 +1,5 @@
 #include <libultra/types.h>
+#include <libultraship.h>
 
 #include "audio/external.h"
 #include "behavior_data.h"
@@ -59,14 +60,38 @@ void create_sound_spawner(s32 soundMagic) {
  * above. While only cur_obj_play_sound_2 is used, they may have been intended as
  * separate left/right leg functions that went unused.
  */
+/**
+ * Port: with Disable Draw Distance on, objects past their drawing distance stay rendered, and since object sounds
+ * only check that flag every chomp, cannon and Whomp in the level could be heard. This keeps the original distance
+ * for sounds, matching where the object would have been culled (behavior_script.c and surface_load.c).
+ */
+static s32 cur_obj_beyond_original_draw_distance(void) {
+    struct Object *obj = gCurrentObject;
+    f32 dist;
+
+    if (!CVarGetInteger("gEnhancements.DisableDrawDistance", 0) || obj->oRoom != -1 || gMarioObject == NULL) {
+        return FALSE;
+    }
+
+    dist = (obj->oFlags & OBJ_FLAG_COMPUTE_DIST_TO_MARIO) ? obj->oDistanceToMario
+                                                          : dist_between_objects(obj, gMarioObject);
+    if (obj->collisionData != NULL) {
+        return dist >= obj->oDrawingDistance;
+    }
+    if ((obj->oFlags & OBJ_FLAG_COMPUTE_DIST_TO_MARIO) && !(obj->oFlags & OBJ_FLAG_ACTIVE_FROM_AFAR)) {
+        return dist > obj->oDrawingDistance;
+    }
+    return FALSE;
+}
+
 void cur_obj_play_sound_1(s32 soundMagic) {
-    if (gCurrentObject->header.gfx.node.flags & GRAPH_RENDER_ACTIVE) {
+    if ((gCurrentObject->header.gfx.node.flags & GRAPH_RENDER_ACTIVE) && !cur_obj_beyond_original_draw_distance()) {
         play_sound(soundMagic, gCurrentObject->header.gfx.cameraToObject);
     }
 }
 
 void cur_obj_play_sound_2(s32 soundMagic) {
-    if (gCurrentObject->header.gfx.node.flags & GRAPH_RENDER_ACTIVE) {
+    if ((gCurrentObject->header.gfx.node.flags & GRAPH_RENDER_ACTIVE) && !cur_obj_beyond_original_draw_distance()) {
         play_sound(soundMagic, gCurrentObject->header.gfx.cameraToObject);
 #if ENABLE_RUMBLE
         if (soundMagic == SOUND_OBJ_BOWSER_WALK) {

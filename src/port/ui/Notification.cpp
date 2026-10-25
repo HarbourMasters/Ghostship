@@ -125,9 +125,13 @@ void Window::DrawRegularNotification(const Options& notification, ImVec2 basePos
 
     if (notification.itemIcon != nullptr) {
         float iconSize = 22 * CVarGetFloat(CVAR_SETTING("Notifications.Size"), 1.8f);
-        ImGui::Image(std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
-                         ->GetTextureByName(notification.itemIcon),
-                     ImVec2(iconSize, iconSize));
+        ImTextureID iconTexture = std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
+                                            ->GetTextureByName(notification.itemIcon);
+        if (iconTexture != nullptr) {
+            ImGui::Image(iconTexture, ImVec2(iconSize, iconSize));
+        } else {
+            ImGui::Dummy(ImVec2(iconSize, iconSize));
+        }
         ImGui::SameLine();
     }
     if (!notification.prefix.empty()) {
@@ -200,9 +204,13 @@ void Window::DrawEnhancedNotification(const Options& notification, ImVec2 basePo
 
         // Position and draw icon
         ImGui::SetCursorPos(ImVec2(ImGui::GetCursorPosX(), contentStartY + iconOffsetY));
-        ImGui::Image(std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
-                         ->GetTextureByName(notification.itemIcon),
-                     ImVec2(iconSize, iconSize));
+        ImTextureID iconTexture = std::static_pointer_cast<Fast::Fast3dGui>(ShipCompat::GetWindow()->GetGui())
+                                            ->GetTextureByName(notification.itemIcon);
+        if (iconTexture != nullptr) {
+            ImGui::Image(iconTexture, ImVec2(iconSize, iconSize));
+        } else {
+            ImGui::Dummy(ImVec2(iconSize, iconSize));
+        }
 
         // Position text content next to icon
         ImGui::SameLine(0, 12.0f);

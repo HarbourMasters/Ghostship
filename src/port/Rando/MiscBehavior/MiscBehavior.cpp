@@ -77,7 +77,11 @@ void Rando::MiscBehavior::Init() {
                 if (randoStaticEntrance.destinationId == ev->warpNode->destLevel) {
                     // TODO: Handle Tiny Huge Islands size changes, Wet Dry World water level, and Tick Tock Clocks
                     // clock.
+                    const s16 originalLevel = ev->warpNode->destLevel;
                     ev->warpNode->destLevel = RANDO_SAVE_ENTRANCES(selectedFileNum)[randoEntranceId].destinationId;
+                    if (ev->warpNode->destLevel != originalLevel) {
+                        ev->warpNode->destArea = 1;
+                    }
                     for (auto& entrance : Rando::Logic::shuffledEntrances) {
                         if (entrance.randoEntranceId == randoEntranceId) {
                             entrance.found = true;

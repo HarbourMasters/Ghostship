@@ -82,7 +82,8 @@ inline void from_json(const json& j, AchievementSaveData& data) {
 
     if (j.contains("entries")) {
         auto entriesJson = j.at("entries");
-        for (size_t i = 0; i < entriesJson.size(); i++) {
+        const size_t count = std::min(entriesJson.size(), std::size(data.entries));
+        for (size_t i = 0; i < count; i++) {
             data.entries[i] = entriesJson.at(i).get<AchievementSaveEntry>();
         }
     }
@@ -90,8 +91,10 @@ inline void from_json(const json& j, AchievementSaveData& data) {
 
 inline void to_json(json& j, const AchievementSaveData& data) {
     json entriesJson = json::array();
-    for (size_t i = 0; i < gAchievementList.size(); i++) {
-        entriesJson.push_back(data.entries[i]);
+    for (const auto& entry : data.entries) {
+        if (entry.id != nullptr) {
+            entriesJson.push_back(entry);
+        }
     }
 
     j = json{

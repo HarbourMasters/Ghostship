@@ -68,11 +68,27 @@ if (NOT LINUXDEPLOY_EXECUTABLE)
   execute_process(COMMAND chmod +x ${LINUXDEPLOY_EXECUTABLE} COMMAND_ECHO STDOUT)
 endif()
 
+# linuxdeploy only assembles the AppDir. Its bundled appimagetool embeds the old runtime that needs libfuse2, which
+# newer distros no longer ship, so the image is packed with a current appimagetool and the static type2 runtime.
+find_program(APPIMAGETOOL_EXECUTABLE
+  NAMES appimagetool appimagetool-x86_64.AppImage
+  PATHS ${CPACK_PACKAGE_DIRECTORY}/appimagetool)
+
+if (NOT APPIMAGETOOL_EXECUTABLE)
+  message(STATUS "Downloading appimagetool")
+  set(APPIMAGETOOL_EXECUTABLE ${CPACK_PACKAGE_DIRECTORY}/appimagetool/appimagetool)
+  file(DOWNLOAD
+      https://github.com/AppImage/appimagetool/releases/download/1.9.1/appimagetool-x86_64.AppImage
+      ${APPIMAGETOOL_EXECUTABLE}
+      INACTIVITY_TIMEOUT 10
+      LOG ${CPACK_PACKAGE_DIRECTORY}/appimagetool/download.log
+      STATUS APPIMAGETOOL_DOWNLOAD)
+  execute_process(COMMAND chmod +x ${APPIMAGETOOL_EXECUTABLE} COMMAND_ECHO STDOUT)
+endif()
+
 execute_process(
   COMMAND
     ${CMAKE_COMMAND} -E env
-      OUTPUT=${CPACK_PACKAGE_FILE_NAME}.appimage
-      VERSION=$<IF:$<BOOL:${CPACK_PACKAGE_VERSION}>,${CPACK_PACKAGE_VERSION},0.1.0>
       NO_STRIP=true
     ${LINUXDEPLOY_EXECUTABLE}
     --appimage-extract-and-run
@@ -80,8 +96,20 @@ execute_process(
     --executable=$<TARGET_FILE:Ghostship>
     $<$<BOOL:$<TARGET_PROPERTY:Ghostship,APPIMAGE_DESKTOP_FILE>>:--desktop-file=$<TARGET_PROPERTY:Ghostship,APPIMAGE_DESKTOP_FILE>>
     $<$<BOOL:$<TARGET_PROPERTY:Ghostship,APPIMAGE_ICON_FILE>>:--icon-file=$<TARGET_PROPERTY:Ghostship,APPIMAGE_ICON_FILE>>
-    --output=appimage
     --verbosity=2
+  COMMAND_ERROR_IS_FATAL ANY
+)
+
+execute_process(
+  COMMAND
+    ${CMAKE_COMMAND} -E env
+      ARCH=x86_64
+      VERSION=$<IF:$<BOOL:${CPACK_PACKAGE_VERSION}>,${CPACK_PACKAGE_VERSION},0.1.0>
+    ${APPIMAGETOOL_EXECUTABLE}
+    --appimage-extract-and-run
+    ${CPACK_TEMPORARY_DIRECTORY}
+    ${CPACK_PACKAGE_FILE_NAME}.appimage
+  COMMAND_ERROR_IS_FATAL ANY
 )
 ]])
 

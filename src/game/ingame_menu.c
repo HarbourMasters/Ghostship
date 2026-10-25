@@ -696,20 +696,22 @@ void print_credits_string(s16 x, s16 y, const u8 *str) {
 void handle_menu_scrolling(s8 scrollDirection, s8 *currentIndex, s8 minIndex, s8 maxIndex) {
     u8 index = 0;
 
+    u16 dpad = gPlayer3Controller->buttonDown;
+
     if (scrollDirection == MENU_SCROLL_VERTICAL) {
-        if (gPlayer3Controller->rawStickY > 60) {
+        if (gPlayer3Controller->rawStickY > 60 || (dpad & U_JPAD)) {
             index++;
         }
 
-        if (gPlayer3Controller->rawStickY < -60) {
+        if (gPlayer3Controller->rawStickY < -60 || (dpad & D_JPAD)) {
             index += 2;
         }
     } else if (scrollDirection == MENU_SCROLL_HORIZONTAL) {
-        if (gPlayer3Controller->rawStickX > 60) {
+        if (gPlayer3Controller->rawStickX > 60 || (dpad & R_JPAD)) {
             index += 2;
         }
 
-        if (gPlayer3Controller->rawStickX < -60) {
+        if (gPlayer3Controller->rawStickX < -60 || (dpad & L_JPAD)) {
             index++;
         }
     }

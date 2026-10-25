@@ -1,5 +1,14 @@
 @prism(type='fragment', name='Fast3D Noise', version='1.0.0', description='Hash-based random() used for N64 noise; expects frame_count/noise_scale uniforms', author='Fast3D')
+    // Integer hash, not sin(): GLES runs this stage at mediump, where sin(x) * 143758.5 overflows half floats and
+    // the result collapses to a constant. Alpha noise (G_AC_DITHER) then hid anything partly transparent, such as
+    // Mario fading during a teleport. highp because GLES defaults fragment ints to mediump.
     float random(in vec3 value) {
-        float random = dot(sin(value), vec3(12.9898, 78.233, 37.719));
-        return fract(sin(random) * 143758.5453);
+        highp uint h = uint(int(value.x)) * 1597334677u ^ uint(int(value.y)) * 3812015801u ^
+                       uint(int(value.z)) * 2654435761u;
+        h ^= h >> 16u;
+        h *= 2246822519u;
+        h ^= h >> 13u;
+        h *= 3266489917u;
+        h ^= h >> 16u;
+        return float(h >> 8u) / 16777216.0;
     }

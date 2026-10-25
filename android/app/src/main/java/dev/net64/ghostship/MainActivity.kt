@@ -48,6 +48,8 @@ class MainActivity : SDLActivity() {
     private external fun isMenuOpen(): Boolean
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Before the game starts: it reads this once to find the saves folder in Android/media.
+        android.system.Os.setenv(SaveStore.SAVES_DIR_ENV, SaveStore.savesDir(this).absolutePath, true)
         super.onCreate(savedInstanceState)
         goFullscreen()
         addModsButton()

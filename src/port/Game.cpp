@@ -34,9 +34,9 @@ extern "C" void exec_display_list(SPTask* spTask) {
 
 void push_frame() {
     GameEngine::StartAudioFrame();
+    GameEngine::EndAudioFrame();
     GameEngine::Instance->StartFrame();
     thread5_iteration();
-    GameEngine::EndAudioFrame();
 #ifdef __EMSCRIPTEN__
     static uint32_t lastSync = 0;
     const uint32_t now = SDL_GetTicks();
