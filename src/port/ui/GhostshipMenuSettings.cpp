@@ -49,6 +49,13 @@ static const std::unordered_map<int32_t, const char*> textureFilteringMap = {
     { Fast::FILTER_NONE, "None" },
 };
 
+static const std::unordered_map<int32_t, const char*> menuToggleKeyOptions = {
+    { ImGuiKey_Escape, "Escape" }, { ImGuiKey_GraveAccent, "` (Backquote)" },
+    { ImGuiKey_Tab, "Tab" },       { ImGuiKey_F2, "F2" },
+    { ImGuiKey_F10, "F10" },       { ImGuiKey_Insert, "Insert" },
+    { ImGuiKey_Home, "Home" },     { ImGuiKey_None, "None (controller only)" },
+};
+
 static const std::unordered_map<int32_t, const char*> notificationPosition = {
     { 0, "Top Left" }, { 1, "Top Right" }, { 2, "Bottom Left" }, { 3, "Bottom Right" }, { 4, "Hidden" },
 };
@@ -91,6 +98,22 @@ void GhostshipMenu::AddMenuSettings() {
                      .DefaultValue(true)
 #endif
         );
+    AddWidget(path, "Menu Key", WIDGET_CVAR_COMBOBOX)
+        .CVar(CVAR_MENU_TOGGLE_KEY)
+        .RaceDisable(false)
+        .Options(ComboboxOptions()
+                     .ComboMap(menuToggleKeyOptions)
+                     .DefaultIndex(ImGuiKey_Escape)
+                     .Tooltip("The keyboard key that opens and closes this menu.\nPick another key (or None) to use "
+                              "Escape in game.")
+                     .ComponentAlignment(ComponentAlignments::Right)
+                     .LabelPosition(LabelPositions::Far));
+    AddWidget(path, "Open Menu With Controller Back/Select", WIDGET_CVAR_CHECKBOX)
+        .CVar(CVAR_MENU_PAD_TOGGLE)
+        .RaceDisable(false)
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "The controller's Back/Select/View button opens and closes this menu, even without Menu Controller "
+            "Navigation."));
     AddWidget(path, "Menu Background Opacity", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_SETTING("Menu.BackgroundOpacity"))
         .RaceDisable(false)
