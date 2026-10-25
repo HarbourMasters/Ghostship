@@ -4,6 +4,7 @@
 #include "../../ui/cvar_prefixes.h"
 #include "sm64.h"
 #include "game/game_init.h"
+#include "port/features/Features.h"
 
 #define CVAR_MIRROR_MODE CVAR_ENHANCEMENT("Modes.MirroredWorld.Mode")
 
@@ -13,7 +14,7 @@ static int sCounterMirror = 0;
 static int sExcludeForFrame = 0;
 
 int mirror_mode_is_enabled(void) {
-    return CVarGetInteger(CVAR_MIRROR_MODE, 0);
+    return Port_FeatureInt("enhancements.mirrored_world", 0);
 }
 
 int mirror_mode_is_active(void) {
@@ -123,7 +124,7 @@ void mirror_mode_invert_input(void) {
     // Demo inputs were recorded against the unmirrored world, so inverting them
     // sends demo Mario the wrong way. Leave them alone unless the player is
     // controlling the demo.
-    if (gCurrDemoInput != NULL && CVarGetInteger(CVAR_CHEAT("PlayInDemo"), 0) == 0) {
+    if (gCurrDemoInput != NULL && Port_FeatureInt("cheats.play_in_demo", 0) == 0) {
         return;
     }
 

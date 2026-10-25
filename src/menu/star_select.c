@@ -20,6 +20,7 @@
 #include "sm64.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "star_select.h"
+#include "port/features/Features.h"
 
 /**
  * @file star_select.c
@@ -120,14 +121,14 @@ void bhv_act_selector_init(void) {
     s32 selectorModelIDs[10];
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
-    if (CVarGetInteger("gEnhancements.SelectAllStars", 0)) {
+    if (Port_FeatureInt("enhancements.select_all_stars", 0)) {
         sStarSelectState = false;
     } else {
         sStarSelectState = true;
     }
 
     sVisibleStars = 0;
-    while (i != sObtainedStars || (CVarGetInteger("gEnhancements.SelectAllStars", 0) && sVisibleStars != LEVEL_STARS_MAX)) {
+    while (i != sObtainedStars || (Port_FeatureInt("enhancements.select_all_stars", 0) && sVisibleStars != LEVEL_STARS_MAX)) {
         if (stars & (1 << sVisibleStars)) { // Star has been collected
             selectorModelIDs[sVisibleStars] = MODEL_STAR;
             i++;
@@ -187,7 +188,7 @@ void bhv_act_selector_loop(void) {
 
     CALL_EVENT(StarSelectRender, gCurrCourseNum, stars, sSelectedActIndex);
 
-    if (!sStarSelectState && !CVarGetInteger("gEnhancements.SelectAllStars", 0)) {
+    if (!sStarSelectState && !Port_FeatureInt("enhancements.select_all_stars", 0)) {
         // If the option is toggled after stars have been drawn, then we want to set the star index to a valid index
         starIndexCounter = 0;
         for (i = 0; i <= sSelectableStarIndex; i++) {
@@ -198,12 +199,12 @@ void bhv_act_selector_loop(void) {
         }
         sSelectableStarIndex = starIndexCounter - 1;
         sStarSelectState = true;
-    } else if (sStarSelectState && CVarGetInteger("gEnhancements.SelectAllStars", 0)) {
+    } else if (sStarSelectState && Port_FeatureInt("enhancements.select_all_stars", 0)) {
         sSelectableStarIndex = sSelectedActIndex;
         sStarSelectState = false;
     }
 
-    if (sObtainedStars != LEVEL_STARS_MAX && !CVarGetInteger("gEnhancements.SelectAllStars", 0)) {
+    if (sObtainedStars != LEVEL_STARS_MAX && !Port_FeatureInt("enhancements.select_all_stars", 0)) {
         // Sometimes, stars are not selectable even if they appear on the screen.
         // This code filters selectable and non-selectable stars.
         sSelectedActIndex = 0;
@@ -438,7 +439,7 @@ s32 lvl_update_obj_and_load_act_button_actions(UNUSED s32 arg, UNUSED s32 unused
             queue_rumble_data(60, 70);
             func_sh_8024C89C(1);
 #endif
-            if (sInitSelectedActNum >= sSelectedActIndex + 1 || CVarGetInteger("gEnhancements.SelectAllStars", 0)) {
+            if (sInitSelectedActNum >= sSelectedActIndex + 1 || Port_FeatureInt("enhancements.select_all_stars", 0)) {
                 sLoadedActNum = sSelectedActIndex + 1;
             } else {
                 sLoadedActNum = sInitSelectedActNum;

@@ -7,6 +7,7 @@
 #include "game/level_update.h"
 #include "port/Engine.h"
 #include "port/ModList.h"
+#include "port/features/Features.h"
 #include "ship/utils/StringHelper.h"
 #include "ship/scripting/ScriptLoader.h"
 
@@ -172,6 +173,20 @@ void GhostshipMenu::AddModMenu() {
         .Callback([](WidgetInfo& info) {
             ShipCompat::GetScriptLoader()->UnloadAll();
             GameEngine::Instance->LoadScripts();
+        });
+    AddWidget(path, "##ModRuleConflicts", WIDGET_CUSTOM)
+        .HideInSearch(true)
+        .CustomFunction([](WidgetInfo&) {
+            const auto& conflicts = Features::Conflicts();
+            if (conflicts.empty()) {
+                return;
+            }
+            ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Orange),
+                               "Mods disagree on these settings:");
+            for (const Features::Conflict& conflict : conflicts) {
+                ImGui::BulletText("%s: %s overrides %s (%s)", conflict.id.c_str(), conflict.winner.c_str(),
+                                  conflict.loser.c_str(), Features::LockReason(conflict.id.c_str()).c_str());
+            }
         });
 
     auto keystore = ShipCompat::GetKeystore();

@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "port/ModRules.h"
+
 namespace Ship {
 class Archive;
 }
@@ -17,10 +19,14 @@ struct Entry {
     int priority;
     std::string status;
     bool failed = false;
+    ModRules::Rules rules;
+    // Enabled and runs on the active base, so its files and rules apply.
+    bool mounted = false;
 };
 
-// Remembers the mounted mods, unmounts the disabled ones and orders the rest by priority. Mods with a higher
-// priority are mounted later, so their files win, and their code initializes later.
+// Remembers the mounted mods, unmounts the disabled ones and those made for another base (works_with), and orders
+// the rest by priority. Mods with a higher priority are mounted later, so their files win, and their code
+// initializes later.
 void Apply();
 std::vector<Entry>& Entries();
 

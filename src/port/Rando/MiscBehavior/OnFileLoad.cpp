@@ -2,6 +2,7 @@
 #include "port/Rando/Logic/Logic.h"
 #include "port/Rando/Spoiler/Spoiler.h"
 #include "port/ui/Notification.h"
+#include "port/features/Features.h"
 
 extern "C" {
 extern struct SaveBuffer gSaveBuffer;
@@ -24,7 +25,7 @@ void Rando::MiscBehavior::OnFileLoad() {
 
         bool loadedFromSpoiler = false;
 
-        if (!CVarGetInteger("gRandoSettings.Enabled", 0) && !IS_RANDO(selectedFileNum)) {
+        if (!Port_FeatureInt("rando.enabled", 0) && !IS_RANDO(selectedFileNum)) {
             Rando::Logic::shuffledPool.clear();
             return;
         }

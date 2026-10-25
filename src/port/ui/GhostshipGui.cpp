@@ -18,6 +18,7 @@ void C_RunGuiDrawCallbacks();
 #include "TouchControls.h"
 #include "GhostshipInputEditorWindow.h"
 #include "SaveEditor.h"
+#include "RomhackMenuWindow.h"
 #include "port/ui/ObjectViewer.h"
 #include "port/ui/AchievementsWindow.h"
 #include "port/Rando/CheckTracker/CheckTracker.h"
@@ -53,6 +54,7 @@ namespace GhostshipGui {
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<GhostshipMenu> mGhostshipMenu;
 std::shared_ptr<SaveEditorWindow> mSaveEditorWindow;
+std::shared_ptr<RomhackMenuWindow> mRomhackMenuWindow;
 std::shared_ptr<Notification::Window> mNotificationWindow;
 std::shared_ptr<InputViewer> mInputViewer;
 std::shared_ptr<TouchControlsOverlay> mTouchControlsOverlay;
@@ -126,6 +128,9 @@ void SetupGuiElements() {
     mSaveEditorWindow = std::make_shared<SaveEditorWindow>(CVAR_WINDOW("SaveEditor"), "Save Editor");
     gui->AddGuiWindow(mSaveEditorWindow);
 
+    mRomhackMenuWindow = std::make_shared<RomhackMenuWindow>(CVAR_WINDOW("RomhackMenu"), "Romhack Menu");
+    gui->AddGuiWindow(mRomhackMenuWindow);
+
     mInputEditorWindow =
         std::make_shared<GhostshipInputEditorWindow>(CVAR_WINDOW("ControllerConfiguration"), "Configure Controller");
     gui->AddGuiWindow(mInputEditorWindow);
@@ -195,6 +200,7 @@ void Destroy() {
     mTouchControlsOverlay = nullptr;
     mAchievementsWindow = nullptr;
     mEventDebuggerWindow = nullptr;
+    mRomhackMenuWindow = nullptr;
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

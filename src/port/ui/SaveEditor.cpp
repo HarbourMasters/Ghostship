@@ -3,6 +3,7 @@
 #include "UIWidgets.hpp"
 #include "port/ui/Notification.h"
 #include "port/ShipUtils.h"
+#include "port/features/Features.h"
 
 #include "port/Rando/Rando.h"
 #include "port/Rando/Logic/Logic.h"
@@ -177,6 +178,9 @@ void HandlePopUpContext(RandoCheckId randoCheckId) {
 }
 
 void SaveEditorWindow::DrawElement() {
+    if (Features::DrawLockedNotice("devtools.save_editor")) {
+        return;
+    }
     if (gMarioSpawnInfo->model == NULL) {
         ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Orange), "No Save File Loaded");
         return;

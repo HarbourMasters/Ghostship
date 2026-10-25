@@ -70,6 +70,10 @@
 #include <ship/resource/archive/Archive.h>
 #include "port/net/SatellaClient.h"
 #include "port/ModList.h"
+#include "port/romhack/Romhack.h"
+#include "port/ModRules.h"
+#include "port/features/Features.h"
+#include "port/audio/ModSound.h"
 
 #include <ship/log/Logger.h>
 #include <ship/config/Config.h>
@@ -118,6 +122,7 @@ extern "C" {
 #include "sm64.h"
 #include "audio/external.h"
 #include "audio/internal.h"
+#include "audio/load.h"
 #include "game/ingame_menu.h"
 #include "variables.h"
 bool prevAltAssets = false;
@@ -520,6 +525,9 @@ void GameEngine::LoadResourceFiles() {
         sRomArchiveFailed = ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(romPath) == nullptr;
     }
 
+    // The selected romhack shadows the base game; the mods mounted next shadow both.
+    Romhack::Mount(ShipCompat::GetResourceManager()->GetArchiveManager());
+
     const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
 
     if (!patches_path.empty()) {
@@ -528,7 +536,14 @@ void GameEngine::LoadResourceFiles() {
         }
 
         if (std::filesystem::is_directory(patches_path)) {
-            for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
+            for (auto it = std::filesystem::recursive_directory_iterator(patches_path);
+                 it != std::filesystem::recursive_directory_iterator(); ++it) {
+                const auto& p = *it;
+                // Folders starting with ~ (mods/~romhacks) are managed by the port, not mounted as mods.
+                if (p.is_directory() && p.path().filename().string().starts_with("~")) {
+                    it.disable_recursion_pending();
+                    continue;
+                }
                 const auto ext = p.path().extension().string();
                 if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
                     ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
@@ -541,7 +556,7 @@ void GameEngine::LoadResourceFiles() {
             }
 
             for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
-                if (p.is_directory()) {
+                if (p.is_directory() && !p.path().filename().string().starts_with("~")) {
                     SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
                     ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
                 }
@@ -550,6 +565,8 @@ void GameEngine::LoadResourceFiles() {
     }
 
     ModList::Apply();
+    // The romhack and the mounted mods are known now; their rules apply before ShipInit reads any feature.
+    ModRules::Resolve();
 
 #ifdef ENABLE_SCRIPTING
     auto archive = ShipCompat::GetResourceManager()->GetArchiveManager();
@@ -712,8 +729,11 @@ void GameEngine::FinishInit() {
 
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
-    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    prevAltAssets = Port_FeatureInt("graphics.alt_assets", 0);
     ShipCompat::GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
+
+    // Needs the Blob factory, and runs before ShipInit so enhancements that snapshot tables see the hack's values.
+    Romhack::ApplyDataTables();
 
     Instance->AudioInit();
     Instance->LoadDictionary();
@@ -771,12 +791,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     }
 
     std::filesystem::path ownPath;
-    std::vector<std::string> args;
-    if (argc > 1) {
-        for (int i = 1; i < argc; i++) {
-            args.push_back(argv[i]);
-        }
-    }
+    std::vector<std::string> args = Romhack::ConsumeLaunchArgs(argc, argv);
 #if !defined(__SWITCH__) && !defined(__WIIU__)
     GameExtractor extract;
 #endif
@@ -1156,6 +1171,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #else
                             promptStep = PS_FILE_CHECK;
 #endif
+                            continue;
+                        }
+                        if (const auto romhack = extract.GetRomhack()) {
+                            const std::string msg = romhack->info.name +
+                                                    " is a romhack and loads on top of the base game.\n"
+                                                    "Pick a vanilla Super Mario 64 ROM first, then add the romhack "
+                                                    "from Settings > Romhacks.";
+                            promptStep = PS_WAIT;
+                            GhostshipGui::RegisterPopup("Base Game Required", msg.c_str(), "OK", "",
+                                                        [&]() { promptStep = PS_FILE_CHECK; });
                             continue;
                         }
                         extracting = true;
@@ -1619,7 +1644,10 @@ void GameEngine::StartFrame() const {
 
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
-            // Toggle HD Assets
+            // Toggle HD Assets, unless a romhack or mod has locked them.
+            if (Features::IsLocked("graphics.alt_assets")) {
+                break;
+            }
             CVarSetInteger("gEnhancements.Mods.AlternateAssets",
                            !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
             break;
@@ -1630,13 +1658,13 @@ void GameEngine::StartFrame() const {
 }
 
 uint32_t GameEngine::GetInterpolationFPS() {
-    if (CVarGetInteger(CVAR_SETTING("MatchRefreshRate"), 0)) {
+    if (Port_FeatureInt("graphics.match_refresh_rate", 0)) {
         return ShipCompat::GetWindow()->GetCurrentRefreshRate();
     } else if (CVarGetInteger(CVAR_VSYNC_ENABLED, 1) || !ShipCompat::GetWindow()->CanDisableVerticalSync()) {
         return std::min<uint32_t>(ShipCompat::GetWindow()->GetCurrentRefreshRate(),
-                                  CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
+                                  Port_FeatureInt("graphics.interpolation_fps", 30));
     }
-    return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
+    return Port_FeatureInt("graphics.interpolation_fps", 30);
 }
 
 // Audio
@@ -1658,6 +1686,11 @@ void GameEngine::HandleAudioThread() {
         int samples_left = AudioPlayerBuffered();
         u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
+        const float music_vol = CVarGetInteger("gSettings.Volume.MainMusic", 100) / 100.0f;
+        const float sfx_vol = CVarGetInteger("gSettings.Volume.SFX", 100) / 100.0f;
+        // Mod music (port/api/sound.h) stands in for the level music while it plays.
+        gSequencePlayers[SEQ_PLAYER_LEVEL].gameVolume = ModSound::MusicActive() ? 0.0f : music_vol;
+
         s16 audio_buffer[SAMPLES_PER_FRAME];
         for (int i = 0; i < NUM_AUDIO_CHANNELS; i++) {
             create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
@@ -1669,6 +1702,7 @@ void GameEngine::HandleAudioThread() {
             audio_buffer[i] = static_cast<s16>(audio_buffer[i] * master_vol);
         }
 
+        ModSound::Mix(audio_buffer, num_audio_samples * 2, master_vol * music_vol, master_vol * sfx_vol);
         ModAudio_MixInto(audio_buffer, num_audio_samples * 2);
 
         AudioPlayerPlayFrame((u8*)audio_buffer, 2 * num_audio_samples * 4);
@@ -1811,7 +1845,7 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolation
         interpreter->mInterpolationIndex++;
     }
 
-    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    bool curAltAssets = Port_FeatureInt("graphics.alt_assets", 0);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
         ShipCompat::GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
@@ -1993,7 +2027,7 @@ static void FixYoshiTypo(DialogEntry* dialog) {
         return;
     }
 
-    const uint8_t from = CVarGetInteger(CVAR_ENHANCEMENT("FixYoshiDialogueTypo"), 1) ? 0x37 : 0x36;
+    const uint8_t from = Port_FeatureInt("enhancements.fix_yoshi_dialogue_typo", 1) ? 0x37 : 0x36;
     uint8_t pattern[sizeof(sYoshiTypo)];
     memcpy(pattern, sYoshiTypo, sizeof(pattern));
     pattern[1] = from;

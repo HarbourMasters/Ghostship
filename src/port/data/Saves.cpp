@@ -3,6 +3,8 @@
 #include "sm64.h"
 #include "port/ShipInit.hpp"
 #include "port/data/SaveConversion.h"
+#include "port/romhack/Romhack.h"
+#include "port/data/SaveModData.h"
 
 #include <cstdlib>
 #include <fstream>
@@ -15,14 +17,20 @@ extern "C" struct SaveBuffer gSaveBuffer;
 // comes from SDL_AndroidGetExternalStoragePath(), which calls into Java — and a
 // global constructor runs at dlopen, before SDL's JNI is set up, so asking then
 // aborts the process with "CallStaticObjectMethod received NULL jclass".
+// A romhack keeps its saves in saves/~romhacks/<stem>/, apart from the base game's and other romhacks'. The
+// romhack is mounted before anything saves, and switching it needs a restart, so the path never changes.
 static const fs::path& SavesPath() {
     static const fs::path path = [] {
+        fs::path saves = fs::path(Ship::Context::GetPathRelativeToAppDirectory("saves", "sm64"));
 #ifdef __ANDROID__
         if (const char* dir = std::getenv("GHOSTSHIP_SAVES_DIR"); dir != nullptr && dir[0] != '\0') {
-            return fs::path(dir);
+            saves = fs::path(dir);
         }
 #endif
-        return fs::path(Ship::Context::GetPathRelativeToAppDirectory("saves", "sm64"));
+        if (Romhack_IsActive()) {
+            saves = saves / Romhack::kFolder / Romhack::ActiveStem();
+        }
+        return saves;
     }();
     return path;
 }
@@ -30,7 +38,7 @@ static const fs::path& SavesPath() {
 static void Init() {
     // Create saves directory if it doesn't exist
     if (!fs::exists(SavesPath())) {
-        fs::create_directory(SavesPath());
+        fs::create_directories(SavesPath());
     }
 }
 
@@ -55,6 +63,7 @@ void SaveFileDoSave(int32_t fileIndex) {
     }
 
     json j = gSaveBuffer.files[fileIndex][0];
+    j["mods"] = SaveModData::Commit(fileIndex);
     file << j.dump(1);
     file.close();
 }
@@ -89,8 +98,9 @@ void SaveFileSaveAchievements(int32_t fileIndex) {
     out << j.dump(1);
 }
 
+// default.sav is the base game's, so a romhack never migrates it into its own saves.
 bool ShouldLoadOldSaveFile(void) {
-    return fs::exists(Ship::Context::GetPathRelativeToAppDirectory("default.sav"));
+    return !Romhack_IsActive() && fs::exists(Ship::Context::GetPathRelativeToAppDirectory("default.sav"));
 }
 
 // save_file_reload() (the game-over path) restores each save from its in-memory
@@ -107,7 +117,7 @@ static void MirrorSavesToBackupSlots(void) {
 
 void SaveFileLoadAll(void) {
     auto oldSave = Ship::Context::GetPathRelativeToAppDirectory("default.sav");
-    if (fs::exists(oldSave)) {
+    if (ShouldLoadOldSaveFile()) {
         for (int32_t fileIndex = 0; fileIndex < NUM_SAVE_FILES; fileIndex++) {
             SaveFileDoSave(fileIndex);
         }
@@ -138,6 +148,7 @@ void SaveFileLoadAll(void) {
         }
 
         gSaveBuffer.files[fileIndex][0] = j.get<struct SaveFile>();
+        SaveModData::Load(fileIndex, j.value("mods", json::object()));
         file.close();
     }
 

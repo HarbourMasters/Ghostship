@@ -6,7 +6,8 @@ import os
 import re
 import sys
 
-HEADERS = ["api", "cvar", "ui", "achievements", "permissions", "online", "relay", "player_store", "channel_store"]
+HEADERS = ["api", "cvar", "ui", "savedata", "sound", "achievements", "permissions", "online", "relay", "room",
+           "player_store", "channel_store"]
 
 
 def join_comment(lines):

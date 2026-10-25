@@ -13,6 +13,7 @@
 #include "sm64.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "port/Matrix.h"
+#include "port/features/Features.h"
 
 extern void mirror_mode_apply_projection(void);
 extern int mirror_mode_is_enabled(void);
@@ -314,7 +315,7 @@ void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
     Mtx *mtx = gMatStackFixed[gMatStackIndex];
     s16 distanceFromCam = -GET_HIGH_S16_OF_32(mtx->m[1][3]); // z-component of the translation column
 #endif
-    if(CVarGetInteger("gEnhancements.DisableLOD", 1) == 1) {
+    if(Port_FeatureInt("enhancements.disable_lod", 1) == 1) {
         distanceFromCam = 0;
     }
 

@@ -182,7 +182,7 @@ td.num { font-variant-numeric: tabular-nums; font-family: var(--font-mono); font
   <aside class="side" id="side">
     <div class="brand">
       <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4v20" stroke="#e7eaf7" stroke-width="2" stroke-linecap="round"/><path d="M19 6c6 2 9 7 9 14H19z" fill="#e7eaf7" opacity="0.9"/><path d="M17 9c-4 2-7 6-7 11h7z" fill="#e7eaf7" opacity="0.55"/><path d="M5 24h26l-4 7H9z" fill="#c8323c"/><circle cx="23" cy="13" r="1.4" fill="#141a33"/><circle cx="26" cy="13" r="1.4" fill="#141a33"/></svg>
-      <div><b>Ghostship</b><small>mod API 1 · code 2</small></div>
+      <div><b>Ghostship</b><small>mod API 2 · code 2</small></div>
     </div>
     <div class="search">
       <input id="q" type="search" placeholder="Search functions, structs, events" autocomplete="off" aria-label="Search the API">
@@ -200,7 +200,7 @@ td.num { font-variant-numeric: tabular-nums; font-family: var(--font-mono); font
     <div class="col" id="col">
 
       <section id="intro">
-        <span class="eyebrow">// Ghostship mod API, version 1</span>
+        <span class="eyebrow">// Ghostship mod API, version 2</span>
         <h1>Writing code mods for Ghostship</h1>
         <p class="lede">Ghostship mods are C source files packed into an <code>.o2r</code> archive. The game compiles them with TinyCC when it loads them, so a mod is plain text you can read, and the same archive works on every platform that runs code mods. This wiki covers how to build one and every function, structure and event a mod can use.</p>
         <div class="facts">
@@ -266,6 +266,8 @@ cmake --build build</pre><p class="prose" style="margin:0">You need CMake 3.10 o
               <tr><td class="decl">dependencies</td><td>Names, or <code>{ "name", "version" }</code> objects with a range. See <a href="#deps">Dependencies</a>.</td></tr>
               <tr><td class="decl">code_version</td><td>Written by the build from <code>GS_CODE_VERSION</code>. The game only loads mods built with its own code version.</td></tr>
               <tr><td class="decl">api_version</td><td>Written by the build from <code>GS_API_VERSION</code>. The game skips mods that need a newer API than it has.</td></tr>
+              <tr><td class="decl">works_with</td><td>Bases the mod runs on: <code>"vanilla"</code>, a romhack's name, or <code>"*"</code>, each optionally <code>{ "name", "version" }</code> with a range. A mod made for another base isn't loaded. Missing means any base.</td></tr>
+              <tr><td class="decl">disable, force</td><td>Port features the mod turns off, or pins to a value, such as <code>"cheats.*"</code> or <code>{ "graphics.interpolation_fps": 30 }</code>. The player's own settings come back without the mod. The ids are listed in <code>docs/romhacks/DESIGN.md</code>.</td></tr>
               <tr><td class="decl">binaries</td><td>Optional prebuilt libraries by platform (<code>windows_x64</code>, <code>darwin</code>, <code>linux_x64</code>, …), used instead of compiling <code>main</code> on that platform.</td></tr>
               <tr><td class="decl">author, description, website, license, icon</td><td>Shown in the Mods menu.</td></tr>
             </tbody>
@@ -291,7 +293,7 @@ cmake --build build</pre><p class="prose" style="margin:0">You need CMake 3.10 o
           <div class="tbl"><table>
             <thead><tr><th>Number</th><th>Now</th><th>Goes up when</th><th>Effect on mods</th></tr></thead>
             <tbody>
-              <tr><td class="decl">GS_API_VERSION</td><td class="num">1</td><td>Something is added to the headers</td><td>Older mods keep loading. A mod that needs a newer API is skipped.</td></tr>
+              <tr><td class="decl">GS_API_VERSION</td><td class="num">2</td><td>Something is added to the headers</td><td>Older mods keep loading. A mod that needs a newer API is skipped.</td></tr>
               <tr><td class="decl">GS_CODE_VERSION</td><td class="num">2</td><td>A change breaks mods built with older headers</td><td>Every mod must be rebuilt.</td></tr>
             </tbody>
           </table></div>
@@ -318,6 +320,21 @@ MOD_INIT() {
 // Later, whenever Mario picks up a coin:
 //     C_AchievementProgress("coinfloor.rich", 1);</pre>
           <div class="note"><b>Keep ids stable.</b> Progress is stored by id. Renaming an id loses every player's progress on it.</div>
+        </section>
+
+        <section id="savedata-guide">
+          <div class="head"><span class="eyebrow">guide/</span><h2>Save data and sounds</h2></div>
+          <p class="prose"><a href="#mod-savedata">savedata.h</a> keeps values in the save file being played, under <code>"mods"</code> in its <code>save_&lt;n&gt;.json</code>. They behave like the game's own progress: written when the game saves that file, erased and copied with it in the file select, and taken back to the last save after a game over. Prefix keys with the mod's name. Settings that belong to the player rather than one file go through <a href="#mod-cvar">cvar.h</a>.</p>
+<pre>#include "port/api/savedata.h"
+
+static void OnRedCoin(IEvent* event) {
+    C_SaveDataSetInt("coinfloor.reds", C_SaveDataGetInt("coinfloor.reds", 0) + 1);
+}</pre>
+          <p class="prose"><a href="#mod-sound">sound.h</a> plays WAV, MP3 or FLAC files from the mod's archive, following the volume settings. <code>C_ReplaceMusic</code> plays a sound whenever the game starts a level sequence, and gives the game's music back when that sequence ends, fades or changes.</p>
+<pre>MOD_INIT() {
+    const int theme = C_RegisterSound("music/castle.wav");
+    C_ReplaceMusic(SEQ_LEVEL_INSIDE_CASTLE, theme, 0);
+}</pre>
         </section>
 
         <section id="assets">
@@ -353,11 +370,12 @@ static const u8 sBlob[] = { #asset "data/table.bin" };</pre>
 
         <section id="online">
           <div class="head"><span class="eyebrow">guide/</span><h2>Online features with Satella</h2></div>
-          <p class="prose">Satella is the online service Ghostship connects to when it starts, at <code>wss://satella.net64.dev</code>. It gives the game the keys trusted mods are signed with. Each install has a player key it proves to Satella on every connection, so every message says which player sent it (<a href="#mod-online">online.h</a>). Mods go online through <a href="#mod-relay">relay channels</a> for messages between players, the <a href="#mod-player_store">player store</a> for values kept for one player, and the <a href="#mod-channel_store">channel store</a> for values shared by everyone on a channel.</p>
+          <p class="prose">Satella is the online service Ghostship connects to when it starts, at <code>wss://satella.net64.dev</code>. It gives the game the keys trusted mods are signed with. Each install has a player key it proves to Satella on every connection, so every message says which player sent it (<a href="#mod-online">online.h</a>). Mods go online through <a href="#mod-relay">relay channels</a> and <a href="#mod-room">rooms</a> for messages between players, the <a href="#mod-player_store">player store</a> for values kept for one player, and the <a href="#mod-channel_store">channel store</a> for values shared by everyone on a channel.</p>
           <div class="tbl"><table>
             <thead><tr><th>Feature</th><th>Who reads</th><th>Who writes</th><th>Limit</th></tr></thead>
             <tbody>
               <tr><td><a href="#mod-relay">Relay channel</a></td><td>Every player subscribed to the channel</td><td>Any of them</td><td class="num">64 KB per message</td></tr>
+              <tr><td><a href="#mod-room">Room</a></td><td>The players in the room, or one of them</td><td>Its members, 60 messages a second</td><td class="num">64 members, 64 KB per message</td></tr>
               <tr><td><a href="#mod-player_store">Player store</a>, private</td><td>The player</td><td>The player, signed with their key</td><td class="num">4 KB per value</td></tr>
               <tr><td><a href="#mod-player_store">Player store</a>, public</td><td>Anyone with the player's key</td><td>The player, signed with their key</td><td class="num">4 KB per value</td></tr>
               <tr><td><a href="#mod-channel_store">Channel store</a></td><td>Anyone</td><td>Any player, signed with their key</td><td class="num">4 KB per value</td></tr>
@@ -465,6 +483,8 @@ const MODULES = [
     ["ui", "Mods menu and GUI", "Add pages and widgets under the Mods menu, and draw ImGui windows of your own every frame. Pass string literals for labels, tooltips and CVar names: they are kept as pointers."],
   ]},
   { group: "Game", items: [
+    ["savedata", "Save data", "Values a mod keeps in the save file being played."],
+    ["sound", "Sound and music", "Sounds and music of your own from WAV, MP3 or FLAC files, and replacements for the game's level music."],
     ["achievements", "Achievements", "Achievements of your own, shown in the Achievements window and saved with the game."],
   ]},
   { group: "Online", items: [
@@ -472,6 +492,7 @@ const MODULES = [
     ["online", "Player identity", ""],
     ["relay", "Relay channels", ""],
     ["player_store", "Player store", ""],
+    ["room", "Rooms", ""],
     ["channel_store", "Channel store", ""],
   ]},
 ];
@@ -537,7 +558,7 @@ function renderEvents() {
 
 function renderNav() {
   const guide = [["start", "Your first mod"], ["manifest", "manifest.json"], ["lifecycle", "Loading and cleanup"], ["versions", "Versions"],
-    ["achievements-guide", "Achievements"], ["assets", "Assets"], ["platforms", "Platforms"], ["online", "Online with Satella"], ["events-guide", "Listening to events"]];
+    ["achievements-guide", "Achievements"], ["savedata-guide", "Save data and sounds"], ["assets", "Assets"], ["platforms", "Platforms"], ["online", "Online with Satella"], ["events-guide", "Listening to events"]];
   let html = `<div><h4>Guide</h4><ul>${guide.map(([id, t]) => `<li><a href="#${id}">${t}</a></li>`).join("")}</ul></div>`;
   for (const g of MODULES) {
     html += `<div><h4>${g.group} API</h4><ul>${g.items.map(([k, t]) => `<li><a href="#mod-${k}">${t}<span class="file">${k}.h</span></a></li>`).join("")}</ul></div>`;

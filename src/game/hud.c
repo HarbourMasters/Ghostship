@@ -15,6 +15,7 @@
 #include "print.h"
 #include "port/ui/cvar_prefixes.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/features/Features.h"
 
 /* @file hud.c
  * This file implements HUD rendering and power meter animations.
@@ -227,7 +228,7 @@ void handle_power_meter_actions(s16 numHealthWedges) {
  */
 void render_hud_power_meter(void) {
     s16 shownHealthWedges = gHudDisplay.wedges;
-    bool alwaysShow = CVarGetInteger(CVAR_ENHANCEMENT("AlwaysShowPowerMeter"), 0) != 0;
+    bool alwaysShow = Port_FeatureInt("enhancements.always_show_power_meter", 0) != 0;
     
     if (sPowerMeterHUD.animation != POWER_METER_HIDING) {
         handle_power_meter_actions(shownHealthWedges);

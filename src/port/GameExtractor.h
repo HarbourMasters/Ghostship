@@ -8,10 +8,20 @@
 #include <string>
 #include <utility>
 
+#include "port/romhack/Romhack.h"
+
 namespace fs = std::filesystem;
+
+// A config.yml entry with a romhack: block. It extracts to a delta o2r under mods/~romhacks.
+struct RomhackRecipe {
+    Romhack::Info info;
+    std::string output; // config.output.binary, relative to the app directory
+};
 
 class GameExtractor {
 public:
+    // The loaded ROM's romhack recipe, or nullopt for the base game or an unknown ROM.
+    std::optional<RomhackRecipe> GetRomhack() const;
     // Message from the most recent failed extraction (empty on success). Surfaced
     // in the extraction-failure popup so the user sees the real cause.
     static std::string sLastError;

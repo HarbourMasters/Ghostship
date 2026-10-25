@@ -122,6 +122,9 @@ struct WidgetInfo {
     bool sameLine = false;
     bool raceDisable = true;
     bool hideInSearch = false;
+    // The port feature (port/features/Features.h) the widget belongs to when its CVar doesn't say, e.g. a button.
+    const char* feature = nullptr;
+    bool featureLocked = false;
 
     WidgetInfo& CVar(const char* cVar_) {
         cVar = cVar_;
@@ -220,6 +223,11 @@ struct WidgetInfo {
 
     WidgetInfo& HideInSearch(bool hide) {
         hideInSearch = hide;
+        return *this;
+    }
+
+    WidgetInfo& Feature(const char* feature_) {
+        feature = feature_;
         return *this;
     }
 

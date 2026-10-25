@@ -4,6 +4,7 @@
 
 extern "C" {
 #include "game/interaction.h"
+#include "port/features/Features.h"
 }
 
 extern std::map<RandoCheckId, struct Object*> spawnedRandoObjects;
@@ -20,7 +21,7 @@ void Rando::ObjectBehavior::ModifyStarBehavior(bool* shouldCancel, struct Object
             }
 
             obj->oIntangibleTimer = -1;
-            if (CVarGetInteger("gEnhancements.StarNoExit", 0)) {
+            if (Port_FeatureInt("enhancements.star_no_exit", 0)) {
                 obj->oInteractionSubtype |= INT_SUBTYPE_NO_EXIT;
             }
             *(shouldCancel) = true;

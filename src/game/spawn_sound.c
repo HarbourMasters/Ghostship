@@ -10,6 +10,7 @@
 #include "sm64.h"
 #include "spawn_sound.h"
 #include "rumble_init.h"
+#include "port/features/Features.h"
 
 /*
  * execute an object's current sound state with a provided array
@@ -69,7 +70,7 @@ static s32 cur_obj_beyond_original_draw_distance(void) {
     struct Object *obj = gCurrentObject;
     f32 dist;
 
-    if (!CVarGetInteger("gEnhancements.DisableDrawDistance", 0) || obj->oRoom != -1 || gMarioObject == NULL) {
+    if (!Port_FeatureInt("enhancements.disable_draw_distance", 0) || obj->oRoom != -1 || gMarioObject == NULL) {
         return FALSE;
     }
 

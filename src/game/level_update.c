@@ -33,6 +33,7 @@
 #include "port/events/list/EngineEvent.h"
 #include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
+#include "port/features/Features.h"
 
 #define PLAY_MODE_NORMAL 0
 #define PLAY_MODE_PAUSED 2
@@ -444,7 +445,7 @@ void init_mario_after_warp(void) {
             play_cap_music(SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP));
         }
 
-        if (CVarGetInteger("gEnhancements.FixKoopaRaceMusic", 0) == 1 && gCurrLevelNum == LEVEL_BOB
+        if (Port_FeatureInt("enhancements.fix_koopa_race_music", 0) == 1 && gCurrLevelNum == LEVEL_BOB
             && get_current_background_music() != SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE) && sTimerRunning) {
             play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE), 0);
         }
@@ -572,7 +573,7 @@ s16 music_changed_through_warp(s16 arg) {
     struct ObjectWarpNode *warpNode = area_get_warp_node(arg);
     s16 levelNum = warpNode->node.destLevel & 0x7F;
 
-    if(CVarGetInteger("gEnhancements.FixKoopaRaceMusic", 0) == 1) {
+    if(Port_FeatureInt("enhancements.fix_koopa_race_music", 0) == 1) {
         s16 destArea = warpNode->node.destArea;
         s16 val4 = TRUE;
         s16 sp2C;
@@ -969,7 +970,7 @@ void basic_update(UNUSED s16 *arg) {
 }
 
 s32 play_mode_normal(void) {
-    if (gCurrDemoInput != NULL && CVarGetInteger(CVAR_CHEAT("PlayInDemo"), 0) == 0) {
+    if (gCurrDemoInput != NULL && Port_FeatureInt("cheats.play_in_demo", 0) == 0) {
         print_intro_text();
         if (gPlayer1Controller->buttonPressed & END_DEMO) {
             level_trigger_warp(gMarioState,
@@ -1203,7 +1204,7 @@ s32 init_level(void) {
                 if (gMarioState->action != ACT_UNINITIALIZED) {
                     if (save_file_exists(gCurrSaveFileNum - 1) == TRUE) {
                         set_mario_action(gMarioState, ACT_IDLE, 0);
-                    } else if (CVarGetInteger("gEnhancements.DisablePeachCutscene", 0) == 0) {
+                    } else if (Port_FeatureInt("enhancements.disable_peach_cutscene", 0) == 0) {
                         set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
                         val4 = TRUE;
                     }

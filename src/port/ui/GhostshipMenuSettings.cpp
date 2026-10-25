@@ -373,6 +373,18 @@ void GhostshipMenu::AddMenuSettings() {
         .Options(WindowButtonOptions().Tooltip("Tweakables for shader packs: post-processing passes and @setting "
                                                "values declared by custom shaders."));
 
+    // Romhacks
+    path.sidebarName = "Romhacks";
+    path.column = SECTION_COLUMN_1;
+    AddSidebarEntry("Settings", path.sidebarName, 1);
+    AddWidget(path, "Romhack Menu", WIDGET_SEPARATOR_TEXT);
+    AddWidget(path, "Popout Romhack Menu", WIDGET_WINDOW_BUTTON)
+        .CVar(CVAR_WINDOW("RomhackMenu"))
+        .RaceDisable(false)
+        .WindowName("Romhack Menu")
+        .HideInSearch(true)
+        .Options(WindowButtonOptions().Tooltip("Generate, pick and find romhacks."));
+
     // Controls
     path.sidebarName = "Controls";
     path.column = SECTION_COLUMN_1;

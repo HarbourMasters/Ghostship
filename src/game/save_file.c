@@ -12,6 +12,7 @@
 #include "course_table.h"
 #include "rumble_init.h"
 #include "port/data/Saves.h"
+#include "port/data/SaveModData.h"
 
 #include "port/events/list/PlayerEvent.h"
 #include "port/mods/PortEnhancements.h"
@@ -285,6 +286,7 @@ void save_file_do_save(s32 fileIndex) {
 void save_file_erase(s32 fileIndex) {
     touch_high_score_ages(fileIndex);
     bzero(&gSaveBuffer.files[fileIndex][0], sizeof(gSaveBuffer.files[fileIndex][0]));
+    SaveModData_Erase(fileIndex);
 
     gSaveFileModified = TRUE;
     save_file_do_save(fileIndex);
@@ -297,6 +299,7 @@ BAD_RETURN(s32) save_file_copy(s32 srcFileIndex, s32 destFileIndex) {
     touch_high_score_ages(destFileIndex);
     bcopy(&gSaveBuffer.files[srcFileIndex][0], &gSaveBuffer.files[destFileIndex][0],
           sizeof(gSaveBuffer.files[destFileIndex][0]));
+    SaveModData_Copy(srcFileIndex, destFileIndex);
 
     gSaveFileModified = TRUE;
     save_file_do_save(destFileIndex);
@@ -361,6 +364,7 @@ void save_file_reload(void) {
     // Copy save file data from backup
     bcopy(&gSaveBuffer.files[gCurrSaveFileNum - 1][1], &gSaveBuffer.files[gCurrSaveFileNum - 1][0],
           sizeof(gSaveBuffer.files[gCurrSaveFileNum - 1][0]));
+    SaveModData_Revert(gCurrSaveFileNum - 1);
 
     // Copy main menu data from backup
     bcopy(&gSaveBuffer.menuData[1], &gSaveBuffer.menuData[0], sizeof(gSaveBuffer.menuData[0]));

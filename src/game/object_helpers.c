@@ -28,6 +28,7 @@
 #include "rendering_graph_node.h"
 #include "spawn_object.h"
 #include "spawn_sound.h"
+#include "port/features/Features.h"
 
 s8 sBbhStairJiggleOffsets[] = { -8, 8, -4, 4 };
 s16 sPowersOfTwo[] = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
@@ -1356,7 +1357,7 @@ void cur_obj_move_y(f32 gravity, f32 bounciness, f32 buoyancy) {
             // dropped below the object's floor, which drags it through that floor (Wet-Dry World
             // Heave-Hos while the water drains). With the fix on, land it on the floor instead.
             if (o->oPosY < o->oFloorHeight ||
-                (waterLevel < o->oFloorHeight && CVarGetInteger("gEnhancements.FixHeaveHoSinkingThroughFloor", 0) == 1)) {
+                (waterLevel < o->oFloorHeight && Port_FeatureInt("enhancements.fix_heave_ho_sinking", 0) == 1)) {
                 o->oPosY = o->oFloorHeight;
                 o->oMoveFlags &= ~OBJ_MOVE_MASK_IN_WATER;
             } else {

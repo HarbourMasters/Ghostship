@@ -76,3 +76,27 @@
     - 0x2abca0
     - 0x218da0
     - 0x1279b0
+# Romhack entries go here. A romhack loads on top of the base game, so its YAMLs hold only what the hack changed.
+# See docs/romhacks/DESIGN.md.
+#   <patched ROM SHA1>:
+#     name: <Name>                           # shown in menus and as the saves' identity
+#     path: assets/ymls/romhacks/<stem>      # YAMLs holding only the changed assets
+#     romhack:
+#       id: <Id>                             # matches src/port/romhack/specific/<Id>.cpp, if the hack has code
+#       version: "<version>"
+#       author: <Author>                     # optional
+#       description: <one line>              # optional
+#       website: <download page>             # linked from Settings > Romhacks > Supported Romhacks
+#       disable: [<feature id or group.*>]   # optional; port features the hack turns off (docs/romhacks/DESIGN.md)
+#       force: { <feature id>: <value> }     # optional; port features the hack pins to a value
+#     config:
+#       gbi: F3D
+#       sort: OFFSET
+#       gbi_floats: true
+#       output:
+#         binary: mods/~romhacks/<stem>.o2r
+#         code: code/romhacks/<stem>
+#         headers: include/assets
+#     segments:                              # the hack's segment table; most hacks relocate segments
+#       - 0x000000
+#       - ...

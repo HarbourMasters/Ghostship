@@ -27,6 +27,7 @@ std::string GameExtractor::sLastError;
 
 #ifndef __SWITCH__
 #include "Companion.h"
+#include <yaml-cpp/yaml.h>
 
 #ifdef __EMSCRIPTEN__
 #include "port/web/WebUtils.h"
@@ -322,10 +323,106 @@ bool GameExtractor::GenerateOTR(std::atomic<size_t>& assetCount, std::string app
                          Ship::Context::GetAppDirectoryPath(appShortName));
 }
 
+// A recipe's force values as JSON: booleans and numbers keep their type, so "force: { x: true }" pins x on.
+static nlohmann::json YamlToJson(const YAML::Node& node) {
+    if (node.IsSequence()) {
+        nlohmann::json out = nlohmann::json::array();
+        for (const auto& item : node) {
+            out.push_back(YamlToJson(item));
+        }
+        return out;
+    }
+    if (node.IsMap()) {
+        nlohmann::json out = nlohmann::json::object();
+        for (const auto& item : node) {
+            out[item.first.as<std::string>()] = YamlToJson(item.second);
+        }
+        return out;
+    }
+    if (!node.IsScalar()) {
+        return nullptr;
+    }
+    const std::string text = node.Scalar();
+    if (node.Tag() != "!") {
+        if (text == "true" || text == "false") {
+            return text == "true";
+        }
+        try {
+            size_t used = 0;
+            const long long i = std::stoll(text, &used, 0);
+            if (used == text.size()) {
+                return i;
+            }
+            const double d = std::stod(text, &used);
+            if (used == text.size()) {
+                return d;
+            }
+        } catch (const std::exception&) {}
+    }
+    return text;
+}
+
+// Romhack ROMs aren't in mGameList: each one is recognized by its config.yml entry, keyed by the patched ROM's SHA1.
+static std::optional<RomhackRecipe> RomhackRecipeFor(const std::vector<uint8_t>& romData,
+                                                     const std::string& configDir) {
+    if (romData.empty()) {
+        return std::nullopt;
+    }
+    const std::string configPath = (std::filesystem::path(configDir) / "config.yml").generic_string();
+    try {
+        const YAML::Node config = YAML::LoadFile(configPath);
+        const std::string hash = Companion::CalculateHash(romData);
+        const YAML::Node rom = config[hash];
+        if (!rom.IsMap() || !rom["romhack"]) {
+            return std::nullopt;
+        }
+        const YAML::Node hack = rom["romhack"];
+        RomhackRecipe recipe;
+        recipe.info.id = hack["id"].as<std::string>("");
+        recipe.info.name = rom["name"].as<std::string>(recipe.info.id);
+        recipe.info.version = hack["version"].as<std::string>("");
+        recipe.info.author = hack["author"].as<std::string>("");
+        recipe.info.description = hack["description"].as<std::string>("");
+        recipe.info.website = hack["website"].as<std::string>("");
+        recipe.info.romSha1 = hash;
+        // disable / force in the recipe use the manifest's own keys.
+        nlohmann::json rules = nlohmann::json::object();
+        for (const char* key : { "disable", "force" }) {
+            if (hack[key]) {
+                rules[key] = YamlToJson(hack[key]);
+            }
+        }
+        recipe.info.rules = ModRules::Parse(rules);
+        recipe.output = rom["config"]["output"]["binary"].as<std::string>("");
+        if (recipe.info.id.empty() || recipe.output.empty()) {
+            SPDLOG_WARN("Romhack entry {} in {} needs romhack.id and config.output.binary", hash, configPath);
+            return std::nullopt;
+        }
+        return recipe;
+    } catch (const YAML::Exception& e) { SPDLOG_WARN("Could not read {}: {}", configPath, e.what()); }
+    return std::nullopt;
+}
+
+std::optional<RomhackRecipe> GameExtractor::GetRomhack() const {
+    return RomhackRecipeFor(this->mGameData, Ship::Context::GetAppBundlePath());
+}
+
 bool GameExtractor::GenerateOTRTo(std::atomic<size_t>& assetCount, const std::string& assetsPath,
                                   const std::string& gamePath) {
+    const auto romhack = RomhackRecipeFor(this->mGameData, assetsPath);
+    if (romhack.has_value()) {
+        std::error_code ec;
+        std::filesystem::create_directories((std::filesystem::path(gamePath) / romhack->output).parent_path(), ec);
+    }
+
     Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assetsPath, gamePath);
     this->WritePortVersion();
+    if (romhack.has_value()) {
+        // Stamps the hack's identity into its o2r, so the runtime never needs config.yml to know what it is.
+        const std::string manifest = Romhack::ManifestText(romhack->info);
+        Companion::Instance->RegisterCompanionFile(Romhack::kManifestFile,
+                                                   std::vector<char>(manifest.begin(), manifest.end()));
+    }
     try {
         Companion::Instance->Init(ExportType::Binary, assetCount, true);
 #ifdef __EMSCRIPTEN__
@@ -346,6 +443,10 @@ static bool GameExtractor::GenAssetFile() {
 }
 
 std::optional<std::string> GameExtractor::ValidateChecksum() const {
+    return std::nullopt;
+}
+
+std::optional<RomhackRecipe> GameExtractor::GetRomhack() const {
     return std::nullopt;
 }
 
