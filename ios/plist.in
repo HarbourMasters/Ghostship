@@ -34,11 +34,13 @@
 	<string>Launch.storyboard</string>
 	<key>UIStatusBarStyle</key>
 	<string></string>
-	<key>UISupportedInterfaceOrientations</key>
+	<key>UIDeviceFamily</key>
 	<array>
-	  <string>UIInterfaceOrientationLandscapeLeft</string>
-	  <string>UIInterfaceOrientationLandscapeRight</string>
+		<integer>1</integer>
+		<integer>2</integer>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
@@ -47,6 +49,7 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportsDocumentBrowser</key>
 	<true/>
