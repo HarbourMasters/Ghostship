@@ -139,7 +139,11 @@ apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev
 
 # or using clang
 apt-get install clang git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev libmbedtls-dev
+
+# optional, for the Vulkan renderer (you also need the Vulkan driver for your GPU)
+apt-get install libvulkan-dev libshaderc-dev
 ```
+_Note: the Vulkan renderer needs shaderc. If CMake finds Vulkan but not shaderc, it builds without the Vulkan renderer and prints a warning; OpenGL still works. If you install shaderc after configuring, delete `CMakeCache.txt` (or the build folder) so CMake looks for it again._
 #### Arch
 ```sh
 # using gcc
@@ -160,6 +164,9 @@ dnf install gcc gcc-c++ git cmake ninja-build lsb_release SDL2-devel libpng-deve
 
 # or using clang
 dnf install clang git cmake ninja-build lsb_release SDL2-devel libpng-devel libzip-devel libzip-tools nlohmann-json-devel tinyxml2-devel spdlog-devel boost-devel libogg-devel libvorbis-devel mbedtls-devel
+
+# optional, for the Vulkan renderer (you also need the Vulkan driver for your GPU)
+dnf install vulkan-loader-devel vulkan-headers libshaderc-devel
 ```
 #### openSUSE
 ```sh
@@ -168,6 +175,9 @@ zypper in gcc gcc-c++ git cmake ninja SDL2-devel libpng16-devel libzip-devel lib
 
 # or using clang
 zypper in clang libstdc++-devel git cmake ninja SDL2-devel libpng16-devel libzip-devel libzip-tools nlohmann_json-devel tinyxml2-devel spdlog-devel libogg-devel libvorbis-devel libmbedtls-devel
+
+# optional, for the Vulkan renderer (you also need the Vulkan driver for your GPU)
+zypper in vulkan-devel shaderc-devel
 ```
 
 ### Build
