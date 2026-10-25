@@ -1,35 +1,31 @@
 #pragma once
-#include <stdbool.h>
+
 #include <stdint.h>
-#include "macros.h"
 
-typedef enum {
-    CHANNEL_STORE_PERM_PENDING = 0,
-    CHANNEL_STORE_PERM_ALLOWED = 1,
-    CHANNEL_STORE_PERM_DENIED  = 2,
-} C_ChannelStorePermission;
+#include "api.h"
+#include "port/api/permissions.h"
 
-typedef struct {
-    const char* mod_name;
-    const char* description;
+// Values kept online for everyone running a channel, under keys. Anyone reads them; writing needs the player's
+// permission for the channel and is signed with their key. Only in builds with Satella.
+
+#define C_CHANNEL_STORE_VALUE_MAX (4 * 1024)
+
+typedef struct C_ChannelStoreDef_s {
+    const char* mod_name;    // shown in the permission prompt
+    const char* description; // one sentence telling the player what is stored
 } C_ChannelStoreDef;
 
+// Runs on the game thread with the value, or with data NULL and size 0 when there is none.
 typedef void (*C_ChannelStoreGetCallback)(const char* key, const char* data, uint32_t size);
 
-// Register a channel and its permission prompt. Must be called before any
-// Set/Delete operations. Duplicate ids are silently ignored.
-extern_s void C_RegisterChannelStore(const char* channelId, const C_ChannelStoreDef* def);
-
-extern_s C_ChannelStorePermission C_ChannelStoreGetPermission(const char* channelId);
-extern_s void C_ChannelStoreRequestPermission(const char* channelId);
-
-// Returns 1 if dispatched, 0 if not permitted / not connected.
-extern_s int C_ChannelStoreSet(const char* channelId, const char* key,
-                                const char* data, uint32_t size);
-
-// Get is unauthenticated and does not require permission.
-extern_s int C_ChannelStoreGet(const char* channelId, const char* key,
-                                C_ChannelStoreGetCallback callback);
-
-// Returns 1 if dispatched, 0 if not permitted / not connected.
-extern_s int C_ChannelStoreDelete(const char* channelId, const char* key);
+// Registers the channel's permission prompt. Channel ids and keys are letters, digits, '.', '_', '-' and '@', up to
+// 128 characters.
+#define C_RegisterChannelStore(id, def) C_RegisterChannelStoreSized((id), (def), sizeof(*(def)))
+GS_API void C_RegisterChannelStoreSized(const char* channel_id, const C_ChannelStoreDef* def, uint32_t size);
+GS_API C_PermissionState C_ChannelStoreGetPermission(const char* channel_id);
+GS_API void C_ChannelStoreRequestPermission(const char* channel_id);
+// Stores up to C_CHANNEL_STORE_VALUE_MAX bytes. Returns FALSE when not allowed or not connected.
+GS_API int C_ChannelStoreSet(const char* channel_id, const char* key, const char* data, uint32_t size);
+// Reads a value; needs no permission. Returns FALSE when the request can't be sent.
+GS_API int C_ChannelStoreGet(const char* channel_id, const char* key, C_ChannelStoreGetCallback callback);
+GS_API int C_ChannelStoreDelete(const char* channel_id, const char* key);

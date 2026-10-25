@@ -1,9 +1,9 @@
 #include "ObjectViewer.h"
 
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__WINRT__)
 #include <windows.h>
 #include <dbghelp.h>
-#elif !defined(__SWITCH__)
+#elif !defined(__SWITCH__) && !defined(_WIN32)
 #include <dlfcn.h>
 #endif
 
@@ -25,7 +25,7 @@ const char* ObjectListNames[] = { "Mario",     "Unused 1", "Destructive", "Unuse
 
 void ObjectViewer::OnInit(const nlohmann::json& initArgs) {
     Ship::GuiWindow::OnInit(initArgs);
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__WINRT__)
     HANDLE hProcess = GetCurrentProcess();
     SymSetOptions(SYMOPT_NO_IMAGE_SEARCH | SYMOPT_IGNORE_IMAGEDIR);
     SymInitialize(hProcess, "debug", true);
@@ -37,7 +37,7 @@ const char* GetFunctionName(const uintptr_t addr) {
         return functionNameCache[addr].c_str();
     }
 
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__WINRT__)
     char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
     PSYMBOL_INFO pSymbol = reinterpret_cast<PSYMBOL_INFO>(buffer);
 
@@ -50,7 +50,7 @@ const char* GetFunctionName(const uintptr_t addr) {
         functionNameCache[addr] = pSymbol->Name;
         return functionNameCache[addr].c_str();
     }
-#elif !defined(__SWITCH__)
+#elif !defined(__SWITCH__) && !defined(_WIN32)
     Dl_info info;
     if (dladdr(reinterpret_cast<void*>(addr), &info) && info.dli_sname) {
         functionNameCache[addr] = info.dli_sname;

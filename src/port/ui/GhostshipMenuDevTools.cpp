@@ -6,8 +6,11 @@
 #include "include/behavior_data.h"
 #include "game/level_update.h"
 #include "port/Engine.h"
+#include "port/ModList.h"
 #include "ship/utils/StringHelper.h"
 #include "ship/scripting/ScriptLoader.h"
+
+#include <algorithm>
 
 extern "C" {
 struct Object* spawn_object_abs_with_rot(struct Object* parent, s16 uselessArg, u32 model,
@@ -159,7 +162,6 @@ void GhostshipMenu::AddMenuDevTools() {
 
 #ifdef ENABLE_SCRIPTING
 void GhostshipMenu::AddModMenu() {
-    auto mods = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
     AddMenuEntry("Mods", CVAR_SETTING("Menu.ModsSidebarSection"));
 
     WidgetPath path = { "Mods", "General", SECTION_COLUMN_1 };
@@ -175,11 +177,9 @@ void GhostshipMenu::AddModMenu() {
     auto keystore = ShipCompat::GetKeystore();
     auto allKeys = keystore->GetAllKeys();
 
-    for (const auto& entry : *mods) {
+    for (const ModList::Entry& mod : ModList::Entries()) {
+        const auto& entry = mod.archive;
         const auto& info = entry->GetManifest();
-        if (info.Name.empty()) {
-            continue;
-        }
 
         std::string cardTitle = info.Name;
 
@@ -203,6 +203,35 @@ void GhostshipMenu::AddModMenu() {
         }
 
         AddWidget(path, metadata, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
+
+        const std::string name = info.Name;
+        AddWidget(path, "##Settings_" + name, WIDGET_CUSTOM)
+            .CustomFunction([name](WidgetInfo&) {
+                const auto& entries = ModList::Entries();
+                const auto it = std::find_if(entries.begin(), entries.end(), [&](const ModList::Entry& e) {
+                    return e.archive->GetManifest().Name == name;
+                });
+                if (it != entries.end() && !it->status.empty()) {
+                    ImGui::TextColored(it->failed ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f) : ImVec4(0.5f, 0.9f, 0.5f, 1.0f),
+                                       "%s", it->status.c_str());
+                }
+                bool enabled = ModList::IsEnabled(name);
+                if (ImGui::Checkbox(("Enabled##" + name).c_str(), &enabled)) {
+                    ModList::SetEnabled(name, enabled);
+                }
+                ImGui::SameLine();
+                int priority = ModList::Priority(name);
+                ImGui::SetNextItemWidth(120.0f);
+                if (ImGui::InputInt(("Priority##" + name).c_str(), &priority)) {
+                    ModList::SetPriority(name, priority);
+                }
+                if (it != entries.end() && (enabled != it->enabled || priority != it->priority)) {
+                    ImGui::TextDisabled("Takes effect when Ghostship restarts.");
+                }
+            })
+            .Options(WidgetOptions().Tooltip("Mods with a higher priority load later: their files replace those of "
+                                             "mods loaded before them, and their code initializes after."));
+
         Ship::KeyOrigin origin = Ship::KeyOrigin::User;
         for (const auto& key : allKeys) {
             if (key.Data == StringHelper::HexToBytes(info.PublicKey)) {

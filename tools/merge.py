@@ -402,35 +402,52 @@ def write_header(resource_type: int, version: int) -> bytes:
 
     return header_data
 
+_PIXEL_MULTIPLIERS = {
+    'rgba32': 4.0,
+    'rgba16': 2.0,
+    'ci8':    1.0,
+    'ci4':    0.5,
+}
+
 def preprocess_asset(bytes_data: bytes, filename: str) -> bytes:
     file = filename.lower()
 
-    if file.lower().endswith('.bin'):
+    if file.endswith('.bin'):
+        print(f"  [asset] {filename}: passthrough binary ({len(bytes_data)} bytes)")
         return bytes_data
 
     elif file.endswith('.png'):
-        img = Image.open(BytesIO(bytes_data))
-        width, height = img.size
-        texture_type = TextureType.RGBA32bpp.value
-        raw = bytes_data
-        resource_type = 0x52544558  # RTEX
+        # Determine original N64 pixel multiplier from the filename tag.
+        # The replacement is always RGBA32 (4 bytes/pixel).
+        # h_byte_scale = replacement_bpp / original_bpp so the interpreter
+        # knows to switch to the HD path instead of the standard N64 decode path.
+        original_mult = next(
+            (v for tag, v in _PIXEL_MULTIPLIERS.items() if tag in file),
+            4.0  # generic PNG — assume RGBA32 original → scale = 1.0
+        )
+        h_byte_scale = 4.0 / original_mult
 
+        img = Image.open(BytesIO(bytes_data)).convert('RGBA')
+        width, height = img.size
+        raw = img.tobytes()
         tex_data_size = len(raw)
 
-        otr_header = write_header(resource_type=resource_type, version=0x1)
+        print(f"  [asset] {filename}: RGBA32 {width}x{height} h_byte_scale={h_byte_scale} -> {tex_data_size} bytes")
+
+        otr_header = write_header(resource_type=0x4F544558, version=0x1)
         tex_header = struct.pack(
             '<IIIIffI',
-            texture_type,   # type
-            width,          # width
-            height,         # height
-            1 << 1,         # flags: TEX_FLAG_LOAD_AS_IMG
-            1.0,            # h_byte_scale
-            1.0,            # v_pixel_scale
-            tex_data_size   # image_data_size
+            TextureType.RGBA32bpp.value,
+            width,
+            height,
+            1 << 0,        # TEX_FLAG_LOAD_AS_RAW
+            h_byte_scale,
+            1.0,           # v_pixel_scale (same height)
+            tex_data_size
         )
-
         return otr_header + tex_header + raw
     else:
+        print(f"  [asset] ERROR: unsupported file type for {filename}")
         raise ValueError(f"Unsupported asset file type for {filename}")
 
 def preprocess_embed(bytes_data: bytes, filename: str) -> bytes:
@@ -480,21 +497,25 @@ def amalgamate(file_path, include_dirs, processed, out_file, assets_dir):
                     if resource_name.lower().endswith('.png'):
                         resource_name = resource_name[:-4]
 
-                    # Write the .bin companion file mirroring directory tree
                     if assets_dir:
                         companion_path = os.path.join(assets_dir, resource_name)
                         os.makedirs(os.path.dirname(companion_path), exist_ok=True)
+                        processed_bytes = preprocess_asset(raw_bytes, target_name)
                         with open(companion_path, 'wb') as cf:
-                            cf.write(preprocess_asset(raw_bytes, target_name))
+                            cf.write(processed_bytes)
+                        print(f"  [asset] companion written: {companion_path} ({len(processed_bytes)} bytes)")
+                    else:
+                        print(f"  [asset] WARNING: no --assets-dir, skipping companion for {target_name}")
 
-                    # Return formatted string literal block for C
-                    return f'static const ALIGN_ASSET(2) char {var_name}[] = "__OTR__{resource_name}";'
+                    otr_ref = f'static const ALIGN_ASSET(2) char {var_name}[] = "__OTR__{resource_name}";'
+                    print(f"  [asset] -> {otr_ref[:80]}")
+                    return otr_ref
 
                 except Exception as e:
-                    print(f"Warning: Failed to read asset file {target_path}: {e}")
+                    print(f"  [asset] ERROR processing {target_path}: {e}")
                     return f"/* ERROR: Failed to process {target_name} */"
             else:
-                print(f"Warning: Could not find asset file {target_name} requested from {abs_path}")
+                print(f"  [asset] ERROR: could not find '{target_name}' (searched from {abs_path})")
                 return f"/* ERROR: Could not find {target_name} */"
 
         # Apply the #asset replacement over the whole text file
@@ -605,16 +626,24 @@ if __name__ == "__main__":
     parser.add_argument('--out', required=True, help="The single output .c file")
     parser.add_argument('--assets-dir', default=None, help="Root output directory for companion .bin files")
     parser.add_argument('--includes', nargs='*', default=[], help="Include directories")
-    parser.add_argument('--srcs', nargs='+', required=True, help="Input .c files")
+    parser.add_argument('--srcs', '--src', dest='srcs', nargs='+', required=True, help="Input .c files")
+    parser.add_argument('--ignore-directory', default=None, help="Directory to exclude from include search (unused)")
 
     args = parser.parse_args()
 
     global_processed = set()
 
+    print(f"[merge] out:       {args.out}")
+    print(f"[merge] assets-dir: {args.assets_dir or '(none — companion files will NOT be written)'}")
+    print(f"[merge] sources:   {args.srcs}")
+
     with open(args.out, 'w', encoding='utf-8') as out_file:
         for src_file in args.srcs:
+            print(f"[merge] processing: {src_file}")
             out_file.write(f"\n/* ========================================= */\n")
             out_file.write(f"/* === Start of Source: {os.path.basename(src_file)} === */\n")
             out_file.write(f"/* ========================================= */\n\n")
 
             amalgamate(src_file, args.includes, global_processed, out_file, args.assets_dir)
+
+    print(f"[merge] done")

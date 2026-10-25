@@ -1,66 +1,41 @@
-#include "channel_store.h"
+#ifdef ENABLE_SCRIPTING
+#include "port/api/channel_store.h"
+#include "port/api/OnlineApi.hpp"
+#include "port/api/SizedDef.hpp"
 
 #ifdef USE_NETWORKING
-#include "port/net/SatellaClient.h"
 #include "port/net/PlayerIdentity.h"
-#include "port/permissions/Permissions.h"
-#include "ship/utils/StringHelper.h"
-#include "spdlog/spdlog.h"
+#include "port/net/SatellaClient.h"
 
-#include <cctype>
-#include <cstring>
-#include <string>
+#include <ship/utils/StringHelper.h>
+#include <spdlog/spdlog.h>
+
 #include <vector>
 
-static constexpr size_t kMaxChannelIdLen = 128;
-static constexpr size_t kMaxKeyLen = 128;
-static constexpr size_t kMaxModNameLen = 64;
-static constexpr size_t kMaxDescLen = 256;
-static constexpr uint32_t kMaxValueBytes = 4u * 1024u;
+static constexpr size_t kIdMax = 128;
+static constexpr const char* kIdChars = "._-@";
 
-static bool IsValidId(const char* s, size_t maxLen) {
-    if (!s || s[0] == '\0') {
+static bool ValidIds(const char* channel_id, const char* key, const char* caller) {
+    if (!OnlineApi::IsValidId(channel_id, kIdMax, kIdChars) || !OnlineApi::IsValidId(key, kIdMax, kIdChars)) {
+        SPDLOG_WARN("{}: invalid channel id or key", caller);
         return false;
     }
-
-    const size_t len = std::strlen(s);
-
-    if (len > maxLen) {
-        return false;
-    }
-
-    for (size_t i = 0; i < len; ++i) {
-        const char c = s[i];
-        if (!std::isalnum(static_cast<unsigned char>(c)) && c != '.' && c != '_' && c != '-' && c != '@') {
-            return false;
-        }
-    }
-
     return true;
 }
 
-static std::string SafeStr(const char* s, size_t maxLen) {
-    if (!s) {
-        return {};
-    }
-    const size_t len = std::strlen(s);
-    return { s, len < maxLen ? len : maxLen };
+static std::string PermKey(const std::string& channel_id) {
+    return "channel-store." + channel_id;
 }
 
-static std::string PermKey(const std::string& channelId) {
-    return "channel-store." + channelId;
+static std::string OwnKeyHex() {
+    const auto pub = PlayerIdentity::GetPublicKey();
+    return pub.empty() ? std::string() : StringHelper::BytesToHex(pub);
 }
-
-// ---------------------------------------------------------------------------
 
 class ChannelStoreGetPacket : public Satella::IPacket {
-    std::string mRoute;
-    C_ChannelStoreGetCallback mCallback;
-    std::string mKey;
-
   public:
-    ChannelStoreGetPacket(std::string channel, std::string key, C_ChannelStoreGetCallback cb)
-        : mRoute("/v1/channel-store/" + channel + "/" + key + "/get"), mCallback(cb), mKey(std::move(key)) {
+    ChannelStoreGetPacket(const std::string& channel, std::string key, C_ChannelStoreGetCallback callback)
+        : mRoute("/v1/channel-store/" + channel + "/" + key + "/get"), mKey(std::move(key)), mCallback(callback) {
     }
 
     const char* GetRoute() const override {
@@ -68,193 +43,105 @@ class ChannelStoreGetPacket : public Satella::IPacket {
     }
 
     void OnResponse(int16_t status, const std::string& body) override {
-        if (!mCallback) {
-            return;
-        }
-
-        if (status == 200) {
-            mCallback(mKey.c_str(), body.data(), static_cast<uint32_t>(body.size()));
-        } else {
-            mCallback(mKey.c_str(), nullptr, 0);
-        }
+        Satella::Client::Instance().RunOnGameThread([caller = mCaller, callback = mCallback, key = mKey,
+                                                     found = status == 200, body] {
+            caller.Call([&] {
+                callback(key.c_str(), found ? body.data() : nullptr, found ? static_cast<uint32_t>(body.size()) : 0);
+            });
+        });
     }
-};
 
-class ChannelStoreSetPacket : public Satella::IPacket {
+  private:
     std::string mRoute;
-    std::vector<uint8_t> mBody;
-
-  public:
-    ChannelStoreSetPacket(const std::string& pubKeyHex, const std::string& channel, const std::string& key,
-                          const char* data, uint32_t size) {
-        mRoute = "/v1/channel-store/" + pubKeyHex + "/" + channel + "/" + key + "/set";
-
-        auto sig = PlayerIdentity::Sign(reinterpret_cast<const uint8_t*>(data), size);
-
-        mBody.reserve(sig.size() + size);
-        mBody.insert(mBody.end(), sig.begin(), sig.end());
-        mBody.insert(mBody.end(), reinterpret_cast<const uint8_t*>(data),
-                     reinterpret_cast<const uint8_t*>(data) + size);
-    }
-
-    const char* GetRoute() const override {
-        return mRoute.c_str();
-    }
-
-    void OnResponse(int16_t status, const std::string&) override {
-        if (status != 200) {
-            SPDLOG_WARN("ChannelStore: set returned status {}", status);
-        }
-    }
-
-    const std::vector<uint8_t>& Body() const {
-        return mBody;
-    }
+    std::string mKey;
+    C_ChannelStoreGetCallback mCallback;
+    OnlineApi::Caller mCaller;
 };
 
-class ChannelStoreDeletePacket : public Satella::IPacket {
-    std::string mRoute;
-    std::vector<uint8_t> mSig;
-
-  public:
-    ChannelStoreDeletePacket(const std::string& pubKeyHex, const std::string& channel, const std::string& key) {
-        mRoute = "/v1/channel-store/" + pubKeyHex + "/" + channel + "/" + key + "/delete";
-
-        const std::string routeKey = channel + "/" + key;
-        mSig = PlayerIdentity::Sign(reinterpret_cast<const uint8_t*>(routeKey.data()), routeKey.size());
-    }
-
-    const char* GetRoute() const override {
-        return mRoute.c_str();
-    }
-
-    void OnResponse(int16_t status, const std::string&) override {
-        if (status != 200) {
-            SPDLOG_WARN("ChannelStore: delete returned status {}", status);
-        }
-    }
-
-    const std::vector<uint8_t>& Sig() const {
-        return mSig;
-    }
-};
-
-// ---------------------------------------------------------------------------
-
-extern "C" void C_RegisterChannelStore(const char* channelId, const C_ChannelStoreDef* def) {
-    if (!def || !IsValidId(channelId, kMaxChannelIdLen)) {
-        SPDLOG_WARN("C_RegisterChannelStore: invalid channelId or def");
+extern "C" void C_RegisterChannelStoreSized(const char* channel_id, const C_ChannelStoreDef* def, uint32_t size) {
+    const SizedDef<C_ChannelStoreDef> sized(def, size);
+    if (sized.get() == nullptr || !OnlineApi::IsValidId(channel_id, kIdMax, kIdChars)) {
+        SPDLOG_WARN("C_RegisterChannelStore: invalid channel id or definition");
         return;
     }
-
-    const std::string modName = SafeStr(def->mod_name, kMaxModNameLen);
-    const std::string desc = SafeStr(def->description, kMaxDescLen);
-
-    Permissions::Register(PermKey(channelId),
-                          { modName + " \xe2\x80\x94 Channel Store Permission",
-                            modName + " wants to store shared mod data for channel:\n\n    " + channelId + "\n\n" +
-                                desc + "\n\nAllow this mod to read and write shared channel data?" });
+    const std::string modName = OnlineApi::Clamp(sized.get()->mod_name, 64);
+    const std::string description = OnlineApi::Clamp(sized.get()->description, 256);
+    Permissions::Register(PermKey(channel_id),
+                          { modName + ": shared online data",
+                            modName + " wants to share data online with everyone in the channel\n\n    " + channel_id +
+                                "\n\n" + description + "\n\nAllow this mod to write to the shared data?" });
 }
 
-extern "C" C_ChannelStorePermission C_ChannelStoreGetPermission(const char* channelId) {
-    if (!IsValidId(channelId, kMaxChannelIdLen)) {
-        return CHANNEL_STORE_PERM_DENIED;
+extern "C" C_PermissionState C_ChannelStoreGetPermission(const char* channel_id) {
+    if (!OnlineApi::IsValidId(channel_id, kIdMax, kIdChars)) {
+        return C_PERM_DENIED;
     }
+    return OnlineApi::ToC(Permissions::Get(PermKey(channel_id)));
+}
 
-    switch (Permissions::Get(PermKey(channelId))) {
-        case Permissions::State::Allowed:
-            return CHANNEL_STORE_PERM_ALLOWED;
-        case Permissions::State::Denied:
-            return CHANNEL_STORE_PERM_DENIED;
-        default:
-            return CHANNEL_STORE_PERM_PENDING;
+extern "C" void C_ChannelStoreRequestPermission(const char* channel_id) {
+    if (OnlineApi::IsValidId(channel_id, kIdMax, kIdChars)) {
+        Permissions::Request(PermKey(channel_id));
     }
 }
 
-extern "C" void C_ChannelStoreRequestPermission(const char* channelId) {
-    if (!IsValidId(channelId, kMaxChannelIdLen)) {
-        return;
-    }
-
-    Permissions::Request(PermKey(channelId), nullptr, nullptr);
-}
-
-extern "C" int C_ChannelStoreSet(const char* channelId, const char* key, const char* data, uint32_t size) {
-    if (!IsValidId(channelId, kMaxChannelIdLen) || !IsValidId(key, kMaxKeyLen)) {
-        SPDLOG_WARN("C_ChannelStoreSet: invalid channelId or key");
+extern "C" int C_ChannelStoreSet(const char* channel_id, const char* key, const char* data, uint32_t size) {
+    if (!ValidIds(channel_id, key, "C_ChannelStoreSet") || C_ChannelStoreGetPermission(channel_id) != C_PERM_ALLOWED ||
+        !Satella::Client::Instance().IsConnected()) {
         return 0;
     }
-
-    if (C_ChannelStoreGetPermission(channelId) != CHANNEL_STORE_PERM_ALLOWED) {
+    if (data == nullptr || size == 0 || size > C_CHANNEL_STORE_VALUE_MAX) {
+        SPDLOG_WARN("C_ChannelStoreSet: values are 1 to {} bytes, got {}", C_CHANNEL_STORE_VALUE_MAX, size);
         return 0;
     }
-
-    if (!data || size == 0 || size > kMaxValueBytes) {
-        SPDLOG_WARN("C_ChannelStoreSet: invalid data (size={})", size);
-        return 0;
-    }
-
-    auto pub = PlayerIdentity::GetPublicKey();
-
+    const std::string pub = OwnKeyHex();
     if (pub.empty()) {
-        SPDLOG_WARN("C_ChannelStoreSet: player identity not initialized");
         return 0;
     }
-
-    const std::string pubKeyHex = StringHelper::BytesToHex(pub);
-    auto packet = std::make_unique<ChannelStoreSetPacket>(pubKeyHex, channelId, key, data, size);
-    const auto& body = packet->Body();
-
-    Satella::Client::Instance().SendRaw(packet->GetRoute(), body.data(), body.size());
+    const auto* bytes = reinterpret_cast<const uint8_t*>(data);
+    std::vector<uint8_t> body = PlayerIdentity::Sign(bytes, size);
+    body.insert(body.end(), bytes, bytes + size);
+    Satella::Client::Instance().RegisterLive(std::make_unique<Satella::RequestPacket>(
+        "/v1/channel-store/" + pub + "/" + channel_id + "/" + key + "/set", std::move(body),
+        [](int16_t status, const std::string&) {
+            if (status != 200) {
+                SPDLOG_WARN("C_ChannelStoreSet: Satella returned status {}", status);
+            }
+        }));
     return 1;
 }
 
-extern "C" int C_ChannelStoreGet(const char* channelId, const char* key, C_ChannelStoreGetCallback callback) {
-    if (!IsValidId(channelId, kMaxChannelIdLen) || !IsValidId(key, kMaxKeyLen)) {
-        SPDLOG_WARN("C_ChannelStoreGet: invalid channelId or key");
+extern "C" int C_ChannelStoreGet(const char* channel_id, const char* key, C_ChannelStoreGetCallback callback) {
+    if (!ValidIds(channel_id, key, "C_ChannelStoreGet") || callback == nullptr ||
+        !Satella::Client::Instance().IsConnected()) {
         return 0;
     }
-
-    if (!callback) {
-        SPDLOG_WARN("C_ChannelStoreGet: null callback");
-        return 0;
-    }
-
-    Satella::Client::Instance().RegisterLive(std::make_unique<ChannelStoreGetPacket>(channelId, key, callback));
+    Satella::Client::Instance().RegisterLive(std::make_unique<ChannelStoreGetPacket>(channel_id, key, callback));
     return 1;
 }
 
-extern "C" int C_ChannelStoreDelete(const char* channelId, const char* key) {
-    if (!IsValidId(channelId, kMaxChannelIdLen) || !IsValidId(key, kMaxKeyLen)) {
-        SPDLOG_WARN("C_ChannelStoreDelete: invalid channelId or key");
+extern "C" int C_ChannelStoreDelete(const char* channel_id, const char* key) {
+    if (!ValidIds(channel_id, key, "C_ChannelStoreDelete") ||
+        C_ChannelStoreGetPermission(channel_id) != C_PERM_ALLOWED || !Satella::Client::Instance().IsConnected()) {
         return 0;
     }
-
-    if (C_ChannelStoreGetPermission(channelId) != CHANNEL_STORE_PERM_ALLOWED) {
-        return 0;
-    }
-
-    auto pub = PlayerIdentity::GetPublicKey();
-
+    const std::string pub = OwnKeyHex();
     if (pub.empty()) {
-        SPDLOG_WARN("C_ChannelStoreDelete: player identity not initialized");
         return 0;
     }
-
-    const std::string pubKeyHex = StringHelper::BytesToHex(pub);
-    auto packet = std::make_unique<ChannelStoreDeletePacket>(pubKeyHex, channelId, key);
-    const auto& sig = packet->Sig();
-
-    Satella::Client::Instance().SendRaw(packet->GetRoute(), sig.data(), sig.size());
+    const std::string signedPart = std::string(channel_id) + "/" + key;
+    const auto sig = PlayerIdentity::Sign(reinterpret_cast<const uint8_t*>(signedPart.data()), signedPart.size());
+    Satella::Client::Instance().RegisterLive(std::make_unique<Satella::RequestPacket>(
+        "/v1/channel-store/" + pub + "/" + channel_id + "/" + key + "/delete", sig));
     return 1;
 }
 
 #else
 
-extern "C" void C_RegisterChannelStore(const char*, const C_ChannelStoreDef*) {
+extern "C" void C_RegisterChannelStoreSized(const char*, const C_ChannelStoreDef*, uint32_t) {
 }
-extern "C" C_ChannelStorePermission C_ChannelStoreGetPermission(const char*) {
-    return CHANNEL_STORE_PERM_DENIED;
+extern "C" C_PermissionState C_ChannelStoreGetPermission(const char*) {
+    return C_PERM_DENIED;
 }
 extern "C" void C_ChannelStoreRequestPermission(const char*) {
 }
@@ -268,4 +155,5 @@ extern "C" int C_ChannelStoreDelete(const char*, const char*) {
     return 0;
 }
 
+#endif
 #endif

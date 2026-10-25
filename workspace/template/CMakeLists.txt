@@ -19,6 +19,7 @@ set(INCLUDE_DIRS
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c")
 list(FILTER SRC_FILES EXCLUDE REGEX ".*.inc.c")
+file(GLOB_RECURSE TEXTURE_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.png")
 
 set(BUILD_GEN ${CMAKE_CURRENT_SOURCE_DIR}/output/build.gen)
 get_filename_component(OUTPUT_DIR ${BUILD_GEN} DIRECTORY)
@@ -42,7 +43,7 @@ foreach(SOURCE_FILE ${SRC_FILES})
                 --includes ${INCLUDE_DIRS}
                 --assets-dir ${CMAKE_CURRENT_SOURCE_DIR}/output
                 --src ${SOURCE_FILE}
-        DEPENDS ${SOURCE_FILE} ${PARENT_DIR}/tools/merge.py
+        DEPENDS ${SOURCE_FILE} ${PARENT_DIR}/tools/merge.py ${TEXTURE_FILES}
         VERBATIM
     )
 
@@ -100,8 +101,11 @@ get_filename_component(MANIFEST_OUTPUT_DIR ${OUTPUT_MANIFEST} DIRECTORY)
 add_custom_command(
     OUTPUT ${OUTPUT_MANIFEST}
     COMMAND ${CMAKE_COMMAND} -E make_directory ${MANIFEST_OUTPUT_DIR}
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${MANIFEST_FILE} ${OUTPUT_MANIFEST}
-    DEPENDS ${MANIFEST_FILE}
+    COMMAND Python3::Interpreter ${PARENT_DIR}/tools/mod_manifest.py
+            --api ${PARENT_DIR}/src/port/api/api.h
+            --src ${MANIFEST_FILE}
+            --out ${OUTPUT_MANIFEST}
+    DEPENDS ${MANIFEST_FILE} ${PARENT_DIR}/src/port/api/api.h ${PARENT_DIR}/tools/mod_manifest.py
     VERBATIM
 )
 list(APPEND COPY_OUTPUTS ${OUTPUT_MANIFEST})

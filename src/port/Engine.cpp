@@ -35,7 +35,7 @@
 #include <filesystem>
 #include <fstream>
 
-#if defined(__linux__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+#if defined(__linux__) && !defined(__SWITCH__)
 #include <dlfcn.h>
 #endif
 
@@ -69,6 +69,7 @@
 #include "port/mods/utils/GfxPrint.h"
 #include <ship/resource/archive/Archive.h>
 #include "port/net/SatellaClient.h"
+#include "port/ModList.h"
 
 #include <ship/log/Logger.h>
 #include <ship/config/Config.h>
@@ -94,6 +95,9 @@
 #include <libultraship/bridge/gfxbridge.h>
 #ifdef ENABLE_SCRIPTING
 #include <libultraship/bridge/scriptingbridge.h>
+#include <ship/scripting/ScriptLoader.h>
+#include "port/api/api.h"
+#include "port/api/ModOwner.hpp"
 #endif
 
 #ifdef __SWITCH__
@@ -212,6 +216,9 @@ GameEngine::GameEngine() : dictionary(nullptr) {
     auto consoleVariables = std::make_shared<Ship::ConsoleVariable>(config);
     context->GetChildren().Add(consoleVariables);
     CVarSetConsoleVariable(consoleVariables);
+#if defined(__SWITCH__) || defined(__WIIU__) || defined(__WINRT__)
+    CVarRegisterInteger(CVAR_IMGUI_CONTROLLER_NAV, 1); // always enable controller nav on consoles
+#endif
 
     gsFast3dWindow = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}), config,
                                                           consoleVariables);
@@ -410,8 +417,7 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
     if (ShipCompat::GetScriptLoader() != nullptr) {
         return;
     }
-    constexpr int codeVersion = 1;
-    const std::unordered_map<std::string, std::string> defines = {
+    std::unordered_map<std::string, std::string> defines = {
         { "VERSION_US", "1" }, { "ENABLE_RUMBLE", "1" }, { "F3D_OLD", "1" },           { "F3D_GBI", "1" },
         { "GBI_FLOATS", "1" }, { "_LANGUAGE_C", "1" },   { "_USE_MATH_DEFINES", "1" }, { "AVOID_UB", "1" },
     };
@@ -423,11 +429,8 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
         tccBase + "/include/sys", tccBase + "/include/sec_api",
     };
     const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    auto scriptLoader =
-        std::make_shared<Ship::ScriptLoader>(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths,
-                                             std::vector<std::string>{ "Ghostship" }, ShipCompat::GetResourceManager());
-    context->GetChildren().Add(scriptLoader);
-    ScriptSetLoader(scriptLoader);
+    const std::string buildOptions = "-g -rdynamic";
+    const std::vector<std::string> libraries = { "Ghostship" };
 #else
     std::string tccBase = Ship::Context::GetPathRelativeToAppDirectory(".tcc");
     if (!std::filesystem::exists(tccBase)) {
@@ -475,14 +478,37 @@ static void SetupScriptLoader(std::shared_ptr<Ship::Context> context) {
     }
 #endif
 
-    const std::vector<std::string> libraryPaths = { tccBase + "/lib" };
-    auto scriptLoader =
-        std::make_shared<Ship::ScriptLoader>(defines, codeVersion, "-g -rdynamic", includePaths, libraryPaths,
-                                             std::vector<std::string>{}, ShipCompat::GetResourceManager());
-    context->GetChildren().Add(scriptLoader);
-    ScriptSetLoader(scriptLoader);
+    std::vector<std::string> libraryPaths = { tccBase + "/lib" };
+#ifdef __ANDROID__
+    defines["__ANDROID_MIN_SDK_VERSION__"] = std::to_string(__ANDROID_MIN_SDK_VERSION__);
+    defines["__ANDROID_API__"] = std::to_string(__ANDROID_API__);
+    Dl_info self = {};
+    if (dladdr((void*)&SetupScriptLoader, &self) && self.dli_fname != nullptr) {
+        libraryPaths.push_back(std::filesystem::path(self.dli_fname).parent_path().string());
+    }
+    const std::string buildOptions = "-nostdlib";
+    const std::vector<std::string> libraries = { "tcc1", "main" };
+#else
+    const std::string buildOptions = "-g -rdynamic";
+    const std::vector<std::string> libraries = {};
+#endif
 #endif
 
+    auto scriptLoader = std::make_shared<Ship::ScriptLoader>(defines, GS_CODE_VERSION, buildOptions, includePaths,
+                                                             libraryPaths, libraries, ShipCompat::GetResourceManager());
+    scriptLoader->SetApiVersion(GS_API_VERSION);
+    scriptLoader->SetEntryHook(
+        [](const std::string& name, const std::string& symbol, Ship::Scripting::LibraryFunc_t entry) {
+            if (entry != nullptr) {
+                ModOwner::Scope scope(name);
+                entry();
+            }
+            if (symbol == "ModExit") {
+                ModOwner::Release(name);
+            }
+        });
+    context->GetChildren().Add(scriptLoader);
+    ScriptSetLoader(scriptLoader);
 #endif
 }
 
@@ -523,6 +549,8 @@ void GameEngine::LoadResourceFiles() {
         }
     }
 
+    ModList::Apply();
+
 #ifdef ENABLE_SCRIPTING
     auto archive = ShipCompat::GetResourceManager()->GetArchiveManager();
     auto list = archive->GetArchives();
@@ -537,6 +565,62 @@ void GameEngine::LoadResourceFiles() {
     }
 #endif // ENABLE_SCRIPTING
 }
+
+#ifdef ENABLE_SCRIPTING
+static std::vector<std::pair<std::string, std::string>>
+CompileScripts(const std::function<void(const std::string&)>& onStart, const std::function<void()>& onFinish) {
+    std::vector<std::pair<std::string, std::string>> errors;
+    auto scripts = ShipCompat::GetScriptLoader();
+    if (scripts == nullptr) {
+        return errors;
+    }
+    ModList::ClearStatus();
+    const auto archives = ShipCompat::GetResourceManager()->GetArchiveManager()->GetArchives();
+    for (const auto& archive : *archives) {
+        const auto& info = archive->GetManifest();
+        if (info.Main.empty() && info.Binaries.empty()) {
+            continue;
+        }
+        if (onStart) {
+            onStart(info.Name);
+        }
+        try {
+            scripts->Compile(archive);
+        } catch (const std::exception& e) {
+            SPDLOG_ERROR("Failed to build {}: {}", info.Name, e.what());
+            errors.emplace_back(info.Name, e.what());
+            ModList::SetStatus(info.Name, std::string("Failed to build: ") + e.what(), true);
+        }
+        if (onFinish) {
+            onFinish();
+        }
+    }
+    return errors;
+}
+
+static void ReportLoad(const std::shared_ptr<Ship::ScriptLoader>& scripts) {
+    for (const auto& error : scripts->GetLoadErrors()) {
+        for (auto& entry : ModList::Entries()) {
+            const std::string& name = entry.archive->GetManifest().Name;
+            if (error.rfind(name + ": ", 0) == 0) {
+                entry.status = "Skipped: " + error.substr(name.size() + 2);
+                entry.failed = true;
+            }
+        }
+    }
+    for (auto& entry : ModList::Entries()) {
+        if (entry.enabled && entry.status.empty()) {
+            entry.status = "Loaded";
+        }
+    }
+    for (const auto& error : scripts->GetLoadErrors()) {
+        Notification::Emit({ .message = "Skipped " + error,
+                             .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                             .remainingTime = 8.0f,
+                             .mute = true });
+    }
+}
+#endif
 
 void GameEngine::FinishInit() {
     spdlog::set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
@@ -634,15 +718,17 @@ void GameEngine::FinishInit() {
     Instance->AudioInit();
     Instance->LoadDictionary();
     Instance->LoadPlayerAnims();
-#if defined(__SWITCH__) || defined(__WIIU__)
-    CVarRegisterInteger(CVAR_IMGUI_CONTROLLER_NAV, 1); // always enable controller nav on switch/wii u
-#endif
     GhostshipGui::SetupGuiElements();
     DevConsole_Init();
     PortEnhancements_Init();
     ShipInit::InitAll();
 #ifdef ENABLE_SCRIPTING
-    ShipCompat::GetScriptLoader()->LoadAll();
+    if (auto scripts = ShipCompat::GetScriptLoader()) {
+        try {
+            scripts->LoadAll();
+            ReportLoad(scripts);
+        } catch (const std::exception& e) { SPDLOG_ERROR("Failed to load mods: {}", e.what()); }
+    }
 #endif
     CALL_EVENT(EngineReady);
 }
@@ -775,7 +861,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         switch (extractStep) {
             case ES_PORT_ARCHIVE: {
                 // if (portArchiveVersionMatch) {
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__WINRT__)
                 extractStep = ES_WINDOWS;
 #elif (defined(__WIIU__) || defined(__SWITCH__))
                 extractStep = ES_VERIFY;
@@ -805,7 +891,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             case ES_WINDOWS: {
                 switch (windowsStep) {
                     case WS_TEMP: {
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(__WINRT__)
                         char* tempVar = getenv("TEMP");
                         std::filesystem::path tempPath;
                         try {
@@ -1054,7 +1140,22 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     }
                     case PS_FIRST: {
                         if (args.empty() && !extract.SelectGameFromUI()) {
+#ifdef __WINRT__
+                            promptStep = PS_WAIT;
+                            GhostshipGui::RegisterPopup(
+                                "Add Your ROM",
+                                "Upload baserom.us.z64 or sm64.o2r to this app's LocalState folder\nusing the Xbox "
+                                "Device Portal, then choose Retry.",
+                                "Retry", "Exit", [&]() { promptStep = PS_FILE_CHECK; },
+                                [&]() {
+                                    threadPool = nullptr;
+                                    gsFast3dWindow = nullptr;
+                                    context = nullptr;
+                                    exit(0);
+                                });
+#else
                             promptStep = PS_FILE_CHECK;
+#endif
                             continue;
                         }
                         extracting = true;
@@ -1138,18 +1239,14 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                 LoadResourceFiles();
                 threadPool->submit_task([&]() -> void {
 #ifdef ENABLE_SCRIPTING
-                    auto scripting = ShipCompat::GetScriptLoader();
-                    auto pre = [&](const std::shared_ptr<Ship::Archive>& archive) {
-                        auto& info = archive->GetManifest();
-                        file = info.Name;
-                    };
-                    auto post = [&]() { compileCount++; };
-                    try {
-                        scripting->CompileAll(pre, post);
-                    } catch (std::exception& e) {
-                        compileError = e.what();
-                        mLastCompileError = e.what();
-                        mLastCompileScript = file;
+                    const auto errors =
+                        CompileScripts([&](const std::string& name) { file = name; }, [&]() { compileCount++; });
+                    for (const auto& error : errors) {
+                        compileError += (compileError.empty() ? "" : "\n\n") + error.second;
+                    }
+                    if (!errors.empty()) {
+                        mLastCompileScript = errors.front().first;
+                        mLastCompileError = errors.front().second;
                     }
 #endif
                     extractDone = true;
@@ -1442,40 +1539,34 @@ void GameEngine::LoadScripts() {
     auto scripting = ShipCompat::GetScriptLoader();
     Notification::Emit(
         { .message = "Loading mods this may take a while...", .remainingTime = (totalScripts * 5.0f), .mute = true });
-    auto currentScriptName = std::make_shared<std::string>("");
-    auto currentScript = std::make_shared<std::atomic<int>>(0);
     auto notification = std::make_shared<Notification::Options>();
     notification->mute = true;
     notification->remainingTime = 7.0f;
+    int scriptNum = 0;
     this->mLastCompileError.clear();
     this->mLastCompileScript.clear();
-    try {
-        scripting->CompileAll([&](const std::shared_ptr<Ship::Archive>& archive) {
-            if (!archive)
-                return;
-
-            auto& info = archive->GetManifest();
-            *currentScriptName = info.Name;
-            int scriptNum = ++(*currentScript);
-
-            notification->message =
-                fmt::format("Loading {} ({}/{})", *currentScriptName, scriptNum, this->totalScripts);
-
+    const auto errors = CompileScripts(
+        [&](const std::string& name) {
+            notification->message = fmt::format("Loading {} ({}/{})", name, ++scriptNum, this->totalScripts);
             Notification::Emit(*notification);
-        });
-    } catch (std::exception& e) {
-        notification->message =
-            fmt::format("Failed to build {} ({}/{})", *currentScriptName, (*currentScript + 1), this->totalScripts);
-        SPDLOG_ERROR("Failed to build script {}: {}", *currentScriptName, e.what());
-        Notification::Emit(*notification);
-        this->mLastCompileScript = *currentScriptName;
-        this->mLastCompileError = e.what();
+        },
+        nullptr);
+    for (const auto& [name, error] : errors) {
+        Notification::Emit({ .message = "Failed to build " + name,
+                             .messageColor = ImVec4(1.0f, 0.5f, 0.5f, 1.0f),
+                             .remainingTime = 8.0f,
+                             .mute = true });
+    }
+    if (!errors.empty()) {
+        this->mLastCompileScript = errors.front().first;
+        this->mLastCompileError = errors.front().second;
         CVarSetInteger(CVAR_WINDOW("ModBuildLog"), 1);
         CVarSave();
     }
 
     try {
-        ShipCompat::GetScriptLoader()->LoadAll();
+        scripting->LoadAll();
+        ReportLoad(scripting);
         Notification::Emit({ .message = "Finished loading mods!", .remainingTime = 5.0f, .mute = true });
     } catch (std::exception& e) {
         SPDLOG_ERROR("Failed to load scripts: {}", e.what());

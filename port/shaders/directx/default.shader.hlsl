@@ -180,7 +180,7 @@ cbuffer PerDrawCB : register(b1) {
     float4 palette_params[2];
     float4 lod_params; // x = res scale, y = prim_lod_min, z = G_TD mode
     // Game-bindable register file; lockstep with PerDrawCB in gfx_direct3d_common.h
-    float4 uCustom[16];
+    float4 uCustom[32];
     float4 debug_tint; // HD-replacement debug tint: rgb = color, a = mix amount
 }
 

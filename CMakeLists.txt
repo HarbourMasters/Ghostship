@@ -76,15 +76,55 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 set(YAML_CPP_STATIC_DEFINE ON)
 add_compile_definitions(YAML_CPP_STATIC_DEFINE)
 
+option(XBOX_UWP "Build the Xbox Dev Mode target (UWP app container)" OFF)
+if(XBOX_UWP)
+    if(NOT MSVC)
+        message(FATAL_ERROR "XBOX_UWP needs MSVC or clang-cl. Configure from a shell where vcvars64.bat has been run.")
+    endif()
+    add_compile_definitions(XBOX_UWP=1 __WINRT__=1)
+
+    set(UWP_STORE_LIBDIR "")
+    if(DEFINED ENV{VCToolsInstallDir})
+        file(TO_CMAKE_PATH "$ENV{VCToolsInstallDir}" _vctools)
+        set(UWP_STORE_LIBDIR "${_vctools}/lib/x64/store")
+    endif()
+    if(NOT EXISTS "${UWP_STORE_LIBDIR}")
+        file(GLOB _msvc_toolsets
+            "$ENV{ProgramFiles}/Microsoft Visual Studio/*/*/VC/Tools/MSVC/*/lib/x64/store")
+        list(SORT _msvc_toolsets ORDER DESCENDING)
+        foreach(_candidate IN LISTS _msvc_toolsets)
+            if(EXISTS "${_candidate}")
+                set(UWP_STORE_LIBDIR "${_candidate}")
+                break()
+            endif()
+        endforeach()
+    endif()
+    if(NOT EXISTS "${UWP_STORE_LIBDIR}")
+        message(FATAL_ERROR
+            "App container CRT (lib/x64/store) not found. It comes with the Universal "
+            "Windows Platform development workload. Configure from a shell where "
+            "vcvars64.bat has been run, or pass -DUWP_STORE_LIBDIR=<path>.")
+    endif()
+    message(STATUS "App container CRT: ${UWP_STORE_LIBDIR}")
+endif()
+
 if (WIN32)
 include(cmake/automate-vcpkg.cmake)
-set(VCPKG_TRIPLET x64-windows-static)
-set(VCPKG_TARGET_TRIPLET x64-windows-static)
-vcpkg_bootstrap()
-vcpkg_install_packages(zlib bzip2 libzip libpng sdl2[vulkan] glew glfw3 nlohmann-json tinyxml2 spdlog mbedtls)
+if (XBOX_UWP)
+    set(VCPKG_TRIPLET x64-uwp)
+    set(VCPKG_TARGET_TRIPLET x64-uwp)
+    vcpkg_bootstrap()
+    vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 nlohmann-json tinyxml2 spdlog mbedtls)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+else()
+    set(VCPKG_TRIPLET x64-windows-static)
+    set(VCPKG_TARGET_TRIPLET x64-windows-static)
+    vcpkg_bootstrap()
+    vcpkg_install_packages(zlib bzip2 libzip libpng sdl2[vulkan] glew glfw3 nlohmann-json tinyxml2 spdlog mbedtls)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
 
 add_compile_definitions(WIN32_LEAN_AND_MEAN NOMINMAX)
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
@@ -185,7 +225,7 @@ if(NOT USE_SATELLA)
     )
 endif()
 
-if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR CMAKE_SYSTEM_NAME STREQUAL "Android" OR EMSCRIPTEN OR NOT USE_SATELLA)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR CMAKE_SYSTEM_NAME STREQUAL "Android" OR EMSCRIPTEN OR XBOX_UWP OR NOT USE_SATELLA)
     set(USE_NETWORKING_DEFAULT OFF)
 else()
     set(USE_NETWORKING_DEFAULT ON)
@@ -210,7 +250,7 @@ add_compile_definitions(
     AVOID_UB=1
 )
 
-if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "iOS" AND NOT XBOX_UWP)
     add_compile_definitions(ENABLE_OPENGL=1)
 endif()
 
@@ -406,7 +446,7 @@ endif()
 # MSVC runtime library
 ################################################################################
 if (MSVC)
-  if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+  if (CMAKE_SYSTEM_NAME STREQUAL "Windows" AND NOT XBOX_UWP)
 	  get_property(MSVC_RUNTIME_LIBRARY_DEFAULT TARGET ${PROJECT_NAME} PROPERTY MSVC_RUNTIME_LIBRARY)
 	  if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
 		  string(CONCAT "MSVC_RUNTIME_LIBRARY_STR"
@@ -462,8 +502,11 @@ include_directories(
   ${dr_libs_SOURCE_DIR}
 )
 
-if(CMAKE_SYSTEM_NAME STREQUAL "iOS" OR ANDROID)
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set(ENABLE_SCRIPTING OFF CACHE BOOL "" FORCE)
+    set(DISABLE_DLL_LOADER ON CACHE BOOL "" FORCE)
+elseif(ANDROID OR XBOX_UWP)
+    set(ENABLE_SCRIPTING ON CACHE BOOL "" FORCE)
     set(DISABLE_DLL_LOADER ON CACHE BOOL "" FORCE)
 elseif(EMSCRIPTEN)
     set(ENABLE_SCRIPTING OFF CACHE BOOL "" FORCE)
@@ -796,7 +839,7 @@ if(MSVC)
         >
         /MANIFEST:NO;
         /DEBUG;
-        /SUBSYSTEM:WINDOWS
+        $<IF:$<BOOL:${XBOX_UWP}>,/SUBSYSTEM:CONSOLE,/SUBSYSTEM:WINDOWS>
     )
 
   # Remove /RTC from msvc flags
@@ -941,6 +984,9 @@ if(ENABLE_SCRIPTING AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/libultraship/cmake/S
     set(PROPERTY_READER_GUARD_DISABLED TRUE)
     if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
         lus_setup_tcc_runtime(${PROJECT_NAME} RESOURCES_DIR "../Resources/.tcc")
+    elseif(ANDROID)
+        set(GHOSTSHIP_TCC_RUNTIME_DIR "${CMAKE_BINARY_DIR}/.tcc" CACHE PATH "Where the TCC runtime is staged for the APK")
+        lus_setup_tcc_runtime(${PROJECT_NAME} STAGE_DIR "${GHOSTSHIP_TCC_RUNTIME_DIR}")
     else()
         lus_setup_tcc_runtime(${PROJECT_NAME})
     endif()
@@ -999,6 +1045,137 @@ add_custom_target(
 
 find_program(CURL NAMES curl DOC "Path to the curl program.  Used to download files.")
 execute_process(COMMAND ${CURL} -sSfL https://raw.githubusercontent.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt -o ${CMAKE_BINARY_DIR}/gamecontrollerdb.txt OUTPUT_VARIABLE RESULT)
+
+if(XBOX_UWP)
+    set(UWP_PACKAGE_NAME "Ghostship" CACHE STRING "Appx package identity name")
+    set(UWP_PACKAGE_PUBLISHER "CN=${PROJECT_TEAM}" CACHE STRING "Appx publisher (X.500 DN)")
+    set(UWP_PACKAGE_VERSION_BASE "${PROJECT_VERSION}" CACHE STRING "Appx package version (w.x.y), build number appended")
+    set(UWP_PACKAGE_GUID "00000000-0000-0000-0000-000000000064" CACHE STRING "Appx phone product id")
+    set(UWP_PACKAGE_CERT_THUMBPRINT "" CACHE STRING "Thumbprint of a signing cert in the CurrentUser/My store")
+    set(UWP_PACKAGE_CERT "" CACHE FILEPATH "PFX to sign the package with (alternative to the thumbprint)")
+    set(UWP_PACKAGE_CERT_PASSWORD "" CACHE STRING "Password for UWP_PACKAGE_CERT, if it has one")
+
+    set(UWP_LAYOUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/appx-layout")
+    set(UWP_MANIFEST "${UWP_LAYOUT_DIR}/AppxManifest.xml")
+    set(UWP_MANIFEST_TEMPLATE "${CMAKE_CURRENT_SOURCE_DIR}/src/port/uwp/Package.appxmanifest.in")
+    set(UWP_BUILD_COUNTER "${CMAKE_CURRENT_BINARY_DIR}/uwp-build-number.txt")
+    set(UWP_ASSET_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/port/uwp/Assets")
+    set(UWP_PACKAGE_FILE "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.msix")
+
+    find_file(UWP_D3DCOMPILER d3dcompiler_47.dll
+        PATHS
+            "$ENV{ProgramFiles\(x86\)}/Windows Kits/10/Redist/D3D/x64"
+            "$ENV{ProgramFiles}/Windows Kits/10/Redist/D3D/x64"
+        NO_DEFAULT_PATH
+    )
+    if(NOT UWP_D3DCOMPILER)
+        message(FATAL_ERROR
+            "d3dcompiler_47.dll (UWP D3D redist) not found. It ships with the Windows SDK at "
+            "'Windows Kits/10/Redist/D3D/x64'. Install the SDK's D3D redist or pass "
+            "-DUWP_D3DCOMPILER=<path to the UWP build of d3dcompiler_47.dll>.")
+    endif()
+
+    find_file(UWP_VCLIBS_APPX Microsoft.VCLibs.x64.14.00.appx
+        PATHS
+            "$ENV{ProgramFiles\(x86\)}/Microsoft SDKs/Windows Kits/10/ExtensionSDKs/Microsoft.VCLibs/14.0/Appx/Retail/x64"
+            "$ENV{ProgramFiles}/Microsoft SDKs/Windows Kits/10/ExtensionSDKs/Microsoft.VCLibs/14.0/Appx/Retail/x64"
+        NO_DEFAULT_PATH
+    )
+    if(UWP_VCLIBS_APPX)
+        message(STATUS "VCLibs framework package: ${UWP_VCLIBS_APPX}")
+    else()
+        message(WARNING
+            "Microsoft.VCLibs.x64.14.00.appx not found. The console needs this framework package "
+            "or the app will not activate; it ships with the UWP workload under "
+            "'Microsoft SDKs/Windows Kits/10/ExtensionSDKs/Microsoft.VCLibs'.")
+    endif()
+
+    target_link_options(${PROJECT_NAME} PRIVATE
+        /APPCONTAINER
+        "/LIBPATH:${UWP_STORE_LIBDIR}"
+    )
+    target_link_libraries(${PROJECT_NAME} PRIVATE WindowsApp.lib)
+
+    file(GLOB UWP_RUNTIME_DLLS "${VCPKG_ROOT}/installed/${VCPKG_TARGET_TRIPLET}/bin/*.dll")
+    if(NOT UWP_RUNTIME_DLLS)
+        message(WARNING
+            "No vcpkg runtime DLLs found under '${VCPKG_ROOT}/installed/${VCPKG_TARGET_TRIPLET}/bin'. "
+            "The package will not start on the console if SDL2.dll is missing from it.")
+    endif()
+
+    file(GLOB _sdk_bin_candidates "$ENV{ProgramFiles\(x86\)}/Windows Kits/10/bin/10.*/x64")
+    list(SORT _sdk_bin_candidates ORDER DESCENDING)
+    find_program(UWP_MAKEAPPX makeappx HINTS ${_sdk_bin_candidates} NO_DEFAULT_PATH)
+    find_program(UWP_SIGNTOOL signtool HINTS ${_sdk_bin_candidates} NO_DEFAULT_PATH)
+    if(NOT UWP_MAKEAPPX OR NOT UWP_SIGNTOOL)
+        message(FATAL_ERROR
+            "makeappx.exe/signtool.exe not found in the Windows SDK bin directories. "
+            "Pass -DUWP_MAKEAPPX= and -DUWP_SIGNTOOL= explicitly.")
+    endif()
+
+    if(UWP_PACKAGE_CERT_THUMBPRINT)
+        set(UWP_SIGN_ARGS /fd SHA256 /sha1 ${UWP_PACKAGE_CERT_THUMBPRINT})
+    elseif(UWP_PACKAGE_CERT)
+        set(UWP_SIGN_ARGS /fd SHA256 /f "${UWP_PACKAGE_CERT}")
+        if(UWP_PACKAGE_CERT_PASSWORD)
+            list(APPEND UWP_SIGN_ARGS /p "${UWP_PACKAGE_CERT_PASSWORD}")
+        endif()
+    else()
+        set(UWP_SIGN_ARGS "")
+    endif()
+
+    add_custom_command(
+        OUTPUT "${UWP_PACKAGE_FILE}"
+        DEPENDS ${PROJECT_NAME} "${UWP_MANIFEST_TEMPLATE}"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${UWP_LAYOUT_DIR}/Assets"
+        COMMAND ${CMAKE_COMMAND}
+                -DUWP_COUNTER_FILE=${UWP_BUILD_COUNTER}
+                -DUWP_MANIFEST_TEMPLATE=${UWP_MANIFEST_TEMPLATE}
+                -DUWP_MANIFEST_OUT=${UWP_MANIFEST}
+                -DUWP_PACKAGE_VERSION_BASE=${UWP_PACKAGE_VERSION_BASE}
+                -DUWP_PACKAGE_NAME=${UWP_PACKAGE_NAME}
+                -DUWP_PACKAGE_PUBLISHER=${UWP_PACKAGE_PUBLISHER}
+                -DUWP_PACKAGE_GUID=${UWP_PACKAGE_GUID}
+                -DPROJECT_NAME=${PROJECT_NAME}
+                -DPROJECT_TEAM=${PROJECT_TEAM}
+                -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/uwp-stamp-manifest.cmake
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:${PROJECT_NAME}>" "${UWP_LAYOUT_DIR}/"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_BINARY_DIR}/ghostship.o2r" "${UWP_LAYOUT_DIR}/"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${UWP_D3DCOMPILER}" "${UWP_LAYOUT_DIR}/"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_BINARY_DIR}/gamecontrollerdb.txt" "${UWP_LAYOUT_DIR}/"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "${UWP_LAYOUT_DIR}/"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets" "${UWP_LAYOUT_DIR}/assets"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/.tcc" "${UWP_LAYOUT_DIR}/.tcc"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_FILE:libtcc>" "${UWP_LAYOUT_DIR}/"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${UWP_ASSET_DIR}/Square44x44Logo.png
+                ${UWP_ASSET_DIR}/Square150x150Logo.png ${UWP_ASSET_DIR}/StoreLogo.png
+                ${UWP_ASSET_DIR}/SplashScreen.png "${UWP_LAYOUT_DIR}/Assets/"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${UWP_RUNTIME_DLLS} "${UWP_LAYOUT_DIR}/"
+        COMMAND "${UWP_MAKEAPPX}" pack /o /d "${UWP_LAYOUT_DIR}" /p "${UWP_PACKAGE_FILE}"
+        COMMENT "Packing ${PROJECT_NAME}.msix for Xbox Dev Mode"
+        VERBATIM
+    )
+
+    if(UWP_SIGN_ARGS)
+        add_custom_command(
+            OUTPUT "${UWP_PACKAGE_FILE}.signed"
+            DEPENDS "${UWP_PACKAGE_FILE}"
+            COMMAND "${UWP_SIGNTOOL}" sign ${UWP_SIGN_ARGS} "${UWP_PACKAGE_FILE}"
+            COMMAND ${CMAKE_COMMAND} -E touch "${UWP_PACKAGE_FILE}.signed"
+            COMMENT "Signing ${PROJECT_NAME}.msix"
+            VERBATIM
+        )
+        add_custom_target(ghostship_uwp_package ALL DEPENDS "${UWP_PACKAGE_FILE}.signed")
+    else()
+        add_custom_target(ghostship_uwp_package ALL DEPENDS "${UWP_PACKAGE_FILE}")
+        message(WARNING
+            "No signing certificate configured, so the package cannot be installed on a console. "
+            "Pass -DUWP_PACKAGE_CERT_THUMBPRINT=<thumbprint> (subject must be ${UWP_PACKAGE_PUBLISHER}); "
+            "see the Xbox section of docs/building.md for how to create one.")
+    endif()
+    add_dependencies(ghostship_uwp_package GeneratePortO2R)
+endif()
 
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
   install(FILES "${CMAKE_BINARY_DIR}/ghostship.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
@@ -1077,3 +1254,62 @@ endif()
 
 set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake)
 include(cmake/packaging.cmake)
+
+if(ENABLE_SCRIPTING AND NOT ANDROID AND NOT XBOX_UWP)
+    if(NOT TARGET libzip::zip)
+        if(TARGET zlibstatic AND NOT TARGET ZLIB::ZLIB)
+            add_library(ZLIB::ZLIB ALIAS zlibstatic)
+        endif()
+        find_package(ZLIB QUIET)
+        if(TARGET ZLIB::ZLIB)
+            find_package(libzip QUIET)
+        endif()
+    endif()
+    if(TARGET libzip::zip)
+        add_executable(make_mod_sdk EXCLUDE_FROM_ALL tools/make_mod_sdk.cpp)
+        target_compile_features(make_mod_sdk PRIVATE cxx_std_17)
+        target_link_libraries(make_mod_sdk PRIVATE libzip::zip)
+        add_custom_target(mod_sdk
+            COMMAND make_mod_sdk ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR}
+            DEPENDS make_mod_sdk
+            VERBATIM
+        )
+    endif()
+endif()
+
+if(XBOX_UWP)
+    function(ghostship_force_dll_crt dir)
+        get_property(_targets DIRECTORY "${dir}" PROPERTY BUILDSYSTEM_TARGETS)
+        foreach(_target IN LISTS _targets)
+            get_target_property(_type ${_target} TYPE)
+            if(_type STREQUAL "INTERFACE_LIBRARY" OR _type STREQUAL "UTILITY")
+                continue()
+            endif()
+
+            set_target_properties(${_target} PROPERTIES
+                MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+
+            if(_type STREQUAL "SHARED_LIBRARY" AND UWP_STORE_LIBDIR)
+                target_link_options(${_target} PRIVATE
+                    /APPCONTAINER "/LIBPATH:${UWP_STORE_LIBDIR}")
+                target_link_libraries(${_target} PRIVATE WindowsApp.lib)
+            endif()
+
+            get_target_property(_opts ${_target} COMPILE_OPTIONS)
+            if(_opts)
+                string(REPLACE "/MTd" "/MDd" _opts "${_opts}")
+                string(REPLACE "-MTd" "-MDd" _opts "${_opts}")
+                string(REPLACE "/MT" "/MD" _opts "${_opts}")
+                string(REPLACE "-MT" "-MD" _opts "${_opts}")
+                set_target_properties(${_target} PROPERTIES COMPILE_OPTIONS "${_opts}")
+            endif()
+        endforeach()
+
+        get_property(_subdirs DIRECTORY "${dir}" PROPERTY SUBDIRECTORIES)
+        foreach(_subdir IN LISTS _subdirs)
+            ghostship_force_dll_crt("${_subdir}")
+        endforeach()
+    endfunction()
+
+    ghostship_force_dll_crt("${CMAKE_SOURCE_DIR}")
+endif()

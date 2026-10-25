@@ -1,11 +1,12 @@
-#ifndef __SWITCH__
-#include "Permissions.h"
-
+#ifdef ENABLE_SCRIPTING
+#include "port/permissions/Permissions.h"
 #include "port/ui/GhostshipGui.hpp"
-#include "ship/Context.h"
-#include "spdlog/spdlog.h"
+
+#include <ship/Context.h>
+#include <spdlog/spdlog.h>
 
 #include <nlohmann/json.hpp>
+
 #include <filesystem>
 #include <fstream>
 #include <mutex>
@@ -13,90 +14,65 @@
 
 namespace {
 
-std::string PermissionsFilePath() {
+std::string FilePath() {
     return Ship::Context::GetPathRelativeToAppDirectory("permissions.json");
 }
 
-struct FileStore {
-    std::mutex mtx;
-    nlohmann::json data;
-    bool loaded = false;
+std::mutex sStoreMtx;
+nlohmann::json sStore = nlohmann::json::object();
+bool sLoaded = false;
 
-    void Load() {
-        if (loaded) {
-            return;
-        }
-
-        loaded = true;
-
-        const std::string path = PermissionsFilePath();
-        if (!std::filesystem::exists(path)) {
-            return;
-        }
-
-        std::ifstream f(path);
-        if (!f.is_open()) {
-            SPDLOG_WARN("Permissions: cannot open '{}' for reading", path);
-            return;
-        }
-
-        try {
-            data = nlohmann::json::parse(f);
-        } catch (const std::exception& e) {
-            SPDLOG_WARN("Permissions: failed to parse file: {}", e.what());
-            data = nlohmann::json::object();
-        }
+void Load() {
+    if (sLoaded) {
+        return;
     }
-
-    void Flush() {
-        const std::string path = PermissionsFilePath();
-        std::ofstream f(path);
-        if (!f.is_open()) {
-            SPDLOG_ERROR("Permissions: cannot open '{}' for writing", path);
-            return;
-        }
-        f << data.dump(2);
+    sLoaded = true;
+    std::ifstream in(FilePath());
+    if (!in) {
+        return;
     }
-} gStore;
+    sStore = nlohmann::json::parse(in, nullptr, false);
+    if (!sStore.is_object()) {
+        SPDLOG_WARN("Permissions: {} is not valid, every permission will be asked again", FilePath());
+        sStore = nlohmann::json::object();
+    }
+}
 
 Permissions::State ReadState(const std::string& key) {
-    std::lock_guard<std::mutex> lock(gStore.mtx);
-    gStore.Load();
-
-    if (!gStore.data.contains(key)) {
+    std::lock_guard<std::mutex> lock(sStoreMtx);
+    Load();
+    const auto it = sStore.find(key);
+    if (it == sStore.end() || !it->is_number_integer()) {
         return Permissions::State::Pending;
     }
-
-    int v = gStore.data[key].get<int>();
-
-    if (v == 1) {
-        return Permissions::State::Allowed;
-    }
-
-    if (v == 2) {
-        return Permissions::State::Denied;
-    }
-
-    return Permissions::State::Pending;
+    const int value = it->get<int>();
+    return value == 1   ? Permissions::State::Allowed
+           : value == 2 ? Permissions::State::Denied
+                        : Permissions::State::Pending;
 }
 
 void WriteState(const std::string& key, Permissions::State state) {
-    std::lock_guard<std::mutex> lock(gStore.mtx);
-    gStore.Load();
-    gStore.data[key] = (state == Permissions::State::Allowed) ? 1 : 2;
-    gStore.Flush();
+    std::lock_guard<std::mutex> lock(sStoreMtx);
+    Load();
+    sStore[key] = state == Permissions::State::Allowed ? 1 : 2;
+    std::ofstream out(FilePath(), std::ios::trunc);
+    if (!out) {
+        SPDLOG_ERROR("Permissions: cannot write {}", FilePath());
+        return;
+    }
+    out << sStore.dump(2);
 }
 
-std::mutex gPromptMtx;
-std::unordered_map<std::string, Permissions::PromptDef> gPrompts;
+std::mutex sPromptMtx;
+std::unordered_map<std::string, Permissions::PromptDef> sPrompts;
 
-} // anonymous namespace
+} // namespace
 
 namespace Permissions {
 
 void Register(const std::string& key, PromptDef prompt) {
-    std::lock_guard<std::mutex> lock(gPromptMtx);
-    gPrompts[key] = std::move(prompt);
+    std::lock_guard<std::mutex> lock(sPromptMtx);
+    sPrompts[key] = std::move(prompt);
 }
 
 State Get(const std::string& key) {
@@ -110,10 +86,10 @@ void Request(const std::string& key, std::function<void()> onAllow, std::functio
 
     PromptDef prompt;
     {
-        std::lock_guard<std::mutex> lock(gPromptMtx);
-        auto it = gPrompts.find(key);
-        if (it == gPrompts.end()) {
-            SPDLOG_WARN("Permissions: no prompt registered for key '{}'", key);
+        std::lock_guard<std::mutex> lock(sPromptMtx);
+        const auto it = sPrompts.find(key);
+        if (it == sPrompts.end()) {
+            SPDLOG_WARN("Permissions: no prompt registered for '{}'", key);
             return;
         }
         prompt = it->second;
@@ -123,14 +99,14 @@ void Request(const std::string& key, std::function<void()> onAllow, std::functio
         prompt.title, prompt.message, "Allow", "Deny",
         [key, onAllow]() {
             WriteState(key, State::Allowed);
-            SPDLOG_INFO("Permissions: '{}' allowed by user", key);
+            SPDLOG_INFO("Permissions: '{}' allowed", key);
             if (onAllow) {
                 onAllow();
             }
         },
         [key, onDeny]() {
             WriteState(key, State::Denied);
-            SPDLOG_INFO("Permissions: '{}' denied by user", key);
+            SPDLOG_INFO("Permissions: '{}' denied", key);
             if (onDeny) {
                 onDeny();
             }

@@ -137,6 +137,13 @@ struct GraphNodeObject *gCurGraphNodeObject = NULL;
 struct GraphNodeHeldObject *gCurGraphNodeHeldObject = NULL;
 u16 gAreaUpdateCounter = 0;
 
+static Mat4 sDrawnProjection;
+static Mat4 sDrawnView;
+static s16 sDrawnRoll;
+static u32 sDrawnTimer;
+static u8 sDrawnValid;
+static u8 sDrawnMirrored;
+
 #ifdef F3DEX_GBI_2
 LookAt lookAt;
 #endif
@@ -271,6 +278,7 @@ void geo_process_perspective(struct GraphNodePerspective *node) {
         f32 aspect = (f32) gCurGraphNodeRoot->width / (f32) gCurGraphNodeRoot->height;
 #endif
         guPerspective(mtx, &perspNorm, node->fov, aspect, node->near, node->far, 1.0f);
+        guPerspectiveF(sDrawnProjection, &perspNorm, node->fov, aspect, node->near, node->far, 1.0f);
         gSPPerspNormalize(gDisplayListHead++, perspNorm);
 
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx), G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH);
@@ -281,6 +289,7 @@ void geo_process_perspective(struct GraphNodePerspective *node) {
         if (gMarioObject != NULL && gMarioState != NULL && gMarioState->action != 0 && gCurrCreditsEntry == NULL) {
             mirror_mode_apply_projection();
         }
+        sDrawnMirrored = mirror_mode_is_active();
 
         gCurGraphNodeCamFrustum = node;
         geo_process_node_and_siblings(node->fnNode.node.children);
@@ -357,6 +366,10 @@ void geo_process_camera(struct GraphNodeCamera *node) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(rollMtx), G_MTX_PROJECTION | G_MTX_MUL | G_MTX_NOPUSH);
 
     mtxf_lookat(cameraTransform, node->pos, node->focus, node->roll);
+    mtxf_copy(sDrawnView, cameraTransform);
+    sDrawnRoll = node->rollScreen;
+    sDrawnTimer = gGlobalTimer;
+    sDrawnValid = TRUE;
     mtxf_mul(gMatStack[gMatStackIndex + 1], cameraTransform, gMatStack[gMatStackIndex]);
     gMatStackIndex++;
     mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
@@ -1256,4 +1269,40 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         main_pool_free(gDisplayListHeap);
         FrameInterpolation_RecordCloseChild();
     }
+}
+
+/**
+ * Projects a world position with the camera drawn in the last frame, giving where it lands on the game's viewport
+ * from -1 to 1, y up. Returns FALSE when no camera was drawn or the point is behind it.
+ */
+s32 geo_project_to_viewport(f32 x, f32 y, f32 z, f32 *outX, f32 *outY) {
+    Vec3f eye;
+    f32 clip[4];
+    f32 rolledX;
+    f32 rolledY;
+    s32 i;
+
+    if (!sDrawnValid || gGlobalTimer - sDrawnTimer > 1) {
+        return FALSE;
+    }
+
+    for (i = 0; i < 3; i++) {
+        eye[i] = x * sDrawnView[0][i] + y * sDrawnView[1][i] + z * sDrawnView[2][i] + sDrawnView[3][i];
+    }
+    rolledX = eye[0] * coss(sDrawnRoll) - eye[1] * sins(sDrawnRoll);
+    rolledY = eye[0] * sins(sDrawnRoll) + eye[1] * coss(sDrawnRoll);
+    for (i = 0; i < 4; i++) {
+        clip[i] = rolledX * sDrawnProjection[0][i] + rolledY * sDrawnProjection[1][i] +
+                  eye[2] * sDrawnProjection[2][i] + sDrawnProjection[3][i];
+    }
+    if (clip[3] <= 0.0f) {
+        return FALSE;
+    }
+
+    *outX = clip[0] / clip[3];
+    *outY = clip[1] / clip[3];
+    if (sDrawnMirrored) {
+        *outX = -*outX;
+    }
+    return TRUE;
 }

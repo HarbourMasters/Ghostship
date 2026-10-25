@@ -47,6 +47,10 @@ Your ROM needs to be in .z64 format. If it's in .n64 format, use the following t
 * Extraction runs once and takes a few minutes; the game starts by itself when it finishes.
 * Mods and saves are managed from the **Mods** button, which appears next to **Menu** while the in-game menu is open. Everything also lives on disk under `Android/data/dev.net64.ghostship/files/`, so mods can be dropped into `mods/` with a file manager instead.
 
+#### Xbox (Developer Mode)
+* Install `Ghostship.msix` on a console in Developer Mode with `tools\deploy-xbox.ps1` or the Device Portal's **Add** button (see [building instructions](docs/building.md#xbox-developer-mode)).
+* The console has no file picker, so upload your `baserom.us.z64` (or an `sm64.o2r` made on PC) to the app's **LocalState** folder with the Device Portal's file explorer, then choose **Retry**. Saves, mods and logs live in the same folder.
+
 # Configuration
 
 ### Default keyboard configuration

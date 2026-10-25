@@ -96,3 +96,104 @@ jobs:
           path: ./build/x64
           include-hidden-files: true
           retention-days: 1
+
+  build-xbox:
+    name: Xbox (Dev Mode)
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: pip install -r libultraship/requirements.txt
+      - name: Cache vcpkg binaries
+        uses: actions/cache@v6
+        with:
+          key: xbox-vcpkg-${{ hashFiles('CMakeLists.txt') }}
+          restore-keys: |
+            xbox-vcpkg-
+          path: |
+            ~\AppData\Local\vcpkg\archives
+      - name: Set up the Universal Windows Platform workload
+        shell: pwsh
+        run: |
+          $root = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer"
+          $vs = & "$root\vswhere.exe" -latest -products * -property installationPath
+          if (-not $vs) { throw "No Visual Studio installation found on the runner" }
+
+          if (-not (Get-ChildItem "$vs\VC\Tools\MSVC\*\lib\x64\store" -ErrorAction SilentlyContinue)) {
+            Write-Host "Installing the UWP workload into $vs"
+            $p = Start-Process -FilePath "$root\vs_installer.exe" -Wait -PassThru -ArgumentList @(
+              'modify', '--installPath', "`"$vs`"",
+              '--add', 'Microsoft.VisualStudio.Workload.Universal',
+              '--add', 'Microsoft.VisualStudio.ComponentGroup.UWP.VC',
+              '--quiet', '--norestart', '--nocache')
+            if ($p.ExitCode -ne 0 -and $p.ExitCode -ne 3010) {
+              throw "UWP workload install failed with exit code $($p.ExitCode)"
+            }
+          }
+
+          if (-not (Get-ChildItem "$vs\VC\Tools\MSVC\*\lib\x64\store" -ErrorAction SilentlyContinue)) {
+            throw "App container CRT (lib/x64/store) still missing after installing the UWP workload"
+          }
+
+          $vcvars = "$vs\VC\Auxiliary\Build\vcvars64.bat"
+          if (-not (Test-Path $vcvars)) { throw "vcvars64.bat not found at $vcvars" }
+          "VCVARS=$vcvars" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "VSPATH=$vs" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: Install Ninja
+        shell: pwsh
+        run: |
+          $ninja = (Get-Command ninja -ErrorAction SilentlyContinue).Source
+          if (-not $ninja) {
+            $bundled = "$env:VSPATH\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe"
+            if (Test-Path $bundled) {
+              $ninja = $bundled
+            } else {
+              choco install ninja -y --no-progress
+              $ninja = "C:\ProgramData\chocolatey\bin\ninja.exe"
+            }
+            if (-not (Test-Path $ninja)) { throw "ninja not found after install" }
+            Split-Path $ninja | Out-File -FilePath $env:GITHUB_PATH -Append
+          }
+          Write-Host "ninja: $ninja"
+      - name: Create a sideloading certificate
+        shell: pwsh
+        run: |
+          $cert = New-SelfSignedCertificate -Type Custom -Subject "CN=Ghostship CI" `
+            -KeyUsage DigitalSignature -FriendlyName "Ghostship CI" `
+            -CertStoreLocation "Cert:\CurrentUser\My" `
+            -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3", "2.5.29.19={text}") `
+            -NotAfter (Get-Date).AddYears(3)
+          Export-Certificate -Cert $cert -FilePath ghostship-ci.cer | Out-Null
+          "UWP_CERT_THUMBPRINT=$($cert.Thumbprint)" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: Build
+        shell: cmd
+        run: |
+          call "%VCVARS%" || exit /b 1
+          set "VCPKG_ROOT=%VCPKG_INSTALLATION_ROOT%"
+          cmake -S . -B build-uwp -G Ninja -DCMAKE_BUILD_TYPE=Release -DXBOX_UWP=ON ^
+            -DUWP_PACKAGE_PUBLISHER="CN=Ghostship CI" ^
+            -DUWP_PACKAGE_CERT_THUMBPRINT=%UWP_CERT_THUMBPRINT% || exit /b 1
+          cmake --build build-uwp --target ghostship_uwp_package || exit /b 1
+      - name: Create package
+        shell: pwsh
+        run: |
+          mkdir Ghostship-xbox
+          Move-Item build-uwp/Ghostship.msix Ghostship-xbox/
+          Copy-Item ghostship-ci.cer Ghostship-xbox/
+          Copy-Item tools/deploy-xbox.ps1 Ghostship-xbox/
+          $vclibs = Get-ChildItem "${env:ProgramFiles(x86)}\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\Appx\Retail\x64\Microsoft.VCLibs.x64.14.00.appx" -ErrorAction SilentlyContinue
+          if (-not $vclibs) { throw "VCLibs framework package not found; the app would not activate on the console" }
+          Copy-Item $vclibs.FullName Ghostship-xbox/
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghostship-xbox
+          path: Ghostship-xbox
+          retention-days: 1

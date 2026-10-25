@@ -20,6 +20,7 @@ class GhostshipMenu : public Ship::Menu {
     void AddSidebarEntry(std::string sectionName, std::string sidbarName, uint32_t columnCount);
     void RemoveMenuEntry(std::string entryName);
     void RemoveSidebarEntry(std::string sectionName, std::string sidebarName);
+    void RemoveWidget(const WidgetPath& pathInfo, const std::string& widgetName);
     WidgetInfo& AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType);
     void AddMenuSettings();
     void AddMenuEnhancements();

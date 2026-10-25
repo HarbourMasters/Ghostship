@@ -47,6 +47,10 @@ abstract class PackGameData : DefaultTask() {
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val config: RegularFileProperty
 
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val tccRuntime: DirectoryProperty
+
     // A collection rather than an InputFile so that a missing archive reaches
     // the explanation below instead of Gradle's own input-validation failure.
     @get:InputFiles
@@ -70,6 +74,10 @@ abstract class PackGameData : DefaultTask() {
             add(engine.name to engine)
             recipesRoot.walkTopDown().filter(File::isFile).forEach {
                 add("assets/${it.relativeTo(recipesRoot).invariantSeparatorsPath}" to it)
+            }
+            val tccRoot = tccRuntime.get().asFile
+            tccRoot.walkTopDown().filter(File::isFile).forEach {
+                add(".tcc/${it.relativeTo(tccRoot).invariantSeparatorsPath}" to it)
             }
         }.sortedBy { it.first }
 
@@ -105,14 +113,18 @@ abstract class PackGameData : DefaultTask() {
 // not the dependency on the task that fills it, so a clean checkout silently
 // packages an APK whose assets are missing everything below — and the
 // missing-archive check above never runs to say so.
+val tccRuntimeDir: File = layout.buildDirectory.dir("generated/tccRuntime").get().asFile
+
 androidComponents {
     onVariants { variant ->
         val packGameData =
             tasks.register<PackGameData>("pack${variant.name.replaceFirstChar(Char::titlecase)}GameData") {
-                description = "Bundles the Torch recipes and the engine archive into the APK."
+                description = "Bundles the Torch recipes, the engine archive and the TCC runtime into the APK."
                 recipes.set(File(repositoryRoot, "assets"))
                 config.set(File(repositoryRoot, "config.yml"))
                 engineArchive.from(File(repositoryRoot, "ghostship.o2r"))
+                tccRuntime.set(tccRuntimeDir)
+                dependsOn("externalNativeBuild${variant.name.replaceFirstChar(Char::titlecase)}")
             }
         variant.sources.assets?.addGeneratedSourceDirectory(packGameData, PackGameData::outputDir)
     }
@@ -142,6 +154,7 @@ android {
                     "-DSDL_SHARED=ON",
                     "-DSDL_STATIC=OFF",
                     "-DHAVE_LD_VERSION_SCRIPT=OFF",
+                    "-DGHOSTSHIP_TCC_RUNTIME_DIR=${tccRuntimeDir.absolutePath}",
                     // Forced for every variant, debug included. The root
                     // CMakeLists only tunes the Release flags (-O1 with
                     // -fno-strict-aliasing), and the game's C code relies on
@@ -153,6 +166,12 @@ android {
                 )
                 targets += "Ghostship"
             }
+        }
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
         }
     }
 

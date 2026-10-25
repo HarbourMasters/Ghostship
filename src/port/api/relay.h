@@ -1,36 +1,33 @@
 #pragma once
-#include <stdbool.h>
+
 #include <stdint.h>
-#include "macros.h"
 
-typedef enum {
-    RELAY_PERM_PENDING = 0, // user has not been asked yet
-    RELAY_PERM_ALLOWED = 1, // user granted access
-    RELAY_PERM_DENIED  = 2, // user denied access
-} C_RelayPermission;
+#include "api.h"
+#include "port/api/permissions.h"
 
-// Called when a message arrives on the channel.
-// `data` points to the raw payload; `size` is its byte length.
-typedef void (*C_RelayCallback)(const char* channelId, const char* data, uint32_t size);
+// Channels mods send binary messages on to every player running the same channel, through Satella. The player is
+// asked once per channel before it is used. Only in builds with Satella; elsewhere sending fails and nothing arrives.
 
-// Passed to C_RegisterRelayChannel.
-typedef struct {
-    const char*     mod_name;    // displayed in the permission dialog
-    const char*     description; // one-sentence explanation shown to the user
-    C_RelayCallback on_message;  // called on every inbound message
+#define C_RELAY_ID_MAX 128
+#define C_RELAY_SEND_MAX (64 * 1024)
+
+// Runs on the game thread for every message on the channel. sender_key_hex is the sending player's key, proven to
+// Satella, or "" when the sender has none.
+typedef void (*C_RelayCallback)(const char* channel_id, const char* sender_key_hex, const char* data, uint32_t size);
+
+typedef struct C_RelayChannelDef_s {
+    const char* mod_name;    // shown in the permission prompt
+    const char* description; // one sentence telling the player what the channel is for
+    C_RelayCallback on_message;
+    const char* mod_version; // keeps players on different versions of the mod apart, NULL for none
 } C_RelayChannelDef;
 
-// Register a channel. Duplicate ids are silently ignored.
-// Safe to call from any C init function before or after engine startup.
-extern_s void C_RegisterRelayChannel(const char* channelId, const C_RelayChannelDef* def);
-
-// Send binary data on a channel.
-// Returns 1 on success, 0 if not permitted or not connected.
-extern_s int  C_RelaySend(const char* channelId, const char* data, uint32_t size);
-
-// Returns the current permission state for the channel.
-extern_s C_RelayPermission C_RelayGetPermission(const char* channelId);
-
-// Show the permission prompt for a channel that is still PENDING.
-// No-op if permission is already Allowed or Denied.
-extern_s void C_RelayRequestPermission(const char* channelId);
+// Registers a channel. Ids are letters, digits, '.', '_' and '-', up to C_RELAY_ID_MAX characters, e.g. "mymod.chat".
+// Players the channel was allowed for start receiving right away; the others are asked once the game is up.
+#define C_RegisterRelayChannel(id, def) C_RegisterRelayChannelSized((id), (def), sizeof(*(def)))
+GS_API void C_RegisterRelayChannelSized(const char* channel_id, const C_RelayChannelDef* def, uint32_t size);
+// Sends up to C_RELAY_SEND_MAX bytes. Returns FALSE when the channel isn't allowed or Satella isn't connected.
+GS_API int C_RelaySend(const char* channel_id, const char* data, uint32_t size);
+GS_API C_PermissionState C_RelayGetPermission(const char* channel_id);
+// Asks the player for the channel when they haven't answered yet.
+GS_API void C_RelayRequestPermission(const char* channel_id);

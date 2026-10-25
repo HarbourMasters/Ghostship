@@ -72,15 +72,25 @@ void GhostshipMenu::RemoveSidebarEntry(std::string sectionName, std::string side
     assert(!sectionName.empty());
     assert(!sidebarName.empty());
     auto& sidebars = menuEntries.at(sectionName).sidebars;
-    // Delete directly
-    if (sidebars.contains(sidebarName)) {
-        sidebars.erase(sidebarName);
-        auto& sidebarOrder = menuEntries.at(sectionName).sidebarOrder;
-        sidebarOrder.erase(std::remove(sidebarOrder.begin(), sidebarOrder.end(), sidebarName), sidebarOrder.end());
-    } else {
-        // Mark for deletion if not found, will be deleted when encountered in Draw()
-        menuEntries.at(sectionName).sidebars.at(sidebarName).markForDelete = true;
+    if (!sidebars.contains(sidebarName)) {
+        return;
     }
+    sidebars.erase(sidebarName);
+    auto& sidebarOrder = menuEntries.at(sectionName).sidebarOrder;
+    sidebarOrder.erase(std::remove(sidebarOrder.begin(), sidebarOrder.end(), sidebarName), sidebarOrder.end());
+}
+
+void GhostshipMenu::RemoveWidget(const WidgetPath& pathInfo, const std::string& widgetName) {
+    if (!menuEntries.contains(pathInfo.sectionName)) {
+        return;
+    }
+    auto& sidebars = menuEntries.at(pathInfo.sectionName).sidebars;
+    auto sidebar = sidebars.find(pathInfo.sidebarName);
+    if (sidebar == sidebars.end() || pathInfo.column >= sidebar->second.columnWidgets.size()) {
+        return;
+    }
+    std::erase_if(sidebar->second.columnWidgets.at(pathInfo.column),
+                  [&](const WidgetInfo& widget) { return widget.name == widgetName; });
 }
 
 WidgetInfo& GhostshipMenu::AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType) {
@@ -174,12 +184,16 @@ void GhostshipMenu::OnInit(const nlohmann::json& initArgs) {
             "Multi-viewports not supported" } },
         { DISABLE_FOR_NOT_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return ShipCompat::GetWindow()->GetWindowBackend() != Fast::WindowBackend::FAST3D_DXGI_DX11;
+               const auto backend = ShipCompat::GetWindow()->GetWindowBackend();
+               return backend != Fast::WindowBackend::FAST3D_DXGI_DX11 &&
+                      backend != Fast::WindowBackend::FAST3D_UWP_DX11;
            },
             "Available Only on DirectX" } },
         { DISABLE_FOR_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return ShipCompat::GetWindow()->GetWindowBackend() == Fast::WindowBackend::FAST3D_DXGI_DX11;
+               const auto backend = ShipCompat::GetWindow()->GetWindowBackend();
+               return backend == Fast::WindowBackend::FAST3D_DXGI_DX11 ||
+                      backend == Fast::WindowBackend::FAST3D_UWP_DX11;
            },
             "Not Available on DirectX" } },
         { DISABLE_FOR_MATCH_REFRESH_RATE_ON,

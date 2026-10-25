@@ -49,7 +49,7 @@ We use an out-of-source build to keep the working directory clean. The CMake scr
    cmake --build .
    ```
 
-4. Your fully amalgamated mod will be available at output/mod.c, ready to be packaged alongside manifest.json.
+4. Your fully amalgamated mod will be available at output/mod.c, ready to be packaged alongside the generated output/manifest.json.
 
 ## **🛠️ Writing Your Mod**
 
@@ -67,9 +67,11 @@ MOD_INIT() {
 
 MOD_EXIT() {  
     // Called when the mod is unloaded or the game closes.  
-    // Unregister your listeners and free memory here.  
+    // Undo anything MOD_INIT did outside the port/api headers.  
 }
 ```
+
+When a mod unloads, everything it registered through the `port/api` headers is unregistered after its `MOD_EXIT`, along with its event listeners, menu entries and GUI draw callbacks. `MOD_EXIT` is optional and only needs to undo what the mod set up by other means. Mods are unloaded and rebuilt when "Reload Scripts" is pressed in the Mods menu.
 
 ### **Hooking into Engine Events**
 
@@ -78,7 +80,35 @@ The template includes a demo.c file showing how to hook into the engine's game l
 * **GameFrameUpdate**: Ideal for gameplay logic (e.g., modifying gMarioState).  
 * **RenderGamePost**: Ideal for drawing custom UI (e.g., using print_text_centered).
 
-Make sure to store your ListenerIDs globally so you can properly unregister them in MOD_EXIT().
+`UNREGISTER_LISTENER` removes a listener while the mod runs; the ones still registered when it unloads are removed for it.
+
+### **Settings and Menus**
+
+Use `port/api/cvar.h` for settings and keep them under the mod's own prefix, `gMods.<mod>.`; `C_MOD_CVAR("mymod", "Speed")` spells it out. Widget tooltips and CVar names are kept as pointers, so pass string literals.
+
+`port/api/ui.h` adds sidebars and widgets to the Mods menu, and with `C_AddGuiDraw` draws windows and overlays of your own with the `C_Gui*` functions. `C_WorldToScreen` gives where a point in the level shows on screen, e.g. for a label over an object.
+
+### **The Mods Menu**
+
+**Mods** lists every mod with a manifest, enabled or not, with its state: loaded, failed to build (with the compiler's error), skipped (with the reason, e.g. a missing dependency) or disabled. Each mod has an **Enabled** switch and a **Priority**. Mods with a higher priority are mounted later, so their files replace those of mods before them, and their code initializes later; dependencies always initialize first. Both take effect when Ghostship restarts. A mod that fails to build doesn't stop the others from loading.
+
+### **Dependencies**
+
+A mod that needs another lists it by its manifest name in `manifest.json`. A version range is optional:
+
+```json
+"dependencies": ["Other Mod", { "name": "Core Library", "version": ">=1.2 <2" }]
+```
+
+Dependencies initialize first. A range is a list of comparisons (`>=`, `>`, `<=`, `<`, `=`); a version without one is a minimum. A mod whose dependency is missing, failed to build or is outside the range is skipped with a notification, and so are the mods that depend on it. Call into another mod with `CALL_FUNC` from `mod.h`.
+
+### **Versions**
+
+The build writes `code_version` and `api_version` to the packaged `manifest.json` from `src/port/api/api.h`. A mod loads only in a Ghostship with the same code version and at least its API version; rebuild it when the code version changes. The `C_Register*` and `C_AddWidget` macros pass the size of the definition the mod was built with, so fields added to the end of a definition in later versions read as zero for older mods.
+
+### **The Mod SDK**
+
+The template builds inside a Ghostship checkout, in `workspace/<your-mod>`, or inside the mod SDK: a zip with the same layout holding only the headers, the mod tools and this template. `cmake --build build --target mod_sdk` in a Ghostship checkout writes it as `ghostship-mod-sdk-code<code version>-api<API version>.zip`.
 
 ### **⚠️ Important Note on Unity Builds (Amalgamation)**
 

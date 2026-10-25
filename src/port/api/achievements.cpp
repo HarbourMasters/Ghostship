@@ -1,7 +1,10 @@
 #include "achievements.h"
+#include "port/api/SizedDef.hpp"
 #include "port/mods/achievements/Achievements.h"
 
-extern "C" void C_RegisterAchievement(const char* id, const C_AchievementDef* def) {
+extern "C" void C_RegisterAchievementSized(const char* id, const C_AchievementDef* achievement_def, uint32_t size) {
+    const SizedDef<C_AchievementDef> sized(achievement_def, size);
+    const C_AchievementDef* def = sized.get();
     if (!id || !def || gAchievementList.contains(id)) {
         return;
     }

@@ -165,6 +165,70 @@ jobs:
             assets
             gamecontrollerdb.txt
 
+  defender-scan:
+    name: Windows Defender scan
+    needs: build-windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Ghostship-windows
+          path: Ghostship-windows
+
+      - name: Update Defender definitions
+        shell: pwsh
+        run: |
+          $mp = 'C:\Program Files\Windows Defender\MpCmdRun.exe'
+          if (-not (Test-Path $mp)) { throw "MpCmdRun.exe not found; the runner image changed" }
+          $code = 1
+          for ($i = 1; $i -le 6; $i++) {
+            & $mp -SignatureUpdate
+            $code = $LASTEXITCODE
+            if ($code -eq 0) { break }
+            Write-Host "signature update attempt $i returned $code, retrying in 30s"
+            Start-Sleep -Seconds 30
+          }
+          if ($code -ne 0) { Write-Host "::warning::signature update returned $code, scanning with current definitions" }
+          Get-MpComputerStatus | Select-Object AntivirusSignatureVersion,AMEngineVersion | Format-List
+          exit 0
+
+      - name: Scan every shipped binary
+        shell: pwsh
+        run: |
+          $mp = 'C:\Program Files\Windows Defender\MpCmdRun.exe'
+          $failed = @()
+          $binaries = Get-ChildItem Ghostship-windows -File -Recurse -Force -Include *.exe,*.dll
+          if ($binaries.Count -eq 0) { throw "No binaries found in the Windows package" }
+          $binaries | ForEach-Object {
+            $out = & $mp -Scan -ScanType 3 -File $_.FullName 2>&1 | Out-String
+            $code = $LASTEXITCODE
+            if ($code -ne 0 -or $out -match 'Threat(s)? (found|detected)|found \d+ threat') {
+              $failed += $_.Name
+              Write-Host "::error file=$($_.Name)::Defender flagged $($_.Name) (exit $code)"
+              Write-Host $out
+            } else {
+              Write-Host "ok: $($_.Name) (exit $code)"
+            }
+          }
+          if ($failed.Count -gt 0) {
+            Write-Host "::error::Defender flagged: $($failed -join ', ')"
+            Write-Host "If this is a false positive, submit it at https://www.microsoft.com/wdsi/filesubmission"
+            exit 1
+          }
+          Write-Host "All binaries clean."
+
+      - name: Report recorded detections
+        if: always()
+        shell: pwsh
+        run: |
+          $d = Get-MpThreatDetection -ErrorAction SilentlyContinue
+          if ($d) {
+            Write-Host "::warning::Defender recorded threat detections on this runner:"
+            $d | Select-Object -Last 10 | Format-List InitialDetectionTime,ThreatID,Resources
+          } else {
+            Write-Host "No threat detections recorded."
+          }
+
   build-macos:
     needs: generate-port-o2r
     runs-on: macos-14
