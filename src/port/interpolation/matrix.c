@@ -360,17 +360,20 @@ void Matrix_FromMtx(Mtx* src, Matrix* dest) {
 
 // Applies the transform matrix mtx to the vector src, putting the result in dest
 void Matrix_MultVec3f(Matrix* mtx, Vec3f* src, Vec3f* dest) {
-    *dest[0] = (mtx->mf[0][0] * *src[0]) + (mtx->mf[1][0] * *src[1]) + (mtx->mf[2][0] * *src[2]) + mtx->mf[3][0];
-    *dest[1] = (mtx->mf[0][1] * *src[0]) + (mtx->mf[1][1] * *src[1]) + (mtx->mf[2][1] * *src[2]) + mtx->mf[3][1];
-    *dest[2] = (mtx->mf[0][2] * *src[0]) + (mtx->mf[1][2] * *src[1]) + (mtx->mf[2][2] * *src[2]) + mtx->mf[3][2];
+    (*dest)[0] =
+        (mtx->mf[0][0] * (*src)[0]) + (mtx->mf[1][0] * (*src)[1]) + (mtx->mf[2][0] * (*src)[2]) + mtx->mf[3][0];
+    (*dest)[1] =
+        (mtx->mf[0][1] * (*src)[0]) + (mtx->mf[1][1] * (*src)[1]) + (mtx->mf[2][1] * (*src)[2]) + mtx->mf[3][1];
+    (*dest)[2] =
+        (mtx->mf[0][2] * (*src)[0]) + (mtx->mf[1][2] * (*src)[1]) + (mtx->mf[2][2] * (*src)[2]) + mtx->mf[3][2];
 }
 
 // Applies the linear part of the transformation matrix mtx to the vector src, ignoring any translation that mtx might
 // have. Puts the result in dest.
 void Matrix_MultVec3fNoTranslate(Matrix* mtx, Vec3f* src, Vec3f* dest) {
-    *dest[0] = (mtx->mf[0][0] * *src[0]) + (mtx->mf[1][0] * *src[1]) + (mtx->mf[2][0] * *src[2]);
-    *dest[1] = (mtx->mf[0][1] * *src[0]) + (mtx->mf[1][1] * *src[1]) + (mtx->mf[2][1] * *src[2]);
-    *dest[2] = (mtx->mf[0][2] * *src[0]) + (mtx->mf[1][2] * *src[1]) + (mtx->mf[2][2] * *src[2]);
+    (*dest)[0] = (mtx->mf[0][0] * (*src)[0]) + (mtx->mf[1][0] * (*src)[1]) + (mtx->mf[2][0] * (*src)[2]);
+    (*dest)[1] = (mtx->mf[0][1] * (*src)[0]) + (mtx->mf[1][1] * (*src)[1]) + (mtx->mf[2][1] * (*src)[2]);
+    (*dest)[2] = (mtx->mf[0][2] * (*src)[0]) + (mtx->mf[1][2] * (*src)[1]) + (mtx->mf[2][2] * (*src)[2]);
 }
 
 // Expresses the rotational part of the transform mtx as Tait-Bryan angles, in the yaw-pitch-roll (intrinsic YXZ)

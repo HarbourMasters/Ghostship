@@ -22,7 +22,7 @@ It is recommended that you install Python and Git standalone, the install proces
 
 _Note: Be sure to either clone with the ``--recursive`` flag or do ``git submodule update --init`` after cloning to pull in the libultraship submodule!_
 
-2. After setup and initial build, use the built-in OTR extraction to make your sf64.o2r file.
+2. After setup and initial build, use the built-in OTR extraction to make your sm64.o2r file.
 
 _Note: Instructions assume using powershell_
 ```powershell
@@ -33,7 +33,7 @@ cd ghostship
 # Add `-DCMAKE_BUILD_TYPE:STRING=Release` if you're packaging
 & 'C:\Program Files\CMake\bin\cmake' -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64
 
-# Generate sf64.o2r
+# Generate sm64.o2r
 & 'C:\Program Files\CMake\bin\cmake.exe' --build .\build\x64 --target ExtractAssets
 
 # Generate ghostship.o2r
@@ -143,11 +143,16 @@ apt-get install clang git cmake ninja-build lsb-release libsdl2-dev libpng-dev l
 #### Arch
 ```sh
 # using gcc
-pacman -S gcc git cmake ninja lsb-release sdl2 libpng libzip nlohmann-json tinyxml2 spdlog sdl2_net boost libogg libvorbis mbedtls
+pacman -S gcc git cmake ninja make lsb-release sdl2-compat libpng libzip nlohmann-json tinyxml2 spdlog libogg libvorbis
 
 # or using clang
-pacman -S clang git cmake ninja lsb-release sdl2 libpng libzip nlohmann-json tinyxml2 spdlog sdl2_net boost libogg libvorbis mbedtls
+pacman -S clang git cmake ninja make lsb-release sdl2-compat libpng libzip nlohmann-json tinyxml2 spdlog libogg libvorbis
+
+# optional, for the Vulkan renderer (you also need the Vulkan driver for your GPU)
+pacman -S vulkan-headers vulkan-icd-loader shaderc
 ```
+_Note: Arch's `mbedtls` package is version 4.x, which moved the `ctr_drbg.h` and `entropy.h` headers used by the Satella networking code (`src/port/net/PlayerIdentity.cpp`) to `mbedtls/private/`. Unless you provide mbedTLS 3.x yourself, configure with `-DUSE_SATELLA=OFF`._
+
 #### Fedora
 ```sh
 # using gcc
@@ -180,19 +185,20 @@ git submodule update --init
 # Generate Ninja project
 # Add `-DCMAKE_BUILD_TYPE:STRING=Release` if you're packaging
 # Add `-DPython3_EXECUTABLE=$(which python3)` if you are using non-standard Python installations such as PyEnv
+# Add `-DUSE_SATELLA=OFF` if your distribution only ships mbedTLS 4.x (see the Arch note above)
 cmake -H. -Bbuild-cmake -GNinja
 
-# Generate sf64.o2r
+# Generate sm64.o2r
 cmake --build build-cmake --target ExtractAssets
 
 # Generate ghostship.o2r
 cmake --build build-cmake --target GeneratePortO2R
 
 # Compile the project
-# Add `--config Release` if you're packaging
 cmake --build build-cmake
 
-# Now you can run the executable in ./build-cmake/mm/2s2h.elf
+# Now you can run the executable file:
+./build-cmake/Ghostship
 # To develop the project open the repository in VSCode (or your preferred editor)
 ```
 
@@ -232,7 +238,7 @@ git submodule update --init
 # Add `-DCMAKE_BUILD_TYPE:STRING=Release` if you're packaging
 cmake -H. -Bbuild-cmake -GNinja
 
-# Generate sf64.o2r
+# Generate sm64.o2r
 cmake --build build-cmake --target ExtractAssets
 
 # Generate ghostship.o2r

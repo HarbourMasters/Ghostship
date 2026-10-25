@@ -17,9 +17,9 @@ star_seg3_lights_0302A6D8:
 
 star_surface:
   type: TEXTURE
-  size: 2048
+  size: 4096
   width: 32
-  height: 32
+  height: 64
   offset: 0x2A6F0
   format: RGBA16
   symbol: star_seg3_texture_0302A6F0
