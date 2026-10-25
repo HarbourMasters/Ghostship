@@ -13,8 +13,9 @@ import java.util.zip.ZipOutputStream
 /**
  * The game's save files.
  *
- * Ghostship keeps one JSON file per save slot in a `saves/` folder next to the
- * archives (see src/port/data/Saves.cpp), so a save is `saves/save_N.json`.
+ * Ghostship keeps one JSON file per save slot in a `saves/` folder (see
+ * src/port/data/Saves.cpp), so a save is `saves/save_N.json`. On Android that
+ * folder is in `Android/media`, see [savesDir].
  * A `default.sav` left over from an older build is migrated into that folder on
  * the next launch, so it is deliberately not listed here.
  *
@@ -37,8 +38,46 @@ object SaveStore {
                 ?: file.name
     }
 
-    fun savesDir(context: Context): File =
-        File(GameAssets.gameDir(context), "saves").also { it.mkdirs() }
+    /**
+     * Saves live in `Android/media/<package>/saves` rather than beside the archives in `Android/data`, because sync
+     * apps like Syncthing can't reach `Android/data` from Android 11 on. The game is pointed here through
+     * [SAVES_DIR_ENV] (see MainActivity and src/port/data/Saves.cpp).
+     */
+    @Suppress("DEPRECATION") // externalMediaDirs is the only API that returns Android/media.
+    fun savesDir(context: Context): File {
+        val media = context.externalMediaDirs.firstOrNull { it != null }
+        val dir = if (media != null) File(media, "saves") else legacySavesDir(context)
+        dir.mkdirs()
+        migrateLegacySaves(context, dir)
+        return dir
+    }
+
+    const val SAVES_DIR_ENV = "GHOSTSHIP_SAVES_DIR"
+
+    private fun legacySavesDir(context: Context) = File(GameAssets.gameDir(context), "saves")
+
+    /**
+     * Copies saves from the old `Android/data/.../saves` folder once, without overwriting anything already in the new
+     * one, then renames the old folder so it isn't picked up or mistaken for the live saves again.
+     */
+    private fun migrateLegacySaves(context: Context, target: File) {
+        val legacy = legacySavesDir(context)
+        if (legacy.absoluteFile == target.absoluteFile || !legacy.isDirectory) {
+            return
+        }
+        try {
+            legacy.listFiles()?.filter { it.isFile }?.forEach { source ->
+                val destination = File(target, source.name)
+                if (!destination.exists()) {
+                    source.copyTo(destination)
+                }
+            }
+            legacy.renameTo(File(legacy.parentFile, "saves-moved-to-media"))
+            Log.i(TAG, "Moved saves to ${target.absolutePath}")
+        } catch (e: Exception) {
+            Log.e(TAG, "Could not move saves to ${target.absolutePath}", e)
+        }
+    }
 
     fun list(context: Context): List<Save> =
         (savesDir(context).listFiles() ?: emptyArray())

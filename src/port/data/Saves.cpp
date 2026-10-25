@@ -4,6 +4,7 @@
 #include "port/ShipInit.hpp"
 #include "port/data/SaveConversion.h"
 
+#include <cstdlib>
 #include <fstream>
 #include <filesystem>
 namespace fs = std::filesystem;
@@ -15,7 +16,14 @@ extern "C" struct SaveBuffer gSaveBuffer;
 // global constructor runs at dlopen, before SDL's JNI is set up, so asking then
 // aborts the process with "CallStaticObjectMethod received NULL jclass".
 static const fs::path& SavesPath() {
-    static const fs::path path(Ship::Context::GetPathRelativeToAppDirectory("saves", "sm64"));
+    static const fs::path path = [] {
+#ifdef __ANDROID__
+        if (const char* dir = std::getenv("GHOSTSHIP_SAVES_DIR"); dir != nullptr && dir[0] != '\0') {
+            return fs::path(dir);
+        }
+#endif
+        return fs::path(Ship::Context::GetPathRelativeToAppDirectory("saves", "sm64"));
+    }();
     return path;
 }
 
