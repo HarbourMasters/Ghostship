@@ -40,6 +40,9 @@ static constexpr uint8_t kFramePush = 0x04;
 static constexpr const char* kAuthTag = "satella-player-auth-v1:";
 // Keeps proxies from closing the socket while nothing is sent; a reconnect stops relay pushes until Resume is done.
 static constexpr int kPingIntervalSecs = 30;
+// ixwebsocket's backoff drops to this minimum after 26 failed reconnects, and its default of 1 ms then retries
+// nonstop, which pins a core while the server is unreachable.
+static constexpr uint32_t kMinReconnectWaitMs = 5000;
 static constexpr auto kPollBudget = std::chrono::milliseconds(2);
 static constexpr auto kSlowGameWork = std::chrono::milliseconds(4);
 static constexpr auto kSlowSend = std::chrono::milliseconds(1);
@@ -462,6 +465,7 @@ void Client::Connect(const std::string& url) {
     mUrl = url;
     sWs.setUrl(url + "/ws?v=" GHOSTSHIP_VERSION);
     sWs.setPingInterval(kPingIntervalSecs);
+    sWs.setMinWaitBetweenReconnectionRetries(kMinReconnectWaitMs);
 #if defined(__linux__) || defined(__APPLE__)
     sWs.setTLSOptions(BuildTLSOptions());
 #endif
@@ -474,6 +478,8 @@ void Client::Connect(const std::string& url) {
 
     if (!mConnected) {
         SPDLOG_WARN("Satella: could not connect to {}", url);
+        lock.unlock();
+        sWs.stop();
     } else {
         SPDLOG_INFO("Satella: connected to {}", url);
     }
