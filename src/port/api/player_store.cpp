@@ -111,12 +111,12 @@ extern "C" int C_PlayerStoreSet(const char* channel_id, C_PlayerStoreScope scope
     const auto* bytes = reinterpret_cast<const uint8_t*>(data);
     std::vector<uint8_t> body = PlayerIdentity::Sign(bytes, size);
     body.insert(body.end(), bytes, bytes + size);
-    Satella::Client::Instance().SendLatest(
-        Route(pub, channel_id, scope, key, "set"), std::move(body), [](int16_t status, const std::string&) {
-            if (status != 200) {
-                SPDLOG_WARN("C_PlayerStoreSet: Satella returned status {}", status);
-            }
-        });
+    Satella::Client::Instance().SendLatest(Route(pub, channel_id, scope, key, "set"), std::move(body),
+                                           [](int16_t status, const std::string&) {
+                                               if (status != 200) {
+                                                   SPDLOG_WARN("C_PlayerStoreSet: Satella returned status {}", status);
+                                               }
+                                           });
     return 1;
 }
 
