@@ -1,6 +1,7 @@
 #include <libultraship.h>
 
 #include "sm64.h"
+#include "game/game_values.h"
 #include "seq_ids.h"
 #include "dialog_ids.h"
 #include "audio/external.h"
@@ -279,7 +280,7 @@ void load_level_init_text(u32 arg) {
             break;
     }
 
-    if (!gotAchievement) {
+    if (!gotAchievement && game_value(GAME_VALUE_COURSE_ENTRY_DIALOGS, TRUE)) {
         level_set_transition(-1, NULL);
         create_dialog_box(dialogID);
     }
@@ -571,6 +572,9 @@ void check_instant_warp(void) {
 
 s16 music_changed_through_warp(s16 arg) {
     struct ObjectWarpNode *warpNode = area_get_warp_node(arg);
+    if (warpNode == NULL) {
+        return FALSE;
+    }
     s16 levelNum = warpNode->node.destLevel & 0x7F;
 
     if(Port_FeatureInt("enhancements.fix_koopa_race_music", 0) == 1) {
@@ -879,7 +883,10 @@ void initiate_delayed_warp(void) {
 
                 default:
                     warpNode = area_get_warp_node(sSourceWarpNodeId);
-                    
+                    if (warpNode == NULL) {
+                        break;
+                    }
+
                     CALL_EVENT(ChangeLevel, sSourceWarpNodeId, &warpNode->node, &sDelayedWarpArg);
                     initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea, warpNode->node.destNode,
                                       sDelayedWarpArg);
@@ -1030,7 +1037,9 @@ s32 play_mode_paused(void) {
             fade_into_special_warp(-9, 1);
         } else {
             CALL_EVENT(ExitLevel, gMenuOptSelectIndex);
-            initiate_warp(LEVEL_CASTLE, 1, 0x1F, 0);
+            initiate_warp(game_value(GAME_VALUE_EXIT_COURSE_LEVEL, LEVEL_CASTLE),
+                          game_value(GAME_VALUE_EXIT_COURSE_AREA, 1),
+                          game_value(GAME_VALUE_EXIT_COURSE_NODE, 0x1F), 0);
             fade_into_special_warp(0, 0);
             gSavedCourseNum = COURSE_NONE;
         }
@@ -1202,7 +1211,7 @@ s32 init_level(void) {
                 set_mario_action(gMarioState, ACT_IDLE, 0);
             } else if (!gDebugLevelSelect) {
                 if (gMarioState->action != ACT_UNINITIALIZED) {
-                    if (save_file_exists(gCurrSaveFileNum - 1) == TRUE) {
+                    if (save_file_exists(gCurrSaveFileNum - 1) == TRUE || game_value(GAME_VALUE_SKIP_INTRO, FALSE)) {
                         set_mario_action(gMarioState, ACT_IDLE, 0);
                     } else if (Port_FeatureInt("enhancements.disable_peach_cutscene", 0) == 0) {
                         set_mario_action(gMarioState, ACT_INTRO_CUTSCENE, 0);
@@ -1273,7 +1282,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 #endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
-    gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE;
+    gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE && !game_value(GAME_VALUE_SKIP_INTRO, FALSE);
 
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;

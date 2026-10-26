@@ -120,7 +120,7 @@ static void eyerok_boss_act_die(void) {
     if (o->oTimer == 60) {
         if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP, DIALOG_FLAG_NONE, CUTSCENE_DIALOG, DIALOG_118)) {
             CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_EYEROK) {
-                spawn_default_star(0.0f, -900.0f, -3700.0f);
+                spawn_fixed_star(FIXED_STAR_EYEROK, 0.0f, -900.0f, -3700.0f);
             };
         } else {
             o->oTimer--;

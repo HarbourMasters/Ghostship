@@ -34,6 +34,9 @@ struct Info {
     std::string romSha1;
     // The features the hack turns off or pins (disable / force in its recipe).
     ModRules::Rules rules;
+    std::string codeMain;
+    int codeVersion = 0;
+    int apiVersion = 0;
 };
 
 // A hack config.yml has a recipe for, whether or not it has been extracted.
@@ -42,9 +45,16 @@ struct Supported {
     std::string name;
     std::string version;
     std::string website;
+    std::string package;
+    bool fromBaseRom = false;
 };
-// Read from config.yml. Empty on builds without Torch.
+// Read from config.yml and the recipe packages.
 std::vector<Supported> ListSupported();
+
+std::string RecipeDirectory();
+std::vector<std::string> ListRecipes();
+std::optional<std::string> ReadRecipeConfig(const std::string& package);
+std::optional<std::string> UnpackRecipe(const std::string& package);
 
 // The manifest.json written into a romhack o2r, and the Info read back from one.
 std::string ManifestText(const Info& info);
@@ -64,8 +74,6 @@ void SetSelected(const std::string& stem);
 
 // Adds the selected romhack archive. Call once, right after sm64.o2r is mounted and before the mods.
 void Mount(const std::shared_ptr<Ship::ArchiveManager>& archives);
-// Runs the active port's ApplyDataTables. Must run before ShipInit so enhancements see the hack's values.
-void ApplyDataTables();
 
 const Info* Active();
 const std::string& ActiveStem();

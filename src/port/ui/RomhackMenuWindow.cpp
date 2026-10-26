@@ -41,16 +41,26 @@ void SelectAndQuit(const std::string& stem) {
     QuitToApply();
 }
 
-void StartExtraction() {
+void StartExtraction(const Romhack::Supported* hack = nullptr) {
     sExtractor = GameExtractor();
+    if (hack != nullptr) {
+        sExtractor.SetRequestedRecipe(hack->package);
+    }
     if (!sExtractor.SelectGameFromUI()) {
         return;
     }
     const auto recipe = sExtractor.GetRomhack();
     if (!recipe.has_value()) {
-        GhostshipGui::RegisterPopup("Not a Supported Romhack",
-                                    "That ROM is not a romhack Ghostship has a recipe for.\nPatch the hack onto the "
-                                    "ROM it was made for and pick the patched .z64.");
+        if (hack != nullptr) {
+            const std::string msg = "That ROM isn't the one " + hack->name +
+                                    " was made for.\nPick your Super Mario 64 ROM, or the hack's patched .z64.";
+            GhostshipGui::RegisterPopup("Wrong ROM", msg.c_str());
+        } else {
+            GhostshipGui::RegisterPopup("Not a Supported Romhack",
+                                        "That ROM is not a romhack Ghostship has a recipe for.\nPatch the hack onto "
+                                        "the ROM it was made for and pick the patched .z64, or use Generate next to "
+                                        "the hack under Supported Romhacks.");
+        }
         return;
     }
     sPendingStem = std::filesystem::path(recipe->output).stem().string();
@@ -174,6 +184,16 @@ void DrawSupported() {
             SDL_OpenURL(hack.website.c_str());
         }
         ImGui::SameLine();
+        if (hack.fromBaseRom) {
+            auto generateOptions = UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline).Color(THEME_COLOR);
+            generateOptions.tooltip = "Pick your Super Mario 64 ROM. The hack's patch is applied to it and the "
+                                      "romhack is extracted to mods/~romhacks once.";
+            generateOptions.disabled = sExtracting;
+            if (UIWidgets::Button("Generate", generateOptions)) {
+                StartExtraction(&hack);
+            }
+            ImGui::SameLine();
+        }
         ImGui::AlignTextToFramePadding();
         if (hack.version.empty()) {
             ImGui::Text("%s", hack.name.c_str());

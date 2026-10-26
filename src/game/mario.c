@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "sm64.h"
+#include "game/game_values.h"
 #include "area.h"
 #include "audio/external.h"
 #include "behavior_actions.h"
@@ -1899,7 +1900,7 @@ void init_mario_from_save_file(void) {
         save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
     gMarioState->numKeys = 0;
 
-    gMarioState->numLives = 4;
+    gMarioState->numLives = game_value(GAME_VALUE_STARTING_LIVES, 4);
     gMarioState->health = 0x880;
 
     gMarioState->prevNumStarsForDialog = gMarioState->numStars;

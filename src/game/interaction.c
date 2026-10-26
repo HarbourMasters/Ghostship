@@ -1,5 +1,6 @@
 #include <libultra/types.h>
 #include "port/events/list/PlayerEvent.h"
+#include "game/game_values.h"
 
 #include "area.h"
 #include "actors/common1.h"
@@ -1628,7 +1629,7 @@ u32 interact_cap(struct MarioState *m, UNUSED u32 interactType, struct Object *o
         switch (capFlag) {
             case MARIO_VANISH_CAP:
                 capTime = 600;
-                capMusic = SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP);
+                capMusic = game_value(GAME_VALUE_VANISH_CAP_MUSIC, SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP));
                 break;
 
             case MARIO_METAL_CAP:
@@ -1873,9 +1874,9 @@ void pss_end_slide(struct MarioState *m) {
     //! This flag isn't set on death or level entry, allowing double star spawn
     if (sPssSlideStarted) {
         u16 slideTime = level_control_timer(TIMER_CONTROL_STOP);
-        if (slideTime < 630) {
+        if (slideTime < game_value(GAME_VALUE_PSS_SLIDE_FRAMES, 630)) {
             m->marioObj->oBehParams = (1 << 24);
-            spawn_default_star(-6358.0f, -4300.0f, 4700.0f);
+            spawn_fixed_star(FIXED_STAR_PSS_SLIDE, -6358.0f, -4300.0f, 4700.0f);
         }
         sPssSlideStarted = FALSE;
     }

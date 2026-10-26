@@ -51,6 +51,7 @@ extern_s void stop_background_music(u16 seqId);
 extern_s void fadeout_background_music(u16 arg0, u16 fadeOut);
 extern_s void drop_queued_background_music(void);
 extern_s u16 get_current_background_music(void);
+extern_s void audio_limit_level_music_fade(f32 floor, f32 to, s32 exceptState);
 extern_s void play_secondary_music(u8 seqId, u8 bgMusicVolume, u8 volume, u16 fadeTimer);
 extern_s void func_80321080(u16 fadeTimer);
 extern_s void func_803210D4(u16 fadeOutTime);

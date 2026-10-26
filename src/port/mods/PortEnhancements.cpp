@@ -236,6 +236,13 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(SpawnStar);
     REGISTER_EVENT(SpawnCoinStar);
     REGISTER_EVENT(ModifyDefaultStar);
+    REGISTER_EVENT(GameValue);
+    REGISTER_EVENT(GameFloat);
+    REGISTER_EVENT(SpawnFixedStar);
+    REGISTER_EVENT(ModifyTrajectory);
+    REGISTER_EVENT(CameraCourseProcessing);
+    REGISTER_EVENT(TitleScreenFrame);
+    REGISTER_EVENT(CreditsEntryLines);
     REGISTER_EVENT(ModifyObjectBehavior);
     REGISTER_EVENT(ModifyRedCoinCount);
     REGISTER_EVENT(ModifyObjectVisibility);

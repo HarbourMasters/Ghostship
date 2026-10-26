@@ -91,7 +91,7 @@ void bhv_bowser_flame_spawn_loop(void) {
 
         // Start counting anim frames then reset it when it ends
         animFrame = bowser->header.gfx.animInfo.animFrame + 1.0f;
-        if (bowser->header.gfx.animInfo.curAnim->loopEnd == animFrame) {
+        if (obj_cur_anim(bowser)->loopEnd == animFrame) {
             animFrame = 0;
         }
 

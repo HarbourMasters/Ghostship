@@ -381,7 +381,7 @@ void level_cmd_load_model_from_dl(void) {
 
     if (val1 < 256) {
         gLoadedGraphNodes[val1] =
-            (struct GraphNode *) init_graph_node_display_list(sLevelPool, 0, val2, val3);
+            val3 != NULL ? (struct GraphNode *) init_graph_node_display_list(sLevelPool, 0, val2, val3) : NULL;
     }
 
     sCurrentCmd = CMD_NEXT;
@@ -392,7 +392,7 @@ void level_cmd_load_model_from_geo(void) {
     void *arg1 = CMD_GET(void *, 4);
 
     if (arg0 < 256) {
-        gLoadedGraphNodes[arg0] = process_geo_layout(sLevelPool, arg1);
+        gLoadedGraphNodes[arg0] = arg1 != NULL ? process_geo_layout(sLevelPool, arg1) : NULL;
     }
 
     sCurrentCmd = CMD_NEXT;

@@ -528,7 +528,8 @@ static void koopa_the_quick_act_show_init_text(void) {
 
         o->parentObj = cur_obj_nearest_object_with_behavior(bhvKoopaRaceEndpoint);
         o->oPathedStartWaypoint = o->oPathedPrevWaypoint =
-            segmented_to_virtual(sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].path);
+            segmented_to_virtual(game_trajectory(TRAJECTORY_KOOPA_RACE_BOB + o->oKoopaTheQuickRaceIndex,
+                                                 sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].path));
 
         o->oKoopaTurningAwayFromWall = FALSE;
         o->oFlags |= OBJ_FLAG_ACTIVE_FROM_AFAR;
@@ -738,7 +739,8 @@ static void koopa_the_quick_act_after_race(void) {
             o->oTimer = 0;
         }
     } else if (o->parentObj->oKoopaRaceEndpointRaceStatus != 0) {
-        spawn_default_star(sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].starPos[0],
+        spawn_fixed_star(FIXED_STAR_KOOPA_RACE_BOB + o->oKoopaTheQuickRaceIndex,
+                         sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].starPos[0],
                            sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].starPos[1],
                            sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].starPos[2]);
 

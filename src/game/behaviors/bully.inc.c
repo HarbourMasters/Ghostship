@@ -185,6 +185,11 @@ void bully_step(void) {
             o->oAction = BULLY_ACT_LAVA_DEATH;
         }
     }
+
+    f32 lavaHeight = game_float(GAME_FLOAT_BULLY_LAVA_HEIGHT, 0.0f);
+    if (lavaHeight != 0.0f && o->oBehParams2ndByte != 0 && o->header.gfx.pos[1] < lavaHeight) {
+        o->oAction = BULLY_ACT_LAVA_DEATH;
+    }
 }
 
 void bully_spawn_coin(void) {
@@ -210,11 +215,11 @@ void bully_act_level_death(void) {
 
             if (o->oBullySubtype == BULLY_STYPE_CHILL) {
                 CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_CHILL_BULLY) {
-                    spawn_default_star(130.0f, 1600.0f, -4335.0f);
+                    spawn_fixed_star(FIXED_STAR_CHILL_BULLY, 130.0f, 1600.0f, -4335.0f);
                 };
             } else {
                 CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_BIG_BULLY) {
-                    spawn_default_star(0, 950.0f, -6800.0f);
+                    spawn_fixed_star(FIXED_STAR_BIG_BULLY, 0, 950.0f, -6800.0f);
                     spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvLllTumblingBridge,
                                             0, 154, -5631, 0, 0, 0);
                 };

@@ -565,17 +565,17 @@ static void big_boo_act_2(void) {
 }
 
 static void big_boo_spawn_ghost_hunt_star(void) {
-    spawn_default_star(980.0f, 1100.0f, 250.0f);
+    spawn_fixed_star(FIXED_STAR_BIG_BOO_GHOST_HUNT, 980.0f, 1100.0f, 250.0f);
 }
 
 static void big_boo_spawn_balcony_star(void) {
-    spawn_default_star(700.0f, 3200.0f, 1900.0f);
+    spawn_fixed_star(FIXED_STAR_BIG_BOO_BALCONY, 700.0f, 3200.0f, 1900.0f);
 }
 
 static void big_boo_spawn_merry_go_round_star(void) {
     struct Object *merryGoRound;
 
-    spawn_default_star(-1600.0f, -2100.0f, 205.0f);
+    spawn_fixed_star(FIXED_STAR_BIG_BOO_MERRY_GO_ROUND, -1600.0f, -2100.0f, 205.0f);
 
     merryGoRound = cur_obj_nearest_object_with_behavior(bhvMerryGoRound);
 
@@ -711,9 +711,9 @@ static void boo_with_cage_act_3(void) {
 }
 
 void bhv_boo_with_cage_init(void) {
-    if (gHudDisplay.stars < SPAWN_CASTLE_BOO_STAR_REQUIREMENT) {
+    if (gHudDisplay.stars < game_value(GAME_VALUE_CASTLE_BOO_STARS, SPAWN_CASTLE_BOO_STAR_REQUIREMENT)) {
         obj_mark_for_deletion(o);
-    } else {
+    } else if (game_value(GAME_VALUE_CASTLE_BOO_CAGE, TRUE)) {
         struct Object *cage = spawn_object(o, MODEL_HAUNTED_CAGE, bhvBooCage);
         cage->oBehParams = o->oBehParams;
     }

@@ -30,7 +30,7 @@ void king_bobomb_act_0(void) {
         gSecondCameraFocus = o;
         cur_obj_init_animation_with_sound(5);
         cur_obj_set_pos_to_home();
-        o->oHealth = 3;
+        o->oHealth = game_value(GAME_VALUE_KING_BOBOMB_HEALTH, 3);
 
         if (cur_obj_can_mario_activate_textbox_2(500.0f, 100.0f)) {
             o->oSubAction++;
@@ -214,11 +214,14 @@ void king_bobomb_act_7(void) {
             spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
             cur_obj_shake_screen(SHAKE_POS_SMALL);
 
-            if(ROM_JP) {
-                o->oPosY += 100.0f;
-                spawn_default_star(2000.0f, 4500.0f, -4500.0f);
-            } else {
-                cur_obj_spawn_star_at_y_offset(2000.0f, 4500.0f, -4500.0f, 200.0f);
+            f32 starPos[3] = { 2000.0f, 4500.0f, -4500.0f };
+            CALL_CANCELLABLE_EVENT(SpawnFixedStar, FIXED_STAR_KING_BOBOMB, starPos) {
+                if (ROM_JP) {
+                    o->oPosY += 100.0f;
+                    spawn_default_star(starPos[0], starPos[1], starPos[2]);
+                } else {
+                    cur_obj_spawn_star_at_y_offset(starPos[0], starPos[1], starPos[2], 200.0f);
+                }
             }
 
             o->oAction = 8;

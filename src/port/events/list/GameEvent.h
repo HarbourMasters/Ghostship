@@ -211,3 +211,119 @@ DEFINE_EVENT(WarpDoorInteraction,
     struct Object*     door;
     u32*               doorAction; // mutable action constant for door entry
 );
+
+typedef enum GameValueId {
+    GAME_VALUE_TOAD_STAR_1,
+    GAME_VALUE_TOAD_STAR_2,
+    GAME_VALUE_TOAD_STAR_3,
+    GAME_VALUE_MIPS_STAR_1,
+    GAME_VALUE_MIPS_STAR_2,
+    GAME_VALUE_CANNON_GRATE_STARS,
+    GAME_VALUE_CASTLE_BOO_STARS,
+    GAME_VALUE_CASTLE_BOO_CAGE,
+    GAME_VALUE_KING_BOBOMB_HEALTH,
+    GAME_VALUE_STARTING_LIVES,
+    GAME_VALUE_PSS_SLIDE_FRAMES,
+    GAME_VALUE_VANISH_CAP_MUSIC,
+    GAME_VALUE_SKIP_INTRO,
+    GAME_VALUE_COURSE_ENTRY_DIALOGS,
+    GAME_VALUE_EXIT_COURSE_LEVEL,
+    GAME_VALUE_EXIT_COURSE_AREA,
+    GAME_VALUE_EXIT_COURSE_NODE,
+    GAME_VALUE_KOOPA_SHELL_FLAMES,
+    GAME_VALUE_CCM_TREES_SNOW,
+    GAME_VALUE_WING_CAP_LIGHT_STARS,
+    GAME_VALUE_SUN_WARP_STARS,
+    GAME_VALUE_BREAKABLE_BOX_SETS_MODEL,
+    GAME_VALUE_BREAKABLE_BOX_MARIO_ACTION, // 0: none
+    GAME_VALUE_KING_WHOMP_POUND_FRAMES,
+    GAME_VALUE_SURFACE_OBJECTS_ALWAYS_DRAWN,
+    GAME_VALUE_CAM_MARIO_SELECTED_FLAGS,
+    GAME_VALUE_CAM_SELECTION_KEEP_MASK,
+    GAME_VALUE_CAM_MARIO_ACTIVE_ZOOM,
+    GAME_VALUE_CAM_INITIAL_MOVEMENT,
+    GAME_VALUE_CAM_C_SIDE_YAW,
+    GAME_VALUE_CAM_C_SIDE_HELD,
+    GAME_VALUE_CAM_C_SIDE_SOUND,
+    GAME_VALUE_CAM_AUTO_YAW,
+    GAME_VALUE_CAM_ZOOMED_OUT_ALWAYS_HALVED,
+    GAME_VALUE_CAM_STEADY_FLOOR_ACTION_1, // 0: none
+    GAME_VALUE_CAM_STEADY_FLOOR_ACTION_2,
+} GameValueId;
+
+typedef enum GameFloatId {
+    GAME_FLOAT_HANG_MAX_SPEED,
+    GAME_FLOAT_KING_WHOMP_POUND_DIST,
+    GAME_FLOAT_KING_WHOMP_JUMP_VEL,
+    GAME_FLOAT_CULLING_FOV_SCALE,
+    GAME_FLOAT_CAM_ZOOMED_OUT_DIVISOR,
+    GAME_FLOAT_BULLY_LAVA_HEIGHT, // 0: none
+} GameFloatId;
+
+typedef enum FixedStarId {
+    FIXED_STAR_KING_BOBOMB,
+    FIXED_STAR_AT_Y_OFFSET, // cur_obj_spawn_star_at_y_offset
+    FIXED_STAR_MR_I,
+    FIXED_STAR_BIG_BOO_GHOST_HUNT,
+    FIXED_STAR_BIG_BOO_BALCONY,
+    FIXED_STAR_BIG_BOO_MERRY_GO_ROUND,
+    FIXED_STAR_CHILL_BULLY,
+    FIXED_STAR_BIG_BULLY,
+    FIXED_STAR_FIRE_PIRANHA,
+    FIXED_STAR_KING_WHOMP,
+    FIXED_STAR_WIGGLER,
+    FIXED_STAR_EYEROK,
+    FIXED_STAR_PSS_SLIDE,
+    FIXED_STAR_KOOPA_RACE_BOB,
+    FIXED_STAR_KOOPA_RACE_THI,
+} FixedStarId;
+
+typedef enum TrajectoryId {
+    TRAJECTORY_KOOPA_RACE_BOB,
+    TRAJECTORY_KOOPA_RACE_THI,
+    TRAJECTORY_BOWLING_BALL_BOB_UPPER,
+    TRAJECTORY_BOWLING_BALL_THI_LARGE,
+    TRAJECTORY_RACING_PENGUIN,
+    TRAJECTORY_PLATFORM_ON_TRACK, // + path index
+} TrajectoryId;
+
+// Fires in game_value. Write *value to change it.
+DEFINE_EVENT(GameValue,
+    s32  id; // GameValueId
+    s32* value;
+);
+
+// Fires in game_float. Write *value to change it.
+DEFINE_EVENT(GameFloat,
+    s32  id; // GameFloatId
+    f32* value;
+);
+
+// Fires in spawn_fixed_star. Cancellable.
+// Write pos to move the star. Cancel — no star is spawned.
+DEFINE_EVENT(SpawnFixedStar,
+    s32  id; // FixedStarId
+    f32* pos; // x, y, z
+);
+
+// Fires in game_trajectory. Write *path to replace the trajectory.
+DEFINE_EVENT(ModifyTrajectory,
+    s32               id; // TrajectoryId
+    const Trajectory** path;
+);
+
+// Fires in update_camera before camera_course_processing. Cancellable.
+// Cancel — skips camera_course_processing this frame.
+DEFINE_EVENT(CameraCourseProcessing,
+    struct Camera* camera;
+);
+
+// Fires in geo_draw_mario_head_goddard. Cancellable.
+// Cancel — the head isn't drawn this frame.
+DEFINE_EVENT(TitleScreenFrame);
+
+// Fires in print_displaying_credits_entry. Write *lines to replace the entry's text.
+DEFINE_EVENT(CreditsEntryLines,
+    s32           entry;
+    const char*** lines;
+);

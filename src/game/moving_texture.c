@@ -538,10 +538,19 @@ Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) {
 // extern u8 castle_courtyard_movtex_star_statue_water[];
 //extern u8 ttm_movtex_puddle[];
 
+// ROM Manager water box collections
+#define ROMHACK_MOVTEX_WATER 0x5000
+#define ROMHACK_MOVTEX_WATER_COUNT 4
+
+extern const char *Port_LevelWaterBoxes(u32 id);
+
 /**
  * Find the quadCollection for a given quad collection id.
  */
 void *get_quad_collection_from_id(u32 id) {
+    if (id >= ROMHACK_MOVTEX_WATER && id < ROMHACK_MOVTEX_WATER + ROMHACK_MOVTEX_WATER_COUNT) {
+        return (void *) Port_LevelWaterBoxes(id);
+    }
     switch (id) {
         case BBH_MOVTEX_MERRY_GO_ROUND_WATER_ENTRANCE:
             return bbh_movtex_merry_go_round_water_entrance;
@@ -609,6 +618,11 @@ void movtex_change_texture_format(u32 quadCollectionId, Gfx **gfx) {
             gSPDisplayList((*gfx)++, dl_waterbox_ia16_begin);
             break;
         case JRB_MOVTEX_INITIAL_MIST:
+            gSPDisplayList((*gfx)++, dl_waterbox_ia16_begin);
+            break;
+        case ROMHACK_MOVTEX_WATER + 1:
+        case ROMHACK_MOVTEX_WATER + 2:
+        case ROMHACK_MOVTEX_WATER + 3:
             gSPDisplayList((*gfx)++, dl_waterbox_ia16_begin);
             break;
         default:

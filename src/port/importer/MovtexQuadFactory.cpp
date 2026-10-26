@@ -17,6 +17,9 @@ SM64::MovtexQuadFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
     for (size_t i = 0; i < count; i++) {
         movtex->mData.push_back({ reader->ReadInt16(), LoadChild<int16_t*>(reader->ReadUInt64()) });
     }
+    if (movtex->mData.empty() || movtex->mData.back().id != -1) {
+        movtex->mData.push_back({ -1, nullptr });
+    }
 
     return movtex;
 }

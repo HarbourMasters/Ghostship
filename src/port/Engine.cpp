@@ -65,6 +65,7 @@
 #include "importer/TextFactory.h"
 #include "port/ui/Notification.h"
 #include "port/importer/GenericArrayFactory.h"
+#include "port/importer/ScriptFactory.h"
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
 #include <ship/resource/archive/Archive.h>
@@ -727,13 +728,21 @@ void GameEngine::FinishInit() {
     loader->RegisterResourceFactory(std::make_shared<SM64::PaintingFactoryV0>(), RESOURCE_FORMAT_BINARY, "Painting",
                                     static_cast<uint32_t>(SM64::ResourceType::Painting), 0);
 
+    using SM64::ScriptFactoryV0, SM64::ScriptXMLFactoryV0;
+    loader->RegisterResourceFactory(std::make_shared<ScriptFactoryV0>(Scripts::Kind::Level), RESOURCE_FORMAT_BINARY,
+                                    "LevelScript", static_cast<uint32_t>(SM64::ResourceType::LevelScript), 0);
+    loader->RegisterResourceFactory(std::make_shared<ScriptXMLFactoryV0>(Scripts::Kind::Level), RESOURCE_FORMAT_XML,
+                                    "LevelScript", static_cast<uint32_t>(SM64::ResourceType::LevelScript), 0);
+    loader->RegisterResourceFactory(std::make_shared<ScriptFactoryV0>(Scripts::Kind::Behavior), RESOURCE_FORMAT_BINARY,
+                                    "BehaviorScript", static_cast<uint32_t>(SM64::ResourceType::BehaviorScript), 0);
+    loader->RegisterResourceFactory(std::make_shared<ScriptXMLFactoryV0>(Scripts::Kind::Behavior),
+                                    RESOURCE_FORMAT_XML, "BehaviorScript",
+                                    static_cast<uint32_t>(SM64::ResourceType::BehaviorScript), 0);
+
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
     prevAltAssets = Port_FeatureInt("graphics.alt_assets", 0);
     ShipCompat::GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
-
-    // Needs the Blob factory, and runs before ShipInit so enhancements that snapshot tables see the hack's values.
-    Romhack::ApplyDataTables();
 
     Instance->AudioInit();
     Instance->LoadDictionary();
@@ -794,6 +803,34 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     std::vector<std::string> args = Romhack::ConsumeLaunchArgs(argc, argv);
 #if !defined(__SWITCH__) && !defined(__WIIU__)
     GameExtractor extract;
+    // --extract-romhack <rom> [--recipe <package>]
+    for (size_t i = 0; i + 1 < args.size(); i++) {
+        if (args[i] != "--extract-romhack") {
+            continue;
+        }
+        const std::string rom = args[i + 1];
+        GameExtractor hack;
+        for (size_t j = 0; j + 1 < args.size(); j++) {
+            if (args[j] == "--recipe") {
+                for (const std::string& package : Romhack::ListRecipes()) {
+                    if (std::filesystem::path(package).stem().string() == args[j + 1]) {
+                        hack.SetRequestedRecipe(package);
+                    }
+                }
+            }
+        }
+        if (!hack.LoadRom(rom) || !hack.GetRomhack().has_value()) {
+            SPDLOG_ERROR("--extract-romhack: {} isn't a romhack with a recipe, or the base of the --recipe asked for",
+                         rom);
+            exit(1);
+        }
+        std::atomic<size_t> total = 0, count = 0;
+        hack.Parse(total);
+        const bool ok = hack.GenerateOTRTo(count, Ship::Context::GetAppBundlePath(),
+                                           Ship::Context::GetAppDirectoryPath());
+        SPDLOG_INFO("--extract-romhack: {} {}", rom, ok ? "extracted" : "failed: " + GameExtractor::sLastError);
+        exit(ok ? 0 : 1);
+    }
 #endif
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;

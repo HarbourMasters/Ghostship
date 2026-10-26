@@ -973,6 +973,21 @@ add_custom_command(
 )
 endif()
 
+find_package(Python3 COMPONENTS Interpreter)
+if(Python3_Interpreter_FOUND AND NOT ANDROID)
+    file(GLOB ROMHACK_RECIPES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/tools/romhacks/*/recipe.yml")
+    foreach(RECIPE ${ROMHACK_RECIPES})
+        get_filename_component(ROMHACK_DIR ${RECIPE} DIRECTORY)
+        get_filename_component(ROMHACK_NAME ${ROMHACK_DIR} NAME)
+        add_custom_command(
+            TARGET ${PROJECT_NAME} POST_BUILD
+            COMMENT "Packing romhack ${ROMHACK_NAME}..."
+            COMMAND ${Python3_EXECUTABLE} "${CMAKE_SOURCE_DIR}/tools/romhacks/rom_manager.py" package
+                    "${ROMHACK_DIR}" "$<TARGET_FILE_DIR:Ghostship>/romhacks/${ROMHACK_NAME}.o2r"
+        )
+    endforeach()
+endif()
+
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/fast/interpreter.h" GHOSTSHIP_HAS_CUSTOM_UNIFORMS
      REGEX "gfx_set_custom_uniform")
 if(GHOSTSHIP_HAS_CUSTOM_UNIFORMS)

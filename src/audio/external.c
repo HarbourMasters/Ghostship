@@ -2678,3 +2678,10 @@ void unused_80321460(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s
 void unused_80321474(UNUSED s32 arg0) {
 }
 #endif
+
+void audio_limit_level_music_fade(f32 floor, f32 to, s32 exceptState) {
+    struct SequencePlayer *player = &gSequencePlayers[SEQ_PLAYER_LEVEL];
+    if (player->fadeVolume < floor && player->state != exceptState) {
+        player->fadeVolume = to;
+    }
+}

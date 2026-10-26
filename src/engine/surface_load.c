@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 
 #include "sm64.h"
+#include "game/game_values.h"
 #include "engine/math_util.h"
 #include "game/ingame_menu.h"
 #include "graph_node.h"
@@ -35,6 +36,9 @@ struct Surface *sSurfacePool;
  */
 s16 sSurfacePoolSize;
 
+#define SURFACE_POOL_SIZE 16000
+#define SURFACE_NODE_POOL_SIZE 64000
+
 u8 unused8038EEA8[0x30];
 
 /**
@@ -49,7 +53,7 @@ struct SurfaceNode *alloc_surface_node(void) {
     //! A bounds check! If there's more surface nodes than 7000 allowed,
     //  we, um...
     // Perhaps originally just debug feedback?
-    if (gSurfaceNodesAllocated >= 7000) {
+    if (gSurfaceNodesAllocated >= SURFACE_NODE_POOL_SIZE) {
     }
 
     return node;
@@ -525,11 +529,12 @@ void load_environmental_regions(s16 **data) {
 }
 
 /**
- * Allocate some of the main pool for surfaces (2300 surf) and for surface nodes (7000 nodes).
+ * Allocate some of the main pool for surfaces and for surface nodes. Larger than the N64's 2300 surfaces and
+ * 7000 nodes, which romhack levels exceed.
  */
 void alloc_surface_pools(void) {
-    sSurfacePoolSize = 2300;
-    sSurfaceNodePool = main_pool_alloc(7000 * sizeof(struct SurfaceNode), MEMORY_POOL_LEFT);
+    sSurfacePoolSize = SURFACE_POOL_SIZE;
+    sSurfaceNodePool = main_pool_alloc(SURFACE_NODE_POOL_SIZE * sizeof(struct SurfaceNode), MEMORY_POOL_LEFT);
     sSurfacePool = main_pool_alloc(sSurfacePoolSize * sizeof(struct Surface), MEMORY_POOL_LEFT);
 
     gCCMEnteredSlide = 0;
@@ -771,9 +776,11 @@ void load_object_collision_model(void) {
         marioDist = dist_between_objects(gCurrentObject, gMarioObject);
     }
 
+    s32 alwaysDrawn = game_value(GAME_VALUE_SURFACE_OBJECTS_ALWAYS_DRAWN, FALSE);
+
     // If the object collision is supposed to be loaded more than the
     // drawing distance of 4000, extend the drawing range.
-    if (gCurrentObject->oCollisionDistance > 4000.0f) {
+    if (!alwaysDrawn && gCurrentObject->oCollisionDistance > 4000.0f) {
         gCurrentObject->oDrawingDistance = gCurrentObject->oCollisionDistance;
     }
 
@@ -787,6 +794,10 @@ void load_object_collision_model(void) {
         while (*collisionData != TERRAIN_LOAD_CONTINUE) {
             load_object_surfaces(&collisionData, vertexData);
         }
+    }
+
+    if (alwaysDrawn) {
+        return;
     }
 
     bool visible = (marioDist < gCurrentObject->oDrawingDistance);
