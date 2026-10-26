@@ -64,7 +64,7 @@ static std::shared_ptr<Ship::O2rArchive> OpenRecipe(const std::string& package) 
     auto archive = std::make_shared<Ship::O2rArchive>(package);
     archive->Load();
     if (!archive->IsInitialized()) {
-        SPDLOG_WARN("Romhack: could not open recipe package {}", package);
+        SPDLOG_WARN("Romhack: could not open {}", package);
         return nullptr;
     }
     return archive;
@@ -222,6 +222,18 @@ std::vector<std::string> ListArchives() {
     }
     std::sort(stems.begin(), stems.end());
     return stems;
+}
+
+std::optional<Info> ReadArchiveInfo(const std::string& stem) {
+    // Only opened: Load() would also check the archive's game version, which needs the resource manager.
+    auto archive = std::make_shared<Ship::O2rArchive>((fs::path(Directory()) / (stem + ".o2r")).generic_string());
+    if (!archive->Open()) {
+        SPDLOG_WARN("Romhack: could not open {}.o2r", stem);
+        return std::nullopt;
+    }
+    const auto text = ReadText(archive, kManifestFile);
+    archive->Close();
+    return text ? ParseManifest(*text) : std::nullopt;
 }
 
 std::vector<std::string> ConsumeLaunchArgs(int argc, char* argv[]) {

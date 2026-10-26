@@ -16,6 +16,15 @@ namespace {
 
 std::vector<ModList::Entry> sEntries;
 
+bool NonEmpty(const nlohmann::json& json, const char* key) {
+    if (!json.contains(key)) {
+        return false;
+    }
+    const auto& value = json[key];
+    return value.is_string() ? !value.get<std::string>().empty()
+                             : (value.is_object() || value.is_array()) && !value.empty();
+}
+
 std::string Key(const char* setting, const std::string& name) {
     std::string key = std::string("gModList.") + setting + ".";
     for (const char c : name) {
@@ -36,7 +45,7 @@ void ModList::Apply() {
     sEntries.clear();
     for (const auto& archive : *archives) {
         const std::string& name = archive->GetManifest().Name;
-        // The romhack has a manifest too, but it is picked in the Romhacks menu and stays where it was mounted.
+        // The romhack has a manifest too, but it is picked as the base game and stays where it was mounted.
         if (name.empty() || archive == Romhack::ActiveArchive()) {
             order.push_back(archive);
             continue;
@@ -45,6 +54,9 @@ void ModList::Apply() {
         Entry& entry = sEntries.back();
         if (const auto manifest = ModRules::ReadManifest(*archive)) {
             entry.rules = ModRules::Parse(*manifest);
+            entry.code = NonEmpty(*manifest, "main") || NonEmpty(*manifest, "binaries");
+            entry.shaders = manifest->contains("shaders") && (*manifest)["shaders"].is_object() &&
+                            (NonEmpty((*manifest)["shaders"], "passes") || NonEmpty((*manifest)["shaders"], "materials"));
         }
         if (!entry.enabled) {
             entry.status = "Disabled";
@@ -94,6 +106,18 @@ int ModList::Priority(const std::string& name) {
 
 void ModList::SetPriority(const std::string& name, int priority) {
     CVarSetInteger(Key("Priority", name).c_str(), priority);
+    CVarSave();
+}
+
+void ModList::SetOrder(const std::vector<std::string>& enabledFirstWins, const std::vector<std::string>& disabled) {
+    const int count = static_cast<int>(enabledFirstWins.size());
+    for (int i = 0; i < count; i++) {
+        CVarSetInteger(Key("Disabled", enabledFirstWins[i]).c_str(), 0);
+        CVarSetInteger(Key("Priority", enabledFirstWins[i]).c_str(), count - 1 - i);
+    }
+    for (const std::string& name : disabled) {
+        CVarSetInteger(Key("Disabled", name).c_str(), 1);
+    }
     CVarSave();
 }
 

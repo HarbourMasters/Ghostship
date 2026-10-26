@@ -13,15 +13,17 @@ class Archive;
 
 // The keys of manifest.json Ghostship reads on top of LUS's own (LUS ignores keys it doesn't know):
 //   "works_with": ["vanilla", { "name": "Star Road", "version": ">=8" }]  bases the mod runs on; missing = any
+//                 ("romhack" is any romhack but not vanilla, "*" is anything)
 //   "disable":    ["cheats.*", "enhancements.select_all_stars"]           features the mod turns off
 //   "force":      { "graphics.interpolation_fps": 30 }                    features the mod pins to a value
 // A romhack's rules come from its config.yml recipe and are written into its manifest at extraction.
 namespace ModRules {
 
 constexpr const char* kBaseVanilla = "vanilla";
+constexpr const char* kBaseAnyRomhack = "romhack";
 
 struct BaseRef {
-    std::string name;     // "vanilla", a romhack's name, or "*"
+    std::string name;     // "vanilla", a romhack's name or id, "romhack" or "*"
     std::string versions; // a range in the LUS dependency syntax, empty for any
 };
 

@@ -64,6 +64,8 @@ std::optional<Info> ParseManifest(const std::string& text);
 std::string Directory();
 // Stems of every romhack o2r in mods/~romhacks.
 std::vector<std::string> ListArchives();
+// The identity stamped into an installed romhack's o2r, read without mounting it.
+std::optional<Info> ReadArchiveInfo(const std::string& stem);
 
 // Strips -hack/--hack <stem> from argv; the stem wins over the saved selection for this launch.
 std::vector<std::string> ConsumeLaunchArgs(int argc, char* argv[]);

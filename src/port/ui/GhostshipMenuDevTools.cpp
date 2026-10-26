@@ -7,6 +7,7 @@
 #include "game/level_update.h"
 #include "port/Engine.h"
 #include "port/ModList.h"
+#include "port/ui/ModManager.h"
 #include "port/features/Features.h"
 #include "ship/utils/StringHelper.h"
 #include "ship/scripting/ScriptLoader.h"
@@ -161,19 +162,15 @@ void GhostshipMenu::AddMenuDevTools() {
         .Options(WindowButtonOptions().Tooltip("Enables the separate Gfx Debugger Window."));
 }
 
-#ifdef ENABLE_SCRIPTING
 void GhostshipMenu::AddModMenu() {
     AddMenuEntry("Mods", CVAR_SETTING("Menu.ModsSidebarSection"));
 
     WidgetPath path = { "Mods", "General", SECTION_COLUMN_1 };
 
     AddSidebarEntry(path.sectionName, path.sidebarName, 1);
-    AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
-        .Options(ButtonOptions().Tooltip("Reloads all scripts from disk.").Color(Colors::Orange))
-        .Callback([](WidgetInfo& info) {
-            ShipCompat::GetScriptLoader()->UnloadAll();
-            GameEngine::Instance->LoadScripts();
-        });
+    AddWidget(path, "##ModManager", WIDGET_CUSTOM)
+        .HideInSearch(true)
+        .CustomFunction([](WidgetInfo&) { DrawModManager(); });
     AddWidget(path, "##ModRuleConflicts", WIDGET_CUSTOM)
         .HideInSearch(true)
         .CustomFunction([](WidgetInfo&) {
@@ -188,6 +185,15 @@ void GhostshipMenu::AddModMenu() {
                                   conflict.loser.c_str(), Features::LockReason(conflict.id.c_str()).c_str());
             }
         });
+
+#ifdef ENABLE_SCRIPTING
+    AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
+        .Options(ButtonOptions().Tooltip("Rebuilds the code of the loaded mods from disk.").Color(Colors::Orange))
+        .Callback([](WidgetInfo& info) {
+            ShipCompat::GetScriptLoader()->UnloadAll();
+            GameEngine::Instance->LoadScripts();
+        });
+#endif
 
     auto keystore = ShipCompat::GetKeystore();
     auto allKeys = keystore->GetAllKeys();
@@ -230,22 +236,7 @@ void GhostshipMenu::AddModMenu() {
                     ImGui::TextColored(it->failed ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f) : ImVec4(0.5f, 0.9f, 0.5f, 1.0f),
                                        "%s", it->status.c_str());
                 }
-                bool enabled = ModList::IsEnabled(name);
-                if (ImGui::Checkbox(("Enabled##" + name).c_str(), &enabled)) {
-                    ModList::SetEnabled(name, enabled);
-                }
-                ImGui::SameLine();
-                int priority = ModList::Priority(name);
-                ImGui::SetNextItemWidth(120.0f);
-                if (ImGui::InputInt(("Priority##" + name).c_str(), &priority)) {
-                    ModList::SetPriority(name, priority);
-                }
-                if (it != entries.end() && (enabled != it->enabled || priority != it->priority)) {
-                    ImGui::TextDisabled("Takes effect when Ghostship restarts.");
-                }
-            })
-            .Options(WidgetOptions().Tooltip("Mods with a higher priority load later: their files replace those of "
-                                             "mods loaded before them, and their code initializes after."));
+            });
 
         Ship::KeyOrigin origin = Ship::KeyOrigin::User;
         for (const auto& key : allKeys) {
@@ -309,6 +300,5 @@ void GhostshipMenu::AddModMenu() {
         AddWidget(path, "##Spacer_" + info.Name, WIDGET_SEPARATOR).Options(UIWidgets::WidgetOptions{});
     }
 };
-#endif // ENABLE_SCRIPTING
 
 } // namespace GhostshipGui

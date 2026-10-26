@@ -1214,7 +1214,7 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                             const std::string msg = romhack->info.name +
                                                     " is a romhack and loads on top of the base game.\n"
                                                     "Pick a vanilla Super Mario 64 ROM first, then add the romhack "
-                                                    "from Settings > Romhacks.";
+                                                    "from Mods > Romhacks.";
                             promptStep = PS_WAIT;
                             GhostshipGui::RegisterPopup("Base Game Required", msg.c_str(), "OK", "",
                                                         [&]() { promptStep = PS_FILE_CHECK; });

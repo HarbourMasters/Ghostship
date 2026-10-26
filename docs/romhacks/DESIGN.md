@@ -15,7 +15,7 @@ Ghostship always runs its own game logic. A romhack brings its assets as an over
               │                                 │
               ▼                                 ▼
    ┌─────────────────────┐        ┌──────────────────────────────┐
-   │  First boot         │        │  Settings -> Romhacks        │
+   │  First boot         │        │  Mods -> Romhacks            │
    │                     │        │  "Generate Romhack from ROM" │
    │                     │        │  or a hack's "Generate"      │
    └──────────┬──────────┘        └──────────────┬───────────────┘
@@ -79,7 +79,7 @@ Ghostship always runs its own game logic. A romhack brings its assets as an over
 
    Ghostship unpacks the matching package into `cache/romhacks/<stem>/` and Torch extracts the entry from there like any other ROM, so `output.binary` is where the archive lands. The extractor ([GameExtractor.cpp](../../src/port/GameExtractor.cpp)) recognizes the entry by its `romhack:` block, creates `mods/~romhacks/`, and adds a `manifest.json`.
 
-   A recipe can also name the ROM its hack was made from and the hack's patch, under `romhack.base` (`sha1`, `extend`, `patch`). When the patch file is next to the recipe (or at the repo root), the packer adds it to the package with an entry for that base ROM whose Torch `preprocess:` jobs rebuild the hack: `sm64extend` (the extended base ROM Manager hacks are built on), then `patch` (PPF3, IPS or BPS, from the package), checking the result's SHA1 against the hack's and restarting with its entry. Settings → Romhacks then shows **Generate** next to the hack, which takes the player's base ROM (`--extract-romhack <rom> --recipe <stem>` on the command line). A vanilla ROM is only treated as a hack's base when that hack is asked for, so first boot still takes it as the base game. The patch is the hack author's work: a package that carries it should only be shared where the author allows it, and patch files are ignored by git.
+   A recipe can also name the ROM its hack was made from and the hack's patch, under `romhack.base` (`sha1`, `extend`, `patch`). When the patch file is next to the recipe (or at the repo root), the packer adds it to the package with an entry for that base ROM whose Torch `preprocess:` jobs rebuild the hack: `sm64extend` (the extended base ROM Manager hacks are built on), then `patch` (PPF3, IPS, BPS or xdelta, from the package), checking the result's SHA1 against the hack's and restarting with its entry. Mods → Supported Romhacks then shows **Generate** next to the hack, which takes the player's base ROM (`--extract-romhack <rom> --recipe <stem>` on the command line). A vanilla ROM is only treated as a hack's base when that hack is asked for, so first boot still takes it as the base game. The patch is the hack author's work: a package that carries it should only be shared where the author allows it, and patch files are ignored by git.
 
 3. **Identity**: the `manifest.json` written into the romhack o2r carries everything the runtime needs: `name`, `version`, `author`, `description`, `website`, and a `romhack` block with the `id` and the ROM's `rom_sha1`. The runtime never reads `config.yml`, so romhacks work on builds without Torch. When the recipe has `code`, the manifest also gets that mod's `main`, `code_version` and `api_version`, so the script loader builds the hack's code from its own archive; the Mods menu leaves the active romhack out either way.
 
@@ -93,7 +93,7 @@ Ghostship always runs its own game logic. A romhack brings its assets as an over
 
 8. **Saves**: each romhack has its own saves folder, `saves/~romhacks/<stem>/` ([Saves.cpp](../../src/port/data/Saves.cpp)). The legacy `default.sav` migration only runs for the base game, so a romhack never takes over the base game's old save.
 
-9. **Romhack Menu**: romhacks are managed in **Settings → Romhacks**, apart from the Mods menu ([RomhackMenuWindow.cpp](../../src/port/ui/RomhackMenuWindow.cpp)). It holds the *Generate Romhack from ROM* button (for a patched ROM), the *Installed Romhacks* list (one enabled at a time) and the *Supported Romhacks* list read from `config.yml` and the recipe packages, with download links and, for hacks whose package carries their patch, a *Generate* button that takes the base ROM.
+9. **Mods menu**: romhacks are managed with the mods ([ModManager.cpp](../../src/port/ui/ModManager.cpp), [RomhackMenu.cpp](../../src/port/ui/RomhackMenu.cpp)). The installed romhacks are the choices for the *Base game* (one at a time, or Super Mario 64), edited and applied with the mod list. Below it are the *Generate Romhack from ROM* button (for a patched ROM) and the *Supported Romhacks* list read from `config.yml` and the recipe packages, with download links and, for hacks whose package carries their patch, a *Generate* button that takes the base ROM.
 
 > [!NOTE]
 > A folder name starting with `~` is reserved and managed by the port.
@@ -184,11 +184,12 @@ Ghostship reads three keys from a mod's `manifest.json` on top of the LUS ones (
 
 | Key | Meaning |
 |---|---|
-| `works_with` | Bases the mod runs on: `vanilla`, a romhack's `name`, or `*`. Each entry is a name or `{ "name", "version" }` with a range: comparisons (`>=`, `>`, `<=`, `<`, `=`) separated by spaces or commas, a bare version being a minimum. Missing means any base. |
+| `works_with` | Bases the mod runs on: `vanilla`, a romhack's `name` or `id`, `romhack` for any romhack (but not vanilla), or `*`. Each entry is a name or `{ "name", "version" }` with a range: comparisons (`>=`, `>`, `<=`, `<`, `=`) separated by spaces or commas, a bare version being a minimum. Missing means any base. |
 | `disable` | Feature ids, or `group.*` wildcards, the mod turns off. |
 | `force` | `{ feature id or group.*: value }`: toggles and numbers take a number or `true`/`false`. |
 
 - **Mounting** ([ModList.cpp](../../src/port/ModList.cpp)): each mod's manifest is read from its own archive, never the merged file system, where every `manifest.json` shadows the others. A mod whose `works_with` doesn't include the active base isn't mounted; it stays enabled, so it loads again once its base is active, and the Mods menu shows why it didn't load. An archive with a `romhack` block in plain `mods/` isn't mounted either.
+- **Order** ([ModManager.cpp](../../src/port/ui/ModManager.cpp)): the Mods menu lists the enabled mods from the one that wins down, and the disabled ones. Editing them (arrows or drag and drop) and applying saves each mod's enabled state and priority, used at the next start. Mods limited by `works_with` show the bases they need, and an enabled mod that didn't load shows why.
 - **Rules** (`ModRules::Resolve`, called right after the mods are mounted and ordered, before `ShipInit`): the sources, in load order, are the built-in rules, the romhack, then each mounted mod.
 
 A romhack's `disable` and `force` live in its recipe's `romhack:` block and are written into its manifest when it is extracted.

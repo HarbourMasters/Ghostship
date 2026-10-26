@@ -175,12 +175,15 @@ bool VersionInRange(const std::string& version, const std::string& range) {
 }
 
 static std::string BaseLabel(const std::string& name) {
-    return name == kBaseVanilla ? "Super Mario 64" : name;
+    if (name == kBaseVanilla) {
+        return "Super Mario 64";
+    }
+    return name == kBaseAnyRomhack ? "a romhack" : name;
 }
 
 std::optional<std::string> IncompatibleReason(const Rules& rules) {
     if (rules.isRomhack) {
-        return std::string("This is a romhack. Add it from Settings > Romhacks instead of the mods folder.");
+        return std::string("This is a romhack. Pick it as the base game in Mods instead of the mods folder.");
     }
     if (!rules.worksWith.has_value() || rules.worksWith->empty()) {
         return std::nullopt;
@@ -189,10 +192,11 @@ std::optional<std::string> IncompatibleReason(const Rules& rules) {
     const std::string baseName = romhack != nullptr ? romhack->name : kBaseVanilla;
     const std::string baseVersion = romhack != nullptr ? romhack->version : "";
     for (const BaseRef& ref : *rules.worksWith) {
-        if (ref.name == "*") {
+        if (ref.name == "*" || (ref.name == kBaseAnyRomhack && romhack != nullptr)) {
             return std::nullopt;
         }
-        if (ref.name == baseName && (ref.versions.empty() || VersionInRange(baseVersion, ref.versions))) {
+        const bool named = ref.name == baseName || (romhack != nullptr && !romhack->id.empty() && ref.name == romhack->id);
+        if (named && (ref.versions.empty() || VersionInRange(baseVersion, ref.versions))) {
             return std::nullopt;
         }
     }

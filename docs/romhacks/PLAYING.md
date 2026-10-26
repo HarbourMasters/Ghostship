@@ -8,7 +8,7 @@ You need:
 
 1. **Ghostship already set up with the base game.** The first time you started Ghostship, it asked for your Super Mario 64 ROM and generated `sm64.o2r`. A romhack loads on top of those files, so this has to be done first.
 2. **The Super Mario 64 ROM the hack was made for** (`.z64`), usually the US version.
-3. **A supported romhack.** Open **Settings → Romhacks** in Ghostship. Every romhack under **Supported Romhacks** has a link button that opens its download page. Only the listed version of each hack is supported.
+3. **A supported romhack.** Open **Mods** in Ghostship's menu. Every romhack under **Supported Romhacks** has a link button that opens its download page. Only the listed version of each hack is supported.
 
    A romhack Ghostship doesn't ship with can come as a **recipe package**, a small `.o2r` holding the instructions for extracting it (no game data). Put it in the `romhacks/` folder inside the Ghostship folder and it shows up in the list.
 
@@ -16,7 +16,7 @@ You need:
 
 Some romhacks under **Supported Romhacks** have a **Generate** button: their package carries the hack's patch, so Ghostship patches your own ROM for you.
 
-1. Go to **Settings → Romhacks** and click **Generate** next to the romhack.
+1. Go to **Mods** and click **Generate** next to the romhack under **Supported Romhacks**.
 2. Pick your **Super Mario 64 ROM** (the same one you set Ghostship up with). Ghostship extends it if the hack needs that, applies the patch, checks the result is the supported version, and extracts the romhack. This only has to be done once.
 3. Continue from step 5 of [Step 2](#step-2-add-the-romhack-to-ghostship).
 
@@ -35,8 +35,8 @@ Romhacks are downloaded as a patch file (`.bps`, `.ips`, `.ppf` or `.xdelta`). Y
 ## Step 2: Add the romhack to Ghostship
 
 1. Start Ghostship and open the menu.
-2. Go to **Settings → Romhacks**.
-3. Click **Generate Romhack from ROM** and pick the patched ROM from step 1.
+2. Go to **Mods**.
+3. Under **Romhacks**, click **Generate Romhack from ROM** and pick the patched ROM from step 1.
 4. Wait for the progress bar to finish. This only has to be done once per romhack.
 5. When **Romhack Ready** shows up, click **Play** and quit Ghostship, or **Later** to keep playing what you're playing now.
 6. Start Ghostship again. It loads the romhack.
@@ -45,13 +45,14 @@ While a romhack is active, the menu header shows **Romhack active: NAME**.
 
 ## Switching romhacks, or going back to the base game
 
-Only one romhack can be active at a time. To change it:
+The romhack is the **base game** the mods load on top of, so only one can be active at a time. To change it:
 
-1. Go to **Settings → Romhacks → Installed Romhacks**.
+1. Go to **Mods**.
 2. Click **Edit**.
-3. Use the arrow buttons to move a romhack into **Enabled Romhack**, or out of it.
-   - To play the base game again, move the active romhack to **Disabled Romhacks**, or click **Clear List**.
+3. Under **Base game**, pick a romhack, or **Super Mario 64** to play the base game again.
 4. Click **Apply**, then restart Ghostship.
+
+The same Edit and Apply also enable, disable and reorder mods.
 
 To play a romhack for a single launch without changing the saved choice, start Ghostship with `-hack <name>`, where `<name>` is the romhack's file name without `.o2r`.
 
@@ -63,7 +64,7 @@ Each romhack keeps its own save files, apart from the base game and from other r
 
 Mods still work while a romhack is active. They load on top of the romhack, so a mod that changes something the romhack also changed wins. A mod made for the base game may not fit a romhack that changed the same levels.
 
-A romhack or mod can turn off Ghostship options that would break it, or pin them to a value. Those options are greyed out, and hovering one says which romhack or mod did it; your own setting comes back when you play without it. The randomizer is turned off while any romhack is active. A mod that says it only works with another base (the base game or a different romhack) isn't loaded, and **Mods › General** says why.
+A romhack or mod can turn off Ghostship options that would break it, or pin them to a value. Those options are greyed out, and hovering one says which romhack or mod did it; your own setting comes back when you play without it. The randomizer is turned off while any romhack is active. A mod that says it only works with another base (the base game, a different romhack, or any romhack) isn't loaded, and **Mods** says why.
 
 ## Common errors
 
@@ -71,7 +72,7 @@ A romhack or mod can turn off Ghostship options that would break it, or pin them
 |---|---|---|
 | **Wrong ROM** | You used **Generate** with a ROM that isn't the one the hack's patch was made for. | Pick the original, unmodified Super Mario 64 ROM (usually the US version), or the hack's already patched `.z64`. |
 | **Not a Supported Romhack** | Ghostship has no recipe for the ROM you picked. | Check that the romhack is in the **Supported Romhacks** list, that you patched the right base ROM, and that you picked the patched `.z64` and not the original. Different versions of the same romhack give different ROMs. |
-| **Base Game Required** | You picked a romhack ROM when Ghostship asked for the base game. | Pick your original Super Mario 64 ROM first. Add the romhack afterwards through **Settings → Romhacks**. |
+| **Base Game Required** | You picked a romhack ROM when Ghostship asked for the base game. | Pick your original Super Mario 64 ROM first. Add the romhack afterwards through **Mods**. |
 | **Romhack Extraction Failed** | Something went wrong while generating the romhack files. | Try again. If it keeps failing, report it with the message shown. |
 
 ## Where the files are
