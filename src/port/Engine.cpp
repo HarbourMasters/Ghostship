@@ -10,6 +10,7 @@
 #ifdef __EMSCRIPTEN__
 #include "port/web/WebUtils.h"
 #endif
+#include "port/console/LogFeed.h"
 #include "ShipInit.hpp"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
@@ -214,6 +215,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         std::make_shared<Ship::Logger>("Ghostship", Ship::Context::GetPathRelativeToAppDirectory("logs/Ghostship.log"));
     context->GetChildren().Add(logger);
     logger->Init();
+    LogFeed::Install();
 
     auto config =
         std::make_shared<Ship::Config>(Ship::Context::GetPathRelativeToAppDirectory("ghostship.cfg.json"), nullptr);
@@ -1260,7 +1262,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                 wrapped.insert(breakAt, "\n");
                                 pos = breakAt + 1;
                             }
-                            errorMsg = "ROM extraction failed:\n\n" + wrapped + "\n\nCheck the logs for full details.";
+                            errorMsg = "ROM extraction failed:\n\n" + wrapped;
+                            const auto problems = LogFeed::CapturedProblems(5);
+                            if (!problems.empty()) {
+                                errorMsg += "\n\nWhat it logged last:";
+                                for (const auto& line : problems) {
+                                    errorMsg += "\n- " + (line.text.size() > 110 ? line.text.substr(0, 107) + "..."
+                                                                                   : line.text);
+                                }
+                            }
+                            errorMsg += "\n\nThe full log is in logs/Ghostship.log.";
                         } else {
                             errorMsg = "No ROM O2R file detected.\nPlease generate a ROM O2R and relaunch.";
                         }
@@ -1398,6 +1409,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             ImGui::PopStyleVar(2);
         }
 
+        // The extraction's warnings and errors, for its window and for the error popup if it fails.
+        static bool sCapturingExtraction = false;
+        if (extracting && !sCapturingExtraction) {
+            LogFeed::BeginCapture();
+            sCapturingExtraction = true;
+        } else if (!extracting && sCapturingExtraction) {
+            LogFeed::EndCapture();
+            sCapturingExtraction = false;
+        }
         if (extracting && !ImGui::IsPopupOpen("ROM Extraction")) {
             ImGui::OpenPopup("ROM Extraction");
         }
@@ -1452,6 +1472,26 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     counting ? fmt::format("{:.0f}%", progress) : (std::string) "Reading ROM, please wait...";
                 ImGui::ProgressBar(counting ? progress / 100.0f : -1.0f * (float)ImGui::GetTime(),
                                    ImVec2(600.0f, 50.0f), overlay.c_str());
+
+                const auto problems = LogFeed::CapturedProblems(50);
+                if (!problems.empty()) {
+                    const float lines = (float)std::min<size_t>(problems.size(), 6);
+                    if (ImGui::BeginChild("##extractlog",
+                                          ImVec2(600.0f, ImGui::GetTextLineHeightWithSpacing() * lines + 8.0f),
+                                          ImGuiChildFlags_Borders, ImGuiWindowFlags_HorizontalScrollbar)) {
+                        const bool atBottom = ImGui::GetScrollY() >= ImGui::GetScrollMaxY() - 1.0f;
+                        for (const auto& line : problems) {
+                            const ImVec4 lineColor = line.level >= spdlog::level::err
+                                                         ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f)
+                                                         : ImVec4(1.0f, 0.85f, 0.3f, 1.0f);
+                            ImGui::TextColored(lineColor, "%s", line.text.c_str());
+                        }
+                        if (atBottom) {
+                            ImGui::SetScrollHereY(1.0f);
+                        }
+                    }
+                    ImGui::EndChild();
+                }
                 ImGui::EndPopup();
             }
             ImGui::PopStyleColor(3);

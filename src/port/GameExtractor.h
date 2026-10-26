@@ -53,6 +53,8 @@ public:
     // asked of Ship::Context. The Android launcher extracts before SDL is up, so
     // Context cannot resolve a path there yet.
     bool GenerateOTRTo(std::atomic<size_t>& assetCount, const std::string& assetsPath, const std::string& gamePath);
+    // Frees Torch's state from the last extraction: the ROM, and whatever the passes kept.
+    static void ReleaseTorch();
     void WritePortVersion();
 private:
     fs::path mGamePath;

@@ -136,6 +136,12 @@ void GhostshipMenu::AddMenuDevTools() {
         .WindowName("Console##Dev")
         .HideInSearch(true)
         .Options(WindowButtonOptions().Tooltip("Enables the separate Console Window."));
+    AddWidget(path, "Show Logs in the Console", WIDGET_CVAR_CHECKBOX)
+        .CVar("gSinkEnabled")
+        .Options(CheckboxOptions()
+                     .DefaultValue(true)
+                     .Tooltip("Adds a Logs channel to the console with everything the game logs, filterable by "
+                              "level, so you can read it in game."));
 
     path.sidebarName = "Event Debugger";
     AddSidebarEntry("Dev Tools", path.sidebarName, 1);

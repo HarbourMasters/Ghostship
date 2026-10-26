@@ -355,8 +355,7 @@ void DrawBaseGame() {
     }
 
     if (RomhackMenu::Extracting()) {
-        const std::string label = "Generating " + RomhackMenu::ExtractingName() + "...";
-        ImGui::ProgressBar(RomhackMenu::Progress(), ImVec2(-1.0f, 0.0f), label.c_str());
+        RomhackMenu::DrawProgress();
     } else {
         ImGui::TextDisabled("Have a patched romhack ROM?");
         ImGui::SameLine();

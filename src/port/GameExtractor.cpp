@@ -305,6 +305,17 @@ std::string GameExtractor::GetRomPath() {
 static std::optional<RomhackRecipe> RomhackRecipeFor(const std::vector<uint8_t>& romData,
                                                      const std::string& configDir, const std::string& requested);
 
+// Each pass gets its own Torch instance; the previous one holds the ROM and what that pass kept, so free it.
+static void ReplaceCompanion(Companion* next) {
+    Companion* previous = Companion::Instance;
+    Companion::Instance = next;
+    delete previous;
+}
+
+void GameExtractor::ReleaseTorch() {
+    ReplaceCompanion(nullptr);
+}
+
 bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShortName) {
     std::string assets_path = Ship::Context::GetAppBundlePath();
     if (const auto romhack = RomhackRecipeFor(this->mGameData, assets_path, mRequestedPackage);
@@ -314,7 +325,7 @@ bool GameExtractor::Parse(std::atomic<size_t>& totalAssets, std::string appShort
     const std::string game_path = Ship::Context::GetAppDirectoryPath(appShortName);
 
     sLastError.clear();
-    Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path);
+    ReplaceCompanion(new Companion(this->mGameData, ArchiveType::O2R, false, assets_path, game_path));
     Companion::Instance->SetProcess(false);
     try {
         Companion::Instance->Init(ExportType::Binary, totalAssets, false);
@@ -534,7 +545,7 @@ bool GameExtractor::GenerateOTRTo(std::atomic<size_t>& assetCount, const std::st
         }
     }
 
-    Companion::Instance = new Companion(this->mGameData, ArchiveType::O2R, false, sourcePath, gamePath);
+    ReplaceCompanion(new Companion(this->mGameData, ArchiveType::O2R, false, sourcePath, gamePath));
     this->WritePortVersion();
     if (romhack.has_value()) {
         Romhack::Info info = romhack->info;
@@ -582,6 +593,9 @@ bool GameExtractor::LoadRom(const std::string& rom) {
 
 bool GameExtractor::SelectGameFromUI() {
     return false;
+}
+
+void GameExtractor::ReleaseTorch() {
 }
 
 void GameExtractor::GetRoms(std::vector<std::string>& roms) {

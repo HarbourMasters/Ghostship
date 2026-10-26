@@ -6,11 +6,13 @@
 #include <thread>
 #include <utility>
 
+#include <imgui.h>
 #include <ship/Context.h>
 
 #include "GhostshipGui.hpp"
 #include "port/GameExtractor.h"
 #include "port/ShipCompat.h"
+#include "port/console/LogFeed.h"
 
 namespace {
 
@@ -26,6 +28,19 @@ std::atomic<ExtractResult> sResult = ExtractResult::None;
 bool sLoaded = false;
 bool sInstalledChanged = false;
 std::vector<Romhack::Supported> sSupported;
+
+// The last warnings and errors an extraction logged, one per line, for its popup.
+std::string ProblemsText(size_t max) {
+    std::string text;
+    for (const auto& line : LogFeed::CapturedProblems(max)) {
+        std::string shown = line.text;
+        if (shown.size() > 110) {
+            shown = shown.substr(0, 107) + "...";
+        }
+        text += "\n- " + shown;
+    }
+    return text;
+}
 
 void SelectAndQuit(const std::string& stem) {
     Romhack::SetSelected(stem);
@@ -73,12 +88,14 @@ void RomhackMenu::Generate(const Romhack::Supported* hack) {
     sPendingName = recipe->info.name.empty() ? sPendingStem : recipe->info.name;
     sExtractCount = 0;
     sExtractTotal = 0;
+    LogFeed::BeginCapture();
     sExtracting = true;
     std::thread([]() {
         sExtractor.Parse(sExtractTotal);
         // Into the same app directory the mods/ folder is read from, so mods/~romhacks is found at boot.
         const bool ok = sExtractor.GenerateOTRTo(sExtractCount, Ship::Context::GetAppBundlePath(),
                                                  Ship::Context::GetAppDirectoryPath());
+        GameExtractor::ReleaseTorch();
         sResult = ok ? ExtractResult::Done : ExtractResult::Failed;
         sExtracting = false;
     }).detach();
@@ -86,24 +103,65 @@ void RomhackMenu::Generate(const Romhack::Supported* hack) {
 
 void RomhackMenu::Update() {
     const ExtractResult result = sResult.exchange(ExtractResult::None);
+    if (result == ExtractResult::None) {
+        return;
+    }
+    LogFeed::EndCapture();
     if (result == ExtractResult::Failed) {
-        const std::string msg = "Generating " + sPendingName + " failed:\n" + GameExtractor::sLastError;
-        GhostshipGui::RegisterPopup("Romhack Extraction Failed", msg.c_str());
-    } else if (result == ExtractResult::Done) {
+        std::string msg = "Generating " + sPendingName + " failed:\n" + GameExtractor::sLastError;
+        const std::string problems = ProblemsText(5);
+        if (!problems.empty()) {
+            msg += "\n\nWhat it logged last:" + problems;
+        }
+        GhostshipGui::RegisterPopup("Romhack Extraction Failed", msg.c_str(), "Open Logs", "Close",
+                                    []() { GhostshipGui::OpenLogs(spdlog::level::warn); });
+    } else {
         sInstalledChanged = true;
         const std::string stem = sPendingStem;
-        const std::string msg =
-            sPendingName + " is ready.\nPlay it now? Ghostship needs a restart to load the romhack.";
+        std::string msg = sPendingName + " is ready.\nPlay it now? Ghostship needs a restart to load the romhack.";
+        const size_t warnings = LogFeed::CapturedProblems(SIZE_MAX).size();
+        if (warnings > 0) {
+            msg += "\n\nIt logged " + std::to_string(warnings) + (warnings == 1 ? " warning" : " warnings") +
+                   ", listed in Dev Tools > Console > Logs.";
+        }
         GhostshipGui::RegisterPopup("Romhack Ready", msg.c_str(), "Play", "Later", [stem]() { SelectAndQuit(stem); });
     }
 }
 
-bool RomhackMenu::Extracting() {
-    return sExtracting;
+void RomhackMenu::DrawProgress() {
+    if (!sExtracting) {
+        return;
+    }
+    const std::string label = "Generating " + sPendingName + "...";
+    ImGui::ProgressBar(Progress(), ImVec2(-1.0f, 0.0f), label.c_str());
+
+    const std::string activity = LogFeed::CurrentActivity();
+    ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_TextDisabled));
+    ImGui::TextUnformatted(activity.empty() ? "Reading the ROM..." : activity.c_str());
+    ImGui::PopStyleColor();
+
+    const auto problems = LogFeed::CapturedProblems(50);
+    if (problems.empty()) {
+        return;
+    }
+    const float lines = (float)std::min<size_t>(problems.size(), 6);
+    if (ImGui::BeginChild("##extractlog", ImVec2(-1.0f, ImGui::GetTextLineHeightWithSpacing() * lines + 8.0f),
+                          ImGuiChildFlags_Borders, ImGuiWindowFlags_HorizontalScrollbar)) {
+        const bool atBottom = ImGui::GetScrollY() >= ImGui::GetScrollMaxY() - 1.0f;
+        for (const auto& line : problems) {
+            const ImVec4 color = line.level >= spdlog::level::err ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f)
+                                                                  : ImVec4(1.0f, 0.85f, 0.3f, 1.0f);
+            ImGui::TextColored(color, "%s", line.text.c_str());
+        }
+        if (atBottom) {
+            ImGui::SetScrollHereY(1.0f);
+        }
+    }
+    ImGui::EndChild();
 }
 
-const std::string& RomhackMenu::ExtractingName() {
-    return sPendingName;
+bool RomhackMenu::Extracting() {
+    return sExtracting;
 }
 
 float RomhackMenu::Progress() {

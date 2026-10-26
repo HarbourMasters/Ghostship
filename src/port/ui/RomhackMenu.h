@@ -15,9 +15,10 @@ const std::vector<Romhack::Supported>& Supported();
 void Generate(const Romhack::Supported* hack);
 // Shows the result of a finished extraction. Call every frame the menu is drawn.
 void Update();
+// While extracting: the progress bar, what it is working on, and the warnings and errors so far.
+void DrawProgress();
 
 bool Extracting();
-const std::string& ExtractingName();
 float Progress();
 // True once after a romhack was generated, so the list of installed ones is read again.
 bool TakeInstalledChanged();
