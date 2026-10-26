@@ -98,13 +98,12 @@ node_modules
 /src/port/build.c
 /properties.h
 mods/
-# Romhack recipe packages and what's unpacked from them (docs/romhacks/PLAYING.md)
 /romhacks/
 /cache/
-# Romhack patches are their authors' work; recipe packages pick them up from here locally
 *.ppf
 *.bps
 *.ips
+*.xdelta
 randomizer/
 !/src/port/mods/
 # The APK ships a placeholder that tells the player where their mods go, so

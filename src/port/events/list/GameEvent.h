@@ -249,6 +249,7 @@ typedef enum GameValueId {
     GAME_VALUE_CAM_ZOOMED_OUT_ALWAYS_HALVED,
     GAME_VALUE_CAM_STEADY_FLOOR_ACTION_1, // 0: none
     GAME_VALUE_CAM_STEADY_FLOOR_ACTION_2,
+    GAME_VALUE_FILE_START_LEVEL,
 } GameValueId;
 
 typedef enum GameFloatId {
@@ -276,6 +277,7 @@ typedef enum FixedStarId {
     FIXED_STAR_PSS_SLIDE,
     FIXED_STAR_KOOPA_RACE_BOB,
     FIXED_STAR_KOOPA_RACE_THI,
+    FIXED_STAR_BIG_BULLY_WITH_MINIONS,
 } FixedStarId;
 
 typedef enum TrajectoryId {

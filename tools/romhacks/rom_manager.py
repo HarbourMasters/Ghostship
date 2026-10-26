@@ -27,6 +27,7 @@ import argparse
 import os
 import re
 import struct
+import zlib
 import sys
 from collections import OrderedDict
 
@@ -164,6 +165,130 @@ def n64_checksum(rom):
     return t6 ^ t4 ^ t3, t5 ^ t2 ^ t1
 
 
+def _vcdiff_code_table():
+    """RFC 3284's default instruction table: (type1, size1, mode1, type2, size2, mode2), types 0 NOOP 1 ADD 2 RUN
+    3 COPY."""
+    table = [(2, 0, 0, 0, 0, 0), (1, 0, 0, 0, 0, 0)]
+    table += [(1, size, 0, 0, 0, 0) for size in range(1, 18)]
+    for mode in range(9):
+        table.append((3, 0, mode, 0, 0, 0))
+        table += [(3, size, mode, 0, 0, 0) for size in range(4, 19)]
+    for mode in range(6):
+        for add in range(1, 5):
+            table += [(1, add, 0, 3, size, mode) for size in range(4, 7)]
+    for mode in range(6, 9):
+        for add in range(1, 5):
+            table.append((1, add, 0, 3, 4, mode))
+    table += [(3, 4, mode, 1, 1, 0) for mode in range(9)]
+    return table
+
+
+def apply_vcdiff(rom, delta):
+    """An xdelta3 / VCDIFF patch without secondary compression."""
+    if delta[:3] != b"\xd6\xc3\xc4":
+        raise SystemExit("Not a VCDIFF (xdelta3) patch")
+    pos = 5
+
+    def varint():
+        nonlocal pos
+        value = 0
+        while True:
+            b = delta[pos]
+            pos += 1
+            value = (value << 7) | (b & 0x7F)
+            if not b & 0x80:
+                return value
+
+    indicator = delta[4]
+    if indicator & 1:
+        raise SystemExit("xdelta patches with secondary compression aren't supported (make it with -S none)")
+    if indicator & 2:
+        raise SystemExit("VCDIFF custom code tables aren't supported")
+    if indicator & 4:
+        app_header = varint()
+        pos += app_header
+    table = _vcdiff_code_table()
+    out = bytearray()
+    while pos < len(delta):
+        win = delta[pos]
+        pos += 1
+        source, source_len = b"", 0
+        if win & 3:
+            source_len, start = varint(), varint()
+            source = rom[start:start + source_len] if win & 1 else bytes(out[start:start + source_len])
+        varint()  # delta encoding length
+        target_len = varint()
+        if delta[pos] != 0:
+            raise SystemExit("xdelta patches with compressed sections aren't supported")
+        pos += 1
+        data_len, inst_len, addr_len = varint(), varint(), varint()
+        checksum = None
+        if win & 4:
+            checksum = struct.unpack_from(">I", delta, pos)[0]
+            pos += 4
+        data, insts, addrs = pos, pos + data_len, pos + data_len + inst_len
+        pos = addrs + addr_len
+        target = bytearray()
+        near, near_slot, same = [0] * 4, 0, [0] * (3 * 256)
+        d, i, a = data, insts, addrs
+
+        def read(at):
+            value = 0
+            while True:
+                b = delta[at]
+                at += 1
+                value = (value << 7) | (b & 0x7F)
+                if not b & 0x80:
+                    return value, at
+
+        while i < addrs:
+            code = table[delta[i]]
+            i += 1
+            for kind, size, mode in ((code[0], code[1], code[2]), (code[3], code[4], code[5])):
+                if kind == 0:
+                    continue
+                if size == 0:
+                    size, i = read(i)
+                if kind == 1:
+                    target += delta[d:d + size]
+                    d += size
+                elif kind == 2:
+                    target += delta[d:d + 1] * size
+                    d += 1
+                else:
+                    here = source_len + len(target)
+                    if mode == 0:
+                        addr, a = read(a)
+                    elif mode == 1:
+                        v, a = read(a)
+                        addr = here - v
+                    elif mode < 6:
+                        v, a = read(a)
+                        addr = near[mode - 2] + v
+                    else:
+                        addr = same[(mode - 6) * 256 + delta[a]]
+                        a += 1
+                    near[near_slot] = addr
+                    near_slot = (near_slot + 1) % 4
+                    same[addr % (3 * 256)] = addr
+                    for k in range(size):
+                        at = addr + k
+                        target.append(source[at] if at < source_len else target[at - source_len])
+        if len(target) != target_len or (checksum is not None and zlib.adler32(bytes(target)) != checksum):
+            raise SystemExit("VCDIFF window doesn't match its checksum: wrong source ROM?")
+        out += target
+    return out
+
+
+def apply_patch(rom, patch):
+    """PPF3, IPS, BPS or VCDIFF (xdelta3), by its header."""
+    if patch[:5] == b"PPF30":
+        return apply_ppf(rom, patch)
+    if patch[:3] == b"\xd6\xc3\xc4":
+        return apply_vcdiff(rom, patch)
+    raise SystemExit("Unsupported patch format (rom_manager.py handles PPF3 and xdelta; Torch also takes IPS and BPS)")
+
+
 def apply_ppf(rom, ppf):
     if ppf[:5] != b"PPF30" or ppf[5] != 2:
         raise SystemExit("Only PPF 3.0 patches are supported")
@@ -183,14 +308,16 @@ def apply_ppf(rom, ppf):
 
 
 class Level:
-    def __init__(self, num, script_rom):
+    def __init__(self, num, seg, script_rom):
         self.num = num
         self.folder = LEVEL_FOLDERS[num]
+        self.seg = seg  # the segment its script block is in: 0x19 when moved, 0x0E when edited in place
         self.script_rom = script_rom
         self.segments = {}  # seg -> (rom, compressed)
         self.areas = []  # (index, geo segaddr)
         self.terrain = []  # (area index, collision segaddr)
-        self.scripts = []  # segment 0x19 scripts the level jumps to, besides its entry
+        self.macros = []  # macro object list segaddrs
+        self.scripts = []  # scripts in its own block the level jumps to, besides its entry
         self.behaviors = set()  # behavior segaddrs its objects use
         self.models = []  # (command, segaddr): LOAD_MODEL_FROM_GEO (0x22) and LOAD_MODEL_FROM_DL (0x21)
 
@@ -206,8 +333,38 @@ def _resolve(segments, addr):
     return segments[seg] + (addr & 0xFFFFFF)
 
 
-def find_levels(rom):
-    """Follows the main script into the level dispatch and returns every level whose script was moved by the hack."""
+def _segment_content(rom, start, end):
+    """A loaded segment's data: decompressed, after sm64extend's fake MIO0 header, or as it is."""
+    if rom[start : start + 4] == b"MIO0":
+        if rom[start + 16] == 0xFF:
+            return bytes(rom[start + _u32(rom, start + 12) : start + 16 + _u32(rom, start + 4)])
+        data, _ = mio0_decode(rom, start)
+        return bytes(data)
+    return bytes(rom[start:end])
+
+
+def _level_edited(rom, base_rom, start, end, entry):
+    """Whether a level whose script stayed where vanilla has it was changed: its block (script and geo layouts),
+    ignoring where its segments are loaded from, or the data it loads."""
+    a, b = bytearray(rom[start:end]), bytearray(base_rom[start:end])
+    pc = entry
+    while start <= pc < end:
+        cmd, length = rom[pc], rom[pc + 1]
+        loads = (0x17, 0x18, 0x1A)  # extended ROMs load what was compressed with 0x17
+        if length == 0 or cmd in (0x02, 0x07) or (base_rom[pc] != cmd and not {base_rom[pc], cmd} <= set(loads)):
+            break
+        if cmd in loads:
+            if _segment_content(rom, _u32(rom, pc + 4), _u32(rom, pc + 8)) != \
+                    _segment_content(base_rom, _u32(base_rom, pc + 4), _u32(base_rom, pc + 8)):
+                return True
+            a[pc - start : pc - start + 12] = b[pc - start : pc - start + 12]
+        pc += length
+    return a != b
+
+
+def find_levels(rom, base_rom=None):
+    """Follows the main script into the level dispatch and returns every level whose script was moved by the hack,
+    and with the base ROM, the levels it edited where vanilla has them."""
     found = {}
     seen = set()
 
@@ -229,7 +386,10 @@ def find_levels(rom):
                 target = _resolve(segs, entry)
                 if seg == 0x19 and level_num in LEVEL_FOLDERS and level_num not in found:
                     # The segments the global script loaded (common actor banks) are the level's too.
-                    found[level_num] = (start, target, dict(segments))
+                    found[level_num] = (seg, start, target, dict(segments))
+                elif seg == 0x0E and level_num in LEVEL_FOLDERS and level_num not in found and base_rom is not None \
+                        and target is not None and _level_edited(rom, base_rom, start, end, target):
+                    found[level_num] = (seg, start, target, dict(segments))
                 elif target is not None:
                     walk(target, segs, level_num, depth + 1)
                 if cmd == 0x01:
@@ -263,12 +423,12 @@ def _segment_data(rom, start):
     return (start, False)
 
 
-def read_level(rom, num, base, script_rom, global_segments):
-    lvl = Level(num, script_rom)
+def read_level(rom, num, script_seg, base, script_rom, global_segments):
+    lvl = Level(num, script_seg, script_rom)
     for seg, start in global_segments.items():
         if seg not in (0x10, 0x14):
             lvl.segments[seg] = _segment_data(rom, start)
-    lvl.segments[0x19] = (base, False)
+    lvl.segments[script_seg] = (base, False)
     area = None
     visited = set()
 
@@ -285,10 +445,10 @@ def read_level(rom, num, base, script_rom, global_segments):
                 seg, start = rom[pc + 3], _u32(rom, pc + 4)
                 lvl.segments[seg] = _segment_data(rom, start)
             elif cmd in (0x05, 0x06):
-                # The level's own scripts (0x19) and the global ones it jumps to (0x15), which load the shared
-                # actor models: both are extracted with this level, so its models come from the hack's banks.
+                # The level's own scripts and the global ones it jumps to (0x15), which load the shared actor
+                # models: both are extracted with this level, so its models come from the hack's banks.
                 target = _u32(rom, pc + 4)
-                if target >> 24 in (0x19, 0x15) and target >> 24 in lvl.segments:
+                if target >> 24 in (script_seg, 0x15) and target >> 24 in lvl.segments:
                     if target not in lvl.scripts:
                         lvl.scripts.append(target)
                     walk(lvl.segments[target >> 24][0] + (target & 0xFFFFFF))
@@ -305,6 +465,8 @@ def read_level(rom, num, base, script_rom, global_segments):
                 lvl.areas.append((area, _u32(rom, pc + 4)))
             elif cmd == 0x2E:
                 lvl.terrain.append((area, _u32(rom, pc + 4)))
+            elif cmd == 0x39 and _u32(rom, pc + 4) not in lvl.macros:
+                lvl.macros.append(_u32(rom, pc + 4))
             if cmd in (0x02, 0x07):
                 return
             pc += length
@@ -910,6 +1072,8 @@ def water_boxes(rom, lvl):
     terminator's pointer, or skip it, and the port adds one."""
     res = Resolver(rom, lvl.segments)
     out = []
+    if lvl.seg != 0x19:
+        return out
     for n in range(4):
         addr = ROMHACK_WATER + n * ROMHACK_WATER_STRIDE
         pc = res.rom_addr(addr)
@@ -1057,14 +1221,14 @@ def cmd_yamls(args):
     for path in args.symbols or ["assets/symbols/us.yml"]:
         symbols.update(read_symbols(path))
     extra = load_extra(args.extra)
-    levels = find_levels(rom)
+    levels = find_levels(rom, raw_base)
     banks = {}  # rom offset of a seg 9 bank -> textures
     skyboxes = {}  # level folder -> (rom offset of its segment 0x0A, tile pointers)
     out_root = args.outdir
     summary = []
 
-    for num, (base, script, global_segments) in sorted(levels.items()):
-        lvl = read_level(rom, num, base, script, global_segments)
+    for num, (script_seg, base, script, global_segments) in sorted(levels.items()):
+        lvl = read_level(rom, num, script_seg, base, script, global_segments)
         folder = lvl.folder
         res = Resolver(rom, lvl.segments)
         nodes = OrderedDict()
@@ -1079,6 +1243,9 @@ def cmd_yamls(args):
         for area, col in lvl.terrain:
             name = f"col_{folder}_{area}_0x{col:x}"
             nodes[name] = {"type": "SM64:COLLISION", "offset": col, "symbol": name}
+        for addr in lvl.macros:
+            name = f"{folder}_macro_{addr:08X}"
+            nodes[name] = {"type": "SM64:MACRO", "offset": addr, "symbol": name}
         for index, (addr, count) in enumerate(water_boxes(rom, lvl)):
             if count:
                 name = f"{folder}_water_{ROMHACK_WATER_ID + index:04X}"
@@ -1180,14 +1347,14 @@ def cmd_yamls(args):
             name = f"{folder}_lights_{addr:08X}"
             nodes[name] = {"type": "LIGHTS", "offset": addr, "size": 24, "symbol": name}
 
-        segments = [(0x19, lvl.segments[0x19][0])]
+        segments = [(lvl.seg, lvl.segments[lvl.seg][0])]
         for n in nodes.values():
             if n["offset"] >> 24 not in lvl.segments:
                 problems.add(f"{n['symbol']} is in segment {n['offset'] >> 24:02X}, which this level doesn't load")
         # Everything the level loads, so models and collision can point into the actor banks. Texture banks get
         # their own files, and compressed segments can't be mapped.
         for seg, (start, compressed) in sorted(lvl.segments.items()):
-            if seg not in (0x19, 0x09, 0x0A) and not compressed:
+            if seg not in (lvl.seg, 0x09, 0x0A) and not compressed:
                 segments.append((seg, start))
         externals = []
         for addr, tex in sorted(textures.items()):
@@ -1215,9 +1382,9 @@ def cmd_yamls(args):
         if args.scripts:
             # The level script itself, at scripts/levels/<folder> so it replaces the vanilla level, and the scripts
             # it jumps to. Torch writes behaviors and functions by name, from the game's symbols file.
-            base = lvl.segments[0x19][0]
+            base = lvl.segments[lvl.seg][0]
             scripts = OrderedDict()
-            scripts[folder] = {"type": "SM64:LEVEL_SCRIPT", "offset": 0x19000000 + lvl.script_rom - base,
+            scripts[folder] = {"type": "SM64:LEVEL_SCRIPT", "offset": (lvl.seg << 24) + lvl.script_rom - base,
                                "symbol": f"level_{folder}_entry"}
             for addr in lvl.scripts:
                 name = f"{folder}_script_{addr:08X}"
@@ -1239,7 +1406,7 @@ def cmd_yamls(args):
         text_yaml(rom, raw_base, out_root, args.base_yamls, intro_problems)
         ram_yaml(rom, base_rom, out_root)
         if levels:
-            actor_yaml(rom, raw_base, next(iter(levels.values()))[2], out_root, args.base_yamls, args.yaml_root,
+            actor_yaml(rom, raw_base, next(iter(levels.values()))[3], out_root, args.base_yamls, args.yaml_root,
                        intro_problems)
     for p in sorted(intro_problems):
         print(f"    ! intro: {p}")
@@ -1408,6 +1575,11 @@ def main():
     p.add_argument("rom")
     p.add_argument("out")
 
+    p = sub.add_parser("patch", help="apply a PPF3 or xdelta (VCDIFF) patch")
+    p.add_argument("rom")
+    p.add_argument("patch")
+    p.add_argument("out")
+
     p = sub.add_parser("ppf", help="apply a PPF3 patch")
     p.add_argument("rom")
     p.add_argument("patch")
@@ -1429,6 +1601,8 @@ def main():
     args = parser.parse_args()
     if args.cmd == "extend":
         open(args.out, "wb").write(extend_rom(open(args.rom, "rb").read()))
+    elif args.cmd == "patch":
+        open(args.out, "wb").write(apply_patch(open(args.rom, "rb").read(), open(args.patch, "rb").read()))
     elif args.cmd == "ppf":
         open(args.out, "wb").write(apply_ppf(open(args.rom, "rb").read(), open(args.patch, "rb").read()))
     elif args.cmd == "yamls":

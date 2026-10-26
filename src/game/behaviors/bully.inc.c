@@ -300,9 +300,8 @@ void bhv_big_bully_with_minions_init(void) {
 void big_bully_spawn_star(void) {
     if (obj_lava_death() == TRUE) {
         CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_BIG_BULLY) {
-            spawn_default_star(0, 950.0f, -6800.0f);
-            spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvLllTumblingBridge,
-                                      0, 154, -5631, 0, 0, 0);
+            spawn_mist_particles();
+            spawn_fixed_star(FIXED_STAR_BIG_BULLY_WITH_MINIONS, 3700.0f, 600.0f, -5500.0f);
         };
     }
 }

@@ -1280,6 +1280,7 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
             break;
     }
 #endif
+    levelNum = game_value(GAME_VALUE_FILE_START_LEVEL, levelNum);
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
     gNeverEnteredCastle = save_file_exists(gCurrSaveFileNum - 1) == FALSE && !game_value(GAME_VALUE_SKIP_INTRO, FALSE);
