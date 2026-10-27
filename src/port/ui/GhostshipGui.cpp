@@ -24,6 +24,7 @@ void C_RunGuiDrawCallbacks();
 #include "port/Rando/EntranceTracker/EntranceTracker.h"
 
 #include <ship/window/gui/ConsoleWindow.h>
+#include "port/console/LogFeed.h"
 #include <ship/window/gui/EventDebuggerWindow.h>
 #if __has_include(<ship/window/gui/ShaderSettingsWindow.h>)
 #include <ship/window/gui/ShaderSettingsWindow.h>
@@ -47,6 +48,26 @@ class CGuiCallbackWindow : public Ship::GuiWindow {
     }
 };
 #endif
+
+// Invisible window that moves new log messages into the console every frame, opened or not.
+class LogFeedWindow : public Ship::GuiWindow {
+  public:
+    LogFeedWindow(const std::string& cvar, const std::string& name, std::shared_ptr<Ship::GuiWindow> console)
+        : GuiWindow(cvar, name), mConsole(std::move(console)) {
+    }
+    void UpdateElement() override {
+    }
+    void DrawElement() override {
+    }
+    void Draw() override {
+        if (auto console = std::dynamic_pointer_cast<Ship::ConsoleWindow>(mConsole)) {
+            LogFeed::Pump(*console);
+        }
+    }
+
+  private:
+    std::shared_ptr<Ship::GuiWindow> mConsole;
+};
 
 namespace GhostshipGui {
 // MARK: - Delegates
@@ -97,6 +118,13 @@ void SetupGuiElements() {
 
     mConsoleWindow = std::make_shared<Ship::ConsoleWindow>(CVAR_WINDOW("DevConsole"), "Console##Dev", ImVec2(820, 630));
     gui->AddGuiWindow(mConsoleWindow);
+    // The console only offers its Logs channel while this is set; logs are shown unless the player turned it off.
+    if (CVarGetInteger("gSinkEnabled", -1) == -1) {
+        CVarSetInteger("gSinkEnabled", 1);
+    }
+    auto logFeedWindow = std::make_shared<LogFeedWindow>("gWindows.LogFeed", "##logfeed", mConsoleWindow);
+    logFeedWindow->Show();
+    gui->AddGuiWindow(logFeedWindow);
 
     mAchievementsWindow =
         std::make_shared<AchievementsWindow>(CVAR_WINDOW("Achievements"), "Achievements", ImVec2(960, 720));
@@ -195,6 +223,17 @@ void Destroy() {
     mTouchControlsOverlay = nullptr;
     mAchievementsWindow = nullptr;
     mEventDebuggerWindow = nullptr;
+}
+
+void OpenLogs(spdlog::level::level_enum minLevel) {
+    auto console = std::dynamic_pointer_cast<Ship::ConsoleWindow>(mConsoleWindow);
+    if (console == nullptr) {
+        return;
+    }
+    CVarSetInteger("gSinkEnabled", 1);
+    console->SetCurrentChannel("Logs");
+    console->SetLevelFilter(minLevel);
+    console->Show();
 }
 
 void RegisterPopup(std::string title, std::string message, std::string button1, std::string button2,

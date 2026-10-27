@@ -16,6 +16,7 @@
 #include "engine/level_script.h"
 #include "game/ingame_menu.h"
 #include "game/object_list_processor.h"
+#include "port/features/Features.h"
 
 BetterLevelSelect self;
 
@@ -238,7 +239,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
         return 1;
     }
 
-    if (arg != LVL_INTRO_LEVEL_SELECT || CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) == 0) {
+    if (arg != LVL_INTRO_LEVEL_SELECT || Port_FeatureInt("devtools.better_level_select", 1) == 0) {
         return lvl_intro_update(arg, b);
     }
 
@@ -395,7 +396,7 @@ s32 BetterLevelSelect_UpdateMenu(s16 arg, s32 b) {
 }
 
 Gfx* BetterLevelSelect_DrawMenu(s32 state, struct GraphNode* node, UNUSED void* context) {
-    if (state != 1 || CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) != 1) {
+    if (state != 1 || Port_FeatureInt("devtools.better_level_select", 1) != 1) {
         return NULL;
     }
 
@@ -503,7 +504,7 @@ static void Init() {
             return;
         }
 
-        if (CVarGetInteger(CVAR_DEVELOPER_TOOLS("BetterLevelSelect"), 1) == 0) {
+        if (Port_FeatureInt("devtools.better_level_select", 1) == 0) {
             *ev->geoLayoutAddr = (void*)intro_geo_000414;
         } else {
             *ev->geoLayoutAddr = (void*)BetterLevelSelect_GeoWrapper;

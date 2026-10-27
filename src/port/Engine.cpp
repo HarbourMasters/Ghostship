@@ -10,6 +10,7 @@
 #ifdef __EMSCRIPTEN__
 #include "port/web/WebUtils.h"
 #endif
+#include "port/console/LogFeed.h"
 #include "ShipInit.hpp"
 #include "port/importer/AnimationFactory.h"
 #include "port/importer/AudioBankFactory.h"
@@ -65,11 +66,16 @@
 #include "importer/TextFactory.h"
 #include "port/ui/Notification.h"
 #include "port/importer/GenericArrayFactory.h"
+#include "port/importer/ScriptFactory.h"
 #include "controller/controldeck/ControlDeck.h"
 #include "port/mods/utils/GfxPrint.h"
 #include <ship/resource/archive/Archive.h>
 #include "port/net/SatellaClient.h"
 #include "port/ModList.h"
+#include "port/romhack/Romhack.h"
+#include "port/ModRules.h"
+#include "port/features/Features.h"
+#include "port/audio/ModSound.h"
 
 #include <ship/log/Logger.h>
 #include <ship/config/Config.h>
@@ -118,6 +124,7 @@ extern "C" {
 #include "sm64.h"
 #include "audio/external.h"
 #include "audio/internal.h"
+#include "audio/load.h"
 #include "game/ingame_menu.h"
 #include "variables.h"
 bool prevAltAssets = false;
@@ -208,6 +215,7 @@ GameEngine::GameEngine() : dictionary(nullptr) {
         std::make_shared<Ship::Logger>("Ghostship", Ship::Context::GetPathRelativeToAppDirectory("logs/Ghostship.log"));
     context->GetChildren().Add(logger);
     logger->Init();
+    LogFeed::Install();
 
     auto config =
         std::make_shared<Ship::Config>(Ship::Context::GetPathRelativeToAppDirectory("ghostship.cfg.json"), nullptr);
@@ -520,6 +528,9 @@ void GameEngine::LoadResourceFiles() {
         sRomArchiveFailed = ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(romPath) == nullptr;
     }
 
+    // The selected romhack shadows the base game; the mods mounted next shadow both.
+    Romhack::Mount(ShipCompat::GetResourceManager()->GetArchiveManager());
+
     const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
 
     if (!patches_path.empty()) {
@@ -528,7 +539,14 @@ void GameEngine::LoadResourceFiles() {
         }
 
         if (std::filesystem::is_directory(patches_path)) {
-            for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
+            for (auto it = std::filesystem::recursive_directory_iterator(patches_path);
+                 it != std::filesystem::recursive_directory_iterator(); ++it) {
+                const auto& p = *it;
+                // Folders starting with ~ (mods/~romhacks) are managed by the port, not mounted as mods.
+                if (p.is_directory() && p.path().filename().string().starts_with("~")) {
+                    it.disable_recursion_pending();
+                    continue;
+                }
                 const auto ext = p.path().extension().string();
                 if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
                     ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
@@ -541,7 +559,7 @@ void GameEngine::LoadResourceFiles() {
             }
 
             for (const auto& p : std::filesystem::directory_iterator(patches_path)) {
-                if (p.is_directory()) {
+                if (p.is_directory() && !p.path().filename().string().starts_with("~")) {
                     SPDLOG_INFO("Found mod directory: {}", p.path().generic_string());
                     ShipCompat::GetResourceManager()->GetArchiveManager()->AddArchive(p.path().generic_string());
                 }
@@ -550,6 +568,8 @@ void GameEngine::LoadResourceFiles() {
     }
 
     ModList::Apply();
+    // The romhack and the mounted mods are known now; their rules apply before ShipInit reads any feature.
+    ModRules::Resolve();
 
 #ifdef ENABLE_SCRIPTING
     auto archive = ShipCompat::GetResourceManager()->GetArchiveManager();
@@ -710,9 +730,19 @@ void GameEngine::FinishInit() {
     loader->RegisterResourceFactory(std::make_shared<SM64::PaintingFactoryV0>(), RESOURCE_FORMAT_BINARY, "Painting",
                                     static_cast<uint32_t>(SM64::ResourceType::Painting), 0);
 
+    using SM64::ScriptFactoryV0, SM64::ScriptXMLFactoryV0;
+    loader->RegisterResourceFactory(std::make_shared<ScriptFactoryV0>(Scripts::Kind::Level), RESOURCE_FORMAT_BINARY,
+                                    "LevelScript", static_cast<uint32_t>(SM64::ResourceType::LevelScript), 0);
+    loader->RegisterResourceFactory(std::make_shared<ScriptXMLFactoryV0>(Scripts::Kind::Level), RESOURCE_FORMAT_XML,
+                                    "LevelScript", static_cast<uint32_t>(SM64::ResourceType::LevelScript), 0);
+    loader->RegisterResourceFactory(std::make_shared<ScriptFactoryV0>(Scripts::Kind::Behavior), RESOURCE_FORMAT_BINARY,
+                                    "BehaviorScript", static_cast<uint32_t>(SM64::ResourceType::BehaviorScript), 0);
+    loader->RegisterResourceFactory(std::make_shared<ScriptXMLFactoryV0>(Scripts::Kind::Behavior), RESOURCE_FORMAT_XML,
+                                    "BehaviorScript", static_cast<uint32_t>(SM64::ResourceType::BehaviorScript), 0);
+
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
-    prevAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    prevAltAssets = Port_FeatureInt("graphics.alt_assets", 0);
     ShipCompat::GetResourceManager()->SetAltAssetsEnabled(prevAltAssets);
 
     Instance->AudioInit();
@@ -771,14 +801,37 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
     }
 
     std::filesystem::path ownPath;
-    std::vector<std::string> args;
-    if (argc > 1) {
-        for (int i = 1; i < argc; i++) {
-            args.push_back(argv[i]);
-        }
-    }
+    std::vector<std::string> args = Romhack::ConsumeLaunchArgs(argc, argv);
 #if !defined(__SWITCH__) && !defined(__WIIU__)
     GameExtractor extract;
+    // --extract-romhack <rom> [--recipe <package>]
+    for (size_t i = 0; i + 1 < args.size(); i++) {
+        if (args[i] != "--extract-romhack") {
+            continue;
+        }
+        const std::string rom = args[i + 1];
+        GameExtractor hack;
+        for (size_t j = 0; j + 1 < args.size(); j++) {
+            if (args[j] == "--recipe") {
+                for (const std::string& package : Romhack::ListRecipes()) {
+                    if (std::filesystem::path(package).stem().string() == args[j + 1]) {
+                        hack.SetRequestedRecipe(package);
+                    }
+                }
+            }
+        }
+        if (!hack.LoadRom(rom) || !hack.GetRomhack().has_value()) {
+            SPDLOG_ERROR("--extract-romhack: {} isn't a romhack with a recipe, or the base of the --recipe asked for",
+                         rom);
+            exit(1);
+        }
+        std::atomic<size_t> total = 0, count = 0;
+        hack.Parse(total);
+        const bool ok =
+            hack.GenerateOTRTo(count, Ship::Context::GetAppBundlePath(), Ship::Context::GetAppDirectoryPath());
+        SPDLOG_INFO("--extract-romhack: {} {}", rom, ok ? "extracted" : "failed: " + GameExtractor::sLastError);
+        exit(ok ? 0 : 1);
+    }
 #endif
     PromptSteps promptStep = PS_FILE_CHECK;
     std::atomic<bool> extracting = false;
@@ -1158,6 +1211,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #endif
                             continue;
                         }
+                        if (const auto romhack = extract.GetRomhack()) {
+                            const std::string msg = romhack->info.name +
+                                                    " is a romhack and loads on top of the base game.\n"
+                                                    "Pick a vanilla Super Mario 64 ROM first, then add the romhack "
+                                                    "from Mods > Romhacks.";
+                            promptStep = PS_WAIT;
+                            GhostshipGui::RegisterPopup("Base Game Required", msg.c_str(), "OK", "",
+                                                        [&]() { promptStep = PS_FILE_CHECK; });
+                            continue;
+                        }
                         extracting = true;
                         file = extract.GetRomPath();
                         threadPool->submit_task([&]() -> void {
@@ -1198,7 +1261,16 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                 wrapped.insert(breakAt, "\n");
                                 pos = breakAt + 1;
                             }
-                            errorMsg = "ROM extraction failed:\n\n" + wrapped + "\n\nCheck the logs for full details.";
+                            errorMsg = "ROM extraction failed:\n\n" + wrapped;
+                            const auto problems = LogFeed::CapturedProblems(5);
+                            if (!problems.empty()) {
+                                errorMsg += "\n\nWhat it logged last:";
+                                for (const auto& line : problems) {
+                                    errorMsg += "\n- " +
+                                                (line.text.size() > 110 ? line.text.substr(0, 107) + "..." : line.text);
+                                }
+                            }
+                            errorMsg += "\n\nThe full log is in logs/Ghostship.log.";
                         } else {
                             errorMsg = "No ROM O2R file detected.\nPlease generate a ROM O2R and relaunch.";
                         }
@@ -1336,6 +1408,15 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
             ImGui::PopStyleVar(2);
         }
 
+        // The extraction's warnings and errors, for its window and for the error popup if it fails.
+        static bool sCapturingExtraction = false;
+        if (extracting && !sCapturingExtraction) {
+            LogFeed::BeginCapture();
+            sCapturingExtraction = true;
+        } else if (!extracting && sCapturingExtraction) {
+            LogFeed::EndCapture();
+            sCapturingExtraction = false;
+        }
         if (extracting && !ImGui::IsPopupOpen("ROM Extraction")) {
             ImGui::OpenPopup("ROM Extraction");
         }
@@ -1390,6 +1471,25 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                     counting ? fmt::format("{:.0f}%", progress) : (std::string) "Reading ROM, please wait...";
                 ImGui::ProgressBar(counting ? progress / 100.0f : -1.0f * (float)ImGui::GetTime(),
                                    ImVec2(600.0f, 50.0f), overlay.c_str());
+
+                const auto problems = LogFeed::CapturedProblems(50);
+                if (!problems.empty()) {
+                    const float lines = (float)std::min<size_t>(problems.size(), 6);
+                    if (ImGui::BeginChild("##extractlog",
+                                          ImVec2(600.0f, ImGui::GetTextLineHeightWithSpacing() * lines + 8.0f),
+                                          ImGuiChildFlags_Borders, ImGuiWindowFlags_HorizontalScrollbar)) {
+                        const bool atBottom = ImGui::GetScrollY() >= ImGui::GetScrollMaxY() - 1.0f;
+                        for (const auto& line : problems) {
+                            const ImVec4 lineColor = line.level >= spdlog::level::err ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f)
+                                                                                      : ImVec4(1.0f, 0.85f, 0.3f, 1.0f);
+                            ImGui::TextColored(lineColor, "%s", line.text.c_str());
+                        }
+                        if (atBottom) {
+                            ImGui::SetScrollHereY(1.0f);
+                        }
+                    }
+                    ImGui::EndChild();
+                }
                 ImGui::EndPopup();
             }
             ImGui::PopStyleColor(3);
@@ -1619,7 +1719,10 @@ void GameEngine::StartFrame() const {
 
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
-            // Toggle HD Assets
+            // Toggle HD Assets, unless a romhack or mod has locked them.
+            if (Features::IsLocked("graphics.alt_assets")) {
+                break;
+            }
             CVarSetInteger("gEnhancements.Mods.AlternateAssets",
                            !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
             break;
@@ -1630,13 +1733,13 @@ void GameEngine::StartFrame() const {
 }
 
 uint32_t GameEngine::GetInterpolationFPS() {
-    if (CVarGetInteger(CVAR_SETTING("MatchRefreshRate"), 0)) {
+    if (Port_FeatureInt("graphics.match_refresh_rate", 0)) {
         return ShipCompat::GetWindow()->GetCurrentRefreshRate();
     } else if (CVarGetInteger(CVAR_VSYNC_ENABLED, 1) || !ShipCompat::GetWindow()->CanDisableVerticalSync()) {
         return std::min<uint32_t>(ShipCompat::GetWindow()->GetCurrentRefreshRate(),
-                                  CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30));
+                                  Port_FeatureInt("graphics.interpolation_fps", 30));
     }
-    return CVarGetInteger(CVAR_SETTING("InterpolationFPS"), 30);
+    return Port_FeatureInt("graphics.interpolation_fps", 30);
 }
 
 // Audio
@@ -1658,6 +1761,11 @@ void GameEngine::HandleAudioThread() {
         int samples_left = AudioPlayerBuffered();
         u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
+        const float music_vol = CVarGetInteger("gSettings.Volume.MainMusic", 100) / 100.0f;
+        const float sfx_vol = CVarGetInteger("gSettings.Volume.SFX", 100) / 100.0f;
+        // Mod music (port/api/sound.h) stands in for the level music while it plays.
+        gSequencePlayers[SEQ_PLAYER_LEVEL].gameVolume = ModSound::MusicActive() ? 0.0f : music_vol;
+
         s16 audio_buffer[SAMPLES_PER_FRAME];
         for (int i = 0; i < NUM_AUDIO_CHANNELS; i++) {
             create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
@@ -1669,6 +1777,7 @@ void GameEngine::HandleAudioThread() {
             audio_buffer[i] = static_cast<s16>(audio_buffer[i] * master_vol);
         }
 
+        ModSound::Mix(audio_buffer, num_audio_samples * 2, master_vol * music_vol, master_vol * sfx_vol);
         ModAudio_MixInto(audio_buffer, num_audio_samples * 2);
 
         AudioPlayerPlayFrame((u8*)audio_buffer, 2 * num_audio_samples * 4);
@@ -1811,7 +1920,7 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<FrameInterpolation
         interpreter->mInterpolationIndex++;
     }
 
-    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    bool curAltAssets = Port_FeatureInt("graphics.alt_assets", 0);
     if (prevAltAssets != curAltAssets) {
         prevAltAssets = curAltAssets;
         ShipCompat::GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
@@ -1993,7 +2102,7 @@ static void FixYoshiTypo(DialogEntry* dialog) {
         return;
     }
 
-    const uint8_t from = CVarGetInteger(CVAR_ENHANCEMENT("FixYoshiDialogueTypo"), 1) ? 0x37 : 0x36;
+    const uint8_t from = Port_FeatureInt("enhancements.fix_yoshi_dialogue_typo", 1) ? 0x37 : 0x36;
     uint8_t pattern[sizeof(sYoshiTypo)];
     memcpy(pattern, sYoshiTypo, sizeof(pattern));
     pattern[1] = from;

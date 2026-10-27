@@ -11,6 +11,7 @@
 #include "port/Rando/Rando.h"
 #include "port/ShipUtils.h"
 #include "port/ShipInit.hpp"
+#include "port/features/Features.h"
 
 uint8_t textRand[] = { 0x1B, 0x0A, 0x17, 0x0D, 0xFF };
 uint8_t textMarioRando[] = { 0x1B, 0x0A, 0x17, 0x0D, 0x18, 0x16, 0x12, 0x23, 0x0E, 0x1B, 0xFF };
@@ -64,7 +65,7 @@ void PortEnhancements_Init() {
     // Register event listeners
     REGISTER_LISTENER(PlayerHealthChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         PlayerHealthChange* ev = (PlayerHealthChange*)event;
-        if (CVarGetInteger("gCheats.InfiniteHealth", 0) == 0 || ev->health > 0) {
+        if (Port_FeatureInt("cheats.infinite_health", 0) == 0 || ev->health > 0) {
             return;
         }
 
@@ -72,14 +73,14 @@ void PortEnhancements_Init() {
     });
     REGISTER_LISTENER(PlayerLivesChange, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
         PlayerLivesChange* ev = (PlayerLivesChange*)event;
-        if (CVarGetInteger("gCheats.InfiniteLives", 0) == 0 || ev->lives > 0) {
+        if (Port_FeatureInt("cheats.infinite_lives", 0) == 0 || ev->lives > 0) {
             return;
         }
 
         event->Cancelled = true;
     });
     REGISTER_LISTENER(RenderPauseCourseOptions, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (CVarGetInteger("gCheats.PauseExitWhenever", 0) == 0) {
+        if (Port_FeatureInt("cheats.pause_exit_whenever", 0) == 0) {
             return;
         }
 
@@ -88,27 +89,27 @@ void PortEnhancements_Init() {
     });
 
     REGISTER_LISTENER(LevelInitFromSaveFile, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (CVarGetInteger("gEnhancements.DisableLakituCutscene", 0)) {
+        if (Port_FeatureInt("enhancements.disable_lakitu_cutscene", 0)) {
             gNeverEnteredCastle = false;
         }
     });
 
     REGISTER_LISTENER(SetTripleJumpAction, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (CVarGetInteger("gCheats.AlwaysFlyTripleJump", 0) == 0) {
+        if (Port_FeatureInt("cheats.always_fly_triple_jump", 0) == 0) {
             return;
         }
         SetTripleJumpAction* ev = (SetTripleJumpAction*)event;
         *ev->useFlyingVariant = true;
     });
     REGISTER_LISTENER(FlyingActionUpdate, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (CVarGetInteger("gCheats.AlwaysFlyTripleJump", 0) == 0) {
+        if (Port_FeatureInt("cheats.always_fly_triple_jump", 0) == 0) {
             return;
         }
         FlyingActionUpdate* ev = (FlyingActionUpdate*)event;
         *ev->canFly = true;
     });
     REGISTER_LISTENER(FlyingTripleJumpLaunch, EVENT_PRIORITY_NORMAL, [](IEvent* event) {
-        if (CVarGetInteger("gCheats.FlyingTripleJumpHighLaunch", 0) == 0) {
+        if (Port_FeatureInt("cheats.flying_triple_jump_high_launch", 0) == 0) {
             return;
         }
         FlyingTripleJumpLaunch* ev = (FlyingTripleJumpLaunch*)event;
@@ -124,11 +125,10 @@ static void OnDisableDrawDistance(IEvent* event) {
 }
 
 static void UpdateDrawDistanceHooks() {
-    const bool enabled = CVarGetInteger("gEnhancements.DisableDrawDistance", 0) != 0;
+    const bool enabled = Port_FeatureInt("enhancements.disable_draw_distance", 0) != 0;
     if (enabled && sDistanceRenderListener == -1) {
         sDistanceLoadListener = REGISTER_LISTENER(EntityDistanceLoad, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
-        sDistanceRenderListener =
-            REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
+        sDistanceRenderListener = REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
     } else if (!enabled && sDistanceRenderListener != -1) {
         UNREGISTER_LISTENER(EntityDistanceLoad, sDistanceLoadListener);
         UNREGISTER_LISTENER(EntityDistanceRender, sDistanceRenderListener);
@@ -235,6 +235,13 @@ void PortEnhancements_Register() {
     REGISTER_EVENT(SpawnStar);
     REGISTER_EVENT(SpawnCoinStar);
     REGISTER_EVENT(ModifyDefaultStar);
+    REGISTER_EVENT(GameValue);
+    REGISTER_EVENT(GameFloat);
+    REGISTER_EVENT(SpawnFixedStar);
+    REGISTER_EVENT(ModifyTrajectory);
+    REGISTER_EVENT(CameraCourseProcessing);
+    REGISTER_EVENT(TitleScreenFrame);
+    REGISTER_EVENT(CreditsEntryLines);
     REGISTER_EVENT(ModifyObjectBehavior);
     REGISTER_EVENT(ModifyRedCoinCount);
     REGISTER_EVENT(ModifyObjectVisibility);

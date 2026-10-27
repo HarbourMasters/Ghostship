@@ -133,6 +133,13 @@ void spawn_default_star(f32 sp20, f32 sp24, f32 sp28) {
     }
 }
 
+void spawn_fixed_star(s32 star, f32 x, f32 y, f32 z) {
+    f32 pos[3] = { x, y, z };
+    CALL_CANCELLABLE_EVENT(SpawnFixedStar, star, pos) {
+        spawn_default_star(pos[0], pos[1], pos[2]);
+    }
+}
+
 void spawn_red_coin_cutscene_star(f32 sp20, f32 sp24, f32 sp28) {
     CALL_CANCELLABLE_EVENT(ModifyDefaultStar, sp20, sp24, sp28) {
         struct Object* sp1C = spawn_star(sp1C, sp20, sp24, sp28);

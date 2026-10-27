@@ -3,6 +3,7 @@
 
 #include <libultraship.h>
 #include "sm64_config.h"
+#include "port/features/Features.h"
 
 struct RumbleData {
     u8 unk00;
@@ -67,7 +68,7 @@ extern_s s8 D_8032C650;
 extern_s s8 gShowProfiler;
 extern_s s8 gShowDebugText;
 
-#define gDebugLevelSelect (CVarGetInteger("gDeveloperTools.DebugMode", 0) == 1)
+#define gDebugLevelSelect (Port_FeatureInt("devtools.debug_level_select", 0) == 1)
 
 void exec_display_list(struct SPTask *spTask);
 

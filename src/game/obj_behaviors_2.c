@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 
 #include "sm64.h"
+#include "game/game_values.h"
 #include "actors/common0.h"
 #include "actors/group11.h"
 #include "actors/group17.h"

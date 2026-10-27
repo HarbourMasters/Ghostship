@@ -224,8 +224,15 @@ Vtx *make_skybox_rect_ext(s32 absRow, s32 absCol, s8 colorIndex) {
  * the skybox from flashing black when the camera rotates between game frames.
  * Texture column indices wrap with SKYBOX_COLS; world-space x positions do not.
  */
+extern const char* Port_LevelSkybox(void);
+
 void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex) {
     s32 row, col;
+    const void *tiles = Port_LevelSkybox();
+    if (tiles == NULL) {
+        tiles = sSkyboxTextures[(background >= 0 && background < ARRAY_COUNT(sSkyboxTextures)) ? background : 0];
+    }
+    u8 **tileList = (u8 **) segmented_to_virtual(tiles);
     s32 upperLeftRow = sSkyBoxInfo[player].upperLeftTile / SKYBOX_COLS;
     s32 upperLeftCol = sSkyBoxInfo[player].upperLeftTile % SKYBOX_COLS;
 
@@ -236,7 +243,7 @@ void draw_skybox_tile_grid(Gfx **dlist, s8 background, s8 player, s8 colorIndex)
             s32 texCol   = ((absCol % SKYBOX_COLS) + SKYBOX_COLS) % SKYBOX_COLS;
             s32 tileIndex = (upperLeftRow + row) * SKYBOX_COLS + texCol;
 
-            u8 *texture = ((u8 **) segmented_to_virtual(sSkyboxTextures[background]))[tileIndex];
+            u8 *texture = tileList[tileIndex];
             Vtx *vertices = make_skybox_rect_ext(upperLeftRow + row, absCol, colorIndex);
 
             gLoadBlockTexture((*dlist)++, 32, 32, G_IM_FMT_RGBA, texture);

@@ -32,6 +32,7 @@
 #include "port/events/list/PlayerEvent.h"
 #include "port/events/Events.h"
 #include "port/mods/PortEnhancements.h"
+#include "port/features/Features.h"
 extern struct SaveBuffer gSaveBuffer;
 
 /**
@@ -494,7 +495,7 @@ void bhv_menu_button_init(void) {
 
     // spawn_object_rel_with_rot passes the z offset in as the roll, so the buttons inside
     // the Score/Copy/Erase/Sound screens (z offset -100) sit rolled by about half a degree.
-    if (CVarGetInteger("gEnhancements.FixFileSelectButtonTilt", 0) == 1) {
+    if (Port_FeatureInt("enhancements.fix_file_select_button_tilt", 0) == 1) {
         gCurrentObject->oFaceAngleRoll = 0;
     }
 }

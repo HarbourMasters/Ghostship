@@ -42,6 +42,7 @@
 9bef1128717f958171a4afac3ed78ee2bb4e86ce:
   name: Super Mario 64 [US]
   path: assets/ymls/us
+  symbols: assets/symbols/us.yml
   config:
     gbi: F3D
     sort: OFFSET

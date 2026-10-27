@@ -3,6 +3,7 @@
 #define INCLUDED_FROM_CAMERA_C
 
 #include "prevent_bss_reordering.h"
+#include "game/game_values.h"
 #include "sm64.h"
 #include "camera.h"
 #include "seq_ids.h"
@@ -1908,7 +1909,7 @@ s32 update_behind_mario_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     f32 focYOff = 125.f;
 
     // Zoom in when Mario R_TRIG mode is active
-    if (sSelectionFlags & CAM_MODE_MARIO_ACTIVE) {
+    if ((sSelectionFlags & CAM_MODE_MARIO_ACTIVE) && game_value(GAME_VALUE_CAM_MARIO_ACTIVE_ZOOM, TRUE)) {
         maxDist = 350.f;
         focYOff = 120.f;
     }
@@ -2371,7 +2372,7 @@ s16 update_default_camera(struct Camera *c) {
             yawVel = 0;
         }
         if (yawVel != 0 && get_dialog_id() == DIALOG_NONE) {
-            camera_approach_s16_symmetric_bool(&yaw, yawGoal, yawVel);
+            camera_approach_s16_symmetric_bool(&yaw, yawGoal, game_value(GAME_VALUE_CAM_AUTO_YAW, TRUE) ? yawVel : 0);
         }
     }
 
@@ -2455,8 +2456,9 @@ s16 update_default_camera(struct Camera *c) {
     }
     if ((gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) && (sSelectionFlags & CAM_MODE_MARIO_ACTIVE)) {
         posHeight = 610.f;
-        if (gCurrLevelArea == AREA_SSL_PYRAMID || gCurrLevelNum == LEVEL_CASTLE) {
-            posHeight /= 2;
+        if (gCurrLevelArea == AREA_SSL_PYRAMID || gCurrLevelNum == LEVEL_CASTLE
+            || game_value(GAME_VALUE_CAM_ZOOMED_OUT_ALWAYS_HALVED, FALSE)) {
+            posHeight /= game_float(GAME_FLOAT_CAM_ZOOMED_OUT_DIVISOR, 2.0f);
         }
     }
 
@@ -3230,7 +3232,9 @@ void update_camera(struct Camera *c) {
     c->mode = gLakituState.mode;
     c->defMode = gLakituState.defMode;
 
-    camera_course_processing(c);
+    CALL_CANCELLABLE_EVENT(CameraCourseProcessing, c) {
+        camera_course_processing(c);
+    }
     stub_camera_3(c);
     sCButtonsPressed = find_c_buttons_pressed(sCButtonsPressed, gPlayer1Controller->buttonPressed,
                                               gPlayer1Controller->buttonDown);
@@ -3434,7 +3438,7 @@ void reset_camera(struct Camera *c) {
     sModeTransition.framesLeft = 0;
     unused8032CFCC = -1;
     unused8032CFC8 = -1;
-    gCameraMovementFlags = 0;
+    gCameraMovementFlags = game_value(GAME_VALUE_CAM_INITIAL_MOVEMENT, 0);
     gCameraMovementFlags |= CAM_MOVE_INIT_CAMERA;
     unused8033B316 = 0;
     sStatusFlags = 0;
@@ -3493,7 +3497,7 @@ void init_camera(struct Camera *c) {
     sCreditsPlayer2Yaw = 0;
     gPrevLevel = gCurrLevelArea / 16;
     gCurrLevelArea = gCurrLevelNum * 16 + gCurrentArea->index;
-    sSelectionFlags &= CAM_MODE_MARIO_SELECTED;
+    sSelectionFlags &= game_value(GAME_VALUE_CAM_SELECTION_KEEP_MASK, CAM_MODE_MARIO_SELECTED);
     sFramesPaused = 0;
     gLakituState.mode = c->mode;
     gLakituState.defMode = c->defMode;
@@ -3692,7 +3696,7 @@ void zoom_out_if_paused_and_outside(struct GraphNodeCamera *camera) {
 }
 
 void select_mario_cam_mode(void) {
-    sSelectionFlags = CAM_MODE_MARIO_SELECTED;
+    sSelectionFlags = game_value(GAME_VALUE_CAM_MARIO_SELECTED_FLAGS, CAM_MODE_MARIO_SELECTED);
 }
 
 /**
@@ -5218,24 +5222,26 @@ void handle_c_button_movement(struct Camera *c) {
         }
 
         // Rotate left or right
-        cSideYaw = 0x1000;
-        if (gPlayer1Controller->buttonPressed & R_CBUTTONS) {
+        cSideYaw = game_value(GAME_VALUE_CAM_C_SIDE_YAW, 0x1000);
+        u16 cSideButtons = game_value(GAME_VALUE_CAM_C_SIDE_HELD, FALSE) ? gPlayer1Controller->buttonDown
+                                                                              : gPlayer1Controller->buttonPressed;
+        if (cSideButtons & R_CBUTTONS) {
             if (gCameraMovementFlags & CAM_MOVE_ROTATE_LEFT) {
                 gCameraMovementFlags &= ~CAM_MOVE_ROTATE_LEFT;
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ROTATE_RIGHT;
-                if (sCSideButtonYaw == 0) {
+                if (sCSideButtonYaw == 0 && game_value(GAME_VALUE_CAM_C_SIDE_SOUND, TRUE)) {
                     play_sound_cbutton_side();
                 }
                 sCSideButtonYaw = -cSideYaw;
             }
         }
-        if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
+        if (cSideButtons & L_CBUTTONS) {
             if (gCameraMovementFlags & CAM_MOVE_ROTATE_RIGHT) {
                 gCameraMovementFlags &= ~CAM_MOVE_ROTATE_RIGHT;
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ROTATE_LEFT;
-                if (sCSideButtonYaw == 0) {
+                if (sCSideButtonYaw == 0 && game_value(GAME_VALUE_CAM_C_SIDE_SOUND, TRUE)) {
                     play_sound_cbutton_side();
                 }
                 sCSideButtonYaw = cSideYaw;
@@ -7051,9 +7057,14 @@ void find_mario_floor_and_ceil(struct PlayerGeometry *pg) {
     }
 
     gCheckingSurfaceCollisionsForCamera = FALSE;
-    pg->currFloorHeight = find_floor(sMarioCamState->pos[0],
-                                     sMarioCamState->pos[1] + 10.f,
-                                     sMarioCamState->pos[2], &pg->currFloor);
+    f32 floorHeight = find_floor(sMarioCamState->pos[0],
+                                 sMarioCamState->pos[1] + 10.f,
+                                 sMarioCamState->pos[2], &pg->currFloor);
+    u32 steadyAction1 = game_value(GAME_VALUE_CAM_STEADY_FLOOR_ACTION_1, 0);
+    u32 steadyAction2 = game_value(GAME_VALUE_CAM_STEADY_FLOOR_ACTION_2, 0);
+    if (steadyAction1 == 0 || (gMarioState->action != steadyAction1 && gMarioState->action != steadyAction2)) {
+        pg->currFloorHeight = floorHeight;
+    }
     pg->currCeilHeight = find_ceil(sMarioCamState->pos[0],
                                    sMarioCamState->pos[1] - 10.f,
                                    sMarioCamState->pos[2], &pg->currCeil);

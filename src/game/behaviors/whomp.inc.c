@@ -103,7 +103,7 @@ void king_whomp_chase(void) {
                 o->oForwardVel = 9.0f;
                 cur_obj_init_animation_with_accel_and_sound(0, 3.0f);
             }
-            if (o->oDistanceToMario < 300.0f) {
+            if (o->oDistanceToMario < game_float(GAME_FLOAT_KING_WHOMP_POUND_DIST, 300.0f)) {
                 o->oAction = 3;
             }
         }
@@ -128,7 +128,7 @@ void whomp_prepare_jump(void) {
 
 void whomp_jump(void) {
     if (o->oTimer == 0) {
-        o->oVelY = 40.0f;
+        o->oVelY = game_float(GAME_FLOAT_KING_WHOMP_JUMP_VEL, 40.0f);
     }
 
     if (o->oTimer < 8) {
@@ -219,7 +219,8 @@ void whomp_on_ground_general(void) {
         } else {
             whomp_on_ground();
         }
-        if (o->oTimer > 100 || (gMarioState->action == ACT_SQUISHED && o->oTimer > 30)) {
+        if (o->oTimer > game_value(GAME_VALUE_KING_WHOMP_POUND_FRAMES, 100)
+            || (gMarioState->action == ACT_SQUISHED && o->oTimer > 30)) {
             o->oSubAction = 10;
         }
     } else if (o->oFaceAnglePitch > 0) {
@@ -248,7 +249,7 @@ void whomp_die(void) {
                 spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
                 cur_obj_shake_screen(SHAKE_POS_SMALL);
                 o->oPosY += 100.0f;
-                spawn_default_star(180.0f, 3880.0f, 340.0f);
+                spawn_fixed_star(FIXED_STAR_KING_WHOMP, 180.0f, 3880.0f, 340.0f);
                 cur_obj_play_sound_2(SOUND_OBJ_KING_WHOMP_DEATH);
                 o->oAction = 9;
             };

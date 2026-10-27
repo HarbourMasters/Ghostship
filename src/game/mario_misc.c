@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 
 #include "sm64.h"
+#include "game/game_values.h"
 #include "area.h"
 #include "audio/external.h"
 #include "behavior_actions.h"
@@ -89,7 +90,13 @@ Gfx *geo_draw_mario_head_goddard(s32 callContext, struct GraphNode *node, Mat4 *
     struct GraphNodeGenerated *asGenerated = (struct GraphNodeGenerated *) node;
     UNUSED Mat4 *transform = c;
     FrameInterpolation_ShouldInterpolateFrame(false);
+    s32 drawHead = FALSE;
     if (callContext == GEO_CONTEXT_RENDER) {
+        CALL_CANCELLABLE_EVENT(TitleScreenFrame) {
+            drawHead = TRUE;
+        }
+    }
+    if (drawHead) {
         if (gPlayer1Controller->controllerData != NULL && !gWarpTransition.isActive) {
             gd_copy_p1_contpad(gPlayer1Controller->controllerData);
         }
@@ -191,19 +198,19 @@ void bhv_toad_message_init(void) {
 
     switch (dialogId) {
         case TOAD_STAR_1_DIALOG:
-            enoughStars = (starCount >= TOAD_STAR_1_REQUIREMENT);
+            enoughStars = (starCount >= game_value(GAME_VALUE_TOAD_STAR_1, TOAD_STAR_1_REQUIREMENT));
             if (saveFlags & SAVE_FLAG_COLLECTED_TOAD_STAR_1) {
                 dialogId = TOAD_STAR_1_DIALOG_AFTER;
             }
             break;
         case TOAD_STAR_2_DIALOG:
-            enoughStars = (starCount >= TOAD_STAR_2_REQUIREMENT);
+            enoughStars = (starCount >= game_value(GAME_VALUE_TOAD_STAR_2, TOAD_STAR_2_REQUIREMENT));
             if (saveFlags & SAVE_FLAG_COLLECTED_TOAD_STAR_2) {
                 dialogId = TOAD_STAR_2_DIALOG_AFTER;
             }
             break;
         case TOAD_STAR_3_DIALOG:
-            enoughStars = (starCount >= TOAD_STAR_3_REQUIREMENT);
+            enoughStars = (starCount >= game_value(GAME_VALUE_TOAD_STAR_3, TOAD_STAR_3_REQUIREMENT));
             if (saveFlags & SAVE_FLAG_COLLECTED_TOAD_STAR_3) {
                 dialogId = TOAD_STAR_3_DIALOG_AFTER;
             }

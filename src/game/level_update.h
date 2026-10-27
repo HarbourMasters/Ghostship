@@ -59,6 +59,7 @@ struct CreditsEntry {
 };
 
 extern_s struct CreditsEntry *gCurrCreditsEntry;
+extern_s struct CreditsEntry sCreditsSequence[];
 
 extern_s struct MarioState gMarioStates[];
 extern_s struct MarioState *gMarioState;

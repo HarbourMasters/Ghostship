@@ -135,7 +135,7 @@ void mr_i_act_3(void) {
             if (o->oBehParams2ndByte != 0) {
                 CALL_CANCELLABLE_EVENT(BossDefeated, o, BOSS_TYPE_MR_I) {
                     o->oPosY += 100.0f;
-                    spawn_default_star(1370, 2000.0f, -320.0f);
+                    spawn_fixed_star(FIXED_STAR_MR_I, 1370, 2000.0f, -320.0f);
                     obj_mark_for_deletion(o);
                 };
             } else {

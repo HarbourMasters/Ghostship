@@ -117,7 +117,9 @@ void print_displaying_credits_entry(void) {
     s16 lineHeight;
 
     if (sDispCreditsEntry != NULL) {
-        currStrPtr = (char **) sDispCreditsEntry->unk0C;
+        const char **lines = sDispCreditsEntry->unk0C;
+        CALL_EVENT(CreditsEntryLines, (s32) (sDispCreditsEntry - sCreditsSequence), &lines);
+        currStrPtr = (char **) lines;
         titleStr = *currStrPtr++;
         numLines = *titleStr++ - '0';
 

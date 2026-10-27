@@ -26,6 +26,7 @@
 #include "port/ui/cvar_prefixes.h"
 #include "port/ui/TouchControls.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "port/features/Features.h"
 
 extern void mirror_mode_invert_input(void);
 
@@ -535,7 +536,7 @@ void run_demo_inputs(void) {
             // demo input to override the mask where start may have been pressed.
             u16 startPushed = gControllers[0].controllerData->button & START_BUTTON;
 
-            if(CVarGetInteger(CVAR_CHEAT("PlayInDemo"), 0) == 0) {
+            if(Port_FeatureInt("cheats.play_in_demo", 0) == 0) {
                 // Perform the demo inputs by assigning the current button mask and the stick inputs.
                 gControllers[0].controllerData->stick_x = gCurrDemoInput->rawStickX;
                 gControllers[0].controllerData->stick_y = gCurrDemoInput->rawStickY;

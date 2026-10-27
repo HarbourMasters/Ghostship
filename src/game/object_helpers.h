@@ -137,6 +137,7 @@ extern_s void cur_obj_change_action(s32 action);
 extern_s void cur_obj_set_vel_from_mario_vel(f32 f12,f32 f14);
 extern_s BAD_RETURN(s16) cur_obj_reverse_animation(void);
 extern_s BAD_RETURN(s32) cur_obj_extend_animation_if_at_end(void);
+extern_s struct Animation *obj_cur_anim(struct Object *obj);
 extern_s s32 cur_obj_check_if_near_animation_end(void);
 extern_s s32 cur_obj_check_if_at_animation_end(void);
 extern_s s32 cur_obj_check_anim_frame(s32 frame);

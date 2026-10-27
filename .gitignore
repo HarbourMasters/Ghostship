@@ -98,6 +98,12 @@ node_modules
 /src/port/build.c
 /properties.h
 mods/
+/romhacks/
+/cache/
+*.ppf
+*.bps
+*.ips
+*.xdelta
 randomizer/
 !/src/port/mods/
 # The APK ships a placeholder that tells the player where their mods go, so
@@ -117,3 +123,5 @@ android/local.properties
 android/app/build/
 android/app/.cxx/
 build-android/
+extracted/
+shadercache/

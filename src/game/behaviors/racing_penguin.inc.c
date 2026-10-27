@@ -39,7 +39,7 @@ static void racing_penguin_act_show_init_text(void) {
         child->parentObj = o;
 
         o->oPathedStartWaypoint = o->oPathedPrevWaypoint =
-            segmented_to_virtual(ccm_seg7_trajectory_penguin_race);
+            segmented_to_virtual(game_trajectory(TRAJECTORY_RACING_PENGUIN, ccm_seg7_trajectory_penguin_race));
         o->oPathedPrevWaypointFlags = 0;
 
         o->oAction = RACING_PENGUIN_ACT_PREPARE_FOR_RACE;

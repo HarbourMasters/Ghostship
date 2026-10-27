@@ -160,9 +160,7 @@ void GhostshipMenu::OnInit(const nlohmann::json& initArgs) {
     AddMenuRando();
     AddMenuAchievements();
     AddMenuDevTools();
-#ifdef ENABLE_SCRIPTING
     AddModMenu();
-#endif
 
     if (CVarGetInteger(CVAR_SETTING("Menu.SidebarSearch"), 0)) {
         InsertSidebarSearch();

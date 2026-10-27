@@ -1,5 +1,6 @@
 #include <libultra/types.h>
 #include "port/events/list/PlayerEvent.h"
+#include "game/game_values.h"
 
 #include "area.h"
 #include "actors/common1.h"
@@ -24,6 +25,7 @@
 #include "sm64.h"
 #include "sound_init.h"
 #include "rumble_init.h"
+#include "port/features/Features.h"
 
 #define INT_GROUND_POUND_OR_TWIRL (1 << 0) // 0x01
 #define INT_PUNCH                 (1 << 1) // 0x02
@@ -783,7 +785,7 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
     // StarNoExit enhancement is meant for stars, so keys keep their normal exit.
     u32 isBowserKey = gCurrLevelNum == LEVEL_BOWSER_1 || gCurrLevelNum == LEVEL_BOWSER_2;
     u32 noExit = (o->oInteractionSubtype & INT_SUBTYPE_NO_EXIT) != 0 ||
-                 (!isBowserKey && CVarGetInteger("gEnhancements.StarNoExit", 0));
+                 (!isBowserKey && Port_FeatureInt("enhancements.star_no_exit", 0));
     u32 grandStar = (o->oInteractionSubtype & INT_SUBTYPE_GRAND_STAR) != 0;
 
     if (m->health >= 0x100) {
@@ -1627,7 +1629,7 @@ u32 interact_cap(struct MarioState *m, UNUSED u32 interactType, struct Object *o
         switch (capFlag) {
             case MARIO_VANISH_CAP:
                 capTime = 600;
-                capMusic = SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP);
+                capMusic = game_value(GAME_VALUE_VANISH_CAP_MUSIC, SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP));
                 break;
 
             case MARIO_METAL_CAP:
@@ -1872,9 +1874,9 @@ void pss_end_slide(struct MarioState *m) {
     //! This flag isn't set on death or level entry, allowing double star spawn
     if (sPssSlideStarted) {
         u16 slideTime = level_control_timer(TIMER_CONTROL_STOP);
-        if (slideTime < 630) {
+        if (slideTime < game_value(GAME_VALUE_PSS_SLIDE_FRAMES, 630)) {
             m->marioObj->oBehParams = (1 << 24);
-            spawn_default_star(-6358.0f, -4300.0f, 4700.0f);
+            spawn_fixed_star(FIXED_STAR_PSS_SLIDE, -6358.0f, -4300.0f, 4700.0f);
         }
         sPssSlideStarted = FALSE;
     }

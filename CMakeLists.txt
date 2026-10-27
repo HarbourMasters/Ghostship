@@ -225,7 +225,7 @@ if(NOT USE_SATELLA)
     )
 endif()
 
-if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR CMAKE_SYSTEM_NAME STREQUAL "Android" OR EMSCRIPTEN OR XBOX_UWP OR NOT USE_SATELLA)
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" OR CMAKE_SYSTEM_NAME STREQUAL "CafeOS" OR CMAKE_SYSTEM_NAME STREQUAL "iOS" OR EMSCRIPTEN OR NOT USE_SATELLA)
     set(USE_NETWORKING_DEFAULT OFF)
 else()
     set(USE_NETWORKING_DEFAULT ON)
@@ -748,8 +748,28 @@ if(USE_NETWORKING AND NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch" AND NOT CM
             endif()
         endif()
     endif()
+    # The NDK has no MbedTLS, so build it here and point ixwebsocket at it: MBEDTLS_FOUND skips its
+    # FindMbedTLS, along with the 3.x define set there. The release tarball ships the generated sources.
+    if (ANDROID)
+        FetchContent_Declare(
+            mbedtls
+            URL      https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.4/mbedtls-3.6.4.tar.bz2
+            URL_HASH SHA256=ec35b18a6c593cf98c3e30db8b98ff93e8940a8c4e690e66b41dfc011d678110
+        )
+        set(ENABLE_PROGRAMS OFF CACHE BOOL "" FORCE)
+        set(ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+        set(MBEDTLS_FATAL_WARNINGS OFF CACHE BOOL "" FORCE)
+        FetchContent_MakeAvailable(mbedtls)
+        set(MBEDTLS_FOUND TRUE)
+        set(MBEDTLS_INCLUDE_DIRS "${mbedtls_SOURCE_DIR}/include")
+        set(MBEDTLS_LIBRARIES mbedtls mbedx509 mbedcrypto)
+    endif()
     FetchContent_MakeAvailable(ixwebsocket)
     target_link_libraries(${PROJECT_NAME} PRIVATE ixwebsocket)
+    if (ANDROID)
+        target_compile_definitions(ixwebsocket PRIVATE IXWEBSOCKET_USE_MBED_TLS_MIN_VERSION_3)
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${MBEDTLS_LIBRARIES})
+    endif()
     target_compile_definitions(${PROJECT_NAME} PRIVATE
         USE_NETWORKING
         GHOSTSHIP_VERSION="${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
@@ -971,6 +991,21 @@ add_custom_command(
 	COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "$<TARGET_FILE_DIR:Ghostship>/config.yml"
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "$<TARGET_FILE_DIR:Ghostship>/assets/"
 )
+endif()
+
+find_package(Python3 COMPONENTS Interpreter)
+if(Python3_Interpreter_FOUND AND NOT ANDROID)
+    file(GLOB ROMHACK_RECIPES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/tools/romhacks/*/recipe.yml")
+    foreach(RECIPE ${ROMHACK_RECIPES})
+        get_filename_component(ROMHACK_DIR ${RECIPE} DIRECTORY)
+        get_filename_component(ROMHACK_NAME ${ROMHACK_DIR} NAME)
+        add_custom_command(
+            TARGET ${PROJECT_NAME} POST_BUILD
+            COMMENT "Packing romhack ${ROMHACK_NAME}..."
+            COMMAND ${Python3_EXECUTABLE} "${CMAKE_SOURCE_DIR}/tools/romhacks/rom_manager.py" package
+                    "${ROMHACK_DIR}" "$<TARGET_FILE_DIR:Ghostship>/romhacks/${ROMHACK_NAME}.o2r"
+        )
+    endforeach()
 endif()
 
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/fast/interpreter.h" GHOSTSHIP_HAS_CUSTOM_UNIFORMS

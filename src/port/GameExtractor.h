@@ -8,10 +8,26 @@
 #include <string>
 #include <utility>
 
+#include "port/romhack/Romhack.h"
+
 namespace fs = std::filesystem;
+
+// A config.yml entry with a romhack: block. It extracts to a delta o2r under mods/~romhacks.
+struct RomhackRecipe {
+    Romhack::Info info;
+    std::string output; // config.output.binary, relative to the app directory
+    std::string files;
+    std::string code;
+    std::string sourceDir;
+};
 
 class GameExtractor {
 public:
+    // The loaded ROM's romhack recipe, or nullopt for the base game or an unknown ROM.
+    std::optional<RomhackRecipe> GetRomhack() const;
+    void SetRequestedRecipe(const std::string& package) {
+        mRequestedPackage = package;
+    }
     // Message from the most recent failed extraction (empty on success). Surfaced
     // in the extraction-failure popup so the user sees the real cause.
     static std::string sLastError;
@@ -19,6 +35,7 @@ public:
     static bool GenAssetFile();
     std::optional<std::string> ValidateChecksum() const;
     bool RunStandalone(std::string rom);
+    bool LoadRom(const std::string& rom);
     bool SelectGameFromUI();
     void SetSearchPath(const std::string& path);
     void GetRoms(std::vector<std::string>& roms);
@@ -36,9 +53,12 @@ public:
     // asked of Ship::Context. The Android launcher extracts before SDL is up, so
     // Context cannot resolve a path there yet.
     bool GenerateOTRTo(std::atomic<size_t>& assetCount, const std::string& assetsPath, const std::string& gamePath);
+    // Frees Torch's state from the last extraction: the ROM, and whatever the passes kept.
+    static void ReleaseTorch();
     void WritePortVersion();
 private:
     fs::path mGamePath;
     std::vector<uint8_t> mGameData;
+    std::string mRequestedPackage;
     std::string mSearchPath;
 };

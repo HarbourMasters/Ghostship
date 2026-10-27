@@ -33,7 +33,7 @@ void bhv_piranha_plant_bubble_loop(void) {
     s32 i;
     s32 animFrame = parent->header.gfx.animInfo.animFrame;
     // TODO: rename lastFrame if it is inaccurate
-    s32 lastFrame = parent->header.gfx.animInfo.curAnim->loopEnd - 2;
+    s32 lastFrame = obj_cur_anim(parent)->loopEnd - 2;
     UNUSED u8 filler[4];
 
     cur_obj_set_pos_relative(parent, 0, 72.0f, 180.0f);

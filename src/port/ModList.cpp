@@ -1,10 +1,13 @@
 #include "port/ModList.h"
 #include "port/ShipCompat.h"
+#include "port/romhack/Romhack.h"
 
 #include <libultraship/bridge/consolevariablebridge.h>
 #include <ship/resource/ResourceManager.h>
 #include <ship/resource/archive/Archive.h>
 #include <ship/resource/archive/ArchiveManager.h>
+
+#include <spdlog/spdlog.h>
 
 #include <algorithm>
 #include <cctype>
@@ -12,6 +15,15 @@
 namespace {
 
 std::vector<ModList::Entry> sEntries;
+
+bool NonEmpty(const nlohmann::json& json, const char* key) {
+    if (!json.contains(key)) {
+        return false;
+    }
+    const auto& value = json[key];
+    return value.is_string() ? !value.get<std::string>().empty()
+                             : (value.is_object() || value.is_array()) && !value.empty();
+}
 
 std::string Key(const char* setting, const std::string& name) {
     std::string key = std::string("gModList.") + setting + ".";
@@ -33,18 +45,34 @@ void ModList::Apply() {
     sEntries.clear();
     for (const auto& archive : *archives) {
         const std::string& name = archive->GetManifest().Name;
-        if (name.empty()) {
+        // The romhack has a manifest too, but it is picked as the base game and stays where it was mounted.
+        if (name.empty() || archive == Romhack::ActiveArchive()) {
             order.push_back(archive);
             continue;
         }
         sEntries.push_back({ archive, IsEnabled(name), Priority(name) });
-        if (sEntries.back().enabled) {
-            slots.push_back(order.size());
-            order.push_back(archive);
-            mods.push_back(archive);
-        } else {
-            sEntries.back().status = "Disabled";
+        Entry& entry = sEntries.back();
+        if (const auto manifest = ModRules::ReadManifest(*archive)) {
+            entry.rules = ModRules::Parse(*manifest);
+            entry.code = NonEmpty(*manifest, "main") || NonEmpty(*manifest, "binaries");
+            entry.shaders =
+                manifest->contains("shaders") && (*manifest)["shaders"].is_object() &&
+                (NonEmpty((*manifest)["shaders"], "passes") || NonEmpty((*manifest)["shaders"], "materials"));
         }
+        if (!entry.enabled) {
+            entry.status = "Disabled";
+            continue;
+        }
+        // Stays enabled, so it loads again once its base is the active one.
+        if (const auto reason = ModRules::IncompatibleReason(entry.rules)) {
+            SPDLOG_WARN("Not loading mod {}: {}", name, *reason);
+            entry.status = "Not loaded. " + *reason;
+            continue;
+        }
+        entry.mounted = true;
+        slots.push_back(order.size());
+        order.push_back(archive);
+        mods.push_back(archive);
     }
     std::stable_sort(mods.begin(), mods.end(), [](const auto& a, const auto& b) {
         return Priority(a->GetManifest().Name) < Priority(b->GetManifest().Name);
@@ -82,9 +110,21 @@ void ModList::SetPriority(const std::string& name, int priority) {
     CVarSave();
 }
 
+void ModList::SetOrder(const std::vector<std::string>& enabledFirstWins, const std::vector<std::string>& disabled) {
+    const int count = static_cast<int>(enabledFirstWins.size());
+    for (int i = 0; i < count; i++) {
+        CVarSetInteger(Key("Disabled", enabledFirstWins[i]).c_str(), 0);
+        CVarSetInteger(Key("Priority", enabledFirstWins[i]).c_str(), count - 1 - i);
+    }
+    for (const std::string& name : disabled) {
+        CVarSetInteger(Key("Disabled", name).c_str(), 1);
+    }
+    CVarSave();
+}
+
 void ModList::ClearStatus() {
     for (Entry& entry : sEntries) {
-        if (entry.enabled) {
+        if (entry.mounted) {
             entry.status.clear();
             entry.failed = false;
         }

@@ -48,7 +48,7 @@ void bhv_koopa_shell_flame_loop(void) {
 
 void bhv_koopa_shell_flame_spawn(void) {
     s32 i;
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < 2 && game_value(GAME_VALUE_KOOPA_SHELL_FLAMES, TRUE); i++) {
         spawn_object(o, MODEL_RED_FLAME, bhvKoopaShellFlame);
     }
 }

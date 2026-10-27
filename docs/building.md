@@ -128,7 +128,7 @@ The console also needs the VCLibs framework package once, `Microsoft.VCLibs.x64.
 
 Repeat deploys install over the top, which keeps the app's LocalState (the game archive, saves and mods). `-Clean` uninstalls first and **deletes** all of it.
 
-The Xbox target renders with DirectX 11 only, and has no Satella connection, so online mod features are unavailable there. Mods and scripting work as on the desktop.
+The Xbox target renders with DirectX 11 only. Mods, scripting and the Satella connection work as on the desktop.
 
 ## Linux
 ### Install dependencies

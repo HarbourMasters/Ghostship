@@ -52,7 +52,7 @@ void bhv_snow_leaf_particle_spawn_init(void) {
 
     gMarioObject->oActiveParticleFlags &= ~ACTIVE_PARTICLE_LEAF;
 
-    if (gCurrLevelNum == LEVEL_CCM || gCurrLevelNum == LEVEL_SL) {
+    if ((gCurrLevelNum == LEVEL_CCM && game_value(GAME_VALUE_CCM_TREES_SNOW, TRUE)) || gCurrLevelNum == LEVEL_SL) {
         isSnow = TRUE;
     } else {
         isSnow = FALSE;

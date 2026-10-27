@@ -1,4 +1,5 @@
 #include "ObjectViewer.h"
+#include "port/features/Features.h"
 
 #if defined(_WIN32) && !defined(__WINRT__)
 #include <windows.h>
@@ -70,6 +71,9 @@ void ObjectViewer::UpdateElement() {
 }
 
 void ObjectViewer::DrawElement() {
+    if (Features::DrawLockedNotice("devtools.object_viewer")) {
+        return;
+    }
     static char searchBehavior[128] = "";
     static bool filterModelId = false;
     static int searchModelId = 0;

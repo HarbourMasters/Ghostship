@@ -28,9 +28,7 @@ class GhostshipMenu : public Ship::Menu {
     void AddMenuRando();
     void AddMenuShaderSettings();
     void AddMenuAchievements();
-#ifdef ENABLE_SCRIPTING
     void AddModMenu();
-#endif
 
   private:
     char mGitCommitHashTruncated[8];

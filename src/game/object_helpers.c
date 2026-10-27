@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <libultra/types.h>
 #include "port/events/list/PlayerEvent.h"
+#include "game/game_values.h"
 
 #include "sm64.h"
 #include "area.h"
@@ -28,6 +29,7 @@
 #include "rendering_graph_node.h"
 #include "spawn_object.h"
 #include "spawn_sound.h"
+#include "port/features/Features.h"
 
 s8 sBbhStairJiggleOffsets[] = { -8, 8, -4, 4 };
 s16 sPowersOfTwo[] = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
@@ -633,6 +635,9 @@ void obj_set_gfx_pos_from_pos(struct Object *obj) {
 
 void obj_init_animation(struct Object *obj, s32 animIndex) {
     struct Animation **anims = o->oAnimations;
+    if (anims == NULL) {
+        return;
+    }
     geo_obj_init_animation(&obj->header.gfx, &anims[animIndex]);
 }
 
@@ -710,19 +715,26 @@ void cur_obj_scale(f32 scale) {
 
 void cur_obj_init_animation(s32 animIndex) {
     struct Animation **anims = segmented_to_virtual(o->oAnimations);
+    if (anims == NULL) {
+        return;
+    }
     geo_obj_init_animation(&o->header.gfx, &anims[animIndex]);
 }
 
 void cur_obj_init_animation_with_sound(s32 animIndex) {
     struct Animation **anims = segmented_to_virtual(o->oAnimations);
-    geo_obj_init_animation(&o->header.gfx, &anims[animIndex]);
+    if (anims != NULL) {
+        geo_obj_init_animation(&o->header.gfx, &anims[animIndex]);
+    }
     o->oSoundStateID = animIndex;
 }
 
 void cur_obj_init_animation_with_accel_and_sound(s32 animIndex, f32 accel) {
     struct Animation **anims = segmented_to_virtual(o->oAnimations);
     s32 animAccel = (s32)(accel * 65536.0f);
-    geo_obj_init_animation_accel(&o->header.gfx, &anims[animIndex], animAccel);
+    if (anims != NULL) {
+        geo_obj_init_animation_accel(&o->header.gfx, &anims[animIndex], animAccel);
+    }
     o->oSoundStateID = animIndex;
 }
 
@@ -952,6 +964,12 @@ void cur_obj_set_vel_from_mario_vel(f32 f12, f32 f14) {
     }
 }
 
+struct Animation *obj_cur_anim(struct Object *obj) {
+    static struct Animation sNoAnimation;
+    struct Animation *anim = obj->header.gfx.animInfo.curAnim;
+    return anim != NULL ? anim : &sNoAnimation;
+}
+
 BAD_RETURN(s16) cur_obj_reverse_animation(void) {
     if (o->header.gfx.animInfo.animFrame >= 0) {
         o->header.gfx.animInfo.animFrame--;
@@ -960,15 +978,15 @@ BAD_RETURN(s16) cur_obj_reverse_animation(void) {
 
 BAD_RETURN(s32) cur_obj_extend_animation_if_at_end(void) {
     s32 sp4 = o->header.gfx.animInfo.animFrame;
-    s32 sp0 = o->header.gfx.animInfo.curAnim->loopEnd - 2;
+    s32 sp0 = obj_cur_anim(o)->loopEnd - 2;
 
     if (sp4 == sp0) o->header.gfx.animInfo.animFrame--;
 }
 
 s32 cur_obj_check_if_near_animation_end(void) {
-    u32 animFlags = (s32) o->header.gfx.animInfo.curAnim->flags;
+    u32 animFlags = (s32) obj_cur_anim(o)->flags;
     s32 animFrame = o->header.gfx.animInfo.animFrame;
-    s32 nearLoopEnd = o->header.gfx.animInfo.curAnim->loopEnd - 2;
+    s32 nearLoopEnd = obj_cur_anim(o)->loopEnd - 2;
     s32 isNearEnd = FALSE;
 
     if (animFlags & ANIM_FLAG_NOLOOP && nearLoopEnd + 1 == animFrame) {
@@ -984,7 +1002,7 @@ s32 cur_obj_check_if_near_animation_end(void) {
 
 s32 cur_obj_check_if_at_animation_end(void) {
     s32 animFrame = o->header.gfx.animInfo.animFrame;
-    s32 lastFrame = o->header.gfx.animInfo.curAnim->loopEnd - 1;
+    s32 lastFrame = obj_cur_anim(o)->loopEnd - 1;
 
     if (animFrame == lastFrame) {
         return TRUE;
@@ -1356,7 +1374,7 @@ void cur_obj_move_y(f32 gravity, f32 bounciness, f32 buoyancy) {
             // dropped below the object's floor, which drags it through that floor (Wet-Dry World
             // Heave-Hos while the water drains). With the fix on, land it on the floor instead.
             if (o->oPosY < o->oFloorHeight ||
-                (waterLevel < o->oFloorHeight && CVarGetInteger("gEnhancements.FixHeaveHoSinkingThroughFloor", 0) == 1)) {
+                (waterLevel < o->oFloorHeight && Port_FeatureInt("enhancements.fix_heave_ho_sinking", 0) == 1)) {
                 o->oPosY = o->oFloorHeight;
                 o->oMoveFlags &= ~OBJ_MOVE_MASK_IN_WATER;
             } else {
@@ -1648,7 +1666,7 @@ f32 cur_obj_abs_y_dist_to_home(void) {
 
 s32 cur_obj_advance_looping_anim(void) {
     s32 animFrame = o->header.gfx.animInfo.animFrame;
-    s32 loopEnd = o->header.gfx.animInfo.curAnim->loopEnd;
+    s32 loopEnd = obj_cur_anim(o)->loopEnd;
     s32 result;
 
     if (animFrame < 0) {
@@ -2910,6 +2928,6 @@ void cur_obj_spawn_loot_blue_coin(void) {
 void cur_obj_spawn_star_at_y_offset(f32 targetX, f32 targetY, f32 targetZ, f32 offsetY) {
     f32 objectPosY = o->oPosY;
     o->oPosY += offsetY + gDebugInfo[DEBUG_PAGE_ENEMYINFO][0];
-    spawn_default_star(targetX, targetY, targetZ);
+    spawn_fixed_star(FIXED_STAR_AT_Y_OFFSET, targetX, targetY, targetZ);
     o->oPosY = objectPosY;
 }

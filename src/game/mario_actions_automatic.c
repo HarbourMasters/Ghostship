@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 
 #include "sm64.h"
+#include "game/game_values.h"
 #include "behavior_data.h"
 #include "mario_actions_automatic.h"
 #include "audio/external.h"
@@ -341,7 +342,7 @@ s32 perform_hanging_step(struct MarioState *m, Vec3f nextPos) {
 s32 update_hang_moving(struct MarioState *m) {
     s32 stepResult;
     Vec3f nextPos;
-    f32 maxSpeed = 4.0f;
+    f32 maxSpeed = game_float(GAME_FLOAT_HANG_MAX_SPEED, 4.0f);
 
     m->forwardVel += 1.0f;
     if (m->forwardVel > maxSpeed) {

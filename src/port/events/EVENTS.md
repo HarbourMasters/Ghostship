@@ -586,6 +586,62 @@ Fires when the ending credits complete and the game is considered finished.
 
 ---
 
+## Game Data Events (`list/GameEvent.h`)
+
+Numbers, stars, paths and switches the game has compiled in. Each fires where the game uses the data, already holding the vanilla value, so a mod changes the game by writing through the pointer without touching engine code. A romhack's code mod uses them the same way.
+
+### `GameValue` / `GameFloat`
+```c
+s32  id;    // GameValueId / GameFloatId
+s32* value; // f32* for GameFloat
+```
+Fires each time the game reads one of its numbers through `game_value(id, vanilla)` or `game_float(id, vanilla)` (`game/game_values.h`). Write `*value` to change it. The ids cover star requirements (Toad, MIPS, the cannon grate, the caged boo, the sun warp, the castle light), lives, King Bob-omb's health, the slide time, the vanish cap's music, skipping the intro, course entry dialogs, the Exit Course warp, objects drawn at any distance, culling, King Whomp, the bullies' lava, Mario's hanging speed and the camera's tuning. See the enums for each one's meaning; switches are `0`/`1`.
+
+---
+
+### `SpawnFixedStar` _(cancellable)_
+```c
+s32  id;  // FixedStarId
+f32* pos; // x, y, z
+```
+Fires before a star that always spawns at the same spot: bosses, Koopa the Quick, the slide, the racing penguin and Tuxie's mother (`spawn_fixed_star`).  
+Write `pos` to move it. **Cancel** — no star; spawn something else in its place (a key, say).
+
+---
+
+### `ModifyTrajectory`
+```c
+s32                id;   // TrajectoryId
+const Trajectory** path;
+```
+Fires when an object picks up a compiled-in path: Koopa the Quick's races, the bowling balls, the racing penguin and the track platforms (`TRAJECTORY_PLATFORM_ON_TRACK + index`). Write `*path` to replace it with a trajectory in native byte order that stays alive while it's used.
+
+---
+
+### `CameraCourseProcessing` _(cancellable)_
+```c
+struct Camera* camera;
+```
+Fires each frame before `update_camera` runs the level's camera triggers.  
+**Cancel** — skips `camera_course_processing` this frame.
+
+---
+
+### `TitleScreenFrame` _(cancellable)_
+Fires each frame the title screen draws Mario's head.  
+**Cancel** — no head this frame.
+
+---
+
+### `CreditsEntryLines`
+```c
+s32           entry; // index into the credits sequence
+const char*** lines;
+```
+Fires when the ending shows a credits entry. Write `*lines` to show other text: the title first (its first character the layout digit), then its lines.
+
+---
+
 ## Audio Events
 
 Audio events are documented inline in [list/AudioEvent.h](list/AudioEvent.h). Summary:

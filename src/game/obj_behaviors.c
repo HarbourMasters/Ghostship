@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 
 #include "sm64.h"
+#include "game/game_values.h"
 #include "area.h"
 #include "audio/external.h"
 #include "behavior_actions.h"
