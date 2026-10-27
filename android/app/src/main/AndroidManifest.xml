@@ -34,6 +34,9 @@
     <!-- Rumble -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- Satella: mod signing keys and the online relay -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!--
         No storage permissions: the ROM is read once through the document
         picker, and everything the game writes lives in the app's own external
