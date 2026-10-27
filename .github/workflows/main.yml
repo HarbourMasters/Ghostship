@@ -26,6 +26,8 @@ jobs:
     - name: ccache
       uses: hendrikmuhs/ccache-action@v1.2.13
       with:
+        max-size: 2G
+        save: ${{ github.ref_name == github.event.repository.default_branch }}
         key: ${{ runner.os }}-o2r-ccache-${{ github.ref }}-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-o2r-ccache-${{ github.ref }}
@@ -97,6 +99,8 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
           variant: sccache
+          max-size: 2G
+          save: ${{ github.ref_name == github.event.repository.default_branch }}
           key: windows-sccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
             windows-sccache-${{ github.ref }}
@@ -245,6 +249,7 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           create-symlink: true
+          max-size: 2G
           save: ${{ github.ref_name == github.event.repository.default_branch }}
           key: ${{ runner.os }}-14-ccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
@@ -301,14 +306,13 @@ jobs:
         with:
           name: ghostship.o2r
           path: .
-      - name: Cache build folder
+      - name: Cache iOS dependency builds
         uses: actions/cache@v6
         with:
-          key: ios-build-${{ github.ref }}-${{ github.sha }}
+          path: build-ios/_deps
+          key: ios-deps-${{ hashFiles('CMakeLists.txt', 'libultraship/CMakeLists.txt', '.gitmodules') }}
           restore-keys: |
-            ios-build-${{ github.ref }}
-            ios-build-
-          path: build-ios
+            ios-deps-
       - name: Build (unsigned, device arm64)
         run: |
           cmake -S . -B build-ios -G Xcode -DIOS=ON -DPLATFORM=OS64 -DCMAKE_BUILD_TYPE=Release -DIOS_SIGNING=OFF -DPython3_EXECUTABLE=$(which python3)
@@ -424,6 +428,8 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
+          max-size: 2G
+          save: ${{ github.ref_name == github.event.repository.default_branch }}
           key: linux-ccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
             linux-ccache-${{ github.ref }}

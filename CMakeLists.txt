@@ -811,10 +811,14 @@ option(USE_STANDALONE "Build as a standalone executable" OFF)
 option(BUILD_STORMLIB "Build with StormLib support" OFF)
 
 option(BUILD_SM64 "Build with Super Mario 64 support" ON)
+option(BUILD_NAUDIO "Build with NAudio support" ON)
 option(BUILD_MK64 "Build with Mario Kart 64 support" OFF)
 option(BUILD_SF64 "Build with Star Fox 64 support" OFF)
 option(BUILD_FZERO "Build with F-Zero X support" OFF)
 option(BUILD_MARIO_ARTIST "Build with Mario Artist support" OFF)
+option(BUILD_PM64 "Build with Paper Mario support" OFF)
+option(BUILD_BK64 "Build with Banjo Kazooie support" OFF)
+option(BUILD_OOT "Build with Ocarina of Time support" OFF)
 add_subdirectory(Torch)
 list(APPEND ADDITIONAL_LIBRARY_DEPENDENCIES torch)
 endif()
@@ -1053,7 +1057,17 @@ include(ExternalProject)
 ExternalProject_Add(TorchExternal
 	PREFIX TorchExternal
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/Torch
+    # ExternalProject has its own cache; the options above do not reach it.
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/Torch
+               -DBUILD_SM64=ON
+               -DBUILD_NAUDIO=ON
+               -DBUILD_MK64=OFF
+               -DBUILD_SF64=OFF
+               -DBUILD_FZERO=OFF
+               -DBUILD_MARIO_ARTIST=OFF
+               -DBUILD_PM64=OFF
+               -DBUILD_BK64=OFF
+               -DBUILD_OOT=OFF
 )
 ExternalProject_Get_Property(TorchExternal install_dir)
 get_property(_is_multi_config GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)

@@ -33,6 +33,8 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
+          max-size: 2G
+          save: ${{ github.ref_name == github.event.repository.default_branch }}
           key: web-ccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
             web-ccache-${{ github.ref }}

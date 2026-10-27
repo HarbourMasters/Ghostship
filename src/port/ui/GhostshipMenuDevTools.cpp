@@ -196,9 +196,10 @@ void GhostshipMenu::AddModMenu() {
             GameEngine::Instance->LoadScripts();
         });
 #endif
-
+#ifdef ENABLE_SCRIPTING
     auto keystore = ShipCompat::GetKeystore();
     auto allKeys = keystore->GetAllKeys();
+#endif
 
     for (const ModList::Entry& mod : ModList::Entries()) {
         const auto& entry = mod.archive;
@@ -240,12 +241,14 @@ void GhostshipMenu::AddModMenu() {
         });
 
         Ship::KeyOrigin origin = Ship::KeyOrigin::User;
+#ifdef ENABLE_SCRIPTING
         for (const auto& key : allKeys) {
             if (key.Data == StringHelper::HexToBytes(info.PublicKey)) {
                 origin = key.Origin;
                 break;
             }
         }
+#endif
 
         std::string securityText;
         if (entry->IsSigned()) {

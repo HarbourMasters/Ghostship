@@ -1,0 +1,74 @@
+name: Cache cleanup
+
+# Caches are capped at 10 GB per repository and evicted least-recently-used.
+# Every push saves a fresh per-sha entry, so without pruning the large build
+# caches crowd out the compiler caches that actually shorten builds.
+
+on:
+  pull_request:
+    types: [closed]
+  schedule:
+    # Daily, after the nightly builds have settled.
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete caches for the closed pull request
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          REF: refs/pull/${{ github.event.pull_request.number }}/merge
+        run: |
+          gh api --paginate "repos/$REPO/actions/caches?per_page=100" \
+            --jq ".actions_caches[] | select(.ref == \"$REF\") | .id" \
+          | while read -r id; do
+              echo "deleting cache $id ($REF)"
+              gh api -X DELETE "repos/$REPO/actions/caches/$id" || true
+            done
+
+      - name: Prune stale and superseded caches
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh api --paginate "repos/$REPO/actions/caches?per_page=100" \
+            --jq '.actions_caches[] | [.id, .ref, .last_accessed_at, .size_in_bytes, .key] | @tsv' > caches.tsv
+          echo "total entries: $(wc -l < caches.tsv)"
+
+          # 1. Anything untouched for 7 days.
+          cutoff=$(date -u -d '7 days ago' +%s)
+          awk -F'\t' -v c="$cutoff" '{
+            cmd = "date -u -d \"" $3 "\" +%s"; cmd | getline t; close(cmd);
+            if (t < c) print $1
+          }' caches.tsv > stale.txt || true
+
+          # 2. Keep only the newest entry per (ref, key-prefix-without-sha).
+          awk -F'\t' '{
+            key = $5; sub(/-[0-9a-f]{40}$/, "", key);
+            group = $2 "|" key;
+            if (!(group in seen)) { seen[group] = 1 } else { print $1 }
+          }' caches.tsv > superseded.txt || true
+
+          sort -u stale.txt superseded.txt | while read -r id; do
+            [ -n "$id" ] || continue
+            echo "deleting cache $id"
+            gh api -X DELETE "repos/$REPO/actions/caches/$id" || true
+          done
+
+      - name: Report usage
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh api "repos/$REPO/actions/cache/usage" \
+            --jq '"caches: \(.active_caches_count)  size: \(.active_caches_size_in_bytes / 1073741824 * 100 | floor / 100) GiB / 10 GiB"'
