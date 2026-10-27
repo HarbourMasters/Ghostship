@@ -7,13 +7,13 @@
 #include "ScriptCommands.h"
 
 #define V(i) ((uintptr_t)args[i])
-#define SCRIPT_COMMAND(name, argc, call)                                   \
-    static int Emit_##name(const uintptr_t* args, uintptr_t* out) {        \
-        (void)args;                                                        \
-        const BehaviorScript cmd[] = { name call };                        \
+#define SCRIPT_COMMAND(name, argc, call)                                                               \
+    static int Emit_##name(const uintptr_t* args, uintptr_t* out) {                                    \
+        (void)args;                                                                                    \
+        const BehaviorScript cmd[] = { name call };                                                    \
         static_assert(sizeof(cmd) / sizeof(cmd[0]) <= SCRIPT_COMMAND_MAX_WORDS, #name " is too long"); \
-        std::memcpy(out, cmd, sizeof(cmd));                                \
-        return (int)(sizeof(cmd) / sizeof(cmd[0]));                        \
+        std::memcpy(out, cmd, sizeof(cmd));                                                            \
+        return (int)(sizeof(cmd) / sizeof(cmd[0]));                                                    \
     }
 #include "generated/BehaviorCommands.inc"
 #undef SCRIPT_COMMAND

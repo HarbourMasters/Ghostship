@@ -302,8 +302,8 @@ std::string GameExtractor::GetRomPath() {
     return mGamePath.generic_string();
 }
 
-static std::optional<RomhackRecipe> RomhackRecipeFor(const std::vector<uint8_t>& romData,
-                                                     const std::string& configDir, const std::string& requested);
+static std::optional<RomhackRecipe> RomhackRecipeFor(const std::vector<uint8_t>& romData, const std::string& configDir,
+                                                     const std::string& requested);
 
 // Each pass gets its own Torch instance; the previous one holds the ROM and what that pass kept, so free it.
 static void ReplaceCompanion(Companion* next) {
@@ -427,7 +427,9 @@ static void PackRomhackCode(const std::filesystem::path& folder, Romhack::Info& 
                 info.codeMain = json.value("main", "");
                 info.codeVersion = json.value("code_version", 0);
                 info.apiVersion = json.value("api_version", 0);
-            } catch (const std::exception& e) { SPDLOG_WARN("Romhack code {}: {}", entry.path().generic_string(), e.what()); }
+            } catch (const std::exception& e) {
+                SPDLOG_WARN("Romhack code {}: {}", entry.path().generic_string(), e.what());
+            }
             continue;
         }
         Companion::Instance->RegisterCompanionFile(rel.generic_string(), std::move(data));
@@ -485,8 +487,8 @@ static std::optional<RomhackRecipe> RecipeFromBaseRom(const YAML::Node& config, 
     return target.empty() ? std::nullopt : RecipeFromConfig(config, target, package);
 }
 
-static std::optional<RomhackRecipe> RomhackRecipeFor(const std::vector<uint8_t>& romData,
-                                                     const std::string& configDir, const std::string& requested) {
+static std::optional<RomhackRecipe> RomhackRecipeFor(const std::vector<uint8_t>& romData, const std::string& configDir,
+                                                     const std::string& requested) {
     if (romData.empty()) {
         return std::nullopt;
     }

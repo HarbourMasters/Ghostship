@@ -55,8 +55,9 @@ void ModList::Apply() {
         if (const auto manifest = ModRules::ReadManifest(*archive)) {
             entry.rules = ModRules::Parse(*manifest);
             entry.code = NonEmpty(*manifest, "main") || NonEmpty(*manifest, "binaries");
-            entry.shaders = manifest->contains("shaders") && (*manifest)["shaders"].is_object() &&
-                            (NonEmpty((*manifest)["shaders"], "passes") || NonEmpty((*manifest)["shaders"], "materials"));
+            entry.shaders =
+                manifest->contains("shaders") && (*manifest)["shaders"].is_object() &&
+                (NonEmpty((*manifest)["shaders"], "passes") || NonEmpty((*manifest)["shaders"], "materials"));
         }
         if (!entry.enabled) {
             entry.status = "Disabled";

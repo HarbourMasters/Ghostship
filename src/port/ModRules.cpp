@@ -90,8 +90,7 @@ void Write(const Rules& rules, nlohmann::ordered_json& manifest) {
 
 std::optional<nlohmann::json> ReadManifest(Ship::Archive& archive) {
     auto file = archive.LoadFile("manifest.json");
-    if (file == nullptr || !file->IsLoaded || file->Buffer == nullptr ||
-        file->Buffer->size() <= file->BufferOffset) {
+    if (file == nullptr || !file->IsLoaded || file->Buffer == nullptr || file->Buffer->size() <= file->BufferOffset) {
         return std::nullopt;
     }
     try {
@@ -150,7 +149,8 @@ bool VersionInRange(const std::string& version, const std::string& range) {
     for (size_t i = 0; i < tokens.size(); i++) {
         const std::string& token = tokens[i];
         size_t opLength = 0;
-        while (opLength < token.size() && (token[opLength] == '<' || token[opLength] == '>' || token[opLength] == '=')) {
+        while (opLength < token.size() &&
+               (token[opLength] == '<' || token[opLength] == '>' || token[opLength] == '=')) {
             opLength++;
         }
         std::string op = token.substr(0, opLength);
@@ -162,8 +162,8 @@ bool VersionInRange(const std::string& version, const std::string& range) {
             op = ">=";
         }
         const int cmp = CompareVersions(version, target);
-        const bool ok = op == ">="  ? cmp >= 0
-                        : op == ">" ? cmp > 0
+        const bool ok = op == ">="   ? cmp >= 0
+                        : op == ">"  ? cmp > 0
                         : op == "<=" ? cmp <= 0
                         : op == "<"  ? cmp < 0
                                      : cmp == 0;
@@ -195,14 +195,16 @@ std::optional<std::string> IncompatibleReason(const Rules& rules) {
         if (ref.name == "*" || (ref.name == kBaseAnyRomhack && romhack != nullptr)) {
             return std::nullopt;
         }
-        const bool named = ref.name == baseName || (romhack != nullptr && !romhack->id.empty() && ref.name == romhack->id);
+        const bool named =
+            ref.name == baseName || (romhack != nullptr && !romhack->id.empty() && ref.name == romhack->id);
         if (named && (ref.versions.empty() || VersionInRange(baseVersion, ref.versions))) {
             return std::nullopt;
         }
     }
     std::string targets;
     for (const BaseRef& ref : *rules.worksWith) {
-        targets += (targets.empty() ? "" : ", ") + BaseLabel(ref.name) + (ref.versions.empty() ? "" : " " + ref.versions);
+        targets +=
+            (targets.empty() ? "" : ", ") + BaseLabel(ref.name) + (ref.versions.empty() ? "" : " " + ref.versions);
     }
     const std::string current = BaseLabel(baseName) + (baseVersion.empty() ? "" : " " + baseVersion);
     return fmt::format("Made for {}, not {}.", targets, current);

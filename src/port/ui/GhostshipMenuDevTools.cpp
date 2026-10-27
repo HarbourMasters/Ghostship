@@ -138,10 +138,9 @@ void GhostshipMenu::AddMenuDevTools() {
         .Options(WindowButtonOptions().Tooltip("Enables the separate Console Window."));
     AddWidget(path, "Show Logs in the Console", WIDGET_CVAR_CHECKBOX)
         .CVar("gSinkEnabled")
-        .Options(CheckboxOptions()
-                     .DefaultValue(true)
-                     .Tooltip("Adds a Logs channel to the console with everything the game logs, filterable by "
-                              "level, so you can read it in game."));
+        .Options(CheckboxOptions().DefaultValue(true).Tooltip(
+            "Adds a Logs channel to the console with everything the game logs, filterable by "
+            "level, so you can read it in game."));
 
     path.sidebarName = "Event Debugger";
     AddSidebarEntry("Dev Tools", path.sidebarName, 1);
@@ -174,23 +173,20 @@ void GhostshipMenu::AddModMenu() {
     WidgetPath path = { "Mods", "General", SECTION_COLUMN_1 };
 
     AddSidebarEntry(path.sectionName, path.sidebarName, 1);
-    AddWidget(path, "##ModManager", WIDGET_CUSTOM)
-        .HideInSearch(true)
-        .CustomFunction([](WidgetInfo&) { DrawModManager(); });
-    AddWidget(path, "##ModRuleConflicts", WIDGET_CUSTOM)
-        .HideInSearch(true)
-        .CustomFunction([](WidgetInfo&) {
-            const auto& conflicts = Features::Conflicts();
-            if (conflicts.empty()) {
-                return;
-            }
-            ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Orange),
-                               "Mods disagree on these settings:");
-            for (const Features::Conflict& conflict : conflicts) {
-                ImGui::BulletText("%s: %s overrides %s (%s)", conflict.id.c_str(), conflict.winner.c_str(),
-                                  conflict.loser.c_str(), Features::LockReason(conflict.id.c_str()).c_str());
-            }
-        });
+    AddWidget(path, "##ModManager", WIDGET_CUSTOM).HideInSearch(true).CustomFunction([](WidgetInfo&) {
+        DrawModManager();
+    });
+    AddWidget(path, "##ModRuleConflicts", WIDGET_CUSTOM).HideInSearch(true).CustomFunction([](WidgetInfo&) {
+        const auto& conflicts = Features::Conflicts();
+        if (conflicts.empty()) {
+            return;
+        }
+        ImGui::TextColored(UIWidgets::ColorValues.at(UIWidgets::Colors::Orange), "Mods disagree on these settings:");
+        for (const Features::Conflict& conflict : conflicts) {
+            ImGui::BulletText("%s: %s overrides %s (%s)", conflict.id.c_str(), conflict.winner.c_str(),
+                              conflict.loser.c_str(), Features::LockReason(conflict.id.c_str()).c_str());
+        }
+    });
 
 #ifdef ENABLE_SCRIPTING
     AddWidget(path, "Reload Scripts", WIDGET_BUTTON)
@@ -232,17 +228,16 @@ void GhostshipMenu::AddModMenu() {
         AddWidget(path, metadata, WIDGET_TEXT).Options(UIWidgets::TextOptions{});
 
         const std::string name = info.Name;
-        AddWidget(path, "##Settings_" + name, WIDGET_CUSTOM)
-            .CustomFunction([name](WidgetInfo&) {
-                const auto& entries = ModList::Entries();
-                const auto it = std::find_if(entries.begin(), entries.end(), [&](const ModList::Entry& e) {
-                    return e.archive->GetManifest().Name == name;
-                });
-                if (it != entries.end() && !it->status.empty()) {
-                    ImGui::TextColored(it->failed ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f) : ImVec4(0.5f, 0.9f, 0.5f, 1.0f),
-                                       "%s", it->status.c_str());
-                }
+        AddWidget(path, "##Settings_" + name, WIDGET_CUSTOM).CustomFunction([name](WidgetInfo&) {
+            const auto& entries = ModList::Entries();
+            const auto it = std::find_if(entries.begin(), entries.end(), [&](const ModList::Entry& e) {
+                return e.archive->GetManifest().Name == name;
             });
+            if (it != entries.end() && !it->status.empty()) {
+                ImGui::TextColored(it->failed ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f) : ImVec4(0.5f, 0.9f, 0.5f, 1.0f), "%s",
+                                   it->status.c_str());
+            }
+        });
 
         Ship::KeyOrigin origin = Ship::KeyOrigin::User;
         for (const auto& key : allKeys) {

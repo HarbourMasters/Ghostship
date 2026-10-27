@@ -123,7 +123,8 @@ class Lexer {
             tok.text = std::string(mText.substr(start, mPos - start));
             return tok;
         }
-        if (std::isdigit((unsigned char)c) || (c == '.' && mPos + 1 < mText.size() && std::isdigit((unsigned char)mText[mPos + 1]))) {
+        if (std::isdigit((unsigned char)c) ||
+            (c == '.' && mPos + 1 < mText.size() && std::isdigit((unsigned char)mText[mPos + 1]))) {
             size_t start = mPos;
             while (mPos < mText.size() && (std::isalnum((unsigned char)mText[mPos]) || mText[mPos] == '.')) {
                 mPos++;
@@ -136,7 +137,8 @@ class Lexer {
                 tok.number = (int64_t)std::trunc(std::strtod(lit.c_str(), nullptr));
                 return tok;
             }
-            while (!lit.empty() && std::strchr("uUlLfF", lit.back()) != nullptr && !(hex && std::isxdigit((unsigned char)lit.back()))) {
+            while (!lit.empty() && std::strchr("uUlLfF", lit.back()) != nullptr &&
+                   !(hex && std::isxdigit((unsigned char)lit.back()))) {
                 lit.pop_back();
             }
             char* end = nullptr;
@@ -371,12 +373,18 @@ class Parser {
     }
 
     static int Precedence(const std::string& op) {
-        if (op == "|") return 1;
-        if (op == "^") return 2;
-        if (op == "&") return 3;
-        if (op == "<<" || op == ">>") return 4;
-        if (op == "+" || op == "-") return 5;
-        if (op == "*" || op == "/" || op == "%") return 6;
+        if (op == "|")
+            return 1;
+        if (op == "^")
+            return 2;
+        if (op == "&")
+            return 3;
+        if (op == "<<" || op == ">>")
+            return 4;
+        if (op == "+" || op == "-")
+            return 5;
+        if (op == "*" || op == "/" || op == "%")
+            return 6;
         return -1;
     }
 
@@ -399,16 +407,36 @@ class Parser {
                 return false;
             }
             switch (op[0]) {
-                case '|': out |= rhs; break;
-                case '^': out ^= rhs; break;
-                case '&': out &= rhs; break;
-                case '<': out <<= rhs; break;
-                case '>': out >>= rhs; break;
-                case '+': out += rhs; break;
-                case '-': out -= rhs; break;
-                case '*': out *= rhs; break;
-                case '/': out /= rhs; break;
-                case '%': out %= rhs; break;
+                case '|':
+                    out |= rhs;
+                    break;
+                case '^':
+                    out ^= rhs;
+                    break;
+                case '&':
+                    out &= rhs;
+                    break;
+                case '<':
+                    out <<= rhs;
+                    break;
+                case '>':
+                    out >>= rhs;
+                    break;
+                case '+':
+                    out += rhs;
+                    break;
+                case '-':
+                    out -= rhs;
+                    break;
+                case '*':
+                    out *= rhs;
+                    break;
+                case '/':
+                    out /= rhs;
+                    break;
+                case '%':
+                    out %= rhs;
+                    break;
             }
         }
         return true;
@@ -427,8 +455,8 @@ class Parser {
             if (!Advance()) {
                 return false;
             }
-            static const std::set<std::string> kCasts = { "u8", "s8", "u16", "s16", "u32", "s32", "u64", "s64",
-                                                          "f32", "int", "uintptr_t", "intptr_t" };
+            static const std::set<std::string> kCasts = { "u8",  "s8",  "u16", "s16", "u32",       "s32",
+                                                          "u64", "s64", "f32", "int", "uintptr_t", "intptr_t" };
             if (IsIdent() && kCasts.contains(mTok.text)) {
                 if (!Advance() || !Expect(")")) {
                     return false;

@@ -44,9 +44,9 @@ std::string ProblemsText(size_t max) {
 
 void SelectAndQuit(const std::string& stem) {
     Romhack::SetSelected(stem);
-    GhostshipGui::RegisterPopup(
-        "Restart Required", "The romhack is switched the next time Ghostship starts.\nQuit Ghostship now?", "Quit",
-        "Later", []() { ShipCompat::GetWindow()->Close(); });
+    GhostshipGui::RegisterPopup("Restart Required",
+                                "The romhack is switched the next time Ghostship starts.\nQuit Ghostship now?", "Quit",
+                                "Later", []() { ShipCompat::GetWindow()->Close(); });
 }
 
 } // namespace
@@ -149,8 +149,8 @@ void RomhackMenu::DrawProgress() {
                           ImGuiChildFlags_Borders, ImGuiWindowFlags_HorizontalScrollbar)) {
         const bool atBottom = ImGui::GetScrollY() >= ImGui::GetScrollMaxY() - 1.0f;
         for (const auto& line : problems) {
-            const ImVec4 color = line.level >= spdlog::level::err ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f)
-                                                                  : ImVec4(1.0f, 0.85f, 0.3f, 1.0f);
+            const ImVec4 color =
+                line.level >= spdlog::level::err ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f) : ImVec4(1.0f, 0.85f, 0.3f, 1.0f);
             ImGui::TextColored(color, "%s", line.text.c_str());
         }
         if (atBottom) {

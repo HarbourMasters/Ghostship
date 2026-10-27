@@ -10,14 +10,14 @@
 
 namespace {
 
-constexpr size_t kPendingMax = 4000;  // messages waiting for the next frame
-constexpr size_t kHistoryMax = 2000;  // what the Logs channel shows
-constexpr size_t kProblemsMax = 200;  // warnings and errors kept per extraction
+constexpr size_t kPendingMax = 4000; // messages waiting for the next frame
+constexpr size_t kHistoryMax = 2000; // what the Logs channel shows
+constexpr size_t kProblemsMax = 200; // warnings and errors kept per extraction
 
 std::mutex sMutex;
 std::deque<LogFeed::Line> sPending;
 std::deque<LogFeed::Line> sHistory;
-size_t sShown = 0;  // lines appended to the Logs channel since it was last refilled
+size_t sShown = 0; // lines appended to the Logs channel since it was last refilled
 
 bool sCapturing = false;
 std::deque<LogFeed::Line> sProblems;

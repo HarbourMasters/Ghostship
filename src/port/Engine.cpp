@@ -737,9 +737,8 @@ void GameEngine::FinishInit() {
                                     "LevelScript", static_cast<uint32_t>(SM64::ResourceType::LevelScript), 0);
     loader->RegisterResourceFactory(std::make_shared<ScriptFactoryV0>(Scripts::Kind::Behavior), RESOURCE_FORMAT_BINARY,
                                     "BehaviorScript", static_cast<uint32_t>(SM64::ResourceType::BehaviorScript), 0);
-    loader->RegisterResourceFactory(std::make_shared<ScriptXMLFactoryV0>(Scripts::Kind::Behavior),
-                                    RESOURCE_FORMAT_XML, "BehaviorScript",
-                                    static_cast<uint32_t>(SM64::ResourceType::BehaviorScript), 0);
+    loader->RegisterResourceFactory(std::make_shared<ScriptXMLFactoryV0>(Scripts::Kind::Behavior), RESOURCE_FORMAT_XML,
+                                    "BehaviorScript", static_cast<uint32_t>(SM64::ResourceType::BehaviorScript), 0);
 
     loader->RegisterResourceFactory(blobFactory, RESOURCE_FORMAT_BINARY, "Blob",
                                     static_cast<uint32_t>(Ship::ResourceType::Blob), 0);
@@ -828,8 +827,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
         }
         std::atomic<size_t> total = 0, count = 0;
         hack.Parse(total);
-        const bool ok = hack.GenerateOTRTo(count, Ship::Context::GetAppBundlePath(),
-                                           Ship::Context::GetAppDirectoryPath());
+        const bool ok =
+            hack.GenerateOTRTo(count, Ship::Context::GetAppBundlePath(), Ship::Context::GetAppDirectoryPath());
         SPDLOG_INFO("--extract-romhack: {} {}", rom, ok ? "extracted" : "failed: " + GameExtractor::sLastError);
         exit(ok ? 0 : 1);
     }
@@ -1267,8 +1266,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                             if (!problems.empty()) {
                                 errorMsg += "\n\nWhat it logged last:";
                                 for (const auto& line : problems) {
-                                    errorMsg += "\n- " + (line.text.size() > 110 ? line.text.substr(0, 107) + "..."
-                                                                                   : line.text);
+                                    errorMsg += "\n- " +
+                                                (line.text.size() > 110 ? line.text.substr(0, 107) + "..." : line.text);
                                 }
                             }
                             errorMsg += "\n\nThe full log is in logs/Ghostship.log.";
@@ -1481,9 +1480,8 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
                                           ImGuiChildFlags_Borders, ImGuiWindowFlags_HorizontalScrollbar)) {
                         const bool atBottom = ImGui::GetScrollY() >= ImGui::GetScrollMaxY() - 1.0f;
                         for (const auto& line : problems) {
-                            const ImVec4 lineColor = line.level >= spdlog::level::err
-                                                         ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f)
-                                                         : ImVec4(1.0f, 0.85f, 0.3f, 1.0f);
+                            const ImVec4 lineColor = line.level >= spdlog::level::err ? ImVec4(1.0f, 0.4f, 0.4f, 1.0f)
+                                                                                      : ImVec4(1.0f, 0.85f, 0.3f, 1.0f);
                             ImGui::TextColored(lineColor, "%s", line.text.c_str());
                         }
                         if (atBottom) {

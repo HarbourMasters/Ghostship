@@ -128,8 +128,7 @@ static void UpdateDrawDistanceHooks() {
     const bool enabled = Port_FeatureInt("enhancements.disable_draw_distance", 0) != 0;
     if (enabled && sDistanceRenderListener == -1) {
         sDistanceLoadListener = REGISTER_LISTENER(EntityDistanceLoad, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
-        sDistanceRenderListener =
-            REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
+        sDistanceRenderListener = REGISTER_LISTENER(EntityDistanceRender, EVENT_PRIORITY_NORMAL, OnDisableDrawDistance);
     } else if (!enabled && sDistanceRenderListener != -1) {
         UNREGISTER_LISTENER(EntityDistanceLoad, sDistanceLoadListener);
         UNREGISTER_LISTENER(EntityDistanceRender, sDistanceRenderListener);

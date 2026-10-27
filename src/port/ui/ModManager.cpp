@@ -91,7 +91,8 @@ void SortDisabled() {
 // The lists as they are saved: ModList keeps its entries from the lowest priority up, so the last one wins.
 void Reset() {
     sBase = Romhack::GetSelected();
-    if (std::none_of(sHacks.begin(), sHacks.end(), [](const Hack& hack) { return !hack.stem.empty() && hack.stem == sBase; })) {
+    if (std::none_of(sHacks.begin(), sHacks.end(),
+                     [](const Hack& hack) { return !hack.stem.empty() && hack.stem == sBase; })) {
         sBase.clear();
     }
     sEnabled.clear();
@@ -137,7 +138,8 @@ void DrawKinds(const std::string& name) {
     }
     const Kind kinds[] = {
 #ifdef ENABLE_SCRIPTING
-        { entry->code, ICON_FA_CODE, UIWidgets::Colors::Cyan, "Code mod: runs C code the game compiles when it starts." },
+        { entry->code, ICON_FA_CODE, UIWidgets::Colors::Cyan,
+          "Code mod: runs C code the game compiles when it starts." },
 #else
         { entry->code, ICON_FA_CODE, UIWidgets::Colors::Cyan,
           "Code mod: its code doesn't run on this platform, only its files are used." },

@@ -158,8 +158,8 @@ static void AddSupported(const YAML::Node& config, std::vector<Supported>& hacks
         info.version = hack["version"].as<std::string>("");
         info.website = hack["website"].as<std::string>("");
         info.package = package;
-        info.fromBaseRom = !package.empty() &&
-                           std::find(buildable.begin(), buildable.end(), entry.first.as<std::string>()) != buildable.end();
+        info.fromBaseRom = !package.empty() && std::find(buildable.begin(), buildable.end(),
+                                                         entry.first.as<std::string>()) != buildable.end();
         if (std::none_of(hacks.begin(), hacks.end(), [&](const Supported& s) { return s.id == info.id; })) {
             hacks.push_back(std::move(info));
         }
@@ -295,7 +295,6 @@ void Mount(const std::shared_ptr<Ship::ArchiveManager>& archives) {
     sActiveStem = stem;
     sActiveArchive = archive;
 }
-
 
 const Info* Active() {
     return sActive.has_value() ? &*sActive : nullptr;
