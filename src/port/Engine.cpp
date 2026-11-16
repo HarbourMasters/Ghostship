@@ -802,8 +802,32 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 
     std::filesystem::path ownPath;
     std::vector<std::string> args = Romhack::ConsumeLaunchArgs(argc, argv);
+    // --game <rom> hands the ROM to the setup (no picker); --prepare makes sm64.o2r from it and exits.
+    [[maybe_unused]] bool prepareOnly = false;
+    {
+        std::vector<std::string> rest;
+        for (size_t i = 0; i < args.size(); i++) {
+            if (args[i] == "--game" && i + 1 < args.size()) {
+                GameExtractor::sGamePath = args[++i];
+            } else if (args[i] == "--prepare") {
+                prepareOnly = true;
+            } else {
+                rest.push_back(args[i]);
+            }
+        }
+        args = rest;
+    }
 #if !defined(__SWITCH__) && !defined(__WIIU__)
     GameExtractor extract;
+    if (prepareOnly) {
+        const std::string prepareRom = GameExtractor::sGamePath;
+        GameExtractor::sGamePath.clear();
+        if (prepareRom.empty()) {
+            fprintf(stderr, "--prepare needs --game <rom>\n");
+            exit(1);
+        }
+        exit(GameExtractor::RunPrepare(prepareRom));
+    }
     // --extract-romhack <rom> [--recipe <package>]
     for (size_t i = 0; i + 1 < args.size(); i++) {
         if (args[i] != "--extract-romhack") {
@@ -1161,6 +1185,11 @@ void GameEngine::RunExtract(int argc, char* argv[]) {
 #endif
                     case PS_LOCAL: {
                         extract = GameExtractor();
+                        if (!GameExtractor::sGamePath.empty()) {
+                            // --game was given: skip the local ROM search and use that ROM.
+                            promptStep = PS_FIRST;
+                            continue;
+                        }
                         romChoices =
                             extract.FindSupportedRoms({ installPath, Ship::Context::GetAppDirectoryPath("sm64") });
                         if (romChoices.size() > 1) {
