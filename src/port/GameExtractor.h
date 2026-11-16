@@ -31,6 +31,11 @@ public:
     // Message from the most recent failed extraction (empty on success). Surfaced
     // in the extraction-failure popup so the user sees the real cause.
     static std::string sLastError;
+    // A ROM path given with --game. SelectGameFromUI() uses it once instead of opening the file dialog.
+    static std::string sGamePath;
+    // --prepare: makes sm64.o2r from the ROM without any window, printing "progress N text" lines.
+    // Returns the process exit code (0 when the game files are ready).
+    static int RunPrepare(const std::string& rom);
 
     static bool GenAssetFile();
     std::optional<std::string> ValidateChecksum() const;
