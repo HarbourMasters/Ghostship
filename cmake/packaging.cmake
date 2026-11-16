@@ -100,6 +100,8 @@ execute_process(
   COMMAND_ERROR_IS_FATAL ANY
 )
 
+file(COPY "$<TARGET_PROPERTY:Ghostship,SOURCE_DIR>/recomplauncher.json" DESTINATION "${CPACK_TEMPORARY_DIRECTORY}")
+
 execute_process(
   COMMAND
     ${CMAKE_COMMAND} -E env
@@ -113,6 +115,10 @@ execute_process(
 )
 ]])
 
+endif()
+
+if (WIN32 AND NOT XBOX_UWP)
+  install(FILES "${CMAKE_SOURCE_DIR}/recomplauncher.json" DESTINATION . COMPONENT Ghostship)
 endif()
 
 include(CPack)
