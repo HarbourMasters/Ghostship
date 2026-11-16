@@ -10,6 +10,8 @@
 #include <unordered_map>
 #include <fstream>
 #include <algorithm>
+#include <thread>
+#include <chrono>
 
 #include "ship/Context.h"
 #include "spdlog/spdlog.h"
@@ -24,6 +26,7 @@
 
 // Defined unconditionally (declared in the header for all platforms).
 std::string GameExtractor::sLastError;
+std::string GameExtractor::sGamePath;
 
 #ifndef __SWITCH__
 #include "Companion.h"
@@ -105,6 +108,16 @@ bool GameExtractor::LoadRom(const std::string& rom) {
 }
 
 bool GameExtractor::SelectGameFromUI() {
+    // --game <rom>: use the ROM that was passed in, once, instead of asking in a dialog.
+    if (!sGamePath.empty()) {
+        const std::string given = sGamePath;
+        sGamePath.clear();
+        if (LoadRom(given)) {
+            return true;
+        }
+        SPDLOG_ERROR("Failed to read ROM at path: {}", given);
+        return false;
+    }
     //// Store both path and already-read data
     std::string romPath;
     std::vector<uint8_t> romData;
@@ -576,9 +589,59 @@ bool GameExtractor::GenerateOTRTo(std::atomic<size_t>& assetCount, const std::st
 
     return true;
 }
+int GameExtractor::RunPrepare(const std::string& rom) {
+    auto fail = [](std::string msg) {
+        std::replace(msg.begin(), msg.end(), '\n', ' ');
+        fprintf(stderr, "%s\n", msg.c_str());
+        return 1;
+    };
+    printf("progress 0 Checking your ROM\n");
+    fflush(stdout);
+    if (!DetectVersion(rom).has_value()) {
+        return fail("That file is not a supported Super Mario 64 ROM (US or JP, .z64).");
+    }
+    GameExtractor extractor;
+    if (!extractor.LoadRom(rom)) {
+        return fail("Could not read the ROM file.");
+    }
+    if (extractor.GetRomhack().has_value()) {
+        return fail("That ROM is a romhack. Use a vanilla Super Mario 64 ROM.");
+    }
+    std::atomic<size_t> total{ 0 };
+    std::atomic<size_t> count{ 0 };
+    std::atomic<bool> done{ false };
+    bool ok = false;
+    // The same two calls the first-start setup makes.
+    std::thread worker([&]() {
+        extractor.Parse(total, "sm64");
+        ok = extractor.GenerateOTR(count, "sm64");
+        done = true;
+    });
+    while (!done) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        const size_t t = total;
+        if (t > 0) {
+            const double p = std::min(0.99, (double)count / (double)t);
+            printf("progress %.2f Generating game files\n", p);
+            fflush(stdout);
+        }
+    }
+    worker.join();
+    ReleaseTorch();
+    if (!ok || !std::filesystem::exists(Ship::Context::LocateFileAcrossAppDirs("sm64.o2r", "sm64"))) {
+        return fail(sLastError.empty() ? std::string("Extracting the game files failed.") : sLastError);
+    }
+    printf("progress 1 Done\n");
+    fflush(stdout);
+    return 0;
+}
 #else
 static bool GameExtractor::GenAssetFile() {
     return false;
+}
+
+int GameExtractor::RunPrepare(const std::string& rom) {
+    return 1;
 }
 
 std::optional<std::string> GameExtractor::ValidateChecksum() const {

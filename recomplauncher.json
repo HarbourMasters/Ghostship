@@ -1,0 +1,230 @@
+{
+    "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
+    "format": 1,
+    "repo": "HarbourMasters/Ghostship",
+    "game": {
+        "kind": "iso",
+        "label": "Your Super Mario 64 ROM: the US or Japanese version, as a .z64 file.",
+        "check": {
+            "ids": [
+                "NSME",
+                "NSMJ"
+            ]
+        }
+    },
+    "start": {
+        "program": [
+            "Ghostship.exe",
+            "Ghostship.appimage"
+        ],
+        "args": [
+            "--game",
+            "{game}"
+        ]
+    },
+    "prepare": {
+        "program": [
+            "Ghostship.exe",
+            "Ghostship.appimage"
+        ],
+        "args": [
+            "--prepare",
+            "--game",
+            "{game}"
+        ],
+        "label": "Game files from your ROM",
+        "timeout": 600
+    },
+    "config": [
+        {
+            "id": "main",
+            "format": "json",
+            "file": [
+                {
+                    "path": "{install}/ghostship.cfg.json"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "window",
+            "label": "Full screen",
+            "help": "Fills your screen. F11 toggles it in the game too.",
+            "choices": [
+                {
+                    "label": "Off",
+                    "set": {
+                        "Window/Fullscreen/Enabled": "false"
+                    }
+                },
+                {
+                    "label": "On",
+                    "set": {
+                        "Window/Fullscreen/Enabled": "true"
+                    }
+                }
+            ],
+            "defaults": {
+                "Window/Fullscreen/Enabled": "false"
+            }
+        },
+        {
+            "id": "resolution",
+            "label": "Resolution",
+            "help": "Draws the picture sharper than the window size, at a cost in speed.",
+            "choices": [
+                {
+                    "label": "Window size",
+                    "set": {
+                        "CVars/gSettings/InternalResolution": "1.0"
+                    }
+                },
+                {
+                    "label": "1.5x",
+                    "set": {
+                        "CVars/gSettings/InternalResolution": "1.5"
+                    }
+                },
+                {
+                    "label": "2x",
+                    "set": {
+                        "CVars/gSettings/InternalResolution": "2.0"
+                    }
+                }
+            ],
+            "defaults": {
+                "CVars/gSettings/InternalResolution": "1.0"
+            }
+        },
+        {
+            "id": "msaa",
+            "label": "Anti-aliasing",
+            "help": "Smoother edges on models.",
+            "choices": [
+                {
+                    "label": "Off",
+                    "set": {
+                        "CVars/gSettings/MSAAValue": "1"
+                    }
+                },
+                {
+                    "label": "2x",
+                    "set": {
+                        "CVars/gSettings/MSAAValue": "2"
+                    }
+                },
+                {
+                    "label": "4x",
+                    "set": {
+                        "CVars/gSettings/MSAAValue": "4"
+                    }
+                },
+                {
+                    "label": "8x",
+                    "set": {
+                        "CVars/gSettings/MSAAValue": "8"
+                    }
+                }
+            ],
+            "defaults": {
+                "CVars/gSettings/MSAAValue": "1"
+            }
+        },
+        {
+            "id": "fps",
+            "label": "Frame rate",
+            "help": "Adds in-between frames for smoother motion. Gameplay is unchanged.",
+            "choices": [
+                {
+                    "label": "30 fps (original)",
+                    "set": {
+                        "CVars/gSettings/InterpolationFPS": "30"
+                    }
+                },
+                {
+                    "label": "60 fps",
+                    "set": {
+                        "CVars/gSettings/InterpolationFPS": "60"
+                    }
+                },
+                {
+                    "label": "120 fps",
+                    "set": {
+                        "CVars/gSettings/InterpolationFPS": "120"
+                    }
+                },
+                {
+                    "label": "144 fps",
+                    "set": {
+                        "CVars/gSettings/InterpolationFPS": "144"
+                    }
+                },
+                {
+                    "label": "240 fps",
+                    "set": {
+                        "CVars/gSettings/InterpolationFPS": "240"
+                    }
+                }
+            ],
+            "defaults": {
+                "CVars/gSettings/InterpolationFPS": "30"
+            }
+        },
+        {
+            "id": "vsync",
+            "label": "V-Sync",
+            "help": "Removes tearing, but caps the frame rate at your monitor's.",
+            "choices": [
+                {
+                    "label": "Off",
+                    "set": {
+                        "CVars/gSettings/VsyncEnabled": "0"
+                    }
+                },
+                {
+                    "label": "On",
+                    "set": {
+                        "CVars/gSettings/VsyncEnabled": "1"
+                    }
+                }
+            ],
+            "defaults": {
+                "CVars/gSettings/VsyncEnabled": "1"
+            }
+        },
+        {
+            "id": "api",
+            "label": "Graphics API",
+            "help": "Try another one if the game crashes.",
+            "choices": [
+                {
+                    "label": "DirectX 11",
+                    "set": {
+                        "Window/Backend/Id": "1"
+                    }
+                },
+                {
+                    "label": "OpenGL",
+                    "set": {
+                        "Window/Backend/Id": "2"
+                    }
+                },
+                {
+                    "label": "Vulkan",
+                    "set": {
+                        "Window/Backend/Id": "4"
+                    }
+                }
+            ],
+            "defaults": {
+                "Window/Backend/Id": "1"
+            }
+        }
+    ],
+    "requires": [
+        "start",
+        "settings.json",
+        "settings.choices"
+    ]
+}
